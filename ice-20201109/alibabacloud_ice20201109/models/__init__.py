@@ -1053,6 +1053,9 @@ from ._submit_copyright_job_request import SubmitCopyrightJobRequest
 from ._submit_copyright_job_shrink_request import SubmitCopyrightJobShrinkRequest
 from ._submit_copyright_job_response_body import SubmitCopyrightJobResponseBody
 from ._submit_copyright_job_response import SubmitCopyrightJobResponse
+from ._submit_cosy_voice_customized_voice_job_request import SubmitCosyVoiceCustomizedVoiceJobRequest
+from ._submit_cosy_voice_customized_voice_job_response_body import SubmitCosyVoiceCustomizedVoiceJobResponseBody
+from ._submit_cosy_voice_customized_voice_job_response import SubmitCosyVoiceCustomizedVoiceJobResponse
 from ._submit_customized_voice_job_request import SubmitCustomizedVoiceJobRequest
 from ._submit_customized_voice_job_response_body import SubmitCustomizedVoiceJobResponseBody
 from ._submit_customized_voice_job_response import SubmitCustomizedVoiceJobResponse
@@ -1949,6 +1952,7 @@ from ._submit_copyright_extract_job_response_body import SubmitCopyrightExtractJ
 from ._submit_copyright_job_request import SubmitCopyrightJobRequestInput
 from ._submit_copyright_job_request import SubmitCopyrightJobRequestOutput
 from ._submit_copyright_job_response_body import SubmitCopyrightJobResponseBodyData
+from ._submit_cosy_voice_customized_voice_job_response_body import SubmitCosyVoiceCustomizedVoiceJobResponseBodyData
 from ._submit_customized_voice_job_response_body import SubmitCustomizedVoiceJobResponseBodyData
 from ._submit_dnajob_request import SubmitDNAJobRequestInput
 from ._submit_dynamic_image_job_request import SubmitDynamicImageJobRequestInput
@@ -3180,6 +3184,9 @@ __all__ = [
     SubmitCopyrightJobShrinkRequest,
     SubmitCopyrightJobResponseBody,
     SubmitCopyrightJobResponse,
+    SubmitCosyVoiceCustomizedVoiceJobRequest,
+    SubmitCosyVoiceCustomizedVoiceJobResponseBody,
+    SubmitCosyVoiceCustomizedVoiceJobResponse,
     SubmitCustomizedVoiceJobRequest,
     SubmitCustomizedVoiceJobResponseBody,
     SubmitCustomizedVoiceJobResponse,
@@ -4076,6 +4083,7 @@ __all__ = [
     SubmitCopyrightJobRequestInput,
     SubmitCopyrightJobRequestOutput,
     SubmitCopyrightJobResponseBodyData,
+    SubmitCosyVoiceCustomizedVoiceJobResponseBodyData,
     SubmitCustomizedVoiceJobResponseBodyData,
     SubmitDNAJobRequestInput,
     SubmitDynamicImageJobRequestInput,

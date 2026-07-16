@@ -26575,6 +26575,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.submit_copyright_job_with_options_async(request, runtime)
 
+    def submit_cosy_voice_customized_voice_job_with_options(
+        self,
+        request: main_models.SubmitCosyVoiceCustomizedVoiceJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitCosyVoiceCustomizedVoiceJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.audios):
+            query['Audios'] = request.audios
+        if not DaraCore.is_null(request.demo_audio_media_url):
+            query['DemoAudioMediaURL'] = request.demo_audio_media_url
+        if not DaraCore.is_null(request.gender):
+            query['Gender'] = request.gender
+        if not DaraCore.is_null(request.model):
+            query['Model'] = request.model
+        if not DaraCore.is_null(request.voice_name):
+            query['VoiceName'] = request.voice_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitCosyVoiceCustomizedVoiceJob',
+            version = '2020-11-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitCosyVoiceCustomizedVoiceJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_cosy_voice_customized_voice_job_with_options_async(
+        self,
+        request: main_models.SubmitCosyVoiceCustomizedVoiceJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitCosyVoiceCustomizedVoiceJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.audios):
+            query['Audios'] = request.audios
+        if not DaraCore.is_null(request.demo_audio_media_url):
+            query['DemoAudioMediaURL'] = request.demo_audio_media_url
+        if not DaraCore.is_null(request.gender):
+            query['Gender'] = request.gender
+        if not DaraCore.is_null(request.model):
+            query['Model'] = request.model
+        if not DaraCore.is_null(request.voice_name):
+            query['VoiceName'] = request.voice_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitCosyVoiceCustomizedVoiceJob',
+            version = '2020-11-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitCosyVoiceCustomizedVoiceJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_cosy_voice_customized_voice_job(
+        self,
+        request: main_models.SubmitCosyVoiceCustomizedVoiceJobRequest,
+    ) -> main_models.SubmitCosyVoiceCustomizedVoiceJobResponse:
+        runtime = RuntimeOptions()
+        return self.submit_cosy_voice_customized_voice_job_with_options(request, runtime)
+
+    async def submit_cosy_voice_customized_voice_job_async(
+        self,
+        request: main_models.SubmitCosyVoiceCustomizedVoiceJobRequest,
+    ) -> main_models.SubmitCosyVoiceCustomizedVoiceJobResponse:
+        runtime = RuntimeOptions()
+        return await self.submit_cosy_voice_customized_voice_job_with_options_async(request, runtime)
+
     def submit_customized_voice_job_with_options(
         self,
         request: main_models.SubmitCustomizedVoiceJobRequest,
