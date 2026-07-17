@@ -1,3 +1,6 @@
+2026-07-17 Version: 5.4.1
+- Generated python 2022-05-20 for btripOpen.
+
 2026-07-16 Version: 5.4.0
 - Support API IntlFlightReShopCreate.
 - Support API IntlFlightReShopListSearch.
