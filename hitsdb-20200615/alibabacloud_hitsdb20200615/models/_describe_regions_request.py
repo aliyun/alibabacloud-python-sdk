@@ -14,10 +14,11 @@ class DescribeRegionsRequest(DaraModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        # The display language of the regions in the returned results. Valid values:
+        # The language to use for the region name (LocalName) in the response. Valid values:
         # 
-        # *   **zh-CN** (default): Chinese.
-        # *   **en-US**: English.
+        # - **zh-CN**: Chinese. This is the default value.
+        # 
+        # - **en-US**: English.
         self.accept_language = accept_language
         self.owner_account = owner_account
         self.owner_id = owner_id

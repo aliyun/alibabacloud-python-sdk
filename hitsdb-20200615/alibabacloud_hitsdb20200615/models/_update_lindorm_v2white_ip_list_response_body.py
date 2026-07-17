@@ -10,7 +10,9 @@ class UpdateLindormV2WhiteIpListResponseBody(DaraModel):
         access_denied_detail: str = None,
         request_id: str = None,
     ):
+        # Details about a failed permission check.
         self.access_denied_detail = access_denied_detail
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

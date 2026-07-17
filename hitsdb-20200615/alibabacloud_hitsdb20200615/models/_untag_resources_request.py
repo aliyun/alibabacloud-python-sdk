@@ -19,31 +19,30 @@ class UntagResourcesRequest(DaraModel):
         security_token: str = None,
         tag_key: List[str] = None,
     ):
-        # Specifies whether to remove all tags from the instances. Valid values:
+        # Specifies whether to detach all tags from the instances. Valid values:
         # 
-        # *   **true**: Remove all tags from the instances.
-        # *   **false**: Do not remove all tags from the instances.
+        # - **true**: Detach all tags from the instances.
         # 
-        # >  The default value of this parameter is false.
+        # - **false**: Do not detach all tags from the instances.
         # 
+        # > * The default value is false.
         # 
-        # 
-        # *   If you specify this parameter together with the TagKey parameter, this parameter does not take effect.
+        # - If TagKey is specified, this parameter is ignored.
         self.all = all
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The IDs of instances.
+        # A list of instance IDs.
         # 
         # This parameter is required.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The resource type. Set the value to **INSTANCE**.
+        # The resource type. The value is fixed to **INSTANCE**.
         # 
         # This parameter is required.
         self.resource_type = resource_type
         self.security_token = security_token
-        # The list of keys of the tags that you want to remove.
+        # A list of tag keys.
         self.tag_key = tag_key
 
     def validate(self):

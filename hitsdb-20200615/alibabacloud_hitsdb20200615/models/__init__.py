@@ -57,6 +57,12 @@ from ._get_auto_scaling_rule_response import GetAutoScalingRuleResponse
 from ._get_client_source_ip_request import GetClientSourceIpRequest
 from ._get_client_source_ip_response_body import GetClientSourceIpResponseBody
 from ._get_client_source_ip_response import GetClientSourceIpResponse
+from ._get_compute_engine_job_detail_request import GetComputeEngineJobDetailRequest
+from ._get_compute_engine_job_detail_response_body import GetComputeEngineJobDetailResponseBody
+from ._get_compute_engine_job_detail_response import GetComputeEngineJobDetailResponse
+from ._get_compute_engine_job_log_request import GetComputeEngineJobLogRequest
+from ._get_compute_engine_job_log_response_body import GetComputeEngineJobLogResponseBody
+from ._get_compute_engine_job_log_response import GetComputeEngineJobLogResponse
 from ._get_engine_default_auth_request import GetEngineDefaultAuthRequest
 from ._get_engine_default_auth_response_body import GetEngineDefaultAuthResponseBody
 from ._get_engine_default_auth_response import GetEngineDefaultAuthResponse
@@ -125,6 +131,9 @@ from ._list_auto_scaling_records_response import ListAutoScalingRecordsResponse
 from ._list_auto_scaling_rules_request import ListAutoScalingRulesRequest
 from ._list_auto_scaling_rules_response_body import ListAutoScalingRulesResponseBody
 from ._list_auto_scaling_rules_response import ListAutoScalingRulesResponse
+from ._list_compute_engine_job_request import ListComputeEngineJobRequest
+from ._list_compute_engine_job_response_body import ListComputeEngineJobResponseBody
+from ._list_compute_engine_job_response import ListComputeEngineJobResponse
 from ._list_ldps_compute_groups_request import ListLdpsComputeGroupsRequest
 from ._list_ldps_compute_groups_response_body import ListLdpsComputeGroupsResponseBody
 from ._list_ldps_compute_groups_response import ListLdpsComputeGroupsResponse
@@ -263,6 +272,7 @@ from ._list_auto_scaling_records_response_body import ListAutoScalingRecordsResp
 from ._list_auto_scaling_records_response_body import ListAutoScalingRecordsResponseBodyData
 from ._list_auto_scaling_rules_response_body import ListAutoScalingRulesResponseBodyDataScaleRules
 from ._list_auto_scaling_rules_response_body import ListAutoScalingRulesResponseBodyData
+from ._list_compute_engine_job_response_body import ListComputeEngineJobResponseBodyJobList
 from ._list_ldps_compute_groups_response_body import ListLdpsComputeGroupsResponseBodyGroupList
 from ._list_tag_resources_request import ListTagResourcesRequestTag
 from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResources
@@ -329,6 +339,12 @@ __all__ = [
     GetClientSourceIpRequest,
     GetClientSourceIpResponseBody,
     GetClientSourceIpResponse,
+    GetComputeEngineJobDetailRequest,
+    GetComputeEngineJobDetailResponseBody,
+    GetComputeEngineJobDetailResponse,
+    GetComputeEngineJobLogRequest,
+    GetComputeEngineJobLogResponseBody,
+    GetComputeEngineJobLogResponse,
     GetEngineDefaultAuthRequest,
     GetEngineDefaultAuthResponseBody,
     GetEngineDefaultAuthResponse,
@@ -397,6 +413,9 @@ __all__ = [
     ListAutoScalingRulesRequest,
     ListAutoScalingRulesResponseBody,
     ListAutoScalingRulesResponse,
+    ListComputeEngineJobRequest,
+    ListComputeEngineJobResponseBody,
+    ListComputeEngineJobResponse,
     ListLdpsComputeGroupsRequest,
     ListLdpsComputeGroupsResponseBody,
     ListLdpsComputeGroupsResponse,
@@ -535,6 +554,7 @@ __all__ = [
     ListAutoScalingRecordsResponseBodyData,
     ListAutoScalingRulesResponseBodyDataScaleRules,
     ListAutoScalingRulesResponseBodyData,
+    ListComputeEngineJobResponseBodyJobList,
     ListLdpsComputeGroupsResponseBodyGroupList,
     ListTagResourcesRequestTag,
     ListTagResourcesResponseBodyTagResources,

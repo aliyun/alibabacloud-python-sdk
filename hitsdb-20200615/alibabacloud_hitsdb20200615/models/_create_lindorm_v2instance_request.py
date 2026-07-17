@@ -41,39 +41,111 @@ class CreateLindormV2InstanceRequest(DaraModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
+        # The ID of the vSwitch in the arbiter zone for a multi-zone instance. The vSwitch must be in the zone specified by ArbiterZoneId. **This parameter is required if you want to create a multi-zone instance.**
         self.arbiter_vswitch_id = arbiter_vswitch_id
+        # The ID of the arbiter zone for a multi-zone instance. **This parameter is required if you want to create a multi-zone instance.**
         self.arbiter_zone_id = arbiter_zone_id
+        # The deployment architecture. Valid values:
+        # 
+        # - **1.0**: single zone.
+        # 
+        # - **2.0**: multi-zone Basic Edition.
+        # 
+        # - **3.0**: multi-zone High-availability Edition.
         self.arch_version = arch_version
+        # The auto-renewal duration. Unit: month.
+        # 
+        # Valid values: **1** to **12**.
+        # 
+        # > This parameter is valid only when you set **AutoRenewal** to **true**.
         self.auto_renew_duration = auto_renew_duration
+        # Specifies whether to enable auto-renewal for the instance. Valid values:
+        # 
+        # - **true**: Enable auto-renewal.
+        # 
+        # - **false**: Disable auto-renewal.
+        # 
+        # The default value is false.
+        # 
+        # > This parameter is valid only when you set **PayType** to **PREPAY**.
         self.auto_renewal = auto_renewal
+        # The size of the storage-optimized storage. Unit: GB.
         self.capacity_storage_size = capacity_storage_size
+        # The size of the cloud storage. Unit: GB.
         self.cloud_storage_size = cloud_storage_size
+        # The storage class. This parameter is not required if you select **Big Data** or **Local SSD**.
+        # 
+        # - **PerformanceStorage**: performance cloud storage
+        # 
+        # - **StandardStorage**: standard cloud storage
         self.cloud_storage_type = cloud_storage_type
+        # The instance mode. This parameter is not required.
+        # 
+        # - **BASIC**: general-purpose mode
         self.cluster_mode = cluster_mode
+        # The cluster type. Valid value:
+        # 
+        # - **basic**: production
         self.cluster_pattern = cluster_pattern
+        # The subscription duration of the instance. Valid values:
+        # 
+        # - If you set PricingCycle to **Month**, the valid values are **1** to **9**.
+        # 
+        # - If you set PricingCycle to **Year**, the valid values are **1** to **3**.
+        # 
+        # > This parameter is required only when you set PayType to **PREPAY**.
         self.duration = duration
+        # Specifies whether to enable storage-optimized storage.
         self.enable_capacity_storage = enable_capacity_storage
+        # The list of engine information.
+        # 
         # This parameter is required.
         self.engine_list = engine_list
+        # The name of the instance.
         self.instance_alias = instance_alias
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The billing method of the instance. Valid values:
+        # 
+        # - **PREPAY**: subscription.
+        # 
+        # - **POSTPAY**: pay-as-you-go.
+        # 
         # This parameter is required.
         self.pay_type = pay_type
+        # The subscription period of the instance. Valid values:
+        # 
+        # - **Month**: The unit is month.
+        # 
+        # - **Year**: The unit is year.
+        # 
+        # > This parameter is required only when you set PayType to **PREPAY**.
         self.pricing_cycle = pricing_cycle
+        # The ID of the vSwitch in the primary zone for a multi-zone instance. The vSwitch must be in the zone specified by PrimaryZoneId. **This parameter is required if you want to create a multi-zone instance.**
         self.primary_vswitch_id = primary_vswitch_id
+        # The ID of the primary zone for a multi-zone instance. **This parameter is required if you want to create a multi-zone instance.**
         self.primary_zone_id = primary_zone_id
+        # The ID of the region where you want to create the instance. To query the available regions, call the [DescribeRegions](https://help.aliyun.com/document_detail/426062.html) operation.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
+        # The ID of the vSwitch in the secondary zone for a multi-zone instance. The vSwitch must be in the zone specified by StandbyZoneId. **This parameter is required if you want to create a multi-zone instance.**
         self.standby_vswitch_id = standby_vswitch_id
+        # The ID of the secondary zone for a multi-zone instance. **This parameter is required if you want to create a multi-zone instance.**
         self.standby_zone_id = standby_zone_id
+        # The ID of the virtual private cloud (VPC) for the instance.
+        # 
         # This parameter is required.
         self.vpcid = vpcid
+        # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
+        # The ID of the zone for the instance.
+        # 
         # This parameter is required.
         self.zone_id = zone_id
 
@@ -285,8 +357,25 @@ class CreateLindormV2InstanceRequestEngineList(DaraModel):
         engine_type: str = None,
         node_group_list: List[main_models.CreateLindormV2InstanceRequestEngineListNodeGroupList] = None,
     ):
+        # The engine type. Valid values:
+        # 
+        # - **TABLE**: LindormTable.
+        # 
+        # - **TSDB**: LindormTSDB.
+        # 
+        # - **LSEARCH**: search engine.
+        # 
+        # - **LTS**: LTS engine.
+        # 
+        # - **LVECTOR**: vector engine.
+        # 
+        # - **LCOLUMN**: column store engine.
+        # 
+        # - **LAI**: AI engine.
+        # 
         # This parameter is required.
         self.engine_type = engine_type
+        # The list of engine nodes.
         self.node_group_list = node_group_list
 
     def validate(self):
@@ -332,12 +421,89 @@ class CreateLindormV2InstanceRequestEngineListNodeGroupList(DaraModel):
         node_spec: str = None,
         resource_group_name: str = None,
     ):
+        # The number of nodes in the cluster.
+        # 
         # This parameter is required.
         self.node_count = node_count
+        # The disk size of a single node. The default unit is GB.
         self.node_disk_size = node_disk_size
+        # The disk type of the node. This parameter is not required. **This parameter is available only for specific scenarios. To use this parameter, you must be added to the whitelist.**
         self.node_disk_type = node_disk_type
+        # The node specifications.
+        # 
+        # If you select performance cloud storage or standard cloud storage, set this parameter to one of the following values:
+        # 
+        # - **lindorm.c.2xlarge**: 8 cores, 16 GB.
+        # 
+        # - **lindorm.g.2xlarge**: 8 cores, 32 GB.
+        # 
+        # - **lindorm.c.4xlarge**: 16 cores, 32 GB.
+        # 
+        # - **lindorm.g.4xlarge**: 16 cores, 64 GB.
+        # 
+        # - **lindorm.c.8xlarge**: 32 cores, 64 GB.
+        # 
+        # - **lindorm.g.8xlarge**: 32 cores, 128 GB.
+        # 
+        # - **lindorm.r.2xlarge**: 8 cores, 64 GB.
+        # 
+        # - **lindorm.r.4xlarge**: 16 cores, 128 GB.
+        # 
+        # - **lindorm.r.8xlarge**: 32 cores, 256 GB.
+        # 
+        # If you select the local SSD type, set this parameter to one of the following values:
+        # 
+        # - **lindorm.i4.xlarge**: 4 cores, 32 GB (I4).
+        # 
+        # - **lindorm.i4.2xlarge**: 8 cores, 64 GB (I4).
+        # 
+        # - **lindorm.i4.4xlarge**: 16 cores, 128 GB (I4).
+        # 
+        # - **lindorm.i4.8xlarge**: 32 cores, 256 GB (I4).
+        # 
+        # - **lindorm.i3.xlarge**: 4 cores, 32 GB (I3).
+        # 
+        # - **lindorm.i3.2xlarge**: 8 cores, 64 GB (I3).
+        # 
+        # - **lindorm.i3.4xlarge**: 16 cores, 128 GB (I3).
+        # 
+        # - **lindorm.i3.8xlarge**: 32 cores, 256 GB (I3).
+        # 
+        # - **lindorm.i2.xlarge**: 4 cores, 32 GB (I2).
+        # 
+        # - **lindorm.i2.2xlarge**: 8 cores, 64 GB (I2).
+        # 
+        # - **lindorm.i2.4xlarge**: 16 cores, 128 GB (I2).
+        # 
+        # - **lindorm.i2.8xlarge**: 32 cores, 256 GB (I2).
+        # 
+        # If you select the big data type, set this parameter to one of the following values:
+        # 
+        # - **lindorm.sd3c.3xlarge**: 14 cores, 56 GB (D3C PRO).
+        # 
+        # - **lindorm.sd3c.7xlarge**: 28 cores, 112 GB (D3C PRO).
+        # 
+        # - **lindorm.sd3c.14xlarge**: 56 cores, 224 GB (D3C PRO).
+        # 
+        # - **lindorm.d2c.6xlarge**: 24 cores, 88 GB (D2C).
+        # 
+        # - **lindorm.d2c.12xlarge**: 48 cores, 176 GB (D2C).
+        # 
+        # - **lindorm.d2c.24xlarge**: 96 cores, 352 GB (D2C).
+        # 
+        # - **lindorm.d2s.5xlarge**: 20 cores, 88 GB (D2S).
+        # 
+        # - **lindorm.d2s.10xlarge**: 40 cores, 176 GB (D2S).
+        # 
+        # - **lindorm.d1.2xlarge**: 8 cores, 32 GB (D1NE).
+        # 
+        # - **lindorm.d1.4xlarge**: 16 cores, 64 GB (D1NE).
+        # 
+        # - **lindorm.d1.6xlarge**: 24 cores, 96 GB (D1NE).
+        # 
         # This parameter is required.
         self.node_spec = node_spec
+        # The name of the node group. **This parameter is required.**
         self.resource_group_name = resource_group_name
 
     def validate(self):

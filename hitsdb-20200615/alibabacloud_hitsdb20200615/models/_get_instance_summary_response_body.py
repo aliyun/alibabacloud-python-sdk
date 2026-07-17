@@ -16,10 +16,15 @@ class GetInstanceSummaryResponseBody(DaraModel):
         running_count: int = None,
         total: int = None,
     ):
+        # The number of instances that are about to expire.
         self.locking_count = locking_count
+        # An array of region summaries.
         self.regional_summary = regional_summary
+        # The request ID.
         self.request_id = request_id
+        # The number of running instances.
         self.running_count = running_count
+        # The total number of instances that are running or about to expire.
         self.total = total
 
     def validate(self):
@@ -82,9 +87,13 @@ class GetInstanceSummaryResponseBodyRegionalSummary(DaraModel):
         running_count: int = None,
         total: int = None,
     ):
+        # The number of instances in `{RegionId}` that are about to expire.
         self.locking_count = locking_count
+        # The region ID.
         self.region_id = region_id
+        # The number of running instances in `{RegionId}`.
         self.running_count = running_count
+        # The total number of instances in `{RegionId}` that are running or about to expire.
         self.total = total
 
     def validate(self):

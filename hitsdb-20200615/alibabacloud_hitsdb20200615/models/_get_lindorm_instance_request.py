@@ -14,10 +14,7 @@ class GetLindormInstanceRequest(DaraModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        # The disk type of the log nodes. This parameter is returned only for multi-zone instances. Valid values:
-        # 
-        # *   **cloud_efficiency**: The nodes use the Standard type of storage.
-        # *   **cloud_ssd**: The nodes use the Performance type of storage.
+        # The instance ID. Call [GetLindormInstanceList](https://help.aliyun.com/document_detail/426069.html) to obtain the ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

@@ -16,7 +16,7 @@ class RenewLindormInstanceResponseBody(DaraModel):
         self.access_denied_detail = access_denied_detail
         # The ID of the instance.
         self.instance_id = instance_id
-        # The ID of the order. You can obtain the order ID on the Orders page of the Expenses and Costs console.
+        # The ID of the order. You can find the order ID in the Order Management section of Expenses and Costs.
         self.order_id = order_id
         # The ID of the request.
         self.request_id = request_id

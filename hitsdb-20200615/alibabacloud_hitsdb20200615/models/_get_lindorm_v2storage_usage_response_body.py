@@ -15,10 +15,17 @@ class GetLindormV2StorageUsageResponseBody(DaraModel):
         request_id: str = None,
         usage_by_disk_category: List[Dict[str, Any]] = None,
     ):
+        # The detailed reason why the access was denied.
         self.access_denied_detail = access_denied_detail
+        # The capacity information for each storage medium.
         self.capacity_by_disk_category = capacity_by_disk_category
+        # The capacity information for the multi-zone instance.
+        # 
+        # {"ZoneId":{"CapacityByDiskCategory":{...},"UsageByDiskCategory":{...}}}
         self.instance_storage_zone_map = instance_storage_zone_map
+        # The ID of the request. Alibaba Cloud generates this unique ID for each request. Use this ID to troubleshoot issues.
         self.request_id = request_id
+        # The usage information for each storage medium.
         self.usage_by_disk_category = usage_by_disk_category
 
     def validate(self):

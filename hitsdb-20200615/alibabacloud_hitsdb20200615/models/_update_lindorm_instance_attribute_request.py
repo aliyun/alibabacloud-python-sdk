@@ -16,8 +16,16 @@ class UpdateLindormInstanceAttributeRequest(DaraModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
+        # Specifies whether to enable deletion protection. Valid values:
+        # 
+        # - **true**: Enabled.
+        # 
+        # - **false**: Disabled.
         self.deletion_protection = deletion_protection
+        # The name of the instance.
         self.instance_alias = instance_alias
+        # The ID of the instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account

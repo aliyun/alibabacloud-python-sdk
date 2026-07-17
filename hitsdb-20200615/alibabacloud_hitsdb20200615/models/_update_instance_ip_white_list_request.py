@@ -17,11 +17,11 @@ class UpdateInstanceIpWhiteListRequest(DaraModel):
         security_ip_list: str = None,
         security_token: str = None,
     ):
-        # Specifies whether to clear all IP addresses and CIDR blocks in the whitelist.
+        # Specifies whether to clear the whitelist.
         self.delete = delete
-        # The name of the IP whitelist. Default value: user.
+        # The name of the whitelist group. If you leave this parameter empty, the default value user is used.
         self.group_name = group_name
-        # The ID of the instance for which you want to configure a whitelist. You can call the [GetLindormInstanceList](https://help.aliyun.com/document_detail/426069.html) operation to obtain the ID.
+        # The ID of the instance. Call the [GetLindormInstanceList](https://help.aliyun.com/document_detail/426069.html) operation to obtain the ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -29,9 +29,9 @@ class UpdateInstanceIpWhiteListRequest(DaraModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The IP addresses or CIDR blocks that you want to add to the whitelist.
+        # The IP addresses to add to the whitelist.
         # 
-        # >  If you add 127.0.0.1 to the whitelist, all IP addresses cannot be used to access the Lindorm instance. If you add the CIDR block 192.168.0.0/24 to the whitelist, you can use all IP addresses in the CIDR block to access the Lindorm instance. Separate multiple IP addresses or CIDR blocks with commas (,).
+        # > Set this parameter to 127.0.0.1 to deny access from all IP addresses. For example, 192.168.0.0/24 allows all IP addresses in the 192.168.0.0/24 CIDR block to access the Lindorm instance. Separate multiple IP addresses or CIDR blocks with a comma (,).
         # 
         # This parameter is required.
         self.security_ip_list = security_ip_list

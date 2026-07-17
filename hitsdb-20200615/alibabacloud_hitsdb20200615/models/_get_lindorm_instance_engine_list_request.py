@@ -15,13 +15,13 @@ class GetLindormInstanceEngineListRequest(DaraModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        # Instance ID, which can be obtained by calling the [GetLindormInstanceList](https://help.aliyun.com/document_detail/426069.html) interface.
+        # The ID of the instance. To obtain the instance ID, call the [GetLindormInstanceList](https://help.aliyun.com/document_detail/426069.html) operation.
         # 
         # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # Region ID.
+        # The region ID.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

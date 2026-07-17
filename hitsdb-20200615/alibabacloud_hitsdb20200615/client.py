@@ -21,6 +21,30 @@ class Client(OpenApiClient):
     ):
         super().__init__(config)
         self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'us-west-1': 'hitsdb.us-west-1.aliyuncs.com',
+            'us-east-1': 'hitsdb.us-east-1.aliyuncs.com',
+            'eu-west-1': 'hitsdb.eu-west-1.aliyuncs.com',
+            'eu-central-1': 'hitsdb.eu-central-1.aliyuncs.com',
+            'cn-zhangjiakou': 'hitsdb.cn-zhangjiakou.aliyuncs.com',
+            'cn-wulanchabu': 'hitsdb.cn-wulanchabu.aliyuncs.com',
+            'cn-shenzhen-finance-1': 'hitsdb.cn-shenzhen-finance-1.aliyuncs.com',
+            'cn-shenzhen': 'hitsdb.cn-shenzhen.aliyuncs.com',
+            'cn-shanghai-finance-1': 'hitsdb.cn-shanghai-finance-1.aliyuncs.com',
+            'cn-shanghai': 'hitsdb.cn-shanghai.aliyuncs.com',
+            'cn-qingdao': 'hitsdb.cn-qingdao.aliyuncs.com',
+            'cn-north-2-gov-1': 'hitsdb.cn-north-2-gov-1.aliyuncs.com',
+            'cn-huhehaote': 'hitsdb.cn-huhehaote.aliyuncs.com',
+            'cn-hongkong': 'hitsdb.cn-hongkong.aliyuncs.com',
+            'cn-hangzhou-finance': 'hitsdb.cn-hangzhou-finance.aliyuncs.com',
+            'cn-hangzhou': 'hitsdb.cn-hangzhou.aliyuncs.com',
+            'cn-chengdu': 'hitsdb.cn-chengdu.aliyuncs.com',
+            'cn-beijing': 'hitsdb.cn-beijing.aliyuncs.com',
+            'ap-southeast-5': 'hitsdb.ap-southeast-5.aliyuncs.com',
+            'ap-southeast-3': 'hitsdb.ap-southeast-3.aliyuncs.com',
+            'ap-southeast-1': 'hitsdb.ap-southeast-1.aliyuncs.com',
+            'ap-northeast-1': 'hitsdb.ap-northeast-1.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('hitsdb', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -2152,6 +2176,206 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_client_source_ip_with_options_async(request, runtime)
 
+    def get_compute_engine_job_detail_with_options(
+        self,
+        request: main_models.GetComputeEngineJobDetailRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetComputeEngineJobDetailResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.job_id):
+            query['JobId'] = request.job_id
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetComputeEngineJobDetail',
+            version = '2020-06-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetComputeEngineJobDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_compute_engine_job_detail_with_options_async(
+        self,
+        request: main_models.GetComputeEngineJobDetailRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetComputeEngineJobDetailResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.job_id):
+            query['JobId'] = request.job_id
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetComputeEngineJobDetail',
+            version = '2020-06-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetComputeEngineJobDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_compute_engine_job_detail(
+        self,
+        request: main_models.GetComputeEngineJobDetailRequest,
+    ) -> main_models.GetComputeEngineJobDetailResponse:
+        runtime = RuntimeOptions()
+        return self.get_compute_engine_job_detail_with_options(request, runtime)
+
+    async def get_compute_engine_job_detail_async(
+        self,
+        request: main_models.GetComputeEngineJobDetailRequest,
+    ) -> main_models.GetComputeEngineJobDetailResponse:
+        runtime = RuntimeOptions()
+        return await self.get_compute_engine_job_detail_with_options_async(request, runtime)
+
+    def get_compute_engine_job_log_with_options(
+        self,
+        request: main_models.GetComputeEngineJobLogRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetComputeEngineJobLogResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.job_id):
+            query['JobId'] = request.job_id
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetComputeEngineJobLog',
+            version = '2020-06-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetComputeEngineJobLogResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_compute_engine_job_log_with_options_async(
+        self,
+        request: main_models.GetComputeEngineJobLogRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetComputeEngineJobLogResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.job_id):
+            query['JobId'] = request.job_id
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetComputeEngineJobLog',
+            version = '2020-06-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetComputeEngineJobLogResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_compute_engine_job_log(
+        self,
+        request: main_models.GetComputeEngineJobLogRequest,
+    ) -> main_models.GetComputeEngineJobLogResponse:
+        runtime = RuntimeOptions()
+        return self.get_compute_engine_job_log_with_options(request, runtime)
+
+    async def get_compute_engine_job_log_async(
+        self,
+        request: main_models.GetComputeEngineJobLogRequest,
+    ) -> main_models.GetComputeEngineJobLogResponse:
+        runtime = RuntimeOptions()
+        return await self.get_compute_engine_job_log_with_options_async(request, runtime)
+
     def get_engine_default_auth_with_options(
         self,
         request: main_models.GetEngineDefaultAuthRequest,
@@ -4251,6 +4475,132 @@ class Client(OpenApiClient):
     ) -> main_models.ListAutoScalingRulesResponse:
         runtime = RuntimeOptions()
         return await self.list_auto_scaling_rules_with_options_async(request, runtime)
+
+    def list_compute_engine_job_with_options(
+        self,
+        request: main_models.ListComputeEngineJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListComputeEngineJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.compute_group):
+            query['ComputeGroup'] = request.compute_group
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.job_id):
+            query['JobId'] = request.job_id
+        if not DaraCore.is_null(request.job_name):
+            query['JobName'] = request.job_name
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.state):
+            query['State'] = request.state
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListComputeEngineJob',
+            version = '2020-06-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListComputeEngineJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_compute_engine_job_with_options_async(
+        self,
+        request: main_models.ListComputeEngineJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListComputeEngineJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.compute_group):
+            query['ComputeGroup'] = request.compute_group
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.job_id):
+            query['JobId'] = request.job_id
+        if not DaraCore.is_null(request.job_name):
+            query['JobName'] = request.job_name
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.state):
+            query['State'] = request.state
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListComputeEngineJob',
+            version = '2020-06-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListComputeEngineJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_compute_engine_job(
+        self,
+        request: main_models.ListComputeEngineJobRequest,
+    ) -> main_models.ListComputeEngineJobResponse:
+        runtime = RuntimeOptions()
+        return self.list_compute_engine_job_with_options(request, runtime)
+
+    async def list_compute_engine_job_async(
+        self,
+        request: main_models.ListComputeEngineJobRequest,
+    ) -> main_models.ListComputeEngineJobResponse:
+        runtime = RuntimeOptions()
+        return await self.list_compute_engine_job_with_options_async(request, runtime)
 
     def list_ldps_compute_groups_with_options(
         self,

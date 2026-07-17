@@ -16,15 +16,15 @@ class GetInstanceIpWhiteListResponseBody(DaraModel):
         ip_list: List[str] = None,
         request_id: str = None,
     ):
-        # The details about the access denial.
+        # The details about why the access was denied.
         self.access_denied_detail = access_denied_detail
-        # The details about the IP address whitelists.
+        # A list of whitelist groups.
         self.group_list = group_list
-        # The ID of the Lindorm instance.
+        # The instance ID.
         self.instance_id = instance_id
-        # The list of IP addresses in the whitelist of the instance.
+        # A list of IP addresses in the whitelist.
         self.ip_list = ip_list
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -85,9 +85,9 @@ class GetInstanceIpWhiteListResponseBodyGroupList(DaraModel):
         group_name: str = None,
         security_ip_list: str = None,
     ):
-        # The name of the IP address whitelist.
+        # The name of the whitelist group.
         self.group_name = group_name
-        # The IP addresses in the whitelist.
+        # The IP address whitelist.
         self.security_ip_list = security_ip_list
 
     def validate(self):

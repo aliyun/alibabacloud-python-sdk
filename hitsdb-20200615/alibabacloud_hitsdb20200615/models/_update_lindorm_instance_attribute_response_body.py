@@ -10,7 +10,9 @@ class UpdateLindormInstanceAttributeResponseBody(DaraModel):
         access_denied_detail: str = None,
         request_id: str = None,
     ):
+        # The detailed reason why the access was denied.
         self.access_denied_detail = access_denied_detail
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

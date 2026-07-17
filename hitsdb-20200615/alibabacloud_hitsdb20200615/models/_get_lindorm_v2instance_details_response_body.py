@@ -50,44 +50,155 @@ class GetLindormV2InstanceDetailsResponseBody(DaraModel):
         zone_engine_info_map: Dict[str, Any] = None,
         zone_id: str = None,
     ):
+        # The 16-digit AliUid of the Alibaba Cloud account.
         self.ali_uid = ali_uid
+        # For a multi-zone instance, this is the ID of the virtual switch in the arbiter zone. The vSwitch must be in the zone specified by ArbiterZoneId.
         self.arbiter_vswitch_id = arbiter_vswitch_id
+        # For a multi-zone instance, this is the ID of the arbiter zone.
         self.arbiter_zone_id = arbiter_zone_id
+        # Indicates whether auto-renewal is enabled. Valid values:
+        # 
+        # - **true**: enabled.
+        # 
+        # - **false**: disabled.
+        # 
+        # > This parameter is returned only for subscription instances.
         self.auto_renew = auto_renew
+        # The cloud storage capacity in GB.
         self.cloud_storage_size = cloud_storage_size
+        # The capacity of the storage-optimized cloud storage.
         self.cold_storage = cold_storage
+        # The number of milliseconds between the instance creation time and 00:00:00 on January 1, 1970.
         self.create_milliseconds = create_milliseconds
+        # Indicates whether deletion protection is enabled. Valid values:
+        # 
+        # - **true**: enabled.
+        # 
+        # - **false**: disabled.
         self.deletion_protection = deletion_protection
+        # The storage class. Valid values:
+        # 
+        # - **StandardStorage**: Standard cloud storage.
+        # 
+        # - **PerformanceStorage**: Performance cloud storage.
         self.disk_category = disk_category
+        # The disk space threshold.
         self.disk_threshold = disk_threshold
+        # The disk space usage.
         self.disk_usage = disk_usage
+        # Indicates whether the compute engine is enabled for the instance. Valid values:
+        # 
+        # - **true**: enabled.
+        # 
+        # - **false**: disabled.
         self.enable_compute = enable_compute
+        # Indicates whether the file engine is enabled.
         self.enable_fs = enable_fs
+        # Indicates whether transparent data encryption (TDE) is enabled for storage.
         self.enable_store_tde = enable_store_tde
+        # The list of engine information.
         self.engine_list = engine_list
+        # The number of milliseconds between the instance expiration time and 00:00:00 on January 1, 1970.
         self.expired_milliseconds = expired_milliseconds
+        # The default initial password.
         self.initial_root_password = initial_root_password
+        # The instance name.
         self.instance_alias = instance_alias
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The instance status. Valid values:
+        # 
+        # - **CREATING**: The instance is being created.
+        # 
+        # - **ACTIVATION**: The instance is running.
+        # 
+        # - **COLD_EXPANDING**: The storage-optimized cloud storage is being scaled out.
+        # 
+        # - **MINOR_VERSION_TRANSING**: The minor version is being upgraded.
+        # 
+        # - **RESIZING**: The nodes are being scaled out.
+        # 
+        # - **SHRINKING**: The nodes are being scaled in.
+        # 
+        # - **CLASS_CHANGING**: The instance specifications are being upgraded or downgraded.
+        # 
+        # - **SSL_SWITCHING**: The SSL certificate is being changed.
+        # 
+        # - **CDC_OPENING**: The data subscription feature is being enabled.
+        # 
+        # - **TRANSFER**: Data is being migrated.
+        # 
+        # - **DATABASE_TRANSFER**: Data is being migrated to the database.
+        # 
+        # - **GUARD_CREATING**: A disaster recovery instance is being created.
+        # 
+        # - **BACKUP_RECOVERING**: Data is being restored from a backup.
+        # 
+        # - **DATABASE_IMPORTING**: Data is being imported.
+        # 
+        # - **NET_MODIFYING**: The network is being modified.
+        # 
+        # - **NET_SWITCHING**: The network is being switched between the private network and the public network.
+        # 
+        # - **NET_CREATING**: A network connection is being created.
+        # 
+        # - **NET_DELETING**: A network connection is being deleted.
+        # 
+        # - **DELETING**: The instance is being deleted.
+        # 
+        # - **RESTARTING**: The instance is being restarted.
+        # 
+        # - **LOCKED**: The instance has expired and is locked.
         self.instance_status = instance_status
+        # The instance type. Valid value:
+        # 
+        # - basic: Production.
         self.instance_type = instance_type
+        # The end time of the maintenance window.
         self.maintain_end_time = maintain_end_time
+        # The start time of the maintenance window.
         self.maintain_start_time = maintain_start_time
+        # The network type of the instance.
         self.network_type = network_type
+        # The billing method of the instance. Valid values:
+        # 
+        # - **PREPAY**: subscription.
+        # 
+        # - **POSTPAY**: pay-as-you-go.
         self.pay_type = pay_type
+        # For a multi-zone instance, this is the ID of the virtual switch in the primary zone. The vSwitch must be in the zone specified by PrimaryZoneId.
         self.primary_vswitch_id = primary_vswitch_id
+        # For a multi-zone instance, this is the ID of the primary zone.
         self.primary_zone_id = primary_zone_id
+        # The region ID.
         self.region_id = region_id
+        # The request ID.
         self.request_id = request_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The instance type. Valid values:
+        # 
+        # - **lindorm_v2**: Lindorm V2 single-zone instance.
+        # 
+        # - **lindorm_v2_multizone**: Lindorm V2 Multi-zone Deployment (Basic) instance.
+        # 
+        # - **lindorm_v2_multizone_ha**: Lindorm V2 multi-zone High-availability Edition instance.
         self.service_type = service_type
+        # For a multi-zone instance, this is the ID of the virtual switch in the secondary zone. The vSwitch must be in the zone specified by StandbyZoneId.
         self.standby_vswitch_id = standby_vswitch_id
+        # For a multi-zone instance, this is the ID of the secondary zone.
         self.standby_zone_id = standby_zone_id
+        # The instance storage usage.
         self.storage_usage = storage_usage
+        # The ID of the virtual private cloud (VPC) where the instance resides.
         self.vpc_id = vpc_id
+        # The ID of the virtual switch.
         self.vswitch_id = vswitch_id
+        # The instance access whitelist.
         self.white_ip_list = white_ip_list
+        # The deployment details of the engine in the zone.
         self.zone_engine_info_map = zone_engine_info_map
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -364,7 +475,9 @@ class GetLindormV2InstanceDetailsResponseBodyWhiteIpList(DaraModel):
         group_name: str = None,
         ip_list: str = None,
     ):
+        # The group name. The name can contain only letters, digits, and underscores (_).
         self.group_name = group_name
+        # The IP addresses in the whitelist.
         self.ip_list = ip_list
 
     def validate(self):
@@ -399,7 +512,9 @@ class GetLindormV2InstanceDetailsResponseBodyStorageUsage(DaraModel):
         capacity_by_disk_category: List[Dict[str, Any]] = None,
         engine_usage: Dict[str, Any] = None,
     ):
+        # The instance storage usage.
         self.capacity_by_disk_category = capacity_by_disk_category
+        # The storage usage of each engine.
         self.engine_usage = engine_usage
 
     def validate(self):
@@ -438,11 +553,33 @@ class GetLindormV2InstanceDetailsResponseBodyEngineList(DaraModel):
         node_group: List[main_models.GetLindormV2InstanceDetailsResponseBodyEngineListNodeGroup] = None,
         version: str = None,
     ):
+        # A list of engine endpoints.
         self.connect_address_list = connect_address_list
+        # The engine type. Valid values:
+        # 
+        # - **TABLE**: LindormTable.
+        # 
+        # - **TSDB**: LindormTSDB.
+        # 
+        # - **LSEARCH**: Search engine.
+        # 
+        # - **LTS**: LTS engine.
+        # 
+        # - **LVECTOR**: Vector engine.
+        # 
+        # - **LCOLUMN**: Column store.
         self.engine = engine
+        # Indicates whether the engine is the latest version. Valid values:
+        # 
+        # - **true**: The engine is the latest version.
+        # 
+        # - **false**: The engine is not the latest version.
         self.is_last_version = is_last_version
+        # The latest version number for the engine type.
         self.latest_version = latest_version
+        # A list of engine node groups.
         self.node_group = node_group
+        # The version number of the engine type.
         self.version = version
 
     def validate(self):
@@ -527,16 +664,101 @@ class GetLindormV2InstanceDetailsResponseBodyEngineListNodeGroup(DaraModel):
         spec_id: str = None,
         status: str = None,
     ):
+        # Deprecated.
         self.category = category
+        # The number of vCPUs for the node.
         self.cpu_core_count = cpu_core_count
+        # Indicates whether a local disk is attached to the node.
         self.enable_attach_local_disk = enable_attach_local_disk
+        # The capacity of the local disk in GB.
         self.local_disk_capacity = local_disk_capacity
+        # The type of the local cloud disk.
+        # 
+        # - cloud_essd: performance cloud disk
+        # 
+        # - cloud_efficiency: standard cloud disk
         self.local_disk_category = local_disk_category
+        # The memory size of the node in GiB.
         self.memory_size_gi_b = memory_size_gi_b
+        # The node specifications.
+        # 
+        # If you select Performance cloud storage or Standard cloud storage, this parameter can be set to one of the following values:
+        # 
+        # - lindorm.c.2xlarge: 8 vCPUs, 16 GB memory.
+        # 
+        # - lindorm.g.2xlarge: 8 vCPUs, 32 GB memory.
+        # 
+        # - lindorm.c.4xlarge: 16 vCPUs, 32 GB memory.
+        # 
+        # - lindorm.g.4xlarge: 16 vCPUs, 64 GB memory.
+        # 
+        # - lindorm.c.8xlarge: 32 vCPUs, 64 GB memory.
+        # 
+        # - lindorm.g.8xlarge: 32 vCPUs, 128 GB memory.
+        # 
+        # - lindorm.r.2xlarge: 8 vCPUs, 64 GB memory.
+        # 
+        # - lindorm.r.4xlarge: 16 vCPUs, 128 GB memory.
+        # 
+        # - lindorm.r.8xlarge: 32 vCPUs, 256 GB memory.
+        # 
+        # If you select Local SSD, this parameter can be set to one of the following values:
+        # 
+        # - lindorm.i4.xlarge: 4 vCPUs, 32 GB memory (I4).
+        # 
+        # - lindorm.i4.2xlarge: 8 vCPUs, 64 GB memory (I4).
+        # 
+        # - lindorm.i4.4xlarge: 16 vCPUs, 128 GB memory (I4).
+        # 
+        # - lindorm.i4.8xlarge: 32 vCPUs, 256 GB memory (I4).
+        # 
+        # - lindorm.i3.xlarge: 4 vCPUs, 32 GB memory (I3).
+        # 
+        # - lindorm.i3.2xlarge: 8 vCPUs, 64 GB memory (I3).
+        # 
+        # - lindorm.i3.4xlarge: 16 vCPUs, 128 GB memory (I3).
+        # 
+        # - lindorm.i3.8xlarge: 32 vCPUs, 256 GB memory (I3).
+        # 
+        # - lindorm.i2.xlarge: 4 vCPUs, 32 GB memory (I2).
+        # 
+        # - lindorm.i2.2xlarge: 8 vCPUs, 64 GB memory (I2).
+        # 
+        # - lindorm.i2.4xlarge: 16 vCPUs, 128 GB memory (I2).
+        # 
+        # - lindorm.i2.8xlarge: 32 vCPUs, 256 GB memory (I2).
+        # 
+        # If you select Big Data, this parameter can be set to one of the following values:
+        # 
+        # - lindorm.sd3c.3xlarge: 14 vCPUs, 56 GB memory (D3C PRO).
+        # 
+        # - lindorm.sd3c.7xlarge: 28 vCPUs, 112 GB memory (D3C PRO).
+        # 
+        # - lindorm.sd3c.14xlarge: 56 vCPUs, 224 GB memory (D3C PRO).
+        # 
+        # - lindorm.d2c.6xlarge: 24 vCPUs, 88 GB memory (D2C).
+        # 
+        # - lindorm.d2c.12xlarge: 48 vCPUs, 176 GB memory (D2C).
+        # 
+        # - lindorm.d2c.24xlarge: 96 vCPUs, 352 GB memory (D2C).
+        # 
+        # - lindorm.d2s.5xlarge: 20 vCPUs, 88 GB memory (D2S).
+        # 
+        # - lindorm.d2s.10xlarge: 40 vCPUs, 176 GB memory (D2S).
+        # 
+        # - lindorm.d1.2xlarge: 8 vCPUs, 32 GB memory (D1NE).
+        # 
+        # - lindorm.d1.4xlarge: 16 vCPUs, 64 GB memory (D1NE).
+        # 
+        # - lindorm.d1.6xlarge: 24 vCPUs, 96 GB memory (D1NE).
         self.node_spec = node_spec
+        # The number of nodes.
         self.quantity = quantity
+        # The name of the node group. **Required**. This must be the same as the name used during creation.
         self.resource_group_name = resource_group_name
+        # The unique ID that corresponds to the delivery group ID.
         self.spec_id = spec_id
+        # The node status.
         self.status = status
 
     def validate(self):
@@ -626,8 +848,15 @@ class GetLindormV2InstanceDetailsResponseBodyEngineListConnectAddressList(DaraMo
         port: str = None,
         type: str = None,
     ):
+        # The endpoint.
         self.address = address
+        # The port number of the database endpoint.
         self.port = port
+        # The endpoint type.
+        # 
+        # - INTRANET: VPC private endpoint.
+        # 
+        # - INTERNET: Public endpoint.
         self.type = type
 
     def validate(self):

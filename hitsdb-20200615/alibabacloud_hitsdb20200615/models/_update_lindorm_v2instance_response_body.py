@@ -12,9 +12,13 @@ class UpdateLindormV2InstanceResponseBody(DaraModel):
         order_id: int = None,
         request_id: str = None,
     ):
+        # The details of the access denied error.
         self.access_denied_detail = access_denied_detail
+        # The instance ID.
         self.instance_id = instance_id
+        # The order ID.
         self.order_id = order_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

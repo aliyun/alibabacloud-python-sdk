@@ -35,95 +35,104 @@ class UpgradeLindormInstanceRequest(DaraModel):
         upgrade_type: str = None,
         zone_id: str = None,
     ):
-        # The storage capacity of the instance after it is upgraded. Unit: GB. Valid values: **480** to **1017600**.
+        # The new storage capacity of the instance. Unit: GB. Valid values: **480** to **1017600**.
         self.cluster_storage = cluster_storage
-        # The cold storage capacity of the instance after it is upgraded. Unit: GB. Valid values: **800** to **1000000**.
+        # The new cold storage capacity of the instance. Unit: GB. Valid values: **800** to **1000000**.
         self.cold_storage = cold_storage
-        # The storage capacity of a single core node in the instance after the instance upgraded. This parameter is available only if the instance you want to upgrade is a multi-zone instance. Unit: GB. Valid values: 400 to 64000. **This parameter is optional**.
+        # The new storage capacity of a single core node in a multi-zone instance. Unit: GB. Valid values: 400 to 64000. **This parameter is optional.**
         self.core_single_storage = core_single_storage
-        # The number of LindormDFS nodes in the instance after the instance is upgraded. Valid values: integers from **0** to **60**.
+        # The new number of file engine nodes. Valid values: **0** to **60**.
         self.filestore_num = filestore_num
-        # The specification of LindormDFS nodes in the instance after the instance is upgraded. Valid values:
+        # The new specification of the file engine nodes. Valid value:
         # 
-        # *   **lindorm.g.xlarge**: Each node has 4 dedicated CPU cores and 16 GB of dedicated memory.
-        # *   **lindorm.g.2xlarge**: Each node has 8 dedicated CPU cores and 32 GB of dedicated memory.
-        # *   **lindorm.g.4xlarge**: Each node has 16 dedicated CPU cores and 64 GB of dedicated memory.
-        # *   **lindorm.g.8xlarge**: Each node has 32 dedicated CPU cores and 128 GB of dedicated memory.
+        # **lindorm.c.xlarge**: 4 CPU cores, 8 GB of memory (standard specification).
         self.filestore_spec = filestore_spec
-        # The ID of the instance that you want to upgrade, scale up, or enable cold storage. You can call the [GetLindormInstanceList](https://help.aliyun.com/document_detail/426069.html) operation to query the instance ID.
+        # The ID of the instance. You can call the [GetLindormInstanceList](https://help.aliyun.com/document_detail/426069.html) operation to obtain this ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The number of LindormTable nodes in the instance after the instance is upgraded. Valid values: integers from **0** to **90**.
+        # The new number of wide table engine nodes. Valid values: **0** to **90**.
         # 
-        # > This parameter must be specified together with the LindormSpec parameter.
+        # > If you specify this parameter, the LindormSpec parameter is also required.
         self.lindorm_num = lindorm_num
-        # The specification of LindormTable nodes in the instance after the instance is upgraded. Valid values:
+        # The new specification of the wide table engine nodes. Valid values:
         # 
-        # *   **lindorm.c.xlarge**: Each node has 4 dedicated CPU cores and 8 GB of dedicated memory.
-        # *   **lindorm.c.2xlarge**: Each node has 8 dedicated CPU cores and 16 GB of dedicated memory.
-        # *   **lindorm.c.4xlarge**: Each node has 16 dedicated CPU cores and 32 GB of dedicated memory.
-        # *   **lindorm.c.8xlarge**: Each node has 32 dedicated CPU cores and 64 GB of dedicated memory.
+        # - **lindorm.c.xlarge**: 4 CPU cores, 8 GB of memory (dedicated specification).
+        # 
+        # - **lindorm.c.2xlarge**: 8 CPU cores, 16 GB of memory (dedicated specification).
+        # 
+        # - **lindorm.c.4xlarge**: 16 CPU cores, 32 GB of memory (dedicated specification).
+        # 
+        # - **lindorm.c.8xlarge**: 32 CPU cores, 64 GB of memory (dedicated specification).
         self.lindorm_spec = lindorm_spec
-        # The number of log nodes in the instance after the instance is upgraded. This parameter is available only if the instance you want to upgrade is a multi-zone instance. **This parameter is optional**.
+        # The new number of log nodes for a multi-zone instance. Valid values: 4 to 400. **This parameter is optional.**
         self.log_num = log_num
-        # The storage capacity of a single log node in the instance after the instance upgraded. This parameter is available only if the instance you want to upgrade is a multi-zone instance. **This parameter is optional**.
+        # The new disk capacity of a single log node for a multi-zone instance. Unit: GB. Valid values: 400 to 64000. **This parameter is optional.**
         self.log_single_storage = log_single_storage
-        # The specification of log nodes in the instance after the instance is upgraded. This parameter is available only if the instance you want to upgrade is a multi-zone instance. Valid values:
+        # The new specification of the log nodes for a multi-zone instance. Valid values:
         # 
-        # *   **lindorm.sn1.large**: Each node has 4 dedicated CPU cores and 8 GB of dedicated memory.
-        # *   **lindorm.sn1.2xlarge**: Each node has 8 dedicated CPU cores and 16 GB of dedicated memory.
+        # - **lindorm.sn1.large**: 4 CPU cores, 8 GB of memory (dedicated specification).
         # 
-        # **This parameter is optional**.
+        # - **lindorm.sn1.2xlarge**: 8 CPU cores, 16 GB of memory (dedicated specification).
+        # 
+        # **This parameter is optional.**
         self.log_spec = log_spec
-        # The number of LTS nodes in the instance after the instance is upgraded. Valid values: integers from **0** to **50**.
+        # The new number of LTS nodes. Valid values: **0** to **50**.
         self.lts_core_num = lts_core_num
-        # The specification of Lindorm Tunnel Service (LTS) nodes in the instance after the instance is upgraded. Valid values:
+        # The new specification of the LTS nodes. Valid values:
         # 
-        # *   **lindorm.g.xlarge**: Each node has 4 dedicated CPU cores and 16 GB of dedicated memory.
-        # *   **lindorm.g.2xlarge**: Each node has 8 dedicated CPU cores and 32 GB of dedicated memory.
+        # - **lindorm.g.xlarge**: 4 CPU cores, 16 GB of memory (dedicated specification).
+        # 
+        # - **lindorm.g.2xlarge**: 8 CPU cores, 32 GB of memory (dedicated specification).
         self.lts_core_spec = lts_core_spec
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region in which the instance that you want to upgrade, scale up, or enable cold storage is located. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/426062.html) operation to query the region ID.
+        # The ID of the region where the instance is located. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/426062.html) operation to obtain the latest region list.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
-        # The number of LindormSearch nodes in the instance after the instance is upgraded. Valid values: integers from **0** to **60**.
+        # The new number of search engine nodes. Valid values: **0** to **60**.
         self.solr_num = solr_num
-        # The specification of LindormSearch nodes in the instance after the instance is upgraded. Valid values:
+        # The new specification of the search engine nodes. Valid values:
         # 
-        # *   **lindorm.g.xlarge**: Each node has 4 dedicated CPU cores and 16 GB of dedicated memory.
-        # *   **lindorm.g.2xlarge**: Each node has 8 dedicated CPU cores and 32 GB of dedicated memory.
-        # *   **lindorm.g.4xlarge**: Each node has 16 dedicated CPU cores and 64 GB of dedicated memory.
-        # *   **lindorm.g.8xlarge**: Each node has 32 dedicated CPU cores and 128 GB of dedicated memory.
+        # - **lindorm.g.xlarge**: 4 CPU cores, 16 GB of memory (dedicated specification).
+        # 
+        # - **lindorm.g.2xlarge**: 8 CPU cores, 32 GB of memory (dedicated specification).
+        # 
+        # - **lindorm.g.4xlarge**: 16 CPU cores, 64 GB of memory (dedicated specification).
+        # 
+        # - **lindorm.g.8xlarg**e: 32 CPU cores, 128 GB of memory (dedicated specification).
         self.solr_spec = solr_spec
-        # The number of LindormStream nodes in the instance after the instance is upgraded. Valid values: integers from **0** to **60**.
+        # The new number of stream engine nodes. Valid values: **0** to **90**.
         self.stream_num = stream_num
-        # The specification of LindormStream nodes in the instance after the instance is upgraded. Valid values:
+        # The new specification of the stream engine nodes. Valid values:
         # 
-        # *   **lindorm.g.xlarge**: Each node has 4 dedicated CPU cores and 16 GB of dedicated memory.
-        # *   **lindorm.g.2xlarge**: Each node has 8 dedicated CPU cores and 32 GB of dedicated memory.
-        # *   **lindorm.g.4xlarge**: Each node has 16 dedicated CPU cores and 64 GB of dedicated memory.
-        # *   **lindorm.g.8xlarge**: Each node has 32 dedicated CPU cores and 128 GB of dedicated memory.
+        # - **lindorm.c.2xlarge**: 8 CPU cores, 16 GB of memory (dedicated specification).
+        # 
+        # - **lindorm.c.4xlarge**: 16 CPU cores, 32 GB of memory (dedicated specification).
+        # 
+        # - **lindorm.c.8xlarge**: 32 CPU cores, 64 GB of memory (dedicated specification).
         self.stream_spec = stream_spec
-        # The number of LindormTSDB nodes in the instance after the instance is upgraded. Valid values: integers from **0** to **24**.
+        # The new number of time series engine nodes. Valid values: **0** to **24**.
         self.tsdb_num = tsdb_num
-        # The specification of LindormTSDB nodes in the instance after the instance is upgraded. Valid values:
+        # The new specification of the time series engine nodes. Valid values:
         # 
-        # *   **lindorm.g.xlarge**: Each node has 4 dedicated CPU cores and 16 GB of dedicated memory.
-        # *   **lindorm.g.2xlarge**: Each node has 8 dedicated CPU cores and 32 GB of dedicated memory.
-        # *   **lindorm.g.4xlarge**: Each node has 16 dedicated CPU cores and 64 GB of dedicated memory.
-        # *   **lindorm.g.8xlarge**: Each node has 32 dedicated CPU cores and 128 GB of dedicated memory.
+        # - **lindorm.g.xlarge**: 4 CPU cores, 16 GB of memory (dedicated specification).
+        # 
+        # - **lindorm.g.2xlarge**: 8 CPU cores, 32 GB of memory (dedicated specification).
+        # 
+        # - **lindorm.g.4xlarge**: 16 CPU cores, 64 GB of memory (dedicated specification).
+        # 
+        # - **lindorm.g.8xlarge**: 32 CPU cores, 128 GB of memory (dedicated specification).
         self.tsdb_spec = tsdb_spec
-        # The upgrade type of the operation. For more information about upgrade types, see the UpgradeType parameters section.
+        # The type of the upgrade. For details about the supported types, see the description of the UpgradeType parameter in the "Additional information about request parameters" section.
         # 
         # This parameter is required.
         self.upgrade_type = upgrade_type
-        # The ID of the zone in which the instance that you want to upgrade, scale up, or enable cold storage is located. You can call the [GetLindormInstance](https://help.aliyun.com/document_detail/426067.html) operation to query the zone ID.
+        # The ID of the availability zone. You can call the [GetLindormInstance](https://help.aliyun.com/document_detail/426067.html) operation to obtain this ID.
         # 
         # This parameter is required.
         self.zone_id = zone_id

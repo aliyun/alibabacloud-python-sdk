@@ -14,11 +14,11 @@ class ListTagResourcesResponseBody(DaraModel):
         request_id: str = None,
         tag_resources: List[main_models.ListTagResourcesResponseBodyTagResources] = None,
     ):
-        # The token used to start the next query.
+        # The token that is used to start the next query.
         # 
-        # > If not all results are returned in the first query, this parameter is returned. You can pass in the returned value of this parameter for the next query.
+        # > If not all results are returned in a query, the response includes this parameter. You can use the value of this parameter to start the next query.
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The list of resources.
         self.tag_resources = tag_resources
@@ -71,13 +71,13 @@ class ListTagResourcesResponseBodyTagResources(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The ID of the resource, which is the ID of the instance.
+        # The resource ID, which is the instance ID.
         self.resource_id = resource_id
-        # The type of the resources. The returned value is fixed to **ALIYUN::HITSDB::INSTANCE**.
+        # The resource type. The value is fixed to **ALIYUN::HITSDB::INSTANCE**.
         self.resource_type = resource_type
-        # The key of the tag associated with the instance.
+        # The key of the tag.
         self.tag_key = tag_key
-        # The value of the tag associated with the instance.
+        # The value of the tag.
         self.tag_value = tag_value
 
     def validate(self):

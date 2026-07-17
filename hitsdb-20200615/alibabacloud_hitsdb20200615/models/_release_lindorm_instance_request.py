@@ -15,9 +15,9 @@ class ReleaseLindormInstanceRequest(DaraModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        # Specifies whether to release the instance immediately. If you set this parameter to false, data in the released instance is retained for seven days before it is completely deleted. If you set this parameter to true, data in the released instance is immediately deleted. The default value is false.
+        # Specifies whether to release the instance immediately. If set to true, the instance and its data are deleted immediately. If set to false (the default), the instance is retained for seven days before being permanently deleted.
         self.immediately = immediately
-        # Instance ID, which can be obtained by calling the [GetLindormInstanceList](https://help.aliyun.com/document_detail/426069.html) interface.
+        # The instance ID. You can call the [GetLindormInstanceList](https://help.aliyun.com/document_detail/426069.html) operation to obtain the instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

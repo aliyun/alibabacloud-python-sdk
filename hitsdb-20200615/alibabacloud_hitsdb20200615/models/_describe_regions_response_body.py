@@ -13,7 +13,7 @@ class DescribeRegionsResponseBody(DaraModel):
         regions: List[main_models.DescribeRegionsResponseBodyRegions] = None,
         request_id: str = None,
     ):
-        # The regions supported by Lindorm.
+        # The list of regions.
         self.regions = regions
         # The ID of the request.
         self.request_id = request_id
@@ -61,7 +61,7 @@ class DescribeRegionsResponseBodyRegions(DaraModel):
     ):
         # The name of the region.
         self.local_name = local_name
-        # The endpoint for the region.
+        # The endpoint of the region.
         self.region_endpoint = region_endpoint
         # The ID of the region.
         self.region_id = region_id

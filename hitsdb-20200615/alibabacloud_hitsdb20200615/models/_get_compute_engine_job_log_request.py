@@ -4,45 +4,31 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class ModifyInstancePayTypeRequest(DaraModel):
+class GetComputeEngineJobLogRequest(DaraModel):
     def __init__(
         self,
-        duration: int = None,
         instance_id: str = None,
+        job_id: str = None,
         owner_account: str = None,
         owner_id: int = None,
-        pay_type: str = None,
-        pricing_cycle: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        # The subscription duration. This parameter is required when you change the billing method to subscription.
-        # 
-        # - If \\`PricingCycle\\` is \\`Month\\`, the valid values are 1 to 9.
-        # 
-        # - If \\`PricingCycle\\` is \\`Year\\`, the valid values are 1 to 3.
-        self.duration = duration
-        # The ID of the instance.
-        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
+        self.job_id = job_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The billing method of the instance. Valid values:
-        # 
-        # - **PREPAY**: subscription.
-        # 
-        # - **POSTPAY**: pay-as-you-go.
-        # 
         # This parameter is required.
-        self.pay_type = pay_type
-        # The unit of the subscription duration. This parameter is required when you change the billing method to subscription.
-        # 
-        # - Month: The unit is month.
-        # 
-        # - Year: The unit is year.
-        self.pricing_cycle = pricing_cycle
+        self.page_number = page_number
+        # This parameter is required.
+        self.page_size = page_size
+        self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
@@ -55,11 +41,11 @@ class ModifyInstancePayTypeRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.duration is not None:
-            result['Duration'] = self.duration
-
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
 
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
@@ -67,11 +53,14 @@ class ModifyInstancePayTypeRequest(DaraModel):
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
 
-        if self.pay_type is not None:
-            result['PayType'] = self.pay_type
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
 
-        if self.pricing_cycle is not None:
-            result['PricingCycle'] = self.pricing_cycle
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
 
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
@@ -86,11 +75,11 @@ class ModifyInstancePayTypeRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Duration') is not None:
-            self.duration = m.get('Duration')
-
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
 
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
@@ -98,11 +87,14 @@ class ModifyInstancePayTypeRequest(DaraModel):
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
 
-        if m.get('PayType') is not None:
-            self.pay_type = m.get('PayType')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
 
-        if m.get('PricingCycle') is not None:
-            self.pricing_cycle = m.get('PricingCycle')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
 
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')

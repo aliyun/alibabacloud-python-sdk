@@ -12,13 +12,13 @@ class CreateLindormInstanceResponseBody(DaraModel):
         order_id: int = None,
         request_id: str = None,
     ):
-        # The detailed reason why the access was denied.
+        # Details about the access denial.
         self.access_denied_detail = access_denied_detail
-        # The ID of the Lindorm instance that is created.
+        # The ID of the created instance.
         self.instance_id = instance_id
-        # The ID of the order.
+        # The order ID.
         self.order_id = order_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -19,14 +19,19 @@ class UpdateLindormV2WhiteIpListRequest(DaraModel):
         security_token: str = None,
         white_ip_group_list: List[main_models.UpdateLindormV2WhiteIpListRequestWhiteIpGroupList] = None,
     ):
+        # The ID of the instance. You can call the GetLindormV2InstanceList operation to obtain the instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the region where the instance is located. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/426062.html) operation to obtain this ID.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
+        # The list of IP whitelist groups.
+        # 
         # This parameter is required.
         self.white_ip_group_list = white_ip_group_list
 
@@ -106,8 +111,14 @@ class UpdateLindormV2WhiteIpListRequestWhiteIpGroupList(DaraModel):
         group_name: str = None,
         white_ip_list: str = None,
     ):
+        # The name of the IP whitelist group.
+        # 
         # This parameter is required.
         self.group_name = group_name
+        # The IP addresses to add to the IP whitelist.
+        # 
+        # > The value 127.0.0.1 denies access from all IP addresses. For example, 192.168.0.0/24 allows all IP addresses in that range to access the Lindorm instance. Use a comma (,) to separate multiple IP addresses or CIDR blocks.
+        # 
         # This parameter is required.
         self.white_ip_list = white_ip_list
 

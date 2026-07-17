@@ -17,27 +17,29 @@ class RenewLindormInstanceRequest(DaraModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        # The subscription duration of the instance. The valid values of this parameter depend on the value of the PricingCycle parameter.
+        # The subscription duration. Valid values:
         # 
-        # *   If PricingCycle is set to **Month**, set this parameter to an integer that ranges from **1** to **9**.
-        # *   If PricingCycle is set to **Year**, set this parameter to an integer that ranges from **1** to **3**.
+        # - If you set PricingCycle to **Month**, the valid values for this parameter are **1** to **9**.
+        # 
+        # - If you set PricingCycle to **Year**, the valid values for this parameter are **1** to **3**.
         # 
         # This parameter is required.
         self.duration = duration
-        # The ID of the instance that you want to renew. You can call the [GetLindormInstanceList](https://help.aliyun.com/document_detail/426069.html) operation to obtain the instance ID.
+        # The ID of the instance. Call the [GetLindormInstanceList](https://help.aliyun.com/document_detail/426069.html) operation to obtain the instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The period based on which you are charged for the instance. Valid values:
+        # The billing cycle for the instance renewal. Valid values:
         # 
-        # *   **Month**: You are charged for the instance based on months.
-        # *   **Year**: You are charged for the instance based on years.
+        # - **Month**: The instance is renewed by month.
+        # 
+        # - **Year**: The instance is renewed by year.
         # 
         # This parameter is required.
         self.pricing_cycle = pricing_cycle
-        # The ID of the region in which the instance that you want to renew is located. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/426062.html) operation to query the region ID.
+        # The ID of the region where the instance is located. Call the [DescribeRegions](https://help.aliyun.com/document_detail/426062.html) operation to obtain the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
