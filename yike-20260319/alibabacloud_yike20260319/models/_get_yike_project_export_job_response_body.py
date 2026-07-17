@@ -149,11 +149,11 @@ class GetYikeProjectExportJobResponseBodyProjectExportJobExportResult(DaraModel)
     ):
         # The download URL of the audio file.
         self.audio_url = audio_url
-        # The download URL of the PR project file (not supported).
+        # The download URL of the PR project file (not supported currently).
         self.project_url = project_url
         # The subtitle list.
         self.srt_list = srt_list
-        # The editing timeline (not supported).
+        # The editing timeline (not supported currently).
         self.timeline = timeline
 
     def validate(self):
@@ -210,7 +210,7 @@ class GetYikeProjectExportJobResponseBodyProjectExportJobExportResultSrtList(Dar
     ):
         # The download URL of the SRT file.
         self.srt_url = srt_url
-        # The type enumeration. Currently, only VoiceOver is supported.
+        # The type enumeration. Currently only VoiceOver is supported.
         self.tag = tag
 
     def validate(self):

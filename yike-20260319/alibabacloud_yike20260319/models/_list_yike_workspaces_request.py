@@ -10,9 +10,9 @@ class ListYikeWorkspacesRequest(DaraModel):
         page_no: int = None,
         page_size: int = None,
     ):
-        # Current page number
+        # The current page number.
         self.page_no = page_no
-        # Number of records per page
+        # The number of records to display per page.
         self.page_size = page_size
 
     def validate(self):

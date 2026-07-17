@@ -67,7 +67,7 @@ class BatchGetYikeAIAppJobResponseBodyJobList(DaraModel):
     ):
         # The application ID.
         self.app_id = app_id
-        # The input parameters for running the AI application. The value is a JSON-serialized string.
+        # The input parameters for running the AI application. The value is a JSON serialize string.
         self.app_input_config = app_input_config
         # The time when the task started. The time is in the yyyy-mm-ddTHH:mm:ssZ format (UTC).
         self.execution_finish_time = execution_finish_time
@@ -85,7 +85,7 @@ class BatchGetYikeAIAppJobResponseBodyJobList(DaraModel):
         # - Created: The task is created.
         # - Queuing: The task is queuing.
         # - Executing: The task is being executed.
-        # - Finished: The task is finished.
+        # - Finished: The task is completed.
         # - Failed: The task failed.
         self.status = status
 

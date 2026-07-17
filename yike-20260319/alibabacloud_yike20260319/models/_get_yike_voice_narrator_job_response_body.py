@@ -18,18 +18,19 @@ class GetYikeVoiceNarratorJobResponseBody(DaraModel):
         request_id: str = None,
         user_data: str = None,
     ):
-        # The error code. This parameter is returned only when JobStatus is Failed.
+        # The error code. This parameter is returned only when JobStatus is `Failed`.
         self.error_code = error_code
         # The task ID.
         self.job_id = job_id
         # The input parameters of the task, in JSON string format.
         self.job_params = job_params
-        # The task results. This parameter is valid only when JobStatus is Succeeded.
+        # The task results. This parameter is valid only when JobStatus is `Succeeded`.
         self.job_result = job_result
         # The task status. Valid values:
+        # 
         # - Running
         # - Succeeded
-        # - Failed.
+        # - Failed
         self.job_status = job_status
         # The request ID.
         self.request_id = request_id

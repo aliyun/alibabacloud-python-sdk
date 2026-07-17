@@ -23,7 +23,7 @@ class GetYikeAIAppJobResponseBody(DaraModel):
     ):
         # The AI application ID.
         self.app_id = app_id
-        # The input parameters for the AI application run. The value is a string obtained after JSON serialize.
+        # The input parameters for the AI application execution, a string after JSON serialization.
         self.app_params = app_params
         # The time when the task ended. The time is in the yyyy-mm-ddTHH:mm:ssZ format (UTC).
         self.execution_finish_time = execution_finish_time
@@ -40,11 +40,12 @@ class GetYikeAIAppJobResponseBody(DaraModel):
         # The task execution result.
         self.result = result
         # The task status. Valid values:
-        # - Created: The task is created.
+        # 
+        # - Created: The task is just created.
         # - Queuing: The task is queuing.
         # - Executing: The task is being executed.
-        # - Finished: The task is finished.
-        # - Failed: The task failed.
+        # - Finished: The task execution is complete.
+        # - Failed: The task execution failed.
         self.status = status
 
     def validate(self):

@@ -41,7 +41,7 @@ class SubmitYikeStoryboardJobRequest(DaraModel):
         self.keep_origin_dialogue = keep_origin_dialogue
         # The model parameters in JSON format.
         # 
-        # "AudioEnable": false disables audio.
+        #  "AudioEnable": false disables audio.
         self.model_params = model_params
         # The narration voice ID. Valid values:
         # - sys_GracefulPoisedWoman: mature graceful female
@@ -54,14 +54,14 @@ class SubmitYikeStoryboardJobRequest(DaraModel):
         # - sys_SereneIntellect: serene intellectual male
         # - sys_MajesticBaritone: majestic baritone male
         # - sys_GravellySoulful: gravelly soulful male
-        # - sys_ClassicYoungMan: classic narrator male
-        # - sys_WiseYoungMan: wise narrator male
-        # - sys_ClassicYoungWoman: classic narrator female
-        # - sys_IntellectualYoungWoman: intellectual narrator female
-        # - sys_GentleYoungMan: gentle narrator male
+        # - sys_ClassicYoungMan: classic narration male
+        # - sys_WiseYoungMan: wise narration male
+        # - sys_ClassicYoungWoman: classic narration female
+        # - sys_IntellectualYoungWoman: intellectual narration female
+        # - sys_GentleYoungMan: gentle narration male
         # - sys_thoughtfulBoy: thoughtful boy
         # - sys_RichBassMale: rich bass male
-        # - sys_ClassicMiddleAgedWoman: classic middle-aged narrator female
+        # - sys_ClassicMiddleAgedWoman: classic middle-aged narration female
         self.narration_voice_id = narration_voice_id
         self.need_caption = need_caption
         # The resolution of the output video. Valid values:

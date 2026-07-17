@@ -52,7 +52,7 @@ class CreateYikeUserResponseBodyUserInfo(DaraModel):
         user_name: str = None,
         workspace_id: str = None,
     ):
-        # The nickname of the user.
+        # The user nickname.
         self.nickname = nickname
         # The user ID.
         self.user_id = user_id

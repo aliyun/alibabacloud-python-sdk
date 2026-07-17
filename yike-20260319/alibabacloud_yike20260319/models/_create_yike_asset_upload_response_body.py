@@ -12,7 +12,7 @@ class CreateYikeAssetUploadResponseBody(DaraModel):
         upload_address: str = None,
         upload_auth: str = None,
     ):
-        # The OSS URL of the file, without authentication.
+        # The OSS URL of the file (without authentication).
         self.file_url = file_url
         # The request ID.
         self.request_id = request_id

@@ -14,7 +14,7 @@ class AddYikeUserCreditRequest(DaraModel):
         # 
         # This parameter is required.
         self.credit = credit
-        # The ID of the sub-account user.
+        # The sub-account user ID.
         # 
         # This parameter is required.
         self.yike_user_id = yike_user_id

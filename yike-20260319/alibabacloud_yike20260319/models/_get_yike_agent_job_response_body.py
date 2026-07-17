@@ -21,15 +21,15 @@ class GetYikeAgentJobResponseBody(DaraModel):
         request_id: str = None,
         user_data: str = None,
     ):
-        # The time when the task started. The time is in the yyyy-mm-ddTHH:mm:ssZ format (UTC).
+        # The time when the task started, in the yyyy-mm-ddTHH:mm:ssZ format (UTC).
         self.create_time = create_time
         # The error code. This parameter is returned only when the task is in the Failed state.
         self.error_code = error_code
-        # The time when the task ended. The time is in the yyyy-mm-ddTHH:mm:ssZ format (UTC).
+        # The time when the task ended, in the yyyy-mm-ddTHH:mm:ssZ format (UTC).
         self.finish_time = finish_time
         # The task ID.
         self.job_id = job_id
-        # The input parameters of the task. The value is a JSON string.
+        # The input parameters of the task, in JSON string format.
         self.job_params = job_params
         # The task results. This parameter is valid only when the task is in the Succeeded state.
         self.job_result = job_result
@@ -37,7 +37,7 @@ class GetYikeAgentJobResponseBody(DaraModel):
         # 
         # - Running
         # - Succeeded
-        # - Failed.
+        # - Failed
         self.job_status = job_status
         # The agent task type. Valid values:
         # 

@@ -11,12 +11,12 @@ class SubYikeUserCreditResponseBody(DaraModel):
         request_id: str = None,
         result: bool = None,
     ):
-        # The error code returned when the deduction fails.
-        # - NOT_ENOUGH_ALLOCATE_CREDIT_QUOTA: the account credit balance is insufficient.
+        # The error code returned when the deduction fails. Valid values:
+        # - NOT_ENOUGH_ALLOCATE_CREDIT_QUOTA: the main account credit balance is insufficient.
         self.error_code = error_code
         # RequestId
         self.request_id = request_id
-        # Indicates whether the operation is successful. Valid values:
+        # Indicates whether the deduction is successful. Valid values:
         # - true: Successful.
         # - false: Failed.
         self.result = result

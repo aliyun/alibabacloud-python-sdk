@@ -4,18 +4,13 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class GetYikeUserCreditResponseBody(DaraModel):
+class CreateYikeEditingProjectResponseBody(DaraModel):
     def __init__(
         self,
-        credit_total: str = None,
-        credit_usage: str = None,
+        editing_project_id: str = None,
         request_id: str = None,
     ):
-        # The total allocated credits.
-        self.credit_total = credit_total
-        # The current remaining available credits.
-        self.credit_usage = credit_usage
-        # RequestId
+        self.editing_project_id = editing_project_id
         self.request_id = request_id
 
     def validate(self):
@@ -26,11 +21,8 @@ class GetYikeUserCreditResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.credit_total is not None:
-            result['CreditTotal'] = self.credit_total
-
-        if self.credit_usage is not None:
-            result['CreditUsage'] = self.credit_usage
+        if self.editing_project_id is not None:
+            result['EditingProjectId'] = self.editing_project_id
 
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -39,11 +31,8 @@ class GetYikeUserCreditResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('CreditTotal') is not None:
-            self.credit_total = m.get('CreditTotal')
-
-        if m.get('CreditUsage') is not None:
-            self.credit_usage = m.get('CreditUsage')
+        if m.get('EditingProjectId') is not None:
+            self.editing_project_id = m.get('EditingProjectId')
 
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')

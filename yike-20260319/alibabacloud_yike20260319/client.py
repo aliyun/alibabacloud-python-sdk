@@ -22,7 +22,8 @@ class Client(OpenApiClient):
         super().__init__(config)
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
-            'cn-shanghai': 'yike.cn-shanghai.aliyuncs.com'
+            'cn-shanghai': 'yike.cn-shanghai.aliyuncs.com',
+            'ap-southeast-1': 'yike.ap-southeast-1.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('yike', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -404,6 +405,92 @@ class Client(OpenApiClient):
     ) -> main_models.CreateYikeAssetUploadResponse:
         runtime = RuntimeOptions()
         return await self.create_yike_asset_upload_with_options_async(request, runtime)
+
+    def create_yike_editing_project_with_options(
+        self,
+        request: main_models.CreateYikeEditingProjectRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateYikeEditingProjectResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cover_url):
+            query['CoverURL'] = request.cover_url
+        if not DaraCore.is_null(request.material_maps):
+            query['MaterialMaps'] = request.material_maps
+        if not DaraCore.is_null(request.title):
+            query['Title'] = request.title
+        body = {}
+        if not DaraCore.is_null(request.timeline):
+            body['Timeline'] = request.timeline
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateYikeEditingProject',
+            version = '2026-03-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateYikeEditingProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_yike_editing_project_with_options_async(
+        self,
+        request: main_models.CreateYikeEditingProjectRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateYikeEditingProjectResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cover_url):
+            query['CoverURL'] = request.cover_url
+        if not DaraCore.is_null(request.material_maps):
+            query['MaterialMaps'] = request.material_maps
+        if not DaraCore.is_null(request.title):
+            query['Title'] = request.title
+        body = {}
+        if not DaraCore.is_null(request.timeline):
+            body['Timeline'] = request.timeline
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateYikeEditingProject',
+            version = '2026-03-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateYikeEditingProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_yike_editing_project(
+        self,
+        request: main_models.CreateYikeEditingProjectRequest,
+    ) -> main_models.CreateYikeEditingProjectResponse:
+        runtime = RuntimeOptions()
+        return self.create_yike_editing_project_with_options(request, runtime)
+
+    async def create_yike_editing_project_async(
+        self,
+        request: main_models.CreateYikeEditingProjectRequest,
+    ) -> main_models.CreateYikeEditingProjectResponse:
+        runtime = RuntimeOptions()
+        return await self.create_yike_editing_project_with_options_async(request, runtime)
 
     def create_yike_production_with_options(
         self,
@@ -790,8 +877,6 @@ class Client(OpenApiClient):
     ) -> main_models.GetVideoGenerationJobResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.client_token):
-            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.job_id):
             query['JobId'] = request.job_id
         req = open_api_util_models.OpenApiRequest(
@@ -820,8 +905,6 @@ class Client(OpenApiClient):
     ) -> main_models.GetVideoGenerationJobResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.client_token):
-            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.job_id):
             query['JobId'] = request.job_id
         req = open_api_util_models.OpenApiRequest(
@@ -926,6 +1009,66 @@ class Client(OpenApiClient):
     ) -> main_models.GetYikeAIAppJobResponse:
         runtime = RuntimeOptions()
         return await self.get_yike_aiapp_job_with_options_async(request, runtime)
+
+    def get_yike_account_credit_with_options(
+        self,
+        request: main_models.GetYikeAccountCreditRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetYikeAccountCreditResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'GetYikeAccountCredit',
+            version = '2026-03-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetYikeAccountCreditResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_yike_account_credit_with_options_async(
+        self,
+        request: main_models.GetYikeAccountCreditRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetYikeAccountCreditResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'GetYikeAccountCredit',
+            version = '2026-03-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetYikeAccountCreditResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_yike_account_credit(
+        self,
+        request: main_models.GetYikeAccountCreditRequest,
+    ) -> main_models.GetYikeAccountCreditResponse:
+        runtime = RuntimeOptions()
+        return self.get_yike_account_credit_with_options(request, runtime)
+
+    async def get_yike_account_credit_async(
+        self,
+        request: main_models.GetYikeAccountCreditRequest,
+    ) -> main_models.GetYikeAccountCreditResponse:
+        runtime = RuntimeOptions()
+        return await self.get_yike_account_credit_with_options_async(request, runtime)
 
     def get_yike_agent_job_with_options(
         self,

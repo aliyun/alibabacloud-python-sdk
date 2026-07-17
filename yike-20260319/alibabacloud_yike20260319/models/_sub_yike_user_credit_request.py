@@ -10,7 +10,7 @@ class SubYikeUserCreditRequest(DaraModel):
         credit: int = None,
         yike_user_id: str = None,
     ):
-        # The number of credits to reclaim. The value must be greater than 0 and cannot exceed the sub-account credit balance.
+        # The number of credits to deduct. The value must be greater than 0 and cannot exceed the sub-account credit balance.
         # 
         # This parameter is required.
         self.credit = credit

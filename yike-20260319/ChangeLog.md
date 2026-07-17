@@ -1,3 +1,9 @@
+2026-07-17 Version: 2.0.0
+- Support API CreateYikeEditingProject.
+- Support API GetYikeAccountCredit.
+- Update API GetVideoGenerationJob: delete request parameters ClientToken.
+
+
 2026-07-08 Version: 1.9.1
 - Update API SubmitYikeStoryboardJob: add request parameters NeedCaption.
 - Update API SubmitYikeStoryboardJob: add request parameters ShotPromptLang.

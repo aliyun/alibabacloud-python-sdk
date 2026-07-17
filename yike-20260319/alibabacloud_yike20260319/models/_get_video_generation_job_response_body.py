@@ -66,7 +66,7 @@ class GetVideoGenerationJobResponseBodyVideoGenerationJob(DaraModel):
         self.aspect_ratio = aspect_ratio
         # The video duration. Unit: seconds.
         self.duration = duration
-        # The error message. This parameter is returned when the task is in the Failed state.
+        # The error message. This parameter is returned only when the task is in the Failed state.
         self.error_message = error_message
         # The task input.
         self.input = input
@@ -80,9 +80,9 @@ class GetVideoGenerationJobResponseBodyVideoGenerationJob(DaraModel):
         self.model = model
         # The number of generated videos.
         self.n = n
-        # The output result in JsonString format. The following fields are included:
+        # The generation result. The value is a JSON string that contains the following fields:
         # 
-        # Medias: a list of media information (Media objects). The Media object contains the following fields:
+        # Medias: a list of Media objects. Each Media object contains the following fields:
         # MediaId: String. The media asset ID.
         # OutputUrl: String. The media URL (with the authentication string).
         self.output = output

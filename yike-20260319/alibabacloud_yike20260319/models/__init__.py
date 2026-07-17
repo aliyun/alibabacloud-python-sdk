@@ -18,6 +18,9 @@ from ._batch_get_yike_asset_media_infos_response import BatchGetYikeAssetMediaIn
 from ._create_yike_asset_upload_request import CreateYikeAssetUploadRequest
 from ._create_yike_asset_upload_response_body import CreateYikeAssetUploadResponseBody
 from ._create_yike_asset_upload_response import CreateYikeAssetUploadResponse
+from ._create_yike_editing_project_request import CreateYikeEditingProjectRequest
+from ._create_yike_editing_project_response_body import CreateYikeEditingProjectResponseBody
+from ._create_yike_editing_project_response import CreateYikeEditingProjectResponse
 from ._create_yike_production_request import CreateYikeProductionRequest
 from ._create_yike_production_response_body import CreateYikeProductionResponseBody
 from ._create_yike_production_response import CreateYikeProductionResponse
@@ -39,6 +42,9 @@ from ._get_video_generation_job_response import GetVideoGenerationJobResponse
 from ._get_yike_aiapp_job_request import GetYikeAIAppJobRequest
 from ._get_yike_aiapp_job_response_body import GetYikeAIAppJobResponseBody
 from ._get_yike_aiapp_job_response import GetYikeAIAppJobResponse
+from ._get_yike_account_credit_request import GetYikeAccountCreditRequest
+from ._get_yike_account_credit_response_body import GetYikeAccountCreditResponseBody
+from ._get_yike_account_credit_response import GetYikeAccountCreditResponse
 from ._get_yike_agent_job_request import GetYikeAgentJobRequest
 from ._get_yike_agent_job_response_body import GetYikeAgentJobResponseBody
 from ._get_yike_agent_job_response import GetYikeAgentJobResponse
@@ -140,6 +146,8 @@ from ._get_yike_aiapp_job_response_body import GetYikeAIAppJobResponseBodyResult
 from ._get_yike_aiapp_job_response_body import GetYikeAIAppJobResponseBodyResultImageResult
 from ._get_yike_aiapp_job_response_body import GetYikeAIAppJobResponseBodyResultVideoResult
 from ._get_yike_aiapp_job_response_body import GetYikeAIAppJobResponseBodyResult
+from ._get_yike_account_credit_response_body import GetYikeAccountCreditResponseBodyCreditInfo
+from ._get_yike_account_credit_response_body import GetYikeAccountCreditResponseBodyMembershipInfo
 from ._get_yike_agent_job_response_body import GetYikeAgentJobResponseBodyJobResult
 from ._get_yike_asset_media_info_response_body import GetYikeAssetMediaInfoResponseBodyMediaInfoBizData
 from ._get_yike_asset_media_info_response_body import GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList
@@ -180,6 +188,9 @@ __all__ = [
     CreateYikeAssetUploadRequest,
     CreateYikeAssetUploadResponseBody,
     CreateYikeAssetUploadResponse,
+    CreateYikeEditingProjectRequest,
+    CreateYikeEditingProjectResponseBody,
+    CreateYikeEditingProjectResponse,
     CreateYikeProductionRequest,
     CreateYikeProductionResponseBody,
     CreateYikeProductionResponse,
@@ -201,6 +212,9 @@ __all__ = [
     GetYikeAIAppJobRequest,
     GetYikeAIAppJobResponseBody,
     GetYikeAIAppJobResponse,
+    GetYikeAccountCreditRequest,
+    GetYikeAccountCreditResponseBody,
+    GetYikeAccountCreditResponse,
     GetYikeAgentJobRequest,
     GetYikeAgentJobResponseBody,
     GetYikeAgentJobResponse,
@@ -302,6 +316,8 @@ __all__ = [
     GetYikeAIAppJobResponseBodyResultImageResult,
     GetYikeAIAppJobResponseBodyResultVideoResult,
     GetYikeAIAppJobResponseBodyResult,
+    GetYikeAccountCreditResponseBodyCreditInfo,
+    GetYikeAccountCreditResponseBodyMembershipInfo,
     GetYikeAgentJobResponseBodyJobResult,
     GetYikeAssetMediaInfoResponseBodyMediaInfoBizData,
     GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList,

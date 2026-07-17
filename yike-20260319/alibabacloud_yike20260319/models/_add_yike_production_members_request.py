@@ -14,7 +14,7 @@ class AddYikeProductionMembersRequest(DaraModel):
         # 
         # This parameter is required.
         self.production_id = production_id
-        # The IDs of the RAM users.
+        # The RAM user IDs.
         # 
         # This parameter is required.
         self.yike_user_ids = yike_user_ids

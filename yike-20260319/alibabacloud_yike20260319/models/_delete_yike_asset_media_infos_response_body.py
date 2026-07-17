@@ -12,7 +12,7 @@ class DeleteYikeAssetMediaInfosResponseBody(DaraModel):
         ignored_list: List[str] = None,
         request_id: str = None,
     ):
-        # The IDs or input URLs for which errors occurred during retrieval.
+        # The IDs or inputUrls for which retrieval errors occurred.
         self.ignored_list = ignored_list
         # The request ID.
         self.request_id = request_id

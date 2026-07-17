@@ -14,7 +14,7 @@ class UpdateYikeProductionMemberAuthRequest(DaraModel):
         # The permission name. Valid values:
         # 
         # - Manage: manageable
-        # - Edit: editable.
+        # - Edit: editable
         # 
         # This parameter is required.
         self.auth = auth

@@ -12,7 +12,7 @@ class AddYikeProductionMembersResponseBody(DaraModel):
     ):
         # RequestId
         self.request_id = request_id
-        # Indicates whether the member is added.
+        # Indicates whether the members were added successfully.
         self.result = result
 
     def validate(self):

@@ -151,41 +151,41 @@ class GetYikeAssetMediaInfoResponseBodyMediaInfoMediaBasicInfo(DaraModel):
         self.cate_id = cate_id
         # The category name.
         self.cate_name = cate_name
-        # The category.
+        # The category of the media asset.
         self.category = category
-        # The cover URL.
+        # The URL of the cover image.
         self.cover_url = cover_url
         # The time when the media asset was created.
         self.create_time = create_time
         # The time when the media asset was deleted.
         self.deleted_time = deleted_time
-        # The content description.
+        # The description of the media asset content.
         self.description = description
         # The address of the media asset to be registered in the corresponding system.
         self.input_url = input_url
         # The media asset ID.
         self.media_id = media_id
-        # The tags.
+        # The tags of the media asset.
         self.media_tags = media_tags
         # The media type of the media asset.
         self.media_type = media_type
         # The time when the media asset was last modified.
         self.modified_time = modified_time
-        # The custom ID. Only lowercase letters, uppercase letters, digits, hyphens, and underscores are supported. The value must be 6 to 64 characters in length and is unique for each user.
+        # The custom ID. Only lowercase letters, uppercase letters, digits, hyphens, and underscores are supported. The value must be 6 to 64 characters in length and is unique within the user scope.
         self.reference_id = reference_id
-        # The snapshots.
+        # The snapshots of the media asset.
         self.snapshots = snapshots
-        # The source.
+        # The source of the media asset.
         self.source = source
-        # The sprite images.
+        # The sprite images of the media asset.
         self.sprite_images = sprite_images
-        # The resource status.
+        # The status of the resource.
         self.status = status
         # The thumbnail with a height of 240 pixels.
         self.thumb_url240p = thumb_url240p
         # The thumbnail encoded in WebP format.
         self.thumb_urlwebp = thumb_urlwebp
-        # The title.
+        # The title of the media asset.
         self.title = title
         # The upload source of the media asset.
         self.upload_source = upload_source
@@ -358,13 +358,13 @@ class GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoList(DaraModel):
         subtitle_stream_info_list: List[main_models.GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListSubtitleStreamInfoList] = None,
         video_stream_info_list: List[main_models.GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList] = None,
     ):
-        # The audio stream information. A media asset may contain multiple audio streams.
+        # The audio stream information. A media asset may have multiple audio streams.
         self.audio_stream_info_list = audio_stream_info_list
         # The basic file information, including duration and size.
         self.file_basic_info = file_basic_info
-        # The subtitle stream information. A media asset may contain multiple subtitle streams.
+        # The subtitle stream information. A media asset may have multiple subtitle streams.
         self.subtitle_stream_info_list = subtitle_stream_info_list
-        # The video stream information. A media asset may contain multiple video streams.
+        # The video stream information. A media asset may have multiple video streams.
         self.video_stream_info_list = video_stream_info_list
 
     def validate(self):
@@ -463,7 +463,7 @@ class GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList(
     ):
         # The average frame rate.
         self.avg_fps = avg_fps
-        # The bitrate.
+        # The bitrate of the file.
         self.bitrate = bitrate
         # The long name of the codec.
         self.codec_long_name = codec_long_name
@@ -477,17 +477,17 @@ class GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList(
         self.codec_time_base = codec_time_base
         # The display aspect ratio (DAR).
         self.dar = dar
-        # The duration.
+        # The duration of the file.
         self.duration = duration
         # The video frame rate.
         self.fps = fps
         # Indicates whether the video stream contains B-frames.
         self.has_bframes = has_bframes
-        # The height.
+        # The height of the file.
         self.height = height
         # The index of the video stream.
         self.index = index
-        # The language.
+        # The language of the audio stream.
         self.lang = lang
         # The codec level.
         self.level = level
@@ -505,7 +505,7 @@ class GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList(
         self.start_time = start_time
         # The time base.
         self.timebase = timebase
-        # The width.
+        # The width of the file.
         self.width = width
 
     def validate(self):
@@ -684,11 +684,11 @@ class GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListSubtitleStreamInfoLi
         self.codec_tag_string = codec_tag_string
         # The codec time base.
         self.codec_time_base = codec_time_base
-        # The duration.
+        # The duration of the file.
         self.duration = duration
         # The index of the audio stream.
         self.index = index
-        # The language.
+        # The language of the audio stream.
         self.lang = lang
         # The start time.
         self.start_time = start_time
@@ -786,15 +786,15 @@ class GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListFileBasicInfo(DaraMo
         region: str = None,
         width: str = None,
     ):
-        # The bitrate.
+        # The bitrate of the file.
         self.bitrate = bitrate
         # The time when the file was created.
         self.create_time = create_time
-        # The duration.
+        # The duration of the file.
         self.duration = duration
         # The file name.
         self.file_name = file_name
-        # The file size, in bytes.
+        # The file size in bytes.
         self.file_size = file_size
         # The file status.
         self.file_status = file_status
@@ -802,15 +802,15 @@ class GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListFileBasicInfo(DaraMo
         self.file_type = file_type
         # The OSS URL of the file.
         self.file_url = file_url
-        # The container format.
+        # The container format of the file.
         self.format_name = format_name
-        # The height.
+        # The height of the file.
         self.height = height
         # The time when the file was last modified.
         self.modified_time = modified_time
         # The storage region of the file.
         self.region = region
-        # The width.
+        # The width of the file.
         self.width = width
 
     def validate(self):
@@ -927,11 +927,11 @@ class GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList(
         start_time: str = None,
         timebase: str = None,
     ):
-        # The bitrate.
+        # The bitrate of the file.
         self.bitrate = bitrate
         # The channel layout.
         self.channel_layout = channel_layout
-        # The number of channels.
+        # The number of audio channels.
         self.channels = channels
         # The long name of the codec.
         self.codec_long_name = codec_long_name
@@ -943,13 +943,13 @@ class GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList(
         self.codec_tag_string = codec_tag_string
         # The codec time base.
         self.codec_time_base = codec_time_base
-        # The duration.
+        # The duration of the file.
         self.duration = duration
         # The audio frame rate.
         self.fps = fps
         # The index of the audio stream.
         self.index = index
-        # The language.
+        # The language of the audio stream.
         self.lang = lang
         # The total number of frames.
         self.num_frames = num_frames

@@ -4,14 +4,9 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class GetVideoGenerationJobRequest(DaraModel):
-    def __init__(
-        self,
-        job_id: str = None,
-    ):
-        # The task ID.
-        self.job_id = job_id
-
+class GetYikeAccountCreditRequest(DaraModel):
+    def __init__(self):
+        pass
     def validate(self):
         pass
 
@@ -20,15 +15,9 @@ class GetVideoGenerationJobRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.job_id is not None:
-            result['JobId'] = self.job_id
-
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('JobId') is not None:
-            self.job_id = m.get('JobId')
-
         return self
 

@@ -12,12 +12,14 @@ class SubmitYikeProjectExportJobRequest(DaraModel):
         user_data: str = None,
     ):
         # The export type of the editing project. Valid values:
+        # 
         # - PureAudio: pure audio (the export result returns a pure audio file and a subtitle file).
         self.export_type = export_type
         # The ID of the online editing project.
         self.project_id = project_id
         # The custom parameter in JSON string format. The callback result carries this parameter as-is (for example, newsKey).
-        # The system reserved field NotifyAddress specifies the callback URL. After the task is complete, a callback is sent to this URL. Example: {"NotifyAddress": "http://xxx.callback.url"}
+        # 
+        # The system reserved field NotifyAddress specifies the callback URL. After the task is completed, a callback is sent. Example: {"NotifyAddress": "http://xxx.callback.url"}
         self.user_data = user_data
 
     def validate(self):

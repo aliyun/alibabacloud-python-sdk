@@ -9,7 +9,7 @@ class GetYikeUserRequest(DaraModel):
         self,
         user_name: str = None,
     ):
-        # The username of the WonderClip sub-account.
+        # The username of the RAM user.
         self.user_name = user_name
 
     def validate(self):
