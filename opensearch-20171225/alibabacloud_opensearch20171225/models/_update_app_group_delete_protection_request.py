@@ -11,6 +11,7 @@ class UpdateAppGroupDeleteProtectionRequest(DaraModel):
         self,
         body: Dict[str, Any] = None,
     ):
+        # The request body.
         self.body = body
 
     def validate(self):

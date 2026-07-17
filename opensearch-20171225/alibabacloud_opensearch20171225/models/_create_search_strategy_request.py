@@ -10,7 +10,7 @@ class CreateSearchStrategyRequest(DaraModel):
         self,
         body: main_models.SearchStrategy = None,
     ):
-        # The query policy.
+        # The search strategy.
         self.body = body
 
     def validate(self):

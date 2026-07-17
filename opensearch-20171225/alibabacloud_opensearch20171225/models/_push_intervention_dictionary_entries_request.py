@@ -14,12 +14,13 @@ class PushInterventionDictionaryEntriesRequest(DaraModel):
     ):
         # The request body.
         self.body = body
-        # Specifies whether to check the validity of input parameters. Default value: false.
+        # Specifies whether to validate the request parameters without creating the attribution configuration. The default value is false.
         # 
         # Valid values:
         # 
-        # *   **true**: checks only the validity of input parameters.
-        # *   **false**: checks the validity of input parameters and creates an attribution configuration.
+        # - **true**: Validates the request parameters only.
+        # 
+        # - **false**: Validates the request parameters and creates the attribution configuration.
         self.dry_run = dry_run
 
     def validate(self):

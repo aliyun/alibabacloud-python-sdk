@@ -14,20 +14,21 @@ class DeleteFunctionResourceResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
-        # The error code returned. If no error occurs, this value is empty.
+        # The error code. This parameter is empty if no error occurred.
         self.code = code
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_code = http_code
-        # The time consumed for the request. Unit: milliseconds.
+        # The request latency. Unit: milliseconds.
         self.latency = latency
         # The error message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The status code. Valid values:
+        # The status of the request.
         # 
-        # *   OK
-        # *   FAIL
+        # - OK: The request is successful.
+        # 
+        # - FAIL: The request failed.
         self.status = status
 
     def validate(self):

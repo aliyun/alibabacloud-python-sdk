@@ -60,18 +60,19 @@ class PushUserAnalyzerEntriesRequestEntries(DaraModel):
         split_enabled: bool = None,
         value: str = None,
     ):
-        # The operation to be performed on the entries.
+        # The operation to perform on the entries.
         # 
         # Valid values:
         # 
-        # *   add
-        # *   delete
+        # - add
+        # 
+        # - delete
         self.cmd = cmd
         # The key to be used to query entries.
         self.key = key
-        # Specifies whether to further analyze the terms that are generated after the search query is analyzed.
+        # Specifies whether to enable fine-grained splitting.
         # 
-        # Default value: true.
+        # Default: true
         self.split_enabled = split_enabled
         # The analysis result.
         self.value = value

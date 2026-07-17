@@ -12,9 +12,9 @@ class CreateUserAnalyzerResponseBody(DaraModel):
         request_id: str = None,
         result: Dict[str, Any] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The custom analyzer.
+        # The returned result.
         self.result = result
 
     def validate(self):

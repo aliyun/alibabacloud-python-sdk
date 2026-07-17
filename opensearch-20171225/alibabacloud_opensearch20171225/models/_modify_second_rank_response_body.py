@@ -63,21 +63,23 @@ class ModifySecondRankResponseBodyResult(DaraModel):
         self.created = created
         # The description of the expression.
         self.description = description
-        # The expression ID. This parameter is displayed only in the response.
+        # The ID of the expression. This parameter is returned only in the response.
         self.id = id
-        # Indicates whether the expression is the default one. This parameter is displayed only in the response. Valid values:
+        # Indicates whether the expression is the default expression. This parameter is returned only in the response.
         # 
-        # *   true: the expression is the default one.
-        # *   false: the expression is not the default one.
+        # - true: The expression is the default expression.
+        # 
+        # - false: The expression is not the default expression.
         self.is_default = is_default
-        # Indicates whether the expression is a system expression. This parameter is displayed only in the response. Valid values:
+        # Indicates whether the expression is a system expression. This parameter is returned only in the response.
         # 
-        # *   true: The expression is a system expression.
-        # *   false:The expression is not a system expression
+        # - true: The expression is a system expression.
+        # 
+        # - false: The expression is not a system expression.
         self.is_sys = is_sys
-        # The content of the fine sort expression. You can define an expression that consists of fields, feature functions, and mathematical functions to implement complex sort logic.
+        # The fine sort expression. You can create an expression that contains fields, scoring features, and mathematical functions to implement complex sorting logic.
         self.meta = meta
-        # The expression name.
+        # The name of the expression.
         self.name = name
         # The time when the expression was updated.
         self.updated = updated

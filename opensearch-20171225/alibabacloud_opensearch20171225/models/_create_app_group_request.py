@@ -19,8 +19,9 @@ class CreateAppGroupRequest(DaraModel):
     ):
         # The billing method. Valid values:
         # 
-        # *   POSTPAY: pay-as-you-go
-        # *   PREPAY: subscription
+        # - POSTPAY: pay-as-you-go
+        # 
+        # - PREPAY: subscription
         self.charge_type = charge_type
         # The name of the application.
         self.name = name
@@ -30,10 +31,11 @@ class CreateAppGroupRequest(DaraModel):
         self.resource_group_id = resource_group_id
         # The tags.
         self.tags = tags
-        # The type of the application. Valid values:
+        # The application type. Valid values:
         # 
-        # *   standard
-        # *   enhanced
+        # - standard: Standard Edition
+        # 
+        # - enhanced: Premium Edition
         self.type = type
 
     def validate(self):
@@ -147,13 +149,19 @@ class CreateAppGroupRequestQuota(DaraModel):
         self.doc_size = doc_size
         # The specifications. Valid values:
         # 
-        # *   opensearch.share.junior: basic
-        # *   opensearch.share.common: shared general-purpose
-        # *   opensearch.share.compute: shared computing
-        # *   opensearch.share.storage: shared storage
-        # *   opensearch.private.common: exclusive general-purpose
-        # *   opensearch.private.compute: exclusive computing
-        # *   opensearch.private.storage: exclusive storage
+        # - opensearch.share.junior: basic
+        # 
+        # - opensearch.share.common: shared general-purpose
+        # 
+        # - opensearch.share.compute: shared compute-optimized
+        # 
+        # - opensearch.share.storage: shared storage-optimized
+        # 
+        # - opensearch.private.common: exclusive general-purpose
+        # 
+        # - opensearch.private.compute: exclusive compute-optimized
+        # 
+        # - opensearch.private.storage: exclusive storage-optimized
         self.spec = spec
 
     def validate(self):

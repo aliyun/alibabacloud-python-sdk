@@ -15,13 +15,13 @@ class UpdateFunctionInstanceRequest(DaraModel):
         description: str = None,
         usage_parameters: List[main_models.UpdateFunctionInstanceRequestUsageParameters] = None,
     ):
-        # The parameters that are used to create the instance.
+        # The list of creation parameters.
         self.create_parameters = create_parameters
-        # The cron expression used to schedule periodic training, in the format of (Minutes Hours DayofMonth Month DayofWeek). The default value is empty, which indicates that no periodic training is performed. DayofWeek 0 indicates Sunday.
+        # The schedule for periodic training. The value must be a cron expression in the format of Minutes Hours DayofMonth Month DayofWeek. If you leave this parameter empty, periodic training is disabled by default. For DayofWeek, 0 indicates Sunday.
         self.cron = cron
         # The description of the instance.
         self.description = description
-        # The parameters that are used.
+        # The list of usage parameters.
         self.usage_parameters = usage_parameters
 
     def validate(self):

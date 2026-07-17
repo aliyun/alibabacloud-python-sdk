@@ -57,23 +57,25 @@ class DescribeQueryProcessorResponseBodyResult(DaraModel):
         processors: List[Dict[str, Any]] = None,
         updated: int = None,
     ):
-        # Indicates whether the query analysis rule is the default one.
+        # Indicates whether the rule is the default rule.
         self.active = active
-        # The time when the query analysis rule was created.
+        # The time when the rule was created.
         self.created = created
-        # The type of the industry. Valid values:
+        # The industry type.
         # 
-        # *   GENERAL
-        # *   ECOMMERCE
-        # *   IT_CONTENT
+        # - GENERAL: General
+        # 
+        # - ECOMMERCE: E-commerce
+        # 
+        # - IT_CONTENT: IT content
         self.domain = domain
         # The indexes to which the query analysis rule applies.
         self.indexes = indexes
-        # The name of the query analysis rule.
+        # The name of the rule.
         self.name = name
         # The features that are used in the query analysis rule.
         self.processors = processors
-        # The time when the query analysis rule was last updated.
+        # The time when the rule was last updated.
         self.updated = updated
 
     def validate(self):

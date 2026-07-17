@@ -111,7 +111,8 @@ class CreateFirstRankResponseBodyResultMeta(DaraModel):
         self.arg = arg
         # The attribute, feature functions, or field to be searched for.
         self.attribute = attribute
-        # The weight. Valid values: [-100000,100000]. The value cannot be 0.
+        # The weight.
+        # Valid values: [-100000, 100000]. The value cannot be 0.
         self.weight = weight
 
     def validate(self):

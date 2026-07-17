@@ -16,29 +16,31 @@ class ListAppGroupsShrinkRequest(DaraModel):
         tags_shrink: str = None,
         type: str = None,
     ):
-        # The ID of the instance. Exact match is used.
+        # The ID of the instance. An exact match is performed.
         self.instance_id = instance_id
-        # The name of the application.
+        # The application name.
         self.name = name
         # The page number. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page. Default value: 10.
+        # The number of entries to return on each page. Default value: 10.
         self.page_size = page_size
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The method based on which applications are sorted. Valid values:
+        # The sort order. Valid values:
         # 
-        # *   0: sorts applications in descending order by creation time.
-        # *   1: sorts applications in descending order by modification time.
+        # - 0: Sorts applications by creation time in descending order.
+        # 
+        # - 1: Sorts applications by modification time in descending order.
         # 
         # Default value: 0.
         self.sort_by = sort_by
-        # The tags.
+        # A list of tags.
         self.tags_shrink = tags_shrink
         # The type of the application. Valid values:
         # 
-        # *   standard: a High-performance Search Edition application.
-        # *   enhanced: an Industry Algorithm Edition application.
+        # - standard: a Standard Edition application.
+        # 
+        # - enhanced: a Premium Edition application.
         self.type = type
 
     def validate(self):

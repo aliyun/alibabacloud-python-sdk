@@ -14,7 +14,7 @@ class ListQueryProcessorAnalyzerResultsResponseBody(DaraModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The data returned.
+        # The result of the request.
         self.result = result
 
     def validate(self):

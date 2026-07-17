@@ -15,9 +15,9 @@ class ListStatisticLogsResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The returned result. For more information, see
+        # The returned data. For more information, see:
         # 
-        # *   [Parameters of hotwords rankings](https://help.aliyun.com/document_detail/421248.html).
+        # - [Hotword rankings](https://help.aliyun.com/document_detail/421248.html)
         self.result = result
         # The total number of entries returned.
         self.total_count = total_count

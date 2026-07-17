@@ -15,7 +15,7 @@ class ListSortExpressionsResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The information about the rough sort or fine sort expressions that are returned.
+        # The information about the rough sort or fine sort expressions.
         # 
         # For more information, see [FirstRank](https://help.aliyun.com/document_detail/170007.html) and [SecondRank](https://help.aliyun.com/document_detail/170008.html).
         self.result = result

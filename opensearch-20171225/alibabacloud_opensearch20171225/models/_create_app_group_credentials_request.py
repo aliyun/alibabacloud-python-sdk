@@ -10,7 +10,9 @@ class CreateAppGroupCredentialsRequest(DaraModel):
         type: str = None,
         dry_run: bool = None,
     ):
+        # The credential type, such as \\`api-key\\`, \\`account\\`, \\`invoke-key\\`, or \\`api-token\\`. To create an API key, set this parameter to \\`api-token\\`.
         self.type = type
+        # Specifies whether to perform a dry run. In a dry run, the system checks the request parameters but does not execute the operation.
         self.dry_run = dry_run
 
     def validate(self):

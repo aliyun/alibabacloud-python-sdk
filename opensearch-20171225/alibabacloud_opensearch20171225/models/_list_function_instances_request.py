@@ -18,21 +18,25 @@ class ListFunctionInstancesRequest(DaraModel):
         self.function_type = function_type
         # The type of the model.
         self.model_type = model_type
-        # The richness of the returned information. Valid values:
+        # The level of detail for the returned information. Valid values:
         # 
-        # *   normal: displays information such as createParameters and cron. This is the default value.
-        # *   simple: displays only the basic information.
-        # *   detail: returns the details of the training task.
+        # - normal: Displays information such as createParameters and cron. This is the default value.
+        # 
+        # - simple: Displays only basic information.
+        # 
+        # - detail: Returns the details of the training task.
         self.output = output
-        # The number of the page to return. Default value: 1.
+        # The page number. The default value is 1.
         self.page_number = page_number
-        # The number of entries to return on each page. Default value: 10.
+        # The number of entries per page. The default value is 10.
         self.page_size = page_size
-        # How the instance is created. Valid values:
+        # The source of the instance. Valid values:
         # 
-        # *   builtin: The instance is created by system.
-        # *   user: The instance is created by user. This is the default value.
-        # *   all: all instances
+        # - builtin: The instance is created by the system.
+        # 
+        # - user: The instance is created by the user. This is the default value.
+        # 
+        # - all: All instances.
         self.source = source
 
     def validate(self):

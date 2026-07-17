@@ -16,7 +16,7 @@ class ListAppGroupsResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The information about the application.
+        # The applications.
         # 
         # For more information, see [AppGroup](https://help.aliyun.com/document_detail/170000.html).
         self.result = result
@@ -92,42 +92,47 @@ class ListAppGroupsResponseBodyResult(DaraModel):
     ):
         # The billing method. Valid values:
         # 
-        # *   POSTPAY: pay-as-you-go.
-        # *   PREPAY: subscription.
-        self.charge_type = charge_type
-        # The billable item. Valid values:
+        # - POSTPAY: pay-as-you-go.
         # 
-        # *   1: computing resources.
-        # *   2: queries per second (QPS).
+        # - PREPAY: subscription.
+        self.charge_type = charge_type
+        # The billing method. Valid values:
+        # 
+        # - 1: computing resources
+        # 
+        # - 2: queries per second (QPS)
         self.charging_way = charging_way
         # The commodity code.
         self.commodity_code = commodity_code
-        # The timestamp when the application was created.
+        # The timestamp that indicates when the application was created.
         self.created = created
         # The ID of the current online version.
         self.current_version = current_version
         # The description of the application.
         self.description = description
-        # The industry of the application.
+        # The domain of the application group.
         self.domain = domain
         # The engine type.
         self.engine_type = engine_type
-        # The time when the application expired.
+        # The time when the application expires.
         self.expire_on = expire_on
-        # The approval state of the quotas. Valid values:
+        # The quota approval status. Valid values:
         # 
-        # *   0: The application is in service.
-        # *   1: The quotas are being reviewed.
+        # - 0: Normal
+        # 
+        # - 1: Pending approval
         self.has_pending_quota_review_task = has_pending_quota_review_task
         # The application ID.
         self.id = id
         # The instance ID.
         self.instance_id = instance_id
-        # The lock state. Valid values:
+        # The lock status. Valid values:
         # 
-        # *   Unlock: The instance is unlocked.
-        # *   LockByExpiration: The instance is automatically locked after it expires.
-        # *   ManualLock: The instance is manually locked.
+        # - Unlock: The instance is not locked.
+        # 
+        # - LockByExpiration: The instance is automatically locked after it expires.
+        # 
+        # - ManualLock: The instance is manually locked.
         self.lock_mode = lock_mode
         # Indicates whether the instance is automatically locked after it expires.
         self.locked_by_expiration = locked_by_expiration
@@ -135,31 +140,38 @@ class ListAppGroupsResponseBodyResult(DaraModel):
         self.name = name
         # Indicates whether the application is created. Valid values:
         # 
-        # *   0: The application is being created.
-        # *   1: The application is created.
-        self.produced = produced
-        # The name of the A/B test group.
-        self.project_id = project_id
-        # The information about the quotas of the application. For more information, see [Quota](https://help.aliyun.com/document_detail/170001.html).
-        self.quota = quota
-        # The state of the application. Valid values:
+        # - 0: The application is being created.
         # 
-        # *   producing: The application is being created.
-        # *   review_pending: The application is being reviewed.
-        # *   config_pending: The application is to be configured.
-        # *   normal: The application is in service.
-        # *   frozen: The application is frozen.
+        # - 1: The application is created.
+        self.produced = produced
+        # The name of the A/B test project.
+        self.project_id = project_id
+        # The quota information of the application.
+        # For more information, see [Quota](https://help.aliyun.com/document_detail/170001.html).
+        self.quota = quota
+        # The status of the application. Valid values:
+        # 
+        # - producing: The application is being created.
+        # 
+        # - review_pending: The application is pending approval.
+        # 
+        # - config_pending: The application is pending configuration.
+        # 
+        # - normal: The application is running as normal.
+        # 
+        # - frozen: The application is frozen.
         self.status = status
-        # The timestamp when the current online version was published.
+        # The timestamp that indicates when the current online version was published.
         self.switched_time = switched_time
-        # The application tags.
+        # The tags of the application.
         self.tags = tags
         # The type of the application. Valid values:
         # 
-        # *   standard: a High-performance Search Edition application.
-        # *   enhanced: an Industry Algorithm Edition application.
+        # - standard: a Standard Edition application.
+        # 
+        # - enhanced: a Premium Edition application.
         self.type = type
-        # The timestamp when the application was last updated.
+        # The timestamp that indicates when the application was last updated.
         self.updated = updated
 
     def validate(self):
@@ -369,19 +381,25 @@ class ListAppGroupsResponseBodyResultQuota(DaraModel):
         doc_size: int = None,
         spec: str = None,
     ):
-        # The computing resources. Unit: logical computing unit (LCU).
+        # The computing resources in logical compute units (LCUs).
         self.compute_resource = compute_resource
-        # The storage capacity. Unit: GB.
+        # The storage capacity in GB.
         self.doc_size = doc_size
         # The specifications. Valid values:
         # 
-        # *   opensearch.share.junior: basic.
-        # *   opensearch.share.common: shared general-purpose.
-        # *   opensearch.share.compute: shared computing.
-        # *   opensearch.share.storage: shared storage.
-        # *   opensearch.private.common: exclusive general-purpose.
-        # *   opensearch.private.compute: exclusive computing.
-        # *   opensearch.private.storage: exclusive storage.
+        # - opensearch.share.junior: Basic
+        # 
+        # - opensearch.share.common: Shared General-purpose
+        # 
+        # - opensearch.share.compute: Shared Compute-optimized
+        # 
+        # - opensearch.share.storage: Shared Storage-optimized
+        # 
+        # - opensearch.private.common: Exclusive General-purpose
+        # 
+        # - opensearch.private.compute: Exclusive Compute-optimized
+        # 
+        # - opensearch.private.storage: Exclusive Storage-optimized
         self.spec = spec
 
     def validate(self):

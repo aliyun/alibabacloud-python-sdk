@@ -13,9 +13,9 @@ class ListSortScriptsResponseBody(DaraModel):
         request_id: str = None,
         result: List[main_models.ListSortScriptsResponseBodyResult] = None,
     ):
-        # The request ID.
+        # The unique ID of the request.
         self.request_id = request_id
-        # The scripts.
+        # The list of scripts.
         self.result = result
 
     def validate(self):
@@ -66,17 +66,21 @@ class ListSortScriptsResponseBodyResult(DaraModel):
         self.create_time = create_time
         # The time when the script was last modified.
         self.modify_time = modify_time
-        # The sort phase to which the script applies.
+        # The applicable scope of the script.
         self.scope = scope
         # The name of the script.
         self.script_name = script_name
-        # The status of the script. Valid values:
+        # The status of the script:
         # 
-        # *   configurable: The script is created, but no script files are uploaded.
-        # *   not compiled: The script is not compiled.
-        # *   compile failed: The compilation of the script failed.
-        # *   compile successful: The script is compiled.
-        # *   released: The script is published.
+        # - configurable: The script is created, but no file has been uploaded.
+        # 
+        # - not compiled: The script has not been compiled.
+        # 
+        # - compile failed: The script failed to be compiled.
+        # 
+        # - compile successful: The script is compiled.
+        # 
+        # - released: The script is published.
         self.status = status
         # The type of the script.
         self.type = type

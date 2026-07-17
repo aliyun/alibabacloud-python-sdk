@@ -11,9 +11,9 @@ class ListSlowQueryCategoriesResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.ListSlowQueryCategoriesResponseBodyResult = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The data returned.
+        # The returned data.
         self.result = result
 
     def validate(self):
@@ -51,17 +51,21 @@ class ListSlowQueryCategoriesResponseBodyResult(DaraModel):
         end: int = None,
         start: int = None,
     ):
-        # The status of the analysis. Valid values:
+        # The analysis status.
         # 
-        # *   PENDING: preparing
-        # *   SUCCESS: succeeded
-        # *   RUNNING: running
-        # *   FAILED: failed
-        # *   N/A: unknown
+        # - PENDING: The analysis is being prepared.
+        # 
+        # - SUCCESS: The analysis is successful.
+        # 
+        # - RUNNING: The analysis is in progress.
+        # 
+        # - FAILED: The analysis failed.
+        # 
+        # - N/A: The analysis status is unknown.
         self.analyze_status = analyze_status
-        # The timestamp that indicates the end of the time range to query.
+        # The end timestamp.
         self.end = end
-        # The timestamp that indicates the beginning of the time range to query.
+        # The start timestamp.
         self.start = start
 
     def validate(self):

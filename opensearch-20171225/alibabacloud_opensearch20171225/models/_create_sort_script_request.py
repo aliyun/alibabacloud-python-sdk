@@ -13,11 +13,11 @@ class CreateSortScriptRequest(DaraModel):
         type: str = None,
     ):
         self.description = description
-        # The sort phase to which the script applies.
+        # The applicable scope of the script.
         self.scope = scope
-        # The script name.
+        # The name of the script.
         self.script_name = script_name
-        # The script type. Set the value to cava_script.
+        # The type of the script. Only cava_script is supported.
         self.type = type
 
     def validate(self):

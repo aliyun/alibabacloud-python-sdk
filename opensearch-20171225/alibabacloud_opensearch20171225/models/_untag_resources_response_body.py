@@ -9,7 +9,7 @@ class UntagResourcesResponseBody(DaraModel):
         self,
         tequest_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.tequest_id = tequest_id
 
     def validate(self):

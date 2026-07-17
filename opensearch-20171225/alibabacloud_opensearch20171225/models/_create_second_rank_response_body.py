@@ -14,7 +14,7 @@ class CreateSecondRankResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The information about the fine sort expression.
+        # The information about the fine-sort expression.
         self.result = result
 
     def validate(self):

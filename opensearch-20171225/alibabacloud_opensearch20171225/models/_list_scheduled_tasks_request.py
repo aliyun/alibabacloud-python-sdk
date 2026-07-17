@@ -15,12 +15,15 @@ class ListScheduledTasksRequest(DaraModel):
         self.page_number = page_number
         # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # The scheduled task type. Valid values:
+        # The type of the scheduled task. Valid values:
         # 
-        # *   wipe: data cleaning.
-        # *   fork: reindexing.
-        # *   check-status: application status check.
-        # *   index: reindexing.
+        # - wipe: data cleaning
+        # 
+        # - fork: reindexing
+        # 
+        # - check-status: application status check
+        # 
+        # - index: reindexing
         self.type = type
 
     def validate(self):

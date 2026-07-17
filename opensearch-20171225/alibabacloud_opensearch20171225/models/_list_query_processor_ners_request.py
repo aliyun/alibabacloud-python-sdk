@@ -9,9 +9,9 @@ class ListQueryProcessorNersRequest(DaraModel):
         self,
         domain: str = None,
     ):
-        # The type of the industry.
+        # The industry type.
         # 
-        # *   ECOMMERCE
+        # - ECOMMERCE: The e-commerce industry.
         self.domain = domain
 
     def validate(self):

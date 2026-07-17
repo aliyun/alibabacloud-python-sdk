@@ -11,7 +11,7 @@ class ReleaseSortScriptResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.ReleaseSortScriptResponseBodyResult = None,
     ):
-        # The ID of the request.
+        # The unique ID of the request.
         self.request_id = request_id
         self.result = result
 

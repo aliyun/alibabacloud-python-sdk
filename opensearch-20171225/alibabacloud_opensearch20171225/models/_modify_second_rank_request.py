@@ -11,9 +11,9 @@ class ModifySecondRankRequest(DaraModel):
         body: main_models.SecondRank = None,
         dry_run: bool = None,
     ):
-        # The request parameters.
+        # The request body, which contains the fine sort information.
         self.body = body
-        # Specifies whether the request is a dry run.
+        # Specifies whether to perform a dry run.
         self.dry_run = dry_run
 
     def validate(self):

@@ -15,7 +15,7 @@ class ModifyQueryProcessorResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The information about the query analysis rule.
+        # The information about the rule.
         self.result = result
 
     def validate(self):
@@ -57,19 +57,21 @@ class ModifyQueryProcessorResponseBodyResult(DaraModel):
         processors: List[Dict[str, Any]] = None,
         updated: int = None,
     ):
-        # Indicates whether the query analysis rule is a default rule.
+        # Indicates whether the rule is a default rule.
         self.active = active
         # The time when the rule was created.
         self.created = created
-        # The type of the industry to which the query analysis rule is applied. Valid values:
+        # The industry to which the query analysis rule applies. Valid values:
         # 
-        # *   GENERAL
-        # *   ECOMMERCE
-        # *   IT_CONTENT
+        # - GENERAL: General
+        # 
+        # - ECOMMERCE: E-commerce
+        # 
+        # - IT_CONTENT: IT content
         self.domain = domain
-        # The indexes to which the query analysis rule is applied.
+        # The indexes to which the query analysis rule applies.
         self.indexes = indexes
-        # The name of the query analysis rule.
+        # The name of the rule.
         self.name = name
         # The analysis rule.
         self.processors = processors

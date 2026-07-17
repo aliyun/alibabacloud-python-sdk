@@ -14,7 +14,7 @@ class TagResourcesRequest(DaraModel):
         resource_type: str = None,
         tag: List[main_models.TagResourcesRequestTag] = None,
     ):
-        # The resource IDs. You can specify a maximum number of 50 resource IDs.
+        # The IDs of the resources. You can specify up to 50 resource IDs.
         # 
         # This parameter is required.
         self.resource_id = resource_id
@@ -22,7 +22,7 @@ class TagResourcesRequest(DaraModel):
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The tags. You can specify a maximum number of 20 tags.
+        # The tags to add to the resources. You can add up to 20 tags.
         # 
         # This parameter is required.
         self.tag = tag
@@ -73,9 +73,9 @@ class TagResourcesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
+        # The tag key.
         self.key = key
-        # The value of the tag.
+        # The tag value.
         self.value = value
 
     def validate(self):

@@ -26,15 +26,15 @@ class GetFunctionDefaultInstanceResponseBody(DaraModel):
         self.http_code = http_code
         # The name of the instance.
         self.instance_name = instance_name
-        # The default running time.
+        # The default runtime.
         self.latency = latency
         # The error message.
         self.message = message
         # The ID of the request.
         self.request_id = request_id
-        # The result of the request.
+        # The result.
         self.result = result
-        # The status of the request.
+        # The request status.
         self.status = status
 
     def validate(self):

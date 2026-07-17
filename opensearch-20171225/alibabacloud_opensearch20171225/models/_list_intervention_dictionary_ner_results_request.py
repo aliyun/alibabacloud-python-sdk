@@ -9,7 +9,7 @@ class ListInterventionDictionaryNerResultsRequest(DaraModel):
         self,
         query: str = None,
     ):
-        # Query keywords.
+        # The keyword to search for.
         # 
         # This parameter is required.
         self.query = query

@@ -15,7 +15,7 @@ class ListQueryProcessorsResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The information about the query analysis rule.
+        # The information about the query analysis rules.
         # 
         # For more information, see [QueryProcessor](https://help.aliyun.com/document_detail/170014.html).
         self.result = result
@@ -69,11 +69,13 @@ class ListQueryProcessorsResponseBodyResult(DaraModel):
         self.active = active
         # The time when the query analysis rule was created.
         self.created = created
-        # The type of the industry to which the query analysis rule is applied. Valid values:
+        # The industry to which the query analysis rule applies. Valid values:
         # 
-        # *   GENERAL
-        # *   ECOMMERCE
-        # *   IT_CONTENT
+        # - GENERAL: General
+        # 
+        # - ECOMMERCE: E-commerce
+        # 
+        # - IT_CONTENT: IT content
         self.domain = domain
         # The indexes to which the query analysis rule is applied.
         self.indexes = indexes

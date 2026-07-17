@@ -64,13 +64,15 @@ class ListQueryProcessorNersResponseBodyResult(DaraModel):
     ):
         # The name of the entity type.
         self.label = label
-        # The priority of an entity type among entity types that have the same priority level. A smaller value indicates a higher priority. Default value: 0.
+        # The sort order within the same priority level. A smaller value indicates a higher priority. The default value is 0.
         self.order = order
         # The priority level of the entity type. Valid values:
         # 
-        # *   HIGH
-        # *   MIDDLE
-        # *   LOW
+        # - HIGH
+        # 
+        # - MIDDLE
+        # 
+        # - LOW
         self.priority = priority
         # The internal name of the entity type.
         self.tag = tag

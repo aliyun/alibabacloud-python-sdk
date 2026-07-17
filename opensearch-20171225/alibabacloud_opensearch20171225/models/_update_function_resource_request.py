@@ -13,7 +13,7 @@ class UpdateFunctionResourceRequest(DaraModel):
         data: main_models.UpdateFunctionResourceRequestData = None,
         description: str = None,
     ):
-        # The resource data. The data structure varies with the resource type.
+        # The data of the resource. The structure of this parameter varies based on the value of resourceType.
         self.data = data
         # The description of the resource.
         self.description = description
@@ -52,9 +52,9 @@ class UpdateFunctionResourceRequestData(DaraModel):
         content: str = None,
         generators: List[main_models.UpdateFunctionResourceRequestDataGenerators] = None,
     ):
-        # The content of the file that corresponds to a resource of the raw_file type.
+        # The content of the file. This parameter is used for resources of the raw_file type.
         self.content = content
-        # The feature generators that correspond to resources of the feature_generator type.
+        # The list of feature generators. This parameter is used for resources of the feature_generator type.
         self.generators = generators
 
     def validate(self):
@@ -144,7 +144,7 @@ class UpdateFunctionResourceRequestDataGeneratorsInput(DaraModel):
         self,
         features: List[main_models.UpdateFunctionResourceRequestDataGeneratorsInputFeatures] = None,
     ):
-        # The input features.
+        # A list of input features.
         self.features = features
 
     def validate(self):

@@ -53,18 +53,19 @@ class CreateABTestGroupResponseBodyResult(DaraModel):
         status: int = None,
         updated: int = None,
     ):
-        # The time when the test group was created.
+        # The time when the experiment group was created.
         self.created = created
-        # The ID of the test group.
+        # The ID of the group.
         self.id = id
-        # The alias of the test group.
+        # The alias of the group.
         self.name = name
-        # The status of the test group.
+        # The status of the experiment group.
         # 
-        # *   0: not in effect
-        # *   1: in effect
+        # - 0: Inactive
+        # 
+        # - 1: Active
         self.status = status
-        # The time when the test group was last updated.
+        # The time when the experiment group was last updated.
         self.updated = updated
 
     def validate(self):

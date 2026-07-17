@@ -15,7 +15,7 @@ class ValidateDataSourcesResponseBody(DaraModel):
     ):
         # Id of the request
         self.request_id = request_id
-        # The result returned.
+        # The request results.
         self.result = result
 
     def validate(self):
@@ -59,11 +59,11 @@ class ValidateDataSourcesResponseBodyResult(DaraModel):
         data_source: main_models.ValidateDataSourcesResponseBodyResultDataSource = None,
         message: str = None,
     ):
-        # The code returned for the request.
+        # The status code.
         self.code = code
         # The data source.
         self.data_source = data_source
-        # The status of the execution.
+        # The response message.
         self.message = message
 
     def validate(self):
@@ -107,11 +107,11 @@ class ValidateDataSourcesResponseBodyResultDataSource(DaraModel):
         table_name: str = None,
         type: str = None,
     ):
-        # The parameters of the data source.
+        # The parameter body.
         self.parameters = parameters
-        # The name of the table.
+        # The table name.
         self.table_name = table_name
-        # The type of the data source.
+        # The data source type.
         self.type = type
 
     def validate(self):

@@ -13,7 +13,7 @@ class ListABTestGroupsResponseBody(DaraModel):
         request_id: str = None,
         result: List[main_models.ListABTestGroupsResponseBodyResult] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The test groups.
         # 
@@ -71,8 +71,9 @@ class ListABTestGroupsResponseBodyResult(DaraModel):
         self.name = name
         # The status of the test group. Valid values:
         # 
-        # *   0: not in effect
-        # *   1: in effect
+        # - 0: Not in effect
+        # 
+        # - 1: In effect
         self.status = status
         # The time when the test group was last modified.
         self.updated = updated

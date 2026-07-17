@@ -49,6 +49,9 @@ from ._create_app_group_response import CreateAppGroupResponse
 from ._create_app_group_credentials_request import CreateAppGroupCredentialsRequest
 from ._create_app_group_credentials_response_body import CreateAppGroupCredentialsResponseBody
 from ._create_app_group_credentials_response import CreateAppGroupCredentialsResponse
+from ._create_elastic_plan_request import CreateElasticPlanRequest
+from ._create_elastic_plan_response_body import CreateElasticPlanResponseBody
+from ._create_elastic_plan_response import CreateElasticPlanResponse
 from ._create_first_rank_request import CreateFirstRankRequest
 from ._create_first_rank_response_body import CreateFirstRankResponseBody
 from ._create_first_rank_response import CreateFirstRankResponse
@@ -113,6 +116,9 @@ from ._describe_apps_response_body import DescribeAppsResponseBody
 from ._describe_apps_response import DescribeAppsResponse
 from ._describe_data_collction_response_body import DescribeDataCollctionResponseBody
 from ._describe_data_collction_response import DescribeDataCollctionResponse
+from ._describe_elastic_plan_request import DescribeElasticPlanRequest
+from ._describe_elastic_plan_response_body import DescribeElasticPlanResponseBody
+from ._describe_elastic_plan_response import DescribeElasticPlanResponse
 from ._describe_first_rank_response_body import DescribeFirstRankResponseBody
 from ._describe_first_rank_response import DescribeFirstRankResponse
 from ._describe_intervention_dictionary_response_body import DescribeInterventionDictionaryResponseBody
@@ -184,6 +190,9 @@ from ._list_data_source_table_fields_response import ListDataSourceTableFieldsRe
 from ._list_data_source_tables_request import ListDataSourceTablesRequest
 from ._list_data_source_tables_response_body import ListDataSourceTablesResponseBody
 from ._list_data_source_tables_response import ListDataSourceTablesResponse
+from ._list_elastic_plans_request import ListElasticPlansRequest
+from ._list_elastic_plans_response_body import ListElasticPlansResponseBody
+from ._list_elastic_plans_response import ListElasticPlansResponse
 from ._list_first_ranks_response_body import ListFirstRanksResponseBody
 from ._list_first_ranks_response import ListFirstRanksResponse
 from ._list_function_instances_request import ListFunctionInstancesRequest
@@ -258,6 +267,9 @@ from ._modify_app_group_response import ModifyAppGroupResponse
 from ._modify_app_group_quota_request import ModifyAppGroupQuotaRequest
 from ._modify_app_group_quota_response_body import ModifyAppGroupQuotaResponseBody
 from ._modify_app_group_quota_response import ModifyAppGroupQuotaResponse
+from ._modify_elastic_plan_request import ModifyElasticPlanRequest
+from ._modify_elastic_plan_response_body import ModifyElasticPlanResponseBody
+from ._modify_elastic_plan_response import ModifyElasticPlanResponse
 from ._modify_first_rank_request import ModifyFirstRankRequest
 from ._modify_first_rank_response_body import ModifyFirstRankResponseBody
 from ._modify_first_rank_response import ModifyFirstRankResponse
@@ -284,6 +296,9 @@ from ._remove_app_group_response_body import RemoveAppGroupResponseBody
 from ._remove_app_group_response import RemoveAppGroupResponse
 from ._remove_data_collection_response_body import RemoveDataCollectionResponseBody
 from ._remove_data_collection_response import RemoveDataCollectionResponse
+from ._remove_elastic_plan_request import RemoveElasticPlanRequest
+from ._remove_elastic_plan_response_body import RemoveElasticPlanResponseBody
+from ._remove_elastic_plan_response import RemoveElasticPlanResponse
 from ._remove_first_rank_response_body import RemoveFirstRankResponseBody
 from ._remove_first_rank_response import RemoveFirstRankResponse
 from ._remove_intervention_dictionary_response_body import RemoveInterventionDictionaryResponseBody
@@ -411,6 +426,7 @@ from ._create_app_group_request import CreateAppGroupRequestTags
 from ._create_app_group_response_body import CreateAppGroupResponseBodyResultQuota
 from ._create_app_group_response_body import CreateAppGroupResponseBodyResult
 from ._create_app_group_credentials_response_body import CreateAppGroupCredentialsResponseBodyResult
+from ._create_elastic_plan_response_body import CreateElasticPlanResponseBodyResult
 from ._create_first_rank_response_body import CreateFirstRankResponseBodyResultMeta
 from ._create_first_rank_response_body import CreateFirstRankResponseBodyResult
 from ._create_function_instance_request import CreateFunctionInstanceRequestCreateParameters
@@ -468,6 +484,7 @@ from ._describe_apps_response_body import DescribeAppsResponseBodyResultSummarie
 from ._describe_apps_response_body import DescribeAppsResponseBodyResultSummaries
 from ._describe_apps_response_body import DescribeAppsResponseBodyResult
 from ._describe_data_collction_response_body import DescribeDataCollctionResponseBodyResult
+from ._describe_elastic_plan_response_body import DescribeElasticPlanResponseBodyResult
 from ._describe_first_rank_response_body import DescribeFirstRankResponseBodyResultMeta
 from ._describe_first_rank_response_body import DescribeFirstRankResponseBodyResult
 from ._describe_intervention_dictionary_response_body import DescribeInterventionDictionaryResponseBodyResult
@@ -509,6 +526,7 @@ from ._list_app_groups_response_body import ListAppGroupsResponseBodyResultQuota
 from ._list_app_groups_response_body import ListAppGroupsResponseBodyResultTags
 from ._list_app_groups_response_body import ListAppGroupsResponseBodyResult
 from ._list_data_collections_response_body import ListDataCollectionsResponseBodyResult
+from ._list_elastic_plans_response_body import ListElasticPlansResponseBodyResult
 from ._list_first_ranks_response_body import ListFirstRanksResponseBodyResultMeta
 from ._list_first_ranks_response_body import ListFirstRanksResponseBodyResult
 from ._list_function_instances_response_body import ListFunctionInstancesResponseBodyResultBelongs
@@ -541,6 +559,7 @@ from ._modify_app_group_response_body import ModifyAppGroupResponseBodyResultQuo
 from ._modify_app_group_response_body import ModifyAppGroupResponseBodyResult
 from ._modify_app_group_quota_response_body import ModifyAppGroupQuotaResponseBodyResultQuota
 from ._modify_app_group_quota_response_body import ModifyAppGroupQuotaResponseBodyResult
+from ._modify_elastic_plan_response_body import ModifyElasticPlanResponseBodyResult
 from ._modify_first_rank_response_body import ModifyFirstRankResponseBodyResultMeta
 from ._modify_first_rank_response_body import ModifyFirstRankResponseBodyResult
 from ._modify_query_processor_response_body import ModifyQueryProcessorResponseBodyResult
@@ -615,6 +634,9 @@ __all__ = [
     CreateAppGroupCredentialsRequest,
     CreateAppGroupCredentialsResponseBody,
     CreateAppGroupCredentialsResponse,
+    CreateElasticPlanRequest,
+    CreateElasticPlanResponseBody,
+    CreateElasticPlanResponse,
     CreateFirstRankRequest,
     CreateFirstRankResponseBody,
     CreateFirstRankResponse,
@@ -679,6 +701,9 @@ __all__ = [
     DescribeAppsResponse,
     DescribeDataCollctionResponseBody,
     DescribeDataCollctionResponse,
+    DescribeElasticPlanRequest,
+    DescribeElasticPlanResponseBody,
+    DescribeElasticPlanResponse,
     DescribeFirstRankResponseBody,
     DescribeFirstRankResponse,
     DescribeInterventionDictionaryResponseBody,
@@ -750,6 +775,9 @@ __all__ = [
     ListDataSourceTablesRequest,
     ListDataSourceTablesResponseBody,
     ListDataSourceTablesResponse,
+    ListElasticPlansRequest,
+    ListElasticPlansResponseBody,
+    ListElasticPlansResponse,
     ListFirstRanksResponseBody,
     ListFirstRanksResponse,
     ListFunctionInstancesRequest,
@@ -824,6 +852,9 @@ __all__ = [
     ModifyAppGroupQuotaRequest,
     ModifyAppGroupQuotaResponseBody,
     ModifyAppGroupQuotaResponse,
+    ModifyElasticPlanRequest,
+    ModifyElasticPlanResponseBody,
+    ModifyElasticPlanResponse,
     ModifyFirstRankRequest,
     ModifyFirstRankResponseBody,
     ModifyFirstRankResponse,
@@ -850,6 +881,9 @@ __all__ = [
     RemoveAppGroupResponse,
     RemoveDataCollectionResponseBody,
     RemoveDataCollectionResponse,
+    RemoveElasticPlanRequest,
+    RemoveElasticPlanResponseBody,
+    RemoveElasticPlanResponse,
     RemoveFirstRankResponseBody,
     RemoveFirstRankResponse,
     RemoveInterventionDictionaryResponseBody,
@@ -977,6 +1011,7 @@ __all__ = [
     CreateAppGroupResponseBodyResultQuota,
     CreateAppGroupResponseBodyResult,
     CreateAppGroupCredentialsResponseBodyResult,
+    CreateElasticPlanResponseBodyResult,
     CreateFirstRankResponseBodyResultMeta,
     CreateFirstRankResponseBodyResult,
     CreateFunctionInstanceRequestCreateParameters,
@@ -1034,6 +1069,7 @@ __all__ = [
     DescribeAppsResponseBodyResultSummaries,
     DescribeAppsResponseBodyResult,
     DescribeDataCollctionResponseBodyResult,
+    DescribeElasticPlanResponseBodyResult,
     DescribeFirstRankResponseBodyResultMeta,
     DescribeFirstRankResponseBodyResult,
     DescribeInterventionDictionaryResponseBodyResult,
@@ -1075,6 +1111,7 @@ __all__ = [
     ListAppGroupsResponseBodyResultTags,
     ListAppGroupsResponseBodyResult,
     ListDataCollectionsResponseBodyResult,
+    ListElasticPlansResponseBodyResult,
     ListFirstRanksResponseBodyResultMeta,
     ListFirstRanksResponseBodyResult,
     ListFunctionInstancesResponseBodyResultBelongs,
@@ -1107,6 +1144,7 @@ __all__ = [
     ModifyAppGroupResponseBodyResult,
     ModifyAppGroupQuotaResponseBodyResultQuota,
     ModifyAppGroupQuotaResponseBodyResult,
+    ModifyElasticPlanResponseBodyResult,
     ModifyFirstRankResponseBodyResultMeta,
     ModifyFirstRankResponseBodyResult,
     ModifyQueryProcessorResponseBodyResult,

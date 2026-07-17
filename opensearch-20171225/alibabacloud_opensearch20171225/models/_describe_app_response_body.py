@@ -64,6 +64,7 @@ class DescribeAppResponseBodyResult(DaraModel):
         prompts: List[Dict[str, Any]] = None,
         query_processors: List[main_models.DescribeAppResponseBodyResultQueryProcessors] = None,
         quota: main_models.DescribeAppResponseBodyResultQuota = None,
+        realtime_shared: bool = None,
         schema: main_models.DescribeAppResponseBodyResultSchema = None,
         schemas: List[main_models.DescribeAppResponseBodyResultSchemas] = None,
         second_ranks: List[main_models.DescribeAppResponseBodyResultSecondRanks] = None,
@@ -83,9 +84,11 @@ class DescribeAppResponseBodyResult(DaraModel):
         self.description = description
         # The industry type. Valid values:
         # 
-        # *   GENERAL
-        # *   ECOMMERCE
-        # *   IT_CONTENT
+        # - GENERAL
+        # 
+        # - ECOMMERCE
+        # 
+        # - IT_CONTENT
         self.domain = domain
         # The default display fields.
         self.fetch_fields = fetch_fields
@@ -105,6 +108,7 @@ class DescribeAppResponseBodyResult(DaraModel):
         self.query_processors = query_processors
         # The quota information.
         self.quota = quota
+        self.realtime_shared = realtime_shared
         # The schema of the application.
         self.schema = schema
         # The multi-table schema.
@@ -113,21 +117,29 @@ class DescribeAppResponseBodyResult(DaraModel):
         self.second_ranks = second_ranks
         # The status of the version. Valid values:
         # 
-        # *   ok: The version is normal.
-        # *   stopped: The version is suspended.
-        # *   frozen: The version is frozen.
-        # *   initializing: The version is being initialized.
-        # *   unavailable: The version is invalid.
-        # *   data_waiting: Data is to be initialized.
-        # *   data_preparing: Data is being initialized.
+        # - ok: The version is normal.
+        # 
+        # - stopped: The version is suspended.
+        # 
+        # - frozen: The version is frozen.
+        # 
+        # - initializing: The version is being initialized.
+        # 
+        # - unavailable: The version is invalid.
+        # 
+        # - data_waiting: Data is to be initialized.
+        # 
+        # - data_preparing: Data is being initialized.
         self.status = status
         # The summary configurations of search results.
         self.summaries = summaries
         # The edition type. Valid values:
         # 
-        # *   standard: a standard edition application.
-        # *   advance: an advanced edition application of an old version. New versions are not supported for this edition.
-        # *   enhanced: an advanced edition application of a new version.
+        # - standard: a standard edition application.
+        # 
+        # - advance: an advanced edition application of an old version. New versions are not supported for this edition.
+        # 
+        # - enhanced: an advanced edition application of a new version.
         self.type = type
 
     def validate(self):
@@ -220,6 +232,9 @@ class DescribeAppResponseBodyResult(DaraModel):
         if self.quota is not None:
             result['quota'] = self.quota.to_map()
 
+        if self.realtime_shared is not None:
+            result['realtimeShared'] = self.realtime_shared
+
         if self.schema is not None:
             result['schema'] = self.schema.to_map()
 
@@ -304,6 +319,9 @@ class DescribeAppResponseBodyResult(DaraModel):
         if m.get('quota') is not None:
             temp_model = main_models.DescribeAppResponseBodyResultQuota()
             self.quota = temp_model.from_map(m.get('quota'))
+
+        if m.get('realtimeShared') is not None:
+            self.realtime_shared = m.get('realtimeShared')
 
         if m.get('schema') is not None:
             temp_model = main_models.DescribeAppResponseBodyResultSchema()
@@ -686,8 +704,9 @@ class DescribeAppResponseBodyResultSchemasIndexSortConfig(DaraModel):
     ):
         # The sort method. Valid values:
         # 
-        # *   ASC
-        # *   DESC
+        # - ASC
+        # 
+        # - DESC
         self.direction = direction
         # The sort field.
         self.field = field
@@ -905,8 +924,9 @@ class DescribeAppResponseBodyResultSchemaIndexSortConfig(DaraModel):
     ):
         # The sort method. Valid values:
         # 
-        # *   ASC
-        # *   DESC
+        # - ASC
+        # 
+        # - DESC
         self.direction = direction
         # The sort field.
         self.field = field
@@ -953,13 +973,19 @@ class DescribeAppResponseBodyResultQuota(DaraModel):
         self.qps = qps
         # The specifications. Valid values:
         # 
-        # *   opensearch.share.junior: basic
-        # *   opensearch.share.common: shared general-purpose
-        # *   opensearch.share.compute: shared computing
-        # *   opensearch.share.storage: shared storage
-        # *   opensearch.private.common: exclusive general-purpose
-        # *   opensearch.private.compute: exclusive computing
-        # *   opensearch.private.storage: exclusive storage
+        # - opensearch.share.junior: basic
+        # 
+        # - opensearch.share.common: shared general-purpose
+        # 
+        # - opensearch.share.compute: shared computing
+        # 
+        # - opensearch.share.storage: shared storage
+        # 
+        # - opensearch.private.common: exclusive general-purpose
+        # 
+        # - opensearch.private.compute: exclusive computing
+        # 
+        # - opensearch.private.storage: exclusive storage
         self.spec = spec
 
     def validate(self):
@@ -1016,9 +1042,11 @@ class DescribeAppResponseBodyResultQueryProcessors(DaraModel):
         self.category = category
         # The industry type. Valid values:
         # 
-        # *   GENERAL
-        # *   ECOMMERCE
-        # *   IT_CONTENT
+        # - GENERAL
+        # 
+        # - ECOMMERCE
+        # 
+        # - IT_CONTENT
         self.domain = domain
         # Then index range.
         self.indexes = indexes
@@ -1258,19 +1286,27 @@ class DescribeAppResponseBodyResultDataSources(DaraModel):
         # 
         # name:
         # 
-        # *   JsonKeyValueExtractor
-        # *   MultiValueSpliter
-        # *   KeyValueExtractor
-        # *   StringCatenateExtractor
-        # *   HTMLTagRemover
+        # - JsonKeyValueExtractor
+        # 
+        # - MultiValueSpliter
+        # 
+        # - KeyValueExtractor
+        # 
+        # - StringCatenateExtractor
+        # 
+        # - HTMLTagRemover
         # 
         # parameters:
         # 
-        # *   JsonKeyValueExtractor
-        # *   MultiValueSpliter
-        # *   KeyValueExtractor
-        # *   StringCatenateExtractor
-        # *   HTMLTagRemover
+        # - JsonKeyValueExtractor
+        # 
+        # - MultiValueSpliter
+        # 
+        # - KeyValueExtractor
+        # 
+        # - StringCatenateExtractor
+        # 
+        # - HTMLTagRemover
         self.plugins = plugins
         # The name of the wide table.
         self.schema_name = schema_name
@@ -1278,10 +1314,13 @@ class DescribeAppResponseBodyResultDataSources(DaraModel):
         self.table_name = table_name
         # The type of the data source. Valid values:
         # 
-        # *   rds
-        # *   odps
-        # *   opensearch
-        # *   polardb
+        # - rds
+        # 
+        # - odps
+        # 
+        # - opensearch
+        # 
+        # - polardb
         self.type = type
 
     def validate(self):

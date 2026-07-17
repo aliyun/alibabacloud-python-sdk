@@ -11,9 +11,9 @@ class ListSlowQueryQueriesResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.ListSlowQueryQueriesResponseBodyResult = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The return result.
+        # The result of the request.
         self.result = result
 
     def validate(self):
@@ -52,13 +52,13 @@ class ListSlowQueryQueriesResponseBodyResult(DaraModel):
         index: int = None,
         start: int = None,
     ):
-        # The content of the optimization suggestion for the query.
+        # The information about the optimization suggestion.
         self.app_query = app_query
-        # The end of the time range that was queried.
+        # The end timestamp.
         self.end = end
         # The ID of the optimization suggestion.
         self.index = index
-        # The beginning of the time range that was queried.
+        # The start timestamp.
         self.start = start
 
     def validate(self):

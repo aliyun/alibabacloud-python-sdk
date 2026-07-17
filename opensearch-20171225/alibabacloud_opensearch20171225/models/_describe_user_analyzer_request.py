@@ -9,8 +9,9 @@ class DescribeUserAnalyzerRequest(DaraModel):
         self,
         with_: str = None,
     ):
-        # The Associated information,output properties based on hierarchy.
-        # * **all**: Outputs associated app information
+        # Specifies related information to return. The properties are returned based on the specified level.
+        # 
+        # - all: Returns information about the associated application.
         self.with_ = with_
 
     def validate(self):

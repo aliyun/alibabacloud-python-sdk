@@ -132,13 +132,15 @@ class GetFunctionInstanceResponseBodyResult(DaraModel):
         self.model_type = model_type
         # How the instance is created. Valid values:
         # 
-        # *   user: The instance is created by user.
-        # *   builtin: The instance is created by the system.
+        # - user: The instance is created by user.
+        # 
+        # - builtin: The instance is created by the system.
         self.source = source
         # The status of the instance. Valid values:
         # 
-        # 1.  unavailable: No model is available. Models must be trained before you can use them.
-        # 2.  available: Models can be used.
+        # 1. unavailable: No model is available. Models must be trained before you can use them.
+        # 
+        # 2. available: Models can be used.
         self.status = status
         # The information about the training task. This parameter is not displayed if no task is available.
         self.task = task
@@ -319,11 +321,15 @@ class GetFunctionInstanceResponseBodyResultTask(DaraModel):
     ):
         # The status of the task. Valid values:
         # 
-        # *   success: succeeded
-        # *   failed: failed
-        # *   untrained: to be trained
-        # *   pending: being scheduled
-        # *   running: being trained
+        # - success: succeeded
+        # 
+        # - failed: failed
+        # 
+        # - untrained: to be trained
+        # 
+        # - pending: being scheduled
+        # 
+        # - running: being trained
         self.dag_status = dag_status
         # The time consumed for the most recent run, in milliseconds.
         self.last_run_time = last_run_time

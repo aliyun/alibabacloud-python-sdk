@@ -11,9 +11,9 @@ class UpdateABTestSceneRequest(DaraModel):
         body: main_models.ABTestScene = None,
         dry_run: bool = None,
     ):
-        # The request body.
+        # The A/B test scenario.
         self.body = body
-        # Specifies whether to perform a dry run. This parameter is only used to check whether the data source is valid. Valid values: true and false.
+        # Specifies whether to perform a dry run. This parameter is used only to check whether the data source is valid. Valid values: true and false.
         self.dry_run = dry_run
 
     def validate(self):

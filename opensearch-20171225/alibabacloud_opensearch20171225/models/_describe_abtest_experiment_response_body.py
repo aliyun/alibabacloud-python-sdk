@@ -11,9 +11,9 @@ class DescribeABTestExperimentResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.DescribeABTestExperimentResponseBodyResult = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The details of the test.
+        # The details of the experiment.
         self.result = result
 
     def validate(self):
@@ -55,22 +55,23 @@ class DescribeABTestExperimentResponseBodyResult(DaraModel):
         traffic: int = None,
         updated: int = None,
     ):
-        # The time when the test was created.
+        # The time when the experiment was created.
         self.created = created
-        # The ID of the test.
+        # The experiment ID.
         self.id = id
-        # The name of the test.
+        # The alias of the experiment.
         self.name = name
-        # The status of the test. Valid values:
+        # The status of the experiment.
         # 
-        # *   true: in effect
-        # *   false: not in effect
+        # - true: The experiment is online.
+        # 
+        # - false: The experiment is offline.
         self.online = online
-        # The parameters of the test.
+        # The experiment parameters.
         self.params = params
-        # The percentage of traffic that is routed to the test.
+        # The percentage of traffic for the experiment bucketing.
         self.traffic = traffic
-        # The time when the test was last modified.
+        # The time when the experiment was last modified.
         self.updated = updated
 
     def validate(self):
@@ -136,7 +137,7 @@ class DescribeABTestExperimentResponseBodyResultParams(DaraModel):
         self,
         first_formula_name: str = None,
     ):
-        # The name of the rough sort policy.
+        # The name of the coarse-grained ranking policy.
         self.first_formula_name = first_formula_name
 
     def validate(self):

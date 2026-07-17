@@ -10,7 +10,7 @@ class UpdateSearchStrategyRequest(DaraModel):
         self,
         body: main_models.SearchStrategy = None,
     ):
-        # The request body.
+        # The search policy. For more information, see [SearchStrategy](https://help.aliyun.com/document_detail/2400242.html).
         self.body = body
 
     def validate(self):

@@ -16,11 +16,11 @@ class ListUserAnalyzersResponseBody(DaraModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The custom analyzer.
+        # The list of custom analyzers.
         # 
         # For more information, see [UserAnalyzer](https://help.aliyun.com/document_detail/178934.html).
         self.result = result
-        # The total number.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -74,26 +74,37 @@ class ListUserAnalyzersResponseBodyResult(DaraModel):
         name: str = None,
         updated: int = None,
     ):
-        # Indicates whether the application is available.
+        # Indicates whether the analyzer is available.
         self.available = available
         # The basic analyzer. Valid values:
         # 
-        # *   chn_standard: [a common analyzer in Chinese](https://help.aliyun.com/document_detail/179424.html)
-        # *   chn_scene_name: an analyzer for person names in Chinese
-        # *   chn_ecommerce: [an analyzer for E-commerce in Chinese](https://help.aliyun.com/document_detail/179424.html)
-        # *   chn_it_content: [an analyzer for IT content in Chinese](https://help.aliyun.com/document_detail/179424.html)
-        # *   en_min: a small-granularity analyzer in English
-        # *   th_standard: a common analyzer in Thai
-        # *   th_ecommerce: an analyzer for E-commerce in Thai
-        # *   vn_standard: a common analyzer in Vietnamese
-        # *   chn_community_it: an analyzer for IT community content in Chinese
-        # *   chn_ecommerce_general: a common analyzer for the E-commerce industry in Chinese
-        # *   chn_esports_general: a common analyzer for the gaming industry in Chinese
-        # *   chn_edu_question: an analyzer for question search of the education industry in Chinese
+        # - chn_standard: [A general-purpose analyzer for Chinese](https://help.aliyun.com/document_detail/179424.html).
+        # 
+        # - chn_scene_name: An analyzer for Chinese person names.
+        # 
+        # - chn_ecommerce: [An analyzer for e-commerce in Chinese](https://help.aliyun.com/document_detail/179424.html).
+        # 
+        # - chn_it_content: [An analyzer for IT content in Chinese](https://help.aliyun.com/document_detail/179424.html).
+        # 
+        # - en_min: A fine-grained analyzer for English.
+        # 
+        # - th_standard: A general-purpose analyzer for Thai.
+        # 
+        # - th_ecommerce: An analyzer for e-commerce in Thai.
+        # 
+        # - vn_standard: A general-purpose analyzer for Vietnamese.
+        # 
+        # - chn_community_it: An analyzer for IT community content in Chinese.
+        # 
+        # - chn_ecommerce_general: A general-purpose analyzer for the e-commerce industry in Chinese.
+        # 
+        # - chn_esports_general: A general-purpose analyzer for the gaming industry in Chinese.
+        # 
+        # - chn_edu_question: An analyzer for question-answering search in the education industry in Chinese.
         self.business = business
-        # The timestamp when the application was created.
+        # The timestamp when the analyzer was created.
         self.created = created
-        # The dictionaries that are used by the custom analyzer.
+        # The dictionaries that the custom analyzer uses.
         # 
         # For more information, see [UserDict](https://help.aliyun.com/document_detail/178933.html).
         self.dicts = dicts
@@ -101,7 +112,7 @@ class ListUserAnalyzersResponseBodyResult(DaraModel):
         self.id = id
         # The name of the custom analyzer.
         self.name = name
-        # The timestamp when the application was last updated.
+        # The timestamp when the analyzer was last updated.
         self.updated = updated
 
     def validate(self):
@@ -179,21 +190,21 @@ class ListUserAnalyzersResponseBodyResultDicts(DaraModel):
         type: str = None,
         updated: int = None,
     ):
-        # Indicates whether the application is available.
+        # Indicates whether the dictionary is available.
         self.available = available
-        # The timestamp when the application was created.
+        # The timestamp when the dictionary was created.
         self.created = created
-        # The number of intervention entries.
+        # The number of entries.
         self.entries_count = entries_count
-        # The maximum number of intervention entries that can be created in the dictionary.
+        # The maximum number of entries in the dictionary.
         self.entries_limit = entries_limit
         # The ID of the dictionary.
         self.id = id
-        # The type. Valid value:
+        # The type of the dictionary. Valid value:
         # 
-        # *   segment
+        # - segment: A dictionary for word segmentation.
         self.type = type
-        # The timestamp when the application was last updated.
+        # The timestamp when the dictionary was last updated.
         self.updated = updated
 
     def validate(self):

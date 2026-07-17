@@ -14,7 +14,7 @@ class EnableSlowQueryResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The returned data.
+        # The returned result.
         self.result = result
 
     def validate(self):

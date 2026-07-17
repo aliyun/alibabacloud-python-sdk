@@ -22,15 +22,15 @@ class GetFunctionVersionResponseBody(DaraModel):
         self.code = code
         # The HTTP status code.
         self.http_code = http_code
-        # The maximum duration for which a task can be executed.
+        # The request latency.
         self.latency = latency
         # The error message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The result body.
         self.result = result
-        # The status of the request.
+        # The request status.
         self.status = status
 
     def validate(self):
@@ -105,12 +105,13 @@ class GetFunctionVersionResponseBodyResult(DaraModel):
         self.function_name = function_name
         # The type of the feature. Valid values:
         # 
-        # *   PAAS
-        # *   SAAS
+        # - PAAS
+        # 
+        # - SAAS
         self.function_type = function_type
         # The type of the model.
         self.model_type = model_type
-        # The configuration information.
+        # The version configuration.
         self.version_config = version_config
         # The ID of the version.
         self.version_id = version_id
@@ -247,7 +248,7 @@ class GetFunctionVersionResponseBodyResultVersionConfigUsageParameters(DaraModel
         name: str = None,
         required: str = None,
     ):
-        # The name of the instance.
+        # The name of the parameter.
         self.name = name
         # Indicates whether the parameter is required.
         self.required = required

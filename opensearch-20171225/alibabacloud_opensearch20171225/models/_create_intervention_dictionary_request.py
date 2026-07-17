@@ -14,33 +14,47 @@ class CreateInterventionDictionaryRequest(DaraModel):
     ):
         # The type of the analyzer. Valid values:
         # 
-        # *   MODEL: model-based custom analyzer.
-        # *   SYSTEM: system analyzer.
-        # *   USER: custom analyzer.
+        # - MODEL: a model-based custom analyzer.
+        # 
+        # - SYSTEM: a system analyzer.
+        # 
+        # - USER: a custom analyzer.
         self.analyzer_type = analyzer_type
         # The name of the intervention dictionary.
         self.name = name
         # The type of the intervention dictionary. Valid values:
         # 
-        # *   stopword: an intervention dictionary for stop word filtering.
-        # *   synonym: an intervention dictionary for synonym configuration.
-        # *   correction: an intervention dictionary for spelling correction.
-        # *   category_prediction: an intervention dictionary for category prediction.
-        # *   ner: an intervention dictionary for named entity recognition (NER).
-        # *   term_weighting: an intervention dictionary for term weight analysis.
-        # *   suggest_allowlist: a drop-down suggestion whitelist.
-        # *   suggest_denylist: a drop-down suggestion blacklist.
-        # *   hot_allowlist: a top search whitelist.
-        # *   hot_denylist: a top search blacklist.
-        # *   hint_allowlist: a hint whitelist.
-        # *   hint_denylist: a hint blacklist.
+        # - stopword: an intervention dictionary for stop word filtering.
+        # 
+        # - synonym: an intervention dictionary for synonym configuration.
+        # 
+        # - correction: an intervention dictionary for spelling correction.
+        # 
+        # - category_prediction: an intervention dictionary for category prediction.
+        # 
+        # - ner: an intervention dictionary for Named Entity Recognition (NER).
+        # 
+        # - term_weighting: an intervention dictionary for term weight analysis.
+        # 
+        # - suggest_allowlist: a drop-down suggestion whitelist.
+        # 
+        # - suggest_denylist: a drop-down suggestion blacklist.
+        # 
+        # - hot_allowlist: a top search whitelist.
+        # 
+        # - hot_denylist: a top search blacklist.
+        # 
+        # - hint_allowlist: a hint whitelist.
+        # 
+        # - hint_denylist: a hint blacklist.
         self.type = type
-        # Specifies whether to perform only a dry run, without performing the actual request. Default value: false.
+        # Specifies whether to perform a dry run. The default value is false.
         # 
         # Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Validates the request parameters but does not create the intervention dictionary.
+        # 
+        # - **false**: Validates the request parameters and creates the intervention dictionary.
         self.dry_run = dry_run
 
     def validate(self):

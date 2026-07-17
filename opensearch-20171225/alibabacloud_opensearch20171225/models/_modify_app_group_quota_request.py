@@ -14,13 +14,15 @@ class ModifyAppGroupQuotaRequest(DaraModel):
     ):
         # The request body.
         self.body = body
+        # A client token that is used to ensure the idempotence of the request. The client generates this value to make sure that it is unique among different requests. The value can be up to 64 ASCII characters in length.
         self.client_token = client_token
-        # Specifies whether to check the validity of input parameters. Default value: false.
+        # Specifies whether to perform a dry run. Default value: false.
         # 
         # Valid values:
         # 
-        # *   **true**: checks only the validity of input parameters.
-        # *   **false**: checks the validity of input parameters and creates an attribution configuration.
+        # - **true**: Validates the request parameters without creating the attribution configuration.
+        # 
+        # - **false**: Validates the request parameters and creates the attribution configuration.
         self.dry_run = dry_run
 
     def validate(self):

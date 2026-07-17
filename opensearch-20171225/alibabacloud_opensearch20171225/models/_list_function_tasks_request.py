@@ -13,19 +13,21 @@ class ListFunctionTasksRequest(DaraModel):
         start_time: int = None,
         status: str = None,
     ):
-        # The end time is less than the specified time. Specify the time in the UNIX timestamp format. Unit: milliseconds.
+        # Returns tasks that ended before the specified time. The time is a UNIX timestamp in milliseconds.
         self.end_time = end_time
-        # The number of the page to return. Default value: 1.
+        # The page number. Default value: 1.
         self.page_number = page_number
         # The number of entries to return on each page. Default value: 1.
         self.page_size = page_size
-        # The start time is greater than the specified time. Specify the time in the UNIX timestamp format. Unit: milliseconds.
+        # Returns tasks that started after the specified time. The time is a UNIX timestamp in milliseconds.
         self.start_time = start_time
         # The status of the task. Valid values:
         # 
-        # *   success
-        # *   failed
-        # *   running
+        # - success
+        # 
+        # - failed
+        # 
+        # - running
         self.status = status
 
     def validate(self):

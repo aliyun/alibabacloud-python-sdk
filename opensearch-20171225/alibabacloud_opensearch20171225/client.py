@@ -22,6 +22,19 @@ class Client(OpenApiClient):
     ):
         super().__init__(config)
         self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'us-east-1': 'opensearch.us-east-1.aliyuncs.com',
+            'eu-central-1': 'opensearch.eu-central-1.aliyuncs.com',
+            'cn-zhangjiakou': 'opensearch.cn-zhangjiakou.aliyuncs.com',
+            'cn-shenzhen': 'opensearch.cn-shenzhen.aliyuncs.com',
+            'cn-shanghai': 'opensearch.cn-shanghai.aliyuncs.com',
+            'cn-qingdao': 'opensearch.cn-qingdao.aliyuncs.com',
+            'cn-hongkong': 'opensearch.cn-hongkong.aliyuncs.com',
+            'cn-hangzhou': 'opensearch.cn-hangzhou.aliyuncs.com',
+            'cn-beijing': 'opensearch.cn-beijing.aliyuncs.com',
+            'ap-southeast-5': 'opensearch.ap-southeast-5.aliyuncs.com',
+            'ap-southeast-1': 'opensearch.ap-southeast-1.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('opensearch', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -866,6 +879,118 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.create_app_group_credentials_with_options_async(app_group_identity, request, headers, runtime)
+
+    def create_elastic_plan_with_options(
+        self,
+        app_group_identity: str,
+        request: main_models.CreateElasticPlanRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateElasticPlanResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dry_run):
+            query['dryRun'] = request.dry_run
+        body = {}
+        if not DaraCore.is_null(request.custom_dates):
+            body['customDates'] = request.custom_dates
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.elastic_lcu):
+            body['elasticLcu'] = request.elastic_lcu
+        if not DaraCore.is_null(request.end_hour):
+            body['endHour'] = request.end_hour
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.schedule_type):
+            body['scheduleType'] = request.schedule_type
+        if not DaraCore.is_null(request.start_hour):
+            body['startHour'] = request.start_hour
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateElasticPlan',
+            version = '2017-12-25',
+            protocol = 'HTTPS',
+            pathname = f'/v4/openapi/app-groups/{DaraURL.percent_encode(app_group_identity)}/elastic-plans',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateElasticPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_elastic_plan_with_options_async(
+        self,
+        app_group_identity: str,
+        request: main_models.CreateElasticPlanRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateElasticPlanResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dry_run):
+            query['dryRun'] = request.dry_run
+        body = {}
+        if not DaraCore.is_null(request.custom_dates):
+            body['customDates'] = request.custom_dates
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.elastic_lcu):
+            body['elasticLcu'] = request.elastic_lcu
+        if not DaraCore.is_null(request.end_hour):
+            body['endHour'] = request.end_hour
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.schedule_type):
+            body['scheduleType'] = request.schedule_type
+        if not DaraCore.is_null(request.start_hour):
+            body['startHour'] = request.start_hour
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateElasticPlan',
+            version = '2017-12-25',
+            protocol = 'HTTPS',
+            pathname = f'/v4/openapi/app-groups/{DaraURL.percent_encode(app_group_identity)}/elastic-plans',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateElasticPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_elastic_plan(
+        self,
+        app_group_identity: str,
+        request: main_models.CreateElasticPlanRequest,
+    ) -> main_models.CreateElasticPlanResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_elastic_plan_with_options(app_group_identity, request, headers, runtime)
+
+    async def create_elastic_plan_async(
+        self,
+        app_group_identity: str,
+        request: main_models.CreateElasticPlanRequest,
+    ) -> main_models.CreateElasticPlanResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_elastic_plan_with_options_async(app_group_identity, request, headers, runtime)
 
     def create_first_rank_with_options(
         self,
@@ -3006,6 +3131,90 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.describe_data_collction_with_options_async(app_group_identity, data_collection_identity, headers, runtime)
+
+    def describe_elastic_plan_with_options(
+        self,
+        app_group_identity: str,
+        plan_id: str,
+        request: main_models.DescribeElasticPlanRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeElasticPlanResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dry_run):
+            query['dryRun'] = request.dry_run
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeElasticPlan',
+            version = '2017-12-25',
+            protocol = 'HTTPS',
+            pathname = f'/v4/openapi/app-groups/{DaraURL.percent_encode(app_group_identity)}/elastic-plans/{DaraURL.percent_encode(plan_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeElasticPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_elastic_plan_with_options_async(
+        self,
+        app_group_identity: str,
+        plan_id: str,
+        request: main_models.DescribeElasticPlanRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeElasticPlanResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dry_run):
+            query['dryRun'] = request.dry_run
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeElasticPlan',
+            version = '2017-12-25',
+            protocol = 'HTTPS',
+            pathname = f'/v4/openapi/app-groups/{DaraURL.percent_encode(app_group_identity)}/elastic-plans/{DaraURL.percent_encode(plan_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeElasticPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_elastic_plan(
+        self,
+        app_group_identity: str,
+        plan_id: str,
+        request: main_models.DescribeElasticPlanRequest,
+    ) -> main_models.DescribeElasticPlanResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.describe_elastic_plan_with_options(app_group_identity, plan_id, request, headers, runtime)
+
+    async def describe_elastic_plan_async(
+        self,
+        app_group_identity: str,
+        plan_id: str,
+        request: main_models.DescribeElasticPlanRequest,
+    ) -> main_models.DescribeElasticPlanResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.describe_elastic_plan_with_options_async(app_group_identity, plan_id, request, headers, runtime)
 
     def describe_first_rank_with_options(
         self,
@@ -5293,6 +5502,106 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_data_source_tables_with_options_async(data_source_type, request, headers, runtime)
 
+    def list_elastic_plans_with_options(
+        self,
+        app_group_identity: str,
+        request: main_models.ListElasticPlansRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListElasticPlansResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.enabled):
+            query['enabled'] = request.enabled
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.name):
+            query['name'] = request.name
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListElasticPlans',
+            version = '2017-12-25',
+            protocol = 'HTTPS',
+            pathname = f'/v4/openapi/app-groups/{DaraURL.percent_encode(app_group_identity)}/elastic-plans',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListElasticPlansResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_elastic_plans_with_options_async(
+        self,
+        app_group_identity: str,
+        request: main_models.ListElasticPlansRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListElasticPlansResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.enabled):
+            query['enabled'] = request.enabled
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.name):
+            query['name'] = request.name
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListElasticPlans',
+            version = '2017-12-25',
+            protocol = 'HTTPS',
+            pathname = f'/v4/openapi/app-groups/{DaraURL.percent_encode(app_group_identity)}/elastic-plans',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListElasticPlansResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_elastic_plans(
+        self,
+        app_group_identity: str,
+        request: main_models.ListElasticPlansRequest,
+    ) -> main_models.ListElasticPlansResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_elastic_plans_with_options(app_group_identity, request, headers, runtime)
+
+    async def list_elastic_plans_async(
+        self,
+        app_group_identity: str,
+        request: main_models.ListElasticPlansRequest,
+    ) -> main_models.ListElasticPlansResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_elastic_plans_with_options_async(app_group_identity, request, headers, runtime)
+
     def list_first_ranks_with_options(
         self,
         app_group_identity: str,
@@ -7571,6 +7880,122 @@ class Client(OpenApiClient):
         headers = {}
         return await self.modify_app_group_quota_with_options_async(app_group_identity, request, headers, runtime)
 
+    def modify_elastic_plan_with_options(
+        self,
+        app_group_identity: str,
+        plan_id: str,
+        request: main_models.ModifyElasticPlanRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyElasticPlanResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dry_run):
+            query['dryRun'] = request.dry_run
+        body = {}
+        if not DaraCore.is_null(request.custom_dates):
+            body['customDates'] = request.custom_dates
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.elastic_lcu):
+            body['elasticLcu'] = request.elastic_lcu
+        if not DaraCore.is_null(request.enabled):
+            body['enabled'] = request.enabled
+        if not DaraCore.is_null(request.end_hour):
+            body['endHour'] = request.end_hour
+        if not DaraCore.is_null(request.schedule_type):
+            body['scheduleType'] = request.schedule_type
+        if not DaraCore.is_null(request.start_hour):
+            body['startHour'] = request.start_hour
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyElasticPlan',
+            version = '2017-12-25',
+            protocol = 'HTTPS',
+            pathname = f'/v4/openapi/app-groups/{DaraURL.percent_encode(app_group_identity)}/elastic-plans/{DaraURL.percent_encode(plan_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyElasticPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_elastic_plan_with_options_async(
+        self,
+        app_group_identity: str,
+        plan_id: str,
+        request: main_models.ModifyElasticPlanRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyElasticPlanResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dry_run):
+            query['dryRun'] = request.dry_run
+        body = {}
+        if not DaraCore.is_null(request.custom_dates):
+            body['customDates'] = request.custom_dates
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.elastic_lcu):
+            body['elasticLcu'] = request.elastic_lcu
+        if not DaraCore.is_null(request.enabled):
+            body['enabled'] = request.enabled
+        if not DaraCore.is_null(request.end_hour):
+            body['endHour'] = request.end_hour
+        if not DaraCore.is_null(request.schedule_type):
+            body['scheduleType'] = request.schedule_type
+        if not DaraCore.is_null(request.start_hour):
+            body['startHour'] = request.start_hour
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyElasticPlan',
+            version = '2017-12-25',
+            protocol = 'HTTPS',
+            pathname = f'/v4/openapi/app-groups/{DaraURL.percent_encode(app_group_identity)}/elastic-plans/{DaraURL.percent_encode(plan_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyElasticPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_elastic_plan(
+        self,
+        app_group_identity: str,
+        plan_id: str,
+        request: main_models.ModifyElasticPlanRequest,
+    ) -> main_models.ModifyElasticPlanResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.modify_elastic_plan_with_options(app_group_identity, plan_id, request, headers, runtime)
+
+    async def modify_elastic_plan_async(
+        self,
+        app_group_identity: str,
+        plan_id: str,
+        request: main_models.ModifyElasticPlanRequest,
+    ) -> main_models.ModifyElasticPlanResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.modify_elastic_plan_with_options_async(app_group_identity, plan_id, request, headers, runtime)
+
     def modify_first_rank_with_options(
         self,
         app_group_identity: str,
@@ -8368,6 +8793,82 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.remove_data_collection_with_options_async(app_group_identity, data_collection_identity, headers, runtime)
+
+    def remove_elastic_plan_with_options(
+        self,
+        app_group_identity: str,
+        plan_id: str,
+        request: main_models.RemoveElasticPlanRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.RemoveElasticPlanResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'RemoveElasticPlan',
+            version = '2017-12-25',
+            protocol = 'HTTPS',
+            pathname = f'/v4/openapi/app-groups/{DaraURL.percent_encode(app_group_identity)}/elastic-plans/{DaraURL.percent_encode(plan_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RemoveElasticPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def remove_elastic_plan_with_options_async(
+        self,
+        app_group_identity: str,
+        plan_id: str,
+        request: main_models.RemoveElasticPlanRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.RemoveElasticPlanResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'RemoveElasticPlan',
+            version = '2017-12-25',
+            protocol = 'HTTPS',
+            pathname = f'/v4/openapi/app-groups/{DaraURL.percent_encode(app_group_identity)}/elastic-plans/{DaraURL.percent_encode(plan_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RemoveElasticPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def remove_elastic_plan(
+        self,
+        app_group_identity: str,
+        plan_id: str,
+        request: main_models.RemoveElasticPlanRequest,
+    ) -> main_models.RemoveElasticPlanResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.remove_elastic_plan_with_options(app_group_identity, plan_id, request, headers, runtime)
+
+    async def remove_elastic_plan_async(
+        self,
+        app_group_identity: str,
+        plan_id: str,
+        request: main_models.RemoveElasticPlanRequest,
+    ) -> main_models.RemoveElasticPlanResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.remove_elastic_plan_with_options_async(app_group_identity, plan_id, request, headers, runtime)
 
     def remove_first_rank_with_options(
         self,

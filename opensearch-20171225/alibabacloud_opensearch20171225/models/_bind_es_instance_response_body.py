@@ -14,7 +14,7 @@ class BindEsInstanceResponseBody(DaraModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The result
+        # The result.
         self.result = result
 
     def validate(self):

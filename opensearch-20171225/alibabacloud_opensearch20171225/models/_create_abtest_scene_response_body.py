@@ -15,7 +15,7 @@ class CreateABTestSceneResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The returned data.
+        # The result of the request.
         self.result = result
 
     def validate(self):
@@ -56,20 +56,21 @@ class CreateABTestSceneResponseBodyResult(DaraModel):
         updated: int = None,
         values: List[str] = None,
     ):
-        # The time when the test scenario was created.
+        # The time when the scene was created.
         self.created = created
-        # The ID of the test group.
+        # The ID of the group.
         self.id = id
-        # The name of the A/B test group.
+        # The name of the group.
         self.name = name
-        # The status. Valid values:
+        # The status of the scene. Valid values:
         # 
-        # *   0: not in effect
-        # *   1: in effect
+        # - 0: disabled
+        # 
+        # - 1: enabled
         self.status = status
-        # The time when the test scenario was last updated.
+        # The time when the scene was last updated.
         self.updated = updated
-        # The ID of the test scenario
+        # The IDs of the scenes.
         self.values = values
 
     def validate(self):

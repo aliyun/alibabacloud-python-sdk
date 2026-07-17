@@ -19,21 +19,21 @@ class ListFunctionInstancesResponseBody(DaraModel):
         status: str = None,
         total_count: int = None,
     ):
-        # The error code. If no error occurs, the parameter is left empty.
+        # The error code. This parameter is empty if the request is successful.
         self.code = code
         # The HTTP status code.
         self.http_code = http_code
-        # The time consumed for the request, in milliseconds.
+        # The request latency, in milliseconds.
         self.latency = latency
-        # The error message. If no error occurs, the parameter is left empty.
+        # The error message. This parameter is empty if the request is successful.
         self.message = message
         # The ID of the request.
         self.request_id = request_id
-        # The information about the instances.
+        # The list of instances.
         self.result = result
         # The status of the request.
         self.status = status
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -124,17 +124,17 @@ class ListFunctionInstancesResponseBodyResult(DaraModel):
         usage_parameters: List[main_models.ListFunctionInstancesResponseBodyResultUsageParameters] = None,
         version_id: int = None,
     ):
-        # The information about the instance.
+        # The ownership information of the instance.
         self.belongs = belongs
-        # The parameters of the instance.
+        # The list of parameters for the instance.
         self.create_parameters = create_parameters
         # The time when the instance was created.
         self.create_time = create_time
-        # The cron expression used to schedule training, in the format of (Minutes Hours DayofMonth Month DayofWeek). If the value is empty, it indicates that no periodic training is performed.
+        # The training schedule. This is a cron expression in the format of Minutes Hours DayofMonth Month DayofWeek. If this parameter is empty, periodic training is not performed.
         self.cron = cron
         # The description.
         self.description = description
-        # The extended information, which is a JSON string. It includes model evaluation information and error information.
+        # The extended information. This is a JSON string that contains information such as model evaluation results and error messages.
         self.extend_info = extend_info
         # The name of the feature.
         self.function_name = function_name
@@ -144,19 +144,21 @@ class ListFunctionInstancesResponseBodyResult(DaraModel):
         self.instance_name = instance_name
         # The type of the model.
         self.model_type = model_type
-        # How the instance is created. Valid values:
+        # The source of the instance. Valid values:
         # 
-        # *   user: The instance is created by user.
-        # *   builtin: The instance is created by system.
+        # - user: The instance is created by the user.
+        # 
+        # - builtin: The instance is created by the system.
         self.source = source
-        # The state of the instance. Valid values:
+        # The status of the instance. Valid values:
         # 
-        # 1.  unavailable: No model is available. Models must be trained before you can use them.
-        # 2.  available: Models can be used.
+        # 1. unavailable: No model is available. You must train a model before you can use the instance.
+        # 
+        # 2. available: The instance is available.
         self.status = status
-        # The parameters that are used.
+        # The list of parameters in use.
         self.usage_parameters = usage_parameters
-        # The ID of the version.
+        # The version ID.
         self.version_id = version_id
 
     def validate(self):
@@ -362,7 +364,7 @@ class ListFunctionInstancesResponseBodyResultBelongs(DaraModel):
         self.category = category
         # The industry.
         self.domain = domain
-        # The abbreviation of the language that applies.
+        # The language code.
         self.language = language
 
     def validate(self):

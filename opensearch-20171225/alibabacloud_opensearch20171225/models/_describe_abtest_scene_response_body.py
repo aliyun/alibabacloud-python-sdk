@@ -60,16 +60,17 @@ class DescribeABTestSceneResponseBodyResult(DaraModel):
         self.created = created
         # The ID of the test scenario.
         self.id = id
-        # The name of the test scenario.
+        # The alias of the test scenario.
         self.name = name
         # The status of the test scenario. Valid values:
         # 
-        # *   0: The test is stopped.
-        # *   1: The test is started.
+        # - 0: The test is stopped.
+        # 
+        # - 1: The test is running.
         self.status = status
         # The time when the test was last modified.
         self.updated = updated
-        # The indicators of the test scenarios.
+        # The identifiers of the test scenario.
         self.values = values
 
     def validate(self):

@@ -11,9 +11,9 @@ class DescribeSlowQueryStatusResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.DescribeSlowQueryStatusResponseBodyResult = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The return result.
+        # The result.
         self.result = result
 
     def validate(self):
@@ -51,18 +51,21 @@ class DescribeSlowQueryStatusResponseBodyResult(DaraModel):
         region: str = None,
         status: str = None,
     ):
-        # The ID of the application.
+        # The application ID.
         self.app_group_id = app_group_id
-        # The network type of the slow query optimization service. Valid values:
+        # The region.
         # 
-        # *   outer: the Internet
-        # *   internal: the internal network
+        # - outer: Public network
+        # 
+        # - internal: Internal network
         self.region = region
-        # The status of the slow query optimization service. Valid values:
+        # The activation status.
         # 
-        # *   enabled
-        # *   disabled
-        # *   n/a
+        # - enabled: Enabled
+        # 
+        # - disabled: Disabled
+        # 
+        # - n/a: Unknown
         self.status = status
 
     def validate(self):

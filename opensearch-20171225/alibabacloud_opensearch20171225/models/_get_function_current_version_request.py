@@ -12,25 +12,33 @@ class GetFunctionCurrentVersionRequest(DaraModel):
         function_type: str = None,
         model_type: str = None,
     ):
-        # The category. By default, this parameter is left empty.
+        # The category. The default value is empty.
         self.category = category
-        # The industry. By default, this parameter is left empty, which indicates General-purpose Edition.
+        # The industry. The default value is empty, which indicates the General-purpose Edition.
         self.domain = domain
         # The type of the feature. Valid values:
         # 
-        # *   PAAS. This is the default value.
-        # *   SAAS.
-        self.function_type = function_type
-        # The type of the model. The following features correspond to different model types:
+        # - PAAS (default)
         # 
-        # *   CTR model: tf_checkpoint
-        # *   Popularity model: pop
-        # *   Category model: offline_inference
-        # *   Hotword model: offline_inference
-        # *   Shading model: offline_inference
-        # *   Drop-down suggestion model: offline_inference
-        # *   Word segmentation model: text
-        # *   Word weight model: tf_checkpoint
+        # - SAAS
+        self.function_type = function_type
+        # The model type. Different features correspond to different model types:
+        # 
+        # - CTR model: tf_checkpoint
+        # 
+        # - Popularity model: pop
+        # 
+        # - Category model: offline_inference
+        # 
+        # - Hotword model: offline_inference
+        # 
+        # - Hint model: offline_inference
+        # 
+        # - Drop-down suggestion model: offline_inference
+        # 
+        # - Word segmentation model: text
+        # 
+        # - Term weighting model: tf_checkpoint
         # 
         # This parameter is required.
         self.model_type = model_type

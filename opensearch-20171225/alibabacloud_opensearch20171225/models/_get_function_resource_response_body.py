@@ -18,22 +18,23 @@ class GetFunctionResourceResponseBody(DaraModel):
         result: main_models.GetFunctionResourceResponseBodyResult = None,
         status: str = None,
     ):
-        # The error code returned. If no error occurs, this value is empty.
+        # The returned error code. This is empty if no error occurred.
         self.code = code
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_code = http_code
-        # The time consumed for the API request. Unit: milliseconds.
+        # The time consumed by the API request. Unit: milliseconds.
         self.latency = latency
-        # The error message returned.
+        # The returned error message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The returned results.
+        # The returned result.
         self.result = result
-        # The HTTP status code. Valid values:
+        # The status code.
         # 
-        # *   OK
-        # *   FAIL
+        # - OK: The request was successful.
+        # 
+        # - FAIL: The request failed.
         self.status = status
 
     def validate(self):
@@ -108,19 +109,19 @@ class GetFunctionResourceResponseBodyResult(DaraModel):
     ):
         # The time when the resource was created. Unit: milliseconds.
         self.create_time = create_time
-        # The resource data. The data structure varies with the resource type.
+        # The resource data. The structure of the data varies based on the resourceType.
         self.data = data
         # The description of the resource.
         self.description = description
-        # The name of the feature.
+        # The feature name.
         self.function_name = function_name
-        # The time when the resource was modified. Unit: milliseconds.
+        # The time when the resource was last modified. Unit: milliseconds.
         self.modify_time = modify_time
-        # The algorithm instances that are referenced.
+        # The list of referenced algorithm instance names.
         self.referenced_instances = referenced_instances
-        # The name of the resource.
+        # The resource name.
         self.resource_name = resource_name
-        # The type of the resource.
+        # The resource type.
         self.resource_type = resource_type
 
     def validate(self):
@@ -193,9 +194,9 @@ class GetFunctionResourceResponseBodyResultData(DaraModel):
         content: str = None,
         generators: List[main_models.GetFunctionResourceResponseBodyResultDataGenerators] = None,
     ):
-        # The content of the file that corresponds to a resource of the raw_file type.
+        # The content of the file for a resource of the raw_file type.
         self.content = content
-        # The feature generators that correspond to resources of the feature_generator type.
+        # The list of feature generators for a resource of the feature_generator type.
         self.generators = generators
 
     def validate(self):
@@ -285,7 +286,7 @@ class GetFunctionResourceResponseBodyResultDataGeneratorsInput(DaraModel):
         self,
         features: List[main_models.GetFunctionResourceResponseBodyResultDataGeneratorsInputFeatures] = None,
     ):
-        # The input features.
+        # The list of input features.
         self.features = features
 
     def validate(self):
@@ -322,9 +323,9 @@ class GetFunctionResourceResponseBodyResultDataGeneratorsInputFeatures(DaraModel
         name: str = None,
         type: str = None,
     ):
-        # The name of the feature.
+        # The feature name.
         self.name = name
-        # The type of the feature.
+        # The feature type.
         self.type = type
 
     def validate(self):

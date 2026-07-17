@@ -11,8 +11,9 @@ class UpdateAppGroupDeleteProtectionResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.UpdateAppGroupDeleteProtectionResponseBodyResult = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The result.
         self.result = result
 
     def validate(self):
@@ -48,6 +49,7 @@ class UpdateAppGroupDeleteProtectionResponseBodyResult(DaraModel):
         self,
         instance_id: str = None,
     ):
+        # The instance ID.
         self.instance_id = instance_id
 
     def validate(self):

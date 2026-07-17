@@ -14,7 +14,7 @@ class ListUserAnalyzerEntriesResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The entries of the custom analyzer. For more information, see [UserAnalyzerEntry](https://www.alibabacloud.com/help/en/open-search/industry-algorithm-edition/useranalyzerentry).
+        # The entries of the custom analyzer. For more information, see UserAnalyzerEntry.
         self.result = result
 
     def validate(self):

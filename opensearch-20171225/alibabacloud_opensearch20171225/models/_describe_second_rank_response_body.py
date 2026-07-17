@@ -13,7 +13,7 @@ class DescribeSecondRankResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The information about the fine sort expression.
+        # The details of the second-rank expression.
         self.result = result
 
     def validate(self):
@@ -57,27 +57,29 @@ class DescribeSecondRankResponseBodyResult(DaraModel):
         name: str = None,
         updated: int = None,
     ):
-        # Specifies whether to set the fine sort expression as the default sort expression.
+        # Indicates whether the expression is active.
         self.active = active
         # The time when the expression was created.
         self.created = created
-        # Description
+        # The description.
         self.description = description
-        # The ID of the expression. This parameter appears only in the response.
+        # The ID of the expression. This parameter is returned only in the response.
         self.id = id
-        # Indicates whether the expression is the default one. This parameter appears only in the response. Valid values:
+        # Indicates whether the expression is the default one. This parameter is returned only in the response.
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.is_default = is_default
-        # Indicates whether the expression is a system expression. This parameter appears only in the response. Valid values:
+        # Indicates whether the expression is a system expression. This parameter is returned only in the response.
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.is_sys = is_sys
-        # The content of the fine sort expression. You can define an expression that consists of fields, feature functions, and mathematical functions to implement complex sort logic.
+        # The second-rank expression. You can write an expression that contains fields, feature functions, and mathematical functions to implement complex sort logic.
         self.meta = meta
-        # The name.
+        # The name of the expression.
         self.name = name
         # The time when the expression was updated.
         self.updated = updated

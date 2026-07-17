@@ -28,7 +28,7 @@ class GetFunctionTaskResponseBody(DaraModel):
         self.request_id = request_id
         # The result of the request.
         self.result = result
-        # The status of the request.
+        # The request status.
         self.status = status
 
     def validate(self):
@@ -117,9 +117,11 @@ class GetFunctionTaskResponseBodyResult(DaraModel):
         self.start_time = start_time
         # The status of the task. Valid values:
         # 
-        # *   success
-        # *   failed
-        # *   running
+        # - success
+        # 
+        # - failed
+        # 
+        # - running
         self.status = status
 
     def validate(self):

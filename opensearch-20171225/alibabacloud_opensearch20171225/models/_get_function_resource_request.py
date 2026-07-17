@@ -10,12 +10,6 @@ class GetFunctionResourceRequest(DaraModel):
         output: str = None,
     ):
         # The output level.
-        # 
-        # Valid values:
-        # 
-        # *   simple
-        # *   normal
-        # *   detail
         self.output = output
 
     def validate(self):

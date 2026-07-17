@@ -11,7 +11,7 @@ class ModifyAppGroupQuotaResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.ModifyAppGroupQuotaResponseBodyResult = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The information about the application.
         self.result = result
@@ -69,77 +69,85 @@ class ModifyAppGroupQuotaResponseBodyResult(DaraModel):
         type: str = None,
         updated: int = None,
     ):
-        # The billing method. Valid values:
+        # The billing method.
         # 
-        # *   POSTPAY: pay-as-you-go.
-        # *   PREPAY: subscription.
+        # - POSTPAY: pay-as-you-go
+        # 
+        # - PREPAY: subscription
         self.charge_type = charge_type
-        # The billable item. Valid values:
+        # The billing model.
         # 
-        # *   1: computing resources.
-        # *   2: queries per second (QPS).
+        # - 1: by compute resources
+        # 
+        # - 2: by queries per second (QPS)
         self.charging_way = charging_way
         # The commodity code.
         self.commodity_code = commodity_code
         # The timestamp when the application was created.
         self.created = created
-        # The ID of the current online version.
+        # The current online version.
         self.current_version = current_version
         # The description of the application.
         self.description = description
         # The engine type.
-        # 
-        # Valid values:
-        # 
-        # *   ha3: ha3.
         self.engine_type = engine_type
-        # The time when the application expired.
+        # The expiration time.
         self.expire_on = expire_on
-        # The approval state of the quotas. Valid values:
+        # Indicates whether a quota is pending for approval.
         # 
-        # *   0: The application is in service.
-        # *   1: The quotas are being reviewed.
+        # - 0: No quota is pending for approval.
+        # 
+        # - 1: A quota is pending for approval.
         self.has_pending_quota_review_task = has_pending_quota_review_task
-        # The application ID.
+        # The ID of the application.
         self.id = id
-        # The instance ID.
+        # The ID of the instance.
         self.instance_id = instance_id
-        # The lock state. Valid values:
+        # The lock status.
         # 
-        # *   Unlock: The instance is unlocked.
-        # *   LockByExpiration: The instance is automatically locked after it expires.
-        # *   ManualLock: The instance is manually locked.
+        # - Unlock: The application is not locked.
+        # 
+        # - LockByExpiration: The application is automatically locked upon expiration.
+        # 
+        # - ManualLock: The application is manually locked.
         self.lock_mode = lock_mode
-        # The name of the application
+        # The name of the application.
         self.name = name
-        # Indicates whether the application is created. Valid values:
+        # Indicates whether the application is provisioned.
         # 
-        # *   0: The application is being created.
-        # *   1: The application is created.
+        # - 0: The application is being provisioned.
+        # 
+        # - 1: The application is provisioned.
         self.produced = produced
-        # The name of the A/B test group.
+        # The name of the A/B test project.
         self.project_id = project_id
-        # The information about the quotas of the application.
+        # The quota information of the application.
         self.quota = quota
         # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
-        # The state of the application. Valid values:
+        # The status of the application.
         # 
-        # *   producing: The application is being created.
-        # *   review_pending: The application is being reviewed.
-        # *   config_pending: The application is to be configured.
-        # *   normal: The application is in service.
-        # *   frozen: The application is frozen.
+        # - producing: The application is being provisioned.
+        # 
+        # - review_pending: The application is pending for review.
+        # 
+        # - config_pending: The application is pending for configuration.
+        # 
+        # - normal: The application is running as normal.
+        # 
+        # - frozen: The application is frozen.
         self.status = status
-        # The timestamp when the current online version was published.
+        # The timestamp when the online version was switched.
         self.switched_time = switched_time
-        # The type of the application. Valid values:
+        # The type of the application.
         # 
-        # *   standard: a standard edition application.
-        # *   advance: an advanced edition application of an old version. New versions are not supported for this edition.
-        # *   enhanced: an advanced edition application of a new version.
+        # - standard: Standard Edition
+        # 
+        # - advance: an earlier version of Premium Edition. This type is not supported for new applications.
+        # 
+        # - enhanced: a new version of Premium Edition.
         self.type = type
-        # The timestamp when the application was last modified.
+        # The timestamp when the application was last updated.
         self.updated = updated
 
     def validate(self):
@@ -291,19 +299,25 @@ class ModifyAppGroupQuotaResponseBodyResultQuota(DaraModel):
         doc_size: int = None,
         spec: str = None,
     ):
-        # The computing resources. Unit: logical computing unit (LCU).
+        # The compute resources in LCU.
         self.compute_resource = compute_resource
-        # The storage capacity. Unit: GB.
+        # The storage capacity in GB.
         self.doc_size = doc_size
-        # The specifications. Valid values:
+        # The specifications.
         # 
-        # *   opensearch.share.junior: basic.
-        # *   opensearch.share.common: shared general-purpose.
-        # *   opensearch.share.compute: shared computing.
-        # *   opensearch.share.storage: shared storage.
-        # *   opensearch.private.common: exclusive general-purpose.
-        # *   opensearch.private.compute: exclusive computing.
-        # *   opensearch.private.storage: exclusive storage.
+        # - opensearch.share.junior: Entry-level
+        # 
+        # - opensearch.share.common: Shared General-purpose
+        # 
+        # - opensearch.share.compute: Shared Compute-optimized
+        # 
+        # - opensearch.share.storage: Shared Storage-optimized
+        # 
+        # - opensearch.private.common: Dedicated General-purpose
+        # 
+        # - opensearch.private.compute: Dedicated Compute-optimized
+        # 
+        # - opensearch.private.storage: Dedicated Storage-optimized
         self.spec = spec
 
     def validate(self):

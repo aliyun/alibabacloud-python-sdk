@@ -23,9 +23,9 @@ class ListFunctionTasksResponseBody(DaraModel):
         self.code = code
         # The HTTP status code.
         self.http_code = http_code
-        # The time consumed for the request, in milliseconds.
+        # The time consumed by the request, in milliseconds.
         self.latency = latency
-        # The error message.
+        # The returned message.
         self.message = message
         # The ID of the request.
         self.request_id = request_id
@@ -118,25 +118,27 @@ class ListFunctionTasksResponseBodyResult(DaraModel):
         start_time: int = None,
         status: str = None,
     ):
-        # The timestamp that indicates the end time. Unit: milliseconds. 0 indicates that the task has not ended.
+        # The time when the task ended. This is a UNIX timestamp in milliseconds. A value of 0 indicates that the task has not ended.
         self.end_time = end_time
-        # The value is a JSON string. It includes model evaluation information and training error information.
+        # A JSON string that contains information such as model evaluation results and training errors.
         self.extend_info = extend_info
         # The name of the feature.
         self.function_name = function_name
-        # The number of iterations.
+        # The iteration number.
         self.generation = generation
-        # The progress. 90 indicates 90%.
+        # The progress of the task. For example, a value of 90 indicates that the task is 90% complete.
         self.progress = progress
         # The ID of the task.
         self.run_id = run_id
-        # The timestamp that indicates the start time. Unit: milliseconds.
+        # The time when the task started. This is a UNIX timestamp in milliseconds.
         self.start_time = start_time
-        # The status of the task. Valid values:
+        # The status of the task.
         # 
-        # *   success
-        # *   failed
-        # *   running
+        # - success
+        # 
+        # - failed
+        # 
+        # - running
         self.status = status
 
     def validate(self):

@@ -19,19 +19,19 @@ class ListFunctionResourcesResponseBody(DaraModel):
         status: str = None,
         total_count: int = None,
     ):
-        # The error code returned. If no error occurs, this value is empty.
+        # The returned error code. This parameter is empty if no error occurs.
         self.code = code
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_code = http_code
-        # The amount of time consumed for the request. Unit: milliseconds.
+        # The request latency. Unit: milliseconds.
         self.latency = latency
-        # The error message returned.
+        # The returned error message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The results returned.
+        # The result.
         self.result = result
-        # The status of the request. Valid values: OK and FAIL.
+        # The request status. Valid values: OK and FAIL.
         self.status = status
         # The total number of records that meet the requirements.
         self.total_count = total_count
@@ -120,19 +120,19 @@ class ListFunctionResourcesResponseBodyResult(DaraModel):
     ):
         # The time when the resource was created. Unit: milliseconds.
         self.create_time = create_time
-        # The resource data. The data structure varies with the resource type.
+        # The resource data. The structure of the data varies based on the resourceType.
         self.data = data
         # The description of the resource.
         self.description = description
-        # The name of the feature.
+        # The function name.
         self.function_name = function_name
-        # The time when the resource was modified. Unit: milliseconds.
+        # The time when the resource was last modified. Unit: milliseconds.
         self.modify_time = modify_time
-        # The algorithm instances that are referenced.
+        # The names of the referenced algorithm instances.
         self.referenced_instances = referenced_instances
-        # The name of the resource.
+        # The resource name.
         self.resource_name = resource_name
-        # The type of the resource.
+        # The resource type.
         self.resource_type = resource_type
 
     def validate(self):
@@ -205,9 +205,9 @@ class ListFunctionResourcesResponseBodyResultData(DaraModel):
         content: str = None,
         generators: List[main_models.ListFunctionResourcesResponseBodyResultDataGenerators] = None,
     ):
-        # The content of the file that corresponds to a resource of the raw_file type.
+        # The content of the file that corresponds to the raw_file resource.
         self.content = content
-        # The feature generators that correspond to resources of the feature_generator type.
+        # The list of feature generators that correspond to the feature_generator resource.
         self.generators = generators
 
     def validate(self):
@@ -297,7 +297,7 @@ class ListFunctionResourcesResponseBodyResultDataGeneratorsInput(DaraModel):
         self,
         features: List[main_models.ListFunctionResourcesResponseBodyResultDataGeneratorsInputFeatures] = None,
     ):
-        # The input features.
+        # The list of input features.
         self.features = features
 
     def validate(self):
@@ -334,27 +334,9 @@ class ListFunctionResourcesResponseBodyResultDataGeneratorsInputFeatures(DaraMod
         name: str = None,
         type: str = None,
     ):
-        # The name of the feature.
+        # The feature name.
         self.name = name
-        # The type of the feature.
-        # 
-        # Valid values:
-        # 
-        # *   item
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   user
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
+        # The feature type.
         self.type = type
 
     def validate(self):

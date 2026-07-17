@@ -11,7 +11,7 @@ class BindESUserAnalyzerRequest(DaraModel):
         self,
         body: Any = None,
     ):
-        # The request parameters.
+        # The request body.
         self.body = body
 
     def validate(self):

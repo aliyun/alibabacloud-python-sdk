@@ -11,14 +11,15 @@ class CreateABTestSceneRequest(DaraModel):
         body: main_models.ABTestScene = None,
         dry_run: bool = None,
     ):
-        # The ABTest scenario. For more information, see [ABTestScene](https://help.aliyun.com/document_detail/173618.html)
+        # The A/B test scene. For more information, see [ABTestScene](https://help.aliyun.com/document_detail/173618.html).
         self.body = body
-        # Specifies whether to check the validity of input parameters. Default value: false.
+        # Specifies whether to validate only the request parameters. The default value is false.
         # 
-        # Valid values:
+        # Values:
         # 
-        # *   **true**: checks only the validity of input parameters.
-        # *   **false**: checks the validity of input parameters and creates an attribution configuration.
+        # - **true**: Validates only the request parameters.
+        # 
+        # - **false**: Validates the request parameters and creates the attribution configuration.
         self.dry_run = dry_run
 
     def validate(self):

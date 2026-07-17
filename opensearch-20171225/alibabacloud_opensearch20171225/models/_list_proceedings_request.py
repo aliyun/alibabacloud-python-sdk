@@ -9,7 +9,7 @@ class ListProceedingsRequest(DaraModel):
         self,
         filter_finished: bool = None,
     ):
-        # Specifies whether the filtering is complete.
+        # Specifies whether to return only completed proceedings.
         self.filter_finished = filter_finished
 
     def validate(self):

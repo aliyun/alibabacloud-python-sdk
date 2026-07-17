@@ -14,7 +14,7 @@ class RemoveSecondRankResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The returned results.
+        # —
         self.result = result
 
     def validate(self):

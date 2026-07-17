@@ -13,36 +13,12 @@ class ListFunctionResourcesRequest(DaraModel):
         resource_type: str = None,
     ):
         # The output level.
-        # 
-        # Valid values:
-        # 
-        # *   simple
-        # *   normal
-        # *   detail
         self.output = output
         # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The page size.
         self.page_size = page_size
-        # The type of the resource.
-        # 
-        # Valid values:
-        # 
-        # *   feature_generator
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   raw_file
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
+        # The resource type.
         self.resource_type = resource_type
 
     def validate(self):

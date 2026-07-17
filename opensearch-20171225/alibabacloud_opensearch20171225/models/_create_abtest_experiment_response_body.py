@@ -63,10 +63,11 @@ class CreateABTestExperimentResponseBodyResult(DaraModel):
         self.id = id
         # The experiment alias.
         self.name = name
-        # Indicates whether the experiment is in effect. Valid values:
+        # The status of the experiment.
         # 
-        # *   true
-        # *   false
+        # - true: The experiment is in effect.
+        # 
+        # - false: The experiment is not in effect.
         self.online = online
         # The experiment parameters.
         self.params = params

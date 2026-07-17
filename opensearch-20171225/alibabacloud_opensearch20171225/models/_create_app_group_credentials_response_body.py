@@ -11,7 +11,9 @@ class CreateAppGroupCredentialsResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.CreateAppGroupCredentialsResponseBodyResult = None,
     ):
+        # The unique ID of the request.
         self.request_id = request_id
+        # The details of the operation result.
         self.result = result
 
     def validate(self):
@@ -50,9 +52,13 @@ class CreateAppGroupCredentialsResponseBodyResult(DaraModel):
         token: str = None,
         type: str = None,
     ):
+        # The ID of the application group.
         self.app_group_id = app_group_id
+        # Indicates whether the credential is enabled.
         self.enabled = enabled
+        # The generated credential token.
         self.token = token
+        # The credential type.
         self.type = type
 
     def validate(self):

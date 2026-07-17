@@ -14,20 +14,21 @@ class CreateFunctionResourceResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
-        # The error code. If no error occurs, this parameter is left empty.
+        # The error code. This is empty if the request succeeds.
         self.code = code
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_code = http_code
-        # The time consumed for the request. Unit: milliseconds.
+        # The request processing time in milliseconds.
         self.latency = latency
-        # The error message returned.
+        # The returned message.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The status code. Valid values:
+        # The status of the request.
         # 
-        # *   OK
-        # *   FAIL
+        # - OK: The request was successful.
+        # 
+        # - FAIL: The request failed.
         self.status = status
 
     def validate(self):

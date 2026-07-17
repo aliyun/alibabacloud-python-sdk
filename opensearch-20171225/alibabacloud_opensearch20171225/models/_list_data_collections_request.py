@@ -10,9 +10,9 @@ class ListDataCollectionsRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The page number. Default value: 1.
+        # The page number. The default value is 1.
         self.page_number = page_number
-        # The number of entries per page. Default value: 10.
+        # The number of entries to return on each page. The default value is 10.
         self.page_size = page_size
 
     def validate(self):

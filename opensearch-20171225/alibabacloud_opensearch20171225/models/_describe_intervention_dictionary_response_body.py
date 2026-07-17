@@ -13,7 +13,7 @@ class DescribeInterventionDictionaryResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The details about the intervention dictionary.
+        # The details of the intervention dictionary.
         self.result = result
 
     def validate(self):
@@ -55,20 +55,25 @@ class DescribeInterventionDictionaryResponseBodyResult(DaraModel):
     ):
         # The custom analyzer.
         self.analyzer = analyzer
-        # The time when the the intervention dictionary was created.
+        # The time when the intervention dictionary was created.
         self.created = created
-        # The name of the the intervention dictionary.
+        # The name of the intervention dictionary.
         self.name = name
-        # Type
+        # The type of the intervention dictionary.
         # 
-        # *   stopword: an intervention dictionary for stop word filtering.
-        # *   synonym: an intervention dictionary for synonym configuration.
-        # *   correction: an intervention dictionary for spelling correction.
-        # *   category_prediction: an intervention dictionary for category prediction.
-        # *   ner: an intervention dictionary for named entity recognition.
-        # *   term_weighting: an intervention dictionary for term weight analysis.
+        # - stopword: an intervention dictionary for stop word filtering.
+        # 
+        # - synonym: an intervention dictionary for synonym configuration.
+        # 
+        # - correction: an intervention dictionary for spelling correction.
+        # 
+        # - category_prediction: an intervention dictionary for category prediction.
+        # 
+        # - ner: an intervention dictionary for Named Entity Recognition (NER).
+        # 
+        # - term_weighting: an intervention dictionary for term weight analysis.
         self.type = type
-        # The time when the the intervention dictionary was modified.
+        # The time when the intervention dictionary was updated.
         self.updated = updated
 
     def validate(self):

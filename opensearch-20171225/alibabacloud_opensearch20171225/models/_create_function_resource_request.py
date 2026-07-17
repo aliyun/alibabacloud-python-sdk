@@ -15,31 +15,13 @@ class CreateFunctionResourceRequest(DaraModel):
         resource_name: str = None,
         resource_type: str = None,
     ):
-        # The resource data. The data structure varies with the resource type.
+        # The resource data. Its structure depends on the \\`ResourceType\\` value.
         self.data = data
         # The description of the resource.
         self.description = description
         # The name of the resource.
         self.resource_name = resource_name
-        # The resource type.
-        # 
-        # Valid values:
-        # 
-        # *   feature_generator
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   raw_file
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
+        # The type of the resource.
         self.resource_type = resource_type
 
     def validate(self):
@@ -88,9 +70,9 @@ class CreateFunctionResourceRequestData(DaraModel):
         content: str = None,
         generators: List[main_models.CreateFunctionResourceRequestDataGenerators] = None,
     ):
-        # The content of the file that corresponds to a resource of the raw_file type.
+        # The file content. Use this for \\`raw_file\\` resources.
         self.content = content
-        # The feature generators that correspond to resources of the feature_generator type.
+        # A list of feature generators. Use this for \\`feature_generator\\` resources.
         self.generators = generators
 
     def validate(self):
@@ -135,56 +117,6 @@ class CreateFunctionResourceRequestDataGenerators(DaraModel):
         output: str = None,
     ):
         # The type of the feature generator.
-        # 
-        # Valid values:
-        # 
-        # *   lookup
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   sequence
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   overlap
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   raw
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   combo
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   id
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
         self.generator = generator
         # The input.
         self.input = input
@@ -230,7 +162,7 @@ class CreateFunctionResourceRequestDataGeneratorsInput(DaraModel):
         self,
         features: List[main_models.CreateFunctionResourceRequestDataGeneratorsInputFeatures] = None,
     ):
-        # The input features.
+        # The list of input features.
         self.features = features
 
     def validate(self):
@@ -270,24 +202,6 @@ class CreateFunctionResourceRequestDataGeneratorsInputFeatures(DaraModel):
         # The name of the feature.
         self.name = name
         # The type of the feature.
-        # 
-        # Valid values:
-        # 
-        # *   item
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   user
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
         self.type = type
 
     def validate(self):

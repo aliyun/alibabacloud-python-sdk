@@ -11,9 +11,9 @@ class CreateSortScriptResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.CreateSortScriptResponseBodyResult = None,
     ):
-        # The request ID.
+        # The unique ID of the request.
         self.request_id = request_id
-        # The response parameters.
+        # The returned result.
         self.result = result
 
     def validate(self):
@@ -51,11 +51,11 @@ class CreateSortScriptResponseBodyResult(DaraModel):
         script_name: str = None,
         type: str = None,
     ):
-        # The sort phase to which the script applies.
+        # The applicable scope of the script.
         self.scope = scope
-        # The script name.
+        # The name of the script.
         self.script_name = script_name
-        # The script type.
+        # The type of the script.
         self.type = type
 
     def validate(self):

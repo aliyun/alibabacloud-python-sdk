@@ -56,6 +56,7 @@ class DescribeAppGroupResponseBodyResult(DaraModel):
         current_version: str = None,
         description: str = None,
         domain: str = None,
+        elastic_lcu: int = None,
         engine_type: str = None,
         expire_on: str = None,
         first_rank_algo_deployment_id: int = None,
@@ -80,13 +81,15 @@ class DescribeAppGroupResponseBodyResult(DaraModel):
     ):
         # The billing method. Valid values:
         # 
-        # *   POSTPAY: pay-as-you-go.
-        # *   PREPAY: subscription.
+        # - POSTPAY: pay-as-you-go.
+        # 
+        # - PREPAY: subscription.
         self.charge_type = charge_type
         # The billable item. Valid values:
         # 
-        # *   1: computing resources.
-        # *   2: queries per second (QPS).
+        # - 1: computing resources.
+        # 
+        # - 2: queries per second (QPS).
         self.charging_way = charging_way
         # The commodity code.
         self.commodity_code = commodity_code
@@ -98,6 +101,7 @@ class DescribeAppGroupResponseBodyResult(DaraModel):
         self.description = description
         # The industry of the application.
         self.domain = domain
+        self.elastic_lcu = elastic_lcu
         # The engine type.
         self.engine_type = engine_type
         # The expiration time.
@@ -106,8 +110,9 @@ class DescribeAppGroupResponseBodyResult(DaraModel):
         self.first_rank_algo_deployment_id = first_rank_algo_deployment_id
         # The approval state of the quotas. Valid values:
         # 
-        # *   0: The application is in service.
-        # *   1: The quotas are being reviewed.
+        # - 0: The application is in service.
+        # 
+        # - 1: The quotas are being reviewed.
         self.has_pending_quota_review_task = has_pending_quota_review_task
         # The application ID.
         self.id = id
@@ -115,9 +120,11 @@ class DescribeAppGroupResponseBodyResult(DaraModel):
         self.instance_id = instance_id
         # The lock state. Valid values:
         # 
-        # *   Unlock: The instance is unlocked.
-        # *   LockByExpiration: The instance is automatically locked after it expires.
-        # *   ManualLock: The instance is manually locked.
+        # - Unlock: The instance is unlocked.
+        # 
+        # - LockByExpiration: The instance is automatically locked after it expires.
+        # 
+        # - ManualLock: The instance is manually locked.
         self.lock_mode = lock_mode
         # Indicates whether the instance is automatically locked after it expires.
         self.locked_by_expiration = locked_by_expiration
@@ -129,8 +136,9 @@ class DescribeAppGroupResponseBodyResult(DaraModel):
         self.processing_order_id = processing_order_id
         # Indicates whether the application is created. Valid values:
         # 
-        # *   0: The application is being created.
-        # *   1: The application is created.
+        # - 0: The application is being created.
+        # 
+        # - 1: The application is created.
         self.produced = produced
         # The name of the A/B test group.
         self.project_id = project_id
@@ -142,11 +150,15 @@ class DescribeAppGroupResponseBodyResult(DaraModel):
         self.second_rank_algo_deployment_id = second_rank_algo_deployment_id
         # The state of the application. Valid values:
         # 
-        # *   producing: The application is being created.
-        # *   review_pending: The application is being reviewed.
-        # *   config_pending: The application is to be configured.
-        # *   normal: The application is in service.
-        # *   frozen: The application is frozen.
+        # - producing: The application is being created.
+        # 
+        # - review_pending: The application is being reviewed.
+        # 
+        # - config_pending: The application is to be configured.
+        # 
+        # - normal: The application is in service.
+        # 
+        # - frozen: The application is frozen.
         self.status = status
         # The timestamp when the current online version was published.
         self.switched_time = switched_time
@@ -154,8 +166,9 @@ class DescribeAppGroupResponseBodyResult(DaraModel):
         self.tags = tags
         # The type of the application. Valid values:
         # 
-        # *   standard: a High-performance Search Edition application.
-        # *   enhanced: an Industry Algorithm Edition application.
+        # - standard: a High-performance Search Edition application.
+        # 
+        # - enhanced: an Industry Algorithm Edition application.
         self.type = type
         # The timestamp when the application was last updated.
         self.updated = updated
@@ -193,6 +206,9 @@ class DescribeAppGroupResponseBodyResult(DaraModel):
 
         if self.domain is not None:
             result['domain'] = self.domain
+
+        if self.elastic_lcu is not None:
+            result['elasticLcu'] = self.elastic_lcu
 
         if self.engine_type is not None:
             result['engineType'] = self.engine_type
@@ -283,6 +299,9 @@ class DescribeAppGroupResponseBodyResult(DaraModel):
 
         if m.get('domain') is not None:
             self.domain = m.get('domain')
+
+        if m.get('elasticLcu') is not None:
+            self.elastic_lcu = m.get('elasticLcu')
 
         if m.get('engineType') is not None:
             self.engine_type = m.get('engineType')
@@ -403,13 +422,19 @@ class DescribeAppGroupResponseBodyResultQuota(DaraModel):
         self.doc_size = doc_size
         # The specifications. Valid values:
         # 
-        # *   opensearch.share.junior: basic.
-        # *   opensearch.share.common: shared general-purpose.
-        # *   opensearch.share.compute: shared computing.
-        # *   opensearch.share.storage: shared storage.
-        # *   opensearch.private.common: exclusive general-purpose.
-        # *   opensearch.private.compute: exclusive computing.
-        # *   opensearch.private.storage: exclusive storage.
+        # - opensearch.share.junior: basic.
+        # 
+        # - opensearch.share.common: shared general-purpose.
+        # 
+        # - opensearch.share.compute: shared computing.
+        # 
+        # - opensearch.share.storage: shared storage.
+        # 
+        # - opensearch.private.common: exclusive general-purpose.
+        # 
+        # - opensearch.private.compute: exclusive computing.
+        # 
+        # - opensearch.private.storage: exclusive storage.
         self.spec = spec
 
     def validate(self):

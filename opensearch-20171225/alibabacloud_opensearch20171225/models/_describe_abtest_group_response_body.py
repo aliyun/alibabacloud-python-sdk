@@ -11,9 +11,9 @@ class DescribeABTestGroupResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.DescribeABTestGroupResponseBodyResult = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The details of the test group.
+        # The A/B test group.
         self.result = result
 
     def validate(self):
@@ -53,18 +53,19 @@ class DescribeABTestGroupResponseBodyResult(DaraModel):
         status: int = None,
         updated: int = None,
     ):
-        # The time when the test group was created.
+        # The time when the group was created.
         self.created = created
-        # The ID of the test group.
+        # The ID of the group.
         self.id = id
-        # The alias of the test group.
+        # The alias of the group.
         self.name = name
-        # The status of the test group. Valid values:
+        # The status of the group.
         # 
-        # *   0: not in effect
-        # *   1: in effect
+        # - 0: Inactive
+        # 
+        # - 1: Active
         self.status = status
-        # The time when the test group was last updated.
+        # The time when the group was last modified.
         self.updated = updated
 
     def validate(self):

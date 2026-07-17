@@ -9,7 +9,7 @@ class ListQueryProcessorAnalyzerResultsRequest(DaraModel):
         self,
         text: str = None,
     ):
-        # The text to be tested.
+        # The text to test.
         # 
         # This parameter is required.
         self.text = text

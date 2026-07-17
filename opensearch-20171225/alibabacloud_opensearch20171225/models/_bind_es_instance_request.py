@@ -11,7 +11,7 @@ class BindEsInstanceRequest(DaraModel):
         self,
         body: Dict[str, Any] = None,
     ):
-        # The body of the request.
+        # The request body.
         self.body = body
 
     def validate(self):

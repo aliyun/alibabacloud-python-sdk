@@ -13,9 +13,9 @@ class UpdateABTestExperimentResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.UpdateABTestExperimentResponseBodyResult = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The details of the test.
+        # The details of the experiment.
         self.result = result
 
     def validate(self):
@@ -57,22 +57,23 @@ class UpdateABTestExperimentResponseBodyResult(DaraModel):
         traffic: int = None,
         updated: int = None,
     ):
-        # The time when the test was created.
+        # The time when the experiment was created.
         self.created = created
-        # The test ID.
+        # The ID of the experiment.
         self.id = id
-        # The alias of the test.
+        # The name of the experiment.
         self.name = name
-        # Indicates whether the test is in effect. Valid values:
+        # The status of the experiment.
         # 
-        # *   true
-        # *   false
+        # - true: The experiment is online.
+        # 
+        # - false: The experiment is offline.
         self.online = online
-        # The test parameters.
+        # The parameters of the experiment.
         self.params = params
-        # The percentage of traffic that is routed to the test. Valid values: [0,100]
+        # The percentage of traffic allocated to the experiment. Valid values: 0 to 100.
         self.traffic = traffic
-        # The time when the test was last modified.
+        # The time when the experiment was last modified.
         self.updated = updated
 
     def validate(self):

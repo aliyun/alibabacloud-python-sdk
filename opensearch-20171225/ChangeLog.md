@@ -1,3 +1,14 @@
+2026-07-17 Version: 5.2.0
+- Support API CreateElasticPlan.
+- Support API DescribeElasticPlan.
+- Support API ListElasticPlans.
+- Support API ModifyElasticPlan.
+- Support API RemoveElasticPlan.
+- Update API DescribeApp: add response parameters Body.result.realtimeShared.
+- Update API DescribeAppGroup: add response parameters Body.result.elasticLcu.
+- Update API DescribeApps: add response parameters Body.result.$.realtimeShared.
+
+
 2026-06-08 Version: 5.1.0
 - Support API UpdateAppGroupDeleteProtection.
 

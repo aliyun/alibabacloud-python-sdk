@@ -12,9 +12,9 @@ class ListDataSourceTableFieldsResponseBody(DaraModel):
         request_id: str = None,
         result: Dict[str, Any] = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The returned result.
+        # The collection of fields from the data table.
         self.result = result
 
     def validate(self):

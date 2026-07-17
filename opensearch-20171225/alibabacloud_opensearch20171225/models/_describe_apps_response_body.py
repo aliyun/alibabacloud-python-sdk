@@ -70,6 +70,7 @@ class DescribeAppsResponseBodyResult(DaraModel):
         prompts: List[Dict[str, Any]] = None,
         query_processors: List[main_models.DescribeAppsResponseBodyResultQueryProcessors] = None,
         quota: main_models.DescribeAppsResponseBodyResultQuota = None,
+        realtime_shared: bool = None,
         schema: main_models.DescribeAppsResponseBodyResultSchema = None,
         schemas: List[main_models.DescribeAppsResponseBodyResultSchemas] = None,
         second_ranks: List[main_models.DescribeAppsResponseBodyResultSecondRanks] = None,
@@ -77,63 +78,74 @@ class DescribeAppsResponseBodyResult(DaraModel):
         summaries: List[main_models.DescribeAppsResponseBodyResultSummaries] = None,
         type: str = None,
     ):
-        # Indicates whether the version is automatically switched to an online version.
+        # Indicates whether automatic switchover is enabled.
         self.auto_switch = auto_switch
-        # The capability opening configurations.
+        # The cluster settings.
         self.cluster = cluster
-        # The cluster name.
+        # The name of the cluster.
         self.cluster_name = cluster_name
-        # The configurations of data sources.
+        # The data source settings.
         self.data_sources = data_sources
         # The description.
         self.description = description
-        # The type of the industry. Valid values:
+        # The industry. Valid values:
         # 
-        # *   GENERAL
-        # *   ECOMMERCE
-        # *   IT_CONTENT
+        # - GENERAL
+        # 
+        # - ECOMMERCE
+        # 
+        # - IT_CONTENT
         self.domain = domain
         # The default display fields.
         self.fetch_fields = fetch_fields
-        # The configurations of rough sort.
+        # The coarse-grained sorting settings.
         self.first_ranks = first_ranks
-        # The group ID.
+        # The ID of the application.
         self.id = id
-        # The field model.
+        # The Large Language Model (LLM) settings for fields.
         self.interpretations = interpretations
         # Indicates whether the version is an online version.
         self.is_current = is_current
-        # The progress of data import, in percentage. For example, a value of 83 indicates 83%.
+        # The progress of data import in percentage. For example, a value of 83 indicates 83%.
         self.progress_percent = progress_percent
-        # The prompt configurations.
+        # The prompt settings.
         self.prompts = prompts
-        # The query intent understanding configurations.
+        # The query analysis settings.
         self.query_processors = query_processors
         # The quota information.
         self.quota = quota
+        self.realtime_shared = realtime_shared
         # The application schema.
         self.schema = schema
-        # The single-table schema.
+        # The schema of a non-partitioned table.
         self.schemas = schemas
-        # The configurations of fine sort.
+        # The fine-grained sorting settings.
         self.second_ranks = second_ranks
         # The status of the version. Valid values:
         # 
-        # *   ok: The version is normal.
-        # *   stopped: The version is suspended.
-        # *   frozen: The version is frozen.
-        # *   initializing: The version is being initialized.
-        # *   unavailable: The version is invalid.
-        # *   data_waiting: Data is to be initialized.
-        # *   data_preparing: Data is being initialized.
+        # - ok: The version is normal.
+        # 
+        # - stopped: The version is paused.
+        # 
+        # - frozen: The version is frozen.
+        # 
+        # - initializing: The version is being initialized.
+        # 
+        # - unavailable: The version is invalid.
+        # 
+        # - data_waiting: Data is pending initialization.
+        # 
+        # - data_preparing: Data is being initialized.
         self.status = status
-        # The search result summary configurations.
+        # The search result summary settings.
         self.summaries = summaries
         # The type of the application. Valid values:
         # 
-        # *   standard: a standard edition application.
-        # *   advance: an advanced edition application of an old version. New versions are not supported for this edition.
-        # *   enhanced: an advanced edition application of a new version.
+        # - standard: a Standard Edition application.
+        # 
+        # - advance: an Advanced Edition application of an old version. This edition is not supported for new applications.
+        # 
+        # - enhanced: a new version of Advanced Edition.
         self.type = type
 
     def validate(self):
@@ -226,6 +238,9 @@ class DescribeAppsResponseBodyResult(DaraModel):
         if self.quota is not None:
             result['quota'] = self.quota.to_map()
 
+        if self.realtime_shared is not None:
+            result['realtimeShared'] = self.realtime_shared
+
         if self.schema is not None:
             result['schema'] = self.schema.to_map()
 
@@ -311,6 +326,9 @@ class DescribeAppsResponseBodyResult(DaraModel):
             temp_model = main_models.DescribeAppsResponseBodyResultQuota()
             self.quota = temp_model.from_map(m.get('quota'))
 
+        if m.get('realtimeShared') is not None:
+            self.realtime_shared = m.get('realtimeShared')
+
         if m.get('schema') is not None:
             temp_model = main_models.DescribeAppsResponseBodyResultSchema()
             self.schema = temp_model.from_map(m.get('schema'))
@@ -347,9 +365,9 @@ class DescribeAppsResponseBodyResultSummaries(DaraModel):
         meta: List[main_models.DescribeAppsResponseBodyResultSummariesMeta] = None,
         name: str = None,
     ):
-        # The summary configurations.
+        # The summary settings.
         self.meta = meta
-        # The group name.
+        # The name of the summary group.
         self.name = name
 
     def validate(self):
@@ -395,7 +413,7 @@ class DescribeAppsResponseBodyResultSummariesMeta(DaraModel):
         len: int = None,
         snippet: str = None,
     ):
-        # The element that is used for highlighting.
+        # The HTML tag for highlighting.
         self.element = element
         # The connector that is used to connect segments.
         self.ellipsis = ellipsis
@@ -458,13 +476,13 @@ class DescribeAppsResponseBodyResultSecondRanks(DaraModel):
         meta: Any = None,
         name: str = None,
     ):
-        # Indicates whether the expression is the default one.
+        # Indicates whether this is the default expression.
         self.active = active
         # The description.
         self.description = description
-        # The fine sort expression. You can define an expression that consists of fields, feature functions, and mathematical functions to implement complex sort logic.
+        # The fine-grained sorting expression. You can define an expression that consists of fields, feature functions, and mathematical functions to implement complex sorting logic.
         self.meta = meta
-        # The name of the fine sort expression.
+        # The name of the fine-grained sorting expression.
         self.name = name
 
     def validate(self):
@@ -517,7 +535,7 @@ class DescribeAppsResponseBodyResultSchemas(DaraModel):
         tables: Dict[str, Any] = None,
         ttl_field: main_models.DescribeAppsResponseBodyResultSchemasTtlField = None,
     ):
-        # The sort configurations.
+        # The index sorting settings.
         self.index_sort_config = index_sort_config
         # The index schema.
         self.indexes = indexes
@@ -525,13 +543,13 @@ class DescribeAppsResponseBodyResultSchemas(DaraModel):
         self.name = name
         # The level-1 routing field.
         self.route_field = route_field
-        # The hot values of the level-1 routing field.
+        # The hot data values of the level-1 routing field.
         self.route_field_values = route_field_values
-        # The level-2 routing field. This parameter is returned if the routeFieldValues parameter is returned. By default, the wide-table primary key field is used as the level-2 routing field.
+        # The level-2 routing field. This parameter takes effect only if the routeFieldValues parameter is configured. By default, the primary key of the wide table is used as the level-2 routing field.
         self.second_route_field = second_route_field
         # The table schema.
         self.tables = tables
-        # The document clearing configurations.
+        # The document TTL settings.
         self.ttl_field = ttl_field
 
     def validate(self):
@@ -616,9 +634,9 @@ class DescribeAppsResponseBodyResultSchemasTtlField(DaraModel):
         name: str = None,
         ttl: int = None,
     ):
-        # The document time field.
+        # The document TTL field.
         self.name = name
-        # The TTL. Unit: milliseconds.
+        # The time to live (TTL). Unit: milliseconds.
         self.ttl = ttl
 
     def validate(self):
@@ -690,10 +708,11 @@ class DescribeAppsResponseBodyResultSchemasIndexSortConfig(DaraModel):
         direction: str = None,
         field: str = None,
     ):
-        # The sort method. Valid values:
+        # The sort order. Valid values:
         # 
-        # *   ASC
-        # *   DESC
+        # - ASC
+        # 
+        # - DESC
         self.direction = direction
         # The sort field.
         self.field = field
@@ -736,7 +755,7 @@ class DescribeAppsResponseBodyResultSchema(DaraModel):
         tables: Dict[str, Any] = None,
         ttl_field: main_models.DescribeAppsResponseBodyResultSchemaTtlField = None,
     ):
-        # The sort configurations.
+        # The index sorting settings.
         self.index_sort_config = index_sort_config
         # The index schema.
         self.indexes = indexes
@@ -744,13 +763,13 @@ class DescribeAppsResponseBodyResultSchema(DaraModel):
         self.name = name
         # The level-1 routing field.
         self.route_field = route_field
-        # The hot values of the level-1 routing field.
+        # The hot data values of the level-1 routing field.
         self.route_field_values = route_field_values
-        # The level-2 routing field. This parameter is returned if the routeFieldValues parameter is returned. By default, the wide-table primary key field is used as the level-2 routing field.
+        # The level-2 routing field. This parameter takes effect only if the routeFieldValues parameter is configured. By default, the primary key of the wide table is used as the level-2 routing field.
         self.second_route_field = second_route_field
         # The table schema.
         self.tables = tables
-        # The document clearing configurations.
+        # The document time-to-live (TTL) settings.
         self.ttl_field = ttl_field
 
     def validate(self):
@@ -835,9 +854,9 @@ class DescribeAppsResponseBodyResultSchemaTtlField(DaraModel):
         name: str = None,
         ttl: int = None,
     ):
-        # The document clearing field.
+        # The document TTL field.
         self.name = name
-        # The TTL. Unit: milliseconds.
+        # The time to live (TTL). Unit: milliseconds.
         self.ttl = ttl
 
     def validate(self):
@@ -909,10 +928,11 @@ class DescribeAppsResponseBodyResultSchemaIndexSortConfig(DaraModel):
         direction: str = None,
         field: str = None,
     ):
-        # The sort method. Valid values:
+        # The sort order. Valid values:
         # 
-        # *   ASC
-        # *   DESC
+        # - ASC
+        # 
+        # - DESC
         self.direction = direction
         # The sort field.
         self.field = field
@@ -951,21 +971,27 @@ class DescribeAppsResponseBodyResultQuota(DaraModel):
         qps: int = None,
         spec: str = None,
     ):
-        # The computing resources. Unit: logical computing unit (LCU).
+        # The computing resources. Unit: logical compute unit (LCU).
         self.compute_resource = compute_resource
         # The storage capacity. Unit: GB.
         self.doc_size = doc_size
-        # The number of search requests per second. You are charged based on the number of search requests per second in the earlier billing model.
+        # The number of queries per second (QPS). This parameter is used in an earlier billing model.
         self.qps = qps
         # The specifications. Valid values:
         # 
-        # *   opensearch.share.junior: basic
-        # *   opensearch.share.common: shared general-purpose
-        # *   opensearch.share.compute: shared computing
-        # *   opensearch.share.storage: shared storage
-        # *   opensearch.private.common: exclusive general-purpose
-        # *   opensearch.private.compute: exclusive computing
-        # *   opensearch.private.storage: exclusive storage
+        # - opensearch.share.junior: Basic
+        # 
+        # - opensearch.share.common: Shared general-purpose
+        # 
+        # - opensearch.share.compute: Shared compute-optimized
+        # 
+        # - opensearch.share.storage: Shared storage-optimized
+        # 
+        # - opensearch.private.common: Dedicated general-purpose
+        # 
+        # - opensearch.private.compute: Dedicated compute-optimized
+        # 
+        # - opensearch.private.storage: Dedicated storage-optimized
         self.spec = spec
 
     def validate(self):
@@ -1016,19 +1042,21 @@ class DescribeAppsResponseBodyResultQueryProcessors(DaraModel):
         name: str = None,
         processors: List[Dict[str, Any]] = None,
     ):
-        # Indicates whether the rule is the default one.
+        # Indicates whether this is the default rule.
         self.active = active
         # The industry category.
         self.category = category
-        # The type of the industry. Valid values:
+        # The industry. Valid values:
         # 
-        # *   GENERAL
-        # *   ECOMMERCE
-        # *   IT_CONTENT
+        # - GENERAL
+        # 
+        # - ECOMMERCE
+        # 
+        # - IT_CONTENT
         self.domain = domain
         # The indexes.
         self.indexes = indexes
-        # The rule name.
+        # The name of the query analysis rule.
         self.name = name
         # The features.
         self.processors = processors
@@ -1092,17 +1120,17 @@ class DescribeAppsResponseBodyResultFirstRanks(DaraModel):
         name: str = None,
         type: str = None,
     ):
-        # Indicates whether the expression is the default one.
+        # Indicates whether this is the default expression.
         self.active = active
         # The description.
         self.description = description
-        # The information about the expression. The information is displayed in the array or string format.
+        # The expression, which can be an array or a string.
         self.meta = meta
-        # The name of the rough sort expression.
+        # The name of the coarse-grained sorting expression.
         self.name = name
-        # The expression type. Valid values:
+        # The expression type. Valid values: STRUCT: a structured expression. STRING (default): a custom formula.
         # 
-        # STRUCT: The content of the expression is a structure. STRING (default): a custom formula.
+        # STRUCT: The content of the expression is a structure. STRING (default): You can configure a custom formula.
         self.type = type
 
     def validate(self):
@@ -1156,11 +1184,11 @@ class DescribeAppsResponseBodyResultDomain(DaraModel):
         functions: main_models.DescribeAppsResponseBodyResultDomainFunctions = None,
         name: str = None,
     ):
-        # The type of the edition. Valid values: standard, advance, and enhanced. A value of standard indicates a standard edition. A value of advance indicates an advanced edition which is of an old version. New version is not supported for this edition. A value of enhanced indicates an advanced edition which is of a new version.
+        # The edition of the application. Valid values: standard (Standard Edition), advance (the legacy Premium Edition, which is not available for new applications), and enhanced (the new Premium Edition).
         self.category = category
-        # The search results.
+        # The search features.
         self.functions = functions
-        # The name (in English).
+        # The name in English.
         self.name = name
 
     def validate(self):
@@ -1204,11 +1232,11 @@ class DescribeAppsResponseBodyResultDomainFunctions(DaraModel):
         qp: List[str] = None,
         service: List[str] = None,
     ):
-        # Structure 1.
+        # Structure 1
         self.algo = algo
-        # Information 1.
+        # The query processing features.
         self.qp = qp
-        # Feature 1.
+        # The service features.
         self.service = service
 
     def validate(self):
@@ -1254,29 +1282,37 @@ class DescribeAppsResponseBodyResultDataSources(DaraModel):
         table_name: str = None,
         type: str = None,
     ):
-        # The information about field mappings.
+        # The field mappings.
         self.fields = fields
         # The primary key.
         self.key_field = key_field
-        # The information about the data source.
+        # The data source parameters.
         self.parameters = parameters
-        # The plug-ins that are used for data processing.
+        # The data processing plug-ins for fields.
         # 
-        # name:
+        # Plug-in name (name)
         # 
-        # *   JsonKeyValueExtractor
-        # *   MultiValueSpliter
-        # *   KeyValueExtractor
-        # *   StringCatenateExtractor
-        # *   HTMLTagRemover
+        # - JsonKeyValueExtractor
         # 
-        # parameters:
+        # - MultiValueSpliter
         # 
-        # *   JsonKeyValueExtractor
-        # *   MultiValueSpliter
-        # *   KeyValueExtractor
-        # *   StringCatenateExtractor
-        # *   HTMLTagRemover
+        # - KeyValueExtractor
+        # 
+        # - StringCatenateExtractor
+        # 
+        # - HTMLTagRemover
+        # 
+        # Plug-in parameters (parameters):
+        # 
+        # - JsonKeyValueExtractor
+        # 
+        # - MultiValueSpliter
+        # 
+        # - KeyValueExtractor
+        # 
+        # - StringCatenateExtractor
+        # 
+        # - HTMLTagRemover
         self.plugins = plugins
         # The name of the wide table.
         self.schema_name = schema_name
@@ -1284,10 +1320,13 @@ class DescribeAppsResponseBodyResultDataSources(DaraModel):
         self.table_name = table_name
         # The type of the data source. Valid values:
         # 
-        # *   rds
-        # *   odps
-        # *   opensearch
-        # *   polardb
+        # - rds
+        # 
+        # - odps
+        # 
+        # - opensearch
+        # 
+        # - polardb
         self.type = type
 
     def validate(self):
@@ -1354,7 +1393,7 @@ class DescribeAppsResponseBodyResultCluster(DaraModel):
     ):
         # The maximum length of the query clause.
         self.max_query_clause_length = max_query_clause_length
-        # The timeout period. Unit: milliseconds.
+        # The timeout period for the cluster. Unit: ms.
         self.max_timeout_ms = max_timeout_ms
 
     def validate(self):

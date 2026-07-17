@@ -11,11 +11,11 @@ class ListUserAnalyzerEntriesRequest(DaraModel):
         page_size: int = None,
         word: str = None,
     ):
-        # The page number. Default value: 1.
+        # The page number. The default value is 1.
         self.page_number = page_number
-        # The number of entries per page. Default value: 10.
+        # The number of entries to return on each page. The default value is 10.
         self.page_size = page_size
-        # The key to be used to query entries.
+        # The entry key.
         self.word = word
 
     def validate(self):

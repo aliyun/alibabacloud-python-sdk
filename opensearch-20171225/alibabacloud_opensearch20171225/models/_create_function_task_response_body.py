@@ -24,7 +24,7 @@ class CreateFunctionTaskResponseBody(DaraModel):
         self.message = message
         # The ID of the request.
         self.request_id = request_id
-        # The status of the request.
+        # The request status.
         self.status = status
 
     def validate(self):

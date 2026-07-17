@@ -12,9 +12,9 @@ class DescribeUserAnalyzerResponseBody(DaraModel):
         request_id: str = None,
         result: Dict[str, Any] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The details of the custom analyzer.
+        # The details of the custom analyzer. For more information, see [UserAnalyzer](https://help.aliyun.com/document_detail/178934.html).
         self.result = result
 
     def validate(self):

@@ -13,7 +13,7 @@ class RemoveInterventionDictionaryResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The information about the intervention dictionary.
+        # The details of the intervention dictionary.
         self.result = result
 
     def validate(self):
@@ -57,18 +57,23 @@ class RemoveInterventionDictionaryResponseBodyResult(DaraModel):
         self.analyzer = analyzer
         # The time when the intervention dictionary was created.
         self.created = created
-        # Parameter
+        # The name of the dictionary.
         self.name = name
-        # Type
+        # The type of the dictionary. Valid values:
         # 
-        # *   stopword: an intervention dictionary for stop word filtering.
-        # *   synonym: an intervention dictionary for synonym configuration.
-        # *   correction: an intervention dictionary for spelling correction.
-        # *   category_prediction: an intervention dictionary for category prediction.
-        # *   ner: an intervention dictionary for named entity recognition.
-        # *   term_weighting: an intervention dictionary for term weight analysis.
+        # - stopword: An intervention dictionary for stop words.
+        # 
+        # - synonym: An intervention dictionary for synonyms.
+        # 
+        # - correction: An intervention dictionary for spelling correction.
+        # 
+        # - category_prediction: An intervention dictionary for category prediction.
+        # 
+        # - ner: An intervention dictionary for Named Entity Recognition (NER).
+        # 
+        # - term_weighting: An intervention dictionary for term weights.
         self.type = type
-        # The time when the the intervention dictionary was modified.
+        # The time when the intervention dictionary was updated.
         self.updated = updated
 
     def validate(self):

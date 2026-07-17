@@ -56,11 +56,11 @@ class DescribeFirstRankResponseBodyResult(DaraModel):
     ):
         # Indicates whether the expression is the default one.
         self.active = active
-        # Description
+        # The description of the expression.
         self.description = description
         # The information about the expression.
         self.meta = meta
-        # Parameter
+        # The name of the expression.
         self.name = name
 
     def validate(self):
@@ -118,7 +118,7 @@ class DescribeFirstRankResponseBodyResultMeta(DaraModel):
     ):
         # The parameters that are used by a function in the expression.
         self.arg = arg
-        # The attribute, feature function, or field to be searched for.
+        # The attribute, scoring feature, or search field.
         self.attribute = attribute
         # The weight. Valid values: -100000 to 100000. The value cannot be 0.
         self.weight = weight

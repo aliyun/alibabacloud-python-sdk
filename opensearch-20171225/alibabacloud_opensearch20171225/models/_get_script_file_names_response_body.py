@@ -13,9 +13,9 @@ class GetScriptFileNamesResponseBody(DaraModel):
         request_id: str = None,
         result: List[main_models.GetScriptFileNamesResponseBodyResult] = None,
     ):
-        # The ID of the request.
+        # The unique identifier of the request.
         self.request_id = request_id
-        # The files of the script.
+        # The list of scripts.
         self.result = result
 
     def validate(self):
@@ -60,13 +60,13 @@ class GetScriptFileNamesResponseBodyResult(DaraModel):
         modify_time: str = None,
         path_name: str = None,
     ):
-        # The time when the script file was created.
+        # The time when the script was created.
         self.create_time = create_time
         # The name of the script file.
         self.file_name = file_name
-        # The time when the script file was last modified.
+        # The time when the script was last modified.
         self.modify_time = modify_time
-        # The path name of the script file.
+        # The path of the script.
         self.path_name = path_name
 
     def validate(self):

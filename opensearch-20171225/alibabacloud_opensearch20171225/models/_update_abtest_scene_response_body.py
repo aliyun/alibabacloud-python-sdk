@@ -15,7 +15,8 @@ class UpdateABTestSceneResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The details of the test scenario. For more information, see [ABTestScene](https://help.aliyun.com/document_detail/173618.html).
+        # The details of the A/B test scenario.
+        # For more information, see [ABTestScene](https://help.aliyun.com/document_detail/173618.html).
         self.result = result
 
     def validate(self):
@@ -57,22 +58,23 @@ class UpdateABTestSceneResponseBodyResult(DaraModel):
         traffic: int = None,
         updated: int = None,
     ):
-        # The time when the test scenario was created.
+        # The time when the scenario was created.
         self.created = created
-        # The ID of the test scenario.
+        # The ID of the scenario.
         self.id = id
-        # The name of the test scenario.
+        # The alias of the scenario.
         self.name = name
-        # The status of the test. Valid values:
+        # The status of the test.
         # 
-        # *   true: The test is started.
-        # *   false: The test is stopped.
+        # - true: The test is started.
+        # 
+        # - false: The test is stopped.
         self.online = online
-        # The parameters of the A/B test.
+        # The parameters of the experiment.
         self.params = params
         # The percentage of traffic that is allocated to the A/B test. Valid values: 0 to 100.
         self.traffic = traffic
-        # The time when the test scenario was last modified.
+        # The time when the scenario was last modified.
         self.updated = updated
 
     def validate(self):

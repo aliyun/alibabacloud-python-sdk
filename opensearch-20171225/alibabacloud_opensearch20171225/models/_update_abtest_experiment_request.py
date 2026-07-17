@@ -13,10 +13,11 @@ class UpdateABTestExperimentRequest(DaraModel):
     ):
         # The request body. For more information, see [ABTestExperiment](https://help.aliyun.com/document_detail/173617.html).
         self.body = body
-        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # Specifies whether to perform a dry run. Valid values:
         # 
-        # *   true: performs only a dry run. No endpoint is created. The system checks whether your AccessKey is valid, whether Resource Access Management (RAM) users are authorized, and whether the required parameters are set.
-        # *   false (default): creates an endpoint immediately.
+        # - true: Performs a dry run. The system checks if your AccessKey is valid, if the Resource Access Management (RAM) user is authorized, and if all required parameters are specified. The request is not sent.
+        # 
+        # - false (default): Sends the request to update the experiment.
         self.dry_run = dry_run
 
     def validate(self):

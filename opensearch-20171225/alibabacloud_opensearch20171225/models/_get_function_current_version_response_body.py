@@ -22,13 +22,13 @@ class GetFunctionCurrentVersionResponseBody(DaraModel):
         self.code = code
         # The HTTP status code.
         self.http_code = http_code
-        # The time consumed for the request, in milliseconds.
+        # The request latency in milliseconds (ms).
         self.latency = latency
         # The error message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The result of the request.
+        # The returned result.
         self.result = result
         # The status of the request.
         self.status = status
@@ -105,16 +105,17 @@ class GetFunctionCurrentVersionResponseBodyResult(DaraModel):
         self.function_name = function_name
         # The type of the feature. Valid values:
         # 
-        # *   PAAS
-        # *   SAAS
+        # - PAAS
+        # 
+        # - SAAS
         self.function_type = function_type
-        # The type of the model.
+        # The model type.
         self.model_type = model_type
-        # The configuration information about the instance.
+        # The configuration.
         self.version_config = version_config
-        # The ID of the version.
+        # The version ID.
         self.version_id = version_id
-        # The name of the version.
+        # The version name.
         self.version_name = version_name
 
     def validate(self):
@@ -176,11 +177,11 @@ class GetFunctionCurrentVersionResponseBodyResultVersionConfig(DaraModel):
         depends: List[main_models.GetFunctionCurrentVersionResponseBodyResultVersionConfigDepends] = None,
         usage_parameters: List[main_models.GetFunctionCurrentVersionResponseBodyResultVersionConfigUsageParameters] = None,
     ):
-        # The parameters that are used to create the instance.
+        # The parameters used to create an instance.
         self.create_parameters = create_parameters
-        # The dependencies of the instance.
+        # A list of instance dependencies.
         self.depends = depends
-        # The parameters that are used to use the instance online.
+        # The parameters for using the instance online.
         self.usage_parameters = usage_parameters
 
     def validate(self):
@@ -249,7 +250,7 @@ class GetFunctionCurrentVersionResponseBodyResultVersionConfigUsageParameters(Da
     ):
         # The name of the parameter.
         self.name = name
-        # Indicates whether the parameter is required.
+        # Specifies whether the parameter is required.
         self.required = required
 
     def validate(self):
@@ -332,7 +333,7 @@ class GetFunctionCurrentVersionResponseBodyResultVersionConfigCreateParameters(D
     ):
         # The name of the parameter.
         self.name = name
-        # Indicates whether the parameter is required.
+        # Specifies whether the parameter is required.
         self.required = required
 
     def validate(self):

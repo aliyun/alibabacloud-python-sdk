@@ -14,13 +14,13 @@ class ListDataCollectionsResponseBody(DaraModel):
         result: List[main_models.ListDataCollectionsResponseBodyResult] = None,
         total_count: int = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The details of the data collection task.
+        # The data collection information.
         # 
         # For more information, see [DataCollection](https://help.aliyun.com/document_detail/173605.html).
         self.result = result
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -76,41 +76,49 @@ class ListDataCollectionsResponseBodyResult(DaraModel):
         type: str = None,
         updated: int = None,
     ):
-        # The time when the task was created.
+        # The time when the data collection was created.
         self.created = created
-        # The type of data collected. Valid values:
+        # The type of data collection.
         # 
-        # *   behavior: behavioral data.
-        # *   item_info: project information.
-        # *   industry_specific: industry-specific data.
+        # - behavior: User behavior data.
+        # 
+        # - item_info: Item information.
+        # 
+        # - industry_specific: Industry-specific attributes.
         self.data_collection_type = data_collection_type
-        # The data collection ID.
+        # The ID of the data collection.
         self.id = id
-        # The industry name. Valid values:
+        # The name of the industry.
         # 
-        # *   general
-        # *   ecommerce
+        # - general: General.
+        # 
+        # - ecommerce: E-commerce.
         self.industry_name = industry_name
-        # The name of the data collection task.
+        # The name of the data collection.
         self.name = name
-        # The status of the data collection feature. Valid values:
+        # The status.
         # 
-        # *   0: The feature is disabled.
-        # *   1: The feature is being enabled.
-        # *   2: The feature is enabled.
-        # *   3: The feature failed to be enabled.
+        # - 0: Disabled.
+        # 
+        # - 1: Enabling.
+        # 
+        # - 2: Enabled.
+        # 
+        # - 3: Failed.
         self.status = status
-        # The sundial ID.
+        # The ID of the sundial.
         self.sundial_id = sundial_id
-        # The type of the source from which data was collected. Valid values:
+        # The type of the data collection client.
         # 
-        # *   server
-        # *   web
-        # *   app
+        # - server
         # 
-        # Only server is supported.
+        # - web
+        # 
+        # - app
+        # 
+        # Note: Only server is supported.
         self.type = type
-        # The time when the data collection task was updated.
+        # The time when the data collection was last updated.
         self.updated = updated
 
     def validate(self):

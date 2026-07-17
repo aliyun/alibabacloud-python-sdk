@@ -11,7 +11,7 @@ class CreateFirstRankRequest(DaraModel):
         body: main_models.FirstRank = None,
         dry_run: bool = None,
     ):
-        # The request body that contains the parameters of the rough sort expression.
+        # The request body, which contains the information about the rough sort expression.
         self.body = body
         # Specifies whether to perform a dry run.
         self.dry_run = dry_run

@@ -26,7 +26,7 @@ class CreateFunctionInstanceRequest(DaraModel):
         self.description = description
         # The feature type.
         # 
-        # *   Default value: PAAS. Training is required before you can use the feature.
+        # - Default value: PAAS. Training is required before you can use the feature.
         self.function_type = function_type
         # The instance name. The name must be 1 to 30 characters in length and can contain letters, digits, and underscores (_). The name is case-sensitive and must start with a letter.
         # 
@@ -34,17 +34,27 @@ class CreateFunctionInstanceRequest(DaraModel):
         self.instance_name = instance_name
         # The model type. The value varies based on the model.
         # 
-        # *   Click-through rate (CTR) model: tf_checkpoint
-        # *   Popularity model: pop
-        # *   Category model: offline_inference
-        # *   Hotword model: offline_inference
-        # *   Hint model: offline_inference
-        # *   Hotword model for real-time top searches: near_realtime
-        # *   Personalized hint model: near_realtime
-        # *   Drop-down suggestion model: offline_inference
-        # *   Tokenization model: text
-        # *   Term weight model: tf_checkpoint
-        # *   Synonym model: offline_inference
+        # - Click-through rate (CTR) model: tf_checkpoint
+        # 
+        # - Popularity model: pop
+        # 
+        # - Category model: offline_inference
+        # 
+        # - Hotword model: offline_inference
+        # 
+        # - Hint model: offline_inference
+        # 
+        # - Hotword model for real-time top searches: near_realtime
+        # 
+        # - Personalized hint model: near_realtime
+        # 
+        # - Drop-down suggestion model: offline_inference
+        # 
+        # - Tokenization model: text
+        # 
+        # - Term weight model: tf_checkpoint
+        # 
+        # - Synonym model: offline_inference
         # 
         # This parameter is required.
         self.model_type = model_type

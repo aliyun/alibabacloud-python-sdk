@@ -11,7 +11,7 @@ class GetSortScriptFileResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.GetSortScriptFileResponseBodyResult = None,
     ):
-        # The request ID.
+        # The unique ID of the request.
         self.request_id = request_id
         # The content of the sort script.
         self.result = result
@@ -52,11 +52,11 @@ class GetSortScriptFileResponseBodyResult(DaraModel):
         modify_time: str = None,
         version: int = None,
     ):
-        # The script content that is encoded in the Base64 format.
+        # The content of the script, Base64-encoded.
         self.content = content
-        # The time when the script was created.
+        # The time when the script file was created.
         self.create_time = create_time
-        # The time when the script was last modified.
+        # The time when the script file was last modified.
         self.modify_time = modify_time
         # The version of the script content.
         self.version = version

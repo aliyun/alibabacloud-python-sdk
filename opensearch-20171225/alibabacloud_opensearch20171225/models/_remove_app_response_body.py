@@ -14,7 +14,7 @@ class RemoveAppResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The return result.
+        # —
         self.result = result
 
     def validate(self):

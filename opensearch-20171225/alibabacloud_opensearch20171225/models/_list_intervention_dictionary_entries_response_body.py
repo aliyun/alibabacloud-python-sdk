@@ -76,8 +76,9 @@ class ListInterventionDictionaryEntriesResponseBodyResult(DaraModel):
     ):
         # The command. Valid values:
         # 
-        # *   add
-        # *   delete
+        # - add
+        # 
+        # - delete
         self.cmd = cmd
         # The timestamp when the intervention entry was created.
         self.created = created
@@ -85,7 +86,7 @@ class ListInterventionDictionaryEntriesResponseBodyResult(DaraModel):
         self.relevance = relevance
         # The status of the intervention entry. Valid value:
         # 
-        # *   ACTIVE: The intervention entry takes effect.
+        # - ACTIVE: The intervention entry takes effect.
         self.status = status
         # The content of the intervention entry for term weight analysis.
         self.tokens = tokens
@@ -170,42 +171,77 @@ class ListInterventionDictionaryEntriesResponseBodyResultTokens(DaraModel):
         self.order = order
         # The internal name of the identified entity type. Valid values:
         # 
-        # *   brand
-        # *   category
-        # *   material
-        # *   element
-        # *   style
-        # *   color
-        # *   function
-        # *   scenario
-        # *   people
-        # *   season
-        # *   model
-        # *   region
-        # *   name
-        # *   adjective
-        # *   category-modifier
-        # *   size
-        # *   quality
-        # *   suit
-        # *   new-release
-        # *   series
-        # *   marketing
-        # *   entertainment
-        # *   organization
-        # *   movie
-        # *   game
-        # *   number
-        # *   unit
-        # *   common
-        # *   new-word
-        # *   proper-noun
-        # *   symbol
-        # *   prefix
-        # *   suffix
-        # *   gift
-        # *   negative
-        # *   agent
+        # - brand
+        # 
+        # - category
+        # 
+        # - material
+        # 
+        # - element
+        # 
+        # - style
+        # 
+        # - color
+        # 
+        # - function
+        # 
+        # - scenario
+        # 
+        # - people
+        # 
+        # - season
+        # 
+        # - model
+        # 
+        # - region
+        # 
+        # - name
+        # 
+        # - adjective
+        # 
+        # - category-modifier
+        # 
+        # - size
+        # 
+        # - quality
+        # 
+        # - suit
+        # 
+        # - new-release
+        # 
+        # - series
+        # 
+        # - marketing
+        # 
+        # - entertainment
+        # 
+        # - organization
+        # 
+        # - movie
+        # 
+        # - game
+        # 
+        # - number
+        # 
+        # - unit
+        # 
+        # - common
+        # 
+        # - new-word
+        # 
+        # - proper-noun
+        # 
+        # - symbol
+        # 
+        # - prefix
+        # 
+        # - suffix
+        # 
+        # - gift
+        # 
+        # - negative
+        # 
+        # - agent
         self.tag = tag
         # The description of the internal name of the identified entity type.
         self.tag_label = tag_label

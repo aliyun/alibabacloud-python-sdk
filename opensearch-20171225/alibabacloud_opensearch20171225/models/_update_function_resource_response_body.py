@@ -14,15 +14,15 @@ class UpdateFunctionResourceResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
-        # The error code. If no error occurs, this parameter is left empty.
+        # The error code. This parameter is empty if the request is successful.
         self.code = code
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_code = http_code
-        # The time consumed for the request. Unit: milliseconds.
+        # The request latency. Unit: milliseconds.
         self.latency = latency
-        # The error message returned.
+        # The error message.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The status of the request.
         self.status = status

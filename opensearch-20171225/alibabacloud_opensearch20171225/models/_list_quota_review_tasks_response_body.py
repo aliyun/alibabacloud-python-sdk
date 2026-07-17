@@ -16,9 +16,9 @@ class ListQuotaReviewTasksResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The information about the tickets. For more information, see [QuotaReviewTask](https://help.aliyun.com/document_detail/173609.html).
+        # The information about the approval tickets. For more information, see [QuotaReviewTask](https://help.aliyun.com/document_detail/173609.html).
         self.result = result
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -87,31 +87,31 @@ class ListQuotaReviewTasksResponseBodyResult(DaraModel):
         self.app_group_name = app_group_name
         # The application type.
         self.app_group_type = app_group_type
-        # Indicates whether the ticket is approved.
+        # Indicates whether the task is approved.
         self.approved = approved
-        # Indicates whether the application is available.
+        # Indicates whether the resource is active.
         self.available = available
-        # The time when the ticket was created.
+        # The time when the task was created.
         self.gmt_create = gmt_create
-        # The time when the ticket was last updated.
+        # The time of the last modification.
         self.gmt_modified = gmt_modified
         # The ticket ID.
         self.id = id
         # The remarks.
         self.memo = memo
-        # The computing resource quota that is applied for.
+        # The target computing resource.
         self.new_compute_resource = new_compute_resource
-        # The storage capacity quota that is applied for.
+        # The target storage capacity.
         self.new_soc_size = new_soc_size
-        # The application specifications that are applied for.
+        # The new application specifications.
         self.new_spec = new_spec
-        # The original quota of computing resources.
+        # The original computing resource.
         self.old_compute_resource = old_compute_resource
-        # The original quota of storage capacity.
+        # The original storage capacity.
         self.old_doc_size = old_doc_size
         # The original specifications of the application.
         self.old_spec = old_spec
-        # Indicates whether the ticket is pending.
+        # Indicates whether the task is pending.
         self.pending = pending
 
     def validate(self):

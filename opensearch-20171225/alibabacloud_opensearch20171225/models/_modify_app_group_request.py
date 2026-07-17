@@ -15,19 +15,23 @@ class ModifyAppGroupRequest(DaraModel):
     ):
         # The online version of the application.
         self.current_version = current_version
-        # The description of the application.
+        # The description of the application group.
         self.description = description
-        # The type of the industry. Valid values:
+        # The industry. Valid values:
         # 
-        # *   general: general.
-        # *   ecommerce: e-commerce.
-        # *   education: education.
-        # *   esports: electronic sports.
-        # *   community: content community.
+        # - general: general.
+        # 
+        # - ecommerce: e-commerce.
+        # 
+        # - education: education.
+        # 
+        # - esports: gaming.
+        # 
+        # - community: content community.
         self.domain = domain
         # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
-        # Specifies whether to verify the application before modification. Valid values: true and false.
+        # Specifies whether to perform a dry run. Valid values: true and false.
         self.dry_run = dry_run
 
     def validate(self):

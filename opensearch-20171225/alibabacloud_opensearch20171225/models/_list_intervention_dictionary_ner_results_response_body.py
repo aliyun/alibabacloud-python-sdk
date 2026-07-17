@@ -13,11 +13,11 @@ class ListInterventionDictionaryNerResultsResponseBody(DaraModel):
         request_id: str = None,
         result: List[main_models.ListInterventionDictionaryNerResultsResponseBodyResult] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The NER result.
+        # The NER results.
         # 
-        # For more information, see [InterventionDictionaryEntry](https://help.aliyun.com/document_detail/173606.html).
+        # For more information, see [Named Entity Recognition (NER)](https://help.aliyun.com/document_detail/173606.html).
         self.result = result
 
     def validate(self):
@@ -62,50 +62,85 @@ class ListInterventionDictionaryNerResultsResponseBodyResult(DaraModel):
         tag_label: str = None,
         token: str = None,
     ):
-        # The sequence number.
+        # The ordinal number.
         self.order = order
-        # The internal name of the identified entity type. Valid values:
+        # The tag of the detected entity.
         # 
-        # *   brand
-        # *   category
-        # *   material
-        # *   element
-        # *   style
-        # *   color
-        # *   function
-        # *   scenario
-        # *   people
-        # *   season
-        # *   model
-        # *   region
-        # *   name
-        # *   adjective
-        # *   category-modifier
-        # *   size
-        # *   quality
-        # *   suit
-        # *   new-release
-        # *   series
-        # *   marketing
-        # *   entertainment
-        # *   organization
-        # *   movie
-        # *   game
-        # *   number
-        # *   unit
-        # *   common
-        # *   new-word
-        # *   proper-noun
-        # *   symbol
-        # *   prefix
-        # *   suffix
-        # *   gift
-        # *   negative
-        # *   agent
+        # - brand: Brand
+        # 
+        # - category: Category
+        # 
+        # - material: Material
+        # 
+        # - element: Element
+        # 
+        # - style: Style
+        # 
+        # - color: Color
+        # 
+        # - function: Function
+        # 
+        # - scenario: Scenario
+        # 
+        # - people: People
+        # 
+        # - season: Season
+        # 
+        # - model: Model
+        # 
+        # - region: Region
+        # 
+        # - name: Name
+        # 
+        # - adjective: Adjective
+        # 
+        # - category-modifier: Category modifier
+        # 
+        # - size: Size
+        # 
+        # - quality: Quality
+        # 
+        # - suit: Suit
+        # 
+        # - new-release: New release
+        # 
+        # - series: Series
+        # 
+        # - marketing: Marketing
+        # 
+        # - entertainment: Entertainment
+        # 
+        # - organization: Organization
+        # 
+        # - movie: Movie
+        # 
+        # - game: Game
+        # 
+        # - number: Number
+        # 
+        # - unit: Unit
+        # 
+        # - common: Common word
+        # 
+        # - new-word: New word
+        # 
+        # - proper-noun: Proper noun
+        # 
+        # - symbol: Symbol
+        # 
+        # - prefix: Prefix
+        # 
+        # - suffix: Suffix
+        # 
+        # - gift: Gift
+        # 
+        # - negative: Negative
+        # 
+        # - agent: Agent
         self.tag = tag
-        # The description of the internal name of the identified entity type.
+        # The label of the tag.
         self.tag_label = tag_label
-        # The entity.
+        # The detected entity.
         self.token = token
 
     def validate(self):

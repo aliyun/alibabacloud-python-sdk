@@ -15,15 +15,15 @@ class ListTagResourcesRequest(DaraModel):
         resource_type: str = None,
         tag: List[main_models.ListTagResourcesRequestTag] = None,
     ):
-        # The token that is used to retrieve the next page.
+        # The token to start the next query.
         self.next_token = next_token
-        # The resource IDs. You can specify a maximum number of 50 resource IDs.
+        # The resource IDs. You can specify a maximum of 50 resource IDs.
         self.resource_id = resource_id
         # The resource type.
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The tags. You can specify a maximum number of 20 tags.
+        # The tags to query. The list can contain a maximum of 20 tags.
         self.tag = tag
 
     def validate(self):
@@ -78,9 +78,9 @@ class ListTagResourcesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
+        # The tag key.
         self.key = key
-        # The value of the tag.
+        # The tag value.
         self.value = value
 
     def validate(self):

@@ -9,15 +9,19 @@ class ListDataSourceTablesRequest(DaraModel):
         self,
         params: str = None,
     ):
-        # The parameters of the data source. The value is a JSON string which must be encoded in the urlencode format.
+        # The parameters for the data source. The value must be a URL-encoded JSON string.
         # 
-        # Different types of data sources use different parameters. For more information, see the following sections of the "DataSource" topic:
+        # The parameters vary based on the data source type. For more information, see:
         # 
-        # *   [rds](https://help.aliyun.com/document_detail/170005.html)
-        # *   [polardb](https://help.aliyun.com/document_detail/170005.html)
-        # *   [odps](https://help.aliyun.com/document_detail/170005.html)
-        # *   [mysql](https://help.aliyun.com/document_detail/173627.html)
-        # *   [drds](https://help.aliyun.com/document_detail/173627.html)
+        # - [rds](https://help.aliyun.com/document_detail/170005.html)
+        # 
+        # - [polardb](https://help.aliyun.com/document_detail/170005.html)
+        # 
+        # - [odps](https://help.aliyun.com/document_detail/170005.html)
+        # 
+        # - [mysql](https://help.aliyun.com/document_detail/173627.html)
+        # 
+        # - [drds](https://help.aliyun.com/document_detail/173627.html)
         # 
         # This parameter is required.
         self.params = params

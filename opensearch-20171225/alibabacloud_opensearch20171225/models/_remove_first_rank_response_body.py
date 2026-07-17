@@ -15,7 +15,7 @@ class RemoveFirstRankResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The information about the rough sort expression.
+        # The details of the rough sort expression.
         self.result = result
 
     def validate(self):
@@ -54,13 +54,13 @@ class RemoveFirstRankResponseBodyResult(DaraModel):
         meta: List[main_models.RemoveFirstRankResponseBodyResultMeta] = None,
         name: str = None,
     ):
-        # Specifies whether to set the fine sort expression as the default sort expression.
+        # Indicates whether this is the default expression.
         self.active = active
-        # Description
+        # The description.
         self.description = description
-        # The information about the expression.
+        # The details of the expression.
         self.meta = meta
-        # Parameter
+        # The name of the resource.
         self.name = name
 
     def validate(self):
@@ -116,9 +116,9 @@ class RemoveFirstRankResponseBodyResultMeta(DaraModel):
         attribute: str = None,
         weight: float = None,
     ):
-        # The parameters that are used by a function in the expression. For more information, see Rough sort functions.[](~~170007~~)
+        # The parameters of the function in the expression. For more information, see [Rough sort](https://help.aliyun.com/document_detail/170007.html).
         self.arg = arg
-        # The attribute, which refers to the scoring feature or search field, For more information about supported feature functions, see Rough sort functions.[](~~170007~~)
+        # The attribute. This can be a scoring feature or a search field. For information about available scoring features, see [Rough sort](https://help.aliyun.com/document_detail/170007.html).
         self.attribute = attribute
         # The weight. Valid values: -100000 to 100000. The value cannot be 0.
         self.weight = weight

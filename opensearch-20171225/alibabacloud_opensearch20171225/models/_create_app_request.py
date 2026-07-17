@@ -29,43 +29,45 @@ class CreateAppRequest(DaraModel):
         summaries: List[main_models.CreateAppRequestSummaries] = None,
         dry_run: bool = None,
     ):
-        # Specifies whether to automatically switch the created version to an online version. Valid values:
+        # Specifies whether to automatically set the new version as the online version after it is created.
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.auto_switch = auto_switch
-        # The capability opening configurations.
+        # The feature configurations.
         self.cluster = cluster
         self.config_items = config_items
-        # The configurations of data sources.
+        # The data source configurations.
         self.data_sources = data_sources
-        # The version description.
+        # The description of the version.
         self.description = description
-        # The industry model module.
+        # The industry model.
         self.domain = domain
         # The default display fields.
         self.fetch_fields = fetch_fields
-        # The configurations of rough sort.
+        # The rough sort configurations.
         self.first_ranks = first_ranks
         self.interpretations = interpretations
-        # The zone identifier. Valid values:
+        # The network type. Valid values:
         # 
-        # *   vpc
-        # *   oxs
+        # - vpc
+        # 
+        # - oxs
         self.network_type = network_type
         self.prompts = prompts
-        # The query intent understanding configurations.
+        # The intention recognition configurations.
         self.query_processors = query_processors
         self.realtime_shared = realtime_shared
-        # The single-table schema.
+        # The schema of the single-table application.
         self.schema = schema
-        # The multi-table schema.
+        # The schema of the multi-table application.
         self.schemas = schemas
-        # The configurations of fine sort.
+        # The fine sort configurations.
         self.second_ranks = second_ranks
-        # The summary configurations of search results.
+        # The search result summary settings.
         self.summaries = summaries
-        # Specifies whether to perform a dry run. This parameter is only used to check whether the data source is valid. Valid values: true and false.
+        # Specifies whether to perform a dry run. A dry run checks the validity of the data source but does not create the application. Valid values: true and false.
         self.dry_run = dry_run
 
     def validate(self):
@@ -258,7 +260,7 @@ class CreateAppRequestSummaries(DaraModel):
         meta: List[main_models.CreateAppRequestSummariesMeta] = None,
         name: str = None,
     ):
-        # The collection of summary configurations.
+        # The summary configurations.
         self.meta = meta
         # The group name.
         self.name = name
@@ -306,15 +308,15 @@ class CreateAppRequestSummariesMeta(DaraModel):
         len: int = None,
         snippet: str = None,
     ):
-        # The element that is used for highlighting.
+        # The HTML tag for highlight.
         self.element = element
-        # The connector that is used to connect segments.
+        # The string used to connect snippets.
         self.ellipsis = ellipsis
         # The field.
         self.field = field
-        # The length of the segment. Valid values: 1 to 300.
+        # The length of the snippet. The value must be in the range of [1, 300].
         self.len = len
-        # The number of segments. Valid values: 1 to 5.
+        # The number of snippets. The value must be in the range of [1, 5].
         self.snippet = snippet
 
     def validate(self):
@@ -373,7 +375,7 @@ class CreateAppRequestSecondRanks(DaraModel):
         self.active = active
         # The description.
         self.description = description
-        # The fine sort expression. You can define an expression that contains fields, feature functions, and mathematical functions to implement complex sort logic.
+        # The fine sort expression. You can write an expression that contains fields, feature functions, and mathematical functions to implement complex sort logic.
         self.meta = meta
         # The name of the fine sort expression.
         self.name = name
@@ -428,7 +430,7 @@ class CreateAppRequestSchemas(DaraModel):
         tables: Dict[str, Any] = None,
         ttl_field: main_models.CreateAppRequestSchemasTtlField = None,
     ):
-        # The sort configurations.
+        # The inverted index configurations.
         self.index_sort_config = index_sort_config
         # The index schema.
         self.indexes = indexes
@@ -436,13 +438,13 @@ class CreateAppRequestSchemas(DaraModel):
         self.name = name
         # The name of the level-1 routing field.
         self.route_field = route_field
-        # The hot values of the level-1 routing field. After you configure this parameter, level-2 routing is enabled.
+        # The list of hotspot values for the level-1 routing field. After you configure this parameter, level-2 routing is enabled.
         self.route_field_values = route_field_values
-        # The name of the level-2 routing field. This parameter takes effect only when the routeFieldValues parameter is configured. By default, the wide-table primary key field is used as the level-2 routing field.
+        # The name of the level-2 routing field. This parameter takes effect only when routeFieldValues is configured. By default, the primary key of the wide table is used.
         self.second_route_field = second_route_field
         # The table schema.
         self.tables = tables
-        # The document clearing configurations.
+        # The document expiration configuration.
         self.ttl_field = ttl_field
 
     def validate(self):
@@ -527,9 +529,9 @@ class CreateAppRequestSchemasTtlField(DaraModel):
         name: str = None,
         ttl: int = None,
     ):
-        # The name of the document time field.
+        # The document time field.
         self.name = name
-        # The TTL. Unit: milliseconds.
+        # The time to live (TTL), in milliseconds.
         self.ttl = ttl
 
     def validate(self):
@@ -601,10 +603,11 @@ class CreateAppRequestSchemasIndexSortConfig(DaraModel):
         direction: str = None,
         field: str = None,
     ):
-        # The sort method.
+        # The sort order.
         # 
-        # *   ASC
-        # *   DESC
+        # - ASC
+        # 
+        # - DESC
         self.direction = direction
         # The sort field.
         self.field = field
@@ -647,7 +650,7 @@ class CreateAppRequestSchema(DaraModel):
         tables: Dict[str, Any] = None,
         ttl_field: main_models.CreateAppRequestSchemaTtlField = None,
     ):
-        # The sort configurations.
+        # The inverted index configurations.
         self.index_sort_config = index_sort_config
         # The index schema.
         self.indexes = indexes
@@ -655,13 +658,13 @@ class CreateAppRequestSchema(DaraModel):
         self.name = name
         # The name of the level-1 routing field.
         self.route_field = route_field
-        # The hot values of the level-1 routing field. After you configure this parameter, level-2 routing is enabled.
+        # The list of hotspot values for the level-1 routing field. After you configure this parameter, level-2 routing is enabled.
         self.route_field_values = route_field_values
-        # The name of the level-2 routing field. This parameter takes effect only when the `routeFieldValues` parameter is configured. By default, the wide-table primary key field is used as the level-2 routing field.
+        # The name of the level-2 routing field. This parameter takes effect only when `routeFieldValues` is configured. By default, the primary key of the wide table is used.
         self.second_route_field = second_route_field
         # The table schema.
         self.tables = tables
-        # The document clearing configurations.
+        # The document expiration configuration.
         self.ttl_field = ttl_field
 
     def validate(self):
@@ -746,9 +749,9 @@ class CreateAppRequestSchemaTtlField(DaraModel):
         name: str = None,
         ttl: int = None,
     ):
-        # The name of the document time field.
+        # The document time field.
         self.name = name
-        # The TTL. Unit: milliseconds.
+        # The time to live (TTL), in milliseconds.
         self.ttl = ttl
 
     def validate(self):
@@ -820,7 +823,7 @@ class CreateAppRequestSchemaIndexSortConfig(DaraModel):
         direction: str = None,
         field: str = None,
     ):
-        # The sort method.
+        # The sort order.
         self.direction = direction
         # The sort field.
         self.field = field
@@ -865,17 +868,19 @@ class CreateAppRequestQueryProcessors(DaraModel):
         self.active = active
         # The industry category.
         self.category = category
-        # The industry type. Valid values:
+        # The industry. Valid values:
         # 
-        # *   GENERAL
-        # *   ECOMMERCE
-        # *   IT_CONTENT
+        # - GENERAL: general
+        # 
+        # - ECOMMERCE: e-commerce
+        # 
+        # - IT_CONTENT: IT content
         self.domain = domain
-        # The index range.
+        # The indexes of the application.
         self.indexes = indexes
         # The rule name.
         self.name = name
-        # The features.
+        # The features that are included.
         self.processors = processors
 
     def validate(self):
@@ -941,14 +946,15 @@ class CreateAppRequestFirstRanks(DaraModel):
         self.active = active
         # The description.
         self.description = description
-        # The information about the expression. The information can be of the array or string type.
+        # The details of the expression. The value can be an array or a string.
         self.meta = meta
         # The name of the rough sort expression.
         self.name = name
-        # The expression type. Valid values:
+        # The type of the expression.
         # 
-        # *   STRUCT: The content of the expression is a structure.
-        # *   STRING (default): You can configure a custom formula.
+        # - STRUCT: structured expression.
+        # 
+        # - STRING: custom formula. This is the default value.
         self.type = type
 
     def validate(self):
@@ -1004,13 +1010,15 @@ class CreateAppRequestDomain(DaraModel):
     ):
         # The industry category.
         self.category = category
-        # The selected feature category. Valid values:
+        # The selected features.
         # 
-        # *   qp: query analysis
-        # *   algo: sort policy
-        # *   service: service
+        # - qp: query analysis
+        # 
+        # - algo: sort policy
+        # 
+        # - service: ancillary service
         self.functions = functions
-        # The industry type.
+        # The industry.
         self.name = name
 
     def validate(self):
@@ -1062,34 +1070,45 @@ class CreateAppRequestDataSources(DaraModel):
         self.key_field = key_field
         # The information about the data source.
         self.parameters = parameters
-        # The plug-ins that are used for data processing.
+        # The data processing plugins for fields.
         # 
-        # name:
+        # Plugin name (name):
         # 
-        # *   JsonKeyValueExtractor
-        # *   MultiValueSpliter
-        # *   KeyValueExtractor
-        # *   StringCatenateExtractor
-        # *   HTMLTagRemover
+        # - JsonKeyValueExtractor
         # 
-        # parameters:
+        # - MultiValueSpliter
         # 
-        # *   JsonKeyValueExtractor
-        # *   MultiValueSpliter
-        # *   KeyValueExtractor
-        # *   StringCatenateExtractor
-        # *   HTMLTagRemover
+        # - KeyValueExtractor
+        # 
+        # - StringCatenateExtractor
+        # 
+        # - HTMLTagRemover
+        # 
+        # Plugin parameters (parameters):
+        # 
+        # - JsonKeyValueExtractor
+        # 
+        # - MultiValueSpliter
+        # 
+        # - KeyValueExtractor
+        # 
+        # - StringCatenateExtractor
+        # 
+        # - HTMLTagRemover
         self.plugins = plugins
         # The name of the wide table.
         self.schema_name = schema_name
-        # The name of the table in the application.
+        # The name of the application table.
         self.table_name = table_name
-        # The type of the data source. Valid values:
+        # The type of the data source.
         # 
-        # *   rds
-        # *   odps
-        # *   opensearch
-        # *   polardb
+        # - rds
+        # 
+        # - odps
+        # 
+        # - opensearch
+        # 
+        # - polardb
         self.type = type
 
     def validate(self):
@@ -1165,7 +1184,7 @@ class CreateAppRequestCluster(DaraModel):
         self.image_content_recognizer_models = image_content_recognizer_models
         # The maximum length of the query clause.
         self.max_query_clause_length = max_query_clause_length
-        # The timeout period. Unit: milliseconds.
+        # The timeout period for the cluster, in milliseconds.
         self.max_timeout_ms = max_timeout_ms
         self.text_embedding_model = text_embedding_model
         self.text_sparse_embedding_model = text_sparse_embedding_model

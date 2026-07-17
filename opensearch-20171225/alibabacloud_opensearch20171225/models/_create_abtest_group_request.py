@@ -13,12 +13,13 @@ class CreateABTestGroupRequest(DaraModel):
     ):
         # The request body. For more information, see [ABTestGroup](https://help.aliyun.com/document_detail/178935.html).
         self.body = body
-        # Specifies whether to check the validity of input parameters. Default value: false.
+        # Specifies whether to check the validity of the input parameters. The default value is false.
         # 
         # Valid values:
         # 
-        # *   **true**: checks only the validity of input parameters.
-        # *   **false**: checks the validity of input parameters and creates an attribution configuration.
+        # - **true**: checks only the validity of the input parameters.
+        # 
+        # - **false**: checks the validity of the input parameters and creates an attribution configuration.
         self.dry_run = dry_run
 
     def validate(self):

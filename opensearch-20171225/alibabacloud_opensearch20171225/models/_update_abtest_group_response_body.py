@@ -57,12 +57,13 @@ class UpdateABTestGroupResponseBodyResult(DaraModel):
         self.created = created
         # The ID of the test group.
         self.id = id
-        # The alias of the test group.
+        # The name of the test group.
         self.name = name
         # The status of the test group. Valid values:
         # 
-        # *   0: not in effect
-        # *   1: in effect
+        # - 0: inactive
+        # 
+        # - 1: active
         self.status = status
         # The time when the test group was last updated.
         self.updated = updated

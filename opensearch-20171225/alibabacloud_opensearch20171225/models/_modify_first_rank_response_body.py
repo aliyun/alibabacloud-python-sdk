@@ -15,7 +15,7 @@ class ModifyFirstRankResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The information about the rough sort expression.
+        # Details about the rough sort expression.
         self.result = result
 
     def validate(self):
@@ -56,11 +56,11 @@ class ModifyFirstRankResponseBodyResult(DaraModel):
     ):
         # Indicates whether the expression is the default one.
         self.active = active
-        # The description of the rough sort expression.
+        # The description.
         self.description = description
-        # The information about the expression.
+        # Details about the expression.
         self.meta = meta
-        # The name of the expression.
+        # The name of the resource.
         self.name = name
 
     def validate(self):
@@ -116,9 +116,9 @@ class ModifyFirstRankResponseBodyResultMeta(DaraModel):
         attribute: str = None,
         weight: float = None,
     ):
-        # The parameters that are used by a function in the expression.
+        # The parameters for a function in the expression.
         self.arg = arg
-        # The attribute, feature function, or field to be searched for.
+        # The attribute, feature function, or search field.
         self.attribute = attribute
         # The weight. Valid values: -100000 to 100000. The value cannot be 0.
         self.weight = weight

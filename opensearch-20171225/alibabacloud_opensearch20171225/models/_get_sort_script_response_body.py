@@ -11,7 +11,7 @@ class GetSortScriptResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.GetSortScriptResponseBodyResult = None,
     ):
-        # The request ID.
+        # The unique ID of the request.
         self.request_id = request_id
         # The details of the script.
         self.result = result
@@ -60,11 +60,11 @@ class GetSortScriptResponseBodyResult(DaraModel):
         self.description = description
         # The time when the script was last modified.
         self.modify_time = modify_time
-        # The sort phase to which the script applies.
+        # The applicable scope of the script.
         self.scope = scope
         # The name of the script.
         self.script_name = script_name
-        # The status of the script. For more information, see the description of the status response parameter in the ListSortScripts topic.
+        # The status of the script. For more information, see the list of script statuses.
         self.status = status
         # The type of the script.
         self.type = type

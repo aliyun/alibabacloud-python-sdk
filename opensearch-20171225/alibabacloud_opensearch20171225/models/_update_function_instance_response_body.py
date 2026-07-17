@@ -18,16 +18,20 @@ class UpdateFunctionInstanceResponseBody(DaraModel):
         self.code = code
         # The HTTP status code.
         self.http_code = http_code
-        # The time consumed for the request, in milliseconds.
+        # The time consumed by the request. Unit: milliseconds (ms).
         self.latency = latency
         # The error message.
         self.message = message
         # The ID of the request.
         self.request_id = request_id
-        # The status of the request. Valid values:
+        # The request status.
         # 
-        # *       OK: The request was successful.
-        # *       FAIL: The request failed.
+        # - ```
+        #   OK: The request is successful.
+        #   ```
+        # - ```
+        #   FAIL: The request failed.
+        #   ```
         self.status = status
 
     def validate(self):

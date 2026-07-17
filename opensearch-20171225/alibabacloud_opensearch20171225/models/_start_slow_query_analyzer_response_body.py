@@ -14,7 +14,7 @@ class StartSlowQueryAnalyzerResponseBody(DaraModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # N/A
+        # \\-
         self.result = result
 
     def validate(self):
