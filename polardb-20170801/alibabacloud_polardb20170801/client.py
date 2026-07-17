@@ -38374,6 +38374,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.restart_dbnode_zonal_with_options_async(request, runtime)
 
+    def restart_polar_claw_gateway_with_options(
+        self,
+        request: main_models.RestartPolarClawGatewayRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RestartPolarClawGatewayResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.mode):
+            query['Mode'] = request.mode
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RestartPolarClawGateway',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RestartPolarClawGatewayResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def restart_polar_claw_gateway_with_options_async(
+        self,
+        request: main_models.RestartPolarClawGatewayRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RestartPolarClawGatewayResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.mode):
+            query['Mode'] = request.mode
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RestartPolarClawGateway',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RestartPolarClawGatewayResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def restart_polar_claw_gateway(
+        self,
+        request: main_models.RestartPolarClawGatewayRequest,
+    ) -> main_models.RestartPolarClawGatewayResponse:
+        runtime = RuntimeOptions()
+        return self.restart_polar_claw_gateway_with_options(request, runtime)
+
+    async def restart_polar_claw_gateway_async(
+        self,
+        request: main_models.RestartPolarClawGatewayRequest,
+    ) -> main_models.RestartPolarClawGatewayResponse:
+        runtime = RuntimeOptions()
+        return await self.restart_polar_claw_gateway_with_options_async(request, runtime)
+
     def restore_table_with_options(
         self,
         request: main_models.RestoreTableRequest,

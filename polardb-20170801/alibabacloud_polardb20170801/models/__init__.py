@@ -1211,6 +1211,9 @@ from ._restart_dbnode_response import RestartDBNodeResponse
 from ._restart_dbnode_zonal_request import RestartDBNodeZonalRequest
 from ._restart_dbnode_zonal_response_body import RestartDBNodeZonalResponseBody
 from ._restart_dbnode_zonal_response import RestartDBNodeZonalResponse
+from ._restart_polar_claw_gateway_request import RestartPolarClawGatewayRequest
+from ._restart_polar_claw_gateway_response_body import RestartPolarClawGatewayResponseBody
+from ._restart_polar_claw_gateway_response import RestartPolarClawGatewayResponse
 from ._restore_table_request import RestoreTableRequest
 from ._restore_table_response_body import RestoreTableResponseBody
 from ._restore_table_response import RestoreTableResponse
@@ -2906,6 +2909,9 @@ __all__ = [
     RestartDBNodeZonalRequest,
     RestartDBNodeZonalResponseBody,
     RestartDBNodeZonalResponse,
+    RestartPolarClawGatewayRequest,
+    RestartPolarClawGatewayResponseBody,
+    RestartPolarClawGatewayResponse,
     RestoreTableRequest,
     RestoreTableResponseBody,
     RestoreTableResponse,

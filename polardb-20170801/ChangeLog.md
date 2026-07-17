@@ -1,3 +1,8 @@
+2026-07-17 Version: 7.7.0
+- Support API RestartPolarClawGateway.
+- Update API DescribeApplicationAttribute: add response parameters Body.Endpoints.$.Domain.
+
+
 2026-07-15 Version: 7.6.0
 - Support API DescribeApplicationSessionIds.
 - Update API DescribeApplicationLogs: add response parameters Body.Items.$.InsName.
