@@ -78,15 +78,15 @@ class GetJobResponseBody(DaraModel):
         self.duration = duration
         # The elastic job parameters.
         self.elastic_spec = elastic_spec
-        # Indicates whether the debugger job is enabled.
+        # Indicates whether the debugger is enabled for the job.
         self.enabled_debugger = enabled_debugger
         # The environment variable configuration.
         self.envs = envs
-        # The time when the job was created (UTC).
+        # The job creation time (UTC).
         self.gmt_create_time = gmt_create_time
         # The time when the job failed (UTC).
         self.gmt_failed_time = gmt_failed_time
-        # The time when the job finished (UTC).
+        # The job finish time (UTC).
         self.gmt_finish_time = gmt_finish_time
         # The time when the job started running (UTC).
         self.gmt_running_time = gmt_running_time
@@ -618,7 +618,7 @@ class GetJobResponseBodyRestartRecord(DaraModel):
         restart_status: str = None,
         trigger_id: str = None,
     ):
-        # The error message list.
+        # The list of fault information.
         self.detail_error_info_list = detail_error_info_list
         # The job restart count.
         self.job_restart_count = job_restart_count
@@ -630,7 +630,7 @@ class GetJobResponseBodyRestartRecord(DaraModel):
         self.reason = reason
         # The restart duration, in seconds.
         self.restart_duration_in_sec = restart_duration_in_sec
-        # The reason for the restart failure.
+        # The restart failure reason.
         self.restart_fail_reason = restart_fail_reason
         self.restart_level_type = restart_level_type
         # The restart status.
@@ -733,7 +733,7 @@ class GetJobResponseBodyRestartRecordDetailErrorInfoList(DaraModel):
         pod: str = None,
         trigger_restart: bool = None,
     ):
-        # The job blacklist.
+        # The job-level blacklist.
         self.add_job_level_blacklist = add_job_level_blacklist
         # The node blacklist.
         self.add_node_to_blacklist = add_node_to_blacklist
@@ -741,7 +741,7 @@ class GetJobResponseBodyRestartRecordDetailErrorInfoList(DaraModel):
         self.detail_error_msg = detail_error_msg
         # The error code.
         self.error_code = error_code
-        # The error message.
+        # The fault message.
         self.error_msg = error_msg
         # The error source.
         self.error_source = error_source
@@ -872,7 +872,7 @@ class GetJobResponseBodyPods(DaraModel):
         # - Normal
         # - Evicted
         self.sub_status = sub_status
-        # The node type, which corresponds to a JobSpec in the JobSpecs parameter of the CreateJob API.
+        # The node type, which corresponds to a JobSpec in the JobSpecs parameter of CreateJob.
         self.type = type
 
     def validate(self):

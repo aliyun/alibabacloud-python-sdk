@@ -1,3 +1,9 @@
+2026-07-17 Version: 1.10.0
+- Support API CreateSignal.
+- Support API GetSignal.
+- Support API ListSignals.
+
+
 2026-07-15 Version: 1.9.2
 - Update API ListRayHistoryServers: add request parameters StoragePath.
 

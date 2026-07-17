@@ -43,7 +43,7 @@ class JobSpec(DaraModel):
         # The hardware specifications of the worker. Visit [PAI-DLC billing](https://help.aliyun.com/document_detail/171758.html) for the detailed list of specifications.>Notice: Prices vary depending on the specifications.
         self.ecs_spec = ecs_spec
         self.elastic_spot_specs = elastic_spot_specs
-        # The additional pod configuration.
+        # The extra pod configuration.
         self.extra_pod_spec = extra_pod_spec
         self.hyper_node_scheduling_config = hyper_node_scheduling_config
         # The runtime image address for this type of worker. Call [ListImages](https://help.aliyun.com/document_detail/449118.html) to obtain images provided by the PAI platform. You can also specify a third-party public image.

@@ -476,6 +476,90 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_ray_history_server_with_options_async(request, headers, runtime)
 
+    def create_signal_with_options(
+        self,
+        job_id: str,
+        request: main_models.CreateSignalRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateSignalResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.signal):
+            body['Signal'] = request.signal
+        if not DaraCore.is_null(request.target):
+            body['Target'] = request.target
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateSignal',
+            version = '2020-12-03',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/jobs/{DaraURL.percent_encode(job_id)}/signals',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateSignalResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_signal_with_options_async(
+        self,
+        job_id: str,
+        request: main_models.CreateSignalRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateSignalResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.signal):
+            body['Signal'] = request.signal
+        if not DaraCore.is_null(request.target):
+            body['Target'] = request.target
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateSignal',
+            version = '2020-12-03',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/jobs/{DaraURL.percent_encode(job_id)}/signals',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateSignalResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_signal(
+        self,
+        job_id: str,
+        request: main_models.CreateSignalRequest,
+    ) -> main_models.CreateSignalResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_signal_with_options(job_id, request, headers, runtime)
+
+    async def create_signal_async(
+        self,
+        job_id: str,
+        request: main_models.CreateSignalRequest,
+    ) -> main_models.CreateSignalResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_signal_with_options_async(job_id, request, headers, runtime)
+
     def create_tensorboard_with_options(
         self,
         request: main_models.CreateTensorboardRequest,
@@ -1898,6 +1982,90 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_ray_history_server_with_options_async(ray_history_server_id, request, headers, runtime)
 
+    def get_signal_with_options(
+        self,
+        job_id: str,
+        signal_id: str,
+        request: main_models.GetSignalRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetSignalResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.token):
+            query['Token'] = request.token
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetSignal',
+            version = '2020-12-03',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/jobs/{DaraURL.percent_encode(job_id)}/signals/{DaraURL.percent_encode(signal_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetSignalResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_signal_with_options_async(
+        self,
+        job_id: str,
+        signal_id: str,
+        request: main_models.GetSignalRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetSignalResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.token):
+            query['Token'] = request.token
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetSignal',
+            version = '2020-12-03',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/jobs/{DaraURL.percent_encode(job_id)}/signals/{DaraURL.percent_encode(signal_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetSignalResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_signal(
+        self,
+        job_id: str,
+        signal_id: str,
+        request: main_models.GetSignalRequest,
+    ) -> main_models.GetSignalResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_signal_with_options(job_id, signal_id, request, headers, runtime)
+
+    async def get_signal_async(
+        self,
+        job_id: str,
+        signal_id: str,
+        request: main_models.GetSignalRequest,
+    ) -> main_models.GetSignalResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_signal_with_options_async(job_id, signal_id, request, headers, runtime)
+
     def get_tensorboard_with_options(
         self,
         tensorboard_id: str,
@@ -2885,6 +3053,106 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.list_ray_history_servers_with_options_async(request, headers, runtime)
+
+    def list_signals_with_options(
+        self,
+        job_id: str,
+        request: main_models.ListSignalsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListSignalsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.order):
+            query['Order'] = request.order
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        if not DaraCore.is_null(request.token):
+            query['Token'] = request.token
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListSignals',
+            version = '2020-12-03',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/jobs/{DaraURL.percent_encode(job_id)}/signals',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListSignalsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_signals_with_options_async(
+        self,
+        job_id: str,
+        request: main_models.ListSignalsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListSignalsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.order):
+            query['Order'] = request.order
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        if not DaraCore.is_null(request.token):
+            query['Token'] = request.token
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListSignals',
+            version = '2020-12-03',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/jobs/{DaraURL.percent_encode(job_id)}/signals',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListSignalsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_signals(
+        self,
+        job_id: str,
+        request: main_models.ListSignalsRequest,
+    ) -> main_models.ListSignalsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_signals_with_options(job_id, request, headers, runtime)
+
+    async def list_signals_async(
+        self,
+        job_id: str,
+        request: main_models.ListSignalsRequest,
+    ) -> main_models.ListSignalsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_signals_with_options_async(job_id, request, headers, runtime)
 
     def list_tensorboards_with_options(
         self,
