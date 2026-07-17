@@ -8828,6 +8828,8 @@ class Client(OpenApiClient):
             body['api_server_eip'] = request.api_server_eip
         if not DaraCore.is_null(request.api_server_eip_id):
             body['api_server_eip_id'] = request.api_server_eip_id
+        if not DaraCore.is_null(request.client_token):
+            body['client_token'] = request.client_token
         if not DaraCore.is_null(request.cluster_name):
             body['cluster_name'] = request.cluster_name
         if not DaraCore.is_null(request.cluster_spec):
@@ -8897,6 +8899,8 @@ class Client(OpenApiClient):
             body['api_server_eip'] = request.api_server_eip
         if not DaraCore.is_null(request.api_server_eip_id):
             body['api_server_eip_id'] = request.api_server_eip_id
+        if not DaraCore.is_null(request.client_token):
+            body['client_token'] = request.client_token
         if not DaraCore.is_null(request.cluster_name):
             body['cluster_name'] = request.cluster_name
         if not DaraCore.is_null(request.cluster_spec):

@@ -14,6 +14,7 @@ class ModifyClusterRequest(DaraModel):
         api_server_custom_cert_sans: main_models.ModifyClusterRequestApiServerCustomCertSans = None,
         api_server_eip: bool = None,
         api_server_eip_id: str = None,
+        client_token: str = None,
         cluster_name: str = None,
         cluster_spec: str = None,
         control_plane_config: main_models.ModifyClusterRequestControlPlaneConfig = None,
@@ -31,91 +32,92 @@ class ModifyClusterRequest(DaraModel):
         timezone: str = None,
         vswitch_ids: List[str] = None,
     ):
-        # Access control list for the registered cluster API Server SLB.
+        # The access control list for the registered cluster API Server SLB.
         self.access_control_list = access_control_list
-        # Custom API Server certificate SAN (Subject Alternative Name).
-        # Used to add custom IPs or domain names to the SAN field of the cluster API Server server certificate for client access control.
+        # The custom API Server certificate Subject Alternative Name (SAN). This parameter adds custom IP addresses or domain names to the SAN field of the cluster API Server certificate for client access control.
         # 
         # Only managed clusters support this parameter.
         self.api_server_custom_cert_sans = api_server_custom_cert_sans
-        # Whether to associate an EIP with the cluster for public access to API Server. Valid values:
+        # Indicates whether an Elastic IP Address (EIP) is attached to the cluster for public network access to the API server. Valid values:
         # 
-        # - `true`: Associate an EIP with the cluster.
-        # - `false`: Do not associate an EIP with the cluster.
+        # - `true`: An EIP is attached to the cluster.
+        # - `false`: No EIP is attached to the cluster.
         self.api_server_eip = api_server_eip
-        # The ID of the EIP instance associated with the cluster API Server. This parameter takes effect only when `api_server_eip` is set to `true`.
+        # The instance ID of the EIP attached to the cluster API Server. This parameter takes effect only when `api_server_eip` is set to `true`.
         self.api_server_eip_id = api_server_eip_id
-        # Custom cluster name. The name can contain digits, Chinese characters, English characters, or hyphens (-), must be 1 to 63 characters in length, and cannot start with a hyphen (-).
+        # The client token.
+        self.client_token = client_token
+        # The custom cluster name. The name can contain digits, Chinese characters, letters, and hyphens (-). It must be 1 to 63 characters in length and cannot start with a hyphen (-).
         self.cluster_name = cluster_name
-        # When `cluster_type` is set to `ManagedKubernetes` and `profile` is configured, specifies the cluster specification. Valid values:
+        # The cluster specification when `cluster_type` is set to `ManagedKubernetes` and `profile` is configured. Valid values:
         # 
-        # - `ack.pro.small`: Pro Edition
+        # - `ack.pro.small`: Pro
         # - `ack.pro.xlarge`: Pro XL
         # - `ack.pro.2xlarge`: Pro 2XL
-        # - `ack.pro.4xlarge`: Pro 4XL (requires contacting customer service to enable allowlisting)
+        # - `ack.pro.4xlarge`: Pro 4XL (contact customer service to be added to the whitelist)
         # 
-        # Pro XL, Pro 2XL, and Pro 4XL are three tiers provided by <props="china">[ACK Pro Provisioned Control Plane](https://help.aliyun.com/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane)<props="intl">[ACK Pro Provisioned Control Plane](https://www.alibabacloud.com/help/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane). By pre-allocating and fixing control plane resources, it ensures that API concurrency and Pod scheduling capabilities are always at a determined high level, suitable for AI training and inference, ultra-large-scale clusters, and mission-critical workloads.
+        # Pro XL, Pro 2XL, and Pro 4XL are three tiers provided by <props="china">[ACK Pro Provisioned Control Plane](https://help.aliyun.com/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane)<props="intl">[ACK Pro Provisioned Control Plane](https://www.alibabacloud.com/help/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane). By pre-allocating and dedicating control plane resources, these tiers ensure that API concurrency and pod scheduling capabilities remain at a consistently high level. They are suitable for AI training and inference, ultra-large-scale clusters, and mission-critical workloads.
         # 
-        # For cluster management fees for Pro Edition and Provisioned Control Plane editions, see <props="china">[Cluster Management Fees](https://help.aliyun.com/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee)<props="intl">[Cluster Management Fees](https://www.alibabacloud.com/help/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee).
+        # For information about the cluster management fees for Pro and provisioned control plane editions, see <props="china">[Cluster management fees](https://help.aliyun.com/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee)<props="intl">[Cluster management fees](https://www.alibabacloud.com/help/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee).
         self.cluster_spec = cluster_spec
-        # Dedicated cluster control plane configuration.
+        # The dedicated cluster control plane configuration.
         self.control_plane_config = control_plane_config
-        # Cluster connection configuration.
+        # The cluster connection configuration.
         self.control_plane_endpoints_config = control_plane_endpoints_config
-        # Cluster deletion protection, which prevents accidental deletion of the cluster through the console or API. Valid values:
+        # Specifies whether to enable deletion protection for the cluster to prevent accidental deletion through the console or API. Valid values:
         # 
-        # - `true`: Enable cluster deletion protection. The cluster cannot be deleted through the console or API.
-        # - `false`: Disable cluster deletion protection. The cluster can be deleted through the console or API.
+        # - `true`: Enables cluster deletion protection. The cluster cannot be deleted through the console or API.
+        # - `false`: Disables cluster deletion protection. The cluster can be deleted through the console or API.
         # 
         # Default value: `false`.
         self.deletion_protection = deletion_protection
-        # Enable or disable the RRSA feature (only managed clusters support this parameter). Valid values:
+        # Specifies whether to enable or disable the RAM Roles for Service Accounts (RRSA) feature. Only managed clusters support this parameter. Valid values:
         # 
-        # - `true`: Enable.
-        # - `false`: Disable.
+        # - `true`: Enabled.
+        # - `false`: Disabled.
         self.enable_rrsa = enable_rrsa
-        # Rebind the cluster test domain. Valid values:
+        # Specifies whether to rebind the cluster test domain name. Valid values:
         # 
-        # - `true`: Rebind the cluster test domain.
-        # - `false`: Do not rebind the cluster test domain.
+        # - `true`: Rebinds the cluster test domain name.
+        # - `false`: Does not rebind the cluster test domain name.
         # 
         # Default value: `false`.
         self.ingress_domain_rebinding = ingress_domain_rebinding
-        # SLB instance ID of the cluster to be modified.
+        # The SLB instance ID of the cluster to be modified.
         self.ingress_loadbalancer_id = ingress_loadbalancer_id
-        # Instance deletion protection to prevent accidental deletion and release of nodes through the console or API. Valid values:
+        # Specifies whether to enable instance deletion protection to prevent accidental deletion of nodes through the console or API. Valid values:
         # 
         # - `true`: Nodes cannot be accidentally deleted through the console or API.
-        # - `false`: Nodes can be deleted through the console or API.
+        # - `false`: Nodes can be accidentally deleted through the console or API.
         # 
         # Default value: `false`.
         self.instance_deletion_protection = instance_deletion_protection
-        # Cluster maintenance window. This feature only takes effect for ACK Pro managed clusters.
+        # The maintenance window configuration for the cluster. This feature takes effect only for ACK Pro clusters.
         self.maintenance_window = maintenance_window
-        # Cluster automatic O&M policy.
+        # The cluster automatic O&M policy.
         self.operation_policy = operation_policy
-        # Cluster resource group ID.
+        # The resource group ID of the cluster.
         self.resource_group_id = resource_group_id
-        # Control plane security group ID.
+        # The control plane security group ID.
         # 
-        # - If you have configured blocking rules in the security group, ensure that the security group rules allow the protocols and ports required by the cluster. For recommended security group rules, see [Configure and Manage Cluster Security Groups](https://help.aliyun.com/document_detail/353191.html).
-        # - For non-ACK dedicated clusters, during the change process, the cluster control plane and installed managed components (such as terway-controlplane) will briefly restart. We recommend performing this operation during off-peak hours. After the control plane security group is changed, the ENIs used by the cluster control plane and installed managed components will be automatically added to the new security group.
-        # - For ACK dedicated clusters, after the control plane security group is changed, newly scaled-out Master nodes will automatically use the new control plane security group. Existing control plane nodes are not affected.
+        # - If you have configured blocking rules in the security group, ensure that the security group rules allow the protocols and ports required by the cluster. For information about recommended security group rules, see [Configure and manage cluster security groups](https://help.aliyun.com/document_detail/353191.html).
+        # - For non-ACK dedicated clusters, the cluster control plane and installed managed components (such as terway-controlplane) briefly restart during the procedure. Perform this operation during off-peak hours. After the control plane security group is changed, the network interface controllers (NICs) used by the cluster control plane and installed managed components are automatically added to the new security group.
+        # - For ACK dedicated clusters, after the control plane security group is changed, newly scaled-out master nodes automatically use the new control plane security group. Existing control plane nodes are not affected.
         self.security_group_id = security_group_id
-        # System event storage configuration.
+        # The system event storage configuration.
         self.system_events_logging = system_events_logging
-        # Cluster timezone. See [Supported Timezones](https://help.aliyun.com/document_detail/354879.html).
-        # - After changing the timezone, cluster inspection configurations will use the new timezone settings.
+        # The cluster time zone. See [Supported time zones](https://help.aliyun.com/document_detail/354879.html).
+        # - After the time zone is changed, the cluster inspection configuration uses the new time zone settings.
         # 
-        # - For managed clusters, during the change process, the cluster control plane and installed managed components (such as terway-controlplane) will briefly restart. We recommend performing this operation during off-peak hours. After changing the timezone, newly scaled-out nodes will automatically use the new timezone settings. Existing nodes are not affected. You can use the node pool node reset feature to apply the new settings to existing nodes.
+        # - For managed clusters, the cluster control plane and installed managed components (such as terway-controlplane) briefly restart during the change. Perform this operation during off-peak hours. After the time zone is changed, newly scaled-out nodes automatically use the new time zone settings. Existing nodes are not affected. You can use the node pool node reset feature to apply the new settings to existing nodes.
         # 
-        # - For dedicated clusters, after changing the timezone, newly scaled-out nodes (including control plane nodes) will automatically use the new timezone settings. Existing nodes (including control plane nodes) are not affected. You can use the node pool node reset feature to apply the new settings to existing nodes. For control plane nodes, you need to scale out first and then scale in to apply the settings to all control plane nodes.
+        # - For dedicated clusters, after the time zone is changed, newly scaled-out nodes (including control plane nodes) automatically use the new time zone settings. Existing nodes (including control plane nodes) are not affected. You can use the node pool node reset feature to apply the new settings to existing nodes. For control plane nodes, scale out and then scale in to apply the new settings to all control plane nodes.
         self.timezone = timezone
-        # Cluster control plane vSwitches. For dedicated clusters, this takes effect on newly scaled-out control plane nodes. When modifying control plane vSwitches for managed clusters, note the following:
-        # - This parameter performs a full overwrite update. You must specify the complete list of target vSwitches.
-        # - During the change, control plane components will briefly restart. Proceed with caution.
-        # - Ensure that all security groups of the cluster (including the control plane security group, all node pool security groups, and container network security groups) allow inbound and outbound traffic for the IP ranges of the new vSwitches to prevent nodes and containers from being unable to connect to the API Server.
-        # - If the new control plane vSwitches have ACL rules configured, ensure that the ACL rules allow communication with the cluster nodes, container network, and other IP ranges.
+        # The vSwitches for the cluster control plane. For dedicated clusters, the change applies to newly scaled-out control plane nodes. When changing control plane vSwitches for managed clusters, note the following:
+        # - This parameter performs a full overwrite. Specify the complete list of target vSwitches.
+        # - Control plane components briefly restart during the change. Proceed with caution.
+        # - Ensure that all security groups of the cluster (including the control plane security group, security groups of all node pools, and security groups used by the container network) allow inbound and outbound traffic for the IP CIDR blocks of the new vSwitches to prevent nodes and containers from losing connectivity to the API server.
+        # - If the new control plane vSwitches have ACL rules configured, ensure that the ACL rules allow communication with the CIDR blocks of cluster nodes and the container network.
         self.vswitch_ids = vswitch_ids
 
     def validate(self):
@@ -148,6 +150,9 @@ class ModifyClusterRequest(DaraModel):
 
         if self.api_server_eip_id is not None:
             result['api_server_eip_id'] = self.api_server_eip_id
+
+        if self.client_token is not None:
+            result['client_token'] = self.client_token
 
         if self.cluster_name is not None:
             result['cluster_name'] = self.cluster_name
@@ -214,6 +219,9 @@ class ModifyClusterRequest(DaraModel):
         if m.get('api_server_eip_id') is not None:
             self.api_server_eip_id = m.get('api_server_eip_id')
 
+        if m.get('client_token') is not None:
+            self.client_token = m.get('client_token')
+
         if m.get('cluster_name') is not None:
             self.cluster_name = m.get('cluster_name')
 
@@ -275,14 +283,14 @@ class ModifyClusterRequestSystemEventsLogging(DaraModel):
         enabled: bool = None,
         logging_project: str = None,
     ):
-        # Whether to enable system event storage.
+        # Specifies whether to enable system event storage.
         # 
         # 
-        # - true: Enable system event storage.
+        # - true: Enables system event storage.
         # 
-        # - false: Disable system event storage.
+        # - false: Disables system event storage.
         self.enabled = enabled
-        # LogProject name for system event storage.
+        # The name of the LogProject used for system event storage.
         self.logging_project = logging_project
 
     def validate(self):
@@ -316,7 +324,7 @@ class ModifyClusterRequestOperationPolicy(DaraModel):
         self,
         cluster_auto_upgrade: main_models.ModifyClusterRequestOperationPolicyClusterAutoUpgrade = None,
     ):
-        # Cluster automatic upgrade.
+        # The cluster auto upgrade configuration.
         self.cluster_auto_upgrade = cluster_auto_upgrade
 
     def validate(self):
@@ -347,18 +355,18 @@ class ModifyClusterRequestOperationPolicyClusterAutoUpgrade(DaraModel):
         channel: str = None,
         enabled: bool = None,
     ):
-        # Cluster automatic upgrade frequency. For more information, see [Upgrade Frequency](https://help.aliyun.com/document_detail/2712866.html).
+        # The cluster auto upgrade frequency. For more information, see [Upgrade frequency](https://help.aliyun.com/document_detail/2712866.html).
         # 
         # Valid values:
-        # - patch: Latest patch version.
-        # - stable: Second latest minor version.
-        # - rapid: Latest minor version.
+        # - patch: latest patch version.
+        # - stable: second-latest minor version.
+        # - rapid: latest minor version.
         self.channel = channel
-        # Whether to enable cluster automatic upgrade.
+        # Specifies whether to enable cluster auto upgrade.
         # 
-        # - true: Enable automatic upgrade.
+        # - true: Enables auto upgrade.
         # 
-        # - false: Disable automatic upgrade.
+        # - false: Disables auto upgrade.
         self.enabled = enabled
 
     def validate(self):
@@ -391,13 +399,20 @@ class ModifyClusterRequestControlPlaneEndpointsConfig(DaraModel):
     def __init__(
         self,
         internal_dns_config: main_models.ModifyClusterRequestControlPlaneEndpointsConfigInternalDnsConfig = None,
+        load_balancers_config: List[main_models.ModifyClusterRequestControlPlaneEndpointsConfigLoadBalancersConfig] = None,
     ):
-        # Cluster internal domain name configuration. Applicable to ACK managed clusters. The cluster internal domain name is used by node-side system components such as kubelet and kube-proxy to access the API Server. When the cluster internal domain name access is not enabled, node-side system components access via the CLB IP.
+        # The internal DNS configuration for the cluster. Applicable to ACK managed clusters. The internal domain name is used by node-side system components such as kubelet and kube-proxy to access the API Server. When internal domain name access is not enabled, node-side system components access the API Server through the CLB IP address.
         self.internal_dns_config = internal_dns_config
+        # The cluster access load balancing configuration.
+        self.load_balancers_config = load_balancers_config
 
     def validate(self):
         if self.internal_dns_config:
             self.internal_dns_config.validate()
+        if self.load_balancers_config:
+            for v1 in self.load_balancers_config:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -407,6 +422,11 @@ class ModifyClusterRequestControlPlaneEndpointsConfig(DaraModel):
         if self.internal_dns_config is not None:
             result['internal_dns_config'] = self.internal_dns_config.to_map()
 
+        result['load_balancers_config'] = []
+        if self.load_balancers_config is not None:
+            for k1 in self.load_balancers_config:
+                result['load_balancers_config'].append(k1.to_map() if k1 else None)
+
         return result
 
     def from_map(self, m: dict = None):
@@ -414,6 +434,49 @@ class ModifyClusterRequestControlPlaneEndpointsConfig(DaraModel):
         if m.get('internal_dns_config') is not None:
             temp_model = main_models.ModifyClusterRequestControlPlaneEndpointsConfigInternalDnsConfig()
             self.internal_dns_config = temp_model.from_map(m.get('internal_dns_config'))
+
+        self.load_balancers_config = []
+        if m.get('load_balancers_config') is not None:
+            for k1 in m.get('load_balancers_config'):
+                temp_model = main_models.ModifyClusterRequestControlPlaneEndpointsConfigLoadBalancersConfig()
+                self.load_balancers_config.append(temp_model.from_map(k1))
+
+        return self
+
+class ModifyClusterRequestControlPlaneEndpointsConfigLoadBalancersConfig(DaraModel):
+    def __init__(
+        self,
+        endpoint_type: str = None,
+        load_balancer_id: str = None,
+    ):
+        # The endpoint type.
+        self.endpoint_type = endpoint_type
+        # The SLB instance associated with the endpoint.
+        self.load_balancer_id = load_balancer_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.endpoint_type is not None:
+            result['endpoint_type'] = self.endpoint_type
+
+        if self.load_balancer_id is not None:
+            result['load_balancer_id'] = self.load_balancer_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('endpoint_type') is not None:
+            self.endpoint_type = m.get('endpoint_type')
+
+        if m.get('load_balancer_id') is not None:
+            self.load_balancer_id = m.get('load_balancer_id')
 
         return self
 
@@ -423,10 +486,10 @@ class ModifyClusterRequestControlPlaneEndpointsConfigInternalDnsConfig(DaraModel
         bind_vpcs: List[str] = None,
         enabled: bool = None,
     ):
-        # VPCs where the cluster internal domain name record resolution takes effect.
+        # The VPCs where the internal domain name resolution takes effect.
         self.bind_vpcs = bind_vpcs
-        # Whether to enable cluster internal domain name access. Valid values:
-        # - true: Enable cluster internal domain name access. Node-side components (kubelet, kube-proxy) will access the API Server through the cluster internal domain name.
+        # Specifies whether to enable internal domain name access for the cluster. Valid values:
+        # - true: Enables internal domain name access. Node-side components (kubelet, kube-proxy) access the API Server through the internal domain name.
         self.enabled = enabled
 
     def validate(self):
@@ -483,111 +546,110 @@ class ModifyClusterRequestControlPlaneConfig(DaraModel):
         system_disk_size: int = None,
         system_disk_snapshot_policy_id: str = None,
     ):
-        # Whether to enable automatic renewal for control plane node instances. This parameter takes effect only when `charge_type` is set to `PrePaid`. Valid values:
+        # Specifies whether to enable auto-renewal for control plane node instances. This parameter takes effect only when `charge_type` is set to `PrePaid`. Valid values:
         # 
-        # - `true`: Enable automatic renewal.
-        # - `false`: Disable automatic renewal.
+        # - `true`: Enables auto-renewal.
+        # - `false`: Disables auto-renewal.
         # 
         # Default value: `false`.
         self.auto_renew = auto_renew
-        # Duration for each automatic renewal of control plane node instances.
+        # The auto-renewal duration for each renewal cycle of control plane node instances.
         # 
         # Valid values: {1, 2, 3, 6, 12}. Unit: months.
         # 
         # Default value: 1.
         self.auto_renew_period = auto_renew_period
-        # Control plane node instance billing method. Valid values:
+        # The billing method for control plane node instances. Valid values:
         # 
-        # - `PrePaid`: Subscription.
-        # - `PostPaid`: Pay-as-you-go.
+        # - `PrePaid`: subscription.
+        # - `PostPaid`: pay-as-you-go.
         # 
         # Default value: `PostPaid`.
         self.charge_type = charge_type
-        # Whether to install the Cloud Monitor agent on control plane nodes. Valid values:
+        # Specifies whether to install the CloudMonitor agent on control plane nodes. Valid values:
         # 
-        # - `true`: Install the Cloud Monitor agent.
-        # - `false`: Do not install the Cloud Monitor agent.
+        # - `true`: Installs the CloudMonitor agent.
+        # - `false`: Does not install the CloudMonitor agent.
         self.cloud_monitor_flags = cloud_monitor_flags
-        # Node CPU management policy. When the cluster version is 1.12.6 or later, the following two policies are supported:
+        # The node CPU management policy. The following policies are supported for clusters running version 1.12.6 or later:
         # 
-        # - `static`: Allows enhanced CPU affinity and exclusivity for Pods with certain resource characteristics on the node.
+        # - `static`: Allows pods with certain resource characteristics on the node to be granted enhanced CPU affinity and exclusivity.
         # - `none`: Uses the existing default CPU affinity scheme.
         # 
         # Default value: `none`.
         self.cpu_policy = cpu_policy
-        # Deployment set ID.
+        # The deployment set ID.
         self.deploymentset_id = deploymentset_id
-        # Custom image ID. Specified when using a custom image.
+        # The custom image ID. Specify this parameter when using a custom image.
         self.image_id = image_id
-        # Operating system image type. Valid values:
+        # The operating system image type. Valid values:
         # 
         # - `AliyunLinux3`: Alinux3 image.
-        # - `Custom`: Custom image.
+        # - `Custom`: custom image.
         self.image_type = image_type
-        # Instance types. For more information, see [Instance Family](https://help.aliyun.com/document_detail/25378.html).
+        # The instance types. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html).
         self.instance_types = instance_types
-        # Key pair name. Mutually exclusive with `login_password`.
+        # The key pair name. Mutually exclusive with `login_password`.
         self.key_pair = key_pair
-        # SSH login password. Mutually exclusive with `key_pair`. The password must be 8 to 30 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. If you want to use password login, specify this parameter during scale-out.
+        # The SSH logon password. Mutually exclusive with `key_pair`. The password must be 8 to 30 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. To use password-based logon, specify this parameter during scale-out.
         self.login_password = login_password
-        # Node service port range.
-        # Available port range: [30000, 65535].
+        # The node service port range. Available port range: [30000, 65535].
         # 
         # Default value: 30000-32767.
         self.node_port_range = node_port_range
-        # Control plane node instance subscription duration. This parameter takes effect and is required only when `charge_type` is set to `PrePaid`.
+        # The subscription duration for control plane node instances. This parameter takes effect and is required only when `charge_type` is set to `PrePaid`.
         # 
-        # When `period_unit=Month`, valid values: {1, 2, 3, 6, 12, 24, 36, 48, 60}.
+        # When `period_unit=Month`, valid values are {1, 2, 3, 6, 12, 24, 36, 48, 60}.
         self.period = period
-        # Control plane node instance billing period. This parameter takes effect only when `charge_type` is set to `PrePaid`.
+        # The billing cycle unit for control plane node instances. This parameter takes effect only when `charge_type` is set to `PrePaid`.
         # 
-        # `Month`: Billed on a monthly basis. Currently, only monthly billing is supported.
+        # `Month`: The billing cycle is measured in months. Currently, only months are supported.
         self.period_unit = period_unit
-        # Container runtime name. Valid values:
+        # The container runtime name. Valid values:
         # 
         # - `containerd`: Recommended. Supported by all cluster versions.
         # 
         # Default value: containerd.
         self.runtime = runtime
-        # Alibaba Cloud OS security hardening. Valid values:
+        # Specifies whether to enable Alibaba Cloud OS security hardening. Valid values:
         # 
-        # - `true`: Enable Alibaba Cloud OS security hardening.
-        # - `false`: Disable Alibaba Cloud OS security hardening.
+        # - `true`: Enables Alibaba Cloud OS security hardening.
+        # - `false`: Disables Alibaba Cloud OS security hardening.
         # 
         # Default value: `false`.
         self.security_hardening_os = security_hardening_os
-        # Number of control plane nodes. To scale out the dedicated cluster control plane, this parameter specifies the target number of control plane nodes and must be greater than the current number of control plane nodes.
+        # The number of control plane nodes. To scale out the control plane of a dedicated cluster, set this parameter to the target number of control plane nodes, which must be greater than the current number.
         self.size = size
-        # Security hardening for compliance. For more information, see [ACK Security Hardening for Compliance](https://help.aliyun.com/document_detail/196148.html).
+        # Specifies whether to enable MLPS 2.0 security hardening. For more information, see [ACK MLPS 2.0 security hardening](https://help.aliyun.com/document_detail/196148.html).
         # 
         # Valid values:
-        # - `true`: Enable security hardening for compliance.
-        # - `false`: Disable security hardening for compliance.
+        # - `true`: Enables MLPS 2.0 security hardening.
+        # - `false`: Disables MLPS 2.0 security hardening.
         # 
         # Default value: `false`.
         self.soc_enabled = soc_enabled
-        # Whether to enable burst (performance bursting) for the node system disk. Valid values:
-        # - `true`: Enable.
-        # - `false`: Disable.
+        # Specifies whether to enable burst (performance burst) for the node system cloud disk. Valid values:
+        # - `true`: Enabled.
+        # - `false`: Disabled.
         # 
-        # This parameter is supported only when `system_disk_category` is set to `cloud_auto`. For more information, see [ESSD AutoPL](https://help.aliyun.com/document_detail/368372.html).
+        # This parameter is supported only when `system_disk_category` is set to `cloud_auto`. For more information, see [ESSD AutoPL cloud disks](https://help.aliyun.com/document_detail/368372.html).
         self.system_disk_bursting_enabled = system_disk_bursting_enabled
-        # Node system disk type. Valid values:
-        # - `cloud_efficiency`: Ultra disk.
-        # - `cloud_ssd`: SSD disk.
-        # - `cloud_essd`: ESSD disk.
-        # - `cloud_auto`: ESSD AutoPL disk.
-        # - `cloud_essd_entry`: ESSD Entry disk.
+        # The node system cloud disk type. Valid values:
+        # - `cloud_efficiency`: ultra cloud disk.
+        # - `cloud_ssd`: standard SSD.
+        # - `cloud_essd`: Enterprise SSD (ESSD).
+        # - `cloud_auto`: ESSD AutoPL cloud disk.
+        # - `cloud_essd_entry`: ESSD Entry cloud disk.
         self.system_disk_category = system_disk_category
-        # Node system disk performance level. Only applicable to ESSD disks. The performance level is related to the disk size. For more information, see [ESSD](https://help.aliyun.com/document_detail/122389.html).
+        # The performance level of the node system cloud disk. This parameter takes effect only for ESSD cloud disks. The performance level varies based on the cloud disk size. For more information, see [standard SSDs](https://help.aliyun.com/document_detail/122389.html).
         self.system_disk_performance_level = system_disk_performance_level
-        # Provisioned read/write IOPS for the node system disk. Valid values: 0 to min{50,000, 1000*capacity - baseline performance}. Baseline performance = min{1,800 + 50*capacity, 50,000}.
+        # The provisioned read/write IOPS for the node system cloud disk. Valid values: 0 to min{50,000, 1000 × capacity - baseline performance}. Baseline performance = min{1,800 + 50 × capacity, 50000}.
         # 
-        # This parameter is supported only when `system_disk_category` is set to `cloud_auto`. For more information, see [ESSD AutoPL](https://help.aliyun.com/document_detail/368372.html).
+        # This parameter is supported only when `system_disk_category` is set to `cloud_auto`. For more information, see [ESSD AutoPL cloud disks](https://help.aliyun.com/document_detail/368372.html).
         self.system_disk_provisioned_iops = system_disk_provisioned_iops
-        # Node system disk size. Valid values: [40, 500]. Unit: GiB.
+        # The node system cloud disk size. Valid values: [40, 500]. Unit: GiB.
         self.system_disk_size = system_disk_size
-        # Automatic snapshot policy ID for the node system disk.
+        # The ID of the automatic snapshot policy applied to the node system cloud disk.
         self.system_disk_snapshot_policy_id = system_disk_snapshot_policy_id
 
     def validate(self):
@@ -754,11 +816,11 @@ class ModifyClusterRequestApiServerCustomCertSans(DaraModel):
         action: str = None,
         subject_alternative_names: List[str] = None,
     ):
-        # Overwrite or append SAN configuration. Valid values:
-        # - overwrite: Overwrite.
-        # - append: Append.
+        # Specifies whether to overwrite or append the SAN configuration. Valid values:
+        # - overwrite: overwrites the existing configuration.
+        # - append: appends to the existing configuration.
         self.action = action
-        # SAN list.
+        # The SAN list.
         self.subject_alternative_names = subject_alternative_names
 
     def validate(self):

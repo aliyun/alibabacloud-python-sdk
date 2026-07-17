@@ -55,116 +55,116 @@ class DescribeClusterDetailResponseBody(DaraModel):
         worker_ram_role_name: str = None,
         zone_id: str = None,
     ):
-        # Intelligent managed mode configuration.
+        # The intelligent managed mode configuration.
         self.auto_mode = auto_mode
-        # Cluster local domain.
+        # The local domain name of the cluster.
         self.cluster_domain = cluster_domain
-        # Cluster ID.
+        # The cluster ID.
         self.cluster_id = cluster_id
-        # The cluster specifications when `cluster_type` is set to `ManagedKubernetes` and `profile` is configured. Valid values:
+        # The specification of the cluster when `cluster_type` is set to `ManagedKubernetes` and `profile` is configured. Valid values:
         # 
-        # - `ack.standard`: Basic edition (selected by default when the value is empty)
-        # - `ack.pro.small`: Pro edition
+        # - `ack.standard`: Basic (selected by default if the value is empty)
+        # - `ack.pro.small`: Pro
         # - `ack.pro.xlarge`: Pro XL
         # - `ack.pro.2xlarge`: Pro 2XL
-        # - `ack.pro.4xlarge`: Pro 4XL (requires contacting customer service for allowlisting)
+        # - `ack.pro.4xlarge`: Pro 4XL (contact customer service to add your account to the whitelist)
         # 
-        # Pro XL, Pro 2XL, and Pro 4XL are three tiers provided by <props="china">[ACK Pro Provisioned Control Plane](https://help.aliyun.com/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane)<props="intl">[ACK Pro Provisioned Control Plane](https://www.alibabacloud.com/help/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane). By pre-allocating and pinning control plane resources, they ensure that API concurrency and Pod scheduling capabilities remain at a consistently high level, suitable for AI training and inference, ultra-large-scale clusters, and mission-critical workloads.
+        # Pro XL, Pro 2XL, and Pro 4XL are three tiers provided by <props="china">[ACK Pro Provisioned Control Plane](https://help.aliyun.com/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane)<props="intl">[ACK Pro Provisioned Control Plane](https://www.alibabacloud.com/help/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane). By pre-allocating and dedicating control plane resources, these tiers ensure that API concurrency and pod scheduling capabilities remain at a consistently high level. They are suitable for AI training and inference, ultra-large-scale clusters, and mission-critical workloads.
         # 
-        # For cluster management fees for Pro edition and Provisioned Control Plane editions, see <props="china">[Cluster management fees](https://help.aliyun.com/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee)<props="intl">[Cluster management fees](https://www.alibabacloud.com/help/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee).
+        # For information about the cluster management fees for Pro and provisioned control plane editions, see <props="china">[Cluster management fees](https://help.aliyun.com/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee)<props="intl">[Cluster management fees](https://www.alibabacloud.com/help/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee).
         self.cluster_spec = cluster_spec
-        # Cluster type.
+        # The cluster type.
         # 
         # - `Kubernetes`: ACK dedicated cluster.
         #  
-        # - `ManagedKubernetes`: ACK managed clusters, including ACK managed clusters (ACK Pro and ACK Basic), ACK Serverless clusters (Pro and Basic), ACK Edge clusters (Pro and Basic), and ACK Lingjun clusters (Pro).
+        # - `ManagedKubernetes`: ACK ACK cluster types, including ACK ACK clusters (ACK Pro and ACK Basic), ACK Serverless clusters (Pro and Basic), ACK Edge clusters (Pro and Basic), and ACK Lingjun clusters (Pro).
         #  
-        # - `ExternalKubernetes`: Registered cluster.
+        # - `ExternalKubernetes`: registered cluster.
         self.cluster_type = cluster_type
-        # Pod network CIDR block, configured for Flannel networking.
+        # The pod CIDR block, used for Flannel network configuration.
         self.container_cidr = container_cidr
-        # Dedicated cluster control plane configuration.
+        # The control plane configuration of the dedicated cluster.
         self.control_plane_config = control_plane_config
-        # Cluster connection configuration.
+        # The cluster connection configuration.
         self.control_plane_endpoints_config = control_plane_endpoints_config
-        # Cluster creation time.
+        # The time when the cluster was created.
         self.created = created
-        # The current version of the cluster. For Kubernetes versions supported by ACK, see [Kubernetes release overview](https://help.aliyun.com/document_detail/185269.html).
+        # The current Kubernetes version of the cluster. For more information about the Kubernetes versions supported by ACK, see [Kubernetes version overview](https://help.aliyun.com/document_detail/185269.html).
         self.current_version = current_version
-        # Cluster deletion protection, which prevents accidental deletion of the cluster through the console or API. Valid values:
+        # Indicates whether deletion protection is enabled for the cluster. Deletion protection prevents the cluster from being accidentally deleted through the console or API. Valid values:
         # 
-        # - `true`: Enable cluster deletion protection. The cluster cannot be deleted through the console or API.
-        # - `false`: Disable cluster deletion protection. The cluster can be deleted through the console or API.
+        # - `true`: Deletion protection is enabled. The cluster cannot be deleted through the console or API.
+        # - `false`: Deletion protection is not enabled. The cluster can be deleted through the console or API.
         self.deletion_protection = deletion_protection
-        # The Docker version in the cluster.
+        # The Docker version used in the cluster.
         self.docker_version = docker_version
-        # Cluster Ingress SLB instance ID.
+        # The instance ID of the Server Load Balancer (SLB) associated with the Ingress of the cluster.
         self.external_loadbalancer_id = external_loadbalancer_id
-        # Custom API Server certificate SAN (Subject Alternative Name).
+        # The custom Subject Alternative Name (SAN) for the API Server certificate.
         self.extra_sans = extra_sans
-        # Cluster initial version.
+        # The initial Kubernetes version of the cluster.
         self.init_version = init_version
         # The IP protocol stack of the cluster. Valid values:
-        # - ipv4: Creates a cluster that supports only the IPv4 protocol stack.
-        # - dual: Creates a cluster that supports the IPv4/IPv6 dual stack.
+        # - ipv4: creates a cluster that supports only the IPv4 protocol stack.
+        # - dual: creates a cluster that supports the IPv4/IPv6 dual stack.
         self.ip_stack = ip_stack
-        # Cluster maintenance window configuration. Only takes effect in managed editions (i.e., ACK Pro clusters).
+        # The maintenance window configuration of the cluster. This configuration takes effect only for managed clusters (ACK Pro clusters).
         self.maintenance_window = maintenance_window
-        # The access endpoint of the cluster, including the internal and public access endpoints.
+        # The access addresses of the cluster, including the internal network access address and the public network access address.
         self.master_url = master_url
-        # Cluster metadata information.
+        # The cluster metadata.
         self.meta_data = meta_data
-        # Cluster name.
+        # The cluster name.
         self.name = name
-        # The network type used by the cluster, for example: VPC network.
+        # The network type used by the cluster, such as VPC.
         self.network_mode = network_mode
-        # Cluster upgradeable version.
+        # The Kubernetes version to which the cluster can be upgraded.
         self.next_version = next_version
-        # Only applicable to the Flannel network plugin.
+        # Applicable only to the Flannel network plugin. 
         # 
-        # The subnet mask size allocated to each node, which controls the number of IP addresses that can be allocated to the node.
+        # The subnet mask size assigned to each node, which controls the number of IP addresses that can be allocated to the node.
         self.node_cidr_mask = node_cidr_mask
-        # Cluster automatic O&M policy.
+        # The automatic O&M policy of the cluster.
         self.operation_policy = operation_policy
-        # Cluster ROS parameter collection.
+        # The collection of Resource Orchestration Service (ROS) parameters for the cluster.
         self.parameters = parameters
-        # Whether PrivateZone is enabled for the cluster.
+        # Indicates whether PrivateZone is enabled for the cluster.  
         # 
         # - `true`: Enabled.
         # - `false`: Not enabled.
         # 
         # Default value: false.
         self.private_zone = private_zone
-        # Cluster subtype.
+        # The cluster child class.
         # 
-        # - `Default`: ACK managed cluster, including ACK Pro and ACK Basic.
+        # - `Default`: ACK managed cluster, including ACK cluster Pro and ACK cluster Basic.
         #  
-        # - `Edge`: ACK Edge cluster, including ACK Edge Pro and ACK Edge Basic.
+        # - `Edge`: ACK Edge cluster, including ACK Edge cluster Pro and ACK Edge cluster Basic.
         #  
-        # - `Serverless`: ACK Serverless cluster, including ACK Serverless Pro and ACK Serverless Basic.
+        # - `Serverless`: ACK Serverless cluster, including ACK Serverless cluster Pro and ACK Serverless cluster Basic.
         #  
-        # - `Lingjun`: ACK Lingjun cluster, available in Pro edition.
+        # - `Lingjun`: ACK Lingjun cluster, available in Pro.
         self.profile = profile
-        # kube-proxy proxy mode.
+        # The kube-proxy mode.
         # 
-        # - `iptables`: A mature and stable kube-proxy proxy mode. Service discovery and load balancing for Kubernetes Services are configured using iptables rules. However, the performance is average and significantly affected by scale. This mode is suitable for clusters with a small number of Services.
-        # - `ipvs`: A high-performance kube-proxy proxy mode. Service discovery and load balancing for Kubernetes Services are configured using the Linux IPVS module. This mode is suitable for clusters with a large number of Services and scenarios that require high-performance load balancing.
+        # - `iptables`: A mature and stable kube-proxy mode. Service discovery and load balancing for Kubernetes Services are configured by using iptables rules. Performance is moderate and affected by scale. This mode is suitable for clusters with a small number of Services.
+        # - `ipvs`: A high-performance kube-proxy mode. Service discovery and load balancing for Kubernetes Services are configured by using the Linux IPVS module. This mode is suitable for clusters with a large number of Services that require high load balancing performance.
         self.proxy_mode = proxy_mode
-        # The region ID where the cluster is located.
+        # The ID of the region where the cluster is deployed.
         self.region_id = region_id
-        # Cluster resource group ID.
+        # The ID of the resource group to which the cluster belongs.
         self.resource_group_id = resource_group_id
-        # RRSA configuration.
+        # The RRSA configuration.
         self.rrsa_config = rrsa_config
-        # Cluster security group ID.
+        # The ID of the security group associated with the cluster.
         self.security_group_id = security_group_id
-        # Service network CIDR block.
+        # The service CIDR block.
         # 
         # This parameter is required.
         self.service_cidr = service_cidr
-        # The number of nodes in the cluster, including both Master and Worker nodes.
+        # The number of nodes in the cluster, including master nodes and worker nodes.
         self.size = size
-        # Cluster running status. Valid values:
+        # The status of the cluster. Valid values:
         # 
         # - `initial`: The cluster is being created.
         # - `failed`: The cluster failed to be created.
@@ -179,26 +179,26 @@ class DescribeClusterDetailResponseBody(DaraModel):
         # - `deleting`: The cluster is being deleted.
         # - `deleted`: The cluster has been deleted.
         # - `delete_failed`: The cluster failed to be deleted.
-        # - `waiting`: Waiting for connection.
-        # - `disconnected`: Disconnected.
+        # - `waiting`: The cluster is in the accessed state, waiting to be connected.
+        # - `disconnected`: The cluster is disconnected.
         self.state = state
-        # Pod network CIDR block.
+        # The pod CIDR block.
         self.subnet_cidr = subnet_cidr
-        # Cluster resource tags.
+        # The resource tags of the cluster.
         self.tags = tags
-        # Timezone.
+        # The time zone.
         self.timezone = timezone
-        # Cluster update time.
+        # The time when the cluster was last updated.
         self.updated = updated
-        # The VPC ID of the cluster. This is a required parameter when creating a cluster.
+        # The ID of the VPC used by the cluster. This is a required parameter when you create a cluster.
         self.vpc_id = vpc_id
-        # vSwitch ID. This field is deprecated. For control plane vSwitches, use the vswitch_ids field. For data plane vSwitches, query through the vswitch_ids field in node pools.
+        # The vSwitch ID. This field is deprecated. To query control plane vSwitches, use vswitch_ids. To query data plane vSwitches, use vswitch_ids in the node pool configuration.
         self.vswitch_id = vswitch_id
-        # Cluster control plane vSwitches.
+        # The vSwitches used by the cluster control plane.
         self.vswitch_ids = vswitch_ids
-        # The name of the Worker RAM role, which authorizes ECS instances as Worker nodes of the cluster.
+        # The name of the Worker RAM role that authorizes ECS instances to serve as cluster worker nodes.
         self.worker_ram_role_name = worker_ram_role_name
-        # The availability zone ID within the region where the cluster is located.
+        # The ID of the zone where the cluster is deployed.
         self.zone_id = zone_id
 
     def validate(self):
@@ -517,21 +517,21 @@ class DescribeClusterDetailResponseBodyRrsaConfig(DaraModel):
         oidc_name: str = None,
         open_api_configuration_url: str = None,
     ):
-        # The default audience information of the OIDC token. Multiple values are separated by commas (,). The values will be set as an array in the aud field of the OIDC token.
+        # The default audience of the OIDC token. Multiple values are separated by commas (,). The values are included as an array in the aud field of the OIDC token.
         self.audience = audience
-        # Whether RRSA is enabled.
+        # Indicates whether RRSA is enabled.
         self.enabled = enabled
-        # The issuer information of the OIDC token. Multiple values are separated by commas (,). The first value will be set as the iss field of the OIDC token and the issuer URL of the OIDC identity provider.
+        # The issuer information of the OIDC token. Multiple values are separated by commas (,). The first value becomes the value of the iss field in the OIDC token and the issuer URL of the OIDC IdP.
         self.issuer = issuer
-        # OIDC public key information URL.
+        # The URL of the OIDC public key information.
         self.jwks_url = jwks_url
-        # The maximum configurable validity period of an OIDC token.
+        # The maximum configurable validity period of the OIDC token.
         self.max_oidc_token_expiration = max_oidc_token_expiration
-        # OIDC identity provider ARN.
+        # The ARN of the OIDC IdP.
         self.oidc_arn = oidc_arn
-        # OIDC identity provider name.
+        # The name of the OIDC IdP.
         self.oidc_name = oidc_name
-        # OIDC configuration document URL.
+        # The URL of the OIDC configuration document.
         self.open_api_configuration_url = open_api_configuration_url
 
     def validate(self):
@@ -601,7 +601,7 @@ class DescribeClusterDetailResponseBodyOperationPolicy(DaraModel):
         self,
         cluster_auto_upgrade: main_models.DescribeClusterDetailResponseBodyOperationPolicyClusterAutoUpgrade = None,
     ):
-        # Cluster auto-upgrade.
+        # The cluster auto upgrade configuration.
         self.cluster_auto_upgrade = cluster_auto_upgrade
 
     def validate(self):
@@ -632,14 +632,14 @@ class DescribeClusterDetailResponseBodyOperationPolicyClusterAutoUpgrade(DaraMod
         channel: str = None,
         enabled: bool = None,
     ):
-        # Cluster auto-upgrade frequency. For more information, see [Upgrade frequency](https://help.aliyun.com/document_detail/2712866.html).
+        # The auto upgrade frequency of the cluster. For more information, see [Upgrade frequency](https://help.aliyun.com/document_detail/2712866.html).
         # 
         # Valid values:
-        # - patch: Latest patch version.
-        # - stable: Second latest minor version.
-        # - rapid: Latest minor version.
+        # - patch: the latest patch version.
+        # - stable: the second latest minor version.
+        # - rapid: the latest minor version.
         self.channel = channel
-        # Whether cluster auto-upgrade is enabled.
+        # Indicates whether cluster auto upgrade is enabled.
         self.enabled = enabled
 
     def validate(self):
@@ -672,13 +672,20 @@ class DescribeClusterDetailResponseBodyControlPlaneEndpointsConfig(DaraModel):
     def __init__(
         self,
         internal_dns_config: main_models.DescribeClusterDetailResponseBodyControlPlaneEndpointsConfigInternalDnsConfig = None,
+        load_balancers_config: List[main_models.DescribeClusterDetailResponseBodyControlPlaneEndpointsConfigLoadBalancersConfig] = None,
     ):
-        # Internal DNS configuration for the cluster, applicable to ACK managed clusters. The internal DNS is used by node-side system components such as kubelet and kube-proxy to access the API Server. When internal DNS access is not enabled, node-side system components access the API Server through the CLB IP.
+        # The internal DNS configuration of the cluster. This configuration applies to ACK managed clusters. The internal domain name is used by node-side system components such as kubelet and kube-proxy to access the API Server. If internal domain name access is not enabled, node-side system components access the API Server through the CLB IP address.
         self.internal_dns_config = internal_dns_config
+        # The load balancing configuration for cluster access.
+        self.load_balancers_config = load_balancers_config
 
     def validate(self):
         if self.internal_dns_config:
             self.internal_dns_config.validate()
+        if self.load_balancers_config:
+            for v1 in self.load_balancers_config:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -688,6 +695,11 @@ class DescribeClusterDetailResponseBodyControlPlaneEndpointsConfig(DaraModel):
         if self.internal_dns_config is not None:
             result['internal_dns_config'] = self.internal_dns_config.to_map()
 
+        result['load_balancers_config'] = []
+        if self.load_balancers_config is not None:
+            for k1 in self.load_balancers_config:
+                result['load_balancers_config'].append(k1.to_map() if k1 else None)
+
         return result
 
     def from_map(self, m: dict = None):
@@ -695,6 +707,58 @@ class DescribeClusterDetailResponseBodyControlPlaneEndpointsConfig(DaraModel):
         if m.get('internal_dns_config') is not None:
             temp_model = main_models.DescribeClusterDetailResponseBodyControlPlaneEndpointsConfigInternalDnsConfig()
             self.internal_dns_config = temp_model.from_map(m.get('internal_dns_config'))
+
+        self.load_balancers_config = []
+        if m.get('load_balancers_config') is not None:
+            for k1 in m.get('load_balancers_config'):
+                temp_model = main_models.DescribeClusterDetailResponseBodyControlPlaneEndpointsConfigLoadBalancersConfig()
+                self.load_balancers_config.append(temp_model.from_map(k1))
+
+        return self
+
+class DescribeClusterDetailResponseBodyControlPlaneEndpointsConfigLoadBalancersConfig(DaraModel):
+    def __init__(
+        self,
+        endpoint: str = None,
+        endpoint_type: str = None,
+        load_balancer_id: str = None,
+    ):
+        # The access address.
+        self.endpoint = endpoint
+        # The endpoint type.
+        self.endpoint_type = endpoint_type
+        # The SLB instance associated with the endpoint.
+        self.load_balancer_id = load_balancer_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.endpoint is not None:
+            result['endpoint'] = self.endpoint
+
+        if self.endpoint_type is not None:
+            result['endpoint_type'] = self.endpoint_type
+
+        if self.load_balancer_id is not None:
+            result['load_balancer_id'] = self.load_balancer_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('endpoint') is not None:
+            self.endpoint = m.get('endpoint')
+
+        if m.get('endpoint_type') is not None:
+            self.endpoint_type = m.get('endpoint_type')
+
+        if m.get('load_balancer_id') is not None:
+            self.load_balancer_id = m.get('load_balancer_id')
 
         return self
 
@@ -704,10 +768,10 @@ class DescribeClusterDetailResponseBodyControlPlaneEndpointsConfigInternalDnsCon
         bind_vpcs: List[str] = None,
         enabled: bool = None,
     ):
-        # The VPC scope within which the internal DNS record resolution takes effect. The VPC where the cluster is located is included by default.
+        # The VPCs in which the internal domain name records take effect. By default, this includes the VPC where the cluster is deployed.
         self.bind_vpcs = bind_vpcs
-        # Whether to enable internal DNS access for the cluster.
-        # - true: Enable internal DNS access. Node-side components (kubelet, kube-proxy) will access the API Server through the internal DNS.
+        # Indicates whether internal domain name access is enabled for the cluster. 
+        # - true: Internal domain name access is enabled. Node-side components (kubelet, kube-proxy) access the API Server through the internal domain name.
         self.enabled = enabled
 
     def validate(self):
@@ -764,53 +828,53 @@ class DescribeClusterDetailResponseBodyControlPlaneConfig(DaraModel):
         system_disk_size: int = None,
         system_disk_snapshot_policy_id: str = None,
     ):
-        # Whether auto-renewal is enabled for the node.
+        # Indicates whether auto-renewal is enabled for the nodes.
         self.auto_renew = auto_renew
-        # Auto-renewal duration of the node.
+        # The auto-renewal period of the nodes.
         self.auto_renew_period = auto_renew_period
-        # Billing type of control plane nodes.
+        # The billing type of control plane nodes.
         self.charge_type = charge_type
-        # Whether to install CloudMonitor on the node.
+        # Indicates whether CloudMonitor is installed on the nodes.
         self.cloud_monitor_flags = cloud_monitor_flags
-        # Node CPU management policy.
+        # The CPU management policy of the nodes.
         self.cpu_policy = cpu_policy
-        # Deployment set ID.
+        # The deployment set ID.
         self.deploymentset_id = deploymentset_id
-        # Image ID.
+        # The image ID.
         self.image_id = image_id
-        # OS image type.
+        # The operating system image type.
         self.image_type = image_type
-        # Metadata access configuration for ECS instances.
+        # The metadata access configuration of the ECS instances.
         self.instance_metadata_options = instance_metadata_options
-        # Node instance specification types.
+        # The instance types of the nodes.
         self.instance_types = instance_types
-        # Key pair name. You can specify either this parameter or login_password.
+        # The name of the key pair. Specify either this parameter or login_password.
         self.key_pair = key_pair
-        # Node service port range.
+        # The service port range of the nodes.
         self.node_port_range = node_port_range
-        # Subscription duration of the node.
+        # The subscription duration of the nodes.
         self.period = period
-        # Unit of the subscription duration.
+        # The unit of the subscription duration.
         self.period_unit = period_unit
-        # Container runtime name.
+        # The runtime name.
         self.runtime = runtime
-        # Whether to enable Alibaba Cloud OS security hardening.
+        # Indicates whether Alibaba Cloud OS security hardening is enabled.
         self.security_hardening_os = security_hardening_os
-        # Number of control plane nodes.
+        # The number of control plane nodes.
         self.size = size
-        # Whether to enable classified protection security hardening.
+        # Indicates whether MLPS 2.0 security hardening is enabled.
         self.soc_enabled = soc_enabled
-        # Whether burst (performance burst) is enabled for the node system disk.
+        # Indicates whether burst (I/O performance burst) is enabled for the system cloud disk.
         self.system_disk_bursting_enabled = system_disk_bursting_enabled
-        # Node system disk type.
+        # The type of the system cloud disk for the nodes.
         self.system_disk_category = system_disk_category
-        # Performance level of the node system disk. Only applicable to ESSD disks.
+        # The performance level of the system cloud disk. This parameter takes effect only for ESSD cloud disks.
         self.system_disk_performance_level = system_disk_performance_level
-        # Provisioned read/write IOPS for the node system disk.
+        # The provisioned read/write IOPS of the system cloud disk.
         self.system_disk_provisioned_iops = system_disk_provisioned_iops
-        # Node system disk size, minimum 40.
+        # The size of the system cloud disk for the nodes. Minimum value: 40.
         self.system_disk_size = system_disk_size
-        # Node automatic snapshot backup policy.
+        # The automatic snapshot policy for the nodes.
         self.system_disk_snapshot_policy_id = system_disk_snapshot_policy_id
 
     def validate(self):
@@ -978,7 +1042,7 @@ class DescribeClusterDetailResponseBodyAutoMode(DaraModel):
         self,
         enable: bool = None,
     ):
-        # Whether to enable intelligent managed mode.
+        # Indicates whether intelligent managed mode is enabled.
         self.enable = enable
 
     def validate(self):

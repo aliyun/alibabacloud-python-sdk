@@ -27,7 +27,7 @@ class CreateClusterNodePoolRequest(DaraModel):
         scaling_group: main_models.CreateClusterNodePoolRequestScalingGroup = None,
         tee_config: main_models.CreateClusterNodePoolRequestTeeConfig = None,
     ):
-        # The node pool intelligent managed configuration.
+        # The intelligent managed configuration for the node pool.
         self.auto_mode = auto_mode
         # The automatic scaling configuration.
         self.auto_scaling = auto_scaling
@@ -51,8 +51,8 @@ class CreateClusterNodePoolRequest(DaraModel):
         # - `private`: Private network. Nodes in cloud node pool connect to the cloud through Express Connect, VPN, or CEN, providing higher cloud-edge communication quality and more effective security.
         self.interconnect_mode = interconnect_mode
         # Specifies whether nodes in the edge node pool have Layer 3 network connectivity with each other.
-        # - `true`: Connected. All nodes in the node pool have Layer 3 network connectivity.
-        # - `false`: Not connected. All nodes in the node pool do not have Layer 3 network connectivity.
+        # - `true`: Connected. All nodes in the node pool have Layer 3 network connectivity with each other.
+        # - `false`: Not connected. All nodes in the node pool do not have Layer 3 network connectivity with each other.
         self.intranet = intranet
         # The cluster-related configuration.
         self.kubernetes_config = kubernetes_config
@@ -62,7 +62,7 @@ class CreateClusterNodePoolRequest(DaraModel):
         # 
         # The maximum number of nodes allowed in the edge node pool.
         self.max_nodes = max_nodes
-        # The node component list.
+        # The list of node components.
         self.node_components = node_components
         # The node configuration.
         self.node_config = node_config
@@ -230,7 +230,7 @@ class CreateClusterNodePoolRequestTeeConfig(DaraModel):
         # 
         # - true: Enables confidential computing.
         # 
-        # - false: Does not enable confidential computing.
+        # - false: Disables confidential computing.
         self.tee_enable = tee_enable
 
     def validate(self):
@@ -260,6 +260,7 @@ class CreateClusterNodePoolRequestScalingGroup(DaraModel):
         auto_renew_period: int = None,
         cis_enabled: bool = None,
         compensate_with_on_demand: bool = None,
+        cpu_options: main_models.CreateClusterNodePoolRequestScalingGroupCpuOptions = None,
         data_disks: List[main_models.DataDisk] = None,
         deploymentset_id: str = None,
         desired_size: int = None,
@@ -307,7 +308,7 @@ class CreateClusterNodePoolRequestScalingGroup(DaraModel):
         tags: List[main_models.CreateClusterNodePoolRequestScalingGroupTags] = None,
         vswitch_ids: List[str] = None,
     ):
-        # Specifies whether to enable auto-renewal for nodes in the node pool. Takes effect only when `instance_charge_type` is set to `PrePaid`. Valid values:
+        # Specifies whether to enable auto-renewal for nodes in the node pool. This parameter takes effect only when `instance_charge_type` is set to `PrePaid`. Valid values:
         # 
         # - `true`: enables auto-renewal.
         # - `false`: disables auto-renewal.
@@ -322,23 +323,23 @@ class CreateClusterNodePoolRequestScalingGroup(DaraModel):
         self.auto_renew_period = auto_renew_period
         # [Deprecated] Use the security_hardening_os parameter instead.
         self.cis_enabled = cis_enabled
-        # When `multi_az_policy` is set to `COST_OPTIMIZED`, specifies whether to allow automatic creation of pay-as-you-go instances to meet ECS instance quantity requirements when spot instances cannot be created due to price or inventory reasons. Valid values:
+        # When `multi_az_policy` is set to `COST_OPTIMIZED`, specifies whether to allow automatic creation of pay-as-you-go instances to meet ECS instance quantity requirements when spot instances cannot be created due to price, inventory, or other reasons. Valid values:
         # 
         # - `true`: Allows automatic creation of pay-as-you-go instances to meet ECS instance quantity requirements.
         # - `false`: Does not allow automatic creation of pay-as-you-go instances to meet ECS instance quantity requirements.
         self.compensate_with_on_demand = compensate_with_on_demand
+        # The CPU-related configuration options.
+        self.cpu_options = cpu_options
         # The data cloud disk configuration for nodes in the node pool.
         self.data_disks = data_disks
-        # The deployment set ID. You can use a deployment set to distribute ECS instances scaled out by the node pool across different physical servers to ensure high availability and underlying disaster recovery. When creating ECS instances within a deployment set, instances are launched in the specified region based on the pre-configured deployment strategy.
+        # The deployment set ID. You can use a deployment set to distribute ECS instances scaled out by the node pool across different physical servers, ensuring high availability and underlying disaster recovery. When creating ECS instances within a deployment set, the system distributes and starts ECS instances in the specified region based on the preconfigured deployment strategy.
         # 
         # 
-        # >Notice: After you select a deployment set, the maximum number of nodes in the node pool is limited. The default upper limit for a deployment set is 20 × number of zones (the number of zones is determined by the vSwitches). Choose carefully and ensure sufficient quota in the deployment set to avoid node scale-out failures.
+        # >Notice: After you select a deployment set, the maximum number of nodes in the node pool is limited. By default, a deployment set supports up to 20 × number of zones (the number of zones is determined by the vSwitches). Select carefully and ensure that the deployment set has sufficient quota to avoid node scale-out failures.
         self.deploymentset_id = deploymentset_id
         # The desired number of nodes in the node pool.
         # 
-        # The total number of nodes that the node pool should maintain. We recommend that you configure at least 2 nodes to ensure that cluster components run properly. You can scale the node pool in or out by adjusting the desired node count.
-        # 
-        # If you do not need to create nodes, set this value to 0 and manually adjust it later to add nodes.
+        # The total number of nodes.
         self.desired_size = desired_size
         # The block device initialization configuration.
         self.disk_init = disk_init
@@ -371,59 +372,59 @@ class CreateClusterNodePoolRequestScalingGroup(DaraModel):
         self.instance_metadata_options = instance_metadata_options
         # The instance attribute configuration.
         self.instance_patterns = instance_patterns
-        # The list of instance types for nodes in the node pool. When the node pool scales out, instances are created from the specified instance types that meet the requirements.
+        # The list of instance types for the node pool. When the node pool scales out, it selects eligible instance types from this list to create instances.
         # 
-        # Supported number of instance types: [1,10].
+        # The number of supported instance types ranges from 1 to 10.
         # 
         # 
         # > To ensure high availability, select multiple instance types.
         # 
         # This parameter is required.
         self.instance_types = instance_types
-        # The billing method of the public IP address. Valid values:
+        # The billing method for public IP addresses. Valid values:
         # 
         # - PayByBandwidth: pay-by-bandwidth.
         # - PayByTraffic: pay-by-traffic.
         self.internet_charge_type = internet_charge_type
-        # The maximum outbound public bandwidth of the node. Unit: Mbit/s. Valid values: [1,100\\].
+        # The maximum outbound public bandwidth for nodes. Unit: Mbit/s. Valid values: [1,100\\].
         self.internet_max_bandwidth_out = internet_max_bandwidth_out
-        # The key pair name for password-free logon. Mutually exclusive with `login_password`.
+        # The name of the key pair for password-free logon. Specify either this parameter or `login_password`.
         # 
         # >If the node pool uses the ContainerOS operating system, only `key_pair` is supported.
         self.key_pair = key_pair
-        # Specifies whether to log on to the ECS instance as a non-root user.
+        # Specifies whether ECS instances use a non-root user for logon.
         #  
         # - true: logs on as a non-root user (ecs-user).
         # 
         # - false: logs on as the root user.
         self.login_as_non_root = login_as_non_root
-        # The SSH logon password. Mutually exclusive with `key_pair`. The password must be 8 to 30 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+        # The SSH logon password. Specify either this parameter or `key_pair`. The password must be 8 to 30 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
         self.login_password = login_password
-        # The scaling policy for ECS instances in a multi-zone scaling group. Valid values:
+        # The multi-zone scaling policy for ECS instances in the scaling group. Valid values:
         # 
-        # - `PRIORITY`: Scales based on the vSwitches (VSwitchIds.N) you define. When ECS instances cannot be created in the zone of a higher-priority vSwitch, the system automatically uses the next-priority vSwitch to create ECS instances.
+        # - `PRIORITY`: Scales instances based on the vSwitches (VSwitchIds.N) that you define. When ECS instances cannot be created in the zone of the vSwitch with the highest priority, the system automatically uses the vSwitch with the next highest priority to create ECS instances.
         # 
-        # - `COST_OPTIMIZED`: Attempts to create instances in order of vCPU unit price from lowest to highest. When the scaling configuration specifies multiple instance types with the preemptible billing method, spot instances are created first. You can use the `CompensateWithOnDemand` parameter to specify whether the system is allowed to automatically attempt to create pay-as-you-go instances when spot instances cannot be created due to insufficient inventory.
+        # - `COST_OPTIMIZED`: Attempts to create instances in ascending order of vCPU unit price. When the scaling configuration sets multiple instance types with the spot billable methods, spot instances are created first. You can use the `CompensateWithOnDemand` parameter to specify whether the system is allowed to automatically attempt to create pay-as-you-go instances when spot instances cannot be created due to insufficient inventory or other reasons.
         # 
-        #   >`COST_OPTIMIZED` takes effect only when the scaling configuration specifies multiple instance types or uses spot instances.
+        #   >`COST_OPTIMIZED` takes effect only when the scaling configuration sets multiple instance types or uses spot instances.
         # 
-        # - `BALANCE`: Evenly allocates ECS instances across the multiple zones specified in the scaling group. If zones become unbalanced due to insufficient inventory, you can use the [RebalanceInstances](https://help.aliyun.com/document_detail/71516.html) API to rebalance resources.
+        # - `BALANCE`: Evenly allocates ECS instances across the active zones specified in the scaling group. If zones become unbalanced due to insufficient inventory or other reasons, you can call the [RebalanceInstances](https://help.aliyun.com/document_detail/71516.html) API operation to rebalance resources.
         # 
         # Default value: `PRIORITY`.
         self.multi_az_policy = multi_az_policy
         # The minimum number of pay-as-you-go instances required in the scaling group. Valid values: [0,1000\\]. Pay-as-you-go instances are created first when the number of pay-as-you-go instances is less than this value.
         self.on_demand_base_capacity = on_demand_base_capacity
-        # The percentage of pay-as-you-go instances among the extra instances that exceed the minimum number of pay-as-you-go instances (`on_demand_base_capacity`) in the scaling group. Valid values: [0,100\\].
+        # The percentage of pay-as-you-go instances among the excess instances after the minimum number of pay-as-you-go instances (`on_demand_base_capacity`) is met. Valid values: [0,100\\].
         self.on_demand_percentage_above_base_capacity = on_demand_percentage_above_base_capacity
-        # The subscription duration of nodes in the node pool. Takes effect and is required only when `instance_charge_type` is set to `PrePaid`.
+        # The subscription duration of nodes in the node pool. This parameter takes effect and is required only when `instance_charge_type` is set to `PrePaid`.
         # 
         # - When `period_unit=Week`, valid values of `period`: {1, 2, 3, 4}.
         # - When `period_unit=Month`, valid values of `period`: {1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, 60}.
         self.period = period
-        # The billing period unit of nodes in the node pool. Takes effect and is required only when `instance_charge_type` is set to `PrePaid`.
+        # The billing period unit of nodes in the node pool. This parameter takes effect and is required only when `instance_charge_type` is set to `PrePaid`.
         # 
-        # - `Month`: billed on a monthly basis.
-        # - `Week`: billed on a weekly basis.
+        # - `Month`: uses month as the billing unit.
+        # - `Week`: uses week as the billing unit.
         # 
         # Default value: `Month`.
         self.period_unit = period_unit
@@ -446,20 +447,22 @@ class CreateClusterNodePoolRequestScalingGroup(DaraModel):
         # 
         # >Notice: Only ACK managed clusters of version 1.22 or later support this parameter.
         self.ram_role_name = ram_role_name
-        # The list of RDS instances.
+        # The list of ApsaraDB RDS instances.
         self.rds_instances = rds_instances
-        # The resource pool and resource pool strategy used when creating instances. Note the following when you set this parameter: This parameter takes effect only when creating pay-as-you-go instances. This parameter cannot be set together with private_pool_options.match_criteria or private_pool_options.id.
+        # The resource pool and resource pool strategy used when creating instances. Note the following when you set this parameter:
+        # This parameter takes effect only when creating pay-as-you-go instances.
+        # This parameter cannot be set together with private_pool_options.match_criteria or private_pool_options.id.
         self.resource_pool_options = resource_pool_options
         # The scaling group mode. Valid values:
         # 
         # - `release`: Standard mode. Scales by creating and releasing ECS instances based on resource usage.
-        # - `recycle`: Swift mode. Scales by creating, stopping, and starting instances, which improves subsequent scaling speed. Stopped instances are not charged for compute resources, only for storage. This does not apply to instances with local disks.
+        # - `recycle`: Swift mode. Scales by creating, stopping, and starting instances, which improves the speed of subsequent scaling operations. Stopped instances are not charged for compute resources but are charged for storage, except for instances with local disks.
         # 
         # Default value: `release`.
         self.scaling_policy = scaling_policy
         # The security group ID of the node pool. Use either this parameter or `security_group_ids`. We recommend that you use `security_group_ids`.
         self.security_group_id = security_group_id
-        # The list of security group IDs. Mutually exclusive with `security_group_id`. We recommend that you use `security_group_ids`. When both `security_group_id` and `security_group_ids` are specified, `security_group_ids` takes precedence.
+        # The list of security group IDs. Specify either this parameter or `security_group_id`. We recommend using `security_group_ids`. When both `security_group_id` and `security_group_ids` are specified, `security_group_ids` takes precedence.
         self.security_group_ids = security_group_ids
         # Specifies whether to enable Alibaba Cloud OS security hardening. Valid values:
         # 
@@ -468,7 +471,7 @@ class CreateClusterNodePoolRequestScalingGroup(DaraModel):
         # 
         # Default value: `false`.
         self.security_hardening_os = security_hardening_os
-        # Specifies whether to enable mlps 2.0 security hardening. This feature is available only when the system image is Alibaba Cloud Linux 2 or Alibaba Cloud Linux 3. Alibaba Cloud provides classified protection compliance baseline check standards and scanning programs for Alibaba Cloud Linux 2 and Alibaba Cloud Linux 3 MLPS 2.0 Level 3 images.
+        # Specifies whether to enable MLPS 2.0 security hardening. This feature is available only when the system image is Alibaba Cloud Linux 2 or Alibaba Cloud Linux 3. Alibaba Cloud provides classified protection compliance baseline check standards and scanning programs for Alibaba Cloud Linux 2 and Alibaba Cloud Linux 3 MLPS 2.0 Level 3 images.
         self.soc_enabled = soc_enabled
         # The number of available instance types. The scaling group creates spot instances across the lowest-cost instance types in a balanced manner. Valid values: [1,10\\].
         self.spot_instance_pools = spot_instance_pools
@@ -479,23 +482,23 @@ class CreateClusterNodePoolRequestScalingGroup(DaraModel):
         self.spot_instance_remedy = spot_instance_remedy
         # The price limit configuration for the current spot instance type.
         self.spot_price_limit = spot_price_limit
-        # The spot instance type. Valid values:
+        # The bidding policy for spot instances. Valid values:
         # 
         # - `NoSpot`: non-spot instance.
         # 
-        # - `SpotWithPriceLimit`: spot instance with a price limit.
+        # - `SpotWithPriceLimit`: sets a maximum price for spot instances.
         # 
-        # - `SpotAsPriceGo`: system automatically bids at the current market price.
+        # - `SpotAsPriceGo`: the system automatically bids at the current market price.
         # 
         # For more information, see [Spot instances](https://help.aliyun.com/document_detail/165053.html).
         self.spot_strategy = spot_strategy
-        # Specifies whether to enable burst (performance bursting) for the node system cloud disk. Valid values:
-        # - true: Enabled.
-        # - false: Disabled.
+        # Specifies whether to enable burst (performance burst) for the node system cloud disk. Valid values:
+        # - true: enables burst.
+        # - false: disables burst.
         # 
         # This parameter is supported only when `system_disk_category` is set to `cloud_auto`. For more information, see [ESSD AutoPL cloud disks](https://help.aliyun.com/document_detail/368372.html).
         self.system_disk_bursting_enabled = system_disk_bursting_enabled
-        # Multiple system cloud disk types. When a higher-priority cloud disk type is unavailable, the system automatically tries the next-priority cloud disk type to create the system cloud disk.
+        # Multiple system cloud disk types. When a higher-priority disk type is unavailable, the system automatically tries the next-priority disk type to create the system cloud disk.
         self.system_disk_categories = system_disk_categories
         # The system cloud disk type of nodes. Valid values:
         # - `cloud_efficiency`: ultra cloud disk.
@@ -510,13 +513,13 @@ class CreateClusterNodePoolRequestScalingGroup(DaraModel):
         self.system_disk_encrypt_algorithm = system_disk_encrypt_algorithm
         # Specifies whether to encrypt the system cloud disk. Valid values:
         # 
-        # - true: Encrypted.
+        # - true: encrypts the system cloud disk.
         # 
-        # - false: Not encrypted.
+        # - false: does not encrypt the system cloud disk.
         self.system_disk_encrypted = system_disk_encrypted
         # The KMS key ID used by the system cloud disk.
         self.system_disk_kms_key_id = system_disk_kms_key_id
-        # The performance level of the node system cloud disk. Applicable only to ESSD cloud disks. The performance level is related to the cloud disk size. For more information, see [ESSD cloud disks](https://help.aliyun.com/document_detail/122389.html).
+        # The performance level of the node system cloud disk. This parameter takes effect only for ESSD cloud disks. The performance level is related to the disk size. For more information, see [ESSD cloud disks](https://help.aliyun.com/document_detail/122389.html).
         # - PL0: moderate maximum concurrent I/O performance with relatively stable read/write latency.
         # - PL1: moderate maximum concurrent I/O performance with relatively stable read/write latency.
         # - PL2: high maximum concurrent I/O performance with stable read/write latency.
@@ -546,6 +549,8 @@ class CreateClusterNodePoolRequestScalingGroup(DaraModel):
         self.vswitch_ids = vswitch_ids
 
     def validate(self):
+        if self.cpu_options:
+            self.cpu_options.validate()
         if self.data_disks:
             for v1 in self.data_disks:
                  if v1:
@@ -589,6 +594,9 @@ class CreateClusterNodePoolRequestScalingGroup(DaraModel):
 
         if self.compensate_with_on_demand is not None:
             result['compensate_with_on_demand'] = self.compensate_with_on_demand
+
+        if self.cpu_options is not None:
+            result['cpu_options'] = self.cpu_options.to_map()
 
         result['data_disks'] = []
         if self.data_disks is not None:
@@ -753,6 +761,10 @@ class CreateClusterNodePoolRequestScalingGroup(DaraModel):
 
         if m.get('compensate_with_on_demand') is not None:
             self.compensate_with_on_demand = m.get('compensate_with_on_demand')
+
+        if m.get('cpu_options') is not None:
+            temp_model = main_models.CreateClusterNodePoolRequestScalingGroupCpuOptions()
+            self.cpu_options = temp_model.from_map(m.get('cpu_options'))
 
         self.data_disks = []
         if m.get('data_disks') is not None:
@@ -999,7 +1011,11 @@ class CreateClusterNodePoolRequestScalingGroupResourcePoolOptions(DaraModel):
     ):
         # The list of private pool IDs, which are elasticity assurance IDs or capacity reservation IDs. Only Target mode private pool IDs can be specified. Valid values of N: 1 to 20.
         self.private_pool_ids = private_pool_ids
-        # The resource pool strategy used when creating instances. Resource pools include private pools generated after elasticity assurance or capacity reservation takes effect, and public pools for instance launch. Valid values: PrivatePoolFirst: Private pool first. When resouce_pool_options.private_pool_ids is specified, the specified private pools are used first. If no private pool is specified or the specified private pool capacity is insufficient, open-type private pools are automatically matched. If no matching private pool is available, public pool resources are used. PrivatePoolOnly: Private pool only. You must specify resouce_pool_options.private_pool_ids. If the specified private pool capacity is insufficient, instance launch fails. None: No resource pool strategy. Default value: None.
+        # The resource pool strategy used when creating instances. Resource pools include private pools generated after an elasticity assurance or capacity reservation takes effect, and public pools, for instance startup. Valid values:
+        # PrivatePoolFirst: Private pool first. When resouce_pool_options.private_pool_ids is specified, the specified private pools are used first. If no private pool is specified or the specified private pool capacity is insufficient, open-type private pools are automatically matched. If no matching private pool is available, public pool resources are used.
+        # PrivatePoolOnly: Private pool only. resouce_pool_options.private_pool_ids must be specified. If the specified private pool capacity is insufficient, instance startup fails.
+        # None: No resource pool strategy.
+        # Default value: None.
         self.strategy = strategy
 
     def validate(self):
@@ -1036,10 +1052,10 @@ class CreateClusterNodePoolRequestScalingGroupPrivatePoolOptions(DaraModel):
     ):
         # The private node pool ID. When `match_criteria` is set to `Target`, you must specify the private pool ID.
         self.id = id
-        # The private node pool type. Specifies the private pool capacity option for instance launch. After an elasticity assurance or capacity reservation takes effect, a private pool is generated for instance launch. Valid values:
+        # The private node pool type. Specifies the private pool capacity option for instance startup. After an elasticity assurance or capacity reservation takes effect, a private pool is generated for instance startup. Valid values:
         # - `Open`: Open mode. Automatically matches open-type private pool capacity. If no matching private pool capacity is available, public pool resources are used.
-        # - `Target`: Targeted mode. Uses the specified private pool capacity to launch instances. If the specified private pool capacity is unavailable, instance launch fails.
-        # - `None`: No private pool. Instance launch does not use private pool capacity.
+        # - `Target`: Targeted mode. Uses the specified private pool capacity to start instances. If the specified private pool capacity is unavailable, instance startup fails.
+        # - `None`: No private pool. Instances do not use private pool capacity.
         self.match_criteria = match_criteria
 
     def validate(self):
@@ -1065,6 +1081,34 @@ class CreateClusterNodePoolRequestScalingGroupPrivatePoolOptions(DaraModel):
 
         if m.get('match_criteria') is not None:
             self.match_criteria = m.get('match_criteria')
+
+        return self
+
+class CreateClusterNodePoolRequestScalingGroupCpuOptions(DaraModel):
+    def __init__(
+        self,
+        nested_virtualization: str = None,
+    ):
+        # Specifies whether to enable nested virtualization. Valid values: disabled: Disables nested virtualization. enabled: Enables nested virtualization.
+        self.nested_virtualization = nested_virtualization
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.nested_virtualization is not None:
+            result['nested_virtualization'] = self.nested_virtualization
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('nested_virtualization') is not None:
+            self.nested_virtualization = m.get('nested_virtualization')
 
         return self
 
@@ -1206,7 +1250,7 @@ class CreateClusterNodePoolRequestNodeComponentsConfig(DaraModel):
         self,
         custom_config: Dict[str, Any] = None,
     ):
-        # The node component custom configuration.
+        # The custom node component configuration.
         self.custom_config = custom_config
 
     def validate(self):
@@ -1243,18 +1287,19 @@ class CreateClusterNodePoolRequestManagement(DaraModel):
         enable: bool = None,
         upgrade_config: main_models.CreateClusterNodePoolRequestManagementUpgradeConfig = None,
     ):
+        # Specifies whether to enable ECS fault detection for node self-healing.
         self.auto_fault_diagnosis = auto_fault_diagnosis
-        # Specifies whether to automatically repair nodes. Takes effect only when `enable=true`.
+        # Specifies whether to automatically repair nodes. This parameter takes effect only when `enable=true`.
         # 
-        # - `true`: enables auto repair.
+        # - `true`: automatically repairs nodes.
         # 
-        # - `false`: disables auto repair.
+        # - `false`: does not automatically repair nodes.
         # 
         # Default value: `true`.
         self.auto_repair = auto_repair
         # The auto repair node policy.
         self.auto_repair_policy = auto_repair_policy
-        # Specifies whether to automatically upgrade nodes. Takes effect only when `enable=true`.
+        # Specifies whether to automatically upgrade nodes. This parameter takes effect only when `enable=true`.
         # - `true`: enables auto upgrade.
         # - `false`: disables auto upgrade.
         # 
@@ -1262,7 +1307,7 @@ class CreateClusterNodePoolRequestManagement(DaraModel):
         self.auto_upgrade = auto_upgrade
         # The auto upgrade node policy.
         self.auto_upgrade_policy = auto_upgrade_policy
-        # Specifies whether to automatically fix CVE vulnerabilities. Takes effect only when `enable=true`.
+        # Specifies whether to automatically fix CVE vulnerabilities. This parameter takes effect only when `enable=true`.
         # 
         # - `true`: allows automatic CVE fixing.
         # - `false`: does not allow automatic CVE fixing.
@@ -1271,6 +1316,7 @@ class CreateClusterNodePoolRequestManagement(DaraModel):
         self.auto_vul_fix = auto_vul_fix
         # The auto CVE fix policy.
         self.auto_vul_fix_policy = auto_vul_fix_policy
+        # Specifies whether to enable node rotation. Only intelligent managed node pools support this feature, and it is enabled by default. Standard node pools do not support this feature.
         self.drift_enabled = drift_enabled
         # Specifies whether to enable the managed feature for the node pool. Valid values:
         # 
@@ -1282,7 +1328,7 @@ class CreateClusterNodePoolRequestManagement(DaraModel):
         self.enable = enable
         # [Deprecated] Use the `auto_upgrade` parameter at the upper level instead.
         # 
-        # The auto upgrade configuration. Takes effect only when `enable=true`.
+        # The auto upgrade configuration. This parameter takes effect only when `enable=true`.
         self.upgrade_config = upgrade_config
 
     def validate(self):
@@ -1391,13 +1437,13 @@ class CreateClusterNodePoolRequestManagementUpgradeConfig(DaraModel):
         # 
         # Default value: 1.
         self.max_unavailable = max_unavailable
-        # The number of extra nodes. Mutually exclusive with `surge_percentage`.
+        # The number of extra nodes. Specify either this parameter or `surge_percentage`.
         # 
-        # Nodes become unavailable during upgrades. You can create extra nodes to compensate for the cluster load.
+        # Nodes become unavailable during upgrades. You can create extra nodes to compensate for the cluster workload.
         # 
         # > The number of extra nodes should not exceed the current number of nodes.
         self.surge = surge
-        # The percentage of extra nodes. Mutually exclusive with `surge`.
+        # The percentage of extra nodes. Specify either this parameter or `surge`.
         # 
         # Number of extra nodes = percentage of extra nodes × number of nodes. For example, if the percentage is set to 50% and there are 6 existing nodes, the number of extra nodes = 50% × 6 = 3.
         self.surge_percentage = surge_percentage
@@ -1451,7 +1497,7 @@ class CreateClusterNodePoolRequestManagementAutoVulFixPolicy(DaraModel):
         # 
         # Default value: `kernel`.
         self.exclude_packages = exclude_packages
-        # Specifies whether to allow node restart. Takes effect only when `auto_vul_fix=true`. Valid values:
+        # Specifies whether to allow node restart. This parameter takes effect only when `auto_vul_fix=true`. Valid values:
         # - `true`: allows node restart.
         # - `false`: does not allow node restart.
         # 
@@ -1505,20 +1551,20 @@ class CreateClusterNodePoolRequestManagementAutoUpgradePolicy(DaraModel):
         auto_upgrade_os: bool = None,
         auto_upgrade_runtime: bool = None,
     ):
-        # Specifies whether to allow automatic kubelet upgrade. Takes effect only when `auto_upgrade=true`. Valid values:
+        # Specifies whether to allow automatic kubelet upgrade. This parameter takes effect only when `auto_upgrade=true`. Valid values:
         # - `true`: allows automatic kubelet upgrade.
         # - `false`: does not allow automatic kubelet upgrade.
         # 
         # Default value: `true`.
         self.auto_upgrade_kubelet = auto_upgrade_kubelet
-        # Specifies whether to allow automatic operating system upgrade. Takes effect only when `auto_upgrade=true`. Valid values:
-        # - `true`: allows automatic operating system upgrade.
-        # - `false`: does not allow automatic operating system upgrade.
+        # Specifies whether to allow automatic operating system upgrade. This parameter takes effect only when `auto_upgrade=true`. Valid values:
+        # - `true`: allows automatic OS upgrade.
+        # - `false`: does not allow automatic OS upgrade.
         # 
         # 
         # Default value: `false`.
         self.auto_upgrade_os = auto_upgrade_os
-        # Specifies whether to allow automatic runtime upgrade. Takes effect only when `auto_upgrade=true`. Valid values:
+        # Specifies whether to allow automatic runtime upgrade. This parameter takes effect only when `auto_upgrade=true`. Valid values:
         # - `true`: allows automatic runtime upgrade.
         # - `false`: does not allow automatic runtime upgrade.
         # 
@@ -1561,11 +1607,15 @@ class CreateClusterNodePoolRequestManagementAutoRepairPolicy(DaraModel):
     def __init__(
         self,
         approval_required: bool = None,
+        max_parallel_repairing_nodes: str = None,
+        max_unhealthy_nodes_threshold: str = None,
         restart_node: bool = None,
     ):
         # Specifies whether node repair requires manual approval.
         self.approval_required = approval_required
-        # Specifies whether to allow node restart. Takes effect only when `auto_repair=true`. Valid values:
+        self.max_parallel_repairing_nodes = max_parallel_repairing_nodes
+        self.max_unhealthy_nodes_threshold = max_unhealthy_nodes_threshold
+        # Specifies whether to allow node restart. This parameter takes effect only when `auto_repair=true`. Valid values:
         # 
         # - `true`: allows node restart.
         # - `false`: does not allow node restart.
@@ -1584,6 +1634,12 @@ class CreateClusterNodePoolRequestManagementAutoRepairPolicy(DaraModel):
         if self.approval_required is not None:
             result['approval_required'] = self.approval_required
 
+        if self.max_parallel_repairing_nodes is not None:
+            result['max_parallel_repairing_nodes'] = self.max_parallel_repairing_nodes
+
+        if self.max_unhealthy_nodes_threshold is not None:
+            result['max_unhealthy_nodes_threshold'] = self.max_unhealthy_nodes_threshold
+
         if self.restart_node is not None:
             result['restart_node'] = self.restart_node
 
@@ -1593,6 +1649,12 @@ class CreateClusterNodePoolRequestManagementAutoRepairPolicy(DaraModel):
         m = m or dict()
         if m.get('approval_required') is not None:
             self.approval_required = m.get('approval_required')
+
+        if m.get('max_parallel_repairing_nodes') is not None:
+            self.max_parallel_repairing_nodes = m.get('max_parallel_repairing_nodes')
+
+        if m.get('max_unhealthy_nodes_threshold') is not None:
+            self.max_unhealthy_nodes_threshold = m.get('max_unhealthy_nodes_threshold')
 
         if m.get('restart_node') is not None:
             self.restart_node = m.get('restart_node')
@@ -1613,17 +1675,17 @@ class CreateClusterNodePoolRequestKubernetesConfig(DaraModel):
         unschedulable: bool = None,
         user_data: str = None,
     ):
-        # Specifies whether to install CloudMonitor on ECS nodes. After installation, you can view monitoring information for the created ECS instances in the CloudMonitor console. We recommend that you enable this feature. Valid values:
+        # Specifies whether to install the CloudMonitor agent on ECS nodes. After installation, you can view monitoring information for the created ECS instances in the CloudMonitor console. We recommend that you enable this feature. Valid values:
         # 
-        # - `true`: Installs CloudMonitor on ECS nodes.
+        # - `true`: Installs the CloudMonitor agent on ECS nodes.
         # 
-        # - `false`: Does not install CloudMonitor on ECS nodes.
+        # - `false`: Does not install the CloudMonitor agent on ECS nodes.
         # 
         # Default value: `false`.
         self.cms_enabled = cms_enabled
-        # The node CPU management policy. The following two policies are supported for cluster versions 1.12.6 and later:
+        # The node CPU management policy. The following two policies are supported for clusters of version 1.12.6 or later:
         # 
-        # - `static`: Allows enhanced CPU affinity and exclusivity for pods with certain resource characteristics on the node.
+        # - `static`: Allows pods with certain resource characteristics on the node to be granted enhanced CPU affinity and exclusivity.
         # - `none`: Enables the existing default CPU affinity scheme.
         # 
         # Default value: `none`.
@@ -1641,13 +1703,13 @@ class CreateClusterNodePoolRequestKubernetesConfig(DaraModel):
         # - The prefix is required (ECS restriction). The suffix is optional.
         # - The node IP is the full private IP address of the node.
         # 
-        # Example: The node IP address is 192.XX.YY.55, the prefix is aliyun.com, and the suffix is test.
+        # For example, if the node IP address is 192.XX.YY.55, the prefix is aliyun.com, and the suffix is test:
         # 
-        # - For Linux nodes, the node name, ECS instance name, and ECS instance hostname are all aliyun.com192.XX.YY.55test.
+        # - For a Linux node, the node name, ECS instance name, and ECS instance hostname are all aliyun.com192.XX.YY.55test.
         # 
-        # - For Windows nodes, the ECS instance hostname is 192-XX-YY-55, and the node name and ECS instance name are both aliyun.com192.XX.YY.55test.
+        # - For a Windows node, the ECS instance hostname is 192-XX-YY-55, and the node name and ECS instance name are both aliyun.com192.XX.YY.55test.
         self.node_name_mode = node_name_mode
-        # The instance pre-custom data. Before the node joins the cluster, the specified pre-custom data script runs. For more information, see [User-Data scripts](https://help.aliyun.com/document_detail/49121.html).
+        # The instance pre-user data. Before the node joins the cluster, the specified instance pre-user data script is run. For more information, see [User-Data scripts](https://help.aliyun.com/document_detail/49121.html).
         self.pre_user_data = pre_user_data
         # The container runtime name. ACK supports the following three container runtimes:
         # 
@@ -1667,7 +1729,7 @@ class CreateClusterNodePoolRequestKubernetesConfig(DaraModel):
         # 
         # - false: Schedulable.
         self.unschedulable = unschedulable
-        # The instance user data. After the node joins the cluster, the specified instance user data script runs. For more information, see [User-Data scripts](https://help.aliyun.com/document_detail/49121.html).
+        # The instance user data. After the node joins the cluster, the specified instance user data script is run. For more information, see [User-Data scripts](https://help.aliyun.com/document_detail/49121.html).
         self.user_data = user_data
 
     def validate(self):
@@ -1843,11 +1905,13 @@ class CreateClusterNodePoolRequestEfloNodeGroup(DaraModel):
         group_id: str = None,
         worker_ram_role_name: str = None,
     ):
+        # Specifies whether to enable automatic node addition for the Lingjun node pool.
         self.auto_attach_enabled = auto_attach_enabled
         # The Lingjun cluster ID to associate when creating a Lingjun node pool.
         self.cluster_id = cluster_id
         # The Lingjun group ID of the Lingjun cluster to associate when creating a Lingjun node pool.
         self.group_id = group_id
+        # The Worker RAM role used by the Lingjun node pool.
         self.worker_ram_role_name = worker_ram_role_name
 
     def validate(self):
@@ -1913,7 +1977,7 @@ class CreateClusterNodePoolRequestAutoScaling(DaraModel):
         self.eip_internet_charge_type = eip_internet_charge_type
         # Specifies whether to enable automatic scaling. Valid values:
         # 
-        # - `true`: enables the automatic scaling feature for the node pool. When the cluster capacity planning cannot meet application Pod scheduling requirements, ACK automatically scales node resources based on the configured minimum and maximum instance counts. Clusters of version 1.24 or later use instant node elastic scaling by default. Clusters of versions earlier than 1.24 use node automatic scaling by default. For more information, see [Node scaling](https://help.aliyun.com/document_detail/2746785.html).
+        # - `true`: enables the automatic scaling feature for the node pool. When the cluster capacity planning cannot meet application Pod scheduling requirements, ACK automatically scales node resources based on the configured minimum and maximum instance counts. Clusters of version 1.24 and later enable instant node elasticity by default. Clusters of versions earlier than 1.24 enable node auto scaling by default. For more information, see [Node scaling](https://help.aliyun.com/document_detail/2746785.html).
         # 
         # - `false`: disables automatic scaling. ACK adjusts the number of nodes in the node pool based on the configured desired node count and maintains the node count at the desired value.
         # 
@@ -1931,18 +1995,18 @@ class CreateClusterNodePoolRequestAutoScaling(DaraModel):
         # 
         # Default value: `false`.
         self.is_bond_eip = is_bond_eip
-        # The maximum number of instances that can be scaled in the node pool, excluding your existing instances. Takes effect only when `enable=true`.
+        # The maximum number of scalable instances in the node pool, excluding your existing instances. This parameter takes effect only when `enable=true`.
         # 
         # Valid values: [min_instances, 2000]. Default value: 0.
         self.max_instances = max_instances
-        # The minimum number of instances that can be scaled in the node pool, excluding your existing instances. Takes effect only when `enable=true`.
+        # The minimum number of scalable instances in the node pool, excluding your existing instances. This parameter takes effect only when `enable=true`.
         # 
         # Valid values: [0, max_instances]. Default value: 0.
         # 
-        # > - If the minimum instance count is not 0, the scaling group triggers automatic creation of the corresponding number of ECS instances after the automatic scaling feature takes effect.
-        # > - Set the maximum instance count to a value no less than the current number of nodes in the node pool. Otherwise, nodes in the node pool are scaled in after the automatic scaling feature takes effect.
+        # > - If the minimum instance count is not 0, the corresponding number of ECS instances are automatically created after the scaling group takes effect.
+        # > - Set the maximum instance count to a value no less than the current number of nodes in the node pool. Otherwise, nodes in the node pool will be scaled in after the elastic scaling feature takes effect.
         self.min_instances = min_instances
-        # The automatic scaling instance type. Takes effect only when `enable=true`. Valid values:
+        # The automatic scaling instance type. This parameter takes effect only when `enable=true`. Valid values:
         # 
         # - `cpu`: regular instance type.
         # 
@@ -2017,9 +2081,10 @@ class CreateClusterNodePoolRequestAutoMode(DaraModel):
         self,
         enable: bool = None,
     ):
-        # Specifies whether to enable intelligent managed mode. Valid values:
+        # Specifies whether to enable intelligent managed mode.
+        # Valid values:
         # - true: Enables intelligent managed mode. This can be enabled only when the cluster has intelligent managed mode enabled.
-        # - false: Does not enable intelligent managed mode.
+        # - false: Disables intelligent managed mode.
         self.enable = enable
 
     def validate(self):

@@ -383,6 +383,7 @@ from ._nodepool import NodepoolNodeComponentsConfig
 from ._nodepool import NodepoolNodeComponents
 from ._nodepool import NodepoolNodeConfig
 from ._nodepool import NodepoolNodepoolInfo
+from ._nodepool import NodepoolScalingGroupCpuOptions
 from ._nodepool import NodepoolScalingGroupPrivatePoolOptions
 from ._nodepool import NodepoolScalingGroupResourcePoolOptions
 from ._nodepool import NodepoolScalingGroupSpotPriceLimit
@@ -402,6 +403,7 @@ from ._create_cluster_request import CreateClusterRequestAuditLogConfig
 from ._create_cluster_request import CreateClusterRequestAutoMode
 from ._create_cluster_request import CreateClusterRequestControlPlaneConfig
 from ._create_cluster_request import CreateClusterRequestControlPlaneEndpointsConfigInternalDnsConfig
+from ._create_cluster_request import CreateClusterRequestControlPlaneEndpointsConfigLoadBalancersConfig
 from ._create_cluster_request import CreateClusterRequestControlPlaneEndpointsConfig
 from ._create_cluster_request import CreateClusterRequestOperationPolicyClusterAutoUpgrade
 from ._create_cluster_request import CreateClusterRequestOperationPolicy
@@ -421,6 +423,7 @@ from ._create_cluster_node_pool_request import CreateClusterNodePoolRequestNodeC
 from ._create_cluster_node_pool_request import CreateClusterNodePoolRequestNodeComponents
 from ._create_cluster_node_pool_request import CreateClusterNodePoolRequestNodeConfig
 from ._create_cluster_node_pool_request import CreateClusterNodePoolRequestNodepoolInfo
+from ._create_cluster_node_pool_request import CreateClusterNodePoolRequestScalingGroupCpuOptions
 from ._create_cluster_node_pool_request import CreateClusterNodePoolRequestScalingGroupPrivatePoolOptions
 from ._create_cluster_node_pool_request import CreateClusterNodePoolRequestScalingGroupResourcePoolOptions
 from ._create_cluster_node_pool_request import CreateClusterNodePoolRequestScalingGroupSpotPriceLimit
@@ -443,6 +446,7 @@ from ._describe_auto_repair_policy_response_body import DescribeAutoRepairPolicy
 from ._describe_cluster_detail_response_body import DescribeClusterDetailResponseBodyAutoMode
 from ._describe_cluster_detail_response_body import DescribeClusterDetailResponseBodyControlPlaneConfig
 from ._describe_cluster_detail_response_body import DescribeClusterDetailResponseBodyControlPlaneEndpointsConfigInternalDnsConfig
+from ._describe_cluster_detail_response_body import DescribeClusterDetailResponseBodyControlPlaneEndpointsConfigLoadBalancersConfig
 from ._describe_cluster_detail_response_body import DescribeClusterDetailResponseBodyControlPlaneEndpointsConfig
 from ._describe_cluster_detail_response_body import DescribeClusterDetailResponseBodyOperationPolicyClusterAutoUpgrade
 from ._describe_cluster_detail_response_body import DescribeClusterDetailResponseBodyOperationPolicy
@@ -466,6 +470,7 @@ from ._describe_cluster_node_pool_detail_response_body import DescribeClusterNod
 from ._describe_cluster_node_pool_detail_response_body import DescribeClusterNodePoolDetailResponseBodyNodeConfigNodeOsConfig
 from ._describe_cluster_node_pool_detail_response_body import DescribeClusterNodePoolDetailResponseBodyNodeConfig
 from ._describe_cluster_node_pool_detail_response_body import DescribeClusterNodePoolDetailResponseBodyNodepoolInfo
+from ._describe_cluster_node_pool_detail_response_body import DescribeClusterNodePoolDetailResponseBodyScalingGroupCpuOptions
 from ._describe_cluster_node_pool_detail_response_body import DescribeClusterNodePoolDetailResponseBodyScalingGroupPrivatePoolOptions
 from ._describe_cluster_node_pool_detail_response_body import DescribeClusterNodePoolDetailResponseBodyScalingGroupResourcePoolOptions
 from ._describe_cluster_node_pool_detail_response_body import DescribeClusterNodePoolDetailResponseBodyScalingGroupSpotPriceLimit
@@ -488,6 +493,7 @@ from ._describe_cluster_node_pools_response_body import DescribeClusterNodePools
 from ._describe_cluster_node_pools_response_body import DescribeClusterNodePoolsResponseBodyNodepoolsNodeConfigNodeOsConfig
 from ._describe_cluster_node_pools_response_body import DescribeClusterNodePoolsResponseBodyNodepoolsNodeConfig
 from ._describe_cluster_node_pools_response_body import DescribeClusterNodePoolsResponseBodyNodepoolsNodepoolInfo
+from ._describe_cluster_node_pools_response_body import DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroupCpuOptions
 from ._describe_cluster_node_pools_response_body import DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroupPrivatePoolOptions
 from ._describe_cluster_node_pools_response_body import DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroupResourcePoolOptions
 from ._describe_cluster_node_pools_response_body import DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroupSpotPriceLimit
@@ -594,6 +600,7 @@ from ._modify_auto_repair_policy_request import ModifyAutoRepairPolicyRequestRul
 from ._modify_cluster_request import ModifyClusterRequestApiServerCustomCertSans
 from ._modify_cluster_request import ModifyClusterRequestControlPlaneConfig
 from ._modify_cluster_request import ModifyClusterRequestControlPlaneEndpointsConfigInternalDnsConfig
+from ._modify_cluster_request import ModifyClusterRequestControlPlaneEndpointsConfigLoadBalancersConfig
 from ._modify_cluster_request import ModifyClusterRequestControlPlaneEndpointsConfig
 from ._modify_cluster_request import ModifyClusterRequestOperationPolicyClusterAutoUpgrade
 from ._modify_cluster_request import ModifyClusterRequestOperationPolicy
@@ -1006,6 +1013,7 @@ __all__ = [
     NodepoolNodeComponents,
     NodepoolNodeConfig,
     NodepoolNodepoolInfo,
+    NodepoolScalingGroupCpuOptions,
     NodepoolScalingGroupPrivatePoolOptions,
     NodepoolScalingGroupResourcePoolOptions,
     NodepoolScalingGroupSpotPriceLimit,
@@ -1025,6 +1033,7 @@ __all__ = [
     CreateClusterRequestAutoMode,
     CreateClusterRequestControlPlaneConfig,
     CreateClusterRequestControlPlaneEndpointsConfigInternalDnsConfig,
+    CreateClusterRequestControlPlaneEndpointsConfigLoadBalancersConfig,
     CreateClusterRequestControlPlaneEndpointsConfig,
     CreateClusterRequestOperationPolicyClusterAutoUpgrade,
     CreateClusterRequestOperationPolicy,
@@ -1044,6 +1053,7 @@ __all__ = [
     CreateClusterNodePoolRequestNodeComponents,
     CreateClusterNodePoolRequestNodeConfig,
     CreateClusterNodePoolRequestNodepoolInfo,
+    CreateClusterNodePoolRequestScalingGroupCpuOptions,
     CreateClusterNodePoolRequestScalingGroupPrivatePoolOptions,
     CreateClusterNodePoolRequestScalingGroupResourcePoolOptions,
     CreateClusterNodePoolRequestScalingGroupSpotPriceLimit,
@@ -1066,6 +1076,7 @@ __all__ = [
     DescribeClusterDetailResponseBodyAutoMode,
     DescribeClusterDetailResponseBodyControlPlaneConfig,
     DescribeClusterDetailResponseBodyControlPlaneEndpointsConfigInternalDnsConfig,
+    DescribeClusterDetailResponseBodyControlPlaneEndpointsConfigLoadBalancersConfig,
     DescribeClusterDetailResponseBodyControlPlaneEndpointsConfig,
     DescribeClusterDetailResponseBodyOperationPolicyClusterAutoUpgrade,
     DescribeClusterDetailResponseBodyOperationPolicy,
@@ -1089,6 +1100,7 @@ __all__ = [
     DescribeClusterNodePoolDetailResponseBodyNodeConfigNodeOsConfig,
     DescribeClusterNodePoolDetailResponseBodyNodeConfig,
     DescribeClusterNodePoolDetailResponseBodyNodepoolInfo,
+    DescribeClusterNodePoolDetailResponseBodyScalingGroupCpuOptions,
     DescribeClusterNodePoolDetailResponseBodyScalingGroupPrivatePoolOptions,
     DescribeClusterNodePoolDetailResponseBodyScalingGroupResourcePoolOptions,
     DescribeClusterNodePoolDetailResponseBodyScalingGroupSpotPriceLimit,
@@ -1111,6 +1123,7 @@ __all__ = [
     DescribeClusterNodePoolsResponseBodyNodepoolsNodeConfigNodeOsConfig,
     DescribeClusterNodePoolsResponseBodyNodepoolsNodeConfig,
     DescribeClusterNodePoolsResponseBodyNodepoolsNodepoolInfo,
+    DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroupCpuOptions,
     DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroupPrivatePoolOptions,
     DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroupResourcePoolOptions,
     DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroupSpotPriceLimit,
@@ -1217,6 +1230,7 @@ __all__ = [
     ModifyClusterRequestApiServerCustomCertSans,
     ModifyClusterRequestControlPlaneConfig,
     ModifyClusterRequestControlPlaneEndpointsConfigInternalDnsConfig,
+    ModifyClusterRequestControlPlaneEndpointsConfigLoadBalancersConfig,
     ModifyClusterRequestControlPlaneEndpointsConfig,
     ModifyClusterRequestOperationPolicyClusterAutoUpgrade,
     ModifyClusterRequestOperationPolicy,
