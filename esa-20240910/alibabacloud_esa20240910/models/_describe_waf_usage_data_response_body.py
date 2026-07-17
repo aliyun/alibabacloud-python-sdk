@@ -88,6 +88,8 @@ class DescribeWafUsageDataResponseBodyUsageData(DaraModel):
         # The domain record name.
         self.record_name = record_name
         # The beginning of the time interval.
+        # 
+        # The time is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is in UTC+0.
         self.time_stamp = time_stamp
 
     def validate(self):

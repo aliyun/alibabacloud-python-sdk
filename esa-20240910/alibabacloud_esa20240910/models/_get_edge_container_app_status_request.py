@@ -10,11 +10,11 @@ class GetEdgeContainerAppStatusRequest(DaraModel):
         app_id: str = None,
         publish_env: str = None,
     ):
-        # The application ID, which can be obtained by calling the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation.
+        # The application ID. You can call the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation to obtain the application ID.
         # 
         # This parameter is required.
         self.app_id = app_id
-        # The release environment. Valid values: prod and staging.
+        # The publishing environment. Valid values: prod and staging.
         self.publish_env = publish_env
 
     def validate(self):

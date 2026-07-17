@@ -16,15 +16,15 @@ class ListEdgeContainerAppVersionsResponseBody(DaraModel):
         total_count: int = None,
         versions: List[main_models.ListEdgeContainerAppVersionsResponseBodyVersions] = None,
     ):
-        # The page number.
+        # The page number of the returned data.
         self.page_number = page_number
-        # The number of entries per page.
+        # The page size.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
         # The total number of entries.
         self.total_count = total_count
-        # The versions.
+        # The version list.
         self.versions = versions
 
     def validate(self):
@@ -93,27 +93,27 @@ class ListEdgeContainerAppVersionsResponseBodyVersions(DaraModel):
         update_time: str = None,
         version_id: str = None,
     ):
-        # The application ID.
+        # The application ID to which the version belongs.
         self.app_id = app_id
-        # The containers in the version.
+        # The array of containers included in this version.
         self.containers = containers
-        # The time when the version was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
+        # The version creation time. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
-        # The time when the version was last released. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
+        # The last publish time of this version. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.last_publish_time = last_publish_time
         # The version name.
         self.name = name
-        # The time when the version was released. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
+        # The current publish time of the version. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.publish_time = publish_time
         # The remarks.
         self.remarks = remarks
         # The status of the current version. Valid values:
         # 
-        # *   **created**
-        # *   **failed**
-        # *   **creating**
+        # - **created**: Created.
+        # - **failed**: Failed.
+        # - **creating**: Creating.
         self.status = status
-        # The time when the version was last modified. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
+        # The last modification time of the version. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.update_time = update_time
         # The version ID.
         self.version_id = version_id
@@ -214,27 +214,25 @@ class ListEdgeContainerAppVersionsResponseBodyVersionsContainers(DaraModel):
         probe_type: str = None,
         spec: str = None,
     ):
-        # The arguments that are passed to the container startup command.
+        # The container startup arguments.
         self.args = args
-        # The command that is used to start the container.
+        # The container startup command.
         self.command = command
-        # The environment variables of the container.
+        # The container environment variables.
         self.env_variables = env_variables
-        # The address of the container image.
+        # The container image address.
         self.image = image
         # The container name.
         self.name = name
-        # The command that is run before the container is started. Format: `{"exec":{"command":["cat","/etc/group"\\]}}`.
-        # 
-        # If you want to cancel this configuration, set the parameter value to `""` or `{}`. If you do not specify this parameter, this configuration is ignored.
+        # The command executed after the container starts.
         self.post_start = post_start
-        # The command that is run before the container is stopped.
+        # The command executed before the container stops.
         self.pre_stop = pre_stop
-        # The container probe content.
+        # The container probe configuration object.
         self.probe_content = probe_content
-        # The probe type of the container.
+        # The container probe type.
         self.probe_type = probe_type
-        # The compute specification of the container.
+        # The container specifications.
         self.spec = spec
 
     def validate(self):
@@ -328,27 +326,27 @@ class ListEdgeContainerAppVersionsResponseBodyVersionsContainersProbeContent(Dar
         success_threshold: int = None,
         timeout_seconds: int = None,
     ):
-        # The probe command.
+        # The command executed by the probe.
         self.command = command
-        # The number of consecutive failed health checks required for a container to be considered as unhealthy.
+        # The number of consecutive failed health checks for the container.
         self.failure_threshold = failure_threshold
-        # The domain name that is used for health checks.
+        # The domain name for the container health check.
         self.host = host
-        # The request headers that are included in the container health check request.
+        # The request headers carried in the container health check.
         self.http_headers = http_headers
-        # The latency for container probe initialization.
+        # The initial delay time of the container probe. Unit: seconds. For example, 5 indicates that this parameter is set to five seconds.
         self.initial_delay_seconds = initial_delay_seconds
-        # The path of the container health check.
+        # The path for the container health check.
         self.path = path
-        # The interval between container health checks.
+        # The interval of the container health check. Unit: seconds. For example, 5 indicates that this parameter is set to five seconds.
         self.period_seconds = period_seconds
-        # The port of the container health check.
+        # The port for the container health check.
         self.port = port
-        # The protocol that the container health check request uses.
+        # The request protocol for the container health check.
         self.scheme = scheme
-        # The number of consecutive successful health checks required for a container to be considered as healthy.
+        # The number of consecutive successful health checks required for the container.
         self.success_threshold = success_threshold
-        # The timeout period of the container health check.
+        # The timeout period of the container health check. Unit: seconds. For example, 5 indicates that this parameter is set to five seconds.
         self.timeout_seconds = timeout_seconds
 
     def validate(self):

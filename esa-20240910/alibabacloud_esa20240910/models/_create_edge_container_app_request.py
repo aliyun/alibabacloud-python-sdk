@@ -22,13 +22,13 @@ class CreateEdgeContainerAppRequest(DaraModel):
         service_port: int = None,
         target_port: int = None,
     ):
-        # The number of consecutive failed health checks required before a healthy application is considered unhealthy.
+        # The number of consecutive failed health checks required. If an application is healthy, it is considered unhealthy after the specified number of consecutive failed probes.
         # - Valid values: **1 to 10**. 
         # - Default value: **5**.
         self.health_check_fail_times = health_check_fail_times
-        # The domain name used for health checks. If this parameter is not specified, the value is empty by default.
+        # The domain name used for health checks. If not specified, the value is empty by default.
         self.health_check_host = health_check_host
-        # The HTTP status code that indicates the health check is Normal. Valid values:
+        # The HTTP status code that indicates a Normal health check result. Valid values:
         # 
         # - **http_2xx** (default).
         # - **http_3xx**.
@@ -47,17 +47,17 @@ class CreateEdgeContainerAppRequest(DaraModel):
         # - Valid values: **1 to 65535**.
         # - Default value: **80**.
         self.health_check_port = health_check_port
-        # The number of consecutive successful health checks required before an unhealthy application is considered healthy.
+        # The number of consecutive successful health checks required. If an application is unhealthy, it is considered healthy again after the specified number of consecutive successful probes.
         # - Valid values: **1 to 10**.
         # - Default value: **2**.
         self.health_check_succ_times = health_check_succ_times
-        # The amount of time to wait for a response from the health check. If the backend ECS instance does not respond within the specified time, the health check is considered failed.    
+        # The amount of time to wait for a response from the health check. If the backend ECS instance does not respond correctly within the specified time, the health check is considered failed.    
         # 
         # - Valid values: **1** to **100**.   
         # - Default value: **3**.
         # - Unit: **seconds**.
         self.health_check_timeout = health_check_timeout
-        # The health check type, which includes Layer 4 and Layer 7 probing. If this parameter is not specified, the value is empty by default.
+        # The health check type, which includes Layer 4 and Layer 7 probing. If not specified, the value is empty by default.
         # 
         # Valid values:
         # 
@@ -69,10 +69,11 @@ class CreateEdgeContainerAppRequest(DaraModel):
         # - Default value: **"/"**.
         self.health_check_uri = health_check_uri
         # The application name. The name must start with a lowercase letter and can contain lowercase letters, digits, and hyphens (-). The name must be 6 to 128 characters in length.
+        # >Notice: You must activate the EdgeContainer service in the console before calling this operation. Calls from accounts that have not activated the service will return a service activation error.</notice>
         # 
         # This parameter is required.
         self.name = name
-        # The remarks. If this parameter is not specified, the value is empty by default.
+        # The remarks. If not specified, the value is empty by default.
         self.remarks = remarks
         # The service port number. Valid values: 1 to 65535.
         # 

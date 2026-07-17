@@ -20,7 +20,7 @@ class DescribeSiteWafTimeSeriesDataResponseBody(DaraModel):
     ):
         # The returned data.
         self.data = data
-        # The end of the time range for the returned data.
+        # The end time of the returned data.
         # 
         # The time is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is in UTC+0.
         self.end_time = end_time
@@ -30,11 +30,11 @@ class DescribeSiteWafTimeSeriesDataResponseBody(DaraModel):
         self.request_id = request_id
         # The sampling rate. Unit: %.
         self.sampling_rate = sampling_rate
-        # The beginning of the time range to query.
+        # The start time for the data query.
         # 
         # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
         self.start_time = start_time
-        # The summarized data.
+        # The summarized query data.
         self.summarized_data = summarized_data
 
     def validate(self):
@@ -244,6 +244,8 @@ class DescribeSiteWafTimeSeriesDataResponseBodyDataDetailData(DaraModel):
         value: Any = None,
     ):
         # The start time of the time slice.
+        # 
+        # The time is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is in UTC+0.
         self.time_stamp = time_stamp
         # The value.
         self.value = value

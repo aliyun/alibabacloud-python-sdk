@@ -18,23 +18,23 @@ class DescribeSiteTimeSeriesDataResponseBody(DaraModel):
         start_time: str = None,
         summarized_data: List[main_models.DescribeSiteTimeSeriesDataResponseBodySummarizedData] = None,
     ):
-        # Returned data.
+        # The returned data.
         self.data = data
-        # The end time for fetching the data.
+        # The end time of the returned data.
         # 
-        # The date format follows ISO8601 notation and uses UTC+0, formatted as yyyy-MM-ddTHH:mm:ssZ.
+        # The time is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is in UTC+0.
         self.end_time = end_time
-        # The granularity of the data, in seconds.
+        # The data granularity. Unit: seconds.
         self.interval = interval
         # The request ID.
         self.request_id = request_id
-        # The sampling rate, in %.
+        # The sampling rate. Unit: %.
         self.sampling_rate = sampling_rate
-        # The start time for fetching the data.
+        # The start time for the data query.
         # 
-        # The date format follows ISO8601 notation and uses UTC+0, formatted as yyyy-MM-ddTHH:mm:ssZ.
+        # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
         self.start_time = start_time
-        # Aggregated query data.
+        # The summarized data.
         self.summarized_data = summarized_data
 
     def validate(self):
@@ -119,13 +119,13 @@ class DescribeSiteTimeSeriesDataResponseBodySummarizedData(DaraModel):
         field_name: str = None,
         value: Any = None,
     ):
-        # The aggregation method used.
+        # The aggregation method.
         self.agg_method = agg_method
-        # The dimension of the aggregated data being queried.
+        # The summarized dimension name.
         self.dimension_name = dimension_name
-        # The value of the aggregated dimension being queried.
+        # The summarized dimension value.
         self.dimension_value = dimension_value
-        # The value of the aggregated metric being queried.
+        # The summarized metric name.
         self.field_name = field_name
         # The aggregated value.
         self.value = value
@@ -182,13 +182,13 @@ class DescribeSiteTimeSeriesDataResponseBodyData(DaraModel):
         dimension_value: str = None,
         field_name: str = None,
     ):
-        # Returned data.
+        # The returned data.
         self.detail_data = detail_data
-        # Query dimension.
+        # The query dimension.
         self.dimension_name = dimension_name
-        # Query dimension value.
+        # The dimension value.
         self.dimension_value = dimension_value
-        # Query metric value.
+        # The metric name.
         self.field_name = field_name
 
     def validate(self):
@@ -243,9 +243,11 @@ class DescribeSiteTimeSeriesDataResponseBodyDataDetailData(DaraModel):
         time_stamp: str = None,
         value: Any = None,
     ):
-        # Start timestamp of the time slice.
+        # The start time of the time slice.
+        # 
+        # The time is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is in UTC+0.
         self.time_stamp = time_stamp
-        # Value.
+        # The value.
         self.value = value
 
     def validate(self):

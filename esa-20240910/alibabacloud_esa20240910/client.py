@@ -20609,6 +20609,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_user_log_delivery_quota_with_options_async(request, runtime)
 
+    def get_user_max_plan_quota_with_options(
+        self,
+        request: main_models.GetUserMaxPlanQuotaRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetUserMaxPlanQuotaResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.quota_name):
+            query['QuotaName'] = request.quota_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetUserMaxPlanQuota',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetUserMaxPlanQuotaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_user_max_plan_quota_with_options_async(
+        self,
+        request: main_models.GetUserMaxPlanQuotaRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetUserMaxPlanQuotaResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.quota_name):
+            query['QuotaName'] = request.quota_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetUserMaxPlanQuota',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetUserMaxPlanQuotaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_user_max_plan_quota(
+        self,
+        request: main_models.GetUserMaxPlanQuotaRequest,
+    ) -> main_models.GetUserMaxPlanQuotaResponse:
+        runtime = RuntimeOptions()
+        return self.get_user_max_plan_quota_with_options(request, runtime)
+
+    async def get_user_max_plan_quota_async(
+        self,
+        request: main_models.GetUserMaxPlanQuotaRequest,
+    ) -> main_models.GetUserMaxPlanQuotaResponse:
+        runtime = RuntimeOptions()
+        return await self.get_user_max_plan_quota_with_options_async(request, runtime)
+
     def get_user_waf_ruleset_with_options(
         self,
         request: main_models.GetUserWafRulesetRequest,
@@ -21308,6 +21378,96 @@ class Client(OpenApiClient):
     ) -> main_models.ListAsyncTasksResponse:
         runtime = RuntimeOptions()
         return await self.list_async_tasks_with_options_async(request, runtime)
+
+    def list_bot_instances_with_options(
+        self,
+        request: main_models.ListBotInstancesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListBotInstancesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not DaraCore.is_null(request.sort_order):
+            query['SortOrder'] = request.sort_order
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListBotInstances',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListBotInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_bot_instances_with_options_async(
+        self,
+        request: main_models.ListBotInstancesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListBotInstancesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not DaraCore.is_null(request.sort_order):
+            query['SortOrder'] = request.sort_order
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListBotInstances',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListBotInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_bot_instances(
+        self,
+        request: main_models.ListBotInstancesRequest,
+    ) -> main_models.ListBotInstancesResponse:
+        runtime = RuntimeOptions()
+        return self.list_bot_instances_with_options(request, runtime)
+
+    async def list_bot_instances_async(
+        self,
+        request: main_models.ListBotInstancesRequest,
+    ) -> main_models.ListBotInstancesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_bot_instances_with_options_async(request, runtime)
 
     def list_cache_reserve_instances_with_options(
         self,
@@ -23437,6 +23597,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_instance_quotas_with_usage_with_options_async(request, runtime)
 
+    def list_instances_quota_with_options(
+        self,
+        request: main_models.ListInstancesQuotaRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListInstancesQuotaResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.quota_name):
+            query['QuotaName'] = request.quota_name
+        body = {}
+        if not DaraCore.is_null(request.instance_ids):
+            body['InstanceIds'] = request.instance_ids
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListInstancesQuota',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListInstancesQuotaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_instances_quota_with_options_async(
+        self,
+        request: main_models.ListInstancesQuotaRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListInstancesQuotaResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.quota_name):
+            query['QuotaName'] = request.quota_name
+        body = {}
+        if not DaraCore.is_null(request.instance_ids):
+            body['InstanceIds'] = request.instance_ids
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListInstancesQuota',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListInstancesQuotaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_instances_quota(
+        self,
+        request: main_models.ListInstancesQuotaRequest,
+    ) -> main_models.ListInstancesQuotaResponse:
+        runtime = RuntimeOptions()
+        return self.list_instances_quota_with_options(request, runtime)
+
+    async def list_instances_quota_async(
+        self,
+        request: main_models.ListInstancesQuotaRequest,
+    ) -> main_models.ListInstancesQuotaResponse:
+        runtime = RuntimeOptions()
+        return await self.list_instances_quota_with_options_async(request, runtime)
+
     def list_keyless_servers_with_options(
         self,
         request: main_models.ListKeylessServersRequest,
@@ -24480,6 +24718,72 @@ class Client(OpenApiClient):
     ) -> main_models.ListPostpaidSitePlansResponse:
         runtime = RuntimeOptions()
         return await self.list_postpaid_site_plans_with_options_async(request, runtime)
+
+    def list_quotas_min_effect_plan_with_options(
+        self,
+        request: main_models.ListQuotasMinEffectPlanRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListQuotasMinEffectPlanResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListQuotasMinEffectPlan',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListQuotasMinEffectPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_quotas_min_effect_plan_with_options_async(
+        self,
+        request: main_models.ListQuotasMinEffectPlanRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListQuotasMinEffectPlanResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListQuotasMinEffectPlan',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListQuotasMinEffectPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_quotas_min_effect_plan(
+        self,
+        request: main_models.ListQuotasMinEffectPlanRequest,
+    ) -> main_models.ListQuotasMinEffectPlanResponse:
+        runtime = RuntimeOptions()
+        return self.list_quotas_min_effect_plan_with_options(request, runtime)
+
+    async def list_quotas_min_effect_plan_async(
+        self,
+        request: main_models.ListQuotasMinEffectPlanRequest,
+    ) -> main_models.ListQuotasMinEffectPlanResponse:
+        runtime = RuntimeOptions()
+        return await self.list_quotas_min_effect_plan_with_options_async(request, runtime)
 
     def list_records_with_options(
         self,
@@ -27096,6 +27400,166 @@ class Client(OpenApiClient):
     ) -> main_models.ListWaitingRoomsResponse:
         runtime = RuntimeOptions()
         return await self.list_waiting_rooms_with_options_async(request, runtime)
+
+    def modify_instance_features_with_options(
+        self,
+        tmp_req: main_models.ModifyInstanceFeaturesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyInstanceFeaturesResponse:
+        tmp_req.validate()
+        request = main_models.ModifyInstanceFeaturesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.site_features):
+            request.site_features_shrink = Utils.array_to_string_with_specified_style(tmp_req.site_features, 'SiteFeatures', 'json')
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.site_features_shrink):
+            query['SiteFeatures'] = request.site_features_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyInstanceFeatures',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyInstanceFeaturesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_instance_features_with_options_async(
+        self,
+        tmp_req: main_models.ModifyInstanceFeaturesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyInstanceFeaturesResponse:
+        tmp_req.validate()
+        request = main_models.ModifyInstanceFeaturesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.site_features):
+            request.site_features_shrink = Utils.array_to_string_with_specified_style(tmp_req.site_features, 'SiteFeatures', 'json')
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.site_features_shrink):
+            query['SiteFeatures'] = request.site_features_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyInstanceFeatures',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyInstanceFeaturesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_instance_features(
+        self,
+        request: main_models.ModifyInstanceFeaturesRequest,
+    ) -> main_models.ModifyInstanceFeaturesResponse:
+        runtime = RuntimeOptions()
+        return self.modify_instance_features_with_options(request, runtime)
+
+    async def modify_instance_features_async(
+        self,
+        request: main_models.ModifyInstanceFeaturesRequest,
+    ) -> main_models.ModifyInstanceFeaturesResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_instance_features_with_options_async(request, runtime)
+
+    def modify_site_features_with_options(
+        self,
+        request: main_models.ModifySiteFeaturesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifySiteFeaturesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.new_instance_id):
+            query['NewInstanceId'] = request.new_instance_id
+        if not DaraCore.is_null(request.site_features):
+            query['SiteFeatures'] = request.site_features
+        if not DaraCore.is_null(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifySiteFeatures',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifySiteFeaturesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_site_features_with_options_async(
+        self,
+        request: main_models.ModifySiteFeaturesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifySiteFeaturesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.new_instance_id):
+            query['NewInstanceId'] = request.new_instance_id
+        if not DaraCore.is_null(request.site_features):
+            query['SiteFeatures'] = request.site_features
+        if not DaraCore.is_null(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifySiteFeatures',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifySiteFeaturesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_site_features(
+        self,
+        request: main_models.ModifySiteFeaturesRequest,
+    ) -> main_models.ModifySiteFeaturesResponse:
+        runtime = RuntimeOptions()
+        return self.modify_site_features_with_options(request, runtime)
+
+    async def modify_site_features_async(
+        self,
+        request: main_models.ModifySiteFeaturesRequest,
+    ) -> main_models.ModifySiteFeaturesResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_site_features_with_options_async(request, runtime)
 
     def open_edge_container_with_options(
         self,

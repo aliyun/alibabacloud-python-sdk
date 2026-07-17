@@ -14,27 +14,26 @@ class ListEdgeContainerAppsRequest(DaraModel):
         search_key: str = None,
         search_type: str = None,
     ):
-        # The sorting field. This parameter is left empty by default. Valid values:
-        # 
-        # *   Name: the version name.
-        # *   CreateTime: the time when the version was created.
-        # *   UpdateTime: the time when the version was last modified.
+        # The field used for sorting. If this parameter is not specified, no sorting is applied. Valid values:
+        # - **Name**: the version name.
+        # - **CreateTime**: the version creation time.
+        # - **ModifyTime**: the version modification time.
         self.order_key = order_key
-        # The order in which you want to sort the query results. This parameter is left empty by default. Valid values:
+        # The sort order. If this parameter is not specified, no sorting is applied. Valid values:
         # 
-        # *   ASC: in ascending order.
-        # *   DESC: in descending order.
+        # - **Asc**: ascending order.
+        # 
+        # - **Desc**: descending order.
         self.order_type = order_type
-        # The page number. Default value: **1**. Valid values: 1 to 65535.
+        # The page number. Default value: **1**. Valid values: **1 to 65535**.
         self.page_number = page_number
-        # The number of entries per page. Default value: **20**. Valid values: 1 to 500.
+        # The number of entries per page. Default value: **20**. Valid values: **1 to 500**.
         self.page_size = page_size
         # The search keyword.
         self.search_key = search_key
-        # The search criterion based on which you want to perform fuzzy search. Valid values:
-        # 
-        # *   Appid: the application ID.
-        # *   Name: the application name.
+        # The type of fuzzy match. Valid values:
+        # - **AppId**: the application ID.
+        # - **Name**: the application name.
         self.search_type = search_type
 
     def validate(self):

@@ -15,7 +15,7 @@ class GetEdgeContainerAppVersionResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The information about the version.
+        # The version information.
         self.version = version
 
     def validate(self):
@@ -62,27 +62,25 @@ class GetEdgeContainerAppVersionResponseBodyVersion(DaraModel):
     ):
         # The application ID.
         self.app_id = app_id
-        # The container images deployed for this version.
+        # The list of images to be deployed for this version.
         self.containers = containers
-        # The time when the version was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The creation time of the version. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
-        # The time when the version was last released. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
+        # The last publish time of the version. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.last_publish_time = last_publish_time
         # The version name.
         self.name = name
-        # The time when the version was released. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
+        # The publish time. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.publish_time = publish_time
         # The remarks.
         self.remarks = remarks
         # The status of the current version. Valid values:
         # 
-        # - created: The version is created.
-        # 
-        # - failed: The version failed to be created.
-        # 
-        # - creating: The version is being created.
+        # - **created**: Created.
+        # - **failed**: Creation failed.
+        # - **creating**: Being created.
         self.status = status
-        # The time when the version was last modified. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
+        # The last modification time of the version. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.update_time = update_time
         # The ID of the created version.
         self.version_id = version_id
@@ -186,31 +184,31 @@ class GetEdgeContainerAppVersionResponseBodyVersionContainers(DaraModel):
         spec: str = None,
         storage: str = None,
     ):
-        # The information about the Container Registry image.
+        # The ACR image information.
         self.acrimage_info = acrimage_info
-        # The arguments that are passed to the container startup command.
+        # The startup arguments.
         self.args = args
-        # The command that is used to start the container.
+        # The container startup command.
         self.command = command
         # The environment variables.
         self.env_variables = env_variables
         # The image address.
         self.image = image
-        # Indicates whether the image is a Container Registry image.
+        # Indicates whether the image is an ACR image.
         self.is_acrimage = is_acrimage
         # The version name.
         self.name = name
-        # The command that is run before the container is started. Format: `{"exec":{"command":["cat","/etc/group"\\]}}`. If you want to cancel this configuration, set the parameter value to `""` or `{}`. If you do not specify this parameter, this configuration is ignored.
+        # The command to execute after the container starts.
         self.post_start = post_start
-        # The command that is run before the container is stopped.
+        # The command to execute before the container stops.
         self.pre_stop = pre_stop
         # The probe content.
         self.probe_content = probe_content
         # The probe type.
         self.probe_type = probe_type
-        # The compute specification.
+        # The specifications.
         self.spec = spec
-        # The storage capacity of the container. Valid values: 0.5G, 10G, 20G, and 30G.
+        # The container storage specifications.
         self.storage = storage
 
     def validate(self):
@@ -325,27 +323,27 @@ class GetEdgeContainerAppVersionResponseBodyVersionContainersProbeContent(DaraMo
         success_threshold: int = None,
         timeout_seconds: int = None,
     ):
-        # The probe command.
+        # The probe execution command.
         self.command = command
-        # The number of consecutive failed health checks required for a container to be considered as unhealthy.
+        # The number of consecutive failed health checks for the container.
         self.failure_threshold = failure_threshold
-        # The domain name that is used for health checks.
+        # The domain name for the health check.
         self.host = host
-        # The request headers that are included in the container health check request.
+        # The HTTP request headers.
         self.http_headers = http_headers
-        # The latency for container probe initialization.
+        # The initial delay time for the container probe. Unit: seconds. For example, 5 indicates an initial delay of 5 seconds.
         self.initial_delay_seconds = initial_delay_seconds
-        # The path of the container health check.
+        # The path for the container health check.
         self.path = path
-        # The interval between container health checks.
+        # The interval for the container health check. Unit: seconds. For example, 5 indicates a health check interval of 5 seconds.
         self.period_seconds = period_seconds
-        # The port of the container health check. Valid values: **1** to **65535**.
+        # The port used by the backend server. Valid values: **1** to **65535**.
         self.port = port
-        # The protocol that the container health check request uses.
+        # The request protocol for the health check.
         self.scheme = scheme
-        # The number of consecutive successful health checks required for a container to be considered as healthy.
+        # The number of consecutive successful health checks.
         self.success_threshold = success_threshold
-        # The timeout period of the container health check.
+        # The timeout period for the container health check. Unit: seconds. For example, 5 indicates a timeout of 5 seconds.
         self.timeout_seconds = timeout_seconds
 
     def validate(self):
@@ -441,23 +439,23 @@ class GetEdgeContainerAppVersionResponseBodyVersionContainersACRImageInfo(DaraMo
         tag: str = None,
         tag_url: str = None,
     ):
-        # The domain name of the Container Registry image.
+        # The ACR image domain name.
         self.domain = domain
-        # The ID of the Container Registry instance.
+        # The ACR site instance ID.
         self.instance_id = instance_id
         # Indicates whether the image is an enterprise-level image.
         self.is_enterprise_registry = is_enterprise_registry
         # The region ID.
         self.region_id = region_id
-        # The ID of the image repository.
+        # The image repository ID.
         self.repo_id = repo_id
         # The name of the image repository.
         self.repo_name = repo_name
-        # The namespace to which the image repository belongs.
+        # The namespace of the image repository.
         self.repo_namespace = repo_namespace
         # The tag value.
         self.tag = tag
-        # The URL of the Container Registry image tag.
+        # The ACR image tag URL.
         self.tag_url = tag_url
 
     def validate(self):

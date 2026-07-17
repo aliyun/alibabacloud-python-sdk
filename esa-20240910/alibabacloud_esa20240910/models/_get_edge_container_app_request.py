@@ -9,7 +9,7 @@ class GetEdgeContainerAppRequest(DaraModel):
         self,
         app_id: str = None,
     ):
-        # The application ID, which can be obtained by calling the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation.
+        # The application ID. You can obtain the application ID by calling the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation.
         # 
         # This parameter is required.
         self.app_id = app_id

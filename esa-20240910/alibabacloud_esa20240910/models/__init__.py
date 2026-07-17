@@ -817,6 +817,9 @@ from ._get_user_delivery_task_response import GetUserDeliveryTaskResponse
 from ._get_user_log_delivery_quota_request import GetUserLogDeliveryQuotaRequest
 from ._get_user_log_delivery_quota_response_body import GetUserLogDeliveryQuotaResponseBody
 from ._get_user_log_delivery_quota_response import GetUserLogDeliveryQuotaResponse
+from ._get_user_max_plan_quota_request import GetUserMaxPlanQuotaRequest
+from ._get_user_max_plan_quota_response_body import GetUserMaxPlanQuotaResponseBody
+from ._get_user_max_plan_quota_response import GetUserMaxPlanQuotaResponse
 from ._get_user_waf_ruleset_request import GetUserWafRulesetRequest
 from ._get_user_waf_ruleset_response_body import GetUserWafRulesetResponseBody
 from ._get_user_waf_ruleset_response import GetUserWafRulesetResponse
@@ -846,6 +849,9 @@ from ._list_awsregion_infos_response import ListAWSRegionInfosResponse
 from ._list_async_tasks_request import ListAsyncTasksRequest
 from ._list_async_tasks_response_body import ListAsyncTasksResponseBody
 from ._list_async_tasks_response import ListAsyncTasksResponse
+from ._list_bot_instances_request import ListBotInstancesRequest
+from ._list_bot_instances_response_body import ListBotInstancesResponseBody
+from ._list_bot_instances_response import ListBotInstancesResponse
 from ._list_cache_reserve_instances_request import ListCacheReserveInstancesRequest
 from ._list_cache_reserve_instances_response_body import ListCacheReserveInstancesResponseBody
 from ._list_cache_reserve_instances_response import ListCacheReserveInstancesResponse
@@ -935,6 +941,9 @@ from ._list_instance_quotas_response import ListInstanceQuotasResponse
 from ._list_instance_quotas_with_usage_request import ListInstanceQuotasWithUsageRequest
 from ._list_instance_quotas_with_usage_response_body import ListInstanceQuotasWithUsageResponseBody
 from ._list_instance_quotas_with_usage_response import ListInstanceQuotasWithUsageResponse
+from ._list_instances_quota_request import ListInstancesQuotaRequest
+from ._list_instances_quota_response_body import ListInstancesQuotaResponseBody
+from ._list_instances_quota_response import ListInstancesQuotaResponse
 from ._list_keyless_servers_request import ListKeylessServersRequest
 from ._list_keyless_servers_response_body import ListKeylessServersResponseBody
 from ._list_keyless_servers_response import ListKeylessServersResponse
@@ -982,6 +991,9 @@ from ._list_postpaid_rate_plan_instances_response import ListPostpaidRatePlanIns
 from ._list_postpaid_site_plans_request import ListPostpaidSitePlansRequest
 from ._list_postpaid_site_plans_response_body import ListPostpaidSitePlansResponseBody
 from ._list_postpaid_site_plans_response import ListPostpaidSitePlansResponse
+from ._list_quotas_min_effect_plan_request import ListQuotasMinEffectPlanRequest
+from ._list_quotas_min_effect_plan_response_body import ListQuotasMinEffectPlanResponseBody
+from ._list_quotas_min_effect_plan_response import ListQuotasMinEffectPlanResponse
 from ._list_records_request import ListRecordsRequest
 from ._list_records_response_body import ListRecordsResponseBody
 from ._list_records_response import ListRecordsResponse
@@ -1089,6 +1101,13 @@ from ._list_waiting_room_rules_response import ListWaitingRoomRulesResponse
 from ._list_waiting_rooms_request import ListWaitingRoomsRequest
 from ._list_waiting_rooms_response_body import ListWaitingRoomsResponseBody
 from ._list_waiting_rooms_response import ListWaitingRoomsResponse
+from ._modify_instance_features_request import ModifyInstanceFeaturesRequest
+from ._modify_instance_features_shrink_request import ModifyInstanceFeaturesShrinkRequest
+from ._modify_instance_features_response_body import ModifyInstanceFeaturesResponseBody
+from ._modify_instance_features_response import ModifyInstanceFeaturesResponse
+from ._modify_site_features_request import ModifySiteFeaturesRequest
+from ._modify_site_features_response_body import ModifySiteFeaturesResponseBody
+from ._modify_site_features_response import ModifySiteFeaturesResponse
 from ._open_edge_container_request import OpenEdgeContainerRequest
 from ._open_edge_container_response_body import OpenEdgeContainerResponseBody
 from ._open_edge_container_response import OpenEdgeContainerResponse
@@ -1661,6 +1680,7 @@ from ._get_waf_quota_response_body import GetWafQuotaResponseBodyQuotaSliderCapt
 from ._get_waf_quota_response_body import GetWafQuotaResponseBodyQuota
 from ._list_awsregion_infos_response_body import ListAWSRegionInfosResponseBodyRegions
 from ._list_async_tasks_response_body import ListAsyncTasksResponseBodyAsyncTasks
+from ._list_bot_instances_response_body import ListBotInstancesResponseBodyInstanceInfo
 from ._list_cache_reserve_instances_response_body import ListCacheReserveInstancesResponseBodyInstanceInfo
 from ._list_cache_rules_response_body import ListCacheRulesResponseBodyConfigs
 from ._list_cas_certificates_response_body import ListCasCertificatesResponseBodyCertificates
@@ -1700,6 +1720,7 @@ from ._list_image_transforms_response_body import ListImageTransformsResponseBod
 from ._list_instance_quotas_response_body import ListInstanceQuotasResponseBodyQuotas
 from ._list_instance_quotas_with_usage_response_body import ListInstanceQuotasWithUsageResponseBodyQuotasSiteUsage
 from ._list_instance_quotas_with_usage_response_body import ListInstanceQuotasWithUsageResponseBodyQuotas
+from ._list_instances_quota_response_body import ListInstancesQuotaResponseBodyQuotaValues
 from ._list_keyless_servers_response_body import ListKeylessServersResponseBodyResult
 from ._list_kvs_response_body import ListKvsResponseBodyKeys
 from ._list_lists_request import ListListsRequestQueryArgs
@@ -1730,6 +1751,8 @@ from ._list_pages_response_body import ListPagesResponseBodyPages
 from ._list_postpaid_rate_plan_instances_response_body import ListPostpaidRatePlanInstancesResponseBodyInstanceInfoSites
 from ._list_postpaid_rate_plan_instances_response_body import ListPostpaidRatePlanInstancesResponseBodyInstanceInfo
 from ._list_postpaid_site_plans_response_body import ListPostpaidSitePlansResponseBodyPlanInfo
+from ._list_quotas_min_effect_plan_response_body import ListQuotasMinEffectPlanResponseBodyQuotasQuotaValueDetail
+from ._list_quotas_min_effect_plan_response_body import ListQuotasMinEffectPlanResponseBodyQuotas
 from ._list_records_response_body import ListRecordsResponseBodyRecordsAuthConf
 from ._list_records_response_body import ListRecordsResponseBodyRecordsData
 from ._list_records_response_body import ListRecordsResponseBodyRecords
@@ -1812,6 +1835,7 @@ from ._list_waiting_room_events_response_body import ListWaitingRoomEventsRespon
 from ._list_waiting_room_rules_response_body import ListWaitingRoomRulesResponseBodyWaitingRoomRules
 from ._list_waiting_rooms_response_body import ListWaitingRoomsResponseBodyWaitingRoomsHostNameAndPath
 from ._list_waiting_rooms_response_body import ListWaitingRoomsResponseBodyWaitingRooms
+from ._modify_instance_features_request import ModifyInstanceFeaturesRequestSiteFeatures
 from ._purge_caches_request import PurgeCachesRequestContentCacheKeys
 from ._purge_caches_request import PurgeCachesRequestContent
 from ._tag_resources_request import TagResourcesRequestTag
@@ -2649,6 +2673,9 @@ __all__ = [
     GetUserLogDeliveryQuotaRequest,
     GetUserLogDeliveryQuotaResponseBody,
     GetUserLogDeliveryQuotaResponse,
+    GetUserMaxPlanQuotaRequest,
+    GetUserMaxPlanQuotaResponseBody,
+    GetUserMaxPlanQuotaResponse,
     GetUserWafRulesetRequest,
     GetUserWafRulesetResponseBody,
     GetUserWafRulesetResponse,
@@ -2678,6 +2705,9 @@ __all__ = [
     ListAsyncTasksRequest,
     ListAsyncTasksResponseBody,
     ListAsyncTasksResponse,
+    ListBotInstancesRequest,
+    ListBotInstancesResponseBody,
+    ListBotInstancesResponse,
     ListCacheReserveInstancesRequest,
     ListCacheReserveInstancesResponseBody,
     ListCacheReserveInstancesResponse,
@@ -2767,6 +2797,9 @@ __all__ = [
     ListInstanceQuotasWithUsageRequest,
     ListInstanceQuotasWithUsageResponseBody,
     ListInstanceQuotasWithUsageResponse,
+    ListInstancesQuotaRequest,
+    ListInstancesQuotaResponseBody,
+    ListInstancesQuotaResponse,
     ListKeylessServersRequest,
     ListKeylessServersResponseBody,
     ListKeylessServersResponse,
@@ -2814,6 +2847,9 @@ __all__ = [
     ListPostpaidSitePlansRequest,
     ListPostpaidSitePlansResponseBody,
     ListPostpaidSitePlansResponse,
+    ListQuotasMinEffectPlanRequest,
+    ListQuotasMinEffectPlanResponseBody,
+    ListQuotasMinEffectPlanResponse,
     ListRecordsRequest,
     ListRecordsResponseBody,
     ListRecordsResponse,
@@ -2921,6 +2957,13 @@ __all__ = [
     ListWaitingRoomsRequest,
     ListWaitingRoomsResponseBody,
     ListWaitingRoomsResponse,
+    ModifyInstanceFeaturesRequest,
+    ModifyInstanceFeaturesShrinkRequest,
+    ModifyInstanceFeaturesResponseBody,
+    ModifyInstanceFeaturesResponse,
+    ModifySiteFeaturesRequest,
+    ModifySiteFeaturesResponseBody,
+    ModifySiteFeaturesResponse,
     OpenEdgeContainerRequest,
     OpenEdgeContainerResponseBody,
     OpenEdgeContainerResponse,
@@ -3493,6 +3536,7 @@ __all__ = [
     GetWafQuotaResponseBodyQuota,
     ListAWSRegionInfosResponseBodyRegions,
     ListAsyncTasksResponseBodyAsyncTasks,
+    ListBotInstancesResponseBodyInstanceInfo,
     ListCacheReserveInstancesResponseBodyInstanceInfo,
     ListCacheRulesResponseBodyConfigs,
     ListCasCertificatesResponseBodyCertificates,
@@ -3532,6 +3576,7 @@ __all__ = [
     ListInstanceQuotasResponseBodyQuotas,
     ListInstanceQuotasWithUsageResponseBodyQuotasSiteUsage,
     ListInstanceQuotasWithUsageResponseBodyQuotas,
+    ListInstancesQuotaResponseBodyQuotaValues,
     ListKeylessServersResponseBodyResult,
     ListKvsResponseBodyKeys,
     ListListsRequestQueryArgs,
@@ -3562,6 +3607,8 @@ __all__ = [
     ListPostpaidRatePlanInstancesResponseBodyInstanceInfoSites,
     ListPostpaidRatePlanInstancesResponseBodyInstanceInfo,
     ListPostpaidSitePlansResponseBodyPlanInfo,
+    ListQuotasMinEffectPlanResponseBodyQuotasQuotaValueDetail,
+    ListQuotasMinEffectPlanResponseBodyQuotas,
     ListRecordsResponseBodyRecordsAuthConf,
     ListRecordsResponseBodyRecordsData,
     ListRecordsResponseBodyRecords,
@@ -3644,6 +3691,7 @@ __all__ = [
     ListWaitingRoomRulesResponseBodyWaitingRoomRules,
     ListWaitingRoomsResponseBodyWaitingRoomsHostNameAndPath,
     ListWaitingRoomsResponseBodyWaitingRooms,
+    ModifyInstanceFeaturesRequestSiteFeatures,
     PurgeCachesRequestContentCacheKeys,
     PurgeCachesRequestContent,
     TagResourcesRequestTag,

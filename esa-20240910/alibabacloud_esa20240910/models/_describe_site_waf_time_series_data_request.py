@@ -16,7 +16,7 @@ class DescribeSiteWafTimeSeriesDataRequest(DaraModel):
         site_id: str = None,
         start_time: str = None,
     ):
-        # The end of the time range to query.
+        # The end time for the data query.
         # 
         # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
         # 
@@ -26,15 +26,15 @@ class DescribeSiteWafTimeSeriesDataRequest(DaraModel):
         # 
         # This parameter is required.
         self.fields = fields
-        # The time granularity of the queried data. Unit: seconds.
+        # The time granularity of the queried data, in seconds.
         # 
-        # Based on the maximum time span of a single query, this parameter supports the values 60 (1 minute), 300 (5 minutes), 3600 (1 hour), and 86400 (1 day). For more information, see the **supported time granularity** section above.
+        # Based on the maximum time span of a single query, this parameter supports the following values: 60 (1 minute), 300 (5 minutes), 3600 (1 hour), and 86400 (1 day). For more information, see the **supported query time granularity** section above.
         self.interval = interval
         # The site ID. You can call the [ListSites](~~ListSites~~) operation to obtain the site ID.
         # 
         # If this parameter is left empty, user-level data is queried.
         self.site_id = site_id
-        # The beginning of the time range to query.
+        # The start time for the data query.
         # 
         # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
         self.start_time = start_time
@@ -101,7 +101,7 @@ class DescribeSiteWafTimeSeriesDataRequestFields(DaraModel):
         self.dimension = dimension
         # The metric name.
         # 
-        # >For more information about the available dimensions, see [Data analytics field description](https://help.aliyun.com/document_detail/2878520.html).
+        # >For specific dimensions, see [Data analytics field description](https://help.aliyun.com/document_detail/2878520.html).
         self.field_name = field_name
 
     def validate(self):

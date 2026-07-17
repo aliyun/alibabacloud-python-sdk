@@ -14,31 +14,32 @@ class DescribeUrlObservationDataRequest(DaraModel):
         start_time: str = None,
         url: str = None,
     ):
-        # The platform of the device. If the parameter is left empty, all devices are queried.
+        # The device platform. If this parameter is left empty, data for all platforms is queried.
         # 
-        # *   PC
-        # *   Mobile
+        # - PC
+        # 
+        # - Mobile
         self.client_platform = client_platform
-        # The end of the time range to query.
+        # The end time for the data query.
         # 
-        # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. The time must be in UTC.
+        # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.end_time = end_time
-        # The metric data that is detected.
+        # The metric to query.
         # 
-        # *   TTFB: Measures the time between when a resource initiates a request and when the first byte of the response starts to arrive.
-        # *   FCP: Measures the time between when the page is loaded and when any part of the page\\"s content is rendered on the screen.
-        # *   LCP: Reports the rendering time of the largest image or text block visible in the viewport.
-        # *   CLS: A metric that measures the maximum layout mutation score for every unexpected layout change that occurs throughout the life of the page.
-        # *   INP: Measures the responsiveness of the page, or how long it takes for the page to respond to user input in a visible way.
-        # *   FID: Measures the time between when the user first interacts with the page and when the browser is actually able to start processing the event handler in response to that interaction.
+        # *  TTFB: Measures the time from when a resource request is initiated to when the first byte of the response begins to arrive.
+        # *  FCP: Measures the time from when the page starts loading to when any part of the page content is rendered on the screen.
+        # * LCP: Reports the render time of the largest image or text block visible within the viewport.
+        # * CLS: A metric that measures the largest burst of layout shift scores for every unexpected layout shift that occurs throughout the entire lifecycle of a page.
+        # * INP: Measures the responsiveness of a page, specifically how long it takes for the page to visibly respond to user input.
+        # * FID: Measures the time from when a user first interacts with a page to when the browser is actually able to begin processing event handlers in response to that interaction.
         self.metric = metric
-        # The website ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
+        # The site ID. You can call the [ListSites](~~ListSites~~) operation to obtain the site ID.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # The beginning of the time range to query.
+        # The start time for the data query.
         # 
-        # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.start_time = start_time
         # The URL of the web page to monitor.
         self.url = url

@@ -21,11 +21,11 @@ class DescribeWafUsageDataRequest(DaraModel):
         # 
         # The valid values vary based on the time range specified by **StartTime** and **EndTime**:
         # 
-        # - Less than 3 days: **300**, **3600**, or **86400**. Default value: **300**.
+        # - Less than 3 days: Valid values are **300**, **3600**, and **86400**. Default value: **300**.
         # 
-        # - 3 to 31 days (excluding 31 days): **3600** or **86400**. Default value: **3600**.
+        # - 3 to 31 days (exclusive of 31 days): Valid values are **3600** and **86400**. Default value: **3600**.
         # 
-        # - 31 days or more: **86400**. Default value: **86400**.
+        # - 31 days or more: The only valid value is **86400**. Default value: **86400**.
         self.interval = interval
         # The domain record name. You can call the [ListSites](~~ListSites~~) operation to obtain the domain record name.
         self.record_name = record_name

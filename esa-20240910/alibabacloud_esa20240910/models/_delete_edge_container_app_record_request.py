@@ -19,7 +19,7 @@ class DeleteEdgeContainerAppRecordRequest(DaraModel):
         # 
         # This parameter is required.
         self.record_name = record_name
-        # The site ID.
+        # The site ID. This parameter is required. If it is not specified, the service returns InternalError(400). Call ListSites to obtain a valid SiteId before calling this operation.
         self.site_id = site_id
 
     def validate(self):

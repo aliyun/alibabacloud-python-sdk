@@ -10,11 +10,11 @@ class GetEdgeContainerAppVersionRequest(DaraModel):
         app_id: str = None,
         version_id: str = None,
     ):
-        # The application ID, which can be obtained by calling the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation.
+        # The application ID. You can call the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation to obtain the application ID.
         # 
         # This parameter is required.
         self.app_id = app_id
-        # The version ID, which can be obtained by calling the [ListEdgeContainerAppVersions](~~ListEdgeContainerAppVersions~~) operation.
+        # The version ID. You can call the [ListEdgeContainerAppVersions](~~ListEdgeContainerAppVersions~~) operation to obtain the version ID.
         # 
         # This parameter is required.
         self.version_id = version_id

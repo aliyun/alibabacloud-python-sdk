@@ -7,21 +7,21 @@ from typing import List
 from alibabacloud_esa20240910 import models as main_models
 from darabonba.model import DaraModel
 
-class ListCacheReserveInstancesResponseBody(DaraModel):
+class ListBotInstancesResponseBody(DaraModel):
     def __init__(
         self,
-        instance_info: List[main_models.ListCacheReserveInstancesResponseBodyInstanceInfo] = None,
+        instance_info: List[main_models.ListBotInstancesResponseBodyInstanceInfo] = None,
         page_number: int = None,
         page_size: int = None,
         request_id: str = None,
         total_count: int = None,
         total_page: int = None,
     ):
-        # The list of cache reserve instances.
+        # The instances that match the specified conditions under the current account.
         self.instance_info = instance_info
-        # The page number. Default value: **1**.
+        # The current page number, which is the same as the PageNumber request parameter.
         self.page_number = page_number
-        # The number of entries per page. Default value: **500**. Valid values: **1** to **500**.
+        # The number of entries per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
@@ -68,7 +68,7 @@ class ListCacheReserveInstancesResponseBody(DaraModel):
         self.instance_info = []
         if m.get('InstanceInfo') is not None:
             for k1 in m.get('InstanceInfo'):
-                temp_model = main_models.ListCacheReserveInstancesResponseBodyInstanceInfo()
+                temp_model = main_models.ListBotInstancesResponseBodyInstanceInfo()
                 self.instance_info.append(temp_model.from_map(k1))
 
         if m.get('PageNumber') is not None:
@@ -88,39 +88,35 @@ class ListCacheReserveInstancesResponseBody(DaraModel):
 
         return self
 
-class ListCacheReserveInstancesResponseBodyInstanceInfo(DaraModel):
+class ListBotInstancesResponseBodyInstanceInfo(DaraModel):
     def __init__(
         self,
-        cache_reserve_capacity: int = None,
-        cache_reserve_region: str = None,
-        charge_type: str = None,
+        bot_instance_level: str = None,
         create_time: str = None,
-        duration: int = None,
-        expire_time: str = None,
         instance_id: str = None,
+        reserve_release_time: str = None,
+        site_instance_id: str = None,
         status: str = None,
     ):
-        # The capacity of the cache reserve instance. Unit: GB.
-        self.cache_reserve_capacity = cache_reserve_capacity
-        # The region where the cache reserve instance is deployed.
-        self.cache_reserve_region = cache_reserve_region
-        # The billing type. Valid values:
-        # - PREPAY: subscription.
-        # - POSTPAY: pay-as-you-go.
-        self.charge_type = charge_type
-        # The creation time of the instance.
+        # The Bot protection instance level. If this parameter is empty, the plan does not include a Bot protection instance. If a value is returned, the plan includes a Bot protection instance. Valid values:
+        # 
+        # - enterprise_bot: web edition.
+        # 
+        # - enterprise_bot_with_app: app edition.
+        self.bot_instance_level = bot_instance_level
+        # The time when the instance was purchased. The time is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
-        # The subscription duration of the instance. Unit: months.
-        self.duration = duration
-        # The time when the instance expires.
-        self.expire_time = expire_time
         # The instance ID.
         self.instance_id = instance_id
+        # The scheduled release time. The time is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        self.reserve_release_time = reserve_release_time
+        # The ID of the associated site plan instance.
+        self.site_instance_id = site_instance_id
         # The instance status. Valid values:
         # - **online**: The instance is running normally.
         # - **offline**: The instance has expired but has not exceeded the retention period and is unavailable.
         # - **disable**: The instance has been released.
-        # - **overdue**: The instance is stopped due to an overdue payment.
+        # - **overdue**: The instance has been stopped due to an overdue payment.
         self.status = status
 
     def validate(self):
@@ -131,26 +127,20 @@ class ListCacheReserveInstancesResponseBodyInstanceInfo(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.cache_reserve_capacity is not None:
-            result['CacheReserveCapacity'] = self.cache_reserve_capacity
-
-        if self.cache_reserve_region is not None:
-            result['CacheReserveRegion'] = self.cache_reserve_region
-
-        if self.charge_type is not None:
-            result['ChargeType'] = self.charge_type
+        if self.bot_instance_level is not None:
+            result['BotInstanceLevel'] = self.bot_instance_level
 
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
 
-        if self.duration is not None:
-            result['Duration'] = self.duration
-
-        if self.expire_time is not None:
-            result['ExpireTime'] = self.expire_time
-
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+
+        if self.reserve_release_time is not None:
+            result['ReserveReleaseTime'] = self.reserve_release_time
+
+        if self.site_instance_id is not None:
+            result['SiteInstanceId'] = self.site_instance_id
 
         if self.status is not None:
             result['Status'] = self.status
@@ -159,26 +149,20 @@ class ListCacheReserveInstancesResponseBodyInstanceInfo(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('CacheReserveCapacity') is not None:
-            self.cache_reserve_capacity = m.get('CacheReserveCapacity')
-
-        if m.get('CacheReserveRegion') is not None:
-            self.cache_reserve_region = m.get('CacheReserveRegion')
-
-        if m.get('ChargeType') is not None:
-            self.charge_type = m.get('ChargeType')
+        if m.get('BotInstanceLevel') is not None:
+            self.bot_instance_level = m.get('BotInstanceLevel')
 
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
 
-        if m.get('Duration') is not None:
-            self.duration = m.get('Duration')
-
-        if m.get('ExpireTime') is not None:
-            self.expire_time = m.get('ExpireTime')
-
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+
+        if m.get('ReserveReleaseTime') is not None:
+            self.reserve_release_time = m.get('ReserveReleaseTime')
+
+        if m.get('SiteInstanceId') is not None:
+            self.site_instance_id = m.get('SiteInstanceId')
 
         if m.get('Status') is not None:
             self.status = m.get('Status')

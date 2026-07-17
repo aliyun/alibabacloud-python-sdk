@@ -13,7 +13,7 @@ class GetEdgeContainerAppStatusResponseBody(DaraModel):
         app_status: main_models.GetEdgeContainerAppStatusResponseBodyAppStatus = None,
         request_id: str = None,
     ):
-        # The status of the application.
+        # The application status information.
         self.app_status = app_status
         # The request ID.
         self.request_id = request_id
@@ -65,52 +65,51 @@ class GetEdgeContainerAppStatusResponseBodyAppStatus(DaraModel):
         rollback_time: str = None,
         un_deploy_time: str = None,
     ):
-        # The base version of the application.
+        # The baseline version of the application.
         self.base_line_version = base_line_version
-        # The deployment status of the application.
-        # 
-        # *   **undeploy**: The application is not deployed.
-        # *   **deploying**: The application is being deployed.
-        # *   **deployed**: The application is deployed.
-        # *   **undeploying**: The deployment is being canceled.
+        # The deployment status of the application. Valid values:
+        # - **undeploy**: not deployed.
+        # - **deploying**: being deployed.
+        # - **deployed**: deployed.
+        # - **undeploying**: being undeployed.
         self.deploy_status = deploy_status
-        # The time when the application was deployed. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+        # The deployment time of the application. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.deploy_time = deploy_time
-        # The release version of the application.
+        # The deployed version of the application.
         self.deployed_version = deployed_version
-        # The expected release percentage of the application.
+        # The expected publishing percentage of the application.
         self.expect_percentage = expect_percentage
-        # Specifies whether to fully release the version. This parameter takes effect only when PublishType is set to region.
+        # Indicates whether a full release is performed. This field takes effect only when PublishType is set to region.
         self.full_release = full_release
-        # The environment to which the application was released. Valid values:
+        # The publishing environment. Valid values:
         # 
-        # *   **prod**: the production environment.
-        # *   **staging**: the staging environment.
+        # - **prod**: production environment.
+        # - **staging**: staging environment.
         self.publish_env = publish_env
-        # The release percentage of the application.
+        # The publishing percentage of the application.
         self.publish_percentage = publish_percentage
-        # The release status of the application. Valid values:
-        # 
-        # *   **publishing**
-        # *   **published**
-        # *   **rollbacking**
-        # *   **rollbacked**
+        # The publishing status of the application. Valid values:
+        # - **publishing**: being published.
+        # - **published**: published.
+        # - **rollbacking**: being rolled back.
+        # - **rollbacked**: rolled back.
         self.publish_status = publish_status
-        # The time when the application was released. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+        # The publishing time of the application. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.publish_time = publish_time
-        # Specifies how the version is released. Valid values:
+        # The publishing type. Valid values:
         # 
-        # *   percentage: releases the version by percentage.
-        # *   region: releases the version by region.
+        # - **percentage**: publish by percentage.
         # 
-        # If you do not specify this parameter, the version is released by percentage by default.
+        # - **region**: publish by region.
+        # 
+        # If this parameter is not specified, the default value percentage is used.
         self.publish_type = publish_type
-        # The release version of the application.
+        # The publishing version of the application.
         self.publishing_version = publishing_version
         self.regions = regions
-        # The time when the last rollback was performed.
+        # The most recent rollback time. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.rollback_time = rollback_time
-        # The time when the application deployment was canceled. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+        # The undeployment time of the application. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.un_deploy_time = un_deploy_time
 
     def validate(self):
