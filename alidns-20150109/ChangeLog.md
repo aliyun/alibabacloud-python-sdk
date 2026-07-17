@@ -1,3 +1,7 @@
+2026-07-17 Version: 4.6.0
+- Support API DescribeAtiAgentRegisterInfoMarket.
+
+
 2026-07-13 Version: 4.5.0
 - Support API CreateAtiAgentRegisterInfo.
 - Support API CreateAtiAgentRegisterInfoAcmeChallengeRecord.

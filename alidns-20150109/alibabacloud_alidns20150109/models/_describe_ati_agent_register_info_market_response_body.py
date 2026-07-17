@@ -1,0 +1,373 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from typing import List
+
+from alibabacloud_alidns20150109 import models as main_models
+from darabonba.model import DaraModel
+
+class DescribeAtiAgentRegisterInfoMarketResponseBody(DaraModel):
+    def __init__(
+        self,
+        access_denied_detail: main_models.DescribeAtiAgentRegisterInfoMarketResponseBodyAccessDeniedDetail = None,
+        agent_description: str = None,
+        agent_display_name: str = None,
+        agent_host: str = None,
+        agent_id: str = None,
+        agent_register_info_id: str = None,
+        agent_version: str = None,
+        categories: main_models.DescribeAtiAgentRegisterInfoMarketResponseBodyCategories = None,
+        endpoints: main_models.DescribeAtiAgentRegisterInfoMarketResponseBodyEndpoints = None,
+        max_results: int = None,
+        next_token: str = None,
+        request_id: str = None,
+        status: str = None,
+        trust_card_content: str = None,
+        trust_level: str = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.agent_description = agent_description
+        self.agent_display_name = agent_display_name
+        self.agent_host = agent_host
+        self.agent_id = agent_id
+        self.agent_register_info_id = agent_register_info_id
+        self.agent_version = agent_version
+        self.categories = categories
+        self.endpoints = endpoints
+        self.max_results = max_results
+        self.next_token = next_token
+        self.request_id = request_id
+        self.status = status
+        self.trust_card_content = trust_card_content
+        self.trust_level = trust_level
+
+    def validate(self):
+        if self.access_denied_detail:
+            self.access_denied_detail.validate()
+        if self.categories:
+            self.categories.validate()
+        if self.endpoints:
+            self.endpoints.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail.to_map()
+
+        if self.agent_description is not None:
+            result['AgentDescription'] = self.agent_description
+
+        if self.agent_display_name is not None:
+            result['AgentDisplayName'] = self.agent_display_name
+
+        if self.agent_host is not None:
+            result['AgentHost'] = self.agent_host
+
+        if self.agent_id is not None:
+            result['AgentId'] = self.agent_id
+
+        if self.agent_register_info_id is not None:
+            result['AgentRegisterInfoId'] = self.agent_register_info_id
+
+        if self.agent_version is not None:
+            result['AgentVersion'] = self.agent_version
+
+        if self.categories is not None:
+            result['Categories'] = self.categories.to_map()
+
+        if self.endpoints is not None:
+            result['Endpoints'] = self.endpoints.to_map()
+
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+
+        if self.status is not None:
+            result['Status'] = self.status
+
+        if self.trust_card_content is not None:
+            result['TrustCardContent'] = self.trust_card_content
+
+        if self.trust_level is not None:
+            result['TrustLevel'] = self.trust_level
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            temp_model = main_models.DescribeAtiAgentRegisterInfoMarketResponseBodyAccessDeniedDetail()
+            self.access_denied_detail = temp_model.from_map(m.get('AccessDeniedDetail'))
+
+        if m.get('AgentDescription') is not None:
+            self.agent_description = m.get('AgentDescription')
+
+        if m.get('AgentDisplayName') is not None:
+            self.agent_display_name = m.get('AgentDisplayName')
+
+        if m.get('AgentHost') is not None:
+            self.agent_host = m.get('AgentHost')
+
+        if m.get('AgentId') is not None:
+            self.agent_id = m.get('AgentId')
+
+        if m.get('AgentRegisterInfoId') is not None:
+            self.agent_register_info_id = m.get('AgentRegisterInfoId')
+
+        if m.get('AgentVersion') is not None:
+            self.agent_version = m.get('AgentVersion')
+
+        if m.get('Categories') is not None:
+            temp_model = main_models.DescribeAtiAgentRegisterInfoMarketResponseBodyCategories()
+            self.categories = temp_model.from_map(m.get('Categories'))
+
+        if m.get('Endpoints') is not None:
+            temp_model = main_models.DescribeAtiAgentRegisterInfoMarketResponseBodyEndpoints()
+            self.endpoints = temp_model.from_map(m.get('Endpoints'))
+
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+
+        if m.get('TrustCardContent') is not None:
+            self.trust_card_content = m.get('TrustCardContent')
+
+        if m.get('TrustLevel') is not None:
+            self.trust_level = m.get('TrustLevel')
+
+        return self
+
+class DescribeAtiAgentRegisterInfoMarketResponseBodyEndpoints(DaraModel):
+    def __init__(
+        self,
+        endpoint: List[main_models.DescribeAtiAgentRegisterInfoMarketResponseBodyEndpointsEndpoint] = None,
+    ):
+        self.endpoint = endpoint
+
+    def validate(self):
+        if self.endpoint:
+            for v1 in self.endpoint:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        result['Endpoint'] = []
+        if self.endpoint is not None:
+            for k1 in self.endpoint:
+                result['Endpoint'].append(k1.to_map() if k1 else None)
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.endpoint = []
+        if m.get('Endpoint') is not None:
+            for k1 in m.get('Endpoint'):
+                temp_model = main_models.DescribeAtiAgentRegisterInfoMarketResponseBodyEndpointsEndpoint()
+                self.endpoint.append(temp_model.from_map(k1))
+
+        return self
+
+class DescribeAtiAgentRegisterInfoMarketResponseBodyEndpointsEndpoint(DaraModel):
+    def __init__(
+        self,
+        agent_url: str = None,
+        metadata_url: str = None,
+        protocol: str = None,
+        transports: main_models.DescribeAtiAgentRegisterInfoMarketResponseBodyEndpointsEndpointTransports = None,
+    ):
+        self.agent_url = agent_url
+        self.metadata_url = metadata_url
+        self.protocol = protocol
+        self.transports = transports
+
+    def validate(self):
+        if self.transports:
+            self.transports.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.agent_url is not None:
+            result['AgentUrl'] = self.agent_url
+
+        if self.metadata_url is not None:
+            result['MetadataUrl'] = self.metadata_url
+
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+
+        if self.transports is not None:
+            result['Transports'] = self.transports.to_map()
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentUrl') is not None:
+            self.agent_url = m.get('AgentUrl')
+
+        if m.get('MetadataUrl') is not None:
+            self.metadata_url = m.get('MetadataUrl')
+
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+
+        if m.get('Transports') is not None:
+            temp_model = main_models.DescribeAtiAgentRegisterInfoMarketResponseBodyEndpointsEndpointTransports()
+            self.transports = temp_model.from_map(m.get('Transports'))
+
+        return self
+
+class DescribeAtiAgentRegisterInfoMarketResponseBodyEndpointsEndpointTransports(DaraModel):
+    def __init__(
+        self,
+        transport: List[str] = None,
+    ):
+        self.transport = transport
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.transport is not None:
+            result['Transport'] = self.transport
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Transport') is not None:
+            self.transport = m.get('Transport')
+
+        return self
+
+class DescribeAtiAgentRegisterInfoMarketResponseBodyCategories(DaraModel):
+    def __init__(
+        self,
+        category: List[str] = None,
+    ):
+        self.category = category
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.category is not None:
+            result['category'] = self.category
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('category') is not None:
+            self.category = m.get('category')
+
+        return self
+
+class DescribeAtiAgentRegisterInfoMarketResponseBodyAccessDeniedDetail(DaraModel):
+    def __init__(
+        self,
+        auth_action: str = None,
+        auth_principal_display_name: str = None,
+        auth_principal_owner_id: str = None,
+        auth_principal_type: str = None,
+        encoded_diagnostic_message: str = None,
+        no_permission_type: str = None,
+        policy_type: str = None,
+    ):
+        self.auth_action = auth_action
+        self.auth_principal_display_name = auth_principal_display_name
+        self.auth_principal_owner_id = auth_principal_owner_id
+        self.auth_principal_type = auth_principal_type
+        self.encoded_diagnostic_message = encoded_diagnostic_message
+        self.no_permission_type = no_permission_type
+        self.policy_type = policy_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.auth_action is not None:
+            result['AuthAction'] = self.auth_action
+
+        if self.auth_principal_display_name is not None:
+            result['AuthPrincipalDisplayName'] = self.auth_principal_display_name
+
+        if self.auth_principal_owner_id is not None:
+            result['AuthPrincipalOwnerId'] = self.auth_principal_owner_id
+
+        if self.auth_principal_type is not None:
+            result['AuthPrincipalType'] = self.auth_principal_type
+
+        if self.encoded_diagnostic_message is not None:
+            result['EncodedDiagnosticMessage'] = self.encoded_diagnostic_message
+
+        if self.no_permission_type is not None:
+            result['NoPermissionType'] = self.no_permission_type
+
+        if self.policy_type is not None:
+            result['PolicyType'] = self.policy_type
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthAction') is not None:
+            self.auth_action = m.get('AuthAction')
+
+        if m.get('AuthPrincipalDisplayName') is not None:
+            self.auth_principal_display_name = m.get('AuthPrincipalDisplayName')
+
+        if m.get('AuthPrincipalOwnerId') is not None:
+            self.auth_principal_owner_id = m.get('AuthPrincipalOwnerId')
+
+        if m.get('AuthPrincipalType') is not None:
+            self.auth_principal_type = m.get('AuthPrincipalType')
+
+        if m.get('EncodedDiagnosticMessage') is not None:
+            self.encoded_diagnostic_message = m.get('EncodedDiagnosticMessage')
+
+        if m.get('NoPermissionType') is not None:
+            self.no_permission_type = m.get('NoPermissionType')
+
+        if m.get('PolicyType') is not None:
+            self.policy_type = m.get('PolicyType')
+
+        return self
+

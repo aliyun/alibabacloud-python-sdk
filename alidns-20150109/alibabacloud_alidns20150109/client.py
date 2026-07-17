@@ -4367,6 +4367,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_ati_agent_register_info_with_options_async(request, runtime)
 
+    def describe_ati_agent_register_info_market_with_options(
+        self,
+        request: main_models.DescribeAtiAgentRegisterInfoMarketRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAtiAgentRegisterInfoMarketResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_host):
+            query['AgentHost'] = request.agent_host
+        if not DaraCore.is_null(request.agent_version):
+            query['AgentVersion'] = request.agent_version
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAtiAgentRegisterInfoMarket',
+            version = '2015-01-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAtiAgentRegisterInfoMarketResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_ati_agent_register_info_market_with_options_async(
+        self,
+        request: main_models.DescribeAtiAgentRegisterInfoMarketRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAtiAgentRegisterInfoMarketResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_host):
+            query['AgentHost'] = request.agent_host
+        if not DaraCore.is_null(request.agent_version):
+            query['AgentVersion'] = request.agent_version
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAtiAgentRegisterInfoMarket',
+            version = '2015-01-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAtiAgentRegisterInfoMarketResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_ati_agent_register_info_market(
+        self,
+        request: main_models.DescribeAtiAgentRegisterInfoMarketRequest,
+    ) -> main_models.DescribeAtiAgentRegisterInfoMarketResponse:
+        runtime = RuntimeOptions()
+        return self.describe_ati_agent_register_info_market_with_options(request, runtime)
+
+    async def describe_ati_agent_register_info_market_async(
+        self,
+        request: main_models.DescribeAtiAgentRegisterInfoMarketRequest,
+    ) -> main_models.DescribeAtiAgentRegisterInfoMarketResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_ati_agent_register_info_market_with_options_async(request, runtime)
+
     def describe_ati_alert_settings_with_options(
         self,
         request: main_models.DescribeAtiAlertSettingsRequest,
