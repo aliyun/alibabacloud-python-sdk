@@ -94,6 +94,9 @@ from ._create_logo_task_response import CreateLogoTaskResponse
 from ._create_material_directory_request import CreateMaterialDirectoryRequest
 from ._create_material_directory_response_body import CreateMaterialDirectoryResponseBody
 from ._create_material_directory_response import CreateMaterialDirectoryResponse
+from ._create_rbac_role_request import CreateRbacRoleRequest
+from ._create_rbac_role_response_body import CreateRbacRoleResponseBody
+from ._create_rbac_role_response import CreateRbacRoleResponse
 from ._delete_app_domain_certificate_request import DeleteAppDomainCertificateRequest
 from ._delete_app_domain_certificate_response_body import DeleteAppDomainCertificateResponseBody
 from ._delete_app_domain_certificate_response import DeleteAppDomainCertificateResponse
@@ -119,6 +122,9 @@ from ._delete_material_task_request import DeleteMaterialTaskRequest
 from ._delete_material_task_shrink_request import DeleteMaterialTaskShrinkRequest
 from ._delete_material_task_response_body import DeleteMaterialTaskResponseBody
 from ._delete_material_task_response import DeleteMaterialTaskResponse
+from ._delete_rbac_role_request import DeleteRbacRoleRequest
+from ._delete_rbac_role_response_body import DeleteRbacRoleResponseBody
+from ._delete_rbac_role_response import DeleteRbacRoleResponse
 from ._describe_app_domain_dns_record_request import DescribeAppDomainDnsRecordRequest
 from ._describe_app_domain_dns_record_response_body import DescribeAppDomainDnsRecordResponseBody
 from ._describe_app_domain_dns_record_response import DescribeAppDomainDnsRecordResponse
@@ -132,6 +138,9 @@ from ._export_material_file_request import ExportMaterialFileRequest
 from ._export_material_file_shrink_request import ExportMaterialFileShrinkRequest
 from ._export_material_file_response_body import ExportMaterialFileResponseBody
 from ._export_material_file_response import ExportMaterialFileResponse
+from ._export_rbac_config_request import ExportRbacConfigRequest
+from ._export_rbac_config_response_body import ExportRbacConfigResponseBody
+from ._export_rbac_config_response import ExportRbacConfigResponse
 from ._get_aistaff_preview_url_request import GetAIStaffPreviewUrlRequest
 from ._get_aistaff_preview_url_response_body import GetAIStaffPreviewUrlResponseBody
 from ._get_aistaff_preview_url_response import GetAIStaffPreviewUrlResponse
@@ -303,6 +312,18 @@ from ._list_promotion_activities_for_partner_response import ListPromotionActivi
 from ._list_promotion_offer_records_for_partner_request import ListPromotionOfferRecordsForPartnerRequest
 from ._list_promotion_offer_records_for_partner_response_body import ListPromotionOfferRecordsForPartnerResponseBody
 from ._list_promotion_offer_records_for_partner_response import ListPromotionOfferRecordsForPartnerResponse
+from ._list_rbac_org_tree_request import ListRbacOrgTreeRequest
+from ._list_rbac_org_tree_response_body import ListRbacOrgTreeResponseBody
+from ._list_rbac_org_tree_response import ListRbacOrgTreeResponse
+from ._list_rbac_permissions_request import ListRbacPermissionsRequest
+from ._list_rbac_permissions_response_body import ListRbacPermissionsResponseBody
+from ._list_rbac_permissions_response import ListRbacPermissionsResponse
+from ._list_rbac_role_hierarchy_request import ListRbacRoleHierarchyRequest
+from ._list_rbac_role_hierarchy_response_body import ListRbacRoleHierarchyResponseBody
+from ._list_rbac_role_hierarchy_response import ListRbacRoleHierarchyResponse
+from ._list_rbac_roles_request import ListRbacRolesRequest
+from ._list_rbac_roles_response_body import ListRbacRolesResponseBody
+from ._list_rbac_roles_response import ListRbacRolesResponse
 from ._modify_app_instance_spec_request import ModifyAppInstanceSpecRequest
 from ._modify_app_instance_spec_response_body import ModifyAppInstanceSpecResponseBody
 from ._modify_app_instance_spec_response import ModifyAppInstanceSpecResponse
@@ -396,6 +417,9 @@ from ._refresh_app_instance_ticket_response import RefreshAppInstanceTicketRespo
 from ._refund_app_instance_for_partner_request import RefundAppInstanceForPartnerRequest
 from ._refund_app_instance_for_partner_response_body import RefundAppInstanceForPartnerResponseBody
 from ._refund_app_instance_for_partner_response import RefundAppInstanceForPartnerResponse
+from ._remove_rbac_role_hierarchy_request import RemoveRbacRoleHierarchyRequest
+from ._remove_rbac_role_hierarchy_response_body import RemoveRbacRoleHierarchyResponseBody
+from ._remove_rbac_role_hierarchy_response import RemoveRbacRoleHierarchyResponse
 from ._renew_app_instance_request import RenewAppInstanceRequest
 from ._renew_app_instance_response_body import RenewAppInstanceResponseBody
 from ._renew_app_instance_response import RenewAppInstanceResponse
@@ -421,6 +445,9 @@ from ._search_image_response import SearchImageResponse
 from ._set_app_domain_certificate_request import SetAppDomainCertificateRequest
 from ._set_app_domain_certificate_response_body import SetAppDomainCertificateResponseBody
 from ._set_app_domain_certificate_response import SetAppDomainCertificateResponse
+from ._set_rbac_role_hierarchy_request import SetRbacRoleHierarchyRequest
+from ._set_rbac_role_hierarchy_response_body import SetRbacRoleHierarchyResponseBody
+from ._set_rbac_role_hierarchy_response import SetRbacRoleHierarchyResponse
 from ._submit_app_seo_index_request import SubmitAppSeoIndexRequest
 from ._submit_app_seo_index_response_body import SubmitAppSeoIndexResponseBody
 from ._submit_app_seo_index_response import SubmitAppSeoIndexResponse
@@ -462,6 +489,9 @@ from ._update_app_supabase_secret_response import UpdateAppSupabaseSecretRespons
 from ._update_mini_app_binding_request import UpdateMiniAppBindingRequest
 from ._update_mini_app_binding_response_body import UpdateMiniAppBindingResponseBody
 from ._update_mini_app_binding_response import UpdateMiniAppBindingResponse
+from ._update_rbac_role_request import UpdateRbacRoleRequest
+from ._update_rbac_role_response_body import UpdateRbacRoleResponseBody
+from ._update_rbac_role_response import UpdateRbacRoleResponse
 from ._upload_app_site_validation_file_request import UploadAppSiteValidationFileRequest
 from ._upload_app_site_validation_file_response_body import UploadAppSiteValidationFileResponseBody
 from ._upload_app_site_validation_file_response import UploadAppSiteValidationFileResponse
@@ -620,6 +650,18 @@ from ._list_promotion_activities_for_partner_response_body import ListPromotionA
 from ._list_promotion_activities_for_partner_response_body import ListPromotionActivitiesForPartnerResponseBodyModule
 from ._list_promotion_offer_records_for_partner_response_body import ListPromotionOfferRecordsForPartnerResponseBodyModuleRecords
 from ._list_promotion_offer_records_for_partner_response_body import ListPromotionOfferRecordsForPartnerResponseBodyModule
+from ._list_rbac_org_tree_response_body import ListRbacOrgTreeResponseBodyModuleData
+from ._list_rbac_org_tree_response_body import ListRbacOrgTreeResponseBodyModuleNext
+from ._list_rbac_org_tree_response_body import ListRbacOrgTreeResponseBodyModule
+from ._list_rbac_permissions_response_body import ListRbacPermissionsResponseBodyModuleData
+from ._list_rbac_permissions_response_body import ListRbacPermissionsResponseBodyModuleNext
+from ._list_rbac_permissions_response_body import ListRbacPermissionsResponseBodyModule
+from ._list_rbac_role_hierarchy_response_body import ListRbacRoleHierarchyResponseBodyModuleData
+from ._list_rbac_role_hierarchy_response_body import ListRbacRoleHierarchyResponseBodyModuleNext
+from ._list_rbac_role_hierarchy_response_body import ListRbacRoleHierarchyResponseBodyModule
+from ._list_rbac_roles_response_body import ListRbacRolesResponseBodyModuleData
+from ._list_rbac_roles_response_body import ListRbacRolesResponseBodyModuleNext
+from ._list_rbac_roles_response_body import ListRbacRolesResponseBodyModule
 from ._modify_app_instance_spec_response_body import ModifyAppInstanceSpecResponseBodyModule
 from ._publish_app_instance_response_body import PublishAppInstanceResponseBodyModule
 from ._query_inspiration_account_details_response_body import QueryInspirationAccountDetailsResponseBodyModuleData
@@ -750,6 +792,9 @@ __all__ = [
     CreateMaterialDirectoryRequest,
     CreateMaterialDirectoryResponseBody,
     CreateMaterialDirectoryResponse,
+    CreateRbacRoleRequest,
+    CreateRbacRoleResponseBody,
+    CreateRbacRoleResponse,
     DeleteAppDomainCertificateRequest,
     DeleteAppDomainCertificateResponseBody,
     DeleteAppDomainCertificateResponse,
@@ -775,6 +820,9 @@ __all__ = [
     DeleteMaterialTaskShrinkRequest,
     DeleteMaterialTaskResponseBody,
     DeleteMaterialTaskResponse,
+    DeleteRbacRoleRequest,
+    DeleteRbacRoleResponseBody,
+    DeleteRbacRoleResponse,
     DescribeAppDomainDnsRecordRequest,
     DescribeAppDomainDnsRecordResponseBody,
     DescribeAppDomainDnsRecordResponse,
@@ -788,6 +836,9 @@ __all__ = [
     ExportMaterialFileShrinkRequest,
     ExportMaterialFileResponseBody,
     ExportMaterialFileResponse,
+    ExportRbacConfigRequest,
+    ExportRbacConfigResponseBody,
+    ExportRbacConfigResponse,
     GetAIStaffPreviewUrlRequest,
     GetAIStaffPreviewUrlResponseBody,
     GetAIStaffPreviewUrlResponse,
@@ -959,6 +1010,18 @@ __all__ = [
     ListPromotionOfferRecordsForPartnerRequest,
     ListPromotionOfferRecordsForPartnerResponseBody,
     ListPromotionOfferRecordsForPartnerResponse,
+    ListRbacOrgTreeRequest,
+    ListRbacOrgTreeResponseBody,
+    ListRbacOrgTreeResponse,
+    ListRbacPermissionsRequest,
+    ListRbacPermissionsResponseBody,
+    ListRbacPermissionsResponse,
+    ListRbacRoleHierarchyRequest,
+    ListRbacRoleHierarchyResponseBody,
+    ListRbacRoleHierarchyResponse,
+    ListRbacRolesRequest,
+    ListRbacRolesResponseBody,
+    ListRbacRolesResponse,
     ModifyAppInstanceSpecRequest,
     ModifyAppInstanceSpecResponseBody,
     ModifyAppInstanceSpecResponse,
@@ -1052,6 +1115,9 @@ __all__ = [
     RefundAppInstanceForPartnerRequest,
     RefundAppInstanceForPartnerResponseBody,
     RefundAppInstanceForPartnerResponse,
+    RemoveRbacRoleHierarchyRequest,
+    RemoveRbacRoleHierarchyResponseBody,
+    RemoveRbacRoleHierarchyResponse,
     RenewAppInstanceRequest,
     RenewAppInstanceResponseBody,
     RenewAppInstanceResponse,
@@ -1077,6 +1143,9 @@ __all__ = [
     SetAppDomainCertificateRequest,
     SetAppDomainCertificateResponseBody,
     SetAppDomainCertificateResponse,
+    SetRbacRoleHierarchyRequest,
+    SetRbacRoleHierarchyResponseBody,
+    SetRbacRoleHierarchyResponse,
     SubmitAppSeoIndexRequest,
     SubmitAppSeoIndexResponseBody,
     SubmitAppSeoIndexResponse,
@@ -1118,6 +1187,9 @@ __all__ = [
     UpdateMiniAppBindingRequest,
     UpdateMiniAppBindingResponseBody,
     UpdateMiniAppBindingResponse,
+    UpdateRbacRoleRequest,
+    UpdateRbacRoleResponseBody,
+    UpdateRbacRoleResponse,
     UploadAppSiteValidationFileRequest,
     UploadAppSiteValidationFileResponseBody,
     UploadAppSiteValidationFileResponse,
@@ -1276,6 +1348,18 @@ __all__ = [
     ListPromotionActivitiesForPartnerResponseBodyModule,
     ListPromotionOfferRecordsForPartnerResponseBodyModuleRecords,
     ListPromotionOfferRecordsForPartnerResponseBodyModule,
+    ListRbacOrgTreeResponseBodyModuleData,
+    ListRbacOrgTreeResponseBodyModuleNext,
+    ListRbacOrgTreeResponseBodyModule,
+    ListRbacPermissionsResponseBodyModuleData,
+    ListRbacPermissionsResponseBodyModuleNext,
+    ListRbacPermissionsResponseBodyModule,
+    ListRbacRoleHierarchyResponseBodyModuleData,
+    ListRbacRoleHierarchyResponseBodyModuleNext,
+    ListRbacRoleHierarchyResponseBodyModule,
+    ListRbacRolesResponseBodyModuleData,
+    ListRbacRolesResponseBodyModuleNext,
+    ListRbacRolesResponseBodyModule,
     ModifyAppInstanceSpecResponseBodyModule,
     PublishAppInstanceResponseBodyModule,
     QueryInspirationAccountDetailsResponseBodyModuleData,

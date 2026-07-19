@@ -2,12 +2,11 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List, Any, Dict
+from typing import List, Any
 
-from alibabacloud_websitebuild20250429 import models as main_models
 from darabonba.model import DaraModel
 
-class GetAIStaffPreviewUrlResponseBody(DaraModel):
+class CreateRbacRoleResponseBody(DaraModel):
     def __init__(
         self,
         access_denied_detail: str = None,
@@ -16,39 +15,26 @@ class GetAIStaffPreviewUrlResponseBody(DaraModel):
         dynamic_code: str = None,
         dynamic_message: str = None,
         error_args: List[Any] = None,
-        module: main_models.GetAIStaffPreviewUrlResponseBodyModule = None,
+        module: str = None,
         request_id: str = None,
         root_error_code: str = None,
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # The detailed reason why access is denied.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether retry is allowed.
         self.allow_retry = allow_retry
-        # The application name.
         self.app_name = app_name
-        # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # The dynamic error message, which is used to replace the `%s` placeholder in the **ErrMessage** return parameter.
-        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
-        # The error parameters returned.
         self.error_args = error_args
-        # The response data.
         self.module = module
-        # Id of the request
         self.request_id = request_id
-        # The error code.
         self.root_error_code = root_error_code
-        # The exception message.
         self.root_error_msg = root_error_msg
-        # A reserved parameter.
         self.synchro = synchro
 
     def validate(self):
-        if self.module:
-            self.module.validate()
+        pass
 
     def to_map(self):
         result = dict()
@@ -74,7 +60,7 @@ class GetAIStaffPreviewUrlResponseBody(DaraModel):
             result['ErrorArgs'] = self.error_args
 
         if self.module is not None:
-            result['Module'] = self.module.to_map()
+            result['Module'] = self.module
 
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -111,8 +97,7 @@ class GetAIStaffPreviewUrlResponseBody(DaraModel):
             self.error_args = m.get('ErrorArgs')
 
         if m.get('Module') is not None:
-            temp_model = main_models.GetAIStaffPreviewUrlResponseBodyModule()
-            self.module = temp_model.from_map(m.get('Module'))
+            self.module = m.get('Module')
 
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
@@ -125,34 +110,6 @@ class GetAIStaffPreviewUrlResponseBody(DaraModel):
 
         if m.get('Synchro') is not None:
             self.synchro = m.get('Synchro')
-
-        return self
-
-class GetAIStaffPreviewUrlResponseBodyModule(DaraModel):
-    def __init__(
-        self,
-        url_map: Dict[str, str] = None,
-    ):
-        # The preview URL information, including fields such as previewUrl and sessionId.
-        self.url_map = url_map
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        _map = super().to_map()
-        if _map is not None:
-            result = _map
-        if self.url_map is not None:
-            result['UrlMap'] = self.url_map
-
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('UrlMap') is not None:
-            self.url_map = m.get('UrlMap')
 
         return self
 

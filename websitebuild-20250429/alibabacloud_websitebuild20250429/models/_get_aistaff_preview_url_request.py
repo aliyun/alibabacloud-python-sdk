@@ -10,9 +10,9 @@ class GetAIStaffPreviewUrlRequest(DaraModel):
         conversation_id: str = None,
         restart: bool = None,
     ):
-        # session ID
+        # The session ID.
         self.conversation_id = conversation_id
-        # is application restart required
+        # Specifies whether to restart the application.
         self.restart = restart
 
     def validate(self):

@@ -1,3 +1,16 @@
+2026-07-19 Version: 2.33.0
+- Support API CreateRbacRole.
+- Support API DeleteRbacRole.
+- Support API ExportRbacConfig.
+- Support API ListRbacOrgTree.
+- Support API ListRbacPermissions.
+- Support API ListRbacRoleHierarchy.
+- Support API ListRbacRoles.
+- Support API RemoveRbacRoleHierarchy.
+- Support API SetRbacRoleHierarchy.
+- Support API UpdateRbacRole.
+
+
 2026-07-13 Version: 2.32.1
 - Update API CreateAppInstanceTicket: add request parameters Role.
 - Update API UpdateAppSeoStatus: add request parameters SeIndexStatus.
