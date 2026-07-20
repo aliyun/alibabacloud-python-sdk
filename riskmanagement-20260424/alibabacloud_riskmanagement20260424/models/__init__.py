@@ -29,6 +29,10 @@ from ._describe_susp_events_request import DescribeSuspEventsRequest
 from ._describe_susp_events_shrink_request import DescribeSuspEventsShrinkRequest
 from ._describe_susp_events_response_body import DescribeSuspEventsResponseBody
 from ._describe_susp_events_response import DescribeSuspEventsResponse
+from ._describe_version_config_request import DescribeVersionConfigRequest
+from ._describe_version_config_shrink_request import DescribeVersionConfigShrinkRequest
+from ._describe_version_config_response_body import DescribeVersionConfigResponseBody
+from ._describe_version_config_response import DescribeVersionConfigResponse
 from ._get_alert_record_analysis_result_request import GetAlertRecordAnalysisResultRequest
 from ._get_alert_record_analysis_result_shrink_request import GetAlertRecordAnalysisResultShrinkRequest
 from ._get_alert_record_analysis_result_response_body import GetAlertRecordAnalysisResultResponseBody
@@ -41,9 +45,41 @@ from ._get_can_try_sas_request import GetCanTrySasRequest
 from ._get_can_try_sas_shrink_request import GetCanTrySasShrinkRequest
 from ._get_can_try_sas_response_body import GetCanTrySasResponseBody
 from ._get_can_try_sas_response import GetCanTrySasResponse
+from ._get_compliance_pack_id_request import GetCompliancePackIdRequest
+from ._get_compliance_pack_id_response_body import GetCompliancePackIdResponseBody
+from ._get_compliance_pack_id_response import GetCompliancePackIdResponse
 from ._get_disposal_tool_status_request import GetDisposalToolStatusRequest
 from ._get_disposal_tool_status_response_body import GetDisposalToolStatusResponseBody
 from ._get_disposal_tool_status_response import GetDisposalToolStatusResponse
+from ._get_notification_click_record_request import GetNotificationClickRecordRequest
+from ._get_notification_click_record_response_body import GetNotificationClickRecordResponseBody
+from ._get_notification_click_record_response import GetNotificationClickRecordResponse
+from ._get_notification_contacts_request import GetNotificationContactsRequest
+from ._get_notification_contacts_response_body import GetNotificationContactsResponseBody
+from ._get_notification_contacts_response import GetNotificationContactsResponse
+from ._get_notification_pend_number_request import GetNotificationPendNumberRequest
+from ._get_notification_pend_number_response_body import GetNotificationPendNumberResponseBody
+from ._get_notification_pend_number_response import GetNotificationPendNumberResponse
+from ._get_resource_control_event_request import GetResourceControlEventRequest
+from ._get_resource_control_event_shrink_request import GetResourceControlEventShrinkRequest
+from ._get_resource_control_event_response_body import GetResourceControlEventResponseBody
+from ._get_resource_control_event_response import GetResourceControlEventResponse
+from ._get_security_check_base_info_request import GetSecurityCheckBaseInfoRequest
+from ._get_security_check_base_info_response_body import GetSecurityCheckBaseInfoResponseBody
+from ._get_security_check_base_info_response import GetSecurityCheckBaseInfoResponse
+from ._get_security_check_result_base_info_request import GetSecurityCheckResultBaseInfoRequest
+from ._get_security_check_result_base_info_response_body import GetSecurityCheckResultBaseInfoResponseBody
+from ._get_security_check_result_base_info_response import GetSecurityCheckResultBaseInfoResponse
+from ._get_security_suggestion_list_request import GetSecuritySuggestionListRequest
+from ._get_security_suggestion_list_shrink_request import GetSecuritySuggestionListShrinkRequest
+from ._get_security_suggestion_list_response_body import GetSecuritySuggestionListResponseBody
+from ._get_security_suggestion_list_response import GetSecuritySuggestionListResponse
+from ._get_security_suggestion_number_request import GetSecuritySuggestionNumberRequest
+from ._get_security_suggestion_number_response_body import GetSecuritySuggestionNumberResponseBody
+from ._get_security_suggestion_number_response import GetSecuritySuggestionNumberResponse
+from ._get_service_linked_role_status_request import GetServiceLinkedRoleStatusRequest
+from ._get_service_linked_role_status_response_body import GetServiceLinkedRoleStatusResponseBody
+from ._get_service_linked_role_status_response import GetServiceLinkedRoleStatusResponse
 from ._get_valid_deduct_instances_request import GetValidDeductInstancesRequest
 from ._get_valid_deduct_instances_shrink_request import GetValidDeductInstancesShrinkRequest
 from ._get_valid_deduct_instances_response_body import GetValidDeductInstancesResponseBody
@@ -58,16 +94,36 @@ from ._list_virus_scan_machine_event_response import ListVirusScanMachineEventRe
 from ._open_trial_package_request import OpenTrialPackageRequest
 from ._open_trial_package_response_body import OpenTrialPackageResponseBody
 from ._open_trial_package_response import OpenTrialPackageResponse
+from ._query_account_safety_incident_request import QueryAccountSafetyIncidentRequest
+from ._query_account_safety_incident_response_body import QueryAccountSafetyIncidentResponseBody
+from ._query_account_safety_incident_response import QueryAccountSafetyIncidentResponse
+from ._query_guide_sub_status_request import QueryGuideSubStatusRequest
+from ._query_guide_sub_status_response_body import QueryGuideSubStatusResponseBody
+from ._query_guide_sub_status_response import QueryGuideSubStatusResponse
+from ._query_resource_control_events_request import QueryResourceControlEventsRequest
+from ._query_resource_control_events_shrink_request import QueryResourceControlEventsShrinkRequest
+from ._query_resource_control_events_response_body import QueryResourceControlEventsResponseBody
+from ._query_resource_control_events_response import QueryResourceControlEventsResponse
 from ._query_security_check_report_request import QuerySecurityCheckReportRequest
 from ._query_security_check_report_response_body import QuerySecurityCheckReportResponseBody
 from ._query_security_check_report_response import QuerySecurityCheckReportResponse
 from ._start_disposal_tool_service_request import StartDisposalToolServiceRequest
 from ._start_disposal_tool_service_response_body import StartDisposalToolServiceResponseBody
 from ._start_disposal_tool_service_response import StartDisposalToolServiceResponse
+from ._start_security_check_service_request import StartSecurityCheckServiceRequest
+from ._start_security_check_service_response_body import StartSecurityCheckServiceResponseBody
+from ._start_security_check_service_response import StartSecurityCheckServiceResponse
+from ._submit_apply_record_request import SubmitApplyRecordRequest
+from ._submit_apply_record_shrink_request import SubmitApplyRecordShrinkRequest
+from ._submit_apply_record_response_body import SubmitApplyRecordResponseBody
+from ._submit_apply_record_response import SubmitApplyRecordResponse
 from ._update_post_paid_bind_rel_request import UpdatePostPaidBindRelRequest
 from ._update_post_paid_bind_rel_shrink_request import UpdatePostPaidBindRelShrinkRequest
 from ._update_post_paid_bind_rel_response_body import UpdatePostPaidBindRelResponseBody
 from ._update_post_paid_bind_rel_response import UpdatePostPaidBindRelResponse
+from ._update_security_check_result_request import UpdateSecurityCheckResultRequest
+from ._update_security_check_result_response_body import UpdateSecurityCheckResultResponseBody
+from ._update_security_check_result_response import UpdateSecurityCheckResultResponse
 from ._bind_auth_to_machine_request import BindAuthToMachineRequestSdkRequest
 from ._bind_auth_to_machine_response_body import BindAuthToMachineResponseBodyDataBody
 from ._bind_auth_to_machine_response_body import BindAuthToMachineResponseBodyData
@@ -95,6 +151,9 @@ from ._describe_susp_events_response_body import DescribeSuspEventsResponseBodyD
 from ._describe_susp_events_response_body import DescribeSuspEventsResponseBodyDataBodySuspEvents
 from ._describe_susp_events_response_body import DescribeSuspEventsResponseBodyDataBody
 from ._describe_susp_events_response_body import DescribeSuspEventsResponseBodyData
+from ._describe_version_config_request import DescribeVersionConfigRequestSdkRequest
+from ._describe_version_config_response_body import DescribeVersionConfigResponseBodyDataBody
+from ._describe_version_config_response_body import DescribeVersionConfigResponseBodyData
 from ._get_alert_record_analysis_result_request import GetAlertRecordAnalysisResultRequestUniqueTagList
 from ._get_alert_record_analysis_result_response_body import GetAlertRecordAnalysisResultResponseBodyDataUniqueTagList
 from ._get_alert_record_analysis_result_response_body import GetAlertRecordAnalysisResultResponseBodyData
@@ -112,6 +171,22 @@ from ._get_can_try_sas_response_body import GetCanTrySasResponseBodyDataBodyData
 from ._get_can_try_sas_response_body import GetCanTrySasResponseBodyDataBody
 from ._get_can_try_sas_response_body import GetCanTrySasResponseBodyData
 from ._get_disposal_tool_status_response_body import GetDisposalToolStatusResponseBodyData
+from ._get_notification_click_record_response_body import GetNotificationClickRecordResponseBodyData
+from ._get_notification_contacts_response_body import GetNotificationContactsResponseBodyDataChannelConfigs
+from ._get_notification_contacts_response_body import GetNotificationContactsResponseBodyDataContactInfoList
+from ._get_notification_contacts_response_body import GetNotificationContactsResponseBodyData
+from ._get_resource_control_event_response_body import GetResourceControlEventResponseBodyDataApplyRecordListEventTimeRecord
+from ._get_resource_control_event_response_body import GetResourceControlEventResponseBodyDataApplyRecordList
+from ._get_resource_control_event_response_body import GetResourceControlEventResponseBodyData
+from ._get_security_check_base_info_response_body import GetSecurityCheckBaseInfoResponseBodyData
+from ._get_security_check_result_base_info_response_body import GetSecurityCheckResultBaseInfoResponseBodyData
+from ._get_security_suggestion_list_request import GetSecuritySuggestionListRequestListConfigRulesRequest
+from ._get_security_suggestion_list_response_body import GetSecuritySuggestionListResponseBodyDataConfigRuleListComplianceObject
+from ._get_security_suggestion_list_response_body import GetSecuritySuggestionListResponseBodyDataConfigRuleListCreateBy
+from ._get_security_suggestion_list_response_body import GetSecuritySuggestionListResponseBodyDataConfigRuleListTags
+from ._get_security_suggestion_list_response_body import GetSecuritySuggestionListResponseBodyDataConfigRuleList
+from ._get_security_suggestion_list_response_body import GetSecuritySuggestionListResponseBodyData
+from ._get_service_linked_role_status_response_body import GetServiceLinkedRoleStatusResponseBodyData
 from ._get_valid_deduct_instances_request import GetValidDeductInstancesRequestSdkRequest
 from ._get_valid_deduct_instances_response_body import GetValidDeductInstancesResponseBodyDataBodyDataDeductPackageList
 from ._get_valid_deduct_instances_response_body import GetValidDeductInstancesResponseBodyDataBodyData
@@ -126,6 +201,13 @@ from ._list_virus_scan_machine_event_response_body import ListVirusScanMachineEv
 from ._list_virus_scan_machine_event_response_body import ListVirusScanMachineEventResponseBodyDataVirusScanMachineEventList
 from ._list_virus_scan_machine_event_response_body import ListVirusScanMachineEventResponseBodyData
 from ._open_trial_package_response_body import OpenTrialPackageResponseBodyData
+from ._query_account_safety_incident_response_body import QueryAccountSafetyIncidentResponseBodyDataListDateExtras
+from ._query_account_safety_incident_response_body import QueryAccountSafetyIncidentResponseBodyDataList
+from ._query_account_safety_incident_response_body import QueryAccountSafetyIncidentResponseBodyDataPageInfo
+from ._query_account_safety_incident_response_body import QueryAccountSafetyIncidentResponseBodyData
+from ._query_resource_control_events_response_body import QueryResourceControlEventsResponseBodyDataList
+from ._query_resource_control_events_response_body import QueryResourceControlEventsResponseBodyDataPageInfo
+from ._query_resource_control_events_response_body import QueryResourceControlEventsResponseBodyData
 from ._query_security_check_report_response_body import QuerySecurityCheckReportResponseBodyData
 from ._update_post_paid_bind_rel_request import UpdatePostPaidBindRelRequestSdkRequestBindAction
 from ._update_post_paid_bind_rel_request import UpdatePostPaidBindRelRequestSdkRequest
@@ -160,6 +242,10 @@ __all__ = [
     DescribeSuspEventsShrinkRequest,
     DescribeSuspEventsResponseBody,
     DescribeSuspEventsResponse,
+    DescribeVersionConfigRequest,
+    DescribeVersionConfigShrinkRequest,
+    DescribeVersionConfigResponseBody,
+    DescribeVersionConfigResponse,
     GetAlertRecordAnalysisResultRequest,
     GetAlertRecordAnalysisResultShrinkRequest,
     GetAlertRecordAnalysisResultResponseBody,
@@ -172,9 +258,41 @@ __all__ = [
     GetCanTrySasShrinkRequest,
     GetCanTrySasResponseBody,
     GetCanTrySasResponse,
+    GetCompliancePackIdRequest,
+    GetCompliancePackIdResponseBody,
+    GetCompliancePackIdResponse,
     GetDisposalToolStatusRequest,
     GetDisposalToolStatusResponseBody,
     GetDisposalToolStatusResponse,
+    GetNotificationClickRecordRequest,
+    GetNotificationClickRecordResponseBody,
+    GetNotificationClickRecordResponse,
+    GetNotificationContactsRequest,
+    GetNotificationContactsResponseBody,
+    GetNotificationContactsResponse,
+    GetNotificationPendNumberRequest,
+    GetNotificationPendNumberResponseBody,
+    GetNotificationPendNumberResponse,
+    GetResourceControlEventRequest,
+    GetResourceControlEventShrinkRequest,
+    GetResourceControlEventResponseBody,
+    GetResourceControlEventResponse,
+    GetSecurityCheckBaseInfoRequest,
+    GetSecurityCheckBaseInfoResponseBody,
+    GetSecurityCheckBaseInfoResponse,
+    GetSecurityCheckResultBaseInfoRequest,
+    GetSecurityCheckResultBaseInfoResponseBody,
+    GetSecurityCheckResultBaseInfoResponse,
+    GetSecuritySuggestionListRequest,
+    GetSecuritySuggestionListShrinkRequest,
+    GetSecuritySuggestionListResponseBody,
+    GetSecuritySuggestionListResponse,
+    GetSecuritySuggestionNumberRequest,
+    GetSecuritySuggestionNumberResponseBody,
+    GetSecuritySuggestionNumberResponse,
+    GetServiceLinkedRoleStatusRequest,
+    GetServiceLinkedRoleStatusResponseBody,
+    GetServiceLinkedRoleStatusResponse,
     GetValidDeductInstancesRequest,
     GetValidDeductInstancesShrinkRequest,
     GetValidDeductInstancesResponseBody,
@@ -189,16 +307,36 @@ __all__ = [
     OpenTrialPackageRequest,
     OpenTrialPackageResponseBody,
     OpenTrialPackageResponse,
+    QueryAccountSafetyIncidentRequest,
+    QueryAccountSafetyIncidentResponseBody,
+    QueryAccountSafetyIncidentResponse,
+    QueryGuideSubStatusRequest,
+    QueryGuideSubStatusResponseBody,
+    QueryGuideSubStatusResponse,
+    QueryResourceControlEventsRequest,
+    QueryResourceControlEventsShrinkRequest,
+    QueryResourceControlEventsResponseBody,
+    QueryResourceControlEventsResponse,
     QuerySecurityCheckReportRequest,
     QuerySecurityCheckReportResponseBody,
     QuerySecurityCheckReportResponse,
     StartDisposalToolServiceRequest,
     StartDisposalToolServiceResponseBody,
     StartDisposalToolServiceResponse,
+    StartSecurityCheckServiceRequest,
+    StartSecurityCheckServiceResponseBody,
+    StartSecurityCheckServiceResponse,
+    SubmitApplyRecordRequest,
+    SubmitApplyRecordShrinkRequest,
+    SubmitApplyRecordResponseBody,
+    SubmitApplyRecordResponse,
     UpdatePostPaidBindRelRequest,
     UpdatePostPaidBindRelShrinkRequest,
     UpdatePostPaidBindRelResponseBody,
     UpdatePostPaidBindRelResponse,
+    UpdateSecurityCheckResultRequest,
+    UpdateSecurityCheckResultResponseBody,
+    UpdateSecurityCheckResultResponse,
     BindAuthToMachineRequestSdkRequest,
     BindAuthToMachineResponseBodyDataBody,
     BindAuthToMachineResponseBodyData,
@@ -226,6 +364,9 @@ __all__ = [
     DescribeSuspEventsResponseBodyDataBodySuspEvents,
     DescribeSuspEventsResponseBodyDataBody,
     DescribeSuspEventsResponseBodyData,
+    DescribeVersionConfigRequestSdkRequest,
+    DescribeVersionConfigResponseBodyDataBody,
+    DescribeVersionConfigResponseBodyData,
     GetAlertRecordAnalysisResultRequestUniqueTagList,
     GetAlertRecordAnalysisResultResponseBodyDataUniqueTagList,
     GetAlertRecordAnalysisResultResponseBodyData,
@@ -243,6 +384,22 @@ __all__ = [
     GetCanTrySasResponseBodyDataBody,
     GetCanTrySasResponseBodyData,
     GetDisposalToolStatusResponseBodyData,
+    GetNotificationClickRecordResponseBodyData,
+    GetNotificationContactsResponseBodyDataChannelConfigs,
+    GetNotificationContactsResponseBodyDataContactInfoList,
+    GetNotificationContactsResponseBodyData,
+    GetResourceControlEventResponseBodyDataApplyRecordListEventTimeRecord,
+    GetResourceControlEventResponseBodyDataApplyRecordList,
+    GetResourceControlEventResponseBodyData,
+    GetSecurityCheckBaseInfoResponseBodyData,
+    GetSecurityCheckResultBaseInfoResponseBodyData,
+    GetSecuritySuggestionListRequestListConfigRulesRequest,
+    GetSecuritySuggestionListResponseBodyDataConfigRuleListComplianceObject,
+    GetSecuritySuggestionListResponseBodyDataConfigRuleListCreateBy,
+    GetSecuritySuggestionListResponseBodyDataConfigRuleListTags,
+    GetSecuritySuggestionListResponseBodyDataConfigRuleList,
+    GetSecuritySuggestionListResponseBodyData,
+    GetServiceLinkedRoleStatusResponseBodyData,
     GetValidDeductInstancesRequestSdkRequest,
     GetValidDeductInstancesResponseBodyDataBodyDataDeductPackageList,
     GetValidDeductInstancesResponseBodyDataBodyData,
@@ -257,6 +414,13 @@ __all__ = [
     ListVirusScanMachineEventResponseBodyDataVirusScanMachineEventList,
     ListVirusScanMachineEventResponseBodyData,
     OpenTrialPackageResponseBodyData,
+    QueryAccountSafetyIncidentResponseBodyDataListDateExtras,
+    QueryAccountSafetyIncidentResponseBodyDataList,
+    QueryAccountSafetyIncidentResponseBodyDataPageInfo,
+    QueryAccountSafetyIncidentResponseBodyData,
+    QueryResourceControlEventsResponseBodyDataList,
+    QueryResourceControlEventsResponseBodyDataPageInfo,
+    QueryResourceControlEventsResponseBodyData,
     QuerySecurityCheckReportResponseBodyData,
     UpdatePostPaidBindRelRequestSdkRequestBindAction,
     UpdatePostPaidBindRelRequestSdkRequest,
