@@ -10,7 +10,9 @@ class DeleteRbacRoleRequest(DaraModel):
         biz_id: str = None,
         role_id: str = None,
     ):
+        # The business ID of the application instance.
         self.biz_id = biz_id
+        # The role ID.
         self.role_id = role_id
 
     def validate(self):

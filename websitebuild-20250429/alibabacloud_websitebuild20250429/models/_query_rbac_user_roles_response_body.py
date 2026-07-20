@@ -7,7 +7,7 @@ from typing import List, Any
 from alibabacloud_websitebuild20250429 import models as main_models
 from darabonba.model import DaraModel
 
-class ListRbacRoleHierarchyResponseBody(DaraModel):
+class QueryRbacUserRolesResponseBody(DaraModel):
     def __init__(
         self,
         access_denied_detail: str = None,
@@ -16,44 +16,22 @@ class ListRbacRoleHierarchyResponseBody(DaraModel):
         dynamic_code: str = None,
         dynamic_message: str = None,
         error_args: List[Any] = None,
-        max_results: int = None,
-        module: main_models.ListRbacRoleHierarchyResponseBodyModule = None,
-        next_token: str = None,
+        module: main_models.QueryRbacUserRolesResponseBodyModule = None,
         request_id: str = None,
         root_error_code: str = None,
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # The access denied details.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether a retry is allowed. Valid values:
-        # - false: No retry is allowed.
-        # - true: A retry is allowed.
         self.allow_retry = allow_retry
-        # The application name.
         self.app_name = app_name
-        # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # The dynamic error message, which is used to replace the `%s` variable in the **ErrMessage** response parameter.
-        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the value of the request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
-        # The error parameters.
         self.error_args = error_args
-        # The number of entries per query.
-        # 
-        # Valid values: 10 to 100. Default value: 20.
-        self.max_results = max_results
-        # The response object.
         self.module = module
-        # The token for the next query. This parameter is empty if no more results exist.
-        self.next_token = next_token
-        # Id of the request
         self.request_id = request_id
-        # The error code.
         self.root_error_code = root_error_code
-        # The exception message.
         self.root_error_msg = root_error_msg
-        # Indicates whether the request is synchronously processed.
         self.synchro = synchro
 
     def validate(self):
@@ -83,14 +61,8 @@ class ListRbacRoleHierarchyResponseBody(DaraModel):
         if self.error_args is not None:
             result['ErrorArgs'] = self.error_args
 
-        if self.max_results is not None:
-            result['MaxResults'] = self.max_results
-
         if self.module is not None:
             result['Module'] = self.module.to_map()
-
-        if self.next_token is not None:
-            result['NextToken'] = self.next_token
 
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -126,15 +98,9 @@ class ListRbacRoleHierarchyResponseBody(DaraModel):
         if m.get('ErrorArgs') is not None:
             self.error_args = m.get('ErrorArgs')
 
-        if m.get('MaxResults') is not None:
-            self.max_results = m.get('MaxResults')
-
         if m.get('Module') is not None:
-            temp_model = main_models.ListRbacRoleHierarchyResponseBodyModule()
+            temp_model = main_models.QueryRbacUserRolesResponseBodyModule()
             self.module = temp_model.from_map(m.get('Module'))
-
-        if m.get('NextToken') is not None:
-            self.next_token = m.get('NextToken')
 
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
@@ -150,12 +116,12 @@ class ListRbacRoleHierarchyResponseBody(DaraModel):
 
         return self
 
-class ListRbacRoleHierarchyResponseBodyModule(DaraModel):
+class QueryRbacUserRolesResponseBodyModule(DaraModel):
     def __init__(
         self,
         current_page_num: int = None,
-        data: List[main_models.ListRbacRoleHierarchyResponseBodyModuleData] = None,
-        next: main_models.ListRbacRoleHierarchyResponseBodyModuleNext = None,
+        data: List[main_models.QueryRbacUserRolesResponseBodyModuleData] = None,
+        next: main_models.QueryRbacUserRolesResponseBodyModuleNext = None,
         next_page: bool = None,
         page_size: int = None,
         pre_page: bool = None,
@@ -163,23 +129,14 @@ class ListRbacRoleHierarchyResponseBodyModule(DaraModel):
         total_item_num: int = None,
         total_page_num: int = None,
     ):
-        # The current page number.
         self.current_page_num = current_page_num
-        # The request results.
         self.data = data
-        # The decision weight.
         self.next = next
-        # Indicates whether a next page exists.
         self.next_page = next_page
-        # The page size.
         self.page_size = page_size
-        # Indicates whether a previous page exists.
         self.pre_page = pre_page
-        # The server processes up to 1,000 most recent records beyond the pagination limit. If the results exceed 1,000 records, **ResultLimit** is **true**. In this case, narrow the time range and search again. Otherwise, **ResultLimit** is **false**.
         self.result_limit = result_limit
-        # The total number of entries.
         self.total_item_num = total_item_num
-        # The total number of pages.
         self.total_page_num = total_page_num
 
     def validate(self):
@@ -234,11 +191,11 @@ class ListRbacRoleHierarchyResponseBodyModule(DaraModel):
         self.data = []
         if m.get('Data') is not None:
             for k1 in m.get('Data'):
-                temp_model = main_models.ListRbacRoleHierarchyResponseBodyModuleData()
+                temp_model = main_models.QueryRbacUserRolesResponseBodyModuleData()
                 self.data.append(temp_model.from_map(k1))
 
         if m.get('Next') is not None:
-            temp_model = main_models.ListRbacRoleHierarchyResponseBodyModuleNext()
+            temp_model = main_models.QueryRbacUserRolesResponseBodyModuleNext()
             self.next = temp_model.from_map(m.get('Next'))
 
         if m.get('NextPage') is not None:
@@ -261,16 +218,20 @@ class ListRbacRoleHierarchyResponseBodyModule(DaraModel):
 
         return self
 
-class ListRbacRoleHierarchyResponseBodyModuleNext(DaraModel):
+class QueryRbacUserRolesResponseBodyModuleNext(DaraModel):
     def __init__(
         self,
-        child_role_id: str = None,
-        parent_role_id: str = None,
+        created_at: str = None,
+        id: str = None,
+        org_id: str = None,
+        role_id: str = None,
+        user_id: str = None,
     ):
-        # The child role ID.
-        self.child_role_id = child_role_id
-        # The parent role ID.
-        self.parent_role_id = parent_role_id
+        self.created_at = created_at
+        self.id = id
+        self.org_id = org_id
+        self.role_id = role_id
+        self.user_id = user_id
 
     def validate(self):
         pass
@@ -280,34 +241,56 @@ class ListRbacRoleHierarchyResponseBodyModuleNext(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.child_role_id is not None:
-            result['ChildRoleId'] = self.child_role_id
+        if self.created_at is not None:
+            result['CreatedAt'] = self.created_at
 
-        if self.parent_role_id is not None:
-            result['ParentRoleId'] = self.parent_role_id
+        if self.id is not None:
+            result['Id'] = self.id
+
+        if self.org_id is not None:
+            result['OrgId'] = self.org_id
+
+        if self.role_id is not None:
+            result['RoleId'] = self.role_id
+
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ChildRoleId') is not None:
-            self.child_role_id = m.get('ChildRoleId')
+        if m.get('CreatedAt') is not None:
+            self.created_at = m.get('CreatedAt')
 
-        if m.get('ParentRoleId') is not None:
-            self.parent_role_id = m.get('ParentRoleId')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+
+        if m.get('OrgId') is not None:
+            self.org_id = m.get('OrgId')
+
+        if m.get('RoleId') is not None:
+            self.role_id = m.get('RoleId')
+
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
 
         return self
 
-class ListRbacRoleHierarchyResponseBodyModuleData(DaraModel):
+class QueryRbacUserRolesResponseBodyModuleData(DaraModel):
     def __init__(
         self,
-        child_role_id: str = None,
-        parent_role_id: str = None,
+        created_at: str = None,
+        id: str = None,
+        org_id: str = None,
+        role_id: str = None,
+        user_id: str = None,
     ):
-        # The child role ID.
-        self.child_role_id = child_role_id
-        # The parent role ID.
-        self.parent_role_id = parent_role_id
+        self.created_at = created_at
+        self.id = id
+        self.org_id = org_id
+        self.role_id = role_id
+        self.user_id = user_id
 
     def validate(self):
         pass
@@ -317,21 +300,39 @@ class ListRbacRoleHierarchyResponseBodyModuleData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.child_role_id is not None:
-            result['ChildRoleId'] = self.child_role_id
+        if self.created_at is not None:
+            result['CreatedAt'] = self.created_at
 
-        if self.parent_role_id is not None:
-            result['ParentRoleId'] = self.parent_role_id
+        if self.id is not None:
+            result['Id'] = self.id
+
+        if self.org_id is not None:
+            result['OrgId'] = self.org_id
+
+        if self.role_id is not None:
+            result['RoleId'] = self.role_id
+
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ChildRoleId') is not None:
-            self.child_role_id = m.get('ChildRoleId')
+        if m.get('CreatedAt') is not None:
+            self.created_at = m.get('CreatedAt')
 
-        if m.get('ParentRoleId') is not None:
-            self.parent_role_id = m.get('ParentRoleId')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+
+        if m.get('OrgId') is not None:
+            self.org_id = m.get('OrgId')
+
+        if m.get('RoleId') is not None:
+            self.role_id = m.get('RoleId')
+
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
 
         return self
 

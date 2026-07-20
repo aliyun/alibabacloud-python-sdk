@@ -1,3 +1,16 @@
+2026-07-20 Version: 2.34.0
+- Support API AssignRbacUserRole.
+- Support API CreateRbacOrgUnit.
+- Support API CreateRbacPermission.
+- Support API DeleteRbacOrgUnit.
+- Support API DeleteRbacPermission.
+- Support API QueryRbacRole.
+- Support API QueryRbacRolePermissions.
+- Support API QueryRbacUserRoles.
+- Support API RevokeRbacUserRole.
+- Support API UpdateRbacOrgUnit.
+
+
 2026-07-19 Version: 2.33.0
 - Support API CreateRbacRole.
 - Support API DeleteRbacRole.

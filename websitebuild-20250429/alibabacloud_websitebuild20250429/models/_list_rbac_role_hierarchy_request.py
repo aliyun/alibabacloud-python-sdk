@@ -15,12 +15,21 @@ class ListRbacRoleHierarchyRequest(DaraModel):
         page_num: int = None,
         page_size: int = None,
     ):
+        # The business ID.
         self.biz_id = biz_id
+        # The number of entries per query.
+        # 
+        # Valid values: 10 to 100. Default value: 20.
         self.max_results = max_results
+        # The token for the next query. This parameter is empty if no more results exist.
         self.next_token = next_token
+        # The field used for sorting.
         self.order_column = order_column
+        # The sort type. Valid values: ASC and DESC.
         self.order_type = order_type
+        # The page number. Default value: 1.
         self.page_num = page_num
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
 
     def validate(self):

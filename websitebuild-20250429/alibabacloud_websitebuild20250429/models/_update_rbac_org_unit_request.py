@@ -4,19 +4,16 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class UpdateRbacRoleRequest(DaraModel):
+class UpdateRbacOrgUnitRequest(DaraModel):
     def __init__(
         self,
         biz_id: str = None,
-        role_data: str = None,
-        role_id: str = None,
+        org_unit_data: str = None,
+        org_unit_id: str = None,
     ):
-        # The application instance ID.
         self.biz_id = biz_id
-        # The role data.
-        self.role_data = role_data
-        # The role ID.
-        self.role_id = role_id
+        self.org_unit_data = org_unit_data
+        self.org_unit_id = org_unit_id
 
     def validate(self):
         pass
@@ -29,11 +26,11 @@ class UpdateRbacRoleRequest(DaraModel):
         if self.biz_id is not None:
             result['BizId'] = self.biz_id
 
-        if self.role_data is not None:
-            result['RoleData'] = self.role_data
+        if self.org_unit_data is not None:
+            result['OrgUnitData'] = self.org_unit_data
 
-        if self.role_id is not None:
-            result['RoleId'] = self.role_id
+        if self.org_unit_id is not None:
+            result['OrgUnitId'] = self.org_unit_id
 
         return result
 
@@ -42,11 +39,11 @@ class UpdateRbacRoleRequest(DaraModel):
         if m.get('BizId') is not None:
             self.biz_id = m.get('BizId')
 
-        if m.get('RoleData') is not None:
-            self.role_data = m.get('RoleData')
+        if m.get('OrgUnitData') is not None:
+            self.org_unit_data = m.get('OrgUnitData')
 
-        if m.get('RoleId') is not None:
-            self.role_id = m.get('RoleId')
+        if m.get('OrgUnitId') is not None:
+            self.org_unit_id = m.get('OrgUnitId')
 
         return self
 

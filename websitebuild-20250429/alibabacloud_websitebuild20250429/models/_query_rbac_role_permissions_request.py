@@ -4,36 +4,22 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class ListRbacOrgTreeRequest(DaraModel):
+class QueryRbacRolePermissionsRequest(DaraModel):
     def __init__(
         self,
         biz_id: str = None,
-        max_results: int = None,
-        next_token: str = None,
         order_column: str = None,
         order_type: str = None,
         page_num: int = None,
         page_size: int = None,
+        role_id: str = None,
     ):
-        # The business ID.
         self.biz_id = biz_id
-        # The maximum number of entries per query.
-        # 
-        # Valid values: 10 to 100. Default value: 20.
-        self.max_results = max_results
-        # The token for the next query. This parameter is empty if no more results exist.
-        self.next_token = next_token
-        # The field by which to sort the results.
         self.order_column = order_column
-        # The sort order. Valid values:
-        # 
-        # - ASC: ascending order.
-        # - DESC: descending order.
         self.order_type = order_type
-        # The page number. Default value: 1.
         self.page_num = page_num
-        # The number of entries per page. Default value: 10.
         self.page_size = page_size
+        self.role_id = role_id
 
     def validate(self):
         pass
@@ -45,12 +31,6 @@ class ListRbacOrgTreeRequest(DaraModel):
             result = _map
         if self.biz_id is not None:
             result['BizId'] = self.biz_id
-
-        if self.max_results is not None:
-            result['MaxResults'] = self.max_results
-
-        if self.next_token is not None:
-            result['NextToken'] = self.next_token
 
         if self.order_column is not None:
             result['OrderColumn'] = self.order_column
@@ -64,18 +44,15 @@ class ListRbacOrgTreeRequest(DaraModel):
         if self.page_size is not None:
             result['PageSize'] = self.page_size
 
+        if self.role_id is not None:
+            result['RoleId'] = self.role_id
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('BizId') is not None:
             self.biz_id = m.get('BizId')
-
-        if m.get('MaxResults') is not None:
-            self.max_results = m.get('MaxResults')
-
-        if m.get('NextToken') is not None:
-            self.next_token = m.get('NextToken')
 
         if m.get('OrderColumn') is not None:
             self.order_column = m.get('OrderColumn')
@@ -88,6 +65,9 @@ class ListRbacOrgTreeRequest(DaraModel):
 
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+
+        if m.get('RoleId') is not None:
+            self.role_id = m.get('RoleId')
 
         return self
 

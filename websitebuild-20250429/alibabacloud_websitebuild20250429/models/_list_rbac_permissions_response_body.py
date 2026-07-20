@@ -24,18 +24,33 @@ class ListRbacPermissionsResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
+        # The detailed reason why access was denied.
         self.access_denied_detail = access_denied_detail
+        # Indicates whether retry is allowed.
         self.allow_retry = allow_retry
+        # The application name.
         self.app_name = app_name
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
+        # The dynamic message.
         self.dynamic_message = dynamic_message
+        # The error parameters returned.
         self.error_args = error_args
+        # The number of entries per query.
+        # 
+        # Valid values: 10 to 100. Default value: 20.
         self.max_results = max_results
+        # The response object.
         self.module = module
+        # The token for the next query. This parameter is empty if no more results exist.
         self.next_token = next_token
+        # Id of the request
         self.request_id = request_id
+        # The error code.
         self.root_error_code = root_error_code
+        # The exception message.
         self.root_error_msg = root_error_msg
+        # The reserved parameter.
         self.synchro = synchro
 
     def validate(self):
@@ -145,14 +160,23 @@ class ListRbacPermissionsResponseBodyModule(DaraModel):
         total_item_num: int = None,
         total_page_num: int = None,
     ):
+        # The current page number.
         self.current_page_num = current_page_num
+        # The query results.
         self.data = data
+        # The next feature ID.
         self.next = next
+        # Indicates whether a next page exists.
         self.next_page = next_page
+        # The page size.
         self.page_size = page_size
+        # Indicates whether a previous page exists.
         self.pre_page = pre_page
+        # Apart from pagination limits, the server processes up to 1000 recent records for the current query. If the results exceed 1000 entries, **ResultLimit** is **true**. Narrow the time range and search again. Otherwise, **ResultLimit** is **false**.
         self.result_limit = result_limit
+        # The total number of entries.
         self.total_item_num = total_item_num
+        # The total number of pages.
         self.total_page_num = total_page_num
 
     def validate(self):
@@ -242,9 +266,17 @@ class ListRbacPermissionsResponseBodyModuleNext(DaraModel):
         id: str = None,
         resource: str = None,
     ):
+        # The operation that you want to perform. Set the value to **GetRemind**.
         self.action = action
+        # The scenario description.
         self.description = description
+        # The scenario ID.
         self.id = id
+        # The resource metadata declaration.
+        # 
+        # **Note**: The metadata is constrained by [ResourceSchema](https://www.alibabacloud.com/help/en/dataworks/developer-reference/resourceschema-template-instructions).resources. A valid resource declaration must include the full-path metadata declaration from level 0 to the validLeaf level.
+        # 
+        # Appendix: [ResourceSchema documentation on the international site](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
         self.resource = resource
 
     def validate(self):
@@ -293,9 +325,13 @@ class ListRbacPermissionsResponseBodyModuleData(DaraModel):
         id: str = None,
         resource: str = None,
     ):
+        # The operation that you want to perform. Set the value to **GetDISyncInstanceInfo**.
         self.action = action
+        # The scenario description.
         self.description = description
+        # The scenario ID.
         self.id = id
+        # The allocated log storage space. Unit: GB.
         self.resource = resource
 
     def validate(self):

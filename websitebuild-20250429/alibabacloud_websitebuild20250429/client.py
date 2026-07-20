@@ -139,6 +139,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.allocate_supabase_for_admin_with_options_async(request, runtime)
 
+    def assign_rbac_user_role_with_options(
+        self,
+        request: main_models.AssignRbacUserRoleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AssignRbacUserRoleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.user_role_data):
+            query['UserRoleData'] = request.user_role_data
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AssignRbacUserRole',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AssignRbacUserRoleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def assign_rbac_user_role_with_options_async(
+        self,
+        request: main_models.AssignRbacUserRoleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AssignRbacUserRoleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.user_role_data):
+            query['UserRoleData'] = request.user_role_data
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AssignRbacUserRole',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AssignRbacUserRoleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def assign_rbac_user_role(
+        self,
+        request: main_models.AssignRbacUserRoleRequest,
+    ) -> main_models.AssignRbacUserRoleResponse:
+        runtime = RuntimeOptions()
+        return self.assign_rbac_user_role_with_options(request, runtime)
+
+    async def assign_rbac_user_role_async(
+        self,
+        request: main_models.AssignRbacUserRoleRequest,
+    ) -> main_models.AssignRbacUserRoleResponse:
+        runtime = RuntimeOptions()
+        return await self.assign_rbac_user_role_with_options_async(request, runtime)
+
     def authorize_app_proxy_ops_with_options(
         self,
         request: main_models.AuthorizeAppProxyOpsRequest,
@@ -2071,6 +2145,154 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_material_directory_with_options_async(request, runtime)
 
+    def create_rbac_org_unit_with_options(
+        self,
+        request: main_models.CreateRbacOrgUnitRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateRbacOrgUnitResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.org_unit_data):
+            query['OrgUnitData'] = request.org_unit_data
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateRbacOrgUnit',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateRbacOrgUnitResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_rbac_org_unit_with_options_async(
+        self,
+        request: main_models.CreateRbacOrgUnitRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateRbacOrgUnitResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.org_unit_data):
+            query['OrgUnitData'] = request.org_unit_data
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateRbacOrgUnit',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateRbacOrgUnitResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_rbac_org_unit(
+        self,
+        request: main_models.CreateRbacOrgUnitRequest,
+    ) -> main_models.CreateRbacOrgUnitResponse:
+        runtime = RuntimeOptions()
+        return self.create_rbac_org_unit_with_options(request, runtime)
+
+    async def create_rbac_org_unit_async(
+        self,
+        request: main_models.CreateRbacOrgUnitRequest,
+    ) -> main_models.CreateRbacOrgUnitResponse:
+        runtime = RuntimeOptions()
+        return await self.create_rbac_org_unit_with_options_async(request, runtime)
+
+    def create_rbac_permission_with_options(
+        self,
+        request: main_models.CreateRbacPermissionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateRbacPermissionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.permission_data):
+            query['PermissionData'] = request.permission_data
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateRbacPermission',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateRbacPermissionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_rbac_permission_with_options_async(
+        self,
+        request: main_models.CreateRbacPermissionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateRbacPermissionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.permission_data):
+            query['PermissionData'] = request.permission_data
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateRbacPermission',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateRbacPermissionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_rbac_permission(
+        self,
+        request: main_models.CreateRbacPermissionRequest,
+    ) -> main_models.CreateRbacPermissionResponse:
+        runtime = RuntimeOptions()
+        return self.create_rbac_permission_with_options(request, runtime)
+
+    async def create_rbac_permission_async(
+        self,
+        request: main_models.CreateRbacPermissionRequest,
+    ) -> main_models.CreateRbacPermissionResponse:
+        runtime = RuntimeOptions()
+        return await self.create_rbac_permission_with_options_async(request, runtime)
+
     def create_rbac_role_with_options(
         self,
         request: main_models.CreateRbacRoleRequest,
@@ -2740,6 +2962,154 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteMaterialTaskResponse:
         runtime = RuntimeOptions()
         return await self.delete_material_task_with_options_async(request, runtime)
+
+    def delete_rbac_org_unit_with_options(
+        self,
+        request: main_models.DeleteRbacOrgUnitRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteRbacOrgUnitResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.org_unit_id):
+            query['OrgUnitId'] = request.org_unit_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteRbacOrgUnit',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteRbacOrgUnitResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_rbac_org_unit_with_options_async(
+        self,
+        request: main_models.DeleteRbacOrgUnitRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteRbacOrgUnitResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.org_unit_id):
+            query['OrgUnitId'] = request.org_unit_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteRbacOrgUnit',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteRbacOrgUnitResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_rbac_org_unit(
+        self,
+        request: main_models.DeleteRbacOrgUnitRequest,
+    ) -> main_models.DeleteRbacOrgUnitResponse:
+        runtime = RuntimeOptions()
+        return self.delete_rbac_org_unit_with_options(request, runtime)
+
+    async def delete_rbac_org_unit_async(
+        self,
+        request: main_models.DeleteRbacOrgUnitRequest,
+    ) -> main_models.DeleteRbacOrgUnitResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_rbac_org_unit_with_options_async(request, runtime)
+
+    def delete_rbac_permission_with_options(
+        self,
+        request: main_models.DeleteRbacPermissionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteRbacPermissionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.permission_id):
+            query['PermissionId'] = request.permission_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteRbacPermission',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteRbacPermissionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_rbac_permission_with_options_async(
+        self,
+        request: main_models.DeleteRbacPermissionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteRbacPermissionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.permission_id):
+            query['PermissionId'] = request.permission_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteRbacPermission',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteRbacPermissionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_rbac_permission(
+        self,
+        request: main_models.DeleteRbacPermissionRequest,
+    ) -> main_models.DeleteRbacPermissionResponse:
+        runtime = RuntimeOptions()
+        return self.delete_rbac_permission_with_options(request, runtime)
+
+    async def delete_rbac_permission_async(
+        self,
+        request: main_models.DeleteRbacPermissionRequest,
+    ) -> main_models.DeleteRbacPermissionResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_rbac_permission_with_options_async(request, runtime)
 
     def delete_rbac_role_with_options(
         self,
@@ -10167,6 +10537,260 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.query_material_task_list_with_options_async(request, runtime)
 
+    def query_rbac_role_with_options(
+        self,
+        request: main_models.QueryRbacRoleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryRbacRoleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.role_id):
+            query['RoleId'] = request.role_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryRbacRole',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryRbacRoleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_rbac_role_with_options_async(
+        self,
+        request: main_models.QueryRbacRoleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryRbacRoleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.role_id):
+            query['RoleId'] = request.role_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryRbacRole',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryRbacRoleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_rbac_role(
+        self,
+        request: main_models.QueryRbacRoleRequest,
+    ) -> main_models.QueryRbacRoleResponse:
+        runtime = RuntimeOptions()
+        return self.query_rbac_role_with_options(request, runtime)
+
+    async def query_rbac_role_async(
+        self,
+        request: main_models.QueryRbacRoleRequest,
+    ) -> main_models.QueryRbacRoleResponse:
+        runtime = RuntimeOptions()
+        return await self.query_rbac_role_with_options_async(request, runtime)
+
+    def query_rbac_role_permissions_with_options(
+        self,
+        request: main_models.QueryRbacRolePermissionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryRbacRolePermissionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.order_column):
+            query['OrderColumn'] = request.order_column
+        if not DaraCore.is_null(request.order_type):
+            query['OrderType'] = request.order_type
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.role_id):
+            query['RoleId'] = request.role_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryRbacRolePermissions',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryRbacRolePermissionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_rbac_role_permissions_with_options_async(
+        self,
+        request: main_models.QueryRbacRolePermissionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryRbacRolePermissionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.order_column):
+            query['OrderColumn'] = request.order_column
+        if not DaraCore.is_null(request.order_type):
+            query['OrderType'] = request.order_type
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.role_id):
+            query['RoleId'] = request.role_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryRbacRolePermissions',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryRbacRolePermissionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_rbac_role_permissions(
+        self,
+        request: main_models.QueryRbacRolePermissionsRequest,
+    ) -> main_models.QueryRbacRolePermissionsResponse:
+        runtime = RuntimeOptions()
+        return self.query_rbac_role_permissions_with_options(request, runtime)
+
+    async def query_rbac_role_permissions_async(
+        self,
+        request: main_models.QueryRbacRolePermissionsRequest,
+    ) -> main_models.QueryRbacRolePermissionsResponse:
+        runtime = RuntimeOptions()
+        return await self.query_rbac_role_permissions_with_options_async(request, runtime)
+
+    def query_rbac_user_roles_with_options(
+        self,
+        request: main_models.QueryRbacUserRolesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryRbacUserRolesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_user_id):
+            query['ApplicationUserId'] = request.application_user_id
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.order_column):
+            query['OrderColumn'] = request.order_column
+        if not DaraCore.is_null(request.order_type):
+            query['OrderType'] = request.order_type
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryRbacUserRoles',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryRbacUserRolesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_rbac_user_roles_with_options_async(
+        self,
+        request: main_models.QueryRbacUserRolesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryRbacUserRolesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_user_id):
+            query['ApplicationUserId'] = request.application_user_id
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.order_column):
+            query['OrderColumn'] = request.order_column
+        if not DaraCore.is_null(request.order_type):
+            query['OrderType'] = request.order_type
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryRbacUserRoles',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryRbacUserRolesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_rbac_user_roles(
+        self,
+        request: main_models.QueryRbacUserRolesRequest,
+    ) -> main_models.QueryRbacUserRolesResponse:
+        runtime = RuntimeOptions()
+        return self.query_rbac_user_roles_with_options(request, runtime)
+
+    async def query_rbac_user_roles_async(
+        self,
+        request: main_models.QueryRbacUserRolesRequest,
+    ) -> main_models.QueryRbacUserRolesResponse:
+        runtime = RuntimeOptions()
+        return await self.query_rbac_user_roles_with_options_async(request, runtime)
+
     def query_supabase_auth_configs_for_admin_with_options(
         self,
         request: main_models.QuerySupabaseAuthConfigsForAdminRequest,
@@ -11010,6 +11634,80 @@ class Client(OpenApiClient):
     ) -> main_models.RenewAppSandboxResponse:
         runtime = RuntimeOptions()
         return await self.renew_app_sandbox_with_options_async(request, runtime)
+
+    def revoke_rbac_user_role_with_options(
+        self,
+        request: main_models.RevokeRbacUserRoleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RevokeRbacUserRoleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.user_role_data):
+            query['UserRoleData'] = request.user_role_data
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RevokeRbacUserRole',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RevokeRbacUserRoleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def revoke_rbac_user_role_with_options_async(
+        self,
+        request: main_models.RevokeRbacUserRoleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RevokeRbacUserRoleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.user_role_data):
+            query['UserRoleData'] = request.user_role_data
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RevokeRbacUserRole',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RevokeRbacUserRoleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def revoke_rbac_user_role(
+        self,
+        request: main_models.RevokeRbacUserRoleRequest,
+    ) -> main_models.RevokeRbacUserRoleResponse:
+        runtime = RuntimeOptions()
+        return self.revoke_rbac_user_role_with_options(request, runtime)
+
+    async def revoke_rbac_user_role_async(
+        self,
+        request: main_models.RevokeRbacUserRoleRequest,
+    ) -> main_models.RevokeRbacUserRoleResponse:
+        runtime = RuntimeOptions()
+        return await self.revoke_rbac_user_role_with_options_async(request, runtime)
 
     def rollback_app_code_snapshot_with_options(
         self,
@@ -12714,6 +13412,84 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateMiniAppBindingResponse:
         runtime = RuntimeOptions()
         return await self.update_mini_app_binding_with_options_async(request, runtime)
+
+    def update_rbac_org_unit_with_options(
+        self,
+        request: main_models.UpdateRbacOrgUnitRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateRbacOrgUnitResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.org_unit_data):
+            query['OrgUnitData'] = request.org_unit_data
+        if not DaraCore.is_null(request.org_unit_id):
+            query['OrgUnitId'] = request.org_unit_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateRbacOrgUnit',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateRbacOrgUnitResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_rbac_org_unit_with_options_async(
+        self,
+        request: main_models.UpdateRbacOrgUnitRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateRbacOrgUnitResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.org_unit_data):
+            query['OrgUnitData'] = request.org_unit_data
+        if not DaraCore.is_null(request.org_unit_id):
+            query['OrgUnitId'] = request.org_unit_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateRbacOrgUnit',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateRbacOrgUnitResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_rbac_org_unit(
+        self,
+        request: main_models.UpdateRbacOrgUnitRequest,
+    ) -> main_models.UpdateRbacOrgUnitResponse:
+        runtime = RuntimeOptions()
+        return self.update_rbac_org_unit_with_options(request, runtime)
+
+    async def update_rbac_org_unit_async(
+        self,
+        request: main_models.UpdateRbacOrgUnitRequest,
+    ) -> main_models.UpdateRbacOrgUnitResponse:
+        runtime = RuntimeOptions()
+        return await self.update_rbac_org_unit_with_options_async(request, runtime)
 
     def update_rbac_role_with_options(
         self,

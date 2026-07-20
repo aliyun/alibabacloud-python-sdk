@@ -4,19 +4,14 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class UpdateRbacRoleRequest(DaraModel):
+class DeleteRbacPermissionRequest(DaraModel):
     def __init__(
         self,
         biz_id: str = None,
-        role_data: str = None,
-        role_id: str = None,
+        permission_id: str = None,
     ):
-        # The application instance ID.
         self.biz_id = biz_id
-        # The role data.
-        self.role_data = role_data
-        # The role ID.
-        self.role_id = role_id
+        self.permission_id = permission_id
 
     def validate(self):
         pass
@@ -29,11 +24,8 @@ class UpdateRbacRoleRequest(DaraModel):
         if self.biz_id is not None:
             result['BizId'] = self.biz_id
 
-        if self.role_data is not None:
-            result['RoleData'] = self.role_data
-
-        if self.role_id is not None:
-            result['RoleId'] = self.role_id
+        if self.permission_id is not None:
+            result['PermissionId'] = self.permission_id
 
         return result
 
@@ -42,11 +34,8 @@ class UpdateRbacRoleRequest(DaraModel):
         if m.get('BizId') is not None:
             self.biz_id = m.get('BizId')
 
-        if m.get('RoleData') is not None:
-            self.role_data = m.get('RoleData')
-
-        if m.get('RoleId') is not None:
-            self.role_id = m.get('RoleId')
+        if m.get('PermissionId') is not None:
+            self.permission_id = m.get('PermissionId')
 
         return self
 

@@ -11,8 +11,11 @@ class RemoveRbacRoleHierarchyRequest(DaraModel):
         child_role_id: str = None,
         parent_role_id: str = None,
     ):
+        # The business ID.
         self.biz_id = biz_id
+        # The child role ID.
         self.child_role_id = child_role_id
+        # The parent role ID.
         self.parent_role_id = parent_role_id
 
     def validate(self):

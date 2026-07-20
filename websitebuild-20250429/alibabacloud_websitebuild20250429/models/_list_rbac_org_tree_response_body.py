@@ -24,18 +24,34 @@ class ListRbacOrgTreeResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
+        # Indicates whether a retry is allowed.
         self.allow_retry = allow_retry
+        # The application name. The application with this name is queried.
         self.app_name = app_name
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
+        # The dynamic error message, which is used to replace the `%s` variable in the **ErrMessage** parameter.
+        # > For example, if **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the **DtsJobId** request parameter is invalid.
         self.dynamic_message = dynamic_message
+        # The error parameters.
         self.error_args = error_args
+        # The maximum number of entries per query.
+        # 
+        # Valid values: 10 to 100. Default value: 20.
         self.max_results = max_results
+        # The task object.
         self.module = module
+        # The token for the next query. This parameter is empty if no more results exist.
         self.next_token = next_token
+        # Id of the request
         self.request_id = request_id
+        # The error code.
         self.root_error_code = root_error_code
+        # The exception message.
         self.root_error_msg = root_error_msg
+        # A reserved parameter.
         self.synchro = synchro
 
     def validate(self):
@@ -145,14 +161,23 @@ class ListRbacOrgTreeResponseBodyModule(DaraModel):
         total_item_num: int = None,
         total_page_num: int = None,
     ):
+        # The current page number.
         self.current_page_num = current_page_num
+        # The request results.
         self.data = data
+        # The next feature ID.
         self.next = next
+        # Indicates whether a next page exists.
         self.next_page = next_page
+        # The page size.
         self.page_size = page_size
+        # Indicates whether a previous page exists.
         self.pre_page = pre_page
+        # Indicates whether the server processes a maximum of 1,000 most recent records beyond the pagination limit. If the results exceed 1,000 entries, **ResultLimit** is **true**, and you must narrow the time range and search again. Otherwise, **ResultLimit** is **false**.
         self.result_limit = result_limit
+        # The total number of entries.
         self.total_item_num = total_item_num
+        # The total number of pages.
         self.total_page_num = total_page_num
 
     def validate(self):
@@ -243,10 +268,15 @@ class ListRbacOrgTreeResponseBodyModuleNext(DaraModel):
         name: str = None,
         path: str = None,
     ):
+        # The creation date.
         self.created_at = created_at
+        # The category level. The root category is 1.
         self.depth = depth
+        # The primary key.
         self.id = id
+        # The scenario name.
         self.name = name
+        # The request path of the API.
         self.path = path
 
     def validate(self):
@@ -302,10 +332,15 @@ class ListRbacOrgTreeResponseBodyModuleData(DaraModel):
         name: str = None,
         path: str = None,
     ):
+        # The creation time.
         self.created_at = created_at
+        # The directory level.
         self.depth = depth
+        # The primary key.
         self.id = id
+        # The file name.
         self.name = name
+        # The script path.
         self.path = path
 
     def validate(self):

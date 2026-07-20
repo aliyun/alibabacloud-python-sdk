@@ -31,6 +31,9 @@ from ._module_next_components_value_properties_value import ModuleNextComponents
 from ._allocate_supabase_for_admin_request import AllocateSupabaseForAdminRequest
 from ._allocate_supabase_for_admin_response_body import AllocateSupabaseForAdminResponseBody
 from ._allocate_supabase_for_admin_response import AllocateSupabaseForAdminResponse
+from ._assign_rbac_user_role_request import AssignRbacUserRoleRequest
+from ._assign_rbac_user_role_response_body import AssignRbacUserRoleResponseBody
+from ._assign_rbac_user_role_response import AssignRbacUserRoleResponse
 from ._authorize_app_proxy_ops_request import AuthorizeAppProxyOpsRequest
 from ._authorize_app_proxy_ops_response_body import AuthorizeAppProxyOpsResponseBody
 from ._authorize_app_proxy_ops_response import AuthorizeAppProxyOpsResponse
@@ -94,6 +97,12 @@ from ._create_logo_task_response import CreateLogoTaskResponse
 from ._create_material_directory_request import CreateMaterialDirectoryRequest
 from ._create_material_directory_response_body import CreateMaterialDirectoryResponseBody
 from ._create_material_directory_response import CreateMaterialDirectoryResponse
+from ._create_rbac_org_unit_request import CreateRbacOrgUnitRequest
+from ._create_rbac_org_unit_response_body import CreateRbacOrgUnitResponseBody
+from ._create_rbac_org_unit_response import CreateRbacOrgUnitResponse
+from ._create_rbac_permission_request import CreateRbacPermissionRequest
+from ._create_rbac_permission_response_body import CreateRbacPermissionResponseBody
+from ._create_rbac_permission_response import CreateRbacPermissionResponse
 from ._create_rbac_role_request import CreateRbacRoleRequest
 from ._create_rbac_role_response_body import CreateRbacRoleResponseBody
 from ._create_rbac_role_response import CreateRbacRoleResponse
@@ -122,6 +131,12 @@ from ._delete_material_task_request import DeleteMaterialTaskRequest
 from ._delete_material_task_shrink_request import DeleteMaterialTaskShrinkRequest
 from ._delete_material_task_response_body import DeleteMaterialTaskResponseBody
 from ._delete_material_task_response import DeleteMaterialTaskResponse
+from ._delete_rbac_org_unit_request import DeleteRbacOrgUnitRequest
+from ._delete_rbac_org_unit_response_body import DeleteRbacOrgUnitResponseBody
+from ._delete_rbac_org_unit_response import DeleteRbacOrgUnitResponse
+from ._delete_rbac_permission_request import DeleteRbacPermissionRequest
+from ._delete_rbac_permission_response_body import DeleteRbacPermissionResponseBody
+from ._delete_rbac_permission_response import DeleteRbacPermissionResponse
 from ._delete_rbac_role_request import DeleteRbacRoleRequest
 from ._delete_rbac_role_response_body import DeleteRbacRoleResponseBody
 from ._delete_rbac_role_response import DeleteRbacRoleResponse
@@ -400,6 +415,15 @@ from ._query_material_task_list_request import QueryMaterialTaskListRequest
 from ._query_material_task_list_shrink_request import QueryMaterialTaskListShrinkRequest
 from ._query_material_task_list_response_body import QueryMaterialTaskListResponseBody
 from ._query_material_task_list_response import QueryMaterialTaskListResponse
+from ._query_rbac_role_request import QueryRbacRoleRequest
+from ._query_rbac_role_response_body import QueryRbacRoleResponseBody
+from ._query_rbac_role_response import QueryRbacRoleResponse
+from ._query_rbac_role_permissions_request import QueryRbacRolePermissionsRequest
+from ._query_rbac_role_permissions_response_body import QueryRbacRolePermissionsResponseBody
+from ._query_rbac_role_permissions_response import QueryRbacRolePermissionsResponse
+from ._query_rbac_user_roles_request import QueryRbacUserRolesRequest
+from ._query_rbac_user_roles_response_body import QueryRbacUserRolesResponseBody
+from ._query_rbac_user_roles_response import QueryRbacUserRolesResponse
 from ._query_supabase_auth_configs_for_admin_request import QuerySupabaseAuthConfigsForAdminRequest
 from ._query_supabase_auth_configs_for_admin_response_body import QuerySupabaseAuthConfigsForAdminResponseBody
 from ._query_supabase_auth_configs_for_admin_response import QuerySupabaseAuthConfigsForAdminResponse
@@ -426,6 +450,9 @@ from ._renew_app_instance_response import RenewAppInstanceResponse
 from ._renew_app_sandbox_request import RenewAppSandboxRequest
 from ._renew_app_sandbox_response_body import RenewAppSandboxResponseBody
 from ._renew_app_sandbox_response import RenewAppSandboxResponse
+from ._revoke_rbac_user_role_request import RevokeRbacUserRoleRequest
+from ._revoke_rbac_user_role_response_body import RevokeRbacUserRoleResponseBody
+from ._revoke_rbac_user_role_response import RevokeRbacUserRoleResponse
 from ._rollback_app_code_snapshot_request import RollbackAppCodeSnapshotRequest
 from ._rollback_app_code_snapshot_response_body import RollbackAppCodeSnapshotResponseBody
 from ._rollback_app_code_snapshot_response import RollbackAppCodeSnapshotResponse
@@ -489,6 +516,9 @@ from ._update_app_supabase_secret_response import UpdateAppSupabaseSecretRespons
 from ._update_mini_app_binding_request import UpdateMiniAppBindingRequest
 from ._update_mini_app_binding_response_body import UpdateMiniAppBindingResponseBody
 from ._update_mini_app_binding_response import UpdateMiniAppBindingResponse
+from ._update_rbac_org_unit_request import UpdateRbacOrgUnitRequest
+from ._update_rbac_org_unit_response_body import UpdateRbacOrgUnitResponseBody
+from ._update_rbac_org_unit_response import UpdateRbacOrgUnitResponse
 from ._update_rbac_role_request import UpdateRbacRoleRequest
 from ._update_rbac_role_response_body import UpdateRbacRoleResponseBody
 from ._update_rbac_role_response import UpdateRbacRoleResponse
@@ -675,6 +705,13 @@ from ._query_material_directory_tree_response_body import QueryMaterialDirectory
 from ._query_material_file_list_response_body import QueryMaterialFileListResponseBodyModule
 from ._query_material_file_summary_info_response_body import QueryMaterialFileSummaryInfoResponseBodyModule
 from ._query_material_task_list_response_body import QueryMaterialTaskListResponseBodyModule
+from ._query_rbac_role_response_body import QueryRbacRoleResponseBodyModule
+from ._query_rbac_role_permissions_response_body import QueryRbacRolePermissionsResponseBodyModuleData
+from ._query_rbac_role_permissions_response_body import QueryRbacRolePermissionsResponseBodyModuleNext
+from ._query_rbac_role_permissions_response_body import QueryRbacRolePermissionsResponseBodyModule
+from ._query_rbac_user_roles_response_body import QueryRbacUserRolesResponseBodyModuleData
+from ._query_rbac_user_roles_response_body import QueryRbacUserRolesResponseBodyModuleNext
+from ._query_rbac_user_roles_response_body import QueryRbacUserRolesResponseBodyModule
 from ._query_supabase_auth_configs_for_admin_response_body import QuerySupabaseAuthConfigsForAdminResponseBodyModule
 from ._query_supabase_configs_for_admin_response_body import QuerySupabaseConfigsForAdminResponseBodyModule
 from ._query_supabase_instance_info_for_admin_response_body import QuerySupabaseInstanceInfoForAdminResponseBodyModule
@@ -729,6 +766,9 @@ __all__ = [
     AllocateSupabaseForAdminRequest,
     AllocateSupabaseForAdminResponseBody,
     AllocateSupabaseForAdminResponse,
+    AssignRbacUserRoleRequest,
+    AssignRbacUserRoleResponseBody,
+    AssignRbacUserRoleResponse,
     AuthorizeAppProxyOpsRequest,
     AuthorizeAppProxyOpsResponseBody,
     AuthorizeAppProxyOpsResponse,
@@ -792,6 +832,12 @@ __all__ = [
     CreateMaterialDirectoryRequest,
     CreateMaterialDirectoryResponseBody,
     CreateMaterialDirectoryResponse,
+    CreateRbacOrgUnitRequest,
+    CreateRbacOrgUnitResponseBody,
+    CreateRbacOrgUnitResponse,
+    CreateRbacPermissionRequest,
+    CreateRbacPermissionResponseBody,
+    CreateRbacPermissionResponse,
     CreateRbacRoleRequest,
     CreateRbacRoleResponseBody,
     CreateRbacRoleResponse,
@@ -820,6 +866,12 @@ __all__ = [
     DeleteMaterialTaskShrinkRequest,
     DeleteMaterialTaskResponseBody,
     DeleteMaterialTaskResponse,
+    DeleteRbacOrgUnitRequest,
+    DeleteRbacOrgUnitResponseBody,
+    DeleteRbacOrgUnitResponse,
+    DeleteRbacPermissionRequest,
+    DeleteRbacPermissionResponseBody,
+    DeleteRbacPermissionResponse,
     DeleteRbacRoleRequest,
     DeleteRbacRoleResponseBody,
     DeleteRbacRoleResponse,
@@ -1098,6 +1150,15 @@ __all__ = [
     QueryMaterialTaskListShrinkRequest,
     QueryMaterialTaskListResponseBody,
     QueryMaterialTaskListResponse,
+    QueryRbacRoleRequest,
+    QueryRbacRoleResponseBody,
+    QueryRbacRoleResponse,
+    QueryRbacRolePermissionsRequest,
+    QueryRbacRolePermissionsResponseBody,
+    QueryRbacRolePermissionsResponse,
+    QueryRbacUserRolesRequest,
+    QueryRbacUserRolesResponseBody,
+    QueryRbacUserRolesResponse,
     QuerySupabaseAuthConfigsForAdminRequest,
     QuerySupabaseAuthConfigsForAdminResponseBody,
     QuerySupabaseAuthConfigsForAdminResponse,
@@ -1124,6 +1185,9 @@ __all__ = [
     RenewAppSandboxRequest,
     RenewAppSandboxResponseBody,
     RenewAppSandboxResponse,
+    RevokeRbacUserRoleRequest,
+    RevokeRbacUserRoleResponseBody,
+    RevokeRbacUserRoleResponse,
     RollbackAppCodeSnapshotRequest,
     RollbackAppCodeSnapshotResponseBody,
     RollbackAppCodeSnapshotResponse,
@@ -1187,6 +1251,9 @@ __all__ = [
     UpdateMiniAppBindingRequest,
     UpdateMiniAppBindingResponseBody,
     UpdateMiniAppBindingResponse,
+    UpdateRbacOrgUnitRequest,
+    UpdateRbacOrgUnitResponseBody,
+    UpdateRbacOrgUnitResponse,
     UpdateRbacRoleRequest,
     UpdateRbacRoleResponseBody,
     UpdateRbacRoleResponse,
@@ -1373,6 +1440,13 @@ __all__ = [
     QueryMaterialFileListResponseBodyModule,
     QueryMaterialFileSummaryInfoResponseBodyModule,
     QueryMaterialTaskListResponseBodyModule,
+    QueryRbacRoleResponseBodyModule,
+    QueryRbacRolePermissionsResponseBodyModuleData,
+    QueryRbacRolePermissionsResponseBodyModuleNext,
+    QueryRbacRolePermissionsResponseBodyModule,
+    QueryRbacUserRolesResponseBodyModuleData,
+    QueryRbacUserRolesResponseBodyModuleNext,
+    QueryRbacUserRolesResponseBodyModule,
     QuerySupabaseAuthConfigsForAdminResponseBodyModule,
     QuerySupabaseConfigsForAdminResponseBodyModule,
     QuerySupabaseInstanceInfoForAdminResponseBodyModule,
