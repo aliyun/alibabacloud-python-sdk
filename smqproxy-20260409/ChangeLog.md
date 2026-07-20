@@ -1,3 +1,6 @@
+2026-07-20 Version: 1.0.3
+- Generated python 2026-04-09 for SMQProxy.
+
 2026-07-13 Version: 1.0.2
 - Update API BatchSendMessage: add request parameters body.Messages.$.UserProperties.
 - Update API PublishMessage: add request parameters body.MessageGroupId.

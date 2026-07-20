@@ -18,17 +18,9 @@ from ._batch_send_message_response import BatchSendMessageResponse
 from ._change_message_visibility_request import ChangeMessageVisibilityRequest
 from ._change_message_visibility_response_body import ChangeMessageVisibilityResponseBody
 from ._change_message_visibility_response import ChangeMessageVisibilityResponse
-from ._delete_message_request import DeleteMessageRequest
-from ._delete_message_response import DeleteMessageResponse
-from ._peek_message_request import PeekMessageRequest
-from ._peek_message_response_body import PeekMessageResponseBody
-from ._peek_message_response import PeekMessageResponse
 from ._publish_message_request import PublishMessageRequest
 from ._publish_message_response_body import PublishMessageResponseBody
 from ._publish_message_response import PublishMessageResponse
-from ._receive_message_request import ReceiveMessageRequest
-from ._receive_message_response_body import ReceiveMessageResponseBody
-from ._receive_message_response import ReceiveMessageResponse
 from ._send_message_request import SendMessageRequest
 from ._send_message_response_body import SendMessageResponseBody
 from ._send_message_response import SendMessageResponse
@@ -55,17 +47,9 @@ __all__ = [
     ChangeMessageVisibilityRequest,
     ChangeMessageVisibilityResponseBody,
     ChangeMessageVisibilityResponse,
-    DeleteMessageRequest,
-    DeleteMessageResponse,
-    PeekMessageRequest,
-    PeekMessageResponseBody,
-    PeekMessageResponse,
     PublishMessageRequest,
     PublishMessageResponseBody,
     PublishMessageResponse,
-    ReceiveMessageRequest,
-    ReceiveMessageResponseBody,
-    ReceiveMessageResponse,
     SendMessageRequest,
     SendMessageResponseBody,
     SendMessageResponse,
