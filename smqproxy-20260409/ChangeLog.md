@@ -1,3 +1,6 @@
+2026-07-20 Version: 1.0.4
+- Generated python 2026-04-09 for SMQProxy.
+
 2026-07-20 Version: 1.0.3
 - Generated python 2026-04-09 for SMQProxy.
 
