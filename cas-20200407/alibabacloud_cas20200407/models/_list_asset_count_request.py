@@ -14,11 +14,11 @@ class ListAssetCountRequest(DaraModel):
     ):
         # The page number. Default value: 1.
         self.current_page = current_page
-        # The expiration date of the certificate.
+        # The certificate expiration date, in seconds. The value is a UNIX timestamp.
         self.end_date = end_date
-        # The number of entries to return on each page. Default value: 50.
+        # The number of entries per page.
         self.show_size = show_size
-        # The date of certificate issuance.
+        # The certificate issuance date, in seconds. The value is a UNIX timestamp.
         self.start_date = start_date
 
     def validate(self):

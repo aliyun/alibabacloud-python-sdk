@@ -115,11 +115,11 @@ class ListInstancesResponseBodyInstanceList(DaraModel):
         self.auto_reissue = auto_reissue
         # The CA brand. Valid values: WoSign, CFCA, DigiCert, GeoTrust, GlobalSign, vTrus, and Alibaba.
         self.brand = brand
-        # The global certificate ID in the format of certificate ID + "-" + site region ID. This ID is commonly used across Alibaba Cloud services.
+        # The global certificate ID, in the format of certificate ID + "-" + site region ID. This ID is commonly used across Alibaba Cloud services.
         # - For the China site: certificate ID + "-cn-hangzhou"
         # - For the China site: certificate ID + "-ap-southeast-1"
         # 
-        # For example, if the certificate ID is 123, the CertIdentifier on the China site is "123-cn-hangzhou", and the CertIdentifier on the China site is "123-ap-southeast-1".
+        # For example, if the certificate ID is 123, the CertIdentifier on the China site is "123-cn-hangzhou", and the CertIdentifier on the International site is "123-ap-southeast-1".
         self.cert_identifier = cert_identifier
         # The domain name of the latest issued certificate.
         self.certificate_domain = certificate_domain
@@ -127,16 +127,17 @@ class ListInstancesResponseBodyInstanceList(DaraModel):
         self.certificate_id = certificate_id
         # The certificate name.
         self.certificate_name = certificate_name
-        # The end time of the latest certificate, in UNIX timestamp format. If no certificate has been issued, this value is empty.
+        # The end time of the latest certificate, in timestamp format. If no certificate has been issued, this field is empty.
         self.certificate_not_after = certificate_not_after
+        # The start time of the latest certificate, in timestamp format. If no certificate has been issued, this field is empty.
         self.certificate_not_before = certificate_not_before
-        # The revocation time of the latest certificate, in UNIX timestamp format.
+        # The revocation time of the latest certificate, in timestamp format.
         self.certificate_revoke_time = certificate_revoke_time
         # The status of the certificate. Valid values:
-        # - **issued**: issued.
-        # - **revoked**: revoked.
-        # - **willExpire**: about to expire.
-        # - **expired**: expired.
+        # - **issued**: Issued.
+        # - **revoked**: Revoked.
+        # - **willExpire**: About to expire.
+        # - **expired**: Expired.
         self.certificate_status = certificate_status
         # The type of the certificate. Valid values: DV, OV, and EV.
         self.certificate_type = certificate_type
@@ -144,24 +145,26 @@ class ListInstancesResponseBodyInstanceList(DaraModel):
         self.domain = domain
         # The number of exact-match domain names.
         self.full_domain_count = full_domain_count
-        # The expiration time of the instance, in UNIX timestamp format. If no certificate has been issued, this value is empty.
+        # The expiration time of the instance, in timestamp format. If no certificate has been issued, this field is empty.
         self.instance_end_time = instance_end_time
         # The instance ID.
         self.instance_id = instance_id
-        # The start time of the instance, in UNIX timestamp format. If no certificate has been issued, this value is empty.
+        # The start time of the instance, in timestamp format. If no certificate has been issued, this field is empty.
         self.instance_start_time = instance_start_time
-        # The instance type. Valid values: BUY (official certificate) and TEST (test certificate).
+        # The instance type. Valid values:
+        # - BUY: official certificate.
+        # - TEST: test certificate.
         self.instance_type = instance_type
         # The certificate algorithm. Default value: RSA_2048. Valid values:
         # - **RSA_2048**
         # - **RSA_3072**
         # - **RSA_4096**
         # - **ECC_256**
-        # - **SM2**.
+        # - **SM2**
         self.key_algorithm = key_algorithm
-        # The end time of the instance purchase, in UNIX timestamp format. This value is used to determine the purchase duration of the instance.
+        # The end time of the instance purchase, in timestamp format. Used to determine the purchase duration of the instance.
         self.order_end_time = order_end_time
-        # The start time of the instance purchase, in UNIX timestamp format. This value is used to determine the refund time limit.
+        # The start time of the instance purchase, in timestamp format. Used to determine the refund time limit.
         self.order_start_time = order_start_time
         # The result returned by the CA during the last certificate operation.
         self.pending_result = pending_result

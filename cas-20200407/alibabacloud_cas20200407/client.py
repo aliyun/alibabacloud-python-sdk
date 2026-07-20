@@ -833,6 +833,206 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_certificate_with_csr_request_with_options_async(request, runtime)
 
+    def create_company_with_options(
+        self,
+        request: main_models.CreateCompanyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateCompanyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.city):
+            query['City'] = request.city
+        if not DaraCore.is_null(request.company_address):
+            query['CompanyAddress'] = request.company_address
+        if not DaraCore.is_null(request.company_code):
+            query['CompanyCode'] = request.company_code
+        if not DaraCore.is_null(request.company_email):
+            query['CompanyEmail'] = request.company_email
+        if not DaraCore.is_null(request.company_name):
+            query['CompanyName'] = request.company_name
+        if not DaraCore.is_null(request.company_phone):
+            query['CompanyPhone'] = request.company_phone
+        if not DaraCore.is_null(request.company_type):
+            query['CompanyType'] = request.company_type
+        if not DaraCore.is_null(request.country_code):
+            query['CountryCode'] = request.country_code
+        if not DaraCore.is_null(request.department):
+            query['Department'] = request.department
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.post_code):
+            query['PostCode'] = request.post_code
+        if not DaraCore.is_null(request.province):
+            query['Province'] = request.province
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateCompany',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateCompanyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_company_with_options_async(
+        self,
+        request: main_models.CreateCompanyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateCompanyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.city):
+            query['City'] = request.city
+        if not DaraCore.is_null(request.company_address):
+            query['CompanyAddress'] = request.company_address
+        if not DaraCore.is_null(request.company_code):
+            query['CompanyCode'] = request.company_code
+        if not DaraCore.is_null(request.company_email):
+            query['CompanyEmail'] = request.company_email
+        if not DaraCore.is_null(request.company_name):
+            query['CompanyName'] = request.company_name
+        if not DaraCore.is_null(request.company_phone):
+            query['CompanyPhone'] = request.company_phone
+        if not DaraCore.is_null(request.company_type):
+            query['CompanyType'] = request.company_type
+        if not DaraCore.is_null(request.country_code):
+            query['CountryCode'] = request.country_code
+        if not DaraCore.is_null(request.department):
+            query['Department'] = request.department
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.post_code):
+            query['PostCode'] = request.post_code
+        if not DaraCore.is_null(request.province):
+            query['Province'] = request.province
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateCompany',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateCompanyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_company(
+        self,
+        request: main_models.CreateCompanyRequest,
+    ) -> main_models.CreateCompanyResponse:
+        runtime = RuntimeOptions()
+        return self.create_company_with_options(request, runtime)
+
+    async def create_company_async(
+        self,
+        request: main_models.CreateCompanyRequest,
+    ) -> main_models.CreateCompanyResponse:
+        runtime = RuntimeOptions()
+        return await self.create_company_with_options_async(request, runtime)
+
+    def create_contact_with_options(
+        self,
+        request: main_models.CreateContactRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateContactResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.email):
+            query['Email'] = request.email
+        if not DaraCore.is_null(request.idcard):
+            query['Idcard'] = request.idcard
+        if not DaraCore.is_null(request.mobile):
+            query['Mobile'] = request.mobile
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.webhooks):
+            query['Webhooks'] = request.webhooks
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateContact',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateContactResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_contact_with_options_async(
+        self,
+        request: main_models.CreateContactRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateContactResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.email):
+            query['Email'] = request.email
+        if not DaraCore.is_null(request.idcard):
+            query['Idcard'] = request.idcard
+        if not DaraCore.is_null(request.mobile):
+            query['Mobile'] = request.mobile
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.webhooks):
+            query['Webhooks'] = request.webhooks
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateContact',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateContactResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_contact(
+        self,
+        request: main_models.CreateContactRequest,
+    ) -> main_models.CreateContactResponse:
+        runtime = RuntimeOptions()
+        return self.create_contact_with_options(request, runtime)
+
+    async def create_contact_async(
+        self,
+        request: main_models.CreateContactRequest,
+    ) -> main_models.CreateContactResponse:
+        runtime = RuntimeOptions()
+        return await self.create_contact_with_options_async(request, runtime)
+
     def create_csr_with_options(
         self,
         request: main_models.CreateCsrRequest,
@@ -1470,6 +1670,146 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteCloudAccessResponse:
         runtime = RuntimeOptions()
         return await self.delete_cloud_access_with_options_async(request, runtime)
+
+    def delete_company_with_options(
+        self,
+        request: main_models.DeleteCompanyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteCompanyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.company_id):
+            query['CompanyId'] = request.company_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteCompany',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteCompanyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_company_with_options_async(
+        self,
+        request: main_models.DeleteCompanyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteCompanyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.company_id):
+            query['CompanyId'] = request.company_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteCompany',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteCompanyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_company(
+        self,
+        request: main_models.DeleteCompanyRequest,
+    ) -> main_models.DeleteCompanyResponse:
+        runtime = RuntimeOptions()
+        return self.delete_company_with_options(request, runtime)
+
+    async def delete_company_async(
+        self,
+        request: main_models.DeleteCompanyRequest,
+    ) -> main_models.DeleteCompanyResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_company_with_options_async(request, runtime)
+
+    def delete_contact_with_options(
+        self,
+        request: main_models.DeleteContactRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteContactResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.contact_id):
+            query['ContactId'] = request.contact_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteContact',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteContactResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_contact_with_options_async(
+        self,
+        request: main_models.DeleteContactRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteContactResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.contact_id):
+            query['ContactId'] = request.contact_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteContact',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteContactResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_contact(
+        self,
+        request: main_models.DeleteContactRequest,
+    ) -> main_models.DeleteContactResponse:
+        runtime = RuntimeOptions()
+        return self.delete_contact_with_options(request, runtime)
+
+    async def delete_contact_async(
+        self,
+        request: main_models.DeleteContactRequest,
+    ) -> main_models.DeleteContactResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_contact_with_options_async(request, runtime)
 
     def delete_csr_with_options(
         self,
@@ -2645,6 +2985,146 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_certificate_detail_with_options_async(request, runtime)
 
+    def get_company_with_options(
+        self,
+        request: main_models.GetCompanyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCompanyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.company_id):
+            query['CompanyId'] = request.company_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetCompany',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetCompanyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_company_with_options_async(
+        self,
+        request: main_models.GetCompanyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCompanyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.company_id):
+            query['CompanyId'] = request.company_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetCompany',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetCompanyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_company(
+        self,
+        request: main_models.GetCompanyRequest,
+    ) -> main_models.GetCompanyResponse:
+        runtime = RuntimeOptions()
+        return self.get_company_with_options(request, runtime)
+
+    async def get_company_async(
+        self,
+        request: main_models.GetCompanyRequest,
+    ) -> main_models.GetCompanyResponse:
+        runtime = RuntimeOptions()
+        return await self.get_company_with_options_async(request, runtime)
+
+    def get_contact_with_options(
+        self,
+        request: main_models.GetContactRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetContactResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.contact_id):
+            query['ContactId'] = request.contact_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetContact',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetContactResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_contact_with_options_async(
+        self,
+        request: main_models.GetContactRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetContactResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.contact_id):
+            query['ContactId'] = request.contact_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetContact',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetContactResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_contact(
+        self,
+        request: main_models.GetContactRequest,
+    ) -> main_models.GetContactResponse:
+        runtime = RuntimeOptions()
+        return self.get_contact_with_options(request, runtime)
+
+    async def get_contact_async(
+        self,
+        request: main_models.GetContactRequest,
+    ) -> main_models.GetContactResponse:
+        runtime = RuntimeOptions()
+        return await self.get_contact_with_options_async(request, runtime)
+
     def get_csr_detail_with_options(
         self,
         request: main_models.GetCsrDetailRequest,
@@ -3678,6 +4158,88 @@ class Client(OpenApiClient):
     ) -> main_models.ListCloudResourcesResponse:
         runtime = RuntimeOptions()
         return await self.list_cloud_resources_with_options_async(request, runtime)
+
+    def list_companies_with_options(
+        self,
+        request: main_models.ListCompaniesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCompaniesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.company_id):
+            query['CompanyId'] = request.company_id
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.keyword):
+            query['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.show_size):
+            query['ShowSize'] = request.show_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCompanies',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCompaniesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_companies_with_options_async(
+        self,
+        request: main_models.ListCompaniesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCompaniesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.company_id):
+            query['CompanyId'] = request.company_id
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.keyword):
+            query['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.show_size):
+            query['ShowSize'] = request.show_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCompanies',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCompaniesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_companies(
+        self,
+        request: main_models.ListCompaniesRequest,
+    ) -> main_models.ListCompaniesResponse:
+        runtime = RuntimeOptions()
+        return self.list_companies_with_options(request, runtime)
+
+    async def list_companies_async(
+        self,
+        request: main_models.ListCompaniesRequest,
+    ) -> main_models.ListCompaniesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_companies_with_options_async(request, runtime)
 
     def list_contact_with_options(
         self,
@@ -4896,6 +5458,214 @@ class Client(OpenApiClient):
     ) -> main_models.SignResponse:
         runtime = RuntimeOptions()
         return await self.sign_with_options_async(request, runtime)
+
+    def update_company_with_options(
+        self,
+        request: main_models.UpdateCompanyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateCompanyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.city):
+            query['City'] = request.city
+        if not DaraCore.is_null(request.company_address):
+            query['CompanyAddress'] = request.company_address
+        if not DaraCore.is_null(request.company_code):
+            query['CompanyCode'] = request.company_code
+        if not DaraCore.is_null(request.company_email):
+            query['CompanyEmail'] = request.company_email
+        if not DaraCore.is_null(request.company_id):
+            query['CompanyId'] = request.company_id
+        if not DaraCore.is_null(request.company_name):
+            query['CompanyName'] = request.company_name
+        if not DaraCore.is_null(request.company_phone):
+            query['CompanyPhone'] = request.company_phone
+        if not DaraCore.is_null(request.company_type):
+            query['CompanyType'] = request.company_type
+        if not DaraCore.is_null(request.country_code):
+            query['CountryCode'] = request.country_code
+        if not DaraCore.is_null(request.department):
+            query['Department'] = request.department
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.post_code):
+            query['PostCode'] = request.post_code
+        if not DaraCore.is_null(request.province):
+            query['Province'] = request.province
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateCompany',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateCompanyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_company_with_options_async(
+        self,
+        request: main_models.UpdateCompanyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateCompanyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.city):
+            query['City'] = request.city
+        if not DaraCore.is_null(request.company_address):
+            query['CompanyAddress'] = request.company_address
+        if not DaraCore.is_null(request.company_code):
+            query['CompanyCode'] = request.company_code
+        if not DaraCore.is_null(request.company_email):
+            query['CompanyEmail'] = request.company_email
+        if not DaraCore.is_null(request.company_id):
+            query['CompanyId'] = request.company_id
+        if not DaraCore.is_null(request.company_name):
+            query['CompanyName'] = request.company_name
+        if not DaraCore.is_null(request.company_phone):
+            query['CompanyPhone'] = request.company_phone
+        if not DaraCore.is_null(request.company_type):
+            query['CompanyType'] = request.company_type
+        if not DaraCore.is_null(request.country_code):
+            query['CountryCode'] = request.country_code
+        if not DaraCore.is_null(request.department):
+            query['Department'] = request.department
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.post_code):
+            query['PostCode'] = request.post_code
+        if not DaraCore.is_null(request.province):
+            query['Province'] = request.province
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateCompany',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateCompanyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_company(
+        self,
+        request: main_models.UpdateCompanyRequest,
+    ) -> main_models.UpdateCompanyResponse:
+        runtime = RuntimeOptions()
+        return self.update_company_with_options(request, runtime)
+
+    async def update_company_async(
+        self,
+        request: main_models.UpdateCompanyRequest,
+    ) -> main_models.UpdateCompanyResponse:
+        runtime = RuntimeOptions()
+        return await self.update_company_with_options_async(request, runtime)
+
+    def update_contact_with_options(
+        self,
+        request: main_models.UpdateContactRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateContactResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.contact_id):
+            query['ContactId'] = request.contact_id
+        if not DaraCore.is_null(request.email):
+            query['Email'] = request.email
+        if not DaraCore.is_null(request.idcard):
+            query['Idcard'] = request.idcard
+        if not DaraCore.is_null(request.mobile):
+            query['Mobile'] = request.mobile
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.webhooks):
+            query['Webhooks'] = request.webhooks
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateContact',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateContactResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_contact_with_options_async(
+        self,
+        request: main_models.UpdateContactRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateContactResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.contact_id):
+            query['ContactId'] = request.contact_id
+        if not DaraCore.is_null(request.email):
+            query['Email'] = request.email
+        if not DaraCore.is_null(request.idcard):
+            query['Idcard'] = request.idcard
+        if not DaraCore.is_null(request.mobile):
+            query['Mobile'] = request.mobile
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.webhooks):
+            query['Webhooks'] = request.webhooks
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateContact',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateContactResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_contact(
+        self,
+        request: main_models.UpdateContactRequest,
+    ) -> main_models.UpdateContactResponse:
+        runtime = RuntimeOptions()
+        return self.update_contact_with_options(request, runtime)
+
+    async def update_contact_async(
+        self,
+        request: main_models.UpdateContactRequest,
+    ) -> main_models.UpdateContactResponse:
+        runtime = RuntimeOptions()
+        return await self.update_contact_with_options_async(request, runtime)
 
     def update_csr_with_options(
         self,

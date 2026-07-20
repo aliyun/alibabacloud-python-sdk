@@ -20,16 +20,18 @@ class ListInstancesRequest(DaraModel):
         # The certification authority (CA) brand. Valid values: WoSign, CFCA, DigiCert, GeoTrust, GlobalSign, vTrus, and Alibaba.
         self.brand = brand
         # The status of the certificate. Valid values:
-        # - **issued**: issued.
-        # - **revoked**: revoked.
-        # - **willExpire**: about to expire.
-        # - **expired**: expired.
+        # - **issued**: Issued.
+        # - **revoked**: Revoked.
+        # - **willExpire**: About to expire.
+        # - **expired**: Expired.
         self.certificate_status = certificate_status
         # The type of the certificate. Valid values: DV, OV, and EV.
         self.certificate_type = certificate_type
         # The page number of the current page in a paged query. Default value: **1**.
         self.current_page = current_page
-        # The instance type. Valid values: BUY (official certificate) and TEST (test certificate).
+        # The instance type. Valid values:
+        # - BUY: official certificate.
+        # - TEST: test certificate.
         self.instance_type = instance_type
         # The keyword for fuzzy match. Matches domain names, instance names, or corresponding resource IDs.
         self.keyword = keyword

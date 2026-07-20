@@ -14,43 +14,33 @@ class ListUserCertificateOrderRequest(DaraModel):
         show_size: int = None,
         status: str = None,
     ):
-        # The page number. Default value: 1.
+        # The page number of the current page in a paginated query.
         self.current_page = current_page
-        # Performs a fuzzy query. The keyword can be a domain name or a resource ID.
+        # The keyword for fuzzy search. Matches the domain name or the corresponding resource ID.
         self.keyword = keyword
         # The resource type. Default value: **CPACK**. Valid values:
         # 
-        # - **CPACK**: An order for a resource plan. Only orders created from a resource plan are returned.
-        # 
-        # - **BUY**: A direct purchase. Only orders created from direct purchases are returned. You can ignore this type in most cases.
-        # 
-        # - **UPLOAD**: An uploaded certificate. Only uploaded certificates are returned.
-        # 
-        # - **CERT**: A certificate. Both issued and uploaded certificates are returned.
+        # - **CPACK**: resource virtual order. Only orders generated from quotas are returned.
+        # - **BUY**: purchase order. Only orders generated from purchases are returned. You can ignore this type in most cases.
+        # - **UPLOAD**: uploaded certificate. Only uploaded certificates are returned.
+        # - **CERT**: certificate. Both issued certificates and uploaded certificates are returned.
         self.order_type = order_type
-        # The ID of the resource group. For more information, see [ListResources](https://help.aliyun.com/document_detail/2716559.html).
+        # The resource group ID. You can obtain this ID by calling the [ListResources](https://help.aliyun.com/document_detail/2716559.html) operation.
         self.resource_group_id = resource_group_id
-        # The number of entries to return on each page. Default value: 50.
+        # The number of entries per page in a paginated query. Default value: 50.
         self.show_size = show_size
-        # The status of the order. Valid values:
+        # The order status. Valid values:
         # 
-        # - **PAYED**: The certificate is pending application. This value is valid only when OrderType is set to CPACK or BUY.
+        # - **PAYED**: Pending application. Valid when OrderType is set to CPACK or BUY.
+        # - **CHECKING**: Under review. Valid when OrderType is set to CPACK or BUY.
+        # - **CHECKED_FAIL**: Review failed. Valid when OrderType is set to CPACK or BUY.
+        # - **ISSUED**: Issued.
+        # - **WILLEXPIRED**: About to expire.
+        # - **EXPIRED**: Expired.
+        # - **NOTACTIVATED**: Not activated. Valid when OrderType is set to CPACK or BUY.
+        # - **REVOKED**: Revoked. Valid when OrderType is set to CPACK or BUY.
         # 
-        # - **CHECKING**: The certificate is under review. This value is valid only when OrderType is set to CPACK or BUY.
-        # 
-        # - **CHECKED_FAIL**: The review failed. This value is valid only when OrderType is set to CPACK or BUY.
-        # 
-        # - **ISSUED**: The certificate is issued.
-        # 
-        # - **WILLEXPIRED**: The certificate is about to expire.
-        # 
-        # - **EXPIRED**: The certificate has expired.
-        # 
-        # - **NOTACTIVATED**: The certificate is not activated. This value is valid only when OrderType is set to CPACK or BUY.
-        # 
-        # - **REVOKED**: The certificate is revoked. This value is valid only when OrderType is set to CPACK or BUY.
-        # 
-        # If OrderType is CERT or UPLOAD and you leave this parameter empty, active certificates are returned by default. Active certificates are those in the ISSUED or WILLEXPIRED state. If OrderType is CPACK or BUY and you leave this parameter empty, all orders are returned by default.
+        # If OrderType is set to CERT or UPLOAD and Status is empty, valid certificates are returned by default, including issued and about-to-expire certificates. If OrderType is set to CPACK or BUY and Status is empty, all orders are returned by default.
         self.status = status
 
     def validate(self):

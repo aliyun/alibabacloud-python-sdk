@@ -4,12 +4,12 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class RefundInstanceResponseBody(DaraModel):
+class DeleteContactResponseBody(DaraModel):
     def __init__(
         self,
         request_id: str = None,
     ):
-        # The request ID. Alibaba Cloud generates a unique ID for each API request. You can use this ID to troubleshoot issues.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

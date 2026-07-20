@@ -17,17 +17,17 @@ class ListContactResponseBody(DaraModel):
         show_size: int = None,
         total_count: int = None,
     ):
-        # The contacts.
+        # The contact list.
         self.contact_list = contact_list
-        # The page number. Default value: **1**.
+        # The current page number in a paged query. Default value: **1**.
         self.current_page = current_page
-        # The keyword used in the fuzzy search.
+        # The fuzzy match keyword.
         self.keyword = keyword
-        # The request ID.
+        # The request ID. Alibaba Cloud generates a unique identifier for each API request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
-        # The number of certificates per page. Default value: **20**.
+        # The number of certificates displayed per page in a paged query. Default value: **20**.
         self.show_size = show_size
-        # The total number of entries returned.
+        # The total number of search results.
         self.total_count = total_count
 
     def validate(self):
@@ -99,19 +99,19 @@ class ListContactResponseBodyContactList(DaraModel):
         name: str = None,
         webhooks: str = None,
     ):
-        # The ID of the contact.
+        # The contact ID.
         self.contact_id = contact_id
         # The email address of the contact.
         self.email = email
-        # Indicates whether the email address passed the verification.
+        # Indicates whether the email address is verified.
         self.email_status = email_status
-        # The phone number.
+        # The mobile phone number.
         self.mobile = mobile
-        # Indicates whether the phone number was verified.
+        # Indicates whether the mobile phone number is verified.
         self.mobile_status = mobile_status
-        # The name of the contact.
+        # The contact name.
         self.name = name
-        # The webhook URL of the chatbot.
+        # The webhook URL.
         self.webhooks = webhooks
 
     def validate(self):

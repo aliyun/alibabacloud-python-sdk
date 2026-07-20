@@ -16,15 +16,15 @@ class ListAssetCountResponseBody(DaraModel):
         show_size: int = None,
         total_count: int = None,
     ):
-        # A list of resource statistics.
+        # The resource statistics list.
         self.asset_count_list = asset_count_list
-        # The current page number. The default value is 1.
+        # The page number. Default value: 1.
         self.current_page = current_page
-        # The ID of the request. Alibaba Cloud generates a unique ID for each request. You can use this ID to troubleshoot issues.
+        # The request ID. Alibaba Cloud generates a unique identifier for each request. You can use the request ID to troubleshoot issues.
         self.request_id = request_id
-        # The number of entries returned on each page. This parameter is not returned if you do not specify \\`ShowSize\\` in the request.
+        # The number of entries displayed on each page for paging. This parameter is not returned if ShowSize is not specified in the request.
         self.show_size = show_size
-        # The total number of entries.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -93,7 +93,7 @@ class ListAssetCountResponseBodyAssetCountList(DaraModel):
         self.aliyun_asset_count = aliyun_asset_count
         # The total number of certificate resources.
         self.certificate_count = certificate_count
-        # The date when the statistics were collected.
+        # The statistics date. The value is a UNIX timestamp accurate to seconds.
         self.count_date = count_date
         # The total number of domain name resources.
         self.domain_asset_count = domain_asset_count

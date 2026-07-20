@@ -1,3 +1,15 @@
+2026-07-20 Version: 3.6.0
+- Support API CreateCompany.
+- Support API CreateContact.
+- Support API DeleteCompany.
+- Support API DeleteContact.
+- Support API GetCompany.
+- Support API GetContact.
+- Support API ListCompanies.
+- Support API UpdateCompany.
+- Support API UpdateContact.
+
+
 2026-07-08 Version: 3.5.2
 - Update API GetInstanceDetail: add response parameters Body.CertificateNotBefore.
 - Update API ListInstances: add response parameters Body.InstanceList.$.CertificateNotBefore.

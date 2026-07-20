@@ -4,13 +4,13 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class RefundInstanceResponseBody(DaraModel):
+class GetContactRequest(DaraModel):
     def __init__(
         self,
-        request_id: str = None,
+        contact_id: int = None,
     ):
-        # The request ID. Alibaba Cloud generates a unique ID for each API request. You can use this ID to troubleshoot issues.
-        self.request_id = request_id
+        # The contact ID.
+        self.contact_id = contact_id
 
     def validate(self):
         pass
@@ -20,15 +20,15 @@ class RefundInstanceResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
+        if self.contact_id is not None:
+            result['ContactId'] = self.contact_id
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
+        if m.get('ContactId') is not None:
+            self.contact_id = m.get('ContactId')
 
         return self
 

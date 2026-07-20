@@ -9,7 +9,7 @@ class ApplyCertificateRequest(DaraModel):
         self,
         instance_id: str = None,
     ):
-        # The ID of the instance. Before you request a certificate, call the UpdateInstance operation to update and complete the application information for the instance.
+        # The ID of the instance. You must call the UpdateInstance operation in advance to ensure that all application information for the instance has been updated and completed before applying for a certificate.
         # 
         # This parameter is required.
         self.instance_id = instance_id
