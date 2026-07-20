@@ -24,7 +24,7 @@ class GetIntlCommissionDetailFileListResponseBody(DaraModel):
         self.message = message
         # RequestId
         self.request_id = request_id
-        # Indicates whether the call was successful.
+        # Indicates whether the operation was successful.
         self.success = success
 
     def validate(self):
@@ -80,7 +80,7 @@ class GetIntlCommissionDetailFileListResponseBodyData(DaraModel):
         file_list: List[main_models.GetIntlCommissionDetailFileListResponseBodyDataFileList] = None,
         partner_uid: str = None,
     ):
-        # The billing month.
+        # The bill month.
         self.bill_month = bill_month
         # The file list object.
         self.file_list = file_list
@@ -134,11 +134,7 @@ class GetIntlCommissionDetailFileListResponseBodyDataFileList(DaraModel):
         commission_policy_name: str = None,
         file_name: str = None,
     ):
-        # The push status of the OSS file. Valid values:
-        # - 初始化状态: initialization status
-        # - 处理中: processing
-        # - 处理成功: processing succeeded
-        # - 处理失败: processing failed.
+        # The OSS file push status. Valid values: init, processing, succeeded, or failed.
         self.bucket_sync_status = bucket_sync_status
         # The commission policy name.
         self.commission_policy_name = commission_policy_name
