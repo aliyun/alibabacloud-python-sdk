@@ -1815,6 +1815,96 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.text_translate_with_options_async(request, runtime)
 
+    def video_translation_with_options(
+        self,
+        tmp_req: main_models.VideoTranslationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.VideoTranslationResponse:
+        tmp_req.validate()
+        request = main_models.VideoTranslationShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.capabilities):
+            request.capabilities_shrink = Utils.array_to_string_with_specified_style(tmp_req.capabilities, 'Capabilities', 'json')
+        body = {}
+        if not DaraCore.is_null(request.capabilities_shrink):
+            body['Capabilities'] = request.capabilities_shrink
+        if not DaraCore.is_null(request.source_language):
+            body['SourceLanguage'] = request.source_language
+        if not DaraCore.is_null(request.target_language):
+            body['TargetLanguage'] = request.target_language
+        if not DaraCore.is_null(request.video_url):
+            body['VideoUrl'] = request.video_url
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'VideoTranslation',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.VideoTranslationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def video_translation_with_options_async(
+        self,
+        tmp_req: main_models.VideoTranslationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.VideoTranslationResponse:
+        tmp_req.validate()
+        request = main_models.VideoTranslationShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.capabilities):
+            request.capabilities_shrink = Utils.array_to_string_with_specified_style(tmp_req.capabilities, 'Capabilities', 'json')
+        body = {}
+        if not DaraCore.is_null(request.capabilities_shrink):
+            body['Capabilities'] = request.capabilities_shrink
+        if not DaraCore.is_null(request.source_language):
+            body['SourceLanguage'] = request.source_language
+        if not DaraCore.is_null(request.target_language):
+            body['TargetLanguage'] = request.target_language
+        if not DaraCore.is_null(request.video_url):
+            body['VideoUrl'] = request.video_url
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'VideoTranslation',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.VideoTranslationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def video_translation(
+        self,
+        request: main_models.VideoTranslationRequest,
+    ) -> main_models.VideoTranslationResponse:
+        runtime = RuntimeOptions()
+        return self.video_translation_with_options(request, runtime)
+
+    async def video_translation_async(
+        self,
+        request: main_models.VideoTranslationRequest,
+    ) -> main_models.VideoTranslationResponse:
+        runtime = RuntimeOptions()
+        return await self.video_translation_with_options_async(request, runtime)
+
     def vision_flow_with_options(
         self,
         tmp_req: main_models.VisionFlowRequest,

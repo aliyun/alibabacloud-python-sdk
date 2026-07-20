@@ -1,3 +1,7 @@
+2026-07-20 Version: 3.1.0
+- Support API VideoTranslation.
+
+
 2026-07-20 Version: 3.0.1
 - Generated python 2026-04-28 for Aidge.
 

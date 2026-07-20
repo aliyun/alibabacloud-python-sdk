@@ -68,6 +68,10 @@ from ._text_translate_request import TextTranslateRequest
 from ._text_translate_shrink_request import TextTranslateShrinkRequest
 from ._text_translate_response_body import TextTranslateResponseBody
 from ._text_translate_response import TextTranslateResponse
+from ._video_translation_request import VideoTranslationRequest
+from ._video_translation_shrink_request import VideoTranslationShrinkRequest
+from ._video_translation_response_body import VideoTranslationResponseBody
+from ._video_translation_response import VideoTranslationResponse
 from ._vision_flow_request import VisionFlowRequest
 from ._vision_flow_shrink_request import VisionFlowShrinkRequest
 from ._vision_flow_response_body import VisionFlowResponseBody
@@ -106,6 +110,7 @@ from ._size_chart_extract_response_body import SizeChartExtractResponseBodyData
 from ._text_correct_response_body import TextCorrectResponseBodyData
 from ._text_translate_response_body import TextTranslateResponseBodyDataTranslations
 from ._text_translate_response_body import TextTranslateResponseBodyData
+from ._video_translation_response_body import VideoTranslationResponseBodyData
 from ._vision_flow_response_body import VisionFlowResponseBodyData
 
 __all__ = [
@@ -175,6 +180,10 @@ __all__ = [
     TextTranslateShrinkRequest,
     TextTranslateResponseBody,
     TextTranslateResponse,
+    VideoTranslationRequest,
+    VideoTranslationShrinkRequest,
+    VideoTranslationResponseBody,
+    VideoTranslationResponse,
     VisionFlowRequest,
     VisionFlowShrinkRequest,
     VisionFlowResponseBody,
@@ -213,5 +222,6 @@ __all__ = [
     TextCorrectResponseBodyData,
     TextTranslateResponseBodyDataTranslations,
     TextTranslateResponseBodyData,
+    VideoTranslationResponseBodyData,
     VisionFlowResponseBodyData
 ]
