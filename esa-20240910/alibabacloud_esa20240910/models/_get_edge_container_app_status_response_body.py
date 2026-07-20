@@ -13,7 +13,7 @@ class GetEdgeContainerAppStatusResponseBody(DaraModel):
         app_status: main_models.GetEdgeContainerAppStatusResponseBodyAppStatus = None,
         request_id: str = None,
     ):
-        # The application status information.
+        # The object that describes the application status information.
         self.app_status = app_status
         # The request ID.
         self.request_id = request_id
@@ -68,10 +68,10 @@ class GetEdgeContainerAppStatusResponseBodyAppStatus(DaraModel):
         # The baseline version of the application.
         self.base_line_version = base_line_version
         # The deployment status of the application. Valid values:
-        # - **undeploy**: not deployed.
-        # - **deploying**: being deployed.
-        # - **deployed**: deployed.
-        # - **undeploying**: being undeployed.
+        # - **undeploy**: Not deployed.
+        # - **deploying**: Being deployed.
+        # - **deployed**: Deployed.
+        # - **undeploying**: Being undeployed.
         self.deploy_status = deploy_status
         # The deployment time of the application. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.deploy_time = deploy_time
@@ -79,28 +79,28 @@ class GetEdgeContainerAppStatusResponseBodyAppStatus(DaraModel):
         self.deployed_version = deployed_version
         # The expected publishing percentage of the application.
         self.expect_percentage = expect_percentage
-        # Indicates whether a full release is performed. This field takes effect only when PublishType is set to region.
+        # Indicates whether the application is fully released. This field takes effect only when PublishType is set to region.
         self.full_release = full_release
         # The publishing environment. Valid values:
         # 
-        # - **prod**: production environment.
-        # - **staging**: staging environment.
+        # - **prod**: Production environment.
+        # - **staging**: Staging environment.
         self.publish_env = publish_env
         # The publishing percentage of the application.
         self.publish_percentage = publish_percentage
         # The publishing status of the application. Valid values:
-        # - **publishing**: being published.
-        # - **published**: published.
-        # - **rollbacking**: being rolled back.
-        # - **rollbacked**: rolled back.
+        # - **publishing**: Being published.
+        # - **published**: Published.
+        # - **rollbacking**: Being rolled back.
+        # - **rollbacked**: Rolled back.
         self.publish_status = publish_status
         # The publishing time of the application. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.publish_time = publish_time
         # The publishing type. Valid values:
         # 
-        # - **percentage**: publish by percentage.
+        # - **percentage**: Publish by percentage.
         # 
-        # - **region**: publish by region.
+        # - **region**: Publish by region.
         # 
         # If this parameter is not specified, the default value percentage is used.
         self.publish_type = publish_type

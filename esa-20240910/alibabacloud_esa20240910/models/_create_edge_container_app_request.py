@@ -26,9 +26,9 @@ class CreateEdgeContainerAppRequest(DaraModel):
         # - Valid values: **1 to 10**. 
         # - Default value: **5**.
         self.health_check_fail_times = health_check_fail_times
-        # The domain name used for health checks. If not specified, the value is empty by default.
+        # The domain name used for health checks. If this parameter is not specified, the value is empty by default.
         self.health_check_host = health_check_host
-        # The HTTP status code that indicates a Normal health check result. Valid values:
+        # The HTTP status code that indicates the health check is Normal. Valid values:
         # 
         # - **http_2xx** (default).
         # - **http_3xx**.
@@ -40,8 +40,8 @@ class CreateEdgeContainerAppRequest(DaraModel):
         self.health_check_interval = health_check_interval
         # The health check method for HTTP-type listeners. Valid values:
         # 
-        # - **HEAD** (default): requests only the header of the page.
-        # - **GET**: requests the specified page information and returns the entity body.
+        # - **HEAD** (default): Requests only the headers of the page.
+        # - **GET**: Requests the specified page information and returns the entity body.
         self.health_check_method = health_check_method
         # The port used for health checks.
         # - Valid values: **1 to 65535**.
@@ -57,7 +57,7 @@ class CreateEdgeContainerAppRequest(DaraModel):
         # - Default value: **3**.
         # - Unit: **seconds**.
         self.health_check_timeout = health_check_timeout
-        # The health check type, which includes Layer 4 and Layer 7 probing. If not specified, the value is empty by default.
+        # The health check type, which includes Layer 4 and Layer 7 probing. If this parameter is not specified, the value is empty by default.
         # 
         # Valid values:
         # 
@@ -65,17 +65,17 @@ class CreateEdgeContainerAppRequest(DaraModel):
         # - **l7**: Layer 7 probing.
         self.health_check_type = health_check_type
         # The URI used for health checks.
-        # - Length limit: **1** to **80** characters.
+        # - The length is limited to **1** to **80** characters.
         # - Default value: **"/"**.
         self.health_check_uri = health_check_uri
         # The application name. The name must start with a lowercase letter and can contain lowercase letters, digits, and hyphens (-). The name must be 6 to 128 characters in length.
-        # >Notice: You must activate the EdgeContainer service in the console before calling this operation. Calls from accounts that have not activated the service will return a service activation error.</notice>
+        # >Notice: Activate the EdgeContainer service in the console before calling this operation. Calls from accounts that have not activated the service will return a service activation error.</notice>
         # 
         # This parameter is required.
         self.name = name
-        # The remarks. If not specified, the value is empty by default.
+        # The remarks. If this parameter is not specified, the value is empty by default.
         self.remarks = remarks
-        # The service port number. Valid values: 1 to 65535.
+        # The server port number. Only 80 and 443 are accepted.
         # 
         # This parameter is required.
         self.service_port = service_port

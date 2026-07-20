@@ -19,7 +19,7 @@ class PublishEdgeContainerAppVersionShrinkRequest(DaraModel):
     ):
         # The application ID.
         # 
-        # > 1) AppId is obtained by calling CreateEdgeContainerApp. 2) VersionId is obtained by calling CreateEdgeContainerAppVersion (AppId is required). 3) The complete call chain is CreateEdgeContainerApp → CreateEdgeContainerAppVersion → PublishEdgeContainerAppVersion.
+        # > 1) Obtain the AppId by calling CreateEdgeContainerApp. 2) Obtain the VersionId by calling CreateEdgeContainerAppVersion (which requires the AppId). 3) The complete call chain is CreateEdgeContainerApp → CreateEdgeContainerAppVersion → PublishEdgeContainerAppVersion.
         # 
         # This parameter is required.
         self.app_id = app_id
@@ -35,9 +35,9 @@ class PublishEdgeContainerAppVersionShrinkRequest(DaraModel):
         # This parameter is required.
         self.publish_env = publish_env
         # The publishing type. Valid values:
-        # - **percentage**: publishes by percentage.
+        # - **percentage**: Publish by percentage.
         # 
-        # - **region**: publishes by region.
+        # - **region**: Publish by region.
         # 
         # If this parameter is not specified, percentage-based publishing is used by default.
         self.publish_type = publish_type

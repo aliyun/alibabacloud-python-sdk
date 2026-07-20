@@ -34345,6 +34345,132 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.update_rewrite_url_rule_with_options_async(request, runtime)
 
+    def update_routine_build_configuration_with_options(
+        self,
+        tmp_req: main_models.UpdateRoutineBuildConfigurationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateRoutineBuildConfigurationResponse:
+        tmp_req.validate()
+        request = main_models.UpdateRoutineBuildConfigurationShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.environment_variables):
+            request.environment_variables_shrink = Utils.array_to_string_with_specified_style(tmp_req.environment_variables, 'EnvironmentVariables', 'json')
+        query = {}
+        if not DaraCore.is_null(request.assets_directory):
+            query['AssetsDirectory'] = request.assets_directory
+        if not DaraCore.is_null(request.build_branches):
+            query['BuildBranches'] = request.build_branches
+        if not DaraCore.is_null(request.build_command):
+            query['BuildCommand'] = request.build_command
+        if not DaraCore.is_null(request.environment_variables_shrink):
+            query['EnvironmentVariables'] = request.environment_variables_shrink
+        if not DaraCore.is_null(request.git_account_id):
+            query['GitAccountId'] = request.git_account_id
+        if not DaraCore.is_null(request.install_command):
+            query['InstallCommand'] = request.install_command
+        if not DaraCore.is_null(request.is_private):
+            query['IsPrivate'] = request.is_private
+        if not DaraCore.is_null(request.node_version):
+            query['NodeVersion'] = request.node_version
+        if not DaraCore.is_null(request.production_branch):
+            query['ProductionBranch'] = request.production_branch
+        if not DaraCore.is_null(request.repository):
+            query['Repository'] = request.repository
+        if not DaraCore.is_null(request.root_directory):
+            query['RootDirectory'] = request.root_directory
+        if not DaraCore.is_null(request.routine_entry):
+            query['RoutineEntry'] = request.routine_entry
+        if not DaraCore.is_null(request.routine_name):
+            query['RoutineName'] = request.routine_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateRoutineBuildConfiguration',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateRoutineBuildConfigurationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_routine_build_configuration_with_options_async(
+        self,
+        tmp_req: main_models.UpdateRoutineBuildConfigurationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateRoutineBuildConfigurationResponse:
+        tmp_req.validate()
+        request = main_models.UpdateRoutineBuildConfigurationShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.environment_variables):
+            request.environment_variables_shrink = Utils.array_to_string_with_specified_style(tmp_req.environment_variables, 'EnvironmentVariables', 'json')
+        query = {}
+        if not DaraCore.is_null(request.assets_directory):
+            query['AssetsDirectory'] = request.assets_directory
+        if not DaraCore.is_null(request.build_branches):
+            query['BuildBranches'] = request.build_branches
+        if not DaraCore.is_null(request.build_command):
+            query['BuildCommand'] = request.build_command
+        if not DaraCore.is_null(request.environment_variables_shrink):
+            query['EnvironmentVariables'] = request.environment_variables_shrink
+        if not DaraCore.is_null(request.git_account_id):
+            query['GitAccountId'] = request.git_account_id
+        if not DaraCore.is_null(request.install_command):
+            query['InstallCommand'] = request.install_command
+        if not DaraCore.is_null(request.is_private):
+            query['IsPrivate'] = request.is_private
+        if not DaraCore.is_null(request.node_version):
+            query['NodeVersion'] = request.node_version
+        if not DaraCore.is_null(request.production_branch):
+            query['ProductionBranch'] = request.production_branch
+        if not DaraCore.is_null(request.repository):
+            query['Repository'] = request.repository
+        if not DaraCore.is_null(request.root_directory):
+            query['RootDirectory'] = request.root_directory
+        if not DaraCore.is_null(request.routine_entry):
+            query['RoutineEntry'] = request.routine_entry
+        if not DaraCore.is_null(request.routine_name):
+            query['RoutineName'] = request.routine_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateRoutineBuildConfiguration',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateRoutineBuildConfigurationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_routine_build_configuration(
+        self,
+        request: main_models.UpdateRoutineBuildConfigurationRequest,
+    ) -> main_models.UpdateRoutineBuildConfigurationResponse:
+        runtime = RuntimeOptions()
+        return self.update_routine_build_configuration_with_options(request, runtime)
+
+    async def update_routine_build_configuration_async(
+        self,
+        request: main_models.UpdateRoutineBuildConfigurationRequest,
+    ) -> main_models.UpdateRoutineBuildConfigurationResponse:
+        runtime = RuntimeOptions()
+        return await self.update_routine_build_configuration_with_options_async(request, runtime)
+
     def update_routine_config_description_with_options(
         self,
         request: main_models.UpdateRoutineConfigDescriptionRequest,

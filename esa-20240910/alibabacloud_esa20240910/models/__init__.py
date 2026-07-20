@@ -1344,6 +1344,10 @@ from ._update_redirect_rule_response import UpdateRedirectRuleResponse
 from ._update_rewrite_url_rule_request import UpdateRewriteUrlRuleRequest
 from ._update_rewrite_url_rule_response_body import UpdateRewriteUrlRuleResponseBody
 from ._update_rewrite_url_rule_response import UpdateRewriteUrlRuleResponse
+from ._update_routine_build_configuration_request import UpdateRoutineBuildConfigurationRequest
+from ._update_routine_build_configuration_shrink_request import UpdateRoutineBuildConfigurationShrinkRequest
+from ._update_routine_build_configuration_response_body import UpdateRoutineBuildConfigurationResponseBody
+from ._update_routine_build_configuration_response import UpdateRoutineBuildConfigurationResponse
 from ._update_routine_config_description_request import UpdateRoutineConfigDescriptionRequest
 from ._update_routine_config_description_response_body import UpdateRoutineConfigDescriptionResponseBody
 from ._update_routine_config_description_response import UpdateRoutineConfigDescriptionResponse
@@ -3200,6 +3204,10 @@ __all__ = [
     UpdateRewriteUrlRuleRequest,
     UpdateRewriteUrlRuleResponseBody,
     UpdateRewriteUrlRuleResponse,
+    UpdateRoutineBuildConfigurationRequest,
+    UpdateRoutineBuildConfigurationShrinkRequest,
+    UpdateRoutineBuildConfigurationResponseBody,
+    UpdateRoutineBuildConfigurationResponse,
     UpdateRoutineConfigDescriptionRequest,
     UpdateRoutineConfigDescriptionResponseBody,
     UpdateRoutineConfigDescriptionResponse,
