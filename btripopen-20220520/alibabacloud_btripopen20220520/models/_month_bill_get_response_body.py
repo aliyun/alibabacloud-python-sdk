@@ -91,6 +91,7 @@ class MonthBillGetResponseBodyModule(DaraModel):
         url: str = None,
     ):
         self.end_date = end_date
+        # CorpMonthAccountBillFeeDetail
         self.month_account_bill_detail = month_account_bill_detail
         self.start_date = start_date
         self.url = url
@@ -154,17 +155,26 @@ class MonthBillGetResponseBodyModuleMonthAccountBillDetail(DaraModel):
         vas_amount: float = None,
     ):
         self.bill_confirmed = bill_confirmed
+        # 用车金额（单位：元）
         self.car_amount = car_amount
+        # 违约金金额（单位：元）
         self.damage_amount = damage_amount
+        # 机票金额（单位：元）
         self.flight_amount = flight_amount
+        # 福豆金额（单位：元）
         self.fu_point = fu_point
+        # 酒店金额（单位：元）
         self.hotel_amount = hotel_amount
+        # 国际机票金额（单位：元）
         self.ie_flight_amount = ie_flight_amount
         self.ie_hotel_amount = ie_hotel_amount
+        # 账期日：YYYYMMDD
         self.mail_bill_date = mail_bill_date
         self.meal_amount = meal_amount
         self.metro_amount = metro_amount
+        # 服务费金额（单位：元）
         self.service_amount = service_amount
+        # 火车票金额（单位：元）
         self.train_amount = train_amount
         self.vas_amount = vas_amount
 

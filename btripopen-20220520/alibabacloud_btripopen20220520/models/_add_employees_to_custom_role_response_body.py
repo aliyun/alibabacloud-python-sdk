@@ -14,11 +14,17 @@ class AddEmployeesToCustomRoleResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The response status code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # The unique identifier of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # traceId
         self.trace_id = trace_id
 
     def validate(self):

@@ -37,34 +37,68 @@ class ModuleReShopItemListSubItemsBaggageRuleOfferBaggageInfoMapValue(DaraModel)
         baggage_price: int = None,
         carry_on_baggage_tips: str = None,
     ):
+        # The departure city code.
         self.start_city_code = start_city_code
+        # The arrival city code.
         self.end_city_code = end_city_code
+        # The number of carry-on baggage pieces.
         self.carry_free_pc = carry_free_pc
+        # The carry-on baggage weight.
         self.carry_bag_weight = carry_bag_weight
+        # The weight unit of carry-on baggage.
         self.carry_on_weight_unit = carry_on_weight_unit
+        # The carry-on baggage size.
         self.carry_bag_size = carry_bag_size
+        # Indicates whether the carry-on baggage weight represents the total weight.
         self.is_all_carry_bag_weight = is_all_carry_bag_weight
+        # The total number of carry-on and checked baggage pieces. This field is for domestic flights only.
         self.total_pcs = total_pcs
+        # The total weight of carry-on and checked baggage. This field is for domestic flights only.
         self.total_weight = total_weight
+        # The unknown flag for carry-on baggage.
         self.carry_unknown = carry_unknown
+        # The length of carry-on baggage.
         self.carry_length = carry_length
+        # The width of carry-on baggage.
         self.carry_width = carry_width
+        # The height of carry-on baggage.
         self.carry_height = carry_height
+        # The sum of length, width, and height of carry-on baggage.
         self.carry_sum_of_length_width_height = carry_sum_of_length_width_height
+        # The number of checked baggage pieces.
         self.free_pcs = free_pcs
+        # The maximum weight of checked baggage, in pounds or kilograms.
         self.baggage_weight = baggage_weight
+        # The weight unit of checked baggage.
         self.baggage_unit = baggage_unit
+        # The checked baggage size.
         self.baggage_size = baggage_size
+        # Indicates whether the checked baggage weight represents the total weight of all pieces.
         self.all_weight = all_weight
+        # The length of checked baggage.
         self.length = length
+        # The width of checked baggage.
         self.width = width
+        # The height of checked baggage.
         self.height = height
+        # The sum of length, width, and height of checked baggage.
         self.sum_of_length_width_height = sum_of_length_width_height
+        # The unknown baggage flag.
         self.unknown = unknown
+        # The Chinese description of the baggage allowance.
         self.cn_desc = cn_desc
+        # The English description of the baggage allowance.
         self.en_desc = en_desc
+        # The extended attributes in JSON format. For domestic flights, this field stores multiple text fields with the following field names:
+        # - label: label
+        # - excessInstruction: excess baggage instructions
+        # - babyCar: baby stroller instructions
+        # - phoneText: SMS text
+        # - defaultRule: fallback rule
         self.attribute = attribute
+        # The baggage price.
         self.baggage_price = baggage_price
+        # The carry-on baggage tips.
         self.carry_on_baggage_tips = carry_on_baggage_tips
 
     def validate(self):

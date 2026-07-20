@@ -21,17 +21,29 @@ class KeywordSuggestInfo(DaraModel):
         type: int = None,
         type_desc: str = None,
     ):
+        # The address.
         self.address = address
+        # The business area.
         self.business_area_with_city = business_area_with_city
+        # The city code.
         self.city_code = city_code
+        # The city name.
         self.city_name = city_name
+        # The display name.
         self.display_name = display_name
+        # The hotel ID.
         self.hotel_id = hotel_id
+        # The icon.
         self.icon = icon
+        # The rating.
         self.point = point
+        # The hotel starting price, in CNY.
         self.price = price
+        # The region.
         self.region = region
+        # The type.
         self.type = type
+        # The type description.
         self.type_desc = type_desc
 
     def validate(self):

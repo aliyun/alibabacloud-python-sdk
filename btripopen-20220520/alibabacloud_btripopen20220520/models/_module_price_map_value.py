@@ -10,7 +10,9 @@ class ModulePriceMapValue(DaraModel):
         price: int = None,
         service_no: str = None,
     ):
+        # The price, in cents.
         self.price = price
+        # The service number, such as a flight number or train number.
         self.service_no = service_no
 
     def validate(self):

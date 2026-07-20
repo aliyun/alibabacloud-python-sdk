@@ -58,6 +58,7 @@ class ApplyAddRequest(DaraModel):
         self.default_standard = default_standard
         self.depart_id = depart_id
         self.depart_name = depart_name
+        # 可将补充描述传入此字段，账单中将会体现此字段的值。可以用于企业的统计和对账
         self.extend_field = extend_field
         self.external_traveler_list = external_traveler_list
         self.external_traveler_standard = external_traveler_standard

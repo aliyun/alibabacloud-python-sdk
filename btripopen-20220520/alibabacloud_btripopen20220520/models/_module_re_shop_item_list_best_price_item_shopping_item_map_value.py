@@ -14,8 +14,11 @@ class ModuleReShopItemListBestPriceItemShoppingItemMapValue(DaraModel):
         search_price: main_models.ModuleReShopItemListBestPriceItemShoppingItemMapValueSearchPrice = None,
         segment_price_list: List[main_models.ModuleReShopItemListBestPriceItemShoppingItemMapValueSegmentPriceList] = None,
     ):
+        # The remaining cabin inventory for each segment.
         self.cabin_quantity_list = cabin_quantity_list
+        # The rebooking search price.
         self.search_price = search_price
+        # The price for each segment. This value may not be available because airline bundled products may not have prices broken down by segment.
         self.segment_price_list = segment_price_list
 
     def validate(self):
@@ -76,7 +79,9 @@ class ModuleReShopItemListBestPriceItemShoppingItemMapValueSegmentPriceList(Dara
         segment_position: main_models.ModuleReShopItemListBestPriceItemShoppingItemMapValueSegmentPriceListSegmentPosition = None,
         search_price: main_models.ModuleReShopItemListBestPriceItemShoppingItemMapValueSegmentPriceListSearchPrice = None,
     ):
+        # The segment position information, indicating the journey index and segment index within the overall itinerary.
         self.segment_position = segment_position
+        # The rebooking price.
         self.search_price = search_price
 
     def validate(self):
@@ -120,11 +125,17 @@ class ModuleReShopItemListBestPriceItemShoppingItemMapValueSegmentPriceListSearc
         has_price: bool = None,
         non_price_text: str = None,
     ):
+        # The total amount in cents.
         self.total_amount = total_amount
+        # The service fee amount, in cents.
         self.handling_amount = handling_amount
+        # The cabin upgrade fee amount in cents.
         self.upgrade_amount = upgrade_amount
+        # The tax difference amount in cents.
         self.tax_diff_amount = tax_diff_amount
+        # Indicates whether a direct price is available. Default value: true.
         self.has_price = has_price
+        # The text prompt displayed when no direct price is available.
         self.non_price_text = non_price_text
 
     def validate(self):
@@ -183,7 +194,9 @@ class ModuleReShopItemListBestPriceItemShoppingItemMapValueSegmentPriceListSegme
         journey_index: int = None,
         segment_index: int = None,
     ):
+        # The journey ordinal number (starting from 0).
         self.journey_index = journey_index
+        # The segment ordinal number (starting from 0 within the same journey).
         self.segment_index = segment_index
 
     def validate(self):
@@ -222,11 +235,17 @@ class ModuleReShopItemListBestPriceItemShoppingItemMapValueSearchPrice(DaraModel
         has_price: bool = None,
         non_price_text: str = None,
     ):
+        # The total amount in cents.
         self.total_amount = total_amount
+        # The service fee amount, in cents.
         self.handling_amount = handling_amount
+        # The cabin upgrade fee amount in cents.
         self.upgrade_amount = upgrade_amount
+        # The tax difference amount in cents.
         self.tax_diff_amount = tax_diff_amount
+        # Indicates whether a direct price is available. Default value: true.
         self.has_price = has_price
+        # The text prompt displayed when no direct price is available.
         self.non_price_text = non_price_text
 
     def validate(self):
@@ -285,7 +304,9 @@ class ModuleReShopItemListBestPriceItemShoppingItemMapValueCabinQuantityList(Dar
         segment_position: main_models.ModuleReShopItemListBestPriceItemShoppingItemMapValueCabinQuantityListSegmentPosition = None,
         cabin_info: main_models.ModuleReShopItemListBestPriceItemShoppingItemMapValueCabinQuantityListCabinInfo = None,
     ):
+        # The segment position information, indicating the journey index and segment index within the overall itinerary.
         self.segment_position = segment_position
+        # The cabin details.
         self.cabin_info = cabin_info
 
     def validate(self):
@@ -329,11 +350,21 @@ class ModuleReShopItemListBestPriceItemShoppingItemMapValueCabinQuantityListCabi
         cabin_class_memo: str = None,
         specification: str = None,
     ):
+        # The cabin code.
         self.cabin = cabin
+        # The cabin class. Valid values:
+        # - F: first class.
+        # - C: business class.
+        # - Y: economy class.
+        # - P: premium economy class.
         self.cabin_class = cabin_class
+        # The cabin class name. Displays the custom name if available. Otherwise, displays the standard name.
         self.cabin_class_name = cabin_class_name
+        # The number of remaining seats in the cabin. Valid values: 0-9 indicates 0 to 9 remaining seats. A indicates more than 9 seats.
         self.quantity = quantity
+        # The cabin class description.
         self.cabin_class_memo = cabin_class_memo
+        # The domestic special notes.
         self.specification = specification
 
     def validate(self):
@@ -392,7 +423,9 @@ class ModuleReShopItemListBestPriceItemShoppingItemMapValueCabinQuantityListSegm
         journey_index: int = None,
         segment_index: int = None,
     ):
+        # The journey ordinal number (starting from 0).
         self.journey_index = journey_index
+        # The segment ordinal number (starting from 0 within the same journey).
         self.segment_index = segment_index
 
     def validate(self):

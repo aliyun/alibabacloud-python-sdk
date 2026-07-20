@@ -21,20 +21,37 @@ class IntlFlightReShopCreateRequest(DaraModel):
         selected_passengers: List[main_models.IntlFlightReShopCreateRequestSelectedPassengers] = None,
         total_re_shop_fee: int = None,
     ):
+        # The key for the asynchronous application.
         self.async_apply_key = async_apply_key
+        # Specifies whether to use the asynchronous commit pattern. If asynchronous commit is used, only a key is returned before the application result is available.
         self.async_apply_mode = async_apply_mode
+        # The business travel order ID. This parameter is required.
+        # 
         # This parameter is required.
         self.order_id = order_id
+        # The ID of the rebooking product.
+        # 
         # This parameter is required.
         self.ota_item_id = ota_item_id
+        # The external order ID.
         self.out_order_id = out_order_id
+        # The external rebooking application ID.
         self.out_re_shop_apply_id = out_re_shop_apply_id
+        # The rebooking group key returned by the inquiry operation.
+        # 
         # This parameter is required.
         self.passenger_journey_group_key = passenger_journey_group_key
+        # The rebooking reason code.
+        # 
         # This parameter is required.
         self.re_shop_reason_code = re_shop_reason_code
+        # The list of passengers selected for rebooking.
+        # 
         # This parameter is required.
         self.selected_passengers = selected_passengers
+        # The total rebooking fee (excluding the service fee), in cents.
+        #      * Total rebooking fee = cabin upgrade fee + handling fee + tax difference (applicable to international flights).
+        #      * Pass in this parameter when fees are incurred to verify whether the price has changed.
         self.total_re_shop_fee = total_re_shop_fee
 
     def validate(self):
@@ -125,7 +142,9 @@ class IntlFlightReShopCreateRequestSelectedPassengers(DaraModel):
         full_name: str = None,
         passenger_id: int = None,
     ):
+        # The full name of the passenger.
         self.full_name = full_name
+        # The ID of the passenger.
         self.passenger_id = passenger_id
 
     def validate(self):

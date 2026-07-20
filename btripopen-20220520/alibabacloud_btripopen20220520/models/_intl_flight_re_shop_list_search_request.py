@@ -19,17 +19,29 @@ class IntlFlightReShopListSearchRequest(DaraModel):
         selected_passengers: List[main_models.IntlFlightReShopListSearchRequestSelectedPassengers] = None,
         token: str = None,
     ):
+        # The business travel order ID. Required.
+        # 
         # This parameter is required.
         self.order_id = order_id
+        # The external order ID.
         self.out_order_id = out_order_id
+        # Specifies whether external polling is enabled. When enabled, the external frontend controls polling to reduce the response time of a single search. Default value: false.
         self.out_wheel_search = out_wheel_search
+        # The rebooking group key returned by the consultation API.
+        # 
         # This parameter is required.
         self.passenger_journey_group_key = passenger_journey_group_key
+        # The rebooking reason code.
         self.re_shop_reason_code = re_shop_reason_code
+        # The list of journeys selected for rebooking.
+        # 
         # This parameter is required.
         self.search_journeys = search_journeys
+        # The list of passengers selected for rebooking.
+        # 
         # This parameter is required.
         self.selected_passengers = selected_passengers
+        # The query record token for external polling.
         self.token = token
 
     def validate(self):
@@ -117,7 +129,9 @@ class IntlFlightReShopListSearchRequestSelectedPassengers(DaraModel):
         full_name: str = None,
         passenger_id: int = None,
     ):
+        # The full name of the passenger.
         self.full_name = full_name
+        # The passenger ID.
         self.passenger_id = passenger_id
 
     def validate(self):
@@ -154,9 +168,13 @@ class IntlFlightReShopListSearchRequestSearchJourneys(DaraModel):
         dep_date: str = None,
         selected_flights: List[main_models.IntlFlightReShopListSearchRequestSearchJourneysSelectedFlights] = None,
     ):
+        # The three-letter code of the arrival city.
         self.arr_city_code = arr_city_code
+        # The three-letter code of the departure city.
         self.dep_city_code = dep_city_code
+        # The preferred date selected by the user. Format: yyyy-MM-dd.
         self.dep_date = dep_date
+        # The selected flight information for rebooking.
         self.selected_flights = selected_flights
 
     def validate(self):
@@ -213,9 +231,13 @@ class IntlFlightReShopListSearchRequestSearchJourneysSelectedFlights(DaraModel):
         flight_time: str = None,
         market_flight_no: str = None,
     ):
+        # The three-letter code of the arrival city.
         self.arr_city_code = arr_city_code
+        # The three-letter code of the departure city.
         self.dep_city_code = dep_city_code
+        # The departure time. Format: yyyy-MM-dd HH:mm.
         self.flight_time = flight_time
+        # The marketing carrier flight number.
         self.market_flight_no = market_flight_no
 
     def validate(self):

@@ -10,8 +10,12 @@ class AddInvoiceEntityShrinkRequest(DaraModel):
         entities_shrink: str = None,
         third_part_id: str = None,
     ):
+        # The list of entities.
+        # 
         # This parameter is required.
         self.entities_shrink = entities_shrink
+        # The third-party invoice ID.
+        # 
         # This parameter is required.
         self.third_part_id = third_part_id
 

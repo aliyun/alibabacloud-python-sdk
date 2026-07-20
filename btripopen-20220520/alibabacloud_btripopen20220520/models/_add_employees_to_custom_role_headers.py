@@ -13,6 +13,7 @@ class AddEmployeesToCustomRoleHeaders(DaraModel):
         x_acs_btrip_corp_token: str = None,
     ):
         self.common_headers = common_headers
+        # A header parameter obtained from the "Enterprise access token" operation. Add it to the header. In HTTP mode, you can use corp_token=value in the URL as an alternative.
         self.x_acs_btrip_corp_token = x_acs_btrip_corp_token
 
     def validate(self):

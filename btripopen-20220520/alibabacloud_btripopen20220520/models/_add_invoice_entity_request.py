@@ -13,8 +13,12 @@ class AddInvoiceEntityRequest(DaraModel):
         entities: List[main_models.AddInvoiceEntityRequestEntities] = None,
         third_part_id: str = None,
     ):
+        # The list of entities.
+        # 
         # This parameter is required.
         self.entities = entities
+        # The third-party invoice ID.
+        # 
         # This parameter is required.
         self.third_part_id = third_part_id
 
@@ -59,10 +63,20 @@ class AddInvoiceEntityRequestEntities(DaraModel):
         entity_name: str = None,
         entity_type: str = None,
     ):
+        # The entity ID, which can be an employee ID, department ID, role ID, or third-party department ID.
+        # 
         # This parameter is required.
         self.entity_id = entity_id
+        # The entity name, which can be an employee name, department name, role name, or third-party department name.
+        # 
         # This parameter is required.
         self.entity_name = entity_name
+        # The entity type. Valid values:
+        # - 1: employee
+        # - 2: department
+        # - 3: role
+        # - 4: third-party department
+        # 
         # This parameter is required.
         self.entity_type = entity_type
 

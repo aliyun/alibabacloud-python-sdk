@@ -15,11 +15,17 @@ class AddInvoiceEntityResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The result code.
         self.code = code
+        # The remarks on the result, such as a description of the result.
         self.message = message
+        # The return value from the server. This parameter is empty if no result is returned or an exception occurs.
         self.module = module
+        # The unique request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. This parameter is set by the server. The value is false when an exception occurs or when the result is null.
         self.success = success
+        # traceId
         self.trace_id = trace_id
 
     def validate(self):
@@ -80,7 +86,9 @@ class AddInvoiceEntityResponseBodyModule(DaraModel):
         add_num: int = None,
         selected_user_num: int = None,
     ):
+        # The number of added personnel, departments, or roles.
         self.add_num = add_num
+        # The number of entities under the invoice header.
         self.selected_user_num = selected_user_num
 
     def validate(self):

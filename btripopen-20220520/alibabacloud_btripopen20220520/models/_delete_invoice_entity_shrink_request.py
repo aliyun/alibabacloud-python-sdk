@@ -11,8 +11,12 @@ class DeleteInvoiceEntityShrinkRequest(DaraModel):
         entities_shrink: str = None,
         third_part_id: str = None,
     ):
+        # Specifies whether to delete all applicable personnel. If del_all is set to true, all entities under the invoice header are deleted, and the entity list parameter is not validated.
         self.del_all = del_all
+        # The entity list. This parameter is required when del_all is set to false or null.
         self.entities_shrink = entities_shrink
+        # The third-party invoice ID.
+        # 
         # This parameter is required.
         self.third_part_id = third_part_id
 

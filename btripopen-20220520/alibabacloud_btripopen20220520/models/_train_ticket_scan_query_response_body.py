@@ -20,8 +20,10 @@ class TrainTicketScanQueryResponseBody(DaraModel):
         self.code = code
         self.message = message
         self.module = module
+        # requestId
         self.request_id = request_id
         self.success = success
+        # traceId
         self.trace_id = trace_id
 
     def validate(self):
@@ -210,7 +212,9 @@ class TrainTicketScanQueryResponseBodyModuleItems(DaraModel):
         self.serial_number = serial_number
         self.tax_amount = tax_amount
         self.tax_rate = tax_rate
+        # 取票号
         self.ticket_no = ticket_no
+        # 车次
         self.train_no = train_no
         self.xml_url = xml_url
 

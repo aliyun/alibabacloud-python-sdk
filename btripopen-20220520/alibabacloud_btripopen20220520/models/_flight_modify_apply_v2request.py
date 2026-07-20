@@ -31,6 +31,7 @@ class FlightModifyApplyV2Request(DaraModel):
         self.out_sub_order_id = out_sub_order_id
         self.passenger_segment_relations = passenger_segment_relations
         self.reason = reason
+        # sessionId
         self.session_id = session_id
         self.voluntary = voluntary
 

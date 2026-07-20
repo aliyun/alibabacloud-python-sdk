@@ -22,6 +22,7 @@ class EstimatedPriceQueryResponseBody(DaraModel):
         self.module = module
         self.request_id = request_id
         self.success = success
+        # traceId
         self.trace_id = trace_id
 
     def validate(self):
@@ -84,6 +85,7 @@ class EstimatedPriceQueryResponseBodyModule(DaraModel):
         traffic_fee: main_models.EstimatedPriceQueryResponseBodyModuleTrafficFee = None,
     ):
         self.hotel_fee_detail = hotel_fee_detail
+        # 酒店费用总额，单位为元
         self.total_hotel_fee = total_hotel_fee
         self.traffic_fee = traffic_fee
 

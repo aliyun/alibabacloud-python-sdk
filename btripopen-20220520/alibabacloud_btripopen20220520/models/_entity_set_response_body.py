@@ -22,6 +22,7 @@ class EntitySetResponseBody(DaraModel):
         self.more_page = more_page
         self.request_id = request_id
         self.success = success
+        # traceId
         self.trace_id = trace_id
 
     def validate(self):

@@ -19,9 +19,12 @@ class FlightOtaSearchV2ResponseBody(DaraModel):
     ):
         self.code = code
         self.message = message
+        # module
         self.module = module
+        # requestId
         self.request_id = request_id
         self.success = success
+        # traceId
         self.trace_id = trace_id
 
     def validate(self):
@@ -463,6 +466,7 @@ class FlightOtaSearchV2ResponseBodyModuleFlightJourneyInfosFlightSegmentInfos(Da
         self.dep_city_code = dep_city_code
         self.dep_city_name = dep_city_name
         self.dep_time = dep_time
+        # duration
         self.duration = duration
         self.extra_info = extra_info
         self.flight_no = flight_no

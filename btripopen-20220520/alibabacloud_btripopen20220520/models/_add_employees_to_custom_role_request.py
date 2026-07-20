@@ -12,8 +12,12 @@ class AddEmployeesToCustomRoleRequest(DaraModel):
         role_id: str = None,
         user_id_list: List[str] = None,
     ):
+        # The ID of the custom enterprise role.
+        # 
         # This parameter is required.
         self.role_id = role_id
+        # The list of member IDs. The maximum number of members per request is 500.
+        # 
         # This parameter is required.
         self.user_id_list = user_id_list
 

@@ -13,6 +13,9 @@ class AddEmployeeHeaders(DaraModel):
         x_acs_btrip_corp_token: str = None,
     ):
         self.common_headers = common_headers
+        # The enterprise access token.
+        # - When calling the operation over HTTP, include this as a **required parameter** in the request URL. For information about how to obtain the token, refer to [Enterprise access token](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985).
+        # - When appending the token to the URL, use any of the following formats: `so_corp_token=value`, `dtb_corp_token=value`, or `corp_token=value`. **Recommended:** `corp_token=value`.
         self.x_acs_btrip_corp_token = x_acs_btrip_corp_token
 
     def validate(self):

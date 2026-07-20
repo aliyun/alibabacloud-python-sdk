@@ -14,8 +14,12 @@ class DeleteInvoiceEntityRequest(DaraModel):
         entities: List[main_models.DeleteInvoiceEntityRequestEntities] = None,
         third_part_id: str = None,
     ):
+        # Specifies whether to delete all applicable personnel. If del_all is set to true, all entities under the invoice header are deleted, and the entity list parameter is not validated.
         self.del_all = del_all
+        # The entity list. This parameter is required when del_all is set to false or null.
         self.entities = entities
+        # The third-party invoice ID.
+        # 
         # This parameter is required.
         self.third_part_id = third_part_id
 
@@ -65,7 +69,13 @@ class DeleteInvoiceEntityRequestEntities(DaraModel):
         entity_id: str = None,
         entity_type: str = None,
     ):
+        # The entity ID, which can be a personnel ID, department ID, role ID, or third-party department ID.
         self.entity_id = entity_id
+        # The entity type. Valid values:
+        # - 1: employee
+        # - 2: department
+        # - 3: role
+        # - 4: third-party department
         self.entity_type = entity_type
 
     def validate(self):

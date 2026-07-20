@@ -17,11 +17,17 @@ class TravelStandardListQueryResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The response code.
         self.code = code
+        # The error message.
         self.message = message
+        # The response data. Returned by the server. An empty value is returned if no results are found or an exception occurs.
         self.module = module
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # traceId
         self.trace_id = trace_id
 
     def validate(self):
@@ -82,7 +88,9 @@ class TravelStandardListQueryResponseBodyModule(DaraModel):
         items: List[main_models.TravelStandardListQueryResponseBodyModuleItems] = None,
         total_size: int = None,
     ):
+        # The list of travel standards.
         self.items = items
+        # The total number of travel standards.
         self.total_size = total_size
 
     def validate(self):
@@ -126,8 +134,11 @@ class TravelStandardListQueryResponseBodyModuleItems(DaraModel):
         reserve_rule_desc: List[main_models.TravelStandardListQueryResponseBodyModuleItemsReserveRuleDesc] = None,
         scope: int = None,
     ):
+        # The primary travel standard information.
         self.main_reserve_rule = main_reserve_rule
+        # The description of the travel standard.
         self.reserve_rule_desc = reserve_rule_desc
+        # The applicable personnel scope of the travel standard.
         self.scope = scope
 
     def validate(self):
@@ -180,8 +191,11 @@ class TravelStandardListQueryResponseBodyModuleItemsReserveRuleDesc(DaraModel):
         title: str = None,
         type: str = None,
     ):
+        # The description of the travel standard.
         self.data_list = data_list
+        # The title of the travel standard detail.
         self.title = title
+        # The category of the travel standard detail.
         self.type = type
 
     def validate(self):
@@ -230,7 +244,9 @@ class TravelStandardListQueryResponseBodyModuleItemsReserveRuleDescDataList(Dara
         key: str = None,
         value: str = None,
     ):
+        # The travel standard description item.
         self.key = key
+        # The value of the travel standard description item.
         self.value = value
 
     def validate(self):
@@ -268,10 +284,15 @@ class TravelStandardListQueryResponseBodyModuleItemsMainReserveRule(DaraModel):
         rule_id: int = None,
         rule_name: str = None,
     ):
+        # The list of enabled service categories.
         self.open_service_type_list = open_service_type_list
+        # The personnel rule code.
         self.rule_code = rule_code
+        # The description of the travel standard.
         self.rule_desc = rule_desc
+        # The ID of the primary travel standard.
         self.rule_id = rule_id
+        # The name of the travel standard.
         self.rule_name = rule_name
 
     def validate(self):

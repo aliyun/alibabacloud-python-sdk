@@ -9,6 +9,8 @@ class AccessTokenRequest(DaraModel):
         self,
         app_secret: str = None,
     ):
+        # The API secret of the application. For information about how to obtain the secret, see [Application credentials](/#/document/server/application-of-basic-information?handbookId=development-support).
+        # 
         # This parameter is required.
         self.app_secret = app_secret
 

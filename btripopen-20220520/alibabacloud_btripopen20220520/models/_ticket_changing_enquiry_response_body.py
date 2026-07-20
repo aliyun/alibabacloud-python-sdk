@@ -1238,6 +1238,7 @@ class TicketChangingEnquiryResponseBodyModuleFlightInfoListCabinListChangeOtaIte
         ptc: str = None,
         title: str = None,
     ):
+        # attributes
         self.attributes = attributes
         self.baggage_sub_content_visualizes = baggage_sub_content_visualizes
         self.baggage_sub_contents = baggage_sub_contents

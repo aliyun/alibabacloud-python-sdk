@@ -16,12 +16,19 @@ class AccessTokenResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The status code.
         self.code = code
+        # The response data. **Deprecated. Use the** `module` **field instead**.
         self.data = data
+        # The response message.
         self.message = message
+        # The response data.
         self.module = module
+        # The unique identifier of this request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # The global trace identifier of the request, typically used for troubleshooting.
         self.trace_id = trace_id
 
     def validate(self):
@@ -92,8 +99,11 @@ class AccessTokenResponseBodyModule(DaraModel):
         start: int = None,
         token: str = None,
     ):
+        # The validity duration of the token. The initial value is 2 hours (7200000 ms). To prevent token expiration, set the refresh interval to: **5 minutes ≤ interval ≤ 2 hours**. If you refresh within this interval, the token obtained from the previous request remains valid.
         self.expire = expire
+        # The time when the token takes effect.
         self.start = start
+        # The application access token.
         self.token = token
 
     def validate(self):
@@ -134,7 +144,9 @@ class AccessTokenResponseBodyData(DaraModel):
         expire: int = None,
         token: str = None,
     ):
+        # **Deprecated. Use the** `module` **field instead**.
         self.expire = expire
+        # **Deprecated. Use the** `module` **field instead**.
         self.token = token
 
     def validate(self):

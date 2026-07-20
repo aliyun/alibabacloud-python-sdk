@@ -15,11 +15,17 @@ class IntlFlightReShopCreateResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The status code.
         self.code = code
+        # The response message.
         self.message = message
+        # The response data.
         self.module = module
+        # The unique ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # The global trace ID of the request, typically used for troubleshooting.
         self.trace_id = trace_id
 
     def validate(self):
@@ -83,10 +89,15 @@ class IntlFlightReShopCreateResponseBodyModule(DaraModel):
         out_re_shop_apply_id: str = None,
         re_shop_apply_id: str = None,
     ):
+        # The asynchronous application key, used in the asynchronous commit pattern.
         self.async_apply_key = async_apply_key
+        # Indicates whether a retry is required. This parameter is used in the asynchronous commit pattern.
         self.need_retry = need_retry
+        # The retry time interval, in milliseconds.
         self.next_retry_interval = next_retry_interval
+        # The external rebooking application ID.
         self.out_re_shop_apply_id = out_re_shop_apply_id
+        # The business travel rebooking application ID.
         self.re_shop_apply_id = re_shop_apply_id
 
     def validate(self):

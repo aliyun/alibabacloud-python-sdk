@@ -17,11 +17,17 @@ class IntlFlightReShopListSearchResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The status code.
         self.code = code
+        # The response message.
         self.message = message
+        # The response data.
         self.module = module
+        # The unique ID of the request.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
+        # The global trace ID of the request, typically used for troubleshooting.
         self.trace_id = trace_id
 
     def validate(self):
@@ -84,9 +90,13 @@ class IntlFlightReShopListSearchResponseBodyModule(DaraModel):
         re_shop_item_list: List[main_models.IntlFlightReShopListSearchResponseBodyModuleReShopItemList] = None,
         token: str = None,
     ):
+        # Indicates whether polling needs to continue.
         self.need_continue = need_continue
+        # The wait time before the next search request, in milliseconds.
         self.next_req_wait_time = next_req_wait_time
+        # The flight list.
         self.re_shop_item_list = re_shop_item_list
+        # The query record token for external polling.
         self.token = token
 
     def validate(self):
@@ -141,7 +151,9 @@ class IntlFlightReShopListSearchResponseBodyModuleReShopItemList(DaraModel):
         best_price_item: main_models.IntlFlightReShopListSearchResponseBodyModuleReShopItemListBestPriceItem = None,
         flight_journey_infos: List[main_models.IntlFlightReShopListSearchResponseBodyModuleReShopItemListFlightJourneyInfos] = None,
     ):
+        # The lowest price item.
         self.best_price_item = best_price_item
+        # The flight journey information.
         self.flight_journey_infos = flight_journey_infos
 
     def validate(self):
@@ -195,15 +207,25 @@ class IntlFlightReShopListSearchResponseBodyModuleReShopItemListFlightJourneyInf
         journey_index: int = None,
         transfer_time: int = None,
     ):
+        # The three-letter code of the arrival city.
         self.arr_city_code = arr_city_code
+        # The name of the arrival city.
         self.arr_city_name = arr_city_name
+        # The arrival time. Format: yyyy-MM-dd HH:mm.
         self.arr_time = arr_time
+        # The three-letter code of the departure city.
         self.dep_city_code = dep_city_code
+        # The name of the departure city.
         self.dep_city_name = dep_city_name
+        # The departure time. Format: yyyy-MM-dd HH:mm.
         self.dep_time = dep_time
+        # The total duration, in minutes.
         self.duration = duration
+        # The flight segment information.
         self.flight_segment_infos = flight_segment_infos
+        # The journey index, starting from 0.
         self.journey_index = journey_index
+        # The transfer duration.
         self.transfer_time = transfer_time
 
     def validate(self):
@@ -327,40 +349,77 @@ class IntlFlightReShopListSearchResponseBodyModuleReShopItemListFlightJourneyInf
         ticketing_airline_info: main_models.IntlFlightReShopListSearchResponseBodyModuleReShopItemListFlightJourneyInfosFlightSegmentInfosTicketingAirlineInfo = None,
         total_time: str = None,
     ):
+        # The marketing airline information.
         self.airline_info = airline_info
+        # The arrival airport information.
         self.arr_airport_info = arr_airport_info
+        # The three-letter code of the arrival city.
         self.arr_city_code = arr_city_code
+        # The name of the arrival city.
         self.arr_city_name = arr_city_name
+        # The arrival time. Format: yyyy-MM-dd HH:mm.
         self.arr_time = arr_time
+        # The arrival time with time zone.
         self.arr_time_utc = arr_time_utc
+        # The departure airport information.
         self.dep_airport_info = dep_airport_info
+        # The three-letter code of the departure city.
         self.dep_city_code = dep_city_code
+        # The name of the departure city.
         self.dep_city_name = dep_city_name
+        # The departure time. Format: yyyy-MM-dd HH:mm.
         self.dep_time = dep_time
+        # The departure time with time zone.
         self.dep_time_utc = dep_time_utc
+        # The total duration of the flight segment in minutes.
         self.duration = duration
+        # The flight number.
         self.flight_no = flight_no
+        # The codeshare flight information.
         self.flight_share_info = flight_share_info
+        # The aircraft type name.
         self.flight_size = flight_size
+        # The flight stopover list.
         self.flight_stop_info_list = flight_stop_info_list
+        # The aircraft type code.
         self.flight_type = flight_type
+        # The journey index.
         self.journey_index = journey_index
+        # Indicates whether luggage is through-checked for the current segment.
         self.luggage_direct_info = luggage_direct_info
+        # The manufacturer.
         self.manufacturer = manufacturer
+        # Indicates whether a meal is provided. Valid values:
+        # - 0: no meal.
+        # - 1: meal provided.
         self.meal = meal
+        # The meal description.
         self.meal_desc = meal_desc
+        # The flight mileage.
         self.miles = miles
+        # The on-time rate information.
         self.on_time_rate = on_time_rate
+        # The number of extra days. For example, 1 indicates that the flight crosses 1 day.
         self.one_more = one_more
+        # The cross-day display text.
         self.one_more_show = one_more_show
+        # The other information about the flight segment.
         self.other_info = other_info
+        # The segment index, starting from 0 within the same journey.
         self.segment_index = segment_index
+        # The unique key of the segment.
         self.segment_key = segment_key
+        # The transit visa information for the current segment.
         self.segment_visa_remark = segment_visa_remark
+        # Indicates whether the flight is a codeshare flight.
         self.share = share
+        # The short name of the aircraft type.
         self.short_flight_size = short_flight_size
+        # Indicates whether the flight has a stopover.
         self.stop = stop
+        # The ticketing airline information.
         self.ticketing_airline_info = ticketing_airline_info
+        # The total duration of the flight segment.
         self.total_time = total_time
 
     def validate(self):
@@ -628,10 +687,15 @@ class IntlFlightReShopListSearchResponseBodyModuleReShopItemListFlightJourneyInf
         icon_url: str = None,
         short_name: str = None,
     ):
+        # The airline code.
         self.airline_code = airline_code
+        # The airline name.
         self.airline_name = airline_name
+        # Indicates whether the airline is a low-cost airline.
         self.cheap_airline = cheap_airline
+        # The URL of the airline icon.
         self.icon_url = icon_url
+        # The short name of the airline.
         self.short_name = short_name
 
     def validate(self):
@@ -686,9 +750,15 @@ class IntlFlightReShopListSearchResponseBodyModuleReShopItemListFlightJourneyInf
         stop_city_visa_remarks: List[str] = None,
         stop_city_visa_types: List[int] = None,
     ):
+        # The transit visa information for the departure city.
         self.dep_city_visa_remark = dep_city_visa_remark
+        # The transit visa type for the departure city. Valid values:
+        # - 0: no transit visa required.
+        # - 1: transit visa required.
         self.dep_city_visa_type = dep_city_visa_type
+        # The transit visa information for stopover cities, one entry per stopover city.
         self.stop_city_visa_remarks = stop_city_visa_remarks
+        # The transit visa types for stopover cities, one entry per stopover city.
         self.stop_city_visa_types = stop_city_visa_types
 
     def validate(self):
@@ -739,11 +809,17 @@ class IntlFlightReShopListSearchResponseBodyModuleReShopItemListFlightJourneyInf
         on_time_rate: str = None,
         wifi: bool = None,
     ):
+        # The aircraft age.
         self.aircraft_age = aircraft_age
+        # The average delay time.
         self.avg_delay_time = avg_delay_time
+        # The flight cancellation rate.
         self.flight_cancel_rate = flight_cancel_rate
+        # The jet bridge rate.
         self.jet_bridge_rate = jet_bridge_rate
+        # The on-time rate information.
         self.on_time_rate = on_time_rate
+        # Indicates whether Wi-Fi is available.
         self.wifi = wifi
 
     def validate(self):
@@ -802,7 +878,15 @@ class IntlFlightReShopListSearchResponseBodyModuleReShopItemListFlightJourneyInf
         dep_city_luggage_direct: int = None,
         stop_city_luggage_direct: int = None,
     ):
+        # The luggage through-check status for the departure city. Valid values:
+        # - 0: re-check required.
+        # - 1: through-checked.
+        # - null: unknown.
         self.dep_city_luggage_direct = dep_city_luggage_direct
+        # The luggage through-check status for the departure city. Valid values:
+        # - 0: re-check required.
+        # - 1: through-checked.
+        # - null: unknown.
         self.stop_city_luggage_direct = stop_city_luggage_direct
 
     def validate(self):
@@ -845,15 +929,25 @@ class IntlFlightReShopListSearchResponseBodyModuleReShopItemListFlightJourneyInf
         stop_dep_time: str = None,
         stop_time: str = None,
     ):
+        # The stopover airport.
         self.stop_airport = stop_airport
+        # The county information of the stopover airport.
         self.stop_airport_county_info = stop_airport_county_info
+        # The name of the stopover airport.
         self.stop_airport_name = stop_airport_name
+        # The arrival terminal at the stopover.
         self.stop_arr_term = stop_arr_term
+        # The arrival time at the stopover. Format: yyyy-MM-dd HH:mm.
         self.stop_arr_time = stop_arr_time
+        # The three-letter code of the stopover city.
         self.stop_city_code = stop_city_code
+        # The name of the stopover city.
         self.stop_city_name = stop_city_name
+        # The departure terminal at the stopover.
         self.stop_dep_term = stop_dep_term
+        # The departure time from the stopover. Format: yyyy-MM-dd HH:mm.
         self.stop_dep_time = stop_dep_time
+        # The stopover duration, in minutes.
         self.stop_time = stop_time
 
     def validate(self):
@@ -946,15 +1040,28 @@ class IntlFlightReShopListSearchResponseBodyModuleReShopItemListFlightJourneyInf
         prefecture_city_adcode: str = None,
         prefecture_city_name: str = None,
     ):
+        # The administrative division code.
         self.adcode = adcode
+        # The airport city code.
         self.airport_city_code = airport_city_code
+        # The city name of the airport.
+        # [_single.resp.200.props.module.re_shop_item_list.items.flight_journey_infos.items.flight_segment_infos.items.flight_stop_info
         self.airport_city_name = airport_city_name
+        # The airport code.
         self.airport_code = airport_code
+        # The airport name.
         self.airport_name = airport_name
+        # The parent city name of the airport.
         self.airport_parent_city_name = airport_parent_city_name
+        # The administrative division code of the county-level city where the airport is located.
+        # >Notice: This value is null if the airport is not at the county level.</notice>
         self.county_city_adcode = county_city_adcode
+        # The name of the county-level city where the airport is located.
+        # >Notice: This value is null if the airport is not at the county level.</notice>
         self.county_city_name = county_city_name
+        # The administrative division code of the prefecture-level city where the airport is located.
         self.prefecture_city_adcode = prefecture_city_adcode
+        # The name of the prefecture-level city where the airport is located.
         self.prefecture_city_name = prefecture_city_name
 
     def validate(self):
@@ -1037,7 +1144,9 @@ class IntlFlightReShopListSearchResponseBodyModuleReShopItemListFlightJourneyInf
         operating_airline_info: main_models.IntlFlightReShopListSearchResponseBodyModuleReShopItemListFlightJourneyInfosFlightSegmentInfosFlightShareInfoOperatingAirlineInfo = None,
         operating_flight_no: str = None,
     ):
+        # The operating airline information.
         self.operating_airline_info = operating_airline_info
+        # The operating carrier flight number. This field has a value only for codeshare flights.
         self.operating_flight_no = operating_flight_no
 
     def validate(self):
@@ -1077,10 +1186,15 @@ class IntlFlightReShopListSearchResponseBodyModuleReShopItemListFlightJourneyInf
         icon_url: str = None,
         short_name: str = None,
     ):
+        # The airline code.
         self.airline_code = airline_code
+        # The airline name.
         self.airline_name = airline_name
+        # Indicates whether the airline is a low-cost airline.
         self.cheap_airline = cheap_airline
+        # The URL of the airline icon.
         self.icon_url = icon_url
+        # The short name of the airline.
         self.short_name = short_name
 
     def validate(self):
@@ -1135,9 +1249,13 @@ class IntlFlightReShopListSearchResponseBodyModuleReShopItemListFlightJourneyInf
         airport_short_name: str = None,
         terminal: str = None,
     ):
+        # The airport code.
         self.airport_code = airport_code
+        # The airport name.
         self.airport_name = airport_name
+        # The short name of the airport.
         self.airport_short_name = airport_short_name
+        # The terminal.
         self.terminal = terminal
 
     def validate(self):
@@ -1186,9 +1304,13 @@ class IntlFlightReShopListSearchResponseBodyModuleReShopItemListFlightJourneyInf
         airport_short_name: str = None,
         terminal: str = None,
     ):
+        # The airport code.
         self.airport_code = airport_code
+        # The airport name.
         self.airport_name = airport_name
+        # The short name of the airport.
         self.airport_short_name = airport_short_name
+        # The terminal.
         self.terminal = terminal
 
     def validate(self):
@@ -1238,10 +1360,15 @@ class IntlFlightReShopListSearchResponseBodyModuleReShopItemListFlightJourneyInf
         icon_url: str = None,
         short_name: str = None,
     ):
+        # The airline code.
         self.airline_code = airline_code
+        # The airline name.
         self.airline_name = airline_name
+        # Indicates whether the airline is a low-cost airline.
         self.cheap_airline = cheap_airline
+        # The URL of the airline icon.
         self.icon_url = icon_url
+        # The short name of the airline.
         self.short_name = short_name
 
     def validate(self):
@@ -1296,9 +1423,13 @@ class IntlFlightReShopListSearchResponseBodyModuleReShopItemListBestPriceItem(Da
         shopping_item_map: Dict[str, main_models.ModuleReShopItemListBestPriceItemShoppingItemMapValue] = None,
         sub_items: List[main_models.IntlFlightReShopListSearchResponseBodyModuleReShopItemListBestPriceItemSubItems] = None,
     ):
+        # The item ID.
         self.item_id = item_id
+        # The item type. Valid values: normal: standard item. combination: combined special offer.
         self.item_type = item_type
+        # The pricing information mapped by passenger type.
         self.shopping_item_map = shopping_item_map
+        # The sub-items. Combined products may have multiple sub-items.
         self.sub_items = sub_items
 
     def validate(self):
@@ -1365,10 +1496,15 @@ class IntlFlightReShopListSearchResponseBodyModuleReShopItemListBestPriceItemSub
         shopping_item_map: Dict[str, main_models.ModuleReShopItemListBestPriceItemSubItemsShoppingItemMapValue] = None,
         uniq_key: str = None,
     ):
+        # The discount value.
         self.discount_num = discount_num
+        # The list of segment keys contained in the sub-item.
         self.segment_keys = segment_keys
+        # The list of segment position information contained in the sub-item.
         self.segment_position_list = segment_position_list
+        # Key: ADT (adult), CHD (child), or INFANT (infant).
         self.shopping_item_map = shopping_item_map
+        # The unique item ID.
         self.uniq_key = uniq_key
 
     def validate(self):
@@ -1438,7 +1574,9 @@ class IntlFlightReShopListSearchResponseBodyModuleReShopItemListBestPriceItemSub
         journey_index: int = None,
         segment_index: int = None,
     ):
+        # The journey ordinal number (starting from 0).
         self.journey_index = journey_index
+        # The segment ordinal number (starting from 0 within the same journey).
         self.segment_index = segment_index
 
     def validate(self):

@@ -721,7 +721,9 @@ class TrainOrderQueryResponseBodyModuleOrderBaseInfo(DaraModel):
         self.corp_name = corp_name
         self.depart_id = depart_id
         self.depart_name = depart_name
+        # 火车票超标审批id
         self.exceed_apply_id = exceed_apply_id
+        # 火车票超标审批三方id
         self.exceed_third_part_apply_id = exceed_third_part_apply_id
         self.gmt_create = gmt_create
         self.gmt_modify = gmt_modify

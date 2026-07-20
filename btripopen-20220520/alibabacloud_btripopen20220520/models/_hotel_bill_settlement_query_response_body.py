@@ -289,6 +289,7 @@ class HotelBillSettlementQueryResponseBodyModuleDataList(DaraModel):
         self.apply_arr_city_name = apply_arr_city_name
         self.apply_dep_city_code = apply_dep_city_code
         self.apply_dep_city_name = apply_dep_city_name
+        # 审批扩展自定义字段
         self.apply_extend_field = apply_extend_field
         self.apply_id = apply_id
         self.approver_email = approver_email
@@ -388,6 +389,7 @@ class HotelBillSettlementQueryResponseBodyModuleDataList(DaraModel):
         self.star = star
         self.status = status
         self.status_desc = status_desc
+        # 税率
         self.tax_rate = tax_rate
         self.third_itinerary_id = third_itinerary_id
         self.total_nights = total_nights

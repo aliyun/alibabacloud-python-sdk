@@ -11,13 +11,22 @@ class TravelStandardListQueryRequest(DaraModel):
         page_no: int = None,
         page_size: int = None,
         rule_name: str = None,
+        user_id: str = None,
     ):
+        # Applicable to parent-subsidiary enterprises. Set this parameter to true to query the unified group travel standards. If left empty, the system returns the travel rules that are currently in effect for the enterprise.
         self.from_group = from_group
+        # The page number, starting from 1.
+        # 
         # This parameter is required.
         self.page_no = page_no
+        # The number of entries per page. Maximum value: 50.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The name of the travel standard to search for.
         self.rule_name = rule_name
+        # The user ID. Specify this parameter to query the travel standards bound to an employee.
+        self.user_id = user_id
 
     def validate(self):
         pass
@@ -39,6 +48,9 @@ class TravelStandardListQueryRequest(DaraModel):
         if self.rule_name is not None:
             result['rule_name'] = self.rule_name
 
+        if self.user_id is not None:
+            result['user_id'] = self.user_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -54,6 +66,9 @@ class TravelStandardListQueryRequest(DaraModel):
 
         if m.get('rule_name') is not None:
             self.rule_name = m.get('rule_name')
+
+        if m.get('user_id') is not None:
+            self.user_id = m.get('user_id')
 
         return self
 

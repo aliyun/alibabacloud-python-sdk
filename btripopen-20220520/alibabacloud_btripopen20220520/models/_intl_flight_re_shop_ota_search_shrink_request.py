@@ -16,17 +16,29 @@ class IntlFlightReShopOtaSearchShrinkRequest(DaraModel):
         selected_passengers_shrink: str = None,
         token: str = None,
     ):
+        # The business travel order ID. This parameter is required.
+        # 
         # This parameter is required.
         self.order_id = order_id
+        # The external order ID.
         self.out_order_id = out_order_id
+        # Specifies whether to enable external polling. When enabled, the external frontend controls polling, which reduces the response time (RT) of a single search. Default value: false.
         self.out_wheel_search = out_wheel_search
+        # The rebooking group key returned by the consultation operation.
+        # 
         # This parameter is required.
         self.passenger_journey_group_key = passenger_journey_group_key
+        # The rebooking reason code.
         self.re_shop_reason_code = re_shop_reason_code
+        # The search journeys. Only pass the journeys to be rebooked.
+        # 
         # This parameter is required.
         self.search_journeys_shrink = search_journeys_shrink
+        # The list of selected passengers for rebooking.
+        # 
         # This parameter is required.
         self.selected_passengers_shrink = selected_passengers_shrink
+        # The query record token used for external polling.
         self.token = token
 
     def validate(self):

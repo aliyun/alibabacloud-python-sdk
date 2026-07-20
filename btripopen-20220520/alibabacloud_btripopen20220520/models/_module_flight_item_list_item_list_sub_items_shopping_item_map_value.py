@@ -15,6 +15,7 @@ class ModuleFlightItemListItemListSubItemsShoppingItemMapValue(DaraModel):
         search_price: main_models.ModuleFlightItemListItemListSubItemsShoppingItemMapValueSearchPrice = None,
         segment_price: Dict[str, main_models.ModuleFlightItemListItemListSubItemsShoppingItemMapValueSegmentPriceValue] = None,
     ):
+        # id
         self.id = id
         self.cabin_quantity = cabin_quantity
         self.search_price = search_price
@@ -120,6 +121,7 @@ class ModuleFlightItemListItemListSubItemsShoppingItemMapValueSearchPrice(DaraMo
         self.first_standard_price = first_standard_price
         self.business_standard_price = business_standard_price
         self.common_standard_price = common_standard_price
+        # fdPrice
         self.inter_ticket_price = inter_ticket_price
         self.subtracted_price = subtracted_price
         self.origin_common_price = origin_common_price

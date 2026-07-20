@@ -22,6 +22,7 @@ class InvoiceSearchResponseBody(DaraModel):
         self.module = module
         self.request_id = request_id
         self.success = success
+        # traceId
         self.trace_id = trace_id
 
     def validate(self):
@@ -89,6 +90,7 @@ class InvoiceSearchResponseBodyModule(DaraModel):
         third_part_invoice_id: str = None,
         title: str = None,
     ):
+        # ID
         self.id = id
         self.third_part_invoice_id = third_part_invoice_id
         self.title = title

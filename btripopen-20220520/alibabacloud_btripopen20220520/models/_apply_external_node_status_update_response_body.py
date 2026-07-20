@@ -19,6 +19,7 @@ class ApplyExternalNodeStatusUpdateResponseBody(DaraModel):
         self.module = module
         self.request_id = request_id
         self.success = success
+        # traceId
         self.trace_id = trace_id
 
     def validate(self):

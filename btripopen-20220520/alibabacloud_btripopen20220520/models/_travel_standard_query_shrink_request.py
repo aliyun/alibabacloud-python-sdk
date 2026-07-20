@@ -11,10 +11,16 @@ class TravelStandardQueryShrinkRequest(DaraModel):
         rule_code: int = None,
         service_type_list_shrink: str = None,
     ):
+        # Specifies whether to use the group travel standard.
+        # 
         # This parameter is required.
         self.from_group = from_group
+        # The personnel rule code.
+        # 
         # This parameter is required.
         self.rule_code = rule_code
+        # The service categories to query.
+        # 
         # This parameter is required.
         self.service_type_list_shrink = service_type_list_shrink
 

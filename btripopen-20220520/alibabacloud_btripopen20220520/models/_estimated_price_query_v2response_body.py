@@ -16,10 +16,15 @@ class EstimatedPriceQueryV2ResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The status code.
         self.code = code
+        # The response data.
         self.module = module
+        # The unique identifier of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # traceId
         self.trace_id = trace_id
 
     def validate(self):
@@ -81,8 +86,11 @@ class EstimatedPriceQueryV2ResponseBodyModule(DaraModel):
         price_map: Dict[str, main_models.ModulePriceMapValue] = None,
         type: str = None,
     ):
+        # The category, such as flight, hotel, or train.
         self.biz_type = biz_type
+        # The price map. Key: min and max.
         self.price_map = price_map
+        # The type, such as economy class, business class, first class, G/D train, other, or travel standard.
         self.type = type
 
     def validate(self):

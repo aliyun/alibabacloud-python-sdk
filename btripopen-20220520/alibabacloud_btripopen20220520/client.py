@@ -23469,6 +23469,8 @@ class Client(OpenApiClient):
             query['page_size'] = request.page_size
         if not DaraCore.is_null(request.rule_name):
             query['rule_name'] = request.rule_name
+        if not DaraCore.is_null(request.user_id):
+            query['user_id'] = request.user_id
         real_headers = {}
         if not DaraCore.is_null(headers.common_headers):
             real_headers = headers.common_headers
@@ -23510,6 +23512,8 @@ class Client(OpenApiClient):
             query['page_size'] = request.page_size
         if not DaraCore.is_null(request.rule_name):
             query['rule_name'] = request.rule_name
+        if not DaraCore.is_null(request.user_id):
+            query['user_id'] = request.user_id
         real_headers = {}
         if not DaraCore.is_null(headers.common_headers):
             real_headers = headers.common_headers

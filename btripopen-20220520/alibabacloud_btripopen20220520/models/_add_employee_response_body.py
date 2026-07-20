@@ -13,10 +13,15 @@ class AddEmployeeResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The status code.
         self.code = code
+        # The description.
         self.message = message
+        # The unique identifier of the request.
         self.request_id = request_id
+        # Indicates whether the operation was successful.
         self.success = success
+        # The global trace identifier of the request, which is typically used for troubleshooting.
         self.trace_id = trace_id
 
     def validate(self):

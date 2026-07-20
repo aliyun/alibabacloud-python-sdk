@@ -15,11 +15,17 @@ class AddressGetResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The status code.
         self.code = code
+        # The description.
         self.message = message
+        # The response data.
         self.module = module
+        # The unique identifier of this request.
         self.request_id = request_id
+        # Indicates whether the call is successful. Use this parameter to determine the result of the call.
         self.success = success
+        # The global trace identifier of the request, typically used for troubleshooting.
         self.trace_id = trace_id
 
     def validate(self):
@@ -79,6 +85,7 @@ class AddressGetResponseBodyModule(DaraModel):
         self,
         url: str = None,
     ):
+        # The redirect URL.
         self.url = url
 
     def validate(self):

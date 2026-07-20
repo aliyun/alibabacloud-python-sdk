@@ -19,17 +19,29 @@ class IntlFlightReShopOtaSearchRequest(DaraModel):
         selected_passengers: List[main_models.IntlFlightReShopOtaSearchRequestSelectedPassengers] = None,
         token: str = None,
     ):
+        # The business travel order ID. This parameter is required.
+        # 
         # This parameter is required.
         self.order_id = order_id
+        # The external order ID.
         self.out_order_id = out_order_id
+        # Specifies whether to enable external polling. When enabled, the external frontend controls polling, which reduces the response time (RT) of a single search. Default value: false.
         self.out_wheel_search = out_wheel_search
+        # The rebooking group key returned by the consultation operation.
+        # 
         # This parameter is required.
         self.passenger_journey_group_key = passenger_journey_group_key
+        # The rebooking reason code.
         self.re_shop_reason_code = re_shop_reason_code
+        # The search journeys. Only pass the journeys to be rebooked.
+        # 
         # This parameter is required.
         self.search_journeys = search_journeys
+        # The list of selected passengers for rebooking.
+        # 
         # This parameter is required.
         self.selected_passengers = selected_passengers
+        # The query record token used for external polling.
         self.token = token
 
     def validate(self):
@@ -117,7 +129,9 @@ class IntlFlightReShopOtaSearchRequestSelectedPassengers(DaraModel):
         full_name: str = None,
         passenger_id: int = None,
     ):
+        # The full name of the passenger.
         self.full_name = full_name
+        # The passenger ID.
         self.passenger_id = passenger_id
 
     def validate(self):
@@ -154,9 +168,13 @@ class IntlFlightReShopOtaSearchRequestSearchJourneys(DaraModel):
         dep_date: str = None,
         selected_flights: List[main_models.IntlFlightReShopOtaSearchRequestSearchJourneysSelectedFlights] = None,
     ):
+        # The three-letter code of the arrival city.
         self.arr_city_code = arr_city_code
+        # The three-letter code of the departure city.
         self.dep_city_code = dep_city_code
+        # The departure date. Format: yyyy-MM-dd.
         self.dep_date = dep_date
+        # The selected flight information for rebooking.
         self.selected_flights = selected_flights
 
     def validate(self):
@@ -213,9 +231,13 @@ class IntlFlightReShopOtaSearchRequestSearchJourneysSelectedFlights(DaraModel):
         flight_time: str = None,
         market_flight_no: str = None,
     ):
+        # The three-letter code of the arrival city.
         self.arr_city_code = arr_city_code
+        # The three-letter code of the departure city.
         self.dep_city_code = dep_city_code
+        # The departure time. Format: yyyy-MM-dd HH:mm.
         self.flight_time = flight_time
+        # The marketing flight number.
         self.market_flight_no = market_flight_no
 
     def validate(self):

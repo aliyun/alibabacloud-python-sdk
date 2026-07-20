@@ -16,12 +16,23 @@ class AddProjectManagerResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The error code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The response data.
         self.module = module
+        # requestId
         self.request_id = request_id
+        # Indicates whether the request was successful.
+        # 
+        # - true: Successful.
+        # 
+        # - false: Failed.
         self.success = success
+        # traceId
         self.trace_id = trace_id
 
     def validate(self):
@@ -89,8 +100,11 @@ class AddProjectManagerResponseBodyModule(DaraModel):
         remove_num: int = None,
         rule_code: int = None,
     ):
+        # The number of managers added in this operation (always 0 for the remove process).
         self.add_num = add_num
+        # The number of managers removed in this operation (always 0 for the add process).
         self.remove_num = remove_num
+        # The parsed btrip_rule.rule_code (501 + projectId), which helps callers with troubleshooting and reconciliation.
         self.rule_code = rule_code
 
     def validate(self):

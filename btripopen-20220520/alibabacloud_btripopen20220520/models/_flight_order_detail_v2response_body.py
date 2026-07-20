@@ -19,9 +19,12 @@ class FlightOrderDetailV2ResponseBody(DaraModel):
     ):
         self.code = code
         self.message = message
+        # module
         self.module = module
+        # requestId
         self.request_id = request_id
         self.success = success
+        # traceId
         self.trace_id = trace_id
 
     def validate(self):
@@ -120,6 +123,9 @@ class FlightOrderDetailV2ResponseBodyModule(DaraModel):
         self.order_price = order_price
         self.out_order_id = out_order_id
         self.passenger_list = passenger_list
+        # key :passengerId
+        # 
+        # value :segmentId
         self.passenger_segment_map = passenger_segment_map
         self.pay_time = pay_time
         self.saleprice = saleprice
@@ -573,6 +579,7 @@ class FlightOrderDetailV2ResponseBodyModulePassengerListTickets(DaraModel):
         self.channel = channel
         self.journey_title = journey_title
         self.open_ticket_status = open_ticket_status
+        # pcc/office
         self.pcc = pcc
         self.segment_open_ticket_list = segment_open_ticket_list
         self.ticket_auth_memo = ticket_auth_memo
@@ -1027,6 +1034,7 @@ class FlightOrderDetailV2ResponseBodyModuleFlightTaleInfoDTOJourneys(DaraModel):
         self.dep_city_name = dep_city_name
         self.dep_time = dep_time
         self.flight_status = flight_status
+        # iata_no
         self.iata_no = iata_no
         self.is_reshop_journey = is_reshop_journey
         self.is_transfer = is_transfer
@@ -1225,9 +1233,12 @@ class FlightOrderDetailV2ResponseBodyModuleFlightTaleInfoDTOJourneysSegmentList(
         self.arr_city_name = arr_city_name
         self.arr_time = arr_time
         self.arrive_terminal = arrive_terminal
+        # cabin
         self.cabin = cabin
         self.cabin_and_discount = cabin_and_discount
+        # cabin_class
         self.cabin_class = cabin_class
+        # cabin_class_name
         self.cabin_class_name = cabin_class_name
         self.code_share = code_share
         self.deadline_text = deadline_text
@@ -1256,6 +1267,7 @@ class FlightOrderDetailV2ResponseBodyModuleFlightTaleInfoDTOJourneysSegmentList(
         self.plane_type = plane_type
         self.raise_price = raise_price
         self.segment_id = segment_id
+        # segmentIndex
         self.segment_index = segment_index
         self.segment_position = segment_position
         self.stop_airport = stop_airport

@@ -14,16 +14,27 @@ class EstimatedPriceQueryV2Request(DaraModel):
         to_city: str = None,
         user_id: str = None,
     ):
+        # The category.
+        # 
         # This parameter is required.
         self.biz_type = biz_type
+        # The departure date.
+        # 
         # This parameter is required.
         self.depart_date = depart_date
+        # The departure or check-in city.
+        # 
         # This parameter is required.
         self.from_city = from_city
+        # The arrival date.
+        # 
         # This parameter is required.
         self.leave_date = leave_date
+        # The arrival or check-out city.
+        # 
         # This parameter is required.
         self.to_city = to_city
+        # The user ID. This parameter is required for the hotel category.
         self.user_id = user_id
 
     def validate(self):

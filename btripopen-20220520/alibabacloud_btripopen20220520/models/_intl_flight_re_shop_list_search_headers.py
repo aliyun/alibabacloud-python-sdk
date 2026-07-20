@@ -13,6 +13,10 @@ class IntlFlightReShopListSearchHeaders(DaraModel):
         x_acs_btrip_corp_token: str = None,
     ):
         self.common_headers = common_headers
+        # The enterprise access token.
+        # 
+        # - When calling this API over HTTP, this parameter is required and must be appended to the request URL. For more information about how to obtain the token, see [Enterprise access token](https://openapi.alibtrip.com/doc/toDocDetail?spm=openapi-amp.newDocPublishment.0.0.5e2a281frQyDQ8&docId=3769985).
+        # - When appending the token, use crop_token=value instead.
         self.x_acs_btrip_corp_token = x_acs_btrip_corp_token
 
     def validate(self):

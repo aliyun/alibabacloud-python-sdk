@@ -28,23 +28,70 @@ class ModuleReShopItemListSubItemsRefundChangeRuleOfferPenaltyInfoMapValue(DaraM
         segment_number: str = None,
         desc_infos: Dict[str, str] = None,
     ):
+        # Indicates whether the rule is applicable.
         self.struct = struct
+        # Indicates whether refund is supported.
         self.cancel_fee_ind = cancel_fee_ind
+        # Indicates whether date change is supported.
         self.change_fee_ind = change_fee_ind
+        # Indicates whether upgrade is supported.
         self.upgrade_fee_ind = upgrade_fee_ind
+        # Indicates whether reissue is supported.
         self.reissue_ind = reissue_ind
+        # The rule type. Valid values:
+        # 
+        # - 0: Refund fee.
+        # - 1: Change fee.
+        # - 2: No-show penalty.
+        # - 3: Other.
+        # - 4: Upgrade fee.
+        # - 5: Endorsement.
+        # - 6: Deduction for used segments.
+        # - 100: Tax refund.
         self.penalty_type_code = penalty_type_code
+        # The applicability scope of the rule. Valid values:
+        #    
+        # - 1: All unused.
+        # - 2: Partially unused.
+        # - 3: Outbound.
+        # - 4: Inbound.
         self.penalty_apply_range_code = penalty_apply_range_code
+        # The charge method of the rule. Valid values:
+        # 
+        # - 0: Charged per whole trip.
+        # - 1: Charged per direction.
+        # - 2: Charged per segment.
         self.penalty_charge_type_code = penalty_charge_type_code
+        # The fee amount.
         self.fee = fee
+        # The currency of the fee.
         self.currency = currency
+        # The fee percentage.
         self.penalty_percent = penalty_percent
+        # The start time of the rule time range.
         self.start_time = start_time
+        # The end time of the rule time range.
         self.end_time = end_time
+        # The time unit. Valid values:
+        # 
+        # - 0: Hours.
+        # - 1: Days.
         self.time_unit_code = time_unit_code
+        # The rule title.
         self.title = title
+        # 起飞时间
         self.dep_time = dep_time
+        # 航段序号，
+        # 
+        # - OUTBOUND_FIRST("去程第一段")
+        # 
+        # - OUTBOUND_SECOND("去程第二段")
+        # 
+        # - INBOUND_FIRST("回程第一段")
+        # 
+        # - INBOUND_SECOND("回程第二段")
         self.segment_number = segment_number
+        # 各类非结构化补充说明
         self.desc_infos = desc_infos
 
     def validate(self):

@@ -1,3 +1,7 @@
+2026-07-20 Version: 5.4.2
+- Update API TravelStandardListQuery: add request parameters user_id.
+
+
 2026-07-17 Version: 5.4.1
 - Generated python 2022-05-20 for btripOpen.
 

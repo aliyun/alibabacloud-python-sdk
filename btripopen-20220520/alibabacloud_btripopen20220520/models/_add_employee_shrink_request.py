@@ -32,30 +32,64 @@ class AddEmployeeShrinkRequest(DaraModel):
         user_id: str = None,
         user_nick: str = None,
     ):
+        # The account email address. This parameter can be specified when the enterprise activation method is email activation.
         self.account_email = account_email
+        # The account phone number. For enterprises with international phone numbers enabled, specify international numbers, Hong Kong (China), Macao (China), and Taiwan (China) numbers in the format +xx-xxxxxx.
         self.account_phone = account_phone
+        # The custom extension field for the employee, which supports key-value pairs.
+        # 
+        # - Format: JSON string.
         self.attribute = attribute
+        # The avatar of the employee. Specify the URL of the image.
         self.avatar = avatar
+        # The 6-digit administrative code of the work location.
+        # - A maximum of two different administrative codes can be specified.
         self.base_city_code_list_shrink = base_city_code_list_shrink
+        # The base location information of the employee.
         self.base_location_list_shrink = base_location_list_shrink
+        # The birthday of the employee.
+        # - Format: yy-MM-dd.
         self.birthday = birthday
+        # The certificate information of the employee.
         self.cert_list_shrink = cert_list_shrink
+        # The collection of role IDs associated with the employee. The number of roles associated with a single employee must be less than or equal to 200. Otherwise, the employee synchronization fails.
         self.custom_role_code_list_shrink = custom_role_code_list_shrink
+        # The email address of the employee.
         self.email = email
+        # The gender of the employee.
         self.gender = gender
+        # Specifies whether the employee is an Alibaba Business Travel enterprise administrator.
         self.is_admin = is_admin
+        # Specifies whether the employee is the boss.
         self.is_boss = is_boss
+        # Specifies whether the employee is a department manager.
         self.is_dept_leader = is_dept_leader
+        # The employee number, which serves as a unique identifier for the employee along with `user_id`. Ensure that the value is unique.
         self.job_no = job_no
+        # The ID of the direct manager of the employee.
         self.manager_user_id = manager_user_id
+        # The list of departments to which the employee belongs.
         self.out_dept_id_list_shrink = out_dept_id_list_shrink
+        # The mobile phone number of the employee.
+        # - This field is commonly used for booking business travel services across various categories. **In this case, it is required.**
+        # - If your enterprise is a government agency or other special enterprise, call 400-800-5890 to contact an Alibaba Business Travel customer service representative.
         self.phone = phone
+        # The position level of the employee, which is commonly used to match different travel standards.
         self.position_level = position_level
+        # The name of the employee.
         self.real_name = real_name
+        # The English name of the employee. Follow these format requirements:
+        # - Separate the last name and first name with "/", for example: LastName/FirstName.
+        # - Do not include spaces between the last name and first name.
         self.real_name_en = real_name_en
+        # The unique identifier of the same employee across multiple enterprises (parent and subsidiary enterprises).
         self.union_id = union_id
+        # The employee ID, which is the unique identifier of the employee within the enterprise. Ensure that this value is unique.
+        # 
         # This parameter is required.
         self.user_id = user_id
+        # The nickname of the employee.
+        # 
         # This parameter is required.
         self.user_nick = user_nick
 

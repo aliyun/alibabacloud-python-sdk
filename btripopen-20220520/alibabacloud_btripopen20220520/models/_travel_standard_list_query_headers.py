@@ -13,6 +13,8 @@ class TravelStandardListQueryHeaders(DaraModel):
         x_acs_btrip_corp_token: str = None,
     ):
         self.common_headers = common_headers
+        # A header parameter obtained from the enterprise access credential operation. Add this parameter to the request header. In HTTP mode, you can use corp_token=value in the URL as an alternative.
+        # 
         # This parameter is required.
         self.x_acs_btrip_corp_token = x_acs_btrip_corp_token
 

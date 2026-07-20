@@ -15,11 +15,17 @@ class DeleteInvoiceEntityResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The result code.
         self.code = code
+        # The remarks on the result, such as a description of the result.
         self.message = message
+        # The return value from the server. An empty value is returned if no result is available or an exception occurs.
         self.module = module
+        # The unique ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # traceId
         self.trace_id = trace_id
 
     def validate(self):
@@ -80,7 +86,9 @@ class DeleteInvoiceEntityResponseBodyModule(DaraModel):
         remove_num: int = None,
         selected_user_num: int = None,
     ):
+        # The number of removed personnel, departments, or roles.
         self.remove_num = remove_num
+        # The number of entities under the invoice header.
         self.selected_user_num = selected_user_num
 
     def validate(self):

@@ -17,11 +17,17 @@ class TravelStandardQueryResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The return code.
         self.code = code
+        # The error message.
         self.message = message
+        # The response data.
         self.module = module
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # traceId
         self.trace_id = trace_id
 
     def validate(self):
@@ -82,7 +88,9 @@ class TravelStandardQueryResponseBodyModule(DaraModel):
         activated_service_type_list: List[str] = None,
         reserve_rule: main_models.TravelStandardQueryResponseBodyModuleReserveRule = None,
     ):
+        # The service categories activated for the enterprise.
         self.activated_service_type_list = activated_service_type_list
+        # The travel standard information, which consists of the main travel standard information and module configuration information.
         self.reserve_rule = reserve_rule
 
     def validate(self):
@@ -119,7 +127,9 @@ class TravelStandardQueryResponseBodyModuleReserveRule(DaraModel):
         main_reserve_rule: main_models.TravelStandardQueryResponseBodyModuleReserveRuleMainReserveRule = None,
         module_config_list: List[main_models.TravelStandardQueryResponseBodyModuleReserveRuleModuleConfigList] = None,
     ):
+        # The main travel standard information.
         self.main_reserve_rule = main_reserve_rule
+        # The module configuration information.
         self.module_config_list = module_config_list
 
     def validate(self):
@@ -165,7 +175,9 @@ class TravelStandardQueryResponseBodyModuleReserveRuleModuleConfigList(DaraModel
         code: str = None,
         value: str = None,
     ):
+        # The code of the control item.
         self.code = code
+        # The value selected by the user.
         self.value = value
 
     def validate(self):
@@ -203,10 +215,15 @@ class TravelStandardQueryResponseBodyModuleReserveRuleMainReserveRule(DaraModel)
         rule_id: int = None,
         rule_name: str = None,
     ):
+        # The enabled service categories.
         self.open_service_type_list = open_service_type_list
+        # The travel standard code.
         self.rule_code = rule_code
+        # The description of the travel standard.
         self.rule_desc = rule_desc
+        # The ID of the main travel standard.
         self.rule_id = rule_id
+        # The name of the travel standard.
         self.rule_name = rule_name
 
     def validate(self):

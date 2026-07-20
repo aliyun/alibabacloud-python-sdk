@@ -17,11 +17,17 @@ class IntlFlightReShopOtaSearchResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The status code.
         self.code = code
+        # The response message.
         self.message = message
+        # The data.
         self.module = module
+        # The unique ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # The global trace ID of the request, typically used for troubleshooting.
         self.trace_id = trace_id
 
     def validate(self):
@@ -85,10 +91,15 @@ class IntlFlightReShopOtaSearchResponseBodyModule(DaraModel):
         re_shop_item_list: List[main_models.IntlFlightReShopOtaSearchResponseBodyModuleReShopItemList] = None,
         token: str = None,
     ):
+        # The flight journey information.
         self.flight_journey_infos = flight_journey_infos
+        # 是否需要继续轮询
         self.need_continue = need_continue
+        # 下次搜索等待时间，单位毫秒
         self.next_req_wait_time = next_req_wait_time
+        # The list of quoted items.
         self.re_shop_item_list = re_shop_item_list
+        # The query record token used for external polling.
         self.token = token
 
     def validate(self):
@@ -160,9 +171,16 @@ class IntlFlightReShopOtaSearchResponseBodyModuleReShopItemList(DaraModel):
         shopping_item_map: Dict[str, main_models.ModuleReShopItemListShoppingItemMapValue] = None,
         sub_items: List[main_models.IntlFlightReShopOtaSearchResponseBodyModuleReShopItemListSubItems] = None,
     ):
+        # The item ID.
         self.item_id = item_id
+        # 商品类型。
+        # 
+        # - normal-普通商品
+        # - combination-组合特价
         self.item_type = item_type
+        # The pricing information mapped by passenger type.
         self.shopping_item_map = shopping_item_map
+        # The sub-items. Combined products may have multiple sub-items.
         self.sub_items = sub_items
 
     def validate(self):
@@ -231,12 +249,19 @@ class IntlFlightReShopOtaSearchResponseBodyModuleReShopItemListSubItems(DaraMode
         shopping_item_map: Dict[str, main_models.ModuleReShopItemListSubItemsShoppingItemMapValue] = None,
         uniq_key: str = None,
     ):
+        # The baggage allowance information of the sub-item.
         self.baggage_rule = baggage_rule
+        # The discount value.
         self.discount_num = discount_num
+        # The refund and change information of the sub-item.
         self.refund_change_rule = refund_change_rule
+        # The list of segment keys included in the sub-item.
         self.segment_keys = segment_keys
+        # The list of segment position information included in the sub-item.
         self.segment_position_list = segment_position_list
+        # The pricing information mapped by passenger type. Key: ADT (adult), CHD (child), or INFANT (infant).
         self.shopping_item_map = shopping_item_map
+        # The unique item ID.
         self.uniq_key = uniq_key
 
     def validate(self):
@@ -324,7 +349,9 @@ class IntlFlightReShopOtaSearchResponseBodyModuleReShopItemListSubItemsSegmentPo
         journey_index: int = None,
         segment_index: int = None,
     ):
+        # The journey ordinal number, starting from 0.
         self.journey_index = journey_index
+        # The segment ordinal number, starting from 0 within the same journey.
         self.segment_index = segment_index
 
     def validate(self):
@@ -367,15 +394,26 @@ class IntlFlightReShopOtaSearchResponseBodyModuleReShopItemListSubItemsRefundCha
         refund_rule_show_color: str = None,
         structured_refund: bool = None,
     ):
+        # Indicates whether refund is supported.
         self.cancel_fee_ind = cancel_fee_ind
+        # Indicates whether date change is supported.
         self.change_fee_ind = change_fee_ind
+        # 改签规则简述
         self.change_rule_desc = change_rule_desc
+        # 改签规则展示颜色
         self.change_rule_show_color = change_rule_show_color
+        # The refund and change rules mapped by passenger type. Key: ADT/CHD/INF. Value: refund/change rule.
         self.offer_penalty_info_map = offer_penalty_info_map
+        # The refund and change summary.
         self.refund_change_digest = refund_change_digest
+        # The refund and change rule description.
+        # [_single.
         self.refund_change_rule_desc = refund_change_rule_desc
+        # 退票规则简述
         self.refund_rule_desc = refund_rule_desc
+        # 退票规则展示颜色
         self.refund_rule_show_color = refund_rule_show_color
+        # Indicates whether structured refund and change rule data is available.
         self.structured_refund = structured_refund
 
     def validate(self):
@@ -476,10 +514,15 @@ class IntlFlightReShopOtaSearchResponseBodyModuleReShopItemListSubItemsBaggageRu
         offer_baggage_info_map: Dict[str, List[main_models.ModuleReShopItemListSubItemsBaggageRuleOfferBaggageInfoMapValue]] = None,
         structured_baggage: bool = None,
     ):
+        # The display color of the baggage allowance description.
         self.baggage_desc_show_color = baggage_desc_show_color
+        # The baggage summary.
         self.baggage_digest = baggage_digest
+        # The baggage rule description.
         self.baggage_rule_desc = baggage_rule_desc
+        # The baggage information mapped by passenger type. Key: ADT/CHD/INF. Value: baggage information.
         self.offer_baggage_info_map = offer_baggage_info_map
+        # Indicates whether the baggage data is structured.
         self.structured_baggage = structured_baggage
 
     def validate(self):
@@ -555,15 +598,25 @@ class IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfos(DaraModel):
         journey_index: int = None,
         transfer_time: int = None,
     ):
+        # The three-letter code of the arrival city.
         self.arr_city_code = arr_city_code
+        # The name of the arrival city.
         self.arr_city_name = arr_city_name
+        # The arrival time. Format: yyyy-MM-dd HH:mm.
         self.arr_time = arr_time
+        # The three-letter code of the departure city.
         self.dep_city_code = dep_city_code
+        # The name of the departure city.
         self.dep_city_name = dep_city_name
+        # The departure time. Format: yyyy-MM-dd HH:mm.
         self.dep_time = dep_time
+        # The total duration in minutes.
         self.duration = duration
+        # The flight segment information.
         self.flight_segment_infos = flight_segment_infos
+        # The journey index, starting from 0.
         self.journey_index = journey_index
+        # The transfer duration.
         self.transfer_time = transfer_time
 
     def validate(self):
@@ -687,40 +740,75 @@ class IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfosFlightSegment
         ticketing_airline_info: main_models.IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfosFlightSegmentInfosTicketingAirlineInfo = None,
         total_time: str = None,
     ):
+        # The marketing airline information.
         self.airline_info = airline_info
+        # The arrival airport information.
         self.arr_airport_info = arr_airport_info
+        # The three-letter code of the arrival city.
         self.arr_city_code = arr_city_code
+        # The name of the arrival city.
         self.arr_city_name = arr_city_name
+        # The arrival time. Format: yyyy-MM-dd HH:mm.
         self.arr_time = arr_time
+        # The arrival time with time zone. Format: 2022-06-06T12:56:34Z.
         self.arr_time_utc = arr_time_utc
+        # The departure airport information.
         self.dep_airport_info = dep_airport_info
+        # The three-letter code of the departure city.
         self.dep_city_code = dep_city_code
+        # The name of the departure city.
         self.dep_city_name = dep_city_name
+        # The departure time. Format: yyyy-MM-dd HH:mm.
         self.dep_time = dep_time
+        # The departure time with time zone. Format: 2022-06-06T12:56:34Z.
         self.dep_time_utc = dep_time_utc
+        # The total duration of the segment in minutes.
         self.duration = duration
+        # The flight number.
         self.flight_no = flight_no
+        # The codeshare flight information.
         self.flight_share_info = flight_share_info
+        # The aircraft type name.
         self.flight_size = flight_size
+        # The list of flight stopovers.
         self.flight_stop_info_list = flight_stop_info_list
+        # The aircraft type code.
         self.flight_type = flight_type
+        # The journey index.
         self.journey_index = journey_index
+        # Indicates whether luggage is through-checked for the current segment.
         self.luggage_direct_info = luggage_direct_info
+        # The manufacturer.
         self.manufacturer = manufacturer
+        # The meal availability. Valid values: 0 (no meal) and 1 (meal provided).
         self.meal = meal
+        # The meal description.
         self.meal_desc = meal_desc
+        # The flight mileage.
         self.miles = miles
+        # The on-time rate information, such as "arrival on-time rate 90%".
         self.on_time_rate = on_time_rate
+        # The number of extra days. For example, 1 indicates the flight crosses 1 day.
         self.one_more = one_more
+        # The cross-day display text.
         self.one_more_show = one_more_show
+        # The other information about the flight segment.
         self.other_info = other_info
+        # The segment index, starting from 0 within the same journey.
         self.segment_index = segment_index
+        # The unique key of the segment. Format: flight number + departure airport + arrival airport + departure date (MMdd).
         self.segment_key = segment_key
+        # The transit visa information for the current segment.
         self.segment_visa_remark = segment_visa_remark
+        # Indicates whether the flight is a codeshare flight.
         self.share = share
+        # The short name of the aircraft type.
         self.short_flight_size = short_flight_size
+        # Indicates whether the flight has a stopover.
         self.stop = stop
+        # The ticketing airline information.
         self.ticketing_airline_info = ticketing_airline_info
+        # The total duration of the segment.
         self.total_time = total_time
 
     def validate(self):
@@ -988,10 +1076,15 @@ class IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfosFlightSegment
         icon_url: str = None,
         short_name: str = None,
     ):
+        # The airline code.
         self.airline_code = airline_code
+        # The airline name.
         self.airline_name = airline_name
+        # Indicates whether the airline is a low-cost airline.
         self.cheap_airline = cheap_airline
+        # The URL of the airline icon.
         self.icon_url = icon_url
+        # The short name of the airline.
         self.short_name = short_name
 
     def validate(self):
@@ -1046,9 +1139,15 @@ class IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfosFlightSegment
         stop_city_visa_remarks: List[str] = None,
         stop_city_visa_types: List[int] = None,
     ):
+        # The transit visa information for the departure city.
         self.dep_city_visa_remark = dep_city_visa_remark
+        # The transit visa type for the departure city. Valid values:
+        # - 0: No transit visa required.
+        # - 1: Transit visa required.
         self.dep_city_visa_type = dep_city_visa_type
+        # The transit visa information for stopover cities. Each stopover city corresponds to one entry.
         self.stop_city_visa_remarks = stop_city_visa_remarks
+        # The transit visa types for stopover cities. Each stopover city corresponds to one entry.
         self.stop_city_visa_types = stop_city_visa_types
 
     def validate(self):
@@ -1099,11 +1198,17 @@ class IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfosFlightSegment
         on_time_rate: str = None,
         wifi: bool = None,
     ):
+        # The aircraft age.
         self.aircraft_age = aircraft_age
+        # The average delay duration.
         self.avg_delay_time = avg_delay_time
+        # The flight cancellation rate.
         self.flight_cancel_rate = flight_cancel_rate
+        # The jet bridge rate.
         self.jet_bridge_rate = jet_bridge_rate
+        # The on-time rate information.
         self.on_time_rate = on_time_rate
+        # Indicates whether Wi-Fi is available.
         self.wifi = wifi
 
     def validate(self):
@@ -1162,7 +1267,15 @@ class IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfosFlightSegment
         dep_city_luggage_direct: int = None,
         stop_city_luggage_direct: int = None,
     ):
+        # The baggage transfer type for the departure city. Valid values:
+        # - 0: Re-check baggage.
+        # - 1: Through check.
+        # - null: Unknown.
         self.dep_city_luggage_direct = dep_city_luggage_direct
+        # The baggage transfer type for the departure city. Valid values:
+        # - 0: Re-check baggage.
+        # - 1: Through check.
+        # - null: Unknown.
         self.stop_city_luggage_direct = stop_city_luggage_direct
 
     def validate(self):
@@ -1205,15 +1318,25 @@ class IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfosFlightSegment
         stop_dep_time: str = None,
         stop_time: str = None,
     ):
+        # The stopover airport.
         self.stop_airport = stop_airport
+        # The county information of the stopover airport.
         self.stop_airport_county_info = stop_airport_county_info
+        # The name of the stopover airport.
         self.stop_airport_name = stop_airport_name
+        # The arrival terminal at the stopover.
         self.stop_arr_term = stop_arr_term
+        # The arrival time at the stopover. Format: yyyy-MM-dd HH:mm.
         self.stop_arr_time = stop_arr_time
+        # The three-letter code of the stopover city.
         self.stop_city_code = stop_city_code
+        # The name of the stopover city.
         self.stop_city_name = stop_city_name
+        # The departure terminal at the stopover.
         self.stop_dep_term = stop_dep_term
+        # The departure time from the stopover. Format: yyyy-MM-dd HH:mm.
         self.stop_dep_time = stop_dep_time
+        # The stopover duration in minutes.
         self.stop_time = stop_time
 
     def validate(self):
@@ -1306,15 +1429,27 @@ class IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfosFlightSegment
         prefecture_city_adcode: str = None,
         prefecture_city_name: str = None,
     ):
+        # The administrative division code.
         self.adcode = adcode
+        # The airport city code.
         self.airport_city_code = airport_city_code
+        # The city name of the airport.
         self.airport_city_name = airport_city_name
+        # The airport code.
         self.airport_code = airport_code
+        # The airport name.
         self.airport_name = airport_name
+        # The parent city name of the airport.
         self.airport_parent_city_name = airport_parent_city_name
+        # The administrative division code of the county-level city where the airport is located.
+        # >Notice: This value is null if the airport is not at the county level.
         self.county_city_adcode = county_city_adcode
+        # The name of the county-level city where the airport is located.
+        # >Notice: This value is null if the airport is not at the county level.
         self.county_city_name = county_city_name
+        # The administrative division code of the prefecture-level city where the airport is located.
         self.prefecture_city_adcode = prefecture_city_adcode
+        # The name of the prefecture-level city where the airport is located.
         self.prefecture_city_name = prefecture_city_name
 
     def validate(self):
@@ -1397,7 +1532,9 @@ class IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfosFlightSegment
         operating_airline_info: main_models.IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfosFlightSegmentInfosFlightShareInfoOperatingAirlineInfo = None,
         operating_flight_no: str = None,
     ):
+        # The operating airline information.
         self.operating_airline_info = operating_airline_info
+        # The operating flight number. This field has a value only for codeshare flights.
         self.operating_flight_no = operating_flight_no
 
     def validate(self):
@@ -1437,10 +1574,15 @@ class IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfosFlightSegment
         icon_url: str = None,
         short_name: str = None,
     ):
+        # The airline code.
         self.airline_code = airline_code
+        # The airline name.
         self.airline_name = airline_name
+        # Indicates whether the airline is a low-cost airline.
         self.cheap_airline = cheap_airline
+        # The URL of the airline icon.
         self.icon_url = icon_url
+        # The short name of the airline.
         self.short_name = short_name
 
     def validate(self):
@@ -1495,9 +1637,13 @@ class IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfosFlightSegment
         airport_short_name: str = None,
         terminal: str = None,
     ):
+        # The airport code.
         self.airport_code = airport_code
+        # The airport name.
         self.airport_name = airport_name
+        # The short name of the airport.
         self.airport_short_name = airport_short_name
+        # The terminal.
         self.terminal = terminal
 
     def validate(self):
@@ -1546,9 +1692,13 @@ class IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfosFlightSegment
         airport_short_name: str = None,
         terminal: str = None,
     ):
+        # The airport code.
         self.airport_code = airport_code
+        # The airport name.
         self.airport_name = airport_name
+        # The short name of the airport.
         self.airport_short_name = airport_short_name
+        # The terminal.
         self.terminal = terminal
 
     def validate(self):
@@ -1598,10 +1748,15 @@ class IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfosFlightSegment
         icon_url: str = None,
         short_name: str = None,
     ):
+        # The airline code.
         self.airline_code = airline_code
+        # The airline name.
         self.airline_name = airline_name
+        # Indicates whether the airline is a low-cost airline.
         self.cheap_airline = cheap_airline
+        # The URL of the airline icon.
         self.icon_url = icon_url
+        # The short name of the airline.
         self.short_name = short_name
 
     def validate(self):

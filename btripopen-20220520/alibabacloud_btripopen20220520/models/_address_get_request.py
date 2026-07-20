@@ -27,25 +27,54 @@ class AddressGetRequest(DaraModel):
         use_booking_proxy: int = None,
         user_id: str = None,
     ):
+        # The redirect page type. For illustrations of each page, refer to [How to implement SSO redirection - Appendix](https://openapi.alibtrip.com/doc/toDocDetail?docId=4746411).
+        # 
         # This parameter is required.
         self.action_type = action_type
+        # The three-letter code of the arrival city.
         self.arr_city_code = arr_city_code
+        # The arrival city name.
         self.arr_city_name = arr_city_name
+        # The car service scenario.
         self.car_scenes_code = car_scenes_code
+        # The three-letter code of the departure city.
         self.dep_city_code = dep_city_code
+        # The departure city name.
         self.dep_city_name = dep_city_name
+        # The departure date.
         self.dep_date = dep_date
+        # The itinerary ID.
+        # - When the redirect page is the business travel booking page (`action_type = 1`), you can optionally pass this parameter to quickly redirect to the booking page of the category associated with the itinerary.
+        # - The itinerary ID must have been submitted to the Alibaba Business Travel system through the [Create a business trip approval](https://openapi.alibtrip.com/doc/toDocDetail?docId=4929938) operation.
         self.itinerary_id = itinerary_id
+        # Specifies whether to skip the booking intermediate page.
+        # 1. Set this parameter to 2 to skip the booking intermediate page. When skipping the intermediate page, the **itinerary_id** parameter is required. If this parameter is empty or set to a value other than 2, the intermediate page is not skipped.
+        # 2. This parameter is available when the redirect page is the **H5 booking page** (`action_type = 1`) and the category is **flight** (`type = 1`) or **train** (`type = 2`).
         self.middle_page = middle_page
+        # The order ID. This parameter is required when the redirect page type is the specified order details page on either platform (`action_type = 11 or 12`).
         self.order_id = order_id
+        # The contact phone number, typically used for car service scenarios.
         self.phone = phone
+        # Session parameters. The format must be a JSON string where both keys and values are strings.
+        # Example: "{\\"returnURL\\":\\"https://open.alibtrip.com/\\"}"
         self.session_parameters = session_parameters
+        # The sub-enterprise ID. Pass this parameter to redirect to the business page of the specified sub-enterprise.
+        # - **View permissions**: Only enterprise administrators have view permissions.
+        # - **Path to obtain**: Enterprise management console > Parent-child account management > Account management > Sub-account management > Company ID.
         self.sub_corp_id = sub_corp_id
+        # The redirect URL after Taobao account binding.
         self.taobao_callback_url = taobao_callback_url
+        # The third-party approval ID.
         self.thirdpart_apply_id = thirdpart_apply_id
+        # The ID of the actual traveler (the person being booked for).
         self.traveler_id = traveler_id
+        # The business type. This parameter is required when the redirect page is the **booking page** (`action_type = 1`) or the **order view page** (`action_type = 2`).
         self.type = type
+        # Specifies whether to use proxy booking mode.
+        # - The proxy booking page is accessible only when this parameter is set to 1.
         self.use_booking_proxy = use_booking_proxy
+        # The employee ID. The employee must be registered in the business travel system before you pass this parameter. Otherwise, the call fails.
+        # 
         # This parameter is required.
         self.user_id = user_id
 

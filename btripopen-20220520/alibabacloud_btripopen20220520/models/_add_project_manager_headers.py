@@ -13,6 +13,10 @@ class AddProjectManagerHeaders(DaraModel):
         x_acs_btrip_corp_token: str = None,
     ):
         self.common_headers = common_headers
+        # The enterprise access token.
+        # 
+        # - This is a required header parameter for HTTP calls. For information about how to obtain it, refer to [Enterprise access token](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985).
+        # - You can use `corp_token=value` in the request URL as an alternative.
         self.x_acs_btrip_corp_token = x_acs_btrip_corp_token
 
     def validate(self):

@@ -14,8 +14,11 @@ class AddProjectManagerRequest(DaraModel):
         out_project_id: str = None,
         project_id: int = None,
     ):
+        # The list of manager group entities. Currently, entityType only supports "1" (employee). The maximum number is 10.
         self.org_entities = org_entities
+        # The third-party project ID. You must specify at least one of project_id and out_project_id.
         self.out_project_id = out_project_id
+        # The internal project ID. You must specify at least one of project_id and out_project_id.
         self.project_id = project_id
 
     def validate(self):
@@ -64,7 +67,9 @@ class AddProjectManagerRequestOrgEntities(DaraModel):
         entity_id: str = None,
         entity_type: str = None,
     ):
+        # The employee ID.
         self.entity_id = entity_id
+        # Required. Currently only supports "1" (employee).
         self.entity_type = entity_type
 
     def validate(self):
