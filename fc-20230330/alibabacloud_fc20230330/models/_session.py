@@ -8,6 +8,7 @@ from darabonba.model import DaraModel
 class Session(DaraModel):
     def __init__(
         self,
+        allow_internet_access: bool = None,
         container_id: str = None,
         created_time: str = None,
         disable_session_id_reuse: bool = None,
@@ -17,6 +18,7 @@ class Session(DaraModel):
         juice_fs_config: main_models.JuiceFsConfig = None,
         last_modified_time: str = None,
         nas_config: main_models.NASConfig = None,
+        network: main_models.CreateSessionNetworkConfig = None,
         oss_mount_config: main_models.OSSMountConfig = None,
         polar_fs_config: main_models.PolarFsConfig = None,
         qualifier: str = None,
@@ -25,12 +27,18 @@ class Session(DaraModel):
         session_idle_timeout_in_seconds: int = None,
         session_status: str = None,
         session_ttlin_seconds: int = None,
+        traffic_access_token: str = None,
     ):
-        # The instance ID of the function instance associated with the session.
+        self.allow_internet_access = allow_internet_access
+        # The instance ID of the function associated with the session.
         self.container_id = container_id
         # The time when the session was created.
         self.created_time = created_time
-        # Specifies whether to disable session ID reuse. Default value: False, which indicates that after the session expires, you can use the same session ID to initiate requests. The system treats the request as a new session and binds it to a new instance. If you set this parameter to True, the session ID cannot be reused after the session expires.
+        # Specifies whether to disable session ID reuse after the session expires. Valid values:
+        # - False: After the session expires, you can use the same session ID to initiate requests. The system treats it as a new session and binds it to a new instance.
+        # - True: After the session expires, the session ID cannot be reused.
+        # 
+        # Default value: False.
         self.disable_session_id_reuse = disable_session_id_reuse
         self.enable_auto_pause = enable_auto_pause
         self.enable_auto_resume = enable_auto_resume
@@ -41,28 +49,32 @@ class Session(DaraModel):
         self.last_modified_time = last_modified_time
         # The NAS configuration. After configuration, the instance associated with the session can access the specified NAS resource.
         self.nas_config = nas_config
+        self.network = network
         self.oss_mount_config = oss_mount_config
         self.polar_fs_config = polar_fs_config
-        # The qualifier passed in when the customer created the session. If not specified, the default value is LATEST.
+        # The qualifier passed when the customer created the session. If not specified, the default value is LATEST.
         self.qualifier = qualifier
         # The session affinity type.
         self.session_affinity_type = session_affinity_type
         # The unique identifier of the function session.
         self.session_id = session_id
-        # The idle timeout period of the session.
+        # The session idle timeout.
         self.session_idle_timeout_in_seconds = session_idle_timeout_in_seconds
         # The session status. Valid values:
         # - Active: The session is valid.
         # - Expired: The session has expired.
         self.session_status = session_status
-        # The maximum lifetime of the session.
+        # The maximum session lifetime.
         self.session_ttlin_seconds = session_ttlin_seconds
+        self.traffic_access_token = traffic_access_token
 
     def validate(self):
         if self.juice_fs_config:
             self.juice_fs_config.validate()
         if self.nas_config:
             self.nas_config.validate()
+        if self.network:
+            self.network.validate()
         if self.oss_mount_config:
             self.oss_mount_config.validate()
         if self.polar_fs_config:
@@ -73,6 +85,9 @@ class Session(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.allow_internet_access is not None:
+            result['allowInternetAccess'] = self.allow_internet_access
+
         if self.container_id is not None:
             result['containerId'] = self.container_id
 
@@ -100,6 +115,9 @@ class Session(DaraModel):
         if self.nas_config is not None:
             result['nasConfig'] = self.nas_config.to_map()
 
+        if self.network is not None:
+            result['network'] = self.network.to_map()
+
         if self.oss_mount_config is not None:
             result['ossMountConfig'] = self.oss_mount_config.to_map()
 
@@ -124,10 +142,16 @@ class Session(DaraModel):
         if self.session_ttlin_seconds is not None:
             result['sessionTTLInSeconds'] = self.session_ttlin_seconds
 
+        if self.traffic_access_token is not None:
+            result['trafficAccessToken'] = self.traffic_access_token
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('allowInternetAccess') is not None:
+            self.allow_internet_access = m.get('allowInternetAccess')
+
         if m.get('containerId') is not None:
             self.container_id = m.get('containerId')
 
@@ -157,6 +181,10 @@ class Session(DaraModel):
             temp_model = main_models.NASConfig()
             self.nas_config = temp_model.from_map(m.get('nasConfig'))
 
+        if m.get('network') is not None:
+            temp_model = main_models.CreateSessionNetworkConfig()
+            self.network = temp_model.from_map(m.get('network'))
+
         if m.get('ossMountConfig') is not None:
             temp_model = main_models.OSSMountConfig()
             self.oss_mount_config = temp_model.from_map(m.get('ossMountConfig'))
@@ -182,6 +210,9 @@ class Session(DaraModel):
 
         if m.get('sessionTTLInSeconds') is not None:
             self.session_ttlin_seconds = m.get('sessionTTLInSeconds')
+
+        if m.get('trafficAccessToken') is not None:
+            self.traffic_access_token = m.get('trafficAccessToken')
 
         return self
 

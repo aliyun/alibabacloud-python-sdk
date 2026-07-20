@@ -11,8 +11,11 @@ class MCPStreamableSessionAffinityConfig(DaraModel):
         session_idle_timeout_in_seconds: int = None,
         session_ttlin_seconds: int = None,
     ):
+        # The maximum number of sessions for simultaneous processing by a single instance. Valid values: 1 to 200.
         self.session_concurrency_per_instance = session_concurrency_per_instance
+        # The maximum idle time in seconds before a session enters an idle state due to user inactivity. The maximum duration is the upper limit of a single session lifecycle. Valid values: 0 to 21600.
         self.session_idle_timeout_in_seconds = session_idle_timeout_in_seconds
+        # The time-to-live of a session in seconds, covering the entire process from creation and usage to final destruction. If the time-to-live is exceeded, Function Compute automatically destroys the session and no longer guarantees affinity. Valid values: 1 to 21600.
         self.session_ttlin_seconds = session_ttlin_seconds
 
     def validate(self):

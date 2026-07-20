@@ -8,31 +8,35 @@ from darabonba.model import DaraModel
 class CreateSessionInput(DaraModel):
     def __init__(
         self,
+        allow_internet_access: bool = None,
         disable_session_id_reuse: bool = None,
         enable_auto_pause: bool = None,
         enable_auto_resume: bool = None,
         juice_fs_config: main_models.JuiceFsConfig = None,
         nas_config: main_models.NASConfig = None,
+        network: main_models.CreateSessionNetworkConfig = None,
         oss_mount_config: main_models.OSSMountConfig = None,
         polar_fs_config: main_models.PolarFsConfig = None,
         session_id: str = None,
         session_idle_timeout_in_seconds: int = None,
         session_ttlin_seconds: int = None,
     ):
-        # Specifies whether to disable session ID reuse. Default value: False, which indicates that after a session with a specific SessionID expires, you can send requests with the same SessionID, and the system treats it as a new session bound to a new instance. If this parameter is set to True, the SessionID cannot be reused after the session expires.
+        self.allow_internet_access = allow_internet_access
+        # Default value: False. This indicates that after a session with a specific SessionID expires, you can send requests with the same SessionID. The system treats it as a new session and binds it to a new instance. If set to True, the SessionID cannot be reused after the session expires.
         self.disable_session_id_reuse = disable_session_id_reuse
         self.enable_auto_pause = enable_auto_pause
         self.enable_auto_resume = enable_auto_resume
         self.juice_fs_config = juice_fs_config
         # The NAS configuration. After this parameter is configured, instances associated with the session can access the specified NAS resources.
         self.nas_config = nas_config
-        # The OSS configuration. After this parameter is configured, instances associated with the session can access the specified OSS resources.
+        self.network = network
+        # The OSS mount configuration. After this parameter is configured, instances associated with the session can access the specified OSS resources.
         self.oss_mount_config = oss_mount_config
         # The PolarFs configuration. After this parameter is configured, instances associated with the session can access the specified PolarFs resources.
         self.polar_fs_config = polar_fs_config
-        # The custom session ID. If this parameter is not specified, the server generates a session ID. If specified, the value is used as the session ID. This parameter applies only to the HEADER_FIELD affinity mode. Format: the length is limited to [0,64]. The first character must be from **a-zA-Z0-9_**, and subsequent characters can be from **a-zA-Z0-9_-**.
+        # The custom session ID. If not specified, the server generates one. If specified, this value is used as the session ID. This parameter applies only to the HEADER_FIELD affinity mode. Format: the length is limited to [0,64]. The first character must be from **a-zA-Z0-9_**. Subsequent characters can be from **a-zA-Z0-9_-**.
         self.session_id = session_id
-        # The session idle timeout period.
+        # The session idle timeout.
         self.session_idle_timeout_in_seconds = session_idle_timeout_in_seconds
         # The session lifetime.
         self.session_ttlin_seconds = session_ttlin_seconds
@@ -42,6 +46,8 @@ class CreateSessionInput(DaraModel):
             self.juice_fs_config.validate()
         if self.nas_config:
             self.nas_config.validate()
+        if self.network:
+            self.network.validate()
         if self.oss_mount_config:
             self.oss_mount_config.validate()
         if self.polar_fs_config:
@@ -52,6 +58,9 @@ class CreateSessionInput(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.allow_internet_access is not None:
+            result['allowInternetAccess'] = self.allow_internet_access
+
         if self.disable_session_id_reuse is not None:
             result['disableSessionIdReuse'] = self.disable_session_id_reuse
 
@@ -66,6 +75,9 @@ class CreateSessionInput(DaraModel):
 
         if self.nas_config is not None:
             result['nasConfig'] = self.nas_config.to_map()
+
+        if self.network is not None:
+            result['network'] = self.network.to_map()
 
         if self.oss_mount_config is not None:
             result['ossMountConfig'] = self.oss_mount_config.to_map()
@@ -86,6 +98,9 @@ class CreateSessionInput(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('allowInternetAccess') is not None:
+            self.allow_internet_access = m.get('allowInternetAccess')
+
         if m.get('disableSessionIdReuse') is not None:
             self.disable_session_id_reuse = m.get('disableSessionIdReuse')
 
@@ -102,6 +117,10 @@ class CreateSessionInput(DaraModel):
         if m.get('nasConfig') is not None:
             temp_model = main_models.NASConfig()
             self.nas_config = temp_model.from_map(m.get('nasConfig'))
+
+        if m.get('network') is not None:
+            temp_model = main_models.CreateSessionNetworkConfig()
+            self.network = temp_model.from_map(m.get('network'))
 
         if m.get('ossMountConfig') is not None:
             temp_model = main_models.OSSMountConfig()

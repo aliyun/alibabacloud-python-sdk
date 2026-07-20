@@ -21,6 +21,7 @@ from ._create_custom_domain_input import CreateCustomDomainInput
 from ._create_function_input import CreateFunctionInput
 from ._create_layer_version_input import CreateLayerVersionInput
 from ._create_session_input import CreateSessionInput
+from ._create_session_network_config import CreateSessionNetworkConfig
 from ._create_timed_resident_resource_pool_application_input import CreateTimedResidentResourcePoolApplicationInput
 from ._create_timed_resident_resource_pool_application_output import CreateTimedResidentResourcePoolApplicationOutput
 from ._create_trigger_input import CreateTriggerInput
@@ -156,6 +157,7 @@ from ._update_custom_domain_input import UpdateCustomDomainInput
 from ._update_function_input import UpdateFunctionInput
 from ._update_resident_resource_pool_input import UpdateResidentResourcePoolInput
 from ._update_session_input import UpdateSessionInput
+from ._update_session_network_config import UpdateSessionNetworkConfig
 from ._update_trigger_input import UpdateTriggerInput
 from ._vpcconfig import VPCConfig
 from ._version import Version
@@ -314,6 +316,7 @@ __all__ = [
     CreateFunctionInput,
     CreateLayerVersionInput,
     CreateSessionInput,
+    CreateSessionNetworkConfig,
     CreateTimedResidentResourcePoolApplicationInput,
     CreateTimedResidentResourcePoolApplicationOutput,
     CreateTriggerInput,
@@ -449,6 +452,7 @@ __all__ = [
     UpdateFunctionInput,
     UpdateResidentResourcePoolInput,
     UpdateSessionInput,
+    UpdateSessionNetworkConfig,
     UpdateTriggerInput,
     VPCConfig,
     Version,
