@@ -9,6 +9,7 @@ class GetSignalRequest(DaraModel):
         self,
         token: str = None,
     ):
+        # The temporary token used for authentication.
         self.token = token
 
     def validate(self):

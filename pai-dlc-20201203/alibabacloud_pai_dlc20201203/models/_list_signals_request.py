@@ -14,11 +14,17 @@ class ListSignalsRequest(DaraModel):
         status: str = None,
         token: str = None,
     ):
+        # The sort order.
         self.order = order
+        # The current page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The field used for sorting.
         self.sort_by = sort_by
+        # The signal status.
         self.status = status
+        # The temporary token used for authentication.
         self.token = token
 
     def validate(self):

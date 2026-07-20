@@ -13,10 +13,15 @@ class CreateSignalResponseBody(DaraModel):
         signal_id: str = None,
         status: str = None,
     ):
+        # The job ID.
         self.job_id = job_id
+        # The request ID.
         self.request_id = request_id
+        # The signal code.
         self.signal = signal
+        # The signal ID.
         self.signal_id = signal_id
+        # The signal status.
         self.status = status
 
     def validate(self):

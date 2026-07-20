@@ -11,7 +11,9 @@ class CreateSignalRequest(DaraModel):
         signal: str = None,
         target: main_models.SignalTarget = None,
     ):
+        # The signal code.
         self.signal = signal
+        # The signal delivery scope.
         self.target = target
 
     def validate(self):

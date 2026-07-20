@@ -22,17 +22,29 @@ class GetSignalResponseBody(DaraModel):
         signal_id: str = None,
         status: str = None,
     ):
+        # The creation time.
         self.gmt_created = gmt_created
+        # The modification time.
         self.gmt_modified = gmt_modified
+        # The job ID.
         self.job_id = job_id
+        # The status description, which contains a summary for each pod (number of successful deliveries, names of failed or pending pods, etc.).
         self.message = message
+        # The list of pod names.
         self.pod_names = pod_names
+        # The status reason code, such as `Completed`, `SignalFailed`, or `StoppedByJobEnded`.
         self.reason = reason
+        # The request ID.
         self.request_id = request_id
+        # The list of role objects.
         self.roles = roles
+        # The delivery scope.
         self.scope = scope
+        # The signal.
         self.signal = signal
+        # The signal ID.
         self.signal_id = signal_id
+        # The signal status.
         self.status = status
 
     def validate(self):
