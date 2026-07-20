@@ -10,9 +10,8 @@ class DateSummary(DaraModel):
         date: str = None,
         value: int = None,
     ):
-        # The date.
         self.date = date
-        # The value.
+        # Metric value at corresponding date
         self.value = value
 
     def validate(self):

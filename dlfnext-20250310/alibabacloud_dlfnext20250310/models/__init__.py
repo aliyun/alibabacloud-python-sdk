@@ -6,6 +6,7 @@ from ._cache_cluster import CacheCluster
 from ._catalog import Catalog
 from ._catalog_summary import CatalogSummary
 from ._catalog_summary_trend import CatalogSummaryTrend
+from ._column_mask import ColumnMask
 from ._data_field import DataField
 from ._database import Database
 from ._database_summary import DatabaseSummary
@@ -104,6 +105,9 @@ from ._drop_share_response import DropShareResponse
 from ._drop_table_response import DropTableResponse
 from ._get_catalog_response import GetCatalogResponse
 from ._get_catalog_by_id_response import GetCatalogByIdResponse
+from ._get_catalog_kms_grants_request import GetCatalogKmsGrantsRequest
+from ._get_catalog_kms_grants_response_body import GetCatalogKmsGrantsResponseBody
+from ._get_catalog_kms_grants_response import GetCatalogKmsGrantsResponse
 from ._get_catalog_summary_request import GetCatalogSummaryRequest
 from ._get_catalog_summary_response import GetCatalogSummaryResponse
 from ._get_catalog_summary_trend_request import GetCatalogSummaryTrendRequest
@@ -115,6 +119,9 @@ from ._get_database_summary_request import GetDatabaseSummaryRequest
 from ._get_database_summary_response import GetDatabaseSummaryResponse
 from ._get_iceberg_namespace_response import GetIcebergNamespaceResponse
 from ._get_iceberg_table_response import GetIcebergTableResponse
+from ._get_query_request import GetQueryRequest
+from ._get_query_response_body import GetQueryResponseBody
+from ._get_query_response import GetQueryResponse
 from ._get_receiver_response import GetReceiverResponse
 from ._get_region_status_response_body import GetRegionStatusResponseBody
 from ._get_region_status_response import GetRegionStatusResponse
@@ -214,11 +221,17 @@ from ._revoke_role_from_users_request import RevokeRoleFromUsersRequest
 from ._revoke_role_from_users_response import RevokeRoleFromUsersResponse
 from ._rollback_table_request import RollbackTableRequest
 from ._rollback_table_response import RollbackTableResponse
+from ._submit_query_request import SubmitQueryRequest
+from ._submit_query_response_body import SubmitQueryResponseBody
+from ._submit_query_response import SubmitQueryResponse
 from ._subscribe_response import SubscribeResponse
 from ._update_role_request import UpdateRoleRequest
 from ._update_role_response import UpdateRoleResponse
 from ._update_role_users_request import UpdateRoleUsersRequest
 from ._update_role_users_response import UpdateRoleUsersResponse
+from ._verify_catalog_kms_request import VerifyCatalogKmsRequest
+from ._verify_catalog_kms_response_body import VerifyCatalogKmsResponseBody
+from ._verify_catalog_kms_response import VerifyCatalogKmsResponse
 from ._cache_cluster import CacheClusterVSwitches
 from ._permission import PermissionColumns
 from ._statement_result import StatementResultSchema
@@ -230,6 +243,7 @@ __all__ = [
     Catalog,
     CatalogSummary,
     CatalogSummaryTrend,
+    ColumnMask,
     DataField,
     Database,
     DatabaseSummary,
@@ -328,6 +342,9 @@ __all__ = [
     DropTableResponse,
     GetCatalogResponse,
     GetCatalogByIdResponse,
+    GetCatalogKmsGrantsRequest,
+    GetCatalogKmsGrantsResponseBody,
+    GetCatalogKmsGrantsResponse,
     GetCatalogSummaryRequest,
     GetCatalogSummaryResponse,
     GetCatalogSummaryTrendRequest,
@@ -339,6 +356,9 @@ __all__ = [
     GetDatabaseSummaryResponse,
     GetIcebergNamespaceResponse,
     GetIcebergTableResponse,
+    GetQueryRequest,
+    GetQueryResponseBody,
+    GetQueryResponse,
     GetReceiverResponse,
     GetRegionStatusResponseBody,
     GetRegionStatusResponse,
@@ -438,11 +458,17 @@ __all__ = [
     RevokeRoleFromUsersResponse,
     RollbackTableRequest,
     RollbackTableResponse,
+    SubmitQueryRequest,
+    SubmitQueryResponseBody,
+    SubmitQueryResponse,
     SubscribeResponse,
     UpdateRoleRequest,
     UpdateRoleResponse,
     UpdateRoleUsersRequest,
     UpdateRoleUsersResponse,
+    VerifyCatalogKmsRequest,
+    VerifyCatalogKmsResponseBody,
+    VerifyCatalogKmsResponse,
     CacheClusterVSwitches,
     PermissionColumns,
     StatementResultSchema,

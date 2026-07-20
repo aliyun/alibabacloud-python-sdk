@@ -22,33 +22,25 @@ class DatabaseSummary(DaraModel):
         total_meta_file_count: int = None,
         total_meta_size_in_bytes: int = None,
     ):
-        # The database creation time.
+        # Creation timestamp in milliseconds
         self.created_at = created_at
-        # The database name.
+        # 库名 - Database name
         self.database_name = database_name
-        # The date when the storage overview data was updated.
+        # Last profile update date in format yyyyMMdd
         self.generated_date = generated_date
-        # The storage location.
+        # Storage location URI
         self.location = location
-        # The storage size of Archive data files.
         self.obj_type_archive_size = obj_type_archive_size
-        # The storage size of Cold Archive data files.
         self.obj_type_cold_archive_size = obj_type_cold_archive_size
-        # The storage size of Infrequent Access data files.
         self.obj_type_ia_size = obj_type_ia_size
-        # The storage size of Standard data files.
         self.obj_type_standard_size = obj_type_standard_size
-        # The total number of partitions.
         self.partition_count = partition_count
-        # The total number of tables.
+        # Total storage in bytes
         self.table_count = table_count
-        # The total number of files.
         self.total_file_count = total_file_count
-        # The storage capacity.
+        # Total file count
         self.total_file_size_in_bytes = total_file_size_in_bytes
-        # The total number of metadata files.
         self.total_meta_file_count = total_meta_file_count
-        # The storage size of metadata files, in bytes.
         self.total_meta_size_in_bytes = total_meta_size_in_bytes
 
     def validate(self):

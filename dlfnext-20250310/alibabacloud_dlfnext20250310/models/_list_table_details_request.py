@@ -9,16 +9,14 @@ class ListTableDetailsRequest(DaraModel):
         self,
         max_results: int = None,
         page_token: str = None,
+        status: str = None,
         table_name_pattern: str = None,
         type: str = None,
     ):
-        # The maximum number of records to return in a single request.
         self.max_results = max_results
-        # The token to retrieve the next page of results. Pass the token that was returned by the previous request. For the first request, pass an empty string ("").
         self.page_token = page_token
-        # The pattern used to filter table names.
+        self.status = status
         self.table_name_pattern = table_name_pattern
-        # The type.
         self.type = type
 
     def validate(self):
@@ -35,6 +33,9 @@ class ListTableDetailsRequest(DaraModel):
         if self.page_token is not None:
             result['pageToken'] = self.page_token
 
+        if self.status is not None:
+            result['status'] = self.status
+
         if self.table_name_pattern is not None:
             result['tableNamePattern'] = self.table_name_pattern
 
@@ -50,6 +51,9 @@ class ListTableDetailsRequest(DaraModel):
 
         if m.get('pageToken') is not None:
             self.page_token = m.get('pageToken')
+
+        if m.get('status') is not None:
+            self.status = m.get('status')
 
         if m.get('tableNamePattern') is not None:
             self.table_name_pattern = m.get('tableNamePattern')

@@ -2027,6 +2027,78 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_catalog_by_id_with_options_async(id, headers, runtime)
 
+    def get_catalog_kms_grants_with_options(
+        self,
+        catalog: str,
+        request: main_models.GetCatalogKmsGrantsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCatalogKmsGrantsResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetCatalogKmsGrants',
+            version = '2025-03-10',
+            protocol = 'HTTPS',
+            pathname = f'/dlf/v1/catalogs/{DaraURL.percent_encode(catalog)}/kms/grants',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetCatalogKmsGrantsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_catalog_kms_grants_with_options_async(
+        self,
+        catalog: str,
+        request: main_models.GetCatalogKmsGrantsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCatalogKmsGrantsResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetCatalogKmsGrants',
+            version = '2025-03-10',
+            protocol = 'HTTPS',
+            pathname = f'/dlf/v1/catalogs/{DaraURL.percent_encode(catalog)}/kms/grants',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetCatalogKmsGrantsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_catalog_kms_grants(
+        self,
+        catalog: str,
+        request: main_models.GetCatalogKmsGrantsRequest,
+    ) -> main_models.GetCatalogKmsGrantsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_catalog_kms_grants_with_options(catalog, request, headers, runtime)
+
+    async def get_catalog_kms_grants_async(
+        self,
+        catalog: str,
+        request: main_models.GetCatalogKmsGrantsRequest,
+    ) -> main_models.GetCatalogKmsGrantsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_catalog_kms_grants_with_options_async(catalog, request, headers, runtime)
+
     def get_catalog_summary_with_options(
         self,
         catalog_id: str,
@@ -2554,6 +2626,78 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.get_iceberg_table_with_options_async(catalog_id, namespace, table, headers, runtime)
+
+    def get_query_with_options(
+        self,
+        query_id: str,
+        request: main_models.GetQueryRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetQueryResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetQuery',
+            version = '2025-03-10',
+            protocol = 'HTTPS',
+            pathname = f'/dlf/v1/query/{DaraURL.percent_encode(query_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetQueryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_query_with_options_async(
+        self,
+        query_id: str,
+        request: main_models.GetQueryRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetQueryResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetQuery',
+            version = '2025-03-10',
+            protocol = 'HTTPS',
+            pathname = f'/dlf/v1/query/{DaraURL.percent_encode(query_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetQueryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_query(
+        self,
+        query_id: str,
+        request: main_models.GetQueryRequest,
+    ) -> main_models.GetQueryResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_query_with_options(query_id, request, headers, runtime)
+
+    async def get_query_async(
+        self,
+        query_id: str,
+        request: main_models.GetQueryRequest,
+    ) -> main_models.GetQueryResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_query_with_options_async(query_id, request, headers, runtime)
 
     def get_receiver_with_options(
         self,
@@ -3532,6 +3676,8 @@ class Client(OpenApiClient):
             query['maxResults'] = request.max_results
         if not DaraCore.is_null(request.page_token):
             query['pageToken'] = request.page_token
+        if not DaraCore.is_null(request.status):
+            query['status'] = request.status
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -3567,6 +3713,8 @@ class Client(OpenApiClient):
             query['maxResults'] = request.max_results
         if not DaraCore.is_null(request.page_token):
             query['pageToken'] = request.page_token
+        if not DaraCore.is_null(request.status):
+            query['status'] = request.status
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -5131,6 +5279,8 @@ class Client(OpenApiClient):
             query['maxResults'] = request.max_results
         if not DaraCore.is_null(request.page_token):
             query['pageToken'] = request.page_token
+        if not DaraCore.is_null(request.status):
+            query['status'] = request.status
         if not DaraCore.is_null(request.table_name_pattern):
             query['tableNamePattern'] = request.table_name_pattern
         if not DaraCore.is_null(request.type):
@@ -5169,6 +5319,8 @@ class Client(OpenApiClient):
             query['maxResults'] = request.max_results
         if not DaraCore.is_null(request.page_token):
             query['pageToken'] = request.page_token
+        if not DaraCore.is_null(request.status):
+            query['status'] = request.status
         if not DaraCore.is_null(request.table_name_pattern):
             query['tableNamePattern'] = request.table_name_pattern
         if not DaraCore.is_null(request.type):
@@ -5887,6 +6039,98 @@ class Client(OpenApiClient):
         headers = {}
         return await self.rollback_table_with_options_async(catalog_id, database, table, request, headers, runtime)
 
+    def submit_query_with_options(
+        self,
+        request: main_models.SubmitQueryRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitQueryResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.default_catalog):
+            body['defaultCatalog'] = request.default_catalog
+        if not DaraCore.is_null(request.default_database):
+            body['defaultDatabase'] = request.default_database
+        if not DaraCore.is_null(request.limit):
+            body['limit'] = request.limit
+        if not DaraCore.is_null(request.sql):
+            body['sql'] = request.sql
+        if not DaraCore.is_null(request.tier):
+            body['tier'] = request.tier
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitQuery',
+            version = '2025-03-10',
+            protocol = 'HTTPS',
+            pathname = f'/dlf/v1/query',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitQueryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_query_with_options_async(
+        self,
+        request: main_models.SubmitQueryRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitQueryResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.default_catalog):
+            body['defaultCatalog'] = request.default_catalog
+        if not DaraCore.is_null(request.default_database):
+            body['defaultDatabase'] = request.default_database
+        if not DaraCore.is_null(request.limit):
+            body['limit'] = request.limit
+        if not DaraCore.is_null(request.sql):
+            body['sql'] = request.sql
+        if not DaraCore.is_null(request.tier):
+            body['tier'] = request.tier
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitQuery',
+            version = '2025-03-10',
+            protocol = 'HTTPS',
+            pathname = f'/dlf/v1/query',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitQueryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_query(
+        self,
+        request: main_models.SubmitQueryRequest,
+    ) -> main_models.SubmitQueryResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.submit_query_with_options(request, headers, runtime)
+
+    async def submit_query_async(
+        self,
+        request: main_models.SubmitQueryRequest,
+    ) -> main_models.SubmitQueryResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.submit_query_with_options_async(request, headers, runtime)
+
     def subscribe_with_options(
         self,
         headers: Dict[str, str],
@@ -6108,3 +6352,83 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.update_role_users_with_options_async(request, headers, runtime)
+
+    def verify_catalog_kms_with_options(
+        self,
+        catalog: str,
+        request: main_models.VerifyCatalogKmsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.VerifyCatalogKmsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.kms_key_id):
+            body['kmsKeyId'] = request.kms_key_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'VerifyCatalogKms',
+            version = '2025-03-10',
+            protocol = 'HTTPS',
+            pathname = f'/dlf/v1/catalogs/{DaraURL.percent_encode(catalog)}/kms/verify',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.VerifyCatalogKmsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def verify_catalog_kms_with_options_async(
+        self,
+        catalog: str,
+        request: main_models.VerifyCatalogKmsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.VerifyCatalogKmsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.kms_key_id):
+            body['kmsKeyId'] = request.kms_key_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'VerifyCatalogKms',
+            version = '2025-03-10',
+            protocol = 'HTTPS',
+            pathname = f'/dlf/v1/catalogs/{DaraURL.percent_encode(catalog)}/kms/verify',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.VerifyCatalogKmsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def verify_catalog_kms(
+        self,
+        catalog: str,
+        request: main_models.VerifyCatalogKmsRequest,
+    ) -> main_models.VerifyCatalogKmsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.verify_catalog_kms_with_options(catalog, request, headers, runtime)
+
+    async def verify_catalog_kms_async(
+        self,
+        catalog: str,
+        request: main_models.VerifyCatalogKmsRequest,
+    ) -> main_models.VerifyCatalogKmsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.verify_catalog_kms_with_options_async(catalog, request, headers, runtime)

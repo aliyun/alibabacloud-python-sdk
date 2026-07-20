@@ -2,7 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List
+from typing import Dict, List
 
 from alibabacloud_dlfnext20250310 import models as main_models
 from darabonba.model import DaraModel
@@ -11,6 +11,7 @@ class Permission(DaraModel):
     def __init__(
         self,
         access: str = None,
+        column_masking: Dict[str, main_models.ColumnMask] = None,
         columns: main_models.PermissionColumns = None,
         database: str = None,
         expire_time: str = None,
@@ -21,23 +22,23 @@ class Permission(DaraModel):
         table: str = None,
         view: str = None,
     ):
-        # The access type.
         self.access = access
+        self.column_masking = column_masking
         self.columns = columns
-        # The name of the database.
         self.database = database
         self.expire_time = expire_time
         self.function = function
-        # The user resource descriptor.
         self.principal = principal
-        # The resource type of the permission.
         self.resource_type = resource_type
         self.row_filter = row_filter
-        # The name of the data table.
         self.table = table
         self.view = view
 
     def validate(self):
+        if self.column_masking:
+            for v1 in self.column_masking.values():
+                 if v1:
+                    v1.validate()
         if self.columns:
             self.columns.validate()
         if self.row_filter:
@@ -50,6 +51,11 @@ class Permission(DaraModel):
             result = _map
         if self.access is not None:
             result['access'] = self.access
+
+        result['columnMasking'] = {}
+        if self.column_masking is not None:
+            for k1, v1 in self.column_masking.items():
+                result['columnMasking'][k1] = v1.to_map() if v1 else None
 
         if self.columns is not None:
             result['columns'] = self.columns.to_map()
@@ -84,6 +90,12 @@ class Permission(DaraModel):
         m = m or dict()
         if m.get('access') is not None:
             self.access = m.get('access')
+
+        self.column_masking = {}
+        if m.get('columnMasking') is not None:
+            for k1, v1 in m.get('columnMasking').items():
+                temp_model = main_models.ColumnMask()
+                self.column_masking[k1] = temp_model.from_map(v1)
 
         if m.get('columns') is not None:
             temp_model = main_models.PermissionColumns()

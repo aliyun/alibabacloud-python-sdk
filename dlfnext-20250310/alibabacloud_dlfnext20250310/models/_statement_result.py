@@ -20,23 +20,14 @@ class StatementResult(DaraModel):
         sql: str = None,
         status: str = None,
     ):
-        # A temporary URL to download the result set, provided only when the result set is too large to return directly.
         self.download_url = download_url
-        # The error message, present only if the execution fails.
         self.error = error
-        # The error code, present only if the execution fails.
         self.error_code = error_code
-        # The statement\\"s total execution time, in milliseconds.
         self.execution_time = execution_time
-        # The zero-based index of the SQL statement in a batch execution.
         self.index = index
-        # The number of rows affected or returned by the statement.
         self.row_count = row_count
-        # An array of objects describing the result set\\"s schema. Each object defines a column.
         self.schema = schema
-        # The original SQL statement.
         self.sql = sql
-        # The statement\\"s execution status. Possible values are `RUNNING`, `FINISHED`, `CANCELED`, or `FAILED`.
         self.status = status
 
     def validate(self):
@@ -121,9 +112,7 @@ class StatementResultSchema(DaraModel):
         name: str = None,
         type: str = None,
     ):
-        # The name of the column.
         self.name = name
-        # The data type of the column.
         self.type = type
 
     def validate(self):

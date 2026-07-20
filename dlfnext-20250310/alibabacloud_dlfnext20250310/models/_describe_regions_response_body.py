@@ -12,7 +12,6 @@ class DescribeRegionsResponseBody(DaraModel):
         self,
         regions: List[main_models.DescribeRegionsResponseBodyRegions] = None,
     ):
-        # The regions.
         self.regions = regions
 
     def validate(self):
@@ -51,13 +50,13 @@ class DescribeRegionsResponseBodyRegions(DaraModel):
         show_name: str = None,
         type: str = None,
     ):
-        # The description.
+        # The region description
         self.description = description
-        # The region ID.
+        # The region name
         self.name = name
-        # The display name.
+        # The region show name
         self.show_name = show_name
-        # The type.
+        # The region type
         self.type = type
 
     def validate(self):

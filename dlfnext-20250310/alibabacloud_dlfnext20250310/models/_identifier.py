@@ -10,9 +10,7 @@ class Identifier(DaraModel):
         database: str = None,
         object: str = None,
     ):
-        # The database name.
         self.database = database
-        # The table name.
         self.object = object
 
     def validate(self):

@@ -11,9 +11,7 @@ class CreateTableRequest(DaraModel):
         identifier: main_models.Identifier = None,
         schema: main_models.Schema = None,
     ):
-        # The table identifier.
         self.identifier = identifier
-        # The table schema.
         self.schema = schema
 
     def validate(self):

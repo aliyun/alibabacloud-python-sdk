@@ -16,29 +16,21 @@ class Database(DaraModel):
         name: str = None,
         options: Dict[str, str] = None,
         owner: str = None,
+        status: str = None,
         table_count: int = None,
         updated_at: int = None,
         updated_by: str = None,
     ):
-        # The database creation time.
         self.created_at = created_at
-        # The database creator.
         self.created_by = created_by
-        # The database UUID.
         self.id = id
-        # The database URI.
         self.location = location
-        # The database name.
         self.name = name
-        # The extension options.
         self.options = options
-        # The owner.
         self.owner = owner
-        # The number of tables in the database.
+        self.status = status
         self.table_count = table_count
-        # The time when the database was last updated.
         self.updated_at = updated_at
-        # The user who last updated the database.
         self.updated_by = updated_by
 
     def validate(self):
@@ -69,6 +61,9 @@ class Database(DaraModel):
 
         if self.owner is not None:
             result['owner'] = self.owner
+
+        if self.status is not None:
+            result['status'] = self.status
 
         if self.table_count is not None:
             result['tableCount'] = self.table_count
@@ -103,6 +98,9 @@ class Database(DaraModel):
 
         if m.get('owner') is not None:
             self.owner = m.get('owner')
+
+        if m.get('status') is not None:
+            self.status = m.get('status')
 
         if m.get('tableCount') is not None:
             self.table_count = m.get('tableCount')

@@ -13,9 +13,7 @@ class ListPartitionsResponseBody(DaraModel):
         next_page_token: str = None,
         partitions: List[main_models.Partition] = None,
     ):
-        # The pagination token that is used to retrieve the next page of results.
         self.next_page_token = next_page_token
-        # The partitions.
         self.partitions = partitions
 
     def validate(self):

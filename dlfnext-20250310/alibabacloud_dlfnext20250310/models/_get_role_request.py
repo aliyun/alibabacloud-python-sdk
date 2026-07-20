@@ -9,7 +9,6 @@ class GetRoleRequest(DaraModel):
         self,
         role_principal: str = None,
     ):
-        # The resource descriptor of the role.
         self.role_principal = role_principal
 
     def validate(self):

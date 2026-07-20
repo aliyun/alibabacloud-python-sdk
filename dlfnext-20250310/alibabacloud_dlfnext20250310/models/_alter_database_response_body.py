@@ -13,11 +13,8 @@ class AlterDatabaseResponseBody(DaraModel):
         removed: List[str] = None,
         updated: List[str] = None,
     ):
-        # The items that remain unchanged.
         self.missing = missing
-        # The deleted items.
         self.removed = removed
-        # The updated items.
         self.updated = updated
 
     def validate(self):

@@ -9,7 +9,6 @@ class GetTableSummaryRequest(DaraModel):
         self,
         date: str = None,
     ):
-        # The storage summary date.
         self.date = date
 
     def validate(self):

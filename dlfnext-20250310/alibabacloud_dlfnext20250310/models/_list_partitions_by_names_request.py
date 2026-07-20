@@ -11,7 +11,6 @@ class ListPartitionsByNamesRequest(DaraModel):
         self,
         specs: List[Dict[str, str]] = None,
     ):
-        # 分区规格列表。
         self.specs = specs
 
     def validate(self):

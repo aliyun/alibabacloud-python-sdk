@@ -13,9 +13,7 @@ class AlterShareResourcesRequest(DaraModel):
         catalog_id: str = None,
         share_resource_list: List[main_models.ShareResource] = None,
     ):
-        # The ID of the catalog.
         self.catalog_id = catalog_id
-        # The shared resources.
         self.share_resource_list = share_resource_list
 
     def validate(self):

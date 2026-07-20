@@ -10,7 +10,6 @@ class RollbackTableRequest(DaraModel):
         self,
         instant: main_models.FullInstant = None,
     ):
-        # The details of the instance.
         self.instant = instant
 
     def validate(self):

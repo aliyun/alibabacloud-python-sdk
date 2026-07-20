@@ -18,6 +18,7 @@ class Table(DaraModel):
         path: str = None,
         schema: main_models.Schema = None,
         schema_id: int = None,
+        status: str = None,
         storage_action: str = None,
         storage_action_timestamp: int = None,
         storage_class: str = None,
@@ -25,35 +26,22 @@ class Table(DaraModel):
         updated_at: int = None,
         updated_by: str = None,
     ):
-        # The time when the table was created.
         self.created_at = created_at
-        # The user who created the table.
         self.created_by = created_by
         self.iceberg_table_metadata = iceberg_table_metadata
-        # The UUID of the table.
         self.id = id
-        # Indicates whether the table is an external table.
         self.is_external = is_external
-        # The name of the table.
         self.name = name
-        # The owner of the table.
         self.owner = owner
-        # The table URI.
         self.path = path
-        # The table schema.
         self.schema = schema
-        # The ID of the schema.
         self.schema_id = schema_id
-        # The storage action.
+        self.status = status
         self.storage_action = storage_action
-        # The timestamp of the storage action.
         self.storage_action_timestamp = storage_action_timestamp
-        # The storage class of the table.
         self.storage_class = storage_class
         self.type = type
-        # The time when the table was last updated.
         self.updated_at = updated_at
-        # The user who last updated the table.
         self.updated_by = updated_by
 
     def validate(self):
@@ -96,6 +84,9 @@ class Table(DaraModel):
 
         if self.schema_id is not None:
             result['schemaId'] = self.schema_id
+
+        if self.status is not None:
+            result['status'] = self.status
 
         if self.storage_action is not None:
             result['storageAction'] = self.storage_action
@@ -150,6 +141,9 @@ class Table(DaraModel):
 
         if m.get('schemaId') is not None:
             self.schema_id = m.get('schemaId')
+
+        if m.get('status') is not None:
+            self.status = m.get('status')
 
         if m.get('storageAction') is not None:
             self.storage_action = m.get('storageAction')

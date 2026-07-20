@@ -10,15 +10,12 @@ class ListDatabaseDetailsRequest(DaraModel):
         database_name_pattern: str = None,
         max_results: int = None,
         page_token: str = None,
+        status: str = None,
     ):
-        # The database name pattern for fuzzy matching. Supports the percent sign (%).
         self.database_name_pattern = database_name_pattern
-        # The number of entries to return on each page.
-        # Default value: 1000.
-        # Maximum value: 1000.
         self.max_results = max_results
-        # The token to retrieve the next page of results. If the response does not include this token, pass an empty string ("").
         self.page_token = page_token
+        self.status = status
 
     def validate(self):
         pass
@@ -37,6 +34,9 @@ class ListDatabaseDetailsRequest(DaraModel):
         if self.page_token is not None:
             result['pageToken'] = self.page_token
 
+        if self.status is not None:
+            result['status'] = self.status
+
         return result
 
     def from_map(self, m: dict = None):
@@ -49,6 +49,9 @@ class ListDatabaseDetailsRequest(DaraModel):
 
         if m.get('pageToken') is not None:
             self.page_token = m.get('pageToken')
+
+        if m.get('status') is not None:
+            self.status = m.get('status')
 
         return self
 
