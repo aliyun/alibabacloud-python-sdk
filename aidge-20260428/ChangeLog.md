@@ -1,3 +1,6 @@
+2026-07-20 Version: 3.0.1
+- Generated python 2026-04-28 for Aidge.
+
 2026-07-15 Version: 3.0.0
 - Support API ImageRemovalPro.
 - Delete API ImageTranslationPlus.
