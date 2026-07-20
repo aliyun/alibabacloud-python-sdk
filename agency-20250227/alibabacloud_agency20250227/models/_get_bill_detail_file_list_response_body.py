@@ -88,8 +88,6 @@ class GetBillDetailFileListResponseBody(DaraModel):
 
         return self
 
-
-
 class GetBillDetailFileListResponseBodyData(DaraModel):
     def __init__(
         self,

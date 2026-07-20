@@ -1,3 +1,10 @@
+2026-07-20 Version: 1.2.0
+- Support API CustomerNoteCreate.
+- Support API CustomerNoteEdit.
+- Support API CustomerNoteList.
+- Support API CustomerNoteListDetail.
+
+
 2026-07-20 Version: 1.1.1
 - Generated python 2025-02-27 for Agency.
 

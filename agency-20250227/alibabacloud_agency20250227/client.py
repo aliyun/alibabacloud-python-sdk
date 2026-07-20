@@ -99,6 +99,330 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return Utils.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def customer_note_create_with_options(
+        self,
+        request: main_models.CustomerNoteCreateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CustomerNoteCreateResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.contact_information):
+            body['ContactInformation'] = request.contact_information
+        if not DaraCore.is_null(request.contact_name):
+            body['ContactName'] = request.contact_name
+        if not DaraCore.is_null(request.customer_name):
+            body['CustomerName'] = request.customer_name
+        if not DaraCore.is_null(request.customer_uid):
+            body['CustomerUid'] = request.customer_uid
+        if not DaraCore.is_null(request.note_content):
+            body['NoteContent'] = request.note_content
+        if not DaraCore.is_null(request.touch_date):
+            body['TouchDate'] = request.touch_date
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CustomerNoteCreate',
+            version = '2025-02-27',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CustomerNoteCreateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def customer_note_create_with_options_async(
+        self,
+        request: main_models.CustomerNoteCreateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CustomerNoteCreateResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.contact_information):
+            body['ContactInformation'] = request.contact_information
+        if not DaraCore.is_null(request.contact_name):
+            body['ContactName'] = request.contact_name
+        if not DaraCore.is_null(request.customer_name):
+            body['CustomerName'] = request.customer_name
+        if not DaraCore.is_null(request.customer_uid):
+            body['CustomerUid'] = request.customer_uid
+        if not DaraCore.is_null(request.note_content):
+            body['NoteContent'] = request.note_content
+        if not DaraCore.is_null(request.touch_date):
+            body['TouchDate'] = request.touch_date
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CustomerNoteCreate',
+            version = '2025-02-27',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CustomerNoteCreateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def customer_note_create(
+        self,
+        request: main_models.CustomerNoteCreateRequest,
+    ) -> main_models.CustomerNoteCreateResponse:
+        runtime = RuntimeOptions()
+        return self.customer_note_create_with_options(request, runtime)
+
+    async def customer_note_create_async(
+        self,
+        request: main_models.CustomerNoteCreateRequest,
+    ) -> main_models.CustomerNoteCreateResponse:
+        runtime = RuntimeOptions()
+        return await self.customer_note_create_with_options_async(request, runtime)
+
+    def customer_note_edit_with_options(
+        self,
+        request: main_models.CustomerNoteEditRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CustomerNoteEditResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.contact_information):
+            body['ContactInformation'] = request.contact_information
+        if not DaraCore.is_null(request.contact_name):
+            body['ContactName'] = request.contact_name
+        if not DaraCore.is_null(request.note_content):
+            body['NoteContent'] = request.note_content
+        if not DaraCore.is_null(request.note_id):
+            body['NoteId'] = request.note_id
+        if not DaraCore.is_null(request.touch_date):
+            body['TouchDate'] = request.touch_date
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CustomerNoteEdit',
+            version = '2025-02-27',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CustomerNoteEditResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def customer_note_edit_with_options_async(
+        self,
+        request: main_models.CustomerNoteEditRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CustomerNoteEditResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.contact_information):
+            body['ContactInformation'] = request.contact_information
+        if not DaraCore.is_null(request.contact_name):
+            body['ContactName'] = request.contact_name
+        if not DaraCore.is_null(request.note_content):
+            body['NoteContent'] = request.note_content
+        if not DaraCore.is_null(request.note_id):
+            body['NoteId'] = request.note_id
+        if not DaraCore.is_null(request.touch_date):
+            body['TouchDate'] = request.touch_date
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CustomerNoteEdit',
+            version = '2025-02-27',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CustomerNoteEditResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def customer_note_edit(
+        self,
+        request: main_models.CustomerNoteEditRequest,
+    ) -> main_models.CustomerNoteEditResponse:
+        runtime = RuntimeOptions()
+        return self.customer_note_edit_with_options(request, runtime)
+
+    async def customer_note_edit_async(
+        self,
+        request: main_models.CustomerNoteEditRequest,
+    ) -> main_models.CustomerNoteEditResponse:
+        runtime = RuntimeOptions()
+        return await self.customer_note_edit_with_options_async(request, runtime)
+
+    def customer_note_list_with_options(
+        self,
+        request: main_models.CustomerNoteListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CustomerNoteListResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.customer_uid):
+            body['CustomerUid'] = request.customer_uid
+        if not DaraCore.is_null(request.page_num):
+            body['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CustomerNoteList',
+            version = '2025-02-27',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CustomerNoteListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def customer_note_list_with_options_async(
+        self,
+        request: main_models.CustomerNoteListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CustomerNoteListResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.customer_uid):
+            body['CustomerUid'] = request.customer_uid
+        if not DaraCore.is_null(request.page_num):
+            body['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CustomerNoteList',
+            version = '2025-02-27',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CustomerNoteListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def customer_note_list(
+        self,
+        request: main_models.CustomerNoteListRequest,
+    ) -> main_models.CustomerNoteListResponse:
+        runtime = RuntimeOptions()
+        return self.customer_note_list_with_options(request, runtime)
+
+    async def customer_note_list_async(
+        self,
+        request: main_models.CustomerNoteListRequest,
+    ) -> main_models.CustomerNoteListResponse:
+        runtime = RuntimeOptions()
+        return await self.customer_note_list_with_options_async(request, runtime)
+
+    def customer_note_list_detail_with_options(
+        self,
+        request: main_models.CustomerNoteListDetailRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CustomerNoteListDetailResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.note_id):
+            body['NoteId'] = request.note_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CustomerNoteListDetail',
+            version = '2025-02-27',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CustomerNoteListDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def customer_note_list_detail_with_options_async(
+        self,
+        request: main_models.CustomerNoteListDetailRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CustomerNoteListDetailResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.note_id):
+            body['NoteId'] = request.note_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CustomerNoteListDetail',
+            version = '2025-02-27',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CustomerNoteListDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def customer_note_list_detail(
+        self,
+        request: main_models.CustomerNoteListDetailRequest,
+    ) -> main_models.CustomerNoteListDetailResponse:
+        runtime = RuntimeOptions()
+        return self.customer_note_list_detail_with_options(request, runtime)
+
+    async def customer_note_list_detail_async(
+        self,
+        request: main_models.CustomerNoteListDetailRequest,
+    ) -> main_models.CustomerNoteListDetailResponse:
+        runtime = RuntimeOptions()
+        return await self.customer_note_list_detail_with_options_async(request, runtime)
+
     def get_bill_detail_file_list_with_options(
         self,
         request: main_models.GetBillDetailFileListRequest,

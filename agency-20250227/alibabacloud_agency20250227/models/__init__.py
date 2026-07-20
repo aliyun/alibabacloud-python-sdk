@@ -2,6 +2,18 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from ._customer_note_create_request import CustomerNoteCreateRequest
+from ._customer_note_create_response_body import CustomerNoteCreateResponseBody
+from ._customer_note_create_response import CustomerNoteCreateResponse
+from ._customer_note_edit_request import CustomerNoteEditRequest
+from ._customer_note_edit_response_body import CustomerNoteEditResponseBody
+from ._customer_note_edit_response import CustomerNoteEditResponse
+from ._customer_note_list_request import CustomerNoteListRequest
+from ._customer_note_list_response_body import CustomerNoteListResponseBody
+from ._customer_note_list_response import CustomerNoteListResponse
+from ._customer_note_list_detail_request import CustomerNoteListDetailRequest
+from ._customer_note_list_detail_response_body import CustomerNoteListDetailResponseBody
+from ._customer_note_list_detail_response import CustomerNoteListDetailResponse
 from ._get_bill_detail_file_list_request import GetBillDetailFileListRequest
 from ._get_bill_detail_file_list_response_body import GetBillDetailFileListResponseBody
 from ._get_bill_detail_file_list_response import GetBillDetailFileListResponse
@@ -25,6 +37,11 @@ from ._get_sub_partner_order_list_request import GetSubPartnerOrderListRequest
 from ._get_sub_partner_order_list_shrink_request import GetSubPartnerOrderListShrinkRequest
 from ._get_sub_partner_order_list_response_body import GetSubPartnerOrderListResponseBody
 from ._get_sub_partner_order_list_response import GetSubPartnerOrderListResponse
+from ._customer_note_list_response_body import CustomerNoteListResponseBodyDataData
+from ._customer_note_list_response_body import CustomerNoteListResponseBodyDataPageInfo
+from ._customer_note_list_response_body import CustomerNoteListResponseBodyData
+from ._customer_note_list_detail_response_body import CustomerNoteListDetailResponseBodyDataAttachment
+from ._customer_note_list_detail_response_body import CustomerNoteListDetailResponseBodyData
 from ._get_bill_detail_file_list_response_body import GetBillDetailFileListResponseBodyData
 from ._get_commission_detail_file_list_response_body import GetCommissionDetailFileListResponseBodyDataFileList
 from ._get_commission_detail_file_list_response_body import GetCommissionDetailFileListResponseBodyData
@@ -36,6 +53,18 @@ from ._get_sub_partner_list_response_body import GetSubPartnerListResponseBodySu
 from ._get_sub_partner_order_list_response_body import GetSubPartnerOrderListResponseBodyData
 
 __all__ = [
+    CustomerNoteCreateRequest,
+    CustomerNoteCreateResponseBody,
+    CustomerNoteCreateResponse,
+    CustomerNoteEditRequest,
+    CustomerNoteEditResponseBody,
+    CustomerNoteEditResponse,
+    CustomerNoteListRequest,
+    CustomerNoteListResponseBody,
+    CustomerNoteListResponse,
+    CustomerNoteListDetailRequest,
+    CustomerNoteListDetailResponseBody,
+    CustomerNoteListDetailResponse,
     GetBillDetailFileListRequest,
     GetBillDetailFileListResponseBody,
     GetBillDetailFileListResponse,
@@ -59,6 +88,11 @@ __all__ = [
     GetSubPartnerOrderListShrinkRequest,
     GetSubPartnerOrderListResponseBody,
     GetSubPartnerOrderListResponse,
+    CustomerNoteListResponseBodyDataData,
+    CustomerNoteListResponseBodyDataPageInfo,
+    CustomerNoteListResponseBodyData,
+    CustomerNoteListDetailResponseBodyDataAttachment,
+    CustomerNoteListDetailResponseBodyData,
     GetBillDetailFileListResponseBodyData,
     GetCommissionDetailFileListResponseBodyDataFileList,
     GetCommissionDetailFileListResponseBodyData,
