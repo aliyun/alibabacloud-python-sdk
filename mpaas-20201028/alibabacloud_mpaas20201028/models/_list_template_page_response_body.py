@@ -10,6 +10,7 @@ from darabonba.model import DaraModel
 class ListTemplatePageResponseBody(DaraModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: str = None,
         current_page: int = None,
         data: List[main_models.ListTemplatePageResponseBodyData] = None,
@@ -19,6 +20,7 @@ class ListTemplatePageResponseBody(DaraModel):
         success: bool = None,
         total_size: int = None,
     ):
+        self.access_denied_detail = access_denied_detail
         self.code = code
         self.current_page = current_page
         self.data = data
@@ -39,6 +41,9 @@ class ListTemplatePageResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+
         if self.code is not None:
             result['Code'] = self.code
 
@@ -69,6 +74,9 @@ class ListTemplatePageResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+
         if m.get('Code') is not None:
             self.code = m.get('Code')
 

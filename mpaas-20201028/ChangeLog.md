@@ -1,3 +1,26 @@
+2026-07-21 Version: 3.3.5
+- Update API CancelPushScheduler: add response parameters Body.AccessDeniedDetail.
+- Update API CreateTemplate: add response parameters Body.AccessDeniedDetail.
+- Update API DeleteTemplate: add response parameters Body.AccessDeniedDetail.
+- Update API GetTemplate: add response parameters Body.AccessDeniedDetail.
+- Update API ListAnalysisCoreIndex: add response parameters Body.AccessDeniedDetail.
+- Update API ListTemplatePage: add response parameters Body.AccessDeniedDetail.
+- Update API PushBind: add response parameters Body.AccessDeniedDetail.
+- Update API PushBroadcast: add response parameters Body.AccessDeniedDetail.
+- Update API PushMultiple: add response parameters Body.AccessDeniedDetail.
+- Update API PushQueryDeviceState: add response parameters Body.AccessDeniedDetail.
+- Update API PushReport: add response parameters Body.AccessDeniedDetail.
+- Update API PushSimple: add response parameters Body.AccessDeniedDetail.
+- Update API PushTemplate: add response parameters Body.AccessDeniedDetail.
+- Update API PushUnBind: add response parameters Body.AccessDeniedDetail.
+- Update API QueryPushAnalysisCoreIndex: add response parameters Body.AccessDeniedDetail.
+- Update API QueryPushAnalysisTaskDetail: add response parameters Body.AccessDeniedDetail.
+- Update API QueryPushAnalysisTaskList: add response parameters Body.AccessDeniedDetail.
+- Update API QueryPushSchedulerList: add response parameters Body.AccessDeniedDetail.
+- Update API RevokePushMessage: add response parameters Body.AccessDeniedDetail.
+- Update API RevokePushTask: add response parameters Body.AccessDeniedDetail.
+
+
 2026-07-14 Version: 3.3.4
 - Update API PushBroadcast: add request parameters VendorTemplate.
 - Update API PushMultiple: add request parameters VendorTemplate.

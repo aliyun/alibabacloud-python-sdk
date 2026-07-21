@@ -8,12 +8,14 @@ from darabonba.model import DaraModel
 class PushQueryDeviceStateResponseBody(DaraModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: str = None,
         data: main_models.PushQueryDeviceStateResponseBodyData = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
+        self.access_denied_detail = access_denied_detail
         self.code = code
         self.data = data
         self.message = message
@@ -29,6 +31,9 @@ class PushQueryDeviceStateResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+
         if self.code is not None:
             result['Code'] = self.code
 
@@ -48,6 +53,9 @@ class PushQueryDeviceStateResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+
         if m.get('Code') is not None:
             self.code = m.get('Code')
 

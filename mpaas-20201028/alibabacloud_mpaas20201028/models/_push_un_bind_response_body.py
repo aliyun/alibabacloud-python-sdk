@@ -8,11 +8,13 @@ from darabonba.model import DaraModel
 class PushUnBindResponseBody(DaraModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         push_result: main_models.PushUnBindResponseBodyPushResult = None,
         request_id: str = None,
         result_code: str = None,
         result_message: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         self.push_result = push_result
         self.request_id = request_id
         self.result_code = result_code
@@ -27,6 +29,9 @@ class PushUnBindResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+
         if self.push_result is not None:
             result['PushResult'] = self.push_result.to_map()
 
@@ -43,6 +48,9 @@ class PushUnBindResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+
         if m.get('PushResult') is not None:
             temp_model = main_models.PushUnBindResponseBodyPushResult()
             self.push_result = temp_model.from_map(m.get('PushResult'))
