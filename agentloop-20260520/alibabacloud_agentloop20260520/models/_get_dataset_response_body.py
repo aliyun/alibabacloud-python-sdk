@@ -14,6 +14,7 @@ class GetDatasetResponseBody(DaraModel):
         create_time: str = None,
         dataset_name: str = None,
         description: str = None,
+        is_favorite: bool = None,
         region_id: str = None,
         request_id: str = None,
         schema: Dict[str, main_models.IndexKey] = None,
@@ -29,6 +30,7 @@ class GetDatasetResponseBody(DaraModel):
         self.dataset_name = dataset_name
         # The dataset description.
         self.description = description
+        self.is_favorite = is_favorite
         # The region ID.
         self.region_id = region_id
         # The request ID.
@@ -63,6 +65,9 @@ class GetDatasetResponseBody(DaraModel):
         if self.description is not None:
             result['description'] = self.description
 
+        if self.is_favorite is not None:
+            result['isFavorite'] = self.is_favorite
+
         if self.region_id is not None:
             result['regionId'] = self.region_id
 
@@ -92,6 +97,9 @@ class GetDatasetResponseBody(DaraModel):
 
         if m.get('description') is not None:
             self.description = m.get('description')
+
+        if m.get('isFavorite') is not None:
+            self.is_favorite = m.get('isFavorite')
 
         if m.get('regionId') is not None:
             self.region_id = m.get('regionId')

@@ -1,3 +1,9 @@
+2026-07-21 Version: 2.2.1
+- Update API GetDataset: add response parameters Body.isFavorite.
+- Update API ListDatasets: add response parameters Body.datasets.$.isFavorite.
+- Update API UpdateContextStore: add request parameters body.status.
+
+
 2026-07-14 Version: 2.2.0
 - Support API CreatePipeline.
 - Support API PreviewPipeline.

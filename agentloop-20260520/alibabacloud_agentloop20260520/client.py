@@ -4451,6 +4451,8 @@ class Client(OpenApiClient):
             body['contextType'] = request.context_type
         if not DaraCore.is_null(request.description):
             body['description'] = request.description
+        if not DaraCore.is_null(request.status):
+            body['status'] = request.status
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query),
@@ -4491,6 +4493,8 @@ class Client(OpenApiClient):
             body['contextType'] = request.context_type
         if not DaraCore.is_null(request.description):
             body['description'] = request.description
+        if not DaraCore.is_null(request.status):
+            body['status'] = request.status
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query),

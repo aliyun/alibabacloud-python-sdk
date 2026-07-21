@@ -11,7 +11,7 @@ class ListDatasetsRequest(DaraModel):
         max_results: int = None,
         next_token: str = None,
     ):
-        # The name of the dataset.
+        # The dataset name.
         self.dataset_name = dataset_name
         # The maximum number of results to return.
         self.max_results = max_results

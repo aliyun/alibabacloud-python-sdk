@@ -20,9 +20,9 @@ class ListDatasetsResponseBody(DaraModel):
         self.datasets = datasets
         # The maximum number of results specified in this request.
         self.max_results = max_results
-        # The pagination token for the next page of results.
+        # The token for the next page of results.
         # 
-        # If the total number of results exceeds the maxResults limit, the results are truncated. You can use this token to query the next page of results.
+        # If the total number of results exceeds the maxResults limit, the data is truncated. You can use nextToken to query the next page of data.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -88,22 +88,24 @@ class ListDatasetsResponseBodyDatasets(DaraModel):
         create_time: str = None,
         dataset_name: str = None,
         description: str = None,
+        is_favorite: bool = None,
         region_id: str = None,
         update_time: str = None,
     ):
-        # The name of the agent space.
+        # The agent space name.
         self.agent_space = agent_space
-        # The time when the dataset was created.
+        # The creation time.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.create_time = create_time
-        # The name of the dataset.
+        # The dataset name.
         self.dataset_name = dataset_name
-        # The description of the dataset.
+        # The dataset description.
         self.description = description
+        self.is_favorite = is_favorite
         # The region ID.
         self.region_id = region_id
-        # The time when the dataset was last updated.
+        # The update time.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.update_time = update_time
@@ -128,6 +130,9 @@ class ListDatasetsResponseBodyDatasets(DaraModel):
         if self.description is not None:
             result['description'] = self.description
 
+        if self.is_favorite is not None:
+            result['isFavorite'] = self.is_favorite
+
         if self.region_id is not None:
             result['regionId'] = self.region_id
 
@@ -149,6 +154,9 @@ class ListDatasetsResponseBodyDatasets(DaraModel):
 
         if m.get('description') is not None:
             self.description = m.get('description')
+
+        if m.get('isFavorite') is not None:
+            self.is_favorite = m.get('isFavorite')
 
         if m.get('regionId') is not None:
             self.region_id = m.get('regionId')

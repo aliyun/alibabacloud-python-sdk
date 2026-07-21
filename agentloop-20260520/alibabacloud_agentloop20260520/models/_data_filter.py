@@ -2,7 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import Dict, Any
+from typing import Dict, Any, List
 
 from darabonba.model import DaraModel
 
@@ -13,6 +13,7 @@ class DataFilter(DaraModel):
         provided: Dict[str, Any] = None,
         query: str = None,
         sampling_rate: int = None,
+        service_names: List[str] = None,
     ):
         # The maximum number of evaluation records. This takes effect for both backfill and continuous runs. If not specified, the backend does not write a default value.
         self.max_records = max_records
@@ -22,6 +23,7 @@ class DataFilter(DaraModel):
         self.query = query
         # The sampling rate percentage. Valid values: 0 to 100. A value of 0 or not specified indicates no sampling. A value of 100 indicates full data. If the value is less than 100, random sampling is applied first, and then the maxRecords limit is applied.
         self.sampling_rate = sampling_rate
+        self.service_names = service_names
 
     def validate(self):
         pass
@@ -43,6 +45,9 @@ class DataFilter(DaraModel):
         if self.sampling_rate is not None:
             result['samplingRate'] = self.sampling_rate
 
+        if self.service_names is not None:
+            result['serviceNames'] = self.service_names
+
         return result
 
     def from_map(self, m: dict = None):
@@ -58,6 +63,9 @@ class DataFilter(DaraModel):
 
         if m.get('samplingRate') is not None:
             self.sampling_rate = m.get('samplingRate')
+
+        if m.get('serviceNames') is not None:
+            self.service_names = m.get('serviceNames')
 
         return self
 
