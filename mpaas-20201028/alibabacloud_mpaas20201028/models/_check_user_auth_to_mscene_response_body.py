@@ -8,12 +8,14 @@ from darabonba.model import DaraModel
 class CheckUserAuthToMsceneResponseBody(DaraModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         mpaas_user_auth_check_response: main_models.CheckUserAuthToMsceneResponseBodyMpaasUserAuthCheckResponse = None,
         request_id: str = None,
         result_code: str = None,
         result_msg: str = None,
         success: bool = None,
     ):
+        self.access_denied_detail = access_denied_detail
         self.mpaas_user_auth_check_response = mpaas_user_auth_check_response
         self.request_id = request_id
         self.result_code = result_code
@@ -29,6 +31,9 @@ class CheckUserAuthToMsceneResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+
         if self.mpaas_user_auth_check_response is not None:
             result['MpaasUserAuthCheckResponse'] = self.mpaas_user_auth_check_response.to_map()
 
@@ -48,6 +53,9 @@ class CheckUserAuthToMsceneResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+
         if m.get('MpaasUserAuthCheckResponse') is not None:
             temp_model = main_models.CheckUserAuthToMsceneResponseBodyMpaasUserAuthCheckResponse()
             self.mpaas_user_auth_check_response = temp_model.from_map(m.get('MpaasUserAuthCheckResponse'))

@@ -8,12 +8,14 @@ from darabonba.model import DaraModel
 class SaveOrderRelationInfoToMsenceResponseBody(DaraModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         mpaas_save_order_relation_response: main_models.SaveOrderRelationInfoToMsenceResponseBodyMpaasSaveOrderRelationResponse = None,
         request_id: str = None,
         result_code: str = None,
         result_msg: str = None,
         success: bool = None,
     ):
+        self.access_denied_detail = access_denied_detail
         self.mpaas_save_order_relation_response = mpaas_save_order_relation_response
         self.request_id = request_id
         self.result_code = result_code
@@ -29,6 +31,9 @@ class SaveOrderRelationInfoToMsenceResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+
         if self.mpaas_save_order_relation_response is not None:
             result['MpaasSaveOrderRelationResponse'] = self.mpaas_save_order_relation_response.to_map()
 
@@ -48,6 +53,9 @@ class SaveOrderRelationInfoToMsenceResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+
         if m.get('MpaasSaveOrderRelationResponse') is not None:
             temp_model = main_models.SaveOrderRelationInfoToMsenceResponseBodyMpaasSaveOrderRelationResponse()
             self.mpaas_save_order_relation_response = temp_model.from_map(m.get('MpaasSaveOrderRelationResponse'))

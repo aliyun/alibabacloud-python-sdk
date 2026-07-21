@@ -1,3 +1,10 @@
+2026-07-21 Version: 3.3.6
+- Update API CheckUserAuthToMscene: add response parameters Body.AccessDeniedDetail.
+- Update API QueryPayOrderToMsence: add response parameters Body.AccessDeniedDetail.
+- Update API SaveOrderRelationInfoToMsence: add response parameters Body.AccessDeniedDetail.
+- Update API VirtualDeliveryToMscene: add response parameters Body.AccessDeniedDetail.
+
+
 2026-07-21 Version: 3.3.5
 - Update API CancelPushScheduler: add response parameters Body.AccessDeniedDetail.
 - Update API CreateTemplate: add response parameters Body.AccessDeniedDetail.
