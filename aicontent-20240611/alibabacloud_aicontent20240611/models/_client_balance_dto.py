@@ -15,13 +15,19 @@ class ClientBalanceDTO(DaraModel):
         gmt_modified: str = None,
         id: int = None,
     ):
+        # The current balance.
         self.balance = balance
+        # The balance type. Valid values are `amount` or `tokens`.
         self.balance_type = balance_type
+        # The ID of the client.
         self.client_id = client_id
+        # Indicates whether balance-based rate limiting is enabled.
         self.enable_balance = enable_balance
+        # The creation timestamp.
         self.gmt_create = gmt_create
+        # The last modification timestamp.
         self.gmt_modified = gmt_modified
-        # ID
+        # The unique ID of the balance record.
         self.id = id
 
     def validate(self):

@@ -23,7 +23,13 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'public': 'aicontent.aliyuncs.com',
+            'cn-shanghai': 'aicontent.aliyuncs.com',
+            'cn-hangzhou': 'aicontent.cn-hangzhou.aliyuncs.com',
+            'cn-beijing': 'aicontent.cn-beijing.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('aicontent', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -4172,6 +4178,10 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.amount):
             body['amount'] = request.amount
+        if not DaraCore.is_null(request.balance_type):
+            body['balanceType'] = request.balance_type
+        if not DaraCore.is_null(request.idempotency_key):
+            body['idempotencyKey'] = request.idempotency_key
         if not DaraCore.is_null(request.remark):
             body['remark'] = request.remark
         if not DaraCore.is_null(request.type):
@@ -4207,6 +4217,10 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.amount):
             body['amount'] = request.amount
+        if not DaraCore.is_null(request.balance_type):
+            body['balanceType'] = request.balance_type
+        if not DaraCore.is_null(request.idempotency_key):
+            body['idempotencyKey'] = request.idempotency_key
         if not DaraCore.is_null(request.remark):
             body['remark'] = request.remark
         if not DaraCore.is_null(request.type):
@@ -4649,6 +4663,98 @@ class Client(OpenApiClient):
         headers = {}
         return await self.model_router_create_model_with_options_async(request, headers, runtime)
 
+    def model_router_create_subscription_with_options(
+        self,
+        id: str,
+        request: main_models.ModelRouterCreateSubscriptionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterCreateSubscriptionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.balance_type):
+            body['balanceType'] = request.balance_type
+        if not DaraCore.is_null(request.effective_time):
+            body['effectiveTime'] = request.effective_time
+        if not DaraCore.is_null(request.idempotency_key):
+            body['idempotencyKey'] = request.idempotency_key
+        if not DaraCore.is_null(request.subscription_amount):
+            body['subscriptionAmount'] = request.subscription_amount
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterCreateSubscription',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/clients/{DaraURL.percent_encode(id)}/balance/subscription',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterCreateSubscriptionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def model_router_create_subscription_with_options_async(
+        self,
+        id: str,
+        request: main_models.ModelRouterCreateSubscriptionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterCreateSubscriptionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.balance_type):
+            body['balanceType'] = request.balance_type
+        if not DaraCore.is_null(request.effective_time):
+            body['effectiveTime'] = request.effective_time
+        if not DaraCore.is_null(request.idempotency_key):
+            body['idempotencyKey'] = request.idempotency_key
+        if not DaraCore.is_null(request.subscription_amount):
+            body['subscriptionAmount'] = request.subscription_amount
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterCreateSubscription',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/clients/{DaraURL.percent_encode(id)}/balance/subscription',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterCreateSubscriptionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def model_router_create_subscription(
+        self,
+        id: str,
+        request: main_models.ModelRouterCreateSubscriptionRequest,
+    ) -> main_models.ModelRouterCreateSubscriptionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.model_router_create_subscription_with_options(id, request, headers, runtime)
+
+    async def model_router_create_subscription_async(
+        self,
+        id: str,
+        request: main_models.ModelRouterCreateSubscriptionRequest,
+    ) -> main_models.ModelRouterCreateSubscriptionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.model_router_create_subscription_with_options_async(id, request, headers, runtime)
+
     def model_router_delete_api_key_with_options(
         self,
         id: str,
@@ -5080,6 +5186,98 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.model_router_get_client_balance_logs_with_options_async(id, request, headers, runtime)
+
+    def model_router_list_subscriptions_with_options(
+        self,
+        id: str,
+        request: main_models.ModelRouterListSubscriptionsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterListSubscriptionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.balance_type):
+            query['balanceType'] = request.balance_type
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.status):
+            query['status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterListSubscriptions',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/clients/{DaraURL.percent_encode(id)}/balance/subscription',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterListSubscriptionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def model_router_list_subscriptions_with_options_async(
+        self,
+        id: str,
+        request: main_models.ModelRouterListSubscriptionsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterListSubscriptionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.balance_type):
+            query['balanceType'] = request.balance_type
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.status):
+            query['status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterListSubscriptions',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/clients/{DaraURL.percent_encode(id)}/balance/subscription',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterListSubscriptionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def model_router_list_subscriptions(
+        self,
+        id: str,
+        request: main_models.ModelRouterListSubscriptionsRequest,
+    ) -> main_models.ModelRouterListSubscriptionsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.model_router_list_subscriptions_with_options(id, request, headers, runtime)
+
+    async def model_router_list_subscriptions_async(
+        self,
+        id: str,
+        request: main_models.ModelRouterListSubscriptionsRequest,
+    ) -> main_models.ModelRouterListSubscriptionsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.model_router_list_subscriptions_with_options_async(id, request, headers, runtime)
 
     def model_router_query_api_key_with_options(
         self,
@@ -7310,6 +7508,86 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.model_router_save_flow_config_with_options_async(request, headers, runtime)
+
+    def model_router_stop_subscription_with_options(
+        self,
+        id: str,
+        request: main_models.ModelRouterStopSubscriptionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterStopSubscriptionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.balance_type):
+            body['balanceType'] = request.balance_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterStopSubscription',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/clients/{DaraURL.percent_encode(id)}/balance/subscription/stop',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterStopSubscriptionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def model_router_stop_subscription_with_options_async(
+        self,
+        id: str,
+        request: main_models.ModelRouterStopSubscriptionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterStopSubscriptionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.balance_type):
+            body['balanceType'] = request.balance_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterStopSubscription',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/clients/{DaraURL.percent_encode(id)}/balance/subscription/stop',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterStopSubscriptionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def model_router_stop_subscription(
+        self,
+        id: str,
+        request: main_models.ModelRouterStopSubscriptionRequest,
+    ) -> main_models.ModelRouterStopSubscriptionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.model_router_stop_subscription_with_options(id, request, headers, runtime)
+
+    async def model_router_stop_subscription_async(
+        self,
+        id: str,
+        request: main_models.ModelRouterStopSubscriptionRequest,
+    ) -> main_models.ModelRouterStopSubscriptionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.model_router_stop_subscription_with_options_async(id, request, headers, runtime)
 
     def model_router_update_billing_rule_with_options(
         self,

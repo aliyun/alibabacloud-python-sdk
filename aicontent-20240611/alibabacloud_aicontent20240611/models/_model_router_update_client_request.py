@@ -15,12 +15,18 @@ class ModelRouterUpdateClientRequest(DaraModel):
         remark: str = None,
         status: int = None,
     ):
+        # The company address.
         self.address = address
+        # A comma-separated list of model IDs that the client can use. If this parameter is left empty, the client can use all models.
         self.allowed_models = allowed_models
+        # The contact information.
         self.contact = contact
         self.discount = discount
+        # The client name.
         self.name = name
+        # A remark about the client.
         self.remark = remark
+        # The client\\"s status.
         self.status = status
 
     def validate(self):

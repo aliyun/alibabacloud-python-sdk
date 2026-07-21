@@ -15,12 +15,17 @@ class ExecuteTextbookAssistantGrammarCheckResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The data object.
         self.data = data
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -80,6 +85,7 @@ class ExecuteTextbookAssistantGrammarCheckResponseBodyData(DaraModel):
         self,
         result: main_models.ExecuteTextbookAssistantGrammarCheckResponseBodyDataResult = None,
     ):
+        # The result data.
         self.result = result
 
     def validate(self):
@@ -111,8 +117,11 @@ class ExecuteTextbookAssistantGrammarCheckResponseBodyDataResult(DaraModel):
         correction: str = None,
         correction_status: str = None,
     ):
+        # The error analysis.
         self.analysis = analysis
+        # The corrected sentence.
         self.correction = correction
+        # The grammar check result. Valid values: `Has_Error` (an error was found), `No_Error` (no errors were found), and `Invalid_Sentence` (the sentence could not be parsed).
         self.correction_status = correction_status
 
     def validate(self):

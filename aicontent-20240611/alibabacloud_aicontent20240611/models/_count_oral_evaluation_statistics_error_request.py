@@ -10,6 +10,7 @@ class CountOralEvaluationStatisticsErrorRequest(DaraModel):
         self,
         body: main_models.OralEvaluationStatisticsErrorCountRequest = None,
     ):
+        # The request body for retrieving error statistics for the oral evaluation service.
         self.body = body
 
     def validate(self):

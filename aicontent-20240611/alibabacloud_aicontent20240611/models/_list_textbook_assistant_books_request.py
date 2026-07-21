@@ -15,13 +15,21 @@ class ListTextbookAssistantBooksRequest(DaraModel):
         version: str = None,
         volume: str = None,
     ):
+        # The authorization token for the API call. You can obtain this token by calling the authorization API for the AI textbook assistant feature.
+        # 
         # This parameter is required.
         self.auth_token = auth_token
+        # The book ID.
         self.book_id = book_id
+        # The grade level. The value is a string from "1" to "9".
         self.grade = grade
+        # The maximum number of results to return per page. The value cannot exceed 20.
         self.max_results = max_results
+        # The page number.
         self.page = page
+        # The textbook version.
         self.version = version
+        # The volume. Valid values: 0 (all-in-one volume), 1 (first volume), and 2 (second volume).
         self.volume = volume
 
     def validate(self):

@@ -14,9 +14,14 @@ class ExecuteAITeacherSyncDialogueTranslateRequest(DaraModel):
         records: List[main_models.ExecuteAITeacherSyncDialogueTranslateRequestRecords] = None,
         user_id: str = None,
     ):
+        # An array of dialogue task objects.
+        # 
         # This parameter is required.
         self.dialogue_tasks = dialogue_tasks
+        # An array of dialogue record objects.
         self.records = records
+        # The user ID.
+        # 
         # This parameter is required.
         self.user_id = user_id
 
@@ -78,12 +83,20 @@ class ExecuteAITeacherSyncDialogueTranslateRequestRecords(DaraModel):
         order: int = None,
         role: str = None,
     ):
+        # The content of the message.
+        # 
         # This parameter is required.
         self.content = content
+        # Indicates whether the message is off-topic. This parameter is used for flow control.
         self.is_off_topic_control = is_off_topic_control
+        # Indicates whether the message is on-topic.
         self.is_on_topic = is_on_topic
+        # The sequence number of the message.
+        # 
         # This parameter is required.
         self.order = order
+        # The message author\\"s role.
+        # 
         # This parameter is required.
         self.role = role
 
@@ -139,11 +152,18 @@ class ExecuteAITeacherSyncDialogueTranslateRequestDialogueTasks(DaraModel):
         order: int = None,
         user: str = None,
     ):
+        # The content of the assistant\\"s message.
+        # 
         # This parameter is required.
         self.assistant = assistant
+        # The translated content of the assistant\\"s message.
         self.assistant_translate = assistant_translate
+        # The sequence number of the task.
+        # 
         # This parameter is required.
         self.order = order
+        # The content of the user\\"s message.
+        # 
         # This parameter is required.
         self.user = user
 

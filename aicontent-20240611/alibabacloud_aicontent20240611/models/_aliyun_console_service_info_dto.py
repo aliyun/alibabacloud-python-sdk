@@ -14,11 +14,17 @@ class AliyunConsoleServiceInfoDTO(DaraModel):
         service_code: str = None,
         service_name: str = None,
     ):
+        # The URL to activate the service.
         self.buy_url = buy_url
+        # The URL of the service documentation.
         self.document_url = document_url
+        # The maximum number of concurrent requests allowed for the free trial.
         self.free_concurrency_count = free_concurrency_count
+        # The number of free API calls available.
         self.free_count = free_count
+        # The unique code for the service.
         self.service_code = service_code
+        # The display name of the service.
         self.service_name = service_name
 
     def validate(self):

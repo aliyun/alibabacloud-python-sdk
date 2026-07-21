@@ -15,12 +15,17 @@ class ExecuteTextbookAssistantDialogueResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The returned data.
         self.data = data
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -83,9 +88,13 @@ class ExecuteTextbookAssistantDialogueResponseBodyData(DaraModel):
         result: main_models.ExecuteTextbookAssistantDialogueResponseBodyDataResult = None,
         user: str = None,
     ):
+        # The ID of the Textbook Assistant\\"s message.
         self.assistant = assistant
+        # The chat ID for this turn.
         self.chat_id = chat_id
+        # The returned data.
         self.result = result
+        # The ID of the user\\"s reply.
         self.user = user
 
     def validate(self):
@@ -136,9 +145,13 @@ class ExecuteTextbookAssistantDialogueResponseBodyDataResult(DaraModel):
         is_finish: bool = None,
         is_task_completed: bool = None,
     ):
+        # The Textbook Assistant\\"s reply in Chinese.
         self.chinese_result = chinese_result
+        # The Textbook Assistant\\"s reply in English.
         self.english_result = english_result
+        # Indicates whether the dialogue is finished.
         self.is_finish = is_finish
+        # Indicates whether the task is completed.
         self.is_task_completed = is_task_completed
 
     def validate(self):

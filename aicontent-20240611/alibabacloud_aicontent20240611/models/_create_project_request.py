@@ -10,7 +10,9 @@ class CreateProjectRequest(DaraModel):
         project_name: str = None,
         project_type: str = None,
     ):
+        # Project name
         self.project_name = project_name
+        # Project type
         self.project_type = project_type
 
     def validate(self):

@@ -18,15 +18,24 @@ class ModelRouterQueryCostModelListRequest(DaraModel):
         start_time: int = None,
     ):
         self.api_key_id = api_key_id
+        # The department ID to filter the results.
         self.client_id = client_id
+        # The query\\"s end time, specified as a UNIX timestamp in seconds.
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # The time granularity for data aggregation. Valid values: `hourly` and `daily`. Default value: `hourly`.
         self.granularity = granularity
+        # The maximum number of results per page.
         self.max_results = max_results
+        # The model types to query. Separate multiple types with a comma.
         self.model_types = model_types
-        # nextToken
+        # A token from a previous response used to retrieve the next page of results.
         self.next_token = next_token
+        # A keyword for a fuzzy search on the model name or model code.
         self.search = search
+        # The query\\"s start time, specified as a UNIX timestamp in seconds.
+        # 
         # This parameter is required.
         self.start_time = start_time
 

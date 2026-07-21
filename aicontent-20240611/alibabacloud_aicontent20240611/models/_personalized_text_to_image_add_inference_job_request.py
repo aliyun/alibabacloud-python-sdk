@@ -16,13 +16,24 @@ class PersonalizedTextToImageAddInferenceJobRequest(DaraModel):
         strength: float = None,
         train_steps: int = None,
     ):
+        # The number of images to generate. Note: The maximum is 10 images per request in the test environment. If the value exceeds 10, it is treated as 10.
         self.image_number = image_number
+        # An array containing one or more image URLs. For example, `["url_1", "url_2", ...]`.
+        # 
         # This parameter is required.
         self.image_url = image_url
+        # The English prompt for image generation. Use the placeholder for the subject. For example, change "a man in the snow" to "a in the snow".
+        # 
         # This parameter is required.
         self.prompt = prompt
+        # A random seed to ensure reproducible image generation. The value must be within `[-1, 2147483647]`. If the value is outside this range or omitted, the system automatically generates a seed.
         self.seed = seed
+        # Determines the influence of the reference image.
+        # Valid values: `0.3`, `0.4`, `0.5`, `0.6`, `0.7`, and `0.8`.
+        # A lower value decreases the influence of the reference image and increases the influence of the text prompt.
+        # The default is `0.5`, and you typically do not need to change this value.
         self.strength = strength
+        # The number of training steps for the model.
         self.train_steps = train_steps
 
     def validate(self):

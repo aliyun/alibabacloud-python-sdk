@@ -17,11 +17,17 @@ class AliyunConsoleOpenApiQueryAliyunConsoleServcieListResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The data returned.
         self.data = data
+        # The error code returned if the request fails.
         self.err_code = err_code
+        # The error message returned if the request fails.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -90,9 +96,13 @@ class AliyunConsoleOpenApiQueryAliyunConsoleServcieListResponseBodyData(DaraMode
         service_code: str = None,
         service_name: str = None,
     ):
+        # The free trial concurrency.
         self.free_concurrency_count = free_concurrency_count
+        # The free trial calls.
         self.free_count = free_count
+        # The service code.
         self.service_code = service_code
+        # The service name.
         self.service_name = service_name
 
     def validate(self):

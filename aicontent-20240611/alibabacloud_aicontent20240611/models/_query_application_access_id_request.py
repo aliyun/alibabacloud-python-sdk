@@ -9,6 +9,7 @@ class QueryApplicationAccessIdRequest(DaraModel):
         self,
         application_access_id: str = None,
     ):
+        # The application access ID (appkey).
         self.application_access_id = application_access_id
 
     def validate(self):

@@ -10,8 +10,12 @@ class ListTextbookAssistantArticlesRequest(DaraModel):
         auth_token: str = None,
         directory_id: str = None,
     ):
+        # The authorization token. Obtain this token from the API to send Service Window messages.
+        # 
         # This parameter is required.
         self.auth_token = auth_token
+        # The directory ID. Obtain this ID by calling the API to retrieve textbook directories.
+        # 
         # This parameter is required.
         self.directory_id = directory_id
 

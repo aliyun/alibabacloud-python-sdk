@@ -15,11 +15,18 @@ class GetAITeacherSyncDialogueSuggestionRequest(DaraModel):
         records: List[main_models.GetAITeacherSyncDialogueSuggestionRequestRecords] = None,
         user_id: str = None,
     ):
+        # A list of dialogue tasks.
+        # 
         # This parameter is required.
         self.dialogue_tasks = dialogue_tasks
+        # The language code.
         self.language_code = language_code
+        # A list of dialogue records.
+        # 
         # This parameter is required.
         self.records = records
+        # The unique identifier for the end-user.
+        # 
         # This parameter is required.
         self.user_id = user_id
 
@@ -87,12 +94,20 @@ class GetAITeacherSyncDialogueSuggestionRequestRecords(DaraModel):
         order: int = None,
         role: str = None,
     ):
+        # The message content.
+        # 
         # This parameter is required.
         self.content = content
+        # A control flag that indicates if a student\\"s response is off-topic. The value is based on the previous turn. If the conversation goes off-topic more than twice, the system sets this value to `true` to force a task switch.
         self.is_off_topic_control = is_off_topic_control
+        # Specifies if the message is on topic. `true` indicates the message is on topic; `false` indicates it is off topic.
         self.is_on_topic = is_on_topic
+        # The sequence number of the message in the conversation.
+        # 
         # This parameter is required.
         self.order = order
+        # The role of the message author. Valid values: `assistant` (for AI-generated messages) and `user` (for user-provided messages).
+        # 
         # This parameter is required.
         self.role = role
 
@@ -148,11 +163,18 @@ class GetAITeacherSyncDialogueSuggestionRequestDialogueTasks(DaraModel):
         order: int = None,
         user: str = None,
     ):
+        # The assistant\\"s message content.
+        # 
         # This parameter is required.
         self.assistant = assistant
+        # The translation of the assistant\\"s message.
         self.assistant_translate = assistant_translate
+        # The sequence number of the dialogue task.
+        # 
         # This parameter is required.
         self.order = order
+        # The user\\"s message content.
+        # 
         # This parameter is required.
         self.user = user
 

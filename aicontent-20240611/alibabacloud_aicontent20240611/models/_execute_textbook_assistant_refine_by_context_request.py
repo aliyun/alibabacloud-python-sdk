@@ -12,12 +12,20 @@ class ExecuteTextbookAssistantRefineByContextRequest(DaraModel):
         scenario: str = None,
         user: str = None,
     ):
+        # The authorization token for the API call. You can obtain this token by calling the authorization API for the "English Textbook AI Teacher" feature.
+        # 
         # This parameter is required.
         self.auth_token = auth_token
+        # The conversation ID for the current turn.
+        # 
         # This parameter is required.
         self.chat_id = chat_id
+        # Specifies the scenario. Valid values are `SYNC` for synchronous practice and `EXPAND` for expansion practice.
+        # 
         # This parameter is required.
         self.scenario = scenario
+        # The ID of the user\\"s message.
+        # 
         # This parameter is required.
         self.user = user
 

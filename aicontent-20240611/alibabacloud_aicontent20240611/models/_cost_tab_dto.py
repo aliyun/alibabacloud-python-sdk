@@ -13,8 +13,11 @@ class CostTabDTO(DaraModel):
         label: str = None,
         model_types: List[str] = None,
     ):
+        # Tab UUID
         self.key = key
+        # Tab display name
         self.label = label
+        # List of associated model types
         self.model_types = model_types
 
     def validate(self):

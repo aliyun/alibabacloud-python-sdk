@@ -17,11 +17,17 @@ class ModelRouterUpdateBillingRuleResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The returned data.
         self.data = data
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -94,19 +100,33 @@ class ModelRouterUpdateBillingRuleResponseBodyData(DaraModel):
         symbol: str = None,
         version: int = None,
     ):
+        # The billing type.
         self.billing_type = billing_type
+        # The deletion tag.
         self.delete_tag = delete_tag
+        # The time when the rule takes effect.
         self.effective_time = effective_time
+        # The expiration time.
         self.expire_time = expire_time
+        # The creation time.
         self.gmt_create = gmt_create
+        # The modification time.
         self.gmt_modified = gmt_modified
+        # The rule ID.
         self.id = id
+        # The model ID.
         self.model_code = model_code
+        # The model ID.
         self.model_id = model_id
+        # The model name.
         self.model_name = model_name
+        # The model type.
         self.model_type = model_type
+        # The billing configuration.
         self.pricing_config = pricing_config
+        # The vendor ID.
         self.symbol = symbol
+        # The version number.
         self.version = version
 
     def validate(self):

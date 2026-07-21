@@ -19,15 +19,21 @@ class ModelRouterQueryBillingRuleListResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Response data
         self.data = data
+        # Error code
         self.err_code = err_code
+        # Error message
         self.err_message = err_message
+        # HTTP status code
         self.http_status_code = http_status_code
         # maxResults
         self.max_results = max_results
         # nextToken
         self.next_token = next_token
+        # Request ID
         self.request_id = request_id
+        # Indicates whether the request succeeded.
         self.success = success
 
     def validate(self):
@@ -102,9 +108,13 @@ class ModelRouterQueryBillingRuleListResponseBodyData(DaraModel):
         page_size: int = None,
         total: int = None,
     ):
+        # List of billing rules
         self.list = list
+        # Current page number
         self.page = page
+        # Number of items per page
         self.page_size = page_size
+        # Total number of records
         self.total = total
 
     def validate(self):
@@ -171,19 +181,33 @@ class ModelRouterQueryBillingRuleListResponseBodyDataList(DaraModel):
         symbol: str = None,
         version: int = None,
     ):
+        # Billing type
         self.billing_type = billing_type
+        # Delete marker
         self.delete_tag = delete_tag
+        # Effective time
         self.effective_time = effective_time
+        # Expiration time
         self.expire_time = expire_time
+        # Creation time
         self.gmt_create = gmt_create
+        # Modification time
         self.gmt_modified = gmt_modified
+        # Rule ID
         self.id = id
+        # Model identifier
         self.model_code = model_code
+        # Model ID
         self.model_id = model_id
+        # Model name
         self.model_name = model_name
+        # Model type
         self.model_type = model_type
+        # Billing configuration
         self.pricing_config = pricing_config
+        # Vendor identifier
         self.symbol = symbol
+        # Version number
         self.version = version
 
     def validate(self):

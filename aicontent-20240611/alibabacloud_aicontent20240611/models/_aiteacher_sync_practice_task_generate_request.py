@@ -18,16 +18,28 @@ class AITeacherSyncPracticeTaskGenerateRequest(DaraModel):
         topic: str = None,
         user_id: str = None,
     ):
+        # The grade.
+        # 
         # This parameter is required.
         self.grade = grade
+        # A list of key sentences.
         self.key_sentences = key_sentences
+        # A list of keywords.
         self.key_words = key_words
+        # The learning objective.
         self.learning_object = learning_object
+        # The source text for generating questions.
+        # 
         # This parameter is required.
         self.text_content = text_content
+        # The textbook.
         self.textbook = textbook
+        # The dialogue topic.
+        # 
         # This parameter is required.
         self.topic = topic
+        # The user ID.
+        # 
         # This parameter is required.
         self.user_id = user_id
 

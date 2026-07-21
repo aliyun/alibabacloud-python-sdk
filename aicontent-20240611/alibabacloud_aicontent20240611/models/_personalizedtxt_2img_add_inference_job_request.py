@@ -12,11 +12,17 @@ class Personalizedtxt2imgAddInferenceJobRequest(DaraModel):
         prompt: str = None,
         seed: int = None,
     ):
+        # The number of images to generate. Note: Due to resource limits in the test environment, you can generate up to 10 images per request. The system automatically sets values greater than 10 to 10.
         self.image_number = image_number
+        # The model ID to use for the inference job.
+        # 
         # This parameter is required.
         self.model_id = model_id
+        # An English prompt describing the image to generate. Replace the subject with . For example, change "a man in the snow" to "a in the snow", and "a photo of a girl" to "a photo of a ".
+        # 
         # This parameter is required.
         self.prompt = prompt
+        # The seed for the random number generator. Using the same seed ensures reproducible results. The value must be between -1 and 2,147,483,647. If the value is outside this range or is not specified, the system automatically generates a suitable seed.
         self.seed = seed
 
     def validate(self):

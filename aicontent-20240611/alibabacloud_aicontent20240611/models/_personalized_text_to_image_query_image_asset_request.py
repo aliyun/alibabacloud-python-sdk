@@ -10,7 +10,10 @@ class PersonalizedTextToImageQueryImageAssetRequest(DaraModel):
         encode_format: str = None,
         image_id: str = None,
     ):
+        # The image encoding format. For example, specify `base64` to receive the image data as a Base64-encoded string.
         self.encode_format = encode_format
+        # The image ID.
+        # 
         # This parameter is required.
         self.image_id = image_id
 

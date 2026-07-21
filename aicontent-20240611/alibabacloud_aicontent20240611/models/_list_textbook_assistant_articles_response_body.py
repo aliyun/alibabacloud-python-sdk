@@ -17,12 +17,25 @@ class ListTextbookAssistantArticlesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The returned data.
         self.data = data
+        # The error code.
+        # 
+        # - A value of 0 indicates success.
+        # 
+        # - A value greater than 0 indicates a specific error.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the API call succeeded.
+        # 
+        # - **true**: The call succeeded.
+        # 
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):
@@ -88,6 +101,7 @@ class ListTextbookAssistantArticlesResponseBodyData(DaraModel):
         self,
         article_id: str = None,
     ):
+        # The article ID.
         self.article_id = article_id
 
     def validate(self):

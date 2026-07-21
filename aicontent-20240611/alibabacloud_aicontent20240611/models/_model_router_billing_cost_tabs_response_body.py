@@ -19,14 +19,21 @@ class ModelRouterBillingCostTabsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The data object.
         self.data = data
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The maximum number of results returned on a single page.
         self.max_results = max_results
-        # nextToken
+        # The token to retrieve the next page of results.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

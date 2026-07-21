@@ -17,12 +17,21 @@ class ListTextbookAssistantSceneDetailsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The returned data object.
         self.data = data
+        # The error code returned if the request fails.
         self.err_code = err_code
+        # The error message returned if the request fails.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call succeeded.
+        # 
+        # - **true**: The call succeeded.
+        # 
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):
@@ -98,16 +107,27 @@ class ListTextbookAssistantSceneDetailsResponseBodyData(DaraModel):
         topic: main_models.ListTextbookAssistantSceneDetailsResponseBodyDataTopic = None,
         word_list: List[main_models.ListTextbookAssistantSceneDetailsResponseBodyDataWordList] = None,
     ):
+        # A list of roles in the scene.
         self.role_list = role_list
+        # The scene description.
         self.scene = scene
+        # The scene ID.
         self.scene_id = scene_id
+        # A list of image URLs related to the current scene.
         self.scene_image_list = scene_image_list
+        # The scene task list.
         self.scene_task_list = scene_task_list
+        # The translation of the scene description.
         self.scene_translate = scene_translate
+        # The sentence list.
         self.sentence_list = sentence_list
+        # The practice target.
         self.target = target
+        # The theme details.
         self.theme = theme
+        # The topic details.
         self.topic = topic
+        # The word list.
         self.word_list = word_list
 
     def validate(self):
@@ -238,8 +258,11 @@ class ListTextbookAssistantSceneDetailsResponseBodyDataWordList(DaraModel):
         word_id: str = None,
         word_text: str = None,
     ):
+        # The word definition.
         self.word_analysis = word_analysis
+        # The word ID.
         self.word_id = word_id
+        # The word text.
         self.word_text = word_text
 
     def validate(self):
@@ -281,8 +304,11 @@ class ListTextbookAssistantSceneDetailsResponseBodyDataTopic(DaraModel):
         topic_name: str = None,
         topic_translate: str = None,
     ):
+        # A list of image URLs related to the topic.
         self.topic_image_list = topic_image_list
+        # The topic name.
         self.topic_name = topic_name
+        # The translation of the topic name.
         self.topic_translate = topic_translate
 
     def validate(self):
@@ -324,8 +350,11 @@ class ListTextbookAssistantSceneDetailsResponseBodyDataTheme(DaraModel):
         theme_name: str = None,
         theme_translate: str = None,
     ):
+        # A list of image URLs related to the theme.
         self.theme_image_list = theme_image_list
+        # The theme name.
         self.theme_name = theme_name
+        # The translation of the theme name.
         self.theme_translate = theme_translate
 
     def validate(self):
@@ -367,8 +396,11 @@ class ListTextbookAssistantSceneDetailsResponseBodyDataSentenceList(DaraModel):
         sentence_id: str = None,
         sentence_text: str = None,
     ):
+        # The sentence analysis.
         self.sentence_analysis = sentence_analysis
+        # The sentence ID.
         self.sentence_id = sentence_id
+        # The sentence text.
         self.sentence_text = sentence_text
 
     def validate(self):
@@ -409,7 +441,9 @@ class ListTextbookAssistantSceneDetailsResponseBodyDataSceneTaskList(DaraModel):
         scene_task: str = None,
         scene_task_translate: str = None,
     ):
+        # The scene task description.
         self.scene_task = scene_task
+        # The translation of the scene task description.
         self.scene_task_translate = scene_task_translate
 
     def validate(self):
@@ -449,12 +483,19 @@ class ListTextbookAssistantSceneDetailsResponseBodyDataRoleList(DaraModel):
         role_name_translate: str = None,
         role_type: str = None,
     ):
+        # The role introduction.
         self.introduction = introduction
+        # The translation of the role introduction.
         self.introduction_translate = introduction_translate
+        # The role guidance text.
         self.promoting = promoting
+        # The translation of the role guidance text.
         self.promoting_translate = promoting_translate
+        # The role name.
         self.role_name = role_name
+        # The translation of the role name.
         self.role_name_translate = role_name_translate
+        # The role type:
         self.role_type = role_type
 
     def validate(self):

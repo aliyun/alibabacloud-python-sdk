@@ -15,11 +15,17 @@ class ExecuteAITeacherGrammarCheckResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The data object that contains the result.
         self.data = data
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -82,9 +88,13 @@ class ExecuteAITeacherGrammarCheckResponseBodyData(DaraModel):
         correction_status: str = None,
         error_reason: str = None,
     ):
+        # The error analysis.
         self.analysis = analysis
+        # The corrected sentence.
         self.correction = correction
+        # The result of the grammar check.
         self.correction_status = correction_status
+        # The error reason.
         self.error_reason = error_reason
 
     def validate(self):

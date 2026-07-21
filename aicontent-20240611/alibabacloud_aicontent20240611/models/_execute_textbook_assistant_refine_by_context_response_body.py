@@ -15,12 +15,17 @@ class ExecuteTextbookAssistantRefineByContextResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The returned data object.
         self.data = data
+        # The error code returned when the request fails.
         self.err_code = err_code
+        # The error message returned when the request fails.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Id of the request
+        # The unique request ID.
         self.request_id = request_id
+        # A value of `true` indicates that the request succeeded.
         self.success = success
 
     def validate(self):
@@ -80,6 +85,7 @@ class ExecuteTextbookAssistantRefineByContextResponseBodyData(DaraModel):
         self,
         result: main_models.ExecuteTextbookAssistantRefineByContextResponseBodyDataResult = None,
     ):
+        # The result data.
         self.result = result
 
     def validate(self):
@@ -109,6 +115,7 @@ class ExecuteTextbookAssistantRefineByContextResponseBodyDataResult(DaraModel):
         self,
         result: str = None,
     ):
+        # The refined sentence.
         self.result = result
 
     def validate(self):

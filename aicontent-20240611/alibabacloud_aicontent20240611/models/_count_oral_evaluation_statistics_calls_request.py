@@ -10,6 +10,7 @@ class CountOralEvaluationStatisticsCallsRequest(DaraModel):
         self,
         body: main_models.OralEvaluationStatisticsCallsCountRequest = None,
     ):
+        # The request body.
         self.body = body
 
     def validate(self):

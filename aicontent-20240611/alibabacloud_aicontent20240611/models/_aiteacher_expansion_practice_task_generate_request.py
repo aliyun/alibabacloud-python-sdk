@@ -18,16 +18,28 @@ class AITeacherExpansionPracticeTaskGenerateRequest(DaraModel):
         topic: str = None,
         user_id: str = None,
     ):
+        # The grade.
+        # 
         # This parameter is required.
         self.grade = grade
+        # A list of key sentences from the `textContent` to focus on during task generation.
         self.key_sentences = key_sentences
+        # A list of keywords from the `textContent` to focus on during task generation.
         self.key_words = key_words
+        # The learning object to guide task generation.
         self.learning_object = learning_object
+        # The reference article used to generate questions.
+        # 
         # This parameter is required.
         self.text_content = text_content
+        # The name of the textbook.
         self.textbook = textbook
+        # The conversation topic.
+        # 
         # This parameter is required.
         self.topic = topic
+        # The user ID.
+        # 
         # This parameter is required.
         self.user_id = user_id
 

@@ -17,16 +17,23 @@ class ModelRouterQueryBillingRuleListRequest(DaraModel):
         page_index: int = None,
         page_size: int = None,
     ):
+        # Return only currently effective rules.
         self.active_only = active_only
         # maxResults
         self.max_results = max_results
+        # Filter by model identifier.
         self.model_code = model_code
+        # Filter by model ID (required).
         self.model_id = model_id
+        # Filter by model type.
         self.model_type = model_type
         # nextToken
         self.next_token = next_token
+        # Page number. Default is 1.
         self.page = page
+        # Page number (takes precedence).
         self.page_index = page_index
+        # Number of items per page. Default is 20.
         self.page_size = page_size
 
     def validate(self):

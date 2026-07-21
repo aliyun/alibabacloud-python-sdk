@@ -17,11 +17,17 @@ class CountOralEvaluationStatisticsErrorResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # An array containing the error statistics.
         self.data = data
+        # The error code returned if the request fails. This parameter is returned only when `success` is `false`.
         self.err_code = err_code
+        # The error message returned if the request fails. This parameter is returned only when `success` is `false`.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The ID of the request.
         self.request_id = request_id
+        # `true` if the request succeeded; `false` otherwise.
         self.success = success
 
     def validate(self):

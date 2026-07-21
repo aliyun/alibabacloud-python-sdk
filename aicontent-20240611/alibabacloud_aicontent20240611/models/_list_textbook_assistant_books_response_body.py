@@ -17,12 +17,17 @@ class ListTextbookAssistantBooksResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The data object in the response.
         self.data = data
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Whether the request succeeded.
         self.success = success
 
     def validate(self):
@@ -83,7 +88,9 @@ class ListTextbookAssistantBooksResponseBodyData(DaraModel):
         book_list: List[main_models.ListTextbookAssistantBooksResponseBodyDataBookList] = None,
         pagination_data: main_models.ListTextbookAssistantBooksResponseBodyDataPaginationData = None,
     ):
+        # A list of book objects.
         self.book_list = book_list
+        # The pagination data.
         self.pagination_data = pagination_data
 
     def validate(self):
@@ -130,8 +137,11 @@ class ListTextbookAssistantBooksResponseBodyDataPaginationData(DaraModel):
         max_results: int = None,
         total_count: int = None,
     ):
+        # The current page number.
         self.current_page = current_page
+        # The maximum number of items per page.
         self.max_results = max_results
+        # The total number of items.
         self.total_count = total_count
 
     def validate(self):
@@ -182,17 +192,29 @@ class ListTextbookAssistantBooksResponseBodyDataBookList(DaraModel):
         version: str = None,
         volume: str = None,
     ):
+        # The author.
         self.author = author
+        # The book ID.
         self.book_id = book_id
+        # The book name.
         self.book_name = book_name
+        # The cover image.
         self.cover_image = cover_image
+        # The edition.
         self.edition = edition
+        # The grade. Valid values are strings from `"1"` to `"9"`.
         self.grade = grade
+        # The impression.
         self.impression = impression
+        # The International Standard Book Number (ISBN).
         self.isbn = isbn
+        # The publisher.
         self.publisher = publisher
+        # The subject.
         self.subject = subject
+        # The textbook version.
         self.version = version
+        # The volume. Valid values: `"0"` (all-in-one), `"1"` (first semester), and `"2"` (second semester).
         self.volume = volume
 
     def validate(self):

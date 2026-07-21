@@ -18,10 +18,15 @@ class OralEvaluationStatisticsErrorCountRequest(DaraModel):
     ):
         # appId,appkey
         self.application_access_id = application_access_id
+        # End time
         self.end_time = end_time
+        # List of error codes
         self.error_code = error_code
+        # Query granularity (Hour, Day, Month)
         self.granularity = granularity
+        # Project ID
         self.project_id = project_id
+        # Start time
         self.start_time = start_time
 
     def validate(self):

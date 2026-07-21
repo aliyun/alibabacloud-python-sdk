@@ -14,11 +14,17 @@ class CreateAccessWarrantRequest(DaraModel):
         user_id: str = None,
         warrant_available: int = None,
     ):
+        # The merchant\\"s application ID.
         self.app_id = app_id
+        # The signature for the request parameters.
         self.request_sign = request_sign
+        # The 10-digit request timestamp in seconds.
         self.timestamp = timestamp
+        # The public IP address of the client device.
         self.user_client_ip = user_client_ip
+        # The merchant\\"s user ID.
         self.user_id = user_id
+        # The duration, in seconds, for which the access warrant is valid.
         self.warrant_available = warrant_available
 
     def validate(self):

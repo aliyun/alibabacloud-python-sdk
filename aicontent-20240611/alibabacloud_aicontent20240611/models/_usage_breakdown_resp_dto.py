@@ -16,10 +16,15 @@ class UsageBreakdownRespDTO(DaraModel):
         rows: List[main_models.UsageBreakdownRowDTO] = None,
         total: int = None,
     ):
+        # Aggregation granularity: hourly or daily
         self.granularity = granularity
+        # Current page number
         self.page = page
+        # Number of entries per page
         self.page_size = page_size
+        # List of detailed data entries
         self.rows = rows
+        # Total number of entries
         self.total = total
 
     def validate(self):

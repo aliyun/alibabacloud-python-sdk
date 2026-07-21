@@ -12,9 +12,13 @@ class ModelRowDTO(DaraModel):
         model_name: str = None,
         values: str = None,
     ):
+        # Model identity
         self.model_code = model_code
+        # Model ID
         self.model_id = model_id
+        # Model name
         self.model_name = model_name
+        # Metric value mapping, where the key is the metric name and the value is the numeric value
         self.values = values
 
     def validate(self):

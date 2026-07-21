@@ -12,12 +12,20 @@ class ExecuteTextbookAssistantTranslateRequest(DaraModel):
         chat_id: str = None,
         scenario: str = None,
     ):
+        # The ID of the assistant\\"s message.
+        # 
         # This parameter is required.
         self.assistant = assistant
+        # The authorization token. Obtain this token by calling the authorization operation for the AI Textbook Assistant feature.
+        # 
         # This parameter is required.
         self.auth_token = auth_token
+        # The conversation ID.
+        # 
         # This parameter is required.
         self.chat_id = chat_id
+        # The practice scenario. Valid values: SYNC for synchronous practice and EXPAND for extended practice.
+        # 
         # This parameter is required.
         self.scenario = scenario
 

@@ -10,8 +10,9 @@ class ModelRouterQueryClientDiscountLogsRequest(DaraModel):
         max_results: int = None,
         next_token: str = None,
     ):
+        # The maximum number of results to return per page.
         self.max_results = max_results
-        # nextToken
+        # The token to retrieve the next page of results. Omit this parameter to get the first page.
         self.next_token = next_token
 
     def validate(self):

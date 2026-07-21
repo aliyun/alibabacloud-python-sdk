@@ -17,16 +17,28 @@ class ModelRouterQueryUsageBreakdownRequest(DaraModel):
         page_size: int = None,
         start_time: int = None,
     ):
+        # Optional. Filters results by API Key ID. This parameter is linked to the department and requires clientId to be specified first.
         self.api_key_id = api_key_id
+        # Optional. Filters results by department ID.
         self.client_id = client_id
+        # The query end time, in UNIX timestamp (seconds).
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # The aggregation granularity. Valid values: hourly and daily.
+        # 
         # This parameter is required.
         self.granularity = granularity
+        # The maximum number of results to return.
         self.max_results = max_results
+        # The pagination token.
         self.next_token = next_token
+        # The page number. Default value: 1.
         self.page = page
+        # The number of entries per page. Default value: 20. Maximum value: 500.
         self.page_size = page_size
+        # The query start time, in UNIX timestamp (seconds).
+        # 
         # This parameter is required.
         self.start_time = start_time
 

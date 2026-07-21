@@ -15,12 +15,21 @@ class GetTextbookAssistantTokenResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The data object.
         self.data = data
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the API call succeeded.
+        # 
+        # - **true**: The API call succeeded.
+        # 
+        # - **false**: The API call failed.
         self.success = success
 
     def validate(self):
@@ -81,7 +90,9 @@ class GetTextbookAssistantTokenResponseBodyData(DaraModel):
         auth_token: str = None,
         expire: int = None,
     ):
+        # The authorization token. Use this token to make API calls to the English textbook-style AI teacher service.
         self.auth_token = auth_token
+        # The expiration time of the authorization token, in seconds.
         self.expire = expire
 
     def validate(self):

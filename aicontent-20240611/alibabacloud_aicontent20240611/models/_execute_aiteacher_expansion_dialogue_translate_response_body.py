@@ -15,11 +15,17 @@ class ExecuteAITeacherExpansionDialogueTranslateResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The returned data.
         self.data = data
+        # The error code returned when the request fails.
         self.err_code = err_code
+        # The error message returned when the request fails.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -79,6 +85,7 @@ class ExecuteAITeacherExpansionDialogueTranslateResponseBodyData(DaraModel):
         self,
         result: str = None,
     ):
+        # The translation result.
         self.result = result
 
     def validate(self):

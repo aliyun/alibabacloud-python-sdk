@@ -16,17 +16,30 @@ class ExecuteAITeacherEnglishParaphraseChatMessageRequest(DaraModel):
         user_answer: str = None,
         user_id: str = None,
     ):
+        # The unique ID for the chat session.
         self.chat_id = chat_id
+        # The user\\"s chat message.
+        # 
         # This parameter is required.
         self.content = content
+        # The grade level.
         self.grade = grade
+        # A unique identifier for the question.
         self.question_id = question_id
+        # The user\\"s question.
+        # 
         # This parameter is required.
         self.question_info = question_info
+        # The response mode. Set this to `streaming` to receive the response as a stream of events.
+        # 
         # This parameter is required.
         self.response_mode = response_mode
+        # The user\\"s answer to the question.
+        # 
         # This parameter is required.
         self.user_answer = user_answer
+        # The user ID.
+        # 
         # This parameter is required.
         self.user_id = user_id
 

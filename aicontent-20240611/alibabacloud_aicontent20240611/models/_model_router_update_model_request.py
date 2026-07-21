@@ -19,18 +19,27 @@ class ModelRouterUpdateModelRequest(DaraModel):
         symbol: str = None,
         tags: str = None,
     ):
-        # API Key
+        # The API key.
         self.api_key = api_key
-        # Base URL
+        # The base URL.
         self.base_url = base_url
+        # The model description.
         self.description = description
+        # The maximum input length.
         self.max_input_length = max_input_length
+        # The maximum output length.
         self.max_output_length = max_output_length
+        # The model ID.
         self.model_id = model_id
+        # The model type.
         self.model_type = model_type
+        # The model name.
         self.name = name
+        # The model status.
         self.status = status
+        # The provider symbol.
         self.symbol = symbol
+        # Comma-separated tags.
         self.tags = tags
 
     def validate(self):

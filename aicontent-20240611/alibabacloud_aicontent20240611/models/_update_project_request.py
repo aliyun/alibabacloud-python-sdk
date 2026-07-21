@@ -10,7 +10,9 @@ class UpdateProjectRequest(DaraModel):
         project_id: str = None,
         project_name: str = None,
     ):
+        # The ID of the project.
         self.project_id = project_id
+        # The new name of the project.
         self.project_name = project_name
 
     def validate(self):

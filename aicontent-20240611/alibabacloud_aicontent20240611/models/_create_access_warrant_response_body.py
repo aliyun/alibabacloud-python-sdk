@@ -15,11 +15,17 @@ class CreateAccessWarrantResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The returned data object.
         self.data = data
+        # The error code returned if the request fails.
         self.err_code = err_code
+        # The error message returned if the request fails.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The unique request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -84,11 +90,17 @@ class CreateAccessWarrantResponseBodyData(DaraModel):
         expire_time: str = None,
         user_id: str = None,
     ):
+        # The access token.
         self.access_token = access_token
+        # The access warrant ID.
         self.access_warrant_id = access_warrant_id
+        # The merchant\\"s application ID.
         self.application_access_id = application_access_id
+        # The creation time of the access warrant.
         self.create_time = create_time
+        # The expiration time of the access warrant.
         self.expire_time = expire_time
+        # The merchant\\"s user ID.
         self.user_id = user_id
 
     def validate(self):

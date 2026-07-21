@@ -12,12 +12,20 @@ class ExecuteTextbookAssistantSuggestionRequest(DaraModel):
         chat_id: str = None,
         scenario: str = None,
     ):
+        # The unique identifier for the AI teacher\\"s message.
+        # 
         # This parameter is required.
         self.assistant = assistant
+        # The authorization token for the API call. To obtain this token, call the operation that generates authorization tokens for the AI teacher feature.
+        # 
         # This parameter is required.
         self.auth_token = auth_token
+        # The unique identifier for the current chat.
+        # 
         # This parameter is required.
         self.chat_id = chat_id
+        # The practice scenario. Valid values are `SYNC` for synchronous practice and `EXPAND` for extended practice.
+        # 
         # This parameter is required.
         self.scenario = scenario
 

@@ -14,12 +14,19 @@ class Personalizedtxt2imgAddModelTrainJobRequest(DaraModel):
         object_type: str = None,
         train_steps: int = None,
     ):
+        # A list of one or more image URLs for training. For example: ["url_1", "url_2", ...]
+        # 
         # This parameter is required.
         self.image_url = image_url
+        # The name of the model training job.
+        # 
         # This parameter is required.
         self.name = name
+        # A single word that defines the object type in the training images, such as "girl", "person", "man", "boy", or "dog".
+        # 
         # This parameter is required.
         self.object_type = object_type
+        # The number of training steps for the model training job.
         self.train_steps = train_steps
 
     def validate(self):

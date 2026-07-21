@@ -10,6 +10,7 @@ class CountOralEvaluationStatisticsConcurrentRequest(DaraModel):
         self,
         body: main_models.OralEvaluationStatisticsConcurrentCountRequest = None,
     ):
+        # The request body.
         self.body = body
 
     def validate(self):

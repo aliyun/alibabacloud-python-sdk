@@ -11,8 +11,11 @@ class ExecuteAITeacherEnglishCompositionTutoringWorkflowRunResponseBody(DaraMode
         event: str = None,
         request_id: str = None,
     ):
+        # The content of the event.
         self.content = content
+        # The event type.
         self.event = event
+        # The unique ID of the request.
         self.request_id = request_id
 
     def validate(self):

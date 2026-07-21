@@ -11,8 +11,11 @@ class ModelRouterConfigureClientBalanceRequest(DaraModel):
         enable_balance: bool = None,
         initial_balance: float = None,
     ):
+        # The balance type. Valid values: `amount` or `tokens`. This parameter is required when you first enable balance throttling and cannot be changed afterward.
         self.balance_type = balance_type
+        # Specifies whether to enable balance throttling. Once enabled, this feature cannot be disabled.
         self.enable_balance = enable_balance
+        # The initial balance. This parameter is only applicable when you first enable balance throttling.
         self.initial_balance = initial_balance
 
     def validate(self):

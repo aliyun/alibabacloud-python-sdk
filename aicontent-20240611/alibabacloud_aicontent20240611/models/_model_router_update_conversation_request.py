@@ -12,9 +12,13 @@ class ModelRouterUpdateConversationRequest(DaraModel):
         model_ids: str = None,
         title: str = None,
     ):
+        # A JSON string that contains the message history for each model in the conversation.
         self.chat_data = chat_data
+        # The number of messages in the conversation.
         self.message_count = message_count
+        # A JSON-formatted string that represents an array of model IDs.
         self.model_ids = model_ids
+        # The new conversation title.
         self.title = title
 
     def validate(self):

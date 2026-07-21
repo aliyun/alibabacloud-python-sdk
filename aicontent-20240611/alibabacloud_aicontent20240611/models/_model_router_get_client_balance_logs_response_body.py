@@ -19,14 +19,21 @@ class ModelRouterGetClientBalanceLogsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The returned data.
         self.data = data
+        # The error code returned on failure.
         self.err_code = err_code
+        # The error message returned on failure.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The maximum number of entries returned.
         self.max_results = max_results
-        # nextToken
+        # The pagination token for the next page of results. An empty value indicates that no more results are available.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -101,9 +108,13 @@ class ModelRouterGetClientBalanceLogsResponseBodyData(DaraModel):
         page_size: int = None,
         total: int = None,
     ):
+        # A list of balance change log entries.
         self.list = list
+        # The current page number.
         self.page = page
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The total number of matching entries.
         self.total = total
 
     def validate(self):

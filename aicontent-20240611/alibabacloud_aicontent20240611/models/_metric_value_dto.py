@@ -12,9 +12,13 @@ class MetricValueDTO(DaraModel):
         unit: str = None,
         value: float = None,
     ):
+        # Metric key name
         self.key = key
+        # Metric display name
         self.label = label
+        # Metric unit
         self.unit = unit
+        # Metric value
         self.value = value
 
     def validate(self):

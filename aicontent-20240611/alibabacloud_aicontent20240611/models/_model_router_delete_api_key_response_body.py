@@ -14,11 +14,17 @@ class ModelRouterDeleteApiKeyResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Whether the deletion was successful.
         self.data = data
+        # The error code returned if the request fails.
         self.err_code = err_code
+        # The error message returned if the request fails.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The request ID.
         self.request_id = request_id
+        # Whether the request was successful.
         self.success = success
 
     def validate(self):

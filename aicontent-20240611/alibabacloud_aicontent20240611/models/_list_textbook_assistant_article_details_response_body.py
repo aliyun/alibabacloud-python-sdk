@@ -17,12 +17,21 @@ class ListTextbookAssistantArticleDetailsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # An array of article detail objects.
         self.data = data
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates if the API call succeeded.
+        # 
+        # - **true**: Success
+        # 
+        # - **false**: Failure
         self.success = success
 
     def validate(self):
@@ -95,13 +104,21 @@ class ListTextbookAssistantArticleDetailsResponseBodyData(DaraModel):
         topic: main_models.ListTextbookAssistantArticleDetailsResponseBodyDataTopic = None,
         word_list: List[main_models.ListTextbookAssistantArticleDetailsResponseBodyDataWordList] = None,
     ):
+        # The article ID.
         self.article_id = article_id
+        # A list of Q\\&A objects.
         self.question_list = question_list
+        # A list of scene objects.
         self.scene_list = scene_list
+        # A list of sentence objects.
         self.sentence_list = sentence_list
+        # The learning objectives.
         self.target = target
+        # The theme object.
         self.theme = theme
+        # The topic object.
         self.topic = topic
+        # A list of word objects.
         self.word_list = word_list
 
     def validate(self):
@@ -214,8 +231,11 @@ class ListTextbookAssistantArticleDetailsResponseBodyDataWordList(DaraModel):
         word_id: str = None,
         word_text: str = None,
     ):
+        # The word analysis.
         self.word_analysis = word_analysis
+        # The word ID.
         self.word_id = word_id
+        # The word text.
         self.word_text = word_text
 
     def validate(self):
@@ -257,8 +277,11 @@ class ListTextbookAssistantArticleDetailsResponseBodyDataTopic(DaraModel):
         topic_name: str = None,
         topic_translate: str = None,
     ):
+        # A list of image URLs for the topic.
         self.topic_image_list = topic_image_list
+        # The topic name.
         self.topic_name = topic_name
+        # The translated topic name.
         self.topic_translate = topic_translate
 
     def validate(self):
@@ -300,8 +323,11 @@ class ListTextbookAssistantArticleDetailsResponseBodyDataTheme(DaraModel):
         theme_name: str = None,
         theme_translate: str = None,
     ):
+        # A list of image URLs for the theme.
         self.theme_image_list = theme_image_list
+        # The theme name.
         self.theme_name = theme_name
+        # The translated theme name.
         self.theme_translate = theme_translate
 
     def validate(self):
@@ -343,8 +369,11 @@ class ListTextbookAssistantArticleDetailsResponseBodyDataSentenceList(DaraModel)
         sentence_id: str = None,
         sentence_text: str = None,
     ):
+        # The sentence analysis.
         self.sentence_analysis = sentence_analysis
+        # The sentence ID.
         self.sentence_id = sentence_id
+        # The sentence text.
         self.sentence_text = sentence_text
 
     def validate(self):
@@ -387,9 +416,13 @@ class ListTextbookAssistantArticleDetailsResponseBodyDataSceneList(DaraModel):
         scene_image_list: List[str] = None,
         scene_translate: str = None,
     ):
+        # The scene description.
         self.scene = scene
+        # The scene ID.
         self.scene_id = scene_id
+        # A list of image URLs for the scene.
         self.scene_image_list = scene_image_list
+        # The translated scene description.
         self.scene_translate = scene_translate
 
     def validate(self):
@@ -437,8 +470,11 @@ class ListTextbookAssistantArticleDetailsResponseBodyDataQuestionList(DaraModel)
         question: str = None,
         question_translate: str = None,
     ):
+        # The answer.
         self.answer = answer
+        # The question.
         self.question = question
+        # The translated question.
         self.question_translate = question_translate
 
     def validate(self):

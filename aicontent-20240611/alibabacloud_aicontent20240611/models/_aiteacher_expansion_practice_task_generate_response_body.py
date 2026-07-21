@@ -17,11 +17,17 @@ class AITeacherExpansionPracticeTaskGenerateResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The data object.
         self.data = data
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates if the request was successful.
         self.success = success
 
     def validate(self):
@@ -85,10 +91,15 @@ class AITeacherExpansionPracticeTaskGenerateResponseBodyData(DaraModel):
         task_content: List[main_models.AITeacherExpansionPracticeTaskGenerateResponseBodyDataTaskContent] = None,
         task_type: str = None,
     ):
+        # The background of the conversation.
         self.background_description = background_description
+        # The role settings.
         self.role_set = role_set
+        # The opening sentence of the conversation.
         self.start_sentence = start_sentence
+        # A list of Q\\&A pairs.
         self.task_content = task_content
+        # The task type.
         self.task_type = task_type
 
     def validate(self):
@@ -152,7 +163,9 @@ class AITeacherExpansionPracticeTaskGenerateResponseBodyDataTaskContent(DaraMode
         assistant: str = None,
         user: str = None,
     ):
+        # The AI teacher\\"s question.
         self.assistant = assistant
+        # The student\\"s answer.
         self.user = user
 
     def validate(self):
@@ -187,7 +200,9 @@ class AITeacherExpansionPracticeTaskGenerateResponseBodyDataRoleSet(DaraModel):
         assistant: str = None,
         user: str = None,
     ):
+        # The name of the AI teacher.
         self.assistant = assistant
+        # The name of the student.
         self.user = user
 
     def validate(self):

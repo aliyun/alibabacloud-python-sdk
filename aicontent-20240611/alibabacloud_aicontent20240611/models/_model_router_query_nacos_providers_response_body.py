@@ -17,11 +17,17 @@ class ModelRouterQueryNacosProvidersResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The data object.
         self.data = data
+        # The error message code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -90,9 +96,13 @@ class ModelRouterQueryNacosProvidersResponseBodyData(DaraModel):
         name: str = None,
         symbol: str = None,
     ):
+        # The base URL.
         self.base_url = base_url
+        # The list of models.
         self.models = models
+        # The provider name.
         self.name = name
+        # The provider identifier.
         self.symbol = symbol
 
     def validate(self):
@@ -152,9 +162,12 @@ class ModelRouterQueryNacosProvidersResponseBodyDataModels(DaraModel):
         type: str = None,
     ):
         self.extensions = extensions
+        # The model identifier.
         self.identifier = identifier
         self.in_out = in_out
+        # The input token limit.
         self.input_token = input_token
+        # The output token limit.
         self.output_token = output_token
         self.type = type
 

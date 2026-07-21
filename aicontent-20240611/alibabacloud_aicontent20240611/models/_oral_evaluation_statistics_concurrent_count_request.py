@@ -15,9 +15,13 @@ class OralEvaluationStatisticsConcurrentCountRequest(DaraModel):
     ):
         # appId,appkey
         self.application_access_id = application_access_id
+        # End Time
         self.end_time = end_time
+        # Query granularity (hour, Day, month)
         self.granularity = granularity
+        # project ID
         self.project_id = project_id
+        # Start Time
         self.start_time = start_time
 
     def validate(self):

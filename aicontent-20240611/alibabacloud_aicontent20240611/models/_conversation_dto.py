@@ -16,14 +16,21 @@ class ConversationDTO(DaraModel):
         model_ids: str = None,
         title: str = None,
     ):
+        # A JSON-formatted string that represents the complete state of the conversation.
         self.chat_data = chat_data
+        # The status of the conversation, where 0 means enabled and any non-zero value means disabled.
         self.delete_tag = delete_tag
+        # The creation time of the conversation, in ISO 8601 format.
         self.gmt_create = gmt_create
+        # The modification time of the conversation, in ISO 8601 format.
         self.gmt_modified = gmt_modified
-        # ID
+        # The ID of the conversation.
         self.id = id
+        # The total number of messages in the conversation.
         self.message_count = message_count
+        # A JSON-formatted string that contains an array of model IDs.
         self.model_ids = model_ids
+        # The title of the conversation.
         self.title = title
 
     def validate(self):

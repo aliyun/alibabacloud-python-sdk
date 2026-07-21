@@ -18,16 +18,28 @@ class ExecuteAITeacherExpansionDialogueTranslateRequest(DaraModel):
         topic: str = None,
         user_id: str = None,
     ):
+        # The background context for the dialogue.
+        # 
         # This parameter is required.
         self.background = background
+        # An array of dialogue tasks.
+        # 
         # This parameter is required.
         self.dialogue_tasks = dialogue_tasks
+        # An array of dialogue records.
         self.records = records
+        # Role information for the participants.
+        # 
         # This parameter is required.
         self.role_info = role_info
+        # The opening sentence of the dialogue.
         self.start_sentence = start_sentence
+        # The topic of the conversation.
+        # 
         # This parameter is required.
         self.topic = topic
+        # The user ID.
+        # 
         # This parameter is required.
         self.user_id = user_id
 
@@ -113,8 +125,12 @@ class ExecuteAITeacherExpansionDialogueTranslateRequestRoleInfo(DaraModel):
         assistant: str = None,
         user: str = None,
     ):
+        # The assistant name.
+        # 
         # This parameter is required.
         self.assistant = assistant
+        # The user name.
+        # 
         # This parameter is required.
         self.user = user
 
@@ -153,12 +169,20 @@ class ExecuteAITeacherExpansionDialogueTranslateRequestRecords(DaraModel):
         order: int = None,
         role: str = None,
     ):
+        # The dialogue content.
+        # 
         # This parameter is required.
         self.content = content
+        # Controls the conversation flow based on whether the user\\"s response is off-topic. This value is determined by previous turns. If a user provides more than two consecutive off-topic responses, the system sets this parameter to `true` to switch tasks.
         self.is_off_topic_control = is_off_topic_control
+        # Indicates whether the message is on-topic.
         self.is_on_topic = is_on_topic
+        # The sequence number.
+        # 
         # This parameter is required.
         self.order = order
+        # The role of the message author. Valid values are `assistant` for the AI and `user` for the user.
+        # 
         # This parameter is required.
         self.role = role
 
@@ -214,11 +238,18 @@ class ExecuteAITeacherExpansionDialogueTranslateRequestDialogueTasks(DaraModel):
         order: int = None,
         user: str = None,
     ):
+        # The dialogue content from the assistant.
+        # 
         # This parameter is required.
         self.assistant = assistant
+        # The translation of the assistant content.
         self.assistant_translate = assistant_translate
+        # The sequence number.
+        # 
         # This parameter is required.
         self.order = order
+        # The dialogue content from the user.
+        # 
         # This parameter is required.
         self.user = user
 

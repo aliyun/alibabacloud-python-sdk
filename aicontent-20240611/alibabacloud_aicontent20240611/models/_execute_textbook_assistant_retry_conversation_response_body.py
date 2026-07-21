@@ -15,12 +15,17 @@ class ExecuteTextbookAssistantRetryConversationResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The returned data.
         self.data = data
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -83,9 +88,13 @@ class ExecuteTextbookAssistantRetryConversationResponseBodyData(DaraModel):
         result: main_models.ExecuteTextbookAssistantRetryConversationResponseBodyDataResult = None,
         user: str = None,
     ):
+        # The ID of the AI assistant\\"s reply.
         self.assistant = assistant
+        # The conversation ID.
         self.chat_id = chat_id
+        # Contains the result data.
         self.result = result
+        # The ID of the user\\"s reply.
         self.user = user
 
     def validate(self):
@@ -134,7 +143,9 @@ class ExecuteTextbookAssistantRetryConversationResponseBodyDataResult(DaraModel)
         chinese_result: str = None,
         english_result: str = None,
     ):
+        # The Chinese translation of the AI assistant\\"s reply.
         self.chinese_result = chinese_result
+        # The AI assistant\\"s reply in English.
         self.english_result = english_result
 
     def validate(self):

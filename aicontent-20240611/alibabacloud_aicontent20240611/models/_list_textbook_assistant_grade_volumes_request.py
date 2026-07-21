@@ -10,7 +10,10 @@ class ListTextbookAssistantGradeVolumesRequest(DaraModel):
         auth_token: str = None,
         scenario: str = None,
     ):
+        # The authorization token. Obtain this token by calling the API that authorizes the Textbook Assistant feature.
         self.auth_token = auth_token
+        # The scenario. Valid values: `SYNC` (synchronized practice) and `EXPAND` (extended practice).
+        # 
         # This parameter is required.
         self.scenario = scenario
 

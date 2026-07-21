@@ -16,13 +16,21 @@ class ClientBalanceLogDTO(DaraModel):
         id: int = None,
         remark: str = None,
     ):
+        # The new balance.
         self.balance_after = balance_after
+        # The previous balance.
         self.balance_before = balance_before
+        # The change amount. A positive value represents a recharge, and a negative value represents a deduction.
         self.change_amount = change_amount
+        # The type of change. Possible values are `auto_deduct`, `deduct`, or `recharge`.
         self.change_type = change_type
+        # The client ID.
         self.client_id = client_id
+        # The creation time in ISO 8601 UTC format.
         self.gmt_create = gmt_create
+        # The unique record ID.
         self.id = id
+        # Notes about the balance change.
         self.remark = remark
 
     def validate(self):

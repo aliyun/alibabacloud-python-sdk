@@ -13,8 +13,12 @@ class OralEvaluationStatisticsCallsCountResponse(DaraModel):
         project_data: main_models.OralEvaluationStatisticsCallsCountResponseProjectData = None,
         project_id: str = None,
     ):
+        # The project statistics.
+        # 
         # This parameter is required.
         self.project_data = project_data
+        # The project ID.
+        # 
         # This parameter is required.
         self.project_id = project_id
 
@@ -52,7 +56,10 @@ class OralEvaluationStatisticsCallsCountResponseProjectData(DaraModel):
         application_data: List[main_models.OralEvaluationStatisticsCallsCountResponseProjectDataApplicationData] = None,
         application_internal_id: str = None,
     ):
+        # A list of application data objects.
         self.application_data = application_data
+        # The internal application ID.
+        # 
         # This parameter is required.
         self.application_internal_id = application_internal_id
 
@@ -96,8 +103,9 @@ class OralEvaluationStatisticsCallsCountResponseProjectDataApplicationData(DaraM
         data: List[main_models.OralEvaluationStatisticsCallsCountResponseProjectDataApplicationDataData] = None,
         application_access_id: str = None,
     ):
+        # A list of data objects.
         self.data = data
-        # appkey
+        # The appkey.
         # 
         # This parameter is required.
         self.application_access_id = application_access_id
@@ -142,8 +150,12 @@ class OralEvaluationStatisticsCallsCountResponseProjectDataApplicationDataData(D
         count: int = None,
         name: str = None,
     ):
+        # The corresponding count.
+        # 
         # This parameter is required.
         self.count = count
+        # The name of the statistic.
+        # 
         # This parameter is required.
         self.name = name
 

@@ -12,11 +12,18 @@ class Personalizedtxt2imgQueryImageAssetRequest(DaraModel):
         model_id: str = None,
         prompt_id: str = None,
     ):
+        # The encoding format of the image. If this parameter is set to `base64`, the image is returned as a Base64-encoded string. If this parameter is omitted, the raw binary data of the image is returned.
         self.encode_format = encode_format
+        # The ID of the image.
+        # 
         # This parameter is required.
         self.image_id = image_id
+        # The ID of the model.
+        # 
         # This parameter is required.
         self.model_id = model_id
+        # The ID of the prompt.
+        # 
         # This parameter is required.
         self.prompt_id = prompt_id
 

@@ -27,15 +27,24 @@ class BillingCostBreakdownRowDTO(DaraModel):
     ):
         self.api_key_id = api_key_id
         self.api_key_name = api_key_name
+        # Billing type; currently fixed as total_amount
         self.billing_type = billing_type
+        # Department ID; 0 indicates no associated department
         self.client_id = client_id
+        # Department name
         self.client_name = client_name
         self.dim_values = dim_values
+        # Model identifier
         self.model_code = model_code
+        # Model ID
         self.model_id = model_id
+        # Model name
         self.model_name = model_name
+        # Statistics category
         self.model_type = model_type
+        # Payable amount, rounded to 8 decimal places
         self.payable_amount = payable_amount
+        # Statistics time point, Unix timestamp (seconds)
         self.summary_time = summary_time
         self.tiers = tiers
         self.values = values

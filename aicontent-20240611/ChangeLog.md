@@ -1,3 +1,11 @@
+2026-07-21 Version: 7.4.0
+- Support API ModelRouterCreateSubscription.
+- Support API ModelRouterListSubscriptions.
+- Support API ModelRouterStopSubscription.
+- Update API ModelRouterCreateBalanceTransaction: add request parameters body.balanceType.
+- Update API ModelRouterCreateBalanceTransaction: add request parameters body.idempotencyKey.
+
+
 2026-05-20 Version: 7.3.3
 - Update API ModelRouterQueryBillingCostBreakdown: add request parameters apiKeyId.
 - Update API ModelRouterQueryCostModelDetail: add request parameters apiKeyId.

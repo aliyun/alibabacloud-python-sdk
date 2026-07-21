@@ -17,14 +17,22 @@ class ModelRouterQueryCostTrendMetricsRequest(DaraModel):
         start_time: int = None,
     ):
         self.api_key_id = api_key_id
+        # Filters the results by department ID.
         self.client_id = client_id
+        # The end time of the query, specified as a Unix timestamp in seconds.
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # The granularity of the data. Valid values: `hourly` and `daily`. Default: `hourly`.
         self.granularity = granularity
+        # The maximum number of results to return per page.
         self.max_results = max_results
+        # The model types to query, separated by commas.
         self.model_types = model_types
-        # nextToken
+        # The pagination token from a previous response to retrieve the next page of results. If this parameter is omitted, the first page of results is returned.
         self.next_token = next_token
+        # The start time of the query, specified as a Unix timestamp in seconds.
+        # 
         # This parameter is required.
         self.start_time = start_time
 

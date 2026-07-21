@@ -15,9 +15,13 @@ class CostQueryModelsDTO(DaraModel):
         name_field: str = None,
         rows: List[main_models.ModelRowDTO] = None,
     ):
+        # List of column definitions
         self.columns = columns
+        # Field Name of ID
         self.id_field = id_field
+        # Field Name of Name
         self.name_field = name_field
+        # List of model data rows
         self.rows = rows
 
     def validate(self):

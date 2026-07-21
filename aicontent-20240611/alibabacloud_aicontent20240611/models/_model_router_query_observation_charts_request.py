@@ -14,11 +14,17 @@ class ModelRouterQueryObservationChartsRequest(DaraModel):
         start_time: str = None,
         time_range: str = None,
     ):
+        # The API key ID to use as a filter.
         self.api_key_id = api_key_id
+        # The client ID to use as a filter.
         self.client_id = client_id
+        # The end time of the custom time range, in ISO 8601 UTC format. If specified, `startTime` must also be provided.
         self.end_time = end_time
+        # The model ID to use as a filter.
         self.model_id = model_id
+        # The start time of the custom time range, in ISO 8601 UTC format. If specified, `endTime` must also be provided.
         self.start_time = start_time
+        # The time range for the query. Valid values are `1h`, `6h`, `24h`, `7d`, and `30d`. This parameter is mutually exclusive with `startTime` and `endTime`.
         self.time_range = time_range
 
     def validate(self):

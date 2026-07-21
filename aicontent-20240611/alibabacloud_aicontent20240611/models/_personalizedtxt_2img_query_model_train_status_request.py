@@ -9,6 +9,8 @@ class Personalizedtxt2imgQueryModelTrainStatusRequest(DaraModel):
         self,
         model_id: str = None,
     ):
+        # The model ID.
+        # 
         # This parameter is required.
         self.model_id = model_id
 

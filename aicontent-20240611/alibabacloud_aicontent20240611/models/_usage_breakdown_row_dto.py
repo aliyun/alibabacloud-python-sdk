@@ -23,13 +23,21 @@ class UsageBreakdownRowDTO(DaraModel):
     ):
         self.api_key_id = api_key_id
         self.api_key_name = api_key_name
+        # Department ID; 0 indicates no associated department
         self.client_id = client_id
+        # Department name
         self.client_name = client_name
+        # Array of usage metrics, containing only entries with non-zero values
         self.metrics = metrics
+        # Model identifier
         self.model_code = model_code
+        # Model ID
         self.model_id = model_id
+        # Model name
         self.model_name = model_name
+        # Statistics scope
         self.model_type = model_type
+        # Statistics time point, Unix timestamp (seconds)
         self.summary_time = summary_time
 
     def validate(self):

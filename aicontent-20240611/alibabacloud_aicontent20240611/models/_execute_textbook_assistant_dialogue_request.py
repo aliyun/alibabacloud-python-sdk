@@ -12,12 +12,20 @@ class ExecuteTextbookAssistantDialogueRequest(DaraModel):
         scenario: str = None,
         user_message: str = None,
     ):
+        # The authorization token required to call the API. To get this token, use the Textbook Assistant authorization API.
+        # 
         # This parameter is required.
         self.auth_token = auth_token
+        # The chat ID for this turn.
+        # 
         # This parameter is required.
         self.chat_id = chat_id
+        # The scenario. Valid values: SYNC for synchronous practice and EXPAND for extended practice.
+        # 
         # This parameter is required.
         self.scenario = scenario
+        # The user\\"s message content.
+        # 
         # This parameter is required.
         self.user_message = user_message
 

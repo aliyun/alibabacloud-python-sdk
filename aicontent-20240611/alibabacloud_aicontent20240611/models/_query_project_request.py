@@ -9,6 +9,7 @@ class QueryProjectRequest(DaraModel):
         self,
         project_id: str = None,
     ):
+        # The ID of the project.
         self.project_id = project_id
 
     def validate(self):

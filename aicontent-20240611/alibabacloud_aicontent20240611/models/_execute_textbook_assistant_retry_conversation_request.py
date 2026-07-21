@@ -12,12 +12,20 @@ class ExecuteTextbookAssistantRetryConversationRequest(DaraModel):
         chat_id: str = None,
         scenario: str = None,
     ):
+        # The AI assistant\\"s message ID.
+        # 
         # This parameter is required.
         self.assistant = assistant
+        # The authorization token. You can obtain this token from the API that provides authorization for the textbook AI assistant feature.
+        # 
         # This parameter is required.
         self.auth_token = auth_token
+        # The conversation ID.
+        # 
         # This parameter is required.
         self.chat_id = chat_id
+        # Specifies the scenario. Valid values: `SYNC` for synchronized practice and `EXPAND` for expansion practice.
+        # 
         # This parameter is required.
         self.scenario = scenario
 

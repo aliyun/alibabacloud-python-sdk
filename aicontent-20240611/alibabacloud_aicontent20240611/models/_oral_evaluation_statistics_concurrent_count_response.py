@@ -13,8 +13,12 @@ class OralEvaluationStatisticsConcurrentCountResponse(DaraModel):
         project_data: main_models.OralEvaluationStatisticsConcurrentCountResponseProjectData = None,
         project_id: str = None,
     ):
+        # Statistical data for the project.
+        # 
         # This parameter is required.
         self.project_data = project_data
+        # The project ID.
+        # 
         # This parameter is required.
         self.project_id = project_id
 
@@ -52,7 +56,10 @@ class OralEvaluationStatisticsConcurrentCountResponseProjectData(DaraModel):
         application_data: List[main_models.OralEvaluationStatisticsConcurrentCountResponseProjectDataApplicationData] = None,
         application_internal_id: str = None,
     ):
+        # A list of application data.
         self.application_data = application_data
+        # The internal application ID.
+        # 
         # This parameter is required.
         self.application_internal_id = application_internal_id
 
@@ -96,8 +103,9 @@ class OralEvaluationStatisticsConcurrentCountResponseProjectDataApplicationData(
         data: List[main_models.OralEvaluationStatisticsConcurrentCountResponseProjectDataApplicationDataData] = None,
         application_access_id: str = None,
     ):
+        # A list of data nodes.
         self.data = data
-        # appkey
+        # The app key.
         # 
         # This parameter is required.
         self.application_access_id = application_access_id
@@ -142,8 +150,12 @@ class OralEvaluationStatisticsConcurrentCountResponseProjectDataApplicationDataD
         count: int = None,
         name: str = None,
     ):
+        # The count of the item.
+        # 
         # This parameter is required.
         self.count = count
+        # The name of the statistical item.
+        # 
         # This parameter is required.
         self.name = name
 

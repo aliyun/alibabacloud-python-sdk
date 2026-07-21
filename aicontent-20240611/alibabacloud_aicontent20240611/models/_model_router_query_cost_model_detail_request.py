@@ -19,18 +19,28 @@ class ModelRouterQueryCostModelDetailRequest(DaraModel):
         start_time: int = None,
     ):
         self.api_key_id = api_key_id
+        # The department ID by which to filter results.
         self.client_id = client_id
+        # The end of the time range to query, specified as a Unix timestamp in seconds.
+        # 
         # This parameter is required.
         self.end_time = end_time
-        # maxResults
+        # The maximum number of results to return per page. This parameter is recommended for pagination.
         self.max_results = max_results
+        # The model ID.
+        # 
         # This parameter is required.
         self.model_id = model_id
-        # nextToken
+        # The token to retrieve the next page of results. Obtain this token from the `nextToken` field in a previous response.
         self.next_token = next_token
+        # The page number. This parameter is part of an older pagination method. For better performance and consistency, use `maxResults` and `nextToken` instead.
         self.page = page
+        # The page number. This parameter is part of an older pagination method. For better performance and consistency, use `maxResults` and `nextToken` instead.
         self.page_index = page_index
+        # The page size. Default: 20.
         self.page_size = page_size
+        # The start of the time range to query, specified as a Unix timestamp in seconds.
+        # 
         # This parameter is required.
         self.start_time = start_time
 

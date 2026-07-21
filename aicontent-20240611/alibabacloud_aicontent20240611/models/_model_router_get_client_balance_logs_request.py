@@ -13,10 +13,15 @@ class ModelRouterGetClientBalanceLogsRequest(DaraModel):
         page: int = None,
         size: int = None,
     ):
+        # Filters the logs by change type. Valid values: auto_deduct, deduct, and recharge.
         self.change_type = change_type
+        # The maximum number of entries to return.
         self.max_results = max_results
+        # The pagination token for the next page of results.
         self.next_token = next_token
+        # The page number.
         self.page = page
+        # The number of entries to return per page.
         self.size = size
 
     def validate(self):

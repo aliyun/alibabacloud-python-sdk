@@ -19,13 +19,21 @@ class CostModelDetailRespDTO(DaraModel):
         rows: List[main_models.CostModelDetailRowDTO] = None,
         total: int = None,
     ):
+        # List of column definitions
         self.columns = columns
+        # Current granularity: daily/hourly
         self.granularity = granularity
+        # Model ID
         self.model_id = model_id
+        # Model name
         self.model_name = model_name
+        # Current page
         self.page = page
+        # Number of entries per page
         self.page_size = page_size
+        # List of data rows
         self.rows = rows
+        # Total number of entries
         self.total = total
 
     def validate(self):

@@ -15,10 +15,16 @@ class ExecuteAITeacherSyncDialogueRequest(DaraModel):
         records: List[main_models.ExecuteAITeacherSyncDialogueRequestRecords] = None,
         user_id: str = None,
     ):
+        # An array of dialogue task objects.
+        # 
         # This parameter is required.
         self.dialogue_tasks = dialogue_tasks
+        # The language and dialect of the dialogue.
         self.language_code = language_code
+        # An array of dialogue record objects.
         self.records = records
+        # A unique identifier for the user.
+        # 
         # This parameter is required.
         self.user_id = user_id
 
@@ -86,12 +92,20 @@ class ExecuteAITeacherSyncDialogueRequestRecords(DaraModel):
         order: int = None,
         role: str = None,
     ):
+        # The message content.
+        # 
         # This parameter is required.
         self.content = content
+        # Indicates whether the user\\"s response is off-topic, acting as a flow control mechanism. This value is based on how the user\\"s previous response aligned with the dialogue task. If the user goes off-topic more than twice, the system sets this parameter to `true` to trigger a task switch.
         self.is_off_topic_control = is_off_topic_control
+        # Indicates whether the response is on-topic.
         self.is_on_topic = is_on_topic
+        # The sequence number of the message.
+        # 
         # This parameter is required.
         self.order = order
+        # The role of the message author.
+        # 
         # This parameter is required.
         self.role = role
 
@@ -147,11 +161,18 @@ class ExecuteAITeacherSyncDialogueRequestDialogueTasks(DaraModel):
         order: int = None,
         user: str = None,
     ):
+        # The assistant\\"s dialogue content.
+        # 
         # This parameter is required.
         self.assistant = assistant
+        # The translation of the assistant\\"s dialogue content.
         self.assistant_translate = assistant_translate
+        # The sequence number of the task.
+        # 
         # This parameter is required.
         self.order = order
+        # The user\\"s dialogue content.
+        # 
         # This parameter is required.
         self.user = user
 

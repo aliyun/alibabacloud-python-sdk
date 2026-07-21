@@ -11,8 +11,11 @@ class ExecuteAITeacherChineseCompositionTutoringWorkflowRunResponseBody(DaraMode
         event: str = None,
         request_id: str = None,
     ):
+        # The content associated with the event.
         self.content = content
+        # The event type.
         self.event = event
+        # The unique ID for the request. This ID is useful for troubleshooting.
         self.request_id = request_id
 
     def validate(self):

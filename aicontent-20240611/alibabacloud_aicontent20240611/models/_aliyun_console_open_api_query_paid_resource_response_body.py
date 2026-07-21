@@ -23,20 +23,29 @@ class AliyunConsoleOpenApiQueryPaidResourceResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # Data object
         self.data = data
+        # Error message encoding
         self.err_code = err_code
+        # error message
         self.err_message = err_message
+        # HTTP status code
         self.http_status_code = http_status_code
         # maxResults
         self.max_results = max_results
         # nextToken
         self.next_token = next_token
+        # Page index
         self.page_index = page_index
+        # Number of items per page
         self.page_size = page_size
+        # Request ID
         self.request_id = request_id
         # skip
         self.skip = skip
+        # Indicates whether the request succeeded
         self.success = success
+        # Total quantity
         self.total_count = total_count
 
     def validate(self):

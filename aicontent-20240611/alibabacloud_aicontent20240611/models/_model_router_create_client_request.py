@@ -15,12 +15,17 @@ class ModelRouterCreateClientRequest(DaraModel):
         parent_id: int = None,
         remark: str = None,
     ):
+        # The company address.
         self.address = address
+        # A comma-separated list of model IDs that the client can use. If this parameter is empty, the client can use all available models.
         self.allowed_models = allowed_models
+        # The contact information.
         self.contact = contact
         self.discount = discount
+        # The client name.
         self.name = name
         self.parent_id = parent_id
+        # Additional remarks.
         self.remark = remark
 
     def validate(self):

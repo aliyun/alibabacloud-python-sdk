@@ -22,19 +22,33 @@ class ModelRouterQueryObservationMetricsRequest(DaraModel):
         start_time: str = None,
         time_range: str = None,
     ):
+        # The API Key ID to use for filtering the results.
         self.api_key_id = api_key_id
+        # The client ID to use for filtering the results.
         self.client_id = client_id
+        # The end time of a custom time range for the query.
         self.end_time = end_time
+        # The field to use for grouping the results.
         self.group_by = group_by
+        # The maximum number of results to return.
         self.max_results = max_results
+        # The model ID to use for filtering the results.
         self.model_id = model_id
+        # Specifies whether to return the total count of results.
         self.need_total_count = need_total_count
+        # The token used to retrieve the next page of results, obtained from the previous response.
         self.next_token = next_token
+        # The field to use for sorting the results.
         self.order_by = order_by
+        # The sort order. Valid values: `ASC` (ascending) and `DESC` (descending).
         self.order_direction = order_direction
+        # The page number to retrieve.
         self.page_index = page_index
+        # The number of results to return per page.
         self.page_size = page_size
+        # The start time of a custom time range for the query.
         self.start_time = start_time
+        # The time range for the query. Valid values: `1h`, `6h`, `24h`, `7d`, and `30d`.
         self.time_range = time_range
 
     def validate(self):

@@ -15,11 +15,17 @@ class GetAITeacherSyncDialogueSuggestionResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The object that contains the result of the request.
         self.data = data
+        # The error code returned when the request fails.
         self.err_code = err_code
+        # The error message returned when the request fails.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # A unique identifier for the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -80,7 +86,9 @@ class GetAITeacherSyncDialogueSuggestionResponseBodyData(DaraModel):
         chinese_result: str = None,
         english_result: str = None,
     ):
+        # The assistant\\"s suggestion in Chinese.
         self.chinese_result = chinese_result
+        # The assistant\\"s suggestion in English.
         self.english_result = english_result
 
     def validate(self):

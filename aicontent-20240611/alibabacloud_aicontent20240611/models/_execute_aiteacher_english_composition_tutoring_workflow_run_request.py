@@ -16,18 +16,36 @@ class ExecuteAITeacherEnglishCompositionTutoringWorkflowRunRequest(DaraModel):
         response_mode: str = None,
         user_id: str = None,
     ):
+        # The essay outline.
         self.essay_outline = essay_outline
+        # The essay requirements.
+        # 
         # This parameter is required.
         self.essay_requirements = essay_requirements
+        # The essay topic.
+        # 
         # This parameter is required.
         self.essay_topic = essay_topic
+        # The essay type. Valid values:
+        # 
+        # `outline`: an outline
+        # 
+        # essay: essay
+        # 
         # This parameter is required.
         self.essay_type = essay_type
+        # The required word count.
         self.essay_word_count = essay_word_count
+        # The student\\"s grade level.
+        # 
         # This parameter is required.
         self.grade = grade
+        # The response mode. For example, set this value to `streaming` to receive server-sent events.
+        # 
         # This parameter is required.
         self.response_mode = response_mode
+        # The user ID.
+        # 
         # This parameter is required.
         self.user_id = user_id
 

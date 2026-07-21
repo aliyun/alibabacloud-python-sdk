@@ -28,27 +28,42 @@ class ModelDTO(DaraModel):
         tags: str = None,
         version: int = None,
     ):
+        # A masked preview of the API key.
         self.api_key_preview = api_key_preview
-        # Base URL
+        # The base URL for API requests.
         self.base_url = base_url
+        # Indicates the model\\"s status. A value of 0 means enabled, and a non-zero value means disabled.
         self.delete_tag = delete_tag
+        # The model description.
         self.description = description
         self.extensions = extensions
+        # The time when the model was created, in ISO 8601 format.
         self.gmt_create = gmt_create
+        # The time when the model was last updated, in ISO 8601 format.
         self.gmt_modified = gmt_modified
         self.has_billing_rule = has_billing_rule
-        # ID
+        # The unique ID of the model.
         self.id = id
         self.in_out = in_out
+        # Indicates whether the model is custom.
         self.is_custom = is_custom
+        # The maximum input length.
         self.max_input_length = max_input_length
+        # The maximum output length.
         self.max_output_length = max_output_length
+        # The model code.
         self.model_code = model_code
+        # The model type.
         self.model_type = model_type
+        # The model name.
         self.name = name
+        # The vendor symbol.
         self.symbol = symbol
+        # The display names for the tags, separated by commas.
         self.tag_names = tag_names
+        # A comma-separated list of model tags.
         self.tags = tags
+        # The version number.
         self.version = version
 
     def validate(self):

@@ -11,10 +11,16 @@ class ListTextbookAssistantBookDirectoriesRequest(DaraModel):
         book_id: str = None,
         scenario: str = None,
     ):
+        # The API authorization token. You can obtain this token from the authorization API for the AI English teacher feature.
+        # 
         # This parameter is required.
         self.auth_token = auth_token
+        # The book ID. You can obtain this ID from the API for retrieving English textbooks.
+        # 
         # This parameter is required.
         self.book_id = book_id
+        # The exercise scenario.
+        # 
         # This parameter is required.
         self.scenario = scenario
 

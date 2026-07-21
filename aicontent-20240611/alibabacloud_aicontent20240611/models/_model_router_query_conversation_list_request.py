@@ -18,15 +18,25 @@ class ModelRouterQueryConversationListRequest(DaraModel):
         page_size: int = None,
         status: int = None,
     ):
+        # The grouping field.
         self.group_by = group_by
+        # A keyword to filter the results.
         self.keyword = keyword
+        # The maximum number of results to return.
         self.max_results = max_results
+        # Specifies whether to return the total count of items. Set to `true` to return the total count.
         self.need_total_count = need_total_count
+        # The pagination token for the next page of results. To retrieve the first page, do not specify this parameter.
         self.next_token = next_token
+        # The sort field.
         self.order_by = order_by
+        # The sort order. Valid values are `ASC` (ascending) and `DESC` (descending).
         self.order_direction = order_direction
+        # The page number.
         self.page_index = page_index
+        # The number of items to return on each page.
         self.page_size = page_size
+        # Filters the results by status.
         self.status = status
 
     def validate(self):

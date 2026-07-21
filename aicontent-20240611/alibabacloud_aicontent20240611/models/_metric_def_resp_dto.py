@@ -12,9 +12,13 @@ class MetricDefRespDTO(DaraModel):
         sortable: bool = None,
         unit: str = None,
     ):
+        # Metric key name
         self.key = key
+        # Metric display name
         self.label = label
+        # Is sortable
         self.sortable = sortable
+        # Metric unit
         self.unit = unit
 
     def validate(self):

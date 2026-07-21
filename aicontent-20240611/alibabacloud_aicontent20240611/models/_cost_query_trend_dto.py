@@ -15,9 +15,13 @@ class CostQueryTrendDTO(DaraModel):
         metrics: List[main_models.MetricDefRespDTO] = None,
         points: List[main_models.TrendPointDTO] = None,
     ):
+        # The default metric.
         self.default_metric = default_metric
+        # The granularity of the data. Valid values are `hourly` and `daily`.
         self.granularity = granularity
+        # A list of metric definitions.
         self.metrics = metrics
+        # A list of data points for the trend.
         self.points = points
 
     def validate(self):

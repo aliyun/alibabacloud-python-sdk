@@ -11,8 +11,11 @@ class ModelRouterCreateConversationRequest(DaraModel):
         model_ids: str = None,
         title: str = None,
     ):
+        # The conversation data, provided as a JSON string containing the message history for each model. This parameter is required.
         self.chat_data = chat_data
+        # A list of model IDs, provided as a JSON array string.
         self.model_ids = model_ids
+        # The conversation title. If omitted, a title is automatically generated from the first user message.
         self.title = title
 
     def validate(self):

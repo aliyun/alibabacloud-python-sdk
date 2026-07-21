@@ -13,7 +13,10 @@ class OralEvaluationStatisticsErrorCountResponse(DaraModel):
         project_data: main_models.OralEvaluationStatisticsErrorCountResponseProjectData = None,
         project_id: str = None,
     ):
+        # Contains the statistical data aggregated by project.
         self.project_data = project_data
+        # The project ID.
+        # 
         # This parameter is required.
         self.project_id = project_id
 
@@ -51,7 +54,10 @@ class OralEvaluationStatisticsErrorCountResponseProjectData(DaraModel):
         application_data: List[main_models.OralEvaluationStatisticsErrorCountResponseProjectDataApplicationData] = None,
         application_internal_id: str = None,
     ):
+        # A list of statistical data objects for the application.
         self.application_data = application_data
+        # The internal ID of the application.
+        # 
         # This parameter is required.
         self.application_internal_id = application_internal_id
 
@@ -95,8 +101,9 @@ class OralEvaluationStatisticsErrorCountResponseProjectDataApplicationData(DaraM
         data: List[main_models.OralEvaluationStatisticsErrorCountResponseProjectDataApplicationDataData] = None,
         application_access_id: str = None,
     ):
+        # A list of datasets.
         self.data = data
-        # appId,appkey
+        # The App ID or App Key.
         # 
         # This parameter is required.
         self.application_access_id = application_access_id
@@ -142,8 +149,11 @@ class OralEvaluationStatisticsErrorCountResponseProjectDataApplicationDataData(D
         error_code: str = None,
         error_message: str = None,
     ):
+        # A list of statistical items.
         self.data = data
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_message = error_message
 
     def validate(self):
@@ -192,8 +202,12 @@ class OralEvaluationStatisticsErrorCountResponseProjectDataApplicationDataDataDa
         count: int = None,
         name: str = None,
     ):
+        # The count for the statistical item.
+        # 
         # This parameter is required.
         self.count = count
+        # The name of the statistical item, which defines the display granularity.
+        # 
         # This parameter is required.
         self.name = name
 

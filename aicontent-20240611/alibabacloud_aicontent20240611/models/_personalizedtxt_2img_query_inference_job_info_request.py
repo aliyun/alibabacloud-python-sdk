@@ -9,6 +9,8 @@ class Personalizedtxt2imgQueryInferenceJobInfoRequest(DaraModel):
         self,
         inference_job_id: str = None,
     ):
+        # The ID of the inference job.
+        # 
         # This parameter is required.
         self.inference_job_id = inference_job_id
 

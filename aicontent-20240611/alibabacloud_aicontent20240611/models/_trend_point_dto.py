@@ -10,7 +10,9 @@ class TrendPointDTO(DaraModel):
         timestamp: int = None,
         values: str = None,
     ):
+        # UNIX timestamp (Unix seconds)
         self.timestamp = timestamp
+        # Metric value mapping, where the key is the metric name and the value is the numeric value
         self.values = values
 
     def validate(self):

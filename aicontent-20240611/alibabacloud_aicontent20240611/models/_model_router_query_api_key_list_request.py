@@ -19,16 +19,27 @@ class ModelRouterQueryApiKeyListRequest(DaraModel):
         page_size: int = None,
         status: int = None,
     ):
+        # Filters the results by the specified client ID.
         self.client_id = client_id
+        # The grouping field.
         self.group_by = group_by
+        # The search keyword.
         self.keyword = keyword
+        # The maximum number of results to return.
         self.max_results = max_results
+        # Specifies whether to return the total count of results.
         self.need_total_count = need_total_count
+        # The token for retrieving the next page of results. An empty value indicates that all results have been returned.
         self.next_token = next_token
+        # The sort field.
         self.order_by = order_by
+        # The sort order.
         self.order_direction = order_direction
+        # The page number to retrieve.
         self.page_index = page_index
+        # The number of results per page.
         self.page_size = page_size
+        # Filters the results by the specified status.
         self.status = status
 
     def validate(self):

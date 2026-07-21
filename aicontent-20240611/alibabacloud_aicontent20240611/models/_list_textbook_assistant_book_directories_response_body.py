@@ -17,12 +17,17 @@ class ListTextbookAssistantBookDirectoriesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The data object.
         self.data = data
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request succeeded.
         self.success = success
 
     def validate(self):
@@ -83,7 +88,9 @@ class ListTextbookAssistantBookDirectoriesResponseBodyData(DaraModel):
         directory_tree: List[main_models.ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTree] = None,
         edition_info: main_models.ListTextbookAssistantBookDirectoriesResponseBodyDataEditionInfo = None,
     ):
+        # The directory tree.
         self.directory_tree = directory_tree
+        # The edition details.
         self.edition_info = edition_info
 
     def validate(self):
@@ -136,14 +143,23 @@ class ListTextbookAssistantBookDirectoriesResponseBodyDataEditionInfo(DaraModel)
         subject: str = None,
         version: str = None,
     ):
+        # The book ID.
         self.book_id = book_id
+        # The book volume. `0` indicates a single-volume edition, `1` indicates Volume 1, and `2` indicates Volume 2.
         self.book_volume = book_volume
+        # The edition.
         self.edition = edition
+        # The grade. Valid values: 1–9.
         self.grade = grade
+        # The impression.
         self.impression = impression
+        # The International Standard Book Number (ISBN).
         self.isbn = isbn
+        # The publisher.
         self.publisher = publisher
+        # The subject.
         self.subject = subject
+        # The version.
         self.version = version
 
     def validate(self):
@@ -222,9 +238,13 @@ class ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTree(DaraMode
         topic: List[main_models.ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeTopic] = None,
         unit: List[main_models.ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnit] = None,
     ):
+        # The directory ID.
         self.directory_id = directory_id
+        # The directory name.
         self.directory_name = directory_name
+        # The topic.
         self.topic = topic
+        # The unit.
         self.unit = unit
 
     def validate(self):
@@ -290,9 +310,13 @@ class ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnit(Dara
         section: List[main_models.ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnitSection] = None,
         topic: List[main_models.ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnitTopic] = None,
     ):
+        # The directory ID.
         self.directory_id = directory_id
+        # The directory name.
         self.directory_name = directory_name
+        # The section.
         self.section = section
+        # The topic.
         self.topic = topic
 
     def validate(self):
@@ -356,7 +380,9 @@ class ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnitTopic
         label_id: str = None,
         label_name: str = None,
     ):
+        # The label ID.
         self.label_id = label_id
+        # The label name.
         self.label_name = label_name
 
     def validate(self):
@@ -393,9 +419,13 @@ class ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnitSecti
         directory_name: str = None,
         topic: List[main_models.ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnitSectionTopic] = None,
     ):
+        # Child nodes for backward compatibility. This property is optional.
         self.children = children
+        # The directory ID.
         self.directory_id = directory_id
+        # The directory name.
         self.directory_name = directory_name
+        # The topic.
         self.topic = topic
 
     def validate(self):
@@ -450,7 +480,9 @@ class ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnitSecti
         label_id: str = None,
         label_name: str = None,
     ):
+        # The label ID.
         self.label_id = label_id
+        # The label name.
         self.label_name = label_name
 
     def validate(self):
@@ -485,7 +517,9 @@ class ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeTopic(Dar
         label_id: str = None,
         label_name: str = None,
     ):
+        # The label ID.
         self.label_id = label_id
+        # The label name.
         self.label_name = label_name
 
     def validate(self):

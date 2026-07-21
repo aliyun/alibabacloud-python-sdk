@@ -17,14 +17,21 @@ class ModelRouterQueryCostTrendMetricsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The data object containing the cost trend metrics.
         self.data = data
+        # The error code returned when the request fails.
         self.err_code = err_code
+        # The error message returned when the request fails.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The maximum number of results returned per page.
         self.max_results = max_results
-        # nextToken
+        # A token to retrieve the next page of results. If no token is returned, all results have been retrieved.
         self.next_token = next_token
+        # The unique request ID. If you encounter a problem, provide this ID to technical support for troubleshooting.
         self.request_id = request_id
+        # Indicates whether the request was successful. A value of `true` indicates success, and `false` indicates failure.
         self.success = success
 
     def validate(self):

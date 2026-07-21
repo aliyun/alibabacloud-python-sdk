@@ -15,11 +15,17 @@ class ModelRouterSaveFlowConfigResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The data returned.
         self.data = data
+        # The error code returned if the request fails.
         self.err_code = err_code
+        # The error message returned if the request fails.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -85,12 +91,19 @@ class ModelRouterSaveFlowConfigResponseBodyData(DaraModel):
         smooth_flow_enabled: bool = None,
         tpm: int = None,
     ):
+        # The creation time of the configuration.
         self.gmt_create = gmt_create
+        # The last modification time of the configuration.
         self.gmt_modified = gmt_modified
+        # The ID of the flow control configuration.
         self.id = id
+        # The model ID.
         self.model_id = model_id
+        # The configured RPM.
         self.rpm = rpm
+        # Indicates whether smooth flow control is enabled.
         self.smooth_flow_enabled = smooth_flow_enabled
+        # The configured TPM.
         self.tpm = tpm
 
     def validate(self):

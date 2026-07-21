@@ -10,8 +10,12 @@ class ExecuteAITeacherGrammarCheckRequest(DaraModel):
         content: str = None,
         user_id: str = None,
     ):
+        # The sentence to check.
+        # 
         # This parameter is required.
         self.content = content
+        # The user ID.
+        # 
         # This parameter is required.
         self.user_id = user_id
 

@@ -15,12 +15,17 @@ class ExecuteTextbookAssistantSuggestionResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The returned data object.
         self.data = data
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code.
         self.httpstatus_code = httpstatus_code
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -80,6 +85,7 @@ class ExecuteTextbookAssistantSuggestionResponseBodyData(DaraModel):
         self,
         result: main_models.ExecuteTextbookAssistantSuggestionResponseBodyDataResult = None,
     ):
+        # The result data.
         self.result = result
 
     def validate(self):
@@ -110,7 +116,9 @@ class ExecuteTextbookAssistantSuggestionResponseBodyDataResult(DaraModel):
         chinese_result: str = None,
         english_result: str = None,
     ):
+        # The response from the AI teacher in Chinese.
         self.chinese_result = chinese_result
+        # The response from the AI teacher in English.
         self.english_result = english_result
 
     def validate(self):

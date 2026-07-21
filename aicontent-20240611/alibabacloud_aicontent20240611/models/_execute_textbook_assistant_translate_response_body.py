@@ -15,12 +15,17 @@ class ExecuteTextbookAssistantTranslateResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The data returned by the API.
         self.data = data
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -80,6 +85,7 @@ class ExecuteTextbookAssistantTranslateResponseBodyData(DaraModel):
         self,
         result: main_models.ExecuteTextbookAssistantTranslateResponseBodyDataResult = None,
     ):
+        # The result object.
         self.result = result
 
     def validate(self):
@@ -109,6 +115,7 @@ class ExecuteTextbookAssistantTranslateResponseBodyDataResult(DaraModel):
         self,
         result: str = None,
     ):
+        # The translated text.
         self.result = result
 
     def validate(self):

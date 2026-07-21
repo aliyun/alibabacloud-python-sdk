@@ -17,11 +17,17 @@ class ModelRouterQueryConversationListResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response data.
         self.data = data
+        # The error code returned if the request fails.
         self.err_code = err_code
+        # The error message returned if the request fails.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The unique ID of the request.
         self.request_id = request_id
+        # Indicates whether the request succeeded. A value of `true` indicates success.
         self.success = success
 
     def validate(self):
@@ -86,11 +92,17 @@ class ModelRouterQueryConversationListResponseBodyData(DaraModel):
         page_size: int = None,
         total: int = None,
     ):
+        # A list of conversation objects.
         self.list = list
+        # The number of entries per page. Default value: 20.
         self.max_result = max_result
+        # The token to retrieve the next page of results. If this parameter is empty, all results have been returned.
         self.next_token = next_token
+        # The page number.
         self.page = page
+        # The number of conversations on the current page.
         self.page_size = page_size
+        # The total number of conversations.
         self.total = total
 
     def validate(self):

@@ -15,12 +15,17 @@ class ExecuteTextbookAssistantDifficultyResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The data returned on a successful request.
         self.data = data
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Id of the request
+        # The unique ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -80,6 +85,7 @@ class ExecuteTextbookAssistantDifficultyResponseBodyData(DaraModel):
         self,
         result: main_models.ExecuteTextbookAssistantDifficultyResponseBodyDataResult = None,
     ):
+        # A container for the result data.
         self.result = result
 
     def validate(self):
@@ -109,6 +115,7 @@ class ExecuteTextbookAssistantDifficultyResponseBodyDataResult(DaraModel):
         self,
         result: str = None,
     ):
+        # The dialogue content after the difficulty adjustment.
         self.result = result
 
     def validate(self):

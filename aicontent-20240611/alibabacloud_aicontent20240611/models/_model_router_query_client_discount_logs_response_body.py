@@ -19,15 +19,21 @@ class ModelRouterQueryClientDiscountLogsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The list of discount modification logs.
         self.data = data
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # maxResults
+        # The maximum number of results returned on the current page.
         self.max_results = max_results
-        # nextToken
+        # The token to use in a subsequent request to retrieve the next page of results. If this parameter is not returned, all results have been retrieved.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # Indicates if the request succeeded.
         self.success = success
 
     def validate(self):
@@ -113,14 +119,23 @@ class ModelRouterQueryClientDiscountLogsResponseBodyData(DaraModel):
         id: int = None,
         remark: str = None,
     ):
+        # The client ID.
         self.client_id = client_id
+        # A flag that indicates whether the record is deleted. A value of 0 means the record is active.
         self.delete_tag = delete_tag
+        # The discount.
         self.discount = discount
+        # The time when the discount took effect.
         self.effective_time = effective_time
+        # The time when the discount expires.
         self.expire_time = expire_time
+        # The time when the record was created.
         self.gmt_create = gmt_create
+        # The time when the record was last modified.
         self.gmt_modified = gmt_modified
+        # The record ID.
         self.id = id
+        # The remark.
         self.remark = remark
 
     def validate(self):

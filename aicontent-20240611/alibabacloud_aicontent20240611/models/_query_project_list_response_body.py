@@ -17,11 +17,17 @@ class QueryProjectListResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # A list of projects.
         self.data = data
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The request ID.
         self.request_id = request_id
+        # Whether the request succeeded.
         self.success = success
 
     def validate(self):
@@ -92,11 +98,17 @@ class QueryProjectListResponseBodyData(DaraModel):
         project_sdk: List[main_models.QueryProjectListResponseBodyDataProjectSDK] = None,
         project_type: str = None,
     ):
+        # The creation time.
         self.create_time = create_time
+        # A list of applications in the project.
         self.project_apps = project_apps
+        # The project ID.
         self.project_id = project_id
+        # The project name.
         self.project_name = project_name
+        # A list of SDKs for the project.
         self.project_sdk = project_sdk
+        # The project type.
         self.project_type = project_type
 
     def validate(self):
@@ -178,13 +190,21 @@ class QueryProjectListResponseBodyDataProjectSDK(DaraModel):
         sdk_url: str = None,
         sdk_version: str = None,
     ):
+        # The creation time.
         self.create_time = create_time
+        # The demo URL.
         self.demo_url = demo_url
+        # The deployment mode. Valid values: client-side and server-side.
         self.deploy_mode = deploy_mode
+        # The development language.
         self.develop_language = develop_language
+        # The documentation URL.
         self.doc_url = doc_url
+        # The SDK name.
         self.sdk_name = sdk_name
+        # The SDK URL.
         self.sdk_url = sdk_url
+        # The SDK version.
         self.sdk_version = sdk_version
 
     def validate(self):
@@ -256,8 +276,11 @@ class QueryProjectListResponseBodyDataProjectApps(DaraModel):
         id: str = None,
         project_id: str = None,
     ):
+        # A list of access credentials for the application.
         self.application_access_ids = application_access_ids
+        # The application ID.
         self.id = id
+        # The project ID.
         self.project_id = project_id
 
     def validate(self):
@@ -306,7 +329,9 @@ class QueryProjectListResponseBodyDataProjectAppsApplicationAccessIds(DaraModel)
         application_access_id: str = None,
         application_access_secret: str = None,
     ):
+        # The application access ID, also known as the appkey.
         self.application_access_id = application_access_id
+        # The application access secret. This field is returned only for requests made from the console.
         self.application_access_secret = application_access_secret
 
     def validate(self):

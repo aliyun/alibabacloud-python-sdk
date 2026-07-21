@@ -10,8 +10,12 @@ class GetTextbookAssistantTokenRequest(DaraModel):
         device_id: str = None,
         model: str = None,
     ):
+        # The device ID.
+        # 
         # This parameter is required.
         self.device_id = device_id
+        # The device model.
+        # 
         # This parameter is required.
         self.model = model
 

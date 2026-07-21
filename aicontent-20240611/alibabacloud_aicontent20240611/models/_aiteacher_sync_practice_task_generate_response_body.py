@@ -17,11 +17,17 @@ class AITeacherSyncPracticeTaskGenerateResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The data object that contains the generated content.
         self.data = data
+        # The error code returned if the request fails.
         self.err_code = err_code
+        # The error message returned if the request fails.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The unique request ID, used for troubleshooting.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -82,7 +88,9 @@ class AITeacherSyncPracticeTaskGenerateResponseBodyData(DaraModel):
         task_content: List[main_models.AITeacherSyncPracticeTaskGenerateResponseBodyDataTaskContent] = None,
         task_type: str = None,
     ):
+        # An array of Q\\&A pairs representing the dialogue task.
         self.task_content = task_content
+        # The task type.
         self.task_type = task_type
 
     def validate(self):
@@ -125,7 +133,9 @@ class AITeacherSyncPracticeTaskGenerateResponseBodyDataTaskContent(DaraModel):
         assistant: str = None,
         user: str = None,
     ):
+        # The AI assistant\\"s question.
         self.assistant = assistant
+        # The expected user answer to the assistant\\"s question.
         self.user = user
 
     def validate(self):

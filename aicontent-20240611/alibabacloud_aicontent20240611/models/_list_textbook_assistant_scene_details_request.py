@@ -12,7 +12,9 @@ class ListTextbookAssistantSceneDetailsRequest(DaraModel):
         auth_token: str = None,
         scene_id_list: List[str] = None,
     ):
+        # The API authorization token. You can obtain the token by calling the operation that generates the token for the English Textbook-style AI Teacher feature.
         self.auth_token = auth_token
+        # A list of scene IDs.
         self.scene_id_list = scene_id_list
 
     def validate(self):

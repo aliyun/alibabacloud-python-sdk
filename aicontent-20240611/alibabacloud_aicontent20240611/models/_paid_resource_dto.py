@@ -18,15 +18,25 @@ class PaidResourceDTO(DaraModel):
         resource_package_name: str = None,
         resource_status: str = None,
     ):
+        # The time the resource becomes effective.
         self.effective_time = effective_time
+        # The time the resource expires.
         self.expire_time = expire_time
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The total quantity.
         self.quantity = quantity
+        # The remaining quantity.
         self.remain_quantity = remain_quantity
+        # The code of the resource type.
         self.resource_catalog_code = resource_catalog_code
+        # The name of the resource type.
         self.resource_catalog_name = resource_catalog_name
+        # The code of the resource package.
         self.resource_package_code = resource_package_code
+        # The name of the resource package.
         self.resource_package_name = resource_package_name
+        # The status of the resource.
         self.resource_status = resource_status
 
     def validate(self):

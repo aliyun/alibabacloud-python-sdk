@@ -15,11 +15,17 @@ class ModelRouterCreateConversationResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Data object.
         self.data = data
+        # Error code.
         self.err_code = err_code
+        # Error message.
         self.err_message = err_message
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
