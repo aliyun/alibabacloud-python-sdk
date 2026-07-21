@@ -13,15 +13,15 @@ class CreateEcdReportTaskResponseBody(DaraModel):
         success: bool = None,
         task_id: str = None,
     ):
-        # The request result. If the request was successful, `success` is returned. If the request failed, an error message is returned.
+        # The operation result. The value `success` indicates success. Otherwise, an error message is returned.
         self.code = code
-        # The error message returned if the request failed. This parameter is not returned if the value of Code is success.
+        # The error message. This parameter is not returned when Code is success.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the operation is successful.
         self.success = success
-        # The ID of the report export task.
+        # The report task ID.
         self.task_id = task_id
 
     def validate(self):

@@ -16,9 +16,9 @@ class DescribeGlobalDesktopRecordsResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # A list of sessions.
+        # The session details.
         self.sessions = sessions
-        # The total number of entries.
+        # The total number of query results.
         self.total_count = total_count
 
     def validate(self):
@@ -66,6 +66,7 @@ class DescribeGlobalDesktopRecordsResponseBodySessions(DaraModel):
         self,
         connection_status: str = None,
         cpu: int = None,
+        creation_time: str = None,
         desktop_group_id: str = None,
         desktop_group_name: str = None,
         desktop_id: str = None,
@@ -95,67 +96,64 @@ class DescribeGlobalDesktopRecordsResponseBodySessions(DaraModel):
         self.connection_status = connection_status
         # The number of vCPUs.
         self.cpu = cpu
-        # The ID of the desktop group.
+        self.creation_time = creation_time
+        # The shared cloud desktop ID.
         self.desktop_group_id = desktop_group_id
-        # The name of the desktop group.
+        # The shared cloud desktop name.
         self.desktop_group_name = desktop_group_name
-        # The ID of the cloud desktop.
+        # The cloud desktop ID.
         self.desktop_id = desktop_id
-        # The name of the cloud desktop.
+        # The cloud desktop name.
         self.desktop_name = desktop_name
         # The desktop status.
         self.desktop_status = desktop_status
-        # The ID of the end user.
+        # The end user ID.
         self.end_user_id = end_user_id
-        # A list of assigned end user IDs.
+        # The list of assigned end user IDs.
         self.end_user_ids = end_user_ids
         # The GPU memory size.
         self.gpu_spec = gpu_spec
-        # The duration of the last connection, in seconds.
+        # The duration of the most recent connection to the cloud desktop. Unit: seconds.
         self.latest_connection_time = latest_connection_time
-        # The memory size of the cloud desktop, in MiB.
+        # The memory of the cloud desktop. Unit: MiB.
         self.memory = memory
-        # The ID of the office site.
+        # The office network ID.
         self.office_site_id = office_site_id
-        # The name of the office site.
+        # The office network name.
         self.office_site_name = office_site_name
-        # The office site type.
+        # The office network type.
         self.office_site_type = office_site_type
         # The operating system type. Valid values:
         # 
-        # - `Windows`
-        # 
-        # - `Linux`
+        # - Windows
+        # - Linux
         self.os_type = os_type
-        # The operating system version.
+        # The specific operating system version.
         self.platform = platform
         # The protocol type. Valid values:
         # 
-        # - `HDX`
-        # 
-        # - `ASP`
+        # - HDX
+        # - ASP
         self.protocol_type = protocol_type
-        # The ID of the region.
+        # The region ID.
         self.region_id = region_id
-        # A list of resource groups.
+        # The enterprise resource group name.
         self.resource_groups = resource_groups
-        # The idle duration of the session, in minutes.
+        # The session idle duration. Unit: minutes.
         self.session_idle_time = session_idle_time
-        # A list of sessions.
+        # The session details.
         self.sessions = sessions
         # The time when the cloud desktop status changed.
         self.status_change_time = status_change_time
-        # The billing method for the cloud desktop. Valid values:
+        # The billing method of the cloud desktop. Valid values:
         # 
-        # - `prePaid`: Subscription.
-        # 
-        # - `postPaid`: Pay-as-you-go.
-        # 
-        # - `monthPackage`: Monthly usage package.
+        # - prePaid: monthly subscription with unlimited usage duration.
+        # - postPaid: pay-as-you-go.
+        # - monthPackage: monthly duration package.
         self.sub_pay_type = sub_pay_type
-        # The total connection duration, in seconds.
+        # The total connection duration. Unit: seconds.
         self.total_connection_time = total_connection_time
-        # The cloud desktop uptime, in seconds.
+        # The cloud desktop uptime. Unit: seconds.
         self.up_time = up_time
 
     def validate(self):
@@ -178,6 +176,9 @@ class DescribeGlobalDesktopRecordsResponseBodySessions(DaraModel):
 
         if self.cpu is not None:
             result['Cpu'] = self.cpu
+
+        if self.creation_time is not None:
+            result['CreationTime'] = self.creation_time
 
         if self.desktop_group_id is not None:
             result['DesktopGroupId'] = self.desktop_group_id
@@ -265,6 +266,9 @@ class DescribeGlobalDesktopRecordsResponseBodySessions(DaraModel):
         if m.get('Cpu') is not None:
             self.cpu = m.get('Cpu')
 
+        if m.get('CreationTime') is not None:
+            self.creation_time = m.get('CreationTime')
+
         if m.get('DesktopGroupId') is not None:
             self.desktop_group_id = m.get('DesktopGroupId')
 
@@ -351,9 +355,9 @@ class DescribeGlobalDesktopRecordsResponseBodySessionsSessions(DaraModel):
         end_user_id: str = None,
         establishment_time: str = None,
     ):
-        # The ID of the end user.
+        # The end user ID.
         self.end_user_id = end_user_id
-        # The time the session was created.
+        # The time when the session was created.
         self.establishment_time = establishment_time
 
     def validate(self):
@@ -388,9 +392,9 @@ class DescribeGlobalDesktopRecordsResponseBodySessionsResourceGroups(DaraModel):
         resource_group_id: str = None,
         resource_group_name: str = None,
     ):
-        # The ID of the resource group.
+        # The enterprise resource group ID.
         self.resource_group_id = resource_group_id
-        # The name of the resource group.
+        # The resource group name.
         self.resource_group_name = resource_group_name
 
     def validate(self):

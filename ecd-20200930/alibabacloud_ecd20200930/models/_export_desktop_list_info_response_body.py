@@ -10,9 +10,9 @@ class ExportDesktopListInfoResponseBody(DaraModel):
         request_id: str = None,
         url: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The URL of the exported file of the cloud computer list.
+        # The download URL of the exported cloud desktop list file.
         self.url = url
 
     def validate(self):

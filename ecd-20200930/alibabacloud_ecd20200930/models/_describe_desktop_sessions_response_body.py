@@ -88,49 +88,49 @@ class DescribeDesktopSessionsResponseBodySessions(DaraModel):
         terminal_info: main_models.DescribeDesktopSessionsResponseBodySessionsTerminalInfo = None,
         total_connection_time: int = None,
     ):
-        # The type of the account.
+        # The account type.
         self.account_type = account_type
-        # The IP address of the client.
+        # The client IP address.
         self.client_ip = client_ip
-        # The operating system of the client.
+        # The client operating system.
         self.client_os = client_os
-        # The version of the client.
+        # The client version.
         self.client_version = client_version
-        # The ID of the cloud computer.
+        # The cloud computer ID.
         self.desktop_id = desktop_id
-        # The name of the cloud computer.
+        # The cloud computer name.
         self.desktop_name = desktop_name
-        # The type of the office network.
+        # The office network type.
         self.directory_type = directory_type
-        # The duration of remote assistance initiated by the end user. Unit: seconds.
+        # The duration of remote assistance for the end user. Unit: seconds.
         self.end_user_apply_coordinate_time = end_user_apply_coordinate_time
-        # The ID of the end user.
+        # The end user ID.
         self.end_user_id = end_user_id
-        # The duration of the last connection to the cloud computer. Unit: seconds.
+        # The duration of the most recent connection to the cloud computer. Unit: seconds.
         self.latest_connection_time = latest_connection_time
-        # The ID of the workspace.
+        # The office network ID.
         self.office_site_id = office_site_id
-        # The name of the office site.
+        # The office network name.
         self.office_site_name = office_site_name
-        # Indicates the session status of the cloud desktop.
+        # Specifies whether to check the session status within the cloud computer.
         self.os_session_status = os_session_status
         # The operating system type.
         self.os_type = os_type
         # The protocol type.
         self.protocol_type = protocol_type
-        # The information about the resource group.
+        # The resource group information.
         self.resource_groups = resource_groups
-        # The time when the session ended.
+        # The end time of the session.
         self.session_end_time = session_end_time
-        # The duration for which the session was idle. Unit: seconds.
+        # The session idle duration. Unit: seconds.
         self.session_idle_time = session_idle_time
-        # The time when the session started.
+        # The start time of the session.
         self.session_start_time = session_start_time
-        # The connection status of the session.
+        # The session connection status.
         self.session_status = session_status
-        # The billing method of the cloud computer.
+        # The purchase method of the cloud computer.
         self.sub_pay_type = sub_pay_type
-        # The description of the terminal device.
+        # The terminal device information.
         self.terminal_info = terminal_info
         # The total connection duration. Unit: seconds.
         self.total_connection_time = total_connection_time
@@ -306,13 +306,13 @@ class DescribeDesktopSessionsResponseBodySessionsTerminalInfo(DaraModel):
         serial_number: str = None,
         uuid: str = None,
     ):
-        # The model of the terminal device.
+        # The terminal device information.
         self.model = model
-        # The type of the terminal device.
+        # The terminal device type.
         self.product_name = product_name
-        # The serial number of the terminal device.
+        # The terminal device serial number.
         self.serial_number = serial_number
-        # The universally unique identifier (UUID) of the logon device.
+        # The UUID of the logon device.
         self.uuid = uuid
 
     def validate(self):
@@ -359,9 +359,9 @@ class DescribeDesktopSessionsResponseBodySessionsResourceGroups(DaraModel):
         id: str = None,
         name: str = None,
     ):
-        # The ID of the resource group.
+        # The resource group ID.
         self.id = id
-        # The name of the resource group.
+        # The resource group name.
         self.name = name
 
     def validate(self):

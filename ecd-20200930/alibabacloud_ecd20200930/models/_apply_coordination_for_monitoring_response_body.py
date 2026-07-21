@@ -13,7 +13,7 @@ class ApplyCoordinationForMonitoringResponseBody(DaraModel):
         coordinate_flow_models: List[main_models.ApplyCoordinationForMonitoringResponseBodyCoordinateFlowModels] = None,
         request_id: str = None,
     ):
-        # The list of stream collaboration models.
+        # The list of coordination flow data.
         self.coordinate_flow_models = coordinate_flow_models
         # The request ID.
         self.request_id = request_id
@@ -63,37 +63,23 @@ class ApplyCoordinationForMonitoringResponseBodyCoordinateFlowModels(DaraModel):
         resource_id: str = None,
         resource_name: str = None,
     ):
-        # The ID of the stream collaboration.
+        # The coordination flow ID.
         self.co_id = co_id
-        # The current status of the collaboration task.
-        # 
-        # Valid values:
-        # 
-        # - COORDINATING: The collaboration task is being executed.
-        # 
-        # - TERMINATING: The collaboration task is being terminated.
-        # 
-        # - TERMINATED: The collaboration task is terminated.
-        # 
-        # - PENDING: The collaboration task is pending to be executed.
+        # The current coordination status.
+        # [_single.resp.200.props.CoordinateFlowModels.items.CoordinateStatus.enum.COORDINATING  ]coordinating
+        # [_single.resp.200.props.CoordinateFlowModels.items.CoordinateStatus.enum.TERMINATING  ] terminating
+        # [_single.resp.200.props.CoordinateFlowModels.items.CoordinateStatus.enum.TERMINATED ]terminated
+        # [_single.resp.200.props.CoordinateFlowModels.items.CoordinateStatus.enum.PENDING ]pending acceptance
         self.coordinate_status = coordinate_status
-        # The ticket that is used to establish the Adaptive Streaming Protocol (ASP)-based connection.
+        # The ticket used by ASP to establish a connection.
         self.coordinate_ticket = coordinate_ticket
-        # The type of the initiator.
-        # 
-        # Valid values:
-        # 
-        # - ADMIN_INITIATE_FORCE: The administrator forcibly initiates the collaboration request.
-        # 
-        # - ADMIN_INITIATE: The administrator initiates the collaboration request.
-        # 
-        # - COORDINATOR_INITIATE_FORCE: The coordinator forcibly initiates the collaboration request.
+        # The initiator type.
         self.initiator_type = initiator_type
-        # The ID of the Alibaba Cloud account of the end user.
+        # The Alibaba Cloud account ID of the user on the user side.
         self.owner_user_id = owner_user_id
-        # The ID of the cloud desktop.
+        # The cloud computer ID.
         self.resource_id = resource_id
-        # The name of the cloud desktop.
+        # The cloud computer name.
         self.resource_name = resource_name
 
     def validate(self):

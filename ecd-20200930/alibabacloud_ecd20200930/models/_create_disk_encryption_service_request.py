@@ -9,7 +9,7 @@ class CreateDiskEncryptionServiceRequest(DaraModel):
         self,
         region_id: str = None,
     ):
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the list of regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id

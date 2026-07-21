@@ -14,21 +14,17 @@ class CancelCoordinationForMonitoringRequest(DaraModel):
         region_id: str = None,
         user_type: str = None,
     ):
-        # The IDs of stream collaboration tasks.
+        # The list of coordination flow IDs.
         # 
         # This parameter is required.
         self.co_ids = co_ids
-        # The ID of the end user that initiates stream collaboration. If the initiator is the administrator, skip this parameter.
+        # The ID of the end user who initiated the coordination flow. This parameter is not required if the request is initiated by an administrator.
         self.end_user_id = end_user_id
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/436773.html) operation to query the most recent region list.
+        # The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The type of the user.
-        # 
-        # Valid value:
-        # 
-        # * TENANT_ADMIN: administrator.
+        # The user type.
         self.user_type = user_type
 
     def validate(self):

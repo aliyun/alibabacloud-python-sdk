@@ -27,69 +27,59 @@ class DescribeGlobalDesktopRecordsRequest(DaraModel):
         sort_type: str = None,
         start_time: str = None,
         sub_pay_type: str = None,
+        user_names: List[str] = None,
     ):
         self.business_channel = business_channel
-        # The IDs of the cloud desktops. You can specify up to 100 IDs.
+        # The cloud desktop IDs. You can specify 1 to 100 IDs.
         self.desktop_id = desktop_id
-        # The name of the cloud desktop.
+        # The cloud desktop name.
         self.desktop_name = desktop_name
-        # The ID of the resource group.
         self.desktop_status_list = desktop_status_list
-        # The desktop type. You can call the [DescribeDesktopTypes](https://help.aliyun.com/document_detail/188882.html) operation to query the IDs of the supported desktop types.
+        # The cloud desktop type. You can call [DescribeDesktopTypes](https://help.aliyun.com/document_detail/188882.html) to query the supported cloud desktop type IDs.
         self.desktop_type = desktop_type
-        # The end time of the query. The time must be in UTC and in the `YYYY-MM-DDThh:mm:ssZ` format. The interval between the start and end times cannot exceed 30 days.
-        # 
+        # The end time. The maximum interval between the start time and end time is 30 days. Supported format:
         # - Format: YYYY-MM-DDThh:mm:ssZ.
         self.end_time = end_time
-        # The ID of the end user.
-        # 
-        # - Asc: ascending order
-        # 
-        # - Desc: descending order
+        # The end user ID.
         self.end_user_id = end_user_id
         self.exclude_desktop_status_list = exclude_desktop_status_list
-        # The ID of the office site.
-        # 
-        # - China (Shanghai)
-        # 
-        # - Singapore
+        # The office network ID.
         self.office_site_id = office_site_id
-        # The field by which to sort the results. If you do not specify this parameter, the results are sorted by creation time in descending order. Valid value:
+        # The sort field. If not specified, results are sorted by creation time in descending order. Valid values:
         # 
-        # - `uptime`: Sorts the results by cloud desktop uptime.
+        # - uptime: sorts by cloud desktop uptime.
         self.order_by = order_by
-        # The page number to return.<br>Default value: 1.<br>
-        # 
-        # - Format: YYYY-MM-DDThh:mm:ssZ.
+        # The page number for a paged query.    
+        # Default value: 1.
         self.page_number = page_number
         # The number of entries per page. Maximum value: 100.
         self.page_size = page_size
-        # The ID of the region.
-        # 
+        # The region ID. Valid values:
         # - Shanghai
-        # 
         # - Singapore
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The query scope. This parameter is empty by default. Valid value:
+        # The query scope. This parameter is empty by default. Valid values:
         # 
-        # - `ADVANCED`: Queries statistical records, such as connection duration.
-        # 
-        # - postPaid: Pay-as-you-go.
-        # 
-        # - monthPackage: monthly time-based package.
+        # - ADVANCED: queries statistical records such as connection duration.
         self.scope = scope
-        # The sort order. The default is `Asc`. Valid values:
-        # 
-        # - `Asc`: ascending order
+        # The sort order. Default value: ascending order. Valid values:
+        # - Asc: ascending order.
+        # - Desc: descending order.
         self.sort_type = sort_type
-        # The start time of the query. The time must be in UTC and in the `YYYY-MM-DDThh:mm:ssZ` format.
+        # The start time. Supported format:
+        # - Format: YYYY-MM-DDThh:mm:ssZ.
         self.start_time = start_time
         # The billing method of the cloud desktop. Valid values:
+        # 
+        # - prePaid: monthly subscription with unlimited usage duration.
+        # - postPaid: pay-as-you-go.
+        # - monthPackage: monthly duration package.
         self.sub_pay_type = sub_pay_type
+        self.user_names = user_names
 
     def validate(self):
         pass
@@ -153,6 +143,9 @@ class DescribeGlobalDesktopRecordsRequest(DaraModel):
         if self.sub_pay_type is not None:
             result['SubPayType'] = self.sub_pay_type
 
+        if self.user_names is not None:
+            result['UserNames'] = self.user_names
+
         return result
 
     def from_map(self, m: dict = None):
@@ -210,6 +203,9 @@ class DescribeGlobalDesktopRecordsRequest(DaraModel):
 
         if m.get('SubPayType') is not None:
             self.sub_pay_type = m.get('SubPayType')
+
+        if m.get('UserNames') is not None:
+            self.user_names = m.get('UserNames')
 
         return self
 

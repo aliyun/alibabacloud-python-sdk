@@ -10,9 +10,9 @@ class CreateCenterPolicyResponseBody(DaraModel):
         policy_group_id: str = None,
         request_id: str = None,
     ):
-        # Cloud desktop policy ID.
+        # The Cloud Desktop policy ID.
         self.policy_group_id = policy_group_id
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

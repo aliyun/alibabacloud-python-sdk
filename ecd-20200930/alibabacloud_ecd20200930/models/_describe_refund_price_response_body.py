@@ -11,9 +11,9 @@ class DescribeRefundPriceResponseBody(DaraModel):
         price_info: main_models.DescribeRefundPriceResponseBodyPriceInfo = None,
         request_id: str = None,
     ):
-        # Price details.
+        # The price details.
         self.price_info = price_info
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -50,10 +50,10 @@ class DescribeRefundPriceResponseBodyPriceInfo(DaraModel):
         currency: str = None,
         refund_fee: float = None,
     ):
-        # <props="china">Currency unit (CNY).
-        # <props="intl">Currency unit (USD).
+        # <props="china">The currency unit (CNY).
+        # <props="intl">The currency unit (USD).
         self.currency = currency
-        # This refund amount.
+        # The refund amount for this unsubscription.
         self.refund_fee = refund_fee
 
     def validate(self):

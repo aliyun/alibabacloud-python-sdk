@@ -15,33 +15,21 @@ class CloneCenterPolicyRequest(DaraModel):
     ):
         # The business type.
         # 
-        # Valid values:
-        # 
-        # - 1: public cloud
-        # 
-        # - 8: commercial edition.
-        # 
         # This parameter is required.
         self.business_type = business_type
-        # The name of the cloud computer policy that you want to clone.
+        # The policy name.
         # 
         # This parameter is required.
         self.name = name
-        # The ID of the cloud computer policy that you want to clone.
+        # The ID of the target cloud computer policy to clone.
         # 
         # This parameter is required.
         self.policy_group_id = policy_group_id
-        # The region ID. Set the value to cn-shanghai.
+        # The region ID. This feature is region-independent. Set this parameter to cn-shanghai.
         # 
         # This parameter is required.
         self.region_id = region_id
         # The resource type.
-        # 
-        # Valid values:
-        # 
-        # - app: cloud applications.
-        # 
-        # - desktop: cloud computers.
         # 
         # This parameter is required.
         self.resource_type = resource_type

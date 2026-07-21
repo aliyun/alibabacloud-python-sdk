@@ -14,33 +14,15 @@ class MoveCdsFileResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The result of the modification. A value of success indicates that the modification is successful. If the modification failed, an error message is returned.
+        # The execution result. The value `success` indicates that the operation is successful. Otherwise, an error message is returned.
         self.code = code
-        # The error message that is returned. This parameter is not returned if the value of Code is success.
+        # The error message. This parameter is not returned if Code is `success`.
         self.message = message
-        # The response object when you move a file.
+        # The result of the move file operation.
         self.move_cds_file_model = move_cds_file_model
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful.
-        # 
-        # Valid values:
-        # 
-        # *   <!-- -->
-        # 
-        #     true
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   <!-- -->
-        # 
-        #     false
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
+        # Indicates whether the operation is successful.
         self.success = success
 
     def validate(self):
@@ -96,29 +78,11 @@ class MoveCdsFileResponseBodyMoveCdsFileModel(DaraModel):
         exist: bool = None,
         file_id: str = None,
     ):
-        # The ID of the asynchronous task. This parameter is not returned if you copy files. This parameter is returned if you copy folders in the backend in an asynchronous manner. You can call the GetAsyncTask operation to obtain the ID and details of an asynchronous task.
+        # The asynchronous task ID. This field is not returned when a file is copied. When a folder is copied, the copy operation is performed asynchronously in the background, so this field is returned. You can call [GetAsyncTask](https://help.aliyun.com/document_detail/2357404.html) and pass in this asynchronous task ID to obtain the task details.
         self.async_task_id = async_task_id
-        # Indicates whether the file exists.
-        # 
-        # Valid values:
-        # 
-        # *   <!-- -->
-        # 
-        #     true
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   <!-- -->
-        # 
-        #     false
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
+        # Indicates whether the file already exists.
         self.exist = exist
-        # The ID of the file.
+        # The file ID.
         self.file_id = file_id
 
     def validate(self):

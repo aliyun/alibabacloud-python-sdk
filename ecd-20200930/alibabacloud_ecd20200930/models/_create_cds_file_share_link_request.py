@@ -24,125 +24,44 @@ class CreateCdsFileShareLinkRequest(DaraModel):
         share_name: str = None,
         share_pwd: str = None,
     ):
-        # The ID of the cloud disk.
+        # The enterprise cloud disk ID.
         # 
         # This parameter is required.
         self.cds_id = cds_id
-        # The description of the file sharing task. The description must be 0 to 1,024 characters in length.
+        # The share description. Length range: 0 to 1024 characters.
         self.description = description
-        # Specifies whether to prohibit the download of the files that are being shared.
+        # Specifies whether to disable downloading of files in the share. Valid values:
         # 
-        # Valid values:
-        # 
-        # - true
-        # 
-        #   <!-- -->
-        # 
-        #   :
-        # 
-        #   <!-- -->
-        # 
-        #   prohibits file download
-        # 
-        #   <!-- -->
-        # 
-        #   .
-        # 
-        # - false
-        # 
-        #   <!-- -->
-        # 
-        #   :
-        # 
-        #   <!-- -->
-        # 
-        #   allows file download
-        # 
-        #   <!-- -->
-        # 
-        #   .
+        # - true: Downloading is disabled.
+        # - false: Downloading is enabled.
         self.disable_download = disable_download
-        # Specifies whether to prohibit the preview of the files that are being shared.
+        # Specifies whether to disable previewing of files in the share. Valid values:
         # 
-        # Valid values:
-        # 
-        # - true
-        # 
-        #   <!-- -->
-        # 
-        #   :
-        # 
-        #   <!-- -->
-        # 
-        #   prohibits file preview
-        # 
-        #   <!-- -->
-        # 
-        #   .
-        # 
-        # - false
-        # 
-        #   <!-- -->
-        # 
-        #   :
-        # 
-        #   <!-- -->
-        # 
-        #   allows file preview
-        # 
-        #   <!-- -->
-        # 
-        #   .
+        # - true: Preview is disabled.
+        # - false: Preview is enabled.
         self.disable_preview = disable_preview
-        # Specifies whether to prohibit the dump of the files that are being shared.
+        # Specifies whether to disable saving of files in the share. Valid values:
         # 
-        # Valid values:
-        # 
-        # - true
-        # 
-        #   <!-- -->
-        # 
-        #   :
-        # 
-        #   <!-- -->
-        # 
-        #   prohibits file dump
-        # 
-        #   <!-- -->
-        # 
-        #   .
-        # 
-        # - false
-        # 
-        #   <!-- -->
-        # 
-        #   :
-        # 
-        #   <!-- -->
-        # 
-        #   allows file dump
-        # 
-        #   <!-- -->
-        # 
-        #   .
+        # - true: Saving is disabled.
+        # - false: Saving is enabled.
         self.disable_save = disable_save
-        # The limit on the number of times that the shared files can be downloaded. The value of this parameter must be equal to or greater than 0. The value 0 specifies that no limit is imposed on the number of times that the shared files can be downloaded.
+        # The maximum number of times the shared files can be downloaded. The value is an integer. A value of 0 indicates no limit.
         self.download_limit = download_limit
-        # The ID of the end user.
+        # The ID of the user who uses the cloud disk.
         self.end_user_id = end_user_id
-        # The time when the file sharing link expires. The value of this parameter follows the RFC 3339 standard. Example: "2020-06-28T11:33:00.000+08:00". If this parameter is set to "", the file sharing link never expires.
+        # The expiration time in RFC 3339 format. If this parameter is left empty, the share is permanently valid.
         self.expiration = expiration
-        # The file IDs.
+        # The list of file IDs.
         self.file_ids = file_ids
-        # Team space ID.
+        # The team space ID.
         self.group_id = group_id
-        # The limit on the number of times that the shared files can be previewed. The value of this parameter must be equal to or greater than 0. The value 0 specifies that no limit is imposed on the number of times that the shared files can be previewed.
+        # The maximum number of times the shared files can be previewed. The value is an integer. A value of 0 indicates no limit.
         self.preview_limit = preview_limit
-        # The limit on the number of times that the shared files can be dumped. The value of this parameter must be equal to or greater than 0. The value 0 specifies that no limit is imposed on the number of times that the shared files can be dumped.
+        # The maximum number of times the shared files can be saved. The value is an integer. A value of 0 indicates no limit.
         self.save_limit = save_limit
-        # The name of the file sharing task. If you leave this parameter empty, the file name that corresponds to the first ID in the file ID list is used. The name must be 0 to 128 characters in length.
+        # The share name. If this parameter is not set, the file name corresponding to the first ID in `file_id_list` is used by default. Length range: 0 to 128 characters.
         self.share_name = share_name
-        # The length of the access code. Valid values: 6 to 8. Unit: bytes. If you leave this parameter empty or set it to null, no access code is required. If you use a token to share files, you do not need to configure this parameter. The access code can contain only visible ASCII characters.
+        # The extraction code. Length range: 0 to 64 bytes. If this parameter is not set or is set to empty, no extraction code is required, and you do not need to specify the extraction code parameter when obtaining the share token. Only printable ASCII characters are allowed.
         self.share_pwd = share_pwd
 
     def validate(self):

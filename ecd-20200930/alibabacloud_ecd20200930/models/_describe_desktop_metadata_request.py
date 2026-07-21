@@ -18,35 +18,39 @@ class DescribeDesktopMetadataRequest(DaraModel):
         include_desktop_group: bool = None,
         keyword: str = None,
         max_results: int = None,
+        network_interface_ip: str = None,
         next_token: str = None,
         office_site_id: str = None,
         operation_time_start: str = None,
         region_id: str = None,
         search_region_id: str = None,
     ):
-        # The creation time of the cloud computer. The time must be in the `yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\"` format and in UTC.
+        # The time when the cloud desktop was created. The time is in UTC format:
+        # `yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\"`.
         self.creation_time_start = creation_time_start
-        # A list of cloud computer IDs.
+        # The list of cloud desktop IDs.
         self.desktop_ids = desktop_ids
-        # The ID of the end user.
+        # The end user ID.
         self.end_user_id = end_user_id
-        # The ID of the cloud computer share.
+        # The shared cloud desktop ID.
         self.group_id = group_id
         # The hostname.
         self.host_name = host_name
-        # The ID of the image.
+        # The image ID.
         self.image_id = image_id
-        # Specifies whether to include cloud computers in cloud computer shares in the response.
+        # Specifies whether the response includes cloud desktops in shared cloud desktop groups.
         self.include_desktop_group = include_desktop_group
-        # > This parameter is not yet available.
+        # >This parameter is not yet available.
         self.keyword = keyword
-        # The maximum number of entries to return per page. Maximum: 100. Default: 10.
+        # The number of entries per page for a paged query. Maximum value: 100. Default value: 10.
         self.max_results = max_results
-        # The token returned from the previous call to retrieve the next page of results.
+        self.network_interface_ip = network_interface_ip
+        # The token for the next query. An empty value indicates that there are no more results.
         self.next_token = next_token
-        # The ID of the office network.
+        # The workspace ID.
         self.office_site_id = office_site_id
-        # The start of the time range to query for operations. The time must be in the `yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\"` format and in UTC.
+        # The start time of the operation performed on the cloud desktop. The time is in UTC format:
+        # `yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\"`.
         self.operation_time_start = operation_time_start
         # The region ID.
         self.region_id = region_id
@@ -87,6 +91,9 @@ class DescribeDesktopMetadataRequest(DaraModel):
 
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
+
+        if self.network_interface_ip is not None:
+            result['NetworkInterfaceIp'] = self.network_interface_ip
 
         if self.next_token is not None:
             result['NextToken'] = self.next_token
@@ -133,6 +140,9 @@ class DescribeDesktopMetadataRequest(DaraModel):
 
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
+
+        if m.get('NetworkInterfaceIp') is not None:
+            self.network_interface_ip = m.get('NetworkInterfaceIp')
 
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')

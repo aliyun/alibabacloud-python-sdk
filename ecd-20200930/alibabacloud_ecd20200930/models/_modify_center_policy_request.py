@@ -52,6 +52,11 @@ class ModifyCenterPolicyRequest(DaraModel):
         external_drive: str = None,
         file_migrate: str = None,
         file_transfer_address: str = None,
+        file_transfer_in_size: str = None,
+        file_transfer_in_unit: str = None,
+        file_transfer_out_size: str = None,
+        file_transfer_out_unit: str = None,
+        file_transfer_size_limit: str = None,
         file_transfer_speed: str = None,
         file_transfer_speed_location: str = None,
         gpu_acceleration: str = None,
@@ -147,126 +152,129 @@ class ModifyCenterPolicyRequest(DaraModel):
         wy_assistant: str = None,
     ):
         self.academic_proxy = academic_proxy
-        # Specifies whether users have administrator permissions after logging on to cloud computers.
+        # Specifies whether the user has administrator permissions after logging on to the cloud desktop.
         # 
-        # > This feature is in invitational preview and not available to the public.
+        # > This feature is in invitational preview and is not publicly available.
         self.admin_access = admin_access
         self.admin_keyboard_on_full_screen = admin_keyboard_on_full_screen
         self.admin_keyboard_on_windows = admin_keyboard_on_windows
-        # Specifies whether to enable anti-screenshot protection.
+        # Specifies whether to enable the anti-screenshot feature.
         self.app_content_protection = app_content_protection
-        # List of new client IP address whitelists.
+        # The list of client IP whitelist entries to add.
         self.authorize_access_policy_rule = authorize_access_policy_rule
-        # List of new security group control rules.
+        # The list of security group control rules to add.
         self.authorize_security_policy_rule = authorize_security_policy_rule
-        # Automatically reconnect after disconnection
+        # Specifies whether to automatically reconnect after disconnection.
         self.auto_reconnect = auto_reconnect
         self.business_channel = business_channel
         # The business type.
         # 
         # This parameter is required.
         self.business_type = business_type
-        # Local camera redirection. This parameter takes effect only if DeviceRedirects does not include a local camera redirection policy.
+        # The local camera redirection setting. This parameter takes effect only when no camera redirection policy is specified in DeviceRedirects.
         self.camera_redirect = camera_redirect
-        # Event level for screen recording
+        # The recording event level.
         self.client_control_menu = client_control_menu
         self.client_create_snapshot = client_create_snapshot
-        # List of client login control rules. Controls which clients can access cloud computers.
+        # The list of logon method control rules. Specifies which client types can access the cloud desktop.
         self.client_type = client_type
-        # The clipboard permissions.
+        # The clipboard permission.
         self.clipboard = clipboard
         self.clipboard_graineds = clipboard_graineds
         self.clipboard_scope = clipboard_scope
-        # Specifies whether to enable color enhancement for design and 3D applications.
+        # Specifies whether color enhancement is enabled for the design and 3D common scenarios.
         self.color_enhancement = color_enhancement
         self.cpd_drive_clipboard = cpd_drive_clipboard
-        # CPU downclocking duration. Valid values: 30 to 120. Unit: seconds.
+        # The CPU throttling duration. Valid values: 30 to 120. Unit: seconds.
         self.cpu_down_grade_duration = cpu_down_grade_duration
         self.cpu_overload = cpu_overload
-        # The name of the process.
+        # The process name.
         self.cpu_processors = cpu_processors
-        # CPU protection mode switch.
+        # The CPU protection mode switch.
         self.cpu_protected_mode = cpu_protected_mode
-        # Overall CPU usage percentage. Valid values: 70 to 90.
+        # The overall CPU usage percentage. Valid values: 70 to 90.
         self.cpu_rate_limit = cpu_rate_limit
-        # Overall CPU sampling duration. Valid values: 10 to 60. Unit: seconds.
+        # The overall CPU sampling duration. Valid values: 10 to 60. Unit: seconds.
         self.cpu_sample_duration = cpu_sample_duration
-        # Single-core CPU usage percentage. Valid values: 70 to 100.
+        # The single-core CPU usage percentage. Valid values: 70 to 100.
         self.cpu_single_rate_limit = cpu_single_rate_limit
         self.description = description
-        # Peripheral connection prompt control.
+        # The peripheral connection notification control.
         self.device_connect_hint = device_connect_hint
-        # Device redirection rules.
+        # The device redirection rule list.
         self.device_redirects = device_redirects
-        # Custom peripheral rules.
+        # The custom peripheral device rule list.
         self.device_rules = device_rules
-        # Session retention after disconnection.
-        # 
+        # The session retention after disconnection.
         # > This parameter applies only to cloud application policies.
         self.disconnect_keep_session = disconnect_keep_session
-        # Session retention duration after disconnection. Valid values: 30 to 7200. Unit: seconds.
-        # 
+        # The session retention duration after disconnection. Valid values: 30 to 7200. Unit: seconds.
         # > This parameter applies only to cloud application policies.
         self.disconnect_keep_session_time = disconnect_keep_session_time
         self.disk_overload = disk_overload
-        # Display mode.
+        # The display mode.
         self.display_mode = display_mode
-        # Domain name resolution policies.
+        # The domain name resolution policy.
         self.domain_resolve_rule = domain_resolve_rule
-        # Domain name resolution policy type.
+        # The domain name resolution policy type.
         self.domain_resolve_rule_type = domain_resolve_rule_type
-        # Session bandwidth throttling.
+        # The session bandwidth throttling setting.
         self.enable_session_rate_limiting = enable_session_rate_limiting
-        # User requests administrator assistance.
+        # The setting for users to request administrator assistance.
         self.end_user_apply_admin_coordinate = end_user_apply_admin_coordinate
-        # Users on the same office network share cloud computers.
+        # The setting for users within the same office network to share cloud desktops.
         self.end_user_group_coordinate = end_user_group_coordinate
         self.external_drive = external_drive
-        # File migration.
+        # The file migration setting.
         self.file_migrate = file_migrate
         self.file_transfer_address = file_transfer_address
+        self.file_transfer_in_size = file_transfer_in_size
+        self.file_transfer_in_unit = file_transfer_in_unit
+        self.file_transfer_out_size = file_transfer_out_size
+        self.file_transfer_out_unit = file_transfer_out_unit
+        self.file_transfer_size_limit = file_transfer_size_limit
         self.file_transfer_speed = file_transfer_speed
-        # Screen recording event suffix
+        # The recording event file extension.
         self.file_transfer_speed_location = file_transfer_speed_location
-        # Specifies whether to enable the image quality policy for graphics-intensive cloud computers. Enable this policy for scenarios such as professional design where high performance and user experience are required.
+        # Specifies whether to enable the image quality policy for GPU-accelerated cloud desktops. Enable this policy when high performance and user experience are required, such as in professional design scenarios.
         self.gpu_acceleration = gpu_acceleration
         self.hover_config_msg = hover_config_msg
-        # The file transfer policy for web clients.
+        # The file transfer policy for the web client.
         self.html_5file_transfer = html_5file_transfer
-        # Network communication protocol.
+        # The network communication protocol.
         self.internet_communication_protocol = internet_communication_protocol
-        # Wuying Keeper toggle for mobile devices
+        # The WUYING Keeper switch for mobile clients.
         self.internet_printer = internet_printer
-        # The local disk mapping permissions.
+        # The local disk mapping permission.
         self.local_drive = local_drive
-        # Maximum reconnection retry time after an unexpected disconnection. Valid values: 30 to 7200. Unit: seconds.
+        # The maximum reconnection retry time when the cloud desktop is disconnected due to objective reasons. Valid values: 30 to 7200. Unit: seconds.
         self.max_reconnect_time = max_reconnect_time
-        # Memory downclocking duration per process. Valid values: 30 to 120. Unit: seconds.
+        # The single-process memory throttling duration. Valid values: 30 to 120. Unit: seconds.
         self.memory_down_grade_duration = memory_down_grade_duration
         self.memory_overload = memory_overload
-        # The name of the process.
+        # The process name.
         self.memory_processors = memory_processors
-        # Memory protection mode switch.
+        # The memory protection mode switch.
         self.memory_protected_mode = memory_protected_mode
-        # Overall memory usage percentage. Valid values: 70 to 90.
+        # The overall memory usage percentage. Valid values: 70 to 90.
         self.memory_rate_limit = memory_rate_limit
-        # Overall memory sampling duration. Valid values: 30 to 60. Unit: seconds.
+        # The overall memory sampling duration. Valid values: 30 to 60. Unit: seconds.
         self.memory_sample_duration = memory_sample_duration
-        # Memory usage per process percentage. Valid values: 30 to 60.
+        # The single-process memory usage percentage. Valid values: 30 to 60.
         self.memory_single_rate_limit = memory_single_rate_limit
-        # Specifies whether to provide the Restart button in the cloud computer floating ball when connecting via mobile clients (Android and iOS clients).
+        # Specifies whether to provide a restart button in the cloud desktop floating ball when connecting through mobile clients (Android<props="china"> and iOS clients).
         # 
-        # > This feature applies only to mobile clients of version 7.4 or later.
+        # > This parameter applies only to mobile client V7.4 or later.
         self.mobile_restart = mobile_restart
-        # The security button toggle for Windows systems on mobile devices
+        # The security button switch for Windows on mobile clients.
         self.mobile_safe_menu = mobile_safe_menu
-        # Specifies whether to provide the Shutdown button in the cloud computer floating ball when connecting via mobile clients (Android and iOS clients).
+        # Specifies whether to provide a shutdown button in the cloud desktop floating ball when connecting through mobile clients (Android<props="china"> and iOS clients).
         # 
-        # > This feature applies only to mobile clients of version 7.4 or later.
+        # > This parameter applies only to mobile client V7.4 or later.
         self.mobile_shutdown = mobile_shutdown
-        # Wuying Keeper toggle for mobile devices
+        # The WUYING Keeper switch for mobile clients.
         self.mobile_wuying_keeper = mobile_wuying_keeper
-        # Mobile Wy Assistant Toggle
+        # The Xiaoying switch for mobile clients.
         self.mobile_wy_assistant = mobile_wy_assistant
         self.model_library = model_library
         self.multi_screen = multi_screen
@@ -274,157 +282,155 @@ class ModifyCenterPolicyRequest(DaraModel):
         self.name = name
         # Specifies whether to enable network redirection.
         # 
-        # > This feature is in invitational preview and not available to the public.
+        # > This feature is in invitational preview and is not publicly available.
         self.net_redirect = net_redirect
-        # Network redirection policy details.
+        # The network redirection policy details.
         # 
-        # > This feature is in invitational preview and not available to the public.
+        # > This feature is in invitational preview and is not publicly available.
+        # >
         self.net_redirect_rule = net_redirect_rule
-        # Disconnect on inactivity.
-        # 
+        # The no-operation disconnect setting.
         # > This parameter applies only to cloud application policies.
         self.no_operation_disconnect = no_operation_disconnect
-        # Inactivity disconnect duration. Valid values: 120 to 7200. Unit: seconds.
-        # 
+        # The no-operation disconnect duration. Valid values: 120 to 7200. Unit: seconds.
         # > This parameter applies only to cloud application policies.
         self.no_operation_disconnect_time = no_operation_disconnect_time
-        # The cloud computer policy ID.
+        # The ID of the Cloud Desktop policy.
         # 
         # This parameter is required.
         self.policy_group_id = policy_group_id
         self.port_proxy = port_proxy
-        # The printer redirection policy. This parameter takes effect only if DeviceRedirects does not include a printer redirection policy.
+        # The printer redirection policy. This parameter takes effect only when no printer redirection policy is specified in DeviceRedirects.
         self.printer_redirect = printer_redirect
-        # Specifies whether to enable image quality enhancement for design and 3D applications.
+        # Specifies whether image quality enhancement is enabled for the design and 3D common scenarios.
         self.quality_enhancement = quality_enhancement
-        # Screen recording duration after an event is detected in audit. Unit: minutes. Valid values: 10 to 60.
+        # The recording duration after an event is detected in recording audit. Unit: minutes. Valid values: 10 to 60.
         self.record_event_duration = record_event_duration
-        # File extensions for screen recording events
+        # The recording event file extension.
         self.record_event_file_exts = record_event_file_exts
-        # Absolute paths for file monitoring in screen recording audit.
+        # The absolute paths for file monitoring in recording audit.
         self.record_event_file_paths = record_event_file_paths
-        # Levels of screen recording events
+        # The recording event level.
         self.record_event_levels = record_event_levels
-        # Absolute paths for registry monitoring in screen recording audit.
+        # The absolute paths for registry monitoring in recording audit.
         self.record_event_registers = record_event_registers
-        # List of screen recording events.
+        # The list of recording events.
         self.record_events = record_events
         # Specifies whether to enable screen recording.
         self.recording = recording
-        # Cloud computer audio recording option.
+        # The audio recording option for the cloud desktop.
         self.recording_audio = recording_audio
-        # Screen recording file viewing duration in minutes. Recording files are automatically split based on the specified duration and uploaded to the storage bucket. When a file reaches 300 MB, it is prioritized for rolling updates. Valid values: 10 to 60.
+        # The duration of each recording file segment, in minutes. Recording files are automatically split and uploaded to the storage space based on the specified duration. Files are rolled over when they reach 300 MB. Valid values: 10 to 60.
         self.recording_duration = recording_duration
-        # Screen recording end time in HH:MM:SS format. This parameter is meaningful only when `Recording` is set to `PERIOD`.
+        # The recording end time in the format of HH:MM:SS. This parameter takes effect only when `Recording` is set to `PERIOD`.
         self.recording_end_time = recording_end_time
-        # Retention period of screen recording files. Valid values: 1 to 180 days.
+        # The retention period of recording files. Valid values: 1 to 180. Unit: days.
         self.recording_expires = recording_expires
-        # Screen recording frame rate. Unit: FPS.
+        # The recording frame rate. Unit: FPS (frames per second).
         self.recording_fps = recording_fps
-        # Screen recording start time in HH:MM:SS format. This parameter is meaningful only when `Recording` is set to `PERIOD`.
+        # The recording start time in the format of HH:MM:SS. This parameter takes effect only when `Recording` is set to `PERIOD`.
         self.recording_start_time = recording_start_time
-        # Notify end users when screen recording is enabled.
+        # Specifies whether to notify end users that screen recording is enabled.
         self.recording_user_notify = recording_user_notify
-        # Message to notify end users when screen recording is enabled.
+        # The notification message displayed to end users about screen recording.
         self.recording_user_notify_message = recording_user_notify_message
-        # The region ID. Set the value to `cn-shanghai`.
+        # The region ID. This feature is region-independent. Set this parameter to `cn-shanghai`.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # Keyboard and mouse control permissions for remote assistance.
+        # The keyboard and mouse control permission for remote assistance.
         self.remote_coordinate = remote_coordinate
-        # Reset cloud computer.
+        # The cloud desktop reset setting.
         self.reset_desktop = reset_desktop
         self.resolution_dpi = resolution_dpi
-        # Resolution height. Unit: pixels. Valid values for cloud applications: 500 to 50000. Valid values for cloud computers: 480 to 4096.
+        # The resolution height. Unit: pixels. Valid values for cloud applications: 500 to 50000. Valid values for cloud desktops: 480 to 4096.
         self.resolution_height = resolution_height
-        # Resolution type.
+        # The resolution type.
         self.resolution_model = resolution_model
-        # Resolution width. Unit: pixels. Valid values for cloud applications: 500 to 50000. Valid values for cloud computers: 480 to 4096.
+        # The resolution width. Unit: pixels. Valid values for cloud applications: 500 to 50000. Valid values for cloud desktops: 480 to 4096.
         self.resolution_width = resolution_width
         # The resource type.
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The list of client IP address whitelists to delete.
+        # The list of client IP whitelist entries to delete.
         self.revoke_access_policy_rule = revoke_access_policy_rule
-        # List of security group control rules to delete.
+        # The list of security group control rules to delete.
         self.revoke_security_policy_rule = revoke_security_policy_rule
-        # Security button toggle for Windows systems on mobile devices
+        # The security button switch for Windows on mobile clients.
         self.safe_menu = safe_menu
-        # The effective scope of the policy.
+        # The scope of the policy.
         self.scope = scope
-        # Specify when `Scope` is set to `IP`. Takes effect only when `Scope` is `IP`.
+        # The scope values. Specify this parameter when `Scope` is set to `IP`. This parameter takes effect only when `Scope` is set to `IP`.
         self.scope_value = scope_value
-        # Xiao Ying toggle for mobile devices
+        # The Xiaoying switch for mobile clients.
         self.screen_display_mode = screen_display_mode
-        # Maximum session bandwidth throttling value. Unit: Kbps. Valid values: 2000 to 100000.
+        # The maximum value for session bandwidth throttling. Unit: Kbps. Valid values: 2000 to 100000.
         self.session_max_rate_kbps = session_max_rate_kbps
         # Specifies whether to enable smoothness enhancement for daily office scenarios.
         self.smooth_enhancement = smooth_enhancement
-        # Specifies whether to provide the status monitoring entry in the cloud computer floating ball.
+        # Specifies whether to provide the status monitoring entry in the cloud desktop floating ball.
         self.status_monitor = status_monitor
-        # Streaming mode adaptation scenario.
+        # The streaming mode scenario.
         self.streaming_mode = streaming_mode
-        # Target frame rate. Valid values: 10 to 60.
+        # The target frame rate. Valid values: 10 to 60.
         self.target_fps = target_fps
-        # Application taskbar.
-        # 
+        # The application taskbar.
         # > This parameter applies only to cloud application policies.
         self.taskbar = taskbar
-        # USB redirection.
+        # The USB redirection setting.
         self.usb_redirect = usb_redirect
-        # USB redirection rules.
+        # The USB redirection rules.
         self.usb_supply_redirect_rule = usb_supply_redirect_rule
         self.use_time = use_time
-        # Average bitrate for video encoding. Unit: Kbps. Valid values: 1000 to 50000.
+        # The average bitrate for video encoding. Unit: Kbps. Valid values: 1000 to 50000.
         self.video_enc_avg_kbps = video_enc_avg_kbps
-        # Maximum QP for video encoding, representing lowest quality. Valid values: 0 to 51.
+        # The maximum QP for video encoding, which represents the lowest quality. Valid values: 0 to 51.
         self.video_enc_max_qp = video_enc_max_qp
-        # Minimum QP for video encoding, representing highest quality. Valid values: 0 to 51.
+        # The minimum QP for video encoding, which represents the highest quality. Valid values: 0 to 51.
         self.video_enc_min_qp = video_enc_min_qp
-        # Peak bitrate for video encoding. Unit: Kbps. Valid values: 1000 to 50000.
+        # The peak bitrate for video encoding. Unit: Kbps. Valid values: 1000 to 50000.
         self.video_enc_peak_kbps = video_enc_peak_kbps
-        # Video encoding policy.
+        # The video encoding policy.
         self.video_enc_policy = video_enc_policy
-        # Multimedia redirection.
+        # The multimedia redirection setting.
         self.video_redirect = video_redirect
         # The image display quality policy.
         self.visual_quality = visual_quality
-        # Watermark.
+        # The watermark setting.
         self.watermark = watermark
-        # Blind watermark anti-photo feature.
+        # The invisible watermark anti-photography feature.
         self.watermark_anti_cam = watermark_anti_cam
-        # Watermark font color. Valid values: 0 to 16777215.
+        # The watermark font color. Valid values: 0 to 16777215.
         self.watermark_color = watermark_color
-        # Number of watermark columns. Valid values: 3 to 10.
+        # The number of watermark columns. Valid values: 3 to 10.
         self.watermark_column_amount = watermark_column_amount
-        # If you set `WatermarkType` to `custom`, you must also specify custom text using the `WatermarkCustomText` parameter.
+        # The custom text content. This parameter is required if you set WatermarkType to `custom`.
         self.watermark_custom_text = watermark_custom_text
-        # Watermark tilt angle. Valid values: -10 to -30.
+        # The watermark tilt angle. Valid values: -10 to -30.
         self.watermark_degree = watermark_degree
-        # Watermark font size. Valid values: 10 to 20.
+        # The watermark font size. Valid values: 10 to 20.
         self.watermark_font_size = watermark_font_size
-        # Watermark font style.
+        # The watermark font style.
         self.watermark_font_style = watermark_font_style
-        # Blind watermark enhancement feature.
+        # The invisible watermark enhancement feature.
         self.watermark_power = watermark_power
-        # Number of watermark rows. Valid values: 3 to 10.
+        # The number of watermark rows. Valid values: 3 to 10.
         self.watermark_row_amount = watermark_row_amount
-        # Blind watermark security priority rule.
+        # The security priority rule for invisible watermarks.
         self.watermark_security = watermark_security
         self.watermark_shadow = watermark_shadow
-        # Watermark opacity. A higher value means lower transparency. Valid values: 10 to 100.
+        # The watermark opacity. A larger value indicates lower transparency. Valid values: 10 to 100.
         self.watermark_transparency_value = watermark_transparency_value
-        # The watermark type. You can select up to three types, separated by commas.
+        # The watermark type. You can select up to three types, separated by commas (,).
         # 
-        # > If you set this parameter to `custom`, you must also specify custom text using the `WatermarkCustomText` parameter.
+        # > If you set this parameter to `custom`, you must also specify the custom text content by using the WatermarkCustomText parameter.
         self.watermark_type = watermark_type
-        # Wuying Keeper switch.
+        # The WUYING Keeper switch.
         self.wuying_keeper = wuying_keeper
-        # Specifies whether to provide the Wuying AI Assistant entry in the cloud computer floating ball when connecting via desktop clients (including Windows and macOS clients).
+        # Specifies whether to provide the WUYING AI Assistant entry in the cloud desktop floating ball when connecting through desktop clients (including Windows and macOS clients).
         # 
-        # > This feature applies only to desktop clients of version 7.7 or later.
+        # > This parameter applies only to desktop client V7.7 or later.
         self.wy_assistant = wy_assistant
 
     def validate(self):
@@ -621,6 +627,21 @@ class ModifyCenterPolicyRequest(DaraModel):
 
         if self.file_transfer_address is not None:
             result['FileTransferAddress'] = self.file_transfer_address
+
+        if self.file_transfer_in_size is not None:
+            result['FileTransferInSize'] = self.file_transfer_in_size
+
+        if self.file_transfer_in_unit is not None:
+            result['FileTransferInUnit'] = self.file_transfer_in_unit
+
+        if self.file_transfer_out_size is not None:
+            result['FileTransferOutSize'] = self.file_transfer_out_size
+
+        if self.file_transfer_out_unit is not None:
+            result['FileTransferOutUnit'] = self.file_transfer_out_unit
+
+        if self.file_transfer_size_limit is not None:
+            result['FileTransferSizeLimit'] = self.file_transfer_size_limit
 
         if self.file_transfer_speed is not None:
             result['FileTransferSpeed'] = self.file_transfer_speed
@@ -1062,6 +1083,21 @@ class ModifyCenterPolicyRequest(DaraModel):
         if m.get('FileTransferAddress') is not None:
             self.file_transfer_address = m.get('FileTransferAddress')
 
+        if m.get('FileTransferInSize') is not None:
+            self.file_transfer_in_size = m.get('FileTransferInSize')
+
+        if m.get('FileTransferInUnit') is not None:
+            self.file_transfer_in_unit = m.get('FileTransferInUnit')
+
+        if m.get('FileTransferOutSize') is not None:
+            self.file_transfer_out_size = m.get('FileTransferOutSize')
+
+        if m.get('FileTransferOutUnit') is not None:
+            self.file_transfer_out_unit = m.get('FileTransferOutUnit')
+
+        if m.get('FileTransferSizeLimit') is not None:
+            self.file_transfer_size_limit = m.get('FileTransferSizeLimit')
+
         if m.get('FileTransferSpeed') is not None:
             self.file_transfer_speed = m.get('FileTransferSpeed')
 
@@ -1367,15 +1403,15 @@ class ModifyCenterPolicyRequestUsbSupplyRedirectRule(DaraModel):
         usb_rule_type: str = None,
         vendor_id: str = None,
     ):
-        # Rule description.
+        # The rule description.
         self.description = description
-        # Product ID.
+        # The product ID.
         self.product_id = product_id
-        # USB redirection type.
+        # The USB redirection type.
         self.usb_redirect_type = usb_redirect_type
-        # USB redirection rule type.
+        # The USB redirection rule type.
         self.usb_rule_type = usb_rule_type
-        # Vendor ID. For more information, see [Valid USB Vendor IDs (VIDs)](https://www.usb.org/sites/default/files/vendor_ids032322.pdf_1.pdf).
+        # The vendor ID. See [Valid USB Vendor IDs (VIDs)](https://www.usb.org/sites/default/files/vendor_ids032322.pdf_1.pdf).
         self.vendor_id = vendor_id
 
     def validate(self):
@@ -1433,29 +1469,26 @@ class ModifyCenterPolicyRequestRevokeSecurityPolicyRule(DaraModel):
         priority: str = None,
         type: str = None,
     ):
-        # Target of the security group control rule to delete. Specify an IPv4 CIDR block.
+        # The target of the security group control rule to delete, which is an IPv4 CIDR block.
         self.cidr_ip = cidr_ip
-        # Description of the security group control rule to delete.
+        # The description of the security group control rule to delete.
         self.description = description
-        # Protocol type for the security group control rule to delete.
+        # The protocol type of the security group control rule to delete.
         self.ip_protocol = ip_protocol
-        # Authorization policy for the security group control rule to delete.
+        # The authorization policy of the security group control rule to delete.
         self.policy = policy
-        # Port range for the security group control rule to delete. The port range depends on the protocol (IpProtocol):
+        # The port range of the security group control rule to delete. The port range is determined by the value of IpProtocol:
         # 
-        # - For TCP or UDP protocols: Port range is 1 to 65535. Separate the start and end ports with a forward slash (/). Example: 1/200.
+        # - TCP or UDP: Valid values: 1 to 65535. Separate the start port and end port with a forward slash (/). Example: 1/200.
+        # - ICMP: -1/-1.
+        # - GRE: -1/-1.
+        # - IpProtocol set to all: -1/-1.
         # 
-        # - For ICMP protocol: Set to -1/-1.
-        # 
-        # - For GRE protocol: Set to -1/-1.
-        # 
-        # - When IpProtocol is set to all: Set to -1/-1.
-        # 
-        # For more information about common ports for typical applications, see [Common ports](https://help.aliyun.com/document_detail/40724.html).
+        # For common ports of typical applications, see [Common ports](https://help.aliyun.com/document_detail/40724.html).
         self.port_range = port_range
-        # Priority of the security group control rule to delete. A smaller number indicates a higher priority. Valid values: 1 to 60. Default value: 1.
+        # The priority of the security group control rule to delete. A smaller value indicates a higher priority. Valid values: 1 to 60. Default value: 1.
         self.priority = priority
-        # Rule direction for the security group control rule to delete.
+        # The direction of the security group control rule to delete.
         self.type = type
 
     def validate(self):
@@ -1520,9 +1553,9 @@ class ModifyCenterPolicyRequestRevokeAccessPolicyRule(DaraModel):
         cidr_ip: str = None,
         description: str = None,
     ):
-        # Client access IP address range to delete. Specify an IPv4 CIDR block.
+        # The client access IP CIDR block to delete, in IPv4 CIDR format.
         self.cidr_ip = cidr_ip
-        # Description of the client IP address whitelist to delete.
+        # The description of the client IP whitelist entry to delete.
         self.description = description
 
     def validate(self):
@@ -1557,9 +1590,9 @@ class ModifyCenterPolicyRequestRecordEventLevels(DaraModel):
         event_level: str = None,
         event_type: str = None,
     ):
-        # Event level
+        # The event level.
         self.event_level = event_level
-        # Event type
+        # The event type.
         self.event_type = event_type
 
     def validate(self):
@@ -1595,11 +1628,11 @@ class ModifyCenterPolicyRequestNetRedirectRule(DaraModel):
         policy: str = None,
         rule_type: str = None,
     ):
-        # Domain name.
+        # The domain name.
         self.domain = domain
-        # Redirection policy.
+        # The redirection policy.
         self.policy = policy
-        # Rule type.
+        # The rule type.
         self.rule_type = rule_type
 
     def validate(self):
@@ -1641,11 +1674,11 @@ class ModifyCenterPolicyRequestDomainResolveRule(DaraModel):
         domain: str = None,
         policy: str = None,
     ):
-        # Policy description.
+        # The policy description.
         self.description = description
-        # Domain name.
+        # The domain name.
         self.domain = domain
-        # Resolution policy.
+        # The resolution policy.
         self.policy = policy
 
     def validate(self):
@@ -1691,18 +1724,18 @@ class ModifyCenterPolicyRequestDeviceRules(DaraModel):
         platforms: str = None,
         redirect_type: str = None,
     ):
-        # Device name.
+        # The device name.
         self.device_name = device_name
-        # Product ID.
+        # The product ID.
         self.device_pid = device_pid
-        # Peripheral type.
+        # The peripheral device type.
         self.device_type = device_type
-        # Vendor ID. For more information, see [Valid USB Vendor IDs (VIDs)](https://www.usb.org/sites/default/files/vendor_ids032322.pdf_1.pdf).
+        # The vendor ID. See [Valid USB Vendor IDs (VIDs)](https://www.usb.org/sites/default/files/vendor_ids032322.pdf_1.pdf).
         self.device_vid = device_vid
-        # Link optimization command.
+        # The link optimization command.
         self.opt_command = opt_command
         self.platforms = platforms
-        # Redirection type.
+        # The redirection type.
         self.redirect_type = redirect_type
 
     def validate(self):
@@ -1767,9 +1800,9 @@ class ModifyCenterPolicyRequestDeviceRedirects(DaraModel):
         device_type: str = None,
         redirect_type: str = None,
     ):
-        # Peripheral type.
+        # The peripheral device type.
         self.device_type = device_type
-        # Redirection type.
+        # The redirection type.
         self.redirect_type = redirect_type
 
     def validate(self):
@@ -1887,11 +1920,11 @@ class ModifyCenterPolicyRequestClientType(DaraModel):
         client_type: str = None,
         status: str = None,
     ):
-        # Client login control. Specifies the client type.
+        # The client type for logon method control.
         self.client_type = client_type
-        # Client login control. Specifies whether to allow using a specific client type to log on to cloud computers.
+        # Specifies whether to allow a specific client type to log on to the cloud desktop.
         # 
-        # > If you don\\"t configure `ClientType` parameters, all client types are allowed by default.
+        # > If you do not set the ClientType parameters, all client types are allowed to log on to the cloud desktop by default.
         self.status = status
 
     def validate(self):
@@ -1931,29 +1964,26 @@ class ModifyCenterPolicyRequestAuthorizeSecurityPolicyRule(DaraModel):
         priority: str = None,
         type: str = None,
     ):
-        # Target of the security group control rule. Specify an IPv4 CIDR block.
+        # The target of the security group control rule, which is an IPv4 CIDR block.
         self.cidr_ip = cidr_ip
-        # Description of the security group control rule.
+        # The description of the security group control rule.
         self.description = description
-        # Protocol type for the security group control rule.
+        # The protocol type of the security group control rule.
         self.ip_protocol = ip_protocol
-        # Authorization policy for the security group control rule.
+        # The authorization policy of the security group control rule.
         self.policy = policy
-        # Port range for the security group control rule. The port range depends on the protocol (IpProtocol):
+        # The port range of the security group control rule. The port range is determined by the value of IpProtocol:
         # 
-        # - For TCP or UDP protocols: Port range is 1 to 65535. Separate the start and end ports with a forward slash (/). Example: 1/200.
+        # - TCP or UDP: Valid values: 1 to 65535. Separate the start port and end port with a forward slash (/). Example: 1/200.
+        # - ICMP: -1/-1.
+        # - GRE: -1/-1.
+        # - IpProtocol set to all: -1/-1.
         # 
-        # - For ICMP protocol: Set to -1/-1.
-        # 
-        # - For GRE protocol: Set to -1/-1.
-        # 
-        # - When IpProtocol is set to all: Set to -1/-1.
-        # 
-        # For more information about common ports for typical applications, see [Common ports](https://help.aliyun.com/document_detail/40724.html).
+        # For common ports of typical applications, see [Common ports](https://help.aliyun.com/document_detail/40724.html).
         self.port_range = port_range
-        # Priority of the security group control rule. A smaller number indicates a higher priority. Valid values: 1 to 60. Default value: 1.
+        # The priority of the security group control rule. A smaller value indicates a higher priority. Valid values: 1 to 60. Default value: 1.
         self.priority = priority
-        # Rule direction for the security group control rule.
+        # The direction of the security group control rule.
         self.type = type
 
     def validate(self):
@@ -2018,9 +2048,9 @@ class ModifyCenterPolicyRequestAuthorizeAccessPolicyRule(DaraModel):
         cidr_ip: str = None,
         description: str = None,
     ):
-        # Client access IP address range. Specify an IPv4 CIDr block.
+        # The client access IP CIDR block in IPv4 format.
         self.cidr_ip = cidr_ip
-        # Description of the client IP address whitelist.
+        # The description of the client IP whitelist entry.
         self.description = description
 
     def validate(self):

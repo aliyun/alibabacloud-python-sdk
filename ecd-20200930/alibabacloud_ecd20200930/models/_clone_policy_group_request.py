@@ -11,15 +11,15 @@ class ClonePolicyGroupRequest(DaraModel):
         policy_group_id: str = None,
         region_id: str = None,
     ):
-        # The name of the cloud computer policy that you want to create.
+        # The name of the new cloud computer policy.
         # 
         # This parameter is required.
         self.name = name
-        # The ID of the destination cloud computer policy that you want to clone.
+        # The ID of the cloud computer policy that you want to clone.
         # 
         # This parameter is required.
         self.policy_group_id = policy_group_id
-        # The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the regions supported by Elastic Desktop Service (EDS).
+        # The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id

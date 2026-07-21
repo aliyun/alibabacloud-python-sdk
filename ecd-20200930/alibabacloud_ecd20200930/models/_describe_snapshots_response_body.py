@@ -14,11 +14,11 @@ class DescribeSnapshotsResponseBody(DaraModel):
         request_id: str = None,
         snapshots: List[main_models.DescribeSnapshotsResponseBodySnapshots] = None,
     ):
-        # The token that marks the start of the next page of results. If NextToken is empty, no more pages exist.
+        # The pagination token. If the NextToken parameter is empty, no next page exists.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # A collection of snapshots.
+        # The snapshot information.
         self.snapshots = snapshots
 
     def validate(self):
@@ -74,6 +74,7 @@ class DescribeSnapshotsResponseBodySnapshots(DaraModel):
         disk_status: str = None,
         env_id: str = None,
         env_type: str = None,
+        jvs_id: str = None,
         os_type: str = None,
         progress: str = None,
         protocol_type: str = None,
@@ -89,53 +90,54 @@ class DescribeSnapshotsResponseBodySnapshots(DaraModel):
         volume_encryption_enabled: bool = None,
         volume_encryption_key: str = None,
     ):
-        # The point in time at which the snapshot was created. The time follows the [ISO 8601](t10049.xdita#) standard in the `yyyy-mm-ddthh:mm:ssz` format. The time is displayed in UTC.
+        # The time when the snapshot was created. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-mm-ddthh:mm:ssz` format. The time is displayed in UTC.
         self.creation_time = creation_time
-        # The user who creates the snapshot.
+        # The creator.
         self.creator = creator
-        # The snapshot creation time follows the [ISO 8601](t10049.xdita#) standard. It uses UTC+0 time and is formatted as `yyyy-mm-ddThh:mm:ssZ`.
+        # The time when the snapshot was created. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-mm-ddthh:mm:ssz` format. The time is displayed in UTC.
         self.deletion_time = deletion_time
-        # The description of the snapshot.
+        # The snapshot description.
         self.description = description
-        # The ID of the cloud desktop to which the snapshot belongs.
+        # The ID of the cloud computer to which the snapshot belongs.
         self.desktop_id = desktop_id
-        # The name of the cloud desktop.
+        # The cloud computer name.
         self.desktop_name = desktop_name
-        # The status of the cloud desktop.
+        # The cloud computer status.
         self.desktop_status = desktop_status
-        # Status of the disk to which the snapshot belongs.
+        # The status of the cloud disk to which the snapshot belongs.
         self.disk_status = disk_status
         self.env_id = env_id
         self.env_type = env_type
+        self.jvs_id = jvs_id
         # The operating system type.
         self.os_type = os_type
-        # The progress of creating the snapshot. Unit: %.
+        # The snapshot creation progress. Unit: percent.
         self.progress = progress
         # The protocol type.
         self.protocol_type = protocol_type
-        # The remaining time to complete snapshot creation. Unit: seconds.
+        # The remaining time required to create the snapshot. Unit: seconds.
         # 
-        # > When `Status` is `PROGRESSING`, the value of `RemainTime` is `-1`. This indicates that the system is calculating the remaining time.
+        # > When `Status` is `PROGRESSING`, a `RemainTime` value of `-1` indicates that the remaining time is being calculated.
         self.remain_time = remain_time
-        # The ID of the restore point.
+        # The restore point ID.
         self.restore_point_id = restore_point_id
-        # The name of the restore point.
+        # The restore point name.
         self.restore_point_name = restore_point_name
         # The snapshot ID.
         self.snapshot_id = snapshot_id
-        # The name of the snapshot.
+        # The snapshot name.
         self.snapshot_name = snapshot_name
-        # The type of the snapshot.
+        # The snapshot creation type.
         self.snapshot_type = snapshot_type
-        # The capacity of the source disk. Unit: GiB.
+        # The capacity of the source cloud disk. Unit: GiB.
         self.source_disk_size = source_disk_size
-        # The type of the source disk.
+        # The type of the source cloud disk.
         self.source_disk_type = source_disk_type
-        # The status of the snapshot.
+        # The snapshot status.
         self.status = status
-        # Indicates whether disk encryption is enabled.
+        # Indicates whether cloud disk encryption is enabled.
         self.volume_encryption_enabled = volume_encryption_enabled
-        # The ID of the Key Management Service (KMS) key that is used when disk encryption is enabled. You can call the [](t22712.xdita#)operation to query the list of KMS keys.
+        # The ID of the Key Management Service (KMS) key used for cloud disk encryption. You can call [ListKeys](https://help.aliyun.com/document_detail/28951.html) to obtain the key ID.
         self.volume_encryption_key = volume_encryption_key
 
     def validate(self):
@@ -175,6 +177,9 @@ class DescribeSnapshotsResponseBodySnapshots(DaraModel):
 
         if self.env_type is not None:
             result['EnvType'] = self.env_type
+
+        if self.jvs_id is not None:
+            result['JvsId'] = self.jvs_id
 
         if self.os_type is not None:
             result['OsType'] = self.os_type
@@ -251,6 +256,9 @@ class DescribeSnapshotsResponseBodySnapshots(DaraModel):
 
         if m.get('EnvType') is not None:
             self.env_type = m.get('EnvType')
+
+        if m.get('JvsId') is not None:
+            self.jvs_id = m.get('JvsId')
 
         if m.get('OsType') is not None:
             self.os_type = m.get('OsType')

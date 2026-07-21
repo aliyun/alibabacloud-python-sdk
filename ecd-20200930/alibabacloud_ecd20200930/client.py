@@ -3504,6 +3504,16 @@ class Client(OpenApiClient):
             query['FileMigrate'] = request.file_migrate
         if not DaraCore.is_null(request.file_transfer_address):
             query['FileTransferAddress'] = request.file_transfer_address
+        if not DaraCore.is_null(request.file_transfer_in_size):
+            query['FileTransferInSize'] = request.file_transfer_in_size
+        if not DaraCore.is_null(request.file_transfer_in_unit):
+            query['FileTransferInUnit'] = request.file_transfer_in_unit
+        if not DaraCore.is_null(request.file_transfer_out_size):
+            query['FileTransferOutSize'] = request.file_transfer_out_size
+        if not DaraCore.is_null(request.file_transfer_out_unit):
+            query['FileTransferOutUnit'] = request.file_transfer_out_unit
+        if not DaraCore.is_null(request.file_transfer_size_limit):
+            query['FileTransferSizeLimit'] = request.file_transfer_size_limit
         if not DaraCore.is_null(request.file_transfer_speed):
             query['FileTransferSpeed'] = request.file_transfer_speed
         if not DaraCore.is_null(request.file_transfer_speed_location):
@@ -3796,6 +3806,16 @@ class Client(OpenApiClient):
             query['FileMigrate'] = request.file_migrate
         if not DaraCore.is_null(request.file_transfer_address):
             query['FileTransferAddress'] = request.file_transfer_address
+        if not DaraCore.is_null(request.file_transfer_in_size):
+            query['FileTransferInSize'] = request.file_transfer_in_size
+        if not DaraCore.is_null(request.file_transfer_in_unit):
+            query['FileTransferInUnit'] = request.file_transfer_in_unit
+        if not DaraCore.is_null(request.file_transfer_out_size):
+            query['FileTransferOutSize'] = request.file_transfer_out_size
+        if not DaraCore.is_null(request.file_transfer_out_unit):
+            query['FileTransferOutUnit'] = request.file_transfer_out_unit
+        if not DaraCore.is_null(request.file_transfer_size_limit):
+            query['FileTransferSizeLimit'] = request.file_transfer_size_limit
         if not DaraCore.is_null(request.file_transfer_speed):
             query['FileTransferSpeed'] = request.file_transfer_speed
         if not DaraCore.is_null(request.file_transfer_speed_location):
@@ -10000,6 +10020,8 @@ class Client(OpenApiClient):
             query['EndTime'] = request.end_time
         if not DaraCore.is_null(request.end_user_id):
             query['EndUserId'] = request.end_user_id
+        if not DaraCore.is_null(request.end_user_ids):
+            query['EndUserIds'] = request.end_user_ids
         if not DaraCore.is_null(request.event_type):
             query['EventType'] = request.event_type
         if not DaraCore.is_null(request.event_types):
@@ -10058,6 +10080,8 @@ class Client(OpenApiClient):
             query['EndTime'] = request.end_time
         if not DaraCore.is_null(request.end_user_id):
             query['EndUserId'] = request.end_user_id
+        if not DaraCore.is_null(request.end_user_ids):
+            query['EndUserIds'] = request.end_user_ids
         if not DaraCore.is_null(request.event_type):
             query['EventType'] = request.event_type
         if not DaraCore.is_null(request.event_types):
@@ -11108,6 +11132,8 @@ class Client(OpenApiClient):
             query['Keyword'] = request.keyword
         if not DaraCore.is_null(request.max_results):
             query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.network_interface_ip):
+            query['NetworkInterfaceIp'] = request.network_interface_ip
         if not DaraCore.is_null(request.next_token):
             query['NextToken'] = request.next_token
         if not DaraCore.is_null(request.office_site_id):
@@ -11162,6 +11188,8 @@ class Client(OpenApiClient):
             query['Keyword'] = request.keyword
         if not DaraCore.is_null(request.max_results):
             query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.network_interface_ip):
+            query['NetworkInterfaceIp'] = request.network_interface_ip
         if not DaraCore.is_null(request.next_token):
             query['NextToken'] = request.next_token
         if not DaraCore.is_null(request.office_site_id):
@@ -11478,6 +11506,8 @@ class Client(OpenApiClient):
             query['EndUserId'] = request.end_user_id
         if not DaraCore.is_null(request.end_user_id_filter):
             query['EndUserIdFilter'] = request.end_user_id_filter
+        if not DaraCore.is_null(request.end_user_ids):
+            query['EndUserIds'] = request.end_user_ids
         if not DaraCore.is_null(request.fill_hardware_info):
             query['FillHardwareInfo'] = request.fill_hardware_info
         if not DaraCore.is_null(request.language):
@@ -11536,6 +11566,8 @@ class Client(OpenApiClient):
             query['EndUserId'] = request.end_user_id
         if not DaraCore.is_null(request.end_user_id_filter):
             query['EndUserIdFilter'] = request.end_user_id_filter
+        if not DaraCore.is_null(request.end_user_ids):
+            query['EndUserIds'] = request.end_user_ids
         if not DaraCore.is_null(request.fill_hardware_info):
             query['FillHardwareInfo'] = request.fill_hardware_info
         if not DaraCore.is_null(request.language):
@@ -12854,6 +12886,8 @@ class Client(OpenApiClient):
             query['StartTime'] = request.start_time
         if not DaraCore.is_null(request.sub_pay_type):
             query['SubPayType'] = request.sub_pay_type
+        if not DaraCore.is_null(request.user_names):
+            query['UserNames'] = request.user_names
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -12916,6 +12950,8 @@ class Client(OpenApiClient):
             query['StartTime'] = request.start_time
         if not DaraCore.is_null(request.sub_pay_type):
             query['SubPayType'] = request.sub_pay_type
+        if not DaraCore.is_null(request.user_names):
+            query['UserNames'] = request.user_names
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -15848,6 +15884,8 @@ class Client(OpenApiClient):
             query['DesktopId'] = request.desktop_id
         if not DaraCore.is_null(request.desktop_name):
             query['DesktopName'] = request.desktop_name
+        if not DaraCore.is_null(request.desktop_scenario):
+            query['DesktopScenario'] = request.desktop_scenario
         if not DaraCore.is_null(request.end_time):
             query['EndTime'] = request.end_time
         if not DaraCore.is_null(request.max_results):
@@ -15900,6 +15938,8 @@ class Client(OpenApiClient):
             query['DesktopId'] = request.desktop_id
         if not DaraCore.is_null(request.desktop_name):
             query['DesktopName'] = request.desktop_name
+        if not DaraCore.is_null(request.desktop_scenario):
+            query['DesktopScenario'] = request.desktop_scenario
         if not DaraCore.is_null(request.end_time):
             query['EndTime'] = request.end_time
         if not DaraCore.is_null(request.max_results):
@@ -20392,6 +20432,16 @@ class Client(OpenApiClient):
             query['FileMigrate'] = request.file_migrate
         if not DaraCore.is_null(request.file_transfer_address):
             query['FileTransferAddress'] = request.file_transfer_address
+        if not DaraCore.is_null(request.file_transfer_in_size):
+            query['FileTransferInSize'] = request.file_transfer_in_size
+        if not DaraCore.is_null(request.file_transfer_in_unit):
+            query['FileTransferInUnit'] = request.file_transfer_in_unit
+        if not DaraCore.is_null(request.file_transfer_out_size):
+            query['FileTransferOutSize'] = request.file_transfer_out_size
+        if not DaraCore.is_null(request.file_transfer_out_unit):
+            query['FileTransferOutUnit'] = request.file_transfer_out_unit
+        if not DaraCore.is_null(request.file_transfer_size_limit):
+            query['FileTransferSizeLimit'] = request.file_transfer_size_limit
         if not DaraCore.is_null(request.file_transfer_speed):
             query['FileTransferSpeed'] = request.file_transfer_speed
         if not DaraCore.is_null(request.file_transfer_speed_location):
@@ -20688,6 +20738,16 @@ class Client(OpenApiClient):
             query['FileMigrate'] = request.file_migrate
         if not DaraCore.is_null(request.file_transfer_address):
             query['FileTransferAddress'] = request.file_transfer_address
+        if not DaraCore.is_null(request.file_transfer_in_size):
+            query['FileTransferInSize'] = request.file_transfer_in_size
+        if not DaraCore.is_null(request.file_transfer_in_unit):
+            query['FileTransferInUnit'] = request.file_transfer_in_unit
+        if not DaraCore.is_null(request.file_transfer_out_size):
+            query['FileTransferOutSize'] = request.file_transfer_out_size
+        if not DaraCore.is_null(request.file_transfer_out_unit):
+            query['FileTransferOutUnit'] = request.file_transfer_out_unit
+        if not DaraCore.is_null(request.file_transfer_size_limit):
+            query['FileTransferSizeLimit'] = request.file_transfer_size_limit
         if not DaraCore.is_null(request.file_transfer_speed):
             query['FileTransferSpeed'] = request.file_transfer_speed
         if not DaraCore.is_null(request.file_transfer_speed_location):
@@ -27802,6 +27862,8 @@ class Client(OpenApiClient):
     ) -> main_models.UploadImageResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.boot_mode):
+            query['BootMode'] = request.boot_mode
         if not DaraCore.is_null(request.data_disk_size):
             query['DataDiskSize'] = request.data_disk_size
         if not DaraCore.is_null(request.description):
@@ -27852,6 +27914,8 @@ class Client(OpenApiClient):
     ) -> main_models.UploadImageResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.boot_mode):
+            query['BootMode'] = request.boot_mode
         if not DaraCore.is_null(request.data_disk_size):
             query['DataDiskSize'] = request.data_disk_size
         if not DaraCore.is_null(request.description):

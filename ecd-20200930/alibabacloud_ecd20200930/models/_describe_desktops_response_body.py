@@ -17,17 +17,17 @@ class DescribeDesktopsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # Details about the desktops.
+        # The details of cloud computers.
         self.desktops = desktops
-        # The token that starts the next query. An empty NextToken means no more results.
+        # The pagination token for the next query. If this parameter is empty, no more results exist.
         self.next_token = next_token
-        # The page number of the current page in a paged query.
+        # The page number of the current page for a paged query.
         self.page_number = page_number
-        # The maximum number of entries to return on each page in a paged query.
+        # The maximum number of entries per page for a paged query.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of desktops.
+        # The total number of cloud computers.
         self.total_count = total_count
 
     def validate(self):
@@ -128,6 +128,7 @@ class DescribeDesktopsResponseBodyDesktops(DaraModel):
         hibernation_options_configured: bool = None,
         host_name: str = None,
         image_id: str = None,
+        image_name: str = None,
         is_ldap: bool = None,
         management_flag: str = None,
         management_flags: List[str] = None,
@@ -155,6 +156,7 @@ class DescribeDesktopsResponseBodyDesktops(DaraModel):
         snapshot_policy_name: str = None,
         standard_start_time: str = None,
         start_time: str = None,
+        subnet_id: str = None,
         support_hibernation: bool = None,
         system_disk_category: str = None,
         system_disk_size: int = None,
@@ -165,104 +167,105 @@ class DescribeDesktopsResponseBodyDesktops(DaraModel):
     ):
         self.account_type = account_type
         self.agent_provider_list = agent_provider_list
-        # The number of concurrent sessions allowed per desktop in a multi-session desktop pool.
+        # The number of concurrent sessions allowed per cloud computer in a multi-session cloud computer pool.
         self.bind_amount = bind_amount
-        # The desktop template ID used by the desktop.
+        # The ID of the cloud computer template used by the cloud computer.
         self.bundle_id = bundle_id
-        # The desktop template name used by the desktop.
+        # The name of the cloud computer template used by the cloud computer.
         self.bundle_name = bundle_name
-        # The billing method for the desktop.
+        # The billing method of the cloud computer.
         self.charge_type = charge_type
         # The connection status of the user.
         self.connection_status = connection_status
         # The number of vCPUs.
         self.cpu = cpu
-        # The time when the desktop was created.
+        # The time when the cloud computer was created.
         self.creation_time = creation_time
-        # > This parameter is in invitational preview and is not available for use.
+        # > This parameter is in invitational preview and is not publicly available.
         self.data_disk_category = data_disk_category
-        # > This parameter is in invitational preview and is not available for use.
+        # > This parameter is in invitational preview and is not publicly available.
         self.data_disk_size = data_disk_size
         self.desktop_duration_list = desktop_duration_list
-        # The desktop pool ID that the desktop belongs to. Default value: `null`.
+        # The ID of the cloud computer pool to which the cloud computer belongs. Default value: `null`.
         self.desktop_group_id = desktop_group_id
-        # The desktop ID.
+        # The cloud computer ID.
         self.desktop_id = desktop_id
-        # The desktop name.
+        # The cloud computer name.
         self.desktop_name = desktop_name
-        # The desktop status.
+        # The cloud computer status.
         self.desktop_status = desktop_status
-        # The desktop instance type.
+        # The cloud computer specifications.
         self.desktop_type = desktop_type
-        # The directory ID. This is the same as the office site ID (OfficeSiteId).
+        # The directory ID, which is the same as the office network ID (OfficeSiteId).
         self.directory_id = directory_id
-        # > This parameter is in invitational preview and is not available for use.
+        # > This parameter is in invitational preview and is not publicly available.
         self.directory_type = directory_type
-        # Disk information.
+        # The disk information.
         self.disks = disks
         self.domain_type = domain_type
-        # The number of times the desktop can be downgraded.
+        # The number of times the specifications can be downgraded.
         self.downgrade_quota = downgrade_quota
-        # The number of times the desktop has been downgraded.
+        # The number of times the specifications have been downgraded.
         self.downgraded_times = downgraded_times
-        # The authorized user IDs for the desktop.
+        # The authorized user IDs of the cloud computer.
         self.end_user_ids = end_user_ids
         self.entra_domain_name = entra_domain_name
         self.env_id = env_id
         self.env_type = env_type
-        # The expiration time for subscription desktops.
+        # The expiration time of the subscription cloud computer.
         self.expired_time = expired_time
-        # The image version information for the desktop.
+        # The image version information of the cloud computer.
         self.fota_update = fota_update
-        # Whether the desktop is a GPU desktop.
+        # Indicates whether the cloud computer is a GPU cloud computer.
         self.gpu_category = gpu_category
         # The number of GPUs.
         self.gpu_count = gpu_count
-        # The GPU driver version for the desktop.
+        # The GPU driver version of the cloud computer.
         self.gpu_driver_version = gpu_driver_version
-        # The GPU specification.
+        # The GPU specifications.
         self.gpu_spec = gpu_spec
-        # > This parameter is in invitational preview and is not available for use.
+        # > This parameter is in invitational preview and is not publicly available.
         self.hibernation_beta = hibernation_beta
-        # > This parameter is in invitational preview and is not available for use.
+        # > This parameter is in invitational preview and is not publicly available.
         self.hibernation_options_configured = hibernation_options_configured
-        # The host name.
+        # The hostname.
         self.host_name = host_name
         # The image ID.
         self.image_id = image_id
+        self.image_name = image_name
         self.is_ldap = is_ldap
         # The management flag.
         self.management_flag = management_flag
-        # The management flags.
+        # The management flag.
         self.management_flags = management_flags
         # The memory size. Unit: MiB.
         self.memory = memory
-        # The ID of the secondary ENI created by the desktop service under a RAM or AD user. This value cannot be modified.
+        # The ID of the secondary elastic network interface (ENI) created by the cloud computer service under the RAM or AD user. This value cannot be modified.
         self.network_interface_id = network_interface_id
-        # The IP address of the secondary ENI created by the desktop service under a RAM or AD user.
+        # The IP address of the secondary ENI created by the cloud computer service under the RAM or AD user.
         self.network_interface_ip = network_interface_ip
-        # The office site ID.
+        # The office network ID.
         self.office_site_id = office_site_id
-        # The office site name.
+        # The office network name.
         self.office_site_name = office_site_name
-        # The account system type for the office site.
+        # The account system type of the office network.
         self.office_site_type = office_site_type
-        # The VPC type of the office site.
+        # The VPC type of the office network.
         self.office_site_vpc_type = office_site_vpc_type
         # The operating system type.
         self.os_type = os_type
         self.os_update = os_update
         # The operating system platform information.
         self.platform = platform
-        # The desktop policy ID.
+        # The cloud computer policy ID.
         self.policy_group_id = policy_group_id
-        # The collection of desktop policy IDs.
+        # The list of cloud computer policy IDs.
         self.policy_group_id_list = policy_group_id_list
         # The policy name.
         self.policy_group_name = policy_group_name
-        # The list of desktop policy names.
+        # The list of cloud computer policy names.
         self.policy_group_name_list = policy_group_name_list
-        # The creation progress of the desktop.
+        # The creation progress of the cloud computer.
         self.progress = progress
         # The protocol type.
         self.protocol_type = protocol_type
@@ -271,29 +274,29 @@ class DescribeDesktopsResponseBodyDesktops(DaraModel):
         self.serial_number = serial_number
         # The session type.
         self.session_type = session_type
-        # Session information for the desktop user.
+        # The user session information of the cloud computer.
         self.sessions = sessions
         # The snapshot policy ID.
         self.snapshot_policy_id = snapshot_policy_id
         # The snapshot policy name.
         self.snapshot_policy_name = snapshot_policy_name
-        # The standard start time.
         self.standard_start_time = standard_start_time
-        # The first time the desktop started.
+        # The time when the cloud computer was first started.
         self.start_time = start_time
-        # Whether hibernation is supported.
+        self.subnet_id = subnet_id
+        # Indicates whether hibernation is supported.
         self.support_hibernation = support_hibernation
-        # > This parameter is in invitational preview and is not available for use.
+        # > This parameter is in invitational preview and is not publicly available.
         self.system_disk_category = system_disk_category
-        # > This parameter is in invitational preview and is not available for use.
+        # > This parameter is in invitational preview and is not publicly available.
         self.system_disk_size = system_disk_size
-        # Tag information.
+        # The tag information.
         self.tags = tags
-        # Whether disk encryption is enabled.
+        # Indicates whether disk encryption is enabled.
         self.volume_encryption_enabled = volume_encryption_enabled
-        # The ID of the KMS key used when disk encryption is enabled. You can obtain it through the [](t22712.xdita#)interface.
+        # The KMS key ID used for disk encryption. You can call [ListKeys](https://help.aliyun.com/document_detail/28951.html) to obtain the key ID.
         self.volume_encryption_key = volume_encryption_key
-        # The type of zone to query. Default value: `AvailabilityZone`, which refers to standard cloud availability zones.
+        # The zone type. Default value: `AvailabilityZone`, which indicates a standard cloud zone.
         self.zone_type = zone_type
 
     def validate(self):
@@ -442,6 +445,9 @@ class DescribeDesktopsResponseBodyDesktops(DaraModel):
         if self.image_id is not None:
             result['ImageId'] = self.image_id
 
+        if self.image_name is not None:
+            result['ImageName'] = self.image_name
+
         if self.is_ldap is not None:
             result['IsLdap'] = self.is_ldap
 
@@ -526,6 +532,9 @@ class DescribeDesktopsResponseBodyDesktops(DaraModel):
 
         if self.start_time is not None:
             result['StartTime'] = self.start_time
+
+        if self.subnet_id is not None:
+            result['SubnetId'] = self.subnet_id
 
         if self.support_hibernation is not None:
             result['SupportHibernation'] = self.support_hibernation
@@ -672,6 +681,9 @@ class DescribeDesktopsResponseBodyDesktops(DaraModel):
         if m.get('ImageId') is not None:
             self.image_id = m.get('ImageId')
 
+        if m.get('ImageName') is not None:
+            self.image_name = m.get('ImageName')
+
         if m.get('IsLdap') is not None:
             self.is_ldap = m.get('IsLdap')
 
@@ -760,6 +772,9 @@ class DescribeDesktopsResponseBodyDesktops(DaraModel):
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
 
+        if m.get('SubnetId') is not None:
+            self.subnet_id = m.get('SubnetId')
+
         if m.get('SupportHibernation') is not None:
             self.support_hibernation = m.get('SupportHibernation')
 
@@ -830,11 +845,11 @@ class DescribeDesktopsResponseBodyDesktopsSessions(DaraModel):
         establishment_time: str = None,
         external_user_name: str = None,
     ):
-        # The user ID connected to the desktop.
+        # The ID of the user connected to the cloud computer.
         self.end_user_id = end_user_id
-        # The time when the desktop session was established.
+        # The time when the cloud computer session was established.
         self.establishment_time = establishment_time
-        # The external user name.
+        # The external username.
         self.external_user_name = external_user_name
 
     def validate(self):
@@ -1010,17 +1025,17 @@ class DescribeDesktopsResponseBodyDesktopsFotaUpdate(DaraModel):
         release_note_jp: str = None,
         size: int = None,
     ):
-        # The current image version number of the desktop.
+        # The current image version of the cloud computer.
         self.current_app_version = current_app_version
-        # The image version number to which the desktop can be upgraded.
+        # The image version to which the cloud computer can be upgraded.
         self.new_app_version = new_app_version
-        # The description of the upgradeable image version.
+        # The release note of the upgradable image version.
         self.release_note = release_note
-        # The English description of the upgradeable version.
+        # The English release note of the upgradable version.
         self.release_note_en = release_note_en
-        # The Japanese description of the upgradeable version.
+        # The Japanese release note of the upgradable version.
         self.release_note_jp = release_note_jp
-        # The size of the upgradeable version installation package. Unit: KB.
+        # The size of the upgradable version installation package. Unit: KB.
         self.size = size
 
     def validate(self):
@@ -1082,13 +1097,10 @@ class DescribeDesktopsResponseBodyDesktopsDisks(DaraModel):
         disk_type: str = None,
         performance_level: str = None,
     ):
-        # The disk type.
-        # 
-        # - cloud_efficiency (ultra disk)
-        # 
-        #   - cloud_auto (extreme disk)
-        # 
-        #   - cloud_essd (enhanced SSD disk, supported only on select instance types)
+        # The cloud disk category.
+        # - cloud_efficiency (ultra cloud disk)
+        #    - cloud_auto (ESSD AutoPL cloud disk)
+        #    - cloud_essd (enhanced standard SSD, supported only by specific specifications)
         self.disk_category = disk_category
         # The disk ID.
         self.disk_id = disk_id
@@ -1096,9 +1108,9 @@ class DescribeDesktopsResponseBodyDesktopsDisks(DaraModel):
         self.disk_size = disk_size
         # The disk type.
         self.disk_type = disk_type
-        # The performance level of ESSD disks, if the disk uses ESSD.
+        # The performance level (PL) of the ESSD when the cloud disk is an ESSD.
         # 
-        # For differences between performance levels, see [](t583241.xdita#).
+        # For more information about the differences between performance levels, see [ESSD cloud disks](https://help.aliyun.com/document_detail/122389.html).
         self.performance_level = performance_level
 
     def validate(self):

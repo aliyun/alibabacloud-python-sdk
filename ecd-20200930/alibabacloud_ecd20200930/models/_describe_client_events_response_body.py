@@ -13,13 +13,15 @@ class DescribeClientEventsResponseBody(DaraModel):
         events: List[main_models.DescribeClientEventsResponseBodyEvents] = None,
         next_token: str = None,
         request_id: str = None,
+        total_count: int = None,
     ):
-        # The list of user events.
+        # The user events.
         self.events = events
-        # The pagination token. If this parameter is empty, all results have been returned.
+        # The pagination token for the next query. If NextToken is empty, no more results exist.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
+        self.total_count = total_count
 
     def validate(self):
         if self.events:
@@ -43,6 +45,9 @@ class DescribeClientEventsResponseBody(DaraModel):
         if self.request_id is not None:
             result['RequestId'] = self.request_id
 
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+
         return result
 
     def from_map(self, m: dict = None):
@@ -58,6 +63,9 @@ class DescribeClientEventsResponseBody(DaraModel):
 
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
 
         return self
 
@@ -89,55 +97,53 @@ class DescribeClientEventsResponseBodyEvents(DaraModel):
         status: str = None,
         terminal_info: main_models.DescribeClientEventsResponseBodyEventsTerminalInfo = None,
     ):
-        # The ID of the Alibaba Cloud account associated with the event.
+        # The Alibaba Cloud account associated with the event.
         self.ali_uid = ali_uid
-        # The number of bytes received.
+        # The number of bytes received. Unit: bytes.
         self.bytes_received = bytes_received
-        # The number of bytes sent.
+        # The number of bytes sent. Unit: bytes.
         self.bytes_send = bytes_send
-        # The IP address of the client.
+        # The client IP address.
         self.client_ip = client_ip
-        # The operating system of the client.
+        # The client operating system.
         self.client_os = client_os
         # The client version.
         self.client_version = client_version
-        # The description of the event.
+        # The description.
         self.description = description
-        # The ID of the desktop group.
+        # The cloud computer pool ID.
         self.desktop_group_id = desktop_group_id
-        # The name of the desktop group.
+        # The cloud computer pool name.
         self.desktop_group_name = desktop_group_name
-        # The ID of the cloud desktop.
+        # The cloud computer ID.
         self.desktop_id = desktop_id
-        # The IP address of the cloud desktop.
+        # The IP address of the cloud computer.
         self.desktop_ip = desktop_ip
-        # The name of the cloud desktop.
+        # The name of the cloud computer.
         self.desktop_name = desktop_name
-        # The ID of the cloud desktop\\"s directory.
+        # The directory ID to which the cloud computer belongs.
         self.directory_id = directory_id
         # The directory type.
         self.directory_type = directory_type
-        # The ID of the end user. The value can be the ID of a RAM user or the username of an AD user.
+        # The logon user information, which is a Resource Access Management (RAM) user ID or AD username.
         self.end_user_id = end_user_id
         # The event ID.
         self.event_id = event_id
-        # The time the event occurred.
+        # The time when the event occurred.
         self.event_time = event_time
         # The event type.
         self.event_type = event_type
-        # The ID of the cloud desktop\\"s office site.
+        # The ID of the office network to which the cloud computer belongs.
         self.office_site_id = office_site_id
-        # The name of the office site.
+        # The name of the office network.
         self.office_site_name = office_site_name
-        # The type of account system for the office site.
+        # The account system type of the office network.
         self.office_site_type = office_site_type
         # The region ID.
         self.region_id = region_id
-        # The status of the event. This parameter is returned for `DESKTOP_DISCONNECT` and `GET_CONNECTION_TICKET` events. Valid values:
-        # 
-        # - `200`: Success.
-        # 
-        # - An error message, such as `FailedToGetConnectionTicket`.
+        # The status of the event action. This field typically appears in `DESKTOP_DISCONNECT` and `GET_CONNECTION_TICKET` events. Valid values:
+        # - 200: success.
+        # - A failure message is returned, such as FailedToGetConnectionTicket.
         self.status = status
         self.terminal_info = terminal_info
 

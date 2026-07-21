@@ -23,77 +23,58 @@ class DescribeModificationPriceRequest(DaraModel):
         user_disk_performance_level: str = None,
         user_disk_size_gib: int = None,
     ):
-        # The maximum public bandwidth. Unit: Mbit/s.
+        # The peak Internet bandwidth. Unit: Mbit/s.
         # 
-        # > Valid values when PayByTraffic is set to PayByBandwidth: 10 to 1000.
+        # > If you use the pay-by-bandwidth billing method, the valid values range from 10 to 1000.
         self.bandwidth = bandwidth
-        # The ID of either the monthly subscription cloud computer with unlimited hours or the premium bandwidth plan.
+        # The instance ID. The value can be the ID of a monthly-subscribed (unlimited-duration) cloud computer or the ID of a premium Internet bandwidth instance.
         self.instance_id = instance_id
-        # The specifications.
+        # The resource specification.
         # 
-        # - Valid values when you set `ResourceType` to `Desktop`:
+        # - If `ResourceType` is set to `Desktop`, valid values include:
+        #     - ecd.basic.small
+        #     - ecd.basic.large
+        #     - ecd.advanced.large
+        #     - ecd.advanced.xlarge
+        #     - ecd.performance.2xlarge
+        #     - ecd.graphics.xlarge
+        #     - ecd.graphics.2xlarge
+        #     - ecd.advanced.xlarge_s8d2
+        #     - ecd.advanced.xlarge_s8d7
+        #     - ecd.graphics.1g72c
+        #     - eds.general.2c2g
+        #     - eds.general.2c4g
+        #     - eds.general.2c8g
+        #     - eds.general.4c8g
+        #     - eds.general.4c16g
+        #     - eds.general.8c16g
+        #     - eds.general.8c32g
+        #     - eds.general.16c32g
         # 
-        #   - ecd.basic.small
-        # 
-        #   - ecd.basic.large
-        # 
-        #   - ecd.advanced.large
-        # 
-        #   - ecd.advanced.xlarge
-        # 
-        #   - ecd.performance.2xlarge
-        # 
-        #   - ecd.graphics.xlarge
-        # 
-        #   - ecd.graphics.2xlarge
-        # 
-        #   - ecd.advanced.xlarge_s8d2
-        # 
-        #   - ecd.advanced.xlarge_s8d7
-        # 
-        #   - ecd.graphics.1g72c
-        # 
-        #   - eds.general.2c2g
-        # 
-        #   - eds.general.2c4g
-        # 
-        #   - eds.general.2c8g
-        # 
-        #   - eds.general.4c8g
-        # 
-        #   - eds.general.4c16g
-        # 
-        #   - eds.general.8c16g
-        # 
-        #   - eds.general.8c32g
-        # 
-        #   - eds.general.16c32g
-        # 
-        # - You can skip this parameter if `ResourceType` is set to `NetworkPackage`.
+        # - If `ResourceType` is set to `NetworkPackage`, you do not need to specify this parameter.
         self.instance_type = instance_type
-        # Promotion activity ID.
+        # The promotion ID.
         self.promotion_id = promotion_id
-        # The region ID. You can call the [](t2167755.xdita#)operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
+        # The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # User ID for resource ownership in resale mode. You do not need to specify this parameter if resale mode is not used.
+        # The user ID for resource ownership in the reseller pattern. You do not need to specify this parameter in non-reseller pattern.
         self.reseller_owner_uid = reseller_owner_uid
-        # List of resource specification templates.
+        # The list of resource specification templates.
         self.resource_specs = resource_specs
-        # The resource type. The required parameters depend on the resource type.
+        # The resource type. The required parameters vary based on the resource type for which you want to query the specification change price:
         # 
-        # - When `ResourceType` is set to `Desktop`, the required parameters are `InstanceType`, `RootDiskSizeGib`, and `UserDiskSizeGib`.
-        # 
-        # - When `ResourceType` is set to `NetworkPackage`, the required parameter is `Bandwidth`.
+        # - If `ResourceType` is set to `Desktop`, you must specify the `InstanceType`, `RootDiskSizeGib`, and `UserDiskSizeGib` parameters.
+        # - If `ResourceType` is set to `NetworkPackage`, you must specify the `Bandwidth` parameter.
         self.resource_type = resource_type
-        # Performance level of the system disk. When the WUYING Workspace instance type is set to graphics-optimized or high clock speed, you can specify the disk performance level. For differences between performance levels, see [](t583241.xdita#).
+        # The performance level of the system cloud disk. You can configure the disk performance level in Settings when the cloud computer specification is set to graphics-accelerated or high frequency. For more information about the differences between performance levels, see [ESSDs](https://help.aliyun.com/document_detail/122389.html). standard SSD does not support performance level configuration.
         self.root_disk_performance_level = root_disk_performance_level
-        # The size of the system disk. Unit: GiB.
+        # The system cloud disk size. Unit: GiB.
         self.root_disk_size_gib = root_disk_size_gib
-        # Performance level of the data disk. When the WUYING Workspace instance type is set to graphics-optimized or high clock speed, you can specify the disk performance level. For differences between performance levels, see [](t583241.xdita#).
+        # The performance level of the data cloud disk. You can configure the disk performance level in Settings when the cloud computer specification is set to graphics-accelerated or high frequency. For more information about the differences between performance levels, see [ESSDs](https://help.aliyun.com/document_detail/122389.html). standard SSD does not support performance level configuration.
         self.user_disk_performance_level = user_disk_performance_level
-        # The size of the data disk. Unit: GiB.
+        # The data cloud disk size. Unit: GiB.
         self.user_disk_size_gib = user_disk_size_gib
 
     def validate(self):
@@ -197,11 +178,11 @@ class DescribeModificationPriceRequestResourceSpecs(DaraModel):
         root_disk_size_gib: int = None,
         user_disk_size_gib: int = None,
     ):
-        # Cloud computer ID.
+        # The cloud computer ID.
         self.desktop_id = desktop_id
-        # System disk size. Unit: GiB.
+        # The system cloud disk size. Unit: GiB.
         self.root_disk_size_gib = root_disk_size_gib
-        # Data disk size. Unit: GiB.
+        # The data cloud disk size. Unit: GiB.
         self.user_disk_size_gib = user_disk_size_gib
 
     def validate(self):

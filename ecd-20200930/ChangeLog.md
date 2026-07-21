@@ -1,3 +1,39 @@
+2026-07-21 Version: 5.0.1
+- Update API CreateCenterPolicy: add request parameters FileTransferInSize.
+- Update API CreateCenterPolicy: add request parameters FileTransferInUnit.
+- Update API CreateCenterPolicy: add request parameters FileTransferOutSize.
+- Update API CreateCenterPolicy: add request parameters FileTransferOutUnit.
+- Update API CreateCenterPolicy: add request parameters FileTransferSizeLimit.
+- Update API DescribeCenterPolicyList: add response parameters Body.DescribePolicyGroups.$.FileTransferInSize.
+- Update API DescribeCenterPolicyList: add response parameters Body.DescribePolicyGroups.$.FileTransferInUnit.
+- Update API DescribeCenterPolicyList: add response parameters Body.DescribePolicyGroups.$.FileTransferOutSize.
+- Update API DescribeCenterPolicyList: add response parameters Body.DescribePolicyGroups.$.FileTransferOutUnit.
+- Update API DescribeCenterPolicyList: add response parameters Body.DescribePolicyGroups.$.FileTransferSizeLimit.
+- Update API DescribeClientEvents: add request parameters EndUserIds.
+- Update API DescribeClientEvents: add response parameters Body.TotalCount.
+- Update API DescribeDesktopMetadata: add request parameters NetworkInterfaceIp.
+- Update API DescribeDesktopSessions: add request parameters EndUserIds.
+- Update API DescribeDesktops: add response parameters Body.Desktops.$.ImageName.
+- Update API DescribeDesktops: add response parameters Body.Desktops.$.SubnetId.
+- Update API DescribeGlobalDesktopRecords: add request parameters UserNames.
+- Update API DescribeGlobalDesktopRecords: add response parameters Body.Sessions.$.CreationTime.
+- Update API DescribeInvocations: add response parameters Body.Invocations.$.DesktopScenario.
+- Update API DescribeInvocations: add response parameters Body.Invocations.$.InvokeDesktops.$.JvsAgentId.
+- Update API DescribePolicyGroups: add response parameters Body.DescribePolicyGroups.$.FileTransferInSize.
+- Update API DescribePolicyGroups: add response parameters Body.DescribePolicyGroups.$.FileTransferInUnit.
+- Update API DescribePolicyGroups: add response parameters Body.DescribePolicyGroups.$.FileTransferOutSize.
+- Update API DescribePolicyGroups: add response parameters Body.DescribePolicyGroups.$.FileTransferOutUnit.
+- Update API DescribePolicyGroups: add response parameters Body.DescribePolicyGroups.$.FileTransferSizeLimit.
+- Update API DescribeSnapshots: add request parameters DesktopScenario.
+- Update API DescribeSnapshots: add response parameters Body.Snapshots.$.JvsId.
+- Update API ModifyCenterPolicy: add request parameters FileTransferInSize.
+- Update API ModifyCenterPolicy: add request parameters FileTransferInUnit.
+- Update API ModifyCenterPolicy: add request parameters FileTransferOutSize.
+- Update API ModifyCenterPolicy: add request parameters FileTransferOutUnit.
+- Update API ModifyCenterPolicy: add request parameters FileTransferSizeLimit.
+- Update API UploadImage: add request parameters BootMode.
+
+
 2026-07-14 Version: 5.0.0
 - Delete API DescribeFlowStatistic.
 - Update API CreateDesktops: add request parameters OuPath.

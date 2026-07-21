@@ -16,7 +16,7 @@ class DescribeDesktopMetadataResponseBody(DaraModel):
     ):
         # The details of the cloud desktops.
         self.desktops = desktops
-        # The token used to retrieve the next page of results. If this parameter is empty, all results have been returned.
+        # The token for the next query. An empty value indicates that there are no more results.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -84,63 +84,53 @@ class DescribeDesktopMetadataResponseBodyDesktops(DaraModel):
         resource_group_name: str = None,
         start_time: str = None,
     ):
-        # A list of agents that the cloud computer supports.
+        # The agents supported by the current cloud desktop.
         self.agent_provider_list = agent_provider_list
-        # The billing method of the cloud desktop. Valid values:
-        # 
-        # - `PostPaid`: pay-as-you-go
-        # 
-        # - `PrePaid`: subscription
+        # The billing type of the cloud desktop. Valid values:
+        # - PostPaid: pay-as-you-go.
+        # - PrePaid: subscription.
         self.charge_type = charge_type
-        # The creation time of the cloud desktop.
+        # The time when the cloud desktop was created.
         self.creation_time = creation_time
-        # The ID of the desktop group.
+        # The shared cloud desktop ID.
         self.desktop_group_id = desktop_group_id
-        # The ID of the cloud desktop.
+        # The cloud desktop ID.
         self.desktop_id = desktop_id
         # The name of the cloud desktop.
         self.desktop_name = desktop_name
         # The status of the cloud desktop. Valid values:
-        # 
-        # - `Stopped`
-        # 
-        # - `Starting`
-        # 
-        # - `Rebuilding`
-        # 
-        # - `Running`
-        # 
-        # - `Stopping`
-        # 
-        # - `Expired`
-        # 
-        # - `Deleted`
-        # 
-        # - `Pending`
+        # - Stopped
+        # - Starting
+        # - Rebuilding
+        # - Running
+        # - Stopping
+        # - Expired
+        # - Deleted
+        # - Pending
         self.desktop_status = desktop_status
-        # The instance type of the cloud desktop.
+        # The cloud desktop specifications.
         self.desktop_type = desktop_type
-        # The expiration time of the cloud desktop. This parameter is returned only for cloud desktops that use the subscription billing method.
+        # The time when the cloud desktop expires. This value is returned only for cloud desktops whose billable methods is subscription.
         self.expired_time = expired_time
-        # The ID of the image.
+        # The image ID.
         self.image_id = image_id
-        # The name of the region.
+        # The local name of the region where the cloud desktop resides.
         self.local_name = local_name
-        # The management flags for the cloud computer.
+        # The management status of the cloud desktop.
         self.management_flags = management_flags
-        # The private IP address of the instance\\"s network interface.
+        # The IP address of the member elastic network interface (ENI) of the instance.
         self.member_eni_ip = member_eni_ip
-        # The ID of the office network.
+        # The workspace ID.
         self.office_site_id = office_site_id
-        # The operating system of the cloud desktop.
+        # The operating system platform information.
         self.platform = platform
-        # The ID of the region.
+        # The region ID.
         self.region_id = region_id
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The name of the resource group.
+        # The resource group name.
         self.resource_group_name = resource_group_name
-        # The time when the cloud desktop started.
+        # The start time of the cloud desktop.
         self.start_time = start_time
 
     def validate(self):

@@ -12,7 +12,7 @@ class ClonePolicyGroupResponseBody(DaraModel):
     ):
         # The ID of the new cloud computer policy.
         self.policy_group_id = policy_group_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

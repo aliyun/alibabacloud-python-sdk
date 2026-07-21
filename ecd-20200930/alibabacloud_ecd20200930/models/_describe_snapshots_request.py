@@ -10,6 +10,7 @@ class DescribeSnapshotsRequest(DaraModel):
         creator: str = None,
         desktop_id: str = None,
         desktop_name: str = None,
+        desktop_scenario: str = None,
         end_time: str = None,
         max_results: int = None,
         next_token: str = None,
@@ -23,37 +24,37 @@ class DescribeSnapshotsRequest(DaraModel):
     ):
         # The creator.
         self.creator = creator
-        # The ID of the cloud desktop.
+        # The cloud computer ID.
         self.desktop_id = desktop_id
-        # The name of the cloud desktop.
+        # The cloud computer name.
         self.desktop_name = desktop_name
-        # The end time to query for snapshots. The time follows the [ISO 8601](t10049.xdita#) standard and is in UTC. The format is `yyyy-mm-ddthh:mm:ssz`.
+        self.desktop_scenario = desktop_scenario
+        # The end of the time range during which the snapshot was created. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-mm-ddthh:mm:ssz` format. The time must be in UTC.
         self.end_time = end_time
-        # The number of entries per page.
+        # The number of entries per page for paging.    
         # 
-        # - Maximum value: 100.
-        # 
+        # - Maximum value: 100.    
         # - Default value: 10.
         self.max_results = max_results
-        # The token for the next page of results. This is the NextToken value from the previous API call.
+        # The pagination token. Set this parameter to the NextToken value returned in the previous API call.
         self.next_token = next_token
         # The operating system type.
         self.os_type = os_type
-        # The ID of the region. Call [](t2167755.xdita#)to get a list of regions that support Elastic Desktop Service (EDS).
+        # The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id
         # The snapshot ID.
         self.snapshot_id = snapshot_id
-        # The display name of the snapshot. The name must be 2 to 127 characters long. It must start with a letter. It can contain digits, underscores (_), and hyphens (-). The name cannot start with `auto` to avoid naming conflicts with automatic snapshots.
+        # The display name of the snapshot. The name must be 2 to 127 characters in length and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter or Chinese character. The name cannot start with `auto` to avoid conflicts with automatic snapshot names.
         self.snapshot_name = snapshot_name
         # The snapshot type.
         self.snapshot_type = snapshot_type
-        # The disk from which to create the snapshot.
+        # The type of the cloud disk for which to create the snapshot.
         # 
         # > The value is case-insensitive.
         self.source_disk_type = source_disk_type
-        # The start time to query for snapshots. The time follows the [ISO 8601](t10049.xdita#) standard and is in UTC. The format is `yyyy-mm-ddthh:mm:ssz`.
+        # The beginning of the time range during which the snapshot was created. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-mm-ddthh:mm:ssz` format. The time must be in UTC.
         self.start_time = start_time
 
     def validate(self):
@@ -72,6 +73,9 @@ class DescribeSnapshotsRequest(DaraModel):
 
         if self.desktop_name is not None:
             result['DesktopName'] = self.desktop_name
+
+        if self.desktop_scenario is not None:
+            result['DesktopScenario'] = self.desktop_scenario
 
         if self.end_time is not None:
             result['EndTime'] = self.end_time
@@ -115,6 +119,9 @@ class DescribeSnapshotsRequest(DaraModel):
 
         if m.get('DesktopName') is not None:
             self.desktop_name = m.get('DesktopName')
+
+        if m.get('DesktopScenario') is not None:
+            self.desktop_scenario = m.get('DesktopScenario')
 
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')

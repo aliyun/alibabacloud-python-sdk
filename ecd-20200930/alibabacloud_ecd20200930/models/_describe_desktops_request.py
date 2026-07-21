@@ -49,87 +49,86 @@ class DescribeDesktopsRequest(DaraModel):
         tag: List[main_models.DescribeDesktopsRequestTag] = None,
         user_name: str = None,
     ):
-        # The region ID. Call [](t2167755.xdita#)to list regions that support Elastic Desktop Service (EDS).
         self.business_channel = business_channel
-        # The expiration time for subscription desktops.
+        # The billing method of the cloud computer.
         self.charge_type = charge_type
-        # The operating system type.
+        # The cloud computer pool ID. If `DesktopId` is specified, `DesktopGroupId` is ignored. If `DesktopId` is empty, the system retrieves the `DesktopId` of all cloud computers in the cloud computer pool specified by `DesktopGroupId`.
         self.desktop_group_id = desktop_group_id
-        # The list of authorized users for the desktop. You can specify 1 to 100 users.
-        # 
-        # > Only one user can connect to and use the desktop at a time.
+        # The cloud computer IDs. You can specify 1 to 100 IDs.
         self.desktop_id = desktop_id
-        # The directory ID. This is the same as the office site ID.
+        # The cloud computer name.
         self.desktop_name = desktop_name
-        # The number of entries to return on each page in a paged query.
-        # 
-        # - Maximum value: 100.
-        # 
-        # - Default value: 10
-        self.desktop_status = desktop_status
-        # The elastic GPU pool ID.
-        self.desktop_status_list = desktop_status_list
-        # The list of image IDs.
-        self.desktop_type = desktop_type
-        # The office site ID.
-        self.directory_id = directory_id
-        # The list of authorized users to exclude from the desktop. You can specify 1 to 100 users.
-        self.end_user_id = end_user_id
-        # Whether to exclude pooled desktops (desktops in a desktop pool).
-        self.excluded_end_user_id = excluded_end_user_id
-        # The protocol type.
-        self.expired_time = expired_time
-        # The page number of the current page in a paged query.
-        self.fill_resource_group = fill_resource_group
-        # The management flag.
-        self.filter_desktop_group = filter_desktop_group
-        # The public network bandwidth throttling rule ID.
-        self.gpu_instance_group_id = gpu_instance_group_id
         # The cloud computer status.
+        self.desktop_status = desktop_status
+        # The list of cloud computer statuses.
+        self.desktop_status_list = desktop_status_list
+        # The cloud computer specifications. You can call [DescribeDesktopTypes](https://help.aliyun.com/document_detail/188882.html) to query the specification IDs supported by cloud computers.
+        self.desktop_type = desktop_type
+        # The directory ID, which is the same as the office network ID.
+        self.directory_id = directory_id
+        # The list of authorized users of the cloud computer. You can specify 1 to 100 users.
+        # 
+        # > Only one user can connect to and use the cloud computer at a time.
+        self.end_user_id = end_user_id
+        # The list of authorized users to exclude. You can specify 1 to 100 users.
+        self.excluded_end_user_id = excluded_end_user_id
+        # The expiration time of the subscription cloud computer.
+        self.expired_time = expired_time
+        # Specifies whether to query enterprise resource group information.
+        self.fill_resource_group = fill_resource_group
+        # Specifies whether to exclude pooled cloud computers (cloud computers in a cloud computer pool).
+        self.filter_desktop_group = filter_desktop_group
+        # The elastic GPU pool ID.
+        self.gpu_instance_group_id = gpu_instance_group_id
+        # The cloud computer pool ID.
         self.group_id = group_id
-        # The list of desktop statuses.
+        # The image IDs.
         self.image_id = image_id
         self.include_auto_snapshot_policy = include_auto_snapshot_policy
-        # Whether to query image version information for the desktop.
+        # The management flag.
         self.management_flag = management_flag
-        # The token that starts the next query. An empty NextToken means no more results.
+        # The maximum number of entries per page for a paged query.
+        # 
+        # - Maximum value: 100.
+        # - Default value: 10.
         self.max_results = max_results
+        # Specifies whether there are multiple resources.
         self.multi_resource = multi_resource
-        # The user name.
+        # The pagination token for the next query. If this parameter is empty, no more results exist.
         self.next_token = next_token
-        # The name of the office network.
+        # The office network ID.
         self.office_site_id = office_site_id
-        # The desktop policy ID.
+        # The office network name.
         self.office_site_name = office_site_name
-        # The desktop pool ID. If you specify `DesktopId`, this parameter is ignored. If `DesktopId` is empty, the system uses `DesktopGroupId` to retrieve all desktop IDs in the pool.
+        # Specifies whether to query only pooled cloud computers (cloud computers in a cloud computer pool).
         self.only_desktop_group = only_desktop_group
-        # The desktop instance type. Call [](t2167746.xdita#)to list supported instance types.
+        # The operating system type.
         self.os_types = os_types
-        # The maximum number of entries to return on each page in a paged query.
+        # The page number of the current page for a paged query.
         self.page_number = page_number
-        # Whether multiple resources exist.
+        # The maximum number of entries per page for a paged query.
         self.page_size = page_size
-        # The billing method for the desktop.
+        # The cloud computer policy ID.
         self.policy_group_id = policy_group_id
-        # The desktop IDs. You can specify 1 to 100 IDs.
+        # The protocol type.
         self.protocol_type = protocol_type
-        # The purchase method for the desktop.
+        # The Internet bandwidth throttling rule ID.
         self.qos_rule_id = qos_rule_id
-        # The list of tags. Each tag is a key-value pair used to label resources. Use tags to group and manage desktops, making them easier to search and operate on in bulk. For more information, see [](t2042630.xdita#).
+        # Specifies whether to query cloud computer image version information.
         self.query_fota_update = query_fota_update
-        # The cloud computer pool ID.
+        # The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # Whether to query enterprise resource group information.
-        self.resource_group_id = resource_group_id
-        # Whether to query only pooled desktops (desktops in a desktop pool).
-        self.snapshot_policy_id = snapshot_policy_id
         # The enterprise resource group ID.
-        self.sub_pay_type = sub_pay_type
+        self.resource_group_id = resource_group_id
         # The snapshot policy ID.
+        self.snapshot_policy_id = snapshot_policy_id
+        # The purchase method of the cloud computer.
+        self.sub_pay_type = sub_pay_type
+        # The tags. A tag consists of a key-value pair and is used to mark resources. You can use tags to group and manage cloud computers for easy searching and batch operations. For more information, see [Use tags to manage cloud computers](https://help.aliyun.com/document_detail/203781.html).
         self.tag = tag
-        # The desktop name.
+        # The username.
         self.user_name = user_name
 
     def validate(self):
@@ -388,9 +387,9 @@ class DescribeDesktopsRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key. If you specify `Tag`, then `Key` is required. The key can be up to 128 characters long. It cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`. It cannot consist only of whitespace.
+        # The tag key. If you specify `Tag`, `Key` is required. The tag key cannot exceed 128 characters in length, cannot start with `aliyun` or `acs:`, cannot contain `http://` or `https://`, and cannot consist of only spaces.
         self.key = key
-        # The tag value. The value can be up to 128 characters long. It cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+        # The tag value. The tag value cannot exceed 128 characters in length, cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

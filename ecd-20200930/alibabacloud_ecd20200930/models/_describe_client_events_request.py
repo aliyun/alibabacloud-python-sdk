@@ -15,6 +15,7 @@ class DescribeClientEventsRequest(DaraModel):
         directory_id: str = None,
         end_time: str = None,
         end_user_id: str = None,
+        end_user_ids: List[str] = None,
         event_type: str = None,
         event_types: List[str] = None,
         fill_hardware_info: bool = None,
@@ -26,40 +27,38 @@ class DescribeClientEventsRequest(DaraModel):
         region_id: str = None,
         start_time: str = None,
     ):
-        # The ID of the cloud desktop. If you omit this parameter, the operation returns events for all cloud desktops in the region.
+        # The cloud computer ID. If you do not specify this parameter, all cloud computers in the region are queried.
         self.desktop_id = desktop_id
-        # The IP address of the cloud desktop. If you omit this parameter, the operation returns events for all cloud desktops in the region.
+        # The IP address of the cloud computer. If you do not specify this parameter, events of all cloud computers in the region are queried.
         self.desktop_ip = desktop_ip
-        # The name of the cloud desktop.
+        # The name of the cloud computer.
         self.desktop_name = desktop_name
-        # > This parameter is not in use.
+        # > This parameter is not publicly available.
         self.directory_id = directory_id
-        # The end of the time range to query. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.<br>
-        # If you omit this parameter, the operation uses the current time.<br>
+        # The end time. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC+0. If you do not specify this parameter, the current time is used.
         self.end_time = end_time
-        # The ID of the end user, which can be a RAM user ID or an AD username. If you omit this parameter, the operation returns events for all users in the region.
+        # The logon user information, which is a Resource Access Management (RAM) user ID or AD username. If you do not specify this parameter, events of all users in the region are queried.
         self.end_user_id = end_user_id
-        # The event type to query. If EventTypes is specified, this parameter is ignored. If you omit both this parameter and EventTypes, the operation returns all events.
+        self.end_user_ids = end_user_ids
+        # The event type to query. If EventTypes is not empty, the EventTypes combination is used as the query filter condition. If both EventTypes and EventType are empty, all events are queried.
         self.event_type = event_type
-        # An array of event types to query. The operation returns events that match any of the specified types.
+        # The combination of event types to query. You can specify multiple event types. The query results include events of all specified types.
         self.event_types = event_types
         self.fill_hardware_info = fill_hardware_info
         self.language = language
-        # The maximum number of entries to return on each page.<br>
-        # Default value: 100.<br>
+        # The number of entries per page for a paged query. Default value: 100.
         self.max_results = max_results
-        # The pagination token. Set this parameter to the NextToken value returned in the previous response to retrieve the next page of results.
+        # The pagination token. Set this parameter to the value of NextToken returned in the previous API call.
         self.next_token = next_token
-        # The ID of the office network to which the cloud desktop belongs. If you omit this parameter, the operation returns events for users in all office networks in the region.
+        # The ID of the office network to which the cloud computer belongs. If you do not specify this parameter, user events in all office networks in the region are queried.
         self.office_site_id = office_site_id
         # The name of the office network.
         self.office_site_name = office_site_name
-        # The ID of the region. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the regions supported by Elastic Desktop Service.
+        # The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The start of the time range to query. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.<br>
-        # If you omit this parameter, the query returns events that occurred before the time specified by `EndTime`.<br>
+        # The start time. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC+0. If you do not specify this parameter, events are queried backward from the time specified by `EndTime`.
         self.start_time = start_time
 
     def validate(self):
@@ -87,6 +86,9 @@ class DescribeClientEventsRequest(DaraModel):
 
         if self.end_user_id is not None:
             result['EndUserId'] = self.end_user_id
+
+        if self.end_user_ids is not None:
+            result['EndUserIds'] = self.end_user_ids
 
         if self.event_type is not None:
             result['EventType'] = self.event_type
@@ -139,6 +141,9 @@ class DescribeClientEventsRequest(DaraModel):
 
         if m.get('EndUserId') is not None:
             self.end_user_id = m.get('EndUserId')
+
+        if m.get('EndUserIds') is not None:
+            self.end_user_ids = m.get('EndUserIds')
 
         if m.get('EventType') is not None:
             self.event_type = m.get('EventType')

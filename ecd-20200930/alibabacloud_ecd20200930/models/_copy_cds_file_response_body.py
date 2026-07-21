@@ -14,33 +14,15 @@ class CopyCdsFileResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
-        # The operation result. The value success indicates that the operation is successful. If the operation failed, an error message is returned.
+        # The execution result. A value of `success` indicates success. Otherwise, an error message is returned.
         self.code = code
-        # The details about the file copying.
+        # The result of copying the file.
         self.copy_cds_file_model = copy_cds_file_model
-        # The error message that is returned. This parameter is not returned if the value of Code is success.
+        # The error message. This parameter is not returned if Code is `success`.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful.
-        # 
-        # Valid values:
-        # 
-        # - true
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
-        # 
-        # - false
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
+        # Indicates whether the operation is successful.
         self.success = success
 
     def validate(self):
@@ -95,9 +77,9 @@ class CopyCdsFileResponseBodyCopyCdsFileModel(DaraModel):
         async_task_id: str = None,
         file_id: str = None,
     ):
-        # The ID of the asynchronous task. This parameter is not returned if you copy a file. This parameter is returned if you copy a folder in the backend in an asynchronous manner. You can call the GetAsyncTask operation to obtain the ID and details of an asynchronous task.
+        # The asynchronous task ID. This field is not returned when a file is copied. When a folder is copied, the copy operation is performed asynchronously in the background, so this field is returned. You can call [GetAsyncTask](https://help.aliyun.com/document_detail/2357404.html) and pass in this asynchronous task ID to obtain the task details.
         self.async_task_id = async_task_id
-        # The ID of the copied file or folder.
+        # The ID of the new file or folder after the copy operation.
         self.file_id = file_id
 
     def validate(self):

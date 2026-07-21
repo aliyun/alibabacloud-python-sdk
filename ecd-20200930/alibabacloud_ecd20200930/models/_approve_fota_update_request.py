@@ -11,15 +11,15 @@ class ApproveFotaUpdateRequest(DaraModel):
         desktop_id: str = None,
         region_id: str = None,
     ):
-        # Mirror version.
+        # The image version. You can call [DescribeImages](https://help.aliyun.com/document_detail/188895.html) to obtain this parameter.
         # 
         # This parameter is required.
         self.app_version = app_version
-        # The ID of the cloud computer.
+        # The cloud computer ID.
         # 
         # This parameter is required.
         self.desktop_id = desktop_id
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the regions supported by Elastic Desktop Service.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id

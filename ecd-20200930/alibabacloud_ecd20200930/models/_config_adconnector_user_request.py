@@ -13,23 +13,21 @@ class ConfigADConnectorUserRequest(DaraModel):
         office_site_id: str = None,
         region_id: str = None,
     ):
-        # The password of the AD user that has the permissions to join computers to domains.
+        # The password of the AD user that has the permission to join computers to the domain.
         # 
         # This parameter is required.
         self.domain_password = domain_password
-        # The username of the AD user that has the permissions to join computers to domains.
-        # 
-        # After the username is configured, the cloud desktops in the same AD workspace are joined to the specified OU.
+        # The username of the AD user that has the permission to join computers to the domain. After the configuration is complete, cloud computers created in the corresponding AD office network are added to the specified OU.
         # 
         # This parameter is required.
         self.domain_user_name = domain_user_name
-        # The name of the OU in the AD domain. You can call the [ListUserAdOrganizationUnits](https://help.aliyun.com/document_detail/311259.html) to obtain the OU name.
+        # The organizational unit (OU) of the AD domain. You can call [ListUserAdOrganizationUnits](https://help.aliyun.com/document_detail/311259.html) to obtain the value.
         self.ouname = ouname
-        # The ID of the AD workspace.
+        # The ID of the AD office network.
         # 
         # This parameter is required.
         self.office_site_id = office_site_id
-        # The ID of the region.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id

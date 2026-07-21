@@ -14,11 +14,11 @@ class DescribeInvocationsResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # The command execution records.
+        # The array of script execution records.
         self.invocations = invocations
-        # The query token that is returned from this call.
+        # The pagination token returned in this call.
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -67,6 +67,7 @@ class DescribeInvocationsResponseBodyInvocations(DaraModel):
         command_content: str = None,
         command_type: str = None,
         creation_time: str = None,
+        desktop_scenario: str = None,
         end_user_id: str = None,
         invocation_status: str = None,
         invoke_desktop_count: int = None,
@@ -74,46 +75,39 @@ class DescribeInvocationsResponseBodyInvocations(DaraModel):
         invoke_desktops: List[main_models.DescribeInvocationsResponseBodyInvocationsInvokeDesktops] = None,
         invoke_id: str = None,
     ):
-        # The Base64-encoded command content.
+        # The script content, transmitted in Base64 encoding.
         self.command_content = command_content
-        # The type of the command.
+        # The script type.
         self.command_type = command_type
-        # The time when the execution task is created.
+        # The creation time of the task.
         self.creation_time = creation_time
-        # The ID of the end user.
+        self.desktop_scenario = desktop_scenario
+        # The end user ID.
         self.end_user_id = end_user_id
-        # The overall execution status of the command. The value of this parameter depends on the execution status of the command on all the involved cloud computers. Valid values:
+        # The overall execution status of the script. The overall execution status depends on the combined execution status of all cloud desktops in this call. Valid values:
         # 
-        # *   Pending: The command is being verified or sent. If the execution status is Pending on at least one cloud computer, the overall status is considered Pending.
-        # 
-        # *   Running: The command is being executed on cloud computers. If the execution status is Running on at least one cloud computer, the overall status is considered Running.
-        # 
-        # *   Success: If the execution status is Success on at least one cloud computer and either Success or Stopped on all other cloud computers, the overall status is considered Success.
-        # 
-        # *   Failed: If the execution status is Stopped or Failed on all cloud computers, the overall status is considered Failed. If any execution status on cloud computers matches one of the following values, Failed is returned.
-        # 
-        #     *   Invalid: The command is invalid.
-        #     *   Aborted: The command failed to be sent.
-        #     *   Failed: The command is executed, but the exit code is not 0.
-        #     *   Timeout: The command execution timed out.
-        #     *   Error: An error occurred when the command is being executed.
-        # 
-        # *   Stopping: The command execution is being stopped. If the execution status is Stopping on at least one cloud computer, the overall status is considered Stopping.
-        # 
-        # *   Stopped: The command execution stops. If the execution status is Stopped on at least one cloud computer, the overall status is considered Stopped. If any execution status on cloud computers matches one of the following values, Stopped is returned.
-        # 
-        #     *   Cancelled: The command execution is canceled.
-        #     *   Terminated: The command execution is terminated.
-        # 
-        # *   PartialFailed: The command execution succeeded on some cloud computers but failed on others. If the execution status on any cloud computer is Success, Failed, or Stopped, the overall status is considered PartialFailed.
+        # - Pending: The system is validating or sending the command. If the script execution status on at least one cloud desktop is Pending, the overall execution status is Pending.
+        # - Running: The command is running on the cloud desktop. If the script execution status on at least one cloud desktop is Running, the overall execution status is Running.
+        # - Success: The script execution status on each cloud desktop is Stopped or Success, and the script execution status on at least one cloud desktop is Success. The overall execution status is Success.
+        # - Failed: The script execution status on each cloud desktop is Stopped or Failed. The overall execution status is Failed. The return value is Failed when one or more of the following statuses occur on a cloud desktop:
+        #     - Command validation failed (Invalid).
+        #     - Command delivery failed (Aborted).
+        #     - Command execution completed but the exit code is non-zero (Failed).
+        #     - Command execution timed out (Timeout).
+        #     - Command execution encountered an exception (Error).
+        # - Stopping: The task is being stopped. If the script execution status on at least one instance is Stopping, the overall execution status is Stopping.
+        # - Stopped: The task has been stopped. If the script execution status on all instances is Stopped, the overall execution status is Stopped. The return value is Stopped when the script execution status on an instance is one of the following:
+        #     - Task cancelled (Cancelled).
+        #     - Task terminated (Terminated).
+        # - PartialFailed: Some instances succeeded and some instances failed. If the script execution status on each instance is Success, Failed, or Stopped, the overall execution status is PartialFailed.
         self.invocation_status = invocation_status
-        # The total number of cloud computers on which the command is executed.
+        # The total number of cloud desktops on which the script was run.
         self.invoke_desktop_count = invoke_desktop_count
-        # The total number of cloud computers on which the command execution succeeds.
+        # The total number of cloud desktops on which the script was run successfully.
         self.invoke_desktop_succeed_count = invoke_desktop_succeed_count
-        # The cloud computers on which the command is executed.
+        # The list of target cloud desktops for execution.
         self.invoke_desktops = invoke_desktops
-        # The ID of the execution.
+        # The execution ID.
         self.invoke_id = invoke_id
 
     def validate(self):
@@ -135,6 +129,9 @@ class DescribeInvocationsResponseBodyInvocations(DaraModel):
 
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
+
+        if self.desktop_scenario is not None:
+            result['DesktopScenario'] = self.desktop_scenario
 
         if self.end_user_id is not None:
             result['EndUserId'] = self.end_user_id
@@ -168,6 +165,9 @@ class DescribeInvocationsResponseBodyInvocations(DaraModel):
 
         if m.get('CreationTime') is not None:
             self.creation_time = m.get('CreationTime')
+
+        if m.get('DesktopScenario') is not None:
+            self.desktop_scenario = m.get('DesktopScenario')
 
         if m.get('EndUserId') is not None:
             self.end_user_id = m.get('EndUserId')
@@ -204,72 +204,74 @@ class DescribeInvocationsResponseBodyInvocationsInvokeDesktops(DaraModel):
         exit_code: int = None,
         finish_time: str = None,
         invocation_status: str = None,
+        jvs_agent_id: str = None,
         output: str = None,
         repeats: int = None,
         start_time: str = None,
         stop_time: str = None,
         update_time: str = None,
     ):
-        # The time when the command execution was performed.
+        # The creation time of the script process.
         self.creation_time = creation_time
-        # The cloud computer ID.
+        # The cloud desktop ID.
         self.desktop_id = desktop_id
-        # The cloud computer name.
+        # The cloud desktop name.
         self.desktop_name = desktop_name
-        # The size of the text that is truncated and discarded when the Output value exceeds 24 KB in size.
+        # The length of the truncated and discarded text after the text length in the Output field exceeds 24 KB.
         self.dropped = dropped
-        # The code explaining why the command failed to be sent or executed. Valid values:
+        # The error code for the command delivery failure or execution failure. Valid values:
         # 
-        # *   Null: The command is executed successfully.
-        # *   InstanceNotExists: The specified cloud computer does not exist or is released.
-        # *   InstanceReleased: The cloud computer is released during the execution.
-        # *   InstanceNotRunning: The cloud computer is not running during the execution.
-        # *   CommandNotApplicable: The command cannot be executed on the specified cloud computer.
-        # *   ClientNotRunning: The Cloud Assistant agent is not running.
-        # *   ClientNotResponse: The Cloud Assistant agent does not respond.
-        # *   ClientIsUpgrading: The Cloud Assistant agent is being updated.
-        # *   ClientNeedUpgrade: The Cloud Assistant agent needs to be updated.
-        # *   DeliveryTimeout: The command sending times out.
-        # *   ExecutionTimeout: The command execution times out.
-        # *   ExecutionException: An exception occurs when the command is being executed.
-        # *   ExecutionInterrupted: The command execution is interrupted.
-        # *   ExitCodeNonzero: The command execution completes, but the exit code is not 0.
+        # - Empty: The command ran normally.
+        # - InstanceNotExists: The specified cloud desktop does not exist or has been released.
+        # - InstanceReleased: The cloud desktop was released during task execution.
+        # - InstanceNotRunning: The cloud desktop was not running when the task was created.
+        # - CommandNotApplicable: The command is not applicable to the specified cloud desktop.
+        # - ClientNotRunning: The Cloud Assistant client is not running.
+        # - ClientNotResponse: The Cloud Assistant client is not responding.
+        # - ClientIsUpgrading: The Cloud Assistant client is being upgraded.
+        # - ClientNeedUpgrade: The Cloud Assistant client needs to be upgraded.
+        # - DeliveryTimeout: Command delivery timed out.
+        # - ExecutionTimeout: Command execution timed out.
+        # - ExecutionException: An exception occurred during command execution.
+        # - ExecutionInterrupted: Command execution was interrupted.
+        # - ExitCodeNonzero: Command execution completed with a non-zero exit code.
         self.error_code = error_code
-        # The message explaining why the command failed to be sent or executed. Valid values:
+        # The detailed information about the command delivery failure or execution failure. Valid values:
         # 
-        # *   Null: The command is executed successfully.
-        # *   the specified instance does not exists: The specified cloud computer does not exist or is released.
-        # *   the instance has released when create task: The cloud computer is released during the execution.
-        # *   the instance is not running when create task: The cloud computer is not running during the execution.
-        # *   the command is not applicable: The command cannot be executed on the specified cloud computer.
-        # *   the aliyun service is not running on the instance: The Cloud Assistant agent is not running.
-        # *   the aliyun service in the instance does not response: The Cloud Assistant agent does not respond.
-        # *   the aliyun service in the instance is upgrading now: The Cloud Assistant agent is being updated.
-        # *   the aliyun service in the instance need upgrade: The Cloud Assistant agent needs to be updated.
-        # *   the command delivery has been timeout: The command sending times out.
-        # *   the command execution has been timeout: The command execution times out.
-        # *   the command execution got an exception: An exception occurs when the command is being executed.
-        # *   the command execution has been interrupted: The command execution is interrupted.
-        # *   the command execution exit code is not zero: The command execution completes, but the exit code is not 0.
+        # - Empty: The command ran normally.
+        # - the specified instance does not exists: The specified cloud desktop does not exist or has been released.
+        # - the instance has released when create task: The cloud desktop was released during task execution.
+        # - the instance is not running when create task: The cloud desktop was not running when the task was created.
+        # - the command is not applicable: The command is not applicable to the specified cloud desktop.
+        # - the aliyun service is not running on the instance: The Cloud Assistant client is not running.
+        # - the aliyun service in the instance does not response: The Cloud Assistant client is not responding.
+        # - the aliyun service in the instance is upgrading now: The Cloud Assistant client is being upgraded.
+        # - the aliyun service in the instance need upgrade: The Cloud Assistant client needs to be upgraded.
+        # - the command delivery has been timeout: Command delivery timed out.
+        # - the command execution has been timeout: Command execution timed out.
+        # - the command execution got an exception: An exception occurred during command execution.
+        # - the command execution has been interrupted: Command execution was interrupted.
+        # - the command execution exit code is not zero: Command execution completed with a non-zero exit code.
         self.error_info = error_info
-        # The exit code of the execution.
+        # The exit code of the script process.
         self.exit_code = exit_code
-        # The time when the command execution ended.
+        # The end time of the script process.
         self.finish_time = finish_time
-        # The execution progress of the command on a single cloud computer.
+        # The script execution status on a single cloud desktop.
         self.invocation_status = invocation_status
-        # The command output.
+        self.jvs_agent_id = jvs_agent_id
+        # The output of the script process.
         # 
-        # *   When the `IncludeOutput` parameter is set to false, the output is not returned.
-        # *   When the `ContentEncoding` parameter is set to Base64, the output is returned as a Base64-encoded string.
+        # - If the request parameter `IncludeOutput` is set to false, Output is not returned.
+        # - If the request parameter `ContentEncoding` is set to Base64, Output is the Base64-encoded output.
         self.output = output
-        # The number of times the command has been executed on the cloud computer.
+        # The number of times the command was run on the cloud desktop.
         self.repeats = repeats
-        # The start time of the command execution.
+        # The time when the script process started running on the cloud desktop.
         self.start_time = start_time
-        # The stop time of the command execution (StopInvocatio).
+        # The time when execution was stopped, if StopInvocation was called.
         self.stop_time = stop_time
-        # The time when the execution status was updated.
+        # The update time of the task status.
         self.update_time = update_time
 
     def validate(self):
@@ -306,6 +308,9 @@ class DescribeInvocationsResponseBodyInvocationsInvokeDesktops(DaraModel):
 
         if self.invocation_status is not None:
             result['InvocationStatus'] = self.invocation_status
+
+        if self.jvs_agent_id is not None:
+            result['JvsAgentId'] = self.jvs_agent_id
 
         if self.output is not None:
             result['Output'] = self.output
@@ -352,6 +357,9 @@ class DescribeInvocationsResponseBodyInvocationsInvokeDesktops(DaraModel):
 
         if m.get('InvocationStatus') is not None:
             self.invocation_status = m.get('InvocationStatus')
+
+        if m.get('JvsAgentId') is not None:
+            self.jvs_agent_id = m.get('JvsAgentId')
 
         if m.get('Output') is not None:
             self.output = m.get('Output')

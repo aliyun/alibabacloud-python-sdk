@@ -10,11 +10,11 @@ class ActivateOfficeSiteRequest(DaraModel):
         office_site_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the convenience office network that is locked.
+        # The ID of the locked convenience office network.
         # 
         # This parameter is required.
         self.office_site_id = office_site_id
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id

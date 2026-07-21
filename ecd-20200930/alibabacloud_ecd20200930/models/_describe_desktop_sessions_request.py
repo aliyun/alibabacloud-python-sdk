@@ -15,6 +15,7 @@ class DescribeDesktopSessionsRequest(DaraModel):
         end_time: str = None,
         end_user_id: str = None,
         end_user_id_filter: str = None,
+        end_user_ids: List[str] = None,
         fill_hardware_info: bool = None,
         language: str = None,
         office_site_id: str = None,
@@ -28,36 +29,37 @@ class DescribeDesktopSessionsRequest(DaraModel):
     ):
         # Specifies whether to check the session status within the cloud computer.
         self.check_os_session = check_os_session
-        # The ID of the cloud computer. You can specify 1 to 100 IDs.
+        # The cloud computer IDs. You can specify 1 to 100 IDs.
         self.desktop_id = desktop_id
-        # The name of the cloud computer.
+        # The cloud computer name.
         self.desktop_name = desktop_name
         # The end time of the query.
         self.end_time = end_time
-        # The ID of the end user.
+        # The end user ID.
         self.end_user_id = end_user_id
-        # The ID of the end user. This parameter is the same as the `EndUserId` parameter. Specify only one of them.
+        # The end user ID. This parameter is the same as EndUserId. You only need to specify one of them.
         self.end_user_id_filter = end_user_id_filter
-        # Specifies whether to return information about the terminal.
+        self.end_user_ids = end_user_ids
+        # Specifies whether to include terminal information in the response.
         self.fill_hardware_info = fill_hardware_info
-        # The language of the returned information.
+        # The language type of the response.
         self.language = language
-        # The ID of the cloud computer.
+        # The office network ID.
         self.office_site_id = office_site_id
-        # The page number for a paged query.
+        # The page number of the current page in a paged query.
         self.page_number = page_number
-        # The maximum number of entries to return on each page for a paged query.
+        # The maximum number of rows per page in a paged query.
         self.page_size = page_size
-        # The ID of the region. Call [](t2167755.xdita#)to obtain a list of regions that Elastic Desktop Service (EDS) supports.
+        # The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_group_id = resource_group_id
-        # The connection status of the session.
+        # The session connection status.
         self.session_status = session_status
         # The start time of the query.
         self.start_time = start_time
-        # The billing method of the cloud computer.
+        # The purchase method of the cloud computer.
         self.sub_pay_type = sub_pay_type
 
     def validate(self):
@@ -85,6 +87,9 @@ class DescribeDesktopSessionsRequest(DaraModel):
 
         if self.end_user_id_filter is not None:
             result['EndUserIdFilter'] = self.end_user_id_filter
+
+        if self.end_user_ids is not None:
+            result['EndUserIds'] = self.end_user_ids
 
         if self.fill_hardware_info is not None:
             result['FillHardwareInfo'] = self.fill_hardware_info
@@ -137,6 +142,9 @@ class DescribeDesktopSessionsRequest(DaraModel):
 
         if m.get('EndUserIdFilter') is not None:
             self.end_user_id_filter = m.get('EndUserIdFilter')
+
+        if m.get('EndUserIds') is not None:
+            self.end_user_ids = m.get('EndUserIds')
 
         if m.get('FillHardwareInfo') is not None:
             self.fill_hardware_info = m.get('FillHardwareInfo')

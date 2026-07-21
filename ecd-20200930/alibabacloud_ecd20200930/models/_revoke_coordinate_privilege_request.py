@@ -13,23 +13,21 @@ class RevokeCoordinatePrivilegeRequest(DaraModel):
         user_type: str = None,
         uuid: str = None,
     ):
-        # The ID of the stream coordination task.
+        # The coordination stream ID. This value is the `Coid` returned by the [ApplyCoordinationForMonitoring](~~ApplyCoordinationForMonitoring~~) operation.
         # 
         # This parameter is required.
         self.co_id = co_id
-        # The ID of the end user.
+        # The username of the end user.
         self.end_user_id = end_user_id
-        # The ID of the region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The type of user who requires the coordinate permissions.
-        # 
-        # Set the value to TENANT_ADMIN. Only tenant administrators can be granted with the coordinate permissions.
+        # The type of the coordination user.
         # 
         # This parameter is required.
         self.user_type = user_type
-        # The unique identifier of the client. If you use an Alibaba Cloud Workspace client, click **About** on the client logon page to view the identifier of the client.
+        # The UUID (unique identifier) of the device.
         self.uuid = uuid
 
     def validate(self):

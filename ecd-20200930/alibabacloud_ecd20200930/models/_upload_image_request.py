@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class UploadImageRequest(DaraModel):
     def __init__(
         self,
+        boot_mode: str = None,
         data_disk_size: int = None,
         description: str = None,
         enable_security_check: bool = None,
@@ -20,73 +21,46 @@ class UploadImageRequest(DaraModel):
         region_id: str = None,
         system_disk_size: str = None,
     ):
-        # The size of the data disk. Valid values: 80 to 500. Unit: GiB.
+        self.boot_mode = boot_mode
+        # The data cloud disk size. Valid values: 80 to 500. Unit: GiB.
         self.data_disk_size = data_disk_size
         # The description of the image. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description
         # Specifies whether to enable security check.
         self.enable_security_check = enable_security_check
-        # Specifies whether the image is a GPU-accelerated image.
+        # Specifies whether the image is a GPU image.
         self.gpu_category = gpu_category
         # The type of the pre-installed GPU driver.
-        # 
-        # Valid values:
-        # 
-        # *   gpu_grid9: This GPU driver is used on cloud computers of the following two specifications: graphics – 4 vCPUs, 23 GiB memory, 4 GiB GPU memory, and graphics – 10 vCPUs, 46 GiB memory, 8 GiB GPU memory.
-        # *   gpu_custom: You can install the driver later.
-        # *   gpu_grid12: This GPU driver is used on graphical cloud computers of specifications other than the following two specifications: graphics – 4 vCPUs, 23 GiB memory, & 4 GiB GPU memory, and graphics – 10 vCPUs, 46 GiB memory, & 8 GiB GPU memory.
         self.gpu_driver_type = gpu_driver_type
-        # The name of the image. The name must be 2 to 128 characters in length. The name must start with a letter but cannot start with `http://` or `https://`. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        # The image name. The name must be 2 to 128 characters in length. It must start with a letter or a Chinese character and cannot start with `http://` or `https://`. It can contain digits, colons (:), underscores (_), or hyphens (-).
         # 
         # This parameter is required.
         self.image_name = image_name
-        # The type of the license that is used to activate the operating system after the image is imported. Valid values:
+        # The license type used to activate the operating system after the image is imported. Valid values:
         # 
-        # *   Auto: Elastic Desktop Service detects the operating system of the image and allocates a license to the operating system. In this mode, the system first checks whether a license allocated by an official Alibaba Cloud channel is specified in the `Platform`. If a license allocated by an official Alibaba Cloud channel is specified, the system allocates the license to the imported image. If no such license is specified, the BYOL (Bring Your Own License) mode is used.
-        # *   Aliyun: The license that is allocated by an official Alibaba Cloud channel and is specified by `Platform` is used for the operating system distribution.
-        # *   BYOL: The license that comes with the source operating system is used. When you use the BYOL mode, make sure that your license key is supported by Alibaba Cloud.
+        # - Auto: Alibaba Cloud detects the source operating system and assigns a license. In automatic mode, the system first checks whether an Alibaba Cloud official license is available for the `Platform` you specified and assigns it to the imported image. If no such license is available, the system switches to BYOL (Bring Your Own License) mode.
+        # - Aliyun: Uses an Alibaba Cloud official license based on the `Platform` you specified.
+        # - BYOL: Uses the license that comes with the source operating system. When you use BYOL, make sure that your license key supports use on Alibaba Cloud.
         # 
         # Default value: Auto.
         # 
-        # >  Windows 10 cannot be activated by Alibaba Cloud. Set the `LicenseType` to BYOL for Windows 10.
+        # > Systems such as Windows 10 cannot be activated through Alibaba Cloud. Set `LicenseType` to BYOL for custom activation.
         self.license_type = license_type
-        # The type of the operating system.
-        # 
-        # Valid values:
-        # 
-        # *   Linux
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   Windows
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
+        # The operating system type.
         self.os_type = os_type
-        # The object path of the image file in Object Storage Service (OSS).
+        # The OSS object path of the image file.
         # 
         # This parameter is required.
         self.oss_object_path = oss_object_path
         # The protocol type.
-        # 
-        # Valid values:
-        # 
-        # *   ASP: in-house Adaptive Streaming Protocol (ASP)
         self.protocol_type = protocol_type
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The size of the system disk. Unit: GiB.
+        # The system cloud disk size. Unit: GiB.
         # 
-        # >  The system disk must be at least as large as the image.
+        # > The system cloud disk size cannot be smaller than the image file size.
         self.system_disk_size = system_disk_size
 
     def validate(self):
@@ -97,6 +71,9 @@ class UploadImageRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.boot_mode is not None:
+            result['BootMode'] = self.boot_mode
+
         if self.data_disk_size is not None:
             result['DataDiskSize'] = self.data_disk_size
 
@@ -137,6 +114,9 @@ class UploadImageRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BootMode') is not None:
+            self.boot_mode = m.get('BootMode')
+
         if m.get('DataDiskSize') is not None:
             self.data_disk_size = m.get('DataDiskSize')
 

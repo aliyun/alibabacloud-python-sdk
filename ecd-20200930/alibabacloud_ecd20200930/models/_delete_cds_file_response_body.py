@@ -13,27 +13,15 @@ class DeleteCdsFileResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The execution result of the operation. If the request was successful, `success` is returned. If the request failed, an error message is returned.
+        # The execution result. The value `success` indicates success. Otherwise, an error message is returned.
         self.code = code
-        # Indicates whether the data is returned.
-        # 
-        # Valid value:
-        # 
-        # - true
-        # 
-        # - false
+        # Indicates whether data was returned successfully.
         self.data = data
-        # Error message. This parameter is not returned if the value of Code is `success`.
+        # The error message. This parameter is not returned if Code is `success`.
         self.message = message
         # The request ID.
         self.request_id = request_id
         # Indicates whether the operation was successful.
-        # 
-        # Valid value:
-        # 
-        # - true
-        # 
-        # - false
         self.success = success
 
     def validate(self):

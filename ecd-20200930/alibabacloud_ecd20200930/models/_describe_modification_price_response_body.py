@@ -54,7 +54,7 @@ class DescribeModificationPriceResponseBodyPriceInfo(DaraModel):
     ):
         # The price information.
         self.price = price
-        # The promotion rules.
+        # The promotion rule information.
         self.rules = rules
 
     def validate(self):
@@ -141,17 +141,18 @@ class DescribeModificationPriceResponseBodyPriceInfoPrice(DaraModel):
         promotions: List[main_models.DescribeModificationPriceResponseBodyPriceInfoPricePromotions] = None,
         trade_price: float = None,
     ):
-        # <props="china">The unit of currency (CNY).<props="intl">The unit of currency (USD).
+        # <props="china">The currency unit (CNY).
+        # <props="intl">The currency unit (USD).
         self.currency = currency
-        # The discounted amount.
+        # The discount amount.
         self.discount_price = discount_price
-        # The orders.
+        # The order information.
         self.order_lines = order_lines
         # The original price.
         self.original_price = original_price
-        # The promotion activities.
+        # The list of promotion information.
         self.promotions = promotions
-        # The actual price. The actual price is the original price minus the discount.
+        # The actual payment price. The value is the original price minus the discount amount.
         self.trade_price = trade_price
 
     def validate(self):
@@ -221,15 +222,15 @@ class DescribeModificationPriceResponseBodyPriceInfoPricePromotions(DaraModel):
         promotion_name: str = None,
         selected: bool = None,
     ):
-        # The description of the promotion rule.
+        # The promotion rule description.
         self.option_code = option_code
         # The promotion description.
         self.promotion_desc = promotion_desc
-        # The ID of the promotion activity.
+        # The promotion ID.
         self.promotion_id = promotion_id
-        # The name of the promotion activity.
+        # The promotion name.
         self.promotion_name = promotion_name
-        # Indicates whether an item is selected.
+        # Indicates whether the promotion is selected.
         self.selected = selected
 
     def validate(self):

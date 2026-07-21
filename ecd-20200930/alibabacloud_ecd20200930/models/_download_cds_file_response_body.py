@@ -13,7 +13,7 @@ class DownloadCdsFileResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The download URL of the file.
+        # The URL for downloading the file.
         self.download_file_model = download_file_model
         # The response message.
         self.message = message
@@ -73,19 +73,19 @@ class DownloadCdsFileResponseBodyDownloadFileModel(DaraModel):
         size: int = None,
         stream_url: str = None,
     ):
-        # This parameter is deprecated.
+        # Deprecated.
         self.download_type = download_type
         # The download URL.
         self.download_url = download_url
-        # This parameter is deprecated.
+        # Deprecated.
         self.expiration_second = expiration_second
-        # The validity period of the download URL.
+        # The expiration time of the file download URL.
         self.expiration_time = expiration_time
         # The file ID.
         self.file_id = file_id
-        # The size of the file. Unit: bytes.
+        # The file size, in bytes.
         self.size = size
-        # This parameter is deprecated.
+        # Deprecated.
         self.stream_url = stream_url
 
     def validate(self):

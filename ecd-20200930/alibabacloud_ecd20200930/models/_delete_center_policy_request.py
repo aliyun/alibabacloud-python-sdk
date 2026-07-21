@@ -16,29 +16,17 @@ class DeleteCenterPolicyRequest(DaraModel):
     ):
         # The business type.
         # 
-        # Valid values:
-        # 
-        # - 1: public cloud.
-        # 
-        # - 8: commercial edition.
-        # 
         # This parameter is required.
         self.business_type = business_type
-        # The policy IDs.
+        # The list of policy group IDs.
         # 
         # This parameter is required.
         self.policy_group_ids = policy_group_ids
-        # The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
+        # The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Wuying Cloud Computer.
         # 
         # This parameter is required.
         self.region_id = region_id
         # The resource type.
-        # 
-        # Valid values:
-        # 
-        # - app: cloud applications.
-        # 
-        # - desktop: cloud computers.
         # 
         # This parameter is required.
         self.resource_type = resource_type

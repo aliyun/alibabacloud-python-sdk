@@ -10,28 +10,19 @@ class ExportDesktopGroupInfoResponseBody(DaraModel):
         request_id: str = None,
         url: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The download URL of the XLSX file that contains cloud computer shares. The XLSX file provides the following information:
+        # The download URL of the exported shared cloud desktop list file. The exported file contains the following details of shared cloud desktops:
         # 
-        # - Cloud computer share ID/name
-        # 
+        # - Shared cloud desktop ID/name
         # - Office network ID/name
-        # 
-        # - Cloud computer share template
-        # 
-        # - vCPUs/Memory size
-        # 
-        # - System disk/Data disk
-        # 
+        # - Shared cloud desktop template
+        # - CPU/memory
+        # - System cloud disk/data cloud disk
         # - Security policy name
-        # 
-        # - Number of authorized users
-        # 
+        # - Number of currently authorized users
         # - Billing method
-        # 
         # - Creation time
-        # 
         # - Expiration time
         self.url = url
 

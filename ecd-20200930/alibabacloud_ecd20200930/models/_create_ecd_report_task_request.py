@@ -18,21 +18,19 @@ class CreateEcdReportTaskRequest(DaraModel):
         task_type: str = None,
     ):
         self.business_channel = business_channel
-        # The filter conditions for filtering query results. The logical relationship between each filter condition is "and" (&). Each filter condition contains FilterKey and FilterValues, which indicate the key and value for the filter condition.
+        # The list of filter conditions for query results. The filter condition objects have a logical AND (&) relationship.
+        # Each filter condition contains FilterKey and FilterValues, which represent the filter condition name and specific values.
         self.filter_list = filter_list
-        # The language of the report. An enumerated type.
+        # The report language type. This is an enumerated value.
         self.lang_type = lang_type
-        # The name of the report file.
+        # The report file name.
         self.report_file_name = report_file_name
-        # The sub-type of the report export task.
+        # The report task subtype.
+        # [_single.params.SubType.enum.  DESKTOP]Cloud computer
         # 
         # This parameter is required.
         self.sub_type = sub_type
-        # The type of the report task.
-        # 
-        # Valid value:
-        # 
-        # - RESOURCE_REPORT
+        # The report task type.
         # 
         # This parameter is required.
         self.task_type = task_type
@@ -101,56 +99,33 @@ class CreateEcdReportTaskRequestFilterList(DaraModel):
         filter_key: str = None,
         filter_values: List[str] = None,
     ):
-        # The key of the filter condition for filtering query results. When SubType is set to:
-        # 
-        # 1. DESKTOP (indicating a cloud computer report), the following filter conditions are available:
-        # 
-        # - KeyWord: cloud computer keyword (supports automatic recognition)
-        # 
-        # - RegionId: region ID
-        # 
-        # - DesktopId: cloud computer ID
-        # 
-        # - DesktopName: cloud computer name (supports fuzzy matching)
-        # 
-        # - OfficeSiteId: office network ID
-        # 
-        # - OfficeSiteName: office network name (supports fuzzy matching)
-        # 
-        # - Status: cloud computer status
-        # 
-        # - DesktopType: desktop type
-        # 
-        # - DesktopIP: cloud computer IP address
-        # 
-        # - SubPayType: billing method
-        # 
-        # - EndUserId: user name (supports fuzzy matching)
-        # 
-        # - ExpireTime: expiration date and time, in the yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\" format
-        # 
-        # - IncludeAssignedUser: indicates whether the cloud computer is assigned to users or not
-        # 
-        # - ResourceGroupId: resource group ID
-        # 
-        # - PolicyId: policy ID
-        # 
-        # - Tag:{Tag Key value}: cloud computer tag (To filter data using multiple tags, specify multiple filter condition objects.)
+        # The report query filter condition. The valid values vary based on the SubType value:
+        # 1. Cloud computer report
+        # - KeyWord: automatic keyword recognition for cloud computers.
+        # - RegionId: the region ID.
+        # - DesktopId: the cloud computer ID.
+        # - DesktopName: the cloud computer name (fuzzy match).
+        # - OfficeSiteId: the office network ID.
+        # - OfficeSiteName: the office network name (fuzzy match).
+        # - Status: the cloud computer status.
+        # - DesktopType: the desktop specifications.
+        # - DesktopIP: the cloud computer IP address.
+        # - SubPayType: the billing method.
+        # - EndUserId: the username (fuzzy match).
+        # - ExpireTime: the expiration time in the yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\" format.
+        # - IncludeAssignedUser: specifies whether users are assigned.
+        # - ResourceGroupId: the resource group ID.
+        # - PolicyId: the policy ID.
+        # - Tag:{Tag Key}: the cloud computer tag. To query by multiple tags, pass in multiple Filter objects.
         self.filter_key = filter_key
-        # The value of the filter condition. Only the first value of the FilterValues parameter is used, if FilterKey is set to one of the following values:
-        # 
+        # The values of the filter condition.
+        # When FilterKey is set to one of the following values, only the first value in FilterValues is used:
         # - KeyWord
-        # 
         # - DesktopName
-        # 
         # - OfficeSiteName
-        # 
         # - DesktopIP
-        # 
         # - EndUserId
-        # 
         # - ExpireTime
-        # 
         # - IncludeAssignedUser
         self.filter_values = filter_values
 

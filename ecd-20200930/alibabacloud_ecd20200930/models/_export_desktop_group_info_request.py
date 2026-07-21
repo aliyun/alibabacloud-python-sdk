@@ -23,41 +23,34 @@ class ExportDesktopGroupInfoRequest(DaraModel):
         region_id: str = None,
         tag: List[main_models.ExportDesktopGroupInfoRequestTag] = None,
     ):
-        # The billing method of the cloud computer share.
-        # 
-        # Valid values:
-        # 
-        # - PostPaid: pay-as-you-go.
-        # 
-        # - PrePaid: subscription.
+        # The billing method of the shared cloud desktops.
         self.charge_type = charge_type
-        # The IDs of the cloud computer shares.
+        # The list of shared cloud desktop IDs.
         self.desktop_group_id = desktop_group_id
-        # The name of the cloud computer share.
+        # The name of the shared cloud desktop.
         self.desktop_group_name = desktop_group_name
-        # The IDs of the users to be authorized.
+        # The list of authorized user IDs for the shared cloud desktops.
         self.end_user_id = end_user_id
-        # The expiration date of the subscription cloud computer share.
+        # The expiration time of the subscription shared cloud desktops.
         self.expired_time = expired_time
-        # The language of the response.
+        # The language type.
         self.lang_type = lang_type
-        # The number of entries to return on each page.
+        # The number of entries per page for a paged query.    
         # 
-        # Maximum value: 100.
-        # 
-        # Default value: 10.
+        # - Maximum value: 100.
+        # - Default value: 10.
         self.max_results = max_results
-        # The token that determines the start point of the next query. If this parameter is left empty, all results are returned.
+        # The pagination token for the next query. An empty value indicates that no more results exist.
         self.next_token = next_token
-        # The ID of the office network.
+        # The ID of the office network to which the shared cloud desktops belong.
         self.office_site_id = office_site_id
-        # The ID of the security policy.
+        # The ID of the policy associated with the shared cloud desktops.
         self.policy_group_id = policy_group_id
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the regions supported by Elastic Desktop Service.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by WUYING Workspace.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The tags. You can specify up to 20 tags.
+        # The list of tags. A maximum of 20 tags can be specified.
         self.tag = tag
 
     def validate(self):
@@ -160,9 +153,9 @@ class ExportDesktopGroupInfoRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key. You cannot specify an empty string as a tag key. A tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. The tag key cannot contain `http://` or `https://`.
+        # The tag key. This parameter cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         self.key = key
-        # The tag value. You can specify an empty string as a tag key. A tag value can be up to 128 characters in length and cannot start with `acs:`. The tag value cannot contain `http://` or `https://`.
+        # The tag value. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot start with `acs:`. It cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

@@ -108,6 +108,11 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
         external_drive: str = None,
         file_migrate: str = None,
         file_transfer_address: str = None,
+        file_transfer_in_size: str = None,
+        file_transfer_in_unit: str = None,
+        file_transfer_out_size: str = None,
+        file_transfer_out_unit: str = None,
+        file_transfer_size_limit: str = None,
         file_transfer_speed: str = None,
         file_transfer_speed_location: str = None,
         gpu_acceleration: str = None,
@@ -281,6 +286,11 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
         self.external_drive = external_drive
         self.file_migrate = file_migrate
         self.file_transfer_address = file_transfer_address
+        self.file_transfer_in_size = file_transfer_in_size
+        self.file_transfer_in_unit = file_transfer_in_unit
+        self.file_transfer_out_size = file_transfer_out_size
+        self.file_transfer_out_unit = file_transfer_out_unit
+        self.file_transfer_size_limit = file_transfer_size_limit
         self.file_transfer_speed = file_transfer_speed
         self.file_transfer_speed_location = file_transfer_speed_location
         # Indicates whether the image quality policy is enabled for GPU-accelerated cloud desktops. Enable this policy when high performance and user experience are required, such as in professional design scenarios.
@@ -646,6 +656,21 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
 
         if self.file_transfer_address is not None:
             result['FileTransferAddress'] = self.file_transfer_address
+
+        if self.file_transfer_in_size is not None:
+            result['FileTransferInSize'] = self.file_transfer_in_size
+
+        if self.file_transfer_in_unit is not None:
+            result['FileTransferInUnit'] = self.file_transfer_in_unit
+
+        if self.file_transfer_out_size is not None:
+            result['FileTransferOutSize'] = self.file_transfer_out_size
+
+        if self.file_transfer_out_unit is not None:
+            result['FileTransferOutUnit'] = self.file_transfer_out_unit
+
+        if self.file_transfer_size_limit is not None:
+            result['FileTransferSizeLimit'] = self.file_transfer_size_limit
 
         if self.file_transfer_speed is not None:
             result['FileTransferSpeed'] = self.file_transfer_speed
@@ -1098,6 +1123,21 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
 
         if m.get('FileTransferAddress') is not None:
             self.file_transfer_address = m.get('FileTransferAddress')
+
+        if m.get('FileTransferInSize') is not None:
+            self.file_transfer_in_size = m.get('FileTransferInSize')
+
+        if m.get('FileTransferInUnit') is not None:
+            self.file_transfer_in_unit = m.get('FileTransferInUnit')
+
+        if m.get('FileTransferOutSize') is not None:
+            self.file_transfer_out_size = m.get('FileTransferOutSize')
+
+        if m.get('FileTransferOutUnit') is not None:
+            self.file_transfer_out_unit = m.get('FileTransferOutUnit')
+
+        if m.get('FileTransferSizeLimit') is not None:
+            self.file_transfer_size_limit = m.get('FileTransferSizeLimit')
 
         if m.get('FileTransferSpeed') is not None:
             self.file_transfer_speed = m.get('FileTransferSpeed')

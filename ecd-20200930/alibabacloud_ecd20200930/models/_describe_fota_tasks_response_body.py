@@ -16,13 +16,13 @@ class DescribeFotaTasksResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # The returned message. If the request was successful, a `success` is returned. If the request failed, an error message is returned.
+        # The operation result. A value of `success` indicates success. Otherwise, an error message is returned.
         self.code = code
-        # Details about the image update task.
+        # The image upgrade task information.
         self.fota_tasks = fota_tasks
-        # The returned error message. This parameter is not returned if the Code value is a `success` message.
+        # The error message. This parameter is not returned if Code is `success`.
         self.message = message
-        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+        # The pagination token for the next query. An empty value indicates that no more results exist.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -92,26 +92,21 @@ class DescribeFotaTasksResponseBodyFotaTasks(DaraModel):
         status: str = None,
         task_uid: str = None,
     ):
-        # The image version. You can call the [DescribeImages](https://help.aliyun.com/document_detail/188895.html) operation to obtain the value of this parameter.
+        # The image version. You can call [DescribeImages](https://help.aliyun.com/document_detail/188895.html) to obtain this parameter.
         self.app_version = app_version
-        # >  This parameter is not publicly available.
+        # > This parameter is not publicly available.
         self.fota_project = fota_project
-        # The number of custom images that can be updated to this version.
+        # The number of custom images that can be upgraded to this version.
         self.pending_custom_image_count = pending_custom_image_count
-        # The number of cloud computers whose images can be updated to this version.
+        # The number of cloud desktops that can be upgraded to this version.
         self.pending_desktop_count = pending_desktop_count
-        # The time when the image version available for update was published.
+        # The publish time of the upgrade version.
         self.publish_time = publish_time
-        # The description of the image version available for update.
+        # The upgrade version description.
         self.release_note = release_note
-        # The size of the update package. Unit: KB.
+        # The size of the upgrade package. Unit: KB.
         self.size = size
-        # Indicates whether the image update task is automatically pushed.
-        # 
-        # Valid values:
-        # 
-        # *   Running: automatically pushes the image update task.
-        # *   Pending: does not automatically push the image update task.
+        # Indicates whether the image upgrade task is automatically pushed.
         self.status = status
         # The ID of the image upgrade task.
         self.task_uid = task_uid

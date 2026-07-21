@@ -13,33 +13,15 @@ class CancelCdsFileShareLinkResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The operation result. The value success indicates that the operation is successful. If the operation failed, an error message is returned.
+        # The execution result. A value of `success` indicates success. Otherwise, an error message is returned.
         self.code = code
         # The data information.
         self.data = data
-        # The error message that is returned if the request failed. This parameter is not returned if the value of Code is `success`.
+        # The error message. This parameter is not returned when Code is `success`.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the call was successful.
-        # 
-        # Valid values:
-        # 
-        # - true
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
-        # 
-        # - false
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
+        # Indicates whether the operation is successful.
         self.success = success
 
     def validate(self):
