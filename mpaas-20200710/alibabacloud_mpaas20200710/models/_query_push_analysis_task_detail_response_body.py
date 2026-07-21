@@ -8,11 +8,13 @@ from darabonba.model import DaraModel
 class QueryPushAnalysisTaskDetailResponseBody(DaraModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         request_id: str = None,
         result_code: str = None,
         result_content: main_models.QueryPushAnalysisTaskDetailResponseBodyResultContent = None,
         result_message: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         self.request_id = request_id
         self.result_code = result_code
         self.result_content = result_content
@@ -27,6 +29,9 @@ class QueryPushAnalysisTaskDetailResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+
         if self.request_id is not None:
             result['RequestId'] = self.request_id
 
@@ -43,6 +48,9 @@ class QueryPushAnalysisTaskDetailResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
 
