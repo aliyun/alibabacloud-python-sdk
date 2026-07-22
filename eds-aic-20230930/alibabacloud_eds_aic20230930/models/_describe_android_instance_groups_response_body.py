@@ -15,9 +15,9 @@ class DescribeAndroidInstanceGroupsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The details of the instance group.
+        # The details of the instance groups.
         self.instance_group_model = instance_group_model
-        # The pagination token that indicates the position where the current call returns. An empty value indicates that all data has been read.
+        # The pagination token that indicates the position up to which data has been read in the current call. An empty value indicates that all data has been read.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -118,9 +118,9 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel(DaraModel):
         self.app_instance_group_id = app_instance_group_id
         # The architecture type.
         self.architecture_type = architecture_type
-        # The number of active instances.
+        # The number of available instances.
         # 
-        # > An instance is considered active if its instance status is not "Deleting" or "Deleted".
+        # > Available means the instance status is not "being deleted" or "deleted".
         self.available_instance_amount = available_instance_amount
         # The ID of the bandwidth package.
         self.bandwidth_package_id = bandwidth_package_id
@@ -135,7 +135,7 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel(DaraModel):
         self.bandwidth_package_status = bandwidth_package_status
         # The type of the bandwidth package.
         self.bandwidth_package_type = bandwidth_package_type
-        # The public network bandwidth throttling rules for the instance group.
+        # The public network bandwidth limit rules for the instance group.
         self.bind_qos_rules = bind_qos_rules
         self.channel = channel
         # The billing method.
@@ -176,7 +176,7 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel(DaraModel):
         self.memory = memory
         # The network type of the instance.
         # 
-        # > This field is returned only for instance groups with a standard network.
+        # > This field is returned only for instance groups with standard networking.
         self.network_type = network_type
         # The number of instances in the instance group.
         self.number_of_instances = number_of_instances
@@ -187,7 +187,7 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel(DaraModel):
         self.policy_group_id = policy_group_id
         # The region ID.
         self.region_id = region_id
-        # The rendering type of the instance group.
+        # The rendering method of the instance group.
         self.rendering_type = rendering_type
         # The height of the resolution.
         self.resolution_height = resolution_height
@@ -521,7 +521,7 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelDisks(DaraModel
         disk_size: int = None,
         disk_type: str = None,
     ):
-        # The disk size, in GB.
+        # The disk size (unit: GB).
         self.disk_size = disk_size
         # The disk type.
         self.disk_type = disk_type
@@ -558,9 +558,9 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelBindQosRules(Da
         instance_qos_rule: List[main_models.DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelBindQosRulesInstanceQosRule] = None,
         total_count: int = None,
     ):
-        # The public network bandwidth throttling rules bound to the instance.
+        # The public network bandwidth limit rule bound to the instance.
         self.instance_qos_rule = instance_qos_rule
-        # The total number of public network bandwidth throttling rules for the instance group.
+        # The total number of public network bandwidth limit rules for the instance group.
         self.total_count = total_count
 
     def validate(self):
@@ -605,7 +605,7 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelBindQosRulesIns
     ):
         # The instance ID.
         self.instance_id = instance_id
-        # The ID of the public network bandwidth throttling rule. This rule applies only to premium bandwidth.
+        # The ID of the public network bandwidth limit rule (applies only to premium bandwidth).
         self.qos_rule_id = qos_rule_id
 
     def validate(self):

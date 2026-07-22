@@ -19,27 +19,31 @@ class DescribeCloudPhoneNodesRequest(DaraModel):
         node_name: str = None,
         node_name_list: List[str] = None,
         server_type: str = None,
+        sort_key: str = None,
+        sort_type: str = None,
         status: str = None,
         tags: List[main_models.DescribeCloudPhoneNodesRequestTags] = None,
     ):
-        # The ID of the bandwidth plan instance.
+        # The instance ID of the bandwidth plan.
         self.bandwidth_package_id = bandwidth_package_id
         # The region ID.
         self.biz_region_id = biz_region_id
-        # The billing method. Only the subscription billing method is supported.
+        # The billing type. Only subscription is supported.
         self.charge_type = charge_type
-        # The maximum number of entries to return on each page for a paged query. The maximum value is 100. The default value is 20.
+        # The maximum number of entries per page for a paged query. Maximum value: 100. Default value: 20.
         self.max_results = max_results
-        # The token for the next query. If a query does not return all results, NextToken is not empty. Use the returned NextToken in your next query to continue.
+        # The pagination token for the next query. If the results of a query are not completely returned, the returned NextToken is not empty. You can pass the returned NextToken in the next request to continue the query.
         self.next_token = next_token
-        # A list of Cloud Phone matrix IDs.
+        # The list of cloud phone matrix IDs.
         self.node_ids = node_ids
-        # The name of the Cloud Phone matrix.
+        # The name of the cloud phone matrix.
         self.node_name = node_name
         self.node_name_list = node_name_list
-        # The instance type of the Cloud Phone matrix.
+        # The specifications of the cloud phone matrix.
         self.server_type = server_type
-        # The status of the Cloud Phone matrix.
+        self.sort_key = sort_key
+        self.sort_type = sort_type
+        # The status of the cloud phone matrix.
         self.status = status
         self.tags = tags
 
@@ -81,6 +85,12 @@ class DescribeCloudPhoneNodesRequest(DaraModel):
         if self.server_type is not None:
             result['ServerType'] = self.server_type
 
+        if self.sort_key is not None:
+            result['SortKey'] = self.sort_key
+
+        if self.sort_type is not None:
+            result['SortType'] = self.sort_type
+
         if self.status is not None:
             result['Status'] = self.status
 
@@ -119,6 +129,12 @@ class DescribeCloudPhoneNodesRequest(DaraModel):
 
         if m.get('ServerType') is not None:
             self.server_type = m.get('ServerType')
+
+        if m.get('SortKey') is not None:
+            self.sort_key = m.get('SortKey')
+
+        if m.get('SortType') is not None:
+            self.sort_type = m.get('SortType')
 
         if m.get('Status') is not None:
             self.status = m.get('Status')

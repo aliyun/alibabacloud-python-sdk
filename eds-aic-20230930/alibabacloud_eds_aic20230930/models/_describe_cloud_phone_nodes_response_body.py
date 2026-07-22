@@ -16,15 +16,13 @@ class DescribeCloudPhoneNodesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The maximum number of entries returned on each page.
+        # The maximum number of entries per page for a paged query.
         self.max_results = max_results
-        # The token used to start the next query. Valid values:
-        # 
-        # - If **NextToken** is empty, there are no more results.
-        # 
-        # - If **NextToken** has a value, it indicates the token for the next query.
+        # Indicates whether a next pagination token exists. Valid values:
+        # - If **NextToken** is empty, no next query exists.
+        # - If **NextToken** has a value, the value is the token for the next query.
         self.next_token = next_token
-        # The details of the Cloud Phone matrices.
+        # The details of the cloud phone matrix.
         self.node_model = node_model
         # The request ID.
         self.request_id = request_id
@@ -114,23 +112,26 @@ class DescribeCloudPhoneNodesResponseBodyNodeModel(DaraModel):
         tags: List[main_models.DescribeCloudPhoneNodesResponseBodyNodeModelTags] = None,
         v_switch_id: str = None,
     ):
-        # The ID of the bandwidth plan.
+        # The bandwidth plan ID.
         self.bandwidth_package_id = bandwidth_package_id
-        # The status of the bandwidth plan: 0 indicates initializing, 1 indicates normal, and 2 indicates deleted.
+        # The status of the bandwidth plan. Valid values:
+        # - 0: initializing
+        # - 1: normal
+        # - 2: deleted
         self.bandwidth_package_status = bandwidth_package_status
         # The bandwidth type.
         self.bandwidth_package_type = bandwidth_package_type
-        # An array of tag information.
+        # The array of tag information.
         self.biz_tags = biz_tags
-        # The billing method.
+        # The billing type.
         self.charge_type = charge_type
         # The number of CPU cores.
         self.cpu = cpu
         # The creation time.
         self.gmt_create = gmt_create
-        # The expiration time of the subscription-based matrix.
+        # The expiration time of the subscription matrix.
         self.gmt_expired = gmt_expired
-        # The last modification time.
+        # The time when the matrix was last modified.
         self.gmt_modified = gmt_modified
         # The instance type.
         self.instance_type = instance_type
@@ -138,17 +139,17 @@ class DescribeCloudPhoneNodesResponseBodyNodeModel(DaraModel):
         self.memory = memory
         # The network ID.
         self.network_id = network_id
-        # The network information.
+        # The network-related information.
         self.network_infos = network_infos
         # The network type of the instance.
         self.network_type = network_type
-        # The Cloud Phone matrix ID.
+        # The cloud phone matrix ID.
         self.node_id = node_id
-        # The name of the Cloud Phone matrix.
+        # The name of the cloud phone matrix.
         self.node_name = node_name
-        # The number of instances in the Cloud Phone matrix.
+        # The number of instances provisioned under the cloud phone matrix.
         self.phone_count = phone_count
-        # The information about the independent phone storage.
+        # The independent device storage information.
         self.phone_data_info = phone_data_info
         # The region ID.
         self.region_id = region_id
@@ -156,11 +157,11 @@ class DescribeCloudPhoneNodesResponseBodyNodeModel(DaraModel):
         self.resolution_height = resolution_height
         # The width of the resolution. Unit: pixels.
         self.resolution_width = resolution_width
-        # The instance type of the Cloud Phone matrix.
+        # The specifications of the cloud phone matrix.
         self.server_type = server_type
-        # The size of the shared phone storage. Unit: GiB.
+        # The size of the shared device storage. Unit: GiB.
         self.share_data_volume = share_data_volume
-        # The status of the Cloud Phone matrix.
+        # The status of the cloud phone matrix.
         self.status = status
         self.swap_size = swap_size
         self.tags = tags
@@ -413,9 +414,9 @@ class DescribeCloudPhoneNodesResponseBodyNodeModelPhoneDataInfo(DaraModel):
         phone_data_id: str = None,
         phone_data_volume: int = None,
     ):
-        # The ID of the independent phone storage.
+        # The ID of the independent device storage.
         self.phone_data_id = phone_data_id
-        # The size of the independent phone storage. Unit: GiB.
+        # The storage capacity of the independent device storage. Unit: GiB.
         self.phone_data_volume = phone_data_volume
 
     def validate(self):
@@ -453,7 +454,7 @@ class DescribeCloudPhoneNodesResponseBodyNodeModelNetworkInfos(DaraModel):
         network_type: str = None,
         v_switch_id: str = None,
     ):
-        # The ID of the bandwidth plan instance.
+        # The instance ID of the bandwidth plan.
         self.bandwidth_package_id = bandwidth_package_id
         # The bandwidth type.
         self.bandwidth_package_type = bandwidth_package_type
@@ -461,7 +462,7 @@ class DescribeCloudPhoneNodesResponseBodyNodeModelNetworkInfos(DaraModel):
         self.network_id = network_id
         # The network type of the instance.
         self.network_type = network_type
-        # The ID of the vSwitch in the virtual private cloud (VPC).
+        # The vSwitch ID in the VPC.
         self.v_switch_id = v_switch_id
 
     def validate(self):

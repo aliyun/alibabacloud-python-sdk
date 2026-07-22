@@ -20,13 +20,15 @@ class DescribeAndroidInstanceGroupsRequest(DaraModel):
         next_token: str = None,
         policy_group_id: str = None,
         sale_mode: str = None,
+        sort_key: str = None,
+        sort_type: str = None,
         status: str = None,
         tags: List[main_models.DescribeAndroidInstanceGroupsRequestTags] = None,
     ):
         # The region ID.
         self.biz_region_id = biz_region_id
         # The billing type.
-        # [_single.params.ChargeType.enum. PrePaid]Subscription.
+        # [_single.params.ChargeType.enum. PrePaid]subscription
         self.charge_type = charge_type
         # The list of instance group IDs.
         self.instance_group_ids = instance_group_ids
@@ -37,12 +39,14 @@ class DescribeAndroidInstanceGroupsRequest(DaraModel):
         self.key_pair_id = key_pair_id
         # The maximum number of entries per page for a paged query. Valid values: 1 to 100. Default value: 100.
         self.max_results = max_results
-        # The pagination token that indicates the position from which the current read operation starts. Leave this parameter empty to read from the beginning.
+        # The pagination token that indicates the position from which to start reading. An empty value indicates reading from the beginning.
         self.next_token = next_token
         # The policy ID.
         self.policy_group_id = policy_group_id
         # The purchase mode of the cloud phone.
         self.sale_mode = sale_mode
+        self.sort_key = sort_key
+        self.sort_type = sort_type
         # The instance group status.
         self.status = status
         # The tags of the instance group. You can bind up to 20 tags to each instance.
@@ -89,6 +93,12 @@ class DescribeAndroidInstanceGroupsRequest(DaraModel):
         if self.sale_mode is not None:
             result['SaleMode'] = self.sale_mode
 
+        if self.sort_key is not None:
+            result['SortKey'] = self.sort_key
+
+        if self.sort_type is not None:
+            result['SortType'] = self.sort_type
+
         if self.status is not None:
             result['Status'] = self.status
 
@@ -131,6 +141,12 @@ class DescribeAndroidInstanceGroupsRequest(DaraModel):
         if m.get('SaleMode') is not None:
             self.sale_mode = m.get('SaleMode')
 
+        if m.get('SortKey') is not None:
+            self.sort_key = m.get('SortKey')
+
+        if m.get('SortType') is not None:
+            self.sort_type = m.get('SortType')
+
         if m.get('Status') is not None:
             self.status = m.get('Status')
 
@@ -149,10 +165,10 @@ class DescribeAndroidInstanceGroupsRequestTags(DaraModel):
         value: str = None,
     ):
         # The tag key. You can specify 1 to 20 tag keys.
-        # >Notice: The tag key can be up to 128 characters in length. It cannot start with aliyun or acs: and cannot contain http:// or https://..
+        # >Notice: The tag key can be up to 128 characters in length. It cannot start with aliyun or acs: and cannot contain http:// or https://.
         self.key = key
         # The tag value.
-        # >Notice: The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`..
+        # >Notice: The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

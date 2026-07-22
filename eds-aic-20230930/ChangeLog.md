@@ -1,3 +1,15 @@
+2026-07-22 Version: 4.32.0
+- Support API CreateScheduledTask.
+- Support API DeleteScheduledTask.
+- Support API DescribeScheduledTaskExecutions.
+- Support API DescribeScheduledTasks.
+- Support API ModifyScheduledTask.
+- Update API DescribeAndroidInstanceGroups: add request parameters SortKey.
+- Update API DescribeAndroidInstanceGroups: add request parameters SortType.
+- Update API DescribeCloudPhoneNodes: add request parameters SortKey.
+- Update API DescribeCloudPhoneNodes: add request parameters SortType.
+
+
 2026-07-13 Version: 4.31.2
 - Update API CreateAndroidInstanceGroup: add request parameters ChannelCookie.
 - Update API CreateCloudPhoneNode: add request parameters ChannelCookie.

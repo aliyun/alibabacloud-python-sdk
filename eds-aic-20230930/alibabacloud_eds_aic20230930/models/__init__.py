@@ -64,6 +64,10 @@ from ._create_policy_group_request import CreatePolicyGroupRequest
 from ._create_policy_group_shrink_request import CreatePolicyGroupShrinkRequest
 from ._create_policy_group_response_body import CreatePolicyGroupResponseBody
 from ._create_policy_group_response import CreatePolicyGroupResponse
+from ._create_scheduled_task_request import CreateScheduledTaskRequest
+from ._create_scheduled_task_shrink_request import CreateScheduledTaskShrinkRequest
+from ._create_scheduled_task_response_body import CreateScheduledTaskResponseBody
+from ._create_scheduled_task_response import CreateScheduledTaskResponse
 from ._create_screenshot_request import CreateScreenshotRequest
 from ._create_screenshot_response_body import CreateScreenshotResponseBody
 from ._create_screenshot_response import CreateScreenshotResponse
@@ -96,6 +100,9 @@ from ._delete_mobile_agent_package_response import DeleteMobileAgentPackageRespo
 from ._delete_policy_group_request import DeletePolicyGroupRequest
 from ._delete_policy_group_response_body import DeletePolicyGroupResponseBody
 from ._delete_policy_group_response import DeletePolicyGroupResponse
+from ._delete_scheduled_task_request import DeleteScheduledTaskRequest
+from ._delete_scheduled_task_response_body import DeleteScheduledTaskResponseBody
+from ._delete_scheduled_task_response import DeleteScheduledTaskResponse
 from ._delete_system_property_templates_request import DeleteSystemPropertyTemplatesRequest
 from ._delete_system_property_templates_response_body import DeleteSystemPropertyTemplatesResponseBody
 from ._delete_system_property_templates_response import DeleteSystemPropertyTemplatesResponse
@@ -159,6 +166,12 @@ from ._describe_mobile_agent_package_response import DescribeMobileAgentPackageR
 from ._describe_regions_request import DescribeRegionsRequest
 from ._describe_regions_response_body import DescribeRegionsResponseBody
 from ._describe_regions_response import DescribeRegionsResponse
+from ._describe_scheduled_task_executions_request import DescribeScheduledTaskExecutionsRequest
+from ._describe_scheduled_task_executions_response_body import DescribeScheduledTaskExecutionsResponseBody
+from ._describe_scheduled_task_executions_response import DescribeScheduledTaskExecutionsResponse
+from ._describe_scheduled_tasks_request import DescribeScheduledTasksRequest
+from ._describe_scheduled_tasks_response_body import DescribeScheduledTasksResponseBody
+from ._describe_scheduled_tasks_response import DescribeScheduledTasksResponse
 from ._describe_spec_request import DescribeSpecRequest
 from ._describe_spec_response_body import DescribeSpecResponseBody
 from ._describe_spec_response import DescribeSpecResponse
@@ -254,6 +267,10 @@ from ._modify_policy_group_request import ModifyPolicyGroupRequest
 from ._modify_policy_group_shrink_request import ModifyPolicyGroupShrinkRequest
 from ._modify_policy_group_response_body import ModifyPolicyGroupResponseBody
 from ._modify_policy_group_response import ModifyPolicyGroupResponse
+from ._modify_scheduled_task_request import ModifyScheduledTaskRequest
+from ._modify_scheduled_task_shrink_request import ModifyScheduledTaskShrinkRequest
+from ._modify_scheduled_task_response_body import ModifyScheduledTaskResponseBody
+from ._modify_scheduled_task_response import ModifyScheduledTaskResponse
 from ._modify_system_property_template_request import ModifySystemPropertyTemplateRequest
 from ._modify_system_property_template_shrink_request import ModifySystemPropertyTemplateShrinkRequest
 from ._modify_system_property_template_response_body import ModifySystemPropertyTemplateResponseBody
@@ -378,10 +395,14 @@ from ._create_key_pair_response_body import CreateKeyPairResponseBodyData
 from ._create_policy_group_request import CreatePolicyGroupRequestNetRedirectPolicyRules
 from ._create_policy_group_request import CreatePolicyGroupRequestNetRedirectPolicy
 from ._create_policy_group_request import CreatePolicyGroupRequestWatermark
+from ._create_scheduled_task_request import CreateScheduledTaskRequestRunConfig
+from ._create_scheduled_task_response_body import CreateScheduledTaskResponseBodyTasksInstanceResults
+from ._create_scheduled_task_response_body import CreateScheduledTaskResponseBodyTasks
 from ._create_screenshot_response_body import CreateScreenshotResponseBodyTasks
 from ._create_system_property_template_request import CreateSystemPropertyTemplateRequestSystemPropertyInfoCustomPropertyInfos
 from ._create_system_property_template_request import CreateSystemPropertyTemplateRequestSystemPropertyInfo
 from ._delete_images_response_body import DeleteImagesResponseBodyData
+from ._delete_scheduled_task_response_body import DeleteScheduledTaskResponseBodyTasks
 from ._describe_agent_task_response_body import DescribeAgentTaskResponseBodyTasks
 from ._describe_android_instance_groups_request import DescribeAndroidInstanceGroupsRequestTags
 from ._describe_android_instance_groups_response_body import DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelBindQosRulesInstanceQosRule
@@ -434,6 +455,9 @@ from ._describe_metric_top_response_body import DescribeMetricTopResponseBodyMet
 from ._describe_metric_top_response_body import DescribeMetricTopResponseBodyMetricTotalModel
 from ._describe_mobile_agent_package_response_body import DescribeMobileAgentPackageResponseBodyPackageList
 from ._describe_regions_response_body import DescribeRegionsResponseBodyRegionModels
+from ._describe_scheduled_task_executions_response_body import DescribeScheduledTaskExecutionsResponseBodyExecutions
+from ._describe_scheduled_tasks_response_body import DescribeScheduledTasksResponseBodyTasksRunConfig
+from ._describe_scheduled_tasks_response_body import DescribeScheduledTasksResponseBodyTasks
 from ._describe_spec_response_body import DescribeSpecResponseBodySpecInfoModel
 from ._describe_system_property_templates_response_body import DescribeSystemPropertyTemplatesResponseBodySystemPropertyTemplateModelSystemPropertyInfoCustomPropertyInfos
 from ._describe_system_property_templates_response_body import DescribeSystemPropertyTemplatesResponseBodySystemPropertyTemplateModelSystemPropertyInfo
@@ -460,6 +484,9 @@ from ._modify_jvsinstance_request import ModifyJVSInstanceRequestCreditConfig
 from ._modify_policy_group_request import ModifyPolicyGroupRequestNetRedirectPolicyRules
 from ._modify_policy_group_request import ModifyPolicyGroupRequestNetRedirectPolicy
 from ._modify_policy_group_request import ModifyPolicyGroupRequestWatermark
+from ._modify_scheduled_task_request import ModifyScheduledTaskRequestRunConfig
+from ._modify_scheduled_task_response_body import ModifyScheduledTaskResponseBodyTasksInstanceResults
+from ._modify_scheduled_task_response_body import ModifyScheduledTaskResponseBodyTasks
 from ._modify_system_property_template_request import ModifySystemPropertyTemplateRequestSystemPropertyInfoCustomPropertyInfos
 from ._modify_system_property_template_request import ModifySystemPropertyTemplateRequestSystemPropertyInfo
 from ._pause_agent_task_response_body import PauseAgentTaskResponseBodyTasks
@@ -548,6 +575,10 @@ __all__ = [
     CreatePolicyGroupShrinkRequest,
     CreatePolicyGroupResponseBody,
     CreatePolicyGroupResponse,
+    CreateScheduledTaskRequest,
+    CreateScheduledTaskShrinkRequest,
+    CreateScheduledTaskResponseBody,
+    CreateScheduledTaskResponse,
     CreateScreenshotRequest,
     CreateScreenshotResponseBody,
     CreateScreenshotResponse,
@@ -580,6 +611,9 @@ __all__ = [
     DeletePolicyGroupRequest,
     DeletePolicyGroupResponseBody,
     DeletePolicyGroupResponse,
+    DeleteScheduledTaskRequest,
+    DeleteScheduledTaskResponseBody,
+    DeleteScheduledTaskResponse,
     DeleteSystemPropertyTemplatesRequest,
     DeleteSystemPropertyTemplatesResponseBody,
     DeleteSystemPropertyTemplatesResponse,
@@ -643,6 +677,12 @@ __all__ = [
     DescribeRegionsRequest,
     DescribeRegionsResponseBody,
     DescribeRegionsResponse,
+    DescribeScheduledTaskExecutionsRequest,
+    DescribeScheduledTaskExecutionsResponseBody,
+    DescribeScheduledTaskExecutionsResponse,
+    DescribeScheduledTasksRequest,
+    DescribeScheduledTasksResponseBody,
+    DescribeScheduledTasksResponse,
     DescribeSpecRequest,
     DescribeSpecResponseBody,
     DescribeSpecResponse,
@@ -738,6 +778,10 @@ __all__ = [
     ModifyPolicyGroupShrinkRequest,
     ModifyPolicyGroupResponseBody,
     ModifyPolicyGroupResponse,
+    ModifyScheduledTaskRequest,
+    ModifyScheduledTaskShrinkRequest,
+    ModifyScheduledTaskResponseBody,
+    ModifyScheduledTaskResponse,
     ModifySystemPropertyTemplateRequest,
     ModifySystemPropertyTemplateShrinkRequest,
     ModifySystemPropertyTemplateResponseBody,
@@ -862,10 +906,14 @@ __all__ = [
     CreatePolicyGroupRequestNetRedirectPolicyRules,
     CreatePolicyGroupRequestNetRedirectPolicy,
     CreatePolicyGroupRequestWatermark,
+    CreateScheduledTaskRequestRunConfig,
+    CreateScheduledTaskResponseBodyTasksInstanceResults,
+    CreateScheduledTaskResponseBodyTasks,
     CreateScreenshotResponseBodyTasks,
     CreateSystemPropertyTemplateRequestSystemPropertyInfoCustomPropertyInfos,
     CreateSystemPropertyTemplateRequestSystemPropertyInfo,
     DeleteImagesResponseBodyData,
+    DeleteScheduledTaskResponseBodyTasks,
     DescribeAgentTaskResponseBodyTasks,
     DescribeAndroidInstanceGroupsRequestTags,
     DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelBindQosRulesInstanceQosRule,
@@ -918,6 +966,9 @@ __all__ = [
     DescribeMetricTopResponseBodyMetricTotalModel,
     DescribeMobileAgentPackageResponseBodyPackageList,
     DescribeRegionsResponseBodyRegionModels,
+    DescribeScheduledTaskExecutionsResponseBodyExecutions,
+    DescribeScheduledTasksResponseBodyTasksRunConfig,
+    DescribeScheduledTasksResponseBodyTasks,
     DescribeSpecResponseBodySpecInfoModel,
     DescribeSystemPropertyTemplatesResponseBodySystemPropertyTemplateModelSystemPropertyInfoCustomPropertyInfos,
     DescribeSystemPropertyTemplatesResponseBodySystemPropertyTemplateModelSystemPropertyInfo,
@@ -944,6 +995,9 @@ __all__ = [
     ModifyPolicyGroupRequestNetRedirectPolicyRules,
     ModifyPolicyGroupRequestNetRedirectPolicy,
     ModifyPolicyGroupRequestWatermark,
+    ModifyScheduledTaskRequestRunConfig,
+    ModifyScheduledTaskResponseBodyTasksInstanceResults,
+    ModifyScheduledTaskResponseBodyTasks,
     ModifySystemPropertyTemplateRequestSystemPropertyInfoCustomPropertyInfos,
     ModifySystemPropertyTemplateRequestSystemPropertyInfo,
     PauseAgentTaskResponseBodyTasks,
