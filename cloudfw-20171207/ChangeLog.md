@@ -1,3 +1,17 @@
+2026-07-22 Version: 9.4.0
+- Support API DescribeTaskDispatchStatus.
+- Support API ModifySlsDispatchConfig.
+- Update API DescribeOutgoingDomain: add response parameters Body.DomainList.$.ApplicationPortList.
+- Update API DescribeTrafficLog: add request parameters QueryId.
+- Update API DescribeTrafficLog: add response parameters Body.QueryId.
+- Update API PutDisableFwSwitch: add request parameters ClientToken.
+- Update API PutDisableFwSwitch: add request parameters DryRun.
+- Update API PutDisableFwSwitch: add response parameters Body.DryRun.
+- Update API PutEnableFwSwitch: add request parameters ClientToken.
+- Update API PutEnableFwSwitch: add request parameters DryRun.
+- Update API PutEnableFwSwitch: add response parameters Body.DryRun.
+
+
 2026-07-08 Version: 9.3.0
 - Support API DescribeVpcFirewallTrafficTrend.
 

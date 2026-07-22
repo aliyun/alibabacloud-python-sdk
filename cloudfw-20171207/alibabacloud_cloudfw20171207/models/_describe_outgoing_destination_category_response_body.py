@@ -14,11 +14,11 @@ class DescribeOutgoingDestinationCategoryResponseBody(DaraModel):
         total_count: int = None,
         type_list: List[main_models.DescribeOutgoingDestinationCategoryResponseBodyTypeList] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The total number of entries.
         self.total_count = total_count
-        # The list of outbound connection categories.
+        # The list of outbound connections categorizations.
         self.type_list = type_list
 
     def validate(self):
@@ -69,13 +69,13 @@ class DescribeOutgoingDestinationCategoryResponseBodyTypeList(DaraModel):
         type_id: str = None,
         type_name: str = None,
     ):
-        # The list of outbound connection categories.
+        # The list of outbound connections categorizations.
         self.category_list = category_list
-        # The description of the fixed category.
+        # The fixed category description.
         self.type_describe = type_describe
         # The fixed category ID.
         self.type_id = type_id
-        # The name of the fixed category.
+        # The fixed category name.
         self.type_name = type_name
 
     def validate(self):
@@ -132,13 +132,13 @@ class DescribeOutgoingDestinationCategoryResponseBodyTypeListCategoryList(DaraMo
         category_name: str = None,
         class_id: str = None,
     ):
-        # The description of the outbound connection category.
+        # The outbound connections categorization description.
         self.category_describe = category_describe
-        # The ID of the outbound connection category.
+        # The outbound connections categorization ID.
         self.category_id = category_id
-        # The name of the outbound connection category.
+        # The outbound connections categorization name.
         self.category_name = category_name
-        # The classification ID of the outbound connection category.
+        # The outbound connections categorization level ID.
         self.class_id = class_id
 
     def validate(self):

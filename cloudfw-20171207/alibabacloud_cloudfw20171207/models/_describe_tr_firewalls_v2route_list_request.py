@@ -13,17 +13,17 @@ class DescribeTrFirewallsV2RouteListRequest(DaraModel):
         page_size: str = None,
         tr_firewall_route_policy_id: str = None,
     ):
-        # The page number. Default value: 1.
+        # The page number in a paging query. Default value: 1.
         self.current_page = current_page
-        # The instance ID of the VPC firewall for the transit router.
+        # The instance ID of the virtual private cloud (VPC) firewalls.
+        # > FirewallId is required. If it is not specified, ErrorParameters(400) is returned. TrFirewallRoutePolicyId must be used together with FirewallId. If TrFirewallRoutePolicyId is specified without FirewallId, ErrorParameters(400) is returned. If the value is invalid or does not exist, ErrorTrFirewallPolicyNotFound is returned.
         self.firewall_id = firewall_id
         # The language of the response. Valid values:
         # 
         # - **zh** (default): Chinese
-        # 
         # - **en**: English
         self.lang = lang
-        # The number of entries per page. Default value: 10.
+        # The maximum number of entries per page in a paging query. Default value: 10.
         self.page_size = page_size
         # The ID of the firewall routing policy.
         self.tr_firewall_route_policy_id = tr_firewall_route_policy_id

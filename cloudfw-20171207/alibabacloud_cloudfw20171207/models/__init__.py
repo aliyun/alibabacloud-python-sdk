@@ -545,6 +545,9 @@ from ._describe_slr_grant_response import DescribeSlrGrantResponse
 from ._describe_sls_analyze_open_status_request import DescribeSlsAnalyzeOpenStatusRequest
 from ._describe_sls_analyze_open_status_response_body import DescribeSlsAnalyzeOpenStatusResponseBody
 from ._describe_sls_analyze_open_status_response import DescribeSlsAnalyzeOpenStatusResponse
+from ._describe_task_dispatch_status_request import DescribeTaskDispatchStatusRequest
+from ._describe_task_dispatch_status_response_body import DescribeTaskDispatchStatusResponseBody
+from ._describe_task_dispatch_status_response import DescribeTaskDispatchStatusResponse
 from ._describe_threat_intelligence_switch_response_body import DescribeThreatIntelligenceSwitchResponseBody
 from ._describe_threat_intelligence_switch_response import DescribeThreatIntelligenceSwitchResponse
 from ._describe_tr_firewall_policy_back_up_association_list_request import DescribeTrFirewallPolicyBackUpAssociationListRequest
@@ -732,6 +735,9 @@ from ._modify_resource_type_auto_enable_response import ModifyResourceTypeAutoEn
 from ._modify_sensitive_switch_request import ModifySensitiveSwitchRequest
 from ._modify_sensitive_switch_response_body import ModifySensitiveSwitchResponseBody
 from ._modify_sensitive_switch_response import ModifySensitiveSwitchResponse
+from ._modify_sls_dispatch_config_request import ModifySlsDispatchConfigRequest
+from ._modify_sls_dispatch_config_response_body import ModifySlsDispatchConfigResponseBody
+from ._modify_sls_dispatch_config_response import ModifySlsDispatchConfigResponse
 from ._modify_sls_dispatch_status_request import ModifySlsDispatchStatusRequest
 from ._modify_sls_dispatch_status_response_body import ModifySlsDispatchStatusResponseBody
 from ._modify_sls_dispatch_status_response import ModifySlsDispatchStatusResponse
@@ -971,6 +977,7 @@ from ._describe_outgoing_destination_ipresponse_body import DescribeOutgoingDest
 from ._describe_outgoing_destination_ipresponse_body import DescribeOutgoingDestinationIPResponseBodyDstIPList
 from ._describe_outgoing_destination_ipdetail_response_body import DescribeOutgoingDestinationIPDetailResponseBodyAssetListTagList
 from ._describe_outgoing_destination_ipdetail_response_body import DescribeOutgoingDestinationIPDetailResponseBodyAssetList
+from ._describe_outgoing_domain_response_body import DescribeOutgoingDomainResponseBodyDomainListApplicationPortList
 from ._describe_outgoing_domain_response_body import DescribeOutgoingDomainResponseBodyDomainListTagList
 from ._describe_outgoing_domain_response_body import DescribeOutgoingDomainResponseBodyDomainList
 from ._describe_outgoing_domain_detail_response_body import DescribeOutgoingDomainDetailResponseBodyAssetListTagList
@@ -1653,6 +1660,9 @@ __all__ = [
     DescribeSlsAnalyzeOpenStatusRequest,
     DescribeSlsAnalyzeOpenStatusResponseBody,
     DescribeSlsAnalyzeOpenStatusResponse,
+    DescribeTaskDispatchStatusRequest,
+    DescribeTaskDispatchStatusResponseBody,
+    DescribeTaskDispatchStatusResponse,
     DescribeThreatIntelligenceSwitchResponseBody,
     DescribeThreatIntelligenceSwitchResponse,
     DescribeTrFirewallPolicyBackUpAssociationListRequest,
@@ -1840,6 +1850,9 @@ __all__ = [
     ModifySensitiveSwitchRequest,
     ModifySensitiveSwitchResponseBody,
     ModifySensitiveSwitchResponse,
+    ModifySlsDispatchConfigRequest,
+    ModifySlsDispatchConfigResponseBody,
+    ModifySlsDispatchConfigResponse,
     ModifySlsDispatchStatusRequest,
     ModifySlsDispatchStatusResponseBody,
     ModifySlsDispatchStatusResponse,
@@ -2079,6 +2092,7 @@ __all__ = [
     DescribeOutgoingDestinationIPResponseBodyDstIPList,
     DescribeOutgoingDestinationIPDetailResponseBodyAssetListTagList,
     DescribeOutgoingDestinationIPDetailResponseBodyAssetList,
+    DescribeOutgoingDomainResponseBodyDomainListApplicationPortList,
     DescribeOutgoingDomainResponseBodyDomainListTagList,
     DescribeOutgoingDomainResponseBodyDomainList,
     DescribeOutgoingDomainDetailResponseBodyAssetListTagList,

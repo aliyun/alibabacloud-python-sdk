@@ -13,17 +13,15 @@ class DescribeControlPolicyDomainResolveRequest(DaraModel):
         lang: str = None,
         region_no: str = None,
     ):
-        # The domain name.
+        # The domain name. This parameter is required.
         self.domain = domain
-        # The Cloud Firewall type.
+        # The type of the cloud firewall.
         self.firewall_type = firewall_type
-        # The supported IP address version.
+        # The supported IP address version. This parameter is required.
         self.ip_version = ip_version
-        # The language type. Valid values:
-        # - **en**: English
-        # - **zh**: Chinese.
+        # The language type.
         self.lang = lang
-        # The region ID.
+        # The region ID. This parameter is required.
         self.region_no = region_no
 
     def validate(self):

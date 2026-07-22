@@ -11,10 +11,13 @@ class PutEnableFwSwitchResponseBody(DaraModel):
     def __init__(
         self,
         abnormal_resource_status_list: List[main_models.PutEnableFwSwitchResponseBodyAbnormalResourceStatusList] = None,
+        dry_run: bool = None,
         request_id: str = None,
     ):
-        # Information about unsynchronized assets.
+        # The status information list of assets that are not synchronized.
         self.abnormal_resource_status_list = abnormal_resource_status_list
+        # Indicates that this is a successful dry run response. A value of true indicates that only the dry run was completed and no real changes were made. This field is not returned or is set to false for real calls.
+        self.dry_run = dry_run
         # The request ID.
         self.request_id = request_id
 
@@ -34,6 +37,9 @@ class PutEnableFwSwitchResponseBody(DaraModel):
             for k1 in self.abnormal_resource_status_list:
                 result['AbnormalResourceStatusList'].append(k1.to_map() if k1 else None)
 
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+
         if self.request_id is not None:
             result['RequestId'] = self.request_id
 
@@ -47,6 +53,9 @@ class PutEnableFwSwitchResponseBody(DaraModel):
                 temp_model = main_models.PutEnableFwSwitchResponseBodyAbnormalResourceStatusList()
                 self.abnormal_resource_status_list.append(temp_model.from_map(k1))
 
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
 
@@ -59,15 +68,13 @@ class PutEnableFwSwitchResponseBodyAbnormalResourceStatusList(DaraModel):
         resource: str = None,
         status: str = None,
     ):
-        # A message that provides details about why an asset was not synchronized. Valid value:
-        # 
-        # - `cloudfirewall do not sync this ip address`: Cloud Firewall does not synchronize the IP address of the asset.
+        # The message when the asset is not synchronized. Valid values:
+        # - cloudfirewall do not sync this ip address: Cloud Firewall has not synchronized this asset IP address.
         self.msg = msg
-        # The IP address of the asset.
+        # The asset IP address.
         self.resource = resource
-        # The synchronization status of the asset. Valid value:
-        # 
-        # - `ip_not_sync`: The asset is not synchronized.
+        # The status of the asset that is not synchronized. Valid values:
+        # - ip_not_sync: The asset is not synchronized.
         self.status = status
 
     def validate(self):

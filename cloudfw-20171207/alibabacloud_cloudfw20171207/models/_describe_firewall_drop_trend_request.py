@@ -11,14 +11,14 @@ class DescribeFirewallDropTrendRequest(DaraModel):
         lang: str = None,
         start_time: int = None,
     ):
-        # The end time of the query. Specify the value as a UNIX timestamp in seconds.
+        # Specifies the end time of the query. The value is a UNIX timestamp in seconds. This parameter is required and must be provided together with StartTime. The value must be a UNIX timestamp in seconds and must be later than StartTime. If this parameter is not provided, the API returns ErrorTimeError(400).
         self.end_time = end_time
-        # The language of the response. Valid values:
+        # The language type of the response message. Valid values:
         # 
         # - **zh** (default): Chinese
-        # - **en**: English.
+        # - **en**: English
         self.lang = lang
-        # The start time of the query. Specify the value as a UNIX timestamp in seconds.
+        # Specifies the start time of the query. The value is a UNIX timestamp in seconds. This parameter is required and must be provided together with EndTime. The value must be a UNIX timestamp in seconds and must be earlier than EndTime. If this parameter is not provided, the API returns ErrorTimeError(400).
         self.start_time = start_time
 
     def validate(self):

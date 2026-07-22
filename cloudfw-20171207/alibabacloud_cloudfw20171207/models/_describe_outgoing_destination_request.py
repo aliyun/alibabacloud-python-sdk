@@ -32,21 +32,21 @@ class DescribeOutgoingDestinationRequest(DaraModel):
         self.application_name = application_name
         # The category ID.
         self.category_id = category_id
-        # The number of the page to return.
+        # The current page number.
         self.current_page = current_page
         # The destination IP address.
         self.dst_ip = dst_ip
-        # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # The end time of the query. The value is a UNIX timestamp in seconds.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # Specifies whether to count only the traffic to AI services. The default value is false.
+        # Specifies whether to collect statistics only on traffic that accesses AI services. Default value: false.
         self.is_aitraffic = is_aitraffic
-        # The language of the response message.
+        # The language type of the received message.
         self.lang = lang
-        # The sorting order.
+        # The sort order.
         self.order = order
-        # The number of the page to return.
+        # The number of entries per page.
         self.page_size = page_size
         # The port number.
         self.port = port
@@ -54,13 +54,13 @@ class DescribeOutgoingDestinationRequest(DaraModel):
         self.private_ip = private_ip
         # The public IP address.
         self.public_ip = public_ip
-        # The security policy for the outbound connection.
+        # The security policy for Outbound Domain of outbound connections.
         self.security_suggest = security_suggest
-        # The field to use for sorting.
+        # The field by which to sort the results.
         self.sort = sort
-        # The source IP address of the visitor.
+        # The IP address of the access source. (This field is deprecated.)
         self.source_ip = source_ip
-        # The start of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # The start time of the query. The value is a UNIX timestamp in seconds.
         # 
         # This parameter is required.
         self.start_time = start_time

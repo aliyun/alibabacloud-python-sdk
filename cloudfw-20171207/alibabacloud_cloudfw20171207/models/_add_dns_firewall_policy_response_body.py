@@ -10,7 +10,7 @@ class AddDnsFirewallPolicyResponseBody(DaraModel):
         acl_uuid: str = None,
         request_id: str = None,
     ):
-        # The ID of the access control list.
+        # The unique ID of the access control policy.
         self.acl_uuid = acl_uuid
         # The request ID.
         self.request_id = request_id

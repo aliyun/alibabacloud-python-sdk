@@ -15,27 +15,27 @@ class DescribeVpcFirewallPrecheckDetailRequest(DaraModel):
         transit_router_id: str = None,
         vpc_id: str = None,
     ):
-        # The ID of the CEN instance.
+        # The Cloud Enterprise Network (CEN) instance ID.
         self.cen_id = cen_id
-        # The language of the response. Valid values:
+        # The language type. Valid values:
         # 
         # - **zh** (default): Chinese.
         # 
         # - **en**: English.
         self.lang = lang
-        # The UID of the member account in Cloud Firewall.
+        # The UID of the Cloud Firewall member accounts.
         self.member_uid = member_uid
         # The type of the network instance. Valid values:
         # 
-        # - **cen_firewall**: a firewall for a CEN instance (Basic Edition)
+        # - **cen_firewall**: CEN basic edition firewall
         # 
-        # - **cen_tr_firewall**: a firewall for a CEN instance with a transit router
+        # - **cen_tr_firewall**: CEN-TR firewall
         self.network_instance_type = network_instance_type
-        # The region ID.
+        # The region ID. This parameter is required. If it is not specified, ErrorParameters is returned.
         self.region = region
-        # The ID of the transit router instance.
+        # The transit router instance ID. You must specify at least one of VpcId and TransitRouterId. Specify VpcId when querying a basic edition firewall, or specify TransitRouterId when querying a transit router (TR) scenario. If neither is specified, ErrorParameters is returned.
         self.transit_router_id = transit_router_id
-        # The ID of the VPC.
+        # The VPC-connected instance ID. You must specify at least one of VpcId and TransitRouterId. Specify VpcId when querying a basic edition firewall, or specify TransitRouterId when querying a forward routing (TR) scenario. If neither is specified, ErrorParameters is returned.
         self.vpc_id = vpc_id
 
     def validate(self):

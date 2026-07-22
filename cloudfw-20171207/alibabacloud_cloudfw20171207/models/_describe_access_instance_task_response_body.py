@@ -33,7 +33,7 @@ class DescribeAccessInstanceTaskResponseBody(DaraModel):
         self.task_start_timestamp = task_start_timestamp
         # The task status.
         self.task_status = task_status
-        # The steps of the task.
+        # The task steps.
         self.task_steps = task_steps
 
     def validate(self):
@@ -113,11 +113,11 @@ class DescribeAccessInstanceTaskResponseBodyTaskSteps(DaraModel):
         step_progress: str = None,
         step_status: str = None,
     ):
-        # The name of the step.
+        # The step name.
         self.step_name = step_name
-        # The progress of the step.
+        # The step progress.
         self.step_progress = step_progress
-        # The status of the step.
+        # The step status.
         self.step_status = step_status
 
     def validate(self):

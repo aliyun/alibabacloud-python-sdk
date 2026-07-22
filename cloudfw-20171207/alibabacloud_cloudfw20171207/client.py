@@ -16100,6 +16100,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_sls_analyze_open_status_with_options_async(request, runtime)
 
+    def describe_task_dispatch_status_with_options(
+        self,
+        request: main_models.DescribeTaskDispatchStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeTaskDispatchStatusResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeTaskDispatchStatus',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeTaskDispatchStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_task_dispatch_status_with_options_async(
+        self,
+        request: main_models.DescribeTaskDispatchStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeTaskDispatchStatusResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeTaskDispatchStatus',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeTaskDispatchStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_task_dispatch_status(
+        self,
+        request: main_models.DescribeTaskDispatchStatusRequest,
+    ) -> main_models.DescribeTaskDispatchStatusResponse:
+        runtime = RuntimeOptions()
+        return self.describe_task_dispatch_status_with_options(request, runtime)
+
+    async def describe_task_dispatch_status_async(
+        self,
+        request: main_models.DescribeTaskDispatchStatusRequest,
+    ) -> main_models.DescribeTaskDispatchStatusResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_task_dispatch_status_with_options_async(request, runtime)
+
     def describe_threat_intelligence_switch_with_options(
         self,
         runtime: RuntimeOptions,
@@ -16657,6 +16727,8 @@ class Client(OpenApiClient):
             query['NatGatewayId'] = request.nat_gateway_id
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.query_id):
+            query['QueryId'] = request.query_id
         if not DaraCore.is_null(request.rule_id):
             query['RuleId'] = request.rule_id
         if not DaraCore.is_null(request.rule_result):
@@ -16767,6 +16839,8 @@ class Client(OpenApiClient):
             query['NatGatewayId'] = request.nat_gateway_id
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.query_id):
+            query['QueryId'] = request.query_id
         if not DaraCore.is_null(request.rule_id):
             query['RuleId'] = request.rule_id
         if not DaraCore.is_null(request.rule_result):
@@ -21924,6 +21998,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.modify_sensitive_switch_with_options_async(request, runtime)
 
+    def modify_sls_dispatch_config_with_options(
+        self,
+        request: main_models.ModifySlsDispatchConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifySlsDispatchConfigResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.detail_config):
+            query['DetailConfig'] = request.detail_config
+        if not DaraCore.is_null(request.log_version):
+            query['LogVersion'] = request.log_version
+        if not DaraCore.is_null(request.modify_type):
+            query['ModifyType'] = request.modify_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifySlsDispatchConfig',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifySlsDispatchConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_sls_dispatch_config_with_options_async(
+        self,
+        request: main_models.ModifySlsDispatchConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifySlsDispatchConfigResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.detail_config):
+            query['DetailConfig'] = request.detail_config
+        if not DaraCore.is_null(request.log_version):
+            query['LogVersion'] = request.log_version
+        if not DaraCore.is_null(request.modify_type):
+            query['ModifyType'] = request.modify_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifySlsDispatchConfig',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifySlsDispatchConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_sls_dispatch_config(
+        self,
+        request: main_models.ModifySlsDispatchConfigRequest,
+    ) -> main_models.ModifySlsDispatchConfigResponse:
+        runtime = RuntimeOptions()
+        return self.modify_sls_dispatch_config_with_options(request, runtime)
+
+    async def modify_sls_dispatch_config_async(
+        self,
+        request: main_models.ModifySlsDispatchConfigRequest,
+    ) -> main_models.ModifySlsDispatchConfigResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_sls_dispatch_config_with_options_async(request, runtime)
+
     def modify_sls_dispatch_status_with_options(
         self,
         request: main_models.ModifySlsDispatchStatusRequest,
@@ -23473,6 +23625,10 @@ class Client(OpenApiClient):
     ) -> main_models.PutDisableFwSwitchResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.ip_version):
             query['IpVersion'] = request.ip_version
         if not DaraCore.is_null(request.ipaddr_list):
@@ -23513,6 +23669,10 @@ class Client(OpenApiClient):
     ) -> main_models.PutDisableFwSwitchResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.ip_version):
             query['IpVersion'] = request.ip_version
         if not DaraCore.is_null(request.ipaddr_list):
@@ -23645,6 +23805,10 @@ class Client(OpenApiClient):
     ) -> main_models.PutEnableFwSwitchResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.ip_version):
             query['IpVersion'] = request.ip_version
         if not DaraCore.is_null(request.ipaddr_list):
@@ -23685,6 +23849,10 @@ class Client(OpenApiClient):
     ) -> main_models.PutEnableFwSwitchResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.ip_version):
             query['IpVersion'] = request.ip_version
         if not DaraCore.is_null(request.ipaddr_list):

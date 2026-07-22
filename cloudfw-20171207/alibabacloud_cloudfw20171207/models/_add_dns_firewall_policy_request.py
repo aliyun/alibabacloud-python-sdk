@@ -20,13 +20,10 @@ class AddDnsFirewallPolicyRequest(DaraModel):
         source_ip: str = None,
         source_type: str = None,
     ):
-        # Specifies the action to take on traffic that matches the access control policy. Valid values:
-        # 
-        # - **accept**: Allows the traffic.
-        # 
-        # - **drop**: Denies the traffic.
-        # 
-        # - **log**: Monitors the traffic.
+        # The method that is used by the access control policy to control traffic that passes through Cloud Firewall. Valid values:
+        # - **accept**: allows the traffic.
+        # - **drop**: deny the traffic.
+        # - **log**: monitors the traffic.
         # 
         # This parameter is required.
         self.acl_action = acl_action
@@ -36,13 +33,10 @@ class AddDnsFirewallPolicyRequest(DaraModel):
         self.description = description
         # The destination address in the access control policy.
         # 
-        # - When **DestinationType** is `net`, this parameter specifies the destination CIDR block. Example: `1.2.3.4/24`.
-        # 
-        # - When **DestinationType** is `group`, this parameter specifies the name of the destination address book. Example: `db_group`.
-        # 
-        # - When **DestinationType** is `domain`, this parameter specifies the destination domain name. Example: `*.aliyuncs.com`.
-        # 
-        # - When **DestinationType** is `location`, this parameter specifies the destination region. For more information about location codes, see the documentation. Example: `["BJ11", "ZB"]`.
+        # - If **DestinationType** is set to net, **Destination** is a destination CIDR block. Example: 1.2.3.4/24.
+        # - If **DestinationType** is set to group, **Destination** is the name of a destination address book. Example: db_group.
+        # - If **DestinationType** is set to domain, **Destination** is a destination domain name. Example: *.aliyuncs.com.
+        # - If **DestinationType** is set to location, **Destination** is a destination area (for specific area positional encoding, see the following sections). Example: ["BJ11", "ZB"\\].
         # 
         # This parameter is required.
         self.destination = destination
@@ -50,21 +44,14 @@ class AddDnsFirewallPolicyRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # - **net**: destination CIDR block
-        # 
         # - **group**: destination address book
-        # 
         # - **domain**: destination domain name
         # 
         # This parameter is required.
         self.destination_type = destination_type
-        # The traffic direction for the access control policy. Valid values:
-        # 
-        # - **in**: inbound traffic
-        # 
-        # - **out**: outbound traffic
+        # The direction of the DNS firewall policy. The backend fixes this value to out (internal-to-external). Set Direction to out.
         self.direction = direction
-        # The IP version supported by the policy.
+        # The IP address version supported.
         # 
         # Valid values:
         # 
@@ -74,25 +61,26 @@ class AddDnsFirewallPolicyRequest(DaraModel):
         # 
         # This parameter is required.
         self.ip_version = ip_version
-        # The language of the request and response. Valid values:<br>-**zh**: Chinese<br>-**en**: English<br><br>
+        # The language of the request and response. Valid values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
-        # The priority of the access control policy. A smaller value indicates a higher priority.
+        # The priority of the policy. A smaller value indicates a higher priority. Valid values: 1 to 20000.
         # 
         # This parameter is required.
         self.priority = priority
-        # Specifies whether to enable the access control policy. Valid values:
+        # Specifies whether to enable the access control policy. The policy is enabled by default after it is created. Valid values:
         # 
-        # - **true**: Enables the access control policy.
-        # 
-        # - **false**: Disables the access control policy.
+        # - **true**: enables the access control policy.
+        # - **false**: does not enable the access control policy.
         # 
         # This parameter is required.
         self.release = release
-        # The source address in the access control policy.
+        # The source address in the access control policy. Valid values:
         # 
-        # - When **SourceType** is `net`, this parameter specifies the source CIDR block. Example: `10.2.XX.XX/24`.
+        # - If **SourceType** is set to `net`, Source is a source CIDR block. Example: 10.2.XX.XX/24.
         # 
-        # - When **SourceType** is `group`, this parameter specifies the name of the source address book. Example: `db_group`.
+        # - If **SourceType** is set to `group`, Source is the name of a source address book. Example: db_group.
         # 
         # This parameter is required.
         self.source = source

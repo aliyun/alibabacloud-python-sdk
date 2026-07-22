@@ -16,7 +16,7 @@ class DescribeTrFirewallV2RoutePolicyListResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # The total number of entries returned.
         self.total_count = total_count
         # The list of firewall routing policies.
         self.tr_firewall_route_policies = tr_firewall_route_policies
@@ -72,35 +72,35 @@ class DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePolicies(Dar
         src_candidate_list: List[main_models.DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePoliciesSrcCandidateList] = None,
         tr_firewall_route_policy_id: str = None,
     ):
-        # The list of destination traffic redirection instances.
+        # The list of secondary traffic redirection instances.
         self.dest_candidate_list = dest_candidate_list
-        # The description of the policy.
+        # The policy description.
         self.policy_description = policy_description
-        # The name of the policy.
+        # The policy name.
         self.policy_name = policy_name
-        # The status of the policy. Valid values:
+        # The policy status. Valid values:
         # 
-        # - creating: The policy is being created.
+        # - creating: being created
         # 
-        # - deleting: The policy is being deleted.
+        # - deleting: being deleted
         # 
-        # - opening: The policy is being enabled.
+        # - opening: being enabled
         # 
-        # - opened: The policy is enabled.
+        # - opened: enabled
         # 
-        # - closing: The policy is being disabled.
+        # - closing: being disabled
         # 
-        # - closed: The policy is disabled.
+        # - closed: disabled
         self.policy_status = policy_status
-        # The type of traffic redirection scenario for the VPC firewall. The firewall is created for a transit router that belongs to an Enterprise Edition Cloud Enterprise Network (CEN) instance. Valid values:
+        # The traffic redirection scenario type for the virtual private cloud (VPC) firewall on CEN Enterprise Edition. Valid values:
         # 
-        # - **fullmesh**: full-mesh
+        # - **fullmesh**: multi-point interconnection
         # 
         # - **one_to_one**: point-to-point
         # 
         # - **end_to_end**: point-to-multipoint
         self.policy_type = policy_type
-        # The list of source traffic redirection instances.
+        # The list of primary traffic redirection instances.
         self.src_candidate_list = src_candidate_list
         # The ID of the firewall routing policy.
         self.tr_firewall_route_policy_id = tr_firewall_route_policy_id

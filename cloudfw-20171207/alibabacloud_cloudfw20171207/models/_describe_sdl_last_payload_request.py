@@ -14,20 +14,20 @@ class DescribeSdlLastPayloadRequest(DaraModel):
         src_ip: str = None,
         start_time: int = None,
     ):
-        # The destination IP address.
+        # The destination IP address. This is an optional parameter used to filter by destination IP address.
         self.dst_ip = dst_ip
-        # The end of the time range to query. Specify the value as a UNIX timestamp in seconds.
+        # The end time of the query (UNIX timestamp in seconds). This parameter is required. If this parameter is not specified, the API returns an error.
         self.end_time = end_time
         # The language of the response. Valid values:
         # 
         # - **zh** (default): Chinese.
         # - **en**: English.
         self.lang = lang
-        # The type of sensitive credential.
+        # The type of sensitive credential. This parameter is required. If this parameter is not specified, the API returns an error.
         self.sensitive_category = sensitive_category
-        # The source IP address.
+        # The source IP address. This is an optional parameter used to filter by source IP address.
         self.src_ip = src_ip
-        # The beginning of the time range to query. Specify the value as a UNIX timestamp in seconds.
+        # The start time of the query (UNIX timestamp in seconds). This parameter is required. If this parameter is not specified, the API returns an error.
         self.start_time = start_time
 
     def validate(self):

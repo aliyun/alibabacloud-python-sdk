@@ -13,15 +13,15 @@ class DescribeAccessInstanceTaskRequest(DaraModel):
         region_no: str = None,
         task_id: str = None,
     ):
-        # The ID of the synchronization node.
+        # The synchronization node ID. You must specify at least one of TaskId and AccessInstanceId. If neither is specified, the API returns a 400 error.
         self.access_instance_id = access_instance_id
-        # The type of the synchronization node.
+        # The synchronization node type.
         self.access_instance_type = access_instance_type
-        # The language of the response messages.
+        # The language of the response message.
         self.lang = lang
         # The region ID.
         self.region_no = region_no
-        # The task ID.
+        # The task ID. You must specify at least one of TaskId and AccessInstanceId. If neither is specified, the API returns a 400 error.
         self.task_id = task_id
 
     def validate(self):

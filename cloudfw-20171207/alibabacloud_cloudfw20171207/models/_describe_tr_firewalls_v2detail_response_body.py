@@ -28,19 +28,19 @@ class DescribeTrFirewallsV2DetailResponseBody(DaraModel):
         tr_attachment_slave_zone: str = None,
         transit_router_id: str = None,
     ):
-        # The ID of the Cloud Enterprise Network (CEN) instance.
+        # The instance ID of the Cloud Enterprise Network (CEN).
         self.cen_id = cen_id
         # The description of the firewall.
         self.firewall_description = firewall_description
-        # The ID of the elastic network interface (ENI) of the firewall.
+        # The ID of the firewall ENI.
         self.firewall_eni_id = firewall_eni_id
-        # The ID of the VPC to which the ENI of the firewall belongs.
+        # The ID of the VPC in which the firewall ENI resides.
         self.firewall_eni_vpc_id = firewall_eni_vpc_id
-        # The ID of the vSwitch to which the ENI of the firewall belongs.
+        # The ID of the vSwitch in which the firewall ENI resides.
         self.firewall_eni_vswitch_id = firewall_eni_vswitch_id
-        # The ID of the VPC firewall instance.
+        # The instance ID of the virtual private cloud (VPC) firewall.
         self.firewall_id = firewall_id
-        # The name of the VPC firewall instance.
+        # The instance name of the virtual private cloud (VPC) firewall.
         self.firewall_name = firewall_name
         # The status of the firewall. Valid values:
         # 
@@ -50,49 +50,49 @@ class DescribeTrFirewallsV2DetailResponseBody(DaraModel):
         # 
         # - Ready: The firewall is ready.
         self.firewall_status = firewall_status
-        # The CIDR block of the vSwitch that is automatically created in the firewall VPC to host the ENI of the firewall in automatic mode.
+        # The subnet CIDR block that is used to store the firewall ENI in the firewall VPC in automatic mode.
         self.firewall_subnet_cidr = firewall_subnet_cidr
-        # The status of the VPC firewall. Valid values:
+        # The status of the virtual private cloud (VPC) firewall. Valid values:
         # 
         # - **opened**: The firewall is enabled.
         # 
         # - **closed**: The firewall is disabled.
         # 
-        # - **notconfigured**: The firewall is not configured.
+        # - **notconfigured**: The virtual private cloud (VPC) firewall is not configured.
         # 
-        # - **configured**: The firewall is configured.
+        # - **configured**: The virtual private cloud (VPC) firewall is configured.
         # 
-        # - **creating**: The firewall is being created.
+        # - **creating**: The virtual private cloud (VPC) firewall is being created.
         # 
-        # - **opening**: The firewall is being enabled.
+        # - **opening**: The virtual private cloud (VPC) firewall is being enabled.
         # 
-        # - **deleting**: The firewall is being deleted.
+        # - **deleting**: The virtual private cloud (VPC) firewall is being deleted.
         # 
-        # > If you do not specify this parameter, VPC firewalls in all states are queried.
+        # 
+        # > If this parameter is not set, virtual private cloud (VPC) firewalls in all states are queried.
         self.firewall_switch_status = firewall_switch_status
-        # The CIDR block of the VPC that is automatically created for the firewall in automatic mode.
+        # The CIDR block of the firewall VPC in automatic mode.
         self.firewall_vpc_cidr = firewall_vpc_cidr
         # The region ID of the transit router instance.
         self.region_no = region_no
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The routing mode. Valid values:
         # 
         # - **managed**: automatic mode
-        # 
         # - **manual**: manual mode
         self.route_mode = route_mode
-        # The ID of the transit router attachment.
+        # The attachment ID that is used to connect to the transit router in the firewall VPC in automatic mode.
         self.tr_attachment_id = tr_attachment_id
-        # The primary CIDR block of the vSwitch that is automatically created in the firewall VPC to connect to the transit router in automatic mode.
+        # The primary subnet CIDR block that is used to connect to the transit router in the firewall VPC in automatic mode.
         self.tr_attachment_master_cidr = tr_attachment_master_cidr
-        # The primary zone of the vSwitch that is automatically created in the firewall VPC to connect to the transit router in automatic mode.
+        # The primary zone of the subnet that is used to connect to the transit router in the firewall VPC in automatic mode.
         self.tr_attachment_master_zone = tr_attachment_master_zone
-        # The secondary CIDR block of the vSwitch that is automatically created in the firewall VPC to connect to the transit router in automatic mode.
+        # The secondary subnet CIDR block that is used to connect to the transit router in the firewall VPC in automatic mode.
         self.tr_attachment_slave_cidr = tr_attachment_slave_cidr
-        # The secondary zone of the vSwitch that is automatically created in the firewall VPC to connect to the transit router in automatic mode.
+        # The secondary zone of the subnet that is used to connect to the transit router in the firewall VPC in automatic mode.
         self.tr_attachment_slave_zone = tr_attachment_slave_zone
-        # The ID of the transit router instance.
+        # The instance ID of the forward routing router.
         self.transit_router_id = transit_router_id
 
     def validate(self):

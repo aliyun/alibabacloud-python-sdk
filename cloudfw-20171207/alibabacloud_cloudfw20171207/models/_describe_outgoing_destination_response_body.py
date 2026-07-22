@@ -14,9 +14,9 @@ class DescribeOutgoingDestinationResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The information about the destination addresses.
+        # The destination address information.
         self.dst_list = dst_list
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The total number of entries.
         self.total_count = total_count
@@ -80,15 +80,15 @@ class DescribeOutgoingDestinationResponseBodyDstList(DaraModel):
         session_count: int = None,
         tag_list: List[main_models.DescribeOutgoingDestinationResponseBodyDstListTagList] = None,
     ):
-        # The recommended Access Control List (ACL) details.
+        # The recommended ACL content.
         self.acl_recommend_detail = acl_recommend_detail
         # The policy status.
         self.acl_status = acl_status
-        # The business to which the domain name belongs.
+        # The domain name business.
         self.business = business
         # The category ID.
         self.category_id = category_id
-        # The category name of the service.
+        # The category name of the product.
         self.category_name = category_name
         # The destination domain name.
         self.dst_domain = dst_domain
@@ -102,13 +102,13 @@ class DescribeOutgoingDestinationResponseBodyDstList(DaraModel):
         self.has_acl_recommend = has_acl_recommend
         # The inbound traffic. Unit: bytes.
         self.in_bytes = in_bytes
-        # Indicates whether the destination is manually marked as normal.
+        # Indicates whether the entry is manually marked as normal by the user.
         self.is_mark_normal = is_mark_normal
         # The outbound traffic. Unit: bytes.
         self.out_bytes = out_bytes
         # The number of sessions.
         self.session_count = session_count
-        # The list of tags.
+        # The tag list.
         self.tag_list = tag_list
 
     def validate(self):

@@ -23,39 +23,35 @@ class DescribeVpcFirewallTrafficAssetListRequest(DaraModel):
         self.current_page = current_page
         # The domain name.
         self.domain = domain
-        # The end time. The value is a Unix timestamp that is accurate to the second.
+        # The end time. This value is a UNIX timestamp in seconds.
         # 
         # This parameter is required.
         self.end_time = end_time
         # The IP address of the asset.
         self.ip = ip
-        # Specifies whether to count only the traffic that is used to access AI services.
+        # Specifies whether to collect only the traffic that accesses AI services. This parameter is required. Set this parameter to "true". Otherwise, a parameter error is returned.
         self.is_aitraffic = is_aitraffic
-        # The language of the content within the request and response. Valid values:
+        # The language of the response. Valid values:
         # 
         # - **zh** (default): Chinese
-        # 
         # - **en**: English
         self.lang = lang
-        # The field to sort by.
+        # The sort field. Valid values:
+        # 
+        # - TotalBytes: sorts by total traffic.
+        # - SessionCount: sorts by session count.
         # 
         # Default value: TotalBytes.
-        # 
-        # Valid values:
-        # 
-        # TotalBytes: Sorts by total traffic.
-        # 
-        # SessionCount: Sorts by the number of sessions.
         self.order = order
-        # The number of entries to return on each page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The sort order. Valid values: \\`asc\\`, \\`desc\\`.
+        # The sort order. Valid values: asc, desc.
         self.sort = sort
-        # The start time. The value is a Unix timestamp that is accurate to the second.
+        # The start time. This value is a UNIX timestamp in seconds.
         # 
         # This parameter is required.
         self.start_time = start_time
-        # The VPC where the asset resides.
+        # The ID of the VPC where the asset resides.
         self.vpc_id = vpc_id
 
     def validate(self):

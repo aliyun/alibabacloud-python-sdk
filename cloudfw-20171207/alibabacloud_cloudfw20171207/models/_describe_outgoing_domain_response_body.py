@@ -14,11 +14,11 @@ class DescribeOutgoingDomainResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # An array of outbound domains.
+        # The list of Outbound Domain names.
         self.domain_list = domain_list
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The total number of outbound domains found.
+        # The total number of Outbound Domain names.
         self.total_count = total_count
 
     def validate(self):
@@ -70,6 +70,7 @@ class DescribeOutgoingDomainResponseBodyDomainList(DaraModel):
         address_group_name: str = None,
         address_group_uuid: str = None,
         application_name_list: List[str] = None,
+        application_port_list: List[main_models.DescribeOutgoingDomainResponseBodyDomainListApplicationPortList] = None,
         asset_count: int = None,
         business: str = None,
         category_class_id: str = None,
@@ -92,102 +93,96 @@ class DescribeOutgoingDomainResponseBodyDomainList(DaraModel):
         tag_list: List[main_models.DescribeOutgoingDomainResponseBodyDomainListTagList] = None,
         total_bytes: str = None,
     ):
-        # Indicates whether an access control policy is configured for the domain. Valid values:
+        # Indicates whether the access control policy covers the domain name. Valid values:
         # 
-        # - **Uncovered**: no
-        # 
-        # - **FullCoverage**: yes
+        # - **Uncovered**: Not covered.
+        # - **FullCoverage**: Covered.
         self.acl_coverage = acl_coverage
-        # The recommended action for the access control policy.
+        # The ACL recommendation details.
         self.acl_recommend_detail = acl_recommend_detail
         # The health status of the access control policy. Valid values:
         # 
-        # - **Normal**: healthy
-        # 
-        # - **Abnormal**: unhealthy
+        # - **Normal**: Healthy.
+        # - **Abnormal**: Unhealthy.
         self.acl_status = acl_status
         # The name of the address book.
         self.address_group_name = address_group_name
         # The UUID of the address book.
         self.address_group_uuid = address_group_uuid
-        # An array of application names.
+        # The application names.
         self.application_name_list = application_name_list
-        # The total number of assets that initiate outbound connections to the domain.
+        self.application_port_list = application_port_list
+        # The total number of assets that initiate outbound connections.
         self.asset_count = asset_count
-        # The business to which the website belongs.
+        # The website business.
         self.business = business
-        # The category of the intelligence tag. Valid values:
+        # The categorization of the intelligence tags label. Valid values:
         # 
-        # - **Suspicious**: suspicious
-        # 
-        # - **Malicious**: malicious
-        # 
-        # - **Trusted**: trusted
+        # - **Suspicious**: Suspicious.
+        # - **Malicious**: Malicious.
+        # - **Trusted**: Trusted.
         self.category_class_id = category_class_id
-        # The ID of the asset category. Valid values:
+        # The product category ID. Valid values:
         # 
-        # - **Aliyun**: Alibaba Cloud service
-        # 
-        # - **NotAliyun**: third-party service
+        # - **Aliyun**: Alibaba Cloud product.
+        # - **NotAliyun**: Non-Alibaba Cloud product.
         self.category_id = category_id
-        # The name of the asset category. Valid values:
+        # The category name of the product. Valid values:
         # 
-        # - Alibaba Cloud product
-        # 
-        # - Non-Alibaba Cloud product
+        # - **Alibaba Cloud product**
+        # - **Non-Alibaba Cloud product**
         self.category_name = category_name
-        # The outbound domain name.
+        # The domain name of outbound connections.
         self.domain = domain
-        # The name of the policy group.
+        # The group name of the rule.
         self.group_name = group_name
-        # Indicates whether an access control policy is configured for the domain name. Valid values:
+        # Indicates whether an ACL already covers this domain name. Valid values:
         # 
-        # - **true**: yes
-        # 
-        # - **false**: no
+        # - **true**: Yes.
+        # - **false**: No.
         self.has_acl = has_acl
-        # Indicates whether a recommended access control policy exists. Valid values:
+        # Indicates whether an ACL recommendation exists. Valid values:
         # 
-        # - **true**: yes
-        # 
-        # - **false**: no
+        # - **true**: Yes.
+        # - **false**: No.
         self.has_acl_recommend = has_acl_recommend
-        # The volume of inbound traffic, in bytes.
+        # The inbound traffic.
         self.in_bytes = in_bytes
-        # Indicates whether the outbound domain name is marked as normal. Valid values:
+        # Indicates whether the Outbound Domain is marked as normal. Valid values:
         # 
-        # - **true**: normal
-        # 
-        # - **false**: not normal
+        # - **true**: Normal.
+        # - **false**: Abnormal.
         self.is_mark_normal = is_mark_normal
-        # The name of the organization.
+        # The organization name.
         self.organization = organization
-        # The volume of outbound traffic, in bytes.
+        # The outbound traffic.
         self.out_bytes = out_bytes
-        # The total number of assets in a private network that initiate outbound connections to the domain.
+        # The total number of private network assets that initiate outbound connections.
         self.private_asset_count = private_asset_count
-        # The ID of the access control policy.
+        # The ACL rule ID.
         self.rule_id = rule_id
-        # The name of the access control policy.
+        # The ACL rule name.
         self.rule_name = rule_name
-        # The reason for the security recommendation.
+        # The security reason.
         self.security_reason = security_reason
-        # The recommended security action for the outbound domain name. Valid values:
+        # The security policy for the Outbound Domain of outbound connections. Valid values:
         # 
-        # - **pass**: allow
-        # 
-        # - **alert**: monitor
-        # 
-        # - **drop**: deny
+        # - **pass**: Allow.
+        # - **alert**: Monitor.
+        # - **drop**: Deny.
         self.security_suggest = security_suggest
         # The number of requests.
         self.session_count = session_count
-        # An array of tags.
+        # The tag list.
         self.tag_list = tag_list
-        # The total traffic volume, in bytes.
+        # The total traffic. Unit: bytes.
         self.total_bytes = total_bytes
 
     def validate(self):
+        if self.application_port_list:
+            for v1 in self.application_port_list:
+                 if v1:
+                    v1.validate()
         if self.tag_list:
             for v1 in self.tag_list:
                  if v1:
@@ -215,6 +210,11 @@ class DescribeOutgoingDomainResponseBodyDomainList(DaraModel):
 
         if self.application_name_list is not None:
             result['ApplicationNameList'] = self.application_name_list
+
+        result['ApplicationPortList'] = []
+        if self.application_port_list is not None:
+            for k1 in self.application_port_list:
+                result['ApplicationPortList'].append(k1.to_map() if k1 else None)
 
         if self.asset_count is not None:
             result['AssetCount'] = self.asset_count
@@ -303,6 +303,12 @@ class DescribeOutgoingDomainResponseBodyDomainList(DaraModel):
         if m.get('ApplicationNameList') is not None:
             self.application_name_list = m.get('ApplicationNameList')
 
+        self.application_port_list = []
+        if m.get('ApplicationPortList') is not None:
+            for k1 in m.get('ApplicationPortList'):
+                temp_model = main_models.DescribeOutgoingDomainResponseBodyDomainListApplicationPortList()
+                self.application_port_list.append(temp_model.from_map(k1))
+
         if m.get('AssetCount') is not None:
             self.asset_count = m.get('AssetCount')
 
@@ -380,27 +386,23 @@ class DescribeOutgoingDomainResponseBodyDomainListTagList(DaraModel):
         tag_id: str = None,
         tag_name: str = None,
     ):
-        # The category of the intelligence tag. Valid values:
+        # The categorization of the intelligence tags label. Valid values:
         # 
-        # - **Suspicious**: suspicious
-        # 
-        # - **Malicious**: malicious
-        # 
-        # - **Trusted**: trusted
+        # - **Suspicious**: Suspicious.
+        # - **Malicious**: Malicious.
+        # - **Trusted**: Trusted.
         self.class_id = class_id
-        # The risk level. Valid values:
+        # The risk assessment level. Valid values:
         # 
-        # - **1**: low
-        # 
-        # - **2**: medium
-        # 
-        # - **3**: high
+        # - **1**: Low.
+        # - **2**: Medium.
+        # - **3**: High.
         self.risk_level = risk_level
-        # The description of the tag.
+        # The tag description.
         self.tag_describe = tag_describe
-        # The ID of the intelligence tag.
+        # The intelligence tags label ID.
         self.tag_id = tag_id
-        # The name of the tag.
+        # The tag name.
         self.tag_name = tag_name
 
     def validate(self):
@@ -444,6 +446,41 @@ class DescribeOutgoingDomainResponseBodyDomainListTagList(DaraModel):
 
         if m.get('TagName') is not None:
             self.tag_name = m.get('TagName')
+
+        return self
+
+class DescribeOutgoingDomainResponseBodyDomainListApplicationPortList(DaraModel):
+    def __init__(
+        self,
+        application_name: str = None,
+        port: int = None,
+    ):
+        self.application_name = application_name
+        self.port = port
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.application_name is not None:
+            result['ApplicationName'] = self.application_name
+
+        if self.port is not None:
+            result['Port'] = self.port
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationName') is not None:
+            self.application_name = m.get('ApplicationName')
+
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
 
         return self
 

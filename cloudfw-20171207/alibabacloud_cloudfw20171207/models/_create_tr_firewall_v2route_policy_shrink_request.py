@@ -15,28 +15,29 @@ class CreateTrFirewallV2RoutePolicyShrinkRequest(DaraModel):
         policy_type: str = None,
         src_candidate_list_shrink: str = None,
     ):
-        # The list of secondary traffic redirection instances.
+        # The secondary traffic redirection instances.
         self.dest_candidate_list_shrink = dest_candidate_list_shrink
-        # The VPC border firewall instance ID.
+        # The ID of the virtual private cloud (VPC) firewall instance.
+        # > FirewallId is required. If it is not specified, ErrorParameters(400) is returned. You can call DescribeTrFirewallsV2List to obtain the instance ID.
         self.firewall_id = firewall_id
-        # The language type for receiving messages. Valid values:
+        # The language of the content within the response. Valid values:
         # 
         # - **zh** (default): Chinese
         # - **en**: English
         self.lang = lang
-        # The traffic redirection description.
+        # The description of the traffic redirection configuration.
         self.policy_description = policy_description
-        # The traffic redirection name.
+        # The name of the traffic redirection configuration.
         self.policy_name = policy_name
-        # The traffic redirection scenario type for the VPC border firewall with Cloud Enterprise Network Enterprise Edition. Valid values:
+        # The traffic redirection scenario type for the virtual private cloud (VPC) firewall on a Cloud Enterprise Network (CEN) Enterprise Edition transit router. Valid values:
         # 
-        # - **fullmesh**: Multi-point interconnection
+        # - **fullmesh**: multi-point interconnection
         # 
-        # - **one_to_one**: Point-to-point
+        # - **one_to_one**: point-to-point
         # 
-        # - **end_to_end**: Point-to-multipoint
+        # - **end_to_end**: point-to-multipoint
         self.policy_type = policy_type
-        # The list of primary traffic redirection instances.
+        # The primary traffic redirection instances.
         self.src_candidate_list_shrink = src_candidate_list_shrink
 
     def validate(self):

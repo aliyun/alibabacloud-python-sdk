@@ -30,15 +30,15 @@ class DescribeOutgoingDomainDetailRequest(DaraModel):
         self.acl_coverage = acl_coverage
         # The page number.
         self.current_page = current_page
-        # The domain name.
+        # The destination domain name to query. You must specify at least one of Domain or DomainList. If neither is specified, the API returns ErrorDomainName.
         self.domain = domain
-        # The list of domain names.
+        # The list of destination domain names to query. You must specify at least one of Domain or DomainList. If neither is specified, the API returns ErrorDomainName.
         self.domain_list = domain_list
-        # The end of the time range to query. The value is a UNIX timestamp in seconds.
+        # The end time of the query. Specify a UNIX timestamp in seconds.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # Specifies whether to query NAT private network outbound connections.
+        # Specifies whether to query outbound connections from NAT private IP addresses.
         self.iptype = iptype
         # The language type.
         self.lang = lang
@@ -56,7 +56,7 @@ class DescribeOutgoingDomainDetailRequest(DaraModel):
         self.sort = sort
         # The source IP address of the request.
         self.source_ip = source_ip
-        # The beginning of the time range to query. The value is a UNIX timestamp in seconds.
+        # The start time of the query. Specify a UNIX timestamp in seconds.
         # 
         # This parameter is required.
         self.start_time = start_time

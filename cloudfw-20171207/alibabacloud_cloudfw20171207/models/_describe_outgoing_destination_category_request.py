@@ -15,19 +15,21 @@ class DescribeOutgoingDestinationCategoryRequest(DaraModel):
         start_time: str = None,
         type_id: str = None,
     ):
-        # The category ID.
+        # The category ID. Valid values are predefined destination category enumerations (25+ in total), such as TrustedDomain (trusted websites), AliPay (Alipay products), and CDN (CDN services). For the complete list of enumeration values and their semantics, refer to the product documentation.
         self.category_id = category_id
-        # The destination type.
+        # The destination type. This parameter is required. If this parameter is not specified, ErrorDstType is returned. Valid values:
+        # - Domain: domain name.
+        # - DstIP: IP address.
         self.dst_type = dst_type
-        # The end time of the query. This is a UNIX timestamp. Unit: seconds.
+        # The end time of the query. Specify the value as a UNIX timestamp in seconds.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The language of the response message.
+        # The language type of the response message.
         self.lang = lang
-        # The source IP address of the visitor.
+        # The source IP address of the request.
         self.source_ip = source_ip
-        # The start time of the query. This is a UNIX timestamp. Unit: seconds.
+        # The start time of the query. Specify the value as a UNIX timestamp in seconds.
         # 
         # This parameter is required.
         self.start_time = start_time

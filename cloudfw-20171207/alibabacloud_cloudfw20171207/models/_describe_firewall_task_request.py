@@ -12,21 +12,20 @@ class DescribeFirewallTaskRequest(DaraModel):
         task_id: str = None,
         task_type: str = None,
     ):
-        # The ID of the VPC instance.
+        # The VPC-connected instance ID. You must specify at least one of TaskId and ChildInstanceId. If neither is specified, the API returns ErrorParameters(400).
         self.child_instance_id = child_instance_id
-        # The language of the response. Valid values:
+        # The language type. Valid values:
         # 
         # - **zh** (default): Chinese
-        # 
         # - **en**: English
         self.lang = lang
-        # The task ID.
+        # The task ID. You must specify at least one of TaskId and ChildInstanceId. If neither is specified, the API returns ErrorParameters(400).
         self.task_id = task_id
         # The type of the task. Valid values:
         # 
-        # - **NAT**: NAT border task
+        # - **NAT**: NAT firewall task
         # 
-        # - **VPC**: VPC border task
+        # - **VPC**: VPC firewall task
         self.task_type = task_type
 
     def validate(self):

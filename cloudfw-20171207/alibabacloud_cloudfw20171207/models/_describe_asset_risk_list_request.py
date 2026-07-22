@@ -14,13 +14,12 @@ class DescribeAssetRiskListRequest(DaraModel):
         lang: str = None,
         source_ip: str = None,
     ):
-        # The IP addresses to query. Separate multiple IP addresses with commas (,). You can query a maximum of 20 IP addresses at a time.
+        # The list of IP addresses to query. Separate multiple IP addresses with commas (,). You can query up to 20 IP addresses at a time. This parameter is required in practice. If you do not specify this parameter, the API returns a 400 error.
         # 
-        # > - Example of an IPv4 address: 47.97.XX.XX.
-        # >
-        # > - Example of an IPv6 address: 2001:db8:ffff:ffff:ffff:XXXX:ffff.
+        # >- IPv4 example: 47.97.XX.XX.
+        # >- IPv6 example: 2001:db8:ffff:ffff:ffff:XXXX:ffff.
         self.ip_addr_list = ip_addr_list
-        # The IP version of the asset that is protected by Cloud Firewall.
+        # The IP version of the assets protected by Cloud Firewall.
         # 
         # Valid values:
         # 
@@ -30,13 +29,12 @@ class DescribeAssetRiskListRequest(DaraModel):
         # 
         # This parameter is required.
         self.ip_version = ip_version
-        # The language of the response message. Valid values:
+        # The language of the response. Valid values:
         # 
         # - **zh** (default): Chinese
-        # 
         # - **en**: English
         self.lang = lang
-        # The source IP address of the visitor.
+        # The source IP address of the request.
         self.source_ip = source_ip
 
     def validate(self):

@@ -123,26 +123,26 @@ class DescribePostpayBillResponseBodyBillList(DaraModel):
         vpc_instance_cnt: int = None,
         vpc_traffic: float = None,
     ):
-        # The end time, expressed as a UNIX timestamp in seconds. The value is on the hour or on the day.
+        # The end time, expressed as a second-level UNIX timestamp. The value is on the hour or on the day.
         self.end_time = end_time
         # The number of Internet instances.
         self.internet_instance_cnt = internet_instance_cnt
         # The Internet traffic, in GB.
         self.internet_traffic = internet_traffic
-        # Indicates whether a deduction is applied. A value of 0 indicates that no deduction is applied. Any value greater than 0 indicates that a deduction is applied. If a deduction is applied, the bill is not generated.
-        # > This field is meaningful only when you query data at the hourly level.
+        # Indicates whether the bill is deducted. A value of 0 indicates that the bill is not deducted. Any value greater than 0 indicates that the bill is deducted. If the bill is deducted, it is not charged.
+        # > This field is meaningful only when you query hourly data.
         self.is_derated = is_derated
-        # The log service usage duration, in TB × hours.
+        # The log service usage duration, in T × h.
         self.log_storage = log_storage
         # The number of NAT instances.
         self.nat_instance_cnt = nat_instance_cnt
         # The NAT traffic, in GB.
         self.nat_traffic = nat_traffic
-        # The sensitive data leak detection usage duration, in hours.
+        # The data leak detection usage duration, in hours.
         self.sdl = sdl
         # The sensitive data detection traffic, in GB.
         self.sdl_traffic = sdl_traffic
-        # The start time, expressed as a UNIX timestamp in seconds. The value is on the hour or on the day.
+        # The start time, expressed as a second-level UNIX timestamp. The value is on the hour or on the day.
         self.start_time = start_time
         # The threat intelligence usage duration, in hours.
         self.threat_intelligence = threat_intelligence

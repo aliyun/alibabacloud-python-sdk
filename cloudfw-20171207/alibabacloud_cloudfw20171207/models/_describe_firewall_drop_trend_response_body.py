@@ -85,7 +85,7 @@ class DescribeFirewallDropTrendResponseBodyDataList(DaraModel):
         self.nat_drop_session = nat_drop_session
         # The time when the traffic occurred. The value is a UNIX timestamp in seconds.
         # 
-        # If the data at this point in time has not been processed, the values of all other fields are -1.
+        # If the data at this point in time has not been processed, the values of other fields are -1.
         self.time = time
         # The total number of sessions blocked by the firewall.
         self.total_drop_session = total_drop_session

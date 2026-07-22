@@ -9,7 +9,7 @@ class CreateIpsPrivateAssocResponseBody(DaraModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID of the response.
         self.request_id = request_id
 
     def validate(self):

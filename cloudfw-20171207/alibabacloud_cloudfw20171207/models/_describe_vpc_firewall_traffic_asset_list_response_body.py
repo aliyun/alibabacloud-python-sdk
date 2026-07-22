@@ -14,9 +14,9 @@ class DescribeVpcFirewallTrafficAssetListResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The returned data.
+        # The data list.
         self.data_list = data_list
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The total number of entries returned.
         self.total_count = total_count
@@ -73,13 +73,13 @@ class DescribeVpcFirewallTrafficAssetListResponseBodyDataList(DaraModel):
     ):
         # The IP address of the asset.
         self.ip = ip
-        # The number of intrusion prevention system (IPS) hits.
+        # The number of IPS hits.
         self.ips_hit_cnt = ips_hit_cnt
         # The number of sessions.
         self.session_count = session_count
-        # The total traffic in bytes.
+        # The total traffic. Unit: bytes.
         self.total_bytes = total_bytes
-        # The VPC where the asset resides.
+        # The ID of the VPC where the asset resides.
         self.vpc_id = vpc_id
         # The name of the VPC where the asset resides.
         self.vpc_name = vpc_name

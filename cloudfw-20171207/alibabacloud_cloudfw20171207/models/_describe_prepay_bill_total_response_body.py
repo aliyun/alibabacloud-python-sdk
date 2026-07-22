@@ -14,7 +14,7 @@ class DescribePrepayBillTotalResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The bill list, aggregated by day.
+        # The bill list, with each entry representing a day.
         self.bill_list = bill_list
         # The request ID.
         self.request_id = request_id
@@ -87,21 +87,21 @@ class DescribePrepayBillTotalResponseBodyBillList(DaraModel):
         self.daily_overflow_traffic = daily_overflow_traffic
         # The default bandwidth of the edition. Unit: Mbit/s.
         self.default_bandwidth = default_bandwidth
-        # The elastic bandwidth. Unit: Mbit/s.
+        # The elastic bandwidth value. Unit: Mbit/s.
         self.elastic_bandwidth = elastic_bandwidth
-        # The end time of the day. The value is a UNIX timestamp in seconds.
+        # The end time of the day. The value is a UNIX timestamp. Unit: seconds.
         self.end_time = end_time
         # The extended bandwidth. Unit: Mbit/s.
         self.extension_bandwidth = extension_bandwidth
         # The Internet traffic bandwidth. Unit: Gbit/s.
         self.internet_traffic_bandwidth = internet_traffic_bandwidth
-        # The monthly free traffic quota for sensitive data detection. Unit: GB.
+        # The monthly free traffic for sensitive data detection. Unit: GB.
         self.monthly_remaining_free_traffic = monthly_remaining_free_traffic
         # The NAT traffic bandwidth. Unit: Gbit/s.
         self.nat_traffic_bandwidth = nat_traffic_bandwidth
-        # The timestamp when the maximum combined bandwidth (Internet + VPC + NAT) occurred on that day.
+        # The timestamp when the maximum bandwidth (Internet + VPC + NAT) of the day occurred.
         self.overflow_time = overflow_time
-        # The start time of the day. The value is a UNIX timestamp in seconds.
+        # The start time of the day. The value is a UNIX timestamp. Unit: seconds.
         self.start_time = start_time
         # The temporary upgrade bandwidth. Unit: Mbit/s.
         self.temporary_bandwidth = temporary_bandwidth

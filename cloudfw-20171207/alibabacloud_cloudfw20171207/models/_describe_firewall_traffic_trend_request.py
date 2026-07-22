@@ -11,14 +11,14 @@ class DescribeFirewallTrafficTrendRequest(DaraModel):
         lang: str = None,
         start_time: int = None,
     ):
-        # The end time of the query. The value is a UNIX timestamp. Unit: seconds.
+        # The end time of the query. The value is a UNIX timestamp in seconds. This parameter is required. If this parameter is not specified, the API returns ErrorTimeError(400). The value must be a UNIX timestamp in seconds, and EndTime must be later than StartTime.
         self.end_time = end_time
-        # The language of the response. Valid values:
+        # The language of the response message.
         # 
         # - **zh** (default): Chinese
         # - **en**: English
         self.lang = lang
-        # The start time of the query. The value is a UNIX timestamp. Unit: seconds.
+        # The start time of the query. The value is a UNIX timestamp in seconds. This parameter is required. If this parameter is not specified, the API returns ErrorTimeError(400). The value must be a UNIX timestamp in seconds, and StartTime must be earlier than EndTime.
         self.start_time = start_time
 
     def validate(self):

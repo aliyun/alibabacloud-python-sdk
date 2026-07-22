@@ -17,7 +17,7 @@ class DescribeFirewallTrafficTrendResponseBody(DaraModel):
     ):
         # The returned data list.
         self.data_list = data_list
-        # The timestamp when the peak total traffic occurred. The value is a UNIX timestamp. Unit: seconds.
+        # The timestamp when the peak total traffic occurred. The value is a UNIX timestamp in seconds.
         self.max_bandwidth_time = max_bandwidth_time
         # The traffic distribution at the time of peak total traffic.
         self.max_bandwidth_time_bps = max_bandwidth_time_bps
@@ -141,9 +141,9 @@ class DescribeFirewallTrafficTrendResponseBodyDataList(DaraModel):
         self.internet_bps = internet_bps
         # The NAT firewall traffic.
         self.nat_bps = nat_bps
-        # The time when the traffic occurred. The value is a UNIX timestamp. Unit: seconds.
+        # The time when the traffic occurred. The value is a UNIX timestamp in seconds.
         # 
-        # If the data at this point in time has not been processed, the values of all other fields are -1.
+        # If the data at this point in time has not been processed, the values of other fields are -1.
         self.time = time
         # The total firewall traffic.
         self.total_bps = total_bps

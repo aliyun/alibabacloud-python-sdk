@@ -33,6 +33,7 @@ class DescribeTrafficLogRequest(DaraModel):
         nat_firewall_id: str = None,
         nat_gateway_id: str = None,
         page_size: str = None,
+        query_id: str = None,
         rule_id: str = None,
         rule_result: str = None,
         rule_source: str = None,
@@ -61,13 +62,13 @@ class DescribeTrafficLogRequest(DaraModel):
         self.asset_region = asset_region
         # The attack type.
         self.attack_type = attack_type
-        # The page number of the query.
+        # The page number.
         self.current_page = current_page
         # The traffic direction.
         self.direction = direction
         # The domain name.
         self.domain_name = domain_name
-        # The URL of the flow log.
+        # The URL in the flow log.
         self.domain_url = domain_url
         # The destination IP address.
         self.dst_ip = dst_ip
@@ -91,13 +92,13 @@ class DescribeTrafficLogRequest(DaraModel):
         self.ip_version = ip_version
         # The Internet service provider (ISP).
         self.isp = isp
-        # The language type of the received message. Valid values:
+        # The language of the response message. Valid values:
         # - **zh** (default): Chinese
         # - **en**: English
         self.lang = lang
         # The region of the source or destination IP address.
         self.location = location
-        # The UID of the member accounts.
+        # The UID of one of the member accounts.
         self.member_uid = member_uid
         # The NAT firewall ID.
         self.nat_firewall_id = nat_firewall_id
@@ -105,6 +106,8 @@ class DescribeTrafficLogRequest(DaraModel):
         self.nat_gateway_id = nat_gateway_id
         # The number of entries per page. Maximum value: 20.
         self.page_size = page_size
+        # The query ID. If the query is too large, a query ID is returned. Use this query ID to retrieve results in subsequent requests.
+        self.query_id = query_id
         # The rule ID.
         self.rule_id = rule_id
         # The rule action result. Valid values:
@@ -129,7 +132,7 @@ class DescribeTrafficLogRequest(DaraModel):
         self.src_vpc_id = src_vpc_id
         # The region of the source VPC asset.
         self.src_vpc_region_no = src_vpc_region_no
-        # The start time. Specify a UNIX timestamp in seconds. Only data within the last 7 days can be queried. A single query should not exceed one day.
+        # The start time. Specify a UNIX timestamp in seconds. Only data within the last 7 days can be queried. We recommend that a single query span no more than one day.
         # 
         # This parameter is required.
         self.start_time = start_time
@@ -225,6 +228,9 @@ class DescribeTrafficLogRequest(DaraModel):
 
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+
+        if self.query_id is not None:
+            result['QueryId'] = self.query_id
 
         if self.rule_id is not None:
             result['RuleId'] = self.rule_id
@@ -352,6 +358,9 @@ class DescribeTrafficLogRequest(DaraModel):
 
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+
+        if m.get('QueryId') is not None:
+            self.query_id = m.get('QueryId')
 
         if m.get('RuleId') is not None:
             self.rule_id = m.get('RuleId')

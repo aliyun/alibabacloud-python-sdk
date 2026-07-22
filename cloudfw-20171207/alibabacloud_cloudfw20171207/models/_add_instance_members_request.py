@@ -12,7 +12,7 @@ class AddInstanceMembersRequest(DaraModel):
         self,
         members: List[main_models.AddInstanceMembersRequestMembers] = None,
     ):
-        # The members that you want to add to Cloud Firewall.
+        # The Cloud Firewall member accounts. Call DescribeInstanceRdAccounts to obtain valid MemberUid values. You can add up to 20 members at a time, subject to the maximum member count of the instance.
         # 
         # This parameter is required.
         self.members = members
@@ -51,9 +51,9 @@ class AddInstanceMembersRequestMembers(DaraModel):
         member_desc: str = None,
         member_uid: int = None,
     ):
-        # The remarks of the member. The remarks must be 1 to 256 characters in length. You can add up to 20 members at a time.
+        # The remarks for the Cloud Firewall member account. The value must be 1 to 256 characters in length. You can add up to 20 member accounts.
         self.member_desc = member_desc
-        # The UID of the member. You can add up to 20 members at a time.
+        # The UID of the Cloud Firewall member account. You can add up to 20 member accounts.
         # 
         # This parameter is required.
         self.member_uid = member_uid

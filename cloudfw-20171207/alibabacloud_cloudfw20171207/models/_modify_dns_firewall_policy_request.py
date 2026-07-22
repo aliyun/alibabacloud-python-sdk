@@ -19,13 +19,10 @@ class ModifyDnsFirewallPolicyRequest(DaraModel):
         source_ip: str = None,
         source_type: str = None,
     ):
-        # The action that is performed on traffic that hits the access control policy. Valid values:
-        # 
-        # - **accept**: Allow
-        # 
-        # - **drop**: Deny
-        # 
-        # - **log**: Monitor
+        # The action that Cloud Firewall performs on the traffic in the access control policy. Valid values:
+        # - **accept**: Allow.
+        # - **drop**: Deny.
+        # - **log**: Monitor.
         self.acl_action = acl_action
         # The unique ID of the access control policy.
         # 
@@ -35,42 +32,38 @@ class ModifyDnsFirewallPolicyRequest(DaraModel):
         self.description = description
         # The destination address in the access control policy.
         # 
-        # - If **DestinationType** is set to net, **Destination** specifies the destination CIDR block. For example: 1.2.3.4/24
-        # 
-        # - If **DestinationType** is set to group, **Destination** specifies the name of the destination address book. For example: db_group
-        # 
-        # - If **DestinationType** is set to domain, **Destination** specifies the destination domain name. For example: \\*.aliyuncs.com
-        # 
-        # - If **DestinationType** is set to location, **Destination** specifies the destination region. For more information about the location codes, see the following description. For example: ["BJ11", "ZB"]
+        # - If **DestinationType** is set to net, **Destination** is a destination CIDR block. Example: 1.2.3.4/24.
+        # - If **DestinationType** is set to group, **Destination** is a destination address book name. Example: db_group.
+        # - If **DestinationType** is set to domain, **Destination** is a destination domain name. Example: *.aliyuncs.com.
+        # - If **DestinationType** is set to location, **Destination** is a destination area. For specific area positional encoding values, see the subsequent sections. Example: ["BJ11", "ZB"\\].
         self.destination = destination
         # The type of the destination address in the access control policy.
         # 
         # Valid values:
         # 
-        # - **net**: destination CIDR block (CIDR address)
-        # 
-        # - **group**: destination address book
-        # 
-        # - **domain**: destination domain name
+        # - **net**: destination CIDR block.
+        # - **group**: destination address book.
+        # - **domain**: destination domain name.
         self.destination_type = destination_type
-        # The language of the content within the request and response. Valid values:-**zh**: Chinese-**en**: English
+        # The language of the request and response. Valid values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
-        # The priority of the access control policy before the modification.
+        # The policy priority of the access control policy before the modification.
         self.priority = priority
-        # The status of the access control policy. By default, the policy is enabled after it is created. Valid values:
+        # The enabled status of the access control policy. The policy is enabled by default after it is created. Valid values:
         # 
-        # - **true**: enables the access control policy.
-        # 
-        # - **false**: disables the access control policy.
+        # - **true**: Enable the access control policy.
+        # - **false**: Disable the access control policy.
         self.release = release
         self.source = source
-        # The source IP address of the visitor.
+        # The source IP address of the request.
         self.source_ip = source_ip
         # The type of the source address in the access control policy. Valid values:
         # 
-        # - **net**: source CIDR block (CIDR)
+        # - **net**: source CIDR block.
         # 
-        # - **group**: source address book
+        # - **group**: source address book.
         self.source_type = source_type
 
     def validate(self):

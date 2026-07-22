@@ -11,11 +11,11 @@ class DescribeNatFirewallDropTrafficTrendRequest(DaraModel):
         source_ip: str = None,
         start_time: int = None,
     ):
-        # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # The end time. Specify a UNIX timestamp in seconds. This parameter is required. If this parameter is not specified, the API returns ErrorTimeError (400). Specify a UNIX timestamp in seconds. The value of EndTime must be later than the value of StartTime.
         self.end_time = end_time
-        # The source IP address.
+        # The source IP address of the request.
         self.source_ip = source_ip
-        # The start of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # The start time. Specify a UNIX timestamp in seconds. This parameter is required. If this parameter is not specified, the API returns ErrorTimeError (400). Specify a UNIX timestamp in seconds. The value of StartTime must be earlier than the value of EndTime.
         self.start_time = start_time
 
     def validate(self):

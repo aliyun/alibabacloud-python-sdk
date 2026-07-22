@@ -16,9 +16,9 @@ class DescribeVpcFirewallPrecheckDetailResponseBody(DaraModel):
     ):
         # Indicates whether a task exists.
         self.is_found = is_found
-        # The details of the precheck.
+        # The precheck details.
         self.precheck_detail = precheck_detail
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -65,21 +65,21 @@ class DescribeVpcFirewallPrecheckDetailResponseBodyPrecheckDetail(DaraModel):
         precheck_timestamp: str = None,
         region_no: str = None,
     ):
-        # The ID of the firewall instance.
+        # The firewall instance ID.
         self.firewall_id = firewall_id
-        # The ID of the network instance.
+        # The network instance ID.
         self.network_instance_id = network_instance_id
-        # The list of precheck item groups.
+        # The list of precheck entity groups.
         self.precheck_entity_groups = precheck_entity_groups
-        # The status of the precheck. Valid values:
+        # The precheck status. Valid values:
         # 
         # - **running**: The precheck is in progress.
         # 
-        # - **passed**: The precheck is passed.
+        # - **passed**: The precheck passed.
         # 
         # - **failed**: The precheck failed.
         self.precheck_status = precheck_status
-        # The timestamp of the precheck.
+        # The precheck timestamp.
         self.precheck_timestamp = precheck_timestamp
         # The region ID.
         self.region_no = region_no
@@ -150,13 +150,13 @@ class DescribeVpcFirewallPrecheckDetailResponseBodyPrecheckDetailPrecheckEntityG
         precheck_entities: List[main_models.DescribeVpcFirewallPrecheckDetailResponseBodyPrecheckDetailPrecheckEntityGroupsPrecheckEntities] = None,
         precheck_entity_group_status: str = None,
     ):
-        # The number of rules that failed the precheck.
+        # The number of precheck rules that failed.
         self.failed_count = failed_count
-        # The name of the precheck instance.
+        # The precheck instance name.
         self.name = name
-        # The execution status of each precheck item.
+        # The execution details of each precheck item.
         self.precheck_entities = precheck_entities
-        # The status of the precheck group. Valid values:
+        # The precheck status. Valid values:
         # 
         # - **running**
         # 
@@ -219,19 +219,19 @@ class DescribeVpcFirewallPrecheckDetailResponseBodyPrecheckDetailPrecheckEntityG
         status: str = None,
         suggestion: str = None,
     ):
-        # The information about the failed precheck.
+        # The information about the precheck failure.
         self.info = info
-        # The name of the precheck item.
+        # The precheck item name.
         self.name = name
-        # The status of the precheck item. Valid values:
+        # The status of each precheck item. Valid values:
         # 
         # - **running**: The precheck is in progress.
         # 
-        # - **passed**: The precheck is passed.
+        # - **passed**: The precheck passed.
         # 
         # - **failed**: The precheck failed.
         self.status = status
-        # The suggested solution.
+        # The suggested action.
         self.suggestion = suggestion
 
     def validate(self):

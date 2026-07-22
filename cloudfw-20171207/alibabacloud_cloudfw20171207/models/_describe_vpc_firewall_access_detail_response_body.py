@@ -14,9 +14,9 @@ class DescribeVpcFirewallAccessDetailResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The data entries.
+        # The data list.
         self.data_list = data_list
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The total number of entries.
         self.total_count = total_count
@@ -74,19 +74,19 @@ class DescribeVpcFirewallAccessDetailResponseBodyDataList(DaraModel):
         session_count: int = None,
         peer_vpc_name: str = None,
     ):
-        # The number of received bytes.
+        # The number of bytes received. Unit: bytes.
         self.in_bytes = in_bytes
-        # The number of sent bytes.
+        # The number of bytes sent. Unit: bytes.
         self.out_bytes = out_bytes
-        # The IP address of the peer asset.
+        # The source IP address of the peer.
         self.peer_asset_ip = peer_asset_ip
-        # The instance ID of the peer asset.
+        # The instance ID of the peer.
         self.peer_asset_instance_id = peer_asset_instance_id
-        # The instance name of the peer asset.
+        # The instance name of the peer.
         self.peer_asset_instance_name = peer_asset_instance_name
-        # The ID of the peer VPC.
+        # The instance ID of the peer VPC.
         self.peer_vpc_id = peer_vpc_id
-        # The ID of the region where the asset is located.
+        # The region ID of the instance.
         self.region_no = region_no
         # The total number of sessions.
         self.session_count = session_count
