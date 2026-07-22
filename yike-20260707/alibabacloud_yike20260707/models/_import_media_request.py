@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class ImportMediaRequest(DaraModel):
     def __init__(
         self,
+        category_id: int = None,
         cover_url: str = None,
         description: str = None,
         dynamic_meta_data: str = None,
@@ -20,6 +21,7 @@ class ImportMediaRequest(DaraModel):
         title: str = None,
         user_data: str = None,
     ):
+        self.category_id = category_id
         self.cover_url = cover_url
         self.description = description
         self.dynamic_meta_data = dynamic_meta_data
@@ -41,6 +43,9 @@ class ImportMediaRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.category_id is not None:
+            result['CategoryId'] = self.category_id
+
         if self.cover_url is not None:
             result['CoverURL'] = self.cover_url
 
@@ -81,6 +86,9 @@ class ImportMediaRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CategoryId') is not None:
+            self.category_id = m.get('CategoryId')
+
         if m.get('CoverURL') is not None:
             self.cover_url = m.get('CoverURL')
 

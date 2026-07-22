@@ -8,6 +8,7 @@ class UpdateMediaRequest(DaraModel):
     def __init__(
         self,
         append_tags: bool = None,
+        category_id: int = None,
         cover_url: str = None,
         description: str = None,
         dynamic_meta_data: str = None,
@@ -18,6 +19,7 @@ class UpdateMediaRequest(DaraModel):
         user_data: str = None,
     ):
         self.append_tags = append_tags
+        self.category_id = category_id
         self.cover_url = cover_url
         self.description = description
         self.dynamic_meta_data = dynamic_meta_data
@@ -37,6 +39,9 @@ class UpdateMediaRequest(DaraModel):
             result = _map
         if self.append_tags is not None:
             result['AppendTags'] = self.append_tags
+
+        if self.category_id is not None:
+            result['CategoryId'] = self.category_id
 
         if self.cover_url is not None:
             result['CoverURL'] = self.cover_url
@@ -68,6 +73,9 @@ class UpdateMediaRequest(DaraModel):
         m = m or dict()
         if m.get('AppendTags') is not None:
             self.append_tags = m.get('AppendTags')
+
+        if m.get('CategoryId') is not None:
+            self.category_id = m.get('CategoryId')
 
         if m.get('CoverURL') is not None:
             self.cover_url = m.get('CoverURL')

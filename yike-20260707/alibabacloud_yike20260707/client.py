@@ -118,6 +118,150 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.batch_get_medias_with_options_async(request, runtime)
 
+    def create_asset_category_with_options(
+        self,
+        request: main_models.CreateAssetCategoryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAssetCategoryResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.category_name):
+            query['CategoryName'] = request.category_name
+        if not DaraCore.is_null(request.parent_id):
+            query['ParentId'] = request.parent_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAssetCategory',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAssetCategoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_asset_category_with_options_async(
+        self,
+        request: main_models.CreateAssetCategoryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAssetCategoryResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.category_name):
+            query['CategoryName'] = request.category_name
+        if not DaraCore.is_null(request.parent_id):
+            query['ParentId'] = request.parent_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAssetCategory',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAssetCategoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_asset_category(
+        self,
+        request: main_models.CreateAssetCategoryRequest,
+    ) -> main_models.CreateAssetCategoryResponse:
+        runtime = RuntimeOptions()
+        return self.create_asset_category_with_options(request, runtime)
+
+    async def create_asset_category_async(
+        self,
+        request: main_models.CreateAssetCategoryRequest,
+    ) -> main_models.CreateAssetCategoryResponse:
+        runtime = RuntimeOptions()
+        return await self.create_asset_category_with_options_async(request, runtime)
+
+    def delete_asset_category_with_options(
+        self,
+        request: main_models.DeleteAssetCategoryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAssetCategoryResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.category_id):
+            query['CategoryId'] = request.category_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAssetCategory',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAssetCategoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_asset_category_with_options_async(
+        self,
+        request: main_models.DeleteAssetCategoryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAssetCategoryResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.category_id):
+            query['CategoryId'] = request.category_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAssetCategory',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAssetCategoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_asset_category(
+        self,
+        request: main_models.DeleteAssetCategoryRequest,
+    ) -> main_models.DeleteAssetCategoryResponse:
+        runtime = RuntimeOptions()
+        return self.delete_asset_category_with_options(request, runtime)
+
+    async def delete_asset_category_async(
+        self,
+        request: main_models.DeleteAssetCategoryRequest,
+    ) -> main_models.DeleteAssetCategoryResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_asset_category_with_options_async(request, runtime)
+
     def delete_medias_with_options(
         self,
         request: main_models.DeleteMediasRequest,
@@ -195,6 +339,76 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteMediasResponse:
         runtime = RuntimeOptions()
         return await self.delete_medias_with_options_async(request, runtime)
+
+    def get_asset_category_with_options(
+        self,
+        request: main_models.GetAssetCategoryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAssetCategoryResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.category_id):
+            query['CategoryId'] = request.category_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAssetCategory',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAssetCategoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_asset_category_with_options_async(
+        self,
+        request: main_models.GetAssetCategoryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAssetCategoryResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.category_id):
+            query['CategoryId'] = request.category_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAssetCategory',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAssetCategoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_asset_category(
+        self,
+        request: main_models.GetAssetCategoryRequest,
+    ) -> main_models.GetAssetCategoryResponse:
+        runtime = RuntimeOptions()
+        return self.get_asset_category_with_options(request, runtime)
+
+    async def get_asset_category_async(
+        self,
+        request: main_models.GetAssetCategoryRequest,
+    ) -> main_models.GetAssetCategoryResponse:
+        runtime = RuntimeOptions()
+        return await self.get_asset_category_with_options_async(request, runtime)
 
     def get_image_generation_job_with_options(
         self,
@@ -495,6 +709,8 @@ class Client(OpenApiClient):
     ) -> main_models.ImportMediaResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.category_id):
+            query['CategoryId'] = request.category_id
         if not DaraCore.is_null(request.cover_url):
             query['CoverURL'] = request.cover_url
         if not DaraCore.is_null(request.description):
@@ -545,6 +761,8 @@ class Client(OpenApiClient):
     ) -> main_models.ImportMediaResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.category_id):
+            query['CategoryId'] = request.category_id
         if not DaraCore.is_null(request.cover_url):
             query['CoverURL'] = request.cover_url
         if not DaraCore.is_null(request.description):
@@ -601,6 +819,178 @@ class Client(OpenApiClient):
     ) -> main_models.ImportMediaResponse:
         runtime = RuntimeOptions()
         return await self.import_media_with_options_async(request, runtime)
+
+    def list_asset_categories_with_options(
+        self,
+        request: main_models.ListAssetCategoriesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAssetCategoriesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_no):
+            query['PageNo'] = request.page_no
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAssetCategories',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAssetCategoriesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_asset_categories_with_options_async(
+        self,
+        request: main_models.ListAssetCategoriesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAssetCategoriesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_no):
+            query['PageNo'] = request.page_no
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAssetCategories',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAssetCategoriesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_asset_categories(
+        self,
+        request: main_models.ListAssetCategoriesRequest,
+    ) -> main_models.ListAssetCategoriesResponse:
+        runtime = RuntimeOptions()
+        return self.list_asset_categories_with_options(request, runtime)
+
+    async def list_asset_categories_async(
+        self,
+        request: main_models.ListAssetCategoriesRequest,
+    ) -> main_models.ListAssetCategoriesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_asset_categories_with_options_async(request, runtime)
+
+    def search_media_with_options(
+        self,
+        request: main_models.SearchMediaRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SearchMediaResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.category_id):
+            query['CategoryId'] = request.category_id
+        if not DaraCore.is_null(request.entity_id):
+            query['EntityId'] = request.entity_id
+        if not DaraCore.is_null(request.match):
+            query['Match'] = request.match
+        if not DaraCore.is_null(request.page_no):
+            query['PageNo'] = request.page_no
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.scroll_token):
+            query['ScrollToken'] = request.scroll_token
+        if not DaraCore.is_null(request.search_lib_name):
+            query['SearchLibName'] = request.search_lib_name
+        if not DaraCore.is_null(request.sort_by):
+            query['SortBy'] = request.sort_by
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SearchMedia',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SearchMediaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def search_media_with_options_async(
+        self,
+        request: main_models.SearchMediaRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SearchMediaResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.category_id):
+            query['CategoryId'] = request.category_id
+        if not DaraCore.is_null(request.entity_id):
+            query['EntityId'] = request.entity_id
+        if not DaraCore.is_null(request.match):
+            query['Match'] = request.match
+        if not DaraCore.is_null(request.page_no):
+            query['PageNo'] = request.page_no
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.scroll_token):
+            query['ScrollToken'] = request.scroll_token
+        if not DaraCore.is_null(request.search_lib_name):
+            query['SearchLibName'] = request.search_lib_name
+        if not DaraCore.is_null(request.sort_by):
+            query['SortBy'] = request.sort_by
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SearchMedia',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SearchMediaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def search_media(
+        self,
+        request: main_models.SearchMediaRequest,
+    ) -> main_models.SearchMediaResponse:
+        runtime = RuntimeOptions()
+        return self.search_media_with_options(request, runtime)
+
+    async def search_media_async(
+        self,
+        request: main_models.SearchMediaRequest,
+    ) -> main_models.SearchMediaResponse:
+        runtime = RuntimeOptions()
+        return await self.search_media_with_options_async(request, runtime)
 
     def submit_image_generation_job_with_options(
         self,
@@ -892,6 +1282,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.submit_video_generation_job_with_options_async(request, runtime)
 
+    def update_asset_category_with_options(
+        self,
+        request: main_models.UpdateAssetCategoryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAssetCategoryResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.category_id):
+            query['CategoryId'] = request.category_id
+        if not DaraCore.is_null(request.category_name):
+            query['CategoryName'] = request.category_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAssetCategory',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAssetCategoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_asset_category_with_options_async(
+        self,
+        request: main_models.UpdateAssetCategoryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAssetCategoryResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.category_id):
+            query['CategoryId'] = request.category_id
+        if not DaraCore.is_null(request.category_name):
+            query['CategoryName'] = request.category_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAssetCategory',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAssetCategoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_asset_category(
+        self,
+        request: main_models.UpdateAssetCategoryRequest,
+    ) -> main_models.UpdateAssetCategoryResponse:
+        runtime = RuntimeOptions()
+        return self.update_asset_category_with_options(request, runtime)
+
+    async def update_asset_category_async(
+        self,
+        request: main_models.UpdateAssetCategoryRequest,
+    ) -> main_models.UpdateAssetCategoryResponse:
+        runtime = RuntimeOptions()
+        return await self.update_asset_category_with_options_async(request, runtime)
+
     def update_media_with_options(
         self,
         request: main_models.UpdateMediaRequest,
@@ -901,6 +1365,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.append_tags):
             query['AppendTags'] = request.append_tags
+        if not DaraCore.is_null(request.category_id):
+            query['CategoryId'] = request.category_id
         if not DaraCore.is_null(request.cover_url):
             query['CoverURL'] = request.cover_url
         if not DaraCore.is_null(request.description):
@@ -945,6 +1411,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.append_tags):
             query['AppendTags'] = request.append_tags
+        if not DaraCore.is_null(request.category_id):
+            query['CategoryId'] = request.category_id
         if not DaraCore.is_null(request.cover_url):
             query['CoverURL'] = request.cover_url
         if not DaraCore.is_null(request.description):

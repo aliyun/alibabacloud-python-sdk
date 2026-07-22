@@ -185,6 +185,8 @@ class GetMediaResponseBodyMediaInfoMediaBasicInfo(DaraModel):
     def __init__(
         self,
         business_type: str = None,
+        category_id: int = None,
+        category_name: str = None,
         cover_url: str = None,
         create_time: str = None,
         description: str = None,
@@ -203,6 +205,8 @@ class GetMediaResponseBodyMediaInfoMediaBasicInfo(DaraModel):
         user_data: str = None,
     ):
         self.business_type = business_type
+        self.category_id = category_id
+        self.category_name = category_name
         self.cover_url = cover_url
         self.create_time = create_time
         self.description = description
@@ -230,6 +234,12 @@ class GetMediaResponseBodyMediaInfoMediaBasicInfo(DaraModel):
             result = _map
         if self.business_type is not None:
             result['BusinessType'] = self.business_type
+
+        if self.category_id is not None:
+            result['CategoryId'] = self.category_id
+
+        if self.category_name is not None:
+            result['CategoryName'] = self.category_name
 
         if self.cover_url is not None:
             result['CoverURL'] = self.cover_url
@@ -285,6 +295,12 @@ class GetMediaResponseBodyMediaInfoMediaBasicInfo(DaraModel):
         m = m or dict()
         if m.get('BusinessType') is not None:
             self.business_type = m.get('BusinessType')
+
+        if m.get('CategoryId') is not None:
+            self.category_id = m.get('CategoryId')
+
+        if m.get('CategoryName') is not None:
+            self.category_name = m.get('CategoryName')
 
         if m.get('CoverURL') is not None:
             self.cover_url = m.get('CoverURL')

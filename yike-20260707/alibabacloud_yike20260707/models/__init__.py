@@ -5,9 +5,18 @@ from __future__ import annotations
 from ._batch_get_medias_request import BatchGetMediasRequest
 from ._batch_get_medias_response_body import BatchGetMediasResponseBody
 from ._batch_get_medias_response import BatchGetMediasResponse
+from ._create_asset_category_request import CreateAssetCategoryRequest
+from ._create_asset_category_response_body import CreateAssetCategoryResponseBody
+from ._create_asset_category_response import CreateAssetCategoryResponse
+from ._delete_asset_category_request import DeleteAssetCategoryRequest
+from ._delete_asset_category_response_body import DeleteAssetCategoryResponseBody
+from ._delete_asset_category_response import DeleteAssetCategoryResponse
 from ._delete_medias_request import DeleteMediasRequest
 from ._delete_medias_response_body import DeleteMediasResponseBody
 from ._delete_medias_response import DeleteMediasResponse
+from ._get_asset_category_request import GetAssetCategoryRequest
+from ._get_asset_category_response_body import GetAssetCategoryResponseBody
+from ._get_asset_category_response import GetAssetCategoryResponse
 from ._get_image_generation_job_request import GetImageGenerationJobRequest
 from ._get_image_generation_job_response_body import GetImageGenerationJobResponseBody
 from ._get_image_generation_job_response import GetImageGenerationJobResponse
@@ -23,6 +32,12 @@ from ._get_video_generation_job_response import GetVideoGenerationJobResponse
 from ._import_media_request import ImportMediaRequest
 from ._import_media_response_body import ImportMediaResponseBody
 from ._import_media_response import ImportMediaResponse
+from ._list_asset_categories_request import ListAssetCategoriesRequest
+from ._list_asset_categories_response_body import ListAssetCategoriesResponseBody
+from ._list_asset_categories_response import ListAssetCategoriesResponse
+from ._search_media_request import SearchMediaRequest
+from ._search_media_response_body import SearchMediaResponseBody
+from ._search_media_response import SearchMediaResponse
 from ._submit_image_generation_job_request import SubmitImageGenerationJobRequest
 from ._submit_image_generation_job_response_body import SubmitImageGenerationJobResponseBody
 from ._submit_image_generation_job_response import SubmitImageGenerationJobResponse
@@ -32,6 +47,9 @@ from ._submit_media_comprehension_job_response import SubmitMediaComprehensionJo
 from ._submit_video_generation_job_request import SubmitVideoGenerationJobRequest
 from ._submit_video_generation_job_response_body import SubmitVideoGenerationJobResponseBody
 from ._submit_video_generation_job_response import SubmitVideoGenerationJobResponse
+from ._update_asset_category_request import UpdateAssetCategoryRequest
+from ._update_asset_category_response_body import UpdateAssetCategoryResponseBody
+from ._update_asset_category_response import UpdateAssetCategoryResponse
 from ._update_media_request import UpdateMediaRequest
 from ._update_media_response_body import UpdateMediaResponseBody
 from ._update_media_response import UpdateMediaResponse
@@ -44,6 +62,9 @@ from ._batch_get_medias_response_body import BatchGetMediasResponseBodyMediaInfo
 from ._batch_get_medias_response_body import BatchGetMediasResponseBodyMediaInfosMediaDynamicInfoDynamicMetaData
 from ._batch_get_medias_response_body import BatchGetMediasResponseBodyMediaInfosMediaDynamicInfo
 from ._batch_get_medias_response_body import BatchGetMediasResponseBodyMediaInfos
+from ._create_asset_category_response_body import CreateAssetCategoryResponseBodyCategory
+from ._get_asset_category_response_body import GetAssetCategoryResponseBodyCategory
+from ._get_asset_category_response_body import GetAssetCategoryResponseBodySubCategories
 from ._get_image_generation_job_response_body import GetImageGenerationJobResponseBodyImageGenerationJob
 from ._get_media_response_body import GetMediaResponseBodyMediaInfoFileInfoListAudioStreamInfoList
 from ._get_media_response_body import GetMediaResponseBodyMediaInfoFileInfoListFileBasicInfo
@@ -56,14 +77,31 @@ from ._get_media_response_body import GetMediaResponseBodyMediaInfoMediaDynamicI
 from ._get_media_response_body import GetMediaResponseBodyMediaInfo
 from ._get_media_comprehension_job_response_body import GetMediaComprehensionJobResponseBodyMediaComprehensionJob
 from ._get_video_generation_job_response_body import GetVideoGenerationJobResponseBodyVideoGenerationJob
+from ._list_asset_categories_response_body import ListAssetCategoriesResponseBodyCategories
+from ._search_media_response_body import SearchMediaResponseBodyMediaInfoListFileInfoListFileBasicInfo
+from ._search_media_response_body import SearchMediaResponseBodyMediaInfoListFileInfoList
+from ._search_media_response_body import SearchMediaResponseBodyMediaInfoListMediaBasicInfo
+from ._search_media_response_body import SearchMediaResponseBodyMediaInfoListMediaDynamicInfoDynamicMetaData
+from ._search_media_response_body import SearchMediaResponseBodyMediaInfoListMediaDynamicInfoMediaExtraInfo
+from ._search_media_response_body import SearchMediaResponseBodyMediaInfoListMediaDynamicInfo
+from ._search_media_response_body import SearchMediaResponseBodyMediaInfoList
 
 __all__ = [
     BatchGetMediasRequest,
     BatchGetMediasResponseBody,
     BatchGetMediasResponse,
+    CreateAssetCategoryRequest,
+    CreateAssetCategoryResponseBody,
+    CreateAssetCategoryResponse,
+    DeleteAssetCategoryRequest,
+    DeleteAssetCategoryResponseBody,
+    DeleteAssetCategoryResponse,
     DeleteMediasRequest,
     DeleteMediasResponseBody,
     DeleteMediasResponse,
+    GetAssetCategoryRequest,
+    GetAssetCategoryResponseBody,
+    GetAssetCategoryResponse,
     GetImageGenerationJobRequest,
     GetImageGenerationJobResponseBody,
     GetImageGenerationJobResponse,
@@ -79,6 +117,12 @@ __all__ = [
     ImportMediaRequest,
     ImportMediaResponseBody,
     ImportMediaResponse,
+    ListAssetCategoriesRequest,
+    ListAssetCategoriesResponseBody,
+    ListAssetCategoriesResponse,
+    SearchMediaRequest,
+    SearchMediaResponseBody,
+    SearchMediaResponse,
     SubmitImageGenerationJobRequest,
     SubmitImageGenerationJobResponseBody,
     SubmitImageGenerationJobResponse,
@@ -88,6 +132,9 @@ __all__ = [
     SubmitVideoGenerationJobRequest,
     SubmitVideoGenerationJobResponseBody,
     SubmitVideoGenerationJobResponse,
+    UpdateAssetCategoryRequest,
+    UpdateAssetCategoryResponseBody,
+    UpdateAssetCategoryResponse,
     UpdateMediaRequest,
     UpdateMediaResponseBody,
     UpdateMediaResponse,
@@ -100,6 +147,9 @@ __all__ = [
     BatchGetMediasResponseBodyMediaInfosMediaDynamicInfoDynamicMetaData,
     BatchGetMediasResponseBodyMediaInfosMediaDynamicInfo,
     BatchGetMediasResponseBodyMediaInfos,
+    CreateAssetCategoryResponseBodyCategory,
+    GetAssetCategoryResponseBodyCategory,
+    GetAssetCategoryResponseBodySubCategories,
     GetImageGenerationJobResponseBodyImageGenerationJob,
     GetMediaResponseBodyMediaInfoFileInfoListAudioStreamInfoList,
     GetMediaResponseBodyMediaInfoFileInfoListFileBasicInfo,
@@ -111,5 +161,13 @@ __all__ = [
     GetMediaResponseBodyMediaInfoMediaDynamicInfo,
     GetMediaResponseBodyMediaInfo,
     GetMediaComprehensionJobResponseBodyMediaComprehensionJob,
-    GetVideoGenerationJobResponseBodyVideoGenerationJob
+    GetVideoGenerationJobResponseBodyVideoGenerationJob,
+    ListAssetCategoriesResponseBodyCategories,
+    SearchMediaResponseBodyMediaInfoListFileInfoListFileBasicInfo,
+    SearchMediaResponseBodyMediaInfoListFileInfoList,
+    SearchMediaResponseBodyMediaInfoListMediaBasicInfo,
+    SearchMediaResponseBodyMediaInfoListMediaDynamicInfoDynamicMetaData,
+    SearchMediaResponseBodyMediaInfoListMediaDynamicInfoMediaExtraInfo,
+    SearchMediaResponseBodyMediaInfoListMediaDynamicInfo,
+    SearchMediaResponseBodyMediaInfoList
 ]

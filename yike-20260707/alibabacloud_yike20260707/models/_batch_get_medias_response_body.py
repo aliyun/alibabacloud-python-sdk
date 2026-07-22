@@ -182,6 +182,8 @@ class BatchGetMediasResponseBodyMediaInfosMediaDynamicInfoDynamicMetaData(DaraMo
 class BatchGetMediasResponseBodyMediaInfosMediaBasicInfo(DaraModel):
     def __init__(
         self,
+        category_id: int = None,
+        category_name: str = None,
         cover_url: str = None,
         create_time: str = None,
         description: str = None,
@@ -197,6 +199,8 @@ class BatchGetMediasResponseBodyMediaInfosMediaBasicInfo(DaraModel):
         title: str = None,
         user_data: str = None,
     ):
+        self.category_id = category_id
+        self.category_name = category_name
         self.cover_url = cover_url
         self.create_time = create_time
         self.description = description
@@ -220,6 +224,12 @@ class BatchGetMediasResponseBodyMediaInfosMediaBasicInfo(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.category_id is not None:
+            result['CategoryId'] = self.category_id
+
+        if self.category_name is not None:
+            result['CategoryName'] = self.category_name
+
         if self.cover_url is not None:
             result['CoverURL'] = self.cover_url
 
@@ -266,6 +276,12 @@ class BatchGetMediasResponseBodyMediaInfosMediaBasicInfo(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CategoryId') is not None:
+            self.category_id = m.get('CategoryId')
+
+        if m.get('CategoryName') is not None:
+            self.category_name = m.get('CategoryName')
+
         if m.get('CoverURL') is not None:
             self.cover_url = m.get('CoverURL')
 
