@@ -1,3 +1,6 @@
+2026-07-22 Version: 9.4.1
+- Generated python 2017-12-07 for Cloudfw.
+
 2026-07-22 Version: 9.4.0
 - Support API DescribeTaskDispatchStatus.
 - Support API ModifySlsDispatchConfig.
