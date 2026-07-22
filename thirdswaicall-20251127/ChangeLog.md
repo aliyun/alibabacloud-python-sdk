@@ -1,3 +1,6 @@
+2026-07-22 Version: 1.1.3
+- Generated python 2025-11-27 for ThirdswAicall.
+
 2026-07-13 Version: 1.1.2
 - Update API QueryTaskConcurrency: add request parameters ApplicationCode.
 - Update API ReadOutboundTaskCallList: add request parameters CallEndTimeBegin.
