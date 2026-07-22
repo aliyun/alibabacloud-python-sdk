@@ -1108,6 +1108,8 @@ class Client(OpenApiClient):
             query['TargetLanguage'] = request.target_language
         if not DaraCore.is_null(request.translating_brand_in_the_product):
             query['TranslatingBrandInTheProduct'] = request.translating_brand_in_the_product
+        if not DaraCore.is_null(request.use_image_editor):
+            query['UseImageEditor'] = request.use_image_editor
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -1146,6 +1148,8 @@ class Client(OpenApiClient):
             query['TargetLanguage'] = request.target_language
         if not DaraCore.is_null(request.translating_brand_in_the_product):
             query['TranslatingBrandInTheProduct'] = request.translating_brand_in_the_product
+        if not DaraCore.is_null(request.use_image_editor):
+            query['UseImageEditor'] = request.use_image_editor
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )

@@ -1,3 +1,8 @@
+2026-07-22 Version: 3.1.1
+- Update API ImageTranslationStandard: add request parameters UseImageEditor.
+- Update API ImageTranslationStandard: add response parameters Body.Data.EditInfo.
+
+
 2026-07-20 Version: 3.1.0
 - Support API VideoTranslation.
 
