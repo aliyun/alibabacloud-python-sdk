@@ -12,13 +12,13 @@ class OperateStopJobExecutionResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The Response Code.
+        # The response code.
         self.code = code
-        # The response message.
+        # The error message.
         self.message = message
-        # The unique ID of the request. You can use this ID to troubleshoot issues.
+        # The request ID. Alibaba Cloud generates a unique identifier for each API request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the call was successful. A value of **true** indicates success, and a value of **false** indicates failure.
+        # Indicates whether the call was successful. **true**: The call was successful. **false**: The call failed.
         self.success = success
 
     def validate(self):

@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class OperateExecuteJobRequest(DaraModel):
     def __init__(
         self,
+        app_group_id: int = None,
         app_name: str = None,
         cluster_id: str = None,
         instance_parameters: str = None,
@@ -14,6 +15,7 @@ class OperateExecuteJobRequest(DaraModel):
         label: str = None,
         worker: str = None,
     ):
+        self.app_group_id = app_group_id
         # The application name.
         # 
         # This parameter is required.
@@ -22,15 +24,15 @@ class OperateExecuteJobRequest(DaraModel):
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # The custom parameters for the job instance.
+        # The instance parameters.
         self.instance_parameters = instance_parameters
-        # The job ID.
+        # The node ID.
         # 
         # This parameter is required.
         self.job_id = job_id
-        # The label used to select a specific worker.
+        # The label of the specified machine.
         self.label = label
-        # The address (`workerAddr`) of a specific worker.
+        # The workerAddr of the specified machine.
         self.worker = worker
 
     def validate(self):
@@ -41,6 +43,9 @@ class OperateExecuteJobRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.app_group_id is not None:
+            result['AppGroupId'] = self.app_group_id
+
         if self.app_name is not None:
             result['AppName'] = self.app_name
 
@@ -63,6 +68,9 @@ class OperateExecuteJobRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AppGroupId') is not None:
+            self.app_group_id = m.get('AppGroupId')
+
         if m.get('AppName') is not None:
             self.app_name = m.get('AppName')
 

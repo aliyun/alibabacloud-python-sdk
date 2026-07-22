@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class UpdateJobShrinkRequest(DaraModel):
     def __init__(
         self,
+        app_group_id: int = None,
         app_name: str = None,
         attempt_interval: int = None,
         calendar: str = None,
@@ -34,6 +35,7 @@ class UpdateJobShrinkRequest(DaraModel):
         weight: int = None,
         xattrs: str = None,
     ):
+        self.app_group_id = app_group_id
         # The application name.
         # 
         # This parameter is required.
@@ -65,8 +67,8 @@ class UpdateJobShrinkRequest(DaraModel):
         self.job_id = job_id
         # The maximum number of retry attempts upon node failure.
         self.max_attempt = max_attempt
-        # The maximum number of concurrent instances of the node.
-        # >The maximum number of instances that can run at the same time for the same node. A value of 1 indicates that repeated execution is not allowed. If the concurrency limit is exceeded, the current scheduling is skipped.
+        # The maximum number of concurrent instances for the node.
+        # >The maximum number of instances that can run simultaneously for the same node. A value of 1 indicates that repeated execution is not allowed. If the concurrency limit is exceeded, the current scheduling is skipped.
         self.max_concurrency = max_concurrency
         # The node name.
         self.name = name
@@ -76,14 +78,14 @@ class UpdateJobShrinkRequest(DaraModel):
         self.notice_contacts_shrink = notice_contacts_shrink
         # The node parameters.
         self.parameters = parameters
-        # The execution priority of the node. Valid values:
+        # The node execution priority. Valid values:
         # 
         # - 1: low
         # - 5: medium
         # - 10: high
         # - 15: very high
         self.priority = priority
-        # The routing policy. Valid values:
+        # The routing strategy. Valid values:
         # 
         # - 1: round robin
         # - 2: random
@@ -94,7 +96,7 @@ class UpdateJobShrinkRequest(DaraModel):
         # - 7: consistent hashing
         # - 8: shard broadcast
         self.route_strategy = route_strategy
-        # The script for non-BEAN nodes. Use this field to configure the script.
+        # The script content for non-BEAN nodes. Use this field to configure the script.
         self.script = script
         # The scheduling start time.
         self.start_time = start_time
@@ -106,7 +108,7 @@ class UpdateJobShrinkRequest(DaraModel):
         # - cron: Specify a standard cron expression. Online verification is supported.
         # - api: No value is required.
         # - fixed_rate: Specify a fixed frequency value in seconds. For example, 30 indicates that the node is triggered every 30 seconds.
-        # - one_time: Specify a scheduling time in the yyyy-MM-dd HH:mm:ss format or a timestamp in milliseconds. For example, "2022-10-10 10:10:00".
+        # - one_time: Specify a scheduling time in the format of yyyy-MM-dd HH:mm:ss or a timestamp in milliseconds. For example, "2022-10-10 10:10:00".
         self.time_expression = time_expression
         # The time type. Valid values:
         # 
@@ -117,7 +119,7 @@ class UpdateJobShrinkRequest(DaraModel):
         # - 100: api
         self.time_type = time_type
         # The time zone.
-        # > By default, the time zone of the SchedulerX server is used.
+        # > The default value is the time zone of the SchedulerX server.
         self.timezone = timezone
         # The node weight.
         self.weight = weight
@@ -131,6 +133,9 @@ class UpdateJobShrinkRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.app_group_id is not None:
+            result['AppGroupId'] = self.app_group_id
+
         if self.app_name is not None:
             result['AppName'] = self.app_name
 
@@ -213,6 +218,9 @@ class UpdateJobShrinkRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AppGroupId') is not None:
+            self.app_group_id = m.get('AppGroupId')
+
         if m.get('AppName') is not None:
             self.app_name = m.get('AppName')
 

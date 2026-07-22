@@ -43,9 +43,9 @@ class CreateJobRequest(DaraModel):
         # 
         # This parameter is required.
         self.app_name = app_name
-        # The retry interval upon failure. Unit: seconds. Default value: 30.
+        # The retry interval. Unit: seconds. Default value: 30.
         self.attempt_interval = attempt_interval
-        # The custom calendar. This parameter is available only for the cron time type.
+        # The custom calendar. This parameter is optional for the cron time type.
         self.calendar = calendar
         # The child node IDs. Separate multiple IDs with commas.
         self.child_job_id = child_job_id
@@ -59,12 +59,12 @@ class CreateJobRequest(DaraModel):
         self.dependent_strategy = dependent_strategy
         # The node description.
         self.description = description
-        # The client-side blocking strategy. Valid values:
+        # The client blocking strategy. Valid values:
         # - 1: serial execution on a single machine
         # - 2: ignore subsequent scheduling
         # - 3: override previous scheduling
         self.executor_block_strategy = executor_block_strategy
-        # The JobHandler name.
+        # The jobhandler name.
         self.job_handler = job_handler
         # The node type.
         # 
@@ -106,16 +106,16 @@ class CreateJobRequest(DaraModel):
         self.start_time = start_time
         # The start time type.
         self.start_time_type = start_time_type
-        # The node status. Default value: enabled. Valid values:
+        # The node status. Default value: 1 (enabled). Valid values:
         # - 0: disabled
         # - 1: enabled
         self.status = status
         # The time expression. Set this parameter based on the selected time type.
-        # - **none**: no value required.
-        # - **cron**: a standard cron expression. Online verification is supported.
-        # - **api**: no value required.
-        # - **fixed_rate**: a fixed frequency value in seconds. For example, 200 indicates that the node is triggered every 200 seconds.
-        # - **one_time**: a scheduling time in the yyyy-MM-dd HH:mm:ss format or a timestamp in milliseconds. For example, "2022-10-10 10:10:00".
+        # - **none**: No value is required.
+        # - **cron**: Specify a standard cron expression. Online verification is supported.
+        # - **api**: No value is required.
+        # - **fixed_rate**: Specify a fixed frequency value in seconds. For example, 200 indicates that the node is triggered every 200 seconds.
+        # - **one_time**: Specify a scheduling time in the format of yyyy-MM-dd HH:mm:ss or a timestamp in milliseconds. For example, "2022-10-10 10:10:00".
         self.time_expression = time_expression
         # The time type. Valid values:
         # - -1: none<br/>
@@ -130,7 +130,7 @@ class CreateJobRequest(DaraModel):
         self.timezone = timezone
         # The node weight.
         self.weight = weight
-        # The extended attributes. This parameter is required for K8s node types.
+        # The configuration for K8s node types. Set this parameter if the node type is K8s.
         # Job node: {"resource":"job"}
         # Shell node: {"image":"busybox","resource":"shell"}
         self.xattrs = xattrs
@@ -337,7 +337,7 @@ class CreateJobRequestNoticeContacts(DaraModel):
         contact_type: int = None,
         name: str = None,
     ):
-        # The Notification Recipient type. Valid values:
+        # The object type of the notification recipient. Valid values:
         # 
         # - 1: alert contact
         # 
@@ -388,42 +388,42 @@ class CreateJobRequestNoticeConfig(DaraModel):
     ):
         self.end_early = end_early
         self.end_early_enable = end_early_enable
-        # Specifies whether to enable failure alerting. Valid values:
+        # Specifies whether to enable the failure alert. Valid values:
         # 
-        # - **true**: Failure alerting is enabled.
-        # - **false**: Failure alerting is disabled.
+        # - **true**: Enabled.
+        # - **false**: Disabled.
         self.fail_enable = fail_enable
         # The number of consecutive failures.
         # > An alert is sent only when the number of consecutive failures exceeds the configured value.
         self.fail_limit_times = fail_limit_times
-        # Specifies whether to enable alerting when no workers are available. Valid values:
-        # - **true**: Alerting for no available workers is enabled.
-        # - **false**: Alerting for no available workers is disabled.
+        # Specifies whether to enable the no-available-machine alert. Valid values:
+        # - **true**: Enabled.
+        # - **false**: Disabled.
         self.miss_worker_enable = miss_worker_enable
         # The notification channel. Valid values:
-        # - sms: text message
+        # - sms: SMS
         # - phone: phone call
         # - mail: email
         # - webhook: webhook
         # > Separate multiple notification channels with commas.
         self.send_channel = send_channel
-        # Specifies whether to enable success notification. Valid values:
+        # Specifies whether to enable the success notification. Valid values:
         # 
         # - true: Enabled.
         # - false: Disabled.
         self.success_notice = success_notice
         # The timeout period. Unit: seconds.
         self.timeout = timeout
-        # Specifies whether to enable timeout alerting. Valid values:
+        # Specifies whether to enable the timeout alert. Valid values:
         # 
         # - **true**: Enabled.
         # 
         # - **false**: Disabled.
         self.timeout_enable = timeout_enable
-        # Specifies whether to enable timeout termination. Valid values:
+        # Specifies whether to enable the timeout termination feature. Valid values:
         # 
-        # - **true**: Timeout termination is enabled.
-        # - **false**: Timeout termination is disabled.
+        # - **true**: Enabled.
+        # - **false**: Disabled.
         self.timeout_kill_enable = timeout_kill_enable
 
     def validate(self):

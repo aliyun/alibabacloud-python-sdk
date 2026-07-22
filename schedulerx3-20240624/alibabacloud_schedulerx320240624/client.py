@@ -2,7 +2,9 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import Dict
+import json
+
+from typing import Dict, Generator, AsyncGenerator
 
 from alibabacloud_schedulerx320240624 import models as main_models
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
@@ -1487,6 +1489,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.job_ids):
             request.job_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.job_ids, 'JobIds', 'json')
         body = {}
+        if not DaraCore.is_null(request.app_group_id):
+            body['AppGroupId'] = request.app_group_id
         if not DaraCore.is_null(request.app_name):
             body['AppName'] = request.app_name
         if not DaraCore.is_null(request.cluster_id):
@@ -1523,6 +1527,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.job_ids):
             request.job_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.job_ids, 'JobIds', 'json')
         body = {}
+        if not DaraCore.is_null(request.app_group_id):
+            body['AppGroupId'] = request.app_group_id
         if not DaraCore.is_null(request.app_name):
             body['AppName'] = request.app_name
         if not DaraCore.is_null(request.cluster_id):
@@ -3039,6 +3045,166 @@ class Client(OpenApiClient):
     ) -> main_models.GetWorkflowExecutionDAGResponse:
         runtime = RuntimeOptions()
         return await self.get_workflow_execution_dagwith_options_async(request, runtime)
+
+    def import_agent_jobs_with_sse(
+        self,
+        request: main_models.ImportAgentJobsRequest,
+        runtime: RuntimeOptions,
+    ) -> Generator[main_models.ImportAgentJobsResponse, None, None]:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_name):
+            body['AgentName'] = request.agent_name
+        if not DaraCore.is_null(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.migrate_strategy):
+            body['MigrateStrategy'] = request.migrate_strategy
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ImportAgentJobs',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        sse_resp = self.call_sseapi(params, req, runtime)
+        for resp in sse_resp:
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.ImportAgentJobsResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
+
+    async def import_agent_jobs_with_sse_async(
+        self,
+        request: main_models.ImportAgentJobsRequest,
+        runtime: RuntimeOptions,
+    ) -> AsyncGenerator[main_models.ImportAgentJobsResponse, None, None]:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_name):
+            body['AgentName'] = request.agent_name
+        if not DaraCore.is_null(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.migrate_strategy):
+            body['MigrateStrategy'] = request.migrate_strategy
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ImportAgentJobs',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        sse_resp = self.call_sseapi_async(params, req, runtime)
+        async for resp in sse_resp:
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.ImportAgentJobsResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
+
+    def import_agent_jobs_with_options(
+        self,
+        request: main_models.ImportAgentJobsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ImportAgentJobsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_name):
+            body['AgentName'] = request.agent_name
+        if not DaraCore.is_null(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.migrate_strategy):
+            body['MigrateStrategy'] = request.migrate_strategy
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ImportAgentJobs',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ImportAgentJobsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def import_agent_jobs_with_options_async(
+        self,
+        request: main_models.ImportAgentJobsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ImportAgentJobsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_name):
+            body['AgentName'] = request.agent_name
+        if not DaraCore.is_null(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.migrate_strategy):
+            body['MigrateStrategy'] = request.migrate_strategy
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ImportAgentJobs',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ImportAgentJobsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def import_agent_jobs(
+        self,
+        request: main_models.ImportAgentJobsRequest,
+    ) -> main_models.ImportAgentJobsResponse:
+        runtime = RuntimeOptions()
+        return self.import_agent_jobs_with_options(request, runtime)
+
+    async def import_agent_jobs_async(
+        self,
+        request: main_models.ImportAgentJobsRequest,
+    ) -> main_models.ImportAgentJobsResponse:
+        runtime = RuntimeOptions()
+        return await self.import_agent_jobs_with_options_async(request, runtime)
 
     def import_calendar_with_options(
         self,
@@ -5211,6 +5377,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.address_list_shrink):
             body['AddressList'] = request.address_list_shrink
+        if not DaraCore.is_null(request.app_group_id):
+            body['AppGroupId'] = request.app_group_id
         if not DaraCore.is_null(request.app_name):
             body['AppName'] = request.app_name
         if not DaraCore.is_null(request.cluster_id):
@@ -5253,6 +5421,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.address_list_shrink):
             body['AddressList'] = request.address_list_shrink
+        if not DaraCore.is_null(request.app_group_id):
+            body['AppGroupId'] = request.app_group_id
         if not DaraCore.is_null(request.app_name):
             body['AppName'] = request.app_name
         if not DaraCore.is_null(request.cluster_id):
@@ -5307,6 +5477,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.job_ids):
             request.job_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.job_ids, 'JobIds', 'json')
         body = {}
+        if not DaraCore.is_null(request.app_group_id):
+            body['AppGroupId'] = request.app_group_id
         if not DaraCore.is_null(request.app_name):
             body['AppName'] = request.app_name
         if not DaraCore.is_null(request.cluster_id):
@@ -5343,6 +5515,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.job_ids):
             request.job_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.job_ids, 'JobIds', 'json')
         body = {}
+        if not DaraCore.is_null(request.app_group_id):
+            body['AppGroupId'] = request.app_group_id
         if not DaraCore.is_null(request.app_name):
             body['AppName'] = request.app_name
         if not DaraCore.is_null(request.cluster_id):
@@ -5479,6 +5653,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.job_ids):
             request.job_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.job_ids, 'JobIds', 'json')
         body = {}
+        if not DaraCore.is_null(request.app_group_id):
+            body['AppGroupId'] = request.app_group_id
         if not DaraCore.is_null(request.app_name):
             body['AppName'] = request.app_name
         if not DaraCore.is_null(request.cluster_id):
@@ -5515,6 +5691,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.job_ids):
             request.job_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.job_ids, 'JobIds', 'json')
         body = {}
+        if not DaraCore.is_null(request.app_group_id):
+            body['AppGroupId'] = request.app_group_id
         if not DaraCore.is_null(request.app_name):
             body['AppName'] = request.app_name
         if not DaraCore.is_null(request.cluster_id):
@@ -5647,6 +5825,8 @@ class Client(OpenApiClient):
     ) -> main_models.OperateExecuteJobResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.app_group_id):
+            body['AppGroupId'] = request.app_group_id
         if not DaraCore.is_null(request.app_name):
             body['AppName'] = request.app_name
         if not DaraCore.is_null(request.cluster_id):
@@ -5685,6 +5865,8 @@ class Client(OpenApiClient):
     ) -> main_models.OperateExecuteJobResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.app_group_id):
+            body['AppGroupId'] = request.app_group_id
         if not DaraCore.is_null(request.app_name):
             body['AppName'] = request.app_name
         if not DaraCore.is_null(request.cluster_id):
@@ -6127,6 +6309,8 @@ class Client(OpenApiClient):
     ) -> main_models.OperateRerunJobResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
         if not DaraCore.is_null(request.app_name):
             query['AppName'] = request.app_name
         if not DaraCore.is_null(request.cluster_id):
@@ -6165,6 +6349,8 @@ class Client(OpenApiClient):
     ) -> main_models.OperateRerunJobResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
         if not DaraCore.is_null(request.app_name):
             query['AppName'] = request.app_name
         if not DaraCore.is_null(request.cluster_id):
@@ -6221,6 +6407,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.task_list):
             request.task_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.task_list, 'TaskList', 'json')
         query = {}
+        if not DaraCore.is_null(request.app_group_id):
+            query['AppGroupId'] = request.app_group_id
         if not DaraCore.is_null(request.app_name):
             query['AppName'] = request.app_name
         if not DaraCore.is_null(request.cluster_id):
@@ -6261,6 +6449,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.task_list):
             request.task_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.task_list, 'TaskList', 'json')
         query = {}
+        if not DaraCore.is_null(request.app_group_id):
+            query['AppGroupId'] = request.app_group_id
         if not DaraCore.is_null(request.app_name):
             query['AppName'] = request.app_name
         if not DaraCore.is_null(request.cluster_id):
@@ -6475,6 +6665,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.task_list):
             request.task_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.task_list, 'TaskList', 'json')
         query = {}
+        if not DaraCore.is_null(request.app_group_id):
+            query['AppGroupId'] = request.app_group_id
         if not DaraCore.is_null(request.app_name):
             query['AppName'] = request.app_name
         if not DaraCore.is_null(request.cluster_id):
@@ -6513,6 +6705,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.task_list):
             request.task_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.task_list, 'TaskList', 'json')
         query = {}
+        if not DaraCore.is_null(request.app_group_id):
+            query['AppGroupId'] = request.app_group_id
         if not DaraCore.is_null(request.app_name):
             query['AppName'] = request.app_name
         if not DaraCore.is_null(request.cluster_id):
@@ -7611,6 +7805,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.notice_contacts):
             request.notice_contacts_shrink = Utils.array_to_string_with_specified_style(tmp_req.notice_contacts, 'NoticeContacts', 'json')
         body = {}
+        if not DaraCore.is_null(request.app_group_id):
+            body['AppGroupId'] = request.app_group_id
         if not DaraCore.is_null(request.app_name):
             body['AppName'] = request.app_name
         if not DaraCore.is_null(request.attempt_interval):
@@ -7695,6 +7891,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.notice_contacts):
             request.notice_contacts_shrink = Utils.array_to_string_with_specified_style(tmp_req.notice_contacts, 'NoticeContacts', 'json')
         body = {}
+        if not DaraCore.is_null(request.app_group_id):
+            body['AppGroupId'] = request.app_group_id
         if not DaraCore.is_null(request.app_name):
             body['AppName'] = request.app_name
         if not DaraCore.is_null(request.attempt_interval):

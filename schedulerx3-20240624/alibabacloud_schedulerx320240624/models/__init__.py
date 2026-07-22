@@ -111,6 +111,9 @@ from ._get_workflow_dagpreview_response import GetWorkflowDAGPreviewResponse
 from ._get_workflow_execution_dagrequest import GetWorkflowExecutionDAGRequest
 from ._get_workflow_execution_dagresponse_body import GetWorkflowExecutionDAGResponseBody
 from ._get_workflow_execution_dagresponse import GetWorkflowExecutionDAGResponse
+from ._import_agent_jobs_request import ImportAgentJobsRequest
+from ._import_agent_jobs_response_body import ImportAgentJobsResponseBody
+from ._import_agent_jobs_response import ImportAgentJobsResponse
 from ._import_calendar_request import ImportCalendarRequest
 from ._import_calendar_response_body import ImportCalendarResponseBody
 from ._import_calendar_response import ImportCalendarResponse
@@ -505,6 +508,9 @@ __all__ = [
     GetWorkflowExecutionDAGRequest,
     GetWorkflowExecutionDAGResponseBody,
     GetWorkflowExecutionDAGResponse,
+    ImportAgentJobsRequest,
+    ImportAgentJobsResponseBody,
+    ImportAgentJobsResponse,
     ImportCalendarRequest,
     ImportCalendarResponseBody,
     ImportCalendarResponse,

@@ -9,10 +9,12 @@ from darabonba.model import DaraModel
 class OperateDisableJobsRequest(DaraModel):
     def __init__(
         self,
+        app_group_id: int = None,
         app_name: str = None,
         cluster_id: str = None,
         job_ids: List[int] = None,
     ):
+        self.app_group_id = app_group_id
         # The application name.
         # 
         # This parameter is required.
@@ -21,7 +23,6 @@ class OperateDisableJobsRequest(DaraModel):
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # The IDs of the jobs to disable.
         self.job_ids = job_ids
 
     def validate(self):
@@ -32,6 +33,9 @@ class OperateDisableJobsRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.app_group_id is not None:
+            result['AppGroupId'] = self.app_group_id
+
         if self.app_name is not None:
             result['AppName'] = self.app_name
 
@@ -45,6 +49,9 @@ class OperateDisableJobsRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AppGroupId') is not None:
+            self.app_group_id = m.get('AppGroupId')
+
         if m.get('AppName') is not None:
             self.app_name = m.get('AppName')
 

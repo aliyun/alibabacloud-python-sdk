@@ -14,15 +14,13 @@ class DeleteJobsResponseBody(DaraModel):
     ):
         # The response code.
         self.code = code
-        # The response message. An error message is returned if the request is unsuccessful.
+        # The error message.
         self.message = message
-        # The ID of the request. This ID is unique to each request and can be used for troubleshooting.
+        # The request ID. Alibaba Cloud generates a unique ID for each API request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the request was successful.
-        # 
-        # - true: The request was successful.
-        # 
-        # - false: The request failed.
+        # Indicates whether the call was successful. Valid values:
+        # - true: The call was successful.
+        # - false: The call failed.
         self.success = success
 
     def validate(self):

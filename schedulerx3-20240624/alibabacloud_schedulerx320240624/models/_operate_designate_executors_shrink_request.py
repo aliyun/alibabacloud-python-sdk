@@ -8,16 +8,18 @@ class OperateDesignateExecutorsShrinkRequest(DaraModel):
     def __init__(
         self,
         address_list_shrink: str = None,
+        app_group_id: int = None,
         app_name: str = None,
         cluster_id: str = None,
         designate_type: int = None,
         job_id: int = None,
         transferable: bool = None,
     ):
-        # A list of machine addresses to designate.
+        # The address list.
         # 
         # This parameter is required.
         self.address_list_shrink = address_list_shrink
+        self.app_group_id = app_group_id
         # The application name.
         # 
         # This parameter is required.
@@ -26,15 +28,13 @@ class OperateDesignateExecutorsShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # The designation type. Valid values:
-        # 
-        # - **1**: By worker.
-        # 
-        # - **2**: By label.
+        # The type of the designated machine. Valid values:
+        # - **1**: designated worker.
+        # - **2**: designated label.
         # 
         # This parameter is required.
         self.designate_type = designate_type
-        # The job ID.
+        # The task ID.
         # 
         # This parameter is required.
         self.job_id = job_id
@@ -51,6 +51,9 @@ class OperateDesignateExecutorsShrinkRequest(DaraModel):
             result = _map
         if self.address_list_shrink is not None:
             result['AddressList'] = self.address_list_shrink
+
+        if self.app_group_id is not None:
+            result['AppGroupId'] = self.app_group_id
 
         if self.app_name is not None:
             result['AppName'] = self.app_name
@@ -73,6 +76,9 @@ class OperateDesignateExecutorsShrinkRequest(DaraModel):
         m = m or dict()
         if m.get('AddressList') is not None:
             self.address_list_shrink = m.get('AddressList')
+
+        if m.get('AppGroupId') is not None:
+            self.app_group_id = m.get('AppGroupId')
 
         if m.get('AppName') is not None:
             self.app_name = m.get('AppName')

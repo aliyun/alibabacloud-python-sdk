@@ -1,3 +1,21 @@
+2026-07-22 Version: 1.9.0
+- Support API ImportAgentJobs.
+- Update API DeleteJobs: add request parameters AppGroupId.
+- Update API GetDesigateInfo: add request parameters AppGroupId.
+- Update API GetJobExecutionProgress: add request parameters AppGroupId.
+- Update API ListExecutors: add request parameters AppGroupId.
+- Update API ListJobExecutions: add response parameters Body.Data.Records.$.AppGroupId.
+- Update API ListJobs: add response parameters Body.Data.Records.$.AppGroupId.
+- Update API OperateDesignateExecutors: add request parameters AppGroupId.
+- Update API OperateDisableJobs: add request parameters AppGroupId.
+- Update API OperateEnableJobs: add request parameters AppGroupId.
+- Update API OperateExecuteJob: add request parameters AppGroupId.
+- Update API OperateRerunJob: add request parameters AppId.
+- Update API OperateRetryJobExecution: add request parameters AppGroupId.
+- Update API OperateStopJobExecution: add request parameters AppGroupId.
+- Update API UpdateJob: add request parameters AppGroupId.
+
+
 2026-07-07 Version: 1.8.0
 - Support API CreateContact.
 - Support API DeleteContact.

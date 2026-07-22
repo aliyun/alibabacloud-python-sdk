@@ -12,17 +12,15 @@ class OperateDesignateExecutorsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code. A value of `200` indicates success.
+        # The response code.
         self.code = code
-        # The error message that is returned if the request fails.
+        # The error message.
         self.message = message
-        # The unique ID generated for the request. Use this ID for troubleshooting.
+        # The request ID. Alibaba Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # - `true`: The request was successful.
-        # 
-        # - `false`: The request failed.
+        # Indicates whether the call was successful. Valid values:
+        # - true: The call was successful.
+        # - false: The call failed.
         self.success = success
 
     def validate(self):

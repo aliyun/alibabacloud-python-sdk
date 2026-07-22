@@ -9,29 +9,30 @@ from darabonba.model import DaraModel
 class OperateRetryJobExecutionRequest(DaraModel):
     def __init__(
         self,
+        app_group_id: int = None,
         app_name: str = None,
         cluster_id: str = None,
         job_execution_id: str = None,
         task_list: List[str] = None,
         trigger_child: bool = None,
     ):
-        # The Application Name.
+        self.app_group_id = app_group_id
+        # The application name.
         # 
         # This parameter is required.
         self.app_name = app_name
-        # The Cluster ID.
+        # The cluster ID.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # The Job Execution ID.
+        # The job execution ID.
         # 
         # This parameter is required.
         self.job_execution_id = job_execution_id
-        # A list of Sub-task execution IDs for a Broadcast Sharding Job.
-        # 
-        # > To retry a specific Sub-task of a Broadcast Sharding Job, set this parameter to the execution ID of that Sub-task.
+        # The list of subtask execution IDs (for broadcast jobs).
+        # >To rerun a subtask of a broadcast job, set this field to the execution ID of the corresponding subtask.
         self.task_list = task_list
-        # Specifies whether to trigger downstream jobs.
+        # Specifies whether to trigger downstream nodes.
         self.trigger_child = trigger_child
 
     def validate(self):
@@ -42,6 +43,9 @@ class OperateRetryJobExecutionRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.app_group_id is not None:
+            result['AppGroupId'] = self.app_group_id
+
         if self.app_name is not None:
             result['AppName'] = self.app_name
 
@@ -61,6 +65,9 @@ class OperateRetryJobExecutionRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AppGroupId') is not None:
+            self.app_group_id = m.get('AppGroupId')
+
         if m.get('AppName') is not None:
             self.app_name = m.get('AppName')
 
