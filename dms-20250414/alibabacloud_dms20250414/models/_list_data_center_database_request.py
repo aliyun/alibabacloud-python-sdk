@@ -12,19 +12,20 @@ class ListDataCenterDatabaseRequest(DaraModel):
         import_type: str = None,
         language: str = None,
         search_key: str = None,
+        workspace_id: str = None,
     ):
-        # This parameter is for internal use.
+        # Used only by the frontend.
         self.call_from = call_from
-        # The DMS unit.
+        # The current Data Management unit.
         self.dms_unit = dms_unit
         # The import type.
-        # 
-        # - FILE
+        #   - FILE
         self.import_type = import_type
-        # This parameter is for internal use.
+        # Used only by the frontend.
         self.language = language
-        # The keyword for a fuzzy search for databases.
+        # The keyword for fuzzy match of databases.
         self.search_key = search_key
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -49,6 +50,9 @@ class ListDataCenterDatabaseRequest(DaraModel):
         if self.search_key is not None:
             result['SearchKey'] = self.search_key
 
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -67,6 +71,9 @@ class ListDataCenterDatabaseRequest(DaraModel):
 
         if m.get('SearchKey') is not None:
             self.search_key = m.get('SearchKey')
+
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
 
         return self
 

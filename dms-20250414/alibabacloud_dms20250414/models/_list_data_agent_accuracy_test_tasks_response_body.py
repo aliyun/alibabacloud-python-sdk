@@ -141,7 +141,7 @@ class ListDataAgentAccuracyTestTasksResponseBodyData(DaraModel):
         total_task_number: int = None,
         workspace_id: str = None,
     ):
-        # The instance ID of the accuracy test to which the task belongs.
+        # The accuracy test instance ID to which the task belongs.
         self.accuracy_test_ins_id = accuracy_test_ins_id
         # The accuracy test task ID.
         self.accuracy_test_task_id = accuracy_test_task_id

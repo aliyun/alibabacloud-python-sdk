@@ -11,6 +11,8 @@ class DmsGatewayOrder(DaraModel):
         charge_type: str = None,
         commodity_code: str = None,
         expire_time: str = None,
+        free_order: bool = None,
+        gmt_create: str = None,
         instance_id: str = None,
         instance_type: str = None,
         order_id: int = None,
@@ -22,6 +24,8 @@ class DmsGatewayOrder(DaraModel):
         self.charge_type = charge_type
         self.commodity_code = commodity_code
         self.expire_time = expire_time
+        self.free_order = free_order
+        self.gmt_create = gmt_create
         self.instance_id = instance_id
         self.instance_type = instance_type
         self.order_id = order_id
@@ -48,6 +52,12 @@ class DmsGatewayOrder(DaraModel):
 
         if self.expire_time is not None:
             result['ExpireTime'] = self.expire_time
+
+        if self.free_order is not None:
+            result['FreeOrder'] = self.free_order
+
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
 
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
@@ -82,6 +92,12 @@ class DmsGatewayOrder(DaraModel):
 
         if m.get('ExpireTime') is not None:
             self.expire_time = m.get('ExpireTime')
+
+        if m.get('FreeOrder') is not None:
+            self.free_order = m.get('FreeOrder')
+
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
 
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')

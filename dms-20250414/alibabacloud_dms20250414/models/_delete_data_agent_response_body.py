@@ -5,26 +5,26 @@ from __future__ import annotations
 from alibabacloud_dms20250414 import models as main_models
 from darabonba.model import DaraModel
 
-class CreateDataAgentAccuracyTestResponseBody(DaraModel):
+class DeleteDataAgentResponseBody(DaraModel):
     def __init__(
         self,
-        data: main_models.CreateDataAgentAccuracyTestResponseBodyData = None,
+        data: main_models.DeleteDataAgentResponseBodyData = None,
         error_code: str = None,
         error_message: str = None,
         request_id: str = None,
-        success: str = None,
+        success: bool = None,
     ):
-        # The returned result.
+        # The response struct.
         self.data = data
-        # The error code returned if the request failed.
+        # The error code.
         self.error_code = error_code
         # The error message returned if the call failed.
         self.error_message = error_message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the request is successful. Valid values:
         # 
-        # - **true**: The request was successful.                                 
+        # - **true**: The request is successful.                                 
         # - **false**: The request failed.
         self.success = success
 
@@ -57,7 +57,7 @@ class CreateDataAgentAccuracyTestResponseBody(DaraModel):
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Data') is not None:
-            temp_model = main_models.CreateDataAgentAccuracyTestResponseBodyData()
+            temp_model = main_models.DeleteDataAgentResponseBodyData()
             self.data = temp_model.from_map(m.get('Data'))
 
         if m.get('ErrorCode') is not None:
@@ -74,13 +74,16 @@ class CreateDataAgentAccuracyTestResponseBody(DaraModel):
 
         return self
 
-class CreateDataAgentAccuracyTestResponseBodyData(DaraModel):
+class DeleteDataAgentResponseBodyData(DaraModel):
     def __init__(
         self,
-        accuracy_test_ins_id: str = None,
+        agent_id: str = None,
+        agent_status: str = None,
     ):
-        # The accuracy test instance ID.
-        self.accuracy_test_ins_id = accuracy_test_ins_id
+        # Agent Id
+        self.agent_id = agent_id
+        # The Agent status.
+        self.agent_status = agent_status
 
     def validate(self):
         pass
@@ -90,15 +93,21 @@ class CreateDataAgentAccuracyTestResponseBodyData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.accuracy_test_ins_id is not None:
-            result['AccuracyTestInsId'] = self.accuracy_test_ins_id
+        if self.agent_id is not None:
+            result['AgentId'] = self.agent_id
+
+        if self.agent_status is not None:
+            result['AgentStatus'] = self.agent_status
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AccuracyTestInsId') is not None:
-            self.accuracy_test_ins_id = m.get('AccuracyTestInsId')
+        if m.get('AgentId') is not None:
+            self.agent_id = m.get('AgentId')
+
+        if m.get('AgentStatus') is not None:
+            self.agent_status = m.get('AgentStatus')
 
         return self
 

@@ -13,26 +13,26 @@ class FileUploadCallbackRequest(DaraModel):
         filename: str = None,
         oss_bucket: str = None,
         upload_location: str = None,
+        workspace_id: str = None,
     ):
-        # For frontend use only.
+        # Used only by the frontend.
         self.call_from = call_from
-        # The current DMS unit.
+        # The current Data Management unit.
         self.dms_unit = dms_unit
-        # The file size in bytes.
+        # The file size, in bytes.
         self.file_size = file_size
         # The file name.
         # 
         # This parameter is required.
         self.filename = filename
         self.oss_bucket = oss_bucket
-        # The full path for the file upload.
-        # 
-        # - Format: This path is formed by appending the file name to the UploadDir value returned by the DescribeFileUploadSignature operation.
-        # 
+        # The full path of the uploaded file.
+        # - Format: The UploadDir field returned by the DescribeFileUploadSignature operation concatenated with the file name.
         # - Example: ${UploadDir}/${Filename}
         # 
         # This parameter is required.
         self.upload_location = upload_location
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -60,6 +60,9 @@ class FileUploadCallbackRequest(DaraModel):
         if self.upload_location is not None:
             result['UploadLocation'] = self.upload_location
 
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -81,6 +84,9 @@ class FileUploadCallbackRequest(DaraModel):
 
         if m.get('UploadLocation') is not None:
             self.upload_location = m.get('UploadLocation')
+
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
 
         return self
 

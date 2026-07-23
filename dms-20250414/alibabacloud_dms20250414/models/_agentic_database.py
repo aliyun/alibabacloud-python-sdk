@@ -13,9 +13,9 @@ class AgenticDatabase(DaraModel):
         catalog_name: str = None,
         catalog_type: str = None,
         catalog_uuid: str = None,
-        data_source_type: str = None,
         database_biz_attrs: Dict[str, Any] = None,
         database_uuid: str = None,
+        db_type: str = None,
         description: str = None,
         engine_meta: main_models.AgenticDatabaseEngineMeta = None,
         name: str = None,
@@ -32,12 +32,11 @@ class AgenticDatabase(DaraModel):
         self.catalog_type = catalog_type
         # The unique identifier of the catalog.
         self.catalog_uuid = catalog_uuid
-        # The data source type, such as `MySQL` or `PostgreSQL`.
-        self.data_source_type = data_source_type
         # The database\\"s business attributes.
         self.database_biz_attrs = database_biz_attrs
         # The unique identifier of the database.
         self.database_uuid = database_uuid
+        self.db_type = db_type
         # The database description.
         self.description = description
         # The metadata for the database engine.
@@ -75,14 +74,14 @@ class AgenticDatabase(DaraModel):
         if self.catalog_uuid is not None:
             result['CatalogUuid'] = self.catalog_uuid
 
-        if self.data_source_type is not None:
-            result['DataSourceType'] = self.data_source_type
-
         if self.database_biz_attrs is not None:
             result['DatabaseBizAttrs'] = self.database_biz_attrs
 
         if self.database_uuid is not None:
             result['DatabaseUuid'] = self.database_uuid
+
+        if self.db_type is not None:
+            result['DbType'] = self.db_type
 
         if self.description is not None:
             result['Description'] = self.description
@@ -124,14 +123,14 @@ class AgenticDatabase(DaraModel):
         if m.get('CatalogUuid') is not None:
             self.catalog_uuid = m.get('CatalogUuid')
 
-        if m.get('DataSourceType') is not None:
-            self.data_source_type = m.get('DataSourceType')
-
         if m.get('DatabaseBizAttrs') is not None:
             self.database_biz_attrs = m.get('DatabaseBizAttrs')
 
         if m.get('DatabaseUuid') is not None:
             self.database_uuid = m.get('DatabaseUuid')
+
+        if m.get('DbType') is not None:
+            self.db_type = m.get('DbType')
 
         if m.get('Description') is not None:
             self.description = m.get('Description')

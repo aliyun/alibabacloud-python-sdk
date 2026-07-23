@@ -8,6 +8,7 @@ from darabonba.model import DaraModel
 class OpenClawInstanceVO(DaraModel):
     def __init__(
         self,
+        agent_type: str = None,
         aliyun_account_uid: str = None,
         auth_type: str = None,
         basic_auth_password: str = None,
@@ -24,6 +25,8 @@ class OpenClawInstanceVO(DaraModel):
         last_active_time: str = None,
         lock_time: str = None,
         memory_size: int = None,
+        model_call_quota: int = None,
+        model_call_used: int = None,
         openclaw_token: str = None,
         owner_uid: str = None,
         public_domain: str = None,
@@ -33,6 +36,7 @@ class OpenClawInstanceVO(DaraModel):
         trial_expire_time: str = None,
         variables: str = None,
     ):
+        self.agent_type = agent_type
         self.aliyun_account_uid = aliyun_account_uid
         self.auth_type = auth_type
         self.basic_auth_password = basic_auth_password
@@ -49,6 +53,8 @@ class OpenClawInstanceVO(DaraModel):
         self.last_active_time = last_active_time
         self.lock_time = lock_time
         self.memory_size = memory_size
+        self.model_call_quota = model_call_quota
+        self.model_call_used = model_call_used
         self.openclaw_token = openclaw_token
         self.owner_uid = owner_uid
         self.public_domain = public_domain
@@ -67,6 +73,9 @@ class OpenClawInstanceVO(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.agent_type is not None:
+            result['AgentType'] = self.agent_type
+
         if self.aliyun_account_uid is not None:
             result['AliyunAccountUid'] = self.aliyun_account_uid
 
@@ -115,6 +124,12 @@ class OpenClawInstanceVO(DaraModel):
         if self.memory_size is not None:
             result['MemorySize'] = self.memory_size
 
+        if self.model_call_quota is not None:
+            result['ModelCallQuota'] = self.model_call_quota
+
+        if self.model_call_used is not None:
+            result['ModelCallUsed'] = self.model_call_used
+
         if self.openclaw_token is not None:
             result['OpenclawToken'] = self.openclaw_token
 
@@ -143,6 +158,9 @@ class OpenClawInstanceVO(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentType') is not None:
+            self.agent_type = m.get('AgentType')
+
         if m.get('AliyunAccountUid') is not None:
             self.aliyun_account_uid = m.get('AliyunAccountUid')
 
@@ -192,6 +210,12 @@ class OpenClawInstanceVO(DaraModel):
         if m.get('MemorySize') is not None:
             self.memory_size = m.get('MemorySize')
 
+        if m.get('ModelCallQuota') is not None:
+            self.model_call_quota = m.get('ModelCallQuota')
+
+        if m.get('ModelCallUsed') is not None:
+            self.model_call_used = m.get('ModelCallUsed')
+
         if m.get('OpenclawToken') is not None:
             self.openclaw_token = m.get('OpenclawToken')
 
@@ -217,8 +241,6 @@ class OpenClawInstanceVO(DaraModel):
             self.variables = m.get('Variables')
 
         return self
-
-
 
 class OpenClawInstanceVOImageInfo(DaraModel):
     def __init__(

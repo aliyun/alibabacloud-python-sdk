@@ -9,11 +9,13 @@ class DescribeFileUploadSignatureRequest(DaraModel):
         self,
         call_from: str = None,
         dms_unit: str = None,
+        workspace_id: str = None,
     ):
-        # Used by the frontend only
+        # The parameter used only by the frontend.
         self.call_from = call_from
-        # Current DMS unit
+        # The current DMS unit.
         self.dms_unit = dms_unit
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -29,6 +31,9 @@ class DescribeFileUploadSignatureRequest(DaraModel):
         if self.dms_unit is not None:
             result['DmsUnit'] = self.dms_unit
 
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -38,6 +43,9 @@ class DescribeFileUploadSignatureRequest(DaraModel):
 
         if m.get('DmsUnit') is not None:
             self.dms_unit = m.get('DmsUnit')
+
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
 
         return self
 

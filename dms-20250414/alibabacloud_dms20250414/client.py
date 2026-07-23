@@ -903,6 +903,8 @@ class Client(OpenApiClient):
             query['CustomAgentId'] = request.custom_agent_id
         if not DaraCore.is_null(request.dataset):
             query['Dataset'] = request.dataset
+        if not DaraCore.is_null(request.datasource):
+            query['Datasource'] = request.datasource
         if not DaraCore.is_null(request.desc):
             query['Desc'] = request.desc
         if not DaraCore.is_null(request.dms_unit):
@@ -955,6 +957,8 @@ class Client(OpenApiClient):
             query['CustomAgentId'] = request.custom_agent_id
         if not DaraCore.is_null(request.dataset):
             query['Dataset'] = request.dataset
+        if not DaraCore.is_null(request.datasource):
+            query['Datasource'] = request.datasource
         if not DaraCore.is_null(request.desc):
             query['Desc'] = request.desc
         if not DaraCore.is_null(request.dms_unit):
@@ -1831,6 +1835,76 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteCustomAgentResponse:
         runtime = RuntimeOptions()
         return await self.delete_custom_agent_with_options_async(request, runtime)
+
+    def delete_data_agent_with_options(
+        self,
+        request: main_models.DeleteDataAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteDataAgentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dmsunit):
+            query['DMSUnit'] = request.dmsunit
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteDataAgent',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteDataAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_data_agent_with_options_async(
+        self,
+        request: main_models.DeleteDataAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteDataAgentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dmsunit):
+            query['DMSUnit'] = request.dmsunit
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteDataAgent',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteDataAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_data_agent(
+        self,
+        request: main_models.DeleteDataAgentRequest,
+    ) -> main_models.DeleteDataAgentResponse:
+        runtime = RuntimeOptions()
+        return self.delete_data_agent_with_options(request, runtime)
+
+    async def delete_data_agent_async(
+        self,
+        request: main_models.DeleteDataAgentRequest,
+    ) -> main_models.DeleteDataAgentResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_data_agent_with_options_async(request, runtime)
 
     def delete_data_agent_accuracy_test_with_options(
         self,
@@ -2816,6 +2890,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_custom_agent_with_options_async(request, runtime)
 
+    def describe_data_agent_metrics_with_options(
+        self,
+        request: main_models.DescribeDataAgentMetricsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeDataAgentMetricsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.metric_names):
+            query['MetricNames'] = request.metric_names
+        if not DaraCore.is_null(request.metric_type):
+            query['MetricType'] = request.metric_type
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeDataAgentMetrics',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeDataAgentMetricsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_data_agent_metrics_with_options_async(
+        self,
+        request: main_models.DescribeDataAgentMetricsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeDataAgentMetricsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.metric_names):
+            query['MetricNames'] = request.metric_names
+        if not DaraCore.is_null(request.metric_type):
+            query['MetricType'] = request.metric_type
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeDataAgentMetrics',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeDataAgentMetricsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_data_agent_metrics(
+        self,
+        request: main_models.DescribeDataAgentMetricsRequest,
+    ) -> main_models.DescribeDataAgentMetricsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_data_agent_metrics_with_options(request, runtime)
+
+    async def describe_data_agent_metrics_async(
+        self,
+        request: main_models.DescribeDataAgentMetricsRequest,
+    ) -> main_models.DescribeDataAgentMetricsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_data_agent_metrics_with_options_async(request, runtime)
+
     def describe_data_agent_session_with_options(
         self,
         request: main_models.DescribeDataAgentSessionRequest,
@@ -2979,6 +3135,8 @@ class Client(OpenApiClient):
             query['CallFrom'] = request.call_from
         if not DaraCore.is_null(request.dms_unit):
             query['DmsUnit'] = request.dms_unit
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -3009,6 +3167,8 @@ class Client(OpenApiClient):
             query['CallFrom'] = request.call_from
         if not DaraCore.is_null(request.dms_unit):
             query['DmsUnit'] = request.dms_unit
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -3201,6 +3361,8 @@ class Client(OpenApiClient):
             query['OssBucket'] = request.oss_bucket
         if not DaraCore.is_null(request.upload_location):
             query['UploadLocation'] = request.upload_location
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -3239,6 +3401,8 @@ class Client(OpenApiClient):
             query['OssBucket'] = request.oss_bucket
         if not DaraCore.is_null(request.upload_location):
             query['UploadLocation'] = request.upload_location
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -3271,6 +3435,76 @@ class Client(OpenApiClient):
     ) -> main_models.FileUploadCallbackResponse:
         runtime = RuntimeOptions()
         return await self.file_upload_callback_with_options_async(request, runtime)
+
+    def get_agentic_agent_by_install_token_with_options(
+        self,
+        request: main_models.GetAgenticAgentByInstallTokenRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAgenticAgentByInstallTokenResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.install_token):
+            query['InstallToken'] = request.install_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAgenticAgentByInstallToken',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAgenticAgentByInstallTokenResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_agentic_agent_by_install_token_with_options_async(
+        self,
+        request: main_models.GetAgenticAgentByInstallTokenRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAgenticAgentByInstallTokenResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.install_token):
+            query['InstallToken'] = request.install_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAgenticAgentByInstallToken',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAgenticAgentByInstallTokenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_agentic_agent_by_install_token(
+        self,
+        request: main_models.GetAgenticAgentByInstallTokenRequest,
+    ) -> main_models.GetAgenticAgentByInstallTokenResponse:
+        runtime = RuntimeOptions()
+        return self.get_agentic_agent_by_install_token_with_options(request, runtime)
+
+    async def get_agentic_agent_by_install_token_async(
+        self,
+        request: main_models.GetAgenticAgentByInstallTokenRequest,
+    ) -> main_models.GetAgenticAgentByInstallTokenResponse:
+        runtime = RuntimeOptions()
+        return await self.get_agentic_agent_by_install_token_with_options_async(request, runtime)
 
     def get_airflow_with_options(
         self,
@@ -5447,6 +5681,8 @@ class Client(OpenApiClient):
             query['Language'] = request.language
         if not DaraCore.is_null(request.search_key):
             query['SearchKey'] = request.search_key
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -5483,6 +5719,8 @@ class Client(OpenApiClient):
             query['Language'] = request.language
         if not DaraCore.is_null(request.search_key):
             query['SearchKey'] = request.search_key
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -8237,6 +8475,8 @@ class Client(OpenApiClient):
             query['CustomerAgentId'] = request.customer_agent_id
         if not DaraCore.is_null(request.dataset):
             query['Dataset'] = request.dataset
+        if not DaraCore.is_null(request.datasource):
+            query['Datasource'] = request.datasource
         if not DaraCore.is_null(request.desc):
             query['Desc'] = request.desc
         if not DaraCore.is_null(request.dms_unit):
@@ -8289,6 +8529,8 @@ class Client(OpenApiClient):
             query['CustomerAgentId'] = request.customer_agent_id
         if not DaraCore.is_null(request.dataset):
             query['Dataset'] = request.dataset
+        if not DaraCore.is_null(request.datasource):
+            query['Datasource'] = request.datasource
         if not DaraCore.is_null(request.desc):
             query['Desc'] = request.desc
         if not DaraCore.is_null(request.dms_unit):

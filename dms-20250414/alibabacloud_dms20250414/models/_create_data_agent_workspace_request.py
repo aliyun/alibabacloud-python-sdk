@@ -14,10 +14,11 @@ class CreateDataAgentWorkspaceRequest(DaraModel):
     ):
         # The current DMS unit.
         self.dmsunit = dmsunit
+        # Specifies whether session sharing is enabled within the workspace.
         self.is_session_share_enabled = is_session_share_enabled
-        # The description of the collaborative workspace.
+        # The description of the workspace.
         self.workspace_desc = workspace_desc
-        # The name of the collaborative workspace.
+        # The name of the workspace.
         self.workspace_name = workspace_name
 
     def validate(self):

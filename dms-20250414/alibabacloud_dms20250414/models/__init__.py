@@ -8,6 +8,8 @@ from ._agentic_catalog import AgenticCatalog
 from ._agentic_database import AgenticDatabase
 from ._agentic_database_engine_meta import AgenticDatabaseEngineMeta
 from ._agentic_database_object import AgenticDatabaseObject
+from ._agentic_dms_instance_sync_task import AgenticDmsInstanceSyncTask
+from ._agentic_dms_instance_sync_task_instance import AgenticDmsInstanceSyncTaskInstance
 from ._agentic_table_base_info import AgenticTableBaseInfo
 from ._agentic_table_column import AgenticTableColumn
 from ._agentic_table_column_engine_meta import AgenticTableColumnEngineMeta
@@ -34,6 +36,8 @@ from ._dms_gateway_order import DmsGatewayOrder
 from ._dms_knowledge_search_order_info_do import DmsKnowledgeSearchOrderInfoDO
 from ._foreign_instance import ForeignInstance
 from ._foreign_instance_cred_info import ForeignInstanceCredInfo
+from ._managed_da_order_summary_vo import ManagedDaOrderSummaryVO
+from ._managed_da_order_vo import ManagedDaOrderVO
 from ._mdb_agent_instance_vo import MdbAgentInstanceVo
 from ._one_meta_database import OneMetaDatabase
 from ._one_meta_database_engine_meta import OneMetaDatabaseEngineMeta
@@ -114,6 +118,9 @@ from ._delete_airflow_response import DeleteAirflowResponse
 from ._delete_custom_agent_request import DeleteCustomAgentRequest
 from ._delete_custom_agent_response_body import DeleteCustomAgentResponseBody
 from ._delete_custom_agent_response import DeleteCustomAgentResponse
+from ._delete_data_agent_request import DeleteDataAgentRequest
+from ._delete_data_agent_response_body import DeleteDataAgentResponseBody
+from ._delete_data_agent_response import DeleteDataAgentResponse
 from ._delete_data_agent_accuracy_test_request import DeleteDataAgentAccuracyTestRequest
 from ._delete_data_agent_accuracy_test_response_body import DeleteDataAgentAccuracyTestResponseBody
 from ._delete_data_agent_accuracy_test_response import DeleteDataAgentAccuracyTestResponse
@@ -152,6 +159,9 @@ from ._delete_workspace_code_response import DeleteWorkspaceCodeResponse
 from ._describe_custom_agent_request import DescribeCustomAgentRequest
 from ._describe_custom_agent_response_body import DescribeCustomAgentResponseBody
 from ._describe_custom_agent_response import DescribeCustomAgentResponse
+from ._describe_data_agent_metrics_request import DescribeDataAgentMetricsRequest
+from ._describe_data_agent_metrics_response_body import DescribeDataAgentMetricsResponseBody
+from ._describe_data_agent_metrics_response import DescribeDataAgentMetricsResponse
 from ._describe_data_agent_session_request import DescribeDataAgentSessionRequest
 from ._describe_data_agent_session_response_body import DescribeDataAgentSessionResponseBody
 from ._describe_data_agent_session_response import DescribeDataAgentSessionResponse
@@ -170,6 +180,9 @@ from ._describe_knowledge_base_upload_signature_response import DescribeKnowledg
 from ._file_upload_callback_request import FileUploadCallbackRequest
 from ._file_upload_callback_response_body import FileUploadCallbackResponseBody
 from ._file_upload_callback_response import FileUploadCallbackResponse
+from ._get_agentic_agent_by_install_token_request import GetAgenticAgentByInstallTokenRequest
+from ._get_agentic_agent_by_install_token_response_body import GetAgenticAgentByInstallTokenResponseBody
+from ._get_agentic_agent_by_install_token_response import GetAgenticAgentByInstallTokenResponse
 from ._get_airflow_request import GetAirflowRequest
 from ._get_airflow_response_body import GetAirflowResponseBody
 from ._get_airflow_response import GetAirflowResponse
@@ -381,6 +394,7 @@ from ._workspace_action_status_response import WorkspaceActionStatusResponse
 from ._workspace_code_publish_request import WorkspaceCodePublishRequest
 from ._workspace_code_publish_response_body import WorkspaceCodePublishResponseBody
 from ._workspace_code_publish_response import WorkspaceCodePublishResponse
+from ._agentic_dms_instance_sync_task_instance import AgenticDmsInstanceSyncTaskInstanceDmsInstanceSummary
 from ._open_claw_instance_vo import OpenClawInstanceVOImageInfo
 from ._add_user_to_data_agent_workspace_response_body import AddUserToDataAgentWorkspaceResponseBodyData
 from ._config_airflow_response_body import ConfigAirflowResponseBodyRoot
@@ -404,6 +418,7 @@ from ._create_data_agent_workspace_response_body import CreateDataAgentWorkspace
 from ._delete_airflow_response_body import DeleteAirflowResponseBodyRootResponses
 from ._delete_airflow_response_body import DeleteAirflowResponseBodyRoot
 from ._delete_custom_agent_response_body import DeleteCustomAgentResponseBodyData
+from ._delete_data_agent_response_body import DeleteDataAgentResponseBodyData
 from ._delete_data_agent_knowledge_base_response_body import DeleteDataAgentKnowledgeBaseResponseBodyData
 from ._delete_file_upload_response_body import DeleteFileUploadResponseBodyData
 from ._describe_custom_agent_response_body import DescribeCustomAgentResponseBodyDataCallbackConfig
@@ -411,6 +426,8 @@ from ._describe_custom_agent_response_body import DescribeCustomAgentResponseBod
 from ._describe_custom_agent_response_body import DescribeCustomAgentResponseBodyDataKnowledgeConfigList
 from ._describe_custom_agent_response_body import DescribeCustomAgentResponseBodyDataScheduleTaskConfig
 from ._describe_custom_agent_response_body import DescribeCustomAgentResponseBodyData
+from ._describe_data_agent_metrics_response_body import DescribeDataAgentMetricsResponseBodyDataMetrics
+from ._describe_data_agent_metrics_response_body import DescribeDataAgentMetricsResponseBodyData
 from ._describe_data_agent_session_response_body import DescribeDataAgentSessionResponseBodyDataArtifacts
 from ._describe_data_agent_session_response_body import DescribeDataAgentSessionResponseBodyDataChatHistoryLocations
 from ._describe_data_agent_session_response_body import DescribeDataAgentSessionResponseBodyDataDataSources
@@ -422,6 +439,7 @@ from ._describe_file_upload_signature_response_body import DescribeFileUploadSig
 from ._describe_knowledge_base_stats_response_body import DescribeKnowledgeBaseStatsResponseBodyData
 from ._describe_knowledge_base_upload_signature_response_body import DescribeKnowledgeBaseUploadSignatureResponseBodyData
 from ._file_upload_callback_response_body import FileUploadCallbackResponseBodyData
+from ._get_agentic_agent_by_install_token_response_body import GetAgenticAgentByInstallTokenResponseBodyData
 from ._get_airflow_response_body import GetAirflowResponseBodyRoot
 from ._get_data_agent_sub_account_info_response_body import GetDataAgentSubAccountInfoResponseBodyData
 from ._get_data_agent_workspace_info_response_body import GetDataAgentWorkspaceInfoResponseBodyData
@@ -489,6 +507,8 @@ __all__ = [
     AgenticDatabase,
     AgenticDatabaseEngineMeta,
     AgenticDatabaseObject,
+    AgenticDmsInstanceSyncTask,
+    AgenticDmsInstanceSyncTaskInstance,
     AgenticTableBaseInfo,
     AgenticTableColumn,
     AgenticTableColumnEngineMeta,
@@ -515,6 +535,8 @@ __all__ = [
     DmsKnowledgeSearchOrderInfoDO,
     ForeignInstance,
     ForeignInstanceCredInfo,
+    ManagedDaOrderSummaryVO,
+    ManagedDaOrderVO,
     MdbAgentInstanceVo,
     OneMetaDatabase,
     OneMetaDatabaseEngineMeta,
@@ -595,6 +617,9 @@ __all__ = [
     DeleteCustomAgentRequest,
     DeleteCustomAgentResponseBody,
     DeleteCustomAgentResponse,
+    DeleteDataAgentRequest,
+    DeleteDataAgentResponseBody,
+    DeleteDataAgentResponse,
     DeleteDataAgentAccuracyTestRequest,
     DeleteDataAgentAccuracyTestResponseBody,
     DeleteDataAgentAccuracyTestResponse,
@@ -633,6 +658,9 @@ __all__ = [
     DescribeCustomAgentRequest,
     DescribeCustomAgentResponseBody,
     DescribeCustomAgentResponse,
+    DescribeDataAgentMetricsRequest,
+    DescribeDataAgentMetricsResponseBody,
+    DescribeDataAgentMetricsResponse,
     DescribeDataAgentSessionRequest,
     DescribeDataAgentSessionResponseBody,
     DescribeDataAgentSessionResponse,
@@ -651,6 +679,9 @@ __all__ = [
     FileUploadCallbackRequest,
     FileUploadCallbackResponseBody,
     FileUploadCallbackResponse,
+    GetAgenticAgentByInstallTokenRequest,
+    GetAgenticAgentByInstallTokenResponseBody,
+    GetAgenticAgentByInstallTokenResponse,
     GetAirflowRequest,
     GetAirflowResponseBody,
     GetAirflowResponse,
@@ -862,6 +893,7 @@ __all__ = [
     WorkspaceCodePublishRequest,
     WorkspaceCodePublishResponseBody,
     WorkspaceCodePublishResponse,
+    AgenticDmsInstanceSyncTaskInstanceDmsInstanceSummary,
     OpenClawInstanceVOImageInfo,
     AddUserToDataAgentWorkspaceResponseBodyData,
     ConfigAirflowResponseBodyRoot,
@@ -885,6 +917,7 @@ __all__ = [
     DeleteAirflowResponseBodyRootResponses,
     DeleteAirflowResponseBodyRoot,
     DeleteCustomAgentResponseBodyData,
+    DeleteDataAgentResponseBodyData,
     DeleteDataAgentKnowledgeBaseResponseBodyData,
     DeleteFileUploadResponseBodyData,
     DescribeCustomAgentResponseBodyDataCallbackConfig,
@@ -892,6 +925,8 @@ __all__ = [
     DescribeCustomAgentResponseBodyDataKnowledgeConfigList,
     DescribeCustomAgentResponseBodyDataScheduleTaskConfig,
     DescribeCustomAgentResponseBodyData,
+    DescribeDataAgentMetricsResponseBodyDataMetrics,
+    DescribeDataAgentMetricsResponseBodyData,
     DescribeDataAgentSessionResponseBodyDataArtifacts,
     DescribeDataAgentSessionResponseBodyDataChatHistoryLocations,
     DescribeDataAgentSessionResponseBodyDataDataSources,
@@ -903,6 +938,7 @@ __all__ = [
     DescribeKnowledgeBaseStatsResponseBodyData,
     DescribeKnowledgeBaseUploadSignatureResponseBodyData,
     FileUploadCallbackResponseBodyData,
+    GetAgenticAgentByInstallTokenResponseBodyData,
     GetAirflowResponseBodyRoot,
     GetDataAgentSubAccountInfoResponseBodyData,
     GetDataAgentWorkspaceInfoResponseBodyData,

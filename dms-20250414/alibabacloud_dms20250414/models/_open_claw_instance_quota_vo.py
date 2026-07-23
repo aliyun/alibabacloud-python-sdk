@@ -10,6 +10,7 @@ class OpenClawInstanceQuotaVO(DaraModel):
         aliyun_account_uid: str = None,
         deep_research_call_quota: str = None,
         deep_research_call_used: str = None,
+        instance_desc: str = None,
         instance_gmt_create: str = None,
         instance_id: str = None,
         instance_name: str = None,
@@ -19,31 +20,22 @@ class OpenClawInstanceQuotaVO(DaraModel):
         refresh_day: str = None,
         skill_plan_call_quota: str = None,
         skill_plan_call_used: str = None,
+        status: int = None,
     ):
-        # The Alibaba Cloud account UID.
         self.aliyun_account_uid = aliyun_account_uid
-        # The total quota for deep research calls.
         self.deep_research_call_quota = deep_research_call_quota
-        # The number of deep research calls used.
         self.deep_research_call_used = deep_research_call_used
-        # The instance creation time.
+        self.instance_desc = instance_desc
         self.instance_gmt_create = instance_gmt_create
-        # The instance ID.
         self.instance_id = instance_id
-        # The instance name.
         self.instance_name = instance_name
-        # The timestamp of the last metering event.
         self.last_metering_time = last_metering_time
-        # The total quota for model calls.
         self.model_call_quota = model_call_quota
-        # The number of model calls used.
         self.model_call_used = model_call_used
-        # The day of the month on which the quota refreshes.
         self.refresh_day = refresh_day
-        # The total quota for skill plan calls.
         self.skill_plan_call_quota = skill_plan_call_quota
-        # The number of skill plan calls used.
         self.skill_plan_call_used = skill_plan_call_used
+        self.status = status
 
     def validate(self):
         pass
@@ -61,6 +53,9 @@ class OpenClawInstanceQuotaVO(DaraModel):
 
         if self.deep_research_call_used is not None:
             result['DeepResearchCallUsed'] = self.deep_research_call_used
+
+        if self.instance_desc is not None:
+            result['InstanceDesc'] = self.instance_desc
 
         if self.instance_gmt_create is not None:
             result['InstanceGmtCreate'] = self.instance_gmt_create
@@ -89,6 +84,9 @@ class OpenClawInstanceQuotaVO(DaraModel):
         if self.skill_plan_call_used is not None:
             result['SkillPlanCallUsed'] = self.skill_plan_call_used
 
+        if self.status is not None:
+            result['Status'] = self.status
+
         return result
 
     def from_map(self, m: dict = None):
@@ -101,6 +99,9 @@ class OpenClawInstanceQuotaVO(DaraModel):
 
         if m.get('DeepResearchCallUsed') is not None:
             self.deep_research_call_used = m.get('DeepResearchCallUsed')
+
+        if m.get('InstanceDesc') is not None:
+            self.instance_desc = m.get('InstanceDesc')
 
         if m.get('InstanceGmtCreate') is not None:
             self.instance_gmt_create = m.get('InstanceGmtCreate')
@@ -128,6 +129,9 @@ class OpenClawInstanceQuotaVO(DaraModel):
 
         if m.get('SkillPlanCallUsed') is not None:
             self.skill_plan_call_used = m.get('SkillPlanCallUsed')
+
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
 
         return self
 

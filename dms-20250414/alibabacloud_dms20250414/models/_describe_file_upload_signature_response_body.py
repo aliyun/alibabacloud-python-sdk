@@ -14,18 +14,18 @@ class DescribeFileUploadSignatureResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Return struct
+        # The response struct.
         self.data = data
-        # Error code
+        # The error code.
         self.error_code = error_code
-        # Error message returned when the invocation fails
+        # The error message returned if the call fails.
         self.error_message = error_message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request succeeded. The return value is as follows:
+        # Indicates whether the request is successful. Valid values:
         # 
-        # - **true**: The request succeeded.
-        # - **false**: The request failed.
+        # - **true**: The request is successful.
+        # - **false**: The request fails.
         self.success = success
 
     def validate(self):
@@ -86,21 +86,21 @@ class DescribeFileUploadSignatureResponseBodyData(DaraModel):
         upload_dir: str = None,
         upload_host: str = None,
     ):
-        # Parameter set that specifies the derived key
+        # The parameter set that specifies the derived key.
         self.oss_credential = oss_credential
-        # Time of the request, formatted according to the ISO 8601 date and time standard
+        # The time of the request. The format follows the ISO 8601 date and time standard.
         self.oss_date = oss_date
-        # STS token used for uploading to OSS, valid for 1 hour
+        # The STS token used to upload files to OSS. The token is valid for 1 hour.
         self.oss_security_token = oss_security_token
-        # Description information used for signature authentication
+        # The description information used for signature authentication.
         self.oss_signature = oss_signature
-        # Specifies the version and algorithm of the signature
+        # The version and algorithm of the signature.
         self.oss_signature_version = oss_signature_version
-        # Permission constraints and conditions for file upload
+        # The permission restrictions and constraints for file uploads.
         self.policy = policy
-        # Path for file upload
+        # The path for file uploads.
         self.upload_dir = upload_dir
-        # Target address for file upload
+        # The destination address for file uploads.
         self.upload_host = upload_host
 
     def validate(self):

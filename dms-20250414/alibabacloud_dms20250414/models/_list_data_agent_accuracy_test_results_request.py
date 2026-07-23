@@ -18,7 +18,7 @@ class ListDataAgentAccuracyTestResultsRequest(DaraModel):
         region_id: str = None,
         workspace_id: str = None,
     ):
-        # The instance ID of the accuracy test to which the task belongs.
+        # The instance ID of the accuracy test.
         self.accuracy_test_ins_id = accuracy_test_ins_id
         # The result ID used to retrieve a single record.
         self.accuracy_test_result_id = accuracy_test_result_id

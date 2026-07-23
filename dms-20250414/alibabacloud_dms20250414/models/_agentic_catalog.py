@@ -12,8 +12,8 @@ class AgenticCatalog(DaraModel):
         catalog_biz_attrs: Dict[str, Any] = None,
         catalog_type: str = None,
         catalog_uuid: str = None,
-        data_source_type: str = None,
         data_source_uuid: str = None,
+        db_type: str = None,
         description: str = None,
         name: str = None,
         properties: Dict[str, Any] = None,
@@ -21,27 +21,16 @@ class AgenticCatalog(DaraModel):
         state: int = None,
         storage_location: str = None,
     ):
-        # A collection of key-value pairs that represents business attributes for the catalog, such as the data owner or department.
         self.catalog_biz_attrs = catalog_biz_attrs
-        # The type of the catalog. For example, `INTERNAL_METADATA` or `THIRD_PARTY`.
         self.catalog_type = catalog_type
-        # The unique identifier (UUID) of the catalog. This parameter is system-generated and output-only.
         self.catalog_uuid = catalog_uuid
-        # The type of the data source associated with the catalog. For example, `MySQL`, `PostgreSQL`, or `OSS`.
-        self.data_source_type = data_source_type
-        # The unique identifier (UUID) of the associated data source.
         self.data_source_uuid = data_source_uuid
-        # The description of the catalog. It can be up to 2,048 characters long.
+        self.db_type = db_type
         self.description = description
-        # The display name of the catalog. The name can be up to 256 characters long.
         self.name = name
-        # A collection of key-value pairs that represents additional technical properties for the catalog.
         self.properties = properties
-        # The ID of the region where the catalog is located. For example, `cn-hangzhou`.
         self.region_id = region_id
-        # The current state of the catalog. Valid values are: `0` (Creating), `1` (Active), `2` (Deleting), and `3` (Error).
         self.state = state
-        # The storage location for the catalog\\"s metadata, such as a database name or a file path.
         self.storage_location = storage_location
 
     def validate(self):
@@ -61,11 +50,11 @@ class AgenticCatalog(DaraModel):
         if self.catalog_uuid is not None:
             result['CatalogUuid'] = self.catalog_uuid
 
-        if self.data_source_type is not None:
-            result['DataSourceType'] = self.data_source_type
-
         if self.data_source_uuid is not None:
             result['DataSourceUuid'] = self.data_source_uuid
+
+        if self.db_type is not None:
+            result['DbType'] = self.db_type
 
         if self.description is not None:
             result['Description'] = self.description
@@ -98,11 +87,11 @@ class AgenticCatalog(DaraModel):
         if m.get('CatalogUuid') is not None:
             self.catalog_uuid = m.get('CatalogUuid')
 
-        if m.get('DataSourceType') is not None:
-            self.data_source_type = m.get('DataSourceType')
-
         if m.get('DataSourceUuid') is not None:
             self.data_source_uuid = m.get('DataSourceUuid')
+
+        if m.get('DbType') is not None:
+            self.db_type = m.get('DbType')
 
         if m.get('Description') is not None:
             self.description = m.get('Description')

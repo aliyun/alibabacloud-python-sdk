@@ -16,18 +16,17 @@ class ListDataCenterDatabaseResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The list of databases.
+        # The response struct.
         self.data = data
-        # The error code returned if the request fails.
+        # The error code returned if the request failed.
         self.error_code = error_code
-        # The error message returned if the request fails.
+        # The error message.
         self.error_message = error_message
-        # The ID of the request.
+        # Id of the request
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # - **true**: The request was successful.
-        # 
+        # - **true**: The request was successful.                                 
         # - **false**: The request failed.
         self.success = success
 
@@ -103,58 +102,45 @@ class ListDataCenterDatabaseResponseBodyData(DaraModel):
         size: int = None,
         use_user_oss_bucket: bool = None,
     ):
-        # The description of the database.
+        # The database description.
         self.database_desc = database_desc
-        # The name of the database.
-        # 
-        # - If `ImportType` is `FILE`, this is the file name.
+        # The database name.
+        # - When ImportType is FILE, this parameter indicates the file name.
         self.database_name = database_name
-        # The ID of the database.
+        # The database ID.
         self.db_id = db_id
-        # - If `ImportType` is `FILE`:
-        # 
-        #   - The file format, such as `csv`, `xlsx`, or `xls`.
+        # - When ImportType is FILE:
+        #   - File type: dbType indicates the file format, such as csv, xlsx, or xls.
         self.db_type = db_type
-        # The time the database description was last updated.
+        # The time when the database description was last updated.
         self.desc_update_time = desc_update_time
-        # The ID of the database in DMS.
-        # 
-        # - This parameter is not returned if `ImportType` is `FILE`.
+        # The ID of the Data Management database that hosts the instance.
+        #   - This parameter is not returned when ImportType is FILE.
         self.dms_db_id = dms_db_id
-        # The ID of the DMS instance that manages the database.
-        # 
-        # - This parameter is not returned if `ImportType` is `FILE`.
+        # The ID of the Data Management instance that hosts the instance.
+        #   - This parameter is not returned when ImportType is FILE.
         self.dms_instance_id = dms_instance_id
         self.download_link = download_link
-        # The time the entry was created.
+        # The time when the file was created.
         self.gmt_created = gmt_created
-        # The import type. Valid values:
-        # 
-        # - FILE
-        # 
-        # - RDS
-        # 
-        # - ADB
-        # 
-        # - PolarDB
-        # 
-        # - Hologres
-        # 
-        # - DMS
+        # The import type.
+        #   - FILE
+        #   - RDS
+        #   - ADB
+        #   - PolarDB
+        #   - Hologres
+        #   - DMS
         self.import_type = import_type
-        # The name of the instance.
-        # 
-        # - If `ImportType` is `FILE`, this parameter specifies the file ID in the data center.
+        # The instance name.
+        # - When ImportType is FILE, this parameter indicates the file ID in the data center.
         self.instance_name = instance_name
         self.intranet_download_link = intranet_download_link
         # Indicates whether the dataset is built-in. Valid values:
-        # 
         # - Y: The dataset is built-in.
-        # 
         # - N: The dataset is not built-in.
         self.is_internal = is_internal
         self.oss_bucket = oss_bucket
-        # The size of the file, in bytes.
+        # The file size, in bytes.
         self.size = size
         self.use_user_oss_bucket = use_user_oss_bucket
 

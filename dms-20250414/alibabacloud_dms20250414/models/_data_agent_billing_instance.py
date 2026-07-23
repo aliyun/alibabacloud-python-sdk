@@ -16,6 +16,7 @@ class DataAgentBillingInstance(DaraModel):
         commodity_code: str = None,
         expire_time: int = None,
         free_agent_seats: int = None,
+        free_llm: int = None,
         gmt_created: int = None,
         gmt_modified: int = None,
         is_default: bool = None,
@@ -32,6 +33,7 @@ class DataAgentBillingInstance(DaraModel):
         self.commodity_code = commodity_code
         self.expire_time = expire_time
         self.free_agent_seats = free_agent_seats
+        self.free_llm = free_llm
         self.gmt_created = gmt_created
         self.gmt_modified = gmt_modified
         self.is_default = is_default
@@ -69,6 +71,9 @@ class DataAgentBillingInstance(DaraModel):
 
         if self.free_agent_seats is not None:
             result['FreeAgentSeats'] = self.free_agent_seats
+
+        if self.free_llm is not None:
+            result['FreeLLM'] = self.free_llm
 
         if self.gmt_created is not None:
             result['GmtCreated'] = self.gmt_created
@@ -118,6 +123,9 @@ class DataAgentBillingInstance(DaraModel):
 
         if m.get('FreeAgentSeats') is not None:
             self.free_agent_seats = m.get('FreeAgentSeats')
+
+        if m.get('FreeLLM') is not None:
+            self.free_llm = m.get('FreeLLM')
 
         if m.get('GmtCreated') is not None:
             self.gmt_created = m.get('GmtCreated')

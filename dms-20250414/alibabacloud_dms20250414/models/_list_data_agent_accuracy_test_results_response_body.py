@@ -101,8 +101,10 @@ class ListDataAgentAccuracyTestResultsResponseBodyData(DaraModel):
         accuracy_test_task_id: str = None,
         content: List[main_models.ListDataAgentAccuracyTestResultsResponseBodyDataContent] = None,
         correct_count: int = None,
+        failed_count: str = None,
         page_number: int = None,
         page_size: int = None,
+        pending_count: str = None,
         total_elements: int = None,
         total_pages: int = None,
     ):
@@ -114,10 +116,12 @@ class ListDataAgentAccuracyTestResultsResponseBodyData(DaraModel):
         self.content = content
         # The number of test cases that passed evaluation.
         self.correct_count = correct_count
+        self.failed_count = failed_count
         # The page number.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
+        self.pending_count = pending_count
         # The total number of results.
         self.total_elements = total_elements
         # The total number of pages.
@@ -148,11 +152,17 @@ class ListDataAgentAccuracyTestResultsResponseBodyData(DaraModel):
         if self.correct_count is not None:
             result['CorrectCount'] = self.correct_count
 
+        if self.failed_count is not None:
+            result['FailedCount'] = self.failed_count
+
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
 
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+
+        if self.pending_count is not None:
+            result['PendingCount'] = self.pending_count
 
         if self.total_elements is not None:
             result['TotalElements'] = self.total_elements
@@ -179,11 +189,17 @@ class ListDataAgentAccuracyTestResultsResponseBodyData(DaraModel):
         if m.get('CorrectCount') is not None:
             self.correct_count = m.get('CorrectCount')
 
+        if m.get('FailedCount') is not None:
+            self.failed_count = m.get('FailedCount')
+
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
 
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+
+        if m.get('PendingCount') is not None:
+            self.pending_count = m.get('PendingCount')
 
         if m.get('TotalElements') is not None:
             self.total_elements = m.get('TotalElements')
@@ -198,6 +214,7 @@ class ListDataAgentAccuracyTestResultsResponseBodyDataContent(DaraModel):
         self,
         accuracy_test_task_id: str = None,
         agent_result: str = None,
+        agent_sql: str = None,
         answer_result: str = None,
         answer_sql: str = None,
         is_true: bool = None,
@@ -205,15 +222,17 @@ class ListDataAgentAccuracyTestResultsResponseBodyDataContent(DaraModel):
         reason: str = None,
         recommendation: str = None,
         result_id: str = None,
+        session_id: str = None,
         subtask_id: str = None,
     ):
         # The ID of the accuracy test task.
         self.accuracy_test_task_id = accuracy_test_task_id
-        # The actual answer returned by the agent.
+        # The actual answer from the agent.
         self.agent_result = agent_result
+        self.agent_sql = agent_sql
         # The expected answer.
         self.answer_result = answer_result
-        # The expected SQL statement.
+        # The expected SQL.
         self.answer_sql = answer_sql
         # The AI evaluation result.
         self.is_true = is_true
@@ -225,6 +244,7 @@ class ListDataAgentAccuracyTestResultsResponseBodyDataContent(DaraModel):
         self.recommendation = recommendation
         # The result ID.
         self.result_id = result_id
+        self.session_id = session_id
         # The subtask ID.
         self.subtask_id = subtask_id
 
@@ -241,6 +261,9 @@ class ListDataAgentAccuracyTestResultsResponseBodyDataContent(DaraModel):
 
         if self.agent_result is not None:
             result['AgentResult'] = self.agent_result
+
+        if self.agent_sql is not None:
+            result['AgentSql'] = self.agent_sql
 
         if self.answer_result is not None:
             result['AnswerResult'] = self.answer_result
@@ -263,6 +286,9 @@ class ListDataAgentAccuracyTestResultsResponseBodyDataContent(DaraModel):
         if self.result_id is not None:
             result['ResultId'] = self.result_id
 
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+
         if self.subtask_id is not None:
             result['SubtaskId'] = self.subtask_id
 
@@ -275,6 +301,9 @@ class ListDataAgentAccuracyTestResultsResponseBodyDataContent(DaraModel):
 
         if m.get('AgentResult') is not None:
             self.agent_result = m.get('AgentResult')
+
+        if m.get('AgentSql') is not None:
+            self.agent_sql = m.get('AgentSql')
 
         if m.get('AnswerResult') is not None:
             self.answer_result = m.get('AnswerResult')
@@ -296,6 +325,9 @@ class ListDataAgentAccuracyTestResultsResponseBodyDataContent(DaraModel):
 
         if m.get('ResultId') is not None:
             self.result_id = m.get('ResultId')
+
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
 
         if m.get('SubtaskId') is not None:
             self.subtask_id = m.get('SubtaskId')

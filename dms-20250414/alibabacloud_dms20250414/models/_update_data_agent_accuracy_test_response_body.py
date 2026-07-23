@@ -80,23 +80,33 @@ class UpdateDataAgentAccuracyTestResponseBodyData(DaraModel):
         accuracy_test: str = None,
         agent_id: str = None,
         dataset: str = None,
+        datasource: str = None,
+        desc: str = None,
         evaluation_prompt: str = None,
         file_id: str = None,
+        max_concurrent: int = None,
         mode: int = None,
+        name: str = None,
+        need_delete: bool = None,
         workspace_id: str = None,
     ):
         # The ID of the accuracy test item.
         self.accuracy_test = accuracy_test
         # Agent Id
         self.agent_id = agent_id
-        # The data source. We recommend that you configure this in the custom agent.
+        # The data source. We recommend that you configure this parameter in a custom agent.
         self.dataset = dataset
+        self.datasource = datasource
+        self.desc = desc
         # The accuracy evaluation criteria. An empty value indicates the default criteria.
         self.evaluation_prompt = evaluation_prompt
         # The file ID.
         self.file_id = file_id
+        self.max_concurrent = max_concurrent
         # The analysis mode.
         self.mode = mode
+        self.name = name
+        self.need_delete = need_delete
         # The workspace ID.
         self.workspace_id = workspace_id
 
@@ -117,14 +127,29 @@ class UpdateDataAgentAccuracyTestResponseBodyData(DaraModel):
         if self.dataset is not None:
             result['Dataset'] = self.dataset
 
+        if self.datasource is not None:
+            result['Datasource'] = self.datasource
+
+        if self.desc is not None:
+            result['Desc'] = self.desc
+
         if self.evaluation_prompt is not None:
             result['EvaluationPrompt'] = self.evaluation_prompt
 
         if self.file_id is not None:
             result['FileId'] = self.file_id
 
+        if self.max_concurrent is not None:
+            result['MaxConcurrent'] = self.max_concurrent
+
         if self.mode is not None:
             result['Mode'] = self.mode
+
+        if self.name is not None:
+            result['Name'] = self.name
+
+        if self.need_delete is not None:
+            result['NeedDelete'] = self.need_delete
 
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
@@ -142,14 +167,29 @@ class UpdateDataAgentAccuracyTestResponseBodyData(DaraModel):
         if m.get('Dataset') is not None:
             self.dataset = m.get('Dataset')
 
+        if m.get('Datasource') is not None:
+            self.datasource = m.get('Datasource')
+
+        if m.get('Desc') is not None:
+            self.desc = m.get('Desc')
+
         if m.get('EvaluationPrompt') is not None:
             self.evaluation_prompt = m.get('EvaluationPrompt')
 
         if m.get('FileId') is not None:
             self.file_id = m.get('FileId')
 
+        if m.get('MaxConcurrent') is not None:
+            self.max_concurrent = m.get('MaxConcurrent')
+
         if m.get('Mode') is not None:
             self.mode = m.get('Mode')
+
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+
+        if m.get('NeedDelete') is not None:
+            self.need_delete = m.get('NeedDelete')
 
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')

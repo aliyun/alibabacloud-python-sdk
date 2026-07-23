@@ -139,6 +139,7 @@ class ListDataAgentAccuracyTestInstancesResponseBodyData(DaraModel):
         accuracy_test_ins_id: str = None,
         agent_id: str = None,
         creator: str = None,
+        datasource: str = None,
         file_id: str = None,
         gmt_create: str = None,
         gmt_modified: str = None,
@@ -155,7 +156,8 @@ class ListDataAgentAccuracyTestInstancesResponseBodyData(DaraModel):
         self.agent_id = agent_id
         # The UID of the workspace creator.
         self.creator = creator
-        # The test set file ID.
+        self.datasource = datasource
+        # The ID of the test set file.
         self.file_id = file_id
         # The creation time.
         self.gmt_create = gmt_create
@@ -163,13 +165,13 @@ class ListDataAgentAccuracyTestInstancesResponseBodyData(DaraModel):
         self.gmt_modified = gmt_modified
         # The language used for the analysis task.
         self.language = language
-        # The maximum number of concurrent sessions during testing.
+        # The maximum number of concurrent sessions during the test.
         self.max_concurrent = max_concurrent
         # The analysis mode to be tested.
         self.mode = mode
         # The custom agent name.
         self.name = name
-        # Specifies whether sessions are displayed after analysis. This feature is not currently supported.
+        # Specifies whether sessions are displayed after analysis. This parameter is not supported.
         self.need_delete = need_delete
         # The workspace ID.
         self.workspace_id = workspace_id
@@ -190,6 +192,9 @@ class ListDataAgentAccuracyTestInstancesResponseBodyData(DaraModel):
 
         if self.creator is not None:
             result['Creator'] = self.creator
+
+        if self.datasource is not None:
+            result['Datasource'] = self.datasource
 
         if self.file_id is not None:
             result['FileId'] = self.file_id
@@ -230,6 +235,9 @@ class ListDataAgentAccuracyTestInstancesResponseBodyData(DaraModel):
 
         if m.get('Creator') is not None:
             self.creator = m.get('Creator')
+
+        if m.get('Datasource') is not None:
+            self.datasource = m.get('Datasource')
 
         if m.get('FileId') is not None:
             self.file_id = m.get('FileId')

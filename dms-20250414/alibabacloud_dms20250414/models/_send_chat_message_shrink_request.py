@@ -23,23 +23,23 @@ class SendChatMessageShrinkRequest(DaraModel):
         user_oss_bucket: str = None,
         workspace_id: str = None,
     ):
-        # The agent ID. This parameter is required. You can obtain the current AgentId from the response of the CreateAgentSession operation. Agent resources have a lifecycle, so the AgentId you need to specify may change with each request.
+        # The agent ID. This parameter is required. You can obtain the current agent ID from the response of the CreateAgentSession operation. Agent resources have a lifecycle, so the agent ID that you specify in each request may change.
         self.agent_id = agent_id
-        # The Data Management unit you are currently in. If you choose to analyze a database, this information is used to correctly connect to your Data Management instance. You can view your current Data Management unit in the Data Management console. If you are a user of Alibaba Cloud China Website (www.aliyun.com), set this parameter to cn-hangzhou.
+        # The Data Management unit you are currently in. If you choose to analyze a database, this information is used to correctly connect to your Data Management instance. You can go to the Data Management console to view your current Data Management unit. If you are a user of the Alibaba Cloud China Website, set this parameter to ap-southeast-1.
         self.dmsunit = dmsunit
-        # The data source information. This parameter is optional. Only one data source can be specified for this parameter. Use the DataSources parameter instead.
+        # The data source information. This parameter is optional. You can pass only one data source in this parameter. Use the DataSources parameter instead.
         self.data_source_shrink = data_source_shrink
         # The detailed data source information. This parameter is optional.
         self.data_sources_shrink = data_sources_shrink
-        # The message content to send to the Agent.
+        # The message content to send to the agent.
         # 
         # This parameter is required.
         self.message = message
         # The message type. Default value: `[primary]`.  
         # 
-        # - For regular interactions with the Agent, set the message type to `[primary]`.
+        # - In normal cases, set the message type to `[primary]` when interacting with the agent.
         # 
-        # - When the message is a response to the Agent\\"s Human-in-Loop question, set the type to `[additional]`.
+        # - When the message is a response to a human-in-the-loop question from the agent, set the type to `[additional]`.
         # 
         # - When the message is intended to trigger report generation, set the type to `[report]`.
         # 
@@ -47,23 +47,25 @@ class SendChatMessageShrinkRequest(DaraModel):
         self.message_type = message_type
         # The parent session ID.
         self.parent_session_id = parent_session_id
-        # The specific question that the Agent asks the user through Human-in-Loop. This parameter is required when the message type is `additional`.
+        # The specific question that the agent asks the user through human-in-the-loop. This parameter is required when the message type is `additional`.
         self.question = question
-        # The quoted content. This parameter is typically used during interactions with the Agent.
+        # The quoted content. This parameter is typically used when interacting with the agent.
         self.quoted_message = quoted_message
         # **Important**
         # 
-        # When this message is a reply to an Agent message (for example, the Agent asks a clarifying question through ASK_HUMAN), set reply_to to the exact Checkpoint sequence number carried by that Agent message. If this message is not a targeted reply, for example, requesting the Agent to perform further in-depth analysis after analysis is complete, leave reply_to empty or set it to "0".  
+        # When this message is a reply to an agent message (for example, the agent asks a clarifying question through ASK_HUMAN), set reply_to to the exact Checkpoint sequence number carried in that agent message. If this message is not a targeted reply, such as requesting the agent to perform further in-depth analysis after analysis is complete, you can leave reply_to empty or set it to "0".  
         # 
-        # This field affects how the Agent decides to process the message. Passing an incorrect value may lead to analysis results that do not meet expectations.
+        # This field affects how the agent decides to process the message. Passing an incorrect value may cause the analysis results to be less effective than expected.
         self.reply_to = reply_to
-        # The special configuration for this session. Only the configuration sent with the first SendMessage call in the same session takes effect.
+        # The special configuration for this session. Only the configuration passed in the first SendMessage call within the same session takes effect.
         self.session_config_shrink = session_config_shrink
-        # The session ID. This parameter is required. You can obtain the SessionId by calling the CreateAgentSession operation.
+        # The session ID. This parameter is required. You can call the CreateAgentSession operation to obtain the session ID.
         self.session_id = session_id
         # The configuration items that affect only the current task.
         self.task_config_shrink = task_config_shrink
+        # The OSS bucket of the user. If this parameter is not specified, the analysis process is securely stored in built-in storage.
         self.user_oss_bucket = user_oss_bucket
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):

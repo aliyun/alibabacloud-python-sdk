@@ -1,3 +1,24 @@
+2026-07-23 Version: 1.18.0
+- Support API DeleteDataAgent.
+- Support API DescribeDataAgentMetrics.
+- Support API GetAgenticAgentByInstallToken.
+- Update API CreateDataAgentAccuracyTest: add request parameters Datasource.
+- Update API DescribeFileUploadSignature: add request parameters WorkspaceId.
+- Update API FileUploadCallback: add request parameters WorkspaceId.
+- Update API ListDataAgentAccuracyTestInstances: add response parameters Body.Data.$.Datasource.
+- Update API ListDataAgentAccuracyTestResults: add response parameters Body.Data.FailedCount.
+- Update API ListDataAgentAccuracyTestResults: add response parameters Body.Data.PendingCount.
+- Update API ListDataAgentAccuracyTestResults: add response parameters Body.Data.Content.$.AgentSql.
+- Update API ListDataAgentAccuracyTestResults: add response parameters Body.Data.Content.$.SessionId.
+- Update API ListDataCenterDatabase: add request parameters WorkspaceId.
+- Update API UpdateDataAgentAccuracyTest: add request parameters Datasource.
+- Update API UpdateDataAgentAccuracyTest: add response parameters Body.Data.Datasource.
+- Update API UpdateDataAgentAccuracyTest: add response parameters Body.Data.Desc.
+- Update API UpdateDataAgentAccuracyTest: add response parameters Body.Data.MaxConcurrent.
+- Update API UpdateDataAgentAccuracyTest: add response parameters Body.Data.Name.
+- Update API UpdateDataAgentAccuracyTest: add response parameters Body.Data.NeedDelete.
+
+
 2026-07-03 Version: 1.17.0
 - Support API CreateDataAgentAccuracyTest.
 - Support API DeleteDataAgentAccuracyTest.

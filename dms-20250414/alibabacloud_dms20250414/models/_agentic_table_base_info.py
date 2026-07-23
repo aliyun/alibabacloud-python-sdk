@@ -15,24 +15,14 @@ class AgenticTableBaseInfo(DaraModel):
         name: str = None,
         qualified_name: str = None,
         table_type: str = None,
-        table_uuid: str = None,
     ):
-        # The catalog type.
         self.catalog_type = catalog_type
-        # The database\\"s unique identifier.
         self.database_uuid = database_uuid
-        # The table description.
         self.description = description
-        # The engine metadata.
         self.engine_meta = engine_meta
-        # The table name.
         self.name = name
-        # The table\\"s qualified name.
         self.qualified_name = qualified_name
-        # The table type.
         self.table_type = table_type
-        # The table\\"s unique identifier.
-        self.table_uuid = table_uuid
 
     def validate(self):
         if self.engine_meta:
@@ -64,9 +54,6 @@ class AgenticTableBaseInfo(DaraModel):
         if self.table_type is not None:
             result['TableType'] = self.table_type
 
-        if self.table_uuid is not None:
-            result['TableUuid'] = self.table_uuid
-
         return result
 
     def from_map(self, m: dict = None):
@@ -92,9 +79,6 @@ class AgenticTableBaseInfo(DaraModel):
 
         if m.get('TableType') is not None:
             self.table_type = m.get('TableType')
-
-        if m.get('TableUuid') is not None:
-            self.table_uuid = m.get('TableUuid')
 
         return self
 

@@ -10,6 +10,7 @@ class UpdateDataAgentAccuracyTestRequest(DaraModel):
         accuracy_test_ins_id: str = None,
         customer_agent_id: str = None,
         dataset: str = None,
+        datasource: str = None,
         desc: str = None,
         dms_unit: str = None,
         evaluation_prompt: str = None,
@@ -27,9 +28,10 @@ class UpdateDataAgentAccuracyTestRequest(DaraModel):
         self.customer_agent_id = customer_agent_id
         # The data source.
         self.dataset = dataset
+        self.datasource = datasource
         # The description.
         self.desc = desc
-        # The current DMS unit.
+        # The current Data Management unit.
         self.dms_unit = dms_unit
         # The accuracy evaluation criteria. An empty value indicates the default criteria.
         self.evaluation_prompt = evaluation_prompt
@@ -64,6 +66,9 @@ class UpdateDataAgentAccuracyTestRequest(DaraModel):
 
         if self.dataset is not None:
             result['Dataset'] = self.dataset
+
+        if self.datasource is not None:
+            result['Datasource'] = self.datasource
 
         if self.desc is not None:
             result['Desc'] = self.desc
@@ -107,6 +112,9 @@ class UpdateDataAgentAccuracyTestRequest(DaraModel):
 
         if m.get('Dataset') is not None:
             self.dataset = m.get('Dataset')
+
+        if m.get('Datasource') is not None:
+            self.datasource = m.get('Datasource')
 
         if m.get('Desc') is not None:
             self.desc = m.get('Desc')

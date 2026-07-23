@@ -17,7 +17,7 @@ class ListDataAgentAccuracyTestTasksRequest(DaraModel):
     ):
         # The accuracy test instance ID.
         self.accuracy_test_ins_id = accuracy_test_ins_id
-        # The task ID used for exact filtering.
+        # Filters by the exact task ID.
         self.accuracy_test_task_id = accuracy_test_task_id
         # The maximum number of entries per page.
         self.max_results = max_results

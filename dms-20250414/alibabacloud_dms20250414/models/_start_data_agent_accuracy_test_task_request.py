@@ -15,13 +15,13 @@ class StartDataAgentAccuracyTestTaskRequest(DaraModel):
     ):
         # The accuracy test instance ID.
         self.accuracy_test_ins_id = accuracy_test_ins_id
-        # The accuracy test sample.
+        # The accuracy test sample file.
         self.csv_file = csv_file
         # The DMS unit used to create the resource.
         self.dms_unit = dms_unit
         # The region ID.
         self.region_id = region_id
-        # The ID of the workspace.
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):

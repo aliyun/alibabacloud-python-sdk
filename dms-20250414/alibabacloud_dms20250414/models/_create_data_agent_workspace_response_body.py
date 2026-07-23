@@ -86,17 +86,22 @@ class CreateDataAgentWorkspaceResponseBodyData(DaraModel):
         workspace_name: str = None,
         workspace_status: str = None,
     ):
-        # The time when the workspace was created. The value is a UNIX timestamp in seconds.
+        # The creation time of the workspace. This value is a UNIX timestamp in seconds.
         self.create_time = create_time
         # The UID of the workspace creator.
         self.creator = creator
+        # Indicates whether session sharing is enabled within the workspace.
         self.is_session_share_enabled = is_session_share_enabled
-        # The time when the workspace was last modified. The value is a UNIX timestamp in seconds.
+        # The most recent modification time of the workspace. This value is a UNIX timestamp in seconds.
         self.modify_time = modify_time
         # The role name of the user in the workspace.
         self.role_name = role_name
-        # The number of members in the workspace.
+        # The total number of members in the workspace.
         self.total_member = total_member
+        # The workspace type. Valid values:
+        # 
+        # - personal: personal workspace.
+        # - common/null: multi-user collaborative workspace.
         self.type = type
         # The description of the workspace.
         self.workspace_desc = workspace_desc

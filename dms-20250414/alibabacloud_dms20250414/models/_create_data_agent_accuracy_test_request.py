@@ -9,6 +9,7 @@ class CreateDataAgentAccuracyTestRequest(DaraModel):
         self,
         custom_agent_id: str = None,
         dataset: str = None,
+        datasource: str = None,
         desc: str = None,
         dms_unit: str = None,
         evaluation_prompt: str = None,
@@ -21,10 +22,11 @@ class CreateDataAgentAccuracyTestRequest(DaraModel):
         region_id: str = None,
         workspace_id: str = None,
     ):
-        # The ID of the custom agent for which you want to run the accuracy test.
+        # The ID of the custom agent to be tested for accuracy.
         self.custom_agent_id = custom_agent_id
         # The data source. We recommend that you configure this in the custom agent.
         self.dataset = dataset
+        self.datasource = datasource
         # The description.
         self.desc = desc
         # The DMS unit used to create the resource.
@@ -41,7 +43,7 @@ class CreateDataAgentAccuracyTestRequest(DaraModel):
         self.mode = mode
         # The name of the test item.
         self.name = name
-        # Specifies whether sessions are displayed after the analysis. This parameter is not supported.
+        # Specifies whether sessions are displayed after analysis. This parameter is not supported.
         self.need_delete = need_delete
         # The region ID.
         self.region_id = region_id
@@ -61,6 +63,9 @@ class CreateDataAgentAccuracyTestRequest(DaraModel):
 
         if self.dataset is not None:
             result['Dataset'] = self.dataset
+
+        if self.datasource is not None:
+            result['Datasource'] = self.datasource
 
         if self.desc is not None:
             result['Desc'] = self.desc
@@ -104,6 +109,9 @@ class CreateDataAgentAccuracyTestRequest(DaraModel):
 
         if m.get('Dataset') is not None:
             self.dataset = m.get('Dataset')
+
+        if m.get('Datasource') is not None:
+            self.datasource = m.get('Datasource')
 
         if m.get('Desc') is not None:
             self.desc = m.get('Desc')
