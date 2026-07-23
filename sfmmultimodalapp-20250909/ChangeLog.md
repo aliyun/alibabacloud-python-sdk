@@ -1,3 +1,6 @@
+2026-07-23 Version: 1.4.1
+- Generated python 2025-09-09 for SfmMultiModalApp.
+
 2026-07-23 Version: 1.4.0
 - Support API InterruptForArbitration.
 
