@@ -1108,6 +1108,100 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.device_update_with_options_async(request, runtime)
 
+    def interrupt_for_arbitration_with_options(
+        self,
+        tmp_req: main_models.InterruptForArbitrationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.InterruptForArbitrationResponse:
+        tmp_req.validate()
+        request = main_models.InterruptForArbitrationShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.interrupt):
+            request.interrupt_shrink = Utils.array_to_string_with_specified_style(tmp_req.interrupt, 'Interrupt', 'json')
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.chat_id):
+            query['ChatId'] = request.chat_id
+        if not DaraCore.is_null(request.hub_request_id):
+            query['HubRequestId'] = request.hub_request_id
+        if not DaraCore.is_null(request.interrupt_shrink):
+            query['Interrupt'] = request.interrupt_shrink
+        if not DaraCore.is_null(request.session_id):
+            query['SessionId'] = request.session_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'InterruptForArbitration',
+            version = '2025-09-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.InterruptForArbitrationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def interrupt_for_arbitration_with_options_async(
+        self,
+        tmp_req: main_models.InterruptForArbitrationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.InterruptForArbitrationResponse:
+        tmp_req.validate()
+        request = main_models.InterruptForArbitrationShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.interrupt):
+            request.interrupt_shrink = Utils.array_to_string_with_specified_style(tmp_req.interrupt, 'Interrupt', 'json')
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.chat_id):
+            query['ChatId'] = request.chat_id
+        if not DaraCore.is_null(request.hub_request_id):
+            query['HubRequestId'] = request.hub_request_id
+        if not DaraCore.is_null(request.interrupt_shrink):
+            query['Interrupt'] = request.interrupt_shrink
+        if not DaraCore.is_null(request.session_id):
+            query['SessionId'] = request.session_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'InterruptForArbitration',
+            version = '2025-09-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.InterruptForArbitrationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def interrupt_for_arbitration(
+        self,
+        request: main_models.InterruptForArbitrationRequest,
+    ) -> main_models.InterruptForArbitrationResponse:
+        runtime = RuntimeOptions()
+        return self.interrupt_for_arbitration_with_options(request, runtime)
+
+    async def interrupt_for_arbitration_async(
+        self,
+        request: main_models.InterruptForArbitrationRequest,
+    ) -> main_models.InterruptForArbitrationResponse:
+        runtime = RuntimeOptions()
+        return await self.interrupt_for_arbitration_with_options_async(request, runtime)
+
     def list_command_with_options(
         self,
         request: main_models.ListCommandRequest,

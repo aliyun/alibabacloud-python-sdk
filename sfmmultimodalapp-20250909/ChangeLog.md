@@ -1,3 +1,7 @@
+2026-07-23 Version: 1.4.0
+- Support API InterruptForArbitration.
+
+
 2026-06-11 Version: 1.3.0
 - Support API DevicePage.
 - Support API DeviceUpdate.
