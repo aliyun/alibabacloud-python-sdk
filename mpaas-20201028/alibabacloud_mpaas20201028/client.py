@@ -10196,6 +10196,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.query_mgs_testreqbodyautogen_with_options_async(request, runtime)
 
+    def query_mini_game_info_by_app_with_options(
+        self,
+        request: main_models.QueryMiniGameInfoByAppRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryMiniGameInfoByAppResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.app_id):
+            body['AppId'] = request.app_id
+        if not DaraCore.is_null(request.mini_program_code):
+            body['MiniProgramCode'] = request.mini_program_code
+        if not DaraCore.is_null(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryMiniGameInfoByApp',
+            version = '2020-10-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryMiniGameInfoByAppResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_mini_game_info_by_app_with_options_async(
+        self,
+        request: main_models.QueryMiniGameInfoByAppRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryMiniGameInfoByAppResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.app_id):
+            body['AppId'] = request.app_id
+        if not DaraCore.is_null(request.mini_program_code):
+            body['MiniProgramCode'] = request.mini_program_code
+        if not DaraCore.is_null(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryMiniGameInfoByApp',
+            version = '2020-10-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryMiniGameInfoByAppResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_mini_game_info_by_app(
+        self,
+        request: main_models.QueryMiniGameInfoByAppRequest,
+    ) -> main_models.QueryMiniGameInfoByAppResponse:
+        runtime = RuntimeOptions()
+        return self.query_mini_game_info_by_app_with_options(request, runtime)
+
+    async def query_mini_game_info_by_app_async(
+        self,
+        request: main_models.QueryMiniGameInfoByAppRequest,
+    ) -> main_models.QueryMiniGameInfoByAppResponse:
+        runtime = RuntimeOptions()
+        return await self.query_mini_game_info_by_app_with_options_async(request, runtime)
+
     def query_mps_scheduler_list_with_options(
         self,
         request: main_models.QueryMpsSchedulerListRequest,

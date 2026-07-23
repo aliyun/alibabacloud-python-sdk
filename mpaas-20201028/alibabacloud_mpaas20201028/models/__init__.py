@@ -320,6 +320,9 @@ from ._query_mgs_apirest_response import QueryMgsApirestResponse
 from ._query_mgs_testreqbodyautogen_request import QueryMgsTestreqbodyautogenRequest
 from ._query_mgs_testreqbodyautogen_response_body import QueryMgsTestreqbodyautogenResponseBody
 from ._query_mgs_testreqbodyautogen_response import QueryMgsTestreqbodyautogenResponse
+from ._query_mini_game_info_by_app_request import QueryMiniGameInfoByAppRequest
+from ._query_mini_game_info_by_app_response_body import QueryMiniGameInfoByAppResponseBody
+from ._query_mini_game_info_by_app_response import QueryMiniGameInfoByAppResponse
 from ._query_mps_scheduler_list_request import QueryMpsSchedulerListRequest
 from ._query_mps_scheduler_list_response_body import QueryMpsSchedulerListResponseBody
 from ._query_mps_scheduler_list_response import QueryMpsSchedulerListResponse
@@ -600,6 +603,7 @@ from ._query_mgs_apirest_response_body import QueryMgsApirestResponseBodyResultC
 from ._query_mgs_apirest_response_body import QueryMgsApirestResponseBodyResultContentValueRequestParams
 from ._query_mgs_apirest_response_body import QueryMgsApirestResponseBodyResultContentValue
 from ._query_mgs_apirest_response_body import QueryMgsApirestResponseBodyResultContent
+from ._query_mini_game_info_by_app_response_body import QueryMiniGameInfoByAppResponseBodyContent
 from ._query_mps_scheduler_list_response_body import QueryMpsSchedulerListResponseBodyResultContentDataList
 from ._query_mps_scheduler_list_response_body import QueryMpsSchedulerListResponseBodyResultContentData
 from ._query_mps_scheduler_list_response_body import QueryMpsSchedulerListResponseBodyResultContent
@@ -960,6 +964,9 @@ __all__ = [
     QueryMgsTestreqbodyautogenRequest,
     QueryMgsTestreqbodyautogenResponseBody,
     QueryMgsTestreqbodyautogenResponse,
+    QueryMiniGameInfoByAppRequest,
+    QueryMiniGameInfoByAppResponseBody,
+    QueryMiniGameInfoByAppResponse,
     QueryMpsSchedulerListRequest,
     QueryMpsSchedulerListResponseBody,
     QueryMpsSchedulerListResponse,
@@ -1240,6 +1247,7 @@ __all__ = [
     QueryMgsApirestResponseBodyResultContentValueRequestParams,
     QueryMgsApirestResponseBodyResultContentValue,
     QueryMgsApirestResponseBodyResultContent,
+    QueryMiniGameInfoByAppResponseBodyContent,
     QueryMpsSchedulerListResponseBodyResultContentDataList,
     QueryMpsSchedulerListResponseBodyResultContentData,
     QueryMpsSchedulerListResponseBodyResultContent,

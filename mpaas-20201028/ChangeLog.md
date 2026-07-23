@@ -1,3 +1,7 @@
+2026-07-23 Version: 3.4.0
+- Support API QueryMiniGameInfoByApp.
+
+
 2026-07-21 Version: 3.3.6
 - Update API CheckUserAuthToMscene: add response parameters Body.AccessDeniedDetail.
 - Update API QueryPayOrderToMsence: add response parameters Body.AccessDeniedDetail.
