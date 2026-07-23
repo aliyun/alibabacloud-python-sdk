@@ -964,6 +964,238 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_evaluator_skill_with_options_async(name, request, headers, runtime)
 
+    def create_experiment_plan_with_options(
+        self,
+        agent_space: str,
+        request: main_models.CreateExperimentPlanRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateExperimentPlanResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.dataset_id):
+            body['datasetId'] = request.dataset_id
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.evaluators):
+            body['evaluators'] = request.evaluators
+        if not DaraCore.is_null(request.experiment_type):
+            body['experimentType'] = request.experiment_type
+        if not DaraCore.is_null(request.experiments):
+            body['experiments'] = request.experiments
+        if not DaraCore.is_null(request.input):
+            body['input'] = request.input
+        if not DaraCore.is_null(request.plan_name):
+            body['planName'] = request.plan_name
+        if not DaraCore.is_null(request.query_sql):
+            body['querySql'] = request.query_sql
+        if not DaraCore.is_null(request.selected_item_ids):
+            body['selectedItemIds'] = request.selected_item_ids
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateExperimentPlan',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/experiments/{DaraURL.percent_encode(agent_space)}/plans',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateExperimentPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_experiment_plan_with_options_async(
+        self,
+        agent_space: str,
+        request: main_models.CreateExperimentPlanRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateExperimentPlanResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.dataset_id):
+            body['datasetId'] = request.dataset_id
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.evaluators):
+            body['evaluators'] = request.evaluators
+        if not DaraCore.is_null(request.experiment_type):
+            body['experimentType'] = request.experiment_type
+        if not DaraCore.is_null(request.experiments):
+            body['experiments'] = request.experiments
+        if not DaraCore.is_null(request.input):
+            body['input'] = request.input
+        if not DaraCore.is_null(request.plan_name):
+            body['planName'] = request.plan_name
+        if not DaraCore.is_null(request.query_sql):
+            body['querySql'] = request.query_sql
+        if not DaraCore.is_null(request.selected_item_ids):
+            body['selectedItemIds'] = request.selected_item_ids
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateExperimentPlan',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/experiments/{DaraURL.percent_encode(agent_space)}/plans',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateExperimentPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_experiment_plan(
+        self,
+        agent_space: str,
+        request: main_models.CreateExperimentPlanRequest,
+    ) -> main_models.CreateExperimentPlanResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_experiment_plan_with_options(agent_space, request, headers, runtime)
+
+    async def create_experiment_plan_async(
+        self,
+        agent_space: str,
+        request: main_models.CreateExperimentPlanRequest,
+    ) -> main_models.CreateExperimentPlanResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_experiment_plan_with_options_async(agent_space, request, headers, runtime)
+
+    def create_experiment_run_with_options(
+        self,
+        agent_space: str,
+        request: main_models.CreateExperimentRunRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateExperimentRunResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        body = {}
+        if not DaraCore.is_null(request.completed_at):
+            body['completedAt'] = request.completed_at
+        if not DaraCore.is_null(request.completed_tasks):
+            body['completedTasks'] = request.completed_tasks
+        if not DaraCore.is_null(request.executed_at):
+            body['executedAt'] = request.executed_at
+        if not DaraCore.is_null(request.experiment_plan_id):
+            body['experimentPlanId'] = request.experiment_plan_id
+        if not DaraCore.is_null(request.failed_tasks):
+            body['failedTasks'] = request.failed_tasks
+        if not DaraCore.is_null(request.offline_experiments):
+            body['offlineExperiments'] = request.offline_experiments
+        if not DaraCore.is_null(request.record_name):
+            body['recordName'] = request.record_name
+        if not DaraCore.is_null(request.status):
+            body['status'] = request.status
+        if not DaraCore.is_null(request.total_tasks):
+            body['totalTasks'] = request.total_tasks
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateExperimentRun',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/experimentruns/{DaraURL.percent_encode(agent_space)}/execute',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateExperimentRunResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_experiment_run_with_options_async(
+        self,
+        agent_space: str,
+        request: main_models.CreateExperimentRunRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateExperimentRunResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        body = {}
+        if not DaraCore.is_null(request.completed_at):
+            body['completedAt'] = request.completed_at
+        if not DaraCore.is_null(request.completed_tasks):
+            body['completedTasks'] = request.completed_tasks
+        if not DaraCore.is_null(request.executed_at):
+            body['executedAt'] = request.executed_at
+        if not DaraCore.is_null(request.experiment_plan_id):
+            body['experimentPlanId'] = request.experiment_plan_id
+        if not DaraCore.is_null(request.failed_tasks):
+            body['failedTasks'] = request.failed_tasks
+        if not DaraCore.is_null(request.offline_experiments):
+            body['offlineExperiments'] = request.offline_experiments
+        if not DaraCore.is_null(request.record_name):
+            body['recordName'] = request.record_name
+        if not DaraCore.is_null(request.status):
+            body['status'] = request.status
+        if not DaraCore.is_null(request.total_tasks):
+            body['totalTasks'] = request.total_tasks
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateExperimentRun',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/experimentruns/{DaraURL.percent_encode(agent_space)}/execute',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateExperimentRunResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_experiment_run(
+        self,
+        agent_space: str,
+        request: main_models.CreateExperimentRunRequest,
+    ) -> main_models.CreateExperimentRunResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_experiment_run_with_options(agent_space, request, headers, runtime)
+
+    async def create_experiment_run_async(
+        self,
+        agent_space: str,
+        request: main_models.CreateExperimentRunRequest,
+    ) -> main_models.CreateExperimentRunResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_experiment_run_with_options_async(agent_space, request, headers, runtime)
+
     def create_pipeline_with_options(
         self,
         agent_space: str,
@@ -1715,6 +1947,158 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.delete_evaluator_skill_with_options_async(name, skill_name, request, headers, runtime)
+
+    def delete_experiment_plan_with_options(
+        self,
+        agent_space: str,
+        plan_id: str,
+        request: main_models.DeleteExperimentPlanRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteExperimentPlanResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteExperimentPlan',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/experiments/{DaraURL.percent_encode(agent_space)}/plans/{DaraURL.percent_encode(plan_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteExperimentPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_experiment_plan_with_options_async(
+        self,
+        agent_space: str,
+        plan_id: str,
+        request: main_models.DeleteExperimentPlanRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteExperimentPlanResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteExperimentPlan',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/experiments/{DaraURL.percent_encode(agent_space)}/plans/{DaraURL.percent_encode(plan_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteExperimentPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_experiment_plan(
+        self,
+        agent_space: str,
+        plan_id: str,
+        request: main_models.DeleteExperimentPlanRequest,
+    ) -> main_models.DeleteExperimentPlanResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_experiment_plan_with_options(agent_space, plan_id, request, headers, runtime)
+
+    async def delete_experiment_plan_async(
+        self,
+        agent_space: str,
+        plan_id: str,
+        request: main_models.DeleteExperimentPlanRequest,
+    ) -> main_models.DeleteExperimentPlanResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_experiment_plan_with_options_async(agent_space, plan_id, request, headers, runtime)
+
+    def delete_experiment_run_with_options(
+        self,
+        agent_space: str,
+        record_id: str,
+        request: main_models.DeleteExperimentRunRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteExperimentRunResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteExperimentRun',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/experimentruns/{DaraURL.percent_encode(agent_space)}/records/{DaraURL.percent_encode(record_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteExperimentRunResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_experiment_run_with_options_async(
+        self,
+        agent_space: str,
+        record_id: str,
+        request: main_models.DeleteExperimentRunRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteExperimentRunResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteExperimentRun',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/experimentruns/{DaraURL.percent_encode(agent_space)}/records/{DaraURL.percent_encode(record_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteExperimentRunResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_experiment_run(
+        self,
+        agent_space: str,
+        record_id: str,
+        request: main_models.DeleteExperimentRunRequest,
+    ) -> main_models.DeleteExperimentRunResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_experiment_run_with_options(agent_space, record_id, request, headers, runtime)
+
+    async def delete_experiment_run_async(
+        self,
+        agent_space: str,
+        record_id: str,
+        request: main_models.DeleteExperimentRunRequest,
+    ) -> main_models.DeleteExperimentRunResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_experiment_run_with_options_async(agent_space, record_id, request, headers, runtime)
 
     def delete_pipeline_with_options(
         self,
@@ -2619,6 +3003,158 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.get_evaluator_skill_with_options_async(name, skill_name, request, headers, runtime)
+
+    def get_experiment_plan_with_options(
+        self,
+        agent_space: str,
+        plan_id: str,
+        request: main_models.GetExperimentPlanRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetExperimentPlanResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetExperimentPlan',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/experiments/{DaraURL.percent_encode(agent_space)}/plans/{DaraURL.percent_encode(plan_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetExperimentPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_experiment_plan_with_options_async(
+        self,
+        agent_space: str,
+        plan_id: str,
+        request: main_models.GetExperimentPlanRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetExperimentPlanResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetExperimentPlan',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/experiments/{DaraURL.percent_encode(agent_space)}/plans/{DaraURL.percent_encode(plan_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetExperimentPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_experiment_plan(
+        self,
+        agent_space: str,
+        plan_id: str,
+        request: main_models.GetExperimentPlanRequest,
+    ) -> main_models.GetExperimentPlanResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_experiment_plan_with_options(agent_space, plan_id, request, headers, runtime)
+
+    async def get_experiment_plan_async(
+        self,
+        agent_space: str,
+        plan_id: str,
+        request: main_models.GetExperimentPlanRequest,
+    ) -> main_models.GetExperimentPlanResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_experiment_plan_with_options_async(agent_space, plan_id, request, headers, runtime)
+
+    def get_experiment_run_with_options(
+        self,
+        agent_space: str,
+        record_id: str,
+        request: main_models.GetExperimentRunRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetExperimentRunResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetExperimentRun',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/experimentruns/{DaraURL.percent_encode(agent_space)}/records/{DaraURL.percent_encode(record_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetExperimentRunResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_experiment_run_with_options_async(
+        self,
+        agent_space: str,
+        record_id: str,
+        request: main_models.GetExperimentRunRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetExperimentRunResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetExperimentRun',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/experimentruns/{DaraURL.percent_encode(agent_space)}/records/{DaraURL.percent_encode(record_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetExperimentRunResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_experiment_run(
+        self,
+        agent_space: str,
+        record_id: str,
+        request: main_models.GetExperimentRunRequest,
+    ) -> main_models.GetExperimentRunResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_experiment_run_with_options(agent_space, record_id, request, headers, runtime)
+
+    async def get_experiment_run_async(
+        self,
+        agent_space: str,
+        record_id: str,
+        request: main_models.GetExperimentRunRequest,
+    ) -> main_models.GetExperimentRunResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_experiment_run_with_options_async(agent_space, record_id, request, headers, runtime)
 
     def get_pipeline_with_options(
         self,
@@ -3607,6 +4143,214 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.list_evaluators_with_options_async(request, headers, runtime)
+
+    def list_experiment_plans_with_options(
+        self,
+        agent_space: str,
+        request: main_models.ListExperimentPlansRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListExperimentPlansResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.limit):
+            query['limit'] = request.limit
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.offset):
+            query['offset'] = request.offset
+        if not DaraCore.is_null(request.plan_name):
+            query['planName'] = request.plan_name
+        if not DaraCore.is_null(request.status):
+            query['status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListExperimentPlans',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/experiments/{DaraURL.percent_encode(agent_space)}/plans',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListExperimentPlansResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_experiment_plans_with_options_async(
+        self,
+        agent_space: str,
+        request: main_models.ListExperimentPlansRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListExperimentPlansResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.limit):
+            query['limit'] = request.limit
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.offset):
+            query['offset'] = request.offset
+        if not DaraCore.is_null(request.plan_name):
+            query['planName'] = request.plan_name
+        if not DaraCore.is_null(request.status):
+            query['status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListExperimentPlans',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/experiments/{DaraURL.percent_encode(agent_space)}/plans',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListExperimentPlansResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_experiment_plans(
+        self,
+        agent_space: str,
+        request: main_models.ListExperimentPlansRequest,
+    ) -> main_models.ListExperimentPlansResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_experiment_plans_with_options(agent_space, request, headers, runtime)
+
+    async def list_experiment_plans_async(
+        self,
+        agent_space: str,
+        request: main_models.ListExperimentPlansRequest,
+    ) -> main_models.ListExperimentPlansResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_experiment_plans_with_options_async(agent_space, request, headers, runtime)
+
+    def list_experiment_runs_with_options(
+        self,
+        agent_space: str,
+        request: main_models.ListExperimentRunsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListExperimentRunsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dataset_id):
+            query['datasetId'] = request.dataset_id
+        if not DaraCore.is_null(request.experiment_name):
+            query['experimentName'] = request.experiment_name
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.page):
+            query['page'] = request.page
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.plan_name):
+            query['planName'] = request.plan_name
+        if not DaraCore.is_null(request.status):
+            query['status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListExperimentRuns',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/experimentruns/{DaraURL.percent_encode(agent_space)}/records',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListExperimentRunsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_experiment_runs_with_options_async(
+        self,
+        agent_space: str,
+        request: main_models.ListExperimentRunsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListExperimentRunsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dataset_id):
+            query['datasetId'] = request.dataset_id
+        if not DaraCore.is_null(request.experiment_name):
+            query['experimentName'] = request.experiment_name
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.page):
+            query['page'] = request.page
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.plan_name):
+            query['planName'] = request.plan_name
+        if not DaraCore.is_null(request.status):
+            query['status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListExperimentRuns',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/experimentruns/{DaraURL.percent_encode(agent_space)}/records',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListExperimentRunsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_experiment_runs(
+        self,
+        agent_space: str,
+        request: main_models.ListExperimentRunsRequest,
+    ) -> main_models.ListExperimentRunsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_experiment_runs_with_options(agent_space, request, headers, runtime)
+
+    async def list_experiment_runs_async(
+        self,
+        agent_space: str,
+        request: main_models.ListExperimentRunsRequest,
+    ) -> main_models.ListExperimentRunsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_experiment_runs_with_options_async(agent_space, request, headers, runtime)
 
     def list_pipeline_runs_with_options(
         self,
@@ -5059,6 +5803,242 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.update_evaluator_skill_with_options_async(name, skill_name, request, headers, runtime)
+
+    def update_experiment_plan_with_options(
+        self,
+        agent_space: str,
+        plan_id: str,
+        request: main_models.UpdateExperimentPlanRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateExperimentPlanResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.dataset_id):
+            body['datasetId'] = request.dataset_id
+        if not DaraCore.is_null(request.dataset_project):
+            body['datasetProject'] = request.dataset_project
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.evaluators):
+            body['evaluators'] = request.evaluators
+        if not DaraCore.is_null(request.experiment_type):
+            body['experimentType'] = request.experiment_type
+        if not DaraCore.is_null(request.experiments):
+            body['experiments'] = request.experiments
+        if not DaraCore.is_null(request.input):
+            body['input'] = request.input
+        if not DaraCore.is_null(request.plan_name):
+            body['planName'] = request.plan_name
+        if not DaraCore.is_null(request.query_sql):
+            body['querySql'] = request.query_sql
+        if not DaraCore.is_null(request.selected_item_ids):
+            body['selectedItemIds'] = request.selected_item_ids
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateExperimentPlan',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/experiments/{DaraURL.percent_encode(agent_space)}/plans/{DaraURL.percent_encode(plan_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateExperimentPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_experiment_plan_with_options_async(
+        self,
+        agent_space: str,
+        plan_id: str,
+        request: main_models.UpdateExperimentPlanRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateExperimentPlanResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.dataset_id):
+            body['datasetId'] = request.dataset_id
+        if not DaraCore.is_null(request.dataset_project):
+            body['datasetProject'] = request.dataset_project
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.evaluators):
+            body['evaluators'] = request.evaluators
+        if not DaraCore.is_null(request.experiment_type):
+            body['experimentType'] = request.experiment_type
+        if not DaraCore.is_null(request.experiments):
+            body['experiments'] = request.experiments
+        if not DaraCore.is_null(request.input):
+            body['input'] = request.input
+        if not DaraCore.is_null(request.plan_name):
+            body['planName'] = request.plan_name
+        if not DaraCore.is_null(request.query_sql):
+            body['querySql'] = request.query_sql
+        if not DaraCore.is_null(request.selected_item_ids):
+            body['selectedItemIds'] = request.selected_item_ids
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateExperimentPlan',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/experiments/{DaraURL.percent_encode(agent_space)}/plans/{DaraURL.percent_encode(plan_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateExperimentPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_experiment_plan(
+        self,
+        agent_space: str,
+        plan_id: str,
+        request: main_models.UpdateExperimentPlanRequest,
+    ) -> main_models.UpdateExperimentPlanResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_experiment_plan_with_options(agent_space, plan_id, request, headers, runtime)
+
+    async def update_experiment_plan_async(
+        self,
+        agent_space: str,
+        plan_id: str,
+        request: main_models.UpdateExperimentPlanRequest,
+    ) -> main_models.UpdateExperimentPlanResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_experiment_plan_with_options_async(agent_space, plan_id, request, headers, runtime)
+
+    def update_experiment_run_with_options(
+        self,
+        agent_space: str,
+        record_id: str,
+        request: main_models.UpdateExperimentRunRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateExperimentRunResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        body = {}
+        if not DaraCore.is_null(request.completed_at):
+            body['completedAt'] = request.completed_at
+        if not DaraCore.is_null(request.completed_tasks):
+            body['completedTasks'] = request.completed_tasks
+        if not DaraCore.is_null(request.executed_at):
+            body['executedAt'] = request.executed_at
+        if not DaraCore.is_null(request.failed_tasks):
+            body['failedTasks'] = request.failed_tasks
+        if not DaraCore.is_null(request.record_name):
+            body['recordName'] = request.record_name
+        if not DaraCore.is_null(request.status):
+            body['status'] = request.status
+        if not DaraCore.is_null(request.total_tasks):
+            body['totalTasks'] = request.total_tasks
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateExperimentRun',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/experimentruns/{DaraURL.percent_encode(agent_space)}/records/{DaraURL.percent_encode(record_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateExperimentRunResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_experiment_run_with_options_async(
+        self,
+        agent_space: str,
+        record_id: str,
+        request: main_models.UpdateExperimentRunRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateExperimentRunResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        body = {}
+        if not DaraCore.is_null(request.completed_at):
+            body['completedAt'] = request.completed_at
+        if not DaraCore.is_null(request.completed_tasks):
+            body['completedTasks'] = request.completed_tasks
+        if not DaraCore.is_null(request.executed_at):
+            body['executedAt'] = request.executed_at
+        if not DaraCore.is_null(request.failed_tasks):
+            body['failedTasks'] = request.failed_tasks
+        if not DaraCore.is_null(request.record_name):
+            body['recordName'] = request.record_name
+        if not DaraCore.is_null(request.status):
+            body['status'] = request.status
+        if not DaraCore.is_null(request.total_tasks):
+            body['totalTasks'] = request.total_tasks
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateExperimentRun',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/experimentruns/{DaraURL.percent_encode(agent_space)}/records/{DaraURL.percent_encode(record_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateExperimentRunResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_experiment_run(
+        self,
+        agent_space: str,
+        record_id: str,
+        request: main_models.UpdateExperimentRunRequest,
+    ) -> main_models.UpdateExperimentRunResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_experiment_run_with_options(agent_space, record_id, request, headers, runtime)
+
+    async def update_experiment_run_async(
+        self,
+        agent_space: str,
+        record_id: str,
+        request: main_models.UpdateExperimentRunRequest,
+    ) -> main_models.UpdateExperimentRunResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_experiment_run_with_options_async(agent_space, record_id, request, headers, runtime)
 
     def update_pipeline_with_options(
         self,

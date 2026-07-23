@@ -1,3 +1,16 @@
+2026-07-23 Version: 2.3.0
+- Support API CreateExperimentPlan.
+- Support API CreateExperimentRun.
+- Support API DeleteExperimentPlan.
+- Support API DeleteExperimentRun.
+- Support API GetExperimentPlan.
+- Support API GetExperimentRun.
+- Support API ListExperimentPlans.
+- Support API ListExperimentRuns.
+- Support API UpdateExperimentPlan.
+- Support API UpdateExperimentRun.
+
+
 2026-07-21 Version: 2.2.1
 - Update API GetDataset: add response parameters Body.isFavorite.
 - Update API ListDatasets: add response parameters Body.datasets.$.isFavorite.
