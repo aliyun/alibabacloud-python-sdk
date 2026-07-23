@@ -12,12 +12,20 @@ class ListFeatureConsistencyCheckJobFeatureReportsRequest(DaraModel):
         log_request_id: str = None,
         log_user_id: str = None,
     ):
+        # The ID of the instance. To obtain the ID, see [ListInstances](https://help.aliyun.com/document_detail/2411819.html).
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The item ID used for feature comparison.
+        # 
         # This parameter is required.
         self.log_item_id = log_item_id
+        # The request ID used for feature comparison.
+        # 
         # This parameter is required.
         self.log_request_id = log_request_id
+        # The user ID used for feature comparison.
+        # 
         # This parameter is required.
         self.log_user_id = log_user_id
 

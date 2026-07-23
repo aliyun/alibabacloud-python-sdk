@@ -17,14 +17,91 @@ class GetInstanceResourceResponseBody(DaraModel):
         type: str = None,
         uri: str = None,
     ):
+        # The resource category. Valid values:
+        # 
+        # - DataManagement
+        # 
+        # - Engine
+        # 
+        # - Monitor
         self.category = category
+        # The resource configuration.
         self.config = config
+        # The creation time.
         self.gmt_create_time = gmt_create_time
+        # The last modification time.
         self.gmt_modified_time = gmt_modified_time
+        # The resource group.
+        # 
+        # If `Category` is `DataManagement`, the valid values are:
+        # 
+        # - storage
+        # 
+        # - modelpipeline
+        # 
+        # - datastorage
+        # 
+        # - modeltrain
+        # 
+        # If `Category` is `Engine`, the valid values are:
+        # 
+        # - feature
+        # 
+        # - predict
+        # 
+        # - recall
+        # 
+        # - recengine
+        # 
+        # If `Category` is `Monitor`, the valid values are:
+        # 
+        # - logs
+        # 
+        # - logsback
+        # 
+        # - coldstart
+        # 
+        # - deploy
         self.group = group
+        # The request ID.
         self.request_id = request_id
+        # The resource ID.
         self.resource_id = resource_id
+        # The resource type. Valid values:
+        # 
+        # - Hologres
+        # 
+        # - EAS
+        # 
+        # - BE
+        # 
+        # - Rec
+        # 
+        # - Platform
+        # 
+        # - SLS
+        # 
+        # - DataHub
+        # 
+        # - ApsaraMQ for Kafka
+        # 
+        # - Realtime Compute for Apache Flink
+        # 
+        # - ACR
+        # 
+        # - OSS
+        # 
+        # - DataWorks
+        # 
+        # - PAI
+        # 
+        # - MaxCompute
+        # 
+        # - Graph Compute Service
+        # 
+        # - ApsaraDB for Redis
         self.type = type
+        # The resource URI.
         self.uri = uri
 
     def validate(self):

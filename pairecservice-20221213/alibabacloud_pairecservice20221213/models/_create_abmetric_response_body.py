@@ -10,7 +10,9 @@ class CreateABMetricResponseBody(DaraModel):
         abmetric_id: str = None,
         request_id: str = None,
     ):
+        # The AB metric ID.
         self.abmetric_id = abmetric_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

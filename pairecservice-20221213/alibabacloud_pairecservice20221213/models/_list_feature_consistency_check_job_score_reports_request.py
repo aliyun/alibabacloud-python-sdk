@@ -12,7 +12,9 @@ class ListFeatureConsistencyCheckJobScoreReportsRequest(DaraModel):
         exclude_request_ids: List[str] = None,
         instance_id: str = None,
     ):
+        # A list of request IDs to exclude from the feature comparison.
         self.exclude_request_ids = exclude_request_ids
+        # The ID of the instance. To obtain the instance ID, see [ListInstances](https://help.aliyun.com/document_detail/2411819.html).
         self.instance_id = instance_id
 
     def validate(self):

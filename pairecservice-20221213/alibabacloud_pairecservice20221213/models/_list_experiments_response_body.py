@@ -14,9 +14,11 @@ class ListExperimentsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of experiments.
         self.experiments = experiments
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of experiments returned.
         self.total_count = total_count
 
     def validate(self):
@@ -80,22 +82,47 @@ class ListExperimentsResponseBodyExperiments(DaraModel):
         status: str = None,
         type: str = None,
     ):
+        # The alias for the experiment ID.
         self.alias_experiment_id = alias_experiment_id
+        # The allocated bucket numbers.
         self.buckets = buckets
+        # The configuration of the experiment.
         self.config = config
+        # The ID of the debug crowd.
         self.debug_crowd_id = debug_crowd_id
+        # A comma-separated list of user IDs for debugging.
         self.debug_users = debug_users
+        # The description of the experiment.
         self.description = description
+        # The ID of the experiment group.
         self.experiment_group_id = experiment_group_id
+        # The ID of the experiment.
         self.experiment_id = experiment_id
+        # The percentage of flow allocated to the experiment.
         self.flow_percent = flow_percent
+        # The timestamp indicating when the experiment was created.
         self.gmt_create_time = gmt_create_time
+        # The timestamp indicating when the experiment was last modified.
         self.gmt_modified_time = gmt_modified_time
+        # The ID of the laboratory.
         self.laboratory_id = laboratory_id
+        # The ID of the layer.
         self.layer_id = layer_id
+        # The name of the experiment.
         self.name = name
+        # The ID of the scene.
         self.scene_id = scene_id
+        # The status of the experiment. Valid values:
+        # 
+        # - `Offline`: The experiment is inactive and does not receive flow.
+        # 
+        # - `Online`: The experiment is active and can receive flow.
         self.status = status
+        # The type of the experiment. Valid values:
+        # 
+        # - `Baseline`: The control experiment.
+        # 
+        # - `Normal`: A variant experiment.
         self.type = type
 
     def validate(self):

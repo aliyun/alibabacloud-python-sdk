@@ -16,16 +16,28 @@ class UpdateExperimentRequest(DaraModel):
         name: str = None,
         type: str = None,
     ):
+        # The experiment configuration, specified as a JSON string.
         self.config = config
+        # The ID of the debug crowd. To obtain this ID, call the ListCrowds operation.
         self.debug_crowd_id = debug_crowd_id
+        # The UIDs for debug users, specified as a comma-separated string. Each UID must belong to an Alibaba Cloud account or RAM user.
         self.debug_users = debug_users
+        # The description of the experiment.
+        # 
         # This parameter is required.
         self.description = description
+        # The percentage of traffic to allocate to the experiment.
         self.flow_percent = flow_percent
+        # The ID of the instance. To obtain this ID, call the ListInstances operation.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The name of the experiment.
+        # 
         # This parameter is required.
         self.name = name
+        # The type of the experiment. Valid values: ● Baseline: A baseline experiment. ● Normal: A normal experiment.
+        # 
         # This parameter is required.
         self.type = type
 

@@ -20,22 +20,40 @@ class CreateLaboratoryRequest(DaraModel):
         scene_id: str = None,
         type: str = None,
     ):
+        # The number of buckets.
         self.bucket_count = bucket_count
+        # The bucketing method. Valid values: ● `UidHash`: by UID hash (default) ● `Uid`: by UID ● `Filter`: filter-based
+        # 
         # This parameter is required.
         self.bucket_type = bucket_type
+        # The assigned bucket numbers.
         self.buckets = buckets
+        # The debug crowd ID.
         self.debug_crowd_id = debug_crowd_id
+        # The UIDs of debug users, separated by commas. Each UID must belong to an Alibaba Cloud primary account or a RAM user.
         self.debug_users = debug_users
+        # The laboratory description.
         self.description = description
+        # The environment. Valid values: ● `Daily`: daily ● `Pre`: staging ● `Prod`: production
+        # 
         # This parameter is required.
         self.environment = environment
+        # The filter.
         self.filter = filter
+        # The instance ID. To get it, call the `ListInstances` operation.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The laboratory name.
+        # 
         # This parameter is required.
         self.name = name
+        # The scene ID. To get it, call the `ListScenes` operation.
+        # 
         # This parameter is required.
         self.scene_id = scene_id
+        # The laboratory type. Valid values: `Base` and `NonBase`.
+        # 
         # This parameter is required.
         self.type = type
 

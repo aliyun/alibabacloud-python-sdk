@@ -15,9 +15,13 @@ class UpdateRecallManagementServiceVersionConfigRequest(DaraModel):
         merge_config: main_models.UpdateRecallManagementServiceVersionConfigRequestMergeConfig = None,
         recall_config: main_models.UpdateRecallManagementServiceVersionConfigRequestRecallConfig = None,
     ):
+        # The type of the recall management version configuration. Valid values are `Recall` for the recall configuration and `Merge` for the merge configuration.
         self.config_type = config_type
+        # The instance ID.
         self.instance_id = instance_id
+        # The merge configuration.
         self.merge_config = merge_config
+        # The recall configuration.
         self.recall_config = recall_config
 
     def validate(self):
@@ -81,19 +85,33 @@ class UpdateRecallManagementServiceVersionConfigRequestRecallConfig(DaraModel):
         user_vector_field: str = None,
         user_vector_recall_management_table_id: str = None,
     ):
+        # The recall description.
         self.description = description
+        # The extended configuration. Reserved for future use.
         self.extended_config = extended_config
+        # The data format of the item condition.
         self.item_condition_array = item_condition_array
+        # The item condition expression.
         self.item_condition_expression = item_condition_expression
+        # The item vector field.
         self.item_vector_field = item_vector_field
+        # The ID of the item vector recall management table.
         self.item_vector_recall_management_table_id = item_vector_recall_management_table_id
+        # The recall name.
         self.name = name
+        # A list of operators.
         self.operators = operators
+        # The priority. A smaller value indicates a higher priority.
         self.priority = priority
+        # The ID of the recall management table.
         self.recall_management_table_id = recall_management_table_id
+        # The recall type.
         self.recall_type = recall_type
+        # The sort fields.
         self.sort_fields = sort_fields
+        # The user vector field.
         self.user_vector_field = user_vector_field
+        # The ID of the user vector recall management table.
         self.user_vector_recall_management_table_id = user_vector_recall_management_table_id
 
     def validate(self):
@@ -211,10 +229,15 @@ class UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperators(Dar
         operator_type: str = None,
         trigger_config: main_models.UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperatorsTriggerConfig = None,
     ):
+        # The configuration for the `Feature` operator.
         self.feature_config = feature_config
+        # The configuration for the `Filter` operator.
         self.filter_config = filter_config
+        # The configuration for the `Join` operator.
         self.join_config = join_config
+        # The operator type.
         self.operator_type = operator_type
+        # The configuration for the `Trigger` operator.
         self.trigger_config = trigger_config
 
     def validate(self):
@@ -280,9 +303,13 @@ class UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperatorsTrig
         is_rand_sort: bool = None,
         sort_field: str = None,
     ):
+        # The field name.
         self.field = field
+        # The maximum number of fields.
         self.field_quantity_limit = field_quantity_limit
+        # Specifies whether to perform a random sort.
         self.is_rand_sort = is_rand_sort
+        # The sort field.
         self.sort_field = sort_field
 
     def validate(self):
@@ -330,8 +357,11 @@ class UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperatorsJoin
         output_fields: List[str] = None,
         recall_management_table_id: str = None,
     ):
+        # The join field.
         self.field = field
+        # The fields to return from the join.
         self.output_fields = output_fields
+        # The ID of the table to join.
         self.recall_management_table_id = recall_management_table_id
 
     def validate(self):
@@ -371,6 +401,7 @@ class UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperatorsFilt
         self,
         experession: str = None,
     ):
+        # The filter expression.
         self.experession = experession
 
     def validate(self):
@@ -400,8 +431,11 @@ class UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperatorsFeat
         name: str = None,
         type: str = None,
     ):
+        # The feature expression.
         self.expression = expression
+        # The feature name.
         self.name = name
+        # The feature type.
         self.type = type
 
     def validate(self):
@@ -447,12 +481,19 @@ class UpdateRecallManagementServiceVersionConfigRequestMergeConfig(DaraModel):
         merge_type: str = None,
         recall_management_service_version_config_id: str = None,
     ):
+        # Additional configurations for the merge. Reserved for future use.
         self.extended_config = extended_config
+        # The filter expression.
         self.filter_expression = filter_expression
+        # A list of recall management table IDs to use for filtering.
         self.filter_recall_management_table_ids = filter_recall_management_table_ids
+        # The ID of the item recall management table.
         self.item_recall_management_table_id = item_recall_management_table_id
+        # The output fields from the item table.
         self.item_table_fields = item_table_fields
+        # The merge type. Valid values: `Weight` and `Alternate`.
         self.merge_type = merge_type
+        # The ID of the recall management service version configuration.
         self.recall_management_service_version_config_id = recall_management_service_version_config_id
 
     def validate(self):

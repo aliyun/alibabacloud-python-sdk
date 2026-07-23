@@ -14,8 +14,11 @@ class ListDataDiagnosisJobsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The returned data diagnosis jobs.
         self.data_diagnosis_jobs = data_diagnosis_jobs
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -73,16 +76,33 @@ class ListDataDiagnosisJobsResponseBodyDataDiagnosisJobs(DaraModel):
         status: str = None,
         type: str = None,
     ):
+        # The business date.
         self.biz_date = biz_date
+        # The job configuration.
         self.config = config
+        # The data diagnosis configuration ID.
         self.data_diagnosis_config_id = data_diagnosis_config_id
+        # The data diagnosis configuration name.
         self.data_diagnosis_config_name = data_diagnosis_config_name
+        # The data diagnosis job ID.
         self.data_diagnosis_job_id = data_diagnosis_job_id
+        # The time when the job was created.
         self.gmt_create_time = gmt_create_time
+        # The time when the job started.
         self.gmt_start_time = gmt_start_time
+        # The job source. Valid values:
+        # 
+        # - Rerun: A manual rerun.
+        # 
+        # - Cycle: A periodic run.
+        # 
+        # - ByInitializing: Generated during initialization.
         self.job_source = job_source
+        # The log messages.
         self.logs = logs
+        # The task status.
         self.status = status
+        # The data diagnosis type.
         self.type = type
 
     def validate(self):

@@ -13,7 +13,9 @@ class CheckInstanceResourcesResponseBody(DaraModel):
         request_id: str = None,
         resources: List[main_models.CheckInstanceResourcesResponseBodyResources] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # A list of resources.
         self.resources = resources
 
     def validate(self):
@@ -59,8 +61,47 @@ class CheckInstanceResourcesResponseBodyResources(DaraModel):
         type: str = None,
         uri: str = None,
     ):
+        # The access status. Valid values:
+        # 
+        # - Success
+        # 
+        # - Failure
         self.status = status
+        # The resource type. Valid values:
+        # 
+        # - Hologres
+        # 
+        # - EAS
+        # 
+        # - BE
+        # 
+        # - Rec
+        # 
+        # - Platform
+        # 
+        # - SLS
+        # 
+        # - DataHub
+        # 
+        # - Kafka
+        # 
+        # - Flinkvvp
+        # 
+        # - ACR
+        # 
+        # - OSS
+        # 
+        # - DataWorks
+        # 
+        # - PAI
+        # 
+        # - MaxCompute
+        # 
+        # - GraphCompute
+        # 
+        # - Redis
         self.type = type
+        # The resource URI.
         self.uri = uri
 
     def validate(self):

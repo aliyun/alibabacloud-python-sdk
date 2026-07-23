@@ -10,8 +10,9 @@ class CreateExperimentResponseBody(DaraModel):
         experiment_id: str = None,
         request_id: str = None,
     ):
+        # The experiment ID.
         self.experiment_id = experiment_id
-        # Id of the request
+        # The unique identifier for the request.
         self.request_id = request_id
 
     def validate(self):

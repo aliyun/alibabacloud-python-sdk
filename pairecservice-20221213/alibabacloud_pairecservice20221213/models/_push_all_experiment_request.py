@@ -9,6 +9,7 @@ class PushAllExperimentRequest(DaraModel):
         self,
         instance_id: str = None,
     ):
+        # The instance ID. Call the ListInstances API to obtain this ID.
         self.instance_id = instance_id
 
     def validate(self):

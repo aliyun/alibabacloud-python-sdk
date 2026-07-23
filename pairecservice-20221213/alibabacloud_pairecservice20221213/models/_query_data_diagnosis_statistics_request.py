@@ -12,9 +12,15 @@ class QueryDataDiagnosisStatisticsRequest(DaraModel):
         remain_rate_type: str = None,
         start_date: str = None,
     ):
+        # The end date.
         self.end_date = end_date
+        # The instance ID.
         self.instance_id = instance_id
+        # The retention rate report type.
+        # 
+        # - Period: A periodic report.
         self.remain_rate_type = remain_rate_type
+        # The start date.
         self.start_date = start_date
 
     def validate(self):

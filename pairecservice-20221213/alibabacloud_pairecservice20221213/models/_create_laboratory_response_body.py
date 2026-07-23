@@ -10,8 +10,9 @@ class CreateLaboratoryResponseBody(DaraModel):
         laboratory_id: str = None,
         request_id: str = None,
     ):
+        # The laboratory ID.
         self.laboratory_id = laboratory_id
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

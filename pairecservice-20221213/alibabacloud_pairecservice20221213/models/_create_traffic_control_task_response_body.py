@@ -10,7 +10,9 @@ class CreateTrafficControlTaskResponseBody(DaraModel):
         request_id: str = None,
         traffic_control_task_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The ID of the new traffic control task.
         self.traffic_control_task_id = traffic_control_task_id
 
     def validate(self):

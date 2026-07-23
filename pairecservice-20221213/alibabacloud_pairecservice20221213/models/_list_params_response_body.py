@@ -14,9 +14,11 @@ class ListParamsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # A list of parameters.
         self.params = params
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of parameters.
         self.total_count = total_count
 
     def validate(self):
@@ -68,10 +70,21 @@ class ListParamsResponseBodyParams(DaraModel):
         param_id: str = None,
         value: str = None,
     ):
+        # The environment to which the parameter belongs. Valid values:
+        # 
+        # - Daily: A test environment for daily use.
+        # 
+        # - Prepub: A staging environment that mirrors the production environment.
+        # 
+        # - Product: The production environment.
         self.environment = environment
+        # The time when the parameter was last modified.
         self.gmt_modified_time = gmt_modified_time
+        # The parameter name.
         self.name = name
+        # The parameter ID.
         self.param_id = param_id
+        # The parameter value.
         self.value = value
 
     def validate(self):

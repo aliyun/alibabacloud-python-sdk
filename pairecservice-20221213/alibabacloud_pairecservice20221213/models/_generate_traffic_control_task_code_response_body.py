@@ -11,8 +11,11 @@ class GenerateTrafficControlTaskCodeResponseBody(DaraModel):
         pre_need_config: bool = None,
         request_id: str = None,
     ):
+        # The generated Flink code.
         self.code = code
+        # Indicates whether the engine configuration for the pre-release environment is incomplete.
         self.pre_need_config = pre_need_config
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

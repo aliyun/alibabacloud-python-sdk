@@ -10,7 +10,9 @@ class UpdateInstanceResourceRequest(DaraModel):
         config: str = None,
         uri: str = None,
     ):
+        # The resource configuration.
         self.config = config
+        # The resource address.
         self.uri = uri
 
     def validate(self):

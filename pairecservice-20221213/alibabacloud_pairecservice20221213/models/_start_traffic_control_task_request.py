@@ -10,7 +10,9 @@ class StartTrafficControlTaskRequest(DaraModel):
         environment: str = None,
         instance_id: str = None,
     ):
+        # The target environment. Valid values:
         self.environment = environment
+        # The instance ID.
         self.instance_id = instance_id
 
     def validate(self):

@@ -15,13 +15,29 @@ class ListABMetricGroupsRequest(DaraModel):
         scene_id: str = None,
         sort_by: str = None,
     ):
+        # The instance ID. You can call the [ListInstances](https://help.aliyun.com/document_detail/2411819.html) operation to obtain this ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The sort order. Valid values:
+        # 
+        # - ASC: ascending.
+        # 
+        # - DESC: descending.
         self.order = order
+        # The page number.
         self.page_number = page_number
+        # The number of entries to return on each page.
         self.page_size = page_size
+        # Specifies whether to return only real-time A/B metric groups.
         self.realtime = realtime
+        # The scene ID. You can call the [ListScenes](\\(~~2402581~~\\)) operation to obtain this ID.
         self.scene_id = scene_id
+        # The field to sort the results by. Valid values:
+        # 
+        # - GmtCreateTime: creation time.
+        # 
+        # - GmtModifiedTime: modification time.
         self.sort_by = sort_by
 
     def validate(self):

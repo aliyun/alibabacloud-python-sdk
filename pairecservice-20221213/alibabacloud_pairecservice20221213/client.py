@@ -23,7 +23,19 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'us-west-1': 'pairecservice.us-west-1.aliyuncs.com',
+            'us-east-1': 'pairecservice.us-east-1.aliyuncs.com',
+            'eu-central-1': 'pairecservice.eu-central-1.aliyuncs.com',
+            'cn-shenzhen': 'pairecservice.cn-shenzhen.aliyuncs.com',
+            'cn-shanghai': 'pairecservice.cn-shanghai.aliyuncs.com',
+            'cn-hongkong': 'pairecservice.cn-hongkong.aliyuncs.com',
+            'cn-hangzhou': 'pairecservice.cn-hangzhou.aliyuncs.com',
+            'cn-beijing': 'pairecservice.cn-beijing.aliyuncs.com',
+            'ap-southeast-5': 'pairecservice.ap-southeast-5.aliyuncs.com',
+            'ap-southeast-1': 'pairecservice.ap-southeast-1.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('pairecservice', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -2375,6 +2387,8 @@ class Client(OpenApiClient):
             body['ItemTablePartitionField'] = request.item_table_partition_field
         if not DaraCore.is_null(request.item_table_partition_field_format):
             body['ItemTablePartitionFieldFormat'] = request.item_table_partition_field_format
+        if not DaraCore.is_null(request.maxcompute_schema):
+            body['MaxcomputeSchema'] = request.maxcompute_schema
         if not DaraCore.is_null(request.name):
             body['Name'] = request.name
         if not DaraCore.is_null(request.oss_resource_id):
@@ -2495,6 +2509,8 @@ class Client(OpenApiClient):
             body['ItemTablePartitionField'] = request.item_table_partition_field
         if not DaraCore.is_null(request.item_table_partition_field_format):
             body['ItemTablePartitionFieldFormat'] = request.item_table_partition_field_format
+        if not DaraCore.is_null(request.maxcompute_schema):
+            body['MaxcomputeSchema'] = request.maxcompute_schema
         if not DaraCore.is_null(request.name):
             body['Name'] = request.name
         if not DaraCore.is_null(request.oss_resource_id):
@@ -14049,6 +14065,240 @@ class Client(OpenApiClient):
         headers = {}
         return await self.report_sample_consistency_job_with_options_async(sample_consistency_job_id, request, headers, runtime)
 
+    def shopping_assistant_with_sse(
+        self,
+        request: main_models.ShoppingAssistantRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> Generator[main_models.ShoppingAssistantResponse, None, None]:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.config):
+            body['Config'] = request.config
+        if not DaraCore.is_null(request.contents):
+            body['Contents'] = request.contents
+        if not DaraCore.is_null(request.conversation_id):
+            body['ConversationId'] = request.conversation_id
+        if not DaraCore.is_null(request.environment):
+            body['Environment'] = request.environment
+        if not DaraCore.is_null(request.input_message):
+            body['InputMessage'] = request.input_message
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.language):
+            body['Language'] = request.language
+        if not DaraCore.is_null(request.scene_id):
+            body['SceneId'] = request.scene_id
+        if not DaraCore.is_null(request.service_id):
+            body['ServiceId'] = request.service_id
+        if not DaraCore.is_null(request.session_id):
+            body['SessionId'] = request.session_id
+        if not DaraCore.is_null(request.uid):
+            body['Uid'] = request.uid
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ShoppingAssistant',
+            version = '2022-12-13',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/conversations/shopping_assistant/chat',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        sse_resp = self.call_sseapi(params, req, runtime)
+        for resp in sse_resp:
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.ShoppingAssistantResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
+
+    async def shopping_assistant_with_sse_async(
+        self,
+        request: main_models.ShoppingAssistantRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> AsyncGenerator[main_models.ShoppingAssistantResponse, None, None]:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.config):
+            body['Config'] = request.config
+        if not DaraCore.is_null(request.contents):
+            body['Contents'] = request.contents
+        if not DaraCore.is_null(request.conversation_id):
+            body['ConversationId'] = request.conversation_id
+        if not DaraCore.is_null(request.environment):
+            body['Environment'] = request.environment
+        if not DaraCore.is_null(request.input_message):
+            body['InputMessage'] = request.input_message
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.language):
+            body['Language'] = request.language
+        if not DaraCore.is_null(request.scene_id):
+            body['SceneId'] = request.scene_id
+        if not DaraCore.is_null(request.service_id):
+            body['ServiceId'] = request.service_id
+        if not DaraCore.is_null(request.session_id):
+            body['SessionId'] = request.session_id
+        if not DaraCore.is_null(request.uid):
+            body['Uid'] = request.uid
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ShoppingAssistant',
+            version = '2022-12-13',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/conversations/shopping_assistant/chat',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        sse_resp = self.call_sseapi_async(params, req, runtime)
+        async for resp in sse_resp:
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.ShoppingAssistantResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
+
+    def shopping_assistant_with_options(
+        self,
+        request: main_models.ShoppingAssistantRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ShoppingAssistantResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.config):
+            body['Config'] = request.config
+        if not DaraCore.is_null(request.contents):
+            body['Contents'] = request.contents
+        if not DaraCore.is_null(request.conversation_id):
+            body['ConversationId'] = request.conversation_id
+        if not DaraCore.is_null(request.environment):
+            body['Environment'] = request.environment
+        if not DaraCore.is_null(request.input_message):
+            body['InputMessage'] = request.input_message
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.language):
+            body['Language'] = request.language
+        if not DaraCore.is_null(request.scene_id):
+            body['SceneId'] = request.scene_id
+        if not DaraCore.is_null(request.service_id):
+            body['ServiceId'] = request.service_id
+        if not DaraCore.is_null(request.session_id):
+            body['SessionId'] = request.session_id
+        if not DaraCore.is_null(request.uid):
+            body['Uid'] = request.uid
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ShoppingAssistant',
+            version = '2022-12-13',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/conversations/shopping_assistant/chat',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ShoppingAssistantResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def shopping_assistant_with_options_async(
+        self,
+        request: main_models.ShoppingAssistantRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ShoppingAssistantResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.config):
+            body['Config'] = request.config
+        if not DaraCore.is_null(request.contents):
+            body['Contents'] = request.contents
+        if not DaraCore.is_null(request.conversation_id):
+            body['ConversationId'] = request.conversation_id
+        if not DaraCore.is_null(request.environment):
+            body['Environment'] = request.environment
+        if not DaraCore.is_null(request.input_message):
+            body['InputMessage'] = request.input_message
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.language):
+            body['Language'] = request.language
+        if not DaraCore.is_null(request.scene_id):
+            body['SceneId'] = request.scene_id
+        if not DaraCore.is_null(request.service_id):
+            body['ServiceId'] = request.service_id
+        if not DaraCore.is_null(request.session_id):
+            body['SessionId'] = request.session_id
+        if not DaraCore.is_null(request.uid):
+            body['Uid'] = request.uid
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ShoppingAssistant',
+            version = '2022-12-13',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/conversations/shopping_assistant/chat',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ShoppingAssistantResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def shopping_assistant(
+        self,
+        request: main_models.ShoppingAssistantRequest,
+    ) -> main_models.ShoppingAssistantResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.shopping_assistant_with_options(request, headers, runtime)
+
+    async def shopping_assistant_async(
+        self,
+        request: main_models.ShoppingAssistantRequest,
+    ) -> main_models.ShoppingAssistantResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.shopping_assistant_with_options_async(request, headers, runtime)
+
     def split_traffic_control_target_with_options(
         self,
         traffic_control_target_id: str,
@@ -14388,6 +14638,90 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.stop_sample_consistency_job_with_options_async(sample_consistency_job_id, request, headers, runtime)
+
+    def stop_traffic_control_flink_task_with_options(
+        self,
+        traffic_control_task_id: str,
+        request: main_models.StopTrafficControlFlinkTaskRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.StopTrafficControlFlinkTaskResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.environment):
+            body['Environment'] = request.environment
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'StopTrafficControlFlinkTask',
+            version = '2022-12-13',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/trafficcontroltasks/{DaraURL.percent_encode(traffic_control_task_id)}/action/stopflink',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.StopTrafficControlFlinkTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def stop_traffic_control_flink_task_with_options_async(
+        self,
+        traffic_control_task_id: str,
+        request: main_models.StopTrafficControlFlinkTaskRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.StopTrafficControlFlinkTaskResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.environment):
+            body['Environment'] = request.environment
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'StopTrafficControlFlinkTask',
+            version = '2022-12-13',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/trafficcontroltasks/{DaraURL.percent_encode(traffic_control_task_id)}/action/stopflink',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.StopTrafficControlFlinkTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def stop_traffic_control_flink_task(
+        self,
+        traffic_control_task_id: str,
+        request: main_models.StopTrafficControlFlinkTaskRequest,
+    ) -> main_models.StopTrafficControlFlinkTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.stop_traffic_control_flink_task_with_options(traffic_control_task_id, request, headers, runtime)
+
+    async def stop_traffic_control_flink_task_async(
+        self,
+        traffic_control_task_id: str,
+        request: main_models.StopTrafficControlFlinkTaskRequest,
+    ) -> main_models.StopTrafficControlFlinkTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.stop_traffic_control_flink_task_with_options_async(traffic_control_task_id, request, headers, runtime)
 
     def stop_traffic_control_target_with_options(
         self,
@@ -15618,6 +15952,8 @@ class Client(OpenApiClient):
             body['ItemTablePartitionField'] = request.item_table_partition_field
         if not DaraCore.is_null(request.item_table_partition_field_format):
             body['ItemTablePartitionFieldFormat'] = request.item_table_partition_field_format
+        if not DaraCore.is_null(request.maxcompute_schema):
+            body['MaxcomputeSchema'] = request.maxcompute_schema
         if not DaraCore.is_null(request.name):
             body['Name'] = request.name
         if not DaraCore.is_null(request.oss_resource_id):
@@ -15739,6 +16075,8 @@ class Client(OpenApiClient):
             body['ItemTablePartitionField'] = request.item_table_partition_field
         if not DaraCore.is_null(request.item_table_partition_field_format):
             body['ItemTablePartitionFieldFormat'] = request.item_table_partition_field_format
+        if not DaraCore.is_null(request.maxcompute_schema):
+            body['MaxcomputeSchema'] = request.maxcompute_schema
         if not DaraCore.is_null(request.name):
             body['Name'] = request.name
         if not DaraCore.is_null(request.oss_resource_id):

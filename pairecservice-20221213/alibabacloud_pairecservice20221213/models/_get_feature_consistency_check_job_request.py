@@ -9,6 +9,7 @@ class GetFeatureConsistencyCheckJobRequest(DaraModel):
         self,
         instance_id: str = None,
     ):
+        # The instance ID. To obtain the instance ID, see [ListInstances](https://help.aliyun.com/document_detail/2411819.html).
         self.instance_id = instance_id
 
     def validate(self):

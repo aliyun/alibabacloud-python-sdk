@@ -14,8 +14,11 @@ class ListTrafficControlTargetTrafficHistoryResponseBody(DaraModel):
         total_count: str = None,
         traffic_control_task_traffic_histories: List[main_models.ListTrafficControlTargetTrafficHistoryResponseBodyTrafficControlTaskTrafficHistories] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The total count of historical records.
         self.total_count = total_count
+        # A list of the traffic control history records.
         self.traffic_control_task_traffic_histories = traffic_control_task_traffic_histories
 
     def validate(self):
@@ -68,11 +71,17 @@ class ListTrafficControlTargetTrafficHistoryResponseBodyTrafficControlTaskTraffi
         traffic_control_target_traffic: float = None,
         traffic_control_task_traffic: float = None,
     ):
+        # The ID of the experiment.
         self.experiment_id = experiment_id
+        # The ID of the item.
         self.item_id = item_id
+        # The timestamp of the record.
         self.record_time = record_time
+        # The intended traffic for the traffic control target.
         self.traffic_control_target_aim_traffic = traffic_control_target_aim_traffic
+        # The actual traffic of the traffic control target.
         self.traffic_control_target_traffic = traffic_control_target_traffic
+        # The overall traffic of the traffic control task.
         self.traffic_control_task_traffic = traffic_control_task_traffic
 
     def validate(self):

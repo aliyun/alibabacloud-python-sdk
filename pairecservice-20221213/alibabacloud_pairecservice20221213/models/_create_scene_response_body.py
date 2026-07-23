@@ -10,8 +10,9 @@ class CreateSceneResponseBody(DaraModel):
         request_id: str = None,
         scene_id: str = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The scene ID.
         self.scene_id = scene_id
 
     def validate(self):

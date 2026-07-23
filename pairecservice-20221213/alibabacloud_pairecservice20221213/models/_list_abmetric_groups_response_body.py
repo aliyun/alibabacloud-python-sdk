@@ -14,8 +14,11 @@ class ListABMetricGroupsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The A/B metric groups.
         self.abmetric_groups = abmetric_groups
+        # The request ID.
         self.request_id = request_id
+        # The total number of A/B metric groups.
         self.total_count = total_count
 
     def validate(self):
@@ -70,13 +73,21 @@ class ListABMetricGroupsResponseBodyABMetricGroups(DaraModel):
         realtime: bool = None,
         scene_id: str = None,
     ):
+        # The A/B metric group ID.
         self.abmetric_group_id = abmetric_group_id
+        # The comma-separated IDs of the A/B metrics in the group.
         self.abmetric_ids = abmetric_ids
+        # The comma-separated names of the A/B metrics in the group.
         self.abmetric_names = abmetric_names
+        # The description of the A/B metric group.
         self.description = description
+        # The A/B metric group name.
         self.name = name
+        # The owner.
         self.owner = owner
+        # Indicates whether the A/B metric group is a real-time group.
         self.realtime = realtime
+        # The scene ID.
         self.scene_id = scene_id
 
     def validate(self):

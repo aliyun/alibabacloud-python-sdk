@@ -15,11 +15,25 @@ class ListDataDiagnosisJobsRequest(DaraModel):
         status: str = None,
         types: List[str] = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The page number.
         self.page_number = page_number
+        # The page size.
         self.page_size = page_size
+        # The task status. Valid values:
+        # 
+        # - Initializing: The job is being initialized.
+        # 
+        # - Running: The job is in progress.
+        # 
+        # - Success: The job succeeded.
+        # 
+        # - Failure: The job failed to complete.
         self.status = status
+        # A list of data diagnosis types.
         self.types = types
 
     def validate(self):

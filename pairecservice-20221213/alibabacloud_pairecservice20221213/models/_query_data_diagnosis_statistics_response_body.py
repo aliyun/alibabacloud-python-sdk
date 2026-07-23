@@ -13,7 +13,9 @@ class QueryDataDiagnosisStatisticsResponseBody(DaraModel):
         request_id: str = None,
         statistics: main_models.QueryDataDiagnosisStatisticsResponseBodyStatistics = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The statistics for the data diagnosis task.
         self.statistics = statistics
 
     def validate(self):
@@ -50,7 +52,9 @@ class QueryDataDiagnosisStatisticsResponseBodyStatistics(DaraModel):
         failed_dates: List[str] = None,
         no_data_dates: List[str] = None,
     ):
+        # The dates of task failures.
         self.failed_dates = failed_dates
+        # The dates with missing task data.
         self.no_data_dates = no_data_dates
 
     def validate(self):

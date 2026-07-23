@@ -15,9 +15,13 @@ class UpdateTrafficControlTaskTrafficRequest(DaraModel):
         traffics: List[main_models.UpdateTrafficControlTaskTrafficRequestTraffics] = None,
         new_param_3: str = None,
     ):
+        # The environment. Valid values: `Daily` (daily environment), `Pre` (pre-release environment), and `Prod` (production environment).
         self.environment = environment
+        # The instance ID.
         self.instance_id = instance_id
+        # A list of traffic objects to report.
         self.traffics = traffics
+        # This parameter is invalid and should be ignored.
         self.new_param_3 = new_param_3
 
     def validate(self):
@@ -76,11 +80,17 @@ class UpdateTrafficControlTaskTrafficRequestTraffics(DaraModel):
         traffic_control_target_traffic: int = None,
         traffic_control_task_traffic: int = None,
     ):
+        # The identifier for the traffic object. This can be an item ID, such as `item1`, an experiment ID, a global identifier (`ER_ALL`), or a value in `L1_EG1_E1` format.
         self.item_or_experiment_id = item_or_experiment_id
+        # The timestamp from the behavior log. This indicates that the log data is current as of this timestamp.
         self.record_time = record_time
+        # The configured target traffic for the traffic control target.
         self.traffic_control_target_aim_traffic = traffic_control_target_aim_traffic
+        # The traffic control target ID.
         self.traffic_control_target_id = traffic_control_target_id
+        # The actual traffic volume observed for the traffic control target.
         self.traffic_control_target_traffic = traffic_control_target_traffic
+        # The total traffic for the traffic control task.
         self.traffic_control_task_traffic = traffic_control_task_traffic
 
     def validate(self):

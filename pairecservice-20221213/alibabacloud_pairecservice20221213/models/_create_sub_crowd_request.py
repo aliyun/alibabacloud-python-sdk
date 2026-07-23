@@ -11,10 +11,16 @@ class CreateSubCrowdRequest(DaraModel):
         source: str = None,
         users: str = None,
     ):
+        # The instance ID. You can obtain the instance ID by calling the ListInstances API.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The source of users for the sub-crowd. Valid values: ● ManualInput: manual input ● UploadFile: file upload
+        # 
         # This parameter is required.
         self.source = source
+        # A comma-separated list of users in the sub-crowd.
+        # 
         # This parameter is required.
         self.users = users
 

@@ -18,24 +18,44 @@ class SyncFeatureConsistencyCheckJobReplayLogRequest(DaraModel):
         raw_features: str = None,
         scene_name: str = None,
     ):
+        # The context features.
+        # 
         # This parameter is required.
         self.context_features = context_features
+        # The feature consistency check job configuration ID. To obtain this ID, see [ListFeatureConsistencyCheckJobConfigs](https://help.aliyun.com/document_detail/2557567.html).
+        # 
         # This parameter is required.
         self.feature_consistency_check_job_config_id = feature_consistency_check_job_config_id
+        # The generated features.
+        # 
         # This parameter is required.
         self.generated_features = generated_features
+        # The instance ID. To obtain this ID, see [ListInstances](https://help.aliyun.com/document_detail/2411819.html).
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The item ID from the log.
+        # 
         # This parameter is required.
         self.log_item_id = log_item_id
+        # The request ID from the log.
+        # 
         # This parameter is required.
         self.log_request_id = log_request_id
+        # The request time from the log, provided as a UNIX epoch timestamp.
+        # 
         # This parameter is required.
         self.log_request_time = log_request_time
+        # The user ID from the log.
+        # 
         # This parameter is required.
         self.log_user_id = log_user_id
+        # The raw features.
+        # 
         # This parameter is required.
         self.raw_features = raw_features
+        # The scene name.
+        # 
         # This parameter is required.
         self.scene_name = scene_name
 

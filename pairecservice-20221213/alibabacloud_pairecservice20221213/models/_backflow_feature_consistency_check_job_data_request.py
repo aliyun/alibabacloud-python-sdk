@@ -19,25 +19,45 @@ class BackflowFeatureConsistencyCheckJobDataRequest(DaraModel):
         service_name: str = None,
         user_features: str = None,
     ):
+        # The feature consistency check job configuration ID. To obtain the configuration ID, call the [ListFeatureConsistencyCheckJobConfigs](https://help.aliyun.com/document_detail/2557567.html) operation.
+        # 
         # This parameter is required.
         self.feature_consistency_check_job_config_id = feature_consistency_check_job_config_id
+        # The instance ID. To obtain the instance ID, call the [ListInstances](https://help.aliyun.com/document_detail/2411819.html) operation.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The item features.
+        # 
         # This parameter is required.
         self.item_features = item_features
+        # The item ID in the log.
+        # 
         # This parameter is required.
         self.log_item_id = log_item_id
+        # The log request ID.
+        # 
         # This parameter is required.
         self.log_request_id = log_request_id
+        # The log request time (UNIX epoch timestamp).
+        # 
         # This parameter is required.
         self.log_request_time = log_request_time
+        # The user ID in the log.
+        # 
         # This parameter is required.
         self.log_user_id = log_user_id
+        # The scene name.
+        # 
         # This parameter is required.
         self.scene_name = scene_name
+        # The scores.
+        # 
         # This parameter is required.
         self.scores = scores
         self.service_name = service_name
+        # The user features.
+        # 
         # This parameter is required.
         self.user_features = user_features
 

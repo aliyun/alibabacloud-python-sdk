@@ -14,8 +14,11 @@ class ListRecallManagementServiceVersionsResponseBody(DaraModel):
         request_id: str = None,
         total_count: str = None,
     ):
+        # A list of Recall Management Service versions.
         self.recall_management_service_versions = recall_management_service_versions
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -67,10 +70,15 @@ class ListRecallManagementServiceVersionsResponseBodyRecallManagementServiceVers
         name: str = None,
         recall_management_service_version_id: str = None,
     ):
+        # The creation time.
         self.gmt_create_time = gmt_create_time
+        # The modification time.
         self.gmt_modified_time = gmt_modified_time
+        # Indicates whether the version is effective.
         self.is_effective = is_effective
+        # The version name.
         self.name = name
+        # The version ID of the Recall Management Service.
         self.recall_management_service_version_id = recall_management_service_version_id
 
     def validate(self):

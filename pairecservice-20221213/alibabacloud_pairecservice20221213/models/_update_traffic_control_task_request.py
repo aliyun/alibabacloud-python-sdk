@@ -41,35 +41,65 @@ class UpdateTrafficControlTaskRequest(DaraModel):
         user_condition_type: str = None,
         user_table_meta_id: str = None,
     ):
+        # The behavior table ID.
         self.behavior_table_meta_id = behavior_table_meta_id
+        # The control granularity.
         self.control_granularity = control_granularity
+        # The control logic.
         self.control_logic = control_logic
+        # The control type.
         self.control_type = control_type
+        # The description of the traffic control plan.
         self.description = description
+        # A list of effective scene IDs.
         self.effective_scene_ids = effective_scene_ids
+        # The end time.
         self.end_time = end_time
+        # The execution time. Valid values: `Permanent` (runs indefinitely) and `TimeRange` (runs within a specified period). If you select `TimeRange`, you must also specify `StartTime` and `EndTime`.
         self.execution_time = execution_time
+        # The Flink resource ID.
         self.flink_resource_id = flink_resource_id
+        # The instance ID.
         self.instance_id = instance_id
+        # The item conditions, specified in an array format.
         self.item_condition_array = item_condition_array
+        # The item conditions, specified as an expression.
         self.item_condition_express = item_condition_express
+        # The item condition type.
         self.item_condition_type = item_condition_type
+        # The item table ID.
         self.item_table_meta_id = item_table_meta_id
+        # The name of the traffic control plan.
         self.name = name
+        # A comma-separated list of pre-release experiment IDs.
         self.pre_experiment_ids = pre_experiment_ids
+        # A comma-separated list of production experiment IDs.
         self.prod_experiment_ids = prod_experiment_ids
+        # The scene ID.
         self.scene_id = scene_id
+        # The engine service ID.
         self.service_id = service_id
+        # A list of associated engine service IDs.
         self.service_ids = service_ids
+        # The start time.
         self.start_time = start_time
+        # The conditions for behavior statistics, specified in an array format.
         self.statis_baeavior_condition_array = statis_baeavior_condition_array
+        # The conditions for behavior statistics, specified in an array format.
         self.statis_behavior_condition_array = statis_behavior_condition_array
+        # The conditions for behavior statistics, specified as an expression.
         self.statis_behavior_condition_express = statis_behavior_condition_express
+        # The condition type for behavior statistics.
         self.statis_behavior_condition_type = statis_behavior_condition_type
+        # A list of traffic control targets.
         self.traffic_control_targets = traffic_control_targets
+        # The conditions for the target user group, specified in an array format.
         self.user_condition_array = user_condition_array
+        # The conditions for the target user group, specified as an expression.
         self.user_condition_express = user_condition_express
+        # The condition type for the target user group.
         self.user_condition_type = user_condition_type
+        # The user table ID.
         self.user_table_meta_id = user_table_meta_id
 
     def validate(self):
@@ -291,18 +321,31 @@ class UpdateTrafficControlTaskRequestTrafficControlTargets(DaraModel):
         tolerance_value: int = None,
         value: float = None,
     ):
+        # The end time of the traffic control target.
         self.end_time = end_time
+        # The event for the traffic control target.
         self.event = event
+        # The item conditions, specified in an array format.
         self.item_condition_array = item_condition_array
+        # The item conditions, specified as an expression.
         self.item_condition_express = item_condition_express
+        # The item condition type.
         self.item_condition_type = item_condition_type
+        # The name of the traffic control target.
         self.name = name
+        # Indicates whether this is a new item recall.
         self.new_product_regulation = new_product_regulation
+        # The recall policy name.
         self.recall_name = recall_name
+        # The start time of the traffic control target.
         self.start_time = start_time
+        # The statistical period.
         self.statis_period = statis_period
+        # The status.
         self.status = status
+        # The tolerance range for the traffic control target.
         self.tolerance_value = tolerance_value
+        # The value of the traffic control target.
         self.value = value
 
     def validate(self):

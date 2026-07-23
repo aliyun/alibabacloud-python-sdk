@@ -10,7 +10,9 @@ class ExportRecallManagementTableResponseBody(DaraModel):
         recall_management_job_id: str = None,
         request_id: str = None,
     ):
+        # The export job ID. Use this ID to track the job\\"s status.
         self.recall_management_job_id = recall_management_job_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

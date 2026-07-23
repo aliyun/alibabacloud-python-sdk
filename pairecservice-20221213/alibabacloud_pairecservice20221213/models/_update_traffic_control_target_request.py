@@ -22,19 +22,33 @@ class UpdateTrafficControlTargetRequest(DaraModel):
         value: float = None,
         new_param_3: str = None,
     ):
+        # The end time of the traffic control target.
         self.end_time = end_time
+        # The event for the traffic control target.
         self.event = event
+        # The item condition in array format.
         self.item_condition_array = item_condition_array
+        # The item condition in expression format.
         self.item_condition_express = item_condition_express
+        # The item condition type.
         self.item_condition_type = item_condition_type
+        # The traffic control target name.
         self.name = name
+        # Specifies whether the control rule applies to a new product.
         self.new_product_regulation = new_product_regulation
+        # The recall strategy name.
         self.recall_name = recall_name
+        # The start time of the traffic control target.
         self.start_time = start_time
+        # The statistics period.
         self.statis_period = statis_period
+        # The traffic control target status.
         self.status = status
+        # The tolerance range for the traffic control target.
         self.tolerance_value = tolerance_value
+        # The traffic control target value.
         self.value = value
+        # This parameter is invalid.
         self.new_param_3 = new_param_3
 
     def validate(self):

@@ -35,30 +35,53 @@ class GetRecallManagementTableResponseBody(DaraModel):
         request_id: str = None,
         type: str = None,
     ):
+        # Specifies whether the table can be deleted.
         self.can_delete = can_delete
+        # Additional configurations for the table.
         self.config = config
+        # The data source.
         self.data_source = data_source
+        # The data table description.
         self.description = description
+        # Specifies whether to enable the fluctuation threshold for the data size.
         self.enable_data_size_fluctuation_threshold = enable_data_size_fluctuation_threshold
+        # Specifies whether to enable the fluctuation threshold for the row count.
         self.enable_row_count_fluctuation_threshold = enable_row_count_fluctuation_threshold
+        # A list of fields.
         self.fields = fields
+        # The creation time.
         self.gmt_create_time = gmt_create_time
+        # The modification time.
         self.gmt_modified_time = gmt_modified_time
+        # The index effective time.
         self.index_effective_time = index_effective_time
+        # The index version ID.
         self.index_version_id = index_version_id
+        # The maximum data size fluctuation threshold.
         self.max_data_size_fluctuation_threshold = max_data_size_fluctuation_threshold
+        # The maximum row count fluctuation threshold.
         self.max_row_count_fluctuation_threshold = max_row_count_fluctuation_threshold
+        # The MaxCompute project name.
         self.maxcompute_project_name = maxcompute_project_name
-        # maxcompute schema。
+        # The MaxCompute schema.
         self.maxcompute_schema = maxcompute_schema
+        # The MaxCompute table name.
         self.maxcompute_table_name = maxcompute_table_name
+        # The minimum data size fluctuation threshold.
         self.min_data_size_fluctuation_threshold = min_data_size_fluctuation_threshold
+        # The minimum row count fluctuation threshold.
         self.min_row_count_fluctuation_threshold = min_row_count_fluctuation_threshold
+        # The data table name.
         self.name = name
+        # The partition fields.
         self.partition_fields = partition_fields
+        # The data table ID.
         self.recall_management_table_id = recall_management_table_id
+        # The recall type.
         self.recall_type = recall_type
+        # The request ID.
         self.request_id = request_id
+        # The table type.
         self.type = type
 
     def validate(self):
@@ -236,10 +259,15 @@ class GetRecallManagementTableResponseBodyFields(DaraModel):
         vector_dimension: int = None,
         vector_metric_type: str = None,
     ):
+        # A list of field attributes.
         self.attributes = attributes
+        # The field name.
         self.name = name
+        # The field type.
         self.type = type
+        # The vector dimension.
         self.vector_dimension = vector_dimension
+        # The vector metric type.
         self.vector_metric_type = vector_metric_type
 
     def validate(self):

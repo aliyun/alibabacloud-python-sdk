@@ -9,6 +9,8 @@ class OnlineExperimentGroupRequest(DaraModel):
         self,
         instance_id: str = None,
     ):
+        # The instance ID. Call the ListInstances API to get this ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

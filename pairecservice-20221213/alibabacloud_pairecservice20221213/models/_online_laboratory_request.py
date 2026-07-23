@@ -9,6 +9,8 @@ class OnlineLaboratoryRequest(DaraModel):
         self,
         instance_id: str = None,
     ):
+        # The instance ID. This ID is returned by the ListInstances API.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

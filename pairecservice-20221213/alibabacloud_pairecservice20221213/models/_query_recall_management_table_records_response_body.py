@@ -12,7 +12,9 @@ class QueryRecallManagementTableRecordsResponseBody(DaraModel):
         records: List[Dict[str, Any]] = None,
         request_id: str = None,
     ):
+        # A list of the retrieved records.
         self.records = records
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -14,8 +14,11 @@ class ListFeatureConsistencyCheckJobConfigsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of feature consistency check configurations.
         self.feature_consistency_check_configs = feature_consistency_check_configs
+        # The request ID.
         self.request_id = request_id
+        # The total number of configurations.
         self.total_count = total_count
 
     def validate(self):
@@ -118,6 +121,7 @@ class ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckCo
         workflow_name: str = None,
         workspace_id: str = None,
     ):
+        # Indicates whether to enable feature comparison.
         self.compare_feature = compare_feature
         self.dataset_id = dataset_id
         self.dataset_mount_path = dataset_mount_path
@@ -125,53 +129,110 @@ class ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckCo
         self.dataset_type = dataset_type
         self.dataset_uri = dataset_uri
         self.default_route = default_route
+        # The name of the EAS service.
         self.eas_service_name = eas_service_name
+        # The path of the EasyRec package.
         self.easy_rec_package_path = easy_rec_package_path
+        # The version of EasyRec.
         self.easy_rec_version = easy_rec_version
+        # The ID of the feature consistency check configuration.
         self.feature_consistency_check_job_config_id = feature_consistency_check_job_config_id
+        # The features to exclude from the results. Separate multiple features with a comma (,).
         self.feature_display_exclude = feature_display_exclude
+        # The ID of the data source for feature landing.
         self.feature_landing_resource_id = feature_landing_resource_id
+        # The URI of the data source for feature landing.
         self.feature_landing_resource_uri = feature_landing_resource_uri
+        # The high-priority features to read from the user table. If a feature is not found, the system retrieves it from the behavior table. Separate multiple features with a comma (,).
         self.feature_priority = feature_priority
+        # The primary key for the item side in the feature store.
         self.feature_store_item_id = feature_store_item_id
+        # The ID of the model in the feature store.
         self.feature_store_model_id = feature_store_model_id
+        # The ID of the feature store project.
         self.feature_store_project_id = feature_store_project_id
+        # The name of the feature store project.
         self.feature_store_project_name = feature_store_project_name
+        # The name of the feature view that contains item features within the sequence features.
         self.feature_store_seq_feature_view = feature_store_seq_feature_view
+        # The primary key for the user side in the feature store.
         self.feature_store_user_id = feature_store_user_id
+        # The version of the `fg_jar` file.
         self.fg_jar_version = fg_jar_version
+        # The name of the `fg_json` file.
         self.fg_json_file_name = fg_json_file_name
+        # Indicates whether to generate a ZIP package.
         self.generate_zip = generate_zip
+        # The time when the configuration was created.
         self.gmt_create_time = gmt_create_time
+        # The time when the configuration was last updated.
         self.gmt_modified_time = gmt_modified_time
+        # The name of the `item_id` field.
         self.item_id_field = item_id_field
+        # The name of the item table.
         self.item_table = item_table
+        # The partition field of the item table.
         self.item_table_partition_field = item_table_partition_field
+        # The format of the partition field of the item table. Valid values:
+        # 
+        # - `yyyymmdd`
+        # 
+        # - `yyyy-mm-dd`
         self.item_table_partition_field_format = item_table_partition_field_format
+        # The end time of the latest job based on this configuration.
         self.latest_job_gmt_sampling_end_time = latest_job_gmt_sampling_end_time
+        # The start time of the latest job based on this configuration.
         self.latest_job_gmt_sampling_start_time = latest_job_gmt_sampling_start_time
+        # The ID of the most recent job created from this configuration.
         self.latest_job_id = latest_job_id
+        # The name of the feature consistency check configuration.
         self.name = name
+        # The name of the OSS bucket.
         self.oss_bucket = oss_bucket
+        # The ID of the OSS data source.
         self.oss_resource_id = oss_resource_id
         self.predict_worker_count = predict_worker_count
         self.predict_worker_cpu = predict_worker_cpu
         self.predict_worker_memory = predict_worker_memory
         self.resource_config = resource_config
+        # The sample rate, a value from 0 to 1.
         self.sample_rate = sample_rate
+        # The ID of the scene.
         self.scene_id = scene_id
+        # The name of the scene.
         self.scene_name = scene_name
         self.security_group_id = security_group_id
+        # The ID of the service.
         self.service_id = service_id
+        # The name of the service.
         self.service_name = service_name
+        # The status of the configuration. Valid values:
+        # 
+        # - `Editable`: The configuration is editable.
+        # 
+        # - `Uneditable`: The configuration is not editable.
         self.status = status
         self.switch_id = switch_id
+        # Indicates whether to use a feature store. Valid values:
+        # 
+        # - `true`: A feature store is used. In this case, the response includes parameters such as `FeatureStoreProjectId`, `FeatureStoreProjectName`, `FeatureStoreModelId`, `FeatureStoreUserId`, and `FeatureStoreItemId`.
+        # 
+        # - `false`: A feature store is not used. In this case, the response includes parameters such as `UserTable`, `UserIdField`, `UserTablePartitionField`, `UserTablePartitionFieldFormat`, `ItemTable`, `ItemIdField`, `ItemTablePartitionField`, and `ItemTablePartitionFieldFormat`.
         self.use_feature_store = use_feature_store
+        # The name of the `user_id` field.
         self.user_id_field = user_id_field
+        # The name of the user table.
         self.user_table = user_table
+        # The partition field of the user table.
         self.user_table_partition_field = user_table_partition_field
+        # The format of the partition field of the user table. Valid values:
+        # 
+        # - `yyyymmdd`
+        # 
+        # - `yyyy-mm-dd`
         self.user_table_partition_field_format = user_table_partition_field_format
         self.vpc_id = vpc_id
+        # The name of the workflow.
         self.workflow_name = workflow_name
         self.workspace_id = workspace_id
 

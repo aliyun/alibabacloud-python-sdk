@@ -10,8 +10,9 @@ class CreateSubCrowdResponseBody(DaraModel):
         request_id: str = None,
         sub_crowd_id: str = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The sub-crowd ID.
         self.sub_crowd_id = sub_crowd_id
 
     def validate(self):

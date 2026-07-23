@@ -10,7 +10,9 @@ class CreateEngineConfigResponseBody(DaraModel):
         engine_config_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the engine config.
         self.engine_config_id = engine_config_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

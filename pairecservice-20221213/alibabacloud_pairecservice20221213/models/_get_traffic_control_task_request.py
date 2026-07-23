@@ -13,10 +13,18 @@ class GetTrafficControlTaskRequest(DaraModel):
         region_id: str = None,
         version: str = None,
     ):
+        # The filter for traffic control targets.
         self.control_target_filter = control_target_filter
+        # The environment to which the parameter belongs. Valid values:
+        # - Daily: daily environment
+        # - Pre: staging environment
+        # - Prod: production environment.
         self.environment = environment
+        # The instance ID.
         self.instance_id = instance_id
+        # The region ID.
         self.region_id = region_id
+        # The version.
         self.version = version
 
     def validate(self):

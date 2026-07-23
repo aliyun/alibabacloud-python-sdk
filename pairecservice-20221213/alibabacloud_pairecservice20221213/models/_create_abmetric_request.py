@@ -27,29 +27,66 @@ class CreateABMetricRequest(DaraModel):
         type: str = None,
     ):
         self.aggregation_by_user = aggregation_by_user
+        # The metric definition.
+        # 
         # This parameter is required.
         self.definition = definition
         self.denominator = denominator
+        # The metric description.
+        # 
         # This parameter is required.
         self.description = description
+        # The instance ID. Call the [ListInstances](https://help.aliyun.com/document_detail/2411819.html) operation to obtain this ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
         self.is_binomial_distribution = is_binomial_distribution
+        # The ID of the left metric used to calculate the derived metric.
         self.left_metric_id = left_metric_id
+        # The metric name.
+        # 
         # This parameter is required.
         self.name = name
         self.need_significance = need_significance
         self.numerator = numerator
+        # The operator used to calculate the derived metric. Valid values:
+        # 
+        # - `Plus`: Addition
+        # 
+        # - `Minus`: Subtraction
+        # 
+        # - `Multiplication`: Multiplication
+        # 
+        # - `Division`: Division
         self.operator = operator
+        # Specifies whether the metric is a real-time metric. Valid values:
+        # 
+        # - `true`: The metric is real-time.
+        # 
+        # - `false`: The metric is not real-time.
+        # 
         # This parameter is required.
         self.realtime = realtime
+        # The data source ID to which the results are written back. Call the ListInstanceResources operation to obtain this ID.
         self.result_resource_id = result_resource_id
+        # The ID of the right metric used to calculate the derived metric.
         self.right_metric_id = right_metric_id
+        # The scene ID. Call the [ListScenes](https://help.aliyun.com/document_detail/2402581.html) operation to obtain this ID.
+        # 
         # This parameter is required.
         self.scene_id = scene_id
+        # The statistics cycle.
         self.statistics_cycle = statistics_cycle
+        # The data table ID. Call the ListTableMetas operation to obtain this ID.
+        # 
         # This parameter is required.
         self.table_meta_id = table_meta_id
+        # The metric type. Valid values:
+        # 
+        # - `Single`: A single metric.
+        # 
+        # - `Derived`: A derived metric.
+        # 
         # This parameter is required.
         self.type = type
 

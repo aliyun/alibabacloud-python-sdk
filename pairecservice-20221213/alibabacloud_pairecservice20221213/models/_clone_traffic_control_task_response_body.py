@@ -10,7 +10,9 @@ class CloneTrafficControlTaskResponseBody(DaraModel):
         request_id: str = None,
         traffic_control_task_id: str = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Traffic control task ID.
         self.traffic_control_task_id = traffic_control_task_id
 
     def validate(self):

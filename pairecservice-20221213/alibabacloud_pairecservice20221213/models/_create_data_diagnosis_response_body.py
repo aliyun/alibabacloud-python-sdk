@@ -10,7 +10,9 @@ class CreateDataDiagnosisResponseBody(DaraModel):
         data_diagnosis_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the data diagnosis task.
         self.data_diagnosis_id = data_diagnosis_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

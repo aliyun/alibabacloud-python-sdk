@@ -13,12 +13,27 @@ class ListCalculationJobsRequest(DaraModel):
         scene_id: str = None,
         status: str = None,
     ):
+        # The instance ID. To obtain this ID, call the [ListInstances](https://help.aliyun.com/document_detail/2411819.html) operation.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The page number.
         self.page_number = page_number
+        # The page size.
         self.page_size = page_size
+        # The scene ID. To obtain this ID, call the [ListScenes](https://help.aliyun.com/document_detail/2402581.html) operation.
+        # 
         # This parameter is required.
         self.scene_id = scene_id
+        # The status of the calculation job. Valid values:
+        # 
+        # - Success
+        # 
+        # - Failure
+        # 
+        # - Initializing
+        # 
+        # - Running
         self.status = status
 
     def validate(self):

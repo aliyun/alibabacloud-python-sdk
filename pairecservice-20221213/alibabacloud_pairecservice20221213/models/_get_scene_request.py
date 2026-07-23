@@ -9,6 +9,7 @@ class GetSceneRequest(DaraModel):
         self,
         instance_id: str = None,
     ):
+        # The instance ID. You can get this ID by calling the ListInstances operation.
         self.instance_id = instance_id
 
     def validate(self):

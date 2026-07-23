@@ -14,8 +14,11 @@ class ListInstanceResourcesResponseBody(DaraModel):
         resources: List[main_models.ListInstanceResourcesResponseBodyResources] = None,
         total_count: int = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # A list of resource objects.
         self.resources = resources
+        # The total number of resources.
         self.total_count = total_count
 
     def validate(self):
@@ -70,13 +73,89 @@ class ListInstanceResourcesResponseBodyResources(DaraModel):
         type: str = None,
         uri: str = None,
     ):
+        # The category of the resource. Valid values:
+        # 
+        # - DataManagement
+        # 
+        # - Engine
+        # 
+        # - Monitor
         self.category = category
+        # The configuration of the resource.
         self.config = config
+        # The creation time.
         self.gmt_create_at = gmt_create_at
+        # The update time.
         self.gmt_modified_at = gmt_modified_at
+        # The group of the resource.
+        # 
+        # If `Category` is `DataManagement`, valid values are:
+        # 
+        # - storage
+        # 
+        # - modelpipeline
+        # 
+        # - datastorage
+        # 
+        # - modeltrain
+        # 
+        # If `Category` is `Engine`, valid values are:
+        # 
+        # - feature
+        # 
+        # - predict
+        # 
+        # - recall
+        # 
+        # - recengine
+        # 
+        # If `Category` is `Monitor`, valid values are:
+        # 
+        # - logs
+        # 
+        # - logsback
+        # 
+        # - coldstart
+        # 
+        # - deploy
         self.group = group
+        # The resource ID.
         self.resource_id = resource_id
+        # The type of the resource.
+        # 
+        # - Hologres
+        # 
+        # - EAS
+        # 
+        # - BE
+        # 
+        # - Rec
+        # 
+        # - Platform
+        # 
+        # - SLS
+        # 
+        # - DataHub
+        # 
+        # - ApsaraMQ for Kafka
+        # 
+        # - Realtime Compute for Apache Flink
+        # 
+        # - ACR
+        # 
+        # - OSS
+        # 
+        # - DataWorks
+        # 
+        # - PAI
+        # 
+        # - MaxCompute
+        # 
+        # - Graph Compute Service
+        # 
+        # - ApsaraDB for Redis
         self.type = type
+        # The resource URI.
         self.uri = uri
 
     def validate(self):

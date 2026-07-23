@@ -1,3 +1,17 @@
+2026-07-23 Version: 7.2.0
+- Support API ShoppingAssistant.
+- Support API StopTrafficControlFlinkTask.
+- Update API ChatConversation: add response parameters Body.CallId.
+- Update API ChatConversation: add response parameters Body.Func.
+- Update API ChatConversation: add response parameters Body.SkillName.
+- Update API CreateFeatureConsistencyCheckJobConfig: add request parameters body.MaxcomputeSchema.
+- Update API GetService: add response parameters Body.CrInstanceId.
+- Update API GetService: add response parameters Body.RepositoryId.
+- Update API QueryTrafficControlTaskDeployResult: add response parameters Body.StopMessage.
+- Update API QueryTrafficControlTaskDeployResult: add response parameters Body.StopStatus.
+- Update API UpdateFeatureConsistencyCheckJobConfig: add request parameters body.MaxcomputeSchema.
+
+
 2026-06-02 Version: 7.1.0
 - Support API ChatConversation.
 

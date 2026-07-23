@@ -13,7 +13,9 @@ class QueryTrafficControlTaskItemReportResponseBody(DaraModel):
         request_id: str = None,
         traffic_control_task_item_reports: List[main_models.QueryTrafficControlTaskItemReportResponseBodyTrafficControlTaskItemReports] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # An array of item control reports.
         self.traffic_control_task_item_reports = traffic_control_task_item_reports
 
     def validate(self):
@@ -64,15 +66,25 @@ class QueryTrafficControlTaskItemReportResponseBodyTrafficControlTaskItemReports
         traffic_control_target_id: str = None,
         traffic_control_target_name: str = None,
     ):
+        # The actual number of controlled items.
         self.actual_item_control_num = actual_item_control_num
+        # The actual traffic of controlled items.
         self.actual_item_control_traffic = actual_item_control_traffic
+        # The number of items that reached the control target.
         self.done_item_control_num = done_item_control_num
+        # The number of items that reached the control target, as a percentage of the expected number of controlled items.
         self.done_item_control_percentage = done_item_control_percentage
+        # The actual number of controlled items as a percentage of the expected number.
         self.item_control_num_percentage = item_control_num_percentage
+        # The actual traffic from controlled items as a percentage of the expected traffic.
         self.item_control_traffic_percentage = item_control_traffic_percentage
+        # The expected number of controlled items.
         self.ought_item_control_num = ought_item_control_num
+        # The expected traffic of controlled items.
         self.ought_item_control_traffic = ought_item_control_traffic
+        # The ID of the traffic control target.
         self.traffic_control_target_id = traffic_control_target_id
+        # The name of the traffic control target.
         self.traffic_control_target_name = traffic_control_target_name
 
     def validate(self):

@@ -17,13 +17,29 @@ class GetRecallManagementJobResponseBody(DaraModel):
         start_time: str = None,
         status: str = None,
     ):
+        # The time when the job ended.
         self.end_time = end_time
+        # The log of the job.
         self.log = log
+        # The recall management job ID.
         self.recall_management_job_id = recall_management_job_id
+        # Details of the recall management table.
         self.recall_management_table_info = recall_management_table_info
+        # Details of the recall management table.
         self.recall_manager_table_info = recall_manager_table_info
+        # The request ID.
         self.request_id = request_id
+        # The time when the job started.
         self.start_time = start_time
+        # The status of the job. Valid values are:
+        # 
+        # - `Init`: Initializing.
+        # 
+        # - `Running`: Running.
+        # 
+        # - `Success`: Successful.
+        # 
+        # - `Failed`: Failed.
         self.status = status
 
     def validate(self):
@@ -101,9 +117,13 @@ class GetRecallManagementJobResponseBodyRecallManagerTableInfo(DaraModel):
         source_table_data_size: str = None,
         source_table_row_count: str = None,
     ):
+        # The data version.
         self.data_version = data_version
+        # The recall management table version ID.
         self.recall_manager_table_version_id = recall_manager_table_version_id
+        # The data size of the source table.
         self.source_table_data_size = source_table_data_size
+        # The number of rows in the source table.
         self.source_table_row_count = source_table_row_count
 
     def validate(self):
@@ -152,9 +172,13 @@ class GetRecallManagementJobResponseBodyRecallManagementTableInfo(DaraModel):
         source_table_data_size: str = None,
         source_table_row_count: str = None,
     ):
+        # The data version.
         self.data_version = data_version
+        # The recall management table version ID.
         self.recall_management_table_version_id = recall_management_table_version_id
+        # The data size of the source table.
         self.source_table_data_size = source_table_data_size
+        # The number of rows in the source table.
         self.source_table_row_count = source_table_row_count
 
     def validate(self):

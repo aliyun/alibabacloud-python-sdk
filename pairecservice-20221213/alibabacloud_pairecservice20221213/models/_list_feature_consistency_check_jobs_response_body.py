@@ -14,8 +14,11 @@ class ListFeatureConsistencyCheckJobsResponseBody(DaraModel):
         request_id: str = None,
         total_count: str = None,
     ):
+        # The list of feature consistency check jobs.
         self.feature_consistency_check_jobs = feature_consistency_check_jobs
+        # The request ID.
         self.request_id = request_id
+        # The total number of jobs.
         self.total_count = total_count
 
     def validate(self):
@@ -70,13 +73,31 @@ class ListFeatureConsistencyCheckJobsResponseBodyFeatureConsistencyCheckJobs(Dar
         logs: List[str] = None,
         status: str = None,
     ):
+        # The configuration of the job.
         self.config = config
+        # The ID of the feature consistency check configuration.
         self.feature_consistency_check_job_config_id = feature_consistency_check_job_config_id
+        # The name of the feature consistency check job configuration.
         self.feature_consistency_check_job_config_name = feature_consistency_check_job_config_name
+        # The ID of the feature consistency check job.
         self.feature_consistency_check_job_id = feature_consistency_check_job_id
+        # The end time of the job.
         self.gmt_end_time = gmt_end_time
+        # The start time of the job.
         self.gmt_start_time = gmt_start_time
+        # A list of log entries.
         self.logs = logs
+        # The status of the job. Valid values:
+        # 
+        # - `ToRun`: Waiting to run.
+        # 
+        # - `Running`: In progress.
+        # 
+        # - `Success`: Successful.
+        # 
+        # - `Failure`: Failed.
+        # 
+        # - `Stopped`: Stopped or canceled.
         self.status = status
 
     def validate(self):

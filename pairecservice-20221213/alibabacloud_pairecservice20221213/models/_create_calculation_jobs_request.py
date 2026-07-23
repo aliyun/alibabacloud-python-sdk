@@ -12,12 +12,20 @@ class CreateCalculationJobsRequest(DaraModel):
         instance_id: str = None,
         start_date: str = None,
     ):
+        # A comma-separated list of A/B metric IDs.
+        # 
         # This parameter is required.
         self.abmetric_ids = abmetric_ids
+        # The end date.
+        # 
         # This parameter is required.
         self.end_date = end_date
+        # The instance ID. Call the [ListInstances](https://help.aliyun.com/document_detail/2411819.html) operation to get this ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The start date.
+        # 
         # This parameter is required.
         self.start_date = start_date
 

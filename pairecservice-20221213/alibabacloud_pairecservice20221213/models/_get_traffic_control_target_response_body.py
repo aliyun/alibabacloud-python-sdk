@@ -29,23 +29,41 @@ class GetTrafficControlTargetResponseBody(DaraModel):
         traffic_control_task_id: str = None,
         value: float = None,
     ):
+        # The end time.
         self.end_time = end_time
+        # The event of the control target.
         self.event = event
+        # The time when the traffic control target was created.
         self.gmt_create_time = gmt_create_time
+        # The item condition, specified in an array format.
         self.item_condition_array = item_condition_array
+        # The item condition, specified in an expression format.
         self.item_condition_express = item_condition_express
+        # The item condition type.
         self.item_condition_type = item_condition_type
+        # The name of the traffic control target.
         self.name = name
+        # Indicates whether new product regulation is enabled.
         self.new_product_regulation = new_product_regulation
+        # The name of the recall strategy.
         self.recall_name = recall_name
+        # The request ID.
         self.request_id = request_id
+        # The piecewise control settings.
         self.split_parts = split_parts
+        # The start time.
         self.start_time = start_time
+        # The statistics period.
         self.statis_period = statis_period
+        # The status of the traffic control target.
         self.status = status
+        # The tolerance value.
         self.tolerance_value = tolerance_value
+        # The ID of the traffic control target.
         self.traffic_control_target_id = traffic_control_target_id
+        # The ID of the traffic control task.
         self.traffic_control_task_id = traffic_control_task_id
+        # The value of the control target.
         self.value = value
 
     def validate(self):
@@ -179,8 +197,11 @@ class GetTrafficControlTargetResponseBodySplitParts(DaraModel):
         set_values: List[int] = None,
         time_points: List[int] = None,
     ):
+        # The set points.
         self.set_points = set_points
+        # The set values.
         self.set_values = set_values
+        # The time points.
         self.time_points = time_points
 
     def validate(self):

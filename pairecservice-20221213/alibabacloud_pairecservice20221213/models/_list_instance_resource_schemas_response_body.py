@@ -14,8 +14,11 @@ class ListInstanceResourceSchemasResponseBody(DaraModel):
         schemas: List[main_models.ListInstanceResourceSchemasResponseBodySchemas] = None,
         total_count: int = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The list of schemas.
         self.schemas = schemas
+        # The total count of schemas.
         self.total_count = total_count
 
     def validate(self):
@@ -63,6 +66,7 @@ class ListInstanceResourceSchemasResponseBodySchemas(DaraModel):
         self,
         schema_name: str = None,
     ):
+        # The schema name.
         self.schema_name = schema_name
 
     def validate(self):

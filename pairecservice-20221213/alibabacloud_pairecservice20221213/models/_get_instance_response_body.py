@@ -23,17 +23,29 @@ class GetInstanceResponseBody(DaraModel):
         status: str = None,
         type: str = None,
     ):
+        # The billing method of the instance. The value is fixed as Subscription.
         self.charge_type = charge_type
+        # The commodity code of the instance.
         self.commodity_code = commodity_code
+        # The instance configurations.
         self.config = config
+        # The time when the instance expires.
         self.expired_time = expired_time
+        # The time when the instance was created.
         self.gmt_create_time = gmt_create_time
+        # The time when the instance was last updated.
         self.gmt_modified_time = gmt_modified_time
+        # The instance ID.
         self.instance_id = instance_id
+        # The operating tool configurations.
         self.operating_tool = operating_tool
+        # The region ID. Valid values:<br>● cn-shenzhen: Shenzhen<br>● cn-hangzhou: Hangzhou<br>● cn-beijing: Beijing<br>● cn-shanghai: Shanghai<br><br><br><br>
         self.region_id = region_id
+        # The request ID.
         self.request_id = request_id
+        # The instance status. Valid values:<br>● Initializing<br>● Stopped<br>● Running<br><br><br>
         self.status = status
+        # The instance type. Valid values:<br>● basic: Basic<br>● highlevel: High-level<br>● advanced: Advanced<br>● standard: Standard<br><br><br><br>
         self.type = type
 
     def validate(self):
@@ -132,6 +144,11 @@ class GetInstanceResponseBodyOperatingTool(DaraModel):
         self,
         is_enable: bool = None,
     ):
+        # Indicates whether the operating tool is enabled for the instance. Valid values:
+        # 
+        # - True: Enabled
+        # 
+        # - False: Disabled
         self.is_enable = is_enable
 
     def validate(self):
@@ -161,8 +178,11 @@ class GetInstanceResponseBodyConfig(DaraModel):
         engines: List[main_models.GetInstanceResponseBodyConfigEngines] = None,
         monitors: List[main_models.GetInstanceResponseBodyConfigMonitors] = None,
     ):
+        # The list of modeling environments.
         self.data_managements = data_managements
+        # The list of service engines.
         self.engines = engines
+        # The list of monitoring components.
         self.monitors = monitors
 
     def validate(self):
@@ -230,8 +250,11 @@ class GetInstanceResponseBodyConfigMonitors(DaraModel):
         meta: Dict[str, Any] = None,
         type: str = None,
     ):
+        # The component code.
         self.component_code = component_code
+        # The metadata.
         self.meta = meta
+        # The component type.
         self.type = type
 
     def validate(self):
@@ -273,8 +296,11 @@ class GetInstanceResponseBodyConfigEngines(DaraModel):
         meta: Dict[str, Any] = None,
         type: str = None,
     ):
+        # The component code.
         self.component_code = component_code
+        # The metadata.
         self.meta = meta
+        # The component type.
         self.type = type
 
     def validate(self):
@@ -316,8 +342,11 @@ class GetInstanceResponseBodyConfigDataManagements(DaraModel):
         meta: Dict[str, Any] = None,
         type: str = None,
     ):
+        # The component code.
         self.component_code = component_code
+        # The metadata.
         self.meta = meta
+        # The component type.
         self.type = type
 
     def validate(self):

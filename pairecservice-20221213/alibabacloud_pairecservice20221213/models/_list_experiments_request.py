@@ -12,10 +12,19 @@ class ListExperimentsRequest(DaraModel):
         query: str = None,
         status: str = None,
     ):
+        # The ID of the experiment group.
         self.experiment_group_id = experiment_group_id
+        # The instance ID. You can call the ListInstances operation to obtain the ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The filter parameter for quick search. All experiments that match the names or tags are returned.
         self.query = query
+        # The status of the experiment. Valid values:
+        # 
+        # - Offline
+        # 
+        # - Online
         self.status = status
 
     def validate(self):

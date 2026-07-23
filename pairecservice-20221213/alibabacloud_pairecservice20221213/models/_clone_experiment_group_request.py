@@ -11,10 +11,16 @@ class CloneExperimentGroupRequest(DaraModel):
         instance_id: str = None,
         layer_id: str = None,
     ):
+        # The target environment for the experiment group. ● Daily: Daily environment ● Pre: pre-release environment ● Prod: production environment
+        # 
         # This parameter is required.
         self.environment = environment
+        # The instance ID. You can get this ID by calling the ListInstances operation.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The layer ID. You can get this ID by calling the ListLayers operation.
+        # 
         # This parameter is required.
         self.layer_id = layer_id
 

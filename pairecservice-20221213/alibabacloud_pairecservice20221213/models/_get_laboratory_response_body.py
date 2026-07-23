@@ -22,20 +22,33 @@ class GetLaboratoryResponseBody(DaraModel):
         status: str = None,
         type: str = None,
     ):
+        # The number of buckets.
         self.bucket_count = bucket_count
+        # The bucketing method. Valid values:
         self.bucket_type = bucket_type
+        # The assigned buckets.
         self.buckets = buckets
+        # The crowd ID.
         self.crowd_id = crowd_id
+        # The debug crowd ID.
         self.debug_crowd_id = debug_crowd_id
+        # The debug users.
         self.debug_users = debug_users
+        # The laboratory description.
         self.description = description
+        # The environment. Valid values:
         self.environment = environment
+        # The filter.
         self.filter = filter
+        # The laboratory name.
         self.name = name
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The scene ID.
         self.scene_id = scene_id
+        # The status of the laboratory. Valid values:
         self.status = status
+        # The laboratory type. Valid values:
         self.type = type
 
     def validate(self):

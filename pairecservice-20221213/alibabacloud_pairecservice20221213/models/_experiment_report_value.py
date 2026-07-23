@@ -12,7 +12,9 @@ class ExperimentReportValue(DaraModel):
         baseline: bool = None,
         metric_results: Dict[str, dict] = None,
     ):
+        # Indicates whether the data is from the baseline experiment.
         self.baseline = baseline
+        # The metric results.
         self.metric_results = metric_results
 
     def validate(self):

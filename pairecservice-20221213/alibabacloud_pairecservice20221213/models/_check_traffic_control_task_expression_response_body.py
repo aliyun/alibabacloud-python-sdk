@@ -11,8 +11,11 @@ class CheckTrafficControlTaskExpressionResponseBody(DaraModel):
         reason: str = None,
         request_id: str = None,
     ):
+        # Indicates whether the expression is valid.
         self.is_valie = is_valie
+        # If `IsValid` is `false`, this field provides the reason for the failure.
         self.reason = reason
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

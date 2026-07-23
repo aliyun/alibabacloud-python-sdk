@@ -11,10 +11,16 @@ class UpdateCrowdRequest(DaraModel):
         instance_id: str = None,
         name: str = None,
     ):
+        # The crowd description.
+        # 
         # This parameter is required.
         self.description = description
+        # The instance ID. To obtain this ID, call the ListInstances operation.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The crowd name.
+        # 
         # This parameter is required.
         self.name = name
 

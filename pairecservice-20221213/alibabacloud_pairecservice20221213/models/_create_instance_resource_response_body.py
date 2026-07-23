@@ -10,7 +10,9 @@ class CreateInstanceResourceResponseBody(DaraModel):
         request_id: str = None,
         resource_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The resource ID.
         self.resource_id = resource_id
 
     def validate(self):

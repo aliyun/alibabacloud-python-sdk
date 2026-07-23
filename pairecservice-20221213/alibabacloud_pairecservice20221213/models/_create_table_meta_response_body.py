@@ -10,7 +10,9 @@ class CreateTableMetaResponseBody(DaraModel):
         request_id: str = None,
         table_meta_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The ID of the data table.
         self.table_meta_id = table_meta_id
 
     def validate(self):

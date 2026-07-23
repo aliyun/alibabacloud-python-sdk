@@ -9,6 +9,7 @@ class TerminateFeatureConsistencyCheckJobResponseBody(DaraModel):
         self,
         request_id: str = None,
     ):
+        # The unique ID generated for the request.
         self.request_id = request_id
 
     def validate(self):

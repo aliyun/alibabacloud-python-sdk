@@ -15,13 +15,33 @@ class ListEngineConfigsRequest(DaraModel):
         status: str = None,
         version: str = None,
     ):
+        # The environment. Valid values:
+        # 
+        # - **Daily**: the development and test environment.
+        # 
+        # - **Pre**: the pre-production environment.
+        # 
+        # - **Prod**: the production environment.
         self.environment = environment
+        # The instance ID. To obtain this ID, call the [ListInstances](https://help.aliyun.com/document_detail/2411819.html) operation.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The name of the engine configuration.
         self.name = name
+        # The page number.
         self.page_number = page_number
+        # The page size.
         self.page_size = page_size
+        # The status to filter by. Valid values:
+        # 
+        # - **Released**: returns only released configurations.
+        # 
+        # - **Unreleased**: returns only unreleased configurations.
         self.status = status
+        # The version to filter by.
+        # 
+        # Set this parameter to `latest` to retrieve the most recently updated version.
         self.version = version
 
     def validate(self):

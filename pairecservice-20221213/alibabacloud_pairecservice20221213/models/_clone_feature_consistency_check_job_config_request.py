@@ -9,6 +9,8 @@ class CloneFeatureConsistencyCheckJobConfigRequest(DaraModel):
         self,
         instance_id: str = None,
     ):
+        # The instance ID. To get the ID, call [ListInstances](https://help.aliyun.com/document_detail/2411819.html).
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

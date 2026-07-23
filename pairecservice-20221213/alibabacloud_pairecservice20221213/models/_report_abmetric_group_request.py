@@ -18,19 +18,43 @@ class ReportABMetricGroupRequest(DaraModel):
         start_date: str = None,
         time_statistics_method: str = None,
     ):
+        # The ID of the base experiment.
+        # 
         # This parameter is required.
         self.base_experiment_id = base_experiment_id
+        # The dimension fields.
         self.dimension_fields = dimension_fields
+        # The end date.
         self.end_date = end_date
+        # The ID of the experiment group. You can call the [ListExperimentGroups](https://help.aliyun.com/document_detail/2402573.html) operation to obtain the ID of the experiment group. This parameter is required for offline and real-time reports.
         self.experiment_group_id = experiment_group_id
+        # The IDs of the experiments. You can call the [ListExperiments](https://help.aliyun.com/document_detail/2402582.html) operation to obtain the IDs of the experiments.
+        # 
         # This parameter is required.
         self.experiment_ids = experiment_ids
+        # The instance ID. You can call the [ListInstances](https://help.aliyun.com/document_detail/2411819.html) operation to obtain the instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The type of the report.
+        # 
+        # - Realtime: real-time report.
+        # 
+        # - Offline: offline report.
+        # 
+        # - Market: dashboard report.
+        # 
         # This parameter is required.
         self.report_type = report_type
+        # The ID of the scene. You can call the [ListScenes](https://help.aliyun.com/document_detail/2402581.html) operation to obtain the scene ID.
         self.scene_id = scene_id
+        # The start date.
         self.start_date = start_date
+        # The time statistics method. This parameter is required for real-time reports.
+        # 
+        # - Hour: The statistics are collected by hour.
+        # 
+        # - Day: The statistics are accumulated from 00:00 on the current day.
         self.time_statistics_method = time_statistics_method
 
     def validate(self):

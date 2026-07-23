@@ -10,6 +10,7 @@ class CreateParamResponseBody(DaraModel):
         param_id: int = None,
         request_id: str = None,
     ):
+        # The parameter ID.
         self.param_id = param_id
         # Id of the request
         self.request_id = request_id

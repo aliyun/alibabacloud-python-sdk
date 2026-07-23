@@ -28,22 +28,47 @@ class GetTableMetaResponseBody(DaraModel):
         type: str = None,
         url: str = None,
     ):
+        # Indicates whether the table can be deleted. The value is `false` if other resources reference the table.
         self.can_delete = can_delete
+        # Additional configurations for the table, provided as a JSON string.
         self.config = config
+        # The table description.
         self.description = description
+        # The fields in the table.
         self.fields = fields
+        # The creation time.
         self.gmt_create_time = gmt_create_time
+        # The import time.
         self.gmt_imported_time = gmt_imported_time
+        # The modification time.
         self.gmt_modified_time = gmt_modified_time
+        # The table module. Valid values:
+        # 
+        # - `ABTest`: An A/B testing data table.
+        # 
+        # - `ExperimentTool`: An experiment tool table.
+        # 
+        # - `DataDiagnosis`: A table for data diagnosis.
         self.module = module
+        # The table name.
         self.name = name
+        # The request ID.
         self.request_id = request_id
+        # The resource ID.
         self.resource_id = resource_id
         self.resource_type = resource_type
         self.resource_uri = resource_uri
+        # The table ID.
         self.table_meta_id = table_meta_id
+        # The name of the table in the database.
         self.table_name = table_name
+        # The table type. Valid values:
+        # 
+        # - `MaxCompute`
+        # 
+        # - `Hologres`
         self.type = type
+        # The URL of the table in Data Map. This parameter is returned only for MaxCompute tables.
         self.url = url
 
     def validate(self):
@@ -178,9 +203,13 @@ class GetTableMetaResponseBodyFields(DaraModel):
         name: str = None,
         type: str = None,
     ):
+        # Whether the field is a dimension field.
         self.is_dimension_field = is_dimension_field
+        # The field meaning.
         self.meaning = meaning
+        # The field name.
         self.name = name
+        # The field type.
         self.type = type
 
     def validate(self):

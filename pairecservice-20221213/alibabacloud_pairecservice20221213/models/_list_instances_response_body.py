@@ -14,8 +14,11 @@ class ListInstancesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # A list of instances.
         self.instances = instances
+        # The request ID.
         self.request_id = request_id
+        # The total number of returned instances.
         self.total_count = total_count
 
     def validate(self):
@@ -73,16 +76,49 @@ class ListInstancesResponseBodyInstances(DaraModel):
         status: str = None,
         type: str = None,
     ):
+        # The billing method of the instance. Only `Subscription` (prepaid) is supported.
         self.charge_type = charge_type
+        # The commodity code of the instance.
         self.commodity_code = commodity_code
+        # The instance configuration.
         self.config = config
+        # The time when the instance expires.
         self.expired_time = expired_time
+        # The time when the instance was created.
         self.gmt_create_time = gmt_create_time
+        # The time when the instance was last modified.
         self.gmt_modified_time = gmt_modified_time
+        # The instance ID.
         self.instance_id = instance_id
+        # The configuration of the operating tool.
         self.operating_tool = operating_tool
+        # The region ID. Valid values:
+        # 
+        # - `cn-shenzhen`: China (Shenzhen)
+        # 
+        # - `cn-hangzhou`: China (Hangzhou)
+        # 
+        # - `cn-beijing`: China (Beijing)
+        # 
+        # - `cn-shanghai`: China (Shanghai)
         self.region_id = region_id
+        # The instance status. Valid values:
+        # 
+        # - `Initializing`: The instance is initializing.
+        # 
+        # - `Stopped`: The instance is stopped.
+        # 
+        # - `Running`: The instance is running.
         self.status = status
+        # The instance type. Valid values:
+        # 
+        # - `basic`: Basic Edition
+        # 
+        # - `high-level`: High-level Edition
+        # 
+        # - `advanced`: Advanced Edition
+        # 
+        # - `standard`: Standard Edition
         self.type = type
 
     def validate(self):
@@ -175,6 +211,11 @@ class ListInstancesResponseBodyInstancesOperatingTool(DaraModel):
         self,
         is_enable: bool = None,
     ):
+        # Specifies whether the operating tool is enabled for the instance. Valid values:
+        # 
+        # - `true`: The tool is enabled.
+        # 
+        # - `false`: The tool is disabled.
         self.is_enable = is_enable
 
     def validate(self):
@@ -204,8 +245,11 @@ class ListInstancesResponseBodyInstancesConfig(DaraModel):
         engines: List[main_models.ListInstancesResponseBodyInstancesConfigEngines] = None,
         monitors: List[main_models.ListInstancesResponseBodyInstancesConfigMonitors] = None,
     ):
+        # A list of data management configurations.
         self.data_managements = data_managements
+        # A list of service engines.
         self.engines = engines
+        # A list of monitoring components.
         self.monitors = monitors
 
     def validate(self):
@@ -273,8 +317,11 @@ class ListInstancesResponseBodyInstancesConfigMonitors(DaraModel):
         meta: Dict[str, Any] = None,
         type: str = None,
     ):
+        # The component code.
         self.component_code = component_code
+        # The metadata of the component.
         self.meta = meta
+        # The component type.
         self.type = type
 
     def validate(self):
@@ -316,8 +363,11 @@ class ListInstancesResponseBodyInstancesConfigEngines(DaraModel):
         meta: Dict[str, Any] = None,
         type: str = None,
     ):
+        # The component code.
         self.component_code = component_code
+        # The metadata of the component.
         self.meta = meta
+        # The component type.
         self.type = type
 
     def validate(self):
@@ -359,8 +409,11 @@ class ListInstancesResponseBodyInstancesConfigDataManagements(DaraModel):
         meta: Dict[str, Any] = None,
         type: str = None,
     ):
+        # The component code.
         self.component_code = component_code
+        # The metadata of the component.
         self.meta = meta
+        # The component type.
         self.type = type
 
     def validate(self):

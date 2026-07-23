@@ -20,20 +20,46 @@ class UpdateDataDiagnosisRequest(DaraModel):
         top_nquantity: int = None,
         type: str = None,
     ):
+        # The configuration of the data diagnosis task, provided as a JSON string. The required fields vary based on the `Type` parameter. For `ChangeRate`, specify `AnalysisField` and `PartitionFieldFormat`. For `PreferenceStatisticsCycle`, specify `UserIdField`, `RemainDays`, `EverAppearedDays`, `RemainRatePeriods`, and `PartitionFieldFormat`. For `JoinTables`, specify `LeftTableAnalysisField`, `RightTableAnalysisField`, `LeftJoinField`, `RightJoinField`, `SampleQuantity`, `LeftTablePartitionFieldFormat`, and `RightTablePartitionFieldFormat`. For `BaseStatistics`, specify `TagField`, `TagFieldSeparator`, `KVField`, `KVFieldSeparator`, `KVPairSeparator`, `TextField`, `Quantiles`, `DefaultValueOfString`, `NullStringField`, and `PartitionFieldFormat`. For `AbnormalBehavior`, specify `UserId`, `ItemId`, `EventField`, `UpStreamBehavior`, `DownstreamBehavior`, `NumericHistogramBins`, and `PartitionFieldFormat`.
+        # 
         # This parameter is required.
         self.config = config
+        # The execution time for periodic runs. If this field is omitted, the task does not run periodically.
         self.cycle_time = cycle_time
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the left data table.
         self.left_table_meta_id = left_table_meta_id
+        # The partition field of the left table.
         self.left_table_partition_field = left_table_partition_field
+        # The name of the data diagnosis task.
+        # 
         # This parameter is required.
         self.name = name
+        # The partition field.
         self.partition_field = partition_field
+        # The ID of the right data table.
         self.right_table_meta_id = right_table_meta_id
+        # The partition field of the right table.
         self.right_table_partition_field = right_table_partition_field
+        # The ID of the data table.
         self.table_meta_id = table_meta_id
+        # The number of top-ranked results to return.
         self.top_nquantity = top_nquantity
+        # The type of the data diagnosis task. Valid values:
+        # 
+        # - `ChangeRate`: item/user change rate analysis.
+        # 
+        # - `PreferenceStatisticsCycle`: user preference statistics cycle analysis.
+        # 
+        # - `JoinTables`: two-table join analysis.
+        # 
+        # - `BaseStatistics`: basic statistical analysis.
+        # 
+        # - `AbnormalBehavior`: abnormal behavior analysis.
+        # 
         # This parameter is required.
         self.type = type
 

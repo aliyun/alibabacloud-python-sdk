@@ -9,6 +9,8 @@ class DeleteCrowdRequest(DaraModel):
         self,
         instance_id: str = None,
     ):
+        # Instance ID, which can be obtained by calling the ListInstances API.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

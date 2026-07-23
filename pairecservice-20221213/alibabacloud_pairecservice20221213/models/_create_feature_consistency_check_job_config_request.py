@@ -34,6 +34,7 @@ class CreateFeatureConsistencyCheckJobConfigRequest(DaraModel):
         item_table: str = None,
         item_table_partition_field: str = None,
         item_table_partition_field_format: str = None,
+        maxcompute_schema: str = None,
         name: str = None,
         oss_resource_id: str = None,
         predict_worker_count: int = None,
@@ -54,62 +55,133 @@ class CreateFeatureConsistencyCheckJobConfigRequest(DaraModel):
         workflow_name: str = None,
         workspace_id: str = None,
     ):
+        # Specifies whether to compare features.
+        # 
         # This parameter is required.
         self.compare_feature = compare_feature
+        # The dataset ID.
         self.dataset_id = dataset_id
+        # The dataset mount path.
         self.dataset_mount_path = dataset_mount_path
+        # The dataset name.
         self.dataset_name = dataset_name
+        # The dataset type.
         self.dataset_type = dataset_type
+        # The dataset URI.
         self.dataset_uri = dataset_uri
+        # The default route.
         self.default_route = default_route
+        # The name of the PAI-EAS service. To obtain this name, see [ListServices](https://help.aliyun.com/document_detail/412109.html).
+        # 
         # This parameter is required.
         self.eas_service_name = eas_service_name
+        # The path of the OSS bucket where the EasyRec package is stored.
         self.easy_rec_package_path = easy_rec_package_path
+        # The EasyRec version.
         self.easy_rec_version = easy_rec_version
+        # The features to exclude from the display. Use a comma (,) to separate multiple features.
         self.feature_display_exclude = feature_display_exclude
+        # The ID of the data source where the feature data is saved.
+        # 
         # This parameter is required.
         self.feature_landing_resource_id = feature_landing_resource_id
+        # The feature priority. Use a comma (,) to separate multiple features.
         self.feature_priority = feature_priority
+        # The primary key for the item side in the feature store.
         self.feature_store_item_id = feature_store_item_id
+        # The feature store model ID.
         self.feature_store_model_id = feature_store_model_id
+        # The feature store project ID.
         self.feature_store_project_id = feature_store_project_id
+        # The feature store project name.
         self.feature_store_project_name = feature_store_project_name
+        # The name of the feature view that contains the item features within sequence features.
         self.feature_store_seq_feature_view = feature_store_seq_feature_view
+        # The primary key for the user side in the feature store.
         self.feature_store_user_id = feature_store_user_id
+        # The `fg_jar` version.
         self.fg_jar_version = fg_jar_version
+        # The name of the `fg_json` file.
+        # 
         # This parameter is required.
         self.fg_json_file_name = fg_json_file_name
+        # Specifies whether to generate a ZIP package.
+        # 
         # This parameter is required.
         self.generate_zip = generate_zip
+        # The instance ID. To obtain this ID, see [ListInstances](https://help.aliyun.com/document_detail/2411819.html).
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The name of the `item_id` field.
         self.item_id_field = item_id_field
+        # The name of the item table.
         self.item_table = item_table
+        # The partition field of the item table.
         self.item_table_partition_field = item_table_partition_field
+        # The format of the partition field in the item table. Valid values:
+        # 
+        # - `yyyymmdd`
+        # 
+        # - `yyyy-mm-dd`
         self.item_table_partition_field_format = item_table_partition_field_format
+        # The schema of the MaxCompute project.
+        self.maxcompute_schema = maxcompute_schema
+        # The name of the feature consistency check.
+        # 
         # This parameter is required.
         self.name = name
+        # The OSS data source ID.
         self.oss_resource_id = oss_resource_id
+        # The number of prediction workers.
         self.predict_worker_count = predict_worker_count
+        # The number of CPU cores for each prediction worker.
         self.predict_worker_cpu = predict_worker_cpu
+        # The memory size for each prediction worker, in megabytes (MB).
         self.predict_worker_memory = predict_worker_memory
+        # The resource configuration.
         self.resource_config = resource_config
+        # The sample rate. The value must be between 0 and 1, inclusive.
+        # 
         # This parameter is required.
         self.sample_rate = sample_rate
+        # The scene ID.
+        # 
         # This parameter is required.
         self.scene_id = scene_id
+        # The security group ID.
         self.security_group_id = security_group_id
+        # The service ID.
+        # 
         # This parameter is required.
         self.service_id = service_id
+        # The vSwitch ID.
         self.switch_id = switch_id
+        # Specifies whether to use a feature store. Valid values:
+        # 
+        # - `true`: Use a feature store. The `FeatureStoreProjectId`, `FeatureStoreProjectName`, `FeatureStoreModelId`, `FeatureStoreUserId`, and `FeatureStoreItemId` parameters are required.
+        # 
+        # - `false`: Do not use a feature store. The `UserTable`, `UserIdField`, `UserTablePartitionField`, `UserTablePartitionFieldFormat`, `ItemTable`, `ItemIdField`, `ItemTablePartitionField`, and `ItemTablePartitionFieldFormat` parameters are required.
+        # 
         # This parameter is required.
         self.use_feature_store = use_feature_store
+        # The name of the `user_id` field.
         self.user_id_field = user_id_field
+        # The name of the user table.
         self.user_table = user_table
+        # The partition field of the user table.
         self.user_table_partition_field = user_table_partition_field
+        # The format of the partition field in the user table. Valid values:
+        # 
+        # - `yyyymmdd`
+        # 
+        # - `yyyy-mm-dd`
         self.user_table_partition_field_format = user_table_partition_field_format
+        # The VPC ID.
         self.vpc_id = vpc_id
+        # The workflow name.
         self.workflow_name = workflow_name
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -200,6 +272,9 @@ class CreateFeatureConsistencyCheckJobConfigRequest(DaraModel):
 
         if self.item_table_partition_field_format is not None:
             result['ItemTablePartitionFieldFormat'] = self.item_table_partition_field_format
+
+        if self.maxcompute_schema is not None:
+            result['MaxcomputeSchema'] = self.maxcompute_schema
 
         if self.name is not None:
             result['Name'] = self.name
@@ -342,6 +417,9 @@ class CreateFeatureConsistencyCheckJobConfigRequest(DaraModel):
 
         if m.get('ItemTablePartitionFieldFormat') is not None:
             self.item_table_partition_field_format = m.get('ItemTablePartitionFieldFormat')
+
+        if m.get('MaxcomputeSchema') is not None:
+            self.maxcompute_schema = m.get('MaxcomputeSchema')
 
         if m.get('Name') is not None:
             self.name = m.get('Name')

@@ -12,12 +12,20 @@ class CreateLayerRequest(DaraModel):
         laboratory_id: str = None,
         name: str = None,
     ):
+        # The description of the layer.
+        # 
         # This parameter is required.
         self.description = description
+        # The ID of the instance. Call the `ListInstances` operation to obtain this value.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the laboratory. Call the `ListLaboratories` operation to obtain this value.
+        # 
         # This parameter is required.
         self.laboratory_id = laboratory_id
+        # The name of the layer.
+        # 
         # This parameter is required.
         self.name = name
 

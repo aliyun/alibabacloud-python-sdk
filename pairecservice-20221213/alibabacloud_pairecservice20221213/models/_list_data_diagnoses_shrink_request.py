@@ -12,10 +12,15 @@ class ListDataDiagnosesShrinkRequest(DaraModel):
         page_size: int = None,
         types_shrink: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The page number.
         self.page_number = page_number
+        # The page size.
         self.page_size = page_size
+        # A list of diagnosis types.
         self.types_shrink = types_shrink
 
     def validate(self):

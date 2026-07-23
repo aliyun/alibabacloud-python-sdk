@@ -13,11 +13,15 @@ class GetSubCrowdResponseBody(DaraModel):
         source: str = None,
         users: str = None,
     ):
+        # The time when the sub-crowd was created.
         self.gmt_create_time = gmt_create_time
+        # The number of users in the sub-crowd.
         self.quantity = quantity
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The source of the sub-crowd. Valid values:
         self.source = source
+        # The users in the sub-crowd.
         self.users = users
 
     def validate(self):

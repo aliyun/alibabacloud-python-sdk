@@ -16,10 +16,15 @@ class ListRecallManagementTablesResponseBody(DaraModel):
         request_id: str = None,
         total_count: str = None,
     ):
+        # This parameter is reserved for future use.
         self.max_results = max_results
+        # This parameter is reserved for future use.
         self.next_token = next_token
+        # A list of recall management tables.
         self.recall_management_tables = recall_management_tables
+        # The request ID.
         self.request_id = request_id
+        # The total number of recall management tables.
         self.total_count = total_count
 
     def validate(self):
@@ -93,21 +98,35 @@ class ListRecallManagementTablesResponseBodyRecallManagementTables(DaraModel):
         recall_type: str = None,
         type: str = None,
     ):
+        # Indicates whether the table can be deleted.
         self.can_delete = can_delete
+        # The data source.
         self.data_source = data_source
+        # The description of the recall management table.
         self.description = description
+        # The time when the table was created. The time is in the ISO 8601 format.
         self.gmt_create_time = gmt_create_time
+        # The time when the table was last modified. The time is in the ISO 8601 format.
         self.gmt_modified_time = gmt_modified_time
+        # The time when the index takes effect. The time is in the ISO 8601 format.
         self.index_effective_time = index_effective_time
+        # The ID of the index version.
         self.index_version_id = index_version_id
+        # The name of the MaxCompute project.
         self.maxcompute_project_name = maxcompute_project_name
-        # maxcompute schema。
+        # The schema of the MaxCompute table.
         self.maxcompute_schema = maxcompute_schema
+        # The name of the table in MaxCompute.
         self.maxcompute_table_name = maxcompute_table_name
+        # The name of the recall management table.
         self.name = name
+        # The partition fields of the table.
         self.partition_fields = partition_fields
+        # The ID of the recall management table.
         self.recall_management_table_id = recall_management_table_id
+        # The recall type of the table.
         self.recall_type = recall_type
+        # The type of the table.
         self.type = type
 
     def validate(self):

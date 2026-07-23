@@ -10,8 +10,9 @@ class CloneExperimentResponseBody(DaraModel):
         experiment_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the cloned experiment.
         self.experiment_id = experiment_id
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

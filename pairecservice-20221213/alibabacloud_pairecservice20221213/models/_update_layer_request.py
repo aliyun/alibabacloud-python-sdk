@@ -11,10 +11,16 @@ class UpdateLayerRequest(DaraModel):
         instance_id: str = None,
         name: str = None,
     ):
+        # The layer description.
+        # 
         # This parameter is required.
         self.description = description
+        # The instance ID. You can obtain this ID by calling the ListInstances operation.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The layer name.
+        # 
         # This parameter is required.
         self.name = name
 

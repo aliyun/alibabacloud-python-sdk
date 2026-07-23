@@ -16,17 +16,45 @@ class QueryTrafficControlTaskDeployResultResponseBody(DaraModel):
         request_id: str = None,
         start_message: str = None,
         start_status: str = None,
+        stop_message: str = None,
+        stop_status: str = None,
         traffic_control_task_id: str = None,
     ):
+        # The message returned for the Flink platform deployment operation.
         self.deploy_message = deploy_message
+        # The status of deploying the draft. Valid values:
+        # - Failed: failed.
+        # - Running: running.
+        # - Success: succeeded.
         self.deploy_status = deploy_status
+        # The message returned for pushing the draft to Flink.
         self.draft_message = draft_message
+        # The status of pushing the draft to Flink. Valid values:
+        # - Failed: failed.
+        # - Running: running.
+        # - Success: succeeded.
         self.draft_status = draft_status
+        # The message returned for the preparation phase.
         self.prepare_message = prepare_message
+        # The status of the preparation phase. Valid values:
+        # - Failed: failed.
+        # - Running: running.
+        # - Success: succeeded.
         self.prepare_status = prepare_status
+        # The request ID.
         self.request_id = request_id
+        # The message returned for starting the Flink task.
         self.start_message = start_message
+        # The status of starting the Flink task. Valid values:
+        # - Failed: failed.
+        # - Running: running.
+        # - Success: succeeded.
         self.start_status = start_status
+        # The stop details.
+        self.stop_message = stop_message
+        # The stop status.
+        self.stop_status = stop_status
+        # The traffic control task ID.
         self.traffic_control_task_id = traffic_control_task_id
 
     def validate(self):
@@ -64,6 +92,12 @@ class QueryTrafficControlTaskDeployResultResponseBody(DaraModel):
         if self.start_status is not None:
             result['StartStatus'] = self.start_status
 
+        if self.stop_message is not None:
+            result['StopMessage'] = self.stop_message
+
+        if self.stop_status is not None:
+            result['StopStatus'] = self.stop_status
+
         if self.traffic_control_task_id is not None:
             result['TrafficControlTaskId'] = self.traffic_control_task_id
 
@@ -97,6 +131,12 @@ class QueryTrafficControlTaskDeployResultResponseBody(DaraModel):
 
         if m.get('StartStatus') is not None:
             self.start_status = m.get('StartStatus')
+
+        if m.get('StopMessage') is not None:
+            self.stop_message = m.get('StopMessage')
+
+        if m.get('StopStatus') is not None:
+            self.stop_status = m.get('StopStatus')
 
         if m.get('TrafficControlTaskId') is not None:
             self.traffic_control_task_id = m.get('TrafficControlTaskId')

@@ -14,8 +14,11 @@ class ListABMetricsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of AB metrics.
         self.abmetrics = abmetrics
+        # The request ID.
         self.request_id = request_id
+        # The total number of AB metrics returned.
         self.total_count = total_count
 
     def validate(self):
@@ -82,25 +85,61 @@ class ListABMetricsResponseBodyABMetrics(DaraModel):
         table_meta_id: str = None,
         type: str = None,
     ):
+        # The AB metric ID.
         self.abmetric_id = abmetric_id
+        # Indicates whether to aggregate data by user.
         self.aggregation_by_user = aggregation_by_user
+        # The metric definition.
         self.definition = definition
+        # The denominator of the derived metric.
         self.denominator = denominator
+        # The metric description.
         self.description = description
+        # Indicates whether the metric follows a binomial distribution.
         self.is_binomial_distribution = is_binomial_distribution
+        # The ID of the left-hand metric in the formula for the derived metric.
         self.left_metric_id = left_metric_id
+        # The metric name.
         self.name = name
+        # Indicates whether significance calculation is required.
         self.need_significance = need_significance
+        # The numerator of the derived metric.
         self.numerator = numerator
+        # The operator used to calculate the derived metric. Valid values:
+        # 
+        # - `Plus`: addition
+        # 
+        # - `Minus`: subtraction
+        # 
+        # - `Multiplication`: multiplication
+        # 
+        # - `Division`: division
         self.operator = operator
+        # Indicates whether the metric is a real-time metric.
+        # 
+        # - `true`: The metric is calculated in real time.
+        # 
+        # - `false`: The metric is not calculated in real time.
         self.realtime = realtime
+        # The ID of the data source for the data table to which the results are written.
         self.result_resource_id = result_resource_id
+        # The ID of the data table to which the results are written.
         self.result_table_meta_id = result_table_meta_id
+        # The ID of the right-hand metric in the formula for the derived metric.
         self.right_metric_id = right_metric_id
+        # The scene ID.
         self.scene_id = scene_id
+        # The scene name.
         self.scene_name = scene_name
+        # The statistical period.
         self.statistics_cycle = statistics_cycle
+        # The data table ID.
         self.table_meta_id = table_meta_id
+        # The metric type. Valid values:
+        # 
+        # - `Single`: a single metric.
+        # 
+        # - `Derived`: a derived metric.
         self.type = type
 
     def validate(self):

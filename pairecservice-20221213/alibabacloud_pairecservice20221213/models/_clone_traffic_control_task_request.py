@@ -9,6 +9,7 @@ class CloneTrafficControlTaskRequest(DaraModel):
         self,
         instance_id: str = None,
     ):
+        # Instance ID.
         self.instance_id = instance_id
 
     def validate(self):

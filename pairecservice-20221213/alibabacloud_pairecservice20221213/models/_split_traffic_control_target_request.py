@@ -15,10 +15,19 @@ class SplitTrafficControlTargetRequest(DaraModel):
         set_values: List[int] = None,
         time_points: List[int] = None,
     ):
+        # The environment. Valid values:
+        # 
+        # - `Pre`: pre-production environment.
+        # 
+        # - `Prod`: production environment.
         self.environment = environment
+        # The instance ID. For information about how to obtain the instance ID, see [ListInstances](https://help.aliyun.com/document_detail/2411819.html).
         self.instance_id = instance_id
+        # This parameter is deprecated.
         self.set_points = set_points
+        # The target values that correspond to the time intervals defined by the `TimePoints` parameter.
         self.set_values = set_values
+        # The time points that define the traffic-splitting intervals.
         self.time_points = time_points
 
     def validate(self):

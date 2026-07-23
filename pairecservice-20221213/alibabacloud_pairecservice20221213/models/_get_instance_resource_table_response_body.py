@@ -14,8 +14,11 @@ class GetInstanceResourceTableResponseBody(DaraModel):
         request_id: str = None,
         table_name: str = None,
     ):
+        # The list of fields in the data table.
         self.fields = fields
+        # The request ID.
         self.request_id = request_id
+        # The table name.
         self.table_name = table_name
 
     def validate(self):
@@ -67,10 +70,15 @@ class GetInstanceResourceTableResponseBodyFields(DaraModel):
         name: str = None,
         type: str = None,
     ):
+        # Indicates whether the field is a dimension field.
         self.is_dimension_field = is_dimension_field
+        # Indicates whether the field is a partition field.
         self.is_partition_field = is_partition_field
+        # The meaning of the field.
         self.meaning = meaning
+        # The field name.
         self.name = name
+        # The field type.
         self.type = type
 
     def validate(self):

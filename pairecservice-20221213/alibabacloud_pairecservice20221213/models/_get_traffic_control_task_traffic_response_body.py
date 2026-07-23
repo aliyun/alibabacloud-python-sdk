@@ -13,7 +13,9 @@ class GetTrafficControlTaskTrafficResponseBody(DaraModel):
         request_id: str = None,
         traffic_control_task_traffic_info: main_models.GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfo = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # Details of the reported traffic data.
         self.traffic_control_task_traffic_info = traffic_control_task_traffic_info
 
     def validate(self):
@@ -50,7 +52,9 @@ class GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfo(Dara
         target_traffics: List[main_models.GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfoTargetTraffics] = None,
         task_traffics: Dict[str, main_models.TrafficControlTaskTrafficInfoTaskTrafficsValue] = None,
     ):
+        # The traffic data for each traffic control target.
         self.target_traffics = target_traffics
+        # The reported traffic data for the traffic control task.
         self.task_traffics = task_traffics
 
     def validate(self):
@@ -102,7 +106,9 @@ class GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfoTarge
         data: Dict[str, main_models.TrafficControlTaskTrafficInfoTargetTrafficsDataValue] = None,
         traffic_contorl_target_id: str = None,
     ):
+        # The detailed data reported for this traffic control target.
         self.data = data
+        # The traffic control target ID.
         self.traffic_contorl_target_id = traffic_contorl_target_id
 
     def validate(self):

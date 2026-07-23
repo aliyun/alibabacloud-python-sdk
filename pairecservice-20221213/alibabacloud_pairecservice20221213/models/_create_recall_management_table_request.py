@@ -28,23 +28,41 @@ class CreateRecallManagementTableRequest(DaraModel):
         recall_type: str = None,
         type: str = None,
     ):
+        # Additional settings for the table.
         self.config = config
+        # The data source.
         self.data_source = data_source
+        # **The description of the table.**
         self.description = description
+        # Whether to enable the data size fluctuation threshold.
         self.enable_data_size_fluctuation_threshold = enable_data_size_fluctuation_threshold
+        # Whether to enable the row count fluctuation threshold.
         self.enable_row_count_fluctuation_threshold = enable_row_count_fluctuation_threshold
+        # The list of fields.
         self.fields = fields
+        # **The instance ID.**
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The maximum data size fluctuation threshold.
         self.max_data_size_fluctuation_threshold = max_data_size_fluctuation_threshold
+        # The maximum row count fluctuation threshold.
         self.max_row_count_fluctuation_threshold = max_row_count_fluctuation_threshold
+        # The MaxCompute project.
         self.maxcompute_project_name = maxcompute_project_name
+        # **The schema in MaxCompute.**
         self.maxcompute_schema = maxcompute_schema
+        # The name of the table in MaxCompute.
         self.maxcompute_table_name = maxcompute_table_name
+        # The minimum data size fluctuation threshold.
         self.min_data_size_fluctuation_threshold = min_data_size_fluctuation_threshold
+        # The minimum row count fluctuation threshold.
         self.min_row_count_fluctuation_threshold = min_row_count_fluctuation_threshold
+        # **The name of the table.**
         self.name = name
+        # The recall type of the table.
         self.recall_type = recall_type
+        # **The table type.**
         self.type = type
 
     def validate(self):
@@ -180,10 +198,25 @@ class CreateRecallManagementTableRequestFields(DaraModel):
         vector_dimension: int = None,
         vector_metric_type: str = None,
     ):
+        # The attributes of the field. Valid values:
+        # 
+        # - `Primary`: The primary key field.
+        # 
+        # - `Item`: The item field.
+        # 
+        # - `Score`: The recall score field.
+        # 
+        # - `Vector`: The vector field.
+        # 
+        # - `Index`: The index field.
         self.attributes = attributes
+        # The name of the field.
         self.name = name
+        # The data type of the field.
         self.type = type
+        # The vector dimension.
         self.vector_dimension = vector_dimension
+        # The vector metric type.
         self.vector_metric_type = vector_metric_type
 
     def validate(self):

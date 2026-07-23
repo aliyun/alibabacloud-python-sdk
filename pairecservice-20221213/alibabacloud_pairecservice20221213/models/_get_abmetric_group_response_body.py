@@ -16,13 +16,21 @@ class GetABMetricGroupResponseBody(DaraModel):
         request_id: str = None,
         scene_id: str = None,
     ):
+        # A comma-separated list of A/B testing metric IDs.
         self.abmetric_ids = abmetric_ids
+        # A comma-separated list of A/B testing metric names.
         self.abmetric_names = abmetric_names
+        # The metric group description.
         self.description = description
+        # The metric group name.
         self.name = name
+        # The owner.
         self.owner = owner
+        # Whether the metric group is a real-time metric group.
         self.realtime = realtime
+        # The request ID.
         self.request_id = request_id
+        # The scene ID. You can get this ID by calling the [ListScenes](https://icms.alibaba-inc.com/content/learn/pai?l=1\\&m=16768\\&n=4298955) operation.
         self.scene_id = scene_id
 
     def validate(self):

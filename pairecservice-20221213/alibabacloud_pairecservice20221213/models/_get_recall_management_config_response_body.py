@@ -14,9 +14,11 @@ class GetRecallManagementConfigResponseBody(DaraModel):
         request_id: str = None,
         user_name: str = None,
     ):
+        # The network configuration information.
         self.network_configs = network_configs
         # Id of the request
         self.request_id = request_id
+        # The username.
         self.user_name = user_name
 
     def validate(self):
@@ -69,11 +71,27 @@ class GetRecallManagementConfigResponseBodyNetworkConfigs(DaraModel):
         vpc_id: str = None,
         vswitch_ids: Dict[str, str] = None,
     ):
+        # The private endpoint.
         self.private_link_address = private_link_address
+        # The public endpoint.
         self.public_endpoint = public_endpoint
+        # The network connectivity status. Valid values:
+        # 
+        # - Connecting: connecting.
+        # 
+        # - Connected: connected.
+        # 
+        # - ConnectionFailed: connection failed.
+        # 
+        # - Updating: updating.
+        # 
+        # - UpdateFailed: update failed.
         self.status = status
+        # The public network connection token.
         self.token = token
+        # The virtual private cloud (VPC) ID.
         self.vpc_id = vpc_id
+        # The zones.
         self.vswitch_ids = vswitch_ids
 
     def validate(self):

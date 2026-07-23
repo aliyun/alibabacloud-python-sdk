@@ -13,10 +13,20 @@ class CreateEngineConfigRequest(DaraModel):
         instance_id: str = None,
         name: str = None,
     ):
+        # The content of the engine config.
         self.config_value = config_value
         self.description = description
+        # The environment. Valid values:
+        # 
+        # - `Daily`: The daily environment.
+        # 
+        # - `Pre`: The pre-production environment.
+        # 
+        # - `Prod`: The production environment.
         self.environment = environment
+        # The ID of the instance. You can obtain this ID by calling the [ListInstances](https://help.aliyun.com/document_detail/2411819.html) operation.
         self.instance_id = instance_id
+        # The name of the engine config.
         self.name = name
 
     def validate(self):

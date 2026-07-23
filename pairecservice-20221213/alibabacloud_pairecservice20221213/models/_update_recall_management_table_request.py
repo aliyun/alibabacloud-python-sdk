@@ -20,15 +20,25 @@ class UpdateRecallManagementTableRequest(DaraModel):
         min_data_size_fluctuation_threshold: int = None,
         min_row_count_fluctuation_threshold: int = None,
     ):
+        # Specifies whether to enable the data size fluctuation threshold.
         self.enable_data_size_fluctuation_threshold = enable_data_size_fluctuation_threshold
+        # Specifies whether to enable the row count fluctuation threshold.
         self.enable_row_count_fluctuation_threshold = enable_row_count_fluctuation_threshold
+        # A list of fields.
         self.fields = fields
+        # The version ID of the table.
         self.index_version_id = index_version_id
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The maximum value for the data size fluctuation threshold.
         self.max_data_size_fluctuation_threshold = max_data_size_fluctuation_threshold
+        # The maximum value for the row count fluctuation threshold.
         self.max_row_count_fluctuation_threshold = max_row_count_fluctuation_threshold
+        # The minimum value for the data size fluctuation threshold.
         self.min_data_size_fluctuation_threshold = min_data_size_fluctuation_threshold
+        # The minimum value for the row count fluctuation threshold.
         self.min_row_count_fluctuation_threshold = min_row_count_fluctuation_threshold
 
     def validate(self):
@@ -110,10 +120,25 @@ class UpdateRecallManagementTableRequestFields(DaraModel):
         vector_dimension: int = None,
         vector_metric_type: str = None,
     ):
+        # Specifies the role of the field. Valid values:
+        # 
+        # - `Primary`: The primary key field.
+        # 
+        # - `Item`: The item field.
+        # 
+        # - `Score`: The recall score field.
+        # 
+        # - `Vector`: The vector field.
+        # 
+        # - `Index`: The index field.
         self.attributes = attributes
+        # The field name.
         self.name = name
+        # The data type of the field.
         self.type = type
+        # The vector dimension.
         self.vector_dimension = vector_dimension
+        # The vector metric type.
         self.vector_metric_type = vector_metric_type
 
     def validate(self):

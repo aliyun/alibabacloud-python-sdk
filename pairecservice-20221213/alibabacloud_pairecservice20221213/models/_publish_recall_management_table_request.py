@@ -15,11 +15,19 @@ class PublishRecallManagementTableRequest(DaraModel):
         partitions: Dict[str, str] = None,
         skip_threshold_check: bool = None,
     ):
+        # **The instance ID.**
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # **The synchronization mode.** Valid values:
+        # 
+        # - `Merge`: Adds new data and updates existing data.
         self.mode = mode
+        # The table partitions to publish.
         self.partition = partition
+        # The table partitions to publish.
         self.partitions = partitions
+        # **Specifies whether to skip the threshold check during table synchronization.**
         self.skip_threshold_check = skip_threshold_check
 
     def validate(self):

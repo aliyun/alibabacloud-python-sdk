@@ -11,10 +11,16 @@ class CloneLaboratoryRequest(DaraModel):
         environment: str = None,
         instance_id: str = None,
     ):
+        # Specifies whether to clone the experiment groups.
+        # 
         # This parameter is required.
         self.clone_experiment_group = clone_experiment_group
+        # The destination environment. Valid values: Daily, Pre (pre-release), and Prod (production).
+        # 
         # This parameter is required.
         self.environment = environment
+        # The instance ID. To obtain this ID, call the `ListInstances` operation.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

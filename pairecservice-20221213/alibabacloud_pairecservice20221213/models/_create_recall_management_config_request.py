@@ -15,9 +15,13 @@ class CreateRecallManagementConfigRequest(DaraModel):
         password: str = None,
         user_name: str = None,
     ):
+        # **The instance ID.**
         self.instance_id = instance_id
+        # **The network configurations.**
         self.network_configs = network_configs
+        # **The password.**
         self.password = password
+        # **The user name.**
         self.user_name = user_name
 
     def validate(self):
@@ -72,8 +76,9 @@ class CreateRecallManagementConfigRequestNetworkConfigs(DaraModel):
         v_switch_ids: Dict[str, str] = None,
         vpc_id: str = None,
     ):
+        # A map of availability zones to VSwitch IDs.
         self.v_switch_ids = v_switch_ids
-        # Vpc id
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):

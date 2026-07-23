@@ -14,8 +14,11 @@ class ListEngineConfigsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # A list of engine configurations.
         self.engine_configs = engine_configs
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -72,15 +75,35 @@ class ListEngineConfigsResponseBodyEngineConfigs(DaraModel):
         status: str = None,
         version: str = None,
     ):
+        # The content of the engine configuration.
         self.config_value = config_value
+        # The description of the engine configuration.
         self.description = description
+        # The ID of the engine configuration.
         self.engine_config_id = engine_config_id
+        # The environment. Valid values:
+        # 
+        # - **Daily**: the development and test environment.
+        # 
+        # - **Pre**: the pre-production environment.
+        # 
+        # - **Prod**: the production environment.
         self.environment = environment
+        # The creation time.
         self.gmt_create_time = gmt_create_time
+        # The modification time.
         self.gmt_modified_time = gmt_modified_time
+        # The release time.
         self.gmt_released_time = gmt_released_time
+        # The name of the engine configuration.
         self.name = name
+        # The status of the engine configuration. Valid values:
+        # 
+        # - **Released**: The configuration has been released.
+        # 
+        # - **Unreleased**: The configuration has not been released.
         self.status = status
+        # The version of the currently released or most recently updated engine configuration.
         self.version = version
 
     def validate(self):

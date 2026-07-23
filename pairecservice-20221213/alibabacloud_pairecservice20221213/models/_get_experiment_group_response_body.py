@@ -28,26 +28,58 @@ class GetExperimentGroupResponseBody(DaraModel):
         scene_id: str = None,
         status: str = None,
     ):
+        # The configuration of the experiment group.
         self.config = config
+        # The ID of the crowd.
         self.crowd_id = crowd_id
+        # The method for targeting traffic to the experiment group. Valid values:
+        # 
+        # - `All`: all traffic
+        # 
+        # - `Filter`: traffic that matches the filter
+        # 
+        # - `CrowdId`: traffic from the specified crowd
+        # 
+        # - `Random`: a random percentage of traffic
         self.crowd_target_type = crowd_target_type
+        # The ID of the debug crowd.
         self.debug_crowd_id = debug_crowd_id
+        # The user IDs for debugging, separated by commas.
         self.debug_users = debug_users
+        # The description of the experiment group.
         self.description = description
+        # The distribution duration.
         self.distribution_time_duration = distribution_time_duration
+        # The traffic distribution method.
+        # ● `UserId`: Distributes traffic by user ID.
+        # ● `TimeDuration`: Distributes traffic by time period.
         self.distribution_type = distribution_type
+        # The filter.
         self.filter = filter
+        # The bucket IDs that correspond to the `RandomFlow` percentage. This parameter is returned only when `CrowdTargetType` is set to `Random`.
         self.holding_buckets = holding_buckets
+        # The ID of the laboratory.
         self.laboratory_id = laboratory_id
+        # The ID of the layer.
         self.layer_id = layer_id
+        # The name of the experiment group.
         self.name = name
+        # Indicates whether an A/B test is required.
         self.need_aa = need_aa
+        # The owner of the experiment group.
         self.owner = owner
+        # The percentage of traffic from 0 to 100 that is randomly allocated to this experiment group. This parameter is returned only when `CrowdTargetType` is set to `Random`.
         self.random_flow = random_flow
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The reserved bucket IDs.
         self.reserved_buckets = reserved_buckets
+        # The ID of the scene.
         self.scene_id = scene_id
+        # The status of the experiment group. Valid values:
+        # ● `Offline`: The experiment group is not launched.
+        # ● `Online`: The experiment group is launched.
+        # ● `Pushed`: The experiment group is fully launched.
         self.status = status
 
     def validate(self):

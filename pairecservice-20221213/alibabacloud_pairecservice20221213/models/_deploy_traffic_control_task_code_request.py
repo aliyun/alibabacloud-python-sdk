@@ -11,8 +11,11 @@ class DeployTrafficControlTaskCodeRequest(DaraModel):
         instance_id: str = None,
         retry_deploy: bool = None,
     ):
+        # The deployment environment. Valid values: Daily (daily environment), Pre (pre-production environment), and Prod (production environment).
         self.environment = environment
+        # The instance ID.
         self.instance_id = instance_id
+        # Specifies whether to automatically retry a failed deployment.
         self.retry_deploy = retry_deploy
 
     def validate(self):

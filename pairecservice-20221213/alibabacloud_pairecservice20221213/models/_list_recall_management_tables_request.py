@@ -17,15 +17,25 @@ class ListRecallManagementTablesRequest(DaraModel):
         sort_by: str = None,
         type: str = None,
     ):
+        # The ID of the instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is reserved for future use.
         self.max_results = max_results
+        # The table name.
         self.name = name
+        # This parameter is reserved for future use.
         self.next_token = next_token
+        # The sort order for the results. Valid values: `ASC` (ascending) and `DESC` (descending).
         self.order = order
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The field to sort the results by. Valid values: `GmtCreateTime` (creation time) and `GmtModifiedTime` (update time).
         self.sort_by = sort_by
+        # The table type. Valid values: `X2I` (U2I recall or I2I recall), `Vector` (vector recall), and `Random` (random recall).
         self.type = type
 
     def validate(self):

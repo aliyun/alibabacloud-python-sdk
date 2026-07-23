@@ -14,16 +14,28 @@ class UpdateABMetricGroupRequest(DaraModel):
         realtime: bool = None,
         scene_id: str = None,
     ):
+        # A comma-separated list of A/B test metric IDs.
+        # 
         # This parameter is required.
         self.abmetric_ids = abmetric_ids
+        # The metric group description.
+        # 
         # This parameter is required.
         self.description = description
+        # The instance ID. You can obtain this ID by calling the [ListInstances](https://help.aliyun.com/document_detail/2411819.html) operation.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The metric group name.
+        # 
         # This parameter is required.
         self.name = name
+        # Whether the metric group is a real-time metric group.
+        # 
         # This parameter is required.
         self.realtime = realtime
+        # The scene ID. You can obtain this ID by calling the [ListScenes](https://help.aliyun.com/document_detail/2402581.html) operation.
+        # 
         # This parameter is required.
         self.scene_id = scene_id
 

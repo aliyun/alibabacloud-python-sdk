@@ -12,12 +12,88 @@ class CreateInstanceResourceRequest(DaraModel):
         type: str = None,
         uri: str = None,
     ):
+        # The resource category. Valid values:
+        # 
+        # - DataManagement
+        # 
+        # - Engine
+        # 
+        # - Monitor
+        # 
         # This parameter is required.
         self.category = category
+        # The resource group.
+        # 
+        # If the resource category is DataManagement, valid values are:
+        # 
+        # - storage
+        # 
+        # - modelpipeline
+        # 
+        # - datastorage
+        # 
+        # - modeltrain
+        # 
+        # If the resource category is Engine, valid values are:
+        # 
+        # - feature
+        # 
+        # - predict
+        # 
+        # - recall
+        # 
+        # - recengine
+        # 
+        # If the resource category is Monitor, valid values are:
+        # 
+        # - logs
+        # 
+        # - logsback
+        # 
+        # - coldstart
+        # 
+        # - deploy
+        # 
         # This parameter is required.
         self.group = group
+        # The resource type. Valid values:
+        # 
+        # - Hologres
+        # 
+        # - EAS
+        # 
+        # - BE
+        # 
+        # - Rec
+        # 
+        # - Platform
+        # 
+        # - SLS
+        # 
+        # - DataHub
+        # 
+        # - ApsaraMQ for Kafka
+        # 
+        # - Realtime Compute for Apache Flink
+        # 
+        # - ACR
+        # 
+        # - OSS
+        # 
+        # - DataWorks
+        # 
+        # - PAI
+        # 
+        # - MaxCompute
+        # 
+        # - Graph Compute
+        # 
+        # - ApsaraDB for Redis
+        # 
         # This parameter is required.
         self.type = type
+        # The resource URI.
+        # 
         # This parameter is required.
         self.uri = uri
 

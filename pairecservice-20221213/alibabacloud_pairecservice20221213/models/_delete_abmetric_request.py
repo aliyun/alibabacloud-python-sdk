@@ -9,6 +9,8 @@ class DeleteABMetricRequest(DaraModel):
         self,
         instance_id: str = None,
     ):
+        # The instance ID. You can get this ID by calling the [ListInstances](https://help.aliyun.com/document_detail/2411819.html) operation.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

@@ -13,11 +13,17 @@ class ListExperimentGroupsRequest(DaraModel):
         time_range_end: str = None,
         time_range_start: str = None,
     ):
+        # The instance ID. You can get this ID by calling the ListInstances operation.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The layer ID. You can get this ID by calling the ListLayers operation.
         self.layer_id = layer_id
+        # The status of the experiment group. Valid values: Offline, Online, and Pushed.
         self.status = status
+        # The end time for filtering experiment groups.
         self.time_range_end = time_range_end
+        # The start time for filtering experiment groups.
         self.time_range_start = time_range_start
 
     def validate(self):

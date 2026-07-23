@@ -10,7 +10,9 @@ class CreateFeatureConsistencyCheckJobConfigResponseBody(DaraModel):
         feature_consistency_check_job_config_id: str = None,
         request_id: str = None,
     ):
+        # The feature consistency check job configuration ID.
         self.feature_consistency_check_job_config_id = feature_consistency_check_job_config_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

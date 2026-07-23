@@ -14,11 +14,24 @@ class CreateParamRequest(DaraModel):
         type: str = None,
         value: str = None,
     ):
+        # The environment to which the parameter belongs. Valid values:
+        # - Daily: daily environment.
+        # - Pre: staging environment.
+        # - Prod: production environment.
         self.environment = environment
+        # The instance ID. You can call the ListInstances operation to obtain the instance ID.
         self.instance_id = instance_id
+        # The parameter name.
         self.name = name
+        # The scene ID. You can call the ListScenes operation to obtain the scene ID.
         self.scene_id = scene_id
+        # The parameter type. Valid values:
+        # 
+        # - Normal: common parameter.
+        # 
+        # - Encryption: encrypted parameter.
         self.type = type
+        # The parameter value.
         self.value = value
 
     def validate(self):

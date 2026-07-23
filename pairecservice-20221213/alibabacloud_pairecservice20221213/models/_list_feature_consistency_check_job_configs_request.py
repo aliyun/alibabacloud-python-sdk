@@ -13,11 +13,25 @@ class ListFeatureConsistencyCheckJobConfigsRequest(DaraModel):
         page_size: str = None,
         sort_by: str = None,
     ):
+        # The instance ID. To obtain an instance ID, see [ListInstances](https://help.aliyun.com/document_detail/2411819.html).
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The sort order.
+        # 
+        # - `ASC`: Ascending order.
+        # 
+        # - `DESC`: Descending order.
         self.order = order
+        # The page number. The value starts at 1. The default value is 1.
         self.page_number = page_number
+        # The page size.
         self.page_size = page_size
+        # The field to sort by.
+        # 
+        # - `GmtCreateTime`: Creation time.
+        # 
+        # - `GmtModifiedTime`: Modified time.
         self.sort_by = sort_by
 
     def validate(self):

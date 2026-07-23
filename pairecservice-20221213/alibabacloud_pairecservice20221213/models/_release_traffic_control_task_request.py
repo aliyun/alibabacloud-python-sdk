@@ -10,7 +10,9 @@ class ReleaseTrafficControlTaskRequest(DaraModel):
         environment: str = None,
         instance_id: str = None,
     ):
+        # The execution environment for the traffic control task. Valid values: `Daily`, `Pre`, and `Prod`.
         self.environment = environment
+        # The instance ID.
         self.instance_id = instance_id
 
     def validate(self):

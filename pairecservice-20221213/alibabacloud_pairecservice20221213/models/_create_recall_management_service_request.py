@@ -11,8 +11,11 @@ class CreateRecallManagementServiceRequest(DaraModel):
         instance_id: str = None,
         name: str = None,
     ):
+        # **The description for the recall management service.**
         self.description = description
+        # **The instance ID.**
         self.instance_id = instance_id
+        # **The name of the recall management service.**
         self.name = name
 
     def validate(self):

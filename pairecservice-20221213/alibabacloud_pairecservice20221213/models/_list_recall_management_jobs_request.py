@@ -19,14 +19,23 @@ class ListRecallManagementJobsRequest(DaraModel):
         sort_by: str = None,
         type: str = None,
     ):
+        # The filter condition. Filtering is supported only for the `Table` type. For example: `{"RecallManagementTableId":"1"}`
         self.condition = condition
+        # The instance ID.
         self.instance_id = instance_id
+        # This parameter is not used.
         self.max_results = max_results
+        # This parameter is not used.
         self.next_token = next_token
+        # The sort order. Valid values: `ASC` (ascending) and `DESC` (descending).
         self.order = order
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The page size. Default value: 10.
         self.page_size = page_size
+        # The sorting basis. Valid values: `GmtCreateTime` (creation time) and `GmtModifiedTime` (update time).
         self.sort_by = sort_by
+        # The task type.
         self.type = type
 
     def validate(self):

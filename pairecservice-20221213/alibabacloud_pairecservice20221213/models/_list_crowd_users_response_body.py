@@ -13,9 +13,11 @@ class ListCrowdUsersResponseBody(DaraModel):
         total_count: int = None,
         users: List[str] = None,
     ):
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
+        # The list of users.
         self.users = users
 
     def validate(self):

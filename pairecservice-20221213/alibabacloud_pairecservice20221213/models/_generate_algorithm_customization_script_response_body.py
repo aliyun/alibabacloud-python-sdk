@@ -11,8 +11,11 @@ class GenerateAlgorithmCustomizationScriptResponseBody(DaraModel):
         oss_address: str = None,
         request_id: str = None,
     ):
+        # The log ID.
         self.log_id = log_id
+        # The OSS address of the generated package.
         self.oss_address = oss_address
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

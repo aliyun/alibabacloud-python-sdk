@@ -10,7 +10,15 @@ class GetTrafficControlTaskTrafficRequest(DaraModel):
         environment: str = None,
         instance_id: str = None,
     ):
+        # The environment. Valid values:
+        # 
+        # - `Daily`: The daily environment.
+        # 
+        # - `Pre`: The staging environment.
+        # 
+        # - `Prod`: The production environment.
         self.environment = environment
+        # The instance ID. For more information, see [ListInstances](https://help.aliyun.com/document_detail/2411819.html).
         self.instance_id = instance_id
 
     def validate(self):

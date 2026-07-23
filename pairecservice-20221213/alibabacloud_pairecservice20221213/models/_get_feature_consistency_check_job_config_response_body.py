@@ -64,6 +64,7 @@ class GetFeatureConsistencyCheckJobConfigResponseBody(DaraModel):
         workflow_name: str = None,
         workspace_id: str = None,
     ):
+        # Whether to enable feature comparison.
         self.compare_feature = compare_feature
         self.dataset_id = dataset_id
         self.dataset_mount_path = dataset_mount_path
@@ -71,53 +72,110 @@ class GetFeatureConsistencyCheckJobConfigResponseBody(DaraModel):
         self.dataset_type = dataset_type
         self.dataset_uri = dataset_uri
         self.default_route = default_route
+        # The EAS service name.
         self.eas_service_name = eas_service_name
+        # The path of the EasyRec package.
         self.easy_rec_package_path = easy_rec_package_path
+        # The EasyRec version.
         self.easy_rec_version = easy_rec_version
+        # A comma-separated list of features to exclude from the display.
         self.feature_display_exclude = feature_display_exclude
+        # The ID of the data source for feature fallback.
         self.feature_landing_resource_id = feature_landing_resource_id
+        # The URI of the data source for feature fallback.
         self.feature_landing_resource_uri = feature_landing_resource_uri
+        # A comma-separated list of features, ordered by priority.
         self.feature_priority = feature_priority
+        # The primary key for items in the Feature Store.
         self.feature_store_item_id = feature_store_item_id
+        # The Feature Store model ID.
         self.feature_store_model_id = feature_store_model_id
+        # The Feature Store project ID.
         self.feature_store_project_id = feature_store_project_id
+        # The Feature Store project name.
         self.feature_store_project_name = feature_store_project_name
+        # The name of the feature view that contains item features within sequence features.
         self.feature_store_seq_feature_view = feature_store_seq_feature_view
+        # The primary key for users in the Feature Store.
         self.feature_store_user_id = feature_store_user_id
+        # The version of the `fg_jar` file.
         self.fg_jar_version = fg_jar_version
+        # The name of the `fg_json` file.
         self.fg_json_file_name = fg_json_file_name
+        # Whether to generate a ZIP package.
         self.generate_zip = generate_zip
+        # The time the configuration was created.
         self.gmt_create_time = gmt_create_time
+        # The time the configuration was last updated.
         self.gmt_modified_time = gmt_modified_time
+        # The name of the `item_id` field.
         self.item_id_field = item_id_field
+        # The item table name.
         self.item_table = item_table
+        # The partition field of the item table.
         self.item_table_partition_field = item_table_partition_field
+        # The format of the partition field in the item table. Valid values:
+        # 
+        # - `yyyymmdd`
+        # 
+        # - `yyyy-mm-dd`
         self.item_table_partition_field_format = item_table_partition_field_format
+        # The end time of the most recent job.
         self.latest_job_gmt_sampling_end_time = latest_job_gmt_sampling_end_time
+        # The start time of the most recent job.
         self.latest_job_gmt_sampling_start_time = latest_job_gmt_sampling_start_time
+        # The ID of the most recent job created from this configuration.
         self.latest_job_id = latest_job_id
+        # The name of the feature consistency check configuration.
         self.name = name
+        # The OSS bucket name.
         self.oss_bucket = oss_bucket
+        # The ID of the OSS data source.
         self.oss_resource_id = oss_resource_id
         self.predict_worker_count = predict_worker_count
         self.predict_worker_cpu = predict_worker_cpu
         self.predict_worker_memory = predict_worker_memory
+        # The request ID.
         self.request_id = request_id
         self.resource_config = resource_config
+        # The sample rate. The value must be between 0 and 1.
         self.sample_rate = sample_rate
+        # The scene ID.
         self.scene_id = scene_id
+        # The scene name.
         self.scene_name = scene_name
         self.security_group_id = security_group_id
+        # The service ID.
         self.service_id = service_id
+        # The service name.
         self.service_name = service_name
+        # The status of the configuration. Valid values:
+        # 
+        # - `Editable`: The configuration can be edited.
+        # 
+        # - `Uneditable`: The configuration cannot be edited.
         self.status = status
         self.switch_id = switch_id
+        # Whether to use a Feature Store. Valid values:
+        # 
+        # - `true`: A Feature Store is used. In this case, the response also returns `FeatureStoreProjectId`, `FeatureStoreProjectName`, `FeatureStoreModelId`, `FeatureStoreUserId`, and `FeatureStoreItemId`.
+        # 
+        # - `false`: A Feature Store is not used. In this case, the `UserTable`, `UserIdField`, `UserTablePartitionField`, `UserTablePartitionFieldFormat`, `ItemTable`, `ItemIdField`, `ItemTablePartitionField`, and `ItemTablePartitionFieldFormat` parameters are returned.
         self.use_feature_store = use_feature_store
+        # The name of the `user_id` field.
         self.user_id_field = user_id_field
+        # The user table name.
         self.user_table = user_table
+        # The partition field of the user table.
         self.user_table_partition_field = user_table_partition_field
+        # The format of the partition field in the user table. Valid values:
+        # 
+        # - `yyyymmdd`
+        # 
+        # - `yyyy-mm-dd`
         self.user_table_partition_field_format = user_table_partition_field_format
         self.vpc_id = vpc_id
+        # The workflow name.
         self.workflow_name = workflow_name
         self.workspace_id = workspace_id
 

@@ -14,8 +14,11 @@ class ListTableMetasResponseBody(DaraModel):
         table_metas: List[main_models.ListTableMetasResponseBodyTableMetas] = None,
         total_count: int = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The list of data tables.
         self.table_metas = table_metas
+        # The total number of data tables.
         self.total_count = total_count
 
     def validate(self):
@@ -78,21 +81,45 @@ class ListTableMetasResponseBodyTableMetas(DaraModel):
         type: str = None,
         url: str = None,
     ):
+        # Indicates whether the data table can be deleted. A value of `false` indicates that the table is in use by other resources.
         self.can_delete = can_delete
+        # The additional configurations for the data table.
         self.config = config
+        # The description of the data table.
         self.description = description
+        # The fields in the data table.
         self.fields = fields
+        # The time when the data table was created.
         self.gmt_create_time = gmt_create_time
+        # The time when the fields were imported.
         self.gmt_imported_time = gmt_imported_time
+        # The time when the data table was last modified.
         self.gmt_modified_time = gmt_modified_time
+        # The module of the data table. Valid values:
+        # 
+        # - ABTest: A/B testing
+        # 
+        # - ExperimentTool: Experiment tool
+        # 
+        # - DataDiagnosis: data diagnosis
         self.module = module
+        # The name of the data table.
         self.name = name
+        # The resource ID.
         self.resource_id = resource_id
         self.resource_type = resource_type
         self.resource_uri = resource_uri
+        # The ID of the data table.
         self.table_meta_id = table_meta_id
+        # The name of the table in the database.
         self.table_name = table_name
+        # The type of the data table. Valid values:
+        # 
+        # - MaxCompute
+        # 
+        # - Hologres
         self.type = type
+        # The URL of the table in Data Map. This parameter is returned only for MaxCompute data tables.
         self.url = url
 
     def validate(self):
@@ -221,9 +248,13 @@ class ListTableMetasResponseBodyTableMetasFields(DaraModel):
         name: str = None,
         type: str = None,
     ):
+        # Indicates whether the field is a dimension field.
         self.is_dimension_field = is_dimension_field
+        # The business meaning of the field.
         self.meaning = meaning
+        # The name of the field.
         self.name = name
+        # The data type of the field.
         self.type = type
 
     def validate(self):

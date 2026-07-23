@@ -16,10 +16,15 @@ class ListRecallManagementServicesResponseBody(DaraModel):
         request_id: str = None,
         total_count: str = None,
     ):
+        # This parameter is not yet available.
         self.max_results = max_results
+        # This parameter is not yet available.
         self.next_token = next_token
+        # The list of recall management services.
         self.recall_management_services = recall_management_services
+        # The request ID.
         self.request_id = request_id
+        # The total count.
         self.total_count = total_count
 
     def validate(self):
@@ -86,13 +91,25 @@ class ListRecallManagementServicesResponseBodyRecallManagementServices(DaraModel
         recall_management_service_id: str = None,
         status: str = None,
     ):
+        # The ID of the current recall management service version.
         self.current_recall_management_service_version_id = current_recall_management_service_version_id
+        # The name of the current recall management service version.
         self.current_recall_management_service_version_name = current_recall_management_service_version_name
+        # The recall management service description.
         self.description = description
+        # The creation time.
         self.gmt_create_time = gmt_create_time
+        # The modification time.
         self.gmt_modified_time = gmt_modified_time
+        # The recall management service name.
         self.name = name
+        # The recall management service ID.
         self.recall_management_service_id = recall_management_service_id
+        # The status. Valid values:
+        # 
+        # - Online: online.
+        # 
+        # - Offline: offline.
         self.status = status
 
     def validate(self):

@@ -11,8 +11,11 @@ class StopTrafficControlTaskRequest(DaraModel):
         environment: str = None,
         instance_id: str = None,
     ):
+        # The region ID.
         self.region_id = region_id
+        # The environment. Valid values: `Daily` (daily environment), `Pre` (pre-production environment), and `Prod` (production environment).
         self.environment = environment
+        # The instance ID.
         self.instance_id = instance_id
 
     def validate(self):

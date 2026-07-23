@@ -10,7 +10,9 @@ class UpdateRecallManagementServiceRequest(DaraModel):
         description: str = None,
         instance_id: str = None,
     ):
+        # The description of the recall management service.
         self.description = description
+        # The instance ID.
         self.instance_id = instance_id
 
     def validate(self):

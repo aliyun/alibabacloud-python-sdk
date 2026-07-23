@@ -17,14 +17,27 @@ class GetRecallManagementServiceResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
+        # The ID of the active version of the recall management service.
         self.current_recall_management_service_version_id = current_recall_management_service_version_id
+        # The name of the active version of the recall management service.
         self.current_recall_management_service_version_name = current_recall_management_service_version_name
+        # The description of the recall management service.
         self.description = description
+        # The creation time.
         self.gmt_create_time = gmt_create_time
+        # The modification time.
         self.gmt_modified_time = gmt_modified_time
+        # The name of the recall management service.
         self.name = name
+        # The ID of the recall management service.
         self.recall_management_service_id = recall_management_service_id
+        # The request ID.
         self.request_id = request_id
+        # The status of the recall management service. Valid values:
+        # 
+        # - Online: The service is running and available.
+        # 
+        # - Offline: The service is stopped or unavailable.
         self.status = status
 
     def validate(self):

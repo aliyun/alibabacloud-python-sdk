@@ -9,6 +9,7 @@ class ListInstanceResourceTablesRequest(DaraModel):
         self,
         maxcompute_schema: str = None,
     ):
+        # The MaxCompute schema.
         self.maxcompute_schema = maxcompute_schema
 
     def validate(self):

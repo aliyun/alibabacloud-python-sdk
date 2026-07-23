@@ -12,10 +12,16 @@ class ChatConversationRequest(DaraModel):
         conversation_id: str = None,
         instance_id: str = None,
     ):
+        # The additional information input in JSON format.
         self.config = config
+        # The message content.
+        # 
         # This parameter is required.
         self.content = content
+        # The session ID. If this parameter is not specified, a new session is created. If this parameter is specified, the conversation continues in the context of the existing session.
         self.conversation_id = conversation_id
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

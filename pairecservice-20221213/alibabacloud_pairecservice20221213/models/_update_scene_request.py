@@ -15,9 +15,13 @@ class UpdateSceneRequest(DaraModel):
         instance_id: str = None,
         name: str = None,
     ):
+        # The scene description.
         self.description = description
+        # The flows.
         self.flows = flows
+        # The instance ID. To obtain the ID, call the `ListInstances` API.
         self.instance_id = instance_id
+        # The scene name.
         self.name = name
 
     def validate(self):
@@ -72,7 +76,9 @@ class UpdateSceneRequestFlows(DaraModel):
         flow_code: str = None,
         flow_name: str = None,
     ):
+        # The flow code.
         self.flow_code = flow_code
+        # The flow name.
         self.flow_name = flow_name
 
     def validate(self):

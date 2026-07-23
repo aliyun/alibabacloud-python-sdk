@@ -40,35 +40,89 @@ class CreateTrafficControlTaskRequest(DaraModel):
         user_condition_type: str = None,
         user_table_meta_id: str = None,
     ):
+        # The behavior table ID.
         self.behavior_table_meta_id = behavior_table_meta_id
+        # The control granularity. Valid values: Global (applies globally) and Single (applies to a specific item).
         self.control_granularity = control_granularity
+        # The control logic.
+        # 
+        # - Guaranteed: The system strictly enforces the control target.
+        # 
+        # - Approach: The system attempts to meet the control target, but enforcement is not strict.
         self.control_logic = control_logic
+        # The control type.
+        # 
+        # - Percent: Controls traffic by percentage.
+        # 
+        # - Quantity: Controls traffic by quantity.
         self.control_type = control_type
+        # The description of the traffic control task.
         self.description = description
+        # A list of effective scene IDs.
         self.effective_scene_ids = effective_scene_ids
+        # The end time.
         self.end_time = end_time
+        # The execution time.
+        # 
+        # - Permanent: The task runs permanently.
+        # 
+        # - TimeRange: The task runs within a specified time range. This option requires you to also specify the StartTime and EndTime parameters.
         self.execution_time = execution_time
+        # The Flink data source ID.
         self.flink_resource_id = flink_resource_id
+        # The instance ID. You can get this ID by calling the [ListInstances](https://help.aliyun.com/document_detail/2411819.html) operation.
         self.instance_id = instance_id
+        # The item condition in array format.
         self.item_condition_array = item_condition_array
+        # The item condition in expression format.
         self.item_condition_express = item_condition_express
+        # The item condition type.
+        # 
+        # - Array: Specifies the array format.
+        # 
+        # - Expression: Specifies the expression format.
         self.item_condition_type = item_condition_type
+        # The item table ID.
         self.item_table_meta_id = item_table_meta_id
+        # The name of the traffic control task.
         self.name = name
+        # The experiment IDs for the staging environment. Separate multiple IDs with a comma (,).
         self.pre_experiment_ids = pre_experiment_ids
+        # The experiment IDs for the production environment. Separate multiple IDs with a comma (,).
         self.prod_experiment_ids = prod_experiment_ids
+        # The scene ID. You can get this ID by calling the [ListScenes](https://help.aliyun.com/document_detail/2402581.html) operation.
         self.scene_id = scene_id
+        # The service ID.
+        # 
         # This parameter is required.
         self.service_id = service_id
+        # A list of bound engine service IDs.
         self.service_ids = service_ids
+        # The start time.
         self.start_time = start_time
+        # The statistical behavior condition in array format.
         self.statis_behavior_condition_array = statis_behavior_condition_array
+        # The statistical behavior condition in expression format.
         self.statis_behavior_condition_express = statis_behavior_condition_express
+        # The condition type for the statistical behavior.
+        # 
+        # - Array: Specifies the array format.
+        # 
+        # - Expression: Specifies the expression format.
         self.statis_behavior_condition_type = statis_behavior_condition_type
+        # A list of traffic control targets.
         self.traffic_control_targets = traffic_control_targets
+        # The intervention user group condition in array format.
         self.user_condition_array = user_condition_array
+        # The intervention user group condition in expression format.
         self.user_condition_express = user_condition_express
+        # The condition type for the intervention user group.
+        # 
+        # - Array: Specifies the array format.
+        # 
+        # - Expression: Specifies the expression format.
         self.user_condition_type = user_condition_type
+        # The user table ID.
         self.user_table_meta_id = user_table_meta_id
 
     def validate(self):
@@ -284,18 +338,43 @@ class CreateTrafficControlTaskRequestTrafficControlTargets(DaraModel):
         tolerance_value: int = None,
         value: float = None,
     ):
+        # The end time of the traffic control target.
         self.end_time = end_time
+        # The event for the traffic control target.
         self.event = event
+        # The item condition in array format.
         self.item_condition_array = item_condition_array
+        # The item condition in expression format.
         self.item_condition_express = item_condition_express
+        # The condition type for item control.
+        # 
+        # - Array: Specifies the array format.
+        # 
+        # - Expression: Specifies the expression format.
         self.item_condition_type = item_condition_type
+        # The name of the traffic control target.
         self.name = name
+        # Specifies whether to enable new product regulation.
         self.new_product_regulation = new_product_regulation
+        # The name of the recall strategy.
         self.recall_name = recall_name
+        # The start time of the traffic control target.
         self.start_time = start_time
+        # The statistics period.
+        # 
+        # - Daily: Statistics are aggregated daily.
+        # 
+        # - Hour: Statistics are aggregated hourly.
         self.statis_period = statis_period
+        # The status of the traffic control target.
+        # 
+        # - Opened: The traffic control target is enabled.
+        # 
+        # - Closed: The traffic control target is disabled.
         self.status = status
+        # The tolerance value for the traffic control target.
         self.tolerance_value = tolerance_value
+        # The value of the traffic control target.
         self.value = value
 
     def validate(self):

@@ -14,8 +14,11 @@ class ListCalculationJobsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # A list of calculation jobs.
         self.calculation_jobs = calculation_jobs
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -70,13 +73,33 @@ class ListCalculationJobsResponseBodyCalculationJobs(DaraModel):
         job_source: str = None,
         status: str = None,
     ):
+        # The name of the A/B metric.
         self.abmetric_name = abmetric_name
+        # The business date.
         self.biz_date = biz_date
+        # The calculation job ID.
         self.calculation_job_id = calculation_job_id
+        # The job configuration.
         self.config = config
+        # The time when the job was run.
         self.gmt_ran_time = gmt_ran_time
+        # The job messages.
         self.job_message = job_message
+        # The source of the job. Valid values:
+        # 
+        # - CronOffline: The job is an offline scheduled task.
+        # 
+        # - DataRerun: The job is a data rerun task.
         self.job_source = job_source
+        # The status of the job. Valid values:
+        # 
+        # - Success
+        # 
+        # - Failure
+        # 
+        # - Initializing
+        # 
+        # - Running
         self.status = status
 
     def validate(self):

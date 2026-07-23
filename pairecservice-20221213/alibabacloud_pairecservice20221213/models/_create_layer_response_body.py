@@ -10,8 +10,9 @@ class CreateLayerResponseBody(DaraModel):
         layer_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the layer.
         self.layer_id = layer_id
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

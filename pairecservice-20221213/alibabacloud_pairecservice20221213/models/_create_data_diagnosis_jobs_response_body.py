@@ -12,7 +12,9 @@ class CreateDataDiagnosisJobsResponseBody(DaraModel):
         data_diagnosis_job_ids: List[str] = None,
         request_id: str = None,
     ):
+        # A list of data diagnosis job IDs.
         self.data_diagnosis_job_ids = data_diagnosis_job_ids
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -13,11 +13,17 @@ class ListRecallManagementTableVersionsRequest(DaraModel):
         page_size: int = None,
         sort_by: str = None,
     ):
+        # The ID of the instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The sort order. Valid values: `ASC` (ascending order) and `DESC` (descending order).
         self.order = order
+        # The page number.
         self.page_number = page_number
+        # The page size.
         self.page_size = page_size
+        # The field to sort by. Valid values: `GmtCreateTime` (creation time) and `GmtModifiedTime` (update time).
         self.sort_by = sort_by
 
     def validate(self):

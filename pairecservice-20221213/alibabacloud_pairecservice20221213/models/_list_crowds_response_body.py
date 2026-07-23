@@ -14,9 +14,11 @@ class ListCrowdsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of Crowds.
         self.crowds = crowds
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The total number of Crowds.
         self.total_count = total_count
 
     def validate(self):
@@ -71,13 +73,25 @@ class ListCrowdsResponseBodyCrowds(DaraModel):
         source: str = None,
         users: str = None,
     ):
+        # The Crowd ID.
         self.crowd_id = crowd_id
+        # The Crowd description.
         self.description = description
+        # The time when the Crowd was created.
         self.gmt_create_time = gmt_create_time
+        # The label of the Crowd.
         self.label = label
+        # The Crowd name.
         self.name = name
+        # The number of users in the Crowd.
         self.quantity = quantity
+        # The source of the Crowd. Valid values:
+        # 
+        # - `ManualInput`: The Crowd is created from a manual entry of users.
+        # 
+        # - `UploadFile`: The Crowd is created from an uploaded file.
         self.source = source
+        # The user IDs in the Crowd, separated by commas.
         self.users = users
 
     def validate(self):

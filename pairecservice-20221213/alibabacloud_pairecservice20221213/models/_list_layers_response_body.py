@@ -14,9 +14,11 @@ class ListLayersResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # An array of layers.
         self.layers = layers
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The total count of layers.
         self.total_count = total_count
 
     def validate(self):
@@ -70,12 +72,19 @@ class ListLayersResponseBodyLayers(DaraModel):
         residual_flow: int = None,
         scene_id: str = None,
     ):
+        # The layer description.
         self.description = description
+        # The time when the layer was created.
         self.gmt_create_time = gmt_create_time
+        # The laboratory ID.
         self.laboratory_id = laboratory_id
+        # The layer ID.
         self.layer_id = layer_id
+        # The layer name.
         self.name = name
+        # The remaining traffic for the layer.
         self.residual_flow = residual_flow
+        # The scene ID.
         self.scene_id = scene_id
 
     def validate(self):

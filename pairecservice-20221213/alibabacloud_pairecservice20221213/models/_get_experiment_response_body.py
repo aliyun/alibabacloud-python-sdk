@@ -25,23 +25,39 @@ class GetExperimentResponseBody(DaraModel):
         status: str = None,
         type: str = None,
     ):
+        # The alias of the experiment.
         self.alias_experiment_id = alias_experiment_id
+        # A comma-separated list of bucket numbers.
         self.buckets = buckets
+        # The experiment configuration, in JSON format.
         self.config = config
+        # The debug crowd ID.
         self.debug_crowd_id = debug_crowd_id
+        # The UIDs of debug users, which can be the UIDs of an Alibaba Cloud main account or a RAM user. Separate multiple UIDs with a comma (,).
         self.debug_users = debug_users
+        # The experiment description.
         self.description = description
+        # The experiment group ID.
         self.experiment_group_id = experiment_group_id
+        # The traffic percentage.
         self.flow_percent = flow_percent
+        # The creation time, in ISO 8601 format.
         self.gmt_create_time = gmt_create_time
+        # The modification time, in ISO 8601 format.
         self.gmt_modified_time = gmt_modified_time
+        # The laboratory ID.
         self.laboratory_id = laboratory_id
+        # The layer ID.
         self.layer_id = layer_id
+        # The experiment name.
         self.name = name
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The scene ID.
         self.scene_id = scene_id
+        # The status of the experiment. Valid values:<br>● Offline<br>● Online<br><br>
         self.status = status
+        # The type of the experiment. Valid values:<br>● Baseline: a baseline experiment.<br>● Normal: a normal experiment.<br><br>
         self.type = type
 
     def validate(self):

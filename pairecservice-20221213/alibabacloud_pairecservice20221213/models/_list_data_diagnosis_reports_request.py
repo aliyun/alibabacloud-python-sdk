@@ -14,14 +14,25 @@ class ListDataDiagnosisReportsRequest(DaraModel):
         start_date: str = None,
         top_n: int = None,
     ):
+        # The end date.
+        # 
         # This parameter is required.
         self.end_date = end_date
+        # The feature name.
         self.feature_name = feature_name
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The retention rate report type.
+        # 
+        # - Period: A report for the specified time period.
         self.remain_rate_type = remain_rate_type
+        # The start date.
+        # 
         # This parameter is required.
         self.start_date = start_date
+        # The number of top results to return.
         self.top_n = top_n
 
     def validate(self):

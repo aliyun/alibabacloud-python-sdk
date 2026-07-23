@@ -10,7 +10,9 @@ class UpdateParamRequest(DaraModel):
         instance_id: str = None,
         value: str = None,
     ):
+        # The instance ID. You can retrieve this ID by calling the ListInstances API.
         self.instance_id = instance_id
+        # The parameter\\"s value.
         self.value = value
 
     def validate(self):

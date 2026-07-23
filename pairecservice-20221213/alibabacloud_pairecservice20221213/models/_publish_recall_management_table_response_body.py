@@ -10,7 +10,9 @@ class PublishRecallManagementTableResponseBody(DaraModel):
         recall_management_job_id: str = None,
         request_id: str = None,
     ):
+        # The recall management job ID.
         self.recall_management_job_id = recall_management_job_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

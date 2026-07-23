@@ -12,7 +12,9 @@ class CreateCalculationJobsResponseBody(DaraModel):
         calculation_job_ids: List[str] = None,
         request_id: str = None,
     ):
+        # A list of calculation job IDs.
         self.calculation_job_ids = calculation_job_ids
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

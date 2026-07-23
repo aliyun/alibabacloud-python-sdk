@@ -9,6 +9,7 @@ class OnlineExperimentRequest(DaraModel):
         self,
         instance_id: str = None,
     ):
+        # The ID of the instance, which you can obtain by calling the ListInstances API.
         self.instance_id = instance_id
 
     def validate(self):

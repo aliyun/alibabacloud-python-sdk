@@ -19,13 +19,31 @@ class ListDataDiagnosisReportsResponseBody(DaraModel):
         request_id: str = None,
         type: str = None,
     ):
+        # The exception report list.
         self.exception_rate = exception_rate
+        # Reports for the abnormal behavior analysis task.
         self.reports_of_abnormal_behavior = reports_of_abnormal_behavior
+        # Reports for the basic statistical analysis task.
         self.reports_of_base_statistics = reports_of_base_statistics
+        # Reports for the item/user change rate analysis task.
         self.reports_of_change_rate_data = reports_of_change_rate_data
+        # Reports for the table join analysis task.
         self.reports_of_join_tables = reports_of_join_tables
+        # Reports for the user preference statistics cycle analysis task.
         self.reports_of_preference_statistics_cycle = reports_of_preference_statistics_cycle
+        # The request ID.
         self.request_id = request_id
+        # The data diagnosis task type. Valid values:
+        # 
+        # - `ChangeRate`: item/user change rate analysis.
+        # 
+        # - `PreferenceStatisticsCycle`: user preference statistics cycle analysis.
+        # 
+        # - `JoinTables`: table join analysis.
+        # 
+        # - `BaseStatistics`: basic statistical analysis.
+        # 
+        # - `AbnormalBehavior`: abnormal behavior analysis.
         self.type = type
 
     def validate(self):
@@ -191,14 +209,23 @@ class ListDataDiagnosisReportsResponseBodyReportsOfPreferenceStatisticsCycle(Dar
         period_remain_count: int = None,
         period_internal: int = None,
     ):
+        # The periodic user retention rate.
         self.cycle_remain_rate = cycle_remain_rate
+        # The daily user retention rate.
         self.single_remain_rate = single_remain_rate
+        # The date.
         self.ds = ds
+        # The value of k for the k-day retention rate or k-day ever-appeared rate.
         self.days = days
+        # The k-day ever-appeared rate.
         self.ever_appeared_rate = ever_appeared_rate
+        # The statistical period.
         self.period = period
+        # The periodic retention rate.
         self.period_remain_rate = period_remain_rate
+        # The periodic retention count.
         self.period_remain_count = period_remain_count
+        # The number of period intervals.
         self.period_internal = period_internal
 
     def validate(self):
@@ -285,17 +312,29 @@ class ListDataDiagnosisReportsResponseBodyReportsOfJoinTables(DaraModel):
         value_percent: str = None,
         value_quantile: str = None,
     ):
+        # The date.
         self.ds = ds
+        # The join field.
         self.join_field = join_field
+        # The left table join exception rate.
         self.left_except_rate = left_except_rate
+        # The right table join exception rate.
         self.right_except_rate = right_except_rate
+        # A flag that indicates the type of change.
         self.flag = flag
+        # The feature name.
         self.feature_name = feature_name
+        # The feature value.
         self.feature_value = feature_value
+        # The feature percentage.
         self.percent = percent
+        # The quantile.
         self.quantile = quantile
+        # The value count.
         self.value_count = value_count
+        # The value percentage.
         self.value_percent = value_percent
+        # The value quantile.
         self.value_quantile = value_quantile
 
     def validate(self):
@@ -392,9 +431,13 @@ class ListDataDiagnosisReportsResponseBodyReportsOfChangeRateData(DaraModel):
         change_count: str = None,
         change_rate: str = None,
     ):
+        # The date.
         self.ds = ds
+        # A flag that indicates the type of change.
         self.flag = flag
+        # The item/user change count.
         self.change_count = change_count
+        # The item/user change rate.
         self.change_rate = change_rate
 
     def validate(self):
@@ -477,43 +520,81 @@ class ListDataDiagnosisReportsResponseBodyReportsOfBaseStatistics(DaraModel):
         frequency_percent: str = None,
         frequency_quantile: str = None,
     ):
+        # The equivalent null count. This refers to the count of specific characters, such as `\\N`, that are treated as null values.
         self.default_null_count = default_null_count
+        # The equivalent null rate.
         self.default_null_rate = default_null_rate
+        # The date.
         self.ds = ds
+        # The feature name.
         self.feature_name = feature_name
+        # The feature type.
         self.feature_type = feature_type
+        # The null count.
         self.null_count = null_count
+        # The null rate.
         self.null_rate = null_rate
+        # The total number of entries.
         self.total_count = total_count
+        # The number of unique values.
         self.unique_count = unique_count
+        # The maximum value.
         self.value_max = value_max
+        # The median value.
         self.value_median = value_median
+        # The minimum value.
         self.value_min = value_min
+        # The 1st percentile value.
         self.value_quantile_1 = value_quantile_1
+        # The 5th percentile value.
         self.value_quantile_5 = value_quantile_5
+        # The 25th percentile value.
         self.value_quantile_25 = value_quantile_25
+        # The 75th percentile value.
         self.value_quantile_75 = value_quantile_75
+        # The 95th percentile value.
         self.value_quantile_95 = value_quantile_95
+        # The 99th percentile value.
         self.value_quantile_99 = value_quantile_99
+        # The rank.
         self.rn = rn
+        # The maximum frequency.
         self.frequency_max = frequency_max
+        # The median frequency.
         self.frequency_median = frequency_median
+        # The minimum frequency.
         self.frequency_min = frequency_min
+        # The 1st frequency percentile.
         self.frequency_quantile_1 = frequency_quantile_1
+        # The 5th frequency percentile.
         self.frequency_quantile_5 = frequency_quantile_5
+        # The 25th frequency percentile.
         self.frequency_quantile_25 = frequency_quantile_25
+        # The 75th frequency percentile.
         self.frequency_quantile_75 = frequency_quantile_75
+        # The 95th frequency percentile.
         self.frequency_quantile_95 = frequency_quantile_95
+        # The 99th frequency percentile.
         self.frequency_quantile_99 = frequency_quantile_99
+        # The feature distribution.
         self.distribution = distribution
+        # The rank of the statistical indicator.
         self.rank_id = rank_id
+        # The feature value.
         self.feature_value = feature_value
+        # The value count.
         self.value_count = value_count
+        # The value percentage.
         self.value_percent = value_percent
+        # The value quantile.
         self.value_quantile = value_quantile
+        # The frequency of the feature value.
         self.feature_frequency = feature_frequency
+        # The number of feature values with this frequency.
         self.frequency_count = frequency_count
+        # The percentage of feature values with this frequency.
         self.frequency_percent = frequency_percent
+        # The percentile of the frequency of field values.
         self.frequency_quantile = frequency_quantile
 
     def validate(self):
@@ -774,17 +855,29 @@ class ListDataDiagnosisReportsResponseBodyReportsOfAbnormalBehavior(DaraModel):
         indicator_name: str = None,
         exception_rate: str = None,
     ):
+        # The date.
         self.ds = ds
+        # The rank.
         self.rank_id = rank_id
+        # The conversion rate from upstream behavior to downstream behavior.
         self.conversion_rate = conversion_rate
+        # The ID corresponding to the statistical granularity.
         self.conversion_rate_ids = conversion_rate_ids
+        # The count of downstream behaviors.
         self.down_stream_count = down_stream_count
+        # The ID corresponding to the granularity of the downstream behavior.
         self.down_stream_count_ids = down_stream_count_ids
+        # The statistical granularity.
         self.granularity = granularity
+        # The count of upstream behaviors.
         self.up_stream_count = up_stream_count
+        # The ID corresponding to the granularity of the upstream behavior.
         self.up_stream_count_ids = up_stream_count_ids
+        # The feature distribution.
         self.distribution = distribution
+        # The indicator name.
         self.indicator_name = indicator_name
+        # The exception rate.
         self.exception_rate = exception_rate
 
     def validate(self):
@@ -880,8 +973,11 @@ class ListDataDiagnosisReportsResponseBodyExceptionRate(DaraModel):
         message: str = None,
         type: str = None,
     ):
+        # The exception group.
         self.group = group
+        # The exception message.
         self.message = message
+        # The type or level of the exception.
         self.type = type
 
     def validate(self):

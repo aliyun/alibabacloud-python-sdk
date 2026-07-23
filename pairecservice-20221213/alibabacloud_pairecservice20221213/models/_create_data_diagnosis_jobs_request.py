@@ -12,12 +12,20 @@ class CreateDataDiagnosisJobsRequest(DaraModel):
         instance_id: str = None,
         start_date: str = None,
     ):
+        # The data diagnosis ID.
+        # 
         # This parameter is required.
         self.data_diagnosis_id = data_diagnosis_id
+        # The end date for the job.
+        # 
         # This parameter is required.
         self.end_date = end_date
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The start date for the job.
+        # 
         # This parameter is required.
         self.start_date = start_date
 

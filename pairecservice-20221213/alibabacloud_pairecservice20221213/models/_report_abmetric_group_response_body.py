@@ -14,8 +14,11 @@ class ReportABMetricGroupResponseBody(DaraModel):
         group_dimension: List[str] = None,
         request_id: str = None,
     ):
+        # The experiment report.
         self.experiment_report = experiment_report
+        # The dimensions used for grouping the report data.
         self.group_dimension = group_dimension
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

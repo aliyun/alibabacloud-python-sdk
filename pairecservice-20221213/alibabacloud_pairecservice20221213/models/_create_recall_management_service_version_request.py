@@ -14,8 +14,11 @@ class CreateRecallManagementServiceVersionRequest(DaraModel):
         instance_id: str = None,
         source_recall_management_service_version_id: str = None,
     ):
+        # The configuration details.
         self.configs = configs
+        # The instance ID.
         self.instance_id = instance_id
+        # The source recall management service version ID.
         self.source_recall_management_service_version_id = source_recall_management_service_version_id
 
     def validate(self):
@@ -58,7 +61,9 @@ class CreateRecallManagementServiceVersionRequestConfigs(DaraModel):
         merge_config: main_models.CreateRecallManagementServiceVersionRequestConfigsMergeConfig = None,
         recall_configs: List[main_models.CreateRecallManagementServiceVersionRequestConfigsRecallConfigs] = None,
     ):
+        # **Specifies how to merge recall results.**
         self.merge_config = merge_config
+        # A list of recall configurations.
         self.recall_configs = recall_configs
 
     def validate(self):
@@ -116,19 +121,33 @@ class CreateRecallManagementServiceVersionRequestConfigsRecallConfigs(DaraModel)
         user_vector_field: str = None,
         user_vector_recall_management_table_id: str = None,
     ):
+        # The recall description.
         self.description = description
+        # **This parameter is reserved for future use.**
         self.extended_config = extended_config
+        # The conditions for an item, formatted as an array.
         self.item_condition_array = item_condition_array
+        # The item condition expression.
         self.item_condition_expression = item_condition_expression
+        # The item vector field.
         self.item_vector_field = item_vector_field
+        # The item vector recall management table ID.
         self.item_vector_recall_management_table_id = item_vector_recall_management_table_id
+        # The recall name.
         self.name = name
+        # A list of operators.
         self.operators = operators
+        # The priority. A lower value indicates a higher priority.
         self.priority = priority
+        # The recall management table ID.
         self.recall_management_table_id = recall_management_table_id
+        # The recall type.
         self.recall_type = recall_type
+        # The sort fields.
         self.sort_fields = sort_fields
+        # The user vector field.
         self.user_vector_field = user_vector_field
+        # The user vector recall management table ID.
         self.user_vector_recall_management_table_id = user_vector_recall_management_table_id
 
     def validate(self):
@@ -246,10 +265,15 @@ class CreateRecallManagementServiceVersionRequestConfigsRecallConfigsOperators(D
         operator_type: str = None,
         trigger_config: main_models.CreateRecallManagementServiceVersionRequestConfigsRecallConfigsOperatorsTriggerConfig = None,
     ):
+        # The configuration for the feature operator.
         self.feature_config = feature_config
+        # The configuration for the filter operator.
         self.filter_config = filter_config
+        # The configuration for the Join operator.
         self.join_config = join_config
+        # The operator type.
         self.operator_type = operator_type
+        # The configuration for the Trigger operator.
         self.trigger_config = trigger_config
 
     def validate(self):
@@ -315,9 +339,13 @@ class CreateRecallManagementServiceVersionRequestConfigsRecallConfigsOperatorsTr
         is_rand_sort: bool = None,
         sort_field: str = None,
     ):
+        # The field name.
         self.field = field
+        # The limit on the number of fields.
         self.field_quantity_limit = field_quantity_limit
+        # Specifies whether to sort randomly.
         self.is_rand_sort = is_rand_sort
+        # The sort field.
         self.sort_field = sort_field
 
     def validate(self):
@@ -365,8 +393,11 @@ class CreateRecallManagementServiceVersionRequestConfigsRecallConfigsOperatorsJo
         output_fields: List[str] = None,
         recall_management_table_id: str = None,
     ):
+        # **The field to join on.**
         self.field = field
+        # **The fields to include from the joined table.**
         self.output_fields = output_fields
+        # **The ID of the table to join with.**
         self.recall_management_table_id = recall_management_table_id
 
     def validate(self):
@@ -406,6 +437,7 @@ class CreateRecallManagementServiceVersionRequestConfigsRecallConfigsOperatorsFi
         self,
         experession: str = None,
     ):
+        # The filter expression.
         self.experession = experession
 
     def validate(self):
@@ -435,8 +467,11 @@ class CreateRecallManagementServiceVersionRequestConfigsRecallConfigsOperatorsFe
         name: str = None,
         type: str = None,
     ):
+        # The feature expression.
         self.expression = expression
+        # The feature name.
         self.name = name
+        # The feature type.
         self.type = type
 
     def validate(self):
@@ -482,12 +517,19 @@ class CreateRecallManagementServiceVersionRequestConfigsMergeConfig(DaraModel):
         merge_type: str = None,
         recall_management_service_version_config_id: str = None,
     ):
+        # This parameter is reserved for future use.
         self.extended_config = extended_config
+        # The filter expression.
         self.filter_expression = filter_expression
+        # The IDs of tables to use for filtering results.
         self.filter_recall_management_table_ids = filter_recall_management_table_ids
+        # The item recall management table ID.
         self.item_recall_management_table_id = item_recall_management_table_id
+        # The fields to return from the item table.
         self.item_table_fields = item_table_fields
+        # The merge type. Valid values: `Weight` and `Alternate`.
         self.merge_type = merge_type
+        # The recall management service version configuration ID.
         self.recall_management_service_version_config_id = recall_management_service_version_config_id
 
     def validate(self):

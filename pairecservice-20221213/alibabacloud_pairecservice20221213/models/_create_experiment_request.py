@@ -17,18 +17,32 @@ class CreateExperimentRequest(DaraModel):
         name: str = None,
         type: str = None,
     ):
+        # The experiment configuration.
         self.config = config
+        # The ID of the debug crowd. Call the ListCrowds operation to obtain this ID.
         self.debug_crowd_id = debug_crowd_id
+        # The UIDs of Alibaba Cloud accounts or RAM users for debugging. Separate multiple UIDs with a comma.
         self.debug_users = debug_users
+        # The experiment description.
+        # 
         # This parameter is required.
         self.description = description
+        # The ID of the experiment group. Call the ListExperimentGroups operation to obtain this ID.
+        # 
         # This parameter is required.
         self.experiment_group_id = experiment_group_id
+        # The traffic distribution percentage.
         self.flow_percent = flow_percent
+        # The instance ID. Call the ListInstances operation to obtain this ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The experiment name.
+        # 
         # This parameter is required.
         self.name = name
+        # The experiment type. Valid values:<br>● `Baseline`: Indicates a baseline experiment.<br>● `Normal`: Indicates a normal experiment.<br><br>
+        # 
         # This parameter is required.
         self.type = type
 

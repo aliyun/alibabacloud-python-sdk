@@ -12,8 +12,43 @@ class CheckInstanceResourcesRequest(DaraModel):
         uri: str = None,
     ):
         self.resource_id = resource_id
+        # The resource type. Valid values:
+        # 
+        # - Hologres
+        # 
+        # - EAS
+        # 
+        # - BE
+        # 
+        # - Rec
+        # 
+        # - Platform
+        # 
+        # - SLS
+        # 
+        # - DataHub
+        # 
+        # - Kafka
+        # 
+        # - Flinkvvp
+        # 
+        # - ACR
+        # 
+        # - OSS
+        # 
+        # - DataWorks
+        # 
+        # - PAI
+        # 
+        # - MaxCompute
+        # 
+        # - GraphCompute
+        # 
+        # - Redis
+        # 
         # This parameter is required.
         self.type = type
+        # The resource URI.
         self.uri = uri
 
     def validate(self):

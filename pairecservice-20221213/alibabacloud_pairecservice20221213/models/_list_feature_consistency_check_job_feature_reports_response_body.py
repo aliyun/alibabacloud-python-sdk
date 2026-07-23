@@ -15,9 +15,13 @@ class ListFeatureConsistencyCheckJobFeatureReportsResponseBody(DaraModel):
         reports_of_feature_diff: List[main_models.ListFeatureConsistencyCheckJobFeatureReportsResponseBodyReportsOfFeatureDiff] = None,
         request_id: str = None,
     ):
+        # The data path.
         self.data_path = data_path
+        # The OSS path.
         self.oss_path = oss_path
+        # The feature comparison reports.
         self.reports_of_feature_diff = reports_of_feature_diff
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -76,11 +80,17 @@ class ListFeatureConsistencyCheckJobFeatureReportsResponseBodyReportsOfFeatureDi
         offline_value: str = None,
         online_value: str = None,
     ):
+        # The feature name.
         self.feature_name = feature_name
+        # The item ID.
         self.log_item_id = log_item_id
+        # The request ID.
         self.log_request_id = log_request_id
+        # The user ID.
         self.log_user_id = log_user_id
+        # The offline value.
         self.offline_value = offline_value
+        # The online value.
         self.online_value = online_value
 
     def validate(self):

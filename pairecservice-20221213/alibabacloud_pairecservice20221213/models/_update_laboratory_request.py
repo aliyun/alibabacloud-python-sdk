@@ -19,19 +19,34 @@ class UpdateLaboratoryRequest(DaraModel):
         name: str = None,
         type: str = None,
     ):
+        # The number of buckets.
         self.bucket_count = bucket_count
+        # The bucketing method. Valid values: ● Uid: Bucketing by UID (default). ● UidHash: Bucketing by UID hash. ● Filter: Bucketing by a filter condition.
+        # 
         # This parameter is required.
         self.bucket_type = bucket_type
+        # The assigned bucket numbers.
         self.buckets = buckets
+        # The debug crowd ID.
         self.debug_crowd_id = debug_crowd_id
+        # The UIDs of debugging users. These UIDs must belong to an Alibaba Cloud main account or a sub-account. Separate multiple UIDs with a comma (,).
         self.debug_users = debug_users
+        # The laboratory description.
         self.description = description
+        # The environment. Valid values: ● Daily: The daily environment. ● Pre: The staging environment. ● Prod: The production environment.
         self.environment = environment
+        # The filter condition.
         self.filter = filter
+        # The instance ID. Call the ListInstances operation to obtain the ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The laboratory name.
+        # 
         # This parameter is required.
         self.name = name
+        # The laboratory type. Valid values: ● Base ● NonBase
+        # 
         # This parameter is required.
         self.type = type
 

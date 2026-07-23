@@ -23,20 +23,35 @@ class GetDataDiagnosisResponseBody(DaraModel):
         top_nquantity: int = None,
         type: str = None,
     ):
+        # The configuration of the data diagnosis task.
         self.config = config
+        # The time for periodic execution. If this field is empty, the task does not execute periodically.
         self.cycle_time = cycle_time
+        # The creation time.
         self.gmt_create_time = gmt_create_time
+        # The modification time.
         self.gmt_modified_time = gmt_modified_time
+        # The ID of the left data table.
         self.left_table_meta_id = left_table_meta_id
+        # The partition field of the left data table.
         self.left_table_partition_field = left_table_partition_field
+        # The name of the data diagnosis task.
         self.name = name
+        # The partition field.
         self.partition_field = partition_field
+        # The request ID.
         self.request_id = request_id
+        # The ID of the right data table.
         self.right_table_meta_id = right_table_meta_id
+        # The partition field of the right data table.
         self.right_table_partition_field = right_table_partition_field
+        # The ID of the data table.
         self.table_meta_id = table_meta_id
+        # The name of the data table.
         self.table_meta_name = table_meta_name
+        # The Top-N quantity.
         self.top_nquantity = top_nquantity
+        # The type of the data diagnosis task.
         self.type = type
 
     def validate(self):

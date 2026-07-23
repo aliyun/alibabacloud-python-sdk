@@ -9,6 +9,8 @@ class DeleteTableMetaRequest(DaraModel):
         self,
         instance_id: str = None,
     ):
+        # The ID of the instance. To obtain this ID, call the [ListInstances](https://help.aliyun.com/document_detail/2411819.html) operation.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

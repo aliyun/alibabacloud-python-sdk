@@ -21,18 +21,63 @@ class ListTrafficControlTasksRequest(DaraModel):
         traffic_control_task_id: str = None,
         version: str = None,
     ):
+        # Specifies whether to return all results without pagination.
         self.all = all
+        # The filter for traffic control targets. Valid values:
+        # 
+        # - `All`: Returns all traffic control targets.
+        # 
+        # - `Valid`: Returns only active traffic control targets. A traffic control target is active if the current time is within the specified start and end time.
+        # 
+        # - `None`: Does not return any traffic control targets.
         self.control_target_filter = control_target_filter
+        # The environment. Valid values:
+        # 
+        # - `Daily`: the daily environment
+        # 
+        # - `Pre`: the pre-production environment
+        # 
+        # - `Prod`: the production environment
         self.environment = environment
+        # The instance ID. You can obtain this ID by calling the [ListInstances](https://icms.alibaba-inc.com/content/learn/pai?l=1\\&m=16768\\&n=4300782) operation.
         self.instance_id = instance_id
+        # The name of the traffic control task.
         self.name = name
+        # The sort order. Valid values:
+        # 
+        # - `ASC`: ascending order
+        # 
+        # - `DESC`: descending order
         self.order = order
+        # The page number. Pages start from 1. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
+        # The ID of the scene. You can obtain this ID by calling the [ListScenes](https://help.aliyun.com/document_detail/2402581.html) operation.
         self.scene_id = scene_id
+        # The field by which to sort the results. Valid values:
+        # 
+        # - `GmtCreateTime`: Sorts the results by creation time.
+        # 
+        # - `GmtModifiedTime`: Sorts the results by modification time.
         self.sort_by = sort_by
+        # The status of the task. Valid values:
+        # 
+        # - `NotRunning`: The task is not running.
+        # 
+        # - `Ready`: The task is ready to run.
+        # 
+        # - `Running`: The task is running.
+        # 
+        # - `Finished`: The task is finished.
         self.status = status
+        # The ID of the traffic control task.
         self.traffic_control_task_id = traffic_control_task_id
+        # The version. Valid values:
+        # 
+        # - `Latest`: The latest version. This is the default value.
+        # 
+        # - `Released`: the released version
         self.version = version
 
     def validate(self):

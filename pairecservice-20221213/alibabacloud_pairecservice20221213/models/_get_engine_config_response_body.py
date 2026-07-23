@@ -17,14 +17,33 @@ class GetEngineConfigResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
+        # The content of the engine configuration.
         self.config_value = config_value
+        # The description of the engine configuration.
         self.description = description
+        # The environment. Valid values:
+        # 
+        # - Daily: The daily environment.
+        # 
+        # - Pre: The pre-production environment.
+        # 
+        # - Prod: The production environment.
         self.environment = environment
+        # The time the engine configuration was created.
         self.gmt_create_time = gmt_create_time
+        # The time the engine configuration was last modified.
         self.gmt_modified_time = gmt_modified_time
+        # The time the engine configuration was published.
         self.gmt_released_time = gmt_released_time
+        # The engine configuration name.
         self.name = name
+        # The request ID.
         self.request_id = request_id
+        # The status. Valid values:
+        # 
+        # - Released: Published
+        # 
+        # - UnReleased: Unpublished
         self.status = status
 
     def validate(self):

@@ -14,8 +14,11 @@ class ListDataDiagnosesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of data diagnoses.
         self.data_diagnoses = data_diagnoses
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -77,20 +80,45 @@ class ListDataDiagnosesResponseBodyDataDiagnoses(DaraModel):
         top_nquantity: int = None,
         type: str = None,
     ):
+        # The configuration for the data diagnosis task, in JSON format. The required fields depend on the `Type` value:<br>
         self.config = config
+        # The time at which the task is scheduled to run periodically. If this parameter is empty, the task runs only once.
         self.cycle_time = cycle_time
+        # The data diagnosis ID.
         self.data_diagnosis_id = data_diagnosis_id
+        # The time when the task was created.
         self.gmt_create_time = gmt_create_time
+        # The time when the task was last updated.
         self.gmt_modified_time = gmt_modified_time
+        # The ID of the left data table.
         self.left_table_meta_id = left_table_meta_id
+        # The partition field of the left table.
         self.left_table_partition_field = left_table_partition_field
+        # The name of the data diagnosis.
         self.name = name
+        # The partition field.
         self.partition_field = partition_field
+        # The ID of the right data table.
         self.right_table_meta_id = right_table_meta_id
+        # The partition field of the right table.
         self.right_table_partition_field = right_table_partition_field
+        # The data table ID.
         self.table_meta_id = table_meta_id
+        # The name of the data table.
         self.table_meta_name = table_meta_name
+        # The number of top results to return.
         self.top_nquantity = top_nquantity
+        # The type of data diagnosis. Valid values:
+        # 
+        # - `ChangeRate`: Change Rate Analysis.
+        # 
+        # - `PreferenceStatisticsCycle`: Preference Statistics Cycle Analysis.
+        # 
+        # - `JoinTables`: Join Tables Analysis.
+        # 
+        # - `BaseStatistics`: Base Statistics Analysis.
+        # 
+        # - `AbnormalBehavior`: Abnormal Behavior Analysis.
         self.type = type
 
     def validate(self):

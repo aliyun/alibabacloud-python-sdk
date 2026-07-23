@@ -10,7 +10,9 @@ class TrafficControlTaskTrafficInfoTargetTrafficsDataValue(DaraModel):
         traffic: float = None,
         record_time: int = None,
     ):
+        # The reported traffic for this target within the experiment.
         self.traffic = traffic
+        # The timestamp indicating when the data was reported.
         self.record_time = record_time
 
     def validate(self):

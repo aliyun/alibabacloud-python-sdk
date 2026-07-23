@@ -28,25 +28,61 @@ class GetABMetricResponseBody(DaraModel):
         table_meta_id: str = None,
         type: str = None,
     ):
+        # Specifies whether to aggregate metrics by user.
         self.aggregation_by_user = aggregation_by_user
+        # The metric definition.
         self.definition = definition
+        # The denominator of the derived metric formula.
         self.denominator = denominator
+        # The metric description.
         self.description = description
+        # Specifies whether the metric follows a binomial distribution. This affects how significance is calculated.
         self.is_binomial_distribution = is_binomial_distribution
+        # The ID of the left operand metric for a derived metric.
         self.left_metric_id = left_metric_id
+        # The metric name.
         self.name = name
+        # Specifies whether significance testing is required for this metric.
         self.need_significance = need_significance
+        # The numerator of the derived metric formula.
         self.numerator = numerator
+        # The operator for the derived metric. Valid values:
+        # 
+        # - `Plus`: addition
+        # 
+        # - `Minus`: subtraction
+        # 
+        # - `Multiplication`: multiplication
+        # 
+        # - `Division`: division
         self.operator = operator
+        # Specifies whether the metric is real-time. Valid values:
+        # 
+        # - `true`: The metric is real-time.
+        # 
+        # - `false`: The metric is not real-time.
         self.realtime = realtime
+        # The request ID.
         self.request_id = request_id
+        # The ID of the data source for the results table.
         self.result_resource_id = result_resource_id
+        # The ID of the results table.
         self.result_table_meta_id = result_table_meta_id
+        # The ID of the right operand metric for a derived metric.
         self.right_metric_id = right_metric_id
+        # The scene ID.
         self.scene_id = scene_id
+        # The scene name.
         self.scene_name = scene_name
+        # The statistics cycle.
         self.statistics_cycle = statistics_cycle
+        # The ID of the source table.
         self.table_meta_id = table_meta_id
+        # The type of the metric. Valid values:
+        # 
+        # - `Single`: a single metric.
+        # 
+        # - `Derived`: a derived metric.
         self.type = type
 
     def validate(self):

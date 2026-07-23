@@ -10,7 +10,9 @@ class DeleteEngineConfigRequest(DaraModel):
         delete_all: bool = None,
         instance_id: str = None,
     ):
+        # Specifies whether to delete all engine configurations with the same name.
         self.delete_all = delete_all
+        # The instance ID. For information about how to obtain the instance ID, see [ListInstances](https://help.aliyun.com/document_detail/2411819.html).
         self.instance_id = instance_id
 
     def validate(self):

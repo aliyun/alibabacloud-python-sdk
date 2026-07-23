@@ -23,24 +23,51 @@ class CreateExperimentGroupRequest(DaraModel):
         random_flow: int = None,
         reserved_buckets: str = None,
     ):
+        # The configuration of the experiment group.
         self.config = config
+        # The ID of the crowd for crowd targeting. You can obtain this ID by calling the ListCrowds operation.
         self.crowd_id = crowd_id
+        # The crowd targeting type for the experiment group. Valid values:
+        # 
+        # - `All`: All traffic
+        # 
+        # - `Filter`: Traffic that matches the filter condition
+        # 
+        # - `CrowdId`: Traffic from a specific crowd
+        # 
+        # - `Random`: A random percentage of traffic
         self.crowd_target_type = crowd_target_type
+        # The ID of the debug crowd. You can obtain this ID by calling the ListCrowds operation.
         self.debug_crowd_id = debug_crowd_id
+        # The UIDs of the debug users. The value must be the UID of an Alibaba Cloud account or a RAM user. Separate multiple UIDs with a comma.
         self.debug_users = debug_users
+        # The description of the experiment group.
         self.description = description
+        # The time duration for traffic distribution.
         self.distribution_time_duration = distribution_time_duration
+        # The distribution type. Valid values: `UserId` (by user ID) and `TimeDuration` (by time duration).
         self.distribution_type = distribution_type
+        # The filter condition for crowd targeting.
         self.filter = filter
+        # The instance ID. You can obtain this ID by calling the ListInstances operation.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the layer. You can obtain this ID by calling the ListLayers operation.
+        # 
         # This parameter is required.
         self.layer_id = layer_id
+        # The name of the experiment group.
+        # 
         # This parameter is required.
         self.name = name
+        # Specifies whether to create an A/A experiment group.
+        # 
         # This parameter is required.
         self.need_aa = need_aa
+        # The percentage of traffic to randomly allocate to this experiment group. This parameter is used only when `CrowdTargetType` is set to `Random`. Valid values: 0 to 100.
         self.random_flow = random_flow
+        # A comma-separated list of reserved bucket numbers.
         self.reserved_buckets = reserved_buckets
 
     def validate(self):

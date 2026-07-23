@@ -14,9 +14,11 @@ class ListLaboratoriesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # A list of laboratories.
         self.laboratories = laboratories
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The total number of laboratories.
         self.total_count = total_count
 
     def validate(self):
@@ -77,19 +79,53 @@ class ListLaboratoriesResponseBodyLaboratories(DaraModel):
         status: str = None,
         type: str = None,
     ):
+        # The bucket count.
         self.bucket_count = bucket_count
+        # The bucketing method.
+        # 
+        # - `Uid-UID`: Bucketing by UID (default)
+        # 
+        # - `UidHash`: Bucketing by UID hash
+        # 
+        # - `Filter`: Bucketing by a filter condition
         self.bucket_type = bucket_type
+        # The assigned buckets, specified as numbers or ranges separated by commas.
         self.buckets = buckets
+        # The crowd ID.
         self.crowd_id = crowd_id
+        # The debug crowd ID.
         self.debug_crowd_id = debug_crowd_id
+        # The debug users, separated by commas.
         self.debug_users = debug_users
+        # The laboratory description.
         self.description = description
+        # The laboratory environment.
+        # 
+        # - `Daily`: the daily environment
+        # 
+        # - `Pre`: the pre-production environment
+        # 
+        # - `Prod`: the production environment
         self.environment = environment
+        # The filter condition.
         self.filter = filter
+        # The laboratory ID.
         self.laboratory_id = laboratory_id
+        # The laboratory name.
         self.name = name
+        # The scene ID.
         self.scene_id = scene_id
+        # The laboratory status.
+        # 
+        # - `Offline`: The laboratory is offline.
+        # 
+        # - `Online`: The laboratory is online.
         self.status = status
+        # The laboratory type.
+        # 
+        # - `Base`: A base laboratory.
+        # 
+        # - `NonBase`: A non-base laboratory.
         self.type = type
 
     def validate(self):

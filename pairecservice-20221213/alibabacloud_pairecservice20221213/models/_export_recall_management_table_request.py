@@ -16,12 +16,17 @@ class ExportRecallManagementTableRequest(DaraModel):
         partitions: Dict[str, str] = None,
         recall_management_table_version_id: str = None,
     ):
+        # The instance ID.
         self.instance_id = instance_id
+        # The MaxCompute project name.
         self.maxcompute_project_name = maxcompute_project_name
-        # maxcompute schema。
+        # The MaxCompute project schema.
         self.maxcompute_schema = maxcompute_schema
+        # The name of the destination table in MaxCompute.
         self.maxcompute_table_name = maxcompute_table_name
+        # The table partitions to export. The value must be a JSON object where each key is a partition field and its value is the corresponding partition value.
         self.partitions = partitions
+        # The version ID of the recall management table. This parameter defaults to the current published version.
         self.recall_management_table_version_id = recall_management_table_version_id
 
     def validate(self):

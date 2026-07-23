@@ -18,18 +18,38 @@ class CreateTableMetaRequest(DaraModel):
         resource_id: str = None,
         table_name: str = None,
     ):
+        # The description of the data table.
+        # 
         # This parameter is required.
         self.description = description
+        # The list of fields.
+        # 
         # This parameter is required.
         self.fields = fields
+        # The instance ID. To get this ID, call the [ListInstances](https://help.aliyun.com/document_detail/2411819.html) operation.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The module to which the data table belongs.
+        # 
+        # - ABTest: The data table for A/B testing.
+        # 
+        # - ExperimentTool: The data table for the experiment tool.
+        # 
+        # - DataDiagnosis: The data table for data diagnosis.
+        # 
         # This parameter is required.
         self.module = module
+        # The name of the data table.
+        # 
         # This parameter is required.
         self.name = name
+        # The resource ID. To get this ID, call the ListInstanceResources operation.
+        # 
         # This parameter is required.
         self.resource_id = resource_id
+        # The name of the table in the database.
+        # 
         # This parameter is required.
         self.table_name = table_name
 
@@ -107,15 +127,26 @@ class CreateTableMetaRequestFields(DaraModel):
         name: str = None,
         type: str = None,
     ):
+        # The logical data type of the field.
         self.data_type = data_type
+        # Indicates whether the field is a dimension field.
+        # 
         # This parameter is required.
         self.is_dimension_field = is_dimension_field
+        # Indicates whether the field is a partition field.
+        # 
         # This parameter is required.
         self.is_partition_field = is_partition_field
+        # The business definition of the field.
+        # 
         # This parameter is required.
         self.meaning = meaning
+        # The name of the field.
+        # 
         # This parameter is required.
         self.name = name
+        # The data type of the field.
+        # 
         # This parameter is required.
         self.type = type
 

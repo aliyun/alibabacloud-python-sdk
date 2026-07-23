@@ -9,6 +9,7 @@ class DeleteParamRequest(DaraModel):
         self,
         instance_id: str = None,
     ):
+        # Instance ID, which can be obtained by calling the ListInstances API.
         self.instance_id = instance_id
 
     def validate(self):

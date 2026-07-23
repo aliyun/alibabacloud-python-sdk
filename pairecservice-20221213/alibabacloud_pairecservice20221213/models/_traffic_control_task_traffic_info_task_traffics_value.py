@@ -9,6 +9,7 @@ class TrafficControlTaskTrafficInfoTaskTrafficsValue(DaraModel):
         self,
         traffic: float = None,
     ):
+        # The reported traffic for this experiment.
         self.traffic = traffic
 
     def validate(self):

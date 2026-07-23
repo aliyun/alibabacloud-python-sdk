@@ -469,6 +469,9 @@ from ._report_abmetric_group_response import ReportABMetricGroupResponse
 from ._report_sample_consistency_job_request import ReportSampleConsistencyJobRequest
 from ._report_sample_consistency_job_response_body import ReportSampleConsistencyJobResponseBody
 from ._report_sample_consistency_job_response import ReportSampleConsistencyJobResponse
+from ._shopping_assistant_request import ShoppingAssistantRequest
+from ._shopping_assistant_response_body import ShoppingAssistantResponseBody
+from ._shopping_assistant_response import ShoppingAssistantResponse
 from ._split_traffic_control_target_request import SplitTrafficControlTargetRequest
 from ._split_traffic_control_target_response_body import SplitTrafficControlTargetResponseBody
 from ._split_traffic_control_target_response import SplitTrafficControlTargetResponse
@@ -481,6 +484,9 @@ from ._start_traffic_control_task_response import StartTrafficControlTaskRespons
 from ._stop_sample_consistency_job_request import StopSampleConsistencyJobRequest
 from ._stop_sample_consistency_job_response_body import StopSampleConsistencyJobResponseBody
 from ._stop_sample_consistency_job_response import StopSampleConsistencyJobResponse
+from ._stop_traffic_control_flink_task_request import StopTrafficControlFlinkTaskRequest
+from ._stop_traffic_control_flink_task_response_body import StopTrafficControlFlinkTaskResponseBody
+from ._stop_traffic_control_flink_task_response import StopTrafficControlFlinkTaskResponse
 from ._stop_traffic_control_target_request import StopTrafficControlTargetRequest
 from ._stop_traffic_control_target_response_body import StopTrafficControlTargetResponseBody
 from ._stop_traffic_control_target_response import StopTrafficControlTargetResponse
@@ -681,6 +687,13 @@ from ._query_traffic_control_target_item_report_detail_response_body import Quer
 from ._query_traffic_control_target_item_report_detail_response_body import QueryTrafficControlTargetItemReportDetailResponseBodyTrafficControlTargetItemReportDetail
 from ._query_traffic_control_task_item_report_response_body import QueryTrafficControlTaskItemReportResponseBodyTrafficControlTaskItemReports
 from ._report_sample_consistency_job_response_body import ReportSampleConsistencyJobResponseBodyFeaturesDifference
+from ._shopping_assistant_request import ShoppingAssistantRequestContents
+from ._shopping_assistant_request import ShoppingAssistantRequestInputMessageContent
+from ._shopping_assistant_request import ShoppingAssistantRequestInputMessage
+from ._shopping_assistant_response_body import ShoppingAssistantResponseBodyCitation
+from ._shopping_assistant_response_body import ShoppingAssistantResponseBodyResultCitation
+from ._shopping_assistant_response_body import ShoppingAssistantResponseBodyResultStepInfo
+from ._shopping_assistant_response_body import ShoppingAssistantResponseBodyResult
 from ._update_recall_management_config_request import UpdateRecallManagementConfigRequestNetworkConfigs
 from ._update_recall_management_service_version_config_request import UpdateRecallManagementServiceVersionConfigRequestMergeConfig
 from ._update_recall_management_service_version_config_request import UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperatorsFeatureConfig
@@ -1164,6 +1177,9 @@ __all__ = [
     ReportSampleConsistencyJobRequest,
     ReportSampleConsistencyJobResponseBody,
     ReportSampleConsistencyJobResponse,
+    ShoppingAssistantRequest,
+    ShoppingAssistantResponseBody,
+    ShoppingAssistantResponse,
     SplitTrafficControlTargetRequest,
     SplitTrafficControlTargetResponseBody,
     SplitTrafficControlTargetResponse,
@@ -1176,6 +1192,9 @@ __all__ = [
     StopSampleConsistencyJobRequest,
     StopSampleConsistencyJobResponseBody,
     StopSampleConsistencyJobResponse,
+    StopTrafficControlFlinkTaskRequest,
+    StopTrafficControlFlinkTaskResponseBody,
+    StopTrafficControlFlinkTaskResponse,
     StopTrafficControlTargetRequest,
     StopTrafficControlTargetResponseBody,
     StopTrafficControlTargetResponse,
@@ -1376,6 +1395,13 @@ __all__ = [
     QueryTrafficControlTargetItemReportDetailResponseBodyTrafficControlTargetItemReportDetail,
     QueryTrafficControlTaskItemReportResponseBodyTrafficControlTaskItemReports,
     ReportSampleConsistencyJobResponseBodyFeaturesDifference,
+    ShoppingAssistantRequestContents,
+    ShoppingAssistantRequestInputMessageContent,
+    ShoppingAssistantRequestInputMessage,
+    ShoppingAssistantResponseBodyCitation,
+    ShoppingAssistantResponseBodyResultCitation,
+    ShoppingAssistantResponseBodyResultStepInfo,
+    ShoppingAssistantResponseBodyResult,
     UpdateRecallManagementConfigRequestNetworkConfigs,
     UpdateRecallManagementServiceVersionConfigRequestMergeConfig,
     UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperatorsFeatureConfig,

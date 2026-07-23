@@ -49,43 +49,81 @@ class GetTrafficControlTaskResponseBody(DaraModel):
         user_condition_type: str = None,
         user_table_meta_id: str = None,
     ):
+        # The behavior table ID.
         self.behavior_table_meta_id = behavior_table_meta_id
+        # The control granularity.
         self.control_granularity = control_granularity
+        # The control logic.
         self.control_logic = control_logic
+        # The control type.
         self.control_type = control_type
+        # The description of the traffic control task.
         self.description = description
+        # The list of effective scene IDs.
         self.effective_scene_ids = effective_scene_ids
+        # The list of effective scene names.
         self.effective_scene_names = effective_scene_names
+        # The end time.
         self.end_time = end_time
+        # Indicates whether the task has ever been published.
         self.ever_published = ever_published
+        # The execution time.
         self.execution_time = execution_time
+        # The Flink resource ID.
         self.flink_resource_id = flink_resource_id
+        # The Flink resource name.
         self.flink_resource_name = flink_resource_name
+        # The creation time.
         self.gmt_create_time = gmt_create_time
+        # The last modification time.
         self.gmt_modified_time = gmt_modified_time
+        # The item conditions in array format.
         self.item_condition_array = item_condition_array
+        # The item conditions in expression format.
         self.item_condition_express = item_condition_express
+        # The item condition type.
         self.item_condition_type = item_condition_type
+        # The item table ID.
         self.item_table_meta_id = item_table_meta_id
+        # The name of the traffic control task.
         self.name = name
+        # The experiment IDs in the staging environment.
         self.pre_experiment_ids = pre_experiment_ids
+        # The staging environment status.
         self.prepub_status = prepub_status
+        # The experiment IDs in the production environment.
         self.prod_experiment_ids = prod_experiment_ids
+        # The production environment status.
         self.product_status = product_status
+        # The request ID.
         self.request_id = request_id
+        # The scene ID.
         self.scene_id = scene_id
+        # The scene name.
         self.scene_name = scene_name
+        # The service ID.
         self.service_id = service_id
+        # The list of service IDs.
         self.service_ids = service_ids
+        # The start time.
         self.start_time = start_time
+        # The behavior statistics conditions in array format.
         self.statis_behavior_condition_array = statis_behavior_condition_array
+        # The behavior statistics conditions in expression format.
         self.statis_behavior_condition_express = statis_behavior_condition_express
+        # The behavior statistics condition type.
         self.statis_behavior_condition_type = statis_behavior_condition_type
+        # The list of traffic control targets.
         self.traffic_control_targets = traffic_control_targets
+        # The ID of the traffic control task.
         self.traffic_control_task_id = traffic_control_task_id
+        # The target user group conditions in array format.
         self.user_condition_array = user_condition_array
+        # The target user group conditions in expression format.
         self.user_condition_express = user_condition_express
+        # The condition type for the target user group.
         self.user_condition_type = user_condition_type
+        # The user table ID.
         self.user_table_meta_id = user_table_meta_id
 
     def validate(self):
@@ -360,23 +398,41 @@ class GetTrafficControlTaskResponseBodyTrafficControlTargets(DaraModel):
         traffic_control_task_id: str = None,
         value: float = None,
     ):
+        # The end time.
         self.end_time = end_time
+        # The control target event.
         self.event = event
+        # The creation time.
         self.gmt_create_time = gmt_create_time
+        # The last modification time.
         self.gmt_modified_time = gmt_modified_time
+        # The item conditions in array format.
         self.item_condition_array = item_condition_array
+        # The item conditions in expression format.
         self.item_condition_express = item_condition_express
+        # The item condition type.
         self.item_condition_type = item_condition_type
+        # The name of the control target.
         self.name = name
+        # Indicates whether this is a new product regulation.
         self.new_product_regulation = new_product_regulation
+        # The recall Policy Name.
         self.recall_name = recall_name
+        # The split configuration of the control target.
         self.split_parts = split_parts
+        # The start time.
         self.start_time = start_time
+        # The statistical period.
         self.statis_period = statis_period
+        # The status.
         self.status = status
+        # The tolerance range of the control target.
         self.tolerance_value = tolerance_value
+        # The ID of the traffic control target.
         self.traffic_control_target_id = traffic_control_target_id
+        # The ID of the traffic control task.
         self.traffic_control_task_id = traffic_control_task_id
+        # The control target value.
         self.value = value
 
     def validate(self):
@@ -510,8 +566,11 @@ class GetTrafficControlTaskResponseBodyTrafficControlTargetsSplitParts(DaraModel
         set_values: List[int] = None,
         time_points: List[int] = None,
     ):
+        # The list of target value split points.
         self.set_points = set_points
+        # The list of control target set values.
         self.set_values = set_values
+        # The time points for splitting the control target.
         self.time_points = time_points
 
     def validate(self):

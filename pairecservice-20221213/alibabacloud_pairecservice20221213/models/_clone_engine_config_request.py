@@ -12,9 +12,18 @@ class CloneEngineConfigRequest(DaraModel):
         environment: str = None,
         instance_id: str = None,
     ):
+        # The content of the engine configuration.
         self.config_value = config_value
         self.description = description
+        # The environment. Valid values:
+        # 
+        # - Daily: The daily environment.
+        # 
+        # - Pre: The pre-release environment.
+        # 
+        # - Prod: The production environment.
         self.environment = environment
+        # The instance ID. To obtain an instance ID, see [ListInstances](https://help.aliyun.com/document_detail/2411819.html).
         self.instance_id = instance_id
 
     def validate(self):

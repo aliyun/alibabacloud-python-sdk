@@ -14,9 +14,11 @@ class ListSubCrowdsResponseBody(DaraModel):
         sub_crowds: List[main_models.ListSubCrowdsResponseBodySubCrowds] = None,
         total_count: int = None,
     ):
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # The list of subcrowds.
         self.sub_crowds = sub_crowds
+        # The total number of subcrowds.
         self.total_count = total_count
 
     def validate(self):
@@ -68,10 +70,15 @@ class ListSubCrowdsResponseBodySubCrowds(DaraModel):
         sub_crowd_id: str = None,
         users: str = None,
     ):
+        # The time when the subcrowd was created.
         self.gmt_create_time = gmt_create_time
+        # The number of users in the subcrowd.
         self.quantity = quantity
+        # The source of the subcrowd.<br>● ManualInput: Users were added manually.<br>● UploadFile: Users were added by uploading a file.<br><br>
         self.source = source
+        # The subcrowd ID.
         self.sub_crowd_id = sub_crowd_id
+        # The users in the subcrowd.
         self.users = users
 
     def validate(self):
