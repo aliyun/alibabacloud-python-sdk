@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_kms20160120.
 
-Created on 02/07/2026
+Created on 23/07/2026
 
 @author: Alibaba Cloud SDK
 """
@@ -39,7 +39,7 @@ VERSION = __import__(PACKAGE).__version__
 REQUIRES = [
     "darabonba-core>=1.0.0, <2.0.0",
     "alibabacloud_gateway_pop>=0.0.8, <1.0.0",
-    "alibabacloud_tea_openapi>=0.4.4, <1.0.0"
+    "alibabacloud_tea_openapi>=0.4.5, <1.0.0"
 ]
 
 LONG_DESCRIPTION = ''

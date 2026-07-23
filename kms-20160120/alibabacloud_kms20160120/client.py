@@ -55,9 +55,7 @@ class Client(OpenApiClient):
             'ap-southeast-6': 'kms.ap-southeast-6.aliyuncs.com',
             'ap-southeast-5': 'kms.ap-southeast-5.aliyuncs.com',
             'ap-southeast-3': 'kms.ap-southeast-3.aliyuncs.com',
-            'ap-southeast-2': 'kms.ap-southeast-2.aliyuncs.com',
             'ap-southeast-1': 'kms.ap-southeast-1.aliyuncs.com',
-            'ap-south-1': 'kms.ap-south-1.aliyuncs.com',
             'ap-northeast-2': 'kms.ap-northeast-2.aliyuncs.com',
             'ap-northeast-1': 'kms.ap-northeast-1.aliyuncs.com'
         }
@@ -3458,6 +3456,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_kms_instance_quota_infos_with_options_async(request, runtime)
 
+    def get_managed_data_key_with_options(
+        self,
+        request: main_models.GetManagedDataKeyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetManagedDataKeyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.data_key_name):
+            query['DataKeyName'] = request.data_key_name
+        if not DaraCore.is_null(request.data_key_version_id):
+            query['DataKeyVersionId'] = request.data_key_version_id
+        if not DaraCore.is_null(request.use_latest):
+            query['UseLatest'] = request.use_latest
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetManagedDataKey',
+            version = '2016-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetManagedDataKeyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_managed_data_key_with_options_async(
+        self,
+        request: main_models.GetManagedDataKeyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetManagedDataKeyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.data_key_name):
+            query['DataKeyName'] = request.data_key_name
+        if not DaraCore.is_null(request.data_key_version_id):
+            query['DataKeyVersionId'] = request.data_key_version_id
+        if not DaraCore.is_null(request.use_latest):
+            query['UseLatest'] = request.use_latest
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetManagedDataKey',
+            version = '2016-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetManagedDataKeyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_managed_data_key(
+        self,
+        request: main_models.GetManagedDataKeyRequest,
+    ) -> main_models.GetManagedDataKeyResponse:
+        runtime = RuntimeOptions()
+        return self.get_managed_data_key_with_options(request, runtime)
+
+    async def get_managed_data_key_async(
+        self,
+        request: main_models.GetManagedDataKeyRequest,
+    ) -> main_models.GetManagedDataKeyResponse:
+        runtime = RuntimeOptions()
+        return await self.get_managed_data_key_with_options_async(request, runtime)
+
     def get_parameters_for_import_with_options(
         self,
         request: main_models.GetParametersForImportRequest,
@@ -4475,6 +4551,84 @@ class Client(OpenApiClient):
     ) -> main_models.ListKmsInstancesResponse:
         runtime = RuntimeOptions()
         return await self.list_kms_instances_with_options_async(request, runtime)
+
+    def list_managed_data_key_versions_with_options(
+        self,
+        request: main_models.ListManagedDataKeyVersionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListManagedDataKeyVersionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.data_key_name):
+            query['DataKeyName'] = request.data_key_name
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListManagedDataKeyVersions',
+            version = '2016-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListManagedDataKeyVersionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_managed_data_key_versions_with_options_async(
+        self,
+        request: main_models.ListManagedDataKeyVersionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListManagedDataKeyVersionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.data_key_name):
+            query['DataKeyName'] = request.data_key_name
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListManagedDataKeyVersions',
+            version = '2016-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListManagedDataKeyVersionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_managed_data_key_versions(
+        self,
+        request: main_models.ListManagedDataKeyVersionsRequest,
+    ) -> main_models.ListManagedDataKeyVersionsResponse:
+        runtime = RuntimeOptions()
+        return self.list_managed_data_key_versions_with_options(request, runtime)
+
+    async def list_managed_data_key_versions_async(
+        self,
+        request: main_models.ListManagedDataKeyVersionsRequest,
+    ) -> main_models.ListManagedDataKeyVersionsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_managed_data_key_versions_with_options_async(request, runtime)
 
     def list_network_rules_with_options(
         self,

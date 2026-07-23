@@ -13,23 +13,23 @@ class SetDeletionProtectionRequest(DaraModel):
         kms_instance_id: str = None,
         protected_resource_arn: str = None,
     ):
-        # The description of deletion protection.
+        # The description of deletion protection.  
         # 
-        # > This parameter is available only when EnableDeletionProtection is set to true.
+        # > This parameter is valid only when EnableDeletionProtection is set to true.
         self.deletion_protection_description = deletion_protection_description
         # Specifies whether to enable deletion protection. Valid values:
         # 
         # - true: enables deletion protection.
         # 
-        # - false: disables deletion protection. This is the default value.
+        # - false (default): disables deletion protection.
         # 
         # This parameter is required.
         self.enable_deletion_protection = enable_deletion_protection
         # The ID of the key.
         self.key_id = key_id
         self.kms_instance_id = kms_instance_id
-        # The ARN of the CMK for which you want to configure deletion protection.<br>
-        # You can call the [DescribeKey](https://help.aliyun.com/document_detail/28952.html) operation to query the ARN of the CMK.<br><br>
+        # The ARN of the CMK for which you want to set deletion protection.  
+        # You can call the [DescribeKey](https://help.aliyun.com/document_detail/28952.html) operation to query the CMK ARN (Arn).
         self.protected_resource_arn = protected_resource_arn
 
     def validate(self):

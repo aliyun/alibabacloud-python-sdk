@@ -135,6 +135,9 @@ from ._get_kms_instance_response import GetKmsInstanceResponse
 from ._get_kms_instance_quota_infos_request import GetKmsInstanceQuotaInfosRequest
 from ._get_kms_instance_quota_infos_response_body import GetKmsInstanceQuotaInfosResponseBody
 from ._get_kms_instance_quota_infos_response import GetKmsInstanceQuotaInfosResponse
+from ._get_managed_data_key_request import GetManagedDataKeyRequest
+from ._get_managed_data_key_response_body import GetManagedDataKeyResponseBody
+from ._get_managed_data_key_response import GetManagedDataKeyResponse
 from ._get_parameters_for_import_request import GetParametersForImportRequest
 from ._get_parameters_for_import_response_body import GetParametersForImportResponseBody
 from ._get_parameters_for_import_response import GetParametersForImportResponse
@@ -174,6 +177,9 @@ from ._list_keys_response import ListKeysResponse
 from ._list_kms_instances_request import ListKmsInstancesRequest
 from ._list_kms_instances_response_body import ListKmsInstancesResponseBody
 from ._list_kms_instances_response import ListKmsInstancesResponse
+from ._list_managed_data_key_versions_request import ListManagedDataKeyVersionsRequest
+from ._list_managed_data_key_versions_response_body import ListManagedDataKeyVersionsResponseBody
+from ._list_managed_data_key_versions_response import ListManagedDataKeyVersionsResponse
 from ._list_network_rules_request import ListNetworkRulesRequest
 from ._list_network_rules_response_body import ListNetworkRulesResponseBody
 from ._list_network_rules_response import ListNetworkRulesResponse
@@ -294,6 +300,8 @@ from ._list_keys_response_body import ListKeysResponseBodyKeysKey
 from ._list_keys_response_body import ListKeysResponseBodyKeys
 from ._list_kms_instances_response_body import ListKmsInstancesResponseBodyKmsInstancesKmsInstance
 from ._list_kms_instances_response_body import ListKmsInstancesResponseBodyKmsInstances
+from ._list_managed_data_key_versions_response_body import ListManagedDataKeyVersionsResponseBodyManagedDataKeyVersionsManagedDataKeyVersion
+from ._list_managed_data_key_versions_response_body import ListManagedDataKeyVersionsResponseBodyManagedDataKeyVersions
 from ._list_network_rules_response_body import ListNetworkRulesResponseBodyNetworkRulesNetworkRule
 from ._list_network_rules_response_body import ListNetworkRulesResponseBodyNetworkRules
 from ._list_policies_response_body import ListPoliciesResponseBodyPoliciesPolicy
@@ -449,6 +457,9 @@ __all__ = [
     GetKmsInstanceQuotaInfosRequest,
     GetKmsInstanceQuotaInfosResponseBody,
     GetKmsInstanceQuotaInfosResponse,
+    GetManagedDataKeyRequest,
+    GetManagedDataKeyResponseBody,
+    GetManagedDataKeyResponse,
     GetParametersForImportRequest,
     GetParametersForImportResponseBody,
     GetParametersForImportResponse,
@@ -488,6 +499,9 @@ __all__ = [
     ListKmsInstancesRequest,
     ListKmsInstancesResponseBody,
     ListKmsInstancesResponse,
+    ListManagedDataKeyVersionsRequest,
+    ListManagedDataKeyVersionsResponseBody,
+    ListManagedDataKeyVersionsResponse,
     ListNetworkRulesRequest,
     ListNetworkRulesResponseBody,
     ListNetworkRulesResponse,
@@ -608,6 +622,8 @@ __all__ = [
     ListKeysResponseBodyKeys,
     ListKmsInstancesResponseBodyKmsInstancesKmsInstance,
     ListKmsInstancesResponseBodyKmsInstances,
+    ListManagedDataKeyVersionsResponseBodyManagedDataKeyVersionsManagedDataKeyVersion,
+    ListManagedDataKeyVersionsResponseBodyManagedDataKeyVersions,
     ListNetworkRulesResponseBodyNetworkRulesNetworkRule,
     ListNetworkRulesResponseBodyNetworkRules,
     ListPoliciesResponseBodyPoliciesPolicy,
