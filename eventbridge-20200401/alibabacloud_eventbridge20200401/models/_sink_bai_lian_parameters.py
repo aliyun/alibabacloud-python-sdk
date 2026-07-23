@@ -20,14 +20,23 @@ class SinkBaiLianParameters(DaraModel):
         partition: main_models.SinkBaiLianParametersPartition = None,
         workspace_id: str = None,
     ):
+        # The post-processing logic that runs after the main operation completes.
         self.after = after
+        # The type of the Model Studio application to invoke.
         self.application_type = application_type
+        # The pre-processing logic to apply to an event before it is sent to the target.
         self.before = before
+        # Context information for the application. The value must be a JSON object.
         self.context = context
+        # Additional key-value pairs to pass to the target. The value must be a valid JSON object.
         self.extend = extend
+        # The offset for reading events from a stream or queue, used for stateful processing.
         self.offset = offset
+        # The operation that the Model Studio application will perform.
         self.op = op
+        # The partition key for the event. This key routes events to a specific partition in the target service, ensuring ordered processing.
         self.partition = partition
+        # The unique ID of the Model Studio workspace.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -119,8 +128,11 @@ class SinkBaiLianParametersPartition(DaraModel):
         template: str = None,
         value: str = None,
     ):
+        # The method for generating the value. The `JSONPATH` option extracts data from the event payload. Valid values: `CONSTANT`, `JSONPATH`, and `TEMPLATE`.
         self.form = form
+        # The template string for formatting the value. This parameter is used only when `Form` is set to `TEMPLATE`.
         self.template = template
+        # The source content for the value, as specified by the `Form` parameter. For example, if `Form` is `JSONPATH`, this value must be a JSONPath expression.
         self.value = value
 
     def validate(self):
@@ -162,8 +174,11 @@ class SinkBaiLianParametersOp(DaraModel):
         template: str = None,
         value: str = None,
     ):
+        # The method for generating the value. The `JSONPATH` option extracts data from the event payload. Valid values: `CONSTANT`, `JSONPATH`, and `TEMPLATE`.
         self.form = form
+        # The template string for formatting the value. This parameter is used only when `Form` is set to `TEMPLATE`.
         self.template = template
+        # The source content for the value, as specified by the `Form` parameter. For example, if `Form` is `JSONPATH`, this value must be a JSONPath expression.
         self.value = value
 
     def validate(self):
@@ -205,8 +220,11 @@ class SinkBaiLianParametersOffset(DaraModel):
         template: str = None,
         value: str = None,
     ):
+        # The method for generating the value. The `JSONPATH` option extracts data from the event payload. Valid values: `CONSTANT`, `JSONPATH`, and `TEMPLATE`.
         self.form = form
+        # The template string for formatting the value. This parameter is used only when `Form` is set to `TEMPLATE`.
         self.template = template
+        # The source content for the value, as specified by the `Form` parameter. For example, if `Form` is `JSONPATH`, this value must be a JSONPath expression.
         self.value = value
 
     def validate(self):
@@ -248,8 +266,11 @@ class SinkBaiLianParametersBefore(DaraModel):
         template: str = None,
         value: str = None,
     ):
+        # The method for generating the value. The `JSONPATH` option extracts data from the event payload. Valid values: `CONSTANT`, `JSONPATH`, and `TEMPLATE`.
         self.form = form
+        # The template string for formatting the value. This parameter is used only when `Form` is set to `TEMPLATE`.
         self.template = template
+        # The source content for the value, as specified by the `Form` parameter. For example, if `Form` is `JSONPATH`, this value must be a JSONPath expression.
         self.value = value
 
     def validate(self):
@@ -291,8 +312,11 @@ class SinkBaiLianParametersAfter(DaraModel):
         template: str = None,
         value: str = None,
     ):
+        # The method for generating the value. The `JSONPATH` option extracts data from the event payload. Valid values: `CONSTANT`, `JSONPATH`, and `TEMPLATE`.
         self.form = form
+        # The template string for formatting the value. This parameter is used only when `Form` is set to `TEMPLATE`.
         self.template = template
+        # The source content for the value, as specified by the `Form` parameter. For example, if `Form` is `JSONPATH`, this value must be a JSONPath expression.
         self.value = value
 
     def validate(self):

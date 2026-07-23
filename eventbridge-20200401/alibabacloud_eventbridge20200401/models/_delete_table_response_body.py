@@ -12,9 +12,13 @@ class DeleteTableResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Return code
         self.code = code
+        # Response message of the API
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Whether the request was successful
         self.success = success
 
     def validate(self):

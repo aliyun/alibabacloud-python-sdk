@@ -13,10 +13,19 @@ class UpdateEventStreamingBusinessOptionResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code returned.
+        # 
+        # - Success: The request was successful.
+        # 
+        # - Other values indicate an error. For more information, see the Error codes section.
         self.code = code
+        # Indicates whether the configuration was updated. Valid values: true and false.
         self.data = data
+        # The error message returned if the request fails.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values: true and false.
         self.success = success
 
     def validate(self):

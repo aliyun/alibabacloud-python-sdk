@@ -12,11 +12,17 @@ class UpdateEventStreamingBusinessOptionRequest(DaraModel):
         max_capacity_unit_count: int = None,
         min_capacity_unit_count: int = None,
     ):
+        # The billing mode. Valid values are CapacityUnitMode for the CU mode and EventNumMode for the pay-by-event mode.
+        # 
         # This parameter is required.
         self.business_mode = business_mode
+        # The name of the event stream.
+        # 
         # This parameter is required.
         self.event_streaming_name = event_streaming_name
+        # The maximum number of CUs.
         self.max_capacity_unit_count = max_capacity_unit_count
+        # The minimum number of CUs.
         self.min_capacity_unit_count = min_capacity_unit_count
 
     def validate(self):

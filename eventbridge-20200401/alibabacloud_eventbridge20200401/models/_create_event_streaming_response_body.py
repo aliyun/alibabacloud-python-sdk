@@ -14,18 +14,17 @@ class CreateEventStreamingResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code. Valid values:
-        # 
-        # *   Success: The request is successful.
-        # *   Other codes: The request failed. For more information about error codes, see Error codes.
+        # The returned code. Valid values:
+        # - Success: The request was successful.                                
+        # - Other values: An error occurred. For more information, see Error codes.
         self.code = code
         # The returned data.
         self.data = data
-        # The returned error message.
+        # The error message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the operation is successful. The value true indicates that the operation is successful.
+        # Indicates whether the operation was successful. The value true is returned if the operation was successful.
         self.success = success
 
     def validate(self):
@@ -79,7 +78,7 @@ class CreateEventStreamingResponseBodyData(DaraModel):
         self,
         event_streaming_arn: str = None,
     ):
-        # The ARN of the event stream.
+        # The Alibaba Cloud Resource Name (ARN) of the event stream.
         self.event_streaming_arn = event_streaming_arn
 
     def validate(self):

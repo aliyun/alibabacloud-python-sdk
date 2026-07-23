@@ -18,21 +18,21 @@ class CreateTableRequest(DaraModel):
         namespace: str = None,
         retention_policy: main_models.CreateTableRequestRetentionPolicy = None,
     ):
-        # 表所属的数据目录名称。可通过 ListCatalogs 获取已有目录列表
+        # The data catalog to which the table belongs.
         self.catalog = catalog
-        # 用于保证请求幂等性的Token，防止因网络重试导致重复创建。建议使用 UUID
+        # The idempotency token.
         self.client_token = client_token
-        # 表的列定义（JSON 数组）。每列包含 Name（列名，必填）、Type（数据类型，必填，如 STRING、INT32、INT64、FLOAT、DOUBLE、BOOLEAN、TIMESTAMP）、Comment（列备注，选填）
+        # The column definitions.
         self.columns = columns
-        # 表的备注描述信息，无格式限制
+        # The description.
         self.comment = comment
-        # 事件表名称。以字母或数字开头，支持字母、数字、下划线和短横线，长度1~127。在同一命名空间下唯一
+        # The name of the table.
         # 
         # This parameter is required.
         self.name = name
-        # 表所属的命名空间名称。可通过 ListNamespaces 获取已有命名空间列表
+        # The namespace to which the table belongs.
         self.namespace = namespace
-        # 数据保留策略（JSON 对象）。包含 HotTTL（热数据保留天数，高性能查询）和 ColdTTL（冷数据保留天数，低成本存储）。不传则使用系统默认值
+        # The data retention policy.
         self.retention_policy = retention_policy
 
     def validate(self):
@@ -108,7 +108,9 @@ class CreateTableRequestRetentionPolicy(DaraModel):
         cold_ttl: int = None,
         hot_ttl: int = None,
     ):
+        # The cold storage retention time.
         self.cold_ttl = cold_ttl
+        # The hot storage retention time.
         self.hot_ttl = hot_ttl
 
     def validate(self):
@@ -144,8 +146,11 @@ class CreateTableRequestColumns(DaraModel):
         name: str = None,
         type: str = None,
     ):
+        # The description of the field.
         self.comment = comment
+        # The name of the connector.
         self.name = name
+        # The type of the column.
         self.type = type
 
     def validate(self):

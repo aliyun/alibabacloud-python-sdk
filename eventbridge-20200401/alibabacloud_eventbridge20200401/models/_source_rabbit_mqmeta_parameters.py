@@ -17,6 +17,7 @@ class SourceRabbitMQMetaParameters(DaraModel):
         password: str = None,
         regex: str = None,
         security_group_id: str = None,
+        sync_meta_type: str = None,
         username: str = None,
         v_switch_ids: str = None,
         virtual_host_name: str = None,
@@ -32,6 +33,7 @@ class SourceRabbitMQMetaParameters(DaraModel):
         self.password = password
         self.regex = regex
         self.security_group_id = security_group_id
+        self.sync_meta_type = sync_meta_type
         self.username = username
         self.v_switch_ids = v_switch_ids
         self.virtual_host_name = virtual_host_name
@@ -74,6 +76,9 @@ class SourceRabbitMQMetaParameters(DaraModel):
 
         if self.security_group_id is not None:
             result['SecurityGroupId'] = self.security_group_id
+
+        if self.sync_meta_type is not None:
+            result['SyncMetaType'] = self.sync_meta_type
 
         if self.username is not None:
             result['Username'] = self.username
@@ -120,6 +125,9 @@ class SourceRabbitMQMetaParameters(DaraModel):
 
         if m.get('SecurityGroupId') is not None:
             self.security_group_id = m.get('SecurityGroupId')
+
+        if m.get('SyncMetaType') is not None:
+            self.sync_meta_type = m.get('SyncMetaType')
 
         if m.get('Username') is not None:
             self.username = m.get('Username')

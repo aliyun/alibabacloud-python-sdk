@@ -12,6 +12,7 @@ class Metadata(DaraModel):
         self,
         attachments: List[main_models.MetadataAttachments] = None,
     ):
+        # Associated data
         self.attachments = attachments
 
     def validate(self):
@@ -48,7 +49,9 @@ class MetadataAttachments(DaraModel):
         arn: str = None,
         mime_type: str = None,
     ):
+        # ARN of the associated data
         self.arn = arn
+        # Data type
         self.mime_type = mime_type
 
     def validate(self):

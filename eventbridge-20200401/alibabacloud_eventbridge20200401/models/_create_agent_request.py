@@ -15,9 +15,15 @@ class CreateAgentRequest(DaraModel):
         name: str = None,
         prompt: str = None,
     ):
+        # The description of the event bus.
         self.description = description
+        # The associated metadata.
         self.metadata = metadata
+        # The name of the agent.
+        # 
+        # This parameter is required.
         self.name = name
+        # You are an IoT data analytics assistant...
         self.prompt = prompt
 
     def validate(self):
@@ -65,6 +71,7 @@ class CreateAgentRequestMetadata(DaraModel):
         self,
         attachments: List[main_models.CreateAgentRequestMetadataAttachments] = None,
     ):
+        # The array of attached metadata objects.
         self.attachments = attachments
 
     def validate(self):
@@ -101,7 +108,9 @@ class CreateAgentRequestMetadataAttachments(DaraModel):
         arn: str = None,
         mime_type: str = None,
     ):
+        # The ARN of the attached metadata object.
         self.arn = arn
+        # The object type of the attached metadata.
         self.mime_type = mime_type
 
     def validate(self):

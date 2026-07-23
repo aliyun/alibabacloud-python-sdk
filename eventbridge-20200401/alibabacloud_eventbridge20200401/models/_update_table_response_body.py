@@ -14,10 +14,15 @@ class UpdateTableResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Return code
         self.code = code
+        # Returned data
         self.data = data
+        # API return message
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Indicates whether the operation was successful
         self.success = success
 
     def validate(self):
@@ -71,6 +76,7 @@ class UpdateTableResponseBodyData(DaraModel):
         self,
         table_arn: str = None,
     ):
+        # Table ARN
         self.table_arn = table_arn
 
     def validate(self):

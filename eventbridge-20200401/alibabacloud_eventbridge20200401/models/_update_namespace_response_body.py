@@ -14,10 +14,15 @@ class UpdateNamespaceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # API return code. 200 indicates success.
         self.code = code
+        # Returned data
         self.data = data
+        # API return message
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Indicates whether the operation was successful
         self.success = success
 
     def validate(self):
@@ -71,6 +76,7 @@ class UpdateNamespaceResponseBodyData(DaraModel):
         self,
         namespace_arn: str = None,
     ):
+        # Namespace ARN
         self.namespace_arn = namespace_arn
 
     def validate(self):

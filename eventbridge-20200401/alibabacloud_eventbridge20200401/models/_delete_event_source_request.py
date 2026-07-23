@@ -10,6 +10,7 @@ class DeleteEventSourceRequest(DaraModel):
         event_bus_name: str = None,
         event_source_name: str = None,
     ):
+        # The event bus to which the event source is attached.
         self.event_bus_name = event_bus_name
         # The name of the event source.
         # 

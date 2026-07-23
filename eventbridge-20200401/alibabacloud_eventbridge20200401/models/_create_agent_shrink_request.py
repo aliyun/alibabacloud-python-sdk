@@ -12,9 +12,15 @@ class CreateAgentShrinkRequest(DaraModel):
         name: str = None,
         prompt: str = None,
     ):
+        # The description of the event bus.
         self.description = description
+        # The associated metadata.
         self.metadata_shrink = metadata_shrink
+        # The name of the agent.
+        # 
+        # This parameter is required.
         self.name = name
+        # You are an IoT data analytics assistant...
         self.prompt = prompt
 
     def validate(self):

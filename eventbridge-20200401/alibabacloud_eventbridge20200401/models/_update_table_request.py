@@ -20,29 +20,29 @@ class UpdateTableRequest(DaraModel):
         update_comment: str = None,
         update_retention_policy: main_models.UpdateTableRequestUpdateRetentionPolicy = None,
     ):
-        # 新增列定义（JSON 对象）。包含 Name（列名，必填）、Type（数据类型，必填，如 STRING、INT32、INT64、FLOAT、DOUBLE、BOOLEAN、TIMESTAMP）、Comment（列备注，选填）。每次调用只能新增一列
+        # Add column
         self.add_column = add_column
-        # 表所属的数据目录名称。可通过 ListCatalogs 获取
+        # Data catalog to which it belongs
         self.catalog = catalog
-        # 用于保证请求幂等性的Token。建议使用 UUID
+        # Idempotency token
         self.client_token = client_token
-        # 删除列定义（JSON 对象）。包含 Name（要删除的列名，必填）。删除后不可恢复，已有数据中该列的值将丢失。每次调用只能删除一列
+        # Delete column
         self.delete_column = delete_column
-        # 要修改的事件表名称。名称本身不可修改，此处用于定位目标表。需同时指定所属 Catalog 和 Namespace。可通过 ListTables 获取
+        # Table name
         # 
         # This parameter is required.
         self.name = name
-        # 表所属的命名空间名称。可通过 ListNamespaces 获取
+        # Namespace to which it belongs
         self.namespace = namespace
-        # 重命名列（JSON 对象）。包含 Name（原列名，必填）、NewName（新列名，必填）。每次调用只能重命名一列
+        # Rename column
         self.rename_column = rename_column
-        # 修改列的备注信息（JSON 对象）。包含 Name（目标列名，必填）、Comment（新备注内容，必填，传空字符串可清除备注）。每次调用只能修改一列
+        # Update column comment
         self.update_column_comment = update_column_comment
-        # 修改列的数据类型（JSON 对象）。包含 Name（目标列名，必填）、Type（新数据类型，必填）。仅支持兼容类型转换，每次调用只能修改一列
+        # Update column type
         self.update_column_type = update_column_type
-        # 修改表的备注描述。传入新的备注内容替换原有备注，传空字符串可清除备注
+        # Update table comment
         self.update_comment = update_comment
-        # 修改数据保留策略（JSON 对象）。包含 HotTTL（热数据保留天数）、ColdTTL（冷数据保留天数）。传入后会替换原有策略
+        # Update retention policy
         self.update_retention_policy = update_retention_policy
 
     def validate(self):
@@ -148,7 +148,9 @@ class UpdateTableRequestUpdateRetentionPolicy(DaraModel):
         cold_ttl: int = None,
         hot_ttl: int = None,
     ):
+        # Cold storage duration
         self.cold_ttl = cold_ttl
+        # Hot storage duration
         self.hot_ttl = hot_ttl
 
     def validate(self):
@@ -183,7 +185,9 @@ class UpdateTableRequestUpdateColumnType(DaraModel):
         name: str = None,
         type: str = None,
     ):
+        # Connector name
         self.name = name
+        # Column type
         self.type = type
 
     def validate(self):
@@ -218,7 +222,9 @@ class UpdateTableRequestUpdateColumnComment(DaraModel):
         comment: str = None,
         name: str = None,
     ):
+        # Comment information.
         self.comment = comment
+        # Extended data name
         self.name = name
 
     def validate(self):
@@ -253,7 +259,9 @@ class UpdateTableRequestRenameColumn(DaraModel):
         name: str = None,
         new_name: str = None,
     ):
+        # Connector name.
         self.name = name
+        # The updated name. Enter this when you need to modify the metric name.
         self.new_name = new_name
 
     def validate(self):
@@ -287,6 +295,7 @@ class UpdateTableRequestDeleteColumn(DaraModel):
         self,
         name: str = None,
     ):
+        # Connector name.
         self.name = name
 
     def validate(self):
@@ -316,8 +325,11 @@ class UpdateTableRequestAddColumn(DaraModel):
         name: str = None,
         type: str = None,
     ):
+        # Comment.
         self.comment = comment
+        # The full name of the queried event type.
         self.name = name
+        # The event target type. For more information, see [Event target parameters](https://help.aliyun.com/document_detail/185887.html).
         self.type = type
 
     def validate(self):

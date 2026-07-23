@@ -23,19 +23,33 @@ class AskLumaLogEntry(DaraModel):
         source: str = None,
         status: str = None,
     ):
+        # Agent name
         self.agent_name = agent_name
+        # Whether clarification is needed
         self.clarification_needed = clarification_needed
+        # Clarification question text
         self.clarification_question = clarification_question
+        # Structured result body
         self.content = content
+        # Conversation ID
         self.conversation_id = conversation_id
+        # Creation time (milliseconds)
         self.created_at = created_at
+        # Invocation duration (milliseconds)
         self.duration_ms = duration_ms
+        # Error code
         self.error_code = error_code
+        # Error details
         self.error_message = error_message
+        # Whether it is an error
         self.is_error = is_error
+        # Message ID
         self.message_id = message_id
+        # Input question
         self.question = question
+        # Log source
         self.source = source
+        # Execution status
         self.status = status
 
     def validate(self):

@@ -9,6 +9,7 @@ class DiscoverEventSourceShrinkRequest(DaraModel):
         self,
         source_my_sqlparameters_shrink: str = None,
     ):
+        # The MySQL source parameters.
         self.source_my_sqlparameters_shrink = source_my_sqlparameters_shrink
 
     def validate(self):

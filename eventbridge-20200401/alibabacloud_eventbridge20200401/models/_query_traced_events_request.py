@@ -17,7 +17,7 @@ class QueryTracedEventsRequest(DaraModel):
         start_time: int = None,
         subject: str = None,
     ):
-        # The end of the time range when event traces are queried. Unit: milliseconds.
+        # The end of the time range for the query, specified as a UNIX timestamp in milliseconds.
         # 
         # This parameter is required.
         self.end_time = end_time
@@ -29,18 +29,17 @@ class QueryTracedEventsRequest(DaraModel):
         self.event_source = event_source
         # The event type.
         self.event_type = event_type
-        # The maximum number of entries to return in a request. You can use this parameter and NextToken to implement paging.
-        # 
-        # >  A maximum of 100 entries can be returned in a request.
+        # The maximum number of entries to return per page. Use this parameter with NextToken to paginate the results.>Notice: The maximum value is 100.
         self.limit = limit
-        # The name of the event rule that is matched.
+        # The name of the matched rule.
         self.matched_rule = matched_rule
-        # If you configure Limit and excess return values exist, this parameter is returned.
+        # The token for retrieving the next page of results. It is returned in the response to a previous request if more results are available.
         self.next_token = next_token
-        # The beginning of the time range to query event traces. Unit: milliseconds.
+        # The beginning of the time range for the query, specified as a UNIX timestamp in milliseconds.
         # 
         # This parameter is required.
         self.start_time = start_time
+        # The event subject.
         self.subject = subject
 
     def validate(self):

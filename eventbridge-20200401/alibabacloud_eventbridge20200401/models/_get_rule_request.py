@@ -14,7 +14,7 @@ class GetRuleRequest(DaraModel):
         # 
         # This parameter is required.
         self.event_bus_name = event_bus_name
-        # The name of the event rule.
+        # The name of the rule.
         # 
         # This parameter is required.
         self.rule_name = rule_name

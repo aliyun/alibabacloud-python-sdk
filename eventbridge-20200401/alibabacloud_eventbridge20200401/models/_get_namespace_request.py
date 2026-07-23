@@ -11,11 +11,11 @@ class GetNamespaceRequest(DaraModel):
         client_token: str = None,
         name: str = None,
     ):
-        # 命名空间所属的数据目录名称。可通过 ListCatalogs 接口获取已有目录列表
+        # Data catalog
         self.catalog = catalog
-        # 用于保证请求幂等性的Token。建议使用 UUID
+        # Idempotency token
         self.client_token = client_token
-        # 要查询的命名空间名称。需同时指定所属 Catalog。可通过 ListNamespaces 获取已有命名空间列表
+        # Namespace name
         # 
         # This parameter is required.
         self.name = name

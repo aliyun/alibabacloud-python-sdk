@@ -10,7 +10,7 @@ class TestEventSourceConfigRequest(DaraModel):
         self,
         source_my_sqlparameters: main_models.TestEventSourceConfigRequestSourceMySQLParameters = None,
     ):
-        # The parameters that are configured if you specify MySQL as the event source.
+        # The parameters for the MySQL source.
         self.source_my_sqlparameters = source_my_sqlparameters
 
     def validate(self):
@@ -52,34 +52,31 @@ class TestEventSourceConfigRequestSourceMySQLParameters(DaraModel):
         v_switch_ids: str = None,
         vpc_id: str = None,
     ):
+        # The list of allowed CIDR blocks.
         self.allowed_cidrs = allowed_cidrs
         # The database name.
         self.database_name = database_name
-        # The endpoint of the database.
+        # The database endpoint.
         self.host_name = host_name
         # The network type.
-        # 
-        # Valid values:
-        # 
-        # *   PrivateNetwork
-        # *   PublicNetwork
         self.network_type = network_type
-        # The password that is used for authentication.
+        # The password for the specified username.
         self.password = password
-        # The port that is used to connect to the database.
+        # The database connection port.
         self.port = port
         # The region ID.
         self.region_id = region_id
-        # The ID of the security group.
+        # The security group ID.
         self.security_group_id = security_group_id
+        # The snapshot mode.
         self.snapshot_mode = snapshot_mode
-        # The table name. The name must be prefixed with the database name. ${DatabaseName}.${TableName}
+        # The table name. The name must be prefixed with the database name in the ${DatabaseName}.${TableName} format.
         self.table_names = table_names
-        # The username that is used to log on to the database.
+        # The username for the database.
         self.user = user
-        # The vSwitch ID.
+        # The vSwitch IDs.
         self.v_switch_ids = v_switch_ids
-        # The virtual private cloud (VPC) ID.
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):

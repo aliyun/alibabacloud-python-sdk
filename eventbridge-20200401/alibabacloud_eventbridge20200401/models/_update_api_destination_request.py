@@ -77,10 +77,15 @@ class UpdateApiDestinationRequestHttpApiParameters(DaraModel):
         # The HTTP request method. Valid values:
         # 
         # - GET
+        # 
         # - POST
+        # 
         # - HEAD
+        # 
         # - DELETE
+        # 
         # - PUT
+        # 
         # - PATCH
         self.method = method
 

@@ -12,13 +12,13 @@ class CreateNamespaceRequest(DaraModel):
         comment: str = None,
         name: str = None,
     ):
-        # 命名空间所属的数据目录名称。可通过 ListCatalogs 接口获取已有目录列表
+        # Data catalog
         self.catalog = catalog
-        # 用于保证请求幂等性的Token
+        # Idempotent Token
         self.client_token = client_token
-        # 命名空间的备注描述信息
+        # Remarks
         self.comment = comment
-        # 命名空间名称，在同一数据目录下唯一。以字母或数字开头，支持字母、数字、下划线和短横线，长度1~127
+        # Namespace name
         # 
         # This parameter is required.
         self.name = name

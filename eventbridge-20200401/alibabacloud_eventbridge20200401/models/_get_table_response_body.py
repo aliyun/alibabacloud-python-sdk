@@ -14,10 +14,15 @@ class GetTableResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Return code
         self.code = code
+        # Table details
         self.data = data
+        # API response message
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Indicates whether the request was successful
         self.success = success
 
     def validate(self):

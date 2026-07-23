@@ -14,10 +14,15 @@ class CreateNamespaceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # API response code, 200 indicates success
         self.code = code
+        # Response data
         self.data = data
+        # API response message
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Whether the operation was successful
         self.success = success
 
     def validate(self):
@@ -71,6 +76,7 @@ class CreateNamespaceResponseBodyData(DaraModel):
         self,
         namespace_arn: str = None,
     ):
+        # Namespace ARN
         self.namespace_arn = namespace_arn
 
     def validate(self):

@@ -14,6 +14,7 @@ from ._content import Content
 from ._conversation import Conversation
 from ._dash_scope_transform_parameters import DashScopeTransformParameters
 from ._embedding_transform_parameters import EmbeddingTransformParameters
+from ._event_house_runtime import EventHouseRuntime
 from ._event_table_query_histogram import EventTableQueryHistogram
 from ._execution_result import ExecutionResult
 from ._metadata import Metadata
@@ -22,6 +23,7 @@ from ._query_ask_luma_log_result import QueryAskLumaLogResult
 from ._query_attachment import QueryAttachment
 from ._row import Row
 from ._schema_column import SchemaColumn
+from ._sink_agent_run_parameters import SinkAgentRunParameters
 from ._sink_api_destination_parameters import SinkApiDestinationParameters
 from ._sink_bai_lian_parameters import SinkBaiLianParameters
 from ._sink_data_works_trigger_parameters import SinkDataWorksTriggerParameters
@@ -30,6 +32,8 @@ from ._sink_mqttparameters import SinkMQTTParameters
 from ._sink_ossparameters import SinkOSSParameters
 from ._sink_rabbit_mqmeta_parameters import SinkRabbitMQMetaParameters
 from ._sink_rabbit_mqmsg_sync_parameters import SinkRabbitMQMsgSyncParameters
+from ._source_fei_shu_docs_parameters import SourceFeiShuDocsParameters
+from ._source_jdbcparameters import SourceJDBCParameters
 from ._source_my_sqlparameters import SourceMySQLParameters
 from ._source_postgre_sqlparameters import SourcePostgreSQLParameters
 from ._source_rabbit_mqmeta_parameters import SourceRabbitMQMetaParameters
@@ -87,9 +91,16 @@ from ._delete_api_destination_response import DeleteApiDestinationResponse
 from ._delete_connection_request import DeleteConnectionRequest
 from ._delete_connection_response_body import DeleteConnectionResponseBody
 from ._delete_connection_response import DeleteConnectionResponse
+from ._delete_event_analysis_job_request import DeleteEventAnalysisJobRequest
+from ._delete_event_analysis_job_shrink_request import DeleteEventAnalysisJobShrinkRequest
+from ._delete_event_analysis_job_response_body import DeleteEventAnalysisJobResponseBody
+from ._delete_event_analysis_job_response import DeleteEventAnalysisJobResponse
 from ._delete_event_bus_request import DeleteEventBusRequest
 from ._delete_event_bus_response_body import DeleteEventBusResponseBody
 from ._delete_event_bus_response import DeleteEventBusResponse
+from ._delete_event_house_runtime_request import DeleteEventHouseRuntimeRequest
+from ._delete_event_house_runtime_response_body import DeleteEventHouseRuntimeResponseBody
+from ._delete_event_house_runtime_response import DeleteEventHouseRuntimeResponse
 from ._delete_event_source_request import DeleteEventSourceRequest
 from ._delete_event_source_response_body import DeleteEventSourceResponseBody
 from ._delete_event_source_response import DeleteEventSourceResponse
@@ -138,6 +149,9 @@ from ._get_connection_response import GetConnectionResponse
 from ._get_event_bus_request import GetEventBusRequest
 from ._get_event_bus_response_body import GetEventBusResponseBody
 from ._get_event_bus_response import GetEventBusResponse
+from ._get_event_house_runtime_request import GetEventHouseRuntimeRequest
+from ._get_event_house_runtime_response_body import GetEventHouseRuntimeResponseBody
+from ._get_event_house_runtime_response import GetEventHouseRuntimeResponse
 from ._get_event_streaming_request import GetEventStreamingRequest
 from ._get_event_streaming_response_body import GetEventStreamingResponseBody
 from ._get_event_streaming_response import GetEventStreamingResponse
@@ -167,6 +181,9 @@ from ._list_connections_response import ListConnectionsResponse
 from ._list_event_buses_request import ListEventBusesRequest
 from ._list_event_buses_response_body import ListEventBusesResponseBody
 from ._list_event_buses_response import ListEventBusesResponse
+from ._list_event_house_runtimes_request import ListEventHouseRuntimesRequest
+from ._list_event_house_runtimes_response_body import ListEventHouseRuntimesResponseBody
+from ._list_event_house_runtimes_response import ListEventHouseRuntimesResponse
 from ._list_event_streamings_request import ListEventStreamingsRequest
 from ._list_event_streamings_response_body import ListEventStreamingsResponseBody
 from ._list_event_streamings_response import ListEventStreamingsResponse
@@ -238,6 +255,9 @@ from ._update_connection_response import UpdateConnectionResponse
 from ._update_event_bus_request import UpdateEventBusRequest
 from ._update_event_bus_response_body import UpdateEventBusResponseBody
 from ._update_event_bus_response import UpdateEventBusResponse
+from ._update_event_house_runtime_request import UpdateEventHouseRuntimeRequest
+from ._update_event_house_runtime_response_body import UpdateEventHouseRuntimeResponseBody
+from ._update_event_house_runtime_response import UpdateEventHouseRuntimeResponse
 from ._update_event_source_request import UpdateEventSourceRequest
 from ._update_event_source_shrink_request import UpdateEventSourceShrinkRequest
 from ._update_event_source_response_body import UpdateEventSourceResponseBody
@@ -267,6 +287,7 @@ from ._bai_lian_agent_transform_parameters import BaiLianAgentTransformParameter
 from ._dash_scope_transform_parameters import DashScopeTransformParametersMessages
 from ._embedding_transform_parameters import EmbeddingTransformParametersEmbeddingData
 from ._metadata import MetadataAttachments
+from ._sink_agent_run_parameters import SinkAgentRunParametersBody
 from ._sink_api_destination_parameters import SinkApiDestinationParametersBodyParameters
 from ._sink_api_destination_parameters import SinkApiDestinationParametersHeaderParameters
 from ._sink_api_destination_parameters import SinkApiDestinationParametersQueryStringParameters
@@ -414,11 +435,15 @@ from ._create_event_streaming_request import CreateEventStreamingRequestSinkSink
 from ._create_event_streaming_request import CreateEventStreamingRequestSinkSinkRabbitMQParametersExchange
 from ._create_event_streaming_request import CreateEventStreamingRequestSinkSinkRabbitMQParametersInstanceId
 from ._create_event_streaming_request import CreateEventStreamingRequestSinkSinkRabbitMQParametersMessageId
+from ._create_event_streaming_request import CreateEventStreamingRequestSinkSinkRabbitMQParametersNetworkType
 from ._create_event_streaming_request import CreateEventStreamingRequestSinkSinkRabbitMQParametersProperties
 from ._create_event_streaming_request import CreateEventStreamingRequestSinkSinkRabbitMQParametersQueueName
 from ._create_event_streaming_request import CreateEventStreamingRequestSinkSinkRabbitMQParametersRoutingKey
+from ._create_event_streaming_request import CreateEventStreamingRequestSinkSinkRabbitMQParametersSecurityGroupId
 from ._create_event_streaming_request import CreateEventStreamingRequestSinkSinkRabbitMQParametersTargetType
+from ._create_event_streaming_request import CreateEventStreamingRequestSinkSinkRabbitMQParametersVSwitchIds
 from ._create_event_streaming_request import CreateEventStreamingRequestSinkSinkRabbitMQParametersVirtualHostName
+from ._create_event_streaming_request import CreateEventStreamingRequestSinkSinkRabbitMQParametersVpcId
 from ._create_event_streaming_request import CreateEventStreamingRequestSinkSinkRabbitMQParameters
 from ._create_event_streaming_request import CreateEventStreamingRequestSinkSinkRocketMQCheckpointParametersConsumeTimestamp
 from ._create_event_streaming_request import CreateEventStreamingRequestSinkSinkRocketMQCheckpointParametersGroup
@@ -482,6 +507,9 @@ from ._create_rule_response_body import CreateRuleResponseBodyData
 from ._create_table_request import CreateTableRequestColumns
 from ._create_table_request import CreateTableRequestRetentionPolicy
 from ._create_table_response_body import CreateTableResponseBodyData
+from ._delete_event_analysis_job_request import DeleteEventAnalysisJobRequestSourceResourceKafka
+from ._delete_event_analysis_job_request import DeleteEventAnalysisJobRequestSourceResourceRocketMQ
+from ._delete_event_analysis_job_request import DeleteEventAnalysisJobRequestSourceResource
 from ._delete_targets_response_body import DeleteTargetsResponseBodyDataErrorEntries
 from ._delete_targets_response_body import DeleteTargetsResponseBodyData
 from ._discover_event_source_request import DiscoverEventSourceRequestSourceMySQLParameters
@@ -682,6 +710,7 @@ from ._list_connections_response_body import ListConnectionsResponseBodyDataConn
 from ._list_connections_response_body import ListConnectionsResponseBodyData
 from ._list_event_buses_response_body import ListEventBusesResponseBodyDataEventBuses
 from ._list_event_buses_response_body import ListEventBusesResponseBodyData
+from ._list_event_house_runtimes_response_body import ListEventHouseRuntimesResponseBodyData
 from ._list_event_streamings_request import ListEventStreamingsRequestTags
 from ._list_event_streamings_response_body import ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsBatchWindow
 from ._list_event_streamings_response_body import ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsBusinessOption
@@ -1050,6 +1079,7 @@ __all__ = [
     Conversation,
     DashScopeTransformParameters,
     EmbeddingTransformParameters,
+    EventHouseRuntime,
     EventTableQueryHistogram,
     ExecutionResult,
     Metadata,
@@ -1058,6 +1088,7 @@ __all__ = [
     QueryAttachment,
     Row,
     SchemaColumn,
+    SinkAgentRunParameters,
     SinkApiDestinationParameters,
     SinkBaiLianParameters,
     SinkDataWorksTriggerParameters,
@@ -1066,6 +1097,8 @@ __all__ = [
     SinkOSSParameters,
     SinkRabbitMQMetaParameters,
     SinkRabbitMQMsgSyncParameters,
+    SourceFeiShuDocsParameters,
+    SourceJDBCParameters,
     SourceMySQLParameters,
     SourcePostgreSQLParameters,
     SourceRabbitMQMetaParameters,
@@ -1123,9 +1156,16 @@ __all__ = [
     DeleteConnectionRequest,
     DeleteConnectionResponseBody,
     DeleteConnectionResponse,
+    DeleteEventAnalysisJobRequest,
+    DeleteEventAnalysisJobShrinkRequest,
+    DeleteEventAnalysisJobResponseBody,
+    DeleteEventAnalysisJobResponse,
     DeleteEventBusRequest,
     DeleteEventBusResponseBody,
     DeleteEventBusResponse,
+    DeleteEventHouseRuntimeRequest,
+    DeleteEventHouseRuntimeResponseBody,
+    DeleteEventHouseRuntimeResponse,
     DeleteEventSourceRequest,
     DeleteEventSourceResponseBody,
     DeleteEventSourceResponse,
@@ -1174,6 +1214,9 @@ __all__ = [
     GetEventBusRequest,
     GetEventBusResponseBody,
     GetEventBusResponse,
+    GetEventHouseRuntimeRequest,
+    GetEventHouseRuntimeResponseBody,
+    GetEventHouseRuntimeResponse,
     GetEventStreamingRequest,
     GetEventStreamingResponseBody,
     GetEventStreamingResponse,
@@ -1203,6 +1246,9 @@ __all__ = [
     ListEventBusesRequest,
     ListEventBusesResponseBody,
     ListEventBusesResponse,
+    ListEventHouseRuntimesRequest,
+    ListEventHouseRuntimesResponseBody,
+    ListEventHouseRuntimesResponse,
     ListEventStreamingsRequest,
     ListEventStreamingsResponseBody,
     ListEventStreamingsResponse,
@@ -1274,6 +1320,9 @@ __all__ = [
     UpdateEventBusRequest,
     UpdateEventBusResponseBody,
     UpdateEventBusResponse,
+    UpdateEventHouseRuntimeRequest,
+    UpdateEventHouseRuntimeResponseBody,
+    UpdateEventHouseRuntimeResponse,
     UpdateEventSourceRequest,
     UpdateEventSourceShrinkRequest,
     UpdateEventSourceResponseBody,
@@ -1303,6 +1352,7 @@ __all__ = [
     DashScopeTransformParametersMessages,
     EmbeddingTransformParametersEmbeddingData,
     MetadataAttachments,
+    SinkAgentRunParametersBody,
     SinkApiDestinationParametersBodyParameters,
     SinkApiDestinationParametersHeaderParameters,
     SinkApiDestinationParametersQueryStringParameters,
@@ -1450,11 +1500,15 @@ __all__ = [
     CreateEventStreamingRequestSinkSinkRabbitMQParametersExchange,
     CreateEventStreamingRequestSinkSinkRabbitMQParametersInstanceId,
     CreateEventStreamingRequestSinkSinkRabbitMQParametersMessageId,
+    CreateEventStreamingRequestSinkSinkRabbitMQParametersNetworkType,
     CreateEventStreamingRequestSinkSinkRabbitMQParametersProperties,
     CreateEventStreamingRequestSinkSinkRabbitMQParametersQueueName,
     CreateEventStreamingRequestSinkSinkRabbitMQParametersRoutingKey,
+    CreateEventStreamingRequestSinkSinkRabbitMQParametersSecurityGroupId,
     CreateEventStreamingRequestSinkSinkRabbitMQParametersTargetType,
+    CreateEventStreamingRequestSinkSinkRabbitMQParametersVSwitchIds,
     CreateEventStreamingRequestSinkSinkRabbitMQParametersVirtualHostName,
+    CreateEventStreamingRequestSinkSinkRabbitMQParametersVpcId,
     CreateEventStreamingRequestSinkSinkRabbitMQParameters,
     CreateEventStreamingRequestSinkSinkRocketMQCheckpointParametersConsumeTimestamp,
     CreateEventStreamingRequestSinkSinkRocketMQCheckpointParametersGroup,
@@ -1518,6 +1572,9 @@ __all__ = [
     CreateTableRequestColumns,
     CreateTableRequestRetentionPolicy,
     CreateTableResponseBodyData,
+    DeleteEventAnalysisJobRequestSourceResourceKafka,
+    DeleteEventAnalysisJobRequestSourceResourceRocketMQ,
+    DeleteEventAnalysisJobRequestSourceResource,
     DeleteTargetsResponseBodyDataErrorEntries,
     DeleteTargetsResponseBodyData,
     DiscoverEventSourceRequestSourceMySQLParameters,
@@ -1718,6 +1775,7 @@ __all__ = [
     ListConnectionsResponseBodyData,
     ListEventBusesResponseBodyDataEventBuses,
     ListEventBusesResponseBodyData,
+    ListEventHouseRuntimesResponseBodyData,
     ListEventStreamingsRequestTags,
     ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsBatchWindow,
     ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsBusinessOption,

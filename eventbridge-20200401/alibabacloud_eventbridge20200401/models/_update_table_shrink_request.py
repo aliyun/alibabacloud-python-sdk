@@ -19,29 +19,29 @@ class UpdateTableShrinkRequest(DaraModel):
         update_comment: str = None,
         update_retention_policy_shrink: str = None,
     ):
-        # 新增列定义（JSON 对象）。包含 Name（列名，必填）、Type（数据类型，必填，如 STRING、INT32、INT64、FLOAT、DOUBLE、BOOLEAN、TIMESTAMP）、Comment（列备注，选填）。每次调用只能新增一列
+        # Add column
         self.add_column_shrink = add_column_shrink
-        # 表所属的数据目录名称。可通过 ListCatalogs 获取
+        # Data catalog to which it belongs
         self.catalog = catalog
-        # 用于保证请求幂等性的Token。建议使用 UUID
+        # Idempotency token
         self.client_token = client_token
-        # 删除列定义（JSON 对象）。包含 Name（要删除的列名，必填）。删除后不可恢复，已有数据中该列的值将丢失。每次调用只能删除一列
+        # Delete column
         self.delete_column_shrink = delete_column_shrink
-        # 要修改的事件表名称。名称本身不可修改，此处用于定位目标表。需同时指定所属 Catalog 和 Namespace。可通过 ListTables 获取
+        # Table name
         # 
         # This parameter is required.
         self.name = name
-        # 表所属的命名空间名称。可通过 ListNamespaces 获取
+        # Namespace to which it belongs
         self.namespace = namespace
-        # 重命名列（JSON 对象）。包含 Name（原列名，必填）、NewName（新列名，必填）。每次调用只能重命名一列
+        # Rename column
         self.rename_column_shrink = rename_column_shrink
-        # 修改列的备注信息（JSON 对象）。包含 Name（目标列名，必填）、Comment（新备注内容，必填，传空字符串可清除备注）。每次调用只能修改一列
+        # Update column comment
         self.update_column_comment_shrink = update_column_comment_shrink
-        # 修改列的数据类型（JSON 对象）。包含 Name（目标列名，必填）、Type（新数据类型，必填）。仅支持兼容类型转换，每次调用只能修改一列
+        # Update column type
         self.update_column_type_shrink = update_column_type_shrink
-        # 修改表的备注描述。传入新的备注内容替换原有备注，传空字符串可清除备注
+        # Update table comment
         self.update_comment = update_comment
-        # 修改数据保留策略（JSON 对象）。包含 HotTTL（热数据保留天数）、ColdTTL（冷数据保留天数）。传入后会替换原有策略
+        # Update retention policy
         self.update_retention_policy_shrink = update_retention_policy_shrink
 
     def validate(self):

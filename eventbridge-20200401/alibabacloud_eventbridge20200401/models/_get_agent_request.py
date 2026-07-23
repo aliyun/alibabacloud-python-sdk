@@ -9,6 +9,8 @@ class GetAgentRequest(DaraModel):
         self,
         name: str = None,
     ):
+        # The agent name.
+        # 
         # This parameter is required.
         self.name = name
 

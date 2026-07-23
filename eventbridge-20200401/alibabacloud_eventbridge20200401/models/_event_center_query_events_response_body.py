@@ -16,10 +16,15 @@ class EventCenterQueryEventsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status of the API call, which can be Success or a POP error code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the call was successful. `true` indicates success, and `false` indicates failure.
         self.success = success
 
     def validate(self):
@@ -77,10 +82,15 @@ class EventCenterQueryEventsResponseBodyData(DaraModel):
         time_series: List[main_models.EventCenterQueryEventsResponseBodyDataTimeSeries] = None,
         total_count: int = None,
     ):
+        # The maximum number of entries to return.
         self.max_results = max_results
+        # The token used to retrieve the next page of results. If this parameter is empty, all results have been returned.
         self.next_token = next_token
+        # The query results for the `table` query type.
         self.table = table
+        # The query results for the `time series` query type.
         self.time_series = time_series
+        # The total number of entries that meet the filter conditions. This parameter is optional and is not returned by default.
         self.total_count = total_count
 
     def validate(self):
@@ -150,7 +160,9 @@ class EventCenterQueryEventsResponseBodyDataTimeSeries(DaraModel):
         row_data: Dict[str, Any] = None,
         time: str = None,
     ):
+        # A query result entry, represented as a key-value pair.
         self.row_data = row_data
+        # The timestamp.
         self.time = time
 
     def validate(self):
@@ -184,6 +196,7 @@ class EventCenterQueryEventsResponseBodyDataTable(DaraModel):
         self,
         row_data: Dict[str, Any] = None,
     ):
+        # A query result entry, represented as a key-value pair.
         self.row_data = row_data
 
     def validate(self):

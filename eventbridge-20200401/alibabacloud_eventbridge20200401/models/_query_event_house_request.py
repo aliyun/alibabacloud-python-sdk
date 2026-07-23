@@ -10,7 +10,10 @@ class QueryEventHouseRequest(DaraModel):
         limit: int = None,
         query: str = None,
     ):
+        # The maximum number of rows to return. If a LIMIT clause is already specified in the SQL statement, the SQL\\"s own LIMIT takes precedence.
         self.limit = limit
+        # The query statement. Typically uses a three-part table name in the format catalog.namespace.table.
+        # 
         # This parameter is required.
         self.query = query
 

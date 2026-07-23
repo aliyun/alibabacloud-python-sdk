@@ -9,7 +9,7 @@ class TestEventSourceConfigShrinkRequest(DaraModel):
         self,
         source_my_sqlparameters_shrink: str = None,
     ):
-        # The parameters that are configured if you specify MySQL as the event source.
+        # The parameters for the MySQL source.
         self.source_my_sqlparameters_shrink = source_my_sqlparameters_shrink
 
     def validate(self):

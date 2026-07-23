@@ -17,16 +17,18 @@ class ListEventStreamingsRequest(DaraModel):
         source_arn: str = None,
         tags: List[main_models.ListEventStreamingsRequestTags] = None,
     ):
-        # The maximum number of entries to be returned in a call. You can use this parameter and NextToken to implement paging. A maximum of 100 entries can be returned in a call.
+        # The maximum number of entries returned per request. You can use this parameter together with NextToken to implement paging.
+        # >Notice: The maximum number of entries returned per request cannot exceed 100.
         self.limit = limit
-        # The name of the event stream that you want to query.
+        # The name prefix of the event stream.
         self.name_prefix = name_prefix
-        # If you configure Limit and excess return values exist, this parameter is returned.
+        # If the number of entries exceeds the value of Limit, a NextToken is returned.
         self.next_token = next_token
         # The ARN of the event target.
         self.sink_arn = sink_arn
-        # The Alibaba Cloud Resource Name (ARN) of the event source.
+        # The ARN of the event source.
         self.source_arn = source_arn
+        # The tags used for filtering.
         self.tags = tags
 
     def validate(self):
@@ -93,7 +95,9 @@ class ListEventStreamingsRequestTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):

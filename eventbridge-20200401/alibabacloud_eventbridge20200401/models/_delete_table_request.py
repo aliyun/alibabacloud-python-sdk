@@ -12,15 +12,15 @@ class DeleteTableRequest(DaraModel):
         name: str = None,
         namespace: str = None,
     ):
-        # 表所属的数据目录名称。可通过 ListCatalogs 获取
+        # Data catalog the table belongs to
         self.catalog = catalog
-        # 用于保证请求幂等性的Token。建议使用 UUID
+        # Idempotent token
         self.client_token = client_token
-        # 要删除的事件表名称。删除后不可恢复，表中的所有数据将被永久清除。需同时指定所属 Catalog 和 Namespace。可通过 ListTables 获取
+        # Table name
         # 
         # This parameter is required.
         self.name = name
-        # 表所属的命名空间名称。可通过 ListNamespaces 获取
+        # Namespace the table belongs to
         self.namespace = namespace
 
     def validate(self):

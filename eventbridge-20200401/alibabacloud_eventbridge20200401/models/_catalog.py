@@ -16,17 +16,17 @@ class Catalog(DaraModel):
         provider: str = None,
         type: str = None,
     ):
-        # 数据目录的备注描述信息
+        # The comment or description of the data catalog
         self.comment = comment
-        # 挂载类型 Catalog 关联的连接名称。仅 Provider 为 MySQL/PostgreSQL/Elasticsearch 时有值
+        # The connection name associated with a mounted-type Catalog. Only has a value when Provider is MySQL/PostgreSQL/Elasticsearch
         self.connection_name = connection_name
-        # 数据目录的唯一标识名称
+        # The unique identifier name of the data catalog
         self.name = name
-        # 扩展属性（JSON 对象）。Elasticsearch 类型包含 IndexPattern 等信息
+        # Extended properties (JSON object). The Elasticsearch type contains information such as IndexPattern
         self.properties = properties
-        # 数据源提供方。EventHouse 为内置存储，MySQL/PostgreSQL/Elasticsearch 为外部挂载
+        # The data source provider. EventHouse is the built-in storage; MySQL/PostgreSQL/Elasticsearch are externally mounted
         self.provider = provider
-        # 数据目录类型，如 RELATIONAL
+        # The type of the data catalog, such as RELATIONAL
         self.type = type
 
     def validate(self):

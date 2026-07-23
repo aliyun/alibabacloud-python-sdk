@@ -20,7 +20,35 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'us-west-1': 'eventbridge-console.us-west-1.aliyuncs.com',
+            'us-east-1': 'eventbridge-console.us-east-1.aliyuncs.com',
+            'eu-west-1': 'eventbridge-console.eu-west-1.aliyuncs.com',
+            'eu-central-1': 'eventbridge-console.eu-central-1.aliyuncs.com',
+            'cn-zhangjiakou': 'eventbridge-console.cn-zhangjiakou.aliyuncs.com',
+            'cn-wulanchabu': 'eventbridge-console.cn-wulanchabu.aliyuncs.com',
+            'cn-shenzhen-finance-1': 'eventbridge-console.cn-shenzhen-finance-1.aliyuncs.com',
+            'cn-shenzhen': 'eventbridge-console.cn-shenzhen.aliyuncs.com',
+            'cn-shanghai-finance-1': 'eventbridge-console.cn-shanghai-finance-1.aliyuncs.com',
+            'cn-shanghai': 'eventbridge-console.cn-shanghai.aliyuncs.com',
+            'cn-qingdao': 'eventbridge-console.cn-qingdao.aliyuncs.com',
+            'cn-huhehaote': 'eventbridge-console.cn-huhehaote.aliyuncs.com',
+            'cn-hongkong': 'eventbridge-console.cn-hongkong.aliyuncs.com',
+            'cn-heyuan': 'eventbridge-console.cn-heyuan.aliyuncs.com',
+            'cn-hangzhou': 'eventbridge-console.cn-hangzhou.aliyuncs.com',
+            'cn-guangzhou': 'eventbridge-console.cn-guangzhou.aliyuncs.com',
+            'cn-chengdu': 'eventbridge-console.cn-chengdu.aliyuncs.com',
+            'cn-beijing-finance-1': 'eventbridge-console.cn-beijing-finance-1.aliyuncs.com',
+            'cn-beijing': 'eventbridge-console.cn-beijing.aliyuncs.com',
+            'ap-southeast-7': 'eventbridge-console.ap-southeast-7.aliyuncs.com',
+            'ap-southeast-6': 'eventbridge-console.ap-southeast-6.aliyuncs.com',
+            'ap-southeast-5': 'eventbridge-console.ap-southeast-5.aliyuncs.com',
+            'ap-southeast-3': 'eventbridge-console.ap-southeast-3.aliyuncs.com',
+            'ap-southeast-1': 'eventbridge-console.ap-southeast-1.aliyuncs.com',
+            'ap-northeast-2': 'eventbridge-console.ap-northeast-2.aliyuncs.com',
+            'ap-northeast-1': 'eventbridge-console.ap-northeast-1.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('eventbridge', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -737,6 +765,8 @@ class Client(OpenApiClient):
             body['EventStreamingName'] = request.event_streaming_name
         if not DaraCore.is_null(request.filter_pattern):
             body['FilterPattern'] = request.filter_pattern
+        if not DaraCore.is_null(request.metadata):
+            body['Metadata'] = request.metadata
         if not DaraCore.is_null(request.run_options_shrink):
             body['RunOptions'] = request.run_options_shrink
         if not DaraCore.is_null(request.sink_shrink):
@@ -789,6 +819,8 @@ class Client(OpenApiClient):
             body['EventStreamingName'] = request.event_streaming_name
         if not DaraCore.is_null(request.filter_pattern):
             body['FilterPattern'] = request.filter_pattern
+        if not DaraCore.is_null(request.metadata):
+            body['Metadata'] = request.metadata
         if not DaraCore.is_null(request.run_options_shrink):
             body['RunOptions'] = request.run_options_shrink
         if not DaraCore.is_null(request.sink_shrink):
@@ -1402,6 +1434,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_connection_with_options_async(request, runtime)
 
+    def delete_event_analysis_job_with_options(
+        self,
+        tmp_req: main_models.DeleteEventAnalysisJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteEventAnalysisJobResponse:
+        tmp_req.validate()
+        request = main_models.DeleteEventAnalysisJobShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.source_resource):
+            request.source_resource_shrink = Utils.array_to_string_with_specified_style(tmp_req.source_resource, 'SourceResource', 'json')
+        body = {}
+        if not DaraCore.is_null(request.source_resource_shrink):
+            body['SourceResource'] = request.source_resource_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteEventAnalysisJob',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteEventAnalysisJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_event_analysis_job_with_options_async(
+        self,
+        tmp_req: main_models.DeleteEventAnalysisJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteEventAnalysisJobResponse:
+        tmp_req.validate()
+        request = main_models.DeleteEventAnalysisJobShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.source_resource):
+            request.source_resource_shrink = Utils.array_to_string_with_specified_style(tmp_req.source_resource, 'SourceResource', 'json')
+        body = {}
+        if not DaraCore.is_null(request.source_resource_shrink):
+            body['SourceResource'] = request.source_resource_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteEventAnalysisJob',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteEventAnalysisJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_event_analysis_job(
+        self,
+        request: main_models.DeleteEventAnalysisJobRequest,
+    ) -> main_models.DeleteEventAnalysisJobResponse:
+        runtime = RuntimeOptions()
+        return self.delete_event_analysis_job_with_options(request, runtime)
+
+    async def delete_event_analysis_job_async(
+        self,
+        request: main_models.DeleteEventAnalysisJobRequest,
+    ) -> main_models.DeleteEventAnalysisJobResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_event_analysis_job_with_options_async(request, runtime)
+
     def delete_event_bus_with_options(
         self,
         request: main_models.DeleteEventBusRequest,
@@ -1471,6 +1581,76 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteEventBusResponse:
         runtime = RuntimeOptions()
         return await self.delete_event_bus_with_options_async(request, runtime)
+
+    def delete_event_house_runtime_with_options(
+        self,
+        request: main_models.DeleteEventHouseRuntimeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteEventHouseRuntimeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteEventHouseRuntime',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteEventHouseRuntimeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_event_house_runtime_with_options_async(
+        self,
+        request: main_models.DeleteEventHouseRuntimeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteEventHouseRuntimeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteEventHouseRuntime',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteEventHouseRuntimeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_event_house_runtime(
+        self,
+        request: main_models.DeleteEventHouseRuntimeRequest,
+    ) -> main_models.DeleteEventHouseRuntimeResponse:
+        runtime = RuntimeOptions()
+        return self.delete_event_house_runtime_with_options(request, runtime)
+
+    async def delete_event_house_runtime_async(
+        self,
+        request: main_models.DeleteEventHouseRuntimeRequest,
+    ) -> main_models.DeleteEventHouseRuntimeResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_event_house_runtime_with_options_async(request, runtime)
 
     def delete_event_source_with_options(
         self,
@@ -2622,6 +2802,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_event_bus_with_options_async(request, runtime)
 
+    def get_event_house_runtime_with_options(
+        self,
+        request: main_models.GetEventHouseRuntimeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetEventHouseRuntimeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetEventHouseRuntime',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetEventHouseRuntimeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_event_house_runtime_with_options_async(
+        self,
+        request: main_models.GetEventHouseRuntimeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetEventHouseRuntimeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetEventHouseRuntime',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetEventHouseRuntimeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_event_house_runtime(
+        self,
+        request: main_models.GetEventHouseRuntimeRequest,
+    ) -> main_models.GetEventHouseRuntimeResponse:
+        runtime = RuntimeOptions()
+        return self.get_event_house_runtime_with_options(request, runtime)
+
+    async def get_event_house_runtime_async(
+        self,
+        request: main_models.GetEventHouseRuntimeRequest,
+    ) -> main_models.GetEventHouseRuntimeResponse:
+        runtime = RuntimeOptions()
+        return await self.get_event_house_runtime_with_options_async(request, runtime)
+
     def get_event_streaming_with_options(
         self,
         request: main_models.GetEventStreamingRequest,
@@ -3377,6 +3627,80 @@ class Client(OpenApiClient):
     ) -> main_models.ListEventBusesResponse:
         runtime = RuntimeOptions()
         return await self.list_event_buses_with_options_async(request, runtime)
+
+    def list_event_house_runtimes_with_options(
+        self,
+        request: main_models.ListEventHouseRuntimesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListEventHouseRuntimesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListEventHouseRuntimes',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListEventHouseRuntimesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_event_house_runtimes_with_options_async(
+        self,
+        request: main_models.ListEventHouseRuntimesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListEventHouseRuntimesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListEventHouseRuntimes',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListEventHouseRuntimesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_event_house_runtimes(
+        self,
+        request: main_models.ListEventHouseRuntimesRequest,
+    ) -> main_models.ListEventHouseRuntimesResponse:
+        runtime = RuntimeOptions()
+        return self.list_event_house_runtimes_with_options(request, runtime)
+
+    async def list_event_house_runtimes_async(
+        self,
+        request: main_models.ListEventHouseRuntimesRequest,
+    ) -> main_models.ListEventHouseRuntimesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_event_house_runtimes_with_options_async(request, runtime)
 
     def list_event_streamings_with_options(
         self,
@@ -5178,6 +5502,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.update_event_bus_with_options_async(request, runtime)
 
+    def update_event_house_runtime_with_options(
+        self,
+        request: main_models.UpdateEventHouseRuntimeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateEventHouseRuntimeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cu):
+            query['Cu'] = request.cu
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateEventHouseRuntime',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateEventHouseRuntimeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_event_house_runtime_with_options_async(
+        self,
+        request: main_models.UpdateEventHouseRuntimeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateEventHouseRuntimeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cu):
+            query['Cu'] = request.cu
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateEventHouseRuntime',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateEventHouseRuntimeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_event_house_runtime(
+        self,
+        request: main_models.UpdateEventHouseRuntimeRequest,
+    ) -> main_models.UpdateEventHouseRuntimeResponse:
+        runtime = RuntimeOptions()
+        return self.update_event_house_runtime_with_options(request, runtime)
+
+    async def update_event_house_runtime_async(
+        self,
+        request: main_models.UpdateEventHouseRuntimeRequest,
+    ) -> main_models.UpdateEventHouseRuntimeResponse:
+        runtime = RuntimeOptions()
+        return await self.update_event_house_runtime_with_options_async(request, runtime)
+
     def update_event_source_with_options(
         self,
         tmp_req: main_models.UpdateEventSourceRequest,
@@ -5363,6 +5761,8 @@ class Client(OpenApiClient):
             body['EventStreamingName'] = request.event_streaming_name
         if not DaraCore.is_null(request.filter_pattern):
             body['FilterPattern'] = request.filter_pattern
+        if not DaraCore.is_null(request.metadata):
+            body['Metadata'] = request.metadata
         if not DaraCore.is_null(request.run_options_shrink):
             body['RunOptions'] = request.run_options_shrink
         if not DaraCore.is_null(request.sink_shrink):
@@ -5413,6 +5813,8 @@ class Client(OpenApiClient):
             body['EventStreamingName'] = request.event_streaming_name
         if not DaraCore.is_null(request.filter_pattern):
             body['FilterPattern'] = request.filter_pattern
+        if not DaraCore.is_null(request.metadata):
+            body['Metadata'] = request.metadata
         if not DaraCore.is_null(request.run_options_shrink):
             body['RunOptions'] = request.run_options_shrink
         if not DaraCore.is_null(request.sink_shrink):

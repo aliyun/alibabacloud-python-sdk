@@ -14,10 +14,15 @@ class GetAgentResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The API status or POP error code. Valid values: Success: succeeded.
         self.code = code
+        # The returned result.
         self.data = data
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Returns true if the operation is successful.
         self.success = success
 
     def validate(self):

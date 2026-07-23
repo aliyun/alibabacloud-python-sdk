@@ -14,10 +14,15 @@ class SinkApiDestinationParameters(DaraModel):
         query_string_parameters: main_models.SinkApiDestinationParametersQueryStringParameters = None,
         timeout: int = None,
     ):
+        # The parameters for the HTTP request body, specified as key-value pairs.
         self.body_parameters = body_parameters
+        # The custom HTTP header parameters to add to the request, specified as key-value pairs.
         self.header_parameters = header_parameters
+        # The name of the API destination.
         self.name = name
+        # The query string parameters to add to the endpoint URL, specified as key-value pairs.
         self.query_string_parameters = query_string_parameters
+        # The timeout for the API call, in seconds. If the endpoint does not respond within this period, the call fails. The valid range is 1 to 60.
         self.timeout = timeout
 
     def validate(self):
@@ -79,8 +84,11 @@ class SinkApiDestinationParametersQueryStringParameters(DaraModel):
         template: str = None,
         value: str = None,
     ):
+        # Defines how the parameter\\"s value is created. Use `CONSTANT` to specify a static string in the `value` field. Use `JSONPATH` to extract data from the event payload with a JSONPath expression in the `value` field. Use `TEMPLATE` to build the value from the `template` field.
         self.form = form
+        # The template to use to build the parameter value. This field is used only when the `form` is set to `TEMPLATE`. You can use variables, such as `${event.id}`, in the template to reference event data.
         self.template = template
+        # The static value or JSONPath expression for the parameter. This field applies only when the `form` is set to `CONSTANT` or `JSONPATH`.
         self.value = value
 
     def validate(self):
@@ -122,8 +130,11 @@ class SinkApiDestinationParametersHeaderParameters(DaraModel):
         template: str = None,
         value: str = None,
     ):
+        # Defines how the parameter\\"s value is created. Use `CONSTANT` to specify a static string in the `value` field. Use `JSONPATH` to extract data from the event payload with a JSONPath expression in the `value` field. Use `TEMPLATE` to build the value from the `template` field.
         self.form = form
+        # The template to use to build the parameter value. This field is used only when the `form` is set to `TEMPLATE`. You can use variables, such as `${event.id}`, in the template to reference event data.
         self.template = template
+        # The static value or JSONPath expression for the parameter. This field applies only when the `form` is set to `CONSTANT` or `JSONPATH`.
         self.value = value
 
     def validate(self):
@@ -165,8 +176,11 @@ class SinkApiDestinationParametersBodyParameters(DaraModel):
         template: str = None,
         value: str = None,
     ):
+        # Defines how the parameter\\"s value is created. Use `CONSTANT` to specify a static string in the `value` field. Use `JSONPATH` to extract data from the event payload with a JSONPath expression in the `value` field. Use `TEMPLATE` to build the value from the `template` field.
         self.form = form
+        # The template to use to build the parameter value. This field is used only when the `form` is set to `TEMPLATE`. You can use variables, such as `${event.id}`, in the template to reference event data.
         self.template = template
+        # The static value or JSONPath expression for the parameter. This field applies only when the `form` is set to `CONSTANT` or `JSONPATH`.
         self.value = value
 
     def validate(self):

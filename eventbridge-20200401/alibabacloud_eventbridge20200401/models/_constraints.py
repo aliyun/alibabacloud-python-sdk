@@ -10,7 +10,9 @@ class Constraints(DaraModel):
         begin_time: int = None,
         end_time: int = None,
     ):
+        # Start of the query time window (Unix milliseconds)
         self.begin_time = begin_time
+        # End of the query time window (Unix milliseconds)
         self.end_time = end_time
 
     def validate(self):

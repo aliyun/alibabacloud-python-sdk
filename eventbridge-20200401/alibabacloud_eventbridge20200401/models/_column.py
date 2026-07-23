@@ -12,9 +12,13 @@ class Column(DaraModel):
         type: str = None,
         value: str = None,
     ):
+        # Whether the value is NULL. When true, it should be treated as NULL.
         self.is_null = is_null
+        # Column name.
         self.name = name
+        # Column type.
         self.type = type
+        # Column value.
         self.value = value
 
     def validate(self):

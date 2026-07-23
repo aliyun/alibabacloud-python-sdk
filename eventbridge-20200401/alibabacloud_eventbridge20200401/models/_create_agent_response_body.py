@@ -14,10 +14,19 @@ class CreateAgentResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response code. Valid values:
+        # 
+        # - Success: The request was successful.
+        # 
+        # - Other values: An error occurred. For more information, see Error codes.
         self.code = code
+        # The returned data.
         self.data = data
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values: true: The request was successful. false: The request failed.
         self.success = success
 
     def validate(self):

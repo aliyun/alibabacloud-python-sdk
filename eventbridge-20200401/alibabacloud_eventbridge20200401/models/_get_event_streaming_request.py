@@ -9,7 +9,7 @@ class GetEventStreamingRequest(DaraModel):
         self,
         event_streaming_name: str = None,
     ):
-        # The name of the event stream whose details you want to query.
+        # The name of the event stream to query.
         # 
         # This parameter is required.
         self.event_streaming_name = event_streaming_name

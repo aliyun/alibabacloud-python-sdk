@@ -10,6 +10,7 @@ class DiscoverEventSourceRequest(DaraModel):
         self,
         source_my_sqlparameters: main_models.DiscoverEventSourceRequestSourceMySQLParameters = None,
     ):
+        # The MySQL source parameters.
         self.source_my_sqlparameters = source_my_sqlparameters
 
     def validate(self):
@@ -51,18 +52,31 @@ class DiscoverEventSourceRequestSourceMySQLParameters(DaraModel):
         v_switch_ids: str = None,
         vpc_id: str = None,
     ):
+        # The database name.
         self.database_name = database_name
+        # The database endpoint.
         self.host_name = host_name
+        # The maximum number of entries to return on each page.
         self.limit = limit
+        # The network type.
         self.network_type = network_type
+        # The offset for paging the query results.
         self.offset = offset
+        # The database password.
         self.password = password
+        # The connection port of the database.
         self.port = port
+        # The region ID.
         self.region_id = region_id
+        # The security group ID.
         self.security_group_id = security_group_id
+        # The name of the database table. The database name must be added as a prefix in the ${DatabaseName}.${TableName} format.
         self.table_name = table_name
+        # The database username.
         self.user = user
+        # The vSwitch ID.
         self.v_switch_ids = v_switch_ids
+        # The ID of the Virtual Private Cloud (VPC).
         self.vpc_id = vpc_id
 
     def validate(self):

@@ -16,21 +16,19 @@ class PutTargetsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code. Valid values:
+        # The response code.
         # 
-        # *   Success: The call succeeded.
-        # *   Other codes: The call failed. For more information about error codes, see Error codes.
+        # - Success: The request was successful.
+        # 
+        # - Other values indicate an error. For details, see Error codes.
         self.code = code
-        # The returned result.
+        # The returned data.
         self.data = data
-        # The error message that is returned if the request failed.
+        # The error message.
         self.message = message
-        # The request ID.
+        # The unique ID that Alibaba Cloud generates for the request.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   **true**: The request is successful.
-        # *   **false**: The request failed.
+        # Returns true if the operation is successful.
         self.success = success
 
     def validate(self):
@@ -85,12 +83,13 @@ class PutTargetsResponseBodyData(DaraModel):
         error_entries: List[main_models.PutTargetsResponseBodyDataErrorEntries] = None,
         error_entries_count: int = None,
     ):
-        # The ID of the failed event target.
+        # Details about the event targets that failed to be processed.
         self.error_entries = error_entries
-        # The number of failed event targets. Valid values:
+        # The number of event targets that failed to be processed. A value of 0 indicates that all event targets were processed successfully.
         # 
-        # *   0: All event targets succeeded.
-        # *   An integer other than 0: indicates the number of failed event targets.
+        # -
+        # 
+        # -
         self.error_entries_count = error_entries_count
 
     def validate(self):
@@ -136,9 +135,9 @@ class PutTargetsResponseBodyDataErrorEntries(DaraModel):
     ):
         # The ID of the failed event target.
         self.entry_id = entry_id
-        # The error code returned.
+        # The error code.
         self.error_code = error_code
-        # The error message returned.
+        # The description of the error.
         self.error_message = error_message
 
     def validate(self):

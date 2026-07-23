@@ -9,6 +9,7 @@ class CheckServiceLinkedRoleForProductRequest(DaraModel):
         self,
         product_name: str = None,
     ):
+        # The name of the service-linked role (SLR) for the cloud product.
         self.product_name = product_name
 
     def validate(self):

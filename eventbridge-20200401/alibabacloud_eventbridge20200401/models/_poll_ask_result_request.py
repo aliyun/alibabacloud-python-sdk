@@ -10,8 +10,12 @@ class PollAskResultRequest(DaraModel):
         agent_name: str = None,
         message_id: str = None,
     ):
+        # The name of the agent.
+        # 
         # This parameter is required.
         self.agent_name = agent_name
+        # The message ID.
+        # 
         # This parameter is required.
         self.message_id = message_id
 

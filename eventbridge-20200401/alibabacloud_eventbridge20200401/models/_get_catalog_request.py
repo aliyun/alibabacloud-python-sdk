@@ -10,9 +10,9 @@ class GetCatalogRequest(DaraModel):
         client_token: str = None,
         name: str = None,
     ):
-        # 用于保证请求幂等性的Token。建议使用 UUID
+        # Idempotency token
         self.client_token = client_token
-        # 要查询的数据目录名称。可通过 ListCatalogs 接口获取已有目录列表
+        # Data catalog name
         # 
         # This parameter is required.
         self.name = name

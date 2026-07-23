@@ -12,13 +12,17 @@ class DeleteEventStreamingResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The returned response code. The value Success indicates that the request is successful.
+        # The return code. \\`Success\\` is returned if the request is successful. Otherwise, an error code is returned. For more information about error codes, see Error codes.
+        # 
+        # Success: The request is successful.
+        # 
+        # Other codes indicate that the request failed. For more information about error codes, see Error codes.
         self.code = code
-        # The returned error message.
+        # The error message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the operation is successful. Valid values: true and false.
+        # Returns true if the operation is successful.
         self.success = success
 
     def validate(self):

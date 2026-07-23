@@ -9,6 +9,9 @@ class DeleteAgentRequest(DaraModel):
         self,
         name: str = None,
     ):
+        # The name of the agent.
+        # 
+        # This parameter is required.
         self.name = name
 
     def validate(self):

@@ -16,13 +16,13 @@ class GetConnectionResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The returned response code. The value Success indicates that the request is successful.
+        # The API status or POP error code. Valid values: Success: The request was successful.
         self.code = code
-        # The returned data.
+        # The returned result.
         self.data = data
         # The HTTP status code.
         self.http_code = http_code
-        # The returned message.
+        # The information returned by the API request.
         self.message = message
         # The returned request ID.
         self.request_id = request_id
@@ -78,7 +78,7 @@ class GetConnectionResponseBodyData(DaraModel):
         self,
         connections: List[main_models.GetConnectionResponseBodyDataConnections] = None,
     ):
-        # The queried connections.
+        # The list of connection configuration information.
         self.connections = connections
 
     def validate(self):
@@ -121,21 +121,21 @@ class GetConnectionResponseBodyDataConnections(DaraModel):
         parameters: Any = None,
         type: str = None,
     ):
-        # The authentication methods.
+        # The data structure of the permission.
         self.auth_parameters = auth_parameters
-        # The connection name.
+        # The name of the connection configuration.
         self.connection_name = connection_name
-        # The connection description.
+        # The description of the connection configuration.
         self.description = description
-        # The time when the connection was created.
+        # The creation time.
         self.gmt_create = gmt_create
         # The data source ID.
         self.id = id
-        # The information about the network.
+        # The data structure of the network configuration.
         self.network_parameters = network_parameters
-        # 数据源连接参数（JSON 对象）。仅数据源类型连接返回，Http 类型为空。字段定义参考 GetConnectionType 返回的 ParamsSchema
+        # The data source connection parameters (JSON object). Only returned for data source type connections. Empty for the Http type. For field definitions, refer to the ParamsSchema returned by GetConnectionType.
         self.parameters = parameters
-        # 连接类型。可选值：Http、MySQL、PostgreSQL、Elasticsearch
+        # The connection type. Valid values: Http, MySQL, PostgreSQL, Elasticsearch.
         self.type = type
 
     def validate(self):
@@ -213,12 +213,13 @@ class GetConnectionResponseBodyDataConnectionsNetworkParameters(DaraModel):
         vpc_id: str = None,
         vswitche_id: str = None,
     ):
-        # *   PublicNetwork: the Internet.
-        # *   PrivateNetwork: virtual private cloud (VPC).
+        # - Internet: PublicNetwork
+        # 
+        # - Virtual private cloud (VPC): PrivateNetwork
         self.network_type = network_type
         # The security group ID.
         self.security_group_id = security_group_id
-        # The VPC ID.
+        # The ID of the virtual private cloud (VPC).
         self.vpc_id = vpc_id
         # The vSwitch ID.
         self.vswitche_id = vswitche_id
@@ -269,17 +270,19 @@ class GetConnectionResponseBodyDataConnectionsAuthParameters(DaraModel):
         basic_auth_parameters: main_models.GetConnectionResponseBodyDataConnectionsAuthParametersBasicAuthParameters = None,
         oauth_parameters: main_models.GetConnectionResponseBodyDataConnectionsAuthParametersOAuthParameters = None,
     ):
-        # The information about API key authentication.
+        # The data structure of the API KEY.
         self.api_key_auth_parameters = api_key_auth_parameters
-        # The authentication method. Valid values:
+        # The authorization type:
         # 
-        # *   BASIC_AUTH: basic authentication.
-        # *   API_KEY_AUTH: API key authentication.
-        # *   OAUTH_AUTH: OAuth authentication.
+        # - BASIC: BASIC_AUTH
+        # 
+        # - API KEY: API_KEY_AUTH
+        # 
+        # - OAUTH: OAUTH_AUTH
         self.authorization_type = authorization_type
-        # The information about basic authentication.
+        # The data structure of Basic authentication.
         self.basic_auth_parameters = basic_auth_parameters
-        # The information about OAuth authentication.
+        # The data structure of OAuth request parameters.
         self.oauth_parameters = oauth_parameters
 
     def validate(self):
@@ -336,17 +339,17 @@ class GetConnectionResponseBodyDataConnectionsAuthParametersOAuthParameters(Dara
         http_method: str = None,
         oauth_http_parameters: main_models.GetConnectionResponseBodyDataConnectionsAuthParametersOAuthParametersOAuthHttpParameters = None,
     ):
-        # The endpoint that is used to obtain the OAuth token.
+        # The request URL for obtaining the OAuth token.
         self.authorization_endpoint = authorization_endpoint
-        # The information about the client.
+        # The data structure of the client parameters.
         self.client_parameters = client_parameters
-        # The HTTP request method. Valid values:
+        # The HTTP method used for the request. Valid values:
         # 
-        # *   GET
-        # *   POST
-        # *   HEAD
+        # - GET
+        # - POST
+        # - HEAD
         self.http_method = http_method
-        # The request parameters of OAuth authentication.
+        # The request parameters for OAuth authentication.
         self.oauth_http_parameters = oauth_http_parameters
 
     def validate(self):
@@ -399,11 +402,11 @@ class GetConnectionResponseBodyDataConnectionsAuthParametersOAuthParametersOAuth
         header_parameters: List[main_models.GetConnectionResponseBodyDataConnectionsAuthParametersOAuthParametersOAuthHttpParametersHeaderParameters] = None,
         query_string_parameters: List[main_models.GetConnectionResponseBodyDataConnectionsAuthParametersOAuthParametersOAuthHttpParametersQueryStringParameters] = None,
     ):
-        # The information about the request body.
+        # The list of request parameter data structures.
         self.body_parameters = body_parameters
-        # The information about the request header.
+        # The list of request header parameters.
         self.header_parameters = header_parameters
-        # The information about the request path.
+        # The data structure of the request path parameters.
         self.query_string_parameters = query_string_parameters
 
     def validate(self):
@@ -471,11 +474,11 @@ class GetConnectionResponseBodyDataConnectionsAuthParametersOAuthParametersOAuth
         key: str = None,
         value: str = None,
     ):
-        # Indicates whether authentication is enabled.
+        # Indicates whether the parameter is used for authentication.
         self.is_value_secret = is_value_secret
-        # The key of the request path.
+        # The key of the request path parameter.
         self.key = key
-        # The value of the request path.
+        # The value of the request path parameter.
         self.value = value
 
     def validate(self):
@@ -517,11 +520,11 @@ class GetConnectionResponseBodyDataConnectionsAuthParametersOAuthParametersOAuth
         key: str = None,
         value: str = None,
     ):
-        # Indicates whether authentication is enabled.
+        # Indicates whether the parameter is used for authentication.
         self.is_value_secret = is_value_secret
-        # The key of the request header.
+        # The key of the request header parameter.
         self.key = key
-        # The value of the request header.
+        # The value of the request header parameter.
         self.value = value
 
     def validate(self):
@@ -563,11 +566,11 @@ class GetConnectionResponseBodyDataConnectionsAuthParametersOAuthParametersOAuth
         key: str = None,
         value: str = None,
     ):
-        # Indicates whether authentication is enabled.
+        # Indicates whether the parameter is used for authentication.
         self.is_value_secret = is_value_secret
-        # The key of the request body.
+        # The key of the body request parameter.
         self.key = key
-        # The value of the request body.
+        # The value of the body request parameter.
         self.value = value
 
     def validate(self):
@@ -610,7 +613,7 @@ class GetConnectionResponseBodyDataConnectionsAuthParametersOAuthParametersClien
     ):
         # The client ID.
         self.client_id = client_id
-        # The AccessKey secret of the client.
+        # The client secret of the application.
         self.client_secret = client_secret
 
     def validate(self):
@@ -645,9 +648,9 @@ class GetConnectionResponseBodyDataConnectionsAuthParametersBasicAuthParameters(
         password: str = None,
         username: str = None,
     ):
-        # The password of basic authentication.
+        # The password for basic authentication.
         self.password = password
-        # The username of basic authentication.
+        # The username for basic authentication.
         self.username = username
 
     def validate(self):

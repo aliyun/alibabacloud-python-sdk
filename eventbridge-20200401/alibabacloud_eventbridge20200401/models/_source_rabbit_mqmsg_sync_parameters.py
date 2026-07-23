@@ -8,6 +8,9 @@ class SourceRabbitMQMsgSyncParameters(DaraModel):
     def __init__(
         self,
         body_data_type: str = None,
+        cloud_migration_task_id: str = None,
+        dst_cluster_host: str = None,
+        dst_cluster_type: str = None,
         endpoint: str = None,
         instance_id: str = None,
         instance_type: str = None,
@@ -15,13 +18,20 @@ class SourceRabbitMQMsgSyncParameters(DaraModel):
         order_consume: str = None,
         password: str = None,
         prefetch_count: str = None,
+        regex: str = None,
         security_group_id: str = None,
+        src_cluster_host: str = None,
+        src_cluster_type: str = None,
+        sync_meta_type: str = None,
         username: str = None,
         v_switch_ids: str = None,
         virtual_host_name: str = None,
         vpc_id: str = None,
     ):
         self.body_data_type = body_data_type
+        self.cloud_migration_task_id = cloud_migration_task_id
+        self.dst_cluster_host = dst_cluster_host
+        self.dst_cluster_type = dst_cluster_type
         self.endpoint = endpoint
         self.instance_id = instance_id
         self.instance_type = instance_type
@@ -29,7 +39,11 @@ class SourceRabbitMQMsgSyncParameters(DaraModel):
         self.order_consume = order_consume
         self.password = password
         self.prefetch_count = prefetch_count
+        self.regex = regex
         self.security_group_id = security_group_id
+        self.src_cluster_host = src_cluster_host
+        self.src_cluster_type = src_cluster_type
+        self.sync_meta_type = sync_meta_type
         self.username = username
         self.v_switch_ids = v_switch_ids
         self.virtual_host_name = virtual_host_name
@@ -45,6 +59,15 @@ class SourceRabbitMQMsgSyncParameters(DaraModel):
             result = _map
         if self.body_data_type is not None:
             result['BodyDataType'] = self.body_data_type
+
+        if self.cloud_migration_task_id is not None:
+            result['CloudMigrationTaskId'] = self.cloud_migration_task_id
+
+        if self.dst_cluster_host is not None:
+            result['DstClusterHost'] = self.dst_cluster_host
+
+        if self.dst_cluster_type is not None:
+            result['DstClusterType'] = self.dst_cluster_type
 
         if self.endpoint is not None:
             result['Endpoint'] = self.endpoint
@@ -67,8 +90,20 @@ class SourceRabbitMQMsgSyncParameters(DaraModel):
         if self.prefetch_count is not None:
             result['PrefetchCount'] = self.prefetch_count
 
+        if self.regex is not None:
+            result['Regex'] = self.regex
+
         if self.security_group_id is not None:
             result['SecurityGroupId'] = self.security_group_id
+
+        if self.src_cluster_host is not None:
+            result['SrcClusterHost'] = self.src_cluster_host
+
+        if self.src_cluster_type is not None:
+            result['SrcClusterType'] = self.src_cluster_type
+
+        if self.sync_meta_type is not None:
+            result['SyncMetaType'] = self.sync_meta_type
 
         if self.username is not None:
             result['Username'] = self.username
@@ -88,6 +123,15 @@ class SourceRabbitMQMsgSyncParameters(DaraModel):
         m = m or dict()
         if m.get('BodyDataType') is not None:
             self.body_data_type = m.get('BodyDataType')
+
+        if m.get('CloudMigrationTaskId') is not None:
+            self.cloud_migration_task_id = m.get('CloudMigrationTaskId')
+
+        if m.get('DstClusterHost') is not None:
+            self.dst_cluster_host = m.get('DstClusterHost')
+
+        if m.get('DstClusterType') is not None:
+            self.dst_cluster_type = m.get('DstClusterType')
 
         if m.get('Endpoint') is not None:
             self.endpoint = m.get('Endpoint')
@@ -110,8 +154,20 @@ class SourceRabbitMQMsgSyncParameters(DaraModel):
         if m.get('PrefetchCount') is not None:
             self.prefetch_count = m.get('PrefetchCount')
 
+        if m.get('Regex') is not None:
+            self.regex = m.get('Regex')
+
         if m.get('SecurityGroupId') is not None:
             self.security_group_id = m.get('SecurityGroupId')
+
+        if m.get('SrcClusterHost') is not None:
+            self.src_cluster_host = m.get('SrcClusterHost')
+
+        if m.get('SrcClusterType') is not None:
+            self.src_cluster_type = m.get('SrcClusterType')
+
+        if m.get('SyncMetaType') is not None:
+            self.sync_meta_type = m.get('SyncMetaType')
 
         if m.get('Username') is not None:
             self.username = m.get('Username')

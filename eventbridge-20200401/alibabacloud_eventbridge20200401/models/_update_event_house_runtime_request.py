@@ -1,0 +1,45 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from darabonba.model import DaraModel
+
+class UpdateEventHouseRuntimeRequest(DaraModel):
+    def __init__(
+        self,
+        cu: int = None,
+        name: str = None,
+    ):
+        # The number of CUs for the EventHouse Runtime. The value must be greater than 0.
+        # 
+        # This parameter is required.
+        self.cu = cu
+        # The name of the EventHouse Runtime. If this parameter is not specified, the default Runtime is used. In most cases, you do not need to specify this parameter.
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.cu is not None:
+            result['Cu'] = self.cu
+
+        if self.name is not None:
+            result['Name'] = self.name
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cu') is not None:
+            self.cu = m.get('Cu')
+
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+
+        return self
+

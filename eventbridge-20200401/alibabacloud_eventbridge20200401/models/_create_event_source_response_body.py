@@ -14,18 +14,19 @@ class CreateEventSourceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The returned response code. Valid values:
+        # The response code.
         # 
-        # *   Success: The request is successful.
-        # *   Other codes: The request failed. For more information about error codes, see Error codes.
+        # - `Success`: The request was successful.
+        # 
+        # - Other values indicate errors. For more information, see the "Error codes" section.
         self.code = code
-        # The returned data.
+        # The data returned by the request.
         self.data = data
-        # The returned error message.
+        # The error message returned if the request is unsuccessful.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the operation is successful. The value true indicates that the operation is successful.
+        # Indicates whether the request was successful. A value of `true` indicates that the request was successful.
         self.success = success
 
     def validate(self):
@@ -79,7 +80,7 @@ class CreateEventSourceResponseBodyData(DaraModel):
         self,
         event_source_arn: str = None,
     ):
-        # The Alibaba Cloud Resource Name (ARN) of the resource.
+        # The Alibaba Cloud Resource Name (ARN) of the event source.
         self.event_source_arn = event_source_arn
 
     def validate(self):

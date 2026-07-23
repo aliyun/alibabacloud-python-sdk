@@ -1,3 +1,35 @@
+2026-07-23 Version: 8.3.0
+- Support API DeleteEventAnalysisJob.
+- Support API DeleteEventHouseRuntime.
+- Support API GetEventHouseRuntime.
+- Support API ListEventHouseRuntimes.
+- Support API UpdateEventHouseRuntime.
+- Update API CreateEventStreaming: add request parameters Metadata.
+- Update API CreateEventStreaming: add request parameters Sink.SinkAgentRunParameters.
+- Update API CreateEventStreaming: add request parameters Sink.SinkRabbitMQParameters.NetworkType.
+- Update API CreateEventStreaming: add request parameters Sink.SinkRabbitMQParameters.SecurityGroupId.
+- Update API CreateEventStreaming: add request parameters Sink.SinkRabbitMQParameters.VSwitchIds.
+- Update API CreateEventStreaming: add request parameters Sink.SinkRabbitMQParameters.VpcId.
+- Update API CreateEventStreaming: add request parameters Source.SourceFeiShuDocsParameters.
+- Update API CreateEventStreaming: add request parameters Source.SourceJDBCParameters.
+- Update API CreateEventStreaming: add request parameters Source.SourceRabbitMQParameters.NetworkType.
+- Update API CreateEventStreaming: add request parameters Source.SourceRabbitMQParameters.SecurityGroupId.
+- Update API CreateEventStreaming: add request parameters Source.SourceRabbitMQParameters.VSwitchIds.
+- Update API CreateEventStreaming: add request parameters Source.SourceRabbitMQParameters.VpcId.
+- Update API GetEventStreaming: add response parameters Body.Data.Metadata.
+- Update API GetEventStreaming: add response parameters Body.Data.Sink.SinkAgentRunParameters.
+- Update API GetEventStreaming: add response parameters Body.Data.Source.SourceFeiShuDocsParameters.
+- Update API GetEventStreaming: add response parameters Body.Data.Source.SourceJDBCParameters.
+- Update API ListEventStreamings: add response parameters Body.Data.EventStreamings.$.Metadata.
+- Update API ListEventStreamings: add response parameters Body.Data.EventStreamings.$.Sink.SinkAgentRunParameters.
+- Update API ListEventStreamings: add response parameters Body.Data.EventStreamings.$.Source.SourceFeiShuDocsParameters.
+- Update API ListEventStreamings: add response parameters Body.Data.EventStreamings.$.Source.SourceJDBCParameters.
+- Update API UpdateEventStreaming: add request parameters Metadata.
+- Update API UpdateEventStreaming: add request parameters Sink.SinkAgentRunParameters.
+- Update API UpdateEventStreaming: add request parameters Source.SourceFeiShuDocsParameters.
+- Update API UpdateEventStreaming: add request parameters Source.SourceJDBCParameters.
+
+
 2026-06-09 Version: 8.2.0
 - Support API CreateNamespace.
 - Support API CreateTable.

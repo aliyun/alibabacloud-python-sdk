@@ -16,10 +16,15 @@ class ListAgentsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The API status code or POP error code. Valid values: Success: The operation was successful.
         self.code = code
+        # The returned data.
         self.data = data
+        # The error message.
         self.message = message
+        # The request ID. Alibaba Cloud generates a unique identifier for the request.
         self.request_id = request_id
+        # Returns true if the operation is successful.
         self.success = success
 
     def validate(self):
@@ -76,9 +81,17 @@ class ListAgentsResponseBodyData(DaraModel):
         has_more: str = None,
         last_id: str = None,
     ):
+        # The list of agents.
         self.agents = agents
+        # The ID of the first record.
         self.first_id = first_id
+        # Indicates whether more pages are available. Valid values:
+        # 
+        # - true: More pages are available.
+        # 
+        # - false: No more pages are available.
         self.has_more = has_more
+        # The ID of the last record.
         self.last_id = last_id
 
     def validate(self):

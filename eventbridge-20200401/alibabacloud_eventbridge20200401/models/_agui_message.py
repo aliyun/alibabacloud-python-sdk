@@ -13,15 +13,23 @@ class AguiMessage(DaraModel):
         content: str = None,
         id: str = None,
         metadata: main_models.AguiMessageMetadata = None,
+        reasoning: str = None,
         role: str = None,
         tool_call_id: str = None,
         tool_calls: List[main_models.AguiMessageToolCalls] = None,
     ):
+        # The text content of the message.
         self.content = content
+        # The unique identifier of the message.
         self.id = id
+        # The extension metadata.
         self.metadata = metadata
+        self.reasoning = reasoning
+        # The role of the message.
         self.role = role
+        # The associated tool invocation ID.
         self.tool_call_id = tool_call_id
+        # The tool invocation list.
         self.tool_calls = tool_calls
 
     def validate(self):
@@ -45,6 +53,9 @@ class AguiMessage(DaraModel):
 
         if self.metadata is not None:
             result['Metadata'] = self.metadata.to_map()
+
+        if self.reasoning is not None:
+            result['Reasoning'] = self.reasoning
 
         if self.role is not None:
             result['Role'] = self.role
@@ -71,6 +82,9 @@ class AguiMessage(DaraModel):
             temp_model = main_models.AguiMessageMetadata()
             self.metadata = temp_model.from_map(m.get('Metadata'))
 
+        if m.get('Reasoning') is not None:
+            self.reasoning = m.get('Reasoning')
+
         if m.get('Role') is not None:
             self.role = m.get('Role')
 
@@ -92,8 +106,11 @@ class AguiMessageToolCalls(DaraModel):
         id: str = None,
         type: str = None,
     ):
+        # The tool calling function.
         self.function = function
+        # The tool calling ID.
         self.id = id
+        # The tool calling type.
         self.type = type
 
     def validate(self):
@@ -136,7 +153,9 @@ class AguiMessageToolCallsFunction(DaraModel):
         arguments: str = None,
         name: str = None,
     ):
+        # The arguments of the tool calling function.
         self.arguments = arguments
+        # The name of the tool calling function.
         self.name = name
 
     def validate(self):
@@ -170,6 +189,7 @@ class AguiMessageMetadata(DaraModel):
         self,
         attachments: main_models.AguiMessageMetadataAttachments = None,
     ):
+        # The extension data.
         self.attachments = attachments
 
     def validate(self):
@@ -202,7 +222,9 @@ class AguiMessageMetadataAttachments(DaraModel):
         name: str = None,
         type: str = None,
     ):
+        # The name of the extension data.
         self.name = name
+        # The type of the extension data.
         self.type = type
 
     def validate(self):

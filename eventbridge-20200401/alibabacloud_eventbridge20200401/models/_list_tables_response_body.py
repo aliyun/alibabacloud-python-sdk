@@ -16,10 +16,15 @@ class ListTablesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Response code
         self.code = code
+        # Response data
         self.data = data
+        # API response message
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Whether successful
         self.success = success
 
     def validate(self):
@@ -75,8 +80,11 @@ class ListTablesResponseBodyData(DaraModel):
         tables: List[main_models.Table] = None,
         total: int = None,
     ):
+        # Next page token
         self.next_token = next_token
+        # Table entities. Each element represents a specific table, including but not limited to information such as table name and table ID.
         self.tables = tables
+        # Total count
         self.total = total
 
     def validate(self):

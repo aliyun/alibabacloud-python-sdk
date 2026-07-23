@@ -20,16 +20,27 @@ class AskLumaResult(DaraModel):
         status: str = None,
         storage_truncated: bool = None,
     ):
+        # Whether clarification is needed
         self.clarification_needed = clarification_needed
+        # Clarification question text
         self.clarification_question = clarification_question
+        # Query constraints
         self.constraints = constraints
+        # Structured result body
         self.content = content
+        # Conversation identifier, used for multi-turn follow-up questions
         self.conversation_id = conversation_id
+        # Error code
         self.error_code = error_code
+        # Error details
         self.error_message = error_message
+        # Whether it is an error. false = query succeeded or clarification (including empty result set); true = execution failed / timeout / rate limited / internal error
         self.is_error = is_error
+        # Message identifier, used for PollAskResult polling
         self.message_id = message_id
+        # Execution status
         self.status = status
+        # Whether the result was truncated due to exceeding the storage limit. Only appears in large result set scenarios
         self.storage_truncated = storage_truncated
 
     def validate(self):

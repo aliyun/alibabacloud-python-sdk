@@ -9,7 +9,7 @@ class DeleteEventStreamingRequest(DaraModel):
         self,
         event_streaming_name: str = None,
     ):
-        # The name of the event stream that you want to delete.
+        # The name of the event stream to delete.
         # 
         # This parameter is required.
         self.event_streaming_name = event_streaming_name

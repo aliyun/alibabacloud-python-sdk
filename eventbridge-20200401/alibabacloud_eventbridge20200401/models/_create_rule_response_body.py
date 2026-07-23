@@ -14,15 +14,15 @@ class CreateRuleResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The returned HTTP status code. The HTTP status code 200 indicates that the request is successful.
+        # The response code. The value Success indicates that the request is successful. Other values indicate that the request failed. For more information about error codes, see Error codes.
         self.code = code
-        # The returned data.
+        # The response data.
         self.data = data
-        # The returned error message.
+        # The error message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful. Valid values: true and false.
+        # Indicates whether the operation is successful. A value of true indicates that the operation is successful.
         self.success = success
 
     def validate(self):
@@ -76,7 +76,7 @@ class CreateRuleResponseBodyData(DaraModel):
         self,
         rule_arn: str = None,
     ):
-        # The ARN of the event rule. The ARN is used for authorization.
+        # The ARN of the event rule, which is used for authorization.
         self.rule_arn = rule_arn
 
     def validate(self):

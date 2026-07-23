@@ -12,13 +12,13 @@ class ListTablesRequest(DaraModel):
         namespace: str = None,
         next_token: str = None,
     ):
-        # 表所属的数据目录名称。可通过 ListCatalogs 获取
+        # Data catalog
         self.catalog = catalog
-        # 每页返回的最大数据条数。不传时默认 10，最大 100
+        # Items per page
         self.limit = limit
-        # 表所属的命名空间名称。可通过 ListNamespaces 获取
+        # Namespace
         self.namespace = namespace
-        # 分页查询的起始Token。首次查询不传或传 "0"；后续翻页使用上一次响应中返回的 NextToken 值
+        # Pagination token
         self.next_token = next_token
 
     def validate(self):

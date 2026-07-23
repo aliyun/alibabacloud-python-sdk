@@ -14,10 +14,15 @@ class AskLumaResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code.
         self.code = code
+        # The response body.
         self.data = data
+        # The error message. This value is null if the request is successful.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

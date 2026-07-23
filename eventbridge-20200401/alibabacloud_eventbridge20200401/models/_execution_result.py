@@ -16,10 +16,15 @@ class ExecutionResult(DaraModel):
         schema: List[main_models.SchemaColumn] = None,
         total_rows: int = None,
     ):
+        # Whether truncated due to the maxRows limit
         self.is_truncated = is_truncated
+        # Number of rows returned this time
         self.row_count = row_count
+        # Two-dimensional array, one array per row
         self.rows = rows
+        # Schema information
         self.schema = schema
+        # Total number of rows that meet the criteria. Different from RowCount when IsTruncated=true
         self.total_rows = total_rows
 
     def validate(self):

@@ -19,21 +19,21 @@ class Table(DaraModel):
         retention_policy: main_models.TableRetentionPolicy = None,
         update_time: int = None,
     ):
-        # 表所属的数据目录名称
+        # The name of the data catalog to which the table belongs
         self.catalog = catalog
-        # 表的列定义列表。每列包含 Name（列名）、Type（数据类型）、Comment（备注）
+        # The column definition list of the table. Each column contains Name (column name), Type (data type), and Comment (remarks)
         self.columns = columns
-        # 表的备注描述信息
+        # Comment description of the table
         self.comment = comment
-        # 表的创建时间（Unix 时间戳，毫秒）
+        # The creation time of the table (Unix timestamp, in milliseconds)
         self.create_time = create_time
-        # 事件表的唯一标识名称
+        # The unique identifier name of the event table
         self.name = name
-        # 表所属的命名空间名称
+        # The name of the namespace to which the table belongs
         self.namespace = namespace
-        # 数据保留策略。包含热数据和冷数据的保留天数
+        # Data retention policy. Includes the retention days for hot data and cold data
         self.retention_policy = retention_policy
-        # 表的最后更新时间（Unix 时间戳，毫秒）
+        # The last update time of the table (Unix timestamp, in milliseconds)
         self.update_time = update_time
 
     def validate(self):
@@ -115,9 +115,9 @@ class TableRetentionPolicy(DaraModel):
         cold_ttl: int = None,
         hot_ttl: int = None,
     ):
-        # 冷数据保留天数，低成本归档存储
+        # Retention days for cold data, used for low-cost archival storage
         self.cold_ttl = cold_ttl
-        # 热数据保留天数，高性能查询存储
+        # Retention days for hot data, used for high-performance query storage
         self.hot_ttl = hot_ttl
 
     def validate(self):

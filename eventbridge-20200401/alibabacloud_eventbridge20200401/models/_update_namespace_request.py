@@ -12,13 +12,13 @@ class UpdateNamespaceRequest(DaraModel):
         comment: str = None,
         name: str = None,
     ):
-        # 命名空间所属的数据目录名称。可通过 ListCatalogs 接口获取已有目录列表
+        # Data catalog
         self.catalog = catalog
-        # 用于保证请求幂等性的Token，防止因网络重试导致重复操作。建议使用 UUID
+        # Idempotence token
         self.client_token = client_token
-        # 命名空间的备注描述信息。传空字符串可清除原有备注，无格式限制
+        # Remark description
         self.comment = comment
-        # 要修改的命名空间名称。名称本身不可修改，此处用于定位目标命名空间。需同时指定所属 Catalog。可通过 ListNamespaces 获取
+        # Namespace name
         # 
         # This parameter is required.
         self.name = name

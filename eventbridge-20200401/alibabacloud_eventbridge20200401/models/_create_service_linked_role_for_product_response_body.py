@@ -13,14 +13,25 @@ class CreateServiceLinkedRoleForProductResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The returned response code. The value Success indicates that the request is successful. Other values indicate that the request failed. For more information about error codes, see Error codes.
+        # The status code of the request. \\`Success\\` indicates that the request was successful. For more information about error codes, see the Error codes section.
         self.code = code
+        # The HTTP status code. Valid values:
+        # 
+        # - **2xx**: a 2xx status code.
+        # 
+        # - **3xx**: a 3xx status code.
+        # 
+        # - **4xx**: a 4xx status code.
+        # 
+        # - **5xx**: a 5xx status code.
+        # 
+        # If this parameter is not specified, all HTTP status codes are queried.
         self.http_code = http_code
-        # The returned message. If the request is successful, success is returned.
+        # The returned message. If the request is successful, \\`success\\` is returned.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the operation was successful. If the operation was successful, the value true is returned.
+        # Indicates whether the request was successful. If the request is successful, \\`true\\` is returned.
         self.success = success
 
     def validate(self):

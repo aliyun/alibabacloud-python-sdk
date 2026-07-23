@@ -11,7 +11,9 @@ class QueryAttachment(DaraModel):
         query: str = None,
         result: main_models.ExecutionResult = None,
     ):
+        # Query statement
         self.query = query
+        # Query execution result
         self.result = result
 
     def validate(self):

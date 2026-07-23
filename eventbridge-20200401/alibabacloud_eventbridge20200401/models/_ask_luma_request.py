@@ -12,10 +12,16 @@ class AskLumaRequest(DaraModel):
         max_rows: int = None,
         question: str = None,
     ):
+        # The name of the agent.
+        # 
         # This parameter is required.
         self.agent_name = agent_name
+        # The conversation ID. This parameter is required for multi-turn conversations.
         self.conversation_id = conversation_id
+        # The maximum number of rows to return.
         self.max_rows = max_rows
+        # The natural language question.
+        # 
         # This parameter is required.
         self.question = question
 

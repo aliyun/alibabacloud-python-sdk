@@ -12,6 +12,7 @@ class Row(DaraModel):
         self,
         columns: List[main_models.Column] = None,
     ):
+        # Column data for each row.
         self.columns = columns
 
     def validate(self):

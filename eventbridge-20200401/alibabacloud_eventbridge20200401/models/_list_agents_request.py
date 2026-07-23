@@ -11,8 +11,14 @@ class ListAgentsRequest(DaraModel):
         limit: str = None,
         order: str = None,
     ):
+        # The name of the agent from which the next page of results starts.
         self.after = after
+        # The maximum number of entries to return per request. You can use this parameter together with NextToken to implement paging.
         self.limit = limit
+        # The sort order. Valid values:
+        # 
+        # - desc
+        # - asc.
         self.order = order
 
     def validate(self):

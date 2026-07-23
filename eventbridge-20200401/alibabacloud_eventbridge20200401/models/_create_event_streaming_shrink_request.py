@@ -13,6 +13,7 @@ class CreateEventStreamingShrinkRequest(DaraModel):
         description: str = None,
         event_streaming_name: str = None,
         filter_pattern: str = None,
+        metadata: str = None,
         run_options_shrink: str = None,
         sink_shrink: str = None,
         source_shrink: str = None,
@@ -25,21 +26,18 @@ class CreateEventStreamingShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.event_streaming_name = event_streaming_name
-        # The rule that is used to filter events. If you leave this parameter empty, all events are matched.
-        # 
-        # This parameter is required.
+        # The event filtering rule. If not specified, all events are matched.
         self.filter_pattern = filter_pattern
-        # The parameters that are configured for the runtime environment.
+        self.metadata = metadata
+        # The runtime environment parameters.
         self.run_options_shrink = run_options_shrink
-        # The event target. You must and can specify only one event target.
-        # 
-        # This parameter is required.
+        # The event target. You must select exactly one Sink type.
         self.sink_shrink = sink_shrink
-        # The event provider, which is also known as the event source. You must and can specify only one event source.
-        # 
-        # This parameter is required.
+        # The event provider. You must select exactly one Source type.
         self.source_shrink = source_shrink
+        # The tag list. A maximum of 20 items are supported.
         self.tags = tags
+        # The Transform-related configurations.
         self.transforms_shrink = transforms_shrink
 
     def validate(self):
@@ -61,6 +59,9 @@ class CreateEventStreamingShrinkRequest(DaraModel):
 
         if self.filter_pattern is not None:
             result['FilterPattern'] = self.filter_pattern
+
+        if self.metadata is not None:
+            result['Metadata'] = self.metadata
 
         if self.run_options_shrink is not None:
             result['RunOptions'] = self.run_options_shrink
@@ -92,6 +93,9 @@ class CreateEventStreamingShrinkRequest(DaraModel):
         if m.get('FilterPattern') is not None:
             self.filter_pattern = m.get('FilterPattern')
 
+        if m.get('Metadata') is not None:
+            self.metadata = m.get('Metadata')
+
         if m.get('RunOptions') is not None:
             self.run_options_shrink = m.get('RunOptions')
 
@@ -118,7 +122,9 @@ class CreateEventStreamingShrinkRequestTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):

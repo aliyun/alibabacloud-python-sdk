@@ -17,17 +17,15 @@ class CreateRuleRequest(DaraModel):
         rule_name: str = None,
         status: str = None,
     ):
-        # The description of the event bus.
+        # The description of the event rule.
         self.description = description
         # The name of the event bus.
         # 
         # This parameter is required.
         self.event_bus_name = event_bus_name
-        # The event targets.
+        # A list of event targets.
         self.event_targets = event_targets
-        # The event pattern, in JSON format. Valid values: stringEqual and stringExpression. You can specify up to five expressions in the map data structure in each field.
-        # 
-        # You can specify up to five expressions in the map data structure in each field.
+        # The event pattern, in JSON format. Supported pattern types are `stringEqual` and `stringExpression`. Each field can contain a maximum of five expressions in a map structure.
         # 
         # This parameter is required.
         self.filter_pattern = filter_pattern
@@ -35,7 +33,7 @@ class CreateRuleRequest(DaraModel):
         # 
         # This parameter is required.
         self.rule_name = rule_name
-        # The status of the event rule. Valid values: ENABLE: enables the event rule. It is the default status of the event rule. DISABLE: disables the event rule.
+        # The status of the event rule. Valid values: `ENABLE`: The rule is enabled. This is the default value. `DISABLE`: The rule is disabled.
         self.status = status
 
     def validate(self):
@@ -108,21 +106,21 @@ class CreateRuleRequestEventTargets(DaraModel):
         push_retry_strategy: str = None,
         type: str = None,
     ):
-        # The concurrency configuration.
+        # The concurrency control configuration.
         self.concurrent_config = concurrent_config
-        # The dead-letter queue. Events that are not processed or whose maximum number of retries is exceeded are written to the dead-letter queue. You can use queues in ApsaraMQ for RocketMQ, Simple Message Queue (SMQ, formerly MNS), and ApsaraMQ for Kafka as dead-letter queues. You can also use event buses in EventBridge as dead-letter queues.
+        # The dead-letter queue. If an event fails to be processed or exceeds the retry limit, it is sent to the dead-letter queue. Supported services for the dead-letter queue include Message Queue for Apache RocketMQ, Message Service (MNS), Message Queue for Apache Kafka, and EventBridge event buses.
         self.dead_letter_queue = dead_letter_queue
-        # The endpoint of the event target.
+        # The delivery endpoint for events.
         self.endpoint = endpoint
-        # The fault tolerance policy. Valid values: ALL and NONE. The value ALL specifies that fault tolerance is allowed. If an error occurs in an event, event processing is not blocked. If the event fails to be sent after the maximum number of retries specified by the retry policy is reached, the event is delivered to the dead-letter queue or discarded based on your configurations. The value NONE specifies that fault tolerance is not allowed. If an error occurs in an event and the event fails to be sent after the maximum number of retries specified by the retry policy is reached, event processing is blocked.
+        # The fault tolerance policy. Valid values:<br>`ALL`: Enables fault tolerance. Execution continues even if an error occurs. After all retry attempts fail, the event is sent to the dead-letter queue (if configured) or discarded.<br>`NONE`: Disables fault tolerance. Execution is blocked if an error occurs and all retry attempts fail.<br><br>
         self.errors_tolerance = errors_tolerance
-        # The ID of the event target.
+        # The custom ID of the event target.
         # 
         # This parameter is required.
         self.id = id
-        # The parameters that are configured for the event target.
+        # The parameters for the event target.
         self.param_list = param_list
-        # The retry policy that you want to use to push failed events. Valid values: BACKOFF_RETRY and EXPONENTIAL_DECAY_RETRY. BACKOFF_RETRY: A failed event can be retried up to three times. The interval between two consecutive retries is a random value from 10 seconds to 20 seconds. EXPONENTIAL_DECAY_RETRY: A failed event can be retried up to 176 times. The interval between two consecutive retries exponentially increases to a maximum of 512 seconds. The total retry time is 1 day. The specific retry intervals are 1, 2, 4, 8, 16, 32, 64, 128, 256, and 512 seconds. The interval of 512 seconds is used for 167 retries.
+        # The push retry strategy. Valid values:<br>`BACKOFF_RETRY`: A backoff retry strategy where the system makes three retry attempts at random intervals of 10 to 20 seconds.<br>`EXPONENTIAL_DECAY_RETRY`: An exponential decay retry strategy where the system makes 176 retry attempts over 24 hours. The interval starts at 1 second and doubles with each of the first 10 attempts (up to 512 seconds). Subsequent retries occur every 512 seconds.<br><br>
         self.push_retry_strategy = push_retry_strategy
         # The type of the event target. For more information, see [Event target parameters](https://help.aliyun.com/document_detail/185887.html).
         # 
@@ -213,11 +211,11 @@ class CreateRuleRequestEventTargetsParamList(DaraModel):
         template: str = None,
         value: str = None,
     ):
-        # The format of input parameters for the event target. For more information, see [Limits](https://help.aliyun.com/document_detail/163289.html).
+        # The format of the event target parameter. For more information, see [Limits](https://help.aliyun.com/document_detail/163289.html).
         self.form = form
-        # The resource key of the event target. For more information, see [Limits](https://help.aliyun.com/document_detail/163289.html).
+        # The name of the target parameter. For more information, see [Limits](https://help.aliyun.com/document_detail/163289.html).
         self.resource_key = resource_key
-        # The structure of the template for the event target.
+        # The template for the event target parameter.
         self.template = template
         # The value of the event target parameter.
         self.value = value
@@ -269,11 +267,15 @@ class CreateRuleRequestEventTargetsDeadLetterQueue(DaraModel):
         v_switch_ids: str = None,
         vpc_id: str = None,
     ):
-        # The Alibaba Cloud Resource Name (ARN) of the dead-letter queue. Events that are not processed or whose maximum number of retries is exceeded are written to the dead-letter queue. Queues in SMQ and ApsaraMQ for RocketMQ can be used as dead-letter queues.
+        # The Alibaba Cloud Resource Name (ARN) of the dead-letter queue. Events that fail to be processed or exceed the retry limit are sent to this ARN. Supported services for this parameter include Message Service (MNS) and Message Queue for Apache RocketMQ.
         self.arn = arn
+        # The network type.
         self.network = network
+        # The security group ID.
         self.security_group_id = security_group_id
+        # The vSwitch ID.
         self.v_switch_ids = v_switch_ids
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -325,7 +327,7 @@ class CreateRuleRequestEventTargetsConcurrentConfig(DaraModel):
         self,
         concurrency: int = None,
     ):
-        # The concurrency.
+        # The maximum number of concurrent executions for the event target.
         self.concurrency = concurrency
 
     def validate(self):

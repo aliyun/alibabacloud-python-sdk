@@ -14,10 +14,17 @@ class UpdateAgentResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response code. Valid values:
+        # - Success: The operation was successful.                                 
+        # - Other values: An error code was returned. For more information, see error codes.
         self.code = code
+        # Indicates whether the operation was successful.
         self.data = data
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Returns true if the operation is successful.
         self.success = success
 
     def validate(self):

@@ -24,7 +24,7 @@ class CreateEventSourceShrinkRequest(DaraModel):
     ):
         # The description of the event source.
         self.description = description
-        # The name of the event bus with which the event source is associated.
+        # The name of the event bus associated with the event source.
         # 
         # This parameter is required.
         self.event_bus_name = event_bus_name
@@ -32,26 +32,27 @@ class CreateEventSourceShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.event_source_name = event_source_name
-        # The configurations of the external data source.
+        # The configuration of the external data source.
         self.external_source_config_shrink = external_source_config_shrink
         # The type of the external data source.
         self.external_source_type = external_source_type
-        # Specify whether to connect to an external data source.
+        # Specifies whether to connect to an external data source.
         self.linked_external_source = linked_external_source
-        # The parameters that are configured if the event source is HTTP events.
+        # Parameters for an HTTP endpoint event source.
         self.source_http_event_parameters_shrink = source_http_event_parameters_shrink
-        # The parameters that are configured if the event source is Message Queue for Apache Kafka.
+        # Parameters for the Message Queue for Apache Kafka event source.
         self.source_kafka_parameters_shrink = source_kafka_parameters_shrink
-        # The parameters that are configured if you specify Simple Message Queue (formerly MNS) (SMQ) as the event source. If you specify SMQ as the event source, you must configure RegionId, IsBase64Decode, and QueueName.
+        # Parameters for the Message Service (MNS) event source. The `RegionId`, `IsBase64Decode`, and `QueueName` parameters are required for this type.
         self.source_mnsparameters_shrink = source_mnsparameters_shrink
+        # Parameters for the Object Storage Service (OSS) event source.
         self.source_ossevent_parameters_shrink = source_ossevent_parameters_shrink
-        # The parameters that are configured if the event source is Message Queue for RabbitMQ.
+        # Parameters for the Message Queue for RabbitMQ event source.
         self.source_rabbit_mqparameters_shrink = source_rabbit_mqparameters_shrink
-        # The parameters that are configured if the event source is Message Queue for Apache RocketMQ.
+        # Parameters for the Message Queue for Apache RocketMQ event source.
         self.source_rocket_mqparameters_shrink = source_rocket_mqparameters_shrink
-        # The parameters that are configured if the event source is Log Service.
+        # Parameters for the Simple Log Service (SLS) event source.
         self.source_slsparameters_shrink = source_slsparameters_shrink
-        # The parameters that are configured if you specify scheduled events as the event source.
+        # Parameters for a scheduled event source.
         self.source_scheduled_event_parameters_shrink = source_scheduled_event_parameters_shrink
 
     def validate(self):

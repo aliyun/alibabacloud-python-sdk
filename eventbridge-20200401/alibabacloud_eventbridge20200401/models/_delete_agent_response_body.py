@@ -11,8 +11,12 @@ class DeleteAgentResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The API status or POP error code. Valid values:
+        # - Success: the operation is successful.
         self.code = code
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -12,17 +12,17 @@ class ListConnectionsRequest(DaraModel):
         next_token: str = None,
         type: str = None,
     ):
-        # The key word that you specify to query connections. Connections can be queried by prefixes.
+        # The name prefix of the connection configurations to query. Supports prefix matching.
         self.connection_name_prefix = connection_name_prefix
-        # The maximum number of entries to be returned in a single call. You can use this parameter and the NextToken parameter to implement paging.
+        # The maximum number of entries to return on each page. Can be used together with NextToken to implement pagination.
         # 
-        # *   Default value: 10.
+        # - Default value: 10
         self.max_results = max_results
-        # If you set the Limit parameter and excess return values exist, this parameter is returned.
+        # When MaxResults is specified, NextToken is returned if there are more results to fetch.
         # 
-        # *   Default value: 0.
+        # - NextToken starts from 0 by default. Default value: 0.
         self.next_token = next_token
-        # 按连接类型过滤查询结果。可选值：Http、MySQL、PostgreSQL、Elasticsearch。不传则返回所有类型
+        # Filters query results by connection type. Valid values: Http, MySQL, PostgreSQL, Elasticsearch. If left empty, connections of all types are returned.
         self.type = type
 
     def validate(self):
