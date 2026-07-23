@@ -1,3 +1,31 @@
+2026-07-23 Version: 3.11.0
+- Support API CreateRoutineBuildConfiguration.
+- Support API DeleteRoutineBuildConfiguration.
+- Support API GetRoutineBuild.
+- Support API GetRoutineBuildConfiguration.
+- Support API ListRoutineBuildConfigurations.
+- Support API ListRoutineBuilds.
+- Support API PurchaseDDoSInstance.
+- Support API ReDoRoutineBuild.
+- Support API StopRoutineBuild.
+- Support API UpdateSiteInstance.
+- Update API CreateSite: add request parameters ResourceOwner.
+- Update API CreateSiteDeliveryTask: add request parameters KafkaDelivery.UseTLS.
+- Update API CreateUserDeliveryTask: add request parameters KafkaDelivery.UseTLS.
+- Update API DescribeRatePlanInstanceStatus: add request parameters ResourceOwner.
+- Update API ListPages: add response parameters Body.Pages.$.Moderation.
+- Update API ListPostpaidRatePlanInstances: add request parameters ResourceOwner.
+- Update API ListPostpaidRatePlanInstances: add response parameters Body.InstanceInfo.$.OwnerId.
+- Update API ListPostpaidRatePlanInstances: add response parameters Body.InstanceInfo.$.ShareType.
+- Update API ListUserRatePlanInstances: add request parameters IsShared.
+- Update API ListUserRatePlanInstances: add request parameters ResourceOwner.
+- Update API ListUserRatePlanInstances: add response parameters Body.InstanceInfo.$.OwnerId.
+- Update API ListUserRatePlanInstances: add response parameters Body.InstanceInfo.$.ResourceOwner.
+- Update API ListUserRatePlanInstances: add response parameters Body.InstanceInfo.$.ShareType.
+- Update API PurchaseRatePlan: add request parameters OveragePolicy.
+- Update API UpdateRoutineBuildConfiguration: add request parameters GitPlatform.
+
+
 2026-07-20 Version: 3.10.0
 - Support API UpdateRoutineBuildConfiguration.
 

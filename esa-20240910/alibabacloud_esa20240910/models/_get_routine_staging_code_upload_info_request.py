@@ -12,7 +12,7 @@ class GetRoutineStagingCodeUploadInfoRequest(DaraModel):
     ):
         # The code description.
         self.code_description = code_description
-        # The routine name.
+        # The name of the Edge Routine.
         # 
         # This parameter is required.
         self.name = name

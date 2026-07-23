@@ -12,21 +12,18 @@ class GetSiteLogDeliveryQuotaResponseBody(DaraModel):
         request_id: str = None,
         site_id: int = None,
     ):
-        # The log category. Valid values:
+        # The type of real-time logs. Valid values:
         # 
-        # 1. dcdn_log_access_l1 (default): access logs.
-        # 
-        # 2. dcdn_log_er: Edge Routine logs.
-        # 
-        # 3. dcdn_log_waf: firewall logs.
-        # 
-        # 4. dcdn_log_ipa: TCP/UDP proxy logs.
+        # - **dcdn_log_access_l1 (default)**: access logs.
+        # - **dcdn_log_er**: edge function logs.
+        # - **dcdn_log_waf**: security protection logs.
+        # - **dcdn_log_ipa**: Layer 4 acceleration logs.
         self.business_type = business_type
         # The remaining quota.
         self.free_quota = free_quota
         # The request ID.
         self.request_id = request_id
-        # The website ID.
+        # The site ID.
         self.site_id = site_id
 
     def validate(self):

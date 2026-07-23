@@ -9,11 +9,13 @@ class ListUserRatePlanInstancesRequest(DaraModel):
         self,
         check_remaining_site_quota: str = None,
         instance_id: str = None,
+        is_shared: bool = None,
         page_number: int = None,
         page_size: int = None,
         plan_name_en: str = None,
         plan_type: str = None,
         remaining_expire_days: int = None,
+        resource_owner: int = None,
         sort_by: str = None,
         sort_order: str = None,
         status: str = None,
@@ -24,45 +26,47 @@ class ListUserRatePlanInstancesRequest(DaraModel):
         # - **true**: Filters plan instances that have remaining site quota.
         # - **false**: Queries all plan instances under the user.
         self.check_remaining_site_quota = check_remaining_site_quota
-        # The plan instance ID. You can obtain the ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # The plan instance ID. You can obtain this value by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         self.instance_id = instance_id
-        # The page number to return in a paged query. Default value: **1**. Valid values: **1** to **100000**. Settings for paging take effect only when this parameter is specified.
+        self.is_shared = is_shared
+        # The page number settings for paging. Default value: **1**. Valid values: **1 to 100000**.
         self.page_number = page_number
-        # The number of entries per page in a paged query. Valid values: 1 to 500. This parameter is used for paging.
+        # The number of entries per page for paging. Valid values: 1 to 500.
         self.page_size = page_size
-        # The plan name in English.
+        # The plan name (English).
         self.plan_name_en = plan_name_en
         # The plan type. Valid values:
         # 
-        # - normal: fixed-version plan
-        # - enterprise: Enterprise Edition plan.
+        # - normal: fixed edition plan
+        # - enterprise: enterprise edition plan
         self.plan_type = plan_type
         # Queries plan instances whose remaining validity period is within the specified number of days. The value must be a positive integer. Unit: days.
         self.remaining_expire_days = remaining_expire_days
-        # The field by which to sort the results. By default, results are sorted by purchase time. Valid values:
+        self.resource_owner = resource_owner
+        # The sort field. By default, results are sorted by purchase time. Valid values:
         # 
-        # - **CreateTime**: purchase time.
-        # - **ExpireTime**: expiration time.
+        # - **CreateTime**: Purchase time.
+        # - **ExpireTime**: Expiration time.
         self.sort_by = sort_by
         # The sort order. Default value: desc. Valid values:
         # 
-        # - **asc**: ascending order.
-        # - **desc**: descending order.
+        # - **asc**: Ascending order.
+        # - **desc**: Descending order.
         self.sort_order = sort_order
         # The instance status. Valid values:
-        # - **online**: The plan instance is in normal service.
-        # - **offline**: The plan instance has expired but has not exceeded the grace period and is not active.
-        # - **disable**: The plan instance has been released.
-        # - **overdue**: The plan instance has an overdue payment.
+        # - **online**: Normal service status.
+        # - **offline**: Expired but not overdue, in an inactive state.
+        # - **disable**: Released.
+        # - **overdue**: Overdue payment.
         self.status = status
         # The plan subscription type. Valid values:
         # 
-        # - entranceplan: Free Edition (Chinese mainland)
-        # - entranceplan_intl: Free Edition (International)
-        # - basicplan: Basic Edition
-        # - standardplan: Standard Edition
-        # - advancedplan: Premium Edition
-        # - enterpriseplan: Enterprise Edition.
+        # - Free Edition (Chinese mainland): entranceplan
+        # - Free Edition (International): entranceplan_intl
+        # - Basic Edition: basicplan
+        # - Standard Edition: standardplan
+        # - Premium Edition: advancedplan
+        # - Enterprise Edition: enterpriseplan
         self.subscribe_type = subscribe_type
 
     def validate(self):
@@ -79,6 +83,9 @@ class ListUserRatePlanInstancesRequest(DaraModel):
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
 
+        if self.is_shared is not None:
+            result['IsShared'] = self.is_shared
+
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
 
@@ -93,6 +100,9 @@ class ListUserRatePlanInstancesRequest(DaraModel):
 
         if self.remaining_expire_days is not None:
             result['RemainingExpireDays'] = self.remaining_expire_days
+
+        if self.resource_owner is not None:
+            result['ResourceOwner'] = self.resource_owner
 
         if self.sort_by is not None:
             result['SortBy'] = self.sort_by
@@ -116,6 +126,9 @@ class ListUserRatePlanInstancesRequest(DaraModel):
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
 
+        if m.get('IsShared') is not None:
+            self.is_shared = m.get('IsShared')
+
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
 
@@ -130,6 +143,9 @@ class ListUserRatePlanInstancesRequest(DaraModel):
 
         if m.get('RemainingExpireDays') is not None:
             self.remaining_expire_days = m.get('RemainingExpireDays')
+
+        if m.get('ResourceOwner') is not None:
+            self.resource_owner = m.get('ResourceOwner')
 
         if m.get('SortBy') is not None:
             self.sort_by = m.get('SortBy')

@@ -9,7 +9,7 @@ class DeleteUserDeliveryTaskRequest(DaraModel):
         self,
         task_name: str = None,
     ):
-        # The name of the delivery task.
+        # The task name.
         # 
         # This parameter is required.
         self.task_name = task_name

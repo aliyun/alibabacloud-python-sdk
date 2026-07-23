@@ -11,6 +11,7 @@ class CreateSiteRequest(DaraModel):
         coverage: str = None,
         instance_id: str = None,
         resource_group_id: str = None,
+        resource_owner: int = None,
         site_name: str = None,
     ):
         # The access type of the site. Valid values:
@@ -27,12 +28,13 @@ class CreateSiteRequest(DaraModel):
         # 
         # This parameter is required.
         self.coverage = coverage
-        # The instance ID. You can obtain the instance ID by calling the [ListUserRatePlanInstances](https://help.aliyun.com/document_detail/2852398.html) operation. You must specify at least one of the instance ID and site ID. If both are specified, the instance ID takes precedence.
+        # The instance ID. You can call the [ListUserRatePlanInstances](https://help.aliyun.com/document_detail/2852398.html) operation to obtain the instance ID. You must specify at least one of the instance ID and site ID. If both are specified, the instance ID takes precedence.
         # 
         # This parameter is required.
         self.instance_id = instance_id
         # The resource group ID. If you do not specify this parameter, the system automatically uses the default resource group ID.
         self.resource_group_id = resource_group_id
+        self.resource_owner = resource_owner
         # The site name.
         # 
         # This parameter is required.
@@ -58,6 +60,9 @@ class CreateSiteRequest(DaraModel):
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
 
+        if self.resource_owner is not None:
+            result['ResourceOwner'] = self.resource_owner
+
         if self.site_name is not None:
             result['SiteName'] = self.site_name
 
@@ -76,6 +81,9 @@ class CreateSiteRequest(DaraModel):
 
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
+
+        if m.get('ResourceOwner') is not None:
+            self.resource_owner = m.get('ResourceOwner')
 
         if m.get('SiteName') is not None:
             self.site_name = m.get('SiteName')

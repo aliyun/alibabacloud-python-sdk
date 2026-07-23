@@ -63,7 +63,7 @@ class ListPagesRequestQueryArgs(DaraModel):
         # * text/html
         # * application/json
         self.content_type = content_type
-        # The keyword used for fuzzy matching against the name or description of custom pages.
+        # The fuzzy match string for the name or description of a custom page.
         self.name_description_like = name_description_like
 
     def validate(self):

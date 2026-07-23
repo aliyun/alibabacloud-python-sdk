@@ -187,6 +187,10 @@ from ._create_rewrite_url_rule_response import CreateRewriteUrlRuleResponse
 from ._create_routine_request import CreateRoutineRequest
 from ._create_routine_response_body import CreateRoutineResponseBody
 from ._create_routine_response import CreateRoutineResponse
+from ._create_routine_build_configuration_request import CreateRoutineBuildConfigurationRequest
+from ._create_routine_build_configuration_shrink_request import CreateRoutineBuildConfigurationShrinkRequest
+from ._create_routine_build_configuration_response_body import CreateRoutineBuildConfigurationResponseBody
+from ._create_routine_build_configuration_response import CreateRoutineBuildConfigurationResponse
 from ._create_routine_code_deployment_request import CreateRoutineCodeDeploymentRequest
 from ._create_routine_code_deployment_shrink_request import CreateRoutineCodeDeploymentShrinkRequest
 from ._create_routine_code_deployment_response_body import CreateRoutineCodeDeploymentResponseBody
@@ -370,6 +374,9 @@ from ._delete_rewrite_url_rule_response import DeleteRewriteUrlRuleResponse
 from ._delete_routine_request import DeleteRoutineRequest
 from ._delete_routine_response_body import DeleteRoutineResponseBody
 from ._delete_routine_response import DeleteRoutineResponse
+from ._delete_routine_build_configuration_request import DeleteRoutineBuildConfigurationRequest
+from ._delete_routine_build_configuration_response_body import DeleteRoutineBuildConfigurationResponseBody
+from ._delete_routine_build_configuration_response import DeleteRoutineBuildConfigurationResponse
 from ._delete_routine_code_version_request import DeleteRoutineCodeVersionRequest
 from ._delete_routine_code_version_response_body import DeleteRoutineCodeVersionResponseBody
 from ._delete_routine_code_version_response import DeleteRoutineCodeVersionResponse
@@ -750,6 +757,12 @@ from ._get_routine_response import GetRoutineResponse
 from ._get_routine_access_token_request import GetRoutineAccessTokenRequest
 from ._get_routine_access_token_response_body import GetRoutineAccessTokenResponseBody
 from ._get_routine_access_token_response import GetRoutineAccessTokenResponse
+from ._get_routine_build_request import GetRoutineBuildRequest
+from ._get_routine_build_response_body import GetRoutineBuildResponseBody
+from ._get_routine_build_response import GetRoutineBuildResponse
+from ._get_routine_build_configuration_request import GetRoutineBuildConfigurationRequest
+from ._get_routine_build_configuration_response_body import GetRoutineBuildConfigurationResponseBody
+from ._get_routine_build_configuration_response import GetRoutineBuildConfigurationResponse
 from ._get_routine_code_version_request import GetRoutineCodeVersionRequest
 from ._get_routine_code_version_response_body import GetRoutineCodeVersionResponseBody
 from ._get_routine_code_version_response import GetRoutineCodeVersionResponse
@@ -1003,6 +1016,12 @@ from ._list_redirect_rules_response import ListRedirectRulesResponse
 from ._list_rewrite_url_rules_request import ListRewriteUrlRulesRequest
 from ._list_rewrite_url_rules_response_body import ListRewriteUrlRulesResponseBody
 from ._list_rewrite_url_rules_response import ListRewriteUrlRulesResponse
+from ._list_routine_build_configurations_request import ListRoutineBuildConfigurationsRequest
+from ._list_routine_build_configurations_response_body import ListRoutineBuildConfigurationsResponseBody
+from ._list_routine_build_configurations_response import ListRoutineBuildConfigurationsResponse
+from ._list_routine_builds_request import ListRoutineBuildsRequest
+from ._list_routine_builds_response_body import ListRoutineBuildsResponseBody
+from ._list_routine_builds_response import ListRoutineBuildsResponse
 from ._list_routine_canary_areas_response_body import ListRoutineCanaryAreasResponseBody
 from ._list_routine_canary_areas_response import ListRoutineCanaryAreasResponse
 from ._list_routine_code_versions_request import ListRoutineCodeVersionsRequest
@@ -1131,6 +1150,9 @@ from ._purchase_bot_instance_response import PurchaseBotInstanceResponse
 from ._purchase_cache_reserve_request import PurchaseCacheReserveRequest
 from ._purchase_cache_reserve_response_body import PurchaseCacheReserveResponseBody
 from ._purchase_cache_reserve_response import PurchaseCacheReserveResponse
+from ._purchase_ddo_sinstance_request import PurchaseDDoSInstanceRequest
+from ._purchase_ddo_sinstance_response_body import PurchaseDDoSInstanceResponseBody
+from ._purchase_ddo_sinstance_response import PurchaseDDoSInstanceResponse
 from ._purchase_rate_plan_request import PurchaseRatePlanRequest
 from ._purchase_rate_plan_response_body import PurchaseRatePlanResponseBody
 from ._purchase_rate_plan_response import PurchaseRatePlanResponse
@@ -1145,6 +1167,9 @@ from ._put_kv_with_high_capacity_request import PutKvWithHighCapacityRequest
 from ._put_kv_with_high_capacity_advance_request import PutKvWithHighCapacityAdvanceRequest
 from ._put_kv_with_high_capacity_response_body import PutKvWithHighCapacityResponseBody
 from ._put_kv_with_high_capacity_response import PutKvWithHighCapacityResponse
+from ._re_do_routine_build_request import ReDoRoutineBuildRequest
+from ._re_do_routine_build_response_body import ReDoRoutineBuildResponseBody
+from ._re_do_routine_build_response import ReDoRoutineBuildResponse
 from ._rebuild_edge_container_app_staging_env_request import RebuildEdgeContainerAppStagingEnvRequest
 from ._rebuild_edge_container_app_staging_env_response_body import RebuildEdgeContainerAppStagingEnvResponseBody
 from ._rebuild_edge_container_app_staging_env_response import RebuildEdgeContainerAppStagingEnvResponse
@@ -1205,6 +1230,9 @@ from ._set_origin_client_certificate_hostnames_response import SetOriginClientCe
 from ._start_scheduled_preload_execution_request import StartScheduledPreloadExecutionRequest
 from ._start_scheduled_preload_execution_response_body import StartScheduledPreloadExecutionResponseBody
 from ._start_scheduled_preload_execution_response import StartScheduledPreloadExecutionResponse
+from ._stop_routine_build_request import StopRoutineBuildRequest
+from ._stop_routine_build_response_body import StopRoutineBuildResponseBody
+from ._stop_routine_build_response import StopRoutineBuildResponse
 from ._stop_scheduled_preload_execution_request import StopScheduledPreloadExecutionRequest
 from ._stop_scheduled_preload_execution_response_body import StopScheduledPreloadExecutionResponseBody
 from ._stop_scheduled_preload_execution_response import StopScheduledPreloadExecutionResponse
@@ -1376,6 +1404,9 @@ from ._update_site_delivery_task_response import UpdateSiteDeliveryTaskResponse
 from ._update_site_delivery_task_status_request import UpdateSiteDeliveryTaskStatusRequest
 from ._update_site_delivery_task_status_response_body import UpdateSiteDeliveryTaskStatusResponseBody
 from ._update_site_delivery_task_status_response import UpdateSiteDeliveryTaskStatusResponse
+from ._update_site_instance_request import UpdateSiteInstanceRequest
+from ._update_site_instance_response_body import UpdateSiteInstanceResponseBody
+from ._update_site_instance_response import UpdateSiteInstanceResponse
 from ._update_site_name_exclusive_request import UpdateSiteNameExclusiveRequest
 from ._update_site_name_exclusive_response_body import UpdateSiteNameExclusiveResponseBody
 from ._update_site_name_exclusive_response import UpdateSiteNameExclusiveResponse
@@ -1751,6 +1782,7 @@ from ._list_origin_pools_response_body import ListOriginPoolsResponseBodyOriginP
 from ._list_origin_pools_response_body import ListOriginPoolsResponseBodyOriginPools
 from ._list_origin_rules_response_body import ListOriginRulesResponseBodyConfigs
 from ._list_pages_request import ListPagesRequestQueryArgs
+from ._list_pages_response_body import ListPagesResponseBodyPagesModeration
 from ._list_pages_response_body import ListPagesResponseBodyPages
 from ._list_postpaid_rate_plan_instances_response_body import ListPostpaidRatePlanInstancesResponseBodyInstanceInfoSites
 from ._list_postpaid_rate_plan_instances_response_body import ListPostpaidRatePlanInstancesResponseBodyInstanceInfo
@@ -1762,6 +1794,10 @@ from ._list_records_response_body import ListRecordsResponseBodyRecordsData
 from ._list_records_response_body import ListRecordsResponseBodyRecords
 from ._list_redirect_rules_response_body import ListRedirectRulesResponseBodyConfigs
 from ._list_rewrite_url_rules_response_body import ListRewriteUrlRulesResponseBodyConfigs
+from ._list_routine_build_configurations_response_body import ListRoutineBuildConfigurationsResponseBodyRoutineBuildConfigurationsLatestRoutineBuildTask
+from ._list_routine_build_configurations_response_body import ListRoutineBuildConfigurationsResponseBodyRoutineBuildConfigurationsRoutineBuildConfiguration
+from ._list_routine_build_configurations_response_body import ListRoutineBuildConfigurationsResponseBodyRoutineBuildConfigurations
+from ._list_routine_builds_response_body import ListRoutineBuildsResponseBodyData
 from ._list_routine_code_versions_response_body import ListRoutineCodeVersionsResponseBodyCodeVersionsConfOptions
 from ._list_routine_code_versions_response_body import ListRoutineCodeVersionsResponseBodyCodeVersions
 from ._list_routine_related_records_response_body import ListRoutineRelatedRecordsResponseBodyRelatedRecords
@@ -2047,6 +2083,10 @@ __all__ = [
     CreateRoutineRequest,
     CreateRoutineResponseBody,
     CreateRoutineResponse,
+    CreateRoutineBuildConfigurationRequest,
+    CreateRoutineBuildConfigurationShrinkRequest,
+    CreateRoutineBuildConfigurationResponseBody,
+    CreateRoutineBuildConfigurationResponse,
     CreateRoutineCodeDeploymentRequest,
     CreateRoutineCodeDeploymentShrinkRequest,
     CreateRoutineCodeDeploymentResponseBody,
@@ -2230,6 +2270,9 @@ __all__ = [
     DeleteRoutineRequest,
     DeleteRoutineResponseBody,
     DeleteRoutineResponse,
+    DeleteRoutineBuildConfigurationRequest,
+    DeleteRoutineBuildConfigurationResponseBody,
+    DeleteRoutineBuildConfigurationResponse,
     DeleteRoutineCodeVersionRequest,
     DeleteRoutineCodeVersionResponseBody,
     DeleteRoutineCodeVersionResponse,
@@ -2610,6 +2653,12 @@ __all__ = [
     GetRoutineAccessTokenRequest,
     GetRoutineAccessTokenResponseBody,
     GetRoutineAccessTokenResponse,
+    GetRoutineBuildRequest,
+    GetRoutineBuildResponseBody,
+    GetRoutineBuildResponse,
+    GetRoutineBuildConfigurationRequest,
+    GetRoutineBuildConfigurationResponseBody,
+    GetRoutineBuildConfigurationResponse,
     GetRoutineCodeVersionRequest,
     GetRoutineCodeVersionResponseBody,
     GetRoutineCodeVersionResponse,
@@ -2863,6 +2912,12 @@ __all__ = [
     ListRewriteUrlRulesRequest,
     ListRewriteUrlRulesResponseBody,
     ListRewriteUrlRulesResponse,
+    ListRoutineBuildConfigurationsRequest,
+    ListRoutineBuildConfigurationsResponseBody,
+    ListRoutineBuildConfigurationsResponse,
+    ListRoutineBuildsRequest,
+    ListRoutineBuildsResponseBody,
+    ListRoutineBuildsResponse,
     ListRoutineCanaryAreasResponseBody,
     ListRoutineCanaryAreasResponse,
     ListRoutineCodeVersionsRequest,
@@ -2991,6 +3046,9 @@ __all__ = [
     PurchaseCacheReserveRequest,
     PurchaseCacheReserveResponseBody,
     PurchaseCacheReserveResponse,
+    PurchaseDDoSInstanceRequest,
+    PurchaseDDoSInstanceResponseBody,
+    PurchaseDDoSInstanceResponse,
     PurchaseRatePlanRequest,
     PurchaseRatePlanResponseBody,
     PurchaseRatePlanResponse,
@@ -3005,6 +3063,9 @@ __all__ = [
     PutKvWithHighCapacityAdvanceRequest,
     PutKvWithHighCapacityResponseBody,
     PutKvWithHighCapacityResponse,
+    ReDoRoutineBuildRequest,
+    ReDoRoutineBuildResponseBody,
+    ReDoRoutineBuildResponse,
     RebuildEdgeContainerAppStagingEnvRequest,
     RebuildEdgeContainerAppStagingEnvResponseBody,
     RebuildEdgeContainerAppStagingEnvResponse,
@@ -3065,6 +3126,9 @@ __all__ = [
     StartScheduledPreloadExecutionRequest,
     StartScheduledPreloadExecutionResponseBody,
     StartScheduledPreloadExecutionResponse,
+    StopRoutineBuildRequest,
+    StopRoutineBuildResponseBody,
+    StopRoutineBuildResponse,
     StopScheduledPreloadExecutionRequest,
     StopScheduledPreloadExecutionResponseBody,
     StopScheduledPreloadExecutionResponse,
@@ -3236,6 +3300,9 @@ __all__ = [
     UpdateSiteDeliveryTaskStatusRequest,
     UpdateSiteDeliveryTaskStatusResponseBody,
     UpdateSiteDeliveryTaskStatusResponse,
+    UpdateSiteInstanceRequest,
+    UpdateSiteInstanceResponseBody,
+    UpdateSiteInstanceResponse,
     UpdateSiteNameExclusiveRequest,
     UpdateSiteNameExclusiveResponseBody,
     UpdateSiteNameExclusiveResponse,
@@ -3611,6 +3678,7 @@ __all__ = [
     ListOriginPoolsResponseBodyOriginPools,
     ListOriginRulesResponseBodyConfigs,
     ListPagesRequestQueryArgs,
+    ListPagesResponseBodyPagesModeration,
     ListPagesResponseBodyPages,
     ListPostpaidRatePlanInstancesResponseBodyInstanceInfoSites,
     ListPostpaidRatePlanInstancesResponseBodyInstanceInfo,
@@ -3622,6 +3690,10 @@ __all__ = [
     ListRecordsResponseBodyRecords,
     ListRedirectRulesResponseBodyConfigs,
     ListRewriteUrlRulesResponseBodyConfigs,
+    ListRoutineBuildConfigurationsResponseBodyRoutineBuildConfigurationsLatestRoutineBuildTask,
+    ListRoutineBuildConfigurationsResponseBodyRoutineBuildConfigurationsRoutineBuildConfiguration,
+    ListRoutineBuildConfigurationsResponseBodyRoutineBuildConfigurations,
+    ListRoutineBuildsResponseBodyData,
     ListRoutineCodeVersionsResponseBodyCodeVersionsConfOptions,
     ListRoutineCodeVersionsResponseBodyCodeVersions,
     ListRoutineRelatedRecordsResponseBodyRelatedRecords,

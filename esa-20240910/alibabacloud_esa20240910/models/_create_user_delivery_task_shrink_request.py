@@ -23,55 +23,45 @@ class CreateUserDeliveryTaskShrinkRequest(DaraModel):
     ):
         # The real-time log type. Valid values:
         # 
-        # - **dcdn_log_access_l1** (default): access log.
-        # 
-        # - **dcdn_log_er**: edge function log.
-        # 
-        # - **dcdn_log_waf**: WAF log.
-        # 
-        # - **dcdn_log_ipa**: Layer-4 acceleration log.
+        # - **dcdn_log_access_l1 (default)**: access logs.
+        # - **dcdn_log_er**: edge function logs.
+        # - **dcdn_log_waf**: security protection logs.
+        # - **dcdn_log_ipa**: Layer 4 acceleration logs.
         # 
         # This parameter is required.
         self.business_type = business_type
         # The data center. Valid values:
-        # 
         # - **cn**: Chinese mainland.
-        # 
         # - **sg**: global (excluding the Chinese mainland).
         self.data_center = data_center
-        # The log delivery destination. Valid values:
+        # The delivery type. Valid values:
         # 
-        # - **sls**: Log Service (SLS).
-        # 
-        # - **http**: an HTTP service.
-        # 
-        # - **aws3**: Amazon S3.
-        # 
-        # - **oss**: Object Storage Service (OSS).
-        # 
-        # - **kafka**: Kafka.
-        # 
-        # - **aws3cmpt**: an S3-compatible service.
+        # - **sls**: Alibaba Cloud Simple Log Service.
+        # - **http**: HTTP service.
+        # - **aws3**: Amazon S3 service.
+        # - **oss**: Alibaba Cloud Object Storage Service.
+        # - **kafka**: Kafka service.
+        # - **aws3cmpt**: Amazon S3-compatible service.
         # 
         # This parameter is required.
         self.delivery_type = delivery_type
         self.details = details
-        # The log discard rate. Defaults to 0.
+        # The discard rate. Default value: 0.
         self.discard_rate = discard_rate
-        # The fields to be delivered. Separate multiple fields with a comma.
+        # The fields to be selected, separated by commas (,).
         # 
         # This parameter is required.
         self.field_name = field_name
         self.filter_ver = filter_ver
-        # Configuration for delivering logs to an HTTP or HTTPS endpoint.
+        # The HTTP delivery configuration parameters.
         self.http_delivery_shrink = http_delivery_shrink
-        # Configuration for delivering logs to Kafka.
+        # The Kafka delivery configuration parameters.
         self.kafka_delivery_shrink = kafka_delivery_shrink
-        # Configuration for delivering logs to Object Storage Service (OSS).
+        # The OSS delivery configuration parameters.
         self.oss_delivery_shrink = oss_delivery_shrink
-        # Configuration for delivering logs to Amazon S3 or an S3-compatible service.
+        # The S3 or S3-compatible delivery configuration parameters.
         self.s_3delivery_shrink = s_3delivery_shrink
-        # Configuration for delivering logs to Log Service (SLS).
+        # The SLS delivery configuration.
         self.sls_delivery_shrink = sls_delivery_shrink
         # The task name.
         # 

@@ -96,6 +96,7 @@ class ListPagesResponseBodyPages(DaraModel):
         description: str = None,
         id: int = None,
         kind: str = None,
+        moderation: main_models.ListPagesResponseBodyPagesModeration = None,
         name: str = None,
         update_time: str = None,
     ):
@@ -109,13 +110,14 @@ class ListPagesResponseBodyPages(DaraModel):
         self.content_type = content_type
         # The description of the custom response page.
         self.description = description
-        # The ID of the custom response page. You can call the [ListPages](https://help.aliyun.com/document_detail/2850223.html) operation to obtain the ID.
+        # The ID of the custom response page. You can obtain this value by calling the [ListPages](https://help.aliyun.com/document_detail/2850223.html) operation.
         self.id = id
         # The type of the custom response page.
         self.kind = kind
+        self.moderation = moderation
         # The name of the custom response page.
         self.name = name
-        # The time when the custom response page was last modified.
+        # The last modification time of the custom response page.
         # 
         # Format: RFC 3339 / ISO 8601, UTC time zone (ending with Z).
         # 
@@ -123,7 +125,8 @@ class ListPagesResponseBodyPages(DaraModel):
         self.update_time = update_time
 
     def validate(self):
-        pass
+        if self.moderation:
+            self.moderation.validate()
 
     def to_map(self):
         result = dict()
@@ -144,6 +147,9 @@ class ListPagesResponseBodyPages(DaraModel):
 
         if self.kind is not None:
             result['Kind'] = self.kind
+
+        if self.moderation is not None:
+            result['Moderation'] = self.moderation.to_map()
 
         if self.name is not None:
             result['Name'] = self.name
@@ -170,11 +176,50 @@ class ListPagesResponseBodyPages(DaraModel):
         if m.get('Kind') is not None:
             self.kind = m.get('Kind')
 
+        if m.get('Moderation') is not None:
+            temp_model = main_models.ListPagesResponseBodyPagesModeration()
+            self.moderation = temp_model.from_map(m.get('Moderation'))
+
         if m.get('Name') is not None:
             self.name = m.get('Name')
 
         if m.get('UpdateTime') is not None:
             self.update_time = m.get('UpdateTime')
+
+        return self
+
+class ListPagesResponseBodyPagesModeration(DaraModel):
+    def __init__(
+        self,
+        reasons: List[str] = None,
+        status: str = None,
+    ):
+        self.reasons = reasons
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.reasons is not None:
+            result['Reasons'] = self.reasons
+
+        if self.status is not None:
+            result['Status'] = self.status
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Reasons') is not None:
+            self.reasons = m.get('Reasons')
+
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
 
         return self
 

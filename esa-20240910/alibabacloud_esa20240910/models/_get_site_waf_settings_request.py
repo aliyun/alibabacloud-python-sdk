@@ -11,11 +11,11 @@ class GetSiteWafSettingsRequest(DaraModel):
         site_id: int = None,
         site_version: int = None,
     ):
-        # Specifies the configuration path. If not provided, all configurations will be retrieved.
+        # The configuration path. If this parameter is not specified, all configurations are retrieved.
         self.path = path
-        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
+        # The site ID. You can obtain the site ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         self.site_id = site_id
-        # Site version.
+        # The site version.
         self.site_version = site_version
 
     def validate(self):

@@ -13,9 +13,9 @@ class GetRoutineStagingCodeUploadInfoResponseBody(DaraModel):
         oss_post_config: Dict[str, Any] = None,
         request_id: str = None,
     ):
-        # The code version.
+        # The code version number.
         self.code_version = code_version
-        # The configuration information that can be used to upload to OSS.
+        # The configuration information for uploading a JavaScript file to OSS. When uploading to OSS, you must include the OSSAccessKeyId and x-oss-security-token parameters.
         self.oss_post_config = oss_post_config
         # The request ID.
         self.request_id = request_id

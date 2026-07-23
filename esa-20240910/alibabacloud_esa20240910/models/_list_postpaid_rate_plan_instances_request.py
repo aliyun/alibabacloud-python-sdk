@@ -11,6 +11,7 @@ class ListPostpaidRatePlanInstancesRequest(DaraModel):
         instance_id: str = None,
         page_number: int = None,
         page_size: int = None,
+        resource_owner: int = None,
         sort_by: str = None,
         sort_order: str = None,
         status: str = None,
@@ -22,13 +23,14 @@ class ListPostpaidRatePlanInstancesRequest(DaraModel):
         # 
         # - false: Does not filter by this condition.
         self.check_remaining_site_quota = check_remaining_site_quota
-        # The instance ID. Specify this parameter to query a specific instance.
+        # The instance ID. Use this parameter to query a specific instance.
         self.instance_id = instance_id
         # The page number for paging queries. The value must be greater than or equal to 1.
         self.page_number = page_number
         # The number of entries per page for paging queries. Valid values: 1 to 500.
         self.page_size = page_size
-        # The field by which to sort the results. Valid values:
+        self.resource_owner = resource_owner
+        # The field by which to sort results. Valid values:
         # 
         # - CreateTime: sorted by creation time
         self.sort_by = sort_by
@@ -69,6 +71,9 @@ class ListPostpaidRatePlanInstancesRequest(DaraModel):
         if self.page_size is not None:
             result['PageSize'] = self.page_size
 
+        if self.resource_owner is not None:
+            result['ResourceOwner'] = self.resource_owner
+
         if self.sort_by is not None:
             result['SortBy'] = self.sort_by
 
@@ -96,6 +101,9 @@ class ListPostpaidRatePlanInstancesRequest(DaraModel):
 
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+
+        if m.get('ResourceOwner') is not None:
+            self.resource_owner = m.get('ResourceOwner')
 
         if m.get('SortBy') is not None:
             self.sort_by = m.get('SortBy')

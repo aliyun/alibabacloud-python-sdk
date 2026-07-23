@@ -13,6 +13,7 @@ class PurchaseRatePlanRequest(DaraModel):
         channel: str = None,
         charge_type: str = None,
         coverage: str = None,
+        overage_policy: str = None,
         period: int = None,
         plan_code: str = None,
         plan_name: str = None,
@@ -21,18 +22,18 @@ class PurchaseRatePlanRequest(DaraModel):
     ):
         # The number of plans to purchase.
         self.amount = amount
-        # Specifies whether to enable automatic payment.
-        # Set this parameter to true when you directly call this operation.
+        # Specifies whether to enable automatic payment. Set this parameter to true when you directly call this operation.
         self.auto_pay = auto_pay
         # Specifies whether to enable auto-renewal. Valid values:
         # - true: Auto-renewal is enabled.
-        # - false: Auto-renewal is disabled.
+        # - false: Auto-renewal is not enabled.
         self.auto_renew = auto_renew
         # The channel field.
         self.channel = channel
         # The billing method. Valid values:
         # - PREPAY: subscription.
         # - POSTPAY: pay-as-you-go.
+        # 
         # Set this parameter to PREPAY when you directly call this operation.
         self.charge_type = charge_type
         # The acceleration region. Valid values:
@@ -40,32 +41,32 @@ class PurchaseRatePlanRequest(DaraModel):
         # - global: global.
         # - overseas: global (excluding the Chinese mainland).
         self.coverage = coverage
-        # The purchase period, in months.
-        # This parameter is required when you directly call this operation.
+        self.overage_policy = overage_policy
+        # The purchase period, in months. This parameter is required when you directly call this operation.
         self.period = period
         # The plan code.
         # 
-        # China site
+        # Chinese site
         # 
         # - Free Edition: entranceplan
         # - Basic: basicplan
         # - Standard: standardplan
-        # - Premium: advancedplan
+        # - Advanced: advancedplan
         # 
         # International site
         # 
         # - Entrance: entranceplan
         # - Pro: standardplan
-        # - Premium: advancedpla.
+        # - Premium: advancedpla
         self.plan_code = plan_code
         # The plan name.
         # 
-        # China site
+        # Chinese site
         # 
         # - Free Edition: entranceplan
         # - Basic: basic
         # - Standard: medium
-        # - Premium: high
+        # - Advanced: high
         # 
         # International site
         # 
@@ -73,7 +74,7 @@ class PurchaseRatePlanRequest(DaraModel):
         # - Pro: basicplan_intl
         # - Premium: vipplan_intl
         # 
-        # > Note: For Enterprise Edition plans, the plan name is provided after backend configuration.
+        # Note: For Enterprise Edition plans, the plan name is provided after backend configuration.
         self.plan_name = plan_name
         # The site name.
         self.site_name = site_name
@@ -107,6 +108,9 @@ class PurchaseRatePlanRequest(DaraModel):
 
         if self.coverage is not None:
             result['Coverage'] = self.coverage
+
+        if self.overage_policy is not None:
+            result['OveragePolicy'] = self.overage_policy
 
         if self.period is not None:
             result['Period'] = self.period
@@ -144,6 +148,9 @@ class PurchaseRatePlanRequest(DaraModel):
 
         if m.get('Coverage') is not None:
             self.coverage = m.get('Coverage')
+
+        if m.get('OveragePolicy') is not None:
+            self.overage_policy = m.get('OveragePolicy')
 
         if m.get('Period') is not None:
             self.period = m.get('Period')

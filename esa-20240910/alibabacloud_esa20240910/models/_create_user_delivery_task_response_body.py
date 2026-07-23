@@ -13,16 +13,14 @@ class CreateUserDeliveryTaskResponseBody(DaraModel):
         task_name: str = None,
     ):
         # The data center. Valid values:
-        # 
         # - **cn**: Chinese mainland.
-        # 
-        # - **sg**: Global (excluding Chinese mainland).
+        # - **sg**: global (excluding the Chinese mainland).
         self.data_center = data_center
-        # A unique identifier for the request.
+        # The request ID.
         self.request_id = request_id
-        # The current status of the task.
+        # The task status.
         self.status = status
-        # The name of the task.
+        # The task name.
         self.task_name = task_name
 
     def validate(self):

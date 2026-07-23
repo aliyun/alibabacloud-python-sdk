@@ -12,6 +12,7 @@ class UpdateRoutineBuildConfigurationShrinkRequest(DaraModel):
         build_command: str = None,
         environment_variables_shrink: str = None,
         git_account_id: int = None,
+        git_platform: str = None,
         install_command: str = None,
         is_private: bool = None,
         node_version: str = None,
@@ -23,7 +24,7 @@ class UpdateRoutineBuildConfigurationShrinkRequest(DaraModel):
     ):
         # The static resource directory.
         self.assets_directory = assets_directory
-        # The branches that trigger a build. Set this parameter to * for all branches. To specify multiple branches, separate branch names with commas.
+        # The branches that trigger a build. Set this to * for all branches. To specify multiple branches, separate branch names with commas.
         self.build_branches = build_branches
         # The build command.
         self.build_command = build_command
@@ -31,13 +32,15 @@ class UpdateRoutineBuildConfigurationShrinkRequest(DaraModel):
         self.environment_variables_shrink = environment_variables_shrink
         # The Git account ID.
         self.git_account_id = git_account_id
+        # The Git platform. Valid values: github, gitee, and upload.
+        self.git_platform = git_platform
         # The install command.
         self.install_command = install_command
         # Specifies whether the repository is private. Valid values:
         # - `true`: The repository is private.
         # - `false`: The repository is not private.
         self.is_private = is_private
-        # The Node.js version. Valid values: `22.x`, `20.x`, `18.x`, `16.x`, `14.x`, and `12.x`.
+        # The Node.js version. Valid values: `22.x`, `20.x`, `18.x`, `16.x`, `14.x`, `12.x`.
         self.node_version = node_version
         # The production branch name.
         self.production_branch = production_branch
@@ -45,7 +48,7 @@ class UpdateRoutineBuildConfigurationShrinkRequest(DaraModel):
         self.repository = repository
         # The root directory.
         self.root_directory = root_directory
-        # The path of the ER entry file.
+        # The ER entry file path.
         self.routine_entry = routine_entry
         # The ER name.
         # 
@@ -74,6 +77,9 @@ class UpdateRoutineBuildConfigurationShrinkRequest(DaraModel):
 
         if self.git_account_id is not None:
             result['GitAccountId'] = self.git_account_id
+
+        if self.git_platform is not None:
+            result['GitPlatform'] = self.git_platform
 
         if self.install_command is not None:
             result['InstallCommand'] = self.install_command
@@ -117,6 +123,9 @@ class UpdateRoutineBuildConfigurationShrinkRequest(DaraModel):
 
         if m.get('GitAccountId') is not None:
             self.git_account_id = m.get('GitAccountId')
+
+        if m.get('GitPlatform') is not None:
+            self.git_platform = m.get('GitPlatform')
 
         if m.get('InstallCommand') is not None:
             self.install_command = m.get('InstallCommand')

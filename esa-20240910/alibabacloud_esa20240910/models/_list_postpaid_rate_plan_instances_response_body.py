@@ -97,9 +97,11 @@ class ListPostpaidRatePlanInstancesResponseBodyInstanceInfo(DaraModel):
         create_time: str = None,
         expected_update_time: str = None,
         instance_id: str = None,
+        owner_id: str = None,
         plan_name: str = None,
         plan_name_cn: str = None,
         plan_type: str = None,
+        share_type: str = None,
         site_quota: str = None,
         sites: List[main_models.ListPostpaidRatePlanInstancesResponseBodyInstanceInfoSites] = None,
         status: str = None,
@@ -109,28 +111,30 @@ class ListPostpaidRatePlanInstancesResponseBodyInstanceInfo(DaraModel):
         self.billing_method = billing_method
         # The billing mode. Valid values:
         # 
-        #  * POSTPAY: pay-as-you-go.
+        #  * POSTPAY: Pay-as-you-go.
         self.billing_mode = billing_mode
-        # The acceleration regions to which sites can be associated with this instance. Multiple values are separated by commas (,). Valid values:
+        # The acceleration regions to which the instance can bindable sites. Multiple values are separated by commas (,). Valid values:
         # 
-        # - domestic: the Chinese mainland.
-        # - overseas: global (excluding the Chinese mainland).
-        # - global: global (including the Chinese mainland).
+        # - domestic: The Chinese mainland.
+        # - overseas: Global (excluding the Chinese mainland).
+        # - global: Global (including the Chinese mainland).
         self.coverages = coverages
-        # The time when the instance was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The time when the instance was created. The time is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
-        # The scheduled specification change time. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The scheduled specification change time. The time is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.expected_update_time = expected_update_time
         # The instance ID.
         self.instance_id = instance_id
-        # The plan name in English.
+        self.owner_id = owner_id
+        # The English name of the plan.
         self.plan_name = plan_name
-        # The plan name in Chinese.
+        # The Chinese name of the plan.
         self.plan_name_cn = plan_name_cn
         # The plan type of the instance. Valid values:
         # - normal: Fixed edition plan.
         # - enterprise: Enterprise edition plan.
         self.plan_type = plan_type
+        self.share_type = share_type
         # The site quota.
         self.site_quota = site_quota
         # The list of sites.
@@ -167,6 +171,9 @@ class ListPostpaidRatePlanInstancesResponseBodyInstanceInfo(DaraModel):
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
 
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+
         if self.plan_name is not None:
             result['PlanName'] = self.plan_name
 
@@ -175,6 +182,9 @@ class ListPostpaidRatePlanInstancesResponseBodyInstanceInfo(DaraModel):
 
         if self.plan_type is not None:
             result['PlanType'] = self.plan_type
+
+        if self.share_type is not None:
+            result['ShareType'] = self.share_type
 
         if self.site_quota is not None:
             result['SiteQuota'] = self.site_quota
@@ -209,6 +219,9 @@ class ListPostpaidRatePlanInstancesResponseBodyInstanceInfo(DaraModel):
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
 
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+
         if m.get('PlanName') is not None:
             self.plan_name = m.get('PlanName')
 
@@ -217,6 +230,9 @@ class ListPostpaidRatePlanInstancesResponseBodyInstanceInfo(DaraModel):
 
         if m.get('PlanType') is not None:
             self.plan_type = m.get('PlanType')
+
+        if m.get('ShareType') is not None:
+            self.share_type = m.get('ShareType')
 
         if m.get('SiteQuota') is not None:
             self.site_quota = m.get('SiteQuota')
@@ -248,7 +264,7 @@ class ListPostpaidRatePlanInstancesResponseBodyInstanceInfoSites(DaraModel):
         # - pending: The site is pending configuration.
         # - active: The site is activated.
         # - offline: The site is offline.
-        # - moved: The site has been replaced.
+        # - moved: The site has been superseded.
         self.site_status = site_status
 
     def validate(self):
