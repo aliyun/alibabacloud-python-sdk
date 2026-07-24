@@ -1,3 +1,7 @@
+2026-07-24 Version: 1.2.0
+- Support API CreateCallOutboundInstant.
+
+
 2026-07-22 Version: 1.1.3
 - Generated python 2025-11-27 for ThirdswAicall.
 

@@ -40,6 +40,92 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return Utils.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def create_call_outbound_instant_with_options(
+        self,
+        request: main_models.CreateCallOutboundInstantRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateCallOutboundInstantResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.called_number):
+            body['CalledNumber'] = request.called_number
+        if not DaraCore.is_null(request.customer_name):
+            body['CustomerName'] = request.customer_name
+        if not DaraCore.is_null(request.encrypt_call):
+            body['EncryptCall'] = request.encrypt_call
+        if not DaraCore.is_null(request.prompt_variables):
+            body['PromptVariables'] = request.prompt_variables
+        if not DaraCore.is_null(request.task_id):
+            body['TaskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateCallOutboundInstant',
+            version = '2025-11-27',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateCallOutboundInstantResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_call_outbound_instant_with_options_async(
+        self,
+        request: main_models.CreateCallOutboundInstantRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateCallOutboundInstantResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.called_number):
+            body['CalledNumber'] = request.called_number
+        if not DaraCore.is_null(request.customer_name):
+            body['CustomerName'] = request.customer_name
+        if not DaraCore.is_null(request.encrypt_call):
+            body['EncryptCall'] = request.encrypt_call
+        if not DaraCore.is_null(request.prompt_variables):
+            body['PromptVariables'] = request.prompt_variables
+        if not DaraCore.is_null(request.task_id):
+            body['TaskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateCallOutboundInstant',
+            version = '2025-11-27',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateCallOutboundInstantResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_call_outbound_instant(
+        self,
+        request: main_models.CreateCallOutboundInstantRequest,
+    ) -> main_models.CreateCallOutboundInstantResponse:
+        runtime = RuntimeOptions()
+        return self.create_call_outbound_instant_with_options(request, runtime)
+
+    async def create_call_outbound_instant_async(
+        self,
+        request: main_models.CreateCallOutboundInstantRequest,
+    ) -> main_models.CreateCallOutboundInstantResponse:
+        runtime = RuntimeOptions()
+        return await self.create_call_outbound_instant_with_options_async(request, runtime)
+
     def query_task_concurrency_with_options(
         self,
         request: main_models.QueryTaskConcurrencyRequest,
