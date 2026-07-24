@@ -13,9 +13,9 @@ class GetOssCheckStatResponseBody(DaraModel):
         bar_chart: main_models.GetOssCheckStatResponseBodyBarChart = None,
         request_id: str = None,
     ):
-        # Bar chart
+        # The bar chart data.
         self.bar_chart = bar_chart
-        # ID assigned by the backend, used to uniquely identify a request. Can be used for troubleshooting.
+        # The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -52,9 +52,9 @@ class GetOssCheckStatResponseBodyBarChart(DaraModel):
         x: List[str] = None,
         y: List[main_models.GetOssCheckStatResponseBodyBarChartY] = None,
     ):
-        # X values of the coordinates.
+        # The X value of the coordinate point.
         self.x = x
-        # Y values of the coordinates.
+        # The Y value of the coordinate point.
         self.y = y
 
     def validate(self):
@@ -97,9 +97,9 @@ class GetOssCheckStatResponseBodyBarChartY(DaraModel):
         data: List[int] = None,
         name: str = None,
     ):
-        # Data.
+        # The data.
         self.data = data
-        # Name.
+        # The name.
         self.name = name
 
     def validate(self):

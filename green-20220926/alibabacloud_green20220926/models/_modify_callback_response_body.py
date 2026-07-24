@@ -10,9 +10,9 @@ class ModifyCallbackResponseBody(DaraModel):
         data: bool = None,
         request_id: str = None,
     ):
-        # Return result.
+        # The returned result.
         self.data = data
-        # Backend-assigned ID, used to uniquely identify a request. Can be used for troubleshooting.
+        # The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):

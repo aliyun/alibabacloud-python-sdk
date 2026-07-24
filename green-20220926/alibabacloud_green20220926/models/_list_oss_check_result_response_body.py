@@ -16,15 +16,15 @@ class ListOssCheckResultResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # Data of the current page.
+        # The data on the current page.
         self.items = items
-        # Page size.
+        # The number of entries per page.
         self.page_size = page_size
-        # ID assigned by the backend, used to uniquely identify a request. Can be used for troubleshooting.
+        # The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
-        # Total number of records.
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -91,6 +91,8 @@ class ListOssCheckResultResponseBodyItems(DaraModel):
         image_url: str = None,
         is_copy: bool = None,
         job_name: str = None,
+        label_details: List[main_models.ListOssCheckResultResponseBodyItemsLabelDetails] = None,
+        label_details_2: List[main_models.ListOssCheckResultResponseBodyItemsLabelDetails2] = None,
         labels: List[str] = None,
         labels_2: List[str] = None,
         md_5: str = None,
@@ -105,53 +107,64 @@ class ListOssCheckResultResponseBodyItems(DaraModel):
         task_id: str = None,
         url: str = None,
     ):
-        # Storage space.
+        # The OSS bucket.
         self.bucket = bucket
-        # Error code, consistent with HTTP status.
+        # The error code, which is consistent with the HTTP status code.
         self.code = code
-        # Audio and video detection type.
+        # The audio and video detection type.
         self.content_type = content_type
-        # Primary service.
+        # The primary service.
         self.copy_from = copy_from
-        # Freeze status.
+        # The freeze status.
         self.freeze_status = freeze_status
-        # Freeze type.
+        # The freeze type.
         self.freeze_type = freeze_type
-        # Image URL address.
+        # The URL of the image.
         self.image_url = image_url
-        # Whether to copy.
+        # Indicates whether the task is copied.
         self.is_copy = is_copy
-        # Job name.
+        # The task name.
         self.job_name = job_name
-        # Image labels.
+        # The list of labels hit by video frames.
+        self.label_details = label_details
+        # The list of labels hit by video audio.
+        self.label_details_2 = label_details_2
+        # The image labels.
         self.labels = labels
-        # Text labels.
+        # The text labels.
         self.labels_2 = labels_2
-        # File MD5.
+        # The MD5 hash of the file.
         self.md_5 = md_5
-        # Further description of the error code.
+        # The description of the error code.
         self.msg = msg
-        # Object name.
+        # The object name.
         self.object = object
-        # Image risk level
+        # The image risk level.
         self.risk_level = risk_level
-        # Overall risk level
+        # The overall risk level.
         self.risk_level_0 = risk_level_0
-        # Text risk level
+        # The text risk level.
         self.risk_level_2 = risk_level_2
-        # Details of the result.
+        # The scan result details.
         self.scan_result = scan_result
-        # Service code.
+        # The service code.
         self.service_code = service_code
-        # Service name.
+        # The service name.
         self.service_name = service_name
-        # Task ID.
+        # The task ID.
         self.task_id = task_id
-        # Task URL.
+        # The task URL.
         self.url = url
 
     def validate(self):
-        pass
+        if self.label_details:
+            for v1 in self.label_details:
+                 if v1:
+                    v1.validate()
+        if self.label_details_2:
+            for v1 in self.label_details_2:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -184,6 +197,16 @@ class ListOssCheckResultResponseBodyItems(DaraModel):
 
         if self.job_name is not None:
             result['JobName'] = self.job_name
+
+        result['LabelDetails'] = []
+        if self.label_details is not None:
+            for k1 in self.label_details:
+                result['LabelDetails'].append(k1.to_map() if k1 else None)
+
+        result['LabelDetails2'] = []
+        if self.label_details_2 is not None:
+            for k1 in self.label_details_2:
+                result['LabelDetails2'].append(k1.to_map() if k1 else None)
 
         if self.labels is not None:
             result['Labels'] = self.labels
@@ -255,6 +278,18 @@ class ListOssCheckResultResponseBodyItems(DaraModel):
         if m.get('JobName') is not None:
             self.job_name = m.get('JobName')
 
+        self.label_details = []
+        if m.get('LabelDetails') is not None:
+            for k1 in m.get('LabelDetails'):
+                temp_model = main_models.ListOssCheckResultResponseBodyItemsLabelDetails()
+                self.label_details.append(temp_model.from_map(k1))
+
+        self.label_details_2 = []
+        if m.get('LabelDetails2') is not None:
+            for k1 in m.get('LabelDetails2'):
+                temp_model = main_models.ListOssCheckResultResponseBodyItemsLabelDetails2()
+                self.label_details_2.append(temp_model.from_map(k1))
+
         if m.get('Labels') is not None:
             self.labels = m.get('Labels')
 
@@ -293,6 +328,80 @@ class ListOssCheckResultResponseBodyItems(DaraModel):
 
         if m.get('Url') is not None:
             self.url = m.get('Url')
+
+        return self
+
+class ListOssCheckResultResponseBodyItemsLabelDetails2(DaraModel):
+    def __init__(
+        self,
+        description: str = None,
+        label: str = None,
+    ):
+        # The description of the label.
+        self.description = description
+        # The label hit by the audio.
+        self.label = label
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.description is not None:
+            result['Description'] = self.description
+
+        if self.label is not None:
+            result['Label'] = self.label
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+
+        if m.get('Label') is not None:
+            self.label = m.get('Label')
+
+        return self
+
+class ListOssCheckResultResponseBodyItemsLabelDetails(DaraModel):
+    def __init__(
+        self,
+        description: str = None,
+        label: str = None,
+    ):
+        # The description of the label.
+        self.description = description
+        # The label hit by the video frame.
+        self.label = label
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.description is not None:
+            result['Description'] = self.description
+
+        if self.label is not None:
+            result['Label'] = self.label
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+
+        if m.get('Label') is not None:
+            self.label = m.get('Label')
 
         return self
 

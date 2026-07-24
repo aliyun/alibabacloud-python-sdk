@@ -11,8 +11,11 @@ class CreateImageLibRequest(DaraModel):
         lib_name: str = None,
         region_id: str = None,
     ):
+        # The remarks.
         self.comment = comment
+        # The name of the image library.
         self.lib_name = lib_name
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

@@ -16,15 +16,15 @@ class ListKeywordLibsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Error code.
+        # The error code.
         self.code = code
-        # Returned data.
+        # The returned data.
         self.data = data
-        # Further description of the error code.
+        # The description of the error code.
         self.msg = msg
-        # ID assigned by the backend to uniquely identify a request. Can be used for troubleshooting.
+        # The request ID assigned by the backend, which uniquely identifies the request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
-        # Success indicator.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -89,17 +89,17 @@ class ListKeywordLibsResponseBodyData(DaraModel):
         service_codes: str = None,
         uid: str = None,
     ):
-        # Modification time.
+        # The modification time.
         self.gmt_modified = gmt_modified
-        # Number of keywords.
+        # The number of keywords.
         self.keyword_count = keyword_count
-        # Library ID.
+        # The library ID.
         self.lib_id = lib_id
-        # Library name.
+        # The library name.
         self.lib_name = lib_name
-        # Service codes.
+        # The service codes.
         self.service_codes = service_codes
-        # UID.
+        # UID。
         self.uid = uid
 
     def validate(self):

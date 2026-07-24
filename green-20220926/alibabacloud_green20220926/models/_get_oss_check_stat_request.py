@@ -13,15 +13,15 @@ class GetOssCheckStatRequest(DaraModel):
         region_id: str = None,
         start_date: str = None,
     ):
-        # Whether to query by month.
+        # Specifies whether to query by month.
         self.by_month = by_month
-        # End date.
+        # The end time. Format: YYYY-MM-DD HH:mm:ss.
         self.end_date = end_date
-        # Parent task ID.
+        # The parent task ID.
         self.parent_task_id = parent_task_id
-        # Region ID.
+        # The region ID.
         self.region_id = region_id
-        # Start date.
+        # The start time. Format: YYYY-MM-DD HH:mm:ss.
         self.start_date = start_date
 
     def validate(self):

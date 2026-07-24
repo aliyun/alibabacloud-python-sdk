@@ -13,7 +13,9 @@ class ListAnswerLibResponseBody(DaraModel):
         data: List[main_models.ListAnswerLibResponseBodyData] = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
+        # The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -59,9 +61,13 @@ class ListAnswerLibResponseBodyData(DaraModel):
         lib_name: str = None,
         uid: str = None,
     ):
+        # The number of proxy answers.
         self.answer_count = answer_count
+        # The modification time.
         self.gmt_modified = gmt_modified
+        # The ID of the proxy answer library.
         self.lib_id = lib_id
+        # The name of the library.
         self.lib_name = lib_name
         # UID。
         self.uid = uid

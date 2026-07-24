@@ -13,7 +13,9 @@ class GetPromptTestResultResponseBody(DaraModel):
         request_id: str = None,
         result: List[main_models.GetPromptTestResultResponseBodyResult] = None,
     ):
+        # The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
+        # The result.
         self.result = result
 
     def validate(self):
@@ -57,8 +59,19 @@ class GetPromptTestResultResponseBodyResult(DaraModel):
         label_details: List[main_models.GetPromptTestResultResponseBodyResultLabelDetails] = None,
         risk_level: str = None,
     ):
+        # The content.
         self.content = content
+        # The labels.
         self.label_details = label_details
+        # The risk level, which is returned based on the configured high and low risk scores. Valid values:
+        # 
+        # - high: High risk.
+        # 
+        # - medium: Medium risk.
+        #  
+        # - low: Low risk.
+        # 
+        #  - none: No risk detected.
         self.risk_level = risk_level
 
     def validate(self):
@@ -108,8 +121,11 @@ class GetPromptTestResultResponseBodyResultLabelDetails(DaraModel):
         label: str = None,
         reason: str = None,
     ):
+        # The label description.
         self.description = description
+        # The labels.
         self.label = label
+        # The reason why the model determined this risk level for the text.
         self.reason = reason
 
     def validate(self):

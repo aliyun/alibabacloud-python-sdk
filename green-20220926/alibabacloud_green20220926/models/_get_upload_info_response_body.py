@@ -18,34 +18,36 @@ class GetUploadInfoResponseBody(DaraModel):
         name: str = None,
         policy: str = None,
         request_id: str = None,
+        security_token: str = None,
         signature: str = None,
         success: bool = None,
     ):
-        # Upload authorization ID.
+        # The upload authorization ID.
         self.access_id = access_id
-        # Error code, consistent with HTTP status.
+        # The error code, consistent with the HTTP status code.
         self.code = code
-        # In seconds.
+        # Unit: seconds.
         self.expire = expire
-        # Folder name.
+        # The file name.
         self.folder = folder
-        # Upload host.
+        # The upload host.
         self.host = host
-        # HTTP status code.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Key used for uploading files.
+        # The key used for file upload.
         self.key = key
-        # Further description of the error code.
+        # The further description of the error code.
         self.msg = msg
-        # Used for front-end image upload.
+        # Used for frontend image upload.
         self.name = name
-        # OSS upload file Policy.
+        # The OSS file upload policy.
         self.policy = policy
-        # ID assigned by the backend to uniquely identify a request. Can be used for troubleshooting.
+        # The backend-assigned ID that uniquely identifies a request. This ID can be used for troubleshooting.
         self.request_id = request_id
-        # Upload signature information.
+        self.security_token = security_token
+        # The upload signature information.
         self.signature = signature
-        # Success indicator.
+        # The success flag.
         self.success = success
 
     def validate(self):
@@ -89,6 +91,9 @@ class GetUploadInfoResponseBody(DaraModel):
         if self.request_id is not None:
             result['RequestId'] = self.request_id
 
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+
         if self.signature is not None:
             result['Signature'] = self.signature
 
@@ -131,6 +136,9 @@ class GetUploadInfoResponseBody(DaraModel):
 
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
 
         if m.get('Signature') is not None:
             self.signature = m.get('Signature')

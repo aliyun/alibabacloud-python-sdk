@@ -11,13 +11,13 @@ class QueryCallbackRequest(DaraModel):
         id: int = None,
         region_id: str = None,
     ):
-        # Query data under the OSS detection task.
+        # Queries data under the OSS detection task.
         self.check_for_oss = check_for_oss
-        # Primary key ID.
+        # The primary key ID.
         # 
         # This parameter is required.
         self.id = id
-        # Region ID.
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

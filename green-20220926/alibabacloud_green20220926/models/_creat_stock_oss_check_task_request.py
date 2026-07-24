@@ -37,62 +37,63 @@ class CreatStockOssCheckTaskRequest(DaraModel):
         task_name: str = None,
         task_type: str = None,
     ):
+        # The filter configuration for each bucket. The value can be parsed as a JSON map. The key is the bucket name, and the value is the filter configuration, which includes prefix/suffix filters and a list of filter strings.
         self.bucket_prefix_filter_config = bucket_prefix_filter_config
-        # OSS buckets
+        # The storage buckets.
         self.buckets = buckets
-        # Callback ID
+        # The notification callback ID.
         self.callback_id = callback_id
-        # Flag for deduplicating against previously detected tasks.
+        # Specifies whether to deduplicate against historically scanned tasks.
         self.distinct_history_tasks = distinct_history_tasks
-        # The end time of the task.
+        # The task end time. Format: `YYYY-MM-DD HH:mm:ss`.
         self.end_time = end_time
-        # Execute date of scheduled task.
+        # The execution date of the scheduled task. The value is in integer format.
         self.execute_date = execute_date
-        # Execute time of scheduled task.
+        # The expected execution time of the scheduled task. Format: `HH:mm:ss-HH:mm:ss`.
         self.execute_time = execute_time
-        # Freeze indicator
+        # Specifies whether to freeze files.
         self.freeze = freeze
-        # Freeze High-Risk Images
+        # Specifies whether to freeze high-risk images.
         self.freeze_high_risk_1 = freeze_high_risk_1
-        # Freeze High-Risk Audio and Text
+        # Specifies whether to freeze high-risk audio and text.
         self.freeze_high_risk_2 = freeze_high_risk_2
-        # Freeze Medium-Risk Images
+        # Specifies whether to freeze medium-risk images.
         self.freeze_medium_risk_1 = freeze_medium_risk_1
-        # Freeze Medium-Risk Audio and Text
+        # Specifies whether to freeze medium-risk audio and text.
         self.freeze_medium_risk_2 = freeze_medium_risk_2
-        # Freeze Restore Path
+        # The path to which frozen files are transferred.
         self.freeze_restore_path = freeze_restore_path
-        # Freeze type
+        # The freeze type.
         self.freeze_type = freeze_type
-        # Indicator for scheduled task.
+        # Specifies whether the task is a scheduled scan task.
         self.is_inc = is_inc
-        # Media type.
+        # The media asset type.
         self.media_type = media_type
-        # Prefix filter type.
+        # The prefix filter type.
         self.prefix_filter_type = prefix_filter_type
-        # Prefix filters
+        # The prefixes.
         self.prefix_filters = prefix_filters
-        # The priority of the task.
+        # The priority.
         self.priority = priority
-        # Referer.
+        # Referer。
         self.referer = referer
-        # Region ID
+        # The region ID.
         self.region_id = region_id
-        # The scan limit of the task.
+        # The maximum number of files to scan.
         self.scan_limit = scan_limit
-        # Indicator for scanning files without file type.
+        # Specifies whether to scan images without file extensions.
         self.scan_no_file_type = scan_no_file_type
-        # Scan resource type.
+        # The type of files to scan.
         self.scan_resource_type = scan_resource_type
-        # The code of scan service.
+        # The scan service code.
         self.scan_service = scan_service
-        # The start time of the task.
+        # The task start time. Format: `YYYY-MM-DD HH:mm:ss`.
         self.start_time = start_time
-        # Task Cycle
+        # The scheduling cycle.
         self.task_cycle = task_cycle
-        # The name of the task.
+        # The task name.
         self.task_name = task_name
-        # Task type.
+        # The task type.
         self.task_type = task_type
 
     def validate(self):

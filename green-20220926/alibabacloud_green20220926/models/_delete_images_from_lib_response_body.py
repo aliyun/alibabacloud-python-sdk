@@ -14,17 +14,17 @@ class DeleteImagesFromLibResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Status code.
+        # The error code, which is the same as the HTTP status code.
         self.code = code
-        # The data returned.
+        # The returned result.
         self.data = data
-        # HTTP status code.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # The message that is returned in response to the request.
+        # The description of the error code.
         self.msg = msg
-        # The request ID, which is used to locate and troubleshoot issues.
+        # The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
-        # Success indicator.
+        # Indicates whether the operation is successful.
         self.success = success
 
     def validate(self):

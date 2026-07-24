@@ -13,10 +13,15 @@ class CreateAnswerLibRequest(DaraModel):
         sample_object: str = None,
         samples: str = None,
     ):
+        # The name of the proxy answer library.
         self.lib_name = lib_name
+        # The region ID.
         self.region_id = region_id
+        # The name of the storage space.
         self.sample_bucket = sample_bucket
+        # The file name of the proxy answer sample to be added.
         self.sample_object = sample_object
+        # The samples to be added.
         self.samples = samples
 
     def validate(self):

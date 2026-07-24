@@ -11,10 +11,13 @@ class DeleteKeywordLibRequest(DaraModel):
         region_id: str = None,
         tenant_code: str = None,
     ):
-        # Keyword library ID.
+        # The keyword library ID.
         self.lib_id = lib_id
-        # Region ID.
+        # The region ID.
         self.region_id = region_id
+        # The library code.
+        # 
+        # - desensitize: masking library
         self.tenant_code = tenant_code
 
     def validate(self):

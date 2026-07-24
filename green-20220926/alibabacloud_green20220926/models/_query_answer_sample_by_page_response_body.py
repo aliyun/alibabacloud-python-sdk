@@ -16,10 +16,15 @@ class QueryAnswerSampleByPageResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The current page number.
         self.current_page = current_page
+        # The data on the current page.
         self.items = items
+        # The number of entries per page.
         self.page_size = page_size
+        # The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -83,9 +88,13 @@ class QueryAnswerSampleByPageResponseBodyItems(DaraModel):
         lib_id: str = None,
         uid: str = None,
     ):
+        # The answer.
         self.answer = answer
+        # The creation time.
         self.gmt_create = gmt_create
+        # The primary key ID.
         self.id = id
+        # The ID of the proxy answer library.
         self.lib_id = lib_id
         # UID。
         self.uid = uid

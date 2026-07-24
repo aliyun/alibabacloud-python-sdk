@@ -13,9 +13,9 @@ class ListCallbackResponseBody(DaraModel):
         data: List[main_models.ListCallbackResponseBodyData] = None,
         request_id: str = None,
     ):
-        # Returned data.
+        # The returned data.
         self.data = data
-        # Backend-assigned ID, used to uniquely identify a request. Can be used for troubleshooting.
+        # The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -65,23 +65,23 @@ class ListCallbackResponseBodyData(DaraModel):
         uid: str = None,
         url: str = None,
     ):
-        # Encryption algorithm.
+        # The encryption algorithm.
         self.crypt_type = crypt_type
-        # Creation time.
+        # The creation time.
         self.gmt_create = gmt_create
-        # Modification time.
+        # The modification time.
         self.gmt_modified = gmt_modified
-        # Primary key ID.
+        # The primary key ID.
         self.id = id
-        # Name.
+        # The name.
         self.name = name
-        # Result scope.
+        # The result scope.
         self.scope = scope
-        # Seed.
+        # Seed。
         self.seed = seed
-        # UID.
+        # UID。
         self.uid = uid
-        # Callback URL.
+        # The callback URL.
         self.url = url
 
     def validate(self):

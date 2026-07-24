@@ -21,15 +21,25 @@ class DescribeOnlineTestResultResponseBody(DaraModel):
         task_status: str = None,
         url: str = None,
     ):
+        # The audio data.
         self.audio_data = audio_data
+        # The video frame data.
         self.frame_data = frame_data
+        # The detection time, represented as a UNIX timestamp in milliseconds.
         self.moderation_time = moderation_time
+        # The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
+        # The risk level.
         self.risk_level = risk_level
+        # The service code.
         self.service_code = service_code
+        # The list of detection results.
         self.summary_list = summary_list
+        # The ID of the detection task.
         self.task_id = task_id
+        # The detection status.
         self.task_status = task_status
+        # The detection URL.
         self.url = url
 
     def validate(self):
@@ -128,9 +138,13 @@ class DescribeOnlineTestResultResponseBodySummaryList(DaraModel):
         risk_level_summary: Dict[str, int] = None,
         slice_count: int = None,
     ):
+        # The resource type.
         self.resource_type = resource_type
+        # The risk level.
         self.risk_level = risk_level
+        # The risk level summary.
         self.risk_level_summary = risk_level_summary
+        # The number of shards.
         self.slice_count = slice_count
 
     def validate(self):
@@ -177,7 +191,9 @@ class DescribeOnlineTestResultResponseBodyFrameData(DaraModel):
         time_stamp: str = None,
         url: str = None,
     ):
+        # The timestamp.
         self.time_stamp = time_stamp
+        # The detection URL.
         self.url = url
 
     def validate(self):
@@ -211,6 +227,7 @@ class DescribeOnlineTestResultResponseBodyAudioData(DaraModel):
         self,
         time_stamp: str = None,
     ):
+        # The timestamp.
         self.time_stamp = time_stamp
 
     def validate(self):

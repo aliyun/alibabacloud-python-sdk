@@ -11,8 +11,11 @@ class DescribeOnlineTestResultRequest(DaraModel):
         service_code: str = None,
         task_id: str = None,
     ):
+        # The resource type.
         self.resource_type = resource_type
+        # The service code.
         self.service_code = service_code
+        # The ID of the detection task.
         self.task_id = task_id
 
     def validate(self):

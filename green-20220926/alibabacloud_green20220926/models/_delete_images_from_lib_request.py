@@ -11,11 +11,11 @@ class DeleteImagesFromLibRequest(DaraModel):
         lib_id: str = None,
         region_id: str = None,
     ):
-        # The IDs of the images.
+        # The IDs of the images to delete.
         self.image_ids = image_ids
-        # Library ID.
+        # The ID of the image library.
         self.lib_id = lib_id
-        # Region ID
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

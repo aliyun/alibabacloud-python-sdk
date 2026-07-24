@@ -9,7 +9,7 @@ class GetBucketsListRequest(DaraModel):
         self,
         region_id: str = None,
     ):
-        # Region ID.
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

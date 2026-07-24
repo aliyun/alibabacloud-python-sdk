@@ -15,6 +15,7 @@ class LlmStreamChatRequest(DaraModel):
         top_p: float = None,
         type: str = None,
     ):
+        # channel
         self.channel = channel
         # Conversation information
         self.messages = messages

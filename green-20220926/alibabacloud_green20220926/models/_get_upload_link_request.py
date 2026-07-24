@@ -9,6 +9,7 @@ class GetUploadLinkRequest(DaraModel):
         self,
         upload_url: str = None,
     ):
+        # Upload Link address
         self.upload_url = upload_url
 
     def validate(self):

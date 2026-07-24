@@ -11,7 +11,9 @@ class UpdateOssCheckResultsFreezeResponseBody(DaraModel):
         data: main_models.UpdateOssCheckResultsFreezeResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
+        # The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -50,9 +52,13 @@ class UpdateOssCheckResultsFreezeResponseBodyData(DaraModel):
         success_count: int = None,
         total_count: int = None,
     ):
+        # The number of invalid records.
         self.invalid_count = invalid_count
+        # The number of duplicate records.
         self.repeat_count = repeat_count
+        # The number of successful operations.
         self.success_count = success_count
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):

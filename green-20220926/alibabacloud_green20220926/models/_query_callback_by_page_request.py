@@ -11,11 +11,11 @@ class QueryCallbackByPageRequest(DaraModel):
         page_size: int = None,
         region_id: str = None,
     ):
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # Page size.
+        # The page size.
         self.page_size = page_size
-        # Region ID.
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

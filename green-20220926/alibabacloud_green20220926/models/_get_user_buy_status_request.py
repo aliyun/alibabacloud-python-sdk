@@ -10,9 +10,9 @@ class GetUserBuyStatusRequest(DaraModel):
         commodity_code: str = None,
         region_id: str = None,
     ):
-        # Commodity code.
+        # The commodity code.
         self.commodity_code = commodity_code
-        # Region ID.
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

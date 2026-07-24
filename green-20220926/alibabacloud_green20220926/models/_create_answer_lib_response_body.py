@@ -15,9 +15,13 @@ class CreateAnswerLibResponseBody(DaraModel):
         result: main_models.CreateAnswerLibResponseBodyResult = None,
         task_id: str = None,
     ):
+        # The ID of the proxy answer library.
         self.lib_id = lib_id
+        # The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
+        # The result.
         self.result = result
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -74,15 +78,25 @@ class CreateAnswerLibResponseBodyResult(DaraModel):
         task_id: str = None,
         total_count: int = None,
     ):
+        # The internationalization key.
         self.i_18n_key = i_18n_key
+        # The list of invalid proxy answers.
         self.illegal_length_samples = illegal_length_samples
+        # The number of invalid samples.
         self.invalid_count = invalid_count
+        # The ID of the proxy answer library.
         self.lib_id = lib_id
+        # The task progress percentage.
         self.progress = progress
+        # The number of duplicate samples.
         self.repeat_count = repeat_count
+        # The list of duplicate proxy answers.
         self.repeat_samples = repeat_samples
+        # The number of successful samples.
         self.success_count = success_count
+        # The task ID.
         self.task_id = task_id
+        # The total count.
         self.total_count = total_count
 
     def validate(self):

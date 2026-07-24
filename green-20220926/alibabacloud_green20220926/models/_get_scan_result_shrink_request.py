@@ -16,21 +16,21 @@ class GetScanResultShrinkRequest(DaraModel):
         sort_shrink: str = None,
         start_date: str = None,
     ):
-        # Current page.
+        # The current page number.
         self.current_page = current_page
-        # End time.
+        # The end time. Format: YYYY-MM-DD HH:mm:ss.
         self.end_date = end_date
-        # Page size.
+        # The number of entries per page.
         self.page_size = page_size
-        # Search criteria.
+        # The search condition.
         self.query_shrink = query_shrink
-        # Region ID.
+        # The region ID.
         self.region_id = region_id
-        # Resource type.
+        # The resource type.
         self.resource_type = resource_type
-        # Sort fields.
+        # The sort field.
         self.sort_shrink = sort_shrink
-        # Start time.
+        # The start time. Format: YYYY-MM-DD HH:mm:ss.
         self.start_date = start_date
 
     def validate(self):

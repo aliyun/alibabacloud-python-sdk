@@ -16,15 +16,15 @@ class GetOssCheckFreezeResultResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # Data of the current page.
+        # The data on the current page.
         self.items = items
-        # Page size.
+        # The number of entries per page.
         self.page_size = page_size
-        # Backend-assigned ID, used to uniquely identify a request. Can be used for troubleshooting.
+        # The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
-        # Total count.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -113,65 +113,74 @@ class GetOssCheckFreezeResultResponseBodyItems(DaraModel):
         task_id: str = None,
         url: str = None,
     ):
-        # Storage space.
+        # The OSS bucket.
         self.bucket = bucket
-        # Error code, consistent with HTTP status.
+        # The error code, which is consistent with the HTTP status code.
         self.code = code
-        # Audio and video detection type.
+        # The audio or video scan type.
         self.content_type = content_type
-        # Primary service.
+        # The primary service.
         self.copy_from = copy_from
-        # Feedback.
+        # The feedback. Valid values:
+        # - misreport: False positive (not a violation).
+        # - missOut: Missed violation.
         self.feedback = feedback
-        # Whether frozen.
+        # Indicates whether the object is frozen.
         self.freeze = freeze
-        # Freeze status.
+        # The freeze status.
         self.freeze_status = freeze_status
-        # Freeze type.
+        # The freeze type.
         self.freeze_type = freeze_type
-        # Image URL address.
+        # The URL of the image.
         self.image_url = image_url
-        # Whether to copy.
+        # Indicates whether the task is copied.
         self.is_copy = is_copy
-        # Job name.
+        # The task name.
         self.job_name = job_name
-        # Labels.
+        # The label details.
         self.label_details = label_details
-        # Image labels.
+        # The image labels.
         self.labels = labels
-        # Text labels.
+        # The text labels.
         self.labels_2 = labels_2
-        # Manual disposal status.
+        # The manual action status. Valid values:
+        # - FREEZE: Frozen.
+        # - UNFREEZE: Unfrozen.
         self.manual_freeze_action = manual_freeze_action
-        # Disposal time.
+        # The action time. Format: YYYY-MM-DD HH:mm:ss.
         self.manual_operate_time = manual_operate_time
-        # Operator.
+        # The operator who performed the action.
         self.manual_operator = manual_operator
-        # File\\"s MD5.
+        # The MD5 hash of the file.
         self.md_5 = md_5
-        # Further description of the error code.
+        # The detailed description of the error code.
         self.msg = msg
-        # Object name.
+        # The object name.
         self.object = object
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Image risk level.
+        # The image risk level.
         self.risk_level = risk_level
-        # Overall risk level.
+        # The overall risk level.
         self.risk_level_0 = risk_level_0
-        # Text risk level.
+        # The text risk level.
         self.risk_level_2 = risk_level_2
-        # Details of the result.
+        # The scan result details.
         self.scan_result = scan_result
-        # Service code.
+        # The service code.
         self.service_code = service_code
-        # Service name.
+        # The service name.
         self.service_name = service_name
-        # System disposal status.
+        # The system action status. Valid values:
+        # - FREEZING: Freezing in progress.
+        # - FREEZED: Frozen.
+        # - UNFREEZED: Unfrozen.
+        # - NONE: No action taken.
+        # - UNFREEZING: Unfreezing in progress.
         self.sys_disposal_status = sys_disposal_status
-        # Task ID.
+        # The task ID.
         self.task_id = task_id
-        # Task URL.
+        # The task URL.
         self.url = url
 
     def validate(self):
@@ -383,11 +392,11 @@ class GetOssCheckFreezeResultResponseBodyItemsLabelDetails(DaraModel):
         description: str = None,
         label: str = None,
     ):
-        # Confidence.
+        # The confidence level.
         self.confidence = confidence
-        # Label description.
+        # The label description.
         self.description = description
-        # Label.
+        # The label details.
         self.label = label
 
     def validate(self):

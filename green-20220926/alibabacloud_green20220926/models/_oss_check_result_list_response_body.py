@@ -17,17 +17,17 @@ class OssCheckResultListResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # Backend-assigned ID, used to uniquely identify a request. Can be used for troubleshooting.
+        # The authorization status.
         self.auth_status = auth_status
-        # Page size.
+        # The current page number.
         self.current_page = current_page
-        # Current page number.
+        # The data on the current page.
         self.items = items
-        # Total number of records.
+        # The number of entries per page.
         self.page_size = page_size
-        # Task status.
+        # The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
-        # Authorization status.
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -109,39 +109,39 @@ class OssCheckResultListResponseBodyItems(DaraModel):
         task_id: str = None,
         url: str = None,
     ):
-        # Data of the current page.
+        # The name of the OSS bucket.
         self.bucket = bucket
-        # Service code.
+        # The status code. A value of 200 indicates success.
         self.code = code
-        # Primary service.
+        # The audio and video detection type.
         self.content_type = content_type
-        # Whether to copy.
+        # The primary service.
         self.copy_from = copy_from
-        # Details of the result.
+        # The URL of the image.
         self.image_url = image_url
-        # Service name.
+        # Indicates whether the task is copied.
         self.is_copy = is_copy
-        # Image URL.
+        # The task name.
         self.job_name = job_name
-        # Further description of the error code.
+        # The image labels.
         self.labels = labels
-        # Job name.
+        # The text labels.
         self.labels_2 = labels_2
-        # Object name.
+        # The MD5 hash of the file.
         self.md_5 = md_5
-        # Status code. 200 indicates success.
+        # The description of the error code.
         self.msg = msg
-        # OSS Bucket name.
+        # The object name.
         self.object = object
-        # Image labels.
+        # The result details.
         self.scan_result = scan_result
-        # File MD5.
+        # The service code.
         self.service_code = service_code
-        # Task ID.
+        # The service name.
         self.service_name = service_name
-        # Task URL.
+        # The task ID.
         self.task_id = task_id
-        # Text labels.
+        # The task URL.
         self.url = url
 
     def validate(self):

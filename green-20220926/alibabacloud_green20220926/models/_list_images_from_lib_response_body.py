@@ -20,23 +20,23 @@ class ListImagesFromLibResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # Error code, consistent with HTTP status.
+        # The error code, which is consistent with the HTTP status code.
         self.code = code
-        # Current page.
+        # The current page number.
         self.current_page = current_page
-        # HTTP status code.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Data of the current page.
+        # The data on the current page.
         self.items = items
-        # Further description of the error code.
+        # The further description of the error code.
         self.msg = msg
-        # Page size.
+        # The number of entries per page.
         self.page_size = page_size
-        # ID assigned by the backend to uniquely identify a request. Can be used for troubleshooting.
+        # The backend-assigned ID that uniquely identifies a request. This ID can be used for troubleshooting.
         self.request_id = request_id
-        # Success indicator.
+        # The success flag.
         self.success = success
-        # Total number of images.
+        # The total number of images.
         self.total_count = total_count
 
     def validate(self):
@@ -123,13 +123,13 @@ class ListImagesFromLibResponseBodyItems(DaraModel):
         image_url: str = None,
         thumbnail_url: str = None,
     ):
-        # Creation time.
+        # The creation time. Format: YYYY-MM-DD HH:mm:ss.
         self.gmt_create = gmt_create
-        # Image ID.
+        # The image ID.
         self.image_id = image_id
-        # Image URL.
+        # The URL of the image.
         self.image_url = image_url
-        # Thumbnail URL.
+        # The URL of the thumbnail.
         self.thumbnail_url = thumbnail_url
 
     def validate(self):

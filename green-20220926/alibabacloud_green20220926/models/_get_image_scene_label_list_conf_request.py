@@ -10,9 +10,9 @@ class GetImageSceneLabelListConfRequest(DaraModel):
         image_service_code: str = None,
         region_id: str = None,
     ):
-        # Service code.
+        # The service code.
         self.image_service_code = image_service_code
-        # Region ID.
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

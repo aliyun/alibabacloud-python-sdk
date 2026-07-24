@@ -12,7 +12,9 @@ class ConfigBucketPrefixFilterConfigValue(DaraModel):
         prefix_filter_type: str = None,
         prefix_filters: List[str] = None,
     ):
+        # The prefix filter type.
         self.prefix_filter_type = prefix_filter_type
+        # The prefix list.
         self.prefix_filters = prefix_filters
 
     def validate(self):

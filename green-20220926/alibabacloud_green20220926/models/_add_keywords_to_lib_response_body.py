@@ -13,9 +13,9 @@ class AddKeywordsToLibResponseBody(DaraModel):
         data: main_models.AddKeywordsToLibResponseBodyData = None,
         request_id: str = None,
     ):
-        # The data returned.
+        # The returned data.
         self.data = data
-        # The request ID.
+        # The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -53,9 +53,9 @@ class AddKeywordsToLibResponseBodyData(DaraModel):
         lib_id: str = None,
         task_id: str = None,
     ):
-        # Result.
+        # The result.
         self.keywords_result = keywords_result
-        # The id of the keyword library.
+        # The keyword library ID.
         self.lib_id = lib_id
         # The task ID.
         self.task_id = task_id
@@ -108,25 +108,25 @@ class AddKeywordsToLibResponseBodyDataKeywordsResult(DaraModel):
         success_count: int = None,
         total_count: int = None,
     ):
-        # Internationalization key.
+        # The internationalization key.
         self.i_18n_key = i_18n_key
-        # List of keywords that are too long or too short.
+        # The list of keywords with illegal length (too long or too short).
         self.illegal_length_keywords = illegal_length_keywords
-        # Invalid keyword count.
+        # The number of invalid keywords.
         self.invalid_count = invalid_count
-        # List of invalid keywords
+        # The list of invalid keywords.
         self.invalid_keywords = invalid_keywords
-        # The id of the keyword library.
+        # The keyword library ID.
         self.lib_id = lib_id
-        # The progress percentage of the task.
+        # The task progress percentage.
         self.progress = progress
-        # Duplicate keyword count
+        # The number of duplicate keywords.
         self.repeat_count = repeat_count
-        # List of duplicate keywords
+        # The list of duplicate keywords.
         self.repeat_keywords = repeat_keywords
-        # The success count of keywords.
+        # The number of successful keywords.
         self.success_count = success_count
-        # The total count of keywords.
+        # The total count.
         self.total_count = total_count
 
     def validate(self):

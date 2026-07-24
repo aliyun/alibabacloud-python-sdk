@@ -13,10 +13,15 @@ class UpdateOssCheckResultsUnfreezeRequest(DaraModel):
         start_date: str = None,
         task_id: str = None,
     ):
+        # The end time. Format: YYYY-MM-DD HH:mm:ss.
         self.end_date = end_date
+        # The frozen items.
         self.freeze_items = freeze_items
+        # The region ID.
         self.region_id = region_id
+        # The start time. Format: YYYY-MM-DD HH:mm:ss.
         self.start_date = start_date
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):

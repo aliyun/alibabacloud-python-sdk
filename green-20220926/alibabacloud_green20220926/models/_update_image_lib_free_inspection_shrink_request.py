@@ -11,10 +11,11 @@ class UpdateImageLibFreeInspectionShrinkRequest(DaraModel):
         region_id: str = None,
         service_code: str = None,
     ):
-        # Configuration.
+        # The configuration.
         self.config_shrink = config_shrink
-        # Region ID.
+        # The region ID.
         self.region_id = region_id
+        # The selected service identifier.
         self.service_code = service_code
 
     def validate(self):

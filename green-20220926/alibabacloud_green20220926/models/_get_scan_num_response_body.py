@@ -13,15 +13,15 @@ class GetScanNumResponseBody(DaraModel):
         sum_number: int = None,
         tag: bool = None,
     ):
-        # Upper limit of the quantity.
+        # The upper limit on the number.
         self.limit_number = limit_number
-        # ID assigned by the backend, used to uniquely identify a request. Can be used for troubleshooting.
+        # The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
-        # Total number of files pending inspection.
+        # The total number of files pending detection.
         self.scan_number = scan_number
-        # Total number of files.
+        # The total number of files.
         self.sum_number = sum_number
-        # Whether it is a whitelist user.
+        # Indicates whether the user is a whitelisted user.
         self.tag = tag
 
     def validate(self):

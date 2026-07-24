@@ -14,15 +14,15 @@ class GetUserBuyStatusResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Error code.
+        # The error code.
         self.code = code
-        # Returned data.
+        # The returned data.
         self.data = data
-        # Further description of the error code.
+        # The description of the error code.
         self.msg = msg
-        # ID assigned by the backend to uniquely identify a request. It can be used for troubleshooting.
+        # The ID assigned by the backend to uniquely identify the request. This ID can be used to troubleshoot issues.
         self.request_id = request_id
-        # Success indicator.
+        # The success flag.
         self.success = success
 
     def validate(self):
@@ -80,14 +80,15 @@ class GetUserBuyStatusResponseBodyData(DaraModel):
         instance_id: str = None,
         tag: str = None,
     ):
-        # Bid.
+        # Bid。
         self.bid = bid
-        # Indicates whether the product has been activated on Alibaba Cloud.
+        # Indicates whether the commodity is activated on Alibaba Cloud.
         self.buy = buy
-        # Indicates whether there is an outstanding payment.
+        # Indicates whether there is an overdue payment.
         self.indebt = indebt
+        # The instance ID.
         self.instance_id = instance_id
-        # Tag.
+        # The label.
         self.tag = tag
 
     def validate(self):

@@ -14,11 +14,17 @@ class QueryAnswerSampleByPageShrinkRequest(DaraModel):
         region_id: str = None,
         sort_shrink: str = None,
     ):
+        # The answer.
         self.answer = answer
+        # The current page number.
         self.current_page = current_page
+        # The ID of the proxy answer library.
         self.lib_id = lib_id
+        # The number of entries per page.
         self.page_size = page_size
+        # The region ID.
         self.region_id = region_id
+        # The sort field.
         self.sort_shrink = sort_shrink
 
     def validate(self):

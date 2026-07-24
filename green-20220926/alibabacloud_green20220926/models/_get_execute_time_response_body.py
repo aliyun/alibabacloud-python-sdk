@@ -10,9 +10,9 @@ class GetExecuteTimeResponseBody(DaraModel):
         data: str = None,
         request_id: str = None,
     ):
-        # Returned data.
+        # The returned data.
         self.data = data
-        # ID assigned by the backend, used to uniquely identify a request. Can be used for troubleshooting.
+        # The ID assigned by the backend to uniquely identify the request. This ID can be used to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):

@@ -17,18 +17,21 @@ class ListKeywordsRequest(DaraModel):
         tenant_code: str = None,
         word: str = None,
     ):
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # Library ID.
+        # The keyword library ID.
         self.lib_id = lib_id
-        # Page size.
+        # The number of entries per page.
         self.page_size = page_size
-        # Region ID.
+        # The region ID.
         self.region_id = region_id
-        # Sort field.
+        # The sort field.
         self.sort = sort
+        # The keyword library code. Valid values:
+        # 
+        # - desensitize: desensitization keyword library.
         self.tenant_code = tenant_code
-        # Keyword.
+        # The keyword.
         self.word = word
 
     def validate(self):

@@ -16,15 +16,15 @@ class GetServiceConfigResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Error code.
+        # The error code.
         self.code = code
-        # Returned data.
+        # The returned data.
         self.data = data
-        # Further description of the error code.
+        # The further description of the error code.
         self.msg = msg
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Success indicator.
+        # The success flag.
         self.success = success
 
     def validate(self):
@@ -82,15 +82,15 @@ class GetServiceConfigResponseBodyData(DaraModel):
         service_code: str = None,
         uid: str = None,
     ):
-        # Custom service details
+        # The custom service details.
         self.custom_service_conf = custom_service_conf
-        # Modification time.
+        # The modification time.
         self.gmt_modified = gmt_modified
-        # Resource type.
+        # The resource type.
         self.resource_type = resource_type
-        # Service code.
+        # The service code.
         self.service_code = service_code
-        # UID.
+        # UID。
         self.uid = uid
 
     def validate(self):
@@ -147,13 +147,13 @@ class GetServiceConfigResponseBodyDataCustomServiceConf(DaraModel):
         manual_machine_config: main_models.GetServiceConfigResponseBodyDataCustomServiceConfManualMachineConfig = None,
         similar_text_hit_libs: List[str] = None,
     ):
-        # Ignore word libraries.
+        # The ignored keyword libraries.
         self.keyword_filter_libs = keyword_filter_libs
-        # Hit word libraries.
+        # The hit keyword libraries.
         self.keyword_hit_libs = keyword_hit_libs
-        # Human-machine review configuration.
+        # The machine-assisted moderation configuration.
         self.manual_machine_config = manual_machine_config
-        # Hit similar text libraries.
+        # The hit similar text libraries.
         self.similar_text_hit_libs = similar_text_hit_libs
 
     def validate(self):
@@ -204,15 +204,16 @@ class GetServiceConfigResponseBodyDataCustomServiceConfManualMachineConfig(DaraM
         enable: bool = None,
         manual_service: str = None,
     ):
-        # Risk levels.
+        # The risk levels.
         self.audit_risk_levels = audit_risk_levels
-        # Callback notification ID
+        # The callback notification ID.
         self.callback_id = callback_id
-        # Whether to enable. Values:
-        # - **true**: Enabled
-        # - **false**: Disabled
+        # Specifies whether to enable the feature. Valid values:
+        # 
+        # - **true**: Enabled.
+        # - **false**: Disabled.
         self.enable = enable
-        # Manual review service
+        # The manual review service.
         self.manual_service = manual_service
 
     def validate(self):

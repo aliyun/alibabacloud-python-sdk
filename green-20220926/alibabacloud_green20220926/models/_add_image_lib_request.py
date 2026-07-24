@@ -13,7 +13,7 @@ class AddImageLibRequest(DaraModel):
     ):
         # The remarks of the image library.
         self.comment = comment
-        # The name of image library
+        # The name of the image library.
         self.lib_name = lib_name
         # The region ID.
         self.region_id = region_id

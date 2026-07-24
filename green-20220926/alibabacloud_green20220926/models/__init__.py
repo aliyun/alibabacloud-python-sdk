@@ -24,6 +24,9 @@ from ._add_keywords_to_lib_response import AddKeywordsToLibResponse
 from ._cancel_stock_oss_check_task_request import CancelStockOssCheckTaskRequest
 from ._cancel_stock_oss_check_task_response_body import CancelStockOssCheckTaskResponseBody
 from ._cancel_stock_oss_check_task_response import CancelStockOssCheckTaskResponse
+from ._confirm_ai_app_scan_request import ConfirmAiAppScanRequest
+from ._confirm_ai_app_scan_response_body import ConfirmAiAppScanResponseBody
+from ._confirm_ai_app_scan_response import ConfirmAiAppScanResponse
 from ._copy_service_config_request import CopyServiceConfigRequest
 from ._copy_service_config_response_body import CopyServiceConfigResponseBody
 from ._copy_service_config_response import CopyServiceConfigResponse
@@ -353,6 +356,8 @@ from ._list_keyword_libs_response_body import ListKeywordLibsResponseBodyData
 from ._list_keywords_response_body import ListKeywordsResponseBodyDataItemsProperties
 from ._list_keywords_response_body import ListKeywordsResponseBodyDataItems
 from ._list_keywords_response_body import ListKeywordsResponseBodyData
+from ._list_oss_check_result_response_body import ListOssCheckResultResponseBodyItemsLabelDetails
+from ._list_oss_check_result_response_body import ListOssCheckResultResponseBodyItemsLabelDetails2
 from ._list_oss_check_result_response_body import ListOssCheckResultResponseBodyItems
 from ._list_service_configs_response_body import ListServiceConfigsResponseBodyDataCustomServiceConfRulesImageScanRule
 from ._list_service_configs_response_body import ListServiceConfigsResponseBodyDataCustomServiceConfRulesTextScanRule
@@ -391,6 +396,9 @@ __all__ = [
     CancelStockOssCheckTaskRequest,
     CancelStockOssCheckTaskResponseBody,
     CancelStockOssCheckTaskResponse,
+    ConfirmAiAppScanRequest,
+    ConfirmAiAppScanResponseBody,
+    ConfirmAiAppScanResponse,
     CopyServiceConfigRequest,
     CopyServiceConfigResponseBody,
     CopyServiceConfigResponse,
@@ -720,6 +728,8 @@ __all__ = [
     ListKeywordsResponseBodyDataItemsProperties,
     ListKeywordsResponseBodyDataItems,
     ListKeywordsResponseBodyData,
+    ListOssCheckResultResponseBodyItemsLabelDetails,
+    ListOssCheckResultResponseBodyItemsLabelDetails2,
     ListOssCheckResultResponseBodyItems,
     ListServiceConfigsResponseBodyDataCustomServiceConfRulesImageScanRule,
     ListServiceConfigsResponseBodyDataCustomServiceConfRulesTextScanRule,

@@ -11,8 +11,11 @@ class DeleteAnswerSampleRequest(DaraModel):
         lib_id: str = None,
         region_id: str = None,
     ):
+        # The IDs of the proxy answers to delete.
         self.ids = ids
+        # The ID of the proxy answer library.
         self.lib_id = lib_id
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

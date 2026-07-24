@@ -16,15 +16,15 @@ class ListServiceConfigsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Error code.
+        # The error code.
         self.code = code
-        # Returned data.
+        # The returned data.
         self.data = data
-        # Further description of the error code.
+        # The description of the error code.
         self.msg = msg
-        # ID assigned by the backend to uniquely identify a request. Can be used for troubleshooting.
+        # The request ID assigned by the backend, which uniquely identifies the request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
-        # Success indicator.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -96,30 +96,35 @@ class ListServiceConfigsResponseBodyData(DaraModel):
         uid: str = None,
         use_status: str = None,
     ):
-        # Category.
+        # The classification.
         self.classify = classify
-        # Main service.
+        # The primary service.
         self.copy_from = copy_from
-        # Service configuration.
+        # The service configuration.
         self.custom_service_conf = custom_service_conf
-        # Modification time.
+        # The modification time.
         self.gmt_modified = gmt_modified
-        # Options.
+        # The options.
         self.option = option
-        # Resource type.
+        # The resource type.
         self.resource_type = resource_type
+        # The scene type. Valid values:
+        # 
+        # - recommended_scene: recommended scenario.
+        # 
+        # - all_scene: all scenarios.
         self.scene_type = scene_type
-        # Service code.
+        # The service code.
         self.service_code = service_code
-        # Service description.
+        # The service description.
         self.service_desc = service_desc
-        # Service name.
+        # The service name.
         self.service_name = service_name
-        # Service type.
+        # The service type.
         self.service_type = service_type
-        # UID.
+        # UID。
         self.uid = uid
-        # Usage status
+        # The usage status.
         self.use_status = use_status
 
     def validate(self):
@@ -226,17 +231,17 @@ class ListServiceConfigsResponseBodyDataCustomServiceConf(DaraModel):
         rules: List[main_models.ListServiceConfigsResponseBodyDataCustomServiceConfRules] = None,
         similar_text_hit_libs: List[str] = None,
     ):
-        # Audio service.
+        # The audio service.
         self.audio_service = audio_service
-        # Image services.
+        # The image service.
         self.image_service = image_service
-        # Ignored word libraries.
+        # The ignored keyword library.
         self.keyword_filter_libs = keyword_filter_libs
-        # Hit word libraries.
+        # The hit keyword library.
         self.keyword_hit_libs = keyword_hit_libs
-        # Service rules
+        # The service rules.
         self.rules = rules
-        # Hit similar text libraries.
+        # The hit similar text library.
         self.similar_text_hit_libs = similar_text_hit_libs
 
     def validate(self):
@@ -304,11 +309,11 @@ class ListServiceConfigsResponseBodyDataCustomServiceConfRules(DaraModel):
         index: int = None,
         text_scan_rule: main_models.ListServiceConfigsResponseBodyDataCustomServiceConfRulesTextScanRule = None,
     ):
-        # Image review rule.
+        # The image moderation rule.
         self.image_scan_rule = image_scan_rule
-        # Index.
+        # The ordinal number.
         self.index = index
-        # Text review rule.
+        # The text moderation rule.
         self.text_scan_rule = text_scan_rule
 
     def validate(self):
@@ -353,7 +358,7 @@ class ListServiceConfigsResponseBodyDataCustomServiceConfRulesTextScanRule(DaraM
         self,
         services: List[str] = None,
     ):
-        # Text services.
+        # The text services.
         self.services = services
 
     def validate(self):
@@ -381,7 +386,7 @@ class ListServiceConfigsResponseBodyDataCustomServiceConfRulesImageScanRule(Dara
         self,
         services: List[str] = None,
     ):
-        # Image services.
+        # The image service.
         self.services = services
 
     def validate(self):

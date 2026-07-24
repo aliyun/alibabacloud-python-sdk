@@ -19,16 +19,27 @@ class UpdateServiceConfigRequest(DaraModel):
         service_config: str = None,
         video_config: str = None,
     ):
+        # The document configuration.
         self.file_config = file_config
+        # The keyword filter libraries.
         self.keyword_filter_libs = keyword_filter_libs
+        # The keyword hit libraries.
         self.keyword_hit_libs = keyword_hit_libs
+        # The machine-assisted moderation configuration.
         self.manual_machine_config = manual_machine_config
+        # The region ID.
         self.region_id = region_id
+        # The resource type.
         self.resource_type = resource_type
+        # The moderation scenario.
         self.scene = scene
+        # The scenario configuration.
         self.scene_config = scene_config
+        # The service code.
         self.service_code = service_code
+        # The service configuration.
         self.service_config = service_config
+        # The video configuration.
         self.video_config = video_config
 
     def validate(self):

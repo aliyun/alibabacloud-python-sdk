@@ -11,8 +11,11 @@ class StopOnlineTestRequest(DaraModel):
         service_code: str = None,
         task_id: str = None,
     ):
+        # Resource type
         self.resource_type = resource_type
+        # Service encoding
         self.service_code = service_code
+        # Detection TaskId
         self.task_id = task_id
 
     def validate(self):

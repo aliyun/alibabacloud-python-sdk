@@ -14,17 +14,17 @@ class ModifyFeatureConfigResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Success indicator.
+        # The status code.
         self.code = code
-        # query
+        # The returned data.
         self.data = data
-        # Status code.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # ID assigned by the backend to uniquely identify a request. Can be used for troubleshooting.
+        # The response message.
         self.msg = msg
-        # Returned data
+        # The request ID. You can use this ID to locate issues.
         self.request_id = request_id
-        # Response message of this request.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

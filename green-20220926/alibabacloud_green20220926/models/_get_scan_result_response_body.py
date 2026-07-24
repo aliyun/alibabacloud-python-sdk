@@ -17,17 +17,17 @@ class GetScanResultResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Error code, consistent with HTTP status.
+        # The error code, which is consistent with the HTTP status code.
         self.code = code
-        # Returned data.
+        # The returned data.
         self.data = data
-        # HTTP status code
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Further description of the error code.
+        # The further description of the error code.
         self.msg = msg
-        # ID assigned by the backend to uniquely identify a request. Can be used for troubleshooting.
+        # The ID assigned by the backend that uniquely identifies a request. You can use this ID for troubleshooting.
         self.request_id = request_id
-        # Success indicator
+        # The success flag.
         self.success = success
 
     def validate(self):
@@ -90,13 +90,13 @@ class GetScanResultResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # Current page.
+        # The current page number.
         self.current_page = current_page
-        # Data for the current page.
+        # The data on the current page.
         self.items = items
-        # Number of items per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # Total number of records.
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -156,9 +156,11 @@ class GetScanResultResponseBodyDataItems(DaraModel):
         api_task_id: str = None,
         app_id: str = None,
         attack_level: str = None,
+        bailian_request_id: str = None,
         content: str = None,
         data_id: str = None,
         end_time: str = None,
+        ext: str = None,
         ext_feedback: str = None,
         extra: Dict[str, Any] = None,
         frame_count: int = None,
@@ -205,134 +207,142 @@ class GetScanResultResponseBodyDataItems(DaraModel):
         voice_scan_opened: bool = None,
         voice_service: str = None,
     ):
+        # The AccountId input parameter from the customer.
         self.account_id = account_id
-        # Automated review labels.
+        # The machine-assisted moderation labels.
         self.api_labels = api_labels
-        # Machine review time.
+        # The machine-assisted moderation time. The value is a Unix/POSIX timestamp in milliseconds.
         self.api_request_time = api_request_time
-        # Automated review risk level.
+        # The machine-assisted moderation risk level.
         self.api_risk_level = api_risk_level
-        # Automated review service
+        # The machine-assisted moderation service.
         self.api_service = api_service
-        # Automated review task ID.
+        # The machine-assisted moderation task ID.
         self.api_task_id = api_task_id
+        # appId
         self.app_id = app_id
-        # Attack level, returned based on the set high and low risk scores. The return values include:
+        # The attack level, returned based on the configured risk score thresholds. Valid values:
         # 
-        # - high: High risk
+        # - high: high risk.
         # 
-        # - medium: Medium risk
+        # - medium: medium risk.
+        #  
+        # - low: low risk.
         # 
-        # - low: Low risk
-        # 
-        # - none: No risk detected
+        # - none: no risk detected.
         self.attack_level = attack_level
-        # Content.
+        # The Bailian request ID.
+        self.bailian_request_id = bailian_request_id
+        # The content.
         self.content = content
-        # Data Id
+        # dataId
         self.data_id = data_id
-        # Segment end time (in seconds).
+        # The segment end time, in seconds.
         self.end_time = end_time
-        # Feedback information.
+        # The extended information.
+        self.ext = ext
+        # The feedback information.
         self.ext_feedback = ext_feedback
-        # Additional parameters.
+        # The reserved parameter.
         self.extra = extra
-        # Frame count.
+        # The frame count.
         self.frame_count = frame_count
-        # Creation time.
+        # The creation time. Format: YYYY-MM-DD HH:mm:ss.
         self.gmt_create = gmt_create
-        # Multimodal file URLs.
+        # The multimodal file URLs.
         self.guard_file_urls = guard_file_urls
-        # Multimodal image URLs.
+        # The multimodal image URLs.
         self.guard_image_urls = guard_image_urls
-        # Image labels.
+        # The image labels.
         self.image_labels = image_labels
-        # Image service.
+        # The image service.
         self.image_service = image_service
-        # URL
+        # url
         self.image_url = image_url
+        # imageUrls
         self.image_urls = image_urls
-        # Labels.
+        # The labels.
         self.labels = labels
+        # The LiveId input parameter from the customer.
         self.live_id = live_id
-        # Malicious file risk level.
+        # The risk level of the malicious file.
         self.malicious_file_level = malicious_file_level
-        # Malicious URL risk level.
+        # The risk level of the malicious URL.
         self.malicious_url_level = malicious_url_level
-        # Whether it is a pure manual review.
+        # Indicates whether only manual review is used.
         self.manual_only = manual_only
-        # No labels
+        # No labels.
         self.no_labels = no_labels
-        # Frame offset value.
+        # The frame capture offset value.
         self.offset = offset
-        # Page number.
+        # The page number.
         self.page_num = page_num
-        # Request source.
+        # The request source.
         self.request_from = request_from
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Request time.
+        # The request time. Format: YYYY-MM-DD HH:mm:ss.
         self.request_time = request_time
-        # Resource type.
+        # The resource type.
         self.resource_type = resource_type
-        # Return collection.
+        # The result set.
         self.result = result
-        # Review labels.
+        # The review labels.
         self.review_labels = review_labels
-        # Review status.
+        # The review status.
         self.review_risk_level = review_risk_level
-        # Review time.
+        # The review time. The value is a Unix/POSIX timestamp in milliseconds.
         self.review_time = review_time
-        # Reviewer.
+        # The reviewer.
         self.review_uid = review_uid
-        # Whether it has been reviewed.
+        # Indicates whether the content has been reviewed.
         self.reviewed = reviewed
-        # Risk level, returned based on the set high and low risk scores. The return values include:
+        # The risk level, returned based on the configured risk score thresholds. Valid values:
         # 
-        # - high: High risk
+        # - high: high risk.
         # 
-        # - medium: Medium risk
+        # - medium: medium risk.
+        #  
+        # - low: low risk.
         # 
-        # - low: Low risk
-        # 
-        # - none: No risk detected
+        # - none: no risk detected.
         self.risk_level = risk_level
-        # Details of the detected risk.
+        # The details of the matched risk.
         self.risk_tips = risk_tips
-        # Keywords of the detected risk.
+        # The matched risk keywords.
         self.risk_words = risk_words
-        # Details of the result.
+        # The result details.
         self.scan_result = scan_result
-        # Score.
+        # The score.
         self.score = score
-        # Sensitive level, returned based on the set high and low risk scores. The return values include:
-        # - **S1**: Indicates low sensitivity.
-        # - **S2**: Indicates medium sensitivity.
-        # - **S3**: Indicates high sensitivity.
-        # - **S4**: Indicates very high sensitivity.
-        # - **S0**: Indicates no sensitivity.
+        # The sensitivity level, returned based on the configured risk score thresholds. Valid values:
+        # - **S1**: Low sensitivity.
+        # - **S2**: Medium sensitivity.
+        # - **S3**: Moderately high sensitivity.
+        # - **S4**: High sensitivity.
+        # - **S0**: Not sensitive.
         self.sensitive_level = sensitive_level
-        # Service code.
+        # The service code.
         self.service_code = service_code
-        # Segment start time (in seconds).
+        # The segment start time, in seconds.
         self.start_time = start_time
-        # Suggestion.
+        # The suggestion.
         self.suggestion = suggestion
-        # Task ID.
+        # The task ID.
         self.task_id = task_id
-        # Text labels.
+        # The text labels.
         self.text_labels = text_labels
-        # Thumbnail URL.
+        # The thumbnail URL.
         self.thumbnail = thumbnail
-        # Timestamp.
+        # The timestamp.
         self.time_stamp = time_stamp
-        # Task URL
+        # The task URL.
         self.url = url
-        # Voice labels.
+        # The audio labels.
         self.voice_labels = voice_labels
-        # Whether audio detection is enabled.
+        # Indicates whether audio detection is enabled.
         self.voice_scan_opened = voice_scan_opened
-        # Voice service.
+        # The audio service.
         self.voice_service = voice_service
 
     def validate(self):
@@ -370,6 +380,9 @@ class GetScanResultResponseBodyDataItems(DaraModel):
         if self.attack_level is not None:
             result['AttackLevel'] = self.attack_level
 
+        if self.bailian_request_id is not None:
+            result['BailianRequestId'] = self.bailian_request_id
+
         if self.content is not None:
             result['Content'] = self.content
 
@@ -378,6 +391,9 @@ class GetScanResultResponseBodyDataItems(DaraModel):
 
         if self.end_time is not None:
             result['EndTime'] = self.end_time
+
+        if self.ext is not None:
+            result['Ext'] = self.ext
 
         if self.ext_feedback is not None:
             result['ExtFeedback'] = self.ext_feedback
@@ -544,6 +560,9 @@ class GetScanResultResponseBodyDataItems(DaraModel):
         if m.get('AttackLevel') is not None:
             self.attack_level = m.get('AttackLevel')
 
+        if m.get('BailianRequestId') is not None:
+            self.bailian_request_id = m.get('BailianRequestId')
+
         if m.get('Content') is not None:
             self.content = m.get('Content')
 
@@ -552,6 +571,9 @@ class GetScanResultResponseBodyDataItems(DaraModel):
 
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
+
+        if m.get('Ext') is not None:
+            self.ext = m.get('Ext')
 
         if m.get('ExtFeedback') is not None:
             self.ext_feedback = m.get('ExtFeedback')
@@ -700,11 +722,11 @@ class GetScanResultResponseBodyDataItemsResult(DaraModel):
         description: str = None,
         label: str = None,
     ):
-        # Confidence score, ranging from 0 to 100, with two decimal places.
+        # The confidence score, ranging from 0 to 100, rounded to two decimal places.
         self.confidence = confidence
-        # Description of the Label field.
+        # The description of the Label field.
         self.description = description
-        # Label.
+        # The labels.
         self.label = label
 
     def validate(self):

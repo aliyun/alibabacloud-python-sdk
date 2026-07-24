@@ -13,15 +13,15 @@ class CreateCallbackRequest(DaraModel):
         scope: str = None,
         url: str = None,
     ):
-        # Encryption algorithm.
+        # The encryption algorithm.
         self.crypt_type = crypt_type
-        # Plan name.
+        # The name of the scheme.
         self.name = name
-        # Region ID.
+        # The region ID.
         self.region_id = region_id
-        # Review result.
+        # The moderation result.
         self.scope = scope
-        # Callback URL.
+        # The callback URL.
         self.url = url
 
     def validate(self):

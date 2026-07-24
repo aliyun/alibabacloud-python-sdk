@@ -16,15 +16,15 @@ class GetTextScanResultResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Error code.
+        # The error code.
         self.code = code
-        # Returned data.
+        # The returned data.
         self.data = data
-        # Further description of the error code.
+        # The description of the error code.
         self.msg = msg
-        # ID assigned by the backend to uniquely identify a request. It can be used for troubleshooting.
+        # The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
-        # Success indicator.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -81,13 +81,13 @@ class GetTextScanResultResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # Data for the current page.
+        # The data on the current page.
         self.items = items
-        # Page size.
+        # The number of entries per page.
         self.page_size = page_size
-        # Total number of records.
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -157,45 +157,47 @@ class GetTextScanResultResponseBodyDataItems(DaraModel):
         suggestion: str = None,
         task_id: str = None,
     ):
+        # The AccountId passed in by the customer.
         self.account_id = account_id
-        # Bailian Request ID
+        # The Bailian request ID.
         self.bailian_request_id = bailian_request_id
-        # Content.
+        # The content.
         self.content = content
+        # The DataId passed in by the customer.
         self.data_id = data_id
-        # Feedback information.
+        # The feedback information.
         self.ext_feedback = ext_feedback
-        # Spare parameters.
+        # The reserved parameter.
         self.extra = extra
-        # Creation time.
+        # The creation time.
         self.gmt_create = gmt_create
-        # Labels.
+        # The labels.
         self.labels = labels
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Request time.
+        # The request time. Format: YYYY-MM-DD HH:mm:ss.
         self.request_time = request_time
-        # Detection results.
+        # The detection results.
         self.result = result
-        # Risk level, returned based on the set high and low risk scores. The return values include:
+        # The risk level, which is returned based on the configured high and low risk score thresholds. Valid values:
         # 
-        # - high: High risk
+        # - high: high risk.
         # 
-        # - medium: Medium risk
+        # - medium: medium risk.
         #  
-        # - low: Low risk
+        # - low: low risk.
         # 
-        # - none: No risk detected
+        # - none: no risk detected.
         self.risk_level = risk_level
-        # Details of the result.
+        # The result details.
         self.scan_result = scan_result
-        # Score.
+        # The score.
         self.score = score
-        # Service code.
+        # The service code.
         self.service_code = service_code
-        # Suggestion for handling.
+        # The suggested action.
         self.suggestion = suggestion
-        # Task ID.
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -329,11 +331,11 @@ class GetTextScanResultResponseBodyDataItemsResult(DaraModel):
         description: str = None,
         label: str = None,
     ):
-        # Confidence score, ranging from 0 to 100, with two decimal places retained.
+        # The confidence score, ranging from 0 to 100 and rounded to two decimal places.
         self.confidence = confidence
-        # Description.
+        # The description.
         self.description = description
-        # Label.
+        # The labels.
         self.label = label
 
     def validate(self):

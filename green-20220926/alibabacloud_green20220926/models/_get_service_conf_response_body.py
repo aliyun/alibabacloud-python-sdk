@@ -24,9 +24,9 @@ class GetServiceConfResponseBody(DaraModel):
     ):
         # Classification.
         self.classify = classify
-        # Error code, consistent with HTTP status.
+        # Error code, consistent with the HTTP status code.
         self.code = code
-        # Service details
+        # Service details.
         self.custom_service_conf = custom_service_conf
         # Modification time.
         self.gmt_modified = gmt_modified
@@ -34,7 +34,7 @@ class GetServiceConfResponseBody(DaraModel):
         self.msg = msg
         # Options.
         self.option = option
-        # ID assigned by the backend to uniquely identify a request. Can be used for troubleshooting.
+        # The ID assigned by the backend to uniquely identify a request. It can be used for troubleshooting.
         self.request_id = request_id
         # Resource type.
         self.resource_type = resource_type
@@ -42,7 +42,7 @@ class GetServiceConfResponseBody(DaraModel):
         self.service_code = service_code
         # Service type.
         self.service_type = service_type
-        # Success indicator
+        # Indicates whether the request is successful.
         self.success = success
         # UID.
         self.uid = uid

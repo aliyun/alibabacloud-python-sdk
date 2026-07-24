@@ -14,15 +14,20 @@ class AddKeywordLibRequest(DaraModel):
         region_id: str = None,
         tenant_code: str = None,
     ):
-        # Keywords, with multiple keywords separated by \\n.
+        # The keywords. Separate multiple keywords with 
+        # .
         self.keywords = keywords
-        # The name of the keywords file.
+        # The name of the keyword file.
         self.keywords_object = keywords_object
         # The name of the keyword library.
         self.lib_name = lib_name
+        # The properties.
         self.properties = properties
-        # Region ID
+        # The region ID.
         self.region_id = region_id
+        # The library code.
+        # 
+        # - desensitize: desensitization library
         self.tenant_code = tenant_code
 
     def validate(self):

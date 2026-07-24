@@ -18,15 +18,32 @@ class GetCipStatsRequest(DaraModel):
         sub_uid: str = None,
         type: str = None,
     ):
+        # Specifies whether monthly indexing is supported. Valid values:
+        # - true: Supported.
+        # - false: Not supported.
         self.by_month = by_month
+        # The end time of the query. Format: yyyy-MM-dd HH:mm:ss.
         self.end_date = end_date
+        # The label.
         self.label = label
+        # The query condition.
         self.query = query
+        # The region ID.
         self.region_id = region_id
+        # The resource type.
         self.resource_type = resource_type
+        # The service code.
         self.service_code = service_code
+        # The start time of the query. Format: yyyy-MM-dd HH:mm:ss.
         self.start_date = start_date
+        # The UID of the RAM user.
         self.sub_uid = sub_uid
+        # The type. Valid values:
+        # - **cip**: Content Moderation invocation usage statistics.
+        # - **risk_level**: Content Moderation risk level statistics.
+        # - **content_moderation**: AI safety guardrail content compliance risk level and tag statistics.
+        # - **sensitive_data**: AI safety guardrail sensitive data risk level and tag statistics.
+        # - **prompt_attack**: AI safety guardrail prompt risk level and tag statistics.
         self.type = type
 
     def validate(self):

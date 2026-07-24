@@ -17,17 +17,17 @@ class GetFeatureConfigResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Status code
+        # The status code.
         self.code = code
-        # Returned data.
+        # The returned data.
         self.data = data
-        # HTTP status code.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Response message for this request.
+        # The response message for this request.
         self.msg = msg
-        # ID assigned by the backend, used to uniquely identify a request. Can be used for troubleshooting.
+        # The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
-        # Success indicator
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -91,15 +91,15 @@ class GetFeatureConfigResponseBodyData(DaraModel):
         type: str = None,
         uid: str = None,
     ):
-        # List of feature configurations
+        # The list of feature configurations.
         self.feature_conf = feature_conf
-        # Resource type.
+        # The resource type.
         self.resource_type = resource_type
-        # Service code.
+        # The service code.
         self.service_code = service_code
-        # Type
+        # The type.
         self.type = type
-        # UID.
+        # UID。
         self.uid = uid
 
     def validate(self):

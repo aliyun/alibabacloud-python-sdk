@@ -19,23 +19,23 @@ class GetOssCheckFreezeResultRequest(DaraModel):
         start_date: str = None,
         status: int = None,
     ):
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # End time.
+        # The end time. Format: YYYY-MM-DD HH:mm:ss.
         self.end_date = end_date
-        # Number of completed tasks.
+        # The number of completed tasks.
         self.finish_num = finish_num
-        # Page size.
+        # The number of entries per page.
         self.page_size = page_size
-        # Query condition.
+        # The query condition.
         self.query = query
-        # Region ID.
+        # The region ID.
         self.region_id = region_id
-        # Sort field.
+        # The sort field.
         self.sort = sort
-        # Start time.
+        # The start time. Format: YYYY-MM-DD HH:mm:ss.
         self.start_date = start_date
-        # Task status.
+        # The task status.
         self.status = status
 
     def validate(self):

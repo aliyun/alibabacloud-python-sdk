@@ -17,23 +17,23 @@ class OssCheckResultListShrinkRequest(DaraModel):
         start_date: str = None,
         status: int = None,
     ):
-        # Page size.
+        # The current page number.
         self.current_page = current_page
-        # Start date.
+        # The end time. Format: YYYY-MM-DD HH:mm:ss.
         self.end_date = end_date
-        # Region ID.
+        # The number of completed items.
         self.finish_num = finish_num
-        # Query condition.
+        # The number of entries per page.
         self.page_size = page_size
-        # End date.
+        # The query condition.
         self.query = query
-        # Sort field.
+        # The region ID.
         self.region_id = region_id
-        # Current page number.
+        # The sort field.
         self.sort_shrink = sort_shrink
-        # System-defined parameter. Value: **OssCheckResultList**.
+        # The start time. Format: YYYY-MM-DD HH:mm:ss.
         self.start_date = start_date
-        # Number of completed items.
+        # The task status.
         self.status = status
 
     def validate(self):

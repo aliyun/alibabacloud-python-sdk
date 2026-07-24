@@ -17,11 +17,17 @@ class GetCipStatsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code, which is the same as the HTTP status code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The further description of the error code.
         self.msg = msg
+        # The request ID assigned by the backend. You can use this ID to troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -86,11 +92,17 @@ class GetCipStatsResponseBodyData(DaraModel):
         y: List[main_models.GetCipStatsResponseBodyDataY] = None,
         z: List[main_models.GetCipStatsResponseBodyDataZ] = None,
     ):
+        # The label usage chart.
         self.label_stat_chart = label_stat_chart
+        # The total count by category.
         self.total_stat = total_stat
+        # The list of UIDs.
         self.uids = uids
+        # The X value of the coordinate point.
         self.x = x
+        # The Y value of the coordinate point.
         self.y = y
+        # The hit data.
         self.z = z
 
     def validate(self):
@@ -175,7 +187,9 @@ class GetCipStatsResponseBodyDataZ(DaraModel):
         data: List[int] = None,
         name: str = None,
     ):
+        # The count.
         self.data = data
+        # The service code.
         self.name = name
 
     def validate(self):
@@ -210,7 +224,9 @@ class GetCipStatsResponseBodyDataY(DaraModel):
         data: List[int] = None,
         name: str = None,
     ):
+        # The returned data.
         self.data = data
+        # The name.
         self.name = name
 
     def validate(self):
@@ -251,13 +267,21 @@ class GetCipStatsResponseBodyDataLabelStatChart(DaraModel):
         x: List[str] = None,
         y: List[main_models.GetCipStatsResponseBodyDataLabelStatChartY] = None,
     ):
+        # The image label statistics.
         self.image_tree_char = image_tree_char
+        # The service code.
         self.service_code = service_code
+        # The text label statistics.
         self.text_tree_chart = text_tree_chart
+        # The total count.
         self.total_count = total_count
+        # The tree view.
         self.tree_chart = tree_chart
+        # The audio tree view.
         self.voice_tree_chart = voice_tree_chart
+        # The X value of the coordinate point.
         self.x = x
+        # The Y value of the coordinate point.
         self.y = y
 
     def validate(self):
@@ -372,7 +396,9 @@ class GetCipStatsResponseBodyDataLabelStatChartY(DaraModel):
         data: List[int] = None,
         name: str = None,
     ):
+        # The returned data.
         self.data = data
+        # The name.
         self.name = name
 
     def validate(self):
@@ -408,8 +434,11 @@ class GetCipStatsResponseBodyDataLabelStatChartVoiceTreeChart(DaraModel):
         name: str = None,
         value: str = None,
     ):
+        # The label description.
         self.description = description
+        # The label.
         self.name = name
+        # The score.
         self.value = value
 
     def validate(self):
@@ -451,8 +480,11 @@ class GetCipStatsResponseBodyDataLabelStatChartTreeChart(DaraModel):
         name: str = None,
         value: str = None,
     ):
+        # The label description.
         self.description = description
+        # The label.
         self.name = name
+        # The score.
         self.value = value
 
     def validate(self):
@@ -494,8 +526,11 @@ class GetCipStatsResponseBodyDataLabelStatChartTextTreeChart(DaraModel):
         name: str = None,
         value: str = None,
     ):
+        # The description.
         self.description = description
+        # The label.
         self.name = name
+        # The proportion.
         self.value = value
 
     def validate(self):
@@ -537,8 +572,11 @@ class GetCipStatsResponseBodyDataLabelStatChartImageTreeChar(DaraModel):
         name: str = None,
         value: str = None,
     ):
+        # The description.
         self.description = description
+        # The label.
         self.name = name
+        # The label proportion.
         self.value = value
 
     def validate(self):

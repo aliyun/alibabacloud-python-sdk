@@ -13,15 +13,15 @@ class UpdateImageLibRequest(DaraModel):
         lib_name: str = None,
         region_id: str = None,
     ):
-        # Comment information for the library.
+        # The remarks of the image library.
         self.comment = comment
-        # Exemption from review configuration.
+        # The review-free configuration.
         self.free_inspection = free_inspection
-        # Library ID.
+        # The ID of the image library.
         self.lib_id = lib_id
-        # Library name.
+        # The name of the image library.
         self.lib_name = lib_name
-        # Region ID.
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

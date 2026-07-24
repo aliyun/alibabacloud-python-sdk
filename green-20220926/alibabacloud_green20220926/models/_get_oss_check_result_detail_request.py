@@ -15,19 +15,19 @@ class GetOssCheckResultDetailRequest(DaraModel):
         region_id: str = None,
         service_code: str = None,
     ):
-        # Bucket name.
+        # The storage bucket.
         self.bucket = bucket
-        # Media type.
+        # The media asset type.
         self.media_type = media_type
-        # Object name.
+        # The object name.
         self.object = object
-        # Parent task ID.
+        # The parent task ID.
         self.parent_task_id = parent_task_id
-        # Query request ID.
+        # The request ID of the query.
         self.query_request_id = query_request_id
-        # Region ID.
+        # The region ID.
         self.region_id = region_id
-        # Service code.
+        # The service code.
         self.service_code = service_code
 
     def validate(self):

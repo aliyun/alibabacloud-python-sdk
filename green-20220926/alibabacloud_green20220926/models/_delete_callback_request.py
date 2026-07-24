@@ -10,11 +10,11 @@ class DeleteCallbackRequest(DaraModel):
         id: int = None,
         region_id: str = None,
     ):
-        # callback id.
+        # The ID of the message notification data.
         # 
         # This parameter is required.
         self.id = id
-        # Region ID
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

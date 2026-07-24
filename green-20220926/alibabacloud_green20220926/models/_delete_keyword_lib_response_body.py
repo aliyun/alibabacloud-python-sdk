@@ -13,15 +13,15 @@ class DeleteKeywordLibResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Error code.
+        # The error code.
         self.code = code
-        # Returned data.
+        # The returned data.
         self.data = data
-        # Further description of the error code.
+        # The description of the error code.
         self.msg = msg
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Success indicator.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

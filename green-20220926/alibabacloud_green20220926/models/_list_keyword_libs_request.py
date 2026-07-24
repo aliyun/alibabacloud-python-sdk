@@ -10,8 +10,11 @@ class ListKeywordLibsRequest(DaraModel):
         region_id: str = None,
         tenant_code: str = None,
     ):
-        # Region ID.
+        # The region ID.
         self.region_id = region_id
+        # The library code.
+        # 
+        # - desensitize: desensitization library.
         self.tenant_code = tenant_code
 
     def validate(self):

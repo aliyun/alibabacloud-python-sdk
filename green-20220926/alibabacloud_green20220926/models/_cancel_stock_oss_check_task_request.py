@@ -10,7 +10,7 @@ class CancelStockOssCheckTaskRequest(DaraModel):
         region_id: str = None,
         task_id: str = None,
     ):
-        # Region ID
+        # The region ID.
         self.region_id = region_id
         # The task ID.
         self.task_id = task_id

@@ -14,17 +14,17 @@ class UpdateScanResultFeedbackRequest(DaraModel):
         resource_type: str = None,
         risk_level: str = None,
     ):
-        # Feedback
+        # The feedback.
         self.feedback = feedback
-        # Labels.
+        # The labels.
         self.labels = labels
-        # Request ID
+        # The request ID.
         self.query_request_id = query_request_id
-        # Region ID.
+        # The region ID.
         self.region_id = region_id
-        # Resource Type
+        # The resource type.
         self.resource_type = resource_type
-        # Risk Level
+        # The risk level.
         self.risk_level = risk_level
 
     def validate(self):

@@ -10,7 +10,9 @@ class DeleteAnswerLibResponseBody(DaraModel):
         data: bool = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
+        # The ID assigned by the backend that uniquely identifies the request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):

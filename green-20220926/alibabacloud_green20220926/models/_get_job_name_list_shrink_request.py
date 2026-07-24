@@ -13,15 +13,15 @@ class GetJobNameListShrinkRequest(DaraModel):
         sort_shrink: str = None,
         start_date: str = None,
     ):
-        # End date.
+        # The end time. Format: `YYYY-MM-DD HH:mm:ss`.
         self.end_date = end_date
-        # Query condition.
+        # The query condition.
         self.query = query
-        # Region ID.
+        # The region ID.
         self.region_id = region_id
-        # Sort field.
+        # The sort field.
         self.sort_shrink = sort_shrink
-        # Start date.
+        # The start time. Format: `YYYY-MM-DD HH:mm:ss`.
         self.start_date = start_date
 
     def validate(self):

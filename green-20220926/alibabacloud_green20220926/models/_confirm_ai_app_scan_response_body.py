@@ -4,15 +4,15 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class UpdateOssCheckResultsFeedBackResponseBody(DaraModel):
+class ConfirmAiAppScanResponseBody(DaraModel):
     def __init__(
         self,
         data: bool = None,
         request_id: str = None,
     ):
-        # Return Result.
+        # The response data.
         self.data = data
-        # The ID assigned by the backend to uniquely identify a request. It can be used for troubleshooting.
+        # The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):

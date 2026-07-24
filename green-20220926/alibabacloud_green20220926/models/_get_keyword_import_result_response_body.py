@@ -16,15 +16,15 @@ class GetKeywordImportResultResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Error code.
+        # The error code.
         self.code = code
-        # Returned data.
+        # The returned data.
         self.data = data
-        # Further description of the error code.
+        # The description of the error code.
         self.msg = msg
-        # ID assigned by the backend to uniquely identify a request, which can be used for troubleshooting.
+        # The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
-        # Success indicator.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -88,27 +88,27 @@ class GetKeywordImportResultResponseBodyData(DaraModel):
         tips: str = None,
         total_count: int = None,
     ):
-        # Internationalization key.
+        # The internationalization key.
         self.i_18n_key = i_18n_key
-        # List of keywords with illegal length (too long or too short).
+        # The list of keywords that are too long or too short.
         self.illegal_length_keywords = illegal_length_keywords
-        # Invalid count.
+        # The number of invalid keywords.
         self.invalid_count = invalid_count
-        # List of invalid keywords.
+        # The list of invalid keywords.
         self.invalid_keywords = invalid_keywords
-        # Keyword library ID.
+        # The keyword library ID.
         self.lib_id = lib_id
-        # Task progress percentage.
+        # The task progress percentage.
         self.progress = progress
-        # Repeat count.
+        # The number of duplicate keywords.
         self.repeat_count = repeat_count
-        # List of repeated keywords.
+        # The list of duplicate keywords.
         self.repeat_keywords = repeat_keywords
-        # Success count.
+        # The number of successfully imported keywords.
         self.success_count = success_count
-        # Tips message.
+        # The prompt information.
         self.tips = tips
-        # Total count.
+        # The total count.
         self.total_count = total_count
 
     def validate(self):

@@ -13,10 +13,15 @@ class GetPromptTestResultRequest(DaraModel):
         text: str = None,
         type: str = None,
     ):
+        # The configuration item.
         self.config = config
+        # The resource type.
         self.resource_type = resource_type
+        # The service code.
         self.service_code = service_code
+        # The text content.
         self.text = text
+        # The business type.
         self.type = type
 
     def validate(self):

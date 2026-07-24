@@ -15,19 +15,19 @@ class ModifyFeatureConfigRequest(DaraModel):
         service_code: str = None,
         type: str = None,
     ):
-        # query
+        # The configuration in JSON format.
         self.config = config
-        # query
+        # The description of the label.
         self.description = description
-        # query
+        # The label value. This value is user-defined.
         self.field = field
-        # query
+        # The region ID.
         self.region_id = region_id
-        # query
+        # The resource type.
         self.resource_type = resource_type
-        # System-defined parameter. Value: **ModifyFeatureConfig**.
+        # The service code.
         self.service_code = service_code
-        # query
+        # The type.
         self.type = type
 
     def validate(self):

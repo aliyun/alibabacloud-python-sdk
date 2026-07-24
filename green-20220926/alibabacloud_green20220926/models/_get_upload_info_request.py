@@ -11,11 +11,11 @@ class GetUploadInfoRequest(DaraModel):
         region_id: str = None,
         resource_type: str = None,
     ):
-        # Upload name.
+        # The upload name.
         self.name = name
-        # Region ID.
+        # The region ID.
         self.region_id = region_id
-        # Resource type.
+        # The resource type.
         self.resource_type = resource_type
 
     def validate(self):

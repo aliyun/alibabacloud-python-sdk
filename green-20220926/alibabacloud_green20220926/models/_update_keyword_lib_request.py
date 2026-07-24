@@ -12,12 +12,15 @@ class UpdateKeywordLibRequest(DaraModel):
         region_id: str = None,
         tenant_code: str = None,
     ):
-        # Library ID.
+        # The ID of the keyword library.
         self.lib_id = lib_id
-        # Keyword library name.
+        # The name of the keyword library.
         self.lib_name = lib_name
-        # Region ID.
+        # The region ID.
         self.region_id = region_id
+        # The keyword library code.
+        # 
+        # - desensitize: desensitization keyword library
         self.tenant_code = tenant_code
 
     def validate(self):

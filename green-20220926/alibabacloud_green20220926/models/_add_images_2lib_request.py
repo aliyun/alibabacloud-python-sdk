@@ -11,11 +11,11 @@ class AddImages2LibRequest(DaraModel):
         lib_id: str = None,
         region_id: str = None,
     ):
-        # URL of the image to be uploaded.
+        # The image URL.
         self.img_url = img_url
-        # The ID of image library.
+        # The image library ID.
         self.lib_id = lib_id
-        # Region ID
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

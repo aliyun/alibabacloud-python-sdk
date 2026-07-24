@@ -15,11 +15,17 @@ class CreateImageLibResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code, which is consistent with the HTTP status code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The further description of the error code.
         self.msg = msg
+        # The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -79,6 +85,7 @@ class CreateImageLibResponseBodyData(DaraModel):
         self,
         lib_id: str = None,
     ):
+        # The ID of the custom image library.
         self.lib_id = lib_id
 
     def validate(self):

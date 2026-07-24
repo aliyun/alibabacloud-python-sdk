@@ -22,17 +22,29 @@ class GetAnswerImportProgressResponseBody(DaraModel):
         tips: str = None,
         total_count: int = None,
     ):
+        # The internationalization key.
         self.i_18n_key = i_18n_key
+        # The list of invalid proxy answers.
         self.illegal_length_samples = illegal_length_samples
+        # The number of invalid entries.
         self.invalid_count = invalid_count
+        # The proxy answer library ID.
         self.lib_id = lib_id
+        # The task progress percentage.
         self.progress = progress
+        # The number of duplicate entries.
         self.repeat_count = repeat_count
+        # The list of duplicate proxy answers.
         self.repeat_samples = repeat_samples
+        # The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
+        # The number of successful imports.
         self.success_count = success_count
+        # The task ID.
         self.task_id = task_id
+        # The prompt message.
         self.tips = tips
+        # The total count.
         self.total_count = total_count
 
     def validate(self):

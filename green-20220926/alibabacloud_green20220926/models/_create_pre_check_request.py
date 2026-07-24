@@ -23,34 +23,35 @@ class CreatePreCheckRequest(DaraModel):
         start_time: str = None,
         task_name: str = None,
     ):
+        # The filter configuration for each bucket. The value can be parsed as a JSON map. The key is the bucket name, and the value is the filter configuration, which includes prefix/suffix filters and a list of filter strings.
         self.bucket_prefix_filter_config = bucket_prefix_filter_config
-        # Buckets.
+        # The OSS buckets.
         self.buckets = buckets
-        # Whether to deduplicate historical detected tasks.
+        # Specifies whether to deduplicate against historically scanned tasks.
         self.distinct_history_tasks = distinct_history_tasks
-        # Task end time.
+        # The task end time. Format: YYYY-MM-DD HH:mm:ss.
         self.end_time = end_time
-        # Whether it is a scheduled scan task.
+        # Specifies whether the task is a scheduled scan task.
         self.is_inc = is_inc
-        # Media type.
+        # The media asset type.
         self.media_type = media_type
-        # Prefix filter type.
+        # The prefix filter type.
         self.prefix_filter_type = prefix_filter_type
-        # Prefixes.
+        # The prefixes.
         self.prefix_filters = prefix_filters
-        # Priority.
+        # The priority.
         self.priority = priority
-        # Region ID.
+        # The region ID.
         self.region_id = region_id
-        # Scan limit count.
+        # The maximum number of items to scan.
         self.scan_limit = scan_limit
-        # Whether to scan images without file extensions.
+        # Specifies whether to scan images without file extensions.
         self.scan_no_file_type = scan_no_file_type
-        # Scan service code.
+        # The scan service code.
         self.scan_service = scan_service
-        # Task start time.
+        # The task start time. Format: YYYY-MM-DD HH:mm:ss.
         self.start_time = start_time
-        # Task name.
+        # The task name.
         self.task_name = task_name
 
     def validate(self):

@@ -17,19 +17,19 @@ class GetTextScanResultRequest(DaraModel):
         sort: Dict[str, str] = None,
         start_date: str = None,
     ):
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # End date and time.
+        # The end time. Format: YYYY-MM-DD HH:mm:ss.
         self.end_date = end_date
-        # Page size.
+        # The number of entries per page.
         self.page_size = page_size
-        # Search criteria.
+        # The search condition.
         self.query = query
-        # Region ID.
+        # The region ID.
         self.region_id = region_id
-        # Sort fields.
+        # The sort field.
         self.sort = sort
-        # Start date and time.
+        # The start time. Format: YYYY-MM-DD HH:mm:ss.
         self.start_date = start_date
 
     def validate(self):

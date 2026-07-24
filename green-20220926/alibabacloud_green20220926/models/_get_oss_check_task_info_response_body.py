@@ -27,21 +27,37 @@ class GetOssCheckTaskInfoResponseBody(DaraModel):
         task_name: str = None,
         task_type: str = None,
     ):
+        # The OSS buckets.
         self.buckets = buckets
+        # The configuration item.
         self.config = config
+        # The end time. The format is YYYY-MM-DD HH:mm:ss.
         self.end_time = end_time
+        # The number of completed tasks.
         self.finish_num = finish_num
+        # Indicates whether this is a scheduled scan task.
         self.is_inc = is_inc
+        # The next execution time of the scheduled task. The format is YYYY-MM-DD HH:mm:ss.
         self.last_execute_date = last_execute_date
+        # The media asset type.
         self.media_type = media_type
+        # The previous execution time of the scheduled task. The format is YYYY-MM-DD HH:mm:ss.
         self.next_execute_date = next_execute_date
+        # The total number of files in the bucket.
         self.object_num = object_num
+        # The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
+        # The number of scan tasks.
         self.search_num = search_num
+        # The start time. The format is YYYY-MM-DD HH:mm:ss.
         self.start_time = start_time
+        # The task status.
         self.status = status
+        # The task ID.
         self.task_id = task_id
+        # The task name.
         self.task_name = task_name
+        # The task type.
         self.task_type = task_type
 
     def validate(self):
@@ -185,31 +201,55 @@ class GetOssCheckTaskInfoResponseBodyConfig(DaraModel):
         task_cycle: int = None,
         user_freeze_config: main_models.GetOssCheckTaskInfoResponseBodyConfigUserFreezeConfig = None,
     ):
+        # The filter configuration for each bucket. The key is the bucket name, and the value is the filter configuration, which includes prefix and suffix filters and filter character lists.
         self.bucket_prefix_filter_config = bucket_prefix_filter_config
+        # The callback notification ID.
         self.callback_id = callback_id
+        # Indicates whether to deduplicate historically scanned tasks.
         self.distinct_history_tasks = distinct_history_tasks
+        # The end time. The format is YYYY-MM-DD HH:mm:ss.
         self.end_time = end_time
+        # The execution date of the scheduled task. The value is an integer.
         self.execute_date = execute_date
+        # The estimated execution time of the scheduled task. The format is YYYY-MM-DD HH:mm:ss.
         self.execute_time = execute_time
+        # Indicates whether freezing is enabled.
         self.freeze = freeze
+        # Indicates whether to freeze high-risk images.
         self.freeze_high_risk_1 = freeze_high_risk_1
+        # Indicates whether to freeze high-risk audio and text.
         self.freeze_high_risk_2 = freeze_high_risk_2
+        # Indicates whether to freeze medium-risk images.
         self.freeze_medium_risk_1 = freeze_medium_risk_1
+        # Indicates whether to freeze medium-risk audio and text.
         self.freeze_medium_risk_2 = freeze_medium_risk_2
+        # The transfer path.
         self.freeze_restore_path = freeze_restore_path
+        # The freeze type.
         self.freeze_type = freeze_type
+        # The prefix filter type.
         self.prefix_filter_type = prefix_filter_type
+        # The prefixes.
         self.prefix_filters = prefix_filters
+        # The priority.
         self.priority = priority
         # Referer。
         self.referer = referer
+        # The scan limit.
         self.scan_limit = scan_limit
+        # Indicates whether to scan images without file extensions.
         self.scan_no_file_type = scan_no_file_type
+        # The type of files to scan.
         self.scan_resource_type = scan_resource_type
+        # The scan service code.
         self.scan_service = scan_service
+        # The scan service information.
         self.scan_service_infos = scan_service_infos
+        # The start time. The format is YYYY-MM-DD HH:mm:ss.
         self.start_time = start_time
+        # The scheduling date.
         self.task_cycle = task_cycle
+        # The user freeze configuration.
         self.user_freeze_config = user_freeze_config
 
     def validate(self):
@@ -402,7 +442,9 @@ class GetOssCheckTaskInfoResponseBodyConfigUserFreezeConfig(DaraModel):
         freeze_restore_path: str = None,
         freeze_type: str = None,
     ):
+        # The transfer directory.
         self.freeze_restore_path = freeze_restore_path
+        # The freeze type.
         self.freeze_type = freeze_type
 
     def validate(self):
@@ -439,9 +481,13 @@ class GetOssCheckTaskInfoResponseBodyConfigScanServiceInfos(DaraModel):
         service_code: str = None,
         service_name: str = None,
     ):
+        # The primary service.
         self.copy_from = copy_from
+        # Indicates whether the service is a copy.
         self.is_copy = is_copy
+        # The service code.
         self.service_code = service_code
+        # The service name.
         self.service_name = service_name
 
     def validate(self):

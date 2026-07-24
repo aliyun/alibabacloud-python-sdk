@@ -1,3 +1,12 @@
+2026-07-24 Version: 1.10.0
+- Support API ConfirmAiAppScan.
+- Update API GetScanResult: add response parameters Body.Data.Items.$.BailianRequestId.
+- Update API GetScanResult: add response parameters Body.Data.Items.$.Ext.
+- Update API GetUploadInfo: add response parameters Body.SecurityToken.
+- Update API ListOssCheckResult: add response parameters Body.Items.$.LabelDetails.
+- Update API ListOssCheckResult: add response parameters Body.Items.$.LabelDetails2.
+
+
 2026-06-16 Version: 1.9.1
 - Update API AddKeywordLib: add request parameters Properties.
 - Update API AddKeywordLib: add request parameters TenantCode.

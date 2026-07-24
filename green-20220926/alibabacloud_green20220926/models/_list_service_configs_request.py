@@ -13,14 +13,21 @@ class ListServiceConfigsRequest(DaraModel):
         resource_type: str = None,
         use_status: str = None,
     ):
-        # Category.
+        # The classification.
         self.classify = classify
+        # The protection type. Valid values:
+        # 
+        # - modelProtection: model protection.
+        # 
+        # - agentRealtimeProtection: agent real-time protection.
+        # 
+        # - agentBehaviorAudit: agent behavior audit.
         self.protection_type = protection_type
-        # Region ID.
+        # The region ID.
         self.region_id = region_id
-        # Resource type.
+        # The resource type.
         self.resource_type = resource_type
-        # Usage status.
+        # The usage status.
         self.use_status = use_status
 
     def validate(self):

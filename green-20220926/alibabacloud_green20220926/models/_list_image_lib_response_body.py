@@ -18,18 +18,19 @@ class ListImageLibResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Error code, consistent with HTTP status.
+        # The error code, which is consistent with the HTTP status code.
         self.code = code
-        # HTTP status code.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # List of image library information.
+        # The list of image library information.
         self.lib_list = lib_list
+        # The maximum number of libraries supported.
         self.max_lib_count = max_lib_count
-        # Further description of the error code.
+        # The further description of the error code.
         self.msg = msg
-        # ID assigned by the backend to uniquely identify a request. Can be used for troubleshooting.
+        # The backend-assigned ID that uniquely identifies a request. This ID can be used for troubleshooting.
         self.request_id = request_id
-        # Success indicator.
+        # The success flag.
         self.success = success
 
     def validate(self):
@@ -107,19 +108,19 @@ class ListImageLibResponseBodyLibList(DaraModel):
         lib_id: str = None,
         lib_name: str = None,
     ):
-        # Comment.
+        # The remarks.
         self.comment = comment
-        # Exempt from inspection configuration.
+        # The review-free configuration.
         self.free_inspection = free_inspection
-        # Creation time.
+        # The creation time.
         self.gmt_create = gmt_create
-        # Modification time.
+        # The modification time.
         self.gmt_modified = gmt_modified
-        # Number of images in the library.
+        # The number of images in the library.
         self.image_num = image_num
-        # Library ID.
+        # The image library ID.
         self.lib_id = lib_id
-        # Library name.
+        # The image library name.
         self.lib_name = lib_name
 
     def validate(self):

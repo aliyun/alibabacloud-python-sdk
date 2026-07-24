@@ -9,6 +9,7 @@ class GetTuneProposalByIdRequest(DaraModel):
         self,
         id: str = None,
     ):
+        # The primary key ID.
         self.id = id
 
     def validate(self):

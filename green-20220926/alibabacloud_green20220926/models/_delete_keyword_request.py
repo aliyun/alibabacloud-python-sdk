@@ -13,14 +13,17 @@ class DeleteKeywordRequest(DaraModel):
         region_id: str = None,
         tenant_code: str = None,
     ):
-        # The ids\\" list of keywords.
+        # The IDs of the keywords to delete.
         self.keyword_id_list = keyword_id_list
-        # The ids of keywords.
+        # The IDs of the keywords to delete.
         self.keyword_ids = keyword_ids
-        # Library id
+        # The ID of the keyword library.
         self.lib_id = lib_id
-        # Region ID
+        # The region ID.
         self.region_id = region_id
+        # The code of the keyword library.
+        # 
+        # - desensitize: masking keyword library.
         self.tenant_code = tenant_code
 
     def validate(self):

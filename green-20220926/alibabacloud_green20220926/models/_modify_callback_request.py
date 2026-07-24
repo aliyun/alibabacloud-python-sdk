@@ -14,19 +14,19 @@ class ModifyCallbackRequest(DaraModel):
         scope: str = None,
         url: str = None,
     ):
-        # Encryption algorithm.
+        # The encryption algorithm.
         self.crypt_type = crypt_type
-        # Primary key ID.
+        # The primary key ID.
         # 
         # This parameter is required.
         self.id = id
-        # Name.
+        # The name.
         self.name = name
-        # Region ID.
+        # The region ID.
         self.region_id = region_id
-        # Result scope.
+        # The result scope.
         self.scope = scope
-        # Callback URL.
+        # The callback URL.
         self.url = url
 
     def validate(self):

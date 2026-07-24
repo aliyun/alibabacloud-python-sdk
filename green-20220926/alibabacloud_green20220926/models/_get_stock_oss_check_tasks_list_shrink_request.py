@@ -17,23 +17,23 @@ class GetStockOssCheckTasksListShrinkRequest(DaraModel):
         start_time: str = None,
         task_type: str = None,
     ):
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # End time.
+        # The end time. Format: YYYY-MM-DD HH:mm:ss.
         self.end_time = end_time
-        # Whether it is a scheduled scan task.
+        # Specifies whether the task is a scheduled scan task.
         self.is_inc = is_inc
-        # Media type.
+        # The media asset type.
         self.media_type = media_type
-        # Page size.
+        # The number of entries per page.
         self.page_size = page_size
-        # Region ID.
+        # The region ID.
         self.region_id = region_id
-        # Sort field.
+        # The sort field.
         self.sort_shrink = sort_shrink
-        # Start time.
+        # The start time. Format: YYYY-MM-DD HH:mm:ss.
         self.start_time = start_time
-        # Task type.
+        # The task type.
         self.task_type = task_type
 
     def validate(self):

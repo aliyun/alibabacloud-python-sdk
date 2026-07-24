@@ -16,15 +16,15 @@ class ListKeywordsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Error code.
+        # The error code.
         self.code = code
-        # Returned data.
+        # The returned data.
         self.data = data
-        # Further description of the error code.
+        # The description of the error code.
         self.msg = msg
-        # ID assigned by the backend to uniquely identify a request. Can be used for troubleshooting.
+        # The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
-        # Success flag.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -81,13 +81,13 @@ class ListKeywordsResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # Data of the current page.
+        # The data on the current page.
         self.items = items
-        # Page size.
+        # The number of entries per page.
         self.page_size = page_size
-        # Total count.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -147,18 +147,19 @@ class ListKeywordsResponseBodyDataItems(DaraModel):
         properties: main_models.ListKeywordsResponseBodyDataItemsProperties = None,
         word: str = None,
     ):
-        # Creation time.
+        # The creation time.
         self.gmt_create = gmt_create
-        # Modification time.
+        # The modification time.
         self.gmt_modified = gmt_modified
-        # Primary key ID.
+        # The primary key ID.
         self.id = id
-        # Keyword library ID.
+        # The keyword library ID.
         self.keyword_lib_id = keyword_lib_id
-        # Keyword data ID.
+        # The keyword data ID.
         self.keyword_md_5id = keyword_md_5id
+        # The properties.
         self.properties = properties
-        # Keyword.
+        # The keyword.
         self.word = word
 
     def validate(self):
@@ -224,6 +225,7 @@ class ListKeywordsResponseBodyDataItemsProperties(DaraModel):
         self,
         attribute: str = None,
     ):
+        # The properties.
         self.attribute = attribute
 
     def validate(self):

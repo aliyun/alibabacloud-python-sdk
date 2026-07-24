@@ -16,15 +16,15 @@ class GetOssCheckResultDetailResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Error code, consistent with HTTP status.
+        # The error code, which is consistent with the HTTP status code.
         self.code = code
-        # Detailed data.
+        # The details data.
         self.data = data
-        # Further description of the error code.
+        # The further description of the error code.
         self.msg = msg
-        # Backend-assigned ID used to uniquely identify a request. Can be used for troubleshooting.
+        # The ID assigned by the backend to uniquely identify a request. This ID can be used to troubleshoot issues.
         self.request_id = request_id
-        # Success indicator.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -105,61 +105,61 @@ class GetOssCheckResultDetailResponseBodyData(DaraModel):
         task_id: str = None,
         url: str = None,
     ):
-        # Bucket name.
+        # The storage bucket.
         self.bucket = bucket
-        # Error code, consistent with HTTP status.
+        # The error code, which is consistent with the HTTP status code.
         self.code = code
-        # Audio and video detection type.
+        # The audio and video detection type.
         self.content_type = content_type
-        # Primary service.
+        # The primary service.
         self.copy_from = copy_from
-        # Freeze status.
+        # The freeze status.
         self.freeze_status = freeze_status
-        # Freeze type.
+        # The freeze type.
         self.freeze_type = freeze_type
-        # Image URL.
+        # The image URL.
         self.image_url = image_url
-        # Whether to copy.
+        # Indicates whether the content is copied.
         self.is_copy = is_copy
-        # Job name.
+        # The task name.
         self.job_name = job_name
-        # Labels.
+        # The labels.
         self.label_details = label_details
-        # Labels.
+        # The labels.
         self.label_details_2 = label_details_2
-        # Image labels.
+        # The image labels.
         self.labels = labels
-        # Text labels.
+        # The text labels.
         self.labels_2 = labels_2
-        # Manual handling status.
+        # The manual disposition status.
         self.manual_freeze_action = manual_freeze_action
-        # Handling time.
+        # The disposition time. The format is YYYY-MM-DD HH:mm:ss.
         self.manual_operate_time = manual_operate_time
-        # Handler.
+        # The operator who performed the disposition.
         self.manual_operator = manual_operator
-        # File MD5.
+        # The MD5 hash of the file.
         self.md_5 = md_5
-        # Further description of the error code.
+        # The further description of the error code.
         self.msg = msg
-        # Object name.
+        # The object name.
         self.object = object
-        # Image risk level
+        # The image risk level.
         self.risk_level = risk_level
-        # Overall risk level.
+        # The overall risk level.
         self.risk_level_0 = risk_level_0
-        # Text risk level
+        # The text risk level.
         self.risk_level_2 = risk_level_2
-        # Detailed scan results.
+        # The result details.
         self.scan_result = scan_result
-        # Detection service information
+        # The detection service information.
         self.scan_service_infos = scan_service_infos
-        # Service code.
+        # The service code.
         self.service_code = service_code
-        # Service name.
+        # The service name.
         self.service_name = service_name
-        # Task ID.
+        # The task ID.
         self.task_id = task_id
-        # Task URL.
+        # The task URL.
         self.url = url
 
     def validate(self):
@@ -378,13 +378,13 @@ class GetOssCheckResultDetailResponseBodyDataScanServiceInfos(DaraModel):
         service_code: str = None,
         service_name: str = None,
     ):
-        # Main service.
+        # The primary service.
         self.copy_from = copy_from
-        # Whether to copy.
+        # Indicates whether the content is copied.
         self.is_copy = is_copy
-        # Service code.
+        # The service code.
         self.service_code = service_code
-        # Service name.
+        # The service name.
         self.service_name = service_name
 
     def validate(self):
@@ -432,11 +432,11 @@ class GetOssCheckResultDetailResponseBodyDataLabelDetails2(DaraModel):
         description: str = None,
         label: str = None,
     ):
-        # Confidence score, 0 to 100, retained to two decimal places.
+        # The confidence score, ranging from 0 to 100, rounded to two decimal places.
         self.confidence = confidence
-        # Label description.
+        # The label description.
         self.description = description
-        # Label.
+        # The labels.
         self.label = label
 
     def validate(self):
@@ -478,11 +478,11 @@ class GetOssCheckResultDetailResponseBodyDataLabelDetails(DaraModel):
         description: str = None,
         label: str = None,
     ):
-        # Confidence score, 0 to 100, retained to two decimal places.
+        # The confidence score, ranging from 0 to 100, rounded to two decimal places.
         self.confidence = confidence
-        # Label description.
+        # The label description.
         self.description = description
-        # Label.
+        # The labels.
         self.label = label
 
     def validate(self):

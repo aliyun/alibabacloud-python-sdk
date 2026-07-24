@@ -16,15 +16,15 @@ class GetStockOssCheckTasksListResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # Data of the current page.
+        # The data on the current page.
         self.items = items
-        # Page size.
+        # The number of entries per page.
         self.page_size = page_size
-        # Backend-assigned ID used to uniquely identify a request. Can be used for troubleshooting.
+        # The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
-        # Total number of records.
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -98,35 +98,35 @@ class GetStockOssCheckTasksListResponseBodyItems(DaraModel):
         task_name: str = None,
         task_type: str = None,
     ):
-        # Storage space.
+        # The OSS bucket.
         self.buckets = buckets
-        # Configuration items.
+        # The configuration item.
         self.config = config
-        # End time.
+        # The end time. Format: YYYY-MM-DD HH:mm:ss.
         self.end_time = end_time
-        # Number of completed tasks.
+        # The number of completed tasks.
         self.finish_num = finish_num
-        # Whether it is a scheduled scan task
+        # Indicates whether the task is a scheduled scan task.
         self.is_inc = is_inc
-        # Next execution time of the scheduled task
+        # The next execution time of the scheduled task. Format: HH:mm:ss.
         self.last_execute_date = last_execute_date
-        # Media type.
+        # The media asset type.
         self.media_type = media_type
-        # Last execution time of the scheduled task
+        # The last execution time of the scheduled task. Format: HH:mm:ss.
         self.next_execute_date = next_execute_date
-        # Total number of files in the bucket
+        # The total number of files in the bucket.
         self.object_num = object_num
-        # Number of scan tasks.
+        # The number of scan tasks.
         self.search_num = search_num
-        # Start time.
+        # The start time. Format: YYYY-MM-DD HH:mm:ss.
         self.start_time = start_time
-        # Task status.
+        # The task status.
         self.status = status
-        # Task ID.
+        # The task ID.
         self.task_id = task_id
-        # Task name.
+        # The task name.
         self.task_name = task_name
-        # Task type
+        # The task type.
         self.task_type = task_type
 
     def validate(self):
@@ -263,53 +263,53 @@ class GetStockOssCheckTasksListResponseBodyItemsConfig(DaraModel):
         task_cycle: int = None,
         user_freeze_config: main_models.GetStockOssCheckTasksListResponseBodyItemsConfigUserFreezeConfig = None,
     ):
-        # Callback notification ID
+        # The callback notification ID.
         self.callback_id = callback_id
-        # Whether to deduplicate historical detected tasks.
+        # Specifies whether to deduplicate historically scanned tasks.
         self.distinct_history_tasks = distinct_history_tasks
-        # End time.
+        # The end time. Format: YYYY-MM-DD HH:mm:ss.
         self.end_time = end_time
-        # Scheduled task execution date.
+        # The execution date of the scheduled task.
         self.execute_date = execute_date
-        # Scheduled task expected execution time.
+        # The expected execution time of the scheduled task. Format: HH:mm:ss.
         self.execute_time = execute_time
-        # Whether to freeze
+        # Specifies whether to freeze files.
         self.freeze = freeze
-        # Freeze high-risk images
+        # Specifies whether to freeze high-risk images.
         self.freeze_high_risk_1 = freeze_high_risk_1
-        # Freeze high-risk audio and text
+        # Specifies whether to freeze high-risk audio and text.
         self.freeze_high_risk_2 = freeze_high_risk_2
-        # Freeze medium-risk images
+        # Specifies whether to freeze medium-risk images.
         self.freeze_medium_risk_1 = freeze_medium_risk_1
-        # Freeze medium-risk audio and text
+        # Specifies whether to freeze medium-risk audio and text.
         self.freeze_medium_risk_2 = freeze_medium_risk_2
-        # Storage path for transfer
+        # The transfer path.
         self.freeze_restore_path = freeze_restore_path
-        # Freeze type
+        # The freeze type.
         self.freeze_type = freeze_type
-        # Prefix filter type.
+        # The prefix filter type.
         self.prefix_filter_type = prefix_filter_type
-        # Prefixes.
+        # The prefix.
         self.prefix_filters = prefix_filters
-        # Priority.
+        # The priority.
         self.priority = priority
-        # Referer
+        # Referer。
         self.referer = referer
-        # Scan limit quantity.
+        # The maximum number of files to scan.
         self.scan_limit = scan_limit
-        # Whether to scan images without file extensions.
+        # Specifies whether to scan images without file name extensions.
         self.scan_no_file_type = scan_no_file_type
-        # Scanned file type.
+        # The type of files to scan.
         self.scan_resource_type = scan_resource_type
-        # Scan service code
+        # The scan service code.
         self.scan_service = scan_service
-        # Scan service information
+        # The scan service information.
         self.scan_service_infos = scan_service_infos
-        # Start time.
+        # The start time. Format: YYYY-MM-DD HH:mm:ss.
         self.start_time = start_time
-        # Scheduling date.
+        # The scheduling date.
         self.task_cycle = task_cycle
-        # Manual freeze configuration
+        # The manual freeze configuration.
         self.user_freeze_config = user_freeze_config
 
     def validate(self):
@@ -487,9 +487,9 @@ class GetStockOssCheckTasksListResponseBodyItemsConfigUserFreezeConfig(DaraModel
         freeze_restore_path: str = None,
         freeze_type: str = None,
     ):
-        # Storage path for transfer
+        # The transfer path.
         self.freeze_restore_path = freeze_restore_path
-        # Freeze type
+        # The freeze type.
         self.freeze_type = freeze_type
 
     def validate(self):
@@ -526,13 +526,13 @@ class GetStockOssCheckTasksListResponseBodyItemsConfigScanServiceInfos(DaraModel
         service_code: str = None,
         service_name: str = None,
     ):
-        # Primary service.
+        # The primary service.
         self.copy_from = copy_from
-        # Whether to copy.
+        # Indicates whether the service is a copy.
         self.is_copy = is_copy
-        # Service code.
+        # The service code.
         self.service_code = service_code
-        # Service name.
+        # The service name.
         self.service_name = service_name
 
     def validate(self):

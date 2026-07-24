@@ -11,11 +11,11 @@ class GetScanNumRequest(DaraModel):
         media_type: int = None,
         region_id: str = None,
     ):
-        # Storage space.
+        # The storage space.
         self.buckets = buckets
-        # Media type.
+        # The media asset type.
         self.media_type = media_type
-        # Region ID.
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

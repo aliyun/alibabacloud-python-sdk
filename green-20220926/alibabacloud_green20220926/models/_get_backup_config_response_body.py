@@ -24,17 +24,17 @@ class GetBackupConfigResponseBody(DaraModel):
     ):
         # Backup scope.
         self.backup_mode = backup_mode
-        # File server OSS Bucket.
+        # File server OSS bucket.
         self.bucket = bucket
-        # Whether it is enabled. Values:
-        # - **true**: Enabled
-        # - **false**: Disabled
+        # Indicates whether the feature is enabled. Valid values:
+        # - **true**: Enabled.
+        # - **false**: Disabled.
         self.enable = enable
-        # Whether to enable backup.
+        # Indicates whether backup is enabled.
         self.enable_backup = enable_backup
-        # Whether to enable audio backup.
+        # Indicates whether audio backup is enabled.
         self.enable_backup_voice = enable_backup_voice
-        # Expiration time in seconds.
+        # Expiration time, in seconds.
         self.expire_seconds = expire_seconds
         # Modification time.
         self.gmt_modified = gmt_modified
@@ -44,7 +44,7 @@ class GetBackupConfigResponseBody(DaraModel):
         self.path_voice = path_voice
         # Region ID.
         self.region = region
-        # ID assigned by the backend, used to uniquely identify a request. Can be used for troubleshooting.
+        # The ID assigned by the backend to uniquely identify a request. It can be used for troubleshooting.
         self.request_id = request_id
         # Resource type.
         self.resource_type = resource_type

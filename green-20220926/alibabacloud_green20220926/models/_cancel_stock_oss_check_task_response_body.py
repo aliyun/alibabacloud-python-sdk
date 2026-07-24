@@ -10,9 +10,9 @@ class CancelStockOssCheckTaskResponseBody(DaraModel):
         data: bool = None,
         request_id: str = None,
     ):
-        # The data returned.
+        # The returned data.
         self.data = data
-        # The request ID.
+        # The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):

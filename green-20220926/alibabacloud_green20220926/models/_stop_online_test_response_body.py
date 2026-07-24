@@ -13,10 +13,15 @@ class StopOnlineTestResponseBody(DaraModel):
         task_status: str = None,
         url: str = None,
     ):
+        # Backend-assigned ID used as the UUID of a Request. It can be used for troubleshooting.
         self.request_id = request_id
+        # Service encoding
         self.service_code = service_code
+        # Detection Job ID
         self.task_id = task_id
+        # Detection Status
         self.task_status = task_status
+        # Detection URL
         self.url = url
 
     def validate(self):

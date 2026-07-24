@@ -16,15 +16,15 @@ class AddKeywordsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Return code. A return of 200 represents success.
+        # The error code.
         self.code = code
-        # The data returned.
+        # The returned data.
         self.data = data
-        # The message that is returned in response to the request.
+        # The description of the error code.
         self.msg = msg
-        # ID assigned by the backend to uniquely identify a request. Can be used for troubleshooting.
+        # The request ID. Alibaba Cloud generates a unique identifier for each request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
-        # Success indicator.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -80,9 +80,9 @@ class AddKeywordsResponseBodyData(DaraModel):
         lib_id: str = None,
         task_id: str = None,
     ):
-        # Result.
+        # The result.
         self.keywords_result = keywords_result
-        # The ID of the keyword library.
+        # The keyword library ID.
         self.lib_id = lib_id
         # The task ID.
         self.task_id = task_id
@@ -136,27 +136,27 @@ class AddKeywordsResponseBodyDataKeywordsResult(DaraModel):
         tips: str = None,
         total_count: int = None,
     ):
-        # Internationalization key.
+        # The internationalization key.
         self.i_18n_key = i_18n_key
-        # List of keywords that are too long or too short.
+        # The list of keywords with excessive or insufficient length.
         self.illegal_length_keywords = illegal_length_keywords
-        # Invalid keyword count
+        # The number of invalid keywords.
         self.invalid_count = invalid_count
-        # List of invalid keywords
+        # The list of invalid keywords.
         self.invalid_keywords = invalid_keywords
         # The keyword library ID.
         self.lib_id = lib_id
-        # The progress percentage of the task.
+        # The task progress percentage.
         self.progress = progress
-        # Duplicate keyword count
+        # The number of duplicate keywords.
         self.repeat_count = repeat_count
-        # List of duplicate keywords
+        # The list of duplicate keywords.
         self.repeat_keywords = repeat_keywords
-        # The success count of the keywords.
+        # The number of successful additions.
         self.success_count = success_count
-        # The tips.
+        # The prompt information.
         self.tips = tips
-        # The total count of the keywords.
+        # The total count.
         self.total_count = total_count
 
     def validate(self):

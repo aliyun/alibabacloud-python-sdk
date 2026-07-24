@@ -18,21 +18,21 @@ class ListImagesFromLibRequest(DaraModel):
         sort: Dict[str, str] = None,
         start_date: str = None,
     ):
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # End date.
+        # The end time. Format: YYYY-MM-DD HH:mm:ss.
         self.end_date = end_date
-        # Image ID.
+        # The image ID.
         self.img_id = img_id
-        # Gallery ID.
+        # The image library ID.
         self.lib_id = lib_id
-        # Page size.
+        # The number of entries per page.
         self.page_size = page_size
-        # Region ID.
+        # The region ID.
         self.region_id = region_id
-        # Sort field.
+        # The sort field.
         self.sort = sort
-        # Start date.
+        # The start time. Format: YYYY-MM-DD HH:mm:ss.
         self.start_date = start_date
 
     def validate(self):

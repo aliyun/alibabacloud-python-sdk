@@ -13,15 +13,15 @@ class ModifyServiceInfoRequest(DaraModel):
         service_desc: str = None,
         service_name: str = None,
     ):
-        # Region ID.
+        # The region ID.
         self.region_id = region_id
-        # Resource type.
+        # The resource type.
         self.resource_type = resource_type
-        # Service code.
+        # The service code.
         self.service_code = service_code
-        # Service description.
+        # The service description.
         self.service_desc = service_desc
-        # Service name.
+        # The service name.
         self.service_name = service_name
 
     def validate(self):

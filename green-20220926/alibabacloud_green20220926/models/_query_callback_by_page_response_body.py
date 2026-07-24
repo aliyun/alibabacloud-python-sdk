@@ -16,15 +16,15 @@ class QueryCallbackByPageResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # Data of the current page.
+        # The data on the current page.
         self.items = items
-        # Page size.
+        # The page size.
         self.page_size = page_size
-        # ID assigned by the backend, used to uniquely identify a request. Can be used for troubleshooting.
+        # The ID assigned by the backend to uniquely identify a request. This ID can be used to troubleshoot issues.
         self.request_id = request_id
-        # Total number of records.
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -92,23 +92,23 @@ class QueryCallbackByPageResponseBodyItems(DaraModel):
         uid: str = None,
         url: str = None,
     ):
-        # Encryption algorithm.
+        # The encryption algorithm.
         self.crypt_type = crypt_type
-        # Creation time.
+        # The creation time.
         self.gmt_create = gmt_create
-        # Modification time.
+        # The modification time.
         self.gmt_modified = gmt_modified
-        # Primary key ID.
+        # The primary key ID.
         self.id = id
-        # Name.
+        # The name.
         self.name = name
-        # Result scope.
+        # The result scope.
         self.scope = scope
-        # Seed.
+        # Seed。
         self.seed = seed
-        # UID.
+        # UID。
         self.uid = uid
-        # Callback URL.
+        # The callback URL.
         self.url = url
 
     def validate(self):

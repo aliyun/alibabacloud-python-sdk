@@ -13,13 +13,13 @@ class GetServiceConfRequest(DaraModel):
         scene: str = None,
         service_code: str = None,
     ):
-        # Query default configuration
+        # Queries the default configuration.
         self.by_default = by_default
         # Region ID.
         self.region_id = region_id
         # Resource type.
         self.resource_type = resource_type
-        # Audit scenario.
+        # Moderation scenario.
         self.scene = scene
         # Service code.
         self.service_code = service_code

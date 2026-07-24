@@ -16,21 +16,21 @@ class ExportResultShrinkRequest(DaraModel):
         source: str = None,
         start_date: str = None,
     ):
-        # Page number of the query result. Default is 1.
+        # The page number of the paginated query results. Default value: 1.
         self.current_page = current_page
-        # End date.
+        # The end time. Format: YYYY-MM-DD HH:mm:ss.
         self.end_date = end_date
-        # Number of items per page in the query result.
+        # The number of entries per page in the paginated query results.
         self.page_size = page_size
-        # Query condition.
+        # The query condition.
         self.query = query
-        # Region ID.
+        # The region ID.
         self.region_id = region_id
-        # Sort field.
+        # The sort field.
         self.sort_shrink = sort_shrink
-        # Operation source.
+        # The operation source.
         self.source = source
-        # Start date.
+        # The start time. Format: YYYY-MM-DD HH:mm:ss.
         self.start_date = start_date
 
     def validate(self):

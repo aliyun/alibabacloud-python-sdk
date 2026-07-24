@@ -18,25 +18,34 @@ class ExportCipStatsRequest(DaraModel):
         sub_uid: str = None,
         type: str = None,
     ):
-        # Whether to support monthly indexing. Values: -**true**: Supported. -**false**: Not supported.
+        # Specifies whether monthly indexing is supported. Valid values:
+        # - **true**: Supported.
+        # - **false**: Not supported.
         self.by_month = by_month
-        # The end time of the query, in the format yyyy-MM-dd HH:mm:ss.
+        # The end time of the query. Format: yyyy-MM-dd HH:mm:ss.
         self.end_date = end_date
-        # Export type. Values: -**level**: Export by risk level. -**label**: Export by label.
+        # The export type. Valid values:
+        # - **level**: export by risk level.
+        # - **label**: export by label.
         self.export_type = export_type
-        # The label of the task to be exported.
+        # The task label to export.
         self.label = label
-        # Region ID.
+        # The region ID.
         self.region_id = region_id
-        # Resource type.
+        # The resource type.
         self.resource_type = resource_type
-        # Service code.
+        # The service code.
         self.service_code = service_code
-        # The start time of the query, in the format yyyy-MM-dd HH:mm:ss.
+        # The start time of the query. Format: yyyy-MM-dd HH:mm:ss.
         self.start_date = start_date
-        # Sub-account UID.
+        # The UID of the RAM user.
         self.sub_uid = sub_uid
-        # Type, values: -**cip**: Content Security Invocation Count Statistics. -**risk_level**: Content Security Risk Level Statistics. -**content_moderation**: AI Safety Guardrail Content Compliance Risk Level and Label Statistics. -**sensitive_data**: AI Safety Guardrail Sensitive Data Risk Level and Label Statistics. -**prompt_attack**: AI Safety Guardrail Prompt Word Risk Level and Label Statistics.
+        # The type. Valid values:
+        # - **cip**: Content Moderation invocation volume statistics.
+        # - **risk_level**: Content Moderation risk level statistics.
+        # - **content_moderation**: AI safety guardrail content compliance risk level and tag statistics.
+        # - **sensitive_data**: AI safety guardrail sensitive data risk level and tag statistics.
+        # - **prompt_attack**: AI safety guardrail prompt risk level and tag statistics.
         self.type = type
 
     def validate(self):

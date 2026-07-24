@@ -4,12 +4,17 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class GetExecuteTimeRequest(DaraModel):
+class ConfirmAiAppScanRequest(DaraModel):
     def __init__(
         self,
+        commodity_code: str = None,
         region_id: str = None,
     ):
-        # The region ID.
+        # The commodity code.
+        # 
+        # This parameter is required.
+        self.commodity_code = commodity_code
+        # The ID of the region where the application resides.
         self.region_id = region_id
 
     def validate(self):
@@ -20,6 +25,9 @@ class GetExecuteTimeRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.commodity_code is not None:
+            result['CommodityCode'] = self.commodity_code
+
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
@@ -27,6 +35,9 @@ class GetExecuteTimeRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CommodityCode') is not None:
+            self.commodity_code = m.get('CommodityCode')
+
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
 

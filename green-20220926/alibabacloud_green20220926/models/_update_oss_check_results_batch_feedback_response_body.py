@@ -14,11 +14,17 @@ class UpdateOssCheckResultsBatchFeedbackResponseBody(DaraModel):
         tips: str = None,
         total_count: int = None,
     ):
+        # Quantity of invalid items.
         self.invalid_count = invalid_count
+        # Quantity of duplicates.
         self.repeat_count = repeat_count
+        # The ID assigned by the backend to uniquely identify a request. It can be used for troubleshooting.
         self.request_id = request_id
+        # Number of succeeded items.
         self.success_count = success_count
+        # Tips message.
         self.tips = tips
+        # Total quantity.
         self.total_count = total_count
 
     def validate(self):

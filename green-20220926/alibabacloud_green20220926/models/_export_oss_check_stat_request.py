@@ -13,15 +13,17 @@ class ExportOssCheckStatRequest(DaraModel):
         region_id: str = None,
         start_date: str = None,
     ):
-        # Whether to support monthly indexing. Values: -true: supported. -false: not supported.
+        # Specifies whether monthly indexing is supported. Valid values:
+        # - true: Supported.
+        # - false: Not supported.
         self.by_month = by_month
-        # End time of the query, in the format yyyy-MM-dd HH:mm:ss.
+        # The end time of the query. Format: yyyy-MM-dd HH:mm:ss.
         self.end_date = end_date
-        # OSS detection task ID.
+        # The ID of the OSS scan task.
         self.parent_task_id = parent_task_id
-        # Region ID.
+        # The region ID.
         self.region_id = region_id
-        # Start time of the query, in the format yyyy-MM-dd HH:mm:ss.
+        # The start time of the query. Format: yyyy-MM-dd HH:mm:ss.
         self.start_date = start_date
 
     def validate(self):

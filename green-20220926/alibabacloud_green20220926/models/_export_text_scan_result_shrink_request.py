@@ -12,13 +12,13 @@ class ExportTextScanResultShrinkRequest(DaraModel):
         region_id: str = None,
         start_date: str = None,
     ):
-        # End time of the query, in the format yyyy-MM-dd HH:mm:ss.
+        # The end time of the query. Format: yyyy-MM-dd HH:mm:ss.
         self.end_date = end_date
-        # Query conditions.
+        # The query condition.
         self.query_shrink = query_shrink
-        # Region ID.
+        # The region ID.
         self.region_id = region_id
-        # Start time of the query, in the format yyyy-MM-dd HH:mm:ss.
+        # The start time of the query. Format: yyyy-MM-dd HH:mm:ss.
         self.start_date = start_date
 
     def validate(self):

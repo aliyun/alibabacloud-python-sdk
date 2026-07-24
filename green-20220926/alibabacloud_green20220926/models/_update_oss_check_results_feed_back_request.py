@@ -13,10 +13,15 @@ class UpdateOssCheckResultsFeedBackRequest(DaraModel):
         service_code: str = None,
         task_id: str = None,
     ):
+        # Feedback.
         self.feedback = feedback
+        # The request ID to query.
         self.query_request_id = query_request_id
+        # Region ID.
         self.region_id = region_id
+        # Service code.
         self.service_code = service_code
+        # Job ID.
         self.task_id = task_id
 
     def validate(self):

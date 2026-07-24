@@ -18,21 +18,21 @@ class ExportScanResultRequest(DaraModel):
         sort: Dict[str, str] = None,
         start_date: str = None,
     ):
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # End time of the query, in the format yyyy-MM-dd HH:mm:ss.
+        # The end time of the query. Format: yyyy-MM-dd HH:mm:ss.
         self.end_date = end_date
-        # Page size.
+        # The number of entries per page.
         self.page_size = page_size
-        # Query content.
+        # The query content.
         self.query = query
-        # Region ID.
+        # The region ID.
         self.region_id = region_id
-        # Resource type.
+        # The resource type.
         self.resource_type = resource_type
-        # Sort fields.
+        # The sort field.
         self.sort = sort
-        # Start time of the query, in the format yyyy-MM-dd HH:mm:ss.
+        # The start time of the query. Format: yyyy-MM-dd HH:mm:ss.
         self.start_date = start_date
 
     def validate(self):
