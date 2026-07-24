@@ -13,9 +13,9 @@ class FaceLivenessV2ResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.FaceLivenessV2ResponseBodyResult = None,
     ):
-        # The return code.
+        # The response code.
         self.code = code
-        # The return message.
+        # The response message.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -74,8 +74,8 @@ class FaceLivenessV2ResponseBodyResult(DaraModel):
         self.ext_face_info = ext_face_info
         # Indicates whether the authentication is passed. Valid values:
         # 
-        # - Y: passed.
-        # - N: not passed.
+        # - Y: Passed.
+        # - N: Not passed.
         self.passed = passed
         # The sub-result code.
         self.sub_code = sub_code
@@ -148,15 +148,15 @@ class FaceLivenessV2ResponseBodyResultExtFaceInfo(DaraModel):
         self.face_gender = face_gender
         # The quality score of the liveness face. Valid values: 0 to 100. A higher value indicates better quality.
         self.face_quality_score = face_quality_score
-        # The algorithm score for illumination as a quality sub-dimension. Valid values: 0 to 100. A higher value indicates better quality.
+        # The algorithm score for illumination, which is a sub-dimension of quality assessment. Valid values: 0 to 100. A higher value indicates better quality.
         self.illumination_score = illumination_score
-        # The algorithm score for key area occlusion as a quality sub-dimension. Valid values: 0 to 100. A higher value indicates better quality.
+        # The algorithm score for key area occlusion, which is a sub-dimension of quality assessment. Valid values: 0 to 100. A higher value indicates better quality.
         self.ka_occlusion_score = ka_occlusion_score
         # Indicates whether facial occlusion is detected. A value of Y indicates occlusion is detected. A value of N indicates no occlusion is detected.
         self.occlusion_result = occlusion_result
-        # The algorithm score for occlusion as a quality sub-dimension. Valid values: 0 to 100. A higher value indicates better quality.
+        # The algorithm score for occlusion, which is a sub-dimension of quality assessment. Valid values: 0 to 100. A higher value indicates better quality.
         self.occlusion_score = occlusion_score
-        # The algorithm score for image sharpness as a quality sub-dimension. Valid values: 0 to 100. A higher value indicates better quality.
+        # The image sharpness score, which is a sub-dimension of quality assessment. Valid values: 0 to 100. A higher value indicates better quality.
         self.sharpness_score = sharpness_score
 
     def validate(self):

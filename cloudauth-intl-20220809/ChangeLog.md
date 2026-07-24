@@ -1,3 +1,14 @@
+2026-07-24 Version: 3.22.1
+- Update API FaceDuplicationCheckIntl: add request parameters FaceAttributeCheck.
+- Update API FaceLiveness: add request parameters FaceAttributeCheck.
+- Update API FaceLivenessV2: add request parameters FaceAttributeCheck.
+- Update API FaceVerifyIntl: add request parameters FaceAttributeCheck.
+- Update API Initialize: add request parameters AutoDocPageConfig.
+- Update API Initialize: add request parameters FaceAttributeCheck.
+- Update API InitializeV2: add request parameters AutoDocPageConfig.
+- Update API InitializeV2: add request parameters FaceAttributeCheck.
+
+
 2026-07-06 Version: 3.22.0
 - Support API DeleteFaceRecordV2.
 

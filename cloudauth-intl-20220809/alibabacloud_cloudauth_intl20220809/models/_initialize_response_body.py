@@ -74,7 +74,7 @@ class InitializeResponseBodyResult(DaraModel):
         self.client_cfg = client_cfg
         # The authentication standard encryption protocol.
         # 
-        # > This field is required when you use iframe embedding for H5 web page integration.
+        # > This field is required when integrating H5 web pages using iframe embedding.
         self.protocol = protocol
         # The authentication ID.
         self.transaction_id = transaction_id

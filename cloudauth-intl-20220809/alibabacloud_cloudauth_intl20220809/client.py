@@ -4173,6 +4173,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.auto_registration):
             body['AutoRegistration'] = request.auto_registration
+        if not DaraCore.is_null(request.face_attribute_check):
+            body['FaceAttributeCheck'] = request.face_attribute_check
         if not DaraCore.is_null(request.face_group_codes):
             body['FaceGroupCodes'] = request.face_group_codes
         if not DaraCore.is_null(request.face_quality_check):
@@ -4235,6 +4237,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.auto_registration):
             body['AutoRegistration'] = request.auto_registration
+        if not DaraCore.is_null(request.face_attribute_check):
+            body['FaceAttributeCheck'] = request.face_attribute_check
         if not DaraCore.is_null(request.face_group_codes):
             body['FaceGroupCodes'] = request.face_group_codes
         if not DaraCore.is_null(request.face_quality_check):
@@ -4394,6 +4398,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.crop):
             query['Crop'] = request.crop
+        if not DaraCore.is_null(request.face_attribute_check):
+            query['FaceAttributeCheck'] = request.face_attribute_check
         if not DaraCore.is_null(request.face_picture_url):
             query['FacePictureUrl'] = request.face_picture_url
         if not DaraCore.is_null(request.face_quality):
@@ -4440,6 +4446,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.crop):
             query['Crop'] = request.crop
+        if not DaraCore.is_null(request.face_attribute_check):
+            query['FaceAttributeCheck'] = request.face_attribute_check
         if not DaraCore.is_null(request.face_picture_url):
             query['FacePictureUrl'] = request.face_picture_url
         if not DaraCore.is_null(request.face_quality):
@@ -4498,6 +4506,8 @@ class Client(OpenApiClient):
     ) -> main_models.FaceLivenessV2Response:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.face_attribute_check):
+            query['FaceAttributeCheck'] = request.face_attribute_check
         if not DaraCore.is_null(request.face_picture_file):
             query['FacePictureFile'] = request.face_picture_file
         if not DaraCore.is_null(request.face_picture_url):
@@ -4540,6 +4550,8 @@ class Client(OpenApiClient):
     ) -> main_models.FaceLivenessV2Response:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.face_attribute_check):
+            query['FaceAttributeCheck'] = request.face_attribute_check
         if not DaraCore.is_null(request.face_picture_file):
             query['FacePictureFile'] = request.face_picture_file
         if not DaraCore.is_null(request.face_picture_url):
@@ -4760,6 +4772,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.auto_registration):
             query['AutoRegistration'] = request.auto_registration
+        if not DaraCore.is_null(request.face_attribute_check):
+            query['FaceAttributeCheck'] = request.face_attribute_check
         if not DaraCore.is_null(request.face_group_codes):
             query['FaceGroupCodes'] = request.face_group_codes
         if not DaraCore.is_null(request.face_quality_check):
@@ -4818,6 +4832,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.auto_registration):
             query['AutoRegistration'] = request.auto_registration
+        if not DaraCore.is_null(request.face_attribute_check):
+            query['FaceAttributeCheck'] = request.face_attribute_check
         if not DaraCore.is_null(request.face_group_codes):
             query['FaceGroupCodes'] = request.face_group_codes
         if not DaraCore.is_null(request.face_quality_check):
@@ -5650,6 +5666,8 @@ class Client(OpenApiClient):
             query['AppQualityCheck'] = request.app_quality_check
         if not DaraCore.is_null(request.authorize):
             query['Authorize'] = request.authorize
+        if not DaraCore.is_null(request.auto_doc_page_config):
+            query['AutoDocPageConfig'] = request.auto_doc_page_config
         if not DaraCore.is_null(request.auto_registration):
             query['AutoRegistration'] = request.auto_registration
         if not DaraCore.is_null(request.callback_token):
@@ -5684,6 +5702,8 @@ class Client(OpenApiClient):
             query['Email'] = request.email
         if not DaraCore.is_null(request.experience_code):
             query['ExperienceCode'] = request.experience_code
+        if not DaraCore.is_null(request.face_attribute_check):
+            query['FaceAttributeCheck'] = request.face_attribute_check
         if not DaraCore.is_null(request.face_group_codes):
             query['FaceGroupCodes'] = request.face_group_codes
         if not DaraCore.is_null(request.face_picture_url):
@@ -5794,6 +5814,8 @@ class Client(OpenApiClient):
             query['AppQualityCheck'] = request.app_quality_check
         if not DaraCore.is_null(request.authorize):
             query['Authorize'] = request.authorize
+        if not DaraCore.is_null(request.auto_doc_page_config):
+            query['AutoDocPageConfig'] = request.auto_doc_page_config
         if not DaraCore.is_null(request.auto_registration):
             query['AutoRegistration'] = request.auto_registration
         if not DaraCore.is_null(request.callback_token):
@@ -5828,6 +5850,8 @@ class Client(OpenApiClient):
             query['Email'] = request.email
         if not DaraCore.is_null(request.experience_code):
             query['ExperienceCode'] = request.experience_code
+        if not DaraCore.is_null(request.face_attribute_check):
+            query['FaceAttributeCheck'] = request.face_attribute_check
         if not DaraCore.is_null(request.face_group_codes):
             query['FaceGroupCodes'] = request.face_group_codes
         if not DaraCore.is_null(request.face_picture_url):
@@ -5952,6 +5976,8 @@ class Client(OpenApiClient):
             query['AppQualityCheck'] = request.app_quality_check
         if not DaraCore.is_null(request.authorize):
             query['Authorize'] = request.authorize
+        if not DaraCore.is_null(request.auto_doc_page_config):
+            query['AutoDocPageConfig'] = request.auto_doc_page_config
         if not DaraCore.is_null(request.auto_registration):
             query['AutoRegistration'] = request.auto_registration
         if not DaraCore.is_null(request.callback_token):
@@ -5986,6 +6012,8 @@ class Client(OpenApiClient):
             query['Email'] = request.email
         if not DaraCore.is_null(request.experience_code):
             query['ExperienceCode'] = request.experience_code
+        if not DaraCore.is_null(request.face_attribute_check):
+            query['FaceAttributeCheck'] = request.face_attribute_check
         if not DaraCore.is_null(request.face_group_codes):
             query['FaceGroupCodes'] = request.face_group_codes
         if not DaraCore.is_null(request.face_picture_file):
@@ -6100,6 +6128,8 @@ class Client(OpenApiClient):
             query['AppQualityCheck'] = request.app_quality_check
         if not DaraCore.is_null(request.authorize):
             query['Authorize'] = request.authorize
+        if not DaraCore.is_null(request.auto_doc_page_config):
+            query['AutoDocPageConfig'] = request.auto_doc_page_config
         if not DaraCore.is_null(request.auto_registration):
             query['AutoRegistration'] = request.auto_registration
         if not DaraCore.is_null(request.callback_token):
@@ -6134,6 +6164,8 @@ class Client(OpenApiClient):
             query['Email'] = request.email
         if not DaraCore.is_null(request.experience_code):
             query['ExperienceCode'] = request.experience_code
+        if not DaraCore.is_null(request.face_attribute_check):
+            query['FaceAttributeCheck'] = request.face_attribute_check
         if not DaraCore.is_null(request.face_group_codes):
             query['FaceGroupCodes'] = request.face_group_codes
         if not DaraCore.is_null(request.face_picture_file):

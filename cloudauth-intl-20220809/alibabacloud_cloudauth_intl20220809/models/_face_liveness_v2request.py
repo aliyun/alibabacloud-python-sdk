@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class FaceLivenessV2Request(DaraModel):
     def __init__(
         self,
+        face_attribute_check: str = None,
         face_picture_base_64: str = None,
         face_picture_file: str = None,
         face_picture_url: str = None,
@@ -15,6 +16,7 @@ class FaceLivenessV2Request(DaraModel):
         merchant_user_id: str = None,
         product_code: str = None,
     ):
+        self.face_attribute_check = face_attribute_check
         # The Base64-encoded face image.
         # 
         # > **Note**
@@ -47,6 +49,9 @@ class FaceLivenessV2Request(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.face_attribute_check is not None:
+            result['FaceAttributeCheck'] = self.face_attribute_check
+
         if self.face_picture_base_64 is not None:
             result['FacePictureBase64'] = self.face_picture_base_64
 
@@ -72,6 +77,9 @@ class FaceLivenessV2Request(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('FaceAttributeCheck') is not None:
+            self.face_attribute_check = m.get('FaceAttributeCheck')
+
         if m.get('FacePictureBase64') is not None:
             self.face_picture_base_64 = m.get('FacePictureBase64')
 

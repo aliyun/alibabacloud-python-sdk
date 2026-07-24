@@ -82,29 +82,33 @@ class FaceDuplicationCheckIntlResponseBodyResult(DaraModel):
         self.duplicate_face = duplicate_face
         # The related result information.
         self.ext_face_info = ext_face_info
-        # The estimated age of the face. The prediction may fail and no value is returned in some cases.
+        # The estimated age of the face. This value may not be returned if the prediction fails.
         self.face_age = face_age
-        # Indicates whether the captured face involves a liveness attack. Valid values: Y (attack detected) and N (no attack detected). This field is returned when passive liveness detection is enabled.
+        # Indicates whether the captured face involves a liveness attack. Valid values:
+        # - Y: Attack detected.
+        # - N: No attack detected.
+        # 
+        # This field is returned only when passive liveness detection is enabled.
         self.face_attack = face_attack
-        # The probability of a passive liveness detection attack. The value ranges from 0 to 100. This field is returned when passive liveness detection is enabled.
+        # The probability of a passive liveness detection attack on the face. The value ranges from 0 to 100. This field is returned only when passive liveness detection is enabled.
         self.face_attack_score = face_attack_score
         # The 1:1 face comparison score returned when the verification mode is 1 or 2. The value ranges from 0 to 100.
         self.face_comparison_score = face_comparison_score
-        # The predicted gender of the face image. The prediction may fail and no value is returned in some cases. Valid values:
-        # - M: Male.
-        # - F: Female.
+        # The predicted gender of the face. This value may not be returned if the prediction fails. Valid values:
+        # - M: male
+        # - F: female
         self.face_gender = face_gender
         # The final verification result. Valid values:
         # - Y: Passed.
         # - N: Not passed.
         self.face_passed = face_passed
-        # The FACEID returned only when the customer has enabled automatic registration and the face is registered.
+        # The FACEID returned only when automatic registration is enabled and the face is successfully registered.
         self.face_registration_id = face_registration_id
         # The face registration result. Valid values: 
         # - 0: Failed. 
         # - 1: Succeeded.
         self.face_registration_result = face_registration_result
-        # The verification result description. For more information, refer to the ResultObject.SubCode error code description.
+        # The verification result description. For more information, see the ResultObject.SubCode error code description.
         self.sub_code = sub_code
         # The unique identifier of the verification request.
         self.transaction_id = transaction_id

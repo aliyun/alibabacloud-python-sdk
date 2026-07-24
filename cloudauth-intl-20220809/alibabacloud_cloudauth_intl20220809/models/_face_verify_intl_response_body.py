@@ -13,9 +13,9 @@ class FaceVerifyIntlResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.FaceVerifyIntlResponseBodyResult = None,
     ):
-        # The response code.
+        # The return code.
         self.code = code
-        # The response message.
+        # The return message.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -82,11 +82,11 @@ class FaceVerifyIntlResponseBodyResult(DaraModel):
         self.duplicate_face = duplicate_face
         # The additional face result information.
         self.ext_face_info = ext_face_info
-        # The predicted reference age of the face. Prediction may fail and the value may not be returned.
+        # The estimated age of the face. This value may not be returned if the prediction fails.
         self.face_age = face_age
         # Indicates whether the captured face involves a liveness attack. Valid values:
-        # - Y: attack detected.
-        # - N: no attack detected.
+        # - Y: Attack detected.
+        # - N: No attack detected.
         # 
         # This field is returned only when passive liveness detection is enabled.
         self.face_attack = face_attack
@@ -94,19 +94,19 @@ class FaceVerifyIntlResponseBodyResult(DaraModel):
         self.face_attack_score = face_attack_score
         # The comparison score between the face image submitted during verification and the reference face image. Value range: 0 to 100.
         self.face_comparison_score = face_comparison_score
-        # The predicted gender of the face image. Prediction may fail and the value may not be returned. Valid values:
-        # - M: male.
-        # - F: female.
+        # The predicted gender of the face image. This value may not be returned if the prediction fails. Valid values:
+        # - M: Male.
+        # - F: Female.
         self.face_gender = face_gender
         # The final verification result. Valid values:
-        # - Y: passed.
-        # - N: not passed.
+        # - Y: Passed.
+        # - N: Not passed.
         self.face_passed = face_passed
-        # The corresponding face ID returned only when the customer has enabled automatic registration and the face is registered successfully.
+        # The face ID returned only when the customer has enabled automatic registration and the face is registered successfully.
         self.face_registration_id = face_registration_id
         # The face registration result. Valid values: 
-        # - 0: failed. 
-        # - 1: succeeded.
+        # - 0: Failed. 
+        # - 1: Succeeded.
         self.face_registration_result = face_registration_result
         # The sub-result code.
         self.sub_code = sub_code

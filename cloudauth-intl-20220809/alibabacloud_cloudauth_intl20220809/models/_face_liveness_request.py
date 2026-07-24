@@ -8,6 +8,7 @@ class FaceLivenessRequest(DaraModel):
     def __init__(
         self,
         crop: str = None,
+        face_attribute_check: str = None,
         face_picture_base_64: str = None,
         face_picture_url: str = None,
         face_quality: str = None,
@@ -19,9 +20,10 @@ class FaceLivenessRequest(DaraModel):
     ):
         # Specifies whether to allow cropping. Default value: F. Valid values:
         # 
-        # - T: Allow cropping.
-        # - F: Do not allow cropping.
+        # - T: enabled.
+        # - F: disabled. (Default)
         self.crop = crop
+        self.face_attribute_check = face_attribute_check
         # The Base64-encoded face photo.
         # 
         # Note:
@@ -30,19 +32,19 @@ class FaceLivenessRequest(DaraModel):
         # The URL of the face photo.
         self.face_picture_url = face_picture_url
         # Specifies whether to output the face quality score. Default value: F. Valid values:
-        # - T: Output the face quality score.
-        # - F: Do not output the face quality score.
+        # - T: enabled.
+        # - F: disabled. (Default)
         self.face_quality = face_quality
-        # Specifies whether to perform a face quality check.
+        # The face quality check.
         self.face_quality_check = face_quality_check
-        # The merchant-defined unique business ID for subsequent troubleshooting. The value supports a combination of letters and numbers with a maximum length of 32 characters. Ensure that the value is unique.
+        # The merchant-defined unique business ID used for subsequent troubleshooting. The value can contain letters and digits with a maximum length of 32 characters. Ensure that the value is unique.
         self.merchant_biz_id = merchant_biz_id
-        # The merchant user ID or other identifier that can be used to identify a specific user, such as a phone number or email address. We strongly recommend that you pre-desensitize the value of the userId field, such as by hashing the value.
+        # The merchant user ID or another identifier that can be used to identify a specific user, such as a phone number or email address. We strongly recommend that you desensitize the value of the userId field before passing it in, for example, by hashing the value.
         self.merchant_user_id = merchant_user_id
         # Specifies whether to perform occlusion detection. Default value: F. Valid values:
         # 
-        # - T: Perform occlusion detection.
-        # - F: Do not perform occlusion detection.
+        # - T: enabled.
+        # - F: disabled. (Default)
         self.occlusion = occlusion
         # The product code.
         self.product_code = product_code
@@ -57,6 +59,9 @@ class FaceLivenessRequest(DaraModel):
             result = _map
         if self.crop is not None:
             result['Crop'] = self.crop
+
+        if self.face_attribute_check is not None:
+            result['FaceAttributeCheck'] = self.face_attribute_check
 
         if self.face_picture_base_64 is not None:
             result['FacePictureBase64'] = self.face_picture_base_64
@@ -88,6 +93,9 @@ class FaceLivenessRequest(DaraModel):
         m = m or dict()
         if m.get('Crop') is not None:
             self.crop = m.get('Crop')
+
+        if m.get('FaceAttributeCheck') is not None:
+            self.face_attribute_check = m.get('FaceAttributeCheck')
 
         if m.get('FacePictureBase64') is not None:
             self.face_picture_base_64 = m.get('FacePictureBase64')
