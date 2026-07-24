@@ -48,6 +48,9 @@ from ._language_detect_response import LanguageDetectResponse
 from ._material_inspection_request import MaterialInspectionRequest
 from ._material_inspection_response_body import MaterialInspectionResponseBody
 from ._material_inspection_response import MaterialInspectionResponse
+from ._merchandise_placement_detection_request import MerchandisePlacementDetectionRequest
+from ._merchandise_placement_detection_response_body import MerchandisePlacementDetectionResponseBody
+from ._merchandise_placement_detection_response import MerchandisePlacementDetectionResponse
 from ._package_weight_size_check_request import PackageWeightSizeCheckRequest
 from ._package_weight_size_check_response_body import PackageWeightSizeCheckResponseBody
 from ._package_weight_size_check_response import PackageWeightSizeCheckResponse
@@ -109,6 +112,10 @@ from ._language_detect_response_body import LanguageDetectResponseBodyData
 from ._material_inspection_response_body import MaterialInspectionResponseBodyDataResultSteps
 from ._material_inspection_response_body import MaterialInspectionResponseBodyDataResult
 from ._material_inspection_response_body import MaterialInspectionResponseBodyData
+from ._merchandise_placement_detection_response_body import MerchandisePlacementDetectionResponseBodyDataDataTop1
+from ._merchandise_placement_detection_response_body import MerchandisePlacementDetectionResponseBodyDataDataTopk
+from ._merchandise_placement_detection_response_body import MerchandisePlacementDetectionResponseBodyDataData
+from ._merchandise_placement_detection_response_body import MerchandisePlacementDetectionResponseBodyData
 from ._package_weight_size_check_response_body import PackageWeightSizeCheckResponseBodyData
 from ._query_async_task_result_response_body import QueryAsyncTaskResultResponseBodyData
 from ._size_chart_detect_response_body import SizeChartDetectResponseBodyData
@@ -166,6 +173,9 @@ __all__ = [
     MaterialInspectionRequest,
     MaterialInspectionResponseBody,
     MaterialInspectionResponse,
+    MerchandisePlacementDetectionRequest,
+    MerchandisePlacementDetectionResponseBody,
+    MerchandisePlacementDetectionResponse,
     PackageWeightSizeCheckRequest,
     PackageWeightSizeCheckResponseBody,
     PackageWeightSizeCheckResponse,
@@ -227,6 +237,10 @@ __all__ = [
     MaterialInspectionResponseBodyDataResultSteps,
     MaterialInspectionResponseBodyDataResult,
     MaterialInspectionResponseBodyData,
+    MerchandisePlacementDetectionResponseBodyDataDataTop1,
+    MerchandisePlacementDetectionResponseBodyDataDataTopk,
+    MerchandisePlacementDetectionResponseBodyDataData,
+    MerchandisePlacementDetectionResponseBodyData,
     PackageWeightSizeCheckResponseBodyData,
     QueryAsyncTaskResultResponseBodyData,
     SizeChartDetectResponseBodyData,

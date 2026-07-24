@@ -1,3 +1,9 @@
+2026-07-24 Version: 4.0.0
+- Support API MerchandisePlacementDetection.
+- Update API ImageTranslationPro: delete response parameters Body.Data.GenFiles.$.EditInfo.TextAreas.$.Texts.$.OvisErrMsg.
+- Update API ImageTranslationStandard: delete response parameters Body.Data.EditInfo.TextAreas.$.Texts.$.OvisErrMsg.
+
+
 2026-07-22 Version: 3.1.1
 - Update API ImageTranslationStandard: add request parameters UseImageEditor.
 - Update API ImageTranslationStandard: add response parameters Body.Data.EditInfo.

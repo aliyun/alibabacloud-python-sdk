@@ -20,11 +20,11 @@ class ImageTranslationStandardResponseBody(DaraModel):
         self.code = code
         # The translation result data, including the translated image URL and usage information.
         self.data = data
-        # The error message. Returns "Success" for successful calls and specific error information for exceptions.
+        # The error message. Returns "Success" for successful calls, and returns specific error information for failed calls.
         self.message = message
-        # The request ID, used to identify a unique request call.
+        # The request ID, which uniquely identifies the request.
         self.request_id = request_id
-        # Indicates whether the call is successful. A value of true indicates success. A value of false indicates failure.
+        # Indicates whether the call is successful. A value of true indicates success, and a value of false indicates failure.
         self.success = success
 
     def validate(self):
@@ -84,7 +84,7 @@ class ImageTranslationStandardResponseBodyData(DaraModel):
         self.edit_info = edit_info
         # The URL of the image generated after image translation.
         self.image_url = image_url
-        # The usage information, including the number of processed images.
+        # The usage information, including the number of images processed.
         self.usage_map = usage_map
 
     def validate(self):
@@ -137,7 +137,7 @@ class ImageTranslationStandardResponseBodyDataEditInfo(DaraModel):
     ):
         # The list of fonts used.
         self.font = font
-        # The product area rectangle.
+        # The product area rectangles.
         self.goods_rects = goods_rects
         # The product image URL.
         self.goods_url = goods_url
@@ -340,7 +340,6 @@ class ImageTranslationStandardResponseBodyDataEditInfoTextAreasTexts(DaraModel):
         image_rect: main_models.ImageTranslationStandardResponseBodyDataEditInfoTextAreasTextsImageRect = None,
         language: str = None,
         line_count: int = None,
-        ovis_err_msg: str = None,
         text_rect: main_models.ImageTranslationStandardResponseBodyDataEditInfoTextAreasTextsTextRect = None,
         valid: bool = None,
         value: str = None,
@@ -358,8 +357,6 @@ class ImageTranslationStandardResponseBodyDataEditInfoTextAreasTexts(DaraModel):
         self.language = language
         # The line count.
         self.line_count = line_count
-        # The OVIS error message.
-        self.ovis_err_msg = ovis_err_msg
         # The text area.
         self.text_rect = text_rect
         # Indicates whether the text is valid.
@@ -398,9 +395,6 @@ class ImageTranslationStandardResponseBodyDataEditInfoTextAreasTexts(DaraModel):
         if self.line_count is not None:
             result['LineCount'] = self.line_count
 
-        if self.ovis_err_msg is not None:
-            result['OvisErrMsg'] = self.ovis_err_msg
-
         if self.text_rect is not None:
             result['TextRect'] = self.text_rect.to_map()
 
@@ -435,9 +429,6 @@ class ImageTranslationStandardResponseBodyDataEditInfoTextAreasTexts(DaraModel):
 
         if m.get('LineCount') is not None:
             self.line_count = m.get('LineCount')
-
-        if m.get('OvisErrMsg') is not None:
-            self.ovis_err_msg = m.get('OvisErrMsg')
 
         if m.get('TextRect') is not None:
             temp_model = main_models.ImageTranslationStandardResponseBodyDataEditInfoTextAreasTextsTextRect()

@@ -1339,6 +1339,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.material_inspection_with_options_async(request, runtime)
 
+    def merchandise_placement_detection_with_options(
+        self,
+        request: main_models.MerchandisePlacementDetectionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.MerchandisePlacementDetectionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.api_id):
+            query['ApiId'] = request.api_id
+        if not DaraCore.is_null(request.image_url):
+            query['ImageUrl'] = request.image_url
+        if not DaraCore.is_null(request.rag_id):
+            query['RagId'] = request.rag_id
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'MerchandisePlacementDetection',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.MerchandisePlacementDetectionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def merchandise_placement_detection_with_options_async(
+        self,
+        request: main_models.MerchandisePlacementDetectionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.MerchandisePlacementDetectionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.api_id):
+            query['ApiId'] = request.api_id
+        if not DaraCore.is_null(request.image_url):
+            query['ImageUrl'] = request.image_url
+        if not DaraCore.is_null(request.rag_id):
+            query['RagId'] = request.rag_id
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'MerchandisePlacementDetection',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.MerchandisePlacementDetectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def merchandise_placement_detection(
+        self,
+        request: main_models.MerchandisePlacementDetectionRequest,
+    ) -> main_models.MerchandisePlacementDetectionResponse:
+        runtime = RuntimeOptions()
+        return self.merchandise_placement_detection_with_options(request, runtime)
+
+    async def merchandise_placement_detection_async(
+        self,
+        request: main_models.MerchandisePlacementDetectionRequest,
+    ) -> main_models.MerchandisePlacementDetectionResponse:
+        runtime = RuntimeOptions()
+        return await self.merchandise_placement_detection_with_options_async(request, runtime)
+
     def package_weight_size_check_with_options(
         self,
         request: main_models.PackageWeightSizeCheckRequest,

@@ -18,7 +18,7 @@ class QueryAsyncTaskResultResponseBody(DaraModel):
     ):
         # The error code. This parameter is not returned if the call is successful.
         self.code = code
-        # The asynchronous task result.
+        # The asynchronous node result.
         self.data = data
         # The error message. This parameter is not returned if the call is successful.
         self.message = message
@@ -85,9 +85,9 @@ class QueryAsyncTaskResultResponseBodyData(DaraModel):
     ):
         # The task result.
         self.result = result
-        # The task status.
+        # The status of the task.
         self.status = status
-        # The downstream task ID.
+        # The ID of the downstream task.
         self.task_id = task_id
         # The usage information.
         self.usage_map = usage_map
