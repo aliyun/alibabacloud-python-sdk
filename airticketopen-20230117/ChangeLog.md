@@ -1,3 +1,10 @@
+2026-07-24 Version: 6.0.2
+- Update API ChangeDetail: add response parameters Body.data.change_fee_details.$.change_fee.suez_service_fee.
+- Update API ChangeDetailListOfOrderNum: add response parameters Body.data.list.$.change_fee_details.$.change_fee.suez_service_fee.
+- Update API RefundDetail: add response parameters Body.data.passenger_refund_details.$.refund_fee.ancillary_refund_to_buyer_money.
+- Update API RefundDetail: add response parameters Body.data.passenger_refund_details.$.refund_fee.suez_service_fee.
+
+
 2025-11-18 Version: 6.0.1
 - Generated python 2023-01-17 for airticketOpen.
 

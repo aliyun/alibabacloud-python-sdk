@@ -1,0 +1,595 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from ._data_solution_list_segment_baggage_mapping_list_passenger_baggage_allowance_mapping_value import DataSolutionListSegmentBaggageMappingListPassengerBaggageAllowanceMappingValue
+from ._data_solution_list_segment_refund_change_rule_mapping_list_refund_change_rule_map_value import DataSolutionListSegmentRefundChangeRuleMappingListRefundChangeRuleMapValue
+from ._data_baggage_allowance_map_value import DataBaggageAllowanceMapValue
+from ._data_refund_change_rule_map_value import DataRefundChangeRuleMapValue
+from ._data_solution_segment_baggage_mapping_list_passenger_baggage_allowance_mapping_value import DataSolutionSegmentBaggageMappingListPassengerBaggageAllowanceMappingValue
+from ._data_solution_segment_refund_change_rule_mapping_list_refund_change_rule_map_value import DataSolutionSegmentRefundChangeRuleMappingListRefundChangeRuleMapValue
+from ._account_flow_list_headers import AccountFlowListHeaders
+from ._account_flow_list_request import AccountFlowListRequest
+from ._account_flow_list_response_body import AccountFlowListResponseBody
+from ._account_flow_list_response import AccountFlowListResponse
+from ._ancillary_suggest_headers import AncillarySuggestHeaders
+from ._ancillary_suggest_request import AncillarySuggestRequest
+from ._ancillary_suggest_response_body import AncillarySuggestResponseBody
+from ._ancillary_suggest_response import AncillarySuggestResponse
+from ._book_headers import BookHeaders
+from ._book_request import BookRequest
+from ._book_shrink_request import BookShrinkRequest
+from ._book_response_body import BookResponseBody
+from ._book_response import BookResponse
+from ._cancel_headers import CancelHeaders
+from ._cancel_request import CancelRequest
+from ._cancel_response_body import CancelResponseBody
+from ._cancel_response import CancelResponse
+from ._change_apply_headers import ChangeApplyHeaders
+from ._change_apply_request import ChangeApplyRequest
+from ._change_apply_shrink_request import ChangeApplyShrinkRequest
+from ._change_apply_response_body import ChangeApplyResponseBody
+from ._change_apply_response import ChangeApplyResponse
+from ._change_cancel_headers import ChangeCancelHeaders
+from ._change_cancel_request import ChangeCancelRequest
+from ._change_cancel_response_body import ChangeCancelResponseBody
+from ._change_cancel_response import ChangeCancelResponse
+from ._change_confirm_headers import ChangeConfirmHeaders
+from ._change_confirm_request import ChangeConfirmRequest
+from ._change_confirm_response_body import ChangeConfirmResponseBody
+from ._change_confirm_response import ChangeConfirmResponse
+from ._change_detail_headers import ChangeDetailHeaders
+from ._change_detail_request import ChangeDetailRequest
+from ._change_detail_response_body import ChangeDetailResponseBody
+from ._change_detail_response import ChangeDetailResponse
+from ._change_detail_list_of_buyer_headers import ChangeDetailListOfBuyerHeaders
+from ._change_detail_list_of_buyer_request import ChangeDetailListOfBuyerRequest
+from ._change_detail_list_of_buyer_response_body import ChangeDetailListOfBuyerResponseBody
+from ._change_detail_list_of_buyer_response import ChangeDetailListOfBuyerResponse
+from ._change_detail_list_of_order_num_headers import ChangeDetailListOfOrderNumHeaders
+from ._change_detail_list_of_order_num_request import ChangeDetailListOfOrderNumRequest
+from ._change_detail_list_of_order_num_response_body import ChangeDetailListOfOrderNumResponseBody
+from ._change_detail_list_of_order_num_response import ChangeDetailListOfOrderNumResponse
+from ._collect_flight_lowest_price_headers import CollectFlightLowestPriceHeaders
+from ._collect_flight_lowest_price_request import CollectFlightLowestPriceRequest
+from ._collect_flight_lowest_price_shrink_request import CollectFlightLowestPriceShrinkRequest
+from ._collect_flight_lowest_price_response_body import CollectFlightLowestPriceResponseBody
+from ._collect_flight_lowest_price_response import CollectFlightLowestPriceResponse
+from ._enrich_headers import EnrichHeaders
+from ._enrich_request import EnrichRequest
+from ._enrich_shrink_request import EnrichShrinkRequest
+from ._enrich_response_body import EnrichResponseBody
+from ._enrich_response import EnrichResponse
+from ._file_upload_headers import FileUploadHeaders
+from ._file_upload_request import FileUploadRequest
+from ._file_upload_response_body import FileUploadResponseBody
+from ._file_upload_response import FileUploadResponse
+from ._flight_change_of_order_headers import FlightChangeOfOrderHeaders
+from ._flight_change_of_order_request import FlightChangeOfOrderRequest
+from ._flight_change_of_order_response_body import FlightChangeOfOrderResponseBody
+from ._flight_change_of_order_response import FlightChangeOfOrderResponse
+from ._get_token_request import GetTokenRequest
+from ._get_token_response_body import GetTokenResponseBody
+from ._get_token_response import GetTokenResponse
+from ._luggage_direct_headers import LuggageDirectHeaders
+from ._luggage_direct_request import LuggageDirectRequest
+from ._luggage_direct_shrink_request import LuggageDirectShrinkRequest
+from ._luggage_direct_response_body import LuggageDirectResponseBody
+from ._luggage_direct_response import LuggageDirectResponse
+from ._order_detail_headers import OrderDetailHeaders
+from ._order_detail_request import OrderDetailRequest
+from ._order_detail_response_body import OrderDetailResponseBody
+from ._order_detail_response import OrderDetailResponse
+from ._order_list_headers import OrderListHeaders
+from ._order_list_request import OrderListRequest
+from ._order_list_response_body import OrderListResponseBody
+from ._order_list_response import OrderListResponse
+from ._pricing_headers import PricingHeaders
+from ._pricing_request import PricingRequest
+from ._pricing_response_body import PricingResponseBody
+from ._pricing_response import PricingResponse
+from ._refund_apply_headers import RefundApplyHeaders
+from ._refund_apply_request import RefundApplyRequest
+from ._refund_apply_shrink_request import RefundApplyShrinkRequest
+from ._refund_apply_response_body import RefundApplyResponseBody
+from ._refund_apply_response import RefundApplyResponse
+from ._refund_detail_headers import RefundDetailHeaders
+from ._refund_detail_request import RefundDetailRequest
+from ._refund_detail_response_body import RefundDetailResponseBody
+from ._refund_detail_response import RefundDetailResponse
+from ._refund_detail_list_headers import RefundDetailListHeaders
+from ._refund_detail_list_request import RefundDetailListRequest
+from ._refund_detail_list_response_body import RefundDetailListResponseBody
+from ._refund_detail_list_response import RefundDetailListResponse
+from ._search_headers import SearchHeaders
+from ._search_request import SearchRequest
+from ._search_shrink_request import SearchShrinkRequest
+from ._search_response_body import SearchResponseBody
+from ._search_response import SearchResponse
+from ._standard_search_headers import StandardSearchHeaders
+from ._standard_search_request import StandardSearchRequest
+from ._standard_search_shrink_request import StandardSearchShrinkRequest
+from ._standard_search_response_body import StandardSearchResponseBody
+from ._standard_search_response import StandardSearchResponse
+from ._ticketing_headers import TicketingHeaders
+from ._ticketing_request import TicketingRequest
+from ._ticketing_response_body import TicketingResponseBody
+from ._ticketing_response import TicketingResponse
+from ._ticketing_check_headers import TicketingCheckHeaders
+from ._ticketing_check_request import TicketingCheckRequest
+from ._ticketing_check_response_body import TicketingCheckResponseBody
+from ._ticketing_check_response import TicketingCheckResponse
+from ._transit_visa_headers import TransitVisaHeaders
+from ._transit_visa_request import TransitVisaRequest
+from ._transit_visa_shrink_request import TransitVisaShrinkRequest
+from ._transit_visa_response_body import TransitVisaResponseBody
+from ._transit_visa_response import TransitVisaResponse
+from ._data_solution_list_segment_refund_change_rule_mapping_list_refund_change_rule_map_value import DataSolutionListSegmentRefundChangeRuleMappingListRefundChangeRuleMapValueRefundRuleAllUnusedList
+from ._data_solution_list_segment_refund_change_rule_mapping_list_refund_change_rule_map_value import DataSolutionListSegmentRefundChangeRuleMappingListRefundChangeRuleMapValueRefundRulePartUnusedList
+from ._data_solution_list_segment_refund_change_rule_mapping_list_refund_change_rule_map_value import DataSolutionListSegmentRefundChangeRuleMappingListRefundChangeRuleMapValueChangeRuleInUnusedList
+from ._data_solution_list_segment_refund_change_rule_mapping_list_refund_change_rule_map_value import DataSolutionListSegmentRefundChangeRuleMappingListRefundChangeRuleMapValueChangeRuleOutUnusedList
+from ._data_refund_change_rule_map_value import DataRefundChangeRuleMapValueRefundRuleAllUnusedList
+from ._data_refund_change_rule_map_value import DataRefundChangeRuleMapValueRefundRulePartUnusedList
+from ._data_refund_change_rule_map_value import DataRefundChangeRuleMapValueChangeRuleInUnusedList
+from ._data_refund_change_rule_map_value import DataRefundChangeRuleMapValueChangeRuleOutUnusedList
+from ._data_solution_segment_refund_change_rule_mapping_list_refund_change_rule_map_value import DataSolutionSegmentRefundChangeRuleMappingListRefundChangeRuleMapValueRefundRuleAllUnusedList
+from ._data_solution_segment_refund_change_rule_mapping_list_refund_change_rule_map_value import DataSolutionSegmentRefundChangeRuleMappingListRefundChangeRuleMapValueRefundRulePartUnusedList
+from ._data_solution_segment_refund_change_rule_mapping_list_refund_change_rule_map_value import DataSolutionSegmentRefundChangeRuleMappingListRefundChangeRuleMapValueChangeRuleInUnusedList
+from ._data_solution_segment_refund_change_rule_mapping_list_refund_change_rule_map_value import DataSolutionSegmentRefundChangeRuleMappingListRefundChangeRuleMapValueChangeRuleOutUnusedList
+from ._account_flow_list_response_body import AccountFlowListResponseBodyDataList
+from ._account_flow_list_response_body import AccountFlowListResponseBodyDataPagination
+from ._account_flow_list_response_body import AccountFlowListResponseBodyData
+from ._ancillary_suggest_response_body import AncillarySuggestResponseBodyDataSegAncillaryMapListAncillaryBaggageAncillary
+from ._ancillary_suggest_response_body import AncillarySuggestResponseBodyDataSegAncillaryMapListAncillary
+from ._ancillary_suggest_response_body import AncillarySuggestResponseBodyDataSegAncillaryMapList
+from ._ancillary_suggest_response_body import AncillarySuggestResponseBodyData
+from ._book_request import BookRequestContact
+from ._book_request import BookRequestPassengerAncillaryPurchaseMapListBookAncillaryReqItem
+from ._book_request import BookRequestPassengerAncillaryPurchaseMapListPassengerListCredential
+from ._book_request import BookRequestPassengerAncillaryPurchaseMapListPassengerList
+from ._book_request import BookRequestPassengerAncillaryPurchaseMapList
+from ._book_request import BookRequestPassengerListCredential
+from ._book_request import BookRequestPassengerList
+from ._book_response_body import BookResponseBodyDataOrderListOrderAttributeAbaPayLockRateInfo
+from ._book_response_body import BookResponseBodyDataOrderListOrderAttribute
+from ._book_response_body import BookResponseBodyDataOrderList
+from ._book_response_body import BookResponseBodyData
+from ._book_response_body import BookResponseBodyErrorDataOrderListOrderAttributeAbaPayLockRateInfo
+from ._book_response_body import BookResponseBodyErrorDataOrderListOrderAttribute
+from ._book_response_body import BookResponseBodyErrorDataOrderList
+from ._book_response_body import BookResponseBodyErrorData
+from ._cancel_response_body import CancelResponseBodyData
+from ._change_apply_request import ChangeApplyRequestChangePassengerList
+from ._change_apply_request import ChangeApplyRequestChangedJourneysSegmentList
+from ._change_apply_request import ChangeApplyRequestChangedJourneys
+from ._change_apply_request import ChangeApplyRequestContact
+from ._change_apply_response_body import ChangeApplyResponseBodyDataChangeOrdersPassengers
+from ._change_apply_response_body import ChangeApplyResponseBodyDataChangeOrders
+from ._change_apply_response_body import ChangeApplyResponseBodyData
+from ._change_confirm_response_body import ChangeConfirmResponseBodyData
+from ._change_detail_response_body import ChangeDetailResponseBodyDataChangeFeeDetailsChangeFee
+from ._change_detail_response_body import ChangeDetailResponseBodyDataChangeFeeDetailsPassenger
+from ._change_detail_response_body import ChangeDetailResponseBodyDataChangeFeeDetails
+from ._change_detail_response_body import ChangeDetailResponseBodyDataChangePassengers
+from ._change_detail_response_body import ChangeDetailResponseBodyDataChangedJourneysSegmentList
+from ._change_detail_response_body import ChangeDetailResponseBodyDataChangedJourneys
+from ._change_detail_response_body import ChangeDetailResponseBodyDataContact
+from ._change_detail_response_body import ChangeDetailResponseBodyDataLastJourneysSegmentList
+from ._change_detail_response_body import ChangeDetailResponseBodyDataLastJourneys
+from ._change_detail_response_body import ChangeDetailResponseBodyDataOriginalJourneysSegmentList
+from ._change_detail_response_body import ChangeDetailResponseBodyDataOriginalJourneys
+from ._change_detail_response_body import ChangeDetailResponseBodyData
+from ._change_detail_list_of_buyer_response_body import ChangeDetailListOfBuyerResponseBodyDataList
+from ._change_detail_list_of_buyer_response_body import ChangeDetailListOfBuyerResponseBodyDataPagination
+from ._change_detail_list_of_buyer_response_body import ChangeDetailListOfBuyerResponseBodyData
+from ._change_detail_list_of_order_num_response_body import ChangeDetailListOfOrderNumResponseBodyDataListChangeFeeDetailsChangeFee
+from ._change_detail_list_of_order_num_response_body import ChangeDetailListOfOrderNumResponseBodyDataListChangeFeeDetailsPassenger
+from ._change_detail_list_of_order_num_response_body import ChangeDetailListOfOrderNumResponseBodyDataListChangeFeeDetails
+from ._change_detail_list_of_order_num_response_body import ChangeDetailListOfOrderNumResponseBodyDataListChangePassengers
+from ._change_detail_list_of_order_num_response_body import ChangeDetailListOfOrderNumResponseBodyDataListChangedJourneysSegmentList
+from ._change_detail_list_of_order_num_response_body import ChangeDetailListOfOrderNumResponseBodyDataListChangedJourneys
+from ._change_detail_list_of_order_num_response_body import ChangeDetailListOfOrderNumResponseBodyDataListContact
+from ._change_detail_list_of_order_num_response_body import ChangeDetailListOfOrderNumResponseBodyDataListLastJourneysSegmentList
+from ._change_detail_list_of_order_num_response_body import ChangeDetailListOfOrderNumResponseBodyDataListLastJourneys
+from ._change_detail_list_of_order_num_response_body import ChangeDetailListOfOrderNumResponseBodyDataListOriginalJourneysSegmentList
+from ._change_detail_list_of_order_num_response_body import ChangeDetailListOfOrderNumResponseBodyDataListOriginalJourneys
+from ._change_detail_list_of_order_num_response_body import ChangeDetailListOfOrderNumResponseBodyDataList
+from ._change_detail_list_of_order_num_response_body import ChangeDetailListOfOrderNumResponseBodyDataPagination
+from ._change_detail_list_of_order_num_response_body import ChangeDetailListOfOrderNumResponseBodyData
+from ._collect_flight_lowest_price_request import CollectFlightLowestPriceRequestLowestPriceFlightInfoList
+from ._enrich_request import EnrichRequestJourneyParamListSegmentParamList
+from ._enrich_request import EnrichRequestJourneyParamList
+from ._enrich_response_body import EnrichResponseBodyDataSolutionListJourneyListSegmentList
+from ._enrich_response_body import EnrichResponseBodyDataSolutionListJourneyList
+from ._enrich_response_body import EnrichResponseBodyDataSolutionListSegmentBaggageCheckInInfoList
+from ._enrich_response_body import EnrichResponseBodyDataSolutionListSegmentBaggageMappingList
+from ._enrich_response_body import EnrichResponseBodyDataSolutionListSegmentRefundChangeRuleMappingList
+from ._enrich_response_body import EnrichResponseBodyDataSolutionListSolutionAttributeIssueTimeInfo
+from ._enrich_response_body import EnrichResponseBodyDataSolutionListSolutionAttribute
+from ._enrich_response_body import EnrichResponseBodyDataSolutionList
+from ._enrich_response_body import EnrichResponseBodyData
+from ._file_upload_response_body import FileUploadResponseBodyData
+from ._flight_change_of_order_response_body import FlightChangeOfOrderResponseBodyDataFlightChangeDetail
+from ._flight_change_of_order_response_body import FlightChangeOfOrderResponseBodyData
+from ._get_token_response_body import GetTokenResponseBodyData
+from ._luggage_direct_request import LuggageDirectRequestFlightSegmentParamList
+from ._luggage_direct_response_body import LuggageDirectResponseBodyData
+from ._order_detail_response_body import OrderDetailResponseBodyDataAncillaryItemDetailListAncillaryBaggageAncillary
+from ._order_detail_response_body import OrderDetailResponseBodyDataAncillaryItemDetailListAncillary
+from ._order_detail_response_body import OrderDetailResponseBodyDataAncillaryItemDetailListPassengerCredential
+from ._order_detail_response_body import OrderDetailResponseBodyDataAncillaryItemDetailListPassenger
+from ._order_detail_response_body import OrderDetailResponseBodyDataAncillaryItemDetailList
+from ._order_detail_response_body import OrderDetailResponseBodyDataFlightItemDetailListFlightPrice
+from ._order_detail_response_body import OrderDetailResponseBodyDataFlightItemDetailListFlightSegmentCabinRelation
+from ._order_detail_response_body import OrderDetailResponseBodyDataFlightItemDetailListPassengerCredential
+from ._order_detail_response_body import OrderDetailResponseBodyDataFlightItemDetailListPassenger
+from ._order_detail_response_body import OrderDetailResponseBodyDataFlightItemDetailList
+from ._order_detail_response_body import OrderDetailResponseBodyDataPassengerListCredential
+from ._order_detail_response_body import OrderDetailResponseBodyDataPassengerList
+from ._order_detail_response_body import OrderDetailResponseBodyDataSolutionJourneyListSegmentList
+from ._order_detail_response_body import OrderDetailResponseBodyDataSolutionJourneyList
+from ._order_detail_response_body import OrderDetailResponseBodyDataSolutionSegmentBaggageCheckInInfoList
+from ._order_detail_response_body import OrderDetailResponseBodyDataSolutionSegmentBaggageMappingList
+from ._order_detail_response_body import OrderDetailResponseBodyDataSolutionSegmentRefundChangeRuleMappingList
+from ._order_detail_response_body import OrderDetailResponseBodyDataSolutionSolutionAttributeIssueTimeInfo
+from ._order_detail_response_body import OrderDetailResponseBodyDataSolutionSolutionAttribute
+from ._order_detail_response_body import OrderDetailResponseBodyDataSolution
+from ._order_detail_response_body import OrderDetailResponseBodyData
+from ._order_list_response_body import OrderListResponseBodyDataListPassengerListCredential
+from ._order_list_response_body import OrderListResponseBodyDataListPassengerList
+from ._order_list_response_body import OrderListResponseBodyDataList
+from ._order_list_response_body import OrderListResponseBodyDataPagination
+from ._order_list_response_body import OrderListResponseBodyData
+from ._pricing_response_body import PricingResponseBodyDataChangedPriceInfo
+from ._pricing_response_body import PricingResponseBodyDataOriginalPriceInfo
+from ._pricing_response_body import PricingResponseBodyDataSolutionJourneyListSegmentList
+from ._pricing_response_body import PricingResponseBodyDataSolutionJourneyList
+from ._pricing_response_body import PricingResponseBodyDataSolutionSegmentBaggageCheckInInfoList
+from ._pricing_response_body import PricingResponseBodyDataSolutionSegmentBaggageMappingList
+from ._pricing_response_body import PricingResponseBodyDataSolutionSegmentRefundChangeRuleMappingList
+from ._pricing_response_body import PricingResponseBodyDataSolutionSolutionAttributeIssueTimeInfo
+from ._pricing_response_body import PricingResponseBodyDataSolutionSolutionAttribute
+from ._pricing_response_body import PricingResponseBodyDataSolution
+from ._pricing_response_body import PricingResponseBodyData
+from ._refund_apply_request import RefundApplyRequestRefundJourneysSegmentList
+from ._refund_apply_request import RefundApplyRequestRefundJourneys
+from ._refund_apply_request import RefundApplyRequestRefundPassengerList
+from ._refund_apply_request import RefundApplyRequestRefundType
+from ._refund_apply_response_body import RefundApplyResponseBodyDataRefundResultsRefundPassengers
+from ._refund_apply_response_body import RefundApplyResponseBodyDataRefundResults
+from ._refund_apply_response_body import RefundApplyResponseBodyData
+from ._refund_detail_response_body import RefundDetailResponseBodyDataMultiRefundDetailsPassengerMultiRefundDetailsPassenger
+from ._refund_detail_response_body import RefundDetailResponseBodyDataMultiRefundDetailsPassengerMultiRefundDetails
+from ._refund_detail_response_body import RefundDetailResponseBodyDataMultiRefundDetails
+from ._refund_detail_response_body import RefundDetailResponseBodyDataPassengerRefundDetailsPassenger
+from ._refund_detail_response_body import RefundDetailResponseBodyDataPassengerRefundDetailsRefundFee
+from ._refund_detail_response_body import RefundDetailResponseBodyDataPassengerRefundDetails
+from ._refund_detail_response_body import RefundDetailResponseBodyDataRefundJourneysSegmentList
+from ._refund_detail_response_body import RefundDetailResponseBodyDataRefundJourneys
+from ._refund_detail_response_body import RefundDetailResponseBodyData
+from ._refund_detail_list_response_body import RefundDetailListResponseBodyDataList
+from ._refund_detail_list_response_body import RefundDetailListResponseBodyDataPagination
+from ._refund_detail_list_response_body import RefundDetailListResponseBodyData
+from ._search_request import SearchRequestAirLegs
+from ._search_request import SearchRequestSearchControlOptions
+from ._search_response_body import SearchResponseBodyDataSolutionListJourneyListSegmentList
+from ._search_response_body import SearchResponseBodyDataSolutionListJourneyList
+from ._search_response_body import SearchResponseBodyDataSolutionListSegmentBaggageCheckInInfoList
+from ._search_response_body import SearchResponseBodyDataSolutionListSegmentBaggageMappingList
+from ._search_response_body import SearchResponseBodyDataSolutionListSegmentRefundChangeRuleMappingList
+from ._search_response_body import SearchResponseBodyDataSolutionListSolutionAttributeIssueTimeInfo
+from ._search_response_body import SearchResponseBodyDataSolutionListSolutionAttribute
+from ._search_response_body import SearchResponseBodyDataSolutionList
+from ._search_response_body import SearchResponseBodyData
+from ._standard_search_request import StandardSearchRequestAirLegs
+from ._standard_search_request import StandardSearchRequestSearchControlOptions
+from ._standard_search_response_body import StandardSearchResponseBodyDataSolutionListJourneyListSegmentList
+from ._standard_search_response_body import StandardSearchResponseBodyDataSolutionListJourneyList
+from ._standard_search_response_body import StandardSearchResponseBodyDataSolutionListSegmentBaggageCheckInInfoList
+from ._standard_search_response_body import StandardSearchResponseBodyDataSolutionListSegmentBaggageMappingList
+from ._standard_search_response_body import StandardSearchResponseBodyDataSolutionListSegmentRefundChangeRuleMappingList
+from ._standard_search_response_body import StandardSearchResponseBodyDataSolutionListSolutionAttributeIssueTimeInfo
+from ._standard_search_response_body import StandardSearchResponseBodyDataSolutionListSolutionAttribute
+from ._standard_search_response_body import StandardSearchResponseBodyDataSolutionList
+from ._standard_search_response_body import StandardSearchResponseBodyData
+from ._ticketing_response_body import TicketingResponseBodyData
+from ._ticketing_check_response_body import TicketingCheckResponseBodyData
+from ._transit_visa_request import TransitVisaRequestFlightSegmentParamList
+from ._transit_visa_response_body import TransitVisaResponseBodyData
+
+__all__ = [
+    DataSolutionListSegmentBaggageMappingListPassengerBaggageAllowanceMappingValue,
+    DataSolutionListSegmentRefundChangeRuleMappingListRefundChangeRuleMapValue,
+    DataBaggageAllowanceMapValue,
+    DataRefundChangeRuleMapValue,
+    DataSolutionSegmentBaggageMappingListPassengerBaggageAllowanceMappingValue,
+    DataSolutionSegmentRefundChangeRuleMappingListRefundChangeRuleMapValue,
+    AccountFlowListHeaders,
+    AccountFlowListRequest,
+    AccountFlowListResponseBody,
+    AccountFlowListResponse,
+    AncillarySuggestHeaders,
+    AncillarySuggestRequest,
+    AncillarySuggestResponseBody,
+    AncillarySuggestResponse,
+    BookHeaders,
+    BookRequest,
+    BookShrinkRequest,
+    BookResponseBody,
+    BookResponse,
+    CancelHeaders,
+    CancelRequest,
+    CancelResponseBody,
+    CancelResponse,
+    ChangeApplyHeaders,
+    ChangeApplyRequest,
+    ChangeApplyShrinkRequest,
+    ChangeApplyResponseBody,
+    ChangeApplyResponse,
+    ChangeCancelHeaders,
+    ChangeCancelRequest,
+    ChangeCancelResponseBody,
+    ChangeCancelResponse,
+    ChangeConfirmHeaders,
+    ChangeConfirmRequest,
+    ChangeConfirmResponseBody,
+    ChangeConfirmResponse,
+    ChangeDetailHeaders,
+    ChangeDetailRequest,
+    ChangeDetailResponseBody,
+    ChangeDetailResponse,
+    ChangeDetailListOfBuyerHeaders,
+    ChangeDetailListOfBuyerRequest,
+    ChangeDetailListOfBuyerResponseBody,
+    ChangeDetailListOfBuyerResponse,
+    ChangeDetailListOfOrderNumHeaders,
+    ChangeDetailListOfOrderNumRequest,
+    ChangeDetailListOfOrderNumResponseBody,
+    ChangeDetailListOfOrderNumResponse,
+    CollectFlightLowestPriceHeaders,
+    CollectFlightLowestPriceRequest,
+    CollectFlightLowestPriceShrinkRequest,
+    CollectFlightLowestPriceResponseBody,
+    CollectFlightLowestPriceResponse,
+    EnrichHeaders,
+    EnrichRequest,
+    EnrichShrinkRequest,
+    EnrichResponseBody,
+    EnrichResponse,
+    FileUploadHeaders,
+    FileUploadRequest,
+    FileUploadResponseBody,
+    FileUploadResponse,
+    FlightChangeOfOrderHeaders,
+    FlightChangeOfOrderRequest,
+    FlightChangeOfOrderResponseBody,
+    FlightChangeOfOrderResponse,
+    GetTokenRequest,
+    GetTokenResponseBody,
+    GetTokenResponse,
+    LuggageDirectHeaders,
+    LuggageDirectRequest,
+    LuggageDirectShrinkRequest,
+    LuggageDirectResponseBody,
+    LuggageDirectResponse,
+    OrderDetailHeaders,
+    OrderDetailRequest,
+    OrderDetailResponseBody,
+    OrderDetailResponse,
+    OrderListHeaders,
+    OrderListRequest,
+    OrderListResponseBody,
+    OrderListResponse,
+    PricingHeaders,
+    PricingRequest,
+    PricingResponseBody,
+    PricingResponse,
+    RefundApplyHeaders,
+    RefundApplyRequest,
+    RefundApplyShrinkRequest,
+    RefundApplyResponseBody,
+    RefundApplyResponse,
+    RefundDetailHeaders,
+    RefundDetailRequest,
+    RefundDetailResponseBody,
+    RefundDetailResponse,
+    RefundDetailListHeaders,
+    RefundDetailListRequest,
+    RefundDetailListResponseBody,
+    RefundDetailListResponse,
+    SearchHeaders,
+    SearchRequest,
+    SearchShrinkRequest,
+    SearchResponseBody,
+    SearchResponse,
+    StandardSearchHeaders,
+    StandardSearchRequest,
+    StandardSearchShrinkRequest,
+    StandardSearchResponseBody,
+    StandardSearchResponse,
+    TicketingHeaders,
+    TicketingRequest,
+    TicketingResponseBody,
+    TicketingResponse,
+    TicketingCheckHeaders,
+    TicketingCheckRequest,
+    TicketingCheckResponseBody,
+    TicketingCheckResponse,
+    TransitVisaHeaders,
+    TransitVisaRequest,
+    TransitVisaShrinkRequest,
+    TransitVisaResponseBody,
+    TransitVisaResponse,
+    DataSolutionListSegmentRefundChangeRuleMappingListRefundChangeRuleMapValueRefundRuleAllUnusedList,
+    DataSolutionListSegmentRefundChangeRuleMappingListRefundChangeRuleMapValueRefundRulePartUnusedList,
+    DataSolutionListSegmentRefundChangeRuleMappingListRefundChangeRuleMapValueChangeRuleInUnusedList,
+    DataSolutionListSegmentRefundChangeRuleMappingListRefundChangeRuleMapValueChangeRuleOutUnusedList,
+    DataRefundChangeRuleMapValueRefundRuleAllUnusedList,
+    DataRefundChangeRuleMapValueRefundRulePartUnusedList,
+    DataRefundChangeRuleMapValueChangeRuleInUnusedList,
+    DataRefundChangeRuleMapValueChangeRuleOutUnusedList,
+    DataSolutionSegmentRefundChangeRuleMappingListRefundChangeRuleMapValueRefundRuleAllUnusedList,
+    DataSolutionSegmentRefundChangeRuleMappingListRefundChangeRuleMapValueRefundRulePartUnusedList,
+    DataSolutionSegmentRefundChangeRuleMappingListRefundChangeRuleMapValueChangeRuleInUnusedList,
+    DataSolutionSegmentRefundChangeRuleMappingListRefundChangeRuleMapValueChangeRuleOutUnusedList,
+    AccountFlowListResponseBodyDataList,
+    AccountFlowListResponseBodyDataPagination,
+    AccountFlowListResponseBodyData,
+    AncillarySuggestResponseBodyDataSegAncillaryMapListAncillaryBaggageAncillary,
+    AncillarySuggestResponseBodyDataSegAncillaryMapListAncillary,
+    AncillarySuggestResponseBodyDataSegAncillaryMapList,
+    AncillarySuggestResponseBodyData,
+    BookRequestContact,
+    BookRequestPassengerAncillaryPurchaseMapListBookAncillaryReqItem,
+    BookRequestPassengerAncillaryPurchaseMapListPassengerListCredential,
+    BookRequestPassengerAncillaryPurchaseMapListPassengerList,
+    BookRequestPassengerAncillaryPurchaseMapList,
+    BookRequestPassengerListCredential,
+    BookRequestPassengerList,
+    BookResponseBodyDataOrderListOrderAttributeAbaPayLockRateInfo,
+    BookResponseBodyDataOrderListOrderAttribute,
+    BookResponseBodyDataOrderList,
+    BookResponseBodyData,
+    BookResponseBodyErrorDataOrderListOrderAttributeAbaPayLockRateInfo,
+    BookResponseBodyErrorDataOrderListOrderAttribute,
+    BookResponseBodyErrorDataOrderList,
+    BookResponseBodyErrorData,
+    CancelResponseBodyData,
+    ChangeApplyRequestChangePassengerList,
+    ChangeApplyRequestChangedJourneysSegmentList,
+    ChangeApplyRequestChangedJourneys,
+    ChangeApplyRequestContact,
+    ChangeApplyResponseBodyDataChangeOrdersPassengers,
+    ChangeApplyResponseBodyDataChangeOrders,
+    ChangeApplyResponseBodyData,
+    ChangeConfirmResponseBodyData,
+    ChangeDetailResponseBodyDataChangeFeeDetailsChangeFee,
+    ChangeDetailResponseBodyDataChangeFeeDetailsPassenger,
+    ChangeDetailResponseBodyDataChangeFeeDetails,
+    ChangeDetailResponseBodyDataChangePassengers,
+    ChangeDetailResponseBodyDataChangedJourneysSegmentList,
+    ChangeDetailResponseBodyDataChangedJourneys,
+    ChangeDetailResponseBodyDataContact,
+    ChangeDetailResponseBodyDataLastJourneysSegmentList,
+    ChangeDetailResponseBodyDataLastJourneys,
+    ChangeDetailResponseBodyDataOriginalJourneysSegmentList,
+    ChangeDetailResponseBodyDataOriginalJourneys,
+    ChangeDetailResponseBodyData,
+    ChangeDetailListOfBuyerResponseBodyDataList,
+    ChangeDetailListOfBuyerResponseBodyDataPagination,
+    ChangeDetailListOfBuyerResponseBodyData,
+    ChangeDetailListOfOrderNumResponseBodyDataListChangeFeeDetailsChangeFee,
+    ChangeDetailListOfOrderNumResponseBodyDataListChangeFeeDetailsPassenger,
+    ChangeDetailListOfOrderNumResponseBodyDataListChangeFeeDetails,
+    ChangeDetailListOfOrderNumResponseBodyDataListChangePassengers,
+    ChangeDetailListOfOrderNumResponseBodyDataListChangedJourneysSegmentList,
+    ChangeDetailListOfOrderNumResponseBodyDataListChangedJourneys,
+    ChangeDetailListOfOrderNumResponseBodyDataListContact,
+    ChangeDetailListOfOrderNumResponseBodyDataListLastJourneysSegmentList,
+    ChangeDetailListOfOrderNumResponseBodyDataListLastJourneys,
+    ChangeDetailListOfOrderNumResponseBodyDataListOriginalJourneysSegmentList,
+    ChangeDetailListOfOrderNumResponseBodyDataListOriginalJourneys,
+    ChangeDetailListOfOrderNumResponseBodyDataList,
+    ChangeDetailListOfOrderNumResponseBodyDataPagination,
+    ChangeDetailListOfOrderNumResponseBodyData,
+    CollectFlightLowestPriceRequestLowestPriceFlightInfoList,
+    EnrichRequestJourneyParamListSegmentParamList,
+    EnrichRequestJourneyParamList,
+    EnrichResponseBodyDataSolutionListJourneyListSegmentList,
+    EnrichResponseBodyDataSolutionListJourneyList,
+    EnrichResponseBodyDataSolutionListSegmentBaggageCheckInInfoList,
+    EnrichResponseBodyDataSolutionListSegmentBaggageMappingList,
+    EnrichResponseBodyDataSolutionListSegmentRefundChangeRuleMappingList,
+    EnrichResponseBodyDataSolutionListSolutionAttributeIssueTimeInfo,
+    EnrichResponseBodyDataSolutionListSolutionAttribute,
+    EnrichResponseBodyDataSolutionList,
+    EnrichResponseBodyData,
+    FileUploadResponseBodyData,
+    FlightChangeOfOrderResponseBodyDataFlightChangeDetail,
+    FlightChangeOfOrderResponseBodyData,
+    GetTokenResponseBodyData,
+    LuggageDirectRequestFlightSegmentParamList,
+    LuggageDirectResponseBodyData,
+    OrderDetailResponseBodyDataAncillaryItemDetailListAncillaryBaggageAncillary,
+    OrderDetailResponseBodyDataAncillaryItemDetailListAncillary,
+    OrderDetailResponseBodyDataAncillaryItemDetailListPassengerCredential,
+    OrderDetailResponseBodyDataAncillaryItemDetailListPassenger,
+    OrderDetailResponseBodyDataAncillaryItemDetailList,
+    OrderDetailResponseBodyDataFlightItemDetailListFlightPrice,
+    OrderDetailResponseBodyDataFlightItemDetailListFlightSegmentCabinRelation,
+    OrderDetailResponseBodyDataFlightItemDetailListPassengerCredential,
+    OrderDetailResponseBodyDataFlightItemDetailListPassenger,
+    OrderDetailResponseBodyDataFlightItemDetailList,
+    OrderDetailResponseBodyDataPassengerListCredential,
+    OrderDetailResponseBodyDataPassengerList,
+    OrderDetailResponseBodyDataSolutionJourneyListSegmentList,
+    OrderDetailResponseBodyDataSolutionJourneyList,
+    OrderDetailResponseBodyDataSolutionSegmentBaggageCheckInInfoList,
+    OrderDetailResponseBodyDataSolutionSegmentBaggageMappingList,
+    OrderDetailResponseBodyDataSolutionSegmentRefundChangeRuleMappingList,
+    OrderDetailResponseBodyDataSolutionSolutionAttributeIssueTimeInfo,
+    OrderDetailResponseBodyDataSolutionSolutionAttribute,
+    OrderDetailResponseBodyDataSolution,
+    OrderDetailResponseBodyData,
+    OrderListResponseBodyDataListPassengerListCredential,
+    OrderListResponseBodyDataListPassengerList,
+    OrderListResponseBodyDataList,
+    OrderListResponseBodyDataPagination,
+    OrderListResponseBodyData,
+    PricingResponseBodyDataChangedPriceInfo,
+    PricingResponseBodyDataOriginalPriceInfo,
+    PricingResponseBodyDataSolutionJourneyListSegmentList,
+    PricingResponseBodyDataSolutionJourneyList,
+    PricingResponseBodyDataSolutionSegmentBaggageCheckInInfoList,
+    PricingResponseBodyDataSolutionSegmentBaggageMappingList,
+    PricingResponseBodyDataSolutionSegmentRefundChangeRuleMappingList,
+    PricingResponseBodyDataSolutionSolutionAttributeIssueTimeInfo,
+    PricingResponseBodyDataSolutionSolutionAttribute,
+    PricingResponseBodyDataSolution,
+    PricingResponseBodyData,
+    RefundApplyRequestRefundJourneysSegmentList,
+    RefundApplyRequestRefundJourneys,
+    RefundApplyRequestRefundPassengerList,
+    RefundApplyRequestRefundType,
+    RefundApplyResponseBodyDataRefundResultsRefundPassengers,
+    RefundApplyResponseBodyDataRefundResults,
+    RefundApplyResponseBodyData,
+    RefundDetailResponseBodyDataMultiRefundDetailsPassengerMultiRefundDetailsPassenger,
+    RefundDetailResponseBodyDataMultiRefundDetailsPassengerMultiRefundDetails,
+    RefundDetailResponseBodyDataMultiRefundDetails,
+    RefundDetailResponseBodyDataPassengerRefundDetailsPassenger,
+    RefundDetailResponseBodyDataPassengerRefundDetailsRefundFee,
+    RefundDetailResponseBodyDataPassengerRefundDetails,
+    RefundDetailResponseBodyDataRefundJourneysSegmentList,
+    RefundDetailResponseBodyDataRefundJourneys,
+    RefundDetailResponseBodyData,
+    RefundDetailListResponseBodyDataList,
+    RefundDetailListResponseBodyDataPagination,
+    RefundDetailListResponseBodyData,
+    SearchRequestAirLegs,
+    SearchRequestSearchControlOptions,
+    SearchResponseBodyDataSolutionListJourneyListSegmentList,
+    SearchResponseBodyDataSolutionListJourneyList,
+    SearchResponseBodyDataSolutionListSegmentBaggageCheckInInfoList,
+    SearchResponseBodyDataSolutionListSegmentBaggageMappingList,
+    SearchResponseBodyDataSolutionListSegmentRefundChangeRuleMappingList,
+    SearchResponseBodyDataSolutionListSolutionAttributeIssueTimeInfo,
+    SearchResponseBodyDataSolutionListSolutionAttribute,
+    SearchResponseBodyDataSolutionList,
+    SearchResponseBodyData,
+    StandardSearchRequestAirLegs,
+    StandardSearchRequestSearchControlOptions,
+    StandardSearchResponseBodyDataSolutionListJourneyListSegmentList,
+    StandardSearchResponseBodyDataSolutionListJourneyList,
+    StandardSearchResponseBodyDataSolutionListSegmentBaggageCheckInInfoList,
+    StandardSearchResponseBodyDataSolutionListSegmentBaggageMappingList,
+    StandardSearchResponseBodyDataSolutionListSegmentRefundChangeRuleMappingList,
+    StandardSearchResponseBodyDataSolutionListSolutionAttributeIssueTimeInfo,
+    StandardSearchResponseBodyDataSolutionListSolutionAttribute,
+    StandardSearchResponseBodyDataSolutionList,
+    StandardSearchResponseBodyData,
+    TicketingResponseBodyData,
+    TicketingCheckResponseBodyData,
+    TransitVisaRequestFlightSegmentParamList,
+    TransitVisaResponseBodyData
+]
