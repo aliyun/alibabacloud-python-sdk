@@ -12,16 +12,18 @@ class ModifyJVSInstanceRequest(DaraModel):
         self,
         apply_to_all: bool = None,
         credit_config: List[main_models.ModifyJVSInstanceRequestCreditConfig] = None,
+        image_id: str = None,
         instance_ids: List[str] = None,
         instance_name: str = None,
     ):
         # Specifies whether to apply the configuration to all instances.
         self.apply_to_all = apply_to_all
-        # The credit limit configuration. New configurations overwrite existing ones.
+        # The credit limit configuration. Subsequent configurations overwrite previous ones.
         self.credit_config = credit_config
-        # A list of instance IDs.
+        self.image_id = image_id
+        # The list of instance IDs.
         self.instance_ids = instance_ids
-        # The new instance name.
+        # The instance name.
         self.instance_name = instance_name
 
     def validate(self):
@@ -43,6 +45,9 @@ class ModifyJVSInstanceRequest(DaraModel):
             for k1 in self.credit_config:
                 result['CreditConfig'].append(k1.to_map() if k1 else None)
 
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
+
         if self.instance_ids is not None:
             result['InstanceIds'] = self.instance_ids
 
@@ -62,6 +67,9 @@ class ModifyJVSInstanceRequest(DaraModel):
                 temp_model = main_models.ModifyJVSInstanceRequestCreditConfig()
                 self.credit_config.append(temp_model.from_map(k1))
 
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
+
         if m.get('InstanceIds') is not None:
             self.instance_ids = m.get('InstanceIds')
 
@@ -78,7 +86,11 @@ class ModifyJVSInstanceRequestCreditConfig(DaraModel):
     ):
         # The credit limit.
         self.credit_limit = credit_limit
-        # The credit limit period.
+        # The dimension of the current credit. Valid values:
+        # 
+        # - total: total usage limit.
+        # - month: monthly. The limit resets based on the resource activation time cycle.
+        # - day: daily. The limit resets at 00:00.
         self.limit_period = limit_period
 
     def validate(self):

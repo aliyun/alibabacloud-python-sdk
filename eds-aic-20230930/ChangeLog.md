@@ -1,3 +1,21 @@
+2026-07-24 Version: 4.33.0
+- Support API CreateAICloudPhone.
+- Update API DescribeCreditDetail: add request parameters MaxResults.
+- Update API DescribeCreditDetail: add request parameters NextToken.
+- Update API DescribeCreditDetail: add response parameters Body.Data.NextToken.
+- Update API DescribeCreditDetail: add response parameters Body.Data.Details.$.ApiKeyName.
+- Update API DescribeCreditDetail: add response parameters Body.Data.Details.$.CachedTokens.
+- Update API DescribeCreditDetail: add response parameters Body.Data.Details.$.InputTokens.
+- Update API DescribeCreditDetail: add response parameters Body.Data.Details.$.InstanceName.
+- Update API DescribeCreditDetail: add response parameters Body.Data.Details.$.ModelId.
+- Update API DescribeCreditDetail: add response parameters Body.Data.Details.$.OutputTokens.
+- Update API DescribeCreditDetail: add response parameters Body.Data.Details.$.RequestId.
+- Update API DescribeCreditDetail: add response parameters Body.Data.Details.$.TotalTokens.
+- Update API DescribeMobileAgentPackage: add response parameters Body.PackageList.$.PeriodEndTime.
+- Update API DescribeMobileAgentPackage: add response parameters Body.PackageList.$.PeriodStartTime.
+- Update API ModifyJVSInstance: add request parameters ImageId.
+
+
 2026-07-22 Version: 4.32.0
 - Support API CreateScheduledTask.
 - Support API DeleteScheduledTask.

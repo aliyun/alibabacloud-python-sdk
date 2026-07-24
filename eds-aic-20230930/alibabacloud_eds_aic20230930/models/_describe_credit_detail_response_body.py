@@ -50,6 +50,7 @@ class DescribeCreditDetailResponseBodyData(DaraModel):
     def __init__(
         self,
         details: List[main_models.DescribeCreditDetailResponseBodyDataDetails] = None,
+        next_token: str = None,
         page_num: int = None,
         page_size: int = None,
         total_count: int = None,
@@ -57,6 +58,7 @@ class DescribeCreditDetailResponseBodyData(DaraModel):
     ):
         # The credit change details.
         self.details = details
+        self.next_token = next_token
         # The page number. Default value: 1.
         self.page_num = page_num
         # The number of entries per page. Default value: 10. Maximum value: 100.
@@ -82,6 +84,9 @@ class DescribeCreditDetailResponseBodyData(DaraModel):
             for k1 in self.details:
                 result['Details'].append(k1.to_map() if k1 else None)
 
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+
         if self.page_num is not None:
             result['PageNum'] = self.page_num
 
@@ -104,6 +109,9 @@ class DescribeCreditDetailResponseBodyData(DaraModel):
                 temp_model = main_models.DescribeCreditDetailResponseBodyDataDetails()
                 self.details.append(temp_model.from_map(k1))
 
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+
         if m.get('PageNum') is not None:
             self.page_num = m.get('PageNum')
 
@@ -121,25 +129,41 @@ class DescribeCreditDetailResponseBodyData(DaraModel):
 class DescribeCreditDetailResponseBodyDataDetails(DaraModel):
     def __init__(
         self,
+        api_key_name: str = None,
+        cached_tokens: int = None,
         change_time: str = None,
         credit_change: str = None,
         description: str = None,
+        input_tokens: int = None,
         instance_id: str = None,
+        instance_name: str = None,
+        model_id: str = None,
+        output_tokens: int = None,
         package_id: str = None,
+        request_id: str = None,
         task_id: str = None,
+        total_tokens: int = None,
     ):
+        self.api_key_name = api_key_name
+        self.cached_tokens = cached_tokens
         # The time when the change occurred.
         self.change_time = change_time
         # The credit change amount.
         self.credit_change = credit_change
         # The task description.
         self.description = description
+        self.input_tokens = input_tokens
         # The instance ID.
         self.instance_id = instance_id
-        # The credit or resource plan ID.
+        self.instance_name = instance_name
+        self.model_id = model_id
+        self.output_tokens = output_tokens
+        # The ID of the credit or plan package.
         self.package_id = package_id
+        self.request_id = request_id
         # The task ID, which is globally unique.
         self.task_id = task_id
+        self.total_tokens = total_tokens
 
     def validate(self):
         pass
@@ -149,6 +173,12 @@ class DescribeCreditDetailResponseBodyDataDetails(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.api_key_name is not None:
+            result['ApiKeyName'] = self.api_key_name
+
+        if self.cached_tokens is not None:
+            result['CachedTokens'] = self.cached_tokens
+
         if self.change_time is not None:
             result['ChangeTime'] = self.change_time
 
@@ -158,19 +188,43 @@ class DescribeCreditDetailResponseBodyDataDetails(DaraModel):
         if self.description is not None:
             result['Description'] = self.description
 
+        if self.input_tokens is not None:
+            result['InputTokens'] = self.input_tokens
+
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+
+        if self.model_id is not None:
+            result['ModelId'] = self.model_id
+
+        if self.output_tokens is not None:
+            result['OutputTokens'] = self.output_tokens
 
         if self.package_id is not None:
             result['PackageId'] = self.package_id
 
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+
         if self.task_id is not None:
             result['TaskId'] = self.task_id
+
+        if self.total_tokens is not None:
+            result['TotalTokens'] = self.total_tokens
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ApiKeyName') is not None:
+            self.api_key_name = m.get('ApiKeyName')
+
+        if m.get('CachedTokens') is not None:
+            self.cached_tokens = m.get('CachedTokens')
+
         if m.get('ChangeTime') is not None:
             self.change_time = m.get('ChangeTime')
 
@@ -180,14 +234,32 @@ class DescribeCreditDetailResponseBodyDataDetails(DaraModel):
         if m.get('Description') is not None:
             self.description = m.get('Description')
 
+        if m.get('InputTokens') is not None:
+            self.input_tokens = m.get('InputTokens')
+
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+
+        if m.get('ModelId') is not None:
+            self.model_id = m.get('ModelId')
+
+        if m.get('OutputTokens') is not None:
+            self.output_tokens = m.get('OutputTokens')
 
         if m.get('PackageId') is not None:
             self.package_id = m.get('PackageId')
 
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
+
+        if m.get('TotalTokens') is not None:
+            self.total_tokens = m.get('TotalTokens')
 
         return self
 

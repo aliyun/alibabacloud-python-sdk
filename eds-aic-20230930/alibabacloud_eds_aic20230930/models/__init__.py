@@ -33,6 +33,9 @@ from ._change_cloud_phone_node_response import ChangeCloudPhoneNodeResponse
 from ._check_resource_stock_request import CheckResourceStockRequest
 from ._check_resource_stock_response_body import CheckResourceStockResponseBody
 from ._check_resource_stock_response import CheckResourceStockResponse
+from ._create_aicloud_phone_request import CreateAICloudPhoneRequest
+from ._create_aicloud_phone_response_body import CreateAICloudPhoneResponseBody
+from ._create_aicloud_phone_response import CreateAICloudPhoneResponse
 from ._create_android_instance_group_request import CreateAndroidInstanceGroupRequest
 from ._create_android_instance_group_shrink_request import CreateAndroidInstanceGroupShrinkRequest
 from ._create_android_instance_group_response_body import CreateAndroidInstanceGroupResponseBody
@@ -379,6 +382,7 @@ from ._cancel_agent_task_response_body import CancelAgentTaskResponseBodyTasks
 from ._change_cloud_phone_node_response_body import ChangeCloudPhoneNodeResponseBodyNodeInfosInstanceInfos
 from ._change_cloud_phone_node_response_body import ChangeCloudPhoneNodeResponseBodyNodeInfos
 from ._check_resource_stock_response_body import CheckResourceStockResponseBodyResourceStockModels
+from ._create_aicloud_phone_response_body import CreateAICloudPhoneResponseBodyData
 from ._create_android_instance_group_request import CreateAndroidInstanceGroupRequestNetworkInfo
 from ._create_android_instance_group_request import CreateAndroidInstanceGroupRequestTag
 from ._create_android_instance_group_shrink_request import CreateAndroidInstanceGroupShrinkRequestTag
@@ -544,6 +548,9 @@ __all__ = [
     CheckResourceStockRequest,
     CheckResourceStockResponseBody,
     CheckResourceStockResponse,
+    CreateAICloudPhoneRequest,
+    CreateAICloudPhoneResponseBody,
+    CreateAICloudPhoneResponse,
     CreateAndroidInstanceGroupRequest,
     CreateAndroidInstanceGroupShrinkRequest,
     CreateAndroidInstanceGroupResponseBody,
@@ -890,6 +897,7 @@ __all__ = [
     ChangeCloudPhoneNodeResponseBodyNodeInfosInstanceInfos,
     ChangeCloudPhoneNodeResponseBodyNodeInfos,
     CheckResourceStockResponseBodyResourceStockModels,
+    CreateAICloudPhoneResponseBodyData,
     CreateAndroidInstanceGroupRequestNetworkInfo,
     CreateAndroidInstanceGroupRequestTag,
     CreateAndroidInstanceGroupShrinkRequestTag,

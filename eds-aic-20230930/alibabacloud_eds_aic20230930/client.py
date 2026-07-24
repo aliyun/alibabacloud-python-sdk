@@ -916,6 +916,116 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.check_resource_stock_with_options_async(request, runtime)
 
+    def create_aicloud_phone_with_options(
+        self,
+        request: main_models.CreateAICloudPhoneRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAICloudPhoneResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.amount):
+            query['Amount'] = request.amount
+        if not DaraCore.is_null(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not DaraCore.is_null(request.bandwidth_package_id):
+            query['BandwidthPackageId'] = request.bandwidth_package_id
+        if not DaraCore.is_null(request.biz_region_id):
+            query['BizRegionId'] = request.biz_region_id
+        if not DaraCore.is_null(request.image_id):
+            query['ImageId'] = request.image_id
+        if not DaraCore.is_null(request.instance_group_name):
+            query['InstanceGroupName'] = request.instance_group_name
+        if not DaraCore.is_null(request.instance_group_spec):
+            query['InstanceGroupSpec'] = request.instance_group_spec
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
+        if not DaraCore.is_null(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        if not DaraCore.is_null(request.policy_group_id):
+            query['PolicyGroupId'] = request.policy_group_id
+        if not DaraCore.is_null(request.promotion_id):
+            query['PromotionId'] = request.promotion_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAICloudPhone',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAICloudPhoneResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_aicloud_phone_with_options_async(
+        self,
+        request: main_models.CreateAICloudPhoneRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAICloudPhoneResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.amount):
+            query['Amount'] = request.amount
+        if not DaraCore.is_null(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not DaraCore.is_null(request.bandwidth_package_id):
+            query['BandwidthPackageId'] = request.bandwidth_package_id
+        if not DaraCore.is_null(request.biz_region_id):
+            query['BizRegionId'] = request.biz_region_id
+        if not DaraCore.is_null(request.image_id):
+            query['ImageId'] = request.image_id
+        if not DaraCore.is_null(request.instance_group_name):
+            query['InstanceGroupName'] = request.instance_group_name
+        if not DaraCore.is_null(request.instance_group_spec):
+            query['InstanceGroupSpec'] = request.instance_group_spec
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
+        if not DaraCore.is_null(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        if not DaraCore.is_null(request.policy_group_id):
+            query['PolicyGroupId'] = request.policy_group_id
+        if not DaraCore.is_null(request.promotion_id):
+            query['PromotionId'] = request.promotion_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAICloudPhone',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAICloudPhoneResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_aicloud_phone(
+        self,
+        request: main_models.CreateAICloudPhoneRequest,
+    ) -> main_models.CreateAICloudPhoneResponse:
+        runtime = RuntimeOptions()
+        return self.create_aicloud_phone_with_options(request, runtime)
+
+    async def create_aicloud_phone_async(
+        self,
+        request: main_models.CreateAICloudPhoneRequest,
+    ) -> main_models.CreateAICloudPhoneResponse:
+        runtime = RuntimeOptions()
+        return await self.create_aicloud_phone_with_options_async(request, runtime)
+
     def create_android_instance_group_with_options(
         self,
         tmp_req: main_models.CreateAndroidInstanceGroupRequest,
@@ -3785,6 +3895,10 @@ class Client(OpenApiClient):
             query['EndTime'] = request.end_time
         if not DaraCore.is_null(request.instance_ids):
             query['InstanceIds'] = request.instance_ids
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
         if not DaraCore.is_null(request.package_ids):
             query['PackageIds'] = request.package_ids
         if not DaraCore.is_null(request.page_num):
@@ -3823,6 +3937,10 @@ class Client(OpenApiClient):
             query['EndTime'] = request.end_time
         if not DaraCore.is_null(request.instance_ids):
             query['InstanceIds'] = request.instance_ids
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
         if not DaraCore.is_null(request.package_ids):
             query['PackageIds'] = request.package_ids
         if not DaraCore.is_null(request.page_num):
@@ -7439,6 +7557,8 @@ class Client(OpenApiClient):
             query['ApplyToAll'] = request.apply_to_all
         if not DaraCore.is_null(request.credit_config):
             query['CreditConfig'] = request.credit_config
+        if not DaraCore.is_null(request.image_id):
+            query['ImageId'] = request.image_id
         if not DaraCore.is_null(request.instance_ids):
             query['InstanceIds'] = request.instance_ids
         if not DaraCore.is_null(request.instance_name):
@@ -7473,6 +7593,8 @@ class Client(OpenApiClient):
             query['ApplyToAll'] = request.apply_to_all
         if not DaraCore.is_null(request.credit_config):
             query['CreditConfig'] = request.credit_config
+        if not DaraCore.is_null(request.image_id):
+            query['ImageId'] = request.image_id
         if not DaraCore.is_null(request.instance_ids):
             query['InstanceIds'] = request.instance_ids
         if not DaraCore.is_null(request.instance_name):

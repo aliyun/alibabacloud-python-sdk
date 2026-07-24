@@ -11,6 +11,8 @@ class DescribeCreditDetailRequest(DaraModel):
         self,
         end_time: int = None,
         instance_ids: List[str] = None,
+        max_results: int = None,
+        next_token: str = None,
         package_ids: List[str] = None,
         page_num: str = None,
         page_size: str = None,
@@ -20,7 +22,9 @@ class DescribeCreditDetailRequest(DaraModel):
         self.end_time = end_time
         # The list of instance IDs.
         self.instance_ids = instance_ids
-        # The list of resource plan or credit booster pack IDs.
+        self.max_results = max_results
+        self.next_token = next_token
+        # The list of plan packages or credit top-up packages.
         self.package_ids = package_ids
         # The page number. Default value: 1.
         self.page_num = page_num
@@ -43,6 +47,12 @@ class DescribeCreditDetailRequest(DaraModel):
         if self.instance_ids is not None:
             result['InstanceIds'] = self.instance_ids
 
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+
         if self.package_ids is not None:
             result['PackageIds'] = self.package_ids
 
@@ -64,6 +74,12 @@ class DescribeCreditDetailRequest(DaraModel):
 
         if m.get('InstanceIds') is not None:
             self.instance_ids = m.get('InstanceIds')
+
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
 
         if m.get('PackageIds') is not None:
             self.package_ids = m.get('PackageIds')

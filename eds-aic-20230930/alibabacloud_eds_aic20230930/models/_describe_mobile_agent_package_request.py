@@ -16,9 +16,9 @@ class DescribeMobileAgentPackageRequest(DaraModel):
         page_num: int = None,
         page_size: int = None,
     ):
-        # An array of node instance IDs.
+        # The list of node instance IDs.
         self.instance_ids = instance_ids
-        # An array of package IDs.
+        # The list of package IDs.
         self.package_ids = package_ids
         # The package specification.
         self.package_spec = package_spec

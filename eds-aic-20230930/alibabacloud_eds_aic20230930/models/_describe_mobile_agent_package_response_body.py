@@ -16,11 +16,11 @@ class DescribeMobileAgentPackageResponseBody(DaraModel):
         request_id: str = None,
         total_count: str = None,
     ):
-        # The status code. A value of 200 indicates that the request was successful.
+        # The status code. A value of 200 indicates success.
         self.code = code
         # The response message.
         self.message = message
-        # A list of packages.
+        # The list of package information.
         self.package_list = package_list
         # The request ID.
         self.request_id = request_id
@@ -89,13 +89,15 @@ class DescribeMobileAgentPackageResponseBodyPackageList(DaraModel):
         package_spec: str = None,
         package_spec_name: str = None,
         package_status: str = None,
+        period_end_time: str = None,
+        period_start_time: str = None,
         used_credit: str = None,
     ):
         # The expiration time.
         self.expired_at = expired_at
         # The list of node instance IDs.
         self.instance_ids = instance_ids
-        # The total package credit.
+        # The credit quota of the package.
         self.package_credit = package_credit
         # The package ID.
         self.package_id = package_id
@@ -104,7 +106,9 @@ class DescribeMobileAgentPackageResponseBodyPackageList(DaraModel):
         self.package_spec_name = package_spec_name
         # The package status.
         self.package_status = package_status
-        # The amount of credit used.
+        self.period_end_time = period_end_time
+        self.period_start_time = period_start_time
+        # The number of credits that have been used.
         self.used_credit = used_credit
 
     def validate(self):
@@ -136,6 +140,12 @@ class DescribeMobileAgentPackageResponseBodyPackageList(DaraModel):
         if self.package_status is not None:
             result['PackageStatus'] = self.package_status
 
+        if self.period_end_time is not None:
+            result['PeriodEndTime'] = self.period_end_time
+
+        if self.period_start_time is not None:
+            result['PeriodStartTime'] = self.period_start_time
+
         if self.used_credit is not None:
             result['UsedCredit'] = self.used_credit
 
@@ -163,6 +173,12 @@ class DescribeMobileAgentPackageResponseBodyPackageList(DaraModel):
 
         if m.get('PackageStatus') is not None:
             self.package_status = m.get('PackageStatus')
+
+        if m.get('PeriodEndTime') is not None:
+            self.period_end_time = m.get('PeriodEndTime')
+
+        if m.get('PeriodStartTime') is not None:
+            self.period_start_time = m.get('PeriodStartTime')
 
         if m.get('UsedCredit') is not None:
             self.used_credit = m.get('UsedCredit')
