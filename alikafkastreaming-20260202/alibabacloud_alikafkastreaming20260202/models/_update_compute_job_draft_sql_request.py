@@ -1,0 +1,69 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from darabonba.model import DaraModel
+
+class UpdateComputeJobDraftSqlRequest(DaraModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        draft_sql: str = None,
+        instance_id: str = None,
+        job_name: str = None,
+        region_id: str = None,
+    ):
+        self.client_token = client_token
+        # This parameter is required.
+        self.draft_sql = draft_sql
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.job_name = job_name
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+
+        if self.draft_sql is not None:
+            result['DraftSql'] = self.draft_sql
+
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+
+        if self.job_name is not None:
+            result['JobName'] = self.job_name
+
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+
+        if m.get('DraftSql') is not None:
+            self.draft_sql = m.get('DraftSql')
+
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+
+        if m.get('JobName') is not None:
+            self.job_name = m.get('JobName')
+
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+
+        return self
+

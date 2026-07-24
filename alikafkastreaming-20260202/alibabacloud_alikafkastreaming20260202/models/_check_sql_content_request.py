@@ -1,0 +1,61 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from darabonba.model import DaraModel
+
+class CheckSqlContentRequest(DaraModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        job_name: str = None,
+        region_id: str = None,
+        sql_content: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.job_name = job_name
+        # This parameter is required.
+        self.region_id = region_id
+        # This parameter is required.
+        self.sql_content = sql_content
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+
+        if self.job_name is not None:
+            result['JobName'] = self.job_name
+
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+
+        if self.sql_content is not None:
+            result['SqlContent'] = self.sql_content
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+
+        if m.get('JobName') is not None:
+            self.job_name = m.get('JobName')
+
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+
+        if m.get('SqlContent') is not None:
+            self.sql_content = m.get('SqlContent')
+
+        return self
+

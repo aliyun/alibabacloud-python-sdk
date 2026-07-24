@@ -1,3 +1,26 @@
+2026-07-24 Version: 1.2.0
+- Support API CheckSqlContent.
+- Support API CreateComputeJob.
+- Support API DeleteComputeJob.
+- Support API GetComputeInstance.
+- Support API GetComputeJob.
+- Support API GetJobDebugData.
+- Support API ListComputeInstances.
+- Support API ListComputeInstancesInPage.
+- Support API ListComputeJobs.
+- Support API ListSupportedConnectors.
+- Support API ReopenComputeInstance.
+- Support API RestartComputeJob.
+- Support API StartComputeInstance.
+- Support API StartComputeJob.
+- Support API StopComputeInstance.
+- Support API StopComputeJob.
+- Support API UpdateComputeInstanceName.
+- Support API UpdateComputeJob.
+- Support API UpdateComputeJobCu.
+- Support API UpdateComputeJobDraftSql.
+
+
 2026-06-17 Version: 1.1.1
 - Update API DeleteComputeInstance: add request parameters ResourceType.
 

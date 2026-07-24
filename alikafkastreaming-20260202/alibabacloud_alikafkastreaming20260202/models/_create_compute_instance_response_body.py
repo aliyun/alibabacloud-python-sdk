@@ -58,8 +58,6 @@ class CreateComputeInstanceResponseBody(DaraModel):
 
         return self
 
-
-
 class CreateComputeInstanceResponseBodyData(DaraModel):
     def __init__(
         self,
