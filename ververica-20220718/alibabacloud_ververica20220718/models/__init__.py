@@ -167,6 +167,10 @@ from ._create_session_cluster_headers import CreateSessionClusterHeaders
 from ._create_session_cluster_request import CreateSessionClusterRequest
 from ._create_session_cluster_response_body import CreateSessionClusterResponseBody
 from ._create_session_cluster_response import CreateSessionClusterResponse
+from ._create_sql_file_headers import CreateSqlFileHeaders
+from ._create_sql_file_request import CreateSqlFileRequest
+from ._create_sql_file_response_body import CreateSqlFileResponseBody
+from ._create_sql_file_response import CreateSqlFileResponse
 from ._create_udf_artifact_headers import CreateUdfArtifactHeaders
 from ._create_udf_artifact_request import CreateUdfArtifactRequest
 from ._create_udf_artifact_response_body import CreateUdfArtifactResponseBody
@@ -181,6 +185,10 @@ from ._delete_custom_connector_response import DeleteCustomConnectorResponse
 from ._delete_deployment_headers import DeleteDeploymentHeaders
 from ._delete_deployment_response_body import DeleteDeploymentResponseBody
 from ._delete_deployment_response import DeleteDeploymentResponse
+from ._delete_deployment_by_name_headers import DeleteDeploymentByNameHeaders
+from ._delete_deployment_by_name_request import DeleteDeploymentByNameRequest
+from ._delete_deployment_by_name_response_body import DeleteDeploymentByNameResponseBody
+from ._delete_deployment_by_name_response import DeleteDeploymentByNameResponse
 from ._delete_deployment_draft_headers import DeleteDeploymentDraftHeaders
 from ._delete_deployment_draft_response_body import DeleteDeploymentDraftResponseBody
 from ._delete_deployment_draft_response import DeleteDeploymentDraftResponse
@@ -205,6 +213,10 @@ from ._delete_scheduled_plan_response import DeleteScheduledPlanResponse
 from ._delete_session_cluster_headers import DeleteSessionClusterHeaders
 from ._delete_session_cluster_response_body import DeleteSessionClusterResponseBody
 from ._delete_session_cluster_response import DeleteSessionClusterResponse
+from ._delete_sql_file_headers import DeleteSqlFileHeaders
+from ._delete_sql_file_request import DeleteSqlFileRequest
+from ._delete_sql_file_response_body import DeleteSqlFileResponseBody
+from ._delete_sql_file_response import DeleteSqlFileResponse
 from ._delete_udf_artifact_headers import DeleteUdfArtifactHeaders
 from ._delete_udf_artifact_response_body import DeleteUdfArtifactResponseBody
 from ._delete_udf_artifact_response import DeleteUdfArtifactResponse
@@ -223,6 +235,10 @@ from ._execute_sql_statement_headers import ExecuteSqlStatementHeaders
 from ._execute_sql_statement_request import ExecuteSqlStatementRequest
 from ._execute_sql_statement_response_body import ExecuteSqlStatementResponseBody
 from ._execute_sql_statement_response import ExecuteSqlStatementResponse
+from ._fetch_sql_execution_result_headers import FetchSqlExecutionResultHeaders
+from ._fetch_sql_execution_result_request import FetchSqlExecutionResultRequest
+from ._fetch_sql_execution_result_response_body import FetchSqlExecutionResultResponseBody
+from ._fetch_sql_execution_result_response import FetchSqlExecutionResultResponse
 from ._fetch_sql_preview_results_headers import FetchSqlPreviewResultsHeaders
 from ._fetch_sql_preview_results_request import FetchSqlPreviewResultsRequest
 from ._fetch_sql_preview_results_response_body import FetchSqlPreviewResultsResponseBody
@@ -312,6 +328,10 @@ from ._get_savepoint_response import GetSavepointResponse
 from ._get_session_cluster_headers import GetSessionClusterHeaders
 from ._get_session_cluster_response_body import GetSessionClusterResponseBody
 from ._get_session_cluster_response import GetSessionClusterResponse
+from ._get_sql_file_headers import GetSqlFileHeaders
+from ._get_sql_file_request import GetSqlFileRequest
+from ._get_sql_file_response_body import GetSqlFileResponseBody
+from ._get_sql_file_response import GetSqlFileResponse
 from ._get_tables_headers import GetTablesHeaders
 from ._get_tables_request import GetTablesRequest
 from ._get_tables_response_body import GetTablesResponseBody
@@ -407,6 +427,10 @@ from ._stop_job_response import StopJobResponse
 from ._stop_session_cluster_headers import StopSessionClusterHeaders
 from ._stop_session_cluster_response_body import StopSessionClusterResponseBody
 from ._stop_session_cluster_response import StopSessionClusterResponse
+from ._stop_sql_execution_headers import StopSqlExecutionHeaders
+from ._stop_sql_execution_request import StopSqlExecutionRequest
+from ._stop_sql_execution_response_body import StopSqlExecutionResponseBody
+from ._stop_sql_execution_response import StopSqlExecutionResponse
 from ._submit_sql_preview_headers import SubmitSqlPreviewHeaders
 from ._submit_sql_preview_request import SubmitSqlPreviewRequest
 from ._submit_sql_preview_response_body import SubmitSqlPreviewResponseBody
@@ -415,6 +439,10 @@ from ._update_deployment_headers import UpdateDeploymentHeaders
 from ._update_deployment_request import UpdateDeploymentRequest
 from ._update_deployment_response_body import UpdateDeploymentResponseBody
 from ._update_deployment_response import UpdateDeploymentResponse
+from ._update_deployment_by_name_headers import UpdateDeploymentByNameHeaders
+from ._update_deployment_by_name_request import UpdateDeploymentByNameRequest
+from ._update_deployment_by_name_response_body import UpdateDeploymentByNameResponseBody
+from ._update_deployment_by_name_response import UpdateDeploymentByNameResponse
 from ._update_deployment_draft_headers import UpdateDeploymentDraftHeaders
 from ._update_deployment_draft_request import UpdateDeploymentDraftRequest
 from ._update_deployment_draft_response_body import UpdateDeploymentDraftResponseBody
@@ -443,6 +471,10 @@ from ._update_session_cluster_headers import UpdateSessionClusterHeaders
 from ._update_session_cluster_request import UpdateSessionClusterRequest
 from ._update_session_cluster_response_body import UpdateSessionClusterResponseBody
 from ._update_session_cluster_response import UpdateSessionClusterResponse
+from ._update_sql_file_headers import UpdateSqlFileHeaders
+from ._update_sql_file_request import UpdateSqlFileRequest
+from ._update_sql_file_response_body import UpdateSqlFileResponseBody
+from ._update_sql_file_response import UpdateSqlFileResponse
 from ._update_udf_artifact_headers import UpdateUdfArtifactHeaders
 from ._update_udf_artifact_request import UpdateUdfArtifactRequest
 from ._update_udf_artifact_response_body import UpdateUdfArtifactResponseBody
@@ -462,6 +494,7 @@ from ._validate_sql_statement_response import ValidateSqlStatementResponse
 from ._deploy_deployment_draft_async_response_body import DeployDeploymentDraftAsyncResponseBodyData
 from ._generate_resource_plan_with_flink_conf_async_response_body import GenerateResourcePlanWithFlinkConfAsyncResponseBodyData
 from ._list_editable_namespace_response_body import ListEditableNamespaceResponseBodyData
+from ._stop_sql_execution_response_body import StopSqlExecutionResponseBodyData
 from ._validate_deployment_draft_async_response_body import ValidateDeploymentDraftAsyncResponseBodyData
 
 __all__ = [
@@ -630,6 +663,10 @@ __all__ = [
     CreateSessionClusterRequest,
     CreateSessionClusterResponseBody,
     CreateSessionClusterResponse,
+    CreateSqlFileHeaders,
+    CreateSqlFileRequest,
+    CreateSqlFileResponseBody,
+    CreateSqlFileResponse,
     CreateUdfArtifactHeaders,
     CreateUdfArtifactRequest,
     CreateUdfArtifactResponseBody,
@@ -644,6 +681,10 @@ __all__ = [
     DeleteDeploymentHeaders,
     DeleteDeploymentResponseBody,
     DeleteDeploymentResponse,
+    DeleteDeploymentByNameHeaders,
+    DeleteDeploymentByNameRequest,
+    DeleteDeploymentByNameResponseBody,
+    DeleteDeploymentByNameResponse,
     DeleteDeploymentDraftHeaders,
     DeleteDeploymentDraftResponseBody,
     DeleteDeploymentDraftResponse,
@@ -668,6 +709,10 @@ __all__ = [
     DeleteSessionClusterHeaders,
     DeleteSessionClusterResponseBody,
     DeleteSessionClusterResponse,
+    DeleteSqlFileHeaders,
+    DeleteSqlFileRequest,
+    DeleteSqlFileResponseBody,
+    DeleteSqlFileResponse,
     DeleteUdfArtifactHeaders,
     DeleteUdfArtifactResponseBody,
     DeleteUdfArtifactResponse,
@@ -686,6 +731,10 @@ __all__ = [
     ExecuteSqlStatementRequest,
     ExecuteSqlStatementResponseBody,
     ExecuteSqlStatementResponse,
+    FetchSqlExecutionResultHeaders,
+    FetchSqlExecutionResultRequest,
+    FetchSqlExecutionResultResponseBody,
+    FetchSqlExecutionResultResponse,
     FetchSqlPreviewResultsHeaders,
     FetchSqlPreviewResultsRequest,
     FetchSqlPreviewResultsResponseBody,
@@ -775,6 +824,10 @@ __all__ = [
     GetSessionClusterHeaders,
     GetSessionClusterResponseBody,
     GetSessionClusterResponse,
+    GetSqlFileHeaders,
+    GetSqlFileRequest,
+    GetSqlFileResponseBody,
+    GetSqlFileResponse,
     GetTablesHeaders,
     GetTablesRequest,
     GetTablesResponseBody,
@@ -870,6 +923,10 @@ __all__ = [
     StopSessionClusterHeaders,
     StopSessionClusterResponseBody,
     StopSessionClusterResponse,
+    StopSqlExecutionHeaders,
+    StopSqlExecutionRequest,
+    StopSqlExecutionResponseBody,
+    StopSqlExecutionResponse,
     SubmitSqlPreviewHeaders,
     SubmitSqlPreviewRequest,
     SubmitSqlPreviewResponseBody,
@@ -878,6 +935,10 @@ __all__ = [
     UpdateDeploymentRequest,
     UpdateDeploymentResponseBody,
     UpdateDeploymentResponse,
+    UpdateDeploymentByNameHeaders,
+    UpdateDeploymentByNameRequest,
+    UpdateDeploymentByNameResponseBody,
+    UpdateDeploymentByNameResponse,
     UpdateDeploymentDraftHeaders,
     UpdateDeploymentDraftRequest,
     UpdateDeploymentDraftResponseBody,
@@ -906,6 +967,10 @@ __all__ = [
     UpdateSessionClusterRequest,
     UpdateSessionClusterResponseBody,
     UpdateSessionClusterResponse,
+    UpdateSqlFileHeaders,
+    UpdateSqlFileRequest,
+    UpdateSqlFileResponseBody,
+    UpdateSqlFileResponse,
     UpdateUdfArtifactHeaders,
     UpdateUdfArtifactRequest,
     UpdateUdfArtifactResponseBody,
@@ -925,5 +990,6 @@ __all__ = [
     DeployDeploymentDraftAsyncResponseBodyData,
     GenerateResourcePlanWithFlinkConfAsyncResponseBodyData,
     ListEditableNamespaceResponseBodyData,
+    StopSqlExecutionResponseBodyData,
     ValidateDeploymentDraftAsyncResponseBodyData
 ]

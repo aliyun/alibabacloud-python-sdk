@@ -1025,6 +1025,90 @@ class Client(OpenApiClient):
         headers = main_models.CreateSessionClusterHeaders()
         return await self.create_session_cluster_with_options_async(namespace, request, headers, runtime)
 
+    def create_sql_file_with_options(
+        self,
+        namespace: str,
+        request: main_models.CreateSqlFileRequest,
+        headers: main_models.CreateSqlFileHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateSqlFileResponse:
+        request.validate()
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.workspace):
+            real_headers['workspace'] = str(headers.workspace)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateSqlFile',
+            version = '2022-07-18',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/namespaces/{DaraURL.percent_encode(namespace)}/sql-file',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateSqlFileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_sql_file_with_options_async(
+        self,
+        namespace: str,
+        request: main_models.CreateSqlFileRequest,
+        headers: main_models.CreateSqlFileHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateSqlFileResponse:
+        request.validate()
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.workspace):
+            real_headers['workspace'] = str(headers.workspace)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateSqlFile',
+            version = '2022-07-18',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/namespaces/{DaraURL.percent_encode(namespace)}/sql-file',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateSqlFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_sql_file(
+        self,
+        namespace: str,
+        request: main_models.CreateSqlFileRequest,
+    ) -> main_models.CreateSqlFileResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.CreateSqlFileHeaders()
+        return self.create_sql_file_with_options(namespace, request, headers, runtime)
+
+    async def create_sql_file_async(
+        self,
+        namespace: str,
+        request: main_models.CreateSqlFileRequest,
+    ) -> main_models.CreateSqlFileResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.CreateSqlFileHeaders()
+        return await self.create_sql_file_with_options_async(namespace, request, headers, runtime)
+
     def create_udf_artifact_with_options(
         self,
         namespace: str,
@@ -1352,6 +1436,96 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = main_models.DeleteDeploymentHeaders()
         return await self.delete_deployment_with_options_async(namespace, deployment_id, headers, runtime)
+
+    def delete_deployment_by_name_with_options(
+        self,
+        namespace: str,
+        request: main_models.DeleteDeploymentByNameRequest,
+        headers: main_models.DeleteDeploymentByNameHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteDeploymentByNameResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.deployment_name):
+            query['deploymentName'] = request.deployment_name
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.workspace):
+            real_headers['workspace'] = str(headers.workspace)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteDeploymentByName',
+            version = '2022-07-18',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/namespaces/{DaraURL.percent_encode(namespace)}/deployments/deleteDeployment/byName',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteDeploymentByNameResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_deployment_by_name_with_options_async(
+        self,
+        namespace: str,
+        request: main_models.DeleteDeploymentByNameRequest,
+        headers: main_models.DeleteDeploymentByNameHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteDeploymentByNameResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.deployment_name):
+            query['deploymentName'] = request.deployment_name
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.workspace):
+            real_headers['workspace'] = str(headers.workspace)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteDeploymentByName',
+            version = '2022-07-18',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/namespaces/{DaraURL.percent_encode(namespace)}/deployments/deleteDeployment/byName',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteDeploymentByNameResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_deployment_by_name(
+        self,
+        namespace: str,
+        request: main_models.DeleteDeploymentByNameRequest,
+    ) -> main_models.DeleteDeploymentByNameResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.DeleteDeploymentByNameHeaders()
+        return self.delete_deployment_by_name_with_options(namespace, request, headers, runtime)
+
+    async def delete_deployment_by_name_async(
+        self,
+        namespace: str,
+        request: main_models.DeleteDeploymentByNameRequest,
+    ) -> main_models.DeleteDeploymentByNameResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.DeleteDeploymentByNameHeaders()
+        return await self.delete_deployment_by_name_with_options_async(namespace, request, headers, runtime)
 
     def delete_deployment_draft_with_options(
         self,
@@ -1993,6 +2167,92 @@ class Client(OpenApiClient):
         headers = main_models.DeleteSessionClusterHeaders()
         return await self.delete_session_cluster_with_options_async(namespace, session_cluster_name, headers, runtime)
 
+    def delete_sql_file_with_options(
+        self,
+        namespace: str,
+        sql_file_id: str,
+        request: main_models.DeleteSqlFileRequest,
+        headers: main_models.DeleteSqlFileHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteSqlFileResponse:
+        request.validate()
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.workspace):
+            real_headers['workspace'] = str(headers.workspace)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteSqlFile',
+            version = '2022-07-18',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/namespaces/{DaraURL.percent_encode(namespace)}/sql-file/{DaraURL.percent_encode(sql_file_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteSqlFileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_sql_file_with_options_async(
+        self,
+        namespace: str,
+        sql_file_id: str,
+        request: main_models.DeleteSqlFileRequest,
+        headers: main_models.DeleteSqlFileHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteSqlFileResponse:
+        request.validate()
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.workspace):
+            real_headers['workspace'] = str(headers.workspace)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteSqlFile',
+            version = '2022-07-18',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/namespaces/{DaraURL.percent_encode(namespace)}/sql-file/{DaraURL.percent_encode(sql_file_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteSqlFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_sql_file(
+        self,
+        namespace: str,
+        sql_file_id: str,
+        request: main_models.DeleteSqlFileRequest,
+    ) -> main_models.DeleteSqlFileResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.DeleteSqlFileHeaders()
+        return self.delete_sql_file_with_options(namespace, sql_file_id, request, headers, runtime)
+
+    async def delete_sql_file_async(
+        self,
+        namespace: str,
+        sql_file_id: str,
+        request: main_models.DeleteSqlFileRequest,
+    ) -> main_models.DeleteSqlFileResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.DeleteSqlFileHeaders()
+        return await self.delete_sql_file_with_options_async(namespace, sql_file_id, request, headers, runtime)
+
     def delete_udf_artifact_with_options(
         self,
         namespace: str,
@@ -2418,6 +2678,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = main_models.ExecuteSqlStatementHeaders()
         return await self.execute_sql_statement_with_options_async(namespace, request, headers, runtime)
+
+    def fetch_sql_execution_result_with_options(
+        self,
+        namespace: str,
+        sql_execution_id: str,
+        request: main_models.FetchSqlExecutionResultRequest,
+        headers: main_models.FetchSqlExecutionResultHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.FetchSqlExecutionResultResponse:
+        request.validate()
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.workspace):
+            real_headers['workspace'] = str(headers.workspace)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers
+        )
+        params = open_api_util_models.Params(
+            action = 'FetchSqlExecutionResult',
+            version = '2022-07-18',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/namespaces/{DaraURL.percent_encode(namespace)}/sql-execution/{DaraURL.percent_encode(sql_execution_id)}%3AfetchSqlExecutionResult',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.FetchSqlExecutionResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def fetch_sql_execution_result_with_options_async(
+        self,
+        namespace: str,
+        sql_execution_id: str,
+        request: main_models.FetchSqlExecutionResultRequest,
+        headers: main_models.FetchSqlExecutionResultHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.FetchSqlExecutionResultResponse:
+        request.validate()
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.workspace):
+            real_headers['workspace'] = str(headers.workspace)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers
+        )
+        params = open_api_util_models.Params(
+            action = 'FetchSqlExecutionResult',
+            version = '2022-07-18',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/namespaces/{DaraURL.percent_encode(namespace)}/sql-execution/{DaraURL.percent_encode(sql_execution_id)}%3AfetchSqlExecutionResult',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.FetchSqlExecutionResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def fetch_sql_execution_result(
+        self,
+        namespace: str,
+        sql_execution_id: str,
+        request: main_models.FetchSqlExecutionResultRequest,
+    ) -> main_models.FetchSqlExecutionResultResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.FetchSqlExecutionResultHeaders()
+        return self.fetch_sql_execution_result_with_options(namespace, sql_execution_id, request, headers, runtime)
+
+    async def fetch_sql_execution_result_async(
+        self,
+        namespace: str,
+        sql_execution_id: str,
+        request: main_models.FetchSqlExecutionResultRequest,
+    ) -> main_models.FetchSqlExecutionResultResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.FetchSqlExecutionResultHeaders()
+        return await self.fetch_sql_execution_result_with_options_async(namespace, sql_execution_id, request, headers, runtime)
 
     def fetch_sql_preview_results_with_options(
         self,
@@ -4626,6 +4972,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = main_models.GetSessionClusterHeaders()
         return await self.get_session_cluster_with_options_async(namespace, session_cluster_name, headers, runtime)
+
+    def get_sql_file_with_options(
+        self,
+        namespace: str,
+        sql_file_id: str,
+        request: main_models.GetSqlFileRequest,
+        headers: main_models.GetSqlFileHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetSqlFileResponse:
+        request.validate()
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.workspace):
+            real_headers['workspace'] = str(headers.workspace)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetSqlFile',
+            version = '2022-07-18',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/namespaces/{DaraURL.percent_encode(namespace)}/sql-file/{DaraURL.percent_encode(sql_file_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetSqlFileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_sql_file_with_options_async(
+        self,
+        namespace: str,
+        sql_file_id: str,
+        request: main_models.GetSqlFileRequest,
+        headers: main_models.GetSqlFileHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetSqlFileResponse:
+        request.validate()
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.workspace):
+            real_headers['workspace'] = str(headers.workspace)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetSqlFile',
+            version = '2022-07-18',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/namespaces/{DaraURL.percent_encode(namespace)}/sql-file/{DaraURL.percent_encode(sql_file_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetSqlFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_sql_file(
+        self,
+        namespace: str,
+        sql_file_id: str,
+        request: main_models.GetSqlFileRequest,
+    ) -> main_models.GetSqlFileResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.GetSqlFileHeaders()
+        return self.get_sql_file_with_options(namespace, sql_file_id, request, headers, runtime)
+
+    async def get_sql_file_async(
+        self,
+        namespace: str,
+        sql_file_id: str,
+        request: main_models.GetSqlFileRequest,
+    ) -> main_models.GetSqlFileResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.GetSqlFileHeaders()
+        return await self.get_sql_file_with_options_async(namespace, sql_file_id, request, headers, runtime)
 
     def get_tables_with_options(
         self,
@@ -6957,6 +7389,92 @@ class Client(OpenApiClient):
         headers = main_models.StopSessionClusterHeaders()
         return await self.stop_session_cluster_with_options_async(namespace, session_cluster_name, headers, runtime)
 
+    def stop_sql_execution_with_options(
+        self,
+        namespace: str,
+        sql_execution_id: str,
+        request: main_models.StopSqlExecutionRequest,
+        headers: main_models.StopSqlExecutionHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.StopSqlExecutionResponse:
+        request.validate()
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.workspace):
+            real_headers['workspace'] = str(headers.workspace)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers
+        )
+        params = open_api_util_models.Params(
+            action = 'StopSqlExecution',
+            version = '2022-07-18',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/namespaces/{DaraURL.percent_encode(namespace)}/sql-execution/{DaraURL.percent_encode(sql_execution_id)}%3Astop',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.StopSqlExecutionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def stop_sql_execution_with_options_async(
+        self,
+        namespace: str,
+        sql_execution_id: str,
+        request: main_models.StopSqlExecutionRequest,
+        headers: main_models.StopSqlExecutionHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.StopSqlExecutionResponse:
+        request.validate()
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.workspace):
+            real_headers['workspace'] = str(headers.workspace)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers
+        )
+        params = open_api_util_models.Params(
+            action = 'StopSqlExecution',
+            version = '2022-07-18',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/namespaces/{DaraURL.percent_encode(namespace)}/sql-execution/{DaraURL.percent_encode(sql_execution_id)}%3Astop',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.StopSqlExecutionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def stop_sql_execution(
+        self,
+        namespace: str,
+        sql_execution_id: str,
+        request: main_models.StopSqlExecutionRequest,
+    ) -> main_models.StopSqlExecutionResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.StopSqlExecutionHeaders()
+        return self.stop_sql_execution_with_options(namespace, sql_execution_id, request, headers, runtime)
+
+    async def stop_sql_execution_async(
+        self,
+        namespace: str,
+        sql_execution_id: str,
+        request: main_models.StopSqlExecutionRequest,
+    ) -> main_models.StopSqlExecutionResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.StopSqlExecutionHeaders()
+        return await self.stop_sql_execution_with_options_async(namespace, sql_execution_id, request, headers, runtime)
+
     def submit_sql_preview_with_options(
         self,
         namespace: str,
@@ -7136,6 +7654,98 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = main_models.UpdateDeploymentHeaders()
         return await self.update_deployment_with_options_async(namespace, deployment_id, request, headers, runtime)
+
+    def update_deployment_by_name_with_options(
+        self,
+        namespace: str,
+        request: main_models.UpdateDeploymentByNameRequest,
+        headers: main_models.UpdateDeploymentByNameHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateDeploymentByNameResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.deployment_name):
+            query['deploymentName'] = request.deployment_name
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.workspace):
+            real_headers['workspace'] = str(headers.workspace)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateDeploymentByName',
+            version = '2022-07-18',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/namespaces/{DaraURL.percent_encode(namespace)}/deployments/updateDeployment/byName',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateDeploymentByNameResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_deployment_by_name_with_options_async(
+        self,
+        namespace: str,
+        request: main_models.UpdateDeploymentByNameRequest,
+        headers: main_models.UpdateDeploymentByNameHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateDeploymentByNameResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.deployment_name):
+            query['deploymentName'] = request.deployment_name
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.workspace):
+            real_headers['workspace'] = str(headers.workspace)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateDeploymentByName',
+            version = '2022-07-18',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/namespaces/{DaraURL.percent_encode(namespace)}/deployments/updateDeployment/byName',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateDeploymentByNameResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_deployment_by_name(
+        self,
+        namespace: str,
+        request: main_models.UpdateDeploymentByNameRequest,
+    ) -> main_models.UpdateDeploymentByNameResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.UpdateDeploymentByNameHeaders()
+        return self.update_deployment_by_name_with_options(namespace, request, headers, runtime)
+
+    async def update_deployment_by_name_async(
+        self,
+        namespace: str,
+        request: main_models.UpdateDeploymentByNameRequest,
+    ) -> main_models.UpdateDeploymentByNameResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.UpdateDeploymentByNameHeaders()
+        return await self.update_deployment_by_name_with_options_async(namespace, request, headers, runtime)
 
     def update_deployment_draft_with_options(
         self,
@@ -7748,6 +8358,94 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = main_models.UpdateSessionClusterHeaders()
         return await self.update_session_cluster_with_options_async(namespace, session_cluster_name, request, headers, runtime)
+
+    def update_sql_file_with_options(
+        self,
+        namespace: str,
+        sql_file_id: str,
+        request: main_models.UpdateSqlFileRequest,
+        headers: main_models.UpdateSqlFileHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateSqlFileResponse:
+        request.validate()
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.workspace):
+            real_headers['workspace'] = str(headers.workspace)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateSqlFile',
+            version = '2022-07-18',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/namespaces/{DaraURL.percent_encode(namespace)}/sql-file/{DaraURL.percent_encode(sql_file_id)}',
+            method = 'PATCH',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateSqlFileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_sql_file_with_options_async(
+        self,
+        namespace: str,
+        sql_file_id: str,
+        request: main_models.UpdateSqlFileRequest,
+        headers: main_models.UpdateSqlFileHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateSqlFileResponse:
+        request.validate()
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.workspace):
+            real_headers['workspace'] = str(headers.workspace)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateSqlFile',
+            version = '2022-07-18',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/namespaces/{DaraURL.percent_encode(namespace)}/sql-file/{DaraURL.percent_encode(sql_file_id)}',
+            method = 'PATCH',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateSqlFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_sql_file(
+        self,
+        namespace: str,
+        sql_file_id: str,
+        request: main_models.UpdateSqlFileRequest,
+    ) -> main_models.UpdateSqlFileResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.UpdateSqlFileHeaders()
+        return self.update_sql_file_with_options(namespace, sql_file_id, request, headers, runtime)
+
+    async def update_sql_file_async(
+        self,
+        namespace: str,
+        sql_file_id: str,
+        request: main_models.UpdateSqlFileRequest,
+    ) -> main_models.UpdateSqlFileResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.UpdateSqlFileHeaders()
+        return await self.update_sql_file_with_options_async(namespace, sql_file_id, request, headers, runtime)
 
     def update_udf_artifact_with_options(
         self,

@@ -1,3 +1,14 @@
+2026-07-24 Version: 1.12.0
+- Support API CreateSqlFile.
+- Support API DeleteDeploymentByName.
+- Support API DeleteSqlFile.
+- Support API FetchSqlExecutionResult.
+- Support API GetSqlFile.
+- Support API StopSqlExecution.
+- Support API UpdateDeploymentByName.
+- Support API UpdateSqlFile.
+
+
 2026-07-10 Version: 1.11.0
 - Support API StartSqlExecution.
 
