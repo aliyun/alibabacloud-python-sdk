@@ -35,7 +35,7 @@ class GetRoutineBuildResponseBody(DaraModel):
     ):
         # The static resource directory.
         self.assets_directory = assets_directory
-        # The build branch.
+        # The branch used for the build.
         self.branch = branch
         # The build command.
         self.build_command = build_command
@@ -60,9 +60,9 @@ class GetRoutineBuildResponseBody(DaraModel):
         self.is_private = is_private
         # The Node.js version. Valid values: `22.x`, `20.x`, `18.x`, `16.x`, `14.x`, `12.x`.
         self.node_version = node_version
-        # The pipeline ID.
+        # The pipeline ID in Yunxiao.
         self.pipeline_id = pipeline_id
-        # The pipeline run ID.
+        # The build task ID in Yunxiao.
         self.pipeline_run_id = pipeline_run_id
         # The production branch name.
         self.production_branch = production_branch

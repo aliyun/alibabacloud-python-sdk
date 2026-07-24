@@ -4,18 +4,18 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class ReDoRoutineBuildResponseBody(DaraModel):
+class CreateRoutineBuildResponseBody(DaraModel):
     def __init__(
         self,
         pipe_line_run_id: int = None,
         request_id: str = None,
         routine_build_id: int = None,
     ):
-        # The ID of the build task in Yunxiao.
+        # The build ID in Apsara Devops.
         self.pipe_line_run_id = pipe_line_run_id
         # The request ID.
         self.request_id = request_id
-        # The ID of the ER build task.
+        # The ER build task ID.
         self.routine_build_id = routine_build_id
 
     def validate(self):

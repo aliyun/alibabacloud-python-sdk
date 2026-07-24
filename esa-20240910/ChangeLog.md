@@ -1,3 +1,8 @@
+2026-07-24 Version: 3.12.0
+- Support API CreateRoutineBuild.
+- Support API DescribeDDoSPrice.
+
+
 2026-07-23 Version: 3.11.0
 - Support API CreateRoutineBuildConfiguration.
 - Support API DeleteRoutineBuildConfiguration.

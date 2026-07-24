@@ -5343,6 +5343,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_routine_with_options_async(request, runtime)
 
+    def create_routine_build_with_options(
+        self,
+        request: main_models.CreateRoutineBuildRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateRoutineBuildResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.artifact_url):
+            query['ArtifactUrl'] = request.artifact_url
+        if not DaraCore.is_null(request.branch):
+            query['Branch'] = request.branch
+        if not DaraCore.is_null(request.routine_name):
+            query['RoutineName'] = request.routine_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateRoutineBuild',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateRoutineBuildResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_routine_build_with_options_async(
+        self,
+        request: main_models.CreateRoutineBuildRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateRoutineBuildResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.artifact_url):
+            query['ArtifactUrl'] = request.artifact_url
+        if not DaraCore.is_null(request.branch):
+            query['Branch'] = request.branch
+        if not DaraCore.is_null(request.routine_name):
+            query['RoutineName'] = request.routine_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateRoutineBuild',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateRoutineBuildResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_routine_build(
+        self,
+        request: main_models.CreateRoutineBuildRequest,
+    ) -> main_models.CreateRoutineBuildResponse:
+        runtime = RuntimeOptions()
+        return self.create_routine_build_with_options(request, runtime)
+
+    async def create_routine_build_async(
+        self,
+        request: main_models.CreateRoutineBuildRequest,
+    ) -> main_models.CreateRoutineBuildResponse:
+        runtime = RuntimeOptions()
+        return await self.create_routine_build_with_options_async(request, runtime)
+
     def create_routine_build_configuration_with_options(
         self,
         tmp_req: main_models.CreateRoutineBuildConfigurationRequest,
@@ -12550,6 +12628,84 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeDDoSOverseasAttackCountResponse:
         runtime = RuntimeOptions()
         return await self.describe_ddo_soverseas_attack_count_with_options_async(request, runtime)
+
+    def describe_ddo_sprice_with_options(
+        self,
+        request: main_models.DescribeDDoSPriceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeDDoSPriceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.ddo_sbilling_mode):
+            query['DDoSBillingMode'] = request.ddo_sbilling_mode
+        if not DaraCore.is_null(request.ddo_sburstable_domestic_protection):
+            query['DDoSBurstableDomesticProtection'] = request.ddo_sburstable_domestic_protection
+        if not DaraCore.is_null(request.ddo_sburstable_overseas_protection):
+            query['DDoSBurstableOverseasProtection'] = request.ddo_sburstable_overseas_protection
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeDDoSPrice',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeDDoSPriceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_ddo_sprice_with_options_async(
+        self,
+        request: main_models.DescribeDDoSPriceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeDDoSPriceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.ddo_sbilling_mode):
+            query['DDoSBillingMode'] = request.ddo_sbilling_mode
+        if not DaraCore.is_null(request.ddo_sburstable_domestic_protection):
+            query['DDoSBurstableDomesticProtection'] = request.ddo_sburstable_domestic_protection
+        if not DaraCore.is_null(request.ddo_sburstable_overseas_protection):
+            query['DDoSBurstableOverseasProtection'] = request.ddo_sburstable_overseas_protection
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeDDoSPrice',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeDDoSPriceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_ddo_sprice(
+        self,
+        request: main_models.DescribeDDoSPriceRequest,
+    ) -> main_models.DescribeDDoSPriceResponse:
+        runtime = RuntimeOptions()
+        return self.describe_ddo_sprice_with_options(request, runtime)
+
+    async def describe_ddo_sprice_async(
+        self,
+        request: main_models.DescribeDDoSPriceRequest,
+    ) -> main_models.DescribeDDoSPriceResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_ddo_sprice_with_options_async(request, runtime)
 
     def describe_ddos_max_burst_gbps_with_options(
         self,

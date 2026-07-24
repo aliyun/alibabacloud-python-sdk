@@ -19,7 +19,7 @@ class ListRoutineBuildsResponseBody(DaraModel):
     ):
         # The list of ER build tasks.
         self.data = data
-        # The page number, same as the PageIndex request parameter.
+        # The page number, which is the same as the PageIndex request parameter.
         self.page_index = page_index
         # The number of entries per page.
         self.page_size = page_size
@@ -126,7 +126,7 @@ class ListRoutineBuildsResponseBodyData(DaraModel):
         self.commit_id = commit_id
         # The commit message.
         self.commit_message = commit_message
-        # The creation time, in ISO 8601 format using UTC time. Format: yyyy-MM-ddTHH:mm:ssZ.
+        # The creation time, in the ISO 8601 format in UTC. The format is yyyy-MM-ddTHH:mm:ssZ.
         self.create_time = create_time
         # The environment variables.
         self.environment_variables = environment_variables
@@ -141,11 +141,11 @@ class ListRoutineBuildsResponseBodyData(DaraModel):
         # - true: The repository is private.
         # - false: The repository is not private.
         self.is_private = is_private
-        # The Node.js version. Valid values: `22.x`, `20.x`, `18.x`, `16.x`, `14.x`, and `12.x`.
+        # The Node.js version. Valid values: `22.x`, `20.x`, `18.x`, `16.x`, `14.x`, `12.x`.
         self.node_version = node_version
-        # The pipeline ID.
+        # The Yunxiao pipeline ID.
         self.pipeline_id = pipeline_id
-        # The pipeline execution ID.
+        # The Yunxiao build task ID.
         self.pipeline_run_id = pipeline_run_id
         # The production branch name.
         self.production_branch = production_branch
@@ -170,7 +170,7 @@ class ListRoutineBuildsResponseBodyData(DaraModel):
         self.status = status
         # The template name.
         self.template_name = template_name
-        # The modification time, in ISO 8601 format using UTC time. Format: yyyy-MM-ddTHH:mm:ssZ.
+        # The modification time, in the ISO 8601 format in UTC. The format is yyyy-MM-ddTHH:mm:ssZ.
         self.update_time = update_time
         # The user ID.
         self.user_id = user_id

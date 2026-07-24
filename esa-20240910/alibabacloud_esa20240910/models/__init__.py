@@ -187,6 +187,9 @@ from ._create_rewrite_url_rule_response import CreateRewriteUrlRuleResponse
 from ._create_routine_request import CreateRoutineRequest
 from ._create_routine_response_body import CreateRoutineResponseBody
 from ._create_routine_response import CreateRoutineResponse
+from ._create_routine_build_request import CreateRoutineBuildRequest
+from ._create_routine_build_response_body import CreateRoutineBuildResponseBody
+from ._create_routine_build_response import CreateRoutineBuildResponse
 from ._create_routine_build_configuration_request import CreateRoutineBuildConfigurationRequest
 from ._create_routine_build_configuration_shrink_request import CreateRoutineBuildConfigurationShrinkRequest
 from ._create_routine_build_configuration_response_body import CreateRoutineBuildConfigurationResponseBody
@@ -467,6 +470,9 @@ from ._describe_ddo_sl7qps_list_response import DescribeDDoSL7QpsListResponse
 from ._describe_ddo_soverseas_attack_count_request import DescribeDDoSOverseasAttackCountRequest
 from ._describe_ddo_soverseas_attack_count_response_body import DescribeDDoSOverseasAttackCountResponseBody
 from ._describe_ddo_soverseas_attack_count_response import DescribeDDoSOverseasAttackCountResponse
+from ._describe_ddo_sprice_request import DescribeDDoSPriceRequest
+from ._describe_ddo_sprice_response_body import DescribeDDoSPriceResponseBody
+from ._describe_ddo_sprice_response import DescribeDDoSPriceResponse
 from ._describe_ddos_max_burst_gbps_request import DescribeDdosMaxBurstGbpsRequest
 from ._describe_ddos_max_burst_gbps_response_body import DescribeDdosMaxBurstGbpsResponseBody
 from ._describe_ddos_max_burst_gbps_response import DescribeDdosMaxBurstGbpsResponse
@@ -1586,6 +1592,9 @@ from ._describe_custom_scene_policies_response_body import DescribeCustomScenePo
 from ._describe_ddo_sall_event_list_response_body import DescribeDDoSAllEventListResponseBodyDataList
 from ._describe_ddo_sbps_list_response_body import DescribeDDoSBpsListResponseBodyDataModule
 from ._describe_ddo_sl7qps_list_response_body import DescribeDDoSL7QpsListResponseBodyDataModule
+from ._describe_ddo_sprice_response_body import DescribeDDoSPriceResponseBodyPriceModelRuleRuleList
+from ._describe_ddo_sprice_response_body import DescribeDDoSPriceResponseBodyPriceModelRule
+from ._describe_ddo_sprice_response_body import DescribeDDoSPriceResponseBodyPriceModel
 from ._describe_edge_container_app_stats_response_body import DescribeEdgeContainerAppStatsResponseBodyPoints
 from ._describe_http_ddo_sattack_rules_response_body import DescribeHttpDDoSAttackRulesResponseBodyRuleInfos
 from ._describe_http_ddo_sintelligent_acl_rules_response_body import DescribeHttpDDoSIntelligentAclRulesResponseBodyRuleInfos
@@ -2083,6 +2092,9 @@ __all__ = [
     CreateRoutineRequest,
     CreateRoutineResponseBody,
     CreateRoutineResponse,
+    CreateRoutineBuildRequest,
+    CreateRoutineBuildResponseBody,
+    CreateRoutineBuildResponse,
     CreateRoutineBuildConfigurationRequest,
     CreateRoutineBuildConfigurationShrinkRequest,
     CreateRoutineBuildConfigurationResponseBody,
@@ -2363,6 +2375,9 @@ __all__ = [
     DescribeDDoSOverseasAttackCountRequest,
     DescribeDDoSOverseasAttackCountResponseBody,
     DescribeDDoSOverseasAttackCountResponse,
+    DescribeDDoSPriceRequest,
+    DescribeDDoSPriceResponseBody,
+    DescribeDDoSPriceResponse,
     DescribeDdosMaxBurstGbpsRequest,
     DescribeDdosMaxBurstGbpsResponseBody,
     DescribeDdosMaxBurstGbpsResponse,
@@ -3482,6 +3497,9 @@ __all__ = [
     DescribeDDoSAllEventListResponseBodyDataList,
     DescribeDDoSBpsListResponseBodyDataModule,
     DescribeDDoSL7QpsListResponseBodyDataModule,
+    DescribeDDoSPriceResponseBodyPriceModelRuleRuleList,
+    DescribeDDoSPriceResponseBodyPriceModelRule,
+    DescribeDDoSPriceResponseBodyPriceModel,
     DescribeEdgeContainerAppStatsResponseBodyPoints,
     DescribeHttpDDoSAttackRulesResponseBodyRuleInfos,
     DescribeHttpDDoSIntelligentAclRulesResponseBodyRuleInfos,
