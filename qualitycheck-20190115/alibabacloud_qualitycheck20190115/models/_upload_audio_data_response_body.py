@@ -13,15 +13,17 @@ class UploadAudioDataResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The result code. A value of 200 indicates success. Other values indicate failure. You can use this field to determine the cause of a failure.
+        # The response code. A value of 200 indicates success. Other values indicate failure. You can use this field to determine the cause of failure.
         self.code = code
-        # The task ID. Use this ID to get the task result.
+        # The task ID, which is used when retrieving task results.
         self.data = data
-        # The error details if the request fails. If the request is successful, the value is \\`successful\\`.
+        # The error message when the request fails. The value is "successful" when the request succeeds.
         self.message = message
-        # The request ID. This is the unique identifier of the request.
+        # The request ID, which uniquely identifies the request.
         self.request_id = request_id
-        # Indicates whether the request was successful. You can use this field to determine if the request succeeded. A value of \\`true\\` indicates success. A value of \\`false\\` or \\`null\\` indicates failure.
+        # Indicates whether the request is successful. Valid values:
+        # - true: The request is successful.
+        # - false/null: The request failed.
         self.success = success
 
     def validate(self):

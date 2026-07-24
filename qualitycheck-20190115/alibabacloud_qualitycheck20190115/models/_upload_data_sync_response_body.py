@@ -16,14 +16,14 @@ class UploadDataSyncResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The result `code`. A value of **200** indicates that the request was successful. Other values indicate failure. Use this field to identify the cause of the failure.
+        # The result code. A value of **200** indicates success. Other values indicate failure. You can use this field to determine the cause of failure.
         self.code = code
         self.data = data
-        # The response message. If the request succeeds, the value is **successful**. Otherwise, this parameter provides error details.
+        # The error details when an error occurs. The value is **successful** when the request succeeds.
         self.message = message
-        # The `request ID`.
+        # The request ID.
         self.request_id = request_id
-        # Specifies whether the request succeeded. `true` indicates success; `false` or `null` indicates failure.
+        # Indicates whether the request was successful. Valid values: true and false/null.
         self.success = success
 
     def validate(self):
@@ -212,12 +212,14 @@ class UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfo(DaraModel):
         condition_info: main_models.UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfoConditionInfo = None,
         hit: main_models.UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfoHit = None,
         llm_response: str = None,
+        name: str = None,
         rid: str = None,
         tid: str = None,
     ):
         self.condition_info = condition_info
         self.hit = hit
         self.llm_response = llm_response
+        self.name = name
         self.rid = rid
         self.tid = tid
 
@@ -241,6 +243,9 @@ class UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfo(DaraModel):
         if self.llm_response is not None:
             result['LlmResponse'] = self.llm_response
 
+        if self.name is not None:
+            result['Name'] = self.name
+
         if self.rid is not None:
             result['Rid'] = self.rid
 
@@ -261,6 +266,9 @@ class UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfo(DaraModel):
 
         if m.get('LlmResponse') is not None:
             self.llm_response = m.get('LlmResponse')
+
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
 
         if m.get('Rid') is not None:
             self.rid = m.get('Rid')

@@ -16,10 +16,14 @@ class UploadDataSyncForLLMResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The result code. A value of 200 indicates success. Other values indicate failure. You can use this field to determine the cause of failure.
         self.code = code
         self.data = data
+        # The error message if the request fails. The value is **successful** if the request succeeds.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values: true: The request was successful. false/null: The request failed.
         self.success = success
 
     def validate(self):
@@ -196,11 +200,13 @@ class UploadDataSyncForLLMResponseBodyDataResultInfoRulesRuleHitInfo(DaraModel):
         self,
         condition_info: main_models.UploadDataSyncForLLMResponseBodyDataResultInfoRulesRuleHitInfoConditionInfo = None,
         hit: main_models.UploadDataSyncForLLMResponseBodyDataResultInfoRulesRuleHitInfoHit = None,
+        name: str = None,
         rid: str = None,
         tid: str = None,
     ):
         self.condition_info = condition_info
         self.hit = hit
+        self.name = name
         self.rid = rid
         self.tid = tid
 
@@ -221,6 +227,9 @@ class UploadDataSyncForLLMResponseBodyDataResultInfoRulesRuleHitInfo(DaraModel):
         if self.hit is not None:
             result['Hit'] = self.hit.to_map()
 
+        if self.name is not None:
+            result['Name'] = self.name
+
         if self.rid is not None:
             result['Rid'] = self.rid
 
@@ -238,6 +247,9 @@ class UploadDataSyncForLLMResponseBodyDataResultInfoRulesRuleHitInfo(DaraModel):
         if m.get('Hit') is not None:
             temp_model = main_models.UploadDataSyncForLLMResponseBodyDataResultInfoRulesRuleHitInfoHit()
             self.hit = temp_model.from_map(m.get('Hit'))
+
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
 
         if m.get('Rid') is not None:
             self.rid = m.get('Rid')

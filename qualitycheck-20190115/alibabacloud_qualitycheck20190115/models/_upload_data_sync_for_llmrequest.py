@@ -10,7 +10,10 @@ class UploadDataSyncForLLMRequest(DaraModel):
         base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # The business space ID.
         self.base_me_agent_id = base_me_agent_id
+        # The complete JSON string. For more information about the content, see the following details.
+        # 
         # This parameter is required.
         self.json_str = json_str
 

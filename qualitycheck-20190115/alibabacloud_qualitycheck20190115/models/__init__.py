@@ -407,6 +407,7 @@ from ._delete_rule_response_body import DeleteRuleResponseBodyMessages
 from ._delete_rule_v4response_body import DeleteRuleV4ResponseBodyMessages
 from ._delete_scheme_task_config_response_body import DeleteSchemeTaskConfigResponseBodyMessages
 from ._execute_agent_response_body import ExecuteAgentResponseBodyData
+from ._get_agent_task_result_response_body import GetAgentTaskResultResponseBodyDataDialogues
 from ._get_agent_task_result_response_body import GetAgentTaskResultResponseBodyDataResponseCustomerPromptResponse
 from ._get_agent_task_result_response_body import GetAgentTaskResultResponseBodyDataResponseFieldResponseFieldVoList
 from ._get_agent_task_result_response_body import GetAgentTaskResultResponseBodyDataResponseFieldResponse
@@ -1102,6 +1103,7 @@ __all__ = [
     DeleteRuleV4ResponseBodyMessages,
     DeleteSchemeTaskConfigResponseBodyMessages,
     ExecuteAgentResponseBodyData,
+    GetAgentTaskResultResponseBodyDataDialogues,
     GetAgentTaskResultResponseBodyDataResponseCustomerPromptResponse,
     GetAgentTaskResultResponseBodyDataResponseFieldResponseFieldVoList,
     GetAgentTaskResultResponseBodyDataResponseFieldResponse,

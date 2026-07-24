@@ -12,7 +12,7 @@ class UploadDataSyncRequest(DaraModel):
     ):
         # The business space ID.
         self.base_me_agent_id = base_me_agent_id
-        # A JSON string that contains the custom parameters for the operation. See the **jsonStr attributes** section for details.
+        # A JSON string that contains all custom parameters for this operation. For more information, see the **jsonStr property description** below.
         # 
         # This parameter is required.
         self.json_str = json_str

@@ -24,7 +24,7 @@ class GetAgentTaskResultResponseBody(DaraModel):
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful. You can use this field to determine whether the request was successful:
+        # Indicates whether the request was successful. You can use this field to determine whether the request succeeded:
         # 
         # - **true**: The request was successful.
         # - **false/null**: The request failed.
@@ -79,6 +79,8 @@ class GetAgentTaskResultResponseBody(DaraModel):
 class GetAgentTaskResultResponseBodyData(DaraModel):
     def __init__(
         self,
+        dialogues: List[main_models.GetAgentTaskResultResponseBodyDataDialogues] = None,
+        error_message: str = None,
         input_tokens: str = None,
         llm_request_id: str = None,
         output_tokens: str = None,
@@ -90,13 +92,15 @@ class GetAgentTaskResultResponseBodyData(DaraModel):
         tyxm_turbo_count: str = None,
         vid: str = None,
     ):
+        self.dialogues = dialogues
+        self.error_message = error_message
         # The number of input tokens.
         self.input_tokens = input_tokens
         # The request ID returned by the large language model service.
         self.llm_request_id = llm_request_id
         # The number of output tokens.
         self.output_tokens = output_tokens
-        # The result of the computing task.
+        # The result of the computation task.
         self.response = response
         # The task status. Valid values:
         # 
@@ -117,6 +121,10 @@ class GetAgentTaskResultResponseBodyData(DaraModel):
         self.vid = vid
 
     def validate(self):
+        if self.dialogues:
+            for v1 in self.dialogues:
+                 if v1:
+                    v1.validate()
         if self.response:
             self.response.validate()
 
@@ -125,6 +133,14 @@ class GetAgentTaskResultResponseBodyData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        result['Dialogues'] = []
+        if self.dialogues is not None:
+            for k1 in self.dialogues:
+                result['Dialogues'].append(k1.to_map() if k1 else None)
+
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+
         if self.input_tokens is not None:
             result['InputTokens'] = self.input_tokens
 
@@ -159,6 +175,15 @@ class GetAgentTaskResultResponseBodyData(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.dialogues = []
+        if m.get('Dialogues') is not None:
+            for k1 in m.get('Dialogues'):
+                temp_model = main_models.GetAgentTaskResultResponseBodyDataDialogues()
+                self.dialogues.append(temp_model.from_map(k1))
+
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+
         if m.get('InputTokens') is not None:
             self.input_tokens = m.get('InputTokens')
 
@@ -202,7 +227,7 @@ class GetAgentTaskResultResponseBodyDataResponse(DaraModel):
     ):
         # The result of the custom prompt.
         self.customer_prompt_response = customer_prompt_response
-        # The property extraction result.
+        # The field extraction result.
         self.field_response = field_response
         # The service quality inspection result.
         self.service_inspection_response = service_inspection_response
@@ -263,7 +288,7 @@ class GetAgentTaskResultResponseBodyDataResponseTagCategoryResponse(DaraModel):
         self,
         tag_category_vo_list: List[main_models.GetAgentTaskResultResponseBodyDataResponseTagCategoryResponseTagCategoryVoList] = None,
     ):
-        # The list of labels.
+        # The list of tags.
         self.tag_category_vo_list = tag_category_vo_list
 
     def validate(self):
@@ -303,9 +328,9 @@ class GetAgentTaskResultResponseBodyDataResponseTagCategoryResponseTagCategoryVo
         remarks: str = None,
         result_labels: List[str] = None,
     ):
-        # The label dimension.
+        # The tag dimension.
         self.dimension = dimension
-        # Indicates whether a match is found.
+        # Indicates whether the tag is matched.
         self.is_match = is_match
         # The sentences referenced in the reasoning.
         self.original_utterances = original_utterances
@@ -404,7 +429,7 @@ class GetAgentTaskResultResponseBodyDataResponseServiceInspectionResponseService
     ):
         # The inspection dimension.
         self.dimension = dimension
-        # Indicates whether a match is found.
+        # Indicates whether the tag is matched.
         self.is_match = is_match
         # The sentences referenced in the reasoning.
         self.original_utterances = original_utterances
@@ -454,7 +479,7 @@ class GetAgentTaskResultResponseBodyDataResponseFieldResponse(DaraModel):
         self,
         field_vo_list: List[main_models.GetAgentTaskResultResponseBodyDataResponseFieldResponseFieldVoList] = None,
     ):
-        # The list of properties.
+        # The list of fields.
         self.field_vo_list = field_vo_list
 
     def validate(self):
@@ -493,13 +518,13 @@ class GetAgentTaskResultResponseBodyDataResponseFieldResponseFieldVoList(DaraMod
         remarks: str = None,
         value: str = None,
     ):
-        # The property name.
+        # The field name.
         self.name = name
         # The sentences referenced in the reasoning.
         self.original_utterances = original_utterances
         # The reasoning for the judgment.
         self.remarks = remarks
-        # The property value.
+        # The field value.
         self.value = value
 
     def validate(self):
@@ -565,6 +590,81 @@ class GetAgentTaskResultResponseBodyDataResponseCustomerPromptResponse(DaraModel
         m = m or dict()
         if m.get('Text') is not None:
             self.text = m.get('Text')
+
+        return self
+
+class GetAgentTaskResultResponseBodyDataDialogues(DaraModel):
+    def __init__(
+        self,
+        begin: int = None,
+        emotion_value: int = None,
+        end: int = None,
+        hour_min_sec: str = None,
+        role: str = None,
+        speech_rate: int = None,
+        words: str = None,
+    ):
+        self.begin = begin
+        self.emotion_value = emotion_value
+        self.end = end
+        self.hour_min_sec = hour_min_sec
+        self.role = role
+        self.speech_rate = speech_rate
+        self.words = words
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.begin is not None:
+            result['Begin'] = self.begin
+
+        if self.emotion_value is not None:
+            result['EmotionValue'] = self.emotion_value
+
+        if self.end is not None:
+            result['End'] = self.end
+
+        if self.hour_min_sec is not None:
+            result['HourMinSec'] = self.hour_min_sec
+
+        if self.role is not None:
+            result['Role'] = self.role
+
+        if self.speech_rate is not None:
+            result['SpeechRate'] = self.speech_rate
+
+        if self.words is not None:
+            result['Words'] = self.words
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Begin') is not None:
+            self.begin = m.get('Begin')
+
+        if m.get('EmotionValue') is not None:
+            self.emotion_value = m.get('EmotionValue')
+
+        if m.get('End') is not None:
+            self.end = m.get('End')
+
+        if m.get('HourMinSec') is not None:
+            self.hour_min_sec = m.get('HourMinSec')
+
+        if m.get('Role') is not None:
+            self.role = m.get('Role')
+
+        if m.get('SpeechRate') is not None:
+            self.speech_rate = m.get('SpeechRate')
+
+        if m.get('Words') is not None:
+            self.words = m.get('Words')
 
         return self
 

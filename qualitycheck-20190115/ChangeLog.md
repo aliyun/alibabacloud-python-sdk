@@ -1,3 +1,10 @@
+2026-07-24 Version: 9.2.1
+- Update API GetAgentTaskResult: add response parameters Body.Data.Dialogues.
+- Update API GetAgentTaskResult: add response parameters Body.Data.ErrorMessage.
+- Update API UploadDataSync: add response parameters Body.Data.$.Rules.$.Name.
+- Update API UploadDataSyncForLLM: add response parameters Body.Data.$.Rules.$.Name.
+
+
 2026-06-30 Version: 9.2.0
 - Support API AnalyzeLabel.
 - Support API CreateAgent.
