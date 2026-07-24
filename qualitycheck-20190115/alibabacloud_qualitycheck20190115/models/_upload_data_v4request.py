@@ -10,9 +10,9 @@ class UploadDataV4Request(DaraModel):
         base_me_agent_id: int = None,
         json_str: str = None,
     ):
-        # The workspace ID. Use this parameter to select a specific workspace when you have multiple workspaces. If you do not specify this parameter, the default workspace is used.
+        # The business space ID. Used to specify a business space in multi-business space scenarios. Default value: the default business space.
         self.base_me_agent_id = base_me_agent_id
-        # The JSON string that contains all the custom parameters for this API. For more information, see the description of jsonStr properties below.
+        # JsonStr is a JSON string that contains all custom parameters for this operation. For details, see the jsonStr property description below.
         # 
         # This parameter is required.
         self.json_str = json_str

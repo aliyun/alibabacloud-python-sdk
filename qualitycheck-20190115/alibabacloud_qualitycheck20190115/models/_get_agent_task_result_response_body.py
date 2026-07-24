@@ -26,7 +26,7 @@ class GetAgentTaskResultResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request was successful. You can use this field to determine whether the request succeeded:
         # 
-        # - **true**: The request was successful.
+        # - **true**: The request succeeded.
         # - **false/null**: The request failed.
         self.success = success
 
@@ -224,6 +224,7 @@ class GetAgentTaskResultResponseBodyDataResponse(DaraModel):
         field_response: main_models.GetAgentTaskResultResponseBodyDataResponseFieldResponse = None,
         service_inspection_response: main_models.GetAgentTaskResultResponseBodyDataResponseServiceInspectionResponse = None,
         tag_category_response: main_models.GetAgentTaskResultResponseBodyDataResponseTagCategoryResponse = None,
+        voiceprint_response: main_models.GetAgentTaskResultResponseBodyDataResponseVoiceprintResponse = None,
     ):
         # The result of the custom prompt.
         self.customer_prompt_response = customer_prompt_response
@@ -233,6 +234,7 @@ class GetAgentTaskResultResponseBodyDataResponse(DaraModel):
         self.service_inspection_response = service_inspection_response
         # The tag categorization result.
         self.tag_category_response = tag_category_response
+        self.voiceprint_response = voiceprint_response
 
     def validate(self):
         if self.customer_prompt_response:
@@ -243,6 +245,8 @@ class GetAgentTaskResultResponseBodyDataResponse(DaraModel):
             self.service_inspection_response.validate()
         if self.tag_category_response:
             self.tag_category_response.validate()
+        if self.voiceprint_response:
+            self.voiceprint_response.validate()
 
     def to_map(self):
         result = dict()
@@ -260,6 +264,9 @@ class GetAgentTaskResultResponseBodyDataResponse(DaraModel):
 
         if self.tag_category_response is not None:
             result['TagCategoryResponse'] = self.tag_category_response.to_map()
+
+        if self.voiceprint_response is not None:
+            result['VoiceprintResponse'] = self.voiceprint_response.to_map()
 
         return result
 
@@ -280,6 +287,249 @@ class GetAgentTaskResultResponseBodyDataResponse(DaraModel):
         if m.get('TagCategoryResponse') is not None:
             temp_model = main_models.GetAgentTaskResultResponseBodyDataResponseTagCategoryResponse()
             self.tag_category_response = temp_model.from_map(m.get('TagCategoryResponse'))
+
+        if m.get('VoiceprintResponse') is not None:
+            temp_model = main_models.GetAgentTaskResultResponseBodyDataResponseVoiceprintResponse()
+            self.voiceprint_response = temp_model.from_map(m.get('VoiceprintResponse'))
+
+        return self
+
+class GetAgentTaskResultResponseBodyDataResponseVoiceprintResponse(DaraModel):
+    def __init__(
+        self,
+        dialogue: List[main_models.GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogue] = None,
+        errors: List[main_models.GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseErrors] = None,
+    ):
+        self.dialogue = dialogue
+        self.errors = errors
+
+    def validate(self):
+        if self.dialogue:
+            for v1 in self.dialogue:
+                 if v1:
+                    v1.validate()
+        if self.errors:
+            for v1 in self.errors:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        result['Dialogue'] = []
+        if self.dialogue is not None:
+            for k1 in self.dialogue:
+                result['Dialogue'].append(k1.to_map() if k1 else None)
+
+        result['Errors'] = []
+        if self.errors is not None:
+            for k1 in self.errors:
+                result['Errors'].append(k1.to_map() if k1 else None)
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.dialogue = []
+        if m.get('Dialogue') is not None:
+            for k1 in m.get('Dialogue'):
+                temp_model = main_models.GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogue()
+                self.dialogue.append(temp_model.from_map(k1))
+
+        self.errors = []
+        if m.get('Errors') is not None:
+            for k1 in m.get('Errors'):
+                temp_model = main_models.GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseErrors()
+                self.errors.append(temp_model.from_map(k1))
+
+        return self
+
+class GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseErrors(DaraModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+    ):
+        self.code = code
+        self.message = message
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.code is not None:
+            result['Code'] = self.code
+
+        if self.message is not None:
+            result['Message'] = self.message
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+
+        return self
+
+class GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogue(DaraModel):
+    def __init__(
+        self,
+        additions: main_models.GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogueAdditions = None,
+        begin: int = None,
+        end: int = None,
+        words: str = None,
+    ):
+        self.additions = additions
+        self.begin = begin
+        self.end = end
+        self.words = words
+
+    def validate(self):
+        if self.additions:
+            self.additions.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.additions is not None:
+            result['Additions'] = self.additions.to_map()
+
+        if self.begin is not None:
+            result['Begin'] = self.begin
+
+        if self.end is not None:
+            result['End'] = self.end
+
+        if self.words is not None:
+            result['Words'] = self.words
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Additions') is not None:
+            temp_model = main_models.GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogueAdditions()
+            self.additions = temp_model.from_map(m.get('Additions'))
+
+        if m.get('Begin') is not None:
+            self.begin = m.get('Begin')
+
+        if m.get('End') is not None:
+            self.end = m.get('End')
+
+        if m.get('Words') is not None:
+            self.words = m.get('Words')
+
+        return self
+
+class GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogueAdditions(DaraModel):
+    def __init__(
+        self,
+        age: str = None,
+        age_group: str = None,
+        age_score: float = None,
+        best_voiceprint_score: float = None,
+        emotion: str = None,
+        emotion_score: float = None,
+        gender: str = None,
+        gender_score: float = None,
+        is_known_voiceprint: bool = None,
+        speaker: str = None,
+    ):
+        self.age = age
+        self.age_group = age_group
+        self.age_score = age_score
+        self.best_voiceprint_score = best_voiceprint_score
+        self.emotion = emotion
+        self.emotion_score = emotion_score
+        self.gender = gender
+        self.gender_score = gender_score
+        self.is_known_voiceprint = is_known_voiceprint
+        self.speaker = speaker
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.age is not None:
+            result['Age'] = self.age
+
+        if self.age_group is not None:
+            result['AgeGroup'] = self.age_group
+
+        if self.age_score is not None:
+            result['AgeScore'] = self.age_score
+
+        if self.best_voiceprint_score is not None:
+            result['BestVoiceprintScore'] = self.best_voiceprint_score
+
+        if self.emotion is not None:
+            result['Emotion'] = self.emotion
+
+        if self.emotion_score is not None:
+            result['EmotionScore'] = self.emotion_score
+
+        if self.gender is not None:
+            result['Gender'] = self.gender
+
+        if self.gender_score is not None:
+            result['GenderScore'] = self.gender_score
+
+        if self.is_known_voiceprint is not None:
+            result['IsKnownVoiceprint'] = self.is_known_voiceprint
+
+        if self.speaker is not None:
+            result['Speaker'] = self.speaker
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Age') is not None:
+            self.age = m.get('Age')
+
+        if m.get('AgeGroup') is not None:
+            self.age_group = m.get('AgeGroup')
+
+        if m.get('AgeScore') is not None:
+            self.age_score = m.get('AgeScore')
+
+        if m.get('BestVoiceprintScore') is not None:
+            self.best_voiceprint_score = m.get('BestVoiceprintScore')
+
+        if m.get('Emotion') is not None:
+            self.emotion = m.get('Emotion')
+
+        if m.get('EmotionScore') is not None:
+            self.emotion_score = m.get('EmotionScore')
+
+        if m.get('Gender') is not None:
+            self.gender = m.get('Gender')
+
+        if m.get('GenderScore') is not None:
+            self.gender_score = m.get('GenderScore')
+
+        if m.get('IsKnownVoiceprint') is not None:
+            self.is_known_voiceprint = m.get('IsKnownVoiceprint')
+
+        if m.get('Speaker') is not None:
+            self.speaker = m.get('Speaker')
 
         return self
 

@@ -1,3 +1,7 @@
+2026-07-24 Version: 9.2.2
+- Update API GetAgentTaskResult: add response parameters Body.Data.Response.VoiceprintResponse.
+
+
 2026-07-24 Version: 9.2.1
 - Update API GetAgentTaskResult: add response parameters Body.Data.Dialogues.
 - Update API GetAgentTaskResult: add response parameters Body.Data.ErrorMessage.
