@@ -12,9 +12,14 @@ class CreateYikeEditingProjectRequest(DaraModel):
         timeline: str = None,
         title: str = None,
     ):
+        # The cover URL of the cloud editing project.
         self.cover_url = cover_url
+        # The materials associated with the project. Separate multiple materials with commas (,). A maximum of 10 material IDs are supported for each type.
         self.material_maps = material_maps
+        # The timeline of the cloud editing project in JSON format.
         self.timeline = timeline
+        # The title of the cloud editing project.
+        # 
         # This parameter is required.
         self.title = title
 

@@ -66,13 +66,13 @@ class GetVideoGenerationJobResponseBodyVideoGenerationJob(DaraModel):
         self.aspect_ratio = aspect_ratio
         # The video duration. Unit: seconds.
         self.duration = duration
-        # The error message. This parameter is returned only when the task is in the Failed state.
+        # The error message. This parameter is returned when the task is in the Failed state.
         self.error_message = error_message
         # The task input.
         self.input = input
         # The task ID.
         self.job_id = job_id
-        # The task feature configuration. This parameter does not need to be set.
+        # The task feature configuration. You do not need to set this parameter.
         self.job_parameters = job_parameters
         # The task type.
         self.job_type = job_type
@@ -82,9 +82,9 @@ class GetVideoGenerationJobResponseBodyVideoGenerationJob(DaraModel):
         self.n = n
         # The generation result. The value is a JSON string that contains the following fields:
         # 
-        # Medias: a list of Media objects. Each Media object contains the following fields:
+        # Medias: a list of media information (Media objects). A Media object contains the following fields:
         # MediaId: String. The media asset ID.
-        # OutputUrl: String. The media URL (with the authentication string).
+        # OutputUrl: String. The media URL (with an authentication string).
         self.output = output
         # The resolution.
         self.resolution = resolution
@@ -97,7 +97,7 @@ class GetVideoGenerationJobResponseBodyVideoGenerationJob(DaraModel):
         # - Finished: The task is completed.
         # - Failed: The task failed.
         self.status = status
-        # The user business information.
+        # The custom business information.
         self.user_data = user_data
 
     def validate(self):

@@ -16,7 +16,7 @@ class PrecheckYikeAIAppJobResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The parameters that failed the pre-check. This parameter is returned only when the pre-check fails.
+        # The check results returned when the pre-check fails. Only the parameters that failed the check are returned.
         self.result = result
         # The pre-check result. Valid values:
         # 
@@ -70,7 +70,7 @@ class PrecheckYikeAIAppJobResponseBodyResult(DaraModel):
         error_code: str = None,
         key: str = None,
     ):
-        # The cause of the parameter check failure.
+        # The cause of the parameter check exception.
         self.error_code = error_code
         # The application parameter name.
         self.key = key

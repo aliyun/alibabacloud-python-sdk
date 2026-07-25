@@ -1140,6 +1140,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_yike_agent_job_with_options_async(request, runtime)
 
+    def get_yike_agent_job_estimated_credit_with_options(
+        self,
+        request: main_models.GetYikeAgentJobEstimatedCreditRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetYikeAgentJobEstimatedCreditResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.job_action):
+            body['JobAction'] = request.job_action
+        if not DaraCore.is_null(request.job_params):
+            body['JobParams'] = request.job_params
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetYikeAgentJobEstimatedCredit',
+            version = '2026-03-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetYikeAgentJobEstimatedCreditResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_yike_agent_job_estimated_credit_with_options_async(
+        self,
+        request: main_models.GetYikeAgentJobEstimatedCreditRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetYikeAgentJobEstimatedCreditResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.job_action):
+            body['JobAction'] = request.job_action
+        if not DaraCore.is_null(request.job_params):
+            body['JobParams'] = request.job_params
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetYikeAgentJobEstimatedCredit',
+            version = '2026-03-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetYikeAgentJobEstimatedCreditResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_yike_agent_job_estimated_credit(
+        self,
+        request: main_models.GetYikeAgentJobEstimatedCreditRequest,
+    ) -> main_models.GetYikeAgentJobEstimatedCreditResponse:
+        runtime = RuntimeOptions()
+        return self.get_yike_agent_job_estimated_credit_with_options(request, runtime)
+
+    async def get_yike_agent_job_estimated_credit_async(
+        self,
+        request: main_models.GetYikeAgentJobEstimatedCreditRequest,
+    ) -> main_models.GetYikeAgentJobEstimatedCreditResponse:
+        runtime = RuntimeOptions()
+        return await self.get_yike_agent_job_estimated_credit_with_options_async(request, runtime)
+
     def get_yike_asset_media_info_with_options(
         self,
         request: main_models.GetYikeAssetMediaInfoRequest,
@@ -1209,6 +1283,76 @@ class Client(OpenApiClient):
     ) -> main_models.GetYikeAssetMediaInfoResponse:
         runtime = RuntimeOptions()
         return await self.get_yike_asset_media_info_with_options_async(request, runtime)
+
+    def get_yike_job_credit_with_options(
+        self,
+        request: main_models.GetYikeJobCreditRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetYikeJobCreditResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.job_id):
+            body['JobId'] = request.job_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetYikeJobCredit',
+            version = '2026-03-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetYikeJobCreditResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_yike_job_credit_with_options_async(
+        self,
+        request: main_models.GetYikeJobCreditRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetYikeJobCreditResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.job_id):
+            body['JobId'] = request.job_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetYikeJobCredit',
+            version = '2026-03-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetYikeJobCreditResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_yike_job_credit(
+        self,
+        request: main_models.GetYikeJobCreditRequest,
+    ) -> main_models.GetYikeJobCreditResponse:
+        runtime = RuntimeOptions()
+        return self.get_yike_job_credit_with_options(request, runtime)
+
+    async def get_yike_job_credit_async(
+        self,
+        request: main_models.GetYikeJobCreditRequest,
+    ) -> main_models.GetYikeJobCreditResponse:
+        runtime = RuntimeOptions()
+        return await self.get_yike_job_credit_with_options_async(request, runtime)
 
     def get_yike_project_export_job_with_options(
         self,

@@ -48,9 +48,15 @@ from ._get_yike_account_credit_response import GetYikeAccountCreditResponse
 from ._get_yike_agent_job_request import GetYikeAgentJobRequest
 from ._get_yike_agent_job_response_body import GetYikeAgentJobResponseBody
 from ._get_yike_agent_job_response import GetYikeAgentJobResponse
+from ._get_yike_agent_job_estimated_credit_request import GetYikeAgentJobEstimatedCreditRequest
+from ._get_yike_agent_job_estimated_credit_response_body import GetYikeAgentJobEstimatedCreditResponseBody
+from ._get_yike_agent_job_estimated_credit_response import GetYikeAgentJobEstimatedCreditResponse
 from ._get_yike_asset_media_info_request import GetYikeAssetMediaInfoRequest
 from ._get_yike_asset_media_info_response_body import GetYikeAssetMediaInfoResponseBody
 from ._get_yike_asset_media_info_response import GetYikeAssetMediaInfoResponse
+from ._get_yike_job_credit_request import GetYikeJobCreditRequest
+from ._get_yike_job_credit_response_body import GetYikeJobCreditResponseBody
+from ._get_yike_job_credit_response import GetYikeJobCreditResponse
 from ._get_yike_project_export_job_request import GetYikeProjectExportJobRequest
 from ._get_yike_project_export_job_response_body import GetYikeProjectExportJobResponseBody
 from ._get_yike_project_export_job_response import GetYikeProjectExportJobResponse
@@ -218,9 +224,15 @@ __all__ = [
     GetYikeAgentJobRequest,
     GetYikeAgentJobResponseBody,
     GetYikeAgentJobResponse,
+    GetYikeAgentJobEstimatedCreditRequest,
+    GetYikeAgentJobEstimatedCreditResponseBody,
+    GetYikeAgentJobEstimatedCreditResponse,
     GetYikeAssetMediaInfoRequest,
     GetYikeAssetMediaInfoResponseBody,
     GetYikeAssetMediaInfoResponse,
+    GetYikeJobCreditRequest,
+    GetYikeJobCreditResponseBody,
+    GetYikeJobCreditResponse,
     GetYikeProjectExportJobRequest,
     GetYikeProjectExportJobResponseBody,
     GetYikeProjectExportJobResponse,

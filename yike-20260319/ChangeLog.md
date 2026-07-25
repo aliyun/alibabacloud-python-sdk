@@ -1,3 +1,8 @@
+2026-07-25 Version: 2.1.0
+- Support API GetYikeAgentJobEstimatedCredit.
+- Support API GetYikeJobCredit.
+
+
 2026-07-17 Version: 2.0.0
 - Support API CreateYikeEditingProject.
 - Support API GetYikeAccountCredit.

@@ -4,12 +4,12 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class ResumeYikeStoryboardJobRequest(DaraModel):
+class GetYikeJobCreditRequest(DaraModel):
     def __init__(
         self,
         job_id: str = None,
     ):
-        # The ID of the screenshot job.
+        # This parameter is required.
         self.job_id = job_id
 
     def validate(self):

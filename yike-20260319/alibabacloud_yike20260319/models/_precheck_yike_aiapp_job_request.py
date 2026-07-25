@@ -12,7 +12,7 @@ class PrecheckYikeAIAppJobRequest(DaraModel):
     ):
         # The AI application ID.
         self.app_id = app_id
-        # The input parameters for running the AI application. The value is a JSON-serialized string.
+        # The input parameters for running the AI application. The value is a string obtained after JSON serialize of the sequence.
         self.app_params = app_params
 
     def validate(self):

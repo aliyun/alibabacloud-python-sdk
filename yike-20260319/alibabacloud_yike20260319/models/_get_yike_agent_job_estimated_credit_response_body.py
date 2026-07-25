@@ -4,15 +4,13 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class ResumeYikeStoryboardJobResponseBody(DaraModel):
+class GetYikeAgentJobEstimatedCreditResponseBody(DaraModel):
     def __init__(
         self,
-        job_id: str = None,
+        estimated_credit_cost: float = None,
         request_id: str = None,
     ):
-        # The job ID. You can obtain this value from the response parameters of [SubmitPackageJob](https://help.aliyun.com/document_detail/461964.html).
-        self.job_id = job_id
-        # The request ID.
+        self.estimated_credit_cost = estimated_credit_cost
         self.request_id = request_id
 
     def validate(self):
@@ -23,8 +21,8 @@ class ResumeYikeStoryboardJobResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.job_id is not None:
-            result['JobId'] = self.job_id
+        if self.estimated_credit_cost is not None:
+            result['EstimatedCreditCost'] = self.estimated_credit_cost
 
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -33,8 +31,8 @@ class ResumeYikeStoryboardJobResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('JobId') is not None:
-            self.job_id = m.get('JobId')
+        if m.get('EstimatedCreditCost') is not None:
+            self.estimated_credit_cost = m.get('EstimatedCreditCost')
 
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
