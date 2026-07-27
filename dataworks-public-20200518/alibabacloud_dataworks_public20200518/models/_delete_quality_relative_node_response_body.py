@@ -14,17 +14,17 @@ class DeleteQualityRelativeNodeResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Indicates whether the node is disassociated from the partition filter expression.
+        # Indicates whether the scheduling association was successfully deleted.
         self.data = data
-        # The error code returned.
+        # The error code.
         self.error_code = error_code
-        # The error message returned.
+        # The error message.
         self.error_message = error_message
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the API call was successful.
         self.success = success
 
     def validate(self):

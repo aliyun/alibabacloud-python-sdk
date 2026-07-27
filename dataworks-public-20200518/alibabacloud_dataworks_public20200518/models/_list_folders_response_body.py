@@ -17,17 +17,17 @@ class ListFoldersResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The path of the folder.
+        # A list of folders that meet the specified criteria.
         self.data = data
-        # The total number of entries returned.
+        # The error code.
         self.error_code = error_code
-        # The page number.
+        # The error message.
         self.error_message = error_message
-        # The information about the folders.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # The number of entries per page.
+        # The ID of the request. Use this ID to troubleshoot issues.
         self.request_id = request_id
-        # The list of folders.
+        # Indicates whether the operation is successful.
         self.success = success
 
     def validate(self):
@@ -90,12 +90,13 @@ class ListFoldersResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # A list of folders.
         self.folders = folders
-        # The folder ID.
+        # The page number of the returned page.
         self.page_number = page_number
-        # http://100.67.165.184/business/api/folders/list
+        # The number of entries on the returned page.
         self.page_size = page_size
-        # ListFolders
+        # The total number of entries that meet the filter criteria.
         self.total_count = total_count
 
     def validate(self):
@@ -150,7 +151,9 @@ class ListFoldersResponseBodyDataFolders(DaraModel):
         folder_id: str = None,
         folder_path: str = None,
     ):
+        # The ID of the folder.
         self.folder_id = folder_id
+        # The path of the folder.
         self.folder_path = folder_path
 
     def validate(self):

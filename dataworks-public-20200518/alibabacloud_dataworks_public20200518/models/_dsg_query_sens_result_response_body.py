@@ -18,11 +18,11 @@ class DsgQuerySensResultResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The data returned.
+        # The returned data.
         self.data = data
-        # The error code. The value is the same as that of ErrorCode.
+        # The error code. The value is the same as ErrorCode.
         self.dynamic_error_code = dynamic_error_code
-        # The error message. The value is the same as that of ErrorMessage.
+        # The error message. The value is the same as ErrorMessage.
         self.dynamic_error_message = dynamic_error_message
         # The error code.
         self.error_code = error_code
@@ -30,12 +30,11 @@ class DsgQuerySensResultResponseBody(DaraModel):
         self.error_message = error_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The request ID.
+        # The request ID. It is a unique identifier for the request.
         self.request_id = request_id
-        # Indicates whether the request was successful.
-        # 
-        # *   true
-        # *   false
+        # Indicates whether the call was successful. Valid values:
+        # - true: successful.
+        # - false: failed.
         self.success = success
 
     def validate(self):

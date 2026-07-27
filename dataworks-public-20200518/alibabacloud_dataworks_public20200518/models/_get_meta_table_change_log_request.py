@@ -19,8 +19,9 @@ class GetMetaTableChangeLogRequest(DaraModel):
         self.change_type = change_type
         # The end of the time range to query. Specify the time in the yyyy-MM-dd HH:mm:ss format.
         # 
-        # *   By default, the system uses the current time as the value of this parameter if the time that you specify is invalid.
-        # *   If both the values of the StartDate and EndDate parameters are invalid, the system automatically queries the change logs that are generated within the last 30 days.
+        # - By default, the system uses the current time as the value of this parameter if the time that you specify is invalid.
+        # 
+        # - If both the values of the StartDate and EndDate parameters are invalid, the system automatically queries the change logs that are generated within the last 30 days.
         self.end_date = end_date
         # The entity on which the change is made. Valid values: TABLE and PARTITION.
         self.object_type = object_type
@@ -30,8 +31,9 @@ class GetMetaTableChangeLogRequest(DaraModel):
         self.page_size = page_size
         # The beginning of the time range to query. Specify the time in the yyyy-MM-dd HH:mm:ss format.
         # 
-        # *   By default, the system uses the current time as the value of this parameter if the time that you specify is invalid.
-        # *   If both the values of the StartDate and EndDate parameters are invalid, the system automatically queries the change logs that are generated within the last 30 days.
+        # - By default, the system uses the current time as the value of this parameter if the time that you specify is invalid.
+        # 
+        # - If both the values of the StartDate and EndDate parameters are invalid, the system automatically queries the change logs that are generated within the last 30 days.
         self.start_date = start_date
         # The GUID of the table. Specify the GUID in the odps.projectName.tableName format. You can call the [GetMetaDBTableList](https://help.aliyun.com/document_detail/2780086.html) operation to query the GUID.
         # 

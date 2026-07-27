@@ -127,17 +127,21 @@ class ListProjectMembersResponseBodyDataProjectMemberList(DaraModel):
         self.project_member_name = project_member_name
         # The type of the member. Valid values:
         # 
-        # *   1: USER_ALIYUN, which indicates that the member is an Alibaba Cloud account.
-        # *   5: USER_UBACCOUNT, which indicates that the member is a RAM user.
-        # *   6: USER_STS_ROLE, which indicates that the member is a RAM role.
+        # - 1: USER_ALIYUN, which indicates that the member is an Alibaba Cloud account.
+        # 
+        # - 5: USER_UBACCOUNT, which indicates that the member is a RAM user.
+        # 
+        # - 6: USER_STS_ROLE, which indicates that the member is a RAM role.
         self.project_member_type = project_member_type
         # The roles that are assigned to the member.
         self.project_role_list = project_role_list
         # The status of the member. Valid values:
         # 
-        # *   0: NORMAL, which indicates that the member is in a normal state.
-        # *   1: FORBIDDEN, which indicates that the member is disabled.
-        # *   2: DELETED, which indicates that the member is deleted.
+        # - 0: NORMAL, which indicates that the member is in a normal state.
+        # 
+        # - 1: FORBIDDEN, which indicates that the member is disabled.
+        # 
+        # - 2: DELETED, which indicates that the member is deleted.
         self.status = status
 
     def validate(self):
@@ -214,8 +218,9 @@ class ListProjectMembersResponseBodyDataProjectMemberListProjectRoleList(DaraMod
         self.project_role_name = project_role_name
         # The type of the role. Valid values:
         # 
-        # *   0: SYSTEM, which indicates that the role is a built-in role.
-        # *   2: USER_CUSTOM, which indicates that the role is a custom role.
+        # - 0: SYSTEM, which indicates that the role is a built-in role.
+        # 
+        # - 2: USER_CUSTOM, which indicates that the role is a custom role.
         self.project_role_type = project_role_type
 
     def validate(self):

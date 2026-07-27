@@ -13,7 +13,7 @@ class ListPermissionApplyOrdersResponseBody(DaraModel):
         apply_orders: main_models.ListPermissionApplyOrdersResponseBodyApplyOrders = None,
         request_id: str = None,
     ):
-        # The paginated query results of permission requests.
+        # The paginated query results of permission application orders.
         self.apply_orders = apply_orders
         # The request ID.
         self.request_id = request_id
@@ -54,13 +54,13 @@ class ListPermissionApplyOrdersResponseBodyApplyOrders(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The list of permission requests.
+        # The list of permission application orders.
         self.apply_order = apply_order
         # The page number.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The total number of permission requests returned.
+        # The total number of permission application orders returned.
         self.total_count = total_count
 
     def validate(self):
@@ -120,24 +120,24 @@ class ListPermissionApplyOrdersResponseBodyApplyOrdersApplyOrder(DaraModel):
         flow_id: str = None,
         flow_status: int = None,
     ):
-        # The Alibaba Cloud account ID of the user who submitted the permission request.
+        # The Alibaba Cloud user UID that submitted the application order.
         self.apply_base_id = apply_base_id
-        # The time when the permission request was submitted, in Unix timestamp format.
+        # The submission time of the application order, displayed as a UNIX timestamp.
         self.apply_timestamp = apply_timestamp
-        # The content of the permission request.
+        # The content of the application order.
         self.approve_content = approve_content
         # The final approval comment.
         self.finish_approval_comment = finish_approval_comment
-        # The final approval timestamp. Displayed as a Unix timestamp.
+        # The final approval completion time, displayed as a UNIX timestamp.
         self.finish_approval_timestamp = finish_approval_timestamp
-        # The permission request ID.
+        # The application order ID.
         self.flow_id = flow_id
-        # The status of the permission request. Valid values:
-        # 
-        # *   1: Pending approval
-        # *   2: Approved and authorization succeeded
-        # *   3: Approved but authorization failed
-        # *   4: Rejected
+        # The status of the application order. Valid values:
+        # - 1: Pending approval.
+        # - 2: Approved, authorization succeeded.
+        # - 3: Approved, authorization failed.
+        # - 4: Rejected.
+        # - 5: Withdrawn.
         self.flow_status = flow_status
 
     def validate(self):
@@ -205,11 +205,11 @@ class ListPermissionApplyOrdersResponseBodyApplyOrdersApplyOrderApproveContent(D
         order_type: int = None,
         project_meta: main_models.ListPermissionApplyOrdersResponseBodyApplyOrdersApplyOrderApproveContentProjectMeta = None,
     ):
-        # The reason for the permission request, which is used by administrators for evaluation and approval.
+        # The reason for the application, used by the administrator for evaluation and approval.
         self.apply_reason = apply_reason
-        # The type of permission request. Only the value 1 is supported, which indicates an ACL permission request for objects.
+        # The application order type. Currently, only the value 1 is supported, indicating an object ACL permission application.
         self.order_type = order_type
-        # The content of the requested object.
+        # The content of the applied object.
         self.project_meta = project_meta
 
     def validate(self):
@@ -252,9 +252,9 @@ class ListPermissionApplyOrdersResponseBodyApplyOrdersApplyOrderApproveContentPr
         object_meta_list: List[main_models.ListPermissionApplyOrdersResponseBodyApplyOrdersApplyOrderApproveContentProjectMetaObjectMetaList] = None,
         workspace_name: str = None,
     ):
-        # The information about the requested object.
+        # The information about the applied objects.
         self.object_meta_list = object_meta_list
-        # The name of the DataWorks workspace that contains the MaxCompute project for which permissions are requested.
+        # The name of the DataWorks workspace to which the MaxCompute project with the requested permissions belongs.
         self.workspace_name = workspace_name
 
     def validate(self):
@@ -297,9 +297,9 @@ class ListPermissionApplyOrdersResponseBodyApplyOrdersApplyOrderApproveContentPr
         actions: List[str] = None,
         object_name: str = None,
     ):
-        # The operation type.
+        # The action types.
         self.actions = actions
-        # The name of the requested table.
+        # The name of the applied table.
         self.object_name = object_name
 
     def validate(self):

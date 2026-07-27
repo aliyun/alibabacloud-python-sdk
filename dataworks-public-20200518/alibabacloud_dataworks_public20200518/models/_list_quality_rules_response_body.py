@@ -17,7 +17,7 @@ class ListQualityRulesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The list of retrieved rules.
+        # The paginated list of quality rules.
         self.data = data
         # The error code.
         self.error_code = error_code
@@ -25,12 +25,13 @@ class ListQualityRulesResponseBody(DaraModel):
         self.error_message = error_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The request ID. You can troubleshoot errors based on the ID.
+        # The ID of the request.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.success = success
 
     def validate(self):
@@ -95,9 +96,9 @@ class ListQualityRulesResponseBodyData(DaraModel):
     ):
         # The page number.
         self.page_number = page_number
-        # The number of entries per page. Default value: 10. Maximum value: 100.
+        # The number of entries per page. A valid value is 1 to 100. Default value: 10.
         self.page_size = page_size
-        # The details of the validation rule.
+        # The details of the quality rule.
         self.rules = rules
         # The total number of entries returned.
         self.total_count = total_count
@@ -180,34 +181,36 @@ class ListQualityRulesResponseBodyDataRules(DaraModel):
     ):
         # The strength of the monitoring rule. The strength of a monitoring rule indicates the importance of the rule. Valid values:
         # 
-        # *   1: The monitoring rule is a strong rule.
-        # *   0: The monitoring rule is a weak rule. You can specify the strength of a monitoring rule based on your business requirements. If a monitoring rule is a strong rule and the critical threshold is exceeded, a critical alert is reported and tasks that are associated with the rule are blocked from running.
+        # - `1`: The monitoring rule is a strong rule.
+        # 
+        # - `0`: The monitoring rule is a weak rule.
+        #   You can specify a monitoring rule as a strong rule based on your business requirements. If a strong rule is triggered, a critical alert is reported and the scheduling of the task is blocked.
         self.block_type = block_type
         # The checker ID.
         self.checker_id = checker_id
         # The description of the monitoring rule.
         self.comment = comment
-        # The threshold for a critical alert. The threshold indicates the deviation of the monitoring result from the expected value. You can specify a custom value for the threshold based on your business requirements. If a monitoring rule is a strong rule and the critical threshold is exceeded, a critical alert is reported and tasks that are associated with the rule are blocked from running.
+        # The threshold for a critical alert. The threshold specifies the deviation of a monitoring result from the expected value. You can customize the threshold based on your business requirements. If a strong rule is used and a critical alert is triggered, the scheduling of the task is blocked.
         self.critical_threshold = critical_threshold
         # The ID of the partition filter expression.
         self.entity_id = entity_id
         # The expected value.
         self.expect_value = expect_value
-        # Indicates whether the monitoring is performed based on a fixed value.
+        # Indicates whether a fixed value is used for the check.
         self.fix_check = fix_check
         # The historical threshold for a critical alert.
         self.history_critical_threshold = history_critical_threshold
         # The historical threshold for a warning alert.
         self.history_warning_threshold = history_warning_threshold
-        # The monitoring rule ID.
+        # The ID of the monitoring rule.
         self.id = id
         # The partition filter expression.
         self.match_expression = match_expression
-        # The ID of the task that is associated with the partition filter expression.
+        # The ID of the method used to collect sample data.
         self.method_id = method_id
-        # The method that is used to collect sample data, such as avg, count, sum, min, max, count_distinct, user_defined, table_count, table_size, table_dt_load_count, table_dt_refuseload_count, null_value, null_value/table_count, (table_count-count_distinct)/table_count, or table_count-count_distinct.
+        # The name of the method used to collect sample data, such as `avg`, `count`, `sum`, `min`, `max`, `count_distinct`, `user_defined`, `table_count`, `table_size`, `table_dt_load_count`, `table_dt_refuseload_count`, `null_value`, `null_value/table_count`, `(table_count-count_distinct)/table_count`, or `table_count-count_distinct`.
         self.method_name = method_name
-        # The name of the Alibaba Cloud account that is used to configure the monitoring rule.
+        # The ID of the Alibaba Cloud account that is used to configure the monitoring rule.
         self.on_duty = on_duty
         # The name of the Alibaba Cloud account that is used to configure the monitoring rule.
         self.on_duty_account_name = on_duty_account_name
@@ -215,17 +218,19 @@ class ListQualityRulesResponseBodyDataRules(DaraModel):
         self.project_name = project_name
         # The name of the field.
         self.property = property
-        # The field that is used to associate with monitoring rules at the frontend. This parameter can be ignored.
+        # This parameter is not used. You can ignore this parameter.
         self.property_key = property_key
-        # The ID of the task that is associated with the partition filter expression.
+        # The internal association ID for the rule details.
         self.rule_checker_relation_id = rule_checker_relation_id
         # The name of the monitoring rule.
         self.rule_name = rule_name
-        # Rule type:
+        # The type of the monitoring rule. Valid values:
         # 
-        # *   0: System template rule
-        # *   1: Custom SQL rule
-        # *   1: Custom template rule
+        # - `0`: The monitoring rule is created by the system.
+        # 
+        # - `1`: The monitoring rule is created by a user.
+        # 
+        # - `2`: The monitoring rule is a workspace-level rule.
         self.rule_type = rule_type
         # The name of the table.
         self.table_name = table_name
@@ -235,7 +240,7 @@ class ListQualityRulesResponseBodyDataRules(DaraModel):
         self.template_name = template_name
         # The trend of the monitoring result.
         self.trend = trend
-        # The threshold for a warning alert. The threshold specifies the deviation of the monitoring result from the expected value. You can specify a custom value for the threshold based on your business requirements.
+        # The threshold for a warning alert. The threshold specifies the deviation of a monitoring result from the expected value. You can customize the threshold based on your business requirements.
         self.warning_threshold = warning_threshold
 
     def validate(self):

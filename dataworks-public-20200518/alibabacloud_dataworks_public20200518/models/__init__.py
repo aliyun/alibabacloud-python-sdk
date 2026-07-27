@@ -253,6 +253,12 @@ from ._dsg_desens_plan_update_status_request import DsgDesensPlanUpdateStatusReq
 from ._dsg_desens_plan_update_status_shrink_request import DsgDesensPlanUpdateStatusShrinkRequest
 from ._dsg_desens_plan_update_status_response_body import DsgDesensPlanUpdateStatusResponseBody
 from ._dsg_desens_plan_update_status_response import DsgDesensPlanUpdateStatusResponse
+from ._dsg_get_visit_detail_request import DsgGetVisitDetailRequest
+from ._dsg_get_visit_detail_response_body import DsgGetVisitDetailResponseBody
+from ._dsg_get_visit_detail_response import DsgGetVisitDetailResponse
+from ._dsg_get_visit_stat_request import DsgGetVisitStatRequest
+from ._dsg_get_visit_stat_response_body import DsgGetVisitStatResponseBody
+from ._dsg_get_visit_stat_response import DsgGetVisitStatResponse
 from ._dsg_platform_query_projects_and_schema_from_meta_request import DsgPlatformQueryProjectsAndSchemaFromMetaRequest
 from ._dsg_platform_query_projects_and_schema_from_meta_response_body import DsgPlatformQueryProjectsAndSchemaFromMetaResponseBody
 from ._dsg_platform_query_projects_and_schema_from_meta_response import DsgPlatformQueryProjectsAndSchemaFromMetaResponse
@@ -262,6 +268,12 @@ from ._dsg_query_default_templates_response import DsgQueryDefaultTemplatesRespo
 from ._dsg_query_desens_status_list_request import DsgQueryDesensStatusListRequest
 from ._dsg_query_desens_status_list_response_body import DsgQueryDesensStatusListResponseBody
 from ._dsg_query_desens_status_list_response import DsgQueryDesensStatusListResponse
+from ._dsg_query_details_request import DsgQueryDetailsRequest
+from ._dsg_query_details_response_body import DsgQueryDetailsResponseBody
+from ._dsg_query_details_response import DsgQueryDetailsResponse
+from ._dsg_query_row_detail_request import DsgQueryRowDetailRequest
+from ._dsg_query_row_detail_response_body import DsgQueryRowDetailResponseBody
+from ._dsg_query_row_detail_response import DsgQueryRowDetailResponse
 from ._dsg_query_sens_result_request import DsgQuerySensResultRequest
 from ._dsg_query_sens_result_response_body import DsgQuerySensResultResponseBody
 from ._dsg_query_sens_result_response import DsgQuerySensResultResponse
@@ -1673,6 +1685,12 @@ __all__ = [
     DsgDesensPlanUpdateStatusShrinkRequest,
     DsgDesensPlanUpdateStatusResponseBody,
     DsgDesensPlanUpdateStatusResponse,
+    DsgGetVisitDetailRequest,
+    DsgGetVisitDetailResponseBody,
+    DsgGetVisitDetailResponse,
+    DsgGetVisitStatRequest,
+    DsgGetVisitStatResponseBody,
+    DsgGetVisitStatResponse,
     DsgPlatformQueryProjectsAndSchemaFromMetaRequest,
     DsgPlatformQueryProjectsAndSchemaFromMetaResponseBody,
     DsgPlatformQueryProjectsAndSchemaFromMetaResponse,
@@ -1682,6 +1700,12 @@ __all__ = [
     DsgQueryDesensStatusListRequest,
     DsgQueryDesensStatusListResponseBody,
     DsgQueryDesensStatusListResponse,
+    DsgQueryDetailsRequest,
+    DsgQueryDetailsResponseBody,
+    DsgQueryDetailsResponse,
+    DsgQueryRowDetailRequest,
+    DsgQueryRowDetailResponseBody,
+    DsgQueryRowDetailResponse,
     DsgQuerySensResultRequest,
     DsgQuerySensResultResponseBody,
     DsgQuerySensResultResponse,

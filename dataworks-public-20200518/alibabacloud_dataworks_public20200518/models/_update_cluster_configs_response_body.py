@@ -16,8 +16,9 @@ class UpdateClusterConfigsResponseBody(DaraModel):
     ):
         # Indicates whether the update was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.data = data
         # The error code.
         self.error_code = error_code
@@ -29,8 +30,9 @@ class UpdateClusterConfigsResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.success = success
 
     def validate(self):

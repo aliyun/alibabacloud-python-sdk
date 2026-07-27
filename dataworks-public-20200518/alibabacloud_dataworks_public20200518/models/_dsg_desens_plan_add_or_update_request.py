@@ -12,7 +12,7 @@ class DsgDesensPlanAddOrUpdateRequest(DaraModel):
         self,
         desens_rules: List[main_models.DsgDesensPlanAddOrUpdateRequestDesensRules] = None,
     ):
-        # A collection of data masking rules that you want to add or modify.
+        # The collection of data masking rules to add or update.
         # 
         # This parameter is required.
         self.desens_rules = desens_rules
@@ -61,16 +61,17 @@ class DsgDesensPlanAddOrUpdateRequestDesensRules(DaraModel):
     ):
         # Specifies whether to add a watermark. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: Adds a watermark.
+        # 
+        # - false: Does not add a watermark.
         self.check_watermark = check_watermark
-        # The sensitive field type.
+        # The sensitive data type.
         self.data_type = data_type
-        # The data masking rule.
+        # The configuration of the data masking method.
         # 
         # This parameter is required.
         self.desens_plan = desens_plan
-        # The ID of the data masking rule. You can call the [DsgDesensPlanQueryList](https://help.aliyun.com/document_detail/2786578.html) operation to query the ID of the data masking rule.
+        # The data masking rule ID. You can call the [DsgDesensPlanQueryList](https://help.aliyun.com/document_detail/2786578.html) operation to obtain it.
         self.id = id
         # The owner of the data masking rule.
         # 
@@ -80,15 +81,17 @@ class DsgDesensPlanAddOrUpdateRequestDesensRules(DaraModel):
         # 
         # This parameter is required.
         self.rule_name = rule_name
-        # The level-2 data masking scenario.
+        # The secondary data masking scenes.
         # 
         # This parameter is required.
         self.scene_ids = scene_ids
         # The status of the data masking rule. Valid values:
         # 
-        # *   0: expired
-        # *   1: effective
+        # - 0: Disabled
+        # 
+        # - 1: Enabled
         self.status = status
+        # The associated columns for masking.
         self.columns = columns
         self.empty_not_desens = empty_not_desens
 
@@ -185,12 +188,20 @@ class DsgDesensPlanAddOrUpdateRequestDesensRulesColumns(DaraModel):
         project: str = None,
         table: str = None,
     ):
+        # The column name.
+        # 
         # This parameter is required.
         self.column = column
+        # The data source type.
+        # 
         # This parameter is required.
         self.db_type = db_type
+        # The name of the DataWorks workspace.
+        # 
         # This parameter is required.
         self.project = project
+        # The table name.
+        # 
         # This parameter is required.
         self.table = table
 
@@ -238,19 +249,25 @@ class DsgDesensPlanAddOrUpdateRequestDesensRulesDesensPlan(DaraModel):
         desens_plan_type: str = None,
         ext_param: Dict[str, Any] = None,
     ):
-        # The masking method configured in the data masking rule. Valid values:
+        # The data masking method. Valid values:
         # 
-        # *   hash
-        # *   mapping
-        # *   mask
-        # *   charreplacement
-        # *   intervalselect
-        # *   decimalpoint
-        # *   emptydesens
+        # - hash: hashing
+        # 
+        # - mapping: pseudonymization
+        # 
+        # - mask: masking
+        # 
+        # - charreplacement: character replacement
+        # 
+        # - intervalselect: interval transformation
+        # 
+        # - decimalpoint: rounding
+        # 
+        # - emptydesens: nullification
         # 
         # This parameter is required.
         self.desens_plan_type = desens_plan_type
-        # The parameters for the data masking rule.
+        # The parameters for the data masking method.
         self.ext_param = ext_param
 
     def validate(self):

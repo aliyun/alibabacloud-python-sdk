@@ -17,27 +17,27 @@ class GetMetaTablePartitionRequest(DaraModel):
         table_guid: str = None,
         table_name: str = None,
     ):
-        # The ID of the EMR cluster. This parameter is required only if you set the DataSourceType parameter to emr.
+        # The ID of the EMR cluster. Required only if **DataSourceType** is **EMR**.
         # 
-        # You can log on to the [EMR console](https://emr.console.aliyun.com/?spm=a2c4g.11186623.0.0.965cc5c2GeiHet#/cn-hangzhou) to obtain the ID.
+        # Log on to the [EMR console](https://emr.console.aliyun.com/?spm=a2c4g.11186623.0.0.965cc5c2GeiHet#/cn-hangzhou) to obtain the cluster ID.
         self.cluster_id = cluster_id
-        # The type of the data source. Valid values: odps and emr.
+        # The data source type. Valid values: ODPS and EMR.
         self.data_source_type = data_source_type
-        # The name of the database. This parameter is required only if you set the DataSourceType parameter to emr.
+        # The name of the database. Required only if **DataSourceType** is **EMR**.
         # 
-        # You can call the [ListMetaDB](https://help.aliyun.com/document_detail/2780105.html) operation to query the name of the metadatabase.
+        # Call the [ListMetaDB](https://help.aliyun.com/document_detail/2780105.html) operation to query the database name.
         self.database_name = database_name
         # The page number.
         self.page_number = page_number
         # The number of entries per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
-        # The logic for sorting partitions in the metatable.
+        # The partition sorting logic.
         self.sort_criterion = sort_criterion
-        # The unique identifier of the metatable.
+        # The unique identifier of the table.
         self.table_guid = table_guid
-        # The name of the metatable in the EMR cluster. This parameter is required only if you set the DataSourceType parameter to emr.
+        # The name of the EMR table. Required only if **DataSourceType** is **EMR**.
         # 
-        # You can call the [GetMetaDBTableList](https://help.aliyun.com/document_detail/2780086.html) operation to query the name of the metatable.
+        # Call the [GetMetaDBTableList](https://help.aliyun.com/document_detail/2780086.html) operation to query the table name.
         self.table_name = table_name
 
     def validate(self):
@@ -110,9 +110,9 @@ class GetMetaTablePartitionRequestSortCriterion(DaraModel):
         order: str = None,
         sort_field: str = None,
     ):
-        # The order in which partitions in the metatable are sorted. Valid values: asc and desc. Default value: desc.
+        # The sort order. Valid values: **asc** and **desc**. Default value: **desc**.
         self.order = order
-        # The field that is used to sort partitions in the metatable. Valid values: name and modify_time. By default, partitions in the metatable are sorted based on their creation time.
+        # The field used to sort the partitions. Valid values: **name** and **modify_time**. Default value: the creation time of the partition.
         self.sort_field = sort_field
 
     def validate(self):

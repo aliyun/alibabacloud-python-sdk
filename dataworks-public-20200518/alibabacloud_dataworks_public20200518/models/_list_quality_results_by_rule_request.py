@@ -17,7 +17,7 @@ class ListQualityResultsByRuleRequest(DaraModel):
     ):
         # The end of the time range to query. Specify the time in the yyyy-MM-dd HH:mm:ss format.
         # 
-        # This parameter is used together with the StartDate parameter. The interval between the time specified by this parameter and the time specified by the StartDate parameter cannot exceed 7 days.
+        # You must configure this parameter together with the StartDate parameter. The time range to query cannot exceed 7 days.
         # 
         # This parameter is required.
         self.end_date = end_date
@@ -25,23 +25,23 @@ class ListQualityResultsByRuleRequest(DaraModel):
         # 
         # This parameter is required.
         self.page_number = page_number
-        # The number of entries per page. Default value: 10. Maximum value: 100.
+        # The number of entries per page. Default value: 10. Maximum value: 20.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The DataWorks workspace ID.
+        # The ID of the DataWorks workspace.
         self.project_id = project_id
-        # The name of the compute engine or data source for which data quality is monitored.
+        # The name of the compute engine or data source for which you want to perform data quality monitoring.
         # 
         # This parameter is required.
         self.project_name = project_name
-        # The monitoring rule ID. You can use the ID and information such as a partition filter expression to perform a joint query.
+        # The ID of the monitoring rule. You can use the rule ID and a partition filter to query the monitoring results of the rule.
         # 
         # This parameter is required.
         self.rule_id = rule_id
         # The beginning of the time range to query. Specify the time in the yyyy-MM-dd HH:mm:ss format.
         # 
-        # This parameter is used together with the EndDate parameter. The interval between the time specified by this parameter and the time specified by the EndDate parameter cannot exceed 7 days.
+        # You must configure this parameter together with the EndDate parameter. The time range to query cannot exceed 7 days.
         # 
         # This parameter is required.
         self.start_date = start_date

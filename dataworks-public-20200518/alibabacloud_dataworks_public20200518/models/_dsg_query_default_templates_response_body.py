@@ -19,18 +19,19 @@ class DsgQueryDefaultTemplatesResponseBody(DaraModel):
     ):
         # The data returned.
         self.data = data
-        # The error code.
+        # The error code returned if the request fails.
         self.error_code = error_code
-        # The error message.
+        # The error message returned if the request fails.
         self.error_message = error_message
-        # The HTTP status code.
+        # The HTTP status code returned.
         self.http_status_code = http_status_code
-        # The request ID. You can use the ID to locate logs and troubleshoot issues.
+        # The Request ID. You can use this ID to troubleshoot issues.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: The request was successful.
+        # 
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -97,9 +98,9 @@ class DsgQueryDefaultTemplatesResponseBodyData(DaraModel):
         data_type: str = None,
         desens_plan_template: Dict[str, List[main_models.DataDesensPlanTemplateValue]] = None,
     ):
-        # The sensitive field type.
+        # The Sensitive Data Type.
         self.data_type = data_type
-        # The supported data masking methods and parameter descriptions.
+        # A list of supported Desensitization Methods and their parameter descriptions.
         self.desens_plan_template = desens_plan_template
 
     def validate(self):

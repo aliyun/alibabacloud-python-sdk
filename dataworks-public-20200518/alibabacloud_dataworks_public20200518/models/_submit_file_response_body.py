@@ -14,7 +14,7 @@ class SubmitFileResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The deployment package ID. The ID is used as the value of a specific request parameter when you call the [GetDeployment](https://help.aliyun.com/document_detail/173950.html) operation to query the details of the deployment operation.
+        # The deployment ID. Call the [GetDeployment](https://help.aliyun.com/document_detail/173950.html) operation with this ID to query the deployment details.
         self.data = data
         # The error code.
         self.error_code = error_code
@@ -22,7 +22,7 @@ class SubmitFileResponseBody(DaraModel):
         self.error_message = error_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The request ID.
+        # The request ID, which is used for troubleshooting.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success

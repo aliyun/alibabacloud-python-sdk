@@ -21,29 +21,42 @@ class CreatePermissionApplyOrderRequest(DaraModel):
         order_type: int = None,
         workspace_id: int = None,
     ):
-        # The list of requested objects.
+        # The list of objects for which permissions are requested.
         # 
         # This parameter is required.
         self.apply_object = apply_object
-        # The reason for your request. The administrator determines whether to approve the request based on the reason.
+        # The reason for the request. This is used by the administrator for evaluation and approval.
         # 
         # This parameter is required.
         self.apply_reason = apply_reason
+        # The type of the request order. Valid values:
+        # 
+        # - MaxComputeTable: MaxCompute table permission request order.
+        # - MaxComputeFunction: MaxCompute function permission request order.
+        # - MaxComputeResource: MaxCompute resource permission request order.
+        # - DLFSchema: Data Lake Formation (DLF) 1.0 schema permission request order.
+        # - DLFTable: DLF 1.0 table permission request order.
+        # - DLFColumn: DLF 1.0 column permission request order.
+        # - DsApiDeploy: Data service publication permission request order.
         self.apply_type = apply_type
-        # The ID of the Alibaba Cloud account for which you want to request permissions. If you want to request permissions for multiple Alibaba Cloud accounts, separate the IDs of the accounts with commas (,).
+        # The UIDs of the Alibaba Cloud accounts for which permissions are requested. Separate multiple account UIDs with commas (,).
         # 
         # This parameter is required.
         self.apply_user_ids = apply_user_ids
+        # The name of the data catalog to query. Go to the [Data Lake Formation console](https://dlf.console.aliyun.com/ap-southeast-1/metadata/catalog?spm=a2c4g.11186623.0.0.5a225658pT4Dkr) to view the data catalog name.
         self.catalog_name = catalog_name
-        # The expiration time of the permissions that you request. This value is a UNIX timestamp. The default value is January 1, 2065. If LabelSecurity is disabled for the MaxCompute project in which you want to request permissions on the fields of a table, or the security level of the fields is 0 or is lower than or equal to the security level of the Alibaba Cloud account for which you want to request permissions, you can request only permanent permissions. You can go to the Workspace Management page in the DataWorks console, click MaxCompute Management in the left-side navigation pane, and then check whether column-level access control is enabled. You can go to your DataWorks workspace, view the security level of the fields in Data Map, and then view the security level of the Alibaba Cloud account on the User Management page.
+        # The expiration time of the requested permissions. Specify a UNIX timestamp. If you do not specify this parameter, the default expiration time is January 1, 2065.
+        # If LabelSecurity is not enabled for the MaxCompute project, or the security level of the requested table field is 0 or less than or equal to the security level of the requesting account, you can request only permanent permissions.
+        # Go to the management page of the DataWorks workspace and check the advanced configuration page of the MaxCompute engine to verify whether column-level access control is enabled.
+        # Go to the DataWorks workspace to view the security level of fields in Data Map and the security level of accounts on the Member Management page.
         self.deadline = deadline
-        # The type of compute engine for permission requests. Currently only supports ODPS, which means only MaxCompute compute engine permissions are supported.
+        # This field is deprecated. Set it to empty.
         self.engine_type = engine_type
-        # The name of the MaxCompute project you request access to.
+        # The name of the MaxCompute project for which permissions are requested.
         self.max_compute_project_name = max_compute_project_name
-        # The request type. The only supported value is 1, which represents an object ACL permission request.
+        # This field is deprecated. Set it to empty.
         self.order_type = order_type
-        # The DataWorks workspace ID to which the MaxCompute project belongs for permission requests. You can check the workspace ID on the DataWorks workspace configuration page.
+        # The ID of the DataWorks workspace to which the MaxCompute project belongs. Go to the DataWorks workspace configuration page to obtain the workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -135,11 +148,11 @@ class CreatePermissionApplyOrderRequestApplyObject(DaraModel):
         column_meta_list: List[main_models.CreatePermissionApplyOrderRequestApplyObjectColumnMetaList] = None,
         name: str = None,
     ):
-        # The type of permissions requested. Use commas (,) to separate multiple permission types in a single request. Currently only supports Select, Describe, Drop, Alter, Update, and Download permission types.
+        # The permission types to request. Separate multiple permission types with commas (,). Only Select, Describe, Drop, Alter, Update, and Download types are supported.
         self.actions = actions
         # The list of column objects.
         self.column_meta_list = column_meta_list
-        # The object you request access to. Currently, only permission requests for MaxCompute tables are supported. The name of the target table needs to be entered here.
+        # The object for which permissions are requested. Only MaxCompute table permissions are supported. Enter the name of the target table.
         self.name = name
 
     def validate(self):
@@ -188,8 +201,10 @@ class CreatePermissionApplyOrderRequestApplyObjectColumnMetaList(DaraModel):
         actions: str = None,
         name: str = None,
     ):
+        # The permission types to request. Separate multiple permission types with commas (,). Only Select, Describe, and Download types are supported.
         self.actions = actions
-        # Permissions for the target columns. Enter the column names here. If applying for permissions on the entire table, enter all column names of the table. Permissions for specific columns can only be requested if labelSecurity is enabled for the MaxCompute project. Otherwise, you can only apply for permissions on the entire table.
+        # The name of the column for which permissions are requested. To request permissions on the entire table, enter all column names of the table.
+        # You can request permissions on specific columns only if LabelSecurity is enabled for the MaxCompute project. If LabelSecurity is not enabled, you can request permissions only on the entire table.
         self.name = name
 
     def validate(self):

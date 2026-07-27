@@ -14,15 +14,15 @@ class DeleteQualityRuleResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Indicates whether the monitoring rule was deleted.
+        # Indicates whether the data quality rule was successfully deleted.
         self.data = data
-        # The error code.
+        # The error code returned if the request fails.
         self.error_code = error_code
-        # The error message.
+        # The error message returned if the request fails.
         self.error_message = error_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success

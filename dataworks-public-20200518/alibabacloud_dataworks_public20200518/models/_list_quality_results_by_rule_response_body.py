@@ -17,7 +17,7 @@ class ListQualityResultsByRuleResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The data structure of the monitoring results returned.
+        # The top-level object of the check result.
         self.data = data
         # The error code.
         self.error_code = error_code
@@ -94,9 +94,9 @@ class ListQualityResultsByRuleResponseBodyData(DaraModel):
         self.page_number = page_number
         # The number of entries per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
-        # The returned monitoring results.
+        # A list of check results.
         self.rule_checks = rule_checks
-        # The total number of entries returned.
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -191,22 +191,23 @@ class ListQualityResultsByRuleResponseBodyDataRuleChecks(DaraModel):
         warning_threshold: float = None,
         where_condition: str = None,
     ):
-        # The partition in the monitored data source table.
+        # The actual data partition that was checked.
         self.actual_expression = actual_expression
-        # The time when the monitoring started.
+        # The start time of the check.
         self.begin_time = begin_time
-        # The data timestamp. If the monitored business entity is offline data, the value is usually one day before the monitoring is performed.
+        # The business date. For an offline table, this is typically the day before the check is performed.
         self.biz_date = biz_date
-        # The strength of the monitoring rule. The strength of a monitoring rule indicates the importance of the rule. Valid values:
+        # The strength of the monitoring rule. A strong rule can block a downstream scheduling task if a critical alert is triggered. Valid values:
         # 
-        # *   1: indicates that the monitoring rule is a strong rule.
-        # *   0: indicates that the monitoring rule is a weak rule. You can specify the strength of a monitoring rule based on your business requirements. If a monitoring rule is a strong rule and the critical threshold is exceeded, a critical alert is reported and tasks that are associated with the rule are blocked from running.
+        # - `1`: Strong rule.
+        # 
+        # - `0`: Weak rule.
         self.block_type = block_type
-        # The monitoring result.
+        # The check result.
         self.check_result = check_result
-        # The status of the monitoring result.
+        # The status of the check result.
         self.check_result_status = check_result_status
-        # The checker ID.
+        # The ID of the checker.
         self.checker_id = checker_id
         # The name of the checker.
         self.checker_name = checker_name
@@ -214,78 +215,81 @@ class ListQualityResultsByRuleResponseBodyDataRuleChecks(DaraModel):
         self.checker_type = checker_type
         # The description of the monitoring rule.
         self.comment = comment
-        # The threshold for a critical alert. The threshold indicates the deviation of the monitoring result from the expected value. You can specify a custom value for the threshold based on your business requirements. If a monitoring rule is a strong rule and the critical threshold is exceeded, a critical alert is reported and tasks that are associated with the rule are blocked from running.
+        # The threshold for a critical alert. For a strong rule, exceeding this threshold blocks the downstream scheduling task.
         self.critical_threshold = critical_threshold
-        # The scheduling frequency. In most cases, the value of this parameter is YMD. This value indicates year, month, and day.
+        # The scheduling cycle. For example, `YMD` can represent yearly, monthly, and daily tasks.
         self.date_type = date_type
-        # Indicates whether the monitoring is discrete monitoring. Valid values:
+        # Indicates whether a discrete value check is used. Valid values:
         # 
-        # *   true
-        # *   false
+        # - `true`: A discrete value check is used.
+        # 
+        # - `false`: A discrete value check is not used.
         self.discrete_check = discrete_check
-        # The time when the monitoring ended.
+        # The end time of the check.
         self.end_time = end_time
         # The ID of the partition filter expression.
         self.entity_id = entity_id
         # The expected value.
         self.expect_value = expect_value
-        # The node ID.
+        # The node ID of the scheduling task.
         self.external_id = external_id
-        # The type of the scheduling system. Only CWF scheduling systems are supported.
+        # The type of the scheduling system. Currently, only CWF is supported.
         self.external_type = external_type
-        # Indicates whether the monitoring is performed based on a fixed value. Valid values:
+        # Indicates whether a fixed-value check is used. Valid values:
         # 
-        # *   true
-        # *   false
+        # - `true`: A fixed-value check is used.
+        # 
+        # - `false`: A fixed-value check is not used.
         self.fixed_check = fixed_check
         # The primary key ID.
         self.id = id
-        # Indicates whether the monitoring result is the same as the predicted result. Valid values:
+        # Indicates whether the result is a prediction. Valid values:
         # 
-        # *   true
-        # *   false
+        # - `true`: The result is a prediction.
+        # 
+        # - `false`: The result is not a prediction.
         self.is_prediction = is_prediction
-        # The lower limit of the predicted result. The value of this parameter is automatically generated based on the threshold that you specify.
+        # The predicted lower limit, which is automatically generated based on the configured threshold.
         self.lower_value = lower_value
         # The partition filter expression.
         self.match_expression = match_expression
-        # The method used to collect sample data, such as such as avg, count, sum, min, max, count_distinct, user_defined, table_count, table_size, table_dt_load_count, table_dt_refuseload_count, null_value, null_value/table_count, (table_count-count_distinct)/table_count, or table_count-count_distinct.
+        # The method used to collect sample data. Examples: `avg`, `count`, `sum`, `min`, `max`, `count_distinct`, `user_defined`, `table_count`, `table_size`, `table_dt_load_count`, `table_dt_refuseload_count`, `null_value`, `null_value/table_count`, `(table_count-count_distinct)/table_count`, and `table_count-count_distinct`.
         self.method_name = method_name
         # The comparison operator.
         self.op = op
-        # Indicates whether the monitoring rule is enabled.
+        # Indicates whether the rule is enabled.
         self.open = open
-        # The name of the compute engine or data source for which data quality is monitored.
+        # The name of the engine or data source used for the quality check.
         self.project_name = project_name
-        # The field whose data quality is checked based on the monitoring rule. This field is a column in the data source table that is monitored.
+        # The column in the source data table that the rule checks.
         self.property = property
         # The historical sample values.
         self.reference_value = reference_value
-        # The string of the monitoring result.
+        # The string representation of the check result.
         self.result_string = result_string
-        # The ID of the monitoring rule.
+        # The rule ID.
         self.rule_id = rule_id
-        # The name of the monitoring rule.
+        # The name of the rule.
         self.rule_name = rule_name
         # The current sample values.
         self.sample_value = sample_value
-        # The name of the table that is monitored.
+        # The name of the table being checked.
         self.table_name = table_name
-        # The monitoring task ID.
+        # The ID of the check task.
         self.task_id = task_id
-        # The ID of the monitoring template.
+        # The ID of the rule template.
         self.template_id = template_id
-        # The name of the monitoring template.
+        # The name of the rule template.
         self.template_name = template_name
-        # The time that was taken to run the monitoring task.
+        # The duration of the check.
         self.time_cost = time_cost
-        # The trend of the monitoring result.
+        # The trend of the check result.
         self.trend = trend
-        # The upper limit of the predicted result. The value of this parameter is automatically generated based on the threshold that you specify.
+        # The predicted upper limit, which is automatically generated based on the configured threshold.
         self.upper_value = upper_value
-        # The threshold for a warning alert. The threshold specifies the deviation of the monitoring result from the expected value. You can specify a custom value for the threshold based on your business requirements.
+        # The custom threshold for a warning alert. An alert is triggered if the deviation from the expected value exceeds this threshold.
         self.warning_threshold = warning_threshold
-        # The filter condition of the monitoring task.
+        # The filter condition for the check.
         self.where_condition = where_condition
 
     def validate(self):
@@ -578,9 +582,9 @@ class ListQualityResultsByRuleResponseBodyDataRuleChecksSampleValue(DaraModel):
         discrete_property: str = None,
         value: float = None,
     ):
-        # The data timestamp. If the monitored business entity is offline data, the value is usually one day before the monitoring is performed.
+        # The business date. For an offline table, this is typically the day before the check is performed.
         self.biz_date = biz_date
-        # The values of the sample field that are grouped by using the GROUP BY clause. For example, the values of the Gender field are grouped by using the GROUP BY clause. In this case, the values of DiscreteProperty are Male, Female, and null.
+        # The value of the sample column after being grouped by the `GROUP BY` clause. For example, if you group by a gender column, the values of this parameter can be \\"male\\", \\"female\\", or \\"null\\".
         self.discrete_property = discrete_property
         # The sample value.
         self.value = value
@@ -626,11 +630,11 @@ class ListQualityResultsByRuleResponseBodyDataRuleChecksReferenceValue(DaraModel
         threshold: float = None,
         value: float = None,
     ):
-        # The data timestamp. If the monitored business entity is offline data, the value is usually one day before the monitoring is performed.
+        # The business date. For an offline table, this is typically the day before the check is performed.
         self.biz_date = biz_date
-        # The values of the sample field that are grouped by using the GROUP BY clause. For example, the values of the Gender field are grouped by using the GROUP BY clause. In this case, the values of DiscreteProperty are Male, Female, and null.
+        # The value of the sample column after being grouped by the `GROUP BY` clause. For example, if you group by a gender column, the values of this parameter can be \\"male\\", \\"female\\", or \\"null\\".
         self.discrete_property = discrete_property
-        # The string of the monitoring result.
+        # The result of a single check.
         self.single_check_result = single_check_result
         # The threshold.
         self.threshold = threshold

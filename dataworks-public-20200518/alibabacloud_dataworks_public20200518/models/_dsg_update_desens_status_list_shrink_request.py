@@ -10,8 +10,14 @@ class DsgUpdateDesensStatusListShrinkRequest(DaraModel):
         desens_status: int = None,
         ids_shrink: str = None,
     ):
+        # The switch status. Valid values:
+        # 1: enabled
+        # 0: disabled
+        # 
         # This parameter is required.
         self.desens_status = desens_status
+        # The list of switch IDs.
+        # 
         # This parameter is required.
         self.ids_shrink = ids_shrink
 

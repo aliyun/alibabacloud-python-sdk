@@ -9,7 +9,7 @@ class GetInstanceErrorRankRequest(DaraModel):
         self,
         project_id: int = None,
     ):
-        # The DataWorks workspace ID.
+        # The ID of the DataWorks workspace.
         # 
         # This parameter is required.
         self.project_id = project_id

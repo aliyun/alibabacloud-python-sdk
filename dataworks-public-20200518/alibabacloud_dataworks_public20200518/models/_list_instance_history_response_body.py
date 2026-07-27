@@ -20,8 +20,9 @@ class ListInstanceHistoryResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.success = success
 
     def validate(self):
@@ -101,8 +102,9 @@ class ListInstanceHistoryResponseBodyInstances(DaraModel):
         self.dag_id = dag_id
         # Indicates whether the instance is associated with a monitoring rule in Data Quality. Valid values:
         # 
-        # *   0: The instance is associated with a monitoring rule in Data Quality.
-        # *   1: The instance is not associated with a monitoring rule in Data Quality.
+        # - 0: The instance is associated with a monitoring rule in Data Quality.
+        # 
+        # - 1: The instance is not associated with a monitoring rule in Data Quality.
         self.dag_type = dag_type
         # The error message. This parameter is deprecated. You can call the GetInstanceLog operation to query the error information related to the node.
         self.error_message = error_message
@@ -120,25 +122,39 @@ class ListInstanceHistoryResponseBodyInstances(DaraModel):
         self.node_name = node_name
         # The status of the node that generates the instance. Valid values:
         # 
-        # *   NOT_RUN: The node is not run.
-        # *   WAIT_TIME: The node is waiting for the scheduling time to arrive.
-        # *   WAIT_RESOURCE: The node is waiting for resources.
-        # *   RUNNING: The node is running.
-        # *   CHECKING: Data quality is being checked for the node.
-        # *   CHECKING_CONDITION: Branch conditions are being checked for the node.
-        # *   FAILURE: The node fails to be run.
-        # *   SUCCESS: The node is successfully run.
+        # - NOT_RUN: The node is not run.
+        # 
+        # - WAIT_TIME: The node is waiting for the scheduling time to arrive.
+        # 
+        # - WAIT_RESOURCE: The node is waiting for resources.
+        # 
+        # - RUNNING: The node is running.
+        # 
+        # - CHECKING: Data quality is being checked for the node.
+        # 
+        # - CHECKING_CONDITION: Branch conditions are being checked for the node.
+        # 
+        # - FAILURE: The node fails to be run.
+        # 
+        # - SUCCESS: The node is successfully run.
         self.status = status
         # The scheduling type of the node. Valid values:
         # 
-        # *   NORMAL(0): The node is an auto triggered node. The scheduling system regularly runs the node.
-        # *   MANUAL(1): The node is a manually triggered node. The scheduling system does not regularly run the node.
-        # *   PAUSE(2): The node is a frozen node. The scheduling system regularly runs the node but sets the status of the node to failed when the scheduling system starts to run the node.
-        # *   SKIP(3): The node is a dry-run node. The scheduling system regularly runs the node but sets the status of the node to successful when the scheduling system starts to run the node.
-        # *   SKIP_UNCHOOSE(4): The node is an unselected node in a temporary workflow. This type of node exists only in temporary workflows. The scheduling system sets the status of the node to successful when the scheduling system starts to run the node.
-        # *   SKIP_CYCLE(5): The node is a node that is scheduled by the week or month and is waiting for the scheduling time to arrive. The scheduling system regularly runs the node but sets the status of the node to successful when the scheduling system starts to run the node.
-        # *   CONDITION_UNCHOOSE(6): The node is not selected by its ancestor branch node and is run as a dry-run node.
-        # *   REALTIME_DEPRECATED(7): The node has instances that are generated in real time but deprecated. The scheduling system sets the status of the node to successful.
+        # - NORMAL(0): The node is an auto triggered node. The scheduling system regularly runs the node.
+        # 
+        # - MANUAL(1): The node is a manually triggered node. The scheduling system does not regularly run the node.
+        # 
+        # - PAUSE(2): The node is a frozen node. The scheduling system regularly runs the node but sets the status of the node to failed when the scheduling system starts to run the node.
+        # 
+        # - SKIP(3): The node is a dry-run node. The scheduling system regularly runs the node but sets the status of the node to successful when the scheduling system starts to run the node.
+        # 
+        # - SKIP_UNCHOOSE(4): The node is an unselected node in a temporary workflow. This type of node exists only in temporary workflows. The scheduling system sets the status of the node to successful when the scheduling system starts to run the node.
+        # 
+        # - SKIP_CYCLE(5): The node is a node that is scheduled by the week or month and is waiting for the scheduling time to arrive. The scheduling system regularly runs the node but sets the status of the node to successful when the scheduling system starts to run the node.
+        # 
+        # - CONDITION_UNCHOOSE(6): The node is not selected by its ancestor branch node and is run as a dry-run node.
+        # 
+        # - REALTIME_DEPRECATED(7): The node has instances that are generated in real time but deprecated. The scheduling system sets the status of the node to successful.
         self.task_type = task_type
 
     def validate(self):

@@ -13,14 +13,15 @@ class DataDesensPlanTemplateValue(DaraModel):
         support_water_mark: bool = None,
         ext_param_template: List[Any] = None,
     ):
-        # The name of the data masking method.
+        # The name of the Desensitization Method.
         self.name = name
-        # Indicates whether a watermark is added. Valid values:
+        # Indicates whether watermarking is supported. Valid values:
         # 
-        # *   true: allow
-        # *   false: disallow
+        # - true: Watermarking is supported.
+        # 
+        # - false: Watermarking is not supported.
         self.support_water_mark = support_water_mark
-        # The data masking parameters and their descriptions.
+        # A list of Desensitization Parameters and their descriptions.
         self.ext_param_template = ext_param_template
 
     def validate(self):

@@ -14,7 +14,7 @@ class UpdateQualityFollowerResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Indicates whether the update is successful.
+        # Indicates whether the update was successful.
         self.data = data
         # The error code.
         self.error_code = error_code

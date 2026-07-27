@@ -14,19 +14,12 @@ class GetMetaTableProducingTasksRequest(DaraModel):
         table_guid: str = None,
         table_name: str = None,
     ):
-        # The ID of the EMR cluster. This parameter takes effect only if the DataSourceType parameter is set to emr.
         self.cluster_id = cluster_id
-        # The type of the metatable. Valid values: odps and emr. The value odps indicates that the metatable is a MaxCompute metatable. The value emr indicates that the metatable is an E-MapReduce (EMR) metatable.
         self.data_source_type = data_source_type
-        # The name of the database.
         self.db_name = db_name
-        # The name of the schema.
         self.schema_name = schema_name
-        # The GUID of the MaxCompute metatable.
-        # 
         # This parameter is required.
         self.table_guid = table_guid
-        # The name of the metatable.
         self.table_name = table_name
 
     def validate(self):

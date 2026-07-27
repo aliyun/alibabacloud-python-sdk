@@ -13,19 +13,19 @@ class CreateQualityFollowerRequest(DaraModel):
         project_id: int = None,
         project_name: str = None,
     ):
-        # The notification method. Valid values: 1, 2, 4, 5, 6, 7, 8, and 9. The value 1 indicates that the notification is sent by email. The value 2 indicates that the notification is sent by email and text message. The value 4 indicates that the notification is sent by a DingTalk chatbot. The value 5 indicates that the notification is sent by a DingTalk chatbot to all members in a DingTalk group. The value 6 indicates that the notification is sent by Lark. The value 7 indicates that the notification is sent by WeCom. The value 8 indicates that the notification is sent by webhook. The value 9 indicates that the notification is sent by phone call.
+        # The alert method. Valid values: 1 (email), 2 (email and SMS), 4 (DingTalk Group Bot), 5 (DingTalk Group Bot with an @all message), 6 (Lark), 7 (WeCom), 8 (webhook), and 9 (Phone Alert).
         # 
         # This parameter is required.
         self.alarm_mode = alarm_mode
-        # The ID of the partition filter expression.
+        # The ID of the partition expression.
         # 
         # This parameter is required.
         self.entity_id = entity_id
-        # The account ID of the subscriber.
+        # The Alibaba Cloud account ID of the follower.
         # 
         # This parameter is required.
         self.follower = follower
-        # The DataWorks workspace ID. You can log on to the DataWorks console to query the ID.
+        # The ID of the DataWorks workspace. To find the workspace ID, log in to the DataWorks console.
         self.project_id = project_id
         # The name of the compute engine or data source.
         # 

@@ -12,13 +12,13 @@ class GetFolderRequest(DaraModel):
         project_id: int = None,
         project_identifier: str = None,
     ):
-        # Indicates whether the request was successful.
+        # The ID of the folder. You must set either this parameter or FolderPath. You can call the [ListFolders](https://help.aliyun.com/document_detail/173955.html) operation to obtain the folder ID.
         self.folder_id = folder_id
-        # The details of the folder.
+        # The path of the folder. You must set either this parameter or FolderId. You can call the [ListFolders](https://help.aliyun.com/document_detail/173955.html) operation to obtain the folder path.
         self.folder_path = folder_path
-        # The request ID.
+        # The ID of the DataWorks workspace. Log on to the DataWorks console and go to the Workspace Management page to obtain the workspace ID. You must set either this parameter or ProjectIdentifier to specify the DataWorks workspace for the API call.
         self.project_id = project_id
-        # The error code.
+        # The name of the DataWorks workspace. Log on to the DataWorks console and go to the Workspace Management page to obtain the workspace name. You must set either this parameter or ProjectId to specify the DataWorks workspace for the API call.
         self.project_identifier = project_identifier
 
     def validate(self):

@@ -16,11 +16,17 @@ class CreateDagComplementResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The list of workflow IDs.
         self.data = data
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_message = error_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The request ID. The ID is used to locate logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

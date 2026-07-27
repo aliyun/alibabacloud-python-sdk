@@ -87,7 +87,9 @@ class Client(OpenApiClient):
             'me-east-1': 'dataworks.me-east-1.aliyuncs.com',
             'rus-west-1-pop': 'dataworks.aliyuncs.com',
             'us-east-1': 'dataworks.us-east-1.aliyuncs.com',
-            'us-west-1': 'dataworks.us-west-1.aliyuncs.com'
+            'us-west-1': 'dataworks.us-west-1.aliyuncs.com',
+            'me-central-1': 'dataworks.me-central-1.aliyuncs.com',
+            'ap-northeast-2': 'dataworks.ap-northeast-2.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('dataworks-public', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -2663,6 +2665,8 @@ class Client(OpenApiClient):
             body['InputList'] = request.input_list
         if not DaraCore.is_null(request.input_parameters):
             body['InputParameters'] = request.input_parameters
+        if not DaraCore.is_null(request.output_list):
+            body['OutputList'] = request.output_list
         if not DaraCore.is_null(request.output_parameters):
             body['OutputParameters'] = request.output_parameters
         if not DaraCore.is_null(request.owner):
@@ -2757,6 +2761,8 @@ class Client(OpenApiClient):
             body['InputList'] = request.input_list
         if not DaraCore.is_null(request.input_parameters):
             body['InputParameters'] = request.input_parameters
+        if not DaraCore.is_null(request.output_list):
+            body['OutputList'] = request.output_list
         if not DaraCore.is_null(request.output_parameters):
             body['OutputParameters'] = request.output_parameters
         if not DaraCore.is_null(request.owner):
@@ -7502,6 +7508,210 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.dsg_desens_plan_update_status_with_options_async(request, runtime)
 
+    def dsg_get_visit_detail_with_options(
+        self,
+        request: main_models.DsgGetVisitDetailRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DsgGetVisitDetailResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.begin_time):
+            body['BeginTime'] = request.begin_time
+        if not DaraCore.is_null(request.end_time):
+            body['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.engine_name):
+            body['EngineName'] = request.engine_name
+        if not DaraCore.is_null(request.keyword):
+            body['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.page_no):
+            body['PageNo'] = request.page_no
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.rule_name):
+            body['RuleName'] = request.rule_name
+        if not DaraCore.is_null(request.sens_level):
+            body['SensLevel'] = request.sens_level
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DsgGetVisitDetail',
+            version = '2020-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DsgGetVisitDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def dsg_get_visit_detail_with_options_async(
+        self,
+        request: main_models.DsgGetVisitDetailRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DsgGetVisitDetailResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.begin_time):
+            body['BeginTime'] = request.begin_time
+        if not DaraCore.is_null(request.end_time):
+            body['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.engine_name):
+            body['EngineName'] = request.engine_name
+        if not DaraCore.is_null(request.keyword):
+            body['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.page_no):
+            body['PageNo'] = request.page_no
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.rule_name):
+            body['RuleName'] = request.rule_name
+        if not DaraCore.is_null(request.sens_level):
+            body['SensLevel'] = request.sens_level
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DsgGetVisitDetail',
+            version = '2020-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DsgGetVisitDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def dsg_get_visit_detail(
+        self,
+        request: main_models.DsgGetVisitDetailRequest,
+    ) -> main_models.DsgGetVisitDetailResponse:
+        runtime = RuntimeOptions()
+        return self.dsg_get_visit_detail_with_options(request, runtime)
+
+    async def dsg_get_visit_detail_async(
+        self,
+        request: main_models.DsgGetVisitDetailRequest,
+    ) -> main_models.DsgGetVisitDetailResponse:
+        runtime = RuntimeOptions()
+        return await self.dsg_get_visit_detail_with_options_async(request, runtime)
+
+    def dsg_get_visit_stat_with_options(
+        self,
+        request: main_models.DsgGetVisitStatRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DsgGetVisitStatResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.begin_time):
+            body['BeginTime'] = request.begin_time
+        if not DaraCore.is_null(request.end_time):
+            body['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.engine_name):
+            body['EngineName'] = request.engine_name
+        if not DaraCore.is_null(request.node_id):
+            body['NodeId'] = request.node_id
+        if not DaraCore.is_null(request.page_no):
+            body['PageNo'] = request.page_no
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.rule_name):
+            body['RuleName'] = request.rule_name
+        if not DaraCore.is_null(request.sens_level):
+            body['SensLevel'] = request.sens_level
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DsgGetVisitStat',
+            version = '2020-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DsgGetVisitStatResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def dsg_get_visit_stat_with_options_async(
+        self,
+        request: main_models.DsgGetVisitStatRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DsgGetVisitStatResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.begin_time):
+            body['BeginTime'] = request.begin_time
+        if not DaraCore.is_null(request.end_time):
+            body['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.engine_name):
+            body['EngineName'] = request.engine_name
+        if not DaraCore.is_null(request.node_id):
+            body['NodeId'] = request.node_id
+        if not DaraCore.is_null(request.page_no):
+            body['PageNo'] = request.page_no
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.rule_name):
+            body['RuleName'] = request.rule_name
+        if not DaraCore.is_null(request.sens_level):
+            body['SensLevel'] = request.sens_level
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DsgGetVisitStat',
+            version = '2020-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DsgGetVisitStatResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def dsg_get_visit_stat(
+        self,
+        request: main_models.DsgGetVisitStatRequest,
+    ) -> main_models.DsgGetVisitStatResponse:
+        runtime = RuntimeOptions()
+        return self.dsg_get_visit_stat_with_options(request, runtime)
+
+    async def dsg_get_visit_stat_async(
+        self,
+        request: main_models.DsgGetVisitStatRequest,
+    ) -> main_models.DsgGetVisitStatResponse:
+        runtime = RuntimeOptions()
+        return await self.dsg_get_visit_stat_with_options_async(request, runtime)
+
     def dsg_platform_query_projects_and_schema_from_meta_with_options(
         self,
         request: main_models.DsgPlatformQueryProjectsAndSchemaFromMetaRequest,
@@ -7699,6 +7909,210 @@ class Client(OpenApiClient):
     ) -> main_models.DsgQueryDesensStatusListResponse:
         runtime = RuntimeOptions()
         return await self.dsg_query_desens_status_list_with_options_async(request, runtime)
+
+    def dsg_query_details_with_options(
+        self,
+        request: main_models.DsgQueryDetailsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DsgQueryDetailsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.ip_aare):
+            query['IpAare'] = request.ip_aare
+        if not DaraCore.is_null(request.rows):
+            query['Rows'] = request.rows
+        if not DaraCore.is_null(request.user):
+            query['User'] = request.user
+        body = {}
+        if not DaraCore.is_null(request.begin_time):
+            body['BeginTime'] = request.begin_time
+        if not DaraCore.is_null(request.end_time):
+            body['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.engine_name):
+            body['EngineName'] = request.engine_name
+        if not DaraCore.is_null(request.ip):
+            body['Ip'] = request.ip
+        if not DaraCore.is_null(request.node_id):
+            body['NodeId'] = request.node_id
+        if not DaraCore.is_null(request.page_no):
+            body['PageNo'] = request.page_no
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.rule_type):
+            body['RuleType'] = request.rule_type
+        if not DaraCore.is_null(request.sens_level):
+            body['SensLevel'] = request.sens_level
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DsgQueryDetails',
+            version = '2020-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DsgQueryDetailsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def dsg_query_details_with_options_async(
+        self,
+        request: main_models.DsgQueryDetailsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DsgQueryDetailsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.ip_aare):
+            query['IpAare'] = request.ip_aare
+        if not DaraCore.is_null(request.rows):
+            query['Rows'] = request.rows
+        if not DaraCore.is_null(request.user):
+            query['User'] = request.user
+        body = {}
+        if not DaraCore.is_null(request.begin_time):
+            body['BeginTime'] = request.begin_time
+        if not DaraCore.is_null(request.end_time):
+            body['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.engine_name):
+            body['EngineName'] = request.engine_name
+        if not DaraCore.is_null(request.ip):
+            body['Ip'] = request.ip
+        if not DaraCore.is_null(request.node_id):
+            body['NodeId'] = request.node_id
+        if not DaraCore.is_null(request.page_no):
+            body['PageNo'] = request.page_no
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.rule_type):
+            body['RuleType'] = request.rule_type
+        if not DaraCore.is_null(request.sens_level):
+            body['SensLevel'] = request.sens_level
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DsgQueryDetails',
+            version = '2020-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DsgQueryDetailsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def dsg_query_details(
+        self,
+        request: main_models.DsgQueryDetailsRequest,
+    ) -> main_models.DsgQueryDetailsResponse:
+        runtime = RuntimeOptions()
+        return self.dsg_query_details_with_options(request, runtime)
+
+    async def dsg_query_details_async(
+        self,
+        request: main_models.DsgQueryDetailsRequest,
+    ) -> main_models.DsgQueryDetailsResponse:
+        runtime = RuntimeOptions()
+        return await self.dsg_query_details_with_options_async(request, runtime)
+
+    def dsg_query_row_detail_with_options(
+        self,
+        request: main_models.DsgQueryRowDetailRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DsgQueryRowDetailResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.engine_name):
+            body['EngineName'] = request.engine_name
+        if not DaraCore.is_null(request.inst_id):
+            body['InstId'] = request.inst_id
+        if not DaraCore.is_null(request.page_no):
+            body['PageNo'] = request.page_no
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DsgQueryRowDetail',
+            version = '2020-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DsgQueryRowDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def dsg_query_row_detail_with_options_async(
+        self,
+        request: main_models.DsgQueryRowDetailRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DsgQueryRowDetailResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.engine_name):
+            body['EngineName'] = request.engine_name
+        if not DaraCore.is_null(request.inst_id):
+            body['InstId'] = request.inst_id
+        if not DaraCore.is_null(request.page_no):
+            body['PageNo'] = request.page_no
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DsgQueryRowDetail',
+            version = '2020-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DsgQueryRowDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def dsg_query_row_detail(
+        self,
+        request: main_models.DsgQueryRowDetailRequest,
+    ) -> main_models.DsgQueryRowDetailResponse:
+        runtime = RuntimeOptions()
+        return self.dsg_query_row_detail_with_options(request, runtime)
+
+    async def dsg_query_row_detail_async(
+        self,
+        request: main_models.DsgQueryRowDetailRequest,
+    ) -> main_models.DsgQueryRowDetailResponse:
+        runtime = RuntimeOptions()
+        return await self.dsg_query_row_detail_with_options_async(request, runtime)
 
     def dsg_query_sens_result_with_options(
         self,

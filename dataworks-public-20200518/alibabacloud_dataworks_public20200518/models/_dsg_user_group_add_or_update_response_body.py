@@ -14,23 +14,25 @@ class DsgUserGroupAddOrUpdateResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The operation result. Valid values:
+        # The result of the operation. Valid values:
         # 
-        # *   true: The operation is successful.
-        # *   false: The operation fails.
+        # - `true`: The operation succeeded.
+        # 
+        # - `false`: The operation failed.
         self.data = data
-        # The error code.
+        # The error code that is returned if the request fails.
         self.error_code = error_code
-        # The error message.
+        # The error message that is returned if the request fails.
         self.error_message = error_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The request ID. You can use the ID to locate logs and troubleshoot issues.
+        # The ID of the request. This is a common parameter. We recommend that you save this ID. If an issue occurs, you can use the ID to locate logs for troubleshooting.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the request succeeded. Valid values:
         # 
-        # *   true
-        # *   false
+        # - `true`: The request succeeded.
+        # 
+        # - `false`: The request failed.
         self.success = success
 
     def validate(self):

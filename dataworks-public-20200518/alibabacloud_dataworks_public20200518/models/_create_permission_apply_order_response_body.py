@@ -12,7 +12,7 @@ class CreatePermissionApplyOrderResponseBody(DaraModel):
         flow_id: List[str] = None,
         request_id: str = None,
     ):
-        # The request order ID.
+        # The list of flow IDs.
         self.flow_id = flow_id
         # The request ID.
         self.request_id = request_id

@@ -12,26 +12,17 @@ class DeleteQualityEntityRequest(DaraModel):
         project_id: int = None,
         project_name: str = None,
     ):
-        # The ID of the partition filter expression.
+        # The ID of the partition expression.
         # 
         # This parameter is required.
         self.entity_id = entity_id
-        # The type of the compute engine or data source. The following types are supported: E-MapReduce (EMR), Hologres, AnalyticDB for PostgreSQL, CDH, MaxCompute, Kafka, and DataHub.
-        # 
-        # Valid values:
-        # 
-        # *   odps
-        # *   emr
-        # *   hadoop
-        # *   cdh
-        # *   hybriddb_for_postgresql
-        # *   holodb
+        # The type of the engine or data source. Valid values: E-MapReduce (EMR), Hologres, AnalyticDB for PostgreSQL, CDH, MaxCompute, Kafka, and DataHub.
         # 
         # This parameter is required.
         self.env_type = env_type
-        # The DataWorks workspace ID.
+        # The ID of the DataWorks workspace.
         self.project_id = project_id
-        # The name of the compute engine or data source.
+        # The name of the engine or data source.
         # 
         # This parameter is required.
         self.project_name = project_name

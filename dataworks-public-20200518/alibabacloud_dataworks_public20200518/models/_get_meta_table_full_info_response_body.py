@@ -122,15 +122,19 @@ class GetMetaTableFullInfoResponseBodyData(DaraModel):
         self.database_name = database_name
         # The type of the environment. Valid values:
         # 
-        # *   0: indicates that the table resides in the development environment.
-        # *   1: indicates that the table resides in the production environment.
+        # - 0: indicates that the table resides in the development environment.
+        # 
+        # - 1: indicates that the table resides in the production environment.
         self.env_type = env_type
         # The scope in which the table is visible. Valid values:
         # 
-        # *   0: indicates that the table is visible to workspace members.
-        # *   1: indicates that the table is visible to users within a tenant.
-        # *   2: indicates that the table is visible to all tenants.
-        # *   3: indicates that the table is visible only to the table owner.
+        # - 0: indicates that the table is visible to workspace members.
+        # 
+        # - 1: indicates that the table is visible to users within a tenant.
+        # 
+        # - 2: indicates that the table is visible to all tenants.
+        # 
+        # - 3: indicates that the table is visible only to the table owner.
         self.is_visible = is_visible
         # The time when the table was last accessed. A timestamp is returned for this parameter. You can convert the timestamp to the related date based on the time zone that you use.
         self.last_access_time = last_access_time
@@ -340,18 +344,21 @@ class GetMetaTableFullInfoResponseBodyDataColumnList(DaraModel):
         self.comment = comment
         # Indicates whether the field is a foreign key. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.is_foreign_key = is_foreign_key
         # Indicates whether the field is a partition field. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.is_partition_column = is_partition_column
         # Indicates whether the field is a primary key. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.is_primary_key = is_primary_key
         # The sequence number of the field.
         self.position = position

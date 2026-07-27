@@ -15,33 +15,18 @@ class CreateQualityEntityRequest(DaraModel):
         table_name: str = None,
     ):
         # This parameter is deprecated.
-        # 
-        # The value 0 indicates that the partition filter expression is at the SQL level, and the system checks data quality after each SQL statement is executed.
-        # 
-        # * 0
-        # * 1
         self.entity_level = entity_level
-        # The type of the compute engine or data source.
-        # 
-        # Valid values:
-        # 
-        # *   odps
-        # *   emr
-        # *   hadoop
-        # *   cdh
-        # *   analyticdb_for_mysql
-        # *   hybriddb_for_postgresql
-        # *   holodb
+        # The type of the engine or data source. Valid values: ODPS, EMR, CDH, and HOLO.
         # 
         # This parameter is required.
         self.env_type = env_type
-        # The partition filter expression.
+        # The partition expression.
         # 
         # This parameter is required.
         self.match_expression = match_expression
-        # The DataWorks workspace ID. You can log on to the DataWorks console to query the ID.
+        # The ID of the DataWorks workspace. You can go to the DataWorks console to obtain the workspace ID.
         self.project_id = project_id
-        # The name of the compute engine or data source.
+        # The name of the engine or data source.
         # 
         # This parameter is required.
         self.project_name = project_name

@@ -11,7 +11,7 @@ class GetQualityFollowerRequest(DaraModel):
         project_id: int = None,
         project_name: str = None,
     ):
-        # The ID of the partition filter expression.
+        # The ID of the partition expression.
         # 
         # This parameter is required.
         self.entity_id = entity_id

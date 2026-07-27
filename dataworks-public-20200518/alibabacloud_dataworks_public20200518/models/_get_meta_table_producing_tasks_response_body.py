@@ -17,17 +17,11 @@ class GetMetaTableProducingTasksResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The output tasks of the metatable.
         self.data = data
-        # The error code.
         self.error_code = error_code
-        # The error message.
         self.error_message = error_message
-        # The HTTP status code returned.
         self.http_status_code = http_status_code
-        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values: true and false. The value true indicates that the request was successful. The value false indicates that the request failed.
         self.success = success
 
     def validate(self):
@@ -94,9 +88,7 @@ class GetMetaTableProducingTasksResponseBodyData(DaraModel):
         task_id: str = None,
         task_name: str = None,
     ):
-        # The ID of the output task.
         self.task_id = task_id
-        # The name of the output task.
         self.task_name = task_name
 
     def validate(self):

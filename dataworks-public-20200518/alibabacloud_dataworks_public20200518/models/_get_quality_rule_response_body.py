@@ -15,7 +15,7 @@ class GetQualityRuleResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Information about the retrieved rule.
+        # The quality rule details.
         self.data = data
         # The error code.
         self.error_code = error_code
@@ -109,65 +109,69 @@ class GetQualityRuleResponseBodyData(DaraModel):
         warning_threshold: str = None,
         where_condition: str = None,
     ):
-        # The strength of the monitoring rule. The strength of a monitoring rule indicates the importance of the rule. Valid values:
+        # The severity of the quality rule. Valid values:
         # 
-        # *   1: the monitoring rule is a strong rule.
-        # *   0: the monitoring rule is a weak rule. You can specify whether a monitoring rule is a strong rule based on your business requirements. If a monitoring rule is a strong rule and the critical threshold is exceeded, a critical alert is reported and tasks that are associated with the rule are blocked from running.
+        # - `1`: Strong Rule. If a Strong Rule triggers a critical Alert, the associated Scheduling Task is blocked.
+        # 
+        # - `0`: Weak Rule.
         self.block_type = block_type
-        # The checker ID. The value of this parameter corresponds to the ID at the frontend and is converted from the ID of the primary key.
+        # The checker ID, which is derived from a primary key and used for front-end identification.
         self.checker = checker
         # The name of the checker.
         self.checker_name = checker_name
-        # The description of the monitoring rule.
+        # The comment for the rule.
         self.comment = comment
-        # The threshold for a critical alert. The threshold indicates the deviation of the check result from the expected value. You can specify a value for the threshold based on your business requirements. If a monitoring rule is a strong rule and the critical threshold is exceeded, a critical alert is reported and tasks that are associated with the rule are blocked from running.
+        # The threshold for a critical Alert, which defines the maximum acceptable deviation from the Expected Value. If this threshold is met for a Strong Rule, the associated Scheduling Task is blocked.
         self.critical_threshold = critical_threshold
-        # The ID of the partition filter expression.
+        # The ID of the partition expression.
         self.entity_id = entity_id
         # The expected value.
         self.expect_value = expect_value
-        # Indicates whether the monitoring is performed based on a fixed value.
+        # Indicates whether to validate against a fixed value.
         self.fix_check = fix_check
-        # The monitoring rule ID.
+        # The ID of the rule.
         self.id = id
-        # The ID of the task that is associated with the partition filter expression.
+        # The ID of the method used to collect sample data.
         self.method_id = method_id
-        # The method that is used to collect sample data, such as avg, count, sum, min, max, count_distinct, user_defined, table_count, table_size, table_dt_load_count, table_dt_refuseload_count, null_value, null_value/table_count, (table_count-count_distinct)/table_count, or table_count-count_distinct.
+        # The name of the method used to collect sample data. Valid values include `avg`, `count`, `sum`, `min`, `max`, `count_distinct`, `user_defined`, `table_count`, `table_size`, `table_dt_load_count`, `table_dt_refuseload_count`, `null_value`, `null_value/table_count`, `(table_count-count_distinct)/table_count`, and `table_count-count_distinct`.
         self.method_name = method_name
-        # The ID of the Alibaba Cloud account that is used to configure the monitoring rule.
+        # The ID of the Alibaba Cloud account that configured the rule.
         self.on_duty = on_duty
-        # The name of the Alibaba Cloud account that is used to configure the monitoring rule.
+        # The name of the Alibaba Cloud account that configured the rule.
         self.on_duty_account_name = on_duty_account_name
-        # Indicates whether the monitoring rule is enabled.
+        # Indicates whether the rule is enabled.
         self.open_switch = open_switch
-        # The comparison operator of the monitoring rule.
+        # The comparison operator.
         self.operator = operator
-        # Indicates whether the threshold is a dynamic threshold. Valid values:
+        # Indicates whether the threshold is dynamic. Valid values:
         # 
-        # *   0: The threshold is not a dynamic threshold.
-        # *   1: The threshold is a dynamic threshold.
+        # - `0`: The threshold is static.
+        # 
+        # - `1`: The threshold is dynamic.
         self.predict_type = predict_type
-        # The field whose data quality is checked based on the monitoring rule. This field is a column in the data source table that is monitored.
+        # The column in the data source table to which the rule applies.
         self.property = property
-        # The name of the monitoring rule.
+        # The name of the rule.
         self.rule_name = rule_name
-        # Rule type:
+        # The type of the quality rule. Valid values:
         # 
-        # *   0: System template rule
-        # *   1: Custom SQL rule
-        # *   4: Custom template rule
+        # - `0`: A rule based on a system template.
+        # 
+        # - `1`: A rule based on a custom SQL statement.
+        # 
+        # - `4`: A rule based on a custom template.
         self.rule_type = rule_type
-        # The variable settings inserted before the custom rule. Format: x=a,y=b.
+        # The variable settings inserted before a custom rule. The format is x=a,y=b.
         self.task_setting = task_setting
-        # The ID of the monitoring template.
+        # The ID of the template used.
         self.template_id = template_id
-        # The name of the monitoring template.
+        # The name of the template used.
         self.template_name = template_name
-        # The trend of the check result.
+        # The trend of the validation result.
         self.trend = trend
-        # The threshold for a warning alert. The threshold indicates the deviation of the check result from the expected value. You can customize this threshold based on your business requirements.
+        # The threshold for a warning Alert. This value specifies the acceptable deviation from the Expected Value and can be customized.
         self.warning_threshold = warning_threshold
-        # The filter condition or custom SQL statement that is used for monitoring.
+        # The filter condition or custom SQL statement used for validation.
         self.where_condition = where_condition
 
     def validate(self):

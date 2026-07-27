@@ -41,8 +41,9 @@ class UpdateTableRequest(DaraModel):
         self.comment = comment
         # Specifies whether the table exists. Valid values:
         # 
-        # *   true: The table exists.
-        # *   false: The table does not exist.
+        # - true: The table exists.
+        # 
+        # - false: The table does not exist.
         # 
         # This parameter is deprecated. Do not use this parameter.
         self.create_if_not_exists = create_if_not_exists

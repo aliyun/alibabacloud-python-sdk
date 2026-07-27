@@ -14,7 +14,7 @@ class CreateQualityFollowerResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The ID of the subscription relationship.
+        # The subscription ID.
         self.data = data
         # The error code.
         self.error_code = error_code

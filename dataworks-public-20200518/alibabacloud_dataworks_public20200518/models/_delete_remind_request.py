@@ -9,7 +9,7 @@ class DeleteRemindRequest(DaraModel):
         self,
         remind_id: int = None,
     ):
-        # The ID of the custom alert rule.
+        # The ID of the custom monitoring alert rule.
         # 
         # This parameter is required.
         self.remind_id = remind_id

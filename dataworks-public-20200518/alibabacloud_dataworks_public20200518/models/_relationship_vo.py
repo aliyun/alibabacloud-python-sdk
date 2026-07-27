@@ -13,8 +13,11 @@ class RelationshipVO(DaraModel):
         relationship_guid: str = None,
         relationship_type: str = None,
     ):
+        # Additional attributes.
         self.attributes = attributes
+        # The unique identifier for the relationship.
         self.relationship_guid = relationship_guid
+        # The type of the relationship.
         self.relationship_type = relationship_type
 
     def validate(self):

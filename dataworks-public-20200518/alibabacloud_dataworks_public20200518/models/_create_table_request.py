@@ -47,22 +47,27 @@ class CreateTableRequest(DaraModel):
         self.endpoint = endpoint
         # The environment type of the DataWorks workspace. Valid values:
         # 
-        # *   0: development environment
-        # *   1: production environment
+        # - 0: development environment
+        # 
+        # - 1: production environment
         self.env_type = env_type
         # The storage type of the external table. Valid values:
         # 
-        # *   0: Object Storage Service (OSS)
-        # *   1: Tablestore
-        # *   2: Volume
-        # *   3: MySQL
+        # - 0: Object Storage Service (OSS)
+        # 
+        # - 1: Tablestore
+        # 
+        # - 2: Volume
+        # 
+        # - 3: MySQL
         self.external_table_type = external_table_type
         # Specifies whether to create a MaxCompute partitioned table. Valid values: 1 and 0. The value 1 indicates a partitioned table. The value 0 indicates a non-partitioned table. This parameter is deprecated. Do not use this parameter. The Column.N.isPartitionCol parameter is used to specify whether to create a MaxCompute partitioned table. If the Column.N.isPartitionCol parameter is set to true, a MaxCompute partitioned table is created.
         self.has_part = has_part
         # Specifies whether to create a view or table. Valid values:
         # 
-        # *   0: Create a table.
-        # *   1: Create a view.
+        # - 0: Create a table.
+        # 
+        # - 1: Create a view.
         self.is_view = is_view
         # The lifecycle of the table. Unit: days. By default, this parameter is left empty, which indicates that the table is permanently stored.
         self.life_cycle = life_cycle
@@ -85,9 +90,11 @@ class CreateTableRequest(DaraModel):
         self.themes = themes
         # Specifies whether the table or workspace is visible. Valid values:
         # 
-        # *   0: Both the table and workspace are invisible.
-        # *   1: Both the table and workspace are visible.
-        # *   2: Only the workspace is visible.
+        # - 0: Both the table and workspace are invisible.
+        # 
+        # - 1: Both the table and workspace are visible.
+        # 
+        # - 2: Only the workspace is visible.
         self.visibility = visibility
 
     def validate(self):

@@ -128,18 +128,25 @@ class ListDIJobsResponseBodyDIJobPagingDIJobs(DaraModel):
         self.job_name = job_name
         # The task status. Valid values:
         # 
-        # *   Finished
-        # *   Initialized
-        # *   Stopped
-        # *   Failed
-        # *   Running
-        # *   Stopping
+        # - Finished
+        # 
+        # - Initialized
+        # 
+        # - Stopped
+        # 
+        # - Failed
+        # 
+        # - Running
+        # 
+        # - Stopping
         self.job_status = job_status
         # The synchronization type. Valid values:
         # 
-        # *   FullAndRealtimeIncremental: one-time full synchronization and real-time incremental synchronization
-        # *   RealtimeIncremental: real-time incremental synchronization
-        # *   Full: one-time full synchronization
+        # - FullAndRealtimeIncremental: one-time full synchronization and real-time incremental synchronization
+        # 
+        # - RealtimeIncremental: real-time incremental synchronization
+        # 
+        # - Full: one-time full synchronization
         self.migration_type = migration_type
         # The workspace ID.
         self.project_id = project_id

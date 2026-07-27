@@ -146,8 +146,9 @@ class GetMetaTableThemeLevelResponseBodyEntityTheme(DaraModel):
     ):
         # The level of the theme. Valid values:
         # 
-        # *   1
-        # *   2
+        # - 1
+        # 
+        # - 2
         self.level = level
         # The name of the theme.
         self.name = name
@@ -210,8 +211,9 @@ class GetMetaTableThemeLevelResponseBodyEntityLevel(DaraModel):
         self.name = name
         # The type of the level. Valid values:
         # 
-        # *   1: indicates the logical level.
-        # *   2: indicates the physical level.
+        # - 1: indicates the logical level.
+        # 
+        # - 2: indicates the physical level.
         self.type = type
 
     def validate(self):

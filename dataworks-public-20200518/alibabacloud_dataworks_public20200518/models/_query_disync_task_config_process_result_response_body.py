@@ -18,8 +18,9 @@ class QueryDISyncTaskConfigProcessResultResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.success = success
 
     def validate(self):
@@ -67,8 +68,9 @@ class QueryDISyncTaskConfigProcessResultResponseBodyData(DaraModel):
         self.message = message
         # Indicates whether the parameters are obtained. Valid values:
         # 
-        # *   success: The parameters are obtained.
-        # *   fail: The parameters fail to be obtained. You can view the reason for the failure and troubleshoot the issue based on the reason.
+        # - success: The parameters are obtained.
+        # 
+        # - fail: The parameters fail to be obtained. You can view the reason for the failure and troubleshoot the issue based on the reason.
         self.status = status
         # The parameters that are obtained. The parameters are used as the request parameters of the [CreateDISyncTask](https://help.aliyun.com/document_detail/278725.html) or [UpdateDISyncTask](https://help.aliyun.com/document_detail/289109.html) operation to create or update a real-time synchronization task in Data Integration.
         self.task_content = task_content

@@ -13,9 +13,9 @@ class GetMetaDBTableListResponseBody(DaraModel):
         data: main_models.GetMetaDBTableListResponseBodyData = None,
         request_id: str = None,
     ):
-        # The metatable information in a compute engine instance.
+        # Information about the tables in the engine instance.
         self.data = data
-        # The request ID.
+        # The unique ID for this request.
         self.request_id = request_id
 
     def validate(self):
@@ -56,11 +56,11 @@ class GetMetaDBTableListResponseBodyData(DaraModel):
     ):
         # The page number.
         self.page_number = page_number
-        # The number of entries per page. Default value: 10. Maximum value: 100.
+        # The number of entries per page.
         self.page_size = page_size
-        # The list of metatables in the compute engine instance.
+        # A list of table details.
         self.table_entity_list = table_entity_list
-        # The total number of compute engine instances returned.
+        # The total number of tables.
         self.total_count = total_count
 
     def validate(self):
@@ -116,11 +116,11 @@ class GetMetaDBTableListResponseBodyDataTableEntityList(DaraModel):
         table_guid: str = None,
         table_name: str = None,
     ):
-        # The name of the metadatabase.
+        # The name of the database.
         self.database_name = database_name
-        # The GUID of the metatable.
+        # The unique identifier of the table.
         self.table_guid = table_guid
-        # The name of the metatable.
+        # The name of the table.
         self.table_name = table_name
 
     def validate(self):

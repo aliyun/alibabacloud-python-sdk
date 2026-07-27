@@ -9,7 +9,7 @@ class DsgUserGroupAddOrUpdateShrinkRequest(DaraModel):
         self,
         user_groups_shrink: str = None,
     ):
-        # The information about the user group.
+        # The user groups.
         # 
         # This parameter is required.
         self.user_groups_shrink = user_groups_shrink

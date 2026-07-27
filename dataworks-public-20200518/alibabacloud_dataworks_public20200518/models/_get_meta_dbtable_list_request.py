@@ -14,17 +14,17 @@ class GetMetaDBTableListRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The GUID of the MaxCompute project. Specify the GUID in the `odps.{projectName}` format. You must configure this parameter only if you set the DataSourceType parameter to odps.
+        # The unique identifier for the project, in the format `odps.{projectName}`. This parameter is required only if the `DataSourceType` is set to `odps`.
         self.app_guid = app_guid
-        # The E-MapReduce (EMR) cluster ID. You must configure this parameter only if you set the DataSourceType parameter to emr.
+        # The ID of the E-MapReduce (EMR) cluster. This parameter is required only if the `DataSourceType` is set to `emr`.
         self.cluster_id = cluster_id
-        # The type of the data source. Valid values: odps and emr.
+        # The type of the data source. Valid values: `odps` and `emr`.
         self.data_source_type = data_source_type
-        # The name of the metadatabase.
+        # The name of the database.
         self.database_name = database_name
-        # The page number.
+        # The page number to return.
         self.page_number = page_number
-        # The number of entries per page. Default value: 10. Maximum value: 100.
+        # The number of entries per page. Default value: 10. Maximum value: 1,000.
         self.page_size = page_size
 
     def validate(self):

@@ -75,9 +75,11 @@ class GetDIAlarmRuleResponseBodyDIAlarmRule(DaraModel):
         self.enabled = enabled
         # The metric type in the alert rule. Valid values:
         # 
-        # *   Heartbeat
-        # *   FailoverCount
-        # *   Delay
+        # - Heartbeat
+        # 
+        # - FailoverCount
+        # 
+        # - Delay
         self.metric_type = metric_type
         # The alert notification settings.
         self.notification_settings = notification_settings
@@ -190,14 +192,17 @@ class GetDIAlarmRuleResponseBodyDIAlarmRuleTriggerConditions(DaraModel):
         self.duration = duration
         # The severity level. Valid values:
         # 
-        # *   Warning
-        # *   Critical
+        # - Warning
+        # 
+        # - Critical
         self.severity = severity
         # The alert threshold.
         # 
-        # *   If the alert rule is for task status, no threshold is used.
-        # *   If the alert rule is for failovers, specify the number of failovers.
-        # *   If the alert rule is for latency, the threshold is the latency duration, in seconds.
+        # - If the alert rule is for task status, no threshold is used.
+        # 
+        # - If the alert rule is for failovers, specify the number of failovers.
+        # 
+        # - If the alert rule is for latency, the threshold is the latency duration, in seconds.
         self.threshold = threshold
 
     def validate(self):
@@ -303,8 +308,9 @@ class GetDIAlarmRuleResponseBodyDIAlarmRuleNotificationSettingsNotificationRecei
     ):
         # The recipient type. Valid values: AliyunUid and DingToken.
         # 
-        # *   If the alert notification method is Mail, Phone, or Sms, the value of this parameter is **AliyunUid**, which indicates the Alibaba Cloud account ID.
-        # *   If the alert notification method is Ding, the value of this parameter is **DingToken**, which indicates the DingTalk chatbot token.
+        # - If the alert notification method is Mail, Phone, or Sms, the value of this parameter is **AliyunUid**, which indicates the Alibaba Cloud account ID.
+        # 
+        # - If the alert notification method is Ding, the value of this parameter is **DingToken**, which indicates the DingTalk chatbot token.
         self.receiver_type = receiver_type
         # The recipients.
         self.receiver_values = receiver_values
@@ -345,8 +351,9 @@ class GetDIAlarmRuleResponseBodyDIAlarmRuleNotificationSettingsNotificationChann
         self.channels = channels
         # The severity level. Valid values:
         # 
-        # *   Warning
-        # *   Critical
+        # - Warning
+        # 
+        # - Critical
         self.severity = severity
 
     def validate(self):

@@ -14,11 +14,11 @@ class DsgUserGroupQueryListRequest(DaraModel):
         project_name: str = None,
         user_group_type: int = None,
     ):
-        # The keyword of the user group name. A fuzzy match is performed based on the keyword to search for the user group.
+        # A keyword for the user group name. The service performs a fuzzy search to find matching user groups.
         self.name = name
         # The owner of the user group.
         self.owner = owner
-        # The page number.
+        # The number of the page to return.
         # 
         # This parameter is required.
         self.page_number = page_number
@@ -26,7 +26,7 @@ class DsgUserGroupQueryListRequest(DaraModel):
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The name of the compute engine. If you want to query the information about a MaxCompute user group, you need to configure this parameter.
+        # The name of the MaxCompute project to query for user groups.
         self.project_name = project_name
         self.user_group_type = user_group_type
 

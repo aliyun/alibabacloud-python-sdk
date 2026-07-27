@@ -10,11 +10,11 @@ class GetInstanceConsumeTimeRankRequest(DaraModel):
         bizdate: str = None,
         project_id: int = None,
     ):
-        # The data timestamp, accurate to the day. Specify the time in the ISO 8601 standard in the yyyy-MM-dd\\"T\\"HH:mm:ssZ format. The time must be in UTC.
+        # The data timestamp, accurate to the day. The value must be in the yyyy-MM-dd\\"T\\"HH:mm:ssZ format in UTC.
         # 
         # This parameter is required.
         self.bizdate = bizdate
-        # The DataWorks workspace ID.
+        # The ID of the DataWorks workspace.
         # 
         # This parameter is required.
         self.project_id = project_id

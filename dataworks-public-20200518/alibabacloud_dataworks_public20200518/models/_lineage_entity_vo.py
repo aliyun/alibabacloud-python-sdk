@@ -17,16 +17,19 @@ class LineageEntityVO(DaraModel):
         parent_name: str = None,
         qualified_name: str = None,
     ):
+        # A map of additional key-value attributes for the entity.
         self.attributes = attributes
-        # Detail url of entity
+        # A URL for more details about the entity.
         self.detail_url = detail_url
+        # The type of the entity.
         self.entity_type = entity_type
-        # Name of entity
+        # The human-readable name of the entity.
         self.name = name
+        # The owner of the entity.
         self.owner = owner
-        # Parent name of entity
+        # The name of the entity\\"s parent container, such as a database.
         self.parent_name = parent_name
-        # Unique identifier of entity
+        # The unique, fully qualified name of the entity.
         self.qualified_name = qualified_name
 
     def validate(self):

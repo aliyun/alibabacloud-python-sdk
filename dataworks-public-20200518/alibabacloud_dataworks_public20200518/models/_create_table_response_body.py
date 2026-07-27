@@ -17,8 +17,9 @@ class CreateTableResponseBody(DaraModel):
         # 
         # If a request task is aborted due to one of the following issues, address the issue based on the error code and initiate the request task again:
         # 
-        # *   The request task fails to be submitted.
-        # *   After the request task is submitted, a subtask fails to run.
+        # - The request task fails to be submitted.
+        # 
+        # - After the request task is submitted, a subtask fails to run.
         self.task_info = task_info
 
     def validate(self):
@@ -59,16 +60,19 @@ class CreateTableResponseBodyTaskInfo(DaraModel):
     ):
         # The details about the status of the current subtask.
         # 
-        # *   If the current subtask is successful, success is returned.
-        # *   If the current subtask fails, the error details are displayed.
+        # - If the current subtask is successful, success is returned.
+        # 
+        # - If the current subtask fails, the error details are displayed.
         self.content = content
         # The ID of the subtask that you want to run. If this parameter is left empty, all subtasks are complete.
         self.next_task_id = next_task_id
         # The status of the current subtask. Valid values:
         # 
-        # *   operating: The subtask is running.
-        # *   success: The subtask succeeds.
-        # *   failure: The subtask fails to run. For more information about the error details, see the Content parameter.
+        # - operating: The subtask is running.
+        # 
+        # - success: The subtask succeeds.
+        # 
+        # - failure: The subtask fails to run. For more information about the error details, see the Content parameter.
         self.status = status
         # The ID of the current subtask.
         self.task_id = task_id

@@ -14,7 +14,7 @@ class CreateQualityEntityResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The partition filter expression ID.
+        # The ID of the created partition expression.
         self.data = data
         # The error code.
         self.error_code = error_code

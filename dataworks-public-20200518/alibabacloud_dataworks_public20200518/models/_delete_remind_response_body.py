@@ -14,15 +14,15 @@ class DeleteRemindResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Indicates whether the custom alert rule is deleted. Valid values: true and false. The value true indicates that the custom alert rule is deleted. The value false indicates that the custom alert rule fails to be deleted.
+        # Indicates whether the deletion was successful. Valid values: true (success) and false (failure).
         self.data = data
-        # The error code returned.
+        # The error code.
         self.error_code = error_code
-        # The error message returned.
+        # The error message.
         self.error_message = error_message
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # The ID of the request. You can use the ID to troubleshoot issues.
+        # The unique request ID. Use this ID to troubleshoot issues.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success

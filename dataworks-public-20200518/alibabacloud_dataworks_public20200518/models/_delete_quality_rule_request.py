@@ -11,13 +11,13 @@ class DeleteQualityRuleRequest(DaraModel):
         project_name: str = None,
         rule_id: int = None,
     ):
-        # The DataWorks workspace ID. You can log on to the DataWorks console and go to the Workspace page to query the ID.
+        # The ID of the DataWorks workspace. You can log on to the DataWorks console and go to the Workspace Management page to obtain the workspace ID.
         self.project_id = project_id
         # The name of the compute engine or data source.
         # 
         # This parameter is required.
         self.project_name = project_name
-        # The monitoring rule ID.
+        # The ID of the data quality rule.
         # 
         # This parameter is required.
         self.rule_id = rule_id

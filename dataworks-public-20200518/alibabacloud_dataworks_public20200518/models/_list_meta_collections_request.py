@@ -19,7 +19,8 @@ class ListMetaCollectionsRequest(DaraModel):
     ):
         # The ID of the collection administrator.
         self.administrator = administrator
-        # - ALBUM: data album 
+        # - ALBUM: data album
+        # 
         # - ALBUM_CATEGORY: category in a data album
         # 
         # This parameter is required.

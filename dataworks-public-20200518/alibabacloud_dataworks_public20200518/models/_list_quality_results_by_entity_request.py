@@ -15,29 +15,29 @@ class ListQualityResultsByEntityRequest(DaraModel):
         project_name: str = None,
         start_date: str = None,
     ):
-        # The end of the time range to query. Specify the time in the yyyy-MM-dd HH:mm:ss format.
+        # The end of the business date range. The value must be in the `yyyy-MM-dd HH:mm:ss` format.
         # 
         # This parameter is required.
         self.end_date = end_date
-        # The ID of the partition filter expression. You can call the [GetQualityEntity](https://help.aliyun.com/document_detail/174003.html) operation to query the ID.
+        # The ID of the partition expression. You can call the [GetQualityEntity](https://help.aliyun.com/document_detail/174003.html) operation to obtain this ID.
         # 
         # This parameter is required.
         self.entity_id = entity_id
-        # The page number.
+        # The page number to return.
         # 
         # This parameter is required.
         self.page_number = page_number
-        # The number of entries per page. Default value: 10. Maximum value: 20.
+        # The number of entries to return per page. The default is 10, and the maximum is 20.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The DataWorks workspace ID.
+        # The ID of the DataWorks workspace.
         self.project_id = project_id
-        # The name of the compute engine or data source. You can obtain the name from data source configurations.
+        # The name of the engine or data source. You can find this name on the Data Source Configuration page.
         # 
         # This parameter is required.
         self.project_name = project_name
-        # The beginning of the time range to query. Specify the time in the yyyy-MM-dd HH:mm:ss format.
+        # The start of the business date range. The value must be in the `yyyy-MM-dd HH:mm:ss` format.
         # 
         # This parameter is required.
         self.start_date = start_date

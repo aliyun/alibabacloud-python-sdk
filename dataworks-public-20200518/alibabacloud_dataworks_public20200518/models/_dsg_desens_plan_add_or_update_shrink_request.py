@@ -9,7 +9,7 @@ class DsgDesensPlanAddOrUpdateShrinkRequest(DaraModel):
         self,
         desens_rules_shrink: str = None,
     ):
-        # A collection of data masking rules that you want to add or modify.
+        # The collection of data masking rules to add or update.
         # 
         # This parameter is required.
         self.desens_rules_shrink = desens_rules_shrink

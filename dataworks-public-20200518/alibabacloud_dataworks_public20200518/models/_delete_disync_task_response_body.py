@@ -18,8 +18,9 @@ class DeleteDISyncTaskResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.success = success
 
     def validate(self):
@@ -66,8 +67,9 @@ class DeleteDISyncTaskResponseBodyData(DaraModel):
         self.message = message
         # Indicates whether the synchronization task is deleted. Valid values:
         # 
-        # *   success: The synchronization task is deleted.
-        # *   fail: The synchronization task fails to be deleted. You can troubleshoot the issue based on the failure reason.
+        # - success: The synchronization task is deleted.
+        # 
+        # - fail: The synchronization task fails to be deleted. You can troubleshoot the issue based on the failure reason.
         self.status = status
 
     def validate(self):

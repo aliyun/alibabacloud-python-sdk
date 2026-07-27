@@ -9,7 +9,7 @@ class DsgQueryDefaultTemplatesRequest(DaraModel):
         self,
         scene_id: int = None,
     ):
-        # The ID of the level-2 data masking scenario. You can call the [DsgSceneQuerySceneListByName](https://help.aliyun.com/document_detail/2786322.html) operation to query the list of IDs.
+        # The ID of the Level-2 Desensitization Scene. Call the [DsgSceneQuerySceneListByName](https://help.aliyun.com/document_detail/2786322.html) API to obtain this ID.
         # 
         # This parameter is required.
         self.scene_id = scene_id

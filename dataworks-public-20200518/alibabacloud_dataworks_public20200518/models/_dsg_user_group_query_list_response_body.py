@@ -23,14 +23,15 @@ class DsgUserGroupQueryListResponseBody(DaraModel):
         self.error_message = error_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The pagination information.
+        # The paginated query results.
         self.page_data = page_data
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - `true`: The request was successful.
+        # 
+        # - `false`: The request failed.
         self.success = success
 
     def validate(self):
@@ -93,13 +94,13 @@ class DsgUserGroupQueryListResponseBodyPageData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The user groups.
+        # A list of user groups.
         self.data = data
         # The page number.
         self.page_number = page_number
         # The number of entries per page. Maximum value: 100.
         self.page_size = page_size
-        # The total number of user groups returned.
+        # The total number of user groups.
         self.total_count = total_count
 
     def validate(self):
@@ -159,13 +160,13 @@ class DsgUserGroupQueryListResponseBodyPageDataData(DaraModel):
         owner: str = None,
         mc_aggregation_info: str = None,
     ):
-        # The usernames in the user group.
+        # A list of usernames in the user group.
         self.accounts = accounts
         # The time when the user group was created.
         self.gmt_create = gmt_create
-        # The time when the user group was modified.
+        # The time when the user group was last modified.
         self.gmt_modified = gmt_modified
-        # The user group ID.
+        # The ID of the user group.
         self.id = id
         # The name of the user group.
         self.name = name

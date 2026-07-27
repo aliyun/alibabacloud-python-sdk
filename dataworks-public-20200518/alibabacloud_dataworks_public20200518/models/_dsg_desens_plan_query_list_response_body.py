@@ -23,14 +23,15 @@ class DsgDesensPlanQueryListResponseBody(DaraModel):
         self.error_message = error_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The pagination information.
+        # The paginated data.
         self.page_data = page_data
-        # The request ID. You can use the ID to locate logs and troubleshoot issues.
+        # The request ID. You can use this ID to locate logs and troubleshoot issues.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: The request was successful.
+        # 
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -93,13 +94,13 @@ class DsgDesensPlanQueryListResponseBodyPageData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The information about the data masking rule.
+        # The details of the desensitization rules.
         self.data = data
         # The page number.
         self.page_number = page_number
         # The number of entries per page. Maximum value: 100.
         self.page_size = page_size
-        # The number of data masking rules.
+        # The total number of matching desensitization rules.
         self.total_count = total_count
 
     def validate(self):
@@ -168,46 +169,53 @@ class DsgDesensPlanQueryListResponseBodyPageDataData(DaraModel):
         columns: List[main_models.DsgDesensPlanQueryListResponseBodyPageDataDataColumns] = None,
         empty_not_desesn: bool = None,
     ):
-        # Indicates whether a watermark is added. Valid values:
+        # Indicates whether to add a watermark. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: A watermark is added.
+        # 
+        # - false: No watermark is added.
         self.check_watermark = check_watermark
-        # The sensitive field type.
+        # The sensitive data type.
         self.data_type = data_type
-        # The type of the data masking method.
+        # The desensitization method.
         self.desen_mode = desen_mode
-        # The details of the data masking rule.
+        # The details of the desensitization plan.
         self.desens_plan = desens_plan
-        # The data masking rule.
+        # The desensitization rule.
         self.desens_rule = desens_rule
-        # The data masking method.
+        # The desensitization method.
         self.desens_way = desens_way
-        # The time when the data masking rule was created.
+        # The time when the rule was created.
         self.gmt_create = gmt_create
-        # The time when the data masking rule was modified.
+        # The time when the rule was last modified.
         self.gmt_modified = gmt_modified
-        # The ID of the data masking rule.
+        # The ID of the desensitization rule.
         self.id = id
-        # The owner of the data masking rule.
+        # The owner of the desensitization rule.
         self.owner = owner
-        # The name of the data masking rule.
+        # The name of the desensitization rule.
         self.rule_name = rule_name
-        # The code of the level-1 data masking scenario to which the rule belongs. Valid values:
+        # The level-1 desensitization scene code. Valid values:
         # 
-        # *   dataworks_display_desense_code: masking of displayed data in DataStudio and Data Map
-        # *   maxcompute_desense_code: data masking at the MaxCompute compute engine layer
-        # *   maxcompute_new_desense_code: data masking at the MaxCompute compute engine layer (new)
-        # *   hologres_display_desense_code: data masking at the Hologres compute engine layer
-        # *   dataworks_data_integration_desense_code: static data masking in Data Integration
-        # *   dataworks_analysis_desense_code: masking of displayed data in DataAnalysis
+        # - Desensitization for display in Data Development and Data Map: dataworks_display_desense_code
+        # 
+        # - Desensitization at the MaxCompute engine layer: maxcompute_desense_code
+        # 
+        # - Desensitization at the MaxCompute engine layer (New): maxcompute_new_desense_code
+        # 
+        # - Desensitization at the Hologres engine layer: hologres_display_desense_code
+        # 
+        # - Static desensitization in Data Integration: dataworks_data_integration_desense_code
+        # 
+        # - Desensitization for display in Data Analysis: dataworks_analysis_desense_code
         self.scene_code = scene_code
-        # The name of the level-2 data masking scenario to which the data masking rule belongs.
+        # The name of the level-2 desensitization scene.
         self.scene_name = scene_name
-        # The status of the data masking rule. Valid values:
+        # The status of the rule. Valid values:
         # 
-        # *   0: expired
-        # *   1: effective
+        # - 0: Inactive.
+        # 
+        # - 1: Active.
         self.status = status
         self.columns = columns
         self.empty_not_desesn = empty_not_desesn
@@ -390,9 +398,9 @@ class DsgDesensPlanQueryListResponseBodyPageDataDataDesensPlan(DaraModel):
         desens_plan_type: str = None,
         ext_param: Dict[str, Any] = None,
     ):
-        # The type of the data masking rule.
+        # The type of the desensitization plan.
         self.desens_plan_type = desens_plan_type
-        # The parameters for the data masking rule. For more information about the parameters, see the [DsgDesensPlanAddOrUpdate](https://help.aliyun.com/document_detail/2786295.html) API reference.
+        # The parameters for the desensitization rule. For details, see the [DsgDesensPlanAddOrUpdate](https://help.aliyun.com/document_detail/2786295.html) operation.
         self.ext_param = ext_param
 
     def validate(self):

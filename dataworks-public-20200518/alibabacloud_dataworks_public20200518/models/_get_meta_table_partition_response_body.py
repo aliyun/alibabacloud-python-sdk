@@ -17,13 +17,13 @@ class GetMetaTablePartitionResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The returned result.
+        # The returned data.
         self.data = data
-        # The error code returned.
+        # The error code.
         self.error_code = error_code
-        # The error message returned.
+        # The error message.
         self.error_message = error_message
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_status_code = http_status_code
         # The request ID.
         self.request_id = request_id
@@ -160,27 +160,27 @@ class GetMetaTablePartitionResponseBodyDataDataEntityList(DaraModel):
         record_count: int = None,
         table_guid: str = None,
     ):
-        # The comment.
+        # The remarks.
         self.comment = comment
-        # The time when the partition was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+        # The creation time. Unit: milliseconds.
         self.create_time = create_time
-        # The size of the partition. Unit: bytes.
+        # The partition size. Unit: bytes.
         self.data_size = data_size
-        # The time when the partition was modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+        # The modification time. Unit: milliseconds.
         self.modified_time = modified_time
-        # The GUID of the partition.
+        # The unique identifier of the partition.
         self.partition_guid = partition_guid
         # The location of the Hive partition.
         self.partition_location = partition_location
         # The name of the partition.
         self.partition_name = partition_name
-        # The path of the partition.
+        # The directory of the partition.
         self.partition_path = partition_path
         # The type of the partition.
         self.partition_type = partition_type
-        # The number of entries in the partition.
+        # The record count.
         self.record_count = record_count
-        # The unique identifier of the metatable.
+        # The unique identifier of the table.
         self.table_guid = table_guid
 
     def validate(self):

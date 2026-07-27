@@ -17,17 +17,17 @@ class GetQualityFollowerResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The information about the subscription relationship.
+        # An array of follower objects.
         self.data = data
         # The error code.
         self.error_code = error_code
         # The error message.
         self.error_message = error_message
-        # The HTTP return code.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Whether the call is successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -101,24 +101,27 @@ class GetQualityFollowerResponseBodyData(DaraModel):
         project_name: str = None,
         table_name: str = None,
     ):
-        # The alert mode. The value is as follows:
+        # The alarm notification method. Valid values:
         # 
-        # - 1 (Mail)
-        # - 2 (email and SMS)
-        # - 4 (DingTalk groups of robots or hook)
-        # - 5 (DingTalk groups of robots @ ALL)
+        # - 1: by email
+        # 
+        # - 2: by email and SMS
+        # 
+        # - 4: by DingTalk chatbot or webhook
+        # 
+        # - 5: by DingTalk chatbot with the @all keyword
         self.alarm_mode = alarm_mode
-        # The time when the data quality rule subscription configuration was created.
+        # The time when the subscription was created. This value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
         # The ID of the partition expression.
         self.entity_id = entity_id
-        # The subscriber to receive alert information.
+        # The follower who receives alarm notifications.
         self.follower = follower
-        # The Alibaba Cloud account name of the subscriber.
+        # The Alibaba Cloud account name of the follower.
         self.follower_account_name = follower_account_name
-        # The ID of the subscription relationship.
+        # The subscription ID.
         self.id = id
-        # The update time of the data quality rule subscription configuration.
+        # The time when the subscription was last updated. This value is a UNIX timestamp in milliseconds.
         self.modify_time = modify_time
         # The name of the engine or data source.
         self.project_name = project_name

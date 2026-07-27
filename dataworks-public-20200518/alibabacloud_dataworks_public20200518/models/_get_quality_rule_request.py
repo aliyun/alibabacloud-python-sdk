@@ -11,13 +11,13 @@ class GetQualityRuleRequest(DaraModel):
         project_name: str = None,
         rule_id: int = None,
     ):
-        # The DataWorks workspace ID.
+        # The ID of the DataWorks workspace.
         self.project_id = project_id
-        # The name of the compute engine or data source.
+        # The name of the engine or data source.
         # 
         # This parameter is required.
         self.project_name = project_name
-        # The monitoring rule ID. You can call the [ListQualityRules](https://help.aliyun.com/document_detail/173995.html) operation to query the ID.
+        # The ID of the quality rule. You can call the [ListQualityRules](https://help.aliyun.com/document_detail/173995.html) operation to obtain the ID.
         # 
         # This parameter is required.
         self.rule_id = rule_id

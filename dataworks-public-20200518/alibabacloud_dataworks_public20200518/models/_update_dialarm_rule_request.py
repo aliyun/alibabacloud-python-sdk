@@ -27,9 +27,11 @@ class UpdateDIAlarmRuleRequest(DaraModel):
         self.enabled = enabled
         # The metric type in the alert rule. Valid values:
         # 
-        # *   Heartbeat
-        # *   FailoverCount
-        # *   Delay
+        # - Heartbeat
+        # 
+        # - FailoverCount
+        # 
+        # - Delay
         # 
         # This parameter is required.
         self.metric_type = metric_type
@@ -114,14 +116,17 @@ class UpdateDIAlarmRuleRequestTriggerConditions(DaraModel):
         self.duration = duration
         # The severity level. Valid values:
         # 
-        # *   Warning
-        # *   Critical
+        # - Warning
+        # 
+        # - Critical
         self.severity = severity
         # The alert threshold.
         # 
-        # *   If the alert rule is for task status, you do not need to specify a threshold.
-        # *   If the alert rule is for failovers, you must specify the number of failovers.
-        # *   If the alert rule is for latency, you must specify the latency duration, in seconds.
+        # - If the alert rule is for task status, you do not need to specify a threshold.
+        # 
+        # - If the alert rule is for failovers, you must specify the number of failovers.
+        # 
+        # - If the alert rule is for latency, you must specify the latency duration, in seconds.
         self.threshold = threshold
 
     def validate(self):
@@ -231,8 +236,9 @@ class UpdateDIAlarmRuleRequestNotificationSettingsNotificationReceivers(DaraMode
     ):
         # The recipient type.
         # 
-        # *   If the alert notification method is Mail, Phone, or Sms, the recipient type is the Alibaba Cloud account ID.
-        # *   If the alert notification method is Ding, the recipient type is the DingTalk chatbot token.
+        # - If the alert notification method is Mail, Phone, or Sms, the recipient type is the Alibaba Cloud account ID.
+        # 
+        # - If the alert notification method is Ding, the recipient type is the DingTalk chatbot token.
         self.receiver_type = receiver_type
         # The recipients.
         self.receiver_values = receiver_values
@@ -273,8 +279,9 @@ class UpdateDIAlarmRuleRequestNotificationSettingsNotificationChannels(DaraModel
         self.channels = channels
         # The severity level. Valid values:
         # 
-        # *   Warning
-        # *   Critical
+        # - Warning
+        # 
+        # - Critical
         self.severity = severity
 
     def validate(self):

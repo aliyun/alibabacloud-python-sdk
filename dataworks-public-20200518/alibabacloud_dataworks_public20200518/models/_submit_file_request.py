@@ -13,20 +13,21 @@ class SubmitFileRequest(DaraModel):
         project_identifier: str = None,
         skip_all_deploy_file_extensions: bool = None,
     ):
-        # The description of the commit operation.
+        # The comment for the submission.
         self.comment = comment
-        # The file ID. You can call the [ListFiles](https://help.aliyun.com/document_detail/173942.html) operation to query the file ID.
+        # The ID of the file. Obtain this ID by calling the [ListFiles](https://help.aliyun.com/document_detail/173942.html) operation.
         # 
         # This parameter is required.
         self.file_id = file_id
-        # The DataWorks workspace ID. You can log on to the DataWorks console and go to the Workspace page to query the ID. You must configure either this parameter or the ProjectIdentifier parameter to determine the DataWorks workspace to which the operation is applied.
+        # The ID of the DataWorks workspace. You can log on to the DataWorks Console and go to the Workspace Configurations page to obtain the workspace ID. Specify either this parameter or `ProjectIdentifier` to identify the DataWorks workspace.
         self.project_id = project_id
-        # The name of the DataWorks workspace. You can log on to the DataWorks console and go to the Workspace page to obtain the workspace name. You must configure either this parameter or the ProjectId parameter to determine the DataWorks workspace to which the operation is applied.
+        # The name of the DataWorks workspace. You can log on to the DataWorks Console and go to the Workspace Configurations page to obtain the workspace name. Specify either this parameter or `ProjectId` to identify the DataWorks workspace.
         self.project_identifier = project_identifier
-        # Specifies whether to skip the pre-publish check after the file is committed. Valid values:
+        # Specifies whether to skip the pre-deployment check after the file is submitted.
         # 
-        # *   false: indicates that the pre-publish check is not skipped. After the file is committed, the pre-publish check is automatically triggered. The file can be deployed only after the file passes the check.
-        # *   true: indicates that the pre-publish check is skipped. After the file is submitted, the pre-publish check process is not triggered. You can directly deploy the file.
+        # - false: Do not skip. After the file is submitted, the pre-deployment check process is automatically triggered. The file becomes deployable only after it passes the check.
+        # 
+        # - true: Skip. The pre-deployment check process is not triggered after the file is submitted. You can proceed directly with the deployment process.
         self.skip_all_deploy_file_extensions = skip_all_deploy_file_extensions
 
     def validate(self):

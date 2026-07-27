@@ -13,9 +13,9 @@ class GetInstanceErrorRankResponseBody(DaraModel):
         instance_error_rank: main_models.GetInstanceErrorRankResponseBodyInstanceErrorRank = None,
         request_id: str = None,
     ):
-        # The ranking data of nodes on which errors occurred.
+        # The error ranking data of nodes.
         self.instance_error_rank = instance_error_rank
-        # The request ID.
+        # The unique ID generated for each request.
         self.request_id = request_id
 
     def validate(self):
@@ -52,9 +52,9 @@ class GetInstanceErrorRankResponseBodyInstanceErrorRank(DaraModel):
         error_rank: List[main_models.GetInstanceErrorRankResponseBodyInstanceErrorRankErrorRank] = None,
         update_time: int = None,
     ):
-        # The ranking data of nodes on which errors occurred within the last month.
+        # The error ranking data of nodes in the last month.
         self.error_rank = error_rank
-        # The timestamp at which the rankings were updated.
+        # The timestamp when the error ranking was updated.
         self.update_time = update_time
 
     def validate(self):
@@ -101,17 +101,17 @@ class GetInstanceErrorRankResponseBodyInstanceErrorRankErrorRank(DaraModel):
         prg_type: int = None,
         project_id: int = None,
     ):
-        # The number of errors that occurred on the node.
+        # The number of errors of the node.
         self.count = count
-        # The node ID.
+        # The ID of the node.
         self.node_id = node_id
         # The name of the node.
         self.node_name = node_name
-        # The ID of the Alibaba Cloud account used by the node owner.
+        # The Alibaba Cloud UID of the node owner.
         self.owner = owner
-        # The type of the node.
+        # The type of the node task.
         self.prg_type = prg_type
-        # The DataWorks workspace ID.
+        # The ID of the DataWorks workspace.
         self.project_id = project_id
 
     def validate(self):

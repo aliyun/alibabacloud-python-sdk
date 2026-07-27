@@ -14,11 +14,11 @@ class CreateQualityRelativeNodeResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Indicates whether the node is associated with the partition filter expression.
+        # Indicates whether the association was created successfully.
         self.data = data
-        # The error code.
+        # The error code returned if the request fails.
         self.error_code = error_code
-        # The error message.
+        # The error message returned if the request fails.
         self.error_message = error_message
         # The HTTP status code.
         self.http_status_code = http_status_code

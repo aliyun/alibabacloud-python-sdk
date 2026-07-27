@@ -1,3 +1,11 @@
+2026-07-27 Version: 10.1.0
+- Support API DsgGetVisitDetail.
+- Support API DsgGetVisitStat.
+- Support API DsgQueryDetails.
+- Support API DsgQueryRowDetail.
+- Update API CreateFile: add request parameters OutputList.
+
+
 2026-05-18 Version: 10.0.0
 - Update API DsgDesensPlanAddOrUpdate: add request parameters DesensRules.$.emptyNotDesens.
 - Update API DsgDesensPlanAddOrUpdate: delete request parameters DesensRules.$.emptyNotDesesn.

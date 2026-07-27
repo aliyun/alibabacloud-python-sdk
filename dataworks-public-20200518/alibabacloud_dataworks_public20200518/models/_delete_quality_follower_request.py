@@ -11,13 +11,13 @@ class DeleteQualityFollowerRequest(DaraModel):
         project_id: int = None,
         project_name: str = None,
     ):
-        # The ID of the subscription relationship between the partition filter expression and the subscriber. You can call the [GetQualityFollower](https://help.aliyun.com/document_detail/174000.html) operation to obtain the ID of the subscription relationship.
+        # The ID of the follower. You can call the [GetQualityFollower](https://help.aliyun.com/document_detail/174000.html) operation to obtain the ID.
         # 
         # This parameter is required.
         self.follower_id = follower_id
-        # The DataWorks workspace ID. You can log on to the DataWorks console and go to the Workspace page to obtain the workspace ID.
+        # The ID of the DataWorks workspace. You can log in to the DataWorks console and go to the Workspace Management page to obtain the workspace ID.
         self.project_id = project_id
-        # The name of the compute engine or data source for which the partition filter expression is configured. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the rule configuration page of Data Quality page to obtain the name.
+        # The name of the engine or data source where the partition expression is located. You can log in to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Data Quality page to obtain the name.
         # 
         # This parameter is required.
         self.project_name = project_name

@@ -9,7 +9,7 @@ class DsgSceneQuerySceneListByNameRequest(DaraModel):
         self,
         scene_name: str = None,
     ):
-        # The name of the data masking scenario. A fuzzy match is performed in the platform based on a keyword to search for the data masking scenario.
+        # The keyword for a fuzzy search of data masking scenario names.
         self.scene_name = scene_name
 
     def validate(self):

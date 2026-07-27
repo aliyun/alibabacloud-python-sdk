@@ -11,13 +11,13 @@ class DeleteFolderRequest(DaraModel):
         project_id: int = None,
         project_identifier: str = None,
     ):
-        # DeleteFolder
+        # The ID of the folder. For more information about how to obtain the folder ID, see [ListFolders](https://help.aliyun.com/document_detail/173955.html).
         # 
         # This parameter is required.
         self.folder_id = folder_id
-        # Indicates whether the request is successful.
+        # The ID of the DataWorks workspace. To obtain the workspace ID, log on to the DataWorks console and go to the Workspace Management page. You must set this parameter or ProjectIdentifier to specify the DataWorks workspace for the API call.
         self.project_id = project_id
-        # http://100.67.165.184/business/api/folders/delete
+        # The name of the DataWorks workspace. To obtain the workspace name, log on to the DataWorks console and go to the Workspace Management page. You must set this parameter or ProjectId to specify the DataWorks workspace for the API call.
         self.project_identifier = project_identifier
 
     def validate(self):

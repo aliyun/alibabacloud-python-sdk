@@ -10,7 +10,7 @@ class ApprovePermissionApplyOrderResponseBody(DaraModel):
         approve_success: bool = None,
         request_id: str = None,
     ):
-        # Indicates whether the permission request order is processed.
+        # Indicates whether the approval is successful.
         self.approve_success = approve_success
         # The request ID.
         self.request_id = request_id

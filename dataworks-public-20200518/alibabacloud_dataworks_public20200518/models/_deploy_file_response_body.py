@@ -14,17 +14,17 @@ class DeployFileResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The ID of the deployment task. The ID is used as the value of a specific request parameter when you call the [GetDeployment](https://help.aliyun.com/document_detail/173950.html) operation to query the details of the deployment task.
+        # The ID of the deployment package. You can then use this ID as a parameter when calling the [GetDeployment](https://help.aliyun.com/document_detail/173950.html) API to obtain the details of the deployment.
         self.data = data
-        # The error code returned.
+        # Error code.
         self.error_code = error_code
-        # The error message returned.
+        # Error message.
         self.error_message = error_message
-        # The HTTP status code returned.
+        # HTTP status code.
         self.http_status_code = http_status_code
-        # The ID of the request. You can troubleshoot issues based on the ID.
+        # The request ID is used to troubleshoot issues when an error occurs.
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):

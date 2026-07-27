@@ -14,7 +14,7 @@ class DsgDesensPlanAddOrUpdateResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The execution result of adding or modifying a data masking rule.
+        # Indicates whether the add or update operation was successful.
         self.data = data
         # The error code.
         self.error_code = error_code
@@ -22,9 +22,9 @@ class DsgDesensPlanAddOrUpdateResponseBody(DaraModel):
         self.error_message = error_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The request ID. You can locate logs and troubleshoot issues based on the ID.
+        # The request ID. You can use the ID to trace logs and troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values: true false
+        # Indicates whether the request was successful. A value of `true` indicates that the request was successful. A value of `false` indicates that the request failed.
         self.success = success
 
     def validate(self):

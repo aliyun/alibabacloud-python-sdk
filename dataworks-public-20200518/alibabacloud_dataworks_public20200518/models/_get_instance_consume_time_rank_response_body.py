@@ -13,9 +13,9 @@ class GetInstanceConsumeTimeRankResponseBody(DaraModel):
         instance_consume_time_rank: main_models.GetInstanceConsumeTimeRankResponseBodyInstanceConsumeTimeRank = None,
         request_id: str = None,
     ):
-        # The ranking record of the running durations of instances.
+        # The ranking records of instance running durations.
         self.instance_consume_time_rank = instance_consume_time_rank
-        # The request ID.
+        # The unique ID generated for each request.
         self.request_id = request_id
 
     def validate(self):
@@ -52,7 +52,7 @@ class GetInstanceConsumeTimeRankResponseBodyInstanceConsumeTimeRank(DaraModel):
         consume_time_rank: List[main_models.GetInstanceConsumeTimeRankResponseBodyInstanceConsumeTimeRankConsumeTimeRank] = None,
         update_time: int = None,
     ):
-        # The ranking data of the running durations of instances.
+        # The ranking data of instance running durations.
         self.consume_time_rank = consume_time_rank
         # The timestamp when the ranking was updated.
         self.update_time = update_time
@@ -102,19 +102,19 @@ class GetInstanceConsumeTimeRankResponseBodyInstanceConsumeTimeRankConsumeTimeRa
         owner: str = None,
         prg_type: int = None,
     ):
-        # The data timestamp of the instance.
+        # The data timestamp on which the instance was run.
         self.bizdate = bizdate
         # The running duration of the instance. Unit: seconds.
         self.consumed = consumed
-        # The instance ID.
+        # The ID of the instance.
         self.instance_id = instance_id
-        # The node ID.
+        # The ID of the task node.
         self.node_id = node_id
         # The name of the node.
         self.node_name = node_name
-        # The ID of the Alibaba Cloud account used by the node owner.
+        # The Alibaba Cloud UID of the node owner.
         self.owner = owner
-        # The type of the node.
+        # The type of the task.
         self.prg_type = prg_type
 
     def validate(self):

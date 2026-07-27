@@ -13,13 +13,22 @@ class CreateDagTestRequest(DaraModel):
         node_params: str = None,
         project_env: str = None,
     ):
+        # The business date.
+        # 
         # This parameter is required.
         self.bizdate = bizdate
+        # The name of the workflow.
+        # 
         # This parameter is required.
         self.name = name
+        # The ID of the node.
+        # 
         # This parameter is required.
         self.node_id = node_id
+        # The parameters of the node.
         self.node_params = node_params
+        # The environment of the workspace. Valid values: PROD and DEV.
+        # 
         # This parameter is required.
         self.project_env = project_env
 

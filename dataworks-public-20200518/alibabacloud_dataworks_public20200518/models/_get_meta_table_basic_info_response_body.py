@@ -127,27 +127,33 @@ class GetMetaTableBasicInfoResponseBodyData(DaraModel):
         self.database_name = database_name
         # The type of the environment. Valid values:
         # 
-        # *   0: development environment
-        # *   1: production environment
+        # - 0: development environment
+        # 
+        # - 1: production environment
         self.env_type = env_type
         # The number of times the metatable was added to a favorite list. This parameter is returned only if you set the Extension parameter to true and takes effect only if you set the DataSourceType parameter to odps.
         self.favorite_count = favorite_count
         # Indicates whether the metatable is a partitioned table. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.is_partition_table = is_partition_table
         # Indicates whether the metatable is a view. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.is_view = is_view
         # The scope in which the metatable is visible. Valid values:
         # 
-        # *   0: The metatable is visible to workspace members.
-        # *   1: The metatable is visible to users within the tenant.
-        # *   2: The metatable is visible to all tenants.
-        # *   3: The metatable is visible only to the metatable owner.
+        # - 0: The metatable is visible to workspace members.
+        # 
+        # - 1: The metatable is visible to users within the tenant.
+        # 
+        # - 2: The metatable is visible to all tenants.
+        # 
+        # - 3: The metatable is visible only to the metatable owner.
         self.is_visible = is_visible
         # The time when the metatable was last accessed.
         self.last_access_time = last_access_time
@@ -157,7 +163,7 @@ class GetMetaTableBasicInfoResponseBodyData(DaraModel):
         self.last_modify_time = last_modify_time
         # The lifecycle of the table. Unit: day.
         # 
-        # >  If the lifecycle is not set for a MaxCompute table, the return value is 0, indicating that the table is permanently valid.
+        # > If the lifecycle is not set for a MaxCompute table, the return value is 0, indicating that the table is permanently valid.
         self.life_cycle = life_cycle
         # The storage path of the Hive metadatabase.
         self.location = location

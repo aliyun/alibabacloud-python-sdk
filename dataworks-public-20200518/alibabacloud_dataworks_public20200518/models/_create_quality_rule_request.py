@@ -28,18 +28,39 @@ class CreateQualityRuleRequest(DaraModel):
         warning_threshold: str = None,
         where_condition: str = None,
     ):
-        # The strength type of the monitoring rule. Valid values:
+        # The strength of the rule. Valid values:
         # 
-        # *   0: The monitoring rule is a weak rule.
-        # *   1: The monitoring rule is a strong rule.
+        # - 0: weak rule
+        # 
+        # - 1: strong rule
         # 
         # This parameter is required.
         self.block_type = block_type
-        # The checker ID.
+        # The ID of the checker. Valid values:
+        # 
+        # - 2: 7-day average fluctuation
+        # 
+        # - 3: 30-day average fluctuation
+        # 
+        # - 4: day-over-day comparison
+        # 
+        # - 5: week-over-week comparison
+        # 
+        # - 6: month-over-month comparison
+        # 
+        # - 7: 7-day variance fluctuation
+        # 
+        # - 8: 30-day variance fluctuation
+        # 
+        # - 9: comparison with a fixed value
+        # 
+        # - 10: fluctuation detection over 1, 7, and 30 days
+        # 
+        # - 11: comparison with the previous cycle
         self.checker = checker
-        # The description of the rule.
+        # The comments of the rule.
         self.comment = comment
-        # The threshold for a critical alert. The threshold indicates the deviation of the monitoring result from the expected value. You can customize this threshold based on your business requirements. If a strong rule is used and a critical alert is triggered, nodes are blocked.
+        # The critical threshold. It indicates the deviation of the check result from the expected value. You can customize this threshold based on your business requirements. If a strong rule is used and a critical alert is triggered, the scheduling task is blocked.
         self.critical_threshold = critical_threshold
         # The ID of the partition filter expression.
         # 
@@ -47,49 +68,53 @@ class CreateQualityRuleRequest(DaraModel):
         self.entity_id = entity_id
         # The expected value.
         self.expect_value = expect_value
-        # The method used to collect sample data. If you want to use a custom SQL statement as a sampling method, set this parameter to user_defined.
+        # The check method. If you use a custom SQL statement, set this parameter to `user_defined`.
         self.method_name = method_name
-        # The comparison operator, such as >, >=, =, ≠, <, or <=.
+        # The comparison operator. Examples: `>`, `>=`, `=`, `<>`, `<`, and `<=`.
         # 
-        # > If you set the Checker parameter to 9, you must configure the Operator parameter.
+        # > If you set the Checker parameter to 9, you must specify the Operator parameter.
         self.operator = operator
-        # Specifies whether the monitoring rule is a dynamic threshold rule. Valid values: 0 and 2. The value 0 indicates that the monitoring rule is not a dynamic threshold rule. The value 2 indicates that the monitoring rule is a dynamic threshold rule.
+        # Specifies whether to use a dynamic threshold. Valid values:
         # 
         # This parameter is required.
         self.predict_type = predict_type
-        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace Management page to obtain the workspace ID.
         self.project_id = project_id
         # The name of the compute engine or data source.
         # 
         # This parameter is required.
         self.project_name = project_name
-        # The fields that you want to monitor. If you want to monitor all fields in a table and check the table rows, set this parameter to table_count. If you want to monitor all fields in a table and check the table size, set this parameter to table_size.
+        # The field that is monitored by the rule. To perform a table-level check, set this parameter to `table_count` for the number of rows or `table_size` for the table size.
         self.property = property
-        # The data type of the fields that you want to monitor. If you want to monitor all fields in a table, set this parameter to table. If you want to monitor only a specific field, set this parameter to bigint.
+        # The data type of the field. For a table-level check, set this parameter to `table`. For a field-level check, set this parameter to a specific data type, such as `bigint`.
         self.property_type = property_type
-        # The name of the monitoring rule.
+        # The name of the rule.
         # 
         # This parameter is required.
         self.rule_name = rule_name
-        # Rule type:
+        # The type of the rule. Valid values:
         # 
-        # *   0: System template rule
-        # *   1: Custom SQL rule
-        # *   4: Custom template rule
+        # - 0: system template
+        # 
+        # - 1: custom SQL
+        # 
+        # - 2: custom template
         # 
         # This parameter is required.
         self.rule_type = rule_type
-        # The variable settings inserted before the custom rule. Format: x=a,y=b.
+        # The variable settings that are inserted before the custom rule. Format: x=a,y=b.
         self.task_setting = task_setting
-        # The template ID.
+        # The ID of the template.
         self.template_id = template_id
-        # The trend of the monitoring result. Valid values:
+        # The trend of the check result. Valid values:
         # 
-        # *   up: increasing
-        # *   down: decreasing
-        # *   abs: absolute value
+        # - `up`: upward trend
+        # 
+        # - `down`: downward trend
+        # 
+        # - `abs`: absolute value
         self.trend = trend
-        # The threshold for a warning alert. The threshold indicates the deviation of the monitoring result from the expected value. You can customize this threshold based on your business requirements.
+        # The warning threshold. It indicates the deviation of the check result from the expected value. You can customize this threshold based on your business requirements.
         self.warning_threshold = warning_threshold
         # The filter condition or custom SQL statement.
         self.where_condition = where_condition

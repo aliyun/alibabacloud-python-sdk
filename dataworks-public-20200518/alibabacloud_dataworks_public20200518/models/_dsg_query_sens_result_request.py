@@ -25,50 +25,50 @@ class DsgQuerySensResultRequest(DaraModel):
         end_date: str = None,
         start_date: str = None,
     ):
-        # The name of the field.
+        # The field name.
         self.col = col
-        # The type of the database. Valid values:
-        # 
-        # *   **ODPS.ODPS**
-        # *   **HOLO.POSTGRES**
-        # *   **EMR**
+        # The database type. Valid values:
+        # - **ODPS.ODPS**
+        # - **HOLO.POSTGRES**
+        # - **EMR**
         self.db_type = db_type
         # The sensitivity level of the field.
         self.level = level
-        # The name of a data category.
+        # The classification node name.
         self.node_name = node_name
-        # The sorting method. Valid values:
-        # 
-        # *   DESC
-        # *   ASC
+        # The sort order. Valid values:
+        # - DESC: descending.
+        # - ASC: ascending.
         self.order = order
-        # The field used for sorting.
-        # 
-        # *   gmt_create
-        # *   gmt_modified
+        # The field used for sorting. Valid values:
+        # - gmt_create
+        # - gmt_modified
         self.order_field = order_field
-        # The page number. Pages start from page 1.
+        # The page number. Minimum value: 1.
         self.page_no = page_no
         # The number of entries per page. Default value: 10. Maximum value: 20.
         self.page_size = page_size
-        # The name of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to obtain the workspace name.
+        # The name of the DataWorks workspace. Log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the workspace configuration page to obtain the workspace name.
         self.project_name = project_name
-        # The name of the schema.
+        # The schema name.
         self.schema_name = schema_name
-        # The sensitivity status of the field.
+        # The sensitivity status of the field. Valid values:
         # 
-        # *   1: indicates sensitive.
-        # *   \\-1: indicates non-sensitive.
+        # - sensitive: sensitive.
+        # - noIdentify: not identified.
+        # - noResult: no result.
         self.sens_status = sens_status
-        # The sensitive field ID.
+        # The ID of the sensitive field.
         self.sensitive_id = sensitive_id
         # The name of the sensitive field.
         self.sensitive_name = sensitive_name
-        # The name of the table.
+        # The table name.
         self.table = table
-        # The tenant ID. To obtain the tenant ID, perform the following steps: Log on to the [DataWorks console](https://workbench.data.aliyun.com/console). Find your workspace and go to the DataStudio page. On the DataStudio page, click the logon username in the upper-right corner and click User Info in the Menu section.
+        # The tenant ID. Log on to the [DataWorks console](https://workbench.data.aliyun.com/console), go to the DataStudio page, click the username in the upper-right corner, and choose Menu > User Info to obtain the tenant ID.
         self.tenant_id = tenant_id
+        # The query end time in the format of yyyy-MM-dd or yyyy-MM-dd HH:mm:ss.
         self.end_date = end_date
+        # The query start time in the format of yyyy-MM-dd or yyyy-MM-dd HH:mm:ss.
         self.start_date = start_date
 
     def validate(self):

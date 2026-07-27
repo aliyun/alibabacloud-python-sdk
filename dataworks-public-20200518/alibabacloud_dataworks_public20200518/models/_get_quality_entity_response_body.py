@@ -17,17 +17,17 @@ class GetQualityEntityResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The information about the partition filter expression.
+        # The data returned.
         self.data = data
-        # The error code returned.
+        # The error code.
         self.error_code = error_code
-        # The error message returned.
+        # The error message.
         self.error_message = error_message
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the request succeeded.
         self.success = success
 
     def validate(self):
@@ -112,42 +112,45 @@ class GetQualityEntityResponseBodyData(DaraModel):
         self.create_time = create_time
         # The level of the partition filter expression. Valid values:
         # 
-        # *   0: The partition filter expression is at the SQL level. This indicates that the system checks data quality after each SQL statement is executed.
-        # *   1: The partition filter expression is at the node level. This indicates that the system checks data quality after all the SQL statements for a node are executed.
-        self.entity_level = entity_level
-        # The type of the compute engine instance or data source.
-        self.env_type = env_type
-        # The ID of the Alibaba Cloud account that is used to receive alert notifications.
-        self.followers = followers
-        # Indicates whether the partition filter expression is associated with a node. Valid values:
+        # - 0 (SQL-level): A data quality check is triggered after each SQL statement is run.
         # 
-        # *   true: The partition filter expression is associated with a node.
-        # *   false: The partition filter expression is not associated with a node.
+        # - 1 (Task-level): A data quality check is triggered after all SQL statements are run.
+        self.entity_level = entity_level
+        # The type of the engine or data source.
+        self.env_type = env_type
+        # The subscribers who receive alert notifications. The value is the ID of an Alibaba Cloud account.
+        self.followers = followers
+        # Indicates whether the partition filter expression is associated with a scheduling node. Valid values:
+        # 
+        # - true: The partition filter expression is associated with a scheduling node.
+        # 
+        # - false: The partition filter expression is not associated with a scheduling node.
         self.has_relative_node = has_relative_node
         # The ID of the partition filter expression.
         self.id = id
         # The partition filter expression.
         self.match_expression = match_expression
-        # The time when the partition filter expression was modified.
+        # The time when the partition filter expression was last updated.
         self.modify_time = modify_time
-        # The ID of the Alibaba Cloud account that is used to modify the partition filter expression.
+        # The user who updates the partition filter expression. The value is the ID of an Alibaba Cloud account.
         self.modify_user = modify_user
-        # The ID of the Alibaba Cloud account that is used to configure the partition filter expression.
+        # The owner who configures the partition filter expression. The value is the ID of an Alibaba Cloud account.
         self.on_duty = on_duty
-        # The name of the Alibaba Cloud account that is used to configure the partition filter expression.
+        # The name of the Alibaba Cloud account of the owner.
         self.on_duty_account_name = on_duty_account_name
-        # The name of the compute engine instance or data source.
+        # The name of the engine or data source.
         self.project_name = project_name
-        # The information about the node with which the partition filter expression is associated. The information includes the following items:
+        # The scheduling node that is associated with the partition filter expression. This parameter includes the following sub-parameters:
         # 
-        # *   ProjectName: the name of the workspace to which the node belongs.
-        # *   NodeID: the ID of the node.
+        # - ProjectName: The name of the workspace to which the scheduling node belongs.
+        # 
+        # - NodeID: The ID of the scheduling node.
         self.relative_node = relative_node
-        # Indicates that the partition filter expression is at the SQL level.
+        # The SQL-level partition filter expression.
         self.sql = sql
         # The name of the partitioned table.
         self.table_name = table_name
-        # The node.
+        # The task node.
         self.task = task
 
     def validate(self):

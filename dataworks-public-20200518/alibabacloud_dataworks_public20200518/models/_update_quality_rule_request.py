@@ -30,46 +30,50 @@ class UpdateQualityRuleRequest(DaraModel):
         warning_threshold: str = None,
         where_condition: str = None,
     ):
-        # The strength of the monitoring rule. The strength of a monitoring rule indicates the importance of the rule. Valid values:
+        # The strength of the quality rule. You can specify a rule as a strong or weak rule based on the importance of the rule. Valid values:
         # 
-        # *   1: indicates that the monitoring rule is a strong rule.
-        # *   0: indicates that the monitoring rule is a weak rule. You can specify whether a monitoring rule is a strong rule based on your business requirements. If a monitoring rule is a strong rule and the critical threshold is exceeded, a critical alert is reported and nodes that are associated with the rule are blocked from running.
+        # - 1: strong rule
+        # 
+        # - 0: weak rule
+        #   If you specify a rule as a strong rule and a critical alert is triggered for the rule, the scheduling of the associated task is blocked.
         self.block_type = block_type
-        # The checker ID. Valid values: 2: indicates that the current value is compared with the average value of the previous 7 days. 3: indicates that the current value is compared with the average value of the previous 30 days. 4: indicates that the current value is compared with the value 1 day earlier. 5: indicates that the current value is compared with the value 7 days earlier. 6: indicates that the current value is compared with the value 30 days earlier. 7: indicates the variance between the current value and the value 7 days earlier. 8: indicates the variance between the current value and the value 30 days earlier. 9: indicates that the current value is compared with a fixed value. 10: indicates that the current value is compared with the value 1, 7, or 30 days earlier. 11: indicates that the current value is compared with the value of the previous cycle. You can call the [ListQualityRules](https://help.aliyun.com/document_detail/173995.html) operation to query the ID.
+        # The checker ID. You can call the [ListQualityRules](https://help.aliyun.com/document_detail/173995.html) operation to query the checker ID.
         self.checker = checker
-        # The description of the monitoring rule.
+        # The description of the quality rule.
         self.comment = comment
-        # The threshold for a critical alert. The threshold indicates the deviation of the monitoring result from the expected value. You can specify a custom value for the threshold based on your business requirements. If a monitoring rule is a strong rule and the critical threshold is exceeded, a critical alert is reported and tasks that are associated with the rule are blocked from running.
+        # The threshold for a critical alert. The threshold specifies the deviation of a check result from the expected value. You can customize the threshold based on your business requirements. If you use a strong rule and a critical alert is triggered, the scheduling of the associated task is blocked.
         self.critical_threshold = critical_threshold
-        # The ID of the partition filter expression. You can call the [ListQualityRules](https://help.aliyun.com/document_detail/173995.html) operation to obtain the ID of the partition filter expression.
+        # The ID of the partition filter expression. You can call the [ListQualityRules](https://help.aliyun.com/document_detail/173995.html) operation to query the ID of the partition filter expression.
         self.entity_id = entity_id
-        # The expected value of the monitoring rule.
+        # The expected value.
         self.expect_value = expect_value
-        # The monitoring rule ID. You can call the [ListQualityRules](https://help.aliyun.com/document_detail/173995.html) operation to query the ID of the monitoring rule.
+        # The rule ID. You can call the [ListQualityRules](https://help.aliyun.com/document_detail/173995.html) operation to query the rule ID.
         # 
         # This parameter is required.
         self.id = id
-        # The method that is used to collect sample data, such as avg, count, sum, min, max, count_distinct, user_defined, table_count, table_size, table_dt_load_count, table_dt_refuseload_count, null_value, null_value/table_count, (table_count-count_distinct)/table_count, or table_count-count_distinct.
+        # The name of the method used to collect sample data. Valid values: avg, count, sum, min, max, count_distinct, user_defined, table_count, table_size, table_dt_load_count, table_dt_refuseload_count, null_value, null_value/table_count, (table_count-count_distinct)/table_count, and table_count-count_distinct.
         # 
         # This parameter is required.
         self.method_name = method_name
-        # Specifies whether to enable the monitoring rule in the production environment. Valid values:
+        # Specifies whether to enable or disable the quality rule. This parameter specifies whether to run the quality rule in the production environment.
         # 
-        # *   true: The monitoring rule is triggered when the associated auto triggered node that generates the output data starts to run.
-        # *   false: The monitoring rule is not triggered when the associated auto triggered node that generates the output data starts to run.
+        # - true: The quality rule is triggered when the scheduling task that is associated with the output table of the rule runs.
+        # 
+        # - false: The quality rule is not triggered when the scheduling task that is associated with the output table of the rule runs.
         self.open_switch = open_switch
-        # The comparison operator, such as >, >=, =, ≠, <, or <=.
+        # The comparison operator. Valid values: >, >=, =, !=, <, and <=.
         # 
-        # >  If you set the Checker parameter to 9, you must configure the Operator parameter.
+        # > This parameter is required if you set the Checker parameter to 9.
         self.operator = operator
-        # Specifies whether the threshold is a dynamic threshold. Valid values:
+        # Specifies whether to use a dynamic threshold. Valid values:
         # 
-        # *   0: The threshold is not a dynamic threshold.
-        # *   2: The threshold is a dynamic threshold.
+        # - 0: no
+        # 
+        # - 2: yes
         self.predict_type = predict_type
         # The DataWorks workspace ID.
         self.project_id = project_id
-        # The name of the compute engine or data source. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to obtain the name of the compute engine or data source.
+        # The name of the engine or data source. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace Management page to obtain the name.
         # 
         # This parameter is required.
         self.project_name = project_name
@@ -79,27 +83,31 @@ class UpdateQualityRuleRequest(DaraModel):
         self.property = property
         # The data type of the field.
         self.property_type = property_type
-        # The name of the monitoring rule.
+        # The name of the quality rule.
         self.rule_name = rule_name
-        # Rule type:
+        # The type of the rule. Valid values:
         # 
-        # *   0: System template rule
-        # *   1: Custom SQL rule
-        # *   4: Custom template rule
+        # - 0: system template
+        # 
+        # - 1: custom SQL
+        # 
+        # - 2: custom template
         self.rule_type = rule_type
-        # The variable settings inserted before the custom rule. Format: x=a,y=b.
+        # The variable settings that are inserted before a custom rule. The settings are in the format of x=a,y=b.
         self.task_setting = task_setting
-        # The ID of the monitoring template. You can call the [ListQualityRules](https://help.aliyun.com/document_detail/173995.html) operation to obtain the ID of the monitoring template.
+        # The ID of the template that is used for the check. You can call the [ListQualityRules](https://help.aliyun.com/document_detail/173995.html) operation to query the template ID.
         self.template_id = template_id
-        # The trend of the monitoring result. Valid values:
+        # The trend of the check result. Valid values:
         # 
-        # *   up: increasing
-        # *   down: decreasing
-        # *   abs: absolute value
+        # - up: upward trend
+        # 
+        # - down: downward trend
+        # 
+        # - abs: absolute value
         self.trend = trend
-        # The threshold for a warning alert. The threshold specifies the deviation of the monitoring result from the expected value. You can specify a custom value for the threshold based on your business requirements.
+        # The threshold for a warning alert. The threshold specifies the deviation of a check result from the expected value. You can customize the threshold based on your business requirements.
         self.warning_threshold = warning_threshold
-        # The filter condition or custom SQL statement that is used for monitoring.
+        # The filter condition or custom SQL statement that is used for the check.
         self.where_condition = where_condition
 
     def validate(self):

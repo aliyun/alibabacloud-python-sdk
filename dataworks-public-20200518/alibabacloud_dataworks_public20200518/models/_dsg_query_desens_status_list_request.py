@@ -13,13 +13,21 @@ class DsgQueryDesensStatusListRequest(DaraModel):
         scene_code: str = None,
         scene_id: str = None,
     ):
+        # Query keyword
         self.keyword = keyword
+        # Page number
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # Page size
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # Primary scene code
+        # 
         # This parameter is required.
         self.scene_code = scene_code
+        # Scene ID. Only required when querying project workspace switch data.
         self.scene_id = scene_id
 
     def validate(self):

@@ -12,7 +12,7 @@ class DsgUserGroupAddOrUpdateRequest(DaraModel):
         self,
         user_groups: List[main_models.DsgUserGroupAddOrUpdateRequestUserGroups] = None,
     ):
-        # The information about the user group.
+        # The user groups.
         # 
         # This parameter is required.
         self.user_groups = user_groups
@@ -56,15 +56,17 @@ class DsgUserGroupAddOrUpdateRequestUserGroups(DaraModel):
         user_group_type: int = None,
         projects: str = None,
     ):
-        # The users in the group.
+        # The users in the user group.
         # 
-        # *   If a user group is created by using an Alibaba Cloud account and a RAM role, you can call the [DsgUserGroupQueryUserList](https://help.aliyun.com/document_detail/2786445.html) operation to query the users in the group.
-        # *   If a user group is created by using a MaxCompute role, you can call the [DsgUserGroupQueryUserList](https://help.aliyun.com/document_detail/2785695.html) operation to query the users in the group.
+        # - For user groups created based on Alibaba Cloud accounts and Resource Access Management (RAM) roles, call the [DsgUserGroupQueryUserList](https://help.aliyun.com/document_detail/2786445.html) API to query the user list.
+        # 
+        # - For user groups created based on MaxCompute roles, call the [DsgUserGroupGetOdpsRoleGroups](https://help.aliyun.com/document_detail/2785695.html) API to query the user list.
         self.accounts = accounts
-        # The user group ID.
+        # The ID of the user group.
         # 
-        # *   If you do not configure this parameter, the current operation is to add a user group.
-        # *   If you configure this parameter, the current operation is to modify a user group. You can call the [DsgUserGroupQueryList](https://help.aliyun.com/document_detail/2786441.html) operation to query the user group ID.
+        # - If you do not specify this parameter, a new user group is created.
+        # 
+        # - If you specify this parameter, the specified user group is modified. You can call the [DsgUserGroupQueryList](https://help.aliyun.com/document_detail/2786441.html) operation to query the ID of the user group.
         self.id = id
         # The name of the user group.
         # 
@@ -74,13 +76,15 @@ class DsgUserGroupAddOrUpdateRequestUserGroups(DaraModel):
         # 
         # This parameter is required.
         self.owner = owner
-        # The name of the MaxCompute project. You must configure this parameter when you create a MaxCompute user group.
+        # The name of the MaxCompute project. Set this parameter when you create a MaxCompute user group.
         self.project_name = project_name
-        # The type of the user group. Valid values:
+        # The type of the user group. The following values are valid:
         # 
-        # *   1: Alibaba Cloud account
-        # *   2: RAM role
-        # *   3: MaxCompute role
+        # - 1: Alibaba Cloud user
+        # 
+        # - 2: RAM Role
+        # 
+        # - 3: MaxCompute Role
         # 
         # This parameter is required.
         self.user_group_type = user_group_type

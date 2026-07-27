@@ -17,7 +17,7 @@ class GetNodeOnBaselineResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
-        # The list of nodes.
+        # The list of nodes on the baseline.
         self.data = data
         # The error code.
         self.error_code = error_code
@@ -25,7 +25,7 @@ class GetNodeOnBaselineResponseBody(DaraModel):
         self.error_message = error_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The request ID.
+        # The unique ID of the request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success
@@ -96,11 +96,11 @@ class GetNodeOnBaselineResponseBodyData(DaraModel):
         owner: str = None,
         project_id: int = None,
     ):
-        # The node ID.
+        # The ID of the node.
         self.node_id = node_id
         # The name of the node.
         self.node_name = node_name
-        # The ID of the Alibaba Cloud account used by the node owner.
+        # The Alibaba Cloud UID of the node owner.
         self.owner = owner
         # The ID of the workspace to which the node belongs.
         self.project_id = project_id

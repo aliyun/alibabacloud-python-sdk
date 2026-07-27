@@ -14,23 +14,25 @@ class DeleteQualityFollowerResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Indicates whether the subscriber was successfully deleted. Valid values:
+        # Indicates whether the follower of the partition filter expression was deleted. Valid values:
         # 
-        # *   true: The subscriber was successfully deleted.
-        # *   false: The subscriber failed to be deleted. You can troubleshoot errors based on the error message returned.
+        # - `true`: The follower was deleted.
+        # 
+        # - `false`: The follower failed to be deleted. You can troubleshoot the issue based on the error message.
         self.data = data
         # The error code.
         self.error_code = error_code
-        # The error message returned when the subscriber failed to be deleted.
+        # The error message returned if the follower of the partition filter expression fails to be deleted.
         self.error_message = error_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The request ID. You can troubleshoot errors based on the ID.
+        # The request ID. This parameter is used to troubleshoot issues.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - `true`: The request was successful.
+        # 
+        # - `false`: The request failed.
         self.success = success
 
     def validate(self):

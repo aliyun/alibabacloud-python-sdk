@@ -196,7 +196,7 @@ class ListNodesResponseBodyDataNodes(DaraModel):
         self.dqc_type = dqc_type
         # The file ID. You can call the ListFiles operation to query the ID.
         # 
-        # **
+        # \\*\\*
         # 
         # **Warning** This field is deprecated.
         self.file_id = file_id

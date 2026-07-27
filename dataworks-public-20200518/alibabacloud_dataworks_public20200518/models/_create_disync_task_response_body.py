@@ -66,8 +66,9 @@ class CreateDISyncTaskResponseBodyData(DaraModel):
         self.message = message
         # The creation status of the data synchronization task. Valid values:
         # 
-        # *   success
-        # *   fail
+        # - success
+        # 
+        # - fail
         self.status = status
 
     def validate(self):

@@ -166,13 +166,15 @@ class SearchMetaTablesResponseBodyDataDataEntityList(DaraModel):
         self.database_name = database_name
         # The type of the metatable. Valid values:
         # 
-        # *   0: table
-        # *   1: view
+        # - 0: table
+        # 
+        # - 1: view
         self.entity_type = entity_type
         # The type of the environment. Valid values:
         # 
-        # *   1: production environment
-        # *   0: development environment
+        # - 1: production environment
+        # 
+        # - 0: development environment
         self.env_type = env_type
         # The ID of the Alibaba Cloud account used by the workspace owner.
         self.owner_id = owner_id

@@ -13,7 +13,7 @@ class ListQualityRulesRequest(DaraModel):
         project_id: int = None,
         project_name: str = None,
     ):
-        # The ID of the partition filter expression. You can call the [GetQualityEntity](https://help.aliyun.com/document_detail/174003.html) operation to query the ID.
+        # The ID of the partition expression. Call the [GetQualityEntity](https://help.aliyun.com/document_detail/174003.html) operation to get this ID.
         # 
         # This parameter is required.
         self.entity_id = entity_id
@@ -21,13 +21,13 @@ class ListQualityRulesRequest(DaraModel):
         # 
         # This parameter is required.
         self.page_number = page_number
-        # The number of entries per page. Default value: 10. Maximum value: 20.
+        # The number of entries to return per page. Default: 10. Maximum: 20.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The DataWorks workspace ID.
+        # The ID of the DataWorks workspace.
         self.project_id = project_id
-        # The name of the compute engine or data source. You can obtain the name from data source configurations.
+        # The name of the engine or data source. You can find this name on the Data Source Configuration page.
         # 
         # This parameter is required.
         self.project_name = project_name

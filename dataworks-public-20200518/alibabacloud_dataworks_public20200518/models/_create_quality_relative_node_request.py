@@ -20,19 +20,19 @@ class CreateQualityRelativeNodeRequest(DaraModel):
         # 
         # This parameter is required.
         self.env_type = env_type
-        # The partition filter expression.
+        # The partition expression.
         # 
         # This parameter is required.
         self.match_expression = match_expression
-        # The node ID. You can call the [ListNodes](https://help.aliyun.com/document_detail/173979.html) operation to query the ID.
+        # The ID of the scheduling node. You can call the [ListNodes](https://help.aliyun.com/document_detail/173979.html) API to obtain the node ID.
         # 
         # This parameter is required.
         self.node_id = node_id
-        # The workspace ID.
+        # The ID of the workspace.
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The name of the compute engine or data source.
+        # The name of the compute engine instance or data source.
         # 
         # This parameter is required.
         self.project_name = project_name
@@ -40,11 +40,11 @@ class CreateQualityRelativeNodeRequest(DaraModel):
         # 
         # This parameter is required.
         self.table_name = table_name
-        # The ID of the workspace to which the node belongs.
+        # The ID of the project to which the node belongs.
         # 
         # This parameter is required.
         self.target_node_project_id = target_node_project_id
-        # The name of the workspace to which the node to be associated with the partition filter expression belongs.
+        # The name of the project to which the scheduling node belongs.
         # 
         # This parameter is required.
         self.target_node_project_name = target_node_project_name

@@ -17,7 +17,7 @@ class DsgSceneQuerySceneListByNameResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The returned data.
+        # The list of data masking scenarios.
         self.data = data
         # The error code.
         self.error_code = error_code
@@ -25,12 +25,13 @@ class DsgSceneQuerySceneListByNameResponseBody(DaraModel):
         self.error_message = error_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The request ID. You can locate logs and troubleshoot issues based on the ID.
+        # The ID of the request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - `true`: The request was successful.
+        # 
+        # - `false`: The request failed.
         self.success = success
 
     def validate(self):
@@ -104,31 +105,37 @@ class DsgSceneQuerySceneListByNameResponseBodyData(DaraModel):
         user_groups: str = None,
         scence_db_type: str = None,
     ):
-        # The information about multiple levels of data masking scenarios.
+        # The nested data masking scenarios.
         self.children = children
         # The description of the data masking scenario.
         self.desc = desc
         # The ID of the data masking scenario.
         self.id = id
-        # The information about the compute engine for which the data masking scenario takes effect.
+        # The engine instances to which the data masking scenario applies.
         self.projects = projects
-        # The code of the level-1 data masking scenario. Valid values:
+        # The code for the level-1 scenario. Valid values:
         # 
-        # *   dataworks_display_desense_code: masking of displayed data in DataStudio and Data Map
-        # *   maxcompute_desense_code: data masking at the MaxCompute compute engine layer
-        # *   maxcompute_new_desense_code: data masking at the MaxCompute compute engine layer (new)
-        # *   hologres_display_desense_code: data masking at the Hologres compute engine layer
-        # *   dataworks_data_integration_desense_code: static data masking in Data Integration
-        # *   dataworks_analysis_desense_code: masking of displayed data in DataAnalysis
+        # - Data masking in Data Map and DataStudio: `dataworks_display_desense_code`
+        # 
+        # - Data masking at the MaxCompute engine layer: `maxcompute_desense_code`
+        # 
+        # - Data masking at the MaxCompute engine layer (new): `maxcompute_new_desense_code`
+        # 
+        # - Data masking at the Hologres engine layer: `hologres_display_desense_code`
+        # 
+        # - Static data masking in Data Integration: `dataworks_data_integration_desense_code`
+        # 
+        # - Data masking in Data Analysis: `dataworks_analysis_desense_code`
         self.scene_code = scene_code
         # The level of the data masking scenario. Valid values:
         # 
-        # *   0: level-1 data masking scenario
-        # *   1: level-2 data masking scenario
+        # - `0`: level-1 scenario
+        # 
+        # - `1`: level-2 scenario
         self.scene_level = scene_level
         # The name of the data masking scenario.
         self.scene_name = scene_name
-        # The list of user groups in the data masking scenario. Separate user groups with commas (,).
+        # The user groups to which the data masking scenario applies. Multiple user group names are separated by a comma (,).
         self.user_groups = user_groups
         self.scence_db_type = scence_db_type
 
@@ -215,15 +222,17 @@ class DsgSceneQuerySceneListByNameResponseBodyDataProjects(DaraModel):
         db_type: str = None,
         project_name: str = None,
     ):
-        # The ID of the EMR cluster. This parameter is returned only when the data scope that takes effect in the data masking scenario is an EMR compute engine.
+        # The ID of the E-MapReduce (EMR) cluster. This parameter is returned only if the `DbType` is `EMR`.
         self.cluster_id = cluster_id
-        # The type of the compute engine. Valid values:
+        # The engine type. Valid values:
         # 
-        # *   ODPS: ODPS.ODPS
-        # *   HOLO: HOLO.POSTGRES
-        # *   EMR: EMR
+        # - MaxCompute: `ODPS.ODPS`
+        # 
+        # - Hologres: `HOLO.POSTGRES`
+        # 
+        # - E-MapReduce (EMR): `EMR`
         self.db_type = db_type
-        # The name of the compute engine.
+        # The name of the engine instance.
         self.project_name = project_name
 
     def validate(self):

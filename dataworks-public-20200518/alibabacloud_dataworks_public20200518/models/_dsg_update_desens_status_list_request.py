@@ -12,8 +12,14 @@ class DsgUpdateDesensStatusListRequest(DaraModel):
         desens_status: int = None,
         ids: List[int] = None,
     ):
+        # The switch status. Valid values:
+        # 1: enabled
+        # 0: disabled
+        # 
         # This parameter is required.
         self.desens_status = desens_status
+        # The list of switch IDs.
+        # 
         # This parameter is required.
         self.ids = ids
 

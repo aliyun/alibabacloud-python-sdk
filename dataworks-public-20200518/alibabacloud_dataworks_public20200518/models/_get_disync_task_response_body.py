@@ -20,8 +20,9 @@ class GetDISyncTaskResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   True
-        # *   False
+        # - True
+        # 
+        # - False
         self.success = success
 
     def validate(self):
@@ -69,15 +70,17 @@ class GetDISyncTaskResponseBodyData(DaraModel):
     ):
         # The alert rules that are associated with the real-time synchronization task. The value of this parameter is an array.
         self.alarm_list = alarm_list
-        # *   If the TaskType parameter is set to DI_REALTIME, the details of the real-time synchronization task are returned.
-        # *   If the TaskType parameter is set to DI_SOLUTION, the value null is returned.
+        # - If the TaskType parameter is set to DI_REALTIME, the details of the real-time synchronization task are returned.
+        # 
+        # - If the TaskType parameter is set to DI_SOLUTION, the value null is returned.
         self.code = code
         # The cause of the failure to obtain the details of the real-time synchronization task or data synchronization solution.
         # 
         # If the details of the real-time synchronization task or data synchronization solution are obtained, the value null is returned.
         self.message = message
-        # *   If the TaskType parameter is set to DI_REALTIME, the value null is returned.
-        # *   If the TaskType parameter is set to DI_SOLUTION, the details of the data synchronization solution are returned.
+        # - If the TaskType parameter is set to DI_REALTIME, the value null is returned.
+        # 
+        # - If the TaskType parameter is set to DI_SOLUTION, the details of the data synchronization solution are returned.
         self.solution_detail = solution_detail
         # Indicates whether the details of the real-time synchronization task or data synchronization solution are obtained. Valid values:
         # 
@@ -172,16 +175,25 @@ class GetDISyncTaskResponseBodyDataSolutionDetail(DaraModel):
         self.start_time = start_time
         # The status of the data synchronization solution. Valid values:
         # 
-        # *   0: successful
-        # *   1: not running
-        # *   2: running
-        # *   3: failed
-        # *   4: committed
-        # *   5: pending manual confirmation
-        # *   6: manually confirmed
-        # *   7: others
-        # *   8: waiting
-        # *   9: deleted
+        # - 0: successful
+        # 
+        # - 1: not running
+        # 
+        # - 2: running
+        # 
+        # - 3: failed
+        # 
+        # - 4: committed
+        # 
+        # - 5: pending manual confirmation
+        # 
+        # - 6: manually confirmed
+        # 
+        # - 7: others
+        # 
+        # - 8: waiting
+        # 
+        # - 9: deleted
         self.status = status
         # The time when the data synchronization solution was committed.
         self.submit_time = submit_time
@@ -289,12 +301,17 @@ class GetDISyncTaskResponseBodyDataAlarmList(DaraModel):
         self.id = id
         # The alert type. Valid values:
         # 
-        # *   taskStatus
-        # *   bizDelay
-        # *   taskFailoverCount
-        # *   ddlUnsupport
-        # *   ddlReport
-        # *   totalDirtyRecordWriteInLines
+        # - taskStatus
+        # 
+        # - bizDelay
+        # 
+        # - taskFailoverCount
+        # 
+        # - ddlUnsupport
+        # 
+        # - ddlReport
+        # 
+        # - totalDirtyRecordWriteInLines
         self.metric = metric
         # The settings for alert notification rules. The value of this parameter is an array.
         self.notify_rule = notify_rule
@@ -425,19 +442,23 @@ class GetDISyncTaskResponseBodyDataAlarmListAlarmRuleList(DaraModel):
     ):
         # The calculation method of a metric. Valid values:
         # 
-        # *   avg
-        # *   max
+        # - avg
+        # 
+        # - max
         self.aggregator = aggregator
         # The comparison operator, which indicates the method used to compare a metric with the alert rule.
         # 
-        # *   \\"=\\"
-        # *   \\"<\\"
-        # *   \\">\\"
+        # - \\"=\\"
+        # 
+        # - \\"<\\"
+        # 
+        # - \\">\\"
         self.comparator = comparator
         # The duration that a condition is met before an alert is triggered. Unit: minutes.
         self.duration = duration
-        # *   WARNING
-        # *   CRITICAL
+        # - WARNING
+        # 
+        # - CRITICAL
         self.level = level
         # The threshold for the comparison between a metric and the alert rule.
         self.threshold = threshold

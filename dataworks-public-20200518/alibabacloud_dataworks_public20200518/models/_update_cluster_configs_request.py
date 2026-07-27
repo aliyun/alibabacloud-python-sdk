@@ -21,7 +21,7 @@ class UpdateClusterConfigsRequest(DaraModel):
         self.cluster_id = cluster_id
         # The configuration type of the cluster. Valid values:
         # 
-        # *   SPARK_CONF: SPARK parameters
+        # - SPARK_CONF: SPARK parameters
         # 
         # This parameter is required.
         self.config_type = config_type

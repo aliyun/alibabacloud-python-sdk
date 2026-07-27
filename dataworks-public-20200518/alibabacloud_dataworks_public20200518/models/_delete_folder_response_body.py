@@ -13,10 +13,15 @@ class DeleteFolderResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_message = error_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The ID of the request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

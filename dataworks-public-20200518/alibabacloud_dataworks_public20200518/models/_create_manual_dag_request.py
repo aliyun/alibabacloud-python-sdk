@@ -16,27 +16,33 @@ class CreateManualDagRequest(DaraModel):
         project_env: str = None,
         project_name: str = None,
     ):
-        # The data timestamp. The value of the data timestamp must be one or more days before the current date. For example, if the current date is November 11, 2020, set the value to 2020-11-10 00:00:00 or earlier. Configure this parameter in the YYYY-MM-DD 00:00:00 format.
+        # The value of the business date must be less than or equal to the current date minus one day. For example, if today is November 11, 2020, the business date must be 2020-11-10 00:00:00 or an earlier date. The hour, minute, and second fields of the business date must all be set to 00.
         # 
         # This parameter is required.
         self.biz_date = biz_date
-        # The parameters of the manually triggered workflow, which are synchronized to all the instances in the directed acyclic graph (DAG) of the workflow. If a workflow parameter specified in DagParameters is referenced as a scheduling parameter of a node, the value of the scheduling parameter is replaced with the value of the workflow parameter.
+        # The workflow parameters. These parameters are synchronized to all instances of the current DAG. If the scheduling parameters of an internal node reference the workflow parameters in DagParameters, the corresponding parameter values of the node are replaced with the workflow parameters in DagParameters.
         self.dag_parameters = dag_parameters
-        # The IDs of the nodes that do not need to be run.
+        # The list of IDs of the nodes that do not need to be run.
         self.exclude_node_ids = exclude_node_ids
-        # The name of the manually triggered workflow.
+        # The name of the manual workflow.
         # 
         # This parameter is required.
         self.flow_name = flow_name
-        # The IDs of the nodes that you want to run.
+        # The list of IDs of the nodes to be run.
         self.include_node_ids = include_node_ids
-        # The parameters transmitted between nodes in the manually triggered workflow. The parameters are in the following JSON format: `{ "<ID of a node in the manually triggered workflow>": "Scheduling parameter settings of the node, which are in the same format as the parameters in the Scheduling Parameter section on the Properties tab of the DataStudio page", "<ID of a node in the manually triggered workflow>": "Scheduling parameter settings of the node, which are in the same format as the parameters in the Scheduling Parameter section on the Properties tab of the DataStudio page" }`
+        # The node parameter information passed when the manual workflow is executed, in JSON format:
+        # `
+        # {
+        #      "<A node ID inside the manual workflow>": "The scheduling parameter information of the node, consistent with the parameter format in the data development scheduling configuration", 
+        #      "<A node ID inside the manual workflow>": "The scheduling parameter information of the node, consistent with the parameter format in the data development scheduling configuration"
+        # }
+        # `
         self.node_parameters = node_parameters
-        # The environment type of Operation Center. Valid values: PROD and DEV.
+        # The environment identifier of the Scheduling Operation Center. PROD indicates the production environment, and DEV indicates the development environment.
         # 
         # This parameter is required.
         self.project_env = project_env
-        # The name of the workspace to which the manually triggered workflow belongs.
+        # The English name of the workspace to which the manual workflow belongs.
         # 
         # This parameter is required.
         self.project_name = project_name

@@ -14,7 +14,7 @@ class CreateQualityRuleResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The ID of the monitoring rule that you created.
+        # The ID of the new rule.
         self.data = data
         # The error code.
         self.error_code = error_code
@@ -24,7 +24,7 @@ class CreateQualityRuleResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Whether the request succeeded.
         self.success = success
 
     def validate(self):

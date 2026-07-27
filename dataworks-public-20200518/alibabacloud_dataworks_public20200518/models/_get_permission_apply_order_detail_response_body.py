@@ -13,7 +13,7 @@ class GetPermissionApplyOrderDetailResponseBody(DaraModel):
         apply_order_detail: main_models.GetPermissionApplyOrderDetailResponseBodyApplyOrderDetail = None,
         request_id: str = None,
     ):
-        # Details of the permission request order.
+        # The details of the request order.
         self.apply_order_detail = apply_order_detail
         # The request ID.
         self.request_id = request_id
@@ -59,26 +59,28 @@ class GetPermissionApplyOrderDetailResponseBodyApplyOrderDetail(DaraModel):
         flow_status: int = None,
         grantee_object_list: List[main_models.GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailGranteeObjectList] = None,
     ):
-        # The ID of the Alibaba Cloud account that was used to submit the permission request order.
+        # The UID of the Alibaba Cloud account that submitted the request order.
         self.apply_base_id = apply_base_id
-        # The time when the permission request order was submitted. The value is a UNIX timestamp.
+        # The time when the request order was submitted, displayed as a UNIX timestamp.
         self.apply_timestamp = apply_timestamp
-        # The list of Alibaba Cloud accounts that are used to process the permission request order.
+        # The list of Alibaba Cloud accounts that approved the request order.
         self.approve_account_list = approve_account_list
-        # The content of the permission request.
+        # The specific content of the request.
         self.approve_content = approve_content
+        # The time when the final approval was completed, displayed as a UNIX timestamp.
         self.finish_aapproval_timestamp = finish_aapproval_timestamp
+        # The final approval comment.
         self.finish_approval_comment = finish_approval_comment
-        # The ID of the permission request order.
+        # The ID of the request order.
         self.flow_id = flow_id
-        # The status of the permission request order. Valid values:
-        # 
-        # *   1: to be processed
-        # *   2: approved and authorized
-        # *   3: approved but authorization failed
-        # *   4: rejected
+        # The status of the request order. Valid values:
+        # - 1: Pending approval.
+        # - 2: Approved and authorization succeeded.
+        # - 3: Approved but authorization failed.
+        # - 4: Rejected.
+        # - 5: Withdrawn.
         self.flow_status = flow_status
-        # The information about the account that is used to request permissions.
+        # The information about the accounts that requested permissions.
         self.grantee_object_list = grantee_object_list
 
     def validate(self):
@@ -177,20 +179,18 @@ class GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailGranteeObjectList
         grantee_type: int = None,
         grantee_type_sub: int = None,
     ):
-        # The ID of the account that is used to request permissions.
+        # The UID of the Alibaba Cloud account that requested permissions.
         self.grantee_id = grantee_id
-        # The name of the account that is used to request permissions. The name is in the same format as that of the account used to access the MaxCompute project.
-        # 
-        # *   If the account is an Alibaba Cloud account, the value is in the ALIYUN$+Account name format.
-        # *   If the account is a RAM user, the value is in the RAM$+Account name format.
+        # The name of the Alibaba Cloud account that requested permissions. The format is consistent with the MaxCompute account format.
+        # - Primary account: ALIYUN$+account name.
+        # - RAM user: RAM$+account name.
         self.grantee_name = grantee_name
-        # The type of the subject that requests permissions. The value is fixed as 1, which indicates users.
+        # The type of the entity that requested permissions. Currently, only 1 (user) is supported.
         self.grantee_type = grantee_type
-        # The subtype of the subject that requests permissions. Valid values:
-        # 
-        # *   101: production account
-        # *   103: individual account
-        # *   105: account that requests permissions for others
+        # The subtype of the entity that requested permissions. Valid values:
+        # - 101: Production Alibaba Cloud account.
+        # - 103: Personal Alibaba Cloud account.
+        # - 105: Alibaba Cloud account applied on behalf of another user.
         self.grantee_type_sub = grantee_type_sub
 
     def validate(self):
@@ -239,13 +239,14 @@ class GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveContent(Da
         order_type: int = None,
         project_meta: main_models.GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveContentProjectMeta = None,
     ):
-        # The reason of the permission request. The administrator processes the request based on the reason.
+        # The reason for the request, used as a reference for the administrator during approval.
         self.apply_reason = apply_reason
-        # The expiration time of the permissions that you request. The value is a UNIX timestamp. If LabelSecurity is disabled for the MaxCompute project in which you want to request permissions on the fields of a table, or the security level of the fields is 0 or is lower than or equal to the security level of the Alibaba Cloud account for which you want to request permissions, you can request only permanent permissions.
+        # The expiration time of the requested permissions, displayed as a UNIX timestamp.
+        # If the MaxCompute project does not have LabelSecurity enabled, or the security level of the requested table field is 0 or less than or equal to the security level of the requesting account, only permanent permissions can be requested.
         self.deadline = deadline
-        # The type of the permission request order. The parameter value is 1 and cannot be changed. This value indicates ACL-based authorization.
+        # The type of the request order. Currently, only the value 1 is supported, indicating an object ACL permission request.
         self.order_type = order_type
-        # The information about the project and workspace that are associated with the object on which you request permissions.
+        # The information about the project and workspace to which the requested object belongs.
         self.project_meta = project_meta
 
     def validate(self):
@@ -295,11 +296,11 @@ class GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveContentPro
         object_meta_list: List[main_models.GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveContentProjectMetaObjectMetaList] = None,
         workspace_id: int = None,
     ):
-        # The MaxCompute project to which the object on which you request permissions belongs.
+        # The MaxCompute project in which the requested object resides.
         self.max_compute_project_name = max_compute_project_name
-        # The details about the object on which you request permissions.
+        # The detailed information about the requested objects.
         self.object_meta_list = object_meta_list
-        # The ID of the DataWorks workspace that is associated with the object on which you request permissions.
+        # The ID of the DataWorks workspace in which the requested object resides.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -350,9 +351,9 @@ class GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveContentPro
         object_name: str = None,
     ):
         self.actions = actions
-        # The information about the column fields in the object on which you request permissions.
+        # The column field information of the requested object.
         self.column_meta_list = column_meta_list
-        # The name of the table on which you request permissions.
+        # The name of the requested table.
         self.object_name = object_name
 
     def validate(self):
@@ -404,11 +405,11 @@ class GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveContentPro
         security_level: str = None,
     ):
         self.column_actions = column_actions
-        # The description of the column on which you request permissions.
+        # The description of the requested column.
         self.column_comment = column_comment
-        # The name of the column on which you request permissions.
+        # The name of the requested column.
         self.column_name = column_name
-        # The security level of the column on which you request permissions. Valid values: 0 to 9.
+        # The security level of the requested column. Valid values: 0 to 9.
         self.security_level = security_level
 
     def validate(self):
@@ -454,7 +455,7 @@ class GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveAccountLis
         self,
         base_id: str = None,
     ):
-        # The ID of the Alibaba Cloud account that is used to process the permission request order.
+        # The UID of the Alibaba Cloud account that approved the request order.
         self.base_id = base_id
 
     def validate(self):

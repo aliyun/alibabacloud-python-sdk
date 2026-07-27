@@ -18,8 +18,9 @@ class GenerateDISyncTaskConfigForUpdatingResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.success = success
 
     def validate(self):
@@ -69,8 +70,9 @@ class GenerateDISyncTaskConfigForUpdatingResponseBodyData(DaraModel):
         self.process_id = process_id
         # Indicates whether the ID of the asynchronous thread is generated. Valid values:
         # 
-        # *   success: indicates that the ID of the asynchronous thread is generated.
-        # *   fail: indicates that the ID of the asynchronous thread fails to be generated. You can view the reason for the failure and troubleshoot the issue based on the reason.
+        # - success: indicates that the ID of the asynchronous thread is generated.
+        # 
+        # - fail: indicates that the ID of the asynchronous thread fails to be generated. You can view the reason for the failure and troubleshoot the issue based on the reason.
         self.status = status
 
     def validate(self):

@@ -9,7 +9,7 @@ class GetNodeOnBaselineRequest(DaraModel):
         self,
         baseline_id: int = None,
     ):
-        # The baseline ID.
+        # The ID of the baseline.
         # 
         # This parameter is required.
         self.baseline_id = baseline_id

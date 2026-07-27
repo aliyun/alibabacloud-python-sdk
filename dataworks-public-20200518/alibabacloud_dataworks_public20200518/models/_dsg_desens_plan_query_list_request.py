@@ -20,26 +20,27 @@ class DsgDesensPlanQueryListRequest(DaraModel):
         data_type: str = None,
         empty_not_desesn: str = None,
     ):
-        # The owner of the data masking rule.
+        # The owner of the desensitization rule.
         self.owner = owner
         # The page number.
         # 
         # This parameter is required.
         self.page_number = page_number
-        # The number of entries per page. Maximum value: 100.
+        # The number of entries to return on each page. The maximum value is 100.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The name of the sensitive field.
+        # The name of the desensitization rule.
         self.rule_name = rule_name
-        # The ID of the level-2 data masking scenario. You can call the [DsgSceneQuerySceneListByName](https://help.aliyun.com/document_detail/2786322.html) operation to query the list of IDs.
+        # The ID of the Level-2 data desensitization scene. You can call the [DsgSceneQuerySceneListByName](https://help.aliyun.com/document_detail/2786322.html) operation to obtain this ID.
         # 
         # This parameter is required.
         self.scene_id = scene_id
-        # The status of the data masking rule. Valid values:
+        # The status of the desensitization rule. Valid values:
         # 
-        # *   0: expired
-        # *   1: effective
+        # - 0: Inactive
+        # 
+        # - 1: Active
         self.status = status
         self.columns = columns
         self.data_type = data_type

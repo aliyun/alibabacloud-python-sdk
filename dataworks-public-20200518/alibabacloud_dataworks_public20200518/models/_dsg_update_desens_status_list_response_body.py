@@ -14,11 +14,22 @@ class DsgUpdateDesensStatusListResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The processing result.
         self.data = data
+        # The error code. Valid values:
+        # 
+        # - If the request is successful, the **ErrorCode** field is not returned.
+        # - If the request fails, the **ErrorCode** field is returned. For more information, see the **Error codes** section of this topic.
         self.error_code = error_code
+        # The error message.
         self.error_message = error_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the call was successful. Valid values:
+        # - true: The call was successful.
+        # - false: The call failed.
         self.success = success
 
     def validate(self):

@@ -17,11 +17,18 @@ class DsgQueryDesensStatusListResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Response data details.
         self.data = data
+        # Error code.
         self.error_code = error_code
+        # Error message
+        # .
         self.error_message = error_message
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Request ID.
         self.request_id = request_id
+        # Whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -84,9 +91,14 @@ class DsgQueryDesensStatusListResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # Data masking rule type.
         self.page_data = page_data
+        # Page number.
         self.page_number = page_number
+        # Number of records displayed per page
+        # .
         self.page_size = page_size
+        # Total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -144,10 +156,17 @@ class DsgQueryDesensStatusListResponseBodyDataPageData(DaraModel):
         workspace_identifier: str = None,
         workspace_name: str = None,
     ):
+        # Switch status
+        # 1: Enabled
+        # 0: Disabled
         self.desens_status = desens_status
+        # Represents project space name or workspace ID depending on the scenario
         self.handle_space = handle_space
+        # Switch ID
         self.id = id
+        # Workspace unique identifier
         self.workspace_identifier = workspace_identifier
+        # Workspace name
         self.workspace_name = workspace_name
 
     def validate(self):

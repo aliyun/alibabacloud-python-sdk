@@ -19,22 +19,40 @@ class CreateDagComplementRequest(DaraModel):
         root_node_id: int = None,
         start_biz_date: str = None,
     ):
+        # An optional parameter. The start time of the task. This parameter is required for hour-level scheduled tasks.
         self.biz_begin_time = biz_begin_time
+        # An optional parameter. The end time of the task. This parameter is required for hour-level scheduled tasks.
         self.biz_end_time = biz_end_time
+        # The end business date of data backfill.
+        # 
         # This parameter is required.
         self.end_biz_date = end_biz_date
+        # An optional parameter. The list of node IDs to exclude from data backfill.
         self.exclude_node_ids = exclude_node_ids
+        # The list of node IDs to include. If you backfill data for only one node, that node must be included in includeNodeIds.
+        # 
         # This parameter is required.
         self.include_node_ids = include_node_ids
+        # The name of the workflow.
+        # 
         # This parameter is required.
         self.name = name
+        # A JSON string. The key is the node ID, and the value is the actual parameter value.
         self.node_params = node_params
+        # Specifies whether the task can be executed concurrently.
+        # 
         # This parameter is required.
         self.parallelism = parallelism
+        # The environment of the workspace, including PROD and DEV.
+        # 
         # This parameter is required.
         self.project_env = project_env
+        # The ID of the start node for data backfill.
+        # 
         # This parameter is required.
         self.root_node_id = root_node_id
+        # The start business date of data backfill.
+        # 
         # This parameter is required.
         self.start_biz_date = start_biz_date
 

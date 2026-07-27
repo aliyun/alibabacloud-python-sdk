@@ -15,15 +15,17 @@ class GetFolderResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The details of the folder.
         self.data = data
-        # GetFolder
+        # The error code.
         self.error_code = error_code
-        # The folder ID.
+        # The error message.
         self.error_message = error_message
-        # The path of the folder.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # http://100.67.165.184/business/api/folders/detail
+        # The ID of the request. Use this ID to troubleshoot issues if an error occurs.
         self.request_id = request_id
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -84,7 +86,9 @@ class GetFolderResponseBodyData(DaraModel):
         folder_id: str = None,
         folder_path: str = None,
     ):
+        # The ID of the folder.
         self.folder_id = folder_id
+        # The path of the folder.
         self.folder_path = folder_path
 
     def validate(self):

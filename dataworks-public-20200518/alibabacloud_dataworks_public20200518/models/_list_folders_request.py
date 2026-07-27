@@ -13,21 +13,21 @@ class ListFoldersRequest(DaraModel):
         project_id: int = None,
         project_identifier: str = None,
     ):
-        # The error code.
+        # The number of the page to return. This parameter is used for pagination.
         # 
         # This parameter is required.
         self.page_number = page_number
-        # Indicates whether the request was successful.
+        # The number of entries per page. The default value is 10. The maximum value is 100.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # 0000-ABCD-EFG****
+        # The path of the parent folder.
         # 
         # This parameter is required.
         self.parent_folder_path = parent_folder_path
-        # The error message.
+        # The ID of the DataWorks workspace. Log on to the DataWorks console and go to the Workspace Management page to obtain the workspace ID. You must set either this parameter or ProjectIdentifier to specify the DataWorks workspace for this API call.
         self.project_id = project_id
-        # The request ID. You can troubleshoot issues based on the ID.
+        # The name of the DataWorks workspace. Log on to the DataWorks console and go to the Workspace Management page to obtain the workspace name. You must set either this parameter or ProjectId to specify the DataWorks workspace for this API call.
         self.project_identifier = project_identifier
 
     def validate(self):

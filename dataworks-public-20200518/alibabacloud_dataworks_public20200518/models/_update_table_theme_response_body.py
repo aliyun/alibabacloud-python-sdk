@@ -24,13 +24,15 @@ class UpdateTableThemeResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.success = success
         # Indicates whether the update result is returned. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.update_result = update_result
 
     def validate(self):
