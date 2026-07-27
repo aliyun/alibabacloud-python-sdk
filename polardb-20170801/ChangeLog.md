@@ -4,6 +4,12 @@
 - Support API RestartAIDBCluster.
 
 
+2026-07-27 Version: 7.9.0
+- Support API CreateApplicationAgentRelation.
+- Support API GetLakebaseTenantToken.
+- Support API RestartAIDBCluster.
+
+
 2026-07-27 Version: 7.8.0
 - Support API CreateGwConsumerOrder.
 - Update API AddPolarFsPathMapping: add request parameters CustomBucketPathList.$.BucketAccessKeyId.
