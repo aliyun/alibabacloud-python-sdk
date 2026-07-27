@@ -11,7 +11,8 @@ class ConditionConfigUnified(DaraModel):
     def __init__(
         self,
         aggregate: str = None,
-        compare_list: List[main_models.ApmCompositeCompareConfig] = None,
+        alert_count: int = None,
+        compare_list: List[main_models.CompareList] = None,
         composite_escalation: main_models.CloudMonitoringCompositeEscalation = None,
         count_operator: str = None,
         count_threshold: int = None,
@@ -26,6 +27,9 @@ class ConditionConfigUnified(DaraModel):
         match_value: str = None,
         max: float = None,
         min: float = None,
+        no_data_alert_level: str = None,
+        no_data_alert_severity: str = None,
+        no_data_append_value: float = None,
         no_data_policy: str = None,
         operator: str = None,
         prometheus: main_models.CloudMonitoringPrometheusEscalation = None,
@@ -33,13 +37,14 @@ class ConditionConfigUnified(DaraModel):
         severity: str = None,
         simple_escalation: main_models.CloudMonitoringSimpleEscalation = None,
         threshold: float = None,
-        threshold_list: List[main_models.ApmThresholdConfig] = None,
-        triggers: List[main_models.MetricSetMultiTrigger] = None,
+        threshold_list: List[main_models.ThresholdList] = None,
+        triggers: List[main_models.Triggers] = None,
         type: str = None,
         yoy_time_unit: str = None,
         yoy_time_value: int = None,
     ):
         self.aggregate = aggregate
+        self.alert_count = alert_count
         self.compare_list = compare_list
         self.composite_escalation = composite_escalation
         self.count_operator = count_operator
@@ -55,6 +60,9 @@ class ConditionConfigUnified(DaraModel):
         self.match_value = match_value
         self.max = max
         self.min = min
+        self.no_data_alert_level = no_data_alert_level
+        self.no_data_alert_severity = no_data_alert_severity
+        self.no_data_append_value = no_data_append_value
         self.no_data_policy = no_data_policy
         self.operator = operator
         self.prometheus = prometheus
@@ -98,6 +106,9 @@ class ConditionConfigUnified(DaraModel):
             result = _map
         if self.aggregate is not None:
             result['aggregate'] = self.aggregate
+
+        if self.alert_count is not None:
+            result['alertCount'] = self.alert_count
 
         result['compareList'] = []
         if self.compare_list is not None:
@@ -146,6 +157,15 @@ class ConditionConfigUnified(DaraModel):
         if self.min is not None:
             result['min'] = self.min
 
+        if self.no_data_alert_level is not None:
+            result['noDataAlertLevel'] = self.no_data_alert_level
+
+        if self.no_data_alert_severity is not None:
+            result['noDataAlertSeverity'] = self.no_data_alert_severity
+
+        if self.no_data_append_value is not None:
+            result['noDataAppendValue'] = self.no_data_append_value
+
         if self.no_data_policy is not None:
             result['noDataPolicy'] = self.no_data_policy
 
@@ -193,10 +213,13 @@ class ConditionConfigUnified(DaraModel):
         if m.get('aggregate') is not None:
             self.aggregate = m.get('aggregate')
 
+        if m.get('alertCount') is not None:
+            self.alert_count = m.get('alertCount')
+
         self.compare_list = []
         if m.get('compareList') is not None:
             for k1 in m.get('compareList'):
-                temp_model = main_models.ApmCompositeCompareConfig()
+                temp_model = main_models.CompareList()
                 self.compare_list.append(temp_model.from_map(k1))
 
         if m.get('compositeEscalation') is not None:
@@ -243,6 +266,15 @@ class ConditionConfigUnified(DaraModel):
         if m.get('min') is not None:
             self.min = m.get('min')
 
+        if m.get('noDataAlertLevel') is not None:
+            self.no_data_alert_level = m.get('noDataAlertLevel')
+
+        if m.get('noDataAlertSeverity') is not None:
+            self.no_data_alert_severity = m.get('noDataAlertSeverity')
+
+        if m.get('noDataAppendValue') is not None:
+            self.no_data_append_value = m.get('noDataAppendValue')
+
         if m.get('noDataPolicy') is not None:
             self.no_data_policy = m.get('noDataPolicy')
 
@@ -269,13 +301,13 @@ class ConditionConfigUnified(DaraModel):
         self.threshold_list = []
         if m.get('thresholdList') is not None:
             for k1 in m.get('thresholdList'):
-                temp_model = main_models.ApmThresholdConfig()
+                temp_model = main_models.ThresholdList()
                 self.threshold_list.append(temp_model.from_map(k1))
 
         self.triggers = []
         if m.get('triggers') is not None:
             for k1 in m.get('triggers'):
-                temp_model = main_models.MetricSetMultiTrigger()
+                temp_model = main_models.Triggers()
                 self.triggers.append(temp_model.from_map(k1))
 
         if m.get('type') is not None:

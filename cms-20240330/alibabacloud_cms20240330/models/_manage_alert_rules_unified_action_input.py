@@ -14,6 +14,7 @@ class ManageAlertRulesUnifiedActionInput(DaraModel):
         action_integration_config: main_models.ActionIntegrationConfig = None,
         annotations: Dict[str, str] = None,
         arms_integration_config: main_models.ArmsIntegrationConfig = None,
+        biz_source: str = None,
         condition_config: main_models.ConditionConfigUnified = None,
         content_template: str = None,
         datasource_config: main_models.DatasourceConfigUnified = None,
@@ -21,9 +22,12 @@ class ManageAlertRulesUnifiedActionInput(DaraModel):
         enabled: bool = None,
         labels: Dict[str, str] = None,
         notify_config: main_models.NotifyConfigUnified = None,
+        observe_resource_config: main_models.ObserveResourceConfig = None,
         observe_resource_instance_id: str = None,
         observe_resource_type: str = None,
         query_config: main_models.QueryConfigUnified = None,
+        rca_config: main_models.AlertRuleRcaConfig = None,
+        region_id: str = None,
         schedule_config: main_models.ScheduleConfigUnified = None,
         uuid: str = None,
         uuid_list: List[str] = None,
@@ -34,6 +38,7 @@ class ManageAlertRulesUnifiedActionInput(DaraModel):
         self.action_integration_config = action_integration_config
         self.annotations = annotations
         self.arms_integration_config = arms_integration_config
+        self.biz_source = biz_source
         self.condition_config = condition_config
         self.content_template = content_template
         self.datasource_config = datasource_config
@@ -41,9 +46,12 @@ class ManageAlertRulesUnifiedActionInput(DaraModel):
         self.enabled = enabled
         self.labels = labels
         self.notify_config = notify_config
+        self.observe_resource_config = observe_resource_config
         self.observe_resource_instance_id = observe_resource_instance_id
         self.observe_resource_type = observe_resource_type
         self.query_config = query_config
+        self.rca_config = rca_config
+        self.region_id = region_id
         self.schedule_config = schedule_config
         self.uuid = uuid
         self.uuid_list = uuid_list
@@ -60,8 +68,12 @@ class ManageAlertRulesUnifiedActionInput(DaraModel):
             self.datasource_config.validate()
         if self.notify_config:
             self.notify_config.validate()
+        if self.observe_resource_config:
+            self.observe_resource_config.validate()
         if self.query_config:
             self.query_config.validate()
+        if self.rca_config:
+            self.rca_config.validate()
         if self.schedule_config:
             self.schedule_config.validate()
 
@@ -81,6 +93,9 @@ class ManageAlertRulesUnifiedActionInput(DaraModel):
 
         if self.arms_integration_config is not None:
             result['armsIntegrationConfig'] = self.arms_integration_config.to_map()
+
+        if self.biz_source is not None:
+            result['bizSource'] = self.biz_source
 
         if self.condition_config is not None:
             result['conditionConfig'] = self.condition_config.to_map()
@@ -103,6 +118,9 @@ class ManageAlertRulesUnifiedActionInput(DaraModel):
         if self.notify_config is not None:
             result['notifyConfig'] = self.notify_config.to_map()
 
+        if self.observe_resource_config is not None:
+            result['observeResourceConfig'] = self.observe_resource_config.to_map()
+
         if self.observe_resource_instance_id is not None:
             result['observeResourceInstanceId'] = self.observe_resource_instance_id
 
@@ -111,6 +129,12 @@ class ManageAlertRulesUnifiedActionInput(DaraModel):
 
         if self.query_config is not None:
             result['queryConfig'] = self.query_config.to_map()
+
+        if self.rca_config is not None:
+            result['rcaConfig'] = self.rca_config.to_map()
+
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
 
         if self.schedule_config is not None:
             result['scheduleConfig'] = self.schedule_config.to_map()
@@ -142,6 +166,9 @@ class ManageAlertRulesUnifiedActionInput(DaraModel):
             temp_model = main_models.ArmsIntegrationConfig()
             self.arms_integration_config = temp_model.from_map(m.get('armsIntegrationConfig'))
 
+        if m.get('bizSource') is not None:
+            self.biz_source = m.get('bizSource')
+
         if m.get('conditionConfig') is not None:
             temp_model = main_models.ConditionConfigUnified()
             self.condition_config = temp_model.from_map(m.get('conditionConfig'))
@@ -166,6 +193,10 @@ class ManageAlertRulesUnifiedActionInput(DaraModel):
             temp_model = main_models.NotifyConfigUnified()
             self.notify_config = temp_model.from_map(m.get('notifyConfig'))
 
+        if m.get('observeResourceConfig') is not None:
+            temp_model = main_models.ObserveResourceConfig()
+            self.observe_resource_config = temp_model.from_map(m.get('observeResourceConfig'))
+
         if m.get('observeResourceInstanceId') is not None:
             self.observe_resource_instance_id = m.get('observeResourceInstanceId')
 
@@ -175,6 +206,13 @@ class ManageAlertRulesUnifiedActionInput(DaraModel):
         if m.get('queryConfig') is not None:
             temp_model = main_models.QueryConfigUnified()
             self.query_config = temp_model.from_map(m.get('queryConfig'))
+
+        if m.get('rcaConfig') is not None:
+            temp_model = main_models.AlertRuleRcaConfig()
+            self.rca_config = temp_model.from_map(m.get('rcaConfig'))
+
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
 
         if m.get('scheduleConfig') is not None:
             temp_model = main_models.ScheduleConfigUnified()

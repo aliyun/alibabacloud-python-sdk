@@ -29,6 +29,7 @@ from ._apm_filter_config import ApmFilterConfig
 from ._apm_measure_config import ApmMeasureConfig
 from ._apm_threshold_config import ApmThresholdConfig
 from ._arms_integration_config import ArmsIntegrationConfig
+from ._biz_source_filter import BizSourceFilter
 from ._biz_trace_config import BizTraceConfig
 from ._cloud_monitoring_composite_escalation import CloudMonitoringCompositeEscalation
 from ._cloud_monitoring_composite_escalation_entry import CloudMonitoringCompositeEscalationEntry
@@ -37,6 +38,7 @@ from ._cloud_monitoring_prometheus_escalation import CloudMonitoringPrometheusEs
 from ._cloud_monitoring_simple_escalation import CloudMonitoringSimpleEscalation
 from ._cloud_monitoring_simple_escalation_entry import CloudMonitoringSimpleEscalationEntry
 from ._cms_event_for_view import CmsEventForView
+from ._compare_list import CompareList
 from ._condition_config_unified import ConditionConfigUnified
 from ._contact_for_incident_view import ContactForIncidentView
 from ._custom_extraction_strategy import CustomExtractionStrategy
@@ -49,6 +51,8 @@ from ._display_name_filter import DisplayNameFilter
 from ._effect_time_range import EffectTimeRange
 from ._enabled_filter import EnabledFilter
 from ._entity_discover_rule import EntityDiscoverRule
+from ._entity_fields import EntityFields
+from ._entity_filters import EntityFilters
 from ._entity_group_base import EntityGroupBase
 from ._evaluator import Evaluator
 from ._event_resource_for_event_view import EventResourceForEventView
@@ -58,6 +62,7 @@ from ._experiment_plan_data import ExperimentPlanData
 from ._experiment_record import ExperimentRecord
 from ._filter import Filter
 from ._filter_condition import FilterCondition
+from ._filter_list import FilterList
 from ._filter_setting import FilterSetting
 from ._incident_contact_struct import IncidentContactStruct
 from ._incident_escalation_policy_for_modify import IncidentEscalationPolicyForModify
@@ -84,6 +89,9 @@ from ._incident_timeline import IncidentTimeline
 from ._incident_timeline_for_view import IncidentTimelineForView
 from ._index_json_key import IndexJsonKey
 from ._index_key import IndexKey
+from ._join_conditions import JoinConditions
+from ._joinings import Joinings
+from ._label_filters import LabelFilters
 from ._label_matcher import LabelMatcher
 from ._labels_filter import LabelsFilter
 from ._list_event_meta_cache_all_keys_data_result import ListEventMetaCacheAllKeysDataResult
@@ -91,6 +99,7 @@ from ._maintain_window_for_modify import MaintainWindowForModify
 from ._maintain_window_for_view import MaintainWindowForView
 from ._manage_alert_rules_result import ManageAlertRulesResult
 from ._manage_alert_rules_unified_action_input import ManageAlertRulesUnifiedActionInput
+from ._measure_list import MeasureList
 from ._merge_contact import MergeContact
 from ._merge_contact_group import MergeContactGroup
 from ._merge_oncall_schedule import MergeOncallSchedule
@@ -101,6 +110,7 @@ from ._metric_set_named_query_entry import MetricSetNamedQueryEntry
 from ._metric_set_trigger_composite_expression import MetricSetTriggerCompositeExpression
 from ._metric_set_trigger_simple_expression import MetricSetTriggerSimpleExpression
 from ._model_parameters import ModelParameters
+from ._notification_channels_filter import NotificationChannelsFilter
 from ._notify_channel import NotifyChannel
 from ._notify_config_unified import NotifyConfigUnified
 from ._notify_policy import NotifyPolicy
@@ -119,16 +129,30 @@ from ._observe_group_detail import ObserveGroupDetail
 from ._observe_group_discover_rule import ObserveGroupDiscoverRule
 from ._observe_group_instance import ObserveGroupInstance
 from ._observe_group_prom_instance import ObserveGroupPromInstance
+from ._observe_resource_config import ObserveResourceConfig
+from ._observe_resource_config_filter import ObserveResourceConfigFilter
 from ._observe_resource_global_scope_filter import ObserveResourceGlobalScopeFilter
 from ._observe_resource_list_filter import ObserveResourceListFilter
 from ._observe_resource_type_filter import ObserveResourceTypeFilter
 from ._pagination import Pagination
 from ._partition_key_filter import PartitionKeyFilter
 from ._prometheus_managed_instance import PrometheusManagedInstance
+from ._prometheus_metric_filter_value import PrometheusMetricFilterValue
+from ._prometheus_metric_param_value import PrometheusMetricParamValue
+from ._prometheus_multi_trigger import PrometheusMultiTrigger
+from ._prometheus_named_query_entry import PrometheusNamedQueryEntry
+from ._prometheus_simple_expression import PrometheusSimpleExpression
 from ._prompt_template_item import PromptTemplateItem
 from ._pushing_setting import PushingSetting
+from ._queries import Queries
+from ._query_alert_rules_entity_domain_filter import QueryAlertRulesEntityDomainFilter
+from ._query_alert_rules_entity_type_filter import QueryAlertRulesEntityTypeFilter
 from ._query_alert_rules_filter import QueryAlertRulesFilter
 from ._query_alert_rules_input import QueryAlertRulesInput
+from ._query_alert_rules_namespace_filter import QueryAlertRulesNamespaceFilter
+from ._query_alert_rules_product_category_filter import QueryAlertRulesProductCategoryFilter
+from ._query_alert_rules_relation_type_filter import QueryAlertRulesRelationTypeFilter
+from ._query_alert_rules_resources_filter import QueryAlertRulesResourcesFilter
 from ._query_alert_rules_result import QueryAlertRulesResult
 from ._query_config_unified import QueryConfigUnified
 from ._repeat_notify_setting import RepeatNotifySetting
@@ -140,7 +164,12 @@ from ._server_response_manage_alert_rules_result import ServerResponseManageAler
 from ._server_response_query_alert_rules_result import ServerResponseQueryAlertRulesResult
 from ._severity_levels_filter import SeverityLevelsFilter
 from ._severity_notify_config import SeverityNotifyConfig
+from ._sls_join_condition import SlsJoinCondition
+from ._sls_multi_condition_case_config import SlsMultiConditionCaseConfig
+from ._sls_named_query_entry import SlsNamedQueryEntry
+from ._sls_query_join import SlsQueryJoin
 from ._status_filter import StatusFilter
+from ._stores import Stores
 from ._subscription_and_notify_strategy_for_list_view import SubscriptionAndNotifyStrategyForListView
 from ._subscription_and_notify_strategy_for_modify import SubscriptionAndNotifyStrategyForModify
 from ._subscription_and_notify_strategy_for_view import SubscriptionAndNotifyStrategyForView
@@ -154,9 +183,12 @@ from ._subscription_op import SubscriptionOp
 from ._tag import Tag
 from ._tag_condition import TagCondition
 from ._tag_selector import TagSelector
+from ._threshold_list import ThresholdList
 from ._transform_action import TransformAction
 from ._transformer_for_modify import TransformerForModify
 from ._transformer_for_view import TransformerForView
+from ._trigger_conditions import TriggerConditions
+from ._triggers import Triggers
 from ._umodel_entity_field import UmodelEntityField
 from ._umodel_entity_filter import UmodelEntityFilter
 from ._umodel_label_filter import UmodelLabelFilter
@@ -972,6 +1004,7 @@ __all__ = [
     ApmMeasureConfig,
     ApmThresholdConfig,
     ArmsIntegrationConfig,
+    BizSourceFilter,
     BizTraceConfig,
     CloudMonitoringCompositeEscalation,
     CloudMonitoringCompositeEscalationEntry,
@@ -980,6 +1013,7 @@ __all__ = [
     CloudMonitoringSimpleEscalation,
     CloudMonitoringSimpleEscalationEntry,
     CmsEventForView,
+    CompareList,
     ConditionConfigUnified,
     ContactForIncidentView,
     CustomExtractionStrategy,
@@ -992,6 +1026,8 @@ __all__ = [
     EffectTimeRange,
     EnabledFilter,
     EntityDiscoverRule,
+    EntityFields,
+    EntityFilters,
     EntityGroupBase,
     Evaluator,
     EventResourceForEventView,
@@ -1001,6 +1037,7 @@ __all__ = [
     ExperimentRecord,
     Filter,
     FilterCondition,
+    FilterList,
     FilterSetting,
     IncidentContactStruct,
     IncidentEscalationPolicyForModify,
@@ -1027,6 +1064,9 @@ __all__ = [
     IncidentTimelineForView,
     IndexJsonKey,
     IndexKey,
+    JoinConditions,
+    Joinings,
+    LabelFilters,
     LabelMatcher,
     LabelsFilter,
     ListEventMetaCacheAllKeysDataResult,
@@ -1034,6 +1074,7 @@ __all__ = [
     MaintainWindowForView,
     ManageAlertRulesResult,
     ManageAlertRulesUnifiedActionInput,
+    MeasureList,
     MergeContact,
     MergeContactGroup,
     MergeOncallSchedule,
@@ -1044,6 +1085,7 @@ __all__ = [
     MetricSetTriggerCompositeExpression,
     MetricSetTriggerSimpleExpression,
     ModelParameters,
+    NotificationChannelsFilter,
     NotifyChannel,
     NotifyConfigUnified,
     NotifyPolicy,
@@ -1062,16 +1104,30 @@ __all__ = [
     ObserveGroupDiscoverRule,
     ObserveGroupInstance,
     ObserveGroupPromInstance,
+    ObserveResourceConfig,
+    ObserveResourceConfigFilter,
     ObserveResourceGlobalScopeFilter,
     ObserveResourceListFilter,
     ObserveResourceTypeFilter,
     Pagination,
     PartitionKeyFilter,
     PrometheusManagedInstance,
+    PrometheusMetricFilterValue,
+    PrometheusMetricParamValue,
+    PrometheusMultiTrigger,
+    PrometheusNamedQueryEntry,
+    PrometheusSimpleExpression,
     PromptTemplateItem,
     PushingSetting,
+    Queries,
+    QueryAlertRulesEntityDomainFilter,
+    QueryAlertRulesEntityTypeFilter,
     QueryAlertRulesFilter,
     QueryAlertRulesInput,
+    QueryAlertRulesNamespaceFilter,
+    QueryAlertRulesProductCategoryFilter,
+    QueryAlertRulesRelationTypeFilter,
+    QueryAlertRulesResourcesFilter,
     QueryAlertRulesResult,
     QueryConfigUnified,
     RepeatNotifySetting,
@@ -1083,7 +1139,12 @@ __all__ = [
     ServerResponseQueryAlertRulesResult,
     SeverityLevelsFilter,
     SeverityNotifyConfig,
+    SlsJoinCondition,
+    SlsMultiConditionCaseConfig,
+    SlsNamedQueryEntry,
+    SlsQueryJoin,
     StatusFilter,
+    Stores,
     SubscriptionAndNotifyStrategyForListView,
     SubscriptionAndNotifyStrategyForModify,
     SubscriptionAndNotifyStrategyForView,
@@ -1097,9 +1158,12 @@ __all__ = [
     Tag,
     TagCondition,
     TagSelector,
+    ThresholdList,
     TransformAction,
     TransformerForModify,
     TransformerForView,
+    TriggerConditions,
+    Triggers,
     UmodelEntityField,
     UmodelEntityFilter,
     UmodelLabelFilter,

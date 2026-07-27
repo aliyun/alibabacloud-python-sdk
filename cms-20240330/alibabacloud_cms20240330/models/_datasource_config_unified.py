@@ -2,6 +2,9 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
+from alibabacloud_cms20240330 import models as main_models
 from darabonba.model import DaraModel
 
 class DatasourceConfigUnified(DaraModel):
@@ -11,19 +14,26 @@ class DatasourceConfigUnified(DaraModel):
         legacy_raw: str = None,
         legacy_type: str = None,
         product_category: str = None,
+        project: str = None,
         region_id: str = None,
+        stores: List[main_models.Stores] = None,
         type: str = None,
     ):
         self.instance_id = instance_id
         self.legacy_raw = legacy_raw
         self.legacy_type = legacy_type
         self.product_category = product_category
+        self.project = project
         self.region_id = region_id
+        self.stores = stores
         # This parameter is required.
         self.type = type
 
     def validate(self):
-        pass
+        if self.stores:
+            for v1 in self.stores:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -42,8 +52,16 @@ class DatasourceConfigUnified(DaraModel):
         if self.product_category is not None:
             result['productCategory'] = self.product_category
 
+        if self.project is not None:
+            result['project'] = self.project
+
         if self.region_id is not None:
             result['regionId'] = self.region_id
+
+        result['stores'] = []
+        if self.stores is not None:
+            for k1 in self.stores:
+                result['stores'].append(k1.to_map() if k1 else None)
 
         if self.type is not None:
             result['type'] = self.type
@@ -64,8 +82,17 @@ class DatasourceConfigUnified(DaraModel):
         if m.get('productCategory') is not None:
             self.product_category = m.get('productCategory')
 
+        if m.get('project') is not None:
+            self.project = m.get('project')
+
         if m.get('regionId') is not None:
             self.region_id = m.get('regionId')
+
+        self.stores = []
+        if m.get('stores') is not None:
+            for k1 in m.get('stores'):
+                temp_model = main_models.Stores()
+                self.stores.append(temp_model.from_map(k1))
 
         if m.get('type') is not None:
             self.type = m.get('type')

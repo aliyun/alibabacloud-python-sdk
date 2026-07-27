@@ -11,6 +11,7 @@ class QueryAlertRulesShrinkRequest(DaraModel):
         client_token: str = None,
         max_results: int = None,
         next_token: str = None,
+        query_json: str = None,
     ):
         # The request body for querying alert rules.
         self.body_shrink = body_shrink
@@ -18,8 +19,9 @@ class QueryAlertRulesShrinkRequest(DaraModel):
         self.client_token = client_token
         # The maximum number of data records to read in this request.
         self.max_results = max_results
-        # The token that marks the position from which you want to start reading data. If you leave this parameter empty, data is read from the beginning.
+        # The token that marks the position from which you want to start reading. If this parameter is left empty, data is read from the beginning.
         self.next_token = next_token
+        self.query_json = query_json
 
     def validate(self):
         pass
@@ -41,6 +43,9 @@ class QueryAlertRulesShrinkRequest(DaraModel):
         if self.next_token is not None:
             result['nextToken'] = self.next_token
 
+        if self.query_json is not None:
+            result['queryJson'] = self.query_json
+
         return result
 
     def from_map(self, m: dict = None):
@@ -56,6 +61,9 @@ class QueryAlertRulesShrinkRequest(DaraModel):
 
         if m.get('nextToken') is not None:
             self.next_token = m.get('nextToken')
+
+        if m.get('queryJson') is not None:
+            self.query_json = m.get('queryJson')
 
         return self
 

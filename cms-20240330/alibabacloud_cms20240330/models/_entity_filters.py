@@ -4,14 +4,14 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class UmodelLabelFilter(DaraModel):
+class EntityFilters(DaraModel):
     def __init__(
         self,
-        name: str = None,
+        field: str = None,
         operator: str = None,
         value: str = None,
     ):
-        self.name = name
+        self.field = field
         self.operator = operator
         self.value = value
 
@@ -23,8 +23,8 @@ class UmodelLabelFilter(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.name is not None:
-            result['name'] = self.name
+        if self.field is not None:
+            result['field'] = self.field
 
         if self.operator is not None:
             result['operator'] = self.operator
@@ -36,8 +36,8 @@ class UmodelLabelFilter(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('name') is not None:
-            self.name = m.get('name')
+        if m.get('field') is not None:
+            self.field = m.get('field')
 
         if m.get('operator') is not None:
             self.operator = m.get('operator')

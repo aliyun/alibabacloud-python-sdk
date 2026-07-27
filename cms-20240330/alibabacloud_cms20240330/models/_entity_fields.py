@@ -4,12 +4,14 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class StatusFilter(DaraModel):
+class EntityFields(DaraModel):
     def __init__(
         self,
-        eq: str = None,
+        field: str = None,
+        value: str = None,
     ):
-        self.eq = eq
+        self.field = field
+        self.value = value
 
     def validate(self):
         pass
@@ -19,15 +21,21 @@ class StatusFilter(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.eq is not None:
-            result['eq'] = self.eq
+        if self.field is not None:
+            result['field'] = self.field
+
+        if self.value is not None:
+            result['value'] = self.value
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('eq') is not None:
-            self.eq = m.get('eq')
+        if m.get('field') is not None:
+            self.field = m.get('field')
+
+        if m.get('value') is not None:
+            self.value = m.get('value')
 
         return self
 

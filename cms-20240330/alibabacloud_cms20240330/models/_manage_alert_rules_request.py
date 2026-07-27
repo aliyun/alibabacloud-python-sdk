@@ -9,9 +9,11 @@ class ManageAlertRulesRequest(DaraModel):
     def __init__(
         self,
         body: main_models.ManageAlertRulesUnifiedActionInput = None,
+        call_source: str = None,
     ):
         # The request body for managing alert rules. This body is shared by CREATE, UPDATE, PATCH, and BATCH_DELETE operations. Specify fields based on the action.
         self.body = body
+        self.call_source = call_source
 
     def validate(self):
         if self.body:
@@ -25,6 +27,9 @@ class ManageAlertRulesRequest(DaraModel):
         if self.body is not None:
             result['body'] = self.body.to_map()
 
+        if self.call_source is not None:
+            result['callSource'] = self.call_source
+
         return result
 
     def from_map(self, m: dict = None):
@@ -32,6 +37,9 @@ class ManageAlertRulesRequest(DaraModel):
         if m.get('body') is not None:
             temp_model = main_models.ManageAlertRulesUnifiedActionInput()
             self.body = temp_model.from_map(m.get('body'))
+
+        if m.get('callSource') is not None:
+            self.call_source = m.get('callSource')
 
         return self
 

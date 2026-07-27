@@ -4,15 +4,15 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class UmodelLabelFilter(DaraModel):
+class PrometheusMetricFilterValue(DaraModel):
     def __init__(
         self,
-        name: str = None,
-        operator: str = None,
+        dim: str = None,
+        opt: str = None,
         value: str = None,
     ):
-        self.name = name
-        self.operator = operator
+        self.dim = dim
+        self.opt = opt
         self.value = value
 
     def validate(self):
@@ -23,11 +23,11 @@ class UmodelLabelFilter(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.name is not None:
-            result['name'] = self.name
+        if self.dim is not None:
+            result['dim'] = self.dim
 
-        if self.operator is not None:
-            result['operator'] = self.operator
+        if self.opt is not None:
+            result['opt'] = self.opt
 
         if self.value is not None:
             result['value'] = self.value
@@ -36,11 +36,11 @@ class UmodelLabelFilter(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('name') is not None:
-            self.name = m.get('name')
+        if m.get('dim') is not None:
+            self.dim = m.get('dim')
 
-        if m.get('operator') is not None:
-            self.operator = m.get('operator')
+        if m.get('opt') is not None:
+            self.opt = m.get('opt')
 
         if m.get('value') is not None:
             self.value = m.get('value')

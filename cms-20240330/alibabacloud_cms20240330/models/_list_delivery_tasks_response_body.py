@@ -99,6 +99,8 @@ class ListDeliveryTasksResponseBodyDeliveryTasks(DaraModel):
     ):
         # The creation time.
         # 
+        # The time is in the ISO 8601 standard format (YYYY-MM-DDThh:mm:ssZ) in UTC.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.create_time = create_time
         # The data source ID (Prometheus instance ID).
@@ -126,6 +128,8 @@ class ListDeliveryTasksResponseBodyDeliveryTasks(DaraModel):
         # The task name.
         self.task_name = task_name
         # The update time.
+        # 
+        # The time is in the ISO 8601 standard format (YYYY-MM-DDThh:mm:ssZ) in UTC.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.update_time = update_time
@@ -293,7 +297,7 @@ class ListDeliveryTasksResponseBodyDeliveryTasksSinkList(DaraModel):
     ):
         # The detailed configuration of the delivery target. The meanings of key/value pairs vary depending on the sinkType.
         self.sink_configs = sink_configs
-        # The type of the delivery target.
+        # The delivery target type.
         self.sink_type = sink_type
 
     def validate(self):

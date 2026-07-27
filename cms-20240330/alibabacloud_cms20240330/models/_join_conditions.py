@@ -4,16 +4,16 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class UmodelLabelFilter(DaraModel):
+class JoinConditions(DaraModel):
     def __init__(
         self,
-        name: str = None,
+        lhs_field: str = None,
         operator: str = None,
-        value: str = None,
+        rhs_field: str = None,
     ):
-        self.name = name
+        self.lhs_field = lhs_field
         self.operator = operator
-        self.value = value
+        self.rhs_field = rhs_field
 
     def validate(self):
         pass
@@ -23,27 +23,27 @@ class UmodelLabelFilter(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.name is not None:
-            result['name'] = self.name
+        if self.lhs_field is not None:
+            result['lhsField'] = self.lhs_field
 
         if self.operator is not None:
             result['operator'] = self.operator
 
-        if self.value is not None:
-            result['value'] = self.value
+        if self.rhs_field is not None:
+            result['rhsField'] = self.rhs_field
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('name') is not None:
-            self.name = m.get('name')
+        if m.get('lhsField') is not None:
+            self.lhs_field = m.get('lhsField')
 
         if m.get('operator') is not None:
             self.operator = m.get('operator')
 
-        if m.get('value') is not None:
-            self.value = m.get('value')
+        if m.get('rhsField') is not None:
+            self.rhs_field = m.get('rhsField')
 
         return self
 

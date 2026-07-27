@@ -17,6 +17,8 @@ class AlertRuleTemplate(DaraModel):
         id: int = None,
         is_system: int = None,
         labels: str = None,
+        namespace: str = None,
+        product_category: str = None,
         rule_configs: str = None,
         scenes: str = None,
         schema_version: str = None,
@@ -37,6 +39,8 @@ class AlertRuleTemplate(DaraModel):
         self.id = id
         self.is_system = is_system
         self.labels = labels
+        self.namespace = namespace
+        self.product_category = product_category
         self.rule_configs = rule_configs
         self.scenes = scenes
         self.schema_version = schema_version
@@ -84,6 +88,12 @@ class AlertRuleTemplate(DaraModel):
 
         if self.labels is not None:
             result['labels'] = self.labels
+
+        if self.namespace is not None:
+            result['namespace'] = self.namespace
+
+        if self.product_category is not None:
+            result['productCategory'] = self.product_category
 
         if self.rule_configs is not None:
             result['ruleConfigs'] = self.rule_configs
@@ -145,6 +155,12 @@ class AlertRuleTemplate(DaraModel):
 
         if m.get('labels') is not None:
             self.labels = m.get('labels')
+
+        if m.get('namespace') is not None:
+            self.namespace = m.get('namespace')
+
+        if m.get('productCategory') is not None:
+            self.product_category = m.get('productCategory')
 
         if m.get('ruleConfigs') is not None:
             self.rule_configs = m.get('ruleConfigs')

@@ -8,9 +8,11 @@ class ManageAlertRulesShrinkRequest(DaraModel):
     def __init__(
         self,
         body_shrink: str = None,
+        call_source: str = None,
     ):
         # The request body for managing alert rules. This body is shared by CREATE, UPDATE, PATCH, and BATCH_DELETE operations. Specify fields based on the action.
         self.body_shrink = body_shrink
+        self.call_source = call_source
 
     def validate(self):
         pass
@@ -23,12 +25,18 @@ class ManageAlertRulesShrinkRequest(DaraModel):
         if self.body_shrink is not None:
             result['body'] = self.body_shrink
 
+        if self.call_source is not None:
+            result['callSource'] = self.call_source
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('body') is not None:
             self.body_shrink = m.get('body')
+
+        if m.get('callSource') is not None:
+            self.call_source = m.get('callSource')
 
         return self
 

@@ -13,6 +13,7 @@ class AlertRuleV2(DaraModel):
         action_integration_config: main_models.ActionIntegrationConfig = None,
         annotations: Dict[str, str] = None,
         arms_integration_config: main_models.ArmsIntegrationConfig = None,
+        biz_source: str = None,
         condition_config: main_models.ConditionConfigUnified = None,
         content_template: str = None,
         created_at: str = None,
@@ -23,11 +24,14 @@ class AlertRuleV2(DaraModel):
         labels: Dict[str, str] = None,
         notify_config: main_models.NotifyConfigUnified = None,
         notify_strategy_id: str = None,
+        observe_resource_config: main_models.ObserveResourceConfig = None,
         observe_resource_global_scope: bool = None,
         observe_resource_list: List[str] = None,
         observe_resource_type: str = None,
         partition_key: str = None,
         query_config: main_models.QueryConfigUnified = None,
+        rca_config: main_models.AlertRuleRcaConfig = None,
+        region_id: str = None,
         schedule_config: main_models.ScheduleConfigUnified = None,
         severity_levels: str = None,
         status: str = None,
@@ -35,53 +39,33 @@ class AlertRuleV2(DaraModel):
         uuid: str = None,
         workspace: str = None,
     ):
-        # Configuration for action integrations, such as webhooks, that execute when an alert is triggered.
         self.action_integration_config = action_integration_config
-        # A set of key-value pairs that serve as annotations, providing additional, non-identifying information, such as a description or a runbook link.
         self.annotations = annotations
-        # The configuration for integrating the alert rule with Application Real-Time Monitoring Service (ARMS).
         self.arms_integration_config = arms_integration_config
-        # The configuration for the conditions that trigger an alert.
+        self.biz_source = biz_source
         self.condition_config = condition_config
-        # The template for the alert notification content.
         self.content_template = content_template
-        # The time the alert rule was created.
         self.created_at = created_at
-        # The configuration for the data source to be evaluated.
         self.datasource_config = datasource_config
-        # The data source type. Examples: `sls`, `prometheus`.
         self.datasource_type = datasource_type
-        # The user-defined display name for the alert rule.
         self.display_name = display_name
-        # Indicates whether the alert rule is active. Set to `true` to enable the rule, or `false` to disable it.
         self.enabled = enabled
-        # A set of key-value pairs that serve as labels to filter and group alert rules.
         self.labels = labels
-        # The configuration for sending notifications when an alert is triggered.
         self.notify_config = notify_config
-        # The ID of the notification strategy to use for this alert rule.
         self.notify_strategy_id = notify_strategy_id
-        # Indicates whether the alert rule monitors all resources of the specified type. If `true`, the rule applies globally within the workspace.
+        self.observe_resource_config = observe_resource_config
         self.observe_resource_global_scope = observe_resource_global_scope
-        # A list of specific resource IDs to monitor, used only when `observeResourceGlobalScope` is `false`.
         self.observe_resource_list = observe_resource_list
-        # The type of resource that the alert rule monitors.
         self.observe_resource_type = observe_resource_type
-        # The partition key used to group alerts. Alerts with the same partition key are treated as a single incident.
         self.partition_key = partition_key
-        # The configuration for querying and processing data from the data source.
         self.query_config = query_config
-        # The configuration for how often the alert rule is evaluated.
+        self.rca_config = rca_config
+        self.region_id = region_id
         self.schedule_config = schedule_config
-        # The severity level of the alert. Examples: `critical`, `warning`.
         self.severity_levels = severity_levels
-        # The current status of the alert rule. Examples: `RUNNING`, `STOPPED`.
         self.status = status
-        # The time the alert rule was last updated.
         self.updated_at = updated_at
-        # The unique identifier for the alert rule.
         self.uuid = uuid
-        # The ID of the workspace that contains the alert rule.
         self.workspace = workspace
 
     def validate(self):
@@ -95,8 +79,12 @@ class AlertRuleV2(DaraModel):
             self.datasource_config.validate()
         if self.notify_config:
             self.notify_config.validate()
+        if self.observe_resource_config:
+            self.observe_resource_config.validate()
         if self.query_config:
             self.query_config.validate()
+        if self.rca_config:
+            self.rca_config.validate()
         if self.schedule_config:
             self.schedule_config.validate()
 
@@ -113,6 +101,9 @@ class AlertRuleV2(DaraModel):
 
         if self.arms_integration_config is not None:
             result['armsIntegrationConfig'] = self.arms_integration_config.to_map()
+
+        if self.biz_source is not None:
+            result['bizSource'] = self.biz_source
 
         if self.condition_config is not None:
             result['conditionConfig'] = self.condition_config.to_map()
@@ -144,6 +135,9 @@ class AlertRuleV2(DaraModel):
         if self.notify_strategy_id is not None:
             result['notifyStrategyId'] = self.notify_strategy_id
 
+        if self.observe_resource_config is not None:
+            result['observeResourceConfig'] = self.observe_resource_config.to_map()
+
         if self.observe_resource_global_scope is not None:
             result['observeResourceGlobalScope'] = self.observe_resource_global_scope
 
@@ -158,6 +152,12 @@ class AlertRuleV2(DaraModel):
 
         if self.query_config is not None:
             result['queryConfig'] = self.query_config.to_map()
+
+        if self.rca_config is not None:
+            result['rcaConfig'] = self.rca_config.to_map()
+
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
 
         if self.schedule_config is not None:
             result['scheduleConfig'] = self.schedule_config.to_map()
@@ -192,6 +192,9 @@ class AlertRuleV2(DaraModel):
             temp_model = main_models.ArmsIntegrationConfig()
             self.arms_integration_config = temp_model.from_map(m.get('armsIntegrationConfig'))
 
+        if m.get('bizSource') is not None:
+            self.biz_source = m.get('bizSource')
+
         if m.get('conditionConfig') is not None:
             temp_model = main_models.ConditionConfigUnified()
             self.condition_config = temp_model.from_map(m.get('conditionConfig'))
@@ -225,6 +228,10 @@ class AlertRuleV2(DaraModel):
         if m.get('notifyStrategyId') is not None:
             self.notify_strategy_id = m.get('notifyStrategyId')
 
+        if m.get('observeResourceConfig') is not None:
+            temp_model = main_models.ObserveResourceConfig()
+            self.observe_resource_config = temp_model.from_map(m.get('observeResourceConfig'))
+
         if m.get('observeResourceGlobalScope') is not None:
             self.observe_resource_global_scope = m.get('observeResourceGlobalScope')
 
@@ -240,6 +247,13 @@ class AlertRuleV2(DaraModel):
         if m.get('queryConfig') is not None:
             temp_model = main_models.QueryConfigUnified()
             self.query_config = temp_model.from_map(m.get('queryConfig'))
+
+        if m.get('rcaConfig') is not None:
+            temp_model = main_models.AlertRuleRcaConfig()
+            self.rca_config = temp_model.from_map(m.get('rcaConfig'))
+
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
 
         if m.get('scheduleConfig') is not None:
             temp_model = main_models.ScheduleConfigUnified()

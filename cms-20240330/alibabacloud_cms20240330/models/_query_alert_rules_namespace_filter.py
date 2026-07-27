@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class StatusFilter(DaraModel):
+class QueryAlertRulesNamespaceFilter(DaraModel):
     def __init__(
         self,
         eq: str = None,

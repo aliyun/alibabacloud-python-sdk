@@ -20,23 +20,28 @@ class UpdateDeliveryTaskRequest(DaraModel):
         task_description: str = None,
         task_name: str = None,
     ):
-        # The data source ID, which is the Managed Service for Prometheus instance ID.
+        # The data source ID (Prometheus instance ID).
         self.data_source_id = data_source_id
         # The additional labels attached to all delivered metrics. The key is the label name and the value is the label value.
         self.external_labels = external_labels
-        # The metric filter conditions. The entire value is replaced rather than incrementally merged.
+        # The metric filter conditions. The entire value is replaced and not incrementally merged.
         self.label_filters = label_filters
-        # The metric filtering mode.
+        # The metric filtering mode. Valid values:
+        # - Deny: denied.
+        # - Allow: allowed.
         self.label_filters_type = label_filters_type
         # The resource group ID.
         self.resource_group_id = resource_group_id
         # The list of delivery targets.
         self.sink_list = sink_list
-        # The task status. This parameter is used to enable or disable the task.
+        # The task status. This parameter is used to start or stop the task. Valid values:
+        # - Running: running.
+        # - Enable: enabled.
+        # - Disable: disabled.
         self.status = status
         # The task description.
         self.task_description = task_description
-        # The task name. The name can contain letters, digits, underscores (_), and hyphens (-).
+        # The task name. The name can contain letters, digits, underscores (_), and hyphens (-), and can also contain Chinese characters.
         self.task_name = task_name
 
     def validate(self):
@@ -121,9 +126,12 @@ class UpdateDeliveryTaskRequestSinkList(DaraModel):
         sink_configs: Dict[str, str] = None,
         sink_type: str = None,
     ):
-        # The detailed configuration of the delivery target. The meanings of keys and values vary depending on the sinkType.
+        # The detailed configuration of the delivery target. The meanings of the key/value pairs vary depending on the sinkType.
         self.sink_configs = sink_configs
-        # The delivery target type.
+        # The delivery target type. Valid values:
+        # - AcsMaxCompute: MaxCompute.
+        # - AcsKafka: Message Queue for Apache Kafka.
+        # - Prometheus: Managed Service for Prometheus.
         self.sink_type = sink_type
 
     def validate(self):

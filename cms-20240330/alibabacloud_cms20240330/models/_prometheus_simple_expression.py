@@ -4,16 +4,16 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class UmodelLabelFilter(DaraModel):
+class PrometheusSimpleExpression(DaraModel):
     def __init__(
         self,
-        name: str = None,
         operator: str = None,
-        value: str = None,
+        query_name: str = None,
+        threshold: float = None,
     ):
-        self.name = name
         self.operator = operator
-        self.value = value
+        self.query_name = query_name
+        self.threshold = threshold
 
     def validate(self):
         pass
@@ -23,27 +23,27 @@ class UmodelLabelFilter(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.name is not None:
-            result['name'] = self.name
-
         if self.operator is not None:
             result['operator'] = self.operator
 
-        if self.value is not None:
-            result['value'] = self.value
+        if self.query_name is not None:
+            result['queryName'] = self.query_name
+
+        if self.threshold is not None:
+            result['threshold'] = self.threshold
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('name') is not None:
-            self.name = m.get('name')
-
         if m.get('operator') is not None:
             self.operator = m.get('operator')
 
-        if m.get('value') is not None:
-            self.value = m.get('value')
+        if m.get('queryName') is not None:
+            self.query_name = m.get('queryName')
+
+        if m.get('threshold') is not None:
+            self.threshold = m.get('threshold')
 
         return self
 

@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class UmodelLabelFilter(DaraModel):
+class LabelFilters(DaraModel):
     def __init__(
         self,
         name: str = None,

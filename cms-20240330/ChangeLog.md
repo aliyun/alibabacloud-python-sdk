@@ -1,3 +1,8 @@
+2026-07-27 Version: 10.2.1
+- Update API ManageAlertRules: add request parameters callSource.
+- Update API QueryAlertRules: add request parameters queryJson.
+
+
 2026-07-14 Version: 10.2.0
 - Support API CreateNotifyPolicy.
 - Support API DeleteNotifyPolicy.

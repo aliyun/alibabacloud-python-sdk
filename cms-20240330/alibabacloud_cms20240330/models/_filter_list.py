@@ -4,15 +4,17 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class UmodelLabelFilter(DaraModel):
+class FilterList(DaraModel):
     def __init__(
         self,
-        name: str = None,
-        operator: str = None,
+        key: str = None,
+        type: str = None,
         value: str = None,
     ):
-        self.name = name
-        self.operator = operator
+        # This parameter is required.
+        self.key = key
+        # This parameter is required.
+        self.type = type
         self.value = value
 
     def validate(self):
@@ -23,11 +25,11 @@ class UmodelLabelFilter(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.name is not None:
-            result['name'] = self.name
+        if self.key is not None:
+            result['key'] = self.key
 
-        if self.operator is not None:
-            result['operator'] = self.operator
+        if self.type is not None:
+            result['type'] = self.type
 
         if self.value is not None:
             result['value'] = self.value
@@ -36,11 +38,11 @@ class UmodelLabelFilter(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('name') is not None:
-            self.name = m.get('name')
+        if m.get('key') is not None:
+            self.key = m.get('key')
 
-        if m.get('operator') is not None:
-            self.operator = m.get('operator')
+        if m.get('type') is not None:
+            self.type = m.get('type')
 
         if m.get('value') is not None:
             self.value = m.get('value')

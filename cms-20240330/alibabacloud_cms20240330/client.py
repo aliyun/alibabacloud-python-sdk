@@ -61,7 +61,6 @@ class Client(OpenApiClient):
             'ap-southeast-6': 'metrics.ap-southeast-6.aliyuncs.com',
             'ap-southeast-5': 'metrics.ap-southeast-5.aliyuncs.com',
             'ap-southeast-3': 'metrics.ap-southeast-3.aliyuncs.com',
-            'ap-southeast-2': 'metrics.ap-southeast-2.aliyuncs.com',
             'ap-southeast-1': 'metrics.ap-southeast-1.aliyuncs.com',
             'ap-south-1': 'metrics.ap-south-1.aliyuncs.com',
             'ap-northeast-2': 'metrics.ap-northeast-2.aliyuncs.com',
@@ -10739,11 +10738,15 @@ class Client(OpenApiClient):
         Utils.convert(tmp_req, request)
         if not DaraCore.is_null(tmp_req.body):
             request.body_shrink = Utils.array_to_string_with_specified_style(tmp_req.body, 'body', 'json')
+        query = {}
+        if not DaraCore.is_null(request.call_source):
+            query['callSource'] = request.call_source
         body = {}
         if not DaraCore.is_null(request.body_shrink):
             body['body'] = request.body_shrink
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
+            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -10773,11 +10776,15 @@ class Client(OpenApiClient):
         Utils.convert(tmp_req, request)
         if not DaraCore.is_null(tmp_req.body):
             request.body_shrink = Utils.array_to_string_with_specified_style(tmp_req.body, 'body', 'json')
+        query = {}
+        if not DaraCore.is_null(request.call_source):
+            query['callSource'] = request.call_source
         body = {}
         if not DaraCore.is_null(request.body_shrink):
             body['body'] = request.body_shrink
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
+            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -10986,6 +10993,8 @@ class Client(OpenApiClient):
             query['maxResults'] = request.max_results
         if not DaraCore.is_null(request.next_token):
             query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.query_json):
+            query['queryJson'] = request.query_json
         body = {}
         if not DaraCore.is_null(request.body_shrink):
             body['body'] = request.body_shrink
@@ -11028,6 +11037,8 @@ class Client(OpenApiClient):
             query['maxResults'] = request.max_results
         if not DaraCore.is_null(request.next_token):
             query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.query_json):
+            query['queryJson'] = request.query_json
         body = {}
         if not DaraCore.is_null(request.body_shrink):
             body['body'] = request.body_shrink
