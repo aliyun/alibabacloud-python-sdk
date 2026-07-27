@@ -14822,3 +14822,85 @@ class Client(OpenApiClient):
     ) -> main_models.UploadMaterialFileResponse:
         runtime = RuntimeOptions()
         return await self.upload_material_file_with_options_async(request, runtime)
+
+    def upload_material_file_for_admin_with_options(
+        self,
+        request: main_models.UploadMaterialFileForAdminRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UploadMaterialFileForAdminResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.belong_id):
+            query['BelongId'] = request.belong_id
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.file_url):
+            query['FileUrl'] = request.file_url
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UploadMaterialFileForAdmin',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UploadMaterialFileForAdminResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def upload_material_file_for_admin_with_options_async(
+        self,
+        request: main_models.UploadMaterialFileForAdminRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UploadMaterialFileForAdminResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.belong_id):
+            query['BelongId'] = request.belong_id
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.file_url):
+            query['FileUrl'] = request.file_url
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UploadMaterialFileForAdmin',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UploadMaterialFileForAdminResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def upload_material_file_for_admin(
+        self,
+        request: main_models.UploadMaterialFileForAdminRequest,
+    ) -> main_models.UploadMaterialFileForAdminResponse:
+        runtime = RuntimeOptions()
+        return self.upload_material_file_for_admin_with_options(request, runtime)
+
+    async def upload_material_file_for_admin_async(
+        self,
+        request: main_models.UploadMaterialFileForAdminRequest,
+    ) -> main_models.UploadMaterialFileForAdminResponse:
+        runtime = RuntimeOptions()
+        return await self.upload_material_file_for_admin_with_options_async(request, runtime)

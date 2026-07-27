@@ -1,3 +1,7 @@
+2026-07-27 Version: 2.36.0
+- Support API UploadMaterialFileForAdmin.
+
+
 2026-07-27 Version: 2.35.0
 - Support API CreateAppPlugin.
 - Support API DeleteAppPlugin.

@@ -567,6 +567,9 @@ from ._upload_app_site_validation_file_response import UploadAppSiteValidationFi
 from ._upload_material_file_request import UploadMaterialFileRequest
 from ._upload_material_file_response_body import UploadMaterialFileResponseBody
 from ._upload_material_file_response import UploadMaterialFileResponse
+from ._upload_material_file_for_admin_request import UploadMaterialFileForAdminRequest
+from ._upload_material_file_for_admin_response_body import UploadMaterialFileForAdminResponseBody
+from ._upload_material_file_for_admin_response import UploadMaterialFileForAdminResponse
 from ._app_instance_aggregate import AppInstanceAggregatePartnerDetailBindData
 from ._app_instance_aggregate import AppInstanceAggregatePartnerDetail
 from ._app_instance_aggregate import AppInstanceAggregateTags
@@ -796,6 +799,7 @@ from ._update_app_instance_response_body import UpdateAppInstanceResponseBodyMod
 from ._update_app_plugin_response_body import UpdateAppPluginResponseBodyModule
 from ._update_mini_app_binding_response_body import UpdateMiniAppBindingResponseBodyData
 from ._upload_app_plugin_version_response_body import UploadAppPluginVersionResponseBodyModule
+from ._upload_material_file_for_admin_response_body import UploadMaterialFileForAdminResponseBodyModule
 
 __all__ = [
     AppAiStaff,
@@ -1363,6 +1367,9 @@ __all__ = [
     UploadMaterialFileRequest,
     UploadMaterialFileResponseBody,
     UploadMaterialFileResponse,
+    UploadMaterialFileForAdminRequest,
+    UploadMaterialFileForAdminResponseBody,
+    UploadMaterialFileForAdminResponse,
     AppInstanceAggregatePartnerDetailBindData,
     AppInstanceAggregatePartnerDetail,
     AppInstanceAggregateTags,
@@ -1591,5 +1598,6 @@ __all__ = [
     UpdateAppInstanceResponseBodyModule,
     UpdateAppPluginResponseBodyModule,
     UpdateMiniAppBindingResponseBodyData,
-    UploadAppPluginVersionResponseBodyModule
+    UploadAppPluginVersionResponseBodyModule,
+    UploadMaterialFileForAdminResponseBodyModule
 ]
