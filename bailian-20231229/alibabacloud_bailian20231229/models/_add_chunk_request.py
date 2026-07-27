@@ -22,7 +22,7 @@ class AddChunkRequest(DaraModel):
         # The chunk content to insert, passed as key-value pairs. For document search knowledge bases, use the following fixed key list:
         # - content (**String**): **Required**. The body content of the chunk.
         # - title (**String**): **Optional**. The title of the chunk.
-        # - image_urls (**Array**): **Optional**. Image URLs contained in the chunk. A maximum of 10 images are supported.
+        # - image_urls (**Array**): **Optional**. Image URLs included in the chunk. A maximum of 10 images are supported.
         # 
         # For data query and image Q&A knowledge bases, the keys are not fixed and are determined by the data source spreadsheet of the knowledge base. The key is the Excel column header, and the value is the corresponding column value.
         self.field = field

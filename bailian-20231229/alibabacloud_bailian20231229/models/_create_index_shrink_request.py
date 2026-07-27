@@ -42,298 +42,305 @@ class CreateIndexShrinkRequest(DaraModel):
         pipeline_retrieve_rate_limit_strategy: str = None,
         table: str = None,
     ):
-        # You can import files when you create a knowledge base. Specify category IDs to import all files under the corresponding categories. We recommend importing no more than 10,000 files. If you have more files, you can call the **SubmitIndexAddDocumentsJob** operation to import them later.
+        # The list of category IDs to import when creating the knowledge base. All files under the specified categories are imported. We recommend importing no more than 500 files. For remaining files, call the **SubmitIndexAddDocumentsJob** operation to continue importing.
         self.category_ids_shrink = category_ids_shrink
         # <props="china">
         # 
-        # The chunk size, which is the maximum number of characters for each text chunk. If this length is exceeded:
+        # The chunk size, which specifies the maximum number of characters per text chunk. When this length is exceeded:
         # 
-        # - **Smart chunking** (the \\`chunkMode\\` parameter is not specified): The text is likely to be truncated.
-        # 
-        # - **Custom chunking** (the \\`chunkMode\\` parameter is specified): The text is forcibly truncated.
+        # - **Intelligent chunking** (when `chunkMode` is not specified): The text is likely to be truncated.
+        # - **Custom chunking** (when `chunkMode` is specified): The text is forcibly truncated.
         # 
         # 
         # 
         # <props="intl">
-        # 
-        # The chunk size, which is the maximum number of characters for each text chunk. If this length is exceeded, the text is likely to be truncated.
-        # 
+        # The chunk size, which specifies the maximum number of characters per text chunk. When this length is exceeded, the text is likely to be truncated.
         # 
         # 
-        # The value must be between 1 and 6000. If you do not specify this parameter, the default value 500 is used.
         # 
-        # > If you set \\`ChunkSize\\` to a value less than 100, you must also set \\`OverlapSize\\`. You can also leave both parameters unspecified, and the system will use the default values.
+        # Value range: [1-6000]. If not specified, the default value is 500.
+        # 
+        # > If `ChunkSize` is set to a value less than 100, you must also set `OverlapSize`. You can also leave both parameters unspecified, and the system uses default values.
         self.chunk_size = chunk_size
         # <props="china">
-        # 
         # The structure of the data table (column names, types, etc.).
         # 
         # 
-        # 
         # <props="intl">
         # 
-        # > This parameter is not yet available. Do not specify it.
+        # > This parameter is not available. Do not pass this parameter.
+        # >
         self.columns_shrink = columns_shrink
-        # > This parameter is not yet available. Do not specify it.
+        # > This parameter is not available. Do not pass this parameter.
+        # >
         self.create_index_type = create_index_type
-        # The description of the knowledge base. The description can be 0 to 1,000 English or Chinese characters in length.
-        # The default value is empty.
+        # The knowledge base description. The description can be up to 1000 characters in length.
+        # Default value: empty.
         self.description = description
-        # You can import files when you create a knowledge base. Specify a list of files to import by providing their IDs. We recommend importing no more than 10,000 files. If you have more files, you can call the **SubmitIndexAddDocumentsJob** operation to import them later.
+        # The list of files to import when creating the knowledge base. Specify file IDs here. We recommend importing no more than 10,000 files. For remaining files, call the **SubmitIndexAddDocumentsJob** operation to continue importing.
         self.document_ids_shrink = document_ids_shrink
         # <props="china">
         # 
-        # The vector model used by the knowledge base. A vector model converts the original input prompt and knowledge text into numerical vectors to compare their similarity. The text-embedding-v4 model is a comprehensive upgrade over the text-embedding-v3 model in terms of language support, vectorization of code snippets, and vector dimension selection. It is suitable for most scenarios. For more information, see [Vectorization](https://help.aliyun.com/document_detail/2842587.html). Valid values:
-        # 
+        # The embedding model used by the knowledge base. The embedding model transforms the original input prompt and knowledge text into numerical vectors for similarity comparison. The text-embedding-v4 model is a comprehensive upgrade over text-embedding-v3 in terms of language support, code snippet quantization, and vector dimensions selection, and is suitable for most scenarios. For more information, see [Vectorization](https://help.aliyun.com/document_detail/2842587.html). Valid values:
         # - text-embedding-v4
-        # 
         # - text-embedding-v3
         # 
-        # If you do not specify this parameter, \\`text-embedding-v3\\` is used.
+        # Default value: empty, which uses the text-embedding-v3 model.
+        # 
         # 
         # 
         # 
         # <props="intl">
         # 
-        # - The vector model used by the knowledge base. A vector model converts the original input prompt and knowledge text into numerical vectors to compare their similarity. The default text-embedding-v2 model (which cannot be changed for now) supports both Chinese and English, along with multiple other languages, and normalizes the vector results. For more information, see [Vectorization](https://help.aliyun.com/document_detail/2842587.html). Valid values:
-        # 
-        # 
-        # 
-        # 
+        # The embedding model used by the knowledge base. The embedding model transforms the original input prompt and knowledge text into numerical vectors for similarity comparison. The default text-embedding-v2 model (cannot be changed) supports Chinese, English, and multiple other languages, and performs normalization on vector results. For more information, see [Vectorization](https://help.aliyun.com/document_detail/2842587.html). Valid values:
         # - text-embedding-v2
         # 
-        # If you do not specify this parameter, \\`text-embedding-v2\\` is used.
+        # Default value: empty, which uses the text-embedding-v2 model.
         self.embedding_model_name = embedding_model_name
         # Specifies whether to enable multi-turn conversation rewriting. Valid values:
         # 
         # - true: Enabled.
-        # 
         # - false: Disabled.
         # 
-        # If you do not specify this parameter, this feature is enabled by default.
+        # If not specified, this feature is enabled by default.
         self.enable_rewrite = enable_rewrite
-        # The name of the knowledge base. The name can be 1 to 20 characters in length and can contain Chinese characters, letters, digits, underscores (_), hyphens (-), periods (.), and colons (:).
+        # The knowledge base name. The name must be 1 to 20 characters in length and can contain Chinese characters, letters, digits, underscores (_), hyphens (-), periods (.), and colons (:).
         # 
         # This parameter is required.
         self.name = name
-        # The overlap size, which is the number of overlapping characters between the current text chunk and the previous one. The value must be between 0 and 1024.
+        # The chunk overlap size, which specifies the number of overlapping characters between the current text chunk and the previous text chunk. Value range: [0-1024].
         # 
-        # If you do not specify this parameter, the default value 100 is used.
-        # 
-        # > \\`OverlapSize\\` must be smaller than \\`ChunkSize\\`. Otherwise, chunking errors will occur.
+        # If not specified, the default value is 100.
+        # >`OverlapSize` must be less than `ChunkSize`. Otherwise, chunking exceptions occur.
         self.overlap_size = overlap_size
-        # The name of the database. This parameter is required when creating a data query knowledge base.
+        # <props="intl">This parameter is not available. Do not pass this parameter.
         # 
-        # The database must exist in the data source specified by \\`datasourceCode\\`.
+        # <props="china">A natural language instruction for fine-grained control of the reranking model\\"s behavior.
+        # <notice>This parameter takes effect only when rerank_mode is set to "custom".
         self.rerank_instruct = rerank_instruct
-        # The similarity threshold. Only text chunks with a similarity score greater than this value are recalled. This is used to filter the text chunks returned by the reranking model. The value must be between 0.01 and 1.00.
+        # The similarity threshold. Only text chunks with similarity scores exceeding this value are recalled. This parameter filters the text chunks returned by the reranking model. Value range: [0.01-1.00].
         # 
-        # If you do not specify this parameter, the default value 0.01 is used.
+        # If not specified, the default value is 0.01.
         self.rerank_min_score = rerank_min_score
-        # The name of the data table. This parameter is required when creating a data query knowledge base.
+        # <props="china">
+        # Specifies the instruction intervention mode for the reranking model to determine its scoring preference.
         # 
-        # The data table must exist in the data source specified by \\`connectId\\` or \\`datasourceCode\\`.
+        # **Valid values:**
+        # 
+        # - **qa**: (Default) Q&A mode. The model tends to assign higher scores to candidates that directly answer the query. Recommended for Q&A scenarios.
+        # 
+        # - **similar**: Similarity mode. The model tends to assign higher scores to candidates with high content consistency with the query. Recommended for matching and retrieval scenarios.
+        # 
+        # - **custom**: Custom mode. The model\\"s ranking behavior is determined by the instruction in the rerank_instruct parameter.
+        # 
+        # 
+        # 
+        # <props="intl">This parameter is not available. Do not pass this parameter.
+        # [_single.params.RerankMode.enum.similar: 相似模式。]similar: Similarity mode.
+        # [_single.params.RerankMode.enum.custom: 自定义模式。]custom: Custom mode.
+        # [_single.params.RerankMode.enum.qa:（默认值） 问答模式。]qa: (Default) Q&A mode.
+        # [parameters.33.schema.enumValueTitles.similar: 相似模式。]similar: Similarity mode.
+        # [parameters.33.schema.enumValueTitles.custom: 自定义模式。]custom: Custom mode.
+        # [parameters.33.schema.enumValueTitles.qa:（默认值） 问答模式。]qa: (Default) Q&A mode.
         self.rerank_mode = rerank_mode
-        # The reranking model used by the knowledge base. The reranking model is an external scoring system that calculates a similarity score between the user\\"s question and each text chunk in the knowledge base, sorts them in descending order, and returns the top K text chunks. Valid values:
+        # The reranking model used by the knowledge base. The reranking model is an external scoring system that calculates the similarity score between the user query and each text chunk in the knowledge base, sorts them in descending order, and returns the top K text chunks with the highest scores. Valid values:
+        # 
         # 
         # <props="china">
         # 
-        # - qwen3-rerank-hybrid: qwen3-rerank (hybrid) reranking.
-        # 
+        # - qwen3-rerank-hybrid: qwen3-rerank(hybrid) reranking.
         # - qwen3-rerank: qwen3-rerank reranking.
-        # 
-        # - gte-rerank-hybrid: gte-rerank (hybrid) reranking.
-        # 
+        # - gte-rerank-hybrid: gte-rerank(hybrid) reranking.
         # - gte-rerank: gte-rerank reranking.
         # 
         # 
         # 
         # <props="intl">
         # 
-        # - gte-rerank-hybrid: Official reranking.
-        # 
+        # - gte-rerank-hybrid: official reranking.
         # - gte-rerank: gte-rerank reranking.
+        # 
+        # 
         # 
         # 
         # 
         # <props="china">
         # 
-        # If you do not specify this parameter, \\`qwen3-rerank\\` is used.
+        # Default value: empty, which uses qwen3-rerank.
+        # > If you only need semantic reranking, use `qwen3-rerank`. If you need both semantic reranking and text matching features to ensure relevance, use `qwen3-rerank-hybrid`.
+        # >
         # 
-        # > Use \\`qwen3-rerank\\` if you only need semantic sorting. Use \\`qwen3-rerank-hybrid\\` if you need both semantic sorting and text-matching features to ensure relevance.
         # 
         # 
         # 
         # <props="intl">
         # 
-        # If you do not specify this parameter, \\`gte-rerank-hybrid\\` is used.
+        # Default value: empty, which uses gte-rerank-hybrid.
+        # > If you only need semantic reranking, use `gte-rerank`. If you need both semantic reranking and text matching features to ensure relevance, use `gte-rerank-hybrid`.
+        # >
         # 
-        # > Use \\`gte-rerank\\` if you only need semantic sorting. Use \\`gte-rerank-hybrid\\` if you need both semantic sorting and text-matching features to ensure relevance.
+        # 
         # 
         # 
         # 
         # <props="china">
         # 
-        # > The \\`gte-rerank-hybrid\\` and \\`gte-rerank\\` models are no longer updated and are not recommended.
+        # > `gte-rerank-hybrid` and `gte-rerank` will no longer be updated and are not recommended.
+        # >
         self.rerank_model_name = rerank_model_name
         # <props="china">
         # 
-        # The sentence separator. This parameter takes effect only when \\`chunkMode\\` is set to **regex**. It is ignored in other modes, even if specified. You can enter a regular expression (multiple expressions are not supported) to split the file into smaller text chunks.
+        # The sentence separator, which takes effect only when `chunkMode`=**regex** (it does not take effect in other modes even if specified). You can pass a single regular expression (multiple expressions are not supported) to split files into small text chunks.
         # 
-        # For smart chunking (the \\`chunkMode\\` parameter is not specified), you can leave this parameter empty.
+        # When using intelligent chunking (when `chunkMode` is not specified), keep the default empty value.
+        # 
         # 
         # 
         # 
         # <props="intl">
         # 
-        # > This parameter is not yet available. Do not specify it.
+        # > This parameter is not available. Do not pass this parameter.
         self.separator = separator
-        # The ID of the AnalyticDB for PostgreSQL instance. This parameter is required only when \\`SinkType\\` is set to ADB. Go to the [AnalyticDB for PostgreSQL instance list](https://gpdbnext.console.aliyun.com/gpdb/list) page to obtain this ID.
+        # The AnalyticDB for PostgreSQL instance ID (required only when `SinkType` is set to ADB). Obtain this ID from the [AnalyticDB for PostgreSQL instance list](https://gpdbnext.console.aliyun.com/gpdb/list) page.
         self.sink_instance_id = sink_instance_id
-        # The region where the AnalyticDB for PostgreSQL instance is located. This parameter is required only when \\`SinkType\\` is set to ADB. You can call the <props="intl">[DescribeRegions ](https://www.alibabacloud.com/help/zh/analyticdb/analyticdb-for-postgresql/developer-reference/api-gpdb-2016-05-03-describeregions?spm=a2c63.p38356.0.i3)operation to obtain a list of regions.
+        # The region of the AnalyticDB for PostgreSQL instance (required only when `SinkType` is set to ADB). Call <props="china">[DescribeRegions](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/developer-reference/api-gpdb-2016-05-03-describeregions)<props="intl">[DescribeRegions](https://www.alibabacloud.com/help/zh/analyticdb/analyticdb-for-postgresql/developer-reference/api-gpdb-2016-05-03-describeregions?spm=a2c63.p38356.0.i3) to obtain the list of regions.
         self.sink_region = sink_region
-        # The storage class for the knowledge base vectors. For more information, see [Knowledge bases](https://help.aliyun.com/document_detail/2807740.html). Valid values:
-        # 
-        # - BUILT_IN: Hosts the vector data on the Alibaba Cloud Model Studio platform.
-        # 
-        # - ADB: AnalyticDB for PostgreSQL. We recommend choosing ADB if you need advanced features such as database management, auditing, and monitoring.
-        # 
-        # > If you have not used ADB storage on Alibaba Cloud Model Studio, go to the <props="intl">[Create Knowledge Base](https://bailian.console.alibabacloud.com/#/knowledge-base/create) page, set the vector storage class to ADB-PG, and follow the on-screen instructions to grant the required permissions. If you set this parameter to ADB, you must specify the \\`SinkInstanceId\\` and \\`SinkRegion\\` parameters.
+        # The vector storage type of the knowledge base. For more information, see [Knowledge base](https://help.aliyun.com/document_detail/2807740.html). Valid values:
+        # - BUILT_IN: Vector data is hosted on the Alibaba Cloud Model Studio platform.
+        # - ADB: AnalyticDB for PostgreSQL database. If you need advanced features such as database management, auditing, and monitoring, select ADB.
+        # > If you have not used ADB storage on Alibaba Cloud Model Studio before, go to the <props="china">[Create Knowledge Base](https://bailian.console.aliyun.com/#/knowledge-base/create)<props="intl">[Create Knowledge Base](https://bailian.console.alibabacloud.com/#/knowledge-base/create) page, select ADB-PG as the vector storage type, and complete authorization as prompted. If you pass ADB, you must specify the `SinkInstanceId` and `SinkRegion` parameters.
         # 
         # This parameter is required.
         self.sink_type = sink_type
-        # >Notice: 
+        # >Notice: This parameter is required in the latest SDK. Otherwise, calling the SubmitIndexJob operation returns an error: Required parameter(data_sources) missing or invalid.
         # 
-        # In the latest SDK version, this parameter is required. Otherwise, calling the SubmitIndexJob operation will result in the error: Required parameter(data_sources) missing or invalid.
+        # The data source type. Valid values:
+        # - DATA_CENTER_CATEGORY: Category type. Imports all files under specified categories in <props="china">[Application Data](https://bailian.console.aliyun.com/?tab=app#/data-center)<props="intl">[Application Data](https://modelstudio.console.alibabacloud.com/?tab=app#/data-center). Multiple categories can be imported simultaneously.
+        # - DATA_CENTER_FILE: File type. Imports specified files from <props="china">[Application Data](https://bailian.console.aliyun.com/?tab=app#/data-center)<props="intl">[Application Data](https://modelstudio.console.alibabacloud.com/?tab=app#/data-center). Multiple files can be imported simultaneously.
         # 
+        # > If this parameter is set to DATA_CENTER_CATEGORY, you must specify the `CategoryIds` parameter. If this parameter is set to DATA_CENTER_FILE, you must specify the `DocumentIds` parameter.
+        # >
         # 
-        # 
-        # The source of the imported data. Valid values:
-        # 
-        # - DATA_CENTER_CATEGORY: Category type. Imports all files under the specified categories in <props="intl">[Application Data](https://modelstudio.console.alibabacloud.com/?tab=app#/data-center). You can import multiple categories at the same time.
-        # 
-        # - DATA_CENTER_FILE: File type. Imports the specified files from <props="intl">[Application Data](https://modelstudio.console.alibabacloud.com/?tab=app#/data-center). You can import multiple files at the same time.
-        # 
-        # > If you set this parameter to DATA_CENTER_CATEGORY, you must specify the \\`CategoryIds\\` parameter. If you set this parameter to DATA_CENTER_FILE, you must specify the \\`DocumentIds\\` parameter.
-        # 
-        # > To create an empty knowledge base, use an empty category that contains no files. Set this parameter to DATA_CENTER_CATEGORY and specify the ID of the empty category for \\`CategoryIds\\`.
+        # > To create an empty knowledge base, use an empty category that contains no files: set this parameter to DATA_CENTER_CATEGORY and pass the empty category ID in `CategoryIds`.
+        # >
         self.source_type = source_type
-        # The type of the knowledge base.
+        # The knowledge base type.
         # 
-        # **Valid values**:
+        # **Valid values:**
         # 
-        # - unstructured: A knowledge base for document search, audio, or video. The default scenario for document search is basic document Q\\&A.
+        # - unstructured: A document search or audio/video knowledge base. The default scenario for document search type is basic document Q&A. <props="china">To create other scenarios, pass the knowledgeType and knowledgeScene parameters.
         # 
         # <props="china">
         # 
-        # - structured: A knowledge base for data query or image Q\\&A.
+        # - structured: A data query or image-based Q&A knowledge base.
         # 
         # 
         # 
-        # 
-        # > The type of a knowledge base cannot be changed after it is created.
+        # > The knowledge base type cannot be changed after creation.
+        # >
         # 
         # This parameter is required.
         self.structure_type = structure_type
         # <props="china">
         # 
-        # Obtain the table ID on the Tables tab of the table connector in Data Connections by clicking the ID icon next to the table name. If the list contains multiple IDs, only the first one is used.
+        # Obtained by clicking the ID icon next to the table name on the Tables tab of [Data Connections](https://bailian.console.aliyun.com/cn-beijing?tab=app#/connector/list) table connector. If the list contains multiple IDs, only the first one is used.
+        # 
         # 
         # 
         # 
         # <props="intl">
         # 
-        # > This parameter is not yet available. Do not specify it.
+        # > This parameter is not available. Do not pass this parameter.
+        # >
         self.table_ids_shrink = table_ids_shrink
         self.channel_type = channel_type
         # <props="china">
         # 
-        # Enables custom chunking and specifies the chunking policy. For more information, see [Knowledge bases](https://help.aliyun.com/document_detail/2807740.html).
+        # Enables custom chunking and specifies the chunking strategy. For more information, see [Knowledge base](https://help.aliyun.com/document_detail/2807740.html).
         # 
-        # Possible values (only one value can be specified at a time):
+        # Valid values (only one value can be passed at a time):
         # 
-        # - **length**: Chunks by length. The text is strictly chunked according to the \\`ChunkSize\\` and \\`OverlapSize\\` you specify. If you do not specify these two parameters, the system uses the default values (\\`ChunkSize\\` is 500, \\`OverlapSize\\` is 100). Chunking by length does not support \\`Separator\\` (it is ignored even if specified).
+        # - **length**: Chunk by length. Strictly chunks according to the specified `ChunkSize` and `OverlapSize`. If these two parameters are not passed, the system uses default values (`ChunkSize` of 500 and `OverlapSize` of 100). Chunking by length does not support `Separator` (it does not take effect even if specified).
+        # - **page**: Chunk by page. If `ChunkSize` is specified, it is also considered during chunking (if not passed, the default value of 500 is used). Chunking by page does not support `OverlapSize` or `Separator` (they do not take effect even if specified).
+        # - **h1**: Chunk by first-level headings. If `ChunkSize` is specified, it is also considered during chunking (if not passed, the default value of 500 is used). Chunking by first-level headings does not support `OverlapSize` or `Separator` (they do not take effect even if specified).
+        # - **h2**: Chunk by second-level headings. If `ChunkSize` is specified, it is also considered during chunking (if not passed, the default value of 500 is used). Chunking by second-level headings does not support `OverlapSize` or `Separator` (they do not take effect even if specified).
+        # - **regex**: Chunk by regular expression. The `Separator` parameter must be specified. If `ChunkSize` is specified, it is also considered during chunking (if not passed, the default value of 500 is used). Chunking by regular expression does not support `OverlapSize` (it does not take effect even if specified).
         # 
-        # - **page**: Chunks by page. If \\`ChunkSize\\` is specified, it is also considered during chunking (if not specified, the default value 500 is used). Chunking by page does not support \\`OverlapSize\\` or \\`Separator\\` (they are ignored even if specified).
+        # If not specified, intelligent chunking is used by default.
         # 
-        # - **h1**: Chunks by level-1 heading. If \\`ChunkSize\\` is specified, it is also considered during chunking (if not specified, the default value 500 is used). Chunking by level-1 heading does not support \\`OverlapSize\\` or \\`Separator\\` (they are ignored even if specified).
-        # 
-        # - **h2**: Chunks by level-2 heading. If \\`ChunkSize\\` is specified, it is also considered during chunking (if not specified, the default value 500 is used). Chunking by level-2 heading does not support \\`OverlapSize\\` or \\`Separator\\` (they are ignored even if specified).
-        # 
-        # - **regex**: Chunks by regular expression. You must specify the \\`Separator\\` parameter. If \\`ChunkSize\\` is specified, it is also considered during chunking (if not specified, the default value 500 is used). Chunking by regular expression does not support \\`OverlapSize\\` (it is ignored even if specified).
-        # 
-        # If you do not specify this parameter, smart chunking is used by default.
         # 
         # 
         # 
         # <props="intl">
         # 
-        # > This parameter is not yet available. Do not specify it.
+        # > This parameter is not available. Do not pass this parameter.
         self.chunk_mode = chunk_mode
         self.connect_id = connect_id
         self.database = database
         self.datasource_code = datasource_code
-        # Specifies whether to treat the first row of all .xlsx and .xls files as the table header and append it to each text chunk. This prevents the LLM from treating the header as a regular data row.
+        # Specifies whether to treat the first row of all xlsx and xls files as headers and concatenate them into each text chunk, preventing the large language model from treating headers as regular data rows.
         # 
-        # > We recommend enabling this feature only when all imported files are in .xlsx or .xls format and contain a header. Otherwise, do not enable it.
+        # 
+        # > Enable this feature only when all imported files are in .xlsx or .xls format and contain headers. Otherwise, do not enable it.
+        # >
         # 
         # Valid values:
-        # 
         # - true: Enabled.
-        # 
         # - false: Disabled.
         # 
-        # If you do not specify this parameter, this feature is disabled by default.
+        # If not specified, this feature is disabled by default.
         self.enable_headers = enable_headers
         self.knowledge_scene = knowledge_scene
-        # The data source code. This parameter is required when creating a data query knowledge base and is used with \\`table\\` and \\`database\\`.
-        # 
         # <props="china">
+        # The specific knowledge type, which further specifies the type of data processed by the knowledge base.
+        # <notice>This parameter and knowledgeScene must be provided together or omitted together. They cannot be set independently. If both are omitted, the system uses default configurations based on structureType.
         # 
-        # We recommend using the new \\`connectId\\` parameter, which you can obtain from the data connector card on the [Data Connections](https://modelstudio.console.alibabacloud.com/?tab=app#/connector/list) page. This parameter is still compatible but will no longer be maintained in the future.
+        # **Settings constraint**: The value of this parameter must match the selected structureType and determines the active values for knowledgeScene.
+        # 
+        # **Valid values**:
+        # - document: Document search. Must be used with structureType: unstructured.
+        # - table: Data query. Must be used with structureType: structured.
+        # - image: Image-based Q&A. Must be used with structureType: structured.
+        # - multimedia: Audio/video search. Must be used with structureType: unstructured.
         # 
         # 
         # 
-        # > - This operation does not support associating custom databases. Use the Alibaba Cloud Model Studio console to create them.
+        # 
+        # <props="intl">This parameter is not available. Do not pass this parameter.
         self.knowledge_type = knowledge_type
-        # The metadata extraction configuration. Metadata is a series of additional attributes related to unstructured data content. These attributes are integrated into text chunks as key-value pairs. For more information, see [Knowledge bases](https://help.aliyun.com/document_detail/2807740.html).
+        # The metadata extraction configuration. Metadata is a set of additional attributes related to unstructured data content. These attributes are integrated into text chunks as key-value pairs. For more information, see [Knowledge base](https://help.aliyun.com/document_detail/2807740.html).
         self.meta_extract_columns_shrink = meta_extract_columns_shrink
-        # <props="china">
-        # 
-        # The number of RCUs for the knowledge base. This parameter is required only when \\`pipelineCommercialType\\` is set to \\`enterprise\\`. The value must be between 1 and 200.
-        # 
+        # <props="china">The number of RCUs for the knowledge base (required only when pipelineCommercialType is set to enterprise). Value range: [1-200].
         # 
         # 
         # <props="intl">
         # 
-        # > This parameter is not yet available. Do not specify it.
+        # > This parameter is not available. Do not pass this parameter.
+        # >
         self.pipeline_commercial_cu = pipeline_commercial_cu
         # <props="china">
         # 
-        # The [edition type](https://help.aliyun.com/document_detail/2997110.html) of the knowledge base. Valid values:
-        # 
-        # - standard: Standard Edition
-        # 
-        # - enterprise: Ultimate Edition
+        # The [specification type](https://help.aliyun.com/document_detail/2997110.html) of the knowledge base. Valid values:
+        # - standard: Standard Edition.
+        # - enterprise: Ultimate Edition.
         # 
         # 
         # 
         # <props="intl">
         # 
-        # > This parameter is not yet available. Do not specify it.
+        # > This parameter is not available. Do not pass this parameter.
+        # >
         self.pipeline_commercial_type = pipeline_commercial_type
-        # <props="china">
-        # 
-        # The rate limiting policy for the knowledge base dependency chain. This parameter is required only when \\`pipelineCommercialType\\` is set to \\`enterprise\\`.
-        # Value:
-        # downgrade: Degrades the service (switches to using a lightweight retrieval chain).
-        # If you do not specify this parameter, the default value \\`downgrade\\` is used.
-        # 
+        # <props="china">The rate limiting strategy for knowledge base dependent links (required only when pipelineCommercialType is set to enterprise).
+        # Valid values:
+        # downgrade: Downgrade processing (switch to lightweight link retrieval).
+        # If not specified, the default value is downgrade.
         # 
         # 
         # <props="intl">
         # 
-        # > This parameter is not yet available. Do not specify it.
+        # > This parameter is not available. Do not pass this parameter.
+        # >
         self.pipeline_retrieve_rate_limit_strategy = pipeline_retrieve_rate_limit_strategy
         self.table = table
 

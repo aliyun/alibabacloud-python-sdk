@@ -19,7 +19,7 @@ class ListIndexFileDetailsResponseBody(DaraModel):
     ):
         # The error status code.
         self.code = code
-        # The data field returned by the operation.
+        # The business data field of the operation.
         self.data = data
         # The error message.
         self.message = message
@@ -98,9 +98,9 @@ class ListIndexFileDetailsResponseBodyData(DaraModel):
         self.documents = documents
         # The knowledge base ID.
         self.index_id = index_id
-        # The returned page number.
+        # The specified page number.
         self.page_number = page_number
-        # The returned number of entries per page.
+        # The specified number of entries per page.
         self.page_size = page_size
         # The total number of returned results.
         self.total_count = total_count
@@ -168,6 +168,7 @@ class ListIndexFileDetailsResponseBodyDataDocuments(DaraModel):
         gmt_modified: int = None,
         id: str = None,
         message: str = None,
+        meta_extract_info: str = None,
         name: str = None,
         overlap_size: str = None,
         size: int = None,
@@ -177,23 +178,24 @@ class ListIndexFileDetailsResponseBodyDataDocuments(DaraModel):
     ):
         # The custom chunking mode.
         self.chunk_mode = chunk_mode
-        # The segment length, which is the number of characters in each text chunk.
+        # The chunk length, which is the number of characters in a text chunk.
         self.chunk_size = chunk_size
-        # The error status code for file import.
+        # The file import error status code.
         self.code = code
-        # The file format type. Valid values: pdf, docx, doc, txt, md, pptx, ppt, png, jpg, jpeg, bmp, gif, and EXCEL.
+        # The file format type. Valid values: pdf, docx, doc, txt, md, pptx, ppt, png, jpg, jpeg, bmp, gif, EXCEL.
         self.document_type = document_type
         # Indicates whether Excel file headers support concatenation.
         self.enable_headers = enable_headers
-        # The time when the file was imported to the knowledge base, in UNIX timestamp format.
+        # The time when the file was imported to the knowledge base, in Unix timestamp format.
         self.gmt_modified = gmt_modified
         # The file ID.
         self.id = id
-        # The error message for file import.
+        # The file import error message.
         self.message = message
+        self.meta_extract_info = meta_extract_info
         # The file name.
         self.name = name
-        # The overlap length between segments.
+        # The chunk overlap length.
         self.overlap_size = overlap_size
         # The file size, in bytes.
         self.size = size
@@ -241,6 +243,9 @@ class ListIndexFileDetailsResponseBodyDataDocuments(DaraModel):
         if self.message is not None:
             result['Message'] = self.message
 
+        if self.meta_extract_info is not None:
+            result['MetaExtractInfo'] = self.meta_extract_info
+
         if self.name is not None:
             result['Name'] = self.name
 
@@ -286,6 +291,9 @@ class ListIndexFileDetailsResponseBodyDataDocuments(DaraModel):
 
         if m.get('Message') is not None:
             self.message = m.get('Message')
+
+        if m.get('MetaExtractInfo') is not None:
+            self.meta_extract_info = m.get('MetaExtractInfo')
 
         if m.get('Name') is not None:
             self.name = m.get('Name')

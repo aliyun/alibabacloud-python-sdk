@@ -1,3 +1,7 @@
+2026-07-27 Version: 2.14.1
+- Update API ListIndexFileDetails: add response parameters Body.Data.Documents.$.MetaExtractInfo.
+
+
 2026-07-16 Version: 2.14.0
 - Support API AddChunk.
 
