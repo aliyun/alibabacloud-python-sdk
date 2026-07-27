@@ -485,7 +485,11 @@ from ._operate_custom_agent_response_body import OperateCustomAgentResponseBodyD
 from ._retrieve_knowledge_base_response_body import RetrieveKnowledgeBaseResponseBodyDataMatches
 from ._retrieve_knowledge_base_response_body import RetrieveKnowledgeBaseResponseBodyDataResults
 from ._retrieve_knowledge_base_response_body import RetrieveKnowledgeBaseResponseBodyData
+from ._send_chat_message_request import SendChatMessageRequestDataSourcePermissionTables
+from ._send_chat_message_request import SendChatMessageRequestDataSourcePermission
 from ._send_chat_message_request import SendChatMessageRequestDataSource
+from ._send_chat_message_request import SendChatMessageRequestDataSourcesPermissionTables
+from ._send_chat_message_request import SendChatMessageRequestDataSourcesPermission
 from ._send_chat_message_request import SendChatMessageRequestDataSources
 from ._send_chat_message_request import SendChatMessageRequestSessionConfig
 from ._send_chat_message_request import SendChatMessageRequestTaskConfigReportConfig
@@ -984,7 +988,11 @@ __all__ = [
     RetrieveKnowledgeBaseResponseBodyDataMatches,
     RetrieveKnowledgeBaseResponseBodyDataResults,
     RetrieveKnowledgeBaseResponseBodyData,
+    SendChatMessageRequestDataSourcePermissionTables,
+    SendChatMessageRequestDataSourcePermission,
     SendChatMessageRequestDataSource,
+    SendChatMessageRequestDataSourcesPermissionTables,
+    SendChatMessageRequestDataSourcesPermission,
     SendChatMessageRequestDataSources,
     SendChatMessageRequestSessionConfig,
     SendChatMessageRequestTaskConfigReportConfig,

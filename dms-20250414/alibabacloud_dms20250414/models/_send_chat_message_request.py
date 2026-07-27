@@ -26,47 +26,35 @@ class SendChatMessageRequest(DaraModel):
         user_oss_bucket: str = None,
         workspace_id: str = None,
     ):
-        # The agent ID. This parameter is required. You can obtain the current agent ID from the response of the CreateAgentSession operation. Agent resources have a lifecycle, so the agent ID that you specify in each request may change.
+        # The agent ID. This parameter is required. You can obtain the current AgentId from the response of the CreateAgentSession operation. Agent resources have a lifecycle, so the AgentId you need to specify may change with each request.
         self.agent_id = agent_id
-        # The Data Management unit you are currently in. If you choose to analyze a database, this information is used to correctly connect to your Data Management instance. You can go to the Data Management console to view your current Data Management unit. If you are a user of the Alibaba Cloud China Website, set this parameter to ap-southeast-1.
+        # The Data Management unit you are currently in. If you select an analytics database, this information is used to correctly connect to your Data Management instance through Data Management. You can go to the DAS console to view your current Data Management unit. If you are a user of Alibaba Cloud China Website (www.aliyun.com), set this parameter to cn-hangzhou.
         self.dmsunit = dmsunit
-        # The data source information. This parameter is optional. You can pass only one data source in this parameter. Use the DataSources parameter instead.
+        # The data source information. This parameter can be left empty. Only one data source can be specified for this parameter. Use the DataSources parameter instead.
         self.data_source = data_source
-        # The detailed data source information. This parameter is optional.
+        # The detailed data source information. This parameter can be left empty.
         self.data_sources = data_sources
         # The message content to send to the agent.
         # 
         # This parameter is required.
         self.message = message
-        # The message type. Default value: `[primary]`.  
-        # 
-        # - In normal cases, set the message type to `[primary]` when interacting with the agent.
-        # 
-        # - When the message is a response to a human-in-the-loop question from the agent, set the type to `[additional]`.
-        # 
-        # - When the message is intended to trigger report generation, set the type to `[report]`.
-        # 
-        # - When the message is intended to cancel the current session, set the type to `[cancel]`.
+        # The message type. Default value: `[primary]`.
         self.message_type = message_type
         # The parent session ID.
         self.parent_session_id = parent_session_id
-        # The specific question that the agent asks the user through human-in-the-loop. This parameter is required when the message type is `additional`.
+        # The specific question that the agent asks the user through Human-in-Loop. This parameter is required when the message type is `additional`.
         self.question = question
         # The quoted content. This parameter is typically used when interacting with the agent.
         self.quoted_message = quoted_message
         # **Important**
-        # 
-        # When this message is a reply to an agent message (for example, the agent asks a clarifying question through ASK_HUMAN), set reply_to to the exact Checkpoint sequence number carried in that agent message. If this message is not a targeted reply, such as requesting the agent to perform further in-depth analysis after analysis is complete, you can leave reply_to empty or set it to "0".  
-        # 
-        # This field affects how the agent decides to process the message. Passing an incorrect value may cause the analysis results to be less effective than expected.
         self.reply_to = reply_to
-        # The special configuration for this session. Only the configuration passed in the first SendMessage call within the same session takes effect.
+        # The special configuration for the current session. For the same session, only the configuration specified in the first SendMessage call takes effect.
         self.session_config = session_config
-        # The session ID. This parameter is required. You can call the CreateAgentSession operation to obtain the session ID.
+        # The session ID. This parameter is required. You can obtain the SessionId by calling the CreateAgentSession operation.
         self.session_id = session_id
         # The configuration items that affect only the current task.
         self.task_config = task_config
-        # The OSS bucket of the user. If this parameter is not specified, the analysis process is securely stored in built-in storage.
+        # The OSS bucket of the user. If this parameter is not specified, the analysis data is securely stored in the built-in storage.
         self.user_oss_bucket = user_oss_bucket
         # The workspace ID.
         self.workspace_id = workspace_id
@@ -233,7 +221,7 @@ class SendChatMessageRequestTaskConfigReportConfig(DaraModel):
         self.report_prompt = report_prompt
         # The report theme. Valid values: default, journal, legacy, and neobrutalism.
         self.report_theme = report_theme
-        # The service type. Valid values: TextReport and WebReport, indicating that the task generates a text report or a web report. Only WebReport is supported.
+        # The service type. Valid values: TextReport and WebReport, indicating that the task generates a text report or a web report. Only WebReport is currently supported.
         self.report_type = report_type
 
     def validate(self):
@@ -285,22 +273,19 @@ class SendChatMessageRequestSessionConfig(DaraModel):
         skip_sql_confirm: bool = None,
         skip_web_report_confirm: bool = None,
     ):
-        # Deprecated. Use the input parameters of CreateAgentSession instead.
+        # Deprecated. Use the input parameter of CreateAgentSession instead.
         self.custom_agent_id = custom_agent_id
-        # Deprecated. Use the input parameters of CreateAgentSession instead.
+        # Deprecated. Use the input parameter of CreateAgentSession instead.
         self.custom_agent_stage = custom_agent_stage
         # Specifies whether to enable web search.
         self.enable_search = enable_search
         # The list of knowledge base IDs.
         self.kb_uuid_list = kb_uuid_list
-        # Only Chinese and English are supported. The default value is Chinese. Only uppercase values are supported.
+        # Only Chinese and English are supported. Default value: Chinese. Only uppercase values are supported.
         self.language = language
         # The MCP server IDs in the session configuration.
         self.mcp_server_ids = mcp_server_ids
-        # The mode. Valid values:
-        #  - **ASK_DATA**: data query mode.
-        #  - **ANALYSIS**: analysis mode.
-        #  - **INSIGHT**: insight mode.
+        # The mode:
         self.mode = mode
         # Specifies whether to enable the plan. Valid values: disable, enable, and force. Default value: enable.
         self.plan_mode = plan_mode
@@ -312,7 +297,7 @@ class SendChatMessageRequestSessionConfig(DaraModel):
         self.skip_plan = skip_plan
         # Specifies whether to skip all SQL confirmations.
         self.skip_sql_confirm = skip_sql_confirm
-        # Specifies whether to skip the web report generation confirmation.
+        # Specifies whether to skip the web report rendering confirmation.
         self.skip_web_report_confirm = skip_web_report_confirm
 
     def validate(self):
@@ -419,6 +404,7 @@ class SendChatMessageRequestDataSources(DaraModel):
         engine: str = None,
         file_id: str = None,
         location: str = None,
+        permission: main_models.SendChatMessageRequestDataSourcesPermission = None,
         region_id: str = None,
         tables: List[str] = None,
     ):
@@ -440,13 +426,16 @@ class SendChatMessageRequestDataSources(DaraModel):
         self.file_id = file_id
         # Deprecated. You do not need to specify this parameter.
         self.location = location
+        # The permission constraints for querying the current data source. The permission constraint feature is available through a canary release. This parameter does not take effect for users who are not included in the canary release.
+        self.permission = permission
         # The region ID.
         self.region_id = region_id
         # The list of table names to analyze.
         self.tables = tables
 
     def validate(self):
-        pass
+        if self.permission:
+            self.permission.validate()
 
     def to_map(self):
         result = dict()
@@ -479,6 +468,9 @@ class SendChatMessageRequestDataSources(DaraModel):
 
         if self.location is not None:
             result['Location'] = self.location
+
+        if self.permission is not None:
+            result['Permission'] = self.permission.to_map()
 
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -517,11 +509,97 @@ class SendChatMessageRequestDataSources(DaraModel):
         if m.get('Location') is not None:
             self.location = m.get('Location')
 
+        if m.get('Permission') is not None:
+            temp_model = main_models.SendChatMessageRequestDataSourcesPermission()
+            self.permission = temp_model.from_map(m.get('Permission'))
+
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
 
         if m.get('Tables') is not None:
             self.tables = m.get('Tables')
+
+        return self
+
+class SendChatMessageRequestDataSourcesPermission(DaraModel):
+    def __init__(
+        self,
+        tables: List[main_models.SendChatMessageRequestDataSourcesPermissionTables] = None,
+    ):
+        # The table-level permission constraints for querying the current data source. Each item in the list represents the permission constraints for a table.
+        self.tables = tables
+
+    def validate(self):
+        if self.tables:
+            for v1 in self.tables:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        result['Tables'] = []
+        if self.tables is not None:
+            for k1 in self.tables:
+                result['Tables'].append(k1.to_map() if k1 else None)
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.tables = []
+        if m.get('Tables') is not None:
+            for k1 in m.get('Tables'):
+                temp_model = main_models.SendChatMessageRequestDataSourcesPermissionTables()
+                self.tables.append(temp_model.from_map(k1))
+
+        return self
+
+class SendChatMessageRequestDataSourcesPermissionTables(DaraModel):
+    def __init__(
+        self,
+        allowed_columns: List[str] = None,
+        required_row_filter: str = None,
+        table_name: str = None,
+    ):
+        # The list of columns that are allowed to be queried in the current table. If this parameter is not specified, all columns can be queried. If this parameter is specified, SQL statements that exceed the allowed scope are blocked. For example, syntax such as SELECT * is blocked. To ensure the analysis effectiveness of DataAgent, avoid specifying columns that exceed the allowed scope in the prompts, knowledge, or instructions modules of DataAgent. Otherwise, SQL statements without the required permissions are generated and blocked, which reduces the analysis speed and effectiveness of DataAgent.
+        self.allowed_columns = allowed_columns
+        # The required row filter condition for the current table. If this parameter is not specified, it is ignored. If this parameter is specified, the query condition is appended to all SQL statements that involve this table. Verify the validity of the condition before specifying it.
+        self.required_row_filter = required_row_filter
+        # The name of the table to which the permission constraint rule applies.
+        self.table_name = table_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.allowed_columns is not None:
+            result['AllowedColumns'] = self.allowed_columns
+
+        if self.required_row_filter is not None:
+            result['RequiredRowFilter'] = self.required_row_filter
+
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AllowedColumns') is not None:
+            self.allowed_columns = m.get('AllowedColumns')
+
+        if m.get('RequiredRowFilter') is not None:
+            self.required_row_filter = m.get('RequiredRowFilter')
+
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
 
         return self
 
@@ -537,6 +615,7 @@ class SendChatMessageRequestDataSource(DaraModel):
         engine: str = None,
         file_id: str = None,
         location: str = None,
+        permission: main_models.SendChatMessageRequestDataSourcePermission = None,
         region_id: str = None,
         tables: List[str] = None,
     ):
@@ -558,13 +637,16 @@ class SendChatMessageRequestDataSource(DaraModel):
         self.file_id = file_id
         # Deprecated. You do not need to specify this parameter.
         self.location = location
+        # The permission constraints for querying the current data source. The permission constraint feature is available through a canary release. This parameter does not take effect for users who are not included in the canary release.
+        self.permission = permission
         # The region ID.
         self.region_id = region_id
         # The list of table names to analyze.
         self.tables = tables
 
     def validate(self):
-        pass
+        if self.permission:
+            self.permission.validate()
 
     def to_map(self):
         result = dict()
@@ -597,6 +679,9 @@ class SendChatMessageRequestDataSource(DaraModel):
 
         if self.location is not None:
             result['Location'] = self.location
+
+        if self.permission is not None:
+            result['Permission'] = self.permission.to_map()
 
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -635,11 +720,97 @@ class SendChatMessageRequestDataSource(DaraModel):
         if m.get('Location') is not None:
             self.location = m.get('Location')
 
+        if m.get('Permission') is not None:
+            temp_model = main_models.SendChatMessageRequestDataSourcePermission()
+            self.permission = temp_model.from_map(m.get('Permission'))
+
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
 
         if m.get('Tables') is not None:
             self.tables = m.get('Tables')
+
+        return self
+
+class SendChatMessageRequestDataSourcePermission(DaraModel):
+    def __init__(
+        self,
+        tables: List[main_models.SendChatMessageRequestDataSourcePermissionTables] = None,
+    ):
+        # The table-level permission constraints for querying the current data source. Each item in the list represents the permission constraints for a table.
+        self.tables = tables
+
+    def validate(self):
+        if self.tables:
+            for v1 in self.tables:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        result['Tables'] = []
+        if self.tables is not None:
+            for k1 in self.tables:
+                result['Tables'].append(k1.to_map() if k1 else None)
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.tables = []
+        if m.get('Tables') is not None:
+            for k1 in m.get('Tables'):
+                temp_model = main_models.SendChatMessageRequestDataSourcePermissionTables()
+                self.tables.append(temp_model.from_map(k1))
+
+        return self
+
+class SendChatMessageRequestDataSourcePermissionTables(DaraModel):
+    def __init__(
+        self,
+        allowed_columns: List[str] = None,
+        required_row_filter: str = None,
+        table_name: str = None,
+    ):
+        # The list of columns that are allowed to be queried in the current table. If this parameter is not specified, all columns can be queried. If this parameter is specified, SQL statements that exceed the allowed scope are blocked. For example, syntax such as SELECT * is blocked. To ensure the analysis effectiveness of DataAgent, avoid specifying columns that exceed the allowed scope in the prompts, knowledge, or instructions modules of DataAgent. Otherwise, SQL statements without the required permissions are generated and blocked, which reduces the analysis speed and effectiveness of DataAgent.
+        self.allowed_columns = allowed_columns
+        # The required row filter condition for the current table. If this parameter is not specified, it is ignored. If this parameter is specified, the query condition is appended to all SQL statements that involve this table. Verify the validity of the condition before specifying it.
+        self.required_row_filter = required_row_filter
+        # The name of the table to which the permission constraint rule applies.
+        self.table_name = table_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.allowed_columns is not None:
+            result['AllowedColumns'] = self.allowed_columns
+
+        if self.required_row_filter is not None:
+            result['RequiredRowFilter'] = self.required_row_filter
+
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AllowedColumns') is not None:
+            self.allowed_columns = m.get('AllowedColumns')
+
+        if m.get('RequiredRowFilter') is not None:
+            self.required_row_filter = m.get('RequiredRowFilter')
+
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
 
         return self
 

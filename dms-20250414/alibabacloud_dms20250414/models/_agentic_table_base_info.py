@@ -9,6 +9,7 @@ class AgenticTableBaseInfo(DaraModel):
     def __init__(
         self,
         catalog_type: str = None,
+        database_qualified_name: str = None,
         database_uuid: str = None,
         description: str = None,
         engine_meta: main_models.AgenticTableEngineMeta = None,
@@ -17,6 +18,7 @@ class AgenticTableBaseInfo(DaraModel):
         table_type: str = None,
     ):
         self.catalog_type = catalog_type
+        self.database_qualified_name = database_qualified_name
         self.database_uuid = database_uuid
         self.description = description
         self.engine_meta = engine_meta
@@ -35,6 +37,9 @@ class AgenticTableBaseInfo(DaraModel):
             result = _map
         if self.catalog_type is not None:
             result['CatalogType'] = self.catalog_type
+
+        if self.database_qualified_name is not None:
+            result['DatabaseQualifiedName'] = self.database_qualified_name
 
         if self.database_uuid is not None:
             result['DatabaseUuid'] = self.database_uuid
@@ -60,6 +65,9 @@ class AgenticTableBaseInfo(DaraModel):
         m = m or dict()
         if m.get('CatalogType') is not None:
             self.catalog_type = m.get('CatalogType')
+
+        if m.get('DatabaseQualifiedName') is not None:
+            self.database_qualified_name = m.get('DatabaseQualifiedName')
 
         if m.get('DatabaseUuid') is not None:
             self.database_uuid = m.get('DatabaseUuid')

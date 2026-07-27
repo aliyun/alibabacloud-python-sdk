@@ -793,6 +793,8 @@ class Client(OpenApiClient):
             query['TextReportConfig'] = request.text_report_config
         if not DaraCore.is_null(request.web_report_config):
             query['WebReportConfig'] = request.web_report_config
+        if not DaraCore.is_null(request.web_report_theme):
+            query['WebReportTheme'] = request.web_report_theme
         if not DaraCore.is_null(request.workspace_id):
             query['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
@@ -857,6 +859,8 @@ class Client(OpenApiClient):
             query['TextReportConfig'] = request.text_report_config
         if not DaraCore.is_null(request.web_report_config):
             query['WebReportConfig'] = request.web_report_config
+        if not DaraCore.is_null(request.web_report_theme):
+            query['WebReportTheme'] = request.web_report_theme
         if not DaraCore.is_null(request.workspace_id):
             query['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
@@ -7311,6 +7315,8 @@ class Client(OpenApiClient):
             query['TextReportConfig'] = request.text_report_config
         if not DaraCore.is_null(request.web_report_config):
             query['WebReportConfig'] = request.web_report_config
+        if not DaraCore.is_null(request.web_report_theme):
+            query['WebReportTheme'] = request.web_report_theme
         if not DaraCore.is_null(request.workspace_id):
             query['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
@@ -7377,6 +7383,8 @@ class Client(OpenApiClient):
             query['TextReportConfig'] = request.text_report_config
         if not DaraCore.is_null(request.web_report_config):
             query['WebReportConfig'] = request.web_report_config
+        if not DaraCore.is_null(request.web_report_theme):
+            query['WebReportTheme'] = request.web_report_theme
         if not DaraCore.is_null(request.workspace_id):
             query['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(

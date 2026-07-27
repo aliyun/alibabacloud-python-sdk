@@ -181,6 +181,7 @@ class ListCustomAgentResponseBodyDataContent(DaraModel):
         status: str = None,
         text_report_config: str = None,
         web_report_config: str = None,
+        web_report_theme: str = None,
         workspace_id: str = None,
     ):
         # The parent Alibaba Cloud account ID.
@@ -237,6 +238,7 @@ class ListCustomAgentResponseBodyDataContent(DaraModel):
         self.text_report_config = text_report_config
         # The formatting instructions for the web report.
         self.web_report_config = web_report_config
+        self.web_report_theme = web_report_theme
         # The workspace ID.
         self.workspace_id = workspace_id
 
@@ -346,6 +348,9 @@ class ListCustomAgentResponseBodyDataContent(DaraModel):
         if self.web_report_config is not None:
             result['WebReportConfig'] = self.web_report_config
 
+        if self.web_report_theme is not None:
+            result['WebReportTheme'] = self.web_report_theme
+
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
 
@@ -445,6 +450,9 @@ class ListCustomAgentResponseBodyDataContent(DaraModel):
 
         if m.get('WebReportConfig') is not None:
             self.web_report_config = m.get('WebReportConfig')
+
+        if m.get('WebReportTheme') is not None:
+            self.web_report_theme = m.get('WebReportTheme')
 
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')

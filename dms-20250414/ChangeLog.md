@@ -1,3 +1,14 @@
+2026-07-27 Version: 1.18.1
+- Update API CreateCustomAgent: add request parameters WebReportTheme.
+- Update API CreateCustomAgent: add response parameters Body.Data.WebReportTheme.
+- Update API DescribeCustomAgent: add response parameters Body.Data.WebReportTheme.
+- Update API ListCustomAgent: add response parameters Body.Data.Content.$.WebReportTheme.
+- Update API ModifyCustomAgent: add request parameters WebReportTheme.
+- Update API ModifyCustomAgent: add response parameters Body.Data.WebReportTheme.
+- Update API SendChatMessage: add request parameters DataSource.Permission.
+- Update API SendChatMessage: add request parameters DataSources.$.Permission.
+
+
 2026-07-23 Version: 1.18.0
 - Support API DeleteDataAgent.
 - Support API DescribeDataAgentMetrics.
