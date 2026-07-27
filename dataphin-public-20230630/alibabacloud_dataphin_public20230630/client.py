@@ -923,6 +923,186 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.assign_quality_rule_of_all_rule_scope_schedules_with_options_async(request, runtime)
 
+    def batch_create_kg_entity_with_options(
+        self,
+        tmp_req: main_models.BatchCreateKgEntityRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchCreateKgEntityResponse:
+        tmp_req.validate()
+        request = main_models.BatchCreateKgEntityShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.create_command):
+            request.create_command_shrink = Utils.array_to_string_with_specified_style(tmp_req.create_command, 'CreateCommand', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        body = {}
+        if not DaraCore.is_null(request.create_command_shrink):
+            body['CreateCommand'] = request.create_command_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchCreateKgEntity',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchCreateKgEntityResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_create_kg_entity_with_options_async(
+        self,
+        tmp_req: main_models.BatchCreateKgEntityRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchCreateKgEntityResponse:
+        tmp_req.validate()
+        request = main_models.BatchCreateKgEntityShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.create_command):
+            request.create_command_shrink = Utils.array_to_string_with_specified_style(tmp_req.create_command, 'CreateCommand', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        body = {}
+        if not DaraCore.is_null(request.create_command_shrink):
+            body['CreateCommand'] = request.create_command_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchCreateKgEntity',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchCreateKgEntityResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_create_kg_entity(
+        self,
+        request: main_models.BatchCreateKgEntityRequest,
+    ) -> main_models.BatchCreateKgEntityResponse:
+        runtime = RuntimeOptions()
+        return self.batch_create_kg_entity_with_options(request, runtime)
+
+    async def batch_create_kg_entity_async(
+        self,
+        request: main_models.BatchCreateKgEntityRequest,
+    ) -> main_models.BatchCreateKgEntityResponse:
+        runtime = RuntimeOptions()
+        return await self.batch_create_kg_entity_with_options_async(request, runtime)
+
+    def batch_create_kg_relation_with_options(
+        self,
+        tmp_req: main_models.BatchCreateKgRelationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchCreateKgRelationResponse:
+        tmp_req.validate()
+        request = main_models.BatchCreateKgRelationShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.create_command):
+            request.create_command_shrink = Utils.array_to_string_with_specified_style(tmp_req.create_command, 'CreateCommand', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        body = {}
+        if not DaraCore.is_null(request.create_command_shrink):
+            body['CreateCommand'] = request.create_command_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchCreateKgRelation',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchCreateKgRelationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_create_kg_relation_with_options_async(
+        self,
+        tmp_req: main_models.BatchCreateKgRelationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchCreateKgRelationResponse:
+        tmp_req.validate()
+        request = main_models.BatchCreateKgRelationShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.create_command):
+            request.create_command_shrink = Utils.array_to_string_with_specified_style(tmp_req.create_command, 'CreateCommand', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        body = {}
+        if not DaraCore.is_null(request.create_command_shrink):
+            body['CreateCommand'] = request.create_command_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchCreateKgRelation',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchCreateKgRelationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_create_kg_relation(
+        self,
+        request: main_models.BatchCreateKgRelationRequest,
+    ) -> main_models.BatchCreateKgRelationResponse:
+        runtime = RuntimeOptions()
+        return self.batch_create_kg_relation_with_options(request, runtime)
+
+    async def batch_create_kg_relation_async(
+        self,
+        request: main_models.BatchCreateKgRelationRequest,
+    ) -> main_models.BatchCreateKgRelationResponse:
+        runtime = RuntimeOptions()
+        return await self.batch_create_kg_relation_with_options_async(request, runtime)
+
     def check_compute_source_connectivity_with_options(
         self,
         tmp_req: main_models.CheckComputeSourceConnectivityRequest,
@@ -1488,6 +1668,92 @@ class Client(OpenApiClient):
     ) -> main_models.CreateAdHocFileResponse:
         runtime = RuntimeOptions()
         return await self.create_ad_hoc_file_with_options_async(request, runtime)
+
+    def create_basic_project_with_options(
+        self,
+        tmp_req: main_models.CreateBasicProjectRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateBasicProjectResponse:
+        tmp_req.validate()
+        request = main_models.CreateBasicProjectShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.create_command):
+            request.create_command_shrink = Utils.array_to_string_with_specified_style(tmp_req.create_command, 'CreateCommand', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not DaraCore.is_null(request.create_command_shrink):
+            body['CreateCommand'] = request.create_command_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateBasicProject',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateBasicProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_basic_project_with_options_async(
+        self,
+        tmp_req: main_models.CreateBasicProjectRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateBasicProjectResponse:
+        tmp_req.validate()
+        request = main_models.CreateBasicProjectShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.create_command):
+            request.create_command_shrink = Utils.array_to_string_with_specified_style(tmp_req.create_command, 'CreateCommand', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not DaraCore.is_null(request.create_command_shrink):
+            body['CreateCommand'] = request.create_command_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateBasicProject',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateBasicProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_basic_project(
+        self,
+        request: main_models.CreateBasicProjectRequest,
+    ) -> main_models.CreateBasicProjectResponse:
+        runtime = RuntimeOptions()
+        return self.create_basic_project_with_options(request, runtime)
+
+    async def create_basic_project_async(
+        self,
+        request: main_models.CreateBasicProjectRequest,
+    ) -> main_models.CreateBasicProjectResponse:
+        runtime = RuntimeOptions()
+        return await self.create_basic_project_with_options_async(request, runtime)
 
     def create_batch_task_with_options(
         self,
@@ -2427,6 +2693,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_dataset_with_options_async(request, runtime)
 
+    def create_dev_prod_project_with_options(
+        self,
+        tmp_req: main_models.CreateDevProdProjectRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateDevProdProjectResponse:
+        tmp_req.validate()
+        request = main_models.CreateDevProdProjectShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.create_command):
+            request.create_command_shrink = Utils.array_to_string_with_specified_style(tmp_req.create_command, 'CreateCommand', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not DaraCore.is_null(request.create_command_shrink):
+            body['CreateCommand'] = request.create_command_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateDevProdProject',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateDevProdProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_dev_prod_project_with_options_async(
+        self,
+        tmp_req: main_models.CreateDevProdProjectRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateDevProdProjectResponse:
+        tmp_req.validate()
+        request = main_models.CreateDevProdProjectShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.create_command):
+            request.create_command_shrink = Utils.array_to_string_with_specified_style(tmp_req.create_command, 'CreateCommand', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not DaraCore.is_null(request.create_command_shrink):
+            body['CreateCommand'] = request.create_command_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateDevProdProject',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateDevProdProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_dev_prod_project(
+        self,
+        request: main_models.CreateDevProdProjectRequest,
+    ) -> main_models.CreateDevProdProjectResponse:
+        runtime = RuntimeOptions()
+        return self.create_dev_prod_project_with_options(request, runtime)
+
+    async def create_dev_prod_project_async(
+        self,
+        request: main_models.CreateDevProdProjectRequest,
+    ) -> main_models.CreateDevProdProjectResponse:
+        runtime = RuntimeOptions()
+        return await self.create_dev_prod_project_with_options_async(request, runtime)
+
     def create_directory_with_options(
         self,
         tmp_req: main_models.CreateDirectoryRequest,
@@ -2512,6 +2864,186 @@ class Client(OpenApiClient):
     ) -> main_models.CreateDirectoryResponse:
         runtime = RuntimeOptions()
         return await self.create_directory_with_options_async(request, runtime)
+
+    def create_kg_entity_with_options(
+        self,
+        tmp_req: main_models.CreateKgEntityRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateKgEntityResponse:
+        tmp_req.validate()
+        request = main_models.CreateKgEntityShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.create_command):
+            request.create_command_shrink = Utils.array_to_string_with_specified_style(tmp_req.create_command, 'CreateCommand', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        body = {}
+        if not DaraCore.is_null(request.create_command_shrink):
+            body['CreateCommand'] = request.create_command_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateKgEntity',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateKgEntityResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_kg_entity_with_options_async(
+        self,
+        tmp_req: main_models.CreateKgEntityRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateKgEntityResponse:
+        tmp_req.validate()
+        request = main_models.CreateKgEntityShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.create_command):
+            request.create_command_shrink = Utils.array_to_string_with_specified_style(tmp_req.create_command, 'CreateCommand', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        body = {}
+        if not DaraCore.is_null(request.create_command_shrink):
+            body['CreateCommand'] = request.create_command_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateKgEntity',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateKgEntityResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_kg_entity(
+        self,
+        request: main_models.CreateKgEntityRequest,
+    ) -> main_models.CreateKgEntityResponse:
+        runtime = RuntimeOptions()
+        return self.create_kg_entity_with_options(request, runtime)
+
+    async def create_kg_entity_async(
+        self,
+        request: main_models.CreateKgEntityRequest,
+    ) -> main_models.CreateKgEntityResponse:
+        runtime = RuntimeOptions()
+        return await self.create_kg_entity_with_options_async(request, runtime)
+
+    def create_kg_relation_with_options(
+        self,
+        tmp_req: main_models.CreateKgRelationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateKgRelationResponse:
+        tmp_req.validate()
+        request = main_models.CreateKgRelationShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.create_command):
+            request.create_command_shrink = Utils.array_to_string_with_specified_style(tmp_req.create_command, 'CreateCommand', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        body = {}
+        if not DaraCore.is_null(request.create_command_shrink):
+            body['CreateCommand'] = request.create_command_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateKgRelation',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateKgRelationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_kg_relation_with_options_async(
+        self,
+        tmp_req: main_models.CreateKgRelationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateKgRelationResponse:
+        tmp_req.validate()
+        request = main_models.CreateKgRelationShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.create_command):
+            request.create_command_shrink = Utils.array_to_string_with_specified_style(tmp_req.create_command, 'CreateCommand', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        body = {}
+        if not DaraCore.is_null(request.create_command_shrink):
+            body['CreateCommand'] = request.create_command_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateKgRelation',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateKgRelationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_kg_relation(
+        self,
+        request: main_models.CreateKgRelationRequest,
+    ) -> main_models.CreateKgRelationResponse:
+        runtime = RuntimeOptions()
+        return self.create_kg_relation_with_options(request, runtime)
+
+    async def create_kg_relation_async(
+        self,
+        request: main_models.CreateKgRelationRequest,
+    ) -> main_models.CreateKgRelationResponse:
+        runtime = RuntimeOptions()
+        return await self.create_kg_relation_with_options_async(request, runtime)
 
     def create_node_supplement_with_options(
         self,
@@ -5295,6 +5827,244 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_directory_with_options_async(request, runtime)
 
+    def delete_kg_entity_with_options(
+        self,
+        request: main_models.DeleteKgEntityRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteKgEntityResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.entity_id):
+            query['EntityId'] = request.entity_id
+        if not DaraCore.is_null(request.entity_type):
+            query['EntityType'] = request.entity_type
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteKgEntity',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteKgEntityResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_kg_entity_with_options_async(
+        self,
+        request: main_models.DeleteKgEntityRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteKgEntityResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.entity_id):
+            query['EntityId'] = request.entity_id
+        if not DaraCore.is_null(request.entity_type):
+            query['EntityType'] = request.entity_type
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteKgEntity',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteKgEntityResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_kg_entity(
+        self,
+        request: main_models.DeleteKgEntityRequest,
+    ) -> main_models.DeleteKgEntityResponse:
+        runtime = RuntimeOptions()
+        return self.delete_kg_entity_with_options(request, runtime)
+
+    async def delete_kg_entity_async(
+        self,
+        request: main_models.DeleteKgEntityRequest,
+    ) -> main_models.DeleteKgEntityResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_kg_entity_with_options_async(request, runtime)
+
+    def delete_kg_relation_with_options(
+        self,
+        request: main_models.DeleteKgRelationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteKgRelationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.relation_id):
+            query['RelationId'] = request.relation_id
+        if not DaraCore.is_null(request.relation_type):
+            query['RelationType'] = request.relation_type
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteKgRelation',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteKgRelationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_kg_relation_with_options_async(
+        self,
+        request: main_models.DeleteKgRelationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteKgRelationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.relation_id):
+            query['RelationId'] = request.relation_id
+        if not DaraCore.is_null(request.relation_type):
+            query['RelationType'] = request.relation_type
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteKgRelation',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteKgRelationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_kg_relation(
+        self,
+        request: main_models.DeleteKgRelationRequest,
+    ) -> main_models.DeleteKgRelationResponse:
+        runtime = RuntimeOptions()
+        return self.delete_kg_relation_with_options(request, runtime)
+
+    async def delete_kg_relation_async(
+        self,
+        request: main_models.DeleteKgRelationRequest,
+    ) -> main_models.DeleteKgRelationResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_kg_relation_with_options_async(request, runtime)
+
+    def delete_project_with_options(
+        self,
+        request: main_models.DeleteProjectRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteProjectResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.id):
+            query['Id'] = request.id
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteProject',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_project_with_options_async(
+        self,
+        request: main_models.DeleteProjectRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteProjectResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.id):
+            query['Id'] = request.id
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteProject',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_project(
+        self,
+        request: main_models.DeleteProjectRequest,
+    ) -> main_models.DeleteProjectResponse:
+        runtime = RuntimeOptions()
+        return self.delete_project_with_options(request, runtime)
+
+    async def delete_project_async(
+        self,
+        request: main_models.DeleteProjectRequest,
+    ) -> main_models.DeleteProjectResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_project_with_options_async(request, runtime)
+
     def delete_quality_rules_with_options(
         self,
         tmp_req: main_models.DeleteQualityRulesRequest,
@@ -6959,6 +7729,96 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_user_group_with_options_async(request, runtime)
 
+    def exec_kg_cypher_with_options(
+        self,
+        tmp_req: main_models.ExecKgCypherRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ExecKgCypherResponse:
+        tmp_req.validate()
+        request = main_models.ExecKgCypherShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.exec_command):
+            request.exec_command_shrink = Utils.array_to_string_with_specified_style(tmp_req.exec_command, 'ExecCommand', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        body = {}
+        if not DaraCore.is_null(request.exec_command_shrink):
+            body['ExecCommand'] = request.exec_command_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ExecKgCypher',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ExecKgCypherResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def exec_kg_cypher_with_options_async(
+        self,
+        tmp_req: main_models.ExecKgCypherRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ExecKgCypherResponse:
+        tmp_req.validate()
+        request = main_models.ExecKgCypherShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.exec_command):
+            request.exec_command_shrink = Utils.array_to_string_with_specified_style(tmp_req.exec_command, 'ExecCommand', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        body = {}
+        if not DaraCore.is_null(request.exec_command_shrink):
+            body['ExecCommand'] = request.exec_command_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ExecKgCypher',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ExecKgCypherResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def exec_kg_cypher(
+        self,
+        request: main_models.ExecKgCypherRequest,
+    ) -> main_models.ExecKgCypherResponse:
+        runtime = RuntimeOptions()
+        return self.exec_kg_cypher_with_options(request, runtime)
+
+    async def exec_kg_cypher_async(
+        self,
+        request: main_models.ExecKgCypherRequest,
+    ) -> main_models.ExecKgCypherResponse:
+        runtime = RuntimeOptions()
+        return await self.exec_kg_cypher_with_options_async(request, runtime)
+
     def execute_ad_hoc_task_with_options(
         self,
         tmp_req: main_models.ExecuteAdHocTaskRequest,
@@ -7224,6 +8084,88 @@ class Client(OpenApiClient):
     ) -> main_models.ExecuteTriggerNodeResponse:
         runtime = RuntimeOptions()
         return await self.execute_trigger_node_with_options_async(request, runtime)
+
+    def export_kg_schema_with_options(
+        self,
+        request: main_models.ExportKgSchemaRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ExportKgSchemaResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.output_format):
+            query['OutputFormat'] = request.output_format
+        if not DaraCore.is_null(request.version_id):
+            query['VersionId'] = request.version_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ExportKgSchema',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ExportKgSchemaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def export_kg_schema_with_options_async(
+        self,
+        request: main_models.ExportKgSchemaRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ExportKgSchemaResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.output_format):
+            query['OutputFormat'] = request.output_format
+        if not DaraCore.is_null(request.version_id):
+            query['VersionId'] = request.version_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ExportKgSchema',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ExportKgSchemaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def export_kg_schema(
+        self,
+        request: main_models.ExportKgSchemaRequest,
+    ) -> main_models.ExportKgSchemaResponse:
+        runtime = RuntimeOptions()
+        return self.export_kg_schema_with_options(request, runtime)
+
+    async def export_kg_schema_async(
+        self,
+        request: main_models.ExportKgSchemaRequest,
+    ) -> main_models.ExportKgSchemaResponse:
+        runtime = RuntimeOptions()
+        return await self.export_kg_schema_with_options_async(request, runtime)
 
     def fix_data_with_options(
         self,
@@ -10674,6 +11616,346 @@ class Client(OpenApiClient):
     ) -> main_models.GetInstanceUpDownStreamResponse:
         runtime = RuntimeOptions()
         return await self.get_instance_up_down_stream_with_options_async(request, runtime)
+
+    def get_kg_entity_with_options(
+        self,
+        request: main_models.GetKgEntityRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetKgEntityResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.entity_id):
+            query['EntityId'] = request.entity_id
+        if not DaraCore.is_null(request.entity_type):
+            query['EntityType'] = request.entity_type
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetKgEntity',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetKgEntityResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_kg_entity_with_options_async(
+        self,
+        request: main_models.GetKgEntityRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetKgEntityResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.entity_id):
+            query['EntityId'] = request.entity_id
+        if not DaraCore.is_null(request.entity_type):
+            query['EntityType'] = request.entity_type
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetKgEntity',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetKgEntityResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_kg_entity(
+        self,
+        request: main_models.GetKgEntityRequest,
+    ) -> main_models.GetKgEntityResponse:
+        runtime = RuntimeOptions()
+        return self.get_kg_entity_with_options(request, runtime)
+
+    async def get_kg_entity_async(
+        self,
+        request: main_models.GetKgEntityRequest,
+    ) -> main_models.GetKgEntityResponse:
+        runtime = RuntimeOptions()
+        return await self.get_kg_entity_with_options_async(request, runtime)
+
+    def get_kg_neighbor_with_options(
+        self,
+        tmp_req: main_models.GetKgNeighborRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetKgNeighborResponse:
+        tmp_req.validate()
+        request = main_models.GetKgNeighborShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.neighbors_query):
+            request.neighbors_query_shrink = Utils.array_to_string_with_specified_style(tmp_req.neighbors_query, 'NeighborsQuery', 'json')
+        query = {}
+        if not DaraCore.is_null(request.entity_data_id):
+            query['EntityDataId'] = request.entity_data_id
+        if not DaraCore.is_null(request.entity_type):
+            query['EntityType'] = request.entity_type
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        body = {}
+        if not DaraCore.is_null(request.neighbors_query_shrink):
+            body['NeighborsQuery'] = request.neighbors_query_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetKgNeighbor',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetKgNeighborResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_kg_neighbor_with_options_async(
+        self,
+        tmp_req: main_models.GetKgNeighborRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetKgNeighborResponse:
+        tmp_req.validate()
+        request = main_models.GetKgNeighborShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.neighbors_query):
+            request.neighbors_query_shrink = Utils.array_to_string_with_specified_style(tmp_req.neighbors_query, 'NeighborsQuery', 'json')
+        query = {}
+        if not DaraCore.is_null(request.entity_data_id):
+            query['EntityDataId'] = request.entity_data_id
+        if not DaraCore.is_null(request.entity_type):
+            query['EntityType'] = request.entity_type
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        body = {}
+        if not DaraCore.is_null(request.neighbors_query_shrink):
+            body['NeighborsQuery'] = request.neighbors_query_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetKgNeighbor',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetKgNeighborResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_kg_neighbor(
+        self,
+        request: main_models.GetKgNeighborRequest,
+    ) -> main_models.GetKgNeighborResponse:
+        runtime = RuntimeOptions()
+        return self.get_kg_neighbor_with_options(request, runtime)
+
+    async def get_kg_neighbor_async(
+        self,
+        request: main_models.GetKgNeighborRequest,
+    ) -> main_models.GetKgNeighborResponse:
+        runtime = RuntimeOptions()
+        return await self.get_kg_neighbor_with_options_async(request, runtime)
+
+    def get_kg_relation_with_options(
+        self,
+        request: main_models.GetKgRelationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetKgRelationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.relation_id):
+            query['RelationId'] = request.relation_id
+        if not DaraCore.is_null(request.relation_type):
+            query['RelationType'] = request.relation_type
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetKgRelation',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetKgRelationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_kg_relation_with_options_async(
+        self,
+        request: main_models.GetKgRelationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetKgRelationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.relation_id):
+            query['RelationId'] = request.relation_id
+        if not DaraCore.is_null(request.relation_type):
+            query['RelationType'] = request.relation_type
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetKgRelation',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetKgRelationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_kg_relation(
+        self,
+        request: main_models.GetKgRelationRequest,
+    ) -> main_models.GetKgRelationResponse:
+        runtime = RuntimeOptions()
+        return self.get_kg_relation_with_options(request, runtime)
+
+    async def get_kg_relation_async(
+        self,
+        request: main_models.GetKgRelationRequest,
+    ) -> main_models.GetKgRelationResponse:
+        runtime = RuntimeOptions()
+        return await self.get_kg_relation_with_options_async(request, runtime)
+
+    def get_kg_schema_publish_result_with_options(
+        self,
+        request: main_models.GetKgSchemaPublishResultRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetKgSchemaPublishResultResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.version_id):
+            query['VersionId'] = request.version_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetKgSchemaPublishResult',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetKgSchemaPublishResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_kg_schema_publish_result_with_options_async(
+        self,
+        request: main_models.GetKgSchemaPublishResultRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetKgSchemaPublishResultResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.version_id):
+            query['VersionId'] = request.version_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetKgSchemaPublishResult',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetKgSchemaPublishResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_kg_schema_publish_result(
+        self,
+        request: main_models.GetKgSchemaPublishResultRequest,
+    ) -> main_models.GetKgSchemaPublishResultResponse:
+        runtime = RuntimeOptions()
+        return self.get_kg_schema_publish_result_with_options(request, runtime)
+
+    async def get_kg_schema_publish_result_async(
+        self,
+        request: main_models.GetKgSchemaPublishResultRequest,
+    ) -> main_models.GetKgSchemaPublishResultResponse:
+        runtime = RuntimeOptions()
+        return await self.get_kg_schema_publish_result_with_options_async(request, runtime)
 
     def get_latest_submit_detail_with_options(
         self,
@@ -15651,6 +16933,96 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.grant_resource_permission_with_options_async(request, runtime)
 
+    def import_kg_schema_with_options(
+        self,
+        tmp_req: main_models.ImportKgSchemaRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ImportKgSchemaResponse:
+        tmp_req.validate()
+        request = main_models.ImportKgSchemaShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.import_command):
+            request.import_command_shrink = Utils.array_to_string_with_specified_style(tmp_req.import_command, 'ImportCommand', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        body = {}
+        if not DaraCore.is_null(request.import_command_shrink):
+            body['ImportCommand'] = request.import_command_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ImportKgSchema',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ImportKgSchemaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def import_kg_schema_with_options_async(
+        self,
+        tmp_req: main_models.ImportKgSchemaRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ImportKgSchemaResponse:
+        tmp_req.validate()
+        request = main_models.ImportKgSchemaShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.import_command):
+            request.import_command_shrink = Utils.array_to_string_with_specified_style(tmp_req.import_command, 'ImportCommand', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        body = {}
+        if not DaraCore.is_null(request.import_command_shrink):
+            body['ImportCommand'] = request.import_command_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ImportKgSchema',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ImportKgSchemaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def import_kg_schema(
+        self,
+        request: main_models.ImportKgSchemaRequest,
+    ) -> main_models.ImportKgSchemaResponse:
+        runtime = RuntimeOptions()
+        return self.import_kg_schema_with_options(request, runtime)
+
+    async def import_kg_schema_async(
+        self,
+        request: main_models.ImportKgSchemaRequest,
+    ) -> main_models.ImportKgSchemaResponse:
+        runtime = RuntimeOptions()
+        return await self.import_kg_schema_with_options_async(request, runtime)
+
     def list_addable_roles_with_options(
         self,
         request: main_models.ListAddableRolesRequest,
@@ -17722,6 +19094,194 @@ class Client(OpenApiClient):
     ) -> main_models.ListInstancesResponse:
         runtime = RuntimeOptions()
         return await self.list_instances_with_options_async(request, runtime)
+
+    def list_kg_entity_with_options(
+        self,
+        tmp_req: main_models.ListKgEntityRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListKgEntityResponse:
+        tmp_req.validate()
+        request = main_models.ListKgEntityShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.list_query):
+            request.list_query_shrink = Utils.array_to_string_with_specified_style(tmp_req.list_query, 'ListQuery', 'json')
+        query = {}
+        if not DaraCore.is_null(request.entity_type):
+            query['EntityType'] = request.entity_type
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        body = {}
+        if not DaraCore.is_null(request.list_query_shrink):
+            body['ListQuery'] = request.list_query_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListKgEntity',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListKgEntityResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_kg_entity_with_options_async(
+        self,
+        tmp_req: main_models.ListKgEntityRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListKgEntityResponse:
+        tmp_req.validate()
+        request = main_models.ListKgEntityShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.list_query):
+            request.list_query_shrink = Utils.array_to_string_with_specified_style(tmp_req.list_query, 'ListQuery', 'json')
+        query = {}
+        if not DaraCore.is_null(request.entity_type):
+            query['EntityType'] = request.entity_type
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        body = {}
+        if not DaraCore.is_null(request.list_query_shrink):
+            body['ListQuery'] = request.list_query_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListKgEntity',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListKgEntityResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_kg_entity(
+        self,
+        request: main_models.ListKgEntityRequest,
+    ) -> main_models.ListKgEntityResponse:
+        runtime = RuntimeOptions()
+        return self.list_kg_entity_with_options(request, runtime)
+
+    async def list_kg_entity_async(
+        self,
+        request: main_models.ListKgEntityRequest,
+    ) -> main_models.ListKgEntityResponse:
+        runtime = RuntimeOptions()
+        return await self.list_kg_entity_with_options_async(request, runtime)
+
+    def list_kg_relation_with_options(
+        self,
+        tmp_req: main_models.ListKgRelationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListKgRelationResponse:
+        tmp_req.validate()
+        request = main_models.ListKgRelationShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.list_query):
+            request.list_query_shrink = Utils.array_to_string_with_specified_style(tmp_req.list_query, 'ListQuery', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.relation_type):
+            query['RelationType'] = request.relation_type
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        body = {}
+        if not DaraCore.is_null(request.list_query_shrink):
+            body['ListQuery'] = request.list_query_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListKgRelation',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListKgRelationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_kg_relation_with_options_async(
+        self,
+        tmp_req: main_models.ListKgRelationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListKgRelationResponse:
+        tmp_req.validate()
+        request = main_models.ListKgRelationShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.list_query):
+            request.list_query_shrink = Utils.array_to_string_with_specified_style(tmp_req.list_query, 'ListQuery', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.relation_type):
+            query['RelationType'] = request.relation_type
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        body = {}
+        if not DaraCore.is_null(request.list_query_shrink):
+            body['ListQuery'] = request.list_query_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListKgRelation',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListKgRelationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_kg_relation(
+        self,
+        request: main_models.ListKgRelationRequest,
+    ) -> main_models.ListKgRelationResponse:
+        runtime = RuntimeOptions()
+        return self.list_kg_relation_with_options(request, runtime)
+
+    async def list_kg_relation_async(
+        self,
+        request: main_models.ListKgRelationRequest,
+    ) -> main_models.ListKgRelationResponse:
+        runtime = RuntimeOptions()
+        return await self.list_kg_relation_with_options_async(request, runtime)
 
     def list_node_down_stream_with_options(
         self,
@@ -20589,6 +22149,96 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.publish_data_service_api_with_options_async(request, runtime)
 
+    def publish_kg_schema_with_options(
+        self,
+        tmp_req: main_models.PublishKgSchemaRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.PublishKgSchemaResponse:
+        tmp_req.validate()
+        request = main_models.PublishKgSchemaShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.publish_command):
+            request.publish_command_shrink = Utils.array_to_string_with_specified_style(tmp_req.publish_command, 'PublishCommand', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        body = {}
+        if not DaraCore.is_null(request.publish_command_shrink):
+            body['PublishCommand'] = request.publish_command_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'PublishKgSchema',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PublishKgSchemaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def publish_kg_schema_with_options_async(
+        self,
+        tmp_req: main_models.PublishKgSchemaRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.PublishKgSchemaResponse:
+        tmp_req.validate()
+        request = main_models.PublishKgSchemaShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.publish_command):
+            request.publish_command_shrink = Utils.array_to_string_with_specified_style(tmp_req.publish_command, 'PublishCommand', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        body = {}
+        if not DaraCore.is_null(request.publish_command_shrink):
+            body['PublishCommand'] = request.publish_command_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'PublishKgSchema',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PublishKgSchemaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def publish_kg_schema(
+        self,
+        request: main_models.PublishKgSchemaRequest,
+    ) -> main_models.PublishKgSchemaResponse:
+        runtime = RuntimeOptions()
+        return self.publish_kg_schema_with_options(request, runtime)
+
+    async def publish_kg_schema_async(
+        self,
+        request: main_models.PublishKgSchemaRequest,
+    ) -> main_models.PublishKgSchemaResponse:
+        runtime = RuntimeOptions()
+        return await self.publish_kg_schema_with_options_async(request, runtime)
+
     def publish_object_list_with_options(
         self,
         tmp_req: main_models.PublishObjectListRequest,
@@ -22403,6 +24053,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.update_ad_hoc_file_with_options_async(request, runtime)
 
+    def update_basic_project_with_options(
+        self,
+        tmp_req: main_models.UpdateBasicProjectRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateBasicProjectResponse:
+        tmp_req.validate()
+        request = main_models.UpdateBasicProjectShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.update_command):
+            request.update_command_shrink = Utils.array_to_string_with_specified_style(tmp_req.update_command, 'UpdateCommand', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not DaraCore.is_null(request.update_command_shrink):
+            body['UpdateCommand'] = request.update_command_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateBasicProject',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateBasicProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_basic_project_with_options_async(
+        self,
+        tmp_req: main_models.UpdateBasicProjectRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateBasicProjectResponse:
+        tmp_req.validate()
+        request = main_models.UpdateBasicProjectShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.update_command):
+            request.update_command_shrink = Utils.array_to_string_with_specified_style(tmp_req.update_command, 'UpdateCommand', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not DaraCore.is_null(request.update_command_shrink):
+            body['UpdateCommand'] = request.update_command_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateBasicProject',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateBasicProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_basic_project(
+        self,
+        request: main_models.UpdateBasicProjectRequest,
+    ) -> main_models.UpdateBasicProjectResponse:
+        runtime = RuntimeOptions()
+        return self.update_basic_project_with_options(request, runtime)
+
+    async def update_basic_project_async(
+        self,
+        request: main_models.UpdateBasicProjectRequest,
+    ) -> main_models.UpdateBasicProjectResponse:
+        runtime = RuntimeOptions()
+        return await self.update_basic_project_with_options_async(request, runtime)
+
     def update_batch_task_with_options(
         self,
         tmp_req: main_models.UpdateBatchTaskRequest,
@@ -23525,6 +25261,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.update_dataset_with_options_async(request, runtime)
 
+    def update_dev_prod_project_with_options(
+        self,
+        tmp_req: main_models.UpdateDevProdProjectRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateDevProdProjectResponse:
+        tmp_req.validate()
+        request = main_models.UpdateDevProdProjectShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.update_command):
+            request.update_command_shrink = Utils.array_to_string_with_specified_style(tmp_req.update_command, 'UpdateCommand', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not DaraCore.is_null(request.update_command_shrink):
+            body['UpdateCommand'] = request.update_command_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateDevProdProject',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateDevProdProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_dev_prod_project_with_options_async(
+        self,
+        tmp_req: main_models.UpdateDevProdProjectRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateDevProdProjectResponse:
+        tmp_req.validate()
+        request = main_models.UpdateDevProdProjectShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.update_command):
+            request.update_command_shrink = Utils.array_to_string_with_specified_style(tmp_req.update_command, 'UpdateCommand', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not DaraCore.is_null(request.update_command_shrink):
+            body['UpdateCommand'] = request.update_command_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateDevProdProject',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateDevProdProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_dev_prod_project(
+        self,
+        request: main_models.UpdateDevProdProjectRequest,
+    ) -> main_models.UpdateDevProdProjectResponse:
+        runtime = RuntimeOptions()
+        return self.update_dev_prod_project_with_options(request, runtime)
+
+    async def update_dev_prod_project_async(
+        self,
+        request: main_models.UpdateDevProdProjectRequest,
+    ) -> main_models.UpdateDevProdProjectResponse:
+        runtime = RuntimeOptions()
+        return await self.update_dev_prod_project_with_options_async(request, runtime)
+
     def update_file_directory_with_options(
         self,
         request: main_models.UpdateFileDirectoryRequest,
@@ -23688,6 +25510,186 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateFileNameResponse:
         runtime = RuntimeOptions()
         return await self.update_file_name_with_options_async(request, runtime)
+
+    def update_kg_entity_with_options(
+        self,
+        tmp_req: main_models.UpdateKgEntityRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateKgEntityResponse:
+        tmp_req.validate()
+        request = main_models.UpdateKgEntityShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.update_command):
+            request.update_command_shrink = Utils.array_to_string_with_specified_style(tmp_req.update_command, 'UpdateCommand', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        body = {}
+        if not DaraCore.is_null(request.update_command_shrink):
+            body['UpdateCommand'] = request.update_command_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateKgEntity',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateKgEntityResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_kg_entity_with_options_async(
+        self,
+        tmp_req: main_models.UpdateKgEntityRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateKgEntityResponse:
+        tmp_req.validate()
+        request = main_models.UpdateKgEntityShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.update_command):
+            request.update_command_shrink = Utils.array_to_string_with_specified_style(tmp_req.update_command, 'UpdateCommand', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        body = {}
+        if not DaraCore.is_null(request.update_command_shrink):
+            body['UpdateCommand'] = request.update_command_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateKgEntity',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateKgEntityResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_kg_entity(
+        self,
+        request: main_models.UpdateKgEntityRequest,
+    ) -> main_models.UpdateKgEntityResponse:
+        runtime = RuntimeOptions()
+        return self.update_kg_entity_with_options(request, runtime)
+
+    async def update_kg_entity_async(
+        self,
+        request: main_models.UpdateKgEntityRequest,
+    ) -> main_models.UpdateKgEntityResponse:
+        runtime = RuntimeOptions()
+        return await self.update_kg_entity_with_options_async(request, runtime)
+
+    def update_kg_relation_with_options(
+        self,
+        tmp_req: main_models.UpdateKgRelationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateKgRelationResponse:
+        tmp_req.validate()
+        request = main_models.UpdateKgRelationShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.update_command):
+            request.update_command_shrink = Utils.array_to_string_with_specified_style(tmp_req.update_command, 'UpdateCommand', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        body = {}
+        if not DaraCore.is_null(request.update_command_shrink):
+            body['UpdateCommand'] = request.update_command_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateKgRelation',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateKgRelationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_kg_relation_with_options_async(
+        self,
+        tmp_req: main_models.UpdateKgRelationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateKgRelationResponse:
+        tmp_req.validate()
+        request = main_models.UpdateKgRelationShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.update_command):
+            request.update_command_shrink = Utils.array_to_string_with_specified_style(tmp_req.update_command, 'UpdateCommand', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        body = {}
+        if not DaraCore.is_null(request.update_command_shrink):
+            body['UpdateCommand'] = request.update_command_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateKgRelation',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateKgRelationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_kg_relation(
+        self,
+        request: main_models.UpdateKgRelationRequest,
+    ) -> main_models.UpdateKgRelationResponse:
+        runtime = RuntimeOptions()
+        return self.update_kg_relation_with_options(request, runtime)
+
+    async def update_kg_relation_async(
+        self,
+        request: main_models.UpdateKgRelationRequest,
+    ) -> main_models.UpdateKgRelationResponse:
+        runtime = RuntimeOptions()
+        return await self.update_kg_relation_with_options_async(request, runtime)
 
     def update_pipeline_with_options(
         self,

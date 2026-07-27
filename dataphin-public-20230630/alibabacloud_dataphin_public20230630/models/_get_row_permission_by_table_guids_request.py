@@ -13,11 +13,11 @@ class GetRowPermissionByTableGuidsRequest(DaraModel):
         get_row_permission_by_table_guids_query: main_models.GetRowPermissionByTableGuidsRequestGetRowPermissionByTableGuidsQuery = None,
         op_tenant_id: int = None,
     ):
-        # Request command
+        # The request command.
         # 
         # This parameter is required.
         self.get_row_permission_by_table_guids_query = get_row_permission_by_table_guids_query
-        # Tenant ID
+        # The tenant ID.
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
@@ -55,7 +55,7 @@ class GetRowPermissionByTableGuidsRequestGetRowPermissionByTableGuidsQuery(DaraM
         self,
         table_guids: List[str] = None,
     ):
-        # List of table GUIDs
+        # The list of table GUIDs.
         # 
         # This parameter is required.
         self.table_guids = table_guids

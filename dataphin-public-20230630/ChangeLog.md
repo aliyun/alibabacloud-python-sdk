@@ -1,3 +1,29 @@
+2026-07-27 Version: 2.10.0
+- Support API BatchCreateKgEntity.
+- Support API BatchCreateKgRelation.
+- Support API CreateBasicProject.
+- Support API CreateDevProdProject.
+- Support API CreateKgEntity.
+- Support API CreateKgRelation.
+- Support API DeleteKgEntity.
+- Support API DeleteKgRelation.
+- Support API DeleteProject.
+- Support API ExecKgCypher.
+- Support API ExportKgSchema.
+- Support API GetKgEntity.
+- Support API GetKgNeighbor.
+- Support API GetKgRelation.
+- Support API GetKgSchemaPublishResult.
+- Support API ImportKgSchema.
+- Support API ListKgEntity.
+- Support API ListKgRelation.
+- Support API PublishKgSchema.
+- Support API UpdateBasicProject.
+- Support API UpdateDevProdProject.
+- Support API UpdateKgEntity.
+- Support API UpdateKgRelation.
+
+
 2026-07-03 Version: 2.9.0
 - Support API CreateWorkFlowByJson.
 

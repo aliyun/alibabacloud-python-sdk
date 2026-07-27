@@ -11,8 +11,12 @@ class GetOperationRecordByIdRequest(DaraModel):
         detail_command: main_models.GetOperationRecordByIdRequestDetailCommand = None,
         op_tenant_id: int = None,
     ):
+        # The query command.
+        # 
         # This parameter is required.
         self.detail_command = detail_command
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -50,8 +54,12 @@ class GetOperationRecordByIdRequestDetailCommand(DaraModel):
         operation_id: int = None,
         project_id: int = None,
     ):
+        # The operation log ID.
+        # 
         # This parameter is required.
         self.operation_id = operation_id
+        # The project ID.
+        # 
         # This parameter is required.
         self.project_id = project_id
 

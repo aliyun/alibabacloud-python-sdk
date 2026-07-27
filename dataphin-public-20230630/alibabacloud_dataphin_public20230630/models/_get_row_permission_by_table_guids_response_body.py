@@ -17,17 +17,17 @@ class GetRowPermissionByTableGuidsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Error code. A value of OK indicates that the request was successful
+        # The error code. A value of OK indicates that the request was successful.
         self.code = code
-        # Response data
+        # The returned data.
         self.data = data
-        # HTTP status code of the backend response
+        # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
-        # Error message
+        # The error message returned if the request failed.
         self.message = message
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -95,11 +95,11 @@ class GetRowPermissionByTableGuidsResponseBodyData(DaraModel):
         row_permission_id: str = None,
         row_permission_name: str = None,
     ):
-        # Row permission description
+        # The row permission description.
         self.row_permission_desc = row_permission_desc
-        # Row permission ID
+        # The row permission ID.
         self.row_permission_id = row_permission_id
-        # Row permission name
+        # The row permission name.
         self.row_permission_name = row_permission_name
 
     def validate(self):

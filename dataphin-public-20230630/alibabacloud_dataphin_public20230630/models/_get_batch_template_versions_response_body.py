@@ -17,11 +17,17 @@ class GetBatchTemplateVersionsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The backend response code.
         self.code = code
+        # The response data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The backend exception details.
         self.message = message
+        # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -81,6 +87,7 @@ class GetBatchTemplateVersionsResponseBodyData(DaraModel):
         self,
         template_version_list: List[main_models.GetBatchTemplateVersionsResponseBodyDataTemplateVersionList] = None,
     ):
+        # The template version list.
         self.template_version_list = template_version_list
 
     def validate(self):
@@ -131,21 +138,44 @@ class GetBatchTemplateVersionsResponseBodyDataTemplateVersionList(DaraModel):
         status: str = None,
         version: int = None,
     ):
+        # The template submit comment.
         self.comment = comment
+        # The template content.
         self.content = content
+        # The template description.
         self.description = description
+        # The version of the compute engine. Currently supported Python versions: Python 2.7 and Python 3.7.
         self.engine = engine
+        # The template creation time. Format: yyyy-MM-dd HH:mm:ss.
         self.gmt_create = gmt_create
+        # The template modification time. Format: yyyy-MM-dd HH:mm:ss.
         self.gmt_modified = gmt_modified
+        # The template ID, which is the same as the menu tree node ID.
         self.id = id
+        # The last modifier of the template.
         self.modifier = modifier
+        # The ID of the last modifier of the template.
         self.modifier_id = modifier_id
+        # The template name.
         self.name = name
+        # The template operator type. Valid values:
+        # 
+        # - 10: Shell.
+        # - 21: Python.
         self.operator_type = operator_type
+        # The template owner.
         self.owner = owner
+        # The template owner ID.
         self.owner_id = owner_id
+        # The project ID.
         self.project_id = project_id
+        # The template status. Valid values:
+        # 
+        # - 0: draft.
+        # - 2: submitted.
+        # - 100: in development.
         self.status = status
+        # The version number.
         self.version = version
 
     def validate(self):

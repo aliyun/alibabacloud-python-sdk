@@ -23,7 +23,7 @@ class GetAccountByRowPermissionIdResponseBody(DaraModel):
         self.data = data
         # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
-        # The error message.
+        # The error message returned if the request failed.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -96,7 +96,7 @@ class GetAccountByRowPermissionIdResponseBodyData(DaraModel):
     ):
         # The row-level permission rule IDs.
         self.id = id
-        # The accounts associated with the rule.
+        # The accounts bound to the rule.
         self.user_mapping_list = user_mapping_list
 
     def validate(self):
@@ -139,9 +139,9 @@ class GetAccountByRowPermissionIdResponseBodyDataUserMappingList(DaraModel):
         account_type: str = None,
         accounts: List[main_models.GetAccountByRowPermissionIdResponseBodyDataUserMappingListAccounts] = None,
     ):
-        # The type of the account associated with the rule.
+        # The type of the account bound to the rule.
         self.account_type = account_type
-        # The accounts associated with the rule.
+        # The accounts bound to the rule.
         self.accounts = accounts
 
     def validate(self):
@@ -184,9 +184,9 @@ class GetAccountByRowPermissionIdResponseBodyDataUserMappingListAccounts(DaraMod
         account_id: str = None,
         account_name: str = None,
     ):
-        # The ID of the account associated with the rule.
+        # The ID of the account bound to the rule.
         self.account_id = account_id
-        # The name of the account associated with the rule.
+        # The name of the account bound to the rule.
         self.account_name = account_name
 
     def validate(self):

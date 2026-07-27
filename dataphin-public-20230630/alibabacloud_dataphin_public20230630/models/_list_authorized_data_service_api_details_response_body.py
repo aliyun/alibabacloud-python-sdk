@@ -23,7 +23,7 @@ class ListAuthorizedDataServiceApiDetailsResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The error message.
         self.message = message
-        # The request ID. It is a unique identifier for the request.
+        # The request ID, which uniquely identifies the request.
         self.request_id = request_id
         # The query result.
         self.result = result
@@ -149,9 +149,9 @@ class ListAuthorizedDataServiceApiDetailsResponseBodyResultData(DaraModel):
         self.app_id = app_id
         # The permission type.
         self.auth_type = auth_type
-        # The list of fields authorized for the API in the development environment.
+        # The list of authorized fields for the API in the development environment.
         self.authorized_dev_return_parameters = authorized_dev_return_parameters
-        # The list of fields authorized for the API in the production environment.
+        # The list of authorized fields for the API in the production environment.
         self.authorized_prod_return_parameters = authorized_prod_return_parameters
         # The API description.
         self.description = description
@@ -266,7 +266,7 @@ class ListAuthorizedDataServiceApiDetailsResponseBodyResultDataAuthorizedProdRet
         self.example_value = example_value
         # The field authorization status.
         self.is_authorized = is_authorized
-        # The parameter type.
+        # The parameter data type.
         self.parameter_data_type = parameter_data_type
         # The description.
         self.parameter_description = parameter_description
@@ -330,7 +330,7 @@ class ListAuthorizedDataServiceApiDetailsResponseBodyResultDataAuthorizedDevRetu
         self.example_value = example_value
         # The field authorization status.
         self.is_authorized = is_authorized
-        # The parameter type.
+        # The parameter data type.
         self.parameter_data_type = parameter_data_type
         # The description.
         self.parameter_description = parameter_description

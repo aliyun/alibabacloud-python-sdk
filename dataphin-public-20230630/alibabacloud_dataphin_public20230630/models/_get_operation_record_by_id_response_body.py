@@ -17,11 +17,17 @@ class GetOperationRecordByIdResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The backend response code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The backend exception details.
         self.message = message
+        # The operation log details.
         self.operation_log_dto = operation_log_dto
+        # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -93,18 +99,39 @@ class GetOperationRecordByIdResponseBodyOperationLogDTO(DaraModel):
         status: int = None,
         tenant_id: int = None,
     ):
+        # The start time.
         self.begin_time = begin_time
+        # The code type. Valid values:
+        # - SQL0: SQL
+        # - shell1: Shell
+        # - Python2: Python
+        # - MR3: MR
+        # - Spark4: Spark
         self.code_type = code_type
+        # The execution duration, in milliseconds.
         self.duration = duration
+        # The record ID.
         self.id = id
+        # The name.
         self.name = name
+        # The object type.
         self.object_type = object_type
+        # The operation log ID.
         self.operation_id = operation_id
+        # The project ID.
         self.project_id = project_id
+        # The list of related tables.
         self.relation_tables = relation_tables
+        # The ID of the runner.
         self.runner = runner
+        # The name of the runner.
         self.runner_name = runner_name
+        # The node status. Valid values:
+        # - 4: Running.
+        # - 5: Succeeded.
+        # - 6: Failed.
         self.status = status
+        # The tenant ID.
         self.tenant_id = tenant_id
 
     def validate(self):

@@ -57,7 +57,6 @@ class ListAuthorizedDataServiceApiDetailsRequestListQuery(DaraModel):
         page_size: int = None,
     ):
         # The application key.
-        # >Notice: Deprecated. Use AppKeyStr instead.</notice>.
         self.app_key = app_key
         # The application key.
         self.app_key_str = app_key_str

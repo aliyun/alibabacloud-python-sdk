@@ -60,7 +60,7 @@ class UpdateRowPermissionRequestUpdateRowPermissionCommand(DaraModel):
         rules: List[main_models.UpdateRowPermissionRequestUpdateRowPermissionCommandRules] = None,
         tables: List[main_models.UpdateRowPermissionRequestUpdateRowPermissionCommandTables] = None,
     ):
-        # The mapping fields.
+        # The mapping columns.
         # 
         # This parameter is required.
         self.mapping_columns = mapping_columns
@@ -162,11 +162,11 @@ class UpdateRowPermissionRequestUpdateRowPermissionCommandTables(DaraModel):
         mapping_column_name: str = None,
         resource_id: str = None,
     ):
-        # The table field.
+        # The table column.
         # 
         # This parameter is required.
         self.column_name = column_name
-        # The name of the mapping field.
+        # The mapping column name.
         # 
         # This parameter is required.
         self.mapping_column_name = mapping_column_name
@@ -227,15 +227,13 @@ class UpdateRowPermissionRequestUpdateRowPermissionCommandRules(DaraModel):
         # 
         # This parameter is required.
         self.rule_name = rule_name
-        # The scope type of the rule.
+        # The rule scope type.
         # 
         # This parameter is required.
         self.scope_type = scope_type
         # The rule status.
-        # 
-        # This parameter is required.
         self.status = status
-        # The accounts associated with the rule.
+        # The accounts bound to the rule.
         self.user_mapping_list = user_mapping_list
 
     def validate(self):
@@ -311,11 +309,11 @@ class UpdateRowPermissionRequestUpdateRowPermissionCommandRulesUserMappingList(D
         account_type: str = None,
         accounts: List[main_models.UpdateRowPermissionRequestUpdateRowPermissionCommandRulesUserMappingListAccounts] = None,
     ):
-        # The type of the account associated with the rule.
+        # The type of the account bound to the rule.
         # 
         # This parameter is required.
         self.account_type = account_type
-        # The accounts associated with the rule.
+        # The accounts bound to the rule.
         # 
         # This parameter is required.
         self.accounts = accounts
@@ -359,7 +357,7 @@ class UpdateRowPermissionRequestUpdateRowPermissionCommandRulesUserMappingListAc
         self,
         account_id: str = None,
     ):
-        # The ID of the account associated with the rule.
+        # The ID of the account bound to the rule.
         # 
         # This parameter is required.
         self.account_id = account_id
@@ -393,7 +391,7 @@ class UpdateRowPermissionRequestUpdateRowPermissionCommandRulesExpressions(DaraM
         type: str = None,
         values: List[str] = None,
     ):
-        # The name of the mapping field.
+        # The mapping column name.
         # 
         # This parameter is required.
         self.mapping_column_name = mapping_column_name
@@ -409,9 +407,7 @@ class UpdateRowPermissionRequestUpdateRowPermissionCommandRulesExpressions(DaraM
         # 
         # This parameter is required.
         self.type = type
-        # The operation values of the expression.
-        # 
-        # This parameter is required.
+        # The expression operation values.
         self.values = values
 
     def validate(self):
@@ -465,13 +461,13 @@ class UpdateRowPermissionRequestUpdateRowPermissionCommandMappingColumns(DaraMod
         column_name: str = None,
         column_type: str = None,
     ):
-        # The description of the mapping field.
+        # The mapping column description.
         self.column_desc = column_desc
-        # The name of the mapping field.
+        # The mapping column name.
         # 
         # This parameter is required.
         self.column_name = column_name
-        # The type of the mapping field.
+        # The mapping column type.
         # 
         # This parameter is required.
         self.column_type = column_type

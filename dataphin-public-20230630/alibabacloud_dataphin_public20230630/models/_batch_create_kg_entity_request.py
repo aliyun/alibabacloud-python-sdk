@@ -1,0 +1,191 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from typing import List
+
+from alibabacloud_dataphin_public20230630 import models as main_models
+from darabonba.model import DaraModel
+
+class BatchCreateKgEntityRequest(DaraModel):
+    def __init__(
+        self,
+        create_command: main_models.BatchCreateKgEntityRequestCreateCommand = None,
+        op_tenant_id: int = None,
+        workspace_id: str = None,
+    ):
+        # The create instruction.
+        # 
+        # This parameter is required.
+        self.create_command = create_command
+        # The tenant ID.
+        # 
+        # This parameter is required.
+        self.op_tenant_id = op_tenant_id
+        # The workspace ID.
+        # 
+        # This parameter is required.
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        if self.create_command:
+            self.create_command.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.create_command is not None:
+            result['CreateCommand'] = self.create_command.to_map()
+
+        if self.op_tenant_id is not None:
+            result['OpTenantId'] = self.op_tenant_id
+
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateCommand') is not None:
+            temp_model = main_models.BatchCreateKgEntityRequestCreateCommand()
+            self.create_command = temp_model.from_map(m.get('CreateCommand'))
+
+        if m.get('OpTenantId') is not None:
+            self.op_tenant_id = m.get('OpTenantId')
+
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+
+        return self
+
+class BatchCreateKgEntityRequestCreateCommand(DaraModel):
+    def __init__(
+        self,
+        entity_list: List[main_models.BatchCreateKgEntityRequestCreateCommandEntityList] = None,
+    ):
+        # The list of entity records.
+        # 
+        # This parameter is required.
+        self.entity_list = entity_list
+
+    def validate(self):
+        if self.entity_list:
+            for v1 in self.entity_list:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        result['EntityList'] = []
+        if self.entity_list is not None:
+            for k1 in self.entity_list:
+                result['EntityList'].append(k1.to_map() if k1 else None)
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.entity_list = []
+        if m.get('EntityList') is not None:
+            for k1 in m.get('EntityList'):
+                temp_model = main_models.BatchCreateKgEntityRequestCreateCommandEntityList()
+                self.entity_list.append(temp_model.from_map(k1))
+
+        return self
+
+class BatchCreateKgEntityRequestCreateCommandEntityList(DaraModel):
+    def __init__(
+        self,
+        entity_type: str = None,
+        property_list: List[main_models.BatchCreateKgEntityRequestCreateCommandEntityListPropertyList] = None,
+    ):
+        # The entity type code.
+        # 
+        # This parameter is required.
+        self.entity_type = entity_type
+        # The list of entity record properties.
+        # 
+        # This parameter is required.
+        self.property_list = property_list
+
+    def validate(self):
+        if self.property_list:
+            for v1 in self.property_list:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.entity_type is not None:
+            result['EntityType'] = self.entity_type
+
+        result['PropertyList'] = []
+        if self.property_list is not None:
+            for k1 in self.property_list:
+                result['PropertyList'].append(k1.to_map() if k1 else None)
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EntityType') is not None:
+            self.entity_type = m.get('EntityType')
+
+        self.property_list = []
+        if m.get('PropertyList') is not None:
+            for k1 in m.get('PropertyList'):
+                temp_model = main_models.BatchCreateKgEntityRequestCreateCommandEntityListPropertyList()
+                self.property_list.append(temp_model.from_map(k1))
+
+        return self
+
+class BatchCreateKgEntityRequestCreateCommandEntityListPropertyList(DaraModel):
+    def __init__(
+        self,
+        code: str = None,
+        value: str = None,
+    ):
+        # The property code.
+        # 
+        # This parameter is required.
+        self.code = code
+        # The property value.
+        # 
+        # This parameter is required.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.code is not None:
+            result['Code'] = self.code
+
+        if self.value is not None:
+            result['Value'] = self.value
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+
+        return self
+

@@ -61,8 +61,6 @@ class GetAccountByRowPermissionIdRequestGetAccountByRowPermissionIdQuery(DaraMod
         # This parameter is required.
         self.row_permission_id = row_permission_id
         # The row-level permission rule IDs.
-        # 
-        # This parameter is required.
         self.rule_ids = rule_ids
 
     def validate(self):

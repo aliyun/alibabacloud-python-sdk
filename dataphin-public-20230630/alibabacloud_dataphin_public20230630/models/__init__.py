@@ -43,6 +43,14 @@ from ._assign_quality_rule_of_all_rule_scope_schedules_request import AssignQual
 from ._assign_quality_rule_of_all_rule_scope_schedules_shrink_request import AssignQualityRuleOfAllRuleScopeSchedulesShrinkRequest
 from ._assign_quality_rule_of_all_rule_scope_schedules_response_body import AssignQualityRuleOfAllRuleScopeSchedulesResponseBody
 from ._assign_quality_rule_of_all_rule_scope_schedules_response import AssignQualityRuleOfAllRuleScopeSchedulesResponse
+from ._batch_create_kg_entity_request import BatchCreateKgEntityRequest
+from ._batch_create_kg_entity_shrink_request import BatchCreateKgEntityShrinkRequest
+from ._batch_create_kg_entity_response_body import BatchCreateKgEntityResponseBody
+from ._batch_create_kg_entity_response import BatchCreateKgEntityResponse
+from ._batch_create_kg_relation_request import BatchCreateKgRelationRequest
+from ._batch_create_kg_relation_shrink_request import BatchCreateKgRelationShrinkRequest
+from ._batch_create_kg_relation_response_body import BatchCreateKgRelationResponseBody
+from ._batch_create_kg_relation_response import BatchCreateKgRelationResponse
 from ._check_compute_source_connectivity_request import CheckComputeSourceConnectivityRequest
 from ._check_compute_source_connectivity_shrink_request import CheckComputeSourceConnectivityShrinkRequest
 from ._check_compute_source_connectivity_response_body import CheckComputeSourceConnectivityResponseBody
@@ -68,6 +76,10 @@ from ._create_ad_hoc_file_request import CreateAdHocFileRequest
 from ._create_ad_hoc_file_shrink_request import CreateAdHocFileShrinkRequest
 from ._create_ad_hoc_file_response_body import CreateAdHocFileResponseBody
 from ._create_ad_hoc_file_response import CreateAdHocFileResponse
+from ._create_basic_project_request import CreateBasicProjectRequest
+from ._create_basic_project_shrink_request import CreateBasicProjectShrinkRequest
+from ._create_basic_project_response_body import CreateBasicProjectResponseBody
+from ._create_basic_project_response import CreateBasicProjectResponse
 from ._create_batch_task_request import CreateBatchTaskRequest
 from ._create_batch_task_shrink_request import CreateBatchTaskShrinkRequest
 from ._create_batch_task_response_body import CreateBatchTaskResponseBody
@@ -111,10 +123,22 @@ from ._create_dataset_request import CreateDatasetRequest
 from ._create_dataset_shrink_request import CreateDatasetShrinkRequest
 from ._create_dataset_response_body import CreateDatasetResponseBody
 from ._create_dataset_response import CreateDatasetResponse
+from ._create_dev_prod_project_request import CreateDevProdProjectRequest
+from ._create_dev_prod_project_shrink_request import CreateDevProdProjectShrinkRequest
+from ._create_dev_prod_project_response_body import CreateDevProdProjectResponseBody
+from ._create_dev_prod_project_response import CreateDevProdProjectResponse
 from ._create_directory_request import CreateDirectoryRequest
 from ._create_directory_shrink_request import CreateDirectoryShrinkRequest
 from ._create_directory_response_body import CreateDirectoryResponseBody
 from ._create_directory_response import CreateDirectoryResponse
+from ._create_kg_entity_request import CreateKgEntityRequest
+from ._create_kg_entity_shrink_request import CreateKgEntityShrinkRequest
+from ._create_kg_entity_response_body import CreateKgEntityResponseBody
+from ._create_kg_entity_response import CreateKgEntityResponse
+from ._create_kg_relation_request import CreateKgRelationRequest
+from ._create_kg_relation_shrink_request import CreateKgRelationShrinkRequest
+from ._create_kg_relation_response_body import CreateKgRelationResponseBody
+from ._create_kg_relation_response import CreateKgRelationResponse
 from ._create_node_supplement_request import CreateNodeSupplementRequest
 from ._create_node_supplement_shrink_request import CreateNodeSupplementShrinkRequest
 from ._create_node_supplement_response_body import CreateNodeSupplementResponseBody
@@ -238,6 +262,15 @@ from ._delete_dataset_response import DeleteDatasetResponse
 from ._delete_directory_request import DeleteDirectoryRequest
 from ._delete_directory_response_body import DeleteDirectoryResponseBody
 from ._delete_directory_response import DeleteDirectoryResponse
+from ._delete_kg_entity_request import DeleteKgEntityRequest
+from ._delete_kg_entity_response_body import DeleteKgEntityResponseBody
+from ._delete_kg_entity_response import DeleteKgEntityResponse
+from ._delete_kg_relation_request import DeleteKgRelationRequest
+from ._delete_kg_relation_response_body import DeleteKgRelationResponseBody
+from ._delete_kg_relation_response import DeleteKgRelationResponse
+from ._delete_project_request import DeleteProjectRequest
+from ._delete_project_response_body import DeleteProjectResponseBody
+from ._delete_project_response import DeleteProjectResponse
 from ._delete_quality_rules_request import DeleteQualityRulesRequest
 from ._delete_quality_rules_shrink_request import DeleteQualityRulesShrinkRequest
 from ._delete_quality_rules_response_body import DeleteQualityRulesResponseBody
@@ -312,6 +345,10 @@ from ._delete_udf_response import DeleteUdfResponse
 from ._delete_user_group_request import DeleteUserGroupRequest
 from ._delete_user_group_response_body import DeleteUserGroupResponseBody
 from ._delete_user_group_response import DeleteUserGroupResponse
+from ._exec_kg_cypher_request import ExecKgCypherRequest
+from ._exec_kg_cypher_shrink_request import ExecKgCypherShrinkRequest
+from ._exec_kg_cypher_response_body import ExecKgCypherResponseBody
+from ._exec_kg_cypher_response import ExecKgCypherResponse
 from ._execute_ad_hoc_task_request import ExecuteAdHocTaskRequest
 from ._execute_ad_hoc_task_shrink_request import ExecuteAdHocTaskShrinkRequest
 from ._execute_ad_hoc_task_response_body import ExecuteAdHocTaskResponseBody
@@ -323,6 +360,9 @@ from ._execute_manual_node_response import ExecuteManualNodeResponse
 from ._execute_trigger_node_request import ExecuteTriggerNodeRequest
 from ._execute_trigger_node_response_body import ExecuteTriggerNodeResponseBody
 from ._execute_trigger_node_response import ExecuteTriggerNodeResponse
+from ._export_kg_schema_request import ExportKgSchemaRequest
+from ._export_kg_schema_response_body import ExportKgSchemaResponseBody
+from ._export_kg_schema_response import ExportKgSchemaResponse
 from ._fix_data_request import FixDataRequest
 from ._fix_data_shrink_request import FixDataShrinkRequest
 from ._fix_data_response_body import FixDataResponseBody
@@ -460,6 +500,19 @@ from ._get_instance_up_down_stream_request import GetInstanceUpDownStreamRequest
 from ._get_instance_up_down_stream_shrink_request import GetInstanceUpDownStreamShrinkRequest
 from ._get_instance_up_down_stream_response_body import GetInstanceUpDownStreamResponseBody
 from ._get_instance_up_down_stream_response import GetInstanceUpDownStreamResponse
+from ._get_kg_entity_request import GetKgEntityRequest
+from ._get_kg_entity_response_body import GetKgEntityResponseBody
+from ._get_kg_entity_response import GetKgEntityResponse
+from ._get_kg_neighbor_request import GetKgNeighborRequest
+from ._get_kg_neighbor_shrink_request import GetKgNeighborShrinkRequest
+from ._get_kg_neighbor_response_body import GetKgNeighborResponseBody
+from ._get_kg_neighbor_response import GetKgNeighborResponse
+from ._get_kg_relation_request import GetKgRelationRequest
+from ._get_kg_relation_response_body import GetKgRelationResponseBody
+from ._get_kg_relation_response import GetKgRelationResponse
+from ._get_kg_schema_publish_result_request import GetKgSchemaPublishResultRequest
+from ._get_kg_schema_publish_result_response_body import GetKgSchemaPublishResultResponseBody
+from ._get_kg_schema_publish_result_response import GetKgSchemaPublishResultResponse
 from ._get_latest_submit_detail_request import GetLatestSubmitDetailRequest
 from ._get_latest_submit_detail_shrink_request import GetLatestSubmitDetailShrinkRequest
 from ._get_latest_submit_detail_response_body import GetLatestSubmitDetailResponseBody
@@ -665,6 +718,10 @@ from ._grant_resource_permission_request import GrantResourcePermissionRequest
 from ._grant_resource_permission_shrink_request import GrantResourcePermissionShrinkRequest
 from ._grant_resource_permission_response_body import GrantResourcePermissionResponseBody
 from ._grant_resource_permission_response import GrantResourcePermissionResponse
+from ._import_kg_schema_request import ImportKgSchemaRequest
+from ._import_kg_schema_shrink_request import ImportKgSchemaShrinkRequest
+from ._import_kg_schema_response_body import ImportKgSchemaResponseBody
+from ._import_kg_schema_response import ImportKgSchemaResponse
 from ._list_addable_roles_request import ListAddableRolesRequest
 from ._list_addable_roles_response_body import ListAddableRolesResponseBody
 from ._list_addable_roles_response import ListAddableRolesResponse
@@ -759,6 +816,14 @@ from ._list_instances_request import ListInstancesRequest
 from ._list_instances_shrink_request import ListInstancesShrinkRequest
 from ._list_instances_response_body import ListInstancesResponseBody
 from ._list_instances_response import ListInstancesResponse
+from ._list_kg_entity_request import ListKgEntityRequest
+from ._list_kg_entity_shrink_request import ListKgEntityShrinkRequest
+from ._list_kg_entity_response_body import ListKgEntityResponseBody
+from ._list_kg_entity_response import ListKgEntityResponse
+from ._list_kg_relation_request import ListKgRelationRequest
+from ._list_kg_relation_shrink_request import ListKgRelationShrinkRequest
+from ._list_kg_relation_response_body import ListKgRelationResponseBody
+from ._list_kg_relation_response import ListKgRelationResponse
 from ._list_node_down_stream_request import ListNodeDownStreamRequest
 from ._list_node_down_stream_shrink_request import ListNodeDownStreamShrinkRequest
 from ._list_node_down_stream_response_body import ListNodeDownStreamResponseBody
@@ -889,6 +954,10 @@ from ._pause_physical_node_response import PausePhysicalNodeResponse
 from ._publish_data_service_api_request import PublishDataServiceApiRequest
 from ._publish_data_service_api_response_body import PublishDataServiceApiResponseBody
 from ._publish_data_service_api_response import PublishDataServiceApiResponse
+from ._publish_kg_schema_request import PublishKgSchemaRequest
+from ._publish_kg_schema_shrink_request import PublishKgSchemaShrinkRequest
+from ._publish_kg_schema_response_body import PublishKgSchemaResponseBody
+from ._publish_kg_schema_response import PublishKgSchemaResponse
 from ._publish_object_list_request import PublishObjectListRequest
 from ._publish_object_list_shrink_request import PublishObjectListShrinkRequest
 from ._publish_object_list_response_body import PublishObjectListResponseBody
@@ -972,6 +1041,10 @@ from ._update_ad_hoc_file_request import UpdateAdHocFileRequest
 from ._update_ad_hoc_file_shrink_request import UpdateAdHocFileShrinkRequest
 from ._update_ad_hoc_file_response_body import UpdateAdHocFileResponseBody
 from ._update_ad_hoc_file_response import UpdateAdHocFileResponse
+from ._update_basic_project_request import UpdateBasicProjectRequest
+from ._update_basic_project_shrink_request import UpdateBasicProjectShrinkRequest
+from ._update_basic_project_response_body import UpdateBasicProjectResponseBody
+from ._update_basic_project_response import UpdateBasicProjectResponse
 from ._update_batch_task_request import UpdateBatchTaskRequest
 from ._update_batch_task_shrink_request import UpdateBatchTaskShrinkRequest
 from ._update_batch_task_response_body import UpdateBatchTaskResponseBody
@@ -1024,12 +1097,24 @@ from ._update_dataset_request import UpdateDatasetRequest
 from ._update_dataset_shrink_request import UpdateDatasetShrinkRequest
 from ._update_dataset_response_body import UpdateDatasetResponseBody
 from ._update_dataset_response import UpdateDatasetResponse
+from ._update_dev_prod_project_request import UpdateDevProdProjectRequest
+from ._update_dev_prod_project_shrink_request import UpdateDevProdProjectShrinkRequest
+from ._update_dev_prod_project_response_body import UpdateDevProdProjectResponseBody
+from ._update_dev_prod_project_response import UpdateDevProdProjectResponse
 from ._update_file_directory_request import UpdateFileDirectoryRequest
 from ._update_file_directory_response_body import UpdateFileDirectoryResponseBody
 from ._update_file_directory_response import UpdateFileDirectoryResponse
 from ._update_file_name_request import UpdateFileNameRequest
 from ._update_file_name_response_body import UpdateFileNameResponseBody
 from ._update_file_name_response import UpdateFileNameResponse
+from ._update_kg_entity_request import UpdateKgEntityRequest
+from ._update_kg_entity_shrink_request import UpdateKgEntityShrinkRequest
+from ._update_kg_entity_response_body import UpdateKgEntityResponseBody
+from ._update_kg_entity_response import UpdateKgEntityResponse
+from ._update_kg_relation_request import UpdateKgRelationRequest
+from ._update_kg_relation_shrink_request import UpdateKgRelationShrinkRequest
+from ._update_kg_relation_response_body import UpdateKgRelationResponseBody
+from ._update_kg_relation_response import UpdateKgRelationResponse
 from ._update_pipeline_request import UpdatePipelineRequest
 from ._update_pipeline_shrink_request import UpdatePipelineShrinkRequest
 from ._update_pipeline_response_body import UpdatePipelineResponseBody
@@ -1159,6 +1244,16 @@ from ._apply_data_service_api_request import ApplyDataServiceApiRequestApplyComm
 from ._apply_data_service_api_request import ApplyDataServiceApiRequestApplyCommand
 from ._apply_data_service_app_request import ApplyDataServiceAppRequestApplyCommand
 from ._assign_quality_rule_of_all_rule_scope_schedules_request import AssignQualityRuleOfAllRuleScopeSchedulesRequestAssignCommand
+from ._batch_create_kg_entity_request import BatchCreateKgEntityRequestCreateCommandEntityListPropertyList
+from ._batch_create_kg_entity_request import BatchCreateKgEntityRequestCreateCommandEntityList
+from ._batch_create_kg_entity_request import BatchCreateKgEntityRequestCreateCommand
+from ._batch_create_kg_entity_response_body import BatchCreateKgEntityResponseBodyCreateResultSuccessEntityList
+from ._batch_create_kg_entity_response_body import BatchCreateKgEntityResponseBodyCreateResult
+from ._batch_create_kg_relation_request import BatchCreateKgRelationRequestCreateCommandRelationListPropertyList
+from ._batch_create_kg_relation_request import BatchCreateKgRelationRequestCreateCommandRelationList
+from ._batch_create_kg_relation_request import BatchCreateKgRelationRequestCreateCommand
+from ._batch_create_kg_relation_response_body import BatchCreateKgRelationResponseBodyCreateResultSuccessRelationList
+from ._batch_create_kg_relation_response_body import BatchCreateKgRelationResponseBodyCreateResult
 from ._check_compute_source_connectivity_request import CheckComputeSourceConnectivityRequestCheckCommandConfigList
 from ._check_compute_source_connectivity_request import CheckComputeSourceConnectivityRequestCheckCommand
 from ._check_data_source_connectivity_request import CheckDataSourceConnectivityRequestCheckCommandConfigItemList
@@ -1167,6 +1262,9 @@ from ._check_resource_permission_request import CheckResourcePermissionRequestCh
 from ._check_resource_permission_request import CheckResourcePermissionRequestCheckCommand
 from ._check_resource_permission_response_body import CheckResourcePermissionResponseBodyResourcePermissionList
 from ._create_ad_hoc_file_request import CreateAdHocFileRequestCreateCommand
+from ._create_basic_project_request import CreateBasicProjectRequestCreateCommandWhiteLists
+from ._create_basic_project_request import CreateBasicProjectRequestCreateCommand
+from ._create_basic_project_response_body import CreateBasicProjectResponseBodyCreateResult
 from ._create_batch_task_request import CreateBatchTaskRequestCreateCommand
 from ._create_batch_task_response_body import CreateBatchTaskResponseBodyCreateResult
 from ._create_biz_entity_request import CreateBizEntityRequestCreateCommandBizObject
@@ -1210,7 +1308,16 @@ from ._create_dataset_request import CreateDatasetRequestCreateCommandVersionCon
 from ._create_dataset_request import CreateDatasetRequestCreateCommandVersionConfigRealtimeMetaTableConfig
 from ._create_dataset_request import CreateDatasetRequestCreateCommandVersionConfig
 from ._create_dataset_request import CreateDatasetRequestCreateCommand
+from ._create_dev_prod_project_request import CreateDevProdProjectRequestCreateCommandWhiteLists
+from ._create_dev_prod_project_request import CreateDevProdProjectRequestCreateCommand
+from ._create_dev_prod_project_response_body import CreateDevProdProjectResponseBodyCreateResult
 from ._create_directory_request import CreateDirectoryRequestCreateCommand
+from ._create_kg_entity_request import CreateKgEntityRequestCreateCommandPropertyList
+from ._create_kg_entity_request import CreateKgEntityRequestCreateCommand
+from ._create_kg_entity_response_body import CreateKgEntityResponseBodyCreateResult
+from ._create_kg_relation_request import CreateKgRelationRequestCreateCommandPropertyList
+from ._create_kg_relation_request import CreateKgRelationRequestCreateCommand
+from ._create_kg_relation_response_body import CreateKgRelationResponseBodyCreateResult
 from ._create_node_supplement_request import CreateNodeSupplementRequestCreateCommandDownStreamNodeIdList
 from ._create_node_supplement_request import CreateNodeSupplementRequestCreateCommandFilterList
 from ._create_node_supplement_request import CreateNodeSupplementRequestCreateCommandGlobalParamList
@@ -1322,11 +1429,21 @@ from ._delete_standard_relations_request import DeleteStandardRelationsRequestDe
 from ._delete_standard_relations_request import DeleteStandardRelationsRequestDeleteCommand
 from ._delete_standard_relations_response_body import DeleteStandardRelationsResponseBodyData
 from ._delete_standard_valid_mapping_request import DeleteStandardValidMappingRequestDeleteCommand
+from ._exec_kg_cypher_request import ExecKgCypherRequestExecCommandParams
+from ._exec_kg_cypher_request import ExecKgCypherRequestExecCommand
+from ._exec_kg_cypher_response_body import ExecKgCypherResponseBodyDataEdgeListProperties
+from ._exec_kg_cypher_response_body import ExecKgCypherResponseBodyDataEdgeList
+from ._exec_kg_cypher_response_body import ExecKgCypherResponseBodyDataNodeListProperties
+from ._exec_kg_cypher_response_body import ExecKgCypherResponseBodyDataNodeList
+from ._exec_kg_cypher_response_body import ExecKgCypherResponseBodyDataRowListColumns
+from ._exec_kg_cypher_response_body import ExecKgCypherResponseBodyDataRowList
+from ._exec_kg_cypher_response_body import ExecKgCypherResponseBodyData
 from ._execute_ad_hoc_task_request import ExecuteAdHocTaskRequestExecuteCommandParamList
 from ._execute_ad_hoc_task_request import ExecuteAdHocTaskRequestExecuteCommand
 from ._execute_ad_hoc_task_response_body import ExecuteAdHocTaskResponseBodyExecuteResult
 from ._execute_manual_node_request import ExecuteManualNodeRequestExecuteCommandParamList
 from ._execute_manual_node_request import ExecuteManualNodeRequestExecuteCommand
+from ._export_kg_schema_response_body import ExportKgSchemaResponseBodySchemaInfo
 from ._fix_data_request import FixDataRequestFixDataCommandDownStreamInstanceIdList
 from ._fix_data_request import FixDataRequestFixDataCommandRootInstanceId
 from ._fix_data_request import FixDataRequestFixDataCommand
@@ -1461,6 +1578,17 @@ from ._get_instance_up_down_stream_response_body import GetInstanceUpDownStreamR
 from ._get_instance_up_down_stream_response_body import GetInstanceUpDownStreamResponseBodyInstanceDagInfoStartInstanceList
 from ._get_instance_up_down_stream_response_body import GetInstanceUpDownStreamResponseBodyInstanceDagInfoUpInstanceList
 from ._get_instance_up_down_stream_response_body import GetInstanceUpDownStreamResponseBodyInstanceDagInfo
+from ._get_kg_entity_response_body import GetKgEntityResponseBodyEntityInfoPropertyList
+from ._get_kg_entity_response_body import GetKgEntityResponseBodyEntityInfo
+from ._get_kg_neighbor_request import GetKgNeighborRequestNeighborsQuery
+from ._get_kg_neighbor_response_body import GetKgNeighborResponseBodyDataEdgeListPropertyList
+from ._get_kg_neighbor_response_body import GetKgNeighborResponseBodyDataEdgeList
+from ._get_kg_neighbor_response_body import GetKgNeighborResponseBodyDataNodeListPropertyList
+from ._get_kg_neighbor_response_body import GetKgNeighborResponseBodyDataNodeList
+from ._get_kg_neighbor_response_body import GetKgNeighborResponseBodyData
+from ._get_kg_relation_response_body import GetKgRelationResponseBodyRelationInfoPropertyList
+from ._get_kg_relation_response_body import GetKgRelationResponseBodyRelationInfo
+from ._get_kg_schema_publish_result_response_body import GetKgSchemaPublishResultResponseBodyData
 from ._get_latest_submit_detail_request import GetLatestSubmitDetailRequestSubmitDetailQuery
 from ._get_latest_submit_detail_response_body import GetLatestSubmitDetailResponseBodySubmitDetailResultReleaseObjectSubmitObject
 from ._get_latest_submit_detail_response_body import GetLatestSubmitDetailResponseBodySubmitDetailResultReleaseObject
@@ -1650,6 +1778,8 @@ from ._grant_data_service_api_request import GrantDataServiceApiRequestGrantComm
 from ._grant_data_service_api_request import GrantDataServiceApiRequestGrantCommand
 from ._grant_resource_permission_request import GrantResourcePermissionRequestGrantCommandResourceList
 from ._grant_resource_permission_request import GrantResourcePermissionRequestGrantCommand
+from ._import_kg_schema_request import ImportKgSchemaRequestImportCommand
+from ._import_kg_schema_response_body import ImportKgSchemaResponseBodyImportResult
 from ._list_addable_roles_response_body import ListAddableRolesResponseBodyRoleList
 from ._list_addable_users_request import ListAddableUsersRequestListQuery
 from ._list_addable_users_response_body import ListAddableUsersResponseBodyPageResultUserList
@@ -1767,6 +1897,15 @@ from ._list_instances_response_body import ListInstancesResponseBodyPageResultDa
 from ._list_instances_response_body import ListInstancesResponseBodyPageResultDataNodeInfo
 from ._list_instances_response_body import ListInstancesResponseBodyPageResultData
 from ._list_instances_response_body import ListInstancesResponseBodyPageResult
+from ._list_kg_entity_request import ListKgEntityRequestListQueryFilterList
+from ._list_kg_entity_request import ListKgEntityRequestListQuery
+from ._list_kg_entity_response_body import ListKgEntityResponseBodyPageResultEntityListPropertyList
+from ._list_kg_entity_response_body import ListKgEntityResponseBodyPageResultEntityList
+from ._list_kg_entity_response_body import ListKgEntityResponseBodyPageResult
+from ._list_kg_relation_request import ListKgRelationRequestListQuery
+from ._list_kg_relation_response_body import ListKgRelationResponseBodyPageResultRelationListPropertyList
+from ._list_kg_relation_response_body import ListKgRelationResponseBodyPageResultRelationList
+from ._list_kg_relation_response_body import ListKgRelationResponseBodyPageResult
 from ._list_node_down_stream_request import ListNodeDownStreamRequestListQueryFilterList
 from ._list_node_down_stream_request import ListNodeDownStreamRequestListQueryNodeIdList
 from ._list_node_down_stream_request import ListNodeDownStreamRequestListQuery
@@ -1923,6 +2062,10 @@ from ._parse_batch_task_dependency_response_body import ParseBatchTaskDependency
 from ._parse_batch_task_dependency_response_body import ParseBatchTaskDependencyResponseBodyParseResult
 from ._pause_physical_node_request import PausePhysicalNodeRequestPauseCommand
 from ._pause_physical_node_response_body import PausePhysicalNodeResponseBodyNodeOperateResultList
+from ._publish_kg_schema_request import PublishKgSchemaRequestPublishCommandDataAdjustmentPoliciesBackFillDefaultValuePolicy
+from ._publish_kg_schema_request import PublishKgSchemaRequestPublishCommandDataAdjustmentPolicies
+from ._publish_kg_schema_request import PublishKgSchemaRequestPublishCommand
+from ._publish_kg_schema_response_body import PublishKgSchemaResponseBodyData
 from ._publish_object_list_request import PublishObjectListRequestPublishCommand
 from ._publish_object_list_response_body import PublishObjectListResponseBodyPublishResult
 from ._publish_standard_request import PublishStandardRequestPublishCommand
@@ -1960,6 +2103,8 @@ from ._sync_department_user_request import SyncDepartmentUserRequestSyncDepartme
 from ._sync_department_user_request import SyncDepartmentUserRequestSyncDepartmentUserCommand
 from ._transfer_ownership_for_all_object_request import TransferOwnershipForAllObjectRequestPrivilegeTransferRecord
 from ._update_ad_hoc_file_request import UpdateAdHocFileRequestUpdateCommand
+from ._update_basic_project_request import UpdateBasicProjectRequestUpdateCommandWhiteLists
+from ._update_basic_project_request import UpdateBasicProjectRequestUpdateCommand
 from ._update_batch_task_request import UpdateBatchTaskRequestUpdateCommandCustomScheduleConfig
 from ._update_batch_task_request import UpdateBatchTaskRequestUpdateCommandParamList
 from ._update_batch_task_request import UpdateBatchTaskRequestUpdateCommandSparkClientInfo
@@ -2002,6 +2147,12 @@ from ._update_dataset_request import UpdateDatasetRequestUpdateCommandVersionCon
 from ._update_dataset_request import UpdateDatasetRequestUpdateCommandVersionConfigRealtimeMetaTableConfig
 from ._update_dataset_request import UpdateDatasetRequestUpdateCommandVersionConfig
 from ._update_dataset_request import UpdateDatasetRequestUpdateCommand
+from ._update_dev_prod_project_request import UpdateDevProdProjectRequestUpdateCommandWhiteLists
+from ._update_dev_prod_project_request import UpdateDevProdProjectRequestUpdateCommand
+from ._update_kg_entity_request import UpdateKgEntityRequestUpdateCommandPropertyList
+from ._update_kg_entity_request import UpdateKgEntityRequestUpdateCommand
+from ._update_kg_relation_request import UpdateKgRelationRequestUpdateCommandPropertyList
+from ._update_kg_relation_request import UpdateKgRelationRequestUpdateCommand
 from ._update_pipeline_request import UpdatePipelineRequestContext
 from ._update_pipeline_request import UpdatePipelineRequestUpdateCommandNodeInfo
 from ._update_pipeline_request import UpdatePipelineRequestUpdateCommandPipelineConfigHops
@@ -2136,6 +2287,14 @@ __all__ = [
     AssignQualityRuleOfAllRuleScopeSchedulesShrinkRequest,
     AssignQualityRuleOfAllRuleScopeSchedulesResponseBody,
     AssignQualityRuleOfAllRuleScopeSchedulesResponse,
+    BatchCreateKgEntityRequest,
+    BatchCreateKgEntityShrinkRequest,
+    BatchCreateKgEntityResponseBody,
+    BatchCreateKgEntityResponse,
+    BatchCreateKgRelationRequest,
+    BatchCreateKgRelationShrinkRequest,
+    BatchCreateKgRelationResponseBody,
+    BatchCreateKgRelationResponse,
     CheckComputeSourceConnectivityRequest,
     CheckComputeSourceConnectivityShrinkRequest,
     CheckComputeSourceConnectivityResponseBody,
@@ -2161,6 +2320,10 @@ __all__ = [
     CreateAdHocFileShrinkRequest,
     CreateAdHocFileResponseBody,
     CreateAdHocFileResponse,
+    CreateBasicProjectRequest,
+    CreateBasicProjectShrinkRequest,
+    CreateBasicProjectResponseBody,
+    CreateBasicProjectResponse,
     CreateBatchTaskRequest,
     CreateBatchTaskShrinkRequest,
     CreateBatchTaskResponseBody,
@@ -2204,10 +2367,22 @@ __all__ = [
     CreateDatasetShrinkRequest,
     CreateDatasetResponseBody,
     CreateDatasetResponse,
+    CreateDevProdProjectRequest,
+    CreateDevProdProjectShrinkRequest,
+    CreateDevProdProjectResponseBody,
+    CreateDevProdProjectResponse,
     CreateDirectoryRequest,
     CreateDirectoryShrinkRequest,
     CreateDirectoryResponseBody,
     CreateDirectoryResponse,
+    CreateKgEntityRequest,
+    CreateKgEntityShrinkRequest,
+    CreateKgEntityResponseBody,
+    CreateKgEntityResponse,
+    CreateKgRelationRequest,
+    CreateKgRelationShrinkRequest,
+    CreateKgRelationResponseBody,
+    CreateKgRelationResponse,
     CreateNodeSupplementRequest,
     CreateNodeSupplementShrinkRequest,
     CreateNodeSupplementResponseBody,
@@ -2331,6 +2506,15 @@ __all__ = [
     DeleteDirectoryRequest,
     DeleteDirectoryResponseBody,
     DeleteDirectoryResponse,
+    DeleteKgEntityRequest,
+    DeleteKgEntityResponseBody,
+    DeleteKgEntityResponse,
+    DeleteKgRelationRequest,
+    DeleteKgRelationResponseBody,
+    DeleteKgRelationResponse,
+    DeleteProjectRequest,
+    DeleteProjectResponseBody,
+    DeleteProjectResponse,
     DeleteQualityRulesRequest,
     DeleteQualityRulesShrinkRequest,
     DeleteQualityRulesResponseBody,
@@ -2405,6 +2589,10 @@ __all__ = [
     DeleteUserGroupRequest,
     DeleteUserGroupResponseBody,
     DeleteUserGroupResponse,
+    ExecKgCypherRequest,
+    ExecKgCypherShrinkRequest,
+    ExecKgCypherResponseBody,
+    ExecKgCypherResponse,
     ExecuteAdHocTaskRequest,
     ExecuteAdHocTaskShrinkRequest,
     ExecuteAdHocTaskResponseBody,
@@ -2416,6 +2604,9 @@ __all__ = [
     ExecuteTriggerNodeRequest,
     ExecuteTriggerNodeResponseBody,
     ExecuteTriggerNodeResponse,
+    ExportKgSchemaRequest,
+    ExportKgSchemaResponseBody,
+    ExportKgSchemaResponse,
     FixDataRequest,
     FixDataShrinkRequest,
     FixDataResponseBody,
@@ -2553,6 +2744,19 @@ __all__ = [
     GetInstanceUpDownStreamShrinkRequest,
     GetInstanceUpDownStreamResponseBody,
     GetInstanceUpDownStreamResponse,
+    GetKgEntityRequest,
+    GetKgEntityResponseBody,
+    GetKgEntityResponse,
+    GetKgNeighborRequest,
+    GetKgNeighborShrinkRequest,
+    GetKgNeighborResponseBody,
+    GetKgNeighborResponse,
+    GetKgRelationRequest,
+    GetKgRelationResponseBody,
+    GetKgRelationResponse,
+    GetKgSchemaPublishResultRequest,
+    GetKgSchemaPublishResultResponseBody,
+    GetKgSchemaPublishResultResponse,
     GetLatestSubmitDetailRequest,
     GetLatestSubmitDetailShrinkRequest,
     GetLatestSubmitDetailResponseBody,
@@ -2758,6 +2962,10 @@ __all__ = [
     GrantResourcePermissionShrinkRequest,
     GrantResourcePermissionResponseBody,
     GrantResourcePermissionResponse,
+    ImportKgSchemaRequest,
+    ImportKgSchemaShrinkRequest,
+    ImportKgSchemaResponseBody,
+    ImportKgSchemaResponse,
     ListAddableRolesRequest,
     ListAddableRolesResponseBody,
     ListAddableRolesResponse,
@@ -2852,6 +3060,14 @@ __all__ = [
     ListInstancesShrinkRequest,
     ListInstancesResponseBody,
     ListInstancesResponse,
+    ListKgEntityRequest,
+    ListKgEntityShrinkRequest,
+    ListKgEntityResponseBody,
+    ListKgEntityResponse,
+    ListKgRelationRequest,
+    ListKgRelationShrinkRequest,
+    ListKgRelationResponseBody,
+    ListKgRelationResponse,
     ListNodeDownStreamRequest,
     ListNodeDownStreamShrinkRequest,
     ListNodeDownStreamResponseBody,
@@ -2982,6 +3198,10 @@ __all__ = [
     PublishDataServiceApiRequest,
     PublishDataServiceApiResponseBody,
     PublishDataServiceApiResponse,
+    PublishKgSchemaRequest,
+    PublishKgSchemaShrinkRequest,
+    PublishKgSchemaResponseBody,
+    PublishKgSchemaResponse,
     PublishObjectListRequest,
     PublishObjectListShrinkRequest,
     PublishObjectListResponseBody,
@@ -3065,6 +3285,10 @@ __all__ = [
     UpdateAdHocFileShrinkRequest,
     UpdateAdHocFileResponseBody,
     UpdateAdHocFileResponse,
+    UpdateBasicProjectRequest,
+    UpdateBasicProjectShrinkRequest,
+    UpdateBasicProjectResponseBody,
+    UpdateBasicProjectResponse,
     UpdateBatchTaskRequest,
     UpdateBatchTaskShrinkRequest,
     UpdateBatchTaskResponseBody,
@@ -3117,12 +3341,24 @@ __all__ = [
     UpdateDatasetShrinkRequest,
     UpdateDatasetResponseBody,
     UpdateDatasetResponse,
+    UpdateDevProdProjectRequest,
+    UpdateDevProdProjectShrinkRequest,
+    UpdateDevProdProjectResponseBody,
+    UpdateDevProdProjectResponse,
     UpdateFileDirectoryRequest,
     UpdateFileDirectoryResponseBody,
     UpdateFileDirectoryResponse,
     UpdateFileNameRequest,
     UpdateFileNameResponseBody,
     UpdateFileNameResponse,
+    UpdateKgEntityRequest,
+    UpdateKgEntityShrinkRequest,
+    UpdateKgEntityResponseBody,
+    UpdateKgEntityResponse,
+    UpdateKgRelationRequest,
+    UpdateKgRelationShrinkRequest,
+    UpdateKgRelationResponseBody,
+    UpdateKgRelationResponse,
     UpdatePipelineRequest,
     UpdatePipelineShrinkRequest,
     UpdatePipelineResponseBody,
@@ -3252,6 +3488,16 @@ __all__ = [
     ApplyDataServiceApiRequestApplyCommand,
     ApplyDataServiceAppRequestApplyCommand,
     AssignQualityRuleOfAllRuleScopeSchedulesRequestAssignCommand,
+    BatchCreateKgEntityRequestCreateCommandEntityListPropertyList,
+    BatchCreateKgEntityRequestCreateCommandEntityList,
+    BatchCreateKgEntityRequestCreateCommand,
+    BatchCreateKgEntityResponseBodyCreateResultSuccessEntityList,
+    BatchCreateKgEntityResponseBodyCreateResult,
+    BatchCreateKgRelationRequestCreateCommandRelationListPropertyList,
+    BatchCreateKgRelationRequestCreateCommandRelationList,
+    BatchCreateKgRelationRequestCreateCommand,
+    BatchCreateKgRelationResponseBodyCreateResultSuccessRelationList,
+    BatchCreateKgRelationResponseBodyCreateResult,
     CheckComputeSourceConnectivityRequestCheckCommandConfigList,
     CheckComputeSourceConnectivityRequestCheckCommand,
     CheckDataSourceConnectivityRequestCheckCommandConfigItemList,
@@ -3260,6 +3506,9 @@ __all__ = [
     CheckResourcePermissionRequestCheckCommand,
     CheckResourcePermissionResponseBodyResourcePermissionList,
     CreateAdHocFileRequestCreateCommand,
+    CreateBasicProjectRequestCreateCommandWhiteLists,
+    CreateBasicProjectRequestCreateCommand,
+    CreateBasicProjectResponseBodyCreateResult,
     CreateBatchTaskRequestCreateCommand,
     CreateBatchTaskResponseBodyCreateResult,
     CreateBizEntityRequestCreateCommandBizObject,
@@ -3303,7 +3552,16 @@ __all__ = [
     CreateDatasetRequestCreateCommandVersionConfigRealtimeMetaTableConfig,
     CreateDatasetRequestCreateCommandVersionConfig,
     CreateDatasetRequestCreateCommand,
+    CreateDevProdProjectRequestCreateCommandWhiteLists,
+    CreateDevProdProjectRequestCreateCommand,
+    CreateDevProdProjectResponseBodyCreateResult,
     CreateDirectoryRequestCreateCommand,
+    CreateKgEntityRequestCreateCommandPropertyList,
+    CreateKgEntityRequestCreateCommand,
+    CreateKgEntityResponseBodyCreateResult,
+    CreateKgRelationRequestCreateCommandPropertyList,
+    CreateKgRelationRequestCreateCommand,
+    CreateKgRelationResponseBodyCreateResult,
     CreateNodeSupplementRequestCreateCommandDownStreamNodeIdList,
     CreateNodeSupplementRequestCreateCommandFilterList,
     CreateNodeSupplementRequestCreateCommandGlobalParamList,
@@ -3415,11 +3673,21 @@ __all__ = [
     DeleteStandardRelationsRequestDeleteCommand,
     DeleteStandardRelationsResponseBodyData,
     DeleteStandardValidMappingRequestDeleteCommand,
+    ExecKgCypherRequestExecCommandParams,
+    ExecKgCypherRequestExecCommand,
+    ExecKgCypherResponseBodyDataEdgeListProperties,
+    ExecKgCypherResponseBodyDataEdgeList,
+    ExecKgCypherResponseBodyDataNodeListProperties,
+    ExecKgCypherResponseBodyDataNodeList,
+    ExecKgCypherResponseBodyDataRowListColumns,
+    ExecKgCypherResponseBodyDataRowList,
+    ExecKgCypherResponseBodyData,
     ExecuteAdHocTaskRequestExecuteCommandParamList,
     ExecuteAdHocTaskRequestExecuteCommand,
     ExecuteAdHocTaskResponseBodyExecuteResult,
     ExecuteManualNodeRequestExecuteCommandParamList,
     ExecuteManualNodeRequestExecuteCommand,
+    ExportKgSchemaResponseBodySchemaInfo,
     FixDataRequestFixDataCommandDownStreamInstanceIdList,
     FixDataRequestFixDataCommandRootInstanceId,
     FixDataRequestFixDataCommand,
@@ -3554,6 +3822,17 @@ __all__ = [
     GetInstanceUpDownStreamResponseBodyInstanceDagInfoStartInstanceList,
     GetInstanceUpDownStreamResponseBodyInstanceDagInfoUpInstanceList,
     GetInstanceUpDownStreamResponseBodyInstanceDagInfo,
+    GetKgEntityResponseBodyEntityInfoPropertyList,
+    GetKgEntityResponseBodyEntityInfo,
+    GetKgNeighborRequestNeighborsQuery,
+    GetKgNeighborResponseBodyDataEdgeListPropertyList,
+    GetKgNeighborResponseBodyDataEdgeList,
+    GetKgNeighborResponseBodyDataNodeListPropertyList,
+    GetKgNeighborResponseBodyDataNodeList,
+    GetKgNeighborResponseBodyData,
+    GetKgRelationResponseBodyRelationInfoPropertyList,
+    GetKgRelationResponseBodyRelationInfo,
+    GetKgSchemaPublishResultResponseBodyData,
     GetLatestSubmitDetailRequestSubmitDetailQuery,
     GetLatestSubmitDetailResponseBodySubmitDetailResultReleaseObjectSubmitObject,
     GetLatestSubmitDetailResponseBodySubmitDetailResultReleaseObject,
@@ -3743,6 +4022,8 @@ __all__ = [
     GrantDataServiceApiRequestGrantCommand,
     GrantResourcePermissionRequestGrantCommandResourceList,
     GrantResourcePermissionRequestGrantCommand,
+    ImportKgSchemaRequestImportCommand,
+    ImportKgSchemaResponseBodyImportResult,
     ListAddableRolesResponseBodyRoleList,
     ListAddableUsersRequestListQuery,
     ListAddableUsersResponseBodyPageResultUserList,
@@ -3860,6 +4141,15 @@ __all__ = [
     ListInstancesResponseBodyPageResultDataNodeInfo,
     ListInstancesResponseBodyPageResultData,
     ListInstancesResponseBodyPageResult,
+    ListKgEntityRequestListQueryFilterList,
+    ListKgEntityRequestListQuery,
+    ListKgEntityResponseBodyPageResultEntityListPropertyList,
+    ListKgEntityResponseBodyPageResultEntityList,
+    ListKgEntityResponseBodyPageResult,
+    ListKgRelationRequestListQuery,
+    ListKgRelationResponseBodyPageResultRelationListPropertyList,
+    ListKgRelationResponseBodyPageResultRelationList,
+    ListKgRelationResponseBodyPageResult,
     ListNodeDownStreamRequestListQueryFilterList,
     ListNodeDownStreamRequestListQueryNodeIdList,
     ListNodeDownStreamRequestListQuery,
@@ -4016,6 +4306,10 @@ __all__ = [
     ParseBatchTaskDependencyResponseBodyParseResult,
     PausePhysicalNodeRequestPauseCommand,
     PausePhysicalNodeResponseBodyNodeOperateResultList,
+    PublishKgSchemaRequestPublishCommandDataAdjustmentPoliciesBackFillDefaultValuePolicy,
+    PublishKgSchemaRequestPublishCommandDataAdjustmentPolicies,
+    PublishKgSchemaRequestPublishCommand,
+    PublishKgSchemaResponseBodyData,
     PublishObjectListRequestPublishCommand,
     PublishObjectListResponseBodyPublishResult,
     PublishStandardRequestPublishCommand,
@@ -4053,6 +4347,8 @@ __all__ = [
     SyncDepartmentUserRequestSyncDepartmentUserCommand,
     TransferOwnershipForAllObjectRequestPrivilegeTransferRecord,
     UpdateAdHocFileRequestUpdateCommand,
+    UpdateBasicProjectRequestUpdateCommandWhiteLists,
+    UpdateBasicProjectRequestUpdateCommand,
     UpdateBatchTaskRequestUpdateCommandCustomScheduleConfig,
     UpdateBatchTaskRequestUpdateCommandParamList,
     UpdateBatchTaskRequestUpdateCommandSparkClientInfo,
@@ -4095,6 +4391,12 @@ __all__ = [
     UpdateDatasetRequestUpdateCommandVersionConfigRealtimeMetaTableConfig,
     UpdateDatasetRequestUpdateCommandVersionConfig,
     UpdateDatasetRequestUpdateCommand,
+    UpdateDevProdProjectRequestUpdateCommandWhiteLists,
+    UpdateDevProdProjectRequestUpdateCommand,
+    UpdateKgEntityRequestUpdateCommandPropertyList,
+    UpdateKgEntityRequestUpdateCommand,
+    UpdateKgRelationRequestUpdateCommandPropertyList,
+    UpdateKgRelationRequestUpdateCommand,
     UpdatePipelineRequestContext,
     UpdatePipelineRequestUpdateCommandNodeInfo,
     UpdatePipelineRequestUpdateCommandPipelineConfigHops,
