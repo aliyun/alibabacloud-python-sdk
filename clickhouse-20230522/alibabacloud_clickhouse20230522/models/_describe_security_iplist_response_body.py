@@ -13,7 +13,7 @@ class DescribeSecurityIPListResponseBody(DaraModel):
         data: main_models.DescribeSecurityIPListResponseBodyData = None,
         request_id: str = None,
     ):
-        # The data returned.
+        # The returned result.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -57,7 +57,7 @@ class DescribeSecurityIPListResponseBodyData(DaraModel):
         self.dbinstance_id = dbinstance_id
         # The cluster name.
         self.dbinstance_name = dbinstance_name
-        # The whitelist groups.
+        # The list of whitelist groups.
         self.group_items = group_items
 
     def validate(self):
@@ -113,9 +113,9 @@ class DescribeSecurityIPListResponseBodyDataGroupItems(DaraModel):
         self.group_name = group_name
         # The group tag.
         self.group_tag = group_tag
-        # The IP addresses in the whitelist group.
+        # The list of IP addresses in the whitelist group.
         self.security_iplist = security_iplist
-        # The IP address type.
+        # The type of the IP address.
         self.security_iptype = security_iptype
         # The network type of the whitelist.
         self.whitelist_net_type = whitelist_net_type

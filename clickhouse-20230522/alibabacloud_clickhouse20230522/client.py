@@ -70,7 +70,7 @@ class Client(OpenApiClient):
             'eu-west-1': 'clickhouse.eu-west-1.aliyuncs.com',
             'eu-central-1': 'clickhouse.eu-central-1.aliyuncs.com',
             'cn-zhangjiakou': 'clickhouse.cn-zhangjiakou.aliyuncs.com',
-            'cn-wulanchabu': 'clickhouse.aliyuncs.com',
+            'cn-wulanchabu': 'clickhouse.cn-wulanchabu.aliyuncs.com',
             'cn-huhehaote': 'clickhouse.cn-huhehaote.aliyuncs.com',
             'cn-guangzhou': 'clickhouse.cn-guangzhou.aliyuncs.com',
             'cn-chengdu': 'clickhouse.cn-chengdu.aliyuncs.com',

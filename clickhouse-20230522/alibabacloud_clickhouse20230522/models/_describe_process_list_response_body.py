@@ -13,7 +13,7 @@ class DescribeProcessListResponseBody(DaraModel):
         data: main_models.DescribeProcessListResponseBodyData = None,
         request_id: str = None,
     ):
-        # The data object.
+        # The returned result.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -60,7 +60,7 @@ class DescribeProcessListResponseBodyData(DaraModel):
         self.dbinstance_name = dbinstance_name
         # The result set.
         self.result_set = result_set
-        # The total number of entries that match the filter criteria.
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -119,17 +119,17 @@ class DescribeProcessListResponseBodyDataResultSet(DaraModel):
         query_duration_ms: int = None,
         query_start_time: str = None,
     ):
-        # The address from which the query was initiated.
+        # The query address.
         self.initial_address = initial_address
         # The query ID.
         self.initial_query_id = initial_query_id
-        # The user who initiated the query.
+        # The query user.
         self.initial_user = initial_user
-        # The query statement.
+        # The statement that is being queried.
         self.query = query
-        # The execution duration of the query, in milliseconds (ms).
+        # The minimum query duration. Minimum value: **1000**. Unit: milliseconds.
         self.query_duration_ms = query_duration_ms
-        # The start time of the query. The time is in UTC and follows the `yyyy-MM-ddTHH:mm:ssZ` format.
+        # The time when the query started. Format: yyyy-MM-ddTHH:mm:ssZ (UTC).
         self.query_start_time = query_start_time
 
     def validate(self):

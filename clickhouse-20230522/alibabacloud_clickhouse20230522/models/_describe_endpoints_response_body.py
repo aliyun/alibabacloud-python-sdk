@@ -13,7 +13,7 @@ class DescribeEndpointsResponseBody(DaraModel):
         data: main_models.DescribeEndpointsResponseBodyData = None,
         request_id: str = None,
     ):
-        # The response data.
+        # The returned data.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -52,13 +52,11 @@ class DescribeEndpointsResponseBodyData(DaraModel):
         endpoints: List[main_models.DescribeEndpointsResponseBodyDataEndpoints] = None,
         instance_network_type: str = None,
     ):
-        # The endpoints.
+        # The list of endpoint details.
         self.endpoints = endpoints
         # The network type of the instance. Valid values:
-        # 
-        # - **VPC**
-        # 
-        # - **PUBLIC**: Internet.
+        # * **VPC**: virtual private cloud.
+        # * **PUBLIC**: public network.
         self.instance_network_type = instance_network_type
 
     def validate(self):
@@ -109,29 +107,27 @@ class DescribeEndpointsResponseBodyDataEndpoints(DaraModel):
         vpc_id: str = None,
         vpc_instance_id: str = None,
     ):
-        # The computing group ID.
+        # The compute group ID.
         self.computing_group_id = computing_group_id
-        # The instance connection string.
+        # The endpoint of the instance.
         self.connection_string = connection_string
         # The endpoint name.
         self.endpoint_name = endpoint_name
         # The IP address.
         self.ipaddress = ipaddress
         # The network type of the endpoint. Valid values:
-        # 
-        # - VPC
-        # 
-        # - PUBLIC: Internet.
+        # - VPC: virtual private cloud.
+        # - PUBLIC: public network.
         self.net_type = net_type
-        # The ports.
+        # The list of port details.
         self.ports = ports
-        # The status of the endpoint.
+        # The status.
         self.status = status
         # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # The VPC ID.
+        # VPC ID。
         self.vpc_id = vpc_id
-        # The VPC instance ID.
+        # The VPC-connected instance ID.
         self.vpc_instance_id = vpc_instance_id
 
     def validate(self):
@@ -222,20 +218,16 @@ class DescribeEndpointsResponseBodyDataEndpointsPorts(DaraModel):
         port: int = None,
         protocol: str = None,
     ):
-        # The port number. The value varies based on the protocol type. For example:
+        # The access port. Valid values:
         # 
         # - HttpPort: 8123
-        # 
         # - HttpsPort: 8443
-        # 
         # - TcpPort: 9000
         self.port = port
         # The protocol type. Valid values:
         # 
         # - HttpPort: HTTP port.
-        # 
         # - HttpsPort: HTTPS port.
-        # 
         # - TcpPort: TCP port.
         self.protocol = protocol
 

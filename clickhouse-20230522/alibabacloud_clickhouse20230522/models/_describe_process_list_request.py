@@ -18,7 +18,7 @@ class DescribeProcessListRequest(DaraModel):
         query_order: int = None,
         region_id: str = None,
     ):
-        # The computing group ID.
+        # The compute group ID.
         self.computing_group_id = computing_group_id
         # The cluster ID.
         # 
@@ -28,23 +28,25 @@ class DescribeProcessListRequest(DaraModel):
         self.initial_query_id = initial_query_id
         # The query user.
         self.initial_user = initial_user
-        # The keyword in the query statement.
+        # The keyword of the query statement.
         self.keyword = keyword
         # The page number.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The minimum query execution duration, in milliseconds (ms). Only queries that run for this duration or longer are returned. The minimum value is 1,000.
+        # The execution duration of slow SQL statements. Unit: ms. Minimum value: 1000 ms.
         self.query_duration_ms = query_duration_ms
-        # The criteria by which to sort the results. The results are sorted in descending order. Valid values:
+        # Sorts the results in descending order by the specified columns.
         # 
-        # - 0: Sorts by `query_duration_ms`.
+        # - 0: sorts by query_duration_ms only.
         # 
-        # - 1: Sorts by `query_duration_ms` and `query_start_time`.
+        # - 1: sorts by query_duration_ms and query_start_time.
         # 
-        # - 2: Sorts by `query_duration_ms`, `query_start_time`, and `user`.
+        # - 2: sorts by query_duration_ms, query_start_time, and user.
         self.query_order = query_order
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):

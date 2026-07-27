@@ -11,13 +11,15 @@ class DescribeEndpointsRequest(DaraModel):
         dbinstance_id: str = None,
         region_id: str = None,
     ):
-        # The computing group ID.
+        # The compute group ID.
         self.computing_group_id = computing_group_id
         # The cluster ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):

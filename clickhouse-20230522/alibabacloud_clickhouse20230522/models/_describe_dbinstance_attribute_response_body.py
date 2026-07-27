@@ -13,7 +13,7 @@ class DescribeDBInstanceAttributeResponseBody(DaraModel):
         data: main_models.DescribeDBInstanceAttributeResponseBodyData = None,
         request_id: str = None,
     ):
-        # The returned data.
+        # The response data.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -94,88 +94,77 @@ class DescribeDBInstanceAttributeResponseBodyData(DaraModel):
         self.ali_uid = ali_uid
         # The channel ID.
         self.bid = bid
-        # The edition of the cluster. Valid value:
-        # 
-        # - `enterprise`: enterprise edition
+        # The category. Valid values:
         self.category = category
-        # The billing method of the cluster.
-        # enterprise edition clusters are billed on a pay-as-you-go basis.
+        # The billing method.
         self.charge_type = charge_type
-        # The status of the ClickObserve service.
+        # The ClickObserve service status.
         self.click_observe_service_status = click_observe_service_status
-        # The creation time of the cluster, in `YYYY-MM-DDTHH:mm:ssZ` format.
+        # The creation time of the cluster. Format: yyyy-MM-ddTHH:mm:ssZ.
         self.create_time = create_time
         # The cluster ID.
         self.dbinstance_id = dbinstance_id
-        # Whether deletion protection is enabled.
+        # Indicates whether deletion protection is enabled.
         self.deletion_protection = deletion_protection
-        # The deployment architecture of the cluster. Valid values: `single_az` and `multi_az`.
-        # 
-        # - `single_az`: The nodes are deployed in the primary zone specified by `ZoneId`.
-        # 
-        # - `multi_az`: The nodes are deployed across the zones specified in `MultiZones`.
-        # 
-        # Keeper nodes are always deployed across the zones specified in `MultiZones`.
+        # The zone deployment status of the cluster. Valid values: single_az and multi_az.
         self.deploy_schema = deploy_schema
         # The cluster description.
         self.description = description
-        # A comma-separated list of disabled database ports.
+        # The disabled database ports. Multiple ports are separated by commas (,).
         self.disabled_ports = disabled_ports
-        # The engine.
+        # The engine type.
         self.engine = engine
         # The minor version of the cluster engine.
         self.engine_minor_version = engine_minor_version
-        # The engine version.
+        # The DPI engine version.
         self.engine_version = engine_version
-        # The expiration time of the cluster, in `YYYY-MM-DDTHH:mm:ssZ` format.
-        # 
-        # > Pay-as-you-go clusters do not expire. An empty string is returned.
+        # The expiration time of the cluster. Format: yyyy-MM-ddTHH:mm:ssZ.
         self.expire_time = expire_time
-        # A list of Langfuse instance IDs.
+        # The list of Langfuse instance IDs.
         self.langfuse_instance_ids = langfuse_instance_ids
-        # The latest minor version of the cluster engine.
+        # The latest minor engine version.
         self.latest_engine_minor_version = latest_engine_minor_version
         # The lock mode of the cluster.
         self.lock_mode = lock_mode
-        # The reason for the lock.
+        # The lock reason.
         self.lock_reason = lock_reason
         # The end time of the maintenance window.
         self.maintain_end_time = maintain_end_time
         # The start time of the maintenance window.
         self.maintain_start_time = maintain_start_time
-        # The zones for a multi-zone deployment.
+        # The multi-zone information.
         self.multi_zones = multi_zones
         # The number of nodes.
         self.node_count = node_count
-        # The maximum number of nodes for auto scaling of a serverless cluster.
+        # The maximum elastic scaling value for serverless nodes.
         self.node_scale_max = node_scale_max
-        # The minimum number of nodes for auto scaling of a serverless cluster.
+        # The minimum elastic scaling value for serverless nodes.
         self.node_scale_min = node_scale_min
-        # The cluster nodes.
+        # The node information.
         self.nodes = nodes
-        # The storage capacity of Object Storage Service (OSS).
+        # The object storage size.
         self.object_store_size = object_store_size
         # The region ID.
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The maximum value for serverless auto scaling.
+        # The maximum scaling value for serverless elastic scaling.
         self.scale_max = scale_max
-        # The minimum value for serverless auto scaling.
+        # The minimum scaling value for serverless elastic scaling.
         self.scale_min = scale_min
-        # The status of the instance.
+        # The instance status.
         self.status = status
-        # The provisioned storage, in GB.
+        # The pre-purchased storage quota, in GB.
         self.storage_quota = storage_quota
-        # The storage space, in GB.
+        # The storage size. Unit: GB.
         self.storage_size = storage_size
         # The storage type.
         self.storage_type = storage_type
-        # The cluster tags.
+        # The tag information.
         self.tags = tags
         # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # The VPC ID.
+        # VPC ID。
         self.vpc_id = vpc_id
         self.web_uisnat_status = web_uisnat_status
         # The zone ID.
@@ -504,7 +493,7 @@ class DescribeDBInstanceAttributeResponseBodyDataNodes(DaraModel):
         node_status: str = None,
         zone_id: str = None,
     ):
-        # The status of the node.
+        # The running status of the node.
         self.node_status = node_status
         # The zone ID.
         self.zone_id = zone_id
@@ -541,7 +530,7 @@ class DescribeDBInstanceAttributeResponseBodyDataMultiZones(DaraModel):
         v_switch_ids: List[str] = None,
         zone_id: str = None,
     ):
-        # An array of vSwitch IDs.
+        # The array of vSwitch IDs.
         self.v_switch_ids = v_switch_ids
         # The zone ID.
         self.zone_id = zone_id

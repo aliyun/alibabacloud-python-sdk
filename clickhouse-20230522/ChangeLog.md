@@ -1,3 +1,10 @@
+2026-07-27 Version: 3.0.0
+- Update API DescribeAccounts: update request parameters PageNumber' type has changed.
+- Update API DescribeAccounts: update request parameters PageNumber' format has changed.
+- Update API DescribeAccounts: update request parameters PageSize' type has changed.
+- Update API DescribeAccounts: update request parameters PageSize' format has changed.
+
+
 2026-07-10 Version: 2.6.0
 - Support API CreateLangfuseOrg.
 - Support API CreateLangfuseOrgMember.

@@ -8,8 +8,8 @@ class DescribeAccountsRequest(DaraModel):
     def __init__(
         self,
         dbinstance_id: str = None,
-        page_number: str = None,
-        page_size: str = None,
+        page_number: int = None,
+        page_size: int = None,
         product: str = None,
         region_id: str = None,
     ):
@@ -20,14 +20,11 @@ class DescribeAccountsRequest(DaraModel):
         # The page number.
         self.page_number = page_number
         # The number of entries per page. Valid values:
-        # 
         # - **30** (default)
-        # 
         # - **50**
-        # 
         # - **100**
         self.page_size = page_size
-        # The code of the cloud service.
+        # The product code.
         self.product = product
         # The region ID.
         self.region_id = region_id
