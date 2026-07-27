@@ -10,7 +10,9 @@ class DeleteRbacOrgUnitRequest(DaraModel):
         biz_id: str = None,
         org_unit_id: str = None,
     ):
+        # The business ID.
         self.biz_id = biz_id
+        # The organization ID.
         self.org_unit_id = org_unit_id
 
     def validate(self):

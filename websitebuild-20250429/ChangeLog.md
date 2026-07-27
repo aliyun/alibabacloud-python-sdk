@@ -1,3 +1,19 @@
+2026-07-27 Version: 2.35.0
+- Support API CreateAppPlugin.
+- Support API DeleteAppPlugin.
+- Support API GetAppPlugin.
+- Support API InstallAppPlugin.
+- Support API ListAppPluginFiles.
+- Support API ListAppPluginVersions.
+- Support API ListMarketplaceAppPlugins.
+- Support API ListMyAppPlugins.
+- Support API ListMyInstalledAppPlugins.
+- Support API RollbackAppPluginVersion.
+- Support API UninstallAppPlugin.
+- Support API UpdateAppPlugin.
+- Support API UploadAppPluginVersion.
+
+
 2026-07-20 Version: 2.34.0
 - Support API AssignRbacUserRole.
 - Support API CreateRbacOrgUnit.

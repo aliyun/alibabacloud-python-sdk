@@ -23,8 +23,8 @@ class Client(OpenApiClient):
         super().__init__(config)
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
-            'public': 'websitebuild.aliyuncs.com',
-            'cn-zhangjiakou': 'websitebuild.aliyuncs.com'
+            'cn-zhangjiakou': 'websitebuild.aliyuncs.com',
+            'ap-southeast-1': 'websitebuild-intl.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('websitebuild', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -1821,6 +1821,116 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_app_notification_scene_with_options_async(request, runtime)
 
+    def create_app_plugin_with_options(
+        self,
+        request: main_models.CreateAppPluginRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAppPluginResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.category):
+            query['Category'] = request.category
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.download_url):
+            query['DownloadUrl'] = request.download_url
+        if not DaraCore.is_null(request.extend):
+            query['Extend'] = request.extend
+        if not DaraCore.is_null(request.icon):
+            query['Icon'] = request.icon
+        if not DaraCore.is_null(request.oss_key):
+            query['OssKey'] = request.oss_key
+        if not DaraCore.is_null(request.plugin_id):
+            query['PluginId'] = request.plugin_id
+        if not DaraCore.is_null(request.plugin_name):
+            query['PluginName'] = request.plugin_name
+        if not DaraCore.is_null(request.plugin_version):
+            query['PluginVersion'] = request.plugin_version
+        if not DaraCore.is_null(request.tags):
+            query['Tags'] = request.tags
+        if not DaraCore.is_null(request.visibility):
+            query['Visibility'] = request.visibility
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAppPlugin',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAppPluginResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_app_plugin_with_options_async(
+        self,
+        request: main_models.CreateAppPluginRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAppPluginResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.category):
+            query['Category'] = request.category
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.download_url):
+            query['DownloadUrl'] = request.download_url
+        if not DaraCore.is_null(request.extend):
+            query['Extend'] = request.extend
+        if not DaraCore.is_null(request.icon):
+            query['Icon'] = request.icon
+        if not DaraCore.is_null(request.oss_key):
+            query['OssKey'] = request.oss_key
+        if not DaraCore.is_null(request.plugin_id):
+            query['PluginId'] = request.plugin_id
+        if not DaraCore.is_null(request.plugin_name):
+            query['PluginName'] = request.plugin_name
+        if not DaraCore.is_null(request.plugin_version):
+            query['PluginVersion'] = request.plugin_version
+        if not DaraCore.is_null(request.tags):
+            query['Tags'] = request.tags
+        if not DaraCore.is_null(request.visibility):
+            query['Visibility'] = request.visibility
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAppPlugin',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAppPluginResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_app_plugin(
+        self,
+        request: main_models.CreateAppPluginRequest,
+    ) -> main_models.CreateAppPluginResponse:
+        runtime = RuntimeOptions()
+        return self.create_app_plugin_with_options(request, runtime)
+
+    async def create_app_plugin_async(
+        self,
+        request: main_models.CreateAppPluginRequest,
+    ) -> main_models.CreateAppPluginResponse:
+        runtime = RuntimeOptions()
+        return await self.create_app_plugin_with_options_async(request, runtime)
+
     def create_app_token_service_with_options(
         self,
         request: main_models.CreateAppTokenServiceRequest,
@@ -2736,6 +2846,76 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteAppNotificationSceneResponse:
         runtime = RuntimeOptions()
         return await self.delete_app_notification_scene_with_options_async(request, runtime)
+
+    def delete_app_plugin_with_options(
+        self,
+        request: main_models.DeleteAppPluginRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAppPluginResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.plugin_id):
+            query['PluginId'] = request.plugin_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAppPlugin',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAppPluginResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_app_plugin_with_options_async(
+        self,
+        request: main_models.DeleteAppPluginRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAppPluginResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.plugin_id):
+            query['PluginId'] = request.plugin_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAppPlugin',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAppPluginResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_app_plugin(
+        self,
+        request: main_models.DeleteAppPluginRequest,
+    ) -> main_models.DeleteAppPluginResponse:
+        runtime = RuntimeOptions()
+        return self.delete_app_plugin_with_options(request, runtime)
+
+    async def delete_app_plugin_async(
+        self,
+        request: main_models.DeleteAppPluginRequest,
+    ) -> main_models.DeleteAppPluginResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_app_plugin_with_options_async(request, runtime)
 
     def delete_app_supabase_secrets_with_options(
         self,
@@ -4376,6 +4556,76 @@ class Client(OpenApiClient):
     ) -> main_models.GetAppInstanceTempShortUrlResponse:
         runtime = RuntimeOptions()
         return await self.get_app_instance_temp_short_url_with_options_async(request, runtime)
+
+    def get_app_plugin_with_options(
+        self,
+        request: main_models.GetAppPluginRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAppPluginResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.plugin_id):
+            query['PluginId'] = request.plugin_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAppPlugin',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAppPluginResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_app_plugin_with_options_async(
+        self,
+        request: main_models.GetAppPluginRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAppPluginResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.plugin_id):
+            query['PluginId'] = request.plugin_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAppPlugin',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAppPluginResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_app_plugin(
+        self,
+        request: main_models.GetAppPluginRequest,
+    ) -> main_models.GetAppPluginResponse:
+        runtime = RuntimeOptions()
+        return self.get_app_plugin_with_options(request, runtime)
+
+    async def get_app_plugin_async(
+        self,
+        request: main_models.GetAppPluginRequest,
+    ) -> main_models.GetAppPluginResponse:
+        runtime = RuntimeOptions()
+        return await self.get_app_plugin_with_options_async(request, runtime)
 
     def get_app_plugin_config_with_options(
         self,
@@ -6333,6 +6583,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.grant_promotion_offer_for_partner_with_options_async(request, runtime)
 
+    def install_app_plugin_with_options(
+        self,
+        request: main_models.InstallAppPluginRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.InstallAppPluginResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.plugin_id):
+            query['PluginId'] = request.plugin_id
+        if not DaraCore.is_null(request.plugin_version):
+            query['PluginVersion'] = request.plugin_version
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'InstallAppPlugin',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.InstallAppPluginResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def install_app_plugin_with_options_async(
+        self,
+        request: main_models.InstallAppPluginRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.InstallAppPluginResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.plugin_id):
+            query['PluginId'] = request.plugin_id
+        if not DaraCore.is_null(request.plugin_version):
+            query['PluginVersion'] = request.plugin_version
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'InstallAppPlugin',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.InstallAppPluginResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def install_app_plugin(
+        self,
+        request: main_models.InstallAppPluginRequest,
+    ) -> main_models.InstallAppPluginResponse:
+        runtime = RuntimeOptions()
+        return self.install_app_plugin_with_options(request, runtime)
+
+    async def install_app_plugin_async(
+        self,
+        request: main_models.InstallAppPluginRequest,
+    ) -> main_models.InstallAppPluginResponse:
+        runtime = RuntimeOptions()
+        return await self.install_app_plugin_with_options_async(request, runtime)
+
     def introspect_app_instance_ticket_for_preview_with_options(
         self,
         request: main_models.IntrospectAppInstanceTicketForPreviewRequest,
@@ -7435,6 +7759,158 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_app_plugin_configs_with_options_async(request, runtime)
 
+    def list_app_plugin_files_with_options(
+        self,
+        request: main_models.ListAppPluginFilesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAppPluginFilesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.plugin_id):
+            query['PluginId'] = request.plugin_id
+        if not DaraCore.is_null(request.plugin_version):
+            query['PluginVersion'] = request.plugin_version
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAppPluginFiles',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAppPluginFilesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_app_plugin_files_with_options_async(
+        self,
+        request: main_models.ListAppPluginFilesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAppPluginFilesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.plugin_id):
+            query['PluginId'] = request.plugin_id
+        if not DaraCore.is_null(request.plugin_version):
+            query['PluginVersion'] = request.plugin_version
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAppPluginFiles',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAppPluginFilesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_app_plugin_files(
+        self,
+        request: main_models.ListAppPluginFilesRequest,
+    ) -> main_models.ListAppPluginFilesResponse:
+        runtime = RuntimeOptions()
+        return self.list_app_plugin_files_with_options(request, runtime)
+
+    async def list_app_plugin_files_async(
+        self,
+        request: main_models.ListAppPluginFilesRequest,
+    ) -> main_models.ListAppPluginFilesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_app_plugin_files_with_options_async(request, runtime)
+
+    def list_app_plugin_versions_with_options(
+        self,
+        request: main_models.ListAppPluginVersionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAppPluginVersionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.plugin_id):
+            query['PluginId'] = request.plugin_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAppPluginVersions',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAppPluginVersionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_app_plugin_versions_with_options_async(
+        self,
+        request: main_models.ListAppPluginVersionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAppPluginVersionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.plugin_id):
+            query['PluginId'] = request.plugin_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAppPluginVersions',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAppPluginVersionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_app_plugin_versions(
+        self,
+        request: main_models.ListAppPluginVersionsRequest,
+    ) -> main_models.ListAppPluginVersionsResponse:
+        runtime = RuntimeOptions()
+        return self.list_app_plugin_versions_with_options(request, runtime)
+
+    async def list_app_plugin_versions_async(
+        self,
+        request: main_models.ListAppPluginVersionsRequest,
+    ) -> main_models.ListAppPluginVersionsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_app_plugin_versions_with_options_async(request, runtime)
+
     def list_app_plugins_with_options(
         self,
         request: main_models.ListAppPluginsRequest,
@@ -7896,6 +8372,260 @@ class Client(OpenApiClient):
     ) -> main_models.ListIsvPaymentPluginConfigsResponse:
         runtime = RuntimeOptions()
         return await self.list_isv_payment_plugin_configs_with_options_async(request, runtime)
+
+    def list_marketplace_app_plugins_with_options(
+        self,
+        request: main_models.ListMarketplaceAppPluginsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListMarketplaceAppPluginsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.category):
+            query['Category'] = request.category
+        if not DaraCore.is_null(request.keyword):
+            query['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.platform):
+            query['Platform'] = request.platform
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListMarketplaceAppPlugins',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListMarketplaceAppPluginsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_marketplace_app_plugins_with_options_async(
+        self,
+        request: main_models.ListMarketplaceAppPluginsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListMarketplaceAppPluginsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.category):
+            query['Category'] = request.category
+        if not DaraCore.is_null(request.keyword):
+            query['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.platform):
+            query['Platform'] = request.platform
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListMarketplaceAppPlugins',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListMarketplaceAppPluginsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_marketplace_app_plugins(
+        self,
+        request: main_models.ListMarketplaceAppPluginsRequest,
+    ) -> main_models.ListMarketplaceAppPluginsResponse:
+        runtime = RuntimeOptions()
+        return self.list_marketplace_app_plugins_with_options(request, runtime)
+
+    async def list_marketplace_app_plugins_async(
+        self,
+        request: main_models.ListMarketplaceAppPluginsRequest,
+    ) -> main_models.ListMarketplaceAppPluginsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_marketplace_app_plugins_with_options_async(request, runtime)
+
+    def list_my_app_plugins_with_options(
+        self,
+        request: main_models.ListMyAppPluginsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListMyAppPluginsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.category):
+            query['Category'] = request.category
+        if not DaraCore.is_null(request.keyword):
+            query['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListMyAppPlugins',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListMyAppPluginsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_my_app_plugins_with_options_async(
+        self,
+        request: main_models.ListMyAppPluginsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListMyAppPluginsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.category):
+            query['Category'] = request.category
+        if not DaraCore.is_null(request.keyword):
+            query['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListMyAppPlugins',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListMyAppPluginsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_my_app_plugins(
+        self,
+        request: main_models.ListMyAppPluginsRequest,
+    ) -> main_models.ListMyAppPluginsResponse:
+        runtime = RuntimeOptions()
+        return self.list_my_app_plugins_with_options(request, runtime)
+
+    async def list_my_app_plugins_async(
+        self,
+        request: main_models.ListMyAppPluginsRequest,
+    ) -> main_models.ListMyAppPluginsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_my_app_plugins_with_options_async(request, runtime)
+
+    def list_my_installed_app_plugins_with_options(
+        self,
+        request: main_models.ListMyInstalledAppPluginsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListMyInstalledAppPluginsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.category):
+            query['Category'] = request.category
+        if not DaraCore.is_null(request.keyword):
+            query['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListMyInstalledAppPlugins',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListMyInstalledAppPluginsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_my_installed_app_plugins_with_options_async(
+        self,
+        request: main_models.ListMyInstalledAppPluginsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListMyInstalledAppPluginsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.category):
+            query['Category'] = request.category
+        if not DaraCore.is_null(request.keyword):
+            query['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListMyInstalledAppPlugins',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListMyInstalledAppPluginsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_my_installed_app_plugins(
+        self,
+        request: main_models.ListMyInstalledAppPluginsRequest,
+    ) -> main_models.ListMyInstalledAppPluginsResponse:
+        runtime = RuntimeOptions()
+        return self.list_my_installed_app_plugins_with_options(request, runtime)
+
+    async def list_my_installed_app_plugins_async(
+        self,
+        request: main_models.ListMyInstalledAppPluginsRequest,
+    ) -> main_models.ListMyInstalledAppPluginsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_my_installed_app_plugins_with_options_async(request, runtime)
 
     def list_promotion_activities_for_partner_with_options(
         self,
@@ -11865,6 +12595,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.rollback_app_instance_publish_with_options_async(request, runtime)
 
+    def rollback_app_plugin_version_with_options(
+        self,
+        request: main_models.RollbackAppPluginVersionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RollbackAppPluginVersionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.plugin_id):
+            query['PluginId'] = request.plugin_id
+        if not DaraCore.is_null(request.plugin_version):
+            query['PluginVersion'] = request.plugin_version
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RollbackAppPluginVersion',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RollbackAppPluginVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def rollback_app_plugin_version_with_options_async(
+        self,
+        request: main_models.RollbackAppPluginVersionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RollbackAppPluginVersionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.plugin_id):
+            query['PluginId'] = request.plugin_id
+        if not DaraCore.is_null(request.plugin_version):
+            query['PluginVersion'] = request.plugin_version
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RollbackAppPluginVersion',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RollbackAppPluginVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def rollback_app_plugin_version(
+        self,
+        request: main_models.RollbackAppPluginVersionRequest,
+    ) -> main_models.RollbackAppPluginVersionResponse:
+        runtime = RuntimeOptions()
+        return self.rollback_app_plugin_version_with_options(request, runtime)
+
+    async def rollback_app_plugin_version_async(
+        self,
+        request: main_models.RollbackAppPluginVersionRequest,
+    ) -> main_models.RollbackAppPluginVersionResponse:
+        runtime = RuntimeOptions()
+        return await self.rollback_app_plugin_version_with_options_async(request, runtime)
+
     def save_app_requirement_with_options(
         self,
         request: main_models.SaveAppRequirementRequest,
@@ -12721,6 +13525,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.unbind_app_domain_with_options_async(request, runtime)
 
+    def uninstall_app_plugin_with_options(
+        self,
+        request: main_models.UninstallAppPluginRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UninstallAppPluginResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.plugin_id):
+            query['PluginId'] = request.plugin_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UninstallAppPlugin',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UninstallAppPluginResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def uninstall_app_plugin_with_options_async(
+        self,
+        request: main_models.UninstallAppPluginRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UninstallAppPluginResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.plugin_id):
+            query['PluginId'] = request.plugin_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UninstallAppPlugin',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UninstallAppPluginResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def uninstall_app_plugin(
+        self,
+        request: main_models.UninstallAppPluginRequest,
+    ) -> main_models.UninstallAppPluginResponse:
+        runtime = RuntimeOptions()
+        return self.uninstall_app_plugin_with_options(request, runtime)
+
+    async def uninstall_app_plugin_async(
+        self,
+        request: main_models.UninstallAppPluginRequest,
+    ) -> main_models.UninstallAppPluginResponse:
+        runtime = RuntimeOptions()
+        return await self.uninstall_app_plugin_with_options_async(request, runtime)
+
     def update_app_chat_message_with_options(
         self,
         request: main_models.UpdateAppChatMessageRequest,
@@ -13084,6 +13958,120 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateAppInstanceResponse:
         runtime = RuntimeOptions()
         return await self.update_app_instance_with_options_async(request, runtime)
+
+    def update_app_plugin_with_options(
+        self,
+        request: main_models.UpdateAppPluginRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAppPluginResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.category):
+            query['Category'] = request.category
+        if not DaraCore.is_null(request.config_items):
+            query['ConfigItems'] = request.config_items
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.extend):
+            query['Extend'] = request.extend
+        if not DaraCore.is_null(request.hooks):
+            query['Hooks'] = request.hooks
+        if not DaraCore.is_null(request.icon):
+            query['Icon'] = request.icon
+        if not DaraCore.is_null(request.plugin_id):
+            query['PluginId'] = request.plugin_id
+        if not DaraCore.is_null(request.plugin_name):
+            query['PluginName'] = request.plugin_name
+        if not DaraCore.is_null(request.plugin_version):
+            query['PluginVersion'] = request.plugin_version
+        if not DaraCore.is_null(request.skill_header):
+            query['SkillHeader'] = request.skill_header
+        if not DaraCore.is_null(request.tags):
+            query['Tags'] = request.tags
+        if not DaraCore.is_null(request.visibility):
+            query['Visibility'] = request.visibility
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAppPlugin',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAppPluginResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_app_plugin_with_options_async(
+        self,
+        request: main_models.UpdateAppPluginRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAppPluginResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.category):
+            query['Category'] = request.category
+        if not DaraCore.is_null(request.config_items):
+            query['ConfigItems'] = request.config_items
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.extend):
+            query['Extend'] = request.extend
+        if not DaraCore.is_null(request.hooks):
+            query['Hooks'] = request.hooks
+        if not DaraCore.is_null(request.icon):
+            query['Icon'] = request.icon
+        if not DaraCore.is_null(request.plugin_id):
+            query['PluginId'] = request.plugin_id
+        if not DaraCore.is_null(request.plugin_name):
+            query['PluginName'] = request.plugin_name
+        if not DaraCore.is_null(request.plugin_version):
+            query['PluginVersion'] = request.plugin_version
+        if not DaraCore.is_null(request.skill_header):
+            query['SkillHeader'] = request.skill_header
+        if not DaraCore.is_null(request.tags):
+            query['Tags'] = request.tags
+        if not DaraCore.is_null(request.visibility):
+            query['Visibility'] = request.visibility
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAppPlugin',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAppPluginResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_app_plugin(
+        self,
+        request: main_models.UpdateAppPluginRequest,
+    ) -> main_models.UpdateAppPluginResponse:
+        runtime = RuntimeOptions()
+        return self.update_app_plugin_with_options(request, runtime)
+
+    async def update_app_plugin_async(
+        self,
+        request: main_models.UpdateAppPluginRequest,
+    ) -> main_models.UpdateAppPluginResponse:
+        runtime = RuntimeOptions()
+        return await self.update_app_plugin_with_options_async(request, runtime)
 
     def update_app_seo_status_with_options(
         self,
@@ -13568,6 +14556,100 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateRbacRoleResponse:
         runtime = RuntimeOptions()
         return await self.update_rbac_role_with_options_async(request, runtime)
+
+    def upload_app_plugin_version_with_options(
+        self,
+        request: main_models.UploadAppPluginVersionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UploadAppPluginVersionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.changelog):
+            query['Changelog'] = request.changelog
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.download_url):
+            query['DownloadUrl'] = request.download_url
+        if not DaraCore.is_null(request.extend):
+            query['Extend'] = request.extend
+        if not DaraCore.is_null(request.oss_key):
+            query['OssKey'] = request.oss_key
+        if not DaraCore.is_null(request.plugin_id):
+            query['PluginId'] = request.plugin_id
+        if not DaraCore.is_null(request.plugin_version):
+            query['PluginVersion'] = request.plugin_version
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UploadAppPluginVersion',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UploadAppPluginVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def upload_app_plugin_version_with_options_async(
+        self,
+        request: main_models.UploadAppPluginVersionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UploadAppPluginVersionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.changelog):
+            query['Changelog'] = request.changelog
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.download_url):
+            query['DownloadUrl'] = request.download_url
+        if not DaraCore.is_null(request.extend):
+            query['Extend'] = request.extend
+        if not DaraCore.is_null(request.oss_key):
+            query['OssKey'] = request.oss_key
+        if not DaraCore.is_null(request.plugin_id):
+            query['PluginId'] = request.plugin_id
+        if not DaraCore.is_null(request.plugin_version):
+            query['PluginVersion'] = request.plugin_version
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UploadAppPluginVersion',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UploadAppPluginVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def upload_app_plugin_version(
+        self,
+        request: main_models.UploadAppPluginVersionRequest,
+    ) -> main_models.UploadAppPluginVersionResponse:
+        runtime = RuntimeOptions()
+        return self.upload_app_plugin_version_with_options(request, runtime)
+
+    async def upload_app_plugin_version_async(
+        self,
+        request: main_models.UploadAppPluginVersionRequest,
+    ) -> main_models.UploadAppPluginVersionResponse:
+        runtime = RuntimeOptions()
+        return await self.upload_app_plugin_version_with_options_async(request, runtime)
 
     def upload_app_site_validation_file_with_options(
         self,

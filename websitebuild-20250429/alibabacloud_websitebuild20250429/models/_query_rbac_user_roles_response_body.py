@@ -22,16 +22,27 @@ class QueryRbacUserRolesResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
+        # The details of the permission verification failure.
         self.access_denied_detail = access_denied_detail
+        # Indicates whether retry is allowed.
         self.allow_retry = allow_retry
+        # The application name.
         self.app_name = app_name
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
+        # The dynamic message. This parameter is not in use. Ignore it.
         self.dynamic_message = dynamic_message
+        # The error parameters.
         self.error_args = error_args
+        # The response data.
         self.module = module
+        # Id of the request
         self.request_id = request_id
+        # The error code.
         self.root_error_code = root_error_code
+        # The error message.
         self.root_error_msg = root_error_msg
+        # The reserved parameter.
         self.synchro = synchro
 
     def validate(self):
@@ -129,14 +140,23 @@ class QueryRbacUserRolesResponseBodyModule(DaraModel):
         total_item_num: int = None,
         total_page_num: int = None,
     ):
+        # The current page number.
         self.current_page_num = current_page_num
+        # The request result.
         self.data = data
+        # The next feature ID.
         self.next = next
+        # Indicates whether a next page exists.
         self.next_page = next_page
+        # The page size.
         self.page_size = page_size
+        # Indicates whether a previous page exists.
         self.pre_page = pre_page
+        # In addition to pagination limits, the server processes up to 1,000 recent records for the current query. If the results exceed 1,000 records, **ResultLimit** is **true**. Narrow the time range and search again. Otherwise, **ResultLimit** is **false**.
         self.result_limit = result_limit
+        # The total number of entries.
         self.total_item_num = total_item_num
+        # The total number of pages.
         self.total_page_num = total_page_num
 
     def validate(self):
@@ -227,10 +247,15 @@ class QueryRbacUserRolesResponseBodyModuleNext(DaraModel):
         role_id: str = None,
         user_id: str = None,
     ):
+        # The creation time.
         self.created_at = created_at
+        # The primary key.
         self.id = id
+        # The enterprise organization ID.
         self.org_id = org_id
+        # The role ID. The system automatically generates a unique identifier.
         self.role_id = role_id
+        # The site end-user ID.
         self.user_id = user_id
 
     def validate(self):
@@ -286,10 +311,19 @@ class QueryRbacUserRolesResponseBodyModuleData(DaraModel):
         role_id: str = None,
         user_id: str = None,
     ):
+        # The creation time.
         self.created_at = created_at
+        # The primary key.
         self.id = id
+        # The enterprise identifier, also known as the enterprise ID, in string format. You can obtain it from the Yunxiao access URL, such as https://devops.aliyun.com/organization/【OrgId】.
         self.org_id = org_id
+        # The preset workspace role ID. The existing role is overwritten. Valid values:
+        # - 25: workspace administrator
+        # - 26: workspace developer
+        # - 27: workspace analyst
+        # - 30: workspace viewer
         self.role_id = role_id
+        # The site end-user ID.
         self.user_id = user_id
 
     def validate(self):

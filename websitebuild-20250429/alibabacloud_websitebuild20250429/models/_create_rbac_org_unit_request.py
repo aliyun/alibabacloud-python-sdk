@@ -10,7 +10,9 @@ class CreateRbacOrgUnitRequest(DaraModel):
         biz_id: str = None,
         org_unit_data: str = None,
     ):
+        # The site ID.
         self.biz_id = biz_id
+        # The organization parameters.
         self.org_unit_data = org_unit_data
 
     def validate(self):

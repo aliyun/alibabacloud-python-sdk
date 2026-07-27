@@ -10,7 +10,9 @@ class CreateRbacPermissionRequest(DaraModel):
         biz_id: str = None,
         permission_data: str = None,
     ):
+        # The business ID.
         self.biz_id = biz_id
+        # The permission parameter.
         self.permission_data = permission_data
 
     def validate(self):

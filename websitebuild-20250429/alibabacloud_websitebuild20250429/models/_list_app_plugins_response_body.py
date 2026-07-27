@@ -24,7 +24,7 @@ class ListAppPluginsResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # The detailed reason why access was denied.
+        # The detailed reason for access denial.
         self.access_denied_detail = access_denied_detail
         # Indicates whether retry is allowed.
         self.allow_retry = allow_retry
@@ -32,10 +32,10 @@ class ListAppPluginsResponseBody(DaraModel):
         self.app_name = app_name
         # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # The dynamic error message, which is used to replace the `%s` variable in the **ErrMessage** response parameter.
-        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the DtsJobId request parameter is invalid.
+        # The dynamic error message, which is used to replace the `%s` in the **ErrMessage** response parameter.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
-        # The error arguments.
+        # The error parameters.
         self.error_args = error_args
         # The number of entries per query.
         # 
@@ -43,7 +43,7 @@ class ListAppPluginsResponseBody(DaraModel):
         self.max_results = max_results
         # The response object.
         self.module = module
-        # The token for the next query. This parameter is empty if no more results are available.
+        # The token for the next query. This parameter is empty if no more results exist.
         self.next_token = next_token
         # Id of the request
         self.request_id = request_id
@@ -181,8 +181,8 @@ class ListAppPluginsResponseBodyModule(DaraModel):
         self.desc = desc
         # The image display mode. Valid values:
         # 
-        # - **0** (None): Not displayed.
-        # - **1** (Always): Always displayed.
+        # - **0** (None): not displayed.
+        # - **1** (Always): always displayed.
         self.display = display
         # Specifies whether scheduled delivery of resource snapshots is enabled.
         # 
@@ -206,7 +206,7 @@ class ListAppPluginsResponseBodyModule(DaraModel):
         self.icon = icon
         # The primary key.
         self.id = id
-        # Indicates whether the entry is deleted. Valid values: 0 (no) and 1 (yes).
+        # Indicates whether the item is deleted. Valid values: 0 (no) and 1 (yes).
         self.is_deleted = is_deleted
         # The plug-in name.
         self.name = name

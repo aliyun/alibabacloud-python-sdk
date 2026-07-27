@@ -19,7 +19,7 @@ class ListAppPluginsRequest(DaraModel):
         # 
         # Valid values: 10 to 100. Default value: 20.
         self.max_results = max_results
-        # The token for the next query. This parameter is empty if no more results are available.
+        # The token for the next query. This parameter is empty if no more results exist.
         self.next_token = next_token
         # The status of the Dataset Accelerator instance. Valid values:
         # - Created: init.

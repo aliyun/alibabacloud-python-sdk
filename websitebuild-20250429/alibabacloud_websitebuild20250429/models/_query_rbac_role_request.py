@@ -10,7 +10,15 @@ class QueryRbacRoleRequest(DaraModel):
         biz_id: str = None,
         role_id: str = None,
     ):
+        # The business ID of the application instance.
         self.biz_id = biz_id
+        # The storage management role ID, including preset roles and custom roles.
+        # 
+        # - 25: storage management administrator (preset role)
+        # - 26: developer (preset role)
+        # - 27: analyst (preset role)
+        # - 30: viewer (preset role)
+        # - Custom role: the role ID of the custom role
         self.role_id = role_id
 
     def validate(self):

@@ -10,7 +10,9 @@ class RevokeRbacUserRoleRequest(DaraModel):
         biz_id: str = None,
         user_role_data: str = None,
     ):
+        # The business ID of the application instance.
         self.biz_id = biz_id
+        # The user role information.
         self.user_role_data = user_role_data
 
     def validate(self):

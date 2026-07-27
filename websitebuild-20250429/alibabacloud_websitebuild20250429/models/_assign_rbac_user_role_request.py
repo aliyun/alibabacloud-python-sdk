@@ -10,7 +10,9 @@ class AssignRbacUserRoleRequest(DaraModel):
         biz_id: str = None,
         user_role_data: str = None,
     ):
+        # The business ID.
         self.biz_id = biz_id
+        # The role parameters.
         self.user_role_data = user_role_data
 
     def validate(self):

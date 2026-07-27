@@ -10,7 +10,9 @@ class DeleteRbacPermissionRequest(DaraModel):
         biz_id: str = None,
         permission_id: str = None,
     ):
+        # The business instance ID.
         self.biz_id = biz_id
+        # The permission ID.
         self.permission_id = permission_id
 
     def validate(self):

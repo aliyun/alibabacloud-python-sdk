@@ -85,6 +85,9 @@ from ._create_app_llm_api_key_for_partner_response import CreateAppLlmApiKeyForP
 from ._create_app_notification_scene_request import CreateAppNotificationSceneRequest
 from ._create_app_notification_scene_response_body import CreateAppNotificationSceneResponseBody
 from ._create_app_notification_scene_response import CreateAppNotificationSceneResponse
+from ._create_app_plugin_request import CreateAppPluginRequest
+from ._create_app_plugin_response_body import CreateAppPluginResponseBody
+from ._create_app_plugin_response import CreateAppPluginResponse
 from ._create_app_token_service_request import CreateAppTokenServiceRequest
 from ._create_app_token_service_response_body import CreateAppTokenServiceResponseBody
 from ._create_app_token_service_response import CreateAppTokenServiceResponse
@@ -121,6 +124,9 @@ from ._delete_app_instance_file_response import DeleteAppInstanceFileResponse
 from ._delete_app_notification_scene_request import DeleteAppNotificationSceneRequest
 from ._delete_app_notification_scene_response_body import DeleteAppNotificationSceneResponseBody
 from ._delete_app_notification_scene_response import DeleteAppNotificationSceneResponse
+from ._delete_app_plugin_request import DeleteAppPluginRequest
+from ._delete_app_plugin_response_body import DeleteAppPluginResponseBody
+from ._delete_app_plugin_response import DeleteAppPluginResponse
 from ._delete_app_supabase_secrets_request import DeleteAppSupabaseSecretsRequest
 from ._delete_app_supabase_secrets_response_body import DeleteAppSupabaseSecretsResponseBody
 from ._delete_app_supabase_secrets_response import DeleteAppSupabaseSecretsResponse
@@ -189,6 +195,9 @@ from ._get_app_instance_for_partner_response import GetAppInstanceForPartnerResp
 from ._get_app_instance_temp_short_url_request import GetAppInstanceTempShortUrlRequest
 from ._get_app_instance_temp_short_url_response_body import GetAppInstanceTempShortUrlResponseBody
 from ._get_app_instance_temp_short_url_response import GetAppInstanceTempShortUrlResponse
+from ._get_app_plugin_request import GetAppPluginRequest
+from ._get_app_plugin_response_body import GetAppPluginResponseBody
+from ._get_app_plugin_response import GetAppPluginResponse
 from ._get_app_plugin_config_request import GetAppPluginConfigRequest
 from ._get_app_plugin_config_response_body import GetAppPluginConfigResponseBody
 from ._get_app_plugin_config_response import GetAppPluginConfigResponse
@@ -267,6 +276,9 @@ from ._get_user_tmp_identity_for_partner_response import GetUserTmpIdentityForPa
 from ._grant_promotion_offer_for_partner_request import GrantPromotionOfferForPartnerRequest
 from ._grant_promotion_offer_for_partner_response_body import GrantPromotionOfferForPartnerResponseBody
 from ._grant_promotion_offer_for_partner_response import GrantPromotionOfferForPartnerResponse
+from ._install_app_plugin_request import InstallAppPluginRequest
+from ._install_app_plugin_response_body import InstallAppPluginResponseBody
+from ._install_app_plugin_response import InstallAppPluginResponse
 from ._introspect_app_instance_ticket_for_preview_request import IntrospectAppInstanceTicketForPreviewRequest
 from ._introspect_app_instance_ticket_for_preview_response_body import IntrospectAppInstanceTicketForPreviewResponseBody
 from ._introspect_app_instance_ticket_for_preview_response import IntrospectAppInstanceTicketForPreviewResponse
@@ -306,6 +318,12 @@ from ._list_app_instances_response import ListAppInstancesResponse
 from ._list_app_plugin_configs_request import ListAppPluginConfigsRequest
 from ._list_app_plugin_configs_response_body import ListAppPluginConfigsResponseBody
 from ._list_app_plugin_configs_response import ListAppPluginConfigsResponse
+from ._list_app_plugin_files_request import ListAppPluginFilesRequest
+from ._list_app_plugin_files_response_body import ListAppPluginFilesResponseBody
+from ._list_app_plugin_files_response import ListAppPluginFilesResponse
+from ._list_app_plugin_versions_request import ListAppPluginVersionsRequest
+from ._list_app_plugin_versions_response_body import ListAppPluginVersionsResponseBody
+from ._list_app_plugin_versions_response import ListAppPluginVersionsResponse
 from ._list_app_plugins_request import ListAppPluginsRequest
 from ._list_app_plugins_response_body import ListAppPluginsResponseBody
 from ._list_app_plugins_response import ListAppPluginsResponse
@@ -321,6 +339,15 @@ from ._list_app_templates_response import ListAppTemplatesResponse
 from ._list_isv_payment_plugin_configs_request import ListIsvPaymentPluginConfigsRequest
 from ._list_isv_payment_plugin_configs_response_body import ListIsvPaymentPluginConfigsResponseBody
 from ._list_isv_payment_plugin_configs_response import ListIsvPaymentPluginConfigsResponse
+from ._list_marketplace_app_plugins_request import ListMarketplaceAppPluginsRequest
+from ._list_marketplace_app_plugins_response_body import ListMarketplaceAppPluginsResponseBody
+from ._list_marketplace_app_plugins_response import ListMarketplaceAppPluginsResponse
+from ._list_my_app_plugins_request import ListMyAppPluginsRequest
+from ._list_my_app_plugins_response_body import ListMyAppPluginsResponseBody
+from ._list_my_app_plugins_response import ListMyAppPluginsResponse
+from ._list_my_installed_app_plugins_request import ListMyInstalledAppPluginsRequest
+from ._list_my_installed_app_plugins_response_body import ListMyInstalledAppPluginsResponseBody
+from ._list_my_installed_app_plugins_response import ListMyInstalledAppPluginsResponse
 from ._list_promotion_activities_for_partner_request import ListPromotionActivitiesForPartnerRequest
 from ._list_promotion_activities_for_partner_response_body import ListPromotionActivitiesForPartnerResponseBody
 from ._list_promotion_activities_for_partner_response import ListPromotionActivitiesForPartnerResponse
@@ -459,6 +486,9 @@ from ._rollback_app_code_snapshot_response import RollbackAppCodeSnapshotRespons
 from ._rollback_app_instance_publish_request import RollbackAppInstancePublishRequest
 from ._rollback_app_instance_publish_response_body import RollbackAppInstancePublishResponseBody
 from ._rollback_app_instance_publish_response import RollbackAppInstancePublishResponse
+from ._rollback_app_plugin_version_request import RollbackAppPluginVersionRequest
+from ._rollback_app_plugin_version_response_body import RollbackAppPluginVersionResponseBody
+from ._rollback_app_plugin_version_response import RollbackAppPluginVersionResponse
 from ._save_app_requirement_request import SaveAppRequirementRequest
 from ._save_app_requirement_response_body import SaveAppRequirementResponseBody
 from ._save_app_requirement_response import SaveAppRequirementResponse
@@ -491,6 +521,9 @@ from ._sync_app_instance_for_partner_response import SyncAppInstanceForPartnerRe
 from ._unbind_app_domain_request import UnbindAppDomainRequest
 from ._unbind_app_domain_response_body import UnbindAppDomainResponseBody
 from ._unbind_app_domain_response import UnbindAppDomainResponse
+from ._uninstall_app_plugin_request import UninstallAppPluginRequest
+from ._uninstall_app_plugin_response_body import UninstallAppPluginResponseBody
+from ._uninstall_app_plugin_response import UninstallAppPluginResponse
 from ._update_app_chat_message_request import UpdateAppChatMessageRequest
 from ._update_app_chat_message_response_body import UpdateAppChatMessageResponseBody
 from ._update_app_chat_message_response import UpdateAppChatMessageResponse
@@ -504,6 +537,9 @@ from ._update_app_instance_request import UpdateAppInstanceRequest
 from ._update_app_instance_shrink_request import UpdateAppInstanceShrinkRequest
 from ._update_app_instance_response_body import UpdateAppInstanceResponseBody
 from ._update_app_instance_response import UpdateAppInstanceResponse
+from ._update_app_plugin_request import UpdateAppPluginRequest
+from ._update_app_plugin_response_body import UpdateAppPluginResponseBody
+from ._update_app_plugin_response import UpdateAppPluginResponse
 from ._update_app_seo_status_request import UpdateAppSeoStatusRequest
 from ._update_app_seo_status_response_body import UpdateAppSeoStatusResponseBody
 from ._update_app_seo_status_response import UpdateAppSeoStatusResponse
@@ -522,6 +558,9 @@ from ._update_rbac_org_unit_response import UpdateRbacOrgUnitResponse
 from ._update_rbac_role_request import UpdateRbacRoleRequest
 from ._update_rbac_role_response_body import UpdateRbacRoleResponseBody
 from ._update_rbac_role_response import UpdateRbacRoleResponse
+from ._upload_app_plugin_version_request import UploadAppPluginVersionRequest
+from ._upload_app_plugin_version_response_body import UploadAppPluginVersionResponseBody
+from ._upload_app_plugin_version_response import UploadAppPluginVersionResponse
 from ._upload_app_site_validation_file_request import UploadAppSiteValidationFileRequest
 from ._upload_app_site_validation_file_response_body import UploadAppSiteValidationFileResponseBody
 from ._upload_app_site_validation_file_response import UploadAppSiteValidationFileResponse
@@ -563,11 +602,13 @@ from ._create_app_instance_response_body import CreateAppInstanceResponseBodyMod
 from ._create_app_instance_ticket_response_body import CreateAppInstanceTicketResponseBodyModule
 from ._create_app_llm_api_key_for_partner_response_body import CreateAppLlmApiKeyForPartnerResponseBodyModule
 from ._create_app_notification_scene_response_body import CreateAppNotificationSceneResponseBodyModule
+from ._create_app_plugin_response_body import CreateAppPluginResponseBodyModule
 from ._create_app_token_service_response_body import CreateAppTokenServiceResponseBodyModule
 from ._create_inspiration_response_body import CreateInspirationResponseBodyModule
 from ._create_material_directory_response_body import CreateMaterialDirectoryResponseBodyModule
 from ._delete_app_domain_certificate_response_body import DeleteAppDomainCertificateResponseBodyModule
 from ._delete_app_domain_redirect_response_body import DeleteAppDomainRedirectResponseBodyModule
+from ._delete_app_plugin_response_body import DeleteAppPluginResponseBodyModule
 from ._describe_app_domain_dns_record_response_body import DescribeAppDomainDnsRecordResponseBodyModule
 from ._dispatch_console_apifor_partner_response_body import DispatchConsoleAPIForPartnerResponseBodyModule
 from ._export_material_file_response_body import ExportMaterialFileResponseBodyModule
@@ -597,6 +638,7 @@ from ._get_app_instance_for_partner_response_body import GetAppInstanceForPartne
 from ._get_app_instance_for_partner_response_body import GetAppInstanceForPartnerResponseBodyModuleRelatedInstanceList
 from ._get_app_instance_for_partner_response_body import GetAppInstanceForPartnerResponseBodyModule
 from ._get_app_instance_temp_short_url_response_body import GetAppInstanceTempShortUrlResponseBodyModule
+from ._get_app_plugin_response_body import GetAppPluginResponseBodyModule
 from ._get_app_plugin_config_response_body import GetAppPluginConfigResponseBodyModule
 from ._get_app_publish_status_response_body import GetAppPublishStatusResponseBodyModule
 from ._get_app_recommended_commodities_response_body import GetAppRecommendedCommoditiesResponseBodyModuleCommodities
@@ -625,6 +667,7 @@ from ._get_user_access_token_for_partner_response_body import GetUserAccessToken
 from ._get_user_tmp_identity_for_partner_response_body import GetUserTmpIdentityForPartnerResponseBodyDataCredentials
 from ._get_user_tmp_identity_for_partner_response_body import GetUserTmpIdentityForPartnerResponseBodyData
 from ._grant_promotion_offer_for_partner_response_body import GrantPromotionOfferForPartnerResponseBodyModule
+from ._install_app_plugin_response_body import InstallAppPluginResponseBodyModule
 from ._introspect_app_instance_ticket_for_preview_response_body import IntrospectAppInstanceTicketForPreviewResponseBodyModule
 from ._list_aistaff_chat_events_response_body import ListAIStaffChatEventsResponseBodyModuleEvents
 from ._list_aistaff_chat_events_response_body import ListAIStaffChatEventsResponseBodyModule
@@ -668,6 +711,11 @@ from ._list_app_instance_domains_response_body import ListAppInstanceDomainsResp
 from ._list_app_instance_domains_response_body import ListAppInstanceDomainsResponseBodyModuleNext
 from ._list_app_instance_domains_response_body import ListAppInstanceDomainsResponseBodyModule
 from ._list_app_plugin_configs_response_body import ListAppPluginConfigsResponseBodyModule
+from ._list_app_plugin_files_response_body import ListAppPluginFilesResponseBodyModuleFiles
+from ._list_app_plugin_files_response_body import ListAppPluginFilesResponseBodyModule
+from ._list_app_plugin_versions_response_body import ListAppPluginVersionsResponseBodyModuleData
+from ._list_app_plugin_versions_response_body import ListAppPluginVersionsResponseBodyModuleNext
+from ._list_app_plugin_versions_response_body import ListAppPluginVersionsResponseBodyModule
 from ._list_app_plugins_response_body import ListAppPluginsResponseBodyModule
 from ._list_app_publish_history_response_body import ListAppPublishHistoryResponseBodyModuleHistory
 from ._list_app_publish_history_response_body import ListAppPublishHistoryResponseBodyModule
@@ -676,6 +724,15 @@ from ._list_app_templates_response_body import ListAppTemplatesResponseBodyModul
 from ._list_app_templates_response_body import ListAppTemplatesResponseBodyModuleNext
 from ._list_app_templates_response_body import ListAppTemplatesResponseBodyModule
 from ._list_isv_payment_plugin_configs_response_body import ListIsvPaymentPluginConfigsResponseBodyModule
+from ._list_marketplace_app_plugins_response_body import ListMarketplaceAppPluginsResponseBodyModuleData
+from ._list_marketplace_app_plugins_response_body import ListMarketplaceAppPluginsResponseBodyModuleNext
+from ._list_marketplace_app_plugins_response_body import ListMarketplaceAppPluginsResponseBodyModule
+from ._list_my_app_plugins_response_body import ListMyAppPluginsResponseBodyModuleData
+from ._list_my_app_plugins_response_body import ListMyAppPluginsResponseBodyModuleNext
+from ._list_my_app_plugins_response_body import ListMyAppPluginsResponseBodyModule
+from ._list_my_installed_app_plugins_response_body import ListMyInstalledAppPluginsResponseBodyModuleData
+from ._list_my_installed_app_plugins_response_body import ListMyInstalledAppPluginsResponseBodyModuleNext
+from ._list_my_installed_app_plugins_response_body import ListMyInstalledAppPluginsResponseBodyModule
 from ._list_promotion_activities_for_partner_response_body import ListPromotionActivitiesForPartnerResponseBodyModuleActivities
 from ._list_promotion_activities_for_partner_response_body import ListPromotionActivitiesForPartnerResponseBodyModule
 from ._list_promotion_offer_records_for_partner_response_body import ListPromotionOfferRecordsForPartnerResponseBodyModuleRecords
@@ -721,6 +778,7 @@ from ._renew_app_instance_response_body import RenewAppInstanceResponseBodyModul
 from ._renew_app_sandbox_response_body import RenewAppSandboxResponseBodyModule
 from ._rollback_app_code_snapshot_response_body import RollbackAppCodeSnapshotResponseBodyModule
 from ._rollback_app_instance_publish_response_body import RollbackAppInstancePublishResponseBodyModule
+from ._rollback_app_plugin_version_response_body import RollbackAppPluginVersionResponseBodyModule
 from ._search_image_response_body import SearchImageResponseBodyImageResponseImageList
 from ._search_image_response_body import SearchImageResponseBodyImageResponse
 from ._set_app_domain_certificate_response_body import SetAppDomainCertificateResponseBodyModule
@@ -731,10 +789,13 @@ from ._sync_app_instance_for_partner_request import SyncAppInstanceForPartnerReq
 from ._sync_app_instance_for_partner_response_body import SyncAppInstanceForPartnerResponseBodyDataAppInstance
 from ._sync_app_instance_for_partner_response_body import SyncAppInstanceForPartnerResponseBodyData
 from ._unbind_app_domain_response_body import UnbindAppDomainResponseBodyModule
+from ._uninstall_app_plugin_response_body import UninstallAppPluginResponseBodyModule
 from ._update_app_chat_message_response_body import UpdateAppChatMessageResponseBodyModule
 from ._update_app_instance_request import UpdateAppInstanceRequestTags
 from ._update_app_instance_response_body import UpdateAppInstanceResponseBodyModule
+from ._update_app_plugin_response_body import UpdateAppPluginResponseBodyModule
 from ._update_mini_app_binding_response_body import UpdateMiniAppBindingResponseBodyData
+from ._upload_app_plugin_version_response_body import UploadAppPluginVersionResponseBodyModule
 
 __all__ = [
     AppAiStaff,
@@ -820,6 +881,9 @@ __all__ = [
     CreateAppNotificationSceneRequest,
     CreateAppNotificationSceneResponseBody,
     CreateAppNotificationSceneResponse,
+    CreateAppPluginRequest,
+    CreateAppPluginResponseBody,
+    CreateAppPluginResponse,
     CreateAppTokenServiceRequest,
     CreateAppTokenServiceResponseBody,
     CreateAppTokenServiceResponse,
@@ -856,6 +920,9 @@ __all__ = [
     DeleteAppNotificationSceneRequest,
     DeleteAppNotificationSceneResponseBody,
     DeleteAppNotificationSceneResponse,
+    DeleteAppPluginRequest,
+    DeleteAppPluginResponseBody,
+    DeleteAppPluginResponse,
     DeleteAppSupabaseSecretsRequest,
     DeleteAppSupabaseSecretsResponseBody,
     DeleteAppSupabaseSecretsResponse,
@@ -924,6 +991,9 @@ __all__ = [
     GetAppInstanceTempShortUrlRequest,
     GetAppInstanceTempShortUrlResponseBody,
     GetAppInstanceTempShortUrlResponse,
+    GetAppPluginRequest,
+    GetAppPluginResponseBody,
+    GetAppPluginResponse,
     GetAppPluginConfigRequest,
     GetAppPluginConfigResponseBody,
     GetAppPluginConfigResponse,
@@ -1002,6 +1072,9 @@ __all__ = [
     GrantPromotionOfferForPartnerRequest,
     GrantPromotionOfferForPartnerResponseBody,
     GrantPromotionOfferForPartnerResponse,
+    InstallAppPluginRequest,
+    InstallAppPluginResponseBody,
+    InstallAppPluginResponse,
     IntrospectAppInstanceTicketForPreviewRequest,
     IntrospectAppInstanceTicketForPreviewResponseBody,
     IntrospectAppInstanceTicketForPreviewResponse,
@@ -1041,6 +1114,12 @@ __all__ = [
     ListAppPluginConfigsRequest,
     ListAppPluginConfigsResponseBody,
     ListAppPluginConfigsResponse,
+    ListAppPluginFilesRequest,
+    ListAppPluginFilesResponseBody,
+    ListAppPluginFilesResponse,
+    ListAppPluginVersionsRequest,
+    ListAppPluginVersionsResponseBody,
+    ListAppPluginVersionsResponse,
     ListAppPluginsRequest,
     ListAppPluginsResponseBody,
     ListAppPluginsResponse,
@@ -1056,6 +1135,15 @@ __all__ = [
     ListIsvPaymentPluginConfigsRequest,
     ListIsvPaymentPluginConfigsResponseBody,
     ListIsvPaymentPluginConfigsResponse,
+    ListMarketplaceAppPluginsRequest,
+    ListMarketplaceAppPluginsResponseBody,
+    ListMarketplaceAppPluginsResponse,
+    ListMyAppPluginsRequest,
+    ListMyAppPluginsResponseBody,
+    ListMyAppPluginsResponse,
+    ListMyInstalledAppPluginsRequest,
+    ListMyInstalledAppPluginsResponseBody,
+    ListMyInstalledAppPluginsResponse,
     ListPromotionActivitiesForPartnerRequest,
     ListPromotionActivitiesForPartnerResponseBody,
     ListPromotionActivitiesForPartnerResponse,
@@ -1194,6 +1282,9 @@ __all__ = [
     RollbackAppInstancePublishRequest,
     RollbackAppInstancePublishResponseBody,
     RollbackAppInstancePublishResponse,
+    RollbackAppPluginVersionRequest,
+    RollbackAppPluginVersionResponseBody,
+    RollbackAppPluginVersionResponse,
     SaveAppRequirementRequest,
     SaveAppRequirementResponseBody,
     SaveAppRequirementResponse,
@@ -1226,6 +1317,9 @@ __all__ = [
     UnbindAppDomainRequest,
     UnbindAppDomainResponseBody,
     UnbindAppDomainResponse,
+    UninstallAppPluginRequest,
+    UninstallAppPluginResponseBody,
+    UninstallAppPluginResponse,
     UpdateAppChatMessageRequest,
     UpdateAppChatMessageResponseBody,
     UpdateAppChatMessageResponse,
@@ -1239,6 +1333,9 @@ __all__ = [
     UpdateAppInstanceShrinkRequest,
     UpdateAppInstanceResponseBody,
     UpdateAppInstanceResponse,
+    UpdateAppPluginRequest,
+    UpdateAppPluginResponseBody,
+    UpdateAppPluginResponse,
     UpdateAppSeoStatusRequest,
     UpdateAppSeoStatusResponseBody,
     UpdateAppSeoStatusResponse,
@@ -1257,6 +1354,9 @@ __all__ = [
     UpdateRbacRoleRequest,
     UpdateRbacRoleResponseBody,
     UpdateRbacRoleResponse,
+    UploadAppPluginVersionRequest,
+    UploadAppPluginVersionResponseBody,
+    UploadAppPluginVersionResponse,
     UploadAppSiteValidationFileRequest,
     UploadAppSiteValidationFileResponseBody,
     UploadAppSiteValidationFileResponse,
@@ -1298,11 +1398,13 @@ __all__ = [
     CreateAppInstanceTicketResponseBodyModule,
     CreateAppLlmApiKeyForPartnerResponseBodyModule,
     CreateAppNotificationSceneResponseBodyModule,
+    CreateAppPluginResponseBodyModule,
     CreateAppTokenServiceResponseBodyModule,
     CreateInspirationResponseBodyModule,
     CreateMaterialDirectoryResponseBodyModule,
     DeleteAppDomainCertificateResponseBodyModule,
     DeleteAppDomainRedirectResponseBodyModule,
+    DeleteAppPluginResponseBodyModule,
     DescribeAppDomainDnsRecordResponseBodyModule,
     DispatchConsoleAPIForPartnerResponseBodyModule,
     ExportMaterialFileResponseBodyModule,
@@ -1332,6 +1434,7 @@ __all__ = [
     GetAppInstanceForPartnerResponseBodyModuleRelatedInstanceList,
     GetAppInstanceForPartnerResponseBodyModule,
     GetAppInstanceTempShortUrlResponseBodyModule,
+    GetAppPluginResponseBodyModule,
     GetAppPluginConfigResponseBodyModule,
     GetAppPublishStatusResponseBodyModule,
     GetAppRecommendedCommoditiesResponseBodyModuleCommodities,
@@ -1360,6 +1463,7 @@ __all__ = [
     GetUserTmpIdentityForPartnerResponseBodyDataCredentials,
     GetUserTmpIdentityForPartnerResponseBodyData,
     GrantPromotionOfferForPartnerResponseBodyModule,
+    InstallAppPluginResponseBodyModule,
     IntrospectAppInstanceTicketForPreviewResponseBodyModule,
     ListAIStaffChatEventsResponseBodyModuleEvents,
     ListAIStaffChatEventsResponseBodyModule,
@@ -1403,6 +1507,11 @@ __all__ = [
     ListAppInstanceDomainsResponseBodyModuleNext,
     ListAppInstanceDomainsResponseBodyModule,
     ListAppPluginConfigsResponseBodyModule,
+    ListAppPluginFilesResponseBodyModuleFiles,
+    ListAppPluginFilesResponseBodyModule,
+    ListAppPluginVersionsResponseBodyModuleData,
+    ListAppPluginVersionsResponseBodyModuleNext,
+    ListAppPluginVersionsResponseBodyModule,
     ListAppPluginsResponseBodyModule,
     ListAppPublishHistoryResponseBodyModuleHistory,
     ListAppPublishHistoryResponseBodyModule,
@@ -1411,6 +1520,15 @@ __all__ = [
     ListAppTemplatesResponseBodyModuleNext,
     ListAppTemplatesResponseBodyModule,
     ListIsvPaymentPluginConfigsResponseBodyModule,
+    ListMarketplaceAppPluginsResponseBodyModuleData,
+    ListMarketplaceAppPluginsResponseBodyModuleNext,
+    ListMarketplaceAppPluginsResponseBodyModule,
+    ListMyAppPluginsResponseBodyModuleData,
+    ListMyAppPluginsResponseBodyModuleNext,
+    ListMyAppPluginsResponseBodyModule,
+    ListMyInstalledAppPluginsResponseBodyModuleData,
+    ListMyInstalledAppPluginsResponseBodyModuleNext,
+    ListMyInstalledAppPluginsResponseBodyModule,
     ListPromotionActivitiesForPartnerResponseBodyModuleActivities,
     ListPromotionActivitiesForPartnerResponseBodyModule,
     ListPromotionOfferRecordsForPartnerResponseBodyModuleRecords,
@@ -1456,6 +1574,7 @@ __all__ = [
     RenewAppSandboxResponseBodyModule,
     RollbackAppCodeSnapshotResponseBodyModule,
     RollbackAppInstancePublishResponseBodyModule,
+    RollbackAppPluginVersionResponseBodyModule,
     SearchImageResponseBodyImageResponseImageList,
     SearchImageResponseBodyImageResponse,
     SetAppDomainCertificateResponseBodyModule,
@@ -1466,8 +1585,11 @@ __all__ = [
     SyncAppInstanceForPartnerResponseBodyDataAppInstance,
     SyncAppInstanceForPartnerResponseBodyData,
     UnbindAppDomainResponseBodyModule,
+    UninstallAppPluginResponseBodyModule,
     UpdateAppChatMessageResponseBodyModule,
     UpdateAppInstanceRequestTags,
     UpdateAppInstanceResponseBodyModule,
-    UpdateMiniAppBindingResponseBodyData
+    UpdateAppPluginResponseBodyModule,
+    UpdateMiniAppBindingResponseBodyData,
+    UploadAppPluginVersionResponseBodyModule
 ]

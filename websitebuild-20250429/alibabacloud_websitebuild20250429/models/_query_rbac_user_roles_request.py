@@ -14,11 +14,17 @@ class QueryRbacUserRolesRequest(DaraModel):
         page_num: int = None,
         page_size: int = None,
     ):
+        # The site end-user ID.
         self.application_user_id = application_user_id
+        # The business instance ID.
         self.biz_id = biz_id
+        # The field used for sorting.
         self.order_column = order_column
+        # The sort type. Valid values: ASC and DESC.
         self.order_type = order_type
+        # The page number. Default value: 1.
         self.page_num = page_num
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
 
     def validate(self):

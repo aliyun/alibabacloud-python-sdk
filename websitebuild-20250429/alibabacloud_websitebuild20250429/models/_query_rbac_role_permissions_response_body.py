@@ -22,16 +22,27 @@ class QueryRbacRolePermissionsResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
+        # Indicates whether retry is allowed.
         self.allow_retry = allow_retry
+        # The application name. The application with this name is queried.
         self.app_name = app_name
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
+        # The dynamic message. This parameter is not in use. Ignore this parameter.
         self.dynamic_message = dynamic_message
+        # The error parameters returned.
         self.error_args = error_args
+        # Indicates whether the operation is successful.
         self.module = module
+        # Id of the request
         self.request_id = request_id
+        # The error code.
         self.root_error_code = root_error_code
+        # The error message.
         self.root_error_msg = root_error_msg
+        # Indicates whether the request is synchronously processed.
         self.synchro = synchro
 
     def validate(self):
@@ -129,14 +140,23 @@ class QueryRbacRolePermissionsResponseBodyModule(DaraModel):
         total_item_num: int = None,
         total_page_num: int = None,
     ):
+        # The current page number.
         self.current_page_num = current_page_num
+        # The request result.
         self.data = data
+        # The next feature ID.
         self.next = next
+        # Indicates whether a next page exists.
         self.next_page = next_page
+        # The page size.
         self.page_size = page_size
+        # Indicates whether a previous page exists.
         self.pre_page = pre_page
+        # The server processes up to 1,000 recent records beyond the pagination limit for the current query. If the results exceed 1,000 records, **ResultLimit** is **true**. In this case, narrow the time range and search again. Otherwise, **ResultLimit** is **false**.
         self.result_limit = result_limit
+        # The total number of entries.
         self.total_item_num = total_item_num
+        # The total number of pages.
         self.total_page_num = total_page_num
 
     def validate(self):
@@ -226,9 +246,15 @@ class QueryRbacRolePermissionsResponseBodyModuleNext(DaraModel):
         id: str = None,
         resource: str = None,
     ):
+        # The operation that you want to perform. Set the value to **GetCreateCustomerInfomation**.
         self.action = action
+        # The scenario description.
         self.description = description
+        # The scenario ID.
         self.id = id
+        # The statistical method for the Warn level.
+        # 
+        # The value of `Statistics` varies by cloud service. For more information, see [Cloud service monitoring items](https://help.aliyun.com/document_detail/163515.html).
         self.resource = resource
 
     def validate(self):
@@ -277,9 +303,13 @@ class QueryRbacRolePermissionsResponseBodyModuleData(DaraModel):
         id: str = None,
         resource: str = None,
     ):
+        # The operation that you want to perform. Set the value to **DeleteIntegration**.
         self.action = action
+        # The scenario description.
         self.description = description
+        # The scenario ID.
         self.id = id
+        # The alert rule name.
         self.resource = resource
 
     def validate(self):
