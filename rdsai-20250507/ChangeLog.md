@@ -1,3 +1,59 @@
+2026-07-27 Version: 3.6.0
+- Support API CreateMOUsageDetailExport.
+- Support API DescribeMOUsageDetailExport.
+- Support API ResetInstanceKeys.
+- Update API DeleteAppInstance: add request parameters DeleteDBInstance.
+- Update API DescribeAppInstanceAttribute: add request parameters BranchName.
+- Update API DescribeAppInstanceAttribute: add response parameters Body.BranchName.
+- Update API DescribeAppInstanceAttribute: add response parameters Body.BranchingEnabled.
+- Update API DescribeInstanceAuthInfo: add request parameters BranchName.
+- Update API DescribeInstanceAuthInfo: add response parameters Body.BranchName.
+- Update API DescribeInstanceEndpoints: add request parameters BranchName.
+- Update API DescribeInstanceEndpoints: add response parameters Body.BranchName.
+- Update API DescribeInstanceIpWhitelist: add request parameters BranchName.
+- Update API DescribeInstanceIpWhitelist: add response parameters Body.BranchName.
+- Update API DescribeInstanceIpWhitelist: add response parameters Body.DbIpWhiteListGroups.
+- Update API DescribeInstanceRAGConfig: add request parameters BranchName.
+- Update API DescribeInstanceRAGConfig: add response parameters Body.BranchName.
+- Update API DescribeInstanceSSL: add request parameters BranchName.
+- Update API DescribeInstanceSSL: add response parameters Body.BranchName.
+- Update API DescribeInstanceStorageConfig: add request parameters BranchName.
+- Update API DescribeInstanceStorageConfig: add response parameters Body.BranchName.
+- Update API DescribeMOTokenUsageDetail: add response parameters Body.Records.$.CacheTokens.
+- Update API DescribeSandboxTemplates: add request parameters BranchName.
+- Update API DisableAgentRuntime: add request parameters BranchName.
+- Update API DisableAgentRuntime: add response parameters Body.BranchName.
+- Update API EnableAgentRuntime: add request parameters BranchName.
+- Update API EnableAgentRuntime: add response parameters Body.BranchName.
+- Update API GetConversations: add response parameters Body.Data.$.IsRunning.
+- Update API GetConversations: add response parameters Body.Data.$.UpdatedAt.
+- Update API ModifyAppInstance: add request parameters BranchName.
+- Update API ModifyAppInstance: add request parameters DBInstanceName.
+- Update API ModifyAppInstance: add request parameters InstanceClass.
+- Update API ModifyAppInstance: add response parameters Body.BranchName.
+- Update API ModifyInstanceAuthConfig: add request parameters BranchName.
+- Update API ModifyInstanceAuthConfig: add response parameters Body.BranchName.
+- Update API ModifyInstanceConfig: add request parameters BranchName.
+- Update API ModifyInstanceConfig: add response parameters Body.BranchName.
+- Update API ModifyInstanceConfig: add response parameters Body.InstanceName.
+- Update API ModifyInstanceIpWhitelist: add request parameters BranchName.
+- Update API ModifyInstanceIpWhitelist: add response parameters Body.BranchName.
+- Update API ModifyInstanceRAGConfig: add request parameters BranchName.
+- Update API ModifyInstanceRAGConfig: add response parameters Body.BranchName.
+- Update API ModifyInstanceSSL: add request parameters BranchName.
+- Update API ModifyInstanceSSL: add response parameters Body.BranchName.
+- Update API ModifyInstanceStorageConfig: add request parameters BranchName.
+- Update API ModifyInstanceStorageConfig: add response parameters Body.BranchName.
+- Update API ResetInstancePassword: add request parameters BranchName.
+- Update API ResetInstancePassword: add response parameters Body.BranchName.
+- Update API RestartInstance: add request parameters BranchName.
+- Update API RestartInstance: add response parameters Body.BranchName.
+- Update API StartInstance: add request parameters BranchName.
+- Update API StartInstance: add response parameters Body.BranchName.
+- Update API StopInstance: add request parameters BranchName.
+- Update API StopInstance: add response parameters Body.BranchName.
+
+
 2026-06-30 Version: 3.5.0
 - Support API CreateSandboxTemplate.
 - Support API DeleteSandboxTemplate.

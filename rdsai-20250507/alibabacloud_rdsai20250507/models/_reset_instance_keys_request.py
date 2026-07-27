@@ -4,18 +4,16 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class DisableAgentRuntimeResponseBody(DaraModel):
+class ResetInstanceKeysRequest(DaraModel):
     def __init__(
         self,
-        branch_name: str = None,
         instance_name: str = None,
-        request_id: str = None,
+        region_id: str = None,
     ):
-        self.branch_name = branch_name
-        # The instance ID of the AI application.
+        # This parameter is required.
         self.instance_name = instance_name
-        # Id of the request
-        self.request_id = request_id
+        # This parameter is required.
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -25,27 +23,21 @@ class DisableAgentRuntimeResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.branch_name is not None:
-            result['BranchName'] = self.branch_name
-
         if self.instance_name is not None:
             result['InstanceName'] = self.instance_name
 
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('BranchName') is not None:
-            self.branch_name = m.get('BranchName')
-
         if m.get('InstanceName') is not None:
             self.instance_name = m.get('InstanceName')
 
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
 
         return self
 

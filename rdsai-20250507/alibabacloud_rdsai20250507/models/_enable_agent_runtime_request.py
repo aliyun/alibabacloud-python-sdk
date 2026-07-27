@@ -7,13 +7,15 @@ from darabonba.model import DaraModel
 class EnableAgentRuntimeRequest(DaraModel):
     def __init__(
         self,
+        branch_name: str = None,
         client_token: str = None,
         instance_name: str = None,
         region_id: str = None,
         security_group_id: str = None,
         v_switch_id: str = None,
     ):
-        # The idempotence parameter.
+        self.branch_name = branch_name
+        # The idempotency parameter.
         self.client_token = client_token
         # The instance ID of the AI application.
         # 
@@ -23,13 +25,13 @@ class EnableAgentRuntimeRequest(DaraModel):
         self.region_id = region_id
         # The security group ID used to create an endpoint.
         # 
-        # **If not specified**: The system automatically creates a security group named **sg-aliyun-rds-created-supabase-sandbox** in the VPC where the instance resides. No manual operation is required.
+        # **If not specified**: The system performs automatic creation of a security group named **sg-aliyun-rds-created-supabase-sandbox** in the VPC where the instance resides. No manual operation is required.
         # 
-        # **If specified**: Ensure that the specified security group allows the CIDR block of the VPC where the Supabase instance resides (both inbound and outbound directions must be allowed). Otherwise, network connectivity issues may occur.
-        # >Notice: The endpoint is created only once. When the first Supabase instance in a VPC enables the sandbox and Edge Routine capabilities, the system automatically creates the endpoint. When subsequent Supabase instances in the same VPC enable this capability, the existing endpoint is reused and no new endpoint is created.
+        # **If specified**: Make sure that the specified security group allows the CIDR block of the VPC where the Supabase instance resides (both inbound and outbound directions must be allowed). Otherwise, network connectivity issues may occur.
+        # >Notice: The endpoint is created only once. When the first Supabase instance in a VPC enables the sandbox and Edge Routine function, the system performs automatic creation of the endpoint. When other Supabase instances in the same VPC enable this capability later, the existing endpoint is reused and no new endpoint is created.
         self.security_group_id = security_group_id
         # The vSwitch ID used to create an endpoint. If this parameter is not specified, the vSwitch of the Supabase instance is used by default.
-        # >Notice: The endpoint is created only once. When the first Supabase instance in a VPC enables the sandbox and Edge Routine capabilities, the system automatically creates the endpoint. When subsequent Supabase instances in the same VPC enable this capability, the existing endpoint is reused and no new endpoint is created.
+        # >Notice: The endpoint is created only once. When the first Supabase instance in a VPC enables the sandbox and Edge Routine function, the system performs automatic creation of the endpoint. When other Supabase instances in the same VPC enable this capability later, the existing endpoint is reused and no new endpoint is created.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -40,6 +42,9 @@ class EnableAgentRuntimeRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.branch_name is not None:
+            result['BranchName'] = self.branch_name
+
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
 
@@ -59,6 +64,9 @@ class EnableAgentRuntimeRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BranchName') is not None:
+            self.branch_name = m.get('BranchName')
+
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
 

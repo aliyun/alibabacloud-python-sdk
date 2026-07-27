@@ -12,6 +12,8 @@ class DescribeAppInstanceAttributeResponseBody(DaraModel):
         self,
         app_name: str = None,
         app_type: str = None,
+        branch_name: str = None,
+        branching_enabled: str = None,
         components: List[main_models.DescribeAppInstanceAttributeResponseBodyComponents] = None,
         dbinstance_name: str = None,
         eip_id: str = None,
@@ -39,8 +41,10 @@ class DescribeAppInstanceAttributeResponseBody(DaraModel):
         self.app_name = app_name
         # The application type. Currently, only **supabase** is supported, which indicates [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html).
         self.app_type = app_type
+        self.branch_name = branch_name
+        self.branching_enabled = branching_enabled
         self.components = components
-        # The instance ID of the ApsaraDB RDS for PostgreSQL database to which the AI application is connected.
+        # The instance ID of the RDS PostgreSQL database to which the AI application is connected.
         self.dbinstance_name = dbinstance_name
         self.eip_id = eip_id
         self.eip_status = eip_status
@@ -93,6 +97,12 @@ class DescribeAppInstanceAttributeResponseBody(DaraModel):
 
         if self.app_type is not None:
             result['AppType'] = self.app_type
+
+        if self.branch_name is not None:
+            result['BranchName'] = self.branch_name
+
+        if self.branching_enabled is not None:
+            result['BranchingEnabled'] = self.branching_enabled
 
         result['Components'] = []
         if self.components is not None:
@@ -173,6 +183,12 @@ class DescribeAppInstanceAttributeResponseBody(DaraModel):
 
         if m.get('AppType') is not None:
             self.app_type = m.get('AppType')
+
+        if m.get('BranchName') is not None:
+            self.branch_name = m.get('BranchName')
+
+        if m.get('BranchingEnabled') is not None:
+            self.branching_enabled = m.get('BranchingEnabled')
 
         self.components = []
         if m.get('Components') is not None:

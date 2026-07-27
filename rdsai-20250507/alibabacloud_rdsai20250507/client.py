@@ -756,6 +756,96 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_inspection_task_with_options_async(request, runtime)
 
+    def create_mousage_detail_export_with_options(
+        self,
+        request: main_models.CreateMOUsageDetailExportRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateMOUsageDetailExportResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.api_key):
+            query['ApiKey'] = request.api_key
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.model):
+            query['Model'] = request.model
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.usage_type):
+            query['UsageType'] = request.usage_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateMOUsageDetailExport',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateMOUsageDetailExportResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_mousage_detail_export_with_options_async(
+        self,
+        request: main_models.CreateMOUsageDetailExportRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateMOUsageDetailExportResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.api_key):
+            query['ApiKey'] = request.api_key
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.model):
+            query['Model'] = request.model
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.usage_type):
+            query['UsageType'] = request.usage_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateMOUsageDetailExport',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateMOUsageDetailExportResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_mousage_detail_export(
+        self,
+        request: main_models.CreateMOUsageDetailExportRequest,
+    ) -> main_models.CreateMOUsageDetailExportResponse:
+        runtime = RuntimeOptions()
+        return self.create_mousage_detail_export_with_options(request, runtime)
+
+    async def create_mousage_detail_export_async(
+        self,
+        request: main_models.CreateMOUsageDetailExportRequest,
+    ) -> main_models.CreateMOUsageDetailExportResponse:
+        runtime = RuntimeOptions()
+        return await self.create_mousage_detail_export_with_options_async(request, runtime)
+
     def create_sandbox_template_with_options(
         self,
         request: main_models.CreateSandboxTemplateRequest,
@@ -1137,6 +1227,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.delete_dbinstance):
+            query['DeleteDBInstance'] = request.delete_dbinstance
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
         if not DaraCore.is_null(request.region_id):
@@ -1169,6 +1261,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.delete_dbinstance):
+            query['DeleteDBInstance'] = request.delete_dbinstance
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
         if not DaraCore.is_null(request.region_id):
@@ -1501,6 +1595,8 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeAppInstanceAttributeResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.branch_name):
+            query['BranchName'] = request.branch_name
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
         if not DaraCore.is_null(request.region_id):
@@ -1531,6 +1627,8 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeAppInstanceAttributeResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.branch_name):
+            query['BranchName'] = request.branch_name
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
         if not DaraCore.is_null(request.region_id):
@@ -1829,6 +1927,8 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeInstanceAuthInfoResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.branch_name):
+            query['BranchName'] = request.branch_name
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
         if not DaraCore.is_null(request.region_id):
@@ -1859,6 +1959,8 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeInstanceAuthInfoResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.branch_name):
+            query['BranchName'] = request.branch_name
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
         if not DaraCore.is_null(request.region_id):
@@ -1903,6 +2005,8 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeInstanceEndpointsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.branch_name):
+            query['BranchName'] = request.branch_name
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
         if not DaraCore.is_null(request.region_id):
@@ -1933,6 +2037,8 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeInstanceEndpointsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.branch_name):
+            query['BranchName'] = request.branch_name
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
         if not DaraCore.is_null(request.region_id):
@@ -1977,6 +2083,8 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeInstanceIpWhitelistResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.branch_name):
+            query['BranchName'] = request.branch_name
         if not DaraCore.is_null(request.group_name):
             query['GroupName'] = request.group_name
         if not DaraCore.is_null(request.instance_name):
@@ -2009,6 +2117,8 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeInstanceIpWhitelistResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.branch_name):
+            query['BranchName'] = request.branch_name
         if not DaraCore.is_null(request.group_name):
             query['GroupName'] = request.group_name
         if not DaraCore.is_null(request.instance_name):
@@ -2055,6 +2165,8 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeInstanceRAGConfigResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.branch_name):
+            query['BranchName'] = request.branch_name
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
         if not DaraCore.is_null(request.region_id):
@@ -2085,6 +2197,8 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeInstanceRAGConfigResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.branch_name):
+            query['BranchName'] = request.branch_name
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
         if not DaraCore.is_null(request.region_id):
@@ -2129,6 +2243,8 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeInstanceSSLResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.branch_name):
+            query['BranchName'] = request.branch_name
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
         if not DaraCore.is_null(request.region_id):
@@ -2159,6 +2275,8 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeInstanceSSLResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.branch_name):
+            query['BranchName'] = request.branch_name
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
         if not DaraCore.is_null(request.region_id):
@@ -2203,6 +2321,8 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeInstanceStorageConfigResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.branch_name):
+            query['BranchName'] = request.branch_name
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
         if not DaraCore.is_null(request.region_id):
@@ -2233,6 +2353,8 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeInstanceStorageConfigResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.branch_name):
+            query['BranchName'] = request.branch_name
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
         if not DaraCore.is_null(request.region_id):
@@ -2379,6 +2501,76 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeMOTokenUsageDetailResponse:
         runtime = RuntimeOptions()
         return await self.describe_motoken_usage_detail_with_options_async(request, runtime)
+
+    def describe_mousage_detail_export_with_options(
+        self,
+        request: main_models.DescribeMOUsageDetailExportRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeMOUsageDetailExportResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeMOUsageDetailExport',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeMOUsageDetailExportResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_mousage_detail_export_with_options_async(
+        self,
+        request: main_models.DescribeMOUsageDetailExportRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeMOUsageDetailExportResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeMOUsageDetailExport',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeMOUsageDetailExportResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_mousage_detail_export(
+        self,
+        request: main_models.DescribeMOUsageDetailExportRequest,
+    ) -> main_models.DescribeMOUsageDetailExportResponse:
+        runtime = RuntimeOptions()
+        return self.describe_mousage_detail_export_with_options(request, runtime)
+
+    async def describe_mousage_detail_export_async(
+        self,
+        request: main_models.DescribeMOUsageDetailExportRequest,
+    ) -> main_models.DescribeMOUsageDetailExportResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_mousage_detail_export_with_options_async(request, runtime)
 
     def describe_model_operator_with_options(
         self,
@@ -2555,6 +2747,8 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeSandboxTemplatesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.branch_name):
+            query['BranchName'] = request.branch_name
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
         if not DaraCore.is_null(request.max_results):
@@ -2595,6 +2789,8 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeSandboxTemplatesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.branch_name):
+            query['BranchName'] = request.branch_name
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
         if not DaraCore.is_null(request.max_results):
@@ -2719,6 +2915,8 @@ class Client(OpenApiClient):
     ) -> main_models.DisableAgentRuntimeResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.branch_name):
+            query['BranchName'] = request.branch_name
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.instance_name):
@@ -2751,6 +2949,8 @@ class Client(OpenApiClient):
     ) -> main_models.DisableAgentRuntimeResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.branch_name):
+            query['BranchName'] = request.branch_name
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.instance_name):
@@ -2797,6 +2997,8 @@ class Client(OpenApiClient):
     ) -> main_models.EnableAgentRuntimeResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.branch_name):
+            query['BranchName'] = request.branch_name
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.instance_name):
@@ -2833,6 +3035,8 @@ class Client(OpenApiClient):
     ) -> main_models.EnableAgentRuntimeResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.branch_name):
+            query['BranchName'] = request.branch_name
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.instance_name):
@@ -4105,10 +4309,16 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.components):
             request.components_shrink = Utils.array_to_string_with_specified_style(tmp_req.components, 'Components', 'json')
         query = {}
+        if not DaraCore.is_null(request.branch_name):
+            query['BranchName'] = request.branch_name
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.components_shrink):
             query['Components'] = request.components_shrink
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.instance_class):
+            query['InstanceClass'] = request.instance_class
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
         if not DaraCore.is_null(request.region_id):
@@ -4143,10 +4353,16 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.components):
             request.components_shrink = Utils.array_to_string_with_specified_style(tmp_req.components, 'Components', 'json')
         query = {}
+        if not DaraCore.is_null(request.branch_name):
+            query['BranchName'] = request.branch_name
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.components_shrink):
             query['Components'] = request.components_shrink
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.instance_class):
+            query['InstanceClass'] = request.instance_class
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
         if not DaraCore.is_null(request.region_id):
@@ -4195,6 +4411,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.config_list):
             request.config_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.config_list, 'ConfigList', 'json')
         query = {}
+        if not DaraCore.is_null(request.branch_name):
+            query['BranchName'] = request.branch_name
         if not DaraCore.is_null(request.config_list_shrink):
             query['ConfigList'] = request.config_list_shrink
         if not DaraCore.is_null(request.instance_name):
@@ -4231,6 +4449,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.config_list):
             request.config_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.config_list, 'ConfigList', 'json')
         query = {}
+        if not DaraCore.is_null(request.branch_name):
+            query['BranchName'] = request.branch_name
         if not DaraCore.is_null(request.config_list_shrink):
             query['ConfigList'] = request.config_list_shrink
         if not DaraCore.is_null(request.instance_name):
@@ -4277,6 +4497,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyInstanceConfigResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.branch_name):
+            query['BranchName'] = request.branch_name
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.config_name):
@@ -4313,6 +4535,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyInstanceConfigResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.branch_name):
+            query['BranchName'] = request.branch_name
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.config_name):
@@ -4363,6 +4587,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyInstanceIpWhitelistResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.branch_name):
+            query['BranchName'] = request.branch_name
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.group_name):
@@ -4401,6 +4627,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyInstanceIpWhitelistResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.branch_name):
+            query['BranchName'] = request.branch_name
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.group_name):
@@ -4457,6 +4685,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.config_list):
             request.config_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.config_list, 'ConfigList', 'json')
         query = {}
+        if not DaraCore.is_null(request.branch_name):
+            query['BranchName'] = request.branch_name
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.config_list_shrink):
@@ -4497,6 +4727,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.config_list):
             request.config_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.config_list, 'ConfigList', 'json')
         query = {}
+        if not DaraCore.is_null(request.branch_name):
+            query['BranchName'] = request.branch_name
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.config_list_shrink):
@@ -4547,6 +4779,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyInstanceSSLResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.branch_name):
+            query['BranchName'] = request.branch_name
         if not DaraCore.is_null(request.catype):
             query['CAType'] = request.catype
         if not DaraCore.is_null(request.instance_name):
@@ -4585,6 +4819,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyInstanceSSLResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.branch_name):
+            query['BranchName'] = request.branch_name
         if not DaraCore.is_null(request.catype):
             query['CAType'] = request.catype
         if not DaraCore.is_null(request.instance_name):
@@ -4641,6 +4877,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.config_list):
             request.config_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.config_list, 'ConfigList', 'json')
         query = {}
+        if not DaraCore.is_null(request.branch_name):
+            query['BranchName'] = request.branch_name
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.config_list_shrink):
@@ -4679,6 +4917,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.config_list):
             request.config_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.config_list, 'ConfigList', 'json')
         query = {}
+        if not DaraCore.is_null(request.branch_name):
+            query['BranchName'] = request.branch_name
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.config_list_shrink):
@@ -5314,6 +5554,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.reset_api_key_with_options_async(request, runtime)
 
+    def reset_instance_keys_with_options(
+        self,
+        request: main_models.ResetInstanceKeysRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ResetInstanceKeysResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ResetInstanceKeys',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ResetInstanceKeysResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def reset_instance_keys_with_options_async(
+        self,
+        request: main_models.ResetInstanceKeysRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ResetInstanceKeysResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ResetInstanceKeys',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ResetInstanceKeysResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def reset_instance_keys(
+        self,
+        request: main_models.ResetInstanceKeysRequest,
+    ) -> main_models.ResetInstanceKeysResponse:
+        runtime = RuntimeOptions()
+        return self.reset_instance_keys_with_options(request, runtime)
+
+    async def reset_instance_keys_async(
+        self,
+        request: main_models.ResetInstanceKeysRequest,
+    ) -> main_models.ResetInstanceKeysResponse:
+        runtime = RuntimeOptions()
+        return await self.reset_instance_keys_with_options_async(request, runtime)
+
     def reset_instance_password_with_options(
         self,
         request: main_models.ResetInstancePasswordRequest,
@@ -5321,6 +5635,8 @@ class Client(OpenApiClient):
     ) -> main_models.ResetInstancePasswordResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.branch_name):
+            query['BranchName'] = request.branch_name
         if not DaraCore.is_null(request.dashboard_password):
             query['DashboardPassword'] = request.dashboard_password
         if not DaraCore.is_null(request.database_password):
@@ -5355,6 +5671,8 @@ class Client(OpenApiClient):
     ) -> main_models.ResetInstancePasswordResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.branch_name):
+            query['BranchName'] = request.branch_name
         if not DaraCore.is_null(request.dashboard_password):
             query['DashboardPassword'] = request.dashboard_password
         if not DaraCore.is_null(request.database_password):
@@ -5403,6 +5721,8 @@ class Client(OpenApiClient):
     ) -> main_models.RestartInstanceResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.branch_name):
+            query['BranchName'] = request.branch_name
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
         if not DaraCore.is_null(request.region_id):
@@ -5433,6 +5753,8 @@ class Client(OpenApiClient):
     ) -> main_models.RestartInstanceResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.branch_name):
+            query['BranchName'] = request.branch_name
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
         if not DaraCore.is_null(request.region_id):
@@ -5477,6 +5799,8 @@ class Client(OpenApiClient):
     ) -> main_models.StartInstanceResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.branch_name):
+            query['BranchName'] = request.branch_name
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
         if not DaraCore.is_null(request.region_id):
@@ -5507,6 +5831,8 @@ class Client(OpenApiClient):
     ) -> main_models.StartInstanceResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.branch_name):
+            query['BranchName'] = request.branch_name
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
         if not DaraCore.is_null(request.region_id):
@@ -5551,6 +5877,8 @@ class Client(OpenApiClient):
     ) -> main_models.StopInstanceResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.branch_name):
+            query['BranchName'] = request.branch_name
         if not DaraCore.is_null(request.force):
             query['Force'] = request.force
         if not DaraCore.is_null(request.instance_name):
@@ -5583,6 +5911,8 @@ class Client(OpenApiClient):
     ) -> main_models.StopInstanceResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.branch_name):
+            query['BranchName'] = request.branch_name
         if not DaraCore.is_null(request.force):
             query['Force'] = request.force
         if not DaraCore.is_null(request.instance_name):

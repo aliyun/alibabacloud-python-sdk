@@ -15,11 +15,11 @@ class GetConversationsResponseBody(DaraModel):
         limit: int = None,
         request_id: str = None,
     ):
-        # The returned results.
+        # The request result.
         self.data = data
-        # Indicates whether the current page is followed by a page.
+        # Indicates whether there is a next page.
         self.has_more = has_more
-        # The number of entries per page. Valid values: 1 to 100. Default value: 100.
+        # The number of entries per page for a paged query. Valid values: 1 to 100. Default value: 100.
         self.limit = limit
         # The request ID.
         self.request_id = request_id
@@ -76,16 +76,20 @@ class GetConversationsResponseBodyData(DaraModel):
         created_at: str = None,
         id: str = None,
         introduction: str = None,
+        is_running: bool = None,
         name: str = None,
+        updated_at: str = None,
     ):
-        # The creation time of the conversation.
+        # The creation time.
         self.created_at = created_at
-        # The ID of the history conversation.
+        # The ID of the historical conversation.
         self.id = id
-        # The introduction to the conversation.
+        # The conversation introduction.
         self.introduction = introduction
-        # The name of the history conversation.
+        self.is_running = is_running
+        # The name of the historical conversation.
         self.name = name
+        self.updated_at = updated_at
 
     def validate(self):
         pass
@@ -104,8 +108,14 @@ class GetConversationsResponseBodyData(DaraModel):
         if self.introduction is not None:
             result['Introduction'] = self.introduction
 
+        if self.is_running is not None:
+            result['IsRunning'] = self.is_running
+
         if self.name is not None:
             result['Name'] = self.name
+
+        if self.updated_at is not None:
+            result['UpdatedAt'] = self.updated_at
 
         return result
 
@@ -120,8 +130,14 @@ class GetConversationsResponseBodyData(DaraModel):
         if m.get('Introduction') is not None:
             self.introduction = m.get('Introduction')
 
+        if m.get('IsRunning') is not None:
+            self.is_running = m.get('IsRunning')
+
         if m.get('Name') is not None:
             self.name = m.get('Name')
+
+        if m.get('UpdatedAt') is not None:
+            self.updated_at = m.get('UpdatedAt')
 
         return self
 

@@ -14,33 +14,36 @@ class DescribeMonitorDataShrinkRequest(DaraModel):
         metric: str = None,
         start_time: int = None,
     ):
-        # The names of the API keys to use for filtering the data. If this parameter is not specified, data from all keys is returned.
+        # The API key name.
         self.api_key_name_shrink = api_key_name_shrink
-        # The end of the query time range, specified as a Unix timestamp in seconds.
+        # The end time. Format: Timestamp.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The instance ID.
+        # The instance name.
         self.instance_id = instance_id
-        # The aggregation interval for monitoring data, in seconds. Default: 15.
+        # The statistical period. Default value: 15s.
         self.interval = interval
-        # The metric to query. Valid values:
+        # The metric to query.
         # 
-        # - `pv`
+        # - pv
+        # - uv
         # 
-        # - `uv`
+        # - qps
         # 
-        # - `qps`
+        # - success_rate
         # 
-        # - `success_rate`
+        # - rt
         # 
-        # - `rt`
+        # - rate_limited_count
         # 
-        # - `rate_limited_count`
+        # - tpm
+        # 
+        # - cache
         # 
         # This parameter is required.
         self.metric = metric
-        # The start of the query time range, specified as a Unix timestamp in seconds.
+        # The start time. Format: Timestamp.
         # 
         # This parameter is required.
         self.start_time = start_time

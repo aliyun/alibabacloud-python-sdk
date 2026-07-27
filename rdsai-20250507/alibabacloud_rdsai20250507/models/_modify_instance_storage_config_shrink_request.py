@@ -7,20 +7,22 @@ from darabonba.model import DaraModel
 class ModifyInstanceStorageConfigShrinkRequest(DaraModel):
     def __init__(
         self,
+        branch_name: str = None,
         client_token: str = None,
         config_list_shrink: str = None,
         instance_name: str = None,
         region_id: str = None,
     ):
-        # The value of the configuration item.
+        self.branch_name = branch_name
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, which ensures that the request is not repeated.
         self.client_token = client_token
-        # The ID of the RDS Supabase instance.
+        # The list of storage configurations.
         self.config_list_shrink = config_list_shrink
-        # The region ID.
+        # The instance ID of the AI application.
         # 
         # This parameter is required.
         self.instance_name = instance_name
-        # The operation that you want to perform. Set the value to **ModifyInstanceStorageConfig**.
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -31,6 +33,9 @@ class ModifyInstanceStorageConfigShrinkRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.branch_name is not None:
+            result['BranchName'] = self.branch_name
+
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
 
@@ -47,6 +52,9 @@ class ModifyInstanceStorageConfigShrinkRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BranchName') is not None:
+            self.branch_name = m.get('BranchName')
+
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
 

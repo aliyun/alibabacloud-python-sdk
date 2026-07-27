@@ -16,23 +16,20 @@ class CreateApiKeyRequest(DaraModel):
         token_quota: int = None,
     ):
         self.daily_token_quota = daily_token_quota
-        # The instance ID.
+        # The instance name.
         self.instance_id = instance_id
-        # The API key name.
+        # The name of the API key.
         self.key_name = key_name
-        # The proportion of the total quota to allocate. This parameter applies only when `LimitType` is set to `ratio`.
+        # The quota percentage.
         self.limit_rate = limit_rate
-        # The limit type. Valid values:
-        # 
-        # - `ratio`: Sets the limit as a ratio of the total available quota.
-        # 
-        # - `fixed`: Sets the limit to a fixed number of tokens.
-        # 
-        # - `auto`: Automatically allocates the quota.
+        # The quota type. Valid values:
+        # - ratio: by percentage.
+        # - fixed: by fixed value.
+        # - auto: automatic allocation.
         self.limit_type = limit_type
         # The number of API keys to create. Default value: **1**.
         self.quantity = quantity
-        # The fixed token quota for the API key. This parameter applies only when `LimitType` is set to `fixed`.
+        # The quota for the current key.
         self.token_quota = token_quota
 
     def validate(self):

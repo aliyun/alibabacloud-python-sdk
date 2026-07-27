@@ -7,22 +7,29 @@ from darabonba.model import DaraModel
 class ResetInstancePasswordRequest(DaraModel):
     def __init__(
         self,
+        branch_name: str = None,
         dashboard_password: str = None,
         database_password: str = None,
         instance_name: str = None,
         region_id: str = None,
     ):
-        # The ID of the RDS Supabase instance.
-        self.dashboard_password = dashboard_password
+        self.branch_name = branch_name
         # The Supabase Dashboard password.
         # 
-        # The password must be 8 to 32 characters in length and must contain at least three of the following types: uppercase letters, lowercase letters, digits, and underscores (_).
+        # The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and underscores (_).
+        self.dashboard_password = dashboard_password
+        # The RDS database access password.
+        # 
+        # The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and underscores (_).
+        # 
+        # >Notice: This password change also updates the access passwords of the following accounts on the associated PostgreSQL instance. These accounts are required by Supabase: postgres, supabase_admin, supabase_auth_admin, supabase_functions_admin, supabase_storage_admin, authenticator, pgbouncer.
+        # </notice>
         self.database_password = database_password
-        # The region ID.
+        # The instance ID of the AI application.
         # 
         # This parameter is required.
         self.instance_name = instance_name
-        # The operation that you want to perform. Set the value to **ResetInstancePassword**.
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -33,6 +40,9 @@ class ResetInstancePasswordRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.branch_name is not None:
+            result['BranchName'] = self.branch_name
+
         if self.dashboard_password is not None:
             result['DashboardPassword'] = self.dashboard_password
 
@@ -49,6 +59,9 @@ class ResetInstancePasswordRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BranchName') is not None:
+            self.branch_name = m.get('BranchName')
+
         if m.get('DashboardPassword') is not None:
             self.dashboard_password = m.get('DashboardPassword')
 

@@ -13,14 +13,14 @@ class ChatMessagesShrinkRequest(DaraModel):
         parent_message_id: str = None,
         query: str = None,
     ):
-        # The ID of the conversation.
+        # The conversation ID.
         self.conversation_id = conversation_id
         self.event_mode = event_mode
-        # The inputs for the task.
+        # The task inputs.
         self.inputs_shrink = inputs_shrink
-        # The ID of the parent message.
+        # The parent message ID.
         self.parent_message_id = parent_message_id
-        # The content of the query.
+        # The query content.
         # 
         # This parameter is required.
         self.query = query

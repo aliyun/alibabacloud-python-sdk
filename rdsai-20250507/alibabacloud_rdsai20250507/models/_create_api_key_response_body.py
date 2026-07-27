@@ -15,13 +15,13 @@ class CreateApiKeyResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response data.
+        # The returned data.
         self.data = data
-        # The response message.
+        # The returned message.
         self.message = message
-        # The ID of the request.
+        # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # The request result.
         self.success = success
 
     def validate(self):
@@ -71,11 +71,11 @@ class CreateApiKeyResponseBodyData(DaraModel):
         custom_key_list: List[main_models.CreateApiKeyResponseBodyDataCustomKeyList] = None,
         system_api_key: str = None,
     ):
-        # The endpoint for model invocation.
+        # The URL for model invocation.
         self.base_url = base_url
         # The list of custom API keys.
         self.custom_key_list = custom_key_list
-        # The system-generated API key.
+        # The system-generated key.
         self.system_api_key = system_api_key
 
     def validate(self):
@@ -128,22 +128,22 @@ class CreateApiKeyResponseBodyDataCustomKeyList(DaraModel):
         limit_type: str = None,
         token_quota: int = None,
     ):
-        # The API key.
+        # Api Key
         self.api_key = api_key
         self.daily_token_quota = daily_token_quota
-        # The API key name.
+        # The name of the API key.
         self.key_name = key_name
-        # The quota ratio. This parameter takes effect only when **LimitType** is set to **ratio**.
+        # The quota percentage.
         self.limit_rate = limit_rate
-        # The quota allocation method. Valid values:
+        # The quota type. Valid values:
         # 
-        # - **fixed**: The quota is a fixed value.
+        # - **fixed**: by fixed value.
         # 
-        # - **ratio**: The quota is specified as a ratio of the total available resources.
+        # - **ratio**: by percentage.
         # 
-        # - **auto**: The quota is automatically allocated.
+        # - **auto**: automatic allocation.
         self.limit_type = limit_type
-        # The token quota for the API key.
+        # The quota for the current key.
         self.token_quota = token_quota
 
     def validate(self):

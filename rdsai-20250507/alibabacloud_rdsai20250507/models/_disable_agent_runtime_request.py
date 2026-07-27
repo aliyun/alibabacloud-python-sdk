@@ -7,17 +7,19 @@ from darabonba.model import DaraModel
 class DisableAgentRuntimeRequest(DaraModel):
     def __init__(
         self,
+        branch_name: str = None,
         client_token: str = None,
         instance_name: str = None,
         region_id: str = None,
     ):
-        # An idempotent parameter.
+        self.branch_name = branch_name
+        # The idempotence parameter.
         self.client_token = client_token
-        # The ID of the AI application instance.
+        # The instance ID of the AI application.
         # 
         # This parameter is required.
         self.instance_name = instance_name
-        # The ID of the region where the instance is located.
+        # The region ID of the instance.
         self.region_id = region_id
 
     def validate(self):
@@ -28,6 +30,9 @@ class DisableAgentRuntimeRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.branch_name is not None:
+            result['BranchName'] = self.branch_name
+
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
 
@@ -41,6 +46,9 @@ class DisableAgentRuntimeRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BranchName') is not None:
+            self.branch_name = m.get('BranchName')
+
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
 

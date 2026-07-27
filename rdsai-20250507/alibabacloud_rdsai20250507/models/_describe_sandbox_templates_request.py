@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class DescribeSandboxTemplatesRequest(DaraModel):
     def __init__(
         self,
+        branch_name: str = None,
         instance_name: str = None,
         max_results: int = None,
         next_token: str = None,
@@ -15,23 +16,24 @@ class DescribeSandboxTemplatesRequest(DaraModel):
         region_id: str = None,
         template_name: str = None,
     ):
-        # The ID of the RDS Supabase instance.
+        self.branch_name = branch_name
+        # The instance ID of the AI application.
         # 
         # This parameter is required.
         self.instance_name = instance_name
-        # This parameter is reserved.
+        # A reserved parameter. You do not need to specify this parameter.
         self.max_results = max_results
-        # The pagination token used to retrieve the next page of results. You do not need to specify this parameter for the first request.
+        # The pagination token.
         self.next_token = next_token
         # The page number.
         self.page_number = page_number
-        # The page size.
+        # The number of records per page.
         self.page_size = page_size
         # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The name of the sandbox template.
+        # The sandbox template name.
         self.template_name = template_name
 
     def validate(self):
@@ -42,6 +44,9 @@ class DescribeSandboxTemplatesRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.branch_name is not None:
+            result['BranchName'] = self.branch_name
+
         if self.instance_name is not None:
             result['InstanceName'] = self.instance_name
 
@@ -67,6 +72,9 @@ class DescribeSandboxTemplatesRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BranchName') is not None:
+            self.branch_name = m.get('BranchName')
+
         if m.get('InstanceName') is not None:
             self.instance_name = m.get('InstanceName')
 

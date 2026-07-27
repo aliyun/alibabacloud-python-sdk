@@ -12,13 +12,13 @@ class GetConversationsRequest(DaraModel):
         pinned: str = None,
         sort_by: str = None,
     ):
-        # The operation that you want to perform. Set the value to **GetConversations**.
+        # The ID of the last conversation record.
         self.last_id = last_id
-        # The ID of the last conversation.
+        # The number of entries per page for a paged query. Valid values: 1 to 100.
         self.limit = limit
-        # The number of entries per page. Valid values: 1 to 100.
+        # The favorite pinning flag for the application.
         self.pinned = pinned
-        # Specifies whether to pin the application.
+        # The sorting criterion.
         self.sort_by = sort_by
 
     def validate(self):

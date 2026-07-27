@@ -10,7 +10,7 @@ class DeleteAppInstanceResponseBody(DaraModel):
         instance_name: str = None,
         request_id: str = None,
     ):
-        # The ID of the RDS Supabase instance.
+        # The instance ID of the AI application.
         self.instance_name = instance_name
         # The request ID.
         self.request_id = request_id

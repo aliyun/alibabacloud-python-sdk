@@ -11,6 +11,7 @@ class DescribeInstanceAuthInfoResponseBody(DaraModel):
     def __init__(
         self,
         api_keys: main_models.DescribeInstanceAuthInfoResponseBodyApiKeys = None,
+        branch_name: str = None,
         config_list: List[main_models.DescribeInstanceAuthInfoResponseBodyConfigList] = None,
         instance_name: str = None,
         jwt_secret: str = None,
@@ -18,6 +19,7 @@ class DescribeInstanceAuthInfoResponseBody(DaraModel):
     ):
         # API Keys。
         self.api_keys = api_keys
+        self.branch_name = branch_name
         # The list of authentication configurations.
         self.config_list = config_list
         # The instance ID of the AI application.
@@ -43,6 +45,9 @@ class DescribeInstanceAuthInfoResponseBody(DaraModel):
         if self.api_keys is not None:
             result['ApiKeys'] = self.api_keys.to_map()
 
+        if self.branch_name is not None:
+            result['BranchName'] = self.branch_name
+
         result['ConfigList'] = []
         if self.config_list is not None:
             for k1 in self.config_list:
@@ -64,6 +69,9 @@ class DescribeInstanceAuthInfoResponseBody(DaraModel):
         if m.get('ApiKeys') is not None:
             temp_model = main_models.DescribeInstanceAuthInfoResponseBodyApiKeys()
             self.api_keys = temp_model.from_map(m.get('ApiKeys'))
+
+        if m.get('BranchName') is not None:
+            self.branch_name = m.get('BranchName')
 
         self.config_list = []
         if m.get('ConfigList') is not None:
@@ -90,17 +98,17 @@ class DescribeInstanceAuthInfoResponseBodyConfigList(DaraModel):
     ):
         # The name of the configuration item. Valid values:
         # 
-        # - **GOTRUE_EXTERNAL_EMAIL_ENABLED**: Specifies whether to allow external email addresses.
-        # - **GOTRUE_SITE_URL**: The website URL displayed when the AI application sends emails.
-        # - **GOTRUE_SMTP_PORT**: The port of the SMTP provider.
-        # - **GOTRUE_SMTP_SENDER_NAME**: The name of the email sender.
-        # - **GOTRUE_SMTP_USER**: The username of the SMTP provider.
-        # - **GOTRUE_SMTP_PASS**: The secret key of the SMTP provider.
-        # - **GOTRUE_SMTP_ADMIN_EMAIL**: The email address of the SMTP provider.
-        # - **GOTRUE_SMTP_HOST**: The host address of the SMTP provider.
-        # - **GOTRUE_MAILER_AUTOCONFIRM**: Specifies whether to enable automatic confirmation.
-        # - **GOTRUE_MAILER_OTP_EXP**: The validity period of the one-time password (OTP). Unit: seconds.
-        # - **GOTRUE_MAILER_OTP_LENGTH**: The length of the one-time password (OTP) verification code. The value must be an integer greater than or equal to 6.
+        # - **GOTRUE_EXTERNAL_EMAIL_ENABLED**: external email enabled.
+        # - **GOTRUE_SITE_URL**: the website URL displayed when the AI application sends emails.
+        # - **GOTRUE_SMTP_PORT**: the port of the SMTP provider.
+        # - **GOTRUE_SMTP_SENDER_NAME**: the name of the email sender.
+        # - **GOTRUE_SMTP_USER**: the username of the SMTP provider.
+        # - **GOTRUE_SMTP_PASS**: the secret of the SMTP provider.
+        # - **GOTRUE_SMTP_ADMIN_EMAIL**: the email address of the SMTP provider.
+        # - **GOTRUE_SMTP_HOST**: the host address of the SMTP provider.
+        # - **GOTRUE_MAILER_AUTOCONFIRM**: specifies whether to enable autoconfirm.
+        # - **GOTRUE_MAILER_OTP_EXP**: the validity period of the one-time password (OTP). Unit: seconds.
+        # - **GOTRUE_MAILER_OTP_LENGTH**: the length of the one-time password (OTP) verification code. The value must be an integer greater than or equal to 6.
         self.name = name
         # The value of the configuration item.
         self.value = value

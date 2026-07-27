@@ -18,17 +18,17 @@ class DescribeMOTokenUsageDetailResponseBody(DaraModel):
         total_count: int = None,
         usage_type: str = None,
     ):
-        # The cursor for the next page. An empty value indicates the last page.
+        # The cursor for the next page. An empty value indicates that the current page is the last page.
         self.next_cursor = next_cursor
         # The page number.
         self.page = page
         # The number of records per page.
         self.page_size = page_size
-        # The list of records returned.
+        # The list of records in the response.
         self.records = records
         # Id of the request
         self.request_id = request_id
-        # The total number of records that match the query conditions.
+        # The total number of records that match the query conditions. This parameter is optional and may not be returned by default.
         self.total_count = total_count
         # The usage type.
         self.usage_type = usage_type
@@ -100,6 +100,7 @@ class DescribeMOTokenUsageDetailResponseBody(DaraModel):
 class DescribeMOTokenUsageDetailResponseBodyRecords(DaraModel):
     def __init__(
         self,
+        cache_tokens: float = None,
         consumer_name: str = None,
         extra_info: str = None,
         input_tokens: float = None,
@@ -110,6 +111,8 @@ class DescribeMOTokenUsageDetailResponseBodyRecords(DaraModel):
         request_time: str = None,
         total_tokens: float = None,
     ):
+        # The number of input tokens that hit the cache.
+        self.cache_tokens = cache_tokens
         # The consumer associated with the API key.
         self.consumer_name = consumer_name
         # The additional information passed by the user in the extra_info field during the request. The value is a JSON string.
@@ -137,6 +140,9 @@ class DescribeMOTokenUsageDetailResponseBodyRecords(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.cache_tokens is not None:
+            result['CacheTokens'] = self.cache_tokens
+
         if self.consumer_name is not None:
             result['ConsumerName'] = self.consumer_name
 
@@ -168,6 +174,9 @@ class DescribeMOTokenUsageDetailResponseBodyRecords(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CacheTokens') is not None:
+            self.cache_tokens = m.get('CacheTokens')
+
         if m.get('ConsumerName') is not None:
             self.consumer_name = m.get('ConsumerName')
 

@@ -7,23 +7,25 @@ from darabonba.model import DaraModel
 class ModifyInstanceConfigRequest(DaraModel):
     def __init__(
         self,
+        branch_name: str = None,
         client_token: str = None,
         config_name: str = None,
         config_value: str = None,
         instance_name: str = None,
         region_id: str = None,
     ):
-        # The ID of the RDS Supabase instance.
+        self.branch_name = branch_name
+        # The idempotency parameter.
         self.client_token = client_token
-        # The client token that is used to ensure the idempotence of the request.
+        # The name of the configuration item to modify. This parameter is used together with ConfigValue.
         self.config_name = config_name
-        # The name of the configuration item that you want to modify. Configure this parameter together with the ConfigValue parameter.
+        # The value of the configuration item to modify. This parameter is used together with ConfigName.
         self.config_value = config_value
-        # The region ID of the instance.
+        # The instance ID of the AI application.
         # 
         # This parameter is required.
         self.instance_name = instance_name
-        # The operation that you want to perform. Set the value to **ModifyInstanceConfig**.
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -34,6 +36,9 @@ class ModifyInstanceConfigRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.branch_name is not None:
+            result['BranchName'] = self.branch_name
+
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
 
@@ -53,6 +58,9 @@ class ModifyInstanceConfigRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BranchName') is not None:
+            self.branch_name = m.get('BranchName')
+
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
 

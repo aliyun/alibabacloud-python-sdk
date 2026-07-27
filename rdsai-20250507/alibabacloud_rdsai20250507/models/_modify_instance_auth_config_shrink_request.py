@@ -7,15 +7,17 @@ from darabonba.model import DaraModel
 class ModifyInstanceAuthConfigShrinkRequest(DaraModel):
     def __init__(
         self,
+        branch_name: str = None,
         config_list_shrink: str = None,
         instance_name: str = None,
         region_id: str = None,
     ):
-        # The ID of the RDS Supabase instance.
+        self.branch_name = branch_name
+        # The list of authentication configurations.
         self.config_list_shrink = config_list_shrink
-        # The region ID.
+        # The instance ID of the AI application.
         self.instance_name = instance_name
-        # The operation that you want to perform. Set the value to **ModifyInstanceAuthConfig**.
+        # The region.
         self.region_id = region_id
 
     def validate(self):
@@ -26,6 +28,9 @@ class ModifyInstanceAuthConfigShrinkRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.branch_name is not None:
+            result['BranchName'] = self.branch_name
+
         if self.config_list_shrink is not None:
             result['ConfigList'] = self.config_list_shrink
 
@@ -39,6 +44,9 @@ class ModifyInstanceAuthConfigShrinkRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BranchName') is not None:
+            self.branch_name = m.get('BranchName')
+
         if m.get('ConfigList') is not None:
             self.config_list_shrink = m.get('ConfigList')
 

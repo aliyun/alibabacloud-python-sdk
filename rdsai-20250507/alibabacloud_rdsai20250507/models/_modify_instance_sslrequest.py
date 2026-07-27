@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class ModifyInstanceSSLRequest(DaraModel):
     def __init__(
         self,
+        branch_name: str = None,
         catype: str = None,
         instance_name: str = None,
         region_id: str = None,
@@ -14,28 +15,29 @@ class ModifyInstanceSSLRequest(DaraModel):
         server_cert: str = None,
         server_key: str = None,
     ):
-        # Enables or disables SSL. Valid values:
-        # 
-        # *   **1**: enables SSL.
-        # *   **0**: disables SSL.
+        self.branch_name = branch_name
+        # The certificate type. Currently, only **custom** is supported, which indicates that a custom certificate is used.
+        # > This parameter is required when **SSLEnabled** is set to **1**.
         self.catype = catype
-        # The region ID of the instance.
+        # The instance ID of the AI application.
         # 
         # This parameter is required.
         self.instance_name = instance_name
-        # The operation that you want to perform. Set the value to **ModifyInstanceSSL**.
+        # The region ID.
         self.region_id = region_id
-        # The ID of the RDS Supabase instance.
+        # Specifies whether to enable or disable SSL. Valid values:
+        # * **1**: Enable SSL.
+        # * **0**: Disable SSL.
         # 
         # This parameter is required.
         self.sslenabled = sslenabled
-        # The certificate type. Only **custom** is supported.
-        # 
-        # >  This parameter is required if **SSLEnabled** is set to **1**.
-        self.server_cert = server_cert
         # The content of the custom certificate.
         # 
-        # >  This parameter is required if **CAType** is set to **custom**.
+        # > This parameter is required when **CAType** is set to **custom**.
+        self.server_cert = server_cert
+        # The private key of the certificate.
+        # 
+        # > This parameter is required when **CAType** is set to **custom**.
         self.server_key = server_key
 
     def validate(self):
@@ -46,6 +48,9 @@ class ModifyInstanceSSLRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.branch_name is not None:
+            result['BranchName'] = self.branch_name
+
         if self.catype is not None:
             result['CAType'] = self.catype
 
@@ -68,6 +73,9 @@ class ModifyInstanceSSLRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BranchName') is not None:
+            self.branch_name = m.get('BranchName')
+
         if m.get('CAType') is not None:
             self.catype = m.get('CAType')
 

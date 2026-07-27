@@ -10,21 +10,22 @@ from darabonba.model import DaraModel
 class DescribeInstanceRAGConfigResponseBody(DaraModel):
     def __init__(
         self,
+        branch_name: str = None,
         config_list: List[main_models.DescribeInstanceRAGConfigResponseBodyConfigList] = None,
         instance_name: str = None,
         request_id: str = None,
         status: bool = None,
     ):
-        # The RAG agent configurations.
+        self.branch_name = branch_name
+        # The list of RAG Agent configurations.
         self.config_list = config_list
-        # The ID of the RDS Supabase instance.
+        # The instance ID of the AI application.
         self.instance_name = instance_name
         # The request ID.
         self.request_id = request_id
-        # The status of the RAG agent.
-        # 
-        # *   **true**: RAG agent is enabled.
-        # *   **false**: RAG agent is disabled.
+        # The RAG Agent status. Valid values:
+        # - **true**: Enabled.
+        # - **false**: Disabled.
         self.status = status
 
     def validate(self):
@@ -38,6 +39,9 @@ class DescribeInstanceRAGConfigResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.branch_name is not None:
+            result['BranchName'] = self.branch_name
+
         result['ConfigList'] = []
         if self.config_list is not None:
             for k1 in self.config_list:
@@ -56,6 +60,9 @@ class DescribeInstanceRAGConfigResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BranchName') is not None:
+            self.branch_name = m.get('BranchName')
+
         self.config_list = []
         if m.get('ConfigList') is not None:
             for k1 in m.get('ConfigList'):

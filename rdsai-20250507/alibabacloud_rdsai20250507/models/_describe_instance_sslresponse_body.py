@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class DescribeInstanceSSLResponseBody(DaraModel):
     def __init__(
         self,
+        branch_name: str = None,
         catype: str = None,
         instance_name: str = None,
         request_id: str = None,
@@ -14,18 +15,18 @@ class DescribeInstanceSSLResponseBody(DaraModel):
         server_cert: str = None,
         server_key: str = None,
     ):
-        # The type of the certificate. Set the value to **custom**, which indicates that a custom certificate is used.
+        self.branch_name = branch_name
+        # The certificate type. The value is **custom**, which indicates that a custom certificate is used.
         self.catype = catype
-        # The ID of the RDS Supabase instance.
+        # The instance ID of the AI application.
         self.instance_name = instance_name
         # The request ID.
         self.request_id = request_id
-        # Specifies whether to enable SSL encryption. Valid values:
-        # 
-        # *   **1**: enables SSL encryption.
-        # *   **0**: disables SSL encryption.
+        # Indicates whether SSL is enabled. Valid values:
+        # * **1**: Enabled.
+        # * **0**: Disabled.
         self.sslenabled = sslenabled
-        # The content of the custom certificate.
+        # The custom certificate content.
         self.server_cert = server_cert
         # The private key of the certificate.
         self.server_key = server_key
@@ -38,6 +39,9 @@ class DescribeInstanceSSLResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.branch_name is not None:
+            result['BranchName'] = self.branch_name
+
         if self.catype is not None:
             result['CAType'] = self.catype
 
@@ -60,6 +64,9 @@ class DescribeInstanceSSLResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BranchName') is not None:
+            self.branch_name = m.get('BranchName')
+
         if m.get('CAType') is not None:
             self.catype = m.get('CAType')
 

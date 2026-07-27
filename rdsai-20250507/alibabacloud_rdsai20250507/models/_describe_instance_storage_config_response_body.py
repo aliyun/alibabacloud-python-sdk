@@ -10,13 +10,15 @@ from darabonba.model import DaraModel
 class DescribeInstanceStorageConfigResponseBody(DaraModel):
     def __init__(
         self,
+        branch_name: str = None,
         config_list: List[main_models.DescribeInstanceStorageConfigResponseBodyConfigList] = None,
         instance_name: str = None,
         request_id: str = None,
     ):
-        # The storage configurations.
+        self.branch_name = branch_name
+        # The list of storage configurations.
         self.config_list = config_list
-        # The ID of the RDS Supabase instance.
+        # The instance ID of the AI application.
         self.instance_name = instance_name
         # The request ID.
         self.request_id = request_id
@@ -32,6 +34,9 @@ class DescribeInstanceStorageConfigResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.branch_name is not None:
+            result['BranchName'] = self.branch_name
+
         result['ConfigList'] = []
         if self.config_list is not None:
             for k1 in self.config_list:
@@ -47,6 +52,9 @@ class DescribeInstanceStorageConfigResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BranchName') is not None:
+            self.branch_name = m.get('BranchName')
+
         self.config_list = []
         if m.get('ConfigList') is not None:
             for k1 in m.get('ConfigList'):
@@ -67,15 +75,15 @@ class DescribeInstanceStorageConfigResponseBodyConfigList(DaraModel):
         name: str = None,
         value: str = None,
     ):
-        # The configuration item name. Valid values:
+        # The name of the configuration item. Valid values:
         # 
-        # *   **AWS_SESSION_TOKEN**: temporary OSS access token (session token).
-        # *   **AWS_ACCESS_KEY_ID**: the AccessKey ID of OSS.
-        # *   **AWS_SECRET_ACCESS_KEY**: the AccessKey secret of OSS.
-        # *   **GLOBAL_S3_BUCKET**: the name of the OSS bucket.
-        # *   **TENANT_ID**: the tenant ID of the OSS Prefix (prefix or directory).
-        # *   **GLOBAL_S3_ENDPOINT**: the endpoint of OSS.
-        # *   **REGION**: the region of OSS.
+        # - **AWS_SESSION_TOKEN**: the temporary access token (Session Token) of OSS.
+        # - **AWS_ACCESS_KEY_ID**: the AccessKey ID of OSS.
+        # - **AWS_SECRET_ACCESS_KEY**: the AccessKey Secret of OSS.
+        # - **GLOBAL_S3_BUCKET**: the bucket name of OSS.
+        # - **TENANT_ID**: the tenant ID of the OSS prefix (prefix or directory).
+        # - **GLOBAL_S3_ENDPOINT**: the endpoint of OSS.
+        # - **REGION**: the region of OSS.
         self.name = name
         # The value of the configuration item.
         self.value = value

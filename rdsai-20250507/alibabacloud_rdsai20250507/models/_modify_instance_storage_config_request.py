@@ -10,20 +10,22 @@ from darabonba.model import DaraModel
 class ModifyInstanceStorageConfigRequest(DaraModel):
     def __init__(
         self,
+        branch_name: str = None,
         client_token: str = None,
         config_list: List[main_models.ModifyInstanceStorageConfigRequestConfigList] = None,
         instance_name: str = None,
         region_id: str = None,
     ):
-        # The value of the configuration item.
+        self.branch_name = branch_name
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, which ensures that the request is not repeated.
         self.client_token = client_token
-        # The ID of the RDS Supabase instance.
+        # The list of storage configurations.
         self.config_list = config_list
-        # The region ID.
+        # The instance ID of the AI application.
         # 
         # This parameter is required.
         self.instance_name = instance_name
-        # The operation that you want to perform. Set the value to **ModifyInstanceStorageConfig**.
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -37,6 +39,9 @@ class ModifyInstanceStorageConfigRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.branch_name is not None:
+            result['BranchName'] = self.branch_name
+
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
 
@@ -55,6 +60,9 @@ class ModifyInstanceStorageConfigRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BranchName') is not None:
+            self.branch_name = m.get('BranchName')
+
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
 
@@ -80,13 +88,13 @@ class ModifyInstanceStorageConfigRequestConfigList(DaraModel):
     ):
         # The name of the configuration item. Valid values:
         # 
-        # - **AWS_SESSION_TOKEN** (optional): The temporary session token for OSS. If this parameter is not provided, validation is performed using the AccessKey ID and AccessKey secret.
-        # - **AWS_ACCESS_KEY_ID**: The AccessKey ID for OSS.
-        # - **AWS_SECRET_ACCESS_KEY**: The AccessKey secret for OSS.
-        # - **GLOBAL_S3_BUCKET**: The bucket name in OSS.
-        # - **TENANT_ID**: The folder name in OSS. No manual creation is required.
-        # - **GLOBAL_S3_ENDPOINT**: The endpoint (access domain name) for OSS.
-        # - **REGION**: The region of OSS.
+        # - **AWS_SESSION_TOKEN** (optional): the temporary access token (Session Token) for OSS. If this parameter is not specified, AccessKey ID and AccessKey Secret are used for authentication.
+        # - **AWS_ACCESS_KEY_ID**: the AccessKey ID for OSS.
+        # - **AWS_SECRET_ACCESS_KEY**: the AccessKey Secret for OSS.
+        # - **GLOBAL_S3_BUCKET**: the bucket name of OSS.
+        # - **TENANT_ID**: the OSS directory name. You do not need to create it in advance.
+        # - **GLOBAL_S3_ENDPOINT**: the endpoint of OSS.
+        # - **REGION**: the region of OSS.
         self.name = name
         # The value of the configuration item.
         self.value = value

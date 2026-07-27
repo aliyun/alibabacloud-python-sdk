@@ -7,12 +7,14 @@ from darabonba.model import DaraModel
 class StartInstanceRequest(DaraModel):
     def __init__(
         self,
+        branch_name: str = None,
         instance_name: str = None,
         region_id: str = None,
     ):
-        # The region ID.
+        self.branch_name = branch_name
+        # The instance ID of the AI application.
         self.instance_name = instance_name
-        # The operation that you want to perform. Set the value to **StartInstance**.
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -23,6 +25,9 @@ class StartInstanceRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.branch_name is not None:
+            result['BranchName'] = self.branch_name
+
         if self.instance_name is not None:
             result['InstanceName'] = self.instance_name
 
@@ -33,6 +38,9 @@ class StartInstanceRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BranchName') is not None:
+            self.branch_name = m.get('BranchName')
+
         if m.get('InstanceName') is not None:
             self.instance_name = m.get('InstanceName')
 

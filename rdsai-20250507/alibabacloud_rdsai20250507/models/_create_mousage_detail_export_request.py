@@ -4,44 +4,28 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class DescribeMOTokenUsageDetailRequest(DaraModel):
+class CreateMOUsageDetailExportRequest(DaraModel):
     def __init__(
         self,
         api_key: str = None,
-        consumer_name: str = None,
-        cursor: str = None,
         end_time: str = None,
         instance_id: str = None,
         model: str = None,
-        page: int = None,
-        page_size: int = None,
-        region: str = None,
         start_time: str = None,
         usage_type: str = None,
     ):
-        # The API key used for the request.
         self.api_key = api_key
-        # The consumer associated with the API key.
-        self.consumer_name = consumer_name
-        # The cursor-based pagination token. This parameter takes priority over Page. Leave this parameter empty for the first request. For subsequent requests, use the NextCursor value returned in the previous response.
-        self.cursor = cursor
-        # The end time in ISO 8601 format (UTC).
-        self.end_time = end_time
-        # The instance ID.
+        # 结束时间，UTC 0 时区 ISO8601 字符串，格式 yyyy-MM-ddTHH:mm:ssZ；与 StartTime 跨度不超过 30 天
         # 
         # This parameter is required.
+        self.end_time = end_time
+        # This parameter is required.
         self.instance_id = instance_id
-        # The model that was called.
         self.model = model
-        # The page number. Minimum value: 1. Default value: 1.
-        self.page = page
-        # The number of records per page.
-        self.page_size = page_size
-        # The region in which the instance resides.
-        self.region = region
-        # The start time in ISO 8601 format (UTC).
+        # 起始时间，UTC 0 时区 ISO8601 字符串，格式 yyyy-MM-ddTHH:mm:ssZ
+        # 
+        # This parameter is required.
         self.start_time = start_time
-        # The type of usage to query.
         self.usage_type = usage_type
 
     def validate(self):
@@ -55,12 +39,6 @@ class DescribeMOTokenUsageDetailRequest(DaraModel):
         if self.api_key is not None:
             result['ApiKey'] = self.api_key
 
-        if self.consumer_name is not None:
-            result['ConsumerName'] = self.consumer_name
-
-        if self.cursor is not None:
-            result['Cursor'] = self.cursor
-
         if self.end_time is not None:
             result['EndTime'] = self.end_time
 
@@ -69,15 +47,6 @@ class DescribeMOTokenUsageDetailRequest(DaraModel):
 
         if self.model is not None:
             result['Model'] = self.model
-
-        if self.page is not None:
-            result['Page'] = self.page
-
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-
-        if self.region is not None:
-            result['Region'] = self.region
 
         if self.start_time is not None:
             result['StartTime'] = self.start_time
@@ -92,12 +61,6 @@ class DescribeMOTokenUsageDetailRequest(DaraModel):
         if m.get('ApiKey') is not None:
             self.api_key = m.get('ApiKey')
 
-        if m.get('ConsumerName') is not None:
-            self.consumer_name = m.get('ConsumerName')
-
-        if m.get('Cursor') is not None:
-            self.cursor = m.get('Cursor')
-
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
 
@@ -106,15 +69,6 @@ class DescribeMOTokenUsageDetailRequest(DaraModel):
 
         if m.get('Model') is not None:
             self.model = m.get('Model')
-
-        if m.get('Page') is not None:
-            self.page = m.get('Page')
-
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-
-        if m.get('Region') is not None:
-            self.region = m.get('Region')
 
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')

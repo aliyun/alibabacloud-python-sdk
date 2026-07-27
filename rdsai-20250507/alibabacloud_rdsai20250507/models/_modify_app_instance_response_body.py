@@ -10,10 +10,12 @@ from darabonba.model import DaraModel
 class ModifyAppInstanceResponseBody(DaraModel):
     def __init__(
         self,
+        branch_name: str = None,
         components: List[main_models.ModifyAppInstanceResponseBodyComponents] = None,
         instance_name: str = None,
         request_id: str = None,
     ):
+        self.branch_name = branch_name
         self.components = components
         self.instance_name = instance_name
         self.request_id = request_id
@@ -29,6 +31,9 @@ class ModifyAppInstanceResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.branch_name is not None:
+            result['BranchName'] = self.branch_name
+
         result['Components'] = []
         if self.components is not None:
             for k1 in self.components:
@@ -44,6 +49,9 @@ class ModifyAppInstanceResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BranchName') is not None:
+            self.branch_name = m.get('BranchName')
+
         self.components = []
         if m.get('Components') is not None:
             for k1 in m.get('Components'):

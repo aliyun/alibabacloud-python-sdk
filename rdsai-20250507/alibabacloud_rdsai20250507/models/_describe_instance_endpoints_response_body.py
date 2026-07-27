@@ -10,16 +10,18 @@ from darabonba.model import DaraModel
 class DescribeInstanceEndpointsResponseBody(DaraModel):
     def __init__(
         self,
+        branch_name: str = None,
         dbinstance_endpoints: List[main_models.DescribeInstanceEndpointsResponseBodyDBInstanceEndpoints] = None,
         instance_endpoints: List[main_models.DescribeInstanceEndpointsResponseBodyInstanceEndpoints] = None,
         instance_name: str = None,
         request_id: str = None,
     ):
-        # The information about the endpoints of the RDS instance.
+        self.branch_name = branch_name
+        # The endpoints of the database instance.
         self.dbinstance_endpoints = dbinstance_endpoints
-        # The information about the endpoints of the RDS Supabase instance.
+        # The endpoints of the AI application instance.
         self.instance_endpoints = instance_endpoints
-        # The ID of the RDS Supabase instance.
+        # The instance ID of the AI application.
         self.instance_name = instance_name
         # The request ID.
         self.request_id = request_id
@@ -39,6 +41,9 @@ class DescribeInstanceEndpointsResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.branch_name is not None:
+            result['BranchName'] = self.branch_name
+
         result['DBInstanceEndpoints'] = []
         if self.dbinstance_endpoints is not None:
             for k1 in self.dbinstance_endpoints:
@@ -59,6 +64,9 @@ class DescribeInstanceEndpointsResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BranchName') is not None:
+            self.branch_name = m.get('BranchName')
+
         self.dbinstance_endpoints = []
         if m.get('DBInstanceEndpoints') is not None:
             for k1 in m.get('DBInstanceEndpoints'):
@@ -87,16 +95,16 @@ class DescribeInstanceEndpointsResponseBodyInstanceEndpoints(DaraModel):
         ip_type: str = None,
         port: str = None,
     ):
-        # The endpoint of the RDS Supabase instance.
+        # The endpoint.
         self.connection_string = connection_string
-        # The IP address used to access the RDS Supabase instance.
+        # The IP address.
         self.ip = ip
-        # The network type of the RDS Supabase instance. Valid values:
+        # The network type. Valid values:
         # 
-        # *   **public**: Internet
-        # *   **vpc**: VPC
+        # - **public**: Internet.
+        # - **vpc**: private network.
         self.ip_type = ip_type
-        # The port used to access the RDS Supabase instance.
+        # The connection port.
         self.port = port
 
     def validate(self):
@@ -144,14 +152,14 @@ class DescribeInstanceEndpointsResponseBodyDBInstanceEndpoints(DaraModel):
         ip_type: str = None,
         port: str = None,
     ):
-        # The endpoint of the RDS instance.
+        # The endpoint.
         self.connection_string = connection_string
-        # The network type of the RDS instance. Valid values:
+        # The network type. Valid values:
         # 
-        # *   **public**: Internet
-        # *   **vpc**: VPC
+        # - **public**: Internet.
+        # - **vpc**: private network.
         self.ip_type = ip_type
-        # The port used to access the RDS instance.
+        # The connection port.
         self.port = port
 
     def validate(self):

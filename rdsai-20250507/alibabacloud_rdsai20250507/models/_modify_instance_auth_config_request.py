@@ -10,15 +10,17 @@ from darabonba.model import DaraModel
 class ModifyInstanceAuthConfigRequest(DaraModel):
     def __init__(
         self,
+        branch_name: str = None,
         config_list: List[main_models.ModifyInstanceAuthConfigRequestConfigList] = None,
         instance_name: str = None,
         region_id: str = None,
     ):
-        # The ID of the RDS Supabase instance.
+        self.branch_name = branch_name
+        # The list of authentication configurations.
         self.config_list = config_list
-        # The region ID.
+        # The instance ID of the AI application.
         self.instance_name = instance_name
-        # The operation that you want to perform. Set the value to **ModifyInstanceAuthConfig**.
+        # The region.
         self.region_id = region_id
 
     def validate(self):
@@ -32,6 +34,9 @@ class ModifyInstanceAuthConfigRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.branch_name is not None:
+            result['BranchName'] = self.branch_name
+
         result['ConfigList'] = []
         if self.config_list is not None:
             for k1 in self.config_list:
@@ -47,6 +52,9 @@ class ModifyInstanceAuthConfigRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BranchName') is not None:
+            self.branch_name = m.get('BranchName')
+
         self.config_list = []
         if m.get('ConfigList') is not None:
             for k1 in m.get('ConfigList'):
@@ -67,19 +75,19 @@ class ModifyInstanceAuthConfigRequestConfigList(DaraModel):
         name: str = None,
         value: str = None,
     ):
-        # The name of the configuration item. Valid values:
+        # The configuration item name. Valid values:
         # 
-        # - **GOTRUE_EXTERNAL_EMAIL_ENABLED**: Enables external email addresses.
-        # - **GOTRUE_SITE_URL**: The website URL displayed in emails sent by the AI application.
-        # - **GOTRUE_SMTP_PORT**: The port of the SMTP service provider.
-        # - **GOTRUE_SMTP_SENDER_NAME**: The name of the email sender.
-        # - **GOTRUE_SMTP_USER**: The username of the SMTP service provider.
-        # - **GOTRUE_SMTP_PASS**: The key of the SMTP service provider.
-        # - **GOTRUE_SMTP_ADMIN_EMAIL**: The email address of the SMTP service provider.
-        # - **GOTRUE_SMTP_HOST**: The host address of the SMTP service provider.
-        # - **GOTRUE_MAILER_AUTOCONFIRM**: Specifies whether automatic confirmation is enabled.
-        # - **GOTRUE_MAILER_OTP_EXP**: The validity period of the one-time password (OTP), in seconds.
-        # - **GOTRUE_MAILER_OTP_LENGTH**: The length of the verification code for the one-time password (OTP). The value must be an integer greater than or equal to 6.
+        # - **GOTRUE_EXTERNAL_EMAIL_ENABLED**: specifies whether to allow external email addresses.
+        # - **GOTRUE_SITE_URL**: the website URL displayed when the AI application sends emails.
+        # - **GOTRUE_SMTP_PORT**: the port of the SMTP provider.
+        # - **GOTRUE_SMTP_SENDER_NAME**: the name of the email sender.
+        # - **GOTRUE_SMTP_USER**: the username of the SMTP provider.
+        # - **GOTRUE_SMTP_PASS**: the secret key of the SMTP provider.
+        # - **GOTRUE_SMTP_ADMIN_EMAIL**: the email address of the SMTP provider.
+        # - **GOTRUE_SMTP_HOST**: the host address of the SMTP provider.
+        # - **GOTRUE_MAILER_AUTOCONFIRM**: specifies whether to enable automatic confirmation.
+        # - **GOTRUE_MAILER_OTP_EXP**: the validity period of the one-time password (OTP). Unit: seconds.
+        # - **GOTRUE_MAILER_OTP_LENGTH**: the length of the one-time password (OTP) verification code. The value must be an integer greater than or equal to 6.
         self.name = name
         # The value of the configuration item.
         self.value = value

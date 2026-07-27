@@ -14,14 +14,14 @@ class ChatMessagesRequest(DaraModel):
         parent_message_id: str = None,
         query: str = None,
     ):
-        # The ID of the conversation.
+        # The conversation ID.
         self.conversation_id = conversation_id
         self.event_mode = event_mode
-        # The inputs for the task.
+        # The task inputs.
         self.inputs = inputs
-        # The ID of the parent message.
+        # The parent message ID.
         self.parent_message_id = parent_message_id
-        # The content of the query.
+        # The query content.
         # 
         # This parameter is required.
         self.query = query
@@ -84,12 +84,12 @@ class ChatMessagesRequestInputs(DaraModel):
         think_effort: str = None,
         timezone: str = None,
     ):
-        # The custom agent ID.
+        # The user-specific agent ID.
         self.custom_agent_id = custom_agent_id
         self.enable_thinking = enable_thinking
-        # The language of the conversation.
+        # The conversation language.
         self.language = language
-        # The ID of the region.
+        # The region ID.
         self.region_id = region_id
         self.think_effort = think_effort
         # The time zone. Default value: **Asia/Shanghai**.
