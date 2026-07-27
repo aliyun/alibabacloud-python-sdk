@@ -10,21 +10,24 @@ class OrderPageQuery(DaraModel):
     def __init__(
         self,
         order_id_list: List[str] = None,
+        out_purchase_order_id: str = None,
         page_number: int = None,
         page_size: int = None,
         purchase_order_id: str = None,
     ):
-        # Collection of primary order IDs
+        # The collection of primary order IDs.
         self.order_id_list = order_id_list
-        # Page number
+        # The external purchase order ID.
+        self.out_purchase_order_id = out_purchase_order_id
+        # The page number.
         # 
         # This parameter is required.
         self.page_number = page_number
-        # Quantity per page
+        # The number of entries per page.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # Purchase order ID
+        # The purchase order ID.
         self.purchase_order_id = purchase_order_id
 
     def validate(self):
@@ -37,6 +40,9 @@ class OrderPageQuery(DaraModel):
             result = _map
         if self.order_id_list is not None:
             result['orderIdList'] = self.order_id_list
+
+        if self.out_purchase_order_id is not None:
+            result['outPurchaseOrderId'] = self.out_purchase_order_id
 
         if self.page_number is not None:
             result['pageNumber'] = self.page_number
@@ -53,6 +59,9 @@ class OrderPageQuery(DaraModel):
         m = m or dict()
         if m.get('orderIdList') is not None:
             self.order_id_list = m.get('orderIdList')
+
+        if m.get('outPurchaseOrderId') is not None:
+            self.out_purchase_order_id = m.get('outPurchaseOrderId')
 
         if m.get('pageNumber') is not None:
             self.page_number = m.get('pageNumber')

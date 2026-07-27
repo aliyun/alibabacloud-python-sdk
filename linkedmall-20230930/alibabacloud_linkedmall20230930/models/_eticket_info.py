@@ -17,37 +17,28 @@ class EticketInfo(DaraModel):
         use_time: str = None,
         used_num: int = None,
     ):
-        # The number of available units.
+        # The number of unredeemed voucher electronic credentials.
         self.available_num = available_num
-        # The unique code for the e-ticket.
+        # The code of the voucher electronic credential.
         self.code = code
-        # The status of the e-ticket.
-        # 
-        # > Valid enum values:
-        # >
+        # The status of the voucher electronic credential.
+        # > Valid values:
         # > - 1: valid
-        # >
         # > - -1: redeemed
-        # >
         # > - -2: expired
-        # >
-        # > - -5: expired
-        # >
-        # > - -8: expired
+        # > - 100: locked
         self.code_status = code_status
-        # The end time of the e-ticket validity period.
+        # The end time of the validity period for the voucher electronic credential.
         self.end_time = end_time
-        # The number of locked units.
+        # The number of voucher electronic credentials in locked status.
         self.lock_num = lock_num
-        # The URL of the QR code image for the e-ticket.
-        # 
-        # > This field is not currently populated. Distributors must generate the QR code using the `code` field.
+        # The URL of the QR code image for the voucher electronic credential.
         self.qrcode_url = qrcode_url
-        # The start time of the e-ticket validity period.
+        # The start time of the validity period for the voucher electronic credential.
         self.start_time = start_time
-        # The time the e-ticket was redeemed.
+        # The redemption time of the voucher electronic credential.
         self.use_time = use_time
-        # The number of redeemed units.
+        # The number of redeemed voucher electronic credentials.
         self.used_num = used_num
 
     def validate(self):

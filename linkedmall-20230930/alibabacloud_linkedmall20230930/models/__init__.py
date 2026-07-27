@@ -9,6 +9,7 @@ from ._category_list_query import CategoryListQuery
 from ._category_list_result import CategoryListResult
 from ._confirm_disburse_cmd import ConfirmDisburseCmd
 from ._confirm_disburse_result import ConfirmDisburseResult
+from ._confirm_receipt_cmd import ConfirmReceiptCmd
 from ._cooperation_shop import CooperationShop
 from ._create_ali_pay_url_request import CreateAliPayUrlRequest
 from ._create_ali_pay_url_result import CreateAliPayUrlResult
@@ -144,6 +145,7 @@ __all__ = [
     CategoryListResult,
     ConfirmDisburseCmd,
     ConfirmDisburseResult,
+    ConfirmReceiptCmd,
     CooperationShop,
     CreateAliPayUrlRequest,
     CreateAliPayUrlResult,
