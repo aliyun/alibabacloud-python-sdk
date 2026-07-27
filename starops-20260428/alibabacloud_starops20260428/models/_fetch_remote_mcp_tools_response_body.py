@@ -10,7 +10,9 @@ class FetchRemoteMcpToolsResponseBody(DaraModel):
         request_id: str = None,
         tools: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The raw tools/list response returned by the remote MCP service.
         self.tools = tools
 
     def validate(self):

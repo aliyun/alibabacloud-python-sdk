@@ -13,7 +13,9 @@ class ListDigitalEmployeeSkillVersionsResponseBody(DaraModel):
         data: List[main_models.ListDigitalEmployeeSkillVersionsResponseBodyData] = None,
         request_id: str = None,
     ):
+        # A list of previous skill versions.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -62,15 +64,25 @@ class ListDigitalEmployeeSkillVersionsResponseBodyData(DaraModel):
         update_time: str = None,
         version: str = None,
     ):
+        # The time when the skill version was created.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.create_time = create_time
+        # The description.
         self.description = description
+        # The display name.
         self.display_name = display_name
+        # Indicates whether the skill version is enabled.
         self.enable = enable
+        # The remark for the skill version.
         self.remark = remark
+        # The skill name.
         self.skill_name = skill_name
+        # The time when the skill version was last updated.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.update_time = update_time
+        # The version number.
         self.version = version
 
     def validate(self):

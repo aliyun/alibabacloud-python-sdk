@@ -10,7 +10,9 @@ class Tag(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The key for the tag.
         self.key = key
+        # The value for the tag.
         self.value = value
 
     def validate(self):

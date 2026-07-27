@@ -17,11 +17,17 @@ class GetThreadDataResponseBody(DaraModel):
         request_id: str = None,
         thread_id: str = None,
     ):
+        # The message data.
         self.data = data
+        # The name of the current digital employee.
         self.digital_employee_name = digital_employee_name
+        # The maximum number of results to return.
         self.max_results = max_results
+        # The token to retrieve the next page of results. If this parameter is not returned, there are no more results.
         self.next_token = next_token
+        # The unique ID for this GetThreadData API request.
         self.request_id = request_id
+        # The unique ID of the thread.
         self.thread_id = thread_id
 
     def validate(self):
@@ -89,8 +95,11 @@ class GetThreadDataResponseBodyData(DaraModel):
         request_id: str = None,
         trace_id: str = None,
     ):
+        # A list of messages in the thread.
         self.messages = messages
+        # The ID of the original request that generated this message.
         self.request_id = request_id
+        # The unique ID that identifies the entire trace of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -150,18 +159,31 @@ class GetThreadDataResponseBodyDataMessages(DaraModel):
         type: str = None,
         version: str = None,
     ):
+        # A list of called agents.
         self.agents = agents
+        # A list of generated artifacts.
         self.artifacts = artifacts
+        # The current call ID.
         self.call_id = call_id
+        # The contents of the message.
         self.contents = contents
+        # The message details.
         self.detail = detail
+        # A list of events.
         self.events = events
+        # The parent call ID.
         self.parent_call_id = parent_call_id
+        # The role that initiates the message.
         self.role = role
+        # The sequence number of the message.
         self.seq = seq
+        # The message creation time in nanoseconds since the Unix epoch.
         self.timestamp = timestamp
+        # A list of tools used to generate the message.
         self.tools = tools
+        # The message type.
         self.type = type
+        # The message data version.
         self.version = version
 
     def validate(self):

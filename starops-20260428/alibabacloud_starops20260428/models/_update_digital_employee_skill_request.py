@@ -16,12 +16,19 @@ class UpdateDigitalEmployeeSkillRequest(DaraModel):
         files: List[main_models.UpdateDigitalEmployeeSkillRequestFiles] = None,
         remark: str = None,
     ):
+        # The description of the skill.
         self.description = description
+        # The display name of the skill.
         self.display_name = display_name
+        # Specifies whether the skill is enabled.
+        # 
         # This parameter is required.
         self.enable = enable
+        # An array of skill files.
+        # 
         # This parameter is required.
         self.files = files
+        # Notes or comments about the skill.
         self.remark = remark
 
     def validate(self):
@@ -82,7 +89,9 @@ class UpdateDigitalEmployeeSkillRequestFiles(DaraModel):
         content: str = None,
         name: str = None,
     ):
+        # The content of the skill file.
         self.content = content
+        # The name of the skill file.
         self.name = name
 
     def validate(self):

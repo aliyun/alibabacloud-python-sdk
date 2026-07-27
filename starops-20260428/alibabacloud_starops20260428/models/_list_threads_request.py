@@ -17,11 +17,17 @@ class ListThreadsRequest(DaraModel):
         status: str = None,
         thread_id: str = None,
     ):
+        # Filters the results. If this parameter is omitted, the operation returns all threads in the instance.
         self.filter = filter
+        # Specifies whether to include threads created by missions.
         self.include_mission = include_mission
+        # The maximum number of results to return. Maximum value: 200.
         self.max_results = max_results
+        # The pagination token.
         self.next_token = next_token
+        # The status of the thread.
         self.status = status
+        # The thread ID.
         self.thread_id = thread_id
 
     def validate(self):
@@ -88,8 +94,12 @@ class ListThreadsRequestFilter(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The filter key. Supported values are title, workspace, and project.
+        # 
         # This parameter is required.
         self.key = key
+        # The value for the filter key.
+        # 
         # This parameter is required.
         self.value = value
 

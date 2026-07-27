@@ -18,16 +18,28 @@ class CreateMcpServiceRequest(DaraModel):
         network: main_models.CreateMcpServiceRequestNetwork = None,
         tools: List[main_models.CreateMcpServiceRequestTools] = None,
     ):
+        # The request body parameters.
+        # 
         # This parameter is required.
         self.connection = connection
+        # The description of the MCP service.
         self.description = description
+        # The display name of the MCP service.
         self.display_name = display_name
+        # Specifies whether to enable the MCP service.
+        # 
         # This parameter is required.
         self.enable = enable
+        # The service name of the MCP service.
+        # 
         # This parameter is required.
         self.mcp_service_name = mcp_service_name
+        # The request body parameters.
+        # 
         # This parameter is required.
         self.network = network
+        # The list of MCP tools.
+        # 
         # This parameter is required.
         self.tools = tools
 
@@ -116,18 +128,31 @@ class CreateMcpServiceRequestTools(DaraModel):
         output_schema: Dict[str, Any] = None,
         title: str = None,
     ):
+        # The request body parameters.
         self.annotations = annotations
+        # Specifies whether user confirmation is required before calling the MCP tool.
         self.confirm = confirm
+        # The description of the MCP tool.
         self.description = description
+        # The display name of the MCP tool.
         self.display_name = display_name
+        # Specifies whether to enable the MCP tool.
         self.enable = enable
+        # The request body parameters.
         self.execution = execution
+        # The list of MCP tool icons.
         self.icons = icons
+        # The request body parameters.
+        # 
         # This parameter is required.
         self.input_schema = input_schema
+        # The name of the MCP tool.
+        # 
         # This parameter is required.
         self.name = name
+        # The request body parameters.
         self.output_schema = output_schema
+        # The title of the MCP tool.
         self.title = title
 
     def validate(self):
@@ -223,15 +248,25 @@ class CreateMcpServiceRequestNetwork(DaraModel):
         vpc_id: str = None,
         vsw_id: str = None,
     ):
+        # The IP address used to access the MCP service over the VPC network.
         self.access_ip = access_ip
+        # The port used to access the MCP service over the VPC network. Valid values: 1 to 65535.
         self.access_port = access_port
+        # The gateway ID.
         self.gateway_id = gateway_id
+        # The MCP Server instance ID.
         self.mcp_server_id = mcp_server_id
+        # The network access mode of the MCP service. Valid values: public and vpc.
+        # 
         # This parameter is required.
         self.mode = mode
+        # The region where the VPC network resides.
         self.region = region
+        # The security group ID.
         self.security_group_id = security_group_id
+        # The VPC ID.
         self.vpc_id = vpc_id
+        # The vSwitch ID.
         self.vsw_id = vsw_id
 
     def validate(self):
@@ -307,16 +342,26 @@ class CreateMcpServiceRequestConnection(DaraModel):
         self,
         auth: main_models.CreateMcpServiceRequestConnectionAuth = None,
         endpoint: str = None,
+        headers: Dict[str, str] = None,
         platform: str = None,
         timeout: int = None,
         transport: str = None,
     ):
+        # The request body parameters.
         self.auth = auth
+        # The access endpoint of the MCP service.
+        # 
         # This parameter is required.
         self.endpoint = endpoint
+        self.headers = headers
+        # The platform type of the MCP service. Valid values: AIGateway and Custom.
+        # 
         # This parameter is required.
         self.platform = platform
+        # The timeout period for requests to the MCP service. Unit: milliseconds.
         self.timeout = timeout
+        # The transport protocol of the MCP service. Valid values: http and sse.
+        # 
         # This parameter is required.
         self.transport = transport
 
@@ -334,6 +379,9 @@ class CreateMcpServiceRequestConnection(DaraModel):
 
         if self.endpoint is not None:
             result['endpoint'] = self.endpoint
+
+        if self.headers is not None:
+            result['headers'] = self.headers
 
         if self.platform is not None:
             result['platform'] = self.platform
@@ -355,6 +403,9 @@ class CreateMcpServiceRequestConnection(DaraModel):
         if m.get('endpoint') is not None:
             self.endpoint = m.get('endpoint')
 
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+
         if m.get('platform') is not None:
             self.platform = m.get('platform')
 
@@ -372,8 +423,9 @@ class CreateMcpServiceRequestConnectionAuth(DaraModel):
         key_info: Dict[str, str] = None,
         type: str = None,
     ):
-        # key
+        # The request body parameters.
         self.key_info = key_info
+        # The authentication type. Currently, only bearer is supported.
         self.type = type
 
     def validate(self):

@@ -17,12 +17,17 @@ class ListThreadsResponseBody(DaraModel):
         threads: List[main_models.ListThreadsResponseBodyThreads] = None,
         total: int = None,
     ):
+        # The maximum number of results to return. The maximum value is 200.
         self.max_results = max_results
+        # A token to retrieve the next page of results. If this parameter is absent, no more results are available.
         self.next_token = next_token
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The thread ID.
         self.thread_id = thread_id
+        # A list of threads.
         self.threads = threads
+        # The total number of threads.
         self.total = total
 
     def validate(self):
@@ -96,14 +101,23 @@ class ListThreadsResponseBodyThreads(DaraModel):
         variables: main_models.ListThreadsResponseBodyThreadsVariables = None,
         version: int = None,
     ):
+        # A map of key-value pairs that you can attach to the thread.
         self.attributes = attributes
+        # The creation time of the thread, in ISO 8601 format.
         self.create_time = create_time
+        # The digital employee name.
         self.digital_employee_name = digital_employee_name
+        # The thread status.
         self.status = status
+        # The thread ID.
         self.thread_id = thread_id
+        # The thread title.
         self.title = title
+        # The last update time of the thread, in ISO 8601 format.
         self.update_time = update_time
+        # The thread variables.
         self.variables = variables
+        # The thread version.
         self.version = version
 
     def validate(self):
@@ -182,8 +196,9 @@ class ListThreadsResponseBodyThreadsVariables(DaraModel):
         project: str = None,
         workspace: str = None,
     ):
-        # SLS project。
+        # The project in SLS.
         self.project = project
+        # The workspace.
         self.workspace = workspace
 
     def validate(self):

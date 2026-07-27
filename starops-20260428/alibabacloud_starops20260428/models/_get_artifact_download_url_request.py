@@ -4,13 +4,11 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class GetArtifactRequest(DaraModel):
+class GetArtifactDownloadUrlRequest(DaraModel):
     def __init__(
         self,
         artifact_path: str = None,
     ):
-        # The path to the artifact.
-        # 
         # This parameter is required.
         self.artifact_path = artifact_path
 

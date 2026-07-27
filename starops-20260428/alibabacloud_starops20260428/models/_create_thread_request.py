@@ -14,8 +14,11 @@ class CreateThreadRequest(DaraModel):
         title: str = None,
         variables: main_models.CreateThreadRequestVariables = None,
     ):
+        # Key-value pairs that you can attach to the thread.
         self.attributes = attributes
+        # The title of the thread.
         self.title = title
+        # The variables for the thread. You can use them to pass custom data to the digital employee.
         self.variables = variables
 
     def validate(self):
@@ -58,7 +61,9 @@ class CreateThreadRequestVariables(DaraModel):
         project: str = None,
         workspace: str = None,
     ):
+        # The name of the Log Service project.
         self.project = project
+        # The name of the workspace.
         self.workspace = workspace
 
     def validate(self):

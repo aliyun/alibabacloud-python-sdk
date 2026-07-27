@@ -9,6 +9,7 @@ class CreateTicketResponseBody(DaraModel):
         self,
         ticket: str = None,
     ):
+        # The passwordless logon ticket.
         self.ticket = ticket
 
     def validate(self):

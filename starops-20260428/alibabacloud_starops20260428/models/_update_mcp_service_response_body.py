@@ -10,7 +10,9 @@ class UpdateMcpServiceResponseBody(DaraModel):
         mcp_service_name: str = None,
         request_id: str = None,
     ):
+        # The service name of the MCP service.
         self.mcp_service_name = mcp_service_name
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

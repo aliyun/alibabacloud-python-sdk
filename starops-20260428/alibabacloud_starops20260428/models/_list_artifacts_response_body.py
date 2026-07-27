@@ -15,9 +15,13 @@ class ListArtifactsResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
     ):
+        # The list of artifacts.
         self.artifacts = artifacts
+        # The maximum number of results returned on the current page.
         self.max_results = max_results
+        # The token for the next page of results. This parameter is returned only if more results are available. To retrieve the next page, use this token in the `nextToken` query parameter of your next request.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -74,9 +78,13 @@ class ListArtifactsResponseBodyArtifacts(DaraModel):
         path: str = None,
         size: int = None,
     ):
+        # Specifies whether the item is a directory. A value of `true` indicates a directory and `false` indicates a file.
         self.is_directory = is_directory
+        # The time the artifact was last modified, in UTC.
         self.last_modified = last_modified
+        # The path of the artifact.
         self.path = path
+        # The size of the artifact in bytes.
         self.size = size
 
     def validate(self):

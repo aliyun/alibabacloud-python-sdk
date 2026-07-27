@@ -16,10 +16,15 @@ class ListMcpServicesResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
+        # The maximum number of entries to return in this query.
         self.max_results = max_results
+        # The paginated results of MCP services.
         self.mcp_services = mcp_services
+        # The pagination token for the next query.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The total number of MCP services that match the query conditions.
         self.total = total
 
     def validate(self):
@@ -73,6 +78,7 @@ class ListMcpServicesResponseBodyMcpServices(DaraModel):
         self,
         mcp_service_list: List[main_models.ListMcpServicesResponseBodyMcpServicesMcpServiceList] = None,
     ):
+        # The list of MCP services.
         self.mcp_service_list = mcp_service_list
 
     def validate(self):
@@ -114,12 +120,19 @@ class ListMcpServicesResponseBodyMcpServicesMcpServiceList(DaraModel):
         network: main_models.ListMcpServicesResponseBodyMcpServicesMcpServiceListNetwork = None,
         tools: List[main_models.ListMcpServicesResponseBodyMcpServicesMcpServiceListTools] = None,
     ):
+        # The connection configuration of the MCP service.
         self.connection = connection
+        # The description of the MCP service.
         self.description = description
+        # The display name of the MCP service.
         self.display_name = display_name
+        # Indicates whether the MCP service is enabled.
         self.enable = enable
+        # The service name of the MCP service.
         self.mcp_service_name = mcp_service_name
+        # The network connectivity information.
         self.network = network
+        # The list of MCP tools.
         self.tools = tools
 
     def validate(self):
@@ -207,16 +220,27 @@ class ListMcpServicesResponseBodyMcpServicesMcpServiceListTools(DaraModel):
         output_schema: Dict[str, Any] = None,
         title: str = None,
     ):
+        # The annotation information of the MCP tool.
         self.annotations = annotations
+        # Indicates whether user confirmation is required before calling the MCP tool.
         self.confirm = confirm
+        # The description of the MCP tool.
         self.description = description
+        # The display name of the MCP tool.
         self.display_name = display_name
+        # Indicates whether the MCP tool is enabled.
         self.enable = enable
+        # The execution configuration of the MCP tool.
         self.execution = execution
+        # The list of MCP tool icons.
         self.icons = icons
+        # The JSON Schema of the MCP tool input parameters.
         self.input_schema = input_schema
+        # The name of the MCP tool.
         self.name = name
+        # The JSON Schema of the MCP tool output results.
         self.output_schema = output_schema
+        # The title of the MCP tool.
         self.title = title
 
     def validate(self):
@@ -312,14 +336,23 @@ class ListMcpServicesResponseBodyMcpServicesMcpServiceListNetwork(DaraModel):
         vpc_id: str = None,
         vsw_id: str = None,
     ):
+        # The IP address used to access the MCP service over the VPC network.
         self.access_ip = access_ip
+        # The port used to access the MCP service over the VPC network. Valid values: 1 to 65535.
         self.access_port = access_port
+        # The gateway ID.
         self.gateway_id = gateway_id
+        # The MCP Server instance ID.
         self.mcp_server_id = mcp_server_id
+        # The network access mode of the MCP service. Valid values: public and vpc.
         self.mode = mode
+        # The region where the VPC network is located.
         self.region = region
+        # The security group ID.
         self.security_group_id = security_group_id
+        # The VPC ID.
         self.vpc_id = vpc_id
+        # The vSwitch ID.
         self.vsw_id = vsw_id
 
     def validate(self):
@@ -395,14 +428,21 @@ class ListMcpServicesResponseBodyMcpServicesMcpServiceListConnection(DaraModel):
         self,
         auth: main_models.ListMcpServicesResponseBodyMcpServicesMcpServiceListConnectionAuth = None,
         endpoint: str = None,
+        headers: Dict[str, str] = None,
         platform: str = None,
         timeout: int = None,
         transport: str = None,
     ):
+        # The authentication configuration of the MCP service.
         self.auth = auth
+        # The access endpoint of the MCP service.
         self.endpoint = endpoint
+        self.headers = headers
+        # The platform type of the MCP service. Valid values: AIGateway and Custom.
         self.platform = platform
+        # The timeout period for requests to the MCP service. Unit: milliseconds.
         self.timeout = timeout
+        # The transport protocol of the MCP service. Valid values: http and sse.
         self.transport = transport
 
     def validate(self):
@@ -419,6 +459,9 @@ class ListMcpServicesResponseBodyMcpServicesMcpServiceListConnection(DaraModel):
 
         if self.endpoint is not None:
             result['endpoint'] = self.endpoint
+
+        if self.headers is not None:
+            result['headers'] = self.headers
 
         if self.platform is not None:
             result['platform'] = self.platform
@@ -440,6 +483,9 @@ class ListMcpServicesResponseBodyMcpServicesMcpServiceListConnection(DaraModel):
         if m.get('endpoint') is not None:
             self.endpoint = m.get('endpoint')
 
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+
         if m.get('platform') is not None:
             self.platform = m.get('platform')
 
@@ -457,7 +503,9 @@ class ListMcpServicesResponseBodyMcpServicesMcpServiceListConnectionAuth(DaraMod
         key_info: Dict[str, str] = None,
         type: str = None,
     ):
+        # The key-value information required for authentication.
         self.key_info = key_info
+        # The authentication type. Currently, bearer is supported.
         self.type = type
 
     def validate(self):

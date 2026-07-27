@@ -16,10 +16,15 @@ class ListDigitalEmployeesResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
+        # A list of digital employees.
         self.digital_employees = digital_employees
+        # The maximum number of entries returned.
         self.max_results = max_results
+        # The token to retrieve the next page of results.
         self.next_token = next_token
+        # The ID of the request.
         self.request_id = request_id
+        # The total count.
         self.total = total
 
     def validate(self):
@@ -90,18 +95,32 @@ class ListDigitalEmployeesResponseBodyDigitalEmployees(DaraModel):
         tags: List[main_models.Tag] = None,
         update_time: str = None,
     ):
+        # The custom attributes of the digital employee.
         self.attributes = attributes
+        # The creation time.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.create_time = create_time
+        # The default rule of the digital employee.
         self.default_rule = default_rule
+        # The description of the digital employee.
         self.description = description
+        # The display name of the digital employee.
         self.display_name = display_name
+        # The type of the digital employee.
         self.employee_type = employee_type
+        # A list of knowledge bases.
         self.knowledges = knowledges
+        # The name of the digital employee.
         self.name = name
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The RAM role ARN.
         self.role_arn = role_arn
+        # A list of tags.
         self.tags = tags
+        # The modification time.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.update_time = update_time
 
@@ -208,7 +227,9 @@ class ListDigitalEmployeesResponseBodyDigitalEmployeesKnowledges(DaraModel):
         bailian: List[main_models.ListDigitalEmployeesResponseBodyDigitalEmployeesKnowledgesBailian] = None,
         sop: List[Dict[str, Any]] = None,
     ):
+        # A list of Model Studio knowledge bases.
         self.bailian = bailian
+        # A list of SOP knowledge bases.
         self.sop = sop
 
     def validate(self):
@@ -253,9 +274,13 @@ class ListDigitalEmployeesResponseBodyDigitalEmployeesKnowledgesBailian(DaraMode
         region: str = None,
         workspace_id: str = None,
     ):
+        # The attributes of the knowledge base.
         self.attributes = attributes
+        # The ID of the Model Studio index.
         self.index_id = index_id
+        # The region of the knowledge base.
         self.region = region
+        # The ID of the Model Studio workspace.
         self.workspace_id = workspace_id
 
     def validate(self):

@@ -24,7 +24,11 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'cn-beijing': 'starops.cn-beijing.aliyuncs.com',
+            'ap-southeast-1': 'starops.ap-southeast-1.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('starops', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -43,6 +47,86 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(endpoint_map) and not DaraCore.is_null(endpoint_map.get(region_id)):
             return endpoint_map.get(region_id)
         return Utils.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
+
+    def create_artifact_upload_token_with_options(
+        self,
+        name: str,
+        request: main_models.CreateArtifactUploadTokenRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateArtifactUploadTokenResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.artifact_path):
+            query['artifactPath'] = request.artifact_path
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateArtifactUploadToken',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = f'/digitalEmployee/{DaraURL.percent_encode(name)}/artifacts/uploadToken',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateArtifactUploadTokenResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_artifact_upload_token_with_options_async(
+        self,
+        name: str,
+        request: main_models.CreateArtifactUploadTokenRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateArtifactUploadTokenResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.artifact_path):
+            query['artifactPath'] = request.artifact_path
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateArtifactUploadToken',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = f'/digitalEmployee/{DaraURL.percent_encode(name)}/artifacts/uploadToken',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateArtifactUploadTokenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_artifact_upload_token(
+        self,
+        name: str,
+        request: main_models.CreateArtifactUploadTokenRequest,
+    ) -> main_models.CreateArtifactUploadTokenResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_artifact_upload_token_with_options(name, request, headers, runtime)
+
+    async def create_artifact_upload_token_async(
+        self,
+        name: str,
+        request: main_models.CreateArtifactUploadTokenRequest,
+    ) -> main_models.CreateArtifactUploadTokenResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_artifact_upload_token_with_options_async(name, request, headers, runtime)
 
     def create_chat_with_sse(
         self,
@@ -254,6 +338,8 @@ class Client(OpenApiClient):
             body['resourceGroupId'] = request.resource_group_id
         if not DaraCore.is_null(request.role_arn):
             body['roleArn'] = request.role_arn
+        if not DaraCore.is_null(request.sandbox_network_policy):
+            body['sandboxNetworkPolicy'] = request.sandbox_network_policy
         if not DaraCore.is_null(request.tags):
             body['tags'] = request.tags
         if not DaraCore.is_null(request.tool_policy):
@@ -302,6 +388,8 @@ class Client(OpenApiClient):
             body['resourceGroupId'] = request.resource_group_id
         if not DaraCore.is_null(request.role_arn):
             body['roleArn'] = request.role_arn
+        if not DaraCore.is_null(request.sandbox_network_policy):
+            body['sandboxNetworkPolicy'] = request.sandbox_network_policy
         if not DaraCore.is_null(request.tags):
             body['tags'] = request.tags
         if not DaraCore.is_null(request.tool_policy):
@@ -1189,6 +1277,86 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.get_artifact_with_options_async(name, request, headers, runtime)
+
+    def get_artifact_download_url_with_options(
+        self,
+        name: str,
+        request: main_models.GetArtifactDownloadUrlRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetArtifactDownloadUrlResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.artifact_path):
+            query['artifactPath'] = request.artifact_path
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetArtifactDownloadUrl',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = f'/digitalEmployee/{DaraURL.percent_encode(name)}/artifacts/downloadUrl',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetArtifactDownloadUrlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_artifact_download_url_with_options_async(
+        self,
+        name: str,
+        request: main_models.GetArtifactDownloadUrlRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetArtifactDownloadUrlResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.artifact_path):
+            query['artifactPath'] = request.artifact_path
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetArtifactDownloadUrl',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = f'/digitalEmployee/{DaraURL.percent_encode(name)}/artifacts/downloadUrl',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetArtifactDownloadUrlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_artifact_download_url(
+        self,
+        name: str,
+        request: main_models.GetArtifactDownloadUrlRequest,
+    ) -> main_models.GetArtifactDownloadUrlResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_artifact_download_url_with_options(name, request, headers, runtime)
+
+    async def get_artifact_download_url_async(
+        self,
+        name: str,
+        request: main_models.GetArtifactDownloadUrlRequest,
+    ) -> main_models.GetArtifactDownloadUrlResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_artifact_download_url_with_options_async(name, request, headers, runtime)
 
     def get_digital_employee_with_options(
         self,
@@ -2159,6 +2327,8 @@ class Client(OpenApiClient):
             body['knowledges'] = request.knowledges
         if not DaraCore.is_null(request.role_arn):
             body['roleArn'] = request.role_arn
+        if not DaraCore.is_null(request.sandbox_network_policy):
+            body['sandboxNetworkPolicy'] = request.sandbox_network_policy
         if not DaraCore.is_null(request.tool_policy):
             body['toolPolicy'] = request.tool_policy
         req = open_api_util_models.OpenApiRequest(
@@ -2202,6 +2372,8 @@ class Client(OpenApiClient):
             body['knowledges'] = request.knowledges
         if not DaraCore.is_null(request.role_arn):
             body['roleArn'] = request.role_arn
+        if not DaraCore.is_null(request.sandbox_network_policy):
+            body['sandboxNetworkPolicy'] = request.sandbox_network_policy
         if not DaraCore.is_null(request.tool_policy):
             body['toolPolicy'] = request.tool_policy
         req = open_api_util_models.OpenApiRequest(

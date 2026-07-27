@@ -11,9 +11,13 @@ class ListArtifactsRequest(DaraModel):
         max_results: int = None,
         next_token: str = None,
     ):
+        # The artifact path from which to list artifacts. If this parameter is not specified, artifacts are listed from the root directory.
+        # 
         # This parameter is required.
         self.artifact_path = artifact_path
+        # The maximum number of results to return. If more results are available, the response includes a `nextToken` to retrieve the next page.
         self.max_results = max_results
+        # The token used to retrieve the next page of results. You can obtain this token from the `nextToken` parameter of a previous response.
         self.next_token = next_token
 
     def validate(self):

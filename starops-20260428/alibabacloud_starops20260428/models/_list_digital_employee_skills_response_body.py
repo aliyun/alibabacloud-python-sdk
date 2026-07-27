@@ -16,11 +16,15 @@ class ListDigitalEmployeeSkillsResponseBody(DaraModel):
         skills: List[main_models.ListDigitalEmployeeSkillsResponseBodySkills] = None,
         total: int = None,
     ):
+        # The maximum number of entries returned.
         self.max_results = max_results
+        # The pagination token to retrieve the next page of results. If this parameter is not returned, it indicates that no more results are available.
         self.next_token = next_token
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The list of skills.
         self.skills = skills
+        # The total number of entries that match the query.
         self.total = total
 
     def validate(self):
@@ -85,12 +89,20 @@ class ListDigitalEmployeeSkillsResponseBodySkills(DaraModel):
         skill_name: str = None,
         update_time: str = None,
     ):
+        # The time at which the skill was created.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.create_time = create_time
+        # The description of the skill.
         self.description = description
+        # The display name of the skill.
         self.display_name = display_name
+        # Indicates whether the skill is enabled.
         self.enable = enable
+        # The name of the skill.
         self.skill_name = skill_name
+        # The time at which the skill was last updated.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.update_time = update_time
 

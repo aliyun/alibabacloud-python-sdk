@@ -4,14 +4,11 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class GetArtifactRequest(DaraModel):
+class CreateArtifactUploadTokenRequest(DaraModel):
     def __init__(
         self,
         artifact_path: str = None,
     ):
-        # The path to the artifact.
-        # 
-        # This parameter is required.
         self.artifact_path = artifact_path
 
     def validate(self):
