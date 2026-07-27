@@ -119,6 +119,9 @@ from ._create_application_request import CreateApplicationRequest
 from ._create_application_shrink_request import CreateApplicationShrinkRequest
 from ._create_application_response_body import CreateApplicationResponseBody
 from ._create_application_response import CreateApplicationResponse
+from ._create_application_agent_relation_request import CreateApplicationAgentRelationRequest
+from ._create_application_agent_relation_response_body import CreateApplicationAgentRelationResponseBody
+from ._create_application_agent_relation_response import CreateApplicationAgentRelationResponse
 from ._create_application_endpoint_address_request import CreateApplicationEndpointAddressRequest
 from ._create_application_endpoint_address_response_body import CreateApplicationEndpointAddressResponseBody
 from ._create_application_endpoint_address_response import CreateApplicationEndpointAddressResponse
@@ -902,6 +905,9 @@ from ._failover_dbcluster_zonal_response import FailoverDBClusterZonalResponse
 from ._generate_upgrade_report_for_sync_clone_request import GenerateUpgradeReportForSyncCloneRequest
 from ._generate_upgrade_report_for_sync_clone_response_body import GenerateUpgradeReportForSyncCloneResponseBody
 from ._generate_upgrade_report_for_sync_clone_response import GenerateUpgradeReportForSyncCloneResponse
+from ._get_lakebase_tenant_token_request import GetLakebaseTenantTokenRequest
+from ._get_lakebase_tenant_token_response_body import GetLakebaseTenantTokenResponseBody
+from ._get_lakebase_tenant_token_response import GetLakebaseTenantTokenResponse
 from ._get_polar_agent_request import GetPolarAgentRequest
 from ._get_polar_agent_response_body import GetPolarAgentResponseBody
 from ._get_polar_agent_response import GetPolarAgentResponse
@@ -1205,6 +1211,9 @@ from ._reset_consumer_api_key_response import ResetConsumerApiKeyResponse
 from ._reset_global_database_network_request import ResetGlobalDatabaseNetworkRequest
 from ._reset_global_database_network_response_body import ResetGlobalDatabaseNetworkResponseBody
 from ._reset_global_database_network_response import ResetGlobalDatabaseNetworkResponse
+from ._restart_aidbcluster_request import RestartAIDBClusterRequest
+from ._restart_aidbcluster_response_body import RestartAIDBClusterResponseBody
+from ._restart_aidbcluster_response import RestartAIDBClusterResponse
 from ._restart_dblink_request import RestartDBLinkRequest
 from ._restart_dblink_response_body import RestartDBLinkResponseBody
 from ._restart_dblink_response import RestartDBLinkResponse
@@ -1820,6 +1829,9 @@ __all__ = [
     CreateApplicationShrinkRequest,
     CreateApplicationResponseBody,
     CreateApplicationResponse,
+    CreateApplicationAgentRelationRequest,
+    CreateApplicationAgentRelationResponseBody,
+    CreateApplicationAgentRelationResponse,
     CreateApplicationEndpointAddressRequest,
     CreateApplicationEndpointAddressResponseBody,
     CreateApplicationEndpointAddressResponse,
@@ -2603,6 +2615,9 @@ __all__ = [
     GenerateUpgradeReportForSyncCloneRequest,
     GenerateUpgradeReportForSyncCloneResponseBody,
     GenerateUpgradeReportForSyncCloneResponse,
+    GetLakebaseTenantTokenRequest,
+    GetLakebaseTenantTokenResponseBody,
+    GetLakebaseTenantTokenResponse,
     GetPolarAgentRequest,
     GetPolarAgentResponseBody,
     GetPolarAgentResponse,
@@ -2906,6 +2921,9 @@ __all__ = [
     ResetGlobalDatabaseNetworkRequest,
     ResetGlobalDatabaseNetworkResponseBody,
     ResetGlobalDatabaseNetworkResponse,
+    RestartAIDBClusterRequest,
+    RestartAIDBClusterResponseBody,
+    RestartAIDBClusterResponse,
     RestartDBLinkRequest,
     RestartDBLinkResponseBody,
     RestartDBLinkResponse,

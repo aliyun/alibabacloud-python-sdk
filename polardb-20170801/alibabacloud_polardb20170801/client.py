@@ -3872,6 +3872,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_application_with_options_async(request, runtime)
 
+    def create_application_agent_relation_with_options(
+        self,
+        request: main_models.CreateApplicationAgentRelationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateApplicationAgentRelationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_id):
+            query['AgentId'] = request.agent_id
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.token):
+            query['Token'] = request.token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateApplicationAgentRelation',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateApplicationAgentRelationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_application_agent_relation_with_options_async(
+        self,
+        request: main_models.CreateApplicationAgentRelationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateApplicationAgentRelationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_id):
+            query['AgentId'] = request.agent_id
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.token):
+            query['Token'] = request.token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateApplicationAgentRelation',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateApplicationAgentRelationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_application_agent_relation(
+        self,
+        request: main_models.CreateApplicationAgentRelationRequest,
+    ) -> main_models.CreateApplicationAgentRelationResponse:
+        runtime = RuntimeOptions()
+        return self.create_application_agent_relation_with_options(request, runtime)
+
+    async def create_application_agent_relation_async(
+        self,
+        request: main_models.CreateApplicationAgentRelationRequest,
+    ) -> main_models.CreateApplicationAgentRelationResponse:
+        runtime = RuntimeOptions()
+        return await self.create_application_agent_relation_with_options_async(request, runtime)
+
     def create_application_endpoint_address_with_options(
         self,
         request: main_models.CreateApplicationEndpointAddressRequest,
@@ -28436,6 +28514,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.generate_upgrade_report_for_sync_clone_with_options_async(request, runtime)
 
+    def get_lakebase_tenant_token_with_options(
+        self,
+        request: main_models.GetLakebaseTenantTokenRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetLakebaseTenantTokenResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.polar_fs_instance_id):
+            query['PolarFsInstanceId'] = request.polar_fs_instance_id
+        if not DaraCore.is_null(request.subdir):
+            query['Subdir'] = request.subdir
+        if not DaraCore.is_null(request.tenant):
+            query['Tenant'] = request.tenant
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetLakebaseTenantToken',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetLakebaseTenantTokenResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_lakebase_tenant_token_with_options_async(
+        self,
+        request: main_models.GetLakebaseTenantTokenRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetLakebaseTenantTokenResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.polar_fs_instance_id):
+            query['PolarFsInstanceId'] = request.polar_fs_instance_id
+        if not DaraCore.is_null(request.subdir):
+            query['Subdir'] = request.subdir
+        if not DaraCore.is_null(request.tenant):
+            query['Tenant'] = request.tenant
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetLakebaseTenantToken',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetLakebaseTenantTokenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_lakebase_tenant_token(
+        self,
+        request: main_models.GetLakebaseTenantTokenRequest,
+    ) -> main_models.GetLakebaseTenantTokenResponse:
+        runtime = RuntimeOptions()
+        return self.get_lakebase_tenant_token_with_options(request, runtime)
+
+    async def get_lakebase_tenant_token_async(
+        self,
+        request: main_models.GetLakebaseTenantTokenRequest,
+    ) -> main_models.GetLakebaseTenantTokenResponse:
+        runtime = RuntimeOptions()
+        return await self.get_lakebase_tenant_token_with_options_async(request, runtime)
+
     def get_polar_agent_with_sse(
         self,
         request: main_models.GetPolarAgentRequest,
@@ -38187,6 +38347,76 @@ class Client(OpenApiClient):
     ) -> main_models.ResetGlobalDatabaseNetworkResponse:
         runtime = RuntimeOptions()
         return await self.reset_global_database_network_with_options_async(request, runtime)
+
+    def restart_aidbcluster_with_options(
+        self,
+        request: main_models.RestartAIDBClusterRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RestartAIDBClusterResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RestartAIDBCluster',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RestartAIDBClusterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def restart_aidbcluster_with_options_async(
+        self,
+        request: main_models.RestartAIDBClusterRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RestartAIDBClusterResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RestartAIDBCluster',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RestartAIDBClusterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def restart_aidbcluster(
+        self,
+        request: main_models.RestartAIDBClusterRequest,
+    ) -> main_models.RestartAIDBClusterResponse:
+        runtime = RuntimeOptions()
+        return self.restart_aidbcluster_with_options(request, runtime)
+
+    async def restart_aidbcluster_async(
+        self,
+        request: main_models.RestartAIDBClusterRequest,
+    ) -> main_models.RestartAIDBClusterResponse:
+        runtime = RuntimeOptions()
+        return await self.restart_aidbcluster_with_options_async(request, runtime)
 
     def restart_dblink_with_options(
         self,
