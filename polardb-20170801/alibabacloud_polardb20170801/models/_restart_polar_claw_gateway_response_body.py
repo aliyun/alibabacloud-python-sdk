@@ -20,17 +20,29 @@ class RestartPolarClawGatewayResponseBody(DaraModel):
         state: str = None,
         task_id: str = None,
     ):
+        # The application ID.
         self.application_id = application_id
+        # The response status code.
         self.code = code
+        # The approximate downtime of this restart, in milliseconds. This value is returned synchronously.
         self.downtime_ms = downtime_ms
+        # The gateway version after the restart. This value is returned synchronously.
         self.gateway_version = gateway_version
+        # The response message.
         self.message = message
+        # The actual restart mode used.
         self.mode = mode
+        # Indicates whether the operation was successful.
         self.ok = ok
+        # The operation name. This value is returned when Async is set to true.
         self.operation = operation
+        # Id of the request
         self.request_id = request_id
+        # Indicates whether the gateway has been confirmed available after the restart. This value is returned synchronously.
         self.restarted = restarted
+        # The initial state of the asynchronous task. This value is returned when Async is set to true.
         self.state = state
+        # The asynchronous task ID. This value is returned when Async is set to true. You can poll the task status by calling DescribePolarClawTask.
         self.task_id = task_id
 
     def validate(self):

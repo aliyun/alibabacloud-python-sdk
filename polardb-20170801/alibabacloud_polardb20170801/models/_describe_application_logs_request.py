@@ -26,7 +26,7 @@ class DescribeApplicationLogsRequest(DaraModel):
         # 
         # This parameter is required.
         self.application_id = application_id
-        # The instance ID of the subcomponent.
+        # The subcomponent instance ID.
         self.component_name = component_name
         # The container name.
         self.container_name = container_name
@@ -34,9 +34,9 @@ class DescribeApplicationLogsRequest(DaraModel):
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The search keyword. This parameter is used for PolarClaw instances.
+        # The search keyword. This parameter is used for polarclaw instances.
         self.keyword = keyword
-        # The log level. This parameter is used for PolarClaw instances.
+        # The log level. This parameter is used for polarclaw instances.
         self.level = level
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -53,7 +53,7 @@ class DescribeApplicationLogsRequest(DaraModel):
         # 
         # This parameter is required.
         self.start_time = start_time
-        # The log type. This parameter is used for PolarClaw instances. Currently, only gateway is supported.
+        # The log type. This parameter is used for polarclaw instances. Currently, only gateway is supported.
         self.type = type
 
     def validate(self):

@@ -20,45 +20,44 @@ class DescribeApplicationPerformanceRequest(DaraModel):
         start_step: int = None,
         start_time: str = None,
     ):
-        # The ID of the application cluster.
+        # The application cluster ID.
         # 
         # This parameter is required.
         self.application_id = application_id
-        # The ID of the consumer.
+        # The user.
         self.consumer = consumer
-        # The ID of the consumer group.
+        # The user group.
         self.consumer_group = consumer_group
+        # The downsampling policy.
         self.downsample = downsample
+        # The end step number.
         self.end_step = end_step
-        # The end time for the query. Specify the time in UTC in the `yyyy-MM-ddTHH:mmZ` format.
+        # The end of the time range to query. Specify the time in the yyyy-MM-ddTHH:mmZ format (UTC).
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The granularity of the performance data, in seconds. Valid values:
-        # 
+        # The data granularity of performance data. Valid values:
         # - 5
-        # 
         # - 30
-        # 
         # - 60
-        # 
         # - 600
-        # 
         # - 1800
-        # 
         # - 3600
-        # 
         # - 86400
         self.interval = interval
-        # The performance metrics to query. Separate multiple metrics with commas (,).<br>You can specify up to five performance metrics.<br>
+        # The performance metrics to query. Separate multiple values with commas (,).
+        # 
+        # > **Note** You can specify up to 5 performance metrics.
         # 
         # This parameter is required.
         self.key = key
+        # The maximum number of data points to return.
         self.max_points = max_points
-        # The ID of the model service.
+        # The model service.
         self.model_service = model_service
+        # The start step number.
         self.start_step = start_step
-        # The start time for the query. Specify the time in UTC in the `yyyy-MM-ddTHH:mmZ` format.
+        # The beginning of the time range to query. Specify the time in the yyyy-MM-ddTHH:mmZ format (UTC).
         # 
         # This parameter is required.
         self.start_time = start_time

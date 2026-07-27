@@ -1,3 +1,23 @@
+2026-07-27 Version: 7.8.0
+- Support API CreateGwConsumerOrder.
+- Update API AddPolarFsPathMapping: add request parameters CustomBucketPathList.$.BucketAccessKeyId.
+- Update API AddPolarFsPathMapping: add request parameters CustomBucketPathList.$.BucketAccessKeySecret.
+- Update API CreateBatchConsumer: add request parameters CreditToken.
+- Update API CreateBatchConsumer: add request parameters Description.
+- Update API CreateBatchConsumer: add response parameters Body.Items.$.Active.
+- Update API CreateBatchConsumer: add response parameters Body.Items.$.ApiKeyMd5.
+- Update API CreateBatchConsumer: add response parameters Body.Items.$.ApiKeyStatus.
+- Update API CreateBatchConsumer: add response parameters Body.Items.$.BudgetLimit.
+- Update API CreateBatchConsumer: add response parameters Body.Items.$.BudgetPolicyId.
+- Update API CreateBatchConsumer: add response parameters Body.Items.$.BudgetUsed.
+- Update API CreateBatchConsumer: add response parameters Body.Items.$.Description.
+- Update API CreateBatchConsumer: add response parameters Body.Items.$.ExpireTime.
+- Update API CreateBatchConsumer: add response parameters Body.Items.$.Expired.
+- Update API CreateBatchConsumer: add response parameters Body.Items.$.GmtCreated.
+- Update API CreateBatchConsumer: add response parameters Body.Items.$.GmtModified.
+- Update API ModifyDBClusterSSL: add request parameters CertValidDays.
+
+
 2026-07-17 Version: 7.7.0
 - Support API RestartPolarClawGateway.
 - Update API DescribeApplicationAttribute: add response parameters Body.Endpoints.$.Domain.

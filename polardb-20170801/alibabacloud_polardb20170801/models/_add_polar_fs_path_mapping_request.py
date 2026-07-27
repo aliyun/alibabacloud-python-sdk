@@ -14,13 +14,13 @@ class AddPolarFsPathMappingRequest(DaraModel):
         dbcluster_id: str = None,
         polar_fs_instance_id: str = None,
     ):
-        # A list of objects, each containing a bucket and its corresponding path.
+        # The bucket and corresponding path information.
         self.custom_bucket_path_list = custom_bucket_path_list
-        # The ID of the cluster.
+        # The cluster ID.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The ID of the PolarFS instance.
+        # The PolarFS instance ID.
         # 
         # This parameter is required.
         self.polar_fs_instance_id = polar_fs_instance_id
@@ -71,10 +71,14 @@ class AddPolarFsPathMappingRequestCustomBucketPathList(DaraModel):
     def __init__(
         self,
         bucket: str = None,
+        bucket_access_key_id: str = None,
+        bucket_access_key_secret: str = None,
         path: str = None,
     ):
-        # The name of the bucket.
+        # The bucket name.
         self.bucket = bucket
+        self.bucket_access_key_id = bucket_access_key_id
+        self.bucket_access_key_secret = bucket_access_key_secret
         # The custom storage path.
         self.path = path
 
@@ -89,6 +93,12 @@ class AddPolarFsPathMappingRequestCustomBucketPathList(DaraModel):
         if self.bucket is not None:
             result['Bucket'] = self.bucket
 
+        if self.bucket_access_key_id is not None:
+            result['BucketAccessKeyId'] = self.bucket_access_key_id
+
+        if self.bucket_access_key_secret is not None:
+            result['BucketAccessKeySecret'] = self.bucket_access_key_secret
+
         if self.path is not None:
             result['Path'] = self.path
 
@@ -98,6 +108,12 @@ class AddPolarFsPathMappingRequestCustomBucketPathList(DaraModel):
         m = m or dict()
         if m.get('Bucket') is not None:
             self.bucket = m.get('Bucket')
+
+        if m.get('BucketAccessKeyId') is not None:
+            self.bucket_access_key_id = m.get('BucketAccessKeyId')
+
+        if m.get('BucketAccessKeySecret') is not None:
+            self.bucket_access_key_secret = m.get('BucketAccessKeySecret')
 
         if m.get('Path') is not None:
             self.path = m.get('Path')

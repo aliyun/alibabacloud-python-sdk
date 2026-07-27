@@ -105,25 +105,58 @@ class CreateBatchConsumerResponseBody(DaraModel):
 class CreateBatchConsumerResponseBodyItems(DaraModel):
     def __init__(
         self,
+        active: bool = None,
         api_key: str = None,
+        api_key_md_5: str = None,
+        api_key_status: str = None,
         api_status: str = None,
+        budget_limit: int = None,
+        budget_policy_id: str = None,
+        budget_used: int = None,
         consumer_group_id: str = None,
         consumer_id: str = None,
         consumer_tag: str = None,
+        description: str = None,
+        expire_time: str = None,
+        expired: bool = None,
+        gmt_created: str = None,
+        gmt_modified: str = None,
         gw_cluster_id: str = None,
         name: str = None,
         status: str = None,
     ):
-        # The complete API key. This value is returned only in the current response.
+        # Indicates whether the key is active.
+        self.active = active
+        # The full API key. Returned only in this response.
         self.api_key = api_key
+        # The MD5 hash of the API key.
+        self.api_key_md_5 = api_key_md_5
+        # The status of the API key. Default value: Active.
+        self.api_key_status = api_key_status
         # The API key status. Default value: Active.
         self.api_status = api_status
-        # The ID of the user group.
+        # The budget limit, which equals the number of credits per package.
+        self.budget_limit = budget_limit
+        # The budget policy ID. Each key has an independent budget policy.
+        self.budget_policy_id = budget_policy_id
+        # The used quota.
+        self.budget_used = budget_used
+        # The user group ID.
         self.consumer_group_id = consumer_group_id
         # The user ID.
         self.consumer_id = consumer_id
         # The consumer tag.
         self.consumer_tag = consumer_tag
+        # The application description or remarks.
+        self.description = description
+        # The expiration time.
+        self.expire_time = expire_time
+        # Indicates whether the key is expired.
+        self.expired = expired
+        # The creation time.
+        self.gmt_created = gmt_created
+        # The last modification time.
+        self.gmt_modified = gmt_modified
         # The gateway instance ID.
         self.gw_cluster_id = gw_cluster_id
         # The name.
@@ -139,11 +172,29 @@ class CreateBatchConsumerResponseBodyItems(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.active is not None:
+            result['Active'] = self.active
+
         if self.api_key is not None:
             result['ApiKey'] = self.api_key
 
+        if self.api_key_md_5 is not None:
+            result['ApiKeyMd5'] = self.api_key_md_5
+
+        if self.api_key_status is not None:
+            result['ApiKeyStatus'] = self.api_key_status
+
         if self.api_status is not None:
             result['ApiStatus'] = self.api_status
+
+        if self.budget_limit is not None:
+            result['BudgetLimit'] = self.budget_limit
+
+        if self.budget_policy_id is not None:
+            result['BudgetPolicyId'] = self.budget_policy_id
+
+        if self.budget_used is not None:
+            result['BudgetUsed'] = self.budget_used
 
         if self.consumer_group_id is not None:
             result['ConsumerGroupId'] = self.consumer_group_id
@@ -153,6 +204,21 @@ class CreateBatchConsumerResponseBodyItems(DaraModel):
 
         if self.consumer_tag is not None:
             result['ConsumerTag'] = self.consumer_tag
+
+        if self.description is not None:
+            result['Description'] = self.description
+
+        if self.expire_time is not None:
+            result['ExpireTime'] = self.expire_time
+
+        if self.expired is not None:
+            result['Expired'] = self.expired
+
+        if self.gmt_created is not None:
+            result['GmtCreated'] = self.gmt_created
+
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
 
         if self.gw_cluster_id is not None:
             result['GwClusterId'] = self.gw_cluster_id
@@ -167,11 +233,29 @@ class CreateBatchConsumerResponseBodyItems(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Active') is not None:
+            self.active = m.get('Active')
+
         if m.get('ApiKey') is not None:
             self.api_key = m.get('ApiKey')
 
+        if m.get('ApiKeyMd5') is not None:
+            self.api_key_md_5 = m.get('ApiKeyMd5')
+
+        if m.get('ApiKeyStatus') is not None:
+            self.api_key_status = m.get('ApiKeyStatus')
+
         if m.get('ApiStatus') is not None:
             self.api_status = m.get('ApiStatus')
+
+        if m.get('BudgetLimit') is not None:
+            self.budget_limit = m.get('BudgetLimit')
+
+        if m.get('BudgetPolicyId') is not None:
+            self.budget_policy_id = m.get('BudgetPolicyId')
+
+        if m.get('BudgetUsed') is not None:
+            self.budget_used = m.get('BudgetUsed')
 
         if m.get('ConsumerGroupId') is not None:
             self.consumer_group_id = m.get('ConsumerGroupId')
@@ -181,6 +265,21 @@ class CreateBatchConsumerResponseBodyItems(DaraModel):
 
         if m.get('ConsumerTag') is not None:
             self.consumer_tag = m.get('ConsumerTag')
+
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+
+        if m.get('ExpireTime') is not None:
+            self.expire_time = m.get('ExpireTime')
+
+        if m.get('Expired') is not None:
+            self.expired = m.get('Expired')
+
+        if m.get('GmtCreated') is not None:
+            self.gmt_created = m.get('GmtCreated')
+
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
 
         if m.get('GwClusterId') is not None:
             self.gw_cluster_id = m.get('GwClusterId')

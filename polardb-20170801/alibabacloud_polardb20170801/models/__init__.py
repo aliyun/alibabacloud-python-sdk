@@ -192,6 +192,9 @@ from ._create_global_database_network_response import CreateGlobalDatabaseNetwor
 from ._create_global_security_ipgroup_request import CreateGlobalSecurityIPGroupRequest
 from ._create_global_security_ipgroup_response_body import CreateGlobalSecurityIPGroupResponseBody
 from ._create_global_security_ipgroup_response import CreateGlobalSecurityIPGroupResponse
+from ._create_gw_consumer_order_request import CreateGwConsumerOrderRequest
+from ._create_gw_consumer_order_response_body import CreateGwConsumerOrderResponseBody
+from ._create_gw_consumer_order_response import CreateGwConsumerOrderResponse
 from ._create_model_api_request import CreateModelApiRequest
 from ._create_model_api_response_body import CreateModelApiResponseBody
 from ._create_model_api_response import CreateModelApiResponse
@@ -1890,6 +1893,9 @@ __all__ = [
     CreateGlobalSecurityIPGroupRequest,
     CreateGlobalSecurityIPGroupResponseBody,
     CreateGlobalSecurityIPGroupResponse,
+    CreateGwConsumerOrderRequest,
+    CreateGwConsumerOrderResponseBody,
+    CreateGwConsumerOrderResponse,
     CreateModelApiRequest,
     CreateModelApiResponseBody,
     CreateModelApiResponse,

@@ -81,9 +81,7 @@ class Client(OpenApiClient):
             'ap-southeast-6': 'polardb.ap-southeast-6.aliyuncs.com',
             'ap-southeast-5': 'polardb.ap-southeast-5.aliyuncs.com',
             'ap-southeast-3': 'polardb.ap-southeast-3.aliyuncs.com',
-            'ap-southeast-2': 'polardb.ap-southeast-2.aliyuncs.com',
             'ap-southeast-1': 'polardb.ap-southeast-1.aliyuncs.com',
-            'ap-south-1': 'polardb.ap-south-1.aliyuncs.com',
             'ap-northeast-2': 'polardb.ap-northeast-2.aliyuncs.com',
             'ap-northeast-1': 'polardb.ap-northeast-1.aliyuncs.com'
         }
@@ -4141,6 +4139,10 @@ class Client(OpenApiClient):
             query['ConsumerGroupId'] = request.consumer_group_id
         if not DaraCore.is_null(request.count):
             query['Count'] = request.count
+        if not DaraCore.is_null(request.credit_token):
+            query['CreditToken'] = request.credit_token
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
         if not DaraCore.is_null(request.gw_cluster_id):
             query['GwClusterId'] = request.gw_cluster_id
         if not DaraCore.is_null(request.region_id):
@@ -4177,6 +4179,10 @@ class Client(OpenApiClient):
             query['ConsumerGroupId'] = request.consumer_group_id
         if not DaraCore.is_null(request.count):
             query['Count'] = request.count
+        if not DaraCore.is_null(request.credit_token):
+            query['CreditToken'] = request.credit_token
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
         if not DaraCore.is_null(request.gw_cluster_id):
             query['GwClusterId'] = request.gw_cluster_id
         if not DaraCore.is_null(request.region_id):
@@ -6665,6 +6671,96 @@ class Client(OpenApiClient):
     ) -> main_models.CreateGlobalSecurityIPGroupResponse:
         runtime = RuntimeOptions()
         return await self.create_global_security_ipgroup_with_options_async(request, runtime)
+
+    def create_gw_consumer_order_with_options(
+        self,
+        request: main_models.CreateGwConsumerOrderRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateGwConsumerOrderResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.expire_time):
+            query['ExpireTime'] = request.expire_time
+        if not DaraCore.is_null(request.gateway_id):
+            query['GatewayId'] = request.gateway_id
+        if not DaraCore.is_null(request.key_count):
+            query['KeyCount'] = request.key_count
+        if not DaraCore.is_null(request.package_spec):
+            query['PackageSpec'] = request.package_spec
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateGwConsumerOrder',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateGwConsumerOrderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_gw_consumer_order_with_options_async(
+        self,
+        request: main_models.CreateGwConsumerOrderRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateGwConsumerOrderResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.expire_time):
+            query['ExpireTime'] = request.expire_time
+        if not DaraCore.is_null(request.gateway_id):
+            query['GatewayId'] = request.gateway_id
+        if not DaraCore.is_null(request.key_count):
+            query['KeyCount'] = request.key_count
+        if not DaraCore.is_null(request.package_spec):
+            query['PackageSpec'] = request.package_spec
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateGwConsumerOrder',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateGwConsumerOrderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_gw_consumer_order(
+        self,
+        request: main_models.CreateGwConsumerOrderRequest,
+    ) -> main_models.CreateGwConsumerOrderResponse:
+        runtime = RuntimeOptions()
+        return self.create_gw_consumer_order_with_options(request, runtime)
+
+    async def create_gw_consumer_order_async(
+        self,
+        request: main_models.CreateGwConsumerOrderRequest,
+    ) -> main_models.CreateGwConsumerOrderResponse:
+        runtime = RuntimeOptions()
+        return await self.create_gw_consumer_order_with_options_async(request, runtime)
 
     def create_model_api_with_options(
         self,
@@ -33329,6 +33425,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyDBClusterSSLResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.cert_valid_days):
+            query['CertValidDays'] = request.cert_valid_days
         if not DaraCore.is_null(request.connection_string):
             query['ConnectionString'] = request.connection_string
         if not DaraCore.is_null(request.dbcluster_id):
@@ -33377,6 +33475,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyDBClusterSSLResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.cert_valid_days):
+            query['CertValidDays'] = request.cert_valid_days
         if not DaraCore.is_null(request.connection_string):
             query['ConnectionString'] = request.connection_string
         if not DaraCore.is_null(request.dbcluster_id):

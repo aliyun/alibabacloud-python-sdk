@@ -14,7 +14,9 @@ class CreateDBClusterResponseBody(DaraModel):
         request_id: str = None,
         resource_group_id: str = None,
     ):
+        # The Agentic cluster description.
         self.agentic_db_cluster_description = agentic_db_cluster_description
+        # The Agentic cluster ID.
         self.agentic_db_cluster_id = agentic_db_cluster_id
         # The cluster ID.
         self.dbcluster_id = dbcluster_id

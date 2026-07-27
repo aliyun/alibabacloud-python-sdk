@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class ModifyDBClusterSSLRequest(DaraModel):
     def __init__(
         self,
+        cert_valid_days: str = None,
         connection_string: str = None,
         dbcluster_id: str = None,
         dbendpoint_id: str = None,
@@ -19,6 +20,7 @@ class ModifyDBClusterSSLRequest(DaraModel):
         sslauto_rotate: str = None,
         sslenabled: str = None,
     ):
+        self.cert_valid_days = cert_valid_days
         self.connection_string = connection_string
         # The cluster ID.
         # 
@@ -27,16 +29,16 @@ class ModifyDBClusterSSLRequest(DaraModel):
         # The endpoint ID.
         # 
         # >* If the cluster is a PolarDB for MySQL cluster, this parameter is required.
-        # >* If the cluster is a PolarDB for PostgreSQL cluster or a PolarDB for PostgreSQL (Compatible with Oracle) cluster, you do not need to specify this parameter. SSL encryption is enabled for all endpoints by default.
+        # >* If the cluster is a PolarDB for PostgreSQL cluster or a PolarDB for PostgreSQL (Compatible with Oracle) cluster, you do not need to specify this parameter. Secure Sockets Layer (SSL) encryption is enabled for all endpoints by default.
         # >* You can call the [DescribeDBClusterSSL](https://help.aliyun.com/document_detail/2319159.html) operation to query endpoint details.
         self.dbendpoint_id = dbendpoint_id
-        # The network type of the endpoint. The value must be the same as the network type of the endpoint specified by **DBEndpointId**. Valid values:
+        # The network type of the endpoint. The value must be consistent with the network type of the endpoint specified by the **DBEndpointId** parameter. Valid values:
         # * **Public**: public network
         # * **Private**: private network
         # * **Inner**: private network (classic network)
         # 
         # >* If the cluster is a PolarDB for MySQL cluster, this parameter is required.
-        # >* If the cluster is a PolarDB for PostgreSQL cluster or a PolarDB for PostgreSQL (Compatible with Oracle) cluster, you do not need to specify this parameter. SSL encryption is enabled for all endpoints by default.
+        # >* If the cluster is a PolarDB for PostgreSQL cluster or a PolarDB for PostgreSQL (Compatible with Oracle) cluster, you do not need to specify this parameter. Secure Sockets Layer (SSL) encryption is enabled for all endpoints by default.
         self.net_type = net_type
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -45,16 +47,16 @@ class ModifyDBClusterSSLRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # Specifies whether to enable automatic SSL certificate rotation. Valid values:
         # 
-        # - **Enable**: enables automatic SSL certificate rotation.
+        # - **Enable**: Enables automatic rotation.
         # 
-        # - **Disable**: disables automatic SSL certificate rotation.
+        # - **Disable**: Disables automatic rotation.
         self.sslauto_rotate = sslauto_rotate
         # The SSL status. Valid values:
-        # * **Disable**: shutdown SSL encryption.
-        # * **Enable**: enables SSL encryption.
-        # * **Update**: updates the CA certificate.
+        # * **Disable**: Shutdown of Secure Sockets Layer (SSL) encryption.
+        # * **Enable**: Enables Secure Sockets Layer (SSL) encryption.
+        # * **Update**: Updates the CA certificate.
         # 
-        # > After you enable SSL encryption or update the CA certificate, you must download and configure the certificate. For details, see [Settings for SSL encryption](https://help.aliyun.com/document_detail/153182.html).
+        # > After you enable Secure Sockets Layer (SSL) encryption or update the CA certificate, you must download and configure the certificate. For details, see [Settings for SSL encryption](https://help.aliyun.com/document_detail/153182.html).
         self.sslenabled = sslenabled
 
     def validate(self):
@@ -65,6 +67,9 @@ class ModifyDBClusterSSLRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.cert_valid_days is not None:
+            result['CertValidDays'] = self.cert_valid_days
+
         if self.connection_string is not None:
             result['ConnectionString'] = self.connection_string
 
@@ -102,6 +107,9 @@ class ModifyDBClusterSSLRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CertValidDays') is not None:
+            self.cert_valid_days = m.get('CertValidDays')
+
         if m.get('ConnectionString') is not None:
             self.connection_string = m.get('ConnectionString')
 
