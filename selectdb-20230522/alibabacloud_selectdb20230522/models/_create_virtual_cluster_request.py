@@ -13,14 +13,24 @@ class CreateVirtualClusterRequest(DaraModel):
         region_id: str = None,
         standby_cluster_id: str = None,
     ):
+        # The ID of the primary cluster.
+        # 
         # This parameter is required.
         self.active_cluster_id = active_cluster_id
+        # The name of the cluster. The name must start with a letter and be up to 64 characters long. It can contain letters (case-insensitive), digits, and underscores (_). The name cannot contain two or more consecutive underscores. The cluster name must be unique within the instance.
+        # 
         # This parameter is required.
         self.cluster_name = cluster_name
+        # The instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The ID of the standby cluster.
+        # 
         # This parameter is required.
         self.standby_cluster_id = standby_cluster_id
 

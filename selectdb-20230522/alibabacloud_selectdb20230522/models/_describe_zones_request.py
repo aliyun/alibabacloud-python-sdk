@@ -11,8 +11,14 @@ class DescribeZonesRequest(DaraModel):
         next_token: str = None,
         region_id: str = None,
     ):
+        # - If you do not specify the **MaxResults** request parameter, paged query is disabled. The **MaxResults** response parameter indicates the total number of entries.
+        # 
+        # - If you specify the **MaxResults** request parameter, paged query is enabled. The **MaxResults** response parameter indicates the number of entries on the current page.
         self.max_results = max_results
+        # The token for the next page of results.
         self.next_token = next_token
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
 

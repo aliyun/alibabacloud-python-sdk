@@ -59,8 +59,9 @@ class EnDisableScalingRulesResponseBodyData(DaraModel):
         # 
         # Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.scaling_rules_enable = scaling_rules_enable
 
     def validate(self):

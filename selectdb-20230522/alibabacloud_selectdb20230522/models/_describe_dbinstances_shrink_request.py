@@ -23,28 +23,36 @@ class DescribeDBInstancesShrinkRequest(DaraModel):
         self.dbinstance_ids = dbinstance_ids
         # The state of the instance. Valid values:
         # 
-        # *   **CREATING**: The instance is being created.
-        # *   **ACTIVATION**: The instance is running.
-        # *   **RESOURCE_CHANGING**: The resource configuration of the instance is being changed.
-        # *   **ORDER_PREPARING**: The order is being confirmed.
-        # *   **READONLY_RESOURCE_CHANGING**: The resource configuration of the instance is being changed and the instance is write-locked.
-        # *   **DELETING**: The instance is being deleted.
+        # - **CREATING**: The instance is being created.
+        # 
+        # - **ACTIVATION**: The instance is running.
+        # 
+        # - **RESOURCE_CHANGING**: The instance is being upgraded or downgraded.
+        # 
+        # - **ORDER_PREPARING**: The order is being confirmed.
+        # 
+        # - **READONLY_RESOURCE_CHANGING**: The instance configuration is being changed, and the instance is write-locked.
+        # 
+        # - **DELETING**: The instance is being deleted.
         self.dbinstance_status = dbinstance_status
         # The page number.
         self.page_number = page_number
-        # The number of entries per page. Valid values:
+        # The number of entries to return on each page. Valid values:
         # 
-        # *   **30** (default)
-        # *   **50**
-        # *   **100**
+        # - **30** (default)
+        # 
+        # - **50**
+        # 
+        # - **100**
         self.page_size = page_size
-        # The region ID of the instance.
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_id = resource_owner_id
+        # The list of tags of instances.
         self.tag_shrink = tag_shrink
 
     def validate(self):

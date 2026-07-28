@@ -11,7 +11,9 @@ class DeleteDBClusterResponseBody(DaraModel):
         data: main_models.DeleteDBClusterResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -48,7 +50,9 @@ class DeleteDBClusterResponseBodyData(DaraModel):
         dbinstance_id: str = None,
         order_id: str = None,
     ):
+        # The instance ID.
         self.dbinstance_id = dbinstance_id
+        # The order ID.
         self.order_id = order_id
 
     def validate(self):

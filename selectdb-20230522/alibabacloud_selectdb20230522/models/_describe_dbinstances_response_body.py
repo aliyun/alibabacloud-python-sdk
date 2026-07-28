@@ -16,19 +16,21 @@ class DescribeDBInstancesResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
-        # The details about each instance returned.
+        # The list of instance details.
         self.items = items
-        # The number of entries per page. Valid values:
+        # The number of entries to return per page. Valid values:
         # 
-        # *   **30** (default)
-        # *   **50**
-        # *   **100**
+        # - **30** (default value)
+        # 
+        # - **50**
+        # 
+        # - **100**
         self.page_number = page_number
-        # The page number.
+        # The number of entries per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -96,6 +98,7 @@ class DescribeDBInstancesResponseBodyItems(DaraModel):
         engine_minor_version: str = None,
         engine_version: str = None,
         expire_time: str = None,
+        fecluster_list: List[main_models.DescribeDBInstancesResponseBodyItemsFEClusterList] = None,
         gmt_created: str = None,
         gmt_modified: str = None,
         instance_used_type: str = None,
@@ -129,103 +132,123 @@ class DescribeDBInstancesResponseBodyItems(DaraModel):
         zone_id: str = None,
         connection_string: str = None,
     ):
-        # The edition of the instance. Default value: basic.
+        # The instance edition. The default value is basic.
         self.category = category
         # The billing method of the instance. Valid values:
         # 
-        # *   **Postpaid**: pay-as-you-go.
-        # *   **Prepaid**: subscription.
+        # - **Postpaid**: pay-as-you-go
+        # 
+        # - **Prepaid**: subscription
         self.charge_type = charge_type
         # The total number of clusters.
         self.cluster_count = cluster_count
         # The instance ID.
         self.dbinstance_id = dbinstance_id
+        # The deployment mode of the instance:
+        # 
+        # - multi_az: zone-redundant storage.
+        # 
+        # - single_az: locally redundant storage.
         self.deploy_scheme = deploy_scheme
         # The description of the instance.
         self.description = description
-        # The database engine of the instance.
+        # The database type.
         self.engine = engine
+        # The minor engine version of the instance.
         self.engine_minor_version = engine_minor_version
-        # The database engine version of the instance.
+        # The database version.
         self.engine_version = engine_version
-        # The time when the cluster expires.
+        # The expiration time of the cluster.
         # 
-        # >  A specific value is returned only for subscription clusters whose billing method is **Prepaid**. For pay-as-you-go clusters whose billing method is **Postpaid**, no value is returned.
+        # > This parameter is returned only for **Prepaid** (subscription) clusters. For **Postpaid** (pay-as-you-go) clusters, this parameter is empty.
         self.expire_time = expire_time
-        # The time when the task was created. The time is displayed in UTC.
+        self.fecluster_list = fecluster_list
+        # The time when the task was created (GMT).
         self.gmt_created = gmt_created
-        # The time when the task was last modified. The time is displayed in UTC.
+        # The time when the task was last modified (GMT).
         self.gmt_modified = gmt_modified
-        # The type of the instance.
+        # The instance usage type.
         self.instance_used_type = instance_used_type
         # Indicates whether the instance is deleted. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The instance is deleted.
+        # 
+        # - **false**: The instance is not deleted.
         self.is_deleted = is_deleted
         # The lock mode of the instance.
         self.lock_mode = lock_mode
         # The reason why the instance is locked.
         self.lock_reason = lock_reason
-        # The end timestamp of the maintenance window.
+        # The timestamp that indicates the end of the maintenance window.
         self.maintain_end_time_str = maintain_end_time_str
-        # The end time of the instance maintenance window.
+        # The end time of the maintenance window for the instance.
         self.maintain_endtime = maintain_endtime
-        # The start timestamp of the maintenance window.
+        # The timestamp that indicates the start of the maintenance window.
         self.maintain_start_time_str = maintain_start_time_str
-        # The start time of the instance maintenance window.
+        # The start time of the maintenance window for the instance.
         self.maintain_starttime = maintain_starttime
+        # The multi-zone configuration.
         self.multi_zone = multi_zone
-        # The storage capacity of the instance. Unit: GB.
+        # The instance storage size. Unit: GB.
         self.object_store_size = object_store_size
-        # The time when the instance was created.
+        # The creation time.
         self.parent_instance = parent_instance
         # The region ID.
         self.region_id = region_id
-        # The number of CPU cores of the instance.
+        # The allocated CPU for the resource.
         self.resource_cpu = resource_cpu
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The memory capacity of the instance.
+        # The memory size.
         self.resource_memory = resource_memory
-        # The maximum number of RCUs.
+        # The maximum number of RDS Capacity Units (RCUs) for the instance.
         self.scale_max = scale_max
-        # The minimum number of RDS capacity units (RCUs).
+        # The minimum number of RDS Capacity Units (RCUs) for the instance.
         self.scale_min = scale_min
-        # This parameter is not returned.
+        # This field is redundant.
         self.scale_replica = scale_replica
+        # Indicates whether the instance is a serverless instance.
         self.serverless = serverless
         # The state of the instance. Valid values:
         # 
-        # *   **CREATING**: The instance is being created.
-        # *   **ACTIVATION**: The instance is running.
-        # *   **RESOURCE_CHANGING**: The resource configuration of the instance is being changed.
-        # *   **ORDER_PREPARING**: The order is being confirmed.
-        # *   **READONLY_RESOURCE_CHANGING**: The resource configuration of the instance is being changed and the instance is write-locked.
-        # *   **DELETING**: The instance is being deleted.
+        # - **CREATING**: The instance is being created.
+        # 
+        # - **ACTIVATION**: The instance is running.
+        # 
+        # - **RESOURCE_CHANGING**: The instance is being upgraded or downgraded.
+        # 
+        # - **ORDER_PREPARING**: The order is being confirmed.
+        # 
+        # - **READONLY_RESOURCE_CHANGING**: The instance configuration is being changed, and the instance is write-locked.
+        # 
+        # - **DELETING**: The instance is being deleted.
         self.status = status
-        # The cache size.
+        # The storage capacity.
         self.storage_size = storage_size
-        # The storage type of the instance.
+        # The storage class of the instance.
         self.storage_type = storage_type
-        # The details about each tag returned.
+        # The list of tags of the instance.
         self.tags = tags
-        # The ID of the cluster that is monitored by Managed Service for Prometheus.
+        # The ID of the Prometheus monitoring cluster.
         self.tenant_cluster_id = tenant_cluster_id
-        # The token that is used to access Managed Service for Prometheus.
+        # The token for connecting to Prometheus monitoring.
         self.tenant_token = tenant_token
-        # The ID of the account that uses Managed Service for Prometheus.
+        # The user account label for Prometheus monitoring.
         self.tenant_user_id = tenant_user_id
-        # The virtual private cloud (VPC) ID.
+        # The VPC ID.
         self.vpc_id = vpc_id
         # The vSwitch ID.
         self.vswitch_id = vswitch_id
         # The zone ID.
         self.zone_id = zone_id
-        # The connection string of the instance.
+        # The connection address.
         self.connection_string = connection_string
 
     def validate(self):
+        if self.fecluster_list:
+            for v1 in self.fecluster_list:
+                 if v1:
+                    v1.validate()
         if self.multi_zone:
             for v1 in self.multi_zone:
                  if v1:
@@ -269,6 +292,11 @@ class DescribeDBInstancesResponseBodyItems(DaraModel):
 
         if self.expire_time is not None:
             result['ExpireTime'] = self.expire_time
+
+        result['FEClusterList'] = []
+        if self.fecluster_list is not None:
+            for k1 in self.fecluster_list:
+                result['FEClusterList'].append(k1.to_map() if k1 else None)
 
         if self.gmt_created is not None:
             result['GmtCreated'] = self.gmt_created
@@ -404,6 +432,12 @@ class DescribeDBInstancesResponseBodyItems(DaraModel):
         if m.get('ExpireTime') is not None:
             self.expire_time = m.get('ExpireTime')
 
+        self.fecluster_list = []
+        if m.get('FEClusterList') is not None:
+            for k1 in m.get('FEClusterList'):
+                temp_model = main_models.DescribeDBInstancesResponseBodyItemsFEClusterList()
+                self.fecluster_list.append(temp_model.from_map(k1))
+
         if m.get('GmtCreated') is not None:
             self.gmt_created = m.get('GmtCreated')
 
@@ -514,7 +548,9 @@ class DescribeDBInstancesResponseBodyItemsTags(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The tag key.
         self.tag_key = tag_key
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):
@@ -549,7 +585,9 @@ class DescribeDBInstancesResponseBodyItemsMultiZone(DaraModel):
         v_switch_ids: List[str] = None,
         zone_id: str = None,
     ):
+        # The list of vSwitch IDs.
         self.v_switch_ids = v_switch_ids
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -575,6 +613,65 @@ class DescribeDBInstancesResponseBodyItemsMultiZone(DaraModel):
 
         if m.get('ZoneId') is not None:
             self.zone_id = m.get('ZoneId')
+
+        return self
+
+class DescribeDBInstancesResponseBodyItemsFEClusterList(DaraModel):
+    def __init__(
+        self,
+        db_cluster_id: str = None,
+        node_count: int = None,
+        single_node_cpu_cores: int = None,
+        single_node_memory_in_gb: int = None,
+        status: str = None,
+    ):
+        self.db_cluster_id = db_cluster_id
+        self.node_count = node_count
+        self.single_node_cpu_cores = single_node_cpu_cores
+        self.single_node_memory_in_gb = single_node_memory_in_gb
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.db_cluster_id is not None:
+            result['DbClusterId'] = self.db_cluster_id
+
+        if self.node_count is not None:
+            result['NodeCount'] = self.node_count
+
+        if self.single_node_cpu_cores is not None:
+            result['SingleNodeCpuCores'] = self.single_node_cpu_cores
+
+        if self.single_node_memory_in_gb is not None:
+            result['SingleNodeMemoryInGB'] = self.single_node_memory_in_gb
+
+        if self.status is not None:
+            result['Status'] = self.status
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DbClusterId') is not None:
+            self.db_cluster_id = m.get('DbClusterId')
+
+        if m.get('NodeCount') is not None:
+            self.node_count = m.get('NodeCount')
+
+        if m.get('SingleNodeCpuCores') is not None:
+            self.single_node_cpu_cores = m.get('SingleNodeCpuCores')
+
+        if m.get('SingleNodeMemoryInGB') is not None:
+            self.single_node_memory_in_gb = m.get('SingleNodeMemoryInGB')
+
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
 
         return self
 

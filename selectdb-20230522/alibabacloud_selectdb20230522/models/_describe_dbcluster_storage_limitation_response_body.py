@@ -16,10 +16,15 @@ class DescribeDBClusterStorageLimitationResponseBody(DaraModel):
         dynamic_message: str = None,
         request_id: str = None,
     ):
+        # The details of the access denial. This field is returned only when the RAM verification fails.
         self.access_denied_detail = access_denied_detail
+        # The returned data.
         self.data = data
+        # The dynamic code. This parameter is not used. Ignore this parameter.
         self.dynamic_code = dynamic_code
+        # The dynamic message. This parameter is not used. Ignore this parameter.
         self.dynamic_message = dynamic_message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -73,6 +78,7 @@ class DescribeDBClusterStorageLimitationResponseBodyData(DaraModel):
         self,
         class_code_list: List[main_models.DescribeDBClusterStorageLimitationResponseBodyDataClassCodeList] = None,
     ):
+        # The list of cache specifications.
         self.class_code_list = class_code_list
 
     def validate(self):
@@ -114,12 +120,19 @@ class DescribeDBClusterStorageLimitationResponseBodyDataClassCodeList(DaraModel)
         min_storage_in_gb: int = None,
         step_storage_in_gb: int = None,
     ):
+        # The specification code.
         self.class_code = class_code
+        # The number of vCPU cores.
         self.cpu_cores = cpu_cores
+        # The default cache size in GB.
         self.default_storage_in_gb = default_storage_in_gb
+        # The maximum cache size in GB.
         self.max_storage_in_gb = max_storage_in_gb
+        # The memory size in GB.
         self.memory_in_gb = memory_in_gb
+        # The minimum cache size in GB.
         self.min_storage_in_gb = min_storage_in_gb
+        # The cache step size in GB.
         self.step_storage_in_gb = step_storage_in_gb
 
     def validate(self):

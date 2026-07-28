@@ -1,3 +1,14 @@
+2026-07-28 Version: 5.1.0
+- Support API DescribeProfile.
+- Support API DescribeQueryExplain.
+- Support API DescribeSlowQueryStats.
+- Support API DescribeTableSchema.
+- Update API DescribeDBInstanceAttribute: add response parameters Body.CanUpgradeVersionCommunityMap.
+- Update API DescribeDBInstanceAttribute: add response parameters Body.CommunityVersion.
+- Update API DescribeDBInstanceAttribute: add response parameters Body.MCPServerServiceStatus.
+- Update API DescribeDBInstances: add response parameters Body.Items.$.FEClusterList.
+
+
 2026-04-21 Version: 5.0.4
 - Update API DescribeDBInstanceAttribute: add response parameters Body.LangfuseInstanceIds.
 

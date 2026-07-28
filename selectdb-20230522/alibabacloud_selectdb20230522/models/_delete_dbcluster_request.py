@@ -13,15 +13,19 @@ class DeleteDBClusterRequest(DaraModel):
         resource_group_id: str = None,
         resource_owner_id: int = None,
     ):
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # 代表资源一级ID的资源属性字段
+        # The instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
-        # 代表资源组的资源属性字段
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_id = resource_owner_id
 

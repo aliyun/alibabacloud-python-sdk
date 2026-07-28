@@ -11,11 +11,11 @@ class DescribeDBInstanceAttributeRequest(DaraModel):
         region_id: str = None,
         resource_owner_id: int = None,
     ):
-        # The instance ID.
+        # The ID of the instance.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The region ID of the instance.
+        # The ID of the region.
         # 
         # This parameter is required.
         self.region_id = region_id

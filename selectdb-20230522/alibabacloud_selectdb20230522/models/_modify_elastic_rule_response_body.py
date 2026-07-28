@@ -66,7 +66,7 @@ class ModifyElasticRuleResponseBodyData(DaraModel):
         # 
         # Valid value:
         # 
-        # *   Day
+        # - Day
         self.execution_period = execution_period
         # The rule ID.
         self.rule_id = rule_id

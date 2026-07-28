@@ -12,10 +12,16 @@ class UpgradeDBInstanceDeploySchemeShrinkRequest(DaraModel):
         region_id: str = None,
         security_token: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # A list of multi-zone configurations.
+        # 
         # This parameter is required.
         self.multi_zone_shrink = multi_zone_shrink
+        # The ID of the region where the instance resides.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.security_token = security_token

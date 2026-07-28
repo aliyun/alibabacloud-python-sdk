@@ -76,12 +76,24 @@ from ._describe_dbinstances_response import DescribeDBInstancesResponse
 from ._describe_elastic_rules_request import DescribeElasticRulesRequest
 from ._describe_elastic_rules_response_body import DescribeElasticRulesResponseBody
 from ._describe_elastic_rules_response import DescribeElasticRulesResponse
+from ._describe_profile_request import DescribeProfileRequest
+from ._describe_profile_response_body import DescribeProfileResponseBody
+from ._describe_profile_response import DescribeProfileResponse
+from ._describe_query_explain_request import DescribeQueryExplainRequest
+from ._describe_query_explain_response_body import DescribeQueryExplainResponseBody
+from ._describe_query_explain_response import DescribeQueryExplainResponse
 from ._describe_regions_request import DescribeRegionsRequest
 from ._describe_regions_response_body import DescribeRegionsResponseBody
 from ._describe_regions_response import DescribeRegionsResponse
 from ._describe_security_iplist_request import DescribeSecurityIPListRequest
 from ._describe_security_iplist_response_body import DescribeSecurityIPListResponseBody
 from ._describe_security_iplist_response import DescribeSecurityIPListResponse
+from ._describe_slow_query_stats_request import DescribeSlowQueryStatsRequest
+from ._describe_slow_query_stats_response_body import DescribeSlowQueryStatsResponseBody
+from ._describe_slow_query_stats_response import DescribeSlowQueryStatsResponse
+from ._describe_table_schema_request import DescribeTableSchemaRequest
+from ._describe_table_schema_response_body import DescribeTableSchemaResponseBody
+from ._describe_table_schema_response import DescribeTableSchemaResponse
 from ._describe_vswitches_request import DescribeVSwitchesRequest
 from ._describe_vswitches_response_body import DescribeVSwitchesResponseBody
 from ._describe_vswitches_response import DescribeVSwitchesResponse
@@ -172,6 +184,7 @@ from ._describe_dbinstance_net_info_response_body import DescribeDBInstanceNetIn
 from ._describe_dbinstance_net_info_response_body import DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosPortList
 from ._describe_dbinstance_net_info_response_body import DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfos
 from ._describe_dbinstances_request import DescribeDBInstancesRequestTag
+from ._describe_dbinstances_response_body import DescribeDBInstancesResponseBodyItemsFEClusterList
 from ._describe_dbinstances_response_body import DescribeDBInstancesResponseBodyItemsMultiZone
 from ._describe_dbinstances_response_body import DescribeDBInstancesResponseBodyItemsTags
 from ._describe_dbinstances_response_body import DescribeDBInstancesResponseBodyItems
@@ -270,12 +283,24 @@ __all__ = [
     DescribeElasticRulesRequest,
     DescribeElasticRulesResponseBody,
     DescribeElasticRulesResponse,
+    DescribeProfileRequest,
+    DescribeProfileResponseBody,
+    DescribeProfileResponse,
+    DescribeQueryExplainRequest,
+    DescribeQueryExplainResponseBody,
+    DescribeQueryExplainResponse,
     DescribeRegionsRequest,
     DescribeRegionsResponseBody,
     DescribeRegionsResponse,
     DescribeSecurityIPListRequest,
     DescribeSecurityIPListResponseBody,
     DescribeSecurityIPListResponse,
+    DescribeSlowQueryStatsRequest,
+    DescribeSlowQueryStatsResponseBody,
+    DescribeSlowQueryStatsResponse,
+    DescribeTableSchemaRequest,
+    DescribeTableSchemaResponseBody,
+    DescribeTableSchemaResponse,
     DescribeVSwitchesRequest,
     DescribeVSwitchesResponseBody,
     DescribeVSwitchesResponse,
@@ -366,6 +391,7 @@ __all__ = [
     DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosPortList,
     DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfos,
     DescribeDBInstancesRequestTag,
+    DescribeDBInstancesResponseBodyItemsFEClusterList,
     DescribeDBInstancesResponseBodyItemsMultiZone,
     DescribeDBInstancesResponseBodyItemsTags,
     DescribeDBInstancesResponseBodyItems,

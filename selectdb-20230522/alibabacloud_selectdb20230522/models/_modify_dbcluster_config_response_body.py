@@ -14,12 +14,15 @@ class ModifyDBClusterConfigResponseBody(DaraModel):
         dynamic_message: str = None,
         request_id: str = None,
     ):
+        # Access denied details.
         self.access_denied_detail = access_denied_detail
+        # Return data.
         self.data = data
-        # The dynamic code. This parameter is not returned.
+        # Dynamic code, currently not in use, please ignore.
         self.dynamic_code = dynamic_code
-        # The dynamic message. This parameter is not returned.
+        # Dynamic message, currently not in use, please ignore.
         self.dynamic_message = dynamic_message
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -76,9 +79,13 @@ class ModifyDBClusterConfigResponseBodyData(DaraModel):
         db_instance_name: str = None,
         task_id: int = None,
     ):
+        # Cluster ID.
         self.db_cluster_id = db_cluster_id
+        # Instance numeric ID.
         self.db_instance_id = db_instance_id
+        # Instance ID.
         self.db_instance_name = db_instance_name
+        # Task ID
         self.task_id = task_id
 
     def validate(self):

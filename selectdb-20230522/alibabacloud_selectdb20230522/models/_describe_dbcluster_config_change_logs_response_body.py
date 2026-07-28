@@ -16,13 +16,15 @@ class DescribeDBClusterConfigChangeLogsResponseBody(DaraModel):
         dynamic_message: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
-        # The information returned.
+        # The returned data.
         self.data = data
-        # The dynamic code. This parameter is not returned.
+        # The dynamic code. This parameter is not used. Ignore this parameter.
         self.dynamic_code = dynamic_code
-        # The dynamic message. This parameter is not returned.
+        # The dynamic message. This parameter is not used. Ignore this parameter.
         self.dynamic_message = dynamic_message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -82,6 +84,7 @@ class DescribeDBClusterConfigChangeLogsResponseBodyData(DaraModel):
     ):
         # The cluster ID.
         self.db_cluster_id = db_cluster_id
+        # The numeric ID of the instance.
         self.db_instance_id = db_instance_id
         # The instance ID.
         self.db_instance_name = db_instance_name
@@ -153,15 +156,19 @@ class DescribeDBClusterConfigChangeLogsResponseBodyDataParamChangeLogs(DaraModel
         new_value: str = None,
         old_value: str = None,
     ):
+        # The time when the task was created. The time is in GMT.
         self.gmt_created = gmt_created
+        # The time when the task was last modified. The time is in GMT.
         self.gmt_modified = gmt_modified
-        # The ID of the change log.
+        # The ID of the change record.
         self.id = id
-        # Indicates whether the modification has taken effect.
+        # Indicates whether the configuration has taken effect.
         self.is_applied = is_applied
-        # The parameter name.
+        # The name of the configuration item.
         self.name = name
+        # The new parameter value.
         self.new_value = new_value
+        # The original parameter value.
         self.old_value = old_value
 
     def validate(self):

@@ -11,7 +11,7 @@ class CreateElasticRuleResponseBody(DaraModel):
         data: main_models.CreateElasticRuleResponseBodyData = None,
         request_id: str = None,
     ):
-        # The data returned.
+        # The returned data.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -54,19 +54,15 @@ class CreateElasticRuleResponseBodyData(DaraModel):
         execution_period: str = None,
         rule_id: int = None,
     ):
-        # The rule for computing resources of the required cluster.
+        # The target compute resource class for the cluster.
         self.cluster_class = cluster_class
         # The cluster ID.
         self.cluster_id = cluster_id
         # The instance ID.
         self.db_instance_id = db_instance_id
-        # The time when the scheduled scaling rule is executed.
+        # The start time of the time-based scaling rule.
         self.elastic_rule_start_time = elastic_rule_start_time
-        # The execution cycle.
-        # 
-        # Valid value:
-        # 
-        # *   Day
+        # The execution epoch.
         self.execution_period = execution_period
         # The rule ID.
         self.rule_id = rule_id

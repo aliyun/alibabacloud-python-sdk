@@ -15,8 +15,11 @@ class DescribeZonesResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
     ):
+        # The list of results.
         self.items = items
+        # The number of entries per page for a paged query.
         self.max_results = max_results
+        # The token for the next page of results. If this parameter is empty, all results have been returned.
         self.next_token = next_token
         # Id of the request
         self.request_id = request_id
@@ -73,7 +76,9 @@ class DescribeZonesResponseBodyItems(DaraModel):
         region_id: str = None,
         zone_id: str = None,
     ):
+        # The region ID.
         self.region_id = region_id
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):

@@ -4,38 +4,32 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class DescribeDBClusterConfigChangeLogsRequest(DaraModel):
+class DescribeSlowQueryStatsRequest(DaraModel):
     def __init__(
         self,
-        config_key: str = None,
-        dbcluster_id: str = None,
         dbinstance_id: str = None,
         end_time: str = None,
         region_id: str = None,
         start_time: str = None,
+        threshold_ms: int = None,
+        top_n: int = None,
     ):
-        # The configuration file that was modified. The value is \\`be.conf\\` for a compute cluster and \\`fe.conf\\` for an FE cluster.
-        self.config_key = config_key
-        # The cluster ID.
-        # 
-        # This parameter is required.
-        self.dbcluster_id = dbcluster_id
         # The instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The end time to query change logs. The format is \\`yyyy-MM-dd HH:mm:ss\\`.
-        # 
-        # This parameter is required.
+        # The end time. Must be later than the start time. Defaults to the current time.
         self.end_time = end_time
         # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The start time to query change logs. The format is \\`yyyy-MM-dd HH:mm:ss\\`.
-        # 
-        # This parameter is required.
+        # The start time. Defaults to 24 hours before the current time.
         self.start_time = start_time
+        # The slow query threshold, in milliseconds. The default value is 5000.
+        self.threshold_ms = threshold_ms
+        # The number of top slow queries to return. The default value is 10.
+        self.top_n = top_n
 
     def validate(self):
         pass
@@ -45,12 +39,6 @@ class DescribeDBClusterConfigChangeLogsRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.config_key is not None:
-            result['ConfigKey'] = self.config_key
-
-        if self.dbcluster_id is not None:
-            result['DBClusterId'] = self.dbcluster_id
-
         if self.dbinstance_id is not None:
             result['DBInstanceId'] = self.dbinstance_id
 
@@ -63,16 +51,16 @@ class DescribeDBClusterConfigChangeLogsRequest(DaraModel):
         if self.start_time is not None:
             result['StartTime'] = self.start_time
 
+        if self.threshold_ms is not None:
+            result['ThresholdMs'] = self.threshold_ms
+
+        if self.top_n is not None:
+            result['TopN'] = self.top_n
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ConfigKey') is not None:
-            self.config_key = m.get('ConfigKey')
-
-        if m.get('DBClusterId') is not None:
-            self.dbcluster_id = m.get('DBClusterId')
-
         if m.get('DBInstanceId') is not None:
             self.dbinstance_id = m.get('DBInstanceId')
 
@@ -84,6 +72,12 @@ class DescribeDBClusterConfigChangeLogsRequest(DaraModel):
 
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
+
+        if m.get('ThresholdMs') is not None:
+            self.threshold_ms = m.get('ThresholdMs')
+
+        if m.get('TopN') is not None:
+            self.top_n = m.get('TopN')
 
         return self
 

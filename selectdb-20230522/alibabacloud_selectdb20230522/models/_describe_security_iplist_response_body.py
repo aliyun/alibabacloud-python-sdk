@@ -72,8 +72,9 @@ class DescribeSecurityIPListResponseBodyGroupItems(DaraModel):
     ):
         # The IP address type. Valid values:
         # 
-        # *   ipv4
-        # *   ipv6 (not supported)
+        # - ipv4
+        # 
+        # - ipv6 (not supported)
         self.aecurity_iptype = aecurity_iptype
         # The name of the whitelist.
         self.group_name = group_name

@@ -15,17 +15,27 @@ class ModifyDBClusterConfigRequest(DaraModel):
         region_id: str = None,
         switch_time_mode: str = None,
     ):
+        # Configuration file to modify. For compute clusters, it is fixed as be.conf. For fe clusters, it is fixed as fe.conf.
+        # 
         # This parameter is required.
         self.config_key = config_key
+        # Cluster ID.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # Instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # Specifies whether to perform parallel operations on the cluster node.
+        # Whether to operate cluster nodes in parallel
         self.parallel_operation = parallel_operation
+        # JSON string of parameters and parameter values.
+        # 
         # This parameter is required.
         self.parameters = parameters
+        # Region ID.
         self.region_id = region_id
+        # Upgrade method. If not specified, the upgrade will be performed immediately. If set to 1, the upgrade will be performed during the maintenance window.
         self.switch_time_mode = switch_time_mode
 
     def validate(self):

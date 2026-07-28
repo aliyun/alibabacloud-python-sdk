@@ -14,11 +14,11 @@ class DescribeDBInstanceNetInfoResponseBody(DaraModel):
         dbinstance_net_infos: List[main_models.DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfos] = None,
         request_id: str = None,
     ):
-        # The network information about the backend (BE) clusters.
+        # Network list of BE instances.
         self.dbclusters_net_infos = dbclusters_net_infos
-        # The network information about the instance.
+        # Instance network information.
         self.dbinstance_net_infos = dbinstance_net_infos
-        # The request ID.
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -83,29 +83,31 @@ class DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfos(DaraModel):
         vpc_instance_id: str = None,
         vswitch_id: str = None,
     ):
-        # The cluster ID.
+        # Cluster ID.
         self.cluster_id = cluster_id
-        # The connection string of the instance.
+        # Connection address.
         self.connection_string = connection_string
-        # The IP address of the instance.
+        # IP address.
         self.ip = ip
-        # The network type of the instance. Valid values:
+        # Network type of the instance. Valid values:
         # 
-        # *   **VPC**: indicates a virtual private cloud (VPC)-connected instance.
-        # *   **PUBLIC**: indicates an Internet-connected instance.
+        # - **VPC**: Virtual Private Cloud (VPC).
+        # 
+        # - **PUBLIC**: Internet.
         self.net_type = net_type
-        # The ports.
+        # Port object.
         self.port_list = port_list
-        # Indicates whether the network information is visible to users. Valid values:
+        # Indicates whether the information is visible to users. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Visible to users.
+        # 
+        # - **false**: Not visible to users.
         self.user_visible = user_visible
-        # The VPC ID.
+        # VPC ID.
         self.vpc_id = vpc_id
-        # The ID of the VPC-connected instance.
+        # VPC instance ID.
         self.vpc_instance_id = vpc_instance_id
-        # The vSwitch ID.
+        # vSwitch ID.
         self.vswitch_id = vswitch_id
 
     def validate(self):
@@ -190,12 +192,13 @@ class DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosPortList(DaraModel)
         port: int = None,
         protocol: str = None,
     ):
-        # The port that is used to connect to the instance.
+        # Connection port number.
         self.port = port
-        # The protocol of the port. Valid values:
+        # Port type. Valid values:
         # 
-        # *   **HttpPort**: HTTP port.
-        # *   **MySQLPort**: MySQL port.
+        # - **HttpPort**: HTTP protocol port.
+        # 
+        # - **MySQLPort**: MySQL protocol port.
         self.protocol = protocol
 
     def validate(self):
@@ -237,22 +240,23 @@ class DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfos(DaraModel):
         vpc_instance_id: str = None,
         vswitch_id: str = None,
     ):
-        # The cluster ID.
+        # Cluster ID.
         self.cluster_id = cluster_id
-        # The connection string of the BE cluster.
+        # Connection address.
         self.connection_string = connection_string
-        # The IP address of the BE cluster.
+        # IP address.
         self.ip = ip
-        # The network type of the BE cluster.
+        # Network type.
         self.net_type = net_type
+        # Port list.
         self.port_list = port_list
-        # Indicates whether the network information is visible to users.
+        # Indicates whether the information is visible to users.
         self.user_visible = user_visible
-        # VPC ID
+        # VPC ID.
         self.vpc_id = vpc_id
-        # The VPC ID.
+        # VPC instance ID.
         self.vpc_instance_id = vpc_instance_id
-        # The vSwitch ID.
+        # vSwitch ID.
         self.vswitch_id = vswitch_id
 
     def validate(self):
@@ -337,9 +341,9 @@ class DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfosPortList(DaraModel)
         port: int = None,
         protocol: str = None,
     ):
-        # The port that is used to connect to the BE cluster.
+        # Connection port number.
         self.port = port
-        # The protocol of the port.
+        # Port type.
         self.protocol = protocol
 
     def validate(self):

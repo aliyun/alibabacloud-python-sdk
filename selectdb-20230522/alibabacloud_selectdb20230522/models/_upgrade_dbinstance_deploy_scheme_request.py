@@ -15,10 +15,16 @@ class UpgradeDBInstanceDeploySchemeRequest(DaraModel):
         region_id: str = None,
         security_token: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # A list of multi-zone configurations.
+        # 
         # This parameter is required.
         self.multi_zone = multi_zone
+        # The ID of the region where the instance resides.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.security_token = security_token
@@ -75,8 +81,12 @@ class UpgradeDBInstanceDeploySchemeRequestMultiZone(DaraModel):
         v_switch_ids: List[str] = None,
         zone_id: str = None,
     ):
+        # The vSwitch ID.
+        # 
         # This parameter is required.
         self.v_switch_ids = v_switch_ids
+        # The zone ID.
+        # 
         # This parameter is required.
         self.zone_id = zone_id
 

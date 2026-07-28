@@ -14,23 +14,25 @@ class ModifyBEClusterAttributeRequest(DaraModel):
         resource_owner_id: int = None,
         value: str = None,
     ):
+        # Cluster ID.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # Instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The attribute type of the instance. Set this parameter to DBInstanceDescription.
-        # 
-        # Valid values:
-        # 
-        # *   MaintainTime
-        # *   DBInstanceDescription
+        # Attribute type to modify.
+        # Set to DBInstanceDescription.
         # 
         # This parameter is required.
         self.instance_attribute_type = instance_attribute_type
+        # Region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_id = resource_owner_id
-        # The new name of the cluster.
+        # Target cluster name.
         # 
         # This parameter is required.
         self.value = value

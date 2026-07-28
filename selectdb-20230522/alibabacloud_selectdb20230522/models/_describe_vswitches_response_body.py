@@ -18,13 +18,19 @@ class DescribeVSwitchesResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: str = None,
     ):
+        # The list of results.
         self.items = items
+        # The number of entries returned per page.
         self.max_results = max_results
+        # The token that is used to start the next query. If this parameter is empty, all results have been returned.
         self.next_token = next_token
+        # The current page number.
         self.page_number = page_number
+        # The number of entries on the current page.
         self.page_size = page_size
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The total number of records.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -98,8 +104,11 @@ class DescribeVSwitchesResponseBodyItems(DaraModel):
         v_switch_name: str = None,
         zone_id: str = None,
     ):
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
+        # The vSwitch name.
         self.v_switch_name = v_switch_name
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):

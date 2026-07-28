@@ -19,8 +19,9 @@ class ModifyDBInstanceAttributeRequest(DaraModel):
         self.dbinstance_id = dbinstance_id
         # The instance parameter to be modified. Valid values:
         # 
-        # *   **MaintainTime**: Modify the maintenance window of the instance in the hh:mm-hh:mm format.
-        # *   **DBInstanceDescription**: Modify the description of the instance.
+        # - **MaintainTime**: Modify the maintenance window of the instance in the hh:mm-hh:mm format.
+        # 
+        # - **DBInstanceDescription**: Modify the description of the instance.
         # 
         # This parameter is required.
         self.instance_attribute_type = instance_attribute_type
@@ -31,8 +32,9 @@ class ModifyDBInstanceAttributeRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The new value of the instance parameter to be modified. Examples:
         # 
-        # *   If InstanceAttributeType is set to MaintainTime, you can set Value to 00:00-06:00.
-        # *   If InstanceAttributeType is set to DBInstanceDescription, you can set Value to testdb.
+        # - If InstanceAttributeType is set to MaintainTime, you can set Value to 00:00-06:00.
+        # 
+        # - If InstanceAttributeType is set to DBInstanceDescription, you can set Value to testdb.
         # 
         # This parameter is required.
         self.value = value

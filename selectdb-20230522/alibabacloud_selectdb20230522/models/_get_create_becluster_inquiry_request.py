@@ -20,50 +20,30 @@ class GetCreateBEClusterInquiryRequest(DaraModel):
         region_id: str = None,
         resource_owner_id: int = None,
     ):
-        # The size of the elastic cache.
+        # The elastic cache space.
         self.cache_size = cache_size
         # The billing method.
-        # 
-        # Valid values:
-        # 
-        # *   PREPAY: subscription
-        # *   POSTPAY: pay-as-you-go
         # 
         # This parameter is required.
         self.charge_type = charge_type
         # The commodity code.
-        # 
-        # Valid values:
-        # 
-        # *   selectdb_pre_public_intl: subscription commodity on the international site (alibabacloud.com)
-        # *   selectdb_go_public_cn: pay-as-you-go commodity on the China site (aliyun.com)
-        # *   selectdb_go_public_intl: pay-as-you-go commodity on the international site (alibabacloud.com)
-        # *   selectdb_pre_public_cn: subscription commodity on the China site (aliyun.com).
         self.commodity_code = commodity_code
-        # The number of elastic CPU cores.
+        # The elastic computing resources.
         self.compute_size = compute_size
         # The instance ID.
         # 
         # This parameter is required.
         self.db_instance_id = db_instance_id
-        # The size of the reserved cache.
+        # The reserved cache space.
         self.pre_cache_size = pre_cache_size
-        # The number of reserved CPU cores.
+        # The reserved computing resources.
         self.pre_compute_size = pre_compute_size
         # The billing cycle.
-        # 
-        # Valid values:
-        # 
-        # *   Month
-        # *   Year
-        # *   Minute
-        # *   Hour
-        # *   Day
         # 
         # This parameter is required.
         self.pricing_cycle = pricing_cycle
         self.promotion_option_no = promotion_option_no
-        # The number of clusters to be created.
+        # The quantity.
         # 
         # This parameter is required.
         self.quantity = quantity

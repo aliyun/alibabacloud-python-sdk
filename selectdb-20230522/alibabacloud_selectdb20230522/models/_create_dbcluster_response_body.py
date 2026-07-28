@@ -11,7 +11,9 @@ class CreateDBClusterResponseBody(DaraModel):
         data: main_models.CreateDBClusterResponseBodyData = None,
         request_id: str = None,
     ):
+        # The data returned.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -49,8 +51,11 @@ class CreateDBClusterResponseBodyData(DaraModel):
         dbinstance_id: str = None,
         order_id: int = None,
     ):
+        # The cluster ID.
         self.cluster_id = cluster_id
+        # The instance ID.
         self.dbinstance_id = dbinstance_id
+        # The order ID.
         self.order_id = order_id
 
     def validate(self):

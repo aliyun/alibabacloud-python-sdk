@@ -12,9 +12,11 @@ class ModifyDBClusterResponseBody(DaraModel):
         data: main_models.ModifyDBClusterResponseBodyData = None,
         request_id: str = None,
     ):
-        # 代表资源一级ID的资源属性字段
+        # The instance ID.
         self.dbinstance_id = dbinstance_id
+        # The returned data.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -58,8 +60,11 @@ class ModifyDBClusterResponseBodyData(DaraModel):
         dbinstance_id: str = None,
         order_id: int = None,
     ):
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
+        # The instance ID.
         self.dbinstance_id = dbinstance_id
+        # The order ID.
         self.order_id = order_id
 
     def validate(self):

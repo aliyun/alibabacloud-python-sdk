@@ -26,37 +26,85 @@ class CreateDBClusterRequest(DaraModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
+        # The reserved cache size.
+        # 
         # This parameter is required.
         self.cache_size = cache_size
+        # The billing method of the cluster. Valid values:
+        # 
+        # - **Postpaid**: pay-as-you-go.
+        # 
+        # - **Prepaid**: subscription.
+        # 
         # This parameter is required.
         self.charge_type = charge_type
         self.cluster_node_count = cluster_node_count
         self.cluster_node_type = cluster_node_type
+        # The instance type of the cluster. Valid values:
+        # 
+        # - **selectdb.xlarge**: 4 cores, 32 GB.
+        # 
+        # - **selectdb.2xlarge**: 8 cores, 64 GB.
+        # 
+        # - **selectdb.4xlarge**: 16 cores, 128 GB.
+        # 
+        # - **selectdb.8xlarge**: 32 cores, 256 GB.
+        # 
+        # - **selectdb.16xlarge**: 64 cores, 512 GB.
+        # 
+        # - **selectdb.24xlarge**: 96 cores, 768 GB.
+        # 
+        # - **selectdb.32xlarge**: 128 cores, 1024 GB.
+        # 
         # This parameter is required.
         self.dbcluster_class = dbcluster_class
+        # The description of the cluster.
+        # 
         # This parameter is required.
         self.dbcluster_description = dbcluster_description
-        # 代表资源一级ID的资源属性字段
+        # The instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The database engine of the instance.
+        # The database engine type.
         self.engine = engine
+        # The database engine version.
+        # 
         # This parameter is required.
         self.engine_version = engine_version
+        # The billing cycle of the subscription cluster. Valid values:
+        # 
+        # - **Year**: The cluster is billed on a yearly basis.
+        # 
+        # - **Month**: The cluster is billed on a monthly basis.
+        # 
+        # > This parameter is required and takes effect only when **ChargeType** is set to **Prepaid**.
         self.period = period
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_id = resource_owner_id
         self.scale_max = scale_max
         self.scale_min = scale_min
+        # The subscription duration of the subscription cluster. Valid values:
+        # 
+        # - If Period is set to Year, valid values for UsedTime are 1, 2, 3, and 5.
+        # 
+        # - If Period is set to Month, the value of UsedTime can be an integer from 1 to 9.
+        # 
+        # > This parameter is required and takes effect only when ChargeType is set to Prepaid.
         self.used_time = used_time
+        # The vSwitch ID.
+        # 
         # This parameter is required.
         self.v_switch_id = v_switch_id
-        # VPC ID.
+        # The VPC ID.
         # 
         # This parameter is required.
         self.vpc_id = vpc_id
+        # The zone ID.
+        # 
         # This parameter is required.
         self.zone_id = zone_id
 

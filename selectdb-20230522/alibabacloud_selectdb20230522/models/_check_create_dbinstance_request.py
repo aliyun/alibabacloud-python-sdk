@@ -25,50 +25,83 @@ class CheckCreateDBInstanceRequest(DaraModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
+        # The reserved cache size, in GB.
+        # 
         # This parameter is required.
         self.cache_size = cache_size
+        # The billing method of the instance. Valid values:
+        # 
+        # - **Postpaid**: pay-as-you-go.
+        # 
+        # - **Prepaid**: subscription.
+        # 
         # This parameter is required.
         self.charge_type = charge_type
+        # A client-generated token that is used to ensure the idempotence of the request. The token must be unique among different requests. The token can be up to 64 ASCII characters in length and cannot contain non-ASCII characters.
         self.client_token = client_token
+        # The connection string of the instance.
         self.connection_string = connection_string
-        # The specifications of the instance. Valid values:
+        # The instance type. Valid values:
         # 
-        # *   **selectdb.xlarge**: 4 CPU cores and 32 GB of memory.
-        # *   **selectdb.2xlarge**: 8 CPU cores and 64 GB of memory.
-        # *   **selectdb.4xlarge**: 16 CPU cores and 128 GB of memory.
-        # *   **selectdb.8xlarge**: 32 CPU cores and 256 GB of memory.
-        # *   **selectdb.16xlarge**: 64 CPU cores and 512 GB of memory.
-        # *   **selectdb.24xlarge**: 96 CPU cores and 768 GB of memory.
-        # *   **selectdb.32xlarge**: 128 CPU cores and 1,024 GB of memory.
+        # - **selectdb.xlarge**: 4 cores, 32 GB.
+        # 
+        # - **selectdb.2xlarge**: 8 cores, 64 GB.
+        # 
+        # - **selectdb.4xlarge**: 16 cores, 128 GB.
+        # 
+        # - **selectdb.8xlarge**: 32 cores, 256 GB.
+        # 
+        # - **selectdb.16xlarge**: 64 cores, 512 GB.
+        # 
+        # - **selectdb.24xlarge**: 96 cores, 768 GB.
+        # 
+        # - **selectdb.32xlarge**: 128 cores, 1024 GB.
         # 
         # This parameter is required.
         self.dbinstance_class = dbinstance_class
+        # The description of the instance.
         self.dbinstance_description = dbinstance_description
-        # The database engine of the instance.
+        # The database engine type.
         self.engine = engine
-        # The version of the database engine.
+        # The database engine version.
         # 
         # This parameter is required.
         self.engine_version = engine_version
+        # The unit of the subscription duration. Valid values:
+        # 
+        # - **Year**
+        # 
+        # - **Month**
+        # 
+        # > This parameter is required and takes effect only when **ChargeType** is set to **Prepaid**.
         self.period = period
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_id = resource_owner_id
+        # The IP address whitelist for the instance. Separate multiple IP addresses with commas (,).
         self.security_iplist = security_iplist
-        # The subscription duration of the instance. Valid values:
+        # The subscription duration. Valid values:
         # 
-        # *   If Period is set to Year, valid values of UsedTime are 1, 2, 3, 4, and 5.
-        # *   If Period is set to Month, valid values of UsedTime are 1 to 12.
+        # - If Period is set to Year, valid values are 1, 2, 3, 4, and 5.
         # 
-        # >  This parameter takes effect and is required only if ChargeType is set to Prepaid.
+        # - If Period is set to Month, valid values are integers from 1 to 12.
+        # 
+        # > This parameter is required and takes effect only when ChargeType is set to Prepaid.
         self.used_time = used_time
+        # The vSwitch ID.
+        # 
         # This parameter is required.
         self.v_switch_id = v_switch_id
-        # VPC ID。
+        # The VPC ID.
         # 
         # This parameter is required.
         self.vpc_id = vpc_id
+        # The zone ID.
+        # 
         # This parameter is required.
         self.zone_id = zone_id
 

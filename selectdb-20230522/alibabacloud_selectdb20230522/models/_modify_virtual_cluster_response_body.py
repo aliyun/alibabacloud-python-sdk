@@ -11,8 +11,9 @@ class ModifyVirtualClusterResponseBody(DaraModel):
         data: main_models.ModifyVirtualClusterResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -49,7 +50,9 @@ class ModifyVirtualClusterResponseBodyData(DaraModel):
         db_cluster_id: str = None,
         db_instance_id: str = None,
     ):
+        # The cluster ID.
         self.db_cluster_id = db_cluster_id
+        # The instance ID.
         self.db_instance_id = db_instance_id
 
     def validate(self):

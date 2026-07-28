@@ -13,8 +13,9 @@ class DescribeAllDBInstanceClassResponseBody(DaraModel):
         class_code_list: List[main_models.DescribeAllDBInstanceClassResponseBodyClassCodeList] = None,
         request_id: str = None,
     ):
-        # The instance specifications.
+        # Instance type list.
         self.class_code_list = class_code_list
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -62,13 +63,19 @@ class DescribeAllDBInstanceClassResponseBodyClassCodeList(DaraModel):
         min_storage_in_gb: int = None,
         step_storage_in_gb: int = None,
     ):
+        # Type code.
         self.class_code = class_code
+        # Number of CPU cores.
         self.cpu_cores = cpu_cores
+        # Default cache.
         self.default_storage_in_gb = default_storage_in_gb
+        # Maximum cache.
         self.max_storage_in_gb = max_storage_in_gb
-        # The memory size.
+        # Memory.
         self.memory_in_gb = memory_in_gb
+        # Minimum cache.
         self.min_storage_in_gb = min_storage_in_gb
+        # Cache increment.
         self.step_storage_in_gb = step_storage_in_gb
 
     def validate(self):

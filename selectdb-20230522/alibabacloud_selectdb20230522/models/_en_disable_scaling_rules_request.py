@@ -33,8 +33,9 @@ class EnDisableScalingRulesRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         # 
         # This parameter is required.
         self.scaling_rules_enable = scaling_rules_enable

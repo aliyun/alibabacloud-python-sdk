@@ -10,6 +10,8 @@ class DescribeAllDBInstanceClassRequest(DaraModel):
         region_id: str = None,
         resource_owner_id: int = None,
     ):
+        # Region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_id = resource_owner_id

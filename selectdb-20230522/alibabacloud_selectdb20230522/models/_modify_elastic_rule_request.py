@@ -33,7 +33,7 @@ class ModifyElasticRuleRequest(DaraModel):
         # 
         # Valid value:
         # 
-        # *   Day
+        # - Day
         self.execution_period = execution_period
         # The cloud service.
         self.product = product
