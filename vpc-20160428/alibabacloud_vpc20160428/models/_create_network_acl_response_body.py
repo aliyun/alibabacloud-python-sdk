@@ -84,10 +84,11 @@ class CreateNetworkAclResponseBodyNetworkAclAttribute(DaraModel):
         self.resources = resources
         # The status of the network ACL. Valid values:
         # 
-        # *   **Available**
-        # *   **Modifying**
+        # - **Available**: available.
+        # 
+        # - **Modifying**: being modified.
         self.status = status
-        # The ID of the VPC to which the network ACL belongs.
+        # The ID of the VPC associated with the network ACL.
         self.vpc_id = vpc_id
 
     def validate(self):

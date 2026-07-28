@@ -16,13 +16,13 @@ class DescribeSslVpnClientCertRequest(DaraModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the SSL client certificate. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # The region ID of the SSL client certificate to query. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the SSL client certificate that you want to query.
+        # The ID of the SSL client certificate to query.
         # 
         # This parameter is required.
         self.ssl_vpn_client_cert_id = ssl_vpn_client_cert_id

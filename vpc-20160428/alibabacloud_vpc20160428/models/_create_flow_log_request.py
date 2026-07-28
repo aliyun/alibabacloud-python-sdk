@@ -14,6 +14,7 @@ class CreateFlowLogRequest(DaraModel):
         description: str = None,
         flow_log_name: str = None,
         ip_version: str = None,
+        log_format: str = None,
         log_store_name: str = None,
         owner_account: str = None,
         owner_id: int = None,
@@ -40,6 +41,7 @@ class CreateFlowLogRequest(DaraModel):
         self.flow_log_name = flow_log_name
         # The IP version of the traffic captured by the flow log.
         self.ip_version = ip_version
+        self.log_format = log_format
         # The name of the Logstore that stores the captured traffic.
         # - The Logstore name can contain only lowercase letters, digits, hyphens (-), and underscores (_).
         # - The name must start and end with a lowercase letter or digit.
@@ -58,13 +60,13 @@ class CreateFlowLogRequest(DaraModel):
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The ID of the resource from which to capture traffic.
+        # The ID of the resource whose traffic you want to capture.
         # 
         # This parameter is required.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The type of resource from which to capture traffic. Valid values:
+        # The type of the resource whose traffic you want to capture. Valid values:
         # 
         # - **NetworkInterface**: network interface controller (NIC).
         #   
@@ -114,6 +116,9 @@ class CreateFlowLogRequest(DaraModel):
 
         if self.ip_version is not None:
             result['IpVersion'] = self.ip_version
+
+        if self.log_format is not None:
+            result['LogFormat'] = self.log_format
 
         if self.log_store_name is not None:
             result['LogStoreName'] = self.log_store_name
@@ -172,6 +177,9 @@ class CreateFlowLogRequest(DaraModel):
         if m.get('IpVersion') is not None:
             self.ip_version = m.get('IpVersion')
 
+        if m.get('LogFormat') is not None:
+            self.log_format = m.get('LogFormat')
+
         if m.get('LogStoreName') is not None:
             self.log_store_name = m.get('LogStoreName')
 
@@ -222,13 +230,13 @@ class CreateFlowLogRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+        # The tag key of the resource. You can specify up to 20 tag keys. Do not specify an empty string.
         # 
-        # The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+        # A tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`, or contain `http://` or `https://`.
         self.key = key
-        # The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
+        # The tag value of the resource. You can specify up to 20 tag values. You can specify an empty string.
         # 
-        # The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+        # The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`, or contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

@@ -18,7 +18,7 @@ class OpenFlowLogServiceRequest(DaraModel):
         # 
         # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, the system automatically set **ClientToken** to the value of **RequestId**. The value of **RequestId** for each API request is different.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request is different.
         self.client_token = client_token
         self.owner_account = owner_account
         self.owner_id = owner_id

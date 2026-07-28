@@ -16,18 +16,17 @@ class ListVSwitchCidrReservationsResponseBody(DaraModel):
         total_count: int = None,
         v_switch_cidr_reservations: List[main_models.ListVSwitchCidrReservationsResponseBodyVSwitchCidrReservations] = None,
     ):
-        # The number of entries to return per page.
+        # The number of entries per page.
         self.max_results = max_results
-        # The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results. Valid values:
-        # 
-        # *   If **NextToken** is empty, no next page exists.
-        # *   If a value is returned for **NextToken**, the value is the token that determines the start point of the next query.
+        # The pagination token. Valid values:
+        # - If **NextToken** is empty, no subsequent query exists.
+        # - If **NextToken** is returned, the value indicates the token for the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
         # The total number of entries returned.
         self.total_count = total_count
-        # A list of reserved CIDR blocks.
+        # The list of reserved CIDR blocks for a vSwitch.
         self.v_switch_cidr_reservations = v_switch_cidr_reservations
 
     def validate(self):
@@ -99,39 +98,39 @@ class ListVSwitchCidrReservationsResponseBodyVSwitchCidrReservations(DaraModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
-        # The number of used prefixes in the reserved CIDR block.
+        # The number of used prefix CIDR blocks in the reserved CIDR block for a vSwitch.
         self.assigned_cidr_count = assigned_cidr_count
-        # The number of available prefixes in the reserved CIDR block.
+        # The number of active prefix CIDR blocks in the reserved CIDR block for a vSwitch.
         self.available_cidr_count = available_cidr_count
         # The time when the reserved CIDR block was created.
         self.creation_time = creation_time
-        # The IP version of the reserved CIDR block. Valid values:
+        # The IP version of the reserved CIDR block for a vSwitch. Valid values:
         # 
-        # *   **IPv4** (default)
-        # *   **IPv6**
+        # - **IPv4** (default): IPv4.
+        # - **IPv6**: IPv6.
         self.ip_version = ip_version
         # The status of the reserved CIDR block. Valid values:
         # 
-        # *   **Assigning**
-        # *   **Assigned**
-        # *   **Releasing**
-        # *   **Released**
+        # - **Assigning**: being allocated.
+        # - **Assigned**: allocated.
+        # - **Releasing**: being released.
+        # - **Released**: released.
         self.status = status
-        # The tags.
+        # The list of tags.
         self.tags = tags
-        # The type of the reserved CIDR block. Valid value: **prefix**. CIDR blocks are allocated from the reserved CIDR block.
+        # The type of the reserved CIDR block for a vSwitch. Valid values: **prefix** (default), which indicates that addresses are allocated by CIDR block.
         self.type = type
-        # The reserved CIDR block.
+        # The reserved CIDR block for a vSwitch.
         self.v_switch_cidr_reservation_cidr = v_switch_cidr_reservation_cidr
-        # The description of the reserved CIDR block.
+        # The description of the reserved CIDR block for a vSwitch.
         self.v_switch_cidr_reservation_description = v_switch_cidr_reservation_description
-        # The ID of the reserved CIDR block.
+        # The instance ID of the reserved CIDR block for a vSwitch.
         self.v_switch_cidr_reservation_id = v_switch_cidr_reservation_id
-        # The name of the reserved CIDR block.
+        # The name of the reserved CIDR block for a vSwitch.
         self.v_switch_cidr_reservation_name = v_switch_cidr_reservation_name
-        # The ID of the vSwitch to which the reserved CIDR block belongs.
+        # The ID of the vSwitch to which the reserved CIDR block for a vSwitch belongs.
         self.v_switch_id = v_switch_id
-        # The virtual private cloud (VPC) to which the reserved CIDR block belongs.
+        # The ID of the VPC to which the reserved CIDR block for a vSwitch belongs.
         self.vpc_id = vpc_id
 
     def validate(self):

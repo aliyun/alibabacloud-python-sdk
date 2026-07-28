@@ -18,11 +18,11 @@ class DeleteForwardEntryRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request may be different.
         self.client_token = client_token
-        # The ID of the DNAT entry to be deleted.
+        # The ID of the DNAT entry to delete.
         # 
         # This parameter is required.
         self.forward_entry_id = forward_entry_id
@@ -34,7 +34,7 @@ class DeleteForwardEntryRequest(DaraModel):
         self.owner_id = owner_id
         # The region ID of the NAT gateway.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id

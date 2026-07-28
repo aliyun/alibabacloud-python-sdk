@@ -18,17 +18,17 @@ class DeleteIPv6TranslatorEntryRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # Generate a parameter value from your client to ensure uniqueness across different requests. ClientToken supports only ASCII characters.
         self.client_token = client_token
-        # The ID of the IPv6 mapping entry to be deleted.
+        # The ID of the IPv6 Translation Service mapping entry to delete.
         self.ipv_6translator_entry_id = ipv_6translator_entry_id
-        # The ID of the IPv6 Translation Service instance.
+        # The instance ID of the IPv6 Translation Service.
         # 
-        # > If you do not specify **Ipv6TranslatorEntryId**, all mapping entries in the specified instance are deleted.
+        # > If you do not specify the **Ipv6TranslatorEntryId** parameter, all mapping entries of the specified instance are deleted.
         self.ipv_6translator_id = ipv_6translator_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region of the IPv6 Translation Service instance. You can call the **DescribeRegions** operation to query the most recent region list.
+        # The region of the IPv6 Translation Service instance. You can call the **DescribeRegions** operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id

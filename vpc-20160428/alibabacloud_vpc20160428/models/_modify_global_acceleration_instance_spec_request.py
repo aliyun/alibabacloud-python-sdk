@@ -15,19 +15,19 @@ class ModifyGlobalAccelerationInstanceSpecRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The maximum bandwidth of the GA instance. Unit: Mbit/s. Set the value to **10**.
+        # The peak bandwidth of the Alibaba Cloud Global Accelerator (GA) instance. Unit: Mbit/s. Valid value: **10**.
         # 
         # This parameter is required.
         self.bandwidth = bandwidth
-        # The ID of the GA instance.
+        # The ID of the Alibaba Cloud Global Accelerator (GA) instance.
         # 
         # This parameter is required.
         self.global_acceleration_instance_id = global_acceleration_instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the GA instance.
+        # The region where the Alibaba Cloud Global Accelerator (GA) instance is deployed. 
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can invoke the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id

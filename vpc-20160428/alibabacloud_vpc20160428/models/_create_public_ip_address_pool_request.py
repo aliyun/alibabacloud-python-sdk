@@ -26,51 +26,48 @@ class CreatePublicIpAddressPoolRequest(DaraModel):
         tag: List[main_models.CreatePublicIpAddressPoolRequestTag] = None,
         zones: List[str] = None,
     ):
-        # The service type of the IP address pool. Valid values:
-        # 
-        # *   **CloudBox** Only cloud box users can select this type.
-        # *   **Default**: This is the default value.
+        # The business type of the IP address pool. Valid values:
+        # - **CloudBox**: CloudBox. Only CloudBox users can select this type.
+        # - **Default** (default): indicates that the business type is not a special type.
         self.biz_type = biz_type
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate a value, and you must make sure that each request has a unique token value. The client token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the value of **RequestId** as the value of **ClientToken**. The value of **RequestId** for each API request is different.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
         self.client_token = client_token
-        # The description of the IP address pool.
+        # The description of the IP address pool instance.
         # 
         # The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description
-        # Specifies whether to precheck only this request. Valid values:
-        # 
-        # *   **true**: prechecks the request without creating an IP address pool. The system checks the required parameters, request format, and service limits. If the request fails to pass the precheck, an error code is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
-        # *   **false**: sends the request. This is the default value. If the request passes the precheck, a 2xx HTTP status code is returned and the IP address pool is created.
+        # Specifies whether to perform a dry run. Valid values:
+        # - **true**: performs a dry run without creating the IP address pool. The system checks the required parameters, request format, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # - **false** (default): performs a dry run and sends the request. If the request passes the dry run, an HTTP 2xx status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The line type. Valid values:
         # 
-        # *   **BGP** (default)
-        # *   **BGP_PRO**
+        # - **BGP** (default): BGP (Multi-ISP) line.
         # 
-        # For more information about BGP (Multi-ISP) lines and BGP (Multi-ISP) Pro lines, see the "Line types" section in the [What is EIP?](https://help.aliyun.com/document_detail/32321.html) topic.
+        # - **BGP_PRO**: BGP (Multi-ISP) Pro line.
         # 
-        # *   If you are allowed to use single-ISP bandwidth, you can also use one of the following values:
+        # For more information about BGP (Multi-ISP) lines and BGP (Multi-ISP) Pro lines, see [EIP line types](https://help.aliyun.com/document_detail/32321.html).
         # 
-        #     *   **ChinaTelecom**
-        #     *   **ChinaUnicom**
-        #     *   **ChinaMobile**
-        #     *   **ChinaTelecom_L2**
-        #     *   **ChinaUnicom_L2**
-        #     *   **ChinaMobile_L2**
-        # 
-        # *   If your services are deployed in China East 1 Finance, this parameter is required and you must set the value to **BGP_FinanceCloud**.
+        # - If you are a whitelist user of single-ISP bandwidth, you can also select the following types:
+        #     - **ChinaTelecom**: China Telecom
+        #     - **ChinaUnicom**: China Unicom
+        #     - **ChinaMobile**: China Mobile
+        #     - **ChinaTelecom_L2**: China Telecom L2
+        #     - **ChinaUnicom_L2**: China Unicom L2
+        #     - **ChinaMobile_L2**: China Mobile L2
+        # - If you are a China (Hangzhou) Finance Cloud user, this field is required. Set this parameter to **BGP_FinanceCloud**.
         self.isp = isp
-        # The name of the IP address pool.
+        # The name of the IP address pool instance.
         # 
         # The name must be 0 to 128 characters in length and cannot start with `http://` or `https://`.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where you want to create the IP address pool.
+        # The region ID of the IP address pool that you want to create.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -78,13 +75,16 @@ class CreatePublicIpAddressPoolRequest(DaraModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The editions of Anti-DDoS.
-        # - If you do not specify this parameter, Anti-DDoS Origin Basic is used.
-        # - If you set the parameter to AntiDDoS_Enhanced, Anti-DDoS Pro/Premium is used.
+        # The security protection level.
+        # 
+        # - If this parameter is left empty, DDoS Protection (Basic) is used by default.
+        # 
+        # - If this parameter is set to **AntiDDoS_Enhanced**, DDoS Protection (Enhanced) is used.
         self.security_protection_types = security_protection_types
-        # The tag of the resource.
+        # The tags of the resource.
         self.tag = tag
-        # The zone of the IP address pool. If you set **BizType** to **CloudBox**, this parameter is required.
+        # The zones of the IP address pool.
+        # This parameter is required only when **BizType** is set to **CloudBox**, which indicates that the business type of the IP address pool is CloudBox.
         self.zones = zones
 
     def validate(self):
@@ -207,11 +207,11 @@ class CreatePublicIpAddressPoolRequestTag(DaraModel):
     ):
         # The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
         # 
-        # A tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         self.key = key
         # The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
         # 
-        # The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

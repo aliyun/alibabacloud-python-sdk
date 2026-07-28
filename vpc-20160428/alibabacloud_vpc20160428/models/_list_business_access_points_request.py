@@ -9,9 +9,9 @@ class ListBusinessAccessPointsRequest(DaraModel):
         self,
         region_id: str = None,
     ):
-        # The region ID of the Express Connect circuit.
+        # The region ID of the Express Connect circuit instance.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
         self.region_id = region_id
 
     def validate(self):

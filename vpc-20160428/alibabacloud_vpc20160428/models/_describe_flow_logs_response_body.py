@@ -20,15 +20,16 @@ class DescribeFlowLogsResponseBody(DaraModel):
         self.flow_logs = flow_logs
         # The page number.
         self.page_number = page_number
-        # The number of items per page in a paginated query.
+        # The number of entries per page in paging queries.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the call was successful. Values:
-        # - **true**: The call was successful.
+        # Indicates whether the call is successful. Valid values:
+        # 
+        # - **true**: The call is successful.
         # - **false**: The call failed.
         self.success = success
-        # The number of entries in the queried flow log list.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -130,6 +131,7 @@ class DescribeFlowLogsResponseBodyFlowLogsFlowLog(DaraModel):
         flow_log_id: str = None,
         flow_log_name: str = None,
         ip_version: str = None,
+        log_format: str = None,
         log_store_name: str = None,
         project_name: str = None,
         region_id: str = None,
@@ -151,6 +153,7 @@ class DescribeFlowLogsResponseBodyFlowLogsFlowLog(DaraModel):
         self.flow_log_id = flow_log_id
         self.flow_log_name = flow_log_name
         self.ip_version = ip_version
+        self.log_format = log_format
         self.log_store_name = log_store_name
         self.project_name = project_name
         self.region_id = region_id
@@ -200,6 +203,9 @@ class DescribeFlowLogsResponseBodyFlowLogsFlowLog(DaraModel):
 
         if self.ip_version is not None:
             result['IpVersion'] = self.ip_version
+
+        if self.log_format is not None:
+            result['LogFormat'] = self.log_format
 
         if self.log_store_name is not None:
             result['LogStoreName'] = self.log_store_name
@@ -264,6 +270,9 @@ class DescribeFlowLogsResponseBodyFlowLogsFlowLog(DaraModel):
 
         if m.get('IpVersion') is not None:
             self.ip_version = m.get('IpVersion')
+
+        if m.get('LogFormat') is not None:
+            self.log_format = m.get('LogFormat')
 
         if m.get('LogStoreName') is not None:
             self.log_store_name = m.get('LogStoreName')

@@ -14,10 +14,9 @@ class ListTagResourcesForExpressConnectResponseBody(DaraModel):
         request_id: str = None,
         tag_resources: main_models.ListTagResourcesForExpressConnectResponseBodyTagResources = None,
     ):
-        # A pagination token. It can be used in the next request to retrieve a new page of results.
-        # 
-        # *   If **NextToken** is empty, no next page exists.
-        # *   If a value is returned for **NextToken**, the value can be used in the next request to retrieve a new page of results.
+        # The token for the next query. Valid values:
+        # - If **NextToken** is empty, no next query exists.
+        # - If **NextToken** is returned, the value indicates the token for the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id

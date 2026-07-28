@@ -18,9 +18,9 @@ class UnassociatePhysicalConnectionFromVirtualBorderRouterRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** as the **ClientToken**. The **RequestId** of each API request may be different.
         self.client_token = client_token
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -30,13 +30,13 @@ class UnassociatePhysicalConnectionFromVirtualBorderRouterRequest(DaraModel):
         self.physical_connection_id = physical_connection_id
         # The region ID of the Express Connect circuit.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the VBR that you want to disassociate from the Express Connect circuit.
+        # The instance ID of the VBR to disassociate from the Express Connect circuit.
         # 
         # This parameter is required.
         self.vbr_id = vbr_id

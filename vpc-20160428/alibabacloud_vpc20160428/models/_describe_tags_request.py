@@ -25,7 +25,7 @@ class DescribeTagsRequest(DaraModel):
         self.max_result = max_result
         # The pagination token. Valid values:
         # - If this is the first query or no subsequent query exists, leave this parameter empty.
-        # - If a subsequent query exists, set this parameter to the NextToken value returned by the previous API call.
+        # - If a subsequent query exists, set the value to the NextToken value returned by the previous API call.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id

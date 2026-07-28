@@ -29,8 +29,9 @@ class DescribeIPv6TranslatorsRequest(DaraModel):
         self.allocate_ipv_6addr = allocate_ipv_6addr
         # The business status of the IPv6 Translation Service instance. Valid values:
         # 
-        # *   **Normal**
-        # *   **FinancialLocked**
+        # - **Normal**: normal.
+        # 
+        # - **FinancialLocked**: locked.
         self.business_status = business_status
         # The ID of the IPv6 Translation Service instance.
         self.ipv_6translator_id = ipv_6translator_id
@@ -38,32 +39,39 @@ class DescribeIPv6TranslatorsRequest(DaraModel):
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of the page to return. Default value: **1**.
+        # The page number of the list. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Maximum value: **50**. Default value: **10**.
+        # The number of entries per page in paging query. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
-        # The billing method of the IPv6 Translation Service instance. Valid values:
+        # The billing transform type of the IPv6 Translation Service instance. Valid values:
         # 
-        # *   **Prepay**: subscription
-        # *   **Postpay**: pay-as-you-go
+        # - **Prepay**: subscription.
+        # 
+        # - **Postpay**: pay-as-you-go.
         self.pay_type = pay_type
-        # The region of the IPv6 Translation Service instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # The region of the IPv6 Translation Service instance. You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to obtain the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The specification of the IPv6 Translation Service instance. Set the value to **small**.
+        # The specification of the IPv6 Translation Service instance. Valid values: **small**.
         self.spec = spec
         # The status of the IPv6 Translation Service instance. Valid values:
         # 
-        # *   **init**
-        # *   **provisioning**
-        # *   **active**
-        # *   **updating**
-        # *   **upgrading**
-        # *   **deleting**
-        # *   **deleted**
+        # - **init**: initializing.
+        # 
+        # - **provisioning**: being provisioned.
+        # 
+        # - **active**: available.
+        # 
+        # - **updating**: being updated.
+        # 
+        # - **upgrading**: being upgraded.
+        # 
+        # - **deleting**: being deleted.
+        # 
+        # - **deleted**: deleted.
         self.status = status
 
     def validate(self):

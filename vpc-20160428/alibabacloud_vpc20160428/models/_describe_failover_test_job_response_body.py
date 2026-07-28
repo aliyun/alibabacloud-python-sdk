@@ -13,7 +13,7 @@ class DescribeFailoverTestJobResponseBody(DaraModel):
         failover_test_job_model: main_models.DescribeFailoverTestJobResponseBodyFailoverTestJobModel = None,
         request_id: str = None,
     ):
-        # The failover test.
+        # The failover test job.
         self.failover_test_job_model = failover_test_job_model
         # The request ID.
         self.request_id = request_id
@@ -60,38 +60,43 @@ class DescribeFailoverTestJobResponseBodyFailoverTestJobModel(DaraModel):
         status: str = None,
         stop_time: str = None,
     ):
-        # The description of the failover test.
+        # The description of the failover test job.
         # 
-        # The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
+        # The description is 0 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description
-        # The duration of the failover test. Unit: minutes. Valid values: **1 to 4320**.
+        # The failover test duration. Unit: minutes. Valid values: **1 to 4320**.
         self.job_duration = job_duration
-        # The ID of the failover test.
+        # The ID of the failover test job.
         self.job_id = job_id
-        # Indicates whether the failover test is performed immediately. Valid values:
+        # The failover test type. Valid values:
         # 
-        # *   **StartNow**
-        # *   **StartLater**
+        # - **StartNow**: starts immediately. The failover test starts immediately after the job is created.
+        # 
+        # - **StartLater**: starts later. Only the job is created without starting the test.
         self.job_type = job_type
-        # The name of the failover test.
+        # The name of the failover test job.
         # 
-        # The name must be 0 to 128 characters in length and cannot start with `http://` or `https://`.
+        # The name is 0 to 128 characters in length and cannot start with `http://` or `https://`.
         self.name = name
-        # The IDs of failover test resources.
+        # The list of failover test resource IDs.
         self.resource_id = resource_id
-        # The type of failover test resource. Only **PHYSICALCONNECTION** is returned.
+        # The resource type for the failover test. Valid values: **PHYSICALCONNECTION**: Express Connect circuit.
         self.resource_type = resource_type
-        # The start time of the failover test. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+        # The start time of the failover test job. The time is displayed in UTC in the YYYY-MM-DDThh:mm:ssZ format.
         self.start_time = start_time
-        # The status of the failover test. Valid values:
+        # The status of the failover test job. Valid values:
         # 
-        # *   **Init**
-        # *   **Starting**
-        # *   **Testing**
-        # *   **Stopping**
-        # *   **Stopped**
+        # - **Init**: pending.
+        # 
+        # - **Starting**: starting.
+        # 
+        # - **Testing**: in progress.
+        # 
+        # - **Stopping**: stopping.
+        # 
+        # - **Stopped**: completed.
         self.status = status
-        # The end time of the failover test. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+        # The end time of the failover test job. The time is displayed in UTC in the YYYY-MM-DDThh:mm:ssZ format.
         self.stop_time = stop_time
 
     def validate(self):

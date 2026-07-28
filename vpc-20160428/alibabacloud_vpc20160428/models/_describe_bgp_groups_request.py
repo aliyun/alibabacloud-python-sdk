@@ -20,26 +20,26 @@ class DescribeBgpGroupsRequest(DaraModel):
     ):
         # The ID of the BGP group.
         self.bgp_group_id = bgp_group_id
-        # Specifies whether the BGP group is the default one. Valid values:
+        # Specifies whether the BGP group is the default BGP group. Valid values:
         # 
-        # *   **false**
-        # *   **true**
+        # - **false**: The BGP group is not the default BGP group.
+        # - **true**: The BGP group is the default BGP group.
         self.is_default = is_default
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number. Default value: **1**.
+        # The page number of the list. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page. The maximum value is **50**. Default value: **10**.
+        # The number of entries per page in a paged query. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
-        # The ID of the region in which the VBR is deployed.
+        # The region ID of the VBR. 
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
+        # You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the virtual border router (VBR) that is associated with the BGP group.
+        # The ID of the VBR associated with the BGP group.
         self.router_id = router_id
 
     def validate(self):

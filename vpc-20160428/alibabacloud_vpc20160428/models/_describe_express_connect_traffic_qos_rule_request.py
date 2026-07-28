@@ -21,26 +21,26 @@ class DescribeExpressConnectTrafficQosRuleRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, the system uses **RequestId** as **ClientToken**. **RequestId** may be different for each API request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may differ for each API request.
         self.client_token = client_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the QoS policy.
+        # The QoS policy ID.
         self.qos_id = qos_id
-        # The ID of the QoS queue.
+        # The QoS queue ID.
         self.queue_id = queue_id
         # The region ID of the QoS policy.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
-        # The list of QoS rule IDs.
+        # The QoS rule IDs.
         self.rule_id_list = rule_id_list
-        # The list of QoS rule names.
+        # The QoS rule names.
         self.rule_name_list = rule_name_list
 
     def validate(self):

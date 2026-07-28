@@ -14,20 +14,20 @@ class GrantInstanceToVbrShrinkRequest(DaraModel):
         vbr_owner_uid: int = None,
         vbr_region_no: str = None,
     ):
-        # The scope of VBR instances that accept the authorization. Valid values:
+        # The scope of VBR instances to be granted authorization. Valid values:
         # 
-        # - **All**: Grants authorization of the VPC instance to all VBR instances in the specified region under the specified Alibaba Cloud account. In this case, the **VbrInstanceIds** parameter can be left empty.
-        # - **Specify**: Grants authorization of the VPC instance to the specified VBR instances. In this case, the **VbrInstanceIds** parameter is required.
+        # - **All**: Grants authorization of the VPC-connected instance to all VBR instances in the specified region under the specified Alibaba Cloud account. In this case, the **VbrInstanceIds** parameter can be left empty.
+        # - **Specify**: Grants authorization of the VPC-connected instance to the specified VBR instances. In this case, the **VbrInstanceIds** parameter is required.
         # 
         # This parameter is required.
         self.grant_type = grant_type
-        # The ID of the VPC instance for which authorization is to be granted.
+        # The ID of the VPC-connected instance for which to grant authorization.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region ID of the VPC instance for which authorization is to be granted.
+        # The region ID of the VPC-connected instance for which to grant authorization.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
+        # You can invoke the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id

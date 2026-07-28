@@ -23,13 +23,13 @@ class ModifyVpnPbrRouteEntryPriorityRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken parameter supports only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # > If you do not specify this parameter, the system uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request is different.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
         self.client_token = client_token
-        # The new priority of the policy-based route. Valid values: **1** to **100**.
+        # The new policy priority of the policy-based routing entry. Valid values: **1** to **100**.
         # 
-        # A smaller value indicates a higher priority.
+        # A smaller value indicates a higher policy priority for the routing entry.
         # 
         # This parameter is required.
         self.new_priority = new_priority
@@ -39,13 +39,13 @@ class ModifyVpnPbrRouteEntryPriorityRequest(DaraModel):
         self.next_hop = next_hop
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The original priority of the policy-based route. Valid values: **1** to **100**.
+        # The original policy priority of the policy-based routing entry. Valid values: **1** to **100**.
         # 
-        # A smaller value indicates a higher priority.
+        # A smaller value indicates a higher policy priority for the routing entry.
         self.priority = priority
         # The region ID of the VPN gateway instance.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -59,7 +59,7 @@ class ModifyVpnPbrRouteEntryPriorityRequest(DaraModel):
         # 
         # This parameter is required.
         self.route_source = route_source
-        # The ID of the VPN gateway instance.
+        # The instance ID of the VPN gateway.
         # 
         # This parameter is required.
         self.vpn_gateway_id = vpn_gateway_id

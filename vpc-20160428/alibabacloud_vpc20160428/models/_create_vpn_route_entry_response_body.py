@@ -19,13 +19,13 @@ class CreateVpnRouteEntryResponseBody(DaraModel):
     ):
         # The timestamp when the destination route was created. Unit: milliseconds.
         # 
-        # The timestamp follows the UNIX timestamp format, which represents the total number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The timestamp follows the UNIX timestamp format, which represents the total number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC to the time when the destination route was created.
         self.create_time = create_time
         # The description of the destination route.
         self.description = description
         # The next hop of the destination route.
         self.next_hop = next_hop
-        # The tunneling protocol. Set the value to **Ipsec** (IPsec tunneling protocol).
+        # The tunneling protocol. Set the value to **Ipsec** (IPsec tunneling).
         self.overlay_mode = overlay_mode
         # The request ID.
         self.request_id = request_id
@@ -33,9 +33,9 @@ class CreateVpnRouteEntryResponseBody(DaraModel):
         self.route_dest = route_dest
         # The publish status of the destination route.
         # 
-        # - **published**: The destination route has been published to the route table of the VPC.
+        # - **published**: The destination route is published to the VPC route table.
         # 
-        # - **normal**: The destination route has not been published to the route table of the VPC.
+        # - **normal**: The destination route is not published to the VPC route table.
         self.state = state
         # The instance ID of the VPN gateway.
         self.vpn_instance_id = vpn_instance_id

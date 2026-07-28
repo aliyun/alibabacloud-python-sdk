@@ -16,16 +16,15 @@ class ListVpcEndpointServicesByEndUserResponseBody(DaraModel):
         services: List[main_models.ListVpcEndpointServicesByEndUserResponseBodyServices] = None,
         total_count: str = None,
     ):
-        # The number of entries returned per page.
+        # The number of entries per page in a paged query.
         self.max_results = max_results
-        # The token that is used for the next query. Valid values:
-        # 
-        # *   If no value is returned for **NextToken**, no next queries are sent.
-        # *   If **NextToken** is returned, the value is the token that is used for the next query.
+        # The token for the next query. Valid values:
+        # - If **NextToken** is empty, no next query exists.
+        # - If **NextToken** is returned, the value indicates the token for the next query.
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The list of entries returned.
+        # The list of available endpoint services.
         self.services = services
         # The total number of entries returned.
         self.total_count = total_count
@@ -93,16 +92,16 @@ class ListVpcEndpointServicesByEndUserResponseBodyServices(DaraModel):
     ):
         # The default access policy.
         self.default_policy_document = default_policy_document
-        # The domain name of the cloud service to which the endpoint service belongs.
+        # The domain name of the cloud service associated with the endpoint service in the queried region.
         self.service_domain = service_domain
-        # The ID of the endpoint service.
+        # The instance ID of the endpoint service.
         self.service_id = service_id
         # The name of the endpoint service.
         self.service_name = service_name
-        # Indicate whether the endpoint service supports the access policy. Valid values:
+        # Indicates whether the endpoint service supports access policies. Valid values:
         # 
-        # *   **false**
-        # *   **true**
+        # - **false**: Access policies are not supported.
+        # - **true**: Access policies are supported.
         self.support_policy = support_policy
 
     def validate(self):

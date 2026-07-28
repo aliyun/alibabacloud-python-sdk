@@ -20,21 +20,21 @@ class CreateRouteEntriesRequest(DaraModel):
     ):
         # Specifies whether to perform a dry run. Valid values:
         # 
-        # **true**: Sends a request to check whether the request is valid. The system checks whether your AccessKey is valid, whether the RAM user is authorized, and whether the required parameters are specified. If the request fails the check, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
+        # **true**: performs a dry run without creating routes. The system checks the AccessKey pair, the authorization of the Resource Access Management (RAM) user, and the required parameters. If the check fails, the corresponding error is returned. If the check passes, the `DryRunOperation` error code is returned.
         # 
-        # **false** (default): Sends a normal request. After the request passes the check, a 2xx HTTP status code is returned and the routes are created.
+        # **false** (default): sends a Normal request. If the check passes, a 2xx HTTP status code is returned and the routes are created.
         self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the route table is located.
+        # The region ID of the route table.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The list of route information.
+        # The list of route entry information.
         # 
         # This parameter is required.
         self.route_entries = route_entries
@@ -114,67 +114,61 @@ class CreateRouteEntriesRequestRouteEntries(DaraModel):
         next_hop_type: str = None,
         route_table_id: str = None,
     ):
-        # The description of the custom route. You can specify up to 50 descriptions.
+        # The description of the custom route entry. You can specify a maximum of 50 descriptions.
         # 
         # The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description
-        # The destination CIDR block of the custom route. Both IPv4 and IPv6 CIDR blocks are supported. You can specify up to 50 destination CIDR blocks. The destination CIDR blocks must meet the following requirements:
-        # 
-        # - The destination CIDR block cannot point to 100.64.0.0/10 or be a subset of 100.64.0.0/10.
-        # 
-        # - The destination CIDR blocks of different routes in the same route table cannot be the same.
+        # The destination CIDR block of the custom route entry. Both IPv4 and IPv6 destination CIDR blocks are supported. You can specify a maximum of 50 destination CIDR blocks. The following requirements must be met:
+        #           
+        # - The destination CIDR block cannot point to or be contained by 100.64.0.0/10.  
+        #  
+        # - The destination CIDR blocks of different route entries in the same route table must be unique.
         # 
         # This parameter is required.
         self.dst_cidr_block = dst_cidr_block
-        # The IP protocol version. You can specify up to 50 IP protocol versions. Valid values:
+        # The version of the IP protocol. You can specify a maximum of 50 IP protocol versions. Valid values:
         # 
         # - **4**: IPv4.
-        # 
         # - **6**: IPv6.
         self.ip_version = ip_version
-        # The name of the custom route that you want to add. You can specify up to 50 names.
+        # The name of the custom route entry to add. You can specify a maximum of 50 names.
         # 
         # The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         self.name = name
-        # The ID of the next hop instance for the custom route. You can specify up to 50 instance IDs.
-        # 
-        # > If you set NextHopType to Ecr, call the [DescribeExpressConnectRouterAssociation](https://help.aliyun.com/document_detail/2712069.html) operation to obtain the AssociationId and use it as the next hop ID.
+        # The ID of the next hop instance for the custom route entry. You can specify a maximum of 50 instance IDs.
+        # > If NextHopType is set to ECR, you can call [DescribeExpressConnectRouterAssociation](https://help.aliyun.com/document_detail/2712069.html) to obtain the AssociationId as the next hop ID.
         # 
         # This parameter is required.
         self.next_hop = next_hop
-        # The type of the next hop for the custom route. You can specify up to 50 next hop types. Valid values:
+        # The type of the next hop for the custom route entry. You can specify a maximum of 50 next hop types. Valid values: 
         # 
-        # - **Instance** (default): an ECS instance.
+        # - **Instance** (default): ECS instance. Forwards traffic to an ECS instance.
         # 
-        # - **HaVip**: a high-availability virtual IP address (HAVIP).
+        # - **HaVip**: high-availability virtual IP address.  
         # 
-        # - **RouterInterface**: a router interface.
+        # - **RouterInterface**: vRouter interface.
         # 
-        # - **NetworkInterface**: an elastic network interface (ENI).
+        # - **NetworkInterface**: elastic network interfaces (ENIs).
         # 
-        # - **VpnGateway**: a VPN Gateway.
+        # - **VpnGateway**: VPN gateway.
         # 
-        # - **IPv6Gateway**: an IPv6 Gateway.
+        # - **IPv6Gateway**: IPv6 gateway.
         # 
-        # - **NatGateway**: a NAT Gateway.
+        # - **NatGateway**: NAT gateway.
         # 
-        # - **Attachment**: a transit router.
+        # - **Attachment**: transit router. Forwards traffic to a transit router.
         # 
-        # - **VpcPeer**: a VPC peering connection.
-        # 
-        # - **Ipv4Gateway**: an IPv4 gateway.
-        # 
-        # - **GatewayEndpoint**: a gateway endpoint.
-        # 
-        # - **CenBasic**: CEN does not support transit routers.
-        # 
-        # - **Ecr**: an Express Connect Router (ECR).
-        # 
-        # - **GatewayLoadBalancerEndpoint**: a Gateway Load Balancer endpoint (GWLBe).
+        # - **VpcPeer**: VPC peering connection.
+        # - **Ipv4Gateway**: IPv4 gateway.
+        # - **GatewayEndpoint**: gateway endpoint.
+        # - **CenBasic**: CEN that does not support transit routers.
+        # - **Ecr**: Express Connect Router (ECR).
+        # - **GatewayLoadBalancerEndpoint**: Gateway Load Balancer endpoint (GWLBe).
+        # - **RouteTargetGroup**: routing target group.
         # 
         # This parameter is required.
         self.next_hop_type = next_hop_type
-        # The ID of the route table to which you want to add custom routes. You can specify up to 50 route table IDs.
+        # The ID of the route table to which you want to add the custom route entry. You can specify a maximum of 50 route table IDs.
         # 
         # This parameter is required.
         self.route_table_id = route_table_id

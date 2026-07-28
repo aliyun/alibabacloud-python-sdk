@@ -11,11 +11,11 @@ class OpenFlowLogServiceResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The HTTP status code.
+        # The status code.
         self.code = code
-        # The information returned after the flow log feature is enabled.
+        # The message returned when the flow log service is activated.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

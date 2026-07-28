@@ -19,40 +19,52 @@ class UnTagResourcesRequest(DaraModel):
         resource_type: str = None,
         tag_key: List[str] = None,
     ):
-        # Specifies whether to remove all tags from the specified resource. Valid values:
-        # 
-        # *   **true**
-        # *   **false** (default)
+        # Specifies whether to unbind all tags from the resources. Valid values:
+        # - **true**: Unbinds all tags from the resources.
+        # - **false** (default): Does not unbind all tags from the resources.
         self.all = all
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the resource.
+        # The region ID of the resources.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The resource ID. You can specify up to 20 resource IDs.
+        # The resource IDs. You can specify up to 50 resource IDs.
         # 
         # This parameter is required.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The resource type. Valid values:
+        # - **VPC**: virtual private cloud (VPC) instance.
+        # - **VSWITCH**: vSwitch instance.
+        # - **ROUTETABLE**: route table instance.
+        # - **EIP**: elastic IP address (EIP) instance.
+        # - **VPNGATEWAY**: VPN gateway instance.
+        # - **NATGATEWAY**: NAT gateway instance.
+        # - **COMMONBANDWIDTHPACKAGE**: Internet Shared Bandwidth instance.
+        # - **PREFIXLIST**: prefix list instance.
+        # - **PUBLICIPADDRESSPOOL**: IP address pool instance.
+        # - **IPV4GATEWAY**: IPv4 gateway instance.
+        # - **IPV6GATEWAY**: IPv6 gateway instance.
+        # - **NETWORKACL**: network ACL instance.
+        # - **TRAFFICMIRRORFILTER**: traffic mirror filter instance.
+        # - **TRAFFICMIRRORSESSION**: traffic mirror session instance.
+        # - **FLOWLOG**: flow log instance.
+        # - **HAVIP**: high-availability virtual IP address (HaVip) instance.
+        # - **DHCPOPTIONSSET**: DHCP options set instance.
+        # - **GATEWAYENDPOINT**: gateway endpoint instance.
+        # - **IPV6ADDRESS**: IPv6 address instance.
         # 
-        # *   **VPC**
-        # *   **VSWITCH**
-        # *   **ROUTETABLE**
-        # *   **EIP**
-        # *   **VpnGateway**
-        # *   **NATGATEWAY**
-        # *   **COMMONBANDWIDTHPACKAGE**: EIP bandwidth plan
+        # > The resource type value is case-insensitive.
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The key of the tag that you want to remove. You can specify at most 20 tag keys. It can be an empty string.
+        # The tag keys to unbind. You can specify up to 20 tag keys.
         # 
-        # The key cannot exceed 64 characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
+        # Each tag key can be up to 128 characters in length, can be an empty string, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         self.tag_key = tag_key
 
     def validate(self):

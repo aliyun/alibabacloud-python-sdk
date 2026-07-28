@@ -10,7 +10,7 @@ class CreateFailoverTestJobResponseBody(DaraModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the failover test.
+        # The ID of the failover test job.
         self.job_id = job_id
         # The request ID.
         self.request_id = request_id

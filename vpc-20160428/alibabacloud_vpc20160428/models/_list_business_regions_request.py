@@ -9,10 +9,11 @@ class ListBusinessRegionsRequest(DaraModel):
         self,
         accept_language: str = None,
     ):
-        # The language of the response. Valid values:
+        # The language of the response. Valid values: 
+        #           
+        # - **zh-CN** (default): Chinese.
         # 
-        # *   **zh-CN** (default): Chinese
-        # *   **en-US**: English.
+        # - **en-US**: English.
         self.accept_language = accept_language
 
     def validate(self):

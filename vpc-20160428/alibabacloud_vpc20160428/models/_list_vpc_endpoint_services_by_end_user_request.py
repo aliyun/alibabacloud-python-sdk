@@ -16,24 +16,23 @@ class ListVpcEndpointServicesByEndUserRequest(DaraModel):
         resource_owner_id: int = None,
         service_name: str = None,
     ):
-        # The number of entries to return per page. Valid values: **1** to **100**. Default value: **20**.
+        # The number of entries per page in a paged query. Valid values: **1** to **100**. Default value: **20**.
         self.max_results = max_results
-        # The token that is used for the next query. Valid values:
-        # 
-        # *   If this is your first query and no next queries are to be sent, ignore this parameter.
-        # *   If a next query is to be performed, set the value to the NextToken value returned in the last call to the ListListenerCertificates operation.
+        # The token for the next query. Valid values:
+        # - Leave this parameter empty for the first query or if no next query exists.
+        # - If a next query exists, set this parameter to the NextToken value returned in the previous API call.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the gateway endpoint.
+        # The region ID of the gateway endpoint to query.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The name of the endpoint service that you want to query.
+        # The name of the endpoint service to query.
         self.service_name = service_name
 
     def validate(self):

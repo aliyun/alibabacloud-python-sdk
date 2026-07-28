@@ -22,17 +22,17 @@ class ModifyIpv6GatewayAttributeRequest(DaraModel):
         # 
         # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
         # 
-        # > If you do not specify this parameter, the system uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
+        # > If you do not specify this parameter, the system uses the **RequestId** as the **ClientToken**. The **RequestId** may be different for each API request.
         self.client_token = client_token
         # The description of the IPv6 gateway.
         # 
         # The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description
-        # Specifies whether to perform only a precheck for the request. Valid values:
+        # Specifies whether to perform a dry run. Valid values:
         # 
-        # - **true**: sends a precheck request without associating the route table. The check items include whether the AccessKey is valid, whether the RAM user is authorized, and whether the required parameters are specified. If the check fails, the corresponding error is returned. If the check succeeds, the error code `DryRunOperation` is returned.
+        # - **true**: performs a dry run. The system does not associate a prefix list with a route table. The system checks the AccessKey pair, the authorization of the Resource Access Management (RAM) user, and the required parameters. If the check fails, the corresponding error is returned. If the check succeeds, the error code `DryRunOperation` is returned.
         # 
-        # - **false** (default): sends a normal request. After the request passes the precheck, a 2xx HTTP status code is returned and the route table is associated.
+        # - **false** (default): sends a Normal request. After the check succeeds, a 2xx HTTP status code is returned and the routing table is associated.
         self.dry_run = dry_run
         # The ID of the IPv6 gateway to modify.
         # 

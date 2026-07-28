@@ -18,37 +18,37 @@ class ModifyVSwitchCidrReservationAttributeRequest(DaraModel):
         v_switch_cidr_reservation_id: str = None,
         v_switch_cidr_reservation_name: str = None,
     ):
-        # A client token used to ensure the idempotence of the request.
+        # The client token that is used to ensure the idempotence of the request.
         # 
-        # Generate a unique value from your client for this parameter to guarantee uniqueness across different requests. ClientToken supports only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
         # 
-        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may differ for each API request.
+        # > If you do not specify this parameter, the system uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may vary for each API request.
         self.client_token = client_token
-        # Specifies whether to perform a dry run of the request. Valid values:
-        # - **true**: Sends a dry run request without creating any resource (performing the API operation). The system checks whether required parameters are specified, whether the request format is valid, and whether business limits are met. If the check fails, an error is returned. If the check passes, the error code `DryRunOperation` is returned.
-        # - **false** (default): Sends a normal request. If the check passes, an HTTP 2xx status code is returned and the operation is performed.
+        # Specifies whether to perform a dry run. Valid values:
+        # - **true**: performs a dry run. The system checks the required parameters, request syntax, and business restrictions. If the check fails, the corresponding error is returned. If the check succeeds, the error code `DryRunOperation` is returned.
+        # - **false** (default): performs a dry run and sends the request. If the check succeeds, an HTTP 2xx status code is returned and the operation is performed.
         self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the vSwitch is deployed.
+        # The region ID of the vSwitch.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The new description of the reserved CIDR block. The default value is empty.
+        # The description of the reserved CIDR block for a vSwitch that you want to modify. If you do not specify this parameter, the description is empty. The default value is empty.
         # 
-        # The description must be 2 to 256 characters in length. It must start with a letter and cannot start with `http://` or `https://`.
+        # The description must be 2 to 256 characters in length and must start with a letter or a Chinese character. It cannot start with `http://` or `https://`.
         self.v_switch_cidr_reservation_description = v_switch_cidr_reservation_description
-        # The ID of the reserved CIDR block.
+        # The instance ID of the reserved CIDR block for a vSwitch that you want to modify.
         # 
         # This parameter is required.
         self.v_switch_cidr_reservation_id = v_switch_cidr_reservation_id
-        # The new name of the reserved CIDR block.
+        # The name of the reserved CIDR block for a vSwitch that you want to modify.
         # 
-        # The name must be 2 to 128 characters in length and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
+        # The name must be 2 to 128 characters in length and must start with a letter or a Chinese character. It can contain digits, underscores (_), and hyphens (-).
         self.v_switch_cidr_reservation_name = v_switch_cidr_reservation_name
 
     def validate(self):

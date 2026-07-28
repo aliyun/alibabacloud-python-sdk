@@ -13,15 +13,16 @@ class AllocateEipAddressResponseBody(DaraModel):
         request_id: str = None,
         resource_group_id: str = None,
     ):
-        # The EIP ID.
+        # The ID of the EIP instance.
         self.allocation_id = allocation_id
-        # The EIP that is allocated. This parameter is returned only when **InstanceChargeType** is set to **PostPaid**.
+        # The allocated EIP. This parameter is returned only if **InstanceChargeType** is set to **PostPaid**.
         self.eip_address = eip_address
-        # The order ID. This parameter is returned only when **InstanceChargeType** is set to **PrePaid**.
+        # The order ID. <props="china">This parameter is returned if InstanceChargeType (the billing method of the EIP) is set to PrePaid (subscription). If AutoPay (automatic payment) is not enabled, go to the [Order Center](https://usercenter2.aliyun.com/order/list) to complete the payment.
+        # <props="intl">This parameter is returned if InstanceChargeType (the billing method of the EIP) is set to PrePaid (subscription). If AutoPay (automatic payment) is not enabled, go to the [Order Center](https://usercenter2-intl.aliyun.com/order/list) to complete the payment.
         self.order_id = order_id
         # The request ID.
         self.request_id = request_id
-        # The ID of the resource group. This parameter is returned only when **InstanceChargeType** is set to **PostPaid**.
+        # The resource group ID. This parameter is returned only if **InstanceChargeType** is set to **PostPaid**.
         self.resource_group_id = resource_group_id
 
     def validate(self):

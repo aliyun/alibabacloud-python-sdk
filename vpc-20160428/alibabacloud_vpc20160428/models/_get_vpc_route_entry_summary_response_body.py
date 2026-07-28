@@ -13,9 +13,9 @@ class GetVpcRouteEntrySummaryResponseBody(DaraModel):
         request_id: str = None,
         route_entry_summarys: List[main_models.GetVpcRouteEntrySummaryResponseBodyRouteEntrySummarys] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The information about the routes in the route tables.
+        # The information about all route tables returned.
         self.route_entry_summarys = route_entry_summarys
 
     def validate(self):
@@ -58,7 +58,7 @@ class GetVpcRouteEntrySummaryResponseBodyRouteEntrySummarys(DaraModel):
         entry_summarys: List[main_models.GetVpcRouteEntrySummaryResponseBodyRouteEntrySummarysEntrySummarys] = None,
         route_table_id: str = None,
     ):
-        # The information about the routes of different types in one route table.
+        # The collection of route entry counts by type in a single route table.
         self.entry_summarys = entry_summarys
         # The ID of the route table.
         self.route_table_id = route_table_id
@@ -103,15 +103,20 @@ class GetVpcRouteEntrySummaryResponseBodyRouteEntrySummarysEntrySummarys(DaraMod
         count: int = None,
         route_entry_type: str = None,
     ):
-        # The number of entries returned.
+        # The number of entries in the list.
         self.count = count
         # The type of the route. Valid values:
+        # - **all**: all route types.
+        # - **custom**: custom route.
+        # - **system**: system route.
+        # - **bgp**: BGP route.
+        # - **cen**: Cloud Enterprise Network (CEN) route.
+        # - **type_vpn_bgp_internal**: VPN BGP route.
+        # - **ECR**: Express Connect Router (ECR) route.
         # 
-        # *   **All**: all route types
-        # *   **Custom**: a custom route
-        # *   **System**: a system route
-        # *   **BGP**: a BGP route
-        # *   **CEN**: a CEN route
+        # 
+        # 
+        # > The returned system routes are the system routes in the system route table.
         self.route_entry_type = route_entry_type
 
     def validate(self):

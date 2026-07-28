@@ -19,20 +19,20 @@ class DeleteIpv4GatewayRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
         self.client_token = client_token
-        # Specifies whether to perform a dry run, without performing the actual request. Valid values:
-        # 
-        # *   **true**: performs only a dry run, without performing the actual request. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # - **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, an HTTP 2xx status code is returned and the IPv4 gateway is deleted.
         self.dry_run = dry_run
-        # Select the public network mode of the VPC after deleting the IPv4 gateway. The values are:
-        # - **private**: Default value, after deleting the IPv4 gateway, the VPC will become a pure private VPC without public network access capability. 
-        # - **public**: After deleting the IPv4 gateway, the VPC\\"s public network access is no longer centrally controlled by the IPv4 gateway, and instances with public IPs bound can access the public network by default.
+        # The public pattern of the VPC after the IPv4 gateway is deleted. Valid values:
+        # 
+        # - **private**: default value. After the IPv4 gateway is deleted, the VPC becomes a purely private network VPC without public network access.
+        # - **public**: after the IPv4 gateway is deleted, public network access of the VPC is no longer centrally controlled by the IPv4 gateway. After a public IP address is attached to an instance, the instance can directly access the Internet.
         self.internet_mode = internet_mode
-        # The ID of the IPv4 gateway that you want to delete.
+        # The instance ID of the IPv4 gateway that you want to delete.
         # 
         # This parameter is required.
         self.ipv_4gateway_id = ipv_4gateway_id

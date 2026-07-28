@@ -52,7 +52,7 @@ class CreateIpv6GatewayRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The tags of the resource.
         self.tag = tag
-        # The ID of the VPC for which you want to enable IPv6 and create the IPv6 gateway.
+        # The ID of the VPC for which you want to enable IPv6.
         # 
         # This parameter is required.
         self.vpc_id = vpc_id
@@ -159,11 +159,11 @@ class CreateIpv6GatewayRequestTag(DaraModel):
     ):
         # The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
         # 
-        # The tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+        # The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         self.key = key
         # The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
         # 
-        # The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+        # The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

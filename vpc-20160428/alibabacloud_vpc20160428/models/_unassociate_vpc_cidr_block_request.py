@@ -16,25 +16,23 @@ class UnassociateVpcCidrBlockRequest(DaraModel):
         secondary_cidr_block: str = None,
         vpc_id: str = None,
     ):
-        # The secondary IPv6 CIDR block to be deleted.
+        # The secondary IPv6 CIDR block to delete.
         # 
-        # > 
-        # > - You must set one of the Ipv6CidrBlock and SecondaryCidrBlock parameters.
+        # > You must specify either **Ipv6CidrBlock** or **SecondaryCidrBlock**, but not both.
         self.ipv_6cidr_block = ipv_6cidr_block
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the VPC to which the secondary CIDR block to be deleted belongs.
+        # The region ID of the VPC from which you want to delete a secondary CIDR block. 
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The secondary IPv4 CIDR block to be deleted.
+        # The secondary IPv4 CIDR block to delete.
         # 
-        # > 
-        # > - You must set one of the SecondaryCidrBlock and Ipv6CidrBlock parameters.
+        # > You must specify either **SecondaryCidrBlock** or **Ipv6CidrBlock**, but not both.
         self.secondary_cidr_block = secondary_cidr_block
         # The ID of the VPC from which you want to delete a secondary CIDR block.
         # 

@@ -26,51 +26,53 @@ class UpdateDhcpOptionsSetAttributeRequest(DaraModel):
         # 
         # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
         self.client_token = client_token
-        # Enter a description for the DHCP options set.
+        # The description of the DHCP options set. 
         # 
-        # The description must be 2 to 256 characters in length. It must start with a letter and cannot start with `http://` or `https://`. You can also leave the description empty.
+        # The description can be empty or 2 to 256 characters in length. It must start with a letter or Chinese character and cannot start with `http://` or `https://`.
         self.dhcp_options_set_description = dhcp_options_set_description
-        # The ID of the DHCP options set.
+        # The ID of the DHCP options set to modify.
         # 
         # This parameter is required.
         self.dhcp_options_set_id = dhcp_options_set_id
         # The name of the DHCP options set.
         # 
-        # The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
+        # The name must be 2 to 128 characters in length and must start with a letter or Chinese character. It can contain digits, underscores (_), and hyphens (-).
         self.dhcp_options_set_name = dhcp_options_set_name
-        # The root domain. For example, you can set the value to example.com.
+        # The hostname suffix, such as example.com.
         # 
-        # After a DHCP options set is associated with a virtual private cloud (VPC), the root domain in the DHCP options set is automatically synchronized with the ECS instances in the VPC.
+        # After you attach the DHCP options set to an associate VPC, the hostname suffix is automatically synchronized to ECS instances in the VPC.
         self.domain_name = domain_name
-        # The IP address of the DNS server. You can enter at most four DNS server IP addresses. Separate IP addresses with commas (,).
+        # The IP addresses of DNS servers. You can specify up to four DNS server IP addresses, separated by commas (,).
         # 
-        # >  If you do not specify a DNS server IP address, Elastic Compute Service (ECS) instances use the IP addresses of the Alibaba Cloud DNS servers, which are 100.100.2.136 and 100.100.2.138.
+        # >If you do not specify any DNS server IP addresses, ECS instances use the DNS server IP addresses provided by Alibaba Cloud (100.100.2.136 and 100.100.2.138) by default.
         self.domain_name_servers = domain_name_servers
         # Specifies whether to perform a dry run. Valid values:
         # 
-        # **true**: performs a dry run. The system checks the required parameters, request format, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # **true**: performs a dry run without modifying the DHCP options set configuration. The system checks the required parameters, request format, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
         # 
-        # **false** (default): performs a dry run and sends the request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        # **false** (default): performs a dry run and sends the request. If the request passes the dry run, an HTTP 2xx status code is returned and the DHCP options set configuration is modified.
         self.dry_run = dry_run
-        # The lease time of the IPv6 addresses for the DHCP options set.
+        # The lease time of the IPv6 DHCP options set.
         # 
-        # *   If you use hours as the unit, valid values are **24h to 1176h** and **87600h to 175200h**. Default value: **87600h**.
-        # *   If you use days as the unit, valid values are **1d to 49d** and **3650d to 7300d**. Default value: **3650d**.
+        # - If the lease time is set in hours, the unit is h. Valid values: **24h to 1176h** and **87600h to 175200h**. Default value: **24h**.
         # 
-        # >  If you specify a value, you must also specify the unit.
+        # - If the lease time is set in days, the unit is d. Valid values: **1d to 49d** and **3650d to 7300d**. Default value: **1d**.
+        # 
+        # > You must include the unit when specifying the value.
         self.ipv_6lease_time = ipv_6lease_time
-        # The lease time of the IPv4 addresses for the DHCP options set.
+        # The lease time of the IPv4 DHCP options set.
         # 
-        # *   If you use hours as the unit, valid values are **24h to 1176h** and **87600h to 175200h**. Default value: **87600h**.
-        # *   If you use days as the unit, valid values are **1d to 49d** and **3650d to 7300d**. Default value: **3650d**.
+        # - If the lease time is set in hours, the unit is h. Valid values: **24h to 1176h** and **87600h to 175200h**. Default value: **87600h**.
         # 
-        # >  If you specify a value, you must also specify the unit.
+        # - If the lease time is set in days, the unit is d. Valid values: **1d to 49d** and **3650d to 7300d**. Default value: **3650d**.
+        # 
+        # > You must include the unit when specifying the value.
         self.lease_time = lease_time
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region where the DHCP options set is deployed. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # The region ID of the DHCP options set to modify. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id

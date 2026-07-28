@@ -16,11 +16,11 @@ class RemoveIPv6TranslatorAclListEntryRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the ACL entry to be deleted.
+        # The ID of the access control policy entry that you want to delete.
         # 
         # This parameter is required.
         self.acl_entry_id = acl_entry_id
-        # The ID of the ACL to which the ACL entry belongs.
+        # The ID of the access control policy group to which the access control policy entry belongs.
         # 
         # This parameter is required.
         self.acl_id = acl_id
@@ -30,7 +30,7 @@ class RemoveIPv6TranslatorAclListEntryRequest(DaraModel):
         self.client_token = client_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region of the ACL.
+        # The region of the access control policy group.
         # 
         # This parameter is required.
         self.region_id = region_id

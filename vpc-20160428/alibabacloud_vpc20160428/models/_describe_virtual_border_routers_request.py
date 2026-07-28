@@ -23,16 +23,16 @@ class DescribeVirtualBorderRoutersRequest(DaraModel):
     ):
         # The filter information.
         self.filter = filter
-        # Specifies whether to include cross-account Virtual Border Routers.
+        # Specifies whether to include cross-account VBRs.
         # 
-        # - **true**: Included.
+        # - **true**: includes cross-account VBRs.
         # 
-        # - **false** (default): Not included.
+        # - **false** (default): does not include cross-account VBRs.
         self.include_cross_account_vbr = include_cross_account_vbr
         self.owner_id = owner_id
-        # The page number of the list. Default value: **1**.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page in a paged query. Maximum value: **50**. Default value: **10**.
+        # The number of entries per page in a paging query. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
         # The region ID of the VBR. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
@@ -146,7 +146,7 @@ class DescribeVirtualBorderRoutersRequestTags(DaraModel):
     ):
         # The tag key of the resource. You must specify at least 1 tag key and can specify up to 20 tag keys. The tag key cannot be an empty string.
         # 
-        # A tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+        # The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         self.key = key
         # The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
         # 
@@ -187,21 +187,21 @@ class DescribeVirtualBorderRoutersRequestFilter(DaraModel):
     ):
         # The filter condition. You can specify up to 5 filter conditions. The following filter conditions are supported:
         # 
-        # * **PhysicalConnectionId**: instance ID of the Express Connect circuit instance.
+        # * **PhysicalConnectionId**: the Express Connect circuit ID.
         # 
-        # * **VbrId**: instance ID of the Virtual Border Router instance.
+        # * **VbrId**: the VBR ID.
         # 
-        # * **Status**: the status of the Virtual Border Router.
+        # * **Status**: the VBR status.
         # 
-        # * **Name**: the name of the Virtual Border Router.
+        # * **Name**: the VBR name.
         # 
-        # * **AccessPointId**: instance ID of the access point.
+        # * **AccessPointId**: the access point ID.
         # 
-        # * **eccId**: instance ID of the Express Cloud Connect instance.
+        # * **eccId**: the Express Cloud Connect instance ID.
         # 
-        # * **type**: the type of the Express Connect circuit.
+        # * **type**: the Express Connect circuit type.
         self.key = key
-        # The filter value based on the specified Key. You can specify multiple filter values for a Key. The relationship between filter values is OR, which means that a match is found if any of the filter values is met.
+        # The filter value based on the specified Key. You can specify multiple filter values for a Key. The filter values are evaluated by using a logical OR. A match is found if any of the specified filter values is met.
         self.value = value
 
     def validate(self):

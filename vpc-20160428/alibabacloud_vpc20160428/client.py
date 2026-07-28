@@ -5683,6 +5683,8 @@ class Client(OpenApiClient):
             query['FlowLogName'] = request.flow_log_name
         if not DaraCore.is_null(request.ip_version):
             query['IpVersion'] = request.ip_version
+        if not DaraCore.is_null(request.log_format):
+            query['LogFormat'] = request.log_format
         if not DaraCore.is_null(request.log_store_name):
             query['LogStoreName'] = request.log_store_name
         if not DaraCore.is_null(request.owner_account):
@@ -5743,6 +5745,8 @@ class Client(OpenApiClient):
             query['FlowLogName'] = request.flow_log_name
         if not DaraCore.is_null(request.ip_version):
             query['IpVersion'] = request.ip_version
+        if not DaraCore.is_null(request.log_format):
+            query['LogFormat'] = request.log_format
         if not DaraCore.is_null(request.log_store_name):
             query['LogStoreName'] = request.log_store_name
         if not DaraCore.is_null(request.owner_account):
@@ -32595,6 +32599,8 @@ class Client(OpenApiClient):
             query['FlowLogName'] = request.flow_log_name
         if not DaraCore.is_null(request.ip_version):
             query['IpVersion'] = request.ip_version
+        if not DaraCore.is_null(request.log_format):
+            query['LogFormat'] = request.log_format
         if not DaraCore.is_null(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
@@ -32641,6 +32647,8 @@ class Client(OpenApiClient):
             query['FlowLogName'] = request.flow_log_name
         if not DaraCore.is_null(request.ip_version):
             query['IpVersion'] = request.ip_version
+        if not DaraCore.is_null(request.log_format):
+            query['LogFormat'] = request.log_format
         if not DaraCore.is_null(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):

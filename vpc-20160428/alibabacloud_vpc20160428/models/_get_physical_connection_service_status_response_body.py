@@ -10,12 +10,12 @@ class GetPhysicalConnectionServiceStatusResponseBody(DaraModel):
         enabled: bool = None,
         request_id: str = None,
     ):
-        # Indicates whether billing for outbound data transfer is enabled. Valid values:
+        # Indicates whether outbound traffic billing is enabled.
+        # - **true**: Enabled.
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # - **false**: Not enabled.
         self.enabled = enabled
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

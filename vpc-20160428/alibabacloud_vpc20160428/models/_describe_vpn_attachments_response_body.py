@@ -16,15 +16,15 @@ class DescribeVpnAttachmentsResponseBody(DaraModel):
         total_count: int = None,
         vpn_attachments: List[main_models.DescribeVpnAttachmentsResponseBodyVpnAttachments] = None,
     ):
-        # The page number of the list.
+        # The page number.
         self.page_number = page_number
-        # The number of entries per page when paging is used.
+        # The number of entries per page in paging queries.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # The total number of entries returned.
         self.total_count = total_count
-        # The list of IPsec-VPN connections that are associated with transit router instances.
+        # The list of IPsec-VPN connections associated with transit router instances.
         self.vpn_attachments = vpn_attachments
 
     def validate(self):
@@ -93,12 +93,12 @@ class DescribeVpnAttachmentsResponseBodyVpnAttachments(DaraModel):
         transit_router_name: str = None,
         tunnel_bandwidth: str = None,
     ):
-        # The type of resource to which the IPsec-VPN connection is attached. The value is **CEN**, which indicates that the IPsec-VPN connection is associated with a transit router instance.
+        # The type of resource to which the IPsec-VPN connection is associated. The value is **CEN**, which indicates that the IPsec-VPN connection is associated with a transit router instance.
         self.attach_type = attach_type
         # Indicates whether the IPsec-VPN connection is associated with a transit router instance that belongs to a different Alibaba Cloud account.
         # 
-        # - **true**: yes.
-        # - **false**: no.
+        # - **true**: Yes.
+        # - **false**: No.
         self.cross_account_authorized = cross_account_authorized
         # The description of the IPsec-VPN connection.
         self.description = description
@@ -108,21 +108,21 @@ class DescribeVpnAttachmentsResponseBodyVpnAttachments(DaraModel):
         self.name = name
         # The system tags of the IPsec-VPN connection.
         # 
-        # You can use system tags to check whether the IPsec-VPN connection supports BGP. You do not need to pay attention to other properties.
+        # You can use system tags to check whether the IPsec-VPN connection supports BGP. You can ignore other properties.
         # 
         # **BGPSupport**: indicates whether the IPsec-VPN connection supports BGP.
-        #    - **true**: supported.
-        #    - **false**: not supported.
+        #    - **true**: Supported.
+        #    - **false**: Not supported.
         self.tag = tag
-        # The list of tags that are attached to the IPsec-VPN connection.
+        # The list of tags associated with the IPsec-VPN connection.
         self.tags = tags
-        # The ID of the transit routing instance to which the IPsec-VPN connection is attached.
+        # The instance ID of the forward routing vRouter to which the IPsec-VPN connection is attached.
         self.transit_router_id = transit_router_id
         # The name of the transit router instance.
         self.transit_router_name = transit_router_name
         # The bandwidth specification of a single VPN tunnel. Valid values:
-        # Standard (default): standard. The default bandwidth is 1 Gbit/s.
-        # Large: large. The default bandwidth is 3 Gbit/s.
+        # Standard (default): standard. The default bandwidth is 1 Gbps.
+        # Large: large. The default bandwidth is 3 Gbps.
         self.tunnel_bandwidth = tunnel_bandwidth
 
     def validate(self):

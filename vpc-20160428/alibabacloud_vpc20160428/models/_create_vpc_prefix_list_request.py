@@ -27,21 +27,20 @@ class CreateVpcPrefixListRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among all requests. ClientToken can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
         self.client_token = client_token
         # Specifies whether to perform a dry run. Valid values:
-        # 
-        # *   **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # *   **false** (default): performs a dry run and sends the request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        # - **true**: performs a dry run without creating the prefix list. The system checks the required parameters, request format, and service limits. If the check fails, the corresponding error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
+        # - **false** (default): performs a dry run and sends the request. If the check succeeds, an HTTP 2xx status code is returned and the prefix list is created.
         self.dry_run = dry_run
         # The IP version. Valid values:
         # 
-        # *   **IPv4** (default)
-        # *   **IPv6**
+        # - **IPv4** (default): IPv4.
+        # - **IPv6**: IPv6.
         self.ip_version = ip_version
-        # The maximum number of CIDR blocks that you can specify in the prefix list. Default value: 50.
+        # The maximum number of entries for Classless Inter-Domain Routing (CIDR) blocks in the prefix list. Default value: 50.
         self.max_entries = max_entries
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -49,13 +48,13 @@ class CreateVpcPrefixListRequest(DaraModel):
         # 
         # The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
         self.prefix_list_description = prefix_list_description
-        # The CIDR block information specified in the prefix list.
+        # The Classless Inter-Domain Routing (CIDR) block information of the prefix list.
         self.prefix_list_entries = prefix_list_entries
         # The name of the prefix list.
         # 
-        # The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
+        # The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         self.prefix_list_name = prefix_list_name
-        # The ID of the region where you want to create the prefix list.
+        # The region ID of the prefix list that you want to create. 
         # 
         # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
         # 
@@ -65,7 +64,7 @@ class CreateVpcPrefixListRequest(DaraModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The tag list.
+        # The tags.
         self.tag = tag
 
     def validate(self):
@@ -189,13 +188,13 @@ class CreateVpcPrefixListRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+        # The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
         # 
-        # The tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         self.key = key
-        # The value of tag N. You can specify at most 20 tag values. The tag value can be an empty string.
+        # The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
         # 
-        # The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag value cannot start with `aliyun` or `acs:`.
+        # The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -230,9 +229,9 @@ class CreateVpcPrefixListRequestPrefixListEntries(DaraModel):
         cidr: str = None,
         description: str = None,
     ):
-        # The CIDR block specified in the prefix list.
+        # The Classless Inter-Domain Routing (CIDR) block of the prefix list.
         self.cidr = cidr
-        # The description of the CIDR block specified in the prefix list.
+        # The description of the Classless Inter-Domain Routing (CIDR) block in the prefix list.
         # 
         # The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description

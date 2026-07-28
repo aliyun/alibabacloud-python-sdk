@@ -14,13 +14,13 @@ class GetIpv4GatewayAttributeRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the IPv4 gateway.
+        # The instance ID of the IPv4 gateway to query.
         # 
         # This parameter is required.
         self.ipv_4gateway_id = ipv_4gateway_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the IPv4 gateway.
+        # The region ID of the IPv4 gateway to query.
         # 
         # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
         # 

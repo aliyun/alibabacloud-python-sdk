@@ -20,25 +20,25 @@ class PublishVpcRouteEntriesRequest(DaraModel):
         target_instance_id: str = None,
         target_type: str = None,
     ):
-        # Indicates whether to perform a dry run of this request. Values:
+        # Specifies whether to perform a dry run. Valid values:
         # 
-        # - **true**: Sends a check request without publishing the route. The checks include whether the AccessKey is valid, the authorization status of the RAM user, and if all required parameters are filled out. If the check fails, the corresponding error is returned. If the check passes, the `DryRunOperation` error code is returned.
+        # - **true**: performs a dry run without publishing route entries. The system checks the AccessKey pair, the authorization of the Resource Access Management (RAM) user, and the required parameters. If the check fails, the corresponding error is returned. If the check succeeds, the error code `DryRunOperation` is returned.
         # 
-        # - **false** (default): Sends a normal request. After passing the check, it returns a 2xx HTTP status code and directly queries the resource status.
+        # - **false** (default): sends a normal request. If the check succeeds, a 2xx HTTP status code is returned and the resource status is queried.
         self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the instance is located. You can obtain the region ID by calling the DescribeRegions interface.
+        # The region ID of the instance. You can call the DescribeRegions operation to query the region ID.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # List of route entries to be published, supporting up to 50 routes at most.
+        # The list of route entries to publish. You can specify up to 50 routes.
         self.route_entries = route_entries
-        # The ID of the target instance for route publication.
+        # The publish route entry target instance ID.
         # 
         # This parameter is required.
         self.target_instance_id = target_instance_id
-        # The type of the target for route publication.
+        # The type of the route publish target.
         # 
         # This parameter is required.
         self.target_type = target_type
@@ -125,11 +125,11 @@ class PublishVpcRouteEntriesRequestRouteEntries(DaraModel):
         destination_cidr_block: str = None,
         route_table_id: str = None,
     ):
-        # The destination CIDR block for the route entry.
+        # The destination CIDR block of the route entry.
         # 
         # This parameter is required.
         self.destination_cidr_block = destination_cidr_block
-        # The ID of the route table for the route entry.
+        # The route table ID of the route entry.
         # 
         # This parameter is required.
         self.route_table_id = route_table_id

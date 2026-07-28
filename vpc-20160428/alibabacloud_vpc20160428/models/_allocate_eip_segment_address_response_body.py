@@ -10,7 +10,7 @@ class AllocateEipSegmentAddressResponseBody(DaraModel):
         eip_segment_instance_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the contiguous EIP group.
+        # The instance ID of the contiguous EIP group.
         self.eip_segment_instance_id = eip_segment_instance_id
         # The request ID.
         self.request_id = request_id

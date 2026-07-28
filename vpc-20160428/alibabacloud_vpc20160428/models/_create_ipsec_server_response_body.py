@@ -16,17 +16,17 @@ class CreateIpsecServerResponseBody(DaraModel):
     ):
         # The time when the IPsec server was created.
         # 
-        # T is used as a delimiter. Z indicates that the time is in UTC.
+        # T is the separator and Z indicates UTC.
         self.creation_time = creation_time
-        # The IPsec server ID.
+        # The ID of the IPsec server.
         self.ipsec_server_id = ipsec_server_id
-        # The IPsec server name.
+        # The name of the IPsec server.
         self.ipsec_server_name = ipsec_server_name
-        # The ID of the region where the VPN gateway is deployed.
+        # The region ID of the VPN gateway.
         self.region_id = region_id
         # The request ID.
         self.request_id = request_id
-        # The ID of the VPN gateway.
+        # The instance ID of the VPN gateway.
         self.vpn_gateway_id = vpn_gateway_id
 
     def validate(self):

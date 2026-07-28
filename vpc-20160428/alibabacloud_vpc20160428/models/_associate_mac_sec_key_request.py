@@ -13,11 +13,11 @@ class AssociateMacSecKeyRequest(DaraModel):
         physical_connection_id: str = None,
         region_id: str = None,
     ):
-        # The key secret. This parameter accepts only hexadecimal characters. Lowercase letters are automatically converted to uppercase. The cipher suite determines the required length of the key secret: 32 hexadecimal characters for GCM-AES-128 or GCM-AES-XPN-128, and 64 hexadecimal characters for GCM-AES-256 or GCM-AES-XPN-256.
+        # The passphrase. Only hexadecimal characters are supported. Lowercase characters are automatically transformed to uppercase. If the encryption algorithm type is GCM-AES-128 or GCM-AES-XPN-128, the length must be 32 hexadecimal characters. If the encryption algorithm type is GCM-AES-256 or GCM-AES-XPN-256, the length must be 64 hexadecimal characters.
         # 
         # This parameter is required.
         self.cak = cak
-        # The cipher suite. Valid values:
+        # The encryption algorithm type. Valid values:
         # 
         # - GCM-AES-128
         # 
@@ -29,17 +29,17 @@ class AssociateMacSecKeyRequest(DaraModel):
         # 
         # This parameter is required.
         self.cipher_suite = cipher_suite
-        # The key name. This parameter accepts only hexadecimal characters. Lowercase letters are automatically converted to uppercase. The cipher suite determines the required length of the key name: 32 hexadecimal characters for GCM-AES-128 or GCM-AES-XPN-128, and 64 hexadecimal characters for GCM-AES-256 or GCM-AES-XPN-256.
+        # The key name. Only hexadecimal characters are supported. Lowercase characters are automatically converted to uppercase. If the encryption algorithm type is GCM-AES-128 or GCM-AES-XPN-128, the length must be 32 hexadecimal characters. If the encryption algorithm type is GCM-AES-256 or GCM-AES-XPN-256, the length must be 64 hexadecimal characters.
         # 
         # This parameter is required.
         self.ckn = ckn
-        # The ID of the Express Connect physical connection.
+        # The ID of the Express Connect circuit.
         # 
         # This parameter is required.
         self.physical_connection_id = physical_connection_id
-        # The region ID of the Express Connect physical connection.
+        # The region ID of the Express Connect circuit.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/448570.html) operation to obtain the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/448570.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id

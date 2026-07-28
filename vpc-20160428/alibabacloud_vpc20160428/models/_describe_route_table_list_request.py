@@ -28,13 +28,13 @@ class DescribeRouteTableListRequest(DaraModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of the returned page. Default value: **1**.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page. Maximum value: **50**. Default value: **10**.
+        # The number of entries per page in a paging query. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
         # The region ID of the VPC to which the route table belongs.
         # 
-        # You can call [DescribeRegions](https://www.alibabacloud.com/help/vpc/developer-reference/api-vpc-2016-04-28-describeregions) to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -46,23 +46,25 @@ class DescribeRouteTableListRequest(DaraModel):
         self.route_table_id = route_table_id
         # The name of the route table.
         self.route_table_name = route_table_name
-        # The type of the route table.
+        # The type of the route table. Valid values:
         # 
-        # *   **System**
-        # *   **Custom**
+        # - **System**: system route table.
+        # 
+        # - **Custom**: custom route table.
         self.route_table_type = route_table_type
-        # The ID of vRouter to which the route table belongs.
+        # The ID of the router to which the route table belongs.
         self.router_id = router_id
-        # The type of the router to which the route table belongs. Valid value:
+        # The type of the router to which the route table belongs. Valid values: 
         # 
-        # *   **VRouter** (default): a vRouter
-        # *   **VBR**: a VBR
+        # - **VRouter** (default): vRouter.
+        # 
+        # - **VBR**: Virtual Border Router.
         self.router_type = router_type
         # The tags of the resource.
         self.tag = tag
-        # The ID of the VPC to which the route table belongs. 
+        # The ID of the VPC to which the route table belongs.
         # 
-        # When this parameter is set, the value of **RouterType** is automatically assigned to **VRouter**.
+        # If you specify this parameter, the value of **RouterType** is automatically set to **VRouter**.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -183,13 +185,13 @@ class DescribeRouteTableListRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The value of tag N to add to the resource. You can specify up to 20 tag values. The tag value can be an empty string.
+        # The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
         # 
-        # The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+        # A tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
-        # The value of tag N to add to the resource. You can specify up to 20 tag values. The tag value can be an empty string.
+        # The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
         # 
-        # The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+        # The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

@@ -13,28 +13,30 @@ class DescribeEcGrantRelationRequest(DaraModel):
         page_size: int = None,
         vbr_region_no: str = None,
     ):
-        # The ID of the instance.
+        # The instance ID of the instance for which you want to query authorization relationships.
         # 
-        # *   If you set **InstanceType** to **VBR**, specify a VBR ID.
-        # *   If you set **InstanceType** to **VPC**, specify a VPC ID.
+        # - If **InstanceType** is set to **VBR**, set this parameter to the VBR instance ID.
+        # 
+        # - If **InstanceType** is set to **VPC**, set this parameter to the VPC-connected instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The type of instance. Valid values:
+        # The type of instance for which you want to query authorization relationships. Valid values:
         # 
-        # *   **VBR**: queries the permissions that are granted to a VBR.
-        # *   **VPC**: queries the permissions that are granted from a VPC.
+        # - **VBR**: Virtual Border Router (VBR) instance. Queries the VPC-connected instances that have granted authorization to the VBR instance.
+        # - **VPC**: virtual private cloud (VPC) instance. Queries the VBR instances to which the VPC-connected instance has granted authorization.
         # 
         # This parameter is required.
         self.instance_type = instance_type
-        # The page number. Default value: **1**.
+        # The page number of the list. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page. Maximum value: **50**. Default value: **10**.
+        # The number of entries per page in a paged query. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
-        # The ID of the region where the instance is deployed.
+        # The region ID of the VBR instance for which you want to query authorization relationships.
         # 
-        # *   If **InstanceType** is set to **VBR**, this parameter is required.
-        # *   If **InstanceType** is set to **VPC**, you can ignore this parameter.
+        # - If **InstanceType** is set to **VBR**, this parameter is required.
+        # 
+        # - If **InstanceType** is set to **VPC**, this parameter is not required.
         self.vbr_region_no = vbr_region_no
 
     def validate(self):

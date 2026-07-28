@@ -31,9 +31,9 @@ class DescribeIpv6GatewaysRequest(DaraModel):
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of the page to return.
+        # The current page number.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The number of entries per page.
         self.page_size = page_size
         # The region ID of the IPv6 gateway. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
@@ -150,11 +150,11 @@ class DescribeIpv6GatewaysRequestTags(DaraModel):
     ):
         # The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
         # 
-        # The tag key can be up to 128 characters in length, and cannot start with `aliyun` or `acs:`, or contain `http://` or `https://`.
+        # A tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
         # The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
         # 
-        # The tag value can be up to 128 characters in length, and cannot start with `aliyun` or `acs:`, or contain `http://` or `https://`.
+        # The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

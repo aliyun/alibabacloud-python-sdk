@@ -15,7 +15,7 @@ class ListGatewayRouteTableEntriesResponseBody(DaraModel):
         request_id: str = None,
         total_count: str = None,
     ):
-        # The details of route entries in the gateway route table.
+        # The details of the route entries in the gateway route table.
         self.gateway_route_entry_models = gateway_route_entry_models
         # The pagination token. Valid values:
         # - If **NextToken** is empty, no subsequent query exists.
@@ -101,7 +101,7 @@ class ListGatewayRouteTableEntriesResponseBodyGatewayRouteEntryModels(DaraModel)
         self.next_hop_type = next_hop_type
         # The next hop information.
         self.next_hops = next_hops
-        # The status of the route entry.
+        # The status of the route entry. Valid values:
         # 
         # - **Pending**: being configured.
         # - **Available**: available.
@@ -190,7 +190,7 @@ class ListGatewayRouteTableEntriesResponseBodyGatewayRouteEntryModelsNextHops(Da
         # The next hop type. Valid values:
         # 
         # - **Instance** (default): ECS instance.
-        # - **HaVip**: high-availability virtual IP address (HaVip).
+        # - **HaVip**: high-availability virtual IP address.
         # - **VpnGateway**: VPN gateway.
         # - **NatGateway**: NAT gateway.
         # - **NetworkInterface**: secondary elastic network interfaces (ENIs).

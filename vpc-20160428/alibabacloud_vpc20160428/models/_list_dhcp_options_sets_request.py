@@ -23,40 +23,21 @@ class ListDhcpOptionsSetsRequest(DaraModel):
         resource_owner_id: int = None,
         tags: List[main_models.ListDhcpOptionsSetsRequestTags] = None,
     ):
-        # The ID of the DHCP options set. You can specify at most 20 IDs.
+        # The ID of the DHCP options set. You can specify up to 20 DHCP options set IDs.
         self.dhcp_options_set_id = dhcp_options_set_id
         # The name of the DHCP options set.
         # 
-        # The name must be 1 to 128 characters in length and can contain digits, underscores (_), and hyphens (-). It must start with a letter.
-        # 
-        # Valid values:
-        # 
-        #  
-        # *   tf-testAccVpcDhcpOptionsSets-1585169790614573448
-        #  
-        #     <!-- -->
-        #  
-        #     :
-        #  
-        #     <!-- -->
-        #  
-        #     tf-testAccVpcDhcpOptionsSets-1585169790614573448
-        #  
-        #     <!-- -->
-        #  
-        #     .
+        # The name must be 1 to 128 characters in length and must start with a letter or a Chinese character. It can contain digits, underscores (_), and hyphens (-).
         self.dhcp_options_set_name = dhcp_options_set_name
-        # The root domain. For example, you can set the value to example.com.
+        # The hostname suffix, such as example.com.
         # 
-        # After a DHCP options set is associated with a virtual private cloud (VPC), the root domain in the DHCP options set is automatically synchronized with the ECS instances in the VPC.
+        # After the DHCP options set is associated with a VPC, the hostname suffix is automatically synchronized to the ECS instances in the associated VPC.
         self.domain_name = domain_name
         # The number of entries per page. Valid values: **1** to **100**. Default value: **10**.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
-        # 
-        # *   You do not need to specify this parameter for the first request.
-        # 
-        # *   You must specify the token that is obtained from the previous query as the value of the **NextToken** parameter.
+        # The pagination token. Valid values:
+        # - If this is the first query or no subsequent query is required, leave this parameter empty.
+        # - If a subsequent query is required, set the value to the **NextToken** value returned in the previous API call.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -70,7 +51,7 @@ class ListDhcpOptionsSetsRequest(DaraModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The tag list.
+        # The list of tags.
         self.tags = tags
 
     def validate(self):
@@ -173,13 +154,13 @@ class ListDhcpOptionsSetsRequestTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+        # The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
         # 
-        # The tag key can be up to 64 characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). The tag key must start with a letter but cannot start with `aliyun` or `acs:`. The tag key cannot contain `http://` or `https://`.
+        # The tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
-        # The tag value. You can specify at most 20 tag values. The tag value can be an empty string.
+        # The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
         # 
-        # The tag value can be up to 128 characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). The tag value must start with a letter but cannot start with `aliyun` or `acs:`. The tag value cannot contain `http://` or `https://`.
+        # The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

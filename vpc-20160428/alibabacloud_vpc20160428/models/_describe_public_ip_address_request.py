@@ -16,20 +16,22 @@ class DescribePublicIpAddressRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The IP version. Valid values:
+        # The version of the IP protocol. Valid values:
         # 
-        # *   **IPv4** (default)
-        # *   **IPv6**
+        # - **ipv4** (default): IPv4.
+        # 
+        # - **ipv6**: IPv6.
         self.ip_version = ip_version
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number. Default value: **1**.
+        # The page number of the list. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries per page in a paged query.
         # 
         # Valid values: **1** to **100**. Default value: **100**.
         self.page_size = page_size
-        # The region that you want to query. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # The region to query.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id

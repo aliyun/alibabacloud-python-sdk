@@ -13,26 +13,26 @@ class AttachVbrToVpconnRequest(DaraModel):
         vbr_id: str = None,
         vpconn_id: str = None,
     ):
-        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # Specifies whether to perform a dry run. Valid values:
         # 
-        # *   **true**: performs only a dry run. The system checks the request for potential issues, including required parameters, request syntax, and instance status. If the request fails the dry run, an error message is returned. If the request passes the dry run, the request ID is returned.
-        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        # - **true**: performs a dry run without associating the VBR instance with the shared Express Connect circuits. The system checks the required parameters, request format, and instance status. If the check fails, the corresponding error is returned. If the check succeeds, the request ID is returned.
+        # - **false** (default): sends a normal request. After the check succeeds, the VBR instance is directly associated with the shared Express Connect circuits.
         self.dry_run = dry_run
-        # The region ID of the hosted connection.
+        # The region ID of the shared Express Connect circuits.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # The client token must be unique among different requests and cannot exceed 64 ASCII characters in length.
         self.token = token
-        # The ID of the VBR.
+        # The instance ID of the VBR.
         # 
         # This parameter is required.
         self.vbr_id = vbr_id
-        # The ID of the hosted connection.
+        # The instance ID of the shared Express Connect circuits.
         # 
         # This parameter is required.
         self.vpconn_id = vpconn_id

@@ -21,34 +21,33 @@ class ListTagResourcesForExpressConnectRequest(DaraModel):
         resource_type: str = None,
         tag: List[main_models.ListTagResourcesForExpressConnectRequestTag] = None,
     ):
-        # The number of entries per page. Valid values: **1** to **100**. Default value: **20**.
+        # The number of entries per page for a paged query. Valid values: **1** to **100**. Default value: **20**.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results.
-        # 
-        # *   You do not need to specify this parameter for the first request.
-        # *   You must specify the token that is obtained from the previous query as the value of **NextToken**.
+        # The token for the next query. Valid values:
+        # - If this is the first query or no next query exists, leave this parameter empty.
+        # - If a next query exists, set this parameter to the **NextToken** value returned by the previous API call.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region to which the resource resides.
+        # The region ID of the resource.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The resource IDs.
+        # The list of resource IDs.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The type of the resource. Valid values:
-        # 
-        # *   **PHYSICALCONNECTION**: Express Connect circuit.
-        # *   **VIRTUALBORDERROUTER**: virtual border router (VBR).
-        # *   **ROUTERINTERFACE**: router interface.
+        # The resource type. Valid values:
+        # - **PHYSICALCONNECTION**: Express Connect circuit instance.
+        # - **VIRTUALBORDERROUTER**: Virtual Border Router.
+        # - **ROUTERINTERFACE**: VBR uplink.
+        # - **TRAFFICQOS**: QoS policy.
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The tags.
+        # The list of tags.
         self.tag = tag
 
     def validate(self):
@@ -139,13 +138,13 @@ class ListTagResourcesForExpressConnectRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag to add to the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+        # The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
         # 
-        # The tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `aliyun` or `acs:`.
+        # The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         self.key = key
-        # The value of the tag to add to the resource. You can specify up to 20 tag values The tag value can be an empty string.
+        # The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
         # 
-        # The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag value cannot start with `aliyun` or `acs:`.
+        # The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

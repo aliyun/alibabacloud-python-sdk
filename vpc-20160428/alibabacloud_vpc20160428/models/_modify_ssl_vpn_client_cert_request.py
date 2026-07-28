@@ -18,25 +18,25 @@ class ModifySslVpnClientCertRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # The client generates the value of this parameter. Ensure that the value is unique among different requests. The value can be up to 64 ASCII characters in length.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        # > If you do not specify this parameter, the system uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request is different.
         self.client_token = client_token
-        # The new name of the SSL client certificate. This parameter cannot be left empty.
+        # The new name of the SSL-VPN client certificate. This parameter cannot be empty.
         # 
         # The name must be 1 to 100 characters in length and cannot start with `http://` or `https://`.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the SSL client certificate is created.
+        # The region ID of the SSL-VPN client certificate. 
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the SSL client certificate.
+        # The ID of the SSL-VPN client certificate.
         # 
         # This parameter is required.
         self.ssl_vpn_client_cert_id = ssl_vpn_client_cert_id

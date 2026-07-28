@@ -18,7 +18,7 @@ class VpcDescribeVpcNatGatewayNetworkInterfaceQuotaRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken parameter supports only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
         # 
         # > If you do not specify this parameter, the system uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request may be different.
         self.client_token = client_token
@@ -28,7 +28,7 @@ class VpcDescribeVpcNatGatewayNetworkInterfaceQuotaRequest(DaraModel):
         self.owner_id = owner_id
         # The region ID of the VPC NAT gateway to query.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/448570.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/448570.html) operation to query the region ID.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

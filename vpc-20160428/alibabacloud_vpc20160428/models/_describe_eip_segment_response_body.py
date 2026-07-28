@@ -19,7 +19,7 @@ class DescribeEipSegmentResponseBody(DaraModel):
         self.eip_segments = eip_segments
         # The page number of the list.
         self.page_number = page_number
-        # The number of entries per page in a paging query.
+        # The number of entries per page in a paged query. This parameter is used for paging.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id

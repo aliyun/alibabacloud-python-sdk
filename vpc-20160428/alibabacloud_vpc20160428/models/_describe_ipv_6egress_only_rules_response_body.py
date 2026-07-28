@@ -19,7 +19,7 @@ class DescribeIpv6EgressOnlyRulesResponseBody(DaraModel):
         self.ipv_6egress_only_rules = ipv_6egress_only_rules
         # The page number of the list to return. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page in a paged query. Maximum value: **50**. Default value: **10**.
+        # The number of entries per page for a paged query. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id

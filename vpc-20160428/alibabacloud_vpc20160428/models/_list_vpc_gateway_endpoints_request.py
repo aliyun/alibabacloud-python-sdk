@@ -24,24 +24,23 @@ class ListVpcGatewayEndpointsRequest(DaraModel):
         tags: List[main_models.ListVpcGatewayEndpointsRequestTags] = None,
         vpc_id: str = None,
     ):
-        # The ID of the gateway endpoint.
+        # The endpoint instance ID of the gateway endpoint.
         self.endpoint_id = endpoint_id
         # The name of the gateway endpoint.
         # 
         # The name must be 1 to 128 characters in length.
         self.endpoint_name = endpoint_name
-        # The number of entries to return per page. Valid values: **1** to **100**. Default value: **20**.
+        # The number of entries per page for a paged query. Valid values: **1** to **100**. Default value: **20**.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
-        # 
-        # *   You do not need to specify this parameter for the first request.
-        # *   If a value is returned for NextToken, specify the value in the next request to retrieve a new page of results.
+        # Specifies whether a next query token is available. Valid values:
+        # - Leave this parameter empty for the first query or when no more results are available.
+        # - If more results are available, set this parameter to the NextToken value returned by the previous API call.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the gateway endpoint.
+        # The region ID of the gateway endpoint that you want to query.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -49,11 +48,11 @@ class ListVpcGatewayEndpointsRequest(DaraModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The name of the endpoint service.
+        # The service name of the endpoint service.
         self.service_name = service_name
-        # The tag list.
+        # The list of tags.
         self.tags = tags
-        # The ID of the virtual private cloud (VPC) to which the gateway endpoint belongs.
+        # The ID of the VPC to which the gateway endpoint belongs.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -162,13 +161,13 @@ class ListVpcGatewayEndpointsRequestTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N added to the resource. You can specify at most 20 tag keys. It cannot be an empty string.
+        # The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
         # 
-        # The key cannot exceed 64 characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
+        # The tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
-        # The value of tag N added to the resource. You can specify at most 20 tag values. The tag value can be an empty string.
+        # The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
         # 
-        # The tag value cannot exceed 128 characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
+        # The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

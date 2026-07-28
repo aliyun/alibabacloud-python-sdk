@@ -19,29 +19,29 @@ class AttachDhcpOptionsSetToVpcRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, the system uses **RequestId** as **ClientToken**. **RequestId** may be different for each API request.
+        # > If you do not specify this parameter, the system uses the **RequestId** as the **ClientToken**. The **RequestId** may differ for each API request.
         self.client_token = client_token
         # The ID of the DHCP options set.
         # 
         # This parameter is required.
         self.dhcp_options_set_id = dhcp_options_set_id
-        # Specifies whether to check the request without performing the operation. Valid values:
+        # Specifies whether to perform a dry run. Valid values:
         # 
-        # **true**: checks the request without performing the operation. The system checks whether your AccessKey pair is valid, whether the Resource Access Management (RAM) user is authorized, and whether the required parameters are set. If the request fails to pass the check, the corresponding error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
+        # **true**: performs a dry run without associating the DHCP options set with the VPC. The system checks the AccessKey pair, the authorization of the Resource Access Management (RAM) user, and the required parameters. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
         # 
-        # **false** (default): sends the request. If the request passes the check, a 2XX HTTP status code is returned and the operation is performed.
+        # **false** (default): sends a normal request. If the request passes the dry run, a 2XX HTTP status code is returned and the DHCP options set is associated with the VPC.
         self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region to which the DHCP options set belongs. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # The region where the DHCP options set resides. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the VPC to be associated with the DHCP options set.
+        # The ID of the VPC to which you want to attach the DHCP options set.
         # 
         # This parameter is required.
         self.vpc_id = vpc_id

@@ -15,7 +15,7 @@ class DownloadVpnConnectionConfigResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The configurations of the peer gateway device.
+        # The configuration of the peer gateway device of the IPsec-VPN connection.
         self.vpn_connection_config = vpn_connection_config
 
     def validate(self):
@@ -59,17 +59,17 @@ class DownloadVpnConnectionConfigResponseBodyVpnConnectionConfig(DaraModel):
         tunnels_config: main_models.DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfig = None,
     ):
         self.bgp_configs = bgp_configs
-        # The configurations of Phase 1 negotiations.
+        # The configuration of Phase 1 negotiation.
         self.ike_config = ike_config
-        # The configurations of Phase 2 negotiations.
+        # The configuration of Phase 2 negotiation.
         self.ipsec_config = ipsec_config
         # The identifier of the customer gateway.
         self.local = local
-        # The CIDR block on the data center side.
+        # The CIDR block on the on-premises data center side.
         self.local_subnet = local_subnet
         # The identifier of the VPN gateway.
         self.remote = remote
-        # The CIDR block on the virtual private cloud (VPC) side.
+        # The CIDR block on the VPC side.
         self.remote_subnet = remote_subnet
         self.tunnels_config = tunnels_config
 
@@ -190,15 +190,10 @@ class DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTun
         remote: str = None,
         tunnel_id: str = None,
     ):
-        # 第一阶段协商的配置信息。
         self.ike_config = ike_config
-        # 第二阶段协商的配置信息。
         self.ipsec_config = ipsec_config
-        # 本地IDC侧隧道的标识。
         self.local = local
-        # 阿里云侧隧道的标识。
         self.remote = remote
-        # 隧道ID。
         self.tunnel_id = tunnel_id
 
     def validate(self):
@@ -258,13 +253,9 @@ class DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTun
         ipsec_lifetime: int = None,
         ipsec_pfs: str = None,
     ):
-        # IPsec阶段认证算法。
         self.ipsec_auth_alg = ipsec_auth_alg
-        # IPsec阶段加密算法。
         self.ipsec_enc_alg = ipsec_enc_alg
-        # IPsec阶段生存时间。单位：秒。
         self.ipsec_lifetime = ipsec_lifetime
-        # IPsec阶段DH分组。
         self.ipsec_pfs = ipsec_pfs
 
     def validate(self):
@@ -318,26 +309,14 @@ class DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTun
         psk: str = None,
         remote_id: str = None,
     ):
-        # IKE阶段认证算法。
         self.ike_auth_alg = ike_auth_alg
-        # IKE阶段加密算法。
         self.ike_enc_alg = ike_enc_alg
-        # IKE阶段生存时间。单位：秒。
         self.ike_lifetime = ike_lifetime
-        # IKE协商模式。
-        # 
-        # - **main**：主模式，协商过程安全性高。
-        # - **aggressive**：野蛮模式，协商快速且协商成功率高。
         self.ike_mode = ike_mode
-        # IKE阶段DH分组。
         self.ike_pfs = ike_pfs
-        # IKE协议的版本。
         self.ike_version = ike_version
-        # 本地IDC侧隧道的标识。
         self.local_id = local_id
-        # 预共享密钥。
         self.psk = psk
-        # 阿里云侧隧道的标识。
         self.remote_id = remote_id
 
     def validate(self):
@@ -416,11 +395,11 @@ class DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigIpsecConfig(Dara
         ipsec_lifetime: int = None,
         ipsec_pfs: str = None,
     ):
-        # The authentication algorithm in the IPsec phase.
+        # The IPsec phase authentication algorithm.
         self.ipsec_auth_alg = ipsec_auth_alg
-        # The encryption algorithm in the IPsec phase.
+        # The IPsec phase encryption algorithm.
         self.ipsec_enc_alg = ipsec_enc_alg
-        # The lifetime in the IPsec phase. Unit: seconds.
+        # The IPsec phase lifetime. Unit: seconds.
         self.ipsec_lifetime = ipsec_lifetime
         # The DH group in the IPsec phase.
         self.ipsec_pfs = ipsec_pfs
@@ -476,20 +455,20 @@ class DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigIkeConfig(DaraMo
         psk: str = None,
         remote_id: str = None,
     ):
-        # The authentication algorithm in the IKE phase.
+        # The IKE phase authentication algorithm.
         self.ike_auth_alg = ike_auth_alg
-        # The encryption algorithm in the IKE phase.
+        # The IKE phase encryption algorithm.
         self.ike_enc_alg = ike_enc_alg
-        # The lifetime in the IKE phase. Unit: seconds.
+        # The IKE phase lifetime. Unit: seconds.
         self.ike_lifetime = ike_lifetime
         # The IKE negotiation mode. Valid values:
         # 
-        # *   **main**: This mode offers higher security during negotiations.
-        # *   **aggressive**: This mode is faster and has a higher success rate.
+        # - **main**: Main mode. This mode provides high security during negotiation.
+        # - **aggressive**: Aggressive mode. This mode supports fast negotiation and a higher success rate.
         self.ike_mode = ike_mode
         # The DH group in the IKE phase.
         self.ike_pfs = ike_pfs
-        # The IKE version.
+        # The version of the IKE protocol.
         self.ike_version = ike_version
         # The identifier of the customer gateway. FQDN and IP formats are supported. The default value is the IP address of the customer gateway.
         self.local_id = local_id

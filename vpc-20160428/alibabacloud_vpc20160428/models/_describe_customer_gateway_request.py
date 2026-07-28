@@ -14,15 +14,15 @@ class DescribeCustomerGatewayRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the customer gateway.
+        # The instance ID of the customer gateway.
         # 
         # This parameter is required.
         self.customer_gateway_id = customer_gateway_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the customer gateway is deployed.
+        # The region ID of the customer gateway. 
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id

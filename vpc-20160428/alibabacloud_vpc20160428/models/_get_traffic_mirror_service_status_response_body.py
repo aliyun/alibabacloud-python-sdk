@@ -10,10 +10,11 @@ class GetTrafficMirrorServiceStatusResponseBody(DaraModel):
         enabled: bool = None,
         request_id: str = None,
     ):
-        # Indicates whether the traffic mirror feature is enabled. Valid values:
+        # Indicates whether the traffic mirroring feature is enabled. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Enabled.
+        # 
+        # - **false**: Not enabled.
         self.enabled = enabled
         # The request ID.
         self.request_id = request_id

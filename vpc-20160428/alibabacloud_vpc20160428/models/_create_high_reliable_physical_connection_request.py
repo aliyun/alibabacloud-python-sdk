@@ -34,26 +34,26 @@ class CreateHighReliablePhysicalConnectionRequest(DaraModel):
         # 
         # This parameter is required.
         self.ap_list = ap_list
-        # The client token that is used to ensure the idempotence of the request.
+        # The client token used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # Generate a parameter value from your client to ensure uniqueness across different requests. ClientToken supports only ASCII characters.
         # 
-        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
+        # > If you do not specify this parameter, the system uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
         self.client_token = client_token
         # The list of advanced device capabilities.
         self.device_advanced_capacity = device_advanced_capacity
         # Specifies whether to perform a dry run. Valid values:
         # 
-        # - **true**: performs a dry run without creating the instance. The system checks the required parameters, request format, and instance status. If the check fails, the error code `DRYRUN.FAIL` is returned along with the corresponding error list. If the check succeeds, the code `DRYRUN.SUCCESS` is returned.
+        # - **true**: performs a dry run without creating the instance. The system checks required parameters, request format, and instance status. If the check fails, the error code `DRYRUN.FAIL` is returned along with the corresponding error list. If the check passes, the code `DRYRUN.SUCCESS` is returned.
         # 
-        # - **false** (default): sends the request. After the request passes the check, the instance is created.
+        # - **false** (default): sends a normal request. After the check passes, the instance is created.
         self.dry_run = dry_run
-        # The zone-redundancy mode. Valid values:
+        # The zone redundancy mode. Valid values:
         # 
-        # - **MultiApMultiDevice**: maximum disaster recovery. This mode supports two different access points and two different devices, providing maximum disaster recovery.
-        # - **MultiApSingleDevice**: enhanced disaster recovery. This mode supports two different access points and one device, providing enhanced disaster recovery.
-        # - **SingleApMultiDevice**: development and testing. This mode supports one access point and two devices. This mode is recommended only for development and testing of non-critical workloads.
-        # - **SingleApMultiConnection**: high-bandwidth load balancing. This mode is available only to users in the whitelist. It supports one access point, one device, and multiple physical ports. To use this mode, contact your account manager.
+        # - **MultiApMultiDevice**: Maximum disaster recovery. This mode supports two different access points and two different devices, providing maximum disaster recovery.
+        # - **MultiApSingleDevice**: Enhanced disaster recovery. This mode supports two different access points and one device, providing enhanced disaster recovery.
+        # - **SingleApMultiDevice**: Development and testing. This mode supports one access point and two devices. It is recommended only for development and testing of non-critical workloads.
+        # - **SingleApMultiConnection**: High-bandwidth load balancing. This mode is available only to users in the whitelist. It supports one access point, one device, and multiple physical ports. Contact your account manager if needed.
         # 
         # This parameter is required.
         self.high_reliable_type = high_reliable_type
@@ -69,7 +69,7 @@ class CreateHighReliablePhysicalConnectionRequest(DaraModel):
         # 
         # - **100GBase-LR**: 100 GE single-mode optical port.
         #     
-        # > 40GBase-LR and 100GBase-LR are subject to the actual port availability. For information about port availability, contact your account manager.
+        # > 40GBase-LR and 100GBase-LR are subject to actual backend port availability. Contact your account manager for details.
         # 
         # This parameter is required.
         self.port_type = port_type
@@ -207,11 +207,11 @@ class CreateHighReliablePhysicalConnectionRequestTag(DaraModel):
     ):
         # The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
         # 
-        # The tag key can be up to 64 characters in length and must start with a letter or Chinese character. It can contain digits, periods (.), underscores (_), and hyphens (-). It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # The tag key can be up to 64 characters in length. It must start with a letter or Chinese character and can contain digits, periods (.), underscores (_), and hyphens (-). It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
         # The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
         # 
-        # The tag value can be up to 128 characters in length and must start with a letter or Chinese character. It can contain digits, periods (.), underscores (_), and hyphens (-). It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # The tag value can be up to 128 characters in length. It must start with a letter or Chinese character and can contain digits, periods (.), underscores (_), and hyphens (-). It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -255,9 +255,9 @@ class CreateHighReliablePhysicalConnectionRequestApList(DaraModel):
         region_id: str = None,
         type: str = None,
     ):
-        # The ID of the access point for the Express Connect circuit.
+        # The ID of the access point where the Express Connect circuit is located.
         # 
-        # > When **HighReliableType** is set to **MultiApMultiDevice** or **MultiApSingleDevice**, you must specify two different access points. When **HighReliableType** is set to **SingleApMultiDevice** or **SingleApMultiConnection**, you must specify one access point.
+        # > When **HighReliableType** is set to **MultiApMultiDevice** or **MultiApSingleDevice**, two different access points are required. When **HighReliableType** is set to **SingleApMultiDevice** or **SingleApMultiConnection**, one access point is required.
         # 
         # This parameter is required.
         self.access_point_id = access_point_id
@@ -269,7 +269,7 @@ class CreateHighReliablePhysicalConnectionRequestApList(DaraModel):
         self.circuit_code = circuit_code
         # The description of the Express Connect circuit.
         # 
-        # The description must be 2 to 256 characters in length and must start with a letter or Chinese character, but cannot start with `http://` or `https://`.
+        # The description must be 2 to 256 characters in length. It must start with a letter or Chinese character and cannot start with `http://` or `https://`.
         self.description = description
         # The connectivity provider of the Express Connect circuit. Valid values:
         # 
@@ -279,35 +279,35 @@ class CreateHighReliablePhysicalConnectionRequestApList(DaraModel):
         # 
         # - **CM**: China Mobile.
         # 
-        # - **CO**: other Chinese carriers. 
+        # - **CO**: Other Chinese providers. 
         # 
         # - **Equinix**: Equinix.
         # 
-        # - **Other**: other carriers outside the Chinese mainland.
+        # - **Other**: Other providers outside the Chinese mainland.
         # 
         # This parameter is required.
         self.line_operator = line_operator
         # The name of the Express Connect circuit.  
         # 
-        # The name must be 2 to 128 characters in length and must start with a letter or Chinese character. It can contain digits, underscores (_), and hyphens (-), but cannot start with `http://` or `https://`.
+        # The name must be 2 to 128 characters in length. It must start with a letter or Chinese character and can contain digits, underscores (_), and hyphens (-). It cannot start with `http://` or `https://`.
         self.name = name
-        # The optical module model supported by the access point of the Express Connect circuit. Valid values:
-        # - 1000Base-LX: 
+        # The supported optical module models for the Express Connect circuit access point. Valid values:
+        # - 1000Base-LX : 
         #   - `SFP-GE-LR-SM1310,10KM`
         #   - `SFP-GE-ER-SM1310,40KM`
         #   - `SFP-GE-ZR-SM1550,80KM`
-        # - 10GBase-LR: 
+        # - 10GBase-LR : 
         #   - `SFP-10G-LR-SM1310,10KM`
         #   - `SFP-10G-ER-SM1550,40KM` 
         #   - `SFP-10G-ZR-SM1550,80KM`  
-        # - 40GBase-LR: 
+        # - 40GBase-LR ： 
         #   - `QSFP-40G-LR4-WDM1300,10KM`
         #   - `QSFP-40G-ER4-WDM1300,40KM`
         #   - `QSFP-40G-ZR4-WDM1300,80KM`
-        # - 100GBase-LR: 
+        # - 100GBase-LR ： 
         #   - `QSFP28-100G-LR4-WDM1300,10KM`
         #   - `QSFP28-100G-ER4-WDM1300,40KM`
-        #   - `QSFP28-100G-ZR4-WDM1300,80KM`.
+        #   - `QSFP28-100G-ZR4-WDM1300,80KM`
         self.optical_module_model = optical_module_model
         # The geographic location of the on-premises data center.
         self.peer_location = peer_location

@@ -21,16 +21,15 @@ class EnableVpcIpv4GatewayRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** value as the **ClientToken** value. The **RequestId** value may be different for each API request.
         self.client_token = client_token
-        # Specifies whether to perform a dry run, without performing the actual request. Valid values:
-        # 
-        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        # Specifies whether to perform a dry run. Valid values:
+        # - **true**: performs a dry run. The system checks the required parameters, request format, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # - **false** (default): sends a normal request, passes the dry run, and returns an HTTP 2xx status code to directly activate IPv4 gateway.
         self.dry_run = dry_run
-        # The ID of the IPv4 gateway that you want to activate.
+        # The instance ID of the IPv4 gateway that you want to activate.
         # 
         # This parameter is required.
         self.ipv_4gateway_id = ipv_4gateway_id
@@ -38,13 +37,13 @@ class EnableVpcIpv4GatewayRequest(DaraModel):
         self.owner_id = owner_id
         # The region ID of the IPv4 gateway.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent list of regions.
+        # You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # A list of route tables. The system adds a 0.0.0.0/0 route that points to the IPv4 gateway to the route tables.
+        # The list of route tables. The system adds a route entry with the destination CIDR block 0.0.0.0/0 that points to the IPv4 gateway to each route table in the list.
         self.route_table_list = route_table_list
 
     def validate(self):

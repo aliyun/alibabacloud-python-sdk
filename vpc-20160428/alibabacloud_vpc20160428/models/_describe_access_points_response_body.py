@@ -16,15 +16,14 @@ class DescribeAccessPointsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of access points.
         self.access_point_set = access_point_set
-        # The page number. Default: **1**.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page. Maximum: **50**. Default: **10**.
+        # The number of entries per page for paging. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):

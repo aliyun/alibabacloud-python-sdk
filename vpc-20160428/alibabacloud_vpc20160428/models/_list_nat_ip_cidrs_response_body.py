@@ -15,16 +15,15 @@ class ListNatIpCidrsResponseBody(DaraModel):
         request_id: str = None,
         total_count: str = None,
     ):
-        # The CIDR blocks of the NAT gateway.
+        # The list of NAT CIDR blocks.
         self.nat_ip_cidrs = nat_ip_cidrs
-        # The token that is used for the next query. Valid values:
-        # 
-        # *   If the value of **NextToken** is not returned, it indicates that no next query is to be sent.
-        # *   If the value of **NextToken** is returned, the value indicates the token that is used for the next query.
+        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+        # - If **NextToken** is empty, no subsequent requests exist.
+        # - If **NextToken** is returned, the value indicates the token for the next query.
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The number of CIDR blocks that are returned.
+        # The total number of NAT CIDR block entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -85,24 +84,24 @@ class ListNatIpCidrsResponseBodyNatIpCidrs(DaraModel):
         nat_ip_cidr_name: str = None,
         nat_ip_cidr_status: str = None,
     ):
-        # The time when the CIDR block was created.
+        # The time when the NAT CIDR block was created.
         self.creation_time = creation_time
-        # Indicates whether the CIDR block is the default CIDR block of the NAT gateway. Valid values:
+        # Indicates whether the NAT CIDR block is the default NAT CIDR block. Valid values:
         # 
-        # *   **true**: The CIDR block is the default CIDR block of the NAT gateway.
-        # *   **false**: The CIDR block is not the default CIDR block of the NAT gateway.
+        # - **true**: The NAT CIDR block is the default NAT CIDR block.
+        # - **false**: The NAT CIDR block is not the default NAT CIDR block.
         self.is_default = is_default
-        # The ID of the VPC NAT gateway.
+        # The instance ID of the VPC NAT gateway to which the NAT CIDR block belongs.
         self.nat_gateway_id = nat_gateway_id
-        # The CIDR block of the NAT gateway.
+        # The NAT CIDR block.
         self.nat_ip_cidr = nat_ip_cidr
-        # The description of the CIDR block of the NAT gateway.
+        # The description of the NAT CIDR block.
         self.nat_ip_cidr_description = nat_ip_cidr_description
-        # The ID of the CIDR block of the NAT gateway.
+        # The instance ID of the NAT CIDR block.
         self.nat_ip_cidr_id = nat_ip_cidr_id
-        # The name of the CIDR block of the NAT gateway.
+        # The name of the NAT CIDR block.
         self.nat_ip_cidr_name = nat_ip_cidr_name
-        # The status of the CIDR block of the NAT gateway. If **Available** is returned, it indicates that the CIDR block is available.
+        # The status of the NAT CIDR block. The value is **Available**, which indicates that the NAT CIDR block is available.
         self.nat_ip_cidr_status = nat_ip_cidr_status
 
     def validate(self):

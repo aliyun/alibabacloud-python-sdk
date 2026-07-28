@@ -18,17 +18,17 @@ class ModifyVRouterAttributeRequest(DaraModel):
     ):
         # The description of the vRouter.
         # 
-        # The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
+        # The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the vRouter.
+        # The region ID of the vRouter to modify.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The vRouter ID.
+        # The ID of the vRouter.
         # 
         # This parameter is required.
         self.vrouter_id = vrouter_id

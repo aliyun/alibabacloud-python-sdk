@@ -23,25 +23,26 @@ class DescribeRouterInterfacesRequest(DaraModel):
     ):
         # The filter information.
         self.filter = filter
-        # Specifies whether renewal data is included. Valid values:
+        # Specifies whether to include renewal data. Valid values:
         # 
-        # *   **true**
-        # *   **false** (default)
+        # - **true**
+        # 
+        # - **false** (default)
         self.include_reservation_data = include_reservation_data
         self.owner_id = owner_id
         # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page. Maximum value: **50**. Default value: **10**.
+        # The number of entries per page for paging queries. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
         # The region ID of the router interface.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # Resource Group ID.
+        # The resource group ID.
         # 
-        # For more information about resource groups, please refer to [What is a Resource Group?](https://help.aliyun.com/document_detail/94475.html)
+        # For more information about resource groups, see [What is a resource group?](https://help.aliyun.com/document_detail/2381067.html).
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -145,13 +146,13 @@ class DescribeRouterInterfacesRequestTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the resource tag. At least one tag key must be entered, and a maximum of 20 tag keys are supported. If this value needs to be passed in, it cannot be an empty string.
+        # The tag key of the resource. You must specify at least 1 tag key and can specify up to 20 tag keys. The tag key cannot be an empty string.
         # 
-        # A tag key can support up to 128 characters, cannot start with \\"aliyun\\" or \\"acs:\\", and cannot contain \\"http://\\" or \\"https://\\".
+        # The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         self.key = key
-        # The value of the resource tag. A maximum of 20 tag values can be entered. If this value needs to be passed in, an empty string can be entered.
+        # The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
         # 
-        # A maximum of 128 characters are supported, it cannot start with \\"aliyun\\" or \\"acs:\\", and it cannot contain \\"http://\\" or \\"https://\\".
+        # The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -186,22 +187,31 @@ class DescribeRouterInterfacesRequestFilter(DaraModel):
         key: str = None,
         value: List[str] = None,
     ):
-        # The filter conditions. You can specify up to five filter conditions. The following filter conditions are supported:
+        # The filter condition. You can specify up to 5 filter conditions. The following filter conditions are supported:
         # 
-        # *   **RouterInterfaceId**: the ID of the router interface.
-        # *   **RouterId**: the ID of the router.
-        # *   **RouterType**: the router type. Valid values: **VRouter** and **VBR**.
-        # *   **RouterInterfaceOwnerId**: the ID of the Alibaba Cloud account to which the router interface belongs.
-        # *   **OppositeInterfaceId**: the ID of the peer router interface.
-        # *   **OppositeRouterType**: the type of the peer router interface. Valid values: **VRouter** and **VBR**.
-        # *   **OppositeRouterId**: the ID of the peer router.
-        # *   **OppositeInterfaceOwnerId**: the ID of the Alibaba Cloud account to which the peer router interface belongs.
-        # *   **Status**: the status of the router interface.
-        # *   **Name**: the name of the router interface.
+        # - **RouterInterfaceId**: the router interface ID.
         # 
-        # >  The logical operator among multiple values in a filter condition is OR. In this case, the filter condition is met if one of the values is matched. The logical operator among filter conditions is AND. Only routers that meet all the filter conditions are queried.
+        # - **RouterId**: the router ID.
+        # 
+        # - **RouterType**: the router type. Valid values: **VRouter** and **VBR**.
+        # 
+        # - **RouterInterfaceOwnerId**: the ID of the account that owns the router interface.
+        # 
+        # - **OppositeInterfaceId**: the peer router interface ID.
+        # 
+        # - **OppositeRouterType**: the peer router interface type. Valid values: **VRouter** and **VBR**.
+        # 
+        # - **OppositeRouterId**: the peer router interface ID.
+        # 
+        # - **OppositeInterfaceOwnerId**: the ID of the account that owns the peer router interface.
+        # 
+        # - **Status**: the router interface status.
+        # 
+        # - **Name**: the router interface name.
+        # 
+        # > Multiple values for a filter condition are evaluated by using the OR operator. A result is returned if any of the values match. Filter conditions are evaluated by using the AND operator. A result is returned only if all filter conditions are matched.
         self.key = key
-        # Specifies the value in the filter condition based on the key. You can specify multiple filter values for one key. The logical operator among filter values is OR. If one filter value is matched, the filter condition is matched.
+        # The filter value based on the specified Key. You can specify multiple filter values for a Key. Multiple filter values are evaluated by using the OR operator. A result is returned if any of the filter values match.
         self.value = value
 
     def validate(self):

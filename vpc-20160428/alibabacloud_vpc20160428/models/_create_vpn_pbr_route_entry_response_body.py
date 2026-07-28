@@ -19,32 +19,36 @@ class CreateVpnPbrRouteEntryResponseBody(DaraModel):
         vpn_instance_id: str = None,
         weight: int = None,
     ):
-        # The timestamp generated when the policy-based route was created. Unit: milliseconds.
+        # The timestamp when the policy-based route was created. Unit: milliseconds.
         # 
-        # This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+        # The timestamp follows the UNIX timestamp format, which represents the total number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_time = create_time
-        # The description of the route.
+        # The description of the policy-based route.
         self.description = description
-        # The tunneling protocol. The value is **Ipsec**.
+        # The next hop of the policy-based route.
         self.next_hop = next_hop
-        # The tunneling protocol. The value is set to **Ipsec**, which indicates the IPsec tunneling protocol.
+        # The tunneling protocol. Set the value to **Ipsec** (IPsec tunneling protocol).
         self.overlay_mode = overlay_mode
-        # The priority of the policy-based route.
+        # The policy priority of the policy-based routing entry.
         self.priority = priority
-        # The priority of the policy-based route.
+        # The request ID.
         self.request_id = request_id
-        # The VPN gateway ID.
+        # The destination CIDR block of the policy-based route.
         self.route_dest = route_dest
         # The source CIDR block of the policy-based route.
         self.route_source = route_source
-        # The status of the policy-based route.
+        # The publish status of the policy-based route.
         # 
-        # *   **published**: advertised to the VPC route table.
-        # *   **normal**: not advertised to the VPC route table.
+        # - **published**: The policy-based route has been published to the VPC route table.
+        # 
+        # - **normal**: The policy-based route has not been published to the VPC route table.
         self.state = state
-        # The ID of the VPN gateway.
+        # The instance ID of the VPN gateway.
         self.vpn_instance_id = vpn_instance_id
-        # The source CIDR block of the policy-based route.
+        # The weight of the policy-based route.
+        # 
+        # - **100**: The IPsec-VPN connection associated with the policy-based route serves as the active link.
+        # - **0**: The IPsec-VPN connection associated with the policy-based route serves as the standby link.
         self.weight = weight
 
     def validate(self):

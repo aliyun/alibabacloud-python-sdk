@@ -17,21 +17,27 @@ class DeleteNatGatewayRequest(DaraModel):
     ):
         # Specifies whether to forcefully delete the NAT gateway. Valid values:
         # 
-        # *   **true** If you set the value to **true**:
+        # - **true**: forcefully deletes the NAT gateway. If this parameter is set to **true**:
         # 
-        #     *   If the NAT gateway has SNAT entries, the system automatically deletes them.
-        #     *   If the NAT gateway has DNAT entries, the system automatically deletes them.
-        #     *   If the NAT gateway is associated with an elastic IP address (EIP), the system automatically disassociates the EIP from the NAT gateway.
-        #     *   If the NAT gateway is associated with a NAT bandwidth plan, the system automatically disassociates the NAT bandwidth plan.
+        #     - If the NAT gateway has SNAT rules, the system force deletes the SNAT rules.
         # 
-        # *   **false**(default): no If you set the value to **false**:
+        #     - If the NAT gateway has DNAT rules, the system force deletes the DNAT rules.
         # 
-        #     *   If the NAT gateway is associated with a NAT bandwidth plan, disassociate the NAT bandwidth plan first.
-        #     *   If the NAT gateway has SNAT entries, delete them first.
-        #     *   If the NAT gateway has DNAT entries, delete them first.
-        #     *   If the NAT gateway is associated with an EIP, disassociate the EIP from the NAT gateway first.
+        #     - If the NAT gateway has associated Elastic IP Addresses (EIPs), the system automatically disassociates the EIPs.
+        # 
+        #     - If the NAT gateway has NAT service plans that are not deleted, the system force deletes the NAT service plans.
+        # 
+        # - **false** (default): does not forcefully delete the NAT gateway. If this parameter is set to **false**:
+        # 
+        #     - If the NAT gateway has NAT service plans that are not deleted, delete the NAT service plans first.
+        # 
+        #     - If the NAT gateway has SNAT rules, delete the SNAT rules first.
+        # 
+        #     - If the NAT gateway has DNAT rules, delete the DNAT rules first.
+        # 
+        #     - If the NAT gateway has associated EIPs, disassociate the EIPs first.
         self.force = force
-        # The ID of the NAT gateway that you want to delete.
+        # The instance ID of the NAT gateway that you want to delete.
         # 
         # This parameter is required.
         self.nat_gateway_id = nat_gateway_id
@@ -39,7 +45,7 @@ class DeleteNatGatewayRequest(DaraModel):
         self.owner_id = owner_id
         # The region ID of the NAT gateway.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id

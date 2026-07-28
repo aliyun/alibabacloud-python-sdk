@@ -19,26 +19,27 @@ class DescribePublicIpAddressResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # The HTTP status codes returned.
+        # The status code.
         self.code = code
-        # The response messages.
+        # The response message.
         self.message = message
-        # The page number.
+        # The page number of the list.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries per page in a paged query.
         self.page_size = page_size
-        # The range of the public IP addresses of the VPC in the region.
+        # The range of public IP addresses in a virtual private cloud (VPC) in the specified region.
         self.public_ip_address = public_ip_address
-        # The ID of the region to which the public IP addresses belong.
+        # The region ID of the public IP address.
         self.region_id = region_id
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the call is successful. Valid values:
+        # Indicates whether the query was successful. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The query was successful.
+        # 
+        # - **false**: The query failed.
         self.success = success
-        # The number of returned entries.
+        # The total number of entries in the list.
         self.total_count = total_count
 
     def validate(self):

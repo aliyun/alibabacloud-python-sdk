@@ -11,11 +11,11 @@ class CreateSslVpnServerResponseBody(DaraModel):
         request_id: str = None,
         ssl_vpn_server_id: str = None,
     ):
-        # The name of the SSL server.
+        # The name of the SSL-VPN server.
         self.name = name
         # The request ID.
         self.request_id = request_id
-        # The ID of the SSL server.
+        # The ID of the SSL-VPN server.
         self.ssl_vpn_server_id = ssl_vpn_server_id
 
     def validate(self):

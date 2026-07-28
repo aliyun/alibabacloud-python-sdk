@@ -27,58 +27,58 @@ class DescribeRouteEntryListRequest(DaraModel):
         route_table_id: str = None,
         service_type: str = None,
     ):
-        # The list of destination CIDR blocks of route entries.
+        # The list of destination CIDR blocks of routes.
         self.dest_cidr_block_list = dest_cidr_block_list
-        # The destination CIDR block of the route entry. Both IPv4 and IPv6 CIDR blocks are supported.
+        # The destination CIDR block of the route. Both IPv4 and IPv6 CIDR blocks are supported.
         self.destination_cidr_block = destination_cidr_block
         # The version of the IP protocol. Valid values:
         # 
-        # - **ipv4**: IPv4 protocol.
+        # - **ipv4**: IPv4.
         # 
-        # - **ipv6**: IPv6 protocol.
+        # - **ipv6**: IPv6.
         self.ip_version = ip_version
-        # The number of entries to return per page during a paged query. Valid values: **1** to **100**. Default value: **10**.
+        # The number of entries per page. Valid values: **1** to **100**. Default value: **10**.
         self.max_result = max_result
-        # The ID of the next hop instance.
+        # The instance ID of the next hop.
         self.next_hop_id = next_hop_id
-        # The type of the next hop. Valid values:
+        # The next hop type. Valid values:
         # 
         # - **Instance** (default): ECS instance.
         # 
-        # - **HaVip**: high-availability virtual IP address (HAVIP).
+        # - **HaVip**: high-availability virtual IP address.
         # 
         # - **VpnGateway**: VPN gateway.
         # 
         # - **NatGateway**: NAT gateway.
         # 
-        # - **NetworkInterface**: secondary elastic network interface.
+        # - **NetworkInterface**: secondary elastic network interface controller (NIC).
         # 
-        # - **RouterInterface**: router interface.
+        # - **RouterInterface**: routing interface.
         # 
         # - **IPv6Gateway**: IPv6 gateway.
         # 
         # - **Attachment**: transit router.
         # - **Ipv4Gateway**: IPv4 gateway.
         # - **GatewayEndpoint**: gateway endpoint.
-        # - **Ecr**: Express Connect Router.
+        # - **Ecr**: Express Connect Router (ECR).
         self.next_hop_type = next_hop_type
-        # Specifies whether a next query token (Token) exists. Valid values:
-        # - You do not need to specify this parameter for the first query or if no next query exists.
-        # - If a next query exists, set the value to the NextToken value returned from the previous API call.
+        # The pagination token. Valid values:
+        # - If this is the first request or no subsequent query exists, leave this parameter empty.
+        # - If a subsequent query exists, set the value to the NextToken value returned by the previous API call.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the route table to which the route entry belongs.
+        # The region ID of the route table to which the route belongs.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+        # You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the route entry to query.
+        # The ID of the route that you want to query.
         self.route_entry_id = route_entry_id
-        # The name of the route entry.
+        # The name of the route.
         # 
         # The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         self.route_entry_name = route_entry_name
@@ -88,15 +88,15 @@ class DescribeRouteEntryListRequest(DaraModel):
         # - **System**: system route.
         # - **BGP**: BGP route.
         # - **CEN**: Cloud Enterprise Network (CEN) route.
-        # - **ECR**: Express Connect Router route.
+        # - **ECR**: Express Connect Router (ECR) route.
         self.route_entry_type = route_entry_type
-        # The ID of the route table to query.
+        # The ID of the route table that you want to query.
         # 
         # This parameter is required.
         self.route_table_id = route_table_id
-        # The type of route service. If this field is empty, it indicates that the route is not managed.
+        # The type of route hosting. If this field is empty, the route is not hosted.
         # 
-        # Valid value: **TR**, which indicates that the managed type is transit router.
+        # Valid values: **TR**, which indicates that the hosting type is transit router.
         self.service_type = service_type
 
     def validate(self):

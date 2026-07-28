@@ -12,8 +12,8 @@ class CheckCanAllocateVpcPrivateIpAddressResponseBody(DaraModel):
     ):
         # Indicates whether the private IP address is available. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The private IP address is not occupied in the specified vSwitch and can be used.
+        # - **false**: The private IP address is already occupied in the specified vSwitch and cannot be used.
         self.can_allocate = can_allocate
         # The request ID.
         self.request_id = request_id

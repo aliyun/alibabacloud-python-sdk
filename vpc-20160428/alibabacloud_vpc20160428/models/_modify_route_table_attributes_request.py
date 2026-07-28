@@ -17,31 +17,30 @@ class ModifyRouteTableAttributesRequest(DaraModel):
         route_table_id: str = None,
         route_table_name: str = None,
     ):
-        # The description of the route table.
+        # The description of the route table.  
         # 
-        # The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
+        # The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the virtual private cloud (VPC) to which the custom route table belongs.
+        # The region ID of the VPC to which the route table belongs. 
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # Indicates whether to enable route propagation to receive dynamic routes. Valid values:
+        # Specifies whether to receive dynamic routes by enabling or disabling route propagation. Valid values:
         # 
-        # - **true** (default): enables route propagation.
-        # 
-        # - **false**: disables route propagation.
+        # - **true** (default): enabled.
+        # - **false**: disabled.
         self.route_propagation_enable = route_propagation_enable
         # The ID of the route table.
         # 
         # This parameter is required.
         self.route_table_id = route_table_id
-        # The name of the route table.
+        # The name of the route table.  
         # 
         # The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         self.route_table_name = route_table_name

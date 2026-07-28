@@ -16,15 +16,15 @@ class GetTrafficMirrorServiceStatusRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **client token** can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. **ClientToken** supports only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request is different.
         self.client_token = client_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region to which the mirrored traffic belongs.
+        # The region ID of the traffic mirroring instance.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can invoke the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

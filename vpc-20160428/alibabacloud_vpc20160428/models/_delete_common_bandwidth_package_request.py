@@ -19,16 +19,17 @@ class DeleteCommonBandwidthPackageRequest(DaraModel):
         # 
         # This parameter is required.
         self.bandwidth_package_id = bandwidth_package_id
-        # Specifies whether to forcefully delete the Internet Shared Bandwidth instance. Valid values:
+        # Specifies whether to forcibly delete the Internet Shared Bandwidth instance. Valid values: 
+        #           
+        # - **false** (default): The Internet Shared Bandwidth instance is deleted only if it does not contain elastic IP addresses (EIPs).
         # 
-        # *   **false** (default): deletes the Internet Shared Bandwidth instance only when no EIPs are associated with the Internet Shared Bandwidth instance.
-        # *   **true**: disassociates all EIPs from the Internet Shared Bandwidth instance and deletes the Internet Shared Bandwidth instance.
+        # - **true**: All EIPs are removed from the Internet Shared Bandwidth instance, and then the instance is deleted.
         self.force = force
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the Internet Shared Bandwidth instance is created.
+        # The region where the Internet Shared Bandwidth instance resides. 
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id

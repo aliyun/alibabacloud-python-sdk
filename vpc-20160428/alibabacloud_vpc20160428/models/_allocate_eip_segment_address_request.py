@@ -21,60 +21,64 @@ class AllocateEipSegmentAddressRequest(DaraModel):
         resource_owner_id: int = None,
         zone: str = None,
     ):
-        # The maximum bandwidth of the contiguous EIP group. Unit: Mbit/s.
+        # The maximum bandwidth of the EIP. Unit: Mbit/s.
         # 
-        # *   Valid values when **InstanceChargeType** is set to **PostPaid** and **InternetChargeType** is set to **PayByBandwidth**: **1** to **500**.****
-        # *   Valid values when **InstanceChargeType** is set to **PostPaid** and **InternetChargeType** is set to **PayByTraffic**: **1** to **200**.****
-        # *   Valid values when **InstanceChargeType** is set to **PrePaid**: **1** to **1000**.****
+        # - If **InternetChargeType** is set to **PayByBandwidth**, valid values of **Bandwidth** are **1** to **500**.
         # 
-        # Default value: **5**. Unit: Mbit/s.
+        # - If **InternetChargeType** is set to **PayByTraffic**, valid values of **Bandwidth** are **1** to **200**.
+        # 
+        # Default value: **5** Mbit/s.
         self.bandwidth = bandwidth
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate a token, but you must make sure that the token is unique among different requests. **ClientToken** can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **ClientToken** value can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        # > If you do not specify this parameter, the system uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
         self.client_token = client_token
-        # The subnet mask of the contiguous EIP group. Valid values:
+        # The subnet mask of the contiguous EIPs. Valid values:
         # 
-        # *   **28**: applies for 16 contiguous EIPs in each call.
-        # *   **27**: applies for 32 contiguous EIPs in each call.
-        # *   **26**: applies for 64 contiguous EIPs in each call.
-        # *   **25**: applies for 128 contiguous EIPs in each call.
-        # *   **24**: applies for 256 contiguous EIPs in each call.
+        # - **28**: The system allocates 16 contiguous EIPs per call.
         # 
-        # >  Some IP address are reserved for specific purposes. Therefore, the actual number of the contiguous EIPs may be one, three, or four less than the expected number.
+        # - **27**: The system allocates 32 contiguous EIPs per call.
+        # 
+        # - **26**: The system allocates 64 contiguous EIPs per call.
+        # 
+        # - **25**: The system allocates 128 contiguous EIPs per call.
+        # 
+        # - **24**: The system allocates 256 contiguous EIPs per call.
+        # 
+        # > Due to IP address reservation, the actual number of contiguous EIPs may be 1, 3, or 4 fewer than expected.
         # 
         # This parameter is required.
         self.eip_mask = eip_mask
-        # The metering method of contiguous EIPs. Valid values:
+        # The billable methods of the contiguous EIPs. Valid values:
         # 
-        # *   **PayByBandwidth** (default)
-        # *   **PayByTraffic**
+        # - **PayByBandwidth** (default): pay-by-bandwidth.
+        # 
+        # - **PayByTraffic**: pay-by-data-transfer.
         self.internet_charge_type = internet_charge_type
         # The line type. Valid values:
         # 
-        # *   **BGP** (default): BGP (Multi-ISP) line The BGP (Multi-ISP) line is supported in all regions.
-        # *   **BGP_PRO**: BGP (Multi-ISP) Pro line BGP (Multi-ISP) Pro line is supported only in the China (Hong Kong), Singapore, Japan (Tokyo), Malaysia (Kuala Lumpur), Philippines (Manila), Indonesia (Jakarta), and Thailand (Bangkok) regions.
+        # - **BGP** (default): BGP (multi-ISP) line. All regions support BGP (multi-ISP) EIPs.
+        # - **BGP_PRO**: BGP (multi-ISP) premium line. Only Hong Kong (China), Singapore, Tokyo (Japan), Kuala Lumpur (Malaysia), Manila (Philippines), Jakarta (Indonesia), and Bangkok (Thailand) regions support BGP (multi-ISP) premium EIPs.
         # 
-        # For more information about the BGP (Multi-ISP) line and BGP (Multi-ISP) Pro line, see [EIP line types](https://help.aliyun.com/document_detail/32321.html).
+        # For more information about BGP (multi-ISP) lines and BGP (multi-ISP) premium lines, see [EIP line types](https://help.aliyun.com/document_detail/32321.html).
         # 
-        # If you are allowed to use single-ISP bandwidth, you can also use one of the following values:
+        # If you are a whitelist user of single-ISP bandwidth, you can also select the following types:
+        # - **ChinaTelecom**: China Telecom
+        # - **ChinaUnicom**: China Unicom
+        # - **ChinaMobile**: China Mobile
+        # - **ChinaTelecom_L2**: China Telecom L2
+        # - **ChinaUnicom_L2**: China Unicom L2
+        # - **ChinaMobile_L2**: China Mobile L2
         # 
-        # *   **ChinaTelecom**
-        # *   **ChinaUnicom**
-        # *   **ChinaMobile**
-        # *   **ChinaTelecom_L2**
-        # *   **ChinaUnicom_L2**
-        # *   **ChinaMobile_L2**
-        # 
-        # If your services are deployed in China East 1 Finance, this parameter is required and you must set the parameter to **BGP_FinanceCloud**.
+        # If you are an Alibaba Finance Cloud user, this parameter is required. Set the value to **BGP_FinanceCloud**.
         self.isp = isp
-        # The network type. Set the value to **public**, which specifies the public network type.
+        # The network type. Set the value to **public**, which specifies the public network.
         self.netmode = netmode
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region in which the contiguous EIP group resides.
+        # The region ID of the contiguous EIPs.
         # 
         # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 

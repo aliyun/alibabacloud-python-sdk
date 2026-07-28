@@ -26,8 +26,8 @@ class CreateNatIpCidrRequest(DaraModel):
         # > If you do not specify this parameter, the system uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may differ for each API request.
         self.client_token = client_token
         # Specifies whether to perform a dry run. Valid values:
-        # - **true**: performs a dry run without creating the NAT CIDR block. The system checks the required parameters, request format, and service limits. If the check fails, the corresponding error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
-        # - **false** (default): performs a dry run and sends the request. If the check succeeds, an HTTP 2xx status code is returned and the operation is performed.
+        # - **true**: performs a dry run without creating the NAT CIDR block. The system checks whether your AccessKey pair is valid, whether RAM users are granted permissions, and whether the required parameters are specified. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # - **false** (default): performs a dry run and sends the request. If the request passes the dry run, an HTTP 2xx status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The instance ID of the VPC NAT gateway for which you want to create the NAT CIDR block.
         # 
@@ -39,7 +39,7 @@ class CreateNatIpCidrRequest(DaraModel):
         # 
         # - It must belong to 10.0.0.0/8, 172.16.0.0/12, or 192.168.0.0/16 and their subnets.
         # - The subnet mask must be 16 to 32 bits in length.
-        # - It cannot overlap with the private CIDR block of the VPC to which the VPC NAT gateway belongs. If you want to transform a private endpoint to another address within the VPC private network CIDR block, create a vSwitch in the corresponding VPC private network CIDR block, and then create a new VPC NAT gateway in the vSwitch to provide private network address transform service.
+        # - It cannot overlap with the private CIDR block of the VPC to which the VPC NAT gateway belongs. If you want to transform a private endpoint to another address within the VPC private network CIDR block, create a vSwitch in the corresponding VPC private network CIDR block, and then create a new VPC NAT gateway in the vSwitch to provide private network address transform services.
         # - To use a public CIDR block as the NAT CIDR block, the CIDR block must belong to the user CIDR block of the VPC to which the VPC NAT gateway belongs. For more information about user CIDR blocks, see [What is a user CIDR block?](https://help.aliyun.com/document_detail/185311.html).
         # 
         # This parameter is required.

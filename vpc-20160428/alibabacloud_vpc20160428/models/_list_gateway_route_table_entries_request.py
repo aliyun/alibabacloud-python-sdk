@@ -17,7 +17,7 @@ class ListGatewayRouteTableEntriesRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The destination CIDR block of the route entry in the gateway route table that you want to query.
+        # The destination CIDR block of the route entry in the gateway route table to query.
         self.destination_cidr_block = destination_cidr_block
         # The ID of the gateway route table to query.
         # 

@@ -25,9 +25,9 @@ class DescribeSslVpnClientCertsRequest(DaraModel):
         self.owner_id = owner_id
         # The page number of the list. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page in a paged query. Default value: **10**. Valid values: **1** to **50**.
+        # The number of entries per page for paging. Default value: **10**. Valid values: **1** to **50**.
         self.page_size = page_size
-        # The region ID of the SSL client certificate that you want to query.
+        # The region ID of the SSL client certificates that you want to query.
         # 
         # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 

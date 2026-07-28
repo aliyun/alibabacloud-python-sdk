@@ -10,7 +10,7 @@ class CreateFullNatEntryResponseBody(DaraModel):
         full_nat_entry_id: str = None,
         request_id: str = None,
     ):
-        # The FULLNAT entry ID.
+        # The ID of the FULLNAT entry.
         self.full_nat_entry_id = full_nat_entry_id
         # The request ID.
         self.request_id = request_id

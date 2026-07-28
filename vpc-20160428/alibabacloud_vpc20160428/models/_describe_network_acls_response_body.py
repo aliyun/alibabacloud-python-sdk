@@ -17,13 +17,13 @@ class DescribeNetworkAclsResponseBody(DaraModel):
         total_count: str = None,
     ):
         self.network_acls = network_acls
-        # The page number.
+        # The page number of the list.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries per page in a paged query. Paging is used to return results.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The number of entries returned.
+        # The total number of ACLs in the list.
         self.total_count = total_count
 
     def validate(self):

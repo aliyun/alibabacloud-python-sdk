@@ -15,9 +15,9 @@ class ModifyExpressCloudConnectionBandwidthRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The bandwidth of the ECC instance.
+        # The bandwidth of the Express Cloud Connection (ECC) instance.
         self.bandwidth = bandwidth
-        # The ID of the ECC instance.
+        # The instance ID of the Express Cloud Connection (ECC) instance.
         # 
         # This parameter is required.
         self.ecc_id = ecc_id

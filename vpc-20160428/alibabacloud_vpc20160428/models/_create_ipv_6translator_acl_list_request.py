@@ -15,14 +15,14 @@ class CreateIPv6TranslatorAclListRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ACL name.
+        # The name of the access control policy group.
         # 
         # This parameter is required.
         self.acl_name = acl_name
         self.client_token = client_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region of the IPv6 Translation Service instance. You can call the DescribeRegions operation to query the most recent region list.
+        # The region of the IPv6 Translation Service instance. You can call the DescribeRegions operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id

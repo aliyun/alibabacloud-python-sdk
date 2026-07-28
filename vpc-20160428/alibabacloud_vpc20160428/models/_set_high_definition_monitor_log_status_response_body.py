@@ -12,10 +12,9 @@ class SetHighDefinitionMonitorLogStatusResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the operation is performed. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
+        # Indicates whether the call was successful. Valid values:
+        # - **true**: The call was successful.
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):

@@ -16,14 +16,14 @@ class DescribeSnatTableEntriesResponseBody(DaraModel):
         snat_table_entries: main_models.DescribeSnatTableEntriesResponseBodySnatTableEntries = None,
         total_count: int = None,
     ):
-        # The number of the returned page.
+        # The current page number.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
         self.snat_table_entries = snat_table_entries
-        # The number of returned entries.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):

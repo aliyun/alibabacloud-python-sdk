@@ -12,6 +12,7 @@ class ModifyFlowLogAttributeRequest(DaraModel):
         flow_log_id: str = None,
         flow_log_name: str = None,
         ip_version: str = None,
+        log_format: str = None,
         owner_account: str = None,
         owner_id: int = None,
         region_id: str = None,
@@ -24,7 +25,7 @@ class ModifyFlowLogAttributeRequest(DaraModel):
         # 
         # The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description
-        # The ID of the flow log.
+        # The flow log ID.
         # 
         # This parameter is required.
         self.flow_log_id = flow_log_id
@@ -32,16 +33,14 @@ class ModifyFlowLogAttributeRequest(DaraModel):
         # 
         # The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         self.flow_log_name = flow_log_name
-        # The version of the IP address. Valid values:
-        # 
-        # *   **IPV4**: the IPv4 address.
-        # *   **DualStack**: includes IPv4 and IPv6 address
+        # The IP address version of the traffic captured by the flow log.
         self.ip_version = ip_version
+        self.log_format = log_format
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the flow log is created.
+        # The region ID of the flow log.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -70,6 +69,9 @@ class ModifyFlowLogAttributeRequest(DaraModel):
 
         if self.ip_version is not None:
             result['IpVersion'] = self.ip_version
+
+        if self.log_format is not None:
+            result['LogFormat'] = self.log_format
 
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
@@ -104,6 +106,9 @@ class ModifyFlowLogAttributeRequest(DaraModel):
 
         if m.get('IpVersion') is not None:
             self.ip_version = m.get('IpVersion')
+
+        if m.get('LogFormat') is not None:
+            self.log_format = m.get('LogFormat')
 
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')

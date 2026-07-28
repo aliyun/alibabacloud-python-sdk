@@ -23,39 +23,40 @@ class GetRouteTargetGroupResponseBody(DaraModel):
         tags: List[main_models.GetRouteTargetGroupResponseBodyTags] = None,
         vpc_id: str = None,
     ):
-        # Configuration mode of the route target group. Supported modes are as follows:
+        # The configuration mode of the route target group. Valid values:
         # 
-        # - **Active-Standby**: Active-standby mode.
+        # - **Active-Standby**: active/standby mode.
         self.config_mode = config_mode
         # The time when the route target group was created.
         self.create_time = create_time
-        # The region ID of the VPC to which the route target group belongs. You can obtain the region ID by calling the DescribeRegions interface.
+        # The region ID of the VPC to which the route target group belongs. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the region ID.
         self.region_id = region_id
         # The request ID.
         self.request_id = request_id
         # The ID of the resource group to which the route target group belongs.
         self.resource_group_id = resource_group_id
-        # Description of the route target group.
+        # The description of the route target group.
         self.route_target_group_description = route_target_group_description
-        # ID of the route target group instance.
+        # The instance ID of the routing target group.
         self.route_target_group_id = route_target_group_id
-        # Name of the route target group.
+        # The name of the route target group.
         self.route_target_group_name = route_target_group_name
-        # List of members in the route target group.
+        # The member list of the route target group.
         self.route_target_member_list = route_target_member_list
-        # The status of the route target group. Values:
-        # - **Recovering**: In the process of switching back to the primary 
-        # - **Switched**: The primary and secondary have been switched 
-        # - **Available**: Available 
-        # - **Abnormal**: Secondary instance is abnormal 
-        # - **Pending**: In the process of being created 
-        # - **Switching**: In the process of switching between primary and secondary 
-        # - **Deleting**: In the process of being deleted 
-        # - **Unavailable**: Both primary and secondary instances are abnormal
+        # The status of the routing target group. Valid values:
+        # 
+        # - **Recovering**: The active/standby switchback is in progress.
+        # - **Switched**: The active/standby switchover is complete.
+        # - **Available**: The routing target group is available.
+        # - **Abnormal**: The standby instance has instance failures.
+        # - **Pending**: The routing target group is being created.
+        # - **Switching**: The active/standby switchover is in progress.
+        # - **Deleting**: The routing target group is being deleted.
+        # - **Unavailable**: Both the primary and secondary instances have instance failures.
         self.status = status
-        # Tags of the route target group.
+        # The tags of the route target group.
         self.tags = tags
-        # ID of the VPC to which the route target group belongs.
+        # The ID of the VPC to which the route target group belongs.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -167,9 +168,9 @@ class GetRouteTargetGroupResponseBodyTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # Tag key.
+        # The tag key.
         self.key = key
-        # Tag value.
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -207,31 +208,32 @@ class GetRouteTargetGroupResponseBodyRouteTargetMemberList(DaraModel):
         member_type: str = None,
         weight: int = None,
     ):
-        # The enable status of the route target group member. Values:
+        # The enable status of the route target group member. Valid values:
         # 
         # - **Enable**: Enabled.
         # - **Disable**: Disabled.
         # 
-        # Only disabled route target group members can be modified to other instances. Enabled route target group members cannot be modified.
+        # Only route target group members in the disabled state can be replaced with other instances. Route target group members in the enabled state cannot be modified.
         self.enable_status = enable_status
-        # Route target group member health check status. Values:
-        # - **Normal**: Normal 
-        # - **Abnormal**: Abnormal
+        # The health check status of the route target group member. Valid values:
+        # 
+        # - **Normal**: Normal.
+        # - **Abnormal**: Abnormal.
         self.health_check_status = health_check_status
-        # ID of the route target group member instance.
+        # The instance ID of the routing target group member.
         self.member_id = member_id
-        # Type of the route target group member.
+        # The member type of the route target group.
         # 
         # Currently supported types:
         # 
         # - **GatewayLoadBalancerEndpoint**
         self.member_type = member_type
-        # Weight value of the route target group member. Values:
+        # The weight of the route target group member. Valid values:
         # 
-        # - **100**: Indicates the member is the primary instance.
-        # - **0**: Indicates the member is the standby instance.
+        # - **100**: The member is the active instance.
+        # - **0**: The member is the standby instance.
         # 
-        # The weight value can only be set during creation and cannot be modified.
+        # The weight can only be set during creation and cannot be modified.
         self.weight = weight
 
     def validate(self):

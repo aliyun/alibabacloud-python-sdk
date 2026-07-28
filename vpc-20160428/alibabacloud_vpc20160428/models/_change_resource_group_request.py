@@ -14,25 +14,25 @@ class ChangeResourceGroupRequest(DaraModel):
     ):
         # The ID of the new resource group.
         # 
-        # >  You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management for your Alibaba Cloud account. For more information, see [What is Resource Management?](https://help.aliyun.com/document_detail/94475.html)
+        # > A resource group is a mechanism for managing resources by group within an Alibaba Cloud account. Resource groups help you address the complexity of resource grouping and authorization management within a single cloud account. For more information, see [What is Resource Management](https://help.aliyun.com/document_detail/94475.html).
         # 
         # This parameter is required.
         self.new_resource_group_id = new_resource_group_id
-        # The ID of the region to which the new resource group belongs.
+        # The region ID of the resource group that you want to modify.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the Express Connect circuit whose resource group you want to modify.
+        # The ID of the Express Connect circuit resource whose resource group you want to modify.
         # 
         # This parameter is required.
         self.resource_id = resource_id
-        # The type of the resource. Valid values:
-        # 
-        # *   **PHYSICALCONNECTION**: Express Connect circuit.
-        # *   **VIRTUALBORDERROUTER**: virtual border router (VBR).
-        # *   **ROUTERINTERFACE**: router interface.
+        # The resource type. Valid values:
+        # - **PHYSICALCONNECTION**: Express Connect circuit instance.
+        # - **VIRTUALBORDERROUTER**: Virtual Border Router.
+        # - **ROUTERINTERFACE**: VBR uplink.
+        # - **TRAFFICQOS**: QoS policy.
         # 
         # This parameter is required.
         self.resource_type = resource_type

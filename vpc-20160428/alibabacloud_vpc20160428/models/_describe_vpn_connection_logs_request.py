@@ -20,35 +20,35 @@ class DescribeVpnConnectionLogsRequest(DaraModel):
         tunnel_id: str = None,
         vpn_connection_id: str = None,
     ):
-        # The start time of the flow log. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The start time of the log. Only UNIX timestamps in seconds are supported. For example, 1671003744 represents 2022-12-14 15:42:24.
         # 
-        # >  If you specify **From**, you must specify **To** or **MinutePeriod**.
+        # > If you specify **From**, you must also specify **To** or **MinutePeriod**.
         self.from_ = from_
-        # The interval at which log data is collected. Valid values: **1** to **10**. Unit: minutes.
+        # The log period. Valid values: **1** to **10**. Unit: minutes.
         # 
-        # >  If you do not specify **From** and **To**, you must specify **MinutePeriod**.
+        # > If you do not specify **From** or **To**, you must specify **MinutePeriod**.
         self.minute_period = minute_period
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number. Default value: **1**.
+        # The page number of the list. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page. Valid values: **1** to **50**. Default value: **10**.
+        # The number of entries per page for paging. Valid values: **1** to **50**. Default value: **10**.
         self.page_size = page_size
         # The region ID of the IPsec-VPN connection.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The end time of the flow log. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The end time of the log. Only UNIX timestamps in seconds are supported. For example, 1671004344 represents 2022-12-14 15:52:24.
         # 
-        # >  If you specify **To**, you must specify **From** or **MinutePeriod**.
+        # > If you specify **To**, you must also specify **From** or **MinutePeriod**.
         self.to = to
-        # The ID of the IPsec-VPN connection.
+        # The tunnel ID of the IPsec-VPN connection.
         # 
-        # This parameter is available only for a dual-tunnel IPsec-VPN connection.
+        # This parameter is supported only for IPsec-VPN connections in dual-tunnel mode.
         self.tunnel_id = tunnel_id
         # The ID of the IPsec-VPN connection.
         # 

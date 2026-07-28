@@ -16,7 +16,7 @@ class DescribeRouteTableListResponseBody(DaraModel):
         router_table_list: main_models.DescribeRouteTableListResponseBodyRouterTableList = None,
         total_count: int = None,
     ):
-        # The page number.
+        # The current page number.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size

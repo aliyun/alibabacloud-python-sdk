@@ -16,19 +16,17 @@ class ListVirtualPhysicalConnectionsResponseBody(DaraModel):
         total_count: int = None,
         virtual_physical_connections: List[main_models.ListVirtualPhysicalConnectionsResponseBodyVirtualPhysicalConnections] = None,
     ):
-        # The number of entries returned in this request.
+        # The number of entries returned in the current query.
         self.count = count
-        # A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
-        # 
-        # - If **NextToken** is not returned, no more results are available.
-        # 
-        # - If a value is returned for **NextToken**, use it in the next request to retrieve the subsequent page of results.
+        # Indicates whether a next query token is available. Valid values:
+        # - If **NextToken** is empty, no next query is available.
+        # - If **NextToken** is returned, the value indicates the token for the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # The total number of entries returned.
         self.total_count = total_count
-        # A list of virtual physical connections.
+        # The list of shared Express Connect circuits.
         self.virtual_physical_connections = virtual_physical_connections
 
     def validate(self):
@@ -118,155 +116,123 @@ class ListVirtualPhysicalConnectionsResponseBodyVirtualPhysicalConnections(DaraM
         virtual_physical_connection_status: str = None,
         vlan_id: str = None,
     ):
-        # The ID of the access point.
+        # The access point ID of the Express Connect circuit.
         self.access_point_id = access_point_id
-        # The physical location of the access device for the physical connection.
+        # The physical location of the access device for the Express Connect circuit.
         self.ad_location = ad_location
-        # The ID of the Alibaba Cloud account that owns the virtual physical connection.
+        # The Alibaba Cloud account ID of the shared Express Connect circuits owner.
         self.ali_uid = ali_uid
-        # The bandwidth of the physical connection. Unit: Mbps.
+        # The bandwidth of the Express Connect circuit. Unit: Mbit/s.
         self.bandwidth = bandwidth
-        # The business status of the physical connection. Valid values:
+        # The business status of the Express Connect circuit. Valid values:
         # 
-        # - **Normal**: The connection is running as expected.
-        # 
-        # - **FinancialLocked**: The connection is locked due to an overdue payment.
-        # 
-        # - **SecurityLocked**: The connection is locked for security reasons.
+        # - **Normal**: Enabled.
+        # - **FinancialLocked**: Financial lock.
+        # - **SecurityLocked**: Locked for security reasons.
         self.business_status = business_status
-        # The billing method of the physical connection.
+        # The billing method of the Express Connect circuit.
         # 
-        # The only valid value is **Prepaid**, which corresponds to the subscription billing method.
+        # Valid values: **Prepaid**, which indicates subscription.
         self.charge_type = charge_type
-        # The circuit code of the physical connection, which is provided by the carrier.
+        # The circuit code provided by the carrier for the Express Connect circuit.
         self.circuit_code = circuit_code
-        # The time the physical connection was created.
+        # The time when the Express Connect circuit was created.
         self.creation_time = creation_time
-        # The description of the physical connection.
+        # The description of the Express Connect circuit.
         self.description = description
-        # The time the physical connection was enabled.
+        # The time when the Express Connect circuit was enabled.
         self.enabled_time = enabled_time
-        # The expiration time of the virtual physical connection.
+        # The expiration time of the shared Express Connect circuits.
         # 
-        # The time is in UTC and follows the `YYYY-MM-DDThh:mm:ssZ` format (ISO 8601).
+        # The time is displayed in the ISO 8601 standard in UTC. Format: YYYY-MM-DDThh:mm:ssZ.
         self.end_time = end_time
-        # The expected bandwidth for the virtual physical connection. This bandwidth is applied after the payment is completed.
+        # The expected bandwidth of the shared Express Connect circuits. The expected bandwidth takes effect only after payment is complete.
         # 
-        # **M** indicates Mbps, and **G** indicates Gbps.
+        # Unit: **M** indicates Mbit/s, and **G** indicates Gbit/s.
         self.expect_spec = expect_spec
-        # The carrier that provides the physical connection. Valid values include:
+        # The carrier that provides the physical connection. Valid values:
         # 
         # - **CT**: China Telecom.
-        # 
         # - **CU**: China Unicom.
-        # 
         # - **CM**: China Mobile.
-        # 
-        # - **CO**: other Chinese carriers.
-        # 
+        # - **CO**: Other carriers in the Chinese mainland.
         # - **Equinix**: Equinix.
-        # 
-        # - **Other**: other carriers outside China.
+        # - **Other**: Other carriers outside the Chinese mainland.
         self.line_operator = line_operator
         # The status of the Letter of Authorization (LOA). Valid values:
         # 
-        # - **Applying**: The LOA request is being processed.
-        # 
+        # - **Applying**: The LOA application is being processed.
         # - **Accept**: The LOA application is approved.
-        # 
-        # - **Available**: The LOA is generated and ready for use.
-        # 
-        # - **Rejected**: The LOA request is rejected.
-        # 
-        # - **Completing**: The physical connection is being provisioned.
-        # 
-        # - **Complete**: Provisioning is complete.
-        # 
+        # - **Available**: The LOA is available.
+        # - **Rejected**: The LOA application is rejected.
+        # - **Completing**: The Express Connect circuit is under construction.
+        # - **Complete**: The Express Connect circuit construction is complete.
         # - **Deleted**: The LOA is deleted.
         self.loa_status = loa_status
-        # The name of the physical connection.
+        # The name of the Express Connect circuit.
         self.name = name
-        # The billing method of the virtual physical connection. Valid values:
+        # The payer of the shared Express Connect circuits. Valid values:
         # 
-        # - **PayByPhysicalConnectionOwner**: The owner of the parent physical connection pays.
-        # 
-        # - **PayByVirtualPhysicalConnectionOwner**: The owner of the virtual physical connection pays.
+        # - **PayByPhysicalConnectionOwner**: The owner of the Express Connect circuit associated with the shared Express Connect circuits is the payer.
+        # - **PayByVirtualPhysicalConnectionOwner**: The owner of the shared Express Connect circuits is the payer.
         self.order_mode = order_mode
-        # The ID of the Alibaba Cloud account that owns the parent physical connection.
+        # The Alibaba Cloud account ID to which the Express Connect circuit belongs.
         self.parent_physical_connection_ali_uid = parent_physical_connection_ali_uid
-        # The ID of the parent physical connection.
+        # The instance ID of the Express Connect circuit.
         self.parent_physical_connection_id = parent_physical_connection_id
-        # The location of the on-premises data center.
+        # The geographic location of the on-premises data center.
         self.peer_location = peer_location
-        # The ID of the virtual physical connection.
+        # The instance ID of the shared Express Connect circuits.
         self.physical_connection_id = physical_connection_id
-        # The port number of the access device for the physical connection.
+        # The port number of the access device for the Express Connect circuit.
         self.port_number = port_number
-        # The port type of the physical connection access point. Valid values:
+        # The port type of the Express Connect circuit. Valid values:
         # 
-        # - **100Base-T**: 100 Mbps copper port.
-        # 
-        # - **1000Base-T**: 1 Gbps copper port.
-        # 
-        # - **1000Base-LX**: 1 Gbps single-mode optical port (10 km).
-        # 
-        # - **10GBase-T**: 10 Gbps copper port.
-        # 
-        # - **10GBase-LR**: 10 Gbps single-mode optical port (10 km).
-        # 
-        # - **40GBase-LR**: 40 Gbps single-mode optical port.
-        # 
-        # - **100GBase-LR**: 100 Gbps single-mode optical port.
+        # - **100Base-T**: 100M Ethernet port.
+        # - **1000Base-T**: 1 GE electrical port.
+        # - **1000Base-LX**: GE single-mode optical port (10 km).
+        # - **10GBase-T**: 10 GE electrical port.
+        # - **10GBase-LR**: 10 GE single-mode optical port (10 km).
+        # - **40GBase-LR**: 40 GE single-mode optical port.
+        # - **100GBase-LR**: 100 GE single-mode optical port.
         self.port_type = port_type
-        # The type of the physical connection. Valid values:
+        # The type of the Express Connect circuit. Valid values:
         # 
-        # - **VirtualPhysicalConnection**: a virtual physical connection.
-        # 
-        # - **PhysicalConnection**: a dedicated physical connection.
+        # - **VirtualPhysicalConnection**: Shared Express Connect circuits.
+        # - **PhysicalConnection**: Dedicated Express Connect circuit.
         self.product_type = product_type
-        # The ID of the redundant physical connection.
+        # The ID of the redundant Express Connect circuit.
         self.redundant_physical_connection_id = redundant_physical_connection_id
-        # The ID of the resource group to which the virtual physical connection belongs.
+        # The ID of the resource group to which the shared Express Connect circuits belong.
         self.resource_group_id = resource_group_id
-        # The bandwidth of the virtual physical connection.
+        # The bandwidth of the shared Express Connect circuits.
         # 
-        # M indicates Mbps, and G indicates Gbps.
+        # Unit: **M** indicates Mbit/s, and **G** indicates Gbit/s.
         self.spec = spec
-        # The status of the physical connection. Valid values:
+        # The status of the Express Connect circuit. Valid values:
         # 
         # - **Initial**: The application is under review.
-        # 
         # - **Approved**: The application is approved.
-        # 
         # - **Allocating**: Resources are being allocated.
-        # 
-        # - **Allocated**: The connection is ready for provisioning.
-        # 
-        # - **Confirmed**: Awaiting user confirmation.
-        # 
-        # - **Enabled**: The connection is enabled.
-        # 
+        # - **Allocated**: Under construction.
+        # - **Confirmed**: Pending confirmation.
+        # - **Enabled**: Enabled.
         # - **Rejected**: The application is rejected.
-        # 
-        # - **Canceled**: The application is canceled.
-        # 
+        # - **Canceled**: Canceled.
         # - **Allocation Failed**: Resource allocation failed.
-        # 
-        # - **Terminated**: The connection is terminated.
+        # - **Terminated**: Terminated.
         self.status = status
-        # A list of tags.
+        # The tag list.
         self.tags = tags
-        # The type of the physical connection. The default value is **VPC**.
+        # The type of the Express Connect circuit. Default value: **VPC**.
         self.type = type
-        # The business status of the virtual physical connection. Valid values:
+        # The business status of the shared Express Connect circuits. Valid values:
         # 
-        # - **Confirmed**: The virtual physical connection has been accepted by the recipient.
-        # 
-        # - **UnConfirmed**: The virtual physical connection is awaiting acceptance.
-        # 
-        # - **Deleted**: The virtual physical connection is deleted.
+        # - **Confirmed**: The shared Express Connect circuits have been accepted.
+        # - **UnConfirmed**: The shared Express Connect circuits have not been accepted.
+        # - **Deleted**: The shared Express Connect circuits have been deleted.
         self.virtual_physical_connection_status = virtual_physical_connection_status
-        # The VLAN ID of the virtual physical connection.
+        # The VLAN ID of the shared Express Connect circuits.
         self.vlan_id = vlan_id
 
     def validate(self):
@@ -483,13 +449,13 @@ class ListVirtualPhysicalConnectionsResponseBodyVirtualPhysicalConnectionsTags(D
         key: str = None,
         value: str = None,
     ):
-        # The tag key, which cannot be an empty string. You can specify up to 20 tag keys.
+        # The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
         # 
-        # The key can be up to 64 characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). The key cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+        # The tag key can be up to 64 characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). The tag key cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
-        # The tag value. You can specify up to 20 tag values. The tag value can be an empty string.
+        # The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
         # 
-        # The value can be up to 128 characters in length. It can contain digits, periods (.), underscores (_), and hyphens (-). It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+        # The tag value can be up to 128 characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). The tag value cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

@@ -10,7 +10,7 @@ class CreateBgpGroupResponseBody(DaraModel):
         bgp_group_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the BGP group.
+        # The ID of the created BGP group.
         self.bgp_group_id = bgp_group_id
         # The request ID.
         self.request_id = request_id

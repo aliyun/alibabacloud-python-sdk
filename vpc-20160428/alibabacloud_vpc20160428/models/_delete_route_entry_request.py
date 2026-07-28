@@ -29,12 +29,12 @@ class DeleteRouteEntryRequest(DaraModel):
         # 
         # **true**: performs a dry run without deleting the route. The system checks the AccessKey pair, the authorization of the Resource Access Management (RAM) user, and the required parameters. If the check fails, the corresponding error is returned. If the check succeeds, the error code `DryRunOperation` is returned.
         # 
-        # **false** (default): sends a normal request. After the check succeeds, a 2xx HTTP status code is returned and the route is deleted.
+        # **false** (default): sends a Normal request. If the check succeeds, a 2xx HTTP status code is returned and the route entry is deleted.
         self.dry_run = dry_run
         # The ID of the next hop instance.
         # 
-        # - To delete a non-ECMP route, specify **NextHopId**. Do not specify **NextHopList**.
-        # - To delete an ECMP route, specify **NextHopList**. Do not specify **NextHopId**.
+        # - To delete a non-ECMP route, specify **NextHopId**. You do not need to specify **NextHopList**.
+        # - To delete an ECMP route, specify **NextHopList**. You do not need to specify **NextHopId**.
         self.next_hop_id = next_hop_id
         # The information about the next hop instances of the ECMP route. A maximum of 16 next hop instances are supported.
         self.next_hop_list = next_hop_list

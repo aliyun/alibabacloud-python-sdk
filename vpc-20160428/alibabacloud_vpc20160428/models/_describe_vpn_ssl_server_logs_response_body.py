@@ -20,16 +20,17 @@ class DescribeVpnSslServerLogsResponseBody(DaraModel):
         # The number of log entries.
         self.count = count
         self.data = data
-        # Indicates whether the log is accurate. Valid values:
+        # Indicates whether the queried logs are accurate. Valid values:
         # 
-        # *   **true**: accurate
-        # *   **false**: inaccurate
+        # - **true**: Accurate.
+        # 
+        # - **false**: Not accurate.
         self.is_completed = is_completed
-        # The page number of the returned page.
+        # The current page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

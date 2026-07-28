@@ -15,13 +15,13 @@ class ModifyCommonBandwidthPackageSpecRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The peak bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s. 
+        # The maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s. 
         # 
         # <props="china">
         # 
         #  - If the billing method of the Internet Shared Bandwidth instance is pay-by-bandwidth, the default value range of **Bandwidth** is **2** to **20000**.
-        # -  If the billing method of the Internet Shared Bandwidth instance is pay-by-95th-percentile-bandwidth, the default value range of **Bandwidth** is **200** to **20000**.
-        # - If the billing method of the Internet Shared Bandwidth instance is pay-by-traffic, the default value range of **Bandwidth** is **1** to **2000**.
+        # - If the billing method of the Internet Shared Bandwidth instance is pay-by-95th-percentile-bandwidth, the default value range of **Bandwidth** is **200** to **20000**.
+        # - If the billing method of the Internet Shared Bandwidth instance is pay-by-predominant-traffic, the default value range of **Bandwidth** is **1** to **2000**.
         # 
         # 
         # <props="intl">Valid values: **1** to **1000**.

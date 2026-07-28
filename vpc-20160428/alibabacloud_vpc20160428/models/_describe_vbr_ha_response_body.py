@@ -21,24 +21,25 @@ class DescribeVbrHaResponseBody(DaraModel):
         self.creation_time = creation_time
         # The description of the VBR failover group.
         # 
-        # The description must be 2 to 256 characters in length. It must start with a letter but cannot start with `http://` or `https://`.
+        # The description must be 2 to 256 characters in length and must start with a letter or a Chinese character. It cannot start with `http://` or `https://`.
         self.description = description
         # The name of the VBR failover group.
         self.name = name
-        # The ID of the other VBR in the VBR failover group.
+        # The instance ID of the other VBR in the VBR failover group.
         self.peer_vbr_id = peer_vbr_id
-        # The ID of the region in which the VBR is deployed.
+        # The region ID of the VBR.
         self.region_id = region_id
         # The request ID.
         self.request_id = request_id
-        # The status of the VBR failover group.
+        # The status of the VBR failover group. Valid values:
         # 
-        # *   **Creating**
-        # *   **Active**
+        # - **Creating**: being created.
+        # 
+        # - **Active**: Normal.
         self.status = status
-        # The ID of the VBR failover group.
+        # The VBR failover group instance ID.
         self.vbr_ha_id = vbr_ha_id
-        # The VBR ID.
+        # The VBR instance ID.
         self.vbr_id = vbr_id
 
     def validate(self):

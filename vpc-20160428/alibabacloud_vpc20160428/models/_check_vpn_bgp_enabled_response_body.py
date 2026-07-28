@@ -10,10 +10,10 @@ class CheckVpnBgpEnabledResponseBody(DaraModel):
         bgp_enabled: bool = None,
         request_id: str = None,
     ):
-        # Indicates whether the region supports BGP.
+        # Indicates whether the current region supports the BGP feature.
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Supported.
+        # - **false**: Not supported.
         self.bgp_enabled = bgp_enabled
         # The request ID.
         self.request_id = request_id

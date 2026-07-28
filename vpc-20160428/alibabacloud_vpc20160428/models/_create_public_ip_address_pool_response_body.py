@@ -12,9 +12,9 @@ class CreatePublicIpAddressPoolResponseBody(DaraModel):
         request_id: str = None,
         resource_group_id: str = None,
     ):
-        # The ID of the IP address pool.
+        # The instance ID of the IPAM pool.
         self.public_ip_address_pool_id = public_ip_address_pool_id
-        # The ID of the IP address pool.
+        # The instance ID of the IPAM pool.
         self.pulbic_ip_address_pool_id = pulbic_ip_address_pool_id
         # The request ID.
         self.request_id = request_id

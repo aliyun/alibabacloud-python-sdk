@@ -14,7 +14,7 @@ class GetVpcGatewayEndpointAttributeRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the gateway endpoint.
+        # The endpoint instance ID of the gateway endpoint.
         # 
         # This parameter is required.
         self.endpoint_id = endpoint_id

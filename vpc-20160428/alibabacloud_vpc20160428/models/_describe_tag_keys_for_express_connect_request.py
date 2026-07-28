@@ -20,28 +20,31 @@ class DescribeTagKeysForExpressConnectRequest(DaraModel):
         resource_owner_id: int = None,
         resource_type: str = None,
     ):
-        # The keyword of the tag. Fuzzy match is supported. You can specify a keyword to query all tags that contain the keyword.
+        # The keyword of the tag name. Fuzzy match is supported. You can enter a keyword to query all tags that contain the keyword.
         self.keyword = keyword
-        # The number of entries per page. Valid values: **1** to **100**. Default value: **20**.
+        # The number of entries per page for a paged query. Valid values: **1** to **100**. Default value: **20**.
         self.max_result = max_result
-        # The pagination token that is used in the next request to retrieve a new page of results.
-        # 
-        # *   You do not need to specify this parameter for the first request.
-        # *   You must specify the token that is obtained from the previous query as the value of NextToken.
+        # The token for the next query. Valid values:
+        # - If this is the first query or there is no next query, leave this parameter empty.
+        # - If there is a next query, set this parameter to the NextToken value returned by the previous API call.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region to which the resource resides.
+        # The region ID of the resource.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The IDs of the resources. You can specify up to 20 resource IDs.
+        # The resource ID. You can specify up to 20 resource IDs.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The type of the resource. Set the value to **PHYSICALCONNECTION**, which specifies an Express Connect circuit.
+        # The resource type. Valid values:
+        # - **PHYSICALCONNECTION**: Express Connect circuit instance.
+        # - **VIRTUALBORDERROUTER**: Virtual Border Router.
+        # - **ROUTERINTERFACE**: VBR uplink.
+        # - **TRAFFICQOS**: QoS policy.
         self.resource_type = resource_type
 
     def validate(self):

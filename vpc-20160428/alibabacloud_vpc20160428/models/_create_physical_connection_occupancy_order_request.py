@@ -21,45 +21,45 @@ class CreatePhysicalConnectionOccupancyOrderRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # Specifies whether to enable automatic payments. Valid values:
+        # Specifies whether to enable automatic payment. Valid values:
         # 
-        # *   **true**: yes Make sure that you have a sufficient balance in your account. Otherwise, your order becomes invalid and is automatically canceled.
-        # *   **false**: disables automatic payment. This is the default value.
+        # - **true**: enables automatic payment. Make sure that your account balance is sufficient. If your account balance is insufficient, an abnormal order is generated and can only be canceled.
+        # - **false** (default): generates an order without charging.
         self.auto_pay = auto_pay
-        # Whether to enable auto-renewal. Valid values:
+        # Specifies whether to enable auto-renewal. Valid values:
         # 
-        # - **false** (**default**): disable auto-renewal.
-        # - **true**: enable auto-renewal.
+        # - **false** (default): disables auto-renewal.
+        # - **true**: enables auto-renewal.
         self.auto_renew = auto_renew
-        # The auto-renewal duration. Unit: months. Valid values: **0** to **2147483647**. Default Value: **1**.
+        # The auto-renewal duration. Unit: months. Valid values: **0** to **2147483647**. Default value: **1**.
         self.auto_renew_duration = auto_renew_duration
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests.
+        # The client generates the value. The value must be unique among different requests.
         self.client_token = client_token
-        # The billing method. Set the value to
+        # The billing method of the instance. Valid values:
         # 
-        # **PrePaid**, which specifies the subscription billing method. If you choose this billing method, make sure that your Alibaba Cloud account supports balance payments or credit payments.
+        # **PrePaid**: subscription. If you select this billing method, make sure that your Alibaba Cloud account supports balance payment or credit payment.
         self.instance_charge_type = instance_charge_type
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The subscription duration.
         # 
-        # *   If **PricingCycle** is set to **Month**, set **Period** to a value from **1 to 9**.
-        # *   If **PricingCycle** is set to **Year**, set **Period** to a value from **1 to 5**.
+        # - If **PricingCycle** is set to **Month**, valid values of **Period** are **1 to 9**.
+        # - If **PricingCycle** is set to **Year**, valid values of **Period** are **1 to 5**.
         self.period = period
-        # The ID of the Express Connect circuit.
+        # The instance ID of the Express Connect circuit.
         # 
         # This parameter is required.
         self.physical_connection_id = physical_connection_id
         # The billing cycle of the subscription. Valid values:
         # 
-        # *   **Month** (default)
-        # *   **Year**
+        # - **Month** (default): billed on a monthly basis.
+        # - **Year**: billed on a yearly basis.
         self.pricing_cycle = pricing_cycle
-        # The region ID of the Express Connect circuit.
+        # The region ID of the Express Connect circuit. 
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id

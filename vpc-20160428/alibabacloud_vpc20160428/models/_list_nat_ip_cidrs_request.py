@@ -26,37 +26,37 @@ class ListNatIpCidrsRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # You can use the client to generate the value, but you must make sure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         # 
-        # >  If you do not set this parameter, the system automatically uses **RequestId** as **ClientToken**. **RequestId** may be different for each API request.
+        # > If you do not specify this parameter, the system uses **RequestId** as **ClientToken**. The value of **RequestId** may differ for each API request.
         self.client_token = client_token
-        # Specifies whether to only precheck this request. Valid values:
+        # Specifies whether to perform a dry run. Valid values:
         # 
-        # *   **true**: checks the API request. The CIDR blocks of the NAT gateway are not queried if the API request passes the precheck. The system checks whether your AccessKey pair is valid, whether the Resource Access Management (RAM) user is authorized, and whether the required parameters are set. If the request fails to pass the precheck, the corresponding error message is returned. If the check succeeds, the DryRunOperation error code is returned.
-        # *   **false**: sends the API request. If the request passes the precheck, 2xx HTTP status code is returned and the CIDR blocks of the NAT gateway are queried. This is the default value.
+        # - **true**: performs a dry run without querying the NAT CIDR block list. The system checks the request for potential issues, including missing required parameters, invalid parameter values, and the authorization status of the RAM user. If the check fails, the corresponding error is returned. If the check succeeds, the DryRunOperation error code is returned.
+        # 
+        # - **false** (default): sends a normal request, and the NAT CIDR block list is returned after the request passes the check with an HTTP 2xx status code.
         self.dry_run = dry_run
-        # The number of entries to return on each page. Valid values: **1** to **100**. Default value: **20**.
+        # The number of entries per page for a paged query. Valid values: **1** to **100**. Default value: **20**.
         self.max_results = max_results
-        # The ID of the VPC NAT gateway that you want to query.
+        # The instance ID of the VPC NAT gateway whose NAT CIDR blocks you want to query.
         # 
         # This parameter is required.
         self.nat_gateway_id = nat_gateway_id
-        # The CIDR block of the NAT gateway that you want to query.
+        # The NAT CIDR block to query.
         self.nat_ip_cidr = nat_ip_cidr
-        # The name of the CIDR block that you want to query. Valid values of **N**: **1** to **20**.
+        # The name of the NAT CIDR block to query. Valid values of **N**: **1** to **20**.
         self.nat_ip_cidr_name = nat_ip_cidr_name
-        # The status of the CIDR block that you want to query. Set the value to **Available**.
+        # The status of the NAT CIDR block to query. Set the value to **Available**, which indicates that the NAT CIDR block is available.
         self.nat_ip_cidr_status = nat_ip_cidr_status
-        # The CIDR block of the NAT gateway that you want to query. Valid values of **N**: **1** to **20**.
+        # The NAT CIDR block to query. Valid values of **N**: **1** to **20**.
         self.nat_ip_cidrs = nat_ip_cidrs
-        # The token that is used for the next query. Set the value as needed.
-        # 
-        # *   If this is your first query or no next query is to be sent, ignore this parameter.
-        # *   If a next query is to be sent, set the value to the value of NextToken that is returned from the last call.
+        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+        # - If this is the first request or no subsequent requests exist, you do not need to specify this parameter.
+        # - If a subsequent request exists, set the value to the NextToken value returned in the previous API call.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the Virtual Private Cloud (VPC) NAT gateway that you want to query.
+        # The region ID of the VPC NAT gateway to which the NAT CIDR blocks belong.
         # 
         # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
         # 

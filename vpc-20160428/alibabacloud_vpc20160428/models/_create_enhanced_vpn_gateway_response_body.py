@@ -11,11 +11,11 @@ class CreateEnhancedVpnGatewayResponseBody(DaraModel):
         request_id: str = None,
         vpn_gateway_id: str = None,
     ):
-        # The name of the enhanced VPN gateway.
+        # The name of the VPN gateway.
         self.name = name
         # The request ID.
         self.request_id = request_id
-        # The ID of the enhanced VPN gateway instance.
+        # The instance ID of the enhanced VPN gateway.
         self.vpn_gateway_id = vpn_gateway_id
 
     def validate(self):

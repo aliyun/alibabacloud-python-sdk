@@ -15,7 +15,7 @@ class Describe95TrafficResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The bandwidth statistics for Internet Shared Bandwidth billed by enhanced 95th percentile.
+        # The bandwidth statistics information of the Internet Shared Bandwidth instance that uses the enhanced 95th percentile billing method.
         self.traffic_95summary = traffic_95summary
 
     def validate(self):
@@ -56,25 +56,20 @@ class Describe95TrafficResponseBodyTraffic95Summary(DaraModel):
         minimum_consume_bandwidth: str = None,
         traffic_95detail_list: main_models.Describe95TrafficResponseBodyTraffic95SummaryTraffic95DetailList = None,
     ):
-        # The peak bandwidth of the Internet Shared Bandwidth instance on the queried date. Unit: Mbps.
+        # The peak bandwidth of the Internet Shared Bandwidth instance on the queried date. Unit: Mbit/s.
         self.bandwidth = bandwidth
-        # The daily peak bandwidth. Unit: Mbps.
+        # The daily peak bandwidth. Unit: Mbit/s.
         # 
-        # <props="china">
-        # 
-        # For more information, see [Daily peak bandwidth](https://help.aliyun.com/document_detail/89729.html).
+        # <props="china">For more information, see [Daily peak bandwidth](https://help.aliyun.com/document_detail/89729.html).
         self.fifth_peak_bandwidth = fifth_peak_bandwidth
         # The resource ID.
         self.instance_id = instance_id
-        # The billing method of the Internet Shared Bandwidth instance on the queried date. Valid values:
-        # 
-        # - **PayBy95**: pay-by-enhanced-95th-percentile
-        # 
-        # - **PayByBandwidth**: pay-by-bandwidth
-        # 
-        # - **PayByDominantTraffic**: pay-by-dominant-traffic
+        # The billable methods of the Internet Shared Bandwidth instance on the queried date. Valid values:
+        # - **PayBy95**: enhanced 95th percentile billing.
+        # - **PayByBandwidth**: pay-by-bandwidth.
+        # - **PayByDominantTraffic**: pay-by-dominant-traffic.
         self.internet_charge_type = internet_charge_type
-        # The minimum bandwidth commitment of the Internet Shared Bandwidth instance on the queried date. Unit: Mbps.
+        # The minimum guaranteed bandwidth of the Internet Shared Bandwidth instance on the queried date. Unit: Mbit/s.
         self.minimum_consume_bandwidth = minimum_consume_bandwidth
         self.traffic_95detail_list = traffic_95detail_list
 

@@ -27,25 +27,25 @@ class DescribeNetworkAclsRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # Generate a parameter value from your client to ensure uniqueness across different requests. ClientToken supports only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        # > If you do not specify this parameter, the system uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
         self.client_token = client_token
         # The ID of the network ACL.
         self.network_acl_id = network_acl_id
         # The name of the network ACL.
         # 
-        # The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
+        # The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         self.network_acl_name = network_acl_name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number. Default value: **1**.
+        # The page number of the list. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page. Maximum value: **50**. Default value: **10**.
+        # The number of entries per page in a paged query. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
-        # The region ID of the network ACL.
+        # The region ID of the network ACL. 
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -53,13 +53,13 @@ class DescribeNetworkAclsRequest(DaraModel):
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The type of the associated instance. Set the value to **VSwitch**.
+        # The type of the associated instance. Valid values: **VSwitch**: virtual switch.
         # 
-        # This parameter is valid only if **ResourceType** and **ResourceId** are both specified.
+        # The **ResourceType** and **ResourceId** parameters must be specified together to take effect.
         self.resource_type = resource_type
-        # The tag list.
+        # The tags.
         self.tags = tags
-        # The ID of the VPC to which the network ACL belongs.
+        # The ID of the VPC associated with the network ACL.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -174,13 +174,13 @@ class DescribeNetworkAclsRequestTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N to add to the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+        # The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
         # 
-        # The tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # A tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
         self.key = key
-        # The value of tag N to add to the resource. You can specify at most 20 tag values. The tag value can be an empty string.
+        # The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
         # 
-        # The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag value cannot start with `aliyun` or `acs:`.
+        # The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

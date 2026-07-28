@@ -16,15 +16,15 @@ class DescribeVpnConnectionRequest(DaraModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The CIDR block on the Alibaba Cloud side.
+        # The region ID of the IPsec-VPN connection. 
         # 
-        # Multiple CIDR blocks are separated by commas (,).
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The request ID.
+        # The ID of the IPsec-VPN connection.
         # 
         # This parameter is required.
         self.vpn_connection_id = vpn_connection_id

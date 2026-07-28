@@ -23,22 +23,27 @@ class GetVpcGatewayEndpointAttributeResponseBody(DaraModel):
         tags: List[main_models.GetVpcGatewayEndpointAttributeResponseBodyTags] = None,
         vpc_id: str = None,
     ):
-        # The time when the endpoint was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+        # The time when the gateway endpoint was created. The time is displayed in UTC in the YYYY-MM-DDThh:mm:ssZ format.
         self.creation_time = creation_time
         # The description of the gateway endpoint.
         self.endpoint_description = endpoint_description
-        # The ID of the gateway endpoint.
+        # The endpoint instance ID of the gateway endpoint.
         self.endpoint_id = endpoint_id
         # The name of the gateway endpoint.
         self.endpoint_name = endpoint_name
         # The status of the gateway endpoint. Valid values:
         # 
-        # *   **Creating**
-        # *   **Created**
-        # *   **Modifying**
-        # *   **Associating**
-        # *   **Dissociating**
-        # *   **Deleting**
+        # - **Creating**: being created.
+        # 
+        # - **Created**: created and in a normal state.
+        # 
+        # - **Modifying**: being modified.
+        # 
+        # - **Associating**: being associated.
+        # 
+        # - **Dissociating**: being disassociated.
+        # 
+        # - **Deleting**: being deleted.
         self.endpoint_status = endpoint_status
         # The access policy for the cloud service.
         self.policy_document = policy_document
@@ -46,13 +51,13 @@ class GetVpcGatewayEndpointAttributeResponseBody(DaraModel):
         self.request_id = request_id
         # The ID of the resource group to which the gateway endpoint belongs.
         self.resource_group_id = resource_group_id
-        # The ID of the route table associated with the gateway endpoint.
+        # The IDs of the route tables associated with the gateway endpoint.
         self.route_tables = route_tables
-        # The name of the endpoint service.
+        # The service name of the endpoint service.
         self.service_name = service_name
-        # The tag list.
+        # The list of tags.
         self.tags = tags
-        # The ID of the virtual private cloud (VPC) to which the gateway endpoint belongs.
+        # The ID of the VPC to which the gateway endpoint belongs.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -155,9 +160,9 @@ class GetVpcGatewayEndpointAttributeResponseBodyTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N added to the resource.
+        # The tag key.
         self.key = key
-        # The value of tag N added to the resource.
+        # The tag value.
         self.value = value
 
     def validate(self):

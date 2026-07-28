@@ -24,9 +24,9 @@ class ModifyVpnPbrRouteEntryAttributeRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # > If you do not specify this parameter, the system uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
         self.client_token = client_token
         # The new policy priority of the policy-based route. Valid values: **1** to **100**.
         # 
@@ -38,8 +38,8 @@ class ModifyVpnPbrRouteEntryAttributeRequest(DaraModel):
         self.new_priority = new_priority
         # The new weight of the policy-based route. Valid values:
         # 
-        # - **100**: The IPsec-VPN connection associated with the policy-based route serves as the active link.
-        # - **0**: The IPsec-VPN connection associated with the policy-based route serves as the standby link.
+        # - **100**: The IPsec-VPN connection associated with the policy-based route serves as the active connection.
+        # - **0**: The IPsec-VPN connection associated with the policy-based route serves as the standby connection.
         # 
         # If you do not specify this parameter, the weight of the policy-based route is not modified.
         # > You must specify at least one of the **NewPriority** and **NewWeight** parameters.
@@ -78,8 +78,8 @@ class ModifyVpnPbrRouteEntryAttributeRequest(DaraModel):
         self.vpn_gateway_id = vpn_gateway_id
         # The original weight of the policy-based route. Valid values:
         # 
-        # - **100**: The IPsec-VPN connection associated with the policy-based route serves as the active link.
-        # - **0**: The IPsec-VPN connection associated with the policy-based route serves as the standby link.
+        # - **100**: The IPsec-VPN connection associated with the policy-based route serves as the active connection.
+        # - **0**: The IPsec-VPN connection associated with the policy-based route serves as the standby connection.
         # 
         # This parameter is required.
         self.weight = weight

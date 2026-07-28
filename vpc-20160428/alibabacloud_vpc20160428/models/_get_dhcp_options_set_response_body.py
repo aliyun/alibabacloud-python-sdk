@@ -22,11 +22,11 @@ class GetDhcpOptionsSetResponseBody(DaraModel):
         status: str = None,
         tags: List[main_models.GetDhcpOptionsSetResponseBodyTags] = None,
     ):
-        # The information about the virtual private cloud (VPC) that is associated with the DHCP options set.
+        # The information about the VPCs associated with the DHCP options set.
         self.associate_vpcs = associate_vpcs
-        # create time
+        # The creation time.
         self.creation_time = creation_time
-        # The configuration information about the DHCP options set.
+        # The DHCP options configuration.
         self.dhcp_options = dhcp_options
         # The description of the DHCP options set.
         self.dhcp_options_set_description = dhcp_options_set_description
@@ -34,20 +34,23 @@ class GetDhcpOptionsSetResponseBody(DaraModel):
         self.dhcp_options_set_id = dhcp_options_set_id
         # The name of the DHCP options set.
         self.dhcp_options_set_name = dhcp_options_set_name
-        # The ID of the Alibaba Cloud account to which the DHCP options set belongs.
+        # The Alibaba Cloud account ID to which the DHCP options set belongs.
         self.owner_id = owner_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The ID of the resource group.
+        # The ID of the resource group to which the DHCP options set belongs.
         self.resource_group_id = resource_group_id
         # The status of the DHCP options set. Valid values:
         # 
-        # *   **Available**: available
-        # *   **InUse**: in use
-        # *   **Deleted**: deleted
-        # *   **Pending**: being configured
+        # - **Available**: available.
+        # 
+        # - **InUse**: in use.
+        # 
+        # - **Deleted**: deleted.
+        # 
+        # - **Pending**: being configured.
         self.status = status
-        # The tag list.
+        # The tag information.
         self.tags = tags
 
     def validate(self):
@@ -195,20 +198,21 @@ class GetDhcpOptionsSetResponseBodyDhcpOptions(DaraModel):
         ipv_6lease_time: str = None,
         lease_time: str = None,
     ):
-        # The suffix of the hostname.
+        # The hostname suffix.
         self.domain_name = domain_name
         # The IP address of the DNS server.
         self.domain_name_servers = domain_name_servers
-        # The lease time of the IPv6 addresses for the DHCP options set.
-        #  
-        # *   If you use hours as the unit, Valid values are **24h to 1176h** and **87600h to 175200h**. Default value: **87600h**.
-        # *   If you use days as the unit, Valid values are **1d to 49d** and **3650d to 7300d**. Default value: **3650d**.
+        # The lease time of the IPv6 DHCP options set.
+        # 
+        # - When the lease time is set in hours: Unit: h. Valid values: **24h to 1176h** and **87600h to 175200h**. Default value: **24h**.
+        # 
+        # - When the lease time is set in days: Unit: d. Valid values: **1d to 49d** and **3650d to 7300d**. Default value: **1d**.
         self.ipv_6lease_time = ipv_6lease_time
-        # The lease time of the IPv4 addresses for the DHCP options set.
+        # The lease time of the IPv4 DHCP options set.
         # 
-        # *   If you use hours as the unit, valid values are **24h to 1176h** and **87600h to 175200h**. Default value: **87600h**.
+        # - When the lease time is set in hours: Unit: h. Valid values: **24h to 1176h** and **87600h to 175200h**. Default value: **87600h**.
         # 
-        # *   If you use days as the unit, valid values are **1d to 49d** and **3650d to 7300d**. Default value: **3650d**.
+        # - When the lease time is set in days: Unit: d. Valid values: **1d to 49d** and **3650d to 7300d**. Default value: **3650d**.
         self.lease_time = lease_time
 
     def validate(self):
@@ -255,12 +259,13 @@ class GetDhcpOptionsSetResponseBodyAssociateVpcs(DaraModel):
         associate_status: str = None,
         vpc_id: str = None,
     ):
-        # The status of the VPC that is associated with the DHCP options set. Valid values:
-        #  
-        # *   **InUse**: in use
-        # *   **Pending**: being configured
+        # The status of the VPC associated with the DHCP options set. Valid values:
+        # 
+        # - **InUse**: in use.
+        # 
+        # - **Pending**: being configured.
         self.associate_status = associate_status
-        # The ID of the VPC that is associated with the DHCP options set.
+        # The ID of the VPC associated with the DHCP options set.
         self.vpc_id = vpc_id
 
     def validate(self):

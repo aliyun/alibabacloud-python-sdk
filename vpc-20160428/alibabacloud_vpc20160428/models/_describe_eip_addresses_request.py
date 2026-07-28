@@ -37,80 +37,80 @@ class DescribeEipAddressesRequest(DaraModel):
         tag: List[main_models.DescribeEipAddressesRequestTag] = None,
     ):
         self.filter = filter
-        # The ID of the EIP that you want to query.
+        # The ID of the EIP instance to query. 
         # 
-        # You can specify up to 50 EIP IDs. Separate multiple IDs with commas (,).
+        # You can specify up to 50 EIP instance IDs. Separate multiple instance IDs with commas (,).
         # 
-        # >  If both **EipAddress** and **AllocationId** are specified, you can specify up to 50 EIP IDs for **AllocationId**, and specify up to 50 EIPs for **EipAddress**.
+        # > If you specify both **EipAddress** and **AllocationId**, you can specify up to 50 EIP instance IDs for **AllocationId** and up to 50 EIP IP addresses for **EipAddress**.
         self.allocation_id = allocation_id
-        # The ID of the instance associated with the EIP.
+        # The instance ID of the cloud resource.
         self.associated_instance_id = associated_instance_id
-        # The type of the cloud resource with which you want to associate the EIP. Valid values:
+        # The type of the cloud resource instance to attach. Valid values: 
+        # - **EcsInstance** (default): an ECS instance in a VPC.
+        # - **SlbInstance**: a CLB instance in a VPC.
+        # - **Nat**: a NAT gateway.
+        # - **HaVip**: a high-availability virtual IP address. 
+        # - **NetworkInterface**: a secondary elastic network interface (ENI).
+        # - **IpAddress**: an IP address.
         # 
-        # *   **EcsInstance** (default): an Elastic Compute Service (ECS) instance in a virtual private cloud (VPC).
-        # *   **SlbInstance**: a CLB instance in a VPC.
-        # *   **Nat**: a NAT gateway.
-        # *   **HaVip**: an HAVIP.
-        # *   **NetworkInterface**: a secondary ENI.
-        # *   **IpAddress**: an IP address.
-        # 
-        # >  Each ECS instance, CLB instance, HAVIP, and IP address can be associated with only one EIP. A NAT gateway can be associated with multiple EIPs. The number of EIPs that you can associate with a secondary ENI depends on the association mode. For more information, see [Associate EIPs with and disassociate EIPs from cloud resources](https://help.aliyun.com/document_detail/72125.html).
+        # > Each ECS instance, CLB instance, high-availability virtual IP address, and IP address can be attached with only one EIP at a time. A NAT gateway can be attached with multiple EIPs. The number of EIPs that can be attached to a secondary elastic network interface (ENI) depends on the EIP association pattern. For more information, see [EIP overview](https://help.aliyun.com/document_detail/72125.html).
         self.associated_instance_type = associated_instance_type
         # The billing method of the EIP. Valid values:
-        # 
-        # *   **PostPaid**: pay-as-you-go.
-        # *   **PrePaid**: subscription.
+        # - **PostPaid**: pay-as-you-go.
+        # - **PrePaid**: subscription.
         self.charge_type = charge_type
-        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # Specifies whether to perform a dry run. Valid values:
         # 
-        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        # - **true**: performs a dry run. The system checks the required parameters, request syntax, and business restrictions. If the check fails, the corresponding error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
+        # 
+        # - **false** (default): performs a dry run and sends the request. If the check succeeds, an HTTP 2xx status code is returned and the operation is performed.
         self.dry_run = dry_run
-        # The EIP that you want to query.
+        # The IP address of the EIP to query.
         # 
-        # You can specify up to 50 EIPs. Separate multiple EIPs with commas (,).
+        # You can specify up to 50 EIP addresses. Separate multiple IP addresses with commas (,).
         # 
-        # >  If both **EipAddress** and **AllocationId** are specified, you can specify up to 50 EIPs for **EipAddress**, and specify up to 50 EIP IDs for **AllocationId**.
+        # > If you specify both **EipAddress** and **AllocationId**, you can specify up to 50 EIP IP addresses for **EipAddress** and up to 50 EIP instance IDs for **AllocationId**.
         self.eip_address = eip_address
         # The name of the EIP.
         # 
-        # The name must be 1 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
+        # The name must be 1 to 128 characters in length and must start with a letter or Chinese character. It can contain digits, underscores (_), and hyphens (-).
         self.eip_name = eip_name
         # The line type. Valid values:
         # 
-        # *   **BGP** (default): Border Gateway Protocol (BGP) (Multi-ISP) lines. All regions support BGP (Multi-ISP) EIPs.
-        # *   **BGP_PRO**: BGP (Multi-ISP) Pro lines. Only the following regions support BGP (Multi-ISP) Pro lines: China (Hong Kong), Singapore, Japan (Tokyo), Malaysia (Kuala Lumpur), Philippines (Manila), Indonesia (Jakarta), and Thailand (Bangkok).
+        # - **BGP** (default): BGP (multi-ISP) line. All regions support BGP (multi-ISP) EIPs.
+        # - **BGP_PRO**: BGP (multi-ISP) Pro line. Only Hong Kong (China), Singapore, Tokyo (Japan), Kuala Lumpur (Malaysia), Manila (Philippines), Jakarta (Indonesia), and Bangkok (Thailand) regions support BGP (multi-ISP) Pro EIPs.
         # 
-        # For more information about BGP (Multi-ISP) and BGP (Multi-ISP) Pro, see the [Line types](https://help.aliyun.com/document_detail/32321.html) section of the "What is EIP?" topic.
+        # For more information about BGP (multi-ISP) and BGP (multi-ISP) Pro lines, see [EIP line types](https://help.aliyun.com/document_detail/32321.html).
         # 
-        # If you are allowed to use single-ISP bandwidth, you can also use one of the following values:
+        # If you are a whitelist user of single-ISP bandwidth, you can also specify the following values:
+        # - **ChinaTelecom**: China Telecom
+        # - **ChinaUnicom**: China Unicom
+        # - **ChinaMobile**: China Mobile
+        # - **ChinaTelecom_L2**: China Telecom L2
+        # - **ChinaUnicom_L2**: China Unicom L2
+        # - **ChinaMobile_L2**: China Mobile L2
         # 
-        # *   **ChinaTelecom**
-        # *   **ChinaUnicom**
-        # *   **ChinaMobile**
-        # *   **ChinaTelecom_L2**
-        # *   **ChinaUnicom_L2**
-        # *   **ChinaMobile_L2**
-        # 
-        # If your services are deployed in China East 1 Finance, this parameter is required and you must set the value to **BGP_FinanceCloud**.
+        # If you are a user of Alibaba Finance Cloud in the China (Hangzhou) region, this parameter is required. Set the value to **BGP_FinanceCloud**.
         self.isp = isp
-        # Specifies whether to return information about pending orders. Valid values:
+        # Specifies whether to include pending order data. Valid values:
         # 
-        # *   **false** (default)
-        # *   **true**
+        # - **false** (default): Does not include pending order data.
+        # 
+        # - **true**: Includes pending order data.
         self.include_reservation_data = include_reservation_data
-        # The reason why the EIP is locked. Valid values:
+        # The lock type. Valid values:
         # 
-        # *   **financial**: The EIP is locked due to overdue payments.
-        # *   **security**: The EIP is locked for security reasons.
+        # - **financial**: locked due to overdue payment.
+        # 
+        # - **security**: locked for security reasons.
         self.lock_reason = lock_reason
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number. Default value: **1**.
+        # The page number of the list. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page. Valid values: 1 to **100**. Default value: **10**.
+        # The number of entries per page in a paged query. Maximum value: **100**. Default value: **10**.
         self.page_size = page_size
-        # The IP address pool to which the EIP that you want to query belongs.
+        # The ID of the IP address pool to which the EIP belongs.
         self.public_ip_address_pool_id = public_ip_address_pool_id
         # The region ID of the EIP.
         # 
@@ -122,27 +122,28 @@ class DescribeEipAddressesRequest(DaraModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # Specifies whether to activate Anti-DDoS Pro/Premium. Valid values:
-        # 
-        # *   **false**
-        # *   **true**
+        # Indicates whether Anti-DDoS (Enhanced) is enabled. Valid values:
+        # - **false**: not enabled.
+        # - **true**: enabled.
         self.security_protection_enabled = security_protection_enabled
-        # The ID of the contiguous EIP group.
+        # The instance ID of the contiguous EIP group.
         self.segment_instance_id = segment_instance_id
-        # Indicates whether the instance is managed. Valid values:
+        # Specifies whether the instance is a managed instance. Valid values:
+        # - **true**: a managed instance.
+        # - **false**: not a managed instance.
         # 
-        # *   **true**: yes
-        # *   **false**: no.
-        # 
-        # If you do not specify this parameter, all instances are queried.
+        # If you leave this parameter empty, all instances are queried.
         self.service_managed = service_managed
-        # The state of the EIP. Valid values:
+        # The status of the EIP. Valid values:
         # 
-        # *   **Associating**
-        # *   **Unassociating**
-        # *   **InUse**
-        # *   **Available**
-        # *   **Releasing**
+        # - **Associating**: being associated.
+        # 
+        # - **Unassociating**: being disassociated.
+        # 
+        # - **InUse**: allocated.
+        # 
+        # - **Available**: available.
+        # - **Releasing**: being released.
         self.status = status
         # The tags used to filter EIPs.
         self.tag = tag
@@ -334,13 +335,13 @@ class DescribeEipAddressesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+        # The tag key. You can specify up to 20 tag keys. The tag key cannot be an empty string.
         # 
-        # The tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `acs:` or `aliyun`.
+        # A tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
-        # The value of the tag. You can specify up to 20 tag values. The tag value can be an empty string.
+        # The tag value. You can specify up to 20 tag values. The tag value can be an empty string.
         # 
-        # The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag value cannot start with `acs:` or `aliyun`.
+        # A tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -375,9 +376,9 @@ class DescribeEipAddressesRequestFilter(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The filter key used to query resources. Set the value to **CreationStartTime**, which specifies the time when the system started to create the resource.
+        # The filter key for querying resources. Set the value to **CreationStartTime**, which specifies the start time when the resource was created.
         self.key = key
-        # The filter value used to query resources. Specify the time in the ISO 8601 standard in the `YYYY-MM-DDThh:mmZ` format. The time must be in Coordinated Universal Time (UTC).
+        # The filter value for querying resources. Specify the value in UTC. Format: `YYYY-MM-DDThh:mmZ`.
         self.value = value
 
     def validate(self):

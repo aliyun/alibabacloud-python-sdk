@@ -14,7 +14,7 @@ class GetNatGatewayAttributeRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the NAT gateway.
+        # The instance ID of the NAT gateway.
         # 
         # This parameter is required.
         self.nat_gateway_id = nat_gateway_id
@@ -22,7 +22,7 @@ class GetNatGatewayAttributeRequest(DaraModel):
         self.owner_id = owner_id
         # The region ID of the NAT gateway.
         # 
-        # Call the [DescribeRegions](https://help.aliyun.com/document_detail/448570.html) operation to obtain the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/448570.html) operation to obtain the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id

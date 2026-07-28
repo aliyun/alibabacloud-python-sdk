@@ -36,7 +36,7 @@ class ModifyRouterInterfaceSpecResponseBody(DaraModel):
         # 
         # * **Large.5**: 5000 Mbps
         # 
-        # * **Xlarge.1**: 10000 Mbps.
+        # * **Xlarge.1**: 10000 Mbps
         self.spec = spec
 
     def validate(self):

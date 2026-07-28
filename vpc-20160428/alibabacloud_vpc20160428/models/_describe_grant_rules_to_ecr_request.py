@@ -17,23 +17,23 @@ class DescribeGrantRulesToEcrRequest(DaraModel):
         resource_group_id: str = None,
         tags: List[main_models.DescribeGrantRulesToEcrRequestTags] = None,
     ):
-        # The ID of the VBR.
+        # VBR ID。
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The number of the page to return. Default value: 1.
+        # The page number of the list. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page. Maximum value: **50**. Default value: **10**.
+        # The number of entries per page in a paged query. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
-        # The region ID
+        # The region ID.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group.
+        # The ID of the resource group to which the VBR belongs.
         self.resource_group_id = resource_group_id
-        # The tag list.
+        # The tags of the VBR.
         self.tags = tags
 
     def validate(self):
@@ -100,11 +100,11 @@ class DescribeGrantRulesToEcrRequestTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag keys. You must specify at least one tag key and at most 20 tag keys. The tag key cannot be an empty string.
+        # The tag key of the resource. You must specify at least 1 tag key and can specify at most 20 tag keys. The tag key cannot be an empty string.
         # 
-        # The tag key can be up to 128 characters in length. The tag key cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # A tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
-        # The value of the tag.
+        # The tag value.
         self.value = value
 
     def validate(self):

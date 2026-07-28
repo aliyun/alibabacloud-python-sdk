@@ -25,7 +25,7 @@ class DeleteNatIpCidrRequest(DaraModel):
         self.client_token = client_token
         # Specifies whether to perform a dry run. Valid values:
         # 
-        # - **true**: performs a dry run without deleting the NAT CIDR block. The system checks the AccessKey pair, the authorization of the Resource Access Management (RAM) user, and the required parameters. If the check fails, the corresponding error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
+        # - **true**: performs a dry run. The NAT CIDR block is not deleted. The system checks whether your AccessKey pair is valid, whether Resource Access Management (RAM) user authorization is granted, and whether the required parameters are specified. If the check fails, the corresponding error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
         # 
         # - **false** (default): sends a Normal request. If the check succeeds, a 2xx HTTP status code is returned and the NAT CIDR block is deleted.
         self.dry_run = dry_run
@@ -42,7 +42,7 @@ class DeleteNatIpCidrRequest(DaraModel):
         self.nat_ip_cidr = nat_ip_cidr
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the NAT gateway instance to which the NAT CIDR block to be deleted belongs.
+        # The region ID of the NAT gateway to which the NAT CIDR block to be deleted belongs.
         # 
         # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 

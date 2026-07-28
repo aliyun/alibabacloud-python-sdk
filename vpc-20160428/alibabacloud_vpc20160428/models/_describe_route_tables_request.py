@@ -38,24 +38,24 @@ class DescribeRouteTablesRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The ID of the route table to query.
         # 
-        # >You must specify at least one of the following parameters: VRouterId, RouteTableId, RouterId, and RouteTableName. You cannot specify both VRouterId and RouterId at the same time.
+        # >You must specify at least one of the following parameters: **VRouterId**, **RouteTableId**, **RouterId**, and **RouteTableName**. You cannot specify both **VRouterId** and **RouterId**.
         self.route_table_id = route_table_id
         # The name of the route table to query.
         # 
-        # The name must be 2 to 128 characters in length and must start with a letter or a Chinese character. It can contain digits, periods (.), underscores (_), and hyphens (-).
+        # The name must be 2 to 128 characters in length and must start with a letter or Chinese character. It can contain digits, periods (.), underscores (_), and hyphens (-).
         # 
-        # >You must specify at least one of the following parameters: VRouterId, RouteTableId, RouterId, and RouteTableName. You cannot specify both VRouterId and RouterId at the same time.
+        # >You must specify at least one of the following parameters: **VRouterId**, **RouteTableId**, **RouterId**, and **RouteTableName**. You cannot specify both **VRouterId** and **RouterId**.
         self.route_table_name = route_table_name
         # The ID of the router to which the route table belongs.
         # 
-        # >You must specify at least one of the following parameters: VRouterId, RouteTableId, RouterId, and RouteTableName. You cannot specify both VRouterId and RouterId at the same time.
+        # >You must specify at least one of the following parameters: **VRouterId**, **RouteTableId**, **RouterId**, and **RouteTableName**. You cannot specify both **VRouterId** and **RouterId**.
         self.router_id = router_id
         # The type of the router to which the route table belongs. Valid values:
         # 
         # - **VRouter** (default): vRouter.
         # - **VBR**: Virtual Border Router.
         self.router_type = router_type
-        # The destination type of the route to query. Valid values:
+        # The type of the route entry to query. Valid values:
         # 
         # - **Custom**: custom route.
         # - **System**: system route.
@@ -65,7 +65,7 @@ class DescribeRouteTablesRequest(DaraModel):
         self.type = type
         # The ID of the vRouter to query.
         # 
-        # >You must specify at least one of the following parameters: VRouterId, RouteTableId, RouterId, and RouteTableName. You cannot specify both VRouterId and RouterId at the same time.
+        # >You must specify at least one of the following parameters: **VRouterId**, **RouteTableId**, **RouterId**, and **RouteTableName**. You cannot specify both **VRouterId** and **RouterId**.
         self.vrouter_id = vrouter_id
 
     def validate(self):

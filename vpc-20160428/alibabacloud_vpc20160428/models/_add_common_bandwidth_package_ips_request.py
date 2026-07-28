@@ -19,7 +19,7 @@ class AddCommonBandwidthPackageIpsRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the Internet Shared Bandwidth instance.
+        # The instance ID of the Internet Shared Bandwidth instance.
         # 
         # This parameter is required.
         self.bandwidth_package_id = bandwidth_package_id
@@ -27,19 +27,19 @@ class AddCommonBandwidthPackageIpsRequest(DaraModel):
         # 
         # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
         self.client_token = client_token
-        # The list of EIPs that you want to associate with the Internet Shared Bandwidth instance.
+        # The list of EIP instance IDs to be added.
         # 
-        # You can specify at most 10 EIP IDs at a time.
+        # You can add up to 10 EIP instance IDs at a time.
         # 
         # This parameter is required.
         self.ip_instance_ids = ip_instance_ids
-        # The IP type. Set the value to **EIP**, which indicates that an EIP is added to the Shared Bandwidth.
+        # The IP type. Set the value to **EIP**, which specifies that EIPs are added to the Internet Shared Bandwidth instance.
         self.ip_type = ip_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the Internet Shared Bandwidth instance.
+        # The region ID of the Internet Shared Bandwidth instance. 
         # 
         # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/448570.html) operation to query the most recent region list.
         # 

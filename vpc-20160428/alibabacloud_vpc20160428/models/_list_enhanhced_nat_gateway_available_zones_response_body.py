@@ -13,7 +13,7 @@ class ListEnhanhcedNatGatewayAvailableZonesResponseBody(DaraModel):
         request_id: str = None,
         zones: List[main_models.ListEnhanhcedNatGatewayAvailableZonesResponseBodyZones] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The list of zones.
         self.zones = zones
@@ -58,9 +58,9 @@ class ListEnhanhcedNatGatewayAvailableZonesResponseBodyZones(DaraModel):
         local_name: str = None,
         zone_id: str = None,
     ):
-        # The name of the zone.
+        # The zone name.
         self.local_name = local_name
-        # The ID of the zone where the instance is deployed.
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):

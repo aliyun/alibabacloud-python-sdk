@@ -14,9 +14,9 @@ class DeactivateRouterInterfaceRequest(DaraModel):
         router_interface_id: str = None,
     ):
         self.owner_id = owner_id
-        # The ID of the region where the router interface is deployed.
+        # The region where the router interface is located.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id

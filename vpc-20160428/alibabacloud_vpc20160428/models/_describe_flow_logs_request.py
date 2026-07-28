@@ -32,54 +32,62 @@ class DescribeFlowLogsRequest(DaraModel):
     ):
         # The description of the flow log.
         # 
-        # The description must be 1 to 256 characters long and cannot start with `http://` or `https://`.
+        # The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description
         # The ID of the flow log.
         self.flow_log_id = flow_log_id
         # The name of the flow log.
         # 
-        # The name must be 1 to 128 characters long and cannot start with `http://` or `https://`.
+        # The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         self.flow_log_name = flow_log_name
-        # The Logstore that stores the captured traffic.
+        # The name of the Logstore that stores the captured traffic.
         self.log_store_name = log_store_name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number, with a default value of **1**.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of items per page in a paginated query, with a maximum value of **50** and a default value of **20**.
+        # The number of entries per page in paging queries. Maximum value: **50**. Default value: **20**.
         self.page_size = page_size
-        # The Project that manages the captured traffic.
+        # The name of the project that manages the captured traffic.
         self.project_name = project_name
         # The region ID of the flow log.
         # 
-        # You can obtain the region ID by calling the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) interface.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The resource group ID of the flow log.
+        # The ID of the resource group to which the flow log belongs.
         self.resource_group_id = resource_group_id
-        # The resource ID of the traffic to capture.
+        # The ID of the resource whose traffic you want to capture.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The resource type of the traffic to capture. Values:
-        # - **NetworkInterface**: Elastic Network Interface (ENI).
-        # - **VSwitch**: All ENIs within a VSwitch.
-        # - **VPC**: All ENIs within a VPC.
+        # The resource type of the traffic to catch. Valid values:
+        #           
+        # - **NetworkInterface**: network interface controller (NIC).
+        #   
+        # - **VSwitch**: all network interface controllers (NICs) in a vSwitch.
+        #   
+        # - **VPC**: all network interface controllers (NICs) in a virtual private cloud (VPC).
         self.resource_type = resource_type
-        # The status of the flow log. Values:
-        # - **Active**: The flow log is in an active state.
+        # The status of the flow log. Valid values:
+        # - **Active**: The flow log is active.
+        # 
         # - **Activating**: The flow log is being created.
-        # - **Inactive**: The flow log is in an inactive state.
+        # 
+        # - **Inactive**: The flow log is inactive.
         self.status = status
         # The list of tags.
         self.tags = tags
-        # The type of traffic to collect. Values:
-        # - **All**: All traffic.
-        # - **Allow**: Traffic allowed by access control.
-        # - **Drop**: Traffic denied by access control.
+        # The traffic type to collect. Valid values:
+        #           
+        # - **All**: all traffic.
+        #   
+        # - **Allow**: traffic allowed by access control.
+        #   
+        # - **Drop**: traffic denied by access control.
         self.traffic_type = traffic_type
-        # The ID of the VPC for which you want to view the flow log.
+        # The ID of the VPC for which you want to query flow logs.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -224,13 +232,13 @@ class DescribeFlowLogsRequestTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag. Up to 20 tag keys are supported. If you need to pass this value, it cannot be an empty string.
+        # The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
         # 
-        # A tag key can have up to 128 characters and cannot start with `aliyun` or `acs:`. It also cannot contain `http://` or `https://`.
+        # A tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
         self.key = key
-        # The value of the tag. Up to 20 tag values are supported. If you need to pass this value, it can be an empty string.
+        # The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
         # 
-        # A tag value can have up to 128 characters and cannot start with `aliyun` or `acs:`. It also cannot contain `http://` or `https://`.
+        # The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

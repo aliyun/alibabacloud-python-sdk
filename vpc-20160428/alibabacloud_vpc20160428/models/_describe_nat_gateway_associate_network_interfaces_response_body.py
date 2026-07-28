@@ -21,7 +21,7 @@ class DescribeNatGatewayAssociateNetworkInterfacesResponseBody(DaraModel):
         self.associate_network_interfaces = associate_network_interfaces
         # The number of associated ENIs.
         self.count = count
-        # The number of entries per page for a paged query. Valid values: **1** to **100**. Default value: **20**.
+        # The number of entries per page for a paginated query. Valid values: **1** to **100**. Default value: **20**.
         self.max_results = max_results
         # The instance ID of the VPC NAT gateway.
         self.nat_gateway_id = nat_gateway_id

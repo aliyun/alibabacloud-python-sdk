@@ -21,28 +21,29 @@ class RemoveSourcesFromTrafficMirrorSessionRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # The client generates the value. The value must be unique among different requests and cannot exceed 64 ASCII characters in length.
         # 
-        # >  If you do not set this parameter, the system uses **RequestId** as **ClientToken**. **RequestId** may be different for each API request.
+        # > If you do not specify this parameter, the system uses the **RequestId** as the **ClientToken**. The **RequestId** may differ for each API request.
         self.client_token = client_token
-        # Specifies whether to check the request without performing the operation. Valid values:
+        # Specifies whether to perform a dry run. Valid values:
         # 
-        # *   **true**: checks the request without performing the operation. The system checks the required parameters, request format, and limits. If the request fails the check, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
-        # *   **false** (default): sends the request. After the request passes the check, the operation is performed.
+        # - **true**: performs a dry run without removing the traffic mirror sources. The system checks the required parameters, request format, and limits. If the request fails the check, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
+        # 
+        # - **false** (default): sends the request. After the request passes the check, the traffic mirror sources are removed.
         self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region to which the traffic mirror session belongs. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list. For more information about regions that support traffic mirror, see [Overview of traffic mirror](https://help.aliyun.com/document_detail/207513.html).
+        # The region ID of the traffic mirror session. You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the most recent region list. For more information about the regions that support traffic mirroring, see [Traffic mirroring overview](https://help.aliyun.com/document_detail/207513.html).
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the traffic mirror session from which you want to delete a traffic mirror source.
+        # The instance ID of the traffic mirror session from which you want to delete traffic mirror sources.
         # 
         # This parameter is required.
         self.traffic_mirror_session_id = traffic_mirror_session_id
-        # The ID of the traffic mirror source to be deleted. Maximum value of N: 10.
+        # The instance ID of the traffic mirror source that you want to delete. The maximum value of **N** is **10**.
         # 
         # This parameter is required.
         self.traffic_mirror_source_ids = traffic_mirror_source_ids

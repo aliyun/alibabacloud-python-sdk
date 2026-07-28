@@ -17,17 +17,17 @@ class DescribeIPv6TranslatorAclListsRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the ACL.
+        # The ID of the access control policy group.
         self.acl_id = acl_id
-        # The name of the ACL.
+        # The name of the access control policy group.
         self.acl_name = acl_name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of the page to return. Default value: **1**.
+        # The page number of the list. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Maximum value: **50**. Default value: **10**.
+        # The number of entries per page in a paged query. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
-        # The region of the ACL.
+        # The region of the access control policy group.
         # 
         # This parameter is required.
         self.region_id = region_id

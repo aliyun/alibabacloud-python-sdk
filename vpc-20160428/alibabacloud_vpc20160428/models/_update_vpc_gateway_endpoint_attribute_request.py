@@ -21,20 +21,21 @@ class UpdateVpcGatewayEndpointAttributeRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among all requests. The token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, the system uses **RequestId** as **ClientToken**. The value of **RequestId** of each API request may be different.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may differ for each API request.
         self.client_token = client_token
         # Specifies whether to perform a dry run. Valid values:
         # 
-        # *   **true**: performs a dry run. The system checks your AccessKey pair, the RAM user permissions, and the required parameters If the request fails the dry run, the corresponding error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # *   **false** (default): performs a dry run and sends the request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        # - **true**: performs a dry run without updating the gateway endpoint configuration. The system checks the AccessKey pair, the authorization of the Resource Access Management (RAM) user, and the required parameters. If the check fails, the corresponding error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
+        # 
+        # - **false** (default): sends a Normal request. If the check succeeds, a 2xx HTTP status code is returned and the gateway endpoint configuration is updated.
         self.dry_run = dry_run
         # The new description of the gateway endpoint.
         # 
         # The description must be 1 to 255 characters in length.
         self.endpoint_description = endpoint_description
-        # The ID of the gateway endpoint that you want to modify.
+        # The instance ID of the gateway endpoint whose configuration you want to update.
         # 
         # This parameter is required.
         self.endpoint_id = endpoint_id
@@ -46,9 +47,9 @@ class UpdateVpcGatewayEndpointAttributeRequest(DaraModel):
         self.owner_id = owner_id
         # The access policy for the cloud service.
         # 
-        # For more information about the syntax and structure of the access policy, see [Policy syntax and structure](https://help.aliyun.com/document_detail/93739.html).
+        # For more information about the syntax and structure of access policies, see [Policy syntax and structure](https://help.aliyun.com/document_detail/93739.html).
         self.policy_document = policy_document
-        # The region ID of the gateway endpoint.
+        # The region ID of the gateway endpoint whose configuration you want to update.
         # 
         # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
         # 

@@ -24,66 +24,73 @@ class CreateVpnPbrRouteEntryRequest(DaraModel):
         vpn_gateway_id: str = None,
         weight: int = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
+        # 
+        # > If you do not specify this parameter, the system uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
+        self.client_token = client_token
         # The description of the policy-based route.
         # 
-        # The description must be 1 to 100 characters in length, and cannot start with http:// or https://.
-        self.client_token = client_token
-        # The request ID.
+        # The description must be 1 to 100 characters in length.
         self.description = description
-        # Specifies whether to only precheck the request. Valid values:
-        # 
-        # *   **true**: prechecks the request without performing the operation. The system prechecks the required parameters, request syntax, and limits. If the request fails to pass the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
-        # *   **false** (default): sends the request. After the request passes the precheck, a 2xx HTTP status code is returned and the operation is performed.
+        # Specifies whether to perform a dry run. Valid values:
+        # - **true**: performs a dry run without creating the route. The system checks the required parameters, request syntax, and business restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code `DryRunOperation` is returned.
+        # - **false** (default): performs a dry run and sends the request. If the check passes, an HTTP 2xx status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The next hop of the policy-based route.
         # 
         # This parameter is required.
         self.next_hop = next_hop
-        # The description of the policy-based route.
+        # The tunneling protocol. Set the value to **Ipsec** (IPsec tunneling protocol).
         self.overlay_mode = overlay_mode
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The status of the policy-based route. Valid values:
+        # The policy priority of the policy-based routing entry. Valid values: **1** to **100**. Default value: **10**.
         # 
-        # *   **published**: advertised to the VPC route table.
-        # *   **normal**: not advertised to the VPC route table.
+        # A smaller policy priority value indicates a higher priority of the routing entry.
         self.priority = priority
-        # The destination CIDR block of the policy-based route.
+        # Specifies whether to publish the policy-based route to the VPC route table. Valid values:
+        # 
+        # - **true**: Publishes the policy-based route to the VPC. The system publishes the route only to the VPC system route table, not to VPC custom route tables.
+        # 
+        #   If you want the VPC custom route table to contain this route, manually add it. For more information, see [CreateRouteEntry](https://help.aliyun.com/document_detail/448722.html).
+        # 
+        # - **false**: Does not publish the policy-based route to the VPC route table.
+        # 
+        #   You must manually add a policy-based route with the next hop pointing to the VPN gateway instance in both the VPC system route table and custom route tables. Otherwise, the VPC cannot access resources in the destination CIDR block through the IPsec-VPN connection.
         # 
         # This parameter is required.
         self.publish_vpc = publish_vpc
-        # Specifies whether to advertise the policy-based route to a virtual private cloud (VPC) route table. Valid values:
-        # 
-        # *   **true**: The route is advertised to the VPC system route table, but not to a VPC custom route table.
-        # 
-        #     You can manually add the route the a VPC custom route table. For more information, see [CreateRouteEntry](https://help.aliyun.com/document_detail/448722.html).
-        # 
-        # *   **false**: Do not advertise the route to the route table.
-        # 
-        #     You must manually add a policy-based route that points to the VPN gateway in the VPC custom and system route table. Otherwise, the VPC cannot access resources in the CIDR block through an IPsec-VPN connection.
+        # The region ID of the VPN gateway instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The response parameters.
+        # The destination CIDR block of the policy-based route.
         # 
         # This parameter is required.
         self.route_dest = route_dest
-        # The priority of the policy-based route. Valid values: **1** to **100**. Default value: **10**.
-        # 
-        # A smaller value indicates a higher priority.
+        # The source CIDR block of the policy-based route.
         # 
         # This parameter is required.
         self.route_source = route_source
-        # The tunneling protocol. Set the value to **Ipsec**.
+        # The ID of the VPN gateway instance.
         # 
         # This parameter is required.
         self.vpn_gateway_id = vpn_gateway_id
-        # The weight of the policy-based route. Valid values:
+        # The weight of the policy-based routing entry.
         # 
-        # *   **100**: The IPsec-VPN connection associated with the policy-based route serves as an active connection.
-        # *   **0**: The IPsec-VPN connection associated with the policy-based route serves as a standby connection.
+        # When you use the same VPN gateway instance to establish active/standby IPsec-VPN connections, you can specify the active and standby links by configuring the weight of the policy-based routing entry. A policy-based routing entry with a weight of 100 is the active link by default, and a policy-based routing entry with a weight of 0 is the standby link by default.
+        # 
+        # You can configure health checks for the IPsec-VPN connection to automatically detect link connectivity. If the active link is down, the system automatically switches traffic to the standby link, ensuring high availability of the cloud connection. For more information, see [CreateVpnConnection](https://help.aliyun.com/document_detail/120391.html).
+        # 
+        # - **100**: The IPsec-VPN connection associated with the policy-based routing entry serves as the active link.
+        # - **0**: The IPsec-VPN connection associated with the policy-based routing entry serves as the standby link.
+        # 
+        # > - When you specify active and standby links, the source and destination CIDR blocks of the active and standby policy-based routing entries must be the same.
+        # > - For VPN gateway instances that support dual-tunnel pattern IPsec-VPN connections, you do not need to configure this parameter. A dual-tunnel pattern IPsec-VPN connection contains two tunnels that automatically form active/standby links. You do not need to specify active/standby links by configuring this parameter. If you configure this parameter, the parameter settings do not take effect.
         # 
         # This parameter is required.
         self.weight = weight

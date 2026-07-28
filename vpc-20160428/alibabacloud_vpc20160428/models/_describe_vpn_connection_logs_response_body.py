@@ -17,17 +17,17 @@ class DescribeVpnConnectionLogsResponseBody(DaraModel):
         page_size: int = None,
         request_id: str = None,
     ):
-        # The number of entries on the current page.
+        # The number of log entries on the current page.
         self.count = count
         self.data = data
-        # Indicates whether the log is accurate. Valid values:
+        # Indicates whether the queried logs are accurate. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Accurate.
+        # - **false**: Not accurate.
         self.is_completed = is_completed
-        # The page number.
+        # The page number of the list.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries per page for paging.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id

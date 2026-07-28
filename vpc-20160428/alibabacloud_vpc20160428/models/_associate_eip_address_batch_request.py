@@ -19,37 +19,37 @@ class AssociateEipAddressBatchRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the instance with which you want to associate the EIPs.
+        # The ID of the cloud service instance that you want to attach the EIPs to.
         # 
-        # The instance can be a NAT gateway or a secondary ENI.
+        # You can enter the instance ID of an Internet NAT gateway instance or a secondary elastic network interfaces (ENIs) instance.
         # 
         # This parameter is required.
         self.binded_instance_id = binded_instance_id
-        # The type of the instance with which you want to associate the EIPs. Valid values:
-        # 
-        # *   **Nat**: NAT gateway
-        # *   **NetworkInterface**: secondary ENI
+        # The type of the instance that you want to attach the EIPs to. Valid values:
+        # - **Nat**: Internet NAT gateway.
+        # - **NetworkInterface**: secondary elastic network interfaces (ENIs).
         # 
         # This parameter is required.
         self.binded_instance_type = binded_instance_type
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate a token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** as the **ClientToken**. The **RequestId** may be different for each API request.
         self.client_token = client_token
-        # The EIPs to be associated with the instance.
+        # The list of EIPs that you want to associate with the cloud service instance.
         # 
-        # You must enter at least one EIP. You can enter up to 50 EIPs.
+        # You must specify at least 1 EIP and can specify up to 50 EIPs.
         # 
         # This parameter is required.
         self.instance_ids = instance_ids
-        # The association mode. Set the value to **MULTI_BINDED**, which specifies the Multi-EIP-to-ENI mode.
+        # The association mode. Set the value to **MULTI_BINDED**, which specifies the multi-EIP-to-ENI mode.
         # 
-        # This parameter is required only when **BindedInstanceType** is set to **NetworkInterface**.
+        # This parameter is required only when **InstanceType** is set to **NetworkInterface**.
         self.mode = mode
         self.owner_id = owner_id
-        # The ID of the region to which the EIPs belong. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+        # The region ID of the EIPs that you want to associate with a cloud service instance.
+        # You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id

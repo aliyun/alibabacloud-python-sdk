@@ -15,7 +15,7 @@ class DescribeHighDefinitionMonitorLogAttributeRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the instance whose fine-grained monitoring configurations you want to query.
+        # The instance ID for which you want to query high-precision second-level monitoring.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -25,7 +25,7 @@ class DescribeHighDefinitionMonitorLogAttributeRequest(DaraModel):
         self.owner_id = owner_id
         # The region ID of the instance.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/448570.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id

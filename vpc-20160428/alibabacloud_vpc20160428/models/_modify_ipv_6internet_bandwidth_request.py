@@ -22,28 +22,28 @@ class ModifyIpv6InternetBandwidthRequest(DaraModel):
         # 
         # <props="china">
         # 
-        # - If the billing method is pay-by-data-transfer, the Internet bandwidth ranges from **1** to **1000**.
-        # - If the billing method is pay-by-bandwidth, the Internet bandwidth ranges from **1** to **2000**.
-        # - If the billing method is traditional 95th percentile, the Internet bandwidth ranges from **1** to **2000**.
+        # - If the billing method is pay-by-data-transfer, the Internet bandwidth value range is **1** to **1000**.
+        # - If the billing method is pay-by-bandwidth, the Internet bandwidth value range is **1** to **2000**.
+        # - If the billing method is traditional 95th percentile, the Internet bandwidth value range is **1** to **2000**.
         # 
         # 
         # 
         # <props="intl">
         # 
-        # - If the billing method is pay-by-data-transfer, the Internet bandwidth ranges from **1** to **1000**.
-        # - If the billing method is pay-by-bandwidth, the Internet bandwidth ranges from **1** to **2000**.
+        # - If the billing method is pay-by-data-transfer, the Internet bandwidth value range is **1** to **1000**.
+        # - If the billing method is pay-by-bandwidth, the Internet bandwidth value range is **1** to **2000**.
         # 
         # This parameter is required.
         self.bandwidth = bandwidth
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
+        # Generate a parameter value from your client to ensure uniqueness across different requests. ClientToken supports only ASCII characters.
         # 
-        # > If you do not specify this parameter, the system uses the **RequestId** as the **ClientToken**. The **RequestId** may be different for each API request.
+        # > If you do not specify this parameter, the system uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request is different.
         self.client_token = client_token
         # Specifies whether to perform a dry run. Valid values:
-        # - **true**: performs a dry run without creating an IPv4 gateway. The system checks the required parameters, request syntax, and business limits. If the check fails, the corresponding error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
-        # - **false** (default): performs a dry run and sends the request. If the check succeeds, an HTTP 2xx status code is returned and the IPv4 gateway is created.
+        # - **true**: performs a dry run without creating the IPv4 gateway. The system checks the required parameters, request format, and service limits. If the check fails, the corresponding error is returned. If the check succeeds, the error code `DryRunOperation` is returned.
+        # - **false** (default): performs a dry run and then sends the request. If the check succeeds, an HTTP 2xx status code is returned and the IPv4 gateway is created.
         self.dry_run = dry_run
         # The ID of the IPv6 address.
         # 

@@ -14,9 +14,9 @@ class CreateVpcGatewayEndpointResponseBody(DaraModel):
         resource_group_id: str = None,
         service_name: str = None,
     ):
-        # The time when the gateway endpoint was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+        # The time when the gateway endpoint was created. The time is displayed in UTC in the YYYY-MM-DDThh:mm:ssZ format.
         self.creation_time = creation_time
-        # The ID of the gateway endpoint.
+        # The endpoint instance ID of the gateway endpoint instance.
         self.endpoint_id = endpoint_id
         # The name of the gateway endpoint.
         self.endpoint_name = endpoint_name
@@ -24,7 +24,7 @@ class CreateVpcGatewayEndpointResponseBody(DaraModel):
         self.request_id = request_id
         # The ID of the resource group to which the gateway endpoint belongs.
         self.resource_group_id = resource_group_id
-        # The name of the endpoint service.
+        # The service name of the endpoint service.
         self.service_name = service_name
 
     def validate(self):

@@ -20,8 +20,8 @@ class CreateExpressConnectTrafficQosQueueRequest(DaraModel):
     ):
         # The bandwidth percentage of the QoS queue.
         # 
-        # * When the QoS queue type is **Medium**, this parameter is required. Valid values: 1 to 100.
-        # * When the QoS queue type is **Default**, this parameter is set to "-".
+        # * If the QoS queue type is **Medium**, this parameter is required. Valid values: 1 to 100.
+        # * If the QoS queue type is **Default**, this parameter is set to "-".
         self.bandwidth_percent = bandwidth_percent
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -57,7 +57,7 @@ class CreateExpressConnectTrafficQosQueueRequest(DaraModel):
         self.queue_type = queue_type
         # The region ID of the QoS policy.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id

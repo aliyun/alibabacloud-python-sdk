@@ -17,9 +17,9 @@ class CreateVpcResponseBody(DaraModel):
         self.request_id = request_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The ID of the route table that is automatically created by the system after the VPC is created.
+        # The ID of the route table that is automatically created when the VPC is created.
         self.route_table_id = route_table_id
-        # The ID of the vRouter that is automatically created by the system after the VPC is created.
+        # The ID of the vRouter that is automatically created when the VPC is created.
         self.vrouter_id = vrouter_id
         # The ID of the created VPC.
         self.vpc_id = vpc_id

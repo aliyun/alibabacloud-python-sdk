@@ -19,18 +19,19 @@ class DescribeFailoverTestJobsResponseBody(DaraModel):
     ):
         # The number of entries on the current page.
         self.count = count
-        # The list of failover tests.
+        # The list of failover test jobs.
         self.failover_test_job_list = failover_test_job_list
-        # The number of entries per page. Valid values: **1 to 100**. Default value: 20.
+        # The number of entries per page for paginated queries. Valid values: **1 to 100**. Default value: 20.
         self.max_results = max_results
-        # A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
+        # The token for the next query. Valid values:
         # 
-        # *   If no value is returned for **NextToken**, no next queries are sent.
-        # *   If a value is returned for **NextToken**, the value is used to retrieve a new page of results.
+        # - Leave this parameter empty for the first query or if no next query exists.
+        # 
+        # - If a next query exists, set this parameter to the NextToken value returned by the previous API call.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The number of entries returned.
+        # The total number of entries in the list.
         self.total_count = total_count
 
     def validate(self):
@@ -105,38 +106,43 @@ class DescribeFailoverTestJobsResponseBodyFailoverTestJobList(DaraModel):
         status: str = None,
         stop_time: str = None,
     ):
-        # The description of the failover test.
+        # The description of the failover test job.
         # 
-        # The description must be 0 to 256 characters in length and cannot start with \\*\\*http:// **or** https://\\*\\*.
+        # The description is 0 to 256 characters in length and cannot start with **http://** or **https://**.
         self.description = description
-        # The duration of the failover test. Unit: minutes. Valid values: **1 to 4320**.
+        # The test duration. Unit: minutes. Valid values: **1 to 4320**.
         self.job_duration = job_duration
-        # The ID of the failover test.
+        # The failover test job ID.
         self.job_id = job_id
-        # Indicates whether the failover test is performed immediately. Valid values:
+        # The failover test type. Valid values:
         # 
-        # *   **StartNow**
-        # *   **StartLater**
+        # - **StartNow**: The test starts immediately after the failover test job is created.
+        # 
+        # - **StartLater**: Only the test job is created. The test is not started.
         self.job_type = job_type
-        # The name of the failover test.
+        # The name of the failover test job.
         # 
-        # The name must be 0 to 128 characters in length and cannot start with `http://` or `https://`.
+        # The name is 0 to 128 characters in length and cannot start with `http://` or `https://`.
         self.name = name
-        # The IDs of the failover test resources.
+        # The list of failover test resource IDs.
         self.resource_id = resource_id
-        # The type of the failover test resource. Only **PHYSICALCONNECTION** is returned.
+        # The failover test resource type. Valid values: **PHYSICALCONNECTION**: Express Connect circuit.
         self.resource_type = resource_type
-        # The beginning of the fault drill task. The time must be in UTC. Specify the time in the ISO 8601 standard in `YYYY-MM-DDThh:mm:ssZ` format.
+        # The start time of the failover test job. The time is displayed in UTC in the YYYY-MM-DDThh:mm:ssZ format based on the ISO 8601 standard.
         self.start_time = start_time
-        # The status of the failover test. Valid values:
+        # The status of the failover test job. Valid values:
         # 
-        # *   **Init**
-        # *   **Starting**
-        # *   **Testing**
-        # *   **Stopping**
-        # *   **Stopped**
+        # - **Init**: Pending.
+        # 
+        # - **Starting**: Starting.
+        # 
+        # - **Testing**: In progress.
+        # 
+        # - **Stopping**: Stopping.
+        # 
+        # - **Stopped**: Completed.
         self.status = status
-        # The end of the fault drill task. The time must be in UTC. Specify the time in the ISO 8601 standard in `YYYY-MM-DDThh:mm:ssZ` format.
+        # The end time of the failover test job. The time is displayed in UTC in the YYYY-MM-DDThh:mm:ssZ format based on the ISO 8601 standard.
         self.stop_time = stop_time
 
     def validate(self):

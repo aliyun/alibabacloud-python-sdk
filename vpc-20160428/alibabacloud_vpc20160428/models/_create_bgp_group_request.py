@@ -29,51 +29,51 @@ class CreateBgpGroupRequest(DaraModel):
         # 
         # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
         self.client_token = client_token
         # The description of the BGP group.
         # 
-        # The description must be 2 to 256 characters in length. It must start with a letter and cannot start with `http://` or `https://`.
+        # The description must be 2 to 256 characters in length and must start with a letter or a Chinese character. It cannot start with `http://` or `https://`.
         self.description = description
         # The IP version. Valid values:
         # 
-        # *   **IPv4**: This is the default value.
-        # *   **IPv6**: IPv6 is supported only if the VBR for which you want to create the BGP group has IPv6 enabled.
+        # - **IPv4** (default): IPv4.
+        # - **IPv6**: IPv6. IPv6 is supported only when the VBR for which the BGP group is created has the enable IPv6 feature turned on.
         self.ip_version = ip_version
         # Specifies whether to use a fake ASN. Valid values:
         # 
-        # *   **false** (default)
-        # *   **true**
+        # - **false** (default): No.
+        # - **true**: Yes.
         # 
-        # >  A router that runs BGP typically belongs to only one AS. If you need to replace an existing AS with a new AS and you cannot immediately modify BGP configurations, you can use fake ASNs to ensure service continuity.
+        # > A router that runs BGP can belong to only one AS. When you need to replace an existing AS with a new one (for example, due to AS migration or merger with another AS) and cannot immediately modify the BGP configuration because of business or other objective factors, you can specify a fake ASN to establish a connection with the local end to ensure service continuity.
         self.is_fake_asn = is_fake_asn
         # The custom ASN on the Alibaba Cloud side. Valid values:
         # 
-        # *   **45104**
-        # *   **64512~65534**
-        # *   **4200000000~4294967294**
+        # - **45104**
+        # - **64512 to 65534**
+        # - **4200000000 to 4294967294**
         # 
-        # >  **65025** is reserved by Alibaba Cloud. By default, Alibaba Cloud uses **45104** as **LocalAsn**. If you use custom **LocalAsn** in multi-line access scenarios, loops in BGP may occur.
+        # > **65025** is reserved by Alibaba Cloud. The default value of LocalAsn on the Alibaba Cloud side is **45104**. Using a custom LocalAsn in multi-line access scenarios may cause BGP routing loops. Evaluate the risks before you use this feature.
         self.local_asn = local_asn
         # The name of the BGP group.
         # 
-        # The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+        # The name must be 2 to 128 characters in length and must start with a letter or a Chinese character. It can contain digits, periods (.), underscores (_), and hyphens (-).
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ASN of the gateway device in the data center.
+        # The ASN of the device on the on-premises data center side.
         # 
         # This parameter is required.
         self.peer_asn = peer_asn
-        # The region ID of the VBR.
+        # The region ID of the VBR. 
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The maximum number of routes supported by a BGP peer. Default value: **110**.
+        # The maximum number of routes for a BGP peer. Unit: routes. Default value: **110**.
         self.route_quota = route_quota
         # The ID of the VBR.
         # 

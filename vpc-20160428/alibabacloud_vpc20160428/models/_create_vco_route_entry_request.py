@@ -20,48 +20,45 @@ class CreateVcoRouteEntryRequest(DaraModel):
         vpn_connection_id: str = None,
         weight: int = None,
     ):
-        # The status of the destination-based route.
-        # 
-        # Only **published** is returned, which indicates that the current route is published to the transit router.
-        self.client_token = client_token
-        # The weight of the destination-based route. Valid values:
-        # 
-        # *   **0**: a low priority.
-        # *   **100**: a high priority.
-        self.description = description
-        # Specifies whether to only precheck the request. Valid values:
-        # 
-        # *   **true**: prechecks the request without performing the operation. The system prechecks the required parameters, request syntax, and limits. If the request fails to pass the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
-        # *   **false** (default): sends the request. After the request passes the precheck, a 2xx HTTP status code is returned and the operation is performed.
-        self.dry_run = dry_run
-        # The next hop of the destination-based route.
-        # 
-        # This parameter is required.
-        self.next_hop = next_hop
-        # The tunneling protocol.
-        # 
-        # The value is set to **Ipsec**, which indicates the IPsec tunneling protocol.
-        self.overlay_mode = overlay_mode
-        self.owner_account = owner_account
         # The client token that is used to ensure the idempotence of the request.
         # 
         # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
+        self.client_token = client_token
+        # The description of the destination route entry.
+        self.description = description
+        # Specifies whether to perform a dry run. Valid values:
+        # - **true**: performs a dry run. The system checks the required parameters, request syntax, and business restrictions. If the check fails, the corresponding error is returned. If the check succeeds, the error code `DryRunOperation` is returned.
+        # - **false** (default): performs a dry run and sends the request. If the check succeeds, an HTTP 2xx status code is returned and the operation is performed.
+        self.dry_run = dry_run
+        # The next hop of the destination route entry.
+        # 
+        # This parameter is required.
+        self.next_hop = next_hop
+        # The tunneling protocol. Set the value to **Ipsec** (default), which specifies the IPsec tunneling protocol.
+        self.overlay_mode = overlay_mode
+        self.owner_account = owner_account
+        # The region ID of the IPsec-VPN connection.
+        # 
+        # You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the IPsec-VPN connection.
+        # The destination CIDR block of the destination route entry.
         # 
         # This parameter is required.
         self.route_dest = route_dest
-        # The response parameters.
+        # The ID of the IPsec-VPN connection.
         # 
         # This parameter is required.
         self.vpn_connection_id = vpn_connection_id
-        # The destination CIDR block of the destination-based route.
+        # The weight of the destination route entry. Valid values:
+        # 
+        # - **0**: low priority.
+        # - **100**: high priority.
         # 
         # This parameter is required.
         self.weight = weight

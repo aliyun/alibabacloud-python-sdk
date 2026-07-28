@@ -27,51 +27,51 @@ class DescribeIPv6TranslatorEntriesRequest(DaraModel):
         resource_owner_id: int = None,
         trans_protocol: str = None,
     ):
-        # The ID of the network ACL.
+        # The ID of the access control policy group.
         self.acl_id = acl_id
-        # Specifies whether to enable access control lists (ACLs). Valid values:
-        # 
-        # *   **on**
-        # *   **off**
+        # Specifies whether to enable access control. Valid values:
+        # - **on**: enabled.
+        # - **off**: disabled.
         self.acl_status = acl_status
-        # The ACL type. Valid values:
+        # The type of the access control policy. Valid values:
         # 
-        # *   **white**: a whitelist. IPv6 addresses in the ACL are allowed to access backend services.
-        # *   **black**: a blacklist. IPv6 addresses in the ACL are not allowed to access backend services.
+        # - **white**: allows the IPv6 addresses in the access control policy group to access backend services.
+        # 
+        # - **black**: denies the IPv6 addresses in the access control policy group from accessing backend services.
         self.acl_type = acl_type
-        # The IPv6 address allocated to the IPv6 Translation Service instance.
+        # The IPv6 address allocated by the IPv6 Translation Service instance.
         self.allocate_ipv_6addr = allocate_ipv_6addr
-        # The port used by the IPv6 address allocated to the IPv6 Translation Service instance.
+        # The port used by the IPv6 address allocated by the IPv6 Translation Service instance.
         self.allocate_ipv_6port = allocate_ipv_6port
-        # The public IPv4 address that needs to provide IPv6 services.
+        # The public IPv4 address that requires IPv6 services.
         self.backend_ipv_4addr = backend_ipv_4addr
-        # The port used by the public IPv4 address that needs to provide IPv6 services.
+        # The port used by the public IPv4 address that requires IPv6 services.
         self.backend_ipv_4port = backend_ipv_4port
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # Generate a parameter value from your client to ensure uniqueness across different requests. ClientToken supports only ASCII characters.
         self.client_token = client_token
-        # The name of the IPv6 mapping entry.
+        # The name of the IPv6 Translation mapping entry.
         self.entry_name = entry_name
-        # The ID of the IPv6 mapping entry.
+        # The ID of the IPv6 Translation mapping entry to query. 
         # 
-        # > If **Ipv6TranslatorId** and **Ipv6TranslatorEntryId** are empty, information about all IPv6 mapping entries is returned. If only **Ipv6TranslatorEntryId** is empty, information about the IPv6 mapping entries of the current IPv6 Translation Service instance is returned.
+        # > If both **Ipv6TranslatorId** and **Ipv6TranslatorEntryId** are empty, all IPv6 Translation mapping entries are returned. If only **Ipv6TranslatorEntryId** is empty, all IPv6 Translation mapping entries under the current IPv6 Translation Service instance are returned.
         self.ipv_6translator_entry_id = ipv_6translator_entry_id
         # The ID of the IPv6 Translation Service instance.
         self.ipv_6translator_id = ipv_6translator_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of the page to return. Default value: 1.
+        # The page number. Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page. Maximum value: **50**. Default value: **10**.
+        # The number of entries per page for paging. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
-        # The region of the IPv6 Translation Service instance. You can call the **DescribeRegions** operation to query the most recent region list.
+        # The region of the IPv6 Translation Service instance. You can call the **DescribeRegions** operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The protocol used by the data to be forwarded.
+        # The protocol type used for data forwarding.
         self.trans_protocol = trans_protocol
 
     def validate(self):

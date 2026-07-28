@@ -25,64 +25,67 @@ class AssociatePhysicalConnectionToVirtualBorderRouterRequest(DaraModel):
         vbr_id: str = None,
         vlan_id: str = None,
     ):
-        # The circuit code of the Express Connect circuit. The circuit code is provided by the connectivity provider.
+        # The circuit code provided by the carrier for the Express Connect circuit. 
         # 
-        # >  Only the Express Connect circuit owner can specify this parameter.
+        # > Only the owner of the Express Connect circuit can specify this parameter.
         self.circuit_code = circuit_code
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # The client generates the value of this parameter. The value must be unique among different requests and cannot exceed 64 ASCII characters in length.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        # > If you do not specify this parameter, the system uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may differ for each API request.
         self.client_token = client_token
         # Specifies whether to enable IPv6. Valid values:
         # 
-        # *   **true**
-        # *   **false** (default)
+        # - **true**: Enabled.
+        # 
+        # - **false** (default): Disabled.
         self.enable_ipv_6 = enable_ipv_6
-        # The IP address of the gateway device on the Alibaba Cloud side.
+        # The Alibaba Cloud-side IP address of the VBR instance.
         self.local_gateway_ip = local_gateway_ip
-        # The IPv6 address of the gateway device on the Alibaba Cloud side.
+        # The Alibaba Cloud-side IPv6 address of the VBR instance.
         self.local_ipv_6gateway_ip = local_ipv_6gateway_ip
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The IP address of the gateway device on the user side.
+        # The client-side IP address of the VBR instance.
         # 
-        # *   Only the owner of the VBR can set or modify this parameter.
-        # *   When you create a VBR for the owner of the Express Connect circuit, this parameter is required.
+        # - Only the VBR owner can specify or modify this property.
+        # 
+        # - This parameter is required when you create a VBR instance for the Express Connect circuit owner.
         self.peer_gateway_ip = peer_gateway_ip
-        # The IPv6 address of the gateway device in the data center.
+        # The client-side IPv6 address of the VBR instance.
         # 
-        # *   Only the owner of the VBR can specify or modify this parameter.
-        # *   When you create a VBR for the owner of the Express Connect circuit, this parameter is required.
+        # - Only the VBR owner can specify or modify this property.
+        # 
+        # - This parameter is required when you create a VBR instance for the Express Connect circuit owner.
         self.peer_ipv_6gateway_ip = peer_ipv_6gateway_ip
-        # The subnet mask of the IPv6 addresses of the gateway devices on the user side and Alibaba Cloud side.
+        # The subnet mask for the Alibaba Cloud-side and client-side IPv6 addresses of the VBR instance.
         # 
-        # The two IPv6 addresses must fall within the same subnet.
+        # The two IPv6 addresses must be in the same subnet.
         self.peering_ipv_6subnet_mask = peering_ipv_6subnet_mask
-        # The subnet mask of the IP addresses of the VBR and the gateway device in the data center.
+        # The subnet mask for the Alibaba Cloud-side and client-side IP addresses of the VBR instance.
         # 
-        # The two IP addresses must fall within the same subnet.
+        # The two IP addresses must be in the same subnet.
         self.peering_subnet_mask = peering_subnet_mask
-        # The ID of the Express Connect circuit.
+        # The Express Connect circuit instance ID.
         # 
         # This parameter is required.
         self.physical_connection_id = physical_connection_id
         # The region ID of the Express Connect circuit.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/448570.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the VBR.
+        # The VBR instance ID.
         # 
         # This parameter is required.
         self.vbr_id = vbr_id
-        # The VLAN ID of the VBR. Valid values: **0 to 2999**.
+        # The VLAN ID of the VBR. Valid values: **0 to 2999**. 
         # 
-        # >  Only the Express Connect circuit owner can specify this parameter. Two VBRs associated with the same Express Connect circuit cannot use the same VLAN ID.
+        # > Only the owner of the Express Connect circuit can specify this parameter. The VLAN IDs of two VBRs on the same Express Connect circuit must be different.
         # 
         # This parameter is required.
         self.vlan_id = vlan_id

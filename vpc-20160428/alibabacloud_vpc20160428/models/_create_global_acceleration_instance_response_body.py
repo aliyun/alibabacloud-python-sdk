@@ -11,9 +11,9 @@ class CreateGlobalAccelerationInstanceResponseBody(DaraModel):
         ip_address: str = None,
         request_id: str = None,
     ):
-        # The ID of the GA instance.
+        # The ID of the Alibaba Cloud Global Accelerator (GA) instance.
         self.global_acceleration_instance_id = global_acceleration_instance_id
-        # The public IP address of the GA instance.
+        # The public IP address of the Alibaba Cloud Global Accelerator (GA) instance.
         # 
         # If **BandwidthType** is set to **Sharing**, this parameter is not returned.
         self.ip_address = ip_address

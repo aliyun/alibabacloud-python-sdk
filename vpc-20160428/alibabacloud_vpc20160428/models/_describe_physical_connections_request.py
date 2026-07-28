@@ -29,11 +29,11 @@ class DescribePhysicalConnectionsRequest(DaraModel):
         self.client_token = client_token
         # The list of filter conditions.
         self.filter = filter
-        # Specifies whether to return data of orders that have not taken effect. Valid values:
+        # Specifies whether to return order data that has not taken effect. Valid values:
         # 
-        # * **true**: Returns data of orders that have not taken effect.
+        # * **true**: Returns order data that has not taken effect.
         # 
-        # * **false** (default): Does not return data of orders that have not taken effect.
+        # * **false** (default): Does not return order data that has not taken effect.
         self.include_reservation_data = include_reservation_data
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -165,11 +165,11 @@ class DescribePhysicalConnectionsRequestTags(DaraModel):
     ):
         # The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
         # 
-        # The tag key can be up to 64 characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+        # The tag key can be up to 64 characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
         # The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
         # 
-        # The tag value can be up to 128 characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+        # The tag value can be up to 128 characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -206,44 +206,46 @@ class DescribePhysicalConnectionsRequestFilter(DaraModel):
     ):
         # The filter condition. Valid values:
         # 
-        # - **PhysicalConnectionId**: the Express Connect circuit ID.
+        # - **PhysicalConnectionId**: the ID of the Express Connect circuit.
         # 
-        # - **AccessPointId**: the access point ID.
+        # - **AccessPointId**: the ID of the access point.
         # 
-        # - **Type**: the Express Connect circuit type. This filter condition supports only the value **VPC**.
+        # - **Type**: the type of the Express Connect circuit. This filter condition supports only the value **VPC**.
         # 
         # - **LineOperator**: the carrier of the Express Connect circuit. This filter condition supports the following values:
         #     - **CT**: China Telecom.
         #     - **CU**: China Unicom.
         #     - **CM**: China Mobile.
-        #     - **CO**: other carriers in China.
+        #     - **CO**: Other carriers in China. 
         #     - **Equinix**: Equinix.
-        #     - **Other**: other carriers outside China.
+        #     - **Other**: Other carriers outside China.
         # 
         # - **Spec**: the specification of the Express Connect circuit. This filter condition supports the following values:
         #     - **1G and below**.
         #     - **10G**.
         #     - **40G**.
         #     - **100G**.
-        # >  The **40G** and **100G** specifications are not available by default. Only users who have committed an application to their account manager and received approval can use these values.
+        # >  The **40G** and **100G** specifications are not available by default. Only users who have submitted an application to their account manager and received approval can use these values.
         # 
         # - **Status**: the status of the Express Connect circuit. This filter condition supports the following values:
         #     - **Initial**: pending application.
-        #     - **Approved**: approved.
-        #     - **Allocating**: allocating resources.
-        #     - **Allocated**: under construction.
-        #     - **Confirmed**: pending user confirmation.
+        #     - **Approved**: application approved.
+        #     - **Allocating**: resources are being allocated.
+        #     - **Allocated**: under construction.   
+        #     - **Confirmed**: pending user confirmation.   
         #     - **Enabled**: enabled.
         #     - **Rejected**: application denied.
         #     - **Canceled**: canceled.
         #     - **Allocation Failed**: resource allocation failed.
-        #     - **Terminating**: stopping.
-        #     - **Terminated**: stopped.
+        #     - **Terminating**: being terminated.
+        #     - **Terminated**: terminated.
         # 
         # - **Name**: the name of the Express Connect circuit.
-        # - **ProductType**: the circuit type. Valid values:
-        #     - **VirtualPhysicalConnection**: shared Express Connect circuit.
+        # - **ProductType**: the type of the Express Connect circuit. Valid values:
+        #     - **VirtualPhysicalConnection**: shared Express Connect circuits.
         #     - **PhysicalConnection**: dedicated Express Connect circuit.
+        #  
+        # 
         # 
         # You can specify up to 5 filter conditions at a time. The filter conditions have an **AND** relationship. Results are returned only when all filter conditions are met.
         self.key = key

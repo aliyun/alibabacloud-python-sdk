@@ -23,24 +23,23 @@ class ListIpv4GatewaysRequest(DaraModel):
         tags: List[main_models.ListIpv4GatewaysRequestTags] = None,
         vpc_id: str = None,
     ):
-        # The ID of the IPv4 gateway.
+        # The ID of the IPv4 gateway instance that you want to query.
         self.ipv_4gateway_id = ipv_4gateway_id
-        # The name of the IPv4 gateway.
+        # The name of the IPv4 gateway instance that you want to query.
         # 
-        # The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
+        # The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         self.ipv_4gateway_name = ipv_4gateway_name
-        # The number of entries to return on each page. Valid values: **1** to **100**. Default value: **10**.
+        # The number of entries per page for a paged query. Valid values: **1** to **100**. Default value: **10**.
         self.max_results = max_results
-        # The token that is used for the next query. Valid values:
-        # 
-        # *   If this is your first query and no next queries are to be sent, ignore this parameter.
-        # *   If a next query is to be sent, set the value to the value of NextToken that is returned from the last call.
+        # The pagination token. Valid values:
+        # - If this is the first query or no subsequent query exists, leave this parameter empty.
+        # - If a subsequent query exists, set this parameter to the NextToken value returned by the previous API call.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the IPv4 gateways to be queried are deployed.
+        # The region ID of the IPv4 gateways that you want to query.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -48,9 +47,9 @@ class ListIpv4GatewaysRequest(DaraModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The tags of the resource.
+        # The tag list.
         self.tags = tags
-        # The ID of the virtual private cloud (VPC) with which the IPv4 gateway is associated.
+        # The ID of the VPC associated with the IPv4 gateway instance that you want to query.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -153,13 +152,13 @@ class ListIpv4GatewaysRequestTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key. You can specify at most 20 tag keys. The tag key cannot be an empty string.
+        # The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
         # 
-        # The key cannot exceed 64 characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
+        # The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         self.key = key
-        # The tag value. You can specify at most 20 tag values. It can be an empty string.
+        # The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
         # 
-        # The tag value cannot exceed 128 characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter but cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+        # The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

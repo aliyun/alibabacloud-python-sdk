@@ -19,43 +19,47 @@ class CreateGlobalAccelerationInstanceRequest(DaraModel):
         resource_owner_id: int = None,
         service_location: str = None,
     ):
-        # The maximum bandwidth of the GA instance. Set the value to **10**. Unit: Mbit/s.
+        # The peak bandwidth of the Alibaba Cloud Global Accelerator (GA) instance. Unit: Mbit/s. Valid value: **10**.
         # 
         # This parameter is required.
         self.bandwidth = bandwidth
-        # The bandwidth type. Valid values:
+        # The bandwidth type of the instance. Valid values:
         # 
-        # *   **Sharing**
-        # *   **Exclusive**
+        # - **Sharing**: shared bandwidth.
+        # 
+        # - **Exclusive**: dedicated bandwidth.
         self.bandwidth_type = bandwidth_type
-        # The client token that is used to ensure the idempotence of the request.
+        # The client token that is used to ensure the idempotence of the request. 
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # The client generates the value of this parameter. Ensure that the value is unique among different requests. The value can be up to 64 ASCII characters in length.
         self.client_token = client_token
-        # The description of the GA instance.
+        # The description of the Alibaba Cloud Global Accelerator (GA) instance. 
         # 
-        # The description must be 2 to 256 characters in length. It must start with a letter but cannot start with `http://` or `https://`.
+        # The description must be 2 to 256 characters in length and must start with a letter or a Chinese character, but cannot start with `http://` or `https://`.
         self.description = description
-        # The name of the GA instance.
+        # The name of the Alibaba Cloud Global Accelerator (GA) instance.  
         # 
-        # The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
+        # The name must be 2 to 128 characters in length and must start with a letter or a Chinese character. It can contain digits, periods (.), underscores (_), and hyphens (-), but cannot start with `http://` or `https://`.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the GA instance.
+        # The region where the Alibaba Cloud Global Accelerator (GA) instance resides. 
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can invoke the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The acceleration area. Valid values:
+        # The area where the accelerated service resides. Valid values:
         # 
-        # *   **china-mainland**
-        # *   **north-america**
-        # *   **asia-pacific**
-        # *   **europe**
+        # - **china-mainland**: the Chinese mainland.
+        # 
+        # - **north-america**: North America.
+        #    
+        # - **asia-pacific**: Asia-Pacific.
+        #    
+        # - **europe**: Europe.
         # 
         # This parameter is required.
         self.service_location = service_location

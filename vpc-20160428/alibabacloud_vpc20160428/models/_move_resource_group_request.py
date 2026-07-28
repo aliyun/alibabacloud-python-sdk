@@ -18,7 +18,7 @@ class MoveResourceGroupRequest(DaraModel):
     ):
         # The ID of the resource group to which you want to move the cloud resource instance.
         # 
-        # > A resource group is a mechanism for managing resources by group within an Alibaba Cloud account. Resource groups help you address complex resource grouping and authorization management issues within a single cloud account. For more information, see [What is Resource Management?](https://help.aliyun.com/document_detail/94475.html).
+        # > A resource group is a mechanism for grouping and managing resources within an Alibaba Cloud account. Resource groups help you address the complexity of resource grouping and authorization management within a single cloud account. For more information, see [What is Resource Management?](https://help.aliyun.com/document_detail/94475.html).
         # 
         # This parameter is required.
         self.new_resource_group_id = new_resource_group_id

@@ -17,11 +17,11 @@ class DeleteRouteEntriesResponseBody(DaraModel):
     ):
         # The number of route entries that failed to be deleted.
         self.failed_count = failed_count
-        # The information about the route entry that failed to be deleted.
+        # The information about the route entries that failed to be deleted.
         self.failed_route_entries = failed_route_entries
         # The request ID.
         self.request_id = request_id
-        # The number of route entries that were deleted.
+        # The number of route entries that were successfully deleted.
         self.success_count = success_count
 
     def validate(self):
@@ -79,13 +79,13 @@ class DeleteRouteEntriesResponseBodyFailedRouteEntries(DaraModel):
         next_hop: str = None,
         route_entry_id: str = None,
     ):
-        # The destination CIDR block of the route entry that failed to be deleted. IPv4 and IPv6 CIDR blocks are supported.
+        # The destination CIDR block of the route entry that failed to be deleted. IPv4 CIDR blocks, IPv6 CIDR blocks, and prefix list CIDR blocks are supported.
         self.dst_cidr_block = dst_cidr_block
-        # The error code.
+        # The error code returned for the failure.
         self.failed_code = failed_code
-        # The error message.
+        # The error message returned for the failure.
         self.failed_message = failed_message
-        # The ID of the next hop that failed to be deleted.
+        # The instance ID of the next hop that failed to be deleted.
         self.next_hop = next_hop
         # The ID of the route entry that failed to be deleted.
         self.route_entry_id = route_entry_id

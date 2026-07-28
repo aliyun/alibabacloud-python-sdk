@@ -36,7 +36,7 @@ class TransformEipSegmentToPublicIpAddressPoolRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The resource group ID of the IP address pool.
+        # The ID of the resource group to which the IP address pool belongs.
         self.resource_group_id = resource_group_id
 
     def validate(self):

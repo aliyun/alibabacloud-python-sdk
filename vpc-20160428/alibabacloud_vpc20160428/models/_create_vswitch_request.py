@@ -25,49 +25,56 @@ class CreateVSwitchRequest(DaraModel):
         vpc_ipv_6cidr_block: str = None,
         zone_id: str = None,
     ):
-        # The CIDR block of the vSwitch. Take note of the following limits:
+        # The CIDR block of the vSwitch. The following requirements apply: 
         # 
-        # *   The subnet mask of the CIDR block must be 16 to 29 bits in length.
-        # *   The CIDR block of the vSwitch must fall within the CIDR block of the VPC to which the vSwitch belongs.
-        # *   The CIDR block of a vSwitch cannot be the same as the destination CIDR block in a route entry of the VPC. However, it can be a subset of the destination CIDR block.
+        # - The mask length of the vSwitch CIDR block must be 16 to 29 bits.  
+        # 
+        # - The vSwitch CIDR block must be a subset of the VPC CIDR block to which the vSwitch belongs. 
+        # 
+        # - The vSwitch CIDR block cannot be the same as the destination CIDR block of a route in the VPC, but it can be a subset of the destination CIDR block. 
+        # 
+        # - The vSwitch CIDR block cannot be 100.64.0.0/10 or its subnets.
+        # 
+        # > After a vSwitch is created, you cannot modify its CIDR block.
         # 
         # This parameter is required.
         self.cidr_block = cidr_block
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among all requests. The token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** may be different for each API request.
+        # > If you do not specify this parameter, the system uses the **RequestId** as the **ClientToken**. The **RequestId** may differ for each API request.
         self.client_token = client_token
-        # The description of the vSwitch.
+        # The description of the vSwitch.  
         # 
         # The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description
-        # The last eight bits of the IPv6 CIDR block of the vSwitch. Valid values: **0** to **255**.
+        # The last 8 bits of the IPv6 CIDR block of the vSwitch. Valid values: **0** to **255**.
+        # You can specify this parameter only when the VPC to which the vSwitch belongs has IPv6 enabled. This parameter allows you to assign an IPv6 CIDR block to the vSwitch. After the IPv6 CIDR block is assigned, it cannot be changed. Make sure that the CIDR block does not overlap with those of other vSwitches in the VPC.
         self.ipv_6cidr_block = ipv_6cidr_block
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the vSwitch.
+        # The region ID of the vSwitch to create.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region IDs.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The tag of the resource.
+        # The tags of the resource.
         self.tag = tag
-        # The name of the vSwitch.
+        # The name of the vSwitch. 
         # 
-        # The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
+        # The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         self.v_switch_name = v_switch_name
-        # The ID of the VPC where you want to create the vSwitch.
+        # The ID of the VPC to which the vSwitch belongs.
         # 
         # This parameter is required.
         self.vpc_id = vpc_id
-        # The IPv6 CIDR block of the VPC.
+        # The IPv6 CIDR block of the VPC. If the VPC to which the vSwitch belongs has multiple IPv6 CIDR blocks, you can specify this parameter to determine the IPv6 CIDR block range for the vSwitch. If you do not specify this parameter, the IPv6 CIDR block assigned when IPv6 was enabled for the VPC is used.
         self.vpc_ipv_6cidr_block = vpc_ipv_6cidr_block
-        # The zone ID of the vSwitch.
+        # The ID of the zone in which to create the vSwitch.
         # 
-        # You can call the [DescribeZones](https://help.aliyun.com/document_detail/36064.html) operation to query the most recent zone list.
+        # You can call the [DescribeZones](https://help.aliyun.com/document_detail/36064.html) operation to query the zone IDs.
         # 
         # This parameter is required.
         self.zone_id = zone_id
@@ -184,13 +191,13 @@ class CreateVSwitchRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key. You can specify at most 20 tag keys. The tag key cannot be an empty string.
+        # The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
         # 
-        # The tag key can be at most 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # A tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
-        # The tag value. You can specify at most 20 tag values. The tag value can be an empty string.
+        # The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
         # 
-        # The tag value can be up to 128 characters in length, but cannot contain `http://` or `https://`. The tag value cannot start with `aliyun` or `acs:`.
+        # The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

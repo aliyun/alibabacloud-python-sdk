@@ -19,23 +19,23 @@ class ModifyExpressCloudConnectionAttributeRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The BGP autonomous system number (ASN) to be configured for the Smart Access Gateway (SAG) device.
+        # The local BGP autonomous system (AS) number to be configured on the Smart Access Gateway device.
         self.bgp_as = bgp_as
-        # The peer IP address when the SAG device is connected to the cloud.
+        # The cloud-side IP address used for peering with the Smart Access Gateway device.
         self.ce_ip = ce_ip
-        # Descriptions of ECC.
+        # The description of the Express Cloud Connection instance.
         self.description = description
-        # The ID of the ECC instance.
+        # The instance ID of the Express Cloud Connection instance.
         # 
         # This parameter is required.
         self.ecc_id = ecc_id
-        # The name of the ECC instance.
+        # The name of the Express Cloud Connection instance.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The on-premises IP address when the SAG device is connected to the cloud.
+        # The local IP address of the Smart Access Gateway device used for peering with the cloud.
         self.pe_ip = pe_ip
-        # The region ID of the ECC instance.
+        # The region ID of the Express Cloud Connection instance.
         # 
         # This parameter is required.
         self.region_id = region_id

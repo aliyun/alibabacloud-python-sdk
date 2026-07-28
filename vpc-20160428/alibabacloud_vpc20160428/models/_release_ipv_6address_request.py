@@ -18,16 +18,15 @@ class ReleaseIpv6AddressRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # The client generates the value. The value must be unique among different requests and cannot exceed 64 ASCII characters in length.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
+        # > If you do not specify this parameter, the system uses the RequestId of the API request as the ClientToken. The RequestId may be different for each API request.
         self.client_token = client_token
-        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
-        # 
-        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
-        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        # Specifies whether to perform a dry run. Valid values:
+        # - **true**: performs a dry run without actually creating the IP address pool. The system checks whether the required parameters are specified, whether the request format is valid, and whether business limits are met. If the check fails, the corresponding error is returned. If the check succeeds, the error code `DryRunOperation` is returned.
+        # - **false** (default): performs a dry run and sends the request. If the check succeeds, an HTTP 2xx status code is returned and the operation is performed.
         self.dry_run = dry_run
-        # The ID of the IPv6 address.
+        # The instance ID of the IPv6 address.
         # 
         # This parameter is required.
         self.ipv_6address_id = ipv_6address_id

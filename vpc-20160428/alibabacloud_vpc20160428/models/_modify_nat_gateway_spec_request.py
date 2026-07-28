@@ -17,34 +17,37 @@ class ModifyNatGatewaySpecRequest(DaraModel):
         resource_owner_id: int = None,
         spec: str = None,
     ):
-        # Specifies whether to automatically complete the payment.
+        # Specifies whether to enable automatic payment.
         # 
-        # *   **true**: enables automatic payment. Payments are automatically completed.
-        # *   **false** (default): disables automatic payment. If you select this option, you must go to the Order Center to complete the payment after an order is generated.
+        # - **true**: enables automatic payment. The order is automatically paid.
+        # 
+        # - **false** (default): disables automatic payment. After the order is generated, complete the payment in the Order Center.
         self.auto_pay = auto_pay
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters.
+        # Generate a parameter value from your client to ensure uniqueness across different requests. ClientToken supports only ASCII characters.
         self.client_token = client_token
-        # The ID of the Internet NAT gateway that you want to upgrade.
+        # The ID of the Internet NAT gateway whose specification you want to modify.
         # 
         # This parameter is required.
         self.nat_gateway_id = nat_gateway_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the Internet NAT gateway is deployed.
+        # The region ID of the Internet NAT gateway.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The size of the Internet NAT gateway. Valid values:
+        # The specification of the Internet NAT gateway. Valid values:
         # 
-        # *   **Small**: small
-        # *   **Middle**: medium
-        # *   **Large**: large
+        # - **Small**
+        # 
+        # - **Middle**: medium.
+        # 
+        # - **Large**
         # 
         # This parameter is required.
         self.spec = spec

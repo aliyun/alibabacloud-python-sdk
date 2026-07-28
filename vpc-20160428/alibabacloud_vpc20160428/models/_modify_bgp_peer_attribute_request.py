@@ -21,32 +21,36 @@ class ModifyBgpPeerAttributeRequest(DaraModel):
     ):
         # The BFD hop count. Valid values: **1** to **255**.
         # 
-        # This parameter is required only if you enable BFD. The parameter specifies the maximum number of network devices that a packet can traverse from the source to the destination. Set a value based on your network topology.
+        # This parameter is required when BFD is enabled.
+        # Enter the BFD hop count, which specifies the maximum number of devices that data passes through from the source to the destination. You can configure different hop counts based on the actual physical link conditions.
+        # 
+        # > If you use BFD in a multi-cloud environment or a direct fiber connection topology where no bridging devices exist, change the default BFD hop count from **255** to **1**.
         self.bfd_multi_hop = bfd_multi_hop
-        # The ID of the BGP group to which the BGP peer that you want to modify belongs.
+        # The ID of the BGP group to which the BGP peer belongs.
         self.bgp_group_id = bgp_group_id
-        # The ID of the BGP peer that you want to modify.
+        # The ID of the BGP peer whose attributes you want to modify.
         # 
         # This parameter is required.
         self.bgp_peer_id = bgp_peer_id
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # The client generates the value. The value must be unique among different requests and cannot exceed 64 ASCII characters in length.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        # > If you do not specify this parameter, the system uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
         self.client_token = client_token
-        # Specifies whether to enable the Bidirectional Forwarding Detection (BFD) feature. Valid values:
+        # Specifies whether to enable Bidirectional Forwarding Detection (BFD). Valid values:
         # 
-        # *   **true**
-        # *   **false** (default)
+        # - **true**: enables BFD.
+        # 
+        # - **false** (default): does not enable BFD.
         self.enable_bfd = enable_bfd
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The IP address of the BGP peer that you want to modify.
+        # The IP address of the BGP peer.
         self.peer_ip_address = peer_ip_address
-        # The region ID of the BGP group to which the BGP peer that you want to modify belongs.
+        # The region ID of the BGP group to which the BGP peer belongs. 
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id

@@ -26,45 +26,49 @@ class DescribeIpv6GatewayAttributeResponseBody(DaraModel):
         tags: main_models.DescribeIpv6GatewayAttributeResponseBodyTags = None,
         vpc_id: str = None,
     ):
-        # The status of the IPv6 gateway. Valid values:
+        # The business status of the IPv6 gateway. Valid values:
         # 
-        # *   **Normal**
-        # *   **FinancialLocked**
-        # *   **SecurityLocked**
+        # - **Normal**: Normal.
+        # 
+        # - **FinancialLocked**: financial lock.
+        # 
+        # - **SecurityLocked**: security lock.
         self.business_status = business_status
         # The time when the IPv6 gateway was created.
         self.creation_time = creation_time
         # The description of the IPv6 gateway.
         self.description = description
-        # The time when the IPv6 gateway expires.
+        # The expiration time of the IPv6 gateway.
         self.expired_time = expired_time
         # The ID of the gateway route table associated with the IPv6 gateway.
         # 
-        # >  This parameter is available only when the IPv6 gateway is associated with a gateway route table.
+        # 
+        # > This parameter is displayed only for IPv6 gateways that are associated with a gateway route table.
         self.gateway_route_table_id = gateway_route_table_id
-        # The metering method of the IPv6 gateway.
+        # The billing method of the IPv6 gateway.
         self.instance_charge_type = instance_charge_type
-        # The ID of the IPv6 gateway.
+        # The instance ID of the IPv6 gateway.
         self.ipv_6gateway_id = ipv_6gateway_id
         # The name of the IPv6 gateway.
         self.name = name
-        # The ID of the Alibaba Cloud account to which the IPv6 gateway belongs.
+        # The Alibaba Cloud account ID of the IPv6 gateway owner.
         # 
-        # >  This value is of the Long type. In some languages, the precision may be lost. Use this value with caution.
+        # >Notice: This value is of the Long type. Precision loss may occur in certain programming languages. Use this value with caution.
         self.owner_id = owner_id
-        # The ID of the region where the IPv6 gateway is deployed.
+        # The region ID of the IPv6 gateway.
         self.region_id = region_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         # The status of the IPv6 gateway. Valid values:
         # 
-        # *   **Pending**
-        # *   **Available**
+        # - **Pending**: being configured.
+        # 
+        # - **Available**: active.
         self.status = status
         self.tags = tags
-        # The ID of the virtual private cloud (VPC) to which the IPv6 gateway belongs.
+        # The ID of the VPC to which the IPv6 gateway belongs.
         self.vpc_id = vpc_id
 
     def validate(self):

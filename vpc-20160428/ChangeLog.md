@@ -1,3 +1,9 @@
+2026-07-28 Version: 7.1.4
+- Update API CreateFlowLog: add request parameters LogFormat.
+- Update API DescribeFlowLogs: add response parameters Body.FlowLogs.$.LogFormat.
+- Update API ModifyFlowLogAttribute: add request parameters LogFormat.
+
+
 2026-06-25 Version: 7.1.3
 - Update API CreateSslVpnServer: add request parameters DnsServers.
 - Update API DescribeSslVpnServers: add response parameters Body.SslVpnServers.$.DnsServers.

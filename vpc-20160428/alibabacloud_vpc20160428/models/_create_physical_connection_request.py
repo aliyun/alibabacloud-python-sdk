@@ -31,7 +31,7 @@ class CreatePhysicalConnectionRequest(DaraModel):
         type: str = None,
         bandwidth: int = None,
     ):
-        # The ID of the access point where the Express Connect circuit is located.
+        # The ID of the access point for the Express Connect circuit.
         # 
         # This parameter is required.
         self.access_point_id = access_point_id
@@ -39,9 +39,9 @@ class CreatePhysicalConnectionRequest(DaraModel):
         self.circuit_code = circuit_code
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # Generate a parameter value from your client to ensure uniqueness across different requests. ClientToken supports only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # > If you do not specify this parameter, the system uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
         self.client_token = client_token
         # The description of the Express Connect circuit. 
         # 
@@ -57,11 +57,11 @@ class CreatePhysicalConnectionRequest(DaraModel):
         # 
         # - **CM**: China Mobile.
         # 
-        # - **CO**: Other carriers in China. 
+        # - **CO**: Other carriers in the Chinese mainland. 
         # 
         # - **Equinix**: Equinix.
         # 
-        # - **Other**: Other carriers outside China.
+        # - **Other**: Other carriers outside the Chinese mainland.
         # 
         # This parameter is required.
         self.line_operator = line_operator
@@ -78,14 +78,14 @@ class CreatePhysicalConnectionRequest(DaraModel):
         #   - `SFP-10G-LR-SM1310,10KM`
         #   - `SFP-10G-ER-SM1550,40KM` 
         #   - `SFP-10G-ZR-SM1550,80KM`  
-        # - 40GBase-LR : 
+        # - 40GBase-LR ： 
         #   - `QSFP-40G-LR4-WDM1300,10KM`
         #   - `QSFP-40G-ER4-WDM1300,40KM`
         #   - `QSFP-40G-ZR4-WDM1300,80KM`
-        # - 100GBase-LR : 
+        # - 100GBase-LR ： 
         #   - `QSFP28-100G-LR4-WDM1300,10KM`
         #   - `QSFP28-100G-ER4-WDM1300,40KM`
-        #   - `QSFP28-100G-ZR4-WDM1300,80KM`.
+        #   - `QSFP28-100G-ZR4-WDM1300,80KM`
         self.optical_module_model = optical_module_model
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -107,7 +107,7 @@ class CreatePhysicalConnectionRequest(DaraModel):
         # 
         # - **100GBase-LR**: 100 GE single-mode optical port.
         # 
-        # > 40GBase-LR and 100GBase-LR are created based on the actual port availability in the backend. Contact your account manager for port availability details.
+        # > 40GBase-LR and 100GBase-LR are created based on the actual port availability. Contact your account manager for details.
         self.port_type = port_type
         # The instance ID of the redundant Express Connect circuit. The redundant circuit must be in the **Allocated**, **Confirmed**, or **Enabled** state.
         self.redundant_physical_connection_id = redundant_physical_connection_id

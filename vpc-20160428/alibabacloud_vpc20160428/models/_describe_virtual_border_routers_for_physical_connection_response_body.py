@@ -16,13 +16,13 @@ class DescribeVirtualBorderRoutersForPhysicalConnectionResponseBody(DaraModel):
         total_count: int = None,
         virtual_border_router_for_physical_connection_set: main_models.DescribeVirtualBorderRoutersForPhysicalConnectionResponseBodyVirtualBorderRouterForPhysicalConnectionSet = None,
     ):
-        # The page number. Default value: **1**.
+        # The page number of the list. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page. Maximum value: **50**. Default value: **10**.
+        # The number of entries per page in a paged query. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The number of entries returned.
+        # The total number of entries in the list.
         self.total_count = total_count
         self.virtual_border_router_for_physical_connection_set = virtual_border_router_for_physical_connection_set
 

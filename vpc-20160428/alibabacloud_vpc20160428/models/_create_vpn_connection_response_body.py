@@ -12,9 +12,9 @@ class CreateVpnConnectionResponseBody(DaraModel):
         request_id: str = None,
         vpn_connection_id: str = None,
     ):
-        # The timestamp generated when the IPsec-VPN connection was established. Unit: milliseconds.
+        # The timestamp when the IPsec-VPN connection was created. Unit: milliseconds.
         # 
-        # This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+        # The timestamp follows the UNIX timestamp format, which represents the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_time = create_time
         # The name of the IPsec-VPN connection.
         self.name = name

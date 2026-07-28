@@ -30,57 +30,57 @@ class DescribeVSwitchAttributesResponseBody(DaraModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
-        # The number of available IP addresses.
+        # The number of active IP addresses.
         self.available_ip_address_count = available_ip_address_count
-        # The CIDR block of the vSwitch.
+        # The private network address range of the vSwitch.
         self.cidr_block = cidr_block
         # The time when the vSwitch was created.
         self.creation_time = creation_time
         # The description of the vSwitch.
         self.description = description
-        # Indicates whether IPv6 is enabled for the vSwitch. If you enable IPv6, you must configure the IPv6 CIDR block of the vSwitch. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
-        # 
-        # This field is returned only when IPv6 is enabled for the vSwitch.
+        # Indicates whether the IPv6 CIDR block is enabled for the vSwitch. Valid values:
+        # - **true**: enabled.
+        # - **false**: not enabled.
         self.enabled_ipv_6 = enabled_ipv_6
         # The IPv6 CIDR block of the vSwitch.
         self.ipv_6cidr_block = ipv_6cidr_block
         # Indicates whether the vSwitch is the default vSwitch. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The vSwitch is the default vSwitch.
+        # - **false**: The vSwitch is not the default vSwitch.
         self.is_default = is_default
-        # The network access control list (ACL) rules.
+        # The network ACL rules.
         self.network_acl_id = network_acl_id
-        # The ID of the Alibaba Cloud account to which the resource belongs.
+        # The Alibaba Cloud account ID of the resource ownership.
+        # 
+        # >Notice: This value is of the Long type. Precision loss may occur in certain programming languages. Use this value with caution.
         self.owner_id = owner_id
         # The request ID.
         self.request_id = request_id
-        # The ID of the resource group to which the ACL belongs.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The information about the route table that is associated with the vSwitch.
+        # The route table information of the vSwitch.
         self.route_table = route_table
-        # Indicates whether the vSwitch is shared.
+        # The sharing type of the vSwitch.
         # 
-        # *   If no value is returned, the vSwitch is a regular vSwitch.
-        # *   If **Shared** is returned, the vSwitch is shared.
-        # *   If **Sharing** is returned, the vSwitch is being shared.
+        # - If the value is empty, the vSwitch is a private vSwitch.
+        # - If the value is **Shared**, the vSwitch is a shared vSwitch.
+        # - If the value is **Sharing**, the vSwitch is being shared with other accounts.
         self.share_type = share_type
         # The status of the vSwitch. Valid values:
         # 
-        # *   **Pending**
-        # *   **Available**
+        # - **Pending**: being configured. 
+        # 
+        # - **Available**: active.
         self.status = status
         self.tags = tags
-        # The vSwitch ID.
+        # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
-        # The vSwitch name.
+        # The name of the vSwitch.
         self.v_switch_name = v_switch_name
         # The ID of the VPC to which the vSwitch belongs.
         self.vpc_id = vpc_id
-        # The ID of the zone to which the vSwitch belongs.
+        # The zone to which the vSwitch belongs.
         self.zone_id = zone_id
 
     def validate(self):
@@ -292,12 +292,13 @@ class DescribeVSwitchAttributesResponseBodyRouteTable(DaraModel):
         route_table_id: str = None,
         route_table_type: str = None,
     ):
-        # The ID of the route table that is associated with the vSwitch.
+        # The ID of the route table associated with the vSwitch.
         self.route_table_id = route_table_id
         # The type of the route table. Valid values:
         # 
-        # *   **System**
-        # *   **Custom**
+        # - **System**: system route table.
+        # 
+        # - **Custom**: custom route table.
         self.route_table_type = route_table_type
 
     def validate(self):

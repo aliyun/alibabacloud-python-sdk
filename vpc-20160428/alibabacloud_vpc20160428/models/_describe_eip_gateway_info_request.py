@@ -14,13 +14,13 @@ class DescribeEipGatewayInfoRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the secondary ENI that is associated with the EIP.
+        # The ID of the secondary elastic network interfaces (ENIs) to which the EIP that you want to query is attached. This parameter refers to the network interface controller (NIC) associated with the EIP.
         # 
         # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region to which the EIP that you want to query belongs. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # The region to which the EIP belongs. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id

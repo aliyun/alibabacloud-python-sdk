@@ -38,7 +38,7 @@ class ModifyTunnelAttributeResponseBody(DaraModel):
         self.enable_nat_traversal = enable_nat_traversal
         # The IP address of the tunnel.
         self.internet_ip = internet_ip
-        # The CA certificate of the peer when an IPsec-VPN connection is created with a Chinese SM VPN gateway.
+        # The peer CA certificate when the IPsec-VPN connection is created with a China CA VPN gateway.
         self.remote_ca_certificate = remote_ca_certificate
         # The request ID.
         self.request_id = request_id
@@ -49,9 +49,9 @@ class ModifyTunnelAttributeResponseBody(DaraModel):
         self.role = role
         # The status of the tunnel.
         # 
-        # - **active**: available.
-        # - **updating**: being updated.
-        # - **deleting**: being deleted.
+        # - **active**: The tunnel is available.
+        # - **updating**: The tunnel is being updated.
+        # - **deleting**: The tunnel is being deleted.
         self.state = state
         # The BGP configuration of the tunnel.
         self.tunnel_bgp_config = tunnel_bgp_config
@@ -240,8 +240,8 @@ class ModifyTunnelAttributeResponseBodyTunnelIkeConfig(DaraModel):
         self.ike_lifetime = ike_lifetime
         # The IKE negotiation mode.
         # 
-        # - **main**: main mode. This mode offers high security during negotiations.
-        # - **aggressive**: aggressive mode. This mode supports fast negotiations and a higher success rate.
+        # - **main**: main mode. The negotiation process is more secure.
+        # - **aggressive**: aggressive mode. The negotiation is faster and has a higher success rate.
         self.ike_mode = ike_mode
         # The DH group.
         self.ike_pfs = ike_pfs
@@ -252,11 +252,11 @@ class ModifyTunnelAttributeResponseBodyTunnelIkeConfig(DaraModel):
         # 
         # Compared with IKEv1, IKEv2 simplifies the SA negotiation process and provides better support for multi-CIDR-block scenarios.
         self.ike_version = ike_version
-        # The identifier of the local end of the tunnel. It supports FQDN and IP formats. Default value: the IP address of the current tunnel.
+        # The identifier of the local end of the tunnel. The value supports FQDN and IP formats. Default value: the IP address of the current tunnel.
         self.local_id = local_id
         # The pre-shared key.
         self.psk = psk
-        # The identifier of the peer end of the tunnel. It supports FQDN and IP formats. Default value: the IP address of the customer gateway instance associated with the tunnel.
+        # The identifier of the peer end of the tunnel. The value supports FQDN and IP formats. Default value: the IP address of the customer gateway instance associated with the tunnel.
         self.remote_id = remote_id
 
     def validate(self):

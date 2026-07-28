@@ -17,9 +17,9 @@ class ConfirmPhysicalConnectionRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # The client generates the value. The value must be unique among different requests and cannot exceed 64 ASCII characters in length.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        # > If you do not specify this parameter, the system uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may vary for each API request.
         self.client_token = client_token
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -27,9 +27,9 @@ class ConfirmPhysicalConnectionRequest(DaraModel):
         # 
         # This parameter is required.
         self.physical_connection_id = physical_connection_id
-        # The region ID of the Express Connect circuit.
+        # The region ID of the Express Connect circuit. 
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id

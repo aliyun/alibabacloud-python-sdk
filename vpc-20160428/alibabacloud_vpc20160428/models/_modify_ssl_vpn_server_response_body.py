@@ -36,26 +36,26 @@ class ModifySslVpnServerResponseBody(DaraModel):
         self.compress = compress
         # The current number of connections.
         self.connections = connections
-        # The creation time of the SSL-VPN server.
+        # The time when the SSL-VPN server was created.
         self.create_time = create_time
-        # Indicates whether two-factor authentication is enabled.
+        # Indicates whether two-factor identity authentication is enabled.
         # 
-        # - **true**: Enabled.
+        # - **true**: enabled.
         # 
-        # - **false** (default): Not enabled.
+        # - **false** (default): not enabled.
         self.enable_multi_factor_auth = enable_multi_factor_auth
         # The ID of the IDaaS application.
         self.idaa_sapplication_id = idaa_sapplication_id
-        # The ID of the IDaaS EIAM instance.
+        # The instance ID of the IDaaS EIAM instance.
         self.idaa_sinstance_id = idaa_sinstance_id
         # The version of the IDaaS EIAM instance.
         # 
-        # - This parameter is returned only when the SSL server is bound to an IDaaS EIAM 2.0 instance. The only valid value is **EIAM 2.0**.
+        # - This parameter is returned only when the SSL server is bound to an IDaaS EIAM 2.0 instance. The value is **EIAM 2.0**.
         # - If the SSL server is bound to an IDaaS EIAM 1.0 instance, this parameter is not returned.
         self.idaa_sinstance_version = idaa_sinstance_version
         # The public IP address.
         self.internet_ip = internet_ip
-        # The local subnet.
+        # The local CIDR block.
         self.local_subnet = local_subnet
         # The maximum number of connections.
         self.max_connections = max_connections
@@ -71,11 +71,11 @@ class ModifySslVpnServerResponseBody(DaraModel):
         self.request_id = request_id
         # The ID of the resource group to which the SSL-VPN server belongs.
         # 
-        # The resource group of the SSL-VPN server is the same as that of the associated VPN gateway instance. You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query resource group information.
+        # The SSL-VPN server belongs to the same resource group as the associated VPN gateway instance. You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query resource group information.
         self.resource_group_id = resource_group_id
         # The ID of the SSL-VPN server.
         self.ssl_vpn_server_id = ssl_vpn_server_id
-        # The ID of the VPN gateway instance.
+        # The instance ID of the VPN gateway.
         self.vpn_gateway_id = vpn_gateway_id
 
     def validate(self):

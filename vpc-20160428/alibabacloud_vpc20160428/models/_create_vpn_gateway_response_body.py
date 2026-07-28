@@ -17,7 +17,7 @@ class CreateVpnGatewayResponseBody(DaraModel):
         # The order ID.
         # 
         # <props="china">If you did not enable automatic payment for the VPN gateway bill, go to [Expenses and Costs](https://usercenter2.aliyun.com/home) to complete the payment.
-        # <props="intl">If you did not enable automatic payment for the VPN gateway bill, go to [Expenses and Costs](https://usercenter2-intl.aliyun.com/billing/#/account/overview) to complete the payment..
+        # <props="intl">If you did not enable automatic payment for the VPN gateway bill, go to [Expenses and Costs](https://usercenter2-intl.aliyun.com/billing/#/account/overview) to complete the payment.
         self.order_id = order_id
         # The request ID.
         self.request_id = request_id

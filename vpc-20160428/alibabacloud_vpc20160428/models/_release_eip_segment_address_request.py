@@ -23,7 +23,7 @@ class ReleaseEipSegmentAddressRequest(DaraModel):
         self.client_token = client_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the contiguous EIP group. You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the region ID.
+        # The region ID of the contiguous EIPs. You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id

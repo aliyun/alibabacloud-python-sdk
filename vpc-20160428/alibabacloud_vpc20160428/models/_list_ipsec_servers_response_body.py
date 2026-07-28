@@ -18,12 +18,13 @@ class ListIpsecServersResponseBody(DaraModel):
     ):
         # The list of IPsec servers.
         self.ipsec_servers = ipsec_servers
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.max_results = max_results
-        # A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
+        # The pagination token. Valid values:
         # 
-        # *   If no value is returned for **NextToken**, no next queries are sent.
-        # *   If a value is returned for **NextToken**, the value can be used in the next request to retrieve a new page of results.
+        # - If **NextToken** is empty, no subsequent query is to be sent.
+        # 
+        # - If **NextToken** is returned, the value indicates the token for the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -104,18 +105,19 @@ class ListIpsecServersResponseBodyIpsecServers(DaraModel):
         resource_group_id: str = None,
         vpn_gateway_id: str = None,
     ):
-        # The client CIDR block. It refers to the CIDR block that is allocated to the virtual interface of the client.
+        # The client CIDR block, which is the CIDR block from which IP addresses are assigned to the virtual network interface controllers (NICs) of clients.
         self.client_ip_pool = client_ip_pool
         # The time when the IPsec server was created.
         # 
-        # T is used as a delimiter. Z indicates that the time is in UTC.
+        # T is the delimiter. Z indicates UTC.
         self.creation_time = creation_time
-        # Indicates whether the current IPsec tunnel is deleted and negotiations are reinitiated. Valid values:
+        # Indicates whether the current IPsec tunnel is deleted and negotiations are reinitiated.
         # 
-        # *   **true**: immediately initiates negotiations after the configuration is completed.
-        # *   **false**: initiates negotiations when inbound traffic is detected.
+        # - **true**: Negotiations are reinitiated after the configuration is complete.
+        # 
+        # - **false**: Negotiations are reinitiated when traffic is detected.
         self.effect_immediately = effect_immediately
-        # The ID of the IDaaS instance.
+        # The instance ID of IDaaS.
         self.idaa_sinstance_id = idaa_sinstance_id
         # The configurations of Phase 1 negotiations.
         self.ike_config = ike_config
@@ -123,32 +125,32 @@ class ListIpsecServersResponseBodyIpsecServers(DaraModel):
         self.internet_ip = internet_ip
         # The configurations of Phase 2 negotiations.
         self.ipsec_config = ipsec_config
-        # The IPsec server ID.
+        # The ID of the IPsec server.
         self.ipsec_server_id = ipsec_server_id
         # The name of the IPsec server.
         self.ipsec_server_name = ipsec_server_name
-        # The local CIDR blocks, which refer to the CIDR blocks on the virtual private cloud (VPC) side.
+        # The local CIDR block, which is the VPC-side CIDR block that needs to communicate with the client CIDR block.
         self.local_subnet = local_subnet
-        # The number of SSL-VPN connections supported by the VPN gateway.
-        # 
-        # >  The number of SSL-VPN connections specified in this parameter includes both SSL-VPN and IPsec-VPN connections. For example, you have five SSL-VPN connections and three SSL clients occupy three SSL-VPN connections. In this case, two clients can connect to the IPsec server.
+        # The maximum number of SSL-VPN connections supported by the VPN gateway.
+        # > SSL-VPN and the IPsec server share SSL-VPN connections. For example, if the maximum number of SSL-VPN connections is 5 and three SSL clients are already connected to SSL-VPN, only two more clients can connect to the IPsec server.
         self.max_connections = max_connections
-        # Indicates whether two-factor authentication is enabled. Valid values:
+        # Indicates whether two-factor authentication is enabled.
         # 
-        # *   **true**
-        # *   **false**: The feature is disabled.
+        # - **true**: Two-factor authentication is enabled.
+        # 
+        # - **false**: Two-factor authentication is disabled.
         self.multi_factor_auth_enabled = multi_factor_auth_enabled
         # The number of clients that are connected to the IPsec server.
         self.online_client_count = online_client_count
         # The pre-shared key.
         self.psk = psk
-        # Indicates whether pre-shared key authentication is enabled. Only **true** may be returned, which indicates that pre-shared key authentication is enabled.
+        # Indicates whether pre-shared key authentication is enabled. The value is **true**, which indicates that pre-shared key authentication is enabled.
         self.psk_enabled = psk_enabled
-        # The ID of the region where the IPsec server is created.
+        # The region ID of the IPsec server.
         self.region_id = region_id
         # The ID of the resource group to which the IPsec server belongs.
         # 
-        # You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query the resource group information.
+        # You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query resource group information.
         self.resource_group_id = resource_group_id
         # The ID of the VPN gateway.
         self.vpn_gateway_id = vpn_gateway_id
@@ -355,15 +357,15 @@ class ListIpsecServersResponseBodyIpsecServersIkeConfig(DaraModel):
         self.ike_lifetime = ike_lifetime
         # The IKE negotiation mode. Valid values:
         # 
-        # **main**: This mode offers higher security during negotiations.
+        # **main**: main mode. Negotiations are highly secure.
         self.ike_mode = ike_mode
         # The Diffie-Hellman key exchange algorithm.
         self.ike_pfs = ike_pfs
         # The IKE version.
         self.ike_version = ike_version
-        # The ID of the IPsec server. The default value is the public IP address of the VPN gateway. Both FQDNs and IP addresses are supported.
+        # The identifier of the IPsec server. FQDN and IP address formats are supported. The default value is the public IP address of the selected VPN gateway.
         self.local_id = local_id
-        # The identifier of the customer gateway. Both fully qualified domain names (FQDNs) and IP addresses are supported. By default, this parameter is empty.
+        # The identifier of the peer. FQDN and IP address formats are supported. The default value is empty.
         self.remote_id = remote_id
 
     def validate(self):

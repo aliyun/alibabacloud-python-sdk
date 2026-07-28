@@ -18,10 +18,9 @@ class GetVpcPrefixListEntriesResponseBody(DaraModel):
     ):
         # The number of entries.
         self.count = count
-        # A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
-        # 
-        # *   If **NextToken** is empty, no next page exists.
-        # *   If a value is returned for **NextToken**, the value indicates the token that is used for the next request to retrieve a new page of results.
+        # The pagination token. Valid values:
+        # - If **NextToken** is empty, no subsequent query is required.
+        # - If **NextToken** is returned, the value indicates the token for the next query.
         self.next_token = next_token
         # The information about the prefix list.
         self.prefix_list_entry = prefix_list_entry
@@ -90,11 +89,11 @@ class GetVpcPrefixListEntriesResponseBodyPrefixListEntry(DaraModel):
         prefix_list_id: str = None,
         region_id: str = None,
     ):
-        # The CIDR blocks specified in the prefix list.
+        # The Classless Inter-Domain Routing (CIDR) block of the prefix list.
         self.cidr = cidr
         # The description of the prefix list.
         self.description = description
-        # The ID of the prefix list.
+        # The instance ID of the prefix list.
         self.prefix_list_id = prefix_list_id
         # The region ID of the prefix list.
         self.region_id = region_id

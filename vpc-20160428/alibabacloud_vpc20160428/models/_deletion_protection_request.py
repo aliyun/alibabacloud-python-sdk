@@ -20,30 +20,30 @@ class DeletionProtectionRequest(DaraModel):
         # 
         # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may differ for each API request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
         self.client_token = client_token
-        # The ID of the instance for which you want to set deletion protection in Settings.
+        # The ID of the instance for which you want to set deletion protection.
         # 
         # This parameter is required.
         self.instance_id = instance_id
         self.owner_id = owner_id
         # Specifies whether to enable deletion protection. Valid values:
         # 
-        # - **true**: enables deletion protection.
+        # - **true**: Enabled.
         # 
-        # - **false**: disables deletion protection.
+        # - **false**: Disabled.
         # 
         # This parameter is required.
         self.protection_enable = protection_enable
-        # The region ID of the instance for which you want to enable or disable deletion protection. You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the most recent region list.
+        # The region ID of the instance for which you want to set deletion protection. You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The type of the instance for which you want to enable or disable deletion protection. Valid values:
+        # The type of instance for which you want to set deletion protection. Valid values:
         # 
-        # - **EIP**: elastic IP address (EIP).
+        # - **EIP**: elastic IP address.
         # 
         # - **CBWP**: Internet Shared Bandwidth.
         # 

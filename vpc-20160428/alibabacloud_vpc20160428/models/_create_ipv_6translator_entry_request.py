@@ -24,57 +24,57 @@ class CreateIPv6TranslatorEntryRequest(DaraModel):
         resource_owner_id: int = None,
         trans_protocol: str = None,
     ):
-        # The ID of the associated ACL.
+        # The ID of the associated access control policy group.
         self.acl_id = acl_id
-        # Specifies whether to enable access control lists (ACLs). Valid values:
-        # 
-        # *   **on**
-        # *   **off**
+        # Specifies whether to enable access control. Valid values:
+        # - **on**: Enabled.
+        # - **off**: Disabled.
         self.acl_status = acl_status
-        # Specifies whether to enable ACLs. Valid values:
+        # The type of access control:
         # 
-        # *   **white**: a whitelist. IPv6 addresses in the ACL are allowed to access backend services.
-        # *   **black**: a blacklist. IPv6 addresses in the ACL are not allowed to access backend services.
+        # - **white**: Allows the IPv6 addresses in the access control policy group to access backend services.
+        # 
+        # - **black**: Denies the IPv6 addresses in the access control policy group from accessing backend services.
         self.acl_type = acl_type
-        # The port that is used by the IPv6 address allocated to the IPv6 Translation Service instance.
+        # The port used by the IPv6 address allocated by the IPv6 Translation Service instance.
         # 
         # This parameter is required.
         self.allocate_ipv_6port = allocate_ipv_6port
-        # The public IPv4 address that needs to provide IPv6 services.
+        # The public IPv4 address that requires IPv6 services (the IPv4 address of the IPv4-only server).
         # 
         # This parameter is required.
         self.backend_ipv_4addr = backend_ipv_4addr
-        # The port of the public IPv4 address that needs to provide IPv6 services.
+        # The port of the public IPv4 address that requires IPv6 services.
         # 
         # This parameter is required.
         self.backend_ipv_4port = backend_ipv_4port
-        # The maximum bandwidth specified in the IPv6 mapping entry. Valid values:
+        # The peak bandwidth of the IPv6 translation mapping entry. Valid values: 
+        #         
+        # - -1 (default): No bandwidth limit is imposed on the IPv6 translation mapping entry.  
+        # - 1-200Mbps: The bandwidth value of the mapping entry.            
         # 
-        # *   \\-1 (default): does not limit the maximum bandwidth specified in the IPv6 mapping entry.
-        # *   1 to 200: the bandwidth value specified in the IPv6 mapping entry. Unit: Mbit/s.
-        # 
-        # > The sum of the maximum bandwidth values specified in all IPv6 entries cannot exceed the maximum bandwidth supported by the instance.
+        # > The sum of peak bandwidth values of all IPv6 translation mapping entries cannot exceed the peak bandwidth of the instance.
         self.entry_bandwidth = entry_bandwidth
-        # The description of the IPv6 mapping entry.
+        # The description of the IPv6 translation mapping entry.
         self.entry_description = entry_description
-        # The name of the IPv6 mapping entry. It must be 2 to 100 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter. It cannot start with `http://` or `https://`.
+        # The name of the IPv6 translation mapping entry. The name must be 2 to 100 characters in length and must start with a letter or a Chinese character. It can contain digits, periods (.), underscores (_), and hyphens (-). It cannot start with `http://` or `https://`.
         self.entry_name = entry_name
-        # The ID of the IPv6 Translation Service instance.
+        # The instance ID of the IPv6 Translation Service.
         # 
         # This parameter is required.
         self.ipv_6translator_id = ipv_6translator_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region of the IPv6 Translation Service instance. You can call the **DescribeRegions** operation to query the most recent region list.
+        # The region of the IPv6 Translation Service instance. You can call the **DescribeRegions** operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The protocol. Valid values:
+        # The protocol type. Valid values:
         # 
-        # *   **tcp**
-        # *   **udp**
+        # - **tcp**: Forwards TCP packets.  
+        # - **udp**: Forwards UDP packets.
         # 
         # This parameter is required.
         self.trans_protocol = trans_protocol

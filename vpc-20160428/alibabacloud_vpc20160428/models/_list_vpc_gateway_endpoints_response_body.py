@@ -18,16 +18,15 @@ class ListVpcGatewayEndpointsResponseBody(DaraModel):
     ):
         # The list of gateway endpoints.
         self.endpoints = endpoints
-        # The number of entries per page.
+        # The number of entries per page for a paged query.
         self.max_results = max_results
-        # A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
-        # 
-        # *   If no value is returned for **NextToken**, no next queries are sent.
-        # *   If a value is returned for **NextToken**, the value can be used in the next request to retrieve a new page of results.
+        # Indicates whether a next query token is available. Valid values:
+        # - If **NextToken** is empty, no more results are available.
+        # - If **NextToken** is returned, the value indicates the token for the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The number of entries returned.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -97,36 +96,36 @@ class ListVpcGatewayEndpointsResponseBodyEndpoints(DaraModel):
         tags: List[main_models.ListVpcGatewayEndpointsResponseBodyEndpointsTags] = None,
         vpc_id: str = None,
     ):
-        # The ID of the route table associated with the gateway endpoint.
+        # The IDs of the route tables associated with the gateway endpoint.
         self.associated_route_tables = associated_route_tables
-        # The time when the endpoint was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+        # The time when the gateway endpoint was created. The time is displayed in UTC in the YYYY-MM-DDThh:mm:ssZ format.
         self.creation_time = creation_time
         # The description of the gateway endpoint.
         self.endpoint_description = endpoint_description
-        # The ID of the gateway endpoint.
+        # The endpoint instance ID of the gateway endpoint.
         self.endpoint_id = endpoint_id
         # The name of the gateway endpoint.
         self.endpoint_name = endpoint_name
         # The status of the gateway endpoint. Valid values:
         # 
-        # *   **Creating**
-        # *   **Created**
-        # *   **Modifying**
-        # *   **Associating**
-        # *   **Dissociating**
-        # *   **Deleting**
+        # - **Creating**: being created.
+        # - **Created**: created and in a normal state.
+        # - **Modifying**: being modified.
+        # - **Associating**: being associated.
+        # - **Dissociating**: being disassociated.
+        # - **Deleting**: being deleted.
         self.endpoint_status = endpoint_status
         # The access policy for the cloud service.
         # 
-        # For more information about the syntax and structure of the access policy, see [Policy syntax and structure](https://help.aliyun.com/document_detail/93739.html).
+        # For more information about the syntax and structure of access policies, see [Policy structure and syntax](https://help.aliyun.com/document_detail/93739.html).
         self.policy_document = policy_document
         # The ID of the resource group to which the gateway endpoint belongs.
         self.resource_group_id = resource_group_id
-        # The name of the endpoint service.
+        # The service name of the endpoint service.
         self.service_name = service_name
-        # The tag list.
+        # The list of tags.
         self.tags = tags
-        # The ID of the virtual private cloud (VPC) to which the gateway endpoint belongs.
+        # The ID of the VPC to which the gateway endpoint belongs.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -223,9 +222,9 @@ class ListVpcGatewayEndpointsResponseBodyEndpointsTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N added to the resource.
+        # The tag key.
         self.key = key
-        # The value of tag N added to the resource.
+        # The tag value.
         self.value = value
 
     def validate(self):

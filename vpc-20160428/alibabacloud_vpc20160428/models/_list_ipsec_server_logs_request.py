@@ -15,31 +15,31 @@ class ListIpsecServerLogsRequest(DaraModel):
         region_id: str = None,
         to: int = None,
     ):
-        # The beginning of the time range to query. The value must be a UNIX timestamp. For example, 1671003744 specifies 15:42:24 (UTC+8) on December 14, 2022.
+        # The start time of the log. Only UNIX timestamps in seconds are supported. For example, 1671003744 represents 2022-12-14 15:42:24.
         # 
-        # >  If you specify **From**, you must also specify **To** or **MinutePeriod**.
+        # > If you specify **From**, you must also specify **To** or **MinutePeriod**.
         self.from_ = from_
         # The ID of the IPsec server.
         # 
         # This parameter is required.
         self.ipsec_server_id = ipsec_server_id
-        # The interval at which log data is queried. Valid values: **1** to **10**. Unit: minutes.
+        # The log period. Valid values: **1** to **10**. Unit: minutes.
         # 
-        # >  If both **From** and **To** are not specified, you must specify **MinutePeriod**.
+        # > If you do not specify **From** or **To**, you must specify **MinutePeriod**.
         self.minute_period = minute_period
-        # The number of the page to return. Default value: **1**.
+        # The page number of the list. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values: **1** to **50**. Default value: **10**.
+        # The number of entries per page in a paged query. Valid values: **1** to **50**. Default value: **10**.
         self.page_size = page_size
-        # The ID of the region where the IPsec server is created.
+        # The region ID of the IPsec server.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The end of the time range to query. The value must be a unix timestamp. For example, 1671004344 specifies 15:52:24 (UTC+8) on December 14, 2022.
+        # The end time of the log. Only UNIX timestamps in seconds are supported. For example, 1671004344 represents 2022-12-14 15:52:24.
         # 
-        # >  If you specify **To**, you must also specify **From** or **MinutePeriod**.
+        # > If you specify **To**, you must also specify **From** or **MinutePeriod**.
         self.to = to
 
     def validate(self):

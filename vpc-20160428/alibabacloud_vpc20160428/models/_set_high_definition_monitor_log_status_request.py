@@ -18,17 +18,17 @@ class SetHighDefinitionMonitorLogStatusRequest(DaraModel):
         resource_owner_id: int = None,
         status: str = None,
     ):
-        # The ID of the instance for which you want to configure fine-grained monitoring.
+        # The instance ID of the instance for which you want to configure high-definition second-level monitoring.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The instance type. Set the value to **EIP**.
+        # The type of the instance. Set the value to **EIP**.
         self.instance_type = instance_type
-        # The name of the Simple Log Service (SLS) project.
+        # The name of the LogProject in Simple Log Service.
         # 
         # This parameter is required.
         self.log_project = log_project
-        # The name of the Logstore.
+        # The name of the LogStore in Simple Log Service.
         # 
         # This parameter is required.
         self.log_store = log_store
@@ -36,16 +36,16 @@ class SetHighDefinitionMonitorLogStatusRequest(DaraModel):
         self.owner_id = owner_id
         # The region ID of the instance.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The status of fine-grained monitoring. Valid values:
+        # The high-definition second-level monitoring status of the instance. Valid values:
         # 
-        # *   **ON**
-        # *   **OFF**
+        # - **ON**: Enables high-definition second-level monitoring.
+        # - **OFF**: Disables high-definition second-level monitoring.
         # 
         # This parameter is required.
         self.status = status

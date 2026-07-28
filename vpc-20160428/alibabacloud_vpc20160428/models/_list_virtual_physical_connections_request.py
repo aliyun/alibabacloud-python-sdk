@@ -23,47 +23,44 @@ class ListVirtualPhysicalConnectionsRequest(DaraModel):
         virtual_physical_connection_statuses: List[str] = None,
         vlan_ids: List[str] = None,
     ):
-        # Indicates whether the tenant has accepted the virtual physical connection. Valid values:
+        # Indicates whether the shared Express Connect circuits have been confirmed and accepted by the tenant. Valid values:
         # 
-        # - **true**: The connection has been accepted.
-        # 
-        # - **false**: The connection has not been accepted.
+        # - **true**: Yes.
+        # - **false**: No.
         self.is_confirmed = is_confirmed
-        # The number of entries to return per page. Valid values: **1** to **100**. Default value: **20**.
+        # The number of entries per page when you query results by page. Valid values: **1** to **100**. Default value: **20**.
         self.max_results = max_results
-        # The token used to retrieve the next page of results. Valid values:
-        # 
-        # - Leave this parameter empty for the first request.
-        # 
-        # - For subsequent requests, set this parameter to the `NextToken` value returned from the previous request.
+        # Specifies whether a next query token is available. Valid values:
+        # - You do not need to specify this parameter for the first query or if no next query is available.
+        # - If a next query is available, set this parameter to the NextToken value returned in the previous API call.
         self.next_token = next_token
-        # The ID of the physical connection associated with the virtual physical connection.
-        self.physical_connection_id = physical_connection_id
-        # The ID of the region where the virtual physical connection is located.
+        # The ID of the Express Connect circuit associated with the shared Express Connect circuits.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the latest list of regions.
+        # In the following content of this topic, the Express Connect circuit associated with the shared Express Connect circuits is referred to as the Express Connect circuit, to distinguish it from the shared Express Connect circuits.
+        self.physical_connection_id = physical_connection_id
+        # The region ID of the shared Express Connect circuits.
+        # 
+        # You can invoke the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group to which the virtual physical connection belongs.
+        # The ID of the resource group to which the shared Express Connect circuits belong.
         self.resource_group_id = resource_group_id
-        # The list of tags.
+        # The tag list.
         self.tags = tags
-        # The Alibaba Cloud accounts that own the virtual physical connections.
+        # The Alibaba Cloud account information of the shared Express Connect circuits owner.
         self.virtual_physical_connection_ali_uids = virtual_physical_connection_ali_uids
-        # The business status of the virtual physical connection. Valid values:
+        # The business status of the shared Express Connect circuits. Valid values:
         # 
-        # - **Normal**: The connection is operating normally.
-        # 
-        # - **FinancialLocked**: The connection is locked due to an overdue payment.
-        # 
-        # - **SecurityLocked**: The connection is locked for security reasons.
+        # - **Normal**: Normal.
+        # - **FinancialLocked**: financial lock.
+        # - **SecurityLocked**: Locked for security reasons.
         self.virtual_physical_connection_business_status = virtual_physical_connection_business_status
-        # The IDs of the virtual physical connections.
+        # The shared Express Connect circuits information.
         self.virtual_physical_connection_ids = virtual_physical_connection_ids
-        # The business statuses of the virtual physical connections.
+        # The business status information of the shared Express Connect circuits.
         self.virtual_physical_connection_statuses = virtual_physical_connection_statuses
-        # The VLAN IDs of the virtual physical connections.
+        # The VLAN ID of the shared Express Connect circuits.
         self.vlan_ids = vlan_ids
 
     def validate(self):
@@ -166,13 +163,13 @@ class ListVirtualPhysicalConnectionsRequestTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag. You can specify up to 20 tags. The tag key cannot be an empty string.
+        # The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
         # 
-        # The key can be up to 64 characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+        # The tag key can be up to 64 characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). The tag key cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
-        # The value of the tag. You can specify up to 20 tags. The tag value can be an empty string.
+        # The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
         # 
-        # The value can be up to 128 characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+        # The tag value can be up to 128 characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). The tag value cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

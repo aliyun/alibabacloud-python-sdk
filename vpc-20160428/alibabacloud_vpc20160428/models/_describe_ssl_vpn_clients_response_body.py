@@ -109,23 +109,23 @@ class DescribeSslVpnClientsResponseBodyClientInfoList(DaraModel):
         send_bytes: int = None,
         status: str = None,
     ):
-        # The SSL client certificate used by the client to establish the SSL-VPN connection to Alibaba Cloud.
+        # The SSL client certificate used when the client establishes an SSL-VPN connection to Alibaba Cloud.
         # 
-        # > If the client uses two-factor identity authentication to establish the SSL-VPN connection to Alibaba Cloud, the value of this parameter is the username of the client.
+        # > If the client uses two-factor identity authentication to establish an SSL-VPN connection to Alibaba Cloud, the value of this parameter is the username of the client.
         self.common_name = common_name
-        # The timestamp when the client established the SSL-VPN connection to Alibaba Cloud. Unit: milliseconds.
+        # The timestamp when the client establishes an SSL-VPN connection to Alibaba Cloud. Unit: milliseconds.
         # 
-        # The timestamp is in the UNIX format and represents the total number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC to the time when the SSL-VPN connection was established.
+        # The timestamp is in the UNIX format and represents the total duration from 00:00:00 on January 1, 1970 (UTC) to the time when the SSL-VPN connection is established.
         self.connected_time = connected_time
-        # The public IP address that the client used to establish the SSL-VPN connection to Alibaba Cloud.
+        # The public IP address that the client uses when establishing an SSL-VPN connection to Alibaba Cloud.
         self.ip = ip
-        # The port number that the client used to establish the SSL-VPN connection to Alibaba Cloud.
+        # The port number that the client uses when establishing an SSL-VPN connection to Alibaba Cloud.
         self.port = port
-        # The private IP address that the VPN gateway assigned to the client when the client established an SSL-VPN connection to Alibaba Cloud.
+        # The private IP address that the VPN gateway assigns to the client when the client establishes an SSL-VPN connection to Alibaba Cloud.
         self.private_ip = private_ip
-        # The traffic that the VPN gateway received from the client over the SSL-VPN connection. Unit: bytes.
+        # The traffic that the VPN gateway receives from the client over the SSL-VPN connection. Unit: bytes.
         self.receive_bytes = receive_bytes
-        # The traffic that the VPN gateway sent to the client over the SSL-VPN connection. Unit: bytes.
+        # The traffic that the VPN gateway sends to the client over the SSL-VPN connection. Unit: bytes.
         self.send_bytes = send_bytes
         # The status of the SSL-VPN connection.
         # 

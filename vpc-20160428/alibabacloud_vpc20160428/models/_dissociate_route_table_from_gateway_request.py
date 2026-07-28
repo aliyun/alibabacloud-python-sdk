@@ -20,32 +20,31 @@ class DissociateRouteTableFromGatewayRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # The client generates the value. The value must be unique among different requests and cannot exceed 64 ASCII characters in length.
         # 
-        # >  If you do not set this parameter, the system automatically uses **RequestId** as **ClientToken**. **RequestId** may be different for each API request.
+        # > If you do not specify this parameter, the system uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may vary for each API request.
         self.client_token = client_token
-        # Specifies whether to only precheck the request. Valid values:
-        # 
-        # *   **true**: prechecks the request without performing the operation. The system prechecks the required parameters, request syntax, and limits. If the request fails to pass the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
-        # *   **false** (default): sends the request. After the request passes the precheck, a 2xx HTTP status code is returned and the operation is performed.
+        # Specifies whether to perform a dry run. Valid values:
+        # - **true**: performs a dry run without disassociating the gateway route table from the IPv4 gateway instance. The system checks the required parameters, request format, and service limits. If the check fails, the corresponding error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
+        # - **false** (default): performs a dry run and sends the request. If the check succeeds, an HTTP 2xx status code is returned and the gateway route table is disassociated from the IPv4 gateway instance.
         self.dry_run = dry_run
-        # The ID of the IPv4 gateway.
+        # The instance ID of the IPv4 gateway to disassociate.
         # 
         # This parameter is required.
         self.gateway_id = gateway_id
-        # The type of a gateway to be disassociated from a route table.
+        # The type of the gateway instance to disassociate.
         self.gateway_type = gateway_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the IPv4 gateway from which you want to disassociate the gateway route table.
+        # The region ID of the gateway route table and IPv4 gateway instance to disassociate.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the gateway route table.
+        # The ID of the gateway route table to disassociate.
         # 
         # This parameter is required.
         self.route_table_id = route_table_id

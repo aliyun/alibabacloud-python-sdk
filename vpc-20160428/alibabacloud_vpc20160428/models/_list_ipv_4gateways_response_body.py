@@ -15,14 +15,13 @@ class ListIpv4GatewaysResponseBody(DaraModel):
         request_id: str = None,
         total_count: str = None,
     ):
-        # The list of IPv4 gateways.
+        # The list of IPv4 gateway instances.
         self.ipv_4gateway_models = ipv_4gateway_models
-        # The token that is used for the next query. Valid values:
-        # 
-        # *   If no value is returned for **NextToken**, no next queries are sent.
-        # *   If a value of **NextToken** is returned, the value is the token that is used for the subsequent query.
+        # The pagination token. Valid values:
+        # - If **NextToken** is empty, no subsequent query exists.
+        # - If **NextToken** is returned, the value indicates the token for the next query.
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The total number of entries returned.
         self.total_count = total_count
@@ -87,34 +86,34 @@ class ListIpv4GatewaysResponseBodyIpv4GatewayModels(DaraModel):
         tags: List[main_models.ListIpv4GatewaysResponseBodyIpv4GatewayModelsTags] = None,
         vpc_id: str = None,
     ):
-        # Indicates whether the IPv4 gateway is activated. Valid values:
+        # Indicates whether the IPv4 gateway instance is activated. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # - **true**: activated.
+        # - **false**: not activated.
         self.enabled = enabled
         # The time when the IPv4 gateway was created.
         self.gmt_create = gmt_create
-        # The description of the IPv4 gateway.
+        # The description of the IPv4 gateway instance.
         self.ipv_4gateway_description = ipv_4gateway_description
-        # The ID of the IPv4 gateway.
+        # The instance ID of the IPv4 gateway.
         self.ipv_4gateway_id = ipv_4gateway_id
-        # The name of the IPv4 gateway.
+        # The name of the IPv4 gateway instance.
         self.ipv_4gateway_name = ipv_4gateway_name
-        # The ID of the route table associated with the IPv4 gateway.
+        # The ID of the route table associated with the IPv4 gateway instance.
         self.ipv_4gateway_route_table_id = ipv_4gateway_route_table_id
         # The ID of the resource group to which the IPv4 gateway belongs.
         self.resource_group_id = resource_group_id
-        # The status of the IPv4 gateway. Valid values:
+        # The status of the IPv4 gateway instance. Valid values:
         # 
-        # *   **Creating**
-        # *   **Created**
-        # *   **Modifying**
-        # *   **Deleting**
-        # *   **Deleted**
+        # - **Creating**: being created.
+        # - **Created**: created and available.
+        # - **Modifying**: being modified.
+        # - **Deleting**: being deleted.
+        # - **Deleted**: deleted.
         self.status = status
-        # The list of tags that are added to the resource group.
+        # The tag list.
         self.tags = tags
-        # The ID of the VPC with which the IPv4 gateways are associated.
+        # The ID of the VPC associated with the IPv4 gateway instance.
         self.vpc_id = vpc_id
 
     def validate(self):

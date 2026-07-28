@@ -17,13 +17,13 @@ class DescribeIpv6AddressesResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.ipv_6addresses = ipv_6addresses
-        # The page number of the returned page. Default value: **1**.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries returned per page. Maximum value: **50**. Default value: **10**.
+        # The number of entries per page for paging queries. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The number of returned entries.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):

@@ -14,11 +14,11 @@ class ListBusinessRegionsResponseBody(DaraModel):
         geographic_sub_regions: List[main_models.ListBusinessRegionsResponseBodyGeographicSubRegions] = None,
         request_id: str = None,
     ):
-        # The total number of entries returned.
+        # The total number of entries.
         self.count = count
-        # The list of regions available for Express Connect circuits.
+        # The list of regions where Express Connect circuits are available for purchase.
         self.geographic_sub_regions = geographic_sub_regions
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -67,9 +67,9 @@ class ListBusinessRegionsResponseBodyGeographicSubRegions(DaraModel):
         name: str = None,
         region_id: str = None,
     ):
-        # The name of the region where circuits are available.
+        # The name of the region where Express Connect circuits are available for purchase.
         self.name = name
-        # The ID of the region where circuits are available.
+        # The region ID where Express Connect circuits are available for purchase.
         self.region_id = region_id
 
     def validate(self):

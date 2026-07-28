@@ -17,26 +17,29 @@ class ModifyEipForwardModeRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # Generate a parameter value from your client to ensure uniqueness across different requests. ClientToken supports only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **RequestId** may be different for each request.
+        # > If you do not specify this parameter, the system uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request is different.
         self.client_token = client_token
-        # The ID of the EIP whose attributes you want to modify.
+        # The ID of the EIP instance to modify.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The association mode. Valid values:
+        # The binding mode. Valid values:
         # 
-        # *   **NAT** (default): the standard NAT mode.
-        # *   **MULTI_BINDED**: the multi-EIP-to-ENI mode.
-        # *   **BINDED**: the cut-through mode.
+        # - **NAT** (default): NAT mode (standard mode).
         # 
-        # >  This parameter is required only if **InstanceType** is set to **NetworkInterface**.
+        # - **MULTI_BINDED**: multi-EIP to ENI mode.
+        # 
+        # - **BINDED**: EIP to ENI mode.
+        # 
+        # 
+        # > This parameter is required only when **InstanceType** is set to **NetworkInterface**.
         # 
         # This parameter is required.
         self.mode = mode
         self.owner_id = owner_id
-        # The ID of the region to which the EIP belongs. You can call the DescribeRegions operation to query the most recent region list.
+        # The region ID of the EIP. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id

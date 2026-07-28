@@ -31,46 +31,48 @@ class ApplyPhysicalConnectionLOARequest(DaraModel):
         self.bandwidth = bandwidth
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # Generate a unique value from your client to ensure that different requests have unique ClientToken values. ClientToken supports only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        # > If you do not specify this parameter, the system uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request may be different.
         self.client_token = client_token
-        # The name of the customer company that requires the Express Connect circuit.
+        # The name of the company that accesses the Express Connect circuit.
         # 
         # This parameter is required.
         self.company_name = company_name
-        # The time when construction started. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+        # The time when the construction company enters the site. The time is in the ISO 8601 standard and must be in UTC. Format: YYYY-MM-DDThh:mm:ssZ.
         # 
         # This parameter is required.
         self.construction_time = construction_time
-        # The ID of the Express Connect circuit.
+        # The instance ID of the Express Connect circuit.
         # 
         # This parameter is required.
         self.instance_id = instance_id
         # The type of the Express Connect circuit. Valid values:
         # 
-        # *   **MSTP**: MSTP line
-        # *   **MPLSVPN**: MPLSVPN line
-        # *   **FIBRE**: fiber line
-        # *   **Other**: other types
+        # - **MSTP**: MSTP line.
+        # - **MPLSVPN**: MPLSVPN line.
+        # - **FIBRE**: fiber optic direct connection.
+        # - **Other**: other type of line.
         # 
         # This parameter is required.
         self.line_type = line_type
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The information about the construction engineer.
+        # 
+        # > This parameter is required. Specify the relevant information.
         self.pminfo = pminfo
-        # The geographic location where the Express Connect circuit is deployed.
+        # The geographical location where the Express Connect circuit is deployed.
         self.peer_location = peer_location
         # The region ID of the Express Connect circuit.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The construction company.
+        # The construction company of the Express Connect circuit.
         # 
         # This parameter is required.
         self.si = si
@@ -190,16 +192,16 @@ class ApplyPhysicalConnectionLOARequestPMInfo(DaraModel):
         pmgender: str = None,
         pmname: str = None,
     ):
-        # The ID number of the construction engineer. You can specify the ID number of an ID card or an international passport.
+        # The ID number of the construction engineer. You can specify an ID card number or an international passport number.
         # 
-        # You can configure information for up to 16 construction engineers.
+        # You can specify information about up to 16 construction engineers.
         self.pmcertificate_no = pmcertificate_no
-        # The type of the identity document of the construction engineer. Valid values:
+        # The type of the ID document of the construction engineer. Valid values:
         # 
-        # *   **IDCard**
-        # *   **Passport**
+        # - **IDCard**: ID card.
+        # - **Passport**: international passport.
         self.pmcertificate_type = pmcertificate_type
-        # The contact information about the construction engineer.
+        # The contact information of the construction engineer.
         self.pmcontact_info = pmcontact_info
         # The gender of the construction engineer.
         self.pmgender = pmgender

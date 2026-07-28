@@ -14,7 +14,7 @@ class GetDhcpOptionsSetRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the DHCP options set.
+        # The ID of the DHCP options set that you want to query.
         # 
         # This parameter is required.
         self.dhcp_options_set_id = dhcp_options_set_id
@@ -22,7 +22,7 @@ class GetDhcpOptionsSetRequest(DaraModel):
         self.owner_id = owner_id
         # The region ID of the DHCP options set that you want to query.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id

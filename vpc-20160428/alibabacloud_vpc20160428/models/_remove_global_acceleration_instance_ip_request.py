@@ -15,21 +15,19 @@ class RemoveGlobalAccelerationInstanceIpRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the shared-bandwidth instance.
+        # The instance ID of the Internet Shared Bandwidth instance.
         # 
         # This parameter is required.
         self.global_acceleration_instance_id = global_acceleration_instance_id
-        # The ID of the EIP.
+        # The ID of the EIP instance. 
         # 
-        # To query the EIP ID, call DescribeEipAddresses.
+        # You can call the [DescribeEipAddresses](https://help.aliyun.com/document_detail/36018.html) operation to query the EIP instance ID.
         # 
         # This parameter is required.
         self.ip_instance_id = ip_instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the shared-bandwidth instance is located.
-        # 
-        # To query the region ID, call DescribeRegions.
+        # The region where the Internet Shared Bandwidth instance is located. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id

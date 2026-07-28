@@ -23,49 +23,57 @@ class DescribeGlobalAccelerationInstancesRequest(DaraModel):
         service_location: str = None,
         status: str = None,
     ):
-        # The bandwidth type of the GA instance. Valid values:
-        # 
-        # *   **Sharing**
-        # *   **Exclusive** (default)
+        # The bandwidth type of the Alibaba Cloud Global Accelerator (GA) instance. Valid values: 
+        #            
+        # - **Sharing**: Queries shared-bandwidth instances.
+        #   
+        # - **Exclusive** (default): Queries dedicated-bandwidth instances.
         self.bandwidth_type = bandwidth_type
-        # The ID of the GA instance.
+        # The ID of the Alibaba Cloud Global Accelerator (GA) instance.
         self.global_acceleration_instance_id = global_acceleration_instance_id
-        # Specifies whether to return information about pending orders. Valid values:
+        # Specifies whether to include reservation data that has not taken effect. Valid values:
         # 
-        # *   **false** (default)
-        # *   **true**
+        # - **false** (default): Does not include reservation data that has not taken effect.
+        # 
+        # - **true**: Includes reservation data that has not taken effect.
         self.include_reservation_data = include_reservation_data
-        # The public IP address of the GA instance.
+        # The public IP address of the Alibaba Cloud Global Accelerator (GA) instance.
         self.ip_address = ip_address
-        # The name of the GA instance.
+        # The name of the Alibaba Cloud Global Accelerator (GA) instance.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of the page to return. Default value: **1**.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Maximum value: **100**. Default value: **10**.
+        # The number of entries per page for paging queries. Maximum value: **100**. Default value: **10**.
         self.page_size = page_size
-        # The region ID of the GA instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # The region where the Alibaba Cloud Global Accelerator (GA) instance resides. You can invoke the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the backend service instance.
+        # The instance ID of the backend service.
         self.server_id = server_id
-        # The region of the backend service. Valid values:
+        # The backend service region. Valid values: 
         # 
-        # *   **china-mainland**
-        # *   **north-america**
-        # *   **asia-pacific**
-        # *   **europe**
+        # - **china-mainland**: the Chinese mainland.
+        # 
+        # - **north-america**: North America.
+        #    
+        # - **asia-pacific**: Asia Pacific.
+        #    
+        # - **europe**: Europe.
         self.service_location = service_location
-        # The status of the GA instance. Valid values:
+        # The instance status of the Alibaba Cloud Global Accelerator (GA) instance. Valid values: 
         # 
-        # *   **Available**
-        # *   **Inuse**
-        # *   **Associating**
-        # *   **Unassociating**
+        # - **Available**: active.
+        # 
+        # - **Inuse**: Allocated.
+        #    
+        # - **Associating**: Being attached.
+        #    
+        # - **Unassociating**: Being disassociated.
         self.status = status
 
     def validate(self):

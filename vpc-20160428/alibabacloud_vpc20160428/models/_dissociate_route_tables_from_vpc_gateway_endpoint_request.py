@@ -19,30 +19,30 @@ class DissociateRouteTablesFromVpcGatewayEndpointRequest(DaraModel):
         resource_owner_id: int = None,
         route_table_ids: List[str] = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **token** can contain only ASCII characters and cannot exceed 64 characters in length.
+        # The client token that is used to ensure the idempotence of the request.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
+        # 
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request may be different.
         self.client_token = client_token
-        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # Specifies whether to perform a dry run. Valid values:
         # 
-        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        # - **true**: performs a dry run.
+        # - **false** (default): sends the request.
         self.dry_run = dry_run
-        # The ID of the gateway endpoint to be disassociated from the route table.
+        # The endpoint instance ID of the gateway endpoint.
         # 
         # This parameter is required.
         self.endpoint_id = endpoint_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the gateway endpoint.
-        # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # The region ID of the endpoint. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the route table. Valid values of **N** are **1** to **20**, which specifies that you can disassociate a gateway endpoint from at most 20 route tables at a time.
+        # The list of route tables.
         # 
         # This parameter is required.
         self.route_table_ids = route_table_ids

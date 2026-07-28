@@ -13,9 +13,9 @@ class ListGeographicSubRegionsResponseBody(DaraModel):
         geographic_sub_regions: List[str] = None,
         request_id: str = None,
     ):
-        # The number of entries.
+        # The number of entries in the list.
         self.count = count
-        # The region list.
+        # The list of regions to query.
         self.geographic_sub_regions = geographic_sub_regions
         # The request ID.
         self.request_id = request_id

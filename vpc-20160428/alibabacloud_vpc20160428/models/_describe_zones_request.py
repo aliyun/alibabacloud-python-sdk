@@ -15,21 +15,23 @@ class DescribeZonesRequest(DaraModel):
         resource_owner_id: int = None,
         zone_type: str = None,
     ):
-        # The language used in the **LocalName** parameter. Valid values:
+        # The display language of the zone name **LocalName** in the response. Valid values:
         # 
-        # *   **zh-cn**: Chinese
-        # *   **en-us**: English
-        # *   **ja**: Japanese
+        # - **zh-cn**: Chinese.
+        # 
+        # - **en-us**: English.
+        # 
+        # - **ja**: Japanese.
         self.accept_language = accept_language
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the zone. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # The ID of the region where the zones reside. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The zone type. Default value: **AvailabilityZone**.
+        # The type of zones to query. Default value: **AvailabilityZone**, which indicates a standard cloud zone.
         self.zone_type = zone_type
 
     def validate(self):

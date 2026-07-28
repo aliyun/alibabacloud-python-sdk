@@ -31,27 +31,27 @@ class ModifyForwardEntryRequest(DaraModel):
         # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
         self.client_token = client_token
         # Specifies whether to perform a dry run. Valid values:
-        # - **true**: performs a dry run without modifying the DNAT entry. The system checks the required parameters, request format, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # - **false** (default): performs a dry run and sends the request. If the request passes the dry run, an HTTP 2xx status code is returned and the DNAT entry is modified.
+        # - **true**: performs a dry run without modifying the DNAT entry. The system checks the required parameters, request format, and service limits. If the check fails, the corresponding error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
+        # - **false** (default): performs a dry run and sends the request. After the check succeeds, an HTTP 2xx status code is returned and the DNAT entry is modified.
         self.dry_run = dry_run
         # - If you modify a DNAT entry of an Internet NAT gateway, this parameter specifies the public IP address used to provide public network access.
         # 
-        # - If you modify a DNAT entry of a VPC NAT gateway, this parameter specifies the NAT IP address accessed by the external network.
+        # - If you modify a DNAT entry of a VPC NAT gateway, this parameter specifies the NAT IP address accessed by external networks.
         self.external_ip = external_ip
         # - If you modify a DNAT entry of an Internet NAT gateway, this parameter specifies the external port or port range used for port forwarding in the DNAT entry.
         #     - The port range must be within **1** to **65535**.
         #     - To specify a port range, separate the start and end ports with a forward slash (/), such as `10/20`.
         #     - If you modify both **ExternalPort** and **InternalPort**, and **ExternalPort** is set to a port range, **InternalPort** must also be set to a port range with the same number of ports. For example, if **ExternalPort** is set to `10/20`, **InternalPort** must be set to `80/90`.
         # 
-        # - If you modify a DNAT entry of a VPC NAT gateway, this parameter specifies the port accessed by the external network. Valid values: **1** to **65535**.
+        # - If you modify a DNAT entry of a VPC NAT gateway, this parameter specifies the port accessed by external networks. Valid values: **1** to **65535**.
         self.external_port = external_port
-        # The ID of the DNAT entry to be modified.
+        # The ID of the DNAT entry that you want to modify.
         # 
         # This parameter is required.
         self.forward_entry_id = forward_entry_id
         # The new name of the DNAT entry.
         # 
-        # The name must be 2 to 128 characters in length and must start with a letter or a Chinese character. It cannot start with `http://` or `https://`.
+        # The name must be 2 to 128 characters in length and must start with a letter or Chinese character. It cannot start with `http://` or `https://`.
         self.forward_entry_name = forward_entry_name
         # The ID of the DNAT table to which the DNAT entry belongs.
         # 

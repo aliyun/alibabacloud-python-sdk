@@ -19,13 +19,13 @@ class DescribeIPv6TranslatorAclListAttributesResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.acl_entries = acl_entries
-        # The ACL ID.
+        # The ID of the access control policy group.
         self.acl_id = acl_id
-        # The name of the ACL.
+        # The name of the access control policy group.
         self.acl_name = acl_name
-        # The page number of the returned page.
+        # The current page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id

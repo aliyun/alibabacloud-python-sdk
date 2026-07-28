@@ -16,23 +16,23 @@ class ModifyGlobalAccelerationInstanceAttributesRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The description of the GA instance.
+        # The description of the Alibaba Cloud Global Accelerator (GA) instance.  
         # 
-        # The description must be 2 to 256 characters in length. It must start with a letter but cannot start with `http://` or `https://`.
+        # The description must be 2 to 256 characters in length and must start with a letter or a Chinese character. It cannot start with `http://` or `https://`.
         self.description = description
-        # The ID of the GA instance.
+        # The ID of the Alibaba Cloud Global Accelerator (GA) instance.
         # 
         # This parameter is required.
         self.global_acceleration_instance_id = global_acceleration_instance_id
-        # The name of the GA instance.
+        # The name of the Alibaba Cloud Global Accelerator (GA) instance.  
         # 
-        # The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It cannot start with `http://` or `https://`.
+        # The name must be 2 to 128 characters in length and must start with a letter or a Chinese character. It can contain digits, periods (.), underscores (_), and hyphens (-). It cannot start with `http://` or `https://`.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the GA instance.
+        # The region where the Alibaba Cloud Global Accelerator (GA) instance is located. 
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can invoke the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id

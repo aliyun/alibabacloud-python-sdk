@@ -14,20 +14,20 @@ class DescribeHighDefinitionMonitorLogAttributeResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
-        # The ID of the instance whose fine-grained monitoring configurations you want to query.
+        # The instance ID for which high-precision second-level monitoring is queried.
         self.instance_id = instance_id
-        # The type of instance for which you want to query fine-grained monitoring. Only **EIP** may be returned.
+        # The type of the instance for which high-precision second-level monitoring is queried. The value is **EIP**.
         self.instance_type = instance_type
-        # The name of the project.
+        # The name of the LogProject.
         self.log_project = log_project
-        # The name of the Logstore.
+        # The name of the LogStore.
         self.log_store = log_store
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the operation is performed. Valid values:
+        # Indicates whether the call was successful.
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The call was successful.
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):

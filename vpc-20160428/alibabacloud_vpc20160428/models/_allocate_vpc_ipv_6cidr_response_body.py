@@ -10,7 +10,7 @@ class AllocateVpcIpv6CidrResponseBody(DaraModel):
         ipv_6cidr_block: str = None,
         request_id: str = None,
     ):
-        # The IPv6 CIDR block that is reserved.
+        # The reserved IPv6 CIDR block.
         self.ipv_6cidr_block = ipv_6cidr_block
         # The request ID.
         self.request_id = request_id

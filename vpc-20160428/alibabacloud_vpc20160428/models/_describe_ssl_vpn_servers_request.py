@@ -27,11 +27,11 @@ class DescribeSslVpnServersRequest(DaraModel):
         self.owner_id = owner_id
         # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page in paging query. Maximum value: **50**. Default value: **10**.
+        # The number of entries per page for paging query. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
         # The region ID of the SSL server. 
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id

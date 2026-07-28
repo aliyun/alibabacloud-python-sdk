@@ -10,11 +10,11 @@ class GetFlowLogServiceStatusResponseBody(DaraModel):
         enabled: bool = None,
         request_id: str = None,
     ):
-        # Indicates whether the flow log feature is activated. Valid values:
+        # Indicates whether the flow log service is activated. Valid values:
         # 
-        # - **true**: activated.
+        # - **true**: The flow log service is activated.
         # 
-        # - **false**: not activated. You can call the [OpenFlowLogService](https://help.aliyun.com/document_detail/449637.html) operation to activate the flow log feature.
+        # - **false**: The flow log service is not activated. You can call the [OpenFlowLogService](https://help.aliyun.com/document_detail/449637.html) operation to activate the flow log service.
         self.enabled = enabled
         # The request ID.
         self.request_id = request_id

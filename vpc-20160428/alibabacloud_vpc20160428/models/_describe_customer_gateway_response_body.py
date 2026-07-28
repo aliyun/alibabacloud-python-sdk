@@ -21,19 +21,19 @@ class DescribeCustomerGatewayResponseBody(DaraModel):
         resource_group_id: str = None,
         tags: main_models.DescribeCustomerGatewayResponseBodyTags = None,
     ):
-        # The autonomous system number (ASN) of the gateway device in the data center.
+        # The autonomous system number of the on-premises data center gateway device.
         self.asn = asn
-        # The authentication key of the Border Gateway Protocol (BGP) routing protocol for the gateway device in the data center.
+        # The authentication key of the BGP routing protocol for the on-premises data center gateway device.
         self.auth_key = auth_key
-        # The timestamp generated when the customer gateway was created. Unit: milliseconds.
+        # The timestamp when the customer gateway was created. Unit: milliseconds.
         # 
-        # This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+        # The timestamp is in the UNIX format and represents the total number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC to the time when the customer gateway was created.
         self.create_time = create_time
-        # The ID of the customer gateway.
+        # The instance ID of the customer gateway.
         self.customer_gateway_id = customer_gateway_id
         # The description of the customer gateway.
         self.description = description
-        # The IP address of the gateway device in the data center.
+        # The IP address of the on-premises data center gateway device.
         self.ip_address = ip_address
         # The name of the customer gateway.
         self.name = name
@@ -41,7 +41,7 @@ class DescribeCustomerGatewayResponseBody(DaraModel):
         self.request_id = request_id
         # The ID of the resource group to which the customer gateway belongs.
         # 
-        # You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query resource groups.
+        # You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query resource group information.
         self.resource_group_id = resource_group_id
         self.tags = tags
 

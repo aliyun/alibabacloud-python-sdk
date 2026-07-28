@@ -12,7 +12,7 @@ class CreateVSwitchCidrReservationResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The ID of the reserved CIDR block.
+        # The instance ID of the reserved CIDR block for a vSwitch.
         self.v_switch_cidr_reservation_id = v_switch_cidr_reservation_id
 
     def validate(self):

@@ -10,7 +10,7 @@ class CreateExpressCloudConnectionResponseBody(DaraModel):
         ecc_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the ECC instance.
+        # The instance ID of the Express Cloud Connection.
         self.ecc_id = ecc_id
         # The request ID.
         self.request_id = request_id

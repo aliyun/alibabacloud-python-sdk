@@ -26,33 +26,39 @@ class GetIpv4GatewayAttributeResponseBody(DaraModel):
         self.create_time = create_time
         # Indicates whether the IPv4 gateway is activated. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The IPv4 gateway is activated.
+        # 
+        # - **false**: The IPv4 gateway is not activated.
         self.enabled = enabled
-        # The description of the IPv4 gateway.
+        # The description of the IPv4 gateway instance.
         self.ipv_4gateway_description = ipv_4gateway_description
-        # The ID of the IPv4 gateway.
+        # The instance ID of the IPv4 gateway.
         self.ipv_4gateway_id = ipv_4gateway_id
-        # The name of the IPv4 gateway.
+        # The name of the IPv4 gateway instance.
         self.ipv_4gateway_name = ipv_4gateway_name
-        # The ID of the route table associated with the IPv4 gateway.
+        # The ID of the route table associated with the IPv4 gateway instance.
         self.ipv_4gateway_route_table_id = ipv_4gateway_route_table_id
         # The request ID.
         self.request_id = request_id
         # The ID of the resource group to which the IPv4 gateway belongs.
         self.resource_group_id = resource_group_id
-        # The status of the IPv4 gateway. Valid values:
+        # The status of the IPv4 gateway instance. Valid values:
         # 
-        # *   **Creating**
-        # *   **Created**
-        # *   **Modifying**
-        # *   **Deleting**
-        # *   **Deleted**
-        # *   **Activating**
+        # - **Creating**: The IPv4 gateway is being created.
+        # 
+        # - **Created**: The IPv4 gateway is created and available.
+        # 
+        # - **Modifying**: The IPv4 gateway is being modified.
+        # 
+        # - **Deleting**: The IPv4 gateway is being deleted.
+        # 
+        # - **Deleted**: The IPv4 gateway is deleted.
+        # 
+        # - **Activating**: The IPv4 gateway is being activated.
         self.status = status
         # The tag list.
         self.tags = tags
-        # The ID of the VPC with which the IPv4 gateway is associated.
+        # The ID of the VPC associated with the IPv4 gateway instance.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -149,9 +155,9 @@ class GetIpv4GatewayAttributeResponseBodyTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N added to the resource.
+        # The tag key.
         self.key = key
-        # The value of tag N added to the resource.
+        # The tag value.
         self.value = value
 
     def validate(self):

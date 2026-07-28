@@ -16,11 +16,11 @@ class DescribeVpnCrossAccountAuthorizationsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of cross-account authorization information for the IPsec-VPN connection.
+        # The list of cross-account authorization information of the IPsec-VPN connection.
         self.cross_account_authorizations = cross_account_authorizations
         # The page number of the list.
         self.page_number = page_number
-        # The number of entries per page in a paging query.
+        # The number of entries per page when paging is used.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
@@ -91,7 +91,7 @@ class DescribeVpnCrossAccountAuthorizationsResponseBodyCrossAccountAuthorization
     ):
         # The ID of the Alibaba Cloud account to which the IPsec-VPN connection belongs.
         self.ali_uid = ali_uid
-        # The instance ID of the CEN instance to which the IPsec-VPN connection authorization is granted.
+        # The instance ID of the CEN instance to which the IPsec-VPN connection grants authorization.
         self.bind_instance = bind_instance
         # The type of resource to which the IPsec-VPN connection is authorized.
         # 
@@ -99,9 +99,9 @@ class DescribeVpnCrossAccountAuthorizationsResponseBodyCrossAccountAuthorization
         self.bind_product = bind_product
         # The ID of the Alibaba Cloud account to which the IPsec-VPN connection is authorized.
         self.bind_uid = bind_uid
-        # The timestamp when the cross-account authorization was created for the IPsec-VPN connection.
+        # The timestamp when the cross-account authorization of the IPsec-VPN connection was created.
         # 
-        # The timestamp is in the UNIX format and represents the total number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC to the time when the cross-account authorization was created.
+        # The timestamp is in the UNIX format and represents the total number of seconds that have elapsed since January 1, 1970, 00:00:00 (UTC) to the time when the cross-account authorization was created.
         self.creation_time = creation_time
         # The ID of the IPsec-VPN connection.
         self.vpn_connection_id = vpn_connection_id

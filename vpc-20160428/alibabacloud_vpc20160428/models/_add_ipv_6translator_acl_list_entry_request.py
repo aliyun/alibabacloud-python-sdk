@@ -16,21 +16,21 @@ class AddIPv6TranslatorAclListEntryRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The remarks of the ACL entry.
+        # The description of the access control policy group entry.
         # 
-        # It must be 2 to 100 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
+        # The description must be 2 to 100 characters in length and must start with an uppercase letter, lowercase letter, or Chinese character. It can contain digits, underscores (_), and hyphens (-).
         self.acl_entry_comment = acl_entry_comment
-        # The IPv6 address or IPv6 CIDR block that you want to add to the ACL entry, for example, 12XX:0:0:XXXX::0102 or 12XX:0:0:XXXX::/60.
+        # The IPv6 address or IPv6 CIDR block to add to the access control policy group entry. Example: 12XX:0:0:XXXX::0102 or 12XX:0:0:XXXX::/60.
         # 
         # This parameter is required.
         self.acl_entry_ip = acl_entry_ip
-        # The ID of the ACL to which you want to add the IP entry.
+        # The ID of the access control policy group to which the IP entry belongs.
         # 
         # This parameter is required.
         self.acl_id = acl_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the ACL.
+        # The region ID of the access control policy group.
         # 
         # This parameter is required.
         self.region_id = region_id

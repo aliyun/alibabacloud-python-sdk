@@ -10,9 +10,9 @@ class CreateRouteTableResponseBody(DaraModel):
         request_id: str = None,
         route_table_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The IDs of the route tables.
+        # The route table ID.
         self.route_table_id = route_table_id
 
     def validate(self):

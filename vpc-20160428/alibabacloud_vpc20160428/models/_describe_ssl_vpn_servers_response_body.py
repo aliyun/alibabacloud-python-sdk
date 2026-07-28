@@ -18,7 +18,7 @@ class DescribeSslVpnServersResponseBody(DaraModel):
     ):
         # The page number.
         self.page_number = page_number
-        # The number of entries per page in paging query.
+        # The number of entries per page for paging query.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id

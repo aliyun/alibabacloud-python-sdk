@@ -15,16 +15,15 @@ class ListPublicIpAddressPoolCidrBlocksResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The token that is used for the next query. Valid values:
-        # 
-        # *   If **NextToken** was not returned, it indicates that no additional results exist.
-        # *   If **NextToken** is returned, the value is the token that is used for the next query.
+        # The pagination token. Valid values:
+        # - If **NextToken** is empty, no subsequent query exists.
+        # - If **NextToken** is returned, the value indicates the token for the next query.
         self.next_token = next_token
-        # The total number of entries returned.
+        # The list of CIDR blocks in the IP address pool.
         self.public_ip_pool_cidr_block_list = public_ip_pool_cidr_block_list
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The maximum number of entries returned. Valid values: **10** to **100**. Default value: **10**.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -83,21 +82,20 @@ class ListPublicIpAddressPoolCidrBlocksResponseBodyPublicIpPoolCidrBlockList(Dar
         total_ip_num: int = None,
         used_ip_num: int = None,
     ):
-        # The ID of the IP address pool.
+        # The CIDR block.
         self.cidr_block = cidr_block
-        # The CIDR blocks.
+        # The time when the CIDR block was created. The time is in the `YYYY-MM-DDThh:mm:ssZ` format.
         self.creation_time = creation_time
-        # The information about the CIDR blocks.
+        # The instance ID of the IPAM pool.
         self.public_ip_address_pool_id = public_ip_address_pool_id
-        # The time when the CIDR block was created. The time is displayed in `YYYY-MM-DDThh:mm:ssZ` format.
-        self.status = status
-        # The total number of available IP addresses in the CIDR block.
-        self.total_ip_num = total_ip_num
         # The status of the CIDR block in the IP address pool. Valid values:
-        # 
-        # *   **Created**: available
-        # *   **Deleting**: being deleted
-        # *   **Modifying**: being modified
+        # - **Created**: available.
+        # - **Deleting**: being deleted.
+        # - **Modifying**: being modified.
+        self.status = status
+        # The total number of available IP addresses in the CIDR block of the IP address pool.
+        self.total_ip_num = total_ip_num
+        # The number of used IP addresses in the CIDR block of the IP address pool.
         self.used_ip_num = used_ip_num
 
     def validate(self):

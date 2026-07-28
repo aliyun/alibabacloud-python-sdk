@@ -18,7 +18,7 @@ class CreateTrafficMirrorFilterRulesResponseBody(DaraModel):
         self.egress_rules = egress_rules
         # The list of inbound rules.
         self.ingress_rules = ingress_rules
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -75,7 +75,7 @@ class CreateTrafficMirrorFilterRulesResponseBodyIngressRules(DaraModel):
         self,
         instance_id: str = None,
     ):
-        # The ID of the inbound rule.
+        # The instance ID of the inbound rule.
         self.instance_id = instance_id
 
     def validate(self):
@@ -103,7 +103,7 @@ class CreateTrafficMirrorFilterRulesResponseBodyEgressRules(DaraModel):
         self,
         instance_id: str = None,
     ):
-        # The ID of the outbound rule.
+        # The instance ID of the outbound rule.
         self.instance_id = instance_id
 
     def validate(self):

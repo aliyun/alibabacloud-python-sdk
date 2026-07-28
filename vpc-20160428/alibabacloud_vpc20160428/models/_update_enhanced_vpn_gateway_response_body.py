@@ -29,67 +29,57 @@ class UpdateEnhancedVpnGatewayResponseBody(DaraModel):
         vpn_gateway_id: str = None,
         vpn_type: str = None,
     ):
-        # Indicates whether BGP routes are automatically propagated to the VPC. Valid values:
-        # 
+        # Indicates whether BGP route automatic propagation to the VPC is enabled. Valid values:
         # - **true**: Automatic propagation is enabled.
         # 
-        # - **false**: Automatic propagation is disabled.
+        # - **false**: Automatic propagation is not enabled.
         self.auto_propagate = auto_propagate
-        # The timestamp when the Enhanced VPN Gateway was created. Unit: milliseconds.<br>
-        # This value is a Unix timestamp that represents the number of milliseconds that have elapsed since 00:00:00 UTC on January 1, 1970.<br>
+        # The timestamp when the enhanced VPN gateway instance was created. Unit: milliseconds.<br>
+        # The timestamp follows the UNIX time format, which represents the total number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_time = create_time
-        # The description of the Enhanced VPN Gateway.
+        # The description of the enhanced VPN gateway instance.
         self.description = description
-        # The ID of the second vSwitch with which the Enhanced VPN Gateway is associated.
+        # The ID of the second vSwitch associated with the enhanced VPN gateway instance.
         self.disaster_recovery_vswitch_id = disaster_recovery_vswitch_id
-        # Indicates whether BGP is enabled for the Enhanced VPN Gateway. Valid values:<br>
+        # The enabling status of the BGP feature for the enhanced VPN gateway. Valid values:<br>
+        # - **true**: enabled.
         # 
-        # - **true**: Enabled.
-        # 
-        # - **false**: Disabled.
+        # - **false**: disabled.
         self.enable_bgp = enable_bgp
-        # The ENIs created for the Enhanced VPN Gateway.
         self.eni_instance_ids = eni_instance_ids
-        # The type of the Enhanced VPN Gateway. Only **Enhanced.SiteToSite** is returned, which indicates an enhanced site-to-site VPN gateway that supports only the IPsec-VPN feature.
+        # The type of the enhanced VPN gateway. Valid values:
         # 
-        # - **Enhanced.SiteToSite**, an enhanced site-to-cloud VPN that supports only the IPsec feature.
+        # - **Enhanced.SiteToSite**: enhanced site-to-cloud VPN that supports only IPsec functionality.
         self.gateway_type = gateway_type
-        # The name of the Enhanced VPN Gateway.
+        # The name of the enhanced VPN gateway instance.
         self.name = name
-        # The network type of the Enhanced VPN Gateway. Valid values:
-        # 
-        # - **public** (default): a public gateway.
+        # The network type of the enhanced VPN gateway. Valid values:
+        # - **public** (default): public VPN gateway.
         self.network_type = network_type
         # The request ID.
         self.request_id = request_id
-        # The ID of the resource group to which the Enhanced VPN Gateway belongs.<br>
-        # You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query the details of resource groups.<br>
+        # The ID of the resource group to which the enhanced VPN gateway instance belongs.<br>
+        # You can call [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) to query resource group information.
         self.resource_group_id = resource_group_id
-        # The status of the Enhanced VPN Gateway.
-        # 
-        # - **init**: The gateway is being initialized.
-        # 
-        # - **provisioning**: The gateway is being provisioned.
-        # 
-        # - **active**: The gateway is active.
-        # 
-        # - **updating**: The gateway is being updated.
-        # 
-        # - **deleting**: The gateway is being deleted.
+        # The status of the enhanced VPN gateway.
+        # - **init**: initializing.
+        # - **provisioning**: preparing.
+        # - **active**: normal.
+        # - **updating**: updating.
+        # - **deleting**: deleting.
         self.status = status
-        # A JSON string that indicates the features supported by the Enhanced VPN Gateway.
+        # The list of features supported by the enhanced VPN gateway.
         self.tag = tag
-        # The tags of the Enhanced VPN Gateway.
         self.tags = tags
-        # The ID of the vSwitch associated with the Enhanced VPN Gateway.
+        # The ID of the vSwitch associated with the enhanced VPN gateway instance.
         self.v_switch_id = v_switch_id
-        # The ID of the VPC to which the Enhanced VPN Gateway belongs.
+        # The ID of the VPC to which the enhanced VPN gateway instance belongs.
         self.vpc_id = vpc_id
-        # The ID of the Enhanced VPN Gateway.
+        # The ID of the enhanced VPN gateway instance.
         self.vpn_gateway_id = vpn_gateway_id
-        # The type of the Enhanced VPN Gateway.
+        # The type of the enhanced VPN gateway.
         # 
-        # - **Normal** (default): standard type.
+        # - **Normal** (default): standard.
         self.vpn_type = vpn_type
 
     def validate(self):

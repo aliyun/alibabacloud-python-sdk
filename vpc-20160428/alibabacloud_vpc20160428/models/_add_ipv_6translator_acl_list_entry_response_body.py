@@ -10,7 +10,7 @@ class AddIPv6TranslatorAclListEntryResponseBody(DaraModel):
         acl_entry_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the ACL entry.
+        # The ID of the access control policy group entry.
         self.acl_entry_id = acl_entry_id
         # The request ID.
         self.request_id = request_id

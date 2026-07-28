@@ -20,7 +20,7 @@ class DescribeIpv6EgressOnlyRulesRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the IPv6 address for which the IPv6 egress-only rule is configured.
+        # The ID of the IPv6 address for which an IPv6 egress-only rule is configured.
         self.instance_id = instance_id
         # The type of the instance for which you want to configure an IPv6 egress-only rule. Valid values:
         # 
@@ -39,7 +39,7 @@ class DescribeIpv6EgressOnlyRulesRequest(DaraModel):
         self.owner_id = owner_id
         # The page number of the list to return. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page in a paged query. Maximum value: **50**. Default value: **10**.
+        # The number of entries per page for a paged query. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
         # The region ID of the IPv6 gateway. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 

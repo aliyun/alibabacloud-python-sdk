@@ -17,32 +17,32 @@ class CreateVcoRouteEntryResponseBody(DaraModel):
         vpn_connection_id: str = None,
         weight: int = None,
     ):
-        # The UNIX timestamp when the destination-based route entry was created. Unit: milliseconds.  
+        # The timestamp when the destination route entry was created. Unit: milliseconds.
         # 
-        # The timestamp follows the Unix time format, which represents the total number of milliseconds elapsed since 00:00:00 UTC on January 1, 1970, until the destination-based route entry was created.
+        # The timestamp follows the UNIX format and represents the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_time = create_time
-        # The description of the destination-based route entry.
+        # The description of the destination route entry.
         self.description = description
-        # The next hop of the destination-based route entry.
+        # The next hop of the destination route entry.
         self.next_hop = next_hop
-        # The tunnel protocol.  
+        # The tunneling protocol.
         # 
-        # Valid value: **Ipsec**, which indicates the IPsec tunnel protocol.
+        # The value is **Ipsec**, which specifies the IPsec tunneling protocol.
         self.overlay_mode = overlay_mode
         # The request ID.
         self.request_id = request_id
-        # The description of the destination-based route.
+        # The destination CIDR block of the destination route entry.
         self.route_dest = route_dest
-        # The publish status of the destination-based route entry.  
+        # The publish status of the destination route entry.
         # 
-        # Valid value: **published**, which indicates that the route entry has been published to the transit router instance.
+        # The value is **published**, which indicates that the route entry is published to the transit router instance.
         self.state = state
-        # The request ID.
+        # The ID of the IPsec-VPN connection.
         self.vpn_connection_id = vpn_connection_id
-        # The weight of the destination-based route entry.  
+        # The weight of the destination route entry.
         # 
-        # - **0**: indicates low priority.  
-        # - **100**: indicates high priority.
+        # - **0**: low priority.
+        # - **100**: high priority.
         self.weight = weight
 
     def validate(self):

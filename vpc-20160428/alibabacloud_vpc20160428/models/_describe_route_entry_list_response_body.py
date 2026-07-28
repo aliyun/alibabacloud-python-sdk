@@ -14,9 +14,9 @@ class DescribeRouteEntryListResponseBody(DaraModel):
         request_id: str = None,
         route_entrys: main_models.DescribeRouteEntryListResponseBodyRouteEntrys = None,
     ):
-        # Indicates whether a next query token (Token) exists. Valid values:
-        # - If **NextToken** is empty, no next query exists.
-        # - If **NextToken** has a returned value, the value indicates the token for the next query.
+        # The pagination token. Valid values:
+        # - If **NextToken** is empty, no subsequent query exists.
+        # - If **NextToken** is returned, the value indicates the token for the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id

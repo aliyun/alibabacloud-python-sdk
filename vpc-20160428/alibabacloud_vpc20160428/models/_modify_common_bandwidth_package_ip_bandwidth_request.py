@@ -16,21 +16,21 @@ class ModifyCommonBandwidthPackageIpBandwidthRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
+        # The maximum bandwidth that can be allocated within the Internet Shared Bandwidth instance. Unit: Mbps.
         # 
         # This parameter is required.
         self.bandwidth = bandwidth
-        # The ID of the Internet Shared Bandwidth instance.
+        # The instance ID of the Internet Shared Bandwidth instance.
         # 
         # This parameter is required.
         self.bandwidth_package_id = bandwidth_package_id
-        # The ID of the EIP that is associated with the Internet Shared Bandwidth instance.
+        # The instance ID of the EIP that has been added to the Internet Shared Bandwidth instance.
         # 
         # This parameter is required.
         self.eip_id = eip_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the Internet Shared Bandwidth instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # The region ID of the Internet Shared Bandwidth instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id

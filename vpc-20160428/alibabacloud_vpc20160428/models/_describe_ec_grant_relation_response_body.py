@@ -17,17 +17,17 @@ class DescribeEcGrantRelationResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The total number of entries returned.
+        # The number of query results.
         self.count = count
-        # The query results.
+        # The list of authorization relationship query results.
         self.ec_grant_relations = ec_grant_relations
-        # The page number.
+        # The page number of the list.
         self.page = page
-        # The number of entries per page.
+        # The number of entries per page in a paged query.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries in the list.
         self.total_count = total_count
 
     def validate(self):
@@ -103,33 +103,33 @@ class DescribeEcGrantRelationResponseBodyEcGrantRelations(DaraModel):
         vbr_owner_uid: int = None,
         vbr_region_no: str = None,
     ):
-        # The ID of the Alibaba Cloud account to which the VPC belongs.
+        # The Alibaba Cloud account ID of the VPC instance owner in the authorization relationship.
         self.ali_uid = ali_uid
-        # The time when permissions on the VPC were granted to the VBR.
+        # The time when the VPC-connected instance granted authorization to the VBR instance.
         self.gmt_create = gmt_create
-        # The VBRs that have permissions on the VPC. Valid values:
+        # The scope of VBR instances that are granted authorization. Valid values:
         # 
-        # *   **All**: VBRs that reside in the specified region and belong to the specified Alibaba Cloud account all have permissions on the VPC.
-        # *   **Specify**: Only the specified VBR has permissions on the VPC.
+        # - **All**: The VPC-connected instance is authorized to all VBR instances under the specified region and Alibaba Cloud account.
+        # - **Specify**: The VPC-connected instance is authorized to a specified VBR instance.
         self.grant_type = grant_type
-        # The ID of the VPC.
+        # The instance ID of the VPC-connected instance in the authorization relationship.
         self.instance_id = instance_id
-        # The name of the VPC.
+        # The name of the VPC instance in the authorization relationship.
         self.instance_name = instance_name
-        # The ID of the vRouter.
+        # The vRouter ID of the VPC instance in the authorization relationship.
         self.instance_router_id = instance_router_id
-        # The ID of the region where the VPC is deployed.
+        # The region ID of the VPC instance in the authorization relationship.
         self.region_no = region_no
-        # The query result. Valid values:
+        # The status of the authorization relationship. Valid values:
         # 
-        # *   **Created**: The VBR has permissions on the VPC.
-        # *   **Deleted**: The VBR does not have permissions on the VPC.
+        # - **Created**: An authorization relationship exists between the VPC-connected instance and the VBR instance.
+        # - **Deleted**: No authorization relationship exists between the VPC-connected instance and the VBR instance.
         self.status = status
-        # The ID of the VBR.
+        # The instance ID of the VBR instance in the authorization relationship.
         self.vbr_instance_id = vbr_instance_id
-        # The ID of the Alibaba Cloud account to which the VBR belongs.
+        # The Alibaba Cloud account ID of the VBR instance owner.
         self.vbr_owner_uid = vbr_owner_uid
-        # The ID of the region where the VBR is deployed.
+        # The region ID of the VBR instance in the authorization relationship.
         self.vbr_region_no = vbr_region_no
 
     def validate(self):

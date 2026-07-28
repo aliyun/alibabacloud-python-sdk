@@ -22,37 +22,35 @@ class CompletePhysicalConnectionLOARequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must ensure that it is unique among different requests.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests.
         # 
-        # >  If you do not set this parameter, the system automatically uses **RequestId** as **ClientToken**. **RequestId** of each API request may be different.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request may be different.
         self.client_token = client_token
         # Specifies whether the construction is completed. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
+        # * **true**: The construction is completed.
+        # * **false**: Line O&M.
         self.finish_work = finish_work
-        # The ID of the Express Connect circuit.
+        # The instance ID of the Express Connect circuit.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The circuit code provided by the connectivity provider.
+        # The line code of the telecommunications service provider.
         self.line_code = line_code
-        # The label of the cable in the data center.
+        # The cable label in the data center building.
         self.line_label = line_label
-        # The contact information about line O\\&M.
+        # The O&M contact information of the line.
         self.line_spcontact_info = line_spcontact_info
-        # The ISP. Valid values:
-        # 
-        # *   **China Telecom**
-        # *   **China Unicom**
-        # *   **China Mobile**
-        # *   **Other ISPs in China**
+        # The telecommunications service provider. Valid values:
+        # - **中国电信**
+        # - **中国联通**
+        # - **中国移动**
+        # - **中国其他**
         self.line_service_provider = line_service_provider
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the Express Connect circuit.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id

@@ -59,18 +59,20 @@ class DescribeRouterInterfaceAttributeResponseBody(DaraModel):
     ):
         # The ID of the access point.
         self.access_point_id = access_point_id
-        # The bandwidth of the router interface. Unit: Mbit/s.
+        # The bandwidth of the router interface. Unit: Mbps.
         self.bandwidth = bandwidth
-        # The status of the router interface. Valid values:
+        # The business status of the router interface. Valid values:
         # 
-        # *   **Normal**
-        # *   **FinancialLocked**
-        # *   **SecurityLocked**
+        # - **Normal**: Normal.
+        # 
+        # - **FinancialLocked**: locked due to overdue payment.
+        # 
+        # - **SecurityLocked**: locked due to security risk control.
         self.business_status = business_status
         # The billing method. Valid values:
         # 
-        # *   **AfterPay**: pay-as-you-go
-        # *   **PrePaid**: subscription
+        # - **AfterPay**: pay-as-you-go.
+        # - **PrePaid**: subscription.
         self.charge_type = charge_type
         # The HTTP status code.
         self.code = code
@@ -80,92 +82,91 @@ class DescribeRouterInterfaceAttributeResponseBody(DaraModel):
         self.creation_time = creation_time
         # Indicates whether the connection is a cross-border connection. Valid values:
         # 
-        # *   **false**
-        # *   **true**
+        # - **false**: The connection is not a cross-border connection.
+        # 
+        # - **true**: The connection is a cross-border connection.
         self.cross_border = cross_border
         # The description of the router interface.
         self.description = description
-        # The end of the time range during which data was queried.
+        # The end time of the data retrieval.
         self.end_time = end_time
-        # Indicates whether the VBR that is created in the Fast Link mode is uplinked to the router interface. The Fast Link mode helps automatically connect router interfaces that are created for the VBR and its peer VPC. Valid values:
+        # Indicates whether the router interface on the VBR was created in fast link mode. Fast link mode allows the router interfaces on the VBR and VPC to be automatically connected after they are created. Valid values:
         # 
-        # *   **true**
-        # *   **false** (default)
+        # - **true**: The router interface was created in fast link mode.
+        # - **false** (default): The router interface was not created in fast link mode.
         # 
-        # > 
         # 
-        # *   This parameter takes effect only when **RouterType** is set to **VBR** and **OppositeRouterType** is set to **VRouter**.
-        # 
-        # *   When **FastLinkMode** is set to **true**, **Role** must be set to **InitiatingSide**. **AccessPointId**, **OppositeRouterType**, **OpppsiteRouterId**, and **OppositeInterfaceOwnerId** are required.
+        # > -  This parameter takes effect only when **RouterType** is set to **VBR** and **OppositeRouterType** is set to **VRouter**.
+        # - When **FastLinkMode** is set to **true**, **Role** must be set to **InitiatingSide**, and **AccessPointId**, **OppositeRouterType**, **OpppsiteRouterId**, and **OppositeInterfaceOwnerId** are required.
         self.fast_link_mode = fast_link_mode
-        # The time when the router interface was modified.
+        # The time when the router interface was last modified.
         self.gmt_modified = gmt_modified
-        # Indicates whether renewal data is included. Valid values:
+        # Indicates whether renewal data exists. Valid values:
         # 
-        # *   **false**
-        # *   **true**
+        # - **false**: No renewal data exists.
+        # 
+        # - **true**: Renewal data exists.
         self.has_reservation_data = has_reservation_data
-        # The rate of health checks. Unit: seconds. The value indicates the interval at which probe packets are sent during a health check.
+        # The health check rate. Unit: seconds. This value indicates the interval between consecutive probe packets sent during a health check.
         self.hc_rate = hc_rate
-        # The healthy threshold. This value indicates the number of probe packets that are sent during a health check. Unit: packets.
+        # The health check threshold. This value indicates the number of probe packets sent during a health check. Unit: packets.
         self.hc_threshold = hc_threshold
-        # The source IP address that is used for the health check.
+        # The source IP address of the health check.
         self.health_check_source_ip = health_check_source_ip
-        # The status of the health check. Valid values:
+        # The health check status. Valid values:
         # 
-        # *   **Abnormal**
-        # *   **Normal**
-        # *   **NoRedundantRoute**
-        # *   **NoHealthCheckConfig**
+        # - **Abnormal**: abnormal.
+        # - **Normal**: Normal.
+        # - **NoRedundantRoute**: no redundant route configured.
+        # - **NoHealthCheckConfig**: no health check configured.
         self.health_check_status = health_check_status
-        # The destination IP address that is used for the health check.
+        # The target IP address of the health check.
         self.health_check_target_ip = health_check_target_ip
-        # The response parameters.
+        # The response message.
         self.message = message
         # The name of the router interface.
         self.name = name
         # The ID of the peer access point.
         self.opposite_access_point_id = opposite_access_point_id
-        # The maximum bandwidth of the peer router interface. Unit: Mbit/s.
+        # The bandwidth of the peer router interface. Unit: Mbps.
         self.opposite_bandwidth = opposite_bandwidth
-        # The service status of the peer router interface. Valid values:
-        # 
-        # *   **Normal**
-        # *   **FinancialLocked**
-        # *   **SecurityLocked**
+        # The business status of the peer router interface. Valid values:
+        # - **Normal**: Normal.
+        # - **FinancialLocked**: locked due to overdue payment.
+        # - **SecurityLocked**: locked due to security risk control.
         self.opposite_interface_business_status = opposite_interface_business_status
         # The ID of the peer router interface.
         self.opposite_interface_id = opposite_interface_id
-        # The ID of the Alibaba Cloud account to which the peer router interface belongs.
+        # The ID of the account to which the peer router interface belongs.
         self.opposite_interface_owner_id = opposite_interface_owner_id
         # The specification of the peer router interface. Valid values:
         # 
-        # *   **Mini.2**: 2 Mbit/s
-        # *   **Mini.5**: 5 Mbit/s
-        # *   **Small.1**: 10 Mbit/s
-        # *   **Small.2**: 20 Mbit/s
-        # *   **Small.5**: 50 Mbit/s
-        # *   **Middle.1**: 100 Mbit/s
-        # *   **Middle.2**: 200 Mbit/s
-        # *   **Middle.5**: 500 Mbit/s
-        # *   **Large.1**: 1,000 Mbit/s
-        # *   **Large.2**: 2,000 Mbit/s
-        # *   **Large.5**: 5,000 Mbit/s
-        # *   **Xlarge.1**: 10,000 Mbit/s
-        # *   **Negative**: not applicable
+        # - **Mini.2**: 2 Mbps
+        # - **Mini.5**: 5 Mbps
+        # - **Small.1**: 10 Mbps
+        # - **Small.2**: 20 Mbps
+        # - **Small.5**: 50 Mbps
+        # - **Middle.1**: 100 Mbps
+        # - **Middle.2**: 200 Mbps
+        # - **Middle.5**: 500 Mbps
+        # - **Large.1**: 1000 Mbps
+        # - **Large.2**: 2000 Mbps
+        # - **Large.5**: 5000 Mbps
+        # - **Xlarge.1**: 10000 Mbps
+        # - **Negative**: no specification involved.
         self.opposite_interface_spec = opposite_interface_spec
         # The status of the peer router interface. Valid values:
         # 
-        # *   **Idle**
-        # *   **AcceptingConnecting**
-        # *   **Connecting**
-        # *   **Activating**
-        # *   **Active**
-        # *   **Modifying**
-        # *   **Deactivating**
-        # *   **Inactive**
-        # *   **Deleting**
-        # *   **Deleted**
+        # - **Idle**: not connected.
+        # - **AcceptingConnecting**: accepting a connection.
+        # - **Connecting**: connecting.
+        # - **Activating**: being activated.
+        # - **Active**: activated.
+        # - **Modifying**: being modified.
+        # - **Deactivating**: being frozen.
+        # - **Inactive**: frozen.
+        # - **Deleting**: being deleted.
+        # - **Deleted**: deleted.
         self.opposite_interface_status = opposite_interface_status
         # The region ID of the peer router interface.
         self.opposite_region_id = opposite_region_id
@@ -173,26 +174,26 @@ class DescribeRouterInterfaceAttributeResponseBody(DaraModel):
         self.opposite_router_id = opposite_router_id
         # The type of the router to which the peer router interface belongs. Valid values:
         # 
-        # *   **VRouter**
-        # *   **VBR**
+        # - **VRouter**: vRouter of a VPC.
+        # - **VBR**: Virtual Border Router.
         self.opposite_router_type = opposite_router_type
         # The ID of the peer VPC.
         self.opposite_vpc_instance_id = opposite_vpc_instance_id
         # The request ID.
         self.request_id = request_id
-        # The time when the renewal takes effect.
+        # The renewal active time.
         self.reservation_active_time = reservation_active_time
-        # The maximum bandwidth after the renewal takes effect. Unit: Mbit/s.
+        # The renewal bandwidth. Unit: Mbps.
         self.reservation_bandwidth = reservation_bandwidth
-        # The metering method that is used after the renewal takes effect. Valid values: If **PayByBandwidth** is returned, it indicates that the Express Connect circuit is billed on a pay-by-bandwidth basis.
+        # The renewal billing type. Valid values: **PayByBandwidth**, which indicates pay-by-bandwidth.
         self.reservation_internet_charge_type = reservation_internet_charge_type
-        # The type of the renewal order. Only **RENEW** may be returned, which indicates that the order is placed for service renewal.
+        # The type of the renewal order. Valid values: **RENEW**, which indicates a renewal order.
         self.reservation_order_type = reservation_order_type
         # The resource group ID.
         # 
-        # For more information about resource groups, see [What is a resource group?](https://help.aliyun.com/document_detail/94475.html)
+        # For more information about resource groups, see [What is a resource group?](https://help.aliyun.com/document_detail/2381067.html).
         self.resource_group_id = resource_group_id
-        # The role of the router interface in the peering connection.
+        # The role in the peering connection.
         self.role = role
         # The ID of the router to which the router interface belongs.
         self.router_id = router_id
@@ -200,40 +201,41 @@ class DescribeRouterInterfaceAttributeResponseBody(DaraModel):
         self.router_interface_id = router_interface_id
         # The type of the router to which the route table belongs. Valid values:
         # 
-        # *   **VRouter**
-        # *   **VBR**
+        # - **VRouter**: vRouter of a VPC.
+        # 
+        # - **VBR**: Virtual Border Router.
         self.router_type = router_type
         # The specification of the router interface. Valid values:
         # 
-        # *   **Mini.2**: 2 Mbit/s
-        # *   **Mini.5**: 5 Mbit/s
-        # *   **Small.1**: 10 Mbit/s
-        # *   **Small.2**: 20 Mbit/s
-        # *   **Small.5**: 50 Mbit/s
-        # *   **Middle.1**: 100 Mbit/s
-        # *   **Middle.2**: 200 Mbit/s
-        # *   **Middle.5**: 500 Mbit/s
-        # *   **Large.1**: 1,000 Mbit/s
-        # *   **Large.2**: 2,000 Mbit/s
-        # *   **Large.5**: 5,000 Mbit/s
-        # *   **Xlarge.1**: 10,000 Mbit/s
+        # - **Mini.2**: 2 Mbps
+        # - **Mini.5**: 5 Mbps
+        # - **Small.1**: 10 Mbps
+        # - **Small.2**: 20 Mbps
+        # - **Small.5**: 50 Mbps
+        # - **Middle.1**: 100 Mbps
+        # - **Middle.2**: 200 Mbps
+        # - **Middle.5**: 500 Mbps
+        # - **Large.1**: 1000 Mbps
+        # - **Large.2**: 2000 Mbps
+        # - **Large.5**: 5000 Mbps
+        # - **Xlarge.1**: 10000 Mbps
         self.spec = spec
         # The status of the router interface. Valid values:
         # 
-        # *   **Idle**
-        # *   **AcceptingConnecting**
-        # *   **Connecting**
-        # *   **Activating**
-        # *   **Active**
-        # *   **Modifying**
-        # *   **Deactivating**
-        # *   **Inactive**
-        # *   **Deleting**
+        # - **Idle**: not connected.
+        # - **AcceptingConnecting**: accepting a connection.
+        # - **Connecting**: connecting.
+        # - **Activating**: being activated.
+        # - **Active**: activated.
+        # - **Modifying**: being modified.
+        # - **Deactivating**: being frozen.
+        # - **Inactive**: frozen.
+        # - **Deleting**: being deleted.
         self.status = status
-        # Indicates whether the request is successful. Valid values: true and false.
+        # Indicates whether the call was successful.
         self.success = success
         self.tags = tags
-        # The ID of the virtual private cloud (VPC) to which the router interface belongs.
+        # The ID of the virtual private cloud (VPC) to which the routing interface belongs.
         self.vpc_instance_id = vpc_instance_id
 
     def validate(self):

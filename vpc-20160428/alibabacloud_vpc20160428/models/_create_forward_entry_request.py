@@ -25,69 +25,78 @@ class CreateForwardEntryRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        # > If you do not specify this parameter, the system uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may differ for each API request.
         self.client_token = client_token
-        # Indicates whether to perform a dry run of the request. Values:
-        # - **true**: Sends a check request without creating a DNAT entry. The checks include whether the AccessKey is valid, the RAM user\\"s authorization status, and if all required parameters are filled out. If any check fails, the corresponding error is returned. If all checks pass, an error code `DryRunOperation` is returned.
-        # - **false** (default): Sends a normal request. After passing the checks, it returns a 2xx HTTP status code and creates a DNAT entry.
+        # Specifies whether to perform a dry run. Valid values:
+        # 
+        # - **true**: performs a dry run without creating a DNAT entry. The system checks the AccessKey pair, the authorization of the Resource Access Management (RAM) user, and the required parameters. If the check fails, the corresponding error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
+        # 
+        # - **false** (default): sends a Normal request. If the check succeeds, a 2xx HTTP status code is returned and the DNAT entry is created.
         self.dry_run = dry_run
-        # *   The EIP that can be accessed over the Internet when you configure a DNAT entry for an Internet NAT gateway.
-        # *   The NAT IP address that can be accessed by external networks when you configure a DNAT entry for a VPC NAT gateway.
+        # - If you add a DNAT entry for an Internet NAT gateway, this parameter specifies the elastic IP address (EIP) that provides public network access.
+        # - If you add a DNAT entry for a VPC NAT gateway, this parameter specifies the NAT IP address that provides external network access.
         # 
         # This parameter is required.
         self.external_ip = external_ip
-        # *   The external port range that is used for port forwarding when you configure a DNAT entry for an Internet NAT gateway.
+        # - If you add a DNAT entry for an Internet NAT gateway, this parameter specifies the external port or port range for port forwarding.
+        #  
+        #     - Valid port values: **1** to **65535**.
+        #     - To specify a port range, separate the start and end ports with a forward slash (/), such as `10/20`.
+        #     - If **ExternalPort** is set to a port range, **InternalPort** must also be set to a port range with the same number of ports. For example, if **ExternalPort** is set to `10/20`, **InternalPort** can be set to `80/90`.
         # 
-        #     *   Valid values: **1** to **65535**.
-        #     *   To specify a port range, separate the first port and the last port with a forward slash (/), for example, `10/20`.
-        #     *   If you set **ExternalPort** to a port range, you must also set **InternalPort** to a port range, and the number of ports specified by these parameters must be the same. For example, if you set **ExternalPort** to `10/20`, you can set **InternalPort** to `80/90`.
-        # 
-        # *   The port that can be accessed by external networks when you configure a DNAT entry for a VPC NAT gateway. Valid values: **1** to **65535**.
+        # - If you add a DNAT entry for a VPC NAT gateway, this parameter specifies the port on the NAT IP address that is accessed by the external network. Valid values: **1** to **65535**.
         # 
         # This parameter is required.
         self.external_port = external_port
-        # The name of the DNAT entry.
+        # The name of the DNAT rule.
         # 
-        # The name must be 2 to 128 characters in length. It must start with a letter but cannot start with `http://` or `https://`.
+        # The name must be 2 to 128 characters in length and must start with a letter or Chinese character. It cannot start with `http://` or `https://`.
         self.forward_entry_name = forward_entry_name
         # The ID of the DNAT table.
         # 
         # This parameter is required.
         self.forward_table_id = forward_table_id
-        # *   The private IP address of the ECS instance that needs to communicate with the Internet when you configure a DNAT entry for an Internet NAT gateway. The private IP address must meet the following requirements:
+        # - If you add a DNAT entry for an Internet NAT gateway, this parameter specifies the private IP address of the ECS instance that needs to communicate over the Internet. The private IP address must meet the following conditions: 
+        #         
+        #     - It must belong to the CIDR block of the VPC in which the NAT gateway resides. 
         # 
-        #     *   It must belong to the CIDR block of the VPC where the NAT gateway is deployed.
-        #     *   The DNAT entry takes effect only if the private IP address is assigned to an ECS instance and the ECS instance is not associated with an EIP.
+        #     - The DNAT entry takes effect only when the IP address is used by an ECS instance that is not associated with an EIP. 
         # 
-        # *   The private IP address that uses DNAT when you add a DNAT entry to a VPC NAT gateway.
+        # - If you add a DNAT entry for a VPC NAT gateway, this parameter specifies the private IP address that communicates through the DNAT rule.
         # 
         # This parameter is required.
         self.internal_ip = internal_ip
-        # *   The internal port or port range that is used for port forwarding when you configure a DNAT entry for an Internet NAT gateway. Valid values: **1** to **65535**.
-        # *   The port of the destination ECS instance to be mapped when you configure a DNAT entry for a VPC NAT gateway. Valid values: **1** to **65535**.
+        # - If you add a DNAT entry for an Internet NAT gateway, this parameter specifies the internal port or port range for port forwarding. Valid values: **1** to **65535**.
+        # 
+        # - If you add a DNAT entry for a VPC NAT gateway, this parameter specifies the destination port of the ECS instance to which traffic is mapped. Valid values: **1** to **65535**.
         # 
         # This parameter is required.
         self.internal_port = internal_port
-        # The protocol. Valid values:
+        # The protocol type. Valid values: 
         # 
-        # *   **TCP**
-        # *   **UDP**
-        # *   **Any** If you set **IpProtocol** to **Any**, you must also set **ExternalPort** and **InternalPort** to **Any** to implement DNAT IP mapping.
+        # - **TCP**: forwards TCP packets.   
+        # 
+        # - **UDP**: forwards UDP packets.   
+        # 
+        # - **Any**: forwards packets of all protocols. If **IpProtocol** is set to **Any**, **ExternalPort** and **InternalPort** must also be set to **Any** to implement DNAT IP mapping.
         # 
         # This parameter is required.
         self.ip_protocol = ip_protocol
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # Whether to enable port breakthrough, with values:
-        # - **true**: Enable port breakthrough. 
-        # - **false** (default): Do not enable port breakthrough.
-        # >When both DNAT and SNAT entries use the same public IP address, if you need to configure a port number greater than 1024, you must set **PortBreak** to **true**.
+        # Specifies whether to enable port breaking. Valid values:
+        # 
+        # - **true**: enables port breaking.
+        # 
+        # - **false** (default): disables port breaking.
+        # 
+        # > If a DNAT entry and an SNAT entry use the same public IP address, and you want to configure a port number greater than 1024, set **PortBreak** to **true**.
         self.port_break = port_break
         # The region ID of the NAT gateway.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id

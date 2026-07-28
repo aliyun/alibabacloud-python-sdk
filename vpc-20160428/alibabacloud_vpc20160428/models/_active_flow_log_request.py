@@ -20,7 +20,7 @@ class ActiveFlowLogRequest(DaraModel):
         self.flow_log_id = flow_log_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the flow log. You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the region ID.
+        # The region ID of the flow log. You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id

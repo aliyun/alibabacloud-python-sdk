@@ -13,7 +13,7 @@ class DescribePhysicalConnectionLOAResponseBody(DaraModel):
         physical_connection_loatype: main_models.DescribePhysicalConnectionLOAResponseBodyPhysicalConnectionLOAType = None,
         request_id: str = None,
     ):
-        # Information about the physical connection\\"s LOA.
+        # The LOA information of the Express Connect circuit.
         self.physical_connection_loatype = physical_connection_loatype
         # The request ID.
         self.request_id = request_id
@@ -64,62 +64,47 @@ class DescribePhysicalConnectionLOAResponseBodyPhysicalConnectionLOAType(DaraMod
         si: str = None,
         status: str = None,
     ):
-        # The localized name of the company.
+        # The name of the construction company.
         self.company_localized_name = company_localized_name
-        # The name of the company that requires the physical connection.
+        # The name of the organization that requires the Express Connect circuit deployment.
         self.company_name = company_name
-        # The time when construction personnel enter the site.
+        # The time when the construction crew enters the site.
         self.construction_time = construction_time
-        # The description of the LOA.
         self.description = description
-        # The instance ID of the physical connection.
+        # The instance ID of the Express Connect circuit.
         self.instance_id = instance_id
-        # The line code assigned by the line service provider.
+        # The line code of the carrier.
         self.line_code = line_code
-        # The line label for the in-building cable at the data center.
+        # The cable label in the data center building.
         self.line_label = line_label
-        # The contact information of the line O\\&M personnel.
+        # The contact information of the line O&M personnel.
         self.line_spcontact_info = line_spcontact_info
-        # The line service provider. Valid values:
-        # 
+        # The telecommunications service provider. Valid values:
         # - **China Telecom**
-        # 
         # - **China Unicom**
-        # 
         # - **China Mobile**
-        # 
-        # - **Other**
+        # - **China Other**
         self.line_service_provider = line_service_provider
-        # The line type of the physical connection. Valid values:
+        # The type of the Express Connect circuit. Valid values:
         # 
         # - **MSTP**
-        # 
         # - **MPLSVPN**
-        # 
         # - **FIBRE**
-        # 
         # - **Other**
         self.line_type = line_type
-        # The URL to download the LOA file.
+        # The download URL of the LOA file.
         self.loa_url = loa_url
-        # Information about the construction personnel.
         self.pminfo = pminfo
-        # The system integrator (SI).
+        # The construction company that enters the site.
         self.si = si
         # The status of the LOA. Valid values:
         # 
-        # - **Applying**: The LOA application is in progress.
-        # 
+        # - **Applying**: The LOA application is being processed.
         # - **Accept**: The LOA application is approved.
-        # 
         # - **Available**: The LOA is available.
-        # 
         # - **Rejected**: The LOA application is rejected.
-        # 
-        # - **Completing**: The construction of the physical connection is in progress.
-        # 
-        # - **Complete**: The construction of the physical connection is complete.
-        # 
+        # - **Completing**: The circuit is under construction.
+        # - **Complete**: The circuit construction is complete.
         # - **Deleted**: The LOA is deleted.
         self.status = status
 

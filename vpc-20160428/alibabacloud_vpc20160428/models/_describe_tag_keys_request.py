@@ -20,36 +20,35 @@ class DescribeTagKeysRequest(DaraModel):
         resource_owner_id: int = None,
         resource_type: str = None,
     ):
-        # The tag keys.
+        # The tag key.
         self.keyword = keyword
         # The number of entries per page. Valid values: 1 to 50. Default value: 50.
         self.max_result = max_result
-        # The token that is used for the next query. Valid values:
-        # 
-        # *   If this is your first query or no next query is to be sent, ignore this parameter.
-        # *   If a subsequent query is to be sent, set the parameter to the value of NextToken that is returned from the last call.
+        # The pagination token. Valid values:
+        # - If this is the first query or no subsequent query exists, leave this parameter empty.
+        # - If a subsequent query exists, set the value to the NextToken value returned by the previous API call.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the resource.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The resource IDs. You can specify up to 20 resource IDs.
+        # The resource ID. You can specify up to 50 resource IDs.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The resource type. Valid values:
         # 
-        # *   **VPC**: virtual private cloud (VPC)
-        # *   **VSWITCH**: vSwitch
-        # *   **ROUTETABLE**: route table
-        # *   **EIP**: elastic IP address (EIP)
-        # *   **VpnGateway**: VPN gateway
-        # *   **NATGATEWAY**: NAT gateway
-        # *   **COMMONBANDWIDTHPACKAGE**: EIP bandwidth plan
+        # - **VPC**: virtual private cloud (VPC) instance.
+        # - **VSWITCH**: vSwitch instance.
+        # - **ROUTETABLE**: route table instance.
+        # - **EIP**: Elastic IP Address (EIP) instance.
+        # - **VpnGateWay**: VPN gateway instance.
+        # - **NATGATEWAY**: NAT gateway instance.
+        # - **COMMONBANDWIDTHPACKAGE**: Internet Shared Bandwidth instance.
         self.resource_type = resource_type
 
     def validate(self):

@@ -18,11 +18,11 @@ class CreateNatIpResponseBody(DaraModel):
     ):
         # The IPv4 prefix returned by the legacy operation. This parameter is deprecated.
         self.ipv_4prefix = ipv_4prefix
-        # The created NAT IP address.
+        # The NAT IP address that is created.
         self.nat_ip = nat_ip
-        # The instance ID of the created NAT IP address.
+        # The instance ID of the NAT IP address that is created.
         self.nat_ip_id = nat_ip_id
-        # The NAT IP address information returned after the NAT IP address is created. When you create a NAT IP address by using an IPv4 prefix, all NAT IP address information is returned. When you create a single NAT IP address, we recommend that you use this parameter to obtain the NAT IP address information.
+        # The NAT IP address information returned after creation. When you create NAT IP addresses by using an IPv4 prefix, all NAT IP address information is returned. When you create a single NAT IP address, we recommend that you use this parameter to obtain the NAT IP address information.
         self.nat_ips = nat_ips
         # The request ID.
         self.request_id = request_id
@@ -86,11 +86,11 @@ class CreateNatIpResponseBodyNatIps(DaraModel):
         nat_ip: str = None,
         nat_ip_id: str = None,
     ):
-        # The IPv4 prefix in the list of NAT IP addresses created by using an IPv4 prefix.
+        # The IPv4 prefix in the NAT IP address list returned when an IPv4 prefix is created.
         self.ipv_4prefix = ipv_4prefix
-        # The NAT IP address in the list of NAT IP addresses created by using an IPv4 prefix.
+        # The NAT IP address in the NAT IP address list returned when an IPv4 prefix is created.
         self.nat_ip = nat_ip
-        # The NAT IP address ID in the list of NAT IP addresses created by using an IPv4 prefix.
+        # The ID of the NAT IP address in the NAT IP address list returned when an IPv4 prefix is created.
         self.nat_ip_id = nat_ip_id
 
     def validate(self):

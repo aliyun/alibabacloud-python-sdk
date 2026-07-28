@@ -29,17 +29,17 @@ class DescribeVpnConnectionsRequest(DaraModel):
         self.owner_id = owner_id
         # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page for paging queries. Default value: **10**. Valid values: **1** to **50**.
+        # The number of entries per page in a paging query. Default value: **10**. Valid values: **1** to **50**.
         self.page_size = page_size
         # The region ID of the IPsec-VPN connection. 
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+        # You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the IPsec-VPN connection belongs.
         # 
-        # You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query the resource group ID.
+        # You can call [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) to query resource group IDs.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

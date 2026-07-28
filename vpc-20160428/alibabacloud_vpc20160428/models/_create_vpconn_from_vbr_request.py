@@ -13,27 +13,27 @@ class CreateVpconnFromVbrRequest(DaraModel):
         token: str = None,
         vbr_id: str = None,
     ):
-        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # Specifies whether to perform a dry run. Valid values:
         # 
-        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and instance status. If the request fails the dry run, an error message is returned. If the request passes the dry run, the system returns the ID of the request.
-        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        # - **true**: sends a check request without transforming the shared Express Connect circuits mode. The system checks the required parameters, request format, and instance status. If the check fails, the corresponding error is returned. If the check succeeds, the request ID is returned.
+        # - **false** (default): sends a Normal request and transforms the shared Express Connect circuits mode after the check succeeds.
         self.dry_run = dry_run
-        # The payer for the shared Express Connect circuit. Valid values:
+        # The payer of the shared Express Connect circuits. Valid values:
         # 
-        # *   **PayByPhysicalConnectionOwner**: the owner of the shared Express Connect circuit
-        # *   **PayByVirtualPhysicalConnectionOwner**: the owner of the hosted connection
+        # - **PayByPhysicalConnectionOwner**: The owner of the Express Connect circuit associated with the shared Express Connect circuits pays the fee.
+        # - **PayByVirtualPhysicalConnectionOwner**: The owner of the shared Express Connect circuits pays the fee.
         self.order_mode = order_mode
-        # The region ID of the hosted connection.
+        # The region ID of the shared Express Connect circuits.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can invoke the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # The client token must be unique among different requests. The maximum length is 64 ASCII characters.
         self.token = token
-        # The ID of the associated VBR.
+        # The instance ID of the cross-account VBR.
         # 
         # This parameter is required.
         self.vbr_id = vbr_id

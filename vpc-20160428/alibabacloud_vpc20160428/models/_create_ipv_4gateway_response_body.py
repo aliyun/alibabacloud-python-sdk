@@ -11,11 +11,11 @@ class CreateIpv4GatewayResponseBody(DaraModel):
         request_id: str = None,
         resource_group_id: str = None,
     ):
-        # The ID of the IPv4 gateway.
+        # The instance ID of the IPv4 gateway.
         self.ipv_4gateway_id = ipv_4gateway_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
 
     def validate(self):

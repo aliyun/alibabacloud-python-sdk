@@ -14,11 +14,11 @@ class CreateCustomerGatewayResponseBody(DaraModel):
         name: str = None,
         request_id: str = None,
     ):
-        # The timestamp generated when the customer gateway was created. Unit: milliseconds.
+        # The timestamp when the customer gateway was created. Unit: milliseconds.
         # 
-        # This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+        # The timestamp is in the UNIX format and represents the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_time = create_time
-        # The ID of the customer gateway.
+        # The instance ID of the customer gateway instance.
         self.customer_gateway_id = customer_gateway_id
         # The description of the customer gateway.
         self.description = description

@@ -16,18 +16,19 @@ class ListVpnCertificateAssociationsResponseBody(DaraModel):
         total_count: int = None,
         vpn_certificate_relations: List[main_models.ListVpnCertificateAssociationsResponseBodyVpnCertificateRelations] = None,
     ):
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.max_results = max_results
-        # The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results. Valid values:
+        # The token for the next query. Valid values:
         # 
-        # *   If **NextToken** is empty, no next page exists.
-        # *   If **NextToken** is not empty, the value indicates the token that is used for the next query.
+        # - If **NextToken** is empty, no next query exists.
+        # 
+        # - If **NextToken** is returned, the value indicates the token for the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of associations.
         self.total_count = total_count
-        # The association information.
+        # The list of associations.
         self.vpn_certificate_relations = vpn_certificate_relations
 
     def validate(self):
@@ -91,20 +92,21 @@ class ListVpnCertificateAssociationsResponseBodyVpnCertificateRelations(DaraMode
         region_id: str = None,
         vpn_gateway_id: str = None,
     ):
-        # The time when the Anycast EIP was associated.
+        # The time when the association was created.
         # 
-        # The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+        # The time is displayed in UTC in the YYYY-MM-DDThh:mm:ssZ format.
         self.association_time = association_time
         # The certificate ID.
         self.certificate_id = certificate_id
-        # The type of the certificate.
+        # The certificate type.
         # 
-        # *   **Encryption**
-        # *   **Signature**
+        # - **Encryption**: encryption certificate.
+        # 
+        # - **Signature**: signing certificate.
         self.certificate_type = certificate_type
-        # The ID of the region where the VPN gateway is created.
+        # The region ID of the VPN gateway.
         self.region_id = region_id
-        # The ID of the VPN gateway.
+        # The VPN gateway instance ID.
         self.vpn_gateway_id = vpn_gateway_id
 
     def validate(self):

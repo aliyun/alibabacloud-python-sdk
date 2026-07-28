@@ -16,19 +16,19 @@ class ModifyCommonBandwidthPackageAttributeRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the EIP bandwidth plan.
+        # The ID of the Internet Shared Bandwidth instance.
         # 
         # This parameter is required.
         self.bandwidth_package_id = bandwidth_package_id
-        # The description of the EIP bandwidth plan. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with `http://` or `https://`.
+        # The description of the Internet Shared Bandwidth instance. The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description
-        # The name of the EIP bandwidth plan. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter. It cannot start with `http://` or `https://`.
+        # The name of the Internet Shared Bandwidth instance. The name must be 0 to 128 characters in length and cannot start with `http://` or `https://`.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the EIP bandwidth plan is created.
+        # The region where the Internet Shared Bandwidth instance is located. 
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to obtain the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id

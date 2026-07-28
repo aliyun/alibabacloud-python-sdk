@@ -29,58 +29,60 @@ class UpdateTrafficMirrorSessionAttributeRequest(DaraModel):
         # 
         # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may differ for each API request.
         self.client_token = client_token
-        # Specifies whether to perform a dry run. Valid values:
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         # 
-        # *   **true**: performs a dry run, without performing the actual request. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # *   **false**: sends the request. If the request passes the check, a 2xx HTTP status code is returned and the operation is performed. This is the default value.
+        # - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # 
+        # - **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the configuration of the traffic mirror session is modified.
         self.dry_run = dry_run
         # Specifies whether to enable the traffic mirror session. Valid values:
         # 
-        # *   **false** (default)
-        # *   **true**
+        # - **false** (default): does not enable the traffic mirror session.
+        # 
+        # - **true**: enables the traffic mirror session.
         self.enabled = enabled
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The maximum transmission unit (MTU).
+        # The maximum length of the mirrored original packet, excluding the VXLAN header. Default value: **1500**. Valid values: **64** to **8500**. Unit: bytes.
+        # - The value of this parameter affects the length of packets received at the traffic mirror destination. For more information, see the mirrored packet length and MTU limits in [Traffic mirroring overview](https://help.aliyun.com/document_detail/207513.html).
         # 
-        # Valid values: **64 to 9600**. Default value: **1500**.
+        # - This parameter is available only in specific regions. For more information, see the mirrored packet length parameter description in [Create and manage traffic mirror sessions](https://help.aliyun.com/document_detail/207514.html).
         self.packet_length = packet_length
-        # The new priority of the traffic mirror session. Valid values: **1** to **32766**.
-        # 
-        # A smaller value indicates a higher priority. You cannot specify identical priorities for traffic mirror sessions that are created in the same region by using the same account.
+        # The new priority of traffic mirror session. Valid values: **1** to **32766**.
+        # A smaller value indicates a higher priority. The priorities of traffic mirror sessions created by the same account in the same region must be unique.
         self.priority = priority
-        # The region ID of the traffic mirror session. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list. For more information about the regions that support traffic mirror, see [Overview of traffic mirror](https://help.aliyun.com/document_detail/207513.html).
+        # The region ID of the traffic mirror session. You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the most recent region list. For information about the regions that support traffic mirroring, see [Traffic mirroring overview](https://help.aliyun.com/document_detail/207513.html).
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the traffic mirror filter.
+        # The instance ID of the new traffic mirror filter.
         self.traffic_mirror_filter_id = traffic_mirror_filter_id
         # The new description of the traffic mirror session.
         # 
         # The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
         self.traffic_mirror_session_description = traffic_mirror_session_description
-        # The ID of the traffic mirror session.
+        # The instance ID of the traffic mirror session to modify.
         # 
         # This parameter is required.
         self.traffic_mirror_session_id = traffic_mirror_session_id
         # The new name of the traffic mirror session.
         # 
-        # The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
+        # The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         self.traffic_mirror_session_name = traffic_mirror_session_name
-        # The ID of the traffic mirror destination.
+        # The instance ID of the new traffic mirror destination.
         self.traffic_mirror_target_id = traffic_mirror_target_id
-        # The new type of the traffic mirror destination. Valid values:
+        # The new traffic mirror destination type. Valid values:
         # 
-        # *   **NetworkInterface**: an elastic network interface (ENI)
-        # *   **SLB**: an internal-facing Server Load Balancer (SLB) instance
+        # - **NetworkInterface**: network interface controller (NIC).
+        # 
+        # - **SLB**: private network load balancing instance.
         self.traffic_mirror_target_type = traffic_mirror_target_type
-        # The VXLAN network identifier (VNI) that is used to distinguish different mirrored traffic. Valid values: **0** to **16777215**.
-        # 
-        # You can use VNIs to identify mirrored traffic from different sessions at the traffic mirror destination. If you do not specify a VNI, the system randomly allocates a VNI. If you want the system to randomly allocate a VNI, ignore this parameter.
+        # The new VXLAN network identifier (VNI) that is used to distinguish mirrored data from different traffic mirror sessions. Valid values: **0** to **16777215**.
+        # You can use the VNI to identify mirrored data from different sessions at the traffic mirror destination. You can specify a custom VNI or use a system-allocated value. If you want the system to randomly allocate a VNI, do not configure this parameter.
         self.virtual_network_id = virtual_network_id
 
     def validate(self):

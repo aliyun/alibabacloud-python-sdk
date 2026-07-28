@@ -13,7 +13,7 @@ class CreatePhysicalConnectionSetupOrderResponseBody(DaraModel):
     ):
         # The order ID.
         self.order_id = order_id
-        # The ID of the Express Connect circuit.
+        # The Express Connect circuit ID.
         self.physical_connection_id = physical_connection_id
         # The request ID.
         self.request_id = request_id

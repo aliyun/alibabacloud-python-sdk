@@ -23,22 +23,23 @@ class ListIpsecServersRequest(DaraModel):
         # 
         # The name must be 1 to 100 characters in length.
         self.ipsec_server_name = ipsec_server_name
-        # The number of entries to return on each page. Valid values: **1** to **20**. Default value: **10**.
+        # The number of entries per page. Valid values: **1** to **20**. Default value: **10**.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+        # The pagination token. Valid values:
         # 
-        # *   If this is your first request and no next requests are to be performed, you do not need to specify this parameter.
-        # *   You must specify the token that is obtained from the previous query as the value of **NextToken**.
+        # - If this is the first query or no subsequent query is to be sent, you do not need to specify this parameter.
+        # 
+        # - If a subsequent query is to be sent, set the value to the NextToken value returned in the previous call.
         self.next_token = next_token
-        # The ID of the region where the IPsec server is created.
+        # The region ID of the IPsec server.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the IPsec server belongs.
         # 
-        # The IPsec server and its associated VPN gateway belong to the same resource group. You can call [DescribeVpnGateway](https://help.aliyun.com/document_detail/2794055.html) to query the ID of the resource group to which the VPN gateway belongs.
+        # The IPsec server belongs to the same resource group as the associated VPN gateway instance. You can call the [DescribeVpnGateway](https://help.aliyun.com/document_detail/2794055.html) operation to query the resource group ID of the VPN gateway instance.
         self.resource_group_id = resource_group_id
         # The ID of the VPN gateway.
         self.vpn_gateway_id = vpn_gateway_id

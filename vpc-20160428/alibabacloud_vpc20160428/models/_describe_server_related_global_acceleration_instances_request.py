@@ -17,9 +17,9 @@ class DescribeServerRelatedGlobalAccelerationInstancesRequest(DaraModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the GA instance.
+        # The region where the Alibaba Cloud Global Accelerator (GA) instance resides. 
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can invoke [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to obtain the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -29,10 +29,11 @@ class DescribeServerRelatedGlobalAccelerationInstancesRequest(DaraModel):
         # 
         # This parameter is required.
         self.server_id = server_id
-        # The type of the backend service instance. Valid values:
+        # The type of the backend service instance. Valid values: 
         # 
-        # *   **EcsInstance** (default): Elastic Compute Service (ECS)
-        # *   **SlbInstance**: Server Load Balancer (SLB)
+        # - **EcsInstance** (default): ECS instance.
+        # 
+        # - **SlbInstance**: load balancing instance.
         self.server_type = server_type
 
     def validate(self):

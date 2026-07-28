@@ -18,27 +18,25 @@ class ListPublicIpAddressPoolCidrBlocksRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The CIDR blocks.
+        # The CIDR block.
         self.cidr_block = cidr_block
         # Specifies whether to perform a dry run. Valid values:
-        # 
-        # *   **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # *   **false** (default): performs a dry run and sends the request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        # - **true**: performs a dry run without querying the CIDR block information in the IP address pool. The system checks the required parameters, request format, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # - **false** (default): performs a dry run and sends the request. If the request passes the dry run, an HTTP 2xx status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The maximum number of entries to return. Valid values: **10** to **100**. Default value: **10**.
         self.max_results = max_results
-        # The token that is used for the next query. Valid values:
-        # 
-        # *   If this is your first query and no next queries are to be sent, ignore this parameter.
-        # *   If a subsequent query is to be sent, set the parameter to the value of NextToken that is returned from the last call.
+        # The pagination token. Valid values:
+        # - You do not need to specify this parameter for the first request or if no subsequent query exists.
+        # - If a subsequent query exists, set the value to the NextToken value returned in the previous API call.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the IP address pool.
+        # The instance ID of the IPAM pool.
         # 
         # This parameter is required.
         self.public_ip_address_pool_id = public_ip_address_pool_id
-        # The region ID of the CIDR blocks.
+        # The region ID of the CIDR block that you want to query.
         # 
         # This parameter is required.
         self.region_id = region_id

@@ -17,29 +17,29 @@ class ModifyEipAddressAttributeRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the pay-as-you-go EIP.
+        # The ID of the pay-as-you-go EIP that you want to modify.
         # 
         # This parameter is required.
         self.allocation_id = allocation_id
-        # The new maximum bandwidth of the EIP. Valid values:
+        # The peak bandwidth of the EIP. Valid values:
         # 
-        # - **1** to **200** if the metering method is pay-by-data-transfer. Unit: Mbit/s.
+        # - **1** to **200**: If the EIP is billed on a pay-by-data-transfer basis. Unit: Mbit/s. 
         # 
-        # - **1** to **500** if the metering method is pay-by-bandwidth. Unit: Mbit/s.
+        # - **1** to **500**: If the EIP is billed on a pay-by-bandwidth basis. Unit: Mbit/s.
         self.bandwidth = bandwidth
-        # The new description of the EIP.
+        # The description of the EIP that you want to modify.  
         # 
-        # The description must be 2 to 256 characters in length and start with a letter. The description cannot start with `http://` or `https://`.
+        # The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description
-        # The new name of the EIP.
+        # The name of the EIP that you want to modify.  
         # 
-        # The name must be 1 to 128 characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-).
+        # The name must be 0 to 128 characters in length and cannot start with `http://` or `https://`.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the EIP.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

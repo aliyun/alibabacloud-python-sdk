@@ -17,7 +17,7 @@ class DescribeIPv6TranslatorAclListsResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.ipv_6translator_acls = ipv_6translator_acls
-        # The page number.
+        # The current page number.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size

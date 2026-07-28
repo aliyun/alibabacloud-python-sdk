@@ -14,13 +14,13 @@ class ReleaseEipAddressRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the EIP that you want to release.
+        # The ID of the EIP to release.
         # 
         # This parameter is required.
         self.allocation_id = allocation_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region to which the EIP belongs. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # The region ID of the EIP to release. You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query region IDs.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

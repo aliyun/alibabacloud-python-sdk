@@ -13,7 +13,7 @@ class DescribeNetworkAclAttributesResponseBody(DaraModel):
         network_acl_attribute: main_models.DescribeNetworkAclAttributesResponseBodyNetworkAclAttribute = None,
         request_id: str = None,
     ):
-        # The details of the network ACLs.
+        # The details of the network ACL.
         self.network_acl_attribute = network_acl_attribute
         # The request ID.
         self.request_id = request_id
@@ -72,18 +72,21 @@ class DescribeNetworkAclAttributesResponseBodyNetworkAclAttribute(DaraModel):
         self.network_acl_id = network_acl_id
         # The name of the network ACL.
         self.network_acl_name = network_acl_name
-        # The ID of the Alibaba Cloud account to which the network ACL belongs.
+        # The Alibaba Cloud account ID to which the network ACL belongs.
+        # 
+        # >Notice: This value is of the Long type. Precision loss may occur in certain languages. Use this value with caution.
         self.owner_id = owner_id
         # The region ID of the network ACL.
         self.region_id = region_id
         self.resources = resources
-        # The association status of the resource. Valid values:
+        # The status of the associated resource. Valid values:
         # 
-        # *   **Available**
-        # *   **Modifying**
+        # - **Available**: available.
+        # 
+        # - **Modifying**: being modified.
         self.status = status
         self.tags = tags
-        # The ID of the VPC to which the network ACL belongs.
+        # The ID of the VPC associated with the network ACL.
         self.vpc_id = vpc_id
 
     def validate(self):
