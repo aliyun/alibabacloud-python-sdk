@@ -18,17 +18,17 @@ class GetInstanceDetailResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The detailed information about the failed permission verification.
+        # The details of the permission verification failure.
         self.access_denied_detail = access_denied_detail
-        # The returned result.
+        # The response data.
         self.data = data
-        # The error code returned.
+        # The error code.
         self.err_code = err_code
         # The error message.
         self.err_message = err_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success
@@ -127,76 +127,69 @@ class GetInstanceDetailResponseBodyData(DaraModel):
         vpc_id: str = None,
         vsw_id: str = None,
         zone_id: str = None,
+        maintainable_period_time_zone: str = None,
     ):
-        # AclId for Public Network Access Control.
+        # The ACL ID for public network access control.
         self.acl_id = acl_id
         # The start time.
         self.begin_time = begin_time
-        # The name of the bucket.
+        # The bucket name.
         self.bucket_name = bucket_name
-        # The address of the bucket.
+        # The bucket path.
         self.bucket_path = bucket_path
         # The instance details.
         self.cluster_info = cluster_info
         # The instance name.
         self.cluster_name = cluster_name
+        # Indicates whether high availability is enabled.
         self.enable_ha = enable_ha
         self.encrypted = encrypted
         # The expiration time.
         self.expire_time = expire_time
         self.high_availability = high_availability
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
         # The instance status. Valid values:
-        # 
-        # *   creating.
-        # *   running.
-        # *   updating. Cluster scaling (up/down), configuration changes, and enabling/disabling public network access.
-        # *   disable. The cluster has expired and needs to be renewed for activation.
-        # *   deleting.
-        # *   deleted.
         self.instance_status = instance_status
         self.kms_key_id = kms_key_id
         self.maintainable_period = maintainable_period
+        # The configuration information.
         self.measure_config = measure_config
         self.multi_zone_mode = multi_zone_mode
+        # The node type. Valid values:
         self.node_type = node_type
-        # Indicates whether Internet access is enabled.
+        # Indicates whether public network access is enabled.
         self.open_public_net = open_public_net
         # The specification details. Valid values:
-        # 
-        # *   trial.
-        # *   standard.
         self.package_type = package_type
-        # The billing method of the instance. Valid values:
-        # 
-        # *   0: pay-as-you-go
-        # *   1: subscription
+        # The billing type. Valid values:
         self.pay_type = pay_type
         # The commodity code.
         self.product_code = product_code
-        # The region code.
+        # The region.
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The runtime.
+        # The running time.
         self.running_time = running_time
         # The security group ID.
         self.sg_id = sg_id
+        # The tag information.
         self.tags = tags
-        # The version of the software stack.
+        # The software stack version.
         self.template_version = template_version
-        # User-defined configuration.
+        # The user-defined configuration.
         self.user_config = user_config
         self.v_switches = v_switches
-        # The kernel version.
+        # The Milvus version.
         self.version = version
-        # The virtual private cloud (VPC) ID.
+        # The VPC ID.
         self.vpc_id = vpc_id
-        # The ID of the vSwitch.
+        # The vSwitch ID.
         self.vsw_id = vsw_id
         # The zone.
         self.zone_id = zone_id
+        self.maintainable_period_time_zone = maintainable_period_time_zone
 
     def validate(self):
         if self.cluster_info:
@@ -322,6 +315,9 @@ class GetInstanceDetailResponseBodyData(DaraModel):
         if self.zone_id is not None:
             result['ZoneId'] = self.zone_id
 
+        if self.maintainable_period_time_zone is not None:
+            result['maintainablePeriodTimeZone'] = self.maintainable_period_time_zone
+
         return result
 
     def from_map(self, m: dict = None):
@@ -434,6 +430,9 @@ class GetInstanceDetailResponseBodyData(DaraModel):
         if m.get('ZoneId') is not None:
             self.zone_id = m.get('ZoneId')
 
+        if m.get('maintainablePeriodTimeZone') is not None:
+            self.maintainable_period_time_zone = m.get('maintainablePeriodTimeZone')
+
         return self
 
 class GetInstanceDetailResponseBodyDataVSwitches(DaraModel):
@@ -477,7 +476,9 @@ class GetInstanceDetailResponseBodyDataTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag.
         self.key = key
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -520,15 +521,25 @@ class GetInstanceDetailResponseBodyDataMeasureConfig(DaraModel):
         query_node_cu_num: int = None,
         query_node_replica: int = None,
     ):
+        # The number of CUs for the Data node.
         self.data_node_cu_num = data_node_cu_num
+        # The number of replicas for the Data node.
         self.data_node_replica = data_node_replica
+        # The number of CUs for the Index node.
         self.index_node_cu_num = index_node_cu_num
+        # The number of replicas for the Index node.
         self.index_node_replica = index_node_replica
+        # The number of CUs for the MixCoordinator node.
         self.mix_coodinator_node_cu_num = mix_coodinator_node_cu_num
+        # The number of replicas for the MixCoordinator node.
         self.mix_coodinator_node_replica = mix_coodinator_node_replica
+        # The number of CUs for the Proxy node.
         self.proxy_node_cu_num = proxy_node_cu_num
+        # The number of replicas for the Proxy node.
         self.proxy_node_replica = proxy_node_replica
+        # The number of CUs for the Query node.
         self.query_node_cu_num = query_node_cu_num
+        # The number of replicas for the Query node.
         self.query_node_replica = query_node_replica
 
     def validate(self):
@@ -669,23 +680,23 @@ class GetInstanceDetailResponseBodyDataClusterInfo(DaraModel):
         total_cu_num: int = None,
         total_disk_size: int = None,
     ):
-        # The port of the Attu component.
+        # The Attu component port.
         self.attu_port = attu_port
-        # The public IP address.
+        # The public network address.
         self.internet_url = internet_url
-        # The internal IP address.
+        # The internal network address.
         self.intranet_url = intranet_url
         # The resource details.
         self.milvus_resource_info_list = milvus_resource_info_list
-        # The size of the data stored in OSS.
+        # The OSS storage data size.
         self.oss_storage_size = oss_storage_size
-        # The timestamp when the OSS metric is stored.
+        # The timestamp of the OSS storage metric.
         self.oss_storage_timestamp = oss_storage_timestamp
         # The proxy port.
         self.proxy_port = proxy_port
         # The total number of CUs.
         self.total_cu_num = total_cu_num
-        # The total number of disks.
+        # The total disk size.
         self.total_disk_size = total_disk_size
 
     def validate(self):
@@ -775,18 +786,16 @@ class GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList(DaraMod
         pay_type: str = None,
         replica: int = None,
         zone_id: str = None,
+        data_disk_enabled: bool = None,
+        data_disk_size: int = None,
+        data_disk_storage_class: str = None,
+        pods_list: List[main_models.GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoListPodsList] = None,
     ):
         # The component type. Valid values:
-        # 
-        # *   standalone
-        # *   proxy
-        # *   mix_coordinator
-        # *   query
-        # *   index
-        # *   data
         self.component_type = component_type
-        # The number of CUs.
+        # The number of compute units (CUs).
         self.cu_num = cu_num
+        # The CU specifications. Valid values:
         self.cu_ratio = cu_ratio
         # The disk size.
         self.disk_size = disk_size
@@ -796,9 +805,16 @@ class GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList(DaraMod
         # The number of replicas.
         self.replica = replica
         self.zone_id = zone_id
+        self.data_disk_enabled = data_disk_enabled
+        self.data_disk_size = data_disk_size
+        self.data_disk_storage_class = data_disk_storage_class
+        self.pods_list = pods_list
 
     def validate(self):
-        pass
+        if self.pods_list:
+            for v1 in self.pods_list:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -829,6 +845,20 @@ class GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList(DaraMod
         if self.zone_id is not None:
             result['ZoneId'] = self.zone_id
 
+        if self.data_disk_enabled is not None:
+            result['dataDiskEnabled'] = self.data_disk_enabled
+
+        if self.data_disk_size is not None:
+            result['dataDiskSize'] = self.data_disk_size
+
+        if self.data_disk_storage_class is not None:
+            result['dataDiskStorageClass'] = self.data_disk_storage_class
+
+        result['podsList'] = []
+        if self.pods_list is not None:
+            for k1 in self.pods_list:
+                result['podsList'].append(k1.to_map() if k1 else None)
+
         return result
 
     def from_map(self, m: dict = None):
@@ -856,6 +886,56 @@ class GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList(DaraMod
 
         if m.get('ZoneId') is not None:
             self.zone_id = m.get('ZoneId')
+
+        if m.get('dataDiskEnabled') is not None:
+            self.data_disk_enabled = m.get('dataDiskEnabled')
+
+        if m.get('dataDiskSize') is not None:
+            self.data_disk_size = m.get('dataDiskSize')
+
+        if m.get('dataDiskStorageClass') is not None:
+            self.data_disk_storage_class = m.get('dataDiskStorageClass')
+
+        self.pods_list = []
+        if m.get('podsList') is not None:
+            for k1 in m.get('podsList'):
+                temp_model = main_models.GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoListPodsList()
+                self.pods_list.append(temp_model.from_map(k1))
+
+        return self
+
+class GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoListPodsList(DaraModel):
+    def __init__(
+        self,
+        pod_id: str = None,
+        pod_name: str = None,
+    ):
+        self.pod_id = pod_id
+        self.pod_name = pod_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.pod_id is not None:
+            result['podId'] = self.pod_id
+
+        if self.pod_name is not None:
+            result['podName'] = self.pod_name
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('podId') is not None:
+            self.pod_id = m.get('podId')
+
+        if m.get('podName') is not None:
+            self.pod_name = m.get('podName')
 
         return self
 

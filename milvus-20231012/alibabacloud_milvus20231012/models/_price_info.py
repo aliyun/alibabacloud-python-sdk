@@ -19,13 +19,21 @@ class PriceInfo(DaraModel):
         tax_amount: str = None,
         trade_amount: str = None,
     ):
+        # The currency of the price.
         self.currency = currency
+        # The discount amount.
         self.discount_amount = discount_amount
+        # The optional promotions.
         self.optional_promotions = optional_promotions
+        # The original price.
         self.original_amount = original_amount
+        # The price modules.
         self.price_modules = price_modules
+        # The pricing rules.
         self.rules = rules
+        # The tax amount.
         self.tax_amount = tax_amount
+        # The actual trade price.
         self.trade_amount = trade_amount
 
     def validate(self):
@@ -123,8 +131,11 @@ class PriceInfoRules(DaraModel):
         name: str = None,
         rule_id: str = None,
     ):
+        # The amount associated with the pricing rule.
         self.amount = amount
+        # The name of the pricing rule.
         self.name = name
+        # The ID of the pricing rule.
         self.rule_id = rule_id
 
     def validate(self):
@@ -165,7 +176,9 @@ class PriceInfoPriceModules(DaraModel):
         original_amount: str = None,
         type: str = None,
     ):
+        # The original amount of the price module.
         self.original_amount = original_amount
+        # The type of the price module.
         self.type = type
 
     def validate(self):

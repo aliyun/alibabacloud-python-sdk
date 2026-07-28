@@ -12,9 +12,13 @@ class DeleteInstanceResponseBody(DaraModel):
         order_id: str = None,
         success: bool = None,
     ):
+        # The unique request ID.
         self.request_id = request_id
+        # The instance ID.
         self.instance_id = instance_id
+        # The order ID.
         self.order_id = order_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

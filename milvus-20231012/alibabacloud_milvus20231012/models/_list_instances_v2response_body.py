@@ -17,11 +17,17 @@ class ListInstancesV2ResponseBody(DaraModel):
         success: bool = None,
         total: int = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The list of instances.
         self.instances = instances
+        # The maximum number of records to retrieve in a single request.
         self.max_results = max_results
+        # The pagination token (not currently enabled).
         self.next_token = next_token
+        # Indicates whether the request was successful.
         self.success = success
+        # The total number of records.
         self.total = total
 
     def validate(self):

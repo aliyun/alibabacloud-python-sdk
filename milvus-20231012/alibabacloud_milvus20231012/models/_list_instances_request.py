@@ -22,14 +22,15 @@ class ListInstancesRequest(DaraModel):
         self.cluster_id = cluster_id
         # The instance name.
         self.cluster_name = cluster_name
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The page size.
         self.page_size = page_size
-        # The region code.
+        # The region ID.
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The tags used to filter instances.
         self.tag = tag
 
     def validate(self):
@@ -102,7 +103,9 @@ class ListInstancesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):

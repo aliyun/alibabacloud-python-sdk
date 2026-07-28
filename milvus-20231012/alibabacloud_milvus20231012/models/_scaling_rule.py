@@ -19,13 +19,21 @@ class ScalingRule(DaraModel):
         start_time: int = None,
         time_zone: str = None,
     ):
+        # The adjustment information of the scaling rule.
         self.adjust_infos = adjust_infos
+        # The cron expression for the scaling schedule.
         self.cron_str = cron_str
+        # Indicates whether the scaling rule is disabled.
         self.disabled = disabled
+        # The end time of the scaling rule. Unit: milliseconds.
         self.end_time = end_time
+        # The ID of the scaling rule.
         self.rule_id = rule_id
+        # The name of the scaling rule.
         self.scaling_rule_name = scaling_rule_name
+        # The start time of the scaling rule. Unit: milliseconds.
         self.start_time = start_time
+        # The time zone of the scaling rule.
         self.time_zone = time_zone
 
     def validate(self):
@@ -104,7 +112,9 @@ class ScalingRuleAdjustInfos(DaraModel):
         component_type: str = None,
         target_value: str = None,
     ):
+        # The type of the component to be adjusted.
         self.component_type = component_type
+        # The target value for the adjustment.
         self.target_value = target_value
 
     def validate(self):

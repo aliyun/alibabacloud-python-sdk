@@ -15,12 +15,19 @@ class PromotionInfo(DaraModel):
         promotion_option_no: str = None,
         selected: bool = None,
     ):
+        # The fee that can be covered by the promotion.
         self.can_prom_fee = can_prom_fee
+        # Indicates whether the promotion is selected.
         self.is_selected = is_selected
+        # The description of the promotion.
         self.promotion_desc = promotion_desc
+        # The name of the promotion.
         self.promotion_name = promotion_name
+        # The code of the promotion option.
         self.promotion_option_code = promotion_option_code
+        # The number of the promotion option.
         self.promotion_option_no = promotion_option_no
+        # Indicates whether the promotion is selected.
         self.selected = selected
 
     def validate(self):

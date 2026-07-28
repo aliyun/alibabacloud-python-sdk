@@ -20,7 +20,18 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'eu-central-1': 'milvus.eu-central-1.aliyuncs.com',
+            'cn-zhangjiakou': 'milvus.cn-zhangjiakou.aliyuncs.com',
+            'cn-wulanchabu': 'milvus.cn-wulanchabu.aliyuncs.com',
+            'cn-shenzhen': 'milvus.cn-shenzhen.aliyuncs.com',
+            'cn-shanghai': 'milvus.cn-shanghai.aliyuncs.com',
+            'cn-hongkong': 'milvus.cn-hongkong.aliyuncs.com',
+            'cn-hangzhou': 'milvus.cn-hangzhou.aliyuncs.com',
+            'cn-beijing': 'milvus.cn-beijing.aliyuncs.com',
+            'ap-southeast-1': 'milvus.ap-southeast-1.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('milvus', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 

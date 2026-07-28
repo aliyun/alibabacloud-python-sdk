@@ -12,8 +12,11 @@ class GetInstanceResponseBody(DaraModel):
         instance: main_models.InstanceDetail = None,
         success: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The instance details.
         self.instance = instance
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

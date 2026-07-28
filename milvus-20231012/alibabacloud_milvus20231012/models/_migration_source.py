@@ -12,8 +12,11 @@ class MigrationSource(DaraModel):
         database: str = None,
         endpoint: main_models.MigrationSourceEndpoint = None,
     ):
+        # The authentication information of the migration source.
         self.auth_info = auth_info
+        # The name of the database to migrate.
         self.database = database
+        # The endpoint information of the migration source.
         self.endpoint = endpoint
 
     def validate(self):
@@ -59,7 +62,9 @@ class MigrationSourceEndpoint(DaraModel):
         endpoint: str = None,
         port: str = None,
     ):
+        # The endpoint address of the migration source.
         self.endpoint = endpoint
+        # The port number of the migration source.
         self.port = port
 
     def validate(self):
@@ -96,9 +101,13 @@ class MigrationSourceAuthInfo(DaraModel):
         token: str = None,
         username: str = None,
     ):
+        # The authentication type.
         self.auth_type = auth_type
+        # The password used for authentication.
         self.password = password
+        # The token used for authentication.
         self.token = token
+        # The username used for authentication.
         self.username = username
 
     def validate(self):

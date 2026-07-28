@@ -12,9 +12,13 @@ class CreateAclGroupRequest(DaraModel):
         instance_id: str = None,
         region_id: str = None,
     ):
+        # Specify one or more CIDR blocks, separated by commas.
         self.cidrs = cidrs
+        # The name of the ACL group.
         self.group_name = group_name
+        # The instance ID.
         self.instance_id = instance_id
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

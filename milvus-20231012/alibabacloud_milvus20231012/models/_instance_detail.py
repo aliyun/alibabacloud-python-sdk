@@ -34,31 +34,62 @@ class InstanceDetail(DaraModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
+        # The automatic backup configuration.
         self.auto_backup = auto_backup
+        # The component information.
         self.components = components
+        # The configuration.
         self.configuration = configuration
+        # The creation time.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.create_time = create_time
+        # The instance version.
         self.db_version = db_version
+        # Indicates whether data encryption is enabled.
         self.encrypted = encrypted
+        # The expiration time.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.expire_time = expire_time
+        # Indicates whether high availability is enabled.
         self.ha = ha
+        # The instance ID.
         self.instance_id = instance_id
+        # The instance name.
         self.instance_name = instance_name
         # kms key Id。
         self.kms_key_id = kms_key_id
+        # The multi-zone deployment mode.
         self.multi_zone_mode = multi_zone_mode
+        # The order ID.
         self.order_id = order_id
+        # The billing method. Valid values: PayAsYouGo: pay-as-you-go billing method. Subscription: subscription.
         self.payment_type = payment_type
+        # The region ID.
         self.region_id = region_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The running time.
         self.running_time = running_time
+        # The security group IDs.
         self.security_group_ids = security_group_ids
+        # The instance status. Valid values:
+        # 
+        # - creating: Being created.
+        # - running: Running.
+        # - updating: Being upgraded. This includes specification changes, configuration changes, and public network access changes.
+        # - disable: Unavailable. The cluster has expired and requires renewal to reactivate.
+        # - deleting: Being deleted.
+        # - deleted: Deleted.
         self.status = status
+        # The tags.
         self.tags = tags
+        # The vSwitch IDs.
         self.v_switch_ids = v_switch_ids
+        # The VPC ID.
         self.vpc_id = vpc_id
+        # The zone ID of the instance.
         self.zone_id = zone_id
 
     def validate(self):
@@ -245,7 +276,9 @@ class InstanceDetailVSwitchIds(DaraModel):
         vsw_id: str = None,
         zone_id: str = None,
     ):
+        # The vSwitch IDs.
         self.vsw_id = vsw_id
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -280,7 +313,9 @@ class InstanceDetailTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -314,20 +349,34 @@ class InstanceDetailComponents(DaraModel):
         self,
         cu_num: int = None,
         cu_type: str = None,
+        data_disk: main_models.InstanceDetailComponentsDataDisk = None,
         disk_size_type: str = None,
         pay_type: str = None,
+        pods_list: List[main_models.InstanceDetailComponentsPodsList] = None,
         replica: int = None,
         type: str = None,
     ):
+        # The number of CUs.
         self.cu_num = cu_num
+        # The CU type.
         self.cu_type = cu_type
+        self.data_disk = data_disk
+        # The disk size type for the Query Node. Set this parameter to Large for storage-optimized configurations, and to Normal for other configurations.
         self.disk_size_type = disk_size_type
         self.pay_type = pay_type
+        self.pods_list = pods_list
+        # The number of replicas.
         self.replica = replica
+        # The component type.
         self.type = type
 
     def validate(self):
-        pass
+        if self.data_disk:
+            self.data_disk.validate()
+        if self.pods_list:
+            for v1 in self.pods_list:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -340,11 +389,19 @@ class InstanceDetailComponents(DaraModel):
         if self.cu_type is not None:
             result['cuType'] = self.cu_type
 
+        if self.data_disk is not None:
+            result['dataDisk'] = self.data_disk.to_map()
+
         if self.disk_size_type is not None:
             result['diskSizeType'] = self.disk_size_type
 
         if self.pay_type is not None:
             result['payType'] = self.pay_type
+
+        result['podsList'] = []
+        if self.pods_list is not None:
+            for k1 in self.pods_list:
+                result['podsList'].append(k1.to_map() if k1 else None)
 
         if self.replica is not None:
             result['replica'] = self.replica
@@ -362,17 +419,113 @@ class InstanceDetailComponents(DaraModel):
         if m.get('cuType') is not None:
             self.cu_type = m.get('cuType')
 
+        if m.get('dataDisk') is not None:
+            temp_model = main_models.InstanceDetailComponentsDataDisk()
+            self.data_disk = temp_model.from_map(m.get('dataDisk'))
+
         if m.get('diskSizeType') is not None:
             self.disk_size_type = m.get('diskSizeType')
 
         if m.get('payType') is not None:
             self.pay_type = m.get('payType')
 
+        self.pods_list = []
+        if m.get('podsList') is not None:
+            for k1 in m.get('podsList'):
+                temp_model = main_models.InstanceDetailComponentsPodsList()
+                self.pods_list.append(temp_model.from_map(k1))
+
         if m.get('replica') is not None:
             self.replica = m.get('replica')
 
         if m.get('type') is not None:
             self.type = m.get('type')
+
+        return self
+
+class InstanceDetailComponentsPodsList(DaraModel):
+    def __init__(
+        self,
+        pod_id: str = None,
+        pod_name: str = None,
+    ):
+        self.pod_id = pod_id
+        self.pod_name = pod_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.pod_id is not None:
+            result['podId'] = self.pod_id
+
+        if self.pod_name is not None:
+            result['podName'] = self.pod_name
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('podId') is not None:
+            self.pod_id = m.get('podId')
+
+        if m.get('podName') is not None:
+            self.pod_name = m.get('podName')
+
+        return self
+
+class InstanceDetailComponentsDataDisk(DaraModel):
+    def __init__(
+        self,
+        enabled: bool = None,
+        performance_level: str = None,
+        size: int = None,
+        storage_class: str = None,
+    ):
+        self.enabled = enabled
+        self.performance_level = performance_level
+        self.size = size
+        self.storage_class = storage_class
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.enabled is not None:
+            result['enabled'] = self.enabled
+
+        if self.performance_level is not None:
+            result['performanceLevel'] = self.performance_level
+
+        if self.size is not None:
+            result['size'] = self.size
+
+        if self.storage_class is not None:
+            result['storageClass'] = self.storage_class
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enabled') is not None:
+            self.enabled = m.get('enabled')
+
+        if m.get('performanceLevel') is not None:
+            self.performance_level = m.get('performanceLevel')
+
+        if m.get('size') is not None:
+            self.size = m.get('size')
+
+        if m.get('storageClass') is not None:
+            self.storage_class = m.get('storageClass')
 
         return self
 

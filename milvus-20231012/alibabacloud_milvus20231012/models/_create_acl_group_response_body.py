@@ -15,12 +15,19 @@ class CreateAclGroupResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Details about the access denial. This parameter is returned only if a request is denied due to insufficient RAM permissions.
         self.access_denied_detail = access_denied_detail
+        # The data returned for the request.
         self.data = data
+        # The error code returned if the request fails.
         self.err_code = err_code
+        # The error message returned if the request fails.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The unique ID generated for the request. Use this ID for troubleshooting.
         self.request_id = request_id
+        # Indicates if the request succeeded, where a value of `true` means success.
         self.success = success
 
     def validate(self):

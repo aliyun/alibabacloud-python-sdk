@@ -12,8 +12,11 @@ class CreateInstanceResponseBody(DaraModel):
         data: main_models.CreateInstanceResponseBodyData = None,
         success: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The returned result.
         self.data = data
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -56,7 +59,9 @@ class CreateInstanceResponseBodyData(DaraModel):
         instance_id: str = None,
         order_id: str = None,
     ):
+        # The instance ID.
         self.instance_id = instance_id
+        # The order ID.
         self.order_id = order_id
 
     def validate(self):

@@ -15,19 +15,19 @@ class UpdateInstanceNameResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The detailed information about the failed permission verification.
+        # Details about the access denied error.
         self.access_denied_detail = access_denied_detail
-        # The returned result.
+        # The returned data.
         self.data = data
-        # The error code returned.
+        # The error code.
         self.err_code = err_code
         # The error message.
         self.err_message = err_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

@@ -15,9 +15,13 @@ class ListAclGroupsResponseBody(DaraModel):
         http_status_code: int = None,
         request_id: str = None,
     ):
+        # Details about the access denial. Returned only for requests denied due to insufficient RAM permissions.
         self.access_denied_detail = access_denied_detail
+        # The response data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -76,11 +80,17 @@ class ListAclGroupsResponseBodyData(DaraModel):
         instance_id: str = None,
         uid: int = None,
     ):
+        # The CIDR blocks in the group.
         self.cidrs = cidrs
+        # The timestamp of the group\\"s creation.
         self.create_time = create_time
+        # The group name.
         self.group_name = group_name
+        # The group ID.
         self.id = id
+        # The instance ID.
         self.instance_id = instance_id
+        # The ID of the Alibaba Cloud account. This parameter is read-only.
         self.uid = uid
 
     def validate(self):

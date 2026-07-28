@@ -38,36 +38,67 @@ class CreateInstanceRequest(DaraModel):
         zone_id: str = None,
         client_token: str = None,
     ):
+        # The region ID.
         self.region_id = region_id
+        # Specifies whether to enable AI function.
         self.ai_function = ai_function
+        # Specifies whether to enable automatic backup.
         self.auto_backup = auto_backup
+        # Specifies whether to enable automatic payment. Default value: true. Valid values:
         self.auto_pay = auto_pay
+        # Specifies whether to enable auto-renewal. This parameter takes effect only when the payment type is set to Subscription.
         self.auto_renew = auto_renew
+        # The backup and restoration information.
         self.backup_restore_info = backup_restore_info
+        # The component information.
         self.components = components
+        # The configuration items.
         self.configuration = configuration
+        # The database administrator password.
         self.db_admin_password = db_admin_password
+        # The Milvus version.
+        # 
         # This parameter is required.
         self.db_version = db_version
+        # Specifies whether to enable OSS encryption.
         self.encrypted = encrypted
+        # Specifies whether to enable high availability.
         self.ha = ha
+        # The instance name.
         self.instance_name = instance_name
+        # Specifies whether to enable multi-zone storage.
         self.is_multi_az_storage = is_multi_az_storage
+        # The ID of the KMS key used for encryption.
         self.kms_key_id = kms_key_id
+        # The number of load replicas.
         self.load_replicas = load_replicas
+        # The zone configuration.
         self.multi_zone_mode = multi_zone_mode
+        # The payment duration.
         self.payment_duration = payment_duration
+        # The payment duration unit.
         self.payment_duration_unit = payment_duration_unit
+        # The payment type.
+        # 
         # This parameter is required.
         self.payment_type = payment_type
+        # The coupon code.
         self.promotion_no = promotion_no
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The instance tags.
         self.tags = tags
+        # The vSwitches.
         self.v_switch_ids = v_switch_ids
+        # The VPC ID.
+        # 
         # This parameter is required.
         self.vpc_id = vpc_id
+        # The primary zone.
+        # 
         # This parameter is required.
         self.zone_id = zone_id
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
 
     def validate(self):
@@ -281,7 +312,9 @@ class CreateInstanceRequestVSwitchIds(DaraModel):
         vsw_id: str = None,
         zone_id: str = None,
     ):
+        # The vSwitch ID configuration in the zone.
         self.vsw_id = vsw_id
+        # The zone.
         self.zone_id = zone_id
 
     def validate(self):
@@ -316,7 +349,9 @@ class CreateInstanceRequestTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the resource tag.
         self.key = key
+        # The value of the resource tag.
         self.value = value
 
     def validate(self):
@@ -350,21 +385,32 @@ class CreateInstanceRequestComponents(DaraModel):
         self,
         cu_num: int = None,
         cu_type: str = None,
+        data_disk: main_models.CreateInstanceRequestComponentsDataDisk = None,
         disk_size_type: str = None,
         replica: int = None,
         type: str = None,
     ):
+        # The number of compute units (CUs).
+        # 
         # This parameter is required.
         self.cu_num = cu_num
+        # The CU type.
         self.cu_type = cu_type
+        self.data_disk = data_disk
+        # The disk size type for Query Node. Set to Large for storage-optimized, and Normal for compute-optimized or other configurations.
         self.disk_size_type = disk_size_type
+        # The number of replicas.
+        # 
         # This parameter is required.
         self.replica = replica
+        # The component type.
+        # 
         # This parameter is required.
         self.type = type
 
     def validate(self):
-        pass
+        if self.data_disk:
+            self.data_disk.validate()
 
     def to_map(self):
         result = dict()
@@ -376,6 +422,9 @@ class CreateInstanceRequestComponents(DaraModel):
 
         if self.cu_type is not None:
             result['cuType'] = self.cu_type
+
+        if self.data_disk is not None:
+            result['dataDisk'] = self.data_disk.to_map()
 
         if self.disk_size_type is not None:
             result['diskSizeType'] = self.disk_size_type
@@ -396,6 +445,10 @@ class CreateInstanceRequestComponents(DaraModel):
         if m.get('cuType') is not None:
             self.cu_type = m.get('cuType')
 
+        if m.get('dataDisk') is not None:
+            temp_model = main_models.CreateInstanceRequestComponentsDataDisk()
+            self.data_disk = temp_model.from_map(m.get('dataDisk'))
+
         if m.get('diskSizeType') is not None:
             self.disk_size_type = m.get('diskSizeType')
 
@@ -407,6 +460,57 @@ class CreateInstanceRequestComponents(DaraModel):
 
         return self
 
+class CreateInstanceRequestComponentsDataDisk(DaraModel):
+    def __init__(
+        self,
+        enabled: bool = None,
+        performance_level: str = None,
+        size: int = None,
+        storage_class: str = None,
+    ):
+        self.enabled = enabled
+        self.performance_level = performance_level
+        self.size = size
+        self.storage_class = storage_class
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.enabled is not None:
+            result['enabled'] = self.enabled
+
+        if self.performance_level is not None:
+            result['performanceLevel'] = self.performance_level
+
+        if self.size is not None:
+            result['size'] = self.size
+
+        if self.storage_class is not None:
+            result['storageClass'] = self.storage_class
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enabled') is not None:
+            self.enabled = m.get('enabled')
+
+        if m.get('performanceLevel') is not None:
+            self.performance_level = m.get('performanceLevel')
+
+        if m.get('size') is not None:
+            self.size = m.get('size')
+
+        if m.get('storageClass') is not None:
+            self.storage_class = m.get('storageClass')
+
+        return self
+
 class CreateInstanceRequestBackupRestoreInfo(DaraModel):
     def __init__(
         self,
@@ -414,8 +518,11 @@ class CreateInstanceRequestBackupRestoreInfo(DaraModel):
         backup_name: str = None,
         source_cluster_id: str = None,
     ):
+        # The backup ID.
         self.backup_id = backup_id
+        # The backup name.
         self.backup_name = backup_name
+        # The ID of the source backup cluster.
         self.source_cluster_id = source_cluster_id
 
     def validate(self):

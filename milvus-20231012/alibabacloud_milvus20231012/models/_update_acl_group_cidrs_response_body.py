@@ -15,12 +15,19 @@ class UpdateAclGroupCidrsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Details about why access was denied. Returned only when RAM denies access due to insufficient permissions.
         self.access_denied_detail = access_denied_detail
+        # A value of `true` indicates that the operation was successful.
         self.data = data
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

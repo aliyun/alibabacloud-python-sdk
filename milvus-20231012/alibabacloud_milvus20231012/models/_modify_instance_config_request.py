@@ -11,15 +11,15 @@ class ModifyInstanceConfigRequest(DaraModel):
         reason: str = None,
         user_config: str = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The reason for the update.
+        # The reason for the modification.
         # 
         # This parameter is required.
         self.reason = reason
-        # User-defined configuration.
+        # The custom user configuration.
         self.user_config = user_config
 
     def validate(self):

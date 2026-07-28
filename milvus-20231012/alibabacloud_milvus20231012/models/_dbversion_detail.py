@@ -14,8 +14,11 @@ class DBVersionDetail(DaraModel):
         status: str = None,
         version: str = None,
     ):
+        # The specifications supported by the version.
         self.specs = specs
+        # The status of the version.
         self.status = status
+        # The version number.
         self.version = version
 
     def validate(self):
@@ -67,10 +70,15 @@ class DBVersionDetailSpecs(DaraModel):
         is_standalone_pro: bool = None,
         zone_mode: str = None,
     ):
+        # The component specifications.
         self.component_specs = component_specs
+        # Indicates whether the high availability (HA) edition is supported.
         self.is_ha = is_ha
+        # Indicates whether the Standalone edition is supported.
         self.is_standalone = is_standalone
+        # Indicates whether the Standalone Pro edition is supported.
         self.is_standalone_pro = is_standalone_pro
+        # The zone mode of the specification.
         self.zone_mode = zone_mode
 
     def validate(self):
@@ -138,12 +146,19 @@ class DBVersionDetailSpecsComponentSpecs(DaraModel):
         step: int = None,
         type: str = None,
     ):
+        # The default number of replicas for the component.
         self.default_replicas = default_replicas
+        # The maximum number of replicas for the component.
         self.max_replicas = max_replicas
+        # The minimum number of replicas for the component.
         self.min_replicas = min_replicas
+        # The name of the component.
         self.name = name
+        # The available specifications for the component.
         self.specs = specs
+        # The step size for scaling the number of replicas.
         self.step = step
+        # The type of the component.
         self.type = type
 
     def validate(self):

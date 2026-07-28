@@ -2,13 +2,22 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from ._component_capacity_constraint import ComponentCapacityConstraint
 from ._dbversion_detail import DBVersionDetail
+from ._dlf_database import DlfDatabase
+from ._dlf_field_schema import DlfFieldSchema
+from ._dlf_instance import DlfInstance
+from ._dlf_table import DlfTable
 from ._instance_detail import InstanceDetail
 from ._migration_source import MigrationSource
 from ._price_info import PriceInfo
 from ._promotion_info import PromotionInfo
+from ._ram_account import RamAccount
+from ._ram_binding_entry import RamBindingEntry
 from ._scaling_activity import ScalingActivity
 from ._scaling_rule import ScalingRule
+from ._open_struct_dlf_snapshot_dto import OpenStructDlfSnapshotDto
+from ._open_struct_dlf_tag_dto import OpenStructDlfTagDto
 from ._change_resource_group_request import ChangeResourceGroupRequest
 from ._change_resource_group_response_body import ChangeResourceGroupResponseBody
 from ._change_resource_group_response import ChangeResourceGroupResponse
@@ -73,6 +82,8 @@ from ._update_public_network_status_response_body import UpdatePublicNetworkStat
 from ._update_public_network_status_response import UpdatePublicNetworkStatusResponse
 from ._dbversion_detail import DBVersionDetailSpecsComponentSpecs
 from ._dbversion_detail import DBVersionDetailSpecs
+from ._instance_detail import InstanceDetailComponentsDataDisk
+from ._instance_detail import InstanceDetailComponentsPodsList
 from ._instance_detail import InstanceDetailComponents
 from ._instance_detail import InstanceDetailTags
 from ._instance_detail import InstanceDetailVSwitchIds
@@ -82,11 +93,13 @@ from ._price_info import PriceInfoPriceModules
 from ._price_info import PriceInfoRules
 from ._scaling_rule import ScalingRuleAdjustInfos
 from ._create_instance_request import CreateInstanceRequestBackupRestoreInfo
+from ._create_instance_request import CreateInstanceRequestComponentsDataDisk
 from ._create_instance_request import CreateInstanceRequestComponents
 from ._create_instance_request import CreateInstanceRequestTags
 from ._create_instance_request import CreateInstanceRequestVSwitchIds
 from ._create_instance_response_body import CreateInstanceResponseBodyData
 from ._describe_access_control_list_response_body import DescribeAccessControlListResponseBodyData
+from ._get_instance_detail_response_body import GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoListPodsList
 from ._get_instance_detail_response_body import GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList
 from ._get_instance_detail_response_body import GetInstanceDetailResponseBodyDataClusterInfo
 from ._get_instance_detail_response_body import GetInstanceDetailResponseBodyDataHighAvailability
@@ -102,16 +115,26 @@ from ._list_instances_response_body import ListInstancesResponseBodyDataTags
 from ._list_instances_response_body import ListInstancesResponseBodyData
 from ._list_instances_v2request import ListInstancesV2RequestTag
 from ._tag_resources_request import TagResourcesRequestTag
+from ._update_instance_request import UpdateInstanceRequestComponentsDataDisk
 from ._update_instance_request import UpdateInstanceRequestComponents
 
 __all__ = [
+    ComponentCapacityConstraint,
     DBVersionDetail,
+    DlfDatabase,
+    DlfFieldSchema,
+    DlfInstance,
+    DlfTable,
     InstanceDetail,
     MigrationSource,
     PriceInfo,
     PromotionInfo,
+    RamAccount,
+    RamBindingEntry,
     ScalingActivity,
     ScalingRule,
+    OpenStructDlfSnapshotDto,
+    OpenStructDlfTagDto,
     ChangeResourceGroupRequest,
     ChangeResourceGroupResponseBody,
     ChangeResourceGroupResponse,
@@ -176,6 +199,8 @@ __all__ = [
     UpdatePublicNetworkStatusResponse,
     DBVersionDetailSpecsComponentSpecs,
     DBVersionDetailSpecs,
+    InstanceDetailComponentsDataDisk,
+    InstanceDetailComponentsPodsList,
     InstanceDetailComponents,
     InstanceDetailTags,
     InstanceDetailVSwitchIds,
@@ -185,11 +210,13 @@ __all__ = [
     PriceInfoRules,
     ScalingRuleAdjustInfos,
     CreateInstanceRequestBackupRestoreInfo,
+    CreateInstanceRequestComponentsDataDisk,
     CreateInstanceRequestComponents,
     CreateInstanceRequestTags,
     CreateInstanceRequestVSwitchIds,
     CreateInstanceResponseBodyData,
     DescribeAccessControlListResponseBodyData,
+    GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoListPodsList,
     GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList,
     GetInstanceDetailResponseBodyDataClusterInfo,
     GetInstanceDetailResponseBodyDataHighAvailability,
@@ -205,5 +232,6 @@ __all__ = [
     ListInstancesResponseBodyData,
     ListInstancesV2RequestTag,
     TagResourcesRequestTag,
+    UpdateInstanceRequestComponentsDataDisk,
     UpdateInstanceRequestComponents
 ]

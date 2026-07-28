@@ -17,14 +17,23 @@ class ListInstancesV2ShrinkRequest(DaraModel):
         resource_group_id: str = None,
         tag_shrink: str = None,
     ):
+        # The region ID.
         self.region_id = region_id
+        # The cluster ID.
         self.instance_id = instance_id
+        # The cluster name.
         self.instance_name = instance_name
+        # The maximum number of records to retrieve in a single request.
         self.max_results = max_results
+        # The pagination token for the next request (not currently enabled).
         self.next_token = next_token
+        # The page number.
         self.page_number = page_number
+        # The page size.
         self.page_size = page_size
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The list of tags in JSON format.
         self.tag_shrink = tag_shrink
 
     def validate(self):

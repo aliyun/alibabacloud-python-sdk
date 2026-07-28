@@ -15,13 +15,13 @@ class CreateDefaultRoleResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The details about the failed permission verification.
+        # Details about the access denial.
         self.access_denied_detail = access_denied_detail
-        # The returned result.
+        # The returned data.
         self.data = data
-        # The error code
+        # The error code.
         self.err_code = err_code
-        # The error message returned.
+        # The error message.
         self.err_message = err_message
         # The HTTP status code.
         self.http_status_code = http_status_code

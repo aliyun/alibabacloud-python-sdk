@@ -10,7 +10,10 @@ class DeleteInstanceRequest(DaraModel):
         region_id: str = None,
         instance_id: str = None,
     ):
+        # The region ID.
         self.region_id = region_id
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

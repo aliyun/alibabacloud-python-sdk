@@ -11,11 +11,11 @@ class UpdateAccessControlListRequest(DaraModel):
         cidr: str = None,
         instance_id: str = None,
     ):
-        # The ID of public network access control
+        # The public access control ID.
         self.acl_id = acl_id
-        # The CIDR blocks.
+        # The CIDR block.
         self.cidr = cidr
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
 
     def validate(self):

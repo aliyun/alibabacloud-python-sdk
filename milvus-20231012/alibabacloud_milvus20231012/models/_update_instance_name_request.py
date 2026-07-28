@@ -10,7 +10,7 @@ class UpdateInstanceNameRequest(DaraModel):
         cluster_name: str = None,
         instance_id: str = None,
     ):
-        # The instance ID.
+        # The name of the instance.
         # 
         # This parameter is required.
         self.cluster_name = cluster_name

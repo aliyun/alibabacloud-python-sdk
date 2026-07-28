@@ -11,8 +11,11 @@ class UpdateAclGroupCidrsRequest(DaraModel):
         instance_id: str = None,
         new_cidrs: str = None,
     ):
+        # The name of the allow list group.
         self.group_name = group_name
+        # The instance ID.
         self.instance_id = instance_id
+        # The new CIDR blocks for the allow list group. To specify multiple CIDR blocks, separate them with a comma.
         self.new_cidrs = new_cidrs
 
     def validate(self):
