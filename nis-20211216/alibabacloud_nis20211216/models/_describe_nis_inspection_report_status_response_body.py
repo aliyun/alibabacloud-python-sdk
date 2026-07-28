@@ -16,13 +16,21 @@ class DescribeNisInspectionReportStatusResponseBody(DaraModel):
         start_time: str = None,
         status: str = None,
     ):
+        # The end time.
         self.end_time = end_time
+        # The type of inspection plan used for the task.
         self.inspection_project = inspection_project
+        # The ID of the inspection report.
         self.inspection_report_id = inspection_report_id
+        # The ID of the inspection task.
         self.inspection_task_id = inspection_task_id
+        # The name of the inspection task.
         self.inspection_task_name = inspection_task_name
+        # The request ID.
         self.request_id = request_id
+        # The start time.
         self.start_time = start_time
+        # The status of the inspection report.
         self.status = status
 
     def validate(self):

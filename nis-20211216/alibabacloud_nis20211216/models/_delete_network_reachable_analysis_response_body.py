@@ -11,7 +11,9 @@ class DeleteNetworkReachableAnalysisResponseBody(DaraModel):
         request_id: str = None,
     ):
         # Result of operation.
+        # 
         # - **true**: Delete Success.
+        # 
         # - **false**: Delete Fail.
         self.data = data
         # The request ID.

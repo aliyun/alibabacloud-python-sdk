@@ -10,7 +10,9 @@ class StartNisTrafficRankingResponseBody(DaraModel):
         nis_traffic_ranking_id: str = None,
         request_id: str = None,
     ):
+        # The result ID of this traffic ranking analysis. Call the DescribeNisTrafficRanking operation to obtain the final analysis result.
         self.nis_traffic_ranking_id = nis_traffic_ranking_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

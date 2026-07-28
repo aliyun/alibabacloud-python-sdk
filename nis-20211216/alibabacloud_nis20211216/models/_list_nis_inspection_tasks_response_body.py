@@ -16,10 +16,15 @@ class ListNisInspectionTasksResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of network inspection tasks.
         self.inspection_task_list = inspection_task_list
+        # The number of entries per page. Valid values: 1 to 100. Default value: 20.
         self.max_results = max_results
+        # The token to retrieve the next page of results. If the value of this parameter is not empty, it indicates that there are more results to retrieve. If this parameter is empty, all results have been returned.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -84,11 +89,25 @@ class ListNisInspectionTasksResponseBodyInspectionTaskList(DaraModel):
         last_update_report_id: str = None,
         status: str = None,
     ):
+        # The time when the task was created.
         self.create_time = create_time
+        # The name of the network inspection task.
         self.inspection_name = inspection_name
+        # The type of inspection solution that the network inspection task uses. Valid values: basic and customized.
         self.inspection_project = inspection_project
+        # The ID of the network inspection task.
         self.inspection_task_id = inspection_task_id
+        # The ID of the latest report.
         self.last_update_report_id = last_update_report_id
+        # The running status of the task. Valid values:
+        # 
+        # Creating: The task is being created.
+        # 
+        # - Active
+        # 
+        # - Running
+        # 
+        # - Inactive
         self.status = status
 
     def validate(self):

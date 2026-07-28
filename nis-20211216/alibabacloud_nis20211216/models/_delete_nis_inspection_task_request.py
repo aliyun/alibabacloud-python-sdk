@@ -9,6 +9,8 @@ class DeleteNisInspectionTaskRequest(DaraModel):
         self,
         inspection_task_id: str = None,
     ):
+        # The ID of the inspection task.
+        # 
         # This parameter is required.
         self.inspection_task_id = inspection_task_id
 

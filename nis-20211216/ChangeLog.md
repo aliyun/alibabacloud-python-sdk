@@ -1,3 +1,14 @@
+2026-07-28 Version: 2.4.0
+- Support API GetNisTrafficMetrics.
+- Update API DescribeNisTrafficRanking: add response parameters Body.FlowRankingList.$.PacketsIncrease.
+- Update API DescribeNisTrafficRanking: add response parameters Body.FlowRankingList.$.PacketsIncreaseRatio.
+- Update API DescribeNisTrafficRanking: add response parameters Body.FlowRankingList.$.RoundTripTimeIncrease.
+- Update API GetNisNetworkRanking: add response parameters Body.Data.$.GlobalCountryCode.
+- Update API GetNisNetworkRanking: add response parameters Body.Data.$.GlobalProvinceCode.
+- Update API GetNisNetworkRanking: add response parameters Body.Data.$.LineType.
+- Update API GetNisNetworkRanking: add response parameters Body.Data.$.SourceRegion.
+
+
 2026-05-26 Version: 2.3.1
 - Update API DescribeNisTrafficRanking: add response parameters Body.FlowRankingList.$.BytesIncrease.
 - Update API DescribeNisTrafficRanking: add response parameters Body.FlowRankingList.$.BytesIncreaseRatio.

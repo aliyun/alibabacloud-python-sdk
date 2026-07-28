@@ -17,13 +17,21 @@ class DescribeNisInspectionReportCheckItemsRequest(DaraModel):
         resource_type: List[str] = None,
         risk_level: List[str] = None,
     ):
+        # The category of the check item.
         self.category_code = category_code
+        # The ID of the inspection report.
+        # 
         # This parameter is required.
         self.inspection_report_id = inspection_report_id
+        # The language of the content. Valid values: zh-CN and en-US.
         self.language = language
+        # The maximum number of entries to return on each page. Maximum value: 100. Default value: 20.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. Set this parameter to the NextToken value returned from the previous call.
         self.next_token = next_token
+        # The resource type.
         self.resource_type = resource_type
+        # A collection of risk levels.
         self.risk_level = risk_level
 
     def validate(self):

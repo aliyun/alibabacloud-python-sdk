@@ -13,11 +13,18 @@ class DescribeNisInspectionRecommendationResourcesRequest(DaraModel):
         next_token: str = None,
         recommendation_code: str = None,
     ):
+        # The ID of the inspection report.
+        # 
         # This parameter is required.
         self.inspection_report_id = inspection_report_id
+        # The language to use.
         self.language = language
+        # The maximum number of entries to return on each page. Maximum value: 100. Default value: 20.
         self.max_results = max_results
+        # The token that is used to query the next page of results. Set this parameter to the NextToken value returned from the last API call.
         self.next_token = next_token
+        # The recommendation code for the abnormal item.
+        # 
         # This parameter is required.
         self.recommendation_code = recommendation_code
 

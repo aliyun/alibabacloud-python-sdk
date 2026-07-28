@@ -20,7 +20,11 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'cn-shanghai': 'nis.aliyuncs.com',
+            'ap-southeast-1': 'nis-intl.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('nis', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -1659,6 +1663,136 @@ class Client(OpenApiClient):
     ) -> main_models.GetNisNetworkRankingResponse:
         runtime = RuntimeOptions()
         return await self.get_nis_network_ranking_with_options_async(request, runtime)
+
+    def get_nis_traffic_metrics_with_options(
+        self,
+        tmp_req: main_models.GetNisTrafficMetricsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetNisTrafficMetricsResponse:
+        tmp_req.validate()
+        request = main_models.GetNisTrafficMetricsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.filter):
+            request.filter_shrink = Utils.array_to_string_with_specified_style(tmp_req.filter, 'Filter', 'json')
+        query = {}
+        if not DaraCore.is_null(request.begin_time):
+            query['BeginTime'] = request.begin_time
+        if not DaraCore.is_null(request.direction):
+            query['Direction'] = request.direction
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.filter_shrink):
+            query['Filter'] = request.filter_shrink
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.metric_name):
+            query['MetricName'] = request.metric_name
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_no):
+            query['RegionNo'] = request.region_no
+        if not DaraCore.is_null(request.scan_by):
+            query['ScanBy'] = request.scan_by
+        if not DaraCore.is_null(request.step_minutes):
+            query['StepMinutes'] = request.step_minutes
+        if not DaraCore.is_null(request.storage_interval):
+            query['StorageInterval'] = request.storage_interval
+        if not DaraCore.is_null(request.traffic_analyzer_id):
+            query['TrafficAnalyzerId'] = request.traffic_analyzer_id
+        if not DaraCore.is_null(request.traffic_scenario):
+            query['TrafficScenario'] = request.traffic_scenario
+        if not DaraCore.is_null(request.tuple_dimension):
+            query['TupleDimension'] = request.tuple_dimension
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetNisTrafficMetrics',
+            version = '2021-12-16',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetNisTrafficMetricsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_nis_traffic_metrics_with_options_async(
+        self,
+        tmp_req: main_models.GetNisTrafficMetricsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetNisTrafficMetricsResponse:
+        tmp_req.validate()
+        request = main_models.GetNisTrafficMetricsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.filter):
+            request.filter_shrink = Utils.array_to_string_with_specified_style(tmp_req.filter, 'Filter', 'json')
+        query = {}
+        if not DaraCore.is_null(request.begin_time):
+            query['BeginTime'] = request.begin_time
+        if not DaraCore.is_null(request.direction):
+            query['Direction'] = request.direction
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.filter_shrink):
+            query['Filter'] = request.filter_shrink
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.metric_name):
+            query['MetricName'] = request.metric_name
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_no):
+            query['RegionNo'] = request.region_no
+        if not DaraCore.is_null(request.scan_by):
+            query['ScanBy'] = request.scan_by
+        if not DaraCore.is_null(request.step_minutes):
+            query['StepMinutes'] = request.step_minutes
+        if not DaraCore.is_null(request.storage_interval):
+            query['StorageInterval'] = request.storage_interval
+        if not DaraCore.is_null(request.traffic_analyzer_id):
+            query['TrafficAnalyzerId'] = request.traffic_analyzer_id
+        if not DaraCore.is_null(request.traffic_scenario):
+            query['TrafficScenario'] = request.traffic_scenario
+        if not DaraCore.is_null(request.tuple_dimension):
+            query['TupleDimension'] = request.tuple_dimension
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetNisTrafficMetrics',
+            version = '2021-12-16',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetNisTrafficMetricsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_nis_traffic_metrics(
+        self,
+        request: main_models.GetNisTrafficMetricsRequest,
+    ) -> main_models.GetNisTrafficMetricsResponse:
+        runtime = RuntimeOptions()
+        return self.get_nis_traffic_metrics_with_options(request, runtime)
+
+    async def get_nis_traffic_metrics_async(
+        self,
+        request: main_models.GetNisTrafficMetricsRequest,
+    ) -> main_models.GetNisTrafficMetricsResponse:
+        runtime = RuntimeOptions()
+        return await self.get_nis_traffic_metrics_with_options_async(request, runtime)
 
     def get_transit_router_flow_top_nwith_options(
         self,

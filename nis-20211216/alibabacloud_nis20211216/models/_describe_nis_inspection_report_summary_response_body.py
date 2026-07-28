@@ -18,12 +18,27 @@ class DescribeNisInspectionReportSummaryResponseBody(DaraModel):
         status: str = None,
         summary: main_models.DescribeNisInspectionReportSummaryResponseBodySummary = None,
     ):
+        # The end time.
         self.end_time = end_time
+        # The ID of the inspection report.
         self.inspection_report_id = inspection_report_id
+        # The ID of the inspection task.
         self.inspection_task_id = inspection_task_id
+        # The request ID.
         self.request_id = request_id
+        # The start time.
         self.start_time = start_time
+        # The status of the task. Valid values:
+        # 
+        # - Creating
+        # 
+        # - Active
+        # 
+        # - Running
+        # 
+        # - Inactive
         self.status = status
+        # The summary information.
         self.summary = summary
 
     def validate(self):
@@ -92,9 +107,13 @@ class DescribeNisInspectionReportSummaryResponseBodySummary(DaraModel):
         pass_rate_summary: List[main_models.DescribeNisInspectionReportSummaryResponseBodySummaryPassRateSummary] = None,
         risk_summary: List[main_models.DescribeNisInspectionReportSummaryResponseBodySummaryRiskSummary] = None,
     ):
+        # The number of inspection items.
         self.check_item_count = check_item_count
+        # The number of inspected resources.
         self.check_resource_count = check_resource_count
+        # The pass rate summary.
         self.pass_rate_summary = pass_rate_summary
+        # The risk summary.
         self.risk_summary = risk_summary
 
     def validate(self):
@@ -160,9 +179,13 @@ class DescribeNisInspectionReportSummaryResponseBodySummaryRiskSummary(DaraModel
         risk_level: str = None,
         risk_type: str = None,
     ):
+        # The number of resources associated with the risk.
         self.resource_count = resource_count
+        # The number of risks.
         self.risk_count = risk_count
+        # The risk level.
         self.risk_level = risk_level
+        # The risk type.
         self.risk_type = risk_type
 
     def validate(self):
@@ -209,7 +232,9 @@ class DescribeNisInspectionReportSummaryResponseBodySummaryPassRateSummary(DaraM
         pass_rate: float = None,
         pass_rate_scope: str = None,
     ):
+        # The pass rate.
         self.pass_rate = pass_rate
+        # The scope of the pass rate.
         self.pass_rate_scope = pass_rate_scope
 
     def validate(self):

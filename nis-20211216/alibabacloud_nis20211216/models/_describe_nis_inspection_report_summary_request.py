@@ -9,6 +9,8 @@ class DescribeNisInspectionReportSummaryRequest(DaraModel):
         self,
         inspection_report_id: str = None,
     ):
+        # The ID of the inspection report.
+        # 
         # This parameter is required.
         self.inspection_report_id = inspection_report_id
 

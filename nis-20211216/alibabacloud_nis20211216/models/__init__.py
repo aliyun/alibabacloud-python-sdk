@@ -62,6 +62,10 @@ from ._get_nis_network_ranking_request import GetNisNetworkRankingRequest
 from ._get_nis_network_ranking_shrink_request import GetNisNetworkRankingShrinkRequest
 from ._get_nis_network_ranking_response_body import GetNisNetworkRankingResponseBody
 from ._get_nis_network_ranking_response import GetNisNetworkRankingResponse
+from ._get_nis_traffic_metrics_request import GetNisTrafficMetricsRequest
+from ._get_nis_traffic_metrics_shrink_request import GetNisTrafficMetricsShrinkRequest
+from ._get_nis_traffic_metrics_response_body import GetNisTrafficMetricsResponseBody
+from ._get_nis_traffic_metrics_response import GetNisTrafficMetricsResponse
 from ._get_transit_router_flow_top_nrequest import GetTransitRouterFlowTopNRequest
 from ._get_transit_router_flow_top_nshrink_request import GetTransitRouterFlowTopNShrinkRequest
 from ._get_transit_router_flow_top_nresponse_body import GetTransitRouterFlowTopNResponseBody
@@ -106,6 +110,8 @@ from ._get_nis_network_metrics_response_body import GetNisNetworkMetricsResponse
 from ._get_nis_network_metrics_response_body import GetNisNetworkMetricsResponseBodyData
 from ._get_nis_network_ranking_request import GetNisNetworkRankingRequestFilter
 from ._get_nis_network_ranking_response_body import GetNisNetworkRankingResponseBodyData
+from ._get_nis_traffic_metrics_request import GetNisTrafficMetricsRequestFilter
+from ._get_nis_traffic_metrics_response_body import GetNisTrafficMetricsResponseBodyMetricStatics
 from ._get_transit_router_flow_top_nresponse_body import GetTransitRouterFlowTopNResponseBodyTransitRouterFlowTopN
 from ._get_vbr_flow_top_nresponse_body import GetVbrFlowTopNResponseBodyVirtualBorderRouterFlowlogTopN
 from ._list_nis_inspection_resource_type_response_body import ListNisInspectionResourceTypeResponseBodyResourceTypeList
@@ -174,6 +180,10 @@ __all__ = [
     GetNisNetworkRankingShrinkRequest,
     GetNisNetworkRankingResponseBody,
     GetNisNetworkRankingResponse,
+    GetNisTrafficMetricsRequest,
+    GetNisTrafficMetricsShrinkRequest,
+    GetNisTrafficMetricsResponseBody,
+    GetNisTrafficMetricsResponse,
     GetTransitRouterFlowTopNRequest,
     GetTransitRouterFlowTopNShrinkRequest,
     GetTransitRouterFlowTopNResponseBody,
@@ -218,6 +228,8 @@ __all__ = [
     GetNisNetworkMetricsResponseBodyData,
     GetNisNetworkRankingRequestFilter,
     GetNisNetworkRankingResponseBodyData,
+    GetNisTrafficMetricsRequestFilter,
+    GetNisTrafficMetricsResponseBodyMetricStatics,
     GetTransitRouterFlowTopNResponseBodyTransitRouterFlowTopN,
     GetVbrFlowTopNResponseBodyVirtualBorderRouterFlowlogTopN,
     ListNisInspectionResourceTypeResponseBodyResourceTypeList,

@@ -11,8 +11,12 @@ class DescribeNisTrafficRankingRequest(DaraModel):
         next_token: str = None,
         nis_traffic_ranking_id: str = None,
     ):
+        # The number of entries per page. Valid values: 1 to 100. Default value: 20.
         self.max_results = max_results
+        # The pagination token. Set this parameter to the value of NextToken returned by the previous API call.
         self.next_token = next_token
+        # The ID of the traffic ranking analysis result. Set this parameter to the value returned by the StartNisTrafficRanking operation.
+        # 
         # This parameter is required.
         self.nis_traffic_ranking_id = nis_traffic_ranking_id
 

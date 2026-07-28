@@ -22,22 +22,37 @@ class GetNisNetworkRankingShrinkRequest(DaraModel):
         top_n: int = None,
         use_cross_account: bool = None,
     ):
+        # The member account IDs explicitly passed.
         self.account_ids = account_ids
+        # The start timestamp, in **ms**. If not specified, the last hour is queried by default.
         self.begin_time = begin_time
+        # The network traffic direction based on Alibaba Cloud resources. Valid values:
+        # 
         # This parameter is required.
         self.direction = direction
+        # The end timestamp, in **ms**. If not specified, the last hour is queried by default. If only BeginTime is specified, the one hour after BeginTime is queried.
         self.end_time = end_time
+        # Specifies filter conditions for focused network traffic analysis.
         self.filter_shrink = filter_shrink
+        # The dimension for metric ranking. Valid values vary by scenario:
+        # 
         # This parameter is required.
         self.group_by = group_by
+        # The metric for ranking Internet traffic. Case-sensitive. Valid values:
+        # 
         # This parameter is required.
         self.order_by = order_by
-        # This parameter is required.
+        # The region where the resource resides.
         self.region_no = region_no
+        # The Alibaba Cloud network resource type used for traffic forwarding. Valid values:
+        # 
         # This parameter is required.
         self.resource_type = resource_type
+        # The sort order. Default value: desc. Valid values:
         self.sort = sort
+        # The number of top-ranked entries to display. Default value: **10**. Maximum value: **100**.
         self.top_n = top_n
+        # Specifies whether to use multi-account access mode. This is a reserved parameter and is not currently supported.
         self.use_cross_account = use_cross_account
 
     def validate(self):

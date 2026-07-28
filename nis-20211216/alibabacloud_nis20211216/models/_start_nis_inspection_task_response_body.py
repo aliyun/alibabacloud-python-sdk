@@ -10,7 +10,9 @@ class StartNisInspectionTaskResponseBody(DaraModel):
         inspection_report_id: str = None,
         request_id: str = None,
     ):
+        # The inspection report ID.
         self.inspection_report_id = inspection_report_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

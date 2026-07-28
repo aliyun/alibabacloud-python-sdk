@@ -13,6 +13,7 @@ class DeleteNetworkPathResponseBody(DaraModel):
         # Result of operation.
         # 
         # - **true**: Delete Success.
+        # 
         # - **false**: Delete Fail.
         self.data = data
         # The request ID.

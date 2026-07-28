@@ -13,7 +13,9 @@ class GetNisNetworkMetricsResponseBody(DaraModel):
         data: main_models.GetNisNetworkMetricsResponseBodyData = None,
         request_id: str = None,
     ):
+        # The cloud network metric trends data object.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -50,7 +52,9 @@ class GetNisNetworkMetricsResponseBodyData(DaraModel):
         metrics: List[main_models.GetNisNetworkMetricsResponseBodyDataMetrics] = None,
         unit: str = None,
     ):
+        # The collection of metric trends data.
         self.metrics = metrics
+        # The unit.
         self.unit = unit
 
     def validate(self):
@@ -93,7 +97,9 @@ class GetNisNetworkMetricsResponseBodyDataMetrics(DaraModel):
         time_stamp: int = None,
         value: float = None,
     ):
+        # The timestamp of the data in milliseconds.
         self.time_stamp = time_stamp
+        # The metric value.
         self.value = value
 
     def validate(self):

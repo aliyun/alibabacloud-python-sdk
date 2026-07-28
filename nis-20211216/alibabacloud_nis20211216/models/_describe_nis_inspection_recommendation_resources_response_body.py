@@ -17,11 +17,17 @@ class DescribeNisInspectionRecommendationResourcesResponseBody(DaraModel):
         resource_list: List[main_models.DescribeNisInspectionRecommendationResourcesResponseBodyResourceList] = None,
         total_count: int = None,
     ):
+        # The ID of the inspection report.
         self.inspection_report_id = inspection_report_id
+        # The maximum number of entries returned on each page. Maximum value: 100. Default value: 20.
         self.max_results = max_results
+        # The token to start the next query.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The list of resources.
         self.resource_list = resource_list
+        # The total number of resources.
         self.total_count = total_count
 
     def validate(self):
@@ -89,8 +95,11 @@ class DescribeNisInspectionRecommendationResourcesResponseBodyResourceList(DaraM
         resource_id: str = None,
         resource_name: str = None,
     ):
+        # The details of the abnormal item.
         self.analysis_data = analysis_data
+        # The ID of the abnormal instance.
         self.resource_id = resource_id
+        # The name of the instance.
         self.resource_name = resource_name
 
     def validate(self):

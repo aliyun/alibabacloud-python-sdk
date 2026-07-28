@@ -13,7 +13,9 @@ class GetNisNetworkRankingResponseBody(DaraModel):
         data: List[main_models.GetNisNetworkRankingResponseBodyData] = None,
         request_id: str = None,
     ):
+        # The collection of cloud network metric ranking data.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -65,11 +67,14 @@ class GetNisNetworkRankingResponseBodyData(DaraModel):
         destination_port: str = None,
         destination_region_no: str = None,
         destination_zone: str = None,
+        global_country_code: str = None,
+        global_province_code: str = None,
         ip: str = None,
         in_bps: float = None,
         in_pps: float = None,
         instance_id: str = None,
         isp: str = None,
+        line_type: str = None,
         new_session_per_second: float = None,
         out_bps: float = None,
         out_pps: float = None,
@@ -82,39 +87,75 @@ class GetNisNetworkRankingResponseBodyData(DaraModel):
         source_ip: str = None,
         source_isp: str = None,
         source_port: str = None,
+        source_region: str = None,
         source_zone: str = None,
         vbr_id: str = None,
     ):
+        # The number of concurrent connections.
         self.active_session_count = active_session_count
+        # The autonomous system number (ASN) of the client ISP.
         self.asn = asn
+        # The transit router attachment ID.
         self.attachment_id = attachment_id
+        # The bandwidth package instance ID.
         self.bandwidth_package_id = bandwidth_package_id
+        # The traffic volume in bytes.
         self.byte_count = byte_count
+        # The city where the client is located.
         self.city = city
+        # The country where the client is located.
         self.country = country
+        # The destination IP address.
         self.destination_ip = destination_ip
+        # The destination ISP.
         self.destination_isp = destination_isp
+        # The destination port.
         self.destination_port = destination_port
+        # The destination region ID.
         self.destination_region_no = destination_region_no
+        # The destination zone for probing.
         self.destination_zone = destination_zone
+        self.global_country_code = global_country_code
+        self.global_province_code = global_province_code
+        # The IP address.
         self.ip = ip
+        # The inbound bandwidth. Unit: bit/s.
         self.in_bps = in_bps
+        # The inbound packet rate. Unit: packets per second.
         self.in_pps = in_pps
+        # The cloud resource instance ID corresponding to each scenario. For example, in the cross-region network traffic analysis scenario, this represents the CEN ID. In the public network scenario, this represents the EIP ID, ECS instance ID, or CLB ID.
         self.instance_id = instance_id
+        # The ISP of the client.
         self.isp = isp
+        self.line_type = line_type
+        # The number of new connections per second.
         self.new_session_per_second = new_session_per_second
+        # The outbound bandwidth. Unit: bit/s.
         self.out_bps = out_bps
+        # The outbound packet rate. Unit: packets per second.
         self.out_pps = out_pps
+        # The number of traffic packets.
         self.packet_count = packet_count
+        # The network protocol.
         self.protocol = protocol
+        # The province or state where the client is located.
         self.province = province
+        # The latency. Unit: ms.
         self.rtt = rtt
+        # The Alibaba Cloud region ID.
         self.region_no = region_no
+        # The retransmission rate of TCP packets.
         self.retransmit_rate = retransmit_rate
+        # The source IP address.
         self.source_ip = source_ip
+        # The source Internet Service Provider (ISP).
         self.source_isp = source_isp
+        # The source port.
         self.source_port = source_port
+        self.source_region = source_region
+        # The source zone for probing.
         self.source_zone = source_zone
+        # The instance ID of the virtual border router (VBR).
         self.vbr_id = vbr_id
 
     def validate(self):
@@ -161,6 +202,12 @@ class GetNisNetworkRankingResponseBodyData(DaraModel):
         if self.destination_zone is not None:
             result['DestinationZone'] = self.destination_zone
 
+        if self.global_country_code is not None:
+            result['GlobalCountryCode'] = self.global_country_code
+
+        if self.global_province_code is not None:
+            result['GlobalProvinceCode'] = self.global_province_code
+
         if self.ip is not None:
             result['IP'] = self.ip
 
@@ -175,6 +222,9 @@ class GetNisNetworkRankingResponseBodyData(DaraModel):
 
         if self.isp is not None:
             result['Isp'] = self.isp
+
+        if self.line_type is not None:
+            result['LineType'] = self.line_type
 
         if self.new_session_per_second is not None:
             result['NewSessionPerSecond'] = self.new_session_per_second
@@ -211,6 +261,9 @@ class GetNisNetworkRankingResponseBodyData(DaraModel):
 
         if self.source_port is not None:
             result['SourcePort'] = self.source_port
+
+        if self.source_region is not None:
+            result['SourceRegion'] = self.source_region
 
         if self.source_zone is not None:
             result['SourceZone'] = self.source_zone
@@ -258,6 +311,12 @@ class GetNisNetworkRankingResponseBodyData(DaraModel):
         if m.get('DestinationZone') is not None:
             self.destination_zone = m.get('DestinationZone')
 
+        if m.get('GlobalCountryCode') is not None:
+            self.global_country_code = m.get('GlobalCountryCode')
+
+        if m.get('GlobalProvinceCode') is not None:
+            self.global_province_code = m.get('GlobalProvinceCode')
+
         if m.get('IP') is not None:
             self.ip = m.get('IP')
 
@@ -272,6 +331,9 @@ class GetNisNetworkRankingResponseBodyData(DaraModel):
 
         if m.get('Isp') is not None:
             self.isp = m.get('Isp')
+
+        if m.get('LineType') is not None:
+            self.line_type = m.get('LineType')
 
         if m.get('NewSessionPerSecond') is not None:
             self.new_session_per_second = m.get('NewSessionPerSecond')
@@ -308,6 +370,9 @@ class GetNisNetworkRankingResponseBodyData(DaraModel):
 
         if m.get('SourcePort') is not None:
             self.source_port = m.get('SourcePort')
+
+        if m.get('SourceRegion') is not None:
+            self.source_region = m.get('SourceRegion')
 
         if m.get('SourceZone') is not None:
             self.source_zone = m.get('SourceZone')

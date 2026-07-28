@@ -18,12 +18,19 @@ class DescribeNisTrafficRankingResponseBody(DaraModel):
         status: str = None,
         total_count: int = None,
     ):
+        # The list of traffic ranking analysis results.
         self.flow_ranking_list = flow_ranking_list
+        # The number of entries per page. Valid values: 1 to 100. Default value: 20.
         self.max_results = max_results
+        # The token for the next query.
         self.next_token = next_token
+        # The ID of the traffic ranking analysis result.
         self.nis_traffic_ranking_id = nis_traffic_ranking_id
+        # The request ID.
         self.request_id = request_id
+        # The task running status.
         self.status = status
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -114,6 +121,8 @@ class DescribeNisTrafficRankingResponseBodyFlowRankingList(DaraModel):
         instance_id: str = None,
         network_interface_id: str = None,
         packets: float = None,
+        packets_increase: float = None,
+        packets_increase_ratio: float = None,
         packets_lost_blackhole: float = None,
         packets_lost_no_route: float = None,
         packets_lost_ttlexpired: float = None,
@@ -121,6 +130,7 @@ class DescribeNisTrafficRankingResponseBodyFlowRankingList(DaraModel):
         public_ip_address: str = None,
         region_id: str = None,
         round_trip_time: float = None,
+        round_trip_time_increase: float = None,
         source_ip: str = None,
         source_port: str = None,
         source_region_no: str = None,
@@ -141,52 +151,156 @@ class DescribeNisTrafficRankingResponseBodyFlowRankingList(DaraModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
+        # The instance resource to which the EIP is bound.
+        #    - This field is returned only when Internet Shared Bandwidth metric analysis is queried.
         self.binding_resource_id = binding_resource_id
+        # The type of the instance resource to which the EIP is attached.
+        #    - This field is returned only when Internet Shared Bandwidth metric analysis is queried.
+        #    - Valid values:
+        #       - EIP_ECS: Elastic Compute Service (ECS) instance type.
+        #       - EIP_ENI: Server Load Balancer (SLB) instance type.
+        #       - EIP_NAT: NAT gateway instance type.
+        #       - EIP_SLB: elastic network interface (ENI) instance type.
+        #       - HAVIP_ECS: high availability (HA) virtual IP address type.
+        #       - TARGET_IP: IP address type.
         self.binding_resource_type = binding_resource_type
+        # The bandwidth.
+        #    - This field is returned for VPC, TR, or Internet Shared Bandwidth analysis.
         self.bytes = bytes
+        # The bandwidth increase.
+        #    - This field is returned only when TrafficScenario is set to TRFlowlog and the Order by field is BytesIncrease or BytesIncreaseRatio.
         self.bytes_increase = bytes_increase
+        # The bandwidth increase ratio.
+        #    - This field is returned only when TrafficScenario is set to TRFlowlog and the Order by field is BytesIncrease or BytesIncreaseRatio.
         self.bytes_increase_ratio = bytes_increase_ratio
+        # The traffic proportion.
+        #    - This field is returned only when TR or VPC flow log analysis is performed.
         self.bytes_rate = bytes_rate
+        # The CEN instance ID.
         self.cen_id = cen_id
+        # The autonomous system number.
+        #   - This field is returned only when VPC flow log analysis is performed for the VPC Internet scenario.
         self.client_asn = client_asn
+        # The city where the client is located.
+        #   - This field is returned only when VPC flow log analysis is performed for the VPC Internet scenario.
         self.client_city = client_city
+        # The country where the client is located.
+        #   - This field is returned only when VPC flow log analysis is performed for the VPC Internet scenario.
         self.client_country = client_country
+        # The network service provider.
+        #   - This field is returned only when VPC flow log analysis is performed for the VPC Internet scenario.
         self.client_isp = client_isp
+        # The province where the client is located.
+        #   - This field is returned only when VPC flow log analysis is performed for the VPC Internet scenario.
         self.client_province = client_province
+        # The destination IP address.
+        #    - This field is returned only when 2-tuple analysis is performed for TR or VPC flow log analysis.
         self.destination_ip = destination_ip
+        # The destination port.
+        #    - This field is returned only when 5-tuple analysis is performed for TR or VPC flow log analysis.
         self.destination_port = destination_port
+        # The destination region ID.
+        #    - This field is returned only when TR flow log analysis is performed.
         self.destination_region_no = destination_region_no
+        # The traffic direction based on the Alibaba Cloud network resource instance. Valid values:
+        # - **in**: inbound traffic.
+        # - **out**: outbound traffic.
         self.direction = direction
+        # The Differentiated Services Code Point (DSCP) value.
+        #    - This field is returned only when TR flow log analysis is performed.
         self.dscp = dscp
+        # The ECS instance ID of the management node.
+        #    - This field is returned only when VPC flow log analysis is performed.
         self.ecs_id = ecs_id
+        # The EIP ID associated with the Internet Shared Bandwidth instance.
+        #    - This field is returned only when Internet Shared Bandwidth metric analysis is queried.
         self.instance_id = instance_id
+        # The elastic network interface (ENI) ID.
+        #    - This field is returned only when VPC flow log analysis is performed.
         self.network_interface_id = network_interface_id
+        # The number of packets.
+        #    - This field is returned for VPC, TR, or CBWP flow log analysis.
         self.packets = packets
+        self.packets_increase = packets_increase
+        self.packets_increase_ratio = packets_increase_ratio
+        # The number of packets dropped due to blackhole routing.
+        #    - This field is returned only when TR flow log analysis is performed.
         self.packets_lost_blackhole = packets_lost_blackhole
+        # The number of packets dropped due to no route.
+        #    - This field is returned only when TR flow log analysis is performed.
         self.packets_lost_no_route = packets_lost_no_route
+        # The number of packets dropped due to TTL expiration.
+        #    - This field is returned only when TR flow log analysis is performed.
         self.packets_lost_ttlexpired = packets_lost_ttlexpired
+        # The network protocol.
+        #    - This field is returned only when 5-tuple analysis is performed for TR or VPC flow log analysis.
         self.protocol = protocol
+        # The public IP address of the associated EIP.
+        #    - This field is returned only when Internet Shared Bandwidth metric analysis is queried.
         self.public_ip_address = public_ip_address
+        # The region where the flow log resides.
+        #   - This field is returned only when VPC flow log analysis is performed.
         self.region_id = region_id
+        # The TCP RTT.
+        #    - This field is returned only when VPC flow log analysis is performed.
         self.round_trip_time = round_trip_time
+        self.round_trip_time_increase = round_trip_time_increase
+        # The source IP address.
+        #    - This field is returned only when 2-tuple analysis is performed for TR or VPC flow log analysis.
         self.source_ip = source_ip
+        # The source port.
+        #    - This field is returned only when 5-tuple analysis is performed for TR or VPC flow log analysis.
         self.source_port = source_port
+        # The source region ID.
+        #    - This field is returned only when TR flow log analysis is performed.
         self.source_region_no = source_region_no
+        # The traffic path.
+        #    - This field is returned only when 2-tuple or 5-tuple analysis is performed for VPC flow log analysis.
         self.traffic_path = traffic_path
+        # The network instance connection ID.
+        #    - This field is returned only when TR flow log analysis is performed.
         self.transit_router_attachment_id = transit_router_attachment_id
+        # The account ID of the destination cloud resource instance connected to the transit router.
+        #    - This field is returned only when TR flow log analysis is performed.
         self.transit_router_destination_account_id = transit_router_destination_account_id
+        # The zone of the destination resource connected to the transit router.
+        #    - This field is returned only for the VPC connection traffic scenario under TR flow log analysis.
         self.transit_router_destination_available_zone = transit_router_destination_available_zone
+        # The ENI ID of the destination resource connected to the transit router.
+        #    - This field is returned only for the VPC connection traffic scenario under TR flow log analysis.
         self.transit_router_destination_network_interface = transit_router_destination_network_interface
+        # The ID of the destination cloud resource instance connected to the transit router.
+        #    - This field is returned only when TR flow log analysis is performed.
         self.transit_router_destination_resource_id = transit_router_destination_resource_id
+        # The vSwitch ID of the destination resource connected to the transit router.
+        #    - This field is returned only for the VPC connection traffic scenario under TR flow log analysis.
         self.transit_router_destination_vswitch_id = transit_router_destination_vswitch_id
+        # The transit router instance ID.
+        #    - This field is returned only when TR flow log analysis is performed.
         self.transit_router_id = transit_router_id
+        # The transit router peering connection instance ID.
+        #    - This field is returned only when TR flow log analysis is performed.
         self.transit_router_pair_attachment_id = transit_router_pair_attachment_id
+        # The account ID of the source cloud resource instance connected to the transit router.
+        #    - This field is returned only when TR flow log analysis is performed.
         self.transit_router_source_account_id = transit_router_source_account_id
+        # The zone of the source resource connected to the transit router.
+        #    - This field is returned only for the VPC connection traffic scenario under TR flow log analysis.
         self.transit_router_source_available_zone = transit_router_source_available_zone
+        # The ENI ID of the source resource connected to the transit router.
+        #    - This field is returned only for the VPC connection traffic scenario under TR flow log analysis.
         self.transit_router_source_network_interface = transit_router_source_network_interface
+        # The ID of the source cloud resource instance connected to the transit router.
+        #    - This field is returned only when TR flow log analysis is performed.
         self.transit_router_source_resource_id = transit_router_source_resource_id
+        # The vSwitch ID of the source resource connected to the transit router.
+        #    - This field is returned only for the VPC connection traffic scenario under TR flow log analysis.
         self.transit_router_source_vswitch_id = transit_router_source_vswitch_id
+        # The vSwitch ID.
+        #    - This field is returned only when VPC flow log analysis is performed.
         self.v_switch_id = v_switch_id
+        # The virtual private cloud (VPC) ID.
+        #    - This field is returned only when VPC flow log analysis is performed.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -260,6 +374,12 @@ class DescribeNisTrafficRankingResponseBodyFlowRankingList(DaraModel):
         if self.packets is not None:
             result['Packets'] = self.packets
 
+        if self.packets_increase is not None:
+            result['PacketsIncrease'] = self.packets_increase
+
+        if self.packets_increase_ratio is not None:
+            result['PacketsIncreaseRatio'] = self.packets_increase_ratio
+
         if self.packets_lost_blackhole is not None:
             result['PacketsLostBlackhole'] = self.packets_lost_blackhole
 
@@ -280,6 +400,9 @@ class DescribeNisTrafficRankingResponseBodyFlowRankingList(DaraModel):
 
         if self.round_trip_time is not None:
             result['RoundTripTime'] = self.round_trip_time
+
+        if self.round_trip_time_increase is not None:
+            result['RoundTripTimeIncrease'] = self.round_trip_time_increase
 
         if self.source_ip is not None:
             result['SourceIp'] = self.source_ip
@@ -405,6 +528,12 @@ class DescribeNisTrafficRankingResponseBodyFlowRankingList(DaraModel):
         if m.get('Packets') is not None:
             self.packets = m.get('Packets')
 
+        if m.get('PacketsIncrease') is not None:
+            self.packets_increase = m.get('PacketsIncrease')
+
+        if m.get('PacketsIncreaseRatio') is not None:
+            self.packets_increase_ratio = m.get('PacketsIncreaseRatio')
+
         if m.get('PacketsLostBlackhole') is not None:
             self.packets_lost_blackhole = m.get('PacketsLostBlackhole')
 
@@ -425,6 +554,9 @@ class DescribeNisTrafficRankingResponseBodyFlowRankingList(DaraModel):
 
         if m.get('RoundTripTime') is not None:
             self.round_trip_time = m.get('RoundTripTime')
+
+        if m.get('RoundTripTimeIncrease') is not None:
+            self.round_trip_time_increase = m.get('RoundTripTimeIncrease')
 
         if m.get('SourceIp') is not None:
             self.source_ip = m.get('SourceIp')

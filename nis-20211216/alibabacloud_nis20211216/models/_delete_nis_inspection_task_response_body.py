@@ -10,7 +10,9 @@ class DeleteNisInspectionTaskResponseBody(DaraModel):
         data: bool = None,
         request_id: str = None,
     ):
+        # The result of the deletion.
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

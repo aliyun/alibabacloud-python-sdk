@@ -22,16 +22,35 @@ class DescribeNisInspectionTaskResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
+        # The configuration of the inspected resources.
         self.check_resource_list = check_resource_list
+        # The time when the task was created.
         self.create_time = create_time
+        # The inspection interval. The unit is **day**.
         self.inspection_interval = inspection_interval
+        # The name of the inspection task.
         self.inspection_name = inspection_name
+        # The type of inspection plan for the task. Valid values: basic and customized.
         self.inspection_project = inspection_project
+        # The ID of the inspection task.
         self.inspection_task_id = inspection_task_id
+        # The time when the inspection task was triggered.
         self.inspection_trigger_time = inspection_trigger_time
+        # The ID of the latest report.
         self.last_update_report_id = last_update_report_id
+        # The time when the task was last updated.
         self.last_update_time = last_update_time
+        # The request ID.
         self.request_id = request_id
+        # The running status of the task.
+        # 
+        # Creating
+        # 
+        # Active
+        # 
+        # Running
+        # 
+        # Inactive
         self.status = status
 
     def validate(self):
@@ -128,7 +147,9 @@ class DescribeNisInspectionTaskResponseBodyCheckResourceList(DaraModel):
         check_scope: str = None,
         resource_type: str = None,
     ):
+        # The inspection rule.
         self.check_scope = check_scope
+        # The resource type.
         self.resource_type = resource_type
 
     def validate(self):

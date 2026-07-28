@@ -33,9 +33,11 @@ class CreateNetworkPathRequest(DaraModel):
         self.network_path_name = network_path_name
         # The protocol type. Valid values:
         # 
-        # *   **tcp**: Transmission Control Protocol (TCP)
-        # *   **udp**: User Datagram Protocol (UDP)
-        # *   **icmp**: Internet Control Message Protocol (ICMP)
+        # - **tcp**: Transmission Control Protocol (TCP)
+        # 
+        # - **udp**: User Datagram Protocol (UDP)
+        # 
+        # - **icmp**: Internet Control Message Protocol (ICMP)
         self.protocol = protocol
         # The region ID of the network path that you want to create.
         self.region_id = region_id
@@ -51,11 +53,15 @@ class CreateNetworkPathRequest(DaraModel):
         self.source_port = source_port
         # The type of the source resource. Valid values:
         # 
-        # *   **ecs**: the Elastic Compute Service (ECS) instance
-        # *   **internetIp**: the public IP address
-        # *   **vsw**: the vSwitch
-        # *   **vpn**: the VPN gateway
-        # *   **vbr**: the virtual border router (VBR)
+        # - **ecs**: the Elastic Compute Service (ECS) instance
+        # 
+        # - **internetIp**: the public IP address
+        # 
+        # - **vsw**: the vSwitch
+        # 
+        # - **vpn**: the VPN gateway
+        # 
+        # - **vbr**: the virtual border router (VBR)
         # 
         # This parameter is required.
         self.source_type = source_type
@@ -69,12 +75,17 @@ class CreateNetworkPathRequest(DaraModel):
         self.target_port = target_port
         # The type of the destination resource. Valid values:
         # 
-        # *   **ecs**: the ECS instance
-        # *   **internetIp**: the public IP address
-        # *   **vsw**: the vSwitch
-        # *   **vpn**: the VPN gateway
-        # *   **vbr**: the VBR
-        # *   **clb**: the Classic Load Balancer (CLB) instance
+        # - **ecs**: the ECS instance
+        # 
+        # - **internetIp**: the public IP address
+        # 
+        # - **vsw**: the vSwitch
+        # 
+        # - **vpn**: the VPN gateway
+        # 
+        # - **vbr**: the VBR
+        # 
+        # - **clb**: the Classic Load Balancer (CLB) instance
         self.target_type = target_type
 
     def validate(self):

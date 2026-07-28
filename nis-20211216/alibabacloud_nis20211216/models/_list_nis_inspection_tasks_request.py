@@ -14,11 +14,25 @@ class ListNisInspectionTasksRequest(DaraModel):
         next_token: str = None,
         status: str = None,
     ):
+        # The name of the network inspection task.
         self.inspection_name = inspection_name
+        # The type of inspection solution that the network inspection task uses. Valid values: basic and customized.
         self.inspection_project = inspection_project
+        # The ID of the network inspection task.
         self.inspection_task_id = inspection_task_id
+        # The number of entries per page. Valid values: 1 to 100. Default value: 20.
         self.max_results = max_results
+        # The token that is used to retrieve the next page of results. Set this parameter to the NextToken value returned from a previous call.
         self.next_token = next_token
+        # The running status of the task. Valid values:
+        # 
+        # - Creating
+        # 
+        # - Active
+        # 
+        # - Running
+        # 
+        # - Inactive
         self.status = status
 
     def validate(self):

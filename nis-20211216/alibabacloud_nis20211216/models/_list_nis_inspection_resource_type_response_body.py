@@ -13,7 +13,9 @@ class ListNisInspectionResourceTypeResponseBody(DaraModel):
         request_id: str = None,
         resource_type_list: List[main_models.ListNisInspectionResourceTypeResponseBodyResourceTypeList] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The resource types for inspection.
         self.resource_type_list = resource_type_list
 
     def validate(self):
@@ -55,6 +57,7 @@ class ListNisInspectionResourceTypeResponseBodyResourceTypeList(DaraModel):
         self,
         resource_type: str = None,
     ):
+        # The resource type.
         self.resource_type = resource_type
 
     def validate(self):

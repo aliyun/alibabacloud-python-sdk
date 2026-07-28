@@ -31,15 +31,19 @@ class GetNetworkReachableAnalysisResponseBody(DaraModel):
         self.network_reachable_analysis_result = network_reachable_analysis_result
         # The state of the task for analyzing network reachability. Valid values:
         # 
-        # *   **init**: The task is in progress.
-        # *   **finish**: The task is complete.
-        # *   **error**: An analysis error occurred.
-        # *   **timeout**: The task timed out.
+        # - **init**: The task is in progress.
+        # 
+        # - **finish**: The task is complete.
+        # 
+        # - **error**: An analysis error occurred.
+        # 
+        # - **timeout**: The task timed out.
         self.network_reachable_analysis_status = network_reachable_analysis_status
         # Indicates whether the network path is reachable. Valid values:
         # 
-        # *   **true**: The network path is reachable.
-        # *   **false**: The network path is unreachable.
+        # - **true**: The network path is reachable.
+        # 
+        # - **false**: The network path is unreachable.
         self.reachable = reachable
         # The request ID.
         self.request_id = request_id

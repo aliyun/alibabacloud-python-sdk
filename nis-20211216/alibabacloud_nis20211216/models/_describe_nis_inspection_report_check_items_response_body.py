@@ -17,11 +17,17 @@ class DescribeNisInspectionReportCheckItemsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of check items.
         self.check_item_list = check_item_list
+        # The ID of the inspection report.
         self.inspection_report_id = inspection_report_id
+        # The number of entries per page. Valid values: 1 to 100. Default value: 20.
         self.max_results = max_results
+        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -94,13 +100,20 @@ class DescribeNisInspectionReportCheckItemsResponseBodyCheckItemList(DaraModel):
         recommendation_list: List[main_models.DescribeNisInspectionReportCheckItemsResponseBodyCheckItemListRecommendationList] = None,
         resource_type: str = None,
     ):
+        # The category of the check item.
         self.category_code = category_code
+        # The code of the check item.
         self.check_item_code = check_item_code
+        # The name of the check item.
         self.check_item_name = check_item_name
+        # The list of check results that indicates the number of risks at each risk level.
         self.check_result_list = check_result_list
+        # The description of the check item.
         self.description = description
         self.description_code = description_code
+        # The list of results for abnormal check items.
         self.recommendation_list = recommendation_list
+        # The resource type associated with the check item.
         self.resource_type = resource_type
 
     def validate(self):
@@ -194,12 +207,26 @@ class DescribeNisInspectionReportCheckItemsResponseBodyCheckItemListRecommendati
         suggestion: str = None,
         suggestion_code: str = None,
     ):
+        # The description of the abnormal item.
         self.abnormality = abnormality
+        # The metadata of the resource that corresponds to the abnormal item.
         self.metadata = metadata
+        # The cause of the abnormality.
         self.reason = reason
         self.reason_code = reason_code
+        # The inspection item is abnormal.
         self.recommendation_code = recommendation_code
+        # The risk level. Valid values:
+        # 
+        # - **HighRisk**
+        # 
+        # - **MediumRisk**
+        # 
+        # - **LowRisk**
+        # 
+        # - **NoRisk**
         self.risk_level = risk_level
+        # The optimization suggestions.
         self.suggestion = suggestion
         self.suggestion_code = suggestion_code
 
@@ -271,7 +298,17 @@ class DescribeNisInspectionReportCheckItemsResponseBodyCheckItemListCheckResultL
         count: int = None,
         risk_level: str = None,
     ):
+        # The number of risks at the specified risk level in the inspection report.
         self.count = count
+        # The risk level. Valid values:
+        # 
+        # - **HighRisk**
+        # 
+        # - **MediumRisk**
+        # 
+        # - **LowRisk**
+        # 
+        # - **NoRisk**
         self.risk_level = risk_level
 
     def validate(self):

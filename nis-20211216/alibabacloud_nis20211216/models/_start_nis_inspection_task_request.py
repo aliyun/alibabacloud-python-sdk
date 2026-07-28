@@ -9,6 +9,8 @@ class StartNisInspectionTaskRequest(DaraModel):
         self,
         inspection_task_id: str = None,
     ):
+        # The inspection task ID.
+        # 
         # This parameter is required.
         self.inspection_task_id = inspection_task_id
 

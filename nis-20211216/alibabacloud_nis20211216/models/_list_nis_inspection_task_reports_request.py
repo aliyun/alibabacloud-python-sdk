@@ -11,9 +11,13 @@ class ListNisInspectionTaskReportsRequest(DaraModel):
         max_results: int = None,
         next_token: str = None,
     ):
+        # The ID of the inspection task.
+        # 
         # This parameter is required.
         self.inspection_task_id = inspection_task_id
+        # The number of entries to return on each page. Valid values: 1 to 100. Default value: 20.
         self.max_results = max_results
+        # The token that is used to retrieve the next page of results. You do not need to specify this parameter for the first query.
         self.next_token = next_token
 
     def validate(self):

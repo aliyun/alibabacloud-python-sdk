@@ -10,8 +10,11 @@ class UpdateNisInspectionTaskRequest(DaraModel):
         inspection_task_id: str = None,
         status: str = None,
     ):
+        # The ID of the inspection task.
+        # 
         # This parameter is required.
         self.inspection_task_id = inspection_task_id
+        # The running status of the task.
         self.status = status
 
     def validate(self):

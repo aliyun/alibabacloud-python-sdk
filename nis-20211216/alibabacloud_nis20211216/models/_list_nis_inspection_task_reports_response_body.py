@@ -16,10 +16,15 @@ class ListNisInspectionTaskReportsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of inspection reports.
         self.inspection_report_list = inspection_report_list
+        # The number of entries returned per page. Valid values: 1 to 100. Default value: 20.
         self.max_results = max_results
+        # A pagination token. It can be used in the next request to retrieve a new page of results. If this parameter is not returned, it indicates that no more results are available.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -79,6 +84,7 @@ class ListNisInspectionTaskReportsResponseBodyInspectionReportList(DaraModel):
         self,
         inspection_report_id: str = None,
     ):
+        # The ID of the inspection report.
         self.inspection_report_id = inspection_report_id
 
     def validate(self):
