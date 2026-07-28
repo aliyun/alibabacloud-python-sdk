@@ -2631,6 +2631,10 @@ class Client(OpenApiClient):
             body['ExtendInfo'] = request.extend_info
         if not DaraCore.is_null(request.file_url):
             body['FileUrl'] = request.file_url
+        if not DaraCore.is_null(request.harmony_max_version):
+            body['HarmonyMaxVersion'] = request.harmony_max_version
+        if not DaraCore.is_null(request.harmony_min_version):
+            body['HarmonyMinVersion'] = request.harmony_min_version
         if not DaraCore.is_null(request.ios_max_version):
             body['IosMaxVersion'] = request.ios_max_version
         if not DaraCore.is_null(request.ios_min_version):
@@ -2689,6 +2693,10 @@ class Client(OpenApiClient):
             body['ExtendInfo'] = request.extend_info
         if not DaraCore.is_null(request.file_url):
             body['FileUrl'] = request.file_url
+        if not DaraCore.is_null(request.harmony_max_version):
+            body['HarmonyMaxVersion'] = request.harmony_max_version
+        if not DaraCore.is_null(request.harmony_min_version):
+            body['HarmonyMinVersion'] = request.harmony_min_version
         if not DaraCore.is_null(request.ios_max_version):
             body['IosMaxVersion'] = request.ios_max_version
         if not DaraCore.is_null(request.ios_min_version):

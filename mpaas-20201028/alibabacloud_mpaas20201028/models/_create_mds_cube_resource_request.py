@@ -12,6 +12,8 @@ class CreateMdsCubeResourceRequest(DaraModel):
         app_id: str = None,
         extend_info: str = None,
         file_url: str = None,
+        harmony_max_version: str = None,
+        harmony_min_version: str = None,
         ios_max_version: str = None,
         ios_min_version: str = None,
         mock_data_url: str = None,
@@ -29,6 +31,8 @@ class CreateMdsCubeResourceRequest(DaraModel):
         self.app_id = app_id
         self.extend_info = extend_info
         self.file_url = file_url
+        self.harmony_max_version = harmony_max_version
+        self.harmony_min_version = harmony_min_version
         self.ios_max_version = ios_max_version
         self.ios_min_version = ios_min_version
         self.mock_data_url = mock_data_url
@@ -63,6 +67,12 @@ class CreateMdsCubeResourceRequest(DaraModel):
 
         if self.file_url is not None:
             result['FileUrl'] = self.file_url
+
+        if self.harmony_max_version is not None:
+            result['HarmonyMaxVersion'] = self.harmony_max_version
+
+        if self.harmony_min_version is not None:
+            result['HarmonyMinVersion'] = self.harmony_min_version
 
         if self.ios_max_version is not None:
             result['IosMaxVersion'] = self.ios_max_version
@@ -115,6 +125,12 @@ class CreateMdsCubeResourceRequest(DaraModel):
 
         if m.get('FileUrl') is not None:
             self.file_url = m.get('FileUrl')
+
+        if m.get('HarmonyMaxVersion') is not None:
+            self.harmony_max_version = m.get('HarmonyMaxVersion')
+
+        if m.get('HarmonyMinVersion') is not None:
+            self.harmony_min_version = m.get('HarmonyMinVersion')
 
         if m.get('IosMaxVersion') is not None:
             self.ios_max_version = m.get('IosMaxVersion')

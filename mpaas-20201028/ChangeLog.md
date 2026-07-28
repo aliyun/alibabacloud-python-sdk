@@ -1,3 +1,12 @@
+2026-07-28 Version: 3.4.1
+- Update API CreateMdsCubeResource: add request parameters HarmonyMaxVersion.
+- Update API CreateMdsCubeResource: add request parameters HarmonyMinVersion.
+- Update API CreateOpenGlobalData: add response parameters Body.AccessDeniedDetail.
+- Update API CreateOpenGlobalData: add response parameters Body.HttpStatusCode.
+- Update API CreateOpenSingleData: add response parameters Body.AccessDeniedDetail.
+- Update API CreateOpenSingleData: add response parameters Body.HttpStatusCode.
+
+
 2026-07-23 Version: 3.4.0
 - Support API QueryMiniGameInfoByApp.
 
