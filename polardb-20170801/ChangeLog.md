@@ -1,3 +1,14 @@
+2026-07-28 Version: 7.10.0
+- Support API BindResourceControl.
+- Support API CreateResourceControl.
+- Support API DeleteResourceControl.
+- Support API DescribeApplicationUsage.
+- Support API ModifyApplicationEndpointAddress.
+- Support API ModifyResourceControl.
+- Support API UnbindResourceControl.
+- Support API UpgradeApplicationVersion.
+
+
 2026-07-27 Version: 7.9.0
 - Support API CreateApplicationAgentRelation.
 - Support API GetLakebaseTenantToken.

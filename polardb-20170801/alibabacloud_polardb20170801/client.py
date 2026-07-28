@@ -1054,6 +1054,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.bind_polar_claw_agent_with_options_async(request, runtime)
 
+    def bind_resource_control_with_options(
+        self,
+        request: main_models.BindResourceControlRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BindResourceControlResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_control_name):
+            query['ResourceControlName'] = request.resource_control_name
+        if not DaraCore.is_null(request.target_type):
+            query['TargetType'] = request.target_type
+        if not DaraCore.is_null(request.target_value):
+            query['TargetValue'] = request.target_value
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'BindResourceControl',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BindResourceControlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def bind_resource_control_with_options_async(
+        self,
+        request: main_models.BindResourceControlRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BindResourceControlResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_control_name):
+            query['ResourceControlName'] = request.resource_control_name
+        if not DaraCore.is_null(request.target_type):
+            query['TargetType'] = request.target_type
+        if not DaraCore.is_null(request.target_value):
+            query['TargetValue'] = request.target_value
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'BindResourceControl',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BindResourceControlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def bind_resource_control(
+        self,
+        request: main_models.BindResourceControlRequest,
+    ) -> main_models.BindResourceControlResponse:
+        runtime = RuntimeOptions()
+        return self.bind_resource_control_with_options(request, runtime)
+
+    async def bind_resource_control_async(
+        self,
+        request: main_models.BindResourceControlRequest,
+    ) -> main_models.BindResourceControlResponse:
+        runtime = RuntimeOptions()
+        return await self.bind_resource_control_with_options_async(request, runtime)
+
     def cancel_active_operation_tasks_with_options(
         self,
         request: main_models.CancelActiveOperationTasksRequest,
@@ -7872,6 +7958,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_rate_limit_policy_with_options_async(request, runtime)
 
+    def create_resource_control_with_options(
+        self,
+        request: main_models.CreateResourceControlRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateResourceControlResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cpu_count):
+            query['CpuCount'] = request.cpu_count
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.max_cpu):
+            query['MaxCpu'] = request.max_cpu
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_control_name):
+            query['ResourceControlName'] = request.resource_control_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateResourceControl',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateResourceControlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_resource_control_with_options_async(
+        self,
+        request: main_models.CreateResourceControlRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateResourceControlResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cpu_count):
+            query['CpuCount'] = request.cpu_count
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.max_cpu):
+            query['MaxCpu'] = request.max_cpu
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_control_name):
+            query['ResourceControlName'] = request.resource_control_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateResourceControl',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateResourceControlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_resource_control(
+        self,
+        request: main_models.CreateResourceControlRequest,
+    ) -> main_models.CreateResourceControlResponse:
+        runtime = RuntimeOptions()
+        return self.create_resource_control_with_options(request, runtime)
+
+    async def create_resource_control_async(
+        self,
+        request: main_models.CreateResourceControlRequest,
+    ) -> main_models.CreateResourceControlResponse:
+        runtime = RuntimeOptions()
+        return await self.create_resource_control_with_options_async(request, runtime)
+
     def create_service_linked_role_with_options(
         self,
         request: main_models.CreateServiceLinkedRoleRequest,
@@ -11898,6 +12070,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_rate_limit_policy_with_options_async(request, runtime)
 
+    def delete_resource_control_with_options(
+        self,
+        request: main_models.DeleteResourceControlRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteResourceControlResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_control_name):
+            query['ResourceControlName'] = request.resource_control_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteResourceControl',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteResourceControlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_resource_control_with_options_async(
+        self,
+        request: main_models.DeleteResourceControlRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteResourceControlResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_control_name):
+            query['ResourceControlName'] = request.resource_control_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteResourceControl',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteResourceControlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_resource_control(
+        self,
+        request: main_models.DeleteResourceControlRequest,
+    ) -> main_models.DeleteResourceControlResponse:
+        runtime = RuntimeOptions()
+        return self.delete_resource_control_with_options(request, runtime)
+
+    async def delete_resource_control_async(
+        self,
+        request: main_models.DeleteResourceControlRequest,
+    ) -> main_models.DeleteResourceControlResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_resource_control_with_options_async(request, runtime)
+
     def delete_sqlrate_limiting_rules_with_options(
         self,
         request: main_models.DeleteSQLRateLimitingRulesRequest,
@@ -15011,6 +15261,80 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeApplicationSessionIdsResponse:
         runtime = RuntimeOptions()
         return await self.describe_application_session_ids_with_options_async(request, runtime)
+
+    def describe_application_usage_with_options(
+        self,
+        request: main_models.DescribeApplicationUsageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeApplicationUsageResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.days):
+            query['Days'] = request.days
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeApplicationUsage',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeApplicationUsageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_application_usage_with_options_async(
+        self,
+        request: main_models.DescribeApplicationUsageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeApplicationUsageResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.days):
+            query['Days'] = request.days
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeApplicationUsage',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeApplicationUsageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_application_usage(
+        self,
+        request: main_models.DescribeApplicationUsageRequest,
+    ) -> main_models.DescribeApplicationUsageResponse:
+        runtime = RuntimeOptions()
+        return self.describe_application_usage_with_options(request, runtime)
+
+    async def describe_application_usage_async(
+        self,
+        request: main_models.DescribeApplicationUsageRequest,
+    ) -> main_models.DescribeApplicationUsageResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_application_usage_with_options_async(request, runtime)
 
     def describe_applications_with_options(
         self,
@@ -30702,6 +31026,100 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.modify_application_description_with_options_async(request, runtime)
 
+    def modify_application_endpoint_address_with_options(
+        self,
+        tmp_req: main_models.ModifyApplicationEndpointAddressRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyApplicationEndpointAddressResponse:
+        tmp_req.validate()
+        request = main_models.ModifyApplicationEndpointAddressShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.new_ports):
+            request.new_ports_shrink = Utils.array_to_string_with_specified_style(tmp_req.new_ports, 'NewPorts', 'json')
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.endpoint_id):
+            query['EndpointId'] = request.endpoint_id
+        if not DaraCore.is_null(request.net_type):
+            query['NetType'] = request.net_type
+        if not DaraCore.is_null(request.new_connection_string_prefix):
+            query['NewConnectionStringPrefix'] = request.new_connection_string_prefix
+        if not DaraCore.is_null(request.new_ports_shrink):
+            query['NewPorts'] = request.new_ports_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyApplicationEndpointAddress',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyApplicationEndpointAddressResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_application_endpoint_address_with_options_async(
+        self,
+        tmp_req: main_models.ModifyApplicationEndpointAddressRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyApplicationEndpointAddressResponse:
+        tmp_req.validate()
+        request = main_models.ModifyApplicationEndpointAddressShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.new_ports):
+            request.new_ports_shrink = Utils.array_to_string_with_specified_style(tmp_req.new_ports, 'NewPorts', 'json')
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.endpoint_id):
+            query['EndpointId'] = request.endpoint_id
+        if not DaraCore.is_null(request.net_type):
+            query['NetType'] = request.net_type
+        if not DaraCore.is_null(request.new_connection_string_prefix):
+            query['NewConnectionStringPrefix'] = request.new_connection_string_prefix
+        if not DaraCore.is_null(request.new_ports_shrink):
+            query['NewPorts'] = request.new_ports_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyApplicationEndpointAddress',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyApplicationEndpointAddressResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_application_endpoint_address(
+        self,
+        request: main_models.ModifyApplicationEndpointAddressRequest,
+    ) -> main_models.ModifyApplicationEndpointAddressResponse:
+        runtime = RuntimeOptions()
+        return self.modify_application_endpoint_address_with_options(request, runtime)
+
+    async def modify_application_endpoint_address_async(
+        self,
+        request: main_models.ModifyApplicationEndpointAddressRequest,
+    ) -> main_models.ModifyApplicationEndpointAddressResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_application_endpoint_address_with_options_async(request, runtime)
+
     def modify_application_parameter_with_options(
         self,
         tmp_req: main_models.ModifyApplicationParameterRequest,
@@ -36628,6 +37046,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.modify_rate_limit_policy_with_options_async(request, runtime)
 
+    def modify_resource_control_with_options(
+        self,
+        request: main_models.ModifyResourceControlRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyResourceControlResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cpu_count):
+            query['CpuCount'] = request.cpu_count
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.max_cpu):
+            query['MaxCpu'] = request.max_cpu
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_control_name):
+            query['ResourceControlName'] = request.resource_control_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyResourceControl',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyResourceControlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_resource_control_with_options_async(
+        self,
+        request: main_models.ModifyResourceControlRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyResourceControlResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cpu_count):
+            query['CpuCount'] = request.cpu_count
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.max_cpu):
+            query['MaxCpu'] = request.max_cpu
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_control_name):
+            query['ResourceControlName'] = request.resource_control_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyResourceControl',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyResourceControlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_resource_control(
+        self,
+        request: main_models.ModifyResourceControlRequest,
+    ) -> main_models.ModifyResourceControlResponse:
+        runtime = RuntimeOptions()
+        return self.modify_resource_control_with_options(request, runtime)
+
+    async def modify_resource_control_async(
+        self,
+        request: main_models.ModifyResourceControlRequest,
+    ) -> main_models.ModifyResourceControlResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_resource_control_with_options_async(request, runtime)
+
     def modify_resource_package_with_options(
         self,
         request: main_models.ModifyResourcePackageRequest,
@@ -39922,6 +40426,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.unbind_polar_claw_agent_with_options_async(request, runtime)
 
+    def unbind_resource_control_with_options(
+        self,
+        request: main_models.UnbindResourceControlRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UnbindResourceControlResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_control_name):
+            query['ResourceControlName'] = request.resource_control_name
+        if not DaraCore.is_null(request.target_type):
+            query['TargetType'] = request.target_type
+        if not DaraCore.is_null(request.target_value):
+            query['TargetValue'] = request.target_value
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UnbindResourceControl',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UnbindResourceControlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def unbind_resource_control_with_options_async(
+        self,
+        request: main_models.UnbindResourceControlRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UnbindResourceControlResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_control_name):
+            query['ResourceControlName'] = request.resource_control_name
+        if not DaraCore.is_null(request.target_type):
+            query['TargetType'] = request.target_type
+        if not DaraCore.is_null(request.target_value):
+            query['TargetValue'] = request.target_value
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UnbindResourceControl',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UnbindResourceControlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def unbind_resource_control(
+        self,
+        request: main_models.UnbindResourceControlRequest,
+    ) -> main_models.UnbindResourceControlResponse:
+        runtime = RuntimeOptions()
+        return self.unbind_resource_control_with_options(request, runtime)
+
+    async def unbind_resource_control_async(
+        self,
+        request: main_models.UnbindResourceControlRequest,
+    ) -> main_models.UnbindResourceControlResponse:
+        runtime = RuntimeOptions()
+        return await self.unbind_resource_control_with_options_async(request, runtime)
+
     def uninstall_polar_claw_plugin_with_options(
         self,
         request: main_models.UninstallPolarClawPluginRequest,
@@ -40847,6 +41437,80 @@ class Client(OpenApiClient):
     ) -> main_models.UpdatePolarClawSkillResponse:
         runtime = RuntimeOptions()
         return await self.update_polar_claw_skill_with_options_async(request, runtime)
+
+    def upgrade_application_version_with_options(
+        self,
+        request: main_models.UpgradeApplicationVersionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpgradeApplicationVersionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.upgrade_policy):
+            query['UpgradePolicy'] = request.upgrade_policy
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpgradeApplicationVersion',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpgradeApplicationVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def upgrade_application_version_with_options_async(
+        self,
+        request: main_models.UpgradeApplicationVersionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpgradeApplicationVersionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.upgrade_policy):
+            query['UpgradePolicy'] = request.upgrade_policy
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpgradeApplicationVersion',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpgradeApplicationVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def upgrade_application_version(
+        self,
+        request: main_models.UpgradeApplicationVersionRequest,
+    ) -> main_models.UpgradeApplicationVersionResponse:
+        runtime = RuntimeOptions()
+        return self.upgrade_application_version_with_options(request, runtime)
+
+    async def upgrade_application_version_async(
+        self,
+        request: main_models.UpgradeApplicationVersionRequest,
+    ) -> main_models.UpgradeApplicationVersionResponse:
+        runtime = RuntimeOptions()
+        return await self.upgrade_application_version_with_options_async(request, runtime)
 
     def upgrade_dbcluster_version_with_options(
         self,

@@ -37,6 +37,9 @@ from ._attach_application_polar_fsresponse import AttachApplicationPolarFSRespon
 from ._bind_polar_claw_agent_request import BindPolarClawAgentRequest
 from ._bind_polar_claw_agent_response_body import BindPolarClawAgentResponseBody
 from ._bind_polar_claw_agent_response import BindPolarClawAgentResponse
+from ._bind_resource_control_request import BindResourceControlRequest
+from ._bind_resource_control_response_body import BindResourceControlResponseBody
+from ._bind_resource_control_response import BindResourceControlResponse
 from ._cancel_active_operation_tasks_request import CancelActiveOperationTasksRequest
 from ._cancel_active_operation_tasks_response_body import CancelActiveOperationTasksResponseBody
 from ._cancel_active_operation_tasks_response import CancelActiveOperationTasksResponse
@@ -230,6 +233,9 @@ from ._create_polar_fs_object_response import CreatePolarFsObjectResponse
 from ._create_rate_limit_policy_request import CreateRateLimitPolicyRequest
 from ._create_rate_limit_policy_response_body import CreateRateLimitPolicyResponseBody
 from ._create_rate_limit_policy_response import CreateRateLimitPolicyResponse
+from ._create_resource_control_request import CreateResourceControlRequest
+from ._create_resource_control_response_body import CreateResourceControlResponseBody
+from ._create_resource_control_response import CreateResourceControlResponse
 from ._create_service_linked_role_request import CreateServiceLinkedRoleRequest
 from ._create_service_linked_role_response_body import CreateServiceLinkedRoleResponseBody
 from ._create_service_linked_role_response import CreateServiceLinkedRoleResponse
@@ -372,6 +378,9 @@ from ._delete_polar_fs_quota_response import DeletePolarFsQuotaResponse
 from ._delete_rate_limit_policy_request import DeleteRateLimitPolicyRequest
 from ._delete_rate_limit_policy_response_body import DeleteRateLimitPolicyResponseBody
 from ._delete_rate_limit_policy_response import DeleteRateLimitPolicyResponse
+from ._delete_resource_control_request import DeleteResourceControlRequest
+from ._delete_resource_control_response_body import DeleteResourceControlResponseBody
+from ._delete_resource_control_response import DeleteResourceControlResponse
 from ._delete_sqlrate_limiting_rules_request import DeleteSQLRateLimitingRulesRequest
 from ._delete_sqlrate_limiting_rules_response_body import DeleteSQLRateLimitingRulesResponseBody
 from ._delete_sqlrate_limiting_rules_response import DeleteSQLRateLimitingRulesResponse
@@ -472,6 +481,9 @@ from ._describe_application_serverless_conf_response import DescribeApplicationS
 from ._describe_application_session_ids_request import DescribeApplicationSessionIdsRequest
 from ._describe_application_session_ids_response_body import DescribeApplicationSessionIdsResponseBody
 from ._describe_application_session_ids_response import DescribeApplicationSessionIdsResponse
+from ._describe_application_usage_request import DescribeApplicationUsageRequest
+from ._describe_application_usage_response_body import DescribeApplicationUsageResponseBody
+from ._describe_application_usage_response import DescribeApplicationUsageResponse
 from ._describe_applications_request import DescribeApplicationsRequest
 from ._describe_applications_response_body import DescribeApplicationsResponseBody
 from ._describe_applications_response import DescribeApplicationsResponse
@@ -975,6 +987,10 @@ from ._modify_active_operation_tasks_response import ModifyActiveOperationTasksR
 from ._modify_application_description_request import ModifyApplicationDescriptionRequest
 from ._modify_application_description_response_body import ModifyApplicationDescriptionResponseBody
 from ._modify_application_description_response import ModifyApplicationDescriptionResponse
+from ._modify_application_endpoint_address_request import ModifyApplicationEndpointAddressRequest
+from ._modify_application_endpoint_address_shrink_request import ModifyApplicationEndpointAddressShrinkRequest
+from ._modify_application_endpoint_address_response_body import ModifyApplicationEndpointAddressResponseBody
+from ._modify_application_endpoint_address_response import ModifyApplicationEndpointAddressResponse
 from ._modify_application_parameter_request import ModifyApplicationParameterRequest
 from ._modify_application_parameter_shrink_request import ModifyApplicationParameterShrinkRequest
 from ._modify_application_parameter_response_body import ModifyApplicationParameterResponseBody
@@ -1149,6 +1165,9 @@ from ._modify_pending_maintenance_action_response import ModifyPendingMaintenanc
 from ._modify_rate_limit_policy_request import ModifyRateLimitPolicyRequest
 from ._modify_rate_limit_policy_response_body import ModifyRateLimitPolicyResponseBody
 from ._modify_rate_limit_policy_response import ModifyRateLimitPolicyResponse
+from ._modify_resource_control_request import ModifyResourceControlRequest
+from ._modify_resource_control_response_body import ModifyResourceControlResponseBody
+from ._modify_resource_control_response import ModifyResourceControlResponse
 from ._modify_resource_package_request import ModifyResourcePackageRequest
 from ._modify_resource_package_response_body import ModifyResourcePackageResponseBody
 from ._modify_resource_package_response import ModifyResourcePackageResponse
@@ -1262,6 +1281,9 @@ from ._transform_dbcluster_pay_type_response import TransformDBClusterPayTypeRes
 from ._unbind_polar_claw_agent_request import UnbindPolarClawAgentRequest
 from ._unbind_polar_claw_agent_response_body import UnbindPolarClawAgentResponseBody
 from ._unbind_polar_claw_agent_response import UnbindPolarClawAgentResponse
+from ._unbind_resource_control_request import UnbindResourceControlRequest
+from ._unbind_resource_control_response_body import UnbindResourceControlResponseBody
+from ._unbind_resource_control_response import UnbindResourceControlResponse
 from ._uninstall_polar_claw_plugin_request import UninstallPolarClawPluginRequest
 from ._uninstall_polar_claw_plugin_response_body import UninstallPolarClawPluginResponseBody
 from ._uninstall_polar_claw_plugin_response import UninstallPolarClawPluginResponse
@@ -1295,6 +1317,9 @@ from ._update_polar_claw_skill_request import UpdatePolarClawSkillRequest
 from ._update_polar_claw_skill_shrink_request import UpdatePolarClawSkillShrinkRequest
 from ._update_polar_claw_skill_response_body import UpdatePolarClawSkillResponseBody
 from ._update_polar_claw_skill_response import UpdatePolarClawSkillResponse
+from ._upgrade_application_version_request import UpgradeApplicationVersionRequest
+from ._upgrade_application_version_response_body import UpgradeApplicationVersionResponseBody
+from ._upgrade_application_version_response import UpgradeApplicationVersionResponse
 from ._upgrade_dbcluster_version_request import UpgradeDBClusterVersionRequest
 from ._upgrade_dbcluster_version_response_body import UpgradeDBClusterVersionResponseBody
 from ._upgrade_dbcluster_version_response import UpgradeDBClusterVersionResponse
@@ -1421,6 +1446,11 @@ from ._describe_application_prompts_response_body import DescribeApplicationProm
 from ._describe_application_serverless_conf_response_body import DescribeApplicationServerlessConfResponseBodyServerlessConfItems
 from ._describe_application_session_ids_response_body import DescribeApplicationSessionIdsResponseBodyItemsItems
 from ._describe_application_session_ids_response_body import DescribeApplicationSessionIdsResponseBodyItems
+from ._describe_application_usage_response_body import DescribeApplicationUsageResponseBodyDailyUsage
+from ._describe_application_usage_response_body import DescribeApplicationUsageResponseBodyModelUsage
+from ._describe_application_usage_response_body import DescribeApplicationUsageResponseBodySessionSummary
+from ._describe_application_usage_response_body import DescribeApplicationUsageResponseBodySkillUsage
+from ._describe_application_usage_response_body import DescribeApplicationUsageResponseBodySummary
 from ._describe_applications_request import DescribeApplicationsRequestTag
 from ._describe_applications_response_body import DescribeApplicationsResponseBodyItemsApplicationsEndpointsEndpoint
 from ._describe_applications_response_body import DescribeApplicationsResponseBodyItemsApplicationsEndpoints
@@ -1680,6 +1710,7 @@ from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagRe
 from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResources
 from ._list_tag_resources_for_region_response_body import ListTagResourcesForRegionResponseBodyTagResourcesTagResource
 from ._list_tag_resources_for_region_response_body import ListTagResourcesForRegionResponseBodyTagResources
+from ._modify_application_endpoint_address_request import ModifyApplicationEndpointAddressRequestNewPorts
 from ._modify_application_parameter_request import ModifyApplicationParameterRequestParameters
 from ._modify_application_serverless_conf_request import ModifyApplicationServerlessConfRequestServerlessConfList
 from ._modify_backup_policy_request import ModifyBackupPolicyRequestAdvancedDataPolicies
@@ -1747,6 +1778,9 @@ __all__ = [
     BindPolarClawAgentRequest,
     BindPolarClawAgentResponseBody,
     BindPolarClawAgentResponse,
+    BindResourceControlRequest,
+    BindResourceControlResponseBody,
+    BindResourceControlResponse,
     CancelActiveOperationTasksRequest,
     CancelActiveOperationTasksResponseBody,
     CancelActiveOperationTasksResponse,
@@ -1940,6 +1974,9 @@ __all__ = [
     CreateRateLimitPolicyRequest,
     CreateRateLimitPolicyResponseBody,
     CreateRateLimitPolicyResponse,
+    CreateResourceControlRequest,
+    CreateResourceControlResponseBody,
+    CreateResourceControlResponse,
     CreateServiceLinkedRoleRequest,
     CreateServiceLinkedRoleResponseBody,
     CreateServiceLinkedRoleResponse,
@@ -2082,6 +2119,9 @@ __all__ = [
     DeleteRateLimitPolicyRequest,
     DeleteRateLimitPolicyResponseBody,
     DeleteRateLimitPolicyResponse,
+    DeleteResourceControlRequest,
+    DeleteResourceControlResponseBody,
+    DeleteResourceControlResponse,
     DeleteSQLRateLimitingRulesRequest,
     DeleteSQLRateLimitingRulesResponseBody,
     DeleteSQLRateLimitingRulesResponse,
@@ -2182,6 +2222,9 @@ __all__ = [
     DescribeApplicationSessionIdsRequest,
     DescribeApplicationSessionIdsResponseBody,
     DescribeApplicationSessionIdsResponse,
+    DescribeApplicationUsageRequest,
+    DescribeApplicationUsageResponseBody,
+    DescribeApplicationUsageResponse,
     DescribeApplicationsRequest,
     DescribeApplicationsResponseBody,
     DescribeApplicationsResponse,
@@ -2685,6 +2728,10 @@ __all__ = [
     ModifyApplicationDescriptionRequest,
     ModifyApplicationDescriptionResponseBody,
     ModifyApplicationDescriptionResponse,
+    ModifyApplicationEndpointAddressRequest,
+    ModifyApplicationEndpointAddressShrinkRequest,
+    ModifyApplicationEndpointAddressResponseBody,
+    ModifyApplicationEndpointAddressResponse,
     ModifyApplicationParameterRequest,
     ModifyApplicationParameterShrinkRequest,
     ModifyApplicationParameterResponseBody,
@@ -2859,6 +2906,9 @@ __all__ = [
     ModifyRateLimitPolicyRequest,
     ModifyRateLimitPolicyResponseBody,
     ModifyRateLimitPolicyResponse,
+    ModifyResourceControlRequest,
+    ModifyResourceControlResponseBody,
+    ModifyResourceControlResponse,
     ModifyResourcePackageRequest,
     ModifyResourcePackageResponseBody,
     ModifyResourcePackageResponse,
@@ -2972,6 +3022,9 @@ __all__ = [
     UnbindPolarClawAgentRequest,
     UnbindPolarClawAgentResponseBody,
     UnbindPolarClawAgentResponse,
+    UnbindResourceControlRequest,
+    UnbindResourceControlResponseBody,
+    UnbindResourceControlResponse,
     UninstallPolarClawPluginRequest,
     UninstallPolarClawPluginResponseBody,
     UninstallPolarClawPluginResponse,
@@ -3005,6 +3058,9 @@ __all__ = [
     UpdatePolarClawSkillShrinkRequest,
     UpdatePolarClawSkillResponseBody,
     UpdatePolarClawSkillResponse,
+    UpgradeApplicationVersionRequest,
+    UpgradeApplicationVersionResponseBody,
+    UpgradeApplicationVersionResponse,
     UpgradeDBClusterVersionRequest,
     UpgradeDBClusterVersionResponseBody,
     UpgradeDBClusterVersionResponse,
@@ -3131,6 +3187,11 @@ __all__ = [
     DescribeApplicationServerlessConfResponseBodyServerlessConfItems,
     DescribeApplicationSessionIdsResponseBodyItemsItems,
     DescribeApplicationSessionIdsResponseBodyItems,
+    DescribeApplicationUsageResponseBodyDailyUsage,
+    DescribeApplicationUsageResponseBodyModelUsage,
+    DescribeApplicationUsageResponseBodySessionSummary,
+    DescribeApplicationUsageResponseBodySkillUsage,
+    DescribeApplicationUsageResponseBodySummary,
     DescribeApplicationsRequestTag,
     DescribeApplicationsResponseBodyItemsApplicationsEndpointsEndpoint,
     DescribeApplicationsResponseBodyItemsApplicationsEndpoints,
@@ -3390,6 +3451,7 @@ __all__ = [
     ListTagResourcesResponseBodyTagResources,
     ListTagResourcesForRegionResponseBodyTagResourcesTagResource,
     ListTagResourcesForRegionResponseBodyTagResources,
+    ModifyApplicationEndpointAddressRequestNewPorts,
     ModifyApplicationParameterRequestParameters,
     ModifyApplicationServerlessConfRequestServerlessConfList,
     ModifyBackupPolicyRequestAdvancedDataPolicies,
