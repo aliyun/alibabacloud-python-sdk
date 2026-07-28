@@ -1,3 +1,6 @@
+2026-07-28 Version: 1.5.1
+- Generated python 2025-09-09 for SfmMultiModalApp.
+
 2026-07-28 Version: 1.5.0
 - Support API ListDomain.
 - Update API CreateMmApp: add request parameters ModelConfig.AppType.
