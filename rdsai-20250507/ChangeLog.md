@@ -1,3 +1,10 @@
+2026-07-28 Version: 3.6.1
+- Update API DescribeInstanceEndpoints: add response parameters Body.InstanceEndpoints.$.Domain.
+- Update API DescribeInstanceSSL: add response parameters Body.SSLExpiredTime.
+- Update API ModifyInstanceSSL: add response parameters Body.SSLExpiredTime.
+- Update API ModifyInstancesSSL: add response parameters Body.SSLExpiredTime.
+
+
 2026-07-27 Version: 3.6.0
 - Support API CreateMOUsageDetailExport.
 - Support API DescribeMOUsageDetailExport.

@@ -26,12 +26,12 @@ class ModifyInstanceSSLRequest(DaraModel):
         # The region ID.
         self.region_id = region_id
         # Specifies whether to enable or disable SSL. Valid values:
-        # * **1**: Enable SSL.
-        # * **0**: Disable SSL.
+        # * **1**: Enable.
+        # * **0**: Disable.
         # 
         # This parameter is required.
         self.sslenabled = sslenabled
-        # The content of the custom certificate.
+        # The custom certificate content.
         # 
         # > This parameter is required when **CAType** is set to **custom**.
         self.server_cert = server_cert

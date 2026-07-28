@@ -10,12 +10,14 @@ class ModifyInstanceSSLResponseBody(DaraModel):
         branch_name: str = None,
         instance_name: str = None,
         request_id: str = None,
+        sslexpired_time: str = None,
     ):
         self.branch_name = branch_name
         # The instance ID of the AI application.
         self.instance_name = instance_name
         # The request ID.
         self.request_id = request_id
+        self.sslexpired_time = sslexpired_time
 
     def validate(self):
         pass
@@ -34,6 +36,9 @@ class ModifyInstanceSSLResponseBody(DaraModel):
         if self.request_id is not None:
             result['RequestId'] = self.request_id
 
+        if self.sslexpired_time is not None:
+            result['SSLExpiredTime'] = self.sslexpired_time
+
         return result
 
     def from_map(self, m: dict = None):
@@ -46,6 +51,9 @@ class ModifyInstanceSSLResponseBody(DaraModel):
 
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+
+        if m.get('SSLExpiredTime') is not None:
+            self.sslexpired_time = m.get('SSLExpiredTime')
 
         return self
 

@@ -12,6 +12,7 @@ class DescribeInstanceSSLResponseBody(DaraModel):
         instance_name: str = None,
         request_id: str = None,
         sslenabled: str = None,
+        sslexpired_time: str = None,
         server_cert: str = None,
         server_key: str = None,
     ):
@@ -26,6 +27,7 @@ class DescribeInstanceSSLResponseBody(DaraModel):
         # * **1**: Enabled.
         # * **0**: Disabled.
         self.sslenabled = sslenabled
+        self.sslexpired_time = sslexpired_time
         # The custom certificate content.
         self.server_cert = server_cert
         # The private key of the certificate.
@@ -54,6 +56,9 @@ class DescribeInstanceSSLResponseBody(DaraModel):
         if self.sslenabled is not None:
             result['SSLEnabled'] = self.sslenabled
 
+        if self.sslexpired_time is not None:
+            result['SSLExpiredTime'] = self.sslexpired_time
+
         if self.server_cert is not None:
             result['ServerCert'] = self.server_cert
 
@@ -78,6 +83,9 @@ class DescribeInstanceSSLResponseBody(DaraModel):
 
         if m.get('SSLEnabled') is not None:
             self.sslenabled = m.get('SSLEnabled')
+
+        if m.get('SSLExpiredTime') is not None:
+            self.sslexpired_time = m.get('SSLExpiredTime')
 
         if m.get('ServerCert') is not None:
             self.server_cert = m.get('ServerCert')

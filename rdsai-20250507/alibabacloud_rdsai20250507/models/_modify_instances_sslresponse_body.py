@@ -11,11 +11,13 @@ class ModifyInstancesSSLResponseBody(DaraModel):
         self,
         instance_names: List[str] = None,
         request_id: str = None,
+        sslexpired_time: str = None,
     ):
-        # The RDS Supabase instances whose SSL settings are modified.
+        # The list of instance IDs of AI applications that were successfully modified.
         self.instance_names = instance_names
         # The request ID.
         self.request_id = request_id
+        self.sslexpired_time = sslexpired_time
 
     def validate(self):
         pass
@@ -31,6 +33,9 @@ class ModifyInstancesSSLResponseBody(DaraModel):
         if self.request_id is not None:
             result['RequestId'] = self.request_id
 
+        if self.sslexpired_time is not None:
+            result['SSLExpiredTime'] = self.sslexpired_time
+
         return result
 
     def from_map(self, m: dict = None):
@@ -40,6 +45,9 @@ class ModifyInstancesSSLResponseBody(DaraModel):
 
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+
+        if m.get('SSLExpiredTime') is not None:
+            self.sslexpired_time = m.get('SSLExpiredTime')
 
         return self
 

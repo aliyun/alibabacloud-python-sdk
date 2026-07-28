@@ -91,12 +91,14 @@ class DescribeInstanceEndpointsResponseBodyInstanceEndpoints(DaraModel):
     def __init__(
         self,
         connection_string: str = None,
+        domain: str = None,
         ip: str = None,
         ip_type: str = None,
         port: str = None,
     ):
         # The endpoint.
         self.connection_string = connection_string
+        self.domain = domain
         # The IP address.
         self.ip = ip
         # The network type. Valid values:
@@ -118,6 +120,9 @@ class DescribeInstanceEndpointsResponseBodyInstanceEndpoints(DaraModel):
         if self.connection_string is not None:
             result['ConnectionString'] = self.connection_string
 
+        if self.domain is not None:
+            result['Domain'] = self.domain
+
         if self.ip is not None:
             result['IP'] = self.ip
 
@@ -133,6 +138,9 @@ class DescribeInstanceEndpointsResponseBodyInstanceEndpoints(DaraModel):
         m = m or dict()
         if m.get('ConnectionString') is not None:
             self.connection_string = m.get('ConnectionString')
+
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
 
         if m.get('IP') is not None:
             self.ip = m.get('IP')
