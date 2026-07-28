@@ -47,24 +47,24 @@ class JobSettings(DaraModel):
         self.caller = caller
         # The DataJuicer task configuration.
         self.data_juicer_config = data_juicer_config
-        # Specifies whether to skip the inventory check. Valid values:
+        # Specifies whether to skip inventory check. Valid values:
         # - true
         # - false
         self.disable_ecs_stock_check = disable_ecs_stock_check
         # The NVIDIA driver configuration.
         self.driver = driver
-        # The CPU affinity setting. This setting takes effect only when general-purpose subscription computing resources are used.
+        # The CPU affinity setting. This setting is effective only when using general computing subscription resources.
         self.enable_cpuaffinity = enable_cpuaffinity
         self.enable_dswdev = enable_dswdev
         # Specifies whether to enable fault tolerance monitoring for the job. Valid values:
         # - true
         # - false
         self.enable_error_monitoring_in_aimaster = enable_error_monitoring_in_aimaster
-        # Specifies whether OSS append writes are allowed. Valid values:
+        # Specifies whether to allow OSS append write. Valid values:
         # - true
         # - false
         self.enable_oss_append = enable_oss_append
-        # Specifies whether the job is allowed to use RDMA. Valid values:
+        # Specifies whether to allow the job to use RDMA. Valid values:
         # - true
         # - false
         self.enable_rdma = enable_rdma
@@ -72,19 +72,19 @@ class JobSettings(DaraModel):
         # - true
         # - false
         self.enable_sanity_check = enable_sanity_check
-        # Specifies whether the job is allowed to use tidal resources. Valid values:
+        # Specifies whether to allow the job to use tidal resources. Valid values:
         # - true
         # - false
         self.enable_tide_resource = enable_tide_resource
-        # The configuration parameters for fault tolerance monitoring after it is enabled. For example, you can specify whether to enable log hang-based detection.
+        # The configuration parameters for fault tolerance monitoring after it is enabled, such as whether to enable log hang-based detection.
         self.error_monitoring_args = error_monitoring_args
-        # The duration (in minutes) for which the job is retained after it ends.
+        # The retention duration after job completion, in minutes.
         self.job_reserved_minutes = job_reserved_minutes
-        # The retention policy after the job ends.
+        # The retention policy after job completion.
         self.job_reserved_policy = job_reserved_policy
-        # The output model configuration. This parameter currently takes effect only in federated training scenarios.
+        # The output model configuration. This parameter is currently effective only in federated training scenarios.
         self.model_config = model_config
-        # The oversold resource usage mode for the job (not accepted, acceptable, or only accepted).
+        # The oversold resource usage mode for the job (reject/accept/only accept).
         self.oversold_type = oversold_type
         # The workflow ID.
         self.pipeline_id = pipeline_id

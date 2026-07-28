@@ -13,8 +13,11 @@ class SignalTarget(DaraModel):
         roles: List[str] = None,
         scope: str = None,
     ):
+        # The pod name. Required when Scope is set to pods.
         self.pod_names = pod_names
+        # The role information. Required when Scope is set to roles.
         self.roles = roles
+        # The send scope.
         self.scope = scope
 
     def validate(self):

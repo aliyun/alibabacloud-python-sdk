@@ -2750,6 +2750,8 @@ class Client(OpenApiClient):
             query['ReasonSearch'] = request.reason_search
         if not DaraCore.is_null(request.resource_id):
             query['ResourceId'] = request.resource_id
+        if not DaraCore.is_null(request.resource_ids):
+            query['ResourceIds'] = request.resource_ids
         if not DaraCore.is_null(request.resource_quota_name):
             query['ResourceQuotaName'] = request.resource_quota_name
         if not DaraCore.is_null(request.show_own):
@@ -2854,6 +2856,8 @@ class Client(OpenApiClient):
             query['ReasonSearch'] = request.reason_search
         if not DaraCore.is_null(request.resource_id):
             query['ResourceId'] = request.resource_id
+        if not DaraCore.is_null(request.resource_ids):
+            query['ResourceIds'] = request.resource_ids
         if not DaraCore.is_null(request.resource_quota_name):
             query['ResourceQuotaName'] = request.resource_quota_name
         if not DaraCore.is_null(request.show_own):

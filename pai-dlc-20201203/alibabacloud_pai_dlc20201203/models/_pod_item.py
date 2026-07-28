@@ -23,6 +23,7 @@ class PodItem(DaraModel):
         status: str = None,
         sub_status: str = None,
         type: str = None,
+        supported_profiling_types: str = None,
     ):
         self.gmt_create_time = gmt_create_time
         self.gmt_finish_time = gmt_finish_time
@@ -37,6 +38,7 @@ class PodItem(DaraModel):
         self.status = status
         self.sub_status = sub_status
         self.type = type
+        self.supported_profiling_types = supported_profiling_types
 
     def validate(self):
         if self.history_pods:
@@ -96,6 +98,9 @@ class PodItem(DaraModel):
         if self.type is not None:
             result['Type'] = self.type
 
+        if self.supported_profiling_types is not None:
+            result['supportedProfilingTypes'] = self.supported_profiling_types
+
         return result
 
     def from_map(self, m: dict = None):
@@ -144,6 +149,9 @@ class PodItem(DaraModel):
 
         if m.get('Type') is not None:
             self.type = m.get('Type')
+
+        if m.get('supportedProfilingTypes') is not None:
+            self.supported_profiling_types = m.get('supportedProfilingTypes')
 
         return self
 

@@ -12,7 +12,7 @@ class CreateJobResponseBody(DaraModel):
     ):
         # The ID of the job created by this call.
         self.job_id = job_id
-        # The request ID, used for diagnostics and troubleshooting.
+        # The ID of this request, used for diagnostics and troubleshooting.
         self.request_id = request_id
 
     def validate(self):

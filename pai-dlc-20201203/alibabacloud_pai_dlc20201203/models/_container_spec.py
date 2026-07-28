@@ -16,6 +16,7 @@ class ContainerSpec(DaraModel):
         image: str = None,
         name: str = None,
         resources: main_models.ResourceRequirements = None,
+        security_context: main_models.SecurityContext = None,
         working_dir: str = None,
     ):
         # The command parameters.
@@ -30,6 +31,7 @@ class ContainerSpec(DaraModel):
         self.name = name
         # The container resources.
         self.resources = resources
+        self.security_context = security_context
         # The working directory in the container.
         self.working_dir = working_dir
 
@@ -40,6 +42,8 @@ class ContainerSpec(DaraModel):
                     v1.validate()
         if self.resources:
             self.resources.validate()
+        if self.security_context:
+            self.security_context.validate()
 
     def to_map(self):
         result = dict()
@@ -65,6 +69,9 @@ class ContainerSpec(DaraModel):
 
         if self.resources is not None:
             result['Resources'] = self.resources.to_map()
+
+        if self.security_context is not None:
+            result['SecurityContext'] = self.security_context.to_map()
 
         if self.working_dir is not None:
             result['WorkingDir'] = self.working_dir
@@ -94,6 +101,10 @@ class ContainerSpec(DaraModel):
         if m.get('Resources') is not None:
             temp_model = main_models.ResourceRequirements()
             self.resources = temp_model.from_map(m.get('Resources'))
+
+        if m.get('SecurityContext') is not None:
+            temp_model = main_models.SecurityContext()
+            self.security_context = temp_model.from_map(m.get('SecurityContext'))
 
         if m.get('WorkingDir') is not None:
             self.working_dir = m.get('WorkingDir')

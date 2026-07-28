@@ -1,3 +1,11 @@
+2026-07-28 Version: 1.10.2
+- Update API CreateJob: add request parameters body.CodeSource.IsSharedMountPath.
+- Update API GetJob: add response parameters Body.supportedProfilingTypes.
+- Update API GetJob: add response parameters Body.Pods.$.supportedProfilingTypes.
+- Update API GetJob: add response parameters Body.Pods.$.HistoryPods.$.supportedProfilingTypes.
+- Update API ListJobs: add request parameters ResourceIds.
+
+
 2026-07-20 Version: 1.10.1
 - Generated python 2020-12-03 for pai-dlc.
 

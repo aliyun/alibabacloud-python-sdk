@@ -71,6 +71,7 @@ class JobItem(DaraModel):
         working_dir: str = None,
         workspace_id: str = None,
         workspace_name: str = None,
+        supported_profiling_types: str = None,
     ):
         # The visibility.
         self.accessibility = accessibility
@@ -90,59 +91,48 @@ class JobItem(DaraModel):
         self.elastic_spec = elastic_spec
         # Indicates whether PreemptibleJob is enabled.
         self.enable_preemptible_job = enable_preemptible_job
-        # Indicates whether Debugger analysis is enabled.
+        # Indicates whether debugger analysis is enabled.
         self.enabled_debugger = enabled_debugger
-        # The environment variables injected at job runtime.
+        # The environment variables injected into the job at runtime.
         self.envs = envs
-        # The time when the job was created, in UTC format.
+        # The job creation time in UTC format.
         self.gmt_create_time = gmt_create_time
-        # The time when the job failed, in UTC format.
+        # The time when the job failed (UTC).
         self.gmt_failed_time = gmt_failed_time
-        # The time when the job finished, in UTC format.
+        # The time when the job finished (UTC).
         self.gmt_finish_time = gmt_finish_time
-        # The time when the job was last modified, in UTC format.
+        # The time when the job was modified (UTC).
         self.gmt_modified_time = gmt_modified_time
-        # The time when the job started running, in UTC format.
+        # The time when the job started running in UTC format.
         self.gmt_running_time = gmt_running_time
-        # The time when the job was stopped, in UTC format.
+        # The time when the job was stopped (UTC).
         self.gmt_stopped_time = gmt_stopped_time
-        # The time when the job was submitted, in UTC format.
+        # The job submission time in UTC format.
         self.gmt_submitted_time = gmt_submitted_time
-        # The time when the job completed successfully, in UTC format.
+        # The time when the job completed successfully in UTC format.
         self.gmt_successed_time = gmt_successed_time
         # Indicates whether the job is deleted.
         self.is_deleted = is_deleted
         # The job ID.
         self.job_id = job_id
-        # The maximum running duration of the job.
+        # The maximum job running duration.
         self.job_max_running_time_minutes = job_max_running_time_minutes
         self.job_replica_statuses = job_replica_statuses
-        # The node configurations of the job at runtime.
+        # The node configurations for the job at runtime.
         self.job_specs = job_specs
         # The job type. Valid values:
-        # - TFJob
-        # - PyTorchJob
-        # - MPIJob
-        # - XGBoostJob
-        # - OneFlowJob
-        # - ElasticBatchJob
-        # - RayJob
-        # - SlurmJob
         self.job_type = job_type
         # The number of nodes.
         self.node_count = node_count
         # The node names.
         self.node_names = node_names
-        # The pods.
+        # Pods。
         self.pods = pods
         # The job priority.
         self.priority = priority
-        # The reason code for the current job status. Valid values:
-        # - InvalidParameter
-        # - JobSucceeded
-        # - JobStoppedByUser
+        # The reason code for the job entering its current status. Valid values:
         self.reason_code = reason_code
-        # The detailed description of the reason for the current job status.
+        # The detailed description of the reason for the job entering its current status.
         self.reason_message = reason_message
         # The requested CPU resources.
         self.request_cpu = request_cpu
@@ -156,7 +146,7 @@ class JobItem(DaraModel):
         self.resource_level = resource_level
         # The name of the resource on which the job runs.
         self.resource_name = resource_name
-        # The resource quota name.
+        # The resource name.
         self.resource_quota_name = resource_quota_name
         # The resource type. Valid values: ECS, Lingjun, and ACS.
         self.resource_type = resource_type
@@ -167,20 +157,18 @@ class JobItem(DaraModel):
         # The additional parameters of the job.
         self.settings = settings
         # The job status. Valid values:
-        # - Succeeded
-        # - Failed
         self.status = status
-        # The job status transition history.
+        # The job status transition information.
         self.status_history = status_history
-        # The job substatus, such as the preemption retry status.
+        # The job sub-status, such as preemption retry status.
         self.sub_status = sub_status
-        # The system environment variable configurations.
+        # The system environment variable configuration.
         self.system_envs = system_envs
         self.template_id = template_id
         self.template_name = template_name
         # The tenant ID.
         self.tenant_id = tenant_id
-        # The directory where the third-party library file Requirements.txt is located.
+        # The directory where the third-party library file requirements.txt is located.
         self.thirdparty_lib_dir = thirdparty_lib_dir
         # The list of third-party Python libraries installed before the job runs.
         self.thirdparty_libs = thirdparty_libs
@@ -194,7 +182,7 @@ class JobItem(DaraModel):
         self.user_script = user_script
         # The user VPC.
         self.user_vpc = user_vpc
-        # The username of the user who submitted the job.
+        # The username of the job submitter.
         self.username = username
         # The working directory.
         self.working_dir = working_dir
@@ -202,6 +190,7 @@ class JobItem(DaraModel):
         self.workspace_id = workspace_id
         # The name of the workspace to which the job belongs.
         self.workspace_name = workspace_name
+        self.supported_profiling_types = supported_profiling_types
 
     def validate(self):
         if self.code_source:
@@ -433,6 +422,9 @@ class JobItem(DaraModel):
         if self.workspace_name is not None:
             result['WorkspaceName'] = self.workspace_name
 
+        if self.supported_profiling_types is not None:
+            result['supportedProfilingTypes'] = self.supported_profiling_types
+
         return result
 
     def from_map(self, m: dict = None):
@@ -640,6 +632,9 @@ class JobItem(DaraModel):
         if m.get('WorkspaceName') is not None:
             self.workspace_name = m.get('WorkspaceName')
 
+        if m.get('supportedProfilingTypes') is not None:
+            self.supported_profiling_types = m.get('supportedProfilingTypes')
+
         return self
 
 class JobItemUserVpc(DaraModel):
@@ -651,9 +646,7 @@ class JobItemUserVpc(DaraModel):
         switch_id: str = None,
         vpc_id: str = None,
     ):
-        # The default routing. Valid values:
-        # - eth0: uses the default network interface controller (NIC) to access external networks through the public gateway.
-        # - eth1: uses the user elastic network interfaces (ENIs) to access external networks through the private gateway.
+        # The default route. Valid values:
         self.default_route = default_route
         # The extended CIDR blocks to connect.
         self.extended_cidrs = extended_cidrs
@@ -759,7 +752,7 @@ class JobItemCodeSource(DaraModel):
         self.branch = branch
         # The code source configuration ID.
         self.code_source_id = code_source_id
-        # The commit ID of the code repository used for this job.
+        # The commit ID of the code repository used by this job.
         self.commit = commit
         # The local mount path of the code.
         self.mount_path = mount_path

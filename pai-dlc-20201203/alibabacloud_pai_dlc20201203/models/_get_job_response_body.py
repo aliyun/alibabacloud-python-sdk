@@ -57,10 +57,11 @@ class GetJobResponseBody(DaraModel):
         user_vpc: main_models.GetJobResponseBodyUserVpc = None,
         workspace_id: str = None,
         workspace_name: str = None,
+        supported_profiling_types: str = None,
     ):
         # The visibility of the job. Valid values:
-        # - PUBLIC: Visible to all members in the workspace.
-        # - PRIVATE (default): Visible only to you and administrators in the workspace.
+        # - PUBLIC: Visible to all users in this workspace.
+        # - PRIVATE (default): Visible only to you and administrators in this workspace.
         self.accessibility = accessibility
         # The cluster ID.
         self.cluster_id = cluster_id
@@ -100,15 +101,15 @@ class GetJobResponseBody(DaraModel):
         self.job_id = job_id
         # The job replica statuses.
         self.job_replica_statuses = job_replica_statuses
-        # The node configurations in the job. For more information, see the **JobSpecs** parameter in the CreateJob API.
+        # The node configurations in the job. Refer to **JobSpecs** in the CreateJob API.
         self.job_specs = job_specs
         # The job type. Specified by the JobType parameter in the [CreateJob](https://help.aliyun.com/document_detail/459672.html) API.
         self.job_type = job_type
-        # All nodes running in the job.
+        # All pods running in the job.
         self.pods = pods
         # The priority of the job. Valid values: 1 to 9.
         self.priority = priority
-        # The status detail code, which categorizes the sub-status under the current status (Status).
+        # The status detail code, which is a classification of the sub-status under the current status (Status).
         self.reason_code = reason_code
         # The detailed description of the status.
         self.reason_message = reason_message
@@ -149,7 +150,7 @@ class GetJobResponseBody(DaraModel):
         self.sub_status = sub_status
         # The tenant ID.
         self.tenant_id = tenant_id
-        # The folder that contains the third-party library (requirements.txt) file.
+        # The folder where the third-party library (requirements.txt) file is located.
         self.thirdparty_lib_dir = thirdparty_lib_dir
         # The list of third-party Python libraries to install.
         self.thirdparty_libs = thirdparty_libs
@@ -163,6 +164,7 @@ class GetJobResponseBody(DaraModel):
         self.workspace_id = workspace_id
         # The name of the workspace to which the job belongs.
         self.workspace_name = workspace_name
+        self.supported_profiling_types = supported_profiling_types
 
     def validate(self):
         if self.code_source:
@@ -364,6 +366,9 @@ class GetJobResponseBody(DaraModel):
         if self.workspace_name is not None:
             result['WorkspaceName'] = self.workspace_name
 
+        if self.supported_profiling_types is not None:
+            result['supportedProfilingTypes'] = self.supported_profiling_types
+
         return result
 
     def from_map(self, m: dict = None):
@@ -535,6 +540,9 @@ class GetJobResponseBody(DaraModel):
         if m.get('WorkspaceName') is not None:
             self.workspace_name = m.get('WorkspaceName')
 
+        if m.get('supportedProfilingTypes') is not None:
+            self.supported_profiling_types = m.get('supportedProfilingTypes')
+
         return self
 
 class GetJobResponseBodyUserVpc(DaraModel):
@@ -548,8 +556,8 @@ class GetJobResponseBodyUserVpc(DaraModel):
     ):
         # The default routing. This parameter is valid only for general computing resources. Valid values:
         # 
-        # eth0: uses the default network interface controller (NIC) to access external networks through the public gateway.
-        # eth1: uses the user elastic network interfaces (ENIs) to access external networks through the private gateway.
+        # eth0: uses the default network interface controller (NIC) to access external networks through a public gateway.
+        # eth1: uses the user elastic network interfaces (ENIs) to access external networks through a private gateway.
         self.default_route = default_route
         # The extended CIDR blocks, for example, 192.168.0.1/24.
         self.extended_cidrs = extended_cidrs
@@ -628,7 +636,7 @@ class GetJobResponseBodyRestartRecord(DaraModel):
         self.occur_time = occur_time
         # The reason.
         self.reason = reason
-        # The restart duration, in seconds.
+        # The restart duration.
         self.restart_duration_in_sec = restart_duration_in_sec
         # The restart failure reason.
         self.restart_fail_reason = restart_fail_reason
@@ -733,7 +741,7 @@ class GetJobResponseBodyRestartRecordDetailErrorInfoList(DaraModel):
         pod: str = None,
         trigger_restart: bool = None,
     ):
-        # The job-level blacklist.
+        # The job blacklist.
         self.add_job_level_blacklist = add_job_level_blacklist
         # The node blacklist.
         self.add_node_to_blacklist = add_node_to_blacklist
@@ -837,22 +845,23 @@ class GetJobResponseBodyPods(DaraModel):
         status: str = None,
         sub_status: str = None,
         type: str = None,
+        supported_profiling_types: str = None,
     ):
         # The pod running duration.
         self.duration = duration
         # The pod creation time (UTC).
         self.gmt_create_time = gmt_create_time
-        # The node finish time (UTC).
+        # The pod finish time (UTC).
         self.gmt_finish_time = gmt_finish_time
-        # The node start time (UTC).
+        # The pod start time (UTC).
         self.gmt_start_time = gmt_start_time
         # The historical pods.
         self.history_pods = history_pods
-        # The network IP address of the node.
+        # The network IP address of the pod.
         self.ip = ip
         # The node name.
         self.node_name = node_name
-        # The node ID. You can use this ID with the GetPodLogs and GetPodEvents APIs to retrieve detailed logs and events for the node.
+        # The pod ID. You can use this ID with the GetPodLogs and GetPodEvents APIs to retrieve detailed logs and events of the pod.
         self.pod_id = pod_id
         # The IP addresses of the pod.
         self.pod_ips = pod_ips
@@ -860,7 +869,7 @@ class GetJobResponseBodyPods(DaraModel):
         self.pod_uid = pod_uid
         # The pod resource usage type.
         self.resource_type = resource_type
-        # The node status. Valid values:
+        # The pod status. Valid values:
         # 
         # - Pending
         # - Running
@@ -872,8 +881,9 @@ class GetJobResponseBodyPods(DaraModel):
         # - Normal
         # - Evicted
         self.sub_status = sub_status
-        # The node type, which corresponds to a JobSpec in the JobSpecs parameter of CreateJob.
+        # The pod type, which corresponds to a JobSpec in the JobSpecs parameter of CreateJob.
         self.type = type
+        self.supported_profiling_types = supported_profiling_types
 
     def validate(self):
         if self.history_pods:
@@ -936,6 +946,9 @@ class GetJobResponseBodyPods(DaraModel):
         if self.type is not None:
             result['Type'] = self.type
 
+        if self.supported_profiling_types is not None:
+            result['supportedProfilingTypes'] = self.supported_profiling_types
+
         return result
 
     def from_map(self, m: dict = None):
@@ -988,6 +1001,9 @@ class GetJobResponseBodyPods(DaraModel):
         if m.get('Type') is not None:
             self.type = m.get('Type')
 
+        if m.get('supportedProfilingTypes') is not None:
+            self.supported_profiling_types = m.get('supportedProfilingTypes')
+
         return self
 
 class GetJobResponseBodyPodsHistoryPods(DaraModel):
@@ -1006,6 +1022,7 @@ class GetJobResponseBodyPodsHistoryPods(DaraModel):
         status: str = None,
         sub_status: str = None,
         type: str = None,
+        supported_profiling_types: str = None,
     ):
         # The pod running duration.
         self.duration = duration
@@ -1035,6 +1052,7 @@ class GetJobResponseBodyPodsHistoryPods(DaraModel):
         self.sub_status = sub_status
         # The pod type.
         self.type = type
+        self.supported_profiling_types = supported_profiling_types
 
     def validate(self):
         if self.pod_ips:
@@ -1088,6 +1106,9 @@ class GetJobResponseBodyPodsHistoryPods(DaraModel):
         if self.type is not None:
             result['Type'] = self.type
 
+        if self.supported_profiling_types is not None:
+            result['supportedProfilingTypes'] = self.supported_profiling_types
+
         return result
 
     def from_map(self, m: dict = None):
@@ -1133,6 +1154,9 @@ class GetJobResponseBodyPodsHistoryPods(DaraModel):
 
         if m.get('Type') is not None:
             self.type = m.get('Type')
+
+        if m.get('supportedProfilingTypes') is not None:
+            self.supported_profiling_types = m.get('supportedProfilingTypes')
 
         return self
 

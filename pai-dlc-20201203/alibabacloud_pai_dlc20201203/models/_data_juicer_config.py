@@ -13,20 +13,19 @@ class DataJuicerConfig(DaraModel):
         execution_mode: str = None,
         resource_limit: main_models.ResourceLimit = None,
     ):
-        # The command type.
+        # The command type. Valid values:
         # 
-        # - shell: A shell command.
-        # 
-        # - config: The YAML configuration for DataJuicer.
+        # - shell: shell command.
+        # - config: DataJuicer YAML configuration.
         self.command_type = command_type
-        # Specifies whether to enable resource estimation.
+        # Specifies whether to enable resource estimation. When resource estimation is enabled, the execution mode must be distributed, and the command type must be config (DataJuicer YAML configuration).
         self.enable_resource_estimation = enable_resource_estimation
-        # The execution mode.
+        # The execution mode. Valid values:
         # 
-        # - standalone: Single node.
-        # 
-        # - distributed: Distributed.
+        # - standalone: single-node.
+        # - distributed: distributed.
         self.execution_mode = execution_mode
+        # The resource estimation limit. This parameter takes effect only when resource estimation is enabled.
         self.resource_limit = resource_limit
 
     def validate(self):

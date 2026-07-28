@@ -13,6 +13,7 @@ class JobSpec(DaraModel):
         assign_node_spec: main_models.AssignNodeSpec = None,
         auto_scaling_spec: main_models.AutoScalingSpec = None,
         consider_in_success_policy: bool = None,
+        driver: str = None,
         ecs_spec: str = None,
         elastic_spot_specs: List[main_models.ElasticSpotSpec] = None,
         extra_pod_spec: main_models.ExtraPodSpec = None,
@@ -34,12 +35,13 @@ class JobSpec(DaraModel):
         type: str = None,
         use_spot_instance: bool = None,
     ):
-        # The scheduling node assignment configuration.
+        # The assigned scheduling node configuration.
         self.assign_node_spec = assign_node_spec
         # The auto scaling configuration.
         self.auto_scaling_spec = auto_scaling_spec
-        # Specifies whether to consider this role when determining job success. This parameter takes effect only when the success policy is set to Partial.
+        # Specifies whether this role is considered when determining job success. This parameter takes effect only when the success policy is set to Partial.
         self.consider_in_success_policy = consider_in_success_policy
+        self.driver = driver
         # The hardware specifications of the worker. Visit [PAI-DLC billing](https://help.aliyun.com/document_detail/171758.html) for the detailed list of specifications.>Notice: Prices vary depending on the specifications.
         self.ecs_spec = ecs_spec
         self.elastic_spot_specs = elastic_spot_specs
@@ -71,7 +73,7 @@ class JobSpec(DaraModel):
         # The dependencies required before this role starts.
         self.startup_dependencies = startup_dependencies
         self.system_disk = system_disk
-        # Type is closely related to Job Type. Different Job Types support different Worker Types.
+        # Type is closely related to Job Type. Different job types support different worker types.
         # 
         # - **TFJob**: Supports Chief, PS, Worker, Evaluator, and GraphLearn.
         # 
@@ -132,6 +134,9 @@ class JobSpec(DaraModel):
 
         if self.consider_in_success_policy is not None:
             result['ConsiderInSuccessPolicy'] = self.consider_in_success_policy
+
+        if self.driver is not None:
+            result['Driver'] = self.driver
 
         if self.ecs_spec is not None:
             result['EcsSpec'] = self.ecs_spec
@@ -213,6 +218,9 @@ class JobSpec(DaraModel):
 
         if m.get('ConsiderInSuccessPolicy') is not None:
             self.consider_in_success_policy = m.get('ConsiderInSuccessPolicy')
+
+        if m.get('Driver') is not None:
+            self.driver = m.get('Driver')
 
         if m.get('EcsSpec') is not None:
             self.ecs_spec = m.get('EcsSpec')
