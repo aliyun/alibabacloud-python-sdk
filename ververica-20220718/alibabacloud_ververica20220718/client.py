@@ -2,7 +2,9 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import Dict
+import json
+
+from typing import Dict, Generator, AsyncGenerator
 
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
@@ -238,6 +240,210 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = main_models.CancelSqlPreviewHeaders()
         return await self.cancel_sql_preview_with_options_async(namespace, request, headers, runtime)
+
+    def chat_ai_agent_with_sse(
+        self,
+        namespace: str,
+        request: main_models.ChatAiAgentRequest,
+        headers: main_models.ChatAiAgentHeaders,
+        runtime: RuntimeOptions,
+    ) -> Generator[main_models.ChatAiAgentResponse, None, None]:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.hitl_decisions):
+            body['hitlDecisions'] = request.hitl_decisions
+        if not DaraCore.is_null(request.refs):
+            body['refs'] = request.refs
+        if not DaraCore.is_null(request.session_id):
+            body['sessionId'] = request.session_id
+        if not DaraCore.is_null(request.user_message):
+            body['userMessage'] = request.user_message
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.workspace):
+            real_headers['workspace'] = str(headers.workspace)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ChatAiAgent',
+            version = '2022-07-18',
+            protocol = 'HTTPS',
+            pathname = f'/advisor/v2/namespaces/{DaraURL.percent_encode(namespace)}/ai-agent/stream/agent/v2/chat',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        sse_resp = self.call_sseapi(params, req, runtime)
+        for resp in sse_resp:
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.ChatAiAgentResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
+
+    async def chat_ai_agent_with_sse_async(
+        self,
+        namespace: str,
+        request: main_models.ChatAiAgentRequest,
+        headers: main_models.ChatAiAgentHeaders,
+        runtime: RuntimeOptions,
+    ) -> AsyncGenerator[main_models.ChatAiAgentResponse, None, None]:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.hitl_decisions):
+            body['hitlDecisions'] = request.hitl_decisions
+        if not DaraCore.is_null(request.refs):
+            body['refs'] = request.refs
+        if not DaraCore.is_null(request.session_id):
+            body['sessionId'] = request.session_id
+        if not DaraCore.is_null(request.user_message):
+            body['userMessage'] = request.user_message
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.workspace):
+            real_headers['workspace'] = str(headers.workspace)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ChatAiAgent',
+            version = '2022-07-18',
+            protocol = 'HTTPS',
+            pathname = f'/advisor/v2/namespaces/{DaraURL.percent_encode(namespace)}/ai-agent/stream/agent/v2/chat',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        sse_resp = self.call_sseapi_async(params, req, runtime)
+        async for resp in sse_resp:
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.ChatAiAgentResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
+
+    def chat_ai_agent_with_options(
+        self,
+        namespace: str,
+        request: main_models.ChatAiAgentRequest,
+        headers: main_models.ChatAiAgentHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.ChatAiAgentResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.hitl_decisions):
+            body['hitlDecisions'] = request.hitl_decisions
+        if not DaraCore.is_null(request.refs):
+            body['refs'] = request.refs
+        if not DaraCore.is_null(request.session_id):
+            body['sessionId'] = request.session_id
+        if not DaraCore.is_null(request.user_message):
+            body['userMessage'] = request.user_message
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.workspace):
+            real_headers['workspace'] = str(headers.workspace)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ChatAiAgent',
+            version = '2022-07-18',
+            protocol = 'HTTPS',
+            pathname = f'/advisor/v2/namespaces/{DaraURL.percent_encode(namespace)}/ai-agent/stream/agent/v2/chat',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ChatAiAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def chat_ai_agent_with_options_async(
+        self,
+        namespace: str,
+        request: main_models.ChatAiAgentRequest,
+        headers: main_models.ChatAiAgentHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.ChatAiAgentResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.hitl_decisions):
+            body['hitlDecisions'] = request.hitl_decisions
+        if not DaraCore.is_null(request.refs):
+            body['refs'] = request.refs
+        if not DaraCore.is_null(request.session_id):
+            body['sessionId'] = request.session_id
+        if not DaraCore.is_null(request.user_message):
+            body['userMessage'] = request.user_message
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.workspace):
+            real_headers['workspace'] = str(headers.workspace)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ChatAiAgent',
+            version = '2022-07-18',
+            protocol = 'HTTPS',
+            pathname = f'/advisor/v2/namespaces/{DaraURL.percent_encode(namespace)}/ai-agent/stream/agent/v2/chat',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ChatAiAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def chat_ai_agent(
+        self,
+        namespace: str,
+        request: main_models.ChatAiAgentRequest,
+    ) -> main_models.ChatAiAgentResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.ChatAiAgentHeaders()
+        return self.chat_ai_agent_with_options(namespace, request, headers, runtime)
+
+    async def chat_ai_agent_async(
+        self,
+        namespace: str,
+        request: main_models.ChatAiAgentRequest,
+    ) -> main_models.ChatAiAgentResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.ChatAiAgentHeaders()
+        return await self.chat_ai_agent_with_options_async(namespace, request, headers, runtime)
 
     def create_deployment_with_options(
         self,
@@ -3139,6 +3345,92 @@ class Client(OpenApiClient):
         headers = main_models.GetAppliedScheduledPlanHeaders()
         return await self.get_applied_scheduled_plan_with_options_async(namespace, request, headers, runtime)
 
+    def get_autopilot_policy_with_options(
+        self,
+        namespace: str,
+        deployment_id: str,
+        request: main_models.GetAutopilotPolicyRequest,
+        headers: main_models.GetAutopilotPolicyHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAutopilotPolicyResponse:
+        request.validate()
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.workspace):
+            real_headers['workspace'] = str(headers.workspace)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAutopilotPolicy',
+            version = '2022-07-18',
+            protocol = 'HTTPS',
+            pathname = f'/autopilot/v2/namespaces/{DaraURL.percent_encode(namespace)}/deployments/{DaraURL.percent_encode(deployment_id)}/autopilotpolicy-describe',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAutopilotPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_autopilot_policy_with_options_async(
+        self,
+        namespace: str,
+        deployment_id: str,
+        request: main_models.GetAutopilotPolicyRequest,
+        headers: main_models.GetAutopilotPolicyHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAutopilotPolicyResponse:
+        request.validate()
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.workspace):
+            real_headers['workspace'] = str(headers.workspace)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAutopilotPolicy',
+            version = '2022-07-18',
+            protocol = 'HTTPS',
+            pathname = f'/autopilot/v2/namespaces/{DaraURL.percent_encode(namespace)}/deployments/{DaraURL.percent_encode(deployment_id)}/autopilotpolicy-describe',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAutopilotPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_autopilot_policy(
+        self,
+        namespace: str,
+        deployment_id: str,
+        request: main_models.GetAutopilotPolicyRequest,
+    ) -> main_models.GetAutopilotPolicyResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.GetAutopilotPolicyHeaders()
+        return self.get_autopilot_policy_with_options(namespace, deployment_id, request, headers, runtime)
+
+    async def get_autopilot_policy_async(
+        self,
+        namespace: str,
+        deployment_id: str,
+        request: main_models.GetAutopilotPolicyRequest,
+    ) -> main_models.GetAutopilotPolicyResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.GetAutopilotPolicyHeaders()
+        return await self.get_autopilot_policy_with_options_async(namespace, deployment_id, request, headers, runtime)
+
     def get_catalogs_with_options(
         self,
         namespace: str,
@@ -5407,6 +5699,116 @@ class Client(OpenApiClient):
         headers = main_models.HotUpdateJobHeaders()
         return await self.hot_update_job_with_options_async(namespace, job_id, headers, runtime)
 
+    def list_autopilot_tuning_histories_with_options(
+        self,
+        namespace: str,
+        deployment_id: str,
+        request: main_models.ListAutopilotTuningHistoriesRequest,
+        headers: main_models.ListAutopilotTuningHistoriesHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAutopilotTuningHistoriesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['endTime'] = request.end_time
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.start_time):
+            query['startTime'] = request.start_time
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.accept_language):
+            real_headers['Accept-Language'] = str(headers.accept_language)
+        if not DaraCore.is_null(headers.workspace):
+            real_headers['workspace'] = str(headers.workspace)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAutopilotTuningHistories',
+            version = '2022-07-18',
+            protocol = 'HTTPS',
+            pathname = f'/autopilot/v2/namespaces/{DaraURL.percent_encode(namespace)}/deployments/{DaraURL.percent_encode(deployment_id)}/tuninghistories',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAutopilotTuningHistoriesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_autopilot_tuning_histories_with_options_async(
+        self,
+        namespace: str,
+        deployment_id: str,
+        request: main_models.ListAutopilotTuningHistoriesRequest,
+        headers: main_models.ListAutopilotTuningHistoriesHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAutopilotTuningHistoriesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['endTime'] = request.end_time
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.start_time):
+            query['startTime'] = request.start_time
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.accept_language):
+            real_headers['Accept-Language'] = str(headers.accept_language)
+        if not DaraCore.is_null(headers.workspace):
+            real_headers['workspace'] = str(headers.workspace)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAutopilotTuningHistories',
+            version = '2022-07-18',
+            protocol = 'HTTPS',
+            pathname = f'/autopilot/v2/namespaces/{DaraURL.percent_encode(namespace)}/deployments/{DaraURL.percent_encode(deployment_id)}/tuninghistories',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAutopilotTuningHistoriesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_autopilot_tuning_histories(
+        self,
+        namespace: str,
+        deployment_id: str,
+        request: main_models.ListAutopilotTuningHistoriesRequest,
+    ) -> main_models.ListAutopilotTuningHistoriesResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.ListAutopilotTuningHistoriesHeaders()
+        return self.list_autopilot_tuning_histories_with_options(namespace, deployment_id, request, headers, runtime)
+
+    async def list_autopilot_tuning_histories_async(
+        self,
+        namespace: str,
+        deployment_id: str,
+        request: main_models.ListAutopilotTuningHistoriesRequest,
+    ) -> main_models.ListAutopilotTuningHistoriesResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.ListAutopilotTuningHistoriesHeaders()
+        return await self.list_autopilot_tuning_histories_with_options_async(namespace, deployment_id, request, headers, runtime)
+
     def list_custom_connectors_with_options(
         self,
         namespace: str,
@@ -7566,6 +7968,104 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = main_models.SubmitSqlPreviewHeaders()
         return await self.submit_sql_preview_with_options_async(namespace, request, headers, runtime)
+
+    def update_autopilot_policy_with_options(
+        self,
+        namespace: str,
+        deployment_id: str,
+        request: main_models.UpdateAutopilotPolicyRequest,
+        headers: main_models.UpdateAutopilotPolicyHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAutopilotPolicyResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.enabled):
+            body['enabled'] = request.enabled
+        if not DaraCore.is_null(request.policy_config):
+            body['policyConfig'] = request.policy_config
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.workspace):
+            real_headers['workspace'] = str(headers.workspace)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAutopilotPolicy',
+            version = '2022-07-18',
+            protocol = 'HTTPS',
+            pathname = f'/autopilot/v2/namespaces/{DaraURL.percent_encode(namespace)}/deployments/{DaraURL.percent_encode(deployment_id)}/autopilotpolicy-update',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAutopilotPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_autopilot_policy_with_options_async(
+        self,
+        namespace: str,
+        deployment_id: str,
+        request: main_models.UpdateAutopilotPolicyRequest,
+        headers: main_models.UpdateAutopilotPolicyHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAutopilotPolicyResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.enabled):
+            body['enabled'] = request.enabled
+        if not DaraCore.is_null(request.policy_config):
+            body['policyConfig'] = request.policy_config
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.workspace):
+            real_headers['workspace'] = str(headers.workspace)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAutopilotPolicy',
+            version = '2022-07-18',
+            protocol = 'HTTPS',
+            pathname = f'/autopilot/v2/namespaces/{DaraURL.percent_encode(namespace)}/deployments/{DaraURL.percent_encode(deployment_id)}/autopilotpolicy-update',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAutopilotPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_autopilot_policy(
+        self,
+        namespace: str,
+        deployment_id: str,
+        request: main_models.UpdateAutopilotPolicyRequest,
+    ) -> main_models.UpdateAutopilotPolicyResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.UpdateAutopilotPolicyHeaders()
+        return self.update_autopilot_policy_with_options(namespace, deployment_id, request, headers, runtime)
+
+    async def update_autopilot_policy_async(
+        self,
+        namespace: str,
+        deployment_id: str,
+        request: main_models.UpdateAutopilotPolicyRequest,
+    ) -> main_models.UpdateAutopilotPolicyResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.UpdateAutopilotPolicyHeaders()
+        return await self.update_autopilot_policy_with_options_async(namespace, deployment_id, request, headers, runtime)
 
     def update_deployment_with_options(
         self,

@@ -1,3 +1,10 @@
+2026-07-28 Version: 1.13.0
+- Support API ChatAiAgent.
+- Support API GetAutopilotPolicy.
+- Support API ListAutopilotTuningHistories.
+- Support API UpdateAutopilotPolicy.
+
+
 2026-07-24 Version: 1.12.0
 - Support API CreateSqlFile.
 - Support API DeleteDeploymentByName.

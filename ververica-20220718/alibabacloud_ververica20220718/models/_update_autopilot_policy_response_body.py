@@ -5,27 +5,23 @@ from __future__ import annotations
 from alibabacloud_ververica20220718 import models as main_models
 from darabonba.model import DaraModel
 
-class DeployDeploymentDraftAsyncResponseBody(DaraModel):
+class UpdateAutopilotPolicyResponseBody(DaraModel):
     def __init__(
         self,
-        data: main_models.DeployDeploymentDraftAsyncResponseBodyData = None,
+        data: main_models.UpdateAutopilotPolicyResponseBodyData = None,
         error_code: str = None,
         error_message: str = None,
         http_code: int = None,
         request_id: str = None,
         success: bool = None,
     ):
-        # The result of the asynchronous operation. This parameter is returned when the request is successful.
+        # The Autopilot tuning policy response data.
         self.data = data
-        # - If success is false, an error code is returned.
-        # 
-        # - If success is true, an empty value is returned.
+        # The error code. This parameter is not empty when success is false, indicating a business error code. This parameter is empty when success is true.
         self.error_code = error_code
-        # - If success is false, an error message is returned.
-        # 
-        # - If success is true, an empty value is returned.
+        # The error message. This parameter is not empty when success is false, indicating a business error message. This parameter is empty when success is true.
         self.error_message = error_message
-        # The status code of the business operation. A value other than 200 indicates that the operation failed.
+        # The HTTP status code, which is always 200. Use the success parameter to determine whether the request was successful.
         self.http_code = http_code
         # The request ID.
         self.request_id = request_id
@@ -64,7 +60,7 @@ class DeployDeploymentDraftAsyncResponseBody(DaraModel):
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('data') is not None:
-            temp_model = main_models.DeployDeploymentDraftAsyncResponseBodyData()
+            temp_model = main_models.UpdateAutopilotPolicyResponseBodyData()
             self.data = temp_model.from_map(m.get('data'))
 
         if m.get('errorCode') is not None:
@@ -84,31 +80,42 @@ class DeployDeploymentDraftAsyncResponseBody(DaraModel):
 
         return self
 
-class DeployDeploymentDraftAsyncResponseBodyData(DaraModel):
+class UpdateAutopilotPolicyResponseBodyData(DaraModel):
     def __init__(
         self,
-        ticket_id: str = None,
+        enabled: bool = None,
+        policy_config: main_models.AutopilotPolicy = None,
     ):
-        # The ID of the asynchronous ticket. Use this ID to query the result of the asynchronous operation.
-        self.ticket_id = ticket_id
+        # Indicates whether automatic tuning is enabled. A value of true indicates that automatic tuning is active (ACTIVE), and a value of false indicates that tuning is not enabled.
+        self.enabled = enabled
+        # The tuning policy configuration. This parameter uses full PUT mode: when specified, the complete policy object replaces the existing configuration entirely (fields not included are cleared). If this parameter is not specified, the existing configuration is retained.
+        self.policy_config = policy_config
 
     def validate(self):
-        pass
+        if self.policy_config:
+            self.policy_config.validate()
 
     def to_map(self):
         result = dict()
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.ticket_id is not None:
-            result['ticketId'] = self.ticket_id
+        if self.enabled is not None:
+            result['enabled'] = self.enabled
+
+        if self.policy_config is not None:
+            result['policyConfig'] = self.policy_config.to_map()
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ticketId') is not None:
-            self.ticket_id = m.get('ticketId')
+        if m.get('enabled') is not None:
+            self.enabled = m.get('enabled')
+
+        if m.get('policyConfig') is not None:
+            temp_model = main_models.AutopilotPolicy()
+            self.policy_config = temp_model.from_map(m.get('policyConfig'))
 
         return self
 

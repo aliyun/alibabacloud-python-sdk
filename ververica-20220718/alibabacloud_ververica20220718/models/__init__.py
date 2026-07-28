@@ -7,6 +7,7 @@ from ._artifact import Artifact
 from ._async_draft_deploy_result import AsyncDraftDeployResult
 from ._async_draft_validate_result import AsyncDraftValidateResult
 from ._async_resource_plan_operation_result import AsyncResourcePlanOperationResult
+from ._autopilot_policy import AutopilotPolicy
 from ._basic_resource_setting import BasicResourceSetting
 from ._basic_resource_setting_spec import BasicResourceSettingSpec
 from ._batch_resource_setting import BatchResourceSetting
@@ -115,6 +116,7 @@ from ._table_column import TableColumn
 from ._table_meta import TableMeta
 from ._table_result import TableResult
 from ._table_schema import TableSchema
+from ._tuning_history import TuningHistory
 from ._udf_artifact import UdfArtifact
 from ._udf_class import UdfClass
 from ._udf_function import UdfFunction
@@ -131,6 +133,10 @@ from ._cancel_sql_preview_headers import CancelSqlPreviewHeaders
 from ._cancel_sql_preview_request import CancelSqlPreviewRequest
 from ._cancel_sql_preview_response_body import CancelSqlPreviewResponseBody
 from ._cancel_sql_preview_response import CancelSqlPreviewResponse
+from ._chat_ai_agent_headers import ChatAiAgentHeaders
+from ._chat_ai_agent_request import ChatAiAgentRequest
+from ._chat_ai_agent_response_body import ChatAiAgentResponseBody
+from ._chat_ai_agent_response import ChatAiAgentResponse
 from ._create_deployment_headers import CreateDeploymentHeaders
 from ._create_deployment_request import CreateDeploymentRequest
 from ._create_deployment_response_body import CreateDeploymentResponseBody
@@ -255,6 +261,10 @@ from ._get_applied_scheduled_plan_headers import GetAppliedScheduledPlanHeaders
 from ._get_applied_scheduled_plan_request import GetAppliedScheduledPlanRequest
 from ._get_applied_scheduled_plan_response_body import GetAppliedScheduledPlanResponseBody
 from ._get_applied_scheduled_plan_response import GetAppliedScheduledPlanResponse
+from ._get_autopilot_policy_headers import GetAutopilotPolicyHeaders
+from ._get_autopilot_policy_request import GetAutopilotPolicyRequest
+from ._get_autopilot_policy_response_body import GetAutopilotPolicyResponseBody
+from ._get_autopilot_policy_response import GetAutopilotPolicyResponse
 from ._get_catalogs_headers import GetCatalogsHeaders
 from ._get_catalogs_request import GetCatalogsRequest
 from ._get_catalogs_response_body import GetCatalogsResponseBody
@@ -346,6 +356,10 @@ from ._get_validate_deployment_draft_result_response import GetValidateDeploymen
 from ._hot_update_job_headers import HotUpdateJobHeaders
 from ._hot_update_job_response_body import HotUpdateJobResponseBody
 from ._hot_update_job_response import HotUpdateJobResponse
+from ._list_autopilot_tuning_histories_headers import ListAutopilotTuningHistoriesHeaders
+from ._list_autopilot_tuning_histories_request import ListAutopilotTuningHistoriesRequest
+from ._list_autopilot_tuning_histories_response_body import ListAutopilotTuningHistoriesResponseBody
+from ._list_autopilot_tuning_histories_response import ListAutopilotTuningHistoriesResponse
 from ._list_custom_connectors_headers import ListCustomConnectorsHeaders
 from ._list_custom_connectors_response_body import ListCustomConnectorsResponseBody
 from ._list_custom_connectors_response import ListCustomConnectorsResponse
@@ -435,6 +449,10 @@ from ._submit_sql_preview_headers import SubmitSqlPreviewHeaders
 from ._submit_sql_preview_request import SubmitSqlPreviewRequest
 from ._submit_sql_preview_response_body import SubmitSqlPreviewResponseBody
 from ._submit_sql_preview_response import SubmitSqlPreviewResponse
+from ._update_autopilot_policy_headers import UpdateAutopilotPolicyHeaders
+from ._update_autopilot_policy_request import UpdateAutopilotPolicyRequest
+from ._update_autopilot_policy_response_body import UpdateAutopilotPolicyResponseBody
+from ._update_autopilot_policy_response import UpdateAutopilotPolicyResponse
 from ._update_deployment_headers import UpdateDeploymentHeaders
 from ._update_deployment_request import UpdateDeploymentRequest
 from ._update_deployment_response_body import UpdateDeploymentResponseBody
@@ -491,10 +509,33 @@ from ._validate_sql_statement_headers import ValidateSqlStatementHeaders
 from ._validate_sql_statement_request import ValidateSqlStatementRequest
 from ._validate_sql_statement_response_body import ValidateSqlStatementResponseBody
 from ._validate_sql_statement_response import ValidateSqlStatementResponse
+from ._autopilot_policy import AutopilotPolicyAdvancedRules
+from ._autopilot_policy import AutopilotPolicyLimits
+from ._autopilot_policy import AutopilotPolicyScaleDownRulesMemoryScaleDownRule
+from ._autopilot_policy import AutopilotPolicyScaleDownRulesSlotBusyScaleDownRule
+from ._autopilot_policy import AutopilotPolicyScaleDownRules
+from ._autopilot_policy import AutopilotPolicyScaleUpRulesDelayRule
+from ._autopilot_policy import AutopilotPolicyScaleUpRulesGcRule
+from ._autopilot_policy import AutopilotPolicyScaleUpRulesMemoryScaleUpRule
+from ._autopilot_policy import AutopilotPolicyScaleUpRulesOomScaleUpRule
+from ._autopilot_policy import AutopilotPolicyScaleUpRulesSlotBusyScaleUpRule
+from ._autopilot_policy import AutopilotPolicyScaleUpRules
+from ._autopilot_policy import AutopilotPolicySilentPeriodConfigSilentPeriods
+from ._autopilot_policy import AutopilotPolicySilentPeriodConfig
+from ._tuning_history import TuningHistoryNewResourceSetting
+from ._tuning_history import TuningHistoryOldResourceSetting
+from ._chat_ai_agent_request import ChatAiAgentRequestHitlDecisions
+from ._chat_ai_agent_request import ChatAiAgentRequestRefsJobs
+from ._chat_ai_agent_request import ChatAiAgentRequestRefs
+from ._chat_ai_agent_response_body import ChatAiAgentResponseBodyItems
+from ._chat_ai_agent_response_body import ChatAiAgentResponseBodyUsage
 from ._deploy_deployment_draft_async_response_body import DeployDeploymentDraftAsyncResponseBodyData
 from ._generate_resource_plan_with_flink_conf_async_response_body import GenerateResourcePlanWithFlinkConfAsyncResponseBodyData
+from ._get_autopilot_policy_response_body import GetAutopilotPolicyResponseBodyData
+from ._list_autopilot_tuning_histories_response_body import ListAutopilotTuningHistoriesResponseBodyData
 from ._list_editable_namespace_response_body import ListEditableNamespaceResponseBodyData
 from ._stop_sql_execution_response_body import StopSqlExecutionResponseBodyData
+from ._update_autopilot_policy_response_body import UpdateAutopilotPolicyResponseBodyData
 from ._validate_deployment_draft_async_response_body import ValidateDeploymentDraftAsyncResponseBodyData
 
 __all__ = [
@@ -503,6 +544,7 @@ __all__ = [
     AsyncDraftDeployResult,
     AsyncDraftValidateResult,
     AsyncResourcePlanOperationResult,
+    AutopilotPolicy,
     BasicResourceSetting,
     BasicResourceSettingSpec,
     BatchResourceSetting,
@@ -611,6 +653,7 @@ __all__ = [
     TableMeta,
     TableResult,
     TableSchema,
+    TuningHistory,
     UdfArtifact,
     UdfClass,
     UdfFunction,
@@ -627,6 +670,10 @@ __all__ = [
     CancelSqlPreviewRequest,
     CancelSqlPreviewResponseBody,
     CancelSqlPreviewResponse,
+    ChatAiAgentHeaders,
+    ChatAiAgentRequest,
+    ChatAiAgentResponseBody,
+    ChatAiAgentResponse,
     CreateDeploymentHeaders,
     CreateDeploymentRequest,
     CreateDeploymentResponseBody,
@@ -751,6 +798,10 @@ __all__ = [
     GetAppliedScheduledPlanRequest,
     GetAppliedScheduledPlanResponseBody,
     GetAppliedScheduledPlanResponse,
+    GetAutopilotPolicyHeaders,
+    GetAutopilotPolicyRequest,
+    GetAutopilotPolicyResponseBody,
+    GetAutopilotPolicyResponse,
     GetCatalogsHeaders,
     GetCatalogsRequest,
     GetCatalogsResponseBody,
@@ -842,6 +893,10 @@ __all__ = [
     HotUpdateJobHeaders,
     HotUpdateJobResponseBody,
     HotUpdateJobResponse,
+    ListAutopilotTuningHistoriesHeaders,
+    ListAutopilotTuningHistoriesRequest,
+    ListAutopilotTuningHistoriesResponseBody,
+    ListAutopilotTuningHistoriesResponse,
     ListCustomConnectorsHeaders,
     ListCustomConnectorsResponseBody,
     ListCustomConnectorsResponse,
@@ -931,6 +986,10 @@ __all__ = [
     SubmitSqlPreviewRequest,
     SubmitSqlPreviewResponseBody,
     SubmitSqlPreviewResponse,
+    UpdateAutopilotPolicyHeaders,
+    UpdateAutopilotPolicyRequest,
+    UpdateAutopilotPolicyResponseBody,
+    UpdateAutopilotPolicyResponse,
     UpdateDeploymentHeaders,
     UpdateDeploymentRequest,
     UpdateDeploymentResponseBody,
@@ -987,9 +1046,32 @@ __all__ = [
     ValidateSqlStatementRequest,
     ValidateSqlStatementResponseBody,
     ValidateSqlStatementResponse,
+    AutopilotPolicyAdvancedRules,
+    AutopilotPolicyLimits,
+    AutopilotPolicyScaleDownRulesMemoryScaleDownRule,
+    AutopilotPolicyScaleDownRulesSlotBusyScaleDownRule,
+    AutopilotPolicyScaleDownRules,
+    AutopilotPolicyScaleUpRulesDelayRule,
+    AutopilotPolicyScaleUpRulesGcRule,
+    AutopilotPolicyScaleUpRulesMemoryScaleUpRule,
+    AutopilotPolicyScaleUpRulesOomScaleUpRule,
+    AutopilotPolicyScaleUpRulesSlotBusyScaleUpRule,
+    AutopilotPolicyScaleUpRules,
+    AutopilotPolicySilentPeriodConfigSilentPeriods,
+    AutopilotPolicySilentPeriodConfig,
+    TuningHistoryNewResourceSetting,
+    TuningHistoryOldResourceSetting,
+    ChatAiAgentRequestHitlDecisions,
+    ChatAiAgentRequestRefsJobs,
+    ChatAiAgentRequestRefs,
+    ChatAiAgentResponseBodyItems,
+    ChatAiAgentResponseBodyUsage,
     DeployDeploymentDraftAsyncResponseBodyData,
     GenerateResourcePlanWithFlinkConfAsyncResponseBodyData,
+    GetAutopilotPolicyResponseBodyData,
+    ListAutopilotTuningHistoriesResponseBodyData,
     ListEditableNamespaceResponseBodyData,
     StopSqlExecutionResponseBodyData,
+    UpdateAutopilotPolicyResponseBodyData,
     ValidateDeploymentDraftAsyncResponseBodyData
 ]
