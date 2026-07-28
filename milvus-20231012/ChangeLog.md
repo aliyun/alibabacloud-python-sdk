@@ -8,6 +8,16 @@
 - Update API UpdateInstance: add request parameters body.components.$.dataDisk.
 
 
+2026-07-28 Version: 1.3.2
+- Update API CreateInstance: add request parameters body.components.$.dataDisk.
+- Update API GetInstanceDetail: add response parameters Body.Data.maintainablePeriodTimeZone.
+- Update API GetInstanceDetail: add response parameters Body.Data.ClusterInfo.MilvusResourceInfoList.$.dataDiskEnabled.
+- Update API GetInstanceDetail: add response parameters Body.Data.ClusterInfo.MilvusResourceInfoList.$.dataDiskSize.
+- Update API GetInstanceDetail: add response parameters Body.Data.ClusterInfo.MilvusResourceInfoList.$.dataDiskStorageClass.
+- Update API GetInstanceDetail: add response parameters Body.Data.ClusterInfo.MilvusResourceInfoList.$.podsList.
+- Update API UpdateInstance: add request parameters body.components.$.dataDisk.
+
+
 2026-04-23 Version: 1.3.1
 - Update API UpdateInstance: add request parameters body.components.$.cuType.
 
