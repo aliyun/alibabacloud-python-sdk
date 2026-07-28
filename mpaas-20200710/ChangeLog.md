@@ -1,3 +1,10 @@
+2026-07-28 Version: 1.0.5
+- Update API CreateOpenGlobalData: add response parameters Body.AccessDeniedDetail.
+- Update API CreateOpenGlobalData: add response parameters Body.HttpStatusCode.
+- Update API CreateOpenSingleData: add response parameters Body.AccessDeniedDetail.
+- Update API CreateOpenSingleData: add response parameters Body.HttpStatusCode.
+
+
 2026-07-21 Version: 1.0.4
 - Update API CancelPushScheduler: add response parameters Body.AccessDeniedDetail.
 - Update API PushBroadcast: add response parameters Body.AccessDeniedDetail.
