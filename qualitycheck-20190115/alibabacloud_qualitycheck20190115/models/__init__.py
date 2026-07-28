@@ -99,9 +99,6 @@ from ._delete_customization_config_response import DeleteCustomizationConfigResp
 from ._delete_data_set_request import DeleteDataSetRequest
 from ._delete_data_set_response_body import DeleteDataSetResponseBody
 from ._delete_data_set_response import DeleteDataSetResponse
-from ._delete_precision_task_request import DeletePrecisionTaskRequest
-from ._delete_precision_task_response_body import DeletePrecisionTaskResponseBody
-from ._delete_precision_task_response import DeletePrecisionTaskResponse
 from ._delete_quality_check_scheme_request import DeleteQualityCheckSchemeRequest
 from ._delete_quality_check_scheme_response_body import DeleteQualityCheckSchemeResponseBody
 from ._delete_quality_check_scheme_response import DeleteQualityCheckSchemeResponse
@@ -162,9 +159,6 @@ from ._get_mining_task_result_response import GetMiningTaskResultResponse
 from ._get_next_result_to_verify_request import GetNextResultToVerifyRequest
 from ._get_next_result_to_verify_response_body import GetNextResultToVerifyResponseBody
 from ._get_next_result_to_verify_response import GetNextResultToVerifyResponse
-from ._get_precision_task_request import GetPrecisionTaskRequest
-from ._get_precision_task_response_body import GetPrecisionTaskResponseBody
-from ._get_precision_task_response import GetPrecisionTaskResponse
 from ._get_quality_check_scheme_request import GetQualityCheckSchemeRequest
 from ._get_quality_check_scheme_response_body import GetQualityCheckSchemeResponseBody
 from ._get_quality_check_scheme_response import GetQualityCheckSchemeResponse
@@ -195,9 +189,6 @@ from ._get_rules_count_list_response import GetRulesCountListResponse
 from ._get_scheme_task_config_request import GetSchemeTaskConfigRequest
 from ._get_scheme_task_config_response_body import GetSchemeTaskConfigResponseBody
 from ._get_scheme_task_config_response import GetSchemeTaskConfigResponse
-from ._get_score_info_request import GetScoreInfoRequest
-from ._get_score_info_response_body import GetScoreInfoResponseBody
-from ._get_score_info_response import GetScoreInfoResponse
 from ._get_skill_group_config_request import GetSkillGroupConfigRequest
 from ._get_skill_group_config_response_body import GetSkillGroupConfigResponseBody
 from ._get_skill_group_config_response import GetSkillGroupConfigResponse
@@ -222,9 +213,6 @@ from ._list_asr_vocab_response import ListAsrVocabResponse
 from ._list_data_set_request import ListDataSetRequest
 from ._list_data_set_response_body import ListDataSetResponseBody
 from ._list_data_set_response import ListDataSetResponse
-from ._list_precision_task_request import ListPrecisionTaskRequest
-from ._list_precision_task_response_body import ListPrecisionTaskResponseBody
-from ._list_precision_task_response import ListPrecisionTaskResponse
 from ._list_quality_check_scheme_request import ListQualityCheckSchemeRequest
 from ._list_quality_check_scheme_response_body import ListQualityCheckSchemeResponseBody
 from ._list_quality_check_scheme_response import ListQualityCheckSchemeResponse
@@ -274,9 +262,6 @@ from ._save_config_data_set_response import SaveConfigDataSetResponse
 from ._submit_complaint_request import SubmitComplaintRequest
 from ._submit_complaint_response_body import SubmitComplaintResponseBody
 from ._submit_complaint_response import SubmitComplaintResponse
-from ._submit_precision_task_request import SubmitPrecisionTaskRequest
-from ._submit_precision_task_response_body import SubmitPrecisionTaskResponseBody
-from ._submit_precision_task_response import SubmitPrecisionTaskResponse
 from ._submit_quality_check_task_request import SubmitQualityCheckTaskRequest
 from ._submit_quality_check_task_response_body import SubmitQualityCheckTaskResponseBody
 from ._submit_quality_check_task_response import SubmitQualityCheckTaskResponse
@@ -361,12 +346,6 @@ from ._upload_data_v4response import UploadDataV4Response
 from ._upload_rule_request import UploadRuleRequest
 from ._upload_rule_response_body import UploadRuleResponseBody
 from ._upload_rule_response import UploadRuleResponse
-from ._verify_file_request import VerifyFileRequest
-from ._verify_file_response_body import VerifyFileResponseBody
-from ._verify_file_response import VerifyFileResponse
-from ._verify_sentence_request import VerifySentenceRequest
-from ._verify_sentence_response_body import VerifySentenceResponseBody
-from ._verify_sentence_response import VerifySentenceResponse
 from ._agent_info import AgentInfoInstructionTypeParamCustomPromptParamNameDescPairList
 from ._agent_info import AgentInfoInstructionTypeParamCustomPromptParam
 from ._agent_info import AgentInfoInstructionTypeParamFieldsParamNameDescPairList
@@ -420,6 +399,7 @@ from ._get_agent_task_result_response_body import GetAgentTaskResultResponseBody
 from ._get_agent_task_result_response_body import GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseErrors
 from ._get_agent_task_result_response_body import GetAgentTaskResultResponseBodyDataResponseVoiceprintResponse
 from ._get_agent_task_result_response_body import GetAgentTaskResultResponseBodyDataResponse
+from ._get_agent_task_result_response_body import GetAgentTaskResultResponseBodyDataUsage
 from ._get_agent_task_result_response_body import GetAgentTaskResultResponseBodyData
 from ._get_asr_vocab_response_body import GetAsrVocabResponseBodyDataWordsWord
 from ._get_asr_vocab_response_body import GetAsrVocabResponseBodyDataWords
@@ -446,9 +426,6 @@ from ._get_next_result_to_verify_response_body import GetNextResultToVerifyRespo
 from ._get_next_result_to_verify_response_body import GetNextResultToVerifyResponseBodyDataDialoguesDialogue
 from ._get_next_result_to_verify_response_body import GetNextResultToVerifyResponseBodyDataDialogues
 from ._get_next_result_to_verify_response_body import GetNextResultToVerifyResponseBodyData
-from ._get_precision_task_response_body import GetPrecisionTaskResponseBodyDataPrecisionsPrecision
-from ._get_precision_task_response_body import GetPrecisionTaskResponseBodyDataPrecisions
-from ._get_precision_task_response_body import GetPrecisionTaskResponseBodyData
 from ._get_quality_check_scheme_response_body import GetQualityCheckSchemeResponseBodyDataSchemeCheckTypeList
 from ._get_quality_check_scheme_response_body import GetQualityCheckSchemeResponseBodyData
 from ._get_result_response_body import GetResultResponseBodyDataResultInfoAgent
@@ -551,10 +528,6 @@ from ._get_scheme_task_config_response_body import GetSchemeTaskConfigResponseBo
 from ._get_scheme_task_config_response_body import GetSchemeTaskConfigResponseBodyDataDataConfig
 from ._get_scheme_task_config_response_body import GetSchemeTaskConfigResponseBodyDataSchemeList
 from ._get_scheme_task_config_response_body import GetSchemeTaskConfigResponseBodyData
-from ._get_score_info_response_body import GetScoreInfoResponseBodyDataScorePoScoreInfosScoreParam
-from ._get_score_info_response_body import GetScoreInfoResponseBodyDataScorePoScoreInfos
-from ._get_score_info_response_body import GetScoreInfoResponseBodyDataScorePo
-from ._get_score_info_response_body import GetScoreInfoResponseBodyData
 from ._get_skill_group_config_response_body import GetSkillGroupConfigResponseBodyDataAllRuleListRuleNameInfo
 from ._get_skill_group_config_response_body import GetSkillGroupConfigResponseBodyDataAllRuleList
 from ._get_skill_group_config_response_body import GetSkillGroupConfigResponseBodyDataRuleListRuleNameInfo
@@ -578,10 +551,6 @@ from ._list_asr_vocab_response_body import ListAsrVocabResponseBodyData
 from ._list_data_set_response_body import ListDataSetResponseBodyDataData
 from ._list_data_set_response_body import ListDataSetResponseBodyData
 from ._list_data_set_response_body import ListDataSetResponseBodyMessages
-from ._list_precision_task_response_body import ListPrecisionTaskResponseBodyDataPrecisionTaskPrecisionsPrecision
-from ._list_precision_task_response_body import ListPrecisionTaskResponseBodyDataPrecisionTaskPrecisions
-from ._list_precision_task_response_body import ListPrecisionTaskResponseBodyDataPrecisionTask
-from ._list_precision_task_response_body import ListPrecisionTaskResponseBodyData
 from ._list_quality_check_scheme_response_body import ListQualityCheckSchemeResponseBodyDataRuleListRules
 from ._list_quality_check_scheme_response_body import ListQualityCheckSchemeResponseBodyDataRuleList
 from ._list_quality_check_scheme_response_body import ListQualityCheckSchemeResponseBodyDataSchemeCheckTypeList
@@ -694,12 +663,6 @@ from ._upload_data_sync_for_llmresponse_body import UploadDataSyncForLLMResponse
 from ._upload_data_sync_for_llmresponse_body import UploadDataSyncForLLMResponseBodyDataResultInfo
 from ._upload_data_sync_for_llmresponse_body import UploadDataSyncForLLMResponseBodyData
 from ._upload_rule_response_body import UploadRuleResponseBodyData
-from ._verify_sentence_response_body import VerifySentenceResponseBodyDataDeltaSourceLine
-from ._verify_sentence_response_body import VerifySentenceResponseBodyDataDeltaSource
-from ._verify_sentence_response_body import VerifySentenceResponseBodyDataDeltaTargetLine
-from ._verify_sentence_response_body import VerifySentenceResponseBodyDataDeltaTarget
-from ._verify_sentence_response_body import VerifySentenceResponseBodyDataDelta
-from ._verify_sentence_response_body import VerifySentenceResponseBodyData
 
 __all__ = [
     AgentInfo,
@@ -799,9 +762,6 @@ __all__ = [
     DeleteDataSetRequest,
     DeleteDataSetResponseBody,
     DeleteDataSetResponse,
-    DeletePrecisionTaskRequest,
-    DeletePrecisionTaskResponseBody,
-    DeletePrecisionTaskResponse,
     DeleteQualityCheckSchemeRequest,
     DeleteQualityCheckSchemeResponseBody,
     DeleteQualityCheckSchemeResponse,
@@ -862,9 +822,6 @@ __all__ = [
     GetNextResultToVerifyRequest,
     GetNextResultToVerifyResponseBody,
     GetNextResultToVerifyResponse,
-    GetPrecisionTaskRequest,
-    GetPrecisionTaskResponseBody,
-    GetPrecisionTaskResponse,
     GetQualityCheckSchemeRequest,
     GetQualityCheckSchemeResponseBody,
     GetQualityCheckSchemeResponse,
@@ -895,9 +852,6 @@ __all__ = [
     GetSchemeTaskConfigRequest,
     GetSchemeTaskConfigResponseBody,
     GetSchemeTaskConfigResponse,
-    GetScoreInfoRequest,
-    GetScoreInfoResponseBody,
-    GetScoreInfoResponse,
     GetSkillGroupConfigRequest,
     GetSkillGroupConfigResponseBody,
     GetSkillGroupConfigResponse,
@@ -922,9 +876,6 @@ __all__ = [
     ListDataSetRequest,
     ListDataSetResponseBody,
     ListDataSetResponse,
-    ListPrecisionTaskRequest,
-    ListPrecisionTaskResponseBody,
-    ListPrecisionTaskResponse,
     ListQualityCheckSchemeRequest,
     ListQualityCheckSchemeResponseBody,
     ListQualityCheckSchemeResponse,
@@ -974,9 +925,6 @@ __all__ = [
     SubmitComplaintRequest,
     SubmitComplaintResponseBody,
     SubmitComplaintResponse,
-    SubmitPrecisionTaskRequest,
-    SubmitPrecisionTaskResponseBody,
-    SubmitPrecisionTaskResponse,
     SubmitQualityCheckTaskRequest,
     SubmitQualityCheckTaskResponseBody,
     SubmitQualityCheckTaskResponse,
@@ -1061,12 +1009,6 @@ __all__ = [
     UploadRuleRequest,
     UploadRuleResponseBody,
     UploadRuleResponse,
-    VerifyFileRequest,
-    VerifyFileResponseBody,
-    VerifyFileResponse,
-    VerifySentenceRequest,
-    VerifySentenceResponseBody,
-    VerifySentenceResponse,
     AgentInfoInstructionTypeParamCustomPromptParamNameDescPairList,
     AgentInfoInstructionTypeParamCustomPromptParam,
     AgentInfoInstructionTypeParamFieldsParamNameDescPairList,
@@ -1120,6 +1062,7 @@ __all__ = [
     GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseErrors,
     GetAgentTaskResultResponseBodyDataResponseVoiceprintResponse,
     GetAgentTaskResultResponseBodyDataResponse,
+    GetAgentTaskResultResponseBodyDataUsage,
     GetAgentTaskResultResponseBodyData,
     GetAsrVocabResponseBodyDataWordsWord,
     GetAsrVocabResponseBodyDataWords,
@@ -1146,9 +1089,6 @@ __all__ = [
     GetNextResultToVerifyResponseBodyDataDialoguesDialogue,
     GetNextResultToVerifyResponseBodyDataDialogues,
     GetNextResultToVerifyResponseBodyData,
-    GetPrecisionTaskResponseBodyDataPrecisionsPrecision,
-    GetPrecisionTaskResponseBodyDataPrecisions,
-    GetPrecisionTaskResponseBodyData,
     GetQualityCheckSchemeResponseBodyDataSchemeCheckTypeList,
     GetQualityCheckSchemeResponseBodyData,
     GetResultResponseBodyDataResultInfoAgent,
@@ -1251,10 +1191,6 @@ __all__ = [
     GetSchemeTaskConfigResponseBodyDataDataConfig,
     GetSchemeTaskConfigResponseBodyDataSchemeList,
     GetSchemeTaskConfigResponseBodyData,
-    GetScoreInfoResponseBodyDataScorePoScoreInfosScoreParam,
-    GetScoreInfoResponseBodyDataScorePoScoreInfos,
-    GetScoreInfoResponseBodyDataScorePo,
-    GetScoreInfoResponseBodyData,
     GetSkillGroupConfigResponseBodyDataAllRuleListRuleNameInfo,
     GetSkillGroupConfigResponseBodyDataAllRuleList,
     GetSkillGroupConfigResponseBodyDataRuleListRuleNameInfo,
@@ -1278,10 +1214,6 @@ __all__ = [
     ListDataSetResponseBodyDataData,
     ListDataSetResponseBodyData,
     ListDataSetResponseBodyMessages,
-    ListPrecisionTaskResponseBodyDataPrecisionTaskPrecisionsPrecision,
-    ListPrecisionTaskResponseBodyDataPrecisionTaskPrecisions,
-    ListPrecisionTaskResponseBodyDataPrecisionTask,
-    ListPrecisionTaskResponseBodyData,
     ListQualityCheckSchemeResponseBodyDataRuleListRules,
     ListQualityCheckSchemeResponseBodyDataRuleList,
     ListQualityCheckSchemeResponseBodyDataSchemeCheckTypeList,
@@ -1393,11 +1325,5 @@ __all__ = [
     UploadDataSyncForLLMResponseBodyDataResultInfoRules,
     UploadDataSyncForLLMResponseBodyDataResultInfo,
     UploadDataSyncForLLMResponseBodyData,
-    UploadRuleResponseBodyData,
-    VerifySentenceResponseBodyDataDeltaSourceLine,
-    VerifySentenceResponseBodyDataDeltaSource,
-    VerifySentenceResponseBodyDataDeltaTargetLine,
-    VerifySentenceResponseBodyDataDeltaTarget,
-    VerifySentenceResponseBodyDataDelta,
-    VerifySentenceResponseBodyData
+    UploadRuleResponseBodyData
 ]

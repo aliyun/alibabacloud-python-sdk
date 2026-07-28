@@ -24,10 +24,10 @@ class GetAgentTaskResultResponseBody(DaraModel):
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful. You can use this field to determine whether the request succeeded:
+        # Indicates whether the request was successful. You can use this field to determine whether the request was successful:
         # 
-        # - **true**: The request succeeded.
-        # - **false/null**: The request failed.
+        # - **true**: successful.
+        # - **false/null**: failed.
         self.success = success
 
     def validate(self):
@@ -81,42 +81,29 @@ class GetAgentTaskResultResponseBodyData(DaraModel):
         self,
         dialogues: List[main_models.GetAgentTaskResultResponseBodyDataDialogues] = None,
         error_message: str = None,
-        input_tokens: str = None,
         llm_request_id: str = None,
-        output_tokens: str = None,
         response: main_models.GetAgentTaskResultResponseBodyDataResponse = None,
         status: str = None,
         task_id: str = None,
-        total_tokens: str = None,
-        tyxm_plus_count: str = None,
-        tyxm_turbo_count: str = None,
+        usage: main_models.GetAgentTaskResultResponseBodyDataUsage = None,
         vid: str = None,
     ):
         self.dialogues = dialogues
         self.error_message = error_message
-        # The number of input tokens.
-        self.input_tokens = input_tokens
         # The request ID returned by the large language model service.
         self.llm_request_id = llm_request_id
-        # The number of output tokens.
-        self.output_tokens = output_tokens
         # The result of the computation task.
         self.response = response
         # The task status. Valid values:
         # 
-        # - 1: pending
-        # - 2: running
-        # - 3: succeeded
-        # - 4: failed
+        # - 1: pending.
+        # - 2: running.
+        # - 3: succeeded.
+        # - 4: failed.
         self.status = status
         # The task ID.
         self.task_id = task_id
-        # The total number of tokens.
-        self.total_tokens = total_tokens
-        # The number of times the plus model is used.
-        self.tyxm_plus_count = tyxm_plus_count
-        # The number of times the turbo model is used.
-        self.tyxm_turbo_count = tyxm_turbo_count
+        self.usage = usage
         # The session ID.
         self.vid = vid
 
@@ -127,6 +114,8 @@ class GetAgentTaskResultResponseBodyData(DaraModel):
                     v1.validate()
         if self.response:
             self.response.validate()
+        if self.usage:
+            self.usage.validate()
 
     def to_map(self):
         result = dict()
@@ -141,14 +130,8 @@ class GetAgentTaskResultResponseBodyData(DaraModel):
         if self.error_message is not None:
             result['ErrorMessage'] = self.error_message
 
-        if self.input_tokens is not None:
-            result['InputTokens'] = self.input_tokens
-
         if self.llm_request_id is not None:
             result['LlmRequestId'] = self.llm_request_id
-
-        if self.output_tokens is not None:
-            result['OutputTokens'] = self.output_tokens
 
         if self.response is not None:
             result['Response'] = self.response.to_map()
@@ -159,14 +142,8 @@ class GetAgentTaskResultResponseBodyData(DaraModel):
         if self.task_id is not None:
             result['TaskId'] = self.task_id
 
-        if self.total_tokens is not None:
-            result['TotalTokens'] = self.total_tokens
-
-        if self.tyxm_plus_count is not None:
-            result['TyxmPlusCount'] = self.tyxm_plus_count
-
-        if self.tyxm_turbo_count is not None:
-            result['TyxmTurboCount'] = self.tyxm_turbo_count
+        if self.usage is not None:
+            result['Usage'] = self.usage.to_map()
 
         if self.vid is not None:
             result['Vid'] = self.vid
@@ -184,14 +161,8 @@ class GetAgentTaskResultResponseBodyData(DaraModel):
         if m.get('ErrorMessage') is not None:
             self.error_message = m.get('ErrorMessage')
 
-        if m.get('InputTokens') is not None:
-            self.input_tokens = m.get('InputTokens')
-
         if m.get('LlmRequestId') is not None:
             self.llm_request_id = m.get('LlmRequestId')
-
-        if m.get('OutputTokens') is not None:
-            self.output_tokens = m.get('OutputTokens')
 
         if m.get('Response') is not None:
             temp_model = main_models.GetAgentTaskResultResponseBodyDataResponse()
@@ -203,17 +174,71 @@ class GetAgentTaskResultResponseBodyData(DaraModel):
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
 
-        if m.get('TotalTokens') is not None:
-            self.total_tokens = m.get('TotalTokens')
-
-        if m.get('TyxmPlusCount') is not None:
-            self.tyxm_plus_count = m.get('TyxmPlusCount')
-
-        if m.get('TyxmTurboCount') is not None:
-            self.tyxm_turbo_count = m.get('TyxmTurboCount')
+        if m.get('Usage') is not None:
+            temp_model = main_models.GetAgentTaskResultResponseBodyDataUsage()
+            self.usage = temp_model.from_map(m.get('Usage'))
 
         if m.get('Vid') is not None:
             self.vid = m.get('Vid')
+
+        return self
+
+class GetAgentTaskResultResponseBodyDataUsage(DaraModel):
+    def __init__(
+        self,
+        input_tokens: str = None,
+        output_tokens: str = None,
+        total_tokens: str = None,
+        tymx_plus_count: str = None,
+        tymx_turbo_count: str = None,
+    ):
+        self.input_tokens = input_tokens
+        self.output_tokens = output_tokens
+        self.total_tokens = total_tokens
+        self.tymx_plus_count = tymx_plus_count
+        self.tymx_turbo_count = tymx_turbo_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.input_tokens is not None:
+            result['InputTokens'] = self.input_tokens
+
+        if self.output_tokens is not None:
+            result['OutputTokens'] = self.output_tokens
+
+        if self.total_tokens is not None:
+            result['TotalTokens'] = self.total_tokens
+
+        if self.tymx_plus_count is not None:
+            result['TymxPlusCount'] = self.tymx_plus_count
+
+        if self.tymx_turbo_count is not None:
+            result['TymxTurboCount'] = self.tymx_turbo_count
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InputTokens') is not None:
+            self.input_tokens = m.get('InputTokens')
+
+        if m.get('OutputTokens') is not None:
+            self.output_tokens = m.get('OutputTokens')
+
+        if m.get('TotalTokens') is not None:
+            self.total_tokens = m.get('TotalTokens')
+
+        if m.get('TymxPlusCount') is not None:
+            self.tymx_plus_count = m.get('TymxPlusCount')
+
+        if m.get('TymxTurboCount') is not None:
+            self.tymx_turbo_count = m.get('TymxTurboCount')
 
         return self
 
@@ -228,7 +253,7 @@ class GetAgentTaskResultResponseBodyDataResponse(DaraModel):
     ):
         # The result of the custom prompt.
         self.customer_prompt_response = customer_prompt_response
-        # The field extraction result.
+        # The property extraction result.
         self.field_response = field_response
         # The service quality inspection result.
         self.service_inspection_response = service_inspection_response
@@ -538,7 +563,7 @@ class GetAgentTaskResultResponseBodyDataResponseTagCategoryResponse(DaraModel):
         self,
         tag_category_vo_list: List[main_models.GetAgentTaskResultResponseBodyDataResponseTagCategoryResponseTagCategoryVoList] = None,
     ):
-        # The list of tags.
+        # The list of labels.
         self.tag_category_vo_list = tag_category_vo_list
 
     def validate(self):
@@ -578,9 +603,9 @@ class GetAgentTaskResultResponseBodyDataResponseTagCategoryResponseTagCategoryVo
         remarks: str = None,
         result_labels: List[str] = None,
     ):
-        # The tag dimension.
+        # The label dimension.
         self.dimension = dimension
-        # Indicates whether the tag is matched.
+        # Indicates whether the label is matched.
         self.is_match = is_match
         # The sentences referenced in the reasoning.
         self.original_utterances = original_utterances
@@ -679,7 +704,7 @@ class GetAgentTaskResultResponseBodyDataResponseServiceInspectionResponseService
     ):
         # The inspection dimension.
         self.dimension = dimension
-        # Indicates whether the tag is matched.
+        # Indicates whether the label is matched.
         self.is_match = is_match
         # The sentences referenced in the reasoning.
         self.original_utterances = original_utterances
@@ -729,7 +754,7 @@ class GetAgentTaskResultResponseBodyDataResponseFieldResponse(DaraModel):
         self,
         field_vo_list: List[main_models.GetAgentTaskResultResponseBodyDataResponseFieldResponseFieldVoList] = None,
     ):
-        # The list of fields.
+        # The list of properties.
         self.field_vo_list = field_vo_list
 
     def validate(self):
@@ -768,13 +793,13 @@ class GetAgentTaskResultResponseBodyDataResponseFieldResponseFieldVoList(DaraMod
         remarks: str = None,
         value: str = None,
     ):
-        # The field name.
+        # The property name.
         self.name = name
         # The sentences referenced in the reasoning.
         self.original_utterances = original_utterances
         # The reasoning for the judgment.
         self.remarks = remarks
-        # The field value.
+        # The property value.
         self.value = value
 
     def validate(self):

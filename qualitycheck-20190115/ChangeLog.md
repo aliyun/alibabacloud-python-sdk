@@ -1,3 +1,19 @@
+2026-07-28 Version: 10.0.0
+- Delete API DeletePrecisionTask.
+- Delete API GetPrecisionTask.
+- Delete API GetScoreInfo.
+- Delete API ListPrecisionTask.
+- Delete API SubmitPrecisionTask.
+- Delete API VerifyFile.
+- Delete API VerifySentence.
+- Update API GetAgentTaskResult: add response parameters Body.Data.Usage.
+- Update API GetAgentTaskResult: delete response parameters Body.Data.InputTokens.
+- Update API GetAgentTaskResult: delete response parameters Body.Data.OutputTokens.
+- Update API GetAgentTaskResult: delete response parameters Body.Data.TotalTokens.
+- Update API GetAgentTaskResult: delete response parameters Body.Data.TyxmPlusCount.
+- Update API GetAgentTaskResult: delete response parameters Body.Data.TyxmTurboCount.
+
+
 2026-07-24 Version: 9.2.2
 - Update API GetAgentTaskResult: add response parameters Body.Data.Response.VoiceprintResponse.
 
