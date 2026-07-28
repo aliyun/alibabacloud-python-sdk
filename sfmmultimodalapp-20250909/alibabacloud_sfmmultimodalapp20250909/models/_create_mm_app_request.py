@@ -86,11 +86,13 @@ class CreateMmAppRequest(DaraModel):
 class CreateMmAppRequestModelConfig(DaraModel):
     def __init__(
         self,
+        app_type: str = None,
         history_limit: int = None,
         model_type: str = None,
         open_web_search: bool = None,
         text_modal: str = None,
     ):
+        self.app_type = app_type
         self.history_limit = history_limit
         self.model_type = model_type
         self.open_web_search = open_web_search
@@ -104,6 +106,9 @@ class CreateMmAppRequestModelConfig(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.app_type is not None:
+            result['AppType'] = self.app_type
+
         if self.history_limit is not None:
             result['HistoryLimit'] = self.history_limit
 
@@ -120,6 +125,9 @@ class CreateMmAppRequestModelConfig(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AppType') is not None:
+            self.app_type = m.get('AppType')
+
         if m.get('HistoryLimit') is not None:
             self.history_limit = m.get('HistoryLimit')
 

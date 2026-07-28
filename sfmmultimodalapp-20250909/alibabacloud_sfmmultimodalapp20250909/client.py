@@ -1292,6 +1292,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_command_with_options_async(request, runtime)
 
+    def list_domain_with_options(
+        self,
+        request: main_models.ListDomainRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDomainResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDomain',
+            version = '2025-09-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDomainResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_domain_with_options_async(
+        self,
+        request: main_models.ListDomainRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDomainResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDomain',
+            version = '2025-09-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDomainResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_domain(
+        self,
+        request: main_models.ListDomainRequest,
+    ) -> main_models.ListDomainResponse:
+        runtime = RuntimeOptions()
+        return self.list_domain_with_options(request, runtime)
+
+    async def list_domain_async(
+        self,
+        request: main_models.ListDomainRequest,
+    ) -> main_models.ListDomainResponse:
+        runtime = RuntimeOptions()
+        return await self.list_domain_with_options_async(request, runtime)
+
     def list_mm_app_with_options(
         self,
         request: main_models.ListMmAppRequest,
