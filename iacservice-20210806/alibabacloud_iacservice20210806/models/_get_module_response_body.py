@@ -13,8 +13,9 @@ class GetModuleResponseBody(DaraModel):
         module: main_models.GetModuleResponseBodyModule = None,
         request_id: str = None,
     ):
+        # The template information.
         self.module = module
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -62,18 +63,50 @@ class GetModuleResponseBodyModule(DaraModel):
         tags: List[main_models.GetModuleResponseBodyModuleTags] = None,
         version_strategy: str = None,
     ):
+        # The time when the template was created.
         self.create_time = create_time
+        # The template description.
         self.description = description
+        # The group information.
         self.group_info = group_info
+        # The latest version number.
         self.latest_version = latest_version
+        # The template ID.
         self.module_id = module_id
+        # The template name.
         self.name = name
+        # The storage path of the template.
         self.output_path = output_path
+        # The template source. Valid values:
+        # 
+        # - OSS: Imported from OSS.
+        # - Registry: Created from a template in the template center.
+        # - ExportTask: Exported from a resource export task.
+        # - Upload: Uploaded as a file.
+        # - Shared: Cloned from a shared template.
+        # - Editor: Created by using the online editor.
         self.source = source
+        # The source path of the template.
+        # 
+        # - If the source is Registry, the value is in the format of <workspace name>/<module name>:<module version>, such as terraform-alicloud-modules/rds:1.0.0.
+        # - If the source is OSS, the value is in the format of oss::<file link>, such as oss::https://terraform-pipeline.oss-eu-central-1.aliyuncs.com/code.zip.
+        # - If the source is ExportTask, the value is in the format of <export task ID>:<exported version>, such as ex-3b6cb9fa4751afff298da723c24ac:v1.
         self.source_path = source_path
+        # The path of the state file that corresponds to the template. Currently, only OSS paths are supported. The value is in the format of oss::<file OSS path>/terraform.tfstate.
         self.state_path = state_path
+        # The template status. Valid values:
+        # 
+        # - Creating: The template is being created.
+        # - Created: The template is created.
+        # 
+        # After the template is created, you can publish a version.
         self.status = status
+        # The tags of the template.
         self.tags = tags
+        # The version generation strategy. Valid values:
+        # 
+        # - Manual: Versions are generated manually. This is the default value.
+        # - SourcePathUpdated: A new version is generated when the sourcePath is modified.
         self.version_strategy = version_strategy
 
     def validate(self):
@@ -185,7 +218,9 @@ class GetModuleResponseBodyModuleTags(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The tag key of the template.
         self.tag_key = tag_key
+        # The tag value of the template.
         self.tag_value = tag_value
 
     def validate(self):
@@ -222,9 +257,13 @@ class GetModuleResponseBodyModuleGroupInfo(DaraModel):
         project_id: str = None,
         project_name: str = None,
     ):
+        # The group ID.
         self.group_id = group_id
+        # The group name.
         self.group_name = group_name
+        # The project ID.
         self.project_id = project_id
+        # The project name.
         self.project_name = project_name
 
     def validate(self):

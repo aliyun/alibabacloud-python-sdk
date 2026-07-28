@@ -16,10 +16,15 @@ class ListResourceExportTaskVersionsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of export task versions.
         self.export_tasks = export_tasks
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of results per page. Default value: 20. Minimum value: 1. Maximum value: 100.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -90,17 +95,34 @@ class ListResourceExportTaskVersionsResponseBodyExportTasks(DaraModel):
         status: str = None,
         variables: List[main_models.ListResourceExportTaskVersionsResponseBodyExportTasksVariables] = None,
     ):
+        # The creation time.
         self.create_time = create_time
+        # The description.
         self.description = description
+        # The execution duration.
         self.elapsed_time = elapsed_time
+        # The ID of the resource export task.
         self.export_task_id = export_task_id
+        # Saves the exported template as a module. If this parameter is not set, the template is automatically saved in the registry.
         self.export_to_module = export_to_module
+        # The resource export version.
         self.export_version = export_version
+        # The reason for the export failure.
         self.failed_reason = failed_reason
+        # The list of inclusion rules used when exporting resources.
         self.include_rules = include_rules
+        # The module configuration of the exported resources.
         self.modules = modules
+        # The name of the export task.
         self.name = name
+        # The version export status. Valid values:
+        # - Queue: queued
+        # - Pending: preparing to run
+        # - Success: succeeded
+        # - Errored: failed
+        # - Canceled: canceled.
         self.status = status
+        # The list of variables. Parameters of the exported resources are set as variables.
         self.variables = variables
 
     def validate(self):
@@ -224,7 +246,9 @@ class ListResourceExportTaskVersionsResponseBodyExportTasksVariables(DaraModel):
         properties: List[str] = None,
         resource_type: str = None,
     ):
+        # The list of Terraform resource properties corresponding to the resource type.
         self.properties = properties
+        # The resource type.
         self.resource_type = resource_type
 
     def validate(self):
@@ -260,8 +284,15 @@ class ListResourceExportTaskVersionsResponseBodyExportTasksModules(DaraModel):
         source_path: str = None,
         version: str = None,
     ):
+        # The module type where the exported template is stored. Two formats are supported: CloudRegistry and OSS. If the ExportToModule parameter is specified, both formats are returned. Otherwise, only CloudRegistry is returned.
         self.source = source
+        # The download URL of the module where the exported template is stored.
+        # 
+        # - If Source is set to CloudRegistry, the format is: "cloudregistry::iacservice//"
+        # 
+        # - If Source is set to OSS, the format is: "oss::https://.oss-ap-southeast-1.aliyuncs.com/xxx.zip".
         self.source_path = source_path
+        # The version of the module where the exported template is stored.
         self.version = version
 
     def validate(self):
@@ -302,7 +333,17 @@ class ListResourceExportTaskVersionsResponseBodyExportTasksIncludeRules(DaraMode
         key: str = None,
         values: List[str] = None,
     ):
+        # The name of the inclusion rule for resource export. Valid values:
+        # 
+        # - ResourceType: required. The resource type. Example: ALIYUN::VPC::VPC.
+        # - RegionId: required. The region to which the resource belongs. Only one region is supported. Example: ap-southeast-1.
+        # - \\<ResourceType>:Id: the resource ID. Example: ALIYUN::VPC::VPC:Id.
+        # - ResourceGroupId: the resource group ID. Example: rg-1234.
+        # - ZoneId: the zone to which the resource belongs. Only one zone is supported. Example: ap-southeast-1h.
+        # 
+        # Multiple filter conditions are combined by using the AND operator. A resource is matched only if all filter conditions are met.
         self.key = key
+        # The values of the inclusion rules for resource export.
         self.values = values
 
     def validate(self):
@@ -338,8 +379,18 @@ class ListResourceExportTaskVersionsResponseBodyExportTasksExportToModule(DaraMo
         source_path: str = None,
         state_path: str = None,
     ):
+        # The module type in which the exported template is saved. Valid values:
+        # 
+        # - OSS: OSS
+        # - Registry: Terraform Registry.
         self.source = source
+        # The path where the template content is saved.
+        # 
+        # - If Source is set to Registry, the format is: "cloudregistry::iacservice//"
+        # 
+        # - If Source is set to OSS, the format is: "oss::https://.oss-ap-southeast-1.aliyuncs.com/xxx.zip".
         self.source_path = source_path
+        # The path of the state file corresponding to the module.
         self.state_path = state_path
 
     def validate(self):

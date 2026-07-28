@@ -13,7 +13,9 @@ class GetResourceTypeResponseBody(DaraModel):
         request_id: str = None,
         resource_type: main_models.GetResourceTypeResponseBodyResourceType = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The detailed information about the resource type.
         self.resource_type = resource_type
 
     def validate(self):
@@ -55,6 +57,7 @@ class GetResourceTypeResponseBodyResourceType(DaraModel):
         properties: Dict[str, Any] = None,
         resource_detail_page_url: str = None,
         resource_list_page_url: str = None,
+        resource_type: str = None,
         status: str = None,
         status_start_version: str = None,
         subcategory: str = None,
@@ -63,20 +66,36 @@ class GetResourceTypeResponseBodyResourceType(DaraModel):
         terraform_resource_type: str = None,
         title: str = None,
     ):
+        # The description.
         self.description = description
+        # The collection of APIs associated with the resource.
         self.operations = operations
+        # The product code.
         self.product = product
+        # The product name.
         self.product_name = product_name
+        # The English name of the product.
         self.product_name_en = product_name_en
+        # The resource properties.
         self.properties = properties
+        # The URL of the resource details page.
         self.resource_detail_page_url = resource_detail_page_url
+        # The URL of the resources page.
         self.resource_list_page_url = resource_list_page_url
+        self.resource_type = resource_type
+        # The resource status.
         self.status = status
+        # The version from which the status takes effect.
         self.status_start_version = status_start_version
+        # The product category in Terraform.
         self.subcategory = subcategory
+        # Indicates whether export is supported.
         self.support_exported = support_exported
+        # The Terraform provider version.
         self.terraform_provider_version = terraform_provider_version
+        # The resource code in Terraform.
         self.terraform_resource_type = terraform_resource_type
+        # The title.
         self.title = title
 
     def validate(self):
@@ -115,6 +134,9 @@ class GetResourceTypeResponseBodyResourceType(DaraModel):
 
         if self.resource_list_page_url is not None:
             result['resourceListPageUrl'] = self.resource_list_page_url
+
+        if self.resource_type is not None:
+            result['resourceType'] = self.resource_type
 
         if self.status is not None:
             result['status'] = self.status
@@ -168,6 +190,9 @@ class GetResourceTypeResponseBodyResourceType(DaraModel):
         if m.get('resourceListPageUrl') is not None:
             self.resource_list_page_url = m.get('resourceListPageUrl')
 
+        if m.get('resourceType') is not None:
+            self.resource_type = m.get('resourceType')
+
         if m.get('status') is not None:
             self.status = m.get('status')
 
@@ -199,8 +224,11 @@ class GetResourceTypeResponseBodyResourceTypeOperations(DaraModel):
         operation_type: str = None,
         service_code: str = None,
     ):
+        # The API name.
         self.api_name = api_name
+        # The API version.
         self.api_version = api_version
+        # The operation type. Valid values: Write, Read.
         self.operation_type = operation_type
         # serviceCode
         self.service_code = service_code

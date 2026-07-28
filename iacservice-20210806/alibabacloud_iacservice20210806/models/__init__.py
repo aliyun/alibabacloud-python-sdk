@@ -142,6 +142,9 @@ from ._get_parameter_set_response import GetParameterSetResponse
 from ._get_project_request import GetProjectRequest
 from ._get_project_response_body import GetProjectResponseBody
 from ._get_project_response import GetProjectResponse
+from ._get_provider_document_request import GetProviderDocumentRequest
+from ._get_provider_document_response_body import GetProviderDocumentResponseBody
+from ._get_provider_document_response import GetProviderDocumentResponse
 from ._get_registry_module_request import GetRegistryModuleRequest
 from ._get_registry_module_response_body import GetRegistryModuleResponseBody
 from ._get_registry_module_response import GetRegistryModuleResponse
@@ -572,6 +575,9 @@ __all__ = [
     GetProjectRequest,
     GetProjectResponseBody,
     GetProjectResponse,
+    GetProviderDocumentRequest,
+    GetProviderDocumentResponseBody,
+    GetProviderDocumentResponse,
     GetRegistryModuleRequest,
     GetRegistryModuleResponseBody,
     GetRegistryModuleResponse,

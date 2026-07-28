@@ -12,9 +12,13 @@ class ListTerraformProviderVersionsRequest(DaraModel):
         next_token: str = None,
         usage: str = None,
     ):
+        # The keyword for searching versions. Fuzzy match is supported.
         self.keyword = keyword
+        # The maximum number of records to retrieve in a single request.
         self.max_results = max_results
+        # The pagination token for the next page. A value of null indicates that no more pages are available.
         self.next_token = next_token
+        # The usage. Set to Explorer to retrieve meta information.
         self.usage = usage
 
     def validate(self):

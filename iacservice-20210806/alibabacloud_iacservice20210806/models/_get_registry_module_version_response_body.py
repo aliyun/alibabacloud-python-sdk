@@ -11,7 +11,9 @@ class GetRegistryModuleVersionResponseBody(DaraModel):
         module_version: main_models.GetRegistryModuleVersionResponseBodyModuleVersion = None,
         request_id: str = None,
     ):
+        # The version information.
         self.module_version = module_version
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -55,14 +57,25 @@ class GetRegistryModuleVersionResponseBodyModuleVersion(DaraModel):
         source_url: str = None,
         version: str = None,
     ):
+        # The creation time.
         self.create_time = create_time
+        # The product page URL.
         self.detail_url = detail_url
+        # The number of downloads.
         self.downloads = downloads
+        # The template name.
         self.module_name = module_name
+        # The workspace name.
         self.namespace_name = namespace_name
+        # The provider type. Valid values:
+        # 
+        # - alicloud: Alibaba Cloud.
         self.provider = provider
+        # The template source.
         self.source = source
+        # The template source URL.
         self.source_url = source_url
+        # The version number.
         self.version = version
 
     def validate(self):

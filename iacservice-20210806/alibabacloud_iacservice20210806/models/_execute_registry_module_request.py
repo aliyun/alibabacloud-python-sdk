@@ -12,8 +12,11 @@ class ExecuteRegistryModuleRequest(DaraModel):
         client_token: str = None,
         parameters: Dict[str, Any] = None,
     ):
+        # The idempotency token. Format: [0-9a-zA-Z-]{1,64}. We recommend that you use a UUID.
+        # 
         # This parameter is required.
         self.client_token = client_token
+        # The set of parameters used by the template.
         self.parameters = parameters
 
     def validate(self):

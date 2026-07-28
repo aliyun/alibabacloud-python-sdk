@@ -10,6 +10,7 @@ class ManageTerraformStateResponseBody(DaraModel):
         job_id: str = None,
         request_id: str = None,
     ):
+        # The job ID.
         self.job_id = job_id
         # Id of the request
         self.request_id = request_id

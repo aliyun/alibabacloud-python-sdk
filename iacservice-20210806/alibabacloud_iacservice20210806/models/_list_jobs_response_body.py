@@ -16,10 +16,15 @@ class ListJobsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of jobs.
         self.jobs = jobs
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of results per page. Default value: 20. Minimum value: 1. Maximum value: 100.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -89,16 +94,46 @@ class ListJobsResponseBodyJobs(DaraModel):
         task_id: str = None,
         terraform_provider_version: str = None,
     ):
+        # The job configuration.
         self.config = config
+        # The time when the job was created.
         self.create_time = create_time
+        # The job description.
         self.description = description
+        # The execution duration.
         self.elapsed_time = elapsed_time
+        # The execution type. Valid values:
+        # 
+        # - Manual: manual execution. This is the default value.
+        # - Auto: automatic execution.
         self.execute_type = execute_type
+        # Indicates whether the assertion check passed.
         self.is_pass_assert_check = is_pass_assert_check
+        # The job ID.
         self.job_id = job_id
+        # The job status. Valid values:
+        # 
+        # - Pending: The initial status after the job is created.
+        # - PlanQueued: After the job is created, if no workflow is available, the job is queued.
+        # - Planning: The resource job is in the Plan execution phase.
+        # - ConfigProactiveInProgress: Compliance pre-check is in progress. The compliance pre-check feature must be enabled for the account.
+        # - ConfigProactiveSuccess: Compliance pre-check succeeded. The compliance pre-check feature must be enabled for the account.
+        # - Planned: The resource job has completed the Plan execution.
+        # - PlannedAndFinished: After the Plan execution is complete, no diff is found. This is a final status.
+        # - Confirmed: The resource job is waiting for confirmation after the Plan execution is complete.
+        # - ApplyQueued: During job execution, if no workflow is available, the job is queued.
+        # - Applying: The resource job is in the Apply execution phase.
+        # - Applied: The resource job has completed the Apply execution. This is a final status.
+        # - Errored: The job execution encountered an error. This is a final status.
+        # - Canceled: The job execution was canceled. This is a final status.
+        # - Discarded: The plan of the resource job was discarded. This is a final status.
+        # - ConfigProactiveFailure: Compliance pre-check failed. The compliance pre-check feature must be enabled for the account.
         self.status = status
+        # The status details.
         self.status_detail = status_detail
+        # The task ID.
         self.task_id = task_id
+        # The Terraform provider version.
         self.terraform_provider_version = terraform_provider_version
 
     def validate(self):
@@ -201,10 +236,15 @@ class ListJobsResponseBodyJobsConfig(DaraModel):
         resources_changed: str = None,
         sub_command: str = None,
     ):
+        # Indicates whether the job is a destroy job.
         self.is_destroy = is_destroy
+        # The template description.
         self.module_description = module_description
+        # The template version.
         self.module_version = module_version
+        # The resource change details.
         self.resources_changed = resources_changed
+        # The operation command.
         self.sub_command = sub_command
 
     def validate(self):

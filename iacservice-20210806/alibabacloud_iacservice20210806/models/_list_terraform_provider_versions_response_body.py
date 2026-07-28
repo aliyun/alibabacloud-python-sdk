@@ -16,10 +16,15 @@ class ListTerraformProviderVersionsResponseBody(DaraModel):
         total_count: int = None,
         versions: List[main_models.ListTerraformProviderVersionsResponseBodyVersions] = None,
     ):
+        # The maximum number of records retrieved in a single request.
         self.max_results = max_results
+        # The pagination token for the next page. An empty value indicates that no more pages are available.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The total number of records.
         self.total_count = total_count
+        # The list of versions.
         self.versions = versions
 
     def validate(self):
@@ -81,8 +86,11 @@ class ListTerraformProviderVersionsResponseBodyVersions(DaraModel):
         status: str = None,
         version: str = None,
     ):
+        # The publish time.
         self.published_time = published_time
+        # The status.
         self.status = status
+        # The version.
         self.version = version
 
     def validate(self):

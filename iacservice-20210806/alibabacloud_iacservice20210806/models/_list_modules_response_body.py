@@ -16,10 +16,15 @@ class ListModulesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of templates.
         self.modules = modules
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of results per page. Default value: 20. Minimum value: 1. Maximum value: 100.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -88,15 +93,35 @@ class ListModulesResponseBodyModules(DaraModel):
         status: str = None,
         tags: List[main_models.ListModulesResponseBodyModulesTags] = None,
     ):
+        # The time when the template was created.
         self.create_time = create_time
+        # Indicates whether deletion protection is enabled. Deletion protection is automatically enabled when the template is associated with a node, which prevents the template from being deleted.
         self.deletion_protection = deletion_protection
+        # The description of the template.
         self.description = description
+        # The group information.
         self.group_info = group_info
+        # The latest version number.
         self.latest_version = latest_version
+        # The template ID.
         self.module_id = module_id
+        # The template name.
         self.name = name
+        # The template source. Valid values:
+        # 
+        # - OSS: imported from OSS.
+        # - Registry: created from a template in the template center.
+        # - ExportTask: exported from a resource export task.
+        # - Upload: uploaded as a file.
+        # - Shared: cloned from a shared template.
+        # - Editor: created by using the online editor.
         self.source = source
+        # The template status. Valid values:
+        # 
+        # - Creating: the template is being created.
+        # - Created: the template has been created. You can publish a version after the template is created.
         self.status = status
+        # The list of template tags.
         self.tags = tags
 
     def validate(self):
@@ -192,9 +217,13 @@ class ListModulesResponseBodyModulesTags(DaraModel):
         tag_value: str = None,
         value: str = None,
     ):
+        # The tag key of the template.
         self.key = key
+        # The tag key of the template.
         self.tag_key = tag_key
+        # The tag value of the template.
         self.tag_value = tag_value
+        # The tag value of the template.
         self.value = value
 
     def validate(self):
@@ -243,9 +272,13 @@ class ListModulesResponseBodyModulesGroupInfo(DaraModel):
         project_id: str = None,
         project_name: str = None,
     ):
+        # The group ID.
         self.group_id = group_id
+        # The group name.
         self.group_name = group_name
+        # The project ID.
         self.project_id = project_id
+        # The project name.
         self.project_name = project_name
 
     def validate(self):

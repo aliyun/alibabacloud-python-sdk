@@ -19,14 +19,34 @@ class UpdateModuleAttributeRequest(DaraModel):
         tags: List[main_models.UpdateModuleAttributeRequestTags] = None,
         version_strategy: str = None,
     ):
+        # The idempotence token. Format: [0-9a-zA-Z-]{1,64}. We recommend that you use a UUID.
+        # 
         # This parameter is required.
         self.client_token = client_token
+        # The template description. The description can be up to 256 characters in length.
         self.description = description
+        # The project group information.
         self.group_info = group_info
+        # The template name. The name must meet the following requirements:
+        # 
+        # - The name must be 2 to 128 characters in length.
+        # - The name can contain letters, digits, Chinese characters, hyphens (-), underscores (_), and periods (.). It cannot start or end with a hyphen, underscore, or period.
+        # - The name must be unique among all templates within the current account.
         self.name = name
+        # The path of the template source.
+        # 
+        # - If the source is Registry, set this parameter to <workspace name>/<module name>:<module version>. Example: terraform-alicloud-modules/rds:1.0.0.
+        # - If the source is OSS, set this parameter to oss::<file URL>. The file must be a ZIP file. Example: oss::https://terraform-pipeline.oss-eu-central-1.aliyuncs.com/code.zip.
+        # - If the source is ExportTask, set this parameter to <export task ID>:<exported version>. Example: ex-3b6cb9fa4751afff298da723c24ac:v1.
         self.source_path = source_path
+        # The path of the state file that corresponds to the template. Currently, only OSS paths are supported. Set this parameter to oss::<OSS file path>/terraform.tfstate.
         self.state_path = state_path
+        # The tags of the template.
         self.tags = tags
+        # The version generation strategy. Valid values:
+        # 
+        # - Manual: manually generate versions. This is the default value.
+        # - SourcePathUpdated: a new version is generated when sourcePath is modified.
         self.version_strategy = version_strategy
 
     def validate(self):
@@ -108,7 +128,9 @@ class UpdateModuleAttributeRequestTags(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The tag key of the template.
         self.tag_key = tag_key
+        # The tag value of the template.
         self.tag_value = tag_value
 
     def validate(self):
@@ -143,7 +165,9 @@ class UpdateModuleAttributeRequestGroupInfo(DaraModel):
         group_id: str = None,
         project_id: str = None,
     ):
+        # The group ID.
         self.group_id = group_id
+        # The project ID.
         self.project_id = project_id
 
     def validate(self):

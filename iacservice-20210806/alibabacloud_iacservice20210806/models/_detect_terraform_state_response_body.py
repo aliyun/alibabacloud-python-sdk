@@ -10,6 +10,7 @@ class DetectTerraformStateResponseBody(DaraModel):
         detection_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the detection task.
         self.detection_id = detection_id
         # Id of the request
         self.request_id = request_id

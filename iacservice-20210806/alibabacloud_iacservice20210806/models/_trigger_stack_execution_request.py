@@ -15,14 +15,27 @@ class TriggerStackExecutionRequest(DaraModel):
         code_package_path: str = None,
         code_version_id: str = None,
     ):
+        # Operation to execute  
+        # - terraform plan  
+        # - terraform apply  
+        # - state detect
+        # 
         # This parameter is required.
         self.action = action
+        # Collection of changed files. You can specify only the folders containing changed files.
+        # 
         # This parameter is required.
         self.changed_folders = changed_folders
+        # Idempotent token. Format: [0-9a-zA-Z-]{1,64}. We recommend using a UUID.
+        # 
         # This parameter is required.
         self.client_token = client_token
+        # Stack code path. Currently, only Stacks created through IaC templates are supported.  
+        # Parameter format: iacservice::{moduleId}
+        # 
         # This parameter is required.
         self.code_package_path = code_package_path
+        # Code version of the Stack to trigger
         self.code_version_id = code_version_id
 
     def validate(self):

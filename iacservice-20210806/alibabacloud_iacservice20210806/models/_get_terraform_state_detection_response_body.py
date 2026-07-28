@@ -13,6 +13,7 @@ class GetTerraformStateDetectionResponseBody(DaraModel):
         job: main_models.GetTerraformStateDetectionResponseBodyJob = None,
         request_id: str = None,
     ):
+        # The job details.
         self.job = job
         # Id of the request
         self.request_id = request_id
@@ -55,11 +56,24 @@ class GetTerraformStateDetectionResponseBodyJob(DaraModel):
         status: str = None,
         type: str = None,
     ):
+        # The collection of resources with state changes.
         self.changed_resources = changed_resources
+        # The collection of resources with state drift.
         self.drifted_resources = drifted_resources
+        # The error message.
         self.error_message = error_message
+        # The task identifier. For a Stack task, the value is in the format of <$stackId>:<$deploymentName>. For a Task task, the value is <$TaskId>.
         self.identifier = identifier
+        # The job status. Valid values:
+        # 
+        # - Pending: the initial status after the job is created.
+        # - PlanQueued: the job is queued because no containers are available after the job is created.
+        # - Planning: the resource job is in the Plan execution phase.
+        # - Planned: the resource job has completed the Plan execution.
+        # - PlannedAndFinished: no differences are found after the Plan execution is complete. The job is in a final status.
+        # - Errored: the job execution encountered an error and entered a final status.
         self.status = status
+        # The task type.
         self.type = type
 
     def validate(self):
@@ -137,9 +151,13 @@ class GetTerraformStateDetectionResponseBodyJobDriftedResources(DaraModel):
         resource_id: str = None,
         resource_identifier: str = None,
     ):
+        # The collection of attribute drifts.
         self.attribute_drifts = attribute_drifts
+        # The drift type.
         self.drifted_type = drifted_type
+        # The Terraform resource ID.
         self.resource_id = resource_id
+        # The identifier of the resource in the Terraform template. For a Stack task, the value is in the format of <$componetName>:<$resourceName>. For a Task task, the value is <$resourceName>.
         self.resource_identifier = resource_identifier
 
     def validate(self):
@@ -195,8 +213,11 @@ class GetTerraformStateDetectionResponseBodyJobDriftedResourcesAttributeDrifts(D
         remote_value: str = None,
         state_value: str = None,
     ):
+        # The attribute name.
         self.attribute_path = attribute_path
+        # The server-side state value.
         self.remote_value = remote_value
+        # The value stored in the state file.
         self.state_value = state_value
 
     def validate(self):
@@ -240,10 +261,15 @@ class GetTerraformStateDetectionResponseBodyJobChangedResources(DaraModel):
         resource_id: str = None,
         resource_identifier: str = None,
     ):
+        # The collection of attribute changes.
         self.attribute_changes = attribute_changes
+        # The change type.
         self.changed_type = changed_type
+        # Indicates whether resource drift exists.
         self.has_drift = has_drift
+        # The Terraform resource ID.
         self.resource_id = resource_id
+        # The identifier of the resource in the Terraform template. For a Stack task, the value is in the format of <$componetName>:<$resourceName>. For a Task task, the value is <$resourceName>.
         self.resource_identifier = resource_identifier
 
     def validate(self):
@@ -305,8 +331,11 @@ class GetTerraformStateDetectionResponseBodyJobChangedResourcesAttributeChanges(
         remote_value: str = None,
         template_value: str = None,
     ):
+        # The attribute name.
         self.attribute_path = attribute_path
+        # The server-side state value.
         self.remote_value = remote_value
+        # The template-declared value.
         self.template_value = template_value
 
     def validate(self):

@@ -16,10 +16,15 @@ class ListRegistryNamespacesResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
     ):
+        # The total number of records.
         self.count = count
+        # The maximum number of records returned at a time.
         self.max_results = max_results
+        # The list of workspaces.
         self.namespaces = namespaces
+        # The token for the next page. A value of null indicates that no more pages are available.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -86,13 +91,21 @@ class ListRegistryNamespacesResponseBodyNamespaces(DaraModel):
         shared_accounts: List[int] = None,
         type: str = None,
     ):
+        # The permissions.
         self.acl = acl
+        # The creation time.
         self.create_time = create_time
+        # The workspace description.
         self.description = description
+        # The administrator name.
         self.maintainer = maintainer
+        # The number of Registry templates in the workspace.
         self.modules = modules
+        # The workspace name.
         self.namespace_name = namespace_name
+        # The list of shared accounts.
         self.shared_accounts = shared_accounts
+        # The workspace type.
         self.type = type
 
     def validate(self):

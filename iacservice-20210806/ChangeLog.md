@@ -1,3 +1,14 @@
+2026-07-28 Version: 2.9.0
+- Support API GetProviderDocument.
+- Update API CreateStack: add request parameters body.parameterSetIds.
+- Update API CreateTask: add request parameters body.skipRegionValidation.
+- Update API CreateTask: add request parameters body.terraformProviderVersion.
+- Update API GetResourceType: add response parameters Body.resourceType.resourceType.
+- Update API GetTask: add response parameters Body.task.skipRegionValidation.
+- Update API UpdateTaskAttribute: add request parameters body.skipRegionValidation.
+- Update API UpdateTaskAttribute: add request parameters body.terraformProviderVersion.
+
+
 2026-05-15 Version: 2.8.3
 - Update API CreateParameterSet: add request parameters body.parameters.$.secret.
 - Update API CreateTask: add request parameters body.parameterSetIds.

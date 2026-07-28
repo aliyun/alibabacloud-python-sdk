@@ -12,9 +12,13 @@ class ListProjectShrinkRequest(DaraModel):
         page_size: str = None,
         tag_shrink: str = None,
     ):
+        # The search keyword. Name-based search is supported.
         self.keyword = keyword
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of results per page. Default value: 20. Minimum value: 1. Maximum value: 100.
         self.page_size = page_size
+        # The list of tags.
         self.tag_shrink = tag_shrink
 
     def validate(self):

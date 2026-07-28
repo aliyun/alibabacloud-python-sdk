@@ -15,10 +15,15 @@ class UploadModuleRequest(DaraModel):
         namespace_name: str = None,
         url: str = None,
     ):
+        # The template content.
         self.code = code
+        # The module ID. This parameter is valid and required when resourceType is set to Module.
         self.module_id = module_id
+        # The name of the module. This parameter is valid and required when resourceType is set to RegistryModule.
         self.module_name = module_name
+        # The workspace name. This parameter is valid and required when resourceType is set to RegistryModule.
         self.namespace_name = namespace_name
+        # The local zip file to upload. The file size cannot exceed 10 MB.
         self.url = url
 
     def validate(self):

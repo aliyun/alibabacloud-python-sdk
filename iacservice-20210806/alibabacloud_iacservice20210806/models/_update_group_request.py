@@ -25,20 +25,38 @@ class UpdateGroupRequest(DaraModel):
         trigger_config: List[main_models.UpdateGroupRequestTriggerConfig] = None,
         trigger_resource_type: List[str] = None,
     ):
+        # Specifies whether to automatically delete the group.
         self.auto_destroy = auto_destroy
+        # Specifies whether to enable the automatic trigger policy. Valid values: - **true**: enabled. - **false**: disabled.
         self.auto_trigger = auto_trigger
+        # The idempotency token. Format: [0-9a-zA-Z-]{1,64}. We recommend that you use a UUID.
+        # 
         # This parameter is required.
         self.client_token = client_token
+        # The group description.
         self.description = description
+        # Specifies whether to forcibly use the group configuration.
         self.forced_setting = forced_setting
+        # The group name.
         self.name = name
+        # The notification configuration.
         self.notify_config = notify_config
+        # The list of notification operation types.
         self.notify_operation_types = notify_operation_types
+        # The RAM role (1-128 characters). The system assumes this role to execute the template when a new job is triggered. This parameter is required when the job trigger method is not manual.
         self.ram_role = ram_role
+        # The list of export fields for the report.
         self.report_export_field = report_export_field
+        # The export path for the execution report. OSS paths are supported.
         self.report_export_path = report_export_path
+        # The Terraform Provider version. Select a Terraform Provider version. Nodes in the group execute plans based on the specified Terraform Provider version. The version configured on a node takes higher priority.
         self.terraform_provider_version = terraform_provider_version
+        # The trigger policy. This parameter cannot be empty when autoTrigger is set to true.
         self.trigger_config = trigger_config
+        # The resource type that triggers execution. Valid values:
+        # 
+        # - Task: regular node.
+        # - SceneTestingTask: scenario-based testing node.
         self.trigger_resource_type = trigger_resource_type
 
     def validate(self):
@@ -162,7 +180,12 @@ class UpdateGroupRequestTriggerConfig(DaraModel):
         trigger_strategy: str = None,
         trigger_value: str = None,
     ):
+        # The trigger strategy. Valid values:
+        # 
+        # - ProviderNewVersion: triggered when a new Provider version is released.
+        # - Cron: triggered on a schedule.
         self.trigger_strategy = trigger_strategy
+        # The policy value that must be maintained for scheduled triggers. This value is a cron expression.
         self.trigger_value = trigger_value
 
     def validate(self):
@@ -197,7 +220,9 @@ class UpdateGroupRequestNotifyConfig(DaraModel):
         notify_path: str = None,
         notify_type: str = None,
     ):
+        # The path configuration for notifications.
         self.notify_path = notify_path
+        # The notification type. Valid values: DingDing.
         self.notify_type = notify_type
 
     def validate(self):

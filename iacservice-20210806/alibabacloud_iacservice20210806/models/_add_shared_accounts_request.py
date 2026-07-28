@@ -13,8 +13,18 @@ class AddSharedAccountsRequest(DaraModel):
         resource_id: str = None,
         resource_type: str = None,
     ):
+        # The list of Alibaba Cloud account IDs.
         self.account_ids = account_ids
+        # The ID of the shared resource.
+        # 
+        #  - If the type is Namespace, set this parameter to the workspace name. 
+        # 
+        # - If the type is RegistryModule, set this parameter to \\<namespaceName>/\\<ModuleName>.
         self.resource_id = resource_id
+        # The resource type. Valid values:
+        # 
+        # - RegistryModule: Registry template.
+        # - Namespace: workspace.
         self.resource_type = resource_type
 
     def validate(self):

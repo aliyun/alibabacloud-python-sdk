@@ -16,10 +16,15 @@ class ListProductsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The pagination token.
         self.max_results = max_results
+        # The maximum number of results per page. Valid values: 0 to 200. Default value: 100.
         self.next_token = next_token
+        # The product list.
         self.products = products
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -89,16 +94,27 @@ class ListProductsResponseBodyProducts(DaraModel):
         support_terraformer: bool = None,
         terraform_provider_version: str = None,
     ):
+        # The first-level category name.
         self.first_category_name = first_category_name
+        # The first-level category name in English.
         self.first_category_name_en = first_category_name_en
+        # The product name.
         self.product = product
+        # The product name.
         self.product_name = product_name
+        # The product name in English.
         self.product_name_en = product_name_en
+        # The second-level category name.
         self.second_category_name = second_category_name
+        # The second-level category name in English.
         self.second_category_name_en = second_category_name_en
+        # The status.
         self.status = status
+        # The product category in Terraform.
         self.subcategory = subcategory
+        # Specifies whether Terraformer is supported.
         self.support_terraformer = support_terraformer
+        # The Terraform Provider version.
         self.terraform_provider_version = terraform_provider_version
 
     def validate(self):

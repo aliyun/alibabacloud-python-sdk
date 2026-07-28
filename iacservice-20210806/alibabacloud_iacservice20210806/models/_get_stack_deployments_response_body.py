@@ -14,9 +14,11 @@ class GetStackDeploymentsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The deployment results of the stack.
         self.deployments = deployments
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -78,20 +80,64 @@ class GetStackDeploymentsResponseBodyDeployments(DaraModel):
         status: str = None,
         task_id: str = None,
     ):
+        # The configuration item.
         self.config = config
+        # The configuration version, such as v1. The initial value is v1. The version number increments each time the stack is updated or refreshed and the configuration changes.
         self.config_version = config_version
+        # The creation time.
         self.create_time = create_time
+        # The deployment name.
         self.deployment_name = deployment_name
+        # The deployment number. The deployment number of each stack starts from 1 and increments each time a deployment is triggered.
         self.deployment_no = deployment_no
+        # Deprecated field.
         self.deployment_version = deployment_version
+        # The execution duration, in milliseconds.
         self.elapsed_time = elapsed_time
+        # The execution type.
+        # 
+        # Manual: manual execution (default).
+        # 
+        # Auto: automatic execution.
         self.execute_type = execute_type
+        # The failure reason.
         self.failed_reason = failed_reason
+        # The job ID.
         self.job_id = job_id
+        # The outputs.
         self.outputs = outputs
+        # The parameter set content.
         self.parameters = parameters
+        # The state file output results.
         self.plan_outputs = plan_outputs
+        # The deployment status.
+        # | Name | Description |
+        # |------|------|
+        # | Pending | The initial status after a deployment is created. |
+        # | PriorityQueued | The deployment is queued by priority. |
+        # | PlanQueued | The deployment is queued because no workflow is available after the deployment is created. |
+        # | ApplyQueued | The deployment is queued because no workflow is available during execution. |
+        # | Planning | The resource deployment is in the Plan phase. |
+        # | Planned | The resource deployment has completed the Plan phase. |
+        # | ConfigProactiveInProgress | A compliance pre-check is in progress. |
+        # | ConfigProactiveSuccess | The compliance pre-check succeeded. |
+        # | DetectInProgress | Drift detection is in progress. |
+        # | ImportQueued | The deployment is queued because no workflow is available during the Import phase. |
+        # | Importing | The resource deployment is in the Import phase. |
+        # | Imported | The resource deployment has completed the Import phase. |
+        # | StateQueued | The deployment is queued because no workflow is available during the state command execution. |
+        # | Stating | The resource deployment is executing the state command. |
+        # | Stated | The resource deployment has completed the state command execution. |
+        # | Confirmed | The resource deployment has been confirmed after the Plan phase. |
+        # | PlannedAndFinished | No differences were found after the Plan phase. The deployment is in a final status. |
+        # | Applying | The resource deployment is in the Apply phase. |
+        # | Applied | The resource deployment has completed the Apply phase. |
+        # | Discarded | The resource deployment has been discarded and is in a final status. |
+        # | Errored | The deployment encountered an error and is in a final status. |
+        # | ConfigProactiveFailure | The compliance pre-check failed. |
+        # | Canceled | The deployment has been canceled and is in a final status. |.
         self.status = status
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -235,9 +281,17 @@ class GetStackDeploymentsResponseBodyDeploymentsPlanOutputs(DaraModel):
         resource_changes: List[main_models.GetStackDeploymentsResponseBodyDeploymentsPlanOutputsResourceChanges] = None,
         stack_module_name: str = None,
     ):
+        # The change type of the component. Valid values:
+        # - create: all resource changes in the component are additions.
+        # - delete: all resource changes in the component are deletions.
+        # - read: all resource changes in the component are read operations.
+        # - update: resource changes in the component include two or more types among additions, deletions, and read operations.
         self.module_action = module_action
+        # The number of resources to be added, updated, and destroyed in this deployment.
         self.module_action_detail = module_action_detail
+        # The resource change information.
         self.resource_changes = resource_changes
+        # The component name of the stack.
         self.stack_module_name = stack_module_name
 
     def validate(self):
@@ -296,8 +350,11 @@ class GetStackDeploymentsResponseBodyDeploymentsPlanOutputsResourceChanges(DaraM
         resource_actions: List[str] = None,
         resource_identifier: str = None,
     ):
+        # The difference information of the resource change.
         self.change = change
+        # The types of resource change actions included in this resource change.
         self.resource_actions = resource_actions
+        # The unique identifier of the resource.
         self.resource_identifier = resource_identifier
 
     def validate(self):
@@ -339,8 +396,11 @@ class GetStackDeploymentsResponseBodyDeploymentsPlanOutputsModuleActionDetail(Da
         change: int = None,
         destroy: int = None,
     ):
+        # The number of resources to be created.
         self.add = add
+        # The number of resources to be changed.
         self.change = change
+        # The number of resources to be destroyed.
         self.destroy = destroy
 
     def validate(self):
@@ -385,11 +445,16 @@ class GetStackDeploymentsResponseBodyDeploymentsParameters(DaraModel):
         type: str = None,
         value: str = None,
     ):
+        # The default value of the parameter.
         self.default_value = default_value
+        # The description.
         self.description = description
+        # The parameter name.
         self.name = name
         self.sensitive = sensitive
+        # The parameter type.
         self.type = type
+        # The parameter value.
         self.value = value
 
     def validate(self):
@@ -451,10 +516,15 @@ class GetStackDeploymentsResponseBodyDeploymentsOutputs(DaraModel):
         type: str = None,
         value: str = None,
     ):
+        # The description.
         self.description = description
+        # The expression, which can reference component outputs. Format: component.{component name}.{component output name}.
         self.expression = expression
+        # The name.
         self.name = name
+        # The parameter type.
         self.type = type
+        # The actual value after the deployment is completed.
         self.value = value
 
     def validate(self):
@@ -507,7 +577,11 @@ class GetStackDeploymentsResponseBodyDeploymentsConfig(DaraModel):
         auto_apply: bool = None,
         is_destroy: bool = None,
     ):
+        # Specifies whether to automatically execute the task. Default value: false. Valid values:
+        # - **false**: No.
+        # - **true**: Yes.
         self.auto_apply = auto_apply
+        # Specifies whether this is a destroy job.
         self.is_destroy = is_destroy
 
     def validate(self):

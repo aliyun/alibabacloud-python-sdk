@@ -10,8 +10,17 @@ class ListParameterSetRelationRequest(DaraModel):
         resource_id: str = None,
         resource_type: str = None,
     ):
+        # The ID of the resource. For ModuleVersion, concatenate <moduleId>-<versionId>.
+        # 
         # This parameter is required.
         self.resource_id = resource_id
+        # The type of the resource. Valid values:
+        # - Module
+        # - ModuleVersion
+        # - Task
+        # - SceneTestingTask
+        # - Stack.
+        # 
         # This parameter is required.
         self.resource_type = resource_type
 

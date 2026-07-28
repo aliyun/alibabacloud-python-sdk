@@ -14,10 +14,19 @@ class AssociateGroupRequest(DaraModel):
         resource_ids: List[str] = None,
         resource_type: str = None,
     ):
+        # The idempotence token. Format: [0-9a-zA-Z-]{1,64}. Use a UUID.
         self.client_token = client_token
+        # The project ID.
         self.project_id = project_id
+        # The list of resource IDs.
+        # 
         # This parameter is required.
         self.resource_ids = resource_ids
+        # The resource type. Valid values:
+        # 
+        # - SceneTestingTask: scenario-based testing task.
+        # - Task: regular task.
+        # - Module: template.
         self.resource_type = resource_type
 
     def validate(self):

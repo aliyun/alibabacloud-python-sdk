@@ -16,10 +16,15 @@ class ListGroupRequest(DaraModel):
         project_id: str = None,
         tag: List[main_models.ListGroupRequestTag] = None,
     ):
+        # The search keyword. Name-based search is supported.
         self.keyword = keyword
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of results to return per page. Default value: 20. Minimum value: 1. Maximum value: 100.
         self.page_size = page_size
+        # The project ID.
         self.project_id = project_id
+        # The list of tags.
         self.tag = tag
 
     def validate(self):
@@ -80,7 +85,9 @@ class ListGroupRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):

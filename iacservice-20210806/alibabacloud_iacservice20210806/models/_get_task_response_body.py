@@ -13,8 +13,9 @@ class GetTaskResponseBody(DaraModel):
         request_id: str = None,
         task: main_models.GetTaskResponseBodyTask = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The task information.
         self.task = task
 
     def validate(self):
@@ -65,6 +66,7 @@ class GetTaskResponseBodyTask(DaraModel):
         protection_strategy: List[str] = None,
         ram_role: str = None,
         skip_property_validation: bool = None,
+        skip_region_validation: bool = None,
         status: str = None,
         tags: List[main_models.GetTaskResponseBodyTaskTags] = None,
         task_backend: main_models.GetTaskResponseBodyTaskTaskBackend = None,
@@ -73,29 +75,62 @@ class GetTaskResponseBodyTask(DaraModel):
         terraform_version: str = None,
         trigger_strategy: str = None,
     ):
+        # Indicates whether the task is automatically executed.
         self.auto_apply = auto_apply
+        # Indicates whether automatic deletion is enabled. When enabled, resources are automatically destroyed after the task is completed.
         self.auto_destroy = auto_destroy
+        # The time when the task was created.
         self.create_time = create_time
+        # The job ID of the current task.
         self.current_job_id = current_job_id
+        # The current job status.
         self.current_job_status = current_job_status
+        # Indicates whether deletion protection is enabled.
         self.deletion_protection = deletion_protection
+        # The description of the task.
         self.description = description
+        # The group information.
         self.group_info = group_info
+        # Specifies whether to use a state file. Default value: false. This parameter is applicable to templates that originate from resource export. Only one task can use this parameter at a time.
         self.init_module_state = init_module_state
+        # The latest version number of the template.
         self.latest_module_version = latest_module_version
+        # The template ID.
         self.module_id = module_id
+        # The template name.
         self.module_name = module_name
+        # The template version.
         self.module_version = module_version
+        # The task name.
         self.name = name
+        # The list of resource protection strategies.
         self.protection_strategy = protection_strategy
+        # The RAM role.
         self.ram_role = ram_role
+        # Specifies whether to skip enumeration value validation. Default value: false.
         self.skip_property_validation = skip_property_validation
+        self.skip_region_validation = skip_region_validation
+        # The task status. Valid values:
+        # 
+        # - Available: the task is available and no job is running.
+        # - Running: a job is currently running.
         self.status = status
+        # The list of task tags.
         self.tags = tags
+        # The task backend configuration. After this parameter is configured, runtime log information is saved to the specified OSS bucket.
         self.task_backend = task_backend
+        # The task ID.
         self.task_id = task_id
+        # The task output path.
         self.task_output_path = task_output_path
+        # The Terraform version.
         self.terraform_version = terraform_version
+        # The job trigger method. Valid values:
+        # 
+        # - Manual: manually triggered (default).
+        # - NewVersion: triggered when a new template version is published.
+        # - ParameterSetUpdated: triggered when the parameter set content changes or the parameter set attach relationship changes.
+        # - Auto: automatically triggered when the task properties change, such as task creation, execution version change, or job trigger policy change (when changed from another value to Auto).
         self.trigger_strategy = trigger_strategy
 
     def validate(self):
@@ -163,6 +198,9 @@ class GetTaskResponseBodyTask(DaraModel):
 
         if self.skip_property_validation is not None:
             result['skipPropertyValidation'] = self.skip_property_validation
+
+        if self.skip_region_validation is not None:
+            result['skipRegionValidation'] = self.skip_region_validation
 
         if self.status is not None:
             result['status'] = self.status
@@ -243,6 +281,9 @@ class GetTaskResponseBodyTask(DaraModel):
         if m.get('skipPropertyValidation') is not None:
             self.skip_property_validation = m.get('skipPropertyValidation')
 
+        if m.get('skipRegionValidation') is not None:
+            self.skip_region_validation = m.get('skipRegionValidation')
+
         if m.get('status') is not None:
             self.status = m.get('status')
 
@@ -277,8 +318,11 @@ class GetTaskResponseBodyTaskTaskBackend(DaraModel):
         bucket_name: str = None,
         object_path: str = None,
     ):
+        # The endpoint information.
         self.bucket_endpoint = bucket_endpoint
+        # The bucket name.
         self.bucket_name = bucket_name
+        # The object path.
         self.object_path = object_path
 
     def validate(self):
@@ -319,7 +363,9 @@ class GetTaskResponseBodyTaskTags(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The tag key of the task.
         self.tag_key = tag_key
+        # The tag value of the task.
         self.tag_value = tag_value
 
     def validate(self):
@@ -356,9 +402,13 @@ class GetTaskResponseBodyTaskGroupInfo(DaraModel):
         project_id: str = None,
         project_name: str = None,
     ):
+        # The group ID.
         self.group_id = group_id
+        # The group name.
         self.group_name = group_name
+        # The project ID.
         self.project_id = project_id
+        # The project name.
         self.project_name = project_name
 
     def validate(self):

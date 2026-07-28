@@ -12,6 +12,7 @@ class ExecuteTerraformPlanResponseBody(DaraModel):
     ):
         # Id of the request
         self.request_id = request_id
+        # The ID of the state file.
         self.state_id = state_id
 
     def validate(self):

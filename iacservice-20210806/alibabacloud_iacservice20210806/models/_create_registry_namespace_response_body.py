@@ -10,7 +10,9 @@ class CreateRegistryNamespaceResponseBody(DaraModel):
         namespace_name: str = None,
         request_id: str = None,
     ):
+        # The workspace name.
         self.namespace_name = namespace_name
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

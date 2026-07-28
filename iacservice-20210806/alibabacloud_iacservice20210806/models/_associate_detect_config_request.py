@@ -11,10 +11,18 @@ class AssociateDetectConfigRequest(DaraModel):
         target_id: str = None,
         target_type: str = None,
     ):
+        # Drift detection configuration ID
+        # 
         # This parameter is required.
         self.detect_config_id = detect_config_id
+        # Target ID to associate. StackId or TaskId
+        # 
         # This parameter is required.
         self.target_id = target_id
+        # Target type to associate  
+        # - Task: orchestration job  
+        # - Stack: resource stack
+        # 
         # This parameter is required.
         self.target_type = target_type
 

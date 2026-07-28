@@ -18,12 +18,22 @@ class UpdateDetectConfigRequest(DaraModel):
         enabled: bool = None,
         trigger_type: str = None,
     ):
+        # **Alert address list**
         self.alarm_configs = alarm_configs
+        # Idempotent token, format: [0-9a-zA-Z-]{1,64}. We recommend using a UUID.
         self.client_token = client_token
+        # **Cron expression (UTC+8)**. Required when the trigger type is Cron.
         self.cron_expression = cron_expression
+        # **Description**
         self.description = description
+        # Drift detection name
         self.detect_config_name = detect_config_name
+        # **Whether the detection feature is enabled. The default value is true.**
         self.enabled = enabled
+        # **Trigger type**  
+        # 
+        # * Manual: Execute manually  
+        # * Cron: Trigger periodically
         self.trigger_type = trigger_type
 
     def validate(self):
@@ -96,7 +106,10 @@ class UpdateDetectConfigRequestAlarmConfigs(DaraModel):
         address: str = None,
         type: str = None,
     ):
+        # Alert address.
         self.address = address
+        # Alerting method.  
+        # Currently, only `cms` is supported.
         self.type = type
 
     def validate(self):

@@ -11,8 +11,11 @@ class ListDetectConfigsRequest(DaraModel):
         max_results: int = None,
         next_token: str = None,
     ):
+        # Name of the drift detection configuration (fuzzy match).
         self.detect_config_name = detect_config_name
+        # Maximum number of records to retrieve in a single request. Valid range: 1–200. Default value: 100.
         self.max_results = max_results
+        # Query credential (Token). Set this parameter to the NextToken value returned by the previous API call.
         self.next_token = next_token
 
     def validate(self):

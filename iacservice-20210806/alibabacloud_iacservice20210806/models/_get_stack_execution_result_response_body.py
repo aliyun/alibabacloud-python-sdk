@@ -17,7 +17,9 @@ class GetStackExecutionResultResponseBody(DaraModel):
     ):
         # Id of the request
         self.request_id = request_id
+        # The execution results of the triggered stacks.
         self.stack_results = stack_results
+        # The unique ID of the trigger.
         self.trigger_id = trigger_id
         self.triggered_status = triggered_status
 
@@ -76,10 +78,19 @@ class GetStackExecutionResultResponseBodyStackResults(DaraModel):
         stack_name: str = None,
         stack_status: str = None,
     ):
+        # The deployment results of the stack.
         self.deployments = deployments
+        # The error message.
         self.message = message
+        # The unique identifier of the stack.
         self.stack_id = stack_id
+        # The stack name.
         self.stack_name = stack_name
+        # The execution status of the stack. Valid values:
+        # - Deploying: deploying
+        # - Errored: deployment failed
+        # - Deployed: deployment completed
+        # - Waiting: waiting for deployment.
         self.stack_status = stack_status
 
     def validate(self):
@@ -142,9 +153,13 @@ class GetStackExecutionResultResponseBodyStackResultsDeployments(DaraModel):
         status: str = None,
         url: str = None,
     ):
+        # The deployment name.
         self.deployment_name = deployment_name
+        # The result of the deployment task.
         self.job_result = job_result
+        # The deployment status.
         self.status = status
+        # The URL to view the deployment details.
         self.url = url
 
     def validate(self):

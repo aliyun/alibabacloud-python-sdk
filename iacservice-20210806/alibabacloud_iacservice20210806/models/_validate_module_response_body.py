@@ -12,9 +12,17 @@ class ValidateModuleResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
+        # The validation message.
         self.message = message
+        # The validation ID.
         self.module_validation_id = module_validation_id
+        # The request ID.
         self.request_id = request_id
+        # The validation result. Valid values:
+        # - Initializing: initialization in progress.
+        # - Validating: validation in progress.
+        # - Validated: validation succeeded.
+        # - Errored: validation failed.
         self.status = status
 
     def validate(self):

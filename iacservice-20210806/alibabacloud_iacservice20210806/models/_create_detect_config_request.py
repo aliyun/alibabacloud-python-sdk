@@ -18,14 +18,25 @@ class CreateDetectConfigRequest(DaraModel):
         enabled: bool = None,
         trigger_type: str = None,
     ):
+        # List of alerting addresses
         self.alarm_configs = alarm_configs
+        # Idempotence token, format: `[0-9a-zA-Z-]{1,64}`. It is recommended to use a UUID.
+        # 
         # This parameter is required.
         self.client_token = client_token
+        # Cron expression (UTC+8). Required when trigger type is `Cron`.
         self.cron_expression = cron_expression
+        # Description, up to 256 characters in length.
         self.description = description
+        # Detection configuration Name
+        # 
         # This parameter is required.
         self.detect_config_name = detect_config_name
+        # Whether the Detection feature is Enabled. The default value is `true`.
         self.enabled = enabled
+        # Trigger type  
+        # - Manual: Execute manually  
+        # - Cron: Trigger on a schedule
         self.trigger_type = trigger_type
 
     def validate(self):
@@ -100,7 +111,9 @@ class CreateDetectConfigRequestAlarmConfigs(DaraModel):
         address: str = None,
         type: str = None,
     ):
+        # Alerting address.
         self.address = address
+        # Alerting method. Currently only `cms` is supported.
         self.type = type
 
     def validate(self):

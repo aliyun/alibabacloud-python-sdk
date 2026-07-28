@@ -16,10 +16,15 @@ class ListModuleVersionResponseBody(DaraModel):
         total_count: int = None,
         versions: List[main_models.ListModuleVersionResponseBodyVersions] = None,
     ):
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of results per page. Default value: 20. Minimum value: 1. Maximum value: 100.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of records.
         self.total_count = total_count
+        # The list of version information.
         self.versions = versions
 
     def validate(self):
@@ -84,11 +89,17 @@ class ListModuleVersionResponseBodyVersions(DaraModel):
         name: str = None,
         source_path: str = None,
     ):
+        # The time when the version was created.
         self.create_time = create_time
+        # The version description.
         self.description = description
+        # The template ID.
         self.module_id = module_id
+        # The template version number.
         self.module_version = module_version
+        # The version name.
         self.name = name
+        # The source path of the version.
         self.source_path = source_path
 
     def validate(self):

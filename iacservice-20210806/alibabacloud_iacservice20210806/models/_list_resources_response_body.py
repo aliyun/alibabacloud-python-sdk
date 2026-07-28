@@ -16,10 +16,15 @@ class ListResourcesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The resource information.
         self.resources = resources
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of results per page. Default value: 20. Minimum value: 1. Maximum value: 200.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -96,25 +101,41 @@ class ListResourcesResponseBodyResources(DaraModel):
         terraform_code: str = None,
         zone_id: str = None,
     ):
+        # The Alibaba Cloud account ID.
         self.account_id = account_id
+        # The creation time.
         self.create_time = create_time
+        # The dependent resources.
         self.depends_on_resource_ids = depends_on_resource_ids
+        # The product code.
         self.product_code = product_code
+        # The resource properties.
         self.properties = properties
+        # The property variables.
         self.property_variables = property_variables
+        # The region ID.
         self.region_id = region_id
+        # The resource ARN.
         self.resource_arn = resource_arn
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The resource ID.
         self.resource_id = resource_id
+        # The resource name.
         self.resource_name = resource_name
+        # The URL of the resources page.
         self.resource_page_url = resource_page_url
+        # The resource type.
         self.resource_type = resource_type
+        # The status.
         self.status = status
+        # The tags.
         self.tags = tags
         # terraform arn
         self.terraform_arn = terraform_arn
         # terraform code
         self.terraform_code = terraform_code
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -253,7 +274,9 @@ class ListResourcesResponseBodyResourcesTags(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The tag key.
         self.tag_key = tag_key
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):

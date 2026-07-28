@@ -11,9 +11,14 @@ class CreateProjectRequest(DaraModel):
         description: str = None,
         name: str = None,
     ):
+        # The idempotence token. Format: [0-9a-zA-Z-]{1,64}. Use a UUID.
+        # 
         # This parameter is required.
         self.client_token = client_token
+        # The project description. Length: 0 to 1024 characters.
         self.description = description
+        # The project name. Length: 1 to 128 characters.
+        # 
         # This parameter is required.
         self.name = name
 

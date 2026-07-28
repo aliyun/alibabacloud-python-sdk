@@ -20,17 +20,45 @@ class CreateModuleRequest(DaraModel):
         tags: List[main_models.CreateModuleRequestTags] = None,
         version_strategy: str = None,
     ):
+        # The idempotency parameter. We recommend that you use a UUID.
+        # 
         # This parameter is required.
         self.client_token = client_token
+        # The description of the template. The description can be up to 256 characters in length.
         self.description = description
+        # The project group information to which the template belongs.
         self.group_info = group_info
+        # The name of the template. The name must meet the following requirements:
+        # - The name must be 2 to 128 characters in length.
+        # - The name can contain letters, digits, Chinese characters, hyphens (-), underscores (_), and periods (.). The name cannot start or end with a hyphen, underscore, or period.
+        # - The name must be unique among all templates under the current account.
+        # 
         # This parameter is required.
         self.name = name
+        # The source from which the template is created. Valid values:
+        # - OSS: imports from a ZIP file stored in OSS.
+        # - Registry: creates from a module in the template registry.
+        # - ExportTask: references a template exported by a resource export task.
+        # - Editor: creates a blank template that supports online editing.
+        # - Upload: uploads a local template file to generate the template.
+        # 
         # This parameter is required.
         self.source = source
+        # The path of the template source. This parameter takes effect when source is set to Registry, OSS, or ExportTask.
+        # - If source is set to Registry, the value is in the format of \\<workspace name>/\\<module name>:\\<module version>. Example: terraform-alicloud-modules/rds:1.0.0.
+        # - If source is set to OSS, the value is in the format of oss::<file URL>. The file must be a ZIP file. Example: oss::https://terraform-pipeline.oss-eu-central-1.aliyuncs.com/code.zip.
+        # - If source is set to ExportTask, the value is in the format of \\<export task ID>:\\<exported version>. Example: ex-3b6cb9fa4751afff298da723c24ac:v1.
+        # - If source is set to Editor or Upload, leave this parameter empty.
         self.source_path = source_path
+        # The path of the State file that corresponds to the template. This parameter is valid only when source is set to OSS.
+        # The value is in the format of oss::\\<OSS file path>/terraform.tfstate.
         self.state_path = state_path
+        # The list of tags for the template.
         self.tags = tags
+        # The version generation strategy. Valid values:
+        # 
+        # - Manual: manually generates a version. This is the default value.
+        # - SourcePathUpdated: generates a new version when sourcePath is modified.
         self.version_strategy = version_strategy
 
     def validate(self):
@@ -118,7 +146,9 @@ class CreateModuleRequestTags(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The tag key of the template.
         self.tag_key = tag_key
+        # The tag value of the template.
         self.tag_value = tag_value
 
     def validate(self):
@@ -153,7 +183,9 @@ class CreateModuleRequestGroupInfo(DaraModel):
         group_id: str = None,
         project_id: str = None,
     ):
+        # The group ID.
         self.group_id = group_id
+        # The project ID.
         self.project_id = project_id
 
     def validate(self):

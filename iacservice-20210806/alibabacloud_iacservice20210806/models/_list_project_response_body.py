@@ -16,10 +16,15 @@ class ListProjectResponseBody(DaraModel):
         projects: List[main_models.ListProjectResponseBodyProjects] = None,
         request_id: str = None,
     ):
+        # The total number of records.
         self.count = count
+        # The current page number.
         self.page_number = page_number
+        # The number of results per page. Default value: 20. Minimum value: 1. Maximum value: 100.
         self.page_size = page_size
+        # The list of projects.
         self.projects = projects
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -84,11 +89,17 @@ class ListProjectResponseBodyProjects(DaraModel):
         tags: List[main_models.ListProjectResponseBodyProjectsTags] = None,
         task_cnt: int = None,
     ):
+        # The creation time.
         self.create_time = create_time
+        # The project description.
         self.description = description
+        # The project name.
         self.name = name
+        # The project ID.
         self.project_id = project_id
+        # The tags.
         self.tags = tags
+        # The number of tasks.
         self.task_cnt = task_cnt
 
     def validate(self):
@@ -155,7 +166,9 @@ class ListProjectResponseBodyProjectsTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):

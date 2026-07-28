@@ -11,8 +11,11 @@ class ExecuteResourceExportTaskResponseBody(DaraModel):
         export_version: str = None,
         request_id: str = None,
     ):
+        # The resource export ID.
         self.export_task_id = export_task_id
+        # The resource export version.
         self.export_version = export_version
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

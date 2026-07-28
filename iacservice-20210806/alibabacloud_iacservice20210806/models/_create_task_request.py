@@ -23,31 +23,71 @@ class CreateTaskRequest(DaraModel):
         protection_strategy: List[str] = None,
         ram_role: str = None,
         skip_property_validation: bool = None,
+        skip_region_validation: bool = None,
         tags: List[main_models.CreateTaskRequestTags] = None,
         task_backend: main_models.CreateTaskRequestTaskBackend = None,
+        terraform_provider_version: str = None,
         terraform_version: str = None,
         trigger_strategy: str = None,
     ):
+        # Specifies whether to automatically execute the node. Default value: false.
+        # - true: After the preview is complete (terraform plan), the execution (terraform apply) is automatically performed without manual confirmation.
+        # - false: After the preview is complete (terraform plan), manual confirmation is required before the execution (terraform apply) starts.
         self.auto_apply = auto_apply
+        # Specifies whether to automatically destroy resources after creation. Default value: false.
+        # - true: After the execution is complete (terraform apply), the destroy operation (terraform destroy) is automatically performed without manual confirmation.
+        # - false: After the execution is complete (terraform apply), no further action is taken.
         self.auto_destroy = auto_destroy
+        # The idempotency token. Format: [0-9a-zA-Z-]{1,64}. We recommend that you use a UUID.
+        # 
         # This parameter is required.
         self.client_token = client_token
+        # The description of the node.
         self.description = description
+        # The project group information.
         self.group_info = group_info
+        # Specifies whether to use a state file. Default value: false. This parameter is applicable when the template originates from resource export. Only one node can use this parameter.
         self.init_module_state = init_module_state
+        # The template ID.
+        # 
         # This parameter is required.
         self.module_id = module_id
+        # The template version.
+        # 
         # This parameter is required.
         self.module_version = module_version
+        # The node name. The name must meet the following requirements:
+        # 
+        # - The name must be 2 to 128 characters in length.
+        # - The name can contain letters, digits, Chinese characters, hyphens (-), underscores (_), and periods (.). The name cannot start or end with a hyphen, underscore, or period.
+        # - The name must be unique among all node resources within the current account.
+        # 
         # This parameter is required.
         self.name = name
+        # The collection of associated parameter set IDs.
         self.parameter_set_ids = parameter_set_ids
+        # The list of resource protection strategies.
         self.protection_strategy = protection_strategy
+        # The RAM role. The system assumes this role to execute the template when a new job is triggered. This parameter is required when the job trigger method is not manual.
         self.ram_role = ram_role
+        # Specifies whether to skip enumeration value validation. Default value: false.
         self.skip_property_validation = skip_property_validation
+        self.skip_region_validation = skip_region_validation
+        # The list of tags for the node.
         self.tags = tags
+        # The node backend configuration. After this parameter is configured, runtime log information is saved to the specified OSS bucket.
         self.task_backend = task_backend
+        self.terraform_provider_version = terraform_provider_version
+        # The Terraform version. Call the **ListAvailableTerraformVersions** operation to obtain the list of supported versions. Default value: 1.5.7.
         self.terraform_version = terraform_version
+        # The job trigger method. Valid values:
+        # 
+        # - Manual: manual trigger (default).
+        # - NewVersion: triggered when a new template version is published.
+        # - ParameterSetUpdated: triggered when the parameter set content changes or the parameter set attach relationship changes.
+        # - Auto: automatically triggered when the node properties change, such as node creation, execution version change, or job trigger policy change (when changed from another value to Auto).
+        # 
+        # The **ramRole** parameter is required when the trigger method is not manual.
         self.trigger_strategy = trigger_strategy
 
     def validate(self):
@@ -104,6 +144,9 @@ class CreateTaskRequest(DaraModel):
         if self.skip_property_validation is not None:
             result['skipPropertyValidation'] = self.skip_property_validation
 
+        if self.skip_region_validation is not None:
+            result['skipRegionValidation'] = self.skip_region_validation
+
         result['tags'] = []
         if self.tags is not None:
             for k1 in self.tags:
@@ -111,6 +154,9 @@ class CreateTaskRequest(DaraModel):
 
         if self.task_backend is not None:
             result['taskBackend'] = self.task_backend.to_map()
+
+        if self.terraform_provider_version is not None:
+            result['terraformProviderVersion'] = self.terraform_provider_version
 
         if self.terraform_version is not None:
             result['terraformVersion'] = self.terraform_version
@@ -162,6 +208,9 @@ class CreateTaskRequest(DaraModel):
         if m.get('skipPropertyValidation') is not None:
             self.skip_property_validation = m.get('skipPropertyValidation')
 
+        if m.get('skipRegionValidation') is not None:
+            self.skip_region_validation = m.get('skipRegionValidation')
+
         self.tags = []
         if m.get('tags') is not None:
             for k1 in m.get('tags'):
@@ -171,6 +220,9 @@ class CreateTaskRequest(DaraModel):
         if m.get('taskBackend') is not None:
             temp_model = main_models.CreateTaskRequestTaskBackend()
             self.task_backend = temp_model.from_map(m.get('taskBackend'))
+
+        if m.get('terraformProviderVersion') is not None:
+            self.terraform_provider_version = m.get('terraformProviderVersion')
 
         if m.get('terraformVersion') is not None:
             self.terraform_version = m.get('terraformVersion')
@@ -187,8 +239,11 @@ class CreateTaskRequestTaskBackend(DaraModel):
         bucket_name: str = None,
         object_path: str = None,
     ):
+        # The endpoint information.
         self.bucket_endpoint = bucket_endpoint
+        # The bucket name.
         self.bucket_name = bucket_name
+        # The object path.
         self.object_path = object_path
 
     def validate(self):
@@ -229,7 +284,9 @@ class CreateTaskRequestTags(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The tag key of the node.
         self.tag_key = tag_key
+        # The tag value of the node.
         self.tag_value = tag_value
 
     def validate(self):
@@ -264,7 +321,9 @@ class CreateTaskRequestGroupInfo(DaraModel):
         group_id: str = None,
         project_id: str = None,
     ):
+        # The group ID.
         self.group_id = group_id
+        # The project ID.
         self.project_id = project_id
 
     def validate(self):

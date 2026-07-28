@@ -13,7 +13,9 @@ class GetJobResponseBody(DaraModel):
         job: main_models.GetJobResponseBodyJob = None,
         request_id: str = None,
     ):
+        # The job details.
         self.job = job
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -69,24 +71,75 @@ class GetJobResponseBodyJob(DaraModel):
         terraform_provider_version: str = None,
     ):
         self.all_parameters = all_parameters
+        # The list of assertion checks. This parameter applies to scenario-based testing tasks.
         self.assert_check_detail = assert_check_detail
+        # The job configuration.
         self.config = config
+        # The time when the job was created.
         self.create_time = create_time
+        # The job description.
         self.description = description
+        # The download URL.
         self.download_url = download_url
+        # The execution duration.
         self.elapsed_time = elapsed_time
+        # The execution type. Valid values:
+        # 
+        # - Manual: manual execution (default)
+        # - Auto: automatic execution.
         self.execute_type = execute_type
+        # Indicates whether the assertion check is passed.
         self.is_pass_assert_check = is_pass_assert_check
+        # The job ID.
         self.job_id = job_id
+        # The job type.
         self.job_type = job_type
+        # The run logs. The following log content (key values) is currently supported:
+        # 
+        # - tf-init.run.error.log
+        #  
+        # - tf-init.plan.log
+        # 
+        # - tf-plan.run.log
+        # 
+        # - tf-apply.run.log
+        #  
+        # - tf-init.apply.log.
         self.log_file = log_file
+        # The job output.
         self.output = output
+        # The change details of the Plan phase.
         self.output_json_plan = output_json_plan
+        # The collection of parameters.
         self.parameters = parameters
+        # The job status. Valid values:
+        # 
+        # - Pending: the initial status after the job is created.
+        # - PlanQueued: the job is queued because no available worker is ready after the job is created.
+        # - Planning: the resource job is in the Plan phase.
+        # - ConfigProactiveInProgress: compliance pre-check is in progress. The compliance pre-check feature must be enabled for the account.
+        # - ConfigProactiveSuccess: compliance pre-check succeeded. The compliance pre-check feature must be enabled for the account.
+        # - Planned: the resource job has completed the Plan phase.
+        # - PlannedAndFinished: no diff is found after the Plan phase is completed. This is a final status.
+        # - Confirmed: the resource job is waiting for confirmation after the Plan phase is completed.
+        # - ApplyQueued: the job is queued because no available worker is ready during execution.
+        # - Applying: the resource job is in the Apply phase.
+        # - Applied: the resource job has completed the Apply phase. This is a final status.
+        # - Errored: the job execution encountered an error. This is a final status.
+        # - Canceled: the job execution was canceled. This is a final status.
+        # - Discarded: the plan of the resource job was discarded. This is a final status.
+        # - ConfigProactiveFailure: compliance pre-check failed. The compliance pre-check feature must be enabled for the account.
         self.status = status
+        # The job status details.
         self.status_detail = status_detail
+        # The task ID.
         self.task_id = task_id
+        # The task type. Valid values:
+        # 
+        # - Task: regular task (default)
+        # - SceneTestingTask: scenario-based testing task.
         self.task_type = task_type
+        # The Terraform provider version.
         self.terraform_provider_version = terraform_provider_version
 
     def validate(self):
@@ -262,11 +315,17 @@ class GetJobResponseBodyJobConfig(DaraModel):
         resources_changed: str = None,
         sub_command: str = None,
     ):
+        # Specifies whether to automatically execute the task.
         self.auto_apply = auto_apply
+        # Specifies whether compliance pre-check is performed for this job.
         self.has_config_proactive = has_config_proactive
+        # Specifies whether to destroy resources.
         self.is_destroy = is_destroy
+        # The template version.
         self.module_version = module_version
+        # The resource change content.
         self.resources_changed = resources_changed
+        # The operation command.
         self.sub_command = sub_command
 
     def validate(self):
@@ -327,9 +386,23 @@ class GetJobResponseBodyJobAssertCheckDetail(DaraModel):
         is_pass: bool = None,
         type: str = None,
     ):
+        # The comparison operator. Valid values:
+        # 
+        # - eq: equal to
+        # - n_eq: not equal to
+        # - ctn: contains
+        # - n_ctn: does not contain
+        # - regex: regular expression match.
         self.comparison = comparison
+        # The expected value.
         self.expected_value = expected_value
+        # Indicates whether the assertion check is passed.
         self.is_pass = is_pass
+        # The assertion type. Valid values:
+        # 
+        # - state: task status
+        # - result: execution result
+        # - resourceChange: resource change.
         self.type = type
 
     def validate(self):

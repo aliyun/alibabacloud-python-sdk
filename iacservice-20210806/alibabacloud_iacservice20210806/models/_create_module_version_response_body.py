@@ -10,7 +10,9 @@ class CreateModuleVersionResponseBody(DaraModel):
         module_version: str = None,
         request_id: str = None,
     ):
+        # The template version number.
         self.module_version = module_version
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

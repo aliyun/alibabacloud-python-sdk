@@ -11,8 +11,11 @@ class ListModuleVersionRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The search keyword. Fuzzy match on version names is supported.
         self.keyword = keyword
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of results per page. Default value: 20. Minimum value: 1. Maximum value: 100.
         self.page_size = page_size
 
     def validate(self):

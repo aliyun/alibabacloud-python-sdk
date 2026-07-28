@@ -18,12 +18,18 @@ class ListModulesRequest(DaraModel):
         project_id: str = None,
         tag: List[main_models.ListModulesRequestTag] = None,
     ):
+        # The group ID.
         self.group_id = group_id
+        # The search keyword. Fuzzy match is supported for template names.
         self.keyword = keyword
         self.module_name = module_name
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of results per page. Default value: 20. Minimum value: 1. Maximum value: 100.
         self.page_size = page_size
+        # The project ID.
         self.project_id = project_id
+        # The list of template tags.
         self.tag = tag
 
     def validate(self):
@@ -96,7 +102,9 @@ class ListModulesRequestTag(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The tag key of the template.
         self.tag_key = tag_key
+        # The tag value of the template.
         self.tag_value = tag_value
 
     def validate(self):

@@ -10,8 +10,9 @@ class TriggerStackExecutionResponseBody(DaraModel):
         request_id: str = None,
         trigger_id: str = None,
     ):
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
+        # Unique ID of the trigger.
         self.trigger_id = trigger_id
 
     def validate(self):

@@ -16,10 +16,21 @@ class ListExplorerRegistryModulesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of Explorer community modules.
         self.explorer_registry_modules = explorer_registry_modules
+        # The maximum number of entries per page.
+        # 
+        # Valid values: 0 to 200.
+        # 
+        # Default value: 100.
         self.max_results = max_results
+        # The pagination token for the next page of results.
+        # 
+        # If the total number of entries exceeds the maxResults limit, the data is truncated. You can use nextToken to query the next page of data.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -85,12 +96,19 @@ class ListExplorerRegistryModulesResponseBodyExplorerRegistryModules(DaraModel):
         source: str = None,
         status: str = None,
     ):
+        # The description.
         self.description = description
+        # The number of downloads.
         self.downloads = downloads
+        # The latest version number.
         self.latest_version = latest_version
+        # The module name.
         self.module_name = module_name
+        # The workspace name.
         self.namespace_name = namespace_name
+        # The source.
         self.source = source
+        # The status.
         self.status = status
 
     def validate(self):

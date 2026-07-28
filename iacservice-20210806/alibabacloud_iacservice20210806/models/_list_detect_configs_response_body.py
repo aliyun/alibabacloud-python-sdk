@@ -16,11 +16,15 @@ class ListDetectConfigsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # List of drift detection configurations
         self.detect_configs = detect_configs
+        # Maximum number of records to retrieve in a single request.
         self.max_results = max_results
+        # Paging nextToken.
         self.next_token = next_token
-        # Id of the request
+        # ID of the request.
         self.request_id = request_id
+        # Total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -87,13 +91,24 @@ class ListDetectConfigsResponseBodyDetectConfigs(DaraModel):
         enabled: bool = None,
         trigger_type: str = None,
     ):
+        # List of alerting addresses
         self.alarm_configs = alarm_configs
+        # Creation Time.
         self.create_time = create_time
+        # Cron expression (UTC+8). Required when the trigger type is Cron.
         self.cron_expression = cron_expression
+        # Description.
         self.description = description
+        # Drift detection configuration ID
         self.detect_config_id = detect_config_id
+        # Name of the drift detection configuration.
         self.detect_config_name = detect_config_name
+        # Whether drift detection is enabled.
         self.enabled = enabled
+        # Trigger type  
+        # 
+        # - Manual: Execute manually  
+        # - Cron: Trigger on schedule
         self.trigger_type = trigger_type
 
     def validate(self):
@@ -172,7 +187,9 @@ class ListDetectConfigsResponseBodyDetectConfigsAlarmConfigs(DaraModel):
         address: str = None,
         type: str = None,
     ):
+        # Alerting address.
         self.address = address
+        # Alerting method. Currently only `cms` is supported.
         self.type = type
 
     def validate(self):

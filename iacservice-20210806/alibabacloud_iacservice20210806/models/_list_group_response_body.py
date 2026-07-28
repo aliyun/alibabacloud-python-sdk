@@ -16,10 +16,15 @@ class ListGroupResponseBody(DaraModel):
         page_size: int = None,
         request_id: str = None,
     ):
+        # The total number of records.
         self.count = count
+        # The list of service group IDs.
         self.groups = groups
+        # The current page number.
         self.page_number = page_number
+        # The page size, which indicates the maximum number of results returned per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -88,15 +93,25 @@ class ListGroupResponseBodyGroups(DaraModel):
         tags: List[main_models.ListGroupResponseBodyGroupsTags] = None,
         task_cnt: int = None,
     ):
+        # The creation time.
         self.create_time = create_time
+        # The group description.
         self.description = description
+        # The group ID.
         self.group_id = group_id
+        # Indicates whether the group is the default group.
         self.is_default = is_default
+        # The number of templates.
         self.module_cnt = module_cnt
+        # The group name.
         self.name = name
+        # The project ID.
         self.project_id = project_id
+        # The number of scenario-based testing tasks.
         self.scene_testing_task_cnt = scene_testing_task_cnt
+        # The tags.
         self.tags = tags
+        # The number of tasks.
         self.task_cnt = task_cnt
 
     def validate(self):
@@ -187,7 +202,9 @@ class ListGroupResponseBodyGroupsTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):

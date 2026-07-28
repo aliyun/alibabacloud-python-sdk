@@ -10,8 +10,12 @@ class ExecuteTerraformDestroyRequest(DaraModel):
         client_token: str = None,
         state_id: str = None,
     ):
+        # The idempotence token. Format: [0-9a-zA-Z-]{1,64}. Use a UUID.
+        # 
         # This parameter is required.
         self.client_token = client_token
+        # The state file ID.
+        # 
         # This parameter is required.
         self.state_id = state_id
 

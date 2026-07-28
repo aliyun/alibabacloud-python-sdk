@@ -10,7 +10,9 @@ class CreateParameterSetResponseBody(DaraModel):
         parameter_set_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the parameter set.
         self.parameter_set_id = parameter_set_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

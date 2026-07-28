@@ -13,7 +13,9 @@ class GetGroupResponseBody(DaraModel):
         group: main_models.GetGroupResponseBodyGroup = None,
         request_id: str = None,
     ):
+        # The group.
         self.group = group
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -65,22 +67,42 @@ class GetGroupResponseBodyGroup(DaraModel):
         trigger_config: List[main_models.GetGroupResponseBodyGroupTriggerConfig] = None,
         trigger_resource_type: List[str] = None,
     ):
+        # Indicates whether automatic deletion is enabled.
         self.auto_destroy = auto_destroy
+        # Indicates whether automatic triggering is enabled.
         self.auto_trigger = auto_trigger
+        # The creation time.
         self.create_time = create_time
+        # The group description.
         self.description = description
+        # Indicates whether the group configuration is forcibly used.
         self.forced_setting = forced_setting
+        # The group ID.
         self.group_id = group_id
+        # The group name.
         self.name = name
+        # The notification configuration.
         self.notify_config = notify_config
+        # The list of notification operation types.
         self.notify_operation_types = notify_operation_types
+        # The project ID.
         self.project_id = project_id
+        # The RAM role (1 to 128 characters). The system assumes this role to execute the template when a new job is triggered. This parameter is required when the job trigger mode is not manual.
         self.ram_role = ram_role
+        # The list of report export field options.
         self.report_export_field = report_export_field
+        # The export address for the execution report. OSS addresses are supported. Format: https://<OSS bucket address>/<path>.
         self.report_export_path = report_export_path
+        # The number of tasks.
         self.task_cnt = task_cnt
+        # The Terraform provider version. Select a Terraform provider version. Tasks in the group are executed based on the specified Terraform provider version. The version configured on a task takes higher priority. This version may conflict with the Terraform provider version specified in the module.
         self.terraform_provider_version = terraform_provider_version
+        # The trigger policy. This parameter cannot be empty when autoTrigger is set to true.
         self.trigger_config = trigger_config
+        # The resource type that triggers execution. Valid values:
+        # 
+        # - Task: regular task
+        # - SceneTestingTask: scenario-based testing task.
         self.trigger_resource_type = trigger_resource_type
 
     def validate(self):
@@ -222,7 +244,12 @@ class GetGroupResponseBodyGroupTriggerConfig(DaraModel):
         trigger_strategy: str = None,
         trigger_value: str = None,
     ):
+        # The trigger strategy. Valid values:
+        # 
+        # - ProviderNewVersion: triggered when a new provider version is released
+        # - Cron: triggered on a schedule.
         self.trigger_strategy = trigger_strategy
+        # The policy value that must be maintained for scheduled triggering. This value is a cron expression.
         self.trigger_value = trigger_value
 
     def validate(self):
@@ -257,7 +284,10 @@ class GetGroupResponseBodyGroupNotifyConfig(DaraModel):
         notify_path: str = None,
         notify_type: str = None,
     ):
+        # The path configuration for notifications.
         self.notify_path = notify_path
+        # The notification type. Valid values:
+        # DingDing.
         self.notify_type = notify_type
 
     def validate(self):

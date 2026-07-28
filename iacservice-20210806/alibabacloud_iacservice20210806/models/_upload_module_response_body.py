@@ -10,7 +10,9 @@ class UploadModuleResponseBody(DaraModel):
         request_id: str = None,
         version: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # If ResourceType is set to ModuleVersion, this parameter takes effect and returns the version ID after publishing.
         self.version = version
 
     def validate(self):

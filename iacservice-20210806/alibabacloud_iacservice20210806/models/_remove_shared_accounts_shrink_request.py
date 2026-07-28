@@ -11,10 +11,23 @@ class RemoveSharedAccountsShrinkRequest(DaraModel):
         resource_id: str = None,
         resource_type: str = None,
     ):
+        # The list of Alibaba Cloud account IDs.
+        # 
         # This parameter is required.
         self.account_ids_shrink = account_ids_shrink
+        # The ID of the resource to unshare.
+        # 
+        #  - If the type is Namespace, set this parameter to the workspace name. 
+        # 
+        # - If the type is RegistryModule, set this parameter to \\<namespaceName>/\\<ModuleName>.
+        # 
         # This parameter is required.
         self.resource_id = resource_id
+        # The resource type. Valid values:
+        # 
+        # - RegistryModule: Registry template.
+        # - Namespace: workspace.
+        # 
         # This parameter is required.
         self.resource_type = resource_type
 

@@ -13,8 +13,9 @@ class GetDetectConfigResponseBody(DaraModel):
         detect_config: main_models.GetDetectConfigResponseBodyDetectConfig = None,
         request_id: str = None,
     ):
+        # Drift detection configuration information
         self.detect_config = detect_config
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
 
     def validate(self):
@@ -57,13 +58,24 @@ class GetDetectConfigResponseBodyDetectConfig(DaraModel):
         enabled: bool = None,
         trigger_type: str = None,
     ):
+        # List of alerting addresses
         self.alarm_configs = alarm_configs
+        # Creation Time.
         self.create_time = create_time
+        # Cron expression (UTC+8). Required when the trigger type is Cron.
         self.cron_expression = cron_expression
+        # Description.
         self.description = description
+        # Drift detection configuration ID
         self.detect_config_id = detect_config_id
+        # Drift detection configuration name
         self.detect_config_name = detect_config_name
+        # Is scheduled detection enabled
         self.enabled = enabled
+        # Trigger type  
+        # 
+        # - Manual: Execute manually  
+        # - Cron: Trigger on schedule
         self.trigger_type = trigger_type
 
     def validate(self):
@@ -142,7 +154,9 @@ class GetDetectConfigResponseBodyDetectConfigAlarmConfigs(DaraModel):
         address: str = None,
         type: str = None,
     ):
+        # Alerting address.
         self.address = address
+        # Alerting method. Currently, only `cms` is supported.
         self.type = type
 
     def validate(self):

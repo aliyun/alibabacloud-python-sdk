@@ -13,7 +13,9 @@ class GetParameterSetResponseBody(DaraModel):
         parameter_set: main_models.GetParameterSetResponseBodyParameterSet = None,
         request_id: str = None,
     ):
+        # The parameter set details.
         self.parameter_set = parameter_set
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -54,11 +56,17 @@ class GetParameterSetResponseBodyParameterSet(DaraModel):
         parameters: List[main_models.GetParameterSetResponseBodyParameterSetParameters] = None,
         relation_list: List[main_models.GetParameterSetResponseBodyParameterSetRelationList] = None,
     ):
+        # The time when the parameter set was created.
         self.create_time = create_time
+        # The description of the parameter set.
         self.description = description
+        # The name of the parameter set.
         self.name = name
+        # The ID of the parameter set.
         self.parameter_set_id = parameter_set_id
+        # The parameters in the parameter set.
         self.parameters = parameters
+        # The association relationships.
         self.relation_list = relation_list
 
     def validate(self):
@@ -135,8 +143,15 @@ class GetParameterSetResponseBodyParameterSetRelationList(DaraModel):
         resource_id: str = None,
         resource_type: str = None,
     ):
+        # The time when the parameter set was created.
         self.create_time = create_time
+        # The resource ID. When the resource type is ModuleVersion, the ID is a concatenation of <moduleId>-<moduleversion>, such as mod-34535345df123fr-v3.
         self.resource_id = resource_id
+        # The resource type. Valid values:
+        # 
+        # - Module: template
+        # - ModuleVersion: template version
+        # - Task: task.
         self.resource_type = resource_type
 
     def validate(self):
@@ -180,10 +195,17 @@ class GetParameterSetResponseBodyParameterSetParameters(DaraModel):
         type: str = None,
         value: Any = None,
     ):
+        # The name of the parameter.
         self.name = name
         self.secret = secret
+        # The status of the parameter. Valid values:
+        # 
+        # - HAS_VALUE (default): A specific value is defined.
+        # - EXPLICIT_NULL: The value is explicitly set to null.
         self.status = status
+        # The type of the parameter. Valid values: string, number, bool, map(string), and list(string).
         self.type = type
+        # The value of the parameter.
         self.value = value
 
     def validate(self):

@@ -9,6 +9,7 @@ class DeleteStackRequest(DaraModel):
         self,
         clean_resources: bool = None,
     ):
+        # Specifies whether to synchronously clean up resources managed by the stack. By default, resources are not cleaned up.
         self.clean_resources = clean_resources
 
     def validate(self):

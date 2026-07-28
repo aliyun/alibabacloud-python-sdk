@@ -13,8 +13,11 @@ class GenerateModuleResponseBody(DaraModel):
         properties: Dict[str, Any] = None,
         request_id: str = None,
     ):
+        # The generated Terraform HCL template code content.
         self.module = module
+        # The variables and resource properties in the generated template code.
         self.properties = properties
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

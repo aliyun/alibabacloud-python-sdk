@@ -12,11 +12,24 @@ class CreateJobRequest(DaraModel):
         sub_command: str = None,
         task_type: str = None,
     ):
+        # The idempotence token. Format: [0-9a-zA-Z-]{1,64}. We recommend that you use a UUID.
+        # 
         # This parameter is required.
         self.client_token = client_token
+        # The job description. Length: 1 to 64 characters.
+        # 
         # This parameter is required.
         self.description = description
+        # The operation command. Valid values:
+        # 
+        # - plan: performs a preview. This is the default value.
+        # - refresh: refreshes the resource status.
+        # - destroy: destroys resources.
         self.sub_command = sub_command
+        # The task type. Valid values:
+        # 
+        # - Task: regular task. This is the default value.
+        # - SceneTestingTask: scenario-based testing task.
         self.task_type = task_type
 
     def validate(self):

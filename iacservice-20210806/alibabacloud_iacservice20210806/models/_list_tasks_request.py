@@ -21,15 +21,31 @@ class ListTasksRequest(DaraModel):
         tag: List[main_models.ListTasksRequestTag] = None,
         task_id: str = None,
     ):
+        # The group ID.
         self.group_id = group_id
+        # The keyword for fuzzy search by task ID or task name.
         self.keyword = keyword
         self.kms_key_id = kms_key_id
+        # The module ID.
         self.module_id = module_id
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 20. Minimum value: 1. Maximum value: 100.
         self.page_size = page_size
+        # The project ID.
         self.project_id = project_id
+        # The job status. Valid values:
+        # 
+        # - Planning: The job is in the Plan execution phase.
+        # - Planned: The job has completed the Plan execution.
+        # - PlannedAndFinished: After the Plan execution is completed, no diff is found, and the job enters the final state.
+        # - Applying: The job is in the Apply execution phase.
+        # - Applied: The job has completed the Apply execution.
+        # - Errored: The job execution encountered errors and entered the final state.
         self.status = status
+        # The list of task tags.
         self.tag = tag
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -120,7 +136,9 @@ class ListTasksRequestTag(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The tag key of the task.
         self.tag_key = tag_key
+        # The tag value of the task.
         self.tag_value = tag_value
 
     def validate(self):

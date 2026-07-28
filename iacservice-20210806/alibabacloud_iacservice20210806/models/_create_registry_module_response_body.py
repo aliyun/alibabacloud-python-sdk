@@ -10,7 +10,9 @@ class CreateRegistryModuleResponseBody(DaraModel):
         request_id: str = None,
         source: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The template source, which is a concatenation of \\<namespaceName>/\\<ModuleName>.
         self.source = source
 
     def validate(self):

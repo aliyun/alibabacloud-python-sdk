@@ -12,6 +12,7 @@ class ExecuteRegistryModuleResponseBody(DaraModel):
     ):
         # Id of the request
         self.request_id = request_id
+        # The state file ID.
         self.state_id = state_id
 
     def validate(self):

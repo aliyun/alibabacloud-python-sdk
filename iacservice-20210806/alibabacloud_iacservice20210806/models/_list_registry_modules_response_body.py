@@ -16,10 +16,15 @@ class ListRegistryModulesResponseBody(DaraModel):
         registry_modules: List[main_models.ListRegistryModulesResponseBodyRegistryModules] = None,
         request_id: str = None,
     ):
+        # The total number of records.
         self.count = count
+        # The maximum number of entries returned.
         self.max_results = max_results
+        # The token for the next page. A value of null indicates that no more pages are available.
         self.next_token = next_token
+        # The list of registry modules.
         self.registry_modules = registry_modules
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -90,17 +95,29 @@ class ListRegistryModulesResponseBodyRegistryModules(DaraModel):
         type: str = None,
         version: str = None,
     ):
+        # The permission. A value of private indicates that the module is private.
         self.acl = acl
+        # The creation time.
         self.create_time = create_time
+        # The description of the registry module.
         self.description = description
+        # The number of downloads.
         self.downloads = downloads
+        # The name of the registry module.
         self.module_name = module_name
+        # The workspace name.
         self.namespace_name = namespace_name
+        # The provider type. A value of alicloud indicates Alibaba Cloud.
         self.provider = provider
+        # The list of accounts with which the registry module is shared.
         self.shared_accounts = shared_accounts
+        # The module source.
         self.source = source
+        # The module source URL.
         self.source_url = source_url
+        # The templatetype.
         self.type = type
+        # The latest version number.
         self.version = version
 
     def validate(self):

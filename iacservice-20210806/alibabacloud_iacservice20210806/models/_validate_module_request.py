@@ -15,10 +15,16 @@ class ValidateModuleRequest(DaraModel):
         source: str = None,
         source_path: str = None,
     ):
+        # The idempotency token. Format: [0-9a-zA-Z-]{1,64}. We recommend that you use a UUID.
         self.client_token = client_token
+        # The template text that is directly passed in when source is set to Upload.
         self.code = code
+        # Specifies multiple configuration files to pass in.
         self.code_map = code_map
+        # The template source. Valid values:
+        # Upload: text upload.
         self.source = source
+        # The source path.
         self.source_path = source_path
 
     def validate(self):

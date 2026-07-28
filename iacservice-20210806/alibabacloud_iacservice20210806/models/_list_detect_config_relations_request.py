@@ -11,8 +11,14 @@ class ListDetectConfigRelationsRequest(DaraModel):
         target_id: str = None,
         target_type: str = None,
     ):
+        # Drift detection configuration ID
         self.detect_config_id = detect_config_id
+        # Target ID to associate. StackId or TaskId
         self.target_id = target_id
+        # Type of the association target
+        # 
+        # - Task: orchestration Job  
+        # - Stack: resource stack
         self.target_type = target_type
 
     def validate(self):

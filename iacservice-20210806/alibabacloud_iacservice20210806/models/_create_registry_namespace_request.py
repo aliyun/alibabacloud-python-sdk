@@ -13,11 +13,24 @@ class CreateRegistryNamespaceRequest(DaraModel):
         maintainer: str = None,
         namespace_name: str = None,
     ):
+        # The access permission. Valid values:
+        # 
+        # - private: private access.
         self.acl = acl
+        # The idempotence token. Format: [0-9a-zA-Z-]{1,64}. Use a UUID.
+        # 
         # This parameter is required.
         self.client_token = client_token
+        # The workspace description.
         self.description = description
+        # The administrator name.
         self.maintainer = maintainer
+        # The workspace name. The name must meet the following requirements:
+        # 
+        # - The name must be 3 to 63 characters in length.
+        # - The name can contain uppercase and lowercase letters, digits, hyphens (-), and underscores (_), and cannot start or end with a hyphen.
+        # - The name must be unique within the global workspace resources.
+        # 
         # This parameter is required.
         self.namespace_name = namespace_name
 

@@ -13,7 +13,9 @@ class GetRegistryNamespaceResponseBody(DaraModel):
         namespace: main_models.GetRegistryNamespaceResponseBodyNamespace = None,
         request_id: str = None,
     ):
+        # The workspace information.
         self.namespace = namespace
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -56,13 +58,21 @@ class GetRegistryNamespaceResponseBodyNamespace(DaraModel):
         shared_accounts: List[int] = None,
         type: str = None,
     ):
+        # The permissions.
         self.acl = acl
+        # The creation time.
         self.create_time = create_time
+        # The description of the workspace.
         self.description = description
+        # The name of the administrator.
         self.maintainer = maintainer
+        # The number of Registry templates in the workspace.
         self.modules = modules
+        # The name of the workspace.
         self.namespace_name = namespace_name
+        # The list of shared accounts.
         self.shared_accounts = shared_accounts
+        # The type of the workspace.
         self.type = type
 
     def validate(self):

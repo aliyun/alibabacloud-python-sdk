@@ -11,8 +11,11 @@ class JobsStatusDetailValue(DaraModel):
         job_result: str = None,
         time_stamps: str = None,
     ):
+        # 备注
         self.comment = comment
+        # 作业执行结果
         self.job_result = job_result
+        # 到达状态时间
         self.time_stamps = time_stamps
 
     def validate(self):

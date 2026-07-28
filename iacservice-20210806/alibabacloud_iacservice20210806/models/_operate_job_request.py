@@ -10,8 +10,14 @@ class OperateJobRequest(DaraModel):
         comment: str = None,
         task_type: str = None,
     ):
+        # The description. The length is 0 to 128 characters.
+        # 
         # This parameter is required.
         self.comment = comment
+        # The task type. Valid values:
+        # 
+        # - Task: regular task (default).
+        # - SceneTestingTask: scenario-based testing task.
         self.task_type = task_type
 
     def validate(self):

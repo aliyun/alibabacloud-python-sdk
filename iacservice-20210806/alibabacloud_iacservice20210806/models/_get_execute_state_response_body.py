@@ -15,11 +15,28 @@ class GetExecuteStateResponseBody(DaraModel):
         state: str = None,
         status: str = None,
     ):
+        # The error message.
         self.error_message = error_message
+        # The run log.
         self.log_file = log_file
         # Id of the request
         self.request_id = request_id
+        # The state file content.
         self.state = state
+        # The status. Valid values:
+        # 
+        # - Pending: ready to start.
+        # - PlanQueued: the plan task has been created but is waiting in the queue because no workflow is available.
+        # - ApplyQueued: the apply task has been created but is waiting in the queue because no workflow is available.
+        # - Planning: the plan phase is being executed.
+        # - Planned: the plan execution is complete.
+        # - Confirmed: the plan has been confirmed after execution.
+        # - PlannedAndFinished: the plan execution is complete and no diff was found. The job is in a terminal state.
+        # - Applying: the apply phase is being executed.
+        # - Applied: the apply execution is complete.
+        # - Discarded: the task has been discarded. This is a terminal state.
+        # - Errored: the execution encountered an error. This is a terminal state.
+        # - Canceled: the execution has been canceled. This is a terminal state.
         self.status = status
 
     def validate(self):

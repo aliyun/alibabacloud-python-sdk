@@ -14,11 +14,19 @@ class UpdateStackRequest(DaraModel):
         source_path: str = None,
         working_directory: str = None,
     ):
+        # The idempotency token. Format: [0-9a-zA-Z-]{1,64}. We recommend that you use a UUID.
         self.client_token = client_token
+        # The description of the stack.
         self.description = description
+        # The name of the stack. The name must be 2 to 128 characters in length and can contain letters, digits, Chinese characters, hyphens (-), underscores (_), and periods (.). The name cannot start or end with a hyphen, underscore, or period.
         self.name = name
+        # The RAM role granted to the task. This role is used to automatically continue the execution of scheduled tasks during automatic triggering or offline scenarios.
         self.ram_role = ram_role
+        # The path of the configuration source. The value can be up to 1,000 characters in length.
+        # - If the source is OSS, set this parameter to oss::<file URL>. The file must be a ZIP file. Example: oss::https://terraform-pipeline.oss-eu-central-1.aliyuncs.com/code.zip.
+        # - If the source is IAC_SERVICE_MODULE, set this parameter to a template ID. Example: mod-xxxxx.
         self.source_path = source_path
+        # The working directory where the configuration files are located. Enter / if the files are in the root directory. Example: config/ or /.
         self.working_directory = working_directory
 
     def validate(self):

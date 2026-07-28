@@ -14,15 +14,30 @@ class ManageTerraformStateRequest(DaraModel):
         resource_identifier: str = None,
         type: str = None,
     ):
+        # The action to perform on the state file. Supports import and removal. Valid values:
+        # - Import
+        # - StateRemove.
+        # 
         # This parameter is required.
         self.action = action
+        # The idempotence token. Format: [0-9a-zA-Z-]{1,64}. Use a UUID.
+        # 
         # This parameter is required.
         self.client_token = client_token
+        # The task identifier. For Stack tasks, the format is <$stackId>:<$deploymentName>. For Task tasks, the format is <$TaskId>.
+        # 
         # This parameter is required.
         self.identifier = identifier
+        # The actual resource ID of the Terraform resource.
         self.import_resource_id = import_resource_id
+        # The resource identifier in the Terraform template. For Stack tasks, the format is <$componetName>:<$resourceName>. For Task tasks, the format is <$resourceName>.
+        # 
         # This parameter is required.
         self.resource_identifier = resource_identifier
+        # The task type. Valid values:
+        # - Stack
+        # - Task.
+        # 
         # This parameter is required.
         self.type = type
 

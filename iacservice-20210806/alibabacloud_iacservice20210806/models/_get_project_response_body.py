@@ -11,7 +11,9 @@ class GetProjectResponseBody(DaraModel):
         project: main_models.GetProjectResponseBodyProject = None,
         request_id: str = None,
     ):
+        # The project details.
         self.project = project
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -51,10 +53,15 @@ class GetProjectResponseBodyProject(DaraModel):
         project_id: str = None,
         task_cnt: int = None,
     ):
+        # The creation time.
         self.create_time = create_time
+        # The project description. Length: 0 to 1024 characters.
         self.description = description
+        # The project name.
         self.name = name
+        # The project ID.
         self.project_id = project_id
+        # The number of tasks.
         self.task_cnt = task_cnt
 
     def validate(self):

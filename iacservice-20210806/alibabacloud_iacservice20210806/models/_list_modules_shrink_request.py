@@ -15,12 +15,18 @@ class ListModulesShrinkRequest(DaraModel):
         project_id: str = None,
         tag_shrink: str = None,
     ):
+        # The group ID.
         self.group_id = group_id
+        # The search keyword. Fuzzy match is supported for template names.
         self.keyword = keyword
         self.module_name = module_name
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of results per page. Default value: 20. Minimum value: 1. Maximum value: 100.
         self.page_size = page_size
+        # The project ID.
         self.project_id = project_id
+        # The list of template tags.
         self.tag_shrink = tag_shrink
 
     def validate(self):

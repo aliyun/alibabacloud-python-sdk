@@ -32,7 +32,10 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'cn-zhangjiakou': 'iac.cn-zhangjiakou.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('iacservice', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -1642,6 +1645,8 @@ class Client(OpenApiClient):
             body['description'] = request.description
         if not DaraCore.is_null(request.name):
             body['name'] = request.name
+        if not DaraCore.is_null(request.parameter_set_ids):
+            body['parameterSetIds'] = request.parameter_set_ids
         if not DaraCore.is_null(request.ram_role):
             body['ramRole'] = request.ram_role
         if not DaraCore.is_null(request.source):
@@ -1684,6 +1689,8 @@ class Client(OpenApiClient):
             body['description'] = request.description
         if not DaraCore.is_null(request.name):
             body['name'] = request.name
+        if not DaraCore.is_null(request.parameter_set_ids):
+            body['parameterSetIds'] = request.parameter_set_ids
         if not DaraCore.is_null(request.ram_role):
             body['ramRole'] = request.ram_role
         if not DaraCore.is_null(request.source):
@@ -1762,10 +1769,14 @@ class Client(OpenApiClient):
             body['ramRole'] = request.ram_role
         if not DaraCore.is_null(request.skip_property_validation):
             body['skipPropertyValidation'] = request.skip_property_validation
+        if not DaraCore.is_null(request.skip_region_validation):
+            body['skipRegionValidation'] = request.skip_region_validation
         if not DaraCore.is_null(request.tags):
             body['tags'] = request.tags
         if not DaraCore.is_null(request.task_backend):
             body['taskBackend'] = request.task_backend
+        if not DaraCore.is_null(request.terraform_provider_version):
+            body['terraformProviderVersion'] = request.terraform_provider_version
         if not DaraCore.is_null(request.terraform_version):
             body['terraformVersion'] = request.terraform_version
         if not DaraCore.is_null(request.trigger_strategy):
@@ -1824,10 +1835,14 @@ class Client(OpenApiClient):
             body['ramRole'] = request.ram_role
         if not DaraCore.is_null(request.skip_property_validation):
             body['skipPropertyValidation'] = request.skip_property_validation
+        if not DaraCore.is_null(request.skip_region_validation):
+            body['skipRegionValidation'] = request.skip_region_validation
         if not DaraCore.is_null(request.tags):
             body['tags'] = request.tags
         if not DaraCore.is_null(request.task_backend):
             body['taskBackend'] = request.task_backend
+        if not DaraCore.is_null(request.terraform_provider_version):
+            body['terraformProviderVersion'] = request.terraform_provider_version
         if not DaraCore.is_null(request.terraform_version):
             body['terraformVersion'] = request.terraform_version
         if not DaraCore.is_null(request.trigger_strategy):
@@ -4131,6 +4146,86 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.get_project_with_options_async(project_id, request, headers, runtime)
+
+    def get_provider_document_with_options(
+        self,
+        request: main_models.GetProviderDocumentRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetProviderDocumentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.provider_version):
+            query['providerVersion'] = request.provider_version
+        if not DaraCore.is_null(request.terraform_resource_type):
+            query['terraformResourceType'] = request.terraform_resource_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetProviderDocument',
+            version = '2021-08-06',
+            protocol = 'HTTPS',
+            pathname = f'/version/terraform/provider/document',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetProviderDocumentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_provider_document_with_options_async(
+        self,
+        request: main_models.GetProviderDocumentRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetProviderDocumentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.provider_version):
+            query['providerVersion'] = request.provider_version
+        if not DaraCore.is_null(request.terraform_resource_type):
+            query['terraformResourceType'] = request.terraform_resource_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetProviderDocument',
+            version = '2021-08-06',
+            protocol = 'HTTPS',
+            pathname = f'/version/terraform/provider/document',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetProviderDocumentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_provider_document(
+        self,
+        request: main_models.GetProviderDocumentRequest,
+    ) -> main_models.GetProviderDocumentResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_provider_document_with_options(request, headers, runtime)
+
+    async def get_provider_document_async(
+        self,
+        request: main_models.GetProviderDocumentRequest,
+    ) -> main_models.GetProviderDocumentResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_provider_document_with_options_async(request, headers, runtime)
 
     def get_registry_module_with_options(
         self,
@@ -8695,8 +8790,12 @@ class Client(OpenApiClient):
             body['ramRole'] = request.ram_role
         if not DaraCore.is_null(request.skip_property_validation):
             body['skipPropertyValidation'] = request.skip_property_validation
+        if not DaraCore.is_null(request.skip_region_validation):
+            body['skipRegionValidation'] = request.skip_region_validation
         if not DaraCore.is_null(request.tags):
             body['tags'] = request.tags
+        if not DaraCore.is_null(request.terraform_provider_version):
+            body['terraformProviderVersion'] = request.terraform_provider_version
         if not DaraCore.is_null(request.terraform_version):
             body['terraformVersion'] = request.terraform_version
         if not DaraCore.is_null(request.trigger_strategy):
@@ -8752,8 +8851,12 @@ class Client(OpenApiClient):
             body['ramRole'] = request.ram_role
         if not DaraCore.is_null(request.skip_property_validation):
             body['skipPropertyValidation'] = request.skip_property_validation
+        if not DaraCore.is_null(request.skip_region_validation):
+            body['skipRegionValidation'] = request.skip_region_validation
         if not DaraCore.is_null(request.tags):
             body['tags'] = request.tags
+        if not DaraCore.is_null(request.terraform_provider_version):
+            body['terraformProviderVersion'] = request.terraform_provider_version
         if not DaraCore.is_null(request.terraform_version):
             body['terraformVersion'] = request.terraform_version
         if not DaraCore.is_null(request.trigger_strategy):

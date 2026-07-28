@@ -12,11 +12,17 @@ class ListRegistryModuleVersionsRequest(DaraModel):
         namespace_name: str = None,
         next_token: str = None,
     ):
+        # The number of entries per page in a paged query. Maximum value: 100. Default value: 20.
         self.max_results = max_results
+        # The Registry template name.
+        # 
         # This parameter is required.
         self.module_name = module_name
+        # The workspace name.
+        # 
         # This parameter is required.
         self.namespace_name = namespace_name
+        # The pagination token. Set this parameter to the NextToken value returned in the previous API call.
         self.next_token = next_token
 
     def validate(self):

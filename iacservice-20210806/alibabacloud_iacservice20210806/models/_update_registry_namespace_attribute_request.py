@@ -11,9 +11,15 @@ class UpdateRegistryNamespaceAttributeRequest(DaraModel):
         client_token: str = None,
         description: str = None,
     ):
+        # The access permission. Valid values:
+        # 
+        # - private: private access.
         self.acl = acl
+        # The idempotence token. Format: [0-9a-zA-Z-]{1,64}. Use a UUID.
+        # 
         # This parameter is required.
         self.client_token = client_token
+        # The description of the workspace.
         self.description = description
 
     def validate(self):

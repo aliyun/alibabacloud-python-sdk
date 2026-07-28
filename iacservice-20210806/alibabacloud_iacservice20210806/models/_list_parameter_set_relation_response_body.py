@@ -14,8 +14,11 @@ class ListParameterSetRelationResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of parameter sets.
         self.parameter_sets = parameter_sets
+        # The request ID.
         self.request_id = request_id
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -67,10 +70,15 @@ class ListParameterSetRelationResponseBodyParameterSets(DaraModel):
         parameter_set_id: str = None,
         parameters: Dict[str, str] = None,
     ):
+        # The time when the parameter set was created.
         self.create_time = create_time
+        # The description.
         self.description = description
+        # The name of the parameter set.
         self.name = name
+        # The ID of the parameter set.
         self.parameter_set_id = parameter_set_id
+        # The content of the parameter set.
         self.parameters = parameters
 
     def validate(self):

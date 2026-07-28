@@ -14,9 +14,11 @@ class ListDetectConfigRelationsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # List of associations
         self.detect_config_relations = detect_config_relations
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
+        # Total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -69,11 +71,20 @@ class ListDetectConfigRelationsResponseBodyDetectConfigRelations(DaraModel):
         target_name: str = None,
         target_type: str = None,
     ):
+        # Association time
         self.attach_date = attach_date
+        # Drift detection configuration ID
         self.detect_config_id = detect_config_id
+        # Whether enabled
         self.enabled = enabled
+        # Target ID. StackId or TaskId
         self.target_id = target_id
+        # Target name
         self.target_name = target_name
+        # Target type  
+        # 
+        # - Task: orchestration job  
+        # - Stack: resource stack
         self.target_type = target_type
 
     def validate(self):

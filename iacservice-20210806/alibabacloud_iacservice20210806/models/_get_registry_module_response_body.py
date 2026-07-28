@@ -13,7 +13,9 @@ class GetRegistryModuleResponseBody(DaraModel):
         registry_module: main_models.GetRegistryModuleResponseBodyRegistryModule = None,
         request_id: str = None,
     ):
+        # The Registry module.
         self.registry_module = registry_module
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -60,17 +62,38 @@ class GetRegistryModuleResponseBodyRegistryModule(DaraModel):
         type: str = None,
         version: str = None,
     ):
+        # The permission. Valid values:
+        # 
+        # - private: private.
         self.acl = acl
+        # The creation time.
         self.create_time = create_time
+        # The module description.
         self.description = description
+        # The number of downloads.
         self.downloads = downloads
+        # The module name.
         self.module_name = module_name
+        # The workspace name.
         self.namespace_name = namespace_name
+        # The provider type. Valid values:
+        # 
+        # - alicloud: Alibaba Cloud.
         self.provider = provider
+        # The list of accounts with which the Registry module is shared.
         self.shared_accounts = shared_accounts
+        # The module source, which is a concatenation of <NamespaceName>/<ModuleName>.
         self.source = source
+        # The module source URL.
         self.source_url = source_url
+        # The workspace type. Valid values:
+        # 
+        # - system: public module
+        # - self: custom module
+        # - shared: shared module
+        # - community: community module.
         self.type = type
+        # The latest version.
         self.version = version
 
     def validate(self):

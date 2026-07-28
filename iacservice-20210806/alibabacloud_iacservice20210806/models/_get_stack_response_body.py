@@ -11,7 +11,9 @@ class GetStackResponseBody(DaraModel):
         request_id: str = None,
         stack: main_models.GetStackResponseBodyStack = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The stack information.
         self.stack = stack
 
     def validate(self):
@@ -58,17 +60,46 @@ class GetStackResponseBodyStack(DaraModel):
         trigger_strategy: str = None,
         working_directory: str = None,
     ):
+        # The stack configuration.
         self.config = config
+        # The creation time.
         self.create_time = create_time
+        # The current configuration version number, such as v1. The initial value is v1. The version number increments each time the stack is updated or refreshed and the configuration changes.
         self.current_config_version = current_config_version
+        # The description of the stack.
         self.description = description
+        # The stack name.
         self.name = name
+        # The RAM role assumed by the system to perform resource change operations during stack deployment.
         self.ram_role = ram_role
+        # The configuration source of the stack. Valid values:
+        # - OSS: a template stored in Object Storage Service (OSS).
+        # - IAC_SERVICE_MODULE: a template created in the automation service console.
         self.source = source
+        # The path value of the configuration source. The value cannot exceed 1000 characters.
+        # - If the source is OSS, the value is in the format of oss::<file link>. The file must be a ZIP file. Example: oss::https://terraform-pipeline.oss-eu-central-1.aliyuncs.com/code.zip.
+        # - If the source is IAC_SERVICE_MODULE, the value is a template ID. Example: mod-xxxxx.
         self.source_path = source_path
+        # The unique identifier of the stack, which is generated after the stack is created.
         self.stack_id = stack_id
+        # The stack status.
+        # | Name | Description |
+        # |------|------|
+        # | Creating | The stack is being created. |
+        # | Created | The stack is created. |
+        # | Waiting | The stack is waiting for deployment. |
+        # | Deploying | The stack is being deployed. |
+        # | Deployed | The stack is deployed. |
+        # | Errored | The deployment failed. |
+        # | Deleting | The stack is being deleted. |
+        # | Deleted | The stack is deleted. |
+        # | DeleteFailed | The deletion failed. |
+        # | DetectTriggered | Drift detection is triggered. |.
         self.status = status
+        # The deployment trigger method of the stack. This field is not publicly available.
+        # - SetUpdated: triggered by file changes.
         self.trigger_strategy = trigger_strategy
+        # The directory where the deployment and component configuration files of the stack are located. Set this parameter to / for the root directory.
         self.working_directory = working_directory
 
     def validate(self):
@@ -165,7 +196,9 @@ class GetStackResponseBodyStackConfig(DaraModel):
         component_content: str = None,
         deployment_content: str = None,
     ):
+        # The component configuration.
         self.component_content = component_content
+        # The deployment configuration.
         self.deployment_content = deployment_content
 
     def validate(self):

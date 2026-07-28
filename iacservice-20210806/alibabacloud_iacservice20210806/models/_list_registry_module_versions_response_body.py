@@ -16,10 +16,15 @@ class ListRegistryModuleVersionsResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
     ):
+        # The total number of records.
         self.count = count
+        # The number of entries per page in a paged query. Maximum value: 100. Default value: 20.
         self.max_results = max_results
+        # The list of template versions.
         self.module_versions = module_versions
+        # The pagination token. Set this parameter to the NextToken value returned in the previous API call.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -85,12 +90,20 @@ class ListRegistryModuleVersionsResponseBodyModuleVersions(DaraModel):
         source_url: str = None,
         version: str = None,
     ):
+        # The creation time.
         self.create_time = create_time
+        # The template name.
         self.module_name = module_name
+        # The workspace name.
         self.namespace_name = namespace_name
+        # The provider type. Valid values:
+        # - alicloud: Alibaba Cloud.
         self.provider = provider
+        # The template source, in the format of namespaceName/ModuleName.
         self.source = source
+        # The source URL of the template.
         self.source_url = source_url
+        # The version number.
         self.version = version
 
     def validate(self):

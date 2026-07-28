@@ -10,7 +10,9 @@ class CreateModuleResponseBody(DaraModel):
         module_id: str = None,
         request_id: str = None,
     ):
+        # The template ID.
         self.module_id = module_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

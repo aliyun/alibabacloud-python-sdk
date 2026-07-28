@@ -10,7 +10,9 @@ class PublishRegistryModuleVersionResponseBody(DaraModel):
         request_id: str = None,
         version: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The version number.
         self.version = version
 
     def validate(self):

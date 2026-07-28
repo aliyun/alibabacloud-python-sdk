@@ -19,16 +19,35 @@ class ListResourceTypesShrinkRequest(DaraModel):
         terraform_provider_version: str = None,
         terraform_resource_types_shrink: str = None,
     ):
+        # The language of the response. Valid values:
+        # - zh-CN: Chinese.
+        # - en-US: English.
+        # 
+        # Default value: zh-CN.
         self.accept_language = accept_language
+        # The keyword for searching resource codes or names. Fuzzy match is supported.
         self.keyword = keyword
+        # The maximum number of entries per page. Valid values: 0 to 200. Default value: 100.
         self.max_results = max_results
+        # The pagination token.
         self.next_token = next_token
+        # The product code. Fuzzy match is supported.
         self.product = product
+        # The order in which resource types are returned. Valid values:
+        # - Normal (default): returned in normal order.
+        # - Top: returned in order of popularity.
         self.sort = sort
+        # The status filter list. Valid values:
+        # - Available
+        # - Deprecated.
         self.status = status
+        # The product subcategory in Terraform.
         self.subcategory = subcategory
+        # Specifies whether Terraformer is supported.
         self.support_terraformer = support_terraformer
+        # The Terraform provider version. If this parameter is left empty, the latest version is used by default.
         self.terraform_provider_version = terraform_provider_version
+        # The Terraform resources.
         self.terraform_resource_types_shrink = terraform_resource_types_shrink
 
     def validate(self):

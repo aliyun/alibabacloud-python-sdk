@@ -16,10 +16,15 @@ class ListTasksResponseBody(DaraModel):
         tasks: List[main_models.ListTasksResponseBodyTasks] = None,
         total_count: int = None,
     ):
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 20. Minimum value: 1. Maximum value: 100.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The list of tasks.
         self.tasks = tasks
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -92,19 +97,36 @@ class ListTasksResponseBodyTasks(DaraModel):
         tags: List[main_models.ListTasksResponseBodyTasksTags] = None,
         task_id: str = None,
     ):
+        # Indicates whether the task is automatically executed.
         self.auto_apply = auto_apply
+        # The time when the task was created.
         self.create_time = create_time
+        # The job ID of the current task.
         self.current_job_id = current_job_id
+        # The current job status.
         self.current_job_status = current_job_status
+        # Indicates whether deletion protection is enabled. Deletion protection is automatically enabled when managed resources are included.
         self.deletion_protection = deletion_protection
+        # The task group information.
         self.group_info = group_info
+        # The latest version of the module.
         self.latest_module_version = latest_module_version
+        # The module ID.
         self.module_id = module_id
+        # The module name.
         self.module_name = module_name
+        # The module version.
         self.module_version = module_version
+        # The task name.
         self.name = name
+        # The task status. Valid values:
+        # 
+        # - Available: The task is available, and no job is running.
+        # - Running: The task is running, and the current job is in progress.
         self.status = status
+        # The list of task tags.
         self.tags = tags
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -224,9 +246,13 @@ class ListTasksResponseBodyTasksTags(DaraModel):
         tag_value: str = None,
         value: str = None,
     ):
+        # The tag key of the task.
         self.key = key
+        # The tag key of the module.
         self.tag_key = tag_key
+        # The tag value of the task.
         self.tag_value = tag_value
+        # The tag value of the task.
         self.value = value
 
     def validate(self):
@@ -275,9 +301,13 @@ class ListTasksResponseBodyTasksGroupInfo(DaraModel):
         project_id: str = None,
         project_name: str = None,
     ):
+        # The group ID.
         self.group_id = group_id
+        # The group name.
         self.group_name = group_name
+        # The project ID.
         self.project_id = project_id
+        # The project name.
         self.project_name = project_name
 
     def validate(self):

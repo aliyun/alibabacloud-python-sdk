@@ -10,7 +10,9 @@ class CreateDetectConfigResponseBody(DaraModel):
         detect_config_id: str = None,
         request_id: str = None,
     ):
+        # Drift detection configuration ID
         self.detect_config_id = detect_config_id
+        # request ID
         self.request_id = request_id
 
     def validate(self):

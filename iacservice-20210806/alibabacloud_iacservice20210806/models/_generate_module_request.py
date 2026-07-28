@@ -17,12 +17,24 @@ class GenerateModuleRequest(DaraModel):
         terraform_provider_version: str = None,
         terraform_resource_type: str = None,
     ):
+        # The generation source. Valid values:
+        # - Resource: Generates a Terraform HCL template based on resource properties.
+        # - VariableToCode: Generates a final Terraform HCL template by combining variables with an existing Terraform HCL template.
+        # - CodeToVariable: Extracts variable information from a Terraform HCL template.
+        # - Module: Generates Terraform Module code based on variables.
         self.generate_source = generate_source
+        # The collection of parameters, passed in key:value format, such as {"vpc_name":"vpc-test"}.
         self.parameters = parameters
+        # The region ID.
         self.region_id = region_id
+        # The syntax. Valid values:
+        # - hcl (default).
         self.syntax = syntax
+        # The existing Terraform HCL template content.
         self.template = template
+        # The Terraform provider version.
         self.terraform_provider_version = terraform_provider_version
+        # The Terraform resource type.
         self.terraform_resource_type = terraform_resource_type
 
     def validate(self):

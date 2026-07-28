@@ -9,6 +9,8 @@ class CancelResourceExportTaskRequest(DaraModel):
         self,
         client_token: str = None,
     ):
+        # The idempotence token. Format: [0-9a-zA-Z-]{1,64}. Use a UUID.
+        # 
         # This parameter is required.
         self.client_token = client_token
 

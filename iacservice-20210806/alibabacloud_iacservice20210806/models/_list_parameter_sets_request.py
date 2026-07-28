@@ -12,9 +12,12 @@ class ListParameterSetsRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The keyword for exact match search. The search is case-insensitive.
         self.keyword = keyword
         self.kms_key_id = kms_key_id
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of results per page. Default value: 20. Minimum value: 1. Maximum value: 200.
         self.page_size = page_size
 
     def validate(self):

@@ -14,11 +14,26 @@ class ListRegistryModulesRequest(DaraModel):
         status: str = None,
         type: str = None,
     ):
+        # The search keyword. Fuzzy search by module name is supported.
         self.keyword = keyword
+        # The number of entries per page in a paged query. Maximum value: 100. Default value: 20.
         self.max_results = max_results
+        # The workspace name.
         self.namespace_name = namespace_name
+        # The pagination token. Set this parameter to the NextToken value returned in the previous API call.
         self.next_token = next_token
         self.status = status
+        # The workspace type. Valid values:
+        # 
+        # - system: public module
+        # 
+        # - self: custom module
+        # 
+        # - shared: shared module
+        # 
+        # - community: community module
+        # 
+        # By default, all types are returned.
         self.type = type
 
     def validate(self):

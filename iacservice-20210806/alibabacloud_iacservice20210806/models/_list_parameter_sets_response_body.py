@@ -16,10 +16,15 @@ class ListParameterSetsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of results per page. Default value: 20. Minimum value: 1. Maximum value: 200.
         self.page_size = page_size
+        # The parameter sets.
         self.parameter_sets = parameter_sets
+        # The request ID.
         self.request_id = request_id
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -85,12 +90,19 @@ class ListParameterSetsResponseBodyParameterSets(DaraModel):
         parameters: List[main_models.ListParameterSetsResponseBodyParameterSetsParameters] = None,
         relation_list: List[main_models.ListParameterSetsResponseBodyParameterSetsRelationList] = None,
     ):
+        # The creation time.
         self.create_time = create_time
+        # Indicates whether deletion protection is enabled.
         self.deletion_protection = deletion_protection
+        # The description of the parameter set.
         self.description = description
+        # The name of the parameter set.
         self.name = name
+        # The ID of the parameter set.
         self.parameter_set_id = parameter_set_id
+        # The parameters in the parameter set.
         self.parameters = parameters
+        # The relationships associated with the parameter set.
         self.relation_list = relation_list
 
     def validate(self):
@@ -173,8 +185,15 @@ class ListParameterSetsResponseBodyParameterSetsRelationList(DaraModel):
         resource_id: str = None,
         resource_type: str = None,
     ):
+        # The creation time.
         self.create_time = create_time
+        # The resource ID. When the resource type is ModuleVersion, the value is a concatenation of <moduleId>-<moduleversion>, such as mod-34535345df123fr-v3.
         self.resource_id = resource_id
+        # The resource type. Valid values:
+        # 
+        # - Module: template
+        # - ModuleVersion: template version
+        # - Task: task.
         self.resource_type = resource_type
 
     def validate(self):
@@ -218,10 +237,18 @@ class ListParameterSetsResponseBodyParameterSetsParameters(DaraModel):
         type: str = None,
         value: Any = None,
     ):
+        # The parameter name.
         self.name = name
         self.secret = secret
+        # The parameter set status. Valid values:
+        # 
+        # HAS_VALUE (default): A specific value is defined.
+        # 
+        # EXPLICIT_NULL: The value is explicitly set to null.
         self.status = status
+        # The parameter type (string/number/bool/map(string)/list(string)).
         self.type = type
+        # The parameter value.
         self.value = value
 
     def validate(self):

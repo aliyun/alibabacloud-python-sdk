@@ -14,9 +14,13 @@ class UpdateParameterSetAttributeRequest(DaraModel):
         name: str = None,
         parameters: List[main_models.UpdateParameterSetAttributeRequestParameters] = None,
     ):
+        # The description of the parameter set. Maximum length: 1024 characters.
         self.description = description
+        # The name of the parameter set. Maximum length: 128 characters.
+        # 
         # This parameter is required.
         self.name = name
+        # The parameter list.
         self.parameters = parameters
 
     def validate(self):
@@ -68,10 +72,17 @@ class UpdateParameterSetAttributeRequestParameters(DaraModel):
         type: str = None,
         value: str = None,
     ):
+        # The parameter name.
         self.name = name
         self.secret = secret
+        # The parameter set status. Valid values:
+        # 
+        # - HAS_VALUE (default): Defines a specific value.
+        # - EXPLICIT_NULL: Explicitly set to null.
         self.status = status
+        # The parameter type. Valid values: string, number, bool, map(string), and list(string).
         self.type = type
+        # The parameter value. Use JSON for complex types.
         self.value = value
 
     def validate(self):

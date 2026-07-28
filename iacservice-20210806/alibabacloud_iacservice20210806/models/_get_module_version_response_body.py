@@ -13,7 +13,9 @@ class GetModuleVersionResponseBody(DaraModel):
         request_id: str = None,
         version: main_models.GetModuleVersionResponseBodyVersion = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The version details.
         self.version = version
 
     def validate(self):
@@ -58,15 +60,39 @@ class GetModuleVersionResponseBodyVersion(DaraModel):
         terraform_context: Dict[str, Any] = None,
         version_strategy: str = None,
     ):
+        # The time when the version was created.
         self.create_time = create_time
+        # The version description.
         self.description = description
+        # The template ID.
         self.module_id = module_id
+        # The template version number.
         self.module_version = module_version
+        # The version name.
         self.name = name
+        # The version source. Valid values:
+        # 
+        # - OSS: imported from OSS.
+        # - Registry: created by using a template from the template center.
+        # - ExportTask: exported from a resource export task.
+        # - Upload: uploaded as a file.
+        # - Shared: cloned from a shared source.
+        # - Editor: edited online.
         self.source = source
+        # The path of the version source.
+        # 
+        # - If the source is Registry, the value is in the format of <workspace name>/<module name>:<module version>. Example: terraform-alicloud-modules/rds:1.0.0.
+        # - If the source is OSS, the value is in the format of oss::<file link>. Example: oss::https://terraform-pipeline.oss-eu-central-1.aliyuncs.com/code.zip.
+        # - If the source is ExportTask, the value is in the format of <export task ID>:<exported version>. Example: ex-3b6cb9fa4751afff298da723c24ac:v1.
         self.source_path = source_path
+        # The path of the State file that corresponds to the template. Currently, only OSS paths are supported. The value is in the format of oss::<OSS file path>/terraform.tfstate.
         self.state_path = state_path
+        # The Terraform content.
         self.terraform_context = terraform_context
+        # The version generation strategy. Valid values:
+        # 
+        # - Manual: manually generate a version. This is the default value.
+        # - SourcePathUpdated: a new version is generated when the sourcePath is modified.
         self.version_strategy = version_strategy
 
     def validate(self):

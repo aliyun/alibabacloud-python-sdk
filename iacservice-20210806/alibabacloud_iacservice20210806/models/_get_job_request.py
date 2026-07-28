@@ -9,6 +9,11 @@ class GetJobRequest(DaraModel):
         self,
         task_type: str = None,
     ):
+        # The task type. Valid values:
+        # 
+        # - Task: regular task (default)
+        # - SceneTestingTask: scenario-based testing task
+        # - Stack: resource stack.
         self.task_type = task_type
 
     def validate(self):

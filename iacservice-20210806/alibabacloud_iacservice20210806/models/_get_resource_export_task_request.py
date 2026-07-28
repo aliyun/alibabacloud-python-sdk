@@ -9,6 +9,7 @@ class GetResourceExportTaskRequest(DaraModel):
         self,
         export_version: str = None,
     ):
+        # The export version.
         self.export_version = export_version
 
     def validate(self):

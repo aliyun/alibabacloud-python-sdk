@@ -16,10 +16,15 @@ class ListResourceTypesResponseBody(DaraModel):
         resource_types: List[main_models.ListResourceTypesResponseBodyResourceTypes] = None,
         total_count: int = None,
     ):
+        # The maximum number of entries per page. Valid values: 0 to 200. Default value: 100.
         self.max_results = max_results
+        # The pagination token.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The resources.
         self.resource_types = resource_types
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -91,18 +96,30 @@ class ListResourceTypesResponseBodyResourceTypes(DaraModel):
         terraform_resource_type: str = None,
         title: str = None,
     ):
+        # The description.
         self.description = description
+        # The product name.
         self.product = product
+        # The product name.
         self.product_name = product_name
+        # The URL of the resource details page.
         self.resource_detail_page_url = resource_detail_page_url
+        # The URL of the resources page.
         self.resource_list_page_url = resource_list_page_url
         self.resource_type = resource_type
+        # The resource status.
         self.status = status
+        # The version from which the resource status takes effect.
         self.status_start_version = status_start_version
+        # The product subcategory in Terraform.
         self.subcategory = subcategory
+        # Specifies whether Terraformer is supported.
         self.support_terraformer = support_terraformer
+        # The Terraform provider version.
         self.terraform_provider_version = terraform_provider_version
+        # The resource type in Terraform.
         self.terraform_resource_type = terraform_resource_type
+        # The title.
         self.title = title
 
     def validate(self):

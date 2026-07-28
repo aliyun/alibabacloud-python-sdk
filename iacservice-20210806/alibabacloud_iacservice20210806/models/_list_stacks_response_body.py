@@ -16,10 +16,15 @@ class ListStacksResponseBody(DaraModel):
         stacks: List[main_models.ListStacksResponseBodyStacks] = None,
         total_count: int = None,
     ):
+        # The maximum number of results returned.
         self.max_results = max_results
+        # The pagination token. This parameter is empty if no more pages are available.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The list of stacks.
         self.stacks = stacks
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -87,14 +92,38 @@ class ListStacksResponseBodyStacks(DaraModel):
         stack_name: str = None,
         status: str = None,
     ):
+        # The creation time.
         self.create_time = create_time
+        # The description of the stack.
         self.description = description
+        # The stack name.
         self.name = name
+        # The creation source. Valid values:
+        # - OSS: a template stored in Object Storage Service (OSS).
+        # - IAC_SERVICE_MODULE: a template created in the automation service console.
         self.source = source
+        # The path of the configuration source. The value cannot exceed 1000 characters.
+        # - If the source is OSS, the value is in the format oss::<file link> and must be a zip file, such as oss::https://terraform-pipeline.oss-eu-central-1.aliyuncs.com/code.zip.
+        # - If the source is IAC_SERVICE_MODULE, the value is a template ID, such as mod-xxxxx.
         self.source_path = source_path
+        # The description of the stack.
         self.stack_description = stack_description
+        # The stack ID, which is the unique identifier generated after the stack is created.
         self.stack_id = stack_id
+        # The stack name (deprecated). Use name instead.
         self.stack_name = stack_name
+        # The stack status.
+        # | Name | Description |
+        # |------|------|
+        # | Creating | Being created |
+        # | Created | Creation complete |
+        # | Waiting | Waiting for deployment |
+        # | Deploying | Being deployed |
+        # | Deployed | Deployment complete |
+        # | Errored | Deployment failed |
+        # | Deleting | Being deleted |
+        # | Deleted | Deleted |
+        # | DeleteFailed | Deletion failed |.
         self.status = status
 
     def validate(self):
