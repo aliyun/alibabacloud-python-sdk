@@ -11,9 +11,16 @@ class DescribeEapDeviceResourceAllocationRequest(DaraModel):
         device_count: int = None,
         region_id: str = None,
     ):
+        # Instance cluster ID.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # Total number of devices
         self.device_count = device_count
+        # Region ID where the instance is located.
+        # 
+        # > You can invoke the DescribeRegions API to view the region ID of a specified Data Lakehouse Edition cluster.
+        # 
         # This parameter is required.
         self.region_id = region_id
 

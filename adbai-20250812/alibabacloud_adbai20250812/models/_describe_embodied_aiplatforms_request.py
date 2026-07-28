@@ -18,19 +18,35 @@ class DescribeEmbodiedAIPlatformsRequest(DaraModel):
         start_time: str = None,
         state: str = None,
     ):
+        # The cluster ID of the instance.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The end time of platform creation, used to filter query results. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.end_time = end_time
+        # Use PageSize and PageNumber for pagination.
         self.max_results = max_results
+        # Use PageSize and PageNumber for pagination.
         self.next_token = next_token
+        # The current page number.
         self.page_number = page_number
+        # The number of entries per page in a paged query. Default value: 30.
         self.page_size = page_size
+        # The name of the embodied intelligence multimodal data platform.
         self.platform_name = platform_name
+        # The region ID of the instance.
+        # 
+        # > You can call the DescribeRegions operation to query the region ID of a specified Data Lakehouse Edition cluster.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The start time of platform creation, used to filter query results. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.start_time = start_time
+        # The running status of the platform.
         self.state = state
 
     def validate(self):

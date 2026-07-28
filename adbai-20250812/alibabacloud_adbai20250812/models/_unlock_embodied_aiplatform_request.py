@@ -11,10 +11,19 @@ class UnlockEmbodiedAIPlatformRequest(DaraModel):
         platform_name: str = None,
         region_id: str = None,
     ):
+        # The instance cluster ID.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The name of the embodied intelligence multimodal data platform.
+        # > The name must start with a lowercase letter and end with a lowercase letter or digit. It can contain lowercase letters, digits, and underscores. The name can be up to 16 characters in length.
+        # 
         # This parameter is required.
         self.platform_name = platform_name
+        # The region ID.
+        # 
+        # > You can call the DescribeRegions operation to query the region ID of a specified Data Lakehouse Edition cluster.
+        # 
         # This parameter is required.
         self.region_id = region_id
 

@@ -18,15 +18,26 @@ class ModifyEmbodiedAIPlatformRequest(DaraModel):
         region_id: str = None,
         webserver_spec_name: str = None,
     ):
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.device_count = device_count
+        # The name of the embodied intelligence multimodal data platform.
+        # > The name can contain lowercase letters, digits, and underscores (_). It must start with a letter and end with a letter or digit. The name can be up to 16 characters in length.
+        # 
         # This parameter is required.
         self.platform_name = platform_name
+        # The Ray specification information of the platform.
         self.ray_config = ray_config
         self.ray_train_config = ray_train_config
+        # The region ID.
+        # 
+        # > You can call the DescribeRegions operation to query the region ID of a specified Data Lakehouse Edition cluster.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The Webserver specification of the platform.
         self.webserver_spec_name = webserver_spec_name
 
     def validate(self):
@@ -266,8 +277,15 @@ class ModifyEmbodiedAIPlatformRequestRayConfig(DaraModel):
         head_spec: str = None,
         worker_groups: List[main_models.ModifyEmbodiedAIPlatformRequestRayConfigWorkerGroups] = None,
     ):
+        # The type of the Ray cluster. Valid values:
+        # 
+        # - BASIC: basic type, which does not support high availability.
+        # 
+        # - HIGH_AVAILABILITY: high-availability type.
         self.category = category
+        # The node specifications of the head node.
         self.head_spec = head_spec
+        # The configuration information of Ray worker groups.
         self.worker_groups = worker_groups
 
     def validate(self):
@@ -321,12 +339,19 @@ class ModifyEmbodiedAIPlatformRequestRayConfigWorkerGroups(DaraModel):
         worker_spec_name: str = None,
         worker_spec_type: str = None,
     ):
+        # The allocation unit.
         self.allocate_unit = allocate_unit
+        # The name of the worker group.
         self.group_name = group_name
+        # The maximum number of workers.
         self.max_worker_quantity = max_worker_quantity
+        # The minimum number of workers.
         self.min_worker_quantity = min_worker_quantity
+        # The disk size of the worker node.
         self.worker_disk_capacity = worker_disk_capacity
+        # The node specifications of the worker node.
         self.worker_spec_name = worker_spec_name
+        # The resource type of the worker node.
         self.worker_spec_type = worker_spec_type
 
     def validate(self):

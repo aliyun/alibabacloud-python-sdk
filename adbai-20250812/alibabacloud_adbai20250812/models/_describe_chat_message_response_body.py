@@ -31,25 +31,45 @@ class DescribeChatMessageResponseBody(DaraModel):
         text: str = None,
         type: str = None,
     ):
+        # The backend error code.
         self.code = code
+        # The completion time.
         self.completed_at = completed_at
+        # The task content.
         self.content = content
+        # The creation time.
         self.created_at = created_at
+        # The result set.
         self.data = data
+        # Indicates whether the content is incremental.
         self.delta = delta
+        # The error message.
         self.error = error
+        # The message ID.
         self.id = id
+        # The index.
         self.index = index
+        # The message.
         self.message = message
+        # The message ID.
         self.msg_id = msg_id
+        # The message object.
         self.object = object
+        # The content output.
         self.output = output
+        # The request ID.
         self.request_id = request_id
+        # The message role.
         self.role = role
+        # The sequence number of the message.
         self.sequence_number = sequence_number
+        # The session ID.
         self.session_id = session_id
+        # The message status.
         self.status = status
+        # The text content.
         self.text = text
+        # The message type.
         self.type = type
 
     def validate(self):
@@ -205,9 +225,13 @@ class DescribeChatMessageResponseBodyData(DaraModel):
         name: str = None,
         output: str = None,
     ):
+        # The parameters of the data API operation that is called.
         self.arguments = arguments
+        # The ID of the data API operation that is called.
         self.call_id = call_id
+        # The name of the data API operation that is called.
         self.name = name
+        # The output of the data API operation that is called.
         self.output = output
 
     def validate(self):
@@ -262,15 +286,25 @@ class DescribeChatMessageResponseBodyContent(DaraModel):
         text: str = None,
         type: str = None,
     ):
+        # The result set.
         self.data = data
+        # Indicates whether the content is incremental.
         self.delta = delta
+        # The error message.
         self.error = error
+        # The index.
         self.index = index
+        # The message ID.
         self.msg_id = msg_id
+        # The message object.
         self.object = object
+        # The sequence number of the message.
         self.sequence_number = sequence_number
+        # The message status.
         self.status = status
+        # The text content.
         self.text = text
+        # The message type.
         self.type = type
 
     def validate(self):
@@ -356,8 +390,11 @@ class DescribeChatMessageResponseBodyContentData(DaraModel):
         name: str = None,
         output: str = None,
     ):
+        # The ID of the data API operation that is called.
         self.call_id = call_id
+        # The name of the data API operation that is called.
         self.name = name
+        # The output of the data API operation that is called.
         self.output = output
 
     def validate(self):

@@ -10,13 +10,21 @@ class DescribeChatMessageRequest(DaraModel):
         query: str = None,
         region_id: str = None,
         session_id: str = None,
+        skill: str = None,
         timezone: str = None,
     ):
+        # The question statement submitted by the user.
+        # 
         # This parameter is required.
         self.query = query
+        # The Alibaba Cloud region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The session ID.
         self.session_id = session_id
+        self.skill = skill
+        # The time zone.
         self.timezone = timezone
 
     def validate(self):
@@ -36,6 +44,9 @@ class DescribeChatMessageRequest(DaraModel):
         if self.session_id is not None:
             result['SessionId'] = self.session_id
 
+        if self.skill is not None:
+            result['Skill'] = self.skill
+
         if self.timezone is not None:
             result['Timezone'] = self.timezone
 
@@ -51,6 +62,9 @@ class DescribeChatMessageRequest(DaraModel):
 
         if m.get('SessionId') is not None:
             self.session_id = m.get('SessionId')
+
+        if m.get('Skill') is not None:
+            self.skill = m.get('Skill')
 
         if m.get('Timezone') is not None:
             self.timezone = m.get('Timezone')

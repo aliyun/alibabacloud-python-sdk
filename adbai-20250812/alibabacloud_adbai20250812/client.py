@@ -22,7 +22,15 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'cn-shenzhen': 'adbai.cn-shenzhen.aliyuncs.com',
+            'cn-shanghai': 'adbai.cn-shanghai.aliyuncs.com',
+            'cn-hangzhou': 'adbai.cn-hangzhou.aliyuncs.com',
+            'cn-beijing': 'adbai.cn-beijing.aliyuncs.com',
+            'ap-southeast-1': 'adbai.ap-southeast-1.aliyuncs.com',
+            'ap-northeast-1': 'adbai.ap-northeast-1.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('adbai', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -407,6 +415,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.session_id):
             query['SessionId'] = request.session_id
+        if not DaraCore.is_null(request.skill):
+            query['Skill'] = request.skill
         if not DaraCore.is_null(request.timezone):
             query['Timezone'] = request.timezone
         req = open_api_util_models.OpenApiRequest(
@@ -450,6 +460,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.session_id):
             query['SessionId'] = request.session_id
+        if not DaraCore.is_null(request.skill):
+            query['Skill'] = request.skill
         if not DaraCore.is_null(request.timezone):
             query['Timezone'] = request.timezone
         req = open_api_util_models.OpenApiRequest(
@@ -493,6 +505,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.session_id):
             query['SessionId'] = request.session_id
+        if not DaraCore.is_null(request.skill):
+            query['Skill'] = request.skill
         if not DaraCore.is_null(request.timezone):
             query['Timezone'] = request.timezone
         req = open_api_util_models.OpenApiRequest(
@@ -527,6 +541,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.session_id):
             query['SessionId'] = request.session_id
+        if not DaraCore.is_null(request.skill):
+            query['Skill'] = request.skill
         if not DaraCore.is_null(request.timezone):
             query['Timezone'] = request.timezone
         req = open_api_util_models.OpenApiRequest(

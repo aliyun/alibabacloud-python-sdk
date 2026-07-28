@@ -13,12 +13,21 @@ class CreateAgentPlatformRequest(DaraModel):
         name: str = None,
         region_id: str = None,
     ):
+        # The parameters required to create the metric analysis platform.
+        # 
         # This parameter is required.
         self.ai_platform_config = ai_platform_config
+        # The instance cluster ID.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The name of the metric analysis platform.
+        # 
         # This parameter is required.
         self.name = name
+        # The region ID.
+        # 
+        # > You can call the DescribeRegions operation to query the region ID of a specified Data Lakehouse Edition cluster.
         self.region_id = region_id
 
     def validate(self):
@@ -73,16 +82,28 @@ class CreateAgentPlatformRequestAiPlatformConfig(DaraModel):
         serve_model_name: str = None,
         spec_name: str = None,
     ):
+        # The API key of the model for the inference service that the metric analysis platform depends on.
+        # 
         # This parameter is required.
         self.serve_api_key = serve_api_key
+        # The endpoint of the embedding model for the inference service that the metric analysis platform depends on.
+        # 
         # This parameter is required.
         self.serve_embedding_endpoint = serve_embedding_endpoint
+        # The name of the embedding model for the inference service that the metric analysis platform depends on.
+        # 
         # This parameter is required.
         self.serve_embedding_model_name = serve_embedding_model_name
+        # The endpoint of the base model for the inference service that the metric analysis platform depends on.
+        # 
         # This parameter is required.
         self.serve_endpoint = serve_endpoint
+        # The name of the base model for the inference service that the metric analysis platform depends on.
+        # 
         # This parameter is required.
         self.serve_model_name = serve_model_name
+        # The specifications of the metric analysis platform.
+        # 
         # This parameter is required.
         self.spec_name = spec_name
 

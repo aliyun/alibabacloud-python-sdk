@@ -15,15 +15,26 @@ class ModifyEmbodiedAIPlatformShrinkRequest(DaraModel):
         region_id: str = None,
         webserver_spec_name: str = None,
     ):
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.device_count = device_count
+        # The name of the embodied intelligence multimodal data platform.
+        # > The name can contain lowercase letters, digits, and underscores (_). It must start with a letter and end with a letter or digit. The name can be up to 16 characters in length.
+        # 
         # This parameter is required.
         self.platform_name = platform_name
+        # The Ray specification information of the platform.
         self.ray_config_shrink = ray_config_shrink
         self.ray_train_config_shrink = ray_train_config_shrink
+        # The region ID.
+        # 
+        # > You can call the DescribeRegions operation to query the region ID of a specified Data Lakehouse Edition cluster.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The Webserver specification of the platform.
         self.webserver_spec_name = webserver_spec_name
 
     def validate(self):

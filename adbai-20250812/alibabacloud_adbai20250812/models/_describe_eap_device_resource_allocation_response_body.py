@@ -13,6 +13,7 @@ class DescribeEapDeviceResourceAllocationResponseBody(DaraModel):
         items: List[main_models.DescribeEapDeviceResourceAllocationResponseBodyItems] = None,
         request_id: str = None,
     ):
+        # List of specification recommendations.
         self.items = items
         # Id of the request
         self.request_id = request_id
@@ -69,19 +70,33 @@ class DescribeEapDeviceResourceAllocationResponseBodyItems(DaraModel):
         worker_cpu: int = None,
         worker_spec_name: str = None,
     ):
+        # Total number of devices
         self.device_count = device_count
+        # Total ACU count for the Ray Cluster Head of the Embodied Intelligence platform
         self.head_acu = head_acu
+        # Number of vCPU cores for the Ray Cluster Head node on the Intelligent Embodiment platform
         self.head_cpu = head_cpu
+        # Ray Cluster Head specification of the Embodied Intelligence platform
         self.head_spec_name = head_spec_name
+        # Total number of ACUs actually deployed on the Intelligent Embodiment platform
         self.total_acu = total_acu
+        # Total number of vCPU cores actually deployed on the Intelligent Embodiment platform
         self.total_deployed_cpu = total_deployed_cpu
+        # Total target number of vCPU cores
         self.total_target_cpu = total_target_cpu
+        # Total ACU count for the Embodied Intelligence platform
         self.webserver_acu = webserver_acu
+        # Total number of vCPU cores for the Embodied Intelligence platform
         self.webserver_cpu = webserver_cpu
+        # Webserver specification of the Embodied Intelligence platform.
         self.webserver_spec_name = webserver_spec_name
+        # Total ACU count per Ray Cluster Worker of the Embodied Intelligence platform
         self.worker_acu = worker_acu
+        # Total number of Ray Cluster Worker nodes on the Intelligent Embodiment platform
         self.worker_count = worker_count
+        # Number of vCPU cores per Ray Cluster Worker of the Embodied Intelligence platform
         self.worker_cpu = worker_cpu
+        # Ray Cluster Worker specification of the Embodied Intelligence platform
         self.worker_spec_name = worker_spec_name
 
     def validate(self):

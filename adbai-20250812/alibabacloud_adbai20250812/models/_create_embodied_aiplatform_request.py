@@ -18,15 +18,28 @@ class CreateEmbodiedAIPlatformRequest(DaraModel):
         region_id: str = None,
         webserver_spec_name: str = None,
     ):
+        # The instance cluster ID.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The ontology count.
         self.device_count = device_count
+        # The name of the embodied intelligence multimodal data platform.
+        # > The name can contain lowercase letters, digits, and underscores. It must start with a letter and end with a letter or digit. The name can be up to 16 characters in length.
+        # 
         # This parameter is required.
         self.platform_name = platform_name
+        # The Ray specification information of the platform.
         self.ray_config = ray_config
+        # The development and training resource configuration.
         self.ray_train_config = ray_train_config
+        # The region ID.
+        # 
+        # > You can call the DescribeRegions operation to query the region ID of a specified Data Lakehouse Edition cluster.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The webserver specification of the platform.
         self.webserver_spec_name = webserver_spec_name
 
     def validate(self):
@@ -97,8 +110,11 @@ class CreateEmbodiedAIPlatformRequestRayTrainConfig(DaraModel):
         gpu_specs: List[main_models.CreateEmbodiedAIPlatformRequestRayTrainConfigGpuSpecs] = None,
         terminal_config: main_models.CreateEmbodiedAIPlatformRequestRayTrainConfigTerminalConfig = None,
     ):
+        # The number of CPU ACUs to purchase.
         self.cpu_acu = cpu_acu
+        # The list of GPU model specifications to purchase.
         self.gpu_specs = gpu_specs
+        # The development machine configuration.
         self.terminal_config = terminal_config
 
     def validate(self):
@@ -149,6 +165,7 @@ class CreateEmbodiedAIPlatformRequestRayTrainConfigTerminalConfig(DaraModel):
         self,
         acr_config: main_models.CreateEmbodiedAIPlatformRequestRayTrainConfigTerminalConfigAcrConfig = None,
     ):
+        # The image repository configuration.
         self.acr_config = acr_config
 
     def validate(self):
@@ -180,8 +197,11 @@ class CreateEmbodiedAIPlatformRequestRayTrainConfigTerminalConfigAcrConfig(DaraM
         namespaces: List[str] = None,
         registry: str = None,
     ):
+        # The instance ID of the image repository.
         self.instance_id = instance_id
+        # The list of namespaces.
         self.namespaces = namespaces
+        # The address of the image repository instance.
         self.registry = registry
 
     def validate(self):
@@ -223,8 +243,11 @@ class CreateEmbodiedAIPlatformRequestRayTrainConfigGpuSpecs(DaraModel):
         count: int = None,
         spec_name: str = None,
     ):
+        # The allocation unit.
         self.allocate_unit = allocate_unit
+        # The number of GPU cards.
         self.count = count
+        # The GPU model.
         self.spec_name = spec_name
 
     def validate(self):
@@ -266,8 +289,15 @@ class CreateEmbodiedAIPlatformRequestRayConfig(DaraModel):
         head_spec: str = None,
         worker_groups: List[main_models.CreateEmbodiedAIPlatformRequestRayConfigWorkerGroups] = None,
     ):
+        # The Ray cluster type. Valid values:
+        # 
+        # - BASIC: basic type, non-high-availability.
+        # 
+        # - HIGH_AVAILABILITY: high-availability type.
         self.category = category
+        # The node specifications of the head node.
         self.head_spec = head_spec
+        # The list of Ray worker group configurations.
         self.worker_groups = worker_groups
 
     def validate(self):
@@ -321,12 +351,19 @@ class CreateEmbodiedAIPlatformRequestRayConfigWorkerGroups(DaraModel):
         worker_spec_name: str = None,
         worker_spec_type: str = None,
     ):
+        # The allocation unit.
         self.allocate_unit = allocate_unit
+        # The name of the worker group.
         self.group_name = group_name
+        # The maximum number of workers.
         self.max_worker_quantity = max_worker_quantity
+        # The minimum number of workers.
         self.min_worker_quantity = min_worker_quantity
+        # The disk size of the worker node.
         self.worker_disk_capacity = worker_disk_capacity
+        # The node specifications of the worker node.
         self.worker_spec_name = worker_spec_name
+        # The resource type of the worker node.
         self.worker_spec_type = worker_spec_type
 
     def validate(self):

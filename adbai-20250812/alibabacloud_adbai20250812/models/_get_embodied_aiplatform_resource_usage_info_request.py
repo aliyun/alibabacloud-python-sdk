@@ -13,13 +13,24 @@ class GetEmbodiedAIPlatformResourceUsageInfoRequest(DaraModel):
         region_id: str = None,
         start_time: str = None,
     ):
+        # The instance cluster ID.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The end of the time range for querying network resource usage. Format: yyyy-MM-ddTHH:mmZ.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.end_time = end_time
+        # The name of the embodied intelligence platform.
         self.platform_name = platform_name
+        # The region ID of the instance.
+        # 
+        # > You can call the DescribeRegions operation to query the region ID of a specified Data Lakehouse Edition cluster.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The start of the time range for querying network resource usage. Format: yyyy-MM-ddTHH:mmZ.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.start_time = start_time
 

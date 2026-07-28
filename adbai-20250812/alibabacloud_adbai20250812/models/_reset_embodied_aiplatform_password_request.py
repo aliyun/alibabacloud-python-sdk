@@ -12,12 +12,22 @@ class ResetEmbodiedAIPlatformPasswordRequest(DaraModel):
         platform_name: str = None,
         region_id: str = None,
     ):
+        # The cluster ID of the instance.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The new password for the admin user of the embodied intelligence platform.
+        # 
         # This parameter is required.
         self.password = password
+        # The name of the embodied intelligence multimodal data platform.
+        # 
         # This parameter is required.
         self.platform_name = platform_name
+        # The region ID of the instance.
+        # 
+        # > You can call the DescribeRegions operation to query the region ID of a specified Data Lakehouse Edition cluster.
+        # 
         # This parameter is required.
         self.region_id = region_id
 

@@ -12,11 +12,20 @@ class ModifyAgentPlatformShrinkRequest(DaraModel):
         name: str = None,
         region_id: str = None,
     ):
+        # The parameters required for upgrading or downgrading the metric platform.
         self.ai_platform_config_shrink = ai_platform_config_shrink
+        # The instance cluster ID.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The name of the metric platform.
+        # 
         # This parameter is required.
         self.name = name
+        # The region ID.
+        # 
+        # > You can call the DescribeRegions operation to query the region ID of a specified Data Lakehouse Edition cluster.
+        # 
         # This parameter is required.
         self.region_id = region_id
 

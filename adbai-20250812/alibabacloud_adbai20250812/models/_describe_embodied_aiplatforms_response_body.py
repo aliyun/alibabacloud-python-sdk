@@ -18,12 +18,19 @@ class DescribeEmbodiedAIPlatformsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # Use the paged query parameters PageSize, PageNumber, and TotalCount for paging.
         self.max_results = max_results
+        # Use the paged query parameters PageSize, PageNumber, and TotalCount for paging.
         self.next_token = next_token
+        # The current page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The list of embodied intelligence multimodal data platforms.
         self.platforms = platforms
+        # The request ID.
         self.request_id = request_id
+        # The total number of platforms.
         self.total_count = total_count
 
     def validate(self):
@@ -101,12 +108,18 @@ class DescribeEmbodiedAIPlatformsResponseBodyPlatforms(DaraModel):
         ray_train_config: main_models.DescribeEmbodiedAIPlatformsResponseBodyPlatformsRayTrainConfig = None,
         state: str = None,
     ):
+        # The creation time.
         self.create_time = create_time
+        # The webserver configuration of the platform.
         self.eap_config = eap_config
+        # The lake storage name.
         self.oss_bucket_name = oss_bucket_name
+        # The platform name.
         self.platform_name = platform_name
+        # The Ray specification information of the platform.
         self.ray_config = ray_config
         self.ray_train_config = ray_train_config
+        # The running status.
         self.state = state
 
     def validate(self):
@@ -354,13 +367,24 @@ class DescribeEmbodiedAIPlatformsResponseBodyPlatformsRayConfig(DaraModel):
         ray_grafana_address: str = None,
         worker_groups: List[main_models.DescribeEmbodiedAIPlatformsResponseBodyPlatformsRayConfigWorkerGroups] = None,
     ):
+        # The Ray cluster type. Valid values:
+        # 
+        # - BASIC: basic type without high availability.
+        # - HIGH_AVAILABILITY: high-availability type.
         self.category = category
+        # The disk size of the head node.
         self.head_disk_capacity = head_disk_capacity
+        # The node specifications of the head node.
         self.head_spec = head_spec
+        # The resource type of the head node.
         self.head_spec_type = head_spec_type
+        # The Ray cluster address.
         self.ray_cluster_address = ray_cluster_address
+        # The Ray Dashboard address.
         self.ray_dashboard_address = ray_dashboard_address
+        # The Ray Grafana address.
         self.ray_grafana_address = ray_grafana_address
+        # The list of Ray worker group configurations.
         self.worker_groups = worker_groups
 
     def validate(self):
@@ -444,12 +468,19 @@ class DescribeEmbodiedAIPlatformsResponseBodyPlatformsRayConfigWorkerGroups(Dara
         worker_spec_name: str = None,
         worker_spec_type: str = None,
     ):
+        # The allocation unit.
         self.allocate_unit = allocate_unit
+        # The name of the worker group.
         self.group_name = group_name
+        # The maximum number of workers.
         self.max_worker_quantity = max_worker_quantity
+        # The minimum number of workers.
         self.min_worker_quantity = min_worker_quantity
+        # The disk size of each worker.
         self.worker_disk_capacity = worker_disk_capacity
+        # The worker resource model.
         self.worker_spec_name = worker_spec_name
+        # The Ray worker resource type.
         self.worker_spec_type = worker_spec_type
 
     def validate(self):
@@ -514,7 +545,9 @@ class DescribeEmbodiedAIPlatformsResponseBodyPlatformsEapConfig(DaraModel):
         webserver_address: str = None,
         webserver_spec_name: str = None,
     ):
+        # The public network access address of the platform webserver.
         self.webserver_address = webserver_address
+        # The webserver specification of the platform.
         self.webserver_spec_name = webserver_spec_name
 
     def validate(self):

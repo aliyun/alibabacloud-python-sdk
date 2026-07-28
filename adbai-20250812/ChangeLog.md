@@ -1,3 +1,7 @@
+2026-07-28 Version: 1.8.2
+- Update API DescribeChatMessage: add request parameters Skill.
+
+
 2026-05-19 Version: 1.8.1
 - Update API CreateEmbodiedAIPlatform: add request parameters RayTrainConfig.
 - Update API DescribeEmbodiedAIPlatforms: add response parameters Body.Platforms.$.RayTrainConfig.
