@@ -7,10 +7,12 @@ from darabonba.model import DaraModel
 class MultiModalGuardForBase64Request(DaraModel):
     def __init__(
         self,
+        file_base_64str: str = None,
         image_base_64str: str = None,
         service: str = None,
         service_parameters: str = None,
     ):
+        self.file_base_64str = file_base_64str
         # The base64-encoded string of the image.
         self.image_base_64str = image_base_64str
         # Service
@@ -26,6 +28,9 @@ class MultiModalGuardForBase64Request(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.file_base_64str is not None:
+            result['FileBase64Str'] = self.file_base_64str
+
         if self.image_base_64str is not None:
             result['ImageBase64Str'] = self.image_base_64str
 
@@ -39,6 +44,9 @@ class MultiModalGuardForBase64Request(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('FileBase64Str') is not None:
+            self.file_base_64str = m.get('FileBase64Str')
+
         if m.get('ImageBase64Str') is not None:
             self.image_base_64str = m.get('ImageBase64Str')
 

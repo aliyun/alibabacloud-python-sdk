@@ -15,13 +15,13 @@ class DescribeFileModerationResultResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The return code. A value of 200 indicates that the request was successful.
+        # The return code. A value of 200 indicates success.
         self.code = code
         # The returned data.
         self.data = data
         # The error message.
         self.message = message
-        # The ID of the request.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -75,19 +75,19 @@ class DescribeFileModerationResultResponseBodyData(DaraModel):
         risk_level: str = None,
         url: str = None,
     ):
-        # The AccountId specified in the request.
+        # The AccountId passed in by the customer.
         self.account_id = account_id
-        # The ID of the data.
+        # The data ID.
         self.data_id = data_id
-        # The document type. This parameter is optional.
+        # Optional. The document type.
         self.doc_type = doc_type
-        # A list of moderation results.
+        # The list of moderation results.
         self.page_result = page_result
         # The summary information.
         self.page_summary = page_summary
         # The risk level.
         self.risk_level = risk_level
-        # The download URL for the file.
+        # The file download URL.
         self.url = url
 
     def validate(self):
@@ -162,18 +162,22 @@ class DescribeFileModerationResultResponseBodyDataPageSummary(DaraModel):
         self,
         image_summary: main_models.DescribeFileModerationResultResponseBodyDataPageSummaryImageSummary = None,
         page_sum: int = None,
+        risk_summary: main_models.DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummary = None,
         text_summary: main_models.DescribeFileModerationResultResponseBodyDataPageSummaryTextSummary = None,
     ):
         # The image summary information.
         self.image_summary = image_summary
         # The total number of pages.
         self.page_sum = page_sum
+        self.risk_summary = risk_summary
         # The text summary information.
         self.text_summary = text_summary
 
     def validate(self):
         if self.image_summary:
             self.image_summary.validate()
+        if self.risk_summary:
+            self.risk_summary.validate()
         if self.text_summary:
             self.text_summary.validate()
 
@@ -188,6 +192,9 @@ class DescribeFileModerationResultResponseBodyDataPageSummary(DaraModel):
         if self.page_sum is not None:
             result['PageSum'] = self.page_sum
 
+        if self.risk_summary is not None:
+            result['RiskSummary'] = self.risk_summary.to_map()
+
         if self.text_summary is not None:
             result['TextSummary'] = self.text_summary.to_map()
 
@@ -201,6 +208,10 @@ class DescribeFileModerationResultResponseBodyDataPageSummary(DaraModel):
 
         if m.get('PageSum') is not None:
             self.page_sum = m.get('PageSum')
+
+        if m.get('RiskSummary') is not None:
+            temp_model = main_models.DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummary()
+            self.risk_summary = temp_model.from_map(m.get('RiskSummary'))
 
         if m.get('TextSummary') is not None:
             temp_model = main_models.DescribeFileModerationResultResponseBodyDataPageSummaryTextSummary()
@@ -260,7 +271,7 @@ class DescribeFileModerationResultResponseBodyDataPageSummaryTextSummaryTextLabe
         label: str = None,
         label_sum: int = None,
     ):
-        # The description of the label.
+        # The label descriptions.
         self.description = description
         # The label.
         self.label = label
@@ -296,6 +307,244 @@ class DescribeFileModerationResultResponseBodyDataPageSummaryTextSummaryTextLabe
 
         if m.get('LabelSum') is not None:
             self.label_sum = m.get('LabelSum')
+
+        return self
+
+class DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummary(DaraModel):
+    def __init__(
+        self,
+        ext: main_models.DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExt = None,
+        risk_labels: List[main_models.DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryRiskLabels] = None,
+        risk_level: str = None,
+    ):
+        self.ext = ext
+        self.risk_labels = risk_labels
+        self.risk_level = risk_level
+
+    def validate(self):
+        if self.ext:
+            self.ext.validate()
+        if self.risk_labels:
+            for v1 in self.risk_labels:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.ext is not None:
+            result['Ext'] = self.ext.to_map()
+
+        result['RiskLabels'] = []
+        if self.risk_labels is not None:
+            for k1 in self.risk_labels:
+                result['RiskLabels'].append(k1.to_map() if k1 else None)
+
+        if self.risk_level is not None:
+            result['RiskLevel'] = self.risk_level
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Ext') is not None:
+            temp_model = main_models.DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExt()
+            self.ext = temp_model.from_map(m.get('Ext'))
+
+        self.risk_labels = []
+        if m.get('RiskLabels') is not None:
+            for k1 in m.get('RiskLabels'):
+                temp_model = main_models.DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryRiskLabels()
+                self.risk_labels.append(temp_model.from_map(k1))
+
+        if m.get('RiskLevel') is not None:
+            self.risk_level = m.get('RiskLevel')
+
+        return self
+
+class DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryRiskLabels(DaraModel):
+    def __init__(
+        self,
+        confidence: float = None,
+        description: str = None,
+        label: str = None,
+    ):
+        self.confidence = confidence
+        self.description = description
+        self.label = label
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.confidence is not None:
+            result['Confidence'] = self.confidence
+
+        if self.description is not None:
+            result['Description'] = self.description
+
+        if self.label is not None:
+            result['Label'] = self.label
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Confidence') is not None:
+            self.confidence = m.get('Confidence')
+
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+
+        if m.get('Label') is not None:
+            self.label = m.get('Label')
+
+        return self
+
+class DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExt(DaraModel):
+    def __init__(
+        self,
+        aigc_data: main_models.DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAigcData = None,
+    ):
+        self.aigc_data = aigc_data
+
+    def validate(self):
+        if self.aigc_data:
+            self.aigc_data.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.aigc_data is not None:
+            result['AigcData'] = self.aigc_data.to_map()
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AigcData') is not None:
+            temp_model = main_models.DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAigcData()
+            self.aigc_data = temp_model.from_map(m.get('AigcData'))
+
+        return self
+
+class DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAigcData(DaraModel):
+    def __init__(
+        self,
+        aigc: main_models.DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAigcDataAIGC = None,
+        explain: str = None,
+    ):
+        self.aigc = aigc
+        self.explain = explain
+
+    def validate(self):
+        if self.aigc:
+            self.aigc.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.aigc is not None:
+            result['AIGC'] = self.aigc.to_map()
+
+        if self.explain is not None:
+            result['Explain'] = self.explain
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AIGC') is not None:
+            temp_model = main_models.DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAigcDataAIGC()
+            self.aigc = temp_model.from_map(m.get('AIGC'))
+
+        if m.get('Explain') is not None:
+            self.explain = m.get('Explain')
+
+        return self
+
+class DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAigcDataAIGC(DaraModel):
+    def __init__(
+        self,
+        content_producer: str = None,
+        content_propagator: str = None,
+        label: str = None,
+        produce_id: str = None,
+        propagate_id: str = None,
+        reserved_code_1: str = None,
+        reserved_code_2: str = None,
+    ):
+        self.content_producer = content_producer
+        self.content_propagator = content_propagator
+        self.label = label
+        self.produce_id = produce_id
+        self.propagate_id = propagate_id
+        self.reserved_code_1 = reserved_code_1
+        self.reserved_code_2 = reserved_code_2
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.content_producer is not None:
+            result['ContentProducer'] = self.content_producer
+
+        if self.content_propagator is not None:
+            result['ContentPropagator'] = self.content_propagator
+
+        if self.label is not None:
+            result['Label'] = self.label
+
+        if self.produce_id is not None:
+            result['ProduceID'] = self.produce_id
+
+        if self.propagate_id is not None:
+            result['PropagateID'] = self.propagate_id
+
+        if self.reserved_code_1 is not None:
+            result['ReservedCode1'] = self.reserved_code_1
+
+        if self.reserved_code_2 is not None:
+            result['ReservedCode2'] = self.reserved_code_2
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ContentProducer') is not None:
+            self.content_producer = m.get('ContentProducer')
+
+        if m.get('ContentPropagator') is not None:
+            self.content_propagator = m.get('ContentPropagator')
+
+        if m.get('Label') is not None:
+            self.label = m.get('Label')
+
+        if m.get('ProduceID') is not None:
+            self.produce_id = m.get('ProduceID')
+
+        if m.get('PropagateID') is not None:
+            self.propagate_id = m.get('PropagateID')
+
+        if m.get('ReservedCode1') is not None:
+            self.reserved_code_1 = m.get('ReservedCode1')
+
+        if m.get('ReservedCode2') is not None:
+            self.reserved_code_2 = m.get('ReservedCode2')
 
         return self
 
@@ -351,7 +600,7 @@ class DescribeFileModerationResultResponseBodyDataPageSummaryImageSummaryImageLa
         label: str = None,
         label_sum: int = None,
     ):
-        # The description of the label.
+        # The label description.
         self.description = description
         # The label.
         self.label = label
@@ -399,13 +648,13 @@ class DescribeFileModerationResultResponseBodyDataPageResult(DaraModel):
         text_result: List[main_models.DescribeFileModerationResultResponseBodyDataPageResultTextResult] = None,
         text_url: str = None,
     ):
-        # The image moderation results.
+        # The image moderation result.
         self.image_result = image_result
-        # The URL of the image.
+        # The image URL.
         self.image_url = image_url
         # The page number.
         self.page_num = page_num
-        # The text moderation results.
+        # The text moderation result.
         self.text_result = text_result
         # The URL where the text content is stored.
         self.text_url = text_url
@@ -486,21 +735,21 @@ class DescribeFileModerationResultResponseBodyDataPageResultTextResult(DaraModel
     ):
         # The description.
         self.description = description
-        # The description of the label.
+        # The label descriptions.
         self.descriptions = descriptions
-        # The value of the label.
+        # The label values.
         self.labels = labels
         # The risk level.
         self.risk_level = risk_level
-        # Details about the hit risk.
+        # The details of the hit risks.
         self.risk_tips = risk_tips
-        # The risk keywords that were hit.
+        # The risk keywords that are hit.
         self.risk_words = risk_words
         # The service.
         self.service = service
         # The text content.
         self.text = text
-        # Information about the text segment.
+        # The text segment information.
         self.text_segment = text_segment
 
     def validate(self):
@@ -588,7 +837,7 @@ class DescribeFileModerationResultResponseBodyDataPageResultImageResult(DaraMode
         self.location = location
         # The risk level.
         self.risk_level = risk_level
-        # The service that was called.
+        # The invoked service.
         self.service = service
 
     def validate(self):
@@ -654,13 +903,13 @@ class DescribeFileModerationResultResponseBodyDataPageResultImageResultLocation(
         x: int = None,
         y: int = None,
     ):
-        # The height of the detected area.
+        # The H value of the coordinate point.
         self.h = h
-        # The width of the detected area.
+        # The W value of the coordinate point.
         self.w = w
-        # The X coordinate of the point.
+        # The X value of the coordinate point.
         self.x = x
-        # The Y-coordinate of the point.
+        # The Y value of the coordinate point.
         self.y = y
 
     def validate(self):
@@ -710,7 +959,7 @@ class DescribeFileModerationResultResponseBodyDataPageResultImageResultLabelResu
         description: str = None,
         label: str = None,
     ):
-        # The confidence score.
+        # The risk score.
         self.confidence = confidence
         # The description.
         self.description = description

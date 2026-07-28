@@ -1546,6 +1546,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(request.service):
             query['Service'] = request.service
         body = {}
+        if not DaraCore.is_null(request.file_base_64str):
+            body['FileBase64Str'] = request.file_base_64str
         if not DaraCore.is_null(request.image_base_64str):
             body['ImageBase64Str'] = request.image_base_64str
         if not DaraCore.is_null(request.service_parameters):
@@ -1580,6 +1582,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(request.service):
             query['Service'] = request.service
         body = {}
+        if not DaraCore.is_null(request.file_base_64str):
+            body['FileBase64Str'] = request.file_base_64str
         if not DaraCore.is_null(request.image_base_64str):
             body['ImageBase64Str'] = request.image_base_64str
         if not DaraCore.is_null(request.service_parameters):

@@ -154,11 +154,11 @@ class MultiModalGuardAsyncResultResponseBodyDataFrameResult(DaraModel):
         slice_num: int = None,
         suggestion: str = None,
     ):
-        # The frame detection results.
+        # The frame moderation results.
         self.frames = frames
         # The number of segments.
         self.slice_num = slice_num
-        # The moderation recommendation. Valid values:
+        # The recommended action. Valid values:
         # 
         # - block: Block the content.
         # - pass: Allow the content.
@@ -217,13 +217,15 @@ class MultiModalGuardAsyncResultResponseBodyDataFrameResultFrames(DaraModel):
         timestamp: int = None,
         url: str = None,
     ):
-        # The list of detection results.
+        # The list of moderation results.
         self.detail = detail
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_msg = error_msg
         # The frame capture position.
         self.offset = offset
-        # The moderation recommendation. Valid values:
+        # The recommended action. Valid values:
         # 
         # - block: Block the content.
         # - pass: Allow the content.
@@ -232,7 +234,7 @@ class MultiModalGuardAsyncResultResponseBodyDataFrameResultFrames(DaraModel):
         self.suggestion = suggestion
         # The absolute timestamp, in milliseconds.
         self.timestamp = timestamp
-        # The temporary URL of the frame.
+        # The temporary URL of the segment.
         self.url = url
 
     def validate(self):
@@ -313,17 +315,17 @@ class MultiModalGuardAsyncResultResponseBodyDataFrameResultFramesDetail(DaraMode
         # - low: Low risk.
         # - none: No risk detected.
         self.level = level
-        # The detection result.
+        # The moderation result.
         self.result = result
-        # The moderation recommendation. Valid values:
+        # The recommended action. Valid values:
         # 
         # - block: Block the content.
         # - pass: Allow the content.
         # - watch: Manually review the content.
         # - mask: Mask the content.
         self.suggestion = suggestion
-        # The detection type. Valid values:
-        # - contentModeration: content compliance detection
+        # The moderation type. Valid values:
+        # - contentModeration: content compliance moderation
         # - promptAttack: prompt attack detection
         # - sensitiveData: sensitive content detection
         # - modelHallucination: model hallucination detection
@@ -389,7 +391,7 @@ class MultiModalGuardAsyncResultResponseBodyDataFrameResultFramesDetailResult(Da
         self.confidence = confidence
         # The label description.
         self.description = description
-        # The extended information of the detection result.
+        # The extended information of the moderation result.
         self.ext = ext
         # The label.
         self.label = label
@@ -508,13 +510,13 @@ class MultiModalGuardAsyncResultResponseBodyDataAudioResultSliceDetails(DaraMode
         text: str = None,
         url: str = None,
     ):
-        # The detection details.
+        # The moderation details.
         self.detail = detail
         # The end time of the segment, in seconds.
         self.end_time = end_time
         # The start time of the segment, in seconds.
         self.start_time = start_time
-        # The moderation recommendation. Valid values:
+        # The recommended action. Valid values:
         # 
         # - block: Block the content.
         # - pass: Allow the content.
@@ -598,17 +600,17 @@ class MultiModalGuardAsyncResultResponseBodyDataAudioResultSliceDetailsDetail(Da
         # - low: Low risk.
         # - none: No risk detected.
         self.level = level
-        # The list of detection results.
+        # The list of moderation results.
         self.result = result
-        # The moderation recommendation. Valid values:
+        # The recommended action. Valid values:
         # 
         # - block: Block the content.
         # - pass: Allow the content.
         # - watch: Manually review the content.
         # - mask: Mask the content.
         self.suggestion = suggestion
-        # The detection type. Valid values:
-        # - contentModeration: content compliance detection
+        # The moderation type. Valid values:
+        # - contentModeration: content compliance moderation
         # - promptAttack: prompt attack detection
         # - sensitiveData: sensitive content detection
         # - modelHallucination: model hallucination detection
@@ -674,7 +676,7 @@ class MultiModalGuardAsyncResultResponseBodyDataAudioResultSliceDetailsDetailRes
         self.confidence = confidence
         # The label description.
         self.description = description
-        # The extended information of the detection result.
+        # The extended information of the moderation result.
         self.ext = ext
         # The label.
         self.label = label
