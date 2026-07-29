@@ -4448,16 +4448,22 @@ class Client(OpenApiClient):
     def list_published_agent_with_options(
         self,
         workspace_id: str,
-        request: main_models.ListPublishedAgentRequest,
+        tmp_req: main_models.ListPublishedAgentRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.ListPublishedAgentResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.ListPublishedAgentShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.sub_types):
+            request.sub_types_shrink = Utils.array_to_string_with_specified_style(tmp_req.sub_types, 'subTypes', 'json')
         query = {}
         if not DaraCore.is_null(request.page_no):
             query['pageNo'] = request.page_no
         if not DaraCore.is_null(request.page_size):
             query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.sub_types_shrink):
+            query['subTypes'] = request.sub_types_shrink
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -4481,16 +4487,22 @@ class Client(OpenApiClient):
     async def list_published_agent_with_options_async(
         self,
         workspace_id: str,
-        request: main_models.ListPublishedAgentRequest,
+        tmp_req: main_models.ListPublishedAgentRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.ListPublishedAgentResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.ListPublishedAgentShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.sub_types):
+            request.sub_types_shrink = Utils.array_to_string_with_specified_style(tmp_req.sub_types, 'subTypes', 'json')
         query = {}
         if not DaraCore.is_null(request.page_no):
             query['pageNo'] = request.page_no
         if not DaraCore.is_null(request.page_size):
             query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.sub_types_shrink):
+            query['subTypes'] = request.sub_types_shrink
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)

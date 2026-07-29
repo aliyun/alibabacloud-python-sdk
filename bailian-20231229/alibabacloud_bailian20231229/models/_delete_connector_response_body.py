@@ -15,11 +15,19 @@ class DeleteConnectorResponseBody(DaraModel):
         status: str = None,
         success: bool = None,
     ):
+        # The error status code.
         self.code = code
+        # The business data field of the operation.
         self.data = data
+        # The error message.
         self.message = message
+        # Id of the request
         self.request_id = request_id
+        # The status code returned by the operation.
         self.status = status
+        # Indicates whether the operation was successful. Valid values:
+        # - true: Succeeded.
+        # - false: Failed.
         self.success = success
 
     def validate(self):
@@ -79,6 +87,7 @@ class DeleteConnectorResponseBodyData(DaraModel):
         self,
         connector_id: str = None,
     ):
+        # The connector ID.
         self.connector_id = connector_id
 
     def validate(self):

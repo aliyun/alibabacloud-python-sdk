@@ -2,20 +2,18 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List
-
 from darabonba.model import DaraModel
 
-class ListPublishedAgentRequest(DaraModel):
+class ListPublishedAgentShrinkRequest(DaraModel):
     def __init__(
         self,
         page_no: int = None,
         page_size: int = None,
-        sub_types: List[str] = None,
+        sub_types_shrink: str = None,
     ):
         self.page_no = page_no
         self.page_size = page_size
-        self.sub_types = sub_types
+        self.sub_types_shrink = sub_types_shrink
 
     def validate(self):
         pass
@@ -31,8 +29,8 @@ class ListPublishedAgentRequest(DaraModel):
         if self.page_size is not None:
             result['pageSize'] = self.page_size
 
-        if self.sub_types is not None:
-            result['subTypes'] = self.sub_types
+        if self.sub_types_shrink is not None:
+            result['subTypes'] = self.sub_types_shrink
 
         return result
 
@@ -45,7 +43,7 @@ class ListPublishedAgentRequest(DaraModel):
             self.page_size = m.get('pageSize')
 
         if m.get('subTypes') is not None:
-            self.sub_types = m.get('subTypes')
+            self.sub_types_shrink = m.get('subTypes')
 
         return self
 

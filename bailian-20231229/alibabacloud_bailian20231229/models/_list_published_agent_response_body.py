@@ -140,15 +140,21 @@ class ListPublishedAgentResponseBodyDataList(DaraModel):
         self,
         application_config: main_models.ListPublishedAgentResponseBodyDataListApplicationConfig = None,
         code: str = None,
+        description: str = None,
         instructions: str = None,
         model_id: str = None,
         name: str = None,
+        sub_type: str = None,
+        type: int = None,
     ):
         self.application_config = application_config
         self.code = code
+        self.description = description
         self.instructions = instructions
         self.model_id = model_id
         self.name = name
+        self.sub_type = sub_type
+        self.type = type
 
     def validate(self):
         if self.application_config:
@@ -165,6 +171,9 @@ class ListPublishedAgentResponseBodyDataList(DaraModel):
         if self.code is not None:
             result['code'] = self.code
 
+        if self.description is not None:
+            result['description'] = self.description
+
         if self.instructions is not None:
             result['instructions'] = self.instructions
 
@@ -173,6 +182,12 @@ class ListPublishedAgentResponseBodyDataList(DaraModel):
 
         if self.name is not None:
             result['name'] = self.name
+
+        if self.sub_type is not None:
+            result['subType'] = self.sub_type
+
+        if self.type is not None:
+            result['type'] = self.type
 
         return result
 
@@ -185,6 +200,9 @@ class ListPublishedAgentResponseBodyDataList(DaraModel):
         if m.get('code') is not None:
             self.code = m.get('code')
 
+        if m.get('description') is not None:
+            self.description = m.get('description')
+
         if m.get('instructions') is not None:
             self.instructions = m.get('instructions')
 
@@ -193,6 +211,12 @@ class ListPublishedAgentResponseBodyDataList(DaraModel):
 
         if m.get('name') is not None:
             self.name = m.get('name')
+
+        if m.get('subType') is not None:
+            self.sub_type = m.get('subType')
+
+        if m.get('type') is not None:
+            self.type = m.get('type')
 
         return self
 

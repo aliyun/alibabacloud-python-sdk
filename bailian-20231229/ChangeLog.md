@@ -1,3 +1,10 @@
+2026-07-29 Version: 2.14.2
+- Update API ListPublishedAgent: add request parameters subTypes.
+- Update API ListPublishedAgent: add response parameters Body.data.list.$.description.
+- Update API ListPublishedAgent: add response parameters Body.data.list.$.subType.
+- Update API ListPublishedAgent: add response parameters Body.data.list.$.type.
+
+
 2026-07-27 Version: 2.14.1
 - Update API ListIndexFileDetails: add response parameters Body.Data.Documents.$.MetaExtractInfo.
 

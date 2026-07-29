@@ -160,6 +160,7 @@ from ._list_prompt_templates_request import ListPromptTemplatesRequest
 from ._list_prompt_templates_response_body import ListPromptTemplatesResponseBody
 from ._list_prompt_templates_response import ListPromptTemplatesResponse
 from ._list_published_agent_request import ListPublishedAgentRequest
+from ._list_published_agent_shrink_request import ListPublishedAgentShrinkRequest
 from ._list_published_agent_response_body import ListPublishedAgentResponseBody
 from ._list_published_agent_response import ListPublishedAgentResponse
 from ._retrieve_request import RetrieveRequest
@@ -479,6 +480,7 @@ __all__ = [
     ListPromptTemplatesResponseBody,
     ListPromptTemplatesResponse,
     ListPublishedAgentRequest,
+    ListPublishedAgentShrinkRequest,
     ListPublishedAgentResponseBody,
     ListPublishedAgentResponse,
     RetrieveRequest,
