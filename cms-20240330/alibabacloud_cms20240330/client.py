@@ -2317,6 +2317,98 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_service_record_with_options_async(workspace, service_id, request, headers, runtime)
 
+    def create_service_task_with_options(
+        self,
+        workspace: str,
+        service_id: str,
+        request: main_models.CreateServiceTaskRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateServiceTaskResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.ip):
+            body['ip'] = request.ip
+        if not DaraCore.is_null(request.task_config):
+            body['taskConfig'] = request.task_config
+        if not DaraCore.is_null(request.type):
+            body['type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateServiceTask',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/serviceTask/{DaraURL.percent_encode(workspace)}/{DaraURL.percent_encode(service_id)}/task',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateServiceTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_service_task_with_options_async(
+        self,
+        workspace: str,
+        service_id: str,
+        request: main_models.CreateServiceTaskRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateServiceTaskResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.ip):
+            body['ip'] = request.ip
+        if not DaraCore.is_null(request.task_config):
+            body['taskConfig'] = request.task_config
+        if not DaraCore.is_null(request.type):
+            body['type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateServiceTask',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/serviceTask/{DaraURL.percent_encode(workspace)}/{DaraURL.percent_encode(service_id)}/task',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateServiceTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_service_task(
+        self,
+        workspace: str,
+        service_id: str,
+        request: main_models.CreateServiceTaskRequest,
+    ) -> main_models.CreateServiceTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_service_task_with_options(workspace, service_id, request, headers, runtime)
+
+    async def create_service_task_async(
+        self,
+        workspace: str,
+        service_id: str,
+        request: main_models.CreateServiceTaskRequest,
+    ) -> main_models.CreateServiceTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_service_task_with_options_async(workspace, service_id, request, headers, runtime)
+
     def create_ticket_with_options(
         self,
         request: main_models.CreateTicketRequest,
@@ -4262,6 +4354,94 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.delete_service_record_with_options_async(workspace, service_id, request, headers, runtime)
+
+    def delete_service_task_with_options(
+        self,
+        workspace: str,
+        service_id: str,
+        task_id: str,
+        request: main_models.DeleteServiceTaskRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteServiceTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.type):
+            query['type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteServiceTask',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/serviceTask/{DaraURL.percent_encode(workspace)}/{DaraURL.percent_encode(service_id)}/task/{DaraURL.percent_encode(task_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteServiceTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_service_task_with_options_async(
+        self,
+        workspace: str,
+        service_id: str,
+        task_id: str,
+        request: main_models.DeleteServiceTaskRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteServiceTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.type):
+            query['type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteServiceTask',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/serviceTask/{DaraURL.percent_encode(workspace)}/{DaraURL.percent_encode(service_id)}/task/{DaraURL.percent_encode(task_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteServiceTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_service_task(
+        self,
+        workspace: str,
+        service_id: str,
+        task_id: str,
+        request: main_models.DeleteServiceTaskRequest,
+    ) -> main_models.DeleteServiceTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_service_task_with_options(workspace, service_id, task_id, request, headers, runtime)
+
+    async def delete_service_task_async(
+        self,
+        workspace: str,
+        service_id: str,
+        task_id: str,
+        request: main_models.DeleteServiceTaskRequest,
+    ) -> main_models.DeleteServiceTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_service_task_with_options_async(workspace, service_id, task_id, request, headers, runtime)
 
     def delete_umodel_with_options(
         self,
@@ -7326,6 +7506,94 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.get_service_record_with_options_async(workspace, service_id, request, headers, runtime)
+
+    def get_service_task_with_options(
+        self,
+        workspace: str,
+        service_id: str,
+        task_id: str,
+        request: main_models.GetServiceTaskRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetServiceTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.type):
+            query['type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetServiceTask',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/serviceTask/{DaraURL.percent_encode(workspace)}/{DaraURL.percent_encode(service_id)}/task/{DaraURL.percent_encode(task_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetServiceTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_service_task_with_options_async(
+        self,
+        workspace: str,
+        service_id: str,
+        task_id: str,
+        request: main_models.GetServiceTaskRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetServiceTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.type):
+            query['type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetServiceTask',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/serviceTask/{DaraURL.percent_encode(workspace)}/{DaraURL.percent_encode(service_id)}/task/{DaraURL.percent_encode(task_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetServiceTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_service_task(
+        self,
+        workspace: str,
+        service_id: str,
+        task_id: str,
+        request: main_models.GetServiceTaskRequest,
+    ) -> main_models.GetServiceTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_service_task_with_options(workspace, service_id, task_id, request, headers, runtime)
+
+    async def get_service_task_async(
+        self,
+        workspace: str,
+        service_id: str,
+        task_id: str,
+        request: main_models.GetServiceTaskRequest,
+    ) -> main_models.GetServiceTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_service_task_with_options_async(workspace, service_id, task_id, request, headers, runtime)
 
     def get_umodel_with_options(
         self,
@@ -10414,6 +10682,102 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.list_service_records_with_options_async(workspace, request, headers, runtime)
+
+    def list_service_task_with_options(
+        self,
+        workspace: str,
+        service_id: str,
+        request: main_models.ListServiceTaskRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListServiceTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.search_condition):
+            query['searchCondition'] = request.search_condition
+        if not DaraCore.is_null(request.type):
+            query['type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListServiceTask',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/serviceTask/{DaraURL.percent_encode(workspace)}/{DaraURL.percent_encode(service_id)}/tasks',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListServiceTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_service_task_with_options_async(
+        self,
+        workspace: str,
+        service_id: str,
+        request: main_models.ListServiceTaskRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListServiceTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.search_condition):
+            query['searchCondition'] = request.search_condition
+        if not DaraCore.is_null(request.type):
+            query['type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListServiceTask',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/serviceTask/{DaraURL.percent_encode(workspace)}/{DaraURL.percent_encode(service_id)}/tasks',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListServiceTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_service_task(
+        self,
+        workspace: str,
+        service_id: str,
+        request: main_models.ListServiceTaskRequest,
+    ) -> main_models.ListServiceTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_service_task_with_options(workspace, service_id, request, headers, runtime)
+
+    async def list_service_task_async(
+        self,
+        workspace: str,
+        service_id: str,
+        request: main_models.ListServiceTaskRequest,
+    ) -> main_models.ListServiceTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_service_task_with_options_async(workspace, service_id, request, headers, runtime)
 
     def list_services_with_options(
         self,

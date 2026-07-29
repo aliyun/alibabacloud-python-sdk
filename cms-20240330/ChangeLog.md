@@ -1,3 +1,10 @@
+2026-07-29 Version: 10.3.0
+- Support API CreateServiceTask.
+- Support API DeleteServiceTask.
+- Support API GetServiceTask.
+- Support API ListServiceTask.
+
+
 2026-07-27 Version: 10.2.1
 - Update API ManageAlertRules: add request parameters callSource.
 - Update API QueryAlertRules: add request parameters queryJson.

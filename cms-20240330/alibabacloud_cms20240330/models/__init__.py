@@ -262,6 +262,9 @@ from ._create_service_observability_response import CreateServiceObservabilityRe
 from ._create_service_record_request import CreateServiceRecordRequest
 from ._create_service_record_response_body import CreateServiceRecordResponseBody
 from ._create_service_record_response import CreateServiceRecordResponse
+from ._create_service_task_request import CreateServiceTaskRequest
+from ._create_service_task_response_body import CreateServiceTaskResponseBody
+from ._create_service_task_response import CreateServiceTaskResponse
 from ._create_ticket_request import CreateTicketRequest
 from ._create_ticket_response_body import CreateTicketResponseBody
 from ._create_ticket_response import CreateTicketResponse
@@ -337,6 +340,9 @@ from ._delete_service_response import DeleteServiceResponse
 from ._delete_service_record_request import DeleteServiceRecordRequest
 from ._delete_service_record_response_body import DeleteServiceRecordResponseBody
 from ._delete_service_record_response import DeleteServiceRecordResponse
+from ._delete_service_task_request import DeleteServiceTaskRequest
+from ._delete_service_task_response_body import DeleteServiceTaskResponseBody
+from ._delete_service_task_response import DeleteServiceTaskResponse
 from ._delete_umodel_request import DeleteUmodelRequest
 from ._delete_umodel_response_body import DeleteUmodelResponseBody
 from ._delete_umodel_response import DeleteUmodelResponse
@@ -451,6 +457,9 @@ from ._get_service_observability_response import GetServiceObservabilityResponse
 from ._get_service_record_request import GetServiceRecordRequest
 from ._get_service_record_response_body import GetServiceRecordResponseBody
 from ._get_service_record_response import GetServiceRecordResponse
+from ._get_service_task_request import GetServiceTaskRequest
+from ._get_service_task_response_body import GetServiceTaskResponseBody
+from ._get_service_task_response import GetServiceTaskResponse
 from ._get_umodel_request import GetUmodelRequest
 from ._get_umodel_response_body import GetUmodelResponseBody
 from ._get_umodel_response import GetUmodelResponse
@@ -560,6 +569,9 @@ from ._list_prometheus_virtual_instances_response import ListPrometheusVirtualIn
 from ._list_service_records_request import ListServiceRecordsRequest
 from ._list_service_records_response_body import ListServiceRecordsResponseBody
 from ._list_service_records_response import ListServiceRecordsResponse
+from ._list_service_task_request import ListServiceTaskRequest
+from ._list_service_task_response_body import ListServiceTaskResponseBody
+from ._list_service_task_response import ListServiceTaskResponse
 from ._list_services_request import ListServicesRequest
 from ._list_services_shrink_request import ListServicesShrinkRequest
 from ._list_services_response_body import ListServicesResponseBody
@@ -1237,6 +1249,9 @@ __all__ = [
     CreateServiceRecordRequest,
     CreateServiceRecordResponseBody,
     CreateServiceRecordResponse,
+    CreateServiceTaskRequest,
+    CreateServiceTaskResponseBody,
+    CreateServiceTaskResponse,
     CreateTicketRequest,
     CreateTicketResponseBody,
     CreateTicketResponse,
@@ -1312,6 +1327,9 @@ __all__ = [
     DeleteServiceRecordRequest,
     DeleteServiceRecordResponseBody,
     DeleteServiceRecordResponse,
+    DeleteServiceTaskRequest,
+    DeleteServiceTaskResponseBody,
+    DeleteServiceTaskResponse,
     DeleteUmodelRequest,
     DeleteUmodelResponseBody,
     DeleteUmodelResponse,
@@ -1426,6 +1444,9 @@ __all__ = [
     GetServiceRecordRequest,
     GetServiceRecordResponseBody,
     GetServiceRecordResponse,
+    GetServiceTaskRequest,
+    GetServiceTaskResponseBody,
+    GetServiceTaskResponse,
     GetUmodelRequest,
     GetUmodelResponseBody,
     GetUmodelResponse,
@@ -1535,6 +1556,9 @@ __all__ = [
     ListServiceRecordsRequest,
     ListServiceRecordsResponseBody,
     ListServiceRecordsResponse,
+    ListServiceTaskRequest,
+    ListServiceTaskResponseBody,
+    ListServiceTaskResponse,
     ListServicesRequest,
     ListServicesShrinkRequest,
     ListServicesResponseBody,
