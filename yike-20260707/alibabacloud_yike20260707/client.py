@@ -702,6 +702,136 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_video_generation_job_with_options_async(request, runtime)
 
+    def get_yike_account_credit_with_options(
+        self,
+        request: main_models.GetYikeAccountCreditRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetYikeAccountCreditResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'GetYikeAccountCredit',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetYikeAccountCreditResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_yike_account_credit_with_options_async(
+        self,
+        request: main_models.GetYikeAccountCreditRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetYikeAccountCreditResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'GetYikeAccountCredit',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetYikeAccountCreditResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_yike_account_credit(
+        self,
+        request: main_models.GetYikeAccountCreditRequest,
+    ) -> main_models.GetYikeAccountCreditResponse:
+        runtime = RuntimeOptions()
+        return self.get_yike_account_credit_with_options(request, runtime)
+
+    async def get_yike_account_credit_async(
+        self,
+        request: main_models.GetYikeAccountCreditRequest,
+    ) -> main_models.GetYikeAccountCreditResponse:
+        runtime = RuntimeOptions()
+        return await self.get_yike_account_credit_with_options_async(request, runtime)
+
+    def get_yike_job_credit_with_options(
+        self,
+        request: main_models.GetYikeJobCreditRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetYikeJobCreditResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.job_id):
+            body['JobId'] = request.job_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetYikeJobCredit',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetYikeJobCreditResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_yike_job_credit_with_options_async(
+        self,
+        request: main_models.GetYikeJobCreditRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetYikeJobCreditResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.job_id):
+            body['JobId'] = request.job_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetYikeJobCredit',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetYikeJobCreditResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_yike_job_credit(
+        self,
+        request: main_models.GetYikeJobCreditRequest,
+    ) -> main_models.GetYikeJobCreditResponse:
+        runtime = RuntimeOptions()
+        return self.get_yike_job_credit_with_options(request, runtime)
+
+    async def get_yike_job_credit_async(
+        self,
+        request: main_models.GetYikeJobCreditRequest,
+    ) -> main_models.GetYikeJobCreditResponse:
+        runtime = RuntimeOptions()
+        return await self.get_yike_job_credit_with_options_async(request, runtime)
+
     def import_media_with_options(
         self,
         request: main_models.ImportMediaRequest,
@@ -903,8 +1033,6 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.category_id):
             query['CategoryId'] = request.category_id
-        if not DaraCore.is_null(request.entity_id):
-            query['EntityId'] = request.entity_id
         if not DaraCore.is_null(request.match):
             query['Match'] = request.match
         if not DaraCore.is_null(request.page_no):
@@ -913,8 +1041,6 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.scroll_token):
             query['ScrollToken'] = request.scroll_token
-        if not DaraCore.is_null(request.search_lib_name):
-            query['SearchLibName'] = request.search_lib_name
         if not DaraCore.is_null(request.sort_by):
             query['SortBy'] = request.sort_by
         req = open_api_util_models.OpenApiRequest(
@@ -945,8 +1071,6 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.category_id):
             query['CategoryId'] = request.category_id
-        if not DaraCore.is_null(request.entity_id):
-            query['EntityId'] = request.entity_id
         if not DaraCore.is_null(request.match):
             query['Match'] = request.match
         if not DaraCore.is_null(request.page_no):
@@ -955,8 +1079,6 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.scroll_token):
             query['ScrollToken'] = request.scroll_token
-        if not DaraCore.is_null(request.search_lib_name):
-            query['SearchLibName'] = request.search_lib_name
         if not DaraCore.is_null(request.sort_by):
             query['SortBy'] = request.sort_by
         req = open_api_util_models.OpenApiRequest(
@@ -1281,6 +1403,104 @@ class Client(OpenApiClient):
     ) -> main_models.SubmitVideoGenerationJobResponse:
         runtime = RuntimeOptions()
         return await self.submit_video_generation_job_with_options_async(request, runtime)
+
+    def submit_video_translation_job_with_options(
+        self,
+        request: main_models.SubmitVideoTranslationJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitVideoTranslationJobResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.input):
+            body['Input'] = request.input
+        if not DaraCore.is_null(request.job_parameters):
+            body['JobParameters'] = request.job_parameters
+        if not DaraCore.is_null(request.job_type):
+            body['JobType'] = request.job_type
+        if not DaraCore.is_null(request.output):
+            body['Output'] = request.output
+        if not DaraCore.is_null(request.title):
+            body['Title'] = request.title
+        if not DaraCore.is_null(request.user_data):
+            body['UserData'] = request.user_data
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitVideoTranslationJob',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitVideoTranslationJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_video_translation_job_with_options_async(
+        self,
+        request: main_models.SubmitVideoTranslationJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitVideoTranslationJobResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.input):
+            body['Input'] = request.input
+        if not DaraCore.is_null(request.job_parameters):
+            body['JobParameters'] = request.job_parameters
+        if not DaraCore.is_null(request.job_type):
+            body['JobType'] = request.job_type
+        if not DaraCore.is_null(request.output):
+            body['Output'] = request.output
+        if not DaraCore.is_null(request.title):
+            body['Title'] = request.title
+        if not DaraCore.is_null(request.user_data):
+            body['UserData'] = request.user_data
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitVideoTranslationJob',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitVideoTranslationJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_video_translation_job(
+        self,
+        request: main_models.SubmitVideoTranslationJobRequest,
+    ) -> main_models.SubmitVideoTranslationJobResponse:
+        runtime = RuntimeOptions()
+        return self.submit_video_translation_job_with_options(request, runtime)
+
+    async def submit_video_translation_job_async(
+        self,
+        request: main_models.SubmitVideoTranslationJobRequest,
+    ) -> main_models.SubmitVideoTranslationJobResponse:
+        runtime = RuntimeOptions()
+        return await self.submit_video_translation_job_with_options_async(request, runtime)
 
     def update_asset_category_with_options(
         self,

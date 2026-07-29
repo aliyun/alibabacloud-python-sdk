@@ -1,3 +1,16 @@
+2026-07-29 Version: 2.0.0
+- Support API GetYikeAccountCredit.
+- Support API GetYikeJobCredit.
+- Support API SubmitVideoTranslationJob.
+- Update API ListAssetCategories: update response parameters Body.Total' type has changed.
+- Update API ListAssetCategories: update response parameters Body.Total' format has changed.
+- Update API SearchMedia: delete request parameters EntityId.
+- Update API SearchMedia: delete request parameters SearchLibName.
+- Update API SearchMedia: delete response parameters Body.MediaInfoList.$.CustomFields.
+- Update API SearchMedia: delete response parameters Body.MediaInfoList.$.MediaDynamicInfo.DynamicMetaData.Type.
+- Update API SearchMedia: delete response parameters Body.MediaInfoList.$.MediaDynamicInfo.MediaExtraInfo.
+
+
 2026-07-22 Version: 1.2.0
 - Support API CreateAssetCategory.
 - Support API DeleteAssetCategory.

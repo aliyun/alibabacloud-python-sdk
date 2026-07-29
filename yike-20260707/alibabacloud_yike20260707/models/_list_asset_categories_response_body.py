@@ -12,7 +12,7 @@ class ListAssetCategoriesResponseBody(DaraModel):
         self,
         categories: List[main_models.ListAssetCategoriesResponseBodyCategories] = None,
         request_id: str = None,
-        total: str = None,
+        total: int = None,
     ):
         self.categories = categories
         self.request_id = request_id

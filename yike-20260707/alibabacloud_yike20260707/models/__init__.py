@@ -29,6 +29,12 @@ from ._get_media_comprehension_job_response import GetMediaComprehensionJobRespo
 from ._get_video_generation_job_request import GetVideoGenerationJobRequest
 from ._get_video_generation_job_response_body import GetVideoGenerationJobResponseBody
 from ._get_video_generation_job_response import GetVideoGenerationJobResponse
+from ._get_yike_account_credit_request import GetYikeAccountCreditRequest
+from ._get_yike_account_credit_response_body import GetYikeAccountCreditResponseBody
+from ._get_yike_account_credit_response import GetYikeAccountCreditResponse
+from ._get_yike_job_credit_request import GetYikeJobCreditRequest
+from ._get_yike_job_credit_response_body import GetYikeJobCreditResponseBody
+from ._get_yike_job_credit_response import GetYikeJobCreditResponse
 from ._import_media_request import ImportMediaRequest
 from ._import_media_response_body import ImportMediaResponseBody
 from ._import_media_response import ImportMediaResponse
@@ -47,6 +53,9 @@ from ._submit_media_comprehension_job_response import SubmitMediaComprehensionJo
 from ._submit_video_generation_job_request import SubmitVideoGenerationJobRequest
 from ._submit_video_generation_job_response_body import SubmitVideoGenerationJobResponseBody
 from ._submit_video_generation_job_response import SubmitVideoGenerationJobResponse
+from ._submit_video_translation_job_request import SubmitVideoTranslationJobRequest
+from ._submit_video_translation_job_response_body import SubmitVideoTranslationJobResponseBody
+from ._submit_video_translation_job_response import SubmitVideoTranslationJobResponse
 from ._update_asset_category_request import UpdateAssetCategoryRequest
 from ._update_asset_category_response_body import UpdateAssetCategoryResponseBody
 from ._update_asset_category_response import UpdateAssetCategoryResponse
@@ -77,12 +86,13 @@ from ._get_media_response_body import GetMediaResponseBodyMediaInfoMediaDynamicI
 from ._get_media_response_body import GetMediaResponseBodyMediaInfo
 from ._get_media_comprehension_job_response_body import GetMediaComprehensionJobResponseBodyMediaComprehensionJob
 from ._get_video_generation_job_response_body import GetVideoGenerationJobResponseBodyVideoGenerationJob
+from ._get_yike_account_credit_response_body import GetYikeAccountCreditResponseBodyCreditInfo
+from ._get_yike_account_credit_response_body import GetYikeAccountCreditResponseBodyMembershipInfo
 from ._list_asset_categories_response_body import ListAssetCategoriesResponseBodyCategories
 from ._search_media_response_body import SearchMediaResponseBodyMediaInfoListFileInfoListFileBasicInfo
 from ._search_media_response_body import SearchMediaResponseBodyMediaInfoListFileInfoList
 from ._search_media_response_body import SearchMediaResponseBodyMediaInfoListMediaBasicInfo
 from ._search_media_response_body import SearchMediaResponseBodyMediaInfoListMediaDynamicInfoDynamicMetaData
-from ._search_media_response_body import SearchMediaResponseBodyMediaInfoListMediaDynamicInfoMediaExtraInfo
 from ._search_media_response_body import SearchMediaResponseBodyMediaInfoListMediaDynamicInfo
 from ._search_media_response_body import SearchMediaResponseBodyMediaInfoList
 
@@ -114,6 +124,12 @@ __all__ = [
     GetVideoGenerationJobRequest,
     GetVideoGenerationJobResponseBody,
     GetVideoGenerationJobResponse,
+    GetYikeAccountCreditRequest,
+    GetYikeAccountCreditResponseBody,
+    GetYikeAccountCreditResponse,
+    GetYikeJobCreditRequest,
+    GetYikeJobCreditResponseBody,
+    GetYikeJobCreditResponse,
     ImportMediaRequest,
     ImportMediaResponseBody,
     ImportMediaResponse,
@@ -132,6 +148,9 @@ __all__ = [
     SubmitVideoGenerationJobRequest,
     SubmitVideoGenerationJobResponseBody,
     SubmitVideoGenerationJobResponse,
+    SubmitVideoTranslationJobRequest,
+    SubmitVideoTranslationJobResponseBody,
+    SubmitVideoTranslationJobResponse,
     UpdateAssetCategoryRequest,
     UpdateAssetCategoryResponseBody,
     UpdateAssetCategoryResponse,
@@ -162,12 +181,13 @@ __all__ = [
     GetMediaResponseBodyMediaInfo,
     GetMediaComprehensionJobResponseBodyMediaComprehensionJob,
     GetVideoGenerationJobResponseBodyVideoGenerationJob,
+    GetYikeAccountCreditResponseBodyCreditInfo,
+    GetYikeAccountCreditResponseBodyMembershipInfo,
     ListAssetCategoriesResponseBodyCategories,
     SearchMediaResponseBodyMediaInfoListFileInfoListFileBasicInfo,
     SearchMediaResponseBodyMediaInfoListFileInfoList,
     SearchMediaResponseBodyMediaInfoListMediaBasicInfo,
     SearchMediaResponseBodyMediaInfoListMediaDynamicInfoDynamicMetaData,
-    SearchMediaResponseBodyMediaInfoListMediaDynamicInfoMediaExtraInfo,
     SearchMediaResponseBodyMediaInfoListMediaDynamicInfo,
     SearchMediaResponseBodyMediaInfoList
 ]

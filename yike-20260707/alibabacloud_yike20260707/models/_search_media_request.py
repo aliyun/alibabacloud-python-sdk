@@ -8,21 +8,17 @@ class SearchMediaRequest(DaraModel):
     def __init__(
         self,
         category_id: int = None,
-        entity_id: str = None,
         match: str = None,
         page_no: int = None,
         page_size: int = None,
         scroll_token: str = None,
-        search_lib_name: str = None,
         sort_by: str = None,
     ):
         self.category_id = category_id
-        self.entity_id = entity_id
         self.match = match
         self.page_no = page_no
         self.page_size = page_size
         self.scroll_token = scroll_token
-        self.search_lib_name = search_lib_name
         self.sort_by = sort_by
 
     def validate(self):
@@ -36,9 +32,6 @@ class SearchMediaRequest(DaraModel):
         if self.category_id is not None:
             result['CategoryId'] = self.category_id
 
-        if self.entity_id is not None:
-            result['EntityId'] = self.entity_id
-
         if self.match is not None:
             result['Match'] = self.match
 
@@ -51,9 +44,6 @@ class SearchMediaRequest(DaraModel):
         if self.scroll_token is not None:
             result['ScrollToken'] = self.scroll_token
 
-        if self.search_lib_name is not None:
-            result['SearchLibName'] = self.search_lib_name
-
         if self.sort_by is not None:
             result['SortBy'] = self.sort_by
 
@@ -63,9 +53,6 @@ class SearchMediaRequest(DaraModel):
         m = m or dict()
         if m.get('CategoryId') is not None:
             self.category_id = m.get('CategoryId')
-
-        if m.get('EntityId') is not None:
-            self.entity_id = m.get('EntityId')
 
         if m.get('Match') is not None:
             self.match = m.get('Match')
@@ -78,9 +65,6 @@ class SearchMediaRequest(DaraModel):
 
         if m.get('ScrollToken') is not None:
             self.scroll_token = m.get('ScrollToken')
-
-        if m.get('SearchLibName') is not None:
-            self.search_lib_name = m.get('SearchLibName')
 
         if m.get('SortBy') is not None:
             self.sort_by = m.get('SortBy')

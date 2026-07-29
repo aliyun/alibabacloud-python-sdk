@@ -85,13 +85,11 @@ class SearchMediaResponseBody(DaraModel):
 class SearchMediaResponseBodyMediaInfoList(DaraModel):
     def __init__(
         self,
-        custom_fields: str = None,
         file_info_list: List[main_models.SearchMediaResponseBodyMediaInfoListFileInfoList] = None,
         media_basic_info: main_models.SearchMediaResponseBodyMediaInfoListMediaBasicInfo = None,
         media_dynamic_info: main_models.SearchMediaResponseBodyMediaInfoListMediaDynamicInfo = None,
         media_id: str = None,
     ):
-        self.custom_fields = custom_fields
         self.file_info_list = file_info_list
         self.media_basic_info = media_basic_info
         self.media_dynamic_info = media_dynamic_info
@@ -112,9 +110,6 @@ class SearchMediaResponseBodyMediaInfoList(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.custom_fields is not None:
-            result['CustomFields'] = self.custom_fields
-
         result['FileInfoList'] = []
         if self.file_info_list is not None:
             for k1 in self.file_info_list:
@@ -133,9 +128,6 @@ class SearchMediaResponseBodyMediaInfoList(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('CustomFields') is not None:
-            self.custom_fields = m.get('CustomFields')
-
         self.file_info_list = []
         if m.get('FileInfoList') is not None:
             for k1 in m.get('FileInfoList'):
@@ -159,16 +151,12 @@ class SearchMediaResponseBodyMediaInfoListMediaDynamicInfo(DaraModel):
     def __init__(
         self,
         dynamic_meta_data: main_models.SearchMediaResponseBodyMediaInfoListMediaDynamicInfoDynamicMetaData = None,
-        media_extra_info: main_models.SearchMediaResponseBodyMediaInfoListMediaDynamicInfoMediaExtraInfo = None,
     ):
         self.dynamic_meta_data = dynamic_meta_data
-        self.media_extra_info = media_extra_info
 
     def validate(self):
         if self.dynamic_meta_data:
             self.dynamic_meta_data.validate()
-        if self.media_extra_info:
-            self.media_extra_info.validate()
 
     def to_map(self):
         result = dict()
@@ -178,9 +166,6 @@ class SearchMediaResponseBodyMediaInfoListMediaDynamicInfo(DaraModel):
         if self.dynamic_meta_data is not None:
             result['DynamicMetaData'] = self.dynamic_meta_data.to_map()
 
-        if self.media_extra_info is not None:
-            result['MediaExtraInfo'] = self.media_extra_info.to_map()
-
         return result
 
     def from_map(self, m: dict = None):
@@ -189,85 +174,6 @@ class SearchMediaResponseBodyMediaInfoListMediaDynamicInfo(DaraModel):
             temp_model = main_models.SearchMediaResponseBodyMediaInfoListMediaDynamicInfoDynamicMetaData()
             self.dynamic_meta_data = temp_model.from_map(m.get('DynamicMetaData'))
 
-        if m.get('MediaExtraInfo') is not None:
-            temp_model = main_models.SearchMediaResponseBodyMediaInfoListMediaDynamicInfoMediaExtraInfo()
-            self.media_extra_info = temp_model.from_map(m.get('MediaExtraInfo'))
-
-        return self
-
-class SearchMediaResponseBodyMediaInfoListMediaDynamicInfoMediaExtraInfo(DaraModel):
-    def __init__(
-        self,
-        ai_audit_job_id: str = None,
-        ai_audit_label: str = None,
-        ai_audit_result: str = None,
-        ai_audit_status: str = None,
-        ai_audit_template: str = None,
-        manual_audit_result: str = None,
-        manual_audit_status: str = None,
-    ):
-        self.ai_audit_job_id = ai_audit_job_id
-        self.ai_audit_label = ai_audit_label
-        self.ai_audit_result = ai_audit_result
-        self.ai_audit_status = ai_audit_status
-        self.ai_audit_template = ai_audit_template
-        self.manual_audit_result = manual_audit_result
-        self.manual_audit_status = manual_audit_status
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        _map = super().to_map()
-        if _map is not None:
-            result = _map
-        if self.ai_audit_job_id is not None:
-            result['AiAuditJobId'] = self.ai_audit_job_id
-
-        if self.ai_audit_label is not None:
-            result['AiAuditLabel'] = self.ai_audit_label
-
-        if self.ai_audit_result is not None:
-            result['AiAuditResult'] = self.ai_audit_result
-
-        if self.ai_audit_status is not None:
-            result['AiAuditStatus'] = self.ai_audit_status
-
-        if self.ai_audit_template is not None:
-            result['AiAuditTemplate'] = self.ai_audit_template
-
-        if self.manual_audit_result is not None:
-            result['ManualAuditResult'] = self.manual_audit_result
-
-        if self.manual_audit_status is not None:
-            result['ManualAuditStatus'] = self.manual_audit_status
-
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AiAuditJobId') is not None:
-            self.ai_audit_job_id = m.get('AiAuditJobId')
-
-        if m.get('AiAuditLabel') is not None:
-            self.ai_audit_label = m.get('AiAuditLabel')
-
-        if m.get('AiAuditResult') is not None:
-            self.ai_audit_result = m.get('AiAuditResult')
-
-        if m.get('AiAuditStatus') is not None:
-            self.ai_audit_status = m.get('AiAuditStatus')
-
-        if m.get('AiAuditTemplate') is not None:
-            self.ai_audit_template = m.get('AiAuditTemplate')
-
-        if m.get('ManualAuditResult') is not None:
-            self.manual_audit_result = m.get('ManualAuditResult')
-
-        if m.get('ManualAuditStatus') is not None:
-            self.manual_audit_status = m.get('ManualAuditStatus')
-
         return self
 
 class SearchMediaResponseBodyMediaInfoListMediaDynamicInfoDynamicMetaData(DaraModel):
@@ -275,11 +181,9 @@ class SearchMediaResponseBodyMediaInfoListMediaDynamicInfoDynamicMetaData(DaraMo
         self,
         data: str = None,
         entity_id: str = None,
-        type: str = None,
     ):
         self.data = data
         self.entity_id = entity_id
-        self.type = type
 
     def validate(self):
         pass
@@ -295,9 +199,6 @@ class SearchMediaResponseBodyMediaInfoListMediaDynamicInfoDynamicMetaData(DaraMo
         if self.entity_id is not None:
             result['EntityId'] = self.entity_id
 
-        if self.type is not None:
-            result['Type'] = self.type
-
         return result
 
     def from_map(self, m: dict = None):
@@ -307,9 +208,6 @@ class SearchMediaResponseBodyMediaInfoListMediaDynamicInfoDynamicMetaData(DaraMo
 
         if m.get('EntityId') is not None:
             self.entity_id = m.get('EntityId')
-
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
 
         return self
 
