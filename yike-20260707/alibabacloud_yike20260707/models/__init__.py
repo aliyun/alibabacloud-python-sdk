@@ -84,6 +84,7 @@ from ._get_media_response_body import GetMediaResponseBodyMediaInfoMediaBasicInf
 from ._get_media_response_body import GetMediaResponseBodyMediaInfoMediaDynamicInfoDynamicMetaData
 from ._get_media_response_body import GetMediaResponseBodyMediaInfoMediaDynamicInfo
 from ._get_media_response_body import GetMediaResponseBodyMediaInfo
+from ._get_media_comprehension_job_response_body import GetMediaComprehensionJobResponseBodyJob
 from ._get_media_comprehension_job_response_body import GetMediaComprehensionJobResponseBodyMediaComprehensionJob
 from ._get_video_generation_job_response_body import GetVideoGenerationJobResponseBodyVideoGenerationJob
 from ._get_yike_account_credit_response_body import GetYikeAccountCreditResponseBodyCreditInfo
@@ -179,6 +180,7 @@ __all__ = [
     GetMediaResponseBodyMediaInfoMediaDynamicInfoDynamicMetaData,
     GetMediaResponseBodyMediaInfoMediaDynamicInfo,
     GetMediaResponseBodyMediaInfo,
+    GetMediaComprehensionJobResponseBodyJob,
     GetMediaComprehensionJobResponseBodyMediaComprehensionJob,
     GetVideoGenerationJobResponseBodyVideoGenerationJob,
     GetYikeAccountCreditResponseBodyCreditInfo,

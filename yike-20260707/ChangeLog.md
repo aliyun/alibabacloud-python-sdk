@@ -1,3 +1,9 @@
+2026-07-29 Version: 2.0.1
+- Update API GetMediaComprehensionJob: add response parameters Body.Job.
+- Update API SubmitMediaComprehensionJob: add request parameters Input.
+- Update API SubmitMediaComprehensionJob: add request parameters JobType.
+
+
 2026-07-29 Version: 2.0.0
 - Support API GetYikeAccountCredit.
 - Support API GetYikeJobCredit.

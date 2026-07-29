@@ -1227,8 +1227,12 @@ class Client(OpenApiClient):
     ) -> main_models.SubmitMediaComprehensionJobResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.input):
+            query['Input'] = request.input
         if not DaraCore.is_null(request.job_params):
             query['JobParams'] = request.job_params
+        if not DaraCore.is_null(request.job_type):
+            query['JobType'] = request.job_type
         if not DaraCore.is_null(request.user_data):
             query['UserData'] = request.user_data
         req = open_api_util_models.OpenApiRequest(
@@ -1257,8 +1261,12 @@ class Client(OpenApiClient):
     ) -> main_models.SubmitMediaComprehensionJobResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.input):
+            query['Input'] = request.input
         if not DaraCore.is_null(request.job_params):
             query['JobParams'] = request.job_params
+        if not DaraCore.is_null(request.job_type):
+            query['JobType'] = request.job_type
         if not DaraCore.is_null(request.user_data):
             query['UserData'] = request.user_data
         req = open_api_util_models.OpenApiRequest(

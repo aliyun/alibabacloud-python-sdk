@@ -2,19 +2,25 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
 from alibabacloud_yike20260707 import models as main_models
 from darabonba.model import DaraModel
 
 class GetMediaComprehensionJobResponseBody(DaraModel):
     def __init__(
         self,
+        job: main_models.GetMediaComprehensionJobResponseBodyJob = None,
         media_comprehension_job: main_models.GetMediaComprehensionJobResponseBodyMediaComprehensionJob = None,
         request_id: str = None,
     ):
+        self.job = job
         self.media_comprehension_job = media_comprehension_job
         self.request_id = request_id
 
     def validate(self):
+        if self.job:
+            self.job.validate()
         if self.media_comprehension_job:
             self.media_comprehension_job.validate()
 
@@ -23,6 +29,9 @@ class GetMediaComprehensionJobResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.job is not None:
+            result['Job'] = self.job.to_map()
+
         if self.media_comprehension_job is not None:
             result['MediaComprehensionJob'] = self.media_comprehension_job.to_map()
 
@@ -33,6 +42,10 @@ class GetMediaComprehensionJobResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Job') is not None:
+            temp_model = main_models.GetMediaComprehensionJobResponseBodyJob()
+            self.job = temp_model.from_map(m.get('Job'))
+
         if m.get('MediaComprehensionJob') is not None:
             temp_model = main_models.GetMediaComprehensionJobResponseBodyMediaComprehensionJob()
             self.media_comprehension_job = temp_model.from_map(m.get('MediaComprehensionJob'))
@@ -111,6 +124,73 @@ class GetMediaComprehensionJobResponseBodyMediaComprehensionJob(DaraModel):
 
         if m.get('State') is not None:
             self.state = m.get('State')
+
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+
+        return self
+
+class GetMediaComprehensionJobResponseBodyJob(DaraModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        media_ids: List[str] = None,
+        result: str = None,
+        status: str = None,
+        user_data: str = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.media_ids = media_ids
+        self.result = result
+        self.status = status
+        self.user_data = user_data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+
+        if self.media_ids is not None:
+            result['MediaIds'] = self.media_ids
+
+        if self.result is not None:
+            result['Result'] = self.result
+
+        if self.status is not None:
+            result['Status'] = self.status
+
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+
+        if m.get('MediaIds') is not None:
+            self.media_ids = m.get('MediaIds')
+
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
 
         if m.get('UserData') is not None:
             self.user_data = m.get('UserData')
