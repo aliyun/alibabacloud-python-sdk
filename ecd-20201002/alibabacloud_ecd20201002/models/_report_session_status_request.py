@@ -14,15 +14,26 @@ class ReportSessionStatusRequest(DaraModel):
         session_id: str = None,
         session_status: str = None,
     ):
+        # End user.
         self.end_user_id = end_user_id
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # Duration of the session change.
+        # 
         # This parameter is required.
         self.session_change_time = session_change_time
+        # Session ID.
+        # 
         # This parameter is required.
         self.session_id = session_id
+        # Session status.
+        # 
         # This parameter is required.
         self.session_status = session_status
 

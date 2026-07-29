@@ -1,3 +1,13 @@
+2026-07-29 Version: 2.0.0
+- Delete API IsKeepAlive.
+- Update API DescribeUserResources: add response parameters Body.AgentBriefSummary.
+- Update API DescribeUserResources: add response parameters Body.Resources.$.AgentImUrl.
+- Update API DescribeUserResources: add response parameters Body.Resources.$.SupportAgentIm.
+- Update API DescribeUserResources: add response parameters Body.Resources.$.Sessions.$.LastClientIp.
+- Update API GetLoginToken: add response parameters Body.OfficeSiteId.
+- Update API GetLoginToken: add response parameters Body.OfficeSiteName.
+
+
 2026-02-05 Version: 1.2.11
 - Update API GetLoginToken: add response parameters Body.WyId.
 

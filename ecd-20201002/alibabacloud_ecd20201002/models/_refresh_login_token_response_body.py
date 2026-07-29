@@ -10,7 +10,9 @@ class RefreshLoginTokenResponseBody(DaraModel):
         login_token: str = None,
         request_id: str = None,
     ):
+        # The logon credential.
         self.login_token = login_token
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

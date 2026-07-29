@@ -14,11 +14,11 @@ class DescribeGlobalDesktopsResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # The details about the cloud computer.
+        # Detailed cloud desktop information.
         self.desktops = desktops
-        # The token used to start the next query. If NextToken is empty, it indicates that there is no next query.
+        # Token that marks the start of the next query. If NextToken is empty, no more results are available.
         self.next_token = next_token
-        # The request ID.
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -105,128 +105,87 @@ class DescribeGlobalDesktopsResponseBodyDesktops(DaraModel):
         support_hibernation: bool = None,
         user_custom_name: str = None,
     ):
-        # The billing method of the cloud computer pool.
-        # 
-        # Valid value:
-        # 
-        # *   PostPaid: pay-as-you-go
-        # *   PrePaid: subscription
+        # Billing method.
         self.charge_type = charge_type
-        # The information about the supported clients.
+        # Supported client information.
         self.clients = clients
-        # The state of the endpoint connection.
-        # 
-        # Valid values:
-        # 
-        # *   Connected
-        # *   Disconnecting
-        # *   Pending.
-        # *   Connecting.
-        # *   Disconnected.
-        # *   Deleting
+        # Endpoint connection status.
         self.connection_status = connection_status
-        # The number of vCPUs.
+        # Number of CPUs.
         self.cpu = cpu
-        # The time when the cloud computer was created.
+        # Time when the cloud desktop was created.
         self.creation_time = creation_time
-        # The ID of the cloud computer share.
+        # Shared cloud desktop ID.
         self.desktop_group_id = desktop_group_id
-        # The cloud compute ID.
+        # Cloud desktop ID.
         self.desktop_id = desktop_id
-        # The cloud computer name.
+        # Cloud desktop name.
         self.desktop_name = desktop_name
-        # The cloud computer status.
+        # Cloud desktop status.
         self.desktop_status = desktop_status
-        # The cloud computer timer object.
+        # Cloud desktop timer object.
         self.desktop_timers = desktop_timers
-        # The cloud computer type.
+        # Cloud desktop specification.
         self.desktop_type = desktop_type
-        # The network ID of the office. Same as `OfficeSiteId`.
+        # Office site ID. Same as `OfficeSiteId`.
         self.directory_id = directory_id
-        # The disks.
+        # Disk information.
         self.disks = disks
-        # The names of end users.
+        # End user name.
         self.end_user_id = end_user_id
-        # The list of end user.
+        # List of end users.
         self.end_user_ids = end_user_ids
-        # The expiration time of the cloud computer.
+        # Time when the cloud desktop expires.
         # 
-        # *   For a cloud computer that is a package year or month, the return value is meaningful.
-        # *   For pay-as-you-go cloud computers, the `2099-12-31T15:59Z` is returned.
+        # - Valid for subscription cloud desktops.
+        # 
+        # - For pay-as-you-go cloud desktops, always returns `2099-12-31T15:59Z`.
         self.expired_time = expired_time
-        # The information about image update.
+        # Image update information.
         self.fota_update = fota_update
-        # The GPU memory size. For GPU-accelerated cloud computers, this return value is significant. Unit: MB.
+        # GPU memory size. Valid for GPU cloud desktops. Unit: MB.
         self.gpu_memory = gpu_memory
-        # Indicates whether this is a beta version of the hibernation feature.
+        # Whether this is a hibernation beta version.
         self.hibernation_beta = hibernation_beta
-        # The hostname of the cloud desktop.
+        # Host name.
         self.host_name = host_name
-        # The image ID.
+        # Image ID.
         self.image_id = image_id
-        # The time when the cloud desktop was last started.
+        # Last startup time — the most recent time the cloud desktop started.
         self.last_start_time = last_start_time
-        # The region name.
+        # Region name.
         self.local_name = local_name
-        # The list of cloud computer status.
+        # List of cloud desktop management statuses.
         self.management_flags = management_flags
-        # The memory of the cloud computer. Unit: MiB.
+        # Cloud desktop memory size, in MiB.
         self.memory = memory
-        # The IP address of the ENI.
+        # Network interface IP address.
         self.network_interface_ip = network_interface_ip
-        # The IDs of the office networks.
+        # Office site ID.
         self.office_site_id = office_site_id
-        # OS Type
+        # Operating system type
         self.os = os
         self.os_description = os_description
-        # The operating system.
-        # 
-        # Valid value:
-        # 
-        # *   Linux
-        # *   Windows
+        # Operating system type.
         self.os_type = os_type
-        # The OS platform.
-        # 
-        # Valid value:
-        # 
-        # *   Ubuntu
-        # *   UOS
-        # *   CentOS
-        # *   Windows Server 2019
-        # *   Windows Server 2016
+        # Operating system platform.
         self.platform = platform
-        # The cloud computer policy ID.
+        # Cloud desktop policy ID.
         self.policy_group_id = policy_group_id
-        # The type of the protocol.
-        # 
-        # Valid value:
-        # 
-        # *   High-definition Experience (HDX)
-        # *   ASP
+        # Protocol type.
         self.protocol_type = protocol_type
-        # If a shared cloud computer is assigned a real cloud computer, the ID of the cloud computer is displayed.
+        # If this is a shared cloud desktop and a real cloud desktop has been assigned, this field shows the cloud desktop ID.
         self.real_desktop_id = real_desktop_id
-        # The region ID.
+        # Region ID.
         self.region_id = region_id
         self.region_location = region_location
-        # The type of the session.
-        # 
-        # Valid value:
-        # 
-        # *   SINGLE_SESSION
-        # *   MULTIPLE_SESSION
+        # Session type.
         self.session_type = session_type
-        # The list of session information.
+        # List of session information.
         self.sessions = sessions
-        # Indicates whether hibernation is supported.
-        # 
-        # Valid values:
-        # 
-        # *   true: supported
-        # *   false: not supported
+        # Whether hibernation is supported.
         self.support_hibernation = support_hibernation
-        # The custom cloud computer name.
+        # User-defined cloud desktop name.
         self.user_custom_name = user_custom_name
 
     def validate(self):
@@ -529,7 +488,7 @@ class DescribeGlobalDesktopsResponseBodyDesktopsSessions(DaraModel):
     ):
         # End user information.
         self.end_user_id = end_user_id
-        # The time when the session was created.
+        # Time when the session was created.
         self.establishment_time = establishment_time
 
     def validate(self):
@@ -572,24 +531,24 @@ class DescribeGlobalDesktopsResponseBodyDesktopsFotaUpdate(DaraModel):
         release_note_jp: str = None,
         size: str = None,
     ):
-        # Subscription Channel
+        # Subscription channel.
         self.channel = channel
-        # The current version number of the cloud computer.
+        # Current version number of the cloud desktop.
         self.current_app_version = current_app_version
-        # Whether to force upgrade.
+        # Whether the upgrade is forced.
         self.force = force
-        # The version number of the application after the update.
+        # New application version number after the update.
         self.new_app_version = new_app_version
         self.new_dcd_version = new_dcd_version
-        # The name of the project.
+        # Project name.
         self.project = project
-        # The description of the version that can be upgraded.
+        # Description of the upgradable version.
         self.release_note = release_note
-        # The English release note for the new image version.
+        # English description of the upgradable version.
         self.release_note_en = release_note_en
-        # The Japanese release note for the new image version.
+        # Japanese description of the upgradable version.
         self.release_note_jp = release_note_jp
-        # The size of the update package for the cloud computer image. Unit: MiB.
+        # Size of the upgradable version package, in MiB.
         self.size = size
 
     def validate(self):
@@ -673,16 +632,11 @@ class DescribeGlobalDesktopsResponseBodyDesktopsDisks(DaraModel):
         disk_size: int = None,
         disk_type: str = None,
     ):
-        # The disk ID.
+        # Disk ID.
         self.disk_id = disk_id
-        # The disk size. Unit: GiB.
+        # Disk size, in GiB.
         self.disk_size = disk_size
-        # The disk type.
-        # 
-        # Valid value:
-        # 
-        # *   SYSTEM: a system disk.
-        # *   DATA: a data disk.
+        # Disk type.
         self.disk_type = disk_type
 
     def validate(self):
@@ -729,45 +683,23 @@ class DescribeGlobalDesktopsResponseBodyDesktopsDesktopTimers(DaraModel):
         reset_type: str = None,
         timer_type: str = None,
     ):
-        # Whether to allow clients to set policies.
+        # Whether clients can set policies.
         self.allow_client_setting = allow_client_setting
-        # The CRON expression for the scheduled task.
+        # Cron expression for the scheduled task.
         # 
-        # For example, a `0 0 4 1/1 * ?` indicates that the operation is executed every day from 4:00 a.m. on the first day of each month.
+        # Example: `0 0 4 1/1 * ?` means run daily starting at 4:00 AM on the first day of each month.
         self.cron_expression = cron_expression
-        # Indicates whether to forcibly execute the scheduled task. To `true` indicates that cloud computer and connection status detection are ignored, and scheduled tasks are forcibly executed.
+        # Whether to enforce execution. If `true`, the scheduled task runs regardless of cloud desktop or connection status.
         self.enforce = enforce
-        # The task duration.
+        # Task execution time.
         self.execution_time = execution_time
-        # The interval at which the monitoring data was queried. Unit: seconds.
+        # Time interval, in seconds.
         self.interval = interval
-        # The type of the scheduled task.
-        # 
-        # Valid values:
-        # 
-        # *   HIBERNATE
-        # *   SHUTDOWN
+        # Scheduled task type.
         self.operation_type = operation_type
-        # For a reset task, you must set the reset type.
-        # 
-        # Valid values:
-        # 
-        # *   RESET_TYPE_SYSTEM: resets the system disk.
-        # *   RESET_TYPE_USER_DISK: resets the data disk.
-        # *   RESET_TYPE_BOTH: resets the system disk and data disk.
+        # Reset type for reset tasks.
         self.reset_type = reset_type
-        # The type of the scheduled task.
-        # 
-        # Valid values:
-        # 
-        # *   NoOperationDisconnect: scheduled disconnection upon inactivity.
-        # *   NoConnectShutdown: connectionless shutdown.
-        # *   TimerBoot: scheduled start.
-        # *   TimerReset: scheduled reset.
-        # *   NoOperationShutdown: scheduled shutdown upon inactivity.
-        # *   TimerShutdown: Stops the cloud computers on schedule.
-        # *   NoOperationReboot: scheduled restart upon inactivity.
-        # *   TimerReboot: scheduled restart.
+        # Scheduled task type.
         self.timer_type = timer_type
 
     def validate(self):
@@ -838,23 +770,9 @@ class DescribeGlobalDesktopsResponseBodyDesktopsClients(DaraModel):
         client_type: str = None,
         status: str = None,
     ):
-        # The client type.
-        # 
-        # Valid values:
-        # 
-        # *   html5: the web client.
-        # *   android: the Android client.
-        # *   linux: Linux client.
-        # *   ios: the iOS client.
-        # *   windows: the Windows client.
-        # *   macos: the macOS client.
+        # Client type.
         self.client_type = client_type
-        # The status of the client.
-        # 
-        # Valid values:
-        # 
-        # *   OFF: does not allow logon.
-        # *   ON: allows logon.
+        # Client status.
         self.status = status
 
     def validate(self):

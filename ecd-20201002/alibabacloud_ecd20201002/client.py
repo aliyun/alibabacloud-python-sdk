@@ -21,6 +21,32 @@ class Client(OpenApiClient):
     ):
         super().__init__(config)
         self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'us-west-1': 'ecd.us-west-1.aliyuncs.com',
+            'us-east-1': 'ecd.us-east-1.aliyuncs.com',
+            'me-east-1': 'ecd.me-east-1.aliyuncs.com',
+            'me-central-1': 'ecd.me-central-1.aliyuncs.com',
+            'eu-west-1': 'ecd.eu-west-1.aliyuncs.com',
+            'eu-central-1': 'ecd.eu-central-1.aliyuncs.com',
+            'cn-zhangjiakou': 'ecd.cn-zhangjiakou.aliyuncs.com',
+            'cn-wulanchabu': 'ecd.cn-wulanchabu.aliyuncs.com',
+            'cn-shenzhen': 'ecd.cn-shenzhen.aliyuncs.com',
+            'cn-shanghai-finance-1': 'ecd.cn-shanghai-finance-1.aliyuncs.com',
+            'cn-shanghai': 'ecd.cn-shanghai.aliyuncs.com',
+            'cn-qingdao': 'ecd.cn-qingdao.aliyuncs.com',
+            'cn-nanjing': 'ecd.cn-nanjing.aliyuncs.com',
+            'cn-hongkong': 'ecd.cn-hongkong.aliyuncs.com',
+            'cn-hangzhou-finance': 'ecd.cn-hangzhou-finance.aliyuncs.com',
+            'cn-hangzhou': 'ecd.cn-hangzhou.aliyuncs.com',
+            'cn-guangzhou': 'ecd.cn-guangzhou.aliyuncs.com',
+            'cn-chengdu': 'ecd.cn-chengdu.aliyuncs.com',
+            'cn-beijing': 'ecd.cn-beijing.aliyuncs.com',
+            'ap-southeast-7': 'ecd.ap-southeast-7.aliyuncs.com',
+            'ap-southeast-6': 'ecd.ap-southeast-6.aliyuncs.com',
+            'ap-southeast-5': 'ecd.ap-southeast-5.aliyuncs.com',
+            'ap-southeast-1': 'ecd.ap-southeast-1.aliyuncs.com',
+            'ap-northeast-1': 'ecd.ap-northeast-1.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('ecd', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -1531,84 +1557,6 @@ class Client(OpenApiClient):
     ) -> main_models.GetLoginTokenResponse:
         runtime = RuntimeOptions()
         return await self.get_login_token_with_options_async(request, runtime)
-
-    def is_keep_alive_with_options(
-        self,
-        request: main_models.IsKeepAliveRequest,
-        runtime: RuntimeOptions,
-    ) -> main_models.IsKeepAliveResponse:
-        request.validate()
-        query = {}
-        if not DaraCore.is_null(request.client_id):
-            query['ClientId'] = request.client_id
-        if not DaraCore.is_null(request.office_site_id):
-            query['OfficeSiteId'] = request.office_site_id
-        if not DaraCore.is_null(request.region_id):
-            query['RegionId'] = request.region_id
-        req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
-        )
-        params = open_api_util_models.Params(
-            action = 'IsKeepAlive',
-            version = '2020-10-02',
-            protocol = 'HTTPS',
-            pathname = '/',
-            method = 'POST',
-            auth_type = 'Anonymous',
-            style = 'RPC',
-            req_body_type = 'formData',
-            body_type = 'json'
-        )
-        return DaraCore.from_map(
-            main_models.IsKeepAliveResponse(),
-            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
-        )
-
-    async def is_keep_alive_with_options_async(
-        self,
-        request: main_models.IsKeepAliveRequest,
-        runtime: RuntimeOptions,
-    ) -> main_models.IsKeepAliveResponse:
-        request.validate()
-        query = {}
-        if not DaraCore.is_null(request.client_id):
-            query['ClientId'] = request.client_id
-        if not DaraCore.is_null(request.office_site_id):
-            query['OfficeSiteId'] = request.office_site_id
-        if not DaraCore.is_null(request.region_id):
-            query['RegionId'] = request.region_id
-        req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
-        )
-        params = open_api_util_models.Params(
-            action = 'IsKeepAlive',
-            version = '2020-10-02',
-            protocol = 'HTTPS',
-            pathname = '/',
-            method = 'POST',
-            auth_type = 'Anonymous',
-            style = 'RPC',
-            req_body_type = 'formData',
-            body_type = 'json'
-        )
-        return DaraCore.from_map(
-            main_models.IsKeepAliveResponse(),
-            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
-        )
-
-    def is_keep_alive(
-        self,
-        request: main_models.IsKeepAliveRequest,
-    ) -> main_models.IsKeepAliveResponse:
-        runtime = RuntimeOptions()
-        return self.is_keep_alive_with_options(request, runtime)
-
-    async def is_keep_alive_async(
-        self,
-        request: main_models.IsKeepAliveRequest,
-    ) -> main_models.IsKeepAliveResponse:
-        runtime = RuntimeOptions()
-        return await self.is_keep_alive_with_options_async(request, runtime)
 
     def query_eds_agent_report_config_with_options(
         self,

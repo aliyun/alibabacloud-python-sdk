@@ -11,6 +11,7 @@ class GetCloudDriveServiceMountTokenResponseBody(DaraModel):
         request_id: str = None,
         token: main_models.GetCloudDriveServiceMountTokenResponseBodyToken = None,
     ):
+        # Request ID.
         self.request_id = request_id
         # The tokens.
         self.token = token
@@ -53,13 +54,17 @@ class GetCloudDriveServiceMountTokenResponseBodyToken(DaraModel):
         total_size: int = None,
         used_size: int = None,
     ):
+        # Enterprise File Gateway domain name.
         self.domain_id = domain_id
+        # Expiration Time.
         self.expired_after = expired_after
+        # Current status of the Enterprise File Gateway user.
         self.status = status
         # The token.
         self.token = token
         # The total capacity of the enterprise drive. Unit: GiB
         self.total_size = total_size
+        # Used capacity. Unit: GiB.
         self.used_size = used_size
 
     def validate(self):

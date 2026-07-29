@@ -15,6 +15,7 @@ class DescribeOfficeSitesResponseBody(DaraModel):
     ):
         # The office networks.
         self.office_sites = office_sites
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -67,11 +68,19 @@ class DescribeOfficeSitesResponseBodyOfficeSites(DaraModel):
         self.ali_uid = ali_uid
         # biztype
         self.biz_type = biz_type
+        # The allowed connection types for accessing the office network.
+        # 
+        # > The VPC connection type depends on the Alibaba Cloud PrivateLink service, which incurs no fee. When this parameter is set to VPC or Any, the system automatically enables the PrivateLink service for you.
         self.desktop_access_type = desktop_access_type
+        # The endpoint used when connecting to cloud desktops through a VPC.
         self.desktop_vpc_endpoint = desktop_vpc_endpoint
+        # Office network ID.
         self.office_site_id = office_site_id
+        # The type of account system used by the office network.
         self.office_site_type = office_site_type
+        # User Account BID.
         self.provider_id = provider_id
+        # SSO connection.
         self.sso_service_url = sso_service_url
 
     def validate(self):

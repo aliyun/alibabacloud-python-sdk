@@ -11,11 +11,11 @@ class SetFingerPrintTemplateResponseBody(DaraModel):
         index: int = None,
         request_id: str = None,
     ):
-        # The encrypted password.
+        # Encrypted password.
         self.encrypted_password = encrypted_password
-        # The index.
+        # Index.
         self.index = index
-        # The request ID.
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):

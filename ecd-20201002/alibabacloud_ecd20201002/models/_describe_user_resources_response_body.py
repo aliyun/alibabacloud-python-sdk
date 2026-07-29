@@ -10,6 +10,7 @@ from darabonba.model import DaraModel
 class DescribeUserResourcesResponseBody(DaraModel):
     def __init__(
         self,
+        agent_brief_summary: main_models.DescribeUserResourcesResponseBodyAgentBriefSummary = None,
         max_results: int = None,
         next_token: str = None,
         query_failed_resource_types: List[str] = None,
@@ -18,22 +19,25 @@ class DescribeUserResourcesResponseBody(DaraModel):
         resources: List[main_models.DescribeUserResourcesResponseBodyResources] = None,
         total_count: int = None,
     ):
-        # 返回最大数量。
+        self.agent_brief_summary = agent_brief_summary
+        # The maximum number of results returned.
         self.max_results = max_results
-        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+        # The token used to start the next query. An empty NextToken indicates that there is no next page.
         self.next_token = next_token
-        # The resource types that failed to be queried.
+        # The list of resource types that failed to be queried.
         self.query_failed_resource_types = query_failed_resource_types
-        # The version number of the ranking data.
+        # The ranking data version number.
         self.rank_version = rank_version
         # The request ID.
         self.request_id = request_id
-        # The resources.
+        # The list of resource details.
         self.resources = resources
-        # 总数。
+        # The total count.
         self.total_count = total_count
 
     def validate(self):
+        if self.agent_brief_summary:
+            self.agent_brief_summary.validate()
         if self.resources:
             for v1 in self.resources:
                  if v1:
@@ -44,6 +48,9 @@ class DescribeUserResourcesResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.agent_brief_summary is not None:
+            result['AgentBriefSummary'] = self.agent_brief_summary.to_map()
+
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
 
@@ -71,6 +78,10 @@ class DescribeUserResourcesResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentBriefSummary') is not None:
+            temp_model = main_models.DescribeUserResourcesResponseBodyAgentBriefSummary()
+            self.agent_brief_summary = temp_model.from_map(m.get('AgentBriefSummary'))
+
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
 
@@ -101,6 +112,7 @@ class DescribeUserResourcesResponseBodyResources(DaraModel):
     def __init__(
         self,
         access_type: str = None,
+        agent_im_url: str = None,
         ali_uid: int = None,
         app_id: str = None,
         auth_mode: str = None,
@@ -146,6 +158,7 @@ class DescribeUserResourcesResponseBodyResources(DaraModel):
         session_type: str = None,
         sessions: List[main_models.DescribeUserResourcesResponseBodyResourcesSessions] = None,
         sub_pay_type: str = None,
+        support_agent_im: bool = None,
         support_hibernation: bool = None,
         supported_actions: List[str] = None,
         theme_color: str = None,
@@ -153,205 +166,108 @@ class DescribeUserResourcesResponseBodyResources(DaraModel):
         version: str = None,
     ):
         # The access type.
-        # 
-        # Valid values:
-        # 
-        # *   INTERNET: access over the Internet.
-        # *   VPC: access over an enterprise VPC.
-        # *   ANY: access over the Internet or an enterprise VPC.
         self.access_type = access_type
-        # The ID of the Alibaba Cloud account.
+        self.agent_im_url = agent_im_url
+        # The Alibaba Cloud account ID.
         self.ali_uid = ali_uid
-        # The app ID. This parameter is for apps only.
+        # The application ID. This parameter is specific to resources of the App type.
         self.app_id = app_id
-        # The authorization mode of the cloud app.
-        # 
-        # Valid values:
-        # 
-        # *   App: authorizes access to apps.
-        # *   AppInstanceGroup: authorizes access to delivery groups.
-        # *   Session: authorizes access to sessions.
+        # The cloud application authorization mode.
         self.auth_mode = auth_mode
-        # The level-2 resource category. This parameter is for apps only.
+        # The secondary category of the resource. This parameter is specific to resources of the App type.
         self.category_id = category_id
-        # The level-1 resource category. This parameter is for apps only.
+        # The primary category of the resource. This parameter is specific to resources of the App type.
         self.category_type = category_type
-        # The drive name. This parameter is for enterprise drives only.
+        # The cloud drive name. This parameter is specific to resources of the CloudDrive type.
         self.cds_name = cds_name
-        # The ID of the centralized resource.
+        # The centralized resource ID.
         self.center_resource_id = center_resource_id
         # The billing method.
-        # 
-        # Valid values:
-        # 
-        # *   Postpaid (default): pay-as-you-go.
-        # *   PrePaid: subscription.
         self.charge_type = charge_type
-        # The client types supported by resources.
+        # The list of client types supported by the resource.
         self.clients = clients
-        # The connection attributes in JSON format. The client does not need to process the attributes; they are directly passed to the resource management center when the app resource is created.
+        # The connection properties in JSON string format. The client does not need to parse the content. The value is passed directly to the central resource management service when the application resource establishes a connection.
         self.connection_properties = connection_properties
         # The time when the resource was created.
         self.create_time = create_time
-        # The cloud computer plans.
+        # The list of cloud desktop package information.
         self.desktop_duration_list = desktop_duration_list
-        # The scheduled tasks for cloud computers.
+        # The list of Cloud Desktop scheduled task settings.
         self.desktop_timers = desktop_timers
-        # The expiration time of the subscription resource.
+        # The expiration time of subscription resources.
         self.expired_time = expired_time
-        # The ID of the external domain. This parameter is for enterprise drives only.
+        # The external domain ID. This parameter is specific to resources of the CloudDrive type.
         self.external_domain_id = external_domain_id
-        # The ID of the external user. This parameter is for enterprise drives only.
+        # The external user ID. This parameter is specific to resources of the CloudDrive type.
         self.external_user_id = external_user_id
-        # The update info of the cloud computer.
+        # The cloud desktop upgrade information.
         self.fota_update = fota_update
-        # Indicates whether cross-region access is supported. This parameter is for enterprise drives only.
+        # Indicates whether cross-region access is supported. This parameter is specific to resources of the CloudDrive type.
         self.global_status = global_status
-        # Indicates whether an update exists.
+        # Indicates whether an update is available.
         self.has_upgrade = has_upgrade
-        # Indicates whether this is a beta version of the hibernation feature.
-        # 
-        # Valid values:
-        # 
-        # *   true
-        # *   false
+        # Indicates whether the resource is a hibernation beta version.
         self.hibernation_beta = hibernation_beta
-        # The resource icon. This parameter is for apps only.
+        # The resource icon URL. This parameter is specific to resources of the App type.
         self.icon = icon
-        # The time when the resource was last started.
+        # The last time the resource was started.
         self.last_start_time = last_start_time
         # The region name.
         self.local_name = local_name
-        # The management status.
+        # The list of management statuses.
         self.management_statuses = management_statuses
         # The office network ID.
         self.office_site_id = office_site_id
         # The order status.
-        # 
-        # Valid values:
-        # 
-        # *   Ceased: Your account has an overdue payment.
-        # *   Released: The order is closed.
-        # *   Expired: The subscription resource has expired.
-        # *   Normal: The order is normal.
         self.order_status = order_status
-        # The OS platform.
+        # The operating system platform information.
         self.os = os
-        # The description of the OS platform.
+        # The operating system platform description.
         self.os_description = os_description
-        # The OS type.
-        # 
-        # Valid values:
-        # 
-        # *   Linux
-        # *   Windows
-        # *   Android
+        # The operating system type.
         self.os_type = os_type
-        # The update info of the OS.
+        # The operating system upgrade information.
         self.os_update = os_update
-        # The service type.
-        # 
-        # Valid values:
-        # 
-        # *   CloudDesktop: regular cloud computers or cloud computer shares.
-        # *   CloudApp: App Streaming
-        # *   CloudBrowser: Cloud Browser.
-        # *   AndroidCloud: Cloud Phone.
+        # The product type.
         self.product_type = product_type
         # The protocol type.
-        # 
-        # Valid values:
-        # 
-        # *   HDX
-        # *   ASP
         self.protocol_type = protocol_type
-        # The real ID of the cloud computer (from a share). This parameter is returned only when the cloud computer share has ongoing sessions.
+        # The real cloud desktop ID of the shared cloud desktop. This value exists only when the shared cloud desktop has an active session.
         self.real_desktop_id = real_desktop_id
         # The region ID.
         self.region_id = region_id
-        # The geographical location.
-        # 
-        # Valid values:
-        # 
-        # *   Mainland: regions in the Chinese mainland.
-        # *   Overseas: regions outside the Chinese mainland, including China (Hong Kong).
+        # The region location.
         self.region_location = region_location
         # The resource group ID.
         self.resource_group_id = resource_group_id
         # The resource ID.
         self.resource_id = resource_id
         # The resource level.
-        # 
-        # Valid values:
-        # 
-        # *   Center: a centralized resource.
-        # *   Region: a unit resource.
         self.resource_level = resource_level
         # The resource name.
         self.resource_name = resource_name
         # The session status.
-        # 
-        # Valid values:
-        # 
-        # *   Unknown
-        # *   Connected
-        # *   Disconnected
         self.resource_session_status = resource_session_status
         # The resource status.
-        # 
-        # Valid values:
-        # 
-        # *   Unknown: The resource status is unknown.
-        # *   Stopped: The resource is stopped.
-        # *   Failed: The resource failed to be created.
-        # *   Starting: The resource is being started.
-        # *   Rebuilding: The resource is changing.
-        # *   Running: The resource is running.
-        # *   Stopping: The resource is being stopped.
-        # *   FotaUpdating: The image is being updated.
-        # *   Pending: The resource is still being prepared.
-        # *   Deleting: The resource is being deleted.
-        # *   Unavailable: The resource is unavailable.
         self.resource_status = resource_status
         # The resource type.
-        # 
-        # Valid values:
-        # 
-        # *   App: cloud apps including App Streaming, Cloud Phone, and Cloud Browser.
-        # *   Desktop: cloud computers.
-        # *   DesktopGroup: cloud computer shares.
-        # *   CloudDrive: enterprise drives.
         self.resource_type = resource_type
         # The session type.
-        # 
-        # Valid values:
-        # 
-        # *   SINGLE_SESSION
-        # *   MULTIPLE_SESSION
         self.session_type = session_type
-        # The sessions established between users and resources.
+        # The list of resource user session information.
         self.sessions = sessions
         # The sub-billing method.
-        # 
-        # Valid values:
-        # 
-        # *   monthPackage: monthly subscription.
-        # *   PrePaid: hourly plans.
         self.sub_pay_type = sub_pay_type
+        self.support_agent_im = support_agent_im
         # Indicates whether hibernation is supported.
-        # 
-        # Valid values:
-        # 
-        # *   true
-        # *   false
         self.support_hibernation = support_hibernation
-        # The supported actions. This parameter is returned only for cloud computers or phones.
+        # The list of supported action types. Currently supported only for cloud phones and cloud desktops (including shared cloud desktops).
         self.supported_actions = supported_actions
-        # The theme color of the resource. This parameter is for apps only.
+        # The resource theme color. This parameter is specific to resources of the App type.
         self.theme_color = theme_color
-        # The custom name of the resource.
+        # The user-defined name.
         self.user_custom_name = user_custom_name
-        # The resource version. This parameter is for apps only.
+        # The resource version. This parameter is specific to resources of the App type.
         self.version = version
 
     def validate(self):
@@ -383,6 +299,9 @@ class DescribeUserResourcesResponseBodyResources(DaraModel):
             result = _map
         if self.access_type is not None:
             result['AccessType'] = self.access_type
+
+        if self.agent_im_url is not None:
+            result['AgentImUrl'] = self.agent_im_url
 
         if self.ali_uid is not None:
             result['AliUid'] = self.ali_uid
@@ -527,6 +446,9 @@ class DescribeUserResourcesResponseBodyResources(DaraModel):
         if self.sub_pay_type is not None:
             result['SubPayType'] = self.sub_pay_type
 
+        if self.support_agent_im is not None:
+            result['SupportAgentIm'] = self.support_agent_im
+
         if self.support_hibernation is not None:
             result['SupportHibernation'] = self.support_hibernation
 
@@ -548,6 +470,9 @@ class DescribeUserResourcesResponseBodyResources(DaraModel):
         m = m or dict()
         if m.get('AccessType') is not None:
             self.access_type = m.get('AccessType')
+
+        if m.get('AgentImUrl') is not None:
+            self.agent_im_url = m.get('AgentImUrl')
 
         if m.get('AliUid') is not None:
             self.ali_uid = m.get('AliUid')
@@ -698,6 +623,9 @@ class DescribeUserResourcesResponseBodyResources(DaraModel):
         if m.get('SubPayType') is not None:
             self.sub_pay_type = m.get('SubPayType')
 
+        if m.get('SupportAgentIm') is not None:
+            self.support_agent_im = m.get('SupportAgentIm')
+
         if m.get('SupportHibernation') is not None:
             self.support_hibernation = m.get('SupportHibernation')
 
@@ -718,18 +646,20 @@ class DescribeUserResourcesResponseBodyResources(DaraModel):
 class DescribeUserResourcesResponseBodyResourcesSessions(DaraModel):
     def __init__(
         self,
+        last_client_ip: str = None,
         nick_name: str = None,
         resource_session_start_time: str = None,
         user_id: str = None,
         user_principal_name: str = None,
     ):
-        # 用户的昵称。
+        self.last_client_ip = last_client_ip
+        # The nickname of the user.
         self.nick_name = nick_name
-        # The timestamp when the resource session was established.
+        # The time when the resource session was connected.
         self.resource_session_start_time = resource_session_start_time
-        # The username used to log on to the resource.
+        # The username logged on to the resource.
         self.user_id = user_id
-        # The User Principal Name (UPN) of the resource-bound user (if applicable). This parameter is returned only when you query the current user\\"s sessions.
+        # The User Principal Name (UPN) of the user bound to the resource, if available. This value is populated only for the session of the currently queried user.
         self.user_principal_name = user_principal_name
 
     def validate(self):
@@ -740,6 +670,9 @@ class DescribeUserResourcesResponseBodyResourcesSessions(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.last_client_ip is not None:
+            result['LastClientIp'] = self.last_client_ip
+
         if self.nick_name is not None:
             result['NickName'] = self.nick_name
 
@@ -756,6 +689,9 @@ class DescribeUserResourcesResponseBodyResourcesSessions(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('LastClientIp') is not None:
+            self.last_client_ip = m.get('LastClientIp')
+
         if m.get('NickName') is not None:
             self.nick_name = m.get('NickName')
 
@@ -779,15 +715,15 @@ class DescribeUserResourcesResponseBodyResourcesOsUpdate(DaraModel):
         packages: List[main_models.DescribeUserResourcesResponseBodyResourcesOsUpdatePackages] = None,
         update_catalog_url: str = None,
     ):
-        # The ID of the check task.
+        # The check ID.
         self.check_id = check_id
-        # The patch numbers.
+        # The patch number list information.
         self.kb_list_string = kb_list_string
-        # The number of packets.
+        # The number of packages.
         self.package_count = package_count
-        # The patch packages.
+        # The list of patch package information.
         self.packages = packages
-        # The update categorization URL.
+        # The update catalog URL.
         self.update_catalog_url = update_catalog_url
 
     def validate(self):
@@ -904,23 +840,23 @@ class DescribeUserResourcesResponseBodyResourcesFotaUpdate(DaraModel):
     ):
         # The channel.
         self.channel = channel
-        # The current version number of the cloud computer\\"s image.
+        # The version number of the current image on the cloud desktop.
         self.current_app_version = current_app_version
-        # Specifies whether to implement a forced update.
+        # Indicates whether the upgrade is mandatory.
         self.force = force
-        # The target version number of the cloud computer\\"s image.
+        # The version number available for upgrade on the cloud desktop.
         self.new_app_version = new_app_version
-        # The latest version available for updating the component disk.
+        # The component disk version number available for upgrade.
         self.new_dcd_version = new_dcd_version
         # The project name.
         self.project = project
-        # The version description of the cloud computer\\"s image.
+        # The release note for the available upgrade version.
         self.release_note = release_note
-        # The English release note for the new image version.
+        # The English release note for the available upgrade version.
         self.release_note_en = release_note_en
-        # The Japanese release note for the new image version.
+        # The Japanese release note for the available upgrade version.
         self.release_note_jp = release_note_jp
-        # The size of the update package for the cloud computer image. Unit: KB.
+        # The installation package size of the available upgrade version. Unit: KB.
         self.size = size
 
     def validate(self):
@@ -1009,19 +945,19 @@ class DescribeUserResourcesResponseBodyResourcesDesktopTimers(DaraModel):
         reset_type: str = None,
         timer_type: str = None,
     ):
-        # Indicates whether to allow end users to configure scheduled tasks on clients.
+        # Indicates whether the client is allowed to configure this setting.
         self.allow_client_setting = allow_client_setting
-        # The cron expression specified in the scheduled task.
+        # The cron expression of the scheduled task.
         self.cron_expression = cron_expression
-        # Indicates whether to forcibly execute the scheduled task.
+        # Indicates whether the task is forcibly executed.
         self.enforce = enforce
-        # The time when the scheduled task is executed.
+        # The execution time.
         self.execution_time = execution_time
-        # The interval at which the scheduled task is executed.
+        # The interval of the scheduled task.
         self.interval = interval
-        # The type of the scheduled action.
+        # The operation type.
         self.operation_type = operation_type
-        # The reset option.
+        # The reset type.
         self.reset_type = reset_type
         # The task type.
         self.timer_type = timer_type
@@ -1104,43 +1040,29 @@ class DescribeUserResourcesResponseBodyResourcesDesktopDurationList(DaraModel):
         total_duration: int = None,
         used_duration: int = None,
     ):
-        # The ID of the instance order.
+        # The order instance ID.
         self.order_instance_id = order_instance_id
-        # The time when the package was created.
+        # The creation time.
         self.package_creation_time = package_creation_time
-        # The expiration time of the package.
+        # The expiration time.
         self.package_expired_time = package_expired_time
         # The package ID.
         self.package_id = package_id
-        # The package status.
+        # The status.
         self.package_status = package_status
-        # The package type.
-        # 
-        # Valid values:
-        # 
-        # *   FREE_PACKAGE: a free package.
-        # *   NORMAL_PACKAGE: a paid package (120-hour computing plan).
-        # *   POSTPAID_PACKAGE: a pay-as-you-go package (200-hour computing plan).
-        # *   Duration: an hourly package.
+        # The duration package type.
         self.package_type = package_type
-        # The policy for the cloud computer status once the monthly package quota is exhausted.
-        # 
-        # Valid values:
-        # 
-        # *   Shutdown: The cloud computer enters the Stopped or Hibernated state.
-        # *   PostPaid: The cloud computer continues providing services that are billed on the pay-as-you-go basis.
+        # The cloud desktop status policy after the monthly quota of the plan is used up.
         self.package_used_up_strategy = package_used_up_strategy
-        # The package\\"s effective end time for the current month.
+        # The end time of the current monthly package.
         self.period_end_time = period_end_time
-        # The package\\"s effective start time for the current month.
+        # The start time of the current monthly package.
         self.period_start_time = period_start_time
-        # The maximum fee for the package in the second phase.
-        # 
-        # >  This parameter is returned if you set ResourceType to `POSTPAID_PACKAG` or `FREE_PACKAGE`.
+        # The cap amount for the second-phase package.
         self.post_paid_limit_fee = post_paid_limit_fee
         # The total duration.
         self.total_duration = total_duration
-        # The subscription duration consumed.
+        # The used duration.
         self.used_duration = used_duration
 
     def validate(self):
@@ -1237,12 +1159,7 @@ class DescribeUserResourcesResponseBodyResourcesClients(DaraModel):
     ):
         # The client type.
         self.client_type = client_type
-        # The status.
-        # 
-        # Valid values:
-        # 
-        # *   OFF
-        # *   ON
+        # The support status.
         self.status = status
 
     def validate(self):
@@ -1268,6 +1185,132 @@ class DescribeUserResourcesResponseBodyResourcesClients(DaraModel):
 
         if m.get('Status') is not None:
             self.status = m.get('Status')
+
+        return self
+
+class DescribeUserResourcesResponseBodyAgentBriefSummary(DaraModel):
+    def __init__(
+        self,
+        agent_briefs: List[main_models.DescribeUserResourcesResponseBodyAgentBriefSummaryAgentBriefs] = None,
+        total_count: int = None,
+    ):
+        self.agent_briefs = agent_briefs
+        self.total_count = total_count
+
+    def validate(self):
+        if self.agent_briefs:
+            for v1 in self.agent_briefs:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        result['AgentBriefs'] = []
+        if self.agent_briefs is not None:
+            for k1 in self.agent_briefs:
+                result['AgentBriefs'].append(k1.to_map() if k1 else None)
+
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.agent_briefs = []
+        if m.get('AgentBriefs') is not None:
+            for k1 in m.get('AgentBriefs'):
+                temp_model = main_models.DescribeUserResourcesResponseBodyAgentBriefSummaryAgentBriefs()
+                self.agent_briefs.append(temp_model.from_map(k1))
+
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+
+        return self
+
+class DescribeUserResourcesResponseBodyAgentBriefSummaryAgentBriefs(DaraModel):
+    def __init__(
+        self,
+        agent_platform: str = None,
+        agent_provider: str = None,
+        avatar_no_resource_url: str = None,
+        avatar_url: str = None,
+        count: int = None,
+        display_name: str = None,
+        sub_title: str = None,
+        url: str = None,
+    ):
+        self.agent_platform = agent_platform
+        self.agent_provider = agent_provider
+        self.avatar_no_resource_url = avatar_no_resource_url
+        self.avatar_url = avatar_url
+        self.count = count
+        self.display_name = display_name
+        self.sub_title = sub_title
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.agent_platform is not None:
+            result['AgentPlatform'] = self.agent_platform
+
+        if self.agent_provider is not None:
+            result['AgentProvider'] = self.agent_provider
+
+        if self.avatar_no_resource_url is not None:
+            result['AvatarNoResourceUrl'] = self.avatar_no_resource_url
+
+        if self.avatar_url is not None:
+            result['AvatarUrl'] = self.avatar_url
+
+        if self.count is not None:
+            result['Count'] = self.count
+
+        if self.display_name is not None:
+            result['DisplayName'] = self.display_name
+
+        if self.sub_title is not None:
+            result['SubTitle'] = self.sub_title
+
+        if self.url is not None:
+            result['Url'] = self.url
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentPlatform') is not None:
+            self.agent_platform = m.get('AgentPlatform')
+
+        if m.get('AgentProvider') is not None:
+            self.agent_provider = m.get('AgentProvider')
+
+        if m.get('AvatarNoResourceUrl') is not None:
+            self.avatar_no_resource_url = m.get('AvatarNoResourceUrl')
+
+        if m.get('AvatarUrl') is not None:
+            self.avatar_url = m.get('AvatarUrl')
+
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+
+        if m.get('DisplayName') is not None:
+            self.display_name = m.get('DisplayName')
+
+        if m.get('SubTitle') is not None:
+            self.sub_title = m.get('SubTitle')
+
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
 
         return self
 

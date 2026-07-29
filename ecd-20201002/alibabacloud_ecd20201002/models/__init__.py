@@ -46,9 +46,6 @@ from ._get_login_token_request import GetLoginTokenRequest
 from ._get_login_token_shrink_request import GetLoginTokenShrinkRequest
 from ._get_login_token_response_body import GetLoginTokenResponseBody
 from ._get_login_token_response import GetLoginTokenResponse
-from ._is_keep_alive_request import IsKeepAliveRequest
-from ._is_keep_alive_response_body import IsKeepAliveResponseBody
-from ._is_keep_alive_response import IsKeepAliveResponse
 from ._query_eds_agent_report_config_request import QueryEdsAgentReportConfigRequest
 from ._query_eds_agent_report_config_response_body import QueryEdsAgentReportConfigResponseBody
 from ._query_eds_agent_report_config_response import QueryEdsAgentReportConfigResponse
@@ -108,6 +105,8 @@ from ._describe_global_desktops_response_body import DescribeGlobalDesktopsRespo
 from ._describe_office_sites_response_body import DescribeOfficeSitesResponseBodyOfficeSites
 from ._describe_regions_response_body import DescribeRegionsResponseBodyRegions
 from ._describe_snapshots_response_body import DescribeSnapshotsResponseBodySnapshots
+from ._describe_user_resources_response_body import DescribeUserResourcesResponseBodyAgentBriefSummaryAgentBriefs
+from ._describe_user_resources_response_body import DescribeUserResourcesResponseBodyAgentBriefSummary
 from ._describe_user_resources_response_body import DescribeUserResourcesResponseBodyResourcesClients
 from ._describe_user_resources_response_body import DescribeUserResourcesResponseBodyResourcesDesktopDurationList
 from ._describe_user_resources_response_body import DescribeUserResourcesResponseBodyResourcesDesktopTimers
@@ -167,9 +166,6 @@ __all__ = [
     GetLoginTokenShrinkRequest,
     GetLoginTokenResponseBody,
     GetLoginTokenResponse,
-    IsKeepAliveRequest,
-    IsKeepAliveResponseBody,
-    IsKeepAliveResponse,
     QueryEdsAgentReportConfigRequest,
     QueryEdsAgentReportConfigResponseBody,
     QueryEdsAgentReportConfigResponse,
@@ -229,6 +225,8 @@ __all__ = [
     DescribeOfficeSitesResponseBodyOfficeSites,
     DescribeRegionsResponseBodyRegions,
     DescribeSnapshotsResponseBodySnapshots,
+    DescribeUserResourcesResponseBodyAgentBriefSummaryAgentBriefs,
+    DescribeUserResourcesResponseBodyAgentBriefSummary,
     DescribeUserResourcesResponseBodyResourcesClients,
     DescribeUserResourcesResponseBodyResourcesDesktopDurationList,
     DescribeUserResourcesResponseBodyResourcesDesktopTimers,

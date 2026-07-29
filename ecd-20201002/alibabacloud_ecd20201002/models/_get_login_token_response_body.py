@@ -18,6 +18,8 @@ class GetLoginTokenResponseBody(DaraModel):
         login_token: str = None,
         next_stage: str = None,
         nick_name: str = None,
+        office_site_id: str = None,
+        office_site_name: str = None,
         password_strategy: main_models.GetLoginTokenResponseBodyPasswordStrategy = None,
         phone: str = None,
         props: Dict[str, str] = None,
@@ -31,53 +33,55 @@ class GetLoginTokenResponseBody(DaraModel):
         window_display_mode: str = None,
         wy_id: str = None,
     ):
-        # The email address of the user. The system returns the email address in the return value of the LoginToken parameter after the user logs on to the client.
+        # The email address of the user. This value is returned with the LoginToken after logon.    
         # 
-        # *   For a convenience user, the return value is the email address specified when the administrator creates the convenience user.
-        # *   For an AD user, the return value is in the following format: `Username@Name of the AD domain`.
+        # - For a convenience user, the email address specified when the convenience user was created is returned.
+        # - For an AD user, the value is returned in the format of `username@AD domain name`.
         self.email = email
-        # The account of the convenience user or the AD user.
+        # The convenience account username or AD username.
         self.end_user_id = end_user_id
-        # > This is a parameter only for internal use.
+        # > This is an internal field and is not available for public use.
         self.industry = industry
-        # The token used to keep the user logged on. After the user logs on to the client and select the Keep Logon option, `KeepAliveToken` is returned when you call the operation. If the user does not select the Keep Logon option, null is returned.
+        # The token used to keep the logon session alive. After a successful logon with the keep-alive option enabled, the operation returns a `KeepAliveToken`. If the keep-alive option is not enabled, an empty value is returned.
         self.keep_alive_token = keep_alive_token
-        # The attribute of the convenience user. For an AD user, null is returned.
+        # The property of the convenience user. If the user is an AD user, an empty value is returned.
         self.label = label
-        # The logon token.
+        # The logon credential.
         self.login_token = login_token
-        # The next stage that is expected to enter. For example, an administrator enables MFA in the EDS console. When an end user enters the password, that is, the end user completes the `ADPassword` stage, this parameter returns `MFAVerify`. This indicates that MFA is required.
+        # The expected next stage. For example, if the administrator has enabled MFA authentication in the Elastic Desktop Service console, after the username and password authentication is passed (the `ADPassword` stage), this parameter returns `MFAVerify`, indicating that MFA authentication is required.
         # 
-        # >  For more information about the authentication stages, see the `CurrentStage` parameter.
+        # > For more information about each authentication stage, see the parameter description of the `CurrentStage` request parameter of this operation.
         self.next_stage = next_stage
         self.nick_name = nick_name
-        # > This is a parameter only for internal use.
+        self.office_site_id = office_site_id
+        self.office_site_name = office_site_name
+        # > This is an internal field and is not available for public use.
         self.password_strategy = password_strategy
-        # Enter the mobile number of the convenience user. For an AD user, null is returned.
+        # The phone number of the convenience user. If the user is an AD user, an empty value is returned.
         self.phone = phone
-        # > This is a parameter only for internal use.
+        # > This is an internal field and is not available for public use.
         self.props = props
-        # The QR code that is generated when the virtual MFA device is bound. The value is encoded in Base64. This parameter can be empty. This parameter is required only when the CurrentStage parameter is set to `MFABind`.
+        # The QR code of the secret key used when attaching a virtual MFA device. The value uses Base64 encoding. This value can be empty and is used in the `MFABind` stage.
         # 
-        # > For more information about each authentication stage, see the parameter description of the request parameter `CurrentStage`.
+        # > For more information about each authentication stage, see the parameter description of the `CurrentStage` request parameter of this operation.
         self.qr_code_png = qr_code_png
-        # > This is a parameter only for internal use.
+        # > This is an internal field and is not available for public use.
         self.reason = reason
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Risk identification information regarding the signin process.
+        # The logon risk identification information.
         self.risk_verify_info = risk_verify_info
-        # The key that is generated when you bind the virtual MFA device. This parameter is required when the CurrentStage parameter is set to `MFABind`.
+        # The secret key used when attaching a virtual MFA device. This value is used in the `MFABind` stage.
         # 
-        # > For more information about each authentication stage, see the parameter description of the request parameter `CurrentStage`.
+        # > For more information about each authentication stage, see the parameter description of the `CurrentStage` request parameter of this operation.
         self.secret = secret
-        # The ID of the session. The ID is returned the first time you call the `GetLoginToken` operation in the session. If MFA is required, you must specify this parameter in subsequent stages.
+        # The session ID. This value is returned only when `GetLoginToken` is invoked for the first time within the same session. For subsequent stages that require multiple authentications, pass in this parameter.
         # 
-        # > For more information about each authentication stage, see the parameter description of the request parameter `CurrentStage`.
+        # > For more information about each authentication stage, see the parameter description of the `CurrentStage` request parameter of this operation.
         self.session_id = session_id
-        # The ID of the Alibaba Cloud account. The ID is used for hardware client authentication.
+        # The Alibaba Cloud account ID. This value is used for hardware terminal identification.
         self.tenant_id = tenant_id
-        # > This is a parameter only for internal use.
+        # > This is an internal field and is not available for public use.
         self.window_display_mode = window_display_mode
         self.wy_id = wy_id
 
@@ -115,6 +119,12 @@ class GetLoginTokenResponseBody(DaraModel):
 
         if self.nick_name is not None:
             result['NickName'] = self.nick_name
+
+        if self.office_site_id is not None:
+            result['OfficeSiteId'] = self.office_site_id
+
+        if self.office_site_name is not None:
+            result['OfficeSiteName'] = self.office_site_name
 
         if self.password_strategy is not None:
             result['PasswordStrategy'] = self.password_strategy.to_map()
@@ -180,6 +190,12 @@ class GetLoginTokenResponseBody(DaraModel):
         if m.get('NickName') is not None:
             self.nick_name = m.get('NickName')
 
+        if m.get('OfficeSiteId') is not None:
+            self.office_site_id = m.get('OfficeSiteId')
+
+        if m.get('OfficeSiteName') is not None:
+            self.office_site_name = m.get('OfficeSiteName')
+
         if m.get('PasswordStrategy') is not None:
             temp_model = main_models.GetLoginTokenResponseBodyPasswordStrategy()
             self.password_strategy = temp_model.from_map(m.get('PasswordStrategy'))
@@ -228,13 +244,13 @@ class GetLoginTokenResponseBodyRiskVerifyInfo(DaraModel):
         locked: str = None,
         phone: str = None,
     ):
-        # The email used for authentication.
+        # The email address used for identity verification when risk verification is triggered.
         self.email = email
-        # The duration of the lock.
+        # The account lockout duration.
         self.last_lock_duration = last_lock_duration
-        # Whether the account is locked or not.
+        # Indicates whether the account is locked.
         self.locked = locked
-        # The mobile number used for authentication.
+        # The phone number used for identity verification when risk verification is triggered.
         self.phone = phone
 
     def validate(self):
@@ -281,9 +297,9 @@ class GetLoginTokenResponseBodyPasswordStrategy(DaraModel):
         tenant_alternative_chars: List[str] = None,
         tenant_password_length: str = None,
     ):
-        # > This is a parameter only for internal use.
+        # > This is an internal field and is not available for public use.
         self.tenant_alternative_chars = tenant_alternative_chars
-        # > This is a parameter only for internal use.
+        # > This is an internal field and is not available for public use.
         self.tenant_password_length = tenant_password_length
 
     def validate(self):
