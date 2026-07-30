@@ -41,6 +41,8 @@ class ModifyDBInstanceConnectionStringRequest(DaraModel):
         #   This parameter is not supported for clusters that were upgraded to kernel version 24.10.1.11098_1 or later from an earlier version.
         self.disable_ports = disable_ports
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):

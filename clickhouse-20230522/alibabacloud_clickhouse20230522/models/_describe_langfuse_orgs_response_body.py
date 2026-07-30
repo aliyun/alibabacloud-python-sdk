@@ -13,7 +13,9 @@ class DescribeLangfuseOrgsResponseBody(DaraModel):
         data: main_models.DescribeLangfuseOrgsResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned result.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -52,9 +54,13 @@ class DescribeLangfuseOrgsResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The Langfuse organization information.
         self.organizations = organizations
+        # The current page number.
         self.page_number = page_number
+        # The number of records per page.
         self.page_size = page_size
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -111,9 +117,13 @@ class DescribeLangfuseOrgsResponseBodyDataOrganizations(DaraModel):
         organization_id: str = None,
         updated_at: str = None,
     ):
+        # The time when the Langfuse organization was created.
         self.created_at = created_at
+        # The Langfuse organization name.
         self.name = name
+        # The Langfuse organization ID.
         self.organization_id = organization_id
+        # The time when the Langfuse organization was last updated.
         self.updated_at = updated_at
 
     def validate(self):

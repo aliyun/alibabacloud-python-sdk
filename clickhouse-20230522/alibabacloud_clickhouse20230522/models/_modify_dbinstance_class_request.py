@@ -37,6 +37,8 @@ class ModifyDBInstanceClassRequest(DaraModel):
         # The minimum capacity per node for serverless autoscaling. Valid values: 4 to 32.
         self.node_scale_min = node_scale_min
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The maximum capacity for serverless autoscaling.
         self.scale_max = scale_max

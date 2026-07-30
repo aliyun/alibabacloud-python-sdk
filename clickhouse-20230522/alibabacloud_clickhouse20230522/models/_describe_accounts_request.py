@@ -27,6 +27,8 @@ class DescribeAccountsRequest(DaraModel):
         # The product code.
         self.product = product
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):

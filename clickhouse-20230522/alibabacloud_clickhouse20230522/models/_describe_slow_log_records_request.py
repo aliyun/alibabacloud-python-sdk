@@ -37,6 +37,8 @@ class DescribeSlowLogRecordsRequest(DaraModel):
         # The minimum duration, in milliseconds, for a slow SQL query to be returned. The minimum value is **1000**.
         self.query_duration_ms = query_duration_ms
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The start time of the query. The time must be in UTC and in `yyyy-MM-dd HH:mm:ss` format.
         self.start_time = start_time

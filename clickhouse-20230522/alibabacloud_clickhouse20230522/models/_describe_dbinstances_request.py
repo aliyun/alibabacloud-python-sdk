@@ -31,6 +31,8 @@ class DescribeDBInstancesRequest(DaraModel):
         # The number of entries per page.
         self.page_size = page_size
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id

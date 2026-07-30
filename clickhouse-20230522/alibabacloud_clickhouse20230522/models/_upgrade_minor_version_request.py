@@ -18,6 +18,8 @@ class UpgradeMinorVersionRequest(DaraModel):
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The update time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         # 

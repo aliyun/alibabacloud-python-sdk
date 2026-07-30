@@ -19,6 +19,8 @@ class DescribeDBInstanceDataSourcesRequest(DaraModel):
         # The database name.
         self.dbname = dbname
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The table name.
         self.table_name = table_name

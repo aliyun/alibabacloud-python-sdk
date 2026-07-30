@@ -28,6 +28,8 @@ class DeleteEndpointRequest(DaraModel):
         # - Public: a public network.
         self.dbinstance_net_type = dbinstance_net_type
         # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):

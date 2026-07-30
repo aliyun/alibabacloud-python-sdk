@@ -28,6 +28,8 @@ class ModifySecurityIPListRequest(DaraModel):
         # >  We recommend that you set the value to 0.
         self.modify_mode = modify_mode
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The IP addresses and CIDR blocks in the whitelist.
         self.security_iplist = security_iplist

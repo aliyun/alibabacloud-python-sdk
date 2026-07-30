@@ -1,3 +1,6 @@
+2026-07-30 Version: 3.0.1
+- Generated python 2023-05-22 for clickhouse.
+
 2026-07-27 Version: 3.0.0
 - Update API DescribeAccounts: update request parameters PageNumber' type has changed.
 - Update API DescribeAccounts: update request parameters PageNumber' format has changed.
