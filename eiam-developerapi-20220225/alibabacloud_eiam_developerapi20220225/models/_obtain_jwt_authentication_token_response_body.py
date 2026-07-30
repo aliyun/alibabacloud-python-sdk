@@ -22,19 +22,39 @@ class ObtainJwtAuthenticationTokenResponseBody(DaraModel):
         revoked: bool = None,
         update_time: int = None,
     ):
+        # The ID of the authentication token.
         self.authentication_token_id = authentication_token_id
+        # The type of the authentication token.
+        # 
+        # > The value is always `jwt`, indicating a JWT-based authentication token.
         self.authentication_token_type = authentication_token_type
+        # The ID of the authentication token consumer.
         self.consumer_id = consumer_id
+        # The type of entity that consumes the authentication token. Valid values:
+        # 
+        # - `application`: The token is consumed by an application.
+        # 
+        # - `custom`: Indicates a user-defined consumer.
         self.consumer_type = consumer_type
+        # The creation time of the authentication token, provided as a Unix timestamp in milliseconds.
         self.create_time = create_time
+        # The ID of the authentication token\\"s creator.
         self.creator_id = creator_id
+        # The type of the entity that created the authentication token. Valid value:
+        # 
+        # - `application`: The token was created by an application.
         self.creator_type = creator_type
+        # The ID of the credential provider.
         self.credential_provider_id = credential_provider_id
+        # The expiration time of the authentication token, provided as a Unix timestamp in milliseconds.
         self.expiration_time = expiration_time
-        # EIAM实例ID。
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The content of the JWT-based authentication token.
         self.jwt_content = jwt_content
+        # Indicates whether the authentication token has been revoked.
         self.revoked = revoked
+        # The time the authentication token was last updated, provided as a Unix timestamp in milliseconds.
         self.update_time = update_time
 
     def validate(self):
@@ -137,7 +157,9 @@ class ObtainJwtAuthenticationTokenResponseBodyJwtContent(DaraModel):
         derived_short_token: str = None,
         jwt_value: str = None,
     ):
+        # A short token derived from the JWT.
         self.derived_short_token = derived_short_token
+        # The JWT content.
         self.jwt_value = jwt_value
 
     def validate(self):

@@ -15,11 +15,18 @@ class ObtainCloudAccountRoleAccessCredentialResponseBody(DaraModel):
         cloud_account_role_name: str = None,
         cloud_account_vendor_type: str = None,
     ):
+        # The cloud account ID.
         self.cloud_account_id = cloud_account_id
+        # The temporary access credentials for assuming the cloud account role.
         self.cloud_account_role_access_credential = cloud_account_role_access_credential
+        # The business identifier of the cloud account role.
         self.cloud_account_role_external_id = cloud_account_role_external_id
+        # The cloud account role ID.
         self.cloud_account_role_id = cloud_account_role_id
+        # The cloud account role name.
         self.cloud_account_role_name = cloud_account_role_name
+        # The cloud account type. Valid values:
+        # - alibaba_cloud: Alibaba Cloud.
         self.cloud_account_vendor_type = cloud_account_vendor_type
 
     def validate(self):
@@ -80,16 +87,24 @@ class ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAccessCr
         access_credential_expires_at: int = None,
         alibaba_cloud_sts_token: main_models.ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAccessCredentialAlibabaCloudStsToken = None,
         aws_sts_token: main_models.ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAccessCredentialAwsStsToken = None,
+        tencent_cloud_sts_token: main_models.ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAccessCredentialTencentCloudStsToken = None,
     ):
+        # The expiration time of the temporary access credentials for the cloud account role, in UNIX timestamp format and in seconds.
         self.access_credential_expires_at = access_credential_expires_at
+        # The temporary identity credentials (STS Token) for assuming an Alibaba Cloud RAM role.
+        # > This field is returned only when the cloud account type associated with the cloud account role is Alibaba Cloud (alibaba_cloud).
         self.alibaba_cloud_sts_token = alibaba_cloud_sts_token
+        # The STS Token representing an AWS role.
         self.aws_sts_token = aws_sts_token
+        self.tencent_cloud_sts_token = tencent_cloud_sts_token
 
     def validate(self):
         if self.alibaba_cloud_sts_token:
             self.alibaba_cloud_sts_token.validate()
         if self.aws_sts_token:
             self.aws_sts_token.validate()
+        if self.tencent_cloud_sts_token:
+            self.tencent_cloud_sts_token.validate()
 
     def to_map(self):
         result = dict()
@@ -104,6 +119,9 @@ class ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAccessCr
 
         if self.aws_sts_token is not None:
             result['awsStsToken'] = self.aws_sts_token.to_map()
+
+        if self.tencent_cloud_sts_token is not None:
+            result['tencentCloudStsToken'] = self.tencent_cloud_sts_token.to_map()
 
         return result
 
@@ -120,6 +138,61 @@ class ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAccessCr
             temp_model = main_models.ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAccessCredentialAwsStsToken()
             self.aws_sts_token = temp_model.from_map(m.get('awsStsToken'))
 
+        if m.get('tencentCloudStsToken') is not None:
+            temp_model = main_models.ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAccessCredentialTencentCloudStsToken()
+            self.tencent_cloud_sts_token = temp_model.from_map(m.get('tencentCloudStsToken'))
+
+        return self
+
+class ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAccessCredentialTencentCloudStsToken(DaraModel):
+    def __init__(
+        self,
+        expiration: str = None,
+        tmp_secret_id: str = None,
+        tmp_secret_key: str = None,
+        token: str = None,
+    ):
+        self.expiration = expiration
+        self.tmp_secret_id = tmp_secret_id
+        self.tmp_secret_key = tmp_secret_key
+        self.token = token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.expiration is not None:
+            result['expiration'] = self.expiration
+
+        if self.tmp_secret_id is not None:
+            result['tmpSecretId'] = self.tmp_secret_id
+
+        if self.tmp_secret_key is not None:
+            result['tmpSecretKey'] = self.tmp_secret_key
+
+        if self.token is not None:
+            result['token'] = self.token
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('expiration') is not None:
+            self.expiration = m.get('expiration')
+
+        if m.get('tmpSecretId') is not None:
+            self.tmp_secret_id = m.get('tmpSecretId')
+
+        if m.get('tmpSecretKey') is not None:
+            self.tmp_secret_key = m.get('tmpSecretKey')
+
+        if m.get('token') is not None:
+            self.token = m.get('token')
+
         return self
 
 class ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAccessCredentialAwsStsToken(DaraModel):
@@ -130,9 +203,13 @@ class ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAccessCr
         secret_access_key: str = None,
         session_token: str = None,
     ):
+        # The access key ID.
         self.access_key_id = access_key_id
+        # The expiration time of the STS Token (UTC).
         self.expiration = expiration
+        # The secret access key.
         self.secret_access_key = secret_access_key
+        # The session token of the temporary credentials.
         self.session_token = session_token
 
     def validate(self):
@@ -181,9 +258,13 @@ class ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAccessCr
         expiration: str = None,
         security_token: str = None,
     ):
+        # The access key ID.
         self.access_key_id = access_key_id
+        # The access key secret.
         self.access_key_secret = access_key_secret
+        # The expiration time of the token (UTC).
         self.expiration = expiration
+        # The security token.
         self.security_token = security_token
 
     def validate(self):

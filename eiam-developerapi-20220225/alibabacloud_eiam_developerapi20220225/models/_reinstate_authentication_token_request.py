@@ -10,8 +10,17 @@ class ReinstateAuthenticationTokenRequest(DaraModel):
         token: str = None,
         token_type_hint: str = None,
     ):
+        # The original authentication token.
+        # 
+        # > You can pass either the original authentication token or its derived short token.
+        # 
         # This parameter is required.
         self.token = token
+        # A hint about the authentication token type.
+        # 
+        # >Notice: 
+        # 
+        # Do not provide a value for this parameter.
         self.token_type_hint = token_type_hint
 
     def validate(self):

@@ -24,33 +24,33 @@ class CreateUserRequest(DaraModel):
         user_external_id: str = None,
         username: str = None,
     ):
-        # Custom fields
+        # A list of custom fields for the account.
         self.custom_fields = custom_fields
-        # The description of the account. The description can be up to 256 characters in length.
+        # The account description. The maximum length is 256 characters.
         self.description = description
-        # The display name of the account. The display name can be up to 64 characters in length.
+        # The display name. The maximum length is 128 characters.
         self.display_name = display_name
-        # The email address of the user who owns the account.
+        # The email address. The local-part of the address can contain uppercase and lowercase letters, digits, periods (`.`), underscores (`_`), and hyphens (`-`). The maximum length is 128 characters.
         self.email = email
-        # Indicates whether the email address is verified. This field is required if an email address is specified. If you have no special requirement, set this parameter to true.
+        # Specifies whether the email is verified. This parameter is required if `email` is set. Typically, set this to `true`.
         self.email_verified = email_verified
-        # The password of the account. For information about the password rules, go to the Create User panel in the Identity as a Service (IDaaS) console.
+        # The account password. For password complexity rules, see the password policy in the IDaaS console.
         self.password = password
-        # Configure the initial password
+        # The password initialization configuration.
         self.password_initialization_config = password_initialization_config
-        # The mobile number of the user who owns the account.
+        # The account phone number. It must be 6 to 15 digits long.
         self.phone_number = phone_number
-        # Indicates whether the mobile number is verified. This field is required if a mobile number is specified. If you have no special requirement, set this parameter to true.
+        # Specifies whether the phone number is verified. This parameter is required if `phoneNumber` is set. Typically, set this to `true`.
         self.phone_number_verified = phone_number_verified
-        # The country code of the mobile number. For example, the country code of China is 86 without 00 or +. This parameter is required if a mobile number is specified.
+        # The phone region code. For example, the code for the Chinese mainland is `86`. Do not include a `00` prefix or a plus sign (`+`). This parameter is required if `phoneNumber` is set.
         self.phone_region = phone_region
         # The ID of the primary organizational unit.
         # 
         # This parameter is required.
         self.primary_organizational_unit_id = primary_organizational_unit_id
-        # The external ID of the account. The external ID can be used to map external data to the data of the account in EIAM of Identity as a Service (IDaaS). By default, the external ID is the account ID.
+        # The external user ID, used to associate the account with an external system. The maximum length is 128 characters. If unspecified, it defaults to the account ID.
         self.user_external_id = user_external_id
-        # The username of the account.
+        # The username. It can contain letters, digits, and the following special characters: underscore (`_`), period (`.`), at sign (`@`), and hyphen (`-`). The maximum length is 256 characters.
         # 
         # This parameter is required.
         self.username = username
@@ -166,13 +166,27 @@ class CreateUserRequestPasswordInitializationConfig(DaraModel):
         password_initialization_type: str = None,
         user_notification_channels: List[str] = None,
     ):
-        # Password  forced update
+        # The password forced update status. By default, this feature is disabled. Valid values:
+        # 
+        # - `enabled`: Enables the feature.
+        # 
+        # - `disabled`: Disables the feature.
         self.password_forced_update_status = password_forced_update_status
-        # Password policy
+        # The priority of the password initialization policy. Valid values:
+        # 
+        # - `global`: Uses the instance-level password initialization policy and ignores the custom settings in this request. For more information, see the password initialization policy configuration in the IDaaS console.
+        # 
+        # - `custom`: Uses the custom password initialization policy defined in this request. This includes settings for forced password updates, the initialization type, and notification channels.
         self.password_initialization_policy_priority = password_initialization_policy_priority
-        # Password Initialization Type
+        # The password initialization type. Valid values:
+        # 
+        # - `random`: A randomly generated password.
         self.password_initialization_type = password_initialization_type
-        # User Notification Channels
+        # The user notification channels. Valid values:
+        # 
+        # - `email`: Email
+        # 
+        # - `sms`: SMS
         self.user_notification_channels = user_notification_channels
 
     def validate(self):
@@ -221,9 +235,9 @@ class CreateUserRequestCustomFields(DaraModel):
         field_name: str = None,
         field_value: str = None,
     ):
-        # Field name
+        # The name of the custom field. You can view the field\\"s data type and value range in the IDaaS console.
         self.field_name = field_name
-        # Filed value
+        # The value of the custom field.
         self.field_value = field_value
 
     def validate(self):

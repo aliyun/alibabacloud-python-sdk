@@ -10,8 +10,17 @@ class ValidateAuthenticationTokenRequest(DaraModel):
         token: str = None,
         token_type_hint: str = None,
     ):
+        # The original authentication token.
+        # 
+        # > Pass either the original authentication token or a derived short token.
+        # 
         # This parameter is required.
         self.token = token
+        # A hint about the type of the authentication token.
+        # 
+        # >Notice: 
+        # 
+        # No value is currently required for this parameter.
         self.token_type_hint = token_type_hint
 
     def validate(self):

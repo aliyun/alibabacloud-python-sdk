@@ -15,10 +15,13 @@ class ListAuthenticationTokensResponseBody(DaraModel):
         next_token: str = None,
         total_count: int = None,
     ):
-        # 资源实体列表。
+        # List of resource entities.
         self.entities = entities
+        # Maximum number of records returned in this query.
         self.max_results = max_results
+        # Token returned by this call. Use it for the next paged query to get the next page.
         self.next_token = next_token
+        # Total number of resource entities that match the query criteria.
         self.total_count = total_count
 
     def validate(self):
@@ -83,18 +86,39 @@ class ListAuthenticationTokensResponseBodyEntities(DaraModel):
         revoked: bool = None,
         update_time: int = None,
     ):
+        # Authentication token ID.
         self.authentication_token_id = authentication_token_id
+        # Authentication token type. Valid values:
+        # 
+        # - jwt: JWT authentication token
+        # 
+        # - oauth_access_token: OAuth Access Token authentication token
         self.authentication_token_type = authentication_token_type
+        # ID of the authentication token consumer.
         self.consumer_id = consumer_id
+        # Type of the authentication token consumer. Valid values:
+        # 
+        # - application: Application
+        # 
+        # - custom: Custom type
         self.consumer_type = consumer_type
+        # Creation time of the authentication token, as a UNIX timestamp in milliseconds.
         self.create_time = create_time
+        # ID of the authentication token creator.
         self.creator_id = creator_id
+        # Type of the authentication token creator. Valid values:
+        # 
+        # - application: Application
         self.creator_type = creator_type
+        # Credential provider ID.
         self.credential_provider_id = credential_provider_id
+        # Expiration time of the authentication token, as a UNIX timestamp in milliseconds.
         self.expiration_time = expiration_time
-        # EIAM实例ID。
+        # Instance ID.
         self.instance_id = instance_id
+        # Indicates whether the authentication token is revoked.
         self.revoked = revoked
+        # Last update time of the authentication token, as a UNIX timestamp in milliseconds.
         self.update_time = update_time
 
     def validate(self):

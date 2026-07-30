@@ -15,9 +15,13 @@ class ListGroupsForUserResponseBody(DaraModel):
         next_token: str = None,
         total_count: int = None,
     ):
+        # The data object.
         self.data = data
+        # The maximum number of entries returned on each page.
         self.max_results = max_results
+        # The token to retrieve the next page of results. If this parameter is not returned, all results have been returned.
         self.next_token = next_token
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -74,9 +78,13 @@ class ListGroupsForUserResponseBodyData(DaraModel):
         group_member_relation_source_type: str = None,
         instance_id: str = None,
     ):
+        # The group ID.
         self.group_id = group_id
+        # The source ID of the group membership.
         self.group_member_relation_source_id = group_member_relation_source_id
+        # The source type of the group membership.
         self.group_member_relation_source_type = group_member_relation_source_type
+        # The instance ID.
         self.instance_id = instance_id
 
     def validate(self):

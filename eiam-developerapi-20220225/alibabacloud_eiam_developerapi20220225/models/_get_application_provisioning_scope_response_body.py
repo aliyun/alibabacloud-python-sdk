@@ -12,8 +12,9 @@ class GetApplicationProvisioningScopeResponseBody(DaraModel):
         group_ids: List[str] = None,
         organizational_unit_ids: List[str] = None,
     ):
+        # The list of group IDs.
         self.group_ids = group_ids
-        # The IDs of organizational units.
+        # The list of organization IDs.
         self.organizational_unit_ids = organizational_unit_ids
 
     def validate(self):

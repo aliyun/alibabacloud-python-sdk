@@ -6,16 +6,16 @@ from typing import Dict
 
 from darabonba.model import DaraModel
 
-class RemoveUserFromOrganizationalUnitsHeaders(DaraModel):
+class GetOAuthAuthorizationSessionHeaders(DaraModel):
     def __init__(
         self,
         common_headers: Dict[str, str] = None,
         authorization: str = None,
     ):
         self.common_headers = common_headers
-        # The authorization credential for the request.
-        # Format: Bearer ${access_token}.
-        # Example: Bearer ATxxxx.
+        # The authentication information. Format: Bearer ${access_token}.
+        # 
+        # > Enter the Access Token issued by IDaaS.
         # 
         # This parameter is required.
         self.authorization = authorization

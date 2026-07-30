@@ -10,8 +10,17 @@ class RevokeAuthenticationTokenRequest(DaraModel):
         token: str = None,
         token_type_hint: str = None,
     ):
+        # Original authentication token.
+        # 
+        # > You can pass either the original authentication token or a derived short token.
+        # 
         # This parameter is required.
         self.token = token
+        # Authentication token type hint.
+        # 
+        # >Notice: 
+        # 
+        # Currently, no value is required.
         self.token_type_hint = token_type_hint
 
     def validate(self):

@@ -10,8 +10,12 @@ class RevokeAuthenticationTokenByConsumerRequest(DaraModel):
         consumer_id: str = None,
         credential_provider_identifier: str = None,
     ):
+        # Consumer ID of the authentication token.
+        # 
         # This parameter is required.
         self.consumer_id = consumer_id
+        # Credential provider identifier.
+        # 
         # This parameter is required.
         self.credential_provider_identifier = credential_provider_identifier
 

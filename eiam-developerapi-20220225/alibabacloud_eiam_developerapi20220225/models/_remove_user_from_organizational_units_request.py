@@ -11,6 +11,8 @@ class RemoveUserFromOrganizationalUnitsRequest(DaraModel):
         self,
         organizational_unit_ids: List[str] = None,
     ):
+        # The organizational unit IDs.
+        # 
         # This parameter is required.
         self.organizational_unit_ids = organizational_unit_ids
 

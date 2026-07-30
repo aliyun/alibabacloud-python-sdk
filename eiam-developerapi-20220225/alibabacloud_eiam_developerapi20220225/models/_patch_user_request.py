@@ -120,9 +120,11 @@ class PatchUserRequestCustomFields(DaraModel):
         self.field_value = field_value
         # The operation to be performed on the field. Valid values:
         # 
-        # *   add
-        # *   replace If you leave the value of the extended field empty, the replace operation is converted to an add operation.
-        # *   remove
+        # - add
+        # 
+        # - replace If you leave the value of the extended field empty, the replace operation is converted to an add operation.
+        # 
+        # - remove
         self.operation = operation
         # The type of the operation. This parameter is deprecated. Replace it with operation.
         self.operator = operator

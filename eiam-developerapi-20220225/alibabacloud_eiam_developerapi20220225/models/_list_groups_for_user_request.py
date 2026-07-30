@@ -10,8 +10,9 @@ class ListGroupsForUserRequest(DaraModel):
         max_results: int = None,
         next_token: str = None,
     ):
+        # The number of entries per page. Default value: 20.
         self.max_results = max_results
-        # nextToken
+        # The token to retrieve the next page of results. Leave this parameter empty to query from the first page.
         self.next_token = next_token
 
     def validate(self):

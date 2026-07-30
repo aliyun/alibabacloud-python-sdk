@@ -21,7 +21,15 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'eu-central-1': 'eiam-developerapi.eu-central-1.aliyuncs.com',
+            'cn-hongkong': 'eiam-developerapi.cn-hongkong.aliyuncs.com',
+            'cn-hangzhou': 'eiam-developerapi.cn-hangzhou.aliyuncs.com',
+            'ap-southeast-5': 'eiam-developerapi.ap-southeast-5.aliyuncs.com',
+            'ap-southeast-1': 'eiam-developerapi.ap-southeast-1.aliyuncs.com',
+            'ap-northeast-2': 'eiam-developerapi.ap-northeast-2.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('eiam-developerapi', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -606,6 +614,8 @@ class Client(OpenApiClient):
             body['credentialType'] = request.credential_type
         if not DaraCore.is_null(request.description):
             body['description'] = request.description
+        if not DaraCore.is_null(request.return_ciphertext):
+            body['returnCiphertext'] = request.return_ciphertext
         real_headers = {}
         if not DaraCore.is_null(headers.common_headers):
             real_headers = headers.common_headers
@@ -654,6 +664,8 @@ class Client(OpenApiClient):
             body['credentialType'] = request.credential_type
         if not DaraCore.is_null(request.description):
             body['description'] = request.description
+        if not DaraCore.is_null(request.return_ciphertext):
+            body['returnCiphertext'] = request.return_ciphertext
         real_headers = {}
         if not DaraCore.is_null(headers.common_headers):
             real_headers = headers.common_headers
@@ -1158,6 +1170,10 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.credential_provider_identifier):
             body['credentialProviderIdentifier'] = request.credential_provider_identifier
+        if not DaraCore.is_null(request.custom_parameters):
+            body['customParameters'] = request.custom_parameters
+        if not DaraCore.is_null(request.force_authentication):
+            body['forceAuthentication'] = request.force_authentication
         if not DaraCore.is_null(request.scope):
             body['scope'] = request.scope
         real_headers = {}
@@ -1196,6 +1212,10 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.credential_provider_identifier):
             body['credentialProviderIdentifier'] = request.credential_provider_identifier
+        if not DaraCore.is_null(request.custom_parameters):
+            body['customParameters'] = request.custom_parameters
+        if not DaraCore.is_null(request.force_authentication):
+            body['forceAuthentication'] = request.force_authentication
         if not DaraCore.is_null(request.scope):
             body['scope'] = request.scope
         real_headers = {}
@@ -1886,6 +1906,96 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = main_models.GetGroupHeaders()
         return await self.get_group_with_options_async(instance_id, application_id, group_id, request, headers, runtime)
+
+    def get_oauth_authorization_session_with_options(
+        self,
+        instance_id: str,
+        request: main_models.GetOAuthAuthorizationSessionRequest,
+        headers: main_models.GetOAuthAuthorizationSessionHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetOAuthAuthorizationSessionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.session_uri):
+            body['sessionUri'] = request.session_uri
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.authorization):
+            real_headers['Authorization'] = str(headers.authorization)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetOAuthAuthorizationSession',
+            version = '2022-02-25',
+            protocol = 'HTTPS',
+            pathname = f'/v2/{DaraURL.percent_encode(instance_id)}/oauthAuthorizationSessions/_/actions/get',
+            method = 'POST',
+            auth_type = 'Anonymous',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetOAuthAuthorizationSessionResponse(),
+            self.do_roarequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.pathname, params.body_type, req, runtime)
+        )
+
+    async def get_oauth_authorization_session_with_options_async(
+        self,
+        instance_id: str,
+        request: main_models.GetOAuthAuthorizationSessionRequest,
+        headers: main_models.GetOAuthAuthorizationSessionHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetOAuthAuthorizationSessionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.session_uri):
+            body['sessionUri'] = request.session_uri
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.authorization):
+            real_headers['Authorization'] = str(headers.authorization)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetOAuthAuthorizationSession',
+            version = '2022-02-25',
+            protocol = 'HTTPS',
+            pathname = f'/v2/{DaraURL.percent_encode(instance_id)}/oauthAuthorizationSessions/_/actions/get',
+            method = 'POST',
+            auth_type = 'Anonymous',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetOAuthAuthorizationSessionResponse(),
+            await self.do_roarequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.pathname, params.body_type, req, runtime)
+        )
+
+    def get_oauth_authorization_session(
+        self,
+        instance_id: str,
+        request: main_models.GetOAuthAuthorizationSessionRequest,
+    ) -> main_models.GetOAuthAuthorizationSessionResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.GetOAuthAuthorizationSessionHeaders()
+        return self.get_oauth_authorization_session_with_options(instance_id, request, headers, runtime)
+
+    async def get_oauth_authorization_session_async(
+        self,
+        instance_id: str,
+        request: main_models.GetOAuthAuthorizationSessionRequest,
+    ) -> main_models.GetOAuthAuthorizationSessionResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.GetOAuthAuthorizationSessionHeaders()
+        return await self.get_oauth_authorization_session_with_options_async(instance_id, request, headers, runtime)
 
     def get_organizational_unit_with_options(
         self,

@@ -13,6 +13,10 @@ class ObtainJwtAuthenticationTokenHeaders(DaraModel):
         authorization: str = None,
     ):
         self.common_headers = common_headers
+        # The authentication credential. The format is `Bearer ${access_token}`.
+        # 
+        # > Use an access token issued by IDaaS.
+        # 
         # This parameter is required.
         self.authorization = authorization
 

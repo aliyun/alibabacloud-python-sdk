@@ -9,7 +9,7 @@ class CreateUserResponseBody(DaraModel):
         self,
         user_id: str = None,
     ):
-        # The account ID.
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):

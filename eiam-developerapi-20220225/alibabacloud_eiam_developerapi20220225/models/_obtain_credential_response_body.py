@@ -26,38 +26,56 @@ class ObtainCredentialResponseBody(DaraModel):
         status: str = None,
         update_time: int = None,
     ):
-        # 云角色创建时间
+        # The creation time of the credential, formatted as a Unix timestamp in milliseconds.
         self.create_time = create_time
-        # 凭据的内容。
+        # The detailed content of the credential. The structure of this object depends on the value of `credentialType`.
         self.credential_content = credential_content
-        # 凭据的创建类型。
+        # Indicates how the credential was created. Valid values:
+        # 
+        # - `system_init`: System-initiated.
+        # 
+        # - `user_custom`: User-created.
         self.credential_creation_type = credential_creation_type
         self.credential_external_id = credential_external_id
-        # 凭据ID。
+        # The credential ID.
         self.credential_id = credential_id
-        # 凭据标识
+        # The credential identifier.
         self.credential_identifier = credential_identifier
-        # 凭据名称
+        # The credential name.
         self.credential_name = credential_name
-        # 凭据的使用场景标签。
+        # The usage scenario for the credential. Valid values:
+        # 
+        # - `llm`: For use with a large language model.
+        # 
+        # - `saas`: For use with a third-party SaaS application.
         self.credential_scenario_label = credential_scenario_label
-        # 凭据的共享范围。
+        # The sharing scope of the credential, such as whether it is exclusive to a specific account.
         self.credential_sharing_scope = credential_sharing_scope
-        # 凭据所属的主体ID。
+        # The ID of the credential\\"s subject.
         self.credential_subject_id = credential_subject_id
-        # 凭据所属的主体类型。
+        # The credential\\"s subject type. Valid values:
+        # 
+        # - `authentication_token_provider`: An authentication token provider.
         self.credential_subject_type = credential_subject_type
-        # 凭据类型。
+        # The credential type. Valid values:
+        # 
+        # - `api_key`: The credential is an API key.
+        # 
+        # - `oauth_client`: The credential represents an OAuth client.
         self.credential_type = credential_type
-        # 描述
+        # The credential description.
         self.description = description
-        # 凭据的专属账户ID。
+        # The ID of the account that exclusively owns the credential. This field is present only when `credentialSharingScope` is `user_exclusive`.
         self.exclusive_user_id = exclusive_user_id
-        # EIAM实例ID。
+        # The EIAM instance ID.
         self.instance_id = instance_id
-        # 凭据状态
+        # The status of the credential. Valid values:
+        # 
+        # - `enabled`: The credential can be used.
+        # 
+        # - `disabled`: The credential cannot be used.
         self.status = status
-        # 云角色更新时间
+        # The last update time of the credential, formatted as a Unix timestamp in milliseconds.
         self.update_time = update_time
 
     def validate(self):
@@ -184,8 +202,9 @@ class ObtainCredentialResponseBodyCredentialContent(DaraModel):
         api_key_content: main_models.ObtainCredentialResponseBodyCredentialContentApiKeyContent = None,
         oauth_client_content: main_models.ObtainCredentialResponseBodyCredentialContentOauthClientContent = None,
     ):
+        # Contains details for an API key credential. Returned only when `credentialType` is `api_key`.
         self.api_key_content = api_key_content
-        # OAuth客户端认证凭证类型的凭据内容。
+        # Contains details for an OAuth client credential. Returned only when `credentialType` is `oauth_client`.
         self.oauth_client_content = oauth_client_content
 
     def validate(self):
@@ -225,8 +244,9 @@ class ObtainCredentialResponseBodyCredentialContentOauthClientContent(DaraModel)
         client_id: str = None,
         client_secret: str = None,
     ):
-        # OAuth协议的client_id
+        # The `client_id` for OAuth 2.0.
         self.client_id = client_id
+        # The `client_secret` for OAuth 2.0.
         self.client_secret = client_secret
 
     def validate(self):
@@ -260,6 +280,7 @@ class ObtainCredentialResponseBodyCredentialContentApiKeyContent(DaraModel):
         self,
         api_key: str = None,
     ):
+        # The API key value.
         self.api_key = api_key
 
     def validate(self):

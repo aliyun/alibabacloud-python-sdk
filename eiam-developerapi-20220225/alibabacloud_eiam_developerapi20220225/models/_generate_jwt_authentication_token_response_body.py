@@ -22,19 +22,39 @@ class GenerateJwtAuthenticationTokenResponseBody(DaraModel):
         revoked: bool = None,
         update_time: int = None,
     ):
+        # Authentication token ID.
         self.authentication_token_id = authentication_token_id
+        # Authentication token type.
+        # 
+        # > The value is fixed as `jwt`, indicating a JWT authentication token.
         self.authentication_token_type = authentication_token_type
+        # Authentication token consumer ID.
         self.consumer_id = consumer_id
+        # Authentication token consumer type. Valid values:
+        # 
+        # - application: Application
+        # 
+        # - custom: Custom type
         self.consumer_type = consumer_type
+        # The creation time of the authentication token, UNIX timestamp, in milliseconds.
         self.create_time = create_time
+        # Authentication token creator ID.
         self.creator_id = creator_id
+        # Authentication token creator type. Valid values:
+        # 
+        # - application: Application
         self.creator_type = creator_type
+        # Credential provider ID.
         self.credential_provider_id = credential_provider_id
+        # Authentication token expiration time, UNIX timestamp, in milliseconds.
         self.expiration_time = expiration_time
-        # EIAM实例ID。
+        # Instance ID.
         self.instance_id = instance_id
+        # JWT authentication token content.
         self.jwt_content = jwt_content
+        # Whether the authentication token is revoked.
         self.revoked = revoked
+        # The update time of the authentication token, UNIX timestamp, in milliseconds.
         self.update_time = update_time
 
     def validate(self):
@@ -137,7 +157,9 @@ class GenerateJwtAuthenticationTokenResponseBodyJwtContent(DaraModel):
         derived_short_token: str = None,
         jwt_value: str = None,
     ):
+        # The derived short token of the JWT.
         self.derived_short_token = derived_short_token
+        # JWT content.
         self.jwt_value = jwt_value
 
     def validate(self):

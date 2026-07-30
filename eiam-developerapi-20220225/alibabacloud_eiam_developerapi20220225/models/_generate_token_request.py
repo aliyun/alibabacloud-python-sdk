@@ -22,39 +22,48 @@ class GenerateTokenRequest(DaraModel):
     ):
         # The client ID.
         self.client_id = client_id
-        # The client secret. This parameter is required if grant_type is set to client_credentials.
+        # The client secret. This parameter is required when \\`grant_type\\` is \\`client_credentials\\` and the \\`client_secret_post\\` method is used.
         self.client_secret = client_secret
-        # The authorization code. This parameter is required if grant_type is set to authorization_code.
+        # The authorization code. This parameter is required when \\`grant_type\\` is \\`authorization_code\\`.
         self.code = code
-        # The verification code.
+        # The code verifier. This is used in the authorization code grant type when PKCE is enabled.
         self.code_verifier = code_verifier
-        # The device code. This parameter is required if grant_type is set to authorization_code.urn:ietf:params:oauth:grant-type:device_code.
+        # The device code. This parameter is required when \\`grant_type\\` is \\`urn:ietf:params:oauth:grant-type:device_code\\` (device flow).
         self.device_code = device_code
-        # The excluded tags.
+        # The excluded tag.
         self.exclusive_tag = exclusive_tag
-        # The supported authorization types are as follows:
-        # - client_credentials:Client credentials flow, requires client_id and client_secret.
-        # - refresh_token:Refresh token flow.
-        # - authorization_code:Authorization code flow.
-        # - urn:ietf:params:oauth:grant-type:device_code:Device authorization flow.
-        # - password:Password (Resource Owner Password Credentials) flow.
+        # The authorization grant type. The following types are supported:
+        # 
+        # - \\`client_credentials\\`: Client credentials grant. Requires \\`client_id\\` and \\`client_secret\\`.
+        # 
+        # - \\`refresh_token\\`: Refresh token grant.
+        # 
+        # - \\`authorization_code\\`: Authorization code grant.
+        # 
+        # - \\`urn:ietf:params:oauth:grant-type:device_code\\`: Device flow.
+        # 
+        # - \\`password\\`: Password grant.
         # 
         # This parameter is required.
         self.grant_type = grant_type
-        # The username. This parameter is required if grant_type is set to password. The password authentication type is not supported.
+        # The username. This parameter is required for password mode.
         self.password = password
-        # The redirect URI. This parameter is required if grant_type is set to authorization_code. The value of this parameter must be the same as the redirect URI in the request to obtain the authorization code.
+        # The redirection URI. This parameter is required for the authorization code grant type. It must match the redirection URI in the request to get the authorization code.
         self.redirect_uri = redirect_uri
-        # The refreshed token. This parameter is required if grant_type is set to refresh_token.
+        # The refresh token. This parameter is required when \\`grant_type\\` is \\`refresh_token\\` (refresh token grant).
         self.refresh_token = refresh_token
-        # The authorization scope. Valid values:
+        # The scope. This parameter is optional. Multiple values are supported. Separate multiple values with spaces.
+        # Valid values:
         # 
-        # *   openid
-        # *   email
-        # *   phone
-        # *   profile
+        # - openid
+        # 
+        # - email
+        # 
+        # - phone
+        # 
+        # - profile
         self.scope = scope
-        # The username. This parameter is required if grant_type is set to password. The password authentication type is not supported.
+        # The username. This parameter is required for the password grant type.
         self.username = username
 
     def validate(self):

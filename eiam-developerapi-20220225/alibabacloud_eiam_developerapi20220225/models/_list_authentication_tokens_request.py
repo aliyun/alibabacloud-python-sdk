@@ -14,13 +14,21 @@ class ListAuthenticationTokensRequest(DaraModel):
         next_token: str = None,
         revoked: bool = None,
     ):
+        # ID of the authentication token consumer.
+        # 
         # This parameter is required.
         self.consumer_id = consumer_id
+        # Credential provider identifier.
+        # 
         # This parameter is required.
         self.credential_provider_identifier = credential_provider_identifier
+        # Indicates whether the authentication token is expired.
         self.expired = expired
+        # Maximum number of records to return in this paged query.
         self.max_results = max_results
+        # Token that marks the start of the next page in a paged query.
         self.next_token = next_token
+        # Indicates whether the authentication token is revoked.
         self.revoked = revoked
 
     def validate(self):

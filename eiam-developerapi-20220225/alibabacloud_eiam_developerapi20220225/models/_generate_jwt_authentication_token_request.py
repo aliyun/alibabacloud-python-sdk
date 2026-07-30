@@ -17,14 +17,28 @@ class GenerateJwtAuthenticationTokenRequest(DaraModel):
         issuer: str = None,
         subject: str = None,
     ):
+        # The \\`aud\\` field of the JWT.
+        # 
         # This parameter is required.
         self.audiences = audiences
+        # Credential provider identity.
+        # 
         # This parameter is required.
         self.credential_provider_identifier = credential_provider_identifier
+        # Custom claims.
+        # 
+        # >Notice: 
+        # 
+        # Key-value pairs. Keys must be strings.
         self.custom_claims = custom_claims
+        # The validity period of the JWT, in seconds.
         self.expiration = expiration
+        # Whether the generated JWT needs to include a "derived short token".
         self.include_derived_short_token = include_derived_short_token
+        # The \\`iss\\` field of the JWT.
         self.issuer = issuer
+        # The \\`sub\\` field of the JWT.
+        # 
         # This parameter is required.
         self.subject = subject
 

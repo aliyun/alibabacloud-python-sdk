@@ -13,6 +13,10 @@ class ListAuthenticationTokensHeaders(DaraModel):
         authorization: str = None,
     ):
         self.common_headers = common_headers
+        # Authentication information. Format: Bearer ${access_token}.
+        # 
+        # > Enter an IDaaS-issued Access Token.
+        # 
         # This parameter is required.
         self.authorization = authorization
 

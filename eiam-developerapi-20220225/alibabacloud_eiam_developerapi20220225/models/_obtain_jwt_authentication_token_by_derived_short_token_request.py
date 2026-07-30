@@ -9,6 +9,8 @@ class ObtainJwtAuthenticationTokenByDerivedShortTokenRequest(DaraModel):
         self,
         derived_short_token: str = None,
     ):
+        # Derived short token for the JWT authentication token.
+        # 
         # This parameter is required.
         self.derived_short_token = derived_short_token
 

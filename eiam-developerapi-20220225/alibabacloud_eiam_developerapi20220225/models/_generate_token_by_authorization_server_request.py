@@ -24,23 +24,41 @@ class GenerateTokenByAuthorizationServerRequest(DaraModel):
         scope: str = None,
         username: str = None,
     ):
+        # Federated application credential name.
         self.application_federated_credential_name = application_federated_credential_name
+        # Client assertion.
         self.client_assertion = client_assertion
+        # Client assertion type.
         self.client_assertion_type = client_assertion_type
+        # Client ID.
+        # 
         # This parameter is required.
         self.client_id = client_id
+        # Client key.
         self.client_secret = client_secret
+        # Client certificate.
         self.client_x509 = client_x509
+        # Intermediate certificate list.
         self.client_x509chain = client_x509chain
+        # Authorization code. Required when grant_type is authorization_code.
         self.code = code
+        # You can validate the code.
         self.code_verifier = code_verifier
+        # Device code. Required when grant_type is urn:ietf:params:oauth:grant-type:device_code.
         self.device_code = device_code
+        # Grant type.
+        # 
         # This parameter is required.
         self.grant_type = grant_type
+        # Password.
         self.password = password
+        # Redirection URI. Required when grant_type is authorization_code. Must match the redirect_uri used in the authorization code request.
         self.redirect_uri = redirect_uri
+        # Refresh token.
         self.refresh_token = refresh_token
+        # Scope.
         self.scope = scope
+        # Username.
         self.username = username
 
     def validate(self):

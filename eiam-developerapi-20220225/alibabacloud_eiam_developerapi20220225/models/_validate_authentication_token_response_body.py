@@ -9,6 +9,7 @@ class ValidateAuthenticationTokenResponseBody(DaraModel):
         self,
         active: bool = None,
     ):
+        # Indicates whether the authentication token is valid.
         self.active = active
 
     def validate(self):

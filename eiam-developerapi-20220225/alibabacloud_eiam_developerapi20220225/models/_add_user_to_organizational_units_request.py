@@ -11,6 +11,8 @@ class AddUserToOrganizationalUnitsRequest(DaraModel):
         self,
         organizational_unit_ids: List[str] = None,
     ):
+        # A list of organization IDs.
+        # 
         # This parameter is required.
         self.organizational_unit_ids = organizational_unit_ids
 

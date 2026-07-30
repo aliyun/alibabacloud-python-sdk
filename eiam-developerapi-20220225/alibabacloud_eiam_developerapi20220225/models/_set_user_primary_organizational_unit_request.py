@@ -9,6 +9,8 @@ class SetUserPrimaryOrganizationalUnitRequest(DaraModel):
         self,
         organizational_unit_id: str = None,
     ):
+        # The primary organization ID.
+        # 
         # This parameter is required.
         self.organizational_unit_id = organizational_unit_id
 

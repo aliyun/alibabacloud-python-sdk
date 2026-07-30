@@ -13,6 +13,10 @@ class ObtainCredentialHeaders(DaraModel):
         authorization: str = None,
     ):
         self.common_headers = common_headers
+        # Authentication information. The format is `Bearer ${access_token}`.
+        # 
+        # > Use an access token issued by IDaaS.
+        # 
         # This parameter is required.
         self.authorization = authorization
 

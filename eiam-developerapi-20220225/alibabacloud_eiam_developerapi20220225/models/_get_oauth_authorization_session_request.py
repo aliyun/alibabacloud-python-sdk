@@ -4,15 +4,17 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class ObtainCredentialRequest(DaraModel):
+class GetOAuthAuthorizationSessionRequest(DaraModel):
     def __init__(
         self,
-        credential_identifier: str = None,
+        session_uri: str = None,
     ):
-        # The identifier for the credential to obtain.
+        # The authorization session URI.
+        # 
+        # > Returned by the FetchOAuthAuthenticationToken call.
         # 
         # This parameter is required.
-        self.credential_identifier = credential_identifier
+        self.session_uri = session_uri
 
     def validate(self):
         pass
@@ -22,15 +24,15 @@ class ObtainCredentialRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.credential_identifier is not None:
-            result['credentialIdentifier'] = self.credential_identifier
+        if self.session_uri is not None:
+            result['sessionUri'] = self.session_uri
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('credentialIdentifier') is not None:
-            self.credential_identifier = m.get('credentialIdentifier')
+        if m.get('sessionUri') is not None:
+            self.session_uri = m.get('sessionUri')
 
         return self
 

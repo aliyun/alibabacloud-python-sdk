@@ -13,7 +13,7 @@ class ListUsersHeaders(DaraModel):
         authorization: str = None,
     ):
         self.common_headers = common_headers
-        # The authentication information. The value is in the Bearer ${access_token} format. Example: Bearer ATxxxx.
+        # The authentication information. Format: Bearer ${access_token}. Example: Bearer ATxxxx.
         # 
         # This parameter is required.
         self.authorization = authorization

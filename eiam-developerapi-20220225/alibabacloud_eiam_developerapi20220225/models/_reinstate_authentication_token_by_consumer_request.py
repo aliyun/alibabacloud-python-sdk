@@ -10,8 +10,12 @@ class ReinstateAuthenticationTokenByConsumerRequest(DaraModel):
         consumer_id: str = None,
         credential_provider_identifier: str = None,
     ):
+        # The ID of the authentication token consumer.
+        # 
         # This parameter is required.
         self.consumer_id = consumer_id
+        # The credential provider identifier.
+        # 
         # This parameter is required.
         self.credential_provider_identifier = credential_provider_identifier
 

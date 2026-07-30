@@ -7,11 +7,14 @@ from darabonba.model import DaraModel
 class CreateUserExclusiveCredentialResponseBody(DaraModel):
     def __init__(
         self,
+        credential_ciphertext: str = None,
         credential_id: str = None,
         credential_identifier: str = None,
     ):
+        self.credential_ciphertext = credential_ciphertext
+        # The credential ID.
         self.credential_id = credential_id
-        # 凭据标识。
+        # The credential identifier.
         self.credential_identifier = credential_identifier
 
     def validate(self):
@@ -22,6 +25,9 @@ class CreateUserExclusiveCredentialResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.credential_ciphertext is not None:
+            result['credentialCiphertext'] = self.credential_ciphertext
+
         if self.credential_id is not None:
             result['credentialId'] = self.credential_id
 
@@ -32,6 +38,9 @@ class CreateUserExclusiveCredentialResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('credentialCiphertext') is not None:
+            self.credential_ciphertext = m.get('credentialCiphertext')
+
         if m.get('credentialId') is not None:
             self.credential_id = m.get('credentialId')
 

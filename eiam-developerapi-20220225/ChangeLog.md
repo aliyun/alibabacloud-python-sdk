@@ -1,3 +1,7 @@
+2026-07-30 Version: 1.8.0
+- Support API GetOAuthAuthorizationSession.
+
+
 2026-05-13 Version: 1.7.1
 - Update API CreateUserExclusiveCredential: add request parameters body.credentialExternalId.
 - Update API ObtainCredential: add response parameters Body.credentialExternalId.

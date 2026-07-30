@@ -11,11 +11,11 @@ class ListOrganizationalUnitsRequest(DaraModel):
         page_size: int = None,
         parent_id: str = None,
     ):
-        # The page number. Default value: 1.
+        # The page number. The default value is 1.
         self.page_number = page_number
-        # The number of entries per page. Default value: 20. Valid values: 1 to 100.
+        # The number of records on each page. The default value is 20. The value can range from 1 to 100.
         self.page_size = page_size
-        # The ID of the parent organizational unit.
+        # The parent organization ID.
         # 
         # This parameter is required.
         self.parent_id = parent_id

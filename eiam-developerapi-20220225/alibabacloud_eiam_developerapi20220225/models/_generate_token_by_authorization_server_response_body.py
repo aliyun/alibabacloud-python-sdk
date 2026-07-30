@@ -15,12 +15,19 @@ class GenerateTokenByAuthorizationServerResponseBody(DaraModel):
         scope: str = None,
         token_type: str = None,
     ):
+        # Access credential.
         self.access_token = access_token
+        # Expiration time of the access credential, as a UNIX timestamp in seconds.
         self.expires_at = expires_at
+        # Validity period of the access credential, in seconds.
         self.expires_in = expires_in
+        # Identity credential.
         self.id_token = id_token
+        # Refresh token.
         self.refresh_token = refresh_token
+        # Scope.
         self.scope = scope
+        # Token type.
         self.token_type = token_type
 
     def validate(self):

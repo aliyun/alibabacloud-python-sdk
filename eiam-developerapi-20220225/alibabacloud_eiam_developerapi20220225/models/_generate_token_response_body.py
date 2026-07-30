@@ -16,15 +16,17 @@ class GenerateTokenResponseBody(DaraModel):
     ):
         # The access token.
         self.access_token = access_token
-        # The time when the token expires. This value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The expiration time. The value is a UNIX timestamp in seconds.
         self.expires_at = expires_at
-        # The remaining validity period of the token. Unit: seconds.
+        # The validity period of the token in seconds.
         self.expires_in = expires_in
         # The ID token.
         self.id_token = id_token
         # The refresh token.
         self.refresh_token = refresh_token
-        # The type of the token. Valid values: Basic Bearer
+        # The token type. Valid values:
+        # Basic - Basic type
+        # Bearer - Bearer type
         self.token_type = token_type
 
     def validate(self):

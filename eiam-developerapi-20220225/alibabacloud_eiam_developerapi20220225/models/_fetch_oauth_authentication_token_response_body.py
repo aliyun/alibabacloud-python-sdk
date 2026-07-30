@@ -19,27 +19,46 @@ class FetchOAuthAuthenticationTokenResponseBody(DaraModel):
         expiration_time: int = None,
         instance_id: str = None,
         oauth_access_token_content: main_models.FetchOAuthAuthenticationTokenResponseBodyOauthAccessTokenContent = None,
+        oauth_authorization_session: main_models.FetchOAuthAuthenticationTokenResponseBodyOauthAuthorizationSession = None,
         revoked: bool = None,
         update_time: int = None,
     ):
+        # The authentication token ID.
         self.authentication_token_id = authentication_token_id
+        # The authentication token type.
+        # 
+        # > The value is fixed as `oauth_access_token`, indicating an OAuth Access Token type authentication token.
         self.authentication_token_type = authentication_token_type
+        # The consumer ID of the authentication token.
         self.consumer_id = consumer_id
+        # The consumer type of the authentication token.
         self.consumer_type = consumer_type
+        # The creation time of the authentication token. This value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
+        # The creator ID of the authentication token.
         self.creator_id = creator_id
+        # The creator type of the authentication token.
         self.creator_type = creator_type
+        # The credential provider ID.
         self.credential_provider_id = credential_provider_id
+        # The expiration time of the authentication token. This value is a UNIX timestamp in milliseconds.
         self.expiration_time = expiration_time
-        # EIAM实例ID。
+        # The instance ID.
         self.instance_id = instance_id
+        # The content of the OAuth Access Token type authentication token.
         self.oauth_access_token_content = oauth_access_token_content
+        # The authorization session of the OAuth user_federation flow. Returned during first-time authorization or when user interaction is required.
+        self.oauth_authorization_session = oauth_authorization_session
+        # Indicates whether the authentication token is revoked.
         self.revoked = revoked
+        # The update time of the authentication token. This value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
 
     def validate(self):
         if self.oauth_access_token_content:
             self.oauth_access_token_content.validate()
+        if self.oauth_authorization_session:
+            self.oauth_authorization_session.validate()
 
     def to_map(self):
         result = dict()
@@ -78,6 +97,9 @@ class FetchOAuthAuthenticationTokenResponseBody(DaraModel):
 
         if self.oauth_access_token_content is not None:
             result['oauthAccessTokenContent'] = self.oauth_access_token_content.to_map()
+
+        if self.oauth_authorization_session is not None:
+            result['oauthAuthorizationSession'] = self.oauth_authorization_session.to_map()
 
         if self.revoked is not None:
             result['revoked'] = self.revoked
@@ -123,11 +145,70 @@ class FetchOAuthAuthenticationTokenResponseBody(DaraModel):
             temp_model = main_models.FetchOAuthAuthenticationTokenResponseBodyOauthAccessTokenContent()
             self.oauth_access_token_content = temp_model.from_map(m.get('oauthAccessTokenContent'))
 
+        if m.get('oauthAuthorizationSession') is not None:
+            temp_model = main_models.FetchOAuthAuthenticationTokenResponseBodyOauthAuthorizationSession()
+            self.oauth_authorization_session = temp_model.from_map(m.get('oauthAuthorizationSession'))
+
         if m.get('revoked') is not None:
             self.revoked = m.get('revoked')
 
         if m.get('updateTime') is not None:
             self.update_time = m.get('updateTime')
+
+        return self
+
+class FetchOAuthAuthenticationTokenResponseBodyOauthAuthorizationSession(DaraModel):
+    def __init__(
+        self,
+        authorization_url: str = None,
+        session_id: str = None,
+        session_status: str = None,
+        session_uri: str = None,
+    ):
+        # The user authorization URL.
+        self.authorization_url = authorization_url
+        # The authorization session ID.
+        self.session_id = session_id
+        # The authorization session status.
+        self.session_status = session_status
+        # The authorization session URI.
+        self.session_uri = session_uri
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.authorization_url is not None:
+            result['authorizationUrl'] = self.authorization_url
+
+        if self.session_id is not None:
+            result['sessionId'] = self.session_id
+
+        if self.session_status is not None:
+            result['sessionStatus'] = self.session_status
+
+        if self.session_uri is not None:
+            result['sessionUri'] = self.session_uri
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('authorizationUrl') is not None:
+            self.authorization_url = m.get('authorizationUrl')
+
+        if m.get('sessionId') is not None:
+            self.session_id = m.get('sessionId')
+
+        if m.get('sessionStatus') is not None:
+            self.session_status = m.get('sessionStatus')
+
+        if m.get('sessionUri') is not None:
+            self.session_uri = m.get('sessionUri')
 
         return self
 
@@ -138,8 +219,11 @@ class FetchOAuthAuthenticationTokenResponseBodyOauthAccessTokenContent(DaraModel
         scope: str = None,
         token_type: str = None,
     ):
+        # The access_token field in the OAuth protocol token endpoint response.
         self.access_token_value = access_token_value
+        # The scope field in the OAuth protocol token endpoint response.
         self.scope = scope
+        # The token_type field in the OAuth protocol token endpoint response.
         self.token_type = token_type
 
     def validate(self):

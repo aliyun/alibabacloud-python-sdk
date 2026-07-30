@@ -13,6 +13,9 @@ class CreateUserExclusiveCredentialHeaders(DaraModel):
         authorization: str = None,
     ):
         self.common_headers = common_headers
+        # The authentication information. Format: Bearer ${access_token}. 
+        # > Enter the Access Token issued by IDaaS.
+        # 
         # This parameter is required.
         self.authorization = authorization
 

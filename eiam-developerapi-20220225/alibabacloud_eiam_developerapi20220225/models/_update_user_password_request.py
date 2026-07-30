@@ -9,6 +9,7 @@ class UpdateUserPasswordRequest(DaraModel):
         self,
         password: str = None,
     ):
+        # The new password. For the password requirements, see the password policy in the console.
         self.password = password
 
     def validate(self):

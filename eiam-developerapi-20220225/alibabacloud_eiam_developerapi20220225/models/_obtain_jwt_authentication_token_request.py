@@ -10,8 +10,12 @@ class ObtainJwtAuthenticationTokenRequest(DaraModel):
         authentication_token_id: str = None,
         consumer_id: str = None,
     ):
+        # The ID of the authentication token.
+        # 
         # This parameter is required.
         self.authentication_token_id = authentication_token_id
+        # The ID of the authentication token consumer.
+        # 
         # This parameter is required.
         self.consumer_id = consumer_id
 

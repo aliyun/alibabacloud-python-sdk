@@ -15,18 +15,34 @@ class CreateUserExclusiveCredentialRequest(DaraModel):
         credential_scenario_label: str = None,
         credential_type: str = None,
         description: str = None,
+        return_ciphertext: bool = None,
     ):
+        # The credential content.
+        # 
         # This parameter is required.
         self.credential_content = credential_content
         self.credential_external_id = credential_external_id
+        # The credential identifier.
+        # 
         # This parameter is required.
         self.credential_identifier = credential_identifier
+        # The credential name.
+        # 
         # This parameter is required.
         self.credential_name = credential_name
+        # The scenarios label of the credential. Valid values:
+        # - llm: large language model.
+        # - saas: third-party SaaS service.
         self.credential_scenario_label = credential_scenario_label
+        # The credential type. Valid values:
+        # - api_key: API Key authentication credential.
+        # - oauth_client: OAuth client authentication credential.
+        # 
         # This parameter is required.
         self.credential_type = credential_type
+        # The credential description.
         self.description = description
+        self.return_ciphertext = return_ciphertext
 
     def validate(self):
         if self.credential_content:
@@ -58,6 +74,9 @@ class CreateUserExclusiveCredentialRequest(DaraModel):
         if self.description is not None:
             result['description'] = self.description
 
+        if self.return_ciphertext is not None:
+            result['returnCiphertext'] = self.return_ciphertext
+
         return result
 
     def from_map(self, m: dict = None):
@@ -84,6 +103,9 @@ class CreateUserExclusiveCredentialRequest(DaraModel):
         if m.get('description') is not None:
             self.description = m.get('description')
 
+        if m.get('returnCiphertext') is not None:
+            self.return_ciphertext = m.get('returnCiphertext')
+
         return self
 
 class CreateUserExclusiveCredentialRequestCredentialContent(DaraModel):
@@ -91,6 +113,7 @@ class CreateUserExclusiveCredentialRequestCredentialContent(DaraModel):
         self,
         api_key_content: main_models.CreateUserExclusiveCredentialRequestCredentialContentApiKeyContent = None,
     ):
+        # The credential content for the API Key credential type.
         self.api_key_content = api_key_content
 
     def validate(self):
@@ -120,6 +143,8 @@ class CreateUserExclusiveCredentialRequestCredentialContentApiKeyContent(DaraMod
         self,
         api_key: str = None,
     ):
+        # The value of the API Key.
+        # 
         # This parameter is required.
         self.api_key = api_key
 
