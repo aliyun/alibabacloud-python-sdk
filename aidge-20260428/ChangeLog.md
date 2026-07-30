@@ -1,3 +1,7 @@
+2026-07-30 Version: 5.1.0
+- Support API ImageTranslationPlus.
+
+
 2026-07-30 Version: 5.0.0
 - Support API VideoGeneration.
 - Update API QueryAsyncTaskResult: update response parameters Body.Data.UsageMap' type has changed.

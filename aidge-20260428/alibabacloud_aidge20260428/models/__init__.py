@@ -36,6 +36,9 @@ from ._image_remove_request import ImageRemoveRequest
 from ._image_remove_shrink_request import ImageRemoveShrinkRequest
 from ._image_remove_response_body import ImageRemoveResponseBody
 from ._image_remove_response import ImageRemoveResponse
+from ._image_translation_plus_request import ImageTranslationPlusRequest
+from ._image_translation_plus_response_body import ImageTranslationPlusResponseBody
+from ._image_translation_plus_response import ImageTranslationPlusResponse
 from ._image_translation_pro_request import ImageTranslationProRequest
 from ._image_translation_pro_response_body import ImageTranslationProResponseBody
 from ._image_translation_pro_response import ImageTranslationProResponse
@@ -95,6 +98,7 @@ from ._image_matting_response_body import ImageMattingResponseBodyData
 from ._image_recognition_response_body import ImageRecognitionResponseBodyData
 from ._image_removal_pro_response_body import ImageRemovalProResponseBodyData
 from ._image_remove_response_body import ImageRemoveResponseBodyData
+from ._image_translation_plus_response_body import ImageTranslationPlusResponseBodyData
 from ._image_translation_pro_response_body import ImageTranslationProResponseBodyDataGenFilesEditInfoGoodsRects
 from ._image_translation_pro_response_body import ImageTranslationProResponseBodyDataGenFilesEditInfoTextAreasTextsImageRect
 from ._image_translation_pro_response_body import ImageTranslationProResponseBodyDataGenFilesEditInfoTextAreasTextsTextRect
@@ -169,6 +173,9 @@ __all__ = [
     ImageRemoveShrinkRequest,
     ImageRemoveResponseBody,
     ImageRemoveResponse,
+    ImageTranslationPlusRequest,
+    ImageTranslationPlusResponseBody,
+    ImageTranslationPlusResponse,
     ImageTranslationProRequest,
     ImageTranslationProResponseBody,
     ImageTranslationProResponse,
@@ -228,6 +235,7 @@ __all__ = [
     ImageRecognitionResponseBodyData,
     ImageRemovalProResponseBodyData,
     ImageRemoveResponseBodyData,
+    ImageTranslationPlusResponseBodyData,
     ImageTranslationProResponseBodyDataGenFilesEditInfoGoodsRects,
     ImageTranslationProResponseBodyDataGenFilesEditInfoTextAreasTextsImageRect,
     ImageTranslationProResponseBodyDataGenFilesEditInfoTextAreasTextsTextRect,

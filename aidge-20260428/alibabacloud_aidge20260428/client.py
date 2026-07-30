@@ -991,6 +991,100 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.image_remove_with_options_async(request, runtime)
 
+    def image_translation_plus_with_options(
+        self,
+        request: main_models.ImageTranslationPlusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ImageTranslationPlusResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.glossary):
+            body['Glossary'] = request.glossary
+        if not DaraCore.is_null(request.image_url):
+            body['ImageUrl'] = request.image_url
+        if not DaraCore.is_null(request.including_product_area):
+            body['IncludingProductArea'] = request.including_product_area
+        if not DaraCore.is_null(request.source_language):
+            body['SourceLanguage'] = request.source_language
+        if not DaraCore.is_null(request.target_language):
+            body['TargetLanguage'] = request.target_language
+        if not DaraCore.is_null(request.translating_brand_in_the_product):
+            body['TranslatingBrandInTheProduct'] = request.translating_brand_in_the_product
+        if not DaraCore.is_null(request.use_image_editor):
+            body['UseImageEditor'] = request.use_image_editor
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ImageTranslationPlus',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ImageTranslationPlusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def image_translation_plus_with_options_async(
+        self,
+        request: main_models.ImageTranslationPlusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ImageTranslationPlusResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.glossary):
+            body['Glossary'] = request.glossary
+        if not DaraCore.is_null(request.image_url):
+            body['ImageUrl'] = request.image_url
+        if not DaraCore.is_null(request.including_product_area):
+            body['IncludingProductArea'] = request.including_product_area
+        if not DaraCore.is_null(request.source_language):
+            body['SourceLanguage'] = request.source_language
+        if not DaraCore.is_null(request.target_language):
+            body['TargetLanguage'] = request.target_language
+        if not DaraCore.is_null(request.translating_brand_in_the_product):
+            body['TranslatingBrandInTheProduct'] = request.translating_brand_in_the_product
+        if not DaraCore.is_null(request.use_image_editor):
+            body['UseImageEditor'] = request.use_image_editor
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ImageTranslationPlus',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ImageTranslationPlusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def image_translation_plus(
+        self,
+        request: main_models.ImageTranslationPlusRequest,
+    ) -> main_models.ImageTranslationPlusResponse:
+        runtime = RuntimeOptions()
+        return self.image_translation_plus_with_options(request, runtime)
+
+    async def image_translation_plus_async(
+        self,
+        request: main_models.ImageTranslationPlusRequest,
+    ) -> main_models.ImageTranslationPlusResponse:
+        runtime = RuntimeOptions()
+        return await self.image_translation_plus_with_options_async(request, runtime)
+
     def image_translation_pro_with_options(
         self,
         request: main_models.ImageTranslationProRequest,
