@@ -11,15 +11,15 @@ class ModifyNASDefaultMountTargetRequest(DaraModel):
         mount_target_domain: str = None,
         region_id: str = None,
     ):
-        # The ID of the NAS file system.
+        # The NAS file system ID.
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
-        # The domain name of the mount target.
+        # The mount target domain name.
         # 
         # This parameter is required.
         self.mount_target_domain = mount_target_domain
-        # The region ID.
+        # The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id

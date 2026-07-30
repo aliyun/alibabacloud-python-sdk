@@ -12,13 +12,13 @@ class DescribeOnlineUserCountRequest(DaraModel):
         region_id: str = None,
         search_region_id: str = None,
     ):
-        # > This parameter is for internal use only.
+        # > This parameter is not publicly available.
         self.biz_type = biz_type
-        # The office site ID.
+        # The workspace ID.
         self.office_site_id = office_site_id
-        # The region ID.
+        # The region ID of the service.
         self.region_id = region_id
-        # The ID of the region to search. This filters the results to show only resources from the specified region.
+        # The region ID used to filter cloud resource information for the specified region.
         self.search_region_id = search_region_id
 
     def validate(self):

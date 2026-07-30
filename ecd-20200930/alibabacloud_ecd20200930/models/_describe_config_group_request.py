@@ -19,31 +19,23 @@ class DescribeConfigGroupRequest(DaraModel):
         statuses: List[str] = None,
         type: str = None,
     ):
-        # The ID of the configuration group.
+        # The configuration group ID.
         self.group_id = group_id
-        # The IDs of the configuration groups.
+        # The list of configuration group IDs.
         self.group_ids = group_ids
-        # The name of the configuration group.
+        # The configuration group name.
         self.name = name
-        # The page number.
+        # The current page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries per page in a paged query.
         self.page_size = page_size
-        # The service type of the configuration group.
-        # 
-        # Valid value:
-        # 
-        # *   CLOUD_DESKTOP: the cloud computer service.
+        # The product type used by the configuration group.
         self.product_type = product_type
-        # The ID of the region. Set the value to `cn-shanghai`.
+        # The region ID. This feature is not region-specific. Set this parameter to `cn-shanghai`.
         self.region_id = region_id
-        # The status of the configuration groups.
+        # The list of configuration group statuses.
         self.statuses = statuses
-        # The type of the configuration group.
-        # 
-        # Valid value:
-        # 
-        # *   Timer: the scheduled task type.
+        # The configuration group type.
         self.type = type
 
     def validate(self):

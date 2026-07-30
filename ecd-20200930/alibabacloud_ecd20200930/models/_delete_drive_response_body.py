@@ -13,15 +13,15 @@ class DeleteDriveResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code. The value 200 indicates that the request was successful.
+        # The response code. 200 indicates success.
         self.code = code
-        # Indicates whether the delete operation was successful.
+        # The deletion result.
         self.data = data
-        # The returned message.
+        # The response message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

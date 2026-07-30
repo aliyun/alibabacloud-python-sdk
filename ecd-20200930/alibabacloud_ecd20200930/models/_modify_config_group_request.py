@@ -14,13 +14,13 @@ class ModifyConfigGroupRequest(DaraModel):
     ):
         # The description of the configuration group.
         self.description = description
-        # The ID of the configuration group.
+        # The configuration group ID.
         # 
         # This parameter is required.
         self.group_id = group_id
-        # The name of the configuration group.
+        # The configuration group name.
         self.name = name
-        # The ID of the region. Set the value to `cn-shanghai`.
+        # The region ID. This operation is not region-specific. Set this parameter to `cn-shanghai`.
         self.region_id = region_id
 
     def validate(self):

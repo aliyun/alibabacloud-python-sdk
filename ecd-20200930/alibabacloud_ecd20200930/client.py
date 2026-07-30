@@ -5598,6 +5598,8 @@ class Client(OpenApiClient):
             query['Name'] = request.name
         if not DaraCore.is_null(request.office_site_id):
             query['OfficeSiteId'] = request.office_site_id
+        if not DaraCore.is_null(request.protocol_type):
+            query['ProtocolType'] = request.protocol_type
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.storage_type):
@@ -5636,6 +5638,8 @@ class Client(OpenApiClient):
             query['Name'] = request.name
         if not DaraCore.is_null(request.office_site_id):
             query['OfficeSiteId'] = request.office_site_id
+        if not DaraCore.is_null(request.protocol_type):
+            query['ProtocolType'] = request.protocol_type
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.storage_type):
@@ -7186,6 +7190,108 @@ class Client(OpenApiClient):
     ) -> main_models.CreateTemplateResponse:
         runtime = RuntimeOptions()
         return await self.create_template_with_options_async(request, runtime)
+
+    def create_virtual_bridge_with_options(
+        self,
+        request: main_models.CreateVirtualBridgeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateVirtualBridgeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not DaraCore.is_null(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not DaraCore.is_null(request.bridge_level):
+            query['BridgeLevel'] = request.bridge_level
+        if not DaraCore.is_null(request.office_site_id):
+            query['OfficeSiteId'] = request.office_site_id
+        if not DaraCore.is_null(request.paid_call_back_url):
+            query['PaidCallBackUrl'] = request.paid_call_back_url
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
+        if not DaraCore.is_null(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        if not DaraCore.is_null(request.promotion_id):
+            query['PromotionId'] = request.promotion_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateVirtualBridge',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateVirtualBridgeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_virtual_bridge_with_options_async(
+        self,
+        request: main_models.CreateVirtualBridgeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateVirtualBridgeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not DaraCore.is_null(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not DaraCore.is_null(request.bridge_level):
+            query['BridgeLevel'] = request.bridge_level
+        if not DaraCore.is_null(request.office_site_id):
+            query['OfficeSiteId'] = request.office_site_id
+        if not DaraCore.is_null(request.paid_call_back_url):
+            query['PaidCallBackUrl'] = request.paid_call_back_url
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
+        if not DaraCore.is_null(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        if not DaraCore.is_null(request.promotion_id):
+            query['PromotionId'] = request.promotion_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateVirtualBridge',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateVirtualBridgeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_virtual_bridge(
+        self,
+        request: main_models.CreateVirtualBridgeRequest,
+    ) -> main_models.CreateVirtualBridgeResponse:
+        runtime = RuntimeOptions()
+        return self.create_virtual_bridge_with_options(request, runtime)
+
+    async def create_virtual_bridge_async(
+        self,
+        request: main_models.CreateVirtualBridgeRequest,
+    ) -> main_models.CreateVirtualBridgeResponse:
+        runtime = RuntimeOptions()
+        return await self.create_virtual_bridge_with_options_async(request, runtime)
 
     def delete_auto_snapshot_policy_with_options(
         self,
@@ -9326,6 +9432,80 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteTemplatesResponse:
         runtime = RuntimeOptions()
         return await self.delete_templates_with_options_async(request, runtime)
+
+    def delete_virtual_bridge_with_options(
+        self,
+        request: main_models.DeleteVirtualBridgeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteVirtualBridgeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.bridge_id):
+            query['BridgeId'] = request.bridge_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteVirtualBridge',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteVirtualBridgeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_virtual_bridge_with_options_async(
+        self,
+        request: main_models.DeleteVirtualBridgeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteVirtualBridgeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.bridge_id):
+            query['BridgeId'] = request.bridge_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteVirtualBridge',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteVirtualBridgeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_virtual_bridge(
+        self,
+        request: main_models.DeleteVirtualBridgeRequest,
+    ) -> main_models.DeleteVirtualBridgeResponse:
+        runtime = RuntimeOptions()
+        return self.delete_virtual_bridge_with_options(request, runtime)
+
+    async def delete_virtual_bridge_async(
+        self,
+        request: main_models.DeleteVirtualBridgeRequest,
+    ) -> main_models.DeleteVirtualBridgeResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_virtual_bridge_with_options_async(request, runtime)
 
     def delete_virtual_mfadevice_with_options(
         self,
@@ -14214,6 +14394,84 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeNetworkPackagesResponse:
         runtime = RuntimeOptions()
         return await self.describe_network_packages_with_options_async(request, runtime)
+
+    def describe_office_site_bridge_info_with_options(
+        self,
+        request: main_models.DescribeOfficeSiteBridgeInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeOfficeSiteBridgeInfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.bridge_id):
+            query['BridgeId'] = request.bridge_id
+        if not DaraCore.is_null(request.office_site_id):
+            query['OfficeSiteId'] = request.office_site_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeOfficeSiteBridgeInfo',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeOfficeSiteBridgeInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_office_site_bridge_info_with_options_async(
+        self,
+        request: main_models.DescribeOfficeSiteBridgeInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeOfficeSiteBridgeInfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.bridge_id):
+            query['BridgeId'] = request.bridge_id
+        if not DaraCore.is_null(request.office_site_id):
+            query['OfficeSiteId'] = request.office_site_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeOfficeSiteBridgeInfo',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeOfficeSiteBridgeInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_office_site_bridge_info(
+        self,
+        request: main_models.DescribeOfficeSiteBridgeInfoRequest,
+    ) -> main_models.DescribeOfficeSiteBridgeInfoResponse:
+        runtime = RuntimeOptions()
+        return self.describe_office_site_bridge_info_with_options(request, runtime)
+
+    async def describe_office_site_bridge_info_async(
+        self,
+        request: main_models.DescribeOfficeSiteBridgeInfoRequest,
+    ) -> main_models.DescribeOfficeSiteBridgeInfoResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_office_site_bridge_info_with_options_async(request, runtime)
 
     def describe_office_sites_with_options(
         self,
@@ -19373,6 +19631,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_user_ad_organization_units_with_options_async(request, runtime)
 
+    def list_virtual_bridges_with_options(
+        self,
+        request: main_models.ListVirtualBridgesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListVirtualBridgesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.bridge_id):
+            query['BridgeId'] = request.bridge_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.office_site_id):
+            query['OfficeSiteId'] = request.office_site_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListVirtualBridges',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListVirtualBridgesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_virtual_bridges_with_options_async(
+        self,
+        request: main_models.ListVirtualBridgesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListVirtualBridgesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.bridge_id):
+            query['BridgeId'] = request.bridge_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.office_site_id):
+            query['OfficeSiteId'] = request.office_site_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListVirtualBridges',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListVirtualBridgesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_virtual_bridges(
+        self,
+        request: main_models.ListVirtualBridgesRequest,
+    ) -> main_models.ListVirtualBridgesResponse:
+        runtime = RuntimeOptions()
+        return self.list_virtual_bridges_with_options(request, runtime)
+
+    async def list_virtual_bridges_async(
+        self,
+        request: main_models.ListVirtualBridgesRequest,
+    ) -> main_models.ListVirtualBridgesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_virtual_bridges_with_options_async(request, runtime)
+
     def lock_virtual_mfadevice_with_options(
         self,
         request: main_models.LockVirtualMFADeviceRequest,
@@ -23155,6 +23499,100 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.modify_office_site_attribute_with_options_async(request, runtime)
 
+    def modify_office_site_bridge_info_with_options(
+        self,
+        request: main_models.ModifyOfficeSiteBridgeInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyOfficeSiteBridgeInfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.bridge_id):
+            query['BridgeId'] = request.bridge_id
+        if not DaraCore.is_null(request.bridge_level):
+            query['BridgeLevel'] = request.bridge_level
+        if not DaraCore.is_null(request.bridge_type):
+            query['BridgeType'] = request.bridge_type
+        if not DaraCore.is_null(request.enable_bridge):
+            query['EnableBridge'] = request.enable_bridge
+        if not DaraCore.is_null(request.license):
+            query['License'] = request.license
+        if not DaraCore.is_null(request.office_site_id):
+            query['OfficeSiteId'] = request.office_site_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyOfficeSiteBridgeInfo',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyOfficeSiteBridgeInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_office_site_bridge_info_with_options_async(
+        self,
+        request: main_models.ModifyOfficeSiteBridgeInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyOfficeSiteBridgeInfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.bridge_id):
+            query['BridgeId'] = request.bridge_id
+        if not DaraCore.is_null(request.bridge_level):
+            query['BridgeLevel'] = request.bridge_level
+        if not DaraCore.is_null(request.bridge_type):
+            query['BridgeType'] = request.bridge_type
+        if not DaraCore.is_null(request.enable_bridge):
+            query['EnableBridge'] = request.enable_bridge
+        if not DaraCore.is_null(request.license):
+            query['License'] = request.license
+        if not DaraCore.is_null(request.office_site_id):
+            query['OfficeSiteId'] = request.office_site_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyOfficeSiteBridgeInfo',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyOfficeSiteBridgeInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_office_site_bridge_info(
+        self,
+        request: main_models.ModifyOfficeSiteBridgeInfoRequest,
+    ) -> main_models.ModifyOfficeSiteBridgeInfoResponse:
+        runtime = RuntimeOptions()
+        return self.modify_office_site_bridge_info_with_options(request, runtime)
+
+    async def modify_office_site_bridge_info_async(
+        self,
+        request: main_models.ModifyOfficeSiteBridgeInfoRequest,
+    ) -> main_models.ModifyOfficeSiteBridgeInfoResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_office_site_bridge_info_with_options_async(request, runtime)
+
     def modify_office_site_cross_desktop_access_with_options(
         self,
         request: main_models.ModifyOfficeSiteCrossDesktopAccessRequest,
@@ -24533,6 +24971,186 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.modify_user_to_desktop_group_with_options_async(request, runtime)
 
+    def modify_virtual_bridge_level_with_options(
+        self,
+        request: main_models.ModifyVirtualBridgeLevelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyVirtualBridgeLevelResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not DaraCore.is_null(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not DaraCore.is_null(request.bridge_id):
+            query['BridgeId'] = request.bridge_id
+        if not DaraCore.is_null(request.bridge_level):
+            query['BridgeLevel'] = request.bridge_level
+        if not DaraCore.is_null(request.paid_call_back_url):
+            query['PaidCallBackUrl'] = request.paid_call_back_url
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
+        if not DaraCore.is_null(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        if not DaraCore.is_null(request.promotion_id):
+            query['PromotionId'] = request.promotion_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyVirtualBridgeLevel',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyVirtualBridgeLevelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_virtual_bridge_level_with_options_async(
+        self,
+        request: main_models.ModifyVirtualBridgeLevelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyVirtualBridgeLevelResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not DaraCore.is_null(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not DaraCore.is_null(request.bridge_id):
+            query['BridgeId'] = request.bridge_id
+        if not DaraCore.is_null(request.bridge_level):
+            query['BridgeLevel'] = request.bridge_level
+        if not DaraCore.is_null(request.paid_call_back_url):
+            query['PaidCallBackUrl'] = request.paid_call_back_url
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
+        if not DaraCore.is_null(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        if not DaraCore.is_null(request.promotion_id):
+            query['PromotionId'] = request.promotion_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyVirtualBridgeLevel',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyVirtualBridgeLevelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_virtual_bridge_level(
+        self,
+        request: main_models.ModifyVirtualBridgeLevelRequest,
+    ) -> main_models.ModifyVirtualBridgeLevelResponse:
+        runtime = RuntimeOptions()
+        return self.modify_virtual_bridge_level_with_options(request, runtime)
+
+    async def modify_virtual_bridge_level_async(
+        self,
+        request: main_models.ModifyVirtualBridgeLevelRequest,
+    ) -> main_models.ModifyVirtualBridgeLevelResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_virtual_bridge_level_with_options_async(request, runtime)
+
+    def modify_virtual_bridge_status_with_options(
+        self,
+        request: main_models.ModifyVirtualBridgeStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyVirtualBridgeStatusResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.bridge_id):
+            query['BridgeId'] = request.bridge_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyVirtualBridgeStatus',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyVirtualBridgeStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_virtual_bridge_status_with_options_async(
+        self,
+        request: main_models.ModifyVirtualBridgeStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyVirtualBridgeStatusResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.bridge_id):
+            query['BridgeId'] = request.bridge_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyVirtualBridgeStatus',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyVirtualBridgeStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_virtual_bridge_status(
+        self,
+        request: main_models.ModifyVirtualBridgeStatusRequest,
+    ) -> main_models.ModifyVirtualBridgeStatusResponse:
+        runtime = RuntimeOptions()
+        return self.modify_virtual_bridge_status_with_options(request, runtime)
+
+    async def modify_virtual_bridge_status_async(
+        self,
+        request: main_models.ModifyVirtualBridgeStatusRequest,
+    ) -> main_models.ModifyVirtualBridgeStatusResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_virtual_bridge_status_with_options_async(request, runtime)
+
     def move_cds_file_with_options(
         self,
         request: main_models.MoveCdsFileRequest,
@@ -25870,6 +26488,104 @@ class Client(OpenApiClient):
     ) -> main_models.RenewNetworkPackagesResponse:
         runtime = RuntimeOptions()
         return await self.renew_network_packages_with_options_async(request, runtime)
+
+    def renew_virtual_bridge_with_options(
+        self,
+        request: main_models.RenewVirtualBridgeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RenewVirtualBridgeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not DaraCore.is_null(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not DaraCore.is_null(request.bridge_id):
+            query['BridgeId'] = request.bridge_id
+        if not DaraCore.is_null(request.paid_call_back_url):
+            query['PaidCallBackUrl'] = request.paid_call_back_url
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
+        if not DaraCore.is_null(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        if not DaraCore.is_null(request.promotion_id):
+            query['PromotionId'] = request.promotion_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RenewVirtualBridge',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RenewVirtualBridgeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def renew_virtual_bridge_with_options_async(
+        self,
+        request: main_models.RenewVirtualBridgeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RenewVirtualBridgeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not DaraCore.is_null(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not DaraCore.is_null(request.bridge_id):
+            query['BridgeId'] = request.bridge_id
+        if not DaraCore.is_null(request.paid_call_back_url):
+            query['PaidCallBackUrl'] = request.paid_call_back_url
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
+        if not DaraCore.is_null(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        if not DaraCore.is_null(request.promotion_id):
+            query['PromotionId'] = request.promotion_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RenewVirtualBridge',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RenewVirtualBridgeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def renew_virtual_bridge(
+        self,
+        request: main_models.RenewVirtualBridgeRequest,
+    ) -> main_models.RenewVirtualBridgeResponse:
+        runtime = RuntimeOptions()
+        return self.renew_virtual_bridge_with_options(request, runtime)
+
+    async def renew_virtual_bridge_async(
+        self,
+        request: main_models.RenewVirtualBridgeRequest,
+    ) -> main_models.RenewVirtualBridgeResponse:
+        runtime = RuntimeOptions()
+        return await self.renew_virtual_bridge_with_options_async(request, runtime)
 
     def reset_desktops_with_options(
         self,

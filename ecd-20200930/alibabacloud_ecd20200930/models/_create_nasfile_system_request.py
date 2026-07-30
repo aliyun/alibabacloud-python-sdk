@@ -11,31 +11,26 @@ class CreateNASFileSystemRequest(DaraModel):
         encrypt_type: str = None,
         name: str = None,
         office_site_id: str = None,
+        protocol_type: str = None,
         region_id: str = None,
         storage_type: str = None,
     ):
-        # Description of the NAS file system.
+        # The description of the NAS file system.
         self.description = description
-        # Whether the file system is encrypted. Uses KMS service-managed keys to encrypt the file system\\"s on-disk data. No decryption is required when reading and writing encrypted data.
+        # Specifies whether the file system uses a KMS-managed key to encrypt data stored on the file system. Encrypted data does not need to be decrypted during read and write operations.
         self.encrypt_type = encrypt_type
-        # Name of the NAS file system.
-        # The file name must follow these rules:
-        # 
-        # - Length: 2 to 128 English or Chinese characters.
-        # 
-        # - Must start with an uppercase or lowercase letter or a Chinese character, cannot start with http\\:// or https\\://.
-        # 
-        # - Can include numbers, underscores (_), or hyphens (-).
+        # The NAS file system name. The name must meet the following requirements: The name must be 2 to 128 characters in length and can contain letters and Chinese characters. The name must start with a letter or a Chinese character and cannot start with `http://` or `https://`. The name can contain digits, underscores (_), or hyphens (-).
         self.name = name
-        # Workspace ID.
+        # The office network ID.
         # 
         # This parameter is required.
         self.office_site_id = office_site_id
-        # Region ID.
+        self.protocol_type = protocol_type
+        # The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # Storage specification type of the NAS file system.
+        # The storage type of the NAS file system.
         self.storage_type = storage_type
 
     def validate(self):
@@ -58,6 +53,9 @@ class CreateNASFileSystemRequest(DaraModel):
         if self.office_site_id is not None:
             result['OfficeSiteId'] = self.office_site_id
 
+        if self.protocol_type is not None:
+            result['ProtocolType'] = self.protocol_type
+
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
@@ -79,6 +77,9 @@ class CreateNASFileSystemRequest(DaraModel):
 
         if m.get('OfficeSiteId') is not None:
             self.office_site_id = m.get('OfficeSiteId')
+
+        if m.get('ProtocolType') is not None:
+            self.protocol_type = m.get('ProtocolType')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')

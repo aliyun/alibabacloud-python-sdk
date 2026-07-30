@@ -14,11 +14,11 @@ class QueryHistoryMetricDistributionResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # An array of objects, each representing the distribution data for a specific value range.
+        # The distribution list corresponding to resource monitoring.
         self.distribution_list = distribution_list
         # The request ID.
         self.request_id = request_id
-        # The total number of data points that match the query.
+        # The total number of query results.
         self.total_count = total_count
 
     def validate(self):
@@ -69,13 +69,13 @@ class QueryHistoryMetricDistributionResponseBodyDistributionList(DaraModel):
         max: float = None,
         min: float = None,
     ):
-        # The number of data points in this value range.
+        # The count.
         self.count = count
-        # The range label that you defined in the request.
+        # The range label.
         self.label = label
-        # The maximum value of the value range.
+        # The maximum value.
         self.max = max
-        # The minimum value of the value range.
+        # The minimum value.
         self.min = min
 
     def validate(self):

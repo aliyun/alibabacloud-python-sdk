@@ -11,7 +11,7 @@ class QueryHistoryActiveUserCountResponseBody(DaraModel):
         active_user_count: main_models.QueryHistoryActiveUserCountResponseBodyActiveUserCount = None,
         request_id: str = None,
     ):
-        # The active user statistics.
+        # The active user count metrics.
         self.active_user_count = active_user_count
         # The request ID.
         self.request_id = request_id
@@ -50,9 +50,9 @@ class QueryHistoryActiveUserCountResponseBodyActiveUserCount(DaraModel):
         daily_active_user_count: int = None,
         monthly_active_user_count: int = None,
     ):
-        # The number of daily active users.
+        # The daily active user count.
         self.daily_active_user_count = daily_active_user_count
-        # The number of monthly active users.
+        # The monthly active user count.
         self.monthly_active_user_count = monthly_active_user_count
 
     def validate(self):

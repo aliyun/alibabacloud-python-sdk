@@ -16,9 +16,9 @@ class DescribeSessionStatisticResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The statistics.
+        # The statistics information.
         self.statistic = statistic
-        # The total number of sessions returned.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -67,7 +67,7 @@ class DescribeSessionStatisticResponseBodyStatistic(DaraModel):
         count: int = None,
         time_point: int = None,
     ):
-        # The total number of sessions in the time range.
+        # The total number of sessions within the interval.
         self.count = count
         # The point in time.
         self.time_point = time_point

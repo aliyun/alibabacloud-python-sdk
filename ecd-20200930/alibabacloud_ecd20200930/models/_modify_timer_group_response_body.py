@@ -10,9 +10,9 @@ class ModifyTimerGroupResponseBody(DaraModel):
         group_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the configuration group.
+        # The configuration group ID.
         self.group_id = group_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

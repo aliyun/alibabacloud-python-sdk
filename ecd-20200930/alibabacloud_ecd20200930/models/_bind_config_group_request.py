@@ -14,13 +14,13 @@ class BindConfigGroupRequest(DaraModel):
         region_id: str = None,
         resource_infos: List[main_models.BindConfigGroupRequestResourceInfos] = None,
     ):
-        # The ID of the configuration group.
+        # The configuration group ID.
         # 
         # This parameter is required.
         self.group_id = group_id
-        # The ID of the region. Set the value to `cn-shanghai`.
+        # The region ID. This operation is not region-specific. Set this parameter to `cn-shanghai`.
         self.region_id = region_id
-        # The resources to which you want to bind the configuration group.
+        # The resource information to associate.
         # 
         # This parameter is required.
         self.resource_infos = resource_infos
@@ -73,23 +73,13 @@ class BindConfigGroupRequestResourceInfos(DaraModel):
         resource_region_id: str = None,
         resource_type: str = None,
     ):
-        # The service type of the resource.
-        # 
-        # Valid value:
-        # 
-        # - CLOUD_DESKTOP: the cloud computer service.
+        # The product type to which the resource belongs.
         self.product_type = product_type
-        # The ID of the resource.
+        # The resource ID.
         self.resource_id = resource_id
-        # The region ID of the resource.
+        # The region where the resource resides.
         self.resource_region_id = resource_region_id
-        # The type of the resource.
-        # 
-        # Valid values:
-        # 
-        # - RESOURCE_GROUP: the resource group
-        # 
-        # - CLOUD_DESKTOP: the cloud computer service.
+        # The resource type.
         self.resource_type = resource_type
 
     def validate(self):

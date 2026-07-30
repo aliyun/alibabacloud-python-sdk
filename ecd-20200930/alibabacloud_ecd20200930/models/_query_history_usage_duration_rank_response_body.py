@@ -15,13 +15,13 @@ class QueryHistoryUsageDurationRankResponseBody(DaraModel):
         total_count: int = None,
         usage_duration_list: List[main_models.QueryHistoryUsageDurationRankResponseBodyUsageDurationList] = None,
     ):
-        # The token used to retrieve the next page of results. If this parameter is not returned, there are no more results.
+        # The paging token for the next query.
         self.next_token = next_token
-        # The unique ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of matching entries.
+        # The total number of query results.
         self.total_count = total_count
-        # A list of usage duration metrics.
+        # The list of user usage duration metrics.
         self.usage_duration_list = usage_duration_list
 
     def validate(self):
@@ -80,17 +80,21 @@ class QueryHistoryUsageDurationRankResponseBodyUsageDurationList(DaraModel):
         region_id: str = None,
         usage_duration: int = None,
     ):
-        # The **charge type**. Valid values: `POST_PAID` (post-paid), `PRE_PAID` (pre-paid), `MONTH_PACKAGE` (monthly subscription), and `DURATION` (duration package).
+        # The billing type. Valid values:
+        # - POST_PAID: pay-as-you-go.
+        # - PRE_PAID: subscription.
+        # - MONTH_PACKAGE: monthly package.
+        # - DURATION: duration-based package.
         self.charge_type = charge_type
-        # **The ID of the cloud desktop.**
+        # The cloud desktop ID.
         self.desktop_id = desktop_id
-        # **The name of the cloud desktop.**
+        # The cloud desktop name.
         self.desktop_name = desktop_name
-        # **The end user ID.**
+        # The end user ID.
         self.end_user_id = end_user_id
         # The region ID.
         self.region_id = region_id
-        # The **usage duration**, in seconds. Note: This is a `Long` value. Ensure your client can handle the precision.
+        # The usage duration, in seconds. This value is of the Long type. Handle precision conversion on the frontend.
         self.usage_duration = usage_duration
 
     def validate(self):

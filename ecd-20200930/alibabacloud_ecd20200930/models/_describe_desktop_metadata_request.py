@@ -40,10 +40,11 @@ class DescribeDesktopMetadataRequest(DaraModel):
         self.image_id = image_id
         # Specifies whether the response includes cloud desktops in shared cloud desktop groups.
         self.include_desktop_group = include_desktop_group
-        # >This parameter is not yet available.
+        # >This parameter is not yet available for use.
         self.keyword = keyword
         # The number of entries per page for a paged query. Maximum value: 100. Default value: 10.
         self.max_results = max_results
+        # The private IP address.
         self.network_interface_ip = network_interface_ip
         # The token for the next query. An empty value indicates that there are no more results.
         self.next_token = next_token

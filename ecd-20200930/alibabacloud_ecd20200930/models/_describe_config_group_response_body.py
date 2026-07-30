@@ -16,15 +16,15 @@ class DescribeConfigGroupResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The configuration groups.
+        # The configuration group information.
         self.data = data
-        # The page number.
+        # The current page number.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of query results.
         self.total_count = total_count
 
     def validate(self):
@@ -95,44 +95,29 @@ class DescribeConfigGroupResponseBodyData(DaraModel):
         status: str = None,
         type: str = None,
     ):
-        # The number of resources that are bound to the configuration group.
+        # The number of resources bound to the configuration group.
         self.bind_count = bind_count
-        # The number of bound cloud computers.
+        # The quantity information of resources bound to the configuration group.
         self.bind_count_map = bind_count_map
         # The description of the configuration group.
         self.description = description
-        # The ID of the configuration group.
+        # The configuration group ID.
         self.group_id = group_id
-        # Used for frontend display. The system scheduled task description uses a code.
+        # Used for frontend display. The code for the system scheduled task description.
         self.inner_timer_desc = inner_timer_desc
-        # Used for frontend display; maps the system scheduled task name to a code.
+        # Used for frontend display. The mapping code for the system scheduled task name.
         self.inner_timer_name = inner_timer_name
-        # Used for system scheduled task checks. The current scheduled task does not support detach or attach operations.
+        # Used by system scheduled task check. The current scheduled task does not support unbinding or binding.
         self.is_bind = is_bind
-        # Used for system scheduled task checks. The current scheduled task does not support modification.
+        # Used by system scheduled task check. The current scheduled task does not support modification.
         self.is_update = is_update
-        # The name of the configuration group.
+        # The configuration group name.
         self.name = name
-        # The service type of the configuration group.
-        # 
-        # Valid values:
-        # 
-        # *   CLOUD_DESKTOP: the cloud computer service.
+        # The product type used by the configuration group.
         self.product_type = product_type
-        # The state of the configuration group.
-        # 
-        # Valid values:
-        # 
-        # *   AVAILABLE: The configuration group is available.
-        # *   UNAVAILABLE: The configuration group is deleted.
-        # *   DELETING: The configuration group is being deleted.
-        # *   UPDATING: The configuration group is being modified.
+        # The configuration group status.
         self.status = status
-        # The type of the configuration group.
-        # 
-        # Valid values:
-        # 
-        # *   Timer: the scheduled task type.
+        # The configuration group type.
         self.type = type
 
     def validate(self):

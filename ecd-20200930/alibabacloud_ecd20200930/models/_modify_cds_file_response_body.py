@@ -13,40 +13,16 @@ class ModifyCdsFileResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The execution result of the operation. If the request was successful, `success` is returned. If the request failed, an error message is returned.
+        # The execution result. A value of `success` indicates success. Otherwise, an error message is returned.
         self.code = code
-        # Specifies whether data is returned.
-        # 
-        # Valid values:
-        # 
-        # *   false: Data fails to be returned.
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   true
-        # 
-        #     <!-- -->
-        # 
-        #     : Data is returned.
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
+        # Indicates whether data is returned successfully.
+        # [_single.resp.200.props.Data.enum. false]Failed to return data.
         self.data = data
-        # The returned error message. This parameter is not returned if the value of Code is `success`.
+        # The error message. This parameter is not returned when Code is `success`.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the operation was successful.
-        # 
-        # Valid value:
-        # 
-        # *   true
-        # *   false
+        # Indicates whether the operation is successful.
         self.success = success
 
     def validate(self):

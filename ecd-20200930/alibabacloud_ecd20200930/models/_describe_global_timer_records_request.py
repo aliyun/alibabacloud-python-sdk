@@ -24,32 +24,30 @@ class DescribeGlobalTimerRecordsRequest(DaraModel):
         timer_types: List[str] = None,
         wuying_server_ids: List[str] = None,
     ):
-        # The batch ID for a scheduled task execution.
+        # The batch ID of the scheduled task execution.
         self.batch_id = batch_id
-        # A list of cloud desktop IDs.
+        # The list of cloud computer IDs.
         self.desktop_ids = desktop_ids
+        # The display result name.
         self.display_result_name = display_result_name
-        # The scheduled task group ID.
+        # The ID of the scheduled task group.
         self.group_id = group_id
-        # The number of entries per page.
-        # 
-        # Maximum value: 100.
-        # 
-        # Default value: 10.
+        # The number of entries per page for a paged query.
         self.max_results = max_results
-        # The token used to start the next query.
+        # The pagination token for the next query.
         self.next_token = next_token
-        # The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to list the regions available in Elastic Desktop Service.
+        # The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Wuying Workspace.
         self.region_id = region_id
         self.resource_types = resource_types
-        # Filters the results by execution status. Valid values:
+        # Filters results by execution result.
         self.result_category = result_category
+        # Specifies whether the task can be retried.
         self.retryable = retryable
-        # The ID of the region to filter by. Only records for cloud desktops in this region are returned.
+        # The region ID used to filter cloud computer information for a specified region.
         self.search_region_id = search_region_id
-        # The execution result of the scheduled task. Valid values:
+        # The execution result of the scheduled task.
         self.timer_result = timer_result
-        # The types of scheduled tasks.
+        # The list of scheduled tasks.
         self.timer_types = timer_types
         self.wuying_server_ids = wuying_server_ids
 

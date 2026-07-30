@@ -15,13 +15,13 @@ class DescribeGlobalTimerRecordsResponseBody(DaraModel):
         request_id: str = None,
         results: List[main_models.DescribeGlobalTimerRecordsResponseBodyResults] = None,
     ):
-        # The total number of entries returned.
+        # The total number of entries.
         self.count = count
-        # The pagination token that is used in the next request to retrieve a new page of results. If this parameter is empty, all results have been returned.
+        # The token for the next query. If NextToken is empty, no more results exist.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The returned results.
+        # The result information.
         self.results = results
 
     def validate(self):
@@ -89,27 +89,30 @@ class DescribeGlobalTimerRecordsResponseBodyResults(DaraModel):
         timer_result: str = None,
         timer_type: str = None,
     ):
-        # The type of action performed.
+        # The type of action that was performed.
         self.action_type = action_type
         # The batch ID of the scheduled task execution.
         self.batch_id = batch_id
-        # The recorded information during the execution of the scheduled task.
+        # The record information during the execution of the scheduled task.
         self.context = context
         # The time when the record was created.
         self.create_time = create_time
-        # The cloud desktop ID.
+        # The cloud computer ID.
         self.desktop_id = desktop_id
-        # The cloud desktop name.
+        # The cloud computer name.
         self.desktop_name = desktop_name
+        # The display result name.
         self.display_result_name = display_result_name
         # The time when the task ended.
         self.finish_time = finish_time
         # The region ID.
         self.region_id = region_id
         self.resource_parent_id = resource_parent_id
+        # Specifies whether the task can be retried.
         self.retryable = retryable
-        # The scheduled task group ID.
+        # The ID of the scheduled task group.
         self.timer_group_id = timer_group_id
+        # The timer record ID.
         self.timer_record_id = timer_record_id
         # The execution result of the scheduled task.
         self.timer_result = timer_result

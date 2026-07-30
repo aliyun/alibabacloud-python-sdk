@@ -224,7 +224,7 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
         self.app_content_protection = app_content_protection
         # The client access IP whitelist.
         self.authorize_access_policy_rules = authorize_access_policy_rules
-        # The list of security group control rules.
+        # The list of security group rules.
         self.authorize_security_policy_rules = authorize_security_policy_rules
         self.auto_reconnect = auto_reconnect
         # Indicates whether local camera redirection is enabled.
@@ -311,7 +311,7 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
         self.kms_server_config = kms_server_config
         # The local drive mapping permission.
         self.local_drive = local_drive
-        # The maximum reconnection retry time when the cloud desktop is disconnected due to external reasons. Valid values: 30 to 7200. Unit: seconds.
+        # The maximum reconnection retry time when the cloud desktop is disconnected due to objective reasons. Valid values: 30 to 7200. Unit: seconds.
         self.max_reconnect_time = max_reconnect_time
         # The memory throttling duration of a single process. Valid values: 30 to 120. Unit: seconds.
         self.memory_down_grade_duration = memory_down_grade_duration
@@ -326,12 +326,12 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
         self.memory_sample_duration = memory_sample_duration
         # The memory usage percentage of a single process. Valid values: 30 to 60.
         self.memory_single_rate_limit = memory_single_rate_limit
-        # Indicates whether the restart button is provided in the cloud desktop floating ball when connecting through a mobile client (Android client<props="china"> and iOS client).
+        # Indicates whether the restart button is provided in the cloud desktop floating ball when connecting through mobile clients (Android client<props="china"> and iOS client).
         # 
         # > Applicable only to mobile clients V7.4 or later.
         self.mobile_restart = mobile_restart
         self.mobile_safe_menu = mobile_safe_menu
-        # Indicates whether the shutdown button is provided in the cloud desktop floating ball when connecting through a mobile client (Android client<props="china"> and iOS client).
+        # Indicates whether the shutdown button is provided in the cloud desktop floating ball when connecting through mobile clients (Android client<props="china"> and iOS client).
         # 
         # > Applicable only to mobile clients V7.4 or later.
         self.mobile_shutdown = mobile_shutdown
@@ -348,7 +348,7 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
         # The network redirection policy details.
         # 
         # > This feature is in invitational preview and is not publicly available.
-        # >.
+        # >
         self.net_redirect_rule = net_redirect_rule
         self.network_printer = network_printer
         # The no-operation disconnect setting.
@@ -371,7 +371,7 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
         self.quality_enhancement = quality_enhancement
         # Indicates whether custom screen recording is enabled.
         self.record_content = record_content
-        # The expiration period of custom screen recording files. Default value: 30. Unit: days.
+        # The expiration time of custom screen recording files. Default value: 30 days.
         self.record_content_expires = record_content_expires
         # The screen recording duration after an event is detected in screen recording audit. Unit: minutes. Valid values: 10 to 60.
         self.record_event_duration = record_event_duration
@@ -383,19 +383,19 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
         self.recording = recording
         # The option for recording cloud desktop audio.
         self.recording_audio = recording_audio
-        # The duration of each screen recording file. Unit: minutes. Recording files are automatically split and uploaded to the storage space based on the specified duration. Files are rolled over when they reach 300 MB.
+        # The duration of screen recording files. Unit: minutes. Recording files are automatically split and uploaded to the storage space based on the specified duration. Files are rolled over when they reach 300 MB.
         self.recording_duration = recording_duration
-        # The screen recording end time, in the format of HH:MM:SS. This value is meaningful only when Recording is set to period.
+        # The screen recording end time in the format of HH:MM:SS. This value is meaningful only when Recording is set to period.
         self.recording_end_time = recording_end_time
         # The retention period of screen recording files. Valid values: 1 to 180. Unit: days.
         self.recording_expires = recording_expires
         # The screen recording frame rate. Unit: FPS (frames per second).
         self.recording_fps = recording_fps
-        # The screen recording start time, in the format of HH:MM:SS. This value is meaningful only when Recording is set to period.
+        # The screen recording start time in the format of HH:MM:SS. This value is meaningful only when Recording is set to period.
         self.recording_start_time = recording_start_time
         # Indicates whether end users are notified that screen recording is enabled.
         self.recording_user_notify = recording_user_notify
-        # The notification message displayed to end users about screen recording.
+        # The notification message displayed to end users about screen recording being enabled.
         self.recording_user_notify_message = recording_user_notify_message
         # The keyboard and mouse control permission for remote assistance.
         self.remote_coordinate = remote_coordinate
@@ -451,7 +451,7 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
         self.watermark_anti_cam = watermark_anti_cam
         # The watermark font color. Valid values: 0 to 16777215.
         self.watermark_color = watermark_color
-        # If the `WatermarkType` parameter is set to `custom`, you must also specify the custom text content by using the `WatermarkCustomText` parameter.
+        # If the WatermarkType parameter is set to `custom`, you must also specify the custom text content by using the WatermarkCustomText parameter.
         self.watermark_custom_text = watermark_custom_text
         # The watermark tilt angle. Valid values: -10 to -30.
         self.watermark_degree = watermark_degree
@@ -1458,7 +1458,7 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroupsUsbSupplyRedirectR
         self.usb_redirect_type = usb_redirect_type
         # The USB redirection rule type.
         self.usb_rule_type = usb_rule_type
-        # The vendor ID. For more information, see [Valid USB Vendor IDs (VIDs)](https://www.usb.org/sites/default/files/vendor_ids032322.pdf_1.pdf).
+        # The vendor ID. See [Valid USB Vendor IDs (VIDs)](https://www.usb.org/sites/default/files/vendor_ids032322.pdf_1.pdf).
         self.vendor_id = vendor_id
 
     def validate(self):
@@ -1614,7 +1614,7 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroupsDeviceRules(DaraMo
         self.device_pid = device_pid
         # The peripheral device type.
         self.device_type = device_type
-        # The vendor ID. For more information, see [Valid USB Vendor IDs (VIDs)](https://www.usb.org/sites/default/files/vendor_ids032322.pdf_1.pdf).
+        # The vendor ID. See [Valid USB Vendor IDs (VIDs)](https://www.usb.org/sites/default/files/vendor_ids032322.pdf_1.pdf).
         self.device_vid = device_vid
         # The link optimization instruction.
         self.opt_command = opt_command
@@ -1763,19 +1763,19 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroupsAuthorizeSecurityP
         priority: str = None,
         type: str = None,
     ):
-        # The target of the security group control rule, which is an IPv4 CIDR block.
+        # The object of the security group rule, which is an IPv4 CIDR block.
         self.cidr_ip = cidr_ip
-        # The description of the security group control rule.
+        # The description of the security group rule.
         self.description = description
-        # The protocol type of the security group control rule.
+        # The protocol type of the security group rule.
         self.ip_protocol = ip_protocol
-        # The authorization policy of the security group control rule.
+        # The authorization policy of the security group rule.
         self.policy = policy
-        # The port range of the security group control rule.
+        # The port range of the security group rule.
         self.port_range = port_range
-        # The priority of the security group control rule. A smaller value indicates a higher priority.
+        # The priority of the security group rule. A smaller value indicates a higher priority.
         self.priority = priority
-        # The direction of the security group control rule.
+        # The direction of the security group rule.
         self.type = type
 
     def validate(self):
@@ -1840,7 +1840,7 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroupsAuthorizeAccessPol
         cidr_ip: str = None,
         description: str = None,
     ):
-        # The client access IP CIDR block, in IPv4 CIDR notation.
+        # The client access IP CIDR block in IPv4 CIDR format.
         self.cidr_ip = cidr_ip
         # The description of the client access IP CIDR block.
         self.description = description

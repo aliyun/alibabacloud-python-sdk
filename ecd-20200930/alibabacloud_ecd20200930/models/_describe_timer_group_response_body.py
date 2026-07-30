@@ -13,7 +13,7 @@ class DescribeTimerGroupResponseBody(DaraModel):
         data: main_models.DescribeTimerGroupResponseBodyData = None,
         request_id: str = None,
     ):
-        # The details of the timer group.
+        # The configuration group information.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -63,31 +63,31 @@ class DescribeTimerGroupResponseBodyData(DaraModel):
         status: str = None,
         type: str = None,
     ):
-        # The number of resources associated with the timer group.
+        # The number of resources bound to the configuration group.
         self.bind_count = bind_count
-        # A map of associated resource counts, categorized by resource type.
+        # The quantity information of resources bound to the configuration.
         self.bind_count_map = bind_count_map
-        # The configurations of the scheduled tasks.
+        # The configuration information of scheduled tasks, in list format.
         self.config_timers = config_timers
-        # The description of the timer group.
+        # The description of the configuration group.
         self.description = description
-        # The ID of the timer group.
+        # The configuration group ID.
         self.group_id = group_id
-        # An internal code used by the frontend to display the description of a system-scheduled task.
+        # The mapping code for the system scheduled task description, used for frontend display.
         self.inner_timer_desc = inner_timer_desc
-        # An internal code used by the frontend to display the name of a system-scheduled task.
+        # The mapping code for the system scheduled task name, used for frontend display.
         self.inner_timer_name = inner_timer_name
-        # Indicates that resources cannot be bound to or unbound from this timer group.
+        # Used for system scheduled task checks. The current scheduled task does not support unbinding or binding.
         self.is_bind = is_bind
-        # Indicates that this timer group cannot be modified.
+        # Used for system scheduled task checks. The current scheduled task does not support modification.
         self.is_update = is_update
-        # The name of the timer group.
+        # The name of the configuration group.
         self.name = name
-        # The product type that the timer group supports.
+        # The product type used by the configuration group.
         self.product_type = product_type
-        # The status of the timer group.
+        # The status of the configuration group.
         self.status = status
-        # The type of the timer group.
+        # The type of the configuration group.
         self.type = type
 
     def validate(self):
@@ -205,25 +205,25 @@ class DescribeTimerGroupResponseBodyDataConfigTimers(DaraModel):
         timer_type: str = None,
         trigger_type: str = None,
     ):
-        # Whether to allow end users to configure the scheduled task.
+        # Specifies whether end users are allowed to configure scheduled tasks on their own.
         self.allow_client_setting = allow_client_setting
-        # The cron expression for the scheduled task.
+        # The cron expression of the scheduled task.
         self.cron_expression = cron_expression
-        # Specifies whether to force the execution of the scheduled task. If set to `true`, the task runs regardless of the cloud computer\\"s status or connection state.
+        # Specifies whether to forcefully execute the task. A value of true indicates that the desktop and connection status checks are ignored and the scheduled task is forcefully executed.
         self.enforce = enforce
-        # The interval. Unit: minutes.
+        # The time interval, in minutes.
         self.interval = interval
         self.notification_time = notification_time
-        # The operation to perform when `TimerType` is set to `NoConnect`.
+        # The type of the disconnect scheduled task.
         self.operation_type = operation_type
-        # The process whitelist for smart detection. A scheduled task based on user inactivity does not run if a whitelisted process is running.
+        # The process whitelist for intelligent detection of no-operation scheduled tasks. If a specified process is running, the no-operation scheduled task is not triggered.
         self.process_whitelist = process_whitelist
-        # The reset type for the scheduled reset task.
+        # The reset type of the reset scheduled task.
         self.reset_type = reset_type
         self.segment_timers = segment_timers
         # The type of the scheduled task.
         self.timer_type = timer_type
-        # The detection method for user inactivity.
+        # The trigger configuration type of the no-operation scheduled task.
         self.trigger_type = trigger_type
 
     def validate(self):
@@ -337,16 +337,16 @@ class DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers(DaraModel):
         verification_notification_time: int = None,
         verification_time: int = None,
     ):
-        # The time to execute the scheduled task, specified as a Unix timestamp in milliseconds.
+        # The specified time point for the fixed-time scheduled task. After this parameter is specified, the scheduled task is executed at the specified time point.
         self.appointment_timer = appointment_timer
         self.create_snapshot = create_snapshot
         self.end_cron_expression = end_cron_expression
         self.enforce = enforce
-        # The image ID for a scheduled image-change task.
+        # The image ID specified for the image change scheduled task.
         self.image_id = image_id
         self.interval = interval
         self.ip_segments = ip_segments
-        # The duration of user inactivity, in seconds, before the screen locks. This feature applies only to cloud computers joined to an Active Directory (AD) domain.
+        # The lock screen time point for the no-operation lock screen feature. This feature cannot be used for non-AD desktops.
         self.lock_screen_time = lock_screen_time
         self.notification_time = notification_time
         self.operation_type = operation_type

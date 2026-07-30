@@ -18,21 +18,17 @@ class DescribeEcdReportTasksRequest(DaraModel):
         task_type: str = None,
     ):
         self.business_channel = business_channel
-        # The number of the page to return. Pages start from page 1. Default value: 1.
+        # The page number. Default value: 1.
         self.page_num = page_num
-        # The number of entries returned per page. Maximum value: 200.
+        # The number of entries per page. Maximum value: 200.
         self.page_size = page_size
         # The task status.
         self.status = status
-        # The sub-type of the report export task.
+        # The subtype of the report task.
         self.sub_type = sub_type
-        # The ID of the report export task.
+        # The report task ID.
         self.task_id = task_id
-        # The type of the report.
-        # 
-        # Valid value:
-        # 
-        # - RESOURCE_REPORT
+        # The report type.
         self.task_type = task_type
 
     def validate(self):

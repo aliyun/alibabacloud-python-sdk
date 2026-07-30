@@ -116,7 +116,7 @@ class CreateEcdReportTaskRequestFilterList(DaraModel):
         # - IncludeAssignedUser: specifies whether users are assigned.
         # - ResourceGroupId: the resource group ID.
         # - PolicyId: the policy ID.
-        # - Tag:{Tag Key}: the cloud computer tag. To query by multiple tags, pass in multiple Filter objects.
+        # - Tag:{Tag key}: the cloud computer tag. To query by multiple tags, pass in multiple Filter objects.
         self.filter_key = filter_key
         # The values of the filter condition.
         # When FilterKey is set to one of the following values, only the first value in FilterValues is used:

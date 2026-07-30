@@ -110,7 +110,7 @@ class DescribeDesktopMetadataResponseBodyDesktops(DaraModel):
         self.desktop_status = desktop_status
         # The cloud desktop specifications.
         self.desktop_type = desktop_type
-        # The time when the cloud desktop expires. This value is returned only for cloud desktops whose billable methods is subscription.
+        # The time when the cloud desktop expires. This value is returned only for cloud desktops that use the subscription billable method.
         self.expired_time = expired_time
         # The image ID.
         self.image_id = image_id
@@ -130,7 +130,7 @@ class DescribeDesktopMetadataResponseBodyDesktops(DaraModel):
         self.resource_group_id = resource_group_id
         # The resource group name.
         self.resource_group_name = resource_group_name
-        # The start time of the cloud desktop.
+        # The time when the cloud desktop was started.
         self.start_time = start_time
 
     def validate(self):

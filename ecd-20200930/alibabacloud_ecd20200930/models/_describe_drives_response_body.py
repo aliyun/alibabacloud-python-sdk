@@ -18,15 +18,15 @@ class DescribeDrivesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code. The value 200 indicates that the request was successful.
+        # The response code. A value of 200 indicates success.
         self.code = code
-        # The total number of storage resources.
+        # The total number of entries.
         self.count = count
-        # The user-level storage resources.
+        # The list of user-level storage resources.
         self.drives = drives
-        # The returned message.
+        # The response message.
         self.message = message
-        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+        # The pagination token for the next query. An empty value indicates that there are no more results.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -121,70 +121,50 @@ class DescribeDrivesResponseBodyDrives(DaraModel):
         used_size: int = None,
         user_id: str = None,
     ):
-        # The ID of the Alibaba Cloud account.
+        # The Alibaba Cloud account ID.
         self.ali_uid = ali_uid
-        # The introduction to the storage resource.
+        # The storage resource description.
         self.description = description
         # The number of associated cloud computer pools.
-        # 
-        # >  This parameter is returned only if ResourceType is set to NAS and Type is set to USER_PROFILE.
+        # > This parameter is returned only when the storage resource is NAS and the purpose is USER_PROFILE.
         self.desktop_group_count = desktop_group_count
-        # The details of the associated cloud computers.
-        # 
-        # >  This parameter is returned only if ResourceType is set to NAS and Type is set to USER_PROFILE.
+        # The list of associated cloud computer pool details.
+        # > This parameter is returned only when the storage resource is NAS and the purpose is USER_PROFILE.
         self.desktop_groups = desktop_groups
-        # The ID of the storage resource.
+        # The storage resource ID.
         self.domain_id = domain_id
-        # The ID of the user-level storage resource.
+        # The user-level storage resource ID.
         self.drive_id = drive_id
-        # Indicates whether the UPM feature is enabled.
+        # Indicates whether the User Profile Management (UPM) feature is enabled.
         self.enable_profile_management = enable_profile_management
-        # The ID of the external storage resource.
-        # 
-        # *   If ResourceType is set to NAS, the NAS ID is returned for this parameter.
-        # *   If ResourceType is set to PDS, the PDS ID is returned for this parameter.
+        # The external storage resource ID.
+        # - If the storage resource is NAS, this parameter returns the NAS ID.
+        # - If the storage resource is PDS, this parameter returns the PDS ID.
         self.external_domain_id = external_domain_id
-        # The ID of the storage resource at the external user level.
-        # 
-        # >  This parameter is returned only if ResourceType is set to PDS.
+        # The external user-level storage resource ID.
+        # > This parameter is returned only when the storage resource is PDS.
         self.external_drive_id = external_drive_id
-        # The ID of the external user.
-        # 
-        # >  This parameter is returned only if ResourceType is set to PDS.
+        # The external user ID.
+        # > This parameter is returned only when the storage resource is PDS.
         self.external_user_id = external_user_id
-        # The time when the storage resource was created.
+        # The creation time.
         self.gmt_create = gmt_create
-        # The time when the storage resource was modified.
+        # The modification time.
         self.gmt_modified = gmt_modified
-        # The user ID.
-        # 
-        # >  You can ignore this parameter.
+        # The ID.
+        # > You can ignore this parameter.
         self.id = id
-        # The name of the storage resource.
+        # The storage resource name.
         self.name = name
-        # >  This parameter is deprecated.
+        # > This parameter is deprecated.
         self.profile_roaming = profile_roaming
         # The status of the user-level storage resource.
-        # 
-        # Valid values:
-        # 
-        # *   INIT: initializing
-        # *   MAINTAIN: maintaining
-        # *   DELETING: deleting
-        # *   INVALID: invalid
-        # *   NORMAL: normal
-        # *   FAIL: failed
         self.status = status
-        # The total amount of user-level storage capacity.
+        # The total capacity of the user-level storage resource.
         self.total_size = total_size
-        # The usage of the storage resource.
-        # 
-        # Valid values:
-        # 
-        # *   DESKTOP: data disk space
-        # *   USER_PROFILE: personal data space
+        # The purpose of the storage resource.
         self.type = type
-        # The amount of user-level storage capacity used.
+        # The used capacity of the user-level storage resource.
         self.used_size = used_size
         # The user ID.
         self.user_id = user_id
@@ -337,9 +317,9 @@ class DescribeDrivesResponseBodyDrivesDesktopGroups(DaraModel):
         desktop_group_id: str = None,
         desktop_group_name: str = None,
     ):
-        # The ID of the cloud computer pool.
+        # The cloud computer pool ID.
         self.desktop_group_id = desktop_group_id
-        # The name of the cloud computer pool.
+        # The cloud computer pool name.
         self.desktop_group_name = desktop_group_name
 
     def validate(self):

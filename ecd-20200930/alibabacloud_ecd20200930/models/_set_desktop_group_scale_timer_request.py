@@ -14,15 +14,15 @@ class SetDesktopGroupScaleTimerRequest(DaraModel):
         region_id: str = None,
         scale_timer_infos: List[main_models.SetDesktopGroupScaleTimerRequestScaleTimerInfos] = None,
     ):
-        # The ID of the cloud computer pool.
+        # The cloud computer pool ID.
         # 
         # This parameter is required.
         self.desktop_group_id = desktop_group_id
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the regions supported by Elastic Desktop Service.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The information about the scheduled auto scaling task.
+        # The list of scheduled task information for automatic scaling.
         self.scale_timer_infos = scale_timer_infos
 
     def validate(self):
@@ -77,67 +77,27 @@ class SetDesktopGroupScaleTimerRequestScaleTimerInfos(DaraModel):
         ratio_threshold: float = None,
         type: str = None,
     ):
-        # One option for the auto scaling policy. This option specifies the number of cloud computers that you want to create in the cloud computer pool. Valid values: 0 to 200.
+        # The number of cloud computers to purchase. This is one of the scaling policy parameters. Valid values: 0 to 200.
         self.buy_res_amount = buy_res_amount
-        # The cron expression of the trigger time.
+        # The cron expression for the trigger time.
         self.cron = cron
-        # The keep-alive duration of a session after the session is disconnected. Unit: milliseconds. Valid values: 180000 (3 minutes) to 345600000 (4 days). A value of 0 indicates that the session always keeps alive.
+        # The duration for which a session is retained after disconnection. Unit: milliseconds. Valid values: 180000 (3 minutes) to 345600000 (4 days). A value of 0 indicates that the session is always retained.
         # 
-        # If a session is disconnected by the end user or accidentally due to a factor and the end user does not re-establish a connection with the session within the keep-alive duration, the session expires and unsaved data is deleted. If the end user successfully re-establishes a connection with the session within the keep-alive duration, the end user returns to the session and can still access the original data.
+        # When a session is disconnected because the user actively disconnects or because of other unexpected factors, the retention period starts from the time of disconnection. If the user does not reconnect to the session within the retention period, the session is logged off and all unsaved data is destroyed. If the user reconnects within the retention period, the user can still access the original session and the data that existed before the disconnection.
         self.keep_duration = keep_duration
         # The load balancing policy for the multi-session cloud computer pool.
-        # 
-        # Valid values:
-        # 
-        # - 0: depth-first
-        # 
-        # - 1: breadth first.
         self.load_policy = load_policy
-        # One option for the auto scaling policy. This option specifies the maximum number of cloud computers that you can create in the cloud computer pool. Valid values: 0 to 200.
+        # The maximum number of cloud computers. This is one of the scaling policy parameters. Valid values: 0 to 200.
         self.max_res_amount = max_res_amount
-        # One option for the auto scaling policy. This option specifies the minimum number of cloud computers that you must create in the cloud computer pool. Valid values: 0 to 200.
+        # The minimum number of cloud computers. This is one of the scaling policy parameters. Valid values: 0 to 200.
         self.min_res_amount = min_res_amount
-        # The threshold for the ratio of connected sessions. This parameter is the condition that triggers auto scaling in a multi-session cloud computer pool. Formula:
+        # The session occupancy threshold, which is used as the trigger condition for automatic scaling of the multi-session cloud computer pool. The session occupancy is calculated by using the following formula:
         # 
-        # `Ratio of connected sessions = Number of connected sessions/(Total number of cloud computers × Maximum number of sessions allowed for each cloud computer) × 100%`.
+        # ```Session occupancy = Number of attached sessions / (Total number of cloud computer resources × Maximum number of sessions supported per cloud computer) × 100%```
         # 
-        # When the specified threshold is reached, new cloud computers are automatically created. When the specified threshold is not reached, idle cloud computers are released.
+        # When the session occupancy reaches this threshold, new cloud computers are created. When the session occupancy does not reach this threshold, excess cloud computers are deleted.
         self.ratio_threshold = ratio_threshold
-        # The type of the auto scaling policy.
-        # 
-        # Valid values:
-        # 
-        # - drop
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
-        # 
-        # - normal
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
-        # 
-        # - peak
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
-        # 
-        # - rise
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
+        # The policy type.
         self.type = type
 
     def validate(self):

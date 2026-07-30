@@ -21,12 +21,11 @@ class DescribeSessionStatisticRequest(DaraModel):
         # The query interval. Unit: seconds. Valid values:
         # 
         # - 60
-        # 
         # - 120
         self.period = period
         # The region ID.
         self.region_id = region_id
-        # Specifies to search for session information by region ID. This parameter is used to filter desktop information of a specific region.
+        # The region ID used to filter desktop information for a specified region.
         self.search_region_id = search_region_id
         # The beginning of the time range to query.
         self.start_time = start_time

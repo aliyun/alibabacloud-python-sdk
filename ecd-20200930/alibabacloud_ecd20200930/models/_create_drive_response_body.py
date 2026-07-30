@@ -14,13 +14,13 @@ class CreateDriveResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code. The value 200 indicates that the request was successful.
+        # The response code. A value of 200 indicates success.
         self.code = code
         # The user-level storage resource.
         self.drive = drive
         # The response message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success
@@ -91,60 +91,37 @@ class CreateDriveResponseBodyDrive(DaraModel):
         used_size: int = None,
         user_id: str = None,
     ):
-        # The ID of the Alibaba Cloud account.
+        # The Alibaba Cloud account ID.
         self.ali_uid = ali_uid
-        # The description of the storage resource.
+        # The storage resource description.
         self.description = description
-        # The ID of the storage resource.
+        # The storage resource ID.
         self.domain_id = domain_id
-        # The ID of the user-level storage resource.
+        # The user-level storage resource ID.
         self.drive_id = drive_id
-        # The ID of the external user-level storage resource.
-        # 
-        # > A value is returned for this parameter only if ResourceType is set to PDS.
+        # The external user-level storage resource ID.
+        # > This parameter is returned only when the storage resource type is PDS.
         self.external_drive_id = external_drive_id
-        # The ID of the external user.
+        # The external user ID.
         self.external_user_id = external_user_id
-        # The time when the storage resource was created.
+        # The creation time.
         self.gmt_create = gmt_create
-        # The time when the storage resource was last modified.
+        # The modification time.
         self.gmt_modified = gmt_modified
-        # The ID.
+        # ID。
         self.id = id
-        # The name of the storage resource.
+        # The storage resource name.
         self.name = name
         # > This parameter is deprecated.
         self.profile_roaming = profile_roaming
         # The status of the user-level storage resource.
-        # 
-        # Valid values:
-        # 
-        # - INIT: initializing
-        # 
-        # - MAINTAIN: maintaining
-        # 
-        # - DELETING
-        # 
-        # - INVALID
-        # 
-        # - NORMAL
-        # 
-        # - FAIL: failed
         self.status = status
-        # The total amount of the user-level storage resource capacity.
-        # 
+        # The total capacity of the user-level storage resource.
         # > Unit: bytes.
         self.total_size = total_size
-        # The usage of the storage resource.
-        # 
-        # Valid values:
-        # 
-        # - DESKTOP: data disk space
-        # 
-        # - USER_PROFILE: space for personal data of the user
+        # The purpose of the storage resource.
         self.type = type
-        # The amount of user-level storage resource capacity used.
-        # 
+        # The used capacity of the user-level storage resource.
         # > Unit: bytes.
         self.used_size = used_size
         # The user ID.

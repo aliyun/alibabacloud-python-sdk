@@ -18,39 +18,25 @@ class CreateDriveRequest(DaraModel):
         type: str = None,
         user_id: str = None,
     ):
-        # The ID of your Alibaba Cloud account.
+        # The Alibaba Cloud account ID.
         self.ali_uid = ali_uid
         # The description of the user-level storage resource.
         self.description = description
-        # The ID of the storage resource.
-        # 
-        # > Call the DescribeDrives operation to retrieve the storage resource ID.
+        # The storage resource ID.
+        # > You can call the DescribeDrives operation to obtain this value.
         self.domain_id = domain_id
         # The name of the user-level storage resource.
         self.drive_name = drive_name
-        # The ID of the external storage resource.
-        # 
-        # > Call the DescribeDrives operation to retrieve the external storage resource ID.
+        # The external storage resource ID.
+        # > You can call the DescribeDrives operation to obtain this value.
         self.external_domain_id = external_domain_id
         # > This parameter is deprecated.
         self.profile_roaming = profile_roaming
         # The region ID.
         self.region_id = region_id
-        # The type of the storage resource.
-        # 
-        # Valid values:
-        # 
-        # - NAS: File Storage NAS
-        # 
-        # - PDS: Drive and Photo Service
+        # The storage resource type.
         self.resource_type = resource_type
-        # The usage of the storage resource.
-        # 
-        # Valid values:
-        # 
-        # - DESKTOP: data disk space
-        # 
-        # - USER_PROFILE: space for personal data of the user
+        # The purpose of the storage resource.
         self.type = type
         # The user ID.
         self.user_id = user_id

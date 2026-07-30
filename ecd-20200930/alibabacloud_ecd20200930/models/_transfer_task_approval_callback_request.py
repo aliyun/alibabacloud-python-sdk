@@ -12,18 +12,13 @@ class TransferTaskApprovalCallbackRequest(DaraModel):
         result: str = None,
         task_id: str = None,
     ):
-        # The name of the OSS bucket where the file resides.
+        # The name of the bucket where the file is stored.
         self.oss_bucket_name = oss_bucket_name
-        # The region where the OSS bucket storing the file resides.
+        # The region of the bucket where the file is stored.
         self.oss_bucket_region_id = oss_bucket_region_id
         # The approval result.
-        # 
-        # Valid values:
-        # 
-        # *   Approved
-        # *   Rejected
         self.result = result
-        # The ID of the transmission task.
+        # The ID of the transfer task.
         self.task_id = task_id
 
     def validate(self):

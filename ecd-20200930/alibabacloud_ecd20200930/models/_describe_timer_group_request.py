@@ -10,11 +10,11 @@ class DescribeTimerGroupRequest(DaraModel):
         group_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the configuration group.
+        # The configuration group ID.
         # 
         # This parameter is required.
         self.group_id = group_id
-        # The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the most recent region list.
+        # The region ID. This feature is not region-specific. Set this parameter to `cn-shanghai`.
         self.region_id = region_id
 
     def validate(self):

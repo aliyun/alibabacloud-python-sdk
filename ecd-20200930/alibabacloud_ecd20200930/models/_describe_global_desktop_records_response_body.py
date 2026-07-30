@@ -128,9 +128,9 @@ class DescribeGlobalDesktopRecordsResponseBodySessions(DaraModel):
         # - Windows
         # - Linux
         self.os_type = os_type
-        # The specific operating system version.
+        # The specific operating system model.
         self.platform = platform
-        # The protocol type. Valid values:
+        # The protocol type.
         # 
         # - HDX
         # - ASP

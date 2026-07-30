@@ -16,23 +16,18 @@ class DescribeDrivesRequest(DaraModel):
         resource_type: str = None,
         user_id: str = None,
     ):
-        # The IDs of the storage resources.
+        # The list of storage resource IDs.
         self.domain_ids = domain_ids
-        # The number of entries per page.
+        # The number of entries per page for a paged query.
         # 
-        # *   Maximum value: 500.
-        # *   Default value: 20.
+        # - Maximum value: 500.
+        # - Default value: 20.
         self.max_results = max_results
-        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+        # The pagination token for the next query. An empty value indicates that there are no more results.
         self.next_token = next_token
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
         self.region_id = region_id
-        # The type of the storage resource.
-        # 
-        # Valid values:
-        # 
-        # *   NAS: NAS storage
-        # *   PDS: PDS storage
+        # The storage resource type.
         self.resource_type = resource_type
         # The user ID.
         self.user_id = user_id

@@ -13,15 +13,15 @@ class CreateNASFileSystemResponseBody(DaraModel):
         office_site_id: str = None,
         request_id: str = None,
     ):
-        # ID of the NAS file system.
+        # The NAS file system ID.
         self.file_system_id = file_system_id
-        # Name of the NAS file system.
+        # The NAS file system name.
         self.file_system_name = file_system_name
-        # Mount point domain.
+        # The mount target domain name.
         self.mount_target_domain = mount_target_domain
-        # Workspace ID.
+        # The office network ID.
         self.office_site_id = office_site_id
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

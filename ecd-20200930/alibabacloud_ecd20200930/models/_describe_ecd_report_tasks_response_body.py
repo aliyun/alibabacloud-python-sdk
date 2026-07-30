@@ -14,7 +14,7 @@ class DescribeEcdReportTasksResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The report export tasks.
+        # The list of report tasks.
         self.export_task_list = export_task_list
         # The request ID.
         self.request_id = request_id
@@ -78,33 +78,25 @@ class DescribeEcdReportTasksResponseBodyExportTaskList(DaraModel):
     ):
         # The download URL of the report file.
         self.download_url = download_url
-        # The error code returned.
+        # The error code.
         self.error_code = error_code
         # The error message.
         self.error_msg = error_msg
-        # The time when the task was created.
+        # The creation time.
         self.gmt_create = gmt_create
-        # The time when the task was last modified.
+        # The modification time.
         self.gmt_modified = gmt_modified
         # The progress of the report export task. Unit: %.
         self.progress = progress
-        # The name of the report file.
+        # The report file name.
         self.report_file_name = report_file_name
-        # The task status.
+        # The report task status.
         self.status = status
-        # The sub-type of the report export task.
-        # 
-        # Valid value:
-        # 
-        # - DESKTOP: cloud computer
+        # The subtype of the report task.
         self.sub_type = sub_type
-        # The ID of the report export task.
+        # The report task ID.
         self.task_id = task_id
-        # The type of the report.
-        # 
-        # Valid value:
-        # 
-        # - RESOURCE_REPORT
+        # The report type.
         self.task_type = task_type
 
     def validate(self):

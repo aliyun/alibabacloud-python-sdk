@@ -1,3 +1,16 @@
+2026-07-30 Version: 5.1.0
+- Support API CreateVirtualBridge.
+- Support API DeleteVirtualBridge.
+- Support API DescribeOfficeSiteBridgeInfo.
+- Support API ListVirtualBridges.
+- Support API ModifyOfficeSiteBridgeInfo.
+- Support API ModifyVirtualBridgeLevel.
+- Support API ModifyVirtualBridgeStatus.
+- Support API RenewVirtualBridge.
+- Update API CreateNASFileSystem: add request parameters ProtocolType.
+- Update API DescribeNASFileSystems: add response parameters Body.FileSystems.$.ProtocolType.
+
+
 2026-07-21 Version: 5.0.1
 - Update API CreateCenterPolicy: add request parameters FileTransferInSize.
 - Update API CreateCenterPolicy: add request parameters FileTransferInUnit.

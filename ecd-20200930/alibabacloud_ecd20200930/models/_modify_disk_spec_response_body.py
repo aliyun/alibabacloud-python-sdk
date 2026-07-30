@@ -10,9 +10,10 @@ class ModifyDiskSpecResponseBody(DaraModel):
         order_id: str = None,
         request_id: str = None,
     ):
-        # The order ID. You can find the order ID in <props="china">[Expenses and Costs > My Orders](https://billing-cost.console.aliyun.com/order/list). <props="intl">[Expenses and Costs > Order Management](https://usercenter2-intl.aliyun.com/order/list).
+        # The order ID. You can obtain it from <props="china">[Expenses and Costs > My Orders](https://billing-cost.console.aliyun.com/order/list).
+        # <props="intl">[Expenses and Costs > Order Management](https://usercenter2-intl.aliyun.com/order/list).
         self.order_id = order_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

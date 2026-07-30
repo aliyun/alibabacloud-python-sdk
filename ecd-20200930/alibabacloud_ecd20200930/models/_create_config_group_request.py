@@ -17,7 +17,7 @@ class CreateConfigGroupRequest(DaraModel):
         region_id: str = None,
         type: str = None,
     ):
-        # An array of scheduled task configurations.
+        # The configuration information of scheduled tasks. This parameter is a list.
         self.config_timers = config_timers
         # The description of the configuration group.
         self.description = description
@@ -25,11 +25,11 @@ class CreateConfigGroupRequest(DaraModel):
         # 
         # This parameter is required.
         self.name = name
-        # The product to which the configuration group applies.
+        # The product type used by the configuration group.
         # 
         # This parameter is required.
         self.product_type = product_type
-        # The region ID. This feature is not region-specific. You must set this parameter to cn-shanghai.
+        # The region ID. This feature is not region-specific. Set this parameter to `cn-shanghai`.
         self.region_id = region_id
         # The type of the configuration group.
         # 
@@ -109,31 +109,29 @@ class CreateConfigGroupRequestConfigTimers(DaraModel):
         timer_type: str = None,
         trigger_type: str = None,
     ):
-        # Whether to allow end users to configure the scheduled task.
+        # Specifies whether to allow end users to configure scheduled tasks on their own.
         self.allow_client_setting = allow_client_setting
-        # The cron expression for the scheduled task.
+        # The cron expression of the scheduled task.
         # 
-        # >Notice: 
-        # 
-        # The cron expression is based on UTC. For example, to run a task at 00:00 China Standard Time (UTC+8) every day, set this parameter to `0 0 16 ? * 1,2,3,4,5,6,7`.
+        # >Notice: Specify the time in UTC. For example, to specify 00:00 (UTC+8) every day, use 0 0 16 ? * 1,2,3,4,5,6,7.</notice>
         self.cron_expression = cron_expression
-        # Whether to forcefully execute the scheduled task.
+        # Specifies whether to forcibly execute the task.
         self.enforce = enforce
         # The time interval, in minutes.
         self.interval = interval
         self.notification_time = notification_time
-        # The operation to perform for the scheduled task. This parameter is valid only when `TimerType` is set to `NoConnect`.
+        # The operation type of the scheduled task. Currently, only disconnect scheduled tasks support this parameter.
         self.operation_type = operation_type
-        # The process whitelist for smart detection. If a process from this whitelist is running, the inactivity-based scheduled task does not run.
+        # The process whitelist for intelligent detection of no-operation scheduled tasks. If a specified process is running, the no-operation scheduled task is not triggered.
         self.process_whitelist = process_whitelist
-        # The reset type for the cloud desktop.
+        # The reset type of the cloud computer.
         self.reset_type = reset_type
         self.segment_timers = segment_timers
         # The type of the scheduled task.
         # 
         # This parameter is required.
         self.timer_type = timer_type
-        # The trigger condition for inactivity-based scheduled tasks.
+        # The trigger configuration type of the no-operation scheduled task.
         self.trigger_type = trigger_type
 
     def validate(self):
@@ -247,16 +245,16 @@ class CreateConfigGroupRequestConfigTimersSegmentTimers(DaraModel):
         verification_notification_time: int = None,
         verification_time: int = None,
     ):
-        # The execution time for a one-time scheduled task, specified as a UNIX timestamp in milliseconds.
+        # The specified time point for executing a scheduled task. After this parameter is specified, the scheduled task is executed at the specified time point.
         self.appointment_timer = appointment_timer
         self.create_snapshot = create_snapshot
         self.end_cron_expression = end_cron_expression
         self.enforce = enforce
-        # The image ID for a scheduled task that changes the image of a cloud desktop.
+        # The image ID to change to. This parameter is used for image change scheduled tasks.
         self.image_id = image_id
         self.interval = interval
         self.ip_segments = ip_segments
-        # The amount of inactive time, in seconds, before the screen automatically locks. This parameter applies only to Active Directory desktops.
+        # The lock screen time point for the no-operation lock screen feature. This parameter cannot be used for non-AD desktops.
         self.lock_screen_time = lock_screen_time
         self.notification_time = notification_time
         self.operation_type = operation_type

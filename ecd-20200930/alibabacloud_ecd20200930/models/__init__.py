@@ -199,6 +199,9 @@ from ._create_subnet_response import CreateSubnetResponse
 from ._create_template_request import CreateTemplateRequest
 from ._create_template_response_body import CreateTemplateResponseBody
 from ._create_template_response import CreateTemplateResponse
+from ._create_virtual_bridge_request import CreateVirtualBridgeRequest
+from ._create_virtual_bridge_response_body import CreateVirtualBridgeResponseBody
+from ._create_virtual_bridge_response import CreateVirtualBridgeResponse
 from ._delete_auto_snapshot_policy_request import DeleteAutoSnapshotPolicyRequest
 from ._delete_auto_snapshot_policy_response_body import DeleteAutoSnapshotPolicyResponseBody
 from ._delete_auto_snapshot_policy_response import DeleteAutoSnapshotPolicyResponse
@@ -283,6 +286,9 @@ from ._delete_subnet_response import DeleteSubnetResponse
 from ._delete_templates_request import DeleteTemplatesRequest
 from ._delete_templates_response_body import DeleteTemplatesResponseBody
 from ._delete_templates_response import DeleteTemplatesResponse
+from ._delete_virtual_bridge_request import DeleteVirtualBridgeRequest
+from ._delete_virtual_bridge_response_body import DeleteVirtualBridgeResponseBody
+from ._delete_virtual_bridge_response import DeleteVirtualBridgeResponse
 from ._delete_virtual_mfadevice_request import DeleteVirtualMFADeviceRequest
 from ._delete_virtual_mfadevice_response_body import DeleteVirtualMFADeviceResponseBody
 from ._delete_virtual_mfadevice_response import DeleteVirtualMFADeviceResponse
@@ -427,6 +433,9 @@ from ._describe_nat_gateways_response import DescribeNatGatewaysResponse
 from ._describe_network_packages_request import DescribeNetworkPackagesRequest
 from ._describe_network_packages_response_body import DescribeNetworkPackagesResponseBody
 from ._describe_network_packages_response import DescribeNetworkPackagesResponse
+from ._describe_office_site_bridge_info_request import DescribeOfficeSiteBridgeInfoRequest
+from ._describe_office_site_bridge_info_response_body import DescribeOfficeSiteBridgeInfoResponseBody
+from ._describe_office_site_bridge_info_response import DescribeOfficeSiteBridgeInfoResponse
 from ._describe_office_sites_request import DescribeOfficeSitesRequest
 from ._describe_office_sites_response_body import DescribeOfficeSitesResponseBody
 from ._describe_office_sites_response import DescribeOfficeSitesResponse
@@ -599,6 +608,9 @@ from ._list_transfer_files_response import ListTransferFilesResponse
 from ._list_user_ad_organization_units_request import ListUserAdOrganizationUnitsRequest
 from ._list_user_ad_organization_units_response_body import ListUserAdOrganizationUnitsResponseBody
 from ._list_user_ad_organization_units_response import ListUserAdOrganizationUnitsResponse
+from ._list_virtual_bridges_request import ListVirtualBridgesRequest
+from ._list_virtual_bridges_response_body import ListVirtualBridgesResponseBody
+from ._list_virtual_bridges_response import ListVirtualBridgesResponse
 from ._lock_virtual_mfadevice_request import LockVirtualMFADeviceRequest
 from ._lock_virtual_mfadevice_response_body import LockVirtualMFADeviceResponseBody
 from ._lock_virtual_mfadevice_response import LockVirtualMFADeviceResponse
@@ -704,6 +716,9 @@ from ._modify_office_site_accelerator_response import ModifyOfficeSiteAccelerato
 from ._modify_office_site_attribute_request import ModifyOfficeSiteAttributeRequest
 from ._modify_office_site_attribute_response_body import ModifyOfficeSiteAttributeResponseBody
 from ._modify_office_site_attribute_response import ModifyOfficeSiteAttributeResponse
+from ._modify_office_site_bridge_info_request import ModifyOfficeSiteBridgeInfoRequest
+from ._modify_office_site_bridge_info_response_body import ModifyOfficeSiteBridgeInfoResponseBody
+from ._modify_office_site_bridge_info_response import ModifyOfficeSiteBridgeInfoResponse
 from ._modify_office_site_cross_desktop_access_request import ModifyOfficeSiteCrossDesktopAccessRequest
 from ._modify_office_site_cross_desktop_access_response_body import ModifyOfficeSiteCrossDesktopAccessResponseBody
 from ._modify_office_site_cross_desktop_access_response import ModifyOfficeSiteCrossDesktopAccessResponse
@@ -743,6 +758,12 @@ from ._modify_user_entitlement_response import ModifyUserEntitlementResponse
 from ._modify_user_to_desktop_group_request import ModifyUserToDesktopGroupRequest
 from ._modify_user_to_desktop_group_response_body import ModifyUserToDesktopGroupResponseBody
 from ._modify_user_to_desktop_group_response import ModifyUserToDesktopGroupResponse
+from ._modify_virtual_bridge_level_request import ModifyVirtualBridgeLevelRequest
+from ._modify_virtual_bridge_level_response_body import ModifyVirtualBridgeLevelResponseBody
+from ._modify_virtual_bridge_level_response import ModifyVirtualBridgeLevelResponse
+from ._modify_virtual_bridge_status_request import ModifyVirtualBridgeStatusRequest
+from ._modify_virtual_bridge_status_response_body import ModifyVirtualBridgeStatusResponseBody
+from ._modify_virtual_bridge_status_response import ModifyVirtualBridgeStatusResponse
 from ._move_cds_file_request import MoveCdsFileRequest
 from ._move_cds_file_response_body import MoveCdsFileResponseBody
 from ._move_cds_file_response import MoveCdsFileResponse
@@ -790,6 +811,9 @@ from ._renew_desktops_response import RenewDesktopsResponse
 from ._renew_network_packages_request import RenewNetworkPackagesRequest
 from ._renew_network_packages_response_body import RenewNetworkPackagesResponseBody
 from ._renew_network_packages_response import RenewNetworkPackagesResponse
+from ._renew_virtual_bridge_request import RenewVirtualBridgeRequest
+from ._renew_virtual_bridge_response_body import RenewVirtualBridgeResponseBody
+from ._renew_virtual_bridge_response import RenewVirtualBridgeResponse
 from ._reset_desktops_request import ResetDesktopsRequest
 from ._reset_desktops_response_body import ResetDesktopsResponseBody
 from ._reset_desktops_response import ResetDesktopsResponse
@@ -1022,6 +1046,7 @@ from ._describe_nat_gateways_response_body import DescribeNatGatewaysResponseBod
 from ._describe_network_packages_request import DescribeNetworkPackagesRequestTag
 from ._describe_network_packages_response_body import DescribeNetworkPackagesResponseBodyNetworkPackagesTags
 from ._describe_network_packages_response_body import DescribeNetworkPackagesResponseBodyNetworkPackages
+from ._describe_office_site_bridge_info_response_body import DescribeOfficeSiteBridgeInfoResponseBodyBridge
 from ._describe_office_sites_response_body import DescribeOfficeSitesResponseBodyOfficeSitesADConnectors
 from ._describe_office_sites_response_body import DescribeOfficeSitesResponseBodyOfficeSitesLogs
 from ._describe_office_sites_response_body import DescribeOfficeSitesResponseBodyOfficeSitesResourceAmounts
@@ -1103,6 +1128,7 @@ from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagRe
 from ._list_transfer_file_download_url_response_body import ListTransferFileDownloadUrlResponseBodyUrls
 from ._list_transfer_files_response_body import ListTransferFilesResponseBodyFiles
 from ._list_user_ad_organization_units_response_body import ListUserAdOrganizationUnitsResponseBodyOUNames
+from ._list_virtual_bridges_response_body import ListVirtualBridgesResponseBodyBridges
 from ._modify_center_policy_request import ModifyCenterPolicyRequestAuthorizeAccessPolicyRule
 from ._modify_center_policy_request import ModifyCenterPolicyRequestAuthorizeSecurityPolicyRule
 from ._modify_center_policy_request import ModifyCenterPolicyRequestClientType
@@ -1361,6 +1387,9 @@ __all__ = [
     CreateTemplateRequest,
     CreateTemplateResponseBody,
     CreateTemplateResponse,
+    CreateVirtualBridgeRequest,
+    CreateVirtualBridgeResponseBody,
+    CreateVirtualBridgeResponse,
     DeleteAutoSnapshotPolicyRequest,
     DeleteAutoSnapshotPolicyResponseBody,
     DeleteAutoSnapshotPolicyResponse,
@@ -1445,6 +1474,9 @@ __all__ = [
     DeleteTemplatesRequest,
     DeleteTemplatesResponseBody,
     DeleteTemplatesResponse,
+    DeleteVirtualBridgeRequest,
+    DeleteVirtualBridgeResponseBody,
+    DeleteVirtualBridgeResponse,
     DeleteVirtualMFADeviceRequest,
     DeleteVirtualMFADeviceResponseBody,
     DeleteVirtualMFADeviceResponse,
@@ -1589,6 +1621,9 @@ __all__ = [
     DescribeNetworkPackagesRequest,
     DescribeNetworkPackagesResponseBody,
     DescribeNetworkPackagesResponse,
+    DescribeOfficeSiteBridgeInfoRequest,
+    DescribeOfficeSiteBridgeInfoResponseBody,
+    DescribeOfficeSiteBridgeInfoResponse,
     DescribeOfficeSitesRequest,
     DescribeOfficeSitesResponseBody,
     DescribeOfficeSitesResponse,
@@ -1761,6 +1796,9 @@ __all__ = [
     ListUserAdOrganizationUnitsRequest,
     ListUserAdOrganizationUnitsResponseBody,
     ListUserAdOrganizationUnitsResponse,
+    ListVirtualBridgesRequest,
+    ListVirtualBridgesResponseBody,
+    ListVirtualBridgesResponse,
     LockVirtualMFADeviceRequest,
     LockVirtualMFADeviceResponseBody,
     LockVirtualMFADeviceResponse,
@@ -1866,6 +1904,9 @@ __all__ = [
     ModifyOfficeSiteAttributeRequest,
     ModifyOfficeSiteAttributeResponseBody,
     ModifyOfficeSiteAttributeResponse,
+    ModifyOfficeSiteBridgeInfoRequest,
+    ModifyOfficeSiteBridgeInfoResponseBody,
+    ModifyOfficeSiteBridgeInfoResponse,
     ModifyOfficeSiteCrossDesktopAccessRequest,
     ModifyOfficeSiteCrossDesktopAccessResponseBody,
     ModifyOfficeSiteCrossDesktopAccessResponse,
@@ -1905,6 +1946,12 @@ __all__ = [
     ModifyUserToDesktopGroupRequest,
     ModifyUserToDesktopGroupResponseBody,
     ModifyUserToDesktopGroupResponse,
+    ModifyVirtualBridgeLevelRequest,
+    ModifyVirtualBridgeLevelResponseBody,
+    ModifyVirtualBridgeLevelResponse,
+    ModifyVirtualBridgeStatusRequest,
+    ModifyVirtualBridgeStatusResponseBody,
+    ModifyVirtualBridgeStatusResponse,
     MoveCdsFileRequest,
     MoveCdsFileResponseBody,
     MoveCdsFileResponse,
@@ -1952,6 +1999,9 @@ __all__ = [
     RenewNetworkPackagesRequest,
     RenewNetworkPackagesResponseBody,
     RenewNetworkPackagesResponse,
+    RenewVirtualBridgeRequest,
+    RenewVirtualBridgeResponseBody,
+    RenewVirtualBridgeResponse,
     ResetDesktopsRequest,
     ResetDesktopsResponseBody,
     ResetDesktopsResponse,
@@ -2184,6 +2234,7 @@ __all__ = [
     DescribeNetworkPackagesRequestTag,
     DescribeNetworkPackagesResponseBodyNetworkPackagesTags,
     DescribeNetworkPackagesResponseBodyNetworkPackages,
+    DescribeOfficeSiteBridgeInfoResponseBodyBridge,
     DescribeOfficeSitesResponseBodyOfficeSitesADConnectors,
     DescribeOfficeSitesResponseBodyOfficeSitesLogs,
     DescribeOfficeSitesResponseBodyOfficeSitesResourceAmounts,
@@ -2265,6 +2316,7 @@ __all__ = [
     ListTransferFileDownloadUrlResponseBodyUrls,
     ListTransferFilesResponseBodyFiles,
     ListUserAdOrganizationUnitsResponseBodyOUNames,
+    ListVirtualBridgesResponseBodyBridges,
     ModifyCenterPolicyRequestAuthorizeAccessPolicyRule,
     ModifyCenterPolicyRequestAuthorizeSecurityPolicyRule,
     ModifyCenterPolicyRequestClientType,
