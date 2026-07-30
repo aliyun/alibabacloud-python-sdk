@@ -14,11 +14,17 @@ class SearchMediaRequest(DaraModel):
         scroll_token: str = None,
         sort_by: str = None,
     ):
+        # The category ID. You can obtain the ID by using the following methods:
         self.category_id = category_id
+        # The filter condition. For syntax rules, see [Media asset search protocol](https://www.alibabacloud.com/help/en/ims/developer-reference/media-asset-search-filter-description).
         self.match = match
+        # The current page number. Default value: 1.
         self.page_no = page_no
+        # The number of entries to return per page. Default value: 10. Maximum value: 50.
         self.page_size = page_size
+        # The pagination token. A 32-character string. You do not need to set this parameter for the first search request. When the search request matches data, the server returns this parameter value to record the current position of the search data. Record the returned parameter value and set this parameter in the next search request based on the following requirements or suggestions: This parameter must be set if you want to traverse all data that matches the search conditions. If the PageNo parameter value exceeds 200, set this parameter to optimize search performance. You can only page forward, with a maximum paging distance of 1000 media assets.
         self.scroll_token = scroll_token
+        # The sort fields and sort orders, separated by commas (,). Format: field1:Desc,field2:Asc. The direction can only be Asc or Desc.
         self.sort_by = sort_by
 
     def validate(self):

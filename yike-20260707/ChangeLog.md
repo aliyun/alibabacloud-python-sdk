@@ -1,3 +1,10 @@
+2026-07-30 Version: 2.1.0
+- Support API GetRemakeScriptJob.
+- Support API GetVideoRenderJob.
+- Support API SubmitRemakeScriptJob.
+- Support API SubmitVideoRenderJob.
+
+
 2026-07-29 Version: 2.0.1
 - Update API GetMediaComprehensionJob: add response parameters Body.Job.
 - Update API SubmitMediaComprehensionJob: add request parameters Input.

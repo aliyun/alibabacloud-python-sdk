@@ -17,11 +17,17 @@ class SearchMediaResponseBody(DaraModel):
         success: str = None,
         total: int = None,
     ):
+        # The return code.
         self.code = code
+        # The collection of media assets that meet the specified criteria.
         self.media_info_list = media_info_list
+        # The request ID.
         self.request_id = request_id
+        # The pagination token.
         self.scroll_token = scroll_token
+        # Indicates whether the call was successful.
         self.success = success
+        # The total number of media assets that meet the specified criteria.
         self.total = total
 
     def validate(self):
@@ -90,9 +96,13 @@ class SearchMediaResponseBodyMediaInfoList(DaraModel):
         media_dynamic_info: main_models.SearchMediaResponseBodyMediaInfoListMediaDynamicInfo = None,
         media_id: str = None,
     ):
+        # The list of media files.
         self.file_info_list = file_info_list
+        # The basic information of the media asset.
         self.media_basic_info = media_basic_info
+        # The dynamic data of the media asset.
         self.media_dynamic_info = media_dynamic_info
+        # The media asset ID.
         self.media_id = media_id
 
     def validate(self):
@@ -152,6 +162,7 @@ class SearchMediaResponseBodyMediaInfoListMediaDynamicInfo(DaraModel):
         self,
         dynamic_meta_data: main_models.SearchMediaResponseBodyMediaInfoListMediaDynamicInfoDynamicMetaData = None,
     ):
+        # The dynamic metadata.
         self.dynamic_meta_data = dynamic_meta_data
 
     def validate(self):
@@ -182,7 +193,9 @@ class SearchMediaResponseBodyMediaInfoListMediaDynamicInfoDynamicMetaData(DaraMo
         data: str = None,
         entity_id: str = None,
     ):
+        # The dynamic metadata content.
         self.data = data
+        # The entity ID.
         self.entity_id = entity_id
 
     def validate(self):
@@ -235,25 +248,45 @@ class SearchMediaResponseBodyMediaInfoListMediaBasicInfo(DaraModel):
         upload_source: str = None,
         user_data: str = None,
     ):
+        # The business type of the media asset.
         self.business_type = business_type
+        # The category ID.
         self.category_id = category_id
+        # The category name.
         self.category_name = category_name
+        # The cover URL.
         self.cover_url = cover_url
+        # The time when the media asset was created.
         self.create_time = create_time
+        # The content description.
         self.description = description
+        # The entity ID.
         self.entity_id = entity_id
+        # The media asset URL.
         self.input_url = input_url
+        # The media asset ID.
         self.media_id = media_id
+        # The tags.
         self.media_tags = media_tags
+        # The media type of the media asset.
         self.media_type = media_type
+        # The time when the media asset was last modified.
         self.modified_time = modified_time
+        # The snapshots.
         self.snapshots = snapshots
+        # The source of the media asset.
         self.source = source
+        # The sprite images.
         self.sprite_images = sprite_images
+        # The resource status.
         self.status = status
+        # The title.
         self.title = title
+        # The transcoding status.
         self.transcode_status = transcode_status
+        # The upload source of the media asset.
         self.upload_source = upload_source
+        # The user data.
         self.user_data = user_data
 
     def validate(self):
@@ -395,6 +428,7 @@ class SearchMediaResponseBodyMediaInfoListFileInfoList(DaraModel):
         self,
         file_basic_info: main_models.SearchMediaResponseBodyMediaInfoListFileInfoListFileBasicInfo = None,
     ):
+        # The basic file information, including duration and size.
         self.file_basic_info = file_basic_info
 
     def validate(self):
@@ -437,19 +471,33 @@ class SearchMediaResponseBodyMediaInfoListFileInfoListFileBasicInfo(DaraModel):
         region: str = None,
         width: str = None,
     ):
+        # The bitrate.
         self.bitrate = bitrate
+        # The creation time.
         self.create_time = create_time
+        # The duration.
         self.duration = duration
+        # The file name.
         self.file_name = file_name
+        # The file size, in bytes.
         self.file_size = file_size
+        # The file status.
         self.file_status = file_status
+        # The file type.
         self.file_type = file_type
+        # The OSS URL of the file.
         self.file_url = file_url
+        # The container format.
         self.format_name = format_name
+        # The height.
         self.height = height
+        # The image set information.
         self.images_input = images_input
+        # The modification time.
         self.modified_time = modified_time
+        # The storage region of the file.
         self.region = region
+        # The width.
         self.width = width
 
     def validate(self):

@@ -18,15 +18,24 @@ class UpdateMediaRequest(DaraModel):
         title: str = None,
         user_data: str = None,
     ):
+        # Specifies whether to update the Tags field in append mode.
         self.append_tags = append_tags
         self.category_id = category_id
+        # The cover image URL. This parameter is valid only for video media assets.
         self.cover_url = cover_url
+        # The description.
         self.description = description
+        # The dynamic metadata.
         self.dynamic_meta_data = dynamic_meta_data
+        # The media type of the media asset.
         self.input_url = input_url
+        # The media asset ID.
         self.media_id = media_id
+        # The tags. Separate multiple tags with commas.
         self.media_tags = media_tags
+        # The title.
         self.title = title
+        # The user data. The maximum length is 1024 bytes.
         self.user_data = user_data
 
     def validate(self):

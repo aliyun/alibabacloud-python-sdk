@@ -10,7 +10,9 @@ class BatchGetMediasRequest(DaraModel):
         auth_timeout: int = None,
         media_ids: str = None,
     ):
+        # The validity period of the signed file access URL. Unit: seconds.
         self.auth_timeout = auth_timeout
+        # The IDs of the media assets to query, separated by commas.
         self.media_ids = media_ids
 
     def validate(self):

@@ -628,6 +628,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_media_comprehension_job_with_options_async(request, runtime)
 
+    def get_remake_script_job_with_options(
+        self,
+        request: main_models.GetRemakeScriptJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetRemakeScriptJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetRemakeScriptJob',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetRemakeScriptJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_remake_script_job_with_options_async(
+        self,
+        request: main_models.GetRemakeScriptJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetRemakeScriptJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetRemakeScriptJob',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetRemakeScriptJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_remake_script_job(
+        self,
+        request: main_models.GetRemakeScriptJobRequest,
+    ) -> main_models.GetRemakeScriptJobResponse:
+        runtime = RuntimeOptions()
+        return self.get_remake_script_job_with_options(request, runtime)
+
+    async def get_remake_script_job_async(
+        self,
+        request: main_models.GetRemakeScriptJobRequest,
+    ) -> main_models.GetRemakeScriptJobResponse:
+        runtime = RuntimeOptions()
+        return await self.get_remake_script_job_with_options_async(request, runtime)
+
     def get_video_generation_job_with_options(
         self,
         request: main_models.GetVideoGenerationJobRequest,
@@ -701,6 +771,76 @@ class Client(OpenApiClient):
     ) -> main_models.GetVideoGenerationJobResponse:
         runtime = RuntimeOptions()
         return await self.get_video_generation_job_with_options_async(request, runtime)
+
+    def get_video_render_job_with_options(
+        self,
+        request: main_models.GetVideoRenderJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetVideoRenderJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetVideoRenderJob',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetVideoRenderJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_video_render_job_with_options_async(
+        self,
+        request: main_models.GetVideoRenderJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetVideoRenderJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetVideoRenderJob',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetVideoRenderJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_video_render_job(
+        self,
+        request: main_models.GetVideoRenderJobRequest,
+    ) -> main_models.GetVideoRenderJobResponse:
+        runtime = RuntimeOptions()
+        return self.get_video_render_job_with_options(request, runtime)
+
+    async def get_video_render_job_async(
+        self,
+        request: main_models.GetVideoRenderJobRequest,
+    ) -> main_models.GetVideoRenderJobResponse:
+        runtime = RuntimeOptions()
+        return await self.get_video_render_job_with_options_async(request, runtime)
 
     def get_yike_account_credit_with_options(
         self,
@@ -1302,6 +1442,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.submit_media_comprehension_job_with_options_async(request, runtime)
 
+    def submit_remake_script_job_with_options(
+        self,
+        request: main_models.SubmitRemakeScriptJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitRemakeScriptJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.remake_params):
+            query['RemakeParams'] = request.remake_params
+        if not DaraCore.is_null(request.remake_type):
+            query['RemakeType'] = request.remake_type
+        if not DaraCore.is_null(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitRemakeScriptJob',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitRemakeScriptJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_remake_script_job_with_options_async(
+        self,
+        request: main_models.SubmitRemakeScriptJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitRemakeScriptJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.remake_params):
+            query['RemakeParams'] = request.remake_params
+        if not DaraCore.is_null(request.remake_type):
+            query['RemakeType'] = request.remake_type
+        if not DaraCore.is_null(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitRemakeScriptJob',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitRemakeScriptJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_remake_script_job(
+        self,
+        request: main_models.SubmitRemakeScriptJobRequest,
+    ) -> main_models.SubmitRemakeScriptJobResponse:
+        runtime = RuntimeOptions()
+        return self.submit_remake_script_job_with_options(request, runtime)
+
+    async def submit_remake_script_job_async(
+        self,
+        request: main_models.SubmitRemakeScriptJobRequest,
+    ) -> main_models.SubmitRemakeScriptJobResponse:
+        runtime = RuntimeOptions()
+        return await self.submit_remake_script_job_with_options_async(request, runtime)
+
     def submit_video_generation_job_with_options(
         self,
         request: main_models.SubmitVideoGenerationJobRequest,
@@ -1411,6 +1629,84 @@ class Client(OpenApiClient):
     ) -> main_models.SubmitVideoGenerationJobResponse:
         runtime = RuntimeOptions()
         return await self.submit_video_generation_job_with_options_async(request, runtime)
+
+    def submit_video_render_job_with_options(
+        self,
+        request: main_models.SubmitVideoRenderJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitVideoRenderJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.script):
+            query['Script'] = request.script
+        if not DaraCore.is_null(request.settings):
+            query['Settings'] = request.settings
+        if not DaraCore.is_null(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitVideoRenderJob',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitVideoRenderJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_video_render_job_with_options_async(
+        self,
+        request: main_models.SubmitVideoRenderJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitVideoRenderJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.script):
+            query['Script'] = request.script
+        if not DaraCore.is_null(request.settings):
+            query['Settings'] = request.settings
+        if not DaraCore.is_null(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitVideoRenderJob',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitVideoRenderJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_video_render_job(
+        self,
+        request: main_models.SubmitVideoRenderJobRequest,
+    ) -> main_models.SubmitVideoRenderJobResponse:
+        runtime = RuntimeOptions()
+        return self.submit_video_render_job_with_options(request, runtime)
+
+    async def submit_video_render_job_async(
+        self,
+        request: main_models.SubmitVideoRenderJobRequest,
+    ) -> main_models.SubmitVideoRenderJobResponse:
+        runtime = RuntimeOptions()
+        return await self.submit_video_render_job_with_options_async(request, runtime)
 
     def submit_video_translation_job_with_options(
         self,

@@ -12,8 +12,11 @@ class GetYikeAccountCreditResponseBody(DaraModel):
         membership_info: main_models.GetYikeAccountCreditResponseBodyMembershipInfo = None,
         request_id: str = None,
     ):
+        # The credit information.
         self.credit_info = credit_info
+        # The membership information.
         self.membership_info = membership_info
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -60,8 +63,16 @@ class GetYikeAccountCreditResponseBodyMembershipInfo(DaraModel):
         membership: str = None,
         start_time: str = None,
     ):
+        # The end time.
         self.end_time = end_time
+        # The membership level. Valid values:
+        # 
+        # - basic: Basic Edition.
+        # - standard: Standard Edition.
+        # - professional: Ultimate Edition.
+        # - ultra: Ultra Edition.
         self.membership = membership
+        # The start time.
         self.start_time = start_time
 
     def validate(self):
@@ -106,11 +117,17 @@ class GetYikeAccountCreditResponseBodyCreditInfo(DaraModel):
         resource_credit_quota: float = None,
         resource_credit_quota_usage: float = None,
     ):
+        # The total granted credits.
         self.granted_credit_quota = granted_credit_quota
+        # The remaining granted credits.
         self.granted_credit_quota_usage = granted_credit_quota_usage
+        # The total credits of the booster pack.
         self.pack_credit_quota = pack_credit_quota
+        # The remaining credits of the booster pack.
         self.pack_credit_quota_usage = pack_credit_quota_usage
+        # The total credits of the membership plan.
         self.resource_credit_quota = resource_credit_quota
+        # The remaining credits of the membership plan.
         self.resource_credit_quota_usage = resource_credit_quota_usage
 
     def validate(self):

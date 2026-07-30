@@ -14,8 +14,11 @@ class ListAssetCategoriesResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
+        # The list of categories on the current page.
         self.categories = categories
+        # The request ID.
         self.request_id = request_id
+        # The total number of categories.
         self.total = total
 
     def validate(self):
@@ -66,9 +69,13 @@ class ListAssetCategoriesResponseBodyCategories(DaraModel):
         level: str = None,
         parent_id: int = None,
     ):
+        # The category ID.
         self.category_id = category_id
+        # The category name.
         self.category_name = category_name
+        # The category level. A level-1 category has a value of 0, a level-2 category has a value of 1, and a level-3 category has a value of 2.
         self.level = level
+        # The parent category ID.
         self.parent_id = parent_id
 
     def validate(self):

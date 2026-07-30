@@ -10,8 +10,15 @@ class CreateAssetCategoryRequest(DaraModel):
         category_name: str = None,
         parent_id: int = None,
     ):
+        # The category name.
+        # 
+        # Maximum length: 64 bytes.
+        # 
+        # UTF-8 encoding.
+        # 
         # This parameter is required.
         self.category_name = category_name
+        # The parent category ID.
         self.parent_id = parent_id
 
     def validate(self):

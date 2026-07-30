@@ -22,17 +22,29 @@ class ImportMediaRequest(DaraModel):
         user_data: str = None,
     ):
         self.category_id = category_id
+        # The cover image URL. This parameter is valid only for video media assets.
         self.cover_url = cover_url
+        # The description of the media asset.
         self.description = description
+        # The dynamic metadata.
         self.dynamic_meta_data = dynamic_meta_data
+        # The entity ID.
         self.entity_id = entity_id
+        # The media asset source. Set this parameter to url.
         self.import_source = import_source
+        # The URL of the media asset.
         self.input_url = input_url
+        # The tags of the media asset. Separate multiple tags with commas.
         self.media_tags = media_tags
+        # The type of the media asset.
         self.media_type = media_type
+        # Specifies whether to overwrite existing media assets.
         self.overwrite = overwrite
+        # The configuration for registering the media asset.
         self.register_config = register_config
+        # The title of the media asset.
         self.title = title
+        # The user data. The maximum size is 1024 bytes.
         self.user_data = user_data
 
     def validate(self):

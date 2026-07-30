@@ -11,8 +11,11 @@ class DeleteMediasRequest(DaraModel):
         input_urls: str = None,
         media_ids: str = None,
     ):
+        # Specifies whether to delete the physical files at the same time.
         self.delete_physical_files = delete_physical_files
+        # Not supported.
         self.input_urls = input_urls
+        # The media asset IDs, separated by commas. Invalid IDs are added to the IgnoredList.
         self.media_ids = media_ids
 
     def validate(self):

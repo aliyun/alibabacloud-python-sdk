@@ -10,7 +10,9 @@ class SubmitVideoTranslationJobResponseBody(DaraModel):
         job_id: str = None,
         request_id: str = None,
     ):
+        # `data.JobId`
         self.job_id = job_id
+        # `requestId`
         self.request_id = request_id
 
     def validate(self):

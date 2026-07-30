@@ -14,8 +14,11 @@ class GetMediaComprehensionJobResponseBody(DaraModel):
         media_comprehension_job: main_models.GetMediaComprehensionJobResponseBodyMediaComprehensionJob = None,
         request_id: str = None,
     ):
+        # The media asset content understanding result object.
         self.job = job
+        # The media asset content understanding object. This parameter is deprecated.
         self.media_comprehension_job = media_comprehension_job
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -66,12 +69,25 @@ class GetMediaComprehensionJobResponseBodyMediaComprehensionJob(DaraModel):
         state: str = None,
         user_data: str = None,
     ):
+        # The error code. This parameter is returned when the job is in the `Failed` state.
         self.error_code = error_code
+        # The error message. This parameter is returned when the job is in the Failed state.
         self.error_message = error_message
+        # The job ID.
         self.job_id = job_id
+        # The media asset ID.
         self.media_id = media_id
+        # The analysis result, which is a JSON string.
         self.result = result
+        # The file status. Valid values:
+        # 
+        # - **Created**: Created.
+        # - **Executing**: Executing.
+        # - **Finished**: Finished.
+        # - **Failed**: Failed.
+        # - **Deleted**: Deleted.
         self.state = state
+        # The user-defined parameter, which is a JSON-formatted string.
         self.user_data = user_data
 
     def validate(self):
@@ -140,11 +156,23 @@ class GetMediaComprehensionJobResponseBodyJob(DaraModel):
         status: str = None,
         user_data: str = None,
     ):
+        # The error code. This parameter is returned when the job is in the Failed state.
         self.error_code = error_code
+        # The error message. This parameter is returned when the job is in the Failed state.
         self.error_message = error_message
+        # The list of media asset IDs. If the input is a URL, the media asset ID registered after input is returned.
         self.media_ids = media_ids
+        # The URL of the analysis result file. The file content is in JSON format.
         self.result = result
+        # The file status. Valid values:
+        # 
+        # - **Created**: Created.
+        # - **Executing**: Executing.
+        # - **Finished**: Finished.
+        # - **Failed**: Failed.
+        # - **Deleted**: Deleted.
         self.status = status
+        # The user-defined parameter, which is a JSON-formatted string.
         self.user_data = user_data
 
     def validate(self):

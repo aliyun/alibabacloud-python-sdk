@@ -4,13 +4,13 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class UpdateAssetCategoryResponseBody(DaraModel):
+class GetRemakeScriptJobRequest(DaraModel):
     def __init__(
         self,
-        request_id: str = None,
+        job_id: str = None,
     ):
-        # The request ID.
-        self.request_id = request_id
+        # The task ID.
+        self.job_id = job_id
 
     def validate(self):
         pass
@@ -20,15 +20,15 @@ class UpdateAssetCategoryResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
 
         return self
 

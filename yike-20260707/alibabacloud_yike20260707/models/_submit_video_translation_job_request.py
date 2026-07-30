@@ -16,17 +16,36 @@ class SubmitVideoTranslationJobRequest(DaraModel):
         title: str = None,
         user_data: str = None,
     ):
+        # The user-level idempotency key.
         self.client_token = client_token
+        # The job description.
         self.description = description
+        # The input configuration JSON string:
+        # - Video
+        # - Audio
+        # - Subtitle
+        # 
+        # <notice>Currently, only OSS addresses under the calling account are supported as input.</notice>
+        # 
         # This parameter is required.
         self.input = input
+        # The job parameters JSON string.
+        # 
         # This parameter is required.
         self.job_parameters = job_parameters
+        # The job type. Valid values:
+        # - SubtitleTranslate
+        # - VoiceTranslate
+        # 
         # This parameter is required.
         self.job_type = job_type
+        # The output configuration JSON string.
+        # 
         # This parameter is required.
         self.output = output
+        # If not specified, the service generates a default title.
         self.title = title
+        # The custom user data JSON string.
         self.user_data = user_data
 
     def validate(self):

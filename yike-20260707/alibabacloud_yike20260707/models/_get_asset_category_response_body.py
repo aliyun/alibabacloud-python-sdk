@@ -15,9 +15,13 @@ class GetAssetCategoryResponseBody(DaraModel):
         sub_categories: List[main_models.GetAssetCategoryResponseBodySubCategories] = None,
         sub_total: int = None,
     ):
+        # The category details.
         self.category = category
+        # The request ID.
         self.request_id = request_id
+        # The list of subcategories.
         self.sub_categories = sub_categories
+        # The number of subcategories.
         self.sub_total = sub_total
 
     def validate(self):
@@ -78,10 +82,15 @@ class GetAssetCategoryResponseBodySubCategories(DaraModel):
         parent_id: int = None,
         sub_total: int = None,
     ):
+        # The category ID.
         self.category_id = category_id
+        # The category name.
         self.category_name = category_name
+        # The category level.
         self.level = level
+        # The parent category ID.
         self.parent_id = parent_id
+        # The total number of subcategories.
         self.sub_total = sub_total
 
     def validate(self):
@@ -136,9 +145,16 @@ class GetAssetCategoryResponseBodyCategory(DaraModel):
         level: int = None,
         parent_id: int = None,
     ):
+        # The category ID.
         self.category_id = category_id
+        # The category name.
         self.category_name = category_name
+        # The category level. Valid values:
+        # - **0**: level-1 category.
+        # - **1**: level-2 category.
+        # - **2**: level-3 category.
         self.level = level
+        # The parent category ID.
         self.parent_id = parent_id
 
     def validate(self):

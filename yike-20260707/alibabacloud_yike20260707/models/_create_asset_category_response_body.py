@@ -11,7 +11,9 @@ class CreateAssetCategoryResponseBody(DaraModel):
         category: main_models.CreateAssetCategoryResponseBodyCategory = None,
         request_id: str = None,
     ):
+        # The media asset category information.
         self.category = category
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -50,9 +52,13 @@ class CreateAssetCategoryResponseBodyCategory(DaraModel):
         level: int = None,
         parent_id: int = None,
     ):
+        # The ID of the created category.
         self.category_id = category_id
+        # The media asset category information.
         self.category_name = category_name
+        # The category level. The first-level category has a level of 0, the second-level category has a level of 1, and the third-level category has a level of 2.
         self.level = level
+        # The parent category ID. If the ParentId parameter is set to empty or a value less than 1, the default return value is -1, which indicates that the created category is a root directory.
         self.parent_id = parent_id
 
     def validate(self):

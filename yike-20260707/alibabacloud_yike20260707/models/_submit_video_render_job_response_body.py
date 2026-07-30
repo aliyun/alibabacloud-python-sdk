@@ -4,12 +4,15 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class UpdateAssetCategoryResponseBody(DaraModel):
+class SubmitVideoRenderJobResponseBody(DaraModel):
     def __init__(
         self,
+        error_code: str = None,
+        job_id: str = None,
         request_id: str = None,
     ):
-        # The request ID.
+        self.error_code = error_code
+        self.job_id = job_id
         self.request_id = request_id
 
     def validate(self):
@@ -20,6 +23,12 @@ class UpdateAssetCategoryResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+
         if self.request_id is not None:
             result['RequestId'] = self.request_id
 
@@ -27,6 +36,12 @@ class UpdateAssetCategoryResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
 

@@ -19,16 +19,45 @@ class SubmitVideoGenerationJobRequest(DaraModel):
         scene: str = None,
         user_data: str = None,
     ):
+        # The aspect ratio. Valid values: 16:9 (default), 9:16, 4:3, 3:4, and 1:1.
         self.aspect_ratio = aspect_ratio
+        # The idempotency token.
         self.client_token = client_token
+        # The output duration. Valid values: 4 to 15 seconds. Default value: 5s.
         self.duration = duration
+        # The task input in JSON string format. Fields include:
+        # 
+        # - Prompt: String. Required. The prompt.
+        # - Medias: The list of media items.
+        #   - When JobType is image_to_video, this field is required and only 1 Media item is needed.
+        #   - When JobType is first_last_frame, this field is required and exactly 2 Media items are needed.
+        #   - When JobType is reference_to_video, this field is required and up to 9 Media items are allowed.
+        # 
+        # > The Media structure contains: Type, the media type (String, valid values: `image`/`video`/`audio`); URL, the media download URL (String); MediaId, the media asset ID (String).
+        # >
         self.input = input
+        # The task feature parameters. No configuration is required at this time.
         self.job_parameters = job_parameters
+        # The task type. Valid values:
+        # 
+        # - text_to_video: text-to-video
+        # - image_to_video: image-to-video
+        # - first_last_frame: first and last frame to video
+        # - reference_to_video: reference-to-video
         self.job_type = job_type
+        # The model name. Valid values:
+        # 
+        # - happyhorse-1.1
+        # - happyhorse-1.0
+        # - wan2.7
         self.model = model
+        # The number of outputs. Valid values: 1 to 4. Default value: 1.
         self.n = n
+        # The resolution. Valid values: 720P (default) and 1080P.
         self.resolution = resolution
+        # The scene type. Currently only `general` is supported.
         self.scene = scene
+        # The user business data in JSON format.
         self.user_data = user_data
 
     def validate(self):

@@ -26,9 +26,15 @@ from ._get_media_response import GetMediaResponse
 from ._get_media_comprehension_job_request import GetMediaComprehensionJobRequest
 from ._get_media_comprehension_job_response_body import GetMediaComprehensionJobResponseBody
 from ._get_media_comprehension_job_response import GetMediaComprehensionJobResponse
+from ._get_remake_script_job_request import GetRemakeScriptJobRequest
+from ._get_remake_script_job_response_body import GetRemakeScriptJobResponseBody
+from ._get_remake_script_job_response import GetRemakeScriptJobResponse
 from ._get_video_generation_job_request import GetVideoGenerationJobRequest
 from ._get_video_generation_job_response_body import GetVideoGenerationJobResponseBody
 from ._get_video_generation_job_response import GetVideoGenerationJobResponse
+from ._get_video_render_job_request import GetVideoRenderJobRequest
+from ._get_video_render_job_response_body import GetVideoRenderJobResponseBody
+from ._get_video_render_job_response import GetVideoRenderJobResponse
 from ._get_yike_account_credit_request import GetYikeAccountCreditRequest
 from ._get_yike_account_credit_response_body import GetYikeAccountCreditResponseBody
 from ._get_yike_account_credit_response import GetYikeAccountCreditResponse
@@ -50,9 +56,15 @@ from ._submit_image_generation_job_response import SubmitImageGenerationJobRespo
 from ._submit_media_comprehension_job_request import SubmitMediaComprehensionJobRequest
 from ._submit_media_comprehension_job_response_body import SubmitMediaComprehensionJobResponseBody
 from ._submit_media_comprehension_job_response import SubmitMediaComprehensionJobResponse
+from ._submit_remake_script_job_request import SubmitRemakeScriptJobRequest
+from ._submit_remake_script_job_response_body import SubmitRemakeScriptJobResponseBody
+from ._submit_remake_script_job_response import SubmitRemakeScriptJobResponse
 from ._submit_video_generation_job_request import SubmitVideoGenerationJobRequest
 from ._submit_video_generation_job_response_body import SubmitVideoGenerationJobResponseBody
 from ._submit_video_generation_job_response import SubmitVideoGenerationJobResponse
+from ._submit_video_render_job_request import SubmitVideoRenderJobRequest
+from ._submit_video_render_job_response_body import SubmitVideoRenderJobResponseBody
+from ._submit_video_render_job_response import SubmitVideoRenderJobResponse
 from ._submit_video_translation_job_request import SubmitVideoTranslationJobRequest
 from ._submit_video_translation_job_response_body import SubmitVideoTranslationJobResponseBody
 from ._submit_video_translation_job_response import SubmitVideoTranslationJobResponse
@@ -86,7 +98,9 @@ from ._get_media_response_body import GetMediaResponseBodyMediaInfoMediaDynamicI
 from ._get_media_response_body import GetMediaResponseBodyMediaInfo
 from ._get_media_comprehension_job_response_body import GetMediaComprehensionJobResponseBodyJob
 from ._get_media_comprehension_job_response_body import GetMediaComprehensionJobResponseBodyMediaComprehensionJob
+from ._get_remake_script_job_response_body import GetRemakeScriptJobResponseBodyJob
 from ._get_video_generation_job_response_body import GetVideoGenerationJobResponseBodyVideoGenerationJob
+from ._get_video_render_job_response_body import GetVideoRenderJobResponseBodyJob
 from ._get_yike_account_credit_response_body import GetYikeAccountCreditResponseBodyCreditInfo
 from ._get_yike_account_credit_response_body import GetYikeAccountCreditResponseBodyMembershipInfo
 from ._list_asset_categories_response_body import ListAssetCategoriesResponseBodyCategories
@@ -122,9 +136,15 @@ __all__ = [
     GetMediaComprehensionJobRequest,
     GetMediaComprehensionJobResponseBody,
     GetMediaComprehensionJobResponse,
+    GetRemakeScriptJobRequest,
+    GetRemakeScriptJobResponseBody,
+    GetRemakeScriptJobResponse,
     GetVideoGenerationJobRequest,
     GetVideoGenerationJobResponseBody,
     GetVideoGenerationJobResponse,
+    GetVideoRenderJobRequest,
+    GetVideoRenderJobResponseBody,
+    GetVideoRenderJobResponse,
     GetYikeAccountCreditRequest,
     GetYikeAccountCreditResponseBody,
     GetYikeAccountCreditResponse,
@@ -146,9 +166,15 @@ __all__ = [
     SubmitMediaComprehensionJobRequest,
     SubmitMediaComprehensionJobResponseBody,
     SubmitMediaComprehensionJobResponse,
+    SubmitRemakeScriptJobRequest,
+    SubmitRemakeScriptJobResponseBody,
+    SubmitRemakeScriptJobResponse,
     SubmitVideoGenerationJobRequest,
     SubmitVideoGenerationJobResponseBody,
     SubmitVideoGenerationJobResponse,
+    SubmitVideoRenderJobRequest,
+    SubmitVideoRenderJobResponseBody,
+    SubmitVideoRenderJobResponse,
     SubmitVideoTranslationJobRequest,
     SubmitVideoTranslationJobResponseBody,
     SubmitVideoTranslationJobResponse,
@@ -182,7 +208,9 @@ __all__ = [
     GetMediaResponseBodyMediaInfo,
     GetMediaComprehensionJobResponseBodyJob,
     GetMediaComprehensionJobResponseBodyMediaComprehensionJob,
+    GetRemakeScriptJobResponseBodyJob,
     GetVideoGenerationJobResponseBodyVideoGenerationJob,
+    GetVideoRenderJobResponseBodyJob,
     GetYikeAccountCreditResponseBodyCreditInfo,
     GetYikeAccountCreditResponseBodyMembershipInfo,
     ListAssetCategoriesResponseBodyCategories,

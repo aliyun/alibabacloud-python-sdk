@@ -10,7 +10,9 @@ class ListAssetCategoriesRequest(DaraModel):
         page_no: int = None,
         page_size: int = None,
     ):
+        # The current page number. Default value: 1.
         self.page_no = page_no
+        # The page size. Default value: 10.
         self.page_size = page_size
 
     def validate(self):
