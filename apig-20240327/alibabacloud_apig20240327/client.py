@@ -711,6 +711,9 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.CreateAiModelProviderResponse:
         request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
         body = {}
         if not DaraCore.is_null(request.display_name):
             body['displayName'] = request.display_name
@@ -722,6 +725,7 @@ class Client(OpenApiClient):
             body['serviceIds'] = request.service_ids
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
+            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -747,6 +751,9 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.CreateAiModelProviderResponse:
         request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
         body = {}
         if not DaraCore.is_null(request.display_name):
             body['displayName'] = request.display_name
@@ -758,6 +765,7 @@ class Client(OpenApiClient):
             body['serviceIds'] = request.service_ids
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
+            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -5463,6 +5471,8 @@ class Client(OpenApiClient):
     ) -> main_models.GetGatewayQuotaRuleSubjectUsageResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.filter_failed_requests):
+            query['filterFailedRequests'] = request.filter_failed_requests
         if not DaraCore.is_null(request.page_number):
             query['pageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
@@ -5498,6 +5508,8 @@ class Client(OpenApiClient):
     ) -> main_models.GetGatewayQuotaRuleSubjectUsageResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.filter_failed_requests):
+            query['filterFailedRequests'] = request.filter_failed_requests
         if not DaraCore.is_null(request.page_number):
             query['pageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
@@ -7824,6 +7836,8 @@ class Client(OpenApiClient):
             query['resourceGroupId'] = request.resource_group_id
         if not DaraCore.is_null(request.tag_shrink):
             query['tag'] = request.tag_shrink
+        if not DaraCore.is_null(request.vpc_id):
+            query['vpcId'] = request.vpc_id
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -7872,6 +7886,8 @@ class Client(OpenApiClient):
             query['resourceGroupId'] = request.resource_group_id
         if not DaraCore.is_null(request.tag_shrink):
             query['tag'] = request.tag_shrink
+        if not DaraCore.is_null(request.vpc_id):
+            query['vpcId'] = request.vpc_id
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)

@@ -15,9 +15,13 @@ class BatchRemoveConsumerGroupConsumersResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response status code. Ok is returned if the request is successful.
         self.code = code
+        # The response data.
         self.data = data
+        # The response message.
         self.message = message
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -67,8 +71,11 @@ class BatchRemoveConsumerGroupConsumersResponseBodyData(DaraModel):
         skipped_consumer_ids: List[str] = None,
         success_consumer_ids: List[str] = None,
     ):
+        # The list of consumer IDs that failed to be removed.
         self.failed_consumer_ids = failed_consumer_ids
+        # The list of consumer IDs skipped because they are not in the consumer group.
         self.skipped_consumer_ids = skipped_consumer_ids
+        # The list of consumer IDs successfully removed from the consumer group.
         self.success_consumer_ids = success_consumer_ids
 
     def validate(self):

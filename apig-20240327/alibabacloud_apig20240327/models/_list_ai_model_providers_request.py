@@ -12,10 +12,15 @@ class ListAiModelProvidersRequest(DaraModel):
         page_size: int = None,
         provider: str = None,
     ):
+        # The ID of the AI gateway instance. The target instance must exist, belong to the current account, and be of the AI gateway type.
+        # 
         # This parameter is required.
         self.gateway_id = gateway_id
+        # The page number. Default value: 1. The value must be greater than or equal to 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 10. Valid values: 1 to 500.
         self.page_size = page_size
+        # The fuzzy match condition for the model provider identifier. If left empty, all model providers under the current gateway are queried.
         self.provider = provider
 
     def validate(self):

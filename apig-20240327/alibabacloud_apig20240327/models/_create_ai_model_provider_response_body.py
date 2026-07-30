@@ -15,9 +15,13 @@ class CreateAiModelProviderResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response status code.
         self.code = code
+        # The response struct.
         self.data = data
+        # The response message.
         self.message = message
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -73,14 +77,23 @@ class CreateAiModelProviderResponseBodyData(DaraModel):
         source: str = None,
         update_time: str = None,
     ):
+        # The list of services bound to the provider.
         self.bound_services = bound_services
+        # The display name of the model provider.
         self.display_name = display_name
+        # The gateway instance ID.
         self.gateway_id = gateway_id
+        # The list of model cards under the provider.
         self.model_cards = model_cards
+        # The number of models under the provider.
         self.model_count = model_count
+        # The model provider ID.
         self.model_provider_id = model_provider_id
+        # The model provider identifier.
         self.provider = provider
+        # The provider source type.
         self.source = source
+        # The last update time in the yyyy-MM-ddTHH:mm:ssZ format.
         self.update_time = update_time
 
     def validate(self):
@@ -180,17 +193,30 @@ class CreateAiModelProviderResponseBodyDataModelCards(DaraModel):
         model_name: str = None,
         model_provider: str = None,
         source: str = None,
+        source_url: str = None,
         update_time: str = None,
     ):
+        # The list of available paths for the model.
         self.available_paths = available_paths
+        # The model credits consumption configuration.
         self.credit = credit
+        # The model capability features.
         self.features = features
+        # The gateway instance ID to which the model card belongs.
         self.gateway_id = gateway_id
+        # The model metadata.
         self.meta = meta
+        # The model card ID.
         self.model_card_id = model_card_id
+        # The model name.
         self.model_name = model_name
+        # The model provider identifier to which the model card belongs.
         self.model_provider = model_provider
+        # The model source.
         self.source = source
+        # The URL of the model metadata.
+        self.source_url = source_url
+        # The last update time in the yyyy-MM-ddTHH:mm:ssZ format.
         self.update_time = update_time
 
     def validate(self):
@@ -237,6 +263,9 @@ class CreateAiModelProviderResponseBodyDataModelCards(DaraModel):
         if self.source is not None:
             result['source'] = self.source
 
+        if self.source_url is not None:
+            result['sourceURL'] = self.source_url
+
         if self.update_time is not None:
             result['updateTime'] = self.update_time
 
@@ -276,6 +305,9 @@ class CreateAiModelProviderResponseBodyDataModelCards(DaraModel):
         if m.get('source') is not None:
             self.source = m.get('source')
 
+        if m.get('sourceURL') is not None:
+            self.source_url = m.get('sourceURL')
+
         if m.get('updateTime') is not None:
             self.update_time = m.get('updateTime')
 
@@ -290,10 +322,15 @@ class CreateAiModelProviderResponseBodyDataModelCardsMeta(DaraModel):
         supported_input_modalities: List[str] = None,
         supported_output_modalities: List[str] = None,
     ):
+        # The maximum number of input tokens.
         self.max_input_tokens = max_input_tokens
+        # The maximum number of output tokens.
         self.max_output_tokens = max_output_tokens
+        # The maximum total number of tokens.
         self.max_tokens = max_tokens
+        # The supported input modalities.
         self.supported_input_modalities = supported_input_modalities
+        # The supported output modalities.
         self.supported_output_modalities = supported_output_modalities
 
     def validate(self):
@@ -348,9 +385,13 @@ class CreateAiModelProviderResponseBodyDataModelCardsCredit(DaraModel):
         output_cost: float = None,
         type: str = None,
     ):
+        # The credits consumption coefficient for cached tokens.
         self.cache_cost = cache_cost
+        # The credits consumption coefficient for input tokens.
         self.input_cost = input_cost
+        # The credits consumption coefficient for output tokens.
         self.output_cost = output_cost
+        # The credits billing type.
         self.type = type
 
     def validate(self):
@@ -397,7 +438,9 @@ class CreateAiModelProviderResponseBodyDataModelCardsAvailablePaths(DaraModel):
         path: str = None,
         type: str = None,
     ):
+        # The API path.
         self.path = path
+        # The path type.
         self.type = type
 
     def validate(self):

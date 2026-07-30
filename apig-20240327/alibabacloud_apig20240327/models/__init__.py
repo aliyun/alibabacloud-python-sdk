@@ -580,6 +580,7 @@ from ._jwt_identity_config import JwtIdentityConfigJwtPayloadConfig
 from ._jwt_identity_config import JwtIdentityConfigJwtTokenConfig
 from ._risk_check_results import RiskCheckResultsMetadata
 from ._risk_check_results import RiskCheckResultsRiskDetails
+from ._service import ServiceOutlierDetection
 from ._service import ServicePorts
 from ._service import ServiceVersionsLabels
 from ._service import ServiceVersions
@@ -1421,6 +1422,7 @@ __all__ = [
     JwtIdentityConfigJwtTokenConfig,
     RiskCheckResultsMetadata,
     RiskCheckResultsRiskDetails,
+    ServiceOutlierDetection,
     ServicePorts,
     ServiceVersionsLabels,
     ServiceVersions,

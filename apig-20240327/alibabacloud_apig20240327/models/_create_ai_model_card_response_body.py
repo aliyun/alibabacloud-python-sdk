@@ -15,9 +15,13 @@ class CreateAiModelCardResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response status code.
         self.code = code
+        # The model card information returned after successful creation.
         self.data = data
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -74,15 +78,25 @@ class CreateAiModelCardResponseBodyData(DaraModel):
         source: str = None,
         update_time: str = None,
     ):
+        # The list of invocation paths supported by the model.
         self.available_paths = available_paths
+        # The credit billing information of the model.
         self.credit = credit
+        # The model capability switches.
         self.features = features
+        # The AI gateway instance ID to which the model card belongs.
         self.gateway_id = gateway_id
+        # The token limits and input/output modality information of the model.
         self.meta = meta
+        # The model card ID.
         self.model_card_id = model_card_id
+        # The model name.
         self.model_name = model_name
+        # The model provider identifier.
         self.model_provider = model_provider
+        # The source of the model card. Currently, user is returned.
         self.source = source
+        # The last update time of the model card, in the format of yyyy-MM-dd HH:mm:ss.
         self.update_time = update_time
 
     def validate(self):
@@ -182,10 +196,15 @@ class CreateAiModelCardResponseBodyDataMeta(DaraModel):
         supported_input_modalities: List[str] = None,
         supported_output_modalities: List[str] = None,
     ):
+        # The maximum number of input tokens supported by the model.
         self.max_input_tokens = max_input_tokens
+        # The maximum number of output tokens supported by the model.
         self.max_output_tokens = max_output_tokens
+        # The maximum total number of context tokens supported by the model.
         self.max_tokens = max_tokens
+        # The list of input modalities supported by the model.
         self.supported_input_modalities = supported_input_modalities
+        # The list of output modalities supported by the model.
         self.supported_output_modalities = supported_output_modalities
 
     def validate(self):
@@ -240,9 +259,13 @@ class CreateAiModelCardResponseBodyDataCredit(DaraModel):
         output_cost: float = None,
         type: str = None,
     ):
+        # The cache hit token cost, in Credits per million tokens.
         self.cache_cost = cache_cost
+        # The input token cost, in Credits per million tokens.
         self.input_cost = input_cost
+        # The output token cost, in Credits per million tokens.
         self.output_cost = output_cost
+        # The billing type. Currently, fixed is returned.
         self.type = type
 
     def validate(self):
@@ -289,7 +312,9 @@ class CreateAiModelCardResponseBodyDataAvailablePaths(DaraModel):
         path: str = None,
         type: str = None,
     ):
+        # The model invocation path.
         self.path = path
+        # The protocol type corresponding to the path.
         self.type = type
 
     def validate(self):

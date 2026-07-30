@@ -23,17 +23,17 @@ class AgentServiceConfig(DaraModel):
         # 
         # This parameter is required.
         self.address = address
-        # User-defined configuration
+        # The custom configuration. Required when provider is set to custom.
         self.custom_config = custom_config
-        # The Model Studio service configuration.
+        # The DashScope service configuration. Required when provider is set to qwen. The appCredentials parameter cannot be empty, and each entry must have non-empty appId and apiKey values.
         self.dash_scope_config = dash_scope_config
-        # The Dify service configuration.
+        # The Dify service configuration. Required when provider is set to dify. The botType and apiKey parameters cannot be empty.
         self.dify_config = dify_config
         # Specifies whether to enable health check.
         self.enable_health_check = enable_health_check
-        # Whether to enable outlier detection
+        # Specifies whether to enable outlier detection.
         self.enable_outlier_detection = enable_outlier_detection
-        # The protocol.
+        # The list of communication protocols.
         self.protocols = protocols
         # The service provider.
         # 
@@ -228,9 +228,9 @@ class AgentServiceConfigCustomConfig(DaraModel):
         api_key: str = None,
         api_key_generate_mode: str = None,
     ):
-        # apiKey
+        # The API key.
         self.api_key = api_key
-        # API key generation mode.
+        # The key generation mode.
         self.api_key_generate_mode = api_key_generate_mode
 
     def validate(self):

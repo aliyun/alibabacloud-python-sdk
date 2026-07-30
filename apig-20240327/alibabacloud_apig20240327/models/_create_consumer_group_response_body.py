@@ -13,9 +13,13 @@ class CreateConsumerGroupResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response status code. Ok is returned if the request is successful.
         self.code = code
+        # The response data.
         self.data = data
+        # The response message.
         self.message = message
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -64,7 +68,9 @@ class CreateConsumerGroupResponseBodyData(DaraModel):
         consumer_group_id: str = None,
         gateway_type: str = None,
     ):
+        # The consumer group ID.
         self.consumer_group_id = consumer_group_id
+        # The gateway type. Valid values: API or AI.
         self.gateway_type = gateway_type
 
     def validate(self):

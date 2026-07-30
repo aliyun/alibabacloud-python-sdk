@@ -13,14 +13,24 @@ class CreateAiModelProviderRequest(DaraModel):
         gateway_id: str = None,
         provider: str = None,
         service_ids: List[str] = None,
+        client_token: str = None,
     ):
+        # The display name of the model provider.
+        # 
         # This parameter is required.
         self.display_name = display_name
+        # The gateway instance ID.
+        # 
         # This parameter is required.
         self.gateway_id = gateway_id
+        # The model provider identifier.
+        # 
         # This parameter is required.
         self.provider = provider
+        # The list of service IDs to bind to the provider.
         self.service_ids = service_ids
+        # The client token that is used to ensure the idempotence of the request.
+        self.client_token = client_token
 
     def validate(self):
         pass
@@ -42,6 +52,9 @@ class CreateAiModelProviderRequest(DaraModel):
         if self.service_ids is not None:
             result['serviceIds'] = self.service_ids
 
+        if self.client_token is not None:
+            result['clientToken'] = self.client_token
+
         return result
 
     def from_map(self, m: dict = None):
@@ -57,6 +70,9 @@ class CreateAiModelProviderRequest(DaraModel):
 
         if m.get('serviceIds') is not None:
             self.service_ids = m.get('serviceIds')
+
+        if m.get('clientToken') is not None:
+            self.client_token = m.get('clientToken')
 
         return self
 

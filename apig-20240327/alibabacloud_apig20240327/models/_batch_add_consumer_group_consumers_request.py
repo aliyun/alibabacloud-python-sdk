@@ -11,6 +11,7 @@ class BatchAddConsumerGroupConsumersRequest(DaraModel):
         self,
         consumer_ids: List[str] = None,
     ):
+        # The list of consumer IDs to add to the consumer group.
         self.consumer_ids = consumer_ids
 
     def validate(self):

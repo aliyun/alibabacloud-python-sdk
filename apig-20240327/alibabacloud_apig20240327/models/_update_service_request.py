@@ -145,7 +145,7 @@ class UpdateServiceRequestPorts(DaraModel):
     ):
         # The port name.
         self.name = name
-        # The port.
+        # The port number.
         self.port = port
         # The protocol.
         self.protocol = protocol
@@ -191,7 +191,7 @@ class UpdateServiceRequestOutlierDetectionConfig(DaraModel):
         failure_percentage_threshold: int = None,
         interval: int = None,
     ):
-        # The initial ejection duration. This is the initial isolation duration after a node is ejected (for example, 30 seconds). The isolation duration is calculated by using the formula: k × base_ejection_time (k starts at 1). Each ejection increases the isolation duration (k is incremented by 1). If consecutive checks are normal, the isolation duration is gradually reduced (k is decremented by 1).
+        # The base ejection time. This is the initial isolation duration after a node is ejected (for example, 30 seconds). The isolation time is calculated using the formula: k × base_ejection_time (where k starts at 1). Each ejection increases the isolation time (k is incremented by one). If consecutive checks are healthy, the isolation time is gradually reduced (k is decremented by one).
         self.base_ejection_time = base_ejection_time
         # enable
         self.enable = enable
@@ -199,7 +199,7 @@ class UpdateServiceRequestOutlierDetectionConfig(DaraModel):
         # 
         # When the proportion of healthy nodes in the service is greater than the panic threshold, health checks function normally and requests are sent only to healthy nodes, not to ejected nodes. When the proportion of healthy nodes in the service is less than or equal to the panic threshold, health checks are effectively disabled and requests are sent to all nodes, including ejected nodes.
         self.failure_percentage_minimum_hosts = failure_percentage_minimum_hosts
-        # The failure percentage threshold. When the percentage of failed requests on a node reaches this threshold, the system triggers the ejection mechanism for the node.
+        # The failure percentage threshold. When the proportion of failed requests for a node reaches this threshold, the system triggers the ejection mechanism for that node.
         self.failure_percentage_threshold = failure_percentage_threshold
         # The detection interval.
         self.interval = interval

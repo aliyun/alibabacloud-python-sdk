@@ -14,15 +14,18 @@ class Service(DaraModel):
         agent_service_config: main_models.AgentServiceConfig = None,
         ai_service_config: main_models.AiServiceConfig = None,
         create_timestamp: int = None,
+        dns_servers: List[str] = None,
         express_type: str = None,
         gateway_id: str = None,
         group_name: str = None,
         health_check: main_models.ServiceHealthCheck = None,
         health_status: str = None,
+        healthy_panic_threshold: float = None,
         label_details: List[main_models.LabelDetail] = None,
         model_provider_id: str = None,
         name: str = None,
         namespace: str = None,
+        outlier_detection: main_models.ServiceOutlierDetection = None,
         outlier_endpoints: List[str] = None,
         ports: List[main_models.ServicePorts] = None,
         protocol: str = None,
@@ -36,7 +39,7 @@ class Service(DaraModel):
         update_timestamp: int = None,
         versions: List[main_models.ServiceVersions] = None,
     ):
-        # The address information, including IP addresses or domain names.
+        # The address information, including IP addresses or domain name lists.
         self.addresses = addresses
         # The agent service configuration.
         self.agent_service_config = agent_service_config
@@ -44,25 +47,26 @@ class Service(DaraModel):
         self.ai_service_config = ai_service_config
         # The time when the service was created.
         self.create_timestamp = create_timestamp
-        # The CloudFlow execution mode.
+        self.dns_servers = dns_servers
+        # The execution mode of CloudFlow.
         self.express_type = express_type
         # The gateway instance ID.
         self.gateway_id = gateway_id
-        # The service group name.
+        # The name of the service group.
         self.group_name = group_name
         # The health check configuration.
         self.health_check = health_check
-        # The health check status. Valid values:
-        # - Healthy
-        # - Unhealthy
+        # The health check status. Valid values: Healthy and Unhealthy.
         self.health_status = health_status
+        self.healthy_panic_threshold = healthy_panic_threshold
         # The label information of the service.
         self.label_details = label_details
         self.model_provider_id = model_provider_id
-        # The service name.
+        # The name of the service.
         self.name = name
         # The namespace.
         self.namespace = namespace
+        self.outlier_detection = outlier_detection
         # The circuit-broken endpoints.
         self.outlier_endpoints = outlier_endpoints
         # The list of port information.
@@ -97,6 +101,8 @@ class Service(DaraModel):
             for v1 in self.label_details:
                  if v1:
                     v1.validate()
+        if self.outlier_detection:
+            self.outlier_detection.validate()
         if self.ports:
             for v1 in self.ports:
                  if v1:
@@ -123,6 +129,9 @@ class Service(DaraModel):
         if self.create_timestamp is not None:
             result['createTimestamp'] = self.create_timestamp
 
+        if self.dns_servers is not None:
+            result['dnsServers'] = self.dns_servers
+
         if self.express_type is not None:
             result['expressType'] = self.express_type
 
@@ -138,6 +147,9 @@ class Service(DaraModel):
         if self.health_status is not None:
             result['healthStatus'] = self.health_status
 
+        if self.healthy_panic_threshold is not None:
+            result['healthyPanicThreshold'] = self.healthy_panic_threshold
+
         result['labelDetails'] = []
         if self.label_details is not None:
             for k1 in self.label_details:
@@ -151,6 +163,9 @@ class Service(DaraModel):
 
         if self.namespace is not None:
             result['namespace'] = self.namespace
+
+        if self.outlier_detection is not None:
+            result['outlierDetection'] = self.outlier_detection.to_map()
 
         if self.outlier_endpoints is not None:
             result['outlierEndpoints'] = self.outlier_endpoints
@@ -210,6 +225,9 @@ class Service(DaraModel):
         if m.get('createTimestamp') is not None:
             self.create_timestamp = m.get('createTimestamp')
 
+        if m.get('dnsServers') is not None:
+            self.dns_servers = m.get('dnsServers')
+
         if m.get('expressType') is not None:
             self.express_type = m.get('expressType')
 
@@ -226,6 +244,9 @@ class Service(DaraModel):
         if m.get('healthStatus') is not None:
             self.health_status = m.get('healthStatus')
 
+        if m.get('healthyPanicThreshold') is not None:
+            self.healthy_panic_threshold = m.get('healthyPanicThreshold')
+
         self.label_details = []
         if m.get('labelDetails') is not None:
             for k1 in m.get('labelDetails'):
@@ -240,6 +261,10 @@ class Service(DaraModel):
 
         if m.get('namespace') is not None:
             self.namespace = m.get('namespace')
+
+        if m.get('outlierDetection') is not None:
+            temp_model = main_models.ServiceOutlierDetection()
+            self.outlier_detection = temp_model.from_map(m.get('outlierDetection'))
 
         if m.get('outlierEndpoints') is not None:
             self.outlier_endpoints = m.get('outlierEndpoints')
@@ -374,7 +399,7 @@ class ServicePorts(DaraModel):
         port: int = None,
         protocol: str = None,
     ):
-        # The port name.
+        # The name of the port.
         self.name = name
         # The port number.
         self.port = port
@@ -410,6 +435,65 @@ class ServicePorts(DaraModel):
 
         if m.get('protocol') is not None:
             self.protocol = m.get('protocol')
+
+        return self
+
+class ServiceOutlierDetection(DaraModel):
+    def __init__(
+        self,
+        base_ejection_time: int = None,
+        enable: bool = None,
+        failure_percentage_minimum_hosts: int = None,
+        failure_percentage_threshold: int = None,
+        interval: int = None,
+    ):
+        self.base_ejection_time = base_ejection_time
+        self.enable = enable
+        self.failure_percentage_minimum_hosts = failure_percentage_minimum_hosts
+        self.failure_percentage_threshold = failure_percentage_threshold
+        self.interval = interval
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.base_ejection_time is not None:
+            result['baseEjectionTime'] = self.base_ejection_time
+
+        if self.enable is not None:
+            result['enable'] = self.enable
+
+        if self.failure_percentage_minimum_hosts is not None:
+            result['failurePercentageMinimumHosts'] = self.failure_percentage_minimum_hosts
+
+        if self.failure_percentage_threshold is not None:
+            result['failurePercentageThreshold'] = self.failure_percentage_threshold
+
+        if self.interval is not None:
+            result['interval'] = self.interval
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('baseEjectionTime') is not None:
+            self.base_ejection_time = m.get('baseEjectionTime')
+
+        if m.get('enable') is not None:
+            self.enable = m.get('enable')
+
+        if m.get('failurePercentageMinimumHosts') is not None:
+            self.failure_percentage_minimum_hosts = m.get('failurePercentageMinimumHosts')
+
+        if m.get('failurePercentageThreshold') is not None:
+            self.failure_percentage_threshold = m.get('failurePercentageThreshold')
+
+        if m.get('interval') is not None:
+            self.interval = m.get('interval')
 
         return self
 

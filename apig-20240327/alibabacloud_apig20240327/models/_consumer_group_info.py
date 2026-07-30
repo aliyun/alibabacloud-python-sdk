@@ -11,8 +11,11 @@ class ConsumerGroupInfo(DaraModel):
         gateway_type: str = None,
         name: str = None,
     ):
+        # The consumer group ID.
         self.consumer_group_id = consumer_group_id
+        # The gateway type. Valid values: API or AI.
         self.gateway_type = gateway_type
+        # The consumer group name.
         self.name = name
 
     def validate(self):

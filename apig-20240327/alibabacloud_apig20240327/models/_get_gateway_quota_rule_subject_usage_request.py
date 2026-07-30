@@ -7,9 +7,11 @@ from darabonba.model import DaraModel
 class GetGatewayQuotaRuleSubjectUsageRequest(DaraModel):
     def __init__(
         self,
+        filter_failed_requests: bool = None,
         page_number: int = None,
         page_size: int = None,
     ):
+        self.filter_failed_requests = filter_failed_requests
         # The page number of the detailed consumption (request) records of the consumer within the cycle.
         self.page_number = page_number
         # The number of detailed consumption (request) records per page for the consumer within the cycle. Maximum value: 10.
@@ -23,6 +25,9 @@ class GetGatewayQuotaRuleSubjectUsageRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.filter_failed_requests is not None:
+            result['filterFailedRequests'] = self.filter_failed_requests
+
         if self.page_number is not None:
             result['pageNumber'] = self.page_number
 
@@ -33,6 +38,9 @@ class GetGatewayQuotaRuleSubjectUsageRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('filterFailedRequests') is not None:
+            self.filter_failed_requests = m.get('filterFailedRequests')
+
         if m.get('pageNumber') is not None:
             self.page_number = m.get('pageNumber')
 

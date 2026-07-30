@@ -12,8 +12,11 @@ class UpdateAiModelProviderRequest(DaraModel):
         display_name: str = None,
         service_ids: List[str] = None,
     ):
+        # The display name of the model provider. This parameter is required. The name can be up to 128 characters in length.
+        # 
         # This parameter is required.
         self.display_name = display_name
+        # The complete set of AI service IDs to bind to the model provider. If this parameter is not specified, the existing bindings are retained. If an empty array is specified, all bindings are cleared. Duplicate and empty values are normalized.
         self.service_ids = service_ids
 
     def validate(self):

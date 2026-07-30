@@ -18,12 +18,13 @@ class ListGatewaysRequest(DaraModel):
         page_size: int = None,
         resource_group_id: str = None,
         tag: List[main_models.ListGatewaysRequestTag] = None,
+        vpc_id: str = None,
     ):
         # The gateway ID for exact match query.
         self.gateway_id = gateway_id
         # The gateway type.
         self.gateway_type = gateway_type
-        # The keyword for full match search. Case-insensitive.
+        # The keyword for full match search. The search is case-insensitive.
         self.keyword = keyword
         # The gateway name for exact match query.
         self.name = name
@@ -31,10 +32,12 @@ class ListGatewaysRequest(DaraModel):
         self.page_number = page_number
         # The page size.
         self.page_size = page_size
-        # The resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         # The list of tags.
         self.tag = tag
+        # The virtual private cloud (VPC) ID.
+        self.vpc_id = vpc_id
 
     def validate(self):
         if self.tag:
@@ -73,6 +76,9 @@ class ListGatewaysRequest(DaraModel):
             for k1 in self.tag:
                 result['tag'].append(k1.to_map() if k1 else None)
 
+        if self.vpc_id is not None:
+            result['vpcId'] = self.vpc_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -103,6 +109,9 @@ class ListGatewaysRequest(DaraModel):
             for k1 in m.get('tag'):
                 temp_model = main_models.ListGatewaysRequestTag()
                 self.tag.append(temp_model.from_map(k1))
+
+        if m.get('vpcId') is not None:
+            self.vpc_id = m.get('vpcId')
 
         return self
 

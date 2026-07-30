@@ -41,6 +41,8 @@ class CreateAndAttachPolicyRequest(DaraModel):
         # The gateway ID.
         self.gateway_id = gateway_id
         # The policy name.
+        # This parameter is required when className is set to IpAccessControl, JWTAuth, OIDCAuth, or ExternalZAuth, and must be unique within the same gateway instance (gatewayId) under the current account. If the name conflicts with an existing policy, a PolicyExisted error is returned. When retrying after receiving this error, you must use a different name. Submitting the same name repeatedly will always fail.
+        # For other className values (such as RateLimit, Timeout, Retry, ServiceTls, and AiProxy), name is optional and used only for display purposes.
         self.name = name
 
     def validate(self):

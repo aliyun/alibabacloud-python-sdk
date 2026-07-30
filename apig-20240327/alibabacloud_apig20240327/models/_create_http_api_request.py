@@ -52,7 +52,7 @@ class CreateHttpApiRequest(DaraModel):
         self.first_byte_timeout = first_byte_timeout
         # The HTTP Ingress API configuration. This parameter is required and cannot be nil when type is set to HttpIngress. This parameter is not required for other types.
         self.ingress_config = ingress_config
-        # The model category. This parameter is optional when type is set to LLM or Ai. This parameter is not required for other types.
+        # The model category. This parameter is optional when type is set to LLM or Ai. This parameter is not required for other types. Valid values:
         self.model_category = model_category
         # The API name.
         # 

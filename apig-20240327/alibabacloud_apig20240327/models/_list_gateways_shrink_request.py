@@ -15,12 +15,13 @@ class ListGatewaysShrinkRequest(DaraModel):
         page_size: int = None,
         resource_group_id: str = None,
         tag_shrink: str = None,
+        vpc_id: str = None,
     ):
         # The gateway ID for exact match query.
         self.gateway_id = gateway_id
         # The gateway type.
         self.gateway_type = gateway_type
-        # The keyword for full match search. Case-insensitive.
+        # The keyword for full match search. The search is case-insensitive.
         self.keyword = keyword
         # The gateway name for exact match query.
         self.name = name
@@ -28,10 +29,12 @@ class ListGatewaysShrinkRequest(DaraModel):
         self.page_number = page_number
         # The page size.
         self.page_size = page_size
-        # The resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         # The list of tags.
         self.tag_shrink = tag_shrink
+        # The virtual private cloud (VPC) ID.
+        self.vpc_id = vpc_id
 
     def validate(self):
         pass
@@ -65,6 +68,9 @@ class ListGatewaysShrinkRequest(DaraModel):
         if self.tag_shrink is not None:
             result['tag'] = self.tag_shrink
 
+        if self.vpc_id is not None:
+            result['vpcId'] = self.vpc_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -92,6 +98,9 @@ class ListGatewaysShrinkRequest(DaraModel):
 
         if m.get('tag') is not None:
             self.tag_shrink = m.get('tag')
+
+        if m.get('vpcId') is not None:
+            self.vpc_id = m.get('vpcId')
 
         return self
 

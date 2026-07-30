@@ -1,3 +1,10 @@
+2026-07-30 Version: 10.1.1
+- Update API CreateAiModelProvider: add request parameters clientToken.
+- Update API CreateAiModelProvider: add response parameters Body.data.modelCards.$.sourceURL.
+- Update API GetGatewayQuotaRuleSubjectUsage: add request parameters filterFailedRequests.
+- Update API ListGateways: add request parameters vpcId.
+
+
 2026-07-15 Version: 10.1.0
 - Support API BatchAddConsumerGroupConsumers.
 - Support API BatchRemoveConsumerGroupConsumers.
