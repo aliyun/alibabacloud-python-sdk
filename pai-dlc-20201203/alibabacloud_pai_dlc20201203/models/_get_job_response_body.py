@@ -59,9 +59,7 @@ class GetJobResponseBody(DaraModel):
         workspace_name: str = None,
         supported_profiling_types: str = None,
     ):
-        # The visibility of the job. Valid values:
-        # - PUBLIC: Visible to all users in this workspace.
-        # - PRIVATE (default): Visible only to you and administrators in this workspace.
+        # The visibility of the task. Valid values:
         self.accessibility = accessibility
         # The cluster ID.
         self.cluster_id = cluster_id
@@ -75,11 +73,11 @@ class GetJobResponseBody(DaraModel):
         self.description = description
         # The job name.
         self.display_name = display_name
-        # The job running duration, in seconds.
+        # The job duration, in seconds.
         self.duration = duration
         # The elastic job parameters.
         self.elastic_spec = elastic_spec
-        # Indicates whether the debugger is enabled for the job.
+        # Specifies whether the debugger task is enabled.
         self.enabled_debugger = enabled_debugger
         # The environment variable configuration.
         self.envs = envs
@@ -87,7 +85,7 @@ class GetJobResponseBody(DaraModel):
         self.gmt_create_time = gmt_create_time
         # The time when the job failed (UTC).
         self.gmt_failed_time = gmt_failed_time
-        # The job finish time (UTC).
+        # The time when the task finished (UTC).
         self.gmt_finish_time = gmt_finish_time
         # The time when the job started running (UTC).
         self.gmt_running_time = gmt_running_time
@@ -111,42 +109,29 @@ class GetJobResponseBody(DaraModel):
         self.priority = priority
         # The status detail code, which is a classification of the sub-status under the current status (Status).
         self.reason_code = reason_code
-        # The detailed description of the status.
+        # The detailed description of the status detail.
         self.reason_message = reason_message
         # The request ID, used for diagnostics and troubleshooting.
         self.request_id = request_id
         # The ID of the resource group in which the job runs.
         self.resource_id = resource_id
-        # The resource level used by the job at runtime.
+        # The resource level used when the job runs.
         self.resource_level = resource_level
         # The resource type. Valid values: ECS, Lingjun, ACS.
         self.resource_type = resource_type
         # The job restart records.
         self.restart_record = restart_record
-        # The number of retries used and the maximum number of retries for the job.
+        # The used retry count and maximum retry count for the job.
         self.restart_times = restart_times
         self.role_system_envs = role_system_envs
         self.scheduling_strategy = scheduling_strategy
-        # The additional parameter settings of the job.
+        # The additional parameter settings for the job.
         self.settings = settings
         # The job running status. Valid values:
-        # - Creating
-        # - Queuing
-        # - Bidding (currently only for Lingjun spot jobs)
-        # - EnvPreparing
-        # - SanityChecking
-        # - Running
-        # - Restarting
-        # - Stopping
-        # - SucceededReserving
-        # - FailedReserving
-        # - Succeeded
-        # - Failed
-        # - Stopped
         self.status = status
-        # The historical statuses.
+        # The status history.
         self.status_history = status_history
-        # The job sub-status, such as preemption retry status.
+        # The job substatus, such as preemption retry status.
         self.sub_status = sub_status
         # The tenant ID.
         self.tenant_id = tenant_id
@@ -555,11 +540,8 @@ class GetJobResponseBodyUserVpc(DaraModel):
         vpc_id: str = None,
     ):
         # The default routing. This parameter is valid only for general computing resources. Valid values:
-        # 
-        # eth0: uses the default network interface controller (NIC) to access external networks through a public gateway.
-        # eth1: uses the user elastic network interfaces (ENIs) to access external networks through a private gateway.
         self.default_route = default_route
-        # The extended CIDR blocks, for example, 192.168.0.1/24.
+        # The extended CIDR blocks. Example: 192.168.0.1/24.
         self.extended_cidrs = extended_cidrs
         # The ID of the user security group.
         self.security_group_id = security_group_id
@@ -626,19 +608,19 @@ class GetJobResponseBodyRestartRecord(DaraModel):
         restart_status: str = None,
         trigger_id: str = None,
     ):
-        # The list of fault information.
+        # The list of fault error messages.
         self.detail_error_info_list = detail_error_info_list
-        # The job restart count.
+        # The number of job restarts.
         self.job_restart_count = job_restart_count
         # The phase in which the event occurred.
         self.occur_phase = occur_phase
         # The time when the event occurred.
         self.occur_time = occur_time
-        # The reason.
+        # The reason for the restart.
         self.reason = reason
-        # The restart duration.
+        # The restart duration, in seconds.
         self.restart_duration_in_sec = restart_duration_in_sec
-        # The restart failure reason.
+        # The reason for the restart failure.
         self.restart_fail_reason = restart_fail_reason
         self.restart_level_type = restart_level_type
         # The restart status.
@@ -749,13 +731,13 @@ class GetJobResponseBodyRestartRecordDetailErrorInfoList(DaraModel):
         self.detail_error_msg = detail_error_msg
         # The error code.
         self.error_code = error_code
-        # The fault message.
+        # The fault error message.
         self.error_msg = error_msg
         # The error source.
         self.error_source = error_source
         # The node.
         self.node = node
-        # The instance.
+        # The pod.
         self.pod = pod
         # Indicates whether a restart is triggered.
         self.trigger_restart = trigger_restart
@@ -847,7 +829,7 @@ class GetJobResponseBodyPods(DaraModel):
         type: str = None,
         supported_profiling_types: str = None,
     ):
-        # The pod running duration.
+        # The pod duration.
         self.duration = duration
         # The pod creation time (UTC).
         self.gmt_create_time = gmt_create_time
@@ -855,33 +837,25 @@ class GetJobResponseBodyPods(DaraModel):
         self.gmt_finish_time = gmt_finish_time
         # The pod start time (UTC).
         self.gmt_start_time = gmt_start_time
-        # The historical pods.
+        # The history pods.
         self.history_pods = history_pods
         # The network IP address of the pod.
         self.ip = ip
         # The node name.
         self.node_name = node_name
-        # The pod ID. You can use this ID with the GetPodLogs and GetPodEvents APIs to retrieve detailed logs and events of the pod.
+        # The pod ID. You can use this ID with the GetPodLogs and GetPodEvents APIs to retrieve detailed logs and events for the pod.
         self.pod_id = pod_id
-        # The IP addresses of the pod.
+        # The pod IP addresses.
         self.pod_ips = pod_ips
         # Pod UID。
         self.pod_uid = pod_uid
         # The pod resource usage type.
         self.resource_type = resource_type
         # The pod status. Valid values:
-        # 
-        # - Pending
-        # - Running
-        # - Succeeded
-        # - Failed
-        # - Unknown
         self.status = status
-        # The pod sub-status, such as preemption status. Valid values:
-        # - Normal
-        # - Evicted
+        # The pod substatus, such as preemption status. Valid values:
         self.sub_status = sub_status
-        # The pod type, which corresponds to a JobSpec in the JobSpecs parameter of CreateJob.
+        # The pod type, which corresponds to a JobSpec in JobSpecs of CreateJob.
         self.type = type
         self.supported_profiling_types = supported_profiling_types
 
@@ -1024,7 +998,7 @@ class GetJobResponseBodyPodsHistoryPods(DaraModel):
         type: str = None,
         supported_profiling_types: str = None,
     ):
-        # The pod running duration.
+        # The pod duration.
         self.duration = duration
         # The pod creation time (UTC).
         self.gmt_create_time = gmt_create_time
@@ -1038,7 +1012,7 @@ class GetJobResponseBodyPodsHistoryPods(DaraModel):
         self.node_name = node_name
         # Pod ID。
         self.pod_id = pod_id
-        # The IP addresses of the pod.
+        # The pod IP addresses.
         self.pod_ips = pod_ips
         # Pod UID。
         self.pod_uid = pod_uid
@@ -1046,9 +1020,7 @@ class GetJobResponseBodyPodsHistoryPods(DaraModel):
         self.resource_type = resource_type
         # The pod status.
         self.status = status
-        # The pod sub-status, such as preemption status. Valid values:
-        # - Normal
-        # - Evicted
+        # The pod substatus, such as preemption status. Valid values:
         self.sub_status = sub_status
         # The pod type.
         self.type = type
@@ -1169,7 +1141,7 @@ class GetJobResponseBodyDataSources(DaraModel):
     ):
         # The data source ID.
         self.data_source_id = data_source_id
-        # The local mount path. This is an optional parameter. If left empty, the mount path specified in the data source is used.
+        # The local mount path. This is an optional parameter. The default value is empty, which indicates that the mount path in the data source is used.
         self.mount_path = mount_path
         # The data source path.
         self.uri = uri

@@ -1,3 +1,6 @@
+2026-07-30 Version: 1.10.3
+- Generated python 2020-12-03 for pai-dlc.
+
 2026-07-28 Version: 1.10.2
 - Update API CreateJob: add request parameters body.CodeSource.IsSharedMountPath.
 - Update API GetJob: add response parameters Body.supportedProfilingTypes.

@@ -18,6 +18,7 @@ class JobSettings(DaraModel):
         data_juicer_config: main_models.DataJuicerConfig = None,
         disable_ecs_stock_check: bool = None,
         driver: str = None,
+        elastic_spot_job_max_restart_times: int = None,
         enable_cpuaffinity: bool = None,
         enable_dswdev: bool = None,
         enable_error_monitoring_in_aimaster: bool = None,
@@ -53,6 +54,7 @@ class JobSettings(DaraModel):
         self.disable_ecs_stock_check = disable_ecs_stock_check
         # The NVIDIA driver configuration.
         self.driver = driver
+        self.elastic_spot_job_max_restart_times = elastic_spot_job_max_restart_times
         # The CPU affinity setting. This setting is effective only when using general computing subscription resources.
         self.enable_cpuaffinity = enable_cpuaffinity
         self.enable_dswdev = enable_dswdev
@@ -82,7 +84,7 @@ class JobSettings(DaraModel):
         self.job_reserved_minutes = job_reserved_minutes
         # The retention policy after job completion.
         self.job_reserved_policy = job_reserved_policy
-        # The output model configuration. This parameter is currently effective only in federated training scenarios.
+        # The output model configuration. This parameter is currently effective only in joint training scenarios.
         self.model_config = model_config
         # The oversold resource usage mode for the job (reject/accept/only accept).
         self.oversold_type = oversold_type
@@ -129,6 +131,9 @@ class JobSettings(DaraModel):
 
         if self.driver is not None:
             result['Driver'] = self.driver
+
+        if self.elastic_spot_job_max_restart_times is not None:
+            result['ElasticSpotJobMaxRestartTimes'] = self.elastic_spot_job_max_restart_times
 
         if self.enable_cpuaffinity is not None:
             result['EnableCPUAffinity'] = self.enable_cpuaffinity
@@ -209,6 +214,9 @@ class JobSettings(DaraModel):
 
         if m.get('Driver') is not None:
             self.driver = m.get('Driver')
+
+        if m.get('ElasticSpotJobMaxRestartTimes') is not None:
+            self.elastic_spot_job_max_restart_times = m.get('ElasticSpotJobMaxRestartTimes')
 
         if m.get('EnableCPUAffinity') is not None:
             self.enable_cpuaffinity = m.get('EnableCPUAffinity')

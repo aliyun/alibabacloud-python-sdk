@@ -62,13 +62,13 @@ class ListJobsRequest(DaraModel):
         self.display_name = display_name
         # The search mode for DisplayName. Default value: wildcard match.
         self.display_name_search_mode = display_name_search_mode
-        # Specifies whether to filter jobs that have assigned-node execution enabled.
+        # Filters jobs based on whether running on specified nodes is enabled.
         self.enable_assign_node = enable_assign_node
         # The end time of the query range. The job creation time is used for filtering. Default value: the current time.
         self.end_time = end_time
         # Specifies whether to retrieve jobs across all workspaces. This parameter must be used together with `ShowOwn=true` to query jobs recently submitted by the current user.
         self.from_all_workspaces = from_all_workspaces
-        # Uses full-text index to retrieve the images field. Supports Chinese and English tokenization.
+        # Retrieves nodes by performing a full-text index on the images field. Supports Chinese and English tokenization.
         self.image_search = image_search
         # The job ID. Fuzzy match is not supported. Case-insensitive. Wildcards are not supported.
         # Default value: empty, which indicates all job IDs.
@@ -82,7 +82,7 @@ class ListJobsRequest(DaraModel):
         # - OneFlowJob
         # - ElasticBatchJob
         self.job_type = job_type
-        # The field name for numeric range filtering. Must be used together with NumericRangeMin or NumericRangeMax.
+        # The field name for numeric range filtering. Must be used together with NumericRangeMin/NumericRangeMax.
         self.numeric_range_field = numeric_range_field
         # The maximum value (inclusive) for numeric range filtering. Must be used together with NumericRangeField.
         self.numeric_range_max = numeric_range_max
@@ -93,13 +93,13 @@ class ListJobsRequest(DaraModel):
         # - desc: Descending order. This is the default value.
         # - asc: Ascending order.
         self.order = order
-        # The off-peak resource information. Valid values:
+        # The idle resource information. Valid values:
         # - ForbiddenQuotaOverSold
         # - ForceQuotaOverSold
-        # - AcceptQuotaOverSold-true (true indicates the job actually used off-peak resources)
+        # - AcceptQuotaOverSold-true (true indicates the job actually used idle resources)
         # - AcceptQuotaOverSold-false (false indicates the job actually used guaranteed resources)
         self.oversold_info = oversold_info
-        # The page number to return in a paged query. Minimum value: 1. Default value: 1. Paging starts from page 1.
+        # The page number to return in a paged query. Minimum value: 1. Default value: 1.
         self.page_number = page_number
         # The number of jobs to return per page.
         self.page_size = page_size
@@ -108,18 +108,18 @@ class ListJobsRequest(DaraModel):
         # - Spot: preemptible resources.
         # - PostPaid: public resources.
         self.payment_type = payment_type
-        # Filters jobs created by the specified pipeline ID.
+        # Filters jobs created by the specified workflow ID.
         self.pipeline_id = pipeline_id
-        # Uses full-text index to retrieve the node failed reason field. Supports Chinese and English tokenization.
+        # Retrieves nodes by performing a full-text index on the node failed reason field. Supports Chinese and English tokenization.
         self.reason_search = reason_search
-        # The resource group ID. For information about how to obtain the dedicated resource group ID, see [Manage resource quotas](https://help.aliyun.com/document_detail/2651299.html).
+        # The resource group ID. For information about how to query the dedicated resource group ID, see [Manage resource quotas](https://help.aliyun.com/document_detail/2651299.html).
         self.resource_id = resource_id
         self.resource_ids = resource_ids
-        # The name of the resource quota, used to filter the job list. Supports fuzzy match. Wildcards are not supported. Default value: empty, which indicates no filtering by resource quota.
+        # Filters the job list by the resource quota name. Supports fuzzy match. Wildcards are not supported. Default value: empty, which indicates no filtering by resource quota.
         self.resource_quota_name = resource_quota_name
         # Specifies whether to return only jobs submitted by the current user.
         self.show_own = show_own
-        # The field by which to sort results. Valid values:
+        # The field by which to sort results:
         # 
         # - DisplayName
         # - JobType
@@ -127,7 +127,7 @@ class ListJobsRequest(DaraModel):
         # - GmtCreateTime
         # - GmtFinishTime
         self.sort_by = sort_by
-        # The start time of the query range. The job creation time is used for filtering. Default value: the current time minus 7 days. If neither StartTime nor EndTime is specified, jobs created in the last 7 days are returned by default.
+        # The start time of the query range. The job creation time is used for filtering. Default value: the current time minus 7 days. If neither StartTime nor EndTime is specified, jobs from the last 7 days are returned by default.
         self.start_time = start_time
         # The job status. Valid values:
         # - Creating
@@ -146,17 +146,17 @@ class ListJobsRequest(DaraModel):
         self.status = status
         # The tags used for filtering.
         self.tags = tags
-        # The template ID, used to filter jobs created from the specified template.
+        # The template ID. Filters jobs created from the specified template.
         self.template_id = template_id
         # The time field used for StartTime/EndTime filtering. Default value: creation time.
         self.time_range_field = time_range_field
-        # Uses full-text index to retrieve the user_command field. Supports Chinese and English tokenization.
+        # Retrieves nodes by performing a full-text index on the user_command field. Supports Chinese and English tokenization.
         self.user_command_search = user_command_search
-        # The user ID of the job submitter, used to filter the job list.
+        # Filters the job list by the user ID of the job submitter.
         self.user_id_for_filter = user_id_for_filter
-        # The username of the job submitter, used to filter the job list. Supports fuzzy match. Wildcards are not supported. Default value: empty, which indicates no filtering by username.
+        # Filters the job list by the username of the job submitter. Supports fuzzy match. Wildcards are not supported. Default value: empty, which indicates no filtering by username.
         self.username = username
-        # The workspace ID.<props="china"> For information about how to obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
+        # The workspace ID. <props="china">For information about how to obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
         self.workspace_id = workspace_id
 
     def validate(self):
