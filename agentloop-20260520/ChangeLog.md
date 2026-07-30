@@ -1,3 +1,12 @@
+2026-07-30 Version: 2.3.1
+- Update API CreateExperimentPlan: add request parameters body.pipelineName.
+- Update API GetDataset: add response parameters Body.labels.
+- Update API GetExperimentPlan: add response parameters Body.pipelineName.
+- Update API ListDatasets: add request parameters labels.
+- Update API ListDatasets: add response parameters Body.datasets.$.labels.
+- Update API UpdateExperimentPlan: add request parameters body.pipelineName.
+
+
 2026-07-23 Version: 2.3.0
 - Support API CreateExperimentPlan.
 - Support API CreateExperimentRun.

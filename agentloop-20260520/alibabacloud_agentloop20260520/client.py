@@ -985,6 +985,8 @@ class Client(OpenApiClient):
             body['experiments'] = request.experiments
         if not DaraCore.is_null(request.input):
             body['input'] = request.input
+        if not DaraCore.is_null(request.pipeline_name):
+            body['pipelineName'] = request.pipeline_name
         if not DaraCore.is_null(request.plan_name):
             body['planName'] = request.plan_name
         if not DaraCore.is_null(request.query_sql):
@@ -1032,6 +1034,8 @@ class Client(OpenApiClient):
             body['experiments'] = request.experiments
         if not DaraCore.is_null(request.input):
             body['input'] = request.input
+        if not DaraCore.is_null(request.pipeline_name):
+            body['pipelineName'] = request.pipeline_name
         if not DaraCore.is_null(request.plan_name):
             body['planName'] = request.plan_name
         if not DaraCore.is_null(request.query_sql):
@@ -3675,14 +3679,20 @@ class Client(OpenApiClient):
     def list_datasets_with_options(
         self,
         agent_space: str,
-        request: main_models.ListDatasetsRequest,
+        tmp_req: main_models.ListDatasetsRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.ListDatasetsResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.ListDatasetsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.labels):
+            request.labels_shrink = Utils.array_to_string_with_specified_style(tmp_req.labels, 'labels', 'json')
         query = {}
         if not DaraCore.is_null(request.dataset_name):
             query['datasetName'] = request.dataset_name
+        if not DaraCore.is_null(request.labels_shrink):
+            query['labels'] = request.labels_shrink
         if not DaraCore.is_null(request.max_results):
             query['maxResults'] = request.max_results
         if not DaraCore.is_null(request.next_token):
@@ -3710,14 +3720,20 @@ class Client(OpenApiClient):
     async def list_datasets_with_options_async(
         self,
         agent_space: str,
-        request: main_models.ListDatasetsRequest,
+        tmp_req: main_models.ListDatasetsRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.ListDatasetsResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.ListDatasetsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.labels):
+            request.labels_shrink = Utils.array_to_string_with_specified_style(tmp_req.labels, 'labels', 'json')
         query = {}
         if not DaraCore.is_null(request.dataset_name):
             query['datasetName'] = request.dataset_name
+        if not DaraCore.is_null(request.labels_shrink):
+            query['labels'] = request.labels_shrink
         if not DaraCore.is_null(request.max_results):
             query['maxResults'] = request.max_results
         if not DaraCore.is_null(request.next_token):
@@ -5828,6 +5844,8 @@ class Client(OpenApiClient):
             body['experiments'] = request.experiments
         if not DaraCore.is_null(request.input):
             body['input'] = request.input
+        if not DaraCore.is_null(request.pipeline_name):
+            body['pipelineName'] = request.pipeline_name
         if not DaraCore.is_null(request.plan_name):
             body['planName'] = request.plan_name
         if not DaraCore.is_null(request.query_sql):
@@ -5878,6 +5896,8 @@ class Client(OpenApiClient):
             body['experiments'] = request.experiments
         if not DaraCore.is_null(request.input):
             body['input'] = request.input
+        if not DaraCore.is_null(request.pipeline_name):
+            body['pipelineName'] = request.pipeline_name
         if not DaraCore.is_null(request.plan_name):
             body['planName'] = request.plan_name
         if not DaraCore.is_null(request.query_sql):

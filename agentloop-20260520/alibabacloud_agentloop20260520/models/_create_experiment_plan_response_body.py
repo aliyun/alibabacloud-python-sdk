@@ -18,7 +18,7 @@ class CreateExperimentPlanResponseBody(DaraModel):
         self.plan_id = plan_id
         # The request ID.
         self.request_id = request_id
-        # The creation result. The value is `created` if the operation is successful.
+        # The creation result. The value is `created` upon success.
         self.status = status
 
     def validate(self):

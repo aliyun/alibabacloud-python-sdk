@@ -17,6 +17,7 @@ class UpdateExperimentPlanRequest(DaraModel):
         experiment_type: str = None,
         experiments: List[main_models.ExperimentConfig] = None,
         input: Dict[str, Any] = None,
+        pipeline_name: str = None,
         plan_name: str = None,
         query_sql: str = None,
         selected_item_ids: List[str] = None,
@@ -35,6 +36,7 @@ class UpdateExperimentPlanRequest(DaraModel):
         self.experiments = experiments
         # Optional.
         self.input = input
+        self.pipeline_name = pipeline_name
         # The experiment plan name.
         self.plan_name = plan_name
         # The custom query SQL clause in partial dataset mode.
@@ -82,6 +84,9 @@ class UpdateExperimentPlanRequest(DaraModel):
         if self.input is not None:
             result['input'] = self.input
 
+        if self.pipeline_name is not None:
+            result['pipelineName'] = self.pipeline_name
+
         if self.plan_name is not None:
             result['planName'] = self.plan_name
 
@@ -121,6 +126,9 @@ class UpdateExperimentPlanRequest(DaraModel):
 
         if m.get('input') is not None:
             self.input = m.get('input')
+
+        if m.get('pipelineName') is not None:
+            self.pipeline_name = m.get('pipelineName')
 
         if m.get('planName') is not None:
             self.plan_name = m.get('planName')

@@ -17,6 +17,7 @@ class GetExperimentPlanResponseBody(DaraModel):
         experiment_type: str = None,
         experiments: List[main_models.ExperimentConfig] = None,
         input: Dict[str, Any] = None,
+        pipeline_name: str = None,
         plan_id: str = None,
         plan_name: str = None,
         query_sql: str = None,
@@ -25,7 +26,7 @@ class GetExperimentPlanResponseBody(DaraModel):
         status: str = None,
         updated_at: int = None,
     ):
-        # The creation time, in millisecond Unix timestamp.
+        # The creation time. This value is a millisecond-level UNIX timestamp.
         self.created_at = created_at
         # The associated dataset ID.
         self.dataset_id = dataset_id
@@ -39,6 +40,7 @@ class GetExperimentPlanResponseBody(DaraModel):
         self.experiments = experiments
         # Optional.
         self.input = input
+        self.pipeline_name = pipeline_name
         # The experiment plan ID.
         self.plan_id = plan_id
         # The experiment plan name.
@@ -51,7 +53,7 @@ class GetExperimentPlanResponseBody(DaraModel):
         self.selected_item_ids = selected_item_ids
         # The plan status.
         self.status = status
-        # The update time, in millisecond Unix timestamp.
+        # The update time. This value is a millisecond-level UNIX timestamp.
         self.updated_at = updated_at
 
     def validate(self):
@@ -93,6 +95,9 @@ class GetExperimentPlanResponseBody(DaraModel):
 
         if self.input is not None:
             result['input'] = self.input
+
+        if self.pipeline_name is not None:
+            result['pipelineName'] = self.pipeline_name
 
         if self.plan_id is not None:
             result['planId'] = self.plan_id
@@ -145,6 +150,9 @@ class GetExperimentPlanResponseBody(DaraModel):
 
         if m.get('input') is not None:
             self.input = m.get('input')
+
+        if m.get('pipelineName') is not None:
+            self.pipeline_name = m.get('pipelineName')
 
         if m.get('planId') is not None:
             self.plan_id = m.get('planId')

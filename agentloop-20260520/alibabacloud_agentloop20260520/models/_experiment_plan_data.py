@@ -12,6 +12,7 @@ class ExperimentPlanData(DaraModel):
         description: str = None,
         experiment_count: int = None,
         experiment_type: str = None,
+        pipeline_name: str = None,
         plan_id: str = None,
         plan_name: str = None,
         query_sql: str = None,
@@ -23,6 +24,7 @@ class ExperimentPlanData(DaraModel):
         self.description = description
         self.experiment_count = experiment_count
         self.experiment_type = experiment_type
+        self.pipeline_name = pipeline_name
         self.plan_id = plan_id
         self.plan_name = plan_name
         self.query_sql = query_sql
@@ -51,6 +53,9 @@ class ExperimentPlanData(DaraModel):
 
         if self.experiment_type is not None:
             result['experimentType'] = self.experiment_type
+
+        if self.pipeline_name is not None:
+            result['pipelineName'] = self.pipeline_name
 
         if self.plan_id is not None:
             result['planId'] = self.plan_id
@@ -85,6 +90,9 @@ class ExperimentPlanData(DaraModel):
 
         if m.get('experimentType') is not None:
             self.experiment_type = m.get('experimentType')
+
+        if m.get('pipelineName') is not None:
+            self.pipeline_name = m.get('pipelineName')
 
         if m.get('planId') is not None:
             self.plan_id = m.get('planId')

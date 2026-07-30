@@ -2,7 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import Dict
+from typing import Dict, List
 
 from alibabacloud_agentloop20260520 import models as main_models
 from darabonba.model import DaraModel
@@ -15,6 +15,7 @@ class GetDatasetResponseBody(DaraModel):
         dataset_name: str = None,
         description: str = None,
         is_favorite: bool = None,
+        labels: Dict[str, List[str]] = None,
         region_id: str = None,
         request_id: str = None,
         schema: Dict[str, main_models.IndexKey] = None,
@@ -31,6 +32,7 @@ class GetDatasetResponseBody(DaraModel):
         # The dataset description.
         self.description = description
         self.is_favorite = is_favorite
+        self.labels = labels
         # The region ID.
         self.region_id = region_id
         # The request ID.
@@ -68,6 +70,9 @@ class GetDatasetResponseBody(DaraModel):
         if self.is_favorite is not None:
             result['isFavorite'] = self.is_favorite
 
+        if self.labels is not None:
+            result['labels'] = self.labels
+
         if self.region_id is not None:
             result['regionId'] = self.region_id
 
@@ -100,6 +105,9 @@ class GetDatasetResponseBody(DaraModel):
 
         if m.get('isFavorite') is not None:
             self.is_favorite = m.get('isFavorite')
+
+        if m.get('labels') is not None:
+            self.labels = m.get('labels')
 
         if m.get('regionId') is not None:
             self.region_id = m.get('regionId')

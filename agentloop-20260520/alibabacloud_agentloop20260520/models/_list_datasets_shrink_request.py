@@ -2,21 +2,19 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import Dict, List
-
 from darabonba.model import DaraModel
 
-class ListDatasetsRequest(DaraModel):
+class ListDatasetsShrinkRequest(DaraModel):
     def __init__(
         self,
         dataset_name: str = None,
-        labels: Dict[str, List[str]] = None,
+        labels_shrink: str = None,
         max_results: int = None,
         next_token: str = None,
     ):
         # The dataset name.
         self.dataset_name = dataset_name
-        self.labels = labels
+        self.labels_shrink = labels_shrink
         # The maximum number of results to return.
         self.max_results = max_results
         # The pagination token. You do not need to set this parameter for the first request. For subsequent requests, set this parameter to the nextToken value returned in the previous response.
@@ -33,8 +31,8 @@ class ListDatasetsRequest(DaraModel):
         if self.dataset_name is not None:
             result['datasetName'] = self.dataset_name
 
-        if self.labels is not None:
-            result['labels'] = self.labels
+        if self.labels_shrink is not None:
+            result['labels'] = self.labels_shrink
 
         if self.max_results is not None:
             result['maxResults'] = self.max_results
@@ -50,7 +48,7 @@ class ListDatasetsRequest(DaraModel):
             self.dataset_name = m.get('datasetName')
 
         if m.get('labels') is not None:
-            self.labels = m.get('labels')
+            self.labels_shrink = m.get('labels')
 
         if m.get('maxResults') is not None:
             self.max_results = m.get('maxResults')

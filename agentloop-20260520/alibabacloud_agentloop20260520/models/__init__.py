@@ -141,6 +141,7 @@ from ._list_context_stores_request import ListContextStoresRequest
 from ._list_context_stores_response_body import ListContextStoresResponseBody
 from ._list_context_stores_response import ListContextStoresResponse
 from ._list_datasets_request import ListDatasetsRequest
+from ._list_datasets_shrink_request import ListDatasetsShrinkRequest
 from ._list_datasets_response_body import ListDatasetsResponseBody
 from ._list_datasets_response import ListDatasetsResponse
 from ._list_evaluation_runs_request import ListEvaluationRunsRequest
@@ -423,6 +424,7 @@ __all__ = [
     ListContextStoresResponseBody,
     ListContextStoresResponse,
     ListDatasetsRequest,
+    ListDatasetsShrinkRequest,
     ListDatasetsResponseBody,
     ListDatasetsResponse,
     ListEvaluationRunsRequest,
