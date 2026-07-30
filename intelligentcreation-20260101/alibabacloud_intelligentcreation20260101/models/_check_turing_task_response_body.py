@@ -16,7 +16,6 @@ class CheckTuringTaskResponseBody(DaraModel):
     ):
         self.error_code = error_code
         self.error_msg = error_msg
-        # Id of the request
         self.request_id = request_id
         self.result = result
         self.success = success
@@ -72,12 +71,14 @@ class CheckTuringTaskResponseBody(DaraModel):
 class CheckTuringTaskResponseBodyResult(DaraModel):
     def __init__(
         self,
+        fail_biz_code: str = None,
         fail_code: str = None,
         fail_msg: str = None,
         status: str = None,
         task_id: str = None,
         video_url: str = None,
     ):
+        self.fail_biz_code = fail_biz_code
         self.fail_code = fail_code
         self.fail_msg = fail_msg
         self.status = status
@@ -92,6 +93,9 @@ class CheckTuringTaskResponseBodyResult(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.fail_biz_code is not None:
+            result['failBizCode'] = self.fail_biz_code
+
         if self.fail_code is not None:
             result['failCode'] = self.fail_code
 
@@ -111,6 +115,9 @@ class CheckTuringTaskResponseBodyResult(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('failBizCode') is not None:
+            self.fail_biz_code = m.get('failBizCode')
+
         if m.get('failCode') is not None:
             self.fail_code = m.get('failCode')
 
