@@ -2,6 +2,8 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
 from darabonba.model import DaraModel
 
 class GetContactResponseBody(DaraModel):
@@ -15,6 +17,7 @@ class GetContactResponseBody(DaraModel):
         mobile_status: int = None,
         name: str = None,
         request_id: str = None,
+        webhook_list: List[str] = None,
         webhooks: str = None,
     ):
         # The contact ID.
@@ -23,7 +26,7 @@ class GetContactResponseBody(DaraModel):
         self.email = email
         # Indicates whether the email address is verified.
         self.email_status = email_status
-        # The ID card number of the contact. This parameter is required for the CFCA certificate brand and is not required for other brands.
+        # The ID card number of the contact. This is required for the CFCA certificate brand and not required for other brands.
         self.id_card = id_card
         # The phone number of the contact.
         self.mobile = mobile
@@ -33,7 +36,9 @@ class GetContactResponseBody(DaraModel):
         self.name = name
         # The request ID.
         self.request_id = request_id
-        # The webhook URLs of DingTalk, WeCom, or Lark chatbots. The value is a string in list format.
+        # The webhook URLs of DingTalk, WeCom, or Lark chatbots, in list format.
+        self.webhook_list = webhook_list
+        # The webhook URLs of DingTalk, WeCom, or Lark chatbots, in list format as a string.
         self.webhooks = webhooks
 
     def validate(self):
@@ -68,6 +73,9 @@ class GetContactResponseBody(DaraModel):
         if self.request_id is not None:
             result['RequestId'] = self.request_id
 
+        if self.webhook_list is not None:
+            result['WebhookList'] = self.webhook_list
+
         if self.webhooks is not None:
             result['Webhooks'] = self.webhooks
 
@@ -98,6 +106,9 @@ class GetContactResponseBody(DaraModel):
 
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+
+        if m.get('WebhookList') is not None:
+            self.webhook_list = m.get('WebhookList')
 
         if m.get('Webhooks') is not None:
             self.webhooks = m.get('Webhooks')

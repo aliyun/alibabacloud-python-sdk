@@ -52,12 +52,13 @@ class GetUserCertificateDetailResponseBody(DaraModel):
         # 
         # - **false**: No.
         self.buy_in_aliyun = buy_in_aliyun
-        # The certificate content that uses a non-Chinese cryptographic algorithm. This field is returned when the CertFilter request parameter is set to false, and is not returned when set to true.
+        # The certificate content that uses a non-Chinese cryptographic algorithm. This field is returned when the CertFilter parameter is set to false, and is not returned when set to true.
         self.cert = cert
         # The certificate chain information.
         self.cert_chain = cert_chain
         # The certificate ID appended with "-cn-hangzhou". For example, if the certificate ID is 123, the CertIdentifier is "123-cn-hangzhou".
         self.cert_identifier = cert_identifier
+        # The SHA-2 algorithm value of the certificate.
         self.cert_sha_2 = cert_sha_2
         # The city where the company or organization of the certificate purchaser is located.
         self.city = city
@@ -65,11 +66,11 @@ class GetUserCertificateDetailResponseBody(DaraModel):
         self.common = common
         # The country where the company or organization of the certificate purchaser is located.
         self.country = country
-        # The encryption certificate content in PEM format that uses a Chinese cryptographic algorithm. This field is returned when the CertFilter request parameter is set to false, and is not returned when set to true.
+        # The encryption certificate content in PEM format that uses a Chinese cryptographic algorithm. This field is returned when the CertFilter parameter is set to false, and is not returned when set to true.
         self.encrypt_cert = encrypt_cert
-        # The private key of the encryption certificate in PEM format that uses a Chinese cryptographic algorithm. This field is returned when the CertFilter request parameter is set to false, and is not returned when set to true.
+        # The private key of the encryption certificate in PEM format that uses a Chinese cryptographic algorithm. This field is returned when the CertFilter parameter is set to false, and is not returned when set to true.
         self.encrypt_private_key = encrypt_private_key
-        # The certificate expiration date, in the format of YYYY-MM-DD.
+        # The certificate expiration date in the format of YYYY-MM-DD.
         self.end_date = end_date
         # Indicates whether the certificate has expired. Valid values:
         # - **true**: The certificate has expired.
@@ -83,7 +84,7 @@ class GetUserCertificateDetailResponseBody(DaraModel):
         self.instance_id = instance_id
         # The certification authority.
         self.issuer = issuer
-        # The private key that uses a non-Chinese cryptographic algorithm. This field is returned when the CertFilter request parameter is set to false, and is not returned when set to true.
+        # The private key that uses a non-Chinese cryptographic algorithm. This field is returned when the CertFilter parameter is set to false, and is not returned when set to true.
         self.key = key
         # The certificate name.
         self.name = name
@@ -97,7 +98,7 @@ class GetUserCertificateDetailResponseBody(DaraModel):
         self.org_name = org_name
         # The province where the company or organization of the certificate purchaser is located.
         self.province = province
-        # The request ID. Alibaba Cloud generates a unique ID for each request. You can use this ID to troubleshoot issues.
+        # The request ID. Alibaba Cloud generates a unique identifier for each request, which can be used to troubleshoot issues.
         self.request_id = request_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
@@ -107,11 +108,11 @@ class GetUserCertificateDetailResponseBody(DaraModel):
         self.serial_no = serial_no
         # The SHA-2 value of the certificate.
         self.sha_2 = sha_2
-        # The signing certificate content in PEM format that uses a Chinese cryptographic algorithm. This field is returned when the CertFilter request parameter is set to false, and is not returned when set to true.
+        # The signing certificate content in PEM format that uses a Chinese cryptographic algorithm. This field is returned when the CertFilter parameter is set to false, and is not returned when set to true.
         self.sign_cert = sign_cert
-        # The private key of the signing certificate in PEM format that uses a Chinese cryptographic algorithm. This field is returned when the CertFilter request parameter is set to false, and is not returned when set to true.
+        # The private key of the signing certificate in PEM format that uses a Chinese cryptographic algorithm. This field is returned when the CertFilter parameter is set to false, and is not returned when set to true.
         self.sign_private_key = sign_private_key
-        # The certificate issuance date, in the format of YYYY-MM-DD.
+        # The certificate issuance date in the format of YYYY-MM-DD.
         self.start_date = start_date
         # The tag list.
         self.tags = tags

@@ -17,7 +17,7 @@ class ListInstancesRequest(DaraModel):
         show_size: int = None,
         status: str = None,
     ):
-        # The certification authority (CA) brand. Valid values: WoSign, CFCA, DigiCert, GeoTrust, GlobalSign, vTrus, and Alibaba.
+        # The CA brand. Valid values: WoSign, CFCA, DigiCert, GeoTrust, GlobalSign, vTrus, and Alibaba.
         self.brand = brand
         # The status of the certificate. Valid values:
         # - **issued**: Issued.
@@ -33,20 +33,20 @@ class ListInstancesRequest(DaraModel):
         # - BUY: official certificate.
         # - TEST: test certificate.
         self.instance_type = instance_type
-        # The keyword for fuzzy match. Matches domain names, instance names, or corresponding resource IDs.
+        # The keyword for fuzzy search. Matches domain names, instance names, or corresponding resource IDs.
         self.keyword = keyword
         # The resource group ID.
         self.resource_group_id = resource_group_id
         # The number of instances to display per page in a paged query. Default value: **10**. Maximum value: **100**.
         self.show_size = show_size
         # The instance status. Valid values:
-        # - **inactive**: pending use.
-        # - **pending**: under review. The latest certificate is being reviewed.
-        # - **willExpire**: about to expire.
-        # - **expired**: expired.
-        # - **refund**: refunded.
-        # - **normal**: normal.
-        # - **closed**: closed and unavailable.
+        # - **inactive**: Pending use.
+        # - **pending**: Under review. The latest certificate is being reviewed.
+        # - **willExpire**: About to expire.
+        # - **expired**: Expired.
+        # - **refund**: Refunded.
+        # - **normal**: Normal.
+        # - **closed**: Closed and unavailable.
         self.status = status
 
     def validate(self):

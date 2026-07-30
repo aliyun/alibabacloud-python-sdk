@@ -97,6 +97,7 @@ class ListContactResponseBodyContactList(DaraModel):
         mobile: str = None,
         mobile_status: int = None,
         name: str = None,
+        webhook_list: List[str] = None,
         webhooks: str = None,
     ):
         # The contact ID.
@@ -111,6 +112,8 @@ class ListContactResponseBodyContactList(DaraModel):
         self.mobile_status = mobile_status
         # The contact name.
         self.name = name
+        # The webhook URL.
+        self.webhook_list = webhook_list
         # The webhook URL.
         self.webhooks = webhooks
 
@@ -140,6 +143,9 @@ class ListContactResponseBodyContactList(DaraModel):
         if self.name is not None:
             result['Name'] = self.name
 
+        if self.webhook_list is not None:
+            result['WebhookList'] = self.webhook_list
+
         if self.webhooks is not None:
             result['Webhooks'] = self.webhooks
 
@@ -164,6 +170,9 @@ class ListContactResponseBodyContactList(DaraModel):
 
         if m.get('Name') is not None:
             self.name = m.get('Name')
+
+        if m.get('WebhookList') is not None:
+            self.webhook_list = m.get('WebhookList')
 
         if m.get('Webhooks') is not None:
             self.webhooks = m.get('Webhooks')

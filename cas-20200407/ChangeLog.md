@@ -1,3 +1,6 @@
+2026-07-30 Version: 3.6.2
+- Generated python 2020-04-07 for cas.
+
 2026-07-20 Version: 3.6.0
 - Support API CreateCompany.
 - Support API CreateContact.

@@ -66,10 +66,11 @@ class GetInstanceDetailResponseBody(DaraModel):
         self.certificate_id = certificate_id
         # The name of the instance. When a certificate is issued, this name is used as the default certificate name.
         self.certificate_name = certificate_name
-        # The end time of the latest certificate, in timestamp format. This value is empty if no certificate has been issued.
+        # The end time of the latest certificate, in UNIX timestamp format. This value is empty if no certificate has been issued. The value is accurate to the second.
         self.certificate_not_after = certificate_not_after
+        # The start time of the latest certificate, in UNIX timestamp format. This value is empty if no certificate has been issued. The value is accurate to the second.
         self.certificate_not_before = certificate_not_before
-        # The revocation time of the latest certificate, in timestamp format.
+        # The revocation time of the latest certificate, in UNIX timestamp format. The value is accurate to the second.
         self.certificate_revoke_time = certificate_revoke_time
         # The status of the certificate. Valid values:
         # - **issued**: issued.
@@ -85,7 +86,7 @@ class GetInstanceDetailResponseBody(DaraModel):
         self.company_id = company_id
         # The list of contact IDs.
         self.contact_id_list = contact_id_list
-        # The code of the country or region where the certificate organization is located. For example, CN indicates China, and US indicates the United States. This field is required when generating a certificate signing request. Default value: CN.
+        # The country or region code of the certificate organization. For example, CN indicates China, and US indicates the United States. This field is required when generating a certificate signing request. Default value: CN.
         self.country_code = country_code
         # The certificate signing request in PEM format.
         self.csr = csr
@@ -93,7 +94,7 @@ class GetInstanceDetailResponseBody(DaraModel):
         self.ding_group_list = ding_group_list
         # The domain name bound to the certificate.
         self.domain = domain
-        # The list of domain names to be validated.
+        # The list of domain validations.
         self.domain_validation_list = domain_validation_list
         # The number of exact-match domain names.
         self.full_domain_count = full_domain_count
@@ -101,11 +102,11 @@ class GetInstanceDetailResponseBody(DaraModel):
         # - online: system-generated. The Csr field is ignored.
         # - upload: user-uploaded. The Csr field is required.
         self.generate_csr_method = generate_csr_method
-        # The expiration time of the instance, in timestamp format. This value is empty if no certificate has been issued.
+        # The expiration time of the instance, in UNIX timestamp format. This value is empty if no certificate has been issued. The value is accurate to the second.
         self.instance_end_time = instance_end_time
         # The ID of the instance.
         self.instance_id = instance_id
-        # The start time of the instance, in timestamp format. This value is empty if no certificate has been issued.
+        # The start time of the instance, in UNIX timestamp format. This value is empty if no certificate has been issued. The value is accurate to the second.
         self.instance_start_time = instance_start_time
         # The instance type. Valid values:
         # - **BUY**: formal certificate.
@@ -118,9 +119,9 @@ class GetInstanceDetailResponseBody(DaraModel):
         # - **ECC_256**
         # - **SM2**
         self.key_algorithm = key_algorithm
-        # The end time of the instance purchase, in timestamp format. This value is used to determine the purchase duration of the instance.
+        # The end time of the instance purchase, in UNIX timestamp format. This value is used to determine the purchase duration of the instance.
         self.order_end_time = order_end_time
-        # The start time of the instance purchase, in timestamp format. This value is used to determine the refund time limit.
+        # The start time of the instance purchase, in UNIX timestamp format. This value is used to determine the refund time limit. The value is accurate to the second.
         self.order_start_time = order_start_time
         # The result returned by the certification authority (CA) during the last certificate operation.
         self.pending_result = pending_result
@@ -149,9 +150,9 @@ class GetInstanceDetailResponseBody(DaraModel):
         # 
         # - payed: the instance upgrade has been paid.
         # 
-        # - issued: the latest certificate has been issued for the upgraded instance.
+        # - issued: the latest certificate has been issued after the instance upgrade.
         self.upgrade_status = upgrade_status
-        # The validation method for the certificate application. Valid values:
+        # The certificate validation method. Valid values:
         # - DNS: DNS validation, using TXT or CNAME.
         # - HTTP: file-based validation.
         self.validation_method = validation_method

@@ -16,13 +16,13 @@ class ListInstancesResponseBody(DaraModel):
         show_size: int = None,
         total_count: int = None,
     ):
-        # The current page number in a paged query.
+        # The current page number in the paged query.
         self.current_page = current_page
         # The list of instances.
         self.instance_list = instance_list
         # The request ID.
         self.request_id = request_id
-        # The number of records per page.
+        # The number of records displayed per page.
         self.show_size = show_size
         # The total number of instances.
         self.total_count = total_count
@@ -115,11 +115,11 @@ class ListInstancesResponseBodyInstanceList(DaraModel):
         self.auto_reissue = auto_reissue
         # The CA brand. Valid values: WoSign, CFCA, DigiCert, GeoTrust, GlobalSign, vTrus, and Alibaba.
         self.brand = brand
-        # The global certificate ID, in the format of certificate ID + "-" + site region ID. This ID is commonly used across Alibaba Cloud services.
+        # The global certificate ID in the format of certificate ID + "-" + site region ID. This ID is commonly used across Alibaba Cloud services.
         # - For the China site: certificate ID + "-cn-hangzhou"
         # - For the China site: certificate ID + "-ap-southeast-1"
         # 
-        # For example, if the certificate ID is 123, the CertIdentifier on the China site is "123-cn-hangzhou", and the CertIdentifier on the International site is "123-ap-southeast-1".
+        # For example, if the certificate ID is 123, the CertIdentifier for the China site is "123-cn-hangzhou", and the CertIdentifier for the International site is "123-ap-southeast-1".
         self.cert_identifier = cert_identifier
         # The domain name of the latest issued certificate.
         self.certificate_domain = certificate_domain
@@ -127,11 +127,11 @@ class ListInstancesResponseBodyInstanceList(DaraModel):
         self.certificate_id = certificate_id
         # The certificate name.
         self.certificate_name = certificate_name
-        # The end time of the latest certificate, in timestamp format. If no certificate has been issued, this field is empty.
+        # The end time of the latest certificate. The value is a UNIX timestamp accurate to seconds. If no certificate has been issued, this field is empty.
         self.certificate_not_after = certificate_not_after
-        # The start time of the latest certificate, in timestamp format. If no certificate has been issued, this field is empty.
+        # The start time of the latest certificate. The value is a UNIX timestamp accurate to seconds. If no certificate has been issued, this field is empty.
         self.certificate_not_before = certificate_not_before
-        # The revocation time of the latest certificate, in timestamp format.
+        # The revocation time of the latest certificate. The value is a UNIX timestamp accurate to seconds.
         self.certificate_revoke_time = certificate_revoke_time
         # The status of the certificate. Valid values:
         # - **issued**: Issued.
@@ -145,11 +145,11 @@ class ListInstancesResponseBodyInstanceList(DaraModel):
         self.domain = domain
         # The number of exact-match domain names.
         self.full_domain_count = full_domain_count
-        # The expiration time of the instance, in timestamp format. If no certificate has been issued, this field is empty.
+        # The expiration time of the instance. The value is a UNIX timestamp accurate to seconds. If no certificate has been issued, this field is empty.
         self.instance_end_time = instance_end_time
         # The instance ID.
         self.instance_id = instance_id
-        # The start time of the instance, in timestamp format. If no certificate has been issued, this field is empty.
+        # The start time of the instance. The value is a UNIX timestamp accurate to seconds. If no certificate has been issued, this field is empty.
         self.instance_start_time = instance_start_time
         # The instance type. Valid values:
         # - BUY: official certificate.
@@ -162,9 +162,9 @@ class ListInstancesResponseBodyInstanceList(DaraModel):
         # - **ECC_256**
         # - **SM2**
         self.key_algorithm = key_algorithm
-        # The end time of the instance purchase, in timestamp format. Used to determine the purchase duration of the instance.
+        # The end time of the instance purchase. The value is a UNIX timestamp accurate to seconds. Used to determine the purchase duration of the instance.
         self.order_end_time = order_end_time
-        # The start time of the instance purchase, in timestamp format. Used to determine the refund time limit.
+        # The start time of the instance purchase. The value is a UNIX timestamp accurate to seconds. Used to determine the refund time limit.
         self.order_start_time = order_start_time
         # The result returned by the CA during the last certificate operation.
         self.pending_result = pending_result
@@ -173,13 +173,13 @@ class ListInstancesResponseBodyInstanceList(DaraModel):
         # The purchased instance specification.
         self.spec = spec
         # The instance status. Valid values:
-        # - **inactive**: pending use.
-        # - **pending**: under review. The latest certificate is being reviewed.
-        # - **willExpire**: about to expire.
-        # - **expired**: expired.
-        # - **refund**: refunded.
-        # - **normal**: normal.
-        # - **closed**: closed and unavailable.
+        # - **inactive**: Pending use.
+        # - **pending**: Under review. The latest certificate is being reviewed.
+        # - **willExpire**: About to expire.
+        # - **expired**: Expired.
+        # - **refund**: Refunded.
+        # - **normal**: Normal.
+        # - **closed**: Closed and unavailable.
         self.status = status
         # The list of cloud services to which the latest certificate is deployed.
         self.using_product_list = using_product_list

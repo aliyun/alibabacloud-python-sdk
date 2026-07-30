@@ -11,9 +11,9 @@ class ListContactRequest(DaraModel):
         keyword: str = None,
         show_size: int = None,
     ):
-        # The current page number for paged queries. Default value: **1**.
+        # The current page number for pagination. Default value: 1.
         self.current_page = current_page
-        # The search keyword, such as a keyword in the name, email address, or phone number.
+        # The search keyword. For example, a keyword in the name, email address, or phone number.
         self.keyword = keyword
         # The number of contacts to display per page in a paged query.
         self.show_size = show_size
