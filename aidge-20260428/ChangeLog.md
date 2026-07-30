@@ -1,3 +1,9 @@
+2026-07-30 Version: 5.0.0
+- Support API VideoGeneration.
+- Update API QueryAsyncTaskResult: update response parameters Body.Data.UsageMap' type has changed.
+- Update API QueryAsyncTaskResult: update response parameters Body.Data.UsageMap' format has changed.
+
+
 2026-07-24 Version: 4.0.0
 - Support API MerchandisePlacementDetection.
 - Update API ImageTranslationPro: delete response parameters Body.Data.GenFiles.$.EditInfo.TextAreas.$.Texts.$.OvisErrMsg.

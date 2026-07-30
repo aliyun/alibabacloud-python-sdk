@@ -1901,6 +1901,100 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.text_translate_with_options_async(request, runtime)
 
+    def video_generation_with_options(
+        self,
+        tmp_req: main_models.VideoGenerationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.VideoGenerationResponse:
+        tmp_req.validate()
+        request = main_models.VideoGenerationShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.input):
+            request.input_shrink = Utils.array_to_string_with_specified_style(tmp_req.input, 'Input', 'json')
+        if not DaraCore.is_null(tmp_req.intent):
+            request.intent_shrink = Utils.array_to_string_with_specified_style(tmp_req.intent, 'Intent', 'json')
+        if not DaraCore.is_null(tmp_req.output):
+            request.output_shrink = Utils.array_to_string_with_specified_style(tmp_req.output, 'Output', 'json')
+        query = {}
+        if not DaraCore.is_null(request.input_shrink):
+            query['Input'] = request.input_shrink
+        if not DaraCore.is_null(request.intent_shrink):
+            query['Intent'] = request.intent_shrink
+        if not DaraCore.is_null(request.output_shrink):
+            query['Output'] = request.output_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'VideoGeneration',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.VideoGenerationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def video_generation_with_options_async(
+        self,
+        tmp_req: main_models.VideoGenerationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.VideoGenerationResponse:
+        tmp_req.validate()
+        request = main_models.VideoGenerationShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.input):
+            request.input_shrink = Utils.array_to_string_with_specified_style(tmp_req.input, 'Input', 'json')
+        if not DaraCore.is_null(tmp_req.intent):
+            request.intent_shrink = Utils.array_to_string_with_specified_style(tmp_req.intent, 'Intent', 'json')
+        if not DaraCore.is_null(tmp_req.output):
+            request.output_shrink = Utils.array_to_string_with_specified_style(tmp_req.output, 'Output', 'json')
+        query = {}
+        if not DaraCore.is_null(request.input_shrink):
+            query['Input'] = request.input_shrink
+        if not DaraCore.is_null(request.intent_shrink):
+            query['Intent'] = request.intent_shrink
+        if not DaraCore.is_null(request.output_shrink):
+            query['Output'] = request.output_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'VideoGeneration',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.VideoGenerationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def video_generation(
+        self,
+        request: main_models.VideoGenerationRequest,
+    ) -> main_models.VideoGenerationResponse:
+        runtime = RuntimeOptions()
+        return self.video_generation_with_options(request, runtime)
+
+    async def video_generation_async(
+        self,
+        request: main_models.VideoGenerationRequest,
+    ) -> main_models.VideoGenerationResponse:
+        runtime = RuntimeOptions()
+        return await self.video_generation_with_options_async(request, runtime)
+
     def video_translation_with_options(
         self,
         tmp_req: main_models.VideoTranslationRequest,

@@ -2,7 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import Dict
+from typing import Dict, Any
 
 from alibabacloud_aidge20260428 import models as main_models
 from darabonba.model import DaraModel
@@ -81,7 +81,7 @@ class QueryAsyncTaskResultResponseBodyData(DaraModel):
         result: str = None,
         status: str = None,
         task_id: str = None,
-        usage_map: Dict[str, int] = None,
+        usage_map: Dict[str, Any] = None,
     ):
         # The task result.
         self.result = result

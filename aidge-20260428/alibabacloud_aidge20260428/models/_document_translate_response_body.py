@@ -22,7 +22,7 @@ class DocumentTranslateResponseBody(DaraModel):
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the call is successful. Valid values: true: The call is successful. false: The call failed.
+        # Indicates whether the call is successful. true: successful. false: failed.
         self.success = success
 
     def validate(self):

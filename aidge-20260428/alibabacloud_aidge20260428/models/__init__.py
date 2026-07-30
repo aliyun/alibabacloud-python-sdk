@@ -71,6 +71,10 @@ from ._text_translate_request import TextTranslateRequest
 from ._text_translate_shrink_request import TextTranslateShrinkRequest
 from ._text_translate_response_body import TextTranslateResponseBody
 from ._text_translate_response import TextTranslateResponse
+from ._video_generation_request import VideoGenerationRequest
+from ._video_generation_shrink_request import VideoGenerationShrinkRequest
+from ._video_generation_response_body import VideoGenerationResponseBody
+from ._video_generation_response import VideoGenerationResponse
 from ._video_translation_request import VideoTranslationRequest
 from ._video_translation_shrink_request import VideoTranslationShrinkRequest
 from ._video_translation_response_body import VideoTranslationResponseBody
@@ -123,6 +127,10 @@ from ._size_chart_extract_response_body import SizeChartExtractResponseBodyData
 from ._text_correct_response_body import TextCorrectResponseBodyData
 from ._text_translate_response_body import TextTranslateResponseBodyDataTranslations
 from ._text_translate_response_body import TextTranslateResponseBodyData
+from ._video_generation_request import VideoGenerationRequestInput
+from ._video_generation_request import VideoGenerationRequestIntent
+from ._video_generation_request import VideoGenerationRequestOutput
+from ._video_generation_response_body import VideoGenerationResponseBodyData
 from ._video_translation_response_body import VideoTranslationResponseBodyData
 from ._vision_flow_response_body import VisionFlowResponseBodyData
 
@@ -196,6 +204,10 @@ __all__ = [
     TextTranslateShrinkRequest,
     TextTranslateResponseBody,
     TextTranslateResponse,
+    VideoGenerationRequest,
+    VideoGenerationShrinkRequest,
+    VideoGenerationResponseBody,
+    VideoGenerationResponse,
     VideoTranslationRequest,
     VideoTranslationShrinkRequest,
     VideoTranslationResponseBody,
@@ -248,6 +260,10 @@ __all__ = [
     TextCorrectResponseBodyData,
     TextTranslateResponseBodyDataTranslations,
     TextTranslateResponseBodyData,
+    VideoGenerationRequestInput,
+    VideoGenerationRequestIntent,
+    VideoGenerationRequestOutput,
+    VideoGenerationResponseBodyData,
     VideoTranslationResponseBodyData,
     VisionFlowResponseBodyData
 ]

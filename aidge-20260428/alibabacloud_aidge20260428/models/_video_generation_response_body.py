@@ -2,27 +2,24 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import Dict
+
 from alibabacloud_aidge20260428 import models as main_models
 from darabonba.model import DaraModel
 
-class VideoTranslationResponseBody(DaraModel):
+class VideoGenerationResponseBody(DaraModel):
     def __init__(
         self,
         code: str = None,
-        data: main_models.VideoTranslationResponseBodyData = None,
+        data: main_models.VideoGenerationResponseBodyData = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code.
         self.code = code
-        # The asynchronous task submit status.
         self.data = data
-        # The description message.
         self.message = message
-        # The request trace ID.
         self.request_id = request_id
-        # Indicates whether the call is successful. Valid values: true: The call is successful. false: The call failed.
         self.success = success
 
     def validate(self):
@@ -57,7 +54,7 @@ class VideoTranslationResponseBody(DaraModel):
             self.code = m.get('Code')
 
         if m.get('Data') is not None:
-            temp_model = main_models.VideoTranslationResponseBodyData()
+            temp_model = main_models.VideoGenerationResponseBodyData()
             self.data = temp_model.from_map(m.get('Data'))
 
         if m.get('Message') is not None:
@@ -71,13 +68,14 @@ class VideoTranslationResponseBody(DaraModel):
 
         return self
 
-class VideoTranslationResponseBodyData(DaraModel):
+class VideoGenerationResponseBodyData(DaraModel):
     def __init__(
         self,
         task_id: str = None,
+        usage_map: Dict[str, int] = None,
     ):
-        # The asynchronous task ID, used for subsequent queries.
         self.task_id = task_id
+        self.usage_map = usage_map
 
     def validate(self):
         pass
@@ -90,12 +88,18 @@ class VideoTranslationResponseBodyData(DaraModel):
         if self.task_id is not None:
             result['TaskId'] = self.task_id
 
+        if self.usage_map is not None:
+            result['UsageMap'] = self.usage_map
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
+
+        if m.get('UsageMap') is not None:
+            self.usage_map = m.get('UsageMap')
 
         return self
 

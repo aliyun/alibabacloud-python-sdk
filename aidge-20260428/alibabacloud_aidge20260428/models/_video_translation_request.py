@@ -14,11 +14,18 @@ class VideoTranslationRequest(DaraModel):
         target_language: str = None,
         video_url: str = None,
     ):
+        # The array of translation capabilities. Valid values: ["visual"].
+        # 
         # This parameter is required.
         self.capabilities = capabilities
+        # The source language. This parameter is optional. Default value: auto (automatic detection).
         self.source_language = source_language
+        # The target language. This parameter is required.
+        # 
         # This parameter is required.
         self.target_language = target_language
+        # The video URL (MP4/MOV, ≤ 200 MB).
+        # 
         # This parameter is required.
         self.video_url = video_url
 
