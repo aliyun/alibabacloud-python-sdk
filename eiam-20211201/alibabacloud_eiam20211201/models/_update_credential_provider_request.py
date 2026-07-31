@@ -18,7 +18,7 @@ class UpdateCredentialProviderRequest(DaraModel):
     ):
         # The idempotency token that ensures the idempotence of the request.
         # 
-        # Generate a unique parameter value from your client to ensure that the value is unique among different requests. ClientToken supports only ASCII characters and cannot exceed 64 characters in length. For more information, see References: [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
+        # Generate a unique parameter value from your client to ensure uniqueness across different requests. ClientToken supports only ASCII characters and cannot exceed 64 characters in length. For more information, see References: [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
         # 
         # This parameter is required.
         self.client_token = client_token
@@ -128,21 +128,43 @@ class UpdateCredentialProviderRequestCredentialProviderConfig(DaraModel):
 class UpdateCredentialProviderRequestCredentialProviderConfigOAuthProviderConfig(DaraModel):
     def __init__(
         self,
+        authorization_endpoint: str = None,
+        authorization_flow: str = None,
         client_secret: str = None,
+        discovery_url: str = None,
+        issuer: str = None,
+        pkce_challenge_method: str = None,
+        pkce_enabled: bool = None,
+        provider_vendor: str = None,
         scope: str = None,
         token_endpoint: str = None,
     ):
-        # The client_secret in the OAuth protocol, which is the client secret.
+        # The endpoint URL used to guide users through authorization. Conditionally required: this parameter is required when AuthorizationFlow is set to user_federation and ProviderVendor is set to custom. For preset vendors, this value can be automatically populated through DiscoveryUrl.
+        self.authorization_endpoint = authorization_endpoint
+        # The OAuth authorization flow type. Valid values:
+        # - m2m: Machine-to-machine (2LO, Client Credentials).
+        # - user_federation: User federation (3LO, Authorization Code).
+        self.authorization_flow = authorization_flow
+        # The client_secret in the OAuth protocol.
         # 
         # > The value cannot exceed 1024 characters in length.
         self.client_secret = client_secret
+        # The Discovery document URL used to automatically retrieve OAuth endpoint configurations. Conditionally optional: this parameter is used when AuthorizationFlow is set to user_federation. If DiscoveryUrl is not provided, you must manually configure fields such as TokenEndpoint and AuthorizationEndpoint.
+        self.discovery_url = discovery_url
+        self.issuer = issuer
+        # The PKCE code_challenge generation method. Default value: s256.
+        self.pkce_challenge_method = pkce_challenge_method
+        # Specifies whether to use the PKCE extension for enhanced security. We recommend that you always enable this feature.
+        self.pkce_enabled = pkce_enabled
+        # The preset vendor or custom configuration. This parameter is optional. Default value: custom.
+        self.provider_vendor = provider_vendor
         # The scope in the OAuth protocol, which specifies the permission scope.
         # 
-        # > The Scope configuration at the credential provider serves as the default value. If the scope parameter is not specified when calling the DeveloperAPI to obtain an OAuth Access Token, the Scope configuration at the credential provider is used for issuance.
+        # > The Scope configuration on the OAuth credential provider serves as a fallback value. If the scope parameter is not specified when calling the DeveloperAPI to obtain an OAuth Access Token, the Scope configuration on the credential provider is used for token issuance.
         # 
         # >Notice: Separate multiple Scope values with spaces. To clear the Scope configuration, pass an empty string.
         # 
-        # Restrictions on a single Scope value:
+        # Restrictions for each individual Scope value:
         # 1. Allowed characters: lowercase letters, digits, and special characters `|/:_-.`
         # 2. Must contain at least one lowercase letter or digit.
         # 3. Must start with a special character `.`, a lowercase letter, or a digit.
@@ -161,8 +183,29 @@ class UpdateCredentialProviderRequestCredentialProviderConfigOAuthProviderConfig
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.authorization_endpoint is not None:
+            result['AuthorizationEndpoint'] = self.authorization_endpoint
+
+        if self.authorization_flow is not None:
+            result['AuthorizationFlow'] = self.authorization_flow
+
         if self.client_secret is not None:
             result['ClientSecret'] = self.client_secret
+
+        if self.discovery_url is not None:
+            result['DiscoveryUrl'] = self.discovery_url
+
+        if self.issuer is not None:
+            result['Issuer'] = self.issuer
+
+        if self.pkce_challenge_method is not None:
+            result['PkceChallengeMethod'] = self.pkce_challenge_method
+
+        if self.pkce_enabled is not None:
+            result['PkceEnabled'] = self.pkce_enabled
+
+        if self.provider_vendor is not None:
+            result['ProviderVendor'] = self.provider_vendor
 
         if self.scope is not None:
             result['Scope'] = self.scope
@@ -174,8 +217,29 @@ class UpdateCredentialProviderRequestCredentialProviderConfigOAuthProviderConfig
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AuthorizationEndpoint') is not None:
+            self.authorization_endpoint = m.get('AuthorizationEndpoint')
+
+        if m.get('AuthorizationFlow') is not None:
+            self.authorization_flow = m.get('AuthorizationFlow')
+
         if m.get('ClientSecret') is not None:
             self.client_secret = m.get('ClientSecret')
+
+        if m.get('DiscoveryUrl') is not None:
+            self.discovery_url = m.get('DiscoveryUrl')
+
+        if m.get('Issuer') is not None:
+            self.issuer = m.get('Issuer')
+
+        if m.get('PkceChallengeMethod') is not None:
+            self.pkce_challenge_method = m.get('PkceChallengeMethod')
+
+        if m.get('PkceEnabled') is not None:
+            self.pkce_enabled = m.get('PkceEnabled')
+
+        if m.get('ProviderVendor') is not None:
+            self.provider_vendor = m.get('ProviderVendor')
 
         if m.get('Scope') is not None:
             self.scope = m.get('Scope')
@@ -197,9 +261,9 @@ class UpdateCredentialProviderRequestCredentialProviderConfigJwtProviderConfig(D
         # 
         # > The list cannot contain more than 200 entries.
         # 
-        # >Notice: To clear the issuer list, pass an empty list or an empty string.
+        # >Notice: To clear the issuer list, pass an empty list or an empty string when calling the API.
         self.allowed_token_issuers = allowed_token_issuers
-        # Specifies whether to enable the JWT derived short token feature.
+        # Specifies whether to enable the JWT derived short token capability.
         self.derived_short_token_enabled = derived_short_token_enabled
         # The validity period of the JWT, in seconds.
         self.expiration = expiration

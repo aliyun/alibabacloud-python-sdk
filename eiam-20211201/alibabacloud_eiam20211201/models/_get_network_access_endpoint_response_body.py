@@ -49,6 +49,7 @@ class GetNetworkAccessEndpointResponseBody(DaraModel):
 class GetNetworkAccessEndpointResponseBodyNetworkAccessEndpoint(DaraModel):
     def __init__(
         self,
+        backup_vpc_endpoint: main_models.GetNetworkAccessEndpointResponseBodyNetworkAccessEndpointBackupVpcEndpoint = None,
         create_time: int = None,
         egress_private_ip_addresses: List[str] = None,
         egress_public_ip_addresses: List[str] = None,
@@ -63,31 +64,32 @@ class GetNetworkAccessEndpointResponseBodyNetworkAccessEndpoint(DaraModel):
         vpc_id: str = None,
         vpc_region_id: str = None,
     ):
+        self.backup_vpc_endpoint = backup_vpc_endpoint
         # The time when the network access endpoint was created. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
-        # The private egress IP addresses of the dedicated network access endpoint. This parameter is returned only when NetworkEndpointType is set to private.
+        # The private egress IP address range of the dedicated network access endpoint. This parameter is returned only when NetworkEndpointType is set to private.
         self.egress_private_ip_addresses = egress_private_ip_addresses
-        # The public egress IP addresses of the shared network access endpoint. This parameter is returned only when NetworkEndpointType is set to shared.
+        # The public egress IP address range of the shared network access endpoint. This parameter is returned only when NetworkEndpointType is set to shared.
         self.egress_public_ip_addresses = egress_public_ip_addresses
         # The instance ID.
         self.instance_id = instance_id
-        # The dedicated network access endpoint ID.
+        # The ID of the dedicated network access endpoint.
         self.network_access_endpoint_id = network_access_endpoint_id
         # The name of the dedicated network access endpoint.
         self.network_access_endpoint_name = network_access_endpoint_name
         # The type of the network access endpoint. Valid values:
         # 
-        # - shared: shared network access endpoint.
-        # - private: dedicated network access endpoint.
+        # - shared: Shared network access endpoint.
+        # - private: Dedicated network access endpoint.
         self.network_access_endpoint_type = network_access_endpoint_type
         # The ID of the security group used by the dedicated network access endpoint.
         self.security_group_id = security_group_id
         # The status of the network access endpoint. Valid values:
         # 
-        # - pending: pending initialization.
-        # - creating: being created.
-        # - running: running.
-        # - deleting: being deleted.
+        # - pending: Pending initialization.
+        # - creating: Being created.
+        # - running: Running.
+        # - deleting: Being deleted.
         self.status = status
         # The time when the dedicated network access endpoint was last updated. The value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
@@ -99,13 +101,17 @@ class GetNetworkAccessEndpointResponseBodyNetworkAccessEndpoint(DaraModel):
         self.vpc_region_id = vpc_region_id
 
     def validate(self):
-        pass
+        if self.backup_vpc_endpoint:
+            self.backup_vpc_endpoint.validate()
 
     def to_map(self):
         result = dict()
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.backup_vpc_endpoint is not None:
+            result['BackupVpcEndpoint'] = self.backup_vpc_endpoint.to_map()
+
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
 
@@ -149,6 +155,10 @@ class GetNetworkAccessEndpointResponseBodyNetworkAccessEndpoint(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BackupVpcEndpoint') is not None:
+            temp_model = main_models.GetNetworkAccessEndpointResponseBodyNetworkAccessEndpointBackupVpcEndpoint()
+            self.backup_vpc_endpoint = temp_model.from_map(m.get('BackupVpcEndpoint'))
+
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
 
@@ -187,6 +197,73 @@ class GetNetworkAccessEndpointResponseBodyNetworkAccessEndpoint(DaraModel):
 
         if m.get('VpcRegionId') is not None:
             self.vpc_region_id = m.get('VpcRegionId')
+
+        return self
+
+class GetNetworkAccessEndpointResponseBodyNetworkAccessEndpointBackupVpcEndpoint(DaraModel):
+    def __init__(
+        self,
+        backup_egress_private_ip_addresses: List[str] = None,
+        backup_egress_public_ip_addresses: List[str] = None,
+        backup_security_group_id: str = None,
+        backup_vswitch_ids: List[str] = None,
+        backup_vpc_id: str = None,
+        backup_vpc_region_id: str = None,
+    ):
+        self.backup_egress_private_ip_addresses = backup_egress_private_ip_addresses
+        self.backup_egress_public_ip_addresses = backup_egress_public_ip_addresses
+        self.backup_security_group_id = backup_security_group_id
+        self.backup_vswitch_ids = backup_vswitch_ids
+        self.backup_vpc_id = backup_vpc_id
+        self.backup_vpc_region_id = backup_vpc_region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.backup_egress_private_ip_addresses is not None:
+            result['BackupEgressPrivateIpAddresses'] = self.backup_egress_private_ip_addresses
+
+        if self.backup_egress_public_ip_addresses is not None:
+            result['BackupEgressPublicIpAddresses'] = self.backup_egress_public_ip_addresses
+
+        if self.backup_security_group_id is not None:
+            result['BackupSecurityGroupId'] = self.backup_security_group_id
+
+        if self.backup_vswitch_ids is not None:
+            result['BackupVSwitchIds'] = self.backup_vswitch_ids
+
+        if self.backup_vpc_id is not None:
+            result['BackupVpcId'] = self.backup_vpc_id
+
+        if self.backup_vpc_region_id is not None:
+            result['BackupVpcRegionId'] = self.backup_vpc_region_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BackupEgressPrivateIpAddresses') is not None:
+            self.backup_egress_private_ip_addresses = m.get('BackupEgressPrivateIpAddresses')
+
+        if m.get('BackupEgressPublicIpAddresses') is not None:
+            self.backup_egress_public_ip_addresses = m.get('BackupEgressPublicIpAddresses')
+
+        if m.get('BackupSecurityGroupId') is not None:
+            self.backup_security_group_id = m.get('BackupSecurityGroupId')
+
+        if m.get('BackupVSwitchIds') is not None:
+            self.backup_vswitch_ids = m.get('BackupVSwitchIds')
+
+        if m.get('BackupVpcId') is not None:
+            self.backup_vpc_id = m.get('BackupVpcId')
+
+        if m.get('BackupVpcRegionId') is not None:
+            self.backup_vpc_region_id = m.get('BackupVpcRegionId')
 
         return self
 

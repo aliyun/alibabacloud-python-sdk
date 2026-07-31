@@ -203,7 +203,7 @@ class ListInstancesResponseBodyInstancesReplicationConfiguration(DaraModel):
         self.primary_instance_id = primary_instance_id
         # The region ID of the primary instance.
         self.primary_instance_region_id = primary_instance_region_id
-        # The time when the disaster recovery data replication was created, in UNIX timestamp format. Unit: milliseconds.
+        # The creation time of the disaster recovery data replication, in UNIX timestamp format. Unit: milliseconds.
         self.replication_create_time = replication_create_time
 
     def validate(self):

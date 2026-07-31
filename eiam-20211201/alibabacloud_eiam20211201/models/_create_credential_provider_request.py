@@ -20,13 +20,13 @@ class CreateCredentialProviderRequest(DaraModel):
     ):
         # The idempotency token that ensures the idempotence of the request.
         # 
-        # Generate a parameter value from your client to ensure that the value is unique across different requests. ClientToken supports only ASCII characters and cannot exceed 64 characters in length. For more information, see References [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
+        # Generate a parameter value from your client to ensure uniqueness across different requests. ClientToken supports only ASCII characters and cannot exceed 64 characters in length. For more information, see References [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
         # 
         # This parameter is required.
         self.client_token = client_token
         # The configuration of the credential provider.
         self.credential_provider_config = credential_provider_config
-        # The business identifier of the credential provider.
+        # The identifier of the credential provider.
         # 
         # > Allowed characters include uppercase and lowercase letters, digits, and the special characters `.-_`. The length cannot exceed 64 characters.
         # 
@@ -40,8 +40,8 @@ class CreateCredentialProviderRequest(DaraModel):
         self.credential_provider_name = credential_provider_name
         # The type of the credential provider. Valid values:
         # 
-        # - oauth: OAuth credential provider
-        # - jwt: JWT credential provider
+        # - oauth: OAuth credential provider.
+        # - jwt: JWT credential provider.
         # 
         # This parameter is required.
         self.credential_provider_type = credential_provider_type
@@ -157,30 +157,50 @@ class CreateCredentialProviderRequestCredentialProviderConfig(DaraModel):
 class CreateCredentialProviderRequestCredentialProviderConfigOAuthProviderConfig(DaraModel):
     def __init__(
         self,
+        authorization_endpoint: str = None,
+        authorization_flow: str = None,
         client_id: str = None,
         client_secret: str = None,
+        discovery_url: str = None,
+        issuer: str = None,
+        pkce_challenge_method: str = None,
+        pkce_enabled: bool = None,
+        provider_vendor: str = None,
         scope: str = None,
         token_endpoint: str = None,
     ):
-        # The client_id in the OAuth protocol, which is the client ID.
+        # The endpoint address used to guide users through authorization. Conditionally required: required when AuthorizationFlow=user_federation and ProviderVendor=custom. For preset vendors, this can be automatically populated through DiscoveryUrl.
+        self.authorization_endpoint = authorization_endpoint
+        # The OAuth authorization flow type. Valid values: m2m: machine-to-machine (2LO, Client Credentials). user_federation: user federation (3LO, Authorization Code).
+        self.authorization_flow = authorization_flow
+        # The client_id in the OAuth protocol.
         # 
         # > The length cannot exceed 128 characters.
         # 
         # This parameter is required.
         self.client_id = client_id
-        # The client_secret in the OAuth protocol, which is the client secret.
+        # The client_secret in the OAuth protocol.
         # 
         # > The length cannot exceed 1024 characters.
         # 
         # This parameter is required.
         self.client_secret = client_secret
-        # The scope in the OAuth protocol, which specifies the permission scope.
+        # The Discovery document URL used to automatically retrieve OAuth endpoint configurations. Conditionally optional: used when AuthorizationFlow=user_federation. If DiscoveryUrl is not provided, you must manually configure fields such as TokenEndpoint and AuthorizationEndpoint.
+        self.discovery_url = discovery_url
+        self.issuer = issuer
+        # The PKCE code_challenge generation method. Default value: s256.
+        self.pkce_challenge_method = pkce_challenge_method
+        # Specifies whether to use the PKCE extension to enhance security. We recommend that you always enable this feature.
+        self.pkce_enabled = pkce_enabled
+        # The preset vendor or custom configuration. Optional. Default value: custom.
+        self.provider_vendor = provider_vendor
+        # The scope in the OAuth protocol, which defines the permission range.
         # 
-        # > The Scope configuration on the credential provider serves as the default value. If the scope parameter is not specified when calling the DeveloperAPI to obtain an OAuth Access Token, the Scope configuration on the credential provider is used for issuance.
+        # > The Scope configuration on the credential provider serves as the fallback value. If the scope parameter is not specified when calling the DeveloperAPI to obtain an OAuth Access Token, the Scope configuration on the credential provider is used for issuance.
         # 
         # >Notice: Separate multiple Scope values with spaces.
         # 
-        # The following restrictions apply to each individual Scope value:
+        # Restrictions for each individual Scope value:
         # 1. Allowed characters: lowercase letters, digits, and the special characters `|/:_-.`
         # 2. Must contain at least one lowercase letter or digit.
         # 3. Must start with the special character `.`, a lowercase letter, or a digit.
@@ -188,9 +208,7 @@ class CreateCredentialProviderRequestCredentialProviderConfigOAuthProviderConfig
         self.scope = scope
         # The token endpoint of the OAuth protocol.
         # 
-        # > The value must start with `http://` or `https://`, and the length cannot exceed 1024 characters.
-        # 
-        # This parameter is required.
+        # > Must start with `http://` or `https://`, and the length cannot exceed 1024 characters.
         self.token_endpoint = token_endpoint
 
     def validate(self):
@@ -201,11 +219,32 @@ class CreateCredentialProviderRequestCredentialProviderConfigOAuthProviderConfig
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.authorization_endpoint is not None:
+            result['AuthorizationEndpoint'] = self.authorization_endpoint
+
+        if self.authorization_flow is not None:
+            result['AuthorizationFlow'] = self.authorization_flow
+
         if self.client_id is not None:
             result['ClientId'] = self.client_id
 
         if self.client_secret is not None:
             result['ClientSecret'] = self.client_secret
+
+        if self.discovery_url is not None:
+            result['DiscoveryUrl'] = self.discovery_url
+
+        if self.issuer is not None:
+            result['Issuer'] = self.issuer
+
+        if self.pkce_challenge_method is not None:
+            result['PkceChallengeMethod'] = self.pkce_challenge_method
+
+        if self.pkce_enabled is not None:
+            result['PkceEnabled'] = self.pkce_enabled
+
+        if self.provider_vendor is not None:
+            result['ProviderVendor'] = self.provider_vendor
 
         if self.scope is not None:
             result['Scope'] = self.scope
@@ -217,11 +256,32 @@ class CreateCredentialProviderRequestCredentialProviderConfigOAuthProviderConfig
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AuthorizationEndpoint') is not None:
+            self.authorization_endpoint = m.get('AuthorizationEndpoint')
+
+        if m.get('AuthorizationFlow') is not None:
+            self.authorization_flow = m.get('AuthorizationFlow')
+
         if m.get('ClientId') is not None:
             self.client_id = m.get('ClientId')
 
         if m.get('ClientSecret') is not None:
             self.client_secret = m.get('ClientSecret')
+
+        if m.get('DiscoveryUrl') is not None:
+            self.discovery_url = m.get('DiscoveryUrl')
+
+        if m.get('Issuer') is not None:
+            self.issuer = m.get('Issuer')
+
+        if m.get('PkceChallengeMethod') is not None:
+            self.pkce_challenge_method = m.get('PkceChallengeMethod')
+
+        if m.get('PkceEnabled') is not None:
+            self.pkce_enabled = m.get('PkceEnabled')
+
+        if m.get('ProviderVendor') is not None:
+            self.provider_vendor = m.get('ProviderVendor')
 
         if m.get('Scope') is not None:
             self.scope = m.get('Scope')
@@ -241,11 +301,11 @@ class CreateCredentialProviderRequestCredentialProviderConfigJwtProviderConfig(D
     ):
         # The list of allowed JWT issuers.
         # 
-        # > The list can contain up to 200 entries.
+        # > The list length cannot exceed 200.
         self.allowed_token_issuers = allowed_token_issuers
         # Specifies whether to enable the JWT derived short token capability.
         self.derived_short_token_enabled = derived_short_token_enabled
-        # The validity period of the JWT. Unit: seconds.
+        # The validity duration of the JWT. Unit: seconds.
         self.expiration = expiration
         # Specifies whether to enable JWT expiration cleanup.
         self.expiration_cleanup_enabled = expiration_cleanup_enabled

@@ -35,6 +35,7 @@ class ListApplicationsRequest(DaraModel):
         self.application_ids = application_ids
         # The application name. Only left fuzzy match is supported.
         self.application_name = application_name
+        # The application template ID.
         self.application_template_id = application_template_id
         # The application access authorization type. Valid values:
         # - authorize_required: Explicit authorization is required for access.
@@ -48,6 +49,7 @@ class ListApplicationsRequest(DaraModel):
         self.instance_id = instance_id
         # Specifies whether the M2M Client identity is enabled.
         self.m_2mclient_status = m_2mclient_status
+        # The ServiceCode of the cloud service that manages the application template.
         self.managed_service_code = managed_service_code
         # The page number.
         self.page_number = page_number
@@ -55,8 +57,9 @@ class ListApplicationsRequest(DaraModel):
         self.page_size = page_size
         # Specifies whether the ResourceServer capability is enabled.
         self.resource_server_status = resource_server_status
+        # Specifies whether the application template is managed by a cloud service.
         self.service_managed = service_managed
-        # The SSO type filter condition. Multiple types can be separated by commas, such as oauth2/m2m,oidc+oauth2/m2m.
+        # The SSO type filter condition. Multiple types can be separated by commas. Example: oauth2/m2m,oidc+oauth2/m2m.
         self.sso_type = sso_type
         # The application status. Valid values:
         # - enabled: Enabled.
@@ -188,7 +191,7 @@ class ListApplicationsRequestCustomFields(DaraModel):
         field_value: str = None,
     ):
         # The custom field identifier. Valid values:
-        # - agent_type: the agent type.
+        # - agent_type: The agent type.
         self.field_name = field_name
         # The custom field value.
         self.field_value = field_value

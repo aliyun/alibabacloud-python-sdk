@@ -106,9 +106,6 @@ class ListCredentialProvidersRequestFilter(DaraModel):
         value: List[str] = None,
     ):
         # The filter condition name. Valid values:
-        # 
-        # - CredentialProviderName: the credential provider name.
-        # - CredentialProviderIdentifier: the credential provider identifier.
         self.name = name
         # The list of filter condition values.
         self.value = value

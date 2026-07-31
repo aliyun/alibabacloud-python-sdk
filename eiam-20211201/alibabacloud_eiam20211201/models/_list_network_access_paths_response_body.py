@@ -13,7 +13,7 @@ class ListNetworkAccessPathsResponseBody(DaraModel):
         network_access_paths: List[main_models.ListNetworkAccessPathsResponseBodyNetworkAccessPaths] = None,
         request_id: str = None,
     ):
-        # The list of network access endpoint access paths.
+        # The list of network access endpoint paths.
         self.network_access_paths = network_access_paths
         # The request ID.
         self.request_id = request_id
@@ -56,6 +56,7 @@ class ListNetworkAccessPathsResponseBodyNetworkAccessPaths(DaraModel):
     def __init__(
         self,
         create_time: int = None,
+        cross_region_replication_role: str = None,
         instance_id: str = None,
         network_access_endpoint_id: str = None,
         network_access_path_id: str = None,
@@ -64,30 +65,35 @@ class ListNetworkAccessPathsResponseBodyNetworkAccessPaths(DaraModel):
         status: str = None,
         update_time: int = None,
         v_switch_id: str = None,
+        vpc_id: str = None,
+        vpc_region_id: str = None,
     ):
-        # The time when the dedicated network access endpoint access path was created, in UNIX timestamp format. Unit: milliseconds.
+        # The creation time of the dedicated network access endpoint path. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
+        self.cross_region_replication_role = cross_region_replication_role
         # The instance ID.
         self.instance_id = instance_id
-        # The dedicated network access endpoint ID.
+        # The ID of the dedicated network access endpoint.
         self.network_access_endpoint_id = network_access_endpoint_id
-        # The ID of the dedicated network access endpoint access path.
+        # The ID of the dedicated network access endpoint path.
         self.network_access_path_id = network_access_path_id
-        # The ENI ID used by the dedicated network access endpoint access path.
+        # The ID of the ENI used by the dedicated network access endpoint path.
         self.network_interface_id = network_interface_id
-        # The private endpoint of the ENI used by the dedicated network access endpoint access path on the private network.
+        # The private endpoint of the ENI used by the dedicated network access endpoint path.
         self.private_ip_address = private_ip_address
-        # The status of the dedicated network access endpoint access path. Valid values:
+        # The status of the dedicated network access endpoint path. Valid values:
         #  
-        # - pending: pending initialization.
-        # - creating: being created.
-        # - running: running.
-        # - deleting: being deleted.
+        # - pending: Pending initialization.
+        # - creating: Being created.
+        # - running: Running.
+        # - deleting: Being deleted.
         self.status = status
-        # The time when the dedicated network access endpoint access path was last updated, in UNIX timestamp format. Unit: milliseconds.
+        # The last update time of the dedicated network access endpoint path. The value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
-        # The vSwitch ID to which the ENI of the dedicated network access endpoint access path belongs.
+        # The ID of the vSwitch to which the ENI of the dedicated network access endpoint path belongs.
         self.v_switch_id = v_switch_id
+        self.vpc_id = vpc_id
+        self.vpc_region_id = vpc_region_id
 
     def validate(self):
         pass
@@ -99,6 +105,9 @@ class ListNetworkAccessPathsResponseBodyNetworkAccessPaths(DaraModel):
             result = _map
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+
+        if self.cross_region_replication_role is not None:
+            result['CrossRegionReplicationRole'] = self.cross_region_replication_role
 
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
@@ -124,12 +133,21 @@ class ListNetworkAccessPathsResponseBodyNetworkAccessPaths(DaraModel):
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
 
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+
+        if self.vpc_region_id is not None:
+            result['VpcRegionId'] = self.vpc_region_id
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+
+        if m.get('CrossRegionReplicationRole') is not None:
+            self.cross_region_replication_role = m.get('CrossRegionReplicationRole')
 
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
@@ -154,6 +172,12 @@ class ListNetworkAccessPathsResponseBodyNetworkAccessPaths(DaraModel):
 
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
+
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+
+        if m.get('VpcRegionId') is not None:
+            self.vpc_region_id = m.get('VpcRegionId')
 
         return self
 

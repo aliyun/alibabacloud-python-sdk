@@ -19,33 +19,29 @@ class ListNetworkAccessEndpointsRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The number of entries to return on each page. The maximum value is 100.
+        # The maximum number of entries per page for a paged query. Maximum value: 100.
         self.max_results = max_results
-        # The status of the network endpoint. Valid values:
-        # 
-        # - pending: The endpoint is pending initialization.
-        # 
-        # - creating: The endpoint is being created.
-        # 
-        # - running: The endpoint is running.
-        # 
-        # - deleting: The endpoint is being deleted.
+        # The status of the network access endpoint. Valid values:
+        #  
+        # - pending: Pending initialization.
+        # - creating: Being created.
+        # - running: Running.
+        # - deleting: Being deleted.
         # 
         # This parameter does not take effect when NetworkAccessEndpointType is set to shared.
         self.network_access_endpoint_status = network_access_endpoint_status
-        # The type of the network endpoint. Valid values:
+        # The type of the network access endpoint. Valid values:
         # 
-        # - shared: a shared network endpoint.
+        # - shared: shared network access endpoint.
+        # - private: dedicated network access endpoint.
         # 
-        # - private: a private network endpoint.
-        # 
-        # The default value is private.
+        # Default value: private.
         self.network_access_endpoint_type = network_access_endpoint_type
-        # The token used for the next query. Set this parameter to the NextToken value returned from the previous API call. Leave this parameter empty for the first query.
+        # The pagination token. Set this parameter to the NextToken value returned in the previous API call. Leave this parameter empty for the first query.
         self.next_token = next_token
-        # The ID of the VPC to which the private network endpoint is connected. This parameter does not take effect when NetworkAccessEndpointType is set to shared.
+        # The VPC ID of the dedicated network access endpoint. This parameter does not take effect when NetworkAccessEndpointType is set to shared.
         self.vpc_id = vpc_id
-        # The region ID of the VPC to which the private network endpoint is connected. The value of this parameter must be a region returned by the ListNetworkAccessEndpointAvailableRegions operation. This parameter does not take effect when NetworkAccessEndpointType is set to shared.
+        # The region of the VPC for the dedicated network access endpoint. The region must be one of the regions returned by the ListNetworkAccessEndpointAvailableRegions operation. This parameter does not take effect when NetworkAccessEndpointType is set to shared.
         self.vpc_region_id = vpc_region_id
 
     def validate(self):

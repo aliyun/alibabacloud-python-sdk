@@ -14,6 +14,7 @@ class ListInstancesRequest(DaraModel):
         instance_ids: List[str] = None,
         page_number: int = None,
         page_size: int = None,
+        service_managed: bool = None,
         status: str = None,
     ):
         # The cross-region replication status.
@@ -31,6 +32,7 @@ class ListInstancesRequest(DaraModel):
         self.page_number = page_number
         # The page size.
         self.page_size = page_size
+        self.service_managed = service_managed
         # The instance status. Valid values:
         # - creating: Being created.
         # - running: Running.
@@ -59,6 +61,9 @@ class ListInstancesRequest(DaraModel):
         if self.page_size is not None:
             result['PageSize'] = self.page_size
 
+        if self.service_managed is not None:
+            result['ServiceManaged'] = self.service_managed
+
         if self.status is not None:
             result['Status'] = self.status
 
@@ -80,6 +85,9 @@ class ListInstancesRequest(DaraModel):
 
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+
+        if m.get('ServiceManaged') is not None:
+            self.service_managed = m.get('ServiceManaged')
 
         if m.get('Status') is not None:
             self.status = m.get('Status')

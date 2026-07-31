@@ -118,7 +118,7 @@ class ListApplicationsResponseBodyApplications(DaraModel):
         self.instance_id = instance_id
         # The URL of the application logo.
         self.logo_url = logo_url
-        # The ServiceCode of the Alibaba Cloud service that manages the application template.
+        # The ServiceCode of the cloud service that manages the application template.
         self.managed_service_code = managed_service_code
         # The unique identifier of the ResourceServer.
         self.resource_server_identifier = resource_server_identifier
@@ -126,7 +126,7 @@ class ListApplicationsResponseBodyApplications(DaraModel):
         self.resource_server_source_type = resource_server_source_type
         # The resource server status.
         self.resource_server_status = resource_server_status
-        # Indicates whether the application template is managed by an Alibaba Cloud service.
+        # Specifies whether the application template is managed by a cloud service.
         self.service_managed = service_managed
         # The single sign-on protocol. Valid values:
         # - saml2: SAML 2.0 protocol.

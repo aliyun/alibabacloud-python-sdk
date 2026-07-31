@@ -25,6 +25,7 @@ class Client(OpenApiClient):
             'eu-central-1': 'eiam.eu-central-1.aliyuncs.com',
             'cn-hongkong': 'eiam.cn-hongkong.aliyuncs.com',
             'cn-hangzhou': 'eiam.cn-hangzhou.aliyuncs.com',
+            'cn-beijing': 'eiam.cn-beijing.aliyuncs.com',
             'ap-southeast-5': 'eiam.ap-southeast-5.aliyuncs.com',
             'ap-southeast-1': 'eiam.ap-southeast-1.aliyuncs.com',
             'ap-northeast-2': 'eiam.ap-northeast-2.aliyuncs.com'
@@ -1553,6 +1554,10 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.module_key):
             query['ModuleKey'] = request.module_key
+        if not DaraCore.is_null(request.resource_label_key):
+            query['ResourceLabelKey'] = request.resource_label_key
+        if not DaraCore.is_null(request.resource_label_value):
+            query['ResourceLabelValue'] = request.resource_label_value
         if not DaraCore.is_null(request.sub_feature_key):
             query['SubFeatureKey'] = request.sub_feature_key
         req = open_api_util_models.OpenApiRequest(
@@ -1587,6 +1592,10 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.module_key):
             query['ModuleKey'] = request.module_key
+        if not DaraCore.is_null(request.resource_label_key):
+            query['ResourceLabelKey'] = request.resource_label_key
+        if not DaraCore.is_null(request.resource_label_value):
+            query['ResourceLabelValue'] = request.resource_label_value
         if not DaraCore.is_null(request.sub_feature_key):
             query['SubFeatureKey'] = request.sub_feature_key
         req = open_api_util_models.OpenApiRequest(
@@ -18907,6 +18916,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.service_managed):
+            query['ServiceManaged'] = request.service_managed
         if not DaraCore.is_null(request.status):
             query['Status'] = request.status
         req = open_api_util_models.OpenApiRequest(
@@ -18945,6 +18956,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.service_managed):
+            query['ServiceManaged'] = request.service_managed
         if not DaraCore.is_null(request.status):
             query['Status'] = request.status
         req = open_api_util_models.OpenApiRequest(

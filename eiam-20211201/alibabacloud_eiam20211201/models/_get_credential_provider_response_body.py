@@ -61,22 +61,22 @@ class GetCredentialProviderResponseBodyCredentialProvider(DaraModel):
         status: str = None,
         update_time: int = None,
     ):
-        # The creation time of the credential provider. The value is a UNIX timestamp in milliseconds.
+        # The time when the credential provider was created. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
-        # The credential provider configuration.
+        # The configuration of the credential provider.
         self.credential_provider_config = credential_provider_config
-        # The credential provider creation type. Valid values:
+        # The creation type of the credential provider. Valid values:
         # 
         # - system_init: Created by the system.
         # - user_custom: Created by the user.
         self.credential_provider_creation_type = credential_provider_creation_type
         # The credential provider ID.
         self.credential_provider_id = credential_provider_id
-        # The credential provider identifier.
+        # The business identifier of the credential provider.
         self.credential_provider_identifier = credential_provider_identifier
-        # The credential provider name.
+        # The name of the credential provider.
         self.credential_provider_name = credential_provider_name
-        # The credential provider type. Valid values:
+        # The type of the credential provider. Valid values:
         # 
         # - oauth: OAuth credential provider.
         # - jwt: JWT credential provider.
@@ -85,12 +85,12 @@ class GetCredentialProviderResponseBodyCredentialProvider(DaraModel):
         self.description = description
         # The instance ID.
         self.instance_id = instance_id
-        # The credential provider status. Valid values:
+        # The status of the credential provider. Valid values:
         # 
         # - enabled: Enabled.
         # - disabled: Disabled.
         self.status = status
-        # The update time of the credential provider. The value is a UNIX timestamp in milliseconds.
+        # The time when the credential provider was last updated. The value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
 
     def validate(self):
@@ -186,7 +186,7 @@ class GetCredentialProviderResponseBodyCredentialProviderCredentialProviderConfi
         self.jwt_provider_config = jwt_provider_config
         # The configuration of the OAuth credential provider.
         self.oauth_provider_config = oauth_provider_config
-        # The list of credential IDs corresponding to the sensitive configurations of the credential provider.
+        # The list of credential IDs that correspond to the sensitive configurations of the credential provider.
         # 
         # > The system securely stores the sensitive configuration information of the credential provider in the form of credentials.
         self.provider_credential_ids = provider_credential_ids
@@ -231,18 +231,41 @@ class GetCredentialProviderResponseBodyCredentialProviderCredentialProviderConfi
 class GetCredentialProviderResponseBodyCredentialProviderCredentialProviderConfigOAuthProviderConfig(DaraModel):
     def __init__(
         self,
+        authorization_endpoint: str = None,
+        authorization_flow: str = None,
         client_id: str = None,
+        discovery_url: str = None,
+        issuer: str = None,
+        pkce_challenge_method: str = None,
+        pkce_enabled: bool = None,
+        provider_vendor: str = None,
         scope: str = None,
+        system_redirect_uri: str = None,
         token_endpoint: str = None,
     ):
+        # The endpoint address used to guide users through authorization. This parameter is conditionally required: it is required when AuthorizationFlow is set to user_federation and ProviderVendor is set to custom. For preset vendors, this value can be automatically populated through DiscoveryUrl.
+        self.authorization_endpoint = authorization_endpoint
+        # The OAuth authorization flow type. Valid values: m2m: machine-to-machine (2LO, Client Credentials). user_federation: user federation (3LO, Authorization Code).
+        self.authorization_flow = authorization_flow
         # The client_id in the OAuth protocol.
         self.client_id = client_id
-        # The scope in the OAuth protocol.
+        # The URL of the discovery document used to automatically obtain OAuth endpoint configurations. This parameter is conditionally optional: it is used when AuthorizationFlow is set to user_federation. If DiscoveryUrl is not provided, you must manually configure fields such as TokenEndpoint and AuthorizationEndpoint.
+        self.discovery_url = discovery_url
+        self.issuer = issuer
+        # The PKCE code_challenge generation method. Default value: s256.
+        self.pkce_challenge_method = pkce_challenge_method
+        # Specifies whether to use the PKCE extension to enhance security. We recommend that you always enable this feature.
+        self.pkce_enabled = pkce_enabled
+        # The preset vendor or custom configuration. This parameter is optional. Default value: custom.
+        self.provider_vendor = provider_vendor
+        # The scope in the OAuth protocol, which specifies the permission scope.
         # 
-        # > The scope configuration of the OAuth credential provider serves as the default value. If the scope parameter is not specified when calling the DeveloperAPI to obtain an OAuth access token, the scope configuration of the credential provider is used for issuance.
+        # > The scope configuration of the OAuth credential provider serves as the default value. If the scope parameter is not specified when calling the DeveloperAPI to obtain an OAuth access token, the scope configuration of the credential provider is used for token issuance.
         # 
         # >Notice: Multiple scope values are separated by spaces.
         self.scope = scope
+        # The redirect URI automatically generated by the system when the credential provider is created. Configure this value as the redirect_uri in the OAuth provider.
+        self.system_redirect_uri = system_redirect_uri
         # The token endpoint of the OAuth protocol.
         self.token_endpoint = token_endpoint
 
@@ -254,11 +277,35 @@ class GetCredentialProviderResponseBodyCredentialProviderCredentialProviderConfi
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.authorization_endpoint is not None:
+            result['AuthorizationEndpoint'] = self.authorization_endpoint
+
+        if self.authorization_flow is not None:
+            result['AuthorizationFlow'] = self.authorization_flow
+
         if self.client_id is not None:
             result['ClientId'] = self.client_id
 
+        if self.discovery_url is not None:
+            result['DiscoveryUrl'] = self.discovery_url
+
+        if self.issuer is not None:
+            result['Issuer'] = self.issuer
+
+        if self.pkce_challenge_method is not None:
+            result['PkceChallengeMethod'] = self.pkce_challenge_method
+
+        if self.pkce_enabled is not None:
+            result['PkceEnabled'] = self.pkce_enabled
+
+        if self.provider_vendor is not None:
+            result['ProviderVendor'] = self.provider_vendor
+
         if self.scope is not None:
             result['Scope'] = self.scope
+
+        if self.system_redirect_uri is not None:
+            result['SystemRedirectUri'] = self.system_redirect_uri
 
         if self.token_endpoint is not None:
             result['TokenEndpoint'] = self.token_endpoint
@@ -267,11 +314,35 @@ class GetCredentialProviderResponseBodyCredentialProviderCredentialProviderConfi
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AuthorizationEndpoint') is not None:
+            self.authorization_endpoint = m.get('AuthorizationEndpoint')
+
+        if m.get('AuthorizationFlow') is not None:
+            self.authorization_flow = m.get('AuthorizationFlow')
+
         if m.get('ClientId') is not None:
             self.client_id = m.get('ClientId')
 
+        if m.get('DiscoveryUrl') is not None:
+            self.discovery_url = m.get('DiscoveryUrl')
+
+        if m.get('Issuer') is not None:
+            self.issuer = m.get('Issuer')
+
+        if m.get('PkceChallengeMethod') is not None:
+            self.pkce_challenge_method = m.get('PkceChallengeMethod')
+
+        if m.get('PkceEnabled') is not None:
+            self.pkce_enabled = m.get('PkceEnabled')
+
+        if m.get('ProviderVendor') is not None:
+            self.provider_vendor = m.get('ProviderVendor')
+
         if m.get('Scope') is not None:
             self.scope = m.get('Scope')
+
+        if m.get('SystemRedirectUri') is not None:
+            self.system_redirect_uri = m.get('SystemRedirectUri')
 
         if m.get('TokenEndpoint') is not None:
             self.token_endpoint = m.get('TokenEndpoint')
@@ -290,15 +361,15 @@ class GetCredentialProviderResponseBodyCredentialProviderCredentialProviderConfi
     ):
         # The list of allowed JWT issuers.
         self.allowed_token_issuers = allowed_token_issuers
-        # Indicates whether the JWT derived short token feature is enabled.
+        # Specifies whether to enable the JWT derived short token capability.
         self.derived_short_token_enabled = derived_short_token_enabled
-        # The validity period of the JWT, in seconds.
+        # The validity period of the JWT. Unit: seconds.
         self.expiration = expiration
-        # Indicates whether JWT expiration cleanup is enabled.
+        # Specifies whether to enable JWT expiration cleanup.
         self.expiration_cleanup_enabled = expiration_cleanup_enabled
         # JWT issuer。
         self.issuer = issuer
-        # The JWKs endpoint URL.
+        # The JWKs endpoint address.
         self.jwks_endpoint = jwks_endpoint
 
     def validate(self):
