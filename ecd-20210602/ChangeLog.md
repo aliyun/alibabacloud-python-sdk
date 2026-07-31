@@ -1,3 +1,7 @@
+2026-07-31 Version: 1.0.1
+- Update API ListSkills: add response parameters Body.Skills.$.SupportAgentList.
+
+
 2026-07-07 Version: 1.0.0
 - Support API CreateTenantSkill.
 - Support API DeleteTenantSkills.

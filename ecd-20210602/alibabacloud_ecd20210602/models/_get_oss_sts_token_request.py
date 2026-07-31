@@ -9,6 +9,7 @@ class GetOssStsTokenRequest(DaraModel):
         self,
         file_type: str = None,
     ):
+        # The file type.
         self.file_type = file_type
 
     def validate(self):

@@ -80,6 +80,7 @@ class ListSkillsResponseBodySkills(DaraModel):
         source_market: str = None,
         source_market_name: str = None,
         supplier_type: str = None,
+        support_agent_list: List[main_models.ListSkillsResponseBodySkillsSupportAgentList] = None,
     ):
         # The API key of the skill.
         self.api_key = api_key
@@ -87,7 +88,7 @@ class ListSkillsResponseBodySkills(DaraModel):
         self.author = author
         # The currently effective version number. If no version is effective, an empty value is returned.
         self.default_version = default_version
-        # The description of the skill.
+        # The skill description.
         self.description = description
         # The display name.
         self.display_name = display_name
@@ -104,7 +105,7 @@ class ListSkillsResponseBodySkills(DaraModel):
         # The name in the SKILL.md file.
         self.skill_name = skill_name
         self.skill_versions = skill_versions
-        # The slug identifier of the skill. This value is user-defined and unique within the tenant.
+        # The skill slug identifier, which is user-defined and unique within the tenant.
         self.slug = slug
         # The source marketplace code.
         self.source_market = source_market
@@ -112,10 +113,15 @@ class ListSkillsResponseBodySkills(DaraModel):
         self.source_market_name = source_market_name
         # The supply type.
         self.supplier_type = supplier_type
+        self.support_agent_list = support_agent_list
 
     def validate(self):
         if self.skill_versions:
             for v1 in self.skill_versions:
+                 if v1:
+                    v1.validate()
+        if self.support_agent_list:
+            for v1 in self.support_agent_list:
                  if v1:
                     v1.validate()
 
@@ -174,6 +180,11 @@ class ListSkillsResponseBodySkills(DaraModel):
         if self.supplier_type is not None:
             result['SupplierType'] = self.supplier_type
 
+        result['SupportAgentList'] = []
+        if self.support_agent_list is not None:
+            for k1 in self.support_agent_list:
+                result['SupportAgentList'].append(k1.to_map() if k1 else None)
+
         return result
 
     def from_map(self, m: dict = None):
@@ -228,6 +239,47 @@ class ListSkillsResponseBodySkills(DaraModel):
 
         if m.get('SupplierType') is not None:
             self.supplier_type = m.get('SupplierType')
+
+        self.support_agent_list = []
+        if m.get('SupportAgentList') is not None:
+            for k1 in m.get('SupportAgentList'):
+                temp_model = main_models.ListSkillsResponseBodySkillsSupportAgentList()
+                self.support_agent_list.append(temp_model.from_map(k1))
+
+        return self
+
+class ListSkillsResponseBodySkillsSupportAgentList(DaraModel):
+    def __init__(
+        self,
+        tag_id: str = None,
+        tag_value: str = None,
+    ):
+        self.tag_id = tag_id
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.tag_id is not None:
+            result['TagId'] = self.tag_id
+
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TagId') is not None:
+            self.tag_id = m.get('TagId')
+
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
 
         return self
 

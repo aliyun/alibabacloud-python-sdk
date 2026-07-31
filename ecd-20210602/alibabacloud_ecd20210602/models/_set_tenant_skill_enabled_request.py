@@ -13,8 +13,11 @@ class SetTenantSkillEnabledRequest(DaraModel):
         skill_channel: str = None,
         skill_ids: List[str] = None,
     ):
+        # Specifies whether to enable the skill.
         self.enabled = enabled
+        # The skill channel.
         self.skill_channel = skill_channel
+        # The list of skill IDs.
         self.skill_ids = skill_ids
 
     def validate(self):

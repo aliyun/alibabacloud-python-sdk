@@ -39,6 +39,7 @@ from ._set_tenant_skill_enabled_response import SetTenantSkillEnabledResponse
 from ._get_parse_progress_response_body import GetParseProgressResponseBodyData
 from ._list_skill_authed_identities_response_body import ListSkillAuthedIdentitiesResponseBodyIdentities
 from ._list_skills_response_body import ListSkillsResponseBodySkillsSkillVersions
+from ._list_skills_response_body import ListSkillsResponseBodySkillsSupportAgentList
 from ._list_skills_response_body import ListSkillsResponseBodySkills
 from ._set_identity_skill_auth_request import SetIdentitySkillAuthRequestIdentities
 from ._set_identity_skill_security_request import SetIdentitySkillSecurityRequestIdentityIds
@@ -81,6 +82,7 @@ __all__ = [
     GetParseProgressResponseBodyData,
     ListSkillAuthedIdentitiesResponseBodyIdentities,
     ListSkillsResponseBodySkillsSkillVersions,
+    ListSkillsResponseBodySkillsSupportAgentList,
     ListSkillsResponseBodySkills,
     SetIdentitySkillAuthRequestIdentities,
     SetIdentitySkillSecurityRequestIdentityIds

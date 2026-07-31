@@ -15,12 +15,19 @@ class GetOssStsTokenResponseBody(DaraModel):
         request_id: str = None,
         security_token: str = None,
     ):
+        # The AccessKey ID of the user.
         self.access_key_id = access_key_id
+        # The STS temporary AccessKey secret.
         self.access_key_secret = access_key_secret
+        # The logical OSS bucket name.
         self.bucket = bucket
+        # The project storage path.
         self.object_key_prefix = object_key_prefix
+        # The region to which the current OSS bucket belongs.
         self.oss_region = oss_region
+        # The request ID.
         self.request_id = request_id
+        # The Security Token Service (STS) token.
         self.security_token = security_token
 
     def validate(self):
