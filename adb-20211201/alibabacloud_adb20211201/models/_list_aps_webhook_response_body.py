@@ -17,17 +17,17 @@ class ListApsWebhookResponseBody(DaraModel):
         success: bool = None,
         webhook: List[main_models.ListApsWebhookResponseBodyWebhook] = None,
     ):
-        # API status or POP error code.
+        # The API status code or POP error code.
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The returned message.
+        # The response message.
         self.message = message
-        # The unique ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success
-        # The array of webhooks.
+        # The webhook array.
         self.webhook = webhook
 
     def validate(self):
@@ -97,15 +97,15 @@ class ListApsWebhookResponseBodyWebhook(DaraModel):
         webhook_id: str = None,
         webhook_type: str = None,
     ):
-        # Signing key
+        # The signing key.
         self.key = key
-        # The name of the webhook.
+        # The webhook name.
         self.name = name
         # The request URL.
         self.url = url
-        # The ID of the webhook that you want to delete.
+        # The webhook ID.
         self.webhook_id = webhook_id
-        # Webhook type.
+        # The webhook type.
         self.webhook_type = webhook_type
 
     def validate(self):

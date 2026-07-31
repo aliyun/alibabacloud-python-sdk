@@ -24,18 +24,27 @@ class TableDetailModel(DaraModel):
         table_type: str = None,
         update_time: str = None,
     ):
+        # External data source.
         self.catalog = catalog
+        # Column information.
         self.columns = columns
+        # Creation time.
         self.create_time = create_time
         self.created_by_source = created_by_source
         self.created_by_user = created_by_user
+        # Description.
         self.description = description
         self.location = location
+        # Owner.
         self.owner = owner
         self.parameters = parameters
+        # Logical database name.
         self.schema_name = schema_name
+        # Logical table name.
         self.table_name = table_name
+        # Table type.
         self.table_type = table_type
+        # Update time.
         self.update_time = update_time
 
     def validate(self):

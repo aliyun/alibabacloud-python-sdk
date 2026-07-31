@@ -14,17 +14,18 @@ class CreateApsKafkaHudiJobResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Same as HTTP status code.
+        # The same as the HTTP status code.
         self.code = code
-        # Returns the ID of the created task.
+        # The ID of the created task.
         self.data = data
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_status_code = http_status_code
         # The returned message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. true: The request is successful. false: The message group failed to be unmuted.
+        # Indicates whether the request was successful.
+        # True: The request was successful. False: The request failed.
         self.success = success
 
     def validate(self):

@@ -17,17 +17,18 @@ class DescribeAuditLogRecordsResponseBody(DaraModel):
         request_id: str = None,
         total_count: str = None,
     ):
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # <props="china">The ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
+        # <props="intl">The ID of the Data Lakehouse Edition cluster.
         self.dbcluster_id = dbcluster_id
-        # The queried SQL audit logs.
+        # A list of audit log records.
         self.items = items
         # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of records per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -106,28 +107,31 @@ class DescribeAuditLogRecordsResponseBodyItems(DaraModel):
     ):
         # The connection ID.
         self.conn_id = conn_id
-        # The name of the database on which the SQL statement was executed.
+        # The name of the database on which the SQL statement ran.
         self.dbname = dbname
-        # The start time of the execution of the SQL statement. The time is displayed in the ISO 8601 standard in the yyyy-MM-dd HH:mm:ss format. The time must be in UTC.
+        # The execution start time of the SQL statement. The time is in the `yyyy-MM-dd HH:mm:ss` format and in the local time zone.
         self.execute_time = execute_time
+        # The execution start time of the SQL statement, as a millisecond timestamp.
         self.execute_timestamp = execute_timestamp
+        # Specifies whether the response contains diagnostic information.
         self.has_diagnostic_info = has_diagnostic_info
-        # The IP address and port number of the client that is used to execute the SQL statement.
+        # The IP address and port of the client that ran the SQL statement.
         self.host_address = host_address
-        # The task ID.
+        # The process ID.
         self.process_id = process_id
         # The SQL statement.
         self.sqltext = sqltext
-        # The type of the SQL statement.
+        # The SQL type.
         self.sqltype = sqltype
-        # Indicates whether the SQL statement was successfully executed. Valid values:
+        # Indicates whether the SQL statement succeeded. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The SQL statement succeeded.
+        # 
+        # - **false**: The SQL statement failed.
         self.succeed = succeed
-        # The amount of time that is consumed to execute the SQL statement. Unit: milliseconds.
+        # The execution duration of the SQL statement in milliseconds (ms).
         self.total_time = total_time
-        # The username that is used to execute the SQL statement.
+        # The username of the account that ran the SQL statement.
         self.user = user
 
     def validate(self):

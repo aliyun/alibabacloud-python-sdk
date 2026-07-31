@@ -13,9 +13,9 @@ class DescribeAccountAllPrivilegesResponseBody(DaraModel):
         data: main_models.DescribeAccountAllPrivilegesResponseBodyData = None,
         request_id: str = None,
     ):
-        # Details of the permissions.
+        # Permission details.
         self.data = data
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -53,11 +53,11 @@ class DescribeAccountAllPrivilegesResponseBodyData(DaraModel):
         result: List[main_models.DescribeAccountAllPrivilegesResponseBodyDataResult] = None,
         truncated: bool = None,
     ):
-        # Indicates the position where the results are truncated. When a value of `true` is returned for the `Truncated` parameter, this parameter is present and contains the value to use for the Marker parameter in a subsequent call.
+        # If the `Truncated` field in the response is `true`, pass this value in subsequent calls to retrieve the next set of results.
         self.marker = marker
-        # The permissions.
+        # List of permissions.
         self.result = result
-        # Indicates whether the results are truncated. If the results are truncated, a value of `true` is returned. In this case, you must call this operation again to obtain all the results until a value of `false` is returned for this parameter.
+        # If the response is truncated, this field is `true`. Continue calling this operation until this field becomes `false`.
         self.truncated = truncated
 
     def validate(self):
@@ -107,11 +107,11 @@ class DescribeAccountAllPrivilegesResponseBodyDataResult(DaraModel):
         privilege_type: str = None,
         privileges: List[str] = None,
     ):
-        # The objects on which the permission takes effect, including databases, tables, and columns. If Global is returned for the PrivilegeType parameter, an empty string is returned for this parameter.
+        # The permission object, represented as a trituple of database, table, and column. All fields are empty for Global-level permissions.
         self.privilege_object = privilege_object
-        # The permission level of the database account. You can call the `DescribeEnabledPrivileges` operation to query the permission level of the database account.
+        # The permission level, returned by the `DescribeEnabledPrivileges` operation.
         self.privilege_type = privilege_type
-        # The name of the permission, which is the same as the permission name returned by the `DescribeEnabledPrivileges` operation.
+        # List of permissions.
         self.privileges = privileges
 
     def validate(self):
@@ -156,13 +156,13 @@ class DescribeAccountAllPrivilegesResponseBodyDataResultPrivilegeObject(DaraMode
         description: str = None,
         table: str = None,
     ):
-        # The name of the column.
+        # The column name.
         self.column = column
-        # The name of the database.
+        # The database name.
         self.database = database
-        # The description of the permission object.
+        # Description of the permission object.
         self.description = description
-        # The name of the table.
+        # The table name.
         self.table = table
 
     def validate(self):

@@ -18,58 +18,50 @@ class GetTableObjectsRequest(DaraModel):
         region_id: str = None,
         schema_name: str = None,
     ):
-        # The ID of the cluster.
+        # The cluster ID.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The description of the table.
+        # The description.
         self.filter_description = filter_description
-        # The owner of the table.
+        # The owner.
         self.filter_owner = filter_owner
-        # The name of the table.
+        # The table name.
         self.filter_tbl_name = filter_tbl_name
-        # The type of the table.
-        # 
+        # The table type.
         # Valid values:
         # 
-        # DIMENSION_TABLE
-        # 
-        # FACT_TABLE
-        # 
-        # EXTERNAL_TABLE
+        # - DIMENSION_TABLE
+        # - FACT_TABLE
+        # - EXTERNAL_TABLE
         # 
         # Default value: null.
         self.filter_tbl_type = filter_tbl_type
-        # The order in which the fields to be returned are sorted.
+        # The sorting field.
         # 
-        # Valid values:
+        # Valid values for Type:
+        # - Asc
+        # - Desc
         # 
-        # *   Asc
-        # *   Desc
+        # Valid values for Field:
+        # - TableName
+        # - TableSize
+        # - CreateTime
+        # - UpdateTime
         # 
-        # Values for fields:
-        # 
-        # TableName
-        # 
-        # TableSize
-        # 
-        # CreateTime
-        # 
-        # UpdateTime
-        # 
-        # Default value: {"Type": "Desc","Field": "TableName"};
+        # Default value: {"Type": "Desc","Field": "TableName"}.
         self.order_by = order_by
-        # The number of the page to return. The value is an integer that is greater than 0. Default value: **1**.
+        # The page number. The value must be a positive integer that does not exceed the maximum value of the Integer data type. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values:
+        # The number of entries per page. Valid values:
         # 
-        # *   30
-        # *   50
-        # *   100
+        # - 30
+        # - 50
+        # - 100
         # 
         # Default value: 30.
         self.page_size = page_size
-        # The ID of the region in which the cluster resides.
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id

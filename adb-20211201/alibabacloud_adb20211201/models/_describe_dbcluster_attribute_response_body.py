@@ -13,7 +13,6 @@ class DescribeDBClusterAttributeResponseBody(DaraModel):
         items: main_models.DescribeDBClusterAttributeResponseBodyItems = None,
         request_id: str = None,
     ):
-        # The queried cluster.
         self.items = items
         # The request ID.
         self.request_id = request_id
@@ -135,141 +134,51 @@ class DescribeDBClusterAttributeResponseBodyItemsDBCluster(DaraModel):
     ):
         self.ainode_number = ainode_number
         self.ainode_spec = ainode_spec
-        # The cache size of the ClickHouse wide table engine. Unit: GB. If a value of -1 is returned, the ClickHouse wide table engine is disabled. If a value other than -1 is returned, this parameter indicates the disk cache size.
         self.clickhouse_engine_cache_size = clickhouse_engine_cache_size
-        # Indicates whether the ClickHouse wide table engine is enabled. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
         self.clickhouse_engine_enabled = clickhouse_engine_enabled
-        # The billing method of the cluster. Valid values:
-        # 
-        # *   **ads**: pay-as-you-go.
-        # *   **ads_pre**: subscription.
         self.commodity_code = commodity_code
-        # The specifications of reserved computing resources. Each ACU is approximately equal to 1 core and 4 GB memory. Computing resources are used to compute data. The increase in the computing resources can accelerate queries. You can scale computing resources based on your business requirements.
         self.compute_resource = compute_resource
-        # The total amount of computing resources in the cluster. Each ACU is approximately equal to 1 core and 4 GB memory.
         self.compute_resource_total = compute_resource_total
-        # The public endpoint that is used to connect to the cluster.
         self.connection_string = connection_string
-        # The time when the cluster was created. The time follows the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format. The time is displayed in UTC.
         self.creation_time = creation_time
-        # The description of the cluster.
         self.dbcluster_description = dbcluster_description
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
         self.dbcluster_id = dbcluster_id
-        # The network type of the cluster. **VPC** is returned.
         self.dbcluster_network_type = dbcluster_network_type
-        # The status of the cluster. Valid values:
-        # 
-        # *   **Preparing**
-        # *   **Creating**
-        # *   **Running**
-        # *   **Deleting**
-        # *   **Restoring**
-        # *   **ClassChanging**
-        # *   **NetAddressCreating**
-        # *   **NetAddressDeleting**
-        # *   **NetAddressModifying**
         self.dbcluster_status = dbcluster_status
-        # The type of the cluster. By default, **Common** is returned, which indicates a common cluster.
         self.dbcluster_type = dbcluster_type
-        # The engine version of the AnalyticDB for MySQL Data Lakehouse Edition cluster. **5.0** is returned.
         self.dbversion = dbversion
         self.disk_encryption = disk_encryption
-        # The engine of the cluster. **AnalyticDB** is returned.
         self.engine = engine
-        # The minor version of the cluster.
         self.engine_version = engine_version
-        # The time when the cluster expires.
-        # 
-        # *   If the billing method of the cluster is subscription, the actual expiration time is returned.
-        # *   If the billing method of the cluster is pay-as-you-go, null is returned.
         self.expire_time = expire_time
-        # Indicates whether the subscription cluster has expired. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
-        # 
-        # > 
-        # 
-        # *   If the cluster has expired, the system locks or releases the cluster within a period of time. We recommend that you renew the expired cluster. For more information, see [Renewal policy](https://help.aliyun.com/document_detail/135248.html).
-        # 
-        # *   This parameter is not returned for pay-as-you-go clusters.
         self.expired = expired
-        # The ID of the key that is used to encrypt disk data.
-        # 
-        # >  This parameter is returned only when disk encryption is enabled.
         self.kms_id = kms_id
-        # The lock mode of the cluster. Valid values:
-        # 
-        # *   **Unlock**: The cluster is not locked.
-        # *   **ManualLock**: The cluster is manually locked.
-        # *   **LockByExpiration**: The cluster is automatically locked due to cluster expiration.
         self.lock_mode = lock_mode
-        # The reason why the cluster is locked.
-        # 
-        # >  This parameter is returned only when the cluster was locked. **instance_expire** is returned.
         self.lock_reason = lock_reason
-        # The maintenance window of the cluster. The time is displayed in the `HH:mmZ-HH:mmZ` format in UTC.
-        # 
-        # >  For more information about maintenance windows, see [Configure a maintenance window](https://help.aliyun.com/document_detail/122569.html).
         self.maintain_time = maintain_time
-        # The mode of the cluster. By default, **flexible** is returned, which indicates that the cluster is in elastic mode.
         self.mode = mode
-        # The billing method of the cluster. Valid values:
-        # 
-        # *   **Postpaid**: pay-as-you-go.
-        # *   **Prepaid**: subscription.
         self.pay_type = pay_type
-        # The port number that is used to connect to the cluster.
         self.port = port
-        # A reserved parameter.
         self.product_form = product_form
-        # The edition of the cluster. Valid values:
-        # 
-        # *   **BasicVersion**: Basic Edition.
-        # *   **EnterpriseVersion**: Enterprise Edition.
         self.product_version = product_version
-        # The region ID of the cluster.
         self.region_id = region_id
-        # The amount of remaining reserved computing resources that are available in the cluster. Each ACU is approximately equal to 1 core and 4 GB memory.
         self.reserved_acu = reserved_acu
-        # A reserved parameter.
         self.reserved_node_count = reserved_node_count
-        # A reserved parameter.
         self.reserved_node_size = reserved_node_size
-        # The resource group ID.
         self.resource_group_id = resource_group_id
         self.secondary_vswitch_id = secondary_vswitch_id
         self.secondary_zone_id = secondary_zone_id
-        # The specifications of reserved storage resources. Each AnalyticDB compute unit (ACU) is approximately equal to 1 core and 4 GB memory. Storage resources are used to read and write data. The increase in the storage resources can improve the read and write performance of the cluster.
         self.storage_resource = storage_resource
-        # The total amount of storage resources in the cluster. Each ACU is approximately equal to 1 core and 4 GB memory.
         self.storage_resource_total = storage_resource_total
-        # Reserved parameters.
         self.supported_features = supported_features
-        # The tags that are added to the cluster.
         self.tags = tags
-        # The job information.
         self.task_info = task_info
-        # Indicates whether Elastic Network Interface (ENI) is enabled. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
         self.user_enistatus = user_enistatus
-        # The vSwitch connected to the ENI. Separate multiple vSwitches with commas (,).
         self.user_enivswitch_options = user_enivswitch_options
-        # The VPC information of the ENI.
         self.user_enivpc_id = user_enivpc_id
-        # The zone associated with the ENI. Separate multiple zones with commas (,).
         self.user_enizone_options = user_enizone_options
-        # The virtual private cloud (VPC) ID of the cluster.
         self.vpcid = vpcid
-        # The vSwitch ID of the cluster.
         self.v_switch_id = v_switch_id
-        # The zone ID of the cluster.
         self.zone_id = zone_id
 
     def validate(self):
@@ -587,17 +496,9 @@ class DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfo(DaraModel):
         status: str = None,
         step_list: main_models.DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfoStepList = None,
     ):
-        # The name of the job.
         self.name = name
-        # The progress of the job. Unit: %.
         self.progress = progress
-        # The status of the job. Valid values:
-        # 
-        # *   NOT_RUN
-        # *   RUNNING
-        # *   SUCCEED
         self.status = status
-        # The job steps.
         self.step_list = step_list
 
     def validate(self):
@@ -685,21 +586,11 @@ class DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfoStepListStepLi
         step_progress: str = None,
         step_status: str = None,
     ):
-        # The end time of the job step. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
         self.end_time = end_time
-        # The start time of the job step. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
         self.start_time = start_time
-        # The description of the job step.
         self.step_desc = step_desc
-        # The name of the job step.
         self.step_name = step_name
-        # The progress of the job step. Unit: %.
         self.step_progress = step_progress
-        # The status of the job step. Valid values:
-        # 
-        # *   NOT_RUN
-        # *   RUNNING
-        # *   SUCCEED
         self.step_status = step_status
 
     def validate(self):
@@ -793,11 +684,7 @@ class DescribeDBClusterAttributeResponseBodyItemsDBClusterTagsTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
-        # 
-        # >  You can call the [TagResources](https://help.aliyun.com/document_detail/179253.html) operation to add tags to a cluster.
         self.key = key
-        # The tag value.
         self.value = value
 
     def validate(self):

@@ -17,14 +17,19 @@ class DatabaseSummaryModel(DaraModel):
         schema_name: str = None,
         update_time: str = None,
     ):
+        # Creation time.
         self.create_time = create_time
         self.created_by_source = created_by_source
         self.created_by_user = created_by_user
         self.db_type = db_type
+        # Description.
         self.description = description
         self.location = location
+        # Owner.
         self.owner = owner
+        # logical database name.
         self.schema_name = schema_name
+        # Update time.
         self.update_time = update_time
 
     def validate(self):

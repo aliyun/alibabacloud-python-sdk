@@ -18,17 +18,18 @@ class DescribeBackupsResponseBody(DaraModel):
         total_backup_size: int = None,
         total_count: str = None,
     ):
+        # The free backup space. Unit: bytes.
         self.free_backup_size = free_backup_size
-        # The queried backup sets.
         self.items = items
         # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of backup sets on the current page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
+        # The total size of the backup sets. Unit: bytes.
         self.total_backup_size = total_backup_size
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -139,25 +140,15 @@ class DescribeBackupsResponseBodyItemsBackup(DaraModel):
         dbcluster_id: str = None,
         parent_backup_id: str = None,
     ):
-        # The end time of the backup.
         self.backup_end_time = backup_end_time
         self.backup_expired_time = backup_expired_time
-        # The backup set ID.
         self.backup_id = backup_id
-        # The backup method. Snapshot is returned.
         self.backup_method = backup_method
         self.backup_region = backup_region
-        # The size of the backup set. Unit: bytes.
         self.backup_size = backup_size
-        # The start time of the backup.
         self.backup_start_time = backup_start_time
         self.backup_status = backup_status
-        # The backup type. Valid values:
-        # 
-        # *   **FullBackup**
-        # *   **IncrementalBackup**
         self.backup_type = backup_type
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         self.dbcluster_id = dbcluster_id
         self.parent_backup_id = parent_backup_id
 

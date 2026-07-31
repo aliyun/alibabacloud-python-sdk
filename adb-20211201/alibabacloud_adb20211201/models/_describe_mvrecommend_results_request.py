@@ -18,20 +18,21 @@ class DescribeMVRecommendResultsRequest(DaraModel):
         subtask_id: int = None,
         task_name: str = None,
     ):
-        # Fixed system value (non-modifiable).
+        # A static value. This parameter cannot be modified.
         self.action_inner = action_inner
         # The cluster ID.
         self.dbcluster_id = dbcluster_id
-        # Fixed system value (non-modifiable).
+        # A static value. This parameter cannot be modified.
         self.from_ = from_
         # The sorting field.
         self.order_by = order_by
         # The page number.
         self.page_number = page_number
-        # The number of entries to return per page.
+        # The number of entries per page.
         self.page_size = page_size
         # The region ID.
         self.region_id = region_id
+        # The subquery ID.
         self.sub_query_id = sub_query_id
         # The subtask ID.
         self.subtask_id = subtask_id

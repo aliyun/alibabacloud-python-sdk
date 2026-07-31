@@ -11,7 +11,7 @@ class CancelSparkWarehouseBatchSQLResponseBody(DaraModel):
         data: main_models.SparkBatchSQL = None,
         request_id: str = None,
     ):
-        # The returned data.
+        # The returned result.
         self.data = data
         # The request ID.
         self.request_id = request_id

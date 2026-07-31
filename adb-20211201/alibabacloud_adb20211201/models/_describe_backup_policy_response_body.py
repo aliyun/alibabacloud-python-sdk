@@ -14,26 +14,33 @@ class DescribeBackupPolicyResponseBody(DaraModel):
         preferred_backup_time: str = None,
         request_id: str = None,
     ):
-        # The number of days for which data backup files are retained.
+        # The number of days to retain data backups.
         self.backup_retention_period = backup_retention_period
-        # Indicates whether log backup is enabled. Valid values:
+        # Indicates whether real-time log backup is enabled. Valid values:
         # 
-        # *   **Enable**
-        # *   **Disable**
+        # - **Enable**: enabled.
+        # 
+        # - **Disable**: disabled.
         self.enable_backup_log = enable_backup_log
-        # The number of days for which the log backup files are retained.
+        # The number of days to retain log backups.
         self.log_backup_retention_period = log_backup_retention_period
-        # The cycle based on which backups are performed. If more than one day of the week is specified, the days of the week are separated by commas (,). Valid value:
+        # The data backup cycle. Separate multiple values with commas (,). Valid values:
         # 
-        # *   Monday
-        # *   Tuesday
-        # *   Wednesday
-        # *   Thursday
-        # *   Friday
-        # *   Saturday
-        # *   Sunday
+        # - Monday
+        # 
+        # - Tuesday
+        # 
+        # - Wednesday
+        # 
+        # - Thursday
+        # 
+        # - Friday
+        # 
+        # - Saturday
+        # 
+        # - Sunday
         self.preferred_backup_period = preferred_backup_period
-        # The data backup time. The time is in the HH:mmZ-HH:mmZ format. The time is displayed in UTC.
+        # The data backup time. The time is in the HH:mmZ-HH:mmZ format.
         self.preferred_backup_time = preferred_backup_time
         # The request ID.
         self.request_id = request_id

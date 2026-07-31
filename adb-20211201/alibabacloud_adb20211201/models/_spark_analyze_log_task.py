@@ -19,15 +19,25 @@ class SparkAnalyzeLogTask(DaraModel):
         terminated_time_in_millis: int = None,
         user_id: int = None,
     ):
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
+        # The analysis result of the task.
         self.result = result
+        # Indicates whether the task matched a rule.
         self.rule_matched = rule_matched
+        # The time when the task was started. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.started_time_in_millis = started_time_in_millis
+        # The time when the task was submitted. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.submitted_time_in_millis = submitted_time_in_millis
+        # The error message returned if the task fails.
         self.task_err_msg = task_err_msg
+        # The ID of the Spark log analysis task.
         self.task_id = task_id
+        # The state of the task.
         self.task_state = task_state
+        # The time when the task was terminated. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.terminated_time_in_millis = terminated_time_in_millis
+        # The ID of the user who submitted the task.
         self.user_id = user_id
 
     def validate(self):

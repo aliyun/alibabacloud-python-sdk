@@ -16,12 +16,31 @@ class SparkAppInfo(DaraModel):
         priority: str = None,
         state: str = None,
     ):
+        # The ID of the Spark application.
         self.app_id = app_id
+        # The name of the Spark application.
         self.app_name = app_name
+        # The database ID.
         self.dbcluster_id = dbcluster_id
+        # The information about the Spark application.
         self.detail = detail
+        # The alert message returned, such as task execution failure or insufficient resources. If no alert occurs, null is returned.
         self.message = message
+        # The priority of the Spark application.
         self.priority = priority
+        # The state of the Spark application. Valid values:
+        # 
+        # *   **SUBMITTED**
+        # *   **STARTING**
+        # *   **RUNNING**
+        # *   **FAILING**
+        # *   **FAILED**
+        # *   **KILLING**
+        # *   **KILLED**
+        # *   **SUCCEEDING**
+        # *   **COMPLETED**
+        # *   **FATAL**
+        # *   **UNKNOWN**
         self.state = state
 
     def validate(self):

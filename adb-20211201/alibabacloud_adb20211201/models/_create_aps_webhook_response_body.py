@@ -14,15 +14,15 @@ class CreateApsWebhookResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The code returned for the request.
+        # The response code.
         self.code = code
-        # The returned result.
+        # The returned data.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
         # The returned message.
         self.message = message
-        # The unique ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success

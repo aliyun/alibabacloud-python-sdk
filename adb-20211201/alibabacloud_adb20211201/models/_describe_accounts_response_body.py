@@ -13,7 +13,6 @@ class DescribeAccountsResponseBody(DaraModel):
         account_list: main_models.DescribeAccountsResponseBodyAccountList = None,
         request_id: str = None,
     ):
-        # The queried database accounts.
         self.account_list = account_list
         # The request ID.
         self.request_id = request_id
@@ -89,33 +88,20 @@ class DescribeAccountsResponseBodyAccountListDBAccount(DaraModel):
         account_status: str = None,
         account_type: str = None,
         engine: str = None,
+        ram_user_list: main_models.DescribeAccountsResponseBodyAccountListDBAccountRamUserList = None,
         ram_users: str = None,
     ):
-        # The description of the database account.
         self.account_description = account_description
-        # The name of the database account.
         self.account_name = account_name
-        # The status of the database account. Valid values:
-        # 
-        # *   **Creating**
-        # *   **Available**
-        # *   **Deleting**
         self.account_status = account_status
-        # The type of the database account. Valid values:
-        # 
-        # *   **Normal**: standard account.
-        # *   **Super**: privileged account.
         self.account_type = account_type
-        # The database engine of the cluster. Valid values:
-        # 
-        # *   **AnalyticDB**: the AnalyticDB for MySQL engine.
-        # *   **Clickhouse**: the wide table engine.
         self.engine = engine
-        # The ID of the Resource Access Management (RAM) user.
+        self.ram_user_list = ram_user_list
         self.ram_users = ram_users
 
     def validate(self):
-        pass
+        if self.ram_user_list:
+            self.ram_user_list.validate()
 
     def to_map(self):
         result = dict()
@@ -136,6 +122,9 @@ class DescribeAccountsResponseBodyAccountListDBAccount(DaraModel):
 
         if self.engine is not None:
             result['Engine'] = self.engine
+
+        if self.ram_user_list is not None:
+            result['RamUserList'] = self.ram_user_list.to_map()
 
         if self.ram_users is not None:
             result['RamUsers'] = self.ram_users
@@ -159,8 +148,39 @@ class DescribeAccountsResponseBodyAccountListDBAccount(DaraModel):
         if m.get('Engine') is not None:
             self.engine = m.get('Engine')
 
+        if m.get('RamUserList') is not None:
+            temp_model = main_models.DescribeAccountsResponseBodyAccountListDBAccountRamUserList()
+            self.ram_user_list = temp_model.from_map(m.get('RamUserList'))
+
         if m.get('RamUsers') is not None:
             self.ram_users = m.get('RamUsers')
+
+        return self
+
+class DescribeAccountsResponseBodyAccountListDBAccountRamUserList(DaraModel):
+    def __init__(
+        self,
+        ram_user_list: List[str] = None,
+    ):
+        self.ram_user_list = ram_user_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.ram_user_list is not None:
+            result['RamUserList'] = self.ram_user_list
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RamUserList') is not None:
+            self.ram_user_list = m.get('RamUserList')
 
         return self
 

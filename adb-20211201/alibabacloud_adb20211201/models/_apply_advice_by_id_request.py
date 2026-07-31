@@ -14,11 +14,13 @@ class ApplyAdviceByIdRequest(DaraModel):
         dbcluster_id: str = None,
         region_id: str = None,
     ):
-        # The date on which you want to apply the suggestion. Format: yyyyMMdd.
+        # The date when the suggestion was generated. Format: yyyyMMdd.
         self.advice_date = advice_date
         # The suggestion ID.
         self.advice_id = advice_id
+        # The adoption type.
         self.apply_type = apply_type
+        # Specifies whether to immediately start the build task.
         self.build_immediately = build_immediately
         # The cluster ID.
         # 

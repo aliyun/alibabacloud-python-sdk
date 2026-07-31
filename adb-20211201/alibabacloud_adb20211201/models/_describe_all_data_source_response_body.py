@@ -15,13 +15,10 @@ class DescribeAllDataSourceResponseBody(DaraModel):
         schemas: main_models.DescribeAllDataSourceResponseBodySchemas = None,
         tables: main_models.DescribeAllDataSourceResponseBodyTables = None,
     ):
-        # The queried columns.
         self.columns = columns
         # The request ID.
         self.request_id = request_id
-        # The queried databases.
         self.schemas = schemas
-        # The queried tables.
         self.tables = tables
 
     def validate(self):
@@ -112,11 +109,8 @@ class DescribeAllDataSourceResponseBodyTablesTable(DaraModel):
         schema_name: str = None,
         table_name: str = None,
     ):
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         self.dbcluster_id = dbcluster_id
-        # The name of the database.
         self.schema_name = schema_name
-        # The logical name of the table.
         self.table_name = table_name
 
     def validate(self):
@@ -192,9 +186,7 @@ class DescribeAllDataSourceResponseBodySchemasSchema(DaraModel):
         dbcluster_id: str = None,
         schema_name: str = None,
     ):
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         self.dbcluster_id = dbcluster_id
-        # The logical name of the database.
         self.schema_name = schema_name
 
     def validate(self):
@@ -269,25 +261,12 @@ class DescribeAllDataSourceResponseBodyColumnsColumn(DaraModel):
         table_name: str = None,
         type: str = None,
     ):
-        # Indicates whether the column is an auto-increment column. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
         self.auto_increment_column = auto_increment_column
-        # The name of the column.
         self.column_name = column_name
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         self.dbcluster_id = dbcluster_id
-        # Indicates whether the column is the primary key of the table. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
         self.primary_key = primary_key
-        # The logical name of the database.
         self.schema_name = schema_name
-        # The logical name of the table.
         self.table_name = table_name
-        # The data type of the column.
         self.type = type
 
     def validate(self):

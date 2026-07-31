@@ -2,6 +2,8 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
 from darabonba.model import DaraModel
 
 class CreateAccountRequest(DaraModel):
@@ -13,45 +15,43 @@ class CreateAccountRequest(DaraModel):
         account_type: str = None,
         dbcluster_id: str = None,
         engine: str = None,
+        ram_user_list: List[str] = None,
     ):
         # The description of the account.
-        # 
-        # *   The description cannot start with `http://` or `https://`.
-        # *   The description can be up to 256 characters in length.
+        # - Cannot start with `http://` or `https://`.
+        # - Cannot exceed 256 characters in length.
         self.account_description = account_description
-        # The name of the database account.
-        # 
-        # *   The name must start with a lowercase letter and end with a lowercase letter or a digit.
-        # *   The name can contain lowercase letters, digits, and underscores (_).
-        # *   The name must be 2 to 16 characters in length.
-        # *   Reserved account names such as root, admin, and opsadmin cannot be used.
+        # The name of the database account. The name must meet the following requirements:
+        # - Starts with a lowercase letter and ends with a lowercase letter or digit.
+        # - Contains only lowercase letters, digits, or underscores (_).
         # 
         # This parameter is required.
         self.account_name = account_name
         # The password of the database account.
-        # 
-        # *   The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
-        # *   Special characters include `! @ # $ % ^ & * ( ) _ + - =`
-        # *   The password must be 8 to 32 characters in length.
+        # - Must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+        # - Special characters include: `!@#$%^&*()_+-=`
+        # - Must be 8 to 32 characters in length.
         # 
         # This parameter is required.
         self.account_password = account_password
-        # The type of the database account. Valid values:
-        # 
-        # *   **Normal**: standard account.
-        # *   **Super**: privileged account.
+        # The type of the account. Valid values:
+        # - **Normal**: standard account.
+        # - **Super**: privileged account.
         # 
         # This parameter is required.
         self.account_type = account_type
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
+        # <props="china">The ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
+        # <props="intl">The ID of the Data Lakehouse Edition cluster.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The database engine of the cluster. Valid values:
+        # The database engine. Valid values:
         # 
-        # *   **AnalyticDB** (default): the AnalyticDB for MySQL engine.
-        # *   **Clickhouse**: the wide table engine.
+        # - **AnalyticDB** (default): AnalyticDB for MySQL engine.
+        # - **Clickhouse**: wide table engine.
         self.engine = engine
+        # The list of Alibaba Cloud Resource Access Management (RAM) user IDs to attach. Currently, only one RAM user can be attached.
+        self.ram_user_list = ram_user_list
 
     def validate(self):
         pass
@@ -79,6 +79,9 @@ class CreateAccountRequest(DaraModel):
         if self.engine is not None:
             result['Engine'] = self.engine
 
+        if self.ram_user_list is not None:
+            result['RamUserList'] = self.ram_user_list
+
         return result
 
     def from_map(self, m: dict = None):
@@ -100,6 +103,9 @@ class CreateAccountRequest(DaraModel):
 
         if m.get('Engine') is not None:
             self.engine = m.get('Engine')
+
+        if m.get('RamUserList') is not None:
+            self.ram_user_list = m.get('RamUserList')
 
         return self
 

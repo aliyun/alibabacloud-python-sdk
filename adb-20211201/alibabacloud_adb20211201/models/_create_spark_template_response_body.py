@@ -11,7 +11,7 @@ class CreateSparkTemplateResponseBody(DaraModel):
         data: main_models.CreateSparkTemplateResponseBodyData = None,
         request_id: str = None,
     ):
-        # The creation result.
+        # The result of creating the application template.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -49,10 +49,9 @@ class CreateSparkTemplateResponseBodyData(DaraModel):
         self,
         succeeded: bool = None,
     ):
-        # Indicates whether the application template is created. Valid values:
-        # 
-        # *   **True**
-        # *   **False**
+        # Indicates whether the creation is successful. Valid values:
+        # - **True**: Successful.
+        # - **False**: Failed.
         self.succeeded = succeeded
 
     def validate(self):

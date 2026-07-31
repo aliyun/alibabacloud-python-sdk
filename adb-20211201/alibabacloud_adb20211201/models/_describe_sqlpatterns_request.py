@@ -15,67 +15,88 @@ class DescribeSQLPatternsRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
         region_id: str = None,
+        sql_pattern_hash: int = None,
         start_time: str = None,
         user_name: str = None,
     ):
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # The ID of the AnalyticDB for MySQL (Data Lakehouse Edition) cluster.
         # 
-        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the information about all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region, including cluster IDs.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) API to find the cluster IDs of all AnalyticDB for MySQL (Data Lakehouse Edition) clusters in a specific region.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mm:ssZ* format. The time must be in UTC.
+        # The end of the time range to query. The time must be in UTC and formatted as *yyyy-MM-ddTHH:mm:ssZ*.
         # 
         # > The end time must be later than the start time.
         self.end_time = end_time
-        # The keyword that is used for the query.
+        # The keyword for filtering the query results.
         self.keyword = keyword
-        # The language. Valid values:
+        # The response language. Valid values:
         # 
-        # *   **zh** (default): simplified Chinese.
-        # *   **en**: English.
-        # *   **ja**: Japanese.
-        # *   **zh-tw**: traditional Chinese.
+        # - **zh**: Simplified Chinese (default)
+        # 
+        # - **en**: English
+        # 
+        # - **ja**: Japanese
+        # 
+        # - **zh-tw**: Traditional Chinese
         self.lang = lang
-        # The order by which to sort query results. Specify the parameter value in the JSON format. Example: `[{"Field":"AverageQueryTime","Type":"Asc"}]`.
+        # The sort order for the results. Specify this parameter as a JSON string, for example, `[{"Field":"AverageQueryTime","Type":"Asc"}]`. The string consists of the following fields:
         # 
-        # *   `Field` specifies the field by which to sort the query results. Valid values:
+        # - `Field`: the sort field. Valid values:
         # 
-        #     *   `PatternCreationTime`: the earliest commit time of the SQL pattern within the time range to query.
-        #     *   `AverageQueryTime`: the average total amount of time consumed by the SQL pattern within the time range to query.
-        #     *   `MaxQueryTime`: the maximum total amount of time consumed by the SQL pattern within the time range to query.
-        #     *   `AverageExecutionTime`: the average execution duration of the SQL pattern within the time range to query.
-        #     *   `MaxExecutionTime`: the maximum execution duration of the SQL pattern within the time range to query.
-        #     *   `AveragePeakMemory`: the average peak memory usage of the SQL pattern within the time range to query.
-        #     *   `MaxPeakMemory`: the maximum peak memory usage of the SQL pattern within the time range to query.
-        #     *   `AverageScanSize`: the average amount of data scanned based on the SQL pattern within the time range to query.
-        #     *   `MaxScanSize`: the maximum amount of data scanned based on the SQL pattern within the time range to query.
-        #     *   `QueryCount`: the number of queries performed in association with the SQL pattern within the time range to query.
-        #     *   `FailedCount`: the number of failed queries performed in association with the SQL pattern within the time range to query.
+        #   - `PatternCreationTime`: The earliest submission time of the pattern.
         # 
-        # *   `Type` specifies the sorting order. Valid values (case-insensitive):
+        #   - `AverageQueryTime`: The average query time of the pattern.
         # 
-        #     *   `Asc`: ascending order.
-        #     *   `Desc`: descending order.
+        #   - `MaxQueryTime`: The maximum query time of the pattern.
+        # 
+        #   - `AverageExecutionTime`: The average execution time of the pattern.
+        # 
+        #   - `MaxExecutionTime`: The maximum execution time of the pattern.
+        # 
+        #   - `AveragePeakMemory`: The average peak memory of the pattern.
+        # 
+        #   - `MaxPeakMemory`: The maximum peak memory of the pattern.
+        # 
+        #   - `AverageScanSize`: The average scanned data size of the pattern.
+        # 
+        #   - `MaxScanSize`: The maximum scanned data size of the pattern.
+        # 
+        #   - `QueryCount`: The query count of the pattern.
+        # 
+        #   - `FailedCount`: The failure count of the pattern.
+        # 
+        # - `Type`: the sort order. Valid values (case-insensitive):
+        # 
+        #   - `Asc`: ascending order.
+        # 
+        #   - `Desc`: descending order.
         self.order = order
-        # The page number. Pages start from page 1. Default value: 1.
+        # The page number. Must be an integer greater than 0. Default: 1.
         self.page_number = page_number
         # The number of entries per page. Valid values:
         # 
-        # *   **10** (default)
-        # *   **30**
-        # *   **50**
-        # *   **100**
+        # - **10** (default)
+        # 
+        # - **30**
+        # 
+        # - **50**
+        # 
+        # - **100**
         self.page_size = page_size
-        # The region ID of the cluster.
+        # The ID of the region.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mm:ssZ* format. The time must be in UTC.
+        self.sql_pattern_hash = sql_pattern_hash
+        # The start of the time range to query. The time must be in UTC and formatted as *yyyy-MM-ddTHH:mm:ssZ*.
         # 
-        # > *   Only data within the last 14 days can be queried.
-        # > * The maximum time range that can be specified is 24 hours.
+        # > - Data is available for the last 14 days only.
+        # 
+        # - The time range cannot exceed 24 hours.
         self.start_time = start_time
+        # The username of the database account used to execute the SQL statements.
         self.user_name = user_name
 
     def validate(self):
@@ -110,6 +131,9 @@ class DescribeSQLPatternsRequest(DaraModel):
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
+        if self.sql_pattern_hash is not None:
+            result['SqlPatternHash'] = self.sql_pattern_hash
+
         if self.start_time is not None:
             result['StartTime'] = self.start_time
 
@@ -143,6 +167,9 @@ class DescribeSQLPatternsRequest(DaraModel):
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+
+        if m.get('SqlPatternHash') is not None:
+            self.sql_pattern_hash = m.get('SqlPatternHash')
 
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')

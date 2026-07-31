@@ -12,18 +12,20 @@ class DescribeAccountsRequest(DaraModel):
         engine: str = None,
         owner_id: str = None,
     ):
-        # The name of the database account.
+        # The database account.
         # 
-        # > If you do not specify this parameter, the information about all database accounts in the cluster is returned.
+        # > If you do not specify this parameter, information about all database accounts is returned.
         self.account_name = account_name
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
+        # <props="china">The ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
+        # <props="intl">The ID of the Data Lakehouse Edition cluster.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The database engine of the cluster. Valid values:
+        # The database engine. Valid values:
         # 
-        # *   **AnalyticDB** (default): the AnalyticDB for MySQL engine.
-        # *   **Clickhouse**: the wide table engine.
+        # - **AnalyticDB** (default): the AnalyticDB for MySQL engine
+        # 
+        # - **Clickhouse**: the LindormTable engine
         self.engine = engine
         self.owner_id = owner_id
 

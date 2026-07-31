@@ -14,11 +14,11 @@ class DescribeDiagnosisSQLInfoResponseBody(DaraModel):
         request_id: str = None,
         stage_infos: List[main_models.DescribeDiagnosisSQLInfoResponseBodyStageInfos] = None,
     ):
-        # The queried execution information, including the SQL statement, statistics, execution plan, and operator information.
+        # The execution details of the SQL statement, including the detailed SQL statement, statistics information, execution plan, and operator information.
         self.diagnosis_sqlinfo = diagnosis_sqlinfo
         # The request ID.
         self.request_id = request_id
-        # The queried execution information by stage.
+        # The stage-level execution information of the query.
         self.stage_infos = stage_infos
 
     def validate(self):
@@ -76,23 +76,23 @@ class DescribeDiagnosisSQLInfoResponseBodyStageInfos(DaraModel):
         state: str = None,
     ):
         self.execution_type = execution_type
-        # The total amount of input data in the stage. Unit: bytes.
+        # The total input data size of the stage, in bytes.
         self.input_data_size = input_data_size
         # The total number of input rows in the stage.
         self.input_rows = input_rows
-        # The total amount of time consumed by all operators in the stage. Unit: milliseconds.
+        # The cumulative operator duration of the stage, in milliseconds.
         self.operator_cost = operator_cost
-        # The total amount of output data in the stage. Unit: bytes.
+        # The total output data size of the stage, in bytes.
         self.output_data_size = output_data_size
         # The total number of output rows in the stage.
         self.output_rows = output_rows
-        # The total peak memory of the stage. Unit: bytes.
+        # The total peak memory of the stage, in bytes.
         self.peak_memory = peak_memory
         # The execution progress of the stage.
         self.progress = progress
-        # The stage ID.
+        # StageID。
         self.stage_id = stage_id
-        # The state of the stage.
+        # The status of the stage.
         self.state = state
 
     def validate(self):

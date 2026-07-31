@@ -17,36 +17,35 @@ class DescribeViewJobsRequest(DaraModel):
         region_id: str = None,
         schema_name: str = None,
     ):
-        # The cluster ID.
+        # The instance ID.
         self.dbcluster_id = dbcluster_id
-        # The owner of the view.
+        # The owner.
         self.filter_owner = filter_owner
-        # The name of the view.
+        # The view name.
         self.filter_view_name = filter_view_name
-        # The type of the view.
+        # The view type.
         # 
         # Valid values:
         # 
-        # \\-VIRTUAL_VIEW
+        # - VIRTUAL_VIEW
+        # - MATERIALIZED_VIEW
         # 
-        # \\-MATERIALIZED_VIEW
-        # 
-        # This parameter is empty by default.
+        # Default value: empty.
         self.filter_view_type = filter_view_type
-        # The field used for sorting. Valid values for Type:
+        # The sort field.
         # 
-        # *   Asc.
-        # *   Desc.
+        # Valid values for the sort order:
+        # - Asc
+        # - Desc
         # 
-        # Valid values for Field:
-        # 
-        # *   StartTime.
-        # *   EndTime;
-        # *   ScheduledStartTime;
+        # Valid values for the sort field:
+        # - StartTime
+        # - EndTime
+        # - ScheduledStartTime
         self.order_by = order_by
         # The page number.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The number of records per page.
         self.page_size = page_size
         # The region ID.
         self.region_id = region_id

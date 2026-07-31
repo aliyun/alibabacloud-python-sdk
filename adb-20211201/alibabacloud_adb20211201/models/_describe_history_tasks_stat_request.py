@@ -10,11 +10,8 @@ class DescribeHistoryTasksStatRequest(DaraModel):
         from_exec_time: int = None,
         from_start_time: str = None,
         instance_id: str = None,
-        owner_id: int = None,
         region_id: str = None,
         resource_group_id: str = None,
-        resource_owner_account: int = None,
-        resource_owner_id: int = None,
         security_token: str = None,
         status: str = None,
         task_id: str = None,
@@ -30,15 +27,12 @@ class DescribeHistoryTasksStatRequest(DaraModel):
         self.from_start_time = from_start_time
         # Cluster ID.
         self.instance_id = instance_id
-        self.owner_id = owner_id
         # The ID of the region where the instance resides.
         # 
         # This parameter is required.
         self.region_id = region_id
         # Resource group ID.
         self.resource_group_id = resource_group_id
-        self.resource_owner_account = resource_owner_account
-        self.resource_owner_id = resource_owner_id
         self.security_token = security_token
         # The state of the task. Valid values:
         # 
@@ -80,20 +74,11 @@ class DescribeHistoryTasksStatRequest(DaraModel):
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
 
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
-
-        if self.resource_owner_account is not None:
-            result['ResourceOwnerAccount'] = self.resource_owner_account
-
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
 
         if self.security_token is not None:
             result['SecurityToken'] = self.security_token
@@ -126,20 +111,11 @@ class DescribeHistoryTasksStatRequest(DaraModel):
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
 
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
 
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
-
-        if m.get('ResourceOwnerAccount') is not None:
-            self.resource_owner_account = m.get('ResourceOwnerAccount')
-
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
 
         if m.get('SecurityToken') is not None:
             self.security_token = m.get('SecurityToken')

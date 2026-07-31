@@ -14,15 +14,15 @@ class BatchApplyAdviceByIdListRequest(DaraModel):
         dbcluster_id: str = None,
         region_id: str = None,
     ):
-        # The date on which you want to apply the suggestion. Format: yyyyMMdd.
+        # The date when the suggestions were generated. Format: yyyyMMdd.
         self.advice_date = advice_date
-        # The IDs of the suggestions that you want to apply. Separate multiple IDs with commas (,).
+        # The list of suggestion IDs to apply in batches. Separate multiple suggestion IDs with commas (,).
         self.advice_id_list = advice_id_list
+        # The adoption type.
         self.apply_type = apply_type
+        # Specifies whether to immediately start a build task.
         self.build_immediately = build_immediately
         # The cluster ID.
-        # 
-        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id

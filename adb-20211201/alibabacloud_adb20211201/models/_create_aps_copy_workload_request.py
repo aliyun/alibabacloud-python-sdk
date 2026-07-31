@@ -15,23 +15,23 @@ class CreateApsCopyWorkloadRequest(DaraModel):
         workload_id: str = None,
         workload_type: str = None,
     ):
-        # The cluster ID.
+        # The instance ID.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The data source ID.
         self.datasource_id = datasource_id
-        # The name of the database.
+        # The database name.
         self.db_name = db_name
         # The region ID.
         self.region_id = region_id
-        # The name of the table.
+        # The table name.
         self.table_name = table_name
-        # The job ID.
+        # The data link task ID.
         # 
         # This parameter is required.
         self.workload_id = workload_id
-        # The type of the job.
+        # The task type.
         # 
         # This parameter is required.
         self.workload_type = workload_type

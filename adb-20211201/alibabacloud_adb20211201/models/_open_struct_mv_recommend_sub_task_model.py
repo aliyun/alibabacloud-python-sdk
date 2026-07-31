@@ -17,14 +17,23 @@ class OpenStructMvRecommendSubTaskModel(DaraModel):
         sub_queries_count: int = None,
         subtask_id: int = None,
     ):
+        # The end time of the task.
         self.end_time = end_time
+        # The minimum number of slow queries that match the pattern.
         self.min_rewrite_query_count = min_rewrite_query_count
+        # The number of minimum acceleration patterns.
         self.min_rewrite_query_pattern = min_rewrite_query_pattern
+        # The number of queries scanned.
         self.scan_queries_count = scan_queries_count
+        # The wait threshold for slow queries.
         self.slow_query_threshold = slow_query_threshold
+        # The start time of the task.
         self.start_time = start_time
+        # Current execution status.
         self.status = status
+        # The number of newly generated MV recommendations.
         self.sub_queries_count = sub_queries_count
+        # The record ID of the task execution.
         self.subtask_id = subtask_id
 
     def validate(self):

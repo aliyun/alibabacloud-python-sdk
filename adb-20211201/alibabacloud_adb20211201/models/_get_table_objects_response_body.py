@@ -16,19 +16,18 @@ class GetTableObjectsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The data returned.
+        # The returned data.
         self.data = data
-        # The number of the returned page. The value is an integer that is greater than 0. Default value: **1**.
+        # The page number. The value is a positive integer. Default value: **1**.
         self.page_number = page_number
-        # The number of entries returned per page. Default value: 30. Valid values:
-        # 
-        # *   **30**
-        # *   **50**
-        # *   **100**
+        # The number of entries per page. Valid values:
+        # - **30** (default)
+        # - **50**
+        # - **100**.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -85,17 +84,16 @@ class GetTableObjectsResponseBodyData(DaraModel):
         table_summary_models: List[main_models.TableSummaryModel] = None,
         total_count: int = None,
     ):
-        # The number of the returned page. The value is an integer that is greater than 0. Default value: **1**.
+        # The page number. The value is a positive integer. Default value: **1**.
         self.page_number = page_number
-        # The number of entries returned per page. Default value: 30. Valid values:
-        # 
-        # *   **30**
-        # *   **50**
-        # *   **100**
+        # The number of entries per page. Valid values:
+        # - **30** (default)
+        # - **50**
+        # - **100**.
         self.page_size = page_size
-        # Details of the tables.
+        # The result array.
         self.table_summary_models = table_summary_models
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):

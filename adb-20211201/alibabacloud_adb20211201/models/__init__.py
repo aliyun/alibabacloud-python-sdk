@@ -2,6 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from ._access_token_model import AccessTokenModel
 from ._adb_4mysql_spark_diagnosis_info import Adb4MysqlSparkDiagnosisInfo
 from ._col_detail_model import ColDetailModel
 from ._cstore_index_model import CstoreIndexModel
@@ -11,6 +12,7 @@ from ._field_schema_model import FieldSchemaModel
 from ._filters import Filters
 from ._log_analyze_result import LogAnalyzeResult
 from ._operator_node import OperatorNode
+from ._semantic_view_model import SemanticViewModel
 from ._ser_de_info_model import SerDeInfoModel
 from ._spark_analyze_log_task import SparkAnalyzeLogTask
 from ._spark_app_info import SparkAppInfo
@@ -25,12 +27,16 @@ from ._storage_descriptor_model import StorageDescriptorModel
 from ._table_detail_model import TableDetailModel
 from ._table_model import TableModel
 from ._table_summary_model import TableSummaryModel
+from ._user_summary_model import UserSummaryModel
 from ._open_struct_mvrecommend_result_model import OpenStructMVRecommendResultModel
 from ._open_struct_mv_base_table_detail_model import OpenStructMvBaseTableDetailModel
 from ._open_struct_mv_detail_model import OpenStructMvDetailModel
 from ._open_struct_mv_recommend_sub_task_model import OpenStructMvRecommendSubTaskModel
 from ._open_struct_mv_recommend_task_model import OpenStructMvRecommendTaskModel
 from ._open_struct_refresh_job_model import OpenStructRefreshJobModel
+from ._add_knowledge_file_request import AddKnowledgeFileRequest
+from ._add_knowledge_file_response_body import AddKnowledgeFileResponseBody
+from ._add_knowledge_file_response import AddKnowledgeFileResponse
 from ._allocate_cluster_public_connection_request import AllocateClusterPublicConnectionRequest
 from ._allocate_cluster_public_connection_response_body import AllocateClusterPublicConnectionResponseBody
 from ._allocate_cluster_public_connection_response import AllocateClusterPublicConnectionResponse
@@ -44,6 +50,7 @@ from ._batch_apply_advice_by_id_list_request import BatchApplyAdviceByIdListRequ
 from ._batch_apply_advice_by_id_list_response_body import BatchApplyAdviceByIdListResponseBody
 from ._batch_apply_advice_by_id_list_response import BatchApplyAdviceByIdListResponse
 from ._bind_account_request import BindAccountRequest
+from ._bind_account_shrink_request import BindAccountShrinkRequest
 from ._bind_account_response_body import BindAccountResponseBody
 from ._bind_account_response import BindAccountResponse
 from ._bind_dbresource_group_with_user_request import BindDBResourceGroupWithUserRequest
@@ -58,6 +65,9 @@ from ._cancel_spark_warehouse_batch_sqlresponse import CancelSparkWarehouseBatch
 from ._check_bind_ram_user_request import CheckBindRamUserRequest
 from ._check_bind_ram_user_response_body import CheckBindRamUserResponseBody
 from ._check_bind_ram_user_response import CheckBindRamUserResponse
+from ._check_formation_schema_exists_request import CheckFormationSchemaExistsRequest
+from ._check_formation_schema_exists_response_body import CheckFormationSchemaExistsResponseBody
+from ._check_formation_schema_exists_response import CheckFormationSchemaExistsResponse
 from ._check_sample_data_set_request import CheckSampleDataSetRequest
 from ._check_sample_data_set_response_body import CheckSampleDataSetResponseBody
 from ._check_sample_data_set_response import CheckSampleDataSetResponse
@@ -69,6 +79,7 @@ from ._create_apsjob_request import CreateAPSJobRequest
 from ._create_apsjob_response_body import CreateAPSJobResponseBody
 from ._create_apsjob_response import CreateAPSJobResponse
 from ._create_account_request import CreateAccountRequest
+from ._create_account_shrink_request import CreateAccountShrinkRequest
 from ._create_account_response_body import CreateAccountResponseBody
 from ._create_account_response import CreateAccountResponse
 from ._create_aps_copy_workload_request import CreateApsCopyWorkloadRequest
@@ -106,6 +117,9 @@ from ._create_dbresource_group_response import CreateDBResourceGroupResponse
 from ._create_elastic_plan_request import CreateElasticPlanRequest
 from ._create_elastic_plan_response_body import CreateElasticPlanResponseBody
 from ._create_elastic_plan_response import CreateElasticPlanResponse
+from ._create_formation_crawler_request import CreateFormationCrawlerRequest
+from ._create_formation_crawler_response_body import CreateFormationCrawlerResponseBody
+from ._create_formation_crawler_response import CreateFormationCrawlerResponse
 from ._create_lake_storage_request import CreateLakeStorageRequest
 from ._create_lake_storage_shrink_request import CreateLakeStorageShrinkRequest
 from ._create_lake_storage_response_body import CreateLakeStorageResponseBody
@@ -120,6 +134,9 @@ from ._create_performance_view_request import CreatePerformanceViewRequest
 from ._create_performance_view_shrink_request import CreatePerformanceViewShrinkRequest
 from ._create_performance_view_response_body import CreatePerformanceViewResponseBody
 from ._create_performance_view_response import CreatePerformanceViewResponse
+from ._create_semantic_view_request import CreateSemanticViewRequest
+from ._create_semantic_view_response_body import CreateSemanticViewResponseBody
+from ._create_semantic_view_response import CreateSemanticViewResponse
 from ._create_spark_template_request import CreateSparkTemplateRequest
 from ._create_spark_template_response_body import CreateSparkTemplateResponseBody
 from ._create_spark_template_response import CreateSparkTemplateResponse
@@ -147,6 +164,9 @@ from ._delete_dbresource_group_response import DeleteDBResourceGroupResponse
 from ._delete_elastic_plan_request import DeleteElasticPlanRequest
 from ._delete_elastic_plan_response_body import DeleteElasticPlanResponseBody
 from ._delete_elastic_plan_response import DeleteElasticPlanResponse
+from ._delete_formation_crawler_request import DeleteFormationCrawlerRequest
+from ._delete_formation_crawler_response_body import DeleteFormationCrawlerResponseBody
+from ._delete_formation_crawler_response import DeleteFormationCrawlerResponse
 from ._delete_lake_storage_request import DeleteLakeStorageRequest
 from ._delete_lake_storage_response_body import DeleteLakeStorageResponseBody
 from ._delete_lake_storage_response import DeleteLakeStorageResponse
@@ -156,6 +176,9 @@ from ._delete_materialized_view_recommend_response import DeleteMaterializedView
 from ._delete_performance_view_request import DeletePerformanceViewRequest
 from ._delete_performance_view_response_body import DeletePerformanceViewResponseBody
 from ._delete_performance_view_response import DeletePerformanceViewResponse
+from ._delete_semantic_view_request import DeleteSemanticViewRequest
+from ._delete_semantic_view_response_body import DeleteSemanticViewResponseBody
+from ._delete_semantic_view_response import DeleteSemanticViewResponse
 from ._delete_spark_template_request import DeleteSparkTemplateRequest
 from ._delete_spark_template_response_body import DeleteSparkTemplateResponseBody
 from ._delete_spark_template_response import DeleteSparkTemplateResponse
@@ -352,12 +375,6 @@ from ._describe_job_resource_usage_response import DescribeJobResourceUsageRespo
 from ._describe_kernel_version_request import DescribeKernelVersionRequest
 from ._describe_kernel_version_response_body import DescribeKernelVersionResponseBody
 from ._describe_kernel_version_response import DescribeKernelVersionResponse
-from ._describe_llmanswer_request import DescribeLLMAnswerRequest
-from ._describe_llmanswer_response_body import DescribeLLMAnswerResponseBody
-from ._describe_llmanswer_response import DescribeLLMAnswerResponse
-from ._describe_llmsimilar_questions_request import DescribeLLMSimilarQuestionsRequest
-from ._describe_llmsimilar_questions_response_body import DescribeLLMSimilarQuestionsResponseBody
-from ._describe_llmsimilar_questions_response import DescribeLLMSimilarQuestionsResponse
 from ._describe_lake_cache_size_request import DescribeLakeCacheSizeRequest
 from ._describe_lake_cache_size_response_body import DescribeLakeCacheSizeResponseBody
 from ._describe_lake_cache_size_response import DescribeLakeCacheSizeResponse
@@ -385,6 +402,9 @@ from ._describe_performance_view_attribute_response import DescribePerformanceVi
 from ._describe_performance_views_request import DescribePerformanceViewsRequest
 from ._describe_performance_views_response_body import DescribePerformanceViewsResponseBody
 from ._describe_performance_views_response import DescribePerformanceViewsResponse
+from ._describe_process_list_request import DescribeProcessListRequest
+from ._describe_process_list_response_body import DescribeProcessListResponseBody
+from ._describe_process_list_response import DescribeProcessListResponse
 from ._describe_regions_request import DescribeRegionsRequest
 from ._describe_regions_response_body import DescribeRegionsResponseBody
 from ._describe_regions_response import DescribeRegionsResponse
@@ -487,21 +507,30 @@ from ._execute_spark_warehouse_batch_sqlresponse import ExecuteSparkWarehouseBat
 from ._exist_running_sqlengine_request import ExistRunningSQLEngineRequest
 from ._exist_running_sqlengine_response_body import ExistRunningSQLEngineResponseBody
 from ._exist_running_sqlengine_response import ExistRunningSQLEngineResponse
+from ._generate_sql_by_semantic_sql_request import GenerateSqlBySemanticSqlRequest
+from ._generate_sql_by_semantic_sql_response_body import GenerateSqlBySemanticSqlResponseBody
+from ._generate_sql_by_semantic_sql_response import GenerateSqlBySemanticSqlResponse
 from ._get_adbspark_necessary_rampermissions_request import GetADBSparkNecessaryRAMPermissionsRequest
 from ._get_adbspark_necessary_rampermissions_response_body import GetADBSparkNecessaryRAMPermissionsResponseBody
 from ._get_adbspark_necessary_rampermissions_response import GetADBSparkNecessaryRAMPermissionsResponse
-from ._get_aps_managed_databases_request import GetApsManagedDatabasesRequest
-from ._get_aps_managed_databases_response_body import GetApsManagedDatabasesResponseBody
-from ._get_aps_managed_databases_response import GetApsManagedDatabasesResponse
 from ._get_create_table_sqlrequest import GetCreateTableSQLRequest
 from ._get_create_table_sqlresponse_body import GetCreateTableSQLResponseBody
 from ._get_create_table_sqlresponse import GetCreateTableSQLResponse
 from ._get_database_objects_request import GetDatabaseObjectsRequest
 from ._get_database_objects_response_body import GetDatabaseObjectsResponseBody
 from ._get_database_objects_response import GetDatabaseObjectsResponse
+from ._get_formation_crawler_request import GetFormationCrawlerRequest
+from ._get_formation_crawler_response_body import GetFormationCrawlerResponseBody
+from ._get_formation_crawler_response import GetFormationCrawlerResponse
+from ._get_knowledge_recall_request import GetKnowledgeRecallRequest
+from ._get_knowledge_recall_response_body import GetKnowledgeRecallResponseBody
+from ._get_knowledge_recall_response import GetKnowledgeRecallResponse
 from ._get_lake_storage_request import GetLakeStorageRequest
 from ._get_lake_storage_response_body import GetLakeStorageResponseBody
 from ._get_lake_storage_response import GetLakeStorageResponse
+from ._get_semantic_view_request import GetSemanticViewRequest
+from ._get_semantic_view_response_body import GetSemanticViewResponseBody
+from ._get_semantic_view_response import GetSemanticViewResponse
 from ._get_spark_app_attempt_log_request import GetSparkAppAttemptLogRequest
 from ._get_spark_app_attempt_log_response_body import GetSparkAppAttemptLogResponseBody
 from ._get_spark_app_attempt_log_response import GetSparkAppAttemptLogResponse
@@ -580,15 +609,6 @@ from ._kill_spark_log_analyze_task_response import KillSparkLogAnalyzeTaskRespon
 from ._kill_spark_sqlengine_request import KillSparkSQLEngineRequest
 from ._kill_spark_sqlengine_response_body import KillSparkSQLEngineResponseBody
 from ._kill_spark_sqlengine_response import KillSparkSQLEngineResponse
-from ._list_aps_lifecycle_strategy_request import ListApsLifecycleStrategyRequest
-from ._list_aps_lifecycle_strategy_response_body import ListApsLifecycleStrategyResponseBody
-from ._list_aps_lifecycle_strategy_response import ListApsLifecycleStrategyResponse
-from ._list_aps_optimization_strategy_request import ListApsOptimizationStrategyRequest
-from ._list_aps_optimization_strategy_response_body import ListApsOptimizationStrategyResponseBody
-from ._list_aps_optimization_strategy_response import ListApsOptimizationStrategyResponse
-from ._list_aps_optimization_tasks_request import ListApsOptimizationTasksRequest
-from ._list_aps_optimization_tasks_response_body import ListApsOptimizationTasksResponseBody
-from ._list_aps_optimization_tasks_response import ListApsOptimizationTasksResponse
 from ._list_aps_webhook_request import ListApsWebhookRequest
 from ._list_aps_webhook_response_body import ListApsWebhookResponseBody
 from ._list_aps_webhook_response import ListApsWebhookResponse
@@ -599,6 +619,9 @@ from ._list_result_export_job_history_request import ListResultExportJobHistoryR
 from ._list_result_export_job_history_shrink_request import ListResultExportJobHistoryShrinkRequest
 from ._list_result_export_job_history_response_body import ListResultExportJobHistoryResponseBody
 from ._list_result_export_job_history_response import ListResultExportJobHistoryResponse
+from ._list_semantic_view_names_request import ListSemanticViewNamesRequest
+from ._list_semantic_view_names_response_body import ListSemanticViewNamesResponseBody
+from ._list_semantic_view_names_response import ListSemanticViewNamesResponse
 from ._list_spark_app_attempts_request import ListSparkAppAttemptsRequest
 from ._list_spark_app_attempts_response_body import ListSparkAppAttemptsResponseBody
 from ._list_spark_app_attempts_response import ListSparkAppAttemptsResponse
@@ -656,9 +679,6 @@ from ._modify_clickhouse_engine_response import ModifyClickhouseEngineResponse
 from ._modify_cluster_access_white_list_request import ModifyClusterAccessWhiteListRequest
 from ._modify_cluster_access_white_list_response_body import ModifyClusterAccessWhiteListResponseBody
 from ._modify_cluster_access_white_list_response import ModifyClusterAccessWhiteListResponse
-from ._modify_cluster_connection_string_request import ModifyClusterConnectionStringRequest
-from ._modify_cluster_connection_string_response_body import ModifyClusterConnectionStringResponseBody
-from ._modify_cluster_connection_string_response import ModifyClusterConnectionStringResponse
 from ._modify_compaction_service_switch_request import ModifyCompactionServiceSwitchRequest
 from ._modify_compaction_service_switch_response_body import ModifyCompactionServiceSwitchResponseBody
 from ._modify_compaction_service_switch_response import ModifyCompactionServiceSwitchResponse
@@ -712,27 +732,54 @@ from ._modify_user_eni_vswitch_options_response import ModifyUserEniVswitchOptio
 from ._preload_spark_app_metrics_request import PreloadSparkAppMetricsRequest
 from ._preload_spark_app_metrics_response_body import PreloadSparkAppMetricsResponseBody
 from ._preload_spark_app_metrics_response import PreloadSparkAppMetricsResponse
+from ._query_formation_insts_by_task_idrequest import QueryFormationInstsByTaskIDRequest
+from ._query_formation_insts_by_task_idresponse_body import QueryFormationInstsByTaskIDResponseBody
+from ._query_formation_insts_by_task_idresponse import QueryFormationInstsByTaskIDResponse
+from ._query_formation_task_by_idrequest import QueryFormationTaskByIDRequest
+from ._query_formation_task_by_idresponse_body import QueryFormationTaskByIDResponseBody
+from ._query_formation_task_by_idresponse import QueryFormationTaskByIDResponse
+from ._query_formation_tasks_by_type_request import QueryFormationTasksByTypeRequest
+from ._query_formation_tasks_by_type_response_body import QueryFormationTasksByTypeResponseBody
+from ._query_formation_tasks_by_type_response import QueryFormationTasksByTypeResponse
 from ._release_cluster_public_connection_request import ReleaseClusterPublicConnectionRequest
 from ._release_cluster_public_connection_response_body import ReleaseClusterPublicConnectionResponseBody
 from ._release_cluster_public_connection_response import ReleaseClusterPublicConnectionResponse
+from ._rename_semantic_view_request import RenameSemanticViewRequest
+from ._rename_semantic_view_response_body import RenameSemanticViewResponseBody
+from ._rename_semantic_view_response import RenameSemanticViewResponse
+from ._replace_semantic_view_request import ReplaceSemanticViewRequest
+from ._replace_semantic_view_response_body import ReplaceSemanticViewResponseBody
+from ._replace_semantic_view_response import ReplaceSemanticViewResponse
 from ._reset_account_password_request import ResetAccountPasswordRequest
 from ._reset_account_password_response_body import ResetAccountPasswordResponseBody
 from ._reset_account_password_response import ResetAccountPasswordResponse
 from ._revoke_operator_permission_request import RevokeOperatorPermissionRequest
 from ._revoke_operator_permission_response_body import RevokeOperatorPermissionResponseBody
 from ._revoke_operator_permission_response import RevokeOperatorPermissionResponse
+from ._run_materialized_view_recommend_request import RunMaterializedViewRecommendRequest
+from ._run_materialized_view_recommend_response_body import RunMaterializedViewRecommendResponseBody
+from ._run_materialized_view_recommend_response import RunMaterializedViewRecommendResponse
+from ._search_semantic_views_request import SearchSemanticViewsRequest
+from ._search_semantic_views_response_body import SearchSemanticViewsResponseBody
+from ._search_semantic_views_response import SearchSemanticViewsResponse
 from ._set_spark_app_log_root_path_request import SetSparkAppLogRootPathRequest
 from ._set_spark_app_log_root_path_response_body import SetSparkAppLogRootPathResponseBody
 from ._set_spark_app_log_root_path_response import SetSparkAppLogRootPathResponse
 from ._start_aps_job_request import StartApsJobRequest
 from ._start_aps_job_response_body import StartApsJobResponseBody
 from ._start_aps_job_response import StartApsJobResponse
+from ._start_formation_crawler_request import StartFormationCrawlerRequest
+from ._start_formation_crawler_response_body import StartFormationCrawlerResponseBody
+from ._start_formation_crawler_response import StartFormationCrawlerResponse
 from ._start_spark_repl_session_request import StartSparkReplSessionRequest
 from ._start_spark_repl_session_response_body import StartSparkReplSessionResponseBody
 from ._start_spark_repl_session_response import StartSparkReplSessionResponse
 from ._start_spark_sqlengine_request import StartSparkSQLEngineRequest
 from ._start_spark_sqlengine_response_body import StartSparkSQLEngineResponseBody
 from ._start_spark_sqlengine_response import StartSparkSQLEngineResponse
+from ._stop_formation_crawler_request import StopFormationCrawlerRequest
+from ._stop_formation_crawler_response_body import StopFormationCrawlerResponseBody
+from ._stop_formation_crawler_response import StopFormationCrawlerResponse
 from ._submit_result_export_job_request import SubmitResultExportJobRequest
 from ._submit_result_export_job_response_body import SubmitResultExportJobResponseBody
 from ._submit_result_export_job_response import SubmitResultExportJobResponse
@@ -755,6 +802,12 @@ from ._update_aps_webhook_request import UpdateApsWebhookRequest
 from ._update_aps_webhook_shrink_request import UpdateApsWebhookShrinkRequest
 from ._update_aps_webhook_response_body import UpdateApsWebhookResponseBody
 from ._update_aps_webhook_response import UpdateApsWebhookResponse
+from ._update_formation_crawler_request import UpdateFormationCrawlerRequest
+from ._update_formation_crawler_response_body import UpdateFormationCrawlerResponseBody
+from ._update_formation_crawler_response import UpdateFormationCrawlerResponse
+from ._update_formation_crawler_schedule_state_request import UpdateFormationCrawlerScheduleStateRequest
+from ._update_formation_crawler_schedule_state_response_body import UpdateFormationCrawlerScheduleStateResponseBody
+from ._update_formation_crawler_schedule_state_response import UpdateFormationCrawlerScheduleStateResponse
 from ._update_lake_storage_request import UpdateLakeStorageRequest
 from ._update_lake_storage_shrink_request import UpdateLakeStorageShrinkRequest
 from ._update_lake_storage_response_body import UpdateLakeStorageResponseBody
@@ -788,6 +841,7 @@ from ._create_aps_sls_adbjob_request import CreateApsSlsADBJobRequestColumns
 from ._create_aps_sls_adbjob_request import CreateApsSlsADBJobRequestUnixTimestampConvert
 from ._create_aps_webhook_request import CreateApsWebhookRequestWebhook
 from ._create_dbcluster_request import CreateDBClusterRequestTag
+from ._create_dbresource_group_request import CreateDBResourceGroupRequestAtmConfig
 from ._create_dbresource_group_request import CreateDBResourceGroupRequestGpuElasticPlanRules
 from ._create_dbresource_group_request import CreateDBResourceGroupRequestGpuElasticPlan
 from ._create_dbresource_group_request import CreateDBResourceGroupRequestRayConfigWorkerGroups
@@ -810,6 +864,7 @@ from ._describe_account_all_privileges_response_body import DescribeAccountAllPr
 from ._describe_account_privilege_objects_response_body import DescribeAccountPrivilegeObjectsResponseBodyData
 from ._describe_account_privileges_response_body import DescribeAccountPrivilegesResponseBodyDataPrivilegeObject
 from ._describe_account_privileges_response_body import DescribeAccountPrivilegesResponseBodyData
+from ._describe_accounts_response_body import DescribeAccountsResponseBodyAccountListDBAccountRamUserList
 from ._describe_accounts_response_body import DescribeAccountsResponseBodyAccountListDBAccount
 from ._describe_accounts_response_body import DescribeAccountsResponseBodyAccountList
 from ._describe_adb_my_sql_columns_response_body import DescribeAdbMySqlColumnsResponseBodyColumns
@@ -887,6 +942,7 @@ from ._describe_dbclusters_response_body import DescribeDBClustersResponseBodyIt
 from ._describe_dbclusters_response_body import DescribeDBClustersResponseBodyItemsDBClusterTaskInfo
 from ._describe_dbclusters_response_body import DescribeDBClustersResponseBodyItemsDBCluster
 from ._describe_dbclusters_response_body import DescribeDBClustersResponseBodyItems
+from ._describe_dbresource_group_response_body import DescribeDBResourceGroupResponseBodyGroupsInfoAtmConfig
 from ._describe_dbresource_group_response_body import DescribeDBResourceGroupResponseBodyGroupsInfoGpuElasticPlanRules
 from ._describe_dbresource_group_response_body import DescribeDBResourceGroupResponseBodyGroupsInfoGpuElasticPlan
 from ._describe_dbresource_group_response_body import DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigAppConfigImageSelector
@@ -926,7 +982,6 @@ from ._describe_job_resource_usage_response_body import DescribeJobResourceUsage
 from ._describe_job_resource_usage_response_body import DescribeJobResourceUsageResponseBodyDataJobAcuUsage
 from ._describe_job_resource_usage_response_body import DescribeJobResourceUsageResponseBodyData
 from ._describe_kernel_version_response_body import DescribeKernelVersionResponseBodyAvailableKernelVersions
-from ._describe_llmsimilar_questions_response_body import DescribeLLMSimilarQuestionsResponseBodyItems
 from ._describe_lake_cache_size_response_body import DescribeLakeCacheSizeResponseBodyData
 from ._describe_mvrecommend_results_response_body import DescribeMVRecommendResultsResponseBodyData
 from ._describe_mv_recommend_sub_tasks_response_body import DescribeMvRecommendSubTasksResponseBodyData
@@ -939,6 +994,8 @@ from ._describe_performance_view_attribute_response_body import DescribePerforma
 from ._describe_performance_view_attribute_response_body import DescribePerformanceViewAttributeResponseBodyViewDetailCategories
 from ._describe_performance_view_attribute_response_body import DescribePerformanceViewAttributeResponseBodyViewDetail
 from ._describe_performance_views_response_body import DescribePerformanceViewsResponseBodyViews
+from ._describe_process_list_response_body import DescribeProcessListResponseBodyItemsProcess
+from ._describe_process_list_response_body import DescribeProcessListResponseBodyItems
 from ._describe_regions_response_body import DescribeRegionsResponseBodyRegionsRegionZonesZone
 from ._describe_regions_response_body import DescribeRegionsResponseBodyRegionsRegionZones
 from ._describe_regions_response_body import DescribeRegionsResponseBodyRegionsRegion
@@ -977,9 +1034,11 @@ from ._describe_worker_detection_response_body import DescribeWorkerDetectionRes
 from ._describe_worker_detection_response_body import DescribeWorkerDetectionResponseBodyDetectionItemsResults
 from ._describe_worker_detection_response_body import DescribeWorkerDetectionResponseBodyDetectionItems
 from ._execute_spark_repl_statement_response_body import ExecuteSparkReplStatementResponseBodyData
+from ._generate_sql_by_semantic_sql_response_body import GenerateSqlBySemanticSqlResponseBodyData
 from ._get_adbspark_necessary_rampermissions_response_body import GetADBSparkNecessaryRAMPermissionsResponseBodyDataDeniedDetail
 from ._get_adbspark_necessary_rampermissions_response_body import GetADBSparkNecessaryRAMPermissionsResponseBodyData
 from ._get_database_objects_response_body import GetDatabaseObjectsResponseBodyData
+from ._get_knowledge_recall_response_body import GetKnowledgeRecallResponseBodyData
 from ._get_lake_storage_response_body import GetLakeStorageResponseBodyDataPermissions
 from ._get_lake_storage_response_body import GetLakeStorageResponseBodyData
 from ._get_spark_app_attempt_log_response_body import GetSparkAppAttemptLogResponseBodyData
@@ -997,15 +1056,12 @@ from ._get_table_columns_response_body import GetTableColumnsResponseBodyData
 from ._get_table_objects_response_body import GetTableObjectsResponseBodyData
 from ._get_view_objects_response_body import GetViewObjectsResponseBodyData
 from ._kill_spark_app_response_body import KillSparkAppResponseBodyData
-from ._list_aps_lifecycle_strategy_response_body import ListApsLifecycleStrategyResponseBodyItemsOperationTables
-from ._list_aps_lifecycle_strategy_response_body import ListApsLifecycleStrategyResponseBodyItems
-from ._list_aps_optimization_strategy_response_body import ListApsOptimizationStrategyResponseBodyData
-from ._list_aps_optimization_tasks_response_body import ListApsOptimizationTasksResponseBodyItems
 from ._list_aps_webhook_response_body import ListApsWebhookResponseBodyWebhook
 from ._list_lake_storages_response_body import ListLakeStoragesResponseBodyItemsPermissions
 from ._list_lake_storages_response_body import ListLakeStoragesResponseBodyItems
 from ._list_result_export_job_history_request import ListResultExportJobHistoryRequestOrder
 from ._list_result_export_job_history_response_body import ListResultExportJobHistoryResponseBodyItems
+from ._list_semantic_view_names_response_body import ListSemanticViewNamesResponseBodyData
 from ._list_spark_app_attempts_response_body import ListSparkAppAttemptsResponseBodyData
 from ._list_spark_apps_response_body import ListSparkAppsResponseBodyData
 from ._list_spark_log_analyze_tasks_response_body import ListSparkLogAnalyzeTasksResponseBodyData
@@ -1021,6 +1077,7 @@ from ._modify_aps_datasoure_request import ModifyApsDatasoureRequestPolarDBMysql
 from ._modify_aps_datasoure_request import ModifyApsDatasoureRequestRdsMysqlInfo
 from ._modify_aps_datasoure_request import ModifyApsDatasoureRequestSlsInfo
 from ._modify_aps_sls_adbjob_request import ModifyApsSlsADBJobRequestColumns
+from ._modify_dbresource_group_request import ModifyDBResourceGroupRequestAtmConfig
 from ._modify_dbresource_group_request import ModifyDBResourceGroupRequestGpuElasticPlanRules
 from ._modify_dbresource_group_request import ModifyDBResourceGroupRequestGpuElasticPlan
 from ._modify_dbresource_group_request import ModifyDBResourceGroupRequestRayConfigAppConfigImageSelector
@@ -1035,6 +1092,8 @@ from ._modify_performance_view_request import ModifyPerformanceViewRequestViewDe
 from ._modify_performance_view_request import ModifyPerformanceViewRequestViewDetail
 from ._preload_spark_app_metrics_response_body import PreloadSparkAppMetricsResponseBodyDataScanMetrics
 from ._preload_spark_app_metrics_response_body import PreloadSparkAppMetricsResponseBodyData
+from ._query_formation_insts_by_task_idresponse_body import QueryFormationInstsByTaskIDResponseBodyData
+from ._query_formation_tasks_by_type_response_body import QueryFormationTasksByTypeResponseBodyData
 from ._set_spark_app_log_root_path_response_body import SetSparkAppLogRootPathResponseBodyData
 from ._start_spark_repl_session_response_body import StartSparkReplSessionResponseBodyData
 from ._start_spark_sqlengine_response_body import StartSparkSQLEngineResponseBodyData
@@ -1046,6 +1105,7 @@ from ._update_lake_storage_response_body import UpdateLakeStorageResponseBodyDat
 from ._update_spark_template_file_response_body import UpdateSparkTemplateFileResponseBodyData
 
 __all__ = [
+    AccessTokenModel,
     Adb4MysqlSparkDiagnosisInfo,
     ColDetailModel,
     CstoreIndexModel,
@@ -1055,6 +1115,7 @@ __all__ = [
     Filters,
     LogAnalyzeResult,
     OperatorNode,
+    SemanticViewModel,
     SerDeInfoModel,
     SparkAnalyzeLogTask,
     SparkAppInfo,
@@ -1069,12 +1130,16 @@ __all__ = [
     TableDetailModel,
     TableModel,
     TableSummaryModel,
+    UserSummaryModel,
     OpenStructMVRecommendResultModel,
     OpenStructMvBaseTableDetailModel,
     OpenStructMvDetailModel,
     OpenStructMvRecommendSubTaskModel,
     OpenStructMvRecommendTaskModel,
     OpenStructRefreshJobModel,
+    AddKnowledgeFileRequest,
+    AddKnowledgeFileResponseBody,
+    AddKnowledgeFileResponse,
     AllocateClusterPublicConnectionRequest,
     AllocateClusterPublicConnectionResponseBody,
     AllocateClusterPublicConnectionResponse,
@@ -1088,6 +1153,7 @@ __all__ = [
     BatchApplyAdviceByIdListResponseBody,
     BatchApplyAdviceByIdListResponse,
     BindAccountRequest,
+    BindAccountShrinkRequest,
     BindAccountResponseBody,
     BindAccountResponse,
     BindDBResourceGroupWithUserRequest,
@@ -1102,6 +1168,9 @@ __all__ = [
     CheckBindRamUserRequest,
     CheckBindRamUserResponseBody,
     CheckBindRamUserResponse,
+    CheckFormationSchemaExistsRequest,
+    CheckFormationSchemaExistsResponseBody,
+    CheckFormationSchemaExistsResponse,
     CheckSampleDataSetRequest,
     CheckSampleDataSetResponseBody,
     CheckSampleDataSetResponse,
@@ -1113,6 +1182,7 @@ __all__ = [
     CreateAPSJobResponseBody,
     CreateAPSJobResponse,
     CreateAccountRequest,
+    CreateAccountShrinkRequest,
     CreateAccountResponseBody,
     CreateAccountResponse,
     CreateApsCopyWorkloadRequest,
@@ -1150,6 +1220,9 @@ __all__ = [
     CreateElasticPlanRequest,
     CreateElasticPlanResponseBody,
     CreateElasticPlanResponse,
+    CreateFormationCrawlerRequest,
+    CreateFormationCrawlerResponseBody,
+    CreateFormationCrawlerResponse,
     CreateLakeStorageRequest,
     CreateLakeStorageShrinkRequest,
     CreateLakeStorageResponseBody,
@@ -1164,6 +1237,9 @@ __all__ = [
     CreatePerformanceViewShrinkRequest,
     CreatePerformanceViewResponseBody,
     CreatePerformanceViewResponse,
+    CreateSemanticViewRequest,
+    CreateSemanticViewResponseBody,
+    CreateSemanticViewResponse,
     CreateSparkTemplateRequest,
     CreateSparkTemplateResponseBody,
     CreateSparkTemplateResponse,
@@ -1191,6 +1267,9 @@ __all__ = [
     DeleteElasticPlanRequest,
     DeleteElasticPlanResponseBody,
     DeleteElasticPlanResponse,
+    DeleteFormationCrawlerRequest,
+    DeleteFormationCrawlerResponseBody,
+    DeleteFormationCrawlerResponse,
     DeleteLakeStorageRequest,
     DeleteLakeStorageResponseBody,
     DeleteLakeStorageResponse,
@@ -1200,6 +1279,9 @@ __all__ = [
     DeletePerformanceViewRequest,
     DeletePerformanceViewResponseBody,
     DeletePerformanceViewResponse,
+    DeleteSemanticViewRequest,
+    DeleteSemanticViewResponseBody,
+    DeleteSemanticViewResponse,
     DeleteSparkTemplateRequest,
     DeleteSparkTemplateResponseBody,
     DeleteSparkTemplateResponse,
@@ -1396,12 +1478,6 @@ __all__ = [
     DescribeKernelVersionRequest,
     DescribeKernelVersionResponseBody,
     DescribeKernelVersionResponse,
-    DescribeLLMAnswerRequest,
-    DescribeLLMAnswerResponseBody,
-    DescribeLLMAnswerResponse,
-    DescribeLLMSimilarQuestionsRequest,
-    DescribeLLMSimilarQuestionsResponseBody,
-    DescribeLLMSimilarQuestionsResponse,
     DescribeLakeCacheSizeRequest,
     DescribeLakeCacheSizeResponseBody,
     DescribeLakeCacheSizeResponse,
@@ -1429,6 +1505,9 @@ __all__ = [
     DescribePerformanceViewsRequest,
     DescribePerformanceViewsResponseBody,
     DescribePerformanceViewsResponse,
+    DescribeProcessListRequest,
+    DescribeProcessListResponseBody,
+    DescribeProcessListResponse,
     DescribeRegionsRequest,
     DescribeRegionsResponseBody,
     DescribeRegionsResponse,
@@ -1531,21 +1610,30 @@ __all__ = [
     ExistRunningSQLEngineRequest,
     ExistRunningSQLEngineResponseBody,
     ExistRunningSQLEngineResponse,
+    GenerateSqlBySemanticSqlRequest,
+    GenerateSqlBySemanticSqlResponseBody,
+    GenerateSqlBySemanticSqlResponse,
     GetADBSparkNecessaryRAMPermissionsRequest,
     GetADBSparkNecessaryRAMPermissionsResponseBody,
     GetADBSparkNecessaryRAMPermissionsResponse,
-    GetApsManagedDatabasesRequest,
-    GetApsManagedDatabasesResponseBody,
-    GetApsManagedDatabasesResponse,
     GetCreateTableSQLRequest,
     GetCreateTableSQLResponseBody,
     GetCreateTableSQLResponse,
     GetDatabaseObjectsRequest,
     GetDatabaseObjectsResponseBody,
     GetDatabaseObjectsResponse,
+    GetFormationCrawlerRequest,
+    GetFormationCrawlerResponseBody,
+    GetFormationCrawlerResponse,
+    GetKnowledgeRecallRequest,
+    GetKnowledgeRecallResponseBody,
+    GetKnowledgeRecallResponse,
     GetLakeStorageRequest,
     GetLakeStorageResponseBody,
     GetLakeStorageResponse,
+    GetSemanticViewRequest,
+    GetSemanticViewResponseBody,
+    GetSemanticViewResponse,
     GetSparkAppAttemptLogRequest,
     GetSparkAppAttemptLogResponseBody,
     GetSparkAppAttemptLogResponse,
@@ -1624,15 +1712,6 @@ __all__ = [
     KillSparkSQLEngineRequest,
     KillSparkSQLEngineResponseBody,
     KillSparkSQLEngineResponse,
-    ListApsLifecycleStrategyRequest,
-    ListApsLifecycleStrategyResponseBody,
-    ListApsLifecycleStrategyResponse,
-    ListApsOptimizationStrategyRequest,
-    ListApsOptimizationStrategyResponseBody,
-    ListApsOptimizationStrategyResponse,
-    ListApsOptimizationTasksRequest,
-    ListApsOptimizationTasksResponseBody,
-    ListApsOptimizationTasksResponse,
     ListApsWebhookRequest,
     ListApsWebhookResponseBody,
     ListApsWebhookResponse,
@@ -1643,6 +1722,9 @@ __all__ = [
     ListResultExportJobHistoryShrinkRequest,
     ListResultExportJobHistoryResponseBody,
     ListResultExportJobHistoryResponse,
+    ListSemanticViewNamesRequest,
+    ListSemanticViewNamesResponseBody,
+    ListSemanticViewNamesResponse,
     ListSparkAppAttemptsRequest,
     ListSparkAppAttemptsResponseBody,
     ListSparkAppAttemptsResponse,
@@ -1700,9 +1782,6 @@ __all__ = [
     ModifyClusterAccessWhiteListRequest,
     ModifyClusterAccessWhiteListResponseBody,
     ModifyClusterAccessWhiteListResponse,
-    ModifyClusterConnectionStringRequest,
-    ModifyClusterConnectionStringResponseBody,
-    ModifyClusterConnectionStringResponse,
     ModifyCompactionServiceSwitchRequest,
     ModifyCompactionServiceSwitchResponseBody,
     ModifyCompactionServiceSwitchResponse,
@@ -1756,27 +1835,54 @@ __all__ = [
     PreloadSparkAppMetricsRequest,
     PreloadSparkAppMetricsResponseBody,
     PreloadSparkAppMetricsResponse,
+    QueryFormationInstsByTaskIDRequest,
+    QueryFormationInstsByTaskIDResponseBody,
+    QueryFormationInstsByTaskIDResponse,
+    QueryFormationTaskByIDRequest,
+    QueryFormationTaskByIDResponseBody,
+    QueryFormationTaskByIDResponse,
+    QueryFormationTasksByTypeRequest,
+    QueryFormationTasksByTypeResponseBody,
+    QueryFormationTasksByTypeResponse,
     ReleaseClusterPublicConnectionRequest,
     ReleaseClusterPublicConnectionResponseBody,
     ReleaseClusterPublicConnectionResponse,
+    RenameSemanticViewRequest,
+    RenameSemanticViewResponseBody,
+    RenameSemanticViewResponse,
+    ReplaceSemanticViewRequest,
+    ReplaceSemanticViewResponseBody,
+    ReplaceSemanticViewResponse,
     ResetAccountPasswordRequest,
     ResetAccountPasswordResponseBody,
     ResetAccountPasswordResponse,
     RevokeOperatorPermissionRequest,
     RevokeOperatorPermissionResponseBody,
     RevokeOperatorPermissionResponse,
+    RunMaterializedViewRecommendRequest,
+    RunMaterializedViewRecommendResponseBody,
+    RunMaterializedViewRecommendResponse,
+    SearchSemanticViewsRequest,
+    SearchSemanticViewsResponseBody,
+    SearchSemanticViewsResponse,
     SetSparkAppLogRootPathRequest,
     SetSparkAppLogRootPathResponseBody,
     SetSparkAppLogRootPathResponse,
     StartApsJobRequest,
     StartApsJobResponseBody,
     StartApsJobResponse,
+    StartFormationCrawlerRequest,
+    StartFormationCrawlerResponseBody,
+    StartFormationCrawlerResponse,
     StartSparkReplSessionRequest,
     StartSparkReplSessionResponseBody,
     StartSparkReplSessionResponse,
     StartSparkSQLEngineRequest,
     StartSparkSQLEngineResponseBody,
     StartSparkSQLEngineResponse,
+    StopFormationCrawlerRequest,
+    StopFormationCrawlerResponseBody,
+    StopFormationCrawlerResponse,
     SubmitResultExportJobRequest,
     SubmitResultExportJobResponseBody,
     SubmitResultExportJobResponse,
@@ -1799,6 +1905,12 @@ __all__ = [
     UpdateApsWebhookShrinkRequest,
     UpdateApsWebhookResponseBody,
     UpdateApsWebhookResponse,
+    UpdateFormationCrawlerRequest,
+    UpdateFormationCrawlerResponseBody,
+    UpdateFormationCrawlerResponse,
+    UpdateFormationCrawlerScheduleStateRequest,
+    UpdateFormationCrawlerScheduleStateResponseBody,
+    UpdateFormationCrawlerScheduleStateResponse,
     UpdateLakeStorageRequest,
     UpdateLakeStorageShrinkRequest,
     UpdateLakeStorageResponseBody,
@@ -1832,6 +1944,7 @@ __all__ = [
     CreateApsSlsADBJobRequestUnixTimestampConvert,
     CreateApsWebhookRequestWebhook,
     CreateDBClusterRequestTag,
+    CreateDBResourceGroupRequestAtmConfig,
     CreateDBResourceGroupRequestGpuElasticPlanRules,
     CreateDBResourceGroupRequestGpuElasticPlan,
     CreateDBResourceGroupRequestRayConfigWorkerGroups,
@@ -1854,6 +1967,7 @@ __all__ = [
     DescribeAccountPrivilegeObjectsResponseBodyData,
     DescribeAccountPrivilegesResponseBodyDataPrivilegeObject,
     DescribeAccountPrivilegesResponseBodyData,
+    DescribeAccountsResponseBodyAccountListDBAccountRamUserList,
     DescribeAccountsResponseBodyAccountListDBAccount,
     DescribeAccountsResponseBodyAccountList,
     DescribeAdbMySqlColumnsResponseBodyColumns,
@@ -1931,6 +2045,7 @@ __all__ = [
     DescribeDBClustersResponseBodyItemsDBClusterTaskInfo,
     DescribeDBClustersResponseBodyItemsDBCluster,
     DescribeDBClustersResponseBodyItems,
+    DescribeDBResourceGroupResponseBodyGroupsInfoAtmConfig,
     DescribeDBResourceGroupResponseBodyGroupsInfoGpuElasticPlanRules,
     DescribeDBResourceGroupResponseBodyGroupsInfoGpuElasticPlan,
     DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigAppConfigImageSelector,
@@ -1970,7 +2085,6 @@ __all__ = [
     DescribeJobResourceUsageResponseBodyDataJobAcuUsage,
     DescribeJobResourceUsageResponseBodyData,
     DescribeKernelVersionResponseBodyAvailableKernelVersions,
-    DescribeLLMSimilarQuestionsResponseBodyItems,
     DescribeLakeCacheSizeResponseBodyData,
     DescribeMVRecommendResultsResponseBodyData,
     DescribeMvRecommendSubTasksResponseBodyData,
@@ -1983,6 +2097,8 @@ __all__ = [
     DescribePerformanceViewAttributeResponseBodyViewDetailCategories,
     DescribePerformanceViewAttributeResponseBodyViewDetail,
     DescribePerformanceViewsResponseBodyViews,
+    DescribeProcessListResponseBodyItemsProcess,
+    DescribeProcessListResponseBodyItems,
     DescribeRegionsResponseBodyRegionsRegionZonesZone,
     DescribeRegionsResponseBodyRegionsRegionZones,
     DescribeRegionsResponseBodyRegionsRegion,
@@ -2021,9 +2137,11 @@ __all__ = [
     DescribeWorkerDetectionResponseBodyDetectionItemsResults,
     DescribeWorkerDetectionResponseBodyDetectionItems,
     ExecuteSparkReplStatementResponseBodyData,
+    GenerateSqlBySemanticSqlResponseBodyData,
     GetADBSparkNecessaryRAMPermissionsResponseBodyDataDeniedDetail,
     GetADBSparkNecessaryRAMPermissionsResponseBodyData,
     GetDatabaseObjectsResponseBodyData,
+    GetKnowledgeRecallResponseBodyData,
     GetLakeStorageResponseBodyDataPermissions,
     GetLakeStorageResponseBodyData,
     GetSparkAppAttemptLogResponseBodyData,
@@ -2041,15 +2159,12 @@ __all__ = [
     GetTableObjectsResponseBodyData,
     GetViewObjectsResponseBodyData,
     KillSparkAppResponseBodyData,
-    ListApsLifecycleStrategyResponseBodyItemsOperationTables,
-    ListApsLifecycleStrategyResponseBodyItems,
-    ListApsOptimizationStrategyResponseBodyData,
-    ListApsOptimizationTasksResponseBodyItems,
     ListApsWebhookResponseBodyWebhook,
     ListLakeStoragesResponseBodyItemsPermissions,
     ListLakeStoragesResponseBodyItems,
     ListResultExportJobHistoryRequestOrder,
     ListResultExportJobHistoryResponseBodyItems,
+    ListSemanticViewNamesResponseBodyData,
     ListSparkAppAttemptsResponseBodyData,
     ListSparkAppsResponseBodyData,
     ListSparkLogAnalyzeTasksResponseBodyData,
@@ -2065,6 +2180,7 @@ __all__ = [
     ModifyApsDatasoureRequestRdsMysqlInfo,
     ModifyApsDatasoureRequestSlsInfo,
     ModifyApsSlsADBJobRequestColumns,
+    ModifyDBResourceGroupRequestAtmConfig,
     ModifyDBResourceGroupRequestGpuElasticPlanRules,
     ModifyDBResourceGroupRequestGpuElasticPlan,
     ModifyDBResourceGroupRequestRayConfigAppConfigImageSelector,
@@ -2079,6 +2195,8 @@ __all__ = [
     ModifyPerformanceViewRequestViewDetail,
     PreloadSparkAppMetricsResponseBodyDataScanMetrics,
     PreloadSparkAppMetricsResponseBodyData,
+    QueryFormationInstsByTaskIDResponseBodyData,
+    QueryFormationTasksByTypeResponseBodyData,
     SetSparkAppLogRootPathResponseBodyData,
     StartSparkReplSessionResponseBodyData,
     StartSparkSQLEngineResponseBodyData,

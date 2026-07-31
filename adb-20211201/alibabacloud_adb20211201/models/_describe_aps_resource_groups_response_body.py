@@ -16,21 +16,23 @@ class DescribeApsResourceGroupsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The queried resource groups.
+        # The information about the resource groups.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The returned message.
+        # Additional information about the call. Valid values:
         # 
-        # *   If the request was successful, a success message is returned.
-        # *   If the request failed, an error message is returned.
+        # - Success is returned if the request is successful.
+        # 
+        # - An error code is returned if the request fails.
         self.message = message
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **True**
+        # 
+        # - **False**
         self.success = success
 
     def validate(self):
@@ -85,12 +87,13 @@ class DescribeApsResourceGroupsResponseBodyData(DaraModel):
         resource_groups: List[main_models.DescribeApsResourceGroupsResponseBodyDataResourceGroups] = None,
         step: int = None,
     ):
-        # The queried resource groups.
+        # The resource groups.
         self.resource_groups = resource_groups
-        # The step size of resources. Unit: AnalyticDB compute units (ACUs).
+        # The step size of the resource group, in ACU.
         # 
-        # *   If the value of GroupType is **Interactive**, 16 is returned.
-        # *   If the value of GroupType is **Job**, 8 is returned.
+        # - If GroupType is **Interactive**, the step size is 16 ACU.
+        # 
+        # - If GroupType is **Job**, the step size is 8 ACU.
         self.step = step
 
     def validate(self):
@@ -140,30 +143,35 @@ class DescribeApsResourceGroupsResponseBodyDataResourceGroups(DaraModel):
     ):
         # Indicates whether the resource group is available. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **True**
+        # 
+        # - **False**
         self.available = available
+        # The resource gradient values.
         self.cu_options = cu_options
         # The name of the resource group.
         self.group_name = group_name
         # The type of the resource group. Valid values:
         # 
-        # *   **Interactive**
-        # *   **Job**
+        # - **Interactive**
         # 
-        # >  For more information about resource groups, see [Resource groups](https://help.aliyun.com/document_detail/428610.html).
+        # - **Job**
+        # 
+        # > For more information about resource groups in Data Lakehouse Edition, see [Resource groups](https://help.aliyun.com/document_detail/428610.html).
         self.group_type = group_type
-        # The amount of remaining computing resources. Unit: ACUs.
+        # The remaining computing resources, in ACU.
         self.left_compute_resource = left_compute_resource
-        # The maximum amount of reserved computing resources. Unit: ACUs.
+        # The maximum reserved computing resources, in ACU.
         # 
-        # *   If the value of GroupType is **Interactive**, the amount of reserved computing resources that are not allocated in the cluster is returned in increments of 16 ACUs.
-        # *   If the value of GroupType is **Job**, the amount of reserved computing resources that are not allocated in the cluster is returned in increments of 8 ACUs.
+        # - If GroupType is **Interactive**, the maximum reserved computing resources are the current unallocated resources of the cluster, and the step size is 16 ACU.
+        # 
+        # - If GroupType is **Job**, the maximum reserved computing resources are the current unallocated resources of the cluster, and the step size is 8 ACU.
         self.max_compute_resource = max_compute_resource
-        # The minimum amount of reserved computing resources. Unit: ACUs.
+        # The minimum reserved computing resources, in ACU.
         # 
-        # *   If the value of GroupType is **Interactive**, 16 is returned.
-        # *   If the value of GroupType is **Job**, 0 is returned.
+        # - If GroupType is **Interactive**, the minimum reserved computing resources are 16 ACU.
+        # 
+        # - If GroupType is **Job**, the minimum reserved computing resources are 0 ACU.
         self.min_compute_resource = min_compute_resource
 
     def validate(self):

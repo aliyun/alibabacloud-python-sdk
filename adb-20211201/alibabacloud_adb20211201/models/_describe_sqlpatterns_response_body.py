@@ -17,17 +17,17 @@ class DescribeSQLPatternsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The details about the access denial. This parameter is returned only if Resource Access Management (RAM) permission verification failed.
+        # Details about the access denial. This parameter is returned only if RAM authentication fails.
         self.access_denied_detail = access_denied_detail
         # The page number.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The queried SQL patterns.
+        # A list of SQL patterns.
         self.pattern_details = pattern_details
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -123,58 +123,73 @@ class DescribeSQLPatternsResponseBodyPatternDetails(DaraModel):
         tables: str = None,
         user: str = None,
     ):
-        # The IP address of the SQL client that commits the SQL pattern.
+        # The client IP address used to submit the queries.
         self.access_ip = access_ip
-        # The average execution duration of the SQL pattern within the query time range. Unit: milliseconds.
+        # The average execution time of queries matching this pattern. Unit: milliseconds.
         self.average_execution_time = average_execution_time
+        # The average CPU cost for queries that match this pattern. Unit: milliseconds.
         self.average_operator_cost = average_operator_cost
-        # The average peak memory usage of the SQL pattern within the query time range. Unit: bytes.
+        # The average peak memory usage of queries matching this pattern. Unit: bytes.
         self.average_peak_memory = average_peak_memory
-        # The average total amount of time consumed by the SQL pattern within the query time range. Unit: milliseconds.
+        # The average duration of queries matching this pattern. Unit: milliseconds.
         self.average_query_time = average_query_time
+        # The average scan time for queries that match this pattern. Unit: milliseconds.
         self.average_scan_cost = average_scan_cost
-        # The average amount of data scanned based on the SQL pattern within the query time range. Unit: bytes.
+        # The average amount of data scanned by queries matching this pattern. Unit: bytes.
         self.average_scan_size = average_scan_size
-        # Indicates whether the execution of the SQL pattern can be intercepted. Valid values:
+        # Indicates whether queries that match this pattern can be blocked. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The queries can be blocked.
         # 
-        # >  Only SELECT and INSERT statements can be intercepted.
+        # - **false**: The queries cannot be blocked.
+        # 
+        # > Currently, AnalyticDB for MySQL allows you to block only SELECT and INSERT statements.
         self.blockable = blockable
-        # The number of failed queries executed in association with the SQL pattern within the query time range.
+        # The number of failed queries that match this pattern.
         self.failed_count = failed_count
-        # The maximum execution duration of the SQL pattern within the query time range. Unit: milliseconds.
+        # The maximum execution time of a query matching this pattern. Unit: milliseconds.
         self.max_execution_time = max_execution_time
+        # The maximum CPU cost for a query that matches this pattern. Unit: milliseconds.
         self.max_operator_cost = max_operator_cost
-        # The maximum peak memory usage of the SQL pattern within the query time range. Unit: bytes.
+        # The maximum peak memory usage of a query matching this pattern. Unit: bytes.
         self.max_peak_memory = max_peak_memory
-        # The maximum total amount of time consumed by the SQL pattern within the query time range. Unit: milliseconds.
+        # The maximum duration of a query matching this pattern. Unit: milliseconds.
         self.max_query_time = max_query_time
+        # The maximum scan time for a query that matches this pattern. Unit: milliseconds.
         self.max_scan_cost = max_scan_cost
-        # The maximum amount of data scanned based on the SQL pattern within the query time range. Unit: bytes.
+        # The maximum amount of data scanned by a query matching this pattern. Unit: bytes.
         self.max_scan_size = max_scan_size
+        # The total CPU cost of queries matching this pattern as a percentage of the total CPU cost for all queries. Unit: %.
         self.operator_cost_percentage = operator_cost_percentage
+        # The total CPU cost for all queries that match this pattern. Unit: milliseconds.
         self.operator_cost_sum = operator_cost_sum
-        # The earliest commit time of the SQL pattern within the query time range.
+        # The submission time of the first query that matches this pattern within the specified time range.
         self.pattern_creation_time = pattern_creation_time
         # The ID of the SQL pattern.
         self.pattern_id = pattern_id
+        # The total peak memory usage of queries matching this pattern as a percentage of the total peak memory usage for all queries. Unit: %.
         self.peak_memory_percentage = peak_memory_percentage
+        # The sum of the peak memory usage for all queries that match this pattern. Unit: bytes.
         self.peak_memory_sum = peak_memory_sum
-        # The number of queries executed in association with the SQL pattern within the query time range.
+        # The number of executed queries that match this pattern.
         self.query_count = query_count
+        # The total query time of queries matching this pattern as a percentage of the total query time for all queries. Unit: %.
         self.query_time_percentage = query_time_percentage
+        # The total query duration for all queries that match this pattern. Unit: milliseconds.
         self.query_time_sum = query_time_sum
-        # The statement of the SQL pattern.
+        # The SQL pattern.
         self.sqlpattern = sqlpattern
+        # The total scan cost of queries matching this pattern as a percentage of the total scan cost for all queries. Unit: %.
         self.scan_cost_percentage = scan_cost_percentage
+        # The total scan cost for all queries that match this pattern. Unit: milliseconds.
         self.scan_cost_sum = scan_cost_sum
+        # The total amount of data scanned by queries matching this pattern as a percentage of the total data scanned by all queries. Unit: %.
         self.scan_size_percentage = scan_size_percentage
+        # The total amount of data scanned by all queries that match this pattern. Unit: bytes.
         self.scan_size_sum = scan_size_sum
-        # The tables scanned based on the SQL pattern.
+        # The tables scanned by the SQL pattern.
         self.tables = tables
-        # The name of the database account that is used to commit the SQL pattern.
+        # The name of the database user who submitted the matching SQL statements.
         self.user = user
 
     def validate(self):

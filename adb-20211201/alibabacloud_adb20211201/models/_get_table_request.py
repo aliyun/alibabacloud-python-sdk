@@ -12,17 +12,17 @@ class GetTableRequest(DaraModel):
         region_id: str = None,
         table_name: str = None,
     ):
-        # The ID of the cluster.
+        # The cluster ID.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The name of the database.
+        # The database name.
         self.db_name = db_name
-        # The ID of the region in which the cluster resides.
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The name of the table.
+        # The table name to query.
         self.table_name = table_name
 
     def validate(self):

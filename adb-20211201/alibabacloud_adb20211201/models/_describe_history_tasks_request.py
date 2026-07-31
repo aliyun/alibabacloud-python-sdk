@@ -11,12 +11,10 @@ class DescribeHistoryTasksRequest(DaraModel):
         from_start_time: str = None,
         instance_id: str = None,
         instance_type: str = None,
-        owner_id: int = None,
         page_number: int = None,
         page_size: int = None,
         region_id: str = None,
         resource_group_id: str = None,
-        resource_owner_id: int = None,
         status: str = None,
         task_id: str = None,
         task_type: str = None,
@@ -33,7 +31,6 @@ class DescribeHistoryTasksRequest(DaraModel):
         self.instance_id = instance_id
         # The instance type. The value is fixed to Instance.
         self.instance_type = instance_type
-        self.owner_id = owner_id
         # The number of the page to return. Valid range: positive integers. Default value: 1
         self.page_number = page_number
         # The number of entries per page. Valid values: 10 to 100. Default value: 10.
@@ -42,7 +39,6 @@ class DescribeHistoryTasksRequest(DaraModel):
         self.region_id = region_id
         # Resource group ID.
         self.resource_group_id = resource_group_id
-        self.resource_owner_id = resource_owner_id
         # The state of the task. Valid values:
         # 
         # *   **Scheduled**
@@ -86,9 +82,6 @@ class DescribeHistoryTasksRequest(DaraModel):
         if self.instance_type is not None:
             result['InstanceType'] = self.instance_type
 
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
 
@@ -100,9 +93,6 @@ class DescribeHistoryTasksRequest(DaraModel):
 
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
-
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
 
         if self.status is not None:
             result['Status'] = self.status
@@ -135,9 +125,6 @@ class DescribeHistoryTasksRequest(DaraModel):
         if m.get('InstanceType') is not None:
             self.instance_type = m.get('InstanceType')
 
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
 
@@ -149,9 +136,6 @@ class DescribeHistoryTasksRequest(DaraModel):
 
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
-
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
 
         if m.get('Status') is not None:
             self.status = m.get('Status')

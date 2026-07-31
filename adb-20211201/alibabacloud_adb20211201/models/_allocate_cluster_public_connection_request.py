@@ -10,21 +10,26 @@ class AllocateClusterPublicConnectionRequest(DaraModel):
         connection_string_prefix: str = None,
         dbcluster_id: str = None,
         engine: str = None,
+        resource_group_name: str = None,
     ):
-        # The prefix of the public endpoint.
+        # The prefix of the public connection address.
         # 
-        # *   The prefix can contain lowercase letters, digits, and hyphens (-). It must start with a lowercase letter.
-        # *   The prefix can be up to 30 characters in length.
+        # - It must begin with a lowercase letter and can contain only lowercase letters, digits, and hyphens (-).
+        # 
+        # - It must be no more than 30 characters long.
         self.connection_string_prefix = connection_string_prefix
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
+        # <props="china">The cluster ID of an Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
+        # <props="intl">The cluster ID of a Data Lakehouse Edition cluster.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The database engine of the cluster. Valid values:
+        # The database engine. Valid values:
         # 
-        # *   **AnalyticDB** (default): the AnalyticDB for MySQL engine.
-        # *   **Clickhouse**: the wide table engine.
+        # - **AnalyticDB** (default): the AnalyticDB for MySQL engine.
+        # 
+        # - **Clickhouse**: the wide table engine.
         self.engine = engine
+        self.resource_group_name = resource_group_name
 
     def validate(self):
         pass
@@ -43,6 +48,9 @@ class AllocateClusterPublicConnectionRequest(DaraModel):
         if self.engine is not None:
             result['Engine'] = self.engine
 
+        if self.resource_group_name is not None:
+            result['ResourceGroupName'] = self.resource_group_name
+
         return result
 
     def from_map(self, m: dict = None):
@@ -55,6 +63,9 @@ class AllocateClusterPublicConnectionRequest(DaraModel):
 
         if m.get('Engine') is not None:
             self.engine = m.get('Engine')
+
+        if m.get('ResourceGroupName') is not None:
+            self.resource_group_name = m.get('ResourceGroupName')
 
         return self
 

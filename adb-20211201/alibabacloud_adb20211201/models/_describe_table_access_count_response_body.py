@@ -16,7 +16,7 @@ class DescribeTableAccessCountResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The queried tables.
+        # The table usage details.
         self.items = items
         # The page number.
         self.page_number = page_number
@@ -88,13 +88,13 @@ class DescribeTableAccessCountResponseBodyItems(DaraModel):
         table_name: str = None,
         table_schema: str = None,
     ):
-        # The number of accesses to the table.
+        # The number of times the table was accessed.
         self.access_count = access_count
-        # The ID of the cluster to which the table belongs.
+        # The cluster ID of the cluster to which the table belongs.
         self.instance_name = instance_name
-        # The date when the table was accessed.
+        # The date on which the table was used.
         self.report_date = report_date
-        # The name of the table.
+        # The table name.
         self.table_name = table_name
         # The database to which the table belongs.
         self.table_schema = table_schema

@@ -26,35 +26,35 @@ class CreateApsDatasoureRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The information about the Databricks data source.
+        # The Databricks data source information.
         self.databricks_info = databricks_info
-        # The description of the data source.
+        # The data source description.
         self.datasource_description = datasource_description
-        # The name of the data source.
+        # The data source name.
         # 
         # This parameter is required.
         self.datasource_name = datasource_name
-        # The type of the data source.
+        # The data source type.
         # 
         # This parameter is required.
         self.datasource_type = datasource_type
-        # The information about the Hive data source.
+        # The Hive data source information.
         self.hive_info = hive_info
-        # The information about the source Apache Kafka instance.
+        # The Kafka information.
         self.kafka_info = kafka_info
         # The mode.
         self.mode = mode
-        # The information about the source PolarDB for MySQL cluster.
+        # The PolarDB for MySQL data source information.
         self.polar_dbmysql_info = polar_dbmysql_info
-        # The information about the source PolarDB-X instance.
+        # The PolarDB-X data source information.
         self.polar_dbxinfo = polar_dbxinfo
-        # The information about the source ApsaraDB RDS for MySQL instance.
+        # The ApsaraDB RDS for MySQL data source information.
         self.rds_mysql_info = rds_mysql_info
         # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The information about the source Simple Log Service (SLS) instance or cluster.
+        # The Simple Log Service (SLS) information for the data source to be created.
         self.sls_info = sls_info
 
     def validate(self):
@@ -179,17 +179,17 @@ class CreateApsDatasoureRequestSlsInfo(DaraModel):
         source_region_id: str = None,
         store: str = None,
     ):
-        # Specifies whether the data source is a cross-account resource.
+        # Specifies whether cross-account access is enabled.
         self.across = across
-        # The name of the cross-account role.
+        # The role name for cross-account access.
         self.across_role = across_role
-        # The cross-account UID.
+        # The UID of the cross-account.
         self.across_uid = across_uid
-        # The SLS project.
+        # The Simple Log Service (SLS) project.
         self.project = project
-        # The region ID.
+        # The region ID of the source cluster.
         self.source_region_id = source_region_id
-        # The name of the SLS Logstore.
+        # sls logstore。
         self.store = store
 
     def validate(self):
@@ -252,17 +252,17 @@ class CreateApsDatasoureRequestRdsMysqlInfo(DaraModel):
         security_group: str = None,
         user_name: str = None,
     ):
-        # The URL used to connect to the read-only instance.
+        # The read-only instance endpoint.
         self.connect_url = connect_url
         # The instance ID.
         self.instance_id = instance_id
-        # The password of the database account of the instance.
+        # The password.
         self.password = password
         # The region ID.
         self.region_id = region_id
-        # The security group ID.
+        # The security group.
         self.security_group = security_group
-        # The name of the database account of the instance.
+        # The username.
         self.user_name = user_name
 
     def validate(self):
@@ -320,7 +320,7 @@ class CreateApsDatasoureRequestPolarDBXInfo(DaraModel):
         self,
         instance_id: str = None,
     ):
-        # The instance ID.
+        # The OceanBase cluster ID.
         self.instance_id = instance_id
 
     def validate(self):
@@ -356,16 +356,16 @@ class CreateApsDatasoureRequestPolarDBMysqlInfo(DaraModel):
         security_group: str = None,
         user_name: str = None,
     ):
-        # Specifies whether the data source is a cross-account resource. Valid values:
+        # Specifies whether cross-account access is enabled. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The current network instance is a cross-account resource.
+        # - **false**: The current network instance is a resource within the current account.
         self.across = across
-        # The name of the cross-account role.
+        # The cross-account role.
         self.across_role = across_role
-        # The cross-account UID.
+        # The UID of the cross-account.
         self.across_uid = across_uid
-        # The URL used to connect to the custom ApsaraDB RDS for MySQL instance.
+        # The custom RDS endpoint.
         self.connect_url = connect_url
         # The instance ID.
         self.instance_id = instance_id
@@ -373,9 +373,9 @@ class CreateApsDatasoureRequestPolarDBMysqlInfo(DaraModel):
         self.password = password
         # The region ID.
         self.region_id = region_id
-        # The security group ID.
+        # The security group.
         self.security_group = security_group
-        # The username used to access the instance.
+        # The username.
         self.user_name = user_name
 
     def validate(self):
@@ -452,9 +452,9 @@ class CreateApsDatasoureRequestKafkaInfo(DaraModel):
         kafka_cluster_id: str = None,
         kafka_topic: str = None,
     ):
-        # The ID of the Apache Kafka instance.
+        # The Kafka instance ID.
         self.kafka_cluster_id = kafka_cluster_id
-        # The topic of the Apache Kafka instance.
+        # The assigned Kafka topic name.
         self.kafka_topic = kafka_topic
 
     def validate(self):
@@ -492,13 +492,13 @@ class CreateApsDatasoureRequestHiveInfo(DaraModel):
         security_group: str = None,
         vswitch: str = None,
     ):
-        # The cluster ID.
+        # The instance ID.
         self.cluster_id = cluster_id
-        # The configuration of the host.
+        # The host configuration.
         self.host_config = host_config
-        # The URL of the Hive Metastore.
+        # The MetaStore endpoint.
         self.meta_store_uri = meta_store_uri
-        # The security group ID.
+        # The security group.
         self.security_group = security_group
         # The vSwitch ID.
         self.vswitch = vswitch
@@ -553,9 +553,9 @@ class CreateApsDatasoureRequestDatabricksInfo(DaraModel):
         access_token: str = None,
         workspace_url: str = None,
     ):
-        # The token that is used to access Databricks.
+        # The access token.
         self.access_token = access_token
-        # The URL of the workspace.
+        # The workspace URL.
         self.workspace_url = workspace_url
 
     def validate(self):

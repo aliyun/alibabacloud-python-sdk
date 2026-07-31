@@ -10,14 +10,17 @@ class CheckSampleDataSetResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The state of the built-in dataset. Valid values:
+        # The status of the built-in dataset. Valid values:
         # 
-        # *   **SUCCEED**: The dataset is loaded.
-        # *   **INIT**: The dataset is being loaded.
-        # *   **FAILED**: The dataset failed to be loaded.
-        # *   **UNINITIALIZED**: The dataset is not loaded.
+        # - **SUCCEED**: The dataset loaded successfully.
+        # 
+        # - **INIT**: Loading in progress.
+        # 
+        # - **FAILED**: Failed to load the dataset.
+        # 
+        # - **UNINITIALIZED**: Not loaded.
         self.status = status
 
     def validate(self):

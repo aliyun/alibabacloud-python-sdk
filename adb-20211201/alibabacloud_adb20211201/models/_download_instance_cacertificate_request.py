@@ -16,15 +16,14 @@ class DownloadInstanceCACertificateRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The database engine of the cluster. Valid values:
+        # The database engine. Valid values:
         # 
-        # *   **AnalyticDB** (default): the AnalyticDB for MySQL engine.
-        # *   **Clickhouse**: the wide table engine.
+        # - **AnalyticDB** (default): AnalyticDB for MySQL engine.
+        # - **Clickhouse**: wide table engine.
         self.engine = engine
         self.owner_id = owner_id
         # The region ID.
-        # 
-        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the supported regions and zones, including region IDs.
         self.region_id = region_id
 
     def validate(self):

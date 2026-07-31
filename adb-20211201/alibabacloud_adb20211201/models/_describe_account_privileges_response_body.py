@@ -16,15 +16,15 @@ class DescribeAccountPrivilegesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # Details of the permissions.
+        # A list of privilege details.
         self.data = data
-        # The page number of the returned page.
+        # The page number. This value matches the `PageNumber` input parameter.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page. This value matches the `PageSize` input parameter.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total count of privileges at the specified privilege level.
         self.total_count = total_count
 
     def validate(self):
@@ -86,11 +86,11 @@ class DescribeAccountPrivilegesResponseBodyData(DaraModel):
         privilege_type: str = None,
         privileges: List[str] = None,
     ):
-        # The objects on which the permission takes effect, including databases, tables, columns, and additional descriptions.
+        # The privilege object, which specifies the database, table, column, and description.
         self.privilege_object = privilege_object
-        # The permission level of the permission. Valid values: `Global`, `Database`, `Table`, and `Column`. You can call the `DescribeEnabledPrivileges` parameter to query the permission level of a specific permission.
+        # The privilege level. Valid values: `Global`, `Database`, `Table`, and `Column`. The `DescribeEnabledPrivileges` API returns this value.
         self.privilege_type = privilege_type
-        # The name of the permission. You can call the `DescribeEnabledPrivileges` operation to query the name of the permission.
+        # A list of privileges.
         self.privileges = privileges
 
     def validate(self):
@@ -135,13 +135,13 @@ class DescribeAccountPrivilegesResponseBodyDataPrivilegeObject(DaraModel):
         description: str = None,
         table: str = None,
     ):
-        # The name of the column.
+        # The column name.
         self.column = column
-        # The name of the database.
+        # The database name.
         self.database = database
-        # The description of the permission object.
+        # The description.
         self.description = description
-        # The name of the table.
+        # The table name.
         self.table = table
 
     def validate(self):

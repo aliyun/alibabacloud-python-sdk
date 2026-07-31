@@ -9,16 +9,20 @@ class ReleaseClusterPublicConnectionRequest(DaraModel):
         self,
         dbcluster_id: str = None,
         engine: str = None,
+        resource_group_name: str = None,
     ):
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # <props="china">The ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
+        # <props="intl">The ID of the Data Lakehouse Edition cluster.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The database engine of the cluster. Valid values:
+        # The database engine. Valid values:
         # 
-        # *   **AnalyticDB** (default): the AnalyticDB for MySQL engine.
-        # *   **Clickhouse**: the wide table engine.
+        # - **AnalyticDB** (Default): AnalyticDB for MySQL.
+        # 
+        # - **ClickHouse**: a wide table engine.
         self.engine = engine
+        self.resource_group_name = resource_group_name
 
     def validate(self):
         pass
@@ -34,6 +38,9 @@ class ReleaseClusterPublicConnectionRequest(DaraModel):
         if self.engine is not None:
             result['Engine'] = self.engine
 
+        if self.resource_group_name is not None:
+            result['ResourceGroupName'] = self.resource_group_name
+
         return result
 
     def from_map(self, m: dict = None):
@@ -43,6 +50,9 @@ class ReleaseClusterPublicConnectionRequest(DaraModel):
 
         if m.get('Engine') is not None:
             self.engine = m.get('Engine')
+
+        if m.get('ResourceGroupName') is not None:
+            self.resource_group_name = m.get('ResourceGroupName')
 
         return self
 

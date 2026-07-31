@@ -21,19 +21,25 @@ class DescribePatternPerformanceResponseBody(DaraModel):
         tables: str = None,
         user: str = None,
     ):
+        # The client IP address that submitted the queries that match the sql pattern.
         self.access_ip = access_ip
-        # The end time of the query. The time follows the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ* format. The time is displayed in UTC.
+        # The end of the query time range. The time is in UTC and is formatted as *yyyy-MM-ddTHH:mmZ*.
         self.end_time = end_time
+        # The number of failed executions for the sql pattern within the query time range.
         self.failed_count = failed_count
-        # The queried performance metrics.
+        # The performance metrics.
         self.performances = performances
+        # The number of executions for the sql pattern within the query time range.
         self.query_count = query_count
         # The request ID.
         self.request_id = request_id
+        # The SQL statement for the sql pattern.
         self.sqlpattern = sqlpattern
-        # The start time of the query. The time follows the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ* format. The time is displayed in UTC.
+        # The start of the query time range. The time is in UTC and is formatted as *yyyy-MM-ddTHH:mmZ*.
         self.start_time = start_time
+        # The tables queried by the sql pattern.
         self.tables = tables
+        # The database account that executes the SQL statements.
         self.user = user
 
     def validate(self):
@@ -125,22 +131,29 @@ class DescribePatternPerformanceResponseBodyPerformances(DaraModel):
         series: List[main_models.DescribePatternPerformanceResponseBodyPerformancesSeries] = None,
         unit: str = None,
     ):
-        # The queried performance metric. Valid values:
+        # The performance metric. Valid values:
         # 
-        # *   **AnalyticDB_PatternQueryCount**: the total number of queries executed in association with the SQL pattern.
-        # *   **AnalyticDB_PatternQueryTime**: the total amount of time consumed by the queries executed in association with the SQL pattern.
-        # *   **AnalyticDB_PatternExecutionTime**: the execution duration of the queries executed in association with the SQL pattern.
-        # *   **AnalyticDB_PatternPeakMemory**: the peak memory usage of the queries executed in association with the SQL pattern.
-        # *   **AnalyticDB_PatternScanSize**: the amount of data scanned in the queries executed in association with the SQL pattern.
+        # - **AnalyticDB_PatternQueryCount**: The total number of queries that match the sql pattern.
+        # 
+        # - **AnalyticDB_PatternQueryTime**: The total time for queries that match the sql pattern.
+        # 
+        # - **AnalyticDB_PatternExecutionTime**: The total execution time of queries that match the sql pattern.
+        # 
+        # - **AnalyticDB_PatternPeakMemory**: The peak memory usage of queries that match the sql pattern.
+        # 
+        # - **AnalyticDB_PatternScanSize**: The total data scan size of queries that match the sql pattern.
         self.key = key
-        # The values of the performance metrics.
+        # The time series data for the performance metric.
         self.series = series
-        # The unit of the performance metric. Valid values:
+        # The unit of the performance metric. The returned unit varies based on the value of `Key`:
         # 
-        # *   If the performance metric is related to the query time (the value of `Key` is `AnalyticDB_PatternQueryTime` or `AnalyticDB_PatternExecutionTime`), **ms** is returned.
-        # *   If the performance metric is related to the peak memory usage (the value of `Key` is `AnalyticDB_PatternPeakMemory`), **MB** is returned.
-        # *   If the performance metric is related to the amount of data scanned (the value of `Key` is `AnalyticDB_PatternScanSize`), **MB** is returned.
-        # *   If the performance metric is related to the number of queries (the value of `Key` is `AnalyticDB_PatternQueryCount`), null is returned.
+        # - If `Key` is `AnalyticDB_PatternQueryTime` or `AnalyticDB_PatternExecutionTime`, the unit is **ms**.
+        # 
+        # - If `Key` is `AnalyticDB_PatternPeakMemory`, the unit is **MB**.
+        # 
+        # - If `Key` is `AnalyticDB_PatternScanSize`, the unit is **MB**.
+        # 
+        # - If `Key` is `AnalyticDB_PatternQueryCount`, this parameter is empty.
         self.unit = unit
 
     def validate(self):
@@ -189,31 +202,35 @@ class DescribePatternPerformanceResponseBodyPerformancesSeries(DaraModel):
         name: str = None,
         values: List[str] = None,
     ):
-        # The name of the performance metric value. Valid values:
+        # The name of the performance value. The value of this parameter varies based on the value of `Key`:
         # 
-        # *   If the value of `Key` is `AnalyticDB_PatternQueryCount`, `pattern_query_count` is returned, which indicates the number of executions of the SQL statements in association with the SQL pattern.
+        # - If `Key` is `AnalyticDB_PatternQueryCount`, this parameter returns `pattern_query_count`, which indicates the query count for the sql pattern.
         # 
-        # *   If the value of `Key` is `AnalyticDB_PatternQueryTime`, the following values are returned:
+        # - If `Key` is `AnalyticDB_PatternQueryTime`, this parameter can be one of the following values:
         # 
-        #     *   `average_query_time`, which indicates the average total amount of time consumed by the SQL statements in association with the SQL pattern.
-        #     *   `max_query_time`, which indicates the maximum total amount of time consumed by the SQL statements in association with the SQL pattern.
+        #   - `average_query_time`: the average total time of queries that match the sql pattern.
         # 
-        # *   If the value of `Key` is `AnalyticDB_PatternExecutionTime`, the following values are returned:
+        #   - `max_query_time`: the maximum total time of queries that match the sql pattern.
         # 
-        #     *   `average_execution_time`, which indicates the average execution duration of the SQL statements in association with the SQL pattern.
-        #     *   `max_execution_time`, which indicates the maximum execution duration of the SQL statements in association with the SQL pattern.
+        # - If `Key` is `AnalyticDB_PatternExecutionTime`, this parameter can be one of the following values:
         # 
-        # *   If the value of `Key` is `AnalyticDB_PatternPeakMemory`, the following values are returned:
+        #   - `average_execution_time`: the average execution time of queries that match the sql pattern.
         # 
-        #     *   `average_peak_memory`, which indicates the average peak memory usage of the SQL statements in association with the SQL pattern.
-        #     *   `max_peak_memory`, which indicates the maximum peak memory usage of the SQL statements in association with the SQL pattern.
+        #   - `max_execution_time`: the maximum execution time of queries that match the sql pattern.
         # 
-        # *   If the value of `Key` is `AnalyticDB_PatternScanSize`, the following values are returned:
+        # - If `Key` is `AnalyticDB_PatternPeakMemory`, this parameter can be one of the following values:
         # 
-        #     *   `average_scan_size`, which indicates the average amount of data scanned by the SQL statements in association with the SQL pattern.
-        #     *   `max_scan_size`, which indicates the maximum amount of data scanned by the SQL statements in association with the SQL pattern.
+        #   - `average_peak_memory`: the average peak memory usage of queries that match the sql pattern.
+        # 
+        #   - `max_peak_memory`: the maximum peak memory usage of queries that match the sql pattern.
+        # 
+        # - If `Key` is `AnalyticDB_PatternScanSize`, this parameter can be one of the following values:
+        # 
+        #   - `average_scan_size`: the average data scan size of queries that match the sql pattern.
+        # 
+        #   - `max_scan_size`: the maximum data scan size of queries that match the sql pattern.
         self.name = name
-        # The values of the performance metric.
+        # The list of performance values.
         self.values = values
 
     def validate(self):

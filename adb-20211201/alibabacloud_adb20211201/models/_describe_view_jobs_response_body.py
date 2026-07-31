@@ -20,11 +20,11 @@ class DescribeViewJobsResponseBody(DaraModel):
         self.data = data
         # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of records per page.
         self.page_size = page_size
         # Id of the request
         self.request_id = request_id
-        # The total number of entries that are returned.
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -81,13 +81,13 @@ class DescribeViewJobsResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The refresh tasks.
+        # The list of refresh tasks.
         self.mv_refresh_job_models = mv_refresh_job_models
         # The page number.
         self.page_number = page_number
-        # The number of entries returned on each page.
+        # The number of records per page.
         self.page_size = page_size
-        # The total number of entries that are returned.
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):

@@ -19,15 +19,17 @@ class CreateApsWebhookRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The type of the task. Valid value: Task type. SLS or OSS Export Task: ResultExport.
+        # The task type. Valid values:
+        # 
+        # ResultExport: SLS/OSS export task.
         # 
         # This parameter is required.
         self.job_type = job_type
-        # The ID of the region in which to create the dedicated block storage cluster.
+        # The region ID of the cluster.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The array of webhooks.
+        # The webhook array.
         self.webhook = webhook
 
     def validate(self):
@@ -84,15 +86,18 @@ class CreateApsWebhookRequestWebhook(DaraModel):
         url: str = None,
         webhook_type: str = None,
     ):
-        # Signed key.
+        # The signing key.
         self.key = key
-        # The name of the webhook.
+        # The webhook name.
         self.name = name
-        # The request path.
+        # The request URL.
         # 
         # This parameter is required.
         self.url = url
-        # The notification method. Valid values: dingtalk. lark.
+        # The notification method. Valid values:
+        # 
+        # - dingtalk: DingTalk.
+        # - lark: Lark.
         # 
         # This parameter is required.
         self.webhook_type = webhook_type

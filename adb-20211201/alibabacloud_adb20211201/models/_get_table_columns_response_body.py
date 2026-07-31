@@ -16,17 +16,16 @@ class GetTableColumnsResponseBody(DaraModel):
     ):
         # The returned data.
         self.data = data
-        # The page number. Pages start from page 1. Default value: 1.
+        # The page number. The value is a positive integer that does not exceed the maximum value of the Integer data type. Default value: 1.
         self.page_number = page_number
         # The number of entries per page. Valid values:
-        # 
-        # *   **30** (default)
-        # *   **50**
-        # *   **100**
+        # * **30** (default)
+        # * **50**
+        # * **100**
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries in the result.
         self.total_count = total_count
 
     def validate(self):
@@ -83,17 +82,16 @@ class GetTableColumnsResponseBodyData(DaraModel):
         table: main_models.TableDetailModel = None,
         total_count: int = None,
     ):
-        # The page number. Pages start from page 1. Default value: 1.
+        # The page number. The value is a positive integer that does not exceed the maximum value of the Integer data type. Default value: 1.
         self.page_number = page_number
         # The number of entries per page. Valid values:
-        # 
-        # *   **30** (default)
-        # *   **50**
-        # *   **100**
+        # * **30** (default)
+        # * **50**
+        # * **100**
         self.page_size = page_size
-        # The information about the table.
+        # The details of the table.
         self.table = table
-        # The total number of entries returned.
+        # The total number of entries in the result.
         self.total_count = total_count
 
     def validate(self):

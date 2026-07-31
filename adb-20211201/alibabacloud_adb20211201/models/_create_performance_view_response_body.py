@@ -11,14 +11,12 @@ class CreatePerformanceViewResponseBody(DaraModel):
         create_status: str = None,
         request_id: str = None,
     ):
-        # The details about the access denial.
-        # 
-        # >  This parameter is returned only if Resource Access Management (RAM) permission verification failed.
+        # The details of the access denial. This field is returned only when RAM authentication fails.
         self.access_denied_detail = access_denied_detail
         # The creation result. Valid values:
         # 
-        # *   **SUCCESS**
-        # *   **FAILED**
+        # - **SUCCESS**: succeeded.
+        # - **FAILED**: failed.
         self.create_status = create_status
         # The request ID.
         self.request_id = request_id

@@ -16,19 +16,17 @@ class CreateOssSubDirectoryResponseBody(DaraModel):
     ):
         # The returned data.
         self.data = data
-        # The response code. The status code 200 indicates that the request was successful.
+        # The HTTP status code returned. A value of 200 indicates that the request was successful.
         self.http_status_code = http_status_code
-        # The returned message.
-        # 
-        # *   If the request was successful, a **success** message is returned.
-        # *   If the request failed, an error message is returned.
+        # The additional information about the call result. Valid values:
+        # - If the request was successful, **Success** is returned.                                
+        # - If the request failed, a specific error code is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
+        # Indicates whether the call was successful. Valid values:
+        # - **true**: The call was successful.
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):
@@ -85,13 +83,13 @@ class CreateOssSubDirectoryResponseBodyData(DaraModel):
         request_id: str = None,
         server_crc: int = None,
     ):
-        # The cyclic redundancy check (CRC) value on the client.
+        # The client CRC check value.
         self.client_crc = client_crc
-        # The tag of the OSS path.
+        # The ETag of the OSS path.
         self.etag = etag
         # The request ID.
         self.request_id = request_id
-        # The CRC-64 value on the OSS bucket.
+        # The CRC-64 value of the Alibaba Cloud OSS bucket.
         self.server_crc = server_crc
 
     def validate(self):

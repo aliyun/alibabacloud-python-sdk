@@ -11,8 +11,11 @@ class LogAnalyzeResult(DaraModel):
         app_error_code: str = None,
         app_error_log: str = None,
     ):
+        # The solution for the error log.
         self.app_error_advice = app_error_advice
+        # The error type if an analysis error occurs.
         self.app_error_code = app_error_code
+        # The error log of the Spark log analysis task.
         self.app_error_log = app_error_log
 
     def validate(self):

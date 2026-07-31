@@ -61,55 +61,103 @@ class TableModel(DaraModel):
         view_original_text: str = None,
         view_security_mode: str = None,
     ):
+        # The archive type.
         self.archive_type = archive_type
+        # The block size.
         self.block_size = block_size
+        # The bucket ID.
         self.bucket = bucket
+        # The number of buckets.
         self.bucket_count = bucket_count
+        # The column information.
         self.cols = cols
+        # The description.
         self.comment = comment
+        # The compression method.
         self.compression = compression
+        # The time when the table was created.
         self.create_time = create_time
         self.created_by_source = created_by_source
         self.created_by_user = created_by_user
+        # The current version.
         self.current_version = current_version
+        # The name of the logical database.
         self.db_name = db_name
+        # Indicates whether the dictionary is encrypted.
         self.dict_encode = dict_encode
+        # The distribution columns.
         self.distribute_columns = distribute_columns
+        # The distribution type.
         self.distribute_type = distribute_type
+        # Indicates whether DFS is allowed.
         self.enable_dfs = enable_dfs
+        # The number of hot partitions.
         self.hot_partition_count = hot_partition_count
+        # The indexes.
         self.indexes = indexes
+        # Indicates whether the index is a full index.
         self.is_all_index = is_all_index
+        # Indicates whether the table is a full-text index dictionary.
         self.is_fulltext_dict = is_fulltext_dict
+        # The maximum column ID.
         self.max_column_id = max_column_id
+        # The parameters.
         self.parameters = parameters
+        # The information about the partition key column.
         self.partition_column = partition_column
+        # The number of partitions.
         self.partition_count = partition_count
+        # The partition keys.
         self.partition_keys = partition_keys
+        # The partition type.
         self.partition_type = partition_type
+        # The name of the physical database.
         self.physical_database_name = physical_database_name
+        # The name of the physical table.
         self.physical_table_name = physical_table_name
+        # The previous version.
         self.previous_version = previous_version
+        # The raw table name.
         self.raw_table_name = raw_table_name
+        # The routing columns.
         self.route_columns = route_columns
+        # The effective routing column.
         self.route_effective_column = route_effective_column
+        # The routing type.
         self.route_type = route_type
+        # The routing engine type.
         self.rt_engine_type = rt_engine_type
+        # Indicates whether to route all indexes.
         self.rt_index_all = rt_index_all
+        # The routing mode type.
         self.rt_mode_type = rt_mode_type
+        # The description of the storage.
         self.sd = sd
+        # The storage policy.
         self.storage_policy = storage_policy
+        # The information about the subpartition column.
         self.subpartition_column = subpartition_column
+        # The number of subpartitions.
         self.subpartition_count = subpartition_count
+        # The subpartition type.
         self.subpartition_type = subpartition_type
+        # The name of the table engine.
         self.table_engine_name = table_engine_name
+        # The name of the logical table.
         self.table_name = table_name
+        # The table type.
         self.table_type = table_type
+        # The table ID.
         self.tbl_id = tbl_id
+        # Indicates whether the table is a temporary table.
         self.temporary = temporary
+        # The time when the table was last updated.
         self.update_time = update_time
+        # The normalized SQL statement that is used to create the view.
         self.view_expanded_text = view_expanded_text
+        # The SQL statement used to create the view.
         self.view_original_text = view_original_text
+        # The security mode of the view.
         self.view_security_mode = view_security_mode
 
     def validate(self):

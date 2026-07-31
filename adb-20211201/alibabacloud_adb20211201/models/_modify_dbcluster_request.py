@@ -7,6 +7,8 @@ from darabonba.model import DaraModel
 class ModifyDBClusterRequest(DaraModel):
     def __init__(
         self,
+        ainode_number: int = None,
+        ainode_spec: str = None,
         compute_resource: str = None,
         dbcluster_id: str = None,
         enable_default_resource_pool: bool = None,
@@ -16,31 +18,37 @@ class ModifyDBClusterRequest(DaraModel):
         reserved_node_size: str = None,
         storage_resource: str = None,
     ):
-        # The reserved computing resources. Valid values: 0ACU to 4096ACU. The value must be in increments of 16ACU. Each ACU is approximately equal to 1 core and 4 GB memory.
-        # 
-        # >  This parameter must be specified with a unit.
+        self.ainode_number = ainode_number
+        self.ainode_spec = ainode_spec
+        # The compute reserved resources. Valid values: 0 ACU to 4096 ACU, in increments of 16. 1 ACU is approximately equivalent to 1 core and 4 GB of memory.
+        # > Include the unit when you specify this parameter.
         self.compute_resource = compute_resource
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
-        # 
-        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition clusters within a region.
+        # The ID of the Data Lakehouse Edition cluster.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the cluster ID of a Data Lakehouse Edition cluster.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # Specifies whether to allocate all reserved computing resources to the user_default resource group. Valid values:
-        # 
-        # *   true (default)
-        # *   false
+        # Specifies whether to allocate all compute reserved resources to the default resource group (user_default). Valid values:
+        # - true (default): All compute reserved resources are allocated to the default resource group.
+        # - false: Not all compute reserved resources are allocated to the default resource group.
         self.enable_default_resource_pool = enable_default_resource_pool
+        # The product form. Valid values:
+        # - **IntegrationForm**: integrated form.
+        # - **LegacyForm**: Data Lakehouse Edition.
         self.product_form = product_form
-        # The region ID of the cluster.
-        # 
-        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/454314.html) operation to query the most recent region list.
+        # The region ID.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/454314.html) operation to query the region ID of a specified Data Lakehouse Edition cluster.
         self.region_id = region_id
+        # The number of reserved nodes. 
+        # - Enterprise Edition: The default value is 3. The value increases in increments of 3.
+        # - Basic Edition: The default value is 1.
+        # > This parameter is required only when ProductForm is set to IntegrationForm.
         self.reserved_node_count = reserved_node_count
+        # The node specifications of storage reserved resources. Valid values: 8ACU, 12ACU, and 16ACU.
+        # > Include the unit when you specify this parameter. This parameter is required only when ProductForm is set to IntegrationForm.
         self.reserved_node_size = reserved_node_size
-        # The reserved storage resources. Valid values: 0ACU to 2064ACU. The value must be in increments of 24ACU. Each ACU is approximately equal to 1 core and 4 GB memory.
-        # 
-        # >  This parameter must be specified with a unit.
+        # The storage reserved resources. Valid values: 0 ACU to 2064 ACU, in increments of 24. 1 ACU is approximately equivalent to 1 core and 4 GB of memory.
+        # > Include the unit when you specify this parameter.
         self.storage_resource = storage_resource
 
     def validate(self):
@@ -51,6 +59,12 @@ class ModifyDBClusterRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.ainode_number is not None:
+            result['AINodeNumber'] = self.ainode_number
+
+        if self.ainode_spec is not None:
+            result['AINodeSpec'] = self.ainode_spec
+
         if self.compute_resource is not None:
             result['ComputeResource'] = self.compute_resource
 
@@ -79,6 +93,12 @@ class ModifyDBClusterRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AINodeNumber') is not None:
+            self.ainode_number = m.get('AINodeNumber')
+
+        if m.get('AINodeSpec') is not None:
+            self.ainode_spec = m.get('AINodeSpec')
+
         if m.get('ComputeResource') is not None:
             self.compute_resource = m.get('ComputeResource')
 

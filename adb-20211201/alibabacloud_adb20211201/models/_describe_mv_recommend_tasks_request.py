@@ -15,19 +15,19 @@ class DescribeMvRecommendTasksRequest(DaraModel):
         region_id: str = None,
         task_name: str = None,
     ):
-        # Fixed system value (non-modifiable).
+        # A static field. This parameter cannot be modified.
         self.action_inner = action_inner
         # The cluster ID.
         self.dbcluster_id = dbcluster_id
-        # Fixed system value (non-modifiable).
+        # A static field. This parameter cannot be modified.
         self.from_ = from_
         # The page number.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The number of entries per page.
         self.page_size = page_size
         # The region ID.
         self.region_id = region_id
-        # The name of the recommendation task.
+        # The name of the materialized view recommendation task.
         self.task_name = task_name
 
     def validate(self):

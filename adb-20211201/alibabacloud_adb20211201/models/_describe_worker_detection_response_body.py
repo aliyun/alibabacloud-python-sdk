@@ -17,11 +17,11 @@ class DescribeWorkerDetectionResponseBody(DaraModel):
     ):
         # The cluster ID.
         self.dbcluster_id = dbcluster_id
-        # The queried detection items and detection results.
+        # The list of detection items and detection results.
         self.detection_items = detection_items
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -78,17 +78,17 @@ class DescribeWorkerDetectionResponseBodyDetectionItems(DaraModel):
         results: main_models.DescribeWorkerDetectionResponseBodyDetectionItemsResults = None,
         status: str = None,
     ):
-        # The information about the detection result.
+        # The detection result message.
         self.message = message
         # The name of the detection item.
         self.name = name
-        # The detection result items.
+        # The detection result.
         self.results = results
-        # The severity level of the detection result. Valid values:
+        # The detection result status. Valid values:
         # 
-        # *   NORMAL
-        # *   WARNING
-        # *   CRITICAL
+        # - NORMAL
+        # - WARNING
+        # - CRITICAL
         self.status = status
 
     def validate(self):
@@ -140,15 +140,15 @@ class DescribeWorkerDetectionResponseBodyDetectionItemsResults(DaraModel):
         skewed_tables: List[main_models.DescribeWorkerDetectionResponseBodyDetectionItemsResultsSkewedTables] = None,
         top_access_tables: List[main_models.DescribeWorkerDetectionResponseBodyDetectionItemsResultsTopAccessTables] = None,
     ):
-        # The detection result items of operator metric aggregation.
+        # The aggregated operator metric detection results.
         self.operator_agg = operator_agg
-        # The detection result items of abnormal operators.
+        # The collection of operator detection results.
         self.operator_details = operator_details
-        # The detection result items of improper partitioned tables.
+        # The collection of tables with unreasonable partitions.
         self.partitioned_tables = partitioned_tables
-        # The detection result items of skewed tables.
+        # The table skew detection results.
         self.skewed_tables = skewed_tables
-        # The detection result items of table access.
+        # The collection of table access detection results.
         self.top_access_tables = top_access_tables
 
     def validate(self):
@@ -247,7 +247,7 @@ class DescribeWorkerDetectionResponseBodyDetectionItemsResultsTopAccessTables(Da
     ):
         # The name of the detection metric.
         self.metric_name = metric_name
-        # The detection result items of table access.
+        # The collection of table access search results.
         self.search_results = search_results
 
     def validate(self):
@@ -294,17 +294,17 @@ class DescribeWorkerDetectionResponseBodyDetectionItemsResultsTopAccessTablesSea
         max_scan_size: int = None,
         table_name: str = None,
     ):
-        # The number of accesses to the table.
+        # The number of times the table was accessed.
         self.access_count = access_count
-        # The average amount of time for scanning. Unit: milliseconds.
+        # The average scan duration. Unit: ms.
         self.avg_scan_cost = avg_scan_cost
-        # The average data size for scanning. Unit: bytes.
+        # The average table read size. Unit: bytes.
         self.avg_scan_size = avg_scan_size
-        # The maximum amount of time for scanning. Unit: milliseconds.
+        # The maximum scan duration. Unit: ms.
         self.max_scan_cost = max_scan_cost
-        # The maximum data size for scanning. Unit: bytes.
+        # The maximum data read size. Unit: bytes.
         self.max_scan_size = max_scan_size
-        # The name of the table.
+        # The table name.
         self.table_name = table_name
 
     def validate(self):
@@ -371,25 +371,25 @@ class DescribeWorkerDetectionResponseBodyDetectionItemsResultsSkewedTables(DaraM
         total_remote_data_size: int = None,
         total_row_count: int = None,
     ):
-        # The SQL statement that is used to create the table.
+        # The CREATE TABLE statement.
         self.ddl = ddl
         # The number of partitions.
         self.partition_count = partition_count
-        # The name of the database.
+        # The database name.
         self.schema_name = schema_name
         # The number of skewed rows in the table.
         self.shard_skewed_rows = shard_skewed_rows
-        # The name of the table.
+        # The table name.
         self.table_name = table_name
         # The total data size of the table. Unit: bytes.
         self.total_data_size = total_data_size
-        # The size of hot data. Unit: bytes.
+        # The local data size. Unit: bytes.
         self.total_local_data_size = total_local_data_size
-        # The data size of the primary key. Unit: bytes.
+        # The total primary key data size of the table. Unit: bytes.
         self.total_pk_size = total_pk_size
-        # The size of cold data. Unit: bytes.
+        # The cold data size. Unit: bytes.
         self.total_remote_data_size = total_remote_data_size
-        # The number of rows in the table.
+        # The total number of rows in the table.
         self.total_row_count = total_row_count
 
     def validate(self):
@@ -476,15 +476,15 @@ class DescribeWorkerDetectionResponseBodyDetectionItemsResultsPartitionedTables(
         table_name: str = None,
         total_data_size: int = None,
     ):
-        # The SQL statement that is used to create the table.
+        # The CREATE TABLE statement.
         self.ddl = ddl
         # The number of partitions.
         self.partition_count = partition_count
-        # The ID of the improper partition.
+        # The IDs of unreasonable partitions.
         self.partition_ids = partition_ids
-        # The name of the database.
+        # The database name.
         self.schema_name = schema_name
-        # The name of the table.
+        # The table name.
         self.table_name = table_name
         # The total data size of the table.
         self.total_data_size = total_data_size
@@ -545,9 +545,9 @@ class DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorDetails(Da
         metric_name: str = None,
         search_results: List[main_models.DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorDetailsSearchResults] = None,
     ):
-        # The name of the detection metric.
+        # The metric name.
         self.metric_name = metric_name
-        # The detection result items of abnormal operators.
+        # The collection of search results.
         self.search_results = search_results
 
     def validate(self):
@@ -598,23 +598,23 @@ class DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorDetailsSea
         process_id: str = None,
         stage_id: str = None,
     ):
-        # The number of rows input by the operator.
+        # The number of input rows of the operator.
         self.input_rows = input_rows
-        # The amount of data input by the operator. Unit: bytes.
+        # The input data size of the operator. Unit: bytes.
         self.input_size = input_size
-        # The total CPU time consumed by all operators in the stage, which is equivalent to the total CPU time of the stage. You can use this parameter to determine which parts of the stage consume a large amount of computing resources. Unit: milliseconds.
+        # The total operator duration within the stage, which is equivalent to the CPU time of the stage. You can use this value to determine which parts of the query consume more compute resources. Unit: ms.
         self.operator_cost = operator_cost
-        # The property information about the operator.
+        # The operator property information.
         self.operator_info = operator_info
-        # The name of the operator.
+        # The operator name.
         self.operator_name = operator_name
-        # The number of rows output by the operator.
+        # The number of output rows of the operator.
         self.output_rows = output_rows
-        # The amount of data output by the operator. Unit: bytes.
+        # The output data size of the operator. Unit: bytes.
         self.output_size = output_size
-        # The peak memory. Unit: bytes.
+        # The peak memory consumed by the operator. Unit: bytes.
         self.peak_memory = peak_memory
-        # The query ID that can be used for diagnostics.
+        # The SQL query ID, which can be used for diagnostics.
         self.process_id = process_id
         # The stage ID.
         self.stage_id = stage_id
@@ -699,9 +699,9 @@ class DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorAgg(DaraMo
         metric_name: str = None,
         search_results: List[main_models.DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorAggSearchResults] = None,
     ):
-        # The detection result items of operator metric aggregation.
+        # The name of the aggregated operator metric detection item.
         self.metric_name = metric_name
-        # The detection result items of operator metric aggregation.
+        # The collection of aggregated operator metric search results.
         self.search_results = search_results
 
     def validate(self):
@@ -751,9 +751,9 @@ class DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorAggSearchR
         self.avg_value = avg_value
         # The maximum value of the operator metric.
         self.max_value = max_value
-        # The number of occurrences of the operator.
+        # The number of times the operator appears.
         self.operator_count = operator_count
-        # The name of the operator.
+        # The operator name.
         self.operator_name = operator_name
         # The cumulative value of the operator metric.
         self.total_value = total_value

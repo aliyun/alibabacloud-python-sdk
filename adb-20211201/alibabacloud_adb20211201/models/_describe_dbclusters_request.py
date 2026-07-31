@@ -21,57 +21,71 @@ class DescribeDBClustersRequest(DaraModel):
         resource_group_id: str = None,
         tag: List[main_models.DescribeDBClustersRequestTag] = None,
     ):
-        # The description of the cluster.
+        # The cluster description.
         # 
-        # *   The description cannot start with `http://` or `https://`.
-        # *   The description must be 2 to 256 characters in length
+        # - Cannot start with `http://` or `https://`.
+        # 
+        # - The description must be 2 to 256 characters long.
         self.dbcluster_description = dbcluster_description
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
+        # The cluster ID.
         # 
-        # If you do not specify this parameter, the information about all clusters that reside in the region is returned.
+        # If you omit this parameter, the operation returns information about all clusters in the specified region.
         self.dbcluster_ids = dbcluster_ids
-        # The status of the cluster. Valid values:
+        # The cluster status. Valid values:
         # 
-        # *   **Preparing**
-        # *   **Creating**
-        # *   **Running**
-        # *   **Deleting**
-        # *   **Restoring**
-        # *   **ClassChanging**
-        # *   **NetAddressCreating**
-        # *   **NetAddressDeleting**
-        # *   **NetAddressModifying**
+        # - **Preparing**: The cluster is preparing.
+        # 
+        # - **Creating**: The cluster is being created.
+        # 
+        # - **Running**: The cluster is running.
+        # 
+        # - **Deleting**: The cluster is being deleted.
+        # 
+        # - **Restoring**: The cluster is being restored from a backup.
+        # 
+        # - **ClassChanging**: The cluster specifications are changing.
+        # 
+        # - **NetAddressCreating**: A network connection is being created for the cluster.
+        # 
+        # - **NetAddressDeleting**: The network connection of the cluster is being deleted.
+        # 
+        # - **NetAddressModifying**: The network connection of the cluster is being modified.
         self.dbcluster_status = dbcluster_status
-        # The version number corresponding to the edition of the cluster. Valid values:
+        # The cluster version. Valid values:
         # 
-        # *   **3.0**: Data Warehouse Edition.
-        # *   **5.0** (default): includes Data Lakehouse Edition, Enterprise Edition, and Basic Edition.
-        # *   **All**: all editions, including Data Warehouse Edition, Data Lakehouse Edition, Enterprise Edition, and Basic Edition.
+        # - **3.0**: Data Warehouse edition.
+        # 
+        # - **5.0** (default): Includes the Lakehouse, Enterprise, and Basic editions.
+        # 
+        # - **All**: All editions, including the Data Warehouse, Lakehouse, Enterprise, and Basic editions.
         self.dbcluster_version = dbcluster_version
-        # The page number. Pages start from page 1. Default value: **1**.
+        # The page number. The value must be a positive integer. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page. Valid values:
+        # The number of entries to return on each page. Valid values:
         # 
-        # *   **30** (default)
-        # *   **50**
-        # *   **100**
+        # - **30** (default)
+        # 
+        # - **50**
+        # 
+        # - **100**
         self.page_size = page_size
-        # The edition of the cluster. Valid values:
+        # The product version. Valid values:
         # 
-        # *   **EnterpriseVersion**: Enterprise Edition.
-        # *   **BasicVersion**: Basic Edition.
+        # - **EnterpriseVersion**: Enterprise edition.
         # 
-        # >  If you leave this parameter empty, the information about clusters of all editions is returned.
+        # - **BasicVersion**: Basic edition.
+        # 
+        # > If you omit this parameter, the operation returns clusters of all product versions.
         self.product_version = product_version
-        # The region ID of the cluster.
+        # The region ID.
         # 
-        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/454314.html) operation to query the most recent region list.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/454314.html) operation to query the IDs of available regions.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The resource group ID. If you do not specify this parameter, the information about all resource groups in the cluster is returned.
+        # The ID of the resource group. If you omit this parameter, the operation returns information about clusters in all resource groups.
         self.resource_group_id = resource_group_id
-        # The tags that are added to the cluster.
+        # The tags to filter clusters by.
         self.tag = tag
 
     def validate(self):

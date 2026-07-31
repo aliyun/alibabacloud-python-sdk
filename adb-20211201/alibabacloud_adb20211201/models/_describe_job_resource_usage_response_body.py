@@ -14,9 +14,9 @@ class DescribeJobResourceUsageResponseBody(DaraModel):
         data: main_models.DescribeJobResourceUsageResponseBodyData = None,
         request_id: str = None,
     ):
-        # The HTTP status code.
+        # The API status or POP error code.
         self.code = code
-        # The queried resource usage.
+        # The returned data.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -66,16 +66,20 @@ class DescribeJobResourceUsageResponseBodyData(DaraModel):
         start_time: str = None,
         total_count: int = None,
     ):
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
+        # <props="china">The ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
+        # <props="intl">The ID of the Data Lakehouse Edition cluster.
         self.dbcluster_id = dbcluster_id
-        # The end time of the query. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The end time. Format: yyyy-MM-ddTHH:mmZ (UTC).
         self.end_time = end_time
-        # The AnalyticDB compute unit (ACU) usage of the job resource group.
+        # The ACU usage of the job resource group.
         self.job_acu_usage = job_acu_usage
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
-        # The start time of the query. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The start time. Format: yyyy-MM-ddTHH:mmZ (UTC).
         self.start_time = start_time
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -150,18 +154,21 @@ class DescribeJobResourceUsageResponseBodyDataJobAcuUsage(DaraModel):
         job_id: str = None,
         job_start_time: str = None,
         resource_group_name: str = None,
+        spark_app_name: str = None,
         use_cache_pool: bool = None,
     ):
-        # The ACU usage.
+        # The ACU resource usage details.
         self.acu_usage_detail = acu_usage_detail
-        # The end time of the job. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The end time of the job. Format: yyyy-MM-ddTHH:mmZ (UTC).
         self.job_end_time = job_end_time
         # The job ID.
         self.job_id = job_id
-        # The start time of the job. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The start time of the job. Format: yyyy-MM-ddTHH:mmZ (UTC).
         self.job_start_time = job_start_time
         # The name of the job resource group.
         self.resource_group_name = resource_group_name
+        self.spark_app_name = spark_app_name
+        # Indicates whether the hot pool is used.
         self.use_cache_pool = use_cache_pool
 
     def validate(self):
@@ -188,6 +195,9 @@ class DescribeJobResourceUsageResponseBodyDataJobAcuUsage(DaraModel):
         if self.resource_group_name is not None:
             result['ResourceGroupName'] = self.resource_group_name
 
+        if self.spark_app_name is not None:
+            result['SparkAppName'] = self.spark_app_name
+
         if self.use_cache_pool is not None:
             result['UseCachePool'] = self.use_cache_pool
 
@@ -211,6 +221,9 @@ class DescribeJobResourceUsageResponseBodyDataJobAcuUsage(DaraModel):
         if m.get('ResourceGroupName') is not None:
             self.resource_group_name = m.get('ResourceGroupName')
 
+        if m.get('SparkAppName') is not None:
+            self.spark_app_name = m.get('SparkAppName')
+
         if m.get('UseCachePool') is not None:
             self.use_cache_pool = m.get('UseCachePool')
 
@@ -225,15 +238,15 @@ class DescribeJobResourceUsageResponseBodyDataJobAcuUsageAcuUsageDetail(DaraMode
         spot_acu_percentage: float = None,
         total_acu_number: float = None,
     ):
-        # The number of ACUs for the elastic resources.
+        # The number of elastic ACU resources.
         self.elastic_acu_number = elastic_acu_number
-        # The number of ACUs for the reserved resources.
+        # The number of reserved ACU resources.
         self.reserved_acu_number = reserved_acu_number
-        # The number of spot ACUs.
+        # The number of spot instance ACU resources.
         self.spot_acu_number = spot_acu_number
-        # The percent of spot ACUs.
+        # The percentage of spot instance resources in the total elastic resources.
         self.spot_acu_percentage = spot_acu_percentage
-        # The total number of ACUs.
+        # The total number of ACU resources.
         self.total_acu_number = total_acu_number
 
     def validate(self):

@@ -16,19 +16,21 @@ class DescribeDiagnosisRecordsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The page number. Pages start from page 1. Default value: **1**.
+        # The page number. The value is an integer that is greater than 0. Default value: **1**.
         self.page_number = page_number
         # The number of entries per page. Valid values:
         # 
-        # *   **30** (default)
-        # *   **50**
-        # *   **100**
+        # - **30** (default)
+        # 
+        # - **50**
+        # 
+        # - **100**
         self.page_size = page_size
-        # The queried SQL statements.
+        # The list of SQL statement details.
         self.querys = querys
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -114,67 +116,73 @@ class DescribeDiagnosisRecordsResponseBodyQuerys(DaraModel):
     ):
         # The source IP address.
         self.client_ip = client_ip
-        # The total execution duration. Unit: milliseconds.
+        # The total execution duration of the query. Unit: milliseconds.
         # 
-        # >  This value is the cumulative value of the `QueuedTime`, `TotalPlanningTime`, and `ExecutionTime` parameters.
+        # > This duration is the sum of `QueuedTime`, `TotalPlanningTime`, and `ExecutionTime`.
         self.cost = cost
-        # The name of the database on which the SQL statement is executed.
+        # The name of the database where the SQL statement is executed.
         self.database = database
-        # The number of rows written to the table by an extract-transform-load (ETL) job.
+        # The number of rows written to a table in an ETL task.
         self.etl_write_rows = etl_write_rows
-        # The execution duration. Unit: milliseconds.
+        # The execution duration of the query. Unit: milliseconds (ms).
         self.execution_time = execution_time
         # The amount of returned data. Unit: bytes.
         self.output_data_size = output_data_size
-        # The number of rows returned.
+        # The number of returned rows.
         self.output_rows = output_rows
+        # The ID of the SQL pattern.
+        # 
+        # > Call the [DescribePatternPerformance](https://help.aliyun.com/document_detail/612503.html) operation to view the detailed execution metrics of the SQL pattern within a specified time range.
         self.pattern_id = pattern_id
         # The peak memory. Unit: bytes.
         self.peak_memory = peak_memory
         # The query ID.
         self.process_id = process_id
-        # The query properties.
+        # The list of properties that are in effect for the current query.
         # 
-        # >  For information about common properties, see [Config and hint configuration parameters](https://help.aliyun.com/document_detail/408955.html).
+        # > For a list of common properties, see [Config and Hint configuration parameters](https://help.aliyun.com/document_detail/408955.html).
         self.query_properties = query_properties
-        # The amount of time that is consumed for queuing. Unit: milliseconds.
+        # The amount of time that the query waited in a queue before execution. Unit: milliseconds (ms).
         self.queue_time = queue_time
-        # The IP address and port number of the AnalyticDB for MySQL frontend node on which the SQL statement is executed.
+        # The IP address and port number of the AnalyticDB for MySQL frontend node that is used to execute the SQL statement.
         self.rc_host = rc_host
-        # The execution duration rank of operators that are used in the SQL statement.
+        # The ranking of the execution duration of an operator in the SQL statement.
         # 
-        # >  This parameter is returned only for SQL statements whose `Status` parameter is `running`.
+        # > This parameter is returned only for SQL statements that are in the `running` state.
         self.resource_cost_rank = resource_cost_rank
-        # The resource group to which the SQL statement belongs.
+        # The resource pool to which the SQL statement belongs.
         self.resource_group = resource_group
-        # The queried SQL statement.
+        # The details of the SQL statement.
         # 
-        # >  For performance considerations, an SQL statement cannot exceed 5,120 characters in length. Otherwise, the SQL statement is truncated. You can call the [DownloadDiagnosisRecords](https://help.aliyun.com/document_detail/308212.html) operation to download the information about SQL statements that meet a query condition for an AnalyticDB for MySQL cluster, including the complete SQL statements.
+        # > For performance, an SQL statement can be up to 5,120 characters long. Longer statements are truncated. Call the [DownloadDiagnosisRecords](https://help.aliyun.com/document_detail/308212.html) operation to download the summary information of SQL statements that meet the specified conditions, including the complete SQL statements.
         self.sql = sql
-        # Indicates whether the SQL statement is truncated. Valid values:
+        # Indicates whether the length of the query result exceeds the threshold. If the length exceeds the threshold, the query result is truncated. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The length of the query result exceeds the threshold.
+        # 
+        # - **false**: The length of the query result does not exceed the threshold.
         self.sqltruncated = sqltruncated
-        # The maximum length of the SQL statement. 5120 is returned. Unit: characters. SQL statements that exceed this limit are truncated.
+        # The truncation threshold for the SQL statement. The value is fixed at 5,120 characters. SQL statements that exceed this limit are truncated.
         self.sqltruncated_threshold = sqltruncated_threshold
-        # The number of rows scanned.
+        # The number of scanned rows.
         self.scan_rows = scan_rows
         # The amount of scanned data. Unit: bytes.
         self.scan_size = scan_size
-        # The execution start time of the SQL statement. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The start time of the SQL execution. This value is a UNIX timestamp. Unit: milliseconds.
         self.start_time = start_time
         # The state of the SQL statement. Valid values:
         # 
-        # *   **running**
-        # *   **finished**
-        # *   **failed**
+        # - **running**: The statement is running.
+        # 
+        # - **finished**: The statement is complete.
+        # 
+        # - **failed**: The statement failed to be executed.
         self.status = status
-        # The amount of time that is consumed to generate an execution plan. Unit: milliseconds.
+        # The amount of time that was required to generate the execution plan. Unit: milliseconds (ms).
         self.total_planning_time = total_planning_time
-        # The total number of stages generated.
+        # The total number of stages generated for the query.
         self.total_stages = total_stages
-        # The username that is used to execute the SQL statements.
+        # The username used to execute the SQL statement.
         self.user_name = user_name
 
     def validate(self):
@@ -355,7 +363,9 @@ class DescribeDiagnosisRecordsResponseBodyQuerysQueryProperties(DaraModel):
         name: str = None,
         value: str = None,
     ):
+        # The property name.
         self.name = name
+        # The property value.
         self.value = value
 
     def validate(self):

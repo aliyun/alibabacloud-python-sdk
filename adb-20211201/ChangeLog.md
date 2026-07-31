@@ -1,3 +1,65 @@
+2026-07-31 Version: 4.0.0
+- Support API AddKnowledgeFile.
+- Support API CheckFormationSchemaExists.
+- Support API CreateFormationCrawler.
+- Support API CreateSemanticView.
+- Support API DeleteFormationCrawler.
+- Support API DeleteSemanticView.
+- Support API DescribeProcessList.
+- Support API GenerateSqlBySemanticSql.
+- Support API GetFormationCrawler.
+- Support API GetKnowledgeRecall.
+- Support API GetSemanticView.
+- Support API ListSemanticViewNames.
+- Support API QueryFormationInstsByTaskID.
+- Support API QueryFormationTaskByID.
+- Support API QueryFormationTasksByType.
+- Support API RenameSemanticView.
+- Support API ReplaceSemanticView.
+- Support API RunMaterializedViewRecommend.
+- Support API SearchSemanticViews.
+- Support API StartFormationCrawler.
+- Support API StopFormationCrawler.
+- Support API UpdateFormationCrawler.
+- Support API UpdateFormationCrawlerScheduleState.
+- Delete API DescribeLLMAnswer.
+- Delete API DescribeLLMSimilarQuestions.
+- Delete API GetApsManagedDatabases.
+- Delete API ListApsLifecycleStrategy.
+- Delete API ListApsOptimizationStrategy.
+- Delete API ListApsOptimizationTasks.
+- Delete API ModifyClusterConnectionString.
+- Update API AllocateClusterPublicConnection: add request parameters ResourceGroupName.
+- Update API BindAccount: add request parameters RamUserList.
+- Update API CreateAccount: add request parameters RamUserList.
+- Update API CreateDBCluster: add request parameters AINodeNumber.
+- Update API CreateDBCluster: add request parameters AINodeSpec.
+- Update API CreateDBResourceGroup: add request parameters AtmConfig.
+- Update API CreateDBResourceGroup: add request parameters Classification.
+- Update API CreateDBResourceGroup: add request parameters ScalePolicy.
+- Update API CreateDBResourceGroup: add request parameters RayConfig.UserDefinedRequirements.
+- Update API DescribeAccounts: add response parameters Body.AccountList.$.RamUserList.
+- Update API DescribeClusterNetInfo: add request parameters ResourceGroupName.
+- Update API DescribeDBResourceGroup: add response parameters Body.GroupsInfo.$.AtmConfig.
+- Update API DescribeDBResourceGroup: add response parameters Body.GroupsInfo.$.Classification.
+- Update API DescribeDBResourceGroup: add response parameters Body.GroupsInfo.$.ScalePolicy.
+- Update API DescribeDBResourceGroup: add response parameters Body.GroupsInfo.$.RayConfig.RayServePublicAddress.
+- Update API DescribeDBResourceGroup: add response parameters Body.GroupsInfo.$.RayConfig.UserDefinedRequirements.
+- Update API DescribeHistoryTasks: delete request parameters OwnerId.
+- Update API DescribeHistoryTasks: delete request parameters ResourceOwnerId.
+- Update API DescribeHistoryTasksStat: delete request parameters OwnerId.
+- Update API DescribeHistoryTasksStat: delete request parameters ResourceOwnerAccount.
+- Update API DescribeHistoryTasksStat: delete request parameters ResourceOwnerId.
+- Update API DescribeJobResourceUsage: add request parameters SparkAppName.
+- Update API DescribeJobResourceUsage: add response parameters Body.Data.JobAcuUsage.$.SparkAppName.
+- Update API DescribeSQLPatterns: add request parameters SqlPatternHash.
+- Update API ModifyDBCluster: add request parameters AINodeNumber.
+- Update API ModifyDBCluster: add request parameters AINodeSpec.
+- Update API ModifyDBResourceGroup: add request parameters AtmConfig.
+- Update API ModifyDBResourceGroup: add request parameters RayConfig.UserDefinedRequirements.
+- Update API ReleaseClusterPublicConnection: add request parameters ResourceGroupName.
+
+
 2026-01-06 Version: 3.7.1
 - Update API DescribeAuditLogRecords: add response parameters Body.Items.$.HasDiagnosticInfo.
 

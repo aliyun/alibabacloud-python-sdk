@@ -14,9 +14,8 @@ class DescribeClusterNetInfoResponseBody(DaraModel):
         items: main_models.DescribeClusterNetInfoResponseBodyItems = None,
         request_id: str = None,
     ):
-        # The network type of the cluster. Only the Virtual Private Cloud (VPC) network type is supported. **VPC** is returned.
+        # The network type of the cluster. The value is always **VPC**, as this is the only supported network type.
         self.cluster_network_type = cluster_network_type
-        # The queried network information about the cluster.
         self.items = items
         # The request ID.
         self.request_id = request_id
@@ -102,37 +101,13 @@ class DescribeClusterNetInfoResponseBodyItemsAddress(DaraModel):
         vpcid: str = None,
         v_switch_id: str = None,
     ):
-        # The endpoint of the cluster.
-        # 
-        # *   If NetType is set to VPC, the VPC endpoint of the cluster is returned.
-        # *   If NetType is set to Public, the public endpoint of the cluster is returned.
         self.connection_string = connection_string
-        # The prefix of the endpoint.
-        # 
-        # *   If NetType is set to VPC, the prefix of the VPC endpoint is returned.
-        # *   If NetType is set to Public, the prefix of the public endpoint is returned.
         self.connection_string_prefix = connection_string_prefix
-        # The IP address of the endpoint.
-        # 
-        # *   If NetType is set to VPC, the private IP address of the cluster is returned.
-        # *   If NetType is set to Public, the public IP address of the cluster is returned.
         self.ipaddress = ipaddress
-        # The network type of the cluster. Valid values:
-        # 
-        # *   **Public**: Internet.
-        # *   **VPC**: VPC.
         self.net_type = net_type
-        # The port number that is used to connect to the cluster. **3306** is returned.
         self.port = port
-        # The ports.
         self.ports = ports
-        # The VPC ID.
-        # 
-        # >  If NetType is set to Public, an empty string is returned.
         self.vpcid = vpcid
-        # The vSwitch ID of the cluster.
-        # 
-        # >  If NetType is set to Public, an empty string is returned.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -240,14 +215,7 @@ class DescribeClusterNetInfoResponseBodyItemsAddressPortsPorts(DaraModel):
         port: str = None,
         protocol: str = None,
     ):
-        # The port.
         self.port = port
-        # The type of the protocol. Valid values:
-        # 
-        # *   **tcp**
-        # *   **http**
-        # *   **https**
-        # *   **mysql**
         self.protocol = protocol
 
     def validate(self):

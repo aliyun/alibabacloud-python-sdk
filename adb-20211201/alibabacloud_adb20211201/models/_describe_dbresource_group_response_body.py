@@ -13,7 +13,7 @@ class DescribeDBResourceGroupResponseBody(DaraModel):
         groups_info: List[main_models.DescribeDBResourceGroupResponseBodyGroupsInfo] = None,
         request_id: str = None,
     ):
-        # The queried resource groups.
+        # The list of resource group information.
         self.groups_info = groups_info
         # The request ID.
         self.request_id = request_id
@@ -55,7 +55,9 @@ class DescribeDBResourceGroupResponseBody(DaraModel):
 class DescribeDBResourceGroupResponseBodyGroupsInfo(DaraModel):
     def __init__(
         self,
+        atm_config: main_models.DescribeDBResourceGroupResponseBodyGroupsInfoAtmConfig = None,
         auto_stop_interval: str = None,
+        classification: str = None,
         cluster_mode: str = None,
         cluster_size_resource: str = None,
         create_time: str = None,
@@ -77,70 +79,94 @@ class DescribeDBResourceGroupResponseBodyGroupsInfo(DaraModel):
         ray_config: main_models.DescribeDBResourceGroupResponseBodyGroupsInfoRayConfig = None,
         rules: List[main_models.DescribeDBResourceGroupResponseBodyGroupsInfoRules] = None,
         running_cluster_count: int = None,
+        scale_policy: str = None,
         spec_name: str = None,
         status: str = None,
         target_resource_group_name: str = None,
         update_time: str = None,
     ):
+        self.atm_config = atm_config
+        # The automatic stop interval, in the format of a number followed by m (minutes). The value ranges from 0m or 5m to 10080m. A value of 0m indicates that automatic stop is disabled.
         self.auto_stop_interval = auto_stop_interval
-        # A reserved parameter.
+        # The classification of the resource group. Valid values:
+        # 
+        # - SQL
+        # - SparkSQL
+        # - MultiCluster
+        # - AI
+        self.classification = classification
+        # A reserved parameter. Not applicable.
         self.cluster_mode = cluster_mode
-        # A reserved parameter.
+        # A reserved parameter. Not applicable.
         self.cluster_size_resource = cluster_size_resource
-        # The time when the resource group was created. The time follows the ISO 8601 standard in the *yyyy-MM-ddTHH:mm:ssZ* format. The time is displayed in UTC.
+        # The time when the resource group was created. The time is in UTC and in the format of <i>yyyy-MM-ddTHH:mm:ssZ</i>.
         self.create_time = create_time
-        # The minimum amount of elastic computing resources.
+        # The minimum elastic computing resources. Unit: ACUs.
         self.elastic_min_compute_resource = elastic_min_compute_resource
-        # Indicates whether the preemptible instance feature is enabled for the resource group. After the preemptible instance feature is enabled, you are charged for resources at a lower unit price but the resources are probably released. Valid values:
+        # Indicates whether the spot instance feature is enabled for the resource group. When the spot instance feature is enabled, the unit price of resources is reduced, but the resources may be released. Valid values:
+        # - **True**: The spot instance feature is enabled.
+        # - **False**: The spot instance feature is disabled.
         # 
-        # *   **True**
-        # *   **False**
-        # 
-        # The True value is returned only for job resource groups.
+        # Only Job-type resource groups can be set to True.
         self.enable_spot = enable_spot
+        # The engine type.
         self.engine = engine
+        # The engine parameters.
         self.engine_params = engine_params
+        # The GPU time-sharing elastic plan.
         self.gpu_elastic_plan = gpu_elastic_plan
-        # The name of the resource group.
+        # The resource group name.
         self.group_name = group_name
-        # The type of the resource group. Valid values:
-        # 
-        # *   **Interactive**
-        # *   **Job**
-        # 
-        # >  For more information about resource groups, see [Resource groups](https://help.aliyun.com/document_detail/428610.html).
+        # The resource group type. Valid values:
+        # - **Interactive**
+        # - **Job**
+        # > For more information about resource groups in Data Lakehouse Edition, see [Resource group overview (Data Lakehouse Edition)](https://help.aliyun.com/document_detail/428610.html).
         self.group_type = group_type
-        # The Resource Access Management (RAM) user that is associated with the resource group.
+        # The Resource Access Management (RAM) users attached to the resource group.
         self.group_users = group_users
-        # A reserved parameter.
+        # A reserved parameter. Not applicable.
         self.max_cluster_count = max_cluster_count
-        # The maximum amount of reserved computing resources.
+        # The maximum reserved computing resources. Unit: ACUs.
         self.max_compute_resource = max_compute_resource
+        # The maximum number of GPUs.
         self.max_gpu_quantity = max_gpu_quantity
+        # The job routing rule message.
+        # 
         # This parameter is required.
         self.message = message
-        # A reserved parameter.
+        # A reserved parameter. Not applicable.
         self.min_cluster_count = min_cluster_count
-        # The minimum amount of reserved computing resources.
+        # The minimum reserved computing resources. Unit: ACUs.
         self.min_compute_resource = min_compute_resource
+        # The minimum number of GPUs.
         self.min_gpu_quantity = min_gpu_quantity
+        # The Ray configuration information.
         self.ray_config = ray_config
-        # The job resubmission rules.
+        # The job routing rules.
         self.rules = rules
-        # A reserved parameter.
+        # A reserved parameter. Not applicable.
         self.running_cluster_count = running_cluster_count
+        # The scale-out policy of the resource group. Valid values:
+        # 
+        # - AutoScaling: enables the AutoScaling automatic scaling policy.
+        # - Disable: disables automatic scaling.
+        # - MultiCluster: enables the MultiCluster automatic scaling policy.
+        self.scale_policy = scale_policy
+        # The specification name.
         self.spec_name = spec_name
         # The status of the resource group. Valid values:
-        # 
-        # *   **creating**: The resource group is being created.
-        # *   **ok**: The resource group is created.
-        # *   **pendingdelete**: The resource group is pending to be deleted.
+        # - **creating**: being created
+        # - **ok**: created
+        # - **pendingdelete**: pending deletion
         self.status = status
+        # The name of the target resource group.
         self.target_resource_group_name = target_resource_group_name
-        # The time when the resource group was updated. The time follows the ISO 8601 standard in the *yyyy-MM-ddTHH:mm:ssZ* format. The time is displayed in UTC.
+        # The time when the resource group was last updated. The time is in UTC and in the format of <i>yyyy-MM-ddTHH:mm:ssZ</i>.
         self.update_time = update_time
 
     def validate(self):
+        if self.atm_config:
+            self.atm_config.validate()
         if self.gpu_elastic_plan:
             self.gpu_elastic_plan.validate()
         if self.ray_config:
@@ -155,8 +181,14 @@ class DescribeDBResourceGroupResponseBodyGroupsInfo(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.atm_config is not None:
+            result['AtmConfig'] = self.atm_config.to_map()
+
         if self.auto_stop_interval is not None:
             result['AutoStopInterval'] = self.auto_stop_interval
+
+        if self.classification is not None:
+            result['Classification'] = self.classification
 
         if self.cluster_mode is not None:
             result['ClusterMode'] = self.cluster_mode
@@ -223,6 +255,9 @@ class DescribeDBResourceGroupResponseBodyGroupsInfo(DaraModel):
         if self.running_cluster_count is not None:
             result['RunningClusterCount'] = self.running_cluster_count
 
+        if self.scale_policy is not None:
+            result['ScalePolicy'] = self.scale_policy
+
         if self.spec_name is not None:
             result['SpecName'] = self.spec_name
 
@@ -239,8 +274,15 @@ class DescribeDBResourceGroupResponseBodyGroupsInfo(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AtmConfig') is not None:
+            temp_model = main_models.DescribeDBResourceGroupResponseBodyGroupsInfoAtmConfig()
+            self.atm_config = temp_model.from_map(m.get('AtmConfig'))
+
         if m.get('AutoStopInterval') is not None:
             self.auto_stop_interval = m.get('AutoStopInterval')
+
+        if m.get('Classification') is not None:
+            self.classification = m.get('Classification')
 
         if m.get('ClusterMode') is not None:
             self.cluster_mode = m.get('ClusterMode')
@@ -310,6 +352,9 @@ class DescribeDBResourceGroupResponseBodyGroupsInfo(DaraModel):
         if m.get('RunningClusterCount') is not None:
             self.running_cluster_count = m.get('RunningClusterCount')
 
+        if m.get('ScalePolicy') is not None:
+            self.scale_policy = m.get('ScalePolicy')
+
         if m.get('SpecName') is not None:
             self.spec_name = m.get('SpecName')
 
@@ -331,11 +376,11 @@ class DescribeDBResourceGroupResponseBodyGroupsInfoRules(DaraModel):
         query_time: str = None,
         target_group_name: str = None,
     ):
-        # The name of the resource group.
+        # The resource group name.
         self.group_name = group_name
-        # The execution duration of the query. Unit: milliseconds.
+        # The query execution time threshold. Unit: milliseconds (ms).
         self.query_time = query_time
-        # The name of the destination resource group.
+        # The name of the target resource group.
         self.target_group_name = target_group_name
 
     def validate(self):
@@ -383,20 +428,40 @@ class DescribeDBResourceGroupResponseBodyGroupsInfoRayConfig(DaraModel):
         ray_cluster_address: str = None,
         ray_dashboard_address: str = None,
         ray_grafana_address: str = None,
+        ray_serve_public_address: str = None,
         storage_mounts: List[main_models.DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigStorageMounts] = None,
+        user_defined_requirements: str = None,
         worker_groups: List[main_models.DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigWorkerGroups] = None,
     ):
+        # The Ray application configuration.
         self.app_config = app_config
+        # The Ray cluster type. Valid values:
+        # 
+        # - BASIC: basic type, non-high-availability
+        # 
+        # - HIGH_AVAILABILITY: high-availability type
         self.category = category
+        # Indicates whether ENI is enabled.
         self.enable_user_eni = enable_user_eni
+        # The allocation unit of the head node.
         self.head_allocate_unit = head_allocate_unit
+        # The disk size of the head node.
         self.head_disk_capacity = head_disk_capacity
+        # The node specifications of the head node.
         self.head_spec = head_spec
+        # The resource type of the head node.
         self.head_spec_type = head_spec_type
+        # The Ray cluster address.
         self.ray_cluster_address = ray_cluster_address
+        # The Ray Dashboard address.
         self.ray_dashboard_address = ray_dashboard_address
+        # The Ray Grafana address.
         self.ray_grafana_address = ray_grafana_address
+        self.ray_serve_public_address = ray_serve_public_address
+        # The list of storage mounts.
         self.storage_mounts = storage_mounts
+        self.user_defined_requirements = user_defined_requirements
+        # The list of Ray worker groups.
         self.worker_groups = worker_groups
 
     def validate(self):
@@ -446,10 +511,16 @@ class DescribeDBResourceGroupResponseBodyGroupsInfoRayConfig(DaraModel):
         if self.ray_grafana_address is not None:
             result['RayGrafanaAddress'] = self.ray_grafana_address
 
+        if self.ray_serve_public_address is not None:
+            result['RayServePublicAddress'] = self.ray_serve_public_address
+
         result['StorageMounts'] = []
         if self.storage_mounts is not None:
             for k1 in self.storage_mounts:
                 result['StorageMounts'].append(k1.to_map() if k1 else None)
+
+        if self.user_defined_requirements is not None:
+            result['UserDefinedRequirements'] = self.user_defined_requirements
 
         result['WorkerGroups'] = []
         if self.worker_groups is not None:
@@ -491,11 +562,17 @@ class DescribeDBResourceGroupResponseBodyGroupsInfoRayConfig(DaraModel):
         if m.get('RayGrafanaAddress') is not None:
             self.ray_grafana_address = m.get('RayGrafanaAddress')
 
+        if m.get('RayServePublicAddress') is not None:
+            self.ray_serve_public_address = m.get('RayServePublicAddress')
+
         self.storage_mounts = []
         if m.get('StorageMounts') is not None:
             for k1 in m.get('StorageMounts'):
                 temp_model = main_models.DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigStorageMounts()
                 self.storage_mounts.append(temp_model.from_map(k1))
+
+        if m.get('UserDefinedRequirements') is not None:
+            self.user_defined_requirements = m.get('UserDefinedRequirements')
 
         self.worker_groups = []
         if m.get('WorkerGroups') is not None:
@@ -516,12 +593,19 @@ class DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigWorkerGroups(DaraMod
         worker_spec_name: str = None,
         worker_spec_type: str = None,
     ):
+        # The allocation unit.
         self.allocate_unit = allocate_unit
+        # The name of the Ray worker group.
         self.group_name = group_name
+        # The maximum number of workers.
         self.max_worker_quantity = max_worker_quantity
+        # The minimum number of workers.
         self.min_worker_quantity = min_worker_quantity
+        # The disk size per worker.
         self.worker_disk_capacity = worker_disk_capacity
+        # The worker specification name.
         self.worker_spec_name = worker_spec_name
+        # The Ray worker resource type.
         self.worker_spec_type = worker_spec_type
 
     def validate(self):
@@ -586,7 +670,9 @@ class DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigStorageMounts(DaraMo
         mount_path: str = None,
         storage_id: int = None,
     ):
+        # The mount path.
         self.mount_path = mount_path
+        # The storage ID.
         self.storage_id = storage_id
 
     def validate(self):
@@ -622,8 +708,11 @@ class DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigAppConfig(DaraModel)
         app_type: str = None,
         image_selector: main_models.DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigAppConfigImageSelector = None,
     ):
+        # The Ray application name.
         self.app_name = app_name
+        # The Ray application type.
         self.app_type = app_type
+        # The image configuration.
         self.image_selector = image_selector
 
     def validate(self):
@@ -667,8 +756,11 @@ class DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigAppConfigImageSelect
         inference_engine: str = None,
         llm_model: str = None,
     ):
+        # The image.
         self.image = image
+        # The inference engine.
         self.inference_engine = inference_engine
+        # The LLM model.
         self.llm_model = llm_model
 
     def validate(self):
@@ -709,7 +801,9 @@ class DescribeDBResourceGroupResponseBodyGroupsInfoGpuElasticPlan(DaraModel):
         enabled: bool = None,
         rules: List[main_models.DescribeDBResourceGroupResponseBodyGroupsInfoGpuElasticPlanRules] = None,
     ):
+        # Indicates whether the plan is enabled.
         self.enabled = enabled
+        # The list of rules.
         self.rules = rules
 
     def validate(self):
@@ -752,7 +846,9 @@ class DescribeDBResourceGroupResponseBodyGroupsInfoGpuElasticPlanRules(DaraModel
         end_cron_expression: str = None,
         start_cron_expression: str = None,
     ):
+        # The end time, specified as a cron expression. The interval must be at least 1 hour.
         self.end_cron_expression = end_cron_expression
+        # The start time, specified as a cron expression. The interval must be at least 1 hour.
         self.start_cron_expression = start_cron_expression
 
     def validate(self):
@@ -778,6 +874,113 @@ class DescribeDBResourceGroupResponseBodyGroupsInfoGpuElasticPlanRules(DaraModel
 
         if m.get('StartCronExpression') is not None:
             self.start_cron_expression = m.get('StartCronExpression')
+
+        return self
+
+class DescribeDBResourceGroupResponseBodyGroupsInfoAtmConfig(DaraModel):
+    def __init__(
+        self,
+        auth_node_num: str = None,
+        auth_node_spec: str = None,
+        insert_node_num: str = None,
+        insert_node_spec: str = None,
+        select_node_cache_size: str = None,
+        select_node_num: str = None,
+        select_node_spec: str = None,
+        storage_node_disk_size: str = None,
+        storage_node_disk_type: str = None,
+        storage_node_num: str = None,
+        storage_node_spec: str = None,
+    ):
+        self.auth_node_num = auth_node_num
+        self.auth_node_spec = auth_node_spec
+        self.insert_node_num = insert_node_num
+        self.insert_node_spec = insert_node_spec
+        self.select_node_cache_size = select_node_cache_size
+        self.select_node_num = select_node_num
+        self.select_node_spec = select_node_spec
+        self.storage_node_disk_size = storage_node_disk_size
+        self.storage_node_disk_type = storage_node_disk_type
+        self.storage_node_num = storage_node_num
+        self.storage_node_spec = storage_node_spec
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.auth_node_num is not None:
+            result['AuthNodeNum'] = self.auth_node_num
+
+        if self.auth_node_spec is not None:
+            result['AuthNodeSpec'] = self.auth_node_spec
+
+        if self.insert_node_num is not None:
+            result['InsertNodeNum'] = self.insert_node_num
+
+        if self.insert_node_spec is not None:
+            result['InsertNodeSpec'] = self.insert_node_spec
+
+        if self.select_node_cache_size is not None:
+            result['SelectNodeCacheSize'] = self.select_node_cache_size
+
+        if self.select_node_num is not None:
+            result['SelectNodeNum'] = self.select_node_num
+
+        if self.select_node_spec is not None:
+            result['SelectNodeSpec'] = self.select_node_spec
+
+        if self.storage_node_disk_size is not None:
+            result['StorageNodeDiskSize'] = self.storage_node_disk_size
+
+        if self.storage_node_disk_type is not None:
+            result['StorageNodeDiskType'] = self.storage_node_disk_type
+
+        if self.storage_node_num is not None:
+            result['StorageNodeNum'] = self.storage_node_num
+
+        if self.storage_node_spec is not None:
+            result['StorageNodeSpec'] = self.storage_node_spec
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthNodeNum') is not None:
+            self.auth_node_num = m.get('AuthNodeNum')
+
+        if m.get('AuthNodeSpec') is not None:
+            self.auth_node_spec = m.get('AuthNodeSpec')
+
+        if m.get('InsertNodeNum') is not None:
+            self.insert_node_num = m.get('InsertNodeNum')
+
+        if m.get('InsertNodeSpec') is not None:
+            self.insert_node_spec = m.get('InsertNodeSpec')
+
+        if m.get('SelectNodeCacheSize') is not None:
+            self.select_node_cache_size = m.get('SelectNodeCacheSize')
+
+        if m.get('SelectNodeNum') is not None:
+            self.select_node_num = m.get('SelectNodeNum')
+
+        if m.get('SelectNodeSpec') is not None:
+            self.select_node_spec = m.get('SelectNodeSpec')
+
+        if m.get('StorageNodeDiskSize') is not None:
+            self.storage_node_disk_size = m.get('StorageNodeDiskSize')
+
+        if m.get('StorageNodeDiskType') is not None:
+            self.storage_node_disk_type = m.get('StorageNodeDiskType')
+
+        if m.get('StorageNodeNum') is not None:
+            self.storage_node_num = m.get('StorageNodeNum')
+
+        if m.get('StorageNodeSpec') is not None:
+            self.storage_node_spec = m.get('StorageNodeSpec')
 
         return self
 

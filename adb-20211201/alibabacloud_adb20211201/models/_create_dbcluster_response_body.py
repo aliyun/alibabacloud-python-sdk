@@ -12,13 +12,13 @@ class CreateDBClusterResponseBody(DaraModel):
         request_id: str = None,
         resource_group_id: str = None,
     ):
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
         self.dbcluster_id = dbcluster_id
         # The order ID.
         self.order_id = order_id
         # The request ID.
         self.request_id = request_id
-        # The default resource group ID.
+        # The ID of the default resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):

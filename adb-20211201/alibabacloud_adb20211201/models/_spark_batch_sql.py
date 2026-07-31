@@ -23,17 +23,36 @@ class SparkBatchSQL(DaraModel):
         statements: List[main_models.SparkBatchSQLStatement] = None,
         uid: int = None,
     ):
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
+        # The error message for the query execution.
         self.err_message = err_message
+        # The text of the query.
         self.query = query
+        # The execution end timestamp of the query.
         self.query_end_time = query_end_time
+        # The query ID.
         self.query_id = query_id
+        # The execution start timestamp of the query.
         self.query_start_time = query_start_time
+        # The execution status of the query. Valid values:
+        # 
+        # *   FAILED
+        # *   RUNNING
+        # *   CANCELED
+        # *   PENDING
+        # *   SUBMITTED
+        # *   FINISHED
         self.query_state = query_state
+        # The submission timestamp of the query.
         self.query_submission_time = query_submission_time
+        # The name of the resource group.
         self.resource_group_name = resource_group_name
+        # The name of the database for the query execution.
         self.schema = schema
+        # The execution results of the SQL statements.
         self.statements = statements
+        # The Alibaba Cloud account ID.
         self.uid = uid
 
     def validate(self):

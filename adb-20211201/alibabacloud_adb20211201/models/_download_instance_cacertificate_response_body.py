@@ -10,7 +10,7 @@ class DownloadInstanceCACertificateResponseBody(DaraModel):
         download_url: str = None,
         request_id: str = None,
     ):
-        # The OSS URL of the downloaded certificate.
+        # The certificate download path.
         self.download_url = download_url
         # The request ID.
         self.request_id = request_id

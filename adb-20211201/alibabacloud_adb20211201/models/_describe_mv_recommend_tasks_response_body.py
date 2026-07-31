@@ -16,15 +16,15 @@ class DescribeMvRecommendTasksResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The data returned.
+        # The returned data.
         self.data = data
         # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
-        # The total number of entries that are returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -81,13 +81,13 @@ class DescribeMvRecommendTasksResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The list of recommended tasks for materialized views.
+        # The list of materialized view recommendation tasks.
         self.mv_recommend_task_models = mv_recommend_task_models
         # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The total number of entries that are returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):

@@ -10,13 +10,14 @@ class CreateOssSubDirectoryRequest(DaraModel):
         dbcluster_id: str = None,
         path: str = None,
     ):
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
+        # <props="china">The ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
+        # <props="intl">The ID of the Data Lakehouse Edition cluster.
         # 
-        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/612397.html) operation to query the information about all AnalyticDB for MySQL Data Lakehouse Edition clusters within a region, including cluster IDs.
+        # >You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/612397.html) operation to query the information about all clusters in a region, including cluster IDs.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The OSS path where you want to create a subdirectory.
+        # The full OSS path of the directory to create.
         # 
         # This parameter is required.
         self.path = path

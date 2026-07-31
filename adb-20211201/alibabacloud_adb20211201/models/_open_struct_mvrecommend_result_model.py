@@ -17,11 +17,17 @@ class OpenStructMVRecommendResultModel(DaraModel):
         subquery_id: int = None,
         support_incremental_refresh: bool = None,
     ):
+        # The number of accelerated queries.
         self.accelerated_queries_count = accelerated_queries_count
+        # The base table associated with the subquery.
         self.base_tables = base_tables
+        # Estimated bytes scanned reduction by current materialized view from correlated parent queries (posterior calculation).
         self.saved_scanbytes = saved_scanbytes
+        # The extracted public subquery.
         self.subquery = subquery
+        # The ID of the subquery.
         self.subquery_id = subquery_id
+        # Whether the current subquery supports incremental refresh.
         self.support_incremental_refresh = support_incremental_refresh
 
     def validate(self):

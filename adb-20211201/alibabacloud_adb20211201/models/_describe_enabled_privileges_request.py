@@ -12,14 +12,14 @@ class DescribeEnabledPrivilegesRequest(DaraModel):
         region_id: str = None,
     ):
         # The name of the database account.
-        # 
-        # >  You can call the [DescribeAccounts](https://help.aliyun.com/document_detail/612430.html) operation to query the information about database accounts for a cluster, including the account name.
+        # > You can call the [DescribeAccounts](https://help.aliyun.com/document_detail/612430.html) operation to query the database account information of a specified cluster, including the account name.
         self.account_name = account_name
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # <props="china">The ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
+        # <props="intl">The ID of the Data Lakehouse Edition cluster..
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The region ID of the cluster.
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id

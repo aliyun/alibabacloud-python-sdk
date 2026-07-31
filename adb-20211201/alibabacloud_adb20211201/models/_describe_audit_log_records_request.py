@@ -27,68 +27,82 @@ class DescribeAuditLogRecordsRequest(DaraModel):
         succeed: str = None,
         user: str = None,
     ):
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # <props="china">The ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
+        # <props="intl">The ID of the Data Lakehouse Edition cluster.
         # 
-        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all clusters in a region.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The name of the database on which the SQL statement was executed.
         self.dbname = dbname
-        # The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
+        # The end of the time range to query. The time must be in UTC and in the `yyyy-MM-ddTHH:mmZ` format.
         # 
-        # > 
-        # 
-        # *   The end time must be later than the start time.
-        # 
-        # *   The maximum time range that can be specified is 24 hours.
+        # > - The end time must be later than the start time.
+        # >
+        # > - The time range cannot exceed 24 hours.
         self.end_time = end_time
-        # The IP address and port number of the client that is used to execute the SQL statement.
+        # The client IP address and port number.
         self.host_address = host_address
-        # The order in which to sort the retrieved entries by field. Specify this parameter in the JSON format. The value is an ordered array that uses the order of the input array and contains `Field` and `Type`. Example: `[{"Field":"ExecutionStartTime","Type":"Desc"},{"Field":"ScanRows","Type":"Asc"}]`. Fields:
+        # Specifies the fields for sorting the results. The value is a JSON string that is an array of objects. The order of objects in the array defines the sort priority. Each object contains the`Field` and`Type` parameters. Example: `[{"Field":"ExecutionStartTime","Type":"Desc"},{"Field":"ScanRows","Type":"Asc"}]`.
         # 
-        # *   `Field`: the field that is used to sort the retrieved entries. Valid values:
+        # - `Field`: the field by which to sort the results. Valid values:
         # 
-        #     *   **HostAddress**: the IP address of the client that is used to connect to the database.
-        #     *   **UserName**: the username.
-        #     *   **ExecutionStartTime**: the start time of the query execution.
-        #     *   **QueryTime**: the amount of time consumed to execute the SQL statement.
-        #     *   **PeakMemoryUsage**: the maximum memory usage when the SQL statement is executed.
-        #     *   **ScanRows**: the number of rows to be scanned from a data source in the task.
-        #     *   **ScanSize**: the amount of data to be scanned.
-        #     *   **ScanTime**: the total amount of time consumed to scan data.
-        #     *   **PlanningTime**: the amount of time consumed to generate execution plans.
-        #     *   **WallTime**: the accumulated CPU Time values of all operators in the query on each node.
-        #     *   **ProcessID**: the process ID.
+        #   - **HostAddress**: the client IP address.
         # 
-        # *   `Type`: the sorting type of the retrieved entries. Valid values:
+        #   - **UserName**: the username.
         # 
-        #     *   **Desc**: descending order.
-        #     *   **Asc**: ascending order.
+        #   - **ExecutionStartTime**: the execution start time of the SQL statement.
+        # 
+        #   - **QueryTime**: the execution duration.
+        # 
+        #   - **PeakMemoryUsage**: the peak memory usage of the SQL statement.
+        # 
+        #   - **ScanRows**: the number of rows scanned by a task that involves a data source.
+        # 
+        #   - **ScanSize**: the amount of data scanned.
+        # 
+        #   - **ScanTime**: the time taken for the data scan.
+        # 
+        #   - **PlanningTime**: the time taken to generate the execution plan.
+        # 
+        #   - **WallTime**: the total CPU time of all operators on all nodes.
+        # 
+        #   - **ProcessID**: the process ID.
+        # 
+        # - `Type`: the sort order. Valid values:
+        # 
+        #   - **Desc**: descending order.
+        # 
+        #   - **Asc**: ascending order.
         self.order = order
-        # The sorting order of the retrieved entries. Valid values:
+        # The sort order for the results based on execution time. Valid values:
         # 
-        # *   **asc**: sorts the retrieved entries by time in ascending order.
-        # *   **desc**: sorts the retrieved entries by time in descending order.
+        # - **asc**: ascending order.
+        # 
+        # - **desc**: descending order.
         self.order_type = order_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number. Pages start from page 1. Default value: **1**.
+        # The page number. The value must be an integer that is greater than 0. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page. Valid values:
+        # The page size. Valid values:
         # 
-        # *   **10** (default)
-        # *   **30**
-        # *   **50**
-        # *   **100**
+        # - **10** (default)
+        # 
+        # - **30**
+        # 
+        # - **50**
+        # 
+        # - **100**
         self.page_size = page_size
         # A reserved parameter.
         self.proxy_user = proxy_user
-        # The keyword based on which audit logs are queried. You can set this parameter to a value of the STRING type.
+        # A keyword used to perform a fuzzy search on the returned results.
         self.query_keyword = query_keyword
-        # The region ID of the cluster.
+        # The region ID.
         # 
-        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/454314.html) operation to query the most recent region list.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/454314.html) operation to query available regions.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -96,26 +110,33 @@ class DescribeAuditLogRecordsRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The type of the SQL statement. Valid values:
         # 
-        # *   **DELETE**
-        # *   **SELECT**
-        # *   **UPDATE**
-        # *   **INSERT INTO SELECT**
-        # *   **ALTER**
-        # *   **DROP**
-        # *   **CREATE**
+        # - **DELETE**
         # 
-        # >  You can query only a single type of SQL statements at a time. If you leave this parameter empty, all types of SQL statements are queried.
+        # - **SELECT**
+        # 
+        # - **UPDATE**
+        # 
+        # - **INSERT INTO SELECT**
+        # 
+        # - **ALTER**
+        # 
+        # - **DROP**
+        # 
+        # - **CREATE**
+        # 
+        # > You can specify only one type per request. If this parameter is not specified, all types are queried by default.
         self.sql_type = sql_type
-        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
+        # The start of the time range to query. The time must be in UTC and in the `yyyy-MM-ddTHH:mmZ` format.
         # 
-        # > SQL audit logs can be queried only when SQL audit is enabled. Only SQL audit logs within the last 30 days can be queried. If SQL audit was disabled and re-enabled, only SQL audit logs from the time when SQL audit was re-enabled can be queried.
+        # > You can query SQL audit logs only when this feature is enabled. Logs are available for the last 30 days. If you disable and then re-enable SQL audit, only logs generated after the feature was re-enabled are returned.
         self.start_time = start_time
-        # Specifies whether the execution of the SQL statement succeeds. Valid values:
+        # Indicates whether the SQL statement was successfully executed. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The SQL statement succeeded.
+        # 
+        # - **false**: The SQL statement failed.
         self.succeed = succeed
-        # The username that is used to execute the SQL statement.
+        # The username that executed the SQL statement.
         self.user = user
 
     def validate(self):

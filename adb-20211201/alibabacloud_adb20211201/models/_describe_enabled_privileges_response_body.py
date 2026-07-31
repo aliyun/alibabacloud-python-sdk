@@ -13,7 +13,7 @@ class DescribeEnabledPrivilegesResponseBody(DaraModel):
         data: List[main_models.DescribeEnabledPrivilegesResponseBodyData] = None,
         request_id: str = None,
     ):
-        # The queried permission level and permissions.
+        # The supported permission levels and the list of permissions.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -63,7 +63,7 @@ class DescribeEnabledPrivilegesResponseBodyData(DaraModel):
         # 
         # This parameter is required.
         self.description = description
-        # The queried permissions.
+        # The list of supported permissions.
         # 
         # This parameter is required.
         self.privileges = privileges
@@ -118,9 +118,9 @@ class DescribeEnabledPrivilegesResponseBodyDataPrivileges(DaraModel):
         description: str = None,
         key: str = None,
     ):
-        # The description of the permission.
+        # The permission description.
         self.description = description
-        # The name of the permission.
+        # The permission name.
         self.key = key
 
     def validate(self):

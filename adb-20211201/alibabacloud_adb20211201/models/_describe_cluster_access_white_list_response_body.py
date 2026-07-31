@@ -13,7 +13,6 @@ class DescribeClusterAccessWhiteListResponseBody(DaraModel):
         items: main_models.DescribeClusterAccessWhiteListResponseBodyItems = None,
         request_id: str = None,
     ):
-        # The queried IP address whitelists.
         self.items = items
         # The request ID.
         self.request_id = request_id
@@ -88,15 +87,8 @@ class DescribeClusterAccessWhiteListResponseBodyItemsIPArray(DaraModel):
         dbcluster_iparray_name: str = None,
         security_iplist: str = None,
     ):
-        # The attribute of the IP address whitelist.
-        # 
-        # >  The IP address whitelists that have the **hidden** attribute are not displayed in the console. These IP address whitelists are used to access services such as Data Transmission Service (DTS) and PolarDB.
         self.dbcluster_iparray_attribute = dbcluster_iparray_attribute
-        # The name of the IP address whitelist.
-        # 
-        # Each cluster supports up to 50 IP address whitelists.
         self.dbcluster_iparray_name = dbcluster_iparray_name
-        # The IP addresses in the IP address whitelist. Up to 500 IP addresses can be returned. Multiple IP addresses are separated by commas (,).
         self.security_iplist = security_iplist
 
     def validate(self):

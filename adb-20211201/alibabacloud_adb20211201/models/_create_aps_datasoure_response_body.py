@@ -15,25 +15,24 @@ class CreateApsDatasoureResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code or the error code.
+        # The API status or POP error code.
         self.code = code
         # The cluster ID.
         self.dbcluster_id = dbcluster_id
-        # The information about the cluster resource usage.
+        # The detailed resource usage of the cluster.
         self.data = data
-        # The response code. The status code 200 indicates that the request was successful.
+        # The HTTP status code returned. A value of 200 indicates that the request was successful.
         self.http_status_code = http_status_code
-        # The returned message. Valid values:
-        # 
-        # *   If the request was successful, a success message is returned.****
-        # *   If the request failed, an error message is returned.
+        # The additional information of the call result. Valid values:
+        # - If the request was successful, **Success** is returned. 
+        # - If the request failed, a specific error code is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the dry run succeeds. Valid values:
+        # The precheck result. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **success**: The check passed.
+        # - **false**: The check failed.
         self.success = success
 
     def validate(self):

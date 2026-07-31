@@ -10,8 +10,7 @@ class GetADBSparkNecessaryRAMPermissionsRequest(DaraModel):
         dbcluster_id: str = None,
     ):
         # The cluster ID.
-        # 
-        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
+        # > Call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all clusters in a specific region.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id

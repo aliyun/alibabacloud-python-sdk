@@ -22,7 +22,7 @@ class UpdateApsWebhookRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The array of webhooks.
+        # The webhook array.
         self.webhook = webhook
 
     def validate(self):
@@ -74,17 +74,20 @@ class UpdateApsWebhookRequestWebhook(DaraModel):
         webhook_id: int = None,
         webhook_type: str = None,
     ):
-        # Signed key.
+        # The signing key.
         self.key = key
-        # The name of the webhook.
+        # The webhook name.
         self.name = name
-        # The URL of the request.
+        # The request URL.
         self.url = url
-        # The ID of the webhook.
+        # Webhook ID。
         # 
         # This parameter is required.
         self.webhook_id = webhook_id
-        # The notification method. Valid values: dingtalk. lark.
+        # The notification method. Valid values:
+        # 
+        # - dingtalk: DingTalk.
+        # - lark: Lark.
         self.webhook_type = webhook_type
 
     def validate(self):

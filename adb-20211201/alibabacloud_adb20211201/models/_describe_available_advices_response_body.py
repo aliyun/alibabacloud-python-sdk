@@ -17,21 +17,23 @@ class DescribeAvailableAdvicesResponseBody(DaraModel):
         schema_table_names: List[str] = None,
         total_count: int = None,
     ):
-        # The queried suggestions.
+        # The optimization advice items.
         self.items = items
-        # The page number. Pages start from page 1. Default value: 1.
+        # The page number. The value is greater than 0 and less than or equal to the maximum value of the integer data type. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page. Valid values:
+        # The number of entries to return on each page. Valid values:
         # 
-        # *   **30** (default)
-        # *   **50**
-        # *   **100**
+        # - **30** (default)
+        # 
+        # - **50**
+        # 
+        # - **100**
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The name of the table in the DatabaseName.TableName format.
+        # The names of databases and tables.
         self.schema_table_names = schema_table_names
-        # The total number of entries returned.
+        # The total number of entries returned. The value is greater than or equal to 0 and less than or equal to the maximum value of the integer data type. Default value: 0.
         self.total_count = total_count
 
     def validate(self):
@@ -108,35 +110,39 @@ class DescribeAvailableAdvicesResponseBodyItems(DaraModel):
         table_name: str = None,
         total_count: int = None,
     ):
-        # The date when the suggestion is generated. The date is in the yyyyMMdd format.
+        # The date when the advice was generated. The date is displayed in the yyyyMMdd format.
         self.advice_date = advice_date
-        # The suggestion ID.
+        # The advice ID.
         self.advice_id = advice_id
-        # The type of the suggestion. Valid values:
+        # The type of the advice. Valid values:
         # 
-        # *   **INDEX**: index optimization.
-        # *   **TIERING**: hot and cold data optimization.
+        # - **INDEX**: index optimization.
+        # 
+        # - **TIERING**: hot and cold data optimization.
         self.advice_type = advice_type
-        # The benefit of the suggestion.
+        # The benefits of the advice.
         self.benefit = benefit
+        # The index fields.
         self.index_fields = index_fields
-        # The page number. Pages start from page 1. Default value: 1.
+        # The page number. The value is greater than 0 and less than or equal to the maximum value of the integer data type. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page. Valid values:
+        # The number of entries to return on each page. Valid values:
         # 
-        # *   **30** (default)
-        # *   **50**
-        # *   **100**
+        # - **30** (default)
+        # 
+        # - **50**
+        # 
+        # - **100**
         self.page_size = page_size
-        # The reason why the suggestion was generated.
+        # The reason why the optimization advice is generated.
         self.reason = reason
-        # The SQL statement that is used to apply the suggestion.
+        # The SQL statement that is used to apply the advice.
         self.sql = sql
-        # The name of the database.
+        # The database name.
         self.schema_name = schema_name
-        # The name of the table.
+        # The table name.
         self.table_name = table_name
-        # The total number of entries returned.
+        # The total number of entries returned. The value is greater than or equal to 0 and less than or equal to the maximum value of the integer data type. Default value: 0.
         self.total_count = total_count
 
     def validate(self):

@@ -14,9 +14,13 @@ class SerDeInfoModel(DaraModel):
         ser_de_id: int = None,
         serialization_lib: str = None,
     ):
+        # The name of the serialization or deserialization information.
         self.name = name
+        # The serialization or deserialization configuration parameter.
         self.parameters = parameters
+        # The ID of the serialization or deserialization information.
         self.ser_de_id = ser_de_id
+        # The library that is used for serialization.
         self.serialization_lib = serialization_lib
 
     def validate(self):

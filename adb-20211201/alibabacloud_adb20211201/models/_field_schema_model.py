@@ -35,32 +35,59 @@ class FieldSchemaModel(DaraModel):
         update_time: str = None,
         value_type: str = None,
     ):
+        # Indicates whether the column is auto-incremented.
         self.auto_increment = auto_increment
+        # The original name of the column.
         self.column_raw_name = column_raw_name
+        # The description of the column.
         self.comment = comment
+        # Indicates whether FLOAT data is compressed to SHORT data.
         self.compress_float_use_short = compress_float_use_short
+        # The compression method of the column.
         self.compression = compression
+        # The time when the column was created.
         self.create_time = create_time
+        # The data type of the column.
         self.data_type = data_type
+        # The logical name of the database.
         self.database_name = database_name
+        # The default value of the column.
         self.default_value = default_value
+        # The delimiter of the column.
         self.delimiter = delimiter
+        # The encryption method of the column.
         self.encode = encode
+        # Indicates whether the column is the partition key.
         self.is_partition_key = is_partition_key
+        # The mapping name.
         self.mapped_name = mapped_name
+        # The name of the column.
         self.name = name
+        # Indicates whether the column can be empty.
         self.nullable = nullable
+        # The update condition of the column.
         self.on_update = on_update
+        # The location of the column.
         self.ordinal_position = ordinal_position
+        # The physical name of the column.
         self.physical_column_name = physical_column_name
+        # The location of the primary key.
         self.pk_position = pk_position
+        # The precision of the column.
         self.precision = precision
+        # Indicates whether the column is the primary key.
         self.primarykey = primarykey
+        # The scale of the column.
         self.scale = scale
+        # The logical name of the table.
         self.table_name = table_name
+        # The token of the column.
         self.tokenizer = tokenizer
+        # The type of the column.
         self.type = type
+        # The time when the index was updated.
         self.update_time = update_time
+        # The value type of the column.
         self.value_type = value_type
 
     def validate(self):

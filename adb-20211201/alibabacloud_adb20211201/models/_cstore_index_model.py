@@ -20,14 +20,23 @@ class CstoreIndexModel(DaraModel):
         physical_table_name: str = None,
         update_time: str = None,
     ):
+        # The order of index columns.
         self.column_ords = column_ords
+        # The time when the index was created.
         self.create_time = create_time
+        # The logical name of the database.
         self.database_name = database_name
+        # The index columns.
         self.index_columns = index_columns
+        # The name of the index.
         self.index_name = index_name
+        # The type of the index.
         self.index_type = index_type
+        # The properties.
         self.options = options
+        # The physical name of the table.
         self.physical_table_name = physical_table_name
+        # The time when the index was updated.
         self.update_time = update_time
 
     def validate(self):

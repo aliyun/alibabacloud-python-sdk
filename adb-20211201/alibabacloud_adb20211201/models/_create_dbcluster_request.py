@@ -10,6 +10,8 @@ from darabonba.model import DaraModel
 class CreateDBClusterRequest(DaraModel):
     def __init__(
         self,
+        ainode_number: int = None,
+        ainode_spec: str = None,
         backup_set_id: str = None,
         clone_source_region_id: str = None,
         compute_resource: str = None,
@@ -40,126 +42,113 @@ class CreateDBClusterRequest(DaraModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
-        # The ID of the backup set that you want to use to restore data.
+        self.ainode_number = ainode_number
+        self.ainode_spec = ainode_spec
+        # The ID of the backup set used for restoration from a backup set.
         # 
-        # >  You can call the [DescribeBackups](https://help.aliyun.com/document_detail/612318.html) operation to query the backup sets of the cluster.
+        # > You can call the [DescribeBackups](https://help.aliyun.com/document_detail/612318.html) operation to query the backup list of the cluster.
         self.backup_set_id = backup_set_id
-        # The region ID of the source cluster.
-        # 
-        # >  This parameter must be specified for cloning clusters across regions.
+        # The region of the source cluster.
+        # > This parameter is required for cross-region cloning.
         self.clone_source_region_id = clone_source_region_id
-        # The amount of reserved computing resources. Valid values: 0ACU to 4096ACU. The value must be in increments of 16ACU. Each ACU is approximately equal to 1 core and 4 GB memory.
-        # 
-        # >  This parameter must be specified with a unit.
+        # The compute reserved resources. Valid values: 0 ACU to 4096 ACU, in increments of 16. 1 ACU is approximately equivalent to 1 core and 4 GB of memory.
+        # > Include the unit when specifying this parameter.
         self.compute_resource = compute_resource
         # The description of the cluster.
-        # 
-        # *   The description cannot start with `http://` or `https://`.
-        # *   The description must be 2 to 256 characters in length
+        # - The description cannot start with `http://` or `https://`.
+        # - The description must be 2 to 256 characters in length.
         self.dbcluster_description = dbcluster_description
-        # The network type of the cluster. Set the value to **VPC**.
+        # The network type of the cluster. Only **VPC** (Virtual Private Cloud) is supported.
         self.dbcluster_network_type = dbcluster_network_type
-        # The version of the cluster. Set the value to **5.0**.
+        # The version of the Data Lakehouse Edition cluster. Valid values: **5.0**.
         # 
         # This parameter is required.
         self.dbcluster_version = dbcluster_version
-        # Specifies whether to enable disk encryption.
+        # Specifies whether to enable cloud disk encryption.
         self.disk_encryption = disk_encryption
-        # Specifies whether to allocate all reserved computing resources to the user_default resource group. Valid values:
-        # 
-        # *   **true** (default)
-        # *   **false**
+        # Specifies whether to allocate all compute reserved resources to the default resource group (user_default). Valid values:
+        # - **true** (default): All compute reserved resources are allocated to the default resource group.
+        # - **false**: Not all compute reserved resources are allocated to the default resource group.
         self.enable_default_resource_pool = enable_default_resource_pool
+        # Specifies whether to enable SSL encryption. Valid values:
+        # 
+        # - **true**: SSL encryption is enabled.
+        # - **false**: SSL encryption is disabled.
         self.enable_ssl = enable_ssl
-        # The ID of the key that is used to encrypt disk data.
-        # 
-        # >  This parameter must be specified only when disk encryption is enabled.
+        # The ID of the key used to encrypt cloud disk data.
+        # > This parameter is used only when cloud disk encryption is enabled for the AnalyticDB for MySQL cluster.
         self.kms_id = kms_id
-        # The billing method of the cluster. Valid values:
+        # The billing method. Valid values:
         # 
-        # *   **Postpaid**: pay-as-you-go.
-        # *   **Prepaid**: subscription.
+        # - **Postpaid**: pay-as-you-go.
+        # - **Prepaid**: subscription.
         # 
         # This parameter is required.
         self.pay_type = pay_type
         # The subscription type of the subscription cluster. Valid values:
+        # - **Year**: subscription on a yearly basis.
+        # - **Month**: subscription on a monthly basis.
         # 
-        # *   **Year**: subscription on a yearly basis.
-        # *   **Month**: subscription on a monthly basis.
-        # 
-        # >  This parameter must be specified when PayType is set to Prepaid.
+        # > This parameter is required when PayType is set to Prepaid.
         self.period = period
-        # The product form of the cluster. Valid values:
-        # 
-        # *   **IntegrationForm**: integrated.
-        # *   **LegacyForm**: Data Lakehouse Edition.
+        # The product form. Valid values:
+        # - **IntegrationForm**: integrated form.
+        # - **LegacyForm**: Data Lakehouse Edition.
         self.product_form = product_form
-        # The edition of the cluster. Valid values:
-        # 
-        # *   **BasicVersion**: Basic Edition.
-        # *   **EnterpriseVersion**: Enterprise Edition.
-        # 
-        # >  This parameter must be specified only when ProductForm is set to IntegrationForm.
+        # The product version. Valid values:
+        # - **BasicVersion**: Basic Edition.
+        # - **EnterpriseVersion**: Enterprise Edition.
+        # > This parameter is required only when ProductForm is set to IntegrationForm.
         self.product_version = product_version
-        # The region ID of the cluster.
-        # 
-        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        # The region ID.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/454314.html) operation to query the region ID of a specific Data Lakehouse Edition cluster.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The number of reserved resource nodes.
-        # 
-        # *   For Enterprise Edition, the default value is 3 and the step size is 3.
-        # *   For Basic Edition, the default value is 1.
-        # 
-        # >  This parameter must be specified only when ProductForm is set to IntegrationForm.
+        # The number of reserved nodes. 
+        # - Enterprise Edition uses 3 nodes by default, in increments of 3.
+        # - Basic Edition uses 1 node by default.
+        # > This parameter is required only when ProductForm is set to IntegrationForm.
         self.reserved_node_count = reserved_node_count
-        # The specifications of reserved resource nodes. Unit: ACUs.
+        # The node specifications of reserved nodes, in ACUs.
         self.reserved_node_size = reserved_node_size
         # The resource group ID.
         self.resource_group_id = resource_group_id
         # The point in time to which you want to restore data from the backup set.
         self.restore_to_time = restore_to_time
-        # The method that you want to use to restore data. Valid values:
-        # 
-        # *   **backup**: restores data from a backup set. You must also specify the **BackupSetId** and **SourceDBClusterId** parameters.
-        # *   **timepoint**: restores data to a point in time. You must also specify the **RestoreToTime** and **SourceDBClusterId** parameters.
+        # The restoration method. Valid values:
+        # * **backup**: restores data from a backup set. You must also specify the **BackupSetId** and **SourceDBClusterId** parameters.
+        # * **timepoint**: restores data to a specific point in time. You must also specify the **RestoreToTime** and **SourceDBClusterId** parameters.
         self.restore_type = restore_type
-        # The ID of the secondary vSwitch.
-        # 
-        # >  You cannot set this parameter to a value that is the same as that of the VSwitchId parameter.
+        # The secondary vSwitch ID.
+        # > The value of this parameter must be different from the value of the VSwitchId parameter.
         self.secondary_vswitch_id = secondary_vswitch_id
-        # The ID of the secondary zone.
-        # 
-        # >  You cannot set this parameter to a value that is the same as that of the ZoneId parameter.
+        # The secondary zone ID.
+        # > The value of this parameter must be different from the value of the ZoneId parameter.
         self.secondary_zone_id = secondary_zone_id
-        # The ID of the source AnalyticDB for MySQL Data Warehouse Edition cluster.
+        # The instance ID of the source AnalyticDB for MySQL Data Warehouse Edition cluster. If this parameter is specified, the Data Lakehouse Edition cluster is used to recover from the Data Warehouse Edition cluster.
         self.source_db_cluster_id = source_db_cluster_id
-        # The amount of reserved storage resources. Valid values: 0ACU to 2064ACU. The value must be in increments of 24ACU. Each ACU is approximately equal to 1 core and 4 GB memory.
-        # 
-        # >  This parameter must be specified with a unit.
+        # The storage reserved resources. Valid values: 0 ACU to 2064 ACU, in increments of 24. 1 ACU is approximately equivalent to 1 core and 4 GB of memory.
+        # > Include the unit when specifying this parameter.
         self.storage_resource = storage_resource
-        # The tags to add to the cluster.
+        # The list of tags.
         self.tag = tag
-        # The subscription period of the subscription cluster.
+        # The subscription duration of the subscription cluster. Valid values:
+        # - When **Period** is set to Year, the value of UsedTime ranges from 1 to 3 (integer).
+        # - When **Period** is set to Month, the value of UsedTime ranges from 1 to 9 (integer).
         # 
-        # *   Valid values when Period is set to Year: 1, 2, and 3 (integer)
-        # *   Valid values when Period is set to Month: 1 to 9 (integer)
-        # 
-        # > * This parameter is required if the PayType parameter is set to Prepaid.
-        # > * Longer subscription periods offer more savings. Purchasing a cluster for one year is more cost-effective than purchasing the cluster for 10 or 11 months.
+        # > This parameter is required when PayType is set to **Prepaid**.
         self.used_time = used_time
-        # The virtual private cloud (VPC) ID of the cluster.
+        # The virtual private cloud (VPC) ID.
         # 
         # This parameter is required.
         self.vpcid = vpcid
-        # The vSwitch ID of the cluster.
+        # The vSwitch ID.
         # 
         # This parameter is required.
         self.v_switch_id = v_switch_id
-        # The zone ID of the cluster.
-        # 
-        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent zone list.
+        # The zone ID.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/454314.html) operation to query the zone ID of a specific Data Lakehouse Edition cluster.
         # 
         # This parameter is required.
         self.zone_id = zone_id
@@ -175,6 +164,12 @@ class CreateDBClusterRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.ainode_number is not None:
+            result['AINodeNumber'] = self.ainode_number
+
+        if self.ainode_spec is not None:
+            result['AINodeSpec'] = self.ainode_spec
+
         if self.backup_set_id is not None:
             result['BackupSetId'] = self.backup_set_id
 
@@ -268,6 +263,12 @@ class CreateDBClusterRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AINodeNumber') is not None:
+            self.ainode_number = m.get('AINodeNumber')
+
+        if m.get('AINodeSpec') is not None:
+            self.ainode_spec = m.get('AINodeSpec')
+
         if m.get('BackupSetId') is not None:
             self.backup_set_id = m.get('BackupSetId')
 
@@ -366,13 +367,13 @@ class CreateDBClusterRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N to add to the cluster. You can use tags to filter clusters. Valid values of N: 1 to 20. The values that you specify for N must be unique and consecutive integers that start from 1. Each value of `Tag.N.Key` is paired with a value of `Tag.N.Value`.
+        # The tag key. You can use tags to filter the cluster list. You can specify up to 20 tag pairs. The value of N for each tag pair must be unique and must be a consecutive integer that starts from 1. The value of `Tag.N.Key` corresponds to the value of `Tag.N.Value`.
         # 
-        # >  The tag key can be up to 64 characters in length and cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
+        # > The tag key can be up to 64 characters in length and cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
         self.key = key
-        # The value of tag N to add to the cluster. You can use tags to filter clusters. Valid values of N: 1 to 20. The values that you specify for N must be unique and consecutive integers that start from 1. Each value of `Tag.N.Key` is paired with a value of `Tag.N.Value`.
+        # The tag value. You can use tags to filter the cluster list. You can specify up to 20 tag pairs. The value of N for each tag pair must be unique and must be a consecutive integer that starts from 1. The value of `Tag.N.Key` corresponds to the value of `Tag.N.Value`.
         # 
-        # >  The tag value can be up to 64 characters in length and cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
+        # > The tag value can be up to 64 characters in length and cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
         self.value = value
 
     def validate(self):

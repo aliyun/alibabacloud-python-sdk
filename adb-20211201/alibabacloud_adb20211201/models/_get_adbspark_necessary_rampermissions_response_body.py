@@ -11,9 +11,9 @@ class GetADBSparkNecessaryRAMPermissionsResponseBody(DaraModel):
         data: main_models.GetADBSparkNecessaryRAMPermissionsResponseBodyData = None,
         request_id: str = None,
     ):
-        # The returned result.
+        # The returned data.
         self.data = data
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -51,14 +51,14 @@ class GetADBSparkNecessaryRAMPermissionsResponseBodyData(DaraModel):
         passed: bool = None,
         suggestion: str = None,
     ):
-        # When permission check fails, returns diagnostic information related to permission check failure.
+        # The diagnostic information returned when the permission check fails.
         self.denied_detail = denied_detail
-        # Check whether the use has the basic permissions to use Analytic DB for Spark.
+        # Indicates whether the current user has the basic permissions to use ADB Spark. Valid values:
         # 
-        # *   true: The check is passed and the basic permissions are granted.
-        # *   false: The check fails and some permissions are missing.
+        # - true: The check is passed. The user has the basic permissions.
+        # - false: The check failed. The user is missing some permissions.
         self.passed = passed
-        # Based on diagnostic information, recommends configurations for customers to perform in the RAM system.
+        # The recommended RAM configuration based on the diagnostic information.
         self.suggestion = suggestion
 
     def validate(self):
@@ -105,27 +105,24 @@ class GetADBSparkNecessaryRAMPermissionsResponseBodyDataDeniedDetail(DaraModel):
         resource_auth_target_info: str = None,
         resource_owner_id: str = None,
     ):
-        # The name of the RAM action that failed the authentication.
+        # The name of the RAM action for which authentication failed.
         self.action = action
-        # The type of the policy denial. Valid values:
-        # 
-        # *   ImplicitDeny: Resource owner has not configured relevant permission policies for the current user, default denial of unauthorized operations.
-        # *   ExplicitDeny: RAM policies configured by the resource owner explicitly deny the current user access to corresponding resources
+        # The type of access policy denial. Valid values:
+        # - ImplicitDeny: The resource owner has not configured a relevant access policy for the current user. Unauthorized operations are denied by default.
+        # - ExplicitDeny: The RAM policy configured by the resource owner explicitly denies the current user authorization to access the corresponding resource.
         self.no_permission_type = no_permission_type
-        # The type of the policy that causes the access denied error.
-        # 
-        # *   ControlPolicy: control policy
-        # *   SessionPolicy: Temporary Token additional permission policy
-        # *   AssumeRolePolicy: RAM role trust policy
-        # *   AccountLevelIdentityBasedPolicy: Principal policy within account authorization scope, including custom policies and system policies
-        # *   ResourceGroupLevelIdentityBasedPolicy: Principal policy within resource group authorization scope, including custom policies and system policies.
+        # The type of the policy that caused the permission denial. Valid values:
+        # - ControlPolicy: control policy.
+        # - SessionPolicy: an additional permission policy attached to a temporary token.
+        # - AssumeRolePolicy: the trust policy of a RAM role.
+        # - AccountLevelIdentityBasedPolicy: an identity-access policy at the account authorization scope, including custom policies and system policies.
+        # - ResourceGroupLevelIdentityBasedPolicy: an identity-access policy at the resource group authorization scope, including custom policies and system policies.
         self.policy_type = policy_type
         # The identity type of the current user. Valid values:
-        # 
-        # *   SubUser: a RAM user
-        # *   AssumedRoleUser: a RAM role
+        # - SubUser: Resource Access Management (RAM) user.
+        # - AssumedRoleUser: RAM role.
         self.principal_type = principal_type
-        # Authentication object information, can be the current user\\"s RAM account ID, or the role information corresponding to the current visitor.
+        # The information about the authentication target, which can be the Resource Access Management (RAM) users ID of the current user or the role information of the current accessor.
         self.resource_auth_target_info = resource_auth_target_info
         # The ID of the resource owner.
         self.resource_owner_id = resource_owner_id

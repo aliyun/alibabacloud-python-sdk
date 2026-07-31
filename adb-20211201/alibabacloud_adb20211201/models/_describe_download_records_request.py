@@ -13,18 +13,21 @@ class DescribeDownloadRecordsRequest(DaraModel):
     ):
         # The cluster ID.
         # 
-        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the details of all AnalyticDB for MySQL Lakehouse Edition (3.0) clusters in a specific region, including the cluster ID.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The language of the returned data. Valid values:
+        # The language of the response. Valid values:
         # 
-        # *   **zh**: simplified Chinese.
-        # *   **en**: English.
-        # *   **ja**: Japanese.
-        # *   **zh-tw**: traditional Chinese.
+        # - **zh**: Simplified Chinese (default).
+        # 
+        # - **en**: English.
+        # 
+        # - **ja**: Japanese.
+        # 
+        # - **zh-tw**: Traditional Chinese.
         self.lang = lang
-        # The region ID of the cluster.
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id

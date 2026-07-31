@@ -19,7 +19,7 @@ class UpdateApsWebhookShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The array of webhooks.
+        # The webhook array.
         self.webhook_shrink = webhook_shrink
 
     def validate(self):

@@ -15,21 +15,23 @@ class DescribeAdbMySqlTablesResponseBody(DaraModel):
         success: bool = None,
         tables: List[str] = None,
     ):
-        # The message returned for the operation. Valid values:
+        # Additional information about the call. Valid values:
         # 
-        # *   **Success** is returned if the operation is successful.
-        # *   An error message is returned if the operation fails.
+        # - **Success** is returned if the request is successful.
+        # 
+        # - A specific error code is returned if the request fails.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The name of the database.
         self.schema = schema
-        # Indicates whether the operation is successful. Valid values:
+        # Indicates whether the call was successful. Valid values:
         # 
-        # *   **true**: The operation is successful.
-        # *   **false**: The operation fails.
+        # - **true**: The call was successful.
+        # 
+        # - **false**: The call failed.
         self.success = success
-        # The names of tables.
+        # Information about the tables.
         self.tables = tables
 
     def validate(self):

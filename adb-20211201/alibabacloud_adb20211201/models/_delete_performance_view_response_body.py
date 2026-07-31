@@ -12,10 +12,12 @@ class DeletePerformanceViewResponseBody(DaraModel):
         request_id: str = None,
     ):
         # The details about the access denial.
-        # 
-        # >  This parameter is returned only if Resource Access Management (RAM) permission verification failed.
+        # > This field is returned only when RAM authentication fails.
         self.access_denied_detail = access_denied_detail
-        # The delete status.
+        # The deletion result. Valid values:
+        # 
+        # - **SUCCESS**: Succeeded.
+        # - **FAILED**: Failed.
         self.delete_status = delete_status
         # The request ID.
         self.request_id = request_id

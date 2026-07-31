@@ -11,7 +11,7 @@ class ModifyDBClusterResponseBody(DaraModel):
         order_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
+        # The ID of the Data Lakehouse Edition cluster.
         self.dbcluster_id = dbcluster_id
         # The order ID.
         self.order_id = order_id

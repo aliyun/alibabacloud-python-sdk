@@ -40,11 +40,12 @@ class CreateApsKafkaHudiJobRequest(DaraModel):
         target_type: str = None,
         workload_name: str = None,
     ):
-        # The Resource Access Management (RAM) role that is created for the trusted Alibaba Cloud account. For more information, see Create a RAM role for a trusted Alibaba Cloud account. The ARN of the RAM role that grants AnalyticDB for MySQL permission to access resources in the source account. Required for cross-account data ingestion.
+        # The RAM role of a trusted entity that is an Alibaba Cloud account. For more information about how to create a RAM role, see Create a RAM role for a trusted Alibaba Cloud account.
+        # The Alibaba Cloud account that owns the AnalyticDB for MySQL cluster must be added as a trusted account to the RAM role.
         self.across_role = across_role
-        # The ID of the Alibaba Cloud account to which the source Kafka belongs.
+        # The ID of the Alibaba Cloud account to which the source Kafka instance belongs.
         self.across_uid = across_uid
-        # The advanced configurations.
+        # The advanced configuration.
         self.advanced_config = advanced_config
         # The column information.
         # 
@@ -52,66 +53,87 @@ class CreateApsKafkaHudiJobRequest(DaraModel):
         self.columns = columns
         # The cluster ID.
         # 
-        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all clusters in a region.
+        # > Call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to view the cluster IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters in the destination region.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The Kafka message type. Valid values: json, general_canal_json, mongo_canal_json, dataworks_json, and shareplex_json.
         self.data_format_type = data_format_type
-        # Enumeration value and description. Single: The source is a single-row JSON record. Multi: source is a JSON array. Output a single JSON record.
+        # The valid values and their descriptions are as follows:
+        # Single: The source is a single-line JSON record.
+        # Multi: The source is a JSON array. A single JSON record is returned as the output.
         self.data_output_format = data_output_format
         # The data source ID.
         self.datasource_id = datasource_id
-        # The name of the user-defined database.
+        # The user-defined name of the database.
         # 
         # This parameter is required.
         self.db_name = db_name
-        # The full synchronization configuration.
+        # The configuration for full synchronization.
         self.full_compute_unit = full_compute_unit
-        # The HUDI configuration of the destination.
+        # The Hudi configuration for the destination.
         self.hudi_advanced_config = hudi_advanced_config
-        # The incremental synchronization configuration.
+        # The configuration for incremental synchronization.
         # 
         # This parameter is required.
         self.incremental_compute_unit = incremental_compute_unit
-        # The number of layers that are parsed for nested JSON fields. Valid values: 0: Nested JSON fields are not parsed. 1: parses one layer. 2: Two layers are parsed. 3: Three layers are parsed. 4: Four layers are parsed. By default, one layer is parsed. For more information about how nested JSON fields are parsed, see the Examples of schema fields parsed with different numbers of layers section of this topic.
+        # The number of nested JSON layers to parse. Valid values:
+        # 0: No parsing is performed.
+        # 1: One layer is parsed.
+        # 2: Two layers are parsed.
+        # 3: Three layers are parsed.
+        # 4: Four layers are parsed.
+        # By default, one layer is parsed. For more information about the JSON parsing policy for nested data, see JSON parsing levels and schema field inference examples.
         self.json_parse_level = json_parse_level
-        # The ID of the Apache Kafka instance. You can get it in the Kafka console.
+        # The ID of the Kafka instance. Obtain the ID from the Kafka console.
         self.kafka_cluster_id = kafka_cluster_id
-        # Kafka Topic ID. You can get it in the Kafka console.
+        # The ID of the Kafka topic. Obtain the ID from the Kafka console.
         self.kafka_topic = kafka_topic
         # The ID of the lakehouse.
         self.lakehouse_id = lakehouse_id
-        # The maximum number of records to fetch in a single batch.
+        # The number of entries to consume in a single batch.
         self.max_offsets_per_trigger = max_offsets_per_trigger
-        # The path of the destination data lakehouse in an Object Storage Service (OSS) bucket.
+        # The destination lakehouse address. This must be a complete OSS path.
         self.oss_location = oss_location
-        # The format of the output data.
+        # The output data format.
         self.output_format = output_format
         # The partition information.
         self.partition_specs = partition_specs
-        # The primary key settings. Contains the uuid policy and mapping policy. The explanation is as follows. Uuid policy: "Strategy": "uuid". Mapping policy: "Strategy": "mapping", "Values":[ "f1", "f2" ], "RecordVersionField","xxx" The meaning of the RecordVersionField is the HUDI record version.
+        # The primary key settings. This parameter supports the UUID policy and the mapping policy. The policies are described as follows.
+        # UUID policy: "Strategy": "uuid".
+        # Mapping policy:
+        # "Strategy": "mapping",
+        # "Values":[
+        # "f1",
+        # "f2"
+        # ],
+        # "RecordVersionField","xxx"
+        # \\`RecordVersionField\\` specifies the Hudi record version.
         self.primary_key_definition = primary_key_definition
-        # The region ID of the cluster.
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The resource group name.
+        # The name of the resource group.
         # 
         # This parameter is required.
         self.resource_group = resource_group
-        # 地域ID。
+        # The region ID.
         self.source_region_id = source_region_id
-        # Specifies the position from which to start consuming messages. Valid values: begin_cursor/end_cursor/timestamp Each corresponds to the earliest /latest /specified time respectively.
+        # The initial consumer offset for Kafka.
+        # Valid values:
+        # begin_cursor, end_cursor, and timestamp.
+        # These values correspond to the earliest offset, the latest offset, and a specified time.
         # 
         # This parameter is required.
         self.starting_offsets = starting_offsets
-        # The name of the user-defined table.
+        # The user-defined name of the table.
         # 
         # This parameter is required.
         self.table_name = table_name
-        # The rules for generating the destination database.
+        # The generation rule for the destination.
         self.target_generate_rule = target_generate_rule
-        # The destination type.
+        # The type of the destination.
         self.target_type = target_type
         # The name of the workload.
         # 
@@ -322,13 +344,13 @@ class CreateApsKafkaHudiJobRequestColumns(DaraModel):
         name: str = None,
         type: str = None,
     ):
-        # The name of the partition column in the destination table.
+        # The name of the destination field.
         self.map_name = map_name
-        # The desired format for the destination partition column.
+        # The type of the destination field.
         self.map_type = map_type
-        # The name of the source column to use for partitioning.
+        # The name of the source field.
         self.name = name
-        # The format of the source field. See the table below for valid values.
+        # The type of the source field.
         self.type = type
 
     def validate(self):

@@ -15,8 +15,8 @@ class ListApsWebhookRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # **JobType**\\
-        # Job type. SLS or OSS Export Task: ResultExport.
+        # **JobType**  
+        # The task type. Set this parameter to ResultExport for SLS or OSS export tasks.
         self.job_type = job_type
         # The region ID.
         # 

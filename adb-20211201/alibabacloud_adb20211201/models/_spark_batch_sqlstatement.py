@@ -17,14 +17,29 @@ class SparkBatchSQLStatement(DaraModel):
         state: str = None,
         statement_id: str = None,
     ):
+        # The ID of the Spark job that executes the SQL statement.
         self.app_id = app_id
+        # The text of the SQL statement.
         self.code = code
+        # The execution end timestamp of the SQL statement.
         self.end_time = end_time
+        # The error message for the SQL statement execution.
         self.error = error
+        # The execution result of the SQL statement. The content is in the response format of the `DataFrame Show` statement in Spark.
         self.result = result
+        # The Object Storage Service (OSS) location where the execution results of the SQL statement are stored. If you do not specify a storage location, null is returned.
         self.result_uri = result_uri
+        # The execution start timestamp of the SQL statement.
         self.start_time = start_time
+        # The execution status of the SQL statement. Valid values:
+        # 
+        # *   FAILED
+        # *   RUNNING
+        # *   CANCELED
+        # *   PENDING
+        # *   FINISHED
         self.state = state
+        # The ID of the SQL statement.
         self.statement_id = statement_id
 
     def validate(self):

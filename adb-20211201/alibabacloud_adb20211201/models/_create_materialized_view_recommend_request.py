@@ -29,9 +29,9 @@ class CreateMaterializedViewRecommendRequest(DaraModel):
         self.dbcluster_id = dbcluster_id
         # The description of the recommendation task.
         self.description = description
-        # Pattern匹配的最少慢查询个数
+        # The minimum number of slow queries matched by a pattern.
         self.min_rewrite_query_count = min_rewrite_query_count
-        # 最小可加速的Pattern数量
+        # The minimum number of patterns that can be accelerated.
         self.min_rewrite_query_pattern = min_rewrite_query_pattern
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -39,31 +39,31 @@ class CreateMaterializedViewRecommendRequest(DaraModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The time range for scanning data. Unit: days. Default value: 3.
+        # The scan time range. Unit: days. Default value: 3.
         self.scan_queries_range = scan_queries_range
-        # This parameter is valid only when SchedulingPolicy is set to weekly. Valid values:
+        # Valid only when SchedulingPolicy is set to weekly. Valid values:
         # 
-        # *   Monday
-        # *   Tuesday
-        # *   Wednesday
-        # *   Thursday
-        # *   Friday
-        # *   Saturday
-        # *   Sunday
+        # - Monday
+        # - Tuesday
+        # - Wednesday
+        # - Thursday
+        # - Friday
+        # - Saturday
+        # - Sunday
         # 
-        # Separate multiple days with commas (,).
+        # Separate multiple days with commas.
         self.scheduling_day = scheduling_day
-        # The scheduling policy of the recommendation task. Valid values:
+        # The recommendation policy. Valid values:
         # 
-        # daily
+        # daily: scheduled on a daily basis.
         # 
-        # weekly
+        # weekly: scheduled on a weekly basis.
         # 
         # This parameter is required.
         self.scheduling_policy = scheduling_policy
-        # 慢查询阈值
+        # The slow query threshold.
         self.slow_query_threshold = slow_query_threshold
-        # The execution time of the recommendation task. Specify the time in the HH:MM:SS format.
+        # The execution time of the task. Format: HH:MM:SS.
         # 
         # This parameter is required.
         self.specified_time = specified_time

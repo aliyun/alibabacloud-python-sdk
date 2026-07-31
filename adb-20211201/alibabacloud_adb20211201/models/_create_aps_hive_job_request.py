@@ -21,29 +21,28 @@ class CreateApsHiveJobRequest(DaraModel):
         target_type: str = None,
         workload_name: str = None,
     ):
-        # The advanced configurations.
+        # The advanced configuration.
         self.advanced_config = advanced_config
-        # The policy to handle tables with the same name in the destination cluster.
+        # The policy for handling databases and tables with the same name at the destination.
         self.conflict_strategy = conflict_strategy
-        # The ID of the AnalyticDB for MySQL cluster.
+        # The AnalyticDB for MySQL cluster ID.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The data source ID.
         self.datasource_id = datasource_id
-        # The number of AnalyticDB compute units (ACUs) required for data migration.
+        # The number of AnalyticDB compute units (ACUs) required for the migration.
         # 
         # This parameter is required.
         self.full_compute_unit = full_compute_unit
-        # The path of the destination data lakehouse in an Object Storage Service (OSS) bucket.
+        # The destination lakehouse address, which is a full OSS path.
         # 
         # This parameter is required.
         self.oss_location = oss_location
-        # The number of tasks that are allowed in parallel.
+        # The number of parallel tasks.
         self.parallelism = parallelism
-        # The region ID.
-        # 
-        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        # The region ID of the O&M event.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the regions and zones supported by AnalyticDB for MySQL, including region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -51,13 +50,13 @@ class CreateApsHiveJobRequest(DaraModel):
         # 
         # This parameter is required.
         self.resource_group = resource_group
-        # The expression that allows objects to be synchronized.
+        # The expression that specifies the objects allowed for synchronization.
         self.sync_allow_expression = sync_allow_expression
-        # The expression that denies objects to be synchronized.
+        # The expression that specifies the objects allowed for synchronization.
         self.sync_deny_expression = sync_deny_expression
         # The destination type.
         self.target_type = target_type
-        # The name of the workload.
+        # The workload name.
         # 
         # This parameter is required.
         self.workload_name = workload_name

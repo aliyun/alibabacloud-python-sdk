@@ -2,6 +2,8 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
 from darabonba.model import DaraModel
 
 class BindAccountRequest(DaraModel):
@@ -10,19 +12,20 @@ class BindAccountRequest(DaraModel):
         account_name: str = None,
         dbcluster_id: str = None,
         ram_user: str = None,
+        ram_user_list: List[str] = None,
     ):
-        # The standard account of the cluster.
+        # A standard database account.
         # 
         # This parameter is required.
         self.account_name = account_name
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
+        # ID of the cluster. Applies to Enterprise Edition, Basic Edition, or Data Lakehouse Edition clusters.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The ID of the RAM user.
-        # 
-        # This parameter is required.
+        # ID of the Alibaba Cloud RAM user to bind.
         self.ram_user = ram_user
+        # List of Alibaba Cloud RAM user IDs to bind. You can bind only one RAM user at a time. If you specify this parameter, the RamUser parameter is ignored.
+        self.ram_user_list = ram_user_list
 
     def validate(self):
         pass
@@ -41,6 +44,9 @@ class BindAccountRequest(DaraModel):
         if self.ram_user is not None:
             result['RamUser'] = self.ram_user
 
+        if self.ram_user_list is not None:
+            result['RamUserList'] = self.ram_user_list
+
         return result
 
     def from_map(self, m: dict = None):
@@ -53,6 +59,9 @@ class BindAccountRequest(DaraModel):
 
         if m.get('RamUser') is not None:
             self.ram_user = m.get('RamUser')
+
+        if m.get('RamUserList') is not None:
+            self.ram_user_list = m.get('RamUserList')
 
         return self
 

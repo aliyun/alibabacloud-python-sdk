@@ -18,15 +18,28 @@ class OpenStructRefreshJobModel(DaraModel):
         start_time: str = None,
         status: str = None,
     ):
+        # The end time of the refresh task.
         self.end_time = end_time
+        # The materialized view name.
         self.name = name
+        # The task ID.
         self.processid = processid
+        # The refresh interval.
         self.refresh_interval = refresh_interval
+        # The refresh model.
+        # 
+        # *   FAST
+        # *   COMPLETE
         self.refresh_model = refresh_model
+        # The resource group used for the refresh.
         self.resource_group = resource_group
+        # The scheduled start time.
         self.scheduled_start_time = scheduled_start_time
+        # The database name.
         self.schema_name = schema_name
+        # The actual start time.
         self.start_time = start_time
+        # The status of the queried refresh task.
         self.status = status
 
     def validate(self):

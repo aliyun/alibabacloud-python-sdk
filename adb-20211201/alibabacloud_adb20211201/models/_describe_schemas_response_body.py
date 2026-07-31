@@ -13,7 +13,6 @@ class DescribeSchemasResponseBody(DaraModel):
         items: main_models.DescribeSchemasResponseBodyItems = None,
         request_id: str = None,
     ):
-        # The queried databases.
         self.items = items
         # The request ID.
         self.request_id = request_id
@@ -87,9 +86,7 @@ class DescribeSchemasResponseBodyItemsSchema(DaraModel):
         dbcluster_id: str = None,
         schema_name: str = None,
     ):
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         self.dbcluster_id = dbcluster_id
-        # The name of the database.
         self.schema_name = schema_name
 
     def validate(self):

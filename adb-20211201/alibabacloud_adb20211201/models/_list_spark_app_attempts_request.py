@@ -12,23 +12,23 @@ class ListSparkAppAttemptsRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The ID of the Spark application.
+        # The application ID.
         # 
         # > You can call the [ListSparkApps](https://help.aliyun.com/document_detail/455888.html) operation to query all application IDs.
         # 
         # This parameter is required.
         self.app_id = app_id
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
+        # <props="china">The ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
+        # <props="intl">The ID of the Data Lakehouse Edition cluster.
         self.dbcluster_id = dbcluster_id
-        # The page number. The value must be an integer that is greater than 0. Default value: **1**.
+        # The page number. The value must be a positive integer. Default value: **1**.
         # 
         # This parameter is required.
         self.page_number = page_number
         # The number of entries per page. Valid values:
-        # 
-        # *   **10** (default)
-        # *   **50**
-        # *   **100**
+        # - **10** (default)
+        # - **50**
+        # - **100**
         self.page_size = page_size
 
     def validate(self):

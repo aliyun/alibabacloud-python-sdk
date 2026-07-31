@@ -24,21 +24,37 @@ class Detail(DaraModel):
         terminated_time_in_millis: int = None,
         web_ui_address: str = None,
     ):
+        # The type of the Spark application.
         self.app_type = app_type
+        # The ID of the cluster that runs the Spark application.
         self.dbcluster_id = dbcluster_id
+        # The configuration content of the Spark application.
         self.data = data
+        # The execution duration of the Spark application, in milliseconds (ms).
         self.duration_in_millis = duration_in_millis
+        # The CPU time consumed by the Spark application, in milliseconds (ms).
         self.estimate_execution_cpu_time_in_seconds = estimate_execution_cpu_time_in_seconds
+        # The execution duration.
         self.execution_duration_in_millis = execution_duration_in_millis
+        # The ID of the last retry of the Spark application.
         self.last_attempt_id = last_attempt_id
+        # The time when the Spark application was last updated. This value is a UNIX timestamp, in milliseconds (ms).
         self.last_updated_time_in_millis = last_updated_time_in_millis
+        # The storage path of the log file.
         self.log_root_path = log_root_path
+        # The name of the job resource group.
         self.resource_group_name = resource_group_name
+        # The duration of resource provisioning for the application.
         self.resource_provisioning_duration_in_millis = resource_provisioning_duration_in_millis
+        # The timestamp when the job started running.
         self.running_start_time_in_millis = running_start_time_in_millis
+        # The time when the Spark application was created. This value is a UNIX timestamp, in milliseconds (ms).
         self.started_time_in_millis = started_time_in_millis
+        # The time when the Spark application was submitted. This value is a UNIX timestamp, in milliseconds (ms).
         self.submitted_time_in_millis = submitted_time_in_millis
+        # The time when the Spark application was terminated. This value is a UNIX timestamp, in milliseconds (ms).
         self.terminated_time_in_millis = terminated_time_in_millis
+        # The Web UI address.
         self.web_ui_address = web_ui_address
 
     def validate(self):

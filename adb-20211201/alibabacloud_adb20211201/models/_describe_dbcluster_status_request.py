@@ -10,8 +10,7 @@ class DescribeDBClusterStatusRequest(DaraModel):
         region_id: str = None,
     ):
         # The region ID.
-        # 
-        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        # >You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query available region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id

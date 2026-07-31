@@ -20,14 +20,23 @@ class StorageDescriptorModel(DaraModel):
         ser_de_info: main_models.SerDeInfoModel = None,
         stored_as_sub_directories: bool = None,
     ):
+        # Indicates whether the storage description is compressed.
         self.compressed = compressed
+        # The input format of the storage description.
         self.input_format = input_format
+        # The location of the storage description.
         self.location = location
+        # The number of buckets.
         self.num_buckets = num_buckets
+        # The output format of the storage description.
         self.output_format = output_format
+        # The storage configuration parameter.
         self.parameters = parameters
+        # The ID of the storage description.
         self.sd_id = sd_id
+        # The information about serialization or deserialization.
         self.ser_de_info = ser_de_info
+        # Indicates whether the storage description is stored in subdirectories.
         self.stored_as_sub_directories = stored_as_sub_directories
 
     def validate(self):

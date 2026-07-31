@@ -25,35 +25,35 @@ class CreateApsDatasoureShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The information about the Databricks data source.
+        # The Databricks data source information.
         self.databricks_info_shrink = databricks_info_shrink
-        # The description of the data source.
+        # The data source description.
         self.datasource_description = datasource_description
-        # The name of the data source.
+        # The data source name.
         # 
         # This parameter is required.
         self.datasource_name = datasource_name
-        # The type of the data source.
+        # The data source type.
         # 
         # This parameter is required.
         self.datasource_type = datasource_type
-        # The information about the Hive data source.
+        # The Hive data source information.
         self.hive_info_shrink = hive_info_shrink
-        # The information about the source Apache Kafka instance.
+        # The Kafka information.
         self.kafka_info_shrink = kafka_info_shrink
         # The mode.
         self.mode = mode
-        # The information about the source PolarDB for MySQL cluster.
+        # The PolarDB for MySQL data source information.
         self.polar_dbmysql_info_shrink = polar_dbmysql_info_shrink
-        # The information about the source PolarDB-X instance.
+        # The PolarDB-X data source information.
         self.polar_dbxinfo_shrink = polar_dbxinfo_shrink
-        # The information about the source ApsaraDB RDS for MySQL instance.
+        # The ApsaraDB RDS for MySQL data source information.
         self.rds_mysql_info_shrink = rds_mysql_info_shrink
         # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The information about the source Simple Log Service (SLS) instance or cluster.
+        # The Simple Log Service (SLS) information for the data source to be created.
         self.sls_info_shrink = sls_info_shrink
 
     def validate(self):

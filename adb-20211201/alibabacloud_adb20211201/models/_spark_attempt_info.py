@@ -14,10 +14,27 @@ class SparkAttemptInfo(DaraModel):
         priority: str = None,
         state: str = None,
     ):
+        # The attempt ID of the Spark application.
         self.attempt_id = attempt_id
+        # The information about the Spark application.
         self.detail = detail
+        # The alert message returned, such as task execution failure or insufficient resources. If no alert occurs, null is returned.
         self.message = message
+        # The attempt priority of the Spark application.
         self.priority = priority
+        # The state of the Spark application. Valid values:
+        # 
+        # *   **SUBMITTED**
+        # *   **STARTING**
+        # *   **RUNNING**
+        # *   **FAILING**
+        # *   **FAILED**
+        # *   **KILLING**
+        # *   **KILLED**
+        # *   **SUCCEEDING**
+        # *   **COMPLETED**
+        # *   **FATAL**
+        # *   **UNKNOWN**
         self.state = state
 
     def validate(self):

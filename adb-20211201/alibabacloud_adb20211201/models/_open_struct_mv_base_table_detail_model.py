@@ -12,9 +12,13 @@ class OpenStructMvBaseTableDetailModel(DaraModel):
         schema_name: str = None,
         table_name: str = None,
     ):
+        # The data volume.
         self.data_volumn = data_volumn
+        # Indicates whether binary logging is enabled for the table.
         self.enable_binlog = enable_binlog
+        # The database name.
         self.schema_name = schema_name
+        # The table name.
         self.table_name = table_name
 
     def validate(self):

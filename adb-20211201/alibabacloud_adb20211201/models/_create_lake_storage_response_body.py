@@ -14,20 +14,19 @@ class CreateLakeStorageResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code or the error code.
+        # The API status or POP error code.
         self.code = code
-        # The usage details of cluster resources.
+        # The resource usage details of the cluster.
         self.data = data
-        # The HTTP status code. The status code 200 indicates that the request was successful.
+        # The HTTP status code returned. A value of 200 indicates that the request was successful.
         self.http_status_code = http_status_code
-        # The returned message. If the operation is asynchronously implemented, the job ID is returned.
+        # If the creation operation is implemented asynchronously, a specific JobId is returned.
         self.message = message
-        # The request ID
+        # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
+        # Indicates whether the call was successful. Valid values:
+        # - **true**: Successful.
+        # - **false**: Failed.
         self.success = success
 
     def validate(self):

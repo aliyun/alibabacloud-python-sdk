@@ -19,16 +19,27 @@ class ColDetailModel(DaraModel):
         type: str = None,
         update_time: str = None,
     ):
+        # The logical name of the column.
         self.column_name = column_name
+        # The time when the column was created. The time is displayed in UTC.
         self.create_time = create_time
+        # The description of the column.
         self.description = description
+        # Indicates whether the column is the distribution key.
         self.distribute_key = distribute_key
+        # Indicates whether the column can be empty.
         self.nullable = nullable
+        # Indicates whether the column is the partition key.
         self.partition_key = partition_key
+        # Indicates whether the column is the primary key.
         self.primary_key = primary_key
+        # The logical name of the database.
         self.schema_name = schema_name
+        # The logical name of the table.
         self.table_name = table_name
+        # The data type of the column.
         self.type = type
+        # The time when the column was updated. The time is displayed in UTC.
         self.update_time = update_time
 
     def validate(self):

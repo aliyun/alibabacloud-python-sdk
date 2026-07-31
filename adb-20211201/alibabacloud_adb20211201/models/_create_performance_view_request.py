@@ -21,34 +21,36 @@ class CreatePerformanceViewRequest(DaraModel):
         view_detail: main_models.CreatePerformanceViewRequestViewDetail = None,
         view_name: str = None,
     ):
-        # The type of the view.
-        self.create_from_view_type = create_from_view_type
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
+        # The type of the original monitoring dashboard from which the current monitoring dashboard is copied. Valid values:
         # 
-        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/612397.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition clusters within a region.
+        # - **Basic**: basic dashboard.
+        # - **Advanced**: advanced dashboard.
+        self.create_from_view_type = create_from_view_type
+        # <props="china">The ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
+        # <props="intl">The ID of the Data Lakehouse Edition cluster.
+        # 
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/612397.html) operation to query the cluster ID.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # Specifies whether to populate the names of the metrics in the original monitoring view when you view the monitoring view. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
+        # Specifies whether to populate the keys from the original monitoring dashboard when viewing the monitoring dashboard. Valid values:
+        # - **true**
+        # - **false**
         self.fill_origin_view_keys = fill_origin_view_keys
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID.
-        # 
-        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the supported regions and zones, including region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The information about the monitoring view.
+        # The details of the monitoring dashboard.
         # 
         # This parameter is required.
         self.view_detail = view_detail
-        # The name of the view.
+        # The name of the monitoring dashboard.
         # 
         # This parameter is required.
         self.view_name = view_name
@@ -136,14 +138,13 @@ class CreatePerformanceViewRequestViewDetail(DaraModel):
         chart_linked: bool = None,
         charts_per_line: int = None,
     ):
-        # The metric categories.
+        # The list of metric categories.
         self.categories = categories
-        # Specifies whether to enable the filter interaction feature. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
+        # Indicates whether the linkage chart is enabled. Valid values:
+        # - **true**
+        # - **false**
         self.chart_linked = chart_linked
-        # The number of charts to display in each row.
+        # The number of charts displayed per row.
         self.charts_per_line = charts_per_line
 
     def validate(self):
@@ -193,13 +194,12 @@ class CreatePerformanceViewRequestViewDetailCategories(DaraModel):
         keys: List[main_models.CreatePerformanceViewRequestViewDetailCategoriesKeys] = None,
     ):
         # The name of the metric category. Valid values:
-        # 
-        # *   **Node**
-        # *   **DiskData**
-        # *   **WorkLoad**
-        # *   **ResourceGroup**
+        # * **Node**: node resource metrics.
+        # * **DiskData**: disk metrics.
+        # * **WorkLoad**: workload metrics.
+        # * **ResourceGroup**: resource group metrics.
         self.category = category
-        # The metrics.
+        # The list of metrics.
         self.keys = keys
 
     def validate(self):
@@ -242,12 +242,11 @@ class CreatePerformanceViewRequestViewDetailCategoriesKeys(DaraModel):
         key_name: str = None,
         selected: bool = None,
     ):
-        # The name of the metric.
+        # The key of the metric.
         self.key_name = key_name
-        # Specifies whether to select the metric. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
+        # Specifies whether the metric is selected. Valid values:
+        # - **true**
+        # - **false**
         self.selected = selected
 
     def validate(self):

@@ -14,8 +14,9 @@ class DescribeDownloadRecordsResponseBody(DaraModel):
         records: List[main_models.DescribeDownloadRecordsResponseBodyRecords] = None,
         request_id: str = None,
     ):
+        # The authentication failure message.
         self.access_denied_detail = access_denied_detail
-        # The queried download tasks.
+        # A list of download tasks.
         self.records = records
         # The request ID.
         self.request_id = request_id
@@ -69,19 +70,21 @@ class DescribeDownloadRecordsResponseBodyRecords(DaraModel):
         status: str = None,
         url: str = None,
     ):
-        # The download job ID.
+        # The ID of the download task.
         self.download_id = download_id
-        # The error message returned if the download job failed.
+        # The exception message returned if the download task fails.
         self.exception_msg = exception_msg
         # The name of the downloaded file.
         self.file_name = file_name
-        # The status of the download job. Valid values:
+        # The task status. Valid values:
         # 
-        # *   **running**
-        # *   **finished**
-        # *   **failed**
+        # - **running**: The task is in progress.
+        # 
+        # - **finished**: The task is complete.
+        # 
+        # - **failed**: The task failed.
         self.status = status
-        # The download URL of the file.
+        # The download URL of the result file.
         self.url = url
 
     def validate(self):

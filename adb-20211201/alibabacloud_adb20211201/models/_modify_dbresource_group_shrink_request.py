@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class ModifyDBResourceGroupShrinkRequest(DaraModel):
     def __init__(
         self,
+        atm_config_shrink: str = None,
         auto_stop_interval: str = None,
         cluster_mode: str = None,
         cluster_size_resource: str = None,
@@ -29,62 +30,77 @@ class ModifyDBResourceGroupShrinkRequest(DaraModel):
         status: str = None,
         target_resource_group_name: str = None,
     ):
+        self.atm_config_shrink = atm_config_shrink
+        # The idle duration after which the resource group is automatically stopped.
         self.auto_stop_interval = auto_stop_interval
-        # A reserved parameter.
+        # This parameter is reserved.
         self.cluster_mode = cluster_mode
-        # A reserved parameter.
+        # This parameter is reserved.
         self.cluster_size_resource = cluster_size_resource
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # <props="china">The ID of the Data Lakehouse Edition, Enterprise Edition, or Basic Edition cluster.
+        # <props="intl">The ID of the Data Lakehouse Edition cluster.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # Specifies whether to enable the spot instance feature for the resource group. After you enable the spot instance feature, you are charged for resources at a lower unit price but the resources are probably released. You can enable the spot instance feature only for job resource groups. Valid values:
+        # Specifies whether to enable the spot instance feature for the resource group. This feature provides resources at a lower unit price, but they can be reclaimed at any time. Only `Job` resource groups support this feature. Valid values:
         # 
-        # *   **True**
-        # *   **False**
+        # - **True**: enables the spot instance feature.
+        # 
+        # - **False**: disables the spot instance feature.
         self.enable_spot = enable_spot
+        # The engine configuration.
         self.engine_params_shrink = engine_params_shrink
+        # The time-based scaling plan for GPUs.
         self.gpu_elastic_plan_shrink = gpu_elastic_plan_shrink
         # The name of the resource group.
         # 
-        # > You can call the [DescribeDBResourceGroup](https://help.aliyun.com/document_detail/459446.html) operation to query the name of a resource group in a cluster.
+        # > You can call the [DescribeDBResourceGroup](https://help.aliyun.com/document_detail/459446.html) operation to query the resource group name for a specific cluster.
         # 
         # This parameter is required.
         self.group_name = group_name
         # The type of the resource group. Valid values:
         # 
-        # *   **Interactive**
-        # *   **Job**
+        # - **Interactive**
         # 
-        # > For information about resource groups of Data Lakehouse Edition, see [Resource groups](https://help.aliyun.com/document_detail/428610.html).
+        # - **Job**
+        # 
+        # > For more information about resource groups in Data Lakehouse Edition clusters, see [Resource groups](https://help.aliyun.com/document_detail/428610.html).
         # 
         # This parameter is required.
         self.group_type = group_type
-        # A reserved parameter.
+        # This parameter is reserved.
         self.max_cluster_count = max_cluster_count
-        # The maximum amount of reserved computing resources.
+        # The maximum amount of reserved computing resources. The value cannot exceed the unallocated computing resources of the cluster.
         # 
-        # *   If GroupType is set to Interactive, the maximum amount of reserved computing resources refers to the amount of resources that are not allocated in the cluster. Set this parameter to a value in increments of 16ACU.
-        # *   If GroupType is set to Job, the maximum amount of reserved computing resources refers to the amount of resources that are not allocated in the cluster. Set this parameter to a value in increments of 8ACU.
+        # - If the resource group type is `Interactive`, the value is specified in increments of 16 ACU.
+        # 
+        # - If the resource group type is `Job`, the value is specified in increments of 8 ACU.
         self.max_compute_resource = max_compute_resource
+        # This parameter is reserved.
         self.max_gpu_quantity = max_gpu_quantity
-        # A reserved parameter.
+        # This parameter is reserved.
         self.min_cluster_count = min_cluster_count
         # The minimum amount of reserved computing resources.
         # 
-        # *   If the GroupType parameter is set to Interactive, set the value to 16ACU.
-        # *   If GroupType is set to Job, set the value to 0ACU.
+        # - If the resource group type is `Interactive`, the minimum amount of reserved computing resources is 16 ACU.
+        # 
+        # - If the resource group type is `Job`, the minimum amount of reserved computing resources is 0 ACU.
         self.min_compute_resource = min_compute_resource
+        # This parameter is reserved.
         self.min_gpu_quantity = min_gpu_quantity
+        # The Ray configuration. This parameter is required if the resource group is an AI group and uses a Ray cluster as its engine.
         self.ray_config_shrink = ray_config_shrink
         # The region ID of the cluster.
         # 
-        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/454314.html) operation to query the most recent region list.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/454314.html) operation to query available regions.
         self.region_id = region_id
-        # The job resubmission rules.
+        # The job submission rules.
         self.rules_shrink = rules_shrink
+        # This parameter is reserved.
         self.spec_name = spec_name
+        # The desired state of the resource group. Specify **starting** to start the resource group or **stopping** to stop it.
         self.status = status
+        # This parameter is reserved.
         self.target_resource_group_name = target_resource_group_name
 
     def validate(self):
@@ -95,6 +111,9 @@ class ModifyDBResourceGroupShrinkRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.atm_config_shrink is not None:
+            result['AtmConfig'] = self.atm_config_shrink
+
         if self.auto_stop_interval is not None:
             result['AutoStopInterval'] = self.auto_stop_interval
 
@@ -162,6 +181,9 @@ class ModifyDBResourceGroupShrinkRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AtmConfig') is not None:
+            self.atm_config_shrink = m.get('AtmConfig')
+
         if m.get('AutoStopInterval') is not None:
             self.auto_stop_interval = m.get('AutoStopInterval')
 

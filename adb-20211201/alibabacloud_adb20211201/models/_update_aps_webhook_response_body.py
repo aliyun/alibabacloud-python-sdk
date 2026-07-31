@@ -15,7 +15,7 @@ class UpdateApsWebhookResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The code of the returned result.
+        # The response code.
         self.code = code
         # The cluster ID.
         self.dbcluster_id = dbcluster_id
@@ -25,7 +25,7 @@ class UpdateApsWebhookResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The returned message.
         self.message = message
-        # The unique ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success

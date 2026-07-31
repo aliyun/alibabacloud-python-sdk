@@ -17,14 +17,23 @@ class OpenStructMvRecommendTaskModel(DaraModel):
         slow_query_threshold: int = None,
         task_name: str = None,
     ):
+        # The creation time.
         self.created_time = created_time
+        # Description.
         self.description = description
+        # Last execution time.
         self.last_run_at = last_run_at
+        # The minimum number of slow queries that match the pattern.
         self.min_rewrite_query_count = min_rewrite_query_count
+        # The number of minimum acceleration patterns.
         self.min_rewrite_query_pattern = min_rewrite_query_pattern
+        # The time range for scanning data. Unit: days. Default value: 3.
         self.scan_queries_range = scan_queries_range
+        # The execution schedule of the task.
         self.scheduling_settings = scheduling_settings
+        # The wait threshold for slow queries.
         self.slow_query_threshold = slow_query_threshold
+        # The name of the recommendation task.
         self.task_name = task_name
 
     def validate(self):

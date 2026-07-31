@@ -30,7 +30,7 @@ class ListTagResourcesRequest(DaraModel):
         self.region_id = region_id
         # The cluster ID. You can specify N cluster IDs. Valid values of N: 1 to 50.
         # 
-        # >  You must specify at least one of the ResourceId.N and Tag.N.Key parameters.
+        # > You must specify at least one of the ResourceId.N and Tag.N.Key parameters.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -125,7 +125,7 @@ class ListTagResourcesRequestTag(DaraModel):
     ):
         # The tag key. You can specify N tag keys. The tag key cannot be an empty string. Valid values of N: 1 to 20.
         # 
-        # >  You must specify at least one of the ResourceId.N and Tag.N.Key parameters.
+        # > You must specify at least one of the ResourceId.N and Tag.N.Key parameters.
         self.key = key
         # The tag value. You can specify N tag values. The tag value can be an empty string. Valid values of N: 1 to 20.
         self.value = value

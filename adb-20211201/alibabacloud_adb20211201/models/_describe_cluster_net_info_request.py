@@ -9,18 +9,22 @@ class DescribeClusterNetInfoRequest(DaraModel):
         self,
         dbcluster_id: str = None,
         engine: str = None,
+        resource_group_name: str = None,
     ):
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
+        # <props="china">The ID of an Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
+        # <props="intl">The ID of the Data Lakehouse Edition cluster.
         # 
-        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the details of clusters in a specific region, including cluster IDs.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The database engine of the cluster. Valid values:
+        # The database engine. Valid values:
         # 
-        # *   **AnalyticDB** (default): the AnalyticDB for MySQL engine.
-        # *   **Clickhouse**: the wide table engine.
+        # - **AnalyticDB** (default): the AnalyticDB for MySQL engine.
+        # 
+        # - **ClickHouse**: the wide table engine.
         self.engine = engine
+        self.resource_group_name = resource_group_name
 
     def validate(self):
         pass
@@ -36,6 +40,9 @@ class DescribeClusterNetInfoRequest(DaraModel):
         if self.engine is not None:
             result['Engine'] = self.engine
 
+        if self.resource_group_name is not None:
+            result['ResourceGroupName'] = self.resource_group_name
+
         return result
 
     def from_map(self, m: dict = None):
@@ -45,6 +52,9 @@ class DescribeClusterNetInfoRequest(DaraModel):
 
         if m.get('Engine') is not None:
             self.engine = m.get('Engine')
+
+        if m.get('ResourceGroupName') is not None:
+            self.resource_group_name = m.get('ResourceGroupName')
 
         return self
 

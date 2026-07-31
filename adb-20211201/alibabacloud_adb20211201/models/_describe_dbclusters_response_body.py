@@ -16,7 +16,6 @@ class DescribeDBClustersResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The queried clusters.
         self.items = items
         # The page number.
         self.page_number = page_number
@@ -159,152 +158,48 @@ class DescribeDBClustersResponseBodyItemsDBCluster(DaraModel):
     ):
         self.ainode_number = ainode_number
         self.ainode_spec = ainode_spec
-        # The mode of the cluster. This parameter is returned only for Data Warehouse Edition clusters. Valid values:
-        # 
-        # *   **BASIC**: reserved mode for Basic Edition.
-        # *   **CLUSTER**: reserved mode for Cluster Edition.
-        # *   **MIXED_STORAGE**: elastic mode for Cluster Edition.
-        # 
-        # >  For more information about cluster editions, see [Editions](https://help.aliyun.com/document_detail/205001.html).
         self.category = category
-        # The billing method of the cluster. Valid values:
-        # 
-        # *   **ads**: pay-as-you-go.
-        # *   **ads_pre**: subscription.
         self.commodity_code = commodity_code
-        # The specifications of reserved computing resources. Each ACU is approximately equal to 1 core and 4 GB memory. Computing resources are used to compute data. The increase in the computing resources can accelerate queries. You can scale computing resources based on your business requirements.
         self.compute_resource = compute_resource
-        # The public endpoint that is used to connect to the cluster.
         self.connection_string = connection_string
-        # The time when the cluster was created. The time follows the ISO 8601 standard in the *yyyy-mm-ddThh:mm:ssZ* format. The time is displayed in UTC.
         self.create_time = create_time
-        # The description of the cluster.
         self.dbcluster_description = dbcluster_description
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         self.dbcluster_id = dbcluster_id
-        # The network type of the cluster. Only **VPC** is supported.
         self.dbcluster_network_type = dbcluster_network_type
-        # The status of the cluster. Valid values:
-        # 
-        # *   **Preparing**
-        # *   **Creating**
-        # *   **Running**
-        # *   **Deleting**
-        # *   **Restoring**
-        # *   **ClassChanging**
-        # *   **NetAddressCreating**
-        # *   **NetAddressDeleting**
-        # *   **NetAddressModifying**
         self.dbcluster_status = dbcluster_status
-        # The type of the cluster. By default, **Common** is returned, which indicates a common cluster.
         self.dbcluster_type = dbcluster_type
-        # The node specifications of the cluster. This parameter is returned only for Data Warehouse Edition clusters.
         self.dbnode_class = dbnode_class
-        # The number of node groups.
         self.dbnode_count = dbnode_count
-        # The storage capacity of the cluster. Unit: GB.
         self.dbnode_storage = dbnode_storage
-        # The version number corresponding to the edition of the cluster. Only **5.0** is supported.
         self.dbversion = dbversion
-        # The disk type of the cluster. Valid values:
-        # 
-        # *   **local_ssd**: local disk.
-        # *   **cloud**: basic disk.
-        # *   **cloud_ssd**: standard SSD.
-        # *   **cloud_efficiency**: ultra disk.
-        # *   **cloud_essd**: PL1 Enterprise SSD (ESSD).
-        # *   **cloud_essd2**: PL2 ESSD.
-        # *   **cloud_essd3**: PL3 ESSD.
-        # 
-        # >  For more information about ESSDs, see [ESSDs](https://help.aliyun.com/document_detail/122389.html).
         self.disk_type = disk_type
-        # The ID of the Data Transmission Service (DTS) synchronization job This parameter is returned only for MySQL analytic instances.
         self.dts_job_id = dts_job_id
-        # The number of elastic I/O units (EIUs). For more information, see the "[EIUs](https://help.aliyun.com/document_detail/189505.html)" section of the Scale out elastic I/O resources topic.
-        # 
-        # >  This parameter is returned only for clusters in elastic mode.
         self.elastic_ioresource = elastic_ioresource
-        # The engine of the cluster. **AnalyticDB** is returned.
         self.engine = engine
-        # The number of compute nodes that are used by the cluster in elastic mode.
         self.executor_count = executor_count
-        # The time when the cluster expires. The time follows the ISO 8601 standard in the *yyyy-MM-ddTHH:mm:ssZ* format. The time is displayed in UTC.
-        # 
-        # > 
-        # 
-        # *   If the billing method of the cluster is subscription, the actual expiration time is returned.
-        # 
-        # *   If the billing method of the cluster is pay-as-you-go, null is returned.
         self.expire_time = expire_time
-        # Indicates whether the subscription cluster has expired. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
-        # 
-        # > 
-        # 
-        # *   If the cluster has expired, the system locks or releases the cluster within a period of time. We recommend that you renew the expired cluster. For more information, see [Renewal policy](https://help.aliyun.com/document_detail/135246.html).
-        # 
-        # *   This parameter is not returned for pay-as-you-go clusters.
         self.expired = expired
-        # The internal IP address of the cluster.
         self.inner_ip = inner_ip
-        # The internal port of the cluster.
         self.inner_port = inner_port
-        # The lock status of the cluster. Valid values:
-        # 
-        # *   **Unlock**: The cluster is not locked.
-        # *   **ManualLock**: The cluster is manually locked.
-        # *   **LockByExpiration**: The cluster is automatically locked due to cluster expiration.
         self.lock_mode = lock_mode
-        # The reason why the cluster is locked.
-        # 
-        # >  This parameter is returned only when the cluster was locked. **instance_expire** is returned.
         self.lock_reason = lock_reason
-        # The mode of the cluster. By default, **flexible** is returned, which indicates that the cluster is in elastic mode.
         self.mode = mode
-        # The billing method of the cluster. Valid values:
-        # 
-        # *   **Postpaid**: pay-as-you-go.
-        # *   **Prepaid**: subscription.
         self.pay_type = pay_type
-        # The port number that is used to connect to the cluster.
         self.port = port
-        # The service type of the cluster. Valid values:
-        # 
-        # *   **LegacyForm**
-        # *   **IntegrationForm**
         self.product_form = product_form
-        # The edition of the cluster. Valid values:
-        # 
-        # *   **BasicVersion**: Basic Edition.
-        # *   **EnterpriseVersion**: Enterprise Edition.
         self.product_version = product_version
-        # The ID of the ApsaraDB RDS instance from which data is synchronized to the cluster. This parameter is returned only for MySQL analytic instances.
         self.rds_instance_id = rds_instance_id
-        # The region ID of the cluster.
         self.region_id = region_id
-        # The remaining reserved computing resources that are available in the cluster. Each ACU is approximately equal to 1 core and 4 GB memory.
         self.reserved_acu = reserved_acu
-        # The number of reserved resource nodes.
         self.reserved_node_count = reserved_node_count
-        # The single-node specifications of reserved resources.
         self.reserved_node_size = reserved_node_size
-        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The specifications of reserved storage resources. Each AnalyticDB compute unit (ACU) is approximately equal to 1 core and 4 GB memory. Storage resources are used to read and write data. The increase in the storage resources can improve the read and write performance of the cluster.
         self.storage_resource = storage_resource
-        # The tags that are added to the cluster.
         self.tags = tags
-        # The information about the job.
         self.task_info = task_info
-        # The VPC endpoint.
         self.vpccloud_instance_id = vpccloud_instance_id
-        # The virtual private cloud (VPC) ID of the cluster.
         self.vpcid = vpcid
-        # The vSwitch ID of the cluster.
         self.v_switch_id = v_switch_id
-        # The zone ID of the cluster.
         self.zone_id = zone_id
 
     def validate(self):
@@ -604,17 +499,9 @@ class DescribeDBClustersResponseBodyItemsDBClusterTaskInfo(DaraModel):
         status: str = None,
         step_list: main_models.DescribeDBClustersResponseBodyItemsDBClusterTaskInfoStepList = None,
     ):
-        # The name of the job.
         self.name = name
-        # The progress of the job. Unit: %.
         self.progress = progress
-        # The status of the job. Valid values:
-        # 
-        # *   **NOT_RUN**
-        # *   **RUNNING**
-        # *   **SUCCEED**
         self.status = status
-        # The job steps.
         self.step_list = step_list
 
     def validate(self):
@@ -702,21 +589,11 @@ class DescribeDBClustersResponseBodyItemsDBClusterTaskInfoStepListStepList(DaraM
         step_progress: str = None,
         step_status: str = None,
     ):
-        # The end time of the job step. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
         self.end_time = end_time
-        # The start time of the job step. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
         self.start_time = start_time
-        # The description of the job step.
         self.step_desc = step_desc
-        # The name of the job step.
         self.step_name = step_name
-        # The progress of the job step. Unit: %.
         self.step_progress = step_progress
-        # The status of the job step. Valid values:
-        # 
-        # *   **NOT_RUN**
-        # *   **RUNNING**
-        # *   **SUCCEED**
         self.step_status = step_status
 
     def validate(self):
@@ -810,11 +687,7 @@ class DescribeDBClustersResponseBodyItemsDBClusterTagsTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
-        # 
-        # >  You can call the [TagResources](https://help.aliyun.com/document_detail/179253.html) operation to add tags to a cluster.
         self.key = key
-        # The tag value.
         self.value = value
 
     def validate(self):

@@ -20,7 +20,6 @@ class DescribeTableStatisticsResponseBody(DaraModel):
     ):
         # The cluster ID.
         self.dbcluster_id = dbcluster_id
-        # The queried table statistics.
         self.items = items
         # The page number.
         self.page_number = page_number
@@ -142,38 +141,17 @@ class DescribeTableStatisticsResponseBodyItemsTableStatisticRecords(DaraModel):
         table_name: str = None,
         total_size: int = None,
     ):
-        # The size of cold data. Unit: bytes.
-        # 
-        # >  This parameter is supported only for AnalyticDB for MySQL clusters of V3.1.3.4 or later.
         self.cold_data_size = cold_data_size
-        # The data size of the table. Unit: bytes.
         self.data_size = data_size
-        # The size of hot data. Unit: bytes.
         self.hot_data_size = hot_data_size
-        # The data size of indexes. Unit: bytes.
         self.index_size = index_size
-        # The data size of other data. Unit: bytes.
         self.other_size = other_size
-        # The number of partitions.
         self.partition_count = partition_count
-        # The data size of the primary key index. Unit: bytes.
         self.primary_key_index_size = primary_key_index_size
-        # The number of rows in the table.
         self.row_count = row_count
-        # The name of the database.
         self.schema_name = schema_name
-        # The percentage of the table size. Unit: %.
-        # 
-        # >  Formula: Table storage percentage = Total data size of a table/Total data size of the cluster × 100%.
         self.space_ratio = space_ratio
-        # The name of the table.
         self.table_name = table_name
-        # The total data size of the table. Unit: bytes.
-        # 
-        # >  The following formulas can be used to calculate the total data size:
-        # 
-        # *   Formula 1: Total data size = Hot data size + Cold data size.
-        # *   Formula 2: Total data size = Data size of table records + Data size of regular indexes + Data size of primary key indexes + Data size of other data.
         self.total_size = total_size
 
     def validate(self):

@@ -14,15 +14,15 @@ class GetTableResponseBody(DaraModel):
         success: bool = None,
         table: main_models.TableModel = None,
     ):
-        # The error code returned.
+        # The error code.
         self.code = code
-        # The error message returned.
+        # The error message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the query succeeded.
+        # Indicates whether the request was successful.
         self.success = success
-        # The information about the table.
+        # The table details.
         self.table = table
 
     def validate(self):

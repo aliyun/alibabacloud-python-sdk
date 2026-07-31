@@ -13,21 +13,23 @@ class DescribeSQLWebSocketDomainResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed.
+        # The status code. A value of 200 indicates that the request succeeded.
         self.code = code
         # The domain name.
         self.domain = domain
-        # The returned message. Valid values:
+        # The response message.
         # 
-        # *   If the request was successful, a success message is returned.****
-        # *   If the request failed, an error message is returned.
+        # - Returns **Success** if the request succeeds.
+        # 
+        # - Returns a specific error code if the request fails.
         self.message = message
-        # The request ID.
+        # The unique identifier for the request.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the API call succeeded. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The call succeeded.
+        # 
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):

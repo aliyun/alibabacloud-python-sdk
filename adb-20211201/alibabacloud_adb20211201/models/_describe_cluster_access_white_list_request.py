@@ -11,10 +11,12 @@ class DescribeClusterAccessWhiteListRequest(DaraModel):
         region_id: str = None,
         resource_owner_account: str = None,
     ):
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
+        # <props="china">The ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
+        # <props="intl">The ID of the Data Lakehouse Edition cluster.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The region ID.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
 

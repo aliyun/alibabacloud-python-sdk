@@ -22,47 +22,46 @@ class GetViewObjectsRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The owner of the view.
+        # The owner.
         self.filter_owner = filter_owner
-        # The name of the view.
+        # The view name.
         self.filter_view_name = filter_view_name
-        # The type of the view.
+        # The view type.
         # 
         # Valid values:
         # 
-        # \\-VIRTUAL_VIEW
-        # 
-        # \\-MATERIALIZED_VIEW
+        # - VIRTUAL_VIEW
+        # - MATERIALIZED_VIEW
         # 
         # Default value: null.
         self.filter_view_type = filter_view_type
-        # The order in which you want to sort the query results. Valid values for Type:
+        # The sorting field.
         # 
-        # *   Asc
-        # *   Desc
+        # Valid values for Type:
+        # - Asc
+        # - Desc
         # 
-        # Valid values for Field: -ViewName
-        # 
-        # \\-CreateTime
-        # 
-        # \\-UpdateTime
+        # Valid values for Field:
+        # - ViewName
+        # - CreateTime
+        # - UpdateTime
         # 
         # Default value: {"Type": "Desc","Field": "ViewName"}.
         self.order_by = order_by
         # The page number.
         self.page_number = page_number
         # The number of entries per page. Valid values:
-        # 
-        # *   **30** (default)
-        # *   **50**
-        # *   **100**
+        # * **30** (default).
+        # * **50**.
+        # * **100**.
         self.page_size = page_size
-        # The region ID of the cluster.
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The name of the database.
+        # The database name.
         self.schema_name = schema_name
+        # Specifies whether to display the base table information of materialized views.
         self.show_mv_base_table = show_mv_base_table
 
     def validate(self):

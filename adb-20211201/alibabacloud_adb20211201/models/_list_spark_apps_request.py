@@ -13,18 +13,30 @@ class ListSparkAppsRequest(DaraModel):
         page_size: int = None,
         resource_group_name: str = None,
     ):
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # <props="china">The ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
+        # <props="intl">The ID of the Data Lakehouse Edition cluster.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The filter conditions defined as a JSON-formatted string. The following valid KEY values and their meanings are supported in the JSON string:
+        # - SubmittedTimeRange: the start time.
+        # - TerminatedTimeRange: the end time.
+        # - AppStates: the status of the Spark job.
+        # - AppId: the ID of the Spark job.
+        # - AppNameRegex: the regular expression for the name of the Spark job.
+        # - Tag: the tag information.
+        # - ResourceGroupName: the name of the resource group.
+        # 
+        # For the start time and end time filter conditions, specify the range by using the following substructure:
+        # - Min: the lower bound of the time range. A value of null indicates no limit.
+        # - Max: the upper bound of the time range. A value of null indicates no limit.
         self.filters = filters
-        # The number of the page to return. The value must be an integer that is greater than 0. Default value: **1**.
+        # The page number. The value must be a positive integer. Default value: **1**.
         # 
         # This parameter is required.
         self.page_number = page_number
-        # The number of entries to return on each page. Default value: 10. Valid values:
-        # 
-        # - **10**
+        # The number of entries per page. Valid values:
+        # - **10** (default)
         # - **50**
         # - **100**
         self.page_size = page_size

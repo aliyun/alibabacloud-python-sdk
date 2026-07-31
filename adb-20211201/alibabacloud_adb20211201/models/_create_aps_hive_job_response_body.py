@@ -14,23 +14,21 @@ class CreateApsHiveJobResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code.
+        # The API status code or POP error code.
         self.code = code
-        # The returned data.
+        # The data returned for the workload.
         self.data = data
-        # The response code. The status code 200 indicates that the request was successful.
+        # The HTTP status code. A value of 200 indicates that the request was successful.
         self.http_status_code = http_status_code
-        # The returned message. Valid values:
-        # 
-        # *   If the request was successful, a success message is returned.
-        # *   If the request failed, an error message is returned.
+        # The additional information about the result. Valid values:
+        # - If the request was successful, **Success** is returned.
+        # - If the request failed, the specific error code is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
+        # - **True**: The request was successful.
+        # - **False**: The request failed.
         self.success = success
 
     def validate(self):
