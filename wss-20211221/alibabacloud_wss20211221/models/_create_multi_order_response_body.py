@@ -12,9 +12,9 @@ class CreateMultiOrderResponseBody(DaraModel):
         order_ids: List[int] = None,
         request_id: str = None,
     ):
-        # A list of order IDs.
+        # The list of order IDs.
         self.order_ids = order_ids
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

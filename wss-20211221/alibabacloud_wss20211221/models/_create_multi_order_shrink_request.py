@@ -17,7 +17,7 @@ class CreateMultiOrderShrinkRequest(DaraModel):
         reseller_owner_uid: int = None,
     ):
         self.channel_cookie = channel_cookie
-        # The items in the order.
+        # The product information.
         self.order_items = order_items
         # The order type.
         self.order_type = order_type
@@ -86,41 +86,41 @@ class CreateMultiOrderShrinkRequestOrderItems(DaraModel):
         buy_change: bool = None,
         components: List[main_models.CreateMultiOrderShrinkRequestOrderItemsComponents] = None,
         instance_ids: List[str] = None,
+        paid_call_back_url: str = None,
         period: int = None,
         period_unit: str = None,
         promotion_id: str = None,
         resource_ids: List[str] = None,
         resource_type: str = None,
     ):
-        # The number of resources to purchase.
+        # The quantity to purchase.
         self.amount = amount
         # Specifies whether to enable automatic payment.
         self.auto_pay = auto_pay
         # Specifies whether to enable auto-renewal.
         self.auto_renew = auto_renew
         self.buy_change = buy_change
-        # The components that define the resource.
+        # The product modules.
         self.components = components
         self.instance_ids = instance_ids
-        # The subscription period. Valid values:
+        self.paid_call_back_url = paid_call_back_url
+        # The subscription duration. Valid values:
         # 
-        # - If `PeriodUnit` is set to `Year`, the valid values are 1, 2, 3, and 5.
+        # - If `PeriodUnit` is set to `Year`: 1, 2, 3, or 5.
         # 
-        # - If `PeriodUnit` is set to `Month`, the valid values are 1, 2, 3, and 6.
+        # - If `PeriodUnit` is set to `Month`: 1, 2, 3, or 6.
         self.period = period
-        # The time unit of the subscription duration.
+        # The unit of the billing cycle for the subscription instance.
         # 
-        # > This parameter is required for prepaid instances and is case-sensitive.
+        # > This parameter is required only when the billing method of the instance is subscription. This parameter is case-sensitive. Make sure that the spelling is correct.
         self.period_unit = period_unit
         # The promotion ID.
         self.promotion_id = promotion_id
-        # A list of resource IDs.
-        # 
-        # > For a monthly duration package, this parameter specifies the IDs of the cloud desktops. This parameter is required unless the `OrderType` is `create`.
+        # The list of resource IDs.
+        # > For monthly duration packages, this parameter corresponds to the cloud desktop ID. This parameter is required when OrderType is not `create`.
         self.resource_ids = resource_ids
-        # The type of the resource.
-        # 
-        # > This parameter is case-sensitive.
+        # The resource type.
+        # > This parameter is case-sensitive. Make sure that the spelling is correct.
         # 
         # This parameter is required.
         self.resource_type = resource_type
@@ -155,6 +155,9 @@ class CreateMultiOrderShrinkRequestOrderItems(DaraModel):
 
         if self.instance_ids is not None:
             result['InstanceIds'] = self.instance_ids
+
+        if self.paid_call_back_url is not None:
+            result['PaidCallBackUrl'] = self.paid_call_back_url
 
         if self.period is not None:
             result['Period'] = self.period
@@ -196,6 +199,9 @@ class CreateMultiOrderShrinkRequestOrderItems(DaraModel):
         if m.get('InstanceIds') is not None:
             self.instance_ids = m.get('InstanceIds')
 
+        if m.get('PaidCallBackUrl') is not None:
+            self.paid_call_back_url = m.get('PaidCallBackUrl')
+
         if m.get('Period') is not None:
             self.period = m.get('Period')
 
@@ -219,53 +225,33 @@ class CreateMultiOrderShrinkRequestOrderItemsComponents(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the component.
+        # The key of the module.
         self.key = key
-        # The value of the component.
+        # The value of the module.
         # 
-        # Example and valid values for the keys of a monthly duration package (Enterprise Edition):
+        # The following example values or valid values are available for each key of the Enterprise Edition monthly duration package:
         # 
         # - RegionId: cn-shanghai
-        # 
         # - InstanceType: eds.enterprise_office.4c8g
-        # 
-        # - DurationType (in hours): Valid values:
-        # 
-        #   - 120
-        # 
-        #   - 250
-        # 
-        # - OsType: Valid values:
-        # 
-        #   - Windows
-        # 
-        #   - Linux
-        # 
-        # - RootDiskSize (in GiB): 80
-        # 
-        # - RootDiskCategory: Valid values:
-        # 
-        #   - cloud_efficiency (Ultra Disk)
-        # 
-        #   - cloud_auto (ESSD AutoPL Disk)
-        # 
-        #   - `cloud_essd` (Enhanced SSD). This value is supported only by specific instance types.
-        # 
-        # - RootPerformanceLevel: Valid values:
-        # 
-        #   - PL0
-        # 
-        #   - PL1
-        # 
-        #   - PL2
-        # 
-        #   - PL3
-        # 
-        # - DataDiskSize (in GiB): Same as `RootDiskSize`.
-        # 
-        # - DataDiskCategory: Same as `RootDiskCategory`.
-        # 
-        # - DataPerformanceLevel: Same as `RootPerformanceLevel`.
+        # - DurationType (hours): [Valid values] 
+        #    - 120
+        #    - 250
+        # - OsType: [Valid values] 
+        #    - Windows
+        #    - Linux
+        # - RootDiskSize (GiB): 80
+        # - RootDiskCategory: [Valid values] 
+        #    - cloud_efficiency (ultra cloud disk)
+        #    - cloud_auto (ultra-fast cloud disk)
+        #    - cloud_essd (enhanced standard SSD. Only specific instance types support this value.)
+        # - RootPerformanceLevel: [Valid values] 
+        #    - PL0
+        #    - PL1
+        #    - PL2
+        #    - PL3
+        # - DataDiskSize (GiB): Valid values are the same as those of RootDiskSize.
+        # - DataDiskCategory: Valid values are the same as those of RootDiskCategory.
+        # - DataPerformanceLevel: Valid values are the same as those of RootPerformanceLevel.
         self.value = value
 
     def validate(self):

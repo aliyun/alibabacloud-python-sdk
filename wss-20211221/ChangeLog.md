@@ -1,3 +1,8 @@
+2026-07-31 Version: 1.4.3
+- Update API CreateMultiOrder: add request parameters OrderItems.$.PaidCallBackUrl.
+- Update API DescribeMultiPrice: add response parameters Body.PriceInfo.Price.Promotions.$.ActivityId.
+
+
 2026-06-30 Version: 1.4.2
 - Update API DescribeCreditUsageInfo: add response parameters Body.UsageInfoList.$.UsageInfo.TodayUsed.
 - Update API DescribeCreditUsageInfo: add response parameters Body.UsageInfoList.$.UsageInfo.TotalUsed.
