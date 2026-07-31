@@ -12,11 +12,11 @@ class GetMainDomainNameResponseBody(DaraModel):
         rr: str = None,
         request_id: str = None,
     ):
-        # The level of the domain name.
+        # The level of the input domain name.
         self.domain_level = domain_level
-        # The root domain name.
+        # The primary domain name.
         self.main_domain_name = main_domain_name
-        # The host record.
+        # The host record information.
         self.rr = rr
         # The request ID.
         self.request_id = request_id

@@ -115,7 +115,7 @@ class CreateScheduledPreloadExecutionsResponseBodySuccessExecutions(DaraModel):
         self.end_time = end_time
         # The prefetch plan ID.
         self.id = id
-        # The interval between each batch execution of the scheduled prefetch plan. Unit: seconds.
+        # The interval between each batch execution of the scheduled prefetch plan, in seconds.
         self.interval = interval
         # The prefetch task ID.
         self.job_id = job_id
@@ -211,7 +211,7 @@ class CreateScheduledPreloadExecutionsResponseBodyFailedExecutions(DaraModel):
         self.end_time = end_time
         # The prefetch plan ID.
         self.id = id
-        # The interval between each batch execution of the scheduled prefetch plan. Unit: seconds.
+        # The interval between each batch execution of the scheduled prefetch plan, in seconds.
         self.interval = interval
         # The prefetch task ID.
         self.job_id = job_id

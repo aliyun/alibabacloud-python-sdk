@@ -14,11 +14,21 @@ class ListAsyncTasksRequest(DaraModel):
         task_status: str = None,
         task_type: str = None,
     ):
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of tasks to display per page.
         self.page_size = page_size
+        # The resource ID to which the task belongs, such as a site ID. You can obtain the site ID by calling the [ListSites](~~ListSites~~) operation.
         self.resource_ids = resource_ids
+        # The resource type.
         self.resource_type = resource_type
+        # The current status of the task. Valid values:
+        # 
+        # - in_progress: in progress.
+        # - success: completed.
+        # - fail: failed.
         self.task_status = task_status
+        # The task type. For example, the task type for applying for a free certificate is free_cert.
         self.task_type = task_type
 
     def validate(self):

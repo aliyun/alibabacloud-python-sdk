@@ -9,6 +9,9 @@ class HttpDeliveryHeaderParamValue(DaraModel):
         self,
         static_value: str = None,
     ):
+        # The value of the custom HTTP delivery request header.
+        # 
+        # > Key-map. The value can be a static value, dynamic function, or dynamic value.
         self.static_value = static_value
 
     def validate(self):

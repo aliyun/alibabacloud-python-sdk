@@ -13,10 +13,15 @@ class DescribeDDoSBpsMaxResponseBody(DaraModel):
         request_id: str = None,
         start_time: str = None,
     ):
+        # The end of the time range that was queried. The time is in ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is in UTC+0.
         self.end_time = end_time
+        # The peak attack bandwidth. Unit: bit/s.
         self.max_atk_bps = max_atk_bps
+        # The peak attack PPS. Unit: pps.
         self.max_atk_pps = max_atk_pps
+        # The request ID.
         self.request_id = request_id
+        # The beginning of the time range to query. Specify the time in ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
         self.start_time = start_time
 
     def validate(self):

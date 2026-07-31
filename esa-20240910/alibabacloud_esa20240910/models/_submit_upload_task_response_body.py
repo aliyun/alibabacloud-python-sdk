@@ -12,7 +12,7 @@ class SubmitUploadTaskResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The ID of the file upload task.
+        # The file upload task ID.
         self.upload_id = upload_id
 
     def validate(self):

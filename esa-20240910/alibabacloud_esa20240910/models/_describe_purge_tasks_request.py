@@ -34,9 +34,9 @@ class DescribePurgeTasksRequest(DaraModel):
         self.start_time = start_time
         # The task execution status. Valid values:
         # 
-        # - **Complete**: Completed.
-        # - **Refreshing**: Refreshing.
-        # - **Failed**: Refresh failed.
+        # - **Complete**: completed.
+        # - **Refreshing**: refreshing.
+        # - **Failed**: refresh failed.
         self.status = status
         # The task type. Valid values:
         # - **file** (default): file refresh.

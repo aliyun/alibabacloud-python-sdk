@@ -15,11 +15,11 @@ class DescribeDDoSPriceRequest(DaraModel):
         # 
         # This parameter is required.
         self.ddo_sbilling_mode = ddo_sbilling_mode
-        # The instance specifications for the Chinese mainland.
+        # The specification of the instance in the Chinese mainland.
         # 
         # This parameter is required.
         self.ddo_sburstable_domestic_protection = ddo_sburstable_domestic_protection
-        # The instance specifications for regions outside the Chinese mainland.
+        # The specification of the instance outside the Chinese mainland.
         # 
         # This parameter is required.
         self.ddo_sburstable_overseas_protection = ddo_sburstable_overseas_protection

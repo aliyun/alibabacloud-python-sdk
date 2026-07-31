@@ -10,12 +10,11 @@ class DescribeKvAccountStatusResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Account status.
+        # The account status.
         # 
         # - **online**: Enabled.
-        # 
         # - **offline**: Disabled.
         self.status = status
 

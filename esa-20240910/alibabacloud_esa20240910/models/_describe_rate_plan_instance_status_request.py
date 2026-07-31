@@ -10,8 +10,9 @@ class DescribeRatePlanInstanceStatusRequest(DaraModel):
         instance_id: str = None,
         resource_owner: int = None,
     ):
-        # The instance ID. You can obtain the ID by calling the [ListUserRatePlanInstances](~~ListUserRatePlanInstances~~) operation.
+        # The instance ID. You can call the [ListUserRatePlanInstances](~~ListUserRatePlanInstances~~) operation to obtain the instance ID.
         self.instance_id = instance_id
+        # The resource owner account.
         self.resource_owner = resource_owner
 
     def validate(self):

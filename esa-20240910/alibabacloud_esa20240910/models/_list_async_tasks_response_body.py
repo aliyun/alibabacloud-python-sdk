@@ -17,12 +17,17 @@ class ListAsyncTasksResponseBody(DaraModel):
         total_count: int = None,
         total_page: int = None,
     ):
+        # The task list.
         self.async_tasks = async_tasks
+        # The page number of the returned data.
         self.page_number = page_number
+        # The number of entries per page. Valid values: **1 to 500**. Default value: **20**.
         self.page_size = page_size
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
+        # The total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -98,16 +103,31 @@ class ListAsyncTasksResponseBodyAsyncTasks(DaraModel):
         task_type: str = None,
         user_id: int = None,
     ):
+        # The creation time.
         self.gmt_create = gmt_create
+        # The last modification time.
         self.gmt_modified = gmt_modified
+        # The task ID.
         self.id = id
+        # The resource ID.
         self.resource_id = resource_id
+        # The resource name.
         self.resource_name = resource_name
+        # The resource type.
         self.resource_type = resource_type
+        # The task description.
         self.task_description = task_description
+        # The custom identifier that is set to associate with this task.
         self.task_key = task_key
+        # The current status of the task. Valid values:
+        # 
+        # - in_progress: in progress.
+        # - success: completed.
+        # - fail: failed.
         self.task_status = task_status
+        # The task type.
         self.task_type = task_type
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):

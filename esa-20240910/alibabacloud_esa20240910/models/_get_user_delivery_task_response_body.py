@@ -25,42 +25,38 @@ class GetUserDeliveryTaskResponseBody(DaraModel):
     ):
         # The business type. Valid values:
         # 
-        # - **dcdn_log_access_l1** (default): access log.
-        # 
-        # - **dcdn_log_er**: edge function log.
-        # 
-        # - **dcdn_log_waf**: WAF log.
-        # 
-        # - **dcdn_log_ipa**: Layer 4 acceleration log.
+        # - **dcdn_log_access_l1** (default): access logs.
+        # - **dcdn_log_er**: Edge Routine function logs.
+        # - **dcdn_log_waf**: security protection logs.
+        # - **dcdn_log_ipa**: Layer 4 acceleration logs.
         self.business_type = business_type
         # The data center. Valid values:
-        # 
-        # - **cn**: Chinese mainland
-        # 
-        # - **sg**: Global (excluding the Chinese mainland)
+        # - **cn**: the Chinese mainland.
+        # - **sg**: global (excluding the Chinese mainland).
         self.data_center = data_center
         # The delivery type. Valid values:
-        # 
-        # - **sls**: Log Service
-        # 
-        # - **http**: HTTP service
-        # 
-        # - **aws3**: Amazon S3
-        # 
-        # - **oss**: OSS
-        # 
-        # - **kafka**: Kafka service
-        # 
-        # - **aws3cmpt**: Amazon S3-compatible service
+        # - **sls**: Alibaba Cloud Simple Log Service.
+        # - **http**: HTTP service.
+        # - **aws3**: Amazon S3 service.
+        # - **oss**: Alibaba Cloud Object Storage Service.
+        # - **kafka**: Kafka service.
+        # - **aws3cmpt**: Amazon S3-compatible service.
         self.delivery_type = delivery_type
+        # The list of Edge Routine PODs.
         self.details = details
         # The discard rate.
         self.discard_rate = discard_rate
-        # A comma-separated list of fields.
+        # The field array.
         self.field_list = field_list
         # The filter rules.
         self.filter_rules = filter_rules
+        # The version of the filter rules.
+        # 
+        # > For backward compatibility with legacy filter rules, the default value is v1. Newly created rules use v2.
         self.filter_ver = filter_ver
+        # The filter rules for the delivery task.
+        # 
+        # > New version of delivery filter rules.
         self.raw_rule = raw_rule
         # The request ID.
         self.request_id = request_id

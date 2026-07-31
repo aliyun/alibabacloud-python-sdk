@@ -12,12 +12,20 @@ class PurchaseDDoSInstanceRequest(DaraModel):
         ddo_sburstable_overseas_protection: str = None,
         site_instance_id: str = None,
     ):
+        # The billing method.
+        # 
         # This parameter is required.
         self.ddo_sbilling_mode = ddo_sbilling_mode
+        # The instance specifications for the Chinese mainland.
+        # 
         # This parameter is required.
         self.ddo_sburstable_domestic_protection = ddo_sburstable_domestic_protection
+        # The instance specifications for outside China.
+        # 
         # This parameter is required.
         self.ddo_sburstable_overseas_protection = ddo_sburstable_overseas_protection
+        # The site instance.
+        # 
         # This parameter is required.
         self.site_instance_id = site_instance_id
 

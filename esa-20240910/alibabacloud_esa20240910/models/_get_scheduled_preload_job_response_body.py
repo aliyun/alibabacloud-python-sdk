@@ -29,7 +29,7 @@ class GetScheduledPreloadJobResponseBody(DaraModel):
         self.created_at = created_at
         # The list of domain names for prefetch.
         self.domains = domains
-        # The error message.
+        # The error message returned if a fault occurs.
         self.error_info = error_info
         # The OSS address of the failed file.
         self.failed_file_oss = failed_file_oss
@@ -37,7 +37,9 @@ class GetScheduledPreloadJobResponseBody(DaraModel):
         self.file_id = file_id
         # The task ID.
         self.id = id
-        # The URL insertion method.
+        # The URL insertion method. Valid values:
+        # - oss: Import URLs in bulk from an OSS file.
+        # - testBox: Enter URLs one by one in a text box.
         self.insert_way = insert_way
         # The task name.
         self.name = name
@@ -47,7 +49,10 @@ class GetScheduledPreloadJobResponseBody(DaraModel):
         self.site_id = site_id
         # The number of URLs that have been submitted to the system for prefetch.
         self.task_submitted = task_submitted
-        # The task type (refresh or prefetch).
+        # The task type (refresh or prefetch). Valid values:
+        # - path: Directory refresh.
+        # - refresh: URL refresh.
+        # - preload: URL prefetch.
         self.task_type = task_type
         # The total number of URLs.
         self.url_count = url_count

@@ -14,24 +14,24 @@ class UpdateSiteDeliveryTaskRequest(DaraModel):
         site_id: int = None,
         task_name: str = None,
     ):
-        # The real-time log type. Valid values:
+        # The log type of real-time logs. Valid values:
         # 
-        # - **dcdn_log_access_l1** (default): access log.
-        # 
-        # - **dcdn_log_er**: Edge Routine log.
-        # 
-        # - **dcdn_log_waf**: WAF log.
-        # 
-        # - **dcdn_log_ipa**: Layer 4 acceleration log.
+        # - **dcdn_log_access_l1 (default)**: access logs.
+        # - **dcdn_log_er**: Edge Routine logs.
+        # - **dcdn_log_waf**: security protection logs.
+        # - **dcdn_log_ipa**: Layer 4 acceleration logs.
         self.business_type = business_type
         # The discard rate.
         self.discard_rate = discard_rate
-        # A comma-separated list of delivery fields.
+        # The list of delivery fields to modify, separated by commas.
         # 
         # This parameter is required.
         self.field_name = field_name
+        # The version of the filter rule.
+        # 
+        # > Compatible with legacy filter rules. The default value is v1. Newly created rules use v2.
         self.filter_ver = filter_ver
-        # The site ID. You can obtain this ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         self.site_id = site_id
         # The task name.
         # 

@@ -18,7 +18,7 @@ class BlockObjectRequest(DaraModel):
         # 
         # This parameter is required.
         self.content = content
-        # The effective period of the block, in seconds. This parameter is required when the type is set to block.
+        # The effective period of the block, in seconds. Specify this parameter when the type is block.
         self.maxage = maxage
         # The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         # 
@@ -26,8 +26,8 @@ class BlockObjectRequest(DaraModel):
         self.site_id = site_id
         # The type. Valid values:
         # 
-        # - **block**: blocks the URLs.
-        # - **unblock**: unblocks the URLs.
+        # - **block**: blocks the URL.
+        # - **unblock**: unblocks the URL.
         # 
         # This parameter is required.
         self.type = type

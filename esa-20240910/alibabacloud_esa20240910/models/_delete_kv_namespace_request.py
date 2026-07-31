@@ -9,7 +9,7 @@ class DeleteKvNamespaceRequest(DaraModel):
         self,
         namespace: str = None,
     ):
-        # The name that you specified when you called [CreateKvNamespace](https://help.aliyun.com/document_detail/2850317.html).
+        # The name specified when calling [CreateKvNamespace](https://help.aliyun.com/document_detail/2850317.html).
         # 
         # This parameter is required.
         self.namespace = namespace

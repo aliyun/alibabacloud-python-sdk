@@ -10,11 +10,11 @@ class BatchDeleteKvShrinkRequest(DaraModel):
         keys_shrink: str = None,
         namespace: str = None,
     ):
-        # List of keys to delete in bulk. You can delete up to 10,000 keys.
+        # The list of key names to delete in batch. A maximum of 10,000 keys can be deleted.
         # 
         # This parameter is required.
         self.keys_shrink = keys_shrink
-        # Name specified when you call [CreateKvNamespace](https://help.aliyun.com/document_detail/2850317.html).
+        # The name specified when calling [CreateKvNamespace](https://help.aliyun.com/document_detail/2850317.html).
         # 
         # This parameter is required.
         self.namespace = namespace

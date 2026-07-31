@@ -12,10 +12,24 @@ class DescribeDDoSBpsMaxRequest(DaraModel):
         site_id: int = None,
         start_time: str = None,
     ):
+        # The protection region. If this parameter is not specified, the default value global is used. Valid values:
+        # 
+        # - domestic: the Chinese mainland.
+        # 
+        # - overseas: global (excluding the Chinese mainland).
+        # 
+        # - global: global.
         self.coverage = coverage
+        # The end of the time range to query. Specify the time in ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
+        # 
+        # >The end time must be later than the start time.
         self.end_time = end_time
+        # The site ID, which can be obtained by calling the [ListSites](url) operation.
+        # 
         # This parameter is required.
         self.site_id = site_id
+        # The beginning of the time range to query. Specify the time in ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
+        # 
         # This parameter is required.
         self.start_time = start_time
 

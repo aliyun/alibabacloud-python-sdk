@@ -17,10 +17,10 @@ class DescribeRatePlanInstanceStatusResponseBody(DaraModel):
         # - running: Running.
         # - renewing: Being renewed.
         # - upgrading: Being upgraded.
-        # - releasePrepaidService: Released due to prepaid expiration.
+        # - releasePrepaidService: Released due to subscription expiration.
         # - creating: Being created.
         # - downgrading: Being downgraded.
-        # - ceasePrepaidService: Suspended due to prepaid expiration.
+        # - ceasePrepaidService: Suspended due to subscription expiration.
         self.instance_status = instance_status
         # The request ID.
         self.request_id = request_id

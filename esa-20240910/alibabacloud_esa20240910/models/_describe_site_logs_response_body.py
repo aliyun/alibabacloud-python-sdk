@@ -15,7 +15,7 @@ class DescribeSiteLogsResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The information about the website log files.
+        # The site log information.
         self.site_log_details = site_log_details
 
     def validate(self):
@@ -63,13 +63,13 @@ class DescribeSiteLogsResponseBodySiteLogDetails(DaraModel):
     ):
         # The total number of entries returned on the current page.
         self.log_count = log_count
-        # The details of the website log files.
+        # The site log package information.
         self.log_infos = log_infos
-        # Pagination information.
+        # The pagination information.
         self.page_infos = page_infos
-        # The website ID.
+        # The site ID.
         self.site_id = site_id
-        # The website name.
+        # The site name.
         self.site_name = site_name
 
     def validate(self):
@@ -134,7 +134,7 @@ class DescribeSiteLogsResponseBodySiteLogDetailsPageInfos(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The page number returned.
+        # The page number of the returned data.
         self.page_index = page_index
         # The number of entries per page. Default value: **300**. Valid values: **1 to 1000**.
         self.page_size = page_size
@@ -184,15 +184,16 @@ class DescribeSiteLogsResponseBodySiteLogDetailsLogInfos(DaraModel):
     ):
         # The end time.
         self.end_time = end_time
-        # The name of the log file.
+        # The log name.
         self.log_name = log_name
         # The log path.
         # 
-        # > Take note of the Expires field (expiration timestamp) in this parameter. If the log download URL expires, you must reobtain the URL.
+        # 
+        # > Pay attention to the Expires field (expiration timestamp) in the LogPath response parameter. After the expiration time, the log download link becomes invalid and must be obtained again.
         self.log_path = log_path
-        # The size of the log file. Unit: bytes.
+        # The log size, in bytes.
         self.log_size = log_size
-        # The create time.
+        # The start time.
         self.start_time = start_time
 
     def validate(self):

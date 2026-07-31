@@ -10,7 +10,7 @@ class CreateKvNamespaceRequest(DaraModel):
         description: str = None,
         namespace: str = None,
     ):
-        # An optional description for the KV namespace.
+        # The description of the KV namespace.
         self.description = description
         # The name of the KV namespace.
         # 

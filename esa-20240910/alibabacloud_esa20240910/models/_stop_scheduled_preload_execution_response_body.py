@@ -19,21 +19,21 @@ class StopScheduledPreloadExecutionResponseBody(DaraModel):
     ):
         # The Alibaba Cloud account ID.
         self.ali_uid = ali_uid
-        # The end time of the scheduled preload plan, in ISO 8601 format (e.g., 2024-01-01T00:00:00+Z).
+        # The end time of the scheduled prefetch plan, in ISO 8601 format (for example, 2024-01-01T00:00:00+Z).
         self.end_time = end_time
-        # The preload plan ID.
+        # The prefetch plan ID.
         self.id = id
-        # The execution interval between batches in the scheduled preload plan, in seconds.
+        # The interval between each batch execution of the scheduled prefetch plan, in seconds.
         self.interval = interval
-        # The preload task ID.
+        # The prefetch job ID.
         self.job_id = job_id
         # The request ID.
         self.request_id = request_id
-        # The number of URLs per batch in the scheduled preload.
+        # The number of URLs prefetched per batch.
         self.slice_len = slice_len
-        # The start time of the scheduled preload plan, in ISO 8601 format (e.g., 2024-01-01T00:00:00+Z).
+        # The start time of the scheduled prefetch plan, in ISO 8601 format (for example, 2024-01-01T00:00:00+Z).
         self.start_time = start_time
-        # The status of the scheduled preload plan. Valid values:
+        # The status of the scheduled prefetch plan. Valid values:
         # - **waiting**: Waiting to be executed.
         # - **running**: Being executed.
         # - **finished**: Execution completed.

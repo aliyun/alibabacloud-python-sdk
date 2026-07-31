@@ -27,17 +27,17 @@ class CreateScheduledPreloadJobResponseBody(DaraModel):
         self.ali_uid = ali_uid
         # The time when the task was created, in ISO 8601 format (for example, 2024-01-01T00:00:00+08:00).
         self.created_at = created_at
-        # The list of prefetch domains.
+        # The list of domain names for prefetch.
         self.domains = domains
-        # The error information. Multiple errors are separated by commas:
+        # The error message. Multiple faults are separated by commas. Valid values:
         # - **InvalidUrl**: The URL format is invalid.
-        # - **InvalidDomain**: The domain ownership verification failed.
-        # - **QuotaExcess**: The quota limit has been exceeded.
-        # - **OtherErrors**: Other errors.
+        # - **InvalidDomain**: The domain name ownership verification failed.
+        # - **QuotaExcess**: The quota limit is exceeded.
+        # - **OtherErrors**: Other faults.
         self.error_info = error_info
         # The OSS address of the failed file.
         self.failed_file_oss = failed_file_oss
-        # The URL list file ID, used for downloading.
+        # The URL list file ID, which is used for download.
         self.file_id = file_id
         # The task ID.
         self.id = id
@@ -49,7 +49,7 @@ class CreateScheduledPreloadJobResponseBody(DaraModel):
         self.request_id = request_id
         # The site ID.
         self.site_id = site_id
-        # The number of URLs that have been submitted to the system for prefetch tasks.
+        # The number of URLs that have been submitted to the system for prefetch.
         self.task_submitted = task_submitted
         # The task type (refresh/prefetch).
         self.task_type = task_type

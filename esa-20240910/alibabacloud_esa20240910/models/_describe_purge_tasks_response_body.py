@@ -100,11 +100,11 @@ class DescribePurgeTasksResponseBodyTasks(DaraModel):
         self.process = process
         # The status. Valid values:
         # 
-        # - **Complete**: Completed.
+        # - **Complete**: completed.
         # 
-        # - **Refreshing**: Refreshing.
+        # - **Refreshing**: refreshing.
         # 
-        # - **Failed**: Refresh failed.
+        # - **Failed**: refresh failed.
         self.status = status
         # The task ID.
         self.task_id = task_id

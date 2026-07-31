@@ -18,19 +18,19 @@ class WafRuleMatch(DaraModel):
         match_value: Any = None,
         negate: bool = None,
     ):
-        # 值大小写不敏感。
+        # Specifies whether the value is case-insensitive.
         self.convert_to_lower = convert_to_lower
-        # 逻辑列表。
+        # The logic list.
         self.criteria = criteria
-        # 逻辑关系。
+        # The logic relationship.
         self.logic = logic
-        # 匹配符。
+        # The match operator.
         self.match_operator = match_operator
-        # 匹配域。
+        # The match field.
         self.match_type = match_type
-        # 匹配值。
+        # The match value.
         self.match_value = match_value
-        # 匹配结果取反。
+        # Specifies whether to negate the match result.
         self.negate = negate
 
     def validate(self):

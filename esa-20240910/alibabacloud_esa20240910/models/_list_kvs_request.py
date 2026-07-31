@@ -12,13 +12,13 @@ class ListKvsRequest(DaraModel):
         page_size: int = None,
         prefix: str = None,
     ):
-        # The name specified when you called [CreatevNamespace](https://help.aliyun.com/document_detail/2850317.html).
+        # The name specified when calling [CreatevNamespace](https://help.aliyun.com/document_detail/2850317.html).
         # 
         # This parameter is required.
         self.namespace = namespace
         # The page number. The product of PageNumber and PageSize cannot exceed 50000.
         self.page_number = page_number
-        # The page size. Default value: **50**. Maximum value: **100**.
+        # The page size for the returned results. Default value: **50**. Maximum value: **100**.
         self.page_size = page_size
         # The prefix used to filter keys.
         self.prefix = prefix

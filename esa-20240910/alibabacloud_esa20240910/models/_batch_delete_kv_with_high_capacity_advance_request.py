@@ -12,15 +12,15 @@ class BatchDeleteKvWithHighCapacityAdvanceRequest(DaraModel):
         namespace: str = None,
         url_object: BinaryIO = None,
     ):
-        # The namespace name specified when you called [CreateKvNamespace](https://help.aliyun.com/document_detail/2850317.html).
+        # The name specified when calling [CreateKvNamespace](https://help.aliyun.com/document_detail/2850317.html).
         # 
         # This parameter is required.
         self.namespace = namespace
-        # The download URL that contains the key-value pairs to be batch deleted, such as an OSS download URL with read permissions.
+        # The download URL that stores the key-value pairs to be batch deleted, such as an OSS download URL with read permissions.
         # 
-        # - When you call this operation by using the SDK, the SDK automatically uploads the content to OSS and passes the corresponding URL.
+        # - When calling this operation by using the SDK, the SDK automatically uploads the submitted content to OSS and passes the corresponding URL.
         # 
-        # - To call this operation directly, upload the JSON payload (in the same format as the BatchDeleteKv body: {"Namespace":"...","Keys":[...]}) to an OSS bucket and generate a signed HTTPS GET URL.
+        # - When calling this operation directly, upload the JSON payload (in the same format as the BatchDeleteKv body: {"Namespace":"...","Keys":[...]}) to an OSS bucket and generate a signed HTTPS GET URL.
         # 
         # This parameter is required.
         self.url_object = url_object

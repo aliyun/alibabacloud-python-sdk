@@ -116,7 +116,7 @@ class CreateEdgeContainerAppVersionRequestContainers(DaraModel):
         self.name = name
         # The command to execute before the container starts. Separate multiple commands with spaces. This command is executed before the service starts and is typically used for initialization operations.
         self.post_start = post_start
-        # The command to execute before the container stops. Separate multiple commands with spaces. This command is executed before the service exits and is typically used for cleanup operations.
+        # The command to execute before the container stops. Separate multiple commands with spaces. This command is executed before the service exits and is typically used for cleanup operations before exit.
         self.pre_stop = pre_stop
         # The container health probe content.
         # 
@@ -124,12 +124,12 @@ class CreateEdgeContainerAppVersionRequestContainers(DaraModel):
         self.probe_content = probe_content
         # The probe type. Valid values:
         # - **exec**: Command-based.
-        # - **tcpSocket**: TCP-based.
-        # - **httpGet**: HTTP-based.
+        # - **tcpSocket**: TCP detection-based.
+        # - **httpGet**: HTTP access-based.
         # 
         # This parameter is required.
         self.probe_type = probe_type
-        # The container specifications. Specifies the computing power specifications. Valid values: 1C2G, 2C4G, 2C8G, 4C8G, 4C16G, 8C16G, and 8C32G.
+        # The container specifications. Specifies the computing specifications. Valid values: 1C2G, 2C4G, 2C8G, 4C8G, 4C16G, 8C16G, and 8C32G.
         # 
         # This parameter is required.
         self.spec = spec
@@ -258,11 +258,11 @@ class CreateEdgeContainerAppVersionRequestContainersProbeContent(DaraModel):
         self.host = host
         # The HTTP request headers.
         self.http_headers = http_headers
-        # The initial delay time for the container probe, in seconds. For example, 5 indicates that the initial delay is set to 5 seconds.
+        # The initial delay time for the container probe. Unit: seconds. For example, 5 indicates that the initial delay time is set to 5 seconds.
         self.initial_delay_seconds = initial_delay_seconds
         # The path for the container health check.
         self.path = path
-        # The interval between container health checks, in seconds. For example, 5 indicates that the health check interval is set to 5 seconds.
+        # The interval for the container health check. Unit: seconds. For example, 5 indicates that the health check interval is set to 5 seconds.
         self.period_seconds = period_seconds
         # The port for the container health check.
         self.port = port
@@ -270,7 +270,7 @@ class CreateEdgeContainerAppVersionRequestContainersProbeContent(DaraModel):
         self.scheme = scheme
         # The number of consecutive successful health checks required.
         self.success_threshold = success_threshold
-        # The timeout period for the container health check, in seconds. For example, 5 indicates that the timeout is set to 5 seconds.
+        # The timeout period for the container health check. Unit: seconds. For example, 5 indicates that the timeout period is set to 5 seconds.
         self.timeout_seconds = timeout_seconds
 
     def validate(self):

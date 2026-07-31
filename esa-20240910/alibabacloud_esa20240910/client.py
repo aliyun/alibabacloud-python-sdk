@@ -14337,6 +14337,100 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_url_observation_data_with_options_async(request, runtime)
 
+    def describe_user_resource_package_with_options(
+        self,
+        request: main_models.DescribeUserResourcePackageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeUserResourcePackageResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not DaraCore.is_null(request.sort_field):
+            query['SortField'] = request.sort_field
+        if not DaraCore.is_null(request.sort_rule):
+            query['SortRule'] = request.sort_rule
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeUserResourcePackage',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeUserResourcePackageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_user_resource_package_with_options_async(
+        self,
+        request: main_models.DescribeUserResourcePackageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeUserResourcePackageResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not DaraCore.is_null(request.sort_field):
+            query['SortField'] = request.sort_field
+        if not DaraCore.is_null(request.sort_rule):
+            query['SortRule'] = request.sort_rule
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeUserResourcePackage',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeUserResourcePackageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_user_resource_package(
+        self,
+        request: main_models.DescribeUserResourcePackageRequest,
+    ) -> main_models.DescribeUserResourcePackageResponse:
+        runtime = RuntimeOptions()
+        return self.describe_user_resource_package_with_options(request, runtime)
+
+    async def describe_user_resource_package_async(
+        self,
+        request: main_models.DescribeUserResourcePackageRequest,
+    ) -> main_models.DescribeUserResourcePackageResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_user_resource_package_with_options_async(request, runtime)
+
     def describe_waf_usage_data_with_options(
         self,
         request: main_models.DescribeWafUsageDataRequest,
@@ -19240,6 +19334,76 @@ class Client(OpenApiClient):
     ) -> main_models.GetRedirectRuleResponse:
         runtime = RuntimeOptions()
         return await self.get_redirect_rule_with_options_async(request, runtime)
+
+    def get_release_time_with_options(
+        self,
+        request: main_models.GetReleaseTimeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetReleaseTimeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetReleaseTime',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetReleaseTimeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_release_time_with_options_async(
+        self,
+        request: main_models.GetReleaseTimeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetReleaseTimeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetReleaseTime',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetReleaseTimeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_release_time(
+        self,
+        request: main_models.GetReleaseTimeRequest,
+    ) -> main_models.GetReleaseTimeResponse:
+        runtime = RuntimeOptions()
+        return self.get_release_time_with_options(request, runtime)
+
+    async def get_release_time_async(
+        self,
+        request: main_models.GetReleaseTimeRequest,
+    ) -> main_models.GetReleaseTimeResponse:
+        runtime = RuntimeOptions()
+        return await self.get_release_time_with_options_async(request, runtime)
 
     def get_rewrite_url_rule_with_options(
         self,

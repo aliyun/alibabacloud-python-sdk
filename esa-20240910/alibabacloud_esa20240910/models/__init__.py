@@ -539,6 +539,9 @@ from ._describe_trace_diagnose_report_response import DescribeTraceDiagnoseRepor
 from ._describe_url_observation_data_request import DescribeUrlObservationDataRequest
 from ._describe_url_observation_data_response_body import DescribeUrlObservationDataResponseBody
 from ._describe_url_observation_data_response import DescribeUrlObservationDataResponse
+from ._describe_user_resource_package_request import DescribeUserResourcePackageRequest
+from ._describe_user_resource_package_response_body import DescribeUserResourcePackageResponseBody
+from ._describe_user_resource_package_response import DescribeUserResourcePackageResponse
 from ._describe_waf_usage_data_request import DescribeWafUsageDataRequest
 from ._describe_waf_usage_data_response_body import DescribeWafUsageDataResponseBody
 from ._describe_waf_usage_data_response import DescribeWafUsageDataResponse
@@ -754,6 +757,9 @@ from ._get_record_response import GetRecordResponse
 from ._get_redirect_rule_request import GetRedirectRuleRequest
 from ._get_redirect_rule_response_body import GetRedirectRuleResponseBody
 from ._get_redirect_rule_response import GetRedirectRuleResponse
+from ._get_release_time_request import GetReleaseTimeRequest
+from ._get_release_time_response_body import GetReleaseTimeResponseBody
+from ._get_release_time_response import GetReleaseTimeResponse
 from ._get_rewrite_url_rule_request import GetRewriteUrlRuleRequest
 from ._get_rewrite_url_rule_response_body import GetRewriteUrlRuleResponseBody
 from ._get_rewrite_url_rule_response import GetRewriteUrlRuleResponse
@@ -1631,6 +1637,7 @@ from ._describe_site_waf_top_data_response_body import DescribeSiteWafTopDataRes
 from ._describe_trace_diagnose_report_response_body import DescribeTraceDiagnoseReportResponseBodyClientInfo
 from ._describe_trace_diagnose_report_response_body import DescribeTraceDiagnoseReportResponseBodyReport
 from ._describe_url_observation_data_response_body import DescribeUrlObservationDataResponseBodyUrlDetailData
+from ._describe_user_resource_package_response_body import DescribeUserResourcePackageResponseBodyResourcePackageInfos
 from ._describe_waf_usage_data_response_body import DescribeWafUsageDataResponseBodyUsageData
 from ._get_api_schema_usage_response_body import GetApiSchemaUsageResponseBodyUsages
 from ._get_certificate_response_body import GetCertificateResponseBodyResultDCV
@@ -2444,6 +2451,9 @@ __all__ = [
     DescribeUrlObservationDataRequest,
     DescribeUrlObservationDataResponseBody,
     DescribeUrlObservationDataResponse,
+    DescribeUserResourcePackageRequest,
+    DescribeUserResourcePackageResponseBody,
+    DescribeUserResourcePackageResponse,
     DescribeWafUsageDataRequest,
     DescribeWafUsageDataResponseBody,
     DescribeWafUsageDataResponse,
@@ -2659,6 +2669,9 @@ __all__ = [
     GetRedirectRuleRequest,
     GetRedirectRuleResponseBody,
     GetRedirectRuleResponse,
+    GetReleaseTimeRequest,
+    GetReleaseTimeResponseBody,
+    GetReleaseTimeResponse,
     GetRewriteUrlRuleRequest,
     GetRewriteUrlRuleResponseBody,
     GetRewriteUrlRuleResponse,
@@ -3536,6 +3549,7 @@ __all__ = [
     DescribeTraceDiagnoseReportResponseBodyClientInfo,
     DescribeTraceDiagnoseReportResponseBodyReport,
     DescribeUrlObservationDataResponseBodyUrlDetailData,
+    DescribeUserResourcePackageResponseBodyResourcePackageInfos,
     DescribeWafUsageDataResponseBodyUsageData,
     GetApiSchemaUsageResponseBodyUsages,
     GetCertificateResponseBodyResultDCV,

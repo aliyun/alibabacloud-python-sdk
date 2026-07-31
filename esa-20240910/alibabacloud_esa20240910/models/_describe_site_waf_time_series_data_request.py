@@ -16,7 +16,7 @@ class DescribeSiteWafTimeSeriesDataRequest(DaraModel):
         site_id: str = None,
         start_time: str = None,
     ):
-        # The end time for the data query.
+        # The end of the time range to query.
         # 
         # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
         # 
@@ -26,15 +26,15 @@ class DescribeSiteWafTimeSeriesDataRequest(DaraModel):
         # 
         # This parameter is required.
         self.fields = fields
-        # The time granularity of the queried data, in seconds.
+        # The time granularity for querying data, in seconds.
         # 
-        # Based on the maximum time span of a single query, this parameter supports the following values: 60 (1 minute), 300 (5 minutes), 3600 (1 hour), and 86400 (1 day). For more information, see the **supported query time granularity** section above.
+        # Based on the maximum time span of a single query, this parameter supports the values 60 (1 minute), 300 (5 minutes), 3600 (1 hour), and 86400 (1 day). For more information, see the **Supported time granularity** section above.
         self.interval = interval
         # The site ID. You can call the [ListSites](~~ListSites~~) operation to obtain the site ID.
         # 
         # If this parameter is left empty, user-level data is queried.
         self.site_id = site_id
-        # The start time for the data query.
+        # The beginning of the time range to query.
         # 
         # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
         self.start_time = start_time
@@ -97,7 +97,7 @@ class DescribeSiteWafTimeSeriesDataRequestFields(DaraModel):
         dimension: List[str] = None,
         field_name: str = None,
     ):
-        # The query dimension.
+        # The query dimensions.
         self.dimension = dimension
         # The metric name.
         # 

@@ -87,7 +87,7 @@ class ListKvsResponseBodyKeys(DaraModel):
     ):
         # The name of the key.
         self.name = name
-        # The time when the key was last updated, in ISO 8601 format (for example, 2024-01-01T00:00:00+Z).
+        # The update time of the key in ISO 8601 format (for example, 2024-01-01T00:00:00+Z).
         self.update_time = update_time
 
     def validate(self):

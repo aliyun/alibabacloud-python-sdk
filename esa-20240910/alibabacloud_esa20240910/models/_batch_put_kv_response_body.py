@@ -13,11 +13,11 @@ class BatchPutKvResponseBody(DaraModel):
         request_id: str = None,
         success_keys: List[str] = None,
     ):
-        # A list of keys that failed to be written.
+        # The list of keys that failed to be written.
         self.fail_keys = fail_keys
         # The request ID.
         self.request_id = request_id
-        # A list of keys that were successfully written.
+        # The list of keys that were successfully written.
         self.success_keys = success_keys
 
     def validate(self):

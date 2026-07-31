@@ -14,7 +14,7 @@ class DeleteKvRequest(DaraModel):
         # 
         # This parameter is required.
         self.key = key
-        # The name you specified when you called [CreateKvNamespace](https://help.aliyun.com/document_detail/2850317.html).
+        # The name specified when calling [CreateKvNamespace](https://help.aliyun.com/document_detail/2850317.html).
         # 
         # This parameter is required.
         self.namespace = namespace

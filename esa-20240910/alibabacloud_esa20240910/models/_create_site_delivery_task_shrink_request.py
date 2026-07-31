@@ -23,33 +23,36 @@ class CreateSiteDeliveryTaskShrinkRequest(DaraModel):
     ):
         # The business type. Valid values:
         # 
-        # - **dcdn_log_access_l1** (default): Access logs.
-        # - **dcdn_log_er**: Edge Routine logs.
-        # - **dcdn_log_waf**: Security protection logs.
+        # - **dcdn_log_access_l1** (default): access logs.
+        # - **dcdn_log_er**: Edge Routine function logs.
+        # - **dcdn_log_waf**: security protection logs.
         # - **dcdn_log_ipa**: Layer 4 acceleration logs.
         # 
         # This parameter is required.
         self.business_type = business_type
         # The data center. Valid values:
-        # - **cn**: The Chinese mainland.
-        # - **oversea**: Outside the Chinese mainland.
+        # - **cn**: the Chinese mainland.
+        # - **oversea**: outside the Chinese mainland.
         self.data_center = data_center
         # The delivery type. Valid values:
-        # - **sls**: Simple Log Service.
+        # - **sls**: Alibaba Cloud Simple Log Service.
         # - **http**: HTTP service.
-        # - **aws3**: Amazon S3.
-        # - **oss**: Object Storage Service (OSS).
+        # - **aws3**: Amazon S3 service.
+        # - **oss**: Alibaba Cloud Object Storage Service.
         # - **kafka**: Kafka service.
         # - **aws3cmpt**: Amazon S3-compatible service.
         # 
         # This parameter is required.
         self.delivery_type = delivery_type
-        # The discard rate. If you do not specify this parameter, the default value is 0.
+        # The discard rate. Default value: 0.
         self.discard_rate = discard_rate
-        # The log fields to be delivered, separated by commas (,).
+        # The selected log fields, separated by commas (,).
         # 
         # This parameter is required.
         self.field_name = field_name
+        # The filter rule version.
+        # 
+        # > For backward compatibility with legacy filter rules, the default value is v1. New tasks use v2.
         self.filter_ver = filter_ver
         # The HTTP delivery configuration parameters.
         self.http_delivery_shrink = http_delivery_shrink
@@ -57,15 +60,15 @@ class CreateSiteDeliveryTaskShrinkRequest(DaraModel):
         self.kafka_delivery_shrink = kafka_delivery_shrink
         # The OSS delivery configuration.
         self.oss_delivery_shrink = oss_delivery_shrink
-        # The configuration parameters for S3 or S3-compatible delivery.
+        # The S3/S3-compatible delivery configuration parameters.
         self.s_3delivery_shrink = s_3delivery_shrink
-        # The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to query the site ID.
+        # The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # The Simple Log Service delivery configuration.
+        # The SLS delivery configuration.
         self.sls_delivery_shrink = sls_delivery_shrink
-        # The name of the task.
+        # The task name.
         # 
         # This parameter is required.
         self.task_name = task_name

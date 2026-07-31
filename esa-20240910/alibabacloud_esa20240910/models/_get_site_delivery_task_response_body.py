@@ -24,43 +24,40 @@ class GetSiteDeliveryTaskResponseBody(DaraModel):
         status: str = None,
         task_name: str = None,
     ):
-        # The type of real-time log for Dynamic Route for CDN (DCDN). Valid values:
+        # The real-time log type. Valid values:
         # 
-        # - **dcdn_log_access_l1** (default): access log.
-        # 
-        # - **dcdn_log_er**: edge function log.
-        # 
-        # - **dcdn_log_waf**: WAF log.
-        # 
-        # - **dcdn_log_ipa**: layer 4 acceleration log.
+        # - **dcdn_log_access_l1 (default)**: access log.
+        # - **dcdn_log_er**: Edge Routine function log.
+        # - **dcdn_log_waf**: security protection log.
+        # - **dcdn_log_ipa**: Layer 4 acceleration log.
         self.business_type = business_type
         # The data center. Valid values:
         # 
-        # - **cn**: Chinese mainland.
-        # 
-        # - **sg**: Global (excluding Chinese mainland). Note that the value for this region is "sg".
+        # - **cn**: the Chinese mainland.
+        # - **sg**: global (excluding the Chinese mainland).
         self.data_center = data_center
         # The delivery type. Valid values:
         # 
-        # - **sls**: Log Service.
-        # 
+        # - **sls**: Alibaba Cloud Simple Log Service.
         # - **http**: HTTP service.
-        # 
-        # - **aws3**: Amazon S3.
-        # 
-        # - **oss**: Object Storage Service.
-        # 
+        # - **aws3**: Amazon S3 service.
+        # - **oss**: Alibaba Cloud Object Storage Service.
         # - **kafka**: Kafka service.
-        # 
         # - **aws3cmpt**: Amazon S3-compatible service.
         self.delivery_type = delivery_type
         # The discard rate.
         self.discard_rate = discard_rate
-        # A comma-separated list of log fields to deliver.
+        # The list of delivery fields.
         self.field_list = field_list
         # The filter rules.
         self.filter_rules = filter_rules
+        # The version of the filter rules.
+        # 
+        # > For backward compatibility with legacy filter rules, the default value is v1. Newly created tasks use v2.
         self.filter_ver = filter_ver
+        # The filter rules for the delivery task.
+        # 
+        # > The new version of delivery filter rules.
         self.raw_rule = raw_rule
         # The request ID.
         self.request_id = request_id
@@ -70,11 +67,11 @@ class GetSiteDeliveryTaskResponseBody(DaraModel):
         self.site_id = site_id
         # The site name.
         self.site_name = site_name
-        # The status of the task. Valid values:
+        # The task status. Valid values:
         # 
-        # - **online**: The task is delivering logs.
+        # - **online**: pushing.
         # 
-        # - **offline**: The task is paused.
+        # - **offline**: push paused.
         self.status = status
         # The task name.
         self.task_name = task_name

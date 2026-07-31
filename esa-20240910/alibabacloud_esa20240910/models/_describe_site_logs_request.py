@@ -13,23 +13,23 @@ class DescribeSiteLogsRequest(DaraModel):
         site_id: int = None,
         start_time: str = None,
     ):
-        # The end of the time range to query.
+        # The end time for retrieving logs.
         # 
-        # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The date is in ISO 8601 format and uses UTC+0 time in the format of yyyy-MM-ddTHH:mm:ssZ.
         # 
-        # > The end time must be later than the start time.
+        # > Note: The end time must be later than the start time.
         self.end_time = end_time
-        # The page number. Pages start from page 1.
+        # The page number to return. Valid values: any integer greater than 1.
         self.page_number = page_number
-        # The number of entries per page. Default value: 300. Valid values: 1 to 1000.
+        # The number of entries per page. Default value: 300. Maximum value: 1000. Valid values: any integer from 1 to 1000.
         self.page_size = page_size
-        # The ID of the website. You can call the ListSites operation to obtain.
+        # The site ID, which can be obtained by calling ListSites.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # The beginning of the time range to query.
+        # The start time for retrieving logs.
         # 
-        # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The date is in ISO 8601 format and uses UTC+0 time in the format of yyyy-MM-ddTHH:mm:ssZ.
         self.start_time = start_time
 
     def validate(self):

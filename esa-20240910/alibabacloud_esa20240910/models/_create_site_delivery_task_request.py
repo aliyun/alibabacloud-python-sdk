@@ -26,33 +26,36 @@ class CreateSiteDeliveryTaskRequest(DaraModel):
     ):
         # The business type. Valid values:
         # 
-        # - **dcdn_log_access_l1** (default): Access logs.
-        # - **dcdn_log_er**: Edge Routine logs.
-        # - **dcdn_log_waf**: Security protection logs.
+        # - **dcdn_log_access_l1** (default): access logs.
+        # - **dcdn_log_er**: Edge Routine function logs.
+        # - **dcdn_log_waf**: security protection logs.
         # - **dcdn_log_ipa**: Layer 4 acceleration logs.
         # 
         # This parameter is required.
         self.business_type = business_type
         # The data center. Valid values:
-        # - **cn**: The Chinese mainland.
-        # - **oversea**: Outside the Chinese mainland.
+        # - **cn**: the Chinese mainland.
+        # - **oversea**: outside the Chinese mainland.
         self.data_center = data_center
         # The delivery type. Valid values:
-        # - **sls**: Simple Log Service.
+        # - **sls**: Alibaba Cloud Simple Log Service.
         # - **http**: HTTP service.
-        # - **aws3**: Amazon S3.
-        # - **oss**: Object Storage Service (OSS).
+        # - **aws3**: Amazon S3 service.
+        # - **oss**: Alibaba Cloud Object Storage Service.
         # - **kafka**: Kafka service.
         # - **aws3cmpt**: Amazon S3-compatible service.
         # 
         # This parameter is required.
         self.delivery_type = delivery_type
-        # The discard rate. If you do not specify this parameter, the default value is 0.
+        # The discard rate. Default value: 0.
         self.discard_rate = discard_rate
-        # The log fields to be delivered, separated by commas (,).
+        # The selected log fields, separated by commas (,).
         # 
         # This parameter is required.
         self.field_name = field_name
+        # The filter rule version.
+        # 
+        # > For backward compatibility with legacy filter rules, the default value is v1. New tasks use v2.
         self.filter_ver = filter_ver
         # The HTTP delivery configuration parameters.
         self.http_delivery = http_delivery
@@ -60,15 +63,15 @@ class CreateSiteDeliveryTaskRequest(DaraModel):
         self.kafka_delivery = kafka_delivery
         # The OSS delivery configuration.
         self.oss_delivery = oss_delivery
-        # The configuration parameters for S3 or S3-compatible delivery.
+        # The S3/S3-compatible delivery configuration parameters.
         self.s_3delivery = s_3delivery
-        # The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to query the site ID.
+        # The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # The Simple Log Service delivery configuration.
+        # The SLS delivery configuration.
         self.sls_delivery = sls_delivery
-        # The name of the task.
+        # The task name.
         # 
         # This parameter is required.
         self.task_name = task_name
@@ -186,11 +189,11 @@ class CreateSiteDeliveryTaskRequestSlsDelivery(DaraModel):
         slsproject: str = None,
         slsregion: str = None,
     ):
-        # The name of the Simple Log Service Logstore.
+        # The SLS real-time log Logstore name.
         self.slslog_store = slslog_store
-        # The name of the Simple Log Service project.
+        # The SLS real-time log project name.
         self.slsproject = slsproject
-        # The region of the Simple Log Service project.
+        # The region name of the SLS real-time log.
         self.slsregion = slsregion
 
     def validate(self):
@@ -242,19 +245,25 @@ class CreateSiteDeliveryTaskRequestS3Delivery(DaraModel):
         self.access_key = access_key
         # The bucket path.
         self.bucket_path = bucket_path
-        # The endpoint of the server. This parameter is required when S3Cmpt is set to true.
+        # The server endpoint. This parameter is required when S3Cmpt is set to true.
         # 
-        # > For S3-compatible services, configure the domain name resolution by concatenating the bucket and endpoint. For example, if the endpoint is example.com and the bucket is demo, the actual delivery address is demo.example.com.
+        # > For S3-compatible services, configure DNS resolution by concatenating the Bucket and Endpoint addresses. For example, if Endpoint is example.com and Bucket is demo, the actual delivery address is demo.example.com.
         self.endpoint = endpoint
-        # The prefix of the storage path.
+        # The storage path prefix.
         self.prefix_path = prefix_path
-        # The region where the service resides.
+        # The region where the service is located.
         self.region = region
         # Specifies whether the service is S3-compatible.
         self.s_3cmpt = s_3cmpt
-        # The secret key used by the S3 account.
+        # The SecretKey ID used by the S3 account.
         self.secret_key = secret_key
+        # Specifies whether to enable S3 server-side encryption.
+        # 
+        # To configure server-side encryption for the S3 bucket, refer to OSS [Server-side encryption](https://help.aliyun.com/document_detail/31871.html).
         self.server_side_encryption = server_side_encryption
+        # The key verification method for S3 delivery.
+        # 
+        # > The key configuration comes from the console or SDK. Keys from the console are encrypted during transmission. Keys from the SDK do not require encryption.
         self.vertify_type = vertify_type
 
     def validate(self):
@@ -337,7 +346,7 @@ class CreateSiteDeliveryTaskRequestOssDelivery(DaraModel):
         self.aliuid = aliuid
         # The bucket name.
         self.bucket_name = bucket_name
-        # The prefix of the OSS storage path.
+        # The OSS storage path prefix.
         self.prefix_path = prefix_path
         # The OSS region.
         self.region = region
@@ -405,8 +414,11 @@ class CreateSiteDeliveryTaskRequestKafkaDelivery(DaraModel):
         self.password = password
         # The Kafka message topic.
         self.topic = topic
+        # Specifies whether to enable SASL encrypted transmission for Kafka delivery.
+        # 
+        # > The delivery address must be configured with a public certificate. Self-signed certificate verification will fail.
         self.use_tls = use_tls
-        # Specifies whether user authentication is enabled.
+        # Specifies whether to enable user authentication.
         self.user_auth = user_auth
         # The username.
         self.user_name = user_name
@@ -500,26 +512,29 @@ class CreateSiteDeliveryTaskRequestHttpDelivery(DaraModel):
     ):
         # The compression method. By default, no compression is applied.
         self.compress = compress
-        # The delivery URL of the HTTP server.
+        # The HTTP server delivery address.
         self.dest_url = dest_url
-        # The custom header.
+        # The Custom Header.
         self.header_param = header_param
+        # The trailing separator.
         self.last_log_split = last_log_split
-        # The prefix of the log delivery package.
+        # The log delivery packet prefix.
         self.log_body_prefix = log_body_prefix
-        # The suffix of the log delivery package.
+        # The log delivery packet suffix.
         self.log_body_suffix = log_body_suffix
+        # Specifies whether to enable log segmentation. Default value: true.
         self.log_split = log_split
+        # The log separator.
         self.log_split_words = log_split_words
-        # The maximum size per delivery batch, in MB.
+        # The maximum size per delivery, in MB.
         self.max_batch_mb = max_batch_mb
-        # The maximum number of entries per delivery batch.
+        # The maximum number of log entries per delivery.
         self.max_batch_size = max_batch_size
         # The maximum number of retries.
         self.max_retry = max_retry
-        # The custom request parameter.
+        # The custom request parameters.
         self.query_param = query_param
-        # Specifies whether standard authentication is enabled.
+        # Specifies whether to use standard authentication.
         self.standard_auth_on = standard_auth_on
         # The standard authentication parameters.
         self.standard_auth_param = standard_auth_param
@@ -659,8 +674,7 @@ class CreateSiteDeliveryTaskRequestHttpDeliveryStandardAuthParam(DaraModel):
     ):
         # The encryption timeout period.
         # 
-        # > 
-        # > Set this parameter to a value greater than 0. We recommend that you set it to at least 300.
+        # > The value must be greater than 0. A value of 300 or greater is recommended.
         self.expired_time = expired_time
         # The private key.
         self.private_key = private_key

@@ -4,15 +4,15 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class DeleteScheduledPreloadExecutionRequest(DaraModel):
+class GetReleaseTimeRequest(DaraModel):
     def __init__(
         self,
-        id: str = None,
+        instance_id: str = None,
     ):
-        # The prefetch plan ID.
+        # The instance ID.
         # 
         # This parameter is required.
-        self.id = id
+        self.instance_id = instance_id
 
     def validate(self):
         pass
@@ -22,15 +22,15 @@ class DeleteScheduledPreloadExecutionRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.id is not None:
-            result['Id'] = self.id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
 
         return self
 

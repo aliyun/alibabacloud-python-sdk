@@ -18,13 +18,13 @@ class DescribePreloadTasksResponseBody(DaraModel):
     ):
         # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The page size.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The tasks.
+        # The task list.
         self.tasks = tasks
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -89,29 +89,24 @@ class DescribePreloadTasksResponseBodyTasks(DaraModel):
         status: str = None,
         task_id: str = None,
     ):
-        # The prefetched content.
+        # The prefetch object.
         self.content = content
-        # The time when the task was created.
+        # The creation time.
         self.create_time = create_time
-        # The error message returned upon a prefetch task failure. Valid values:
+        # The error description returned when the prefetch fails. Valid values:
         # 
-        # - **Internal Error**
-        # 
-        # - **Origin Timeout**
-        # 
-        # - **Origin Return StatusCode 5XX**
+        # - **Internal Error**: An internal error occurred.
+        # - **Origin Timeout**: The origin server response timed out.
+        # - **Origin Return StatusCode 5XX**: The origin server returned a 5xx error code.
         self.description = description
-        # The progress of the task, in percentage.
+        # The task completion progress percentage.
         self.process = process
-        # The task status.
-        # 
-        # - **Complete**: The task is complete.
-        # 
-        # - **Refreshing**: The task is in progress.
-        # 
-        # - **Failed**: The task failed.
+        # The task status. Valid values:
+        # - **Complete**: Complete.
+        # - **Refreshing**: Prefetching.
+        # - **Failed**: Prefetch failed.
         self.status = status
-        # The ID of the queried task.
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
