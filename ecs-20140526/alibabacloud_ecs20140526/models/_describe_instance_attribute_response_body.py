@@ -39,6 +39,7 @@ class DescribeInstanceAttributeResponseBody(DaraModel):
         region_id: str = None,
         request_id: str = None,
         security_group_ids: main_models.DescribeInstanceAttributeResponseBodySecurityGroupIds = None,
+        security_options: main_models.DescribeInstanceAttributeResponseBodySecurityOptions = None,
         serial_number: str = None,
         status: str = None,
         stopped_mode: str = None,
@@ -64,7 +65,7 @@ class DescribeInstanceAttributeResponseBody(DaraModel):
         self.description = description
         # The Elastic IP Address (EIP) binding information.
         self.eip_address = eip_address
-        # Indicates whether the Jumbo Frame feature is enabled for the ECS instance. Valid values:
+        # Indicates whether the Jumbo frame feature is enabled for the ECS instance. Valid values:
         # 
         # - true: enabled.
         # 
@@ -95,7 +96,7 @@ class DescribeInstanceAttributeResponseBody(DaraModel):
         self.instance_name = instance_name
         # The network type of the instance. Valid values: 
         #          
-        # - vpc: virtual private cloud (VPC).
+        # - vpc: Virtual Private Cloud (VPC).
         # - classic: classic network. The classic network is deprecated. For more information, see [Deprecation notice](https://help.aliyun.com/document_detail/2833134.html).
         self.instance_network_type = instance_network_type
         # The instance type of the instance.
@@ -105,7 +106,7 @@ class DescribeInstanceAttributeResponseBody(DaraModel):
         # - PayByBandwidth: pay-by-bandwidth.
         # - PayByTraffic: pay-by-traffic.
         # 
-        # > In **pay-by-traffic** mode, the peak inbound and outbound bandwidths are used as upper limits for bandwidths and are not guaranteed. When resource contention occurs, the peak bandwidths may be limited. If your workloads require guaranteed bandwidth, use the **pay-by-bandwidth** mode.
+        # > In **pay-by-traffic** mode, the peak inbound and outbound bandwidths are used as the upper limits of bandwidths instead of guaranteed performance metrics. When resource contention occurs, the peak bandwidths may be limited. If you require guaranteed bandwidth, use the **pay-by-bandwidth** mode.
         self.internet_charge_type = internet_charge_type
         # The maximum inbound public bandwidth. Unit: Mbit/s.
         self.internet_max_bandwidth_in = internet_max_bandwidth_in
@@ -129,6 +130,7 @@ class DescribeInstanceAttributeResponseBody(DaraModel):
         # The request ID.
         self.request_id = request_id
         self.security_group_ids = security_group_ids
+        self.security_options = security_options
         # The serial number of the instance.
         self.serial_number = serial_number
         # The instance status. Valid values:
@@ -141,9 +143,9 @@ class DescribeInstanceAttributeResponseBody(DaraModel):
         self.status = status
         # Indicates whether the instance continues to be billed after it is stopped. Valid values:
         # 
-        # - KeepCharging: The instance continues to be billed after it is stopped. Inventory resources are reserved for the instance.
-        # - StopCharging: The instance is not billed after it is stopped. After the instance is stopped, its resources such as vCPUs, memory, and public IP addresses are released. Whether the instance can be restarted depends on resource availability in the current region.
-        # - Not-applicable: The instance does not support the No Fees for Stopped Instances feature.
+        # - KeepCharging: The instance continues to be billed after it is stopped. Resources such as vCPUs, memory, and public IP addresses are retained.
+        # - StopCharging: The instance is not billed after it is stopped. Resources such as vCPUs, memory, and public IP addresses are released. Whether the instance can be restarted depends on resource availability in the current region.
+        # - Not-applicable: The instance does not support the economical mode.
         self.stopped_mode = stopped_mode
         # The VLAN ID of the instance.
         # > This parameter will be deprecated soon. To ensure future compatibility, use other parameters.
@@ -168,6 +170,8 @@ class DescribeInstanceAttributeResponseBody(DaraModel):
             self.public_ip_address.validate()
         if self.security_group_ids:
             self.security_group_ids.validate()
+        if self.security_options:
+            self.security_options.validate()
         if self.vpc_attributes:
             self.vpc_attributes.validate()
 
@@ -262,6 +266,9 @@ class DescribeInstanceAttributeResponseBody(DaraModel):
 
         if self.security_group_ids is not None:
             result['SecurityGroupIds'] = self.security_group_ids.to_map()
+
+        if self.security_options is not None:
+            result['SecurityOptions'] = self.security_options.to_map()
 
         if self.serial_number is not None:
             result['SerialNumber'] = self.serial_number
@@ -379,6 +386,10 @@ class DescribeInstanceAttributeResponseBody(DaraModel):
             temp_model = main_models.DescribeInstanceAttributeResponseBodySecurityGroupIds()
             self.security_group_ids = temp_model.from_map(m.get('SecurityGroupIds'))
 
+        if m.get('SecurityOptions') is not None:
+            temp_model = main_models.DescribeInstanceAttributeResponseBodySecurityOptions()
+            self.security_options = temp_model.from_map(m.get('SecurityOptions'))
+
         if m.get('SerialNumber') is not None:
             self.serial_number = m.get('SerialNumber')
 
@@ -480,6 +491,33 @@ class DescribeInstanceAttributeResponseBodyVpcAttributesPrivateIpAddress(DaraMod
         m = m or dict()
         if m.get('IpAddress') is not None:
             self.ip_address = m.get('IpAddress')
+
+        return self
+
+class DescribeInstanceAttributeResponseBodySecurityOptions(DaraModel):
+    def __init__(
+        self,
+        enable_secure_boot: bool = None,
+    ):
+        self.enable_secure_boot = enable_secure_boot
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.enable_secure_boot is not None:
+            result['EnableSecureBoot'] = self.enable_secure_boot
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnableSecureBoot') is not None:
+            self.enable_secure_boot = m.get('EnableSecureBoot')
 
         return self
 
@@ -608,9 +646,9 @@ class DescribeInstanceAttributeResponseBodyNetworkOptions(DaraModel):
     ):
         # The bandwidth weight.
         # 
-        # Different instance types support different values. Call [DescribeInstanceTypes](https://help.aliyun.com/document_detail/2679699.html) to query the bandwidth weight values supported by the current instance type.
+        # Different instance types support different values. You can call [DescribeInstanceTypes](https://help.aliyun.com/document_detail/2679699.html) to query the bandwidth weight values supported by the current instance type.
         self.bandwidth_weighting = bandwidth_weighting
-        # Indicates whether the Jumbo Frame feature is enabled for the instance. Valid values:
+        # Indicates whether the Jumbo frame feature is enabled for the instance. Valid values:
         # 
         # - true: enabled.
         # 
@@ -702,9 +740,9 @@ class DescribeInstanceAttributeResponseBodyEipAddress(DaraModel):
         # - PayByBandwidth: pay-by-bandwidth.
         # - PayByTraffic: pay-by-traffic.
         # 
-        # > In **pay-by-traffic** mode, the peak inbound and outbound bandwidths are used as upper limits for bandwidths and are not guaranteed. When resource contention occurs, the peak bandwidths may be limited. If your workloads require guaranteed bandwidth, use the **pay-by-bandwidth** mode.
+        # > In **pay-by-traffic** mode, the peak inbound and outbound bandwidths are used as the upper limits of bandwidths instead of guaranteed performance metrics. When resource contention occurs, the peak bandwidths may be limited. If you require guaranteed bandwidth, use the **pay-by-bandwidth** mode.
         self.internet_charge_type = internet_charge_type
-        # The EIP.
+        # The EIP address.
         self.ip_address = ip_address
 
     def validate(self):

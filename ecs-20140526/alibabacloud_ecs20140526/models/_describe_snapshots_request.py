@@ -37,31 +37,31 @@ class DescribeSnapshotsRequest(DaraModel):
         usage: str = None,
     ):
         self.filter = filter
-        # The category of the snapshot. Valid values:
-        # - Standard: standard snapshot.
+        # The snapshot type. Valid values:
+        # - Standard: Normal snapshot.
         # - Flash: local snapshot. This value is about to be deprecated. Local snapshots have been replaced by the snapshot instant access feature. The metric description is as follows:
-        #   - If you used local snapshots before December 14, 2020, you can use this parameter. The parameter is active.
+        #   - If you used local snapshots before December 14, 2020, you can use this parameter as it is active.
         #   - If you did not use local snapshots before December 14, 2020, you cannot use this parameter.
         # - archive: archive snapshot.
         # 
         # 
         # 
-        # <props="china">For more information, see [Chinese site notice on snapshot service upgrade and new billing items on December 14](https://help.aliyun.com/noticelist/articleid/1060755542.html).
+        # <props="china">For more information, see [Chinese notice on Alibaba Cloud snapshot service upgrade and new billing items on December 14](https://help.aliyun.com/noticelist/articleid/1060755542.html).
         self.category = category
         # The ID of the disk.
         self.disk_id = disk_id
-        # Specifies whether to perform only a dry run, without performing the actual request.
+        # Specifies whether to perform only a dry run. Valid values:
         # 
         # - true: performs only a dry run. The system checks the request for potential issues, including invalid AccessKey pairs, unauthorized RAM users, and missing parameter values. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-        # - false (default): performs a dry run and sends the request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        # - false (default): performs a dry run and sends the request. If the request passes the dry run, a 2XX HTTP status code is returned and the resource status is queried.
         self.dry_run = dry_run
         # Specifies whether to filter encrypted snapshots. Default value: false.
         self.encrypted = encrypted
         # The instance ID. Specify this parameter to query snapshot information of disks attached to the instance.
         self.instance_id = instance_id
-        # The ID of the Key Management Service (KMS) key used by the data disk.
+        # The Key Management Service (KMS) key ID for the data disk.
         self.kmskey_id = kmskey_id
-        # The maximum number of entries per page for paging. Maximum value: 100.
+        # The maximum number of entries per page for paging query. Maximum value: 100.
         # 
         # Default value: 10.
         self.max_results = max_results
@@ -69,45 +69,45 @@ class DescribeSnapshotsRequest(DaraModel):
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # > This parameter is about to be deprecated. Use NextToken and MaxResults for paging instead.
+        # > This parameter is about to be deprecated. Use NextToken and MaxResults to complete paging query operations.
         self.page_number = page_number
-        # > This parameter is about to be deprecated. Use NextToken and MaxResults for paging instead.
+        # > This parameter is about to be deprecated. Use NextToken and MaxResults to complete paging query operations.
         self.page_size = page_size
         # The region ID of the disk. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group. When you use this parameter to filter resources, the resource count cannot exceed 1000.
+        # The resource group ID. When you use this parameter to filter resources, the resource count cannot exceed 1000.
         # 
         # > Filtering by default resource group is not supported.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The IDs of snapshots. The value is a JSON array that consists of up to 100 snapshot IDs. Separate the IDs with commas (,).
+        # The snapshot IDs. The value is a JSON array that consists of up to 100 snapshot IDs. Separate the IDs with commas (,).
         self.snapshot_ids = snapshot_ids
-        # The ID of the snapshot chain.
+        # The snapshot chain ID.
         self.snapshot_link_id = snapshot_link_id
-        # The name of the snapshot.
+        # The snapshot name.
         self.snapshot_name = snapshot_name
-        # The type of automatic creation. Valid values: 
+        # The automatic creation type. Valid values: 
         #          
         # - auto: automatic snapshot.
         # - user: manual snapshot.
-        # - all (default): All automatic creation types.
+        # - all (default): all automatic creation types.
         self.snapshot_type = snapshot_type
         # The type of the source disk. Valid values: 
         #      
         # - system: system disk.
         # - data: data disk.
         # 
-        # > The value is case-insensitive.
+        # > The values are case-insensitive.
         self.source_disk_type = source_disk_type
-        # The status of the snapshot. Valid values: 
+        # The snapshot status. Valid values: 
         #          
         # - progressing: The snapshot is being created.
         # - accomplished: The snapshot is created.
         # - failed: The snapshot failed to be created.
-        # - all (default): All snapshot statuses.
+        # - all (default): all snapshot statuses.
         self.status = status
         # The tags.
         self.tag = tag
@@ -308,7 +308,7 @@ class DescribeSnapshotsRequestTag(DaraModel):
     ):
         # The tag key of the snapshot. Valid values of N: 1 to 20.
         # 
-        # If you use a single tag to filter resources, the resource count with the specified tag cannot exceed 1000. If you use multiple tags to filter resources, the resource count with all specified tags attached cannot exceed 1000. If the resource count exceeds 1000, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation.
+        # If you use a single tag to filter resources, the resource count with the tag cannot exceed 1000. If you use multiple tags to filter resources, the resource count with all the specified tags attached cannot exceed 1000. If the resource count exceeds 1000, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation.
         self.key = key
         # The tag value of the snapshot. Valid values of N: 1 to 20.
         self.value = value

@@ -28,42 +28,35 @@ class DescribeDiagnosticReportAttributesResponseBody(DaraModel):
         self.attributes = attributes
         # The time when the diagnostic report was created.
         self.creation_time = creation_time
-        # The end of the diagnostic time range. This value corresponds to the `EndTime` parameter you provided when calling the [CreateDiagnosticReport](https://help.aliyun.com/document_detail/442490.html) operation.
+        # The end time. This parameter was specified when you called the [CreateDiagnosticReport](https://help.aliyun.com/document_detail/442490.html) operation to create the diagnostic report.
         self.end_time = end_time
-        # The time when the diagnosis was complete.
+        # The time when the diagnostic report was completed.
         self.finished_time = finished_time
-        # The diagnostic results for the metrics.
         self.metric_results = metric_results
-        # The metric set ID.
+        # The ID of the diagnostic metric set.
         self.metric_set_id = metric_set_id
-        # The unique ID of the diagnostic report.
+        # The diagnostic report ID. The unique identifier of the resource diagnostic report.
         self.report_id = report_id
         # The request ID.
         self.request_id = request_id
         # The resource ID.
         self.resource_id = resource_id
-        # The resource type. Only `instance` is supported.
+        # The resource type. The supported type is instance.
         self.resource_type = resource_type
-        # The overall severity level of the diagnostic report. This is the highest severity level among all metrics in the report. Valid values are listed below, from lowest to highest severity:
+        # The severity level of the report. This value represents the most severe level among all metrics. The severity levels in ascending order are:
         # 
-        # - Unknown: The initial state. The diagnosis has not started or exited unexpectedly, so the result is inconclusive.
-        # 
-        # - Normal: The resource is healthy, and no issues were found.
-        # 
-        # - Info: Informational messages were found that may be relevant to an issue.
-        # 
-        # - Warn: Warnings were found that may lead to an issue.
-        # 
-        # - Critical: Critical issues were found.
+        # - Unknown: The initial state, which indicates that the diagnosis has not started or the diagnosis process exited abnormally. No diagnostic conclusion is available.
+        # - Normal: The diagnosis is normal. No issues were found.
+        # - Info: Related information is available and may be associated with an exception.
+        # - Warn: Related information is available and may cause an exception.
+        # - Critical: A critical exception exists.
         self.severity = severity
-        # The start of the diagnostic time range. This value corresponds to the `StartTime` parameter you provided when calling the [CreateDiagnosticReport](https://help.aliyun.com/document_detail/442490.html) operation.
+        # The start time. This parameter was specified when you called the [CreateDiagnosticReport](https://help.aliyun.com/document_detail/442490.html) operation to create the diagnostic report.
         self.start_time = start_time
-        # The status of the diagnostic report. Possible values:
+        # The status of the diagnostic report. Valid values:
         # 
         # - InProgress: The diagnosis is in progress.
-        # 
         # - Finished: The diagnosis is complete.
-        # 
         # - Failed: The diagnosis failed.
         self.status = status
 

@@ -19,45 +19,42 @@ class LockSnapshotRequest(DaraModel):
         resource_owner_id: int = None,
         snapshot_id: str = None,
     ):
-        # A unique, case-sensitive token that you provide to ensure the idempotence of the request. The token can contain only ASCII characters and must not exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/zh/ecs/developer-reference/how-to-ensure-idempotence?spm=a2c4g.11186623.0.0.2a29d467Bh2sO5).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://www.alibabacloud.com/help/en/ecs/developer-reference/how-to-ensure-idempotence).
         self.client_token = client_token
-        # The cool-off period. In compliance mode, you can specify a cool-off period or set this parameter to 0 to lock the snapshot immediately.
+        # The cool-off period. In compliance mode, you can set a cool-off period or skip the cool-off period to directly lock the snapshot. 
         # 
-        # During the cool-off period, users with the required RAM permissions can unlock the snapshot, extend or shorten the cool-off period, and extend or shorten the lock duration. The snapshot cannot be deleted during the cool-off period.
+        # During the cool-off period, users with the required RAM permissions can unlock the snapshot, extend or shorten the cool-off period, and extend or shorten the lock duration. The snapshot cannot be deleted during the cool-off period. 
         # 
-        # After the cool-off period ends, you can only extend the lock duration.
+        # After the cool-off period ends, you can only extend the lock duration. 
         # 
-        # Unit: hours.
+        # Unit: hours. 
         # 
-        # Valid values: 0 to 72. A value of 0 indicates that the cool-off period is skipped and the snapshot is locked immediately.
+        # Valid values: 0 to 72. A value of 0 indicates that the cool-off period is skipped and the snapshot is directly locked. 
         # 
-        # If a snapshot is already locked in compliance mode, you must set this parameter to 0 to extend its lock duration.
+        # If the snapshot has already entered the compliance mode lock period, set this parameter to 0 to extend the lock duration.
         # 
         # This parameter is required.
         self.cool_off_period = cool_off_period
-        # Specifies whether to perform a dry run. Valid values:
-        # 
-        # - `true`: Performs a dry run to check the request without executing it. The system checks for required parameters, request format, business constraints, and permissions. If the check passes, the `DryRunOperation` error code is returned. If the check fails, a corresponding error is returned.
-        # 
-        # - `false` (default): Checks the request and, if the checks pass, executes the operation.
+        # Specifies whether to perform only a dry run. Valid values: 
+        # - true: performs only a dry run. The system checks whether required parameters are specified, whether the request format is valid, and whether business restrictions are met. If the check fails, the corresponding error is returned. If the check succeeds, the DryRunOperation error code is returned. 
+        # - false (default): performs a dry run and sends the request. If the check succeeds, the operation is performed.
         self.dry_run = dry_run
-        # The number of days to lock the snapshot. The lock automatically expires at the end of this period.
+        # The lock duration. The snapshot lock automatically expires after the lock duration ends. 
         # 
-        # Unit: days.
+        # Unit: days. 
         # 
         # Valid values: 1 to 36500.
         # 
         # This parameter is required.
         self.lock_duration = lock_duration
-        # The lock mode. Valid value:
-        # 
-        # - `compliance`: Locks the snapshot in compliance mode. A snapshot locked in compliance mode cannot be unlocked by any user and can be deleted only after its lock duration expires. You cannot shorten the lock duration. However, users with the required RAM permissions can extend the lock duration at any time. When you lock a snapshot in compliance mode, you can optionally specify a cool-off period.
+        # The lock mode. Valid values: 
+        # - compliance: Locks the snapshot in compliance mode. A snapshot locked in compliance mode cannot be unlocked by any user and can be deleted only after the lock duration expires. Users cannot shorten the lock duration, but users with the required RAM permissions can extend the lock duration at any time. When locking a snapshot in compliance mode, you can optionally specify a cool-off period.
         # 
         # This parameter is required.
         self.lock_mode = lock_mode
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/zh/ecs/developer-reference/api-ecs-2014-05-26-describeregions?spm=a2c4g.11186623.0.i2) to get the latest list of Alibaba Cloud regions.
+        # The region ID. You can call [DescribeRegions](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-ecs-2014-05-26-describeregions) to query the most recent list of Alibaba Cloud regions.
         # 
         # This parameter is required.
         self.region_id = region_id

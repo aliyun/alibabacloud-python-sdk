@@ -23,121 +23,85 @@ class ModifyInvocationAttributeShrinkRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # Ensures the idempotence of the request. Generate a unique parameter value from your client to guarantee uniqueness across different requests. **ClientToken** supports only ASCII characters and cannot exceed 64 characters. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. The **ClientToken** value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
-        # The content of the command after modification. The command content can be plaintext or Base64-encoded. Take note of the following items:
+        # The modified command content. The command content can be plaintext or Base64-encoded. Note the following items:
         # 
-        # - You can specify whether to retain the command after the command is run when you created the command. If you specified to retain the command, the Base64-encoded command content cannot exceed 18 KB in size. If you specified not to retain the command, the Base64-encoded command content cannot exceed 24 KB in size.
+        # - If the command was saved when the task was created, the command content after Base64 encoding cannot exceed 18 KB. If the command was not saved, the command content after Base64 encoding cannot exceed 24 KB.
+        # - If your command content is Base64-encoded, you must set `ContentEncoding=Base64`.
+        # - Set `EnableParameter=true` to enable the custom parameter feature in the command content:
+        #     - Define custom parameters by enclosing them in `{{}}`. Spaces and line breaks before and after the parameter name within `{{}}` are ignored.
+        #     - The number of custom parameters cannot exceed 20.
+        #     - Custom parameter names can contain a-zA-Z0-9-_. The acs:: prefix for specifying non-built-in environment parameters is not supported. Other characters are not supported. Parameter names are case-insensitive.
+        #     - Each custom parameter name cannot exceed 64 bytes.
         # 
-        # - If the command content is Base64-encoded, set `ContentEncoding` to Base64.
-        # 
-        # - If you set `EnableParameter` to true, the custom parameter feature is enabled and you can configure custom parameters based on the following rules:
-        # 
-        #   - You can define custom parameters in the `{{}}` format. Within `{{}}`, the spaces and line feeds before and after the parameter names are ignored.
-        # 
-        #   - The number of custom parameters cannot exceed 20.
-        # 
-        #   - A custom parameter name can contain letters, digits, underscores (_), and hyphens (-). The name is case-insensitive. The ACS:: prefix cannot be used to specify non-built-in environment parameters.
-        # 
-        #   - Each custom parameter name cannot exceed 64 bytes in length.
-        # 
-        # - You can specify built-in environment parameters as custom parameters. Then, when you run the command, these parameters are automatically specified by Cloud Assistant. You can specify the following built-in environment parameters:
-        # 
-        #   - `{{ACS::RegionId}}`: the region ID.
-        # 
-        #   - `{{ACS::AccountId}}`: the UID of the Alibaba Cloud account.
-        # 
-        #   - `{{ACS::InstanceId}}`: the instance ID. If you want to specify `{{ACS::InstanceId}}` as a built-in environment variable, make sure that the Cloud Assistant Agent version is not earlier than the following ones:
-        # 
-        #     - Linux: 2.2.3.309
-        # 
-        #     - Windows: 2.1.3.309
-        # 
-        #   - `{{ACS::InstanceName}}`: the instance name. When the command is run on multiple instances, if you want to specify `{{ACS::InstanceName}}` as a built-in environment variable, make sure that the Cloud Assistant Agent version is not earlier than the following ones:
-        # 
-        #     - Linux: 2.2.3.344
-        # 
-        #     - Windows: 2.1.3.344
-        # 
-        #   - `{{ACS::InvokeId}}`: the ID of the task. If you want to specify `{{ACS::InvokeId}}` as a built-in environment parameter, make sure that the Cloud Assistant Agent version is not earlier than the following ones:
-        # 
-        #     - Linux: 2.2.3.309
-        # 
-        #     - Windows: 2.1.3.309
-        # 
-        #   - `{{ACS::CommandId}}`: the command ID. If you want to specify `{{ACS::CommandId}}` as a built-in environment parameter, make sure that the Cloud Assistant Agent version is not earlier than the following ones:
-        # 
-        #     - Linux: 2.2.3.309
-        # 
-        #     - Windows: 2.1.3.309
+        # - You can specify built-in environment parameters as custom parameters. When the command is executed, you do not need to manually assign values to these parameters. Cloud Assistant automatically replaces them with the corresponding values in the environment. The following built-in environment parameters are supported:
+        #     - `{{ACS::RegionId}}`: The region ID.
+        #     - `{{ACS::AccountId}}`: The UID of the Alibaba Cloud account.
+        #     - `{{ACS::InstanceId}}`: The instance ID. When the command is sent to multiple instances, to specify `{{ACS::InstanceId}}` as a built-in environment parameter, ensure that the Cloud Assistant Agent is not earlier than the following versions:
+        #         - Linux: 2.2.3.309
+        #         - Windows: 2.1.3.309
+        #     - `{{ACS::InstanceName}}`: The instance name. When the command is sent to multiple instances, to specify `{{ACS::InstanceName}}` as a built-in environment parameter, ensure that the Cloud Assistant Agent is not earlier than the following versions:
+        #         - Linux: 2.2.3.344
+        #         - Windows: 2.1.3.344
+        #     - `{{ACS::InvokeId}}`: The command execution ID. To specify `{{ACS::InvokeId}}` as a built-in environment parameter, ensure that the Cloud Assistant Agent is not earlier than the following versions:
+        #         - Linux: 2.2.3.309
+        #         - Windows: 2.1.3.309
+        #     - `{{ACS::CommandId}}`: The command ID. When you call this operation to execute a command, to specify `{{ACS::CommandId}}` as a built-in environment parameter, ensure that the Cloud Assistant Agent is not earlier than the following versions: 
+        #         - Linux: 2.2.3.309
+        #         - Windows: 2.1.3.309
         self.command_content = command_content
-        # The encoding mode of the command content that is specified by `CommandContent`. Valid values (case-insensitive):
+        # The encoding type of the command content (`CommandContent`). Valid values (case-insensitive):
         # 
-        # - PlainText: The command content is not encoded.
+        # - PlainText: not encoded. The content is transmitted in plaintext.
+        # - Base64: Base64-encoded.
         # 
-        # - Base64: The command content is encoded in Base64.
-        # 
-        # Default value: PlainText. If the value is invalid, the PlainText mode is used.
+        # Default value: PlainText. If an invalid value is specified, it is treated as PlainText.
         self.content_encoding = content_encoding
-        # Specifies whether to include custom parameters in the command.
-        # 
-        # - If you want to enable the custom parameter feature, or configure `Parameters` to modify the custom parameters in the command, set EnableParameter to `true`.
-        # 
-        # - If you do not want to configure `Parameters` to modify the custom parameters in the command, leave EnableParameter empty or set it to `false`.
+        # Specifies whether the modified command contains custom parameters.
+        # - When you enable custom parameters or modify the custom parameters `Parameters`, set this parameter to `true`.
+        # - When you do not modify the custom parameters `Parameters`, do not set this parameter or set it to `false`.
         self.enable_parameter = enable_parameter
-        # The frequency at which to run the command. This parameter takes effect only when `RepeatMode` is set to `Period`. You can configure a command to run at a fixed interval based on a rate expression, run only once at a specific point in time, or run at designated points in time based on a cron expression.
+        # The modified scheduled execution frequency. This parameter takes effect only when `RepeatMode` is set to `Period`. Three types of scheduled execution are supported: fixed interval execution (based on Rate expressions), one-time execution at a specified time, and clock-based scheduled execution (based on Cron expressions).
         # 
-        # - To run the command at a fixed interval, use a rate expression to specify the interval. You can specify the interval in seconds, minutes, hours, or days. This option is suitable for scenarios in which tasks need to be executed at a fixed interval. Specify the interval in the following format: `rate(<Execution interval value> <Execution interval unit>)`. For example, specify `rate(5m)` to run the command every 5 minutes. Take note of the following limits when you specify an interval:
+        # - Fixed interval execution: Based on Rate expressions, the command is executed at the specified time interval. The time interval can be specified in seconds (s), minutes (m), hours (h), or days (d). This is applicable to scenarios where tasks are executed at fixed intervals. Format: `rate(<interval value><interval unit>)`. For example, to execute every 5 minutes, use `rate(5m)`. Fixed interval execution has the following limits:
+        #     - The interval cannot exceed 7 days or be less than 60 seconds, and must be greater than the timeout period specified when the scheduled task was created.
+        #     - The execution interval is based only on the fixed frequency and is not related to the actual execution time of the task. For example, if the command is set to execute every 5 minutes and the task takes 2 minutes to complete, the next round starts 3 minutes after the task completes.
+        #     - The next execution time is calculated based on the task creation time (see [CreationTime](https://help.aliyun.com/document_detail/64840.html) returned by `DescribeInvocations`, note that this is not the modification time) and the modified execution interval.
         # 
-        #   - The specified interval must be in the range of 60 seconds to 7 days and must be longer than the timeout period specified when you created the scheduled task.
+        # - One-time execution at a specified time: The command is executed once at the specified time zone and time point. Format: `at(yyyy-MM-dd HH:mm:ss <time zone>)`, that is, `at(year-month-day hour:minute:second <time zone>)`. If no time zone is specified, the default is UTC. The time zone supports the following three formats:
+        #     - Full time zone name: such as `Asia/Shanghai` (China/Shanghai time) or `America/Los_Angeles` (US/Los Angeles time).
+        #     - GMT offset from Greenwich Mean Time: such as `GMT+8:00` (East 8th time zone) or `GMT-7:00` (West 7th time zone). When using GMT format, leading zeros are not supported in the hour position.
+        #     - Time zone abbreviation: Only UTC (Coordinated Universal Time) is supported.
         # 
-        #   - The interval is the amount of time that elapses between two consecutive executions. The interval is irrelevant to the amount of time that is required to run the command once. For example, you set the interval to 5 minutes and the command requires 2 minutes to run once. Each time the command running is complete, the system waits 3 minutes instead of 5 minutes before the system runs the command again.
+        #   For example, to execute once at 13:15:30 on June 6, 2022 in China/Shanghai time, use: `at(2022-06-06 13:15:30 Asia/Shanghai)`. To execute once at 13:15:30 on June 6, 2022 in the West 7th time zone, use: `at(2022-06-06 13:15:30 GMT-7:00)`.
         # 
-        #   - The point in time at which the command is run the next time is calculated based on the creation time of the task (the [CreationTime](https://help.aliyun.com/document_detail/64840.html) value returned by the `DescribeInvocations` operation) and the modified execution interval.
+        # - Clock-based scheduled execution (based on Cron expressions): Based on Cron expressions, the command is executed according to the scheduled task settings. Format: `<seconds> <minutes> <hours> <day of month> <month> <day of week> <year (optional)> <time zone>`, that is, `<Cron expression> <time zone>`. The scheduled task execution time is calculated based on the Cron expression in the specified time zone. If no time zone is specified, the default is the internal system time zone of the instance running the scheduled task. For more information about Cron expressions, see [Cron expressions](https://help.aliyun.com/document_detail/64769.html). The time zone supports the following three formats:
+        #     - Full time zone name: such as `Asia/Shanghai` (China/Shanghai time) or `America/Los_Angeles` (US/Los Angeles time).
+        #     - GMT offset from Greenwich Mean Time: such as `GMT+8:00` (East 8th time zone) or `GMT-7:00` (West 7th time zone). When using GMT format, leading zeros are not supported in the hour position.
+        #     - Time zone abbreviation: Only UTC (Coordinated Universal Time) is supported.
+        #   For example, to execute once every day at 10:15 AM in 2022 in China/Shanghai time, use `0 15 10 ? * * 2022 Asia/Shanghai`. To execute every half hour from 10:00 AM to 11:30 AM every day in 2022 in the East 8th time zone, use `0 0/30 10-11 * * ? 2022 GMT+8:00`. To execute every 5 minutes from 2:00 PM to 2:55 PM every day in October every two years starting from 2022 in UTC, use `0 0/5 14 * 10 ? 2022/2 UTC`.
         # 
-        # - To run a command only once at a specific time, specify a point in time and a time zone. Specify the point in time in the `at(yyyy-MM-dd HH:mm:ss <Time zone>)` format, which indicates `at(Year-Month-Day Hours:Minutes:Seconds <Time zone>)`. If you do not specify a time zone, the Coordinated Universal Time (UTC) time zone is used by default. You can specify a time zone in the following forms:
-        # 
-        #   - The time zone name. Examples: `Asia/Shanghai` and `America/Los_Angeles`.
-        # 
-        #   - The time offset from GMT. Examples: `GMT+8:00` (UTC+8) and `GMT-7:00` (UTC-7). If you use the GMT format, you cannot add leading zeros to the hour value.
-        # 
-        #   - The time zone abbreviation. Only UTC is supported.
-        # 
-        #   For example, to configure a command to run only once at 13:15:30 on June 6, 2022 (Shanghai time), set the time to `at(2022-06-06 13:15:30 Asia/Shanghai)`. To configure a command to run only once at 13:15:30 on June 6, 2022 (UTC-7), set the time to `at(2022-06-06 13:15:30 GMT-7:00)`.
-        # 
-        # - To run a command at designated points in time, use a cron expression to define the schedule. Specify a schedule in the `<Cron expression> <Time zone>` format. The cron expression is in the `<Seconds> <Minutes> <Hours> <Day of the month> <Month> <Day of the week> <Year (optional)>` format. The system calculates the execution times of the command based on the specified cron expression and time zone and runs the command as scheduled. If you do not specify a time zone, the system time zones of the instances on which you want to run the command are used by default. For information about cron expressions, see [Cron expressions](https://help.aliyun.com/document_detail/64769.html). You can specify the time zone in the following forms:
-        # 
-        #   - The time zone name. Examples: `Asia/Shanghai` and `America/Los_Angeles`.
-        # 
-        #   - The time offset from GMT. Examples: `GMT+8:00` (UTC+8) and `GMT-7:00` (UTC-7). If you use the GMT format, you cannot add leading zeros to the hour value.
-        # 
-        #   - The time zone abbreviation. Only UTC is supported. For example, to configure a command to run at 10:15:00 every day in 2022 (Shanghai time), set the schedule to `0 15 10 ? * * 2022 Asia/Shanghai`. To configure a command to run every half an hour from 10:00:00 to 11:30:00 every day in 2022 (UTC+8), set the schedule to `0 0/30 10-11 * * ? 2022 GMT+8:00`. To configure a command to run every 5 minutes from 14:00:00 to 14:55:00 every October every two years from 2022 in UTC, set the schedule to `0 0/5 14 * 10 ? 2022/2 UTC`.
-        # 
-        #   \\*\\*
-        # 
-        #   **Note** The minimum interval must be 10 seconds or longer and cannot be shorter than the timeout period of scheduled executions.
+        #     >The minimum time interval must be greater than or equal to the timeout period specified when the scheduled task was created, and must not be less than 10 seconds.
         self.frequency = frequency
-        # The IDs of the ECS instances or managed instances that you want to add to the scheduled command task.
+        # The instance ID of the ECS instance or managed instance to add to the task.
         self.instance_id = instance_id
-        # The execution ID of the command.
+        # The execution ID of the task to modify.
         # 
         # This parameter is required.
         self.invoke_id = invoke_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The key-value pairs of the custom parameters that are passed in if custom parameters are included in the command.
+        # The key-value pairs of custom parameters to modify when the command contains custom parameters.
         # 
-        # You can specify 0 to 10 custom parameters. Take note of the following items:
+        # The number of custom parameters ranges from 0 to 10. Note the following items:
         # 
-        # - The key of a custom parameter can be up to 64 characters in length and cannot be an empty string.
+        # - Keys cannot be empty strings and can contain up to 64 characters.
+        # - Values can be empty strings.
+        # - If the command was saved when the task was created, the combined size of custom parameters and original command content after Base64 encoding cannot exceed 18 KB. If the command was not saved, the combined size cannot exceed 24 KB.
+        # - The set of custom parameter names must be a subset of the parameter set defined when the command was created. For parameters that are not passed in, you can use empty strings as substitutes.
         # 
-        # - The value of a custom parameter can be an empty string.
-        # 
-        # - If you specified to retain the command when you create the command task, the total size of the custom parameters and original command content that are encoded in Base64 cannot exceed 18 KB. If you specified not to retain the command when you create the command task, the total size of the custom parameters and original command content that are encoded in Base64 cannot exceed 24 KB.
-        # 
-        # - The custom parameter names that are specified by Parameters must be included in the custom parameter names that you specified when you created the command. You can use empty strings to represent the parameters that are not passed in.
-        # 
-        # This parameter is empty by default, which indicates not to modify the key-value pairs of the custom parameters.
+        # Default value: empty, which indicates that no custom parameter key-value pairs are modified.
         self.parameters_shrink = parameters_shrink
         # The region ID.
         # 

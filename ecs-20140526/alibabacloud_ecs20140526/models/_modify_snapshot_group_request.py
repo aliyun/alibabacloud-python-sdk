@@ -16,19 +16,19 @@ class ModifySnapshotGroupRequest(DaraModel):
         resource_owner_id: int = None,
         snapshot_group_id: str = None,
     ):
-        # The new description of the snapshot-consistent group. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+        # The new description. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description
-        # The new name of the snapshot-consistent group. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with a `http://` or `https://`. The name can contain letters, digits, periods (.), underscores (_), hyphens (-), and colons (:).
+        # The new name of the snapshot-consistent group. The name must be 2 to 128 characters in length. It must start with a letter or a Chinese character and cannot start with `http://` or `https://`. It can contain digits, periods (.), underscores (_), hyphens (-), or colons (:).
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the snapshot-consistent group. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The region ID of the snapshot-consistent group. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the snapshot-consistent group. You can call the [DescribeSnapshotGroups](https://help.aliyun.com/document_detail/210940.html) operation to query the IDs of available snapshot-consistent groups.
+        # The ID of the snapshot-consistent group. You can call [DescribeSnapshotGroups](https://help.aliyun.com/document_detail/210940.html) to query snapshot-consistent group IDs.
         # 
         # This parameter is required.
         self.snapshot_group_id = snapshot_group_id

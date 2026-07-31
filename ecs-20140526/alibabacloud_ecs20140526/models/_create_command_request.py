@@ -32,30 +32,30 @@ class CreateCommandRequest(DaraModel):
         self.client_token = client_token
         # The Base64-encoded content of the command.
         # 
-        # - The value of this parameter must be Base64-encoded, and the script content cannot exceed 18 KB in size after Base64 encoding.
-        # - The command content supports custom parameters. To enable the custom parameter feature, set `EnableParameter=true`:
-        #     - Custom parameters are defined by enclosing them in `{{}}`. Spaces and line breaks before and after the parameter name within `{{}}` are ignored.
+        # - The value of this parameter must be Base64-encoded and cannot exceed 18 KB in size after Base64 encoding.
+        # - The command content supports custom parameters. To enable the custom parameter feature, specify `EnableParameter=true`:
+        #     - Custom parameters are defined by enclosing the parameter name in `{{}}`. Spaces and line breaks before and after the parameter name in `{{}}` are ignored.
         #     - The number of custom parameters cannot exceed 20.
         #     - Custom parameter names can contain letters (a-z, A-Z), digits (0-9), hyphens (-), and underscores (_). The acs:: prefix for specifying non-built-in environment parameters is not supported. Other characters are not supported. Parameter names are case-insensitive.
         #     - Each parameter name cannot exceed 64 bytes in length.
         # 
-        # - You can specify built-in environment parameters as custom parameters. When the command is run, Cloud Assistant automatically replaces them with the corresponding values from the environment without requiring manual assignment. The following built-in environment parameters are supported:
+        # - You can specify built-in environment parameters as custom parameters. When the command is run, Cloud Assistant automatically replaces the parameters with the corresponding values from the environment. The following built-in environment parameters are supported:
         #     - `{{ACS::RegionId}}`: the region ID.
         #     - `{{ACS::AccountId}}`: the UID of the Alibaba Cloud account.
-        #     - `{{ACS::InstanceId}}`: the instance ID. When a command is sent to multiple instances and you want to use `{{ACS::InstanceId}}` as a built-in environment parameter, make sure that the Cloud Assistant Agent version is not earlier than:
+        #     - `{{ACS::InstanceId}}`: the instance ID. When the command is sent to multiple instances, to specify `{{ACS::InstanceId}}` as a built-in environment parameter, make sure that Cloud Assistant Agent is not earlier than the following versions:
         #         - Linux: 2.2.3.309
         #         - Windows: 2.1.3.309
-        #     - `{{ACS::InstanceName}}`: the instance name. When a command is sent to multiple instances and you want to use `{{ACS::InstanceName}}` as a built-in environment parameter, make sure that the Cloud Assistant Agent version is not earlier than:
+        #     - `{{ACS::InstanceName}}`: the instance name. When the command is sent to multiple instances, to specify `{{ACS::InstanceName}}` as a built-in environment parameter, make sure that Cloud Assistant Agent is not earlier than the following versions:
         #         - Linux: 2.2.3.344
         #         - Windows: 2.1.3.344
         # 
-        #     - `{{ACS::InvokeId}}`: the command execution ID. To use `{{ACS::InvokeId}}` as a built-in environment parameter, make sure that the Cloud Assistant Agent version is not earlier than:
+        #     - `{{ACS::InvokeId}}`: the command execution ID. To specify `{{ACS::InvokeId}}` as a built-in environment parameter, make sure that Cloud Assistant Agent is not earlier than the following versions:
         #         - Linux: 2.2.3.309
         #         - Windows: 2.1.3.309
         #      
-        #     - `{{ACS::CommandId}}`: the command ID. When you run a command by calling the [RunCommand](https://help.aliyun.com/document_detail/141751.html) operation and want to use `{{ACS::CommandId}}` as a built-in environment parameter, make sure that the Cloud Assistant Agent version is not earlier than:
+        #     - `{{ACS::CommandId}}`: the command ID. When you run a command by calling the [RunCommand](https://help.aliyun.com/document_detail/141751.html) operation, to specify `{{ACS::CommandId}}` as a built-in environment parameter, make sure that Cloud Assistant Agent is not earlier than the following versions:
         #         - Linux: 2.2.3.309
-        #         - Windows: 2.1.3.309.
+        #         - Windows: 2.1.3.309
         # 
         # This parameter is required.
         self.command_content = command_content
@@ -67,11 +67,11 @@ class CreateCommandRequest(DaraModel):
         # 
         # Default value: Base64.
         # 
-        # > If an invalid value is specified, it is treated as Base64.
+        # >If you specify an invalid value, the value is treated as Base64.
         self.content_encoding = content_encoding
         # The command description. All character sets are supported. The description cannot exceed 512 characters in length.
         self.description = description
-        # Specifies whether the command uses custom parameters.
+        # Specifies whether to use custom parameters in the command.
         # 
         # Default value: false.
         self.enable_parameter = enable_parameter
@@ -91,9 +91,9 @@ class CreateCommandRequest(DaraModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The list of tags.
+        # The tags.
         self.tag = tag
-        # The maximum timeout period for the command to run on the ECS instance. Unit: seconds. If the command cannot be run for any reason, a timeout occurs. After the timeout, the command process is forcefully terminated by canceling the PID of the command.
+        # The maximum timeout period for the command to run on the ECS instance. Unit: seconds. If the command cannot be run for some reason, a timeout occurs. After the command times out, the command process is forcefully terminated by canceling the PID of the command.
         # 
         # Default value: 60.
         self.timeout = timeout
@@ -105,13 +105,13 @@ class CreateCommandRequest(DaraModel):
         # 
         # This parameter is required.
         self.type = type
-        # The directory where the command is run on the ECS instance. The value cannot exceed 200 characters in length.
+        # The directory where the command is run on the ECS instance. The directory cannot exceed 200 characters in length.
         # 
         # Default value: 
-        # - Linux instances: the home directory of the root user, which is `/root`.  
+        # - Linux instances: the home directory of the root user, which is the `/root` directory.  
         # - Windows instances: the directory where the Cloud Assistant Agent process is located, such as `C:\\Windows\\System32`.
         # 
-        # > If you set this parameter to a different directory, make sure that the directory exists on the instance.
+        # >If you set this parameter to a different directory, make sure that the directory exists on the instance.
         self.working_dir = working_dir
 
     def validate(self):
@@ -246,7 +246,7 @@ class CreateCommandRequestTag(DaraModel):
     ):
         # The tag key of the command. Valid values of N: 1 to 20. The tag key cannot be an empty string.
         # 
-        # If you use a single tag to filter resources, the resource count with the specified tag cannot exceed 1,000. If you use multiple tags to filter resources, the resource count of resources that have all specified tags attached cannot exceed 1,000. If the resource count exceeds 1,000, use the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query resources.
+        # If you use a single tag to filter resources, the resource count with the specified tag cannot exceed 1000. If you use multiple tags to filter resources, the resource count of resources that have all specified tags attached cannot exceed 1000. If the resource count exceeds 1000, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query the resources.
         # 
         # The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         self.key = key

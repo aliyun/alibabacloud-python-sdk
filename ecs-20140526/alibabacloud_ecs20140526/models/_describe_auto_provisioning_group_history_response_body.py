@@ -16,7 +16,6 @@ class DescribeAutoProvisioningGroupHistoryResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # An array of scheduled task history records.
         self.auto_provisioning_group_histories = auto_provisioning_group_histories
         # The page number.
         self.page_number = page_number
@@ -24,7 +23,7 @@ class DescribeAutoProvisioningGroupHistoryResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of scheduled tasks.
+        # The total number of scheduling tasks queried.
         self.total_count = total_count
 
     def validate(self):

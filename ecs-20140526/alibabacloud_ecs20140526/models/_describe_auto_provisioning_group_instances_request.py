@@ -16,25 +16,25 @@ class DescribeAutoProvisioningGroupInstancesRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the auto provisioning group.
+        # The ID of the auto-provisioning group.
         # 
         # This parameter is required.
         self.auto_provisioning_group_id = auto_provisioning_group_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number for the paging query.
+        # The page number of the paging query.
         # 
         # Minimum value: 1.
         # 
         # Default value: 1.
         self.page_number = page_number
-        # The number of entries per page in the paging query. You can use this parameter to configure paging settings.
+        # The number of entries per page. Settings for the paging query.
         # 
         # Maximum value: 100.
         # 
         # Default value: 10.
         self.page_size = page_size
-        # The ID of the region where the auto provisioning group resides. You can invoke [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+        # The region ID of the auto-provisioning group. You can invoke [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id

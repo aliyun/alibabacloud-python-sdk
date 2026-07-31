@@ -17,17 +17,17 @@ class DescribeManagedInstancesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The queried managed instances.
+        # The list of managed instances.
         self.instances = instances
-        # A pagination token. It can be used in the next request to retrieve a new page of results.
+        # The pagination token returned in this call.
         self.next_token = next_token
-        # The page number.
+        # The page number of the managed instance list.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of queried managed instances.
+        # The total number of managed instances queried.
         self.total_count = total_count
 
     def validate(self):
@@ -108,19 +108,19 @@ class DescribeManagedInstancesResponseBodyInstances(DaraModel):
         resource_group_id: str = None,
         tags: List[main_models.DescribeManagedInstancesResponseBodyInstancesTags] = None,
     ):
-        # The ID of the activation code.
+        # The activation code ID.
         self.activation_id = activation_id
         # The version number of Cloud Assistant Agent.
         self.agent_version = agent_version
-        # Indicates whether the managed instance is connected. Valid values:
+        # Indicates whether the managed instance is connected.
         # 
-        # - true: The managed instance is connected. You can manage the instance by using Cloud Assistant.
+        # - true: The managed instance is connected. You can manage the managed instance by using Cloud Assistant.
         # 
-        # - false: The managed instance is not connected. The managed instance may be down or Cloud Assistant Agent may be incorrectly installed.
+        # - false: The managed instance is not connected. The server may be shut down or Cloud Assistant Agent may not be properly installed.
         self.connected = connected
         # The hostname of the managed instance.
         self.hostname = hostname
-        # The ID of the managed instance.
+        # The managed instance ID.
         self.instance_id = instance_id
         # The name of the managed instance.
         self.instance_name = instance_name
@@ -128,21 +128,21 @@ class DescribeManagedInstancesResponseBodyInstances(DaraModel):
         self.internet_ip = internet_ip
         # The internal IP address of the managed instance.
         self.intranet_ip = intranet_ip
-        # The number of times that Cloud Assistant tasks were executed on the managed instance.
+        # The number of times that Cloud Assistant tasks were run on the managed instance.
         self.invocation_count = invocation_count
-        # The time when the last Cloud Assistant task was executed.
+        # The time when the last Cloud Assistant task was run.
         self.last_invoked_time = last_invoked_time
-        # The machine code of the managed instance.
+        # The machine ID of the managed instance.
         self.machine_id = machine_id
-        # The operating system type of the managed instance.
+        # The operating system of the managed instance.
         self.os_type = os_type
-        # The version information of the operating system.
+        # The version of the operating system.
         self.os_version = os_version
-        # The time when the managed instance was registered.
+        # The registration time of the managed instance.
         self.registration_time = registration_time
         # The ID of the resource group to which the managed instance belongs.
         self.resource_group_id = resource_group_id
-        # The tags of the managed instance.
+        # The tags.
         self.tags = tags
 
     def validate(self):
@@ -269,13 +269,13 @@ class DescribeManagedInstancesResponseBodyInstancesTags(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The key of tag N of the managed instance. Valid values of N: 1 to 20. The tag key cannot be an empty string.
+        # The tag key of the managed instance. Valid values of N: 1 to 20. The tag key cannot be an empty string.
         # 
-        # If a single tag is specified to query resources, up to 1,000 resources that have this tag added are returned. If multiple tags are specified to query resources, up to 1,000 resources that have all these tags added are returned. To query more than 1,000 resources that have the specified tags, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation.
+        # If you use a single tag to filter resources, the resource count with this tag cannot exceed 1,000. If you use multiple tags to filter resources, the resource count of resources that have all specified tags attached cannot exceed 1,000. If the resource count exceeds 1,000, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query resources.
         # 
-        # The tag key can be up to 64 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `acs:` or `aliyun`.
+        # The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         self.tag_key = tag_key
-        # The value of tag N of the managed instance. Valid values of N: 1 to 20. The tag value can be an empty string.
+        # The tag value of the managed instance. Valid values of N: 1 to 20. The tag value can be an empty string.
         # 
         # The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`.
         self.tag_value = tag_value

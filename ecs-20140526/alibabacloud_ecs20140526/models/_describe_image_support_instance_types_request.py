@@ -23,7 +23,7 @@ class DescribeImageSupportInstanceTypesRequest(DaraModel):
         # - CreateEcs (default): instance creation.
         # - ChangeOS: replacement of the system disk or operating system.
         self.action_type = action_type
-        # The list of filter conditions for querying resources.
+        # The list of filter conditions used to query resources.
         self.filter = filter
         # The image ID.
         self.image_id = image_id

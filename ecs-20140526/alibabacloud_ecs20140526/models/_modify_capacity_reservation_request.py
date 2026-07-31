@@ -22,39 +22,37 @@ class ModifyCapacityReservationRequest(DaraModel):
         start_time: str = None,
     ):
         self.private_pool_options = private_pool_options
-        # The description of the capacity reservation. The description must be 2 to 256 characters in length. It cannot start with `http://` or `https://`.
+        # The description of the capacity reservation. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description
-        # The expiration time of the capacity reservation. This parameter takes effect only when `EndTimeType` is set to Limited. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC. For more information, see [ISO 8601](https://help.aliyun.com/document_detail/25696.html).
+        # The expiration time of the capacity reservation. This parameter takes effect only when `EndTimeType=Limited`. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC. For more information, see [ISO 8601](https://help.aliyun.com/document_detail/25696.html).
         self.end_time = end_time
-        # The release mode of the capacity reservation. Valid values:
+        # The expiration method of the capacity reservation. Valid values:
         # 
-        # - Limited: The capacity reservation is automatically released at the specified point in time. If you configure this parameter, you must also configure `EndTime`.
-        # 
-        # - Unlimited: The capacity reservation must be manually released. You can release it anytime.
+        # - Limited: The capacity reservation is released at a specified time. You must also specify the `EndTime` parameter.
+        # - Unlimited: The capacity reservation is released by manual release. No time limit is imposed.
         self.end_time_type = end_time_type
-        # The total number of instances for which capacity is reserved. Valid values: the number of used instances to 1000.
+        # The total number of instances that the capacity reservation needs to reserve. Valid values: the number of used instances to 1000.
         # 
-        # > When you increase the number of instances, the increase may fail due to insufficient resources.
+        # > When you increase the total number of instances, the operation may fail due to insufficient inventory.
         self.instance_amount = instance_amount
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The operating system of the image used by the instance. Valid values:
+        # The operating system type of the image used by the instance. Valid values:
         # 
-        # - Windows
+        # - Windows: Windows Server operating system.
+        # - Linux: Linux and Unix-like operating system.
         # 
-        # - Linux
-        # 
-        # > This parameter is unavailable.
+        # > This parameter is not publicly available.
         self.platform = platform
-        # The region ID of the capacity reservation. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The ID of the region where the capacity reservation resides. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The mode in which the capacity reservation takes effect. Only immediate capacity reservations are supported. You do not need to specify a value for this parameter.
+        # The method by which the capacity reservation takes effect. Currently, only immediate activation is supported, and you do not need to specify a value for this parameter.
         # 
-        # > If you do not specify a value for this parameter, the capacity reservation immediately takes effect.
+        # > If you leave this parameter empty, the capacity reservation takes effect immediately.
         self.start_time = start_time
 
     def validate(self):
@@ -151,11 +149,11 @@ class ModifyCapacityReservationRequestPrivatePoolOptions(DaraModel):
         id: str = None,
         name: str = None,
     ):
-        # The capacity reservation ID.
+        # The ID of the capacity reservation.
         # 
         # This parameter is required.
         self.id = id
-        # The name of the capacity reservation. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        # The name of the capacity reservation. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain digits, colons (:), underscores (_), or hyphens (-).
         self.name = name
 
     def validate(self):

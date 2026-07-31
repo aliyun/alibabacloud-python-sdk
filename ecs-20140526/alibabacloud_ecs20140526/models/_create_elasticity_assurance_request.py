@@ -33,87 +33,80 @@ class CreateElasticityAssuranceRequest(DaraModel):
         zone_id: List[str] = None,
     ):
         self.private_pool_options = private_pool_options
-        # The total number of times that the elasticity assurance can be used. Set the value to Unlimited. This value specifies that the elasticity assurance can be used for an unlimited number of times within its validity period.
+        # The total number of times that the elasticity assurance can be applied. Valid values: Unlimited. Currently, only the unlimited mode is supported within the service validity period.
         # 
         # Default value: Unlimited.
         self.assurance_times = assurance_times
-        # Specifies whether to enable auto-renewal for the elasticity assurance. Valid values:
+        # Specifies whether to enable auto-renewal. Valid values:
         # 
-        # - true
-        # 
-        # - false
+        # - true: Auto-renewal is enabled.
+        # - false: Auto-renewal is disabled.
         # 
         # Default value: false.
         self.auto_renew = auto_renew
-        # The auto-renewal period. Unit: month. Valid values: 1, 2, 3, 6, 12, 24, and 36.
+        # The auto-renewal period. Unit: months. Valid values: 1, 2, 3, 6, 12, 24, and 36.
         # 
-        # - Default value when `PeriodUnit` is set to Month: 1.
         # 
-        # - Default value when `PeriodUnit` is set to Year: 12.
         # 
-        # > If you set `AutoRenew` to `true`, you must specify this parameter.
+        # - If `PeriodUnit=Month`, the default value is 1.
+        # 
+        # - If `PeriodUnit=Year`, the default value is 12.
+        # 
+        # 
+        # > This parameter is required when `AutoRenew` is set to `True`.
         self.auto_renew_period = auto_renew_period
-        # The client token that you want to use to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The `token` can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. The `ClientToken` value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
-        # The description of the elasticity assurance. The description must be 2 to 256 characters in length. It cannot start with `http://` or `https://`.
+        # The description of the elasticity assurance service. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         # 
-        # This parameter is empty by default.
+        # Default value: empty.
         self.description = description
-        # The total number of instances of an instance type for which you want to reserve capacity.
+        # The total number of instances to be reserved for a single instance type.
         # 
         # Valid values: 1 to 1000.
         # 
-        # > You must specify this parameter.
+        # >Notice: This parameter is required.
         self.instance_amount = instance_amount
-        # > This parameter is no longer used.
+        # > This parameter is deprecated.
         self.instance_cpu_core_count = instance_cpu_core_count
-        # The instance type. An elasticity assurance can be created to reserve the capacity of a single instance type.
+        # The instance type. Currently, you can configure an elasticity assurance service for only one instance type.
         # 
         # This parameter is required.
         self.instance_type = instance_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The validity period of the elasticity assurance. The unit of the validity period is determined by the value of `PeriodUnit`. Specifies whether to check the image used by the instance supports hot migration. Valid values:
+        # The purchase duration. The unit of the duration is determined by the `PeriodUnit` parameter. Valid values:
         # 
-        # - When the value of `PeriodUnit` is `Month`, the valid values are 1, 2, 3, 4, 5, 6, 7, 8, and 9.
+        # - If `PeriodUnit` is set to `Month`: 1, 2, 3, 4, 5, 6, 7, 8, and 9.
+        # - If `PeriodUnit` is set to `Year`: 1, 2, 3, 4, and 5.
+        # - If `PeriodUnit` is set to `Day`: 1 to 365.
         # 
-        # - When the value of `PeriodUnit` is `Year`, the valid values are 1, 2, 3, 4, and 5.
-        # 
-        # - When the value of `PeriodUnit` is `Day`, the valid values are 1 to 365.
-        # 
-        # Default value: 1
+        # Default value: 1.
         self.period = period
-        # The unit of the validity period of the elasticity assurance. Valid values:
+        # The unit of the purchase duration. Valid values:
         # 
-        # - Month
-        # 
-        # - Year
-        # 
-        # - Day
-        # 
-        #   \\*\\*
-        # 
-        #   **Note** If you set `PeriodUnit` to `Day`, you must specify RecurrenceRules to create a time-segmented elasticity assurance.
+        # - Month: month.
+        # - Year: year.
+        # - Day: day.
+        #   > When `PeriodUnit` is set to `Day`, you must also specify RecurrenceRules to create a time-sharing elasticity assurance.
         # 
         # Default value: Year.
         self.period_unit = period_unit
-        # The assurance schedules based on which the capacity reservation takes effect.
-        # 
-        # > Time-segmented elasticity assurances are available only in specific regions and to specific users. To use time-segmented elasticity assurances, [submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket-intl).
+        # The recurrence rules for the time-sharing elasticity assurance.
         self.recurrence_rules = recurrence_rules
-        # The ID of the region in which to create the elasticity assurance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The region ID of the elasticity assurance service. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group to which to assign the elasticity assurance.
+        # The ID of the resource group to which the elasticity assurance service belongs.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The time when the elasticity assurance takes effect. The default value is the time when the CreateElasticityAssurance operation is called to create the elasticity assurance. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC. For more information, see [ISO 8601](https://help.aliyun.com/document_detail/25696.html).
+        # The effective period start time of the elasticity assurance service. By default, the service takes effect when the operation is invoked. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC. For more information, see [ISO 8601](https://help.aliyun.com/document_detail/25696.html).
         self.start_time = start_time
-        # The tags to add to the elasticity assurance.
+        # The tags of the elasticity assurance service.
         self.tag = tag
-        # The ID of the zone in which to create the elasticity assurance. An elasticity assurance can be used to reserve resources within a single zone.
+        # The zone ID within the region of the elasticity assurance service. Currently, you can create an elasticity assurance service in only one zone.
         # 
         # This parameter is required.
         self.zone_id = zone_id
@@ -284,9 +277,9 @@ class CreateElasticityAssuranceRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N to add to the elasticity assurance. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `acs:` or `aliyun`.
+        # The tag key of the elasticity assurance service. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:` or contain `http://` or `https://`.
         self.key = key
-        # The value of tag N to add to the elasticity assurance. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot start with `acs:`. The tag value cannot contain `http://` or `https://`.
+        # The tag value of the elasticity assurance service. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot start with `acs:` or contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -323,31 +316,26 @@ class CreateElasticityAssuranceRequestRecurrenceRules(DaraModel):
         recurrence_value: str = None,
         start_hour: int = None,
     ):
-        # The end time of the assurance period for the capacity reservation. Specify an on-the-hour point in time.
+        # The end time of the time-sharing assurance. The value must be on the hour.
         self.end_hour = end_hour
-        # The type of the assurance schedule. Valid values:
-        # 
-        # - Daily
-        # 
-        # - Weekly
-        # 
-        # - Monthly
+        # The type of the recurrence rule. Valid values:
+        # - Daily: daily recurrence.
+        # - Weekly: weekly recurrence.
+        # - Monthly: monthly recurrence.
         # 
         # > You must specify both `RecurrenceType` and `RecurrenceValue`.
         self.recurrence_type = recurrence_type
-        # The days of the week or month on which the capacity reservation takes effect or the interval, in number of days, at which the capacity reservation takes effect.
+        # The value of the recurrence rule.
         # 
-        # - If you set `RecurrenceType` to `Daily`, you can specify only one value for this parameter. Valid values: 1 to 31. The value specifies that the capacity reservation takes effect every few days.
-        # 
-        # - If you set `RecurrenceType` to `Weekly`, you can specify multiple values for this parameter. Separate the values with commas (,). Valid values: 0, 1, 2, 3, 4, 5, and 6, which specify Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, and Saturday, respectively. Example: `1,2`, which specifies that the capacity reservation takes effect on Monday and Tuesday.
-        # 
-        # - If you set `RecurrenceType` to `Monthly`, you can specify two values in the `A-B` format for this parameter. Valid values of A and B: 1 to 31. B must be greater than or equal to A. For example, `1-5` indicates that the execution is repeated from the 1st to 5th of each month.
+        # - If `RecurrenceType` is set to `Daily`, you can specify only one value. Valid values: 1 to 31. The value specifies the interval in days between recurrences.
+        # - If `RecurrenceType` is set to `Weekly`, you can specify multiple values separated by commas (,). The values for Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, and Saturday are 0, 1, 2, 3, 4, 5, and 6. For example, `1,2` specifies Monday and Tuesday.
+        # - If `RecurrenceType` is set to `Monthly`, the format is `A-B`. Valid values of A and B: 1 to 31. B must be greater than or equal to A. For example, `1-5` specifies the 1st to 5th day of each month.
         # 
         # > You must specify both `RecurrenceType` and `RecurrenceValue`.
         self.recurrence_value = recurrence_value
-        # The start time of the assurance period for the capacity reservation. Specify an on-the-hour point in time.
+        # The effective period start hour of the time-sharing assurance. The value must be on the hour.
         # 
-        # > You must specify both `StartHour` and `EndHour`. EndHour must be at least four hours later than StartHour.
+        # > You must specify both `StartHour` and `EndHour`, and the difference between them must be at least 4 hours.
         self.start_hour = start_hour
 
     def validate(self):
@@ -394,15 +382,14 @@ class CreateElasticityAssuranceRequestPrivatePoolOptions(DaraModel):
         match_criteria: str = None,
         name: str = None,
     ):
-        # The type of the private pool with which you want to associate the elasticity assurance. Valid values:
+        # The match mode of the elasticity assurance service. Valid values:
         # 
-        # - Open: open private pool. If you use the elasticity assurance to create ECS instances, the open private pool that is associated with the elasticity assurance is automatically matched. If no capacity is available in the open private pool, resources in the public pool are automatically used to create the ECS instances.
-        # 
-        # - Target: targeted private pool. If you use the elasticity assurance to create ECS instances, the specified private pool that is associated with the elasticity assurance is automatically matched. If no capacity is available in the private pool, the ECS instances fail to be created.
+        # - Open: open mode. The system automatically matches the capacity of open private pools when instances are started. If no matching private pool capacity is available, public pool resources are used to start the instances.
+        # - Target: targeted mode. Instances are started by using the capacity of the specified private pool. If the specified private pool capacity is unavailable, the instances fail to start.
         # 
         # Default value: Open.
         self.match_criteria = match_criteria
-        # The name of the elasticity assurance. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        # The name of the elasticity assurance service. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain digits, colons (:), underscores (_), and hyphens (-).
         self.name = name
 
     def validate(self):

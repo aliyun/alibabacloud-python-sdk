@@ -68,7 +68,7 @@ class CreateLaunchTemplateVersionRequest(DaraModel):
         self.system_disk = system_disk
         # The automatic release time. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         # 
-        # - If the value of seconds (`ss`) is not `00`, the time is automatically rounded to the start of the current minute (`mm`).
+        # - If the value of seconds (`ss`) is not `00`, the time is automatically rounded down to the start of the current minute (`mm`).
         # 
         # - The earliest release time is 30 minutes after the current time.
         # 
@@ -76,8 +76,8 @@ class CreateLaunchTemplateVersionRequest(DaraModel):
         self.auto_release_time = auto_release_time
         # Specifies whether to enable auto-renewal. This parameter takes effect only when `InstanceChargeType` is set to `PrePaid`. Valid values:
         # 
-        # - true: enables auto-renewal.
-        # - false: does not enable auto-renewal.
+        # - true: Enables auto-renewal.
+        # - false: Disables auto-renewal.
         # 
         # Default value: false.
         self.auto_renew = auto_renew
@@ -100,10 +100,10 @@ class CreateLaunchTemplateVersionRequest(DaraModel):
         self.credit_specification = credit_specification
         # The list of data disks.
         self.data_disk = data_disk
-        # The release protection attribute of the instance. Specifies whether the instance can be released from the console or by calling [DeleteInstance](https://help.aliyun.com/document_detail/25507.html). Valid values:
-        # - true: enables release protection.
+        # The release protection attribute of the instance. Specifies whether the instance can be released from the ECS console or by calling [DeleteInstance](https://help.aliyun.com/document_detail/25507.html). Valid values:
+        # - true: Enables release protection.
         # 
-        # - false: disables release protection.
+        # - false: Disables release protection.
         # 
         # Default value: false.
         # 
@@ -111,20 +111,20 @@ class CreateLaunchTemplateVersionRequest(DaraModel):
         self.deletion_protection = deletion_protection
         # The ID of the deployment set.
         self.deployment_set_id = deployment_set_id
-        # The description of the instance. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+        # The instance description. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description
         # Specifies whether to enable the operating system configuration of the instance.
         self.enable_vm_os_config = enable_vm_os_config
-        # The hostname of the Elastic Compute Service (ECS) server.
+        # The hostname of the Elastic Compute Service server.
         # 
-        # -   The hostname cannot start or end with a period (.) or hyphen (-), and cannot contain consecutive periods or hyphens.
+        # -   Periods (.) and hyphens (-) cannot be used as the first or last characters and cannot be used consecutively.
         # -   Windows instances: The hostname must be 2 to 15 characters in length and cannot contain periods (.) or consist entirely of digits. It can contain letters, digits, and hyphens (-).
-        # -   Other instances (such as Linux): The hostname must be 2 to 64 characters in length. It can contain multiple periods (.), with each segment between periods allowing letters, digits, and hyphens (-).
+        # -   Instances that run other operating systems such as Linux: The hostname must be 2 to 64 characters in length. You can use periods (.) to separate a hostname into multiple segments. Each segment can contain letters, digits, and hyphens (-).
         self.host_name = host_name
         # Specifies whether to enable the access channel for instance metadata. Valid values:
         # 
-        # - enabled: enables the access channel.
-        # - disabled: disables the access channel.
+        # - enabled: Enabled.
+        # - disabled: Disabled.
         # 
         # Default value: enabled.
         # 
@@ -134,14 +134,14 @@ class CreateLaunchTemplateVersionRequest(DaraModel):
         self.http_put_response_hop_limit = http_put_response_hop_limit
         # Specifies whether to forcefully use the security-hardened mode (IMDSv2) to access instance metadata. Valid values:
         # 
-        # - optional: does not forcefully use the security-hardened mode.
-        # - required: forcefully uses the security-hardened mode. After you set this value, the normal mode cannot be used to access instance metadata.
+        # - optional: The security-hardened mode is not forcefully used.
+        # - required: The security-hardened mode is forcefully used. After you set this value, instance metadata cannot be accessed in normal mode.
         # 
         # Default value: optional.
         # 
         # > For more information about the modes for accessing instance metadata, see [Overview of ECS instance metadata](https://help.aliyun.com/document_detail/108460.html).
         self.http_tokens = http_tokens
-        # The ID of the image used to create the instance. You can call [DescribeImages](https://help.aliyun.com/document_detail/25534.html) to query available image resources.
+        # The image ID. You can call [DescribeImages](https://help.aliyun.com/document_detail/25534.html) to query available image resources.
         self.image_id = image_id
         # The image-related property information.
         self.image_options = image_options
@@ -151,22 +151,22 @@ class CreateLaunchTemplateVersionRequest(DaraModel):
         # The billing method of the instance. Valid values:
         # 
         # <props="china">
-        # - PrePaid: subscription. If you set this parameter to PrePaid, confirm that your account supports balance payment or credit payment. Otherwise, an `InvalidPayMethod` fault is returned.
+        # - PrePaid: subscription. If you set this parameter to PrePaid, confirm that your account supports balance payments or credit payments. Otherwise, an `InvalidPayMethod` fault is returned.
         # - PostPaid: pay-as-you-go.
         # 
         # 
         # <props="intl">
-        # - PrePaid: subscription. If you set this parameter to PrePaid, confirm that your account supports credit payment. Otherwise, an `InvalidPayMethod` fault is returned.
+        # - PrePaid: subscription. If you set this parameter to PrePaid, confirm that your account supports credit payments. Otherwise, an `InvalidPayMethod` fault is returned.
         # - PostPaid: pay-as-you-go.
         # 
         # 
         # <props="partner">
-        # - PrePaid: subscription. If you set this parameter to PrePaid, confirm that your account supports credit payment. Otherwise, an `InvalidPayMethod` fault is returned.
+        # - PrePaid: subscription. If you set this parameter to PrePaid, confirm that your account supports credit payments. Otherwise, an `InvalidPayMethod` fault is returned.
         # - PostPaid: pay-as-you-go.
         self.instance_charge_type = instance_charge_type
-        # The name of the instance. The name must be 2 to 128 characters in length and can contain letters, digits, and characters from the Unicode letter category (which includes characters from various languages). The name can contain colons (:), underscores (_), periods (.), and hyphens (-). The default value is the `InstanceId` of the instance.
+        # The instance name. The name must be 2 to 128 characters in length and can contain letters, digits, and other characters in the Unicode letter category. It can contain colons (:), underscores (_), periods (.), and hyphens (-). The default value is the `InstanceId` of the instance.
         # 
-        # When you create multiple ECS instances at a time, you can batch configure sequential instance names that contain brackets ([]) and commas (,). For more information, see [Batch configure sequential names or hostnames for multiple instances](https://help.aliyun.com/document_detail/196048.html).
+        # When you create multiple ECS instances at a time, you can batch configure sequential instance names. The names can contain brackets ([]) and commas (,). For more information, see [Batch configure sequential names or hostnames for multiple instances](https://help.aliyun.com/document_detail/196048.html).
         self.instance_name = instance_name
         # The instance type. For more information, see [Instance family](https://help.aliyun.com/document_detail/25378.html). You can also call [DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html) to query the most recent instance type list.
         self.instance_type = instance_type
@@ -175,7 +175,7 @@ class CreateLaunchTemplateVersionRequest(DaraModel):
         # - PayByBandwidth: pay-by-bandwidth.
         # - PayByTraffic: pay-by-traffic.
         # 
-        # > In **pay-by-traffic** mode, the peak inbound and outbound bandwidths are used as upper limits of bandwidths instead of guaranteed performance specifications. When resource contention occurs, the peak bandwidths may be limited. If you want guaranteed bandwidth, use the **pay-by-bandwidth** mode.
+        # > In **pay-by-traffic** mode, the peak inbound and outbound bandwidths are used as upper limits of bandwidths instead of guaranteed performance specifications. When resource contention occurs, these peak bandwidths may be limited. If you want guaranteed bandwidth for your business, use the **pay-by-bandwidth** mode.
         self.internet_charge_type = internet_charge_type
         # The maximum inbound public bandwidth. Unit: Mbit/s. Valid values:
         # 
@@ -184,28 +184,28 @@ class CreateLaunchTemplateVersionRequest(DaraModel):
         self.internet_max_bandwidth_in = internet_max_bandwidth_in
         # The maximum outbound public bandwidth. Unit: Mbit/s. Valid values: 0 to 100.
         self.internet_max_bandwidth_out = internet_max_bandwidth_out
-        # Specifies whether the instance is an I/O optimized instance. Valid values:
+        # Specifies whether the instance is I/O optimized. Valid values:
         # 
         # -   none: The instance is not I/O optimized.
-        # -   optimized: The instance is I/O optimization enabled.
+        # -   optimized: The instance is I/O optimized.
         self.io_optimized = io_optimized
-        # The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10.
+        # The number of randomly generated IPv6 addresses to assign to the primary ENI. Valid values: 1 to 10.
         self.ipv_6address_count = ipv_6address_count
         # The name of the key pair.
         # 
         # -   For Windows instances, this parameter is ignored. Even if you specify this parameter, only the `Password` content is used.
         # -   For Linux instances, password-based logon is disabled during initialization.
         self.key_pair_name = key_pair_name
-        # The ID of the launch template. For more information, call [DescribeLaunchTemplates](https://help.aliyun.com/document_detail/73759.html). You must specify `LaunchTemplateId` or `LaunchTemplateName` to determine the launch template.
+        # The launch template ID. For more information, call [DescribeLaunchTemplates](https://help.aliyun.com/document_detail/73759.html). You must specify `LaunchTemplateId` or `LaunchTemplateName` to determine the launch template.
         self.launch_template_id = launch_template_id
-        # The name of the launch template. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain digits, colons (:), underscores (_), and hyphens (-).
+        # The name of the launch template. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         self.launch_template_name = launch_template_name
-        # The network interface controller (NIC) information.
+        # The Elastic Network Interface (ENI) information.
         self.network_interface = network_interface
         # The network type of the instance. Valid values:
         # 
         # - vpc: VPC.
-        # - classic: classic network. The classic network has been retired. For more information, see [Retirement notice](https://help.aliyun.com/document_detail/2833134.html).
+        # - classic: classic network. The classic network is deprecated. For more information, see [Deprecation notice](https://help.aliyun.com/document_detail/2833134.html).
         self.network_type = network_type
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -215,11 +215,11 @@ class CreateLaunchTemplateVersionRequest(DaraModel):
         # 
         # Default value: false.
         # 
-        # > When you use this parameter, the Password parameter must be empty. You must also make sure that the image has a preset password.
+        # > When you use this parameter, the Password parameter must be empty. Make sure that the image you use has a preset password.
         self.password_inherit = password_inherit
         # The subscription duration of the resource. Unit: months. This parameter takes effect and is required only when `InstanceChargeType` is set to `PrePaid`. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, and 60.
         self.period = period
-        # The unit of the subscription duration. Valid values: 
+        # The unit of the subscription billing method duration. Valid values: 
         # 
         # <props="china">
         # - Week.
@@ -231,7 +231,7 @@ class CreateLaunchTemplateVersionRequest(DaraModel):
         self.period_unit = period_unit
         # The private IP address of the instance.
         # 
-        # When you specify a private IP address for a VPC-connected ECS instance, the IP address must be from the idle CIDR block of the vSwitch (`VSwitchId`).
+        # When you set a private IP address for a VPC-connected ECS instance, the address must be from the idle CIDR block of the vSwitch specified by `VSwitchId`.
         self.private_ip_address = private_ip_address
         # The name of the instance RAM role. You can call the RAM API [ListRoles](https://help.aliyun.com/document_detail/28713.html) to query the instance RAM roles that you have created.
         self.ram_role_name = ram_role_name
@@ -239,16 +239,16 @@ class CreateLaunchTemplateVersionRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # Specifies whether to enable security hardening for the operating system. Valid values:
         # 
-        # -   Active: enables security hardening. This value is applicable only to public images.
-        # -   Deactive: does not enable security hardening. This value is applicable to all image types.
+        # -   Active: Enables security hardening. This value is applicable only to public images.
+        # -   Deactive: Disables security hardening. This value is applicable to all image types.
         self.security_enhancement_strategy = security_enhancement_strategy
-        # The ID of the security group to which the instance created by using this version belongs. Instances in the same security group can communicate with each other.
+        # The ID of the security group to which instances created from this version belong. Instances in the same security group can communicate with each other.
         # 
         # > You cannot specify both `SecurityGroupId` and `SecurityGroupIds.N`.
         self.security_group_id = security_group_id
@@ -259,10 +259,10 @@ class CreateLaunchTemplateVersionRequest(DaraModel):
         # The security options.
         self.security_options = security_options
         # The protection period of the spot instance. Unit: hours. Default value: 1. Valid values:
-        # - 1: After a spot instance is created, Alibaba Cloud ensures that the instance is not automatically released within 1 hour. After the 1-hour protection period ends, the system compares the bid price with the market price and checks the resource inventory to determine whether to retain automatic release the instance.
+        # - 1: After a spot instance is created, Alibaba Cloud ensures that the instance is not automatically released within 1 hour. After the 1-hour protection period, the system compares the bid price with the market price and checks the resource inventory to determine whether to retain automatic release the instance.
         # - 0: After a spot instance is created, Alibaba Cloud does not ensure that the instance runs for 1 hour. The system compares the bid price with the market price and checks the resource inventory to determine whether to retain automatic release the instance.
         # 
-        # Alibaba Cloud sends an ECS system event notification 5 minutes before the instance is released. Spot instances are billed by second. We recommend that you select an appropriate protection period based on the expected task execution duration.
+        # Alibaba Cloud sends an ECS system event notification 5 minutes before the instance is released. Spot instances are billed by second. Set the protection period based on the expected task execution duration.
         # 
         # > This parameter takes effect only when SpotStrategy is set to SpotWithPriceLimit or SpotAsPriceGo.
         self.spot_duration = spot_duration
@@ -274,15 +274,15 @@ class CreateLaunchTemplateVersionRequest(DaraModel):
         # -   SpotWithPriceLimit: The instance is a spot instance with a user-defined maximum hourly price.
         # -   SpotAsPriceGo: The instance is a spot instance for which the market price at the time of purchase is automatically used as the bid price.
         self.spot_strategy = spot_strategy
-        # The tags of the instances, disks, and primary ENIs created by using this version.
+        # The tag information for instances, disks, and primary ENIs created from this version.
         self.tag = tag
         # Instance user data of the instance. Instance user data must be encoded in Base64. The raw data can be up to 32 KB in size.
         self.user_data = user_data
-        # The ID of the vSwitch. You must specify this parameter when you create a VPC-connected instance.
+        # The vSwitch ID. Required when you create a VPC-connected instance.
         self.v_switch_id = v_switch_id
         # The description of the launch template version. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         self.version_description = version_description
-        # The ID of the virtual private cloud (VPC) to which the instance belongs.
+        # The ID of the VPC to which the instance belongs.
         self.vpc_id = vpc_id
         # The zone ID of the instance.
         self.zone_id = zone_id
@@ -666,9 +666,9 @@ class CreateLaunchTemplateVersionRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the instances, disks, and primary ENIs created by using this version. Valid values of N: 1 to 20. The tag key cannot be an empty string. It can be up to 128 characters in length and cannot start with aliyun or acs:. It cannot contain http:// or https://.
+        # The tag key for instances, disks, and primary ENIs created from this version. Valid values of N: 1 to 20. The tag key cannot be an empty string. It can be up to 128 characters in length and cannot start with aliyun or acs:. It cannot contain http:// or https://.
         self.key = key
-        # The tag value of the instances, disks, and primary ENIs created by using this version. Valid values of N: 1 to 20. The tag value can be an empty string. It can be up to 128 characters in length and cannot contain http:// or https://.
+        # The tag value for instances, disks, and primary ENIs created from this version. Valid values of N: 1 to 20. The tag value can be an empty string. It can be up to 128 characters in length and cannot contain http:// or https://.
         self.value = value
 
     def validate(self):
@@ -704,18 +704,18 @@ class CreateLaunchTemplateVersionRequestSecurityOptions(DaraModel):
     ):
         # The trusted system mode. Set the value to vTPM.
         # 
-        # The following instance families support trusted system mode:
+        # The following instance families support the trusted system mode:
         # - g7, c7, and r7.
         # - Security-enhanced instance family (g7t, c7t, and r7t).
         # 
-        # When you create ECS instances of the preceding instance families, you must configure this parameter. Details:
+        # When you create an ECS instance of the preceding instance families, you must set this parameter. Take note of the following items:
         # 
         # - To use the Alibaba Cloud Trusted System, set this parameter to vTPM. The trusted verification is completed by the Alibaba Cloud Trusted System when the instance starts.
-        # - If you do not use the Alibaba Cloud Trusted System, you can leave this parameter empty. However, if the ECS instance that you create uses the Enclave-based confidential computing mode (`SecurityOptions.ConfidentialComputingMode=Enclave`), the trusted system is also enabled for the instance.
-        # - When you create a trusted ECS instance by invoking an API operation, you can only invoke `RunInstances`. `CreateInstance` does not support configuring the `SecurityOptions.TrustedSystemMode` parameter.
+        # - If you do not use the Alibaba Cloud Trusted System, you do not need to set this parameter. However, if the ECS instance that you create uses the Enclave-based confidential computing mode (`SecurityOptions.ConfidentialComputingMode=Enclave`), the trusted system is also enabled for the instance.
+        # - When you create a trusted ECS instance by calling an OpenAPI operation, you can only call `RunInstances`. `CreateInstance` does not support setting the `SecurityOptions.TrustedSystemMode` parameter.
         # > If you specify an instance as a trusted instance during creation, you can only use images that support the trusted system when you replace the system disk.
         # 
-        # For more information about the trusted system, see [Overview of trusted features for security-enhanced instances](https://help.aliyun.com/document_detail/201394.html).
+        # For more information about the trusted system, see [Overview of trusted features for security-enhanced instance families](https://help.aliyun.com/document_detail/201394.html).
         self.trusted_system_mode = trusted_system_mode
 
     def validate(self):
@@ -753,43 +753,43 @@ class CreateLaunchTemplateVersionRequestNetworkInterface(DaraModel):
     ):
         # Specifies whether to retain the ENI when the instance is released. Valid values:
         # 
-        # - true: does not retain the ENI.
+        # - true: The ENI is not retained.
         # 
-        # - false: retains the ENI.
+        # - false: The ENI is retained.
         # 
         # Default value: true.
         # 
         # > This parameter takes effect only for secondary ENIs.
         self.delete_on_release = delete_on_release
-        # The description of the secondary network interface controller (NIC). The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`. The value of N in `NetworkInterface.N` cannot be greater than 1.
+        # The description of the secondary ENI. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`. The value of N in `NetworkInterface.N` cannot be greater than 1.
         self.description = description
-        # The type of the ENI. Valid values of N: 1 to 2. If you configure one ENI, you can configure either a primary network interface controller (NIC) or a secondary ENI. If you configure two ENIs, you must configure one primary NIC and one secondary ENI.
+        # The type of the ENI. Valid values of N: 1 to 2. If you set one ENI, you can set either a primary network interface controller (NIC) or a secondary NIC. If you set two ENIs, you must set one primary NIC and one secondary NIC.
         # 
         # Valid values:
         # 
         # - Primary: primary NIC.
-        # - Secondary: secondary ENI.
+        # - Secondary: secondary NIC.
         # 
         # Default value: Secondary.
         self.instance_type = instance_type
-        # The name of the secondary network interface controller (NIC). The value of N in `NetworkInterface.N` cannot be greater than 1.
+        # The name of the secondary ENI. The value of N in `NetworkInterface.N` cannot be greater than 1.
         self.network_interface_name = network_interface_name
         # The communication mode of the primary ENI. Valid values:
         # 
-        # - Standard: uses the TCP communication mode.
-        # - HighPerformance: enables the Elastic RDMA Interface (ERI) and uses the RDMA communication mode.
+        # - Standard: Uses the TCP communication mode.
+        # - HighPerformance: Enables the Elastic RDMA Interface (ERI) and uses the RDMA communication mode.
         self.network_interface_traffic_mode = network_interface_traffic_mode
-        # The primary private IP address of the secondary network interface controller (NIC). The value of N in `NetworkInterface.N` cannot be greater than 1.
+        # The primary private IP address of the secondary ENI. The value of N in `NetworkInterface.N` cannot be greater than 1.
         self.primary_ip_address = primary_ip_address
-        # The ID of the security group to which the secondary network interface controller (NIC) belongs. The security group of the secondary NIC must belong to the same VPC as the instance. The value of N in `NetworkInterface.N` cannot be greater than 1.
+        # The ID of the security group to which the secondary ENI belongs. The security group of the secondary ENI must belong to the same VPC as the instance. The value of N in `NetworkInterface.N` cannot be greater than 1.
         # 
         # > You cannot specify both `NetworkInterface.N.SecurityGroupId` and `NetworkInterface.N.SecurityGroupIds.N`.
         self.security_group_id = security_group_id
-        # The IDs of one or more security groups to which the secondary network interface controller (NIC) belongs. The security groups and the secondary NIC must belong to the same VPC. The valid values of N in `SecurityGroupIds.N` depend on the quota for the maximum number of security groups to which a secondary NIC can belong. For more information, see [Limits](https://help.aliyun.com/document_detail/25412.html). The value of N in `NetworkInterface.N` cannot be greater than 1.
+        # The IDs of one or more security groups to which the secondary ENI belongs. The security groups and the secondary ENI must belong to the same VPC. The valid values of N in `SecurityGroupIds.N` depend on the quota for the maximum number of security groups to which a secondary ENI can belong. For more information, see [Limits](https://help.aliyun.com/document_detail/25412.html). The value of N in `NetworkInterface.N` cannot be greater than 1.
         # 
         # > You cannot specify both `NetworkInterface.N.SecurityGroupId` and `NetworkInterface.N.SecurityGroupIds.N`.
         self.security_group_ids = security_group_ids
-        # The ID of the vSwitch to which the secondary network interface controller (NIC) belongs. The instance and the secondary NIC must be in the same VPC and the same active zone but can belong to different vSwitches. The value of N in `NetworkInterface.N` cannot be greater than 1.
+        # The vSwitch ID of the secondary ENI. The instance and the secondary ENI must be in the same VPC and the same zone but can belong to different vSwitches. The value of N in `NetworkInterface.N` cannot be greater than 1.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -865,10 +865,10 @@ class CreateLaunchTemplateVersionRequestImageOptions(DaraModel):
         self,
         login_as_non_root: bool = None,
     ):
-        # Specifies whether instances that use this image support logon with the ecs-user user.
+        # Specifies whether instances that use this image support logon as the ecs-user user.
         # Valid values:
-        # - true: supported.
-        # - false: not supported.
+        # - true: Supported.
+        # - false: Not supported.
         self.login_as_non_root = login_as_non_root
 
     def validate(self):
@@ -912,32 +912,32 @@ class CreateLaunchTemplateVersionRequestDataDisk(DaraModel):
         self.auto_snapshot_policy_id = auto_snapshot_policy_id
         # Specifies whether to enable the performance burst feature. Valid values:
         # 
-        # - true: enables the performance burst feature.
-        # - false: does not enable the performance burst feature.
+        # - true: Enabled.
+        # - false: Disabled.
         self.bursting_enabled = bursting_enabled
         # The category of data disk N. Valid values:
         # 
         # - cloud_efficiency: ultra disk.
         # - cloud_ssd: standard SSD.
-        # - cloud_essd: enterprise SSD.
+        # - cloud_essd: enterprise SSD (ESSD).
         # - cloud: basic disk.
         # - cloud_auto: ESSD AutoPL disk.
         # - cloud_regional_disk_auto: regional ESSD.
         # - cloud_essd_entry: ESSD Entry disk.
-        #   >The cloud_essd_entry value is supported only when `InstanceType` is configured as an instance type in the `ecs.u1` or `ecs.e` family.
+        #   > The cloud_essd_entry value is supported only when `InstanceType` is set to an instance type in the `ecs.u1` or `ecs.e` instance family.
         # - elastic_ephemeral_disk_standard: elastic ephemeral disk - Standard.
-        # - elastic_ephemeral_disk_premium: elastic ephemeral disk - Premium Edition.
+        # - elastic_ephemeral_disk_premium: elastic ephemeral disk - Premium.
         # 
-        # For I/O optimization instances, the default value is cloud_efficiency. For non-I/O optimization instances, the default value is cloud.
-        # Default value details:
+        # For I/O optimized instances, the default value is cloud_efficiency. For non-I/O optimized instances, the default value is cloud.
+        # Default value description:
         # 
-        # - When InstanceType is set to a retired instance type that is not I/O optimized, the default parameter value is `cloud`.
-        # - In other cases, the default value is `cloud_efficiency`.<props="china">After January 30, 2026, when the I/O optimized instance type does not support cloud_auto, the default value is cloud_efficiency. Otherwise, the default value is cloud_auto, and the performance burst feature is enabled by default (which incurs additional fees. For details, see [Billing examples](~~368372#p_75k_2hp_7gp~~)). For more information, see [Change notice](https://www.aliyun.com/notice/117844).
+        # - When InstanceType is set to a retired instance type that is not I/O optimized, the default value is `cloud`.
+        # - In other cases, the default value is `cloud_efficiency`.<props="china">After January 30, 2026, when the I/O optimized instance type does not support cloud_auto, the default value is cloud_efficiency. Otherwise, the default value is cloud_auto, and the performance burst feature is enabled by default (which incurs additional fees. For more information, see [Billing examples](~~368372#p_75k_2hp_7gp~~)). For more information, see [Change notice](https://www.aliyun.com/notice/117844).
         self.category = category
-        # Specifies whether to release the data disk when the instance is released. Valid values:
+        # Specifies whether the data disk is released when the instance is released. Valid values:
         # 
-        # - true: releases the data disk when the instance is released.
-        # - false: does not release the data disk when the instance is released.
+        # - true: The data disk is released together with the instance.
+        # - false: The data disk is not released together with the instance.
         # 
         # Default value: true.
         self.delete_with_instance = delete_with_instance
@@ -948,22 +948,22 @@ class CreateLaunchTemplateVersionRequestDataDisk(DaraModel):
         # 
         # - More than 25 data disks: /dev/xvd`[aa-zz]`. For example, the 26th data disk is named /dev/xvdaa, the 27th data disk is named /dev/xvdab, and so on.
         # 
-        # > This parameter is applicable only to full image (system image) scenarios. You can set this parameter to the mount point of the data disk in the full image and modify the corresponding `DataDisk.N.Size` and `DataDisk.N.Category` parameters to change the disk category and size of the data disk in the full image.
+        # > This parameter is applicable only to full image (virtual machine image) scenarios. You can set this parameter to the mount point of the data disk in the full image and modify the corresponding `DataDisk.N.Size` and `DataDisk.N.Category` parameters to change the disk category and size of the data disk in the full image.
         self.device = device
-        # The name of the data disk. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain digits, colons (:), underscores (_), and hyphens (-).
+        # The name of the data disk. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         self.disk_name = disk_name
         # Specifies whether to encrypt the data disk.
         self.encrypted = encrypted
         # The KMS key ID for the data disk.
         self.kmskey_id = kmskey_id
-        # The performance level of the ESSD used as a data disk. The value of N must be the same as that in `DataDisk.N.Category=cloud_essd`. Configure the performance level based on the following valid values:
+        # The performance level of the enterprise SSD (ESSD) used as a data disk. The value of N must be the same as that in `DataDisk.N.Category=cloud_essd`. Valid values:
         # 
-        # - PL0: A single disk can deliver up to 10,000 random read/write IOPS.
-        # - PL1 (default): A single disk can deliver up to 50,000 random read/write IOPS.
-        # - PL2: A single disk can deliver up to 100,000 random read/write IOPS.
-        # - PL3: A single disk can deliver up to 1,000,000 random read/write IOPS.
+        # - PL0: A single ESSD can deliver up to 10,000 random read/write IOPS.
+        # - PL1 (default): A single ESSD can deliver up to 50,000 random read/write IOPS.
+        # - PL2: A single ESSD can deliver up to 100,000 random read/write IOPS.
+        # - PL3: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
         # 
-        # For information about how to select an ESSD performance level, see [ESSDs](https://help.aliyun.com/document_detail/122389.html).
+        # For information about how to select an ESSD performance level, see [Enterprise SSDs](https://help.aliyun.com/document_detail/122389.html).
         self.performance_level = performance_level
         # The provisioned read/write IOPS of the ESSD AutoPL disk used as the system disk. Valid values: 0 to min{50000, 1000 × Capacity - Baseline Performance}.
         # 
@@ -986,7 +986,7 @@ class CreateLaunchTemplateVersionRequestDataDisk(DaraModel):
         # 
         # The value of this parameter must be greater than or equal to the size of the snapshot specified by `SnapshotId`.
         self.size = size
-        # The ID of the snapshot used to create data disk N. Valid values of N: 1 to 16. When `DataDisk.N.SnapshotId` is specified, `DataDisk.N.Size` is ignored. The actual size of the created disk is the size of the specified snapshot.
+        # The snapshot ID used to create data disk N. Valid values of N: 1 to 16. When `DataDisk.N.SnapshotId` is specified, `DataDisk.N.Size` is ignored. The actual size of the created disk is the size of the specified snapshot.
         # 
         # Snapshots created on or before July 15, 2013 cannot be used. Requests that use such snapshots are rejected.
         self.snapshot_id = snapshot_id
@@ -1103,8 +1103,8 @@ class CreateLaunchTemplateVersionRequestSystemDisk(DaraModel):
         self.auto_snapshot_policy_id = auto_snapshot_policy_id
         # Specifies whether to enable the performance burst feature. Valid values:
         # 
-        # - true: enables the performance burst feature.
-        # - false: does not enable the performance burst feature.
+        # - true: Enabled.
+        # - false: Disabled.
         self.bursting_enabled = bursting_enabled
         # The category of the system disk. Valid values:
         # 
@@ -1112,44 +1112,44 @@ class CreateLaunchTemplateVersionRequestSystemDisk(DaraModel):
         # -   cloud_efficiency: ultra disk.
         # -   cloud_ssd: standard SSD.
         # -   cloud_auto: ESSD AutoPL disk.
-        # -   cloud_essd: enterprise SSD (ESSD). You can use the `SystemDisk.PerformanceLevel` parameter to configure the performance level of the disk.
+        # -   cloud_essd: enterprise SSD (ESSD). You can use the `SystemDisk.PerformanceLevel` parameter to set the performance level of the ESSD.
         # - cloud_essd_entry: ESSD Entry disk.
         # 
-        # For retired instance types that are not I/O optimization instances, the default value is cloud. For other instance types, the default value is cloud_efficiency.
+        # For retired instance types that are not I/O optimized instances, the default value is cloud. For other instance types, the default value is cloud_efficiency.
         self.category = category
         # Specifies whether to release the system disk when the instance is released. Valid values:
         # 
-        # - true: releases the system disk when the instance is released.
-        # - false: does not release the system disk when the instance is released.
+        # - true: The system disk is released together with the instance.
+        # - false: The system disk is not released together with the instance.
         # 
         # Default value: true.
         self.delete_with_instance = delete_with_instance
         # The description of the system disk. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description
-        # The name of the system disk. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain digits, colons (:), underscores (_), and hyphens (-).
+        # The name of the system disk. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         self.disk_name = disk_name
         # Specifies whether to encrypt the system disk. Valid values:
         # 
-        # - true: encrypts the system disk.
+        # - true: Encrypted.
         # 
-        # - false: does not encrypt the system disk.
+        # - false: Not encrypted.
         # 
         # Default value: false.
         # 
-        # > System disk encryption is not supported in Zone D of the Hong Kong (China) region or Zone A of the Singapore region when you create an instance.
+        # > Zone D in Hong Kong (China) and Zone A in Singapore do not support system disk encryption when you create an instance.
         self.encrypted = encrypted
         # > This parameter is not publicly available.
         self.iops = iops
         # The KMS key ID of the system disk.
         self.kmskey_id = kmskey_id
-        # The performance level of the ESSD used as the system disk. Configure the performance level based on the following valid values:
+        # The performance level of the enterprise SSD (ESSD) used as the system disk. Valid values:
         # 
-        # - PL0 (default): A single disk can deliver up to 10,000 random read/write IOPS.
-        # - PL1: A single disk can deliver up to 50,000 random read/write IOPS.
-        # - PL2: A single disk can deliver up to 100,000 random read/write IOPS.
-        # - PL3: A single disk can deliver up to 1,000,000 random read/write IOPS.
+        # - PL0 (default): A single ESSD can deliver up to 10,000 random read/write IOPS.
+        # - PL1: A single ESSD can deliver up to 50,000 random read/write IOPS.
+        # - PL2: A single ESSD can deliver up to 100,000 random read/write IOPS.
+        # - PL3: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
         # 
-        # For information about how to select an ESSD performance level, see [ESSDs](https://help.aliyun.com/document_detail/122389.html).
+        # For information about how to select an ESSD performance level, see [Enterprise SSDs](https://help.aliyun.com/document_detail/122389.html).
         self.performance_level = performance_level
         # The provisioned read/write IOPS of the ESSD AutoPL disk used as the system disk. Valid values: 0 to min{50000, 1000 × Capacity - Baseline Performance}.
         # 

@@ -18,11 +18,11 @@ class JoinResourceGroupRequest(DaraModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the resource. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent list of regions.
+        # The region ID of the resource. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         self.region_id = region_id
         # The ID of the destination resource group.
         self.resource_group_id = resource_group_id
-        # The ID of the resource. For example, when ResourceType is set to instance, ResourceId can be interpreted as the InstanceId.
+        # The ID of the resource. For example, when ResourceType is set to instance, ResourceId is the instance ID.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -35,14 +35,14 @@ class JoinResourceGroupRequest(DaraModel):
         # - securitygroup: security group.
         # - ddh: dedicated host.
         # - ddhcluster: dedicated host cluster.
-        # - eni: elastic network interface.
-        # - keypair: SSH key pair.
+        # - eni: network interface controller (NIC).
+        # - keypair: key pair.
         # - launchtemplate: launch template.
         # - command: Cloud Assistant command.
         # - activation: Cloud Assistant managed instance activation code.
         # - managedinstance: Cloud Assistant managed instance.
         # 
-        # The preceding values are case-sensitive.
+        # The preceding parameter values are case-sensitive.
         self.resource_type = resource_type
 
     def validate(self):

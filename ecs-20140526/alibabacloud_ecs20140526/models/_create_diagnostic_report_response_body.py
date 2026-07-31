@@ -10,7 +10,7 @@ class CreateDiagnosticReportResponseBody(DaraModel):
         report_id: str = None,
         request_id: str = None,
     ):
-        # The diagnostic report ID.
+        # The diagnostic report ID, which is the unique identifier of the resource diagnostic report.
         self.report_id = report_id
         # The request ID.
         self.request_id = request_id

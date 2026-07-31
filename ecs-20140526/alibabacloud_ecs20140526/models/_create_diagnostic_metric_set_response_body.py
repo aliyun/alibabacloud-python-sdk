@@ -10,7 +10,7 @@ class CreateDiagnosticMetricSetResponseBody(DaraModel):
         metric_set_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the diagnostic metric set, which is the unique identifier of the set.
+        # The unique ID of the diagnostic metric set.
         self.metric_set_id = metric_set_id
         # The request ID.
         self.request_id = request_id

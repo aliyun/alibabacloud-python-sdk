@@ -14,9 +14,9 @@ class DescribePortRangeListsResponseBody(DaraModel):
         port_range_lists: List[main_models.DescribePortRangeListsResponseBodyPortRangeLists] = None,
         request_id: str = None,
     ):
-        # A pagination token. If the return value is empty, no more data is returned.
+        # The pagination token returned in this call. If this value is empty, no more data is available.
         self.next_token = next_token
-        # Details of the port lists.
+        # The port range list information.
         self.port_range_lists = port_range_lists
         # The request ID.
         self.request_id = request_id
@@ -75,19 +75,19 @@ class DescribePortRangeListsResponseBodyPortRangeLists(DaraModel):
     ):
         # The number of associated resources.
         self.association_count = association_count
-        # The time when the port list was created.
+        # The time when the port range list was created.
         self.creation_time = creation_time
-        # The description of the port list.
+        # The description of the port range list.
         self.description = description
-        # The maximum number of entries in the port list.
+        # The maximum number of entries supported by the port range list.
         self.max_entries = max_entries
-        # The ID of the port list.
+        # The ID of the port range list.
         self.port_range_list_id = port_range_list_id
-        # The name of the port list.
+        # The name of the port range list.
         self.port_range_list_name = port_range_list_name
-        # The ID of the resource group to which to assign the port list.
+        # The ID of the resource group to which the port range list belongs.
         self.resource_group_id = resource_group_id
-        # The tags of the port list.
+        # The tags of the port range list.
         self.tags = tags
 
     def validate(self):
@@ -166,9 +166,9 @@ class DescribePortRangeListsResponseBodyPortRangeListsTags(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The key of tag N.
+        # The tag key of the port range list.
         self.tag_key = tag_key
-        # The value of tag N.
+        # The tag value of the port range list.
         self.tag_value = tag_value
 
     def validate(self):

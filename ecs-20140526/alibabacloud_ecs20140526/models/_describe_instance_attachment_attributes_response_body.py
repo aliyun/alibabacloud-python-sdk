@@ -17,13 +17,13 @@ class DescribeInstanceAttachmentAttributesResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.instances = instances
-        # The page number.
+        # The page number of the instance status list.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries per page for the paged query.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries that match the query conditions.
         self.total_count = total_count
 
     def validate(self):

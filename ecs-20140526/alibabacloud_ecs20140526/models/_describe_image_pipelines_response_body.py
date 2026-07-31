@@ -17,13 +17,13 @@ class DescribeImagePipelinesResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.image_pipeline = image_pipeline
-        # The number of entries per page for a paginated query.
+        # The maximum number of entries per page for paging queries.
         self.max_results = max_results
-        # The token used to retrieve the next page of results. This value is returned if the results are paginated.
+        # The pagination token returned in this call. For more information about how to use it, refer to the operation description.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of image pipelines that match the query criteria.
+        # The total number of image templates returned.
         self.total_count = total_count
 
     def validate(self):
@@ -127,6 +127,7 @@ class DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSet(DaraModel)
         internet_max_bandwidth_out: int = None,
         name: str = None,
         nvme_support: str = None,
+        repair_items: main_models.DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetRepairItems = None,
         repair_mode: str = None,
         resource_group_id: str = None,
         system_disk_size: int = None,
@@ -152,6 +153,7 @@ class DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSet(DaraModel)
         self.internet_max_bandwidth_out = internet_max_bandwidth_out
         self.name = name
         self.nvme_support = nvme_support
+        self.repair_items = repair_items
         self.repair_mode = repair_mode
         self.resource_group_id = resource_group_id
         self.system_disk_size = system_disk_size
@@ -169,6 +171,8 @@ class DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSet(DaraModel)
             self.image_options.validate()
         if self.import_image_options:
             self.import_image_options.validate()
+        if self.repair_items:
+            self.repair_items.validate()
         if self.tags:
             self.tags.validate()
         if self.to_region_ids:
@@ -229,6 +233,9 @@ class DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSet(DaraModel)
 
         if self.nvme_support is not None:
             result['NvmeSupport'] = self.nvme_support
+
+        if self.repair_items is not None:
+            result['RepairItems'] = self.repair_items.to_map()
 
         if self.repair_mode is not None:
             result['RepairMode'] = self.repair_mode
@@ -309,6 +316,10 @@ class DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSet(DaraModel)
 
         if m.get('NvmeSupport') is not None:
             self.nvme_support = m.get('NvmeSupport')
+
+        if m.get('RepairItems') is not None:
+            temp_model = main_models.DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetRepairItems()
+            self.repair_items = temp_model.from_map(m.get('RepairItems'))
 
         if m.get('RepairMode') is not None:
             self.repair_mode = m.get('RepairMode')
@@ -429,6 +440,33 @@ class DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetTagsTag(Dar
 
         if m.get('TagValue') is not None:
             self.tag_value = m.get('TagValue')
+
+        return self
+
+class DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetRepairItems(DaraModel):
+    def __init__(
+        self,
+        repair_item: List[str] = None,
+    ):
+        self.repair_item = repair_item
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.repair_item is not None:
+            result['RepairItem'] = self.repair_item
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RepairItem') is not None:
+            self.repair_item = m.get('RepairItem')
 
         return self
 

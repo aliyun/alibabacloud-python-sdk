@@ -19,17 +19,17 @@ class RedeployDedicatedHostRequest(DaraModel):
         # 
         # This parameter is required.
         self.dedicated_host_id = dedicated_host_id
-        # Specifies whether to stop the instance before it is migrated to the destination dedicated host. Valid values:
+        # Specifies whether to stop ECS instance before migrating it to the destination dedicated host. Valid values:
         # 
-        # - reboot: stops the instance before migration.
+        # - Reboot: stops ECS instance before migration.
         # 
-        # - LiveMigrationFirst: migrates the instance without stopping it. If you set MigrationType to LiveMigrationFirst, you must specify DedicatedHostId. In this case, you cannot change the instance type of the ECS instance when the instance is migrated. If the migration in LiveMigrationFirst mode fails, the system switches to the Reboot mode.
+        # - LiveMigrationFirst: migrates ECS instance without stopping it. You must specify the DedicatedHostId parameter. This value does not support changing ECS instance type during migration. If live migration fails, cold migration is performed by default.
         # 
-        # Default value: reboot.
+        # Default value: Reboot.
         self.migration_type = migration_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the dedicated host. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The region ID of the dedicated host. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id

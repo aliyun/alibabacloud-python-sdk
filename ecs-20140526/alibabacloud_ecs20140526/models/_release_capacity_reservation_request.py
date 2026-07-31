@@ -17,11 +17,11 @@ class ReleaseCapacityReservationRequest(DaraModel):
         resource_owner_id: int = None,
     ):
         self.private_pool_options = private_pool_options
-        # Specifies whether to perform only a dry run, without performing the actual request. Set the value to false. This indicates that the system directly releases the capacity reservation.
+        # Specifies whether to perform only a dry run. Valid values: false. Currently, only false is supported, which indicates that the capacity reservation is directly released without a dry run.
         self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the capacity reservation. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The region ID of the capacity reservation. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id

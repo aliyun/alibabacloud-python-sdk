@@ -24,7 +24,7 @@ class AttachNetworkInterfaceRequest(DaraModel):
         self.instance_id = instance_id
         # The index of the network card specified for the ENI.
         # 
-        # >Valid values of NetworkCardIndex depend on the instance family. If the instance type does not support network cards, you cannot specify this parameter. If the instance type supports network cards, see [Instance families](https://help.aliyun.com/document_detail/25378.html) for valid values.
+        # >The valid values of NetworkCardIndex depend on the instance family. If the instance type does not support NetworkCard, you cannot specify this parameter. If the instance type supports NetworkCard, see [Instance families](https://help.aliyun.com/document_detail/25378.html) for valid values.
         self.network_card_index = network_card_index
         # The network interface controller (NIC) ID.
         # 
@@ -38,7 +38,7 @@ class AttachNetworkInterfaceRequest(DaraModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the trunk ENI.
+        # The trunk ENI ID.
         # >This parameter is not yet available.
         self.trunk_network_instance_id = trunk_network_instance_id
         # >This parameter is deprecated.

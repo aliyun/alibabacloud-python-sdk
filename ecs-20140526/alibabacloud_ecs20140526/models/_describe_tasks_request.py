@@ -24,61 +24,55 @@ class DescribeTasksRequest(DaraModel):
         task_ids: str = None,
         task_status: str = None,
     ):
-        # The end of the time range to query. The time range refers to the period of time during which the task is created. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # The end of the creation time range to query. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.end_time = end_time
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number.
+        # The page number of the results.
         # 
-        # Pages start from page 1.
+        # Minimum value: 1.
         # 
         # Default value: 1.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries per page for a paged query.
         # 
-        # Valid values: 1 to 100.
+        # Maximum value: 100.
         # 
         # Default value: 10.
         self.page_size = page_size
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The IDs of the resources associated with the task. Valid values of N: 1 to 100.
+        # The resource IDs. Valid values of N: 1 to 100.
         self.resource_ids = resource_ids
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The beginning of the time range to query. The time range refers to the period of time during which the task is created. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # The beginning of the creation time range to query. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.start_time = start_time
-        # The name of the operation that generates the task. Valid values:
+        # The name of the API operation associated with the task. Valid values:
         # 
-        # - ImportImage
-        # 
-        # - ExportImage
-        # 
-        # - RedeployInstance
-        # 
-        # - ModifyDiskSpec
-        # 
-        # - ArchiveSnapshot
+        # - ImportImage: import an image.
+        # - ExportImage: export an image.
+        # - RedeployInstance: redeploy an ECS instance.
+        # - ModifyDiskSpec: change the cloud disk type.
+        # - ArchiveSnapshot: archive a snapshot.
         self.task_action = task_action
-        # Task group ID.
+        # The task group ID.
         # 
-        # > This parameter is in invitational preview. When this parameter is used, other query conditions become invalid.
+        # > This parameter is in invitational preview. When this parameter is specified, other query conditions do not take effect.
         self.task_group_id = task_group_id
-        # The task IDs. You can specify up to 100 task IDs at a time. Separate the task IDs with commas (,).
+        # The task IDs. You can specify up to 100 task IDs at a time. Separate multiple IDs with commas (,).
         self.task_ids = task_ids
         # The task status. Valid values:
         # 
-        # - Finished
+        # - Finished: The task is complete.
+        # - Processing: The task is running.
+        # - Failed: The task has failed.
         # 
-        # - Processing
+        # Default value: null.
         # 
-        # - Failed
-        # 
-        # This parameter is left empty by default.
-        # 
-        # > The system only queries tasks in the Finished, Processing, and Failed states and ignores other values.
+        # > Only tasks in the Finished, Processing, or Failed state can be queried. Other values do not take effect.
         self.task_status = task_status
 
     def validate(self):

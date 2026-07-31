@@ -16,15 +16,15 @@ class EnableNetworkInterfaceQoSRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the Elastic Network Interface (ENI).
+        # The ID of the network interface controller (NIC).
         # 
         # This parameter is required.
         self.network_interface_id = network_interface_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # QoS Speed Limit Settings
+        # The QoS rate limiting settings.
         self.qo_s = qo_s
-        # The Region ID. You can invoke DescribeRegions to view the latest Alibaba Cloud Region list.
+        # The region ID. You can call DescribeRegions to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -98,25 +98,25 @@ class EnableNetworkInterfaceQoSRequestQoS(DaraModel):
         pps_rx: int = None,
         pps_tx: int = None,
     ):
-        # The maximum inbound internal bandwidth.
+        # The maximum inbound internal bandwidth limit.
         # 
-        # Unit: kbit/s, step size: 1000 (1Mbps), value range: [50000, +♾️)
+        # Unit: kbit/s. Increment: 1000 (1 Mbit/s). Value range: [50000, +∞).
         self.bandwidth_rx = bandwidth_rx
-        # The maximum outbound internal bandwidth.
+        # The maximum outbound internal bandwidth limit.
         # 
-        # Unit: kbit/s, step size: 1000 (1Mbps), value range: [50000, +♾️)
+        # Unit: kbit/s. Increment: 1000 (1 Mbit/s). Value range: [50000, +∞).
         self.bandwidth_tx = bandwidth_tx
-        # Maximum Number of Sessions
+        # The maximum number of sessions.
         # 
-        # Step size: 10000, value range: [10000, +♾️)
+        # Increment: 10000. Value range: [10000, +∞).
         self.concurrent_connections = concurrent_connections
-        # The inbound packet forwarding rate over the internal network.
+        # The inbound internal packet forwarding rate.
         # 
-        # Unit: pps, step size: 10000, value range: [10000, +♾️)
+        # Unit: pps. Increment: 10000. Value range: [10000, +∞).
         self.pps_rx = pps_rx
-        # The outbound packet forwarding rate over the internal network.
+        # The outbound internal packet forwarding rate.
         # 
-        # Unit: pps, step size: 10000, value range: [10000, +♾️)
+        # Unit: pps. Increment: 10000. Value range: [10000, +∞).
         self.pps_tx = pps_tx
 
     def validate(self):

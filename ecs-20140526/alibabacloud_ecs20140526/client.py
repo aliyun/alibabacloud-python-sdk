@@ -90,9 +90,7 @@ class Client(OpenApiClient):
             'ap-southeast-6': 'ecs.ap-southeast-6.aliyuncs.com',
             'ap-southeast-5': 'ecs.ap-southeast-5.aliyuncs.com',
             'ap-southeast-3': 'ecs.ap-southeast-3.aliyuncs.com',
-            'ap-southeast-2': 'ecs.ap-southeast-2.aliyuncs.com',
             'ap-southeast-1': 'ecs.ap-southeast-1.aliyuncs.com',
-            'ap-south-1': 'ecs.ap-south-1.aliyuncs.com',
             'ap-northeast-2': 'ecs.ap-northeast-2.aliyuncs.com',
             'ap-northeast-1': 'ecs.ap-northeast-1.aliyuncs.com'
         }
@@ -5474,6 +5472,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.repair_item):
+            query['RepairItem'] = request.repair_item
         if not DaraCore.is_null(request.repair_mode):
             query['RepairMode'] = request.repair_mode
         if not DaraCore.is_null(request.resource_group_id):
@@ -5560,6 +5560,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.repair_item):
+            query['RepairItem'] = request.repair_item
         if not DaraCore.is_null(request.repair_mode):
             query['RepairMode'] = request.repair_mode
         if not DaraCore.is_null(request.resource_group_id):
@@ -6716,6 +6718,8 @@ class Client(OpenApiClient):
             query['DeleteOnRelease'] = request.delete_on_release
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
+        if not DaraCore.is_null(request.enable_primary_ipv_6):
+            query['EnablePrimaryIPv6'] = request.enable_primary_ipv_6
         if not DaraCore.is_null(request.enhanced_network):
             query['EnhancedNetwork'] = request.enhanced_network
         if not DaraCore.is_null(request.instance_type):
@@ -6814,6 +6818,8 @@ class Client(OpenApiClient):
             query['DeleteOnRelease'] = request.delete_on_release
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
+        if not DaraCore.is_null(request.enable_primary_ipv_6):
+            query['EnablePrimaryIPv6'] = request.enable_primary_ipv_6
         if not DaraCore.is_null(request.enhanced_network):
             query['EnhancedNetwork'] = request.enhanced_network
         if not DaraCore.is_null(request.instance_type):
@@ -34098,6 +34104,8 @@ class Client(OpenApiClient):
             query['DeleteOnRelease'] = request.delete_on_release
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
+        if not DaraCore.is_null(request.enable_primary_ipv_6):
+            query['EnablePrimaryIPv6'] = request.enable_primary_ipv_6
         if not DaraCore.is_null(request.enhanced_network):
             query['EnhancedNetwork'] = request.enhanced_network
         if not DaraCore.is_null(request.network_interface_id):
@@ -34160,6 +34168,8 @@ class Client(OpenApiClient):
             query['DeleteOnRelease'] = request.delete_on_release
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
+        if not DaraCore.is_null(request.enable_primary_ipv_6):
+            query['EnablePrimaryIPv6'] = request.enable_primary_ipv_6
         if not DaraCore.is_null(request.enhanced_network):
             query['EnhancedNetwork'] = request.enhanced_network
         if not DaraCore.is_null(request.network_interface_id):

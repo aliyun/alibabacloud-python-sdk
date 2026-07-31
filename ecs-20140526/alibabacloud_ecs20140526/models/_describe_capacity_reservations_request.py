@@ -30,60 +30,52 @@ class DescribeCapacityReservationsRequest(DaraModel):
         # The billing method of the instance. Valid values:
         # 
         # - PostPaid: pay-as-you-go.
-        # 
         # - PrePaid: subscription.
         # 
         # Default value: PostPaid.
         self.instance_charge_type = instance_charge_type
-        # The instance type. You can use this parameter to query only active capacity reservations. To query released capacity reservations, you must specify `PrivatePoolOptions.Ids`.
+        # The instance type. You can use the instance type to query only active capacity reservations. Released capacity reservations can be queried only by using PrivatePoolOptions.Ids.
         self.instance_type = instance_type
-        # The number of entries to return on each page.
+        # The maximum number of entries per page for a paged query.
         # 
         # Maximum value: 100.
         # 
         # Default value: 10.
         self.max_results = max_results
-        # The query token. Set the value to the `NextToken` value returned in the previous call to retrieve the next page of results.
+        # The pagination token for the capacity reservation query. Obtain the value from the result of the previous request.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The operating system of the instance. Valid values:
         # 
-        # - windows: Returns only capacity reservations for Windows.
-        # 
-        # - linux: Returns only capacity reservations for Linux.
-        # 
-        # - all: Returns all capacity reservations.
+        # - windows: queries only capacity reservations for Windows instances.
+        # - linux: queries only capacity reservations for Linux instances.
+        # - all: queries all capacity reservations.
         # 
         # Default value: all.
         self.platform = platform
-        # The region ID of the capacity reservation. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the latest list of Alibaba Cloud regions.
+        # The region ID of the capacity reservation. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group. When you use this parameter to filter resources, the operation returns a maximum of 1,000 resources.
+        # The resource group ID. When you use this parameter to filter resources, the resource count cannot exceed 1000.
         # 
-        # > Filtering by the default resource group is not supported.
+        # >Filtering by the default resource group is not supported.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The status of the capacity reservation. Valid values:
         # 
-        # - All: all statuses.
+        # - All: all states.
+        # - Pending: initializing. A capacity reservation that takes effect at a specified time enters the initializing state first.
+        # - Preparing: being prepared. A capacity reservation that takes effect at a specified time is in the Preparing state during the resource delivery phase.
+        # - Prepared: to take effect. A capacity reservation that takes effect at a specified time is in the Prepared state after resource delivery is complete but before the service takes effect.
+        # - Active: active.
+        # - Released: released, including manual release and automatic release upon expiration.
         # 
-        # - Pending: The capacity reservation is initializing. This is the initial status of a scheduled capacity reservation.
-        # 
-        # - Preparing: The system is preparing resources for the scheduled capacity reservation.
-        # 
-        # - Prepared: The resources are prepared, and the scheduled capacity reservation is waiting to take effect.
-        # 
-        # - Active: The capacity reservation is active.
-        # 
-        # - Released: The capacity reservation is released, either manually or automatically upon expiration.
-        # 
-        # If you do not specify this parameter, the operation returns capacity reservations in all states except `Pending` and `Released`.
+        # If you do not specify this parameter, capacity reservations in all states except Pending and Released are queried.
         self.status = status
-        # The tags attached to the capacity reservations.
+        # The tags bound to the capacity reservation.
         self.tag = tag
         # The zone ID of the capacity reservation.
         self.zone_id = zone_id
@@ -209,11 +201,11 @@ class DescribeCapacityReservationsRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the Nth tag. You can specify up to 20 tags.
+        # The tag key. N indicates that you can set multiple tag keys for filtering. Valid values of N: 1 to 20.
         # 
-        # A maximum of 1,000 resources that match the specified tags can be returned. If you specify multiple tags, only resources that have all of these tags are returned. If the number of matching resources exceeds 1,000, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query the resources.
+        # If you use a single tag to filter resources, the resource count with the specified tag cannot exceed 1000. If you use multiple tags to filter resources, the resource count with all specified tags attached cannot exceed 1000. If the resource count exceeds 1000, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query resources.
         self.key = key
-        # The value of the Nth tag. You can specify up to 20 tags.
+        # The tag value. N indicates that you can set multiple tag values for filtering. Valid values of N: 1 to 20.
         self.value = value
 
     def validate(self):
@@ -247,7 +239,7 @@ class DescribeCapacityReservationsRequestPrivatePoolOptions(DaraModel):
         self,
         ids: str = None,
     ):
-        # The IDs of the capacity reservations. The value can be a JSON array that consists of up to 100 capacity reservation IDs.
+        # The list of capacity reservation IDs. The value can be a JSON array that consists of up to 100 IDs. Separate the IDs with commas (,).
         self.ids = ids
 
     def validate(self):

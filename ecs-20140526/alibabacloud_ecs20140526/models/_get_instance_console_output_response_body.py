@@ -12,11 +12,11 @@ class GetInstanceConsoleOutputResponseBody(DaraModel):
         last_update_time: str = None,
         request_id: str = None,
     ):
-        # The Base64-encoded system command-line output of the instance.
+        # The Base64-encoded system command line output of the instance.
         self.console_output = console_output
         # The instance ID.
         self.instance_id = instance_id
-        # The record of the time when the last line of the Linux kernel logs was printed, in UTC+8. Format: yyyy-MM-dd HH:mm:ss.
+        # The time recorded when the last kernel logs entry was printed, in UTC+8. Format: yyyy-MM-dd HH:mm:ss.
         self.last_update_time = last_update_time
         # The request ID.
         self.request_id = request_id

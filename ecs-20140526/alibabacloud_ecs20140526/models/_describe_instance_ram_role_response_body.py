@@ -16,11 +16,11 @@ class DescribeInstanceRamRoleResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.instance_ram_role_sets = instance_ram_role_sets
-        # The region ID of the ECS instances.
+        # The region ID of the instance.
         self.region_id = region_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The number of ECS instances returned.
+        # The total number of returned instances.
         self.total_count = total_count
 
     def validate(self):

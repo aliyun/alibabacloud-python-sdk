@@ -18,17 +18,17 @@ class ModifyReservedInstancesRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The configurations of the new reserved instances. You can specify up to 100 new reserved instances.
+        # The configuration information of the reserved instances. Array length: 1 to 100.
         self.configuration = configuration
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the reserved instance.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The IDs of reserved instances that you want to modify. You can specify up to 20 reserved instance IDs.
+        # The IDs of the reserved instances. Array length: 1 to 20.
         # 
         # This parameter is required.
         self.reserved_instance_id = reserved_instance_id
@@ -108,29 +108,28 @@ class ModifyReservedInstancesRequestConfiguration(DaraModel):
         scope: str = None,
         zone_id: str = None,
     ):
-        # The number of pay-as-you-go instances of the specified instance type that the new reserved instance can match. The value of this parameter must be greater than or equal to 1.
+        # The number of pay-as-you-go instances of the same instance type that the reserved instance can match simultaneously. Valid values: ≥ 1.
         self.instance_amount = instance_amount
-        # The instance types that the new reserved instance can match.
+        # The instance type that the reserved instance can match.
         # 
-        # > The supported instance types are continuously updated. For information about the instance types supported by reserved instances, see [Overview of reserved instances](~~100370#3c1b682051vt4~~).
+        # > Applicable instance types are continuously updated. For more information, see [Reserved instance overview](~~100370#3c1b682051vt4~~).
         self.instance_type = instance_type
-        # The name of the new reserved instance.
+        # The name of the reserved instance.
         # 
-        # The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http\\:// or https\\://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        # The name must be 2 to 128 characters in length. It must start with a letter or Chinese character and cannot start with http:// or https://. It can contain digits, colons (:), underscores (_), or hyphens (-).
         self.reserved_instance_name = reserved_instance_name
-        # The scope level of the new reserved instance. Valid values:
+        # The scope of the reserved instance. Valid values: 
         # 
-        # - Region
-        # 
-        # - Zone
+        # - Region: regional.
+        # - Zone: zonal.
         # 
         # Default value: Region.
         self.scope = scope
-        # The zone ID of the new reserved instance.
+        # The zone ID of the reserved instance.
         # 
-        # This parameter is required when you set `Scope` to `Zone`.
+        # This parameter is required when the `Scope` parameter is set to `Zone`.
         # 
-        # You can call the [DescribeZones](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent zone list.
+        # You can call [DescribeZones](https://help.aliyun.com/document_detail/25609.html) to query the zone list.
         self.zone_id = zone_id
 
     def validate(self):

@@ -10,7 +10,9 @@ class CreateVscResponseBody(DaraModel):
         request_id: str = None,
         vsc_id: str = None,
     ):
+        # Request ID
         self.request_id = request_id
+        # The ID of the Virtual Storage Channel.
         self.vsc_id = vsc_id
 
     def validate(self):

@@ -12,9 +12,9 @@ class ModifyInstanceNetworkOptionsResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The ID of the task for which the bandwidth weight is modified.
+        # The ID of the task for modifying the bandwidth weight.
         # 
-        # You can use the [DescribeTaskAttribute](https://help.aliyun.com/document_detail/2679968.html) interface to modify the bandwidth weight result.
+        # You can call [DescribeTaskAttribute](https://help.aliyun.com/document_detail/2679968.html) to query the result of the bandwidth weight modification.
         self.task_id = task_id
 
     def validate(self):

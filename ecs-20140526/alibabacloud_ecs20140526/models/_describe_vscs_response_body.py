@@ -14,8 +14,11 @@ class DescribeVscsResponseBody(DaraModel):
         request_id: str = None,
         vscs: List[main_models.DescribeVscsResponseBodyVscs] = None,
     ):
+        # The query token. The value is the NextToken parameter value returned by the previous API call.
         self.next_token = next_token
+        # Id of the request
         self.request_id = request_id
+        # VSC
         self.vscs = vscs
 
     def validate(self):
@@ -70,13 +73,29 @@ class DescribeVscsResponseBodyVscs(DaraModel):
         vsc_name: str = None,
         vsc_type: str = None,
     ):
+        # The description of the port list.
         self.description = description
+        # The instance ID.
         self.instance_id = instance_id
+        # The resource group ID. When you use this parameter to filter resources, the resource count cannot exceed 1000.
+        # 
+        # >Filtering by the default resource group is not supported.
         self.resource_group_id = resource_group_id
+        # The status of the VSC. Valid values:
+        # 
+        # - In_use: in use.
+        # - Attaching: being attached.
+        # - Detaching: being detached.
+        # - AttachFailed: failed to attach.
+        # - DetachFailed: failed to detach.
         self.status = status
+        # The tag keys of snapshots in the snapshot-consistent group. The default values of Key and Value provide the snapshot source information.
         self.tags = tags
+        # VSC ID。
         self.vsc_id = vsc_id
+        # The custom name of the VSC.
         self.vsc_name = vsc_name
+        # The type of the VSC. Valid values: Primary or Secondary.
         self.vsc_type = vsc_type
 
     def validate(self):
@@ -155,7 +174,9 @@ class DescribeVscsResponseBodyVscsTags(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The tag key of the key pair.
         self.tag_key = tag_key
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):

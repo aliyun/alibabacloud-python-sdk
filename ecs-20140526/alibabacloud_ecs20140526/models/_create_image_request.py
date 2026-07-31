@@ -48,7 +48,7 @@ class CreateImageRequest(DaraModel):
         # 
         # <notice>
         # 
-        # To prevent instances from failing to start due to an unsupported boot mode, make sure that you understand the boot modes supported by the target image before specifying this parameter. For more information about image boot modes, see [Image boot modes](~~2244655#b9caa9b8bb1wf~~).
+        # To prevent instances from failing to start due to an unsupported boot mode, make sure that you understand the boot modes supported by the target image before you set this parameter. For more information about image boot modes, see [Image boot modes](~~2244655#b9caa9b8bb1wf~~).
         # 
         # </notice>
         self.boot_mode = boot_mode
@@ -56,11 +56,11 @@ class CreateImageRequest(DaraModel):
         self.client_token = client_token
         # The description of the image. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         self.description = description
-        # The image detection strategy. If this parameter is not specified, detection is not triggered. Only the Standard detection mode is supported. 
+        # The image check strategy. If this parameter is not configured, image check is not triggered. Only the Standard check mode is supported. 
         # 
-        # > Most Linux and Windows versions are supported. For more information about image detection items and operating system limitations, see [Image detection overview](https://help.aliyun.com/document_detail/439819.html) and [Operating system limitations for image detection](https://help.aliyun.com/document_detail/475800.html).
+        # > Most Linux and Windows versions are supported. For more information about image check items and operating system limitations, see [Image check overview](https://help.aliyun.com/document_detail/439819.html) and [Operating system limitations for image check](https://help.aliyun.com/document_detail/475800.html).
         self.detection_strategy = detection_strategy
-        # The disk and snapshot information used to create the custom image. Use this parameter to specify snapshots when you want to create a custom image from system disk and data disk snapshots.
+        # The collection of disk and snapshot information used to create the custom image. Use this parameter to specify snapshots when you want to create a custom image from system disk and data disk snapshots.
         self.disk_device_mapping = disk_device_mapping
         self.dry_run = dry_run
         # The image feature properties.
@@ -114,13 +114,13 @@ class CreateImageRequest(DaraModel):
         self.region_id = region_id
         # The ID of the resource group to which the custom image belongs. If this parameter is not set, the created image belongs to the default resource group.
         # 
-        # > If you invoke this operation as a Resource Access Management (RAM) user and `ResourceGroupId` is left empty, note that when the RAM user does not have permissions on the default resource group, the error message `Forbidden: User not authorized to operate on the specified resource` is returned. Set a resource group ID that the RAM user has permissions on, or grant the RAM user permissions on the default resource group before invoking this operation again.
+        # > If you invoke this operation as a Resource Access Management (RAM) user and `ResourceGroupId` is left empty, note that when the RAM user does not have permissions on the default resource group, the error message `Forbidden: User not authorized to operate on the specified resource` is returned. Settings ResourceGroupId to a resource group ID that the Resource Access Management (RAM) user has permissions on, or grant the Resource Access Management (RAM) user permissions on the default resource group before invoking this operation again.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The snapshot ID used to create the custom image.
         # 
-        # > If you want to create a custom image only from the system disk snapshot of an instance, you can use this parameter or the `DiskDeviceMapping.N.SnapshotId` parameter. To include data disk snapshots, use only the `DiskDeviceMapping.N.SnapshotId` parameter to specify snapshots.
+        # > If you want to create a custom image from only the system disk snapshot of an instance, you can use this parameter or the `DiskDeviceMapping.N.SnapshotId` parameter. To include data disk snapshots, use only the `DiskDeviceMapping.N.SnapshotId` parameter.
         self.snapshot_id = snapshot_id
         # The tags.
         self.tag = tag
@@ -291,9 +291,9 @@ class CreateImageRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the image. Valid values of N: 1 to 20. The tag key cannot be an empty string. It can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+        # The tag key of the image. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         self.key = key
-        # The tag value of the image. Valid values of N: 1 to 20. The tag value can be an empty string. It can be up to 128 characters in length and cannot start with `acs:`. It cannot contain `http://` or `https://`.
+        # The tag value of the image. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot start with `acs:`. It cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -331,7 +331,7 @@ class CreateImageRequestFeatures(DaraModel):
         # - v1: When you create an ECS instance from this image, you cannot set the metadata access mode to "security hardening mode only".
         # - v2: When you create an ECS instance from this image, you can set the metadata access mode to "security hardening mode only".
         # 
-        # Default value: When creating an image from a snapshot, the default is v1. When creating an image from an instance, the default is the ImdsSupport value of the image used when the instance was created.
+        # Default value: When you create an image from a snapshot, the default value is v1. When you create an image from an instance, the default value is the ImdsSupport property of the image used to create the instance.
         self.imds_support = imds_support
 
     def validate(self):
@@ -366,18 +366,18 @@ class CreateImageRequestDiskDeviceMapping(DaraModel):
         # 
         # - The device name of the system disk must be /dev/xvda.
         # 
-        # - Data disk device names are sequentially ordered from /dev/xvdb to /dev/xvdz and cannot be duplicated.
+        # - The device names of data disks are in alphabetical order from /dev/xvdb to /dev/xvdz and cannot be duplicated.
         self.device = device
-        # The type of the disk in the new image. You can use this parameter to specify a data disk snapshot as the system disk of the image. If this parameter is not specified, the disk type defaults to the type of the disk corresponding to the snapshot. Valid values:
+        # The type of the disk in the new image. You can use this parameter to specify a data disk snapshot as the system disk of the image. If this parameter is not specified, the disk type defaults to the type of the disk from which the snapshot was created. Valid values:
         # 
-        # - system: system disk. Only one system disk snapshot can be specified.
-        # - data: data disk. Up to 16 data disk snapshots can be specified.
+        # - system: system disk. You can specify only one system disk snapshot.
+        # - data: data disk. You can specify up to 16 data disk snapshots.
         self.disk_type = disk_type
         # The size of the disk, in GiB. The valid values and default value of DiskDeviceMapping.N.Size depend on DiskDeviceMapping.N.SnapshotId:
         # 
         # - If SnapshotId is not specified, the valid values and default value of Size are:
         #     - Basic disk: 5 to 2000 GiB. Default value: 5.
-        #     - Other disk types: 20 to 32768 GiB. Default value: 20.
+        #     - Other disk categories: 20 to 32768 GiB. Default value: 20.
         # - If SnapshotId is specified, the value of Size must be greater than or equal to the size of the snapshot. Default value: the size of the snapshot.
         self.size = size
         # The snapshot ID.

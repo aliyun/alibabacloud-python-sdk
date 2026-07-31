@@ -16,15 +16,14 @@ class DescribeImagePipelineExecutionsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The details of the image pipeline executions.
         self.image_pipeline_execution = image_pipeline_execution
-        # The number of entries per page.
+        # The maximum number of entries per page for paging.
         self.max_results = max_results
-        # The token returned in this call. Use this token to retrieve the next page of results. For more information, see the operation description.
+        # The pagination token returned in this call. For more information about how to use this token, see the operation description.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of image pipeline executions.
+        # The total number of image components returned.
         self.total_count = total_count
 
     def validate(self):

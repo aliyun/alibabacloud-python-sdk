@@ -23,18 +23,38 @@ class DescribeVscsRequest(DaraModel):
         tag: List[main_models.DescribeVscsRequestTag] = None,
         vsc_ids: List[str] = None,
     ):
+        # The instance ID of the cloud disk or local disk that is attached.
         self.instance_id = instance_id
+        # The maximum number of entries to return. Valid values: 10 to 500. Default value: If the value is not specified or is less than 10, the default value is 10. If the value is greater than 500, the default value is 500.
         self.max_results = max_results
+        # The query token returned by this call.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The ID of the resource group to which the instance belongs. When you use this parameter to filter resources, the resource count cannot exceed 1000. Filtering by the default resource group is not supported.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The status of the VSCs to query. If you do not specify this parameter, VSCs in all states are returned. Valid values:
+        # 
+        # - In_use: in use.
+        # - Attaching: being attached.
+        # - Detaching: being detached.
+        # - AttachFailed: failed to attach.
+        # - DetachFailed: failed to detach.
+        # - All (default): all states.
+        # 
+        # Default value: All.
         self.status = status
+        # The tags.
         self.tag = tag
+        # The IDs of the VSCs to query.
+        # 
+        # We recommend that you specify no more than 100 VSC IDs.
         self.vsc_ids = vsc_ids
 
     def validate(self):
@@ -137,7 +157,13 @@ class DescribeVscsRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key of the command. Valid values of N: 1 to 20. The tag key cannot be an empty string.
+        # 
+        # If you use a single tag to filter resources, the resource count with the specified tag cannot exceed 1000. If you use multiple tags to filter resources, the resource count of resources that are attached to all specified tags cannot exceed 1000. If the resource count exceeds 1000, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query the resources.
+        # 
+        # The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         self.key = key
+        # The tag value. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot start with aliyun or acs:. It cannot contain http:// or https://.
         self.value = value
 
     def validate(self):

@@ -47,13 +47,13 @@ class RevokeSecurityGroupRequest(DaraModel):
         self.ipv_6dest_cidr_ip = ipv_6dest_cidr_ip
         # Deprecated. Use `Permissions.N.Ipv6SourceCidrIp` to specify the source IPv6 Classless Inter-Domain Routing (CIDR) block.
         self.ipv_6source_cidr_ip = ipv_6source_cidr_ip
-        # Deprecated. Use `Permissions.N.NicType` to specify the network interface type.
+        # Deprecated. Use `Permissions.N.NicType` to specify the NIC type.
         self.nic_type = nic_type
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The security group rules. Array length: 0 to 100.
         self.permissions = permissions
-        # Deprecated. Use `Permissions.N.Policy` to set the access permissions.
+        # Deprecated. Use `Permissions.N.Policy` in Settings to specify the access permissions.
         self.policy = policy
         # Deprecated. Use `Permissions.N.PortRange` to specify the port range.
         self.port_range = port_range
@@ -272,9 +272,9 @@ class RevokeSecurityGroupRequestPermissions(DaraModel):
     ):
         # The description of the security group rule. The description must be 1 to 512 characters in length.
         self.description = description
-        # The destination IPv4 CIDR block. CIDR blocks and IPv4 address range are supported.
+        # The destination IPv4 CIDR block. CIDR blocks and IPv4 address ranges are supported.
         # 
-        # This parameter is used for quintuple rules. For more information, see [Security group quintuple rules](https://help.aliyun.com/document_detail/97439.html).
+        # This parameter is used to support quintuple rules. For more information, see [Security group quintuple rules](https://help.aliyun.com/document_detail/97439.html).
         self.dest_cidr_ip = dest_cidr_ip
         # The protocol type. The value is case-insensitive. Valid values: 
         #          
@@ -285,32 +285,32 @@ class RevokeSecurityGroupRequestPermissions(DaraModel):
         # - GRE.
         # - ALL: all protocols.
         self.ip_protocol = ip_protocol
-        # The destination IPv6 CIDR block. CIDR blocks and IPv6 address range are supported.
+        # The destination IPv6 CIDR block. CIDR blocks and IPv6 address ranges are supported.
         # 
-        # This parameter is used for quintuple rules. For more information, see [Security group quintuple rules](https://help.aliyun.com/document_detail/97439.html).
+        # This parameter is used to support quintuple rules. For more information, see [Security group quintuple rules](https://help.aliyun.com/document_detail/97439.html).
         # 
-        # > This parameter is valid only for VPC-type ECS instances that support IPv6. You cannot specify both this parameter and `DestCidrIp`.
+        # > This parameter is valid only for VPC-type ECS instances that support IPv6. You cannot specify this parameter and `DestCidrIp` in Settings at the same time.
         self.ipv_6dest_cidr_ip = ipv_6dest_cidr_ip
-        # The source IPv6 Classless Inter-Domain Routing (CIDR) block from which you want to revoke access permissions. CIDR format and IPv6 address range are supported.
+        # The source IPv6 Classless Inter-Domain Routing (CIDR) block from which you want to revoke access permissions. CIDR format and IPv6 format address ranges are supported.
         # 
-        # > This parameter is valid only for VPC-type ECS instances that support IPv6. You cannot specify both this parameter and `SourceCidrIp`.
+        # > This parameter is valid only for VPC-type ECS instances that support IPv6. You cannot specify this parameter and `SourceCidrIp` in Settings at the same time.
         self.ipv_6source_cidr_ip = ipv_6source_cidr_ip
-        # The network interface controller (NIC) type of the security group rule. For VPC-type security groups, you do not need to set the network type. The default value is intranet, and only intranet is supported.
+        # The network interface controller (NIC) type of the security group rule. For VPC-type security groups, you do not need to configure the network interface controller (NIC) type in Settings. The default value is intranet, and only intranet is supported.
         # 
-        # > The classic network feature has been taken offline. For details, see [Retirement notice](https://help.aliyun.com/document_detail/2833134.html). For classic network-type security group rules, valid values are:
+        # > The classic network feature has been offline. For details, see [Discontinuation notice](https://help.aliyun.com/document_detail/2833134.html). The network interface controller (NIC) type for classic network security group rules. Valid values:
         # > - internet: public network interface controller (NIC).
         # > - intranet: internal network interface controller (NIC).
         self.nic_type = nic_type
         # The access permissions. Valid values: 
         #          
         # - accept: Accepts access.
-        # - drop: Deny access without returning any denial information. The request appears to timeout or the connection cannot be established.
+        # - drop: Denies access and returns no deny information. The request appears to timeout or the connection cannot be established.
         # 
         # Default value: accept.
         self.policy = policy
-        # The range of destination ports that correspond to the transport layer protocol. Valid values:
+        # The range of destination ports for the specified protocol. Valid values:
         #          
-        # - TCP/UDP: Valid values are 1 to 65535. Separate the start port and the end port with a forward slash (/). Example: 1/200.
+        # - TCP/UDP: valid values are 1 to 65535. Separate the start port and the end port with a forward slash (/). Example: 1/200.
         # - ICMP: -1/-1.
         # - GRE: -1/-1.
         # - ALL: -1/-1.
@@ -327,15 +327,15 @@ class RevokeSecurityGroupRequestPermissions(DaraModel):
         # 
         # Default value: 1.
         self.priority = priority
-        # The source IPv4 Classless Inter-Domain Routing (CIDR) block from which you want to revoke access permissions. CIDR format and IPv4 address range are supported.
+        # The source IPv4 Classless Inter-Domain Routing (CIDR) block from which you want to revoke access permissions. CIDR format and IPv4 format address ranges are supported.
         self.source_cidr_ip = source_cidr_ip
         # The ID of the source security group from which you want to revoke access permissions.
         # 
-        # - Set at least one of `SourceGroupId`, `SourceCidrIp`, `Ipv6SourceCidrIp`, or `SourcePrefixListId`.
+        # - You must specify at least one of the following parameters in Settings: `SourceGroupId`, `SourceCidrIp`, `Ipv6SourceCidrIp`, or `SourcePrefixListId`.
         # 
-        # - If you specify `SourceGroupId` but do not specify the `SourceCidrIp` or `Ipv6SourceCidrIp` parameter, set NicType to intranet.
+        # - If `SourceGroupId` is specified but neither `SourceCidrIp` nor `Ipv6SourceCidrIp` is specified, the NicType parameter must be set to intranet.
         # 
-        # - If you specify both `SourceGroupId` and `SourceCidrIp`, `SourceCidrIp` takes precedence by default.
+        # - If both `SourceGroupId` and `SourceCidrIp` are specified, `SourceCidrIp` takes precedence by default.
         # 
         # Note:
         # 
@@ -345,28 +345,28 @@ class RevokeSecurityGroupRequestPermissions(DaraModel):
         self.source_group_id = source_group_id
         # The Alibaba Cloud account that owns the source security group when you revoke a cross-account authorization security group rule.
         # 
-        # - If neither `SourceGroupOwnerAccount` nor `SourceGroupOwnerId` is set, the access permissions for another security group within your account are revoked.
-        # - If the `SourceCidrIp` parameter is set, the `SourceGroupOwnerAccount` parameter is ignored.
+        # - If neither `SourceGroupOwnerAccount` nor `SourceGroupOwnerId` is specified in Settings, the rule is revoked for access permissions of another security group within your account.
+        # - If the `SourceCidrIp` parameter is specified, the `SourceGroupOwnerAccount` parameter is ignored.
         self.source_group_owner_account = source_group_owner_account
         # The ID of the Alibaba Cloud account that owns the source security group when you revoke a cross-account authorization security group rule.
         # 
-        # - If neither `SourceGroupOwnerId` nor `SourceGroupOwnerAccount` is set, the access permissions for another security group within your account are revoked.
-        # - If the `SourceCidrIp` parameter is set, the `SourceGroupOwnerId` parameter is ignored.
+        # - If neither `SourceGroupOwnerId` nor `SourceGroupOwnerAccount` is specified in Settings, the rule is revoked for access permissions of another security group within your account.
+        # - If the `SourceCidrIp` parameter is specified, the `SourceGroupOwnerId` parameter is ignored.
         self.source_group_owner_id = source_group_owner_id
-        # The range of source ports that correspond to the transport layer protocol. Valid values: 
+        # The range of source ports for the specified protocol. Valid values: 
         #          
-        # - TCP/UDP: Valid values are 1 to 65535. Separate the start port and the end port with a forward slash (/). Example: 1/200.
+        # - TCP/UDP: valid values are 1 to 65535. Separate the start port and the end port with a forward slash (/). Example: 1/200.
         # - ICMP: -1/-1.
         # - GRE: -1/-1.
         # - ALL: -1/-1.
         # 
-        # This parameter is used for quintuple rules. For more information, see [Security group quintuple rules](https://help.aliyun.com/document_detail/97439.html).
+        # This parameter is used to support quintuple rules. For more information, see [Security group quintuple rules](https://help.aliyun.com/document_detail/97439.html).
         self.source_port_range = source_port_range
         # The ID of the source prefix list from which you want to revoke access permissions. You can invoke [DescribePrefixLists](https://help.aliyun.com/document_detail/205046.html) to query available prefix list IDs.
         # 
         # Note:
         # 
-        # If you specify `SourceCidrIp`, `Ipv6SourceCidrIp`, or `SourceGroupId`, this parameter is ignored.
+        # If you specify one of `SourceCidrIp`, `Ipv6SourceCidrIp`, or `SourceGroupId`, this parameter is ignored.
         # 
         # For more information, see [Security group limits](~~25412#SecurityGroupQuota1~~).
         self.source_prefix_list_id = source_prefix_list_id

@@ -10,11 +10,11 @@ class ModifyInstanceClockOptionsResponseBody(DaraModel):
         request_id: str = None,
         task_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The ID of the modification task.
+        # The modification task ID.
         # 
-        # You can call the [DescribeTasks](https://help.aliyun.com/document_detail/25622.html) operation to query the modification results.
+        # You can call the [DescribeTasks](https://help.aliyun.com/document_detail/25622.html) operation to query the modification result.
         self.task_id = task_id
 
     def validate(self):

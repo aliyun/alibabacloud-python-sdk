@@ -10,9 +10,7 @@ class CreateForwardEntryResponseBody(DaraModel):
         forward_entry_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the forwarding entry.
         self.forward_entry_id = forward_entry_id
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):

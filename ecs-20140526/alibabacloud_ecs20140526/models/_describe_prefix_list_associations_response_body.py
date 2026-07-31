@@ -14,10 +14,10 @@ class DescribePrefixListAssociationsResponseBody(DaraModel):
         prefix_list_associations: main_models.DescribePrefixListAssociationsResponseBodyPrefixListAssociations = None,
         request_id: str = None,
     ):
-        # The query token that is returned in this call. If the return value is empty, no more data is returned.
+        # The pagination token returned in this call. If the return value is empty, no more data is available.
         self.next_token = next_token
         self.prefix_list_associations = prefix_list_associations
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

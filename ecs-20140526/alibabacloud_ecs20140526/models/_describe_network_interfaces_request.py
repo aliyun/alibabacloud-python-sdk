@@ -34,93 +34,49 @@ class DescribeNetworkInterfacesRequest(DaraModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
-        # The ID of the instance to which the ENI is attached.
+        # The instance ID of the instance to which the network interface controller (NIC) is attached.
         self.instance_id = instance_id
-        # An array that consists of the IPv6 address of the ENI. You can specify multiple IPv6 addresses. Valid values of N: 1 to 100.
+        # The IPv6 address of the network interface controller (NIC). N indicates that you can configure multiple IPv6 addresses. Valid values of N: 1 to 100.
         self.ipv_6address = ipv_6address
-        # The maximum number of entries to return on each page. Valid values: 10 to 500.
-        # 
-        # Default values:
-        # 
-        # - If this parameter is not specified or if this parameter is set to a value less than 10, the default value is 10.
-        # 
-        # - If this parameter is set to a value greater than 500, the default value is 500.
+        # The maximum number of entries per page for paging query. Valid values: 10 to 500.
         self.max_results = max_results
-        # An array that consists of the IDs of the ENIs. You specify multiple ENI IDs. Valid values of N: 1 to 100.
+        # The network interface controller (NIC) ID. Valid values of N: 1 to 100.
         self.network_interface_id = network_interface_id
-        # The name of the ENI.
+        # The name of the network interface controller (NIC). The name must be 2 to 128 characters in length and can contain characters under the Unicode letter categorization (including English letters, Chinese characters, and digits). It can also contain colons (:), underscores (_), periods (.), and hyphens (-).
         self.network_interface_name = network_interface_name
-        # The query token. Set the value to the `NextToken` value returned in the last call to this operation.
-        # 
-        # For more information about how to check the responses returned by this operation, see the preceding "Description" section.
+        # The pagination token. Set this parameter to the NextToken value returned in the previous API call.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number.
-        # 
-        # Pages start from page 1.
-        # 
-        # Default value: 1.
-        # 
-        # > This parameter will be removed in the future. We recommend that you use NextToken and MaxResults for a paged query.
+        # **[Deprecated]** Use MaxResults or NextToken for pagination instead.
         self.page_number = page_number
-        # The number of entries per page.
-        # 
-        # Valid values: 1 to 1000.
-        # 
-        # Default value: 10.
-        # 
-        # > This parameter will be removed in the future. We recommend that you use NextToken and MaxResults for a paged query.
+        # **[Deprecated]** Use MaxResults or NextToken for pagination instead.
         self.page_size = page_size
-        # The primary private IPv4 address of the ENI.
+        # The primary private IP address of the network interface controller (NIC).
         self.primary_ip_address = primary_ip_address
-        # An array that consists of the secondary private IPv4 addresses of the ENI. You can specify multiple secondary private IPv4 addresses. Valid values of N: 1 to 100.
+        # The secondary private IP address of the network interface controller (NIC). Valid values of N: 1 to 100.
         self.private_ip_address = private_ip_address
-        # The region ID of the ENI. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group to which the ENI belongs. If this parameter is specified to query resources, up to 1,000 resources that belong to the specified resource group can be returned.
-        # 
-        # > Resources in the default resource group are displayed in the response regardless of how this parameter is set.
+        # The resource group ID. When you use this parameter to filter resources, the resource count cannot exceed 1000.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the security group to which the secondary ENI belongs.
-        # 
-        # - To query the details of secondary ENIs based on the ID of a security group, specify this parameter.
-        # 
-        # - To query the details of primary ENIs based on the ID of a security group, call the [DescribeInstances](https://help.aliyun.com/document_detail/25506.html) operation and specify the `SecurityGroupId` parameter.
+        # The security group ID associated with the secondary ENI.
         self.security_group_id = security_group_id
-        # Specifies whether the user of the ENI is an Alibaba Cloud service or a distributor.
+        # Specifies whether the user of the network interface controller (NIC) is an Alibaba Cloud service or a Virtual Network Operator (VNO).
         self.service_managed = service_managed
-        # The state of the ENI. Valid values:
-        # 
-        # - Available: The ENI is available.
-        # 
-        # - Attaching: The ENI is being attached to an instance.
-        # 
-        # - InUse: The ENI is attached to an instance.
-        # 
-        # - Detaching: The ENI is being detached from an instance.
-        # 
-        # - Deleting: The ENI is being deleted.
-        # 
-        # This parameter is empty by default, which indicates that ENIs in all states are queried.
+        # The status of the network interface controller (NIC). Valid values:
         self.status = status
-        # The tags to use for query.
+        # The tags.
         self.tag = tag
-        # The type of the ENI. Valid values:
-        # 
-        # - Primary
-        # 
-        # - Secondary
-        # 
-        # This parameter is empty by default, which indicates that both primary and secondary ENIs are queried.
+        # The type of the network interface controller (NIC). Valid values:
         self.type = type
-        # The ID of the vSwitch with which the ENI is associated.
+        # The vSwitch ID of the network interface controller (NIC).
         self.v_switch_id = v_switch_id
-        # The ID of the virtual private cloud (VPC) to which the elastic network interface (ENI) belongs.
+        # The virtual private cloud (VPC) ID of the network interface controller (NIC).
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -289,11 +245,9 @@ class DescribeNetworkInterfacesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N of the ENI. Valid values of N: 1 to 20.
+        # The tag key of the network interface controller (NIC). Valid values of N: 1 to 20.
         self.key = key
-        # The value of tag N of the ENI. Valid values of N: 1 to 20.
-        # 
-        # If a single tag is specified to query ENIs, up to 1,000 ENIs that have this tag can be returned. If multiple tags are specified to query ENIs, up to 1,000 ENIs that have all these tags can be returned. To query more than 1,000 resources that have specified tags, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation.
+        # The tag value of the network interface controller (NIC). Valid values of N: 1 to 20.
         self.value = value
 
     def validate(self):

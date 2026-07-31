@@ -10,11 +10,11 @@ class DeletePlanMaintenanceWindowRequest(DaraModel):
         plan_window_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the maintenance window to delete.
+        # The ID of the O&M window to delete.
         # 
         # This parameter is required.
         self.plan_window_id = plan_window_id
-        # The ID of the region. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to retrieve the latest list of Alibaba Cloud regions.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id

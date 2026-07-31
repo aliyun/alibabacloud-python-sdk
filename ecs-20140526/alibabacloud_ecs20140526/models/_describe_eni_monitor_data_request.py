@@ -18,35 +18,32 @@ class DescribeEniMonitorDataRequest(DaraModel):
         resource_owner_id: int = None,
         start_time: str = None,
     ):
-        # The end of the time range to query. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. If the value of seconds (ss) is not 00, the time is rounded up to the next minute.
+        # The end of the time range to query. Specify the time in [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. If the value of seconds (ss) is not 00, the time is automatically rounded up to the next minute.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The secondary ENI ID. By default, all secondary ENIs that are bound to the specified instance are queried.
+        # The ID of the secondary ENI. By default, all secondary ENIs that are attached to the specified instance are queried.
         self.eni_id = eni_id
-        # The ID of the instance to which the secondary ENI is bound.
+        # The ID of the instance to which the secondary ENI is attached.
         # 
         # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The interval at which to retrieve the monitoring data. Unit: seconds. Default value: Month. Valid values:
+        # The interval at which to retrieve monitoring data. Unit: seconds. Valid values:
+        # - 60.
+        # - 600.
+        # - 3600.
         # 
-        # - 60
-        # 
-        # - 600
-        # 
-        # - 3600
-        # 
-        # Default: 60.
+        # Default value: 60.
         self.period = period
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The beginning of the time range to query. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. If the value of seconds (ss) is not 00, the time is rounded up to the next minute.
+        # The beginning of the time range to query. Specify the time in [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. If the value of seconds (ss) is not 00, the time is automatically rounded up to the next minute.
         # 
         # This parameter is required.
         self.start_time = start_time

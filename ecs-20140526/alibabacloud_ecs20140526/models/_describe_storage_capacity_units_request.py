@@ -24,43 +24,42 @@ class DescribeStorageCapacityUnitsRequest(DaraModel):
         storage_capacity_unit_id: List[str] = None,
         tag: List[main_models.DescribeStorageCapacityUnitsRequestTag] = None,
     ):
-        # The allocation type. Valid values:
+        # The allocate type. Valid values:
         # 
         # - Normal: queries SCUs that belong to the current Alibaba Cloud account.
-        # 
-        # - Shared: queries SCUs shared between the Alibaba Cloud account and RAM users.
+        # - Shared: queries SCUs that are shared between the Alibaba Cloud account and a Resource Access Management (RAM) user.
         # 
         # Default value: Normal.
         self.allocation_type = allocation_type
-        # The capacity of the SCU. Unit: GiB. Valid values: 20, 40, 100, 200, 500, 1024, 2048, 5120, 10240, 20480, and 51200.
+        # The capacity of the SCU. Unit: GiB. Valid values: {20, 40, 100, 200, 500, 1024, 2048, 5120, 10240, 20480, 51200}.
         self.capacity = capacity
-        # The name of the SCU. The name must be 2 to 128 characters in length. It must start with a letter but cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        # The name of the SCU. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of the page to return.
+        # The page number of the SCU list.
         # 
-        # Pages start from page 1.
+        # Minimum value: 1.
         # 
         # Default value: 1.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries per page for a paged query.
         # 
-        # Valid values: 1 to 100.
+        # Maximum value: 100.
         # 
         # Default value: 10.
         self.page_size = page_size
-        # The region ID of the SCU. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The region ID of the SCU. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The states of SCUs. The array is 1 to 4 in length.
+        # The statuses of SCUs. Array length: 1 to 4.
         self.status = status
-        # The IDs of the SCUs. You can specify 1 to 100 SCU IDs.
+        # The IDs of SCUs. Array length: 1 to 100.
         self.storage_capacity_unit_id = storage_capacity_unit_id
-        # The tags to add to the SCU. You can add up to 20 tags.
+        # The tags. Array length: 0 to 20.
         self.tag = tag
 
     def validate(self):
@@ -169,9 +168,9 @@ class DescribeStorageCapacityUnitsRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N to be added to the SCU.
+        # The tag key of the SCU.
         self.key = key
-        # The value of tag N to be added to the SCU.
+        # The tag value of the SCU.
         self.value = value
 
     def validate(self):

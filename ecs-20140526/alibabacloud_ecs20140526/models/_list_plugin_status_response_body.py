@@ -18,15 +18,15 @@ class ListPluginStatusResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.instance_plugin_status_set = instance_plugin_status_set
-        # The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results.
+        # The pagination token returned in this call.
         self.next_token = next_token
-        # The page number.
+        # The page number of the query result.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of records that match the query conditions.
         self.total_count = total_count
 
     def validate(self):

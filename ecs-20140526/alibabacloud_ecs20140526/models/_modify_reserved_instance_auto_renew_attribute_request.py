@@ -21,25 +21,34 @@ class ModifyReservedInstanceAutoRenewAttributeRequest(DaraModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The auto-renewal cycle.
+        # The auto-renewal epoch.
         # 
-        # Valid values: 1 and 3.
+        # <props="intl">Valid values: 1 and 3.
+        # 
+        # <props="china">
+        # 
+        # - If `PeriodUnit` is set to `Year`, valid values: 1, 3, and 5.
+        # 
+        # - If `PeriodUnit` is set to `Month`, valid values: 1.
         self.period = period
-        # The unit of the auto-renewal duration.
+        # The unit of the auto-renewal period.
         # 
-        # Valid values: Year and Month.
+        # <props="intl">Valid values: Year.
+        # 
+        # <props="china">Valid values: Month and Year.
+        # 
+        # <props="china">Default value: Month.
         self.period_unit = period_unit
-        # The region ID of the reserved instances. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The region ID of the reserved instances. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # Specifies whether to automatically renew the reserved instances. Valid values:
+        # Specifies whether to enable auto-renewal for the subscription reserved instances. Valid values:
         # 
-        # - AutoRenewal: automatically renews the reserved instances.
-        # 
-        # - Normal: manually renews the reserved instances.
+        # - AutoRenewal: enables auto-renewal.
+        # - Normal: enables manual renewal.
         self.renewal_status = renewal_status
-        # The IDs of the reserved instances.
+        # The reserved instance ID.
         self.reserved_instance_id = reserved_instance_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

@@ -27,7 +27,7 @@ class DescribeSnapshotLinksResponseBody(DaraModel):
         self.request_id = request_id
         self.snapshot_links = snapshot_links
         # The total number of snapshot chains.
-        # > When you use the `MaxResults` and `NextToken` parameters for a paged query, the returned `TotalCount` value is invalid. For paging, use `MaxResults` and `NextToken` instead.
+        # > When you use the `MaxResults` and `NextToken` parameters for a paged query, the returned `TotalCount` value is invalid. For paging, use `NextToken` and `MaxResults` instead.
         self.total_count = total_count
 
     def validate(self):

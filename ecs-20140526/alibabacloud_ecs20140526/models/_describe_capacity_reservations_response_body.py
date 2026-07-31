@@ -17,13 +17,13 @@ class DescribeCapacityReservationsResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.capacity_reservation_set = capacity_reservation_set
-        # The maximum number of entries returned per page.
+        # The maximum number of entries per page.
         self.max_results = max_results
-        # The token to retrieve the next page of results.
+        # The pagination token for the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of capacity reservations that match the query.
+        # The total number of entries that match the query conditions.
         self.total_count = total_count
 
     def validate(self):

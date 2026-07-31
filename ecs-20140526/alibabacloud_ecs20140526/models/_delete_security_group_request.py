@@ -16,13 +16,13 @@ class DeleteSecurityGroupRequest(DaraModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the security group. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The security group ID. You can call the [DescribeSecurityGroups](https://help.aliyun.com/document_detail/25556.html) operation to query the security group ID.
+        # The security group ID. You can call [DescribeSecurityGroups](https://help.aliyun.com/document_detail/25556.html) to query security group IDs.
         # 
         # This parameter is required.
         self.security_group_id = security_group_id

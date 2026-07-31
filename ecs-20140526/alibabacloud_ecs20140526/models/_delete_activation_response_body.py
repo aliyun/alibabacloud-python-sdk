@@ -11,7 +11,7 @@ class DeleteActivationResponseBody(DaraModel):
         activation: main_models.DeleteActivationResponseBodyActivation = None,
         request_id: str = None,
     ):
-        # Details about the activation code and its usage information.
+        # The information about the activation code and its usage.
         self.activation = activation
         # The request ID.
         self.request_id = request_id
@@ -57,11 +57,11 @@ class DeleteActivationResponseBodyActivation(DaraModel):
         registered_count: int = None,
         time_to_live_in_hours: int = None,
     ):
-        # The ID of the activation code.
+        # The activation code ID.
         self.activation_id = activation_id
-        # The time when the activation code was created.
+        # The creation time.
         self.creation_time = creation_time
-        # The number of instances that were deregistered.
+        # The number of deregistered instances.
         self.deregistered_count = deregistered_count
         # The description of the activation code.
         self.description = description
@@ -69,9 +69,9 @@ class DeleteActivationResponseBodyActivation(DaraModel):
         self.instance_count = instance_count
         # The default instance name prefix.
         self.instance_name = instance_name
-        # The IP addresses of the hosts that are allowed to use the activation code.
+        # The IP addresses of hosts that are allowed to use the activation code.
         self.ip_address_range = ip_address_range
-        # The number of instances that were registered.
+        # The number of registered instances.
         self.registered_count = registered_count
         # The validity period of the activation code. Unit: hours.
         self.time_to_live_in_hours = time_to_live_in_hours

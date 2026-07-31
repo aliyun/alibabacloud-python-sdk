@@ -15,23 +15,23 @@ class ModifyInstanceAutoReleaseTimeRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The automatic release time of the instance. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
+        # The automatic release time. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         # 
-        # - If the value of seconds (`ss`) is not `00`, the time is automatically rounded to the nearest minute based on the value of minutes (`mm`).
+        # - If the value of seconds (`ss`) is not `00`, the time is automatically set to the start of the current minute (`mm`).
         # 
-        # - The release time must be at least 30 minutes later than the current time.
+        # - The earliest release time must be at least 30 minutes after the current time.
         # 
-        # - The release time must be at most three years later than the current time.
+        # - The latest release time cannot be more than three years from the current time.
         # 
-        # If `AutoReleaseTime` is not configured, the automatic release feature is disabled, and the instance will not be automatically released.
+        # If you do not specify the AutoReleaseTime parameter, the automatic release feature is canceled and the ECS instance is no longer automatically released.
         self.auto_release_time = auto_release_time
-        # The ID of the instance.
+        # The instance ID of the ECS instance for which to configure automatic release.
         # 
         # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The region ID of the instance. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

@@ -23,7 +23,7 @@ class ModifySecurityGroupPolicyRequest(DaraModel):
         # - Accept: intra-group connectivity
         # - Drop: internal isolation
         # 
-        # >The value is case-insensitive.
+        # > The value is case-insensitive.
         # 
         # This parameter is required.
         self.inner_access_policy = inner_access_policy

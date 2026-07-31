@@ -16,7 +16,7 @@ class DescribeReservedInstancesResponseBody(DaraModel):
         reserved_instances: main_models.DescribeReservedInstancesResponseBodyReservedInstances = None,
         total_count: int = None,
     ):
-        # The page number.
+        # The page number of the reserved instance list.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size

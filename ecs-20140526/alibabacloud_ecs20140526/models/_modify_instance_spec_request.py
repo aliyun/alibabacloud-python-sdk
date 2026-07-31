@@ -29,53 +29,25 @@ class ModifyInstanceSpecRequest(DaraModel):
     ):
         self.system_disk = system_disk
         self.temporary = temporary
-        # Specifies whether cross-cluster upgrade of instance types is supported.
-        # - true: supported.
-        # - false: not supported.
-        # 
-        # Default value: false.
-        # 
-        # If you set the `AllowMigrateAcrossZone` parameter to true and upgrade the Elastic Compute Service instance based on the response, note the following:
-        # 
-        # Classic network type instances:
-        #     
-        # * For [retired instance types](https://help.aliyun.com/document_detail/55263.html), when a non-I/O optimized instance is changed to an I/O optimized instance, the private IP address, disk device names, and software authorization codes of the instance change. For Linux instances, basic disks (`cloud`) are identified as **xvda** or **xvdb**, and ultra disks (`cloud_efficiency`) and standard SSDs (`cloud_ssd`) are identified as **vda** or **vdb**.
-        #     
-        # * For [instance families that are available for purchase](https://help.aliyun.com/document_detail/25378.html), the private IP address of the instance changes.
-        # 
-        # VPC-type instances: For [retired instance types](https://help.aliyun.com/document_detail/55263.html), when a non-I/O optimized instance is changed to an I/O optimized instance, the disk device names and software authorization codes of the instance change. For Linux instances, basic disks (`cloud`) are identified as **xvda** or **xvdb**, and ultra disks (`cloud_efficiency`) and standard SSDs (`cloud_ssd`) are identified as **vda** or **vdb**.
+        # Specifies whether cross-cluster instance type upgrades are supported.
         self.allow_migrate_across_zone = allow_migrate_across_zone
         # Specifies whether to submit an asynchronous request. Valid values:
-        # - true: The request is submitted asynchronously.
-        # - false: The request is not submitted asynchronously.
-        # 
-        # Default value: false.
         self.async_ = async_
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. The **ClientToken** value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # > This parameter is not publicly available.
         self.disk = disk
         # Specifies whether to perform only a dry run. Valid values:
-        # 
-        # - true: performs only a dry run. The instance type and public bandwidth are not modified. The system checks whether the required parameters are specified, whether the request format is valid, whether business restrictions are met, and whether ECS resources are sufficient. If the check fails, the corresponding error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
-        # - false (default): performs a dry run and sends the request. If the check succeeds, the instance type and public bandwidth are modified.
         self.dry_run = dry_run
         # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The target instance type. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html). You can also invoke [DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html) to query the most recent instance type list.
+        # The target instance type of the instance. For more information, see [Instance family](https://help.aliyun.com/document_detail/25378.html). You can also invoke [DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html) to query the most recent instance type list.
         self.instance_type = instance_type
-        # The maximum inbound public bandwidth. Unit: Mbit/s. Valid values:
-        # 
-        # - If the purchased outbound public bandwidth is less than or equal to 10 Mbit/s: 1 to 10. Default value: 10.
-        # - If the purchased outbound public bandwidth is greater than 10 Mbit/s: 1 to the value of `InternetMaxBandwidthOut`. Default value: the value of `InternetMaxBandwidthOut`.
-        # 
-        # > In **pay-by-traffic** mode, the peak inbound and outbound bandwidths are upper limits and are not guaranteed. When resource contention occurs, the peak bandwidths may be throttled. If your workloads require guaranteed bandwidth, use the **pay-by-bandwidth** mode.
+        # The maximum inbound public bandwidth. Unit: Mbit/s (Megabit per second). Valid values:
         self.internet_max_bandwidth_in = internet_max_bandwidth_in
-        # The maximum outbound public bandwidth. Unit: Mbit/s. Valid values: 0 to 100.
-        # 
-        # > In **pay-by-traffic** mode, the peak inbound and outbound bandwidths are upper limits and are not guaranteed. When resource contention occurs, the peak bandwidths may be throttled. If your workloads require guaranteed bandwidth, use the **pay-by-bandwidth** mode.
+        # The maximum outbound public bandwidth. Unit: Mbit/s (Megabit per second). Valid values: 0 to 100.
         self.internet_max_bandwidth_out = internet_max_bandwidth_out
         # > This parameter is not publicly available.
         self.modify_mode = modify_mode
@@ -306,12 +278,6 @@ class ModifyInstanceSpecRequestSystemDisk(DaraModel):
         category: str = None,
     ):
         # The new system disk category. Valid values:
-        # 
-        # - cloud_efficiency: ultra disk
-        # 
-        # - cloud_ssd: standard SSD
-        # 
-        # > This parameter is valid only when you upgrade from a [retired instance type](https://help.aliyun.com/document_detail/55263.html) to an [instance family that is available for purchase](https://help.aliyun.com/document_detail/25378.html) and change a non-I/O optimized instance to an I/O optimized instance.
         self.category = category
 
     def validate(self):

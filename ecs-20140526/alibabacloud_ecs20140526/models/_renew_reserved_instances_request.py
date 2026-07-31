@@ -21,37 +21,58 @@ class RenewReservedInstancesRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # Specifies whether to enable auto-renewal for the reserved instance. Valid values:
+        # Specifies whether to enable auto-renewal.
         # 
-        # - true
-        # 
-        # - false
+        # - true: enables auto-renewal.
+        # - false: does not enable auto-renewal.
         # 
         # Default value: false.
         self.auto_renew = auto_renew
-        # The auto-renewal duration. Unit: months. This parameter takes effect only when AutoRenew is set to true.
+        # The auto-renewal period, in months. This parameter takes effect only when AutoRenew is set to true.
         # 
-        # Valid values: 12 and 36. Default value: 12.
+        # <props="intl">Valid values: 12 and 36. Default value: 12.
+        # 
+        # <props="china">
+        # 
+        # - If PeriodUnit is set to Month, valid values are 1, 12, 36, and 60. Default value: 1.
+        # 
+        # - If PeriodUnit is set to Year, valid values are 12, 36, and 60. Default value: 12.
         self.auto_renew_period = auto_renew_period
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **token** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. The **ClientToken** value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The validity period of the reserved instance.
+        # The duration of the reserved instance.
         # 
-        # Valid values: 1 and 3.
+        # <props="intl">Valid values: 1 and 3.
+        # 
+        # 
+        # <props="china">
+        # 
+        # - If PeriodUnit is set to Year, valid values are 1, 3, and 5.
+        # 
+        # - If PeriodUnit is set to Month, the valid value is 1.
+        # 
+        # 
+        # 
         # 
         # Default value: 1.
         self.period = period
-        # The unit of the validity period of the reserved instance.
+        # The unit of the duration of the reserved instance.
         # 
-        # Set the value to Year.
+        # <props="intl">Valid values: Year.
+        # 
+        # <props="intl">Default value: Year.
+        # 
+        # <props="china">Valid values: Year and Month.
+        # 
+        # <props="china">Default value: Month.
         self.period_unit = period_unit
         # The region ID of the reserved instance.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         self.region_id = region_id
-        # The IDs of the reserved instances.
+        # The reserved instance ID.
         self.reserved_instance_id = reserved_instance_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

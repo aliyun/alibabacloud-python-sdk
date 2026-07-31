@@ -22,25 +22,25 @@ class ModifyPortRangeListRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The entries that you want to add or modify for the port list.
+        # The entries to add or modify in the port range list.
         self.add_entry = add_entry
         # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
-        # The description of the port list. The description must be 2 to 256 characters in length and cannot start with http\\:// or https\\://.
+        # The description of the port range list. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         self.description = description
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the port list.
+        # The ID of the port range list to modify.
         # 
         # This parameter is required.
         self.port_range_list_id = port_range_list_id
-        # The name of the port list. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http\\://, https\\://, com.aliyun, or com.alibabacloud. The name can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
+        # The name of the port range list. The name must be 2 to 128 characters in length and must start with a letter or a Chinese character. It cannot start with http://, https://, com.aliyun, or com.alibabacloud. It can contain letters, Chinese characters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
         self.port_range_list_name = port_range_list_name
-        # The region ID of the port list. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The region ID of the port range list. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The entries that you want to remove from the port list.
+        # The entries to delete from the port range list.
         self.remove_entry = remove_entry
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -147,11 +147,11 @@ class ModifyPortRangeListRequestRemoveEntry(DaraModel):
         self,
         port_range: str = None,
     ):
-        # The port range in entry N. Valid values of N: 0 to 200. Take note of the following limits:
+        # The port range. Valid values of N: 0 to 200. Settings:
         # 
-        # - `PortRange` in different entries cannot be duplicated.
+        # - You cannot specify duplicate values for `PortRange`.
         # 
-        # - The value of this parameter cannot be the same as the value of `AddEntry.N.PortRange`.
+        # - The value cannot be the same as the value of the `AddEntry.N.PortRange` parameter.
         self.port_range = port_range
 
     def validate(self):
@@ -180,15 +180,15 @@ class ModifyPortRangeListRequestAddEntry(DaraModel):
         description: str = None,
         port_range: str = None,
     ):
-        # The description of the port range in entry N. The description must be 2 to 32 characters in length and cannot start with http\\:// or https\\://. Valid values of N: 0 to 200.
+        # The description of the port range. The description must be 2 to 32 characters in length and cannot start with http:// or https://. Valid values of N: 0 to 200.
         self.description = description
-        # The port range in entry N. Valid values of N: 0 to 200. Take note of the following limits:
+        # The port range. Valid values of N: 0 to 200. Settings:
         # 
-        # - The total number of entries in the port list cannot exceed the `MaxEntries` value.
+        # - The number of entries cannot exceed the maximum entry capacity (`MaxEntries`).
         # 
-        # - `PortRange` in different entries cannot be duplicated.
+        # - You cannot specify duplicate values for `PortRange`.
         # 
-        # - The value of this parameter cannot be the same as the value of `RemoveEntry.N.PortRange`.
+        # - The value cannot be the same as the value of the `RemoveEntry.N.PortRange` parameter.
         self.port_range = port_range
 
     def validate(self):

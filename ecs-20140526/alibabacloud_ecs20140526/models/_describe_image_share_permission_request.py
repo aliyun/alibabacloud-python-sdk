@@ -22,13 +22,13 @@ class DescribeImageSharePermissionRequest(DaraModel):
         self.image_id = image_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number of the returned results.
+        # The page number of the query results to return.
         # 
         # Minimum value: 1.
         # 
         # Default value: 1.
         self.page_number = page_number
-        # The number of entries per page in the returned results.
+        # The number of entries per page in the query results.
         # 
         # Maximum value: 100.
         # 

@@ -13,7 +13,7 @@ class CreateKeyPairResponseBody(DaraModel):
         private_key_body: str = None,
         request_id: str = None,
     ):
-        # The fingerprint of the key pair. The public key fingerprint format is defined by RFC 4716 and uses the MD5 message digest algorithm. For more information, see [RFC 4716](https://tools.ietf.org/html/rfc4716).
+        # The fingerprint of the key pair. The fingerprint uses the MD5 message-digest algorithm based on the public key fingerprint format defined in RFC 4716. For more information, see [RFC4716](https://tools.ietf.org/html/rfc4716).
         self.key_pair_finger_print = key_pair_finger_print
         # The ID of the SSH key pair.
         self.key_pair_id = key_pair_id

@@ -18,17 +18,17 @@ class DescribeElasticityAssuranceInstancesRequest(DaraModel):
         resource_owner_id: int = None,
     ):
         self.private_pool_options = private_pool_options
-        # The number of entries to return on each page.
+        # The maximum number of entries per page for a paging query.
         # 
         # Maximum value: 100.
         # 
         # Default value: 10.
         self.max_results = max_results
-        # The token used to start the query. Set the value to the NextToken value obtained from the response to the preceding request.
+        # The pagination token for the elasticity assurance query. Obtain the value from the result of the previous request.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the elasticity assurance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The region ID of the elasticity assurance. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id

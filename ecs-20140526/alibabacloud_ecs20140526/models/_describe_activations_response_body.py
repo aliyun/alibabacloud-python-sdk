@@ -19,11 +19,11 @@ class DescribeActivationsResponseBody(DaraModel):
     ):
         # The activation codes and their usage information.
         self.activation_list = activation_list
-        # A pagination token. It can be used in the next request to retrieve a new page of results.
+        # The pagination token returned in this response.
         self.next_token = next_token
         # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries per page for paging.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
@@ -104,11 +104,11 @@ class DescribeActivationsResponseBodyActivationList(DaraModel):
         tags: List[main_models.DescribeActivationsResponseBodyActivationListTags] = None,
         time_to_live_in_hours: int = None,
     ):
-        # The ID of the activation code.
+        # The activation code ID.
         self.activation_id = activation_id
-        # The time when the activation code was created.
+        # The creation time.
         self.creation_time = creation_time
-        # The number of instances that were deregistered.
+        # The number of deregistered instances.
         self.deregistered_count = deregistered_count
         # The description of the activation code.
         self.description = description
@@ -120,11 +120,11 @@ class DescribeActivationsResponseBodyActivationList(DaraModel):
         self.instance_name = instance_name
         # The IP addresses of hosts that are allowed to use the activation code.
         self.ip_address_range = ip_address_range
-        # The number of instances that were registered.
+        # The number of registered instances.
         self.registered_count = registered_count
         # The ID of the resource group to which the activation code belongs.
         self.resource_group_id = resource_group_id
-        # The tags of the activation code.
+        # The tags of the managed instance activation code.
         self.tags = tags
         # The validity period of the activation code. Unit: hours.
         self.time_to_live_in_hours = time_to_live_in_hours
@@ -229,9 +229,9 @@ class DescribeActivationsResponseBodyActivationListTags(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag key of the activation code.
+        # The tag key of the managed instance activation code.
         self.tag_key = tag_key
-        # The tag value of the activation code.
+        # The tag value of the managed instance activation code.
         self.tag_value = tag_value
 
     def validate(self):

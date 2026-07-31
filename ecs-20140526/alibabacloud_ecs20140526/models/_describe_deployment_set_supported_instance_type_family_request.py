@@ -16,7 +16,7 @@ class DescribeDeploymentSetSupportedInstanceTypeFamilyRequest(DaraModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The region ID of the deployment set. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -24,11 +24,11 @@ class DescribeDeploymentSetSupportedInstanceTypeFamilyRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The deployment strategy. Valid values:
         # 
-        # - Availability: high availability strategy
+        # - Availability: high availability strategy.
         # 
-        # - AvailabilityGroup: high availability group strategy
+        # - AvailabilityGroup: high availability strategy for deployment set groups.
         # 
-        # - LowLatency: low latency strategy
+        # - LowLatency: low network latency strategy.
         # 
         # Default value: Availability.
         self.strategy = strategy

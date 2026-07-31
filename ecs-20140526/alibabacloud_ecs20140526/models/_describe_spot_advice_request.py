@@ -25,45 +25,40 @@ class DescribeSpotAdviceRequest(DaraModel):
         resource_owner_id: int = None,
         zone_id: str = None,
     ):
-        # The number of vCPUs of the instance type. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html).
+        # The number of vCPUs of the instance type. For more information, see [Instance family](https://help.aliyun.com/document_detail/25378.html).
         self.cores = cores
-        # The number of GPUs that a GPU-accelerated instance has. For information about the valid values, see [GPU-accelerated compute optimized instance types](https://help.aliyun.com/document_detail/108496.html).
+        # The number of GPUs of the GPU-accelerated instance. For more information, see [Overview of GPU-accelerated instances](https://help.aliyun.com/document_detail/108496.html).
         self.gpu_amount = gpu_amount
         # The GPU type. Valid values:
         # 
         # - NVIDIA P4
-        # 
         # - NVIDIA T4
-        # 
-        # - NVIDIA P100
-        # 
+        # - NVIDIA P100 
         # - NVIDIA V100
         # 
-        # This parameter is left empty by default, which indicates that all GPU types are queried. For more information, see [GPU-accelerated compute-optimized and vGPU-accelerated instance families](https://help.aliyun.com/document_detail/108496.html).
+        # Default value: null, which indicates that all types are queried. For more information, see [Overview of GPU-accelerated instances](https://help.aliyun.com/document_detail/108496.html).
         self.gpu_spec = gpu_spec
         # The level of the instance family. Valid values:
         # 
-        # - EntryLevel.
+        # - EntryLevel: entry level.
+        # - EnterpriseLevel: enterprise level.
+        # - CreditEntryLevel: credit-based entry level. For more information, see [Burstable instances](https://help.aliyun.com/document_detail/59977.html).
         # 
-        # - EnterpriseLevel.
-        # 
-        # - CreditEntryLevel. For more information, see [Overview of burstable instances](https://help.aliyun.com/document_detail/59977.html).
-        # 
-        # This parameter is left empty by default, which indicates that instance families at all levels are queried.
+        # Default value: null, which indicates that all levels are queried.
         self.instance_family_level = instance_family_level
-        # The instance family. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html).
+        # The instance family. For more information, see [Instance family](https://help.aliyun.com/document_detail/25378.html).
         self.instance_type_family = instance_type_family
-        # The instance types. You can specify up to 10 instance types.
+        # The list of instance types. You can specify up to 10 instance types.
         self.instance_types = instance_types
-        # The memory size of the instance type. Unit: GiB. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html).
+        # The memory size of the instance type. Unit: GiB. For more information, see [Instance family](https://help.aliyun.com/document_detail/25378.html).
         self.memory = memory
-        # The minimum number of vCPUs of the instance type. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html).
+        # The minimum number of vCPUs of the instance type. For more information, see [Instance family](https://help.aliyun.com/document_detail/25378.html).
         self.min_cores = min_cores
-        # The minimum memory size of the instance type. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html).
+        # The minimum memory size of the instance type. For more information, see [Instance family](https://help.aliyun.com/document_detail/25378.html).
         self.min_memory = min_memory
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -71,7 +66,7 @@ class DescribeSpotAdviceRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The zone ID.
         # 
-        # This parameter is left empty by default, which indicates that all zones in the specified region are queried.
+        # Default value: null, which indicates that all zones in the specified region are queried.
         self.zone_id = zone_id
 
     def validate(self):

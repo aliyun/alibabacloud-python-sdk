@@ -28,47 +28,36 @@ class DescribeInstancesFullStatusRequest(DaraModel):
     ):
         self.event_publish_time = event_publish_time
         self.not_before = not_before
-        # The IDs of the system events. You can specify up to 100 event IDs in a single request.
+        # The list of event IDs. You can specify up to 100 event IDs.
         self.event_id = event_id
-        # The type of the system event. This parameter is valid only when InstanceEventType.N is not specified. Valid values:
+        # The type of a system event. The EventType parameter takes effect only when InstanceEventType.N is not specified. Valid values: 
         # 
-        # - SystemMaintenance.Reboot: The instance is restarted due to system maintenance.
-        # 
+        # - SystemMaintenance.Reboot: The instance is restarted due to system maintenance. 
         # - SystemFailure.Reboot: The instance is restarted due to a system failure.
-        # 
         # - InstanceFailure.Reboot: The instance is restarted due to an instance failure.
-        # 
         # - InstanceExpiration.Stop: The subscription instance is stopped due to expiration.
-        # 
         # - InstanceExpiration.Delete: The subscription instance is released due to expiration.
-        # 
         # - AccountUnbalanced.Stop: The pay-as-you-go instance is stopped due to an overdue payment.
-        # 
         # - AccountUnbalanced.Delete: The pay-as-you-go instance is released due to an overdue payment.
         self.event_type = event_type
-        # The health status of the instance. Valid values:
+        # The health status of the instance. Valid values: 
         # 
-        # - Impaired
+        # - Impaired: The service is impaired. 
+        # - Warning: The instance performance may be degraded due to maintenance.
+        # - Maintaining: The instance is under maintenance.
+        # - Initializing: The instance is being initialized. 
+        # - InsufficientData: The data is insufficient. 
+        # - NotApplicable: Not applicable.
         # 
-        # - Warning: The instance performance may be degraded due to maintenance or technical issues.
-        # 
-        # - Maintaining
-        # 
-        # - Initializing
-        # 
-        # - InsufficientData
-        # 
-        # - NotApplicable
-        # 
-        # All the values are case-sensitive.
+        # The values are case-sensitive.
         self.health_status = health_status
-        # The types of system events. You can specify up to 30 event types in a single request.
+        # The list of instance system event types. You can specify up to 30 instance event types.
         self.instance_event_type = instance_event_type
-        # The IDs of the instances. You can specify up to 100 instance IDs in a single request.
+        # The list of instance IDs. You can specify up to 100 instance IDs.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number. The value must be a positive integer.
+        # The page number of the results. Valid values: positive integers.
         # 
         # Default value: 1.
         self.page_number = page_number
@@ -76,19 +65,16 @@ class DescribeInstancesFullStatusRequest(DaraModel):
         # 
         # Default value: 10.
         self.page_size = page_size
-        # The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The region ID of the instance. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The lifecycle status of the instance. Valid values:
-        # 
-        # - Starting
-        # 
-        # - Running
-        # 
-        # - Stopped
+        # The lifecycle status of the instance. Valid values: 
+        # - Starting: The instance is being started.
+        # - Running: The instance is running.
+        # - Stopped: The instance is stopped.
         self.status = status
 
     def validate(self):
@@ -206,9 +192,9 @@ class DescribeInstancesFullStatusRequestNotBefore(DaraModel):
         end: str = None,
         start: str = None,
     ):
-        # The end of the time range during which O\\&M tasks related to scheduled system events are executed. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # The end of the time range during which the events are scheduled to execute. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.end = end
-        # The beginning of the time range during which O\\&M tasks related to scheduled system events are executed. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # The start of the time range during which the events are scheduled to execute. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.start = start
 
     def validate(self):
@@ -243,9 +229,9 @@ class DescribeInstancesFullStatusRequestEventPublishTime(DaraModel):
         end: str = None,
         start: str = None,
     ):
-        # The end of the time range during which system events are published. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # The end of the time range during which the events are published. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.end = end
-        # The beginning of the time range during which system events are published. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # The start of the time range during which the events are published. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.start = start
 
     def validate(self):

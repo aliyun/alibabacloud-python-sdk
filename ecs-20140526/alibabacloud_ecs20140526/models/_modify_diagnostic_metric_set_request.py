@@ -18,15 +18,15 @@ class ModifyDiagnosticMetricSetRequest(DaraModel):
     ):
         # The description of the diagnostic metric set.
         self.description = description
-        # The IDs of diagnostic metrics.
+        # The list of diagnostic metrics.
         self.metric_ids = metric_ids
-        # The IDs of the diagnostic metric sets.
+        # The ID of the diagnostic metric set.
         # 
         # This parameter is required.
         self.metric_set_id = metric_set_id
         # The name of the diagnostic metric set.
         self.metric_set_name = metric_set_name
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id

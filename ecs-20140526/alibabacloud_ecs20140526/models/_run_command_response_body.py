@@ -11,11 +11,11 @@ class RunCommandResponseBody(DaraModel):
         invoke_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the command.
+        # The command ID.
         self.command_id = command_id
-        # The ID of the command execution.
+        # The command execution ID.
         self.invoke_id = invoke_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

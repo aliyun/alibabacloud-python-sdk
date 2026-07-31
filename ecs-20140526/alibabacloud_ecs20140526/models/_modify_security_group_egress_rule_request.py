@@ -40,15 +40,15 @@ class ModifySecurityGroupEgressRuleRequest(DaraModel):
         # 
         # Default value: null.
         self.dest_cidr_ip = dest_cidr_ip
-        # The ID of the destination security group to which you want to grant access permissions. Specify at least one of `DestGroupId` and `DestCidrIp`.
+        # The ID of the destination security group for which you want to configure access permissions. Set at least one of `DestGroupId` and `DestCidrIp`.
         # 
-        # - Specify at least one of DestGroupId, DestCidrIp, Ipv6DestCidrIp, and DestPrefixListId.
-        # - If DestGroupId is specified but DestCidrIp is not specified, the NicType parameter can only be set to intranet.
-        # - If both DestGroupId and DestCidrIp are specified, DestCidrIp takes precedence.
+        # - Set at least one of DestGroupId, DestCidrIp, Ipv6DestCidrIp, and DestPrefixListId.
+        # - If DestGroupId is specified but DestCidrIp is not specified, the NicType parameter can be set only to intranet.
+        # - If both DestGroupId and DestCidrIp are specified, DestCidrIp takes precedence by default.
         self.dest_group_id = dest_group_id
-        # The Alibaba Cloud account that owns the destination security group when you set a cross-account security group rule.
+        # The Alibaba Cloud account that manages the destination security group when you set a security group rule across accounts.
         self.dest_group_owner_account = dest_group_owner_account
-        # The ID of the Alibaba Cloud account that owns the destination security group when you set a cross-account security group rule.
+        # The ID of the Alibaba Cloud account that manages the destination security group when you set a security group rule across accounts.
         self.dest_group_owner_id = dest_group_owner_id
         # The ID of the destination prefix list. You can call [DescribePrefixLists](https://help.aliyun.com/document_detail/205046.html) to query available prefix list IDs.
         # 
@@ -72,17 +72,17 @@ class ModifySecurityGroupEgressRuleRequest(DaraModel):
         self.ip_protocol = ip_protocol
         # The destination IPv6 Classless Inter-Domain Routing (CIDR) block. CIDR format and IPv6 format IP address range are supported.
         # 
-        # > Only VPC-type IP addresses are supported. This parameter and `DestCidrIp` cannot be specified at the same time. Settings for both parameters simultaneously are not allowed.
+        # > Only VPC-type IP addresses are supported. This parameter and `DestCidrIp` cannot be specified at the same time. Settings for this parameter and `DestCidrIp` are mutually exclusive.
         # 
         # Default value: null.
         self.ipv_6dest_cidr_ip = ipv_6dest_cidr_ip
         # The source IPv6 Classless Inter-Domain Routing (CIDR) block. CIDR format and IPv6 format IP address range are supported.
         # 
-        # > Only VPC-type IP addresses are supported. This parameter and `SourceCidrIp` cannot be specified at the same time. Settings for both parameters simultaneously are not allowed.
+        # > Only VPC-type IP addresses are supported. Settings for this parameter and `SourceCidrIp` are mutually exclusive.
         # 
         # Default value: null.
         self.ipv_6source_cidr_ip = ipv_6source_cidr_ip
-        # The network interface type.
+        # The network interface controller (NIC) type.
         # 
         # > When you modify a rule by specifying the security group rule ID, this parameter cannot be modified. To make such a change, add a new rule and then delete the current rule.
         self.nic_type = nic_type
@@ -123,7 +123,7 @@ class ModifySecurityGroupEgressRuleRequest(DaraModel):
         # 
         # This parameter is required.
         self.security_group_id = security_group_id
-        # The security group rule ID. You can call [DescribeSecurityGroupAttribute](https://help.aliyun.com/document_detail/2679845.html) to query the security group rule ID.
+        # The security group rule ID. You can call [DescribeSecurityGroupAttribute](https://help.aliyun.com/document_detail/2679845.html) to query security group rule IDs.
         self.security_group_rule_id = security_group_rule_id
         # The source IPv4 Classless Inter-Domain Routing (CIDR) block. CIDR format and IPv4 format IP address range are supported.
         # 

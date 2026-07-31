@@ -16,29 +16,27 @@ class DescribeInstanceMonitorDataRequest(DaraModel):
         resource_owner_id: int = None,
         start_time: str = None,
     ):
-        # The end of the time range to query. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. If the value of seconds (`ss`) is not `00`, the time is rounded up to the next minute.
+        # The end of the time range to query. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. If the value of seconds (`ss`) is not `00`, the time is automatically rounded up to the next minute.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The instance ID.
+        # The instance ID of the instance to query.
         # 
         # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The interval at which to retrieve monitoring data. Unit: seconds. Valid values:
+        # The interval at which to retrieve monitoring data. Unit: seconds. Valid values: 
         # 
-        # - 60
-        # 
-        # - 600
-        # 
-        # - 3600
+        # - 60.
+        # - 600.
+        # - 3600.
         # 
         # Default value: 60.
         self.period = period
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The beginning of the time range to query. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. If the value of seconds (`ss`) is not `00`, the time is rounded up to the next minute.
+        # The beginning of the time range to query. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. If the value of seconds (`ss`) is not `00`, the time is automatically rounded up to the next minute.
         # 
         # This parameter is required.
         self.start_time = start_time

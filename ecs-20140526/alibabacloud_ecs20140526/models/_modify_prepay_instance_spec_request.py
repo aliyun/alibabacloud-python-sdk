@@ -29,21 +29,13 @@ class ModifyPrepayInstanceSpecRequest(DaraModel):
         resource_owner_id: int = None,
     ):
         self.system_disk = system_disk
-        # Specifies whether to automatically complete the payment when you upgrade the instance type. Valid values:
-        # 
-        # - true: The payment is automatically completed.
-        # - false: Only an order is created. No payment is made.
-        # 
-        # Default value: true.
-        # > - If automatic payment is enabled, make sure that your payment method has a sufficient balance. Otherwise, an abnormal order is generated, and you can only cancel the order.
-        # > - If your payment method balance is insufficient, you can set `AutoPay` to `false` to generate an unpaid order. Then, you can logon to the ECS console to pay for the order.
-        # > - When `OperatorType` is set to `downgrade`, the `AutoPay` parameter is ignored.
+        # Specifies whether automatic payment is enabled when you upgrade the instance type. Valid values:
         self.auto_pay = auto_pay
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
-        # > This parameter is not publicly available.
+        # >This parameter is not publicly available.
         self.disk = disk
-        # The end time of the temporary instance type change. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
+        # The end time of the temporary specification change. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
         self.end_time = end_time
         # The instance ID.
         # 
@@ -53,39 +45,17 @@ class ModifyPrepayInstanceSpecRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_type = instance_type
-        # Specifies whether to support cross-cluster instance type changes. Valid values:
-        # - true: supported.
-        # - false: not supported.
-        # 
-        # Default value: false.
-        # 
-        # When the `MigrateAcrossZone` parameter is set to `true`, take note of the following items after you perform the optimization on the Elastic Compute Service instance based on the response:
-        # 
-        # VPC-type instances: For [retired instance types](https://help.aliyun.com/document_detail/55263.html), when a non-I/O optimized instance is changed to an I/O optimized instance, the disk device names and software authorization codes of the server change. For Linux instances, basic disks (cloud) are identified as xvda or xvdb. Ultra disks (cloud_efficiency) and standard SSDs (cloud_ssd) are identified as vda or vdb.
+        # Specifies whether cross-cluster instance type upgrades are supported. Valid values:
         self.migrate_across_zone = migrate_across_zone
-        # > This parameter is not publicly available.
+        # >This parameter is not publicly available.
         self.modify_mode = modify_mode
         # The type of the operation. Valid values:
-        # > This parameter is optional. The system can automatically determine whether the operation is an upgrade or a downgrade. If you upload this parameter, follow the rules below.
-        # 
-        # - upgrade: upgrades the instance type. Make sure that your account payment method has a sufficient balance.
-        # 
-        # - downgrade: decrease the quota of the instance type. When the instance type specified by `InstanceType` is lower than the current instance type, set `OperatorType` to `downgrade`.
-        # 
-        # > For precautions about upgrading or downgrading instance types, see the operation description section above.
         self.operator_type = operator_type
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The restart time of the instance. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
         self.reboot_time = reboot_time
-        # Specifies whether to immediately restart the instance after the instance type change is complete. Valid values:
-        # 
-        # - true: The instance is immediately restarted.
-        # - false: The instance is not restarted.
-        # 
-        # Default value: false.
-        # 
-        # > If the instance is in the **Stopped** state, the instance remains stopped even if you set `RebootWhenFinished` to `true`. No operation is performed.
+        # Specifies whether to immediately restart the instance after the specification change is complete. Valid values:
         self.reboot_when_finished = reboot_when_finished
         # The region ID of the instance. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
@@ -228,11 +198,11 @@ class ModifyPrepayInstanceSpecRequestDisk(DaraModel):
         disk_id: str = None,
         performance_level: str = None,
     ):
-        # > This parameter is not publicly available.
+        # >This parameter is not publicly available.
         self.category = category
-        # > This parameter is not publicly available.
+        # >This parameter is not publicly available.
         self.disk_id = disk_id
-        # > This parameter is not publicly available.
+        # >This parameter is not publicly available.
         self.performance_level = performance_level
 
     def validate(self):
@@ -272,11 +242,7 @@ class ModifyPrepayInstanceSpecRequestSystemDisk(DaraModel):
         self,
         category: str = None,
     ):
-        # The new system disk category. Valid values:
-        # 
-        # - cloud_efficiency: ultra disk.
-        # - cloud_ssd: standard SSD.
-        # > This parameter is valid only when you perform an Increase Quota from a [retired instance type](https://help.aliyun.com/document_detail/55263.html) to a [Normal instance family](https://help.aliyun.com/document_detail/25378.html) and change a non-I/O optimization instance to an I/O optimization instance.
+        # The new category of the system disk. Valid values:
         self.category = category
 
     def validate(self):

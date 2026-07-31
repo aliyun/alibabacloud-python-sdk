@@ -16,19 +16,19 @@ class ModifyStorageCapacityUnitAttributeRequest(DaraModel):
         resource_owner_id: int = None,
         storage_capacity_unit_id: str = None,
     ):
-        # The new description of the SCU. The description must be 2 to 256 characters in length and cannot start with [http:// or https://.](http://https://%E3%80%82)
+        # The new description of the SCU. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         self.description = description
-        # The new name of the SCU. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with [http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).](http://https://%E3%80%82%E3%80%81%EF%BC%88:%EF%BC%89%E3%80%81%EF%BC%88_%EF%BC%89%EF%BC%88-%EF%BC%89%E3%80%82)
+        # The new name of the SCU. The name must be 2 to 128 characters in length. It must start with a letter or a Chinese character and cannot start with http:// or https://. It can contain digits, colons (:), underscores (_), or hyphens (-).
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the SCU. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The region ID of the SCU. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the SCU.
+        # SCU ID。
         # 
         # This parameter is required.
         self.storage_capacity_unit_id = storage_capacity_unit_id

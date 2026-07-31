@@ -16,7 +16,6 @@ class DescribeInstanceAutoRenewAttributeResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The auto-renewal attributes of the instances.
         self.instance_renew_attributes = instance_renew_attributes
         # The page number.
         self.page_number = page_number
@@ -24,7 +23,7 @@ class DescribeInstanceAutoRenewAttributeResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of instances that are returned.
+        # The total number of instances returned.
         self.total_count = total_count
 
     def validate(self):

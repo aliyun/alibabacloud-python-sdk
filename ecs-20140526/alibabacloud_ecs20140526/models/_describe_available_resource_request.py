@@ -74,8 +74,8 @@ class DescribeAvailableResourceRequest(DaraModel):
         self.instance_type = instance_type
         # Specifies whether the instance is an I/O optimized instance. Valid values:
         # 
-        # - none: non-I/O optimized instance.
-        # - optimized: I/O optimized instance.
+        # - none: non-I/O optimization.
+        # - optimized: I/O optimization.
         # 
         # Default value: optimized.
         self.io_optimized = io_optimized
@@ -109,8 +109,8 @@ class DescribeAvailableResourceRequest(DaraModel):
         # - Zone: zonal.
         self.scope = scope
         # The protection period of the spot instance. Unit: hours. Default value: 1. Valid values:
-        # - 1: After a spot instance is created, Alibaba Cloud ensures that the instance is not automatically released within 1 hour. After 1 hour, the system compares the bid price with the market price and checks the inventory to determine whether to retain automatic release the instance.
-        # - 0: After a spot instance is created, Alibaba Cloud does not ensure that the instance runs for 1 hour. The system compares the bid price with the market price and checks the inventory to determine whether to retain automatic release the instance.
+        # - 1: After a spot instance is created, Alibaba Cloud ensures that the instance is not automatically released within 1 hour. After 1 hour, the system compares the bid price with the market price and checks the resource inventory to determine whether to retain automatic release the instance.
+        # - 0: After a spot instance is created, Alibaba Cloud does not ensure that the instance runs for 1 hour. The system compares the bid price with the market price and checks the resource inventory to determine whether to retain automatic release the instance.
         # 
         # Alibaba Cloud sends an ECS system event notification 5 minutes before the instance is released. Spot instances are billed by second. Select an appropriate protection period based on the expected task execution duration.
         # 
@@ -119,12 +119,12 @@ class DescribeAvailableResourceRequest(DaraModel):
         # The bidding policy for pay-as-you-go instances. Valid values: 
         #          
         # - NoSpot: a regular pay-as-you-go instance.
-        # - SpotWithPriceLimit: a spot instance with a maximum price limit.
-        # - SpotAsPriceGo: a spot instance priced at the market price with the pay-as-you-go price as the upper limit.
+        # - SpotWithPriceLimit: a spot instance with a maximum bid price.
+        # - SpotAsPriceGo: a spot instance for which the system automatically bids at up to the pay-as-you-go price.
         # 
         # Default value: NoSpot.
         # 
-        # This parameter takes effect only when InstanceChargeType is set to `PostPaid`.
+        # This parameter takes effect only when `InstanceChargeType` is set to `PostPaid`.
         self.spot_strategy = spot_strategy
         # The category of the system disk. Valid values: 
         #          
@@ -141,13 +141,13 @@ class DescribeAvailableResourceRequest(DaraModel):
         # Default value description:
         # 
         # - If InstanceType is set to a retired instance type, the default value is `cloud`.
-        # - In other cases, the default value is `cloud_efficiency`.<props="china">After January 30, 2026, for instance types that support only cloud_essd, the default value is changed from cloud_efficiency to cloud_essd PL0. For more information, see [Change notice](https://www.aliyun.com/notice/117844).
+        # - In other cases, the default value is `cloud_efficiency`.<props="china"> After January 30, 2026, for instance types that support only cloud_essd, the default value is changed from cloud_efficiency to cloud_essd PL0. For more information, see [Change notice](https://www.aliyun.com/notice/117844).
         # 
         # > When ResourceType is set to instance and DestinationResource is set to DataDisk, the SystemDiskCategory parameter is required. If you do not specify this parameter, the default value takes effect.
         self.system_disk_category = system_disk_category
         # The zone ID.
         # 
-        # Default value: null. The operation returns resources that match the query conditions across all zones in the specified region (RegionId).
+        # Default value: null. All zones in the specified region (RegionId) that match the query conditions are returned.
         self.zone_id = zone_id
 
     def validate(self):

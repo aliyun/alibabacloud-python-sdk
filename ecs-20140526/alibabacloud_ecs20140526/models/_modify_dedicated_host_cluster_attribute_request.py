@@ -16,17 +16,17 @@ class ModifyDedicatedHostClusterAttributeRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the host group.
+        # The ID of the dedicated host cluster.
         # 
         # This parameter is required.
         self.dedicated_host_cluster_id = dedicated_host_cluster_id
-        # The name of the host group. It must be 2 to 128 characters in length and start with a letter. It can contain letters, digits, periods (.), underscores (_), and hyphens (-), and cannot contain `http://` or `https://`.
+        # The name of the dedicated host cluster. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter. The name cannot contain `http://` or `https://`.
         self.dedicated_host_cluster_name = dedicated_host_cluster_name
-        # The description of the host group. It must be 2 to 256 characters in length, and cannot start with `http://` or `https://`.
+        # The description of the dedicated host cluster. The description must be 2 to 256 characters in length. The description cannot start with `http://` or `https://`.
         self.description = description
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the host group. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The region ID of the dedicated host cluster. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id

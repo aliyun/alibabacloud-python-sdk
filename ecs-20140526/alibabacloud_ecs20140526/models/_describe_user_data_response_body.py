@@ -14,13 +14,13 @@ class DescribeUserDataResponseBody(DaraModel):
     ):
         # The instance ID.
         self.instance_id = instance_id
-        # The region ID of the instance.
+        # The region ID.
         self.region_id = region_id
         # The request ID.
         self.request_id = request_id
         # The user data of the instance.
         # 
-        # > If no user data is configured for the instance, an empty string is returned.
+        # > If no user data exists for the instance, an empty string is returned.
         self.user_data = user_data
 
     def validate(self):

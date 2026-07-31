@@ -10,7 +10,7 @@ class CreateDedicatedHostClusterResponseBody(DaraModel):
         dedicated_host_cluster_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the host group.
+        # The ID of the dedicated host cluster.
         self.dedicated_host_cluster_id = dedicated_host_cluster_id
         # The request ID.
         self.request_id = request_id

@@ -18,17 +18,17 @@ class DescribeCapacityReservationInstancesRequest(DaraModel):
         resource_owner_id: int = None,
     ):
         self.private_pool_options = private_pool_options
-        # The number of entries per page.
+        # The maximum number of entries per page for a paged query.
         # 
-        # - Valid values: 1 to 100.
+        # - Maximum value: 100.
         # 
         # - Default value: 10.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. You must specify the token that is obtained from the previous query as the value of the NextToken parameter.
+        # The pagination token for the capacity reservation query. Obtain the value from the result of the previous request.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the capacity reservation. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The region ID of the capacity reservation. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id

@@ -10,7 +10,7 @@ class AllocatePublicIpAddressResponseBody(DaraModel):
         ip_address: str = None,
         request_id: str = None,
     ):
-        # The public IP address.
+        # The public IP address of the instance.
         self.ip_address = ip_address
         # The request ID.
         self.request_id = request_id

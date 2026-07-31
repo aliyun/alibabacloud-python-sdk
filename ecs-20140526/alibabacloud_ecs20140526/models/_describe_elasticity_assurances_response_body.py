@@ -17,13 +17,13 @@ class DescribeElasticityAssurancesResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.elasticity_assurance_set = elasticity_assurance_set
-        # The number of entries per page.
+        # The number of entries per page for the elasticity assurance service query.
         self.max_results = max_results
-        # The token used to retrieve the next page of results.
+        # The pagination token for the next query of elasticity assurance services.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of matching entries.
+        # The total number of entries that match the query conditions.
         self.total_count = total_count
 
     def validate(self):

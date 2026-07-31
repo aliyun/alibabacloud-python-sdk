@@ -11,9 +11,9 @@ class DisableActivationResponseBody(DaraModel):
         activation: main_models.DisableActivationResponseBodyActivation = None,
         request_id: str = None,
     ):
-        # The time when the activation code was created.
+        # The information about the activation code and its usage.
         self.activation = activation
-        # Details about the activation code and its usage information.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -58,25 +58,25 @@ class DisableActivationResponseBodyActivation(DaraModel):
         registered_count: int = None,
         time_to_live_in_hours: int = None,
     ):
-        # The ID of the activation code.
-        self.activation_id = activation_id
-        # The number of instances that were deregistered.
-        self.creation_time = creation_time
-        # The maximum number of times that the activation code can be used to register managed instances.
-        self.deregistered_count = deregistered_count
-        # The number of registered instances.
-        self.description = description
-        # The IP addresses of the hosts that can use the activation code.
-        self.disabled = disabled
-        # The description of the activation code.
-        self.instance_count = instance_count
-        # Indicates whether the activation code is disabled.
-        self.instance_name = instance_name
-        # The validity period of the activation code. Unit: hours.
-        self.ip_address_range = ip_address_range
-        # The default prefix of the instance name.
-        self.registered_count = registered_count
         # The activation code ID.
+        self.activation_id = activation_id
+        # The creation time.
+        self.creation_time = creation_time
+        # The number of deregistered instances.
+        self.deregistered_count = deregistered_count
+        # The description of the activation code.
+        self.description = description
+        # Indicates whether the activation code is disabled.
+        self.disabled = disabled
+        # The maximum number of times that the activation code can be used to register managed instances.
+        self.instance_count = instance_count
+        # The default instance name prefix.
+        self.instance_name = instance_name
+        # The IP addresses of hosts that are allowed to use the activation code.
+        self.ip_address_range = ip_address_range
+        # The number of registered instances.
+        self.registered_count = registered_count
+        # The validity period of the activation code. Unit: hours.
         self.time_to_live_in_hours = time_to_live_in_hours
 
     def validate(self):

@@ -29,62 +29,58 @@ class DescribeManagedInstancesRequest(DaraModel):
         resource_owner_id: int = None,
         tag: List[main_models.DescribeManagedInstancesRequestTag] = None,
     ):
-        # The ID of the activation code.
+        # The activation code ID.
         self.activation_id = activation_id
-        # Indicates whether the managed instance is connected.
+        # Specifies whether the managed instance is connected.
         # 
-        # true: The managed instance is connected, and you can manage it by using Cloud Assistant.
+        # true: The managed instance is connected. You can manage the managed instance by using Cloud Assistant.
         # 
-        # false: The managed instance is not connected. The server may be shut down or the Cloud Assistant Agent may not be installed correctly.
+        # false: The managed instance is not connected. The server may be shut down or Cloud Assistant Agent may not be properly installed.
         self.connected = connected
-        # The ID of managed instance N. Valid values of N: 1 to 50.
+        # The ID of the managed instance. Valid values of N: 1 to 50.
         self.instance_id = instance_id
-        # The internal or public IP address of the managed instance.
+        # The internal IP address or public IP address of the managed instance.
         self.instance_ip = instance_ip
         # The name of the managed instance.
         self.instance_name = instance_name
-        # The value of the MachineId parameter that you specify when you register a managed instance. A maximum of 36 characters are allowed. Sample registration script:
-        # 
+        # The value of the MachineId parameter specified when registering the managed instance. A maximum of 36 characters are allowed.
+        # Example registration script:
         # ```
         # aliyun-service --register \\
-        #   --RegionId=cn-hangznou \\
+        #   --RegionId=ap-southeast-1 \\
         #   --ActivationId=xxxxxxxxxxx \\
         #   --ActivationCode=xxxxxxxxx \\
-        # --MachineId=xxxxxx \\ # Optional. The unique identifier of the machine.
+        #   --MachineId=xxxxxx \\ # Optional parameter that specifies the unique identifier of the machine
         #   --ForceResue                 
         # ```
         # 
-        # - If the MachineId and ForceResult parameters are specified during registration, the Cloud Assistant generates a fixed managed instance ID for this MachineId.
-        # 
-        # - If the MachineId parameter is not explicitly specified, the Cloud Assistant will automatically generate a MachineId value based on the hardware information of the machine.
-        # 
-        # - We recommend that you explicitly specify the MachineId and ForceResult parameters to mark the mapping between a managed instance and an on-premises machine.
+        # - If MachineId and ForceResult are specified during registration, Cloud Assistant generates a fixed managed instance ID for this MachineId.
+        # - If MachineId is not explicitly specified, Cloud Assistant automatically generates a MachineId value based on the hardware information of the machine.
+        # - Recommendation: Explicitly specify MachineId and ForceResult to mark the mapping between managed instances and on-premises machines.
         self.machine_id = machine_id
-        # The maximum number of entries per page.
+        # The maximum number of entries per page for a paging query.
         # 
-        # Valid values: 1 to 50.
+        # Maximum value: 50.
         # 
         # Default value: 10.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. You must specify the token that is obtained from the previous query as the value of NextToken.
+        # The pagination token. Set this parameter to the NextToken value returned in the previous API call.
         self.next_token = next_token
         # The operating system type of the managed instance. Valid values:
         # 
         # - windows
-        # 
         # - linux
-        # 
         # - FreeBSD
         self.os_type = os_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # > This parameter will be removed in the future. We recommend that you use NextToken and MaxResults for a paged query.
+        # > This parameter is about to be deprecated. Use NextToken and MaxResults to complete paging query operations.
         self.page_number = page_number
-        # > This parameter will be removed in the future. We recommend that you use NextToken and MaxResults for a paged query.
+        # > This parameter is about to be deprecated. Use NextToken and MaxResults to complete paging query operations.
         self.page_size = page_size
-        # The region ID. Supported regions: China (Qingdao), China (Beijing), China (Zhangjiakou), China (Hohhot), China (Ulanqab), China (Hangzhou), China (Shanghai), China (Shenzhen), China (Heyuan), China (Guangzhou), China (Chengdu), China (Hong Kong), Singapore, Japan (Tokyo), US (Silicon Valley), and US (Virginia).
+        # The region ID. Currently supported regions: China (Qingdao), China (Beijing), China (Zhangjiakou), China (Hohhot), China (Ulanqab), China (Hangzhou), China (Shanghai), China (Shenzhen), China (Heyuan), China (Guangzhou), China (Chengdu), Hong Kong (China), Singapore, Japan (Tokyo), US (Silicon Valley), and US (Virginia).
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query region IDs and other information.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -92,7 +88,7 @@ class DescribeManagedInstancesRequest(DaraModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The tags of the managed instance.
+        # The tags.
         self.tag = tag
 
     def validate(self):
@@ -231,13 +227,13 @@ class DescribeManagedInstancesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N of the managed instance. Valid values of N: 1 to 20. The tag key cannot be an empty string.
+        # The tag key of the managed instance. Valid values of N: 1 to 20. The tag key cannot be an empty string.
         # 
-        # If a single tag is specified to query resources, up to 1,000 resources that have this tag added can be displayed in the response. If multiple tags are specified to query resources, up to 1,000 resources that have all these tags added can be displayed in the response. To query more than 1,000 resources that have specified tags added, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation.
+        # If you use a single tag to filter resources, the resource count with this tag cannot exceed 1,000. If you use multiple tags to filter resources, the resource count of resources that have all specified tags attached cannot exceed 1,000. If the resource count exceeds 1,000, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query resources.
         # 
-        # The tag key can be up to 64 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+        # The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         self.key = key
-        # The value of tag N of the managed instance. Valid values of N: 1 to 20. The tag value can be an empty string.
+        # The tag value of the managed instance. Valid values of N: 1 to 20. The tag value can be an empty string.
         # 
         # The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`.
         self.value = value

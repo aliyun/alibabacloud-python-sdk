@@ -11,9 +11,9 @@ class CreateElasticityAssuranceResponseBody(DaraModel):
         private_pool_options_id: str = None,
         request_id: str = None,
     ):
-        # The order ID.
+        # The ID of the generated order.
         self.order_id = order_id
-        # The elasticity assurance ID.
+        # The ID of the elasticity assurance service.
         self.private_pool_options_id = private_pool_options_id
         # The request ID.
         self.request_id = request_id

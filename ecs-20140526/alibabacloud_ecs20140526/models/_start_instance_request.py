@@ -15,27 +15,23 @@ class StartInstanceRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # Specifies whether to perform only a dry run. Valid values:
         # 
-        # - true: performs only a dry run. The system checks the AccessKey pair, the permissions of the RAM user, and the required parameters. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-        # 
-        # - false: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        # - true: performs only a dry run. The instance is not started. The system checks whether the AccessKey pair is valid, whether Resource Access Management (RAM) users are granted required permissions, and whether the required parameters are specified. If the check fails, the corresponding error is returned. If the check succeeds, the DryRunOperation error code is returned.
+        # - false: performs a dry run and sends the request. If the check succeeds, a 2XX HTTP status code is returned and the instance is started.
         # 
         # Default value: false.
         self.dry_run = dry_run
-        # Specifies whether to restore the ECS instance to the initial health state on startup if a local disk fails. This parameter is applicable to ECS instances that are equipped with local disks, such as d1, i1, and i2 instances. Valid values:
+        # Specifies whether to recover the instance to its initial health state when a local disk fails. This parameter is applicable to instances that use local disks, such as instances in the d1, i1, or i2 instance families. Valid values:
         # 
-        # - true: restores the ECS instance to the initial health state on startup.
+        # - true: Recovers the instance to its initial health state.
+        # >Warning: All data stored on the local disks of the instance is lost.
         # 
-        #   \\*\\*
-        # 
-        #   **Warning**: After the ECS instance is restored to the initial health state, data stored on the local disks of the instance is lost.
-        # 
-        # - false: does not restore the ECS instance to the initial health state on startup. The instance remains in the current state.
+        # - false: Does not perform any action and maintains the current state.
         # 
         # Default value: false.
         self.init_local_disk = init_local_disk
-        # The ID of the instance that you want to start.
+        # The instance ID of the instance that you want to start.
         # 
         # This parameter is required.
         self.instance_id = instance_id

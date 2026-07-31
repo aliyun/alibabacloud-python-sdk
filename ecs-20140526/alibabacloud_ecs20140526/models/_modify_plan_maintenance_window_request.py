@@ -112,9 +112,9 @@ class ModifyPlanMaintenanceWindowRequestTimePeriod(DaraModel):
         period_unit: str = None,
         range_list: List[main_models.ModifyPlanMaintenanceWindowRequestTimePeriodRangeList] = None,
     ):
-        # The cycle type. Valid values: Daily and Weekly.
+        # The type of the cycle. Valid values: Daily and Weekly.
         self.period_unit = period_unit
-        # The time ranges of the O&M window recurring cycle (UTC time zone).
+        # The time ranges of the recurring O&M window cycle (UTC time zone).
         self.range_list = range_list
 
     def validate(self):
@@ -205,7 +205,7 @@ class ModifyPlanMaintenanceWindowRequestTargetResource(DaraModel):
     ):
         # The ID of the resource group to which the O&M window applies. This parameter is required only when Scope is set to ResourceGroup.
         self.resource_group_id = resource_group_id
-        # The resource type for the O&M window configuration.
+        # The type of resource to which the O&M window applies.
         self.scope = scope
         # The tags to which the O&M window applies. This parameter is required only when Scope is set to Tag.
         self.tags = tags

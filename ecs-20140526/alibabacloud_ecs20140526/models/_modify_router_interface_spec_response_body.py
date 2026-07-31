@@ -10,9 +10,7 @@ class ModifyRouterInterfaceSpecResponseBody(DaraModel):
         request_id: str = None,
         spec: str = None,
     ):
-        # The request ID.
         self.request_id = request_id
-        # The new specification of the router interface.
         self.spec = spec
 
     def validate(self):

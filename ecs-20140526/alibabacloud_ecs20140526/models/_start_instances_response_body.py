@@ -14,7 +14,7 @@ class StartInstancesResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.instance_responses = instance_responses
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

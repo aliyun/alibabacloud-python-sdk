@@ -21,37 +21,36 @@ class RebootInstancesRequest(DaraModel):
     ):
         # The batch operation mode. Valid values:
         # 
-        # - AllTogether: In this mode, if all instances are restarted, a success message is returned. If an instance fails the verification, all instances fail to be restarted and an error message is returned.
+        # - AllTogether: In this mode, a success message is returned if all instances are restarted. If any instance fails validation, all instances fail to restart and an error message is returned.
         # 
-        # - SuccessFirst: In this mode, each instance is restarted separately. The response contains the operation results of each instance.
+        # - SuccessFirst: In this mode, each instance is restarted separately. The response includes the operation result for each instance.
         # 
         # Default value: AllTogether.
         self.batch_optimization = batch_optimization
-        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # Specifies whether to perform only a dry run. Valid values:
         # 
-        # - true: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and instance status. If the request fails the dry run, an error message is returned. If the request passes the dry run, `DRYRUN.SUCCESS` is returned.
+        # - true: performs only a dry run without restarting the instance. The system checks the required parameters, request format, and instance status. If the check fails, the corresponding error is returned. If the check passes, `DRYRUN.SUCCESS` is returned.
+        # > If the BatchOptimization parameter is set to `SuccessFirst`, the dry run result for `DryRun=true` returns only `DRYRUN.SUCCESS`.
         # 
-        # > If you set `BatchOptimization` to `SuccessFirst` and `DryRun` to true, only `DRYRUN.SUCCESS` is returned regardless of whether the request passes the dry run.
-        # 
-        # - false: performs a dry run and sends the request. If the request passes the dry run, the instance is restarted.
+        # - false: performs a dry run and sends the request. After the check passes, the instance is restarted.
         # 
         # Default value: false.
         self.dry_run = dry_run
-        # Specifies whether to forcefully restart the instance. Valid values:
+        # Specifies whether to force restart the instance. Valid values:
         # 
-        # - true: forcefully restarts the instance. This operation is equivalent to the typical power-off operation. Cache data that is not written to storage devices on the instance is lost.
+        # -   true: forces a restart. This is equivalent to a power-off operation. Cached data that has not been written to storage devices is lost.
         # 
-        # - false: normally restarts the instance.
+        # -   false: performs a normal restart.
         # 
         # Default value: false.
         self.force_reboot = force_reboot
-        # The IDs of ECS instances. Valid values of N: 1 to 100.
+        # The instance ID array. Array length: 1 to 100.
         # 
         # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The region ID of the instance. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id

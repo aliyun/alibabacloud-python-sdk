@@ -10,9 +10,9 @@ class CreateImagePipelineResponseBody(DaraModel):
         image_pipeline_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the image pipeline.
+        # The image template ID.
         self.image_pipeline_id = image_pipeline_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

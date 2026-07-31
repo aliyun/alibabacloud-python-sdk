@@ -16,14 +16,14 @@ class DescribeSnapshotPackageResponseBody(DaraModel):
         snapshot_packages: main_models.DescribeSnapshotPackageResponseBodySnapshotPackages = None,
         total_count: int = None,
     ):
-        # The page number.
+        # The page number of the OSS storage plan list.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries per page for a paged query.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
         self.snapshot_packages = snapshot_packages
-        # The total number of OSS storage plans.
+        # The total number of OSS storage plans returned.
         self.total_count = total_count
 
     def validate(self):

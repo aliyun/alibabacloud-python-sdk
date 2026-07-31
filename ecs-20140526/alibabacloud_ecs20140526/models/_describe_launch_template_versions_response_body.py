@@ -19,7 +19,7 @@ class DescribeLaunchTemplateVersionsResponseBody(DaraModel):
         self.launch_template_version_sets = launch_template_version_sets
         # The current page number.
         self.page_number = page_number
-        # The number of entries per page in a paged query. Settings this parameter for paging.
+        # The number of entries per page when paging is used.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id

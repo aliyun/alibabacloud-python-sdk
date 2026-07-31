@@ -20,7 +20,7 @@ class DescribeSnapshotLinksRequest(DaraModel):
         resource_owner_id: int = None,
         snapshot_link_ids: str = None,
     ):
-        # The IDs of disks. You can specify up to 100 disk IDs at a time. The DiskIds parameter is a JSON array. Separate multiple IDs with commas (,).
+        # The disk IDs. You can specify up to 100 disk IDs at a time. The DiskIds parameter is a JSON array. Separate multiple IDs with commas (,).
         self.disk_ids = disk_ids
         # The instance ID.
         self.instance_id = instance_id
@@ -47,7 +47,7 @@ class DescribeSnapshotLinksRequest(DaraModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The IDs of snapshot chains. You can specify up to 100 snapshot chain IDs at a time. The SnapshotLinkIds parameter is a JSON array. Separate multiple IDs with commas (,).
+        # The snapshot chain IDs. You can specify up to 100 snapshot chain IDs at a time. The SnapshotLinkIds parameter is a JSON array. Separate multiple IDs with commas (,).
         self.snapshot_link_ids = snapshot_link_ids
 
     def validate(self):

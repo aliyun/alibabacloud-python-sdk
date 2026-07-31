@@ -10,7 +10,7 @@ class InvokeCommandResponseBody(DaraModel):
         invoke_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the command task.
+        # The command execution ID.
         self.invoke_id = invoke_id
         # The request ID.
         self.request_id = request_id

@@ -15,21 +15,22 @@ class AllocatePublicIpAddressRequest(DaraModel):
         resource_owner_id: int = None,
         vlan_id: str = None,
     ):
-        # The ID of the instance to which you want to assign a public IP address.
+        # The instance ID of the instance to which you want to allocate a public IP address.
+        # 
+        # >The instance bandwidth must be greater than 0.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The static public IP address that you want to assign to the instance. This parameter is empty by default, which indicates that a static public IP address is randomly assigned by the system.
+        # The public IP address of the instance. If this parameter is left empty, the system randomly assigns an IP address.
         # 
-        # > Only users in the whitelist can specify this parameter.
+        # >Only users in the whitelist can specify this parameter. Regular users cannot specify an IP address.
         self.ip_address = ip_address
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The virtual LAN (VLAN) ID of the instance.
-        # 
-        # > This parameter will be removed in the future. To ensure future compatibility, we recommend that you use other parameters.
+        # The VLAN ID of the instance.
+        # > This parameter will be deprecated. For better compatibility, use other parameters.
         self.vlan_id = vlan_id
 
     def validate(self):

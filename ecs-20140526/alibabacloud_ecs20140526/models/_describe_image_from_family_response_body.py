@@ -15,7 +15,7 @@ class DescribeImageFromFamilyResponseBody(DaraModel):
     ):
         # The image information.
         self.image = image
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -73,77 +73,63 @@ class DescribeImageFromFamilyResponseBodyImage(DaraModel):
         tags: main_models.DescribeImageFromFamilyResponseBodyImageTags = None,
         usage: str = None,
     ):
-        # The architecture of the image. Valid values:
-        # 
+        # The system architecture type of the image. Valid values:
         # - i386
-        # 
         # - x86_64
         self.architecture = architecture
         # The time when the image was created.
         self.creation_time = creation_time
-        # The description of the volume.
+        # The description of the image.
         self.description = description
         self.disk_device_mappings = disk_device_mappings
-        # The name of the image family.
+        # The image family.
         self.image_family = image_family
         # The image ID.
         self.image_id = image_id
         # The name of the image.
         self.image_name = image_name
         # The alias of the image owner. Valid values:
-        # 
-        # - system: public images provided by Alibaba Cloud
-        # 
-        # - self: your custom images
-        # 
-        # - others: shared images from other Alibaba Cloud accounts
-        # 
-        # - marketplace: Alibaba Cloud Marketplace images
+        # - system: public image.
+        # - self: your custom image.
+        # - others: shared image from other users.
+        # - marketplace: Alibaba Cloud Marketplace image.
         self.image_owner_alias = image_owner_alias
         # The image version.
         self.image_version = image_version
         # Indicates whether the image is a copy of another image.
         self.is_copied = is_copied
-        # Indicates whether the custom image was shared to other Alibaba Cloud accounts.
+        # Indicates whether the custom image has been shared with other users.
         self.is_self_shared = is_self_shared
-        # Indicates whether you have subscribed to the service terms of the image product corresponding to the image product code.
+        # Indicates whether you have subscribed to the Terms of Service for the image product that corresponds to the product code.
         self.is_subscribed = is_subscribed
         # Indicates whether cloud-init is supported.
         self.is_support_cloudinit = is_support_cloudinit
-        # Indicates whether the image can be used on I/O optimized instances.
+        # Indicates whether the image can run on an I/O optimized instance.
         self.is_support_io_optimized = is_support_io_optimized
-        # The display name of the operating system in Chinese.
+        # The China-locale display name of the operating system.
         self.osname = osname
         # The type of the operating system. Valid values:
-        # 
         # - windows
-        # 
         # - linux
         self.ostype = ostype
-        # The operating system.
+        # The operating system platform.
         self.platform = platform
         # The product code of the Alibaba Cloud Marketplace image.
         self.product_code = product_code
-        # The image creation progress in percentage.
+        # The image creation progress, in percent.
         self.progress = progress
         # The size of the image. Unit: GiB.
         self.size = size
-        # The state of the image. Valid values:
-        # 
-        # - UnAvailable
-        # 
-        # - Available
-        # 
-        # - Creating
-        # 
-        # - CreateFailed
+        # The status of the image. Valid values:
+        # - UnAvailable: unavailable
+        # - Available: available
+        # - Creating: being created
+        # - CreateFailed: failed to be created
         self.status = status
         self.tags = tags
-        # Indicates whether the image has been used to create ECS instances. Valid values:
-        # 
-        # - instance: The image was used to create one or more ECS instances.
-        # 
-        # - none: The image was not used to create ECS instances.
+        # The type of resource that references the image. Valid values:
+        # - instance: One or more ECS instances have been created from the image.
+        # - none: No ECS instances have been created from the image.
         self.usage = usage
 
     def validate(self):

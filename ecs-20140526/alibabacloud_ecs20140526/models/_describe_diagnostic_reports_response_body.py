@@ -14,7 +14,7 @@ class DescribeDiagnosticReportsResponseBody(DaraModel):
         reports: main_models.DescribeDiagnosticReportsResponseBodyReports = None,
         request_id: str = None,
     ):
-        # A pagination token. It can be used in the next request to retrieve a new page of results.
+        # The pagination token returned in this call.
         self.next_token = next_token
         self.reports = reports
         # The request ID.

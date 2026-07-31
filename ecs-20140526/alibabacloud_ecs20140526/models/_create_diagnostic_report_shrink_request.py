@@ -15,11 +15,11 @@ class CreateDiagnosticReportShrinkRequest(DaraModel):
         start_time: str = None,
     ):
         self.additional_options_shrink = additional_options_shrink
-        # The end time. This parameter applies only to diagnostic metrics that do not require running Cloud Assistant commands in the guest OS.
+        # The end time. Takes effect only for diagnostic metrics that do not require Cloud Assistant commands to be run in the guest OS.
         self.end_time = end_time
-        # The diagnostic metric set ID. If this parameter is omitted, the default diagnostic metric set for ECS instances, `dms-instancedefault`, is used.
+        # The diagnostic metric set ID. If left empty, the default diagnostic metric set dms-instancedefault for ECS instances is used.
         self.metric_set_id = metric_set_id
-        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to get the latest list of Alibaba Cloud regions.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -27,7 +27,7 @@ class CreateDiagnosticReportShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.resource_id = resource_id
-        # The start time. This parameter applies only to diagnostic metrics that do not require running Cloud Assistant commands in the guest OS.
+        # The start time. Takes effect only for diagnostic metrics that do not require Cloud Assistant commands to be run in the guest OS.
         self.start_time = start_time
 
     def validate(self):

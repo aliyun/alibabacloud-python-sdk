@@ -22,67 +22,75 @@ class ModifyInstanceChargeTypeRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # Specifies whether to automatically complete the payment. Valid values:
+        # Specifies whether to enable automatic payment. Valid values:
         # 
-        # - true: enables automatic payment. Maintain a sufficient account balance. Otherwise, your order becomes invalid and is canceled.
+        # - true: Automatic payment is enabled. Make sure that your account balance is sufficient. If your account balance is insufficient, abnormal orders are generated, and you can only cancel the orders.
         # 
-        # - false: disables automatic payment. An order is generated but no payment is made.
+        # - false: An order is generated but payment is not made.
         # 
         # Default value: true.
         # 
-        # > If your account balance is insufficient, you can set AutoPay to false to generate an unpaid order. Then, you can log on to the ECS console to pay for the order.
+        # > If your payment method has an insufficient balance, set AutoPay to false. In this case, an unpaid order is generated. You can log on to the ECS console to complete the payment.
         self.auto_pay = auto_pay
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **token** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. The **ClientToken** value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
-        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # Specifies whether to perform only a dry run. Valid values:
         # 
-        # - true: performs only a dry run. The system checks the request for potential issues, including invalid AccessKey pairs, unauthorized Resource Access Management (RAM) users, and missing parameter values. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # - true: performs only a dry run. The system checks the request for potential issues, including invalid AccessKey pairs, unauthorized RAM users, and missing parameter values. If the request fails the dry run, the corresponding error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
         # 
-        # - false: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        # - false: performs a dry run and sends the request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         # 
         # Default value: false.
         self.dry_run = dry_run
-        # Specifies whether to change the billing method of all data disks on the instance from pay-as-you-go to subscription. Valid values:
+        # Specifies whether to convert all pay-as-you-go data disks attached to the instance to subscription data disks.
         # 
-        # - true
-        # 
-        # - false
+        # - true: Converts all pay-as-you-go data disks to subscription data disks.
+        # - false: Does not convert pay-as-you-go data disks to subscription data disks.
         # 
         # Default value: false.
         self.include_data_disks = include_data_disks
-        # The new billing method of the instance. Valid values:
+        # The target billing method of the instance. Valid values:
         # 
-        # - PrePaid: subscription
+        # - PrePaid: transforms the billing method from pay-as-you-go to subscription.
         # 
-        # - PostPaid: pay-as-you-go
+        # - PostPaid: transforms the billing method from subscription to pay-as-you-go.
         # 
         # Default value: PrePaid.
         self.instance_charge_type = instance_charge_type
-        # The instance IDs. The value can be a JSON array that consists of up to 20 instance IDs. Separate the instance IDs with commas (,).
+        # The IDs of the instances. The value can be a JSON array that consists of up to 20 instance IDs. Separate the IDs with commas (,).
         # 
         # This parameter is required.
         self.instance_ids = instance_ids
-        # Specifies whether to return cost details of the order after the billing method is changed from subscription to pay-as-you-go. Valid values:
+        # Specifies whether to return the fee details of the order when the billing method is transformed from subscription to pay-as-you-go. Valid values:
         # 
-        # - true
-        # 
-        # - false
+        # - true: Returns the fee details.
+        # - false: Does not return the fee details.
         # 
         # Default value: false.
         self.is_detail_fee = is_detail_fee
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The renewal duration of the subscription instance. If the instance is hosted on a dedicated host, the renewal duration of the instance cannot exceed the subscription duration of the dedicated host. Valid values:
+        # The subscription renewal period. If the ECS instance is hosted on a dedicated host, the value cannot exceed the subscription period of the dedicated host. Valid values:
         # 
-        # Valid values when `PeriodUnit` is set to Month: `1, 2, 3, 4, 5, 6, 7, 8, 9, and 12`.
+        # <props="china">
+        # - If PeriodUnit is set to Week, valid values of Period: 1, 2, 3, and 4.
+        # - If PeriodUnit is set to Month, valid values of Period: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, and 60.
+        # 
+        # 
+        # <props="intl">If PeriodUnit is set to Month, valid values of Period: 1, 2, 3, 4, 5, 6, 7, 8, 9, and 12.
         self.period = period
-        # The unit of the renewal duration specified by `Period`. Valid values:
+        # The unit of the renewal period, which is the unit of the Period parameter. Valid values:
         # 
-        # Month
+        # <props="china">
+        # - Week
+        # - Month
+        # - Year
+        # 
+        # <props="intl">Month
         # 
         # Default value: Month.
         self.period_unit = period_unit
-        # The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The region ID of the instances. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id

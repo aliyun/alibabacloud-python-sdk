@@ -13,7 +13,7 @@ class ModifyReservedInstancesResponseBody(DaraModel):
         request_id: str = None,
         reserved_instance_id_sets: main_models.ModifyReservedInstancesResponseBodyReservedInstanceIdSets = None,
     ):
-        # Details about the reserved instance.
+        # The request ID.
         self.request_id = request_id
         self.reserved_instance_id_sets = reserved_instance_id_sets
 

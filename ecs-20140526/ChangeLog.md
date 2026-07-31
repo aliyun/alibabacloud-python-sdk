@@ -1,3 +1,19 @@
+2026-07-31 Version: 7.9.3
+- Update API CreateImagePipeline: add request parameters RepairItem.
+- Update API CreateLaunchTemplate: add request parameters SecurityOptions.EnableSecureBoot.
+- Update API CreateNetworkInterface: add request parameters EnablePrimaryIPv6.
+- Update API CreateNetworkInterface: add response parameters Body.Ipv6Sets.$.Primary.
+- Update API DescribeImagePipelines: add response parameters Body.ImagePipeline.$.RepairItems.
+- Update API DescribeInstanceAttribute: add response parameters Body.SecurityOptions.
+- Update API DescribeInstanceTypes: add response parameters Body.InstanceTypes.$.SecurityOptions.
+- Update API DescribeInstances: add response parameters Body.Instances.$.SecurityOptions.
+- Update API DescribeInstances: add response parameters Body.Instances.$.NetworkInterfaces.$.Ipv6Sets.$.Primary.
+- Update API DescribeNetworkInterfaceAttribute: add response parameters Body.Ipv6Sets.$.Primary.
+- Update API DescribeNetworkInterfaces: add response parameters Body.NetworkInterfaceSets.$.Ipv6Sets.$.Primary.
+- Update API ModifyNetworkInterfaceAttribute: add request parameters EnablePrimaryIPv6.
+- Update API RunInstances: add request parameters SecurityOptions.
+
+
 2026-07-16 Version: 7.9.2
 - Update API DescribeImages: add request parameters Usable.
 - Update API DescribeImages: add response parameters Body.Images.$.Usable.

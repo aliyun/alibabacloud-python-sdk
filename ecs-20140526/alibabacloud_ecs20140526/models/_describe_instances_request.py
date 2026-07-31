@@ -59,130 +59,76 @@ class DescribeInstancesRequest(DaraModel):
         # > This parameter is in invitational preview and is not publicly available.
         self.device_available = device_available
         # Specifies whether to perform only a dry run. Valid values:
-        # 
-        # - true: performs only a dry run. The system checks the request for potential issues, including invalid AccessKey pairs, unauthorized RAM users, and missing parameter values. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.  
-        # - false: performs a dry run and sends the request. If the request passes the dry run, a 2XX HTTP status code is returned and the operation is performed. 
-        # 
-        # Default value: false.
         self.dry_run = dry_run
         # The elastic IP addresses (EIPs) of instances. This parameter takes effect when InstanceNetworkType is set to vpc. The value can be a JSON array that consists of up to 100 IP addresses. Separate the IP addresses with commas (,).
         self.eip_addresses = eip_addresses
         # The ID of the HPC cluster to which the instance belongs.
         self.hpc_cluster_id = hpc_cluster_id
-        # Specifies whether to enable the access channel for instance metadata. Valid values:
-        # - enabled: enabled.
-        # - disabled: disabled.
-        # 
-        # Default value: enabled.
-        # > For more information about instance metadata, see [Overview of instance metadata](https://help.aliyun.com/document_detail/49122.html).
+        # Specifies whether the access channel for instance metadata is enabled. Valid values:
         self.http_endpoint = http_endpoint
         # > This parameter is not publicly available.
         self.http_put_response_hop_limit = http_put_response_hop_limit
-        # Specifies whether to forcefully use the security-hardened mode (IMDSv2) to access instance metadata. Valid values:
-        # - optional: does not forcefully use the security-hardened mode.
-        # - required: forcefully uses the security-hardened mode. After you set this value, the normal mode cannot be used to access instance metadata.
-        # 
-        # Default value: optional.
-        # > For more information about the modes for accessing instance metadata, see [Instance metadata access modes](https://help.aliyun.com/document_detail/150575.html).
+        # Specifies whether the China mode (IMDSv2) is forcefully used to access instance metadata. Valid values:
         self.http_tokens = http_tokens
         # The image ID.
         self.image_id = image_id
-        # The internal network IP addresses of classic network type instances. This parameter takes effect when InstanceNetworkType is set to classic. The value can be a JSON array that consists of up to 100 IP addresses. Separate the IP addresses with commas (,). 
-        # 
-        # > - The classic network feature has been offline. For details, see [Offline notice](https://help.aliyun.com/document_detail/2833134.html).
+        # The internal network IP addresses of instances in the classic network type. This parameter takes effect when InstanceNetworkType is set to classic. The value can be a JSON array that consists of up to 100 IP addresses. Separate the IP addresses with commas (,).
         self.inner_ip_addresses = inner_ip_addresses
-        # The billing method of the instance. Valid values: 
-        #          
-        # - PostPaid: pay-as-you-go. 
-        # - PrePaid: subscription.
+        # The billable methods of the instance. Valid values:
         self.instance_charge_type = instance_charge_type
-        # The instance IDs. The value can be a JSON array that consists of up to 100 instance IDs. Separate the IDs with commas (,).
+        # The IDs of instances. The value can be a JSON array that consists of up to 100 instance IDs. Separate the IDs with commas (,).
         self.instance_ids = instance_ids
-        # The instance name. Fuzzy search with the wildcard * is supported.
+        # The name of the instance. Fuzzy search with the wildcard * is supported.
         self.instance_name = instance_name
         # The network type of the instance. Valid values:
-        # 
-        # - vpc: VPC.
-        # - classic: classic network. The classic network is deprecated. For more information, see [Deprecation notice](https://help.aliyun.com/document_detail/2833134.html).
         self.instance_network_type = instance_network_type
-        # The instance type.
+        # The instance type of the instance.
         self.instance_type = instance_type
-        # The instance family.
+        # The instance family of the instance.
         self.instance_type_family = instance_type_family
-        # The billing method for public bandwidth. Valid values:
-        # 
-        # - PayByBandwidth: pay-by-bandwidth.
-        # - PayByTraffic: pay-by-traffic.
-        # 
-        # > In **pay-by-traffic** mode, the peak inbound and outbound bandwidths are used as bandwidth upper limits and are not guaranteed. When resource contention occurs, the peak bandwidths may be limited. If you require guaranteed bandwidth, use the **pay-by-bandwidth** mode.
+        # The public bandwidth billable methods. Valid values:
         self.internet_charge_type = internet_charge_type
         # Specifies whether the instance is I/O optimized. Valid values:
-        # 
-        # - true: The instance is I/O optimized.
-        # - false: The instance is not I/O optimized.
         self.io_optimized = io_optimized
         # The IPv6 addresses assigned to the network interface controller (NIC).
         self.ipv_6address = ipv_6address
-        # The name of the SSH key pair used by the instance.
+        # The name of the SSH key pair bound to the instance.
         self.key_pair_name = key_pair_name
         # The reason why the resource is locked. Valid values:
-        # 
-        # - financial: locked due to overdue payment.
-        # 
-        # - security: locked for security reasons.
-        # 
-        # - Recycling: the spot instance is pending release.
-        # 
-        # - dedicatedhostfinancial: the ECS instance is locked because the dedicated host has an overdue payment.
-        # 
-        # - refunded: locked due to a refund.
         self.lock_reason = lock_reason
-        # The maximum number of entries per page for a paging query. Maximum value: 100.
-        # 
-        # Default value:
-        # 
-        # - If you do not set this parameter or set it to a value smaller than 10, the default value is 10.
-        # - If you set this parameter to a value greater than 100, the default value is 100.
+        # The maximum number of entries per page in a paging query. Maximum value: 100.
         self.max_results = max_results
         # > This parameter is in invitational preview and is not publicly available.
         self.need_sale_cycle = need_sale_cycle
-        # The query token. Set the value to the NextToken value returned in the previous API call.
+        # The query token. Set the value to the NextToken value returned in the previous call to this operation.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # > This parameter will be offline soon. Use NextToken and MaxResults to complete paging query operations.
+        # > This parameter is about to be deprecated. Use NextToken and MaxResults to complete paging query operations.
         self.page_number = page_number
-        # > This parameter will be offline soon. Use NextToken and MaxResults to complete paging query operations.
+        # > This parameter is about to be deprecated. Use NextToken and MaxResults to complete paging query operations.
         self.page_size = page_size
-        # The private IP addresses of VPC network type instances. This parameter takes effect when InstanceNetworkType is set to vpc. The value can be a JSON array that consists of up to 100 IP addresses. Separate the IP addresses with commas (,).
+        # The private IP addresses of instances in the VPC network type. This parameter takes effect when InstanceNetworkType is set to vpc. The value can be a JSON array that consists of up to 100 IP addresses. Separate the IP addresses with commas (,).
         self.private_ip_addresses = private_ip_addresses
         # The public IP addresses of instances. The value can be a JSON array that consists of up to 100 IP addresses. Separate the IP addresses with commas (,).
         self.public_ip_addresses = public_ip_addresses
-        # The RDMA IP address of the HPC instance.
+        # The RDMA IP addresses of the HPC instance.
         self.rdma_ip_addresses = rdma_ip_addresses
         # The region ID of the instance. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group to which the instance belongs. When you use this parameter to filter resources, the resource count cannot exceed 1,000.
-        # 
-        # > Filtering by the default resource group is not supported.
+        # The ID of the resource group to which the instance belongs. If you use this parameter to filter resources, the resource count cannot exceed 1,000.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The security group to which the instance belongs.
         self.security_group_id = security_group_id
-        # The instance status. Valid values: 
-        # 
-        # - Pending: being created.
-        # - Running: running.
-        # - Starting: being started.
-        # - Stopping: being stopped.
-        # - Stopped: stopped.
+        # The instance status. Valid values:
         self.status = status
         # The tags.
         self.tag = tag
-        # The vSwitch ID.
+        # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
         # The ID of the virtual private cloud (VPC).
         self.vpc_id = vpc_id
@@ -478,11 +424,9 @@ class DescribeInstancesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the instance. Valid values of N: 1 to 20.
-        # 
-        # If you use a single tag to filter resources, the resource count with the tag cannot exceed 1,000. If you use multiple tags to filter resources, the resource count with all the specified tags attached cannot exceed 1,000. If the resource count exceeds 1,000, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation.
+        # The key of tag N of the instance. Valid values of N: 1 to 20.
         self.key = key
-        # The tag value of the instance. Valid values of N: 1 to 20.
+        # The value of tag N of the instance. Valid values of N: 1 to 20.
         self.value = value
 
     def validate(self):
@@ -517,9 +461,9 @@ class DescribeInstancesRequestFilter(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The filter key used to query resources. Set the value to `CreationStartTime`. Set both `Filter.1.Key` and `Filter.1.Value` to query resources that were created after the specified point in time.
+        # The key of filter 1 used to query resources. Set the value to `CreationStartTime`. If you specify both `Filter.1.Key` and `Filter.1.Value`, you can query resources that were created after the specified point in time.
         self.key = key
-        # The filter value used to query resources. When you specify this parameter, you must also specify `Filter.1.Key`. Specify the time in the `yyyy-MM-ddTHH:mmZ` format in UTC+0.
+        # The value of filter 1 used to query resources. If you specify this parameter, you must also specify `Filter.1.Key`. Specify the time in the `yyyy-MM-ddTHH:mmZ` format in UTC.
         self.value = value
 
     def validate(self):

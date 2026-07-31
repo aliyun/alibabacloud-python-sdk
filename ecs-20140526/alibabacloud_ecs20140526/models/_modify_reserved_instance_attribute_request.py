@@ -16,21 +16,21 @@ class ModifyReservedInstanceAttributeRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The error code.
+        # The description of the reserved instance. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+        # 
+        # Default value: empty.
         self.description = description
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the reserved instance.
+        # The region ID of the resource.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The new name of the reserved instance. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        # The ID of the reserved instance.
         # 
         # This parameter is required.
         self.reserved_instance_id = reserved_instance_id
-        # The new description of the reserved instance. The description must be 2 to 256 characters in length. It cannot start with `http://` or `https://`.
-        # 
-        # This parameter is empty by default.
+        # The name of the reserved instance. The name must be 2 to 128 characters in length. It must start with a letter or a Chinese character and cannot start with `http://` or `https://`. It can contain digits, colons (:), underscores (_), or hyphens (-).
         self.reserved_instance_name = reserved_instance_name
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

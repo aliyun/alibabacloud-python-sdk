@@ -21,19 +21,18 @@ class DeleteAutoProvisioningGroupRequest(DaraModel):
         self.auto_provisioning_group_id = auto_provisioning_group_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the auto provisioning group.
+        # The ID of the region where the auto provisioning group resides.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # Specifies whether to release instances in the auto provisioning group. Valid values:
+        # Specifies whether to release the instances in the auto-provisioning group when the group is deleted. Valid values:
         # 
-        # - true
+        # - true: Releases the instances auto provisioning group.
+        # - false: The instances auto provisioning group continue to run.
         # 
-        # - false
-        # 
-        # > By default, this parameter inherits the value of `TerminateInstances` that you specified when you call the `CreateAutoProvisioningGroup` operation to create an auto provisioning group. You can also change the value of `TerminateInstances` when you call the DeleteAutoProvisioningGroup operation to delete the auto provisioning group.
+        # >The default value of this parameter is inherited from the TerminateInstances parameter that you specified when you called the CreateAutoProvisioningGroup operation to create the auto-provisioning group. You can also set the TerminateInstances parameter to a new value when you call this operation to delete the auto-provisioning group.
         self.terminate_instances = terminate_instances
 
     def validate(self):

@@ -18,9 +18,9 @@ class DescribeCloudAssistantStatusResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.instance_cloud_assistant_status_set = instance_cloud_assistant_status_set
-        # A pagination token. It can be used in the next request to retrieve a new page of results.
+        # The pagination token returned in this call.
         self.next_token = next_token
-        # The page number.
+        # The current page number.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size

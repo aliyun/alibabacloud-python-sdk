@@ -19,21 +19,19 @@ class UntagResourcesRequest(DaraModel):
         resource_type: str = None,
         tag_key: List[str] = None,
     ):
-        # Specifies whether to remove all tags from the resource. This parameter takes effect only if you do not specify TagKey.N. Valid values:
-        # 
+        # Specifies whether to unbind all tags from the resources. This parameter takes effect only when TagKey.N is not specified in the request. Valid values:
         # - true
-        # 
         # - false
         # 
         # Default value: false.
         self.all = all
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the resource. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The region ID of the resources. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The resource IDs. Valid values of N: 1 to 50.
+        # The list of resource IDs. You can specify up to 50 resource IDs.
         # 
         # This parameter is required.
         self.resource_id = resource_id
@@ -41,43 +39,27 @@ class UntagResourcesRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The type of the resource. Valid values:
         # 
-        # - instance: ECS instance
-        # 
-        # - disk: disk
-        # 
-        # - snapshot: snapshot
-        # 
-        # - image: image
-        # 
-        # - securitygroup: security group
-        # 
-        # - volume: storage volume
-        # 
-        # - eni: elastic network interface (ENI)
-        # 
-        # - ddh: dedicated host
-        # 
-        # - ddhcluster: dedicated host cluster
-        # 
-        # - keypair: SSH key pair
-        # 
-        # - launchtemplate: launch template
-        # 
-        # - reservedinstance: reserved instance
-        # 
-        # - snapshotpolicy: automatic snapshot policy
-        # 
-        # - elasticityassurance: elasticity assurance
-        # 
-        # - capacityreservation: capacity reservation
-        # 
-        # - command: Cloud Assistant command
-        # 
-        # - invocation: Cloud Assistant command execution result
+        # - instance: ECS instance.
+        # - disk: cloud disk.
+        # - snapshot: snapshot.
+        # - image: image.
+        # - securitygroup: security group.
+        # - volume: storage volume.
+        # - eni: Elastic Network Interface (ENI).
+        # - ddh: dedicated host.
+        # - ddhcluster: dedicated host cluster.
+        # - keypair: SSH key pair.
+        # - launchtemplate: launch template.
+        # - reservedinstance: reserved instance.
+        # - snapshotpolicy: automatic snapshot policy.
+        # - elasticityassurance: elasticity assurance.
+        # - capacityreservation: capacity reservation.
+        # - command: Cloud Assistant command.
+        # - invocation: Cloud Assistant command execution result.
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The tag keys. Valid values of N: 1 to 20.
+        # The list of tag keys of the resources. You can specify up to 20 tag keys.
         self.tag_key = tag_key
 
     def validate(self):

@@ -19,25 +19,21 @@ class DescribeNetworkInterfaceAttributeRequest(DaraModel):
         resource_owner_id: int = None,
         tag: List[main_models.DescribeNetworkInterfaceAttributeRequestTag] = None,
     ):
-        # The attribute to query. Valid values:
-        # 
-        # `attachment`: The attachment details for member network interfaces associated with a trunk network interface. This is an invitation-only parameter.
-        # 
-        # `connectionTrackingConfiguration`: The connection tracking configuration.
+        # The network interface controller (NIC) attribute. Valid values:
         self.attribute = attribute
-        # The ID of the elastic network interface.
+        # The network interface controller (NIC) ID.
         # 
         # This parameter is required.
         self.network_interface_id = network_interface_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the elastic network interface resides. Call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to get the latest list of Alibaba Cloud regions.
+        # The region ID of the network interface controller (NIC). You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # > This parameter is not publicly available.
+        # > This parameter is not yet available for use.
         self.tag = tag
 
     def validate(self):
@@ -116,9 +112,9 @@ class DescribeNetworkInterfaceAttributeRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # > This parameter is not publicly available.
+        # > This parameter is not yet available for use.
         self.key = key
-        # > This parameter is not publicly available.
+        # > This parameter is not yet available for use.
         self.value = value
 
     def validate(self):

@@ -14,13 +14,13 @@ class DescribeDedicatedHostAutoRenewRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the dedicated host. You can specify up to 100 subscription dedicated host IDs. Separate multiple IDs with commas (,).
+        # The IDs of dedicated hosts. You can specify up to 100 subscription dedicated host IDs. Separate multiple IDs with commas (,).
         # 
         # This parameter is required.
         self.dedicated_host_ids = dedicated_host_ids
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the dedicated host resides.
+        # The region ID of the dedicated host.
         # 
         # This parameter is required.
         self.region_id = region_id

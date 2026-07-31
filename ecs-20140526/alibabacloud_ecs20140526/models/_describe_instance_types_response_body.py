@@ -15,7 +15,7 @@ class DescribeInstanceTypesResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.instance_types = instance_types
-        # The pagination token returned by this call.
+        # The query token returned by this call.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -135,6 +135,7 @@ class DescribeInstanceTypesResponseBodyInstanceTypesInstanceType(DaraModel):
         primary_eni_queue_number: int = None,
         queue_pair_number: int = None,
         secondary_eni_queue_number: int = None,
+        security_options: main_models.DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeSecurityOptions = None,
         supported_boot_modes: main_models.DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeSupportedBootModes = None,
         total_eni_queue_quantity: int = None,
     ):
@@ -181,6 +182,7 @@ class DescribeInstanceTypesResponseBodyInstanceTypesInstanceType(DaraModel):
         self.primary_eni_queue_number = primary_eni_queue_number
         self.queue_pair_number = queue_pair_number
         self.secondary_eni_queue_number = secondary_eni_queue_number
+        self.security_options = security_options
         self.supported_boot_modes = supported_boot_modes
         self.total_eni_queue_quantity = total_eni_queue_quantity
 
@@ -197,6 +199,8 @@ class DescribeInstanceTypesResponseBodyInstanceTypesInstanceType(DaraModel):
             self.network_cards.validate()
         if self.network_info:
             self.network_info.validate()
+        if self.security_options:
+            self.security_options.validate()
         if self.supported_boot_modes:
             self.supported_boot_modes.validate()
 
@@ -333,6 +337,9 @@ class DescribeInstanceTypesResponseBodyInstanceTypesInstanceType(DaraModel):
 
         if self.secondary_eni_queue_number is not None:
             result['SecondaryEniQueueNumber'] = self.secondary_eni_queue_number
+
+        if self.security_options is not None:
+            result['SecurityOptions'] = self.security_options.to_map()
 
         if self.supported_boot_modes is not None:
             result['SupportedBootModes'] = self.supported_boot_modes.to_map()
@@ -479,6 +486,10 @@ class DescribeInstanceTypesResponseBodyInstanceTypesInstanceType(DaraModel):
         if m.get('SecondaryEniQueueNumber') is not None:
             self.secondary_eni_queue_number = m.get('SecondaryEniQueueNumber')
 
+        if m.get('SecurityOptions') is not None:
+            temp_model = main_models.DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeSecurityOptions()
+            self.security_options = temp_model.from_map(m.get('SecurityOptions'))
+
         if m.get('SupportedBootModes') is not None:
             temp_model = main_models.DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeSupportedBootModes()
             self.supported_boot_modes = temp_model.from_map(m.get('SupportedBootModes'))
@@ -512,6 +523,33 @@ class DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeSupportedBootMod
         m = m or dict()
         if m.get('SupportedBootMode') is not None:
             self.supported_boot_mode = m.get('SupportedBootMode')
+
+        return self
+
+class DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeSecurityOptions(DaraModel):
+    def __init__(
+        self,
+        secure_boot_support: str = None,
+    ):
+        self.secure_boot_support = secure_boot_support
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.secure_boot_support is not None:
+            result['SecureBootSupport'] = self.secure_boot_support
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SecureBootSupport') is not None:
+            self.secure_boot_support = m.get('SecureBootSupport')
 
         return self
 

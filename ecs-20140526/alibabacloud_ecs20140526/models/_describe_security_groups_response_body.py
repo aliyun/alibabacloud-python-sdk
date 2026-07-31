@@ -18,22 +18,22 @@ class DescribeSecurityGroupsResponseBody(DaraModel):
         security_groups: main_models.DescribeSecurityGroupsResponseBodySecurityGroups = None,
         total_count: int = None,
     ):
-        # The pagination token returned in this call. If this value is empty when you use MaxResults and NextToken for paging, no more data is available.
+        # The pagination token returned in this invoke. If this value is empty when you use MaxResults and NextToken for paged query with paging, no more data is available.
         self.next_token = next_token
         # The current page number.
         # 
-        # > This parameter will be offline. Use NextToken and MaxResults for paging.
+        # > This parameter will be offline soon. Use NextToken and MaxResults for paged query and paging operations.
         self.page_number = page_number
         # The number of entries per page.
         # 
-        # > This parameter will be offline. Use NextToken and MaxResults for paging.
+        # > This parameter will be offline soon. Use NextToken and MaxResults for paged query and paging operations.
         self.page_size = page_size
         # The region ID of the security group.
         self.region_id = region_id
         # The request ID.
         self.request_id = request_id
         self.security_groups = security_groups
-        # The total number of security groups. This parameter is not returned when you use `MaxResults` and `NextToken` for parameter query.
+        # The total number of security groups. This parameter is not returned when you use `MaxResults` and `NextToken` parameter query.
         self.total_count = total_count
 
     def validate(self):

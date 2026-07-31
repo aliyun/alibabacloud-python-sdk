@@ -27,35 +27,28 @@ class DescribeDisksFullStatusRequest(DaraModel):
         tag: List[main_models.DescribeDisksFullStatusRequestTag] = None,
     ):
         self.event_time = event_time
-        # The ID of EBS device N. Valid values of N: 1 to 100.
+        # The block storage ID. Valid values of N: 1 to 100.
         self.disk_id = disk_id
-        # The ID of event N. Valid values of N: 1 to 100.
+        # The event ID. Valid values of N: 1 to 100.
         self.event_id = event_id
-        # The event type of the EBS device. Valid values:
+        # The event type of the block storage device. Valid values: 
         # 
-        # - Degraded: The performance of the EBS device is degraded.
-        # 
-        # - SeverelyDegraded: The performance of the EBS device is severely degraded.
-        # 
-        # - Stalled: The performance of the EBS device is severely affected.
-        # 
-        # - ErrorDetected: The local disk is damaged.
+        # - Degraded: The block storage performance is degraded.
+        # - SeverelyDegraded: The block storage performance is severely degraded.
+        # - Stalled: The block storage performance is severely impacted.
+        # - ErrorDetected: A local disk is damaged.
         self.event_type = event_type
-        # The health status of the EBS device. Valid values:
+        # The health status of the block storage device. Valid values: 
         # 
-        # - Impaired: The EBS device is damaged.
-        # 
-        # - Warning: The performance of the EBS device is degraded.
-        # 
-        # - Initializing: The EBS device is being initialized.
-        # 
-        # - InsufficientData: The status cannot be determined due to insufficient data.
-        # 
-        # - NotApplicable: The EBS device cannot be used.
+        # - Impaired: temporarily unreadable and unwritable.
+        # - Warning: degraded service.
+        # - Initializing: being initialized.
+        # - InsufficientData: insufficient data.
+        # - NotApplicable: not applicable.
         self.health_status = health_status
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number. Pages start from page 1. The value must be a positive integer.
+        # The page number of the query result. Valid values: positive integers.
         # 
         # Default value: 1.
         self.page_number = page_number
@@ -63,29 +56,24 @@ class DescribeDisksFullStatusRequest(DaraModel):
         # 
         # Default value: 10.
         self.page_size = page_size
-        # The region ID of the EBS device. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The region ID of the block storage device. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group to which the EBS device belongs. If you configure this parameter to query resources, up to 1,000 resources that belong to the specified resource group can be displayed in the response.
+        # The ID of the resource group to which the block storage resource belongs. When you use this parameter to filter resources, the resource count cannot exceed 1,000.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The lifecycle status of the EBS device. For more information, see [Disk status](https://help.aliyun.com/document_detail/25689.html). Valid values:
+        # The lifecycle status of the block storage device. For more information, see [Disk status table](https://help.aliyun.com/document_detail/25689.html). Valid values: 
         # 
-        # - In_use: The EBS device is in use.
-        # 
-        # - Available: The EBS device can be attached.
-        # 
-        # - Attaching: The EBS device is being attached.
-        # 
-        # - Detaching: The EBS device is being detached.
-        # 
-        # - Creating: The EBS device is being created.
-        # 
-        # - ReIniting: The EBS device is being initialized.
+        # - In_use: in use.
+        # - Available: to be attached.
+        # - Attaching: being attached.
+        # - Detaching: being detached.
+        # - Creating: being created.
+        # - ReIniting: being initialized.
         self.status = status
-        # The tags to add to the EBS device.
+        # The tags.
         self.tag = tag
 
     def validate(self):
@@ -209,11 +197,11 @@ class DescribeDisksFullStatusRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N to add to the EBS device. A key-value pair consists of a key specified by the Tag.N.Key parameter and a value specified by the `Tag.N.Value` parameter. The two parameters are associated with each other. Valid values of N: 1 to 20.
+        # The tag key attached to the block storage resource. N specifies that you can set one or more tag keys. The value of N in this parameter corresponds to the value of N in the `Tag.N.Value` parameter to form a key-value pair. Valid values of N: 1 to 20.
         # 
-        # Up to 1,000 resources with the specified tags can be returned in the response.
+        # If you use a single tag to filter resources, the number of resources with the tag cannot exceed 1,000. If you use multiple tags to filter resources, the number of resources that are attached to all specified tags cannot exceed 1,000.
         self.key = key
-        # The value of tag N to add to the EBS device. A key-value pair consists of a key specified by the `Tag.N.Key` parameter and a value specified by the Tag.N.Value parameter. The two parameters are associated with each other. Valid values of N: 1 to 20.
+        # The tag value attached to the block storage resource. N specifies that you can set one or more tag values. The value of N in this parameter corresponds to the value of N in the `Tag.N.Key` parameter to form a key-value pair. Valid values of N: 1 to 20.
         self.value = value
 
     def validate(self):
@@ -248,11 +236,11 @@ class DescribeDisksFullStatusRequestEventTime(DaraModel):
         end: str = None,
         start: str = None,
     ):
-        # The end of the time range to query occurred events.
+        # The end of the time range during which to query events.
         # 
         # Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
         self.end = end
-        # The beginning of the time range to query occurred events.
+        # The start of the time range during which to query events.
         # 
         # Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
         self.start = start

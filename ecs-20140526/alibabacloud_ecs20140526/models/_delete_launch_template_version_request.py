@@ -18,7 +18,7 @@ class DeleteLaunchTemplateVersionRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The version numbers of the launch template to delete.
+        # The version numbers of the template to be deleted.
         # 
         # This parameter is required.
         self.delete_version = delete_version
@@ -28,7 +28,7 @@ class DeleteLaunchTemplateVersionRequest(DaraModel):
         self.launch_template_name = launch_template_name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the launch template. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list of Alibaba Cloud.
+        # The region ID of the launch template. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id

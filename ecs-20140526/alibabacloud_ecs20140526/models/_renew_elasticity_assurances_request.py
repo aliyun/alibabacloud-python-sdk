@@ -74,7 +74,7 @@ class RenewElasticityAssurancesRequest(DaraModel):
         # 
         # Default value: Year.
         self.period_unit = period_unit
-        # The region ID of the elasticity assurance service.
+        # The ID of the region in which the elasticity assurance service resides.
         # 
         # You can call [DescribeRegions](https://help.aliyun.com/document_detail/2680071.html) to query the most recent region list.
         self.region_id = region_id

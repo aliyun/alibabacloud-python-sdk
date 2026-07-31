@@ -28,59 +28,54 @@ class DescribeElasticityAssurancesRequest(DaraModel):
         zone_id: str = None,
     ):
         self.private_pool_options = private_pool_options
-        # The billing method of the instances. Only `PostPaid` (pay-as-you-go) is supported.
+        # The billing method of instances. Valid values: PostPaid. Only pay-as-you-go is supported.
         # 
-        # Default value: `PostPaid`.
+        # Default value: PostPaid.
         self.instance_charge_type = instance_charge_type
-        # The instance type. You can use this parameter to query only active elasticity assurances. To query released elasticity assurances, you must use `PrivatePoolOptions.Ids`.
+        # The instance type. You can use the instance type to query only active elasticity assurance services. Released services can only be queried by using `PrivatePoolOptions.Ids`.
         self.instance_type = instance_type
-        # The maximum number of entries to return on each page.
+        # The maximum number of entries per page for a paged query.
         # 
         # Maximum value: 100.
         # 
         # Default value: 10.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+        # The pagination token for the elasticity assurance service query. Obtain the value from the result of the previous request.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The type of the Elasticity Assurance. Valid values:
+        # The type of the elasticity assurance service. Valid values:
         # 
-        # - `ElasticityAssurance`: a standard elasticity assurance. This type of elasticity assurance is created when you do not specify `RecurrenceRules`.
+        # - ElasticityAssurance: standard elasticity assurance (used when RecurrenceRules is not specified).
         # 
-        # - `TimeDivisionElasticityAssurance`: a time-division elasticity assurance. This type of elasticity assurance is created when you specify `RecurrenceRules`.
+        # - TimeDivisionElasticityAssurance: time-division elasticity assurance (used when RecurrenceRules is specified).
         self.package_type = package_type
         # > This parameter is deprecated.
         self.platform = platform
-        # The ID of the region where the Elasticity Assurance is located. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the latest list of Alibaba Cloud regions.
+        # The ID of the region to which the elasticity assurance service belongs. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group. When you use this parameter to filter resources, the number of matching resources cannot exceed 1,000.
+        # The ID of the resource group. When you use this parameter to filter resources, the resource count cannot exceed 1000.
         # 
-        # > Filtering by the default resource group is not supported.
+        # >Filtering by the default resource group is not supported.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The status of the Elasticity Assurance. Valid values:
+        # The status of the elasticity assurance service. Valid values:
         # 
-        # - `All`: all statuses.
+        # - All: all states.
+        # - Deactived: pending activation (this state is in invitational preview).
+        # - Preparing: being prepared.
+        # - Prepared: pending effectiveness.
+        # - Active: active.
+        # - Released: released.
         # 
-        # - `Deactivated`: The Elasticity Assurance is pending activation. This status is available only for invitational preview.
-        # 
-        # - `Preparing`: The Elasticity Assurance is being prepared.
-        # 
-        # - `Prepared`: The Elasticity Assurance is ready to take effect.
-        # 
-        # - `Active`: The Elasticity Assurance is active.
-        # 
-        # - `Released`: The Elasticity Assurance is released.
-        # 
-        # If you do not specify this parameter, elasticity assurances in all states are returned, except for those in the `Pending` and `Released` states.
+        # If you do not specify this parameter, elasticity assurance services in all states except Pending and Released are queried.
         self.status = status
-        # The tags used to filter Elasticity Assurances.
+        # The list of tag key-value pairs bound to the elasticity assurance service.
         self.tag = tag
-        # The ID of the zone where the Elasticity Assurance is located.
+        # The zone ID in the region to which the elasticity assurance service belongs.
         self.zone_id = zone_id
 
     def validate(self):
@@ -210,11 +205,11 @@ class DescribeElasticityAssurancesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key. You can specify up to 20 tag keys to filter resources.
+        # The tag key. N indicates that you can set multiple tag keys for filtering. Valid values of N: 1 to 20.
         # 
-        # The query returns a maximum of 1,000 resources that match the specified tags. If more than 1,000 resources match the tags, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query all the resources.
+        # If you use a single tag to filter resources, the resource count with the specified tag cannot exceed 1000. If you use multiple tags to filter resources, the resource count of resources that have all specified tags attached cannot exceed 1000. If the resource count exceeds 1000, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query resources.
         self.key = key
-        # The tag value. You can specify up to 20 tag values.
+        # The tag value. N indicates that you can set multiple tag values for filtering. Valid values of N: 1 to 20.
         self.value = value
 
     def validate(self):
@@ -248,7 +243,7 @@ class DescribeElasticityAssurancesRequestPrivatePoolOptions(DaraModel):
         self,
         ids: str = None,
     ):
-        # The IDs of the elasticity assurances. You can specify a JSON array of up to 100 elasticity assurance IDs.
+        # The list of elasticity assurance service IDs. The value can be a JSON array that consists of up to 100 IDs. Separate multiple IDs with commas (,).
         self.ids = ids
 
     def validate(self):

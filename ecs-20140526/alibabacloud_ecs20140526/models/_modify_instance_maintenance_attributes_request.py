@@ -22,27 +22,24 @@ class ModifyInstanceMaintenanceAttributesRequest(DaraModel):
     ):
         # The maintenance action. Valid values:
         # 
-        # - Stop: stops the instance.
-        # 
-        # - AutoRecover: automatically recovers the instance.
-        # 
-        # - AutoRedeploy: redeploys the instance, which may damage the data disks attached to the instance.
+        # - Stop: The instance is stopped (that is, the instance goes down).
+        # - AutoRecover: The instance is automatically recovered.
+        # - AutoRedeploy: The instance is redeployed upon downtime, with possible data disk loss.
         self.action_on_maintenance = action_on_maintenance
-        # The ID of instance N. Valid values of N: 1 to 100.
+        # The instance ID. Valid values of N: 1 to 100.
         self.instance_id = instance_id
-        # The maintenance windows.
+        # The list of maintenance time windows.
         self.maintenance_window = maintenance_window
-        # Specifies whether to send an event notification before maintenance. Valid values:
+        # Specifies whether to send an event notification before instance downtime maintenance. Valid values:
         # 
-        # - true
-        # 
-        # - false
+        # - true: An event notification is sent.
+        # - false: No event notification is sent.
         # 
         # Default value: false.
         self.notify_on_maintenance = notify_on_maintenance
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The region ID of the instance. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -131,9 +128,9 @@ class ModifyInstanceMaintenanceAttributesRequestMaintenanceWindow(DaraModel):
         end_time: str = None,
         start_time: str = None,
     ):
-        # The end time of the maintenance window. The time must be on the hour. You must configure both StartTime and EndTime. The value of EndTime must be 1 to 23 hours later than the value of StartTime. Specify the time in the `HH:mm:ss` format. The time must be in UTC+8. Set the value of N to 1.
+        # The end time of the time window. The time must be on the hour. Minutes and seconds cannot be specified. The start time and end time must be specified together, and the interval between them must be 1 to 23 hours. The time is in the UTC+8 time zone and in the `HH:mm:ss` format. Valid values of N: 1. Only one time window can be specified.
         self.end_time = end_time
-        # The start time of the maintenance window. The time must be on the hour. You must configure both StartTime and EndTime. The value of EndTime must be 1 to 23 hours later than the value of StartTime. Specify the time in the `HH:mm:ss` format. The time must be in UTC+8. Set the value of N to 1.
+        # The start time of the time window. The time must be on the hour. Minutes and seconds cannot be specified. The start time and end time must be specified together, and the interval between them must be 1 to 23 hours. The time is in the UTC+8 time zone and in the `HH:mm:ss` format. Valid values of N: 1. Only one time window can be specified.
         self.start_time = start_time
 
     def validate(self):

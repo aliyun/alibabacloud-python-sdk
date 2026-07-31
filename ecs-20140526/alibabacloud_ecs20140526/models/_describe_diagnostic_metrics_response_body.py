@@ -16,7 +16,7 @@ class DescribeDiagnosticMetricsResponseBody(DaraModel):
     ):
         # The diagnostic metrics.
         self.metrics = metrics
-        # A pagination token. It can be used in the next request to retrieve a new page of results.
+        # The pagination token returned in this call.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -74,7 +74,7 @@ class DescribeDiagnosticMetricsResponseBodyMetrics(DaraModel):
     ):
         # The description of the diagnostic metric.
         self.description = description
-        # Indicates whether the diagnostic metric needs to be assessed by running a Cloud Assistant command in a guest operating system.
+        # Indicates whether a script needs to be executed in the guest OS.
         self.guest_metric = guest_metric
         # The category of the diagnostic metric.
         self.metric_category = metric_category
@@ -84,13 +84,11 @@ class DescribeDiagnosticMetricsResponseBodyMetrics(DaraModel):
         self.metric_name = metric_name
         # The resource type supported by the diagnostic metric.
         self.resource_type = resource_type
-        # The operating system type supported by the diagnostic metric. Valid values:
+        # The supported operating system. Valid values:
         # 
-        # - Windows
-        # 
-        # - Linux
-        # 
-        # - All: Windows and Linux
+        # - Windows: Windows operating systems are supported.
+        # - Linux: Linux operating systems are supported.
+        # - All: both Windows and Linux operating systems are supported.
         self.supported_operating_system = supported_operating_system
 
     def validate(self):

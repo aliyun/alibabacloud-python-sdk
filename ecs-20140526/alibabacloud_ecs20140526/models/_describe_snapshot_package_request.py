@@ -17,15 +17,15 @@ class DescribeSnapshotPackageRequest(DaraModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number. Pages start from page 1.
+        # The page number of the OSS storage plan list. Minimum value: 1.
         # 
-        # Default value: 1
+        # Default value: 1.
         self.page_number = page_number
-        # The number of entries per page. Maximum value: 1 to 100.
+        # The number of entries per page for a paged query. Maximum value: 100.
         # 
-        # Default value: 10
+        # Default value: 10.
         self.page_size = page_size
-        # The ID of the request.
+        # The region ID of the snapshot. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id

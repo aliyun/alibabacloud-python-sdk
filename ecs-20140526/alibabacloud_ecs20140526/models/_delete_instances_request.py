@@ -25,24 +25,24 @@ class DeleteInstancesRequest(DaraModel):
         self.client_token = client_token
         # Specifies whether to perform only a dry run, without performing the actual request.
         # 
-        # - true: sends a check request without querying resource status. The check items include whether your AccessKey pair is valid, whether Resource Access Management (RAM) user authorization is granted, and whether the required parameters are specified. If the check fails, the corresponding error is returned. If the check succeeds, the DRYRUN.SUCCESS error code is returned.
-        # - false: sends a Normal request. After the check succeeds, a 2xx HTTP status code is returned and the resource status is queried directly.
+        # - true: sends a check request without querying resource status. The check items include whether your AccessKey pair is valid, whether the Resource Access Management (RAM) user is granted the required authorization, and whether the required parameters are specified. If the check fails, the corresponding error is returned. If the check passes, the error code DRYRUN.SUCCESS is returned.
+        # - false: sends a Normal request. After the check passes, a 2xx HTTP status code is returned and the resource status is queried.
         # 
         # Default value: false.
         self.dry_run = dry_run
-        # Specifies whether to forcefully release an instance that is in the **Running** (`Running`) state.
+        # Specifies whether to forcefully release ECS instance that is in the **Running** state.
         # 
-        # - true: forcefully releases ECS instance that is in the **Running** (`Running`) state.
-        # - false: releases ECS instance only when it is in the **Stopped** (`Stopped`) state.
+        # - true: forcefully releases ECS instance in the **Running** state.
+        # - false: releases ECS instance only when it is in the **Stopped** state.
         # 
         # Default value: false.
-        # >Warning: Forceful release is equivalent to powering off ECS instance. All in-memory data and temporary data in the storage are erased and cannot be recovered..
+        # >Warning: Forceful release is equivalent to powering off the instance. All in-memory data and temporary storage data of the instance is erased and cannot be recovered.
         self.force = force
-        # Specifies whether to forcefully shut down the instance before release when the instance is in the **Running** (`Running`) state. This parameter takes effect only when `Force=true`. Valid values:
+        # Specifies whether to forcefully stop an instance in the **Running** state before release. This parameter takes effect only when `Force=true`. Valid values:
         # 
-        # - true: forcefully shuts down and releases the instance. This is equivalent to a power-off operation. The instance directly enters the resource release process.
-        # >Warning: Forceful release is equivalent to powering off the instance. All in-memory data and temporary data in the storage are erased and cannot be recovered.
-        # - false: performs a standard shutdown before releasing the instance. This mode causes the release process to take several minutes. You can configure service draining actions during the operating system shutdown to reduce noise in your business systems.
+        # - true: forcefully stops and releases the instance. This is equivalent to a power-off operation. The instance directly enters the resource release process.
+        # >Warning: Forceful release is equivalent to powering off the instance. All in-memory data and temporary storage data of the instance is erased and cannot be recovered.
+        # - false: performs a graceful shutdown before releasing the instance. This mode causes the release operation to take several minutes. You can configure service draining actions during the operating system shutdown to reduce noise in your business systems.
         # 
         # Default value: true.
         self.force_stop = force_stop

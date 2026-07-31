@@ -16,13 +16,13 @@ class DeletePortRangeListRequest(DaraModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the port list.
+        # The port list ID.
         # 
-        # > If the port list is associated with other resources, you cannot delete the port list. You must disassociate the port list from the resources and then delete the port list.
+        # >If the port list is associated with other resources, it cannot be deleted. Dissociate the port list from the resources before you delete it.
         # 
         # This parameter is required.
         self.port_range_list_id = port_range_list_id
-        # The region ID of the port list. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The region ID of the port list. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id

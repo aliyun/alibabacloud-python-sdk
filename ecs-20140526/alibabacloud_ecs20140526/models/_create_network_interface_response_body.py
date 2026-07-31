@@ -33,49 +33,43 @@ class CreateNetworkInterfaceResponseBody(DaraModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
-        # The description of the elastic network interface.
+        # The description of the network interface controller (NIC).
         self.description = description
-        # The IPv4 prefixes that are assigned to the elastic network interface.
         self.ipv_4prefix_sets = ipv_4prefix_sets
-        # The IPv6 prefixes that are assigned to the elastic network interface.
         self.ipv_6prefix_sets = ipv_6prefix_sets
-        # The IPv6 addresses that are assigned to the elastic network interface.
         self.ipv_6sets = ipv_6sets
-        # The MAC address of the elastic network interface.
+        # The MAC address of the network interface controller (NIC).
         self.mac_address = mac_address
-        # The ID of the elastic network interface.
+        # The ID of the network interface controller (NIC).
         self.network_interface_id = network_interface_id
-        # The name of the elastic network interface.
+        # The name of the network interface controller (NIC).
         self.network_interface_name = network_interface_name
-        # The ID of the account that owns the elastic network interface.
+        # The ID of the account that owns the network interface controller (NIC).
         self.owner_id = owner_id
-        # The primary private IP address of the elastic network interface.
+        # The private IP address of the network interface controller (NIC).
         self.private_ip_address = private_ip_address
-        # The private IP addresses that are assigned to the elastic network interface.
         self.private_ip_sets = private_ip_sets
         # The request ID.
         self.request_id = request_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The IDs of the security groups to which the elastic network interface belongs.
         self.security_group_ids = security_group_ids
-        # The ID of the distributor for the elastic network interface.
+        # The Virtual Network Operator (VNO) ID associated with the network interface controller (NIC).
         self.service_id = service_id
-        # Specifies whether the elastic network interface is managed by a cloud service or a distributor.
+        # Indicates whether the user of the network interface controller (NIC) is an Alibaba Cloud service or a VNO.
         self.service_managed = service_managed
         # > This parameter is in invitational preview and is not publicly available.
         self.source_dest_check = source_dest_check
-        # The status of the elastic network interface.
+        # The status of the network interface controller (NIC).
         self.status = status
-        # The tags of the elastic network interface.
         self.tags = tags
-        # The type of the elastic network interface.
+        # The type of the network interface controller (NIC).
         self.type = type
-        # The ID of the vSwitch.
+        # The ID of the vSwitch in the VPC.
         self.v_switch_id = v_switch_id
-        # The ID of the VPC to which the elastic network interface belongs.
+        # The ID of the VPC to which the ENI belongs.
         self.vpc_id = vpc_id
-        # The ID of the zone.
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -447,8 +441,10 @@ class CreateNetworkInterfaceResponseBodyIpv6SetsIpv6Set(DaraModel):
     def __init__(
         self,
         ipv_6address: str = None,
+        primary: bool = None,
     ):
         self.ipv_6address = ipv_6address
+        self.primary = primary
 
     def validate(self):
         pass
@@ -461,12 +457,18 @@ class CreateNetworkInterfaceResponseBodyIpv6SetsIpv6Set(DaraModel):
         if self.ipv_6address is not None:
             result['Ipv6Address'] = self.ipv_6address
 
+        if self.primary is not None:
+            result['Primary'] = self.primary
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Ipv6Address') is not None:
             self.ipv_6address = m.get('Ipv6Address')
+
+        if m.get('Primary') is not None:
+            self.primary = m.get('Primary')
 
         return self
 

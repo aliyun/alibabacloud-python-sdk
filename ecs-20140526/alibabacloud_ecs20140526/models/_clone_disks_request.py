@@ -36,7 +36,7 @@ class CloneDisksRequest(DaraModel):
         # - false: does not enable the performance burst feature.
         # > This parameter is supported only when DiskCategory is set to cloud_auto. For more information, see [ESSD AutoPL disks](https://www.alibabacloud.com/help/en/ecs/user-guide/essd-autopl-disks).
         self.bursting_enabled = bursting_enabled
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        # A client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The category of the new disk. Valid values:
         # 
@@ -46,8 +46,8 @@ class CloneDisksRequest(DaraModel):
         # - cloud_regional_disk_auto: regional ESSD.
         # 
         # > Disk category restrictions for disk cloning:
-        # > - Non-regional disks can be cloned only to non-regional types.
-        # > - Regional disks can be cloned only to regional types.
+        # > - Non-regional disks can only be cloned to non-regional types.
+        # > - Regional disks can only be cloned to regional types.
         # 
         # This parameter is required.
         self.disk_category = disk_category
@@ -56,12 +56,12 @@ class CloneDisksRequest(DaraModel):
         # Default value: empty.
         self.disk_name = disk_name
         # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
-        # - true: sends a check request without querying the filing status. The check items include whether the AccessKey pair is valid, whether the Resource Access Management (RAM) user is granted the required authorization, and whether the required parameters are specified. If the check fails, the corresponding error message is returned. If the check succeeds, the DryRunOperation error code is returned.
-        # - false (default): sends a Normal request. After the check succeeds, a 2XX HTTP status code is returned and the filing status is directly queried.
+        # - true: sends a check request without querying the filing status. The system checks whether your AccessKey pair is valid, whether the Resource Access Management (RAM) user is granted the required authorization, and whether the required parameters are specified. If the check fails, the corresponding error message is returned. If the check passes, the DryRunOperation error code is returned.
+        # - false (default): sends a Normal request. After the check passes, a 2XX HTTP status code is returned and the filing status is queried.
         self.dry_run = dry_run
         # Specifies whether the new disk is encrypted. Valid values:
-        # - true: The new disk is encrypted.
-        # - false: The new disk is not encrypted.
+        # - true: The disk is encrypted.
+        # - false: The disk is not encrypted.
         # 
         # Default value: false.
         self.encrypted = encrypted
@@ -70,12 +70,12 @@ class CloneDisksRequest(DaraModel):
         # Specifies whether to enable the multi-attach attribute for the new disk. Valid values:
         # 
         # - Disabled: disables the multi-attach attribute.
-        # - Enabled: enables the multi-attach attribute. Currently, only enterprise SSDs support Settings to `Enabled`.
+        # - Enabled: enables the multi-attach attribute. Only enterprise SSDs support settings this to `Enabled`.
         # 
         # This parameter is required.
         self.multi_attach = multi_attach
         self.owner_id = owner_id
-        # The performance level of the standard SSD. Settings for this parameter depend on the disk category. Valid values:
+        # The performance level of the enterprise SSD. Settings this parameter when you create an enterprise SSD. Valid values:
         # 
         # - PL0: a single disk can deliver up to 10,000 random read/write IOPS.
         # - PL1: a single disk can deliver up to 50,000 random read/write IOPS.
@@ -101,7 +101,7 @@ class CloneDisksRequest(DaraModel):
         # The ID of the resource group to which the disk belongs.
         self.resource_group_id = resource_group_id
         self.resource_owner_id = resource_owner_id
-        # The capacity of the new disk. Unit: GiB. You must specify a value for this parameter. Valid values:
+        # The capacity of the new disk. Unit: GiB. You must specify this parameter. Valid values:
         # 
         # - cloud_essd: The valid values depend on the performance level.
         #     - PL0: 1 to 65,536.
@@ -266,7 +266,7 @@ class CloneDisksRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the disk. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with aliyun or acs:. The tag key cannot contain http:// or https://.
+        # The tag key of the disk. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with aliyun or acs:. It cannot contain http:// or https://.
         self.key = key
         # The tag value of the disk. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot contain http:// or https://.
         self.value = value

@@ -11,7 +11,7 @@ class DeregisterManagedInstanceResponseBody(DaraModel):
         instance: main_models.DeregisterManagedInstanceResponseBodyInstance = None,
         request_id: str = None,
     ):
-        # Details of the managed instances.
+        # The information about the managed instance.
         self.instance = instance
         # The request ID.
         self.request_id = request_id
@@ -76,15 +76,15 @@ class DeregisterManagedInstanceResponseBodyInstance(DaraModel):
         self.internet_ip = internet_ip
         # The internal IP address of the managed instance.
         self.intranet_ip = intranet_ip
-        # The number of times that Cloud Assistant tasks were executed on the managed instance.
+        # The number of times that Cloud Assistant tasks were run on the managed instance.
         self.invocation_count = invocation_count
-        # The time when the Cloud Assistant task was last executed.
+        # The time when the last Cloud Assistant task was run.
         self.last_invoked_time = last_invoked_time
-        # The machine code of the managed instance.
+        # The machine ID of the managed instance.
         self.machine_id = machine_id
-        # The operating system type of the managed instance.
+        # The operating system of the managed instance.
         self.os_type = os_type
-        # The version information about the operating system.
+        # The version of the operating system.
         self.os_version = os_version
         # The time when the managed instance was registered.
         self.registration_time = registration_time

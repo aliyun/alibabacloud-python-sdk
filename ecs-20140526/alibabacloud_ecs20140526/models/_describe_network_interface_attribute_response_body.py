@@ -48,121 +48,73 @@ class DescribeNetworkInterfaceAttributeResponseBody(DaraModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
-        # The elastic IP address that is associated with the primary private IP address of the elastic network interface.
+        # The Elastic IP Address (EIP) associated with the secondary private IP address of the network interface controller (NIC).
         self.associated_public_ip = associated_public_ip
         # > This parameter is in invitational preview and is not publicly available.
         self.attachment = attachment
         # > This parameter is in invitational preview and is not publicly available.
         self.bond_interface_specification = bond_interface_specification
-        # The connection tracking configuration.
-        # 
-        # For more information, see [Connection timeout management](https://help.aliyun.com/document_detail/2865958.html).
-        # 
-        # > This parameter is returned only if the `Attribute` parameter is set to `connectionTrackingConfiguration` in the request.
+        # The collection of network connectivity tracking configuration information.
         self.connection_tracking_configuration = connection_tracking_configuration
-        # The time when the elastic network interface was created.
+        # The time when the network interface controller (NIC) was created.
         self.creation_time = creation_time
-        # Indicates whether to release the elastic network interface when the associated instance is released.
-        # 
-        # - `true`: The interface is released.
-        # 
-        # - `false`: The interface is retained.
+        # Indicates whether the ENI is retained when the associated instance is released. Valid values:
         self.delete_on_release = delete_on_release
-        # The description of the elastic network interface.
+        # The description of the network interface controller (NIC).
         self.description = description
         # This parameter is not publicly available.
         self.enhanced_network = enhanced_network
-        # The ID of the instance to which the elastic network interface is attached.
-        # 
-        # > This parameter is not returned if the elastic network interface is managed by another Alibaba Cloud service.
+        # The ID of the instance to which the network interface controller (NIC) is attached.
         self.instance_id = instance_id
         self.ipv_4prefix_sets = ipv_4prefix_sets
         self.ipv_6prefix_sets = ipv_6prefix_sets
         self.ipv_6sets = ipv_6sets
-        # The MAC address of the elastic network interface.
+        # The MAC address of the network interface controller (NIC).
         self.mac_address = mac_address
-        # The ID of the elastic network interface.
+        # The ID of the network interface controller (NIC).
         self.network_interface_id = network_interface_id
-        # The name of the elastic network interface.
+        # The name of the network interface controller (NIC).
         self.network_interface_name = network_interface_name
-        # The communication parameters of the elastic network interface.
+        # The traffic parameters of the network interface controller (NIC).
         self.network_interface_traffic_config = network_interface_traffic_config
-        # The communication mode of the elastic network interface. Valid values:
-        # 
-        # - `Standard`: Uses TCP communication.
-        # 
-        # - `HighPerformance`: Uses the Elastic RDMA Interface (ERI) for RDMA communication.
-        # 
-        # > The `HighPerformance` value is supported only by RDMA-enhanced instances, such as the c7re family.
+        # The communication mode of the network interface controller (NIC). Valid values:
         self.network_interface_traffic_mode = network_interface_traffic_mode
-        # The ID of the account to which the elastic network interface belongs.
+        # The ID of the account that owns the network interface controller (NIC).
         self.owner_id = owner_id
-        # The primary private IP address of the elastic network interface.
+        # The private network IP address of the network interface controller (NIC).
         self.private_ip_address = private_ip_address
         self.private_ip_sets = private_ip_sets
-        # The QoS settings.
+        # The QoS rate limiting settings.
         self.qo_sconfig = qo_sconfig
-        # The number of queues supported by the elastic network interface.
-        # 
-        # - For a primary network interface, this parameter returns the default number of queues for the instance type.
-        # 
-        # - For a secondary network interface:
-        # 
-        #   - If the interface is in the `InUse` state:
-        # 
-        #     - If the queue number was not modified, the default value for the instance type is returned.
-        # 
-        #     - If the queue number was modified, the new value is returned.
-        # 
-        #   - If the secondary network interface is in the `Available` state:
-        # 
-        #     - If the queue number was not modified, this parameter is not returned.
-        # 
-        #     - If the queue number was modified, the new value is returned.
+        # The number of queues supported by the network interface controller (NIC).
         self.queue_number = queue_number
         # > This parameter is in invitational preview and is not publicly available.
         self.queue_pair_number = queue_pair_number
         # The request ID.
         self.request_id = request_id
-        # The ID of the enterprise resource group to which the elastic network interface belongs. If you use this parameter to filter resources, the number of resources cannot exceed 1,000.
-        # 
-        # > Resources in the default resource group cannot be filtered.
+        # The ID of the resource group to which the instance belongs. When you use this parameter to filter resources, the resource count cannot exceed 1000.
         self.resource_group_id = resource_group_id
         self.security_group_ids = security_group_ids
-        # The ID of the virtual service provider (VSP) for the elastic network interface.
+        # The ID of the Virtual Network Operator (VNO) to which the network interface controller (NIC) belongs.
         self.service_id = service_id
-        # Indicates whether the elastic network interface is managed by an Alibaba Cloud service or a VSP.
+        # Indicates whether the user of the network interface controller (NIC) is an Alibaba Cloud service or a VNO.
         self.service_managed = service_managed
         # > This parameter is in invitational preview and is not publicly available.
         self.slave_interface_specification = slave_interface_specification
         # This parameter is not publicly available.
         self.source_dest_check = source_dest_check
-        # The status of the elastic network interface. Valid values:
-        # 
-        # - `Available`: The elastic network interface is available.
-        # 
-        # - `Attaching`: The elastic network interface is being attached.
-        # 
-        # - `InUse`: The elastic network interface is attached.
-        # 
-        # - `Detaching`: The elastic network interface is being detached.
-        # 
-        # - `Deleting`: The elastic network interface is being deleted.
+        # The status of the network interface controller (NIC). Valid values:
         self.status = status
         self.tags = tags
         # > This parameter is in invitational preview and is not publicly available.
         self.tcp_option_address_enabled = tcp_option_address_enabled
-        # The type of the elastic network interface. Valid values:
-        # 
-        # - `Primary`: The primary network interface.
-        # 
-        # - `Secondary`: The secondary network interface.
+        # The type of the network interface controller (NIC). Valid values:
         self.type = type
-        # The ID of the vSwitch to which the elastic network interface is connected.
+        # The ID of the vSwitch to which the network interface controller (NIC) belongs.
         self.v_switch_id = v_switch_id
-        # The ID of the VPC to which the elastic network interface belongs.
+        # The ID of the VPC to which the network interface controller (NIC) belongs.
         self.vpc_id = vpc_id
-        # The ID of the zone.
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -591,9 +543,9 @@ class DescribeNetworkInterfaceAttributeResponseBodyQoSConfig(DaraModel):
         enable_qo_s: bool = None,
         qo_s: main_models.DescribeNetworkInterfaceAttributeResponseBodyQoSConfigQoS = None,
     ):
-        # Indicates whether QoS is enabled.
+        # Indicates whether QoS rate limiting is enabled.
         self.enable_qo_s = enable_qo_s
-        # The QoS settings.
+        # The QoS rate limiting settings.
         self.qo_s = qo_s
 
     def validate(self):
@@ -633,15 +585,15 @@ class DescribeNetworkInterfaceAttributeResponseBodyQoSConfigQoS(DaraModel):
         pps_rx: int = None,
         pps_tx: int = None,
     ):
-        # The maximum inbound bandwidth on the internal network.
+        # The maximum inbound internal bandwidth limit.
         self.bandwidth_rx = bandwidth_rx
-        # The maximum outbound bandwidth on the internal network.
+        # The maximum outbound internal bandwidth limit.
         self.bandwidth_tx = bandwidth_tx
-        # The maximum number of connections.
+        # The maximum number of sessions.
         self.concurrent_connections = concurrent_connections
-        # The inbound packet transmission rate on the internal network. Unit: packets per second (pps).
+        # The inbound internal network packet forwarding rate.
         self.pps_rx = pps_rx
-        # The outbound packet transmission rate on the internal network. Unit: packets per second (pps).
+        # The outbound internal network packet forwarding rate.
         self.pps_tx = pps_tx
 
     def validate(self):
@@ -810,11 +762,11 @@ class DescribeNetworkInterfaceAttributeResponseBodyNetworkInterfaceTrafficConfig
         queue_number: int = None,
         queue_pair_number: int = None,
     ):
-        # The communication mode of the elastic network interface.
+        # The communication mode of the network interface controller (NIC).
         self.network_interface_traffic_mode = network_interface_traffic_mode
-        # The number of queues for the elastic network interface.
+        # The number of queues supported by the network interface controller (NIC).
         self.queue_number = queue_number
-        # The number of queue pairs for the RDMA-enabled elastic network interface.
+        # The number of queues supported by the RDMA ENI.
         self.queue_pair_number = queue_pair_number
 
     def validate(self):
@@ -888,8 +840,10 @@ class DescribeNetworkInterfaceAttributeResponseBodyIpv6SetsIpv6Set(DaraModel):
     def __init__(
         self,
         ipv_6address: str = None,
+        primary: bool = None,
     ):
         self.ipv_6address = ipv_6address
+        self.primary = primary
 
     def validate(self):
         pass
@@ -902,12 +856,18 @@ class DescribeNetworkInterfaceAttributeResponseBodyIpv6SetsIpv6Set(DaraModel):
         if self.ipv_6address is not None:
             result['Ipv6Address'] = self.ipv_6address
 
+        if self.primary is not None:
+            result['Primary'] = self.primary
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Ipv6Address') is not None:
             self.ipv_6address = m.get('Ipv6Address')
+
+        if m.get('Primary') is not None:
+            self.primary = m.get('Primary')
 
         return self
 
@@ -1043,7 +1003,7 @@ class DescribeNetworkInterfaceAttributeResponseBodyEnhancedNetwork(DaraModel):
         virtual_function_quantity: int = None,
         virtual_function_total_queue_number: int = None,
     ):
-        # > This parameter is not publicly available.
+        # > This parameter is not yet available for use.
         self.enable_rss = enable_rss
         # This parameter is not publicly available.
         self.enable_sriov = enable_sriov
@@ -1095,15 +1055,11 @@ class DescribeNetworkInterfaceAttributeResponseBodyConnectionTrackingConfigurati
         tcp_established_timeout: int = None,
         udp_timeout: int = None,
     ):
-        # The timeout period for TCP connections in the `TIME_WAIT` and `FIN-WAIT-2` states. Unit: seconds. Valid values: an integer from 3 to 15.
-        # 
-        # > For ECS instances used with a Network Load Balancer (NLB) or Classic Load Balancer (CLB), the default timeout for connections in the `TIME_WAIT` state is 15 seconds.
+        # The timeout period for a TCP connection in the TIME_WAIT or CLOSED state. Unit: seconds. Valid values: an integer from 3 to 15.
         self.tcp_closed_and_time_wait_timeout = tcp_closed_and_time_wait_timeout
-        # The timeout period for established TCP connections. Unit: seconds. Valid values: 30, 60, 80, 100, 200, 300, 500, 700, and 910.
+        # The timeout period for an established TCP connection. Unit: seconds. Valid values: [30, 60, 80, 100, 200, 300, 500, 700, 910].
         self.tcp_established_timeout = tcp_established_timeout
-        # The timeout period for UDP streams. Unit: seconds. Valid values: 10, 20, 30, 60, 80, and 100.
-        # 
-        # > For ECS instances used with a Network Load Balancer (NLB) or Classic Load Balancer (CLB), the default UDP timeout is 100 seconds.
+        # The timeout period for a UDP flow. Unit: seconds. Valid values: [10, 20, 30, 60, 80, 100].
         self.udp_timeout = udp_timeout
 
     def validate(self):
@@ -1268,11 +1224,7 @@ class DescribeNetworkInterfaceAttributeResponseBodyAttachment(DaraModel):
         # > This parameter is in invitational preview and is not publicly available.
         self.instance_id = instance_id
         self.member_network_interface_ids = member_network_interface_ids
-        # The index of the physical network card to which the elastic network interface is attached.
-        # 
-        # - This parameter is not returned if the elastic network interface is `Available`, or if no index was specified during attachment.
-        # 
-        # - If the elastic network interface is `InUse` and an index was specified during attachment, this parameter returns the index of the physical network card.
+        # The index of the network card to which the ENI is attached.
         self.network_card_index = network_card_index
         # > This parameter is in invitational preview and is not publicly available.
         self.trunk_network_interface_id = trunk_network_interface_id
@@ -1356,9 +1308,9 @@ class DescribeNetworkInterfaceAttributeResponseBodyAssociatedPublicIp(DaraModel)
         allocation_id: str = None,
         public_ip_address: str = None,
     ):
-        # The ID of the elastic IP address.
+        # The ID of the EIP.
         self.allocation_id = allocation_id
-        # The public IP address.
+        # The EIP address.
         self.public_ip_address = public_ip_address
 
     def validate(self):

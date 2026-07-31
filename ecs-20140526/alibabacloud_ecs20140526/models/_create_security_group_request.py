@@ -26,7 +26,7 @@ class CreateSecurityGroupRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. The **ClientToken** value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
-        # The description of the security group. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+        # The description of the security group. The description must be 2 to 256 characters in length. It cannot start with `http://` or `https://`.
         # 
         # Default value: empty.
         self.description = description
@@ -40,7 +40,7 @@ class CreateSecurityGroupRequest(DaraModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The name of the security group. The name must be 2 to 128 characters in length and must start with a letter or a Chinese character. It cannot start with `http://` or `https://`. The name can contain characters that are categorized as letter in Unicode, including Chinese characters and English letters, and digits. The name can also contain colons (:), underscores (_), periods (.), or hyphens (-).
+        # The name of the security group. The name must be 2 to 128 characters in length and must start with a letter or a Chinese character. It cannot start with `http://` or `https://`. The name can contain characters that are categorized as letters in Unicode, including letters in English and Chinese, and digits. The name can also contain colons (:), underscores (_), periods (.), or hyphens (-).
         self.security_group_name = security_group_name
         # The type of the security group. Valid values:
         # 
@@ -51,7 +51,7 @@ class CreateSecurityGroupRequest(DaraModel):
         self.security_group_type = security_group_type
         # This parameter is not publicly available.
         self.service_managed = service_managed
-        # The tags to bind to the security group. Array length: 0 to 20.
+        # The tags to add to the security group. Array length: 0 to 20.
         self.tag = tag
         # The ID of the VPC to which the security group belongs.
         self.vpc_id = vpc_id

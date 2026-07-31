@@ -24,7 +24,7 @@ class DescribeCloudAssistantSettingsRequest(DaraModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The service settings to query.
+        # The list of service configurations to query.
         # 
         # This parameter is required.
         self.setting_type = setting_type

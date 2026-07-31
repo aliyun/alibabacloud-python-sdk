@@ -18,17 +18,17 @@ class UnassignPrivateIpAddressesRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The IPv4 prefixes to unassign.
+        # One or more IPv4 prefixes to remove.
         self.ipv_4prefix = ipv_4prefix
-        # The ID of the ENI.
+        # The ID of the Elastic Network Interface (ENI).
         # 
         # This parameter is required.
         self.network_interface_id = network_interface_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The secondary private IP addresses to unassign.
+        # One or more secondary private IP addresses to remove.
         self.private_ip_address = private_ip_address
-        # The region ID of the ENI. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The region ID of the resource. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id

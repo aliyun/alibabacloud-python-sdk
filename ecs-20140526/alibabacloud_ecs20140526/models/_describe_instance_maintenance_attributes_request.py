@@ -18,21 +18,21 @@ class DescribeInstanceMaintenanceAttributesRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The instance IDs. You can specify up to 100 instance IDs.
+        # The list of instance IDs. You can specify up to 100 instance IDs.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number.
+        # The page number of the maintenance attribute list.
         # 
-        # Pages start from page 1.
+        # Minimum value: 1
         # 
-        # Default value: 1.
+        # Default value: 1
         self.page_number = page_number
         # The number of entries per page. Valid values: 1 to 100.
         # 
-        # Default value: 10.
+        # Default value: 10
         self.page_size = page_size
-        # The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The region ID of the instance. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id

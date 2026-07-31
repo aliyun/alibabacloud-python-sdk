@@ -15,23 +15,20 @@ class ModifyDedicatedHostAutoReleaseTimeRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The automatic release time of the dedicated host. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
+        # The automatic release time of the dedicated host. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         # 
-        # - The automatic release time must be at least 30 minutes later than the current time.
-        # 
-        # - The automatic release time can be up to 3 years earlier than the current time.
-        # 
-        # - If the value of the seconds (ss) is not 00, it is automatically set to 00.
-        # 
-        # - If `AutoReleaseTime` is not configured, the automatic release feature is disabled, and the dedicated host will not be automatically released.
+        # - The release time must be at least 30 minutes from the current time.
+        # - The release time must be at most 3 years from the current time.
+        # - If the value of seconds (ss) is not 00, it is automatically set to 00.
+        # - If you do not specify the AutoReleaseTime parameter, automatic release is canceled and the dedicated host is no longer automatically released at the scheduled time.
         self.auto_release_time = auto_release_time
-        # The ID of the dedicated host.
+        # The ID of the dedicated host for which to set automatic release.
         # 
         # This parameter is required.
         self.dedicated_host_id = dedicated_host_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the dedicated host. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The region ID of the dedicated host. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id

@@ -18,21 +18,15 @@ class DescribeNetworkInterfacesResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.network_interface_sets = network_interface_sets
-        # A pagination token. It can be used in the next request to retrieve a new page of results.
+        # The pagination token returned in this call.
         self.next_token = next_token
-        # The page number of the returned page.
-        # 
-        # > This parameter will be removed in the future. We recommend that you use the NextToken and MaxResults parameters for a paged query.
+        # The paging query parameter.
         self.page_number = page_number
-        # The number of entries returned per page.
-        # 
-        # > This parameter will be removed in the future. We recommend that you use the NextToken and MaxResults parameters for a paged query.
+        # The paging query parameter.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of ENIs.
-        # 
-        # > If you specify the `MaxResults` and `NextToken` parameters to perform a paged query, the value of the `TotalCount` response parameter is invalid.
+        # The total number of Elastic Network Interfaces (ENIs) returned.
         self.total_count = total_count
 
     def validate(self):
@@ -655,8 +649,10 @@ class DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceS
     def __init__(
         self,
         ipv_6address: str = None,
+        primary: bool = None,
     ):
         self.ipv_6address = ipv_6address
+        self.primary = primary
 
     def validate(self):
         pass
@@ -669,12 +665,18 @@ class DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceS
         if self.ipv_6address is not None:
             result['Ipv6Address'] = self.ipv_6address
 
+        if self.primary is not None:
+            result['Primary'] = self.primary
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Ipv6Address') is not None:
             self.ipv_6address = m.get('Ipv6Address')
+
+        if m.get('Primary') is not None:
+            self.primary = m.get('Primary')
 
         return self
 

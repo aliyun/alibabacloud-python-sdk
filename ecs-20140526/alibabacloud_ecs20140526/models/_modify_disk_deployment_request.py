@@ -17,41 +17,35 @@ class ModifyDiskDeploymentRequest(DaraModel):
         resource_owner_id: int = None,
         storage_cluster_id: str = None,
     ):
-        # The new category of the disk. This parameter is valid only when you migrate a disk between different dedicated block storage clusters. The only valid value is `cloud_essd` (ESSD disk).
+        # The new disk type. This parameter takes effect only when you perform an Upgrade/Downgrade during migration between different dedicated block storage clusters. Currently, only cloud_essd (enterprise SSD) is supported.
         # 
-        # Default value: An empty string. If you leave this parameter empty, the category of the disk remains unchanged.
+        # Default value: empty, which indicates that the disk type is not changed during the Upgrade/Downgrade.
         self.disk_category = disk_category
-        # The ID of the disk.
+        # The disk ID.
         # 
         # This parameter is required.
         self.disk_id = disk_id
-        # Specifies whether to perform a dry run. Valid values:
+        # Specifies whether to perform only a dry run. Valid values:
+        # - true: performs only a dry run. The system checks the required parameters, request format, business restrictions, and ECS inventory. If the check fails, the corresponding error is returned. If the check succeeds, the error code DryRunOperation is returned.
+        # - false: performs a dry run and sends the request. If the check succeeds, a 2XX HTTP status code is returned and the disk is migrated.
         # 
-        # - `true`: Performs a dry run. The system checks the request for required parameters, format, service limits, and inventory. The system returns an error if the check fails, or the `DryRunOperation` error code if the check succeeds.
-        # 
-        # - `false`: Sends the request. If the request passes the check, the system returns a 2xx HTTP status code and migrates the disk.
-        # 
-        # Default value: `false`.
+        # Default value: false.
         self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The new performance level of the ESSD disk. This parameter is valid only when you migrate a disk between different dedicated block storage clusters. Valid values:
+        # The performance level of the enterprise SSD. This parameter takes effect only when you migrate a disk between different dedicated block storage clusters. Valid values:
+        # - PL0: a maximum of 10,000 random read/write IOPS per disk.
+        # - PL1: a maximum of 50,000 random read/write IOPS per disk.
         # 
-        # - `PL0`: A maximum of 10,000 random read/write IOPS per disk.
-        # 
-        # - `PL1`: A maximum of 50,000 random read/write IOPS per disk.
-        # 
-        # Default value: An empty string. If you leave this parameter empty, the performance level of the disk remains unchanged.
+        # Default value: empty, which indicates that the performance level is not changed.
         self.performance_level = performance_level
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the dedicated block storage cluster.
+        # The dedicated block storage cluster ID.
+        # - To migrate a disk to a dedicated block storage cluster, you must specify `StorageClusterId`.
+        # - To migrate a disk to a public cloud block storage cluster, `StorageClusterId` must be empty.
         # 
-        # - To migrate the disk to a dedicated block storage cluster, specify `StorageClusterId`.
-        # 
-        # - To migrate the disk to a public cloud block storage cluster, leave `StorageClusterId` empty.
-        # 
-        # Default value: An empty string. If you leave this parameter empty, the disk is migrated to a public cloud block storage cluster.
+        # Default value: empty, which indicates that the disk is migrated to a public cloud block storage cluster.
         self.storage_cluster_id = storage_cluster_id
 
     def validate(self):

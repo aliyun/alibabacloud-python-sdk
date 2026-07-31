@@ -21,7 +21,7 @@ class DescribeTagsRequest(DaraModel):
         resource_type: str = None,
         tag: List[main_models.DescribeTagsRequestTag] = None,
     ):
-        # > This parameter is about to be deprecated. To ensure compatibility, use other parameters.
+        # > This parameter is about to be deprecated. To ensure compatibility, use other parameters instead.
         self.category = category
         self.owner_id = owner_id
         # The page number of the tag list.
@@ -40,7 +40,7 @@ class DescribeTagsRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource to which the tag is attached. For example, if the resource type (ResourceType) is instance, the resource ID is the instance ID.
+        # The ID of the resource to which the tag is attached. For example, if ResourceType is set to instance, ResourceId indicates the instance ID.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -52,7 +52,7 @@ class DescribeTagsRequest(DaraModel):
         # - image: image.
         # - securitygroup: security group.
         # - volume: storage volume.
-        # - eni: network interface controller (NIC).
+        # - eni: Elastic Network Interface (ENI).
         # - ddh: dedicated host.
         # - keypair: SSH key pair.
         # - launchtemplate: launch template.
@@ -61,7 +61,7 @@ class DescribeTagsRequest(DaraModel):
         # 
         # All valid values are in lowercase.
         self.resource_type = resource_type
-        # The list of tags.
+        # The tags.
         self.tag = tag
 
     def validate(self):

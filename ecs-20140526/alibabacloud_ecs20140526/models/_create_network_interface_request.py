@@ -15,6 +15,7 @@ class CreateNetworkInterfaceRequest(DaraModel):
         connection_tracking_configuration: main_models.CreateNetworkInterfaceRequestConnectionTrackingConfiguration = None,
         delete_on_release: bool = None,
         description: str = None,
+        enable_primary_ipv_6: bool = None,
         enhanced_network: main_models.CreateNetworkInterfaceRequestEnhancedNetwork = None,
         instance_type: str = None,
         ipv_4prefix: List[str] = None,
@@ -48,149 +49,70 @@ class CreateNetworkInterfaceRequest(DaraModel):
     ):
         # > This parameter is deprecated.
         self.business_type = business_type
-        # A client token to ensure request idempotence. Your client generates this token, which must be unique across requests. The token can contain only ASCII characters and must not exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **ClientToken** value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
-        # The connection tracking settings.
-        # 
-        # Before using this parameter, read [Connection timeout management](https://help.aliyun.com/document_detail/2865958.html).
+        # The network connectivity tracking configuration of the ENI.
         self.connection_tracking_configuration = connection_tracking_configuration
-        # Specifies whether to release the elastic network interface when its attached instance is released. Valid values:
-        # 
-        # - `true`: The elastic network interface is released.
-        # 
-        # - `false`: The elastic network interface is retained.
+        # Specifies whether to retain the ENI when the associated instance is released. Valid values:
         self.delete_on_release = delete_on_release
-        # The description of the elastic network interface. The description must be 2 to 256 characters long and cannot start with `http://` or `https://`.
-        # 
-        # Default value: empty.
+        # The description of the network interface controller (NIC). The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description
+        self.enable_primary_ipv_6 = enable_primary_ipv_6
         # > This parameter is not publicly available.
         self.enhanced_network = enhanced_network
-        # The type of the elastic network interface. Valid values:
-        # 
-        # - `Secondary`: a secondary elastic network interface.
-        # 
-        # - `Trunk`: a trunk network interface. (This feature is available by invitation only.)
-        # 
-        # Default value: `Secondary`.
+        # The type of the network interface controller (NIC). Valid values:
         self.instance_type = instance_type
-        # One or more IPv4 prefixes to assign to the elastic network interface. Valid values of N: 1 to 10.
-        # 
-        # > You must specify either `Ipv4Prefix.N` or `Ipv4PrefixCount`, but not both, to assign IPv4 prefixes.
+        # One or more IPv4 prefixes to assign to the network interface controller (NIC). Valid values of N: 1 to 10.
         self.ipv_4prefix = ipv_4prefix
-        # The number of IPv4 prefixes to assign to the elastic network interface. Valid values: 1 to 10.
-        # 
-        # > You must specify either `Ipv4Prefix.N` or `Ipv4PrefixCount`, but not both, to assign IPv4 prefixes.
+        # The number of IPv4 prefixes to assign to the network interface controller (NIC). Valid values: 1 to 10.
         self.ipv_4prefix_count = ipv_4prefix_count
-        # One or more IPv6 addresses to assign to the elastic network interface. You can specify up to 10 IPv6 addresses. Valid values of N: 1 to 10.
-        # 
-        # Example: `Ipv6Address.1=2001:db8:1234:1a00::****`
-        # 
-        # > You must specify either `Ipv6Address.N` or `Ipv6AddressCount`, but not both, to assign IPv6 addresses.
+        # One or more IPv6 addresses to assign to the network interface controller (NIC). You can specify up to 10 IPv6 addresses. Valid values of N: 1 to 10.
         self.ipv_6address = ipv_6address
-        # The number of random IPv6 addresses to assign to the elastic network interface. Valid values: 1 to 10.
-        # 
-        # > You must specify either `Ipv6Address.N` or `Ipv6AddressCount`, but not both, to assign IPv6 addresses.
+        # The number of randomly generated IPv6 addresses to assign to the network interface controller (NIC). Valid values: 1 to 10.
         self.ipv_6address_count = ipv_6address_count
-        # One or more IPv6 prefixes to assign to the elastic network interface. Valid values of N: 1 to 10.
-        # 
-        # > You must specify either `Ipv6Prefix.N` or `Ipv6PrefixCount`, but not both, to assign IPv6 prefixes.
+        # One or more IPv6 prefixes to assign to the network interface controller (NIC). Valid values of N: 1 to 10.
         self.ipv_6prefix = ipv_6prefix
-        # The number of IPv6 prefixes to assign to the elastic network interface. Valid values: 1 to 10.
-        # 
-        # > You must specify either `Ipv6Prefix.N` or `Ipv6PrefixCount`, but not both, to assign IPv6 prefixes.
+        # The number of IPv6 prefixes to assign to the network interface controller (NIC). Valid values: 1 to 10.
         self.ipv_6prefix_count = ipv_6prefix_count
-        # The name of the elastic network interface. The name must be 2 to 128 characters long and can contain Unicode letters (such as English and Chinese characters), digits (0-9), colons (:), underscores (_), periods (.), and hyphens (-).
-        # 
-        # Default value: empty.
+        # The name of the network interface controller (NIC). The name must be 2 to 128 characters in length and can contain letters in the Unicode letter categorization (including English and Chinese characters) and ASCII digits (0-9). The name can contain colons (:), underscores (_), periods (.), or hyphens (-).
         self.network_interface_name = network_interface_name
-        # The communication parameters of the elastic network interface.
+        # The communication parameter set of the network interface controller (NIC).
         self.network_interface_traffic_config = network_interface_traffic_config
-        # The traffic mode of the elastic network interface. Valid values:
-        # 
-        # - `Standard`: uses the TCP traffic mode.
-        # 
-        # - `HighPerformance`: enables the Elastic RDMA Interface (ERI) and uses the RDMA traffic mode.
-        # 
-        # > An elastic network interface in RDMA traffic mode can be attached only to an ERI-supported instance type. The number of these elastic network interfaces that can be attached is limited by the instance family. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html), [Configure eRDMA on an enterprise-level instance](https://help.aliyun.com/document_detail/336853.html)<props="china">, and [Configure eRDMA on a GPU instance](https://help.aliyun.com/document_detail/2248432.html).
-        # 
-        # Default value: `Standard`.
+        # The communication mode of the network interface controller (NIC). Valid values:
         self.network_interface_traffic_mode = network_interface_traffic_mode
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The primary private IP address of the elastic network interface.
-        # 
-        # The IP address must be an available IP address within the CIDR block of the VSwitch. If this parameter is not specified, the system randomly assigns an available IP address from the VSwitch\\"s CIDR block.
+        # The primary private IP address of the network interface controller (NIC).
         self.primary_ip_address = primary_ip_address
-        # One or more secondary private IP addresses to assign to the elastic network interface. The IP addresses must be available addresses from the CIDR block of the VSwitch to which the elastic network interface belongs. Valid values of N: 0 to 10.
-        # 
-        # > You cannot specify both `PrivateIpAddress.N` and `SecondaryPrivateIpAddressCount` to assign secondary private IP addresses.
+        # One or more secondary private IP addresses selected from the idle IP addresses within the CIDR block of the vSwitch to which the network interface controller (NIC) belongs. Valid values of N: 0 to 10.
         self.private_ip_address = private_ip_address
-        # The number of queues for the elastic network interface. Valid values: 1 to 2048.
-        # 
-        # When attached to an instance, this value must be less than the maximum number of queues per elastic network interface that the instance type supports. You can call the [DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html) operation and check the `MaximumQueueNumberPerEni` value in the response to query this limit.
-        # 
-        # If you do not specify this parameter, the default queue number for the instance type is used upon attachment.
+        # The number of queues for the network interface controller (NIC). Valid values: 1 to 2048.
         self.queue_number = queue_number
-        # The number of queue pairs for the RDMA-enabled elastic network interface.
-        # 
-        # If you want to attach multiple RDMA-enabled elastic network interfaces to an instance, we recommend that you specify a `QueuePairNumber` value for each elastic network interface. The value should be based on the maximum `QueuePairNumber` value supported by the instance type and the number of elastic network interfaces that you plan to use. The total number of queue pairs for all elastic network interfaces cannot exceed the maximum value for the instance type. You can call the [DescribeInstanceTypes](https://help.aliyun.com/document_detail/2679699.html) operation to query the maximum value.
-        # 
-        # >Notice: 
-        # 
-        # If you do not specify `QueuePairNumber` for an RDMA-enabled elastic network interface, the system defaults to the maximum value that the instance type supports. Consequently, you cannot attach any more RDMA-enabled elastic network interfaces to that instance. This does not affect standard elastic network interfaces.
+        # The number of queues for the RDMA ENI.
         self.queue_pair_number = queue_pair_number
-        # The ID of the region in which to create the elastic network interface. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to view the latest list of Alibaba Cloud regions.
+        # The region ID of the network interface controller (NIC) to be created. You can invoke [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group. You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query resource groups.
+        # The resource group ID. You can call [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) to query resource group information.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The receive (Rx) queue depth of the elastic network interface.
-        # 
-        # - The receive (Rx) and transmit (Tx) queue depths must be equal. The value must be a power of 2 between 8,192 and 16,384.
-        # 
-        # - A larger Rx queue depth can improve receive throughput but consumes more memory.
-        # 
-        # > This parameter is not publicly available.
+        # The inbound queue depth of the network interface controller (NIC).
         self.rx_queue_size = rx_queue_size
-        # The number of secondary private IP addresses to automatically assign to the elastic network interface. Valid values: 1 to 49.
+        # The number of private IP addresses for automatic creation by ECS. Valid values: 1 to 49.
         self.secondary_private_ip_address_count = secondary_private_ip_address_count
-        # The ID of the security group for the elastic network interface. The security group and the elastic network interface must be in the same VPC.
-        # 
-        # > You must specify either `SecurityGroupId` or `SecurityGroupIds.N`, but not both.
+        # The ID of the security group to which the network interface controller (NIC) is added. The security group and the network interface controller (NIC) must belong to the same VPC.
         self.security_group_id = security_group_id
-        # The IDs of one or more security groups to which to add the elastic network interface. The security groups and the elastic network interface must be in the same VPC. The valid values of N depend on the maximum number of security groups to which an elastic network interface can be added. For more information, see [Limits](https://help.aliyun.com/document_detail/25412.html).
-        # 
-        # > You must specify either `SecurityGroupId` or `SecurityGroupIds.N`, but not both.
+        # The IDs of one or more security groups to which the network interface controller (NIC) is added. The security groups and the network interface controller (NIC) must belong to the same VPC. The valid values of N depend on the quota for the maximum number of security groups to which an ENI can be added. For more information, see [Limits](https://help.aliyun.com/document_detail/25412.html).
         self.security_group_ids = security_group_ids
-        # Specifies whether to enable source/destination check. Enabling this feature enhances network security. Valid values:
-        # 
-        # - `true`: enabled.
-        # 
-        # - `false`: disabled.
-        # 
-        # Default value: false.
-        # 
-        # > This feature is available only in some regions. Before you use this feature, read [Source/destination check](https://help.aliyun.com/document_detail/2863210.html).
+        # Specifies whether to enable source/destination checking. We recommend that you enable this feature to improve network security. Valid values:
         self.source_dest_check = source_dest_check
-        # The tags to add to the elastic network interface.
+        # The tags of the network interface controller (NIC).
         self.tag = tag
-        # The transmit (Tx) queue depth of the elastic network interface.
-        # 
-        # - The transmit (Tx) and receive (Rx) queue depths must be equal. The value must be a power of 2 between 8,192 and 16,384.
-        # 
-        # - A larger Tx queue depth can improve transmit throughput but consumes more memory.
-        # 
-        # > This parameter is not publicly available.
+        # The outbound queue depth of the network interface controller (NIC).
         self.tx_queue_size = tx_queue_size
-        # The ID of the VSwitch for the elastic network interface. The private IP addresses for the elastic network interface are assigned from the available CIDR block of the VSwitch.
-        # 
-        # >Notice: 
-        # 
-        # The elastic network interface and the instance to be attached must be in the same availability zone but can belong to different VSwitches.
+        # The vSwitch ID of the network interface controller (NIC). The private IP address of the network interface controller (NIC) is allocated from the idle IP addresses within the CIDR block of the vSwitch.
         # 
         # This parameter is required.
         self.v_switch_id = v_switch_id
@@ -228,6 +150,9 @@ class CreateNetworkInterfaceRequest(DaraModel):
 
         if self.description is not None:
             result['Description'] = self.description
+
+        if self.enable_primary_ipv_6 is not None:
+            result['EnablePrimaryIPv6'] = self.enable_primary_ipv_6
 
         if self.enhanced_network is not None:
             result['EnhancedNetwork'] = self.enhanced_network.to_map()
@@ -341,6 +266,9 @@ class CreateNetworkInterfaceRequest(DaraModel):
         if m.get('Description') is not None:
             self.description = m.get('Description')
 
+        if m.get('EnablePrimaryIPv6') is not None:
+            self.enable_primary_ipv_6 = m.get('EnablePrimaryIPv6')
+
         if m.get('EnhancedNetwork') is not None:
             temp_model = main_models.CreateNetworkInterfaceRequestEnhancedNetwork()
             self.enhanced_network = temp_model.from_map(m.get('EnhancedNetwork'))
@@ -444,9 +372,9 @@ class CreateNetworkInterfaceRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag. Valid values for N: 1 to 20. The tag key cannot be an empty string. It can be up to 128 characters long and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+        # The key of the tag for the network interface controller (NIC). Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with aliyun or acs:. It cannot contain `http://` or `https://`.
         self.key = key
-        # The value of the tag. Valid values for N: 1 to 20. The tag value can be an empty string. It can be up to 128 characters long and cannot contain `http://` or `https://`.
+        # The value of the tag for the network interface controller (NIC). Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -484,51 +412,15 @@ class CreateNetworkInterfaceRequestNetworkInterfaceTrafficConfig(DaraModel):
         rx_queue_size: int = None,
         tx_queue_size: int = None,
     ):
-        # The traffic mode of the elastic network interface.
+        # The communication mode of the network interface controller (NIC).
         self.network_interface_traffic_mode = network_interface_traffic_mode
-        # The number of queues for the elastic network interface.
+        # The number of queues for the network interface controller (NIC).
         self.queue_number = queue_number
-        # The number of queue pairs for the RDMA-enabled elastic network interface.
+        # The number of queues for the RDMA ENI.
         self.queue_pair_number = queue_pair_number
-        # The receive (Rx) queue depth of the elastic network interface.
-        # 
-        # <props="china">
-        # 
-        # > This parameter is available by invitation only. To request access, submit a ticket.
-        # 
-        # 
-        # 
-        # <props="intl">
-        # 
-        # > This parameter is available by invitation only. To request access, submit a ticket.
-        # 
-        # 
-        # 
-        # - This parameter is applicable only to seventh-generation or later ECS instance types.
-        # 
-        # - This parameter is applicable only to Linux images.
-        # 
-        # - A larger Rx queue depth can improve receive throughput and reduce the packet loss rate, but consumes more memory.
+        # The inbound queue depth of the network interface controller (NIC).
         self.rx_queue_size = rx_queue_size
-        # The transmit (Tx) queue depth of the elastic network interface.
-        # 
-        # <props="china">
-        # 
-        # > This parameter is available by invitation only. To request access, submit a ticket.
-        # 
-        # 
-        # 
-        # <props="intl">
-        # 
-        # > This parameter is available by invitation only. To request access, submit a ticket.
-        # 
-        # 
-        # 
-        # - This parameter is applicable only to seventh-generation or later ECS instance types.
-        # 
-        # - This parameter is applicable only to Linux images.
-        # 
-        # - A larger Tx queue depth can improve transmit throughput and reduce the packet loss rate, but consumes more memory.
+        # The outbound queue depth of the network interface controller (NIC).
         self.tx_queue_size = tx_queue_size
 
     def validate(self):
@@ -635,21 +527,11 @@ class CreateNetworkInterfaceRequestConnectionTrackingConfiguration(DaraModel):
         tcp_established_timeout: int = None,
         udp_timeout: int = None,
     ):
-        # The timeout for a TCP connection in the TIME_WAIT or closing state, in seconds. Valid values: integers from 3 to 15.
-        # 
-        # Default value: 3.
-        # 
-        # > If your ECS instance works with NLB or CLB, the default timeout period for connections in the `TIME_WAIT` state is 15 seconds.
+        # The timeout period for TCP connections in the closed or time-wait state. Unit: seconds. Valid values: integers from 3 to 15.
         self.tcp_closed_and_time_wait_timeout = tcp_closed_and_time_wait_timeout
-        # The timeout for an established TCP connection, in seconds. Valid values: 30, 60, 80, 100, 200, 300, 500, 700, and 910.
-        # 
-        # Default value: 910.
+        # The timeout period for established TCP connections. Unit: seconds. Valid values: [30, 60, 80, 100, 200, 300, 500, 700, 910].
         self.tcp_established_timeout = tcp_established_timeout
-        # The timeout for a UDP stream, in seconds. Valid values: 10, 20, 30, 60, 80, and 100.
-        # 
-        # Default value: 30.
-        # 
-        # > If your ECS instance works with NLB or CLB, the default value is 100 seconds.
+        # The timeout period for UDP flows. Unit: seconds. Valid values: [10, 20, 30, 60, 80, 100].
         self.udp_timeout = udp_timeout
 
     def validate(self):

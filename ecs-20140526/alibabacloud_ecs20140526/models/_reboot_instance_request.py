@@ -15,23 +15,22 @@ class RebootInstanceRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # Specifies whether to perform only a dry run. Valid values:
         # 
-        # - true: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, service limits, and available ECS resources. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # 
-        # - false: performs a dry run and sends the request. If the request passes the dry run, the ECS instance is restarted.
+        # - true: performs only a dry run. The instance is not restarted. The system checks whether required parameters are specified, whether the request format is valid, whether business restrictions are met, and whether ECS resources are available. If the check fails, the corresponding error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
+        # - false: performs a dry run and sends the request. If the check succeeds, the instance is restarted.
         # 
         # Default value: false.
         self.dry_run = dry_run
-        # Specifies whether to forcefully stop the ECS instance before the instance is restarted. Valid values:
+        # Specifies whether to forcefully stop ECS instance before restarting it. Valid values:
         # 
-        # - true: forcefully stops the ECS instance. If you set this parameter to true, this operation is equivalent to a power-off operation. Cache data that is not written to storage devices on the instance is lost.
+        # -   true: Forcefully stops ECS instance. This is equivalent to a power-off operation. Cached data that has not been written to storage devices is lost.
         # 
-        # - false: normally stops the ECS instance.
+        # -   false: Normally stops ECS instance.
         # 
         # Default value: false.
         self.force_stop = force_stop
-        # The instance ID.
+        # The ID of the instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id

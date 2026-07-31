@@ -20,33 +20,31 @@ class PurchaseElasticityAssuranceRequest(DaraModel):
         start_time: str = None,
     ):
         self.private_pool_options = private_pool_options
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The `token` can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        # Ensures the idempotence of the request. The value is generated from your client and must be unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The validity period of the elasticity assurance. The unit of the validity period is determined by the PeriodUnit value. Valid values:
+        # The purchase duration. The unit of the duration is determined by the PeriodUnit parameter. Valid values:
         # 
-        # - When PeriodUnit is set to Month, valid values are 1, 2, 3, 4, 5, 6, 7, 8, and 9.
-        # 
-        # - When PeriodUnit is set to Year, valid values are 1, 2, 3, 4, and 5.
+        # - If PeriodUnit is set to Month: 1, 2, 3, 4, 5, 6, 7, 8, and 9.
+        # - If PeriodUnit is set to Year: 1, 2, 3, 4, and 5.
         # 
         # Default value: 1.
         self.period = period
-        # The unit of the validity period of the elasticity assurance. Valid values:
+        # The unit of the purchase duration. Valid values:
         # 
-        # - Month
-        # 
-        # - Year
+        # - Month: month.
+        # - Year: year.
         # 
         # Default value: Year.
         self.period_unit = period_unit
-        # The ID of the region in which to purchase the elasticity assurance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/2679950.html) operation to query the most recent region list.
+        # The region ID of the elastic capacity reservation service. You can call [DescribeRegions](https://help.aliyun.com/document_detail/2679950.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The time when the elasticity assurance takes effect. The default value is the time when the elasticity assurance is created. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC. For more information, see [ISO 8601](https://help.aliyun.com/document_detail/25696.html).
+        # The effective period of the elastic capacity reservation service. By default, the service takes effect when this operation is invoked. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC. For more information, see [ISO 8601](https://help.aliyun.com/document_detail/25696.html).
         self.start_time = start_time
 
     def validate(self):
@@ -131,15 +129,14 @@ class PurchaseElasticityAssuranceRequestPrivatePoolOptions(DaraModel):
         id: str = None,
         match_criteria: str = None,
     ):
-        # The ID of the elasticity assurance.
+        # The ID of the elastic capacity reservation service.
         # 
         # This parameter is required.
         self.id = id
-        # The type of the private pool with which you want to associate the elasticity assurance. Valid values:
+        # The matching mode of the elastic capacity reservation service. Valid values:
         # 
-        # - Open: open private pool. If you use the elasticity assurance to create Elastic Compute Service (ECS) instances, the open private pool that is associated with the elasticity assurance is automatically matched. If no capacity is available in the open private pool, resources in the public pool are automatically used to create the ECS instances.
-        # 
-        # - Target: targeted private pool. If you use the elasticity assurance to create ECS instances, the specified private pool that is associated with the elasticity assurance is automatically matched. If no capacity is available in the private pool, the ECS instances fail to be created.
+        # - Open: open mode. The system automatically matches the capacity of open private pools when instances are started. If no matching private pool capacity is available, public pool resources are used to start the instances.
+        # - Target: targeted mode. Instances are started by using the capacity of the specified private pool. If the specified private pool capacity is unavailable, the instances fail to start.
         # 
         # Default value: Open.
         self.match_criteria = match_criteria

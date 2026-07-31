@@ -279,7 +279,7 @@ class DescribePriceResponseBodyPriceInfoPrice(DaraModel):
         self.discount_price = discount_price
         # The original price.
         self.original_price = original_price
-        # The hourly price of a reserved instance with the no upfront or partial upfront payment option.
+        # The hourly price of a reserved instance with no upfront or partial upfront payment.
         self.reserved_instance_hour_price = reserved_instance_hour_price
         # The transaction price, which is the original price minus the discount.
         self.trade_price = trade_price

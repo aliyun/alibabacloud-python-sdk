@@ -34,7 +34,7 @@ class DescribeAutoSnapshotPolicyExRequest(DaraModel):
         # 
         # Default value: 1.
         self.page_number = page_number
-        # The number of entries per page when automatic snapshot policies are displayed in paging mode.
+        # The number of entries per page when automatic snapshot policies are returned with pagination.
         # 
         # Maximum value: 100.
         # 

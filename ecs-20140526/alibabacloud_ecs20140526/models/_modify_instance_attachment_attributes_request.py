@@ -17,13 +17,13 @@ class ModifyInstanceAttachmentAttributesRequest(DaraModel):
         resource_owner_id: int = None,
     ):
         self.private_pool_options = private_pool_options
-        # The ID of the instance for which you want to modify the attributes of the private pool.
+        # The instance ID of the instance for which you want to modify the private pool matching property.
         # 
         # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the private pool. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The region ID of the private pool. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -94,19 +94,16 @@ class ModifyInstanceAttachmentAttributesRequestPrivatePoolOptions(DaraModel):
         id: str = None,
         match_criteria: str = None,
     ):
-        # The ID of the private pool. Set the value to the ID of the elasticity assurance or capacity reservation that generates the private pool.
+        # The private pool ID, which is the elasticity assurance ID or capacity reservation ID.
         # 
-        # - This parameter is required when `PrivatePoolOptions.MatchCriteria` is set to `Target`.
-        # 
-        # - This parameter must be empty when `PrivatePoolOptions.MatchCriteria` is set to `Open` or `None`.
+        # - This parameter is required when PrivatePoolOptions.MatchCriteria is set to `Target`.
+        # - Leave this parameter empty when PrivatePoolOptions.MatchCriteria is set to `Open` or `None`.
         self.id = id
-        # The new type of private pool. Valid values:
+        # The private pool matching mode of the instance. Valid values:
         # 
-        # - Open: open private pool. The system matches the instance with an open private pool. If no matching open private pools exist, the system uses resources in the public pool to start the instance.
-        # 
-        # - Target: specified private pool. The system uses the capacity in a specified private pool to start the instance. If the specified private pool is unavailable, the instance cannot be started. You must use `PrivatePoolOptions.Id` to specify the ID of a private pool.
-        # 
-        # - None: no private pool. The capacity in private pools is not used to start the instance.
+        # - Open: open mode. The system automatically matches the instance with an open private pool. If no matching private pool capacity is available, public pool resources are used to launch the instance.
+        # - Target: targeted mode. The instance is launched by using the capacity of the specified private pool. If the specified private pool capacity is unavailable, the instance fails to be launched. If you set this parameter to Target, you must also specify the PrivatePoolOptions.Id parameter to specify the private pool ID.
+        # - None: none. The instance is launched normally without using a private pool.
         # 
         # This parameter is required.
         self.match_criteria = match_criteria

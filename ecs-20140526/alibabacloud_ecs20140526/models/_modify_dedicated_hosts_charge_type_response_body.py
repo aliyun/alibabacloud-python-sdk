@@ -15,7 +15,7 @@ class ModifyDedicatedHostsChargeTypeResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.fee_of_instances = fee_of_instances
-        # The ID of the order. This is returned only when the payment method is changed to subscription.
+        # The order ID. This parameter is returned only when the billing method is changed to subscription.
         self.order_id = order_id
         # The request ID.
         self.request_id = request_id

@@ -10,7 +10,7 @@ class ReplaceSystemDiskResponseBody(DaraModel):
         disk_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the new system disk.
+        # The disk ID of the new system disk.
         self.disk_id = disk_id
         # The request ID.
         self.request_id = request_id

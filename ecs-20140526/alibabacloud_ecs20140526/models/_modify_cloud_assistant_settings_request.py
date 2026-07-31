@@ -22,39 +22,35 @@ class ModifyCloudAssistantSettingsRequest(DaraModel):
         setting_type: str = None,
         sls_delivery_config: main_models.ModifyCloudAssistantSettingsRequestSlsDeliveryConfig = None,
     ):
-        # The configurations of upgrading the Cloud Assistant agent.
+        # The Cloud Assistant Agent upgrade configuration.
         self.agent_upgrade_config = agent_upgrade_config
-        # The configurations of delivering records to OSS.
+        # The OSS delivery configuration.
         self.oss_delivery_config = oss_delivery_config
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region.
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The configurations of resource usage for Cloud Assistant. This setting takes effect only when the version of the Cloud Assistant agent is not earlier than the following versions:
+        # The Cloud Assistant resource usage configuration. This parameter takes effect only when the Cloud Assistant Agent version meets the following minimum requirements:
         # 
         # - Windows: 2.1.4.1065
         # 
         # - Linux: 2.2.4.1065
         self.resource_usage_config = resource_usage_config
-        # The configurations of the Session Manager feature.
+        # The Cloud Assistant session feature configuration.
         self.session_manager_config = session_manager_config
-        # The type of the service configurations. Valid values:
-        # 
-        # - `SessionManagerDelivery`: the configurations of delivering session records.
-        # 
-        # - `InvocationDelivery`: the configurations of delivering command execution records.
-        # 
-        # - `AgentUpgradeConfig`: the configurations of upgrading the Cloud Assistant agent.
-        # 
-        # - `SessionManagerConfig`: the configurations of Cloud Assistant Session Manager.
+        # The service configuration type. Valid values:
+        # - SessionManagerDelivery: session operation log delivery.
+        # - InvocationDelivery: task execution log delivery.
+        # - AgentUpgradeConfig: Cloud Assistant Agent upgrade configuration.
+        # - SessionManagerConfig: Cloud Assistant SessionManager configuration.
         # 
         # This parameter is required.
         self.setting_type = setting_type
-        # The configurations of delivering records to SLS.
+        # The Simple Log Service (SLS) delivery configuration.
         self.sls_delivery_config = sls_delivery_config
 
     def validate(self):
@@ -158,7 +154,7 @@ class ModifyCloudAssistantSettingsRequestSlsDeliveryConfig(DaraModel):
         logstore_name: str = None,
         project_name: str = None,
     ):
-        # Specifies whether to enable the feature of delivering records to SLS.
+        # Specifies whether to enable delivery to SLS.
         # Default value: false.
         self.enabled = enabled
         # The name of the SLS Logstore.
@@ -203,15 +199,12 @@ class ModifyCloudAssistantSettingsRequestSessionManagerConfig(DaraModel):
         self,
         session_manager_enabled: bool = None,
     ):
-        # The switch for the Session Manager feature. Valid values:
-        # 
-        # - true: enables the feature.
-        # 
-        # - false: disables the feature.
+        # Specifies whether to enable the Cloud Assistant session feature. Valid values:
+        # * true: Enabled.
+        # * false: Disabled.
         # 
         # Note:
-        # 
-        # - After you enable or disable the Session Manager feature, the setting takes effect for all regions.
+        # * Enabling or disabling the session feature takes effect across all regions.
         self.session_manager_enabled = session_manager_enabled
 
     def validate(self):
@@ -244,45 +237,34 @@ class ModifyCloudAssistantSettingsRequestResourceUsageConfig(DaraModel):
         memory_limit: str = None,
         overload_limit: int = None,
     ):
-        # The maximum CPU usage that is allowed for the main process of the Cloud Assistant agent.
+        # The maximum CPU usage allowed for the Cloud Assistant Agent main process.
         # 
-        # - Unit: %.
+        # - Unit: percentage.
         # 
         # - Valid values: 10 to 95.
         # 
         # - Default value: 20.
         self.cpu_limit = cpu_limit
-        # Specifies whether to retain the script file of a command in the Cloud Assistant directory after the command execution is complete.
+        # Specifies whether to retain the script file in the Cloud Assistant directory after command execution is complete.
         # Default value: false.
         self.keep_script_file = keep_script_file
-        # The maximum number of Cloud Assistant log files that can be retained.
-        # 
+        # The maximum number of Cloud Assistant log files to retain.
         # - Default value: 30.
-        # 
         # - Minimum value: 7.
-        # 
         # - Maximum value: 365.
         self.log_file_count_limit = log_file_count_limit
-        # The maximum size of a single Cloud Assistant log file. You must specify a unit (B, KB, or MB).
-        # 
-        # - Default value: 100 MB.
-        # 
-        # - Minimum value: 10 MB.
-        # 
-        # - Maximum value: 1024 MB.
+        # The maximum size of a single Cloud Assistant log file. You must specify the unit (B|KB|MB).
+        # - Default value: 100MB.
+        # - Minimum value: 10MB.
+        # - Maximum value: 1024MB.
         self.log_size_limit = log_size_limit
-        # The maximum memory usage that is allowed for the main process of the Cloud Assistant agent. You must specify a unit (B, KB, or MB).
-        # 
-        # - Default value: 50 MB.
-        # 
-        # - Minimum value: 35 MB.
-        # 
-        # - Maximum value: 1024 MB.
+        # The maximum memory usage allowed for the Cloud Assistant Agent main process. You must specify the unit (B|KB|MB).
+        # - Default value: 50MB.
+        # - Minimum value: 35MB.
+        # - Maximum value: 1024MB.
         self.memory_limit = memory_limit
-        # The maximum number of consecutive times that CPU or memory usage can exceed the specified limits. If the limits are consecutively exceeded for the specified number of times, the Cloud Assistant agent is automatically stopped.
-        # 
+        # The maximum number of consecutive times that CPU or memory resources usage can exceed the limit before the Cloud Assistant Agent automatically stops running.
         # - Default value: 3.
-        # 
         # - Minimum value: 3.
         self.overload_limit = overload_limit
 
@@ -348,31 +330,24 @@ class ModifyCloudAssistantSettingsRequestOssDeliveryConfig(DaraModel):
     ):
         # The name of the OSS bucket.
         self.bucket_name = bucket_name
-        # Specifies whether to enable the feature of delivering records to OSS. Default value: false.
+        # Specifies whether to enable delivery to OSS. Default value: false.
         self.enabled = enabled
         # The OSS encryption algorithm. Valid values:
-        # 
         # - AES256
-        # 
         # - SM4
         self.encryption_algorithm = encryption_algorithm
-        # The ID of the customer master key (CMK) when KMS encryption is used.
+        # The ID of the customer master key (CMK) when the encryption method is set to KMS.
         self.encryption_key_id = encryption_key_id
-        # The OSS encryption mode. Valid values:
-        # 
-        # - Inherit: inherits the bucket encryption.
-        # 
-        # - OssManaged: uses OSS-managed server-side encryption.
-        # 
-        # - KMS: uses KMS encryption.
+        # The OSS encryption method. Valid values:
+        # - Inherit: inherits the encryption method of the bucket.
+        # - OssManaged: OSS-managed encryption.
+        # - KMS: Key Management Service (KMS) encryption.
         self.encryption_type = encryption_type
-        # The prefix of the directory in the OSS bucket. The following limits apply:
+        # The directory prefix of the OSS bucket. The following limits apply:
+        # - The prefix cannot exceed 254 characters in length.
+        # - The prefix cannot start with a forward slash (/) or a backslash (\\).
         # 
-        # - The prefix can be up to 254 characters in length.
-        # 
-        # - The prefix cannot start with a forward slash (/) or a backslash ().
-        # 
-        # Note: If you want to deliver records to the root directory of the bucket, enter "". To clear the prefix that is previously set, enter "".
+        # > Note: Set this parameter to an empty string ("") if no directory prefix is required. If a prefix was previously configured and is no longer needed, set this parameter to an empty string ("") to clear it.
         self.prefix = prefix
 
     def validate(self):
@@ -434,44 +409,42 @@ class ModifyCloudAssistantSettingsRequestAgentUpgradeConfig(DaraModel):
         enabled: bool = None,
         time_zone: str = None,
     ):
-        # A list of time windows during which the agent is allowed to be upgraded. The time windows are accurate to minutes and are in UTC by default.
+        # The list of time windows during which upgrades are allowed. The time can be specified down to the minute. The default time zone is UTC.
         # 
-        # The interval between two consecutive time windows must be at least 1 hour.
+        # The interval between time windows cannot be less than 1 hour.
         # 
-        # Format: StartTime(HH:mm)-EndTime(HH:mm).
+        # Format: Start time (HH:mm)-End time (HH:mm).
         # 
-        # For example, [
+        # Example: [
         # "02:00-03:00",
         # "05:00-06:00"
         # ]
-        # indicates that the agent can be upgraded from 2:00 to 3:00 and from 5:00 to 6:00 every day in UTC.
+        # This indicates that upgrades are allowed daily from 02:00 to 03:00 and from 05:00 to 06:00 in the UTC time zone.
         self.allowed_upgrade_window = allowed_upgrade_window
-        # Specifies whether to immediately check the version and perform an update when the Cloud Assistant agent is started. Default value: true.
+        # Specifies whether the Cloud Assistant Agent checks for updates and performs an upgrade immediately upon startup. Default value: true.
         # 
-        # This setting takes effect only when the version of the Cloud Assistant agent is not earlier than the following versions:
+        # This parameter takes effect only when the Cloud Assistant Agent version meets the following minimum requirements:
         # 
         # - Windows: 2.1.4.1065
         # 
         # - Linux: 2.2.4.1065
         self.bootstrap_upgrade = bootstrap_upgrade
-        # Specifies whether to disallow the Cloud Assistant agent to check for or perform updates. Default value: false.
+        # Specifies whether to prevent the Cloud Assistant Agent from checking for and performing updates. Default value: false.
         # 
-        # This setting takes effect only when the version of the Cloud Assistant agent is not earlier than the following versions:
+        # This parameter takes effect only when the Cloud Assistant Agent version meets the following minimum requirements:
         # 
         # - Windows: 2.1.4.1065
         # 
         # - Linux: 2.2.4.1065
         self.disable_upgrade = disable_upgrade
-        # Specifies whether to enable custom upgrade configurations for the agent. If you set this parameter to false, the agent attempts to upgrade every 30 minutes by default.
+        # Specifies whether to enable the custom Agent upgrade configuration. If this parameter is set to false, the system attempts to upgrade the Agent every 30 minutes by default.
         # 
         # Default value: false.
         self.enabled = enabled
-        # The time zone of the time windows for agent upgrade. Default value: UTC.
-        # The following formats are supported for the time zone:
-        # 
-        # - Time zone name: for example, Asia/Shanghai (China/Shanghai time) and America/Los_Angeles (US/Los Angeles time).
-        # 
-        # - Offset from Greenwich Mean Time (GMT): for example, GMT+8:00 (UTC+8) and GMT-7:00 (UTC-7). The hour part cannot have a leading zero.
+        # The time zone for the allowed upgrade time windows. Default value: UTC.
+        # The time zone can be specified in the following formats:
+        # - Full time zone name, such as Asia/Shanghai or America/Los_Angeles.
+        # - GMT offset from Greenwich Mean Time, such as GMT+8:00 or GMT-7:00. Leading zeros are not supported for the hour value.
         self.time_zone = time_zone
 
     def validate(self):

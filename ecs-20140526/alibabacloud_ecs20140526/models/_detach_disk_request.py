@@ -15,33 +15,30 @@ class DetachDiskRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # Specifies whether to release the system disk or data disk when the instance from which you want to detach the disk is released. Valid values:
+        # Specifies whether to configure the automatic release attribute when detaching a system disk or data disk. This attribute determines whether the system disk or data disk is released together with the ECS instance.
         # 
-        # - true: releases the disk when the instance is released.
-        # 
-        # - false: does not release the disk when the instance is released. The disk is retained as a pay-as-you-go data disk.
+        # - true: The disk is released together with the instance.
+        # - false: The disk is not released together with the instance. The disk is retained as a pay-as-you-go data disk.
         # 
         # Default value: true.
         # 
         # Take note of the following items:
         # 
-        # - You cannot specify this parameter for disks for which the multi-attach feature is enabled.
-        # 
-        # - If a data disk is to be detached, the default value is `false`.
-        # 
-        # - If you want to detach an `elastic ephemeral disk`, you must set `DeleteWithInstance` to `true`.
+        # - Disks with the multi-attach feature enabled do not support this parameter.
+        # - If the disk to be detached is a data disk, the default value is `false`.
+        # - If the disk to be detached is an `elastic ephemeral disk`, you must set `DeleteWithInstance` to `true`.
         self.delete_with_instance = delete_with_instance
         # The ID of the disk that you want to detach.
         # 
-        # - The disk that you want to detach must be attached to an ECS instance and in the In Use (`In_use`) state.
+        # - The disk must be attached to an instance and in the In Use (`In_use`) state.
         # 
-        # - The instance from which you want to detach a data disk must be in the `Running` or `Stopped` state.
+        # - When you detach a data disk, the instance to which the disk is attached must be in the Running (`Running`) or Stopped (`Stopped`) state.
         # 
-        # - The instance from which you want to detach the system disk must be in the `Stopped` state.
+        # - When you detach a system disk, the instance to which the disk is attached must be in the Stopped (`Stopped`) state.
         # 
         # This parameter is required.
         self.disk_id = disk_id
-        # The ID of the ECS instance from which you want to detach the disk.
+        # The ID of the ECS instance to which the disk to be detached is attached.
         # 
         # This parameter is required.
         self.instance_id = instance_id

@@ -22,7 +22,7 @@ class DescribeImageSharePermissionResponseBody(DaraModel):
         self.accounts = accounts
         # The ID of the custom image.
         self.image_id = image_id
-        # The page number of the returned results.
+        # The page number of the query results.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size

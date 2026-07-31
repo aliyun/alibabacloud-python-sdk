@@ -11,9 +11,9 @@ class ModifyManagedInstanceResponseBody(DaraModel):
         instance: main_models.ModifyManagedInstanceResponseBodyInstance = None,
         request_id: str = None,
     ):
-        # The name of the managed instance.
+        # The information about the managed instance.
         self.instance = instance
-        # Details of the managed instance.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -50,9 +50,9 @@ class ModifyManagedInstanceResponseBodyInstance(DaraModel):
         instance_id: str = None,
         instance_name: str = None,
     ):
-        # The managed instance ID.
-        self.instance_id = instance_id
         # The ID of the managed instance.
+        self.instance_id = instance_id
+        # The name of the managed instance.
         self.instance_name = instance_name
 
     def validate(self):

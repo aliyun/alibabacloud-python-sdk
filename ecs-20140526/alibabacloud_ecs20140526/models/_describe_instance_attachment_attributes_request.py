@@ -16,25 +16,25 @@ class DescribeInstanceAttachmentAttributesRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The IDs of the instances. The value can be a JSON array that consists of up to 100 instance IDs. Separate the IDs with commas (,).
+        # The instance IDs. The value can be a JSON array that consists of up to 100 instance IDs. Separate the IDs with commas (,).
         # 
         # This parameter is required.
         self.instance_ids = instance_ids
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number.
+        # The page number of the instance status list.
         # 
-        # Page starts from page 1.
+        # Minimum value: 1.
         # 
         # Default value: 1.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries per page for the paged query.
         # 
-        # Valid values: 1 to 100.
+        # Maximum value: 100.
         # 
         # Default value: 10.
         self.page_size = page_size
-        # The region ID of the elasticity assurance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The region ID of the elasticity assurance. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id

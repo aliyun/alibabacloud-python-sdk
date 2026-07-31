@@ -16,14 +16,14 @@ class DescribeResourceByTagsResponseBody(DaraModel):
         resources: main_models.DescribeResourceByTagsResponseBodyResources = None,
         total_count: int = None,
     ):
-        # The page number.
+        # The page number of the results.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
         self.resources = resources
-        # The total number of resources.
+        # The total number of returned resources.
         self.total_count = total_count
 
     def validate(self):

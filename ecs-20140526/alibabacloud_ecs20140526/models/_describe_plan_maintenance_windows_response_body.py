@@ -24,7 +24,7 @@ class DescribePlanMaintenanceWindowsResponseBody(DaraModel):
         self.plan_maintenance_window_list = plan_maintenance_window_list
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned under the current query conditions. This parameter is optional and may not be returned by default.
+        # The total number of entries that match the query conditions. This parameter is optional and may not be returned by default.
         self.total_count = total_count
 
     def validate(self):
@@ -111,7 +111,7 @@ class DescribePlanMaintenanceWindowsResponseBodyPlanMaintenanceWindowList(DaraMo
         self.support_maintenance_action = support_maintenance_action
         # The resources to which the O&M window applies.
         self.target_resource = target_resource
-        # The recurrence cycle of the window.
+        # The recurring cycle of the window.
         self.time_period = time_period
 
     def validate(self):
@@ -193,11 +193,11 @@ class DescribePlanMaintenanceWindowsResponseBodyPlanMaintenanceWindowListTimePer
         period_unit: str = None,
         range_list: List[main_models.DescribePlanMaintenanceWindowsResponseBodyPlanMaintenanceWindowListTimePeriodRangeList] = None,
     ):
-        # The type of the recurrence cycle. Valid values:
+        # The cycle type. Valid values:
         # - Daily: daily recurrence.
         # - Weekly: weekly recurrence.
         self.period_unit = period_unit
-        # The time ranges within the recurrence cycle of the O&M window (in UTC).
+        # The time ranges within the recurring cycle of the O&M window (UTC time zone).
         self.range_list = range_list
 
     def validate(self):
@@ -280,7 +280,7 @@ class DescribePlanMaintenanceWindowsResponseBodyPlanMaintenanceWindowListTargetR
     ):
         # The ID of the resource group to which the O&M window applies.
         self.resource_group_id = resource_group_id
-        # The type of resources for which the O&M window is configured.
+        # The resource type for which the O&M window is configured.
         self.scope = scope
         # The tags to which the O&M window applies.
         self.tags = tags

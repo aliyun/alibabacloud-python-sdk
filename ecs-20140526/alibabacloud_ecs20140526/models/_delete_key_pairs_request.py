@@ -13,14 +13,14 @@ class DeleteKeyPairsRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The names of SSH key pairs. The value can be a JSON array that consists of up to 100 SSH key pair names. Separate multiple names with commas (,).
+        # The names of the SSH key pairs. The value is a JSON array of SSH key pair names. You can specify up to 100 SSH key pairs. Separate multiple names with commas (,).
         # 
-        # >Before you delete SSH key pairs, you can call [DescribeKeyPairs](https://help.aliyun.com/document_detail/51773.html) to query existing key pairs.
+        # > Before you delete SSH key pairs, you can call [DescribeKeyPairs](https://help.aliyun.com/document_detail/51773.html) to query existing key pairs.
         # 
         # This parameter is required.
         self.key_pair_names = key_pair_names
         self.owner_id = owner_id
-        # The region where the SSH key pairs reside. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+        # The region ID of the SSH key pairs. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id

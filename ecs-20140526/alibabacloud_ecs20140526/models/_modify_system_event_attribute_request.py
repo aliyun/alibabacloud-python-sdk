@@ -12,12 +12,20 @@ class ModifySystemEventAttributeRequest(DaraModel):
         not_before: str = None,
         region_id: str = None,
     ):
+        # The event ID.
+        # 
         # This parameter is required.
         self.event_id = event_id
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The new planned execution time of the system event. Specify the time in the [ISO 8601](https://www.alibabacloud.com/help/en/ecs/developer-reference/iso-8601-time-format) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # 
         # This parameter is required.
         self.not_before = not_before
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
 

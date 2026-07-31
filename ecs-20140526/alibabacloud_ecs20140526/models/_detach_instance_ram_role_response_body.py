@@ -17,13 +17,13 @@ class DetachInstanceRamRoleResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.detach_instance_ram_role_results = detach_instance_ram_role_results
-        # The number of ECS instances from which instance RAM roles failed to be detached.
+        # The number of instances from which the RAM role failed to be detached.
         self.fail_count = fail_count
-        # The name of the instance RAM role.
+        # The name of the detached instance RAM role.
         self.ram_role_name = ram_role_name
         # The request ID.
         self.request_id = request_id
-        # The total number of ECS instances from which you attempted to detach instance RAM roles.
+        # The total number of instances from which the RAM role was detached.
         self.total_count = total_count
 
     def validate(self):

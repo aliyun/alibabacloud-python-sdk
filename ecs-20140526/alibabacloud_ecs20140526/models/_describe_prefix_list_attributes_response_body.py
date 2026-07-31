@@ -19,10 +19,9 @@ class DescribePrefixListAttributesResponseBody(DaraModel):
         prefix_list_name: str = None,
         request_id: str = None,
     ):
-        # The IP address family of the prefix list. Valid values:
+        # The address family of the prefix list. Valid values:
         # 
         # - IPv4
-        # 
         # - IPv6
         self.address_family = address_family
         # The time when the prefix list was created.
@@ -30,9 +29,9 @@ class DescribePrefixListAttributesResponseBody(DaraModel):
         # The description of the prefix list.
         self.description = description
         self.entries = entries
-        # The maximum number of entries in the prefix list.
+        # The maximum number of entries that the prefix list supports.
         self.max_entries = max_entries
-        # The ID of the prefix list.
+        # The prefix list ID.
         self.prefix_list_id = prefix_list_id
         # The name of the prefix list.
         self.prefix_list_name = prefix_list_name

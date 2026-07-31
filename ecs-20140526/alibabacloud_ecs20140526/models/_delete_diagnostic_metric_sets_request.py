@@ -12,11 +12,11 @@ class DeleteDiagnosticMetricSetsRequest(DaraModel):
         metric_set_ids: List[str] = None,
         region_id: str = None,
     ):
-        # The IDs of diagnostic metric sets. You can specify up to 10 set IDs.
+        # The list of diagnostic metric set IDs. You can specify up to 10 IDs.
         # 
         # This parameter is required.
         self.metric_set_ids = metric_set_ids
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id

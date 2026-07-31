@@ -23,7 +23,7 @@ class AttachInstanceRamRoleResponseBody(DaraModel):
         self.ram_role_name = ram_role_name
         # The request ID.
         self.request_id = request_id
-        # The total number of instances to which you attempted to attach the instance RAM role.
+        # The total number of instances to which the instance RAM role is attached.
         self.total_count = total_count
 
     def validate(self):

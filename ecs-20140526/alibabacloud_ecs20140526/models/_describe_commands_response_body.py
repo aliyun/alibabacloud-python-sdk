@@ -18,9 +18,9 @@ class DescribeCommandsResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.commands = commands
-        # The pagination token that is used in the next request to retrieve a new page of results. If this parameter is not returned, all results have been retrieved.
+        # The pagination token returned in this call.
         self.next_token = next_token
-        # The page number.
+        # The page number of the command list.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size

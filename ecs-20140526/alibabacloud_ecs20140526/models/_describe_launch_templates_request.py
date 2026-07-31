@@ -22,17 +22,17 @@ class DescribeLaunchTemplatesRequest(DaraModel):
         template_resource_group_id: str = None,
         template_tag: List[main_models.DescribeLaunchTemplatesRequestTemplateTag] = None,
     ):
-        # An array of one or more launch template IDs.
+        # The IDs of one or more launch templates.
         # 
         # - You can query up to 100 launch templates at a time.
         # 
-        # - You must specify LaunchTemplateId or LaunchTemplateName to determine the templates.
+        # - You must specify LaunchTemplateId or LaunchTemplateName to determine the template.
         self.launch_template_id = launch_template_id
-        # An array of one or more launch template names.
+        # The names of one or more launch templates.
         # 
         # - You can query up to 100 launch templates at a time.
         # 
-        # - You must specify LaunchTemplateId or LaunchTemplateName to determine the templates.
+        # - You must specify LaunchTemplateId or LaunchTemplateName to determine the template.
         self.launch_template_name = launch_template_name
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -40,7 +40,7 @@ class DescribeLaunchTemplatesRequest(DaraModel):
         # 
         # Default value: 1.
         self.page_number = page_number
-        # The number of entries per page for a paginated query.
+        # The number of entries per page for a paged query.
         # 
         # Default value: 10.
         self.page_size = page_size
@@ -50,12 +50,12 @@ class DescribeLaunchTemplatesRequest(DaraModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the resource group to which the launch template belongs. When you use this parameter to filter resources, the number of resources cannot exceed 1000.
+        # The ID of the resource group to which the launch template belongs. When you use this parameter to filter resources, the resource count cannot exceed 1000.
         # 
         # > Filtering by the default resource group is not supported.
         self.template_resource_group_id = template_resource_group_id
-        # The list of tag key-value pairs of the launch template.
-        # > Currently, you can create and query launch template tags only by calling API operations. The console does not support creating or viewing launch template tags.
+        # The list of tag key-value pairs of the launch template itself.
+        # > Currently, you can create and query tags of launch templates only by calling API operations. You cannot create or view tags in the console.
         self.template_tag = template_tag
 
     def validate(self):
@@ -154,7 +154,7 @@ class DescribeLaunchTemplatesRequestTemplateTag(DaraModel):
     ):
         # The tag key of the launch template. Valid values of N: 1 to 20.
         # 
-        # If you use a single tag to filter resources, the number of resources with the specified tag cannot exceed 1000. If you use multiple tags to filter resources, the number of resources that are bound with all the specified tags cannot exceed 1000. If the number of resources exceeds 1000, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query them.
+        # If you use a single tag to filter resources, the resource count with the specified tag cannot exceed 1000. If you use multiple tags to filter resources, the resource count of resources that have all specified tags attached cannot exceed 1000. If the resource count exceeds 1000, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query resources.
         self.key = key
         # The tag value of the launch template. Valid values of N: 1 to 20.
         self.value = value

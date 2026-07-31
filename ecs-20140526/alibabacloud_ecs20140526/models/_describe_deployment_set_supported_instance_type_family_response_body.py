@@ -10,7 +10,7 @@ class DescribeDeploymentSetSupportedInstanceTypeFamilyResponseBody(DaraModel):
         instance_type_families: str = None,
         request_id: str = None,
     ):
-        # The instance families that support the deployment strategy.
+        # The instance families that support the specified deployment set strategy.
         self.instance_type_families = instance_type_families
         # The request ID.
         self.request_id = request_id

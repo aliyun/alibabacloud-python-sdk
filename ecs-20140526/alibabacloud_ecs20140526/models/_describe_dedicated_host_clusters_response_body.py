@@ -17,13 +17,13 @@ class DescribeDedicatedHostClustersResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.dedicated_host_clusters = dedicated_host_clusters
-        # The page number.
+        # The page number of the dedicated host cluster list.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of dedicated host clusters.
+        # The total number of dedicated hosts.
         self.total_count = total_count
 
     def validate(self):

@@ -15,11 +15,11 @@ class DescribeDedicatedHostTypesRequest(DaraModel):
         resource_owner_id: int = None,
         supported_instance_type_family: str = None,
     ):
-        # The dedicated host type. For more information, see [Dedicated host types](https://help.aliyun.com/document_detail/68564.html).
+        # The dedicated host type. For more information, see [Host specifications](https://help.aliyun.com/document_detail/68564.html).
         self.dedicated_host_type = dedicated_host_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The region ID of the dedicated host. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id

@@ -16,52 +16,36 @@ class DescribeAccountAttributesRequest(DaraModel):
         resource_owner_id: int = None,
         zone_id: str = None,
     ):
-        # The type of resource quota N. Valid values of N: 1 to 8. Valid values:
+        # The type of resource quota to query in the specified region. Valid values of N: 1 to 8. Valid values:
         # 
-        # - instance-network-type: the available network types.
-        # 
+        # - instance-network-type: available network types.
         # - max-security-groups: the maximum number of security groups.
-        # 
-        # - max-elastic-network-interfaces: the maximum number of ENIs.
-        # 
+        # - max-elastic-network-interfaces: the maximum number of Elastic Network Interfaces (ENIs).
         # - max-postpaid-instance-vcpu-count: the maximum number of vCPUs for pay-as-you-go instances.
-        # 
         # - max-spot-instance-vcpu-count: the maximum number of vCPUs for spot instances.
-        # 
-        # - used-postpaid-instance-vcpu-count: the number of vCPUs that have been allocated to pay-as-you-go instances.
-        # 
-        # - used-spot-instance-vcpu-count: the number of vCPUs that have been allocated to spot instances.
-        # 
-        # - max-postpaid-yundisk-capacity: the maximum capacity of pay-as-you-go data disks. (The value is deprecated.)
-        # 
-        # - used-postpaid-yundisk-capacity: the capacity of pay-as-you-go data disks that have been created. (The value is deprecated.)
-        # 
+        # - used-postpaid-instance-vcpu-count: the number of vCPUs that have been used by pay-as-you-go instances.
+        # - used-spot-instance-vcpu-count: the number of vCPUs that have been used by spot instances.
+        # - max-postpaid-yundisk-capacity: the maximum total capacity of pay-as-you-go cloud disks used as data disks. (This parameter value is deprecated.)
+        # - used-postpaid-yundisk-capacity: the capacity of pay-as-you-go cloud disks that have been used as data disks. (This parameter value is deprecated.)
         # - max-dedicated-hosts: the maximum number of dedicated hosts.
-        # 
         # - supported-postpaid-instance-types: the instance types of pay-as-you-go I/O optimized instances.
-        # 
         # - max-axt-command-count: the maximum number of Cloud Assistant commands.
+        # - max-axt-invocation-daily: the maximum number of Cloud Assistant commands that can be executed per day.
+        # - real-name-authentication: whether the account has completed real-name registration.
         # 
-        # - max-axt-invocation-daily: the maximum number of Cloud Assistant command executions per day.
+        #     > You must complete real-name registration before you can create ECS instances in regions in the Chinese mainland.
+        # - max-cloud-assistant-activation-count: the maximum number of Cloud Assistant managed instance dynamic codes that can be created.
         # 
-        # - real-name-authentication: whether the account has completed the real-name verification.
-        # 
-        #   \\*\\*
-        # 
-        #   **Note** To create an ECS instance in a region in the Chinese mainland, you must complete the real-name verification.
-        # 
-        # - max-cloud-assistant-activation-count: the maximum number of activation codes that can be created to use to register managed instances.
-        # 
-        # This parameter is empty by default.
+        # Default value: null.
         self.attribute_name = attribute_name
         self.owner_id = owner_id
-        # The ID of the region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent list of regions.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the zone in which the resource resides.
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):

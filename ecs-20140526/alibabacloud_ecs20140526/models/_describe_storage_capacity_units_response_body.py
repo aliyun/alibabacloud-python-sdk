@@ -16,11 +16,11 @@ class DescribeStorageCapacityUnitsResponseBody(DaraModel):
         storage_capacity_units: main_models.DescribeStorageCapacityUnitsResponseBodyStorageCapacityUnits = None,
         total_count: int = None,
     ):
-        # The page number of the returned page.
+        # The page number of the SCU list.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page in the paging query.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         self.storage_capacity_units = storage_capacity_units
         # The total number of SCUs.

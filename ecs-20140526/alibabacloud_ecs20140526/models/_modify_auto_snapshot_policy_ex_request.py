@@ -26,17 +26,17 @@ class ModifyAutoSnapshotPolicyExRequest(DaraModel):
     ):
         # The retention period of cross-region snapshot replicas. Unit: days. Valid values:
         # 
-        # - -1: permanently retained.
-        # - 1 to 65535: the specified number of days for which snapshot replicas are retained.
+        # - -1: Snapshot replicas are permanently retained.
+        # - 1 to 65535: the number of days for which snapshot replicas are retained.
         # 
         # Default value: -1.
         self.copied_snapshots_retention_days = copied_snapshots_retention_days
         # The encryption parameter for cross-region snapshot replication.
         self.copy_encryption_configuration = copy_encryption_configuration
-        # Specifies whether to allow automatic cross-region replication.
+        # Specifies whether to allow automatic cross-region replication. Valid values:
         # 
-        # - true: allowed.
-        # - false: not allowed.
+        # - true: Allowed.
+        # - false: Not allowed.
         self.enable_cross_region_copy = enable_cross_region_copy
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -47,7 +47,7 @@ class ModifyAutoSnapshotPolicyExRequest(DaraModel):
         # 
         # This parameter is required.
         self.auto_snapshot_policy_id = auto_snapshot_policy_id
-        # The name of the automatic snapshot policy. If this parameter is left empty, the name is not modified.
+        # The name of the automatic snapshot policy. If this parameter is empty, the name is not modified.
         self.auto_snapshot_policy_name = auto_snapshot_policy_name
         # The region ID of the automatic snapshot policy. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
@@ -62,8 +62,8 @@ class ModifyAutoSnapshotPolicyExRequest(DaraModel):
         self.repeat_weekdays = repeat_weekdays
         # The retention period of automatic snapshots. Unit: days. Valid values:
         # 
-        # - -1: permanently retained.
-        # - 1 to 65536: the specified number of days for which snapshots are retained.
+        # - -1: Automatic snapshots are permanently retained.
+        # - 1 to 65536: the number of days for which automatic snapshots are retained.
         # 
         # Default value: -1.
         self.retention_days = retention_days
@@ -180,8 +180,8 @@ class ModifyAutoSnapshotPolicyExRequestCopyEncryptionConfiguration(DaraModel):
         self.arn = arn
         # Specifies whether to enable encryption for cross-region snapshot replication. Valid values:
         # 
-        # - true: enabled. 
-        # - false: disabled. 
+        # - true: Enabled. 
+        # - false: Disabled. 
         # 
         # Default value: false.
         self.encrypted = encrypted

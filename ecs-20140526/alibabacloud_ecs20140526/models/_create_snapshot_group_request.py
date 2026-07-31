@@ -31,14 +31,14 @@ class CreateSnapshotGroupRequest(DaraModel):
         self.client_token = client_token
         # The description. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description
-        # The ID of a disk for which you want to create a snapshot-consistent group. You can specify disk IDs across instances within the same zone. Valid values of N: 1 to 16. A snapshot-consistent group can contain up to 16 disks with a total capacity of up to 32 TiB.
+        # The ID of a disk for which you want to create a snapshot-consistent group. You can specify disk IDs across instances within the same zone. Valid values of N: 1 to 128. A snapshot-consistent group can contain up to 128 disks with a total capacity of no more than 256 TiB.
         # 
         # Take note of the following items:
         # 
         # - This parameter cannot be specified together with `ExcludeDiskId.N`.
-        # - If you specify `InstanceId`, this parameter can only be set to disks attached to the specified instance and no longer supports specifying disk IDs across multiple instances.
+        # - If you specify `InstanceId`, this parameter can only be set to disks attached to the specified instance, and cross-instance disk IDs are not supported.
         self.disk_id = disk_id
-        # The ID of a disk in the instance for which you do not want to create a snapshot. After you specify this parameter, the snapshot-consistent group does not contain the snapshot of the specified disk. Valid values of N: 1 to 16.
+        # The ID of a disk in the instance for which you do not want to create a snapshot. After you specify this parameter, the snapshot-consistent group does not contain the snapshot of the specified disk. Valid values of N: 1 to 128.
         # 
         # Default value: null, which indicates that snapshots are created for all disks in the instance.
         # 
@@ -53,15 +53,15 @@ class CreateSnapshotGroupRequest(DaraModel):
         # 
         # Default value: false.
         # 
-        # >This parameter is deprecated. Standard snapshots of enterprise SSDs are upgraded to [instant access by default](https://help.aliyun.com/document_detail/193667.html). No additional configuration or fees are required.
+        # >This parameter is deprecated. Standard snapshots of enterprise SSDs have been upgraded to [instant access by default](https://help.aliyun.com/document_detail/193667.html). No additional configuration or fees are required.
         self.instant_access = instant_access
-        # The number of days for which the snapshot instant access feature remains active. Unit: days. Valid values: 1 to 65535.
+        # The number of days for which the snapshot instant access feature is active. Unit: days. Valid values: 1 to 65535.
         # 
         # This parameter takes effect only when `InstantAccess=true`. The snapshot instant access feature is automatically shutdown when the specified duration expires.
         # 
-        # Default value: null, which indicates that the instant access duration is the same as the snapshot release period.
+        # Default value: null, which indicates that the instant access feature is active until the snapshot is released.
         # 
-        # >This parameter is deprecated. Standard snapshots of enterprise SSDs are upgraded to [instant access by default](https://help.aliyun.com/document_detail/193667.html). No additional configuration or fees are required.
+        # >This parameter is deprecated. Standard snapshots of enterprise SSDs have been upgraded to [instant access by default](https://help.aliyun.com/document_detail/193667.html). No additional configuration or fees are required.
         self.instant_access_retention_days = instant_access_retention_days
         # The name of the snapshot-consistent group. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://` or `https://`. The name can contain digits, periods (.), underscores (_), hyphens (-), and colons (:).
         self.name = name

@@ -13,9 +13,9 @@ class DescribeSnapshotsUsageResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The number of snapshots stored in the current region.
+        # The total number of snapshots in the current region.
         self.snapshot_count = snapshot_count
-        # The total size of snapshots stored in the current region. Unit: bytes.
+        # The total snapshot size in the current region. Unit: bytes.
         self.snapshot_size = snapshot_size
 
     def validate(self):

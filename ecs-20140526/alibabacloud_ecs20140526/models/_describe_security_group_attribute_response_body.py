@@ -23,12 +23,12 @@ class DescribeSecurityGroupAttributeResponseBody(DaraModel):
     ):
         # The description of the security group.
         self.description = description
-        # The internal network connectivity policy of the security group. Valid values: 
+        # The network connectivity policy within the security group. Valid values: 
         #          
         # - Accept: service interconnection.
         # - Drop: internal isolation.
         self.inner_access_policy = inner_access_policy
-        # The paging token returned in this call. When you use `MaxResults` and `NextToken` for paging query, if this value is empty, no more data is available.
+        # The query token (Token) returned in this call. When you use `MaxResults` and `NextToken` for paged query, if this value is empty, no more data is available. This indicates that paging is complete.
         self.next_token = next_token
         self.permissions = permissions
         # The region ID.

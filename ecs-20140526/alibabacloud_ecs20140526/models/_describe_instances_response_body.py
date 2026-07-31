@@ -22,13 +22,11 @@ class DescribeInstancesResponseBody(DaraModel):
         self.next_token = next_token
         # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries per page as specified in the request.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
         # The total number of queried instances.
-        # 
-        # > When you use `MaxResults` and `NextToken` parameters for paging query, the returned `TotalCount` parameter value is meaningless.
         self.total_count = total_count
 
     def validate(self):
@@ -177,6 +175,7 @@ class DescribeInstancesResponseBodyInstancesInstance(DaraModel):
         resource_group_id: str = None,
         sale_cycle: str = None,
         security_group_ids: main_models.DescribeInstancesResponseBodyInstancesInstanceSecurityGroupIds = None,
+        security_options: main_models.DescribeInstancesResponseBodyInstancesInstanceSecurityOptions = None,
         serial_number: str = None,
         spot_duration: int = None,
         spot_interruption_behavior: str = None,
@@ -246,6 +245,7 @@ class DescribeInstancesResponseBodyInstancesInstance(DaraModel):
         self.resource_group_id = resource_group_id
         self.sale_cycle = sale_cycle
         self.security_group_ids = security_group_ids
+        self.security_options = security_options
         self.serial_number = serial_number
         self.spot_duration = spot_duration
         self.spot_interruption_behavior = spot_interruption_behavior
@@ -294,6 +294,8 @@ class DescribeInstancesResponseBodyInstancesInstance(DaraModel):
             self.rdma_ip_address.validate()
         if self.security_group_ids:
             self.security_group_ids.validate()
+        if self.security_options:
+            self.security_options.validate()
         if self.tags:
             self.tags.validate()
         if self.vpc_attributes:
@@ -471,6 +473,9 @@ class DescribeInstancesResponseBodyInstancesInstance(DaraModel):
 
         if self.security_group_ids is not None:
             result['SecurityGroupIds'] = self.security_group_ids.to_map()
+
+        if self.security_options is not None:
+            result['SecurityOptions'] = self.security_options.to_map()
 
         if self.serial_number is not None:
             result['SerialNumber'] = self.serial_number
@@ -697,6 +702,10 @@ class DescribeInstancesResponseBodyInstancesInstance(DaraModel):
             temp_model = main_models.DescribeInstancesResponseBodyInstancesInstanceSecurityGroupIds()
             self.security_group_ids = temp_model.from_map(m.get('SecurityGroupIds'))
 
+        if m.get('SecurityOptions') is not None:
+            temp_model = main_models.DescribeInstancesResponseBodyInstancesInstanceSecurityOptions()
+            self.security_options = temp_model.from_map(m.get('SecurityOptions'))
+
         if m.get('SerialNumber') is not None:
             self.serial_number = m.get('SerialNumber')
 
@@ -884,6 +893,33 @@ class DescribeInstancesResponseBodyInstancesInstanceTagsTag(DaraModel):
 
         if m.get('TagValue') is not None:
             self.tag_value = m.get('TagValue')
+
+        return self
+
+class DescribeInstancesResponseBodyInstancesInstanceSecurityOptions(DaraModel):
+    def __init__(
+        self,
+        enable_secure_boot: bool = None,
+    ):
+        self.enable_secure_boot = enable_secure_boot
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.enable_secure_boot is not None:
+            result['EnableSecureBoot'] = self.enable_secure_boot
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnableSecureBoot') is not None:
+            self.enable_secure_boot = m.get('EnableSecureBoot')
 
         return self
 
@@ -1343,8 +1379,10 @@ class DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInte
     def __init__(
         self,
         ipv_6address: str = None,
+        primary: bool = None,
     ):
         self.ipv_6address = ipv_6address
+        self.primary = primary
 
     def validate(self):
         pass
@@ -1357,12 +1395,18 @@ class DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInte
         if self.ipv_6address is not None:
             result['Ipv6Address'] = self.ipv_6address
 
+        if self.primary is not None:
+            result['Primary'] = self.primary
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Ipv6Address') is not None:
             self.ipv_6address = m.get('Ipv6Address')
+
+        if m.get('Primary') is not None:
+            self.primary = m.get('Primary')
 
         return self
 

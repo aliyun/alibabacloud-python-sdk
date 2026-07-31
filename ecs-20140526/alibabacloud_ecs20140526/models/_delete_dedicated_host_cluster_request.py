@@ -14,13 +14,13 @@ class DeleteDedicatedHostClusterRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the host group.
+        # The ID of the dedicated host cluster.
         # 
         # This parameter is required.
         self.dedicated_host_cluster_id = dedicated_host_cluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the host group. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The ID of the region where the dedicated host cluster resides. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id

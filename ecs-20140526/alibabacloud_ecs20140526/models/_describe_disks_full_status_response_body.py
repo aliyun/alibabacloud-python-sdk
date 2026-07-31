@@ -23,7 +23,7 @@ class DescribeDisksFullStatusResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of EBS devices for which full status information is returned.
+        # The total number of full status entries.
         self.total_count = total_count
 
     def validate(self):

@@ -13,13 +13,13 @@ class ModifyDiskSpecResponseBody(DaraModel):
     ):
         # The order ID.
         # 
-        # > This parameter is returned only when the category of a subscription disk or the performance level of a subscription ESSD is modified.
+        # > An order ID is returned only when you change or modify a subscription disk.
         self.order_id = order_id
         # The request ID.
         self.request_id = request_id
-        # The ID of the disk category change task.
+        # The task ID for the disk type change.
         # 
-        # > If you only modify the performance level of an ESSD, this parameter is not returned.
+        # > This parameter is not returned if you only modified the performance level (PL) of an ESSD.
         self.task_id = task_id
 
     def validate(self):

@@ -22,29 +22,29 @@ class DescribeImagePipelinesRequest(DaraModel):
         resource_owner_id: int = None,
         tag: List[main_models.DescribeImagePipelinesRequestTag] = None,
     ):
-        # The IDs of the image pipelines. You can specify up to 20 IDs.
+        # The image template ID. Valid values of N: 1 to 20.
         self.image_pipeline_id = image_pipeline_id
-        # The number of entries to return per page. Valid values: 1 to 500.
+        # The maximum number of entries per page for paging queries. Valid values: 1 to 500.
         # 
         # Default value: 50.
         self.max_results = max_results
-        # The name of the image pipeline.
+        # The template name.
         self.name = name
-        # The pagination token. To retrieve the next page of results, set this parameter to the `NextToken` value from the previous response. Omit this parameter on your first request.
+        # The pagination token. Set this parameter to the value of `NextToken` returned by the previous call. You do not need to set this parameter for the first request.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to view the latest list of Alibaba Cloud regions.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The resource group ID. If you use this parameter for filtering, you can query a maximum of 1,000 resources.
+        # The ID of the enterprise resource group. When you use this parameter to filter resources, the resource count cannot exceed 1000.
         # 
-        # > Filtering by the default resource group is not supported.
+        # >Filtering by the default resource group is not supported.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # A list of tags.
+        # The tags.
         self.tag = tag
 
     def validate(self):
@@ -141,9 +141,9 @@ class DescribeImagePipelinesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of a tag. Up to 20 tags are supported.
+        # The tag key. Valid values of N: 1 to 20.
         self.key = key
-        # The value of a tag. Up to 20 tags are supported.
+        # The tag value. Valid values of N: 1 to 20.
         self.value = value
 
     def validate(self):

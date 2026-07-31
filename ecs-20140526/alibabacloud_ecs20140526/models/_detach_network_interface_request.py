@@ -16,25 +16,24 @@ class DetachNetworkInterfaceRequest(DaraModel):
         resource_owner_id: int = None,
         trunk_network_instance_id: str = None,
     ):
-        # The ID of the trunk ENI.
-        # 
-        # > This parameter is unavailable for use.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the instance
+        # The network interface controller (NIC) ID.
         # 
         # This parameter is required.
         self.network_interface_id = network_interface_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the ENI.
+        # The region ID of the resource. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the request.
+        # The ID of the trunk ENI.
+        # >This parameter is not yet available.
         self.trunk_network_instance_id = trunk_network_instance_id
 
     def validate(self):

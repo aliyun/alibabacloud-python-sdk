@@ -17,14 +17,14 @@ class DeleteImageRequest(DaraModel):
         resource_owner_id: int = None,
     ):
         self.dry_run = dry_run
-        # Specifies whether to forcibly delete the custom image. Valid values:
-        # 
-        # - true: Forcibly deletes the custom image, ignoring whether the image is currently used by other instances.
-        # - false: Normally deletes the custom image. Before deletion, the system checks whether the image is currently used by other instances.
+        # Specifies whether to force delete the custom image. Valid values: 
+        #          
+        # - true: Force deletes the custom image, regardless of whether the image is being used by other instances.
+        # - false: Deletes the custom image only after checking that the image is not being used by other instances.
         # 
         # Default value: false.
         self.force = force
-        # The image ID. If the specified custom image does not exist, the request will be ignored.
+        # The image ID. If the specified custom image does not exist, the request is ignored.
         # 
         # This parameter is required.
         self.image_id = image_id
