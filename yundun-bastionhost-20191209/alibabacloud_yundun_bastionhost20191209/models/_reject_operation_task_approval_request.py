@@ -11,7 +11,7 @@ class RejectOperationTaskApprovalRequest(DaraModel):
         instance_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the O&M task approval.
+        # The O&M task approval ID.
         # > You can call the ListTodoOpsTaskApprovals operation to query this parameter.
         # 
         # This parameter is required.
@@ -23,7 +23,7 @@ class RejectOperationTaskApprovalRequest(DaraModel):
         # This parameter is required.
         self.instance_id = instance_id
         # The region ID of the bastion host.
-        # > For the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+        # > For information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):

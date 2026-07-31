@@ -21,7 +21,7 @@ class ListTodoOpsTaskApprovalsRequest(DaraModel):
         self.instance_id = instance_id
         # The task name or task remarks to query. Fuzzy match is supported.
         self.keyword = keyword
-        # The page number of the page to return in a paging query. Default value: **1**.
+        # The page number of the current page in a paging query. Default value: **1**.
         self.page_number = page_number
         # The maximum number of entries per page in a paging query.  
         # The maximum value of the PageSize parameter is 100. The default number of entries per page is 20. If PageSize is left empty, 20 entries are returned by default.
@@ -33,7 +33,7 @@ class ListTodoOpsTaskApprovalsRequest(DaraModel):
         # The task scheduling type used to filter results. Valid values:
         # - **FixTime**: scheduled execution.
         # - **CycleInterval**: periodic execution.
-        # - **Manual**: manually triggered by a user.
+        # - **Manual**: manually triggered by the user.
         self.schedule_type = schedule_type
 
     def validate(self):

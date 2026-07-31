@@ -12,12 +12,12 @@ class GetAutoOpsTaskRequest(DaraModel):
         task_id: str = None,
     ):
         # The instance ID of the bastion host.
-        # > You can invoke [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) to obtain this parameter.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query this parameter.
         self.instance_id = instance_id
         # The region ID of the bastion host.
         # > For the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
-        # The ID of the O&M task to query.
+        # The ID of the O&M task that you want to query.
         # 
         # This parameter is required.
         self.task_id = task_id

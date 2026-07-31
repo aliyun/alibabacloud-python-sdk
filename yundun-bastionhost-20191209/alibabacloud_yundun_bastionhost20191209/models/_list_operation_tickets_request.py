@@ -13,23 +13,21 @@ class ListOperationTicketsRequest(DaraModel):
         page_size: str = None,
         region_id: str = None,
     ):
-        # The address of the asset for which the O\\&M request is pending approval. This parameter supports exact match searches.
+        # The exact asset address to search for in the pending approval list.
         self.asset_address = asset_address
-        # The ID of the Bastionhost instance.
-        # 
-        # > Call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
+        # The instance ID of the bastion host.
+        # > You can invoke [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) to obtain this parameter.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The page number for a paged query. The default value is **1**.
+        # The page number for a paged query. Default value: **1**.
         self.page_number = page_number
-        # The maximum number of entries to return on each page of a paged query.<br> The maximum value for the PageSize parameter is 1000. The default value is 20. If you leave this parameter empty, 20 entries are returned.<br><br>
-        # 
-        # > We recommend that you specify this parameter.
+        # The maximum number of entries per page for a paged query.  
+        # The maximum value of PageSize is 1000. The default number of entries per page is 20. If PageSize is left empty, 20 entries are returned by default.
+        # > Do not leave PageSize empty.
         self.page_size = page_size
-        # The region ID of the Bastionhost instance.
-        # 
-        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+        # The region ID of the bastion host.
+        # > For the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):

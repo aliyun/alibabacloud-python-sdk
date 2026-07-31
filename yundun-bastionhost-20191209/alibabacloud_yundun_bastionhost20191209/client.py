@@ -81,7 +81,9 @@ class Client(OpenApiClient):
             'cn-zhengzhou-nebula-1': 'yundun-bastionhost.aliyuncs.com',
             'eu-west-1-oxs': 'yundun-bastionhost.aliyuncs.com',
             'rus-west-1-pop': 'yundun-bastionhost.aliyuncs.com',
+            'na-south-1': 'bastionhost.na-south-1.aliyuncs.com',
             'cn-zhengzhou-jva': 'yundun-bastionhost.aliyuncs.com',
+            'ap-southeast-7': 'bastionhost.ap-southeast-7.aliyuncs.com',
             'ap-southeast-6': 'bastionhost.ap-southeast-6.aliyuncs.com',
             'ap-northeast-2': 'bastionhost.ap-northeast-2.aliyuncs.com'
         }

@@ -88,7 +88,7 @@ class ListTodoOpsTaskApprovalsResponseBodyApproves(DaraModel):
         # The scheduling type of the task.
         # - **FixTime**: scheduled execution.
         # - **CycleInterval**: periodic execution.
-        # - **Manual**: manually triggered by a user.
+        # - **Manual**: manually triggered by the user.
         self.schedule_type = schedule_type
         # The ID of the O&M task.
         self.task_id = task_id

@@ -1,3 +1,8 @@
+2026-07-31 Version: 1.6.1
+- Update API DescribeInstanceAttribute: add response parameters Body.InstanceAttribute.AiCreditStatus.
+- Update API DescribeInstanceAttribute: add response parameters Body.InstanceAttribute.AiOpsModule.
+
+
 2026-06-23 Version: 1.6.0
 - Support API AllowOperationTaskApproval.
 - Support API GetAutoOpsTask.

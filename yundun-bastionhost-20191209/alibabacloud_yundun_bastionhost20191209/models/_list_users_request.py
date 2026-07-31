@@ -21,52 +21,45 @@ class ListUsersRequest(DaraModel):
     ):
         # The display name of the user that you want to query. Only exact match is supported.
         self.display_name = display_name
-        # The ID of the bastion host whose users you want to query.
-        # 
-        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # The instance ID of the bastion host for which you want to query the user list.
+        # > You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.instance_id = instance_id
         # The mobile phone number of the user that you want to query. Only exact match is supported.
         self.mobile = mobile
-        # The page number. Default value: **1**.
+        # The page number of the current page in a paging query. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page.<br>
-        # Valid values: 1 to 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
-        # 
-        # > We recommend that you do not leave this parameter empty.
+        # The maximum number of entries per page in a paging query.  
+        # The maximum value of the PageSize parameter is 100. The default number of entries per page is 20. If PageSize is left empty, 20 entries are returned by default.
+        # > Do not leave PageSize empty.
         self.page_size = page_size
-        # The region ID of the bastion host whose users you want to query.
-        # 
-        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+        # The region ID of the bastion host for which you want to query the user list.
+        # > For the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
-        # The type of the user that you want to query. Valid values:
-        # 
-        # - **Local**: a local user.
-        # 
-        # - **Ram**: a Resource Access Management (RAM) user.
-        # 
-        # - **AD**: an Active Directory (AD)-authenticated user.
-        # 
-        # - **LDAP**: a Lightweight Directory Access Protocol (LDAP)-authenticated user.
+        # The source of the user that you want to query. Valid values:
+        # - **Local**: local user
+        # - **Ram**: Resource Access Management (RAM) user
+        # - **AD**: AD user
+        # - **LDAP**: LDAP user
         self.source = source
-        # The unique ID of the user that you want to query. Only exact match is supported.
-        # 
-        # > This parameter uniquely identifies a RAM user of the bastion host. This parameter is valid if **Source** is set to **Ram**. You can call the [ListUsers](https://help.aliyun.com/document_detail/28684.html) operation in RAM to obtain the unique ID of the user from the **UserId** response parameter.
+        # The unique identity of the user that you want to query. Only exact match is supported.
+        # > This parameter is the unique identity of the Resource Access Management (RAM) user that corresponds to the bastion host user. This parameter takes effect when the source of the newly created user is a RAM user (that is, **Source** is set to **Ram**). You can invoke the [ListUsers](https://help.aliyun.com/document_detail/28684.html) operation of access control and obtain this parameter from the **UserId** field in the response.
         self.source_user_id = source_user_id
-        # The ID of the user group to which the user you want to query belongs.
-        # 
-        # > You can call the [ListUserGroups](https://help.aliyun.com/document_detail/204509.html) operation to query the user group ID.
+        # The ID of the user group that you want to query.
+        # > You can call the [ListUserGroups](https://help.aliyun.com/document_detail/204509.html) operation to obtain this parameter.
         self.user_group_id = user_group_id
         # The logon name of the user that you want to query. Only exact match is supported.
         self.user_name = user_name
-        # The state of the user that you want to query. Valid values:
-        # 
-        # - **Normal**: The user is in normal state.
-        # 
-        # - **Frozen**: The user is locked.
-        # 
-        # - **Expired**: The user has expired.
+        # The status of the user that you want to query. Valid values:
+        # - **Normal**: normal
+        # - **Frozen**: locked
+        # - **Expired**: expired
+        # - **RemoteDeleted**: user source deleted
+        # - **Inactive**: inactive due to prolonged absence of logon
+        # - **PasswordExpired**: password expired
+        # - **RemoteDNChanged**: user DN updated
+        # - **RemoteFrozen**: frozen on the RAM side
         self.user_state = user_state
 
     def validate(self):
