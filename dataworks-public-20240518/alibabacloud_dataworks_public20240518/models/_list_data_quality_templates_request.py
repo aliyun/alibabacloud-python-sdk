@@ -13,13 +13,13 @@ class ListDataQualityTemplatesRequest(DaraModel):
         page_size: int = None,
         project_id: int = None,
     ):
-        # The directory path to which the data quality template belongs.
+        # The catalog path to which the data quality template belongs.
         self.catalog = catalog
-        # Fuzzy match for the template rule name.
+        # The template rule name for fuzzy match.
         self.name = name
-        # The number of records per page. Default value: 10.
+        # The page number. Default value: 1.
         self.page_number = page_number
-        # The page number of the results. Default value: 1.
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
         # The project ID.
         self.project_id = project_id

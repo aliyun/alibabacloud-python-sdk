@@ -60,7 +60,7 @@ class ImportWorkflowDefinitionResponseBodyAsyncJob(DaraModel):
         self.completed = completed
         # The timestamp when the asynchronous task was created.
         self.create_time = create_time
-        # The error message returned when the asynchronous task fails.
+        # The error message when the asynchronous task fails.
         self.error = error
         # The ID of the asynchronous task.
         self.id = id
@@ -68,7 +68,7 @@ class ImportWorkflowDefinitionResponseBodyAsyncJob(DaraModel):
         self.progress = progress
         # The content that the asynchronous task is expected to return.
         # 
-        # > This field currently contains the ID of the workflow created by the asynchronous task.
+        # > This field currently stores the ID of the workflow created in the asynchronous task.
         self.response = response
         # The status of the asynchronous task.
         # 
@@ -84,7 +84,7 @@ class ImportWorkflowDefinitionResponseBodyAsyncJob(DaraModel):
         # Valid values:
         # 
         # - Create: creates a resource. 
-        # - Cancel: cancels a creation job.
+        # - Cancel: cancels a creation task.
         self.type = type
 
     def validate(self):

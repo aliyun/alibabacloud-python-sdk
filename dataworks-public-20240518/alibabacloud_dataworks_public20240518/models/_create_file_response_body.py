@@ -14,7 +14,7 @@ class CreateFileResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The file ID.
+        # The ID of the file after it is created.
         self.data = data
         # The error code.
         self.error_code = error_code
@@ -22,12 +22,11 @@ class CreateFileResponseBody(DaraModel):
         self.error_message = error_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The request ID. Use this ID to troubleshoot issues.
+        # The unique ID of the request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the call succeeded. Valid values:
+        # Indicates whether the call was successful. Valid values:
         # 
-        # - true: The call succeeded.
-        # 
+        # - true: The call was successful.
         # - false: The call failed.
         self.success = success
 

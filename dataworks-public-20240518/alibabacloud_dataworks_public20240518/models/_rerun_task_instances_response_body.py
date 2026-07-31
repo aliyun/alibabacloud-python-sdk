@@ -15,7 +15,7 @@ class RerunTaskInstancesResponseBody(DaraModel):
     ):
         # The request ID, which is used to locate logs and troubleshoot issues.
         self.request_id = request_id
-        # The result information of the batch operation. The structure is a map in which the key is the node instance ID and the value is the result information.
+        # The result of the batch operation. The structure is a map in which the key is the node instance ID and the value is the result information.
         self.success_info = success_info
 
     def validate(self):

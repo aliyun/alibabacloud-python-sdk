@@ -14,7 +14,7 @@ class PromptAgentSessionRequest(DaraModel):
         jsonrpc: str = None,
         params: main_models.PromptAgentSessionRequestParams = None,
     ):
-        # The ID passed in by the caller. The value is returned as-is in the response.
+        # The ID passed by the requester. The value is returned as-is.
         self.id = id
         # The JSON-RPC version. Fixed value: 2.0.
         self.jsonrpc = jsonrpc
@@ -62,11 +62,12 @@ class PromptAgentSessionRequestParams(DaraModel):
         prompt: List[main_models.PromptAgentSessionRequestParamsPrompt] = None,
         session_id: str = None,
     ):
-        # The extended metadata.
+        # The extended meta information.
+        # >Notice: If the Agent bound to the specified session is named dataworks_ai_assistant_agent (AI Assistant Service), provide the instance ID of the AI Assistant Service in the Context.agent.instanceId field of the extended meta information.
         self.meta = meta
-        # The array of user message content blocks. For more information, see https\\://agentclientprotocol.com/protocol/content
+        # The array of user message content blocks. For more information, visit: https://agentclientprotocol.com/protocol/content.
         self.prompt = prompt
-        # The ID of the target session. If the session does not exist, an SSE error frame is returned.
+        # The target session ID. If the session does not exist, an SSE error frame is returned.
         self.session_id = session_id
 
     def validate(self):
@@ -125,9 +126,9 @@ class PromptAgentSessionRequestParamsPrompt(DaraModel):
         type: str = None,
         uri: str = None,
     ):
-        # The description of the file.
+        # The file description.
         self.description = description
-        # The prompt metadata extended by DataWorks.
+        # The DataWorks extended prompt meta information.
         self.meta = meta
         # The MIME type of the file.
         self.mime_type = mime_type
@@ -219,7 +220,7 @@ class PromptAgentSessionRequestParamsPromptMeta(DaraModel):
         self,
         hide: bool = None,
     ):
-        # Specifies whether to hide the prompt from the user. For example, if a user asks "Sales amount in the last 7 days" in a chat dialog, the calling system may use RAG to retrieve relevant business domain knowledge and append it to the agent context before calling the API. If you do not want to display this supplemental information to the user, set this parameter to true.
+        # Specifies whether to hide this prompt from the user. For example, in a chat dialog box, the user asks a question such as "Sales amount in the last 7 days". Before calling the OpenAPI, the calling system retrieves some business domain knowledge through RAG that needs to be added to the Agent context but should not be displayed to the user. In this case, set this value to true.
         self.hide = hide
 
     def validate(self):
@@ -247,7 +248,7 @@ class PromptAgentSessionRequestParamsMeta(DaraModel):
         self,
         context: Any = None,
     ):
-        # A Map-type value. In custom agent scenarios, you can use this parameter to replace placeholder parameters.
+        # A Map type. In custom Agent scenarios, some placeholder parameters can be replaced through this value.
         self.context = context
 
     def validate(self):

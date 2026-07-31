@@ -16,14 +16,26 @@ class CreateSkillShrinkRequest(DaraModel):
         visibility: str = None,
         visibility_scope_shrink: str = None,
     ):
+        # The **downloadable URL (HTTP/HTTPS) of the bundle.zip file**. This parameter is mutually exclusive with SkillMdOverride.
         self.bundle_url = bundle_url
+        # The **Skill description**.
         self.description = description
+        # The extension metadata in key-value pairs.
         self.extra_shrink = extra_shrink
+        # The **Skill name**, which must be unique within the current account.
+        # 
         # This parameter is required.
         self.name = name
+        # The SKILL.md body content. This parameter is mutually exclusive with BundleUrl. If no bundle is provided, use this field to create a lightweight Skill that contains only a SKILL.md file.
         self.skill_md_override = skill_md_override
+        # The **version note**.
         self.version_note = version_note
+        # The **visibility level**. Valid values:
+        # - TENANT: Visible within the account.
+        # - PROJECT: Visible to specified projects.
+        # - USER: Visible to specified users.
         self.visibility = visibility
+        # The visibility scope. The corresponding field is determined by the Visibility parameter.
         self.visibility_scope_shrink = visibility_scope_shrink
 
     def validate(self):

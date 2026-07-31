@@ -19,14 +19,26 @@ class CreateSkillRequest(DaraModel):
         visibility: str = None,
         visibility_scope: main_models.CreateSkillRequestVisibilityScope = None,
     ):
+        # The **downloadable URL (HTTP/HTTPS) of the bundle.zip file**. This parameter is mutually exclusive with SkillMdOverride.
         self.bundle_url = bundle_url
+        # The **Skill description**.
         self.description = description
+        # The extension metadata in key-value pairs.
         self.extra = extra
+        # The **Skill name**, which must be unique within the current account.
+        # 
         # This parameter is required.
         self.name = name
+        # The SKILL.md body content. This parameter is mutually exclusive with BundleUrl. If no bundle is provided, use this field to create a lightweight Skill that contains only a SKILL.md file.
         self.skill_md_override = skill_md_override
+        # The **version note**.
         self.version_note = version_note
+        # The **visibility level**. Valid values:
+        # - TENANT: Visible within the account.
+        # - PROJECT: Visible to specified projects.
+        # - USER: Visible to specified users.
         self.visibility = visibility
+        # The visibility scope. The corresponding field is determined by the Visibility parameter.
         self.visibility_scope = visibility_scope
 
     def validate(self):
@@ -99,7 +111,9 @@ class CreateSkillRequestVisibilityScope(DaraModel):
         project_ids: List[str] = None,
         user_ids: List[str] = None,
     ):
+        # The list of visible project IDs. This parameter takes effect only when Visibility is set to `PROJECT`.
         self.project_ids = project_ids
+        # The list of visible user IDs. This parameter takes effect only when Visibility is set to `USER`.
         self.user_ids = user_ids
 
     def validate(self):

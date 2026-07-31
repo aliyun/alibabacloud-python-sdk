@@ -18,19 +18,19 @@ class PromptAgentSessionResponseBody(DaraModel):
         result: Any = None,
         timestamp: int = None,
     ):
-        # The error information returned in the SSE frame. The response content conforms to the open-source Agent Client Protocol (ACP) specification. For more information, see https\\://agentclientprotocol.com/protocol/prompt-turn
+        # The SSE frame error message. The returned content conforms to the open-source Agent Client Protocol (ACP) specification. For more information, visit: https://agentclientprotocol.com/protocol/prompt-turn.
         self.error = error
-        # The ID passed in by the caller. The value is returned as-is in the response.
+        # The ID passed by the requester. The value is returned as-is.
         self.id = id
         # The JSON-RPC version. Fixed value: 2.0.
         self.jsonrpc = jsonrpc
-        # The SSE method. The response content conforms to the open-source Agent Client Protocol (ACP) specification. For more information, see https\\://agentclientprotocol.com/protocol/prompt-turn
+        # The SSE method. The returned content conforms to the open-source Agent Client Protocol (ACP) specification. For more information, visit: https://agentclientprotocol.com/protocol/prompt-turn.
         self.method = method
-        # The SSE params. The response content conforms to the open-source Agent Client Protocol (ACP) specification. For more information, see https\\://agentclientprotocol.com/protocol/prompt-turn
+        # The SSE params. The returned content conforms to the open-source Agent Client Protocol (ACP) specification. For more information, visit: https://agentclientprotocol.com/protocol/prompt-turn.
         self.params = params
         # Id of the request
         self.request_id = request_id
-        # The SSE frame result set. The response content conforms to the open-source Agent Client Protocol (ACP) specification. For more information, see https\\://agentclientprotocol.com/protocol/prompt-turn
+        # The SSE frame result set. The returned content conforms to the open-source Agent Client Protocol (ACP) specification. For more information, visit: https://agentclientprotocol.com/protocol/prompt-turn.
         self.result = result
         # The timestamp.
         self.timestamp = timestamp

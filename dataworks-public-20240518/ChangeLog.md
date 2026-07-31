@@ -1,3 +1,21 @@
+2026-07-31 Version: 9.0.0
+- Support API CreateSemanticJob.
+- Support API DeleteSemanticJob.
+- Support API DownloadSemanticResults.
+- Support API GetSemanticJobDetail.
+- Support API GetSemanticJobLog.
+- Support API KillSemanticJob.
+- Support API ListSemanticJobRuns.
+- Support API ListSemanticJobs.
+- Support API RunSemanticJob.
+- Support API UpdateSkill.
+- Support API UploadSemanticFile.
+- Update API CreateAgent: update request parameters CallableAgents.$' type has changed.
+- Update API CreateAgent: update request parameters Skills.$' type has changed.
+- Update API CreateAgent: update request parameters Tools.$' type has changed.
+- Update API CreateFile: add request parameters OutputList.
+
+
 2026-07-10 Version: 8.8.5
 - Update API CreateAgentSession: add request parameters Params.Meta.InitialConfigOptions.ResourceGroupId.
 - Update API CreateAgentSession: add request parameters Params.Meta.InitialConfigOptions.Skills.

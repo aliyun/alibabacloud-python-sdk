@@ -228,6 +228,10 @@ from ._create_security_strategy_request import CreateSecurityStrategyRequest
 from ._create_security_strategy_shrink_request import CreateSecurityStrategyShrinkRequest
 from ._create_security_strategy_response_body import CreateSecurityStrategyResponseBody
 from ._create_security_strategy_response import CreateSecurityStrategyResponse
+from ._create_semantic_job_request import CreateSemanticJobRequest
+from ._create_semantic_job_shrink_request import CreateSemanticJobShrinkRequest
+from ._create_semantic_job_response_body import CreateSemanticJobResponseBody
+from ._create_semantic_job_response import CreateSemanticJobResponse
 from ._create_skill_request import CreateSkillRequest
 from ._create_skill_shrink_request import CreateSkillShrinkRequest
 from ._create_skill_response_body import CreateSkillResponseBody
@@ -357,6 +361,9 @@ from ._delete_route_response import DeleteRouteResponse
 from ._delete_security_strategy_request import DeleteSecurityStrategyRequest
 from ._delete_security_strategy_response_body import DeleteSecurityStrategyResponseBody
 from ._delete_security_strategy_response import DeleteSecurityStrategyResponse
+from ._delete_semantic_job_request import DeleteSemanticJobRequest
+from ._delete_semantic_job_response_body import DeleteSemanticJobResponseBody
+from ._delete_semantic_job_response import DeleteSemanticJobResponse
 from ._delete_skill_request import DeleteSkillRequest
 from ._delete_skill_response_body import DeleteSkillResponseBody
 from ._delete_skill_response import DeleteSkillResponse
@@ -385,6 +392,9 @@ from ._dissociate_project_from_image_response import DissociateProjectFromImageR
 from ._dissociate_project_from_resource_group_request import DissociateProjectFromResourceGroupRequest
 from ._dissociate_project_from_resource_group_response_body import DissociateProjectFromResourceGroupResponseBody
 from ._dissociate_project_from_resource_group_response import DissociateProjectFromResourceGroupResponse
+from ._download_semantic_results_request import DownloadSemanticResultsRequest
+from ._download_semantic_results_response_body import DownloadSemanticResultsResponseBody
+from ._download_semantic_results_response import DownloadSemanticResultsResponse
 from ._enable_process_definition_request import EnableProcessDefinitionRequest
 from ._enable_process_definition_response_body import EnableProcessDefinitionResponseBody
 from ._enable_process_definition_response import EnableProcessDefinitionResponse
@@ -574,6 +584,12 @@ from ._get_schema_response import GetSchemaResponse
 from ._get_security_strategy_request import GetSecurityStrategyRequest
 from ._get_security_strategy_response_body import GetSecurityStrategyResponseBody
 from ._get_security_strategy_response import GetSecurityStrategyResponse
+from ._get_semantic_job_detail_request import GetSemanticJobDetailRequest
+from ._get_semantic_job_detail_response_body import GetSemanticJobDetailResponseBody
+from ._get_semantic_job_detail_response import GetSemanticJobDetailResponse
+from ._get_semantic_job_log_request import GetSemanticJobLogRequest
+from ._get_semantic_job_log_response_body import GetSemanticJobLogResponseBody
+from ._get_semantic_job_log_response import GetSemanticJobLogResponse
 from ._get_skill_request import GetSkillRequest
 from ._get_skill_response_body import GetSkillResponseBody
 from ._get_skill_response import GetSkillResponse
@@ -609,6 +625,9 @@ from ._import_certificate_response import ImportCertificateResponse
 from ._import_workflow_definition_request import ImportWorkflowDefinitionRequest
 from ._import_workflow_definition_response_body import ImportWorkflowDefinitionResponseBody
 from ._import_workflow_definition_response import ImportWorkflowDefinitionResponse
+from ._kill_semantic_job_request import KillSemanticJobRequest
+from ._kill_semantic_job_response_body import KillSemanticJobResponseBody
+from ._kill_semantic_job_response import KillSemanticJobResponse
 from ._list_agent_session_artifacts_request import ListAgentSessionArtifactsRequest
 from ._list_agent_session_artifacts_shrink_request import ListAgentSessionArtifactsShrinkRequest
 from ._list_agent_session_artifacts_response_body import ListAgentSessionArtifactsResponseBody
@@ -855,6 +874,12 @@ from ._list_schemas_response import ListSchemasResponse
 from ._list_security_strategies_request import ListSecurityStrategiesRequest
 from ._list_security_strategies_response_body import ListSecurityStrategiesResponseBody
 from ._list_security_strategies_response import ListSecurityStrategiesResponse
+from ._list_semantic_job_runs_request import ListSemanticJobRunsRequest
+from ._list_semantic_job_runs_response_body import ListSemanticJobRunsResponseBody
+from ._list_semantic_job_runs_response import ListSemanticJobRunsResponse
+from ._list_semantic_jobs_request import ListSemanticJobsRequest
+from ._list_semantic_jobs_response_body import ListSemanticJobsResponseBody
+from ._list_semantic_jobs_response import ListSemanticJobsResponse
 from ._list_skills_request import ListSkillsRequest
 from ._list_skills_shrink_request import ListSkillsShrinkRequest
 from ._list_skills_response_body import ListSkillsResponseBody
@@ -955,6 +980,9 @@ from ._revoke_member_project_roles_response import RevokeMemberProjectRolesRespo
 from ._rollback_parameter_request import RollbackParameterRequest
 from ._rollback_parameter_response_body import RollbackParameterResponseBody
 from ._rollback_parameter_response import RollbackParameterResponse
+from ._run_semantic_job_request import RunSemanticJobRequest
+from ._run_semantic_job_response_body import RunSemanticJobResponseBody
+from ._run_semantic_job_response import RunSemanticJobResponse
 from ._set_success_task_instances_request import SetSuccessTaskInstancesRequest
 from ._set_success_task_instances_shrink_request import SetSuccessTaskInstancesShrinkRequest
 from ._set_success_task_instances_response_body import SetSuccessTaskInstancesResponseBody
@@ -1127,6 +1155,10 @@ from ._update_security_strategy_request import UpdateSecurityStrategyRequest
 from ._update_security_strategy_shrink_request import UpdateSecurityStrategyShrinkRequest
 from ._update_security_strategy_response_body import UpdateSecurityStrategyResponseBody
 from ._update_security_strategy_response import UpdateSecurityStrategyResponse
+from ._update_skill_request import UpdateSkillRequest
+from ._update_skill_shrink_request import UpdateSkillShrinkRequest
+from ._update_skill_response_body import UpdateSkillResponseBody
+from ._update_skill_response import UpdateSkillResponse
 from ._update_table_business_metadata_request import UpdateTableBusinessMetadataRequest
 from ._update_table_business_metadata_shrink_request import UpdateTableBusinessMetadataShrinkRequest
 from ._update_table_business_metadata_response_body import UpdateTableBusinessMetadataResponseBody
@@ -1149,6 +1181,9 @@ from ._update_workflow_response import UpdateWorkflowResponse
 from ._update_workflow_definition_request import UpdateWorkflowDefinitionRequest
 from ._update_workflow_definition_response_body import UpdateWorkflowDefinitionResponseBody
 from ._update_workflow_definition_response import UpdateWorkflowDefinitionResponse
+from ._upload_semantic_file_request import UploadSemanticFileRequest
+from ._upload_semantic_file_response_body import UploadSemanticFileResponseBody
+from ._upload_semantic_file_response import UploadSemanticFileResponse
 from ._column import ColumnBusinessMetadata
 from ._crawler_type import CrawlerTypeSupportedEntityTypes
 from ._data_quality_evaluation_task import DataQualityEvaluationTaskHooks
@@ -1205,6 +1240,9 @@ from ._batch_update_tasks_request import BatchUpdateTasksRequestTasks
 from ._cancel_agent_session_request import CancelAgentSessionRequestParams
 from ._cancel_agent_session_response_body import CancelAgentSessionResponseBodyJsonRpcResponseResult
 from ._cancel_agent_session_response_body import CancelAgentSessionResponseBodyJsonRpcResponse
+from ._create_agent_request import CreateAgentRequestCallableAgents
+from ._create_agent_request import CreateAgentRequestSkills
+from ._create_agent_request import CreateAgentRequestTools
 from ._create_agent_request import CreateAgentRequestVisibilityScope
 from ._create_agent_response_body import CreateAgentResponseBodyAgent
 from ._create_agent_session_request import CreateAgentSessionRequestParamsMetaAgent
@@ -1300,6 +1338,7 @@ from ._create_resource_group_request import CreateResourceGroupRequestAliyunReso
 from ._create_resource_group_response_body import CreateResourceGroupResponseBodyResourceGroupOrder
 from ._create_security_strategy_request import CreateSecurityStrategyRequestContentControllers
 from ._create_security_strategy_request import CreateSecurityStrategyRequestContent
+from ._create_semantic_job_response_body import CreateSemanticJobResponseBodyData
 from ._create_skill_request import CreateSkillRequestVisibilityScope
 from ._create_skill_response_body import CreateSkillResponseBodySkillVisibilityScope
 from ._create_skill_response_body import CreateSkillResponseBodySkill
@@ -1310,6 +1349,9 @@ from ._create_workflow_instances_request import CreateWorkflowInstancesRequestDe
 from ._create_workflow_instances_request import CreateWorkflowInstancesRequestPeriodsBizDates
 from ._create_workflow_instances_request import CreateWorkflowInstancesRequestPeriods
 from ._create_workflow_instances_request import CreateWorkflowInstancesRequestTags
+from ._delete_semantic_job_response_body import DeleteSemanticJobResponseBodyData
+from ._download_semantic_results_response_body import DownloadSemanticResultsResponseBodyDataResults
+from ._download_semantic_results_response_body import DownloadSemanticResultsResponseBodyData
 from ._execute_adhoc_workflow_instance_request import ExecuteAdhocWorkflowInstanceRequestTasksDataSource
 from ._execute_adhoc_workflow_instance_request import ExecuteAdhocWorkflowInstanceRequestTasksDependencies
 from ._execute_adhoc_workflow_instance_request import ExecuteAdhocWorkflowInstanceRequestTasksInputsVariables
@@ -1506,6 +1548,8 @@ from ._get_route_response_body import GetRouteResponseBodyRoute
 from ._get_security_strategy_response_body import GetSecurityStrategyResponseBodySecurityStrategyContentControllers
 from ._get_security_strategy_response_body import GetSecurityStrategyResponseBodySecurityStrategyContent
 from ._get_security_strategy_response_body import GetSecurityStrategyResponseBodySecurityStrategy
+from ._get_semantic_job_detail_response_body import GetSemanticJobDetailResponseBodyData
+from ._get_semantic_job_log_response_body import GetSemanticJobLogResponseBodyData
 from ._get_skill_response_body import GetSkillResponseBodySkillVisibilityScope
 from ._get_skill_response_body import GetSkillResponseBodySkill
 from ._get_task_response_body import GetTaskResponseBodyTaskDataSource
@@ -1849,6 +1893,10 @@ from ._list_security_strategies_response_body import ListSecurityStrategiesRespo
 from ._list_security_strategies_response_body import ListSecurityStrategiesResponseBodyPagingInfoSecurityStrategiesContent
 from ._list_security_strategies_response_body import ListSecurityStrategiesResponseBodyPagingInfoSecurityStrategies
 from ._list_security_strategies_response_body import ListSecurityStrategiesResponseBodyPagingInfo
+from ._list_semantic_job_runs_response_body import ListSemanticJobRunsResponseBodyDataJobRuns
+from ._list_semantic_job_runs_response_body import ListSemanticJobRunsResponseBodyData
+from ._list_semantic_jobs_response_body import ListSemanticJobsResponseBodyDataSemanticJobs
+from ._list_semantic_jobs_response_body import ListSemanticJobsResponseBodyData
 from ._list_skills_response_body import ListSkillsResponseBodyPagingInfoSkills
 from ._list_skills_response_body import ListSkillsResponseBodyPagingInfo
 from ._list_tables_response_body import ListTablesResponseBodyPagingInfo
@@ -1905,6 +1953,7 @@ from ._prompt_agent_session_request import PromptAgentSessionRequestParamsPrompt
 from ._prompt_agent_session_request import PromptAgentSessionRequestParamsPrompt
 from ._prompt_agent_session_request import PromptAgentSessionRequestParams
 from ._rerun_workflow_instances_request import RerunWorkflowInstancesRequestFilter
+from ._run_semantic_job_response_body import RunSemanticJobResponseBodyData
 from ._start_dijob_request import StartDIJobRequestRealtimeStartSettingsFailoverSettings
 from ._start_dijob_request import StartDIJobRequestRealtimeStartSettings
 from ._tag_data_assets_request import TagDataAssetsRequestTags
@@ -1984,6 +2033,9 @@ from ._update_process_definition_request import UpdateProcessDefinitionRequestRu
 from ._update_project_role_request import UpdateProjectRoleRequestModulePermissions
 from ._update_security_strategy_request import UpdateSecurityStrategyRequestContentControllers
 from ._update_security_strategy_request import UpdateSecurityStrategyRequestContent
+from ._update_skill_request import UpdateSkillRequestVisibilityScope
+from ._update_skill_response_body import UpdateSkillResponseBodySkillVisibilityScope
+from ._update_skill_response_body import UpdateSkillResponseBodySkill
 from ._update_task_request import UpdateTaskRequestDataSource
 from ._update_task_request import UpdateTaskRequestDependencies
 from ._update_task_request import UpdateTaskRequestInputsVariables
@@ -2014,6 +2066,7 @@ from ._update_workflow_request import UpdateWorkflowRequestTasksTags
 from ._update_workflow_request import UpdateWorkflowRequestTasksTrigger
 from ._update_workflow_request import UpdateWorkflowRequestTasks
 from ._update_workflow_request import UpdateWorkflowRequestTrigger
+from ._upload_semantic_file_response_body import UploadSemanticFileResponseBodyData
 
 __all__ = [
     Catalog,
@@ -2242,6 +2295,10 @@ __all__ = [
     CreateSecurityStrategyShrinkRequest,
     CreateSecurityStrategyResponseBody,
     CreateSecurityStrategyResponse,
+    CreateSemanticJobRequest,
+    CreateSemanticJobShrinkRequest,
+    CreateSemanticJobResponseBody,
+    CreateSemanticJobResponse,
     CreateSkillRequest,
     CreateSkillShrinkRequest,
     CreateSkillResponseBody,
@@ -2371,6 +2428,9 @@ __all__ = [
     DeleteSecurityStrategyRequest,
     DeleteSecurityStrategyResponseBody,
     DeleteSecurityStrategyResponse,
+    DeleteSemanticJobRequest,
+    DeleteSemanticJobResponseBody,
+    DeleteSemanticJobResponse,
     DeleteSkillRequest,
     DeleteSkillResponseBody,
     DeleteSkillResponse,
@@ -2399,6 +2459,9 @@ __all__ = [
     DissociateProjectFromResourceGroupRequest,
     DissociateProjectFromResourceGroupResponseBody,
     DissociateProjectFromResourceGroupResponse,
+    DownloadSemanticResultsRequest,
+    DownloadSemanticResultsResponseBody,
+    DownloadSemanticResultsResponse,
     EnableProcessDefinitionRequest,
     EnableProcessDefinitionResponseBody,
     EnableProcessDefinitionResponse,
@@ -2588,6 +2651,12 @@ __all__ = [
     GetSecurityStrategyRequest,
     GetSecurityStrategyResponseBody,
     GetSecurityStrategyResponse,
+    GetSemanticJobDetailRequest,
+    GetSemanticJobDetailResponseBody,
+    GetSemanticJobDetailResponse,
+    GetSemanticJobLogRequest,
+    GetSemanticJobLogResponseBody,
+    GetSemanticJobLogResponse,
     GetSkillRequest,
     GetSkillResponseBody,
     GetSkillResponse,
@@ -2623,6 +2692,9 @@ __all__ = [
     ImportWorkflowDefinitionRequest,
     ImportWorkflowDefinitionResponseBody,
     ImportWorkflowDefinitionResponse,
+    KillSemanticJobRequest,
+    KillSemanticJobResponseBody,
+    KillSemanticJobResponse,
     ListAgentSessionArtifactsRequest,
     ListAgentSessionArtifactsShrinkRequest,
     ListAgentSessionArtifactsResponseBody,
@@ -2869,6 +2941,12 @@ __all__ = [
     ListSecurityStrategiesRequest,
     ListSecurityStrategiesResponseBody,
     ListSecurityStrategiesResponse,
+    ListSemanticJobRunsRequest,
+    ListSemanticJobRunsResponseBody,
+    ListSemanticJobRunsResponse,
+    ListSemanticJobsRequest,
+    ListSemanticJobsResponseBody,
+    ListSemanticJobsResponse,
     ListSkillsRequest,
     ListSkillsShrinkRequest,
     ListSkillsResponseBody,
@@ -2969,6 +3047,9 @@ __all__ = [
     RollbackParameterRequest,
     RollbackParameterResponseBody,
     RollbackParameterResponse,
+    RunSemanticJobRequest,
+    RunSemanticJobResponseBody,
+    RunSemanticJobResponse,
     SetSuccessTaskInstancesRequest,
     SetSuccessTaskInstancesShrinkRequest,
     SetSuccessTaskInstancesResponseBody,
@@ -3141,6 +3222,10 @@ __all__ = [
     UpdateSecurityStrategyShrinkRequest,
     UpdateSecurityStrategyResponseBody,
     UpdateSecurityStrategyResponse,
+    UpdateSkillRequest,
+    UpdateSkillShrinkRequest,
+    UpdateSkillResponseBody,
+    UpdateSkillResponse,
     UpdateTableBusinessMetadataRequest,
     UpdateTableBusinessMetadataShrinkRequest,
     UpdateTableBusinessMetadataResponseBody,
@@ -3163,6 +3248,9 @@ __all__ = [
     UpdateWorkflowDefinitionRequest,
     UpdateWorkflowDefinitionResponseBody,
     UpdateWorkflowDefinitionResponse,
+    UploadSemanticFileRequest,
+    UploadSemanticFileResponseBody,
+    UploadSemanticFileResponse,
     ColumnBusinessMetadata,
     CrawlerTypeSupportedEntityTypes,
     DataQualityEvaluationTaskHooks,
@@ -3219,6 +3307,9 @@ __all__ = [
     CancelAgentSessionRequestParams,
     CancelAgentSessionResponseBodyJsonRpcResponseResult,
     CancelAgentSessionResponseBodyJsonRpcResponse,
+    CreateAgentRequestCallableAgents,
+    CreateAgentRequestSkills,
+    CreateAgentRequestTools,
     CreateAgentRequestVisibilityScope,
     CreateAgentResponseBodyAgent,
     CreateAgentSessionRequestParamsMetaAgent,
@@ -3314,6 +3405,7 @@ __all__ = [
     CreateResourceGroupResponseBodyResourceGroupOrder,
     CreateSecurityStrategyRequestContentControllers,
     CreateSecurityStrategyRequestContent,
+    CreateSemanticJobResponseBodyData,
     CreateSkillRequestVisibilityScope,
     CreateSkillResponseBodySkillVisibilityScope,
     CreateSkillResponseBodySkill,
@@ -3324,6 +3416,9 @@ __all__ = [
     CreateWorkflowInstancesRequestPeriodsBizDates,
     CreateWorkflowInstancesRequestPeriods,
     CreateWorkflowInstancesRequestTags,
+    DeleteSemanticJobResponseBodyData,
+    DownloadSemanticResultsResponseBodyDataResults,
+    DownloadSemanticResultsResponseBodyData,
     ExecuteAdhocWorkflowInstanceRequestTasksDataSource,
     ExecuteAdhocWorkflowInstanceRequestTasksDependencies,
     ExecuteAdhocWorkflowInstanceRequestTasksInputsVariables,
@@ -3520,6 +3615,8 @@ __all__ = [
     GetSecurityStrategyResponseBodySecurityStrategyContentControllers,
     GetSecurityStrategyResponseBodySecurityStrategyContent,
     GetSecurityStrategyResponseBodySecurityStrategy,
+    GetSemanticJobDetailResponseBodyData,
+    GetSemanticJobLogResponseBodyData,
     GetSkillResponseBodySkillVisibilityScope,
     GetSkillResponseBodySkill,
     GetTaskResponseBodyTaskDataSource,
@@ -3863,6 +3960,10 @@ __all__ = [
     ListSecurityStrategiesResponseBodyPagingInfoSecurityStrategiesContent,
     ListSecurityStrategiesResponseBodyPagingInfoSecurityStrategies,
     ListSecurityStrategiesResponseBodyPagingInfo,
+    ListSemanticJobRunsResponseBodyDataJobRuns,
+    ListSemanticJobRunsResponseBodyData,
+    ListSemanticJobsResponseBodyDataSemanticJobs,
+    ListSemanticJobsResponseBodyData,
     ListSkillsResponseBodyPagingInfoSkills,
     ListSkillsResponseBodyPagingInfo,
     ListTablesResponseBodyPagingInfo,
@@ -3919,6 +4020,7 @@ __all__ = [
     PromptAgentSessionRequestParamsPrompt,
     PromptAgentSessionRequestParams,
     RerunWorkflowInstancesRequestFilter,
+    RunSemanticJobResponseBodyData,
     StartDIJobRequestRealtimeStartSettingsFailoverSettings,
     StartDIJobRequestRealtimeStartSettings,
     TagDataAssetsRequestTags,
@@ -3998,6 +4100,9 @@ __all__ = [
     UpdateProjectRoleRequestModulePermissions,
     UpdateSecurityStrategyRequestContentControllers,
     UpdateSecurityStrategyRequestContent,
+    UpdateSkillRequestVisibilityScope,
+    UpdateSkillResponseBodySkillVisibilityScope,
+    UpdateSkillResponseBodySkill,
     UpdateTaskRequestDataSource,
     UpdateTaskRequestDependencies,
     UpdateTaskRequestInputsVariables,
@@ -4027,5 +4132,6 @@ __all__ = [
     UpdateWorkflowRequestTasksTags,
     UpdateWorkflowRequestTasksTrigger,
     UpdateWorkflowRequestTasks,
-    UpdateWorkflowRequestTrigger
+    UpdateWorkflowRequestTrigger,
+    UploadSemanticFileResponseBodyData
 ]

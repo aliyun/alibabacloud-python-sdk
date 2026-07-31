@@ -15,6 +15,7 @@ class RerunTaskInstancesShrinkRequest(DaraModel):
         self.comment = comment
         # The list of node instance IDs.
         self.ids_shrink = ids_shrink
+        # Specifies whether to rerun instances with the latest configuration.
         self.use_latest_config = use_latest_config
 
     def validate(self):

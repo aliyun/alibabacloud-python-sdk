@@ -13,9 +13,9 @@ class ListDataQualityTemplatesResponseBody(DaraModel):
         page_info: main_models.ListDataQualityTemplatesResponseBodyPageInfo = None,
         request_id: str = None,
     ):
-        # Paged query results of data quality rule templates.
+        # The paging query result of data quality rule templates.
         self.page_info = page_info
-        # The API request ID, which is generated as a UUID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -58,9 +58,9 @@ class ListDataQualityTemplatesResponseBodyPageInfo(DaraModel):
         self.data_quality_templates = data_quality_templates
         # The page number.
         self.page_number = page_number
-        # The number of pages.
+        # The page size.
         self.page_size = page_size
-        # The total number of records.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -123,19 +123,19 @@ class ListDataQualityTemplatesResponseBodyPageInfoDataQualityTemplates(DaraModel
     ):
         # The time when the data quality rule template was created.
         self.create_time = create_time
-        # The creator of the data quality rule template.
+        # The user who created the data quality rule template.
         self.create_user = create_user
         # The ID of the data quality rule template.
         self.id = id
-        # The time when the data quality rule template was updated.
+        # The time when the data quality rule template was last updated.
         self.modify_time = modify_time
-        # The last updater of the data quality rule template.
+        # The user who last updated the data quality rule template.
         self.modify_user = modify_user
         # The owner of the data quality rule template.
         self.owner = owner
         # The project ID.
         self.project_id = project_id
-        # Specific configurations of the data quality rule template. For more information, see [Data quality Spec configuration description](~2963394~).
+        # The specific configuration of the data quality rule template. For more information, see [Data quality Spec configuration](https://help.aliyun.com/document_detail/2963394.html).
         self.spec = spec
 
     def validate(self):

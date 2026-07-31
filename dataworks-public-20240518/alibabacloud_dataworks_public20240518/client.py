@@ -3517,6 +3517,8 @@ class Client(OpenApiClient):
             body['InputList'] = request.input_list
         if not DaraCore.is_null(request.input_parameters):
             body['InputParameters'] = request.input_parameters
+        if not DaraCore.is_null(request.output_list):
+            body['OutputList'] = request.output_list
         if not DaraCore.is_null(request.output_parameters):
             body['OutputParameters'] = request.output_parameters
         if not DaraCore.is_null(request.owner):
@@ -3611,6 +3613,8 @@ class Client(OpenApiClient):
             body['InputList'] = request.input_list
         if not DaraCore.is_null(request.input_parameters):
             body['InputParameters'] = request.input_parameters
+        if not DaraCore.is_null(request.output_list):
+            body['OutputList'] = request.output_list
         if not DaraCore.is_null(request.output_parameters):
             body['OutputParameters'] = request.output_parameters
         if not DaraCore.is_null(request.owner):
@@ -5861,6 +5865,112 @@ class Client(OpenApiClient):
     ) -> main_models.CreateSecurityStrategyResponse:
         runtime = RuntimeOptions()
         return await self.create_security_strategy_with_options_async(request, runtime)
+
+    def create_semantic_job_with_options(
+        self,
+        tmp_req: main_models.CreateSemanticJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateSemanticJobResponse:
+        tmp_req.validate()
+        request = main_models.CreateSemanticJobShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.reference_file_ids):
+            request.reference_file_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.reference_file_ids, 'ReferenceFileIds', 'json')
+        if not DaraCore.is_null(tmp_req.reference_file_uris):
+            request.reference_file_uris_shrink = Utils.array_to_string_with_specified_style(tmp_req.reference_file_uris, 'ReferenceFileUris', 'json')
+        if not DaraCore.is_null(tmp_req.source):
+            request.source_shrink = Utils.array_to_string_with_specified_style(tmp_req.source, 'Source', 'json')
+        body = {}
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.reference_file_ids_shrink):
+            body['ReferenceFileIds'] = request.reference_file_ids_shrink
+        if not DaraCore.is_null(request.reference_file_uris_shrink):
+            body['ReferenceFileUris'] = request.reference_file_uris_shrink
+        if not DaraCore.is_null(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.source_shrink):
+            body['Source'] = request.source_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateSemanticJob',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateSemanticJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_semantic_job_with_options_async(
+        self,
+        tmp_req: main_models.CreateSemanticJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateSemanticJobResponse:
+        tmp_req.validate()
+        request = main_models.CreateSemanticJobShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.reference_file_ids):
+            request.reference_file_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.reference_file_ids, 'ReferenceFileIds', 'json')
+        if not DaraCore.is_null(tmp_req.reference_file_uris):
+            request.reference_file_uris_shrink = Utils.array_to_string_with_specified_style(tmp_req.reference_file_uris, 'ReferenceFileUris', 'json')
+        if not DaraCore.is_null(tmp_req.source):
+            request.source_shrink = Utils.array_to_string_with_specified_style(tmp_req.source, 'Source', 'json')
+        body = {}
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.reference_file_ids_shrink):
+            body['ReferenceFileIds'] = request.reference_file_ids_shrink
+        if not DaraCore.is_null(request.reference_file_uris_shrink):
+            body['ReferenceFileUris'] = request.reference_file_uris_shrink
+        if not DaraCore.is_null(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.source_shrink):
+            body['Source'] = request.source_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateSemanticJob',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateSemanticJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_semantic_job(
+        self,
+        request: main_models.CreateSemanticJobRequest,
+    ) -> main_models.CreateSemanticJobResponse:
+        runtime = RuntimeOptions()
+        return self.create_semantic_job_with_options(request, runtime)
+
+    async def create_semantic_job_async(
+        self,
+        request: main_models.CreateSemanticJobRequest,
+    ) -> main_models.CreateSemanticJobResponse:
+        runtime = RuntimeOptions()
+        return await self.create_semantic_job_with_options_async(request, runtime)
 
     def create_skill_with_options(
         self,
@@ -9034,6 +9144,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_security_strategy_with_options_async(request, runtime)
 
+    def delete_semantic_job_with_options(
+        self,
+        request: main_models.DeleteSemanticJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteSemanticJobResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteSemanticJob',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteSemanticJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_semantic_job_with_options_async(
+        self,
+        request: main_models.DeleteSemanticJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteSemanticJobResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteSemanticJob',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteSemanticJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_semantic_job(
+        self,
+        request: main_models.DeleteSemanticJobRequest,
+    ) -> main_models.DeleteSemanticJobResponse:
+        runtime = RuntimeOptions()
+        return self.delete_semantic_job_with_options(request, runtime)
+
+    async def delete_semantic_job_async(
+        self,
+        request: main_models.DeleteSemanticJobRequest,
+    ) -> main_models.DeleteSemanticJobResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_semantic_job_with_options_async(request, runtime)
+
     def delete_skill_with_options(
         self,
         request: main_models.DeleteSkillRequest,
@@ -9727,6 +9907,80 @@ class Client(OpenApiClient):
     ) -> main_models.DissociateProjectFromResourceGroupResponse:
         runtime = RuntimeOptions()
         return await self.dissociate_project_from_resource_group_with_options_async(request, runtime)
+
+    def download_semantic_results_with_options(
+        self,
+        request: main_models.DownloadSemanticResultsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DownloadSemanticResultsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.job_name):
+            body['JobName'] = request.job_name
+        if not DaraCore.is_null(request.job_run_id):
+            body['JobRunId'] = request.job_run_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DownloadSemanticResults',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DownloadSemanticResultsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def download_semantic_results_with_options_async(
+        self,
+        request: main_models.DownloadSemanticResultsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DownloadSemanticResultsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.job_name):
+            body['JobName'] = request.job_name
+        if not DaraCore.is_null(request.job_run_id):
+            body['JobRunId'] = request.job_run_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DownloadSemanticResults',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DownloadSemanticResultsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def download_semantic_results(
+        self,
+        request: main_models.DownloadSemanticResultsRequest,
+    ) -> main_models.DownloadSemanticResultsResponse:
+        runtime = RuntimeOptions()
+        return self.download_semantic_results_with_options(request, runtime)
+
+    async def download_semantic_results_async(
+        self,
+        request: main_models.DownloadSemanticResultsRequest,
+    ) -> main_models.DownloadSemanticResultsResponse:
+        runtime = RuntimeOptions()
+        return await self.download_semantic_results_with_options_async(request, runtime)
 
     def enable_process_definition_with_options(
         self,
@@ -14144,6 +14398,154 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_security_strategy_with_options_async(request, runtime)
 
+    def get_semantic_job_detail_with_options(
+        self,
+        request: main_models.GetSemanticJobDetailRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetSemanticJobDetailResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.executor_job_id):
+            query['ExecutorJobId'] = request.executor_job_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetSemanticJobDetail',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetSemanticJobDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_semantic_job_detail_with_options_async(
+        self,
+        request: main_models.GetSemanticJobDetailRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetSemanticJobDetailResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.executor_job_id):
+            query['ExecutorJobId'] = request.executor_job_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetSemanticJobDetail',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetSemanticJobDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_semantic_job_detail(
+        self,
+        request: main_models.GetSemanticJobDetailRequest,
+    ) -> main_models.GetSemanticJobDetailResponse:
+        runtime = RuntimeOptions()
+        return self.get_semantic_job_detail_with_options(request, runtime)
+
+    async def get_semantic_job_detail_async(
+        self,
+        request: main_models.GetSemanticJobDetailRequest,
+    ) -> main_models.GetSemanticJobDetailResponse:
+        runtime = RuntimeOptions()
+        return await self.get_semantic_job_detail_with_options_async(request, runtime)
+
+    def get_semantic_job_log_with_options(
+        self,
+        request: main_models.GetSemanticJobLogRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetSemanticJobLogResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.executor_job_id):
+            query['ExecutorJobId'] = request.executor_job_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetSemanticJobLog',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetSemanticJobLogResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_semantic_job_log_with_options_async(
+        self,
+        request: main_models.GetSemanticJobLogRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetSemanticJobLogResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.executor_job_id):
+            query['ExecutorJobId'] = request.executor_job_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetSemanticJobLog',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetSemanticJobLogResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_semantic_job_log(
+        self,
+        request: main_models.GetSemanticJobLogRequest,
+    ) -> main_models.GetSemanticJobLogResponse:
+        runtime = RuntimeOptions()
+        return self.get_semantic_job_log_with_options(request, runtime)
+
+    async def get_semantic_job_log_async(
+        self,
+        request: main_models.GetSemanticJobLogRequest,
+    ) -> main_models.GetSemanticJobLogResponse:
+        runtime = RuntimeOptions()
+        return await self.get_semantic_job_log_with_options_async(request, runtime)
+
     def get_skill_with_options(
         self,
         request: main_models.GetSkillRequest,
@@ -15083,6 +15485,84 @@ class Client(OpenApiClient):
     ) -> main_models.ImportWorkflowDefinitionResponse:
         runtime = RuntimeOptions()
         return await self.import_workflow_definition_with_options_async(request, runtime)
+
+    def kill_semantic_job_with_options(
+        self,
+        request: main_models.KillSemanticJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.KillSemanticJobResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.executor_job_id):
+            body['ExecutorJobId'] = request.executor_job_id
+        if not DaraCore.is_null(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.retry_times):
+            body['RetryTimes'] = request.retry_times
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'KillSemanticJob',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.KillSemanticJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def kill_semantic_job_with_options_async(
+        self,
+        request: main_models.KillSemanticJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.KillSemanticJobResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.executor_job_id):
+            body['ExecutorJobId'] = request.executor_job_id
+        if not DaraCore.is_null(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.retry_times):
+            body['RetryTimes'] = request.retry_times
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'KillSemanticJob',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.KillSemanticJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def kill_semantic_job(
+        self,
+        request: main_models.KillSemanticJobRequest,
+    ) -> main_models.KillSemanticJobResponse:
+        runtime = RuntimeOptions()
+        return self.kill_semantic_job_with_options(request, runtime)
+
+    async def kill_semantic_job_async(
+        self,
+        request: main_models.KillSemanticJobRequest,
+    ) -> main_models.KillSemanticJobResponse:
+        runtime = RuntimeOptions()
+        return await self.kill_semantic_job_with_options_async(request, runtime)
 
     def list_agent_session_artifacts_with_options(
         self,
@@ -21236,6 +21716,158 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_security_strategies_with_options_async(request, runtime)
 
+    def list_semantic_job_runs_with_options(
+        self,
+        request: main_models.ListSemanticJobRunsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListSemanticJobRunsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.job_name):
+            body['JobName'] = request.job_name
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListSemanticJobRuns',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListSemanticJobRunsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_semantic_job_runs_with_options_async(
+        self,
+        request: main_models.ListSemanticJobRunsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListSemanticJobRunsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.job_name):
+            body['JobName'] = request.job_name
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListSemanticJobRuns',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListSemanticJobRunsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_semantic_job_runs(
+        self,
+        request: main_models.ListSemanticJobRunsRequest,
+    ) -> main_models.ListSemanticJobRunsResponse:
+        runtime = RuntimeOptions()
+        return self.list_semantic_job_runs_with_options(request, runtime)
+
+    async def list_semantic_job_runs_async(
+        self,
+        request: main_models.ListSemanticJobRunsRequest,
+    ) -> main_models.ListSemanticJobRunsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_semantic_job_runs_with_options_async(request, runtime)
+
+    def list_semantic_jobs_with_options(
+        self,
+        request: main_models.ListSemanticJobsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListSemanticJobsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListSemanticJobs',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListSemanticJobsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_semantic_jobs_with_options_async(
+        self,
+        request: main_models.ListSemanticJobsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListSemanticJobsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListSemanticJobs',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListSemanticJobsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_semantic_jobs(
+        self,
+        request: main_models.ListSemanticJobsRequest,
+    ) -> main_models.ListSemanticJobsResponse:
+        runtime = RuntimeOptions()
+        return self.list_semantic_jobs_with_options(request, runtime)
+
+    async def list_semantic_jobs_async(
+        self,
+        request: main_models.ListSemanticJobsRequest,
+    ) -> main_models.ListSemanticJobsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_semantic_jobs_with_options_async(request, runtime)
+
     def list_skills_with_options(
         self,
         tmp_req: main_models.ListSkillsRequest,
@@ -23937,6 +24569,76 @@ class Client(OpenApiClient):
     ) -> main_models.RollbackParameterResponse:
         runtime = RuntimeOptions()
         return await self.rollback_parameter_with_options_async(request, runtime)
+
+    def run_semantic_job_with_options(
+        self,
+        request: main_models.RunSemanticJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RunSemanticJobResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RunSemanticJob',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RunSemanticJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def run_semantic_job_with_options_async(
+        self,
+        request: main_models.RunSemanticJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RunSemanticJobResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RunSemanticJob',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RunSemanticJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def run_semantic_job(
+        self,
+        request: main_models.RunSemanticJobRequest,
+    ) -> main_models.RunSemanticJobResponse:
+        runtime = RuntimeOptions()
+        return self.run_semantic_job_with_options(request, runtime)
+
+    async def run_semantic_job_async(
+        self,
+        request: main_models.RunSemanticJobRequest,
+    ) -> main_models.RunSemanticJobResponse:
+        runtime = RuntimeOptions()
+        return await self.run_semantic_job_with_options_async(request, runtime)
 
     def set_success_task_instances_with_options(
         self,
@@ -28580,6 +29282,116 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.update_security_strategy_with_options_async(request, runtime)
 
+    def update_skill_with_options(
+        self,
+        tmp_req: main_models.UpdateSkillRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateSkillResponse:
+        tmp_req.validate()
+        request = main_models.UpdateSkillShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.extra):
+            request.extra_shrink = Utils.array_to_string_with_specified_style(tmp_req.extra, 'Extra', 'json')
+        if not DaraCore.is_null(tmp_req.visibility_scope):
+            request.visibility_scope_shrink = Utils.array_to_string_with_specified_style(tmp_req.visibility_scope, 'VisibilityScope', 'json')
+        body = {}
+        if not DaraCore.is_null(request.bundle_url):
+            body['BundleUrl'] = request.bundle_url
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.expected_version):
+            body['ExpectedVersion'] = request.expected_version
+        if not DaraCore.is_null(request.extra_shrink):
+            body['Extra'] = request.extra_shrink
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.skill_md_override):
+            body['SkillMdOverride'] = request.skill_md_override
+        if not DaraCore.is_null(request.version_note):
+            body['VersionNote'] = request.version_note
+        if not DaraCore.is_null(request.visibility_scope_shrink):
+            body['VisibilityScope'] = request.visibility_scope_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateSkill',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateSkillResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_skill_with_options_async(
+        self,
+        tmp_req: main_models.UpdateSkillRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateSkillResponse:
+        tmp_req.validate()
+        request = main_models.UpdateSkillShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.extra):
+            request.extra_shrink = Utils.array_to_string_with_specified_style(tmp_req.extra, 'Extra', 'json')
+        if not DaraCore.is_null(tmp_req.visibility_scope):
+            request.visibility_scope_shrink = Utils.array_to_string_with_specified_style(tmp_req.visibility_scope, 'VisibilityScope', 'json')
+        body = {}
+        if not DaraCore.is_null(request.bundle_url):
+            body['BundleUrl'] = request.bundle_url
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.expected_version):
+            body['ExpectedVersion'] = request.expected_version
+        if not DaraCore.is_null(request.extra_shrink):
+            body['Extra'] = request.extra_shrink
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.skill_md_override):
+            body['SkillMdOverride'] = request.skill_md_override
+        if not DaraCore.is_null(request.version_note):
+            body['VersionNote'] = request.version_note
+        if not DaraCore.is_null(request.visibility_scope_shrink):
+            body['VisibilityScope'] = request.visibility_scope_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateSkill',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateSkillResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_skill(
+        self,
+        request: main_models.UpdateSkillRequest,
+    ) -> main_models.UpdateSkillResponse:
+        runtime = RuntimeOptions()
+        return self.update_skill_with_options(request, runtime)
+
+    async def update_skill_async(
+        self,
+        request: main_models.UpdateSkillRequest,
+    ) -> main_models.UpdateSkillResponse:
+        runtime = RuntimeOptions()
+        return await self.update_skill_with_options_async(request, runtime)
+
     def update_table_business_metadata_with_options(
         self,
         tmp_req: main_models.UpdateTableBusinessMetadataRequest,
@@ -29259,3 +30071,81 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateWorkflowDefinitionResponse:
         runtime = RuntimeOptions()
         return await self.update_workflow_definition_with_options_async(request, runtime)
+
+    def upload_semantic_file_with_options(
+        self,
+        request: main_models.UploadSemanticFileRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UploadSemanticFileResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.content_type):
+            body['ContentType'] = request.content_type
+        if not DaraCore.is_null(request.file_name):
+            body['FileName'] = request.file_name
+        if not DaraCore.is_null(request.size_bytes):
+            body['SizeBytes'] = request.size_bytes
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UploadSemanticFile',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UploadSemanticFileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def upload_semantic_file_with_options_async(
+        self,
+        request: main_models.UploadSemanticFileRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UploadSemanticFileResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.content_type):
+            body['ContentType'] = request.content_type
+        if not DaraCore.is_null(request.file_name):
+            body['FileName'] = request.file_name
+        if not DaraCore.is_null(request.size_bytes):
+            body['SizeBytes'] = request.size_bytes
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UploadSemanticFile',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UploadSemanticFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def upload_semantic_file(
+        self,
+        request: main_models.UploadSemanticFileRequest,
+    ) -> main_models.UploadSemanticFileResponse:
+        runtime = RuntimeOptions()
+        return self.upload_semantic_file_with_options(request, runtime)
+
+    async def upload_semantic_file_async(
+        self,
+        request: main_models.UploadSemanticFileRequest,
+    ) -> main_models.UploadSemanticFileResponse:
+        runtime = RuntimeOptions()
+        return await self.upload_semantic_file_with_options_async(request, runtime)

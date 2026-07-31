@@ -13,7 +13,7 @@ class CreateAgentSessionResponseBody(DaraModel):
     ):
         # The JSON-RPC response.
         self.json_rpc_response = json_rpc_response
-        # The ID of the request.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -51,11 +51,11 @@ class CreateAgentSessionResponseBodyJsonRpcResponse(DaraModel):
         jsonrpc: str = None,
         result: main_models.CreateAgentSessionResponseBodyJsonRpcResponseResult = None,
     ):
-        # The request ID provided by the client. This ID is returned in the response without modification.
+        # The request ID passed by the caller. The value is returned as-is.
         self.id = id
-        # The JSON-RPC version. The value is fixed at `2.0`.
+        # The JSON-RPC version. Fixed value: 2.0.
         self.jsonrpc = jsonrpc
-        # The business data. This field is `null` if an error occurs.
+        # The business data. The value is null if an error occurs.
         self.result = result
 
     def validate(self):
