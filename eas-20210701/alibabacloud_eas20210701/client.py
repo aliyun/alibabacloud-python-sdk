@@ -3989,6 +3989,82 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_virtual_resource_with_options_async(cluster_id, virtual_resource_id, request, headers, runtime)
 
+    def describe_artifact_with_options(
+        self,
+        cluster_id: str,
+        artifact_name: str,
+        request: main_models.DescribeArtifactRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeArtifactResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeArtifact',
+            version = '2021-07-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/artifacts/{DaraURL.percent_encode(cluster_id)}/{DaraURL.percent_encode(artifact_name)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeArtifactResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_artifact_with_options_async(
+        self,
+        cluster_id: str,
+        artifact_name: str,
+        request: main_models.DescribeArtifactRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeArtifactResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeArtifact',
+            version = '2021-07-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/artifacts/{DaraURL.percent_encode(cluster_id)}/{DaraURL.percent_encode(artifact_name)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeArtifactResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_artifact(
+        self,
+        cluster_id: str,
+        artifact_name: str,
+        request: main_models.DescribeArtifactRequest,
+    ) -> main_models.DescribeArtifactResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.describe_artifact_with_options(cluster_id, artifact_name, request, headers, runtime)
+
+    async def describe_artifact_async(
+        self,
+        cluster_id: str,
+        artifact_name: str,
+        request: main_models.DescribeArtifactRequest,
+    ) -> main_models.DescribeArtifactResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.describe_artifact_with_options_async(cluster_id, artifact_name, request, headers, runtime)
+
     def describe_benchmark_task_with_options(
         self,
         cluster_id: str,

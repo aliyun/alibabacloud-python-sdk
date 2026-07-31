@@ -201,8 +201,6 @@ class GroupNetwork(DaraModel):
 
         return self
 
-
-
 class GroupLabels(DaraModel):
     def __init__(
         self,

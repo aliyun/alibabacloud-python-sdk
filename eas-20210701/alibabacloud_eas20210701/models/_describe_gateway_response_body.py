@@ -31,37 +31,37 @@ class DescribeGatewayResponseBody(DaraModel):
     ):
         # The billing method.
         self.charge_type = charge_type
-        # The time when the private gateway was created. The time is in Coordinated Universal Time (UTC).
+        # The time when the dedicated gateway was created. The time is in UTC.
         self.create_time = create_time
-        # The ID of the self-managed cluster.
+        # The self-managed cluster ID.
         self.external_cluster_id = external_cluster_id
-        # The ID of the private gateway.
+        # The dedicated gateway ID.
         self.gateway_id = gateway_id
-        # The alias of the private gateway.
+        # The alias of the dedicated gateway.
         self.gateway_name = gateway_name
-        # The instance type of the private gateway.
+        # The instance type used by the dedicated gateway.
         self.instance_type = instance_type
-        # The public endpoint.
+        # The public network access domain name.
         self.internet_domain = internet_domain
         # Indicates whether public network access is enabled.
         self.internet_enabled = internet_enabled
-        # The status of public network access.
+        # The status of public network access enablement or disablement.
         self.internet_status = internet_status
-        # The private endpoint.
+        # The internal access domain name.
         self.intranet_domain = intranet_domain
         self.intranet_enabled = intranet_enabled
-        # Indicates whether the gateway is the default private gateway.
+        # Indicates whether the dedicated gateway is the default one.
         self.is_default = is_default
         self.labels = labels
-        # The number of private gateway nodes.
+        # The number of nodes in the dedicated gateway.
         self.replicas = replicas
         # The request ID.
         self.request_id = request_id
-        # Indicates whether HTTP to HTTPS redirection is enabled.
+        # Indicates whether HTTP-to-HTTPS redirection is enabled.
         self.sslredirection_enabled = sslredirection_enabled
-        # The status of the private gateway.
+        # The status of the dedicated gateway.
         self.status = status
-        # The time when the private gateway was last updated. The time is in UTC.
+        # The time when the dedicated gateway was last updated. The time is in UTC.
         self.update_time = update_time
 
     def validate(self):

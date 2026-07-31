@@ -2,6 +2,8 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from ._artifact import Artifact
+from ._artifact_release import ArtifactRelease
 from ._container_info import ContainerInfo
 from ._group import Group
 from ._instance import Instance
@@ -151,6 +153,8 @@ from ._delete_service_rollout_response import DeleteServiceRolloutResponse
 from ._delete_virtual_resource_request import DeleteVirtualResourceRequest
 from ._delete_virtual_resource_response_body import DeleteVirtualResourceResponseBody
 from ._delete_virtual_resource_response import DeleteVirtualResourceResponse
+from ._describe_artifact_request import DescribeArtifactRequest
+from ._describe_artifact_response import DescribeArtifactResponse
 from ._describe_benchmark_task_request import DescribeBenchmarkTaskRequest
 from ._describe_benchmark_task_response_body import DescribeBenchmarkTaskResponseBody
 from ._describe_benchmark_task_response import DescribeBenchmarkTaskResponse
@@ -376,6 +380,7 @@ from ._update_service_version_response import UpdateServiceVersionResponse
 from ._update_virtual_resource_request import UpdateVirtualResourceRequest
 from ._update_virtual_resource_response_body import UpdateVirtualResourceResponseBody
 from ._update_virtual_resource_response import UpdateVirtualResourceResponse
+from ._artifact import ArtifactVersions
 from ._group import GroupLabels
 from ._group import GroupNetwork
 from ._resource_instance import ResourceInstanceLabels
@@ -449,6 +454,8 @@ from ._update_service_rollout_request import UpdateServiceRolloutRequestPartitio
 from ._update_virtual_resource_request import UpdateVirtualResourceRequestResources
 
 __all__ = [
+    Artifact,
+    ArtifactRelease,
     ContainerInfo,
     Group,
     Instance,
@@ -598,6 +605,8 @@ __all__ = [
     DeleteVirtualResourceRequest,
     DeleteVirtualResourceResponseBody,
     DeleteVirtualResourceResponse,
+    DescribeArtifactRequest,
+    DescribeArtifactResponse,
     DescribeBenchmarkTaskRequest,
     DescribeBenchmarkTaskResponseBody,
     DescribeBenchmarkTaskResponse,
@@ -823,6 +832,7 @@ __all__ = [
     UpdateVirtualResourceRequest,
     UpdateVirtualResourceResponseBody,
     UpdateVirtualResourceResponse,
+    ArtifactVersions,
     GroupLabels,
     GroupNetwork,
     ResourceInstanceLabels,

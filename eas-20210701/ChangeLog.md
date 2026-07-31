@@ -1,3 +1,7 @@
+2026-07-31 Version: 6.17.0
+- Support API DescribeArtifact.
+
+
 2026-06-25 Version: 6.16.0
 - Support API CreateGroup.
 - Support API DeleteGroup.
