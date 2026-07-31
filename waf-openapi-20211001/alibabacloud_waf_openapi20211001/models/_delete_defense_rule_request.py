@@ -15,17 +15,11 @@ class DeleteDefenseRuleRequest(DaraModel):
         rule_ids: str = None,
         template_id: int = None,
     ):
-        # The type of the protection rule. Valid values:
-        # 
-        # - **template** (default): a protection rule template.
-        # 
-        # - **resource**: a rule for a protected object.
-        # 
-        # - **global**: a global rule.
+        # The type of the protection rule.
         self.defense_type = defense_type
         # The ID of the WAF instance.
         # 
-        # > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of your WAF instance.
+        # > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -35,19 +29,17 @@ class DeleteDefenseRuleRequest(DaraModel):
         # 
         # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
-        # The protected object of the rule that you want to delete.
-        # 
-        # > This parameter is required only when you set **DefenseType** to **resource**.
+        # The protection object associated with the rule to delete.
+        # > This parameter is required only when **DefenseType** is set to **resource**.
         self.resource = resource
-        # The ID of the resource group.
+        # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The IDs of the protection rules that you want to delete. Separate multiple IDs with commas (,).
+        # The IDs of the protection rules to delete. Separate multiple IDs with commas (,).
         # 
         # This parameter is required.
         self.rule_ids = rule_ids
-        # The ID of the protection rule template that you want to delete.
-        # 
-        # > This parameter is required only when you set **DefenseType** to **template**.
+        # The ID of the protection template to delete.
+        # > This parameter is required only when **DefenseType** is set to **template**.
         self.template_id = template_id
 
     def validate(self):

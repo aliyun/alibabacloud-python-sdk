@@ -13,9 +13,9 @@ class DescribeHybridCloudServerRegionsResponseBody(DaraModel):
         regions: List[main_models.DescribeHybridCloudServerRegionsResponseBodyRegions] = None,
         request_id: str = None,
     ):
-        # The regions.
+        # The list of region information.
         self.regions = regions
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -58,9 +58,9 @@ class DescribeHybridCloudServerRegionsResponseBodyRegions(DaraModel):
         code: int = None,
         name: str = None,
     ):
-        # The code of the region.
+        # The region code.
         self.code = code
-        # The name of the region.
+        # The region name.
         self.name = name
 
     def validate(self):

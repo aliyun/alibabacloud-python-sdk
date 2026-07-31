@@ -14,27 +14,26 @@ class CreateLogDeliveryConfigRequest(DaraModel):
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
     ):
-        # The details of the log delivery configuration. The value is a JSON string that is generated from a series of parameters.
+        # The content of the forwarding delivery configuration. The value is a JSON string constructed from a series of parameters.
         # 
-        # > The parameters vary based on the value of **DeliveryType**. For more information, see **Parameters for log delivery configuration details**.
+        # > The parameters vary based on the specified **forwarding delivery configuration type** (**DeliveryType**). For more information, see **Parameter description of the forwarding delivery configuration content**.
         # 
         # This parameter is required.
         self.delivery_detail = delivery_detail
-        # The name of the log delivery configuration.
+        # The name of the forwarding delivery configuration.
         # 
         # This parameter is required.
         self.delivery_name = delivery_name
-        # The type of the log delivery configuration. Valid values:
+        # The type of the forwarding delivery configuration. Valid values:
         # 
-        # - **syslog**: Delivers logs to a syslog service.
-        # 
-        # - **kafka**: Delivers logs to a Kafka service.
+        # - **syslog**: forwards logs to a syslog service.
+        # - **kafka**: forwards logs to a Kafka service.
         # 
         # This parameter is required.
         self.delivery_type = delivery_type
         # The ID of the WAF instance.
         # 
-        # > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -44,7 +43,7 @@ class CreateLogDeliveryConfigRequest(DaraModel):
         # 
         # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
-        # The ID of the Alibaba Cloud resource group.
+        # The Alibaba Cloud resource group ID.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
 
     def validate(self):

@@ -16,15 +16,15 @@ class DescribeBotRuleLabelsResponseBody(DaraModel):
         rule_labels: List[main_models.DescribeBotRuleLabelsResponseBodyRuleLabels] = None,
         total_count: int = None,
     ):
-        # The maximum number of entries returned per page. Valid values: 1 to 200. Default value: 20.
+        # The number of entries per page for paging. Valid values: 1 to 200. Default value: 20.
         self.max_results = max_results
-        # The token to retrieve the next page of results. This parameter is returned if a next page exists.
+        # The pagination token for the next page. If a next page exists, this field has a return value.
         # 
-        # > If a value is returned for this parameter, it indicates that more results are available. Use the returned **NextToken** value in the next request to retrieve the next page of results. Repeat this process until no value is returned for this parameter. This indicates that all results have been retrieved.
+        # > If this parameter has a return value, a next page exists. You can use the returned **NextToken** as a request parameter to obtain the data on the next page. Repeat this process until no value is returned, which indicates that all data has been retrieved.
         self.next_token = next_token
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The list of bot management rule labels.
+        # The list of bot management rule tags.
         self.rule_labels = rule_labels
         # The total number of entries returned.
         self.total_count = total_count
@@ -85,27 +85,49 @@ class DescribeBotRuleLabelsResponseBodyRuleLabels(DaraModel):
     def __init__(
         self,
         bot_behavior: str = None,
+        default_action: str = None,
+        default_config: str = None,
+        default_status: int = None,
         label_key: str = None,
+        label_status: str = None,
         label_type: str = None,
         sub_scene: str = None,
     ):
-        # The bot behavior that corresponds to the rule label. Valid values:
+        # The crawler behavior corresponding to the rule tag.
         # 
-        # - **malicious**: malicious bot.
-        # 
-        # - **suspicious**: suspected bot.
-        # 
-        # - **normal**: normal bot.
+        # - **malicious**: malicious crawler.
+        # - **suspicious**: suspected crawler.
+        # - **normal**: normal crawler.
         self.bot_behavior = bot_behavior
-        # The key of the bot management rule label.
+        # The default action. Valid values:
+        # 
+        # - **block**: Block.
+        # - **monitor**: Monitor.
+        # - **js**: JavaScript verification.
+        # - **captcha**: Slider CAPTCHA.
+        # - **captcha_strict**: Strict slider CAPTCHA.
+        # - **bypass**: Allow.
+        self.default_action = default_action
+        # The default configurations corresponding to the label.
+        self.default_config = default_config
+        # The default status of the tag rule.
+        # 
+        # - **1**: The rule is enabled.
+        # - **0**: The rule is disabled.
+        self.default_status = default_status
+        # The bot management rule tag.
         self.label_key = label_key
-        # The type of the bot rule label.
+        # The tag status.
+        # 
+        # - **online**: Online.
+        # - **wait_offline**: Pending offline.
+        self.label_status = label_status
+        # The type of the bot rule tag.
         self.label_type = label_type
-        # The bot management scenarios to which the rule belongs. Multiple scenarios are separated by commas (,). Valid values:
+        # The set of bot management protection scenarios to which the rule belongs. Multiple scenarios are separated by commas (,). Valid values:
         # 
-        # - **web**: web protection.
-        # 
-        # - **app**: app protection.
+        # - **web**: Web protection scenario.
+        # - **app**: App protection scenario.
         self.sub_scene = sub_scene
 
     def validate(self):
@@ -119,8 +141,20 @@ class DescribeBotRuleLabelsResponseBodyRuleLabels(DaraModel):
         if self.bot_behavior is not None:
             result['BotBehavior'] = self.bot_behavior
 
+        if self.default_action is not None:
+            result['DefaultAction'] = self.default_action
+
+        if self.default_config is not None:
+            result['DefaultConfig'] = self.default_config
+
+        if self.default_status is not None:
+            result['DefaultStatus'] = self.default_status
+
         if self.label_key is not None:
             result['LabelKey'] = self.label_key
+
+        if self.label_status is not None:
+            result['LabelStatus'] = self.label_status
 
         if self.label_type is not None:
             result['LabelType'] = self.label_type
@@ -135,8 +169,20 @@ class DescribeBotRuleLabelsResponseBodyRuleLabels(DaraModel):
         if m.get('BotBehavior') is not None:
             self.bot_behavior = m.get('BotBehavior')
 
+        if m.get('DefaultAction') is not None:
+            self.default_action = m.get('DefaultAction')
+
+        if m.get('DefaultConfig') is not None:
+            self.default_config = m.get('DefaultConfig')
+
+        if m.get('DefaultStatus') is not None:
+            self.default_status = m.get('DefaultStatus')
+
         if m.get('LabelKey') is not None:
             self.label_key = m.get('LabelKey')
+
+        if m.get('LabelStatus') is not None:
+            self.label_status = m.get('LabelStatus')
 
         if m.get('LabelType') is not None:
             self.label_type = m.get('LabelType')

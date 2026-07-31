@@ -67,10 +67,10 @@ class DescribeUserEventTrendResponseBodyTrend(DaraModel):
         self.event_low = event_low
         # The number of medium-risk events.
         self.event_medium = event_medium
-        # The statistics time, in UNIX timestamp format (UTC). Unit: seconds.
+        # The statistics time in UNIX timestamp format (UTC). Unit: seconds.
         # >Notice: This parameter is deprecated. Use the Timestamp parameter instead.
         self.time_stamp = time_stamp
-        # The statistics time, in UNIX timestamp format (UTC). Unit: seconds.
+        # The statistics time in UNIX timestamp format (UTC). Unit: seconds.
         self.timestamp = timestamp
 
     def validate(self):

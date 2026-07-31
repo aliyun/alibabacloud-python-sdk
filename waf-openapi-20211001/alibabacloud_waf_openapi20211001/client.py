@@ -6763,6 +6763,8 @@ class Client(OpenApiClient):
             query['ChargeCycle'] = request.charge_cycle
         if not DaraCore.is_null(request.charge_modules):
             query['ChargeModules'] = request.charge_modules
+        if not DaraCore.is_null(request.charge_unit):
+            query['ChargeUnit'] = request.charge_unit
         if not DaraCore.is_null(request.pay_type):
             query['PayType'] = request.pay_type
         if not DaraCore.is_null(request.region_id):
@@ -6799,6 +6801,8 @@ class Client(OpenApiClient):
             query['ChargeCycle'] = request.charge_cycle
         if not DaraCore.is_null(request.charge_modules):
             query['ChargeModules'] = request.charge_modules
+        if not DaraCore.is_null(request.charge_unit):
+            query['ChargeUnit'] = request.charge_unit
         if not DaraCore.is_null(request.pay_type):
             query['PayType'] = request.pay_type
         if not DaraCore.is_null(request.region_id):

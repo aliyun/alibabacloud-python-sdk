@@ -16,91 +16,27 @@ class CreateDefenseRuleRequest(DaraModel):
         rules: str = None,
         template_id: int = None,
     ):
-        # The scenario to which the protection rule is applied.
-        # 
-        # If **DefenseType** is set to **template**, valid values are:
-        # 
-        # - **waf_group**: basic protection.
-        # 
-        # - **waf_base**: web core protection.
-        # 
-        # - **antiscan**: scan protection.
-        # 
-        # - **ip_blacklist**: IP address blacklist.
-        # 
-        # - **custom_acl**: custom rule.
-        # 
-        # - **whitelist**: whitelist.
-        # 
-        # - **region_block**: geo-blocking.
-        # 
-        # - **custom_response**: custom response.
-        # 
-        # - **cc**: HTTP flood protection.
-        # 
-        # - **tamperproof**: webpage tamper-proofing.
-        # 
-        # - **dlp**: data leakage prevention.
-        # 
-        # - **spike_throttle**: rate limiting for bursts of traffic.
-        # 
-        # - **bot_manager**: bot management.
-        # 
-        # If **DefenseType** is set to **resource**, valid values are:
-        # 
-        # - **account_identifier**: account identification.
-        # 
-        # - **custom_response**: custom response.
-        # 
-        # - **waf_codec**: decoding.
-        # 
-        # If **DefenseType** is set to **global**, valid values are:
-        # 
-        # - **regular_custom**: custom regular expression.
-        # 
-        # - **address_book**: address book.
-        # 
-        # - **custom_response**: custom response.
-        # 
-        # > You can apply a global custom response to a protected object or a rule. If you configure custom response rules at different levels, the rule with the finest-grained scope takes precedence. The priority is as follows: rule > protected object > default page.
+        # The WAF protection scenario to create.
         # 
         # This parameter is required.
         self.defense_scene = defense_scene
-        # The type of the protection rule. Valid values:
-        # 
-        # - **template** (default): a template-based protection rule.
-        # 
-        # - **resource**: a rule for a specific protected object.
-        # 
-        # - **global**: a global protection rule.
+        # The type of the protection rule.
         self.defense_type = defense_type
-        # The ID of the WAF instance.
-        # 
-        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to get the ID of your WAF instance.
+        # The WAF instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region where the WAF instance is deployed. Valid values:
-        # 
-        # - **cn-hangzhou**: Chinese mainland.
-        # 
-        # - **ap-southeast-1**: outside the Chinese mainland.
+        # The region where the WAF instance resides. Valid values:
         self.region_id = region_id
-        # The protected object to which the rule applies.
-        # 
-        # > This parameter is required only when **DefenseType** is set to **resource**.
+        # The protection object associated with the rule to create.
         self.resource = resource
-        # The ID of the resource group.
+        # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The details of the protection rule. This value is a JSON string.
-        # 
-        # > The parameters in the JSON string vary based on the value of **DefenseScene**. For more information, see **Protection rule parameters**.
+        # The rule configuration content, which is a string converted from a JSON object constructed with a series of parameters.
         # 
         # This parameter is required.
         self.rules = rules
-        # The ID of the protection rule template.
-        # 
-        # > This parameter is required only when **DefenseType** is set to **template**.
+        # The ID of the protection template for the protection rule to create.
         self.template_id = template_id
 
     def validate(self):

@@ -15,35 +15,25 @@ class ModifyDomainShrinkRequest(DaraModel):
         redirect_shrink: str = None,
         region_id: str = None,
     ):
-        # The access mode of the WAF instance. Valid values:
-        # 
-        # - **share** (default): onboarding by using a CNAME record.
-        # 
-        # - **hybrid_cloud_cname**: onboarding by using a hybrid cloud CNAME record.
+        # The access type of the WAF instance. Valid values:
         self.access_type = access_type
-        # The domain name whose configurations you want to modify.
+        # The domain name to operate on.
         self.domain = domain
-        # The ID of the domain name.
+        # The domain name ID.
         self.domain_id = domain_id
         # The ID of the WAF instance.
         # 
-        # > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
-        # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The listening settings.
+        # The listening configuration.
         # 
         # This parameter is required.
         self.listen_shrink = listen_shrink
-        # The forwarding settings.
+        # The forwarding configuration.
         # 
         # This parameter is required.
         self.redirect_shrink = redirect_shrink
         # The region where the WAF instance resides. Valid values:
-        # 
-        # - **cn-hangzhou**: the Chinese mainland.
-        # 
-        # - **ap-southeast-1**: outside the Chinese mainland.
         # 
         # This parameter is required.
         self.region_id = region_id

@@ -14,7 +14,7 @@ class DescribePrepayDailyBillsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of WAF elastic billing records.
+        # The list of WAF burstable billing records.
         self.bills = bills
         # The request ID.
         self.request_id = request_id
@@ -81,18 +81,22 @@ class DescribePrepayDailyBillsResponseBodyBills(DaraModel):
     ):
         # The burstable QPS specification of the WAF instance.
         self.elastic_qps_set_value = elastic_qps_set_value
-        # The end time of the billing period. The value is a UNIX timestamp (UTC). Unit: seconds.
+        # The end time of the billing record. The value is a UNIX timestamp (UTC). Unit: seconds.
         self.end_time = end_time
         # The overuse status of the current period. Valid values:
         # - **0**: Normal.
-        # - **1**: Overused.
-        # - **2**: Sandboxed.
+        # - **1**: overused.
+        # - **2**: sandboxed.
         self.exceed_status = exceed_status
+        # Indicates whether the extension plug-in is enabled. Valid values:
+        # - **true**: The extension plug-in is enabled.
+        # - **false**: The extension plug-in is not enabled.
         self.extension_plugin = extension_plugin
+        # The number of requests processed by the plug-in.
         self.extension_plugin_request = extension_plugin_request
         # The maximum QPS during the current period.
         self.max_qps = max_qps
-        # The unit price for elastic billing. Unit: CNY for the China site and USD for the international site.
+        # The unit price for burstable billing. Unit: CNY for the China site and USD for the international site.
         self.price = price
         # The QPS extension specification of the WAF instance.
         self.qps = qps
@@ -104,11 +108,11 @@ class DescribePrepayDailyBillsResponseBodyBills(DaraModel):
         self.risk_control = risk_control
         # The number of times risk identification is used.
         self.risk_traffic = risk_traffic
-        # The start time of the billing period. The value is a UNIX timestamp (UTC). Unit: seconds.
+        # The start time of the billing record. The value is a UNIX timestamp (UTC). Unit: seconds.
         self.start_time = start_time
         # The total QPS that is billed.
         self.total = total
-        # The elastic billing type.
+        # The burstable billing type.
         self.type = type
 
     def validate(self):

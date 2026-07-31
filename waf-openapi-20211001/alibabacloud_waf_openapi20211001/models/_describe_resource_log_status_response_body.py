@@ -13,9 +13,9 @@ class DescribeResourceLogStatusResponseBody(DaraModel):
         request_id: str = None,
         result: List[main_models.DescribeResourceLogStatusResponseBodyResult] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The log status information of protected objects.
+        # The returned result.
         self.result = result
 
     def validate(self):
@@ -60,15 +60,21 @@ class DescribeResourceLogStatusResponseBodyResult(DaraModel):
         trace_config: main_models.DescribeResourceLogStatusResponseBodyResultTraceConfig = None,
         trace_status: bool = None,
     ):
-        # The name of the protected object.
+        # The queried protected object.
         self.resource = resource
-        # Indicates whether log collection is enabled for the protected object. Valid values:
+        # The log enabling status of the protected object. Valid values:
+        #  
+        # - **true**: Logging is enabled.
         # 
-        # - **true**: Log collection is enabled.
-        # 
-        # - **false**: Log collection is disabled.
+        # - **false**: Logging is disabled.
         self.status = status
+        # The Tracing Analysis configuration.
         self.trace_config = trace_config
+        # The Tracing Analysis status. Valid values:
+        #  
+        # - **true**: Tracing Analysis is enabled.
+        # 
+        # - **false**: Tracing Analysis is shutdown.
         self.trace_status = trace_status
 
     def validate(self):
@@ -117,7 +123,9 @@ class DescribeResourceLogStatusResponseBodyResultTraceConfig(DaraModel):
         rate_per_mille: int = None,
         workspace: str = None,
     ):
+        # The per-mille sampling ratio for Tracing Analysis.
         self.rate_per_mille = rate_per_mille
+        # The Hybrid Cloud Monitoring 2.0 workspace.
         self.workspace = workspace
 
     def validate(self):

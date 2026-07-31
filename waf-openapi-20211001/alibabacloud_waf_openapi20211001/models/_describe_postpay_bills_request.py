@@ -28,11 +28,9 @@ class DescribePostpayBillsRequest(DaraModel):
         self.max_results = max_results
         # The pagination token for the next page. If a next page exists, this field has a return value.
         # 
-        # > If this parameter has a return value, a next page exists. You can use the returned **NextToken** as a request parameter to obtain the data on the next page. Repeat this process until no value is returned, which indicates that all data has been retrieved.
+        # > If this parameter has a return value, a next page exists. Use the returned **NextToken** as a request parameter to obtain the next page of data. Repeat until no value is returned, which indicates that all data has been retrieved.
         self.next_token = next_token
-        # The epoch type for billing information. Valid values:
-        # 
-        # - **hour**: Billing information is calculated on an hourly basis.
+        # The statistical period type for billing.
         self.period_type = period_type
         # The region where the WAF instance is deployed. Valid values:
         # 

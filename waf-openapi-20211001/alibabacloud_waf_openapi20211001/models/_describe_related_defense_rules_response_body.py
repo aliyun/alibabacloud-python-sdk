@@ -16,11 +16,11 @@ class DescribeRelatedDefenseRulesResponseBody(DaraModel):
         rules: List[main_models.DescribeRelatedDefenseRulesResponseBodyRules] = None,
         total_count: int = None,
     ):
-        # The number of entries per page when using paging. Valid values: 1 to 100. Default value: 20.
+        # The number of entries per page in a paged query. Valid values: 1 to 100. Default value: 20.
         self.max_results = max_results
         # The pagination token (**Token**) for the next page. If a next page exists, this field has a return value.
         # 
-        # > If this parameter has a return value, a next page exists. Use the returned **NextToken** as a request parameter to obtain the next page of data. Repeat this process until no value is returned, which indicates that all data has been retrieved.
+        # > If this parameter has a return value, a next page exists. Use the returned **NextToken** as a request parameter to obtain the data on the next page. Repeat this process until no value is returned, which indicates that all data has been retrieved.
         self.next_token = next_token
         # The ID of the request.
         self.request_id = request_id
@@ -90,7 +90,7 @@ class DescribeRelatedDefenseRulesResponseBodyRules(DaraModel):
         rule_name: str = None,
         template_id: int = None,
     ):
-        # The protection scenario of the protection rule. For more information, see the **DefenseScene** parameter in [DescribeDefenseRules](https://help.aliyun.com/document_detail/461426.html).
+        # The protection scenario of the protection rule. For more information, refer to the **DefenseScene** parameter in [DescribeDefenseRules](https://help.aliyun.com/document_detail/461426.html).
         self.defense_scene = defense_scene
         # The type of the protection rule. Valid values:
         # 

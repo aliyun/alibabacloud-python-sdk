@@ -13,31 +13,25 @@ class DescribeHybridCloudServerRegionsRequest(DaraModel):
         region_type: str = None,
         resource_manager_resource_group_id: str = None,
     ):
-        # The ID of the Web Application Firewall (WAF) instance.
+        # Instance ID of the WAF instance.
         # 
-        # > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the current WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region code. Use this parameter to filter results by a specific continent or area.>Notice: This parameter is required when `RegionType` is set to `region`. Set the value to the code of the continent that you want to query.
+        # The region code.>Notice: This parameter is required when RegionType is set to region. Set this parameter to the code of the selected continent.
         self.region_code = region_code
-        # The region in which the WAF instance resides. Valid values:
+        # The region where the WAF instance resides. Valid values:
         # 
         # - **cn-hangzhou**: the Chinese mainland.
         # 
         # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
-        # The type of the region. Valid values:
-        # 
-        # - **operator**: queries carriers.
-        # 
-        # - **continents**: queries continents.
-        # 
-        # - **region**: queries cities.
+        # The region type.
         # 
         # This parameter is required.
         self.region_type = region_type
-        # The ID of the resource group.
+        # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
 
     def validate(self):

@@ -24,71 +24,47 @@ class DescribeBaseSystemRulesRequest(DaraModel):
         rule_status: int = None,
         template_id: int = None,
     ):
-        # The type of attack that the system protection rule detects. Valid values:
-        # 
+        # The detection module. Valid values:
         # - **sqli**: SQL injection.
-        # 
         # - **xss**: cross-site scripting (XSS).
-        # 
         # - **cmdi**: OS command injection.
-        # 
         # - **expression_injection**: expression injection.
-        # 
         # - **java_deserialization**: Java deserialization.
-        # 
         # - **dot_net_deserialization**: .NET deserialization.
-        # 
         # - **php_deserialization**: PHP deserialization.
-        # 
         # - **code_exec**: code execution.
-        # 
         # - **ssrf**: server-side request forgery (SSRF).
-        # 
         # - **path_traversal**: path traversal.
-        # 
         # - **arbitrary_file_uploading**: arbitrary file upload.
-        # 
         # - **webshell**: webshell.
-        # 
         # - **rfilei**: remote file inclusion (RFI).
-        # 
         # - **lfilei**: local file inclusion (LFI).
-        # 
         # - **protocol_violation**: protocol violation.
-        # 
         # - **scanner_behavior**: scanner behavior.
-        # 
-        # - **logic_flaw**: logic flaw.
-        # 
-        # - **arbitrary_file_reading**: arbitrary file read.
-        # 
+        # - **logic_flaw**: business logic bug.
+        # - **arbitrary_file_reading**: arbitrary file reading.
         # - **arbitrary_file_download**: arbitrary file download.
-        # 
-        # - **xxe**: external entity injection.
-        # 
-        # - **csrf**: cross-site request forgery (CSRF).
-        # 
-        # - **crlf**: CRLF injection.
-        # 
+        # - **xxe**: XML external entity injection.
+        # - **csrf**: cross-site request forgery.
+        # - **crlf**: CRLF.
         # - **other**: other.
         self.detect_type = detect_type
         # The ID of the WAF instance.
         # 
-        # > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of your WAF instance.
+        # > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The language of the response. Valid values:
+        # The language of the returned rule content. Valid values:
         # 
         # - **zh** (default): Chinese.
-        # 
         # - **en**: English.
         self.lang = lang
-        # The number of the page to return. Default value: **1**.
+        # The page number to return in a paged query. Default value: **1**, which indicates the first page. For more information about paging, see the PageSize parameter.
         self.page_number = page_number
-        # The number of entries to return on each page. Default value: 100.
+        # The number of entries per page in a paged query. Default value: 100, which indicates 100 entries per page. For more information about paging, see the PageNumber parameter.
         self.page_size = page_size
-        # The region where the WAF instance resides. Valid values:
+        # The region where the WAF instance is deployed. Valid values:
         # 
         # - **cn-hangzhou**: the Chinese mainland.
         # 
@@ -96,9 +72,9 @@ class DescribeBaseSystemRulesRequest(DaraModel):
         self.region_id = region_id
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The risk level of the system protection rule. Valid values:
+        # The risk level. Valid values:
         # 
-        # - **super_strict**: Very Strict.
+        # - **super_strict**: Super strict.
         # 
         # - **strict**: Strict.
         # 
@@ -106,7 +82,7 @@ class DescribeBaseSystemRulesRequest(DaraModel):
         # 
         # - **loose**: Loose.
         self.risk_level = risk_level
-        # The action of the system protection rule. Valid values:
+        # The rule action. Valid values:
         # 
         # - **block**: Block.
         # 
@@ -114,20 +90,19 @@ class DescribeBaseSystemRulesRequest(DaraModel):
         self.rule_action = rule_action
         # The ID of the system protection rule to query.
         self.rule_id = rule_id
+        # The list of system protection rule IDs to query.
         self.rule_ids = rule_ids
         # The name of the system protection rule.
         self.rule_name = rule_name
-        # The status of the system protection rule. Valid values:
-        # 
-        # - **1**: disabled.
-        # 
-        # - **0**: enabled.
+        # The rule status. Valid values:
+        # - **1**: Disabled.
+        # - **0**: Enabled.
         self.rule_status = rule_status
         # The ID of the protection template.
         # 
-        # > - Specify this parameter to query the system protection rules in a specific WAF protection template.
-        # >
-        # > - If you leave this parameter empty, the default configurations of the system protection rules are queried.
+        # > 
+        # > - You can specify this parameter to query the system protection rules in a specific Web core protection rule template.
+        # > - If this parameter is left empty, the default settings of system protection rules are queried.
         self.template_id = template_id
 
     def validate(self):

@@ -18,47 +18,35 @@ class ModifyDefaultHttpsRequest(DaraModel):
         resource_manager_resource_group_id: str = None,
         tlsversion: str = None,
     ):
-        # The certificate ID.
+        # The ID of the certificate.
         # 
         # This parameter is required.
         self.cert_id = cert_id
-        # The type of the cipher suite. Valid values:
-        # 
-        # - **1**: adds all cipher suites.
-        # 
-        # - **2**: adds strong cipher suites.
-        # 
-        # - **99**: adds custom cipher suites.
+        # The cipher suite type.
         self.cipher_suite = cipher_suite
-        # The custom cipher suites that you want to add. This parameter is used only when **CipherSuite** is set to **99**.
+        # The specific custom cipher suites to add. This parameter is used only when **CipherSuite** is set to **99**.
         self.custom_ciphers = custom_ciphers
-        # Specifies whether to support TLS 1.3. Valid values:
+        # Specifies whether TLS 1.3 is supported. Valid values:
         # 
-        # - **true**: supports TLS 1.3.
+        # - **true**: TLS 1.3 is supported.
         # 
-        # - **false**: does not support TLS 1.3.
+        # - **false**: TLS 1.3 is not supported.
+        # > - This parameter is used only when HttpsPorts is not empty, which indicates that the domain name uses the HTTPS protocol. When TLSVersion is set to tlsv1.3, this value must be true.
         self.enable_tlsv_3 = enable_tlsv_3
         # The ID of the WAF instance.
-        # 
-        # > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to view the ID of the current WAF instance.
+        # > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region in which the WAF instance is deployed. Valid values:
+        # The region where the WAF instance is deployed. Valid values:
         # 
         # - **cn-hangzhou**: the Chinese mainland.
         # 
-        # - **ap-southeast-1**: regions outside the Chinese mainland.
+        # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
-        # The ID of the Alibaba Cloud resource group.
+        # The Alibaba Cloud resource group ID.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The version of the TLS protocol. Valid values:
-        # 
-        # - **tlsv1**
-        # 
-        # - **tlsv1.1**
-        # 
-        # - **tlsv1.2**
+        # The TLS version.
         # 
         # This parameter is required.
         self.tlsversion = tlsversion

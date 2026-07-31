@@ -12,13 +12,16 @@ class DescribeChargeResultResponseBody(DaraModel):
         self,
         module_details: List[main_models.DescribeChargeResultResponseBodyModuleDetails] = None,
         request_id: str = None,
+        total_credit: float = None,
         total_se_cu: float = None,
     ):
-        # The billing calculation results for each module.
+        # The calculation results.
         self.module_details = module_details
         # The request ID.
         self.request_id = request_id
-        # The total number of calculated Security Capacity Units (SeCUs).
+        # The total number of calculated Credits.
+        self.total_credit = total_credit
+        # The total number of calculated SeCUs.
         self.total_se_cu = total_se_cu
 
     def validate(self):
@@ -40,6 +43,9 @@ class DescribeChargeResultResponseBody(DaraModel):
         if self.request_id is not None:
             result['RequestId'] = self.request_id
 
+        if self.total_credit is not None:
+            result['TotalCredit'] = self.total_credit
+
         if self.total_se_cu is not None:
             result['TotalSeCu'] = self.total_se_cu
 
@@ -56,6 +62,9 @@ class DescribeChargeResultResponseBody(DaraModel):
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
 
+        if m.get('TotalCredit') is not None:
+            self.total_credit = m.get('TotalCredit')
+
         if m.get('TotalSeCu') is not None:
             self.total_se_cu = m.get('TotalSeCu')
 
@@ -64,12 +73,15 @@ class DescribeChargeResultResponseBody(DaraModel):
 class DescribeChargeResultResponseBodyModuleDetails(DaraModel):
     def __init__(
         self,
+        credit: float = None,
         module_code: str = None,
         se_cu: float = None,
     ):
-        # The ID of the billing module.
+        # The number of Credits for the pricing module.
+        self.credit = credit
+        # The pricing module identifier.
         self.module_code = module_code
-        # The number of SeCUs for the billing module.
+        # The number of SeCUs for the pricing module.
         self.se_cu = se_cu
 
     def validate(self):
@@ -80,6 +92,9 @@ class DescribeChargeResultResponseBodyModuleDetails(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.credit is not None:
+            result['Credit'] = self.credit
+
         if self.module_code is not None:
             result['ModuleCode'] = self.module_code
 
@@ -90,6 +105,9 @@ class DescribeChargeResultResponseBodyModuleDetails(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Credit') is not None:
+            self.credit = m.get('Credit')
+
         if m.get('ModuleCode') is not None:
             self.module_code = m.get('ModuleCode')
 

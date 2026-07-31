@@ -1,3 +1,20 @@
+2026-07-31 Version: 7.8.3
+- Update API DescribeBotRuleLabels: add response parameters Body.RuleLabels.$.DefaultAction.
+- Update API DescribeBotRuleLabels: add response parameters Body.RuleLabels.$.DefaultConfig.
+- Update API DescribeBotRuleLabels: add response parameters Body.RuleLabels.$.DefaultStatus.
+- Update API DescribeBotRuleLabels: add response parameters Body.RuleLabels.$.LabelStatus.
+- Update API DescribeChargeResult: add request parameters ChargeUnit.
+- Update API DescribeChargeResult: add response parameters Body.TotalCredit.
+- Update API DescribeChargeResult: add response parameters Body.ModuleDetails.$.Credit.
+- Update API DescribeElasticBills: add response parameters Body.Bills.$.Credit.
+- Update API DescribeElasticBills: add response parameters Body.Bills.$.FunctionCredit.
+- Update API DescribeElasticBills: add response parameters Body.Bills.$.TrafficCredit.
+- Update API DescribePostpayBills: add response parameters Body.BillDetail.$.Credit.
+- Update API DescribePostpayBills: add response parameters Body.BillDetail.$.CreditChargeData.
+- Update API DescribePostpayBills: add response parameters Body.BillDetail.$.FunctionCredit.
+- Update API DescribePostpayBills: add response parameters Body.BillDetail.$.TrafficCredit.
+
+
 2026-07-08 Version: 7.8.2
 - Update API DescribeDefenseResource: add response parameters Body.Resource.ResourceStatus.
 - Update API DescribeDefenseResources: add response parameters Body.Resources.$.ResourceStatus.

@@ -74,61 +74,38 @@ class DescribeBaseSystemRulesResponseBodyRules(DaraModel):
         rule_status: int = None,
         update_time: int = None,
     ):
-        # The CVE ID of the vulnerability that is associated with the system protection rule.
+        # The CVE ID of the vulnerability associated with the system rule.
         self.cve_id = cve_id
-        # The description of the system protection rule.
+        # The description of the rule.
         self.description = description
-        # The type of attack that the system protection rule detects. Valid values:
-        # 
+        # The detection module. Valid values:
         # - **sqli**: SQL injection.
-        # 
         # - **xss**: cross-site scripting (XSS).
-        # 
         # - **cmdi**: OS command injection.
-        # 
         # - **expression_injection**: expression injection.
-        # 
         # - **java_deserialization**: Java deserialization.
-        # 
         # - **dot_net_deserialization**: .NET deserialization.
-        # 
         # - **php_deserialization**: PHP deserialization.
-        # 
         # - **code_exec**: code execution.
-        # 
         # - **ssrf**: server-side request forgery (SSRF).
-        # 
         # - **path_traversal**: path traversal.
-        # 
         # - **arbitrary_file_uploading**: arbitrary file upload.
-        # 
         # - **webshell**: webshell.
-        # 
         # - **rfilei**: remote file inclusion (RFI).
-        # 
         # - **lfilei**: local file inclusion (LFI).
-        # 
         # - **protocol_violation**: protocol violation.
-        # 
         # - **scanner_behavior**: scanner behavior.
-        # 
-        # - **logic_flaw**: logic flaw.
-        # 
-        # - **arbitrary_file_reading**: arbitrary file read.
-        # 
+        # - **logic_flaw**: business logic bug.
+        # - **arbitrary_file_reading**: arbitrary file reading.
         # - **arbitrary_file_download**: arbitrary file download.
-        # 
-        # - **xxe**: external entity injection.
-        # 
-        # - **csrf**: cross-site request forgery (CSRF).
-        # 
-        # - **crlf**: CRLF injection.
-        # 
+        # - **xxe**: XML external entity injection.
+        # - **csrf**: cross-site request forgery.
+        # - **crlf**: CRLF.
         # - **other**: other.
         self.detect_type = detect_type
-        # The risk level of the system protection rule. Valid values:
+        # The risk level. Valid values:
         # 
-        # - **super_strict**: Very Strict.
+        # - **super_strict**: Super strict.
         # 
         # - **strict**: Strict.
         # 
@@ -136,23 +113,21 @@ class DescribeBaseSystemRulesResponseBodyRules(DaraModel):
         # 
         # - **loose**: Loose.
         self.risk_level = risk_level
-        # The action of the system protection rule. Valid values:
+        # The rule action. Valid values:
         # 
         # - **block**: Block.
         # 
         # - **monitor**: Monitor.
         self.rule_action = rule_action
-        # The ID of the system protection rule.
+        # The rule ID.
         self.rule_id = rule_id
-        # The name of the system protection rule.
+        # The name of the protection rule.
         self.rule_name = rule_name
-        # The status of the system protection rule. Valid values:
-        # 
-        # - **1**: disabled.
-        # 
-        # - **0**: enabled.
+        # The rule status. Valid values:
+        # - **1**: Disabled.
+        # - **0**: Enabled.
         self.rule_status = rule_status
-        # The time when the system protection rule was last updated. This value is a UNIX timestamp. Unit: milliseconds.
+        # The time when the rule was last updated.
         self.update_time = update_time
 
     def validate(self):

@@ -23,46 +23,40 @@ class DescribeProductInstancesRequest(DaraModel):
         resource_product: str = None,
         resource_region_id: str = None,
     ):
-        # The Web Application Firewall (WAF) instance ID.
+        # Instance ID of the WAF instance.
         # 
-        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the current WAF instance ID.
+        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the current WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the Alibaba Cloud account to which the instance belongs.
+        # The UID of the resource ownership user.
         self.owner_user_id = owner_user_id
-        # The page number of the returned page. Default value: **1**.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page. Default value: **10**.
+        # The number of entries per page when paging. Default value: **10**.
         self.page_size = page_size
-        # The region where the WAF instance is deployed. Valid values:
+        # The region where the WAF instance resides. Valid values:
         # 
         # - **cn-hangzhou**: the Chinese mainland.
         # 
         # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
+        # The domain name that is added to WAF.
+        # > This parameter is supported only when the cloud service type is ddos.
         self.resource_domain = resource_domain
-        # The protection status of WAF. Valid values:
-        # 
-        # - **all**: All protected.
-        # 
-        # - **any**: Protected.
-        # 
-        # - **part**: Partially protected.
-        # 
-        # - **non**: Not protected.
+        # The WAF protection status.
         self.resource_instance_access_status = resource_instance_access_status
         # The instance ID of the cloud service.
         self.resource_instance_id = resource_instance_id
-        # The IP address of the instance added to WAF.
+        # The IP address of the instance that is added to WAF.
         self.resource_instance_ip = resource_instance_ip
-        # The name of the instance added to WAF.
+        # The name of the instance that is added to WAF.
         self.resource_instance_name = resource_instance_name
-        # The public IP address of the instance.
+        # The public IP address of the cloud service.
         self.resource_ip = resource_ip
-        # The ID of the Alibaba Cloud resource group.
+        # The Alibaba Cloud resource group ID.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The name of the instance.
+        # The instance name of the cloud service.
         self.resource_name = resource_name
         # The type of the cloud service. Valid values:
         # 
@@ -70,27 +64,26 @@ class DescribeProductInstancesRequest(DaraModel):
         # 
         # - **clb7**: Layer 7 CLB.
         # 
-        # - **ecs**: Elastic Compute Service (ECS).
-        # 
-        # - **nlb**: Network Load Balancer (NLB).
+        # - **ecs**: ECS.
+        # - **nlb**: NLB.
+        # - **ddos**: Anti-DDoS.
         self.resource_product = resource_product
-        # The region ID of the instance. Valid values:
+        # The region ID of the cloud service. Valid values:
+        # - **cn-chengdu**: China Southwest 1 (Chengdu).
         # 
-        # - **cn-chengdu**: China (Chengdu).
+        # - **cn-beijing**: China North 2 (Beijing).
         # 
-        # - **cn-beijing**: China (Beijing).
+        # - **cn-zhangjiakou**: China North 3 (Zhangjiakou).
         # 
-        # - **cn-zhangjiakou**: China (Zhangjiakou).
+        # - **cn-hangzhou**: China East 1 (Hangzhou).
         # 
-        # - **cn-hangzhou**: China (Hangzhou).
+        # - **cn-shanghai**: China East 2 (Shanghai).
         # 
-        # - **cn-shanghai**: China (Shanghai).
+        # - **cn-shenzhen**: China South 1 (Shenzhen).
         # 
-        # - **cn-shenzhen**: China (Shenzhen).
+        # - **cn-qingdao**: China North 1 (Qingdao).
         # 
-        # - **cn-qingdao**: China (Qingdao).
-        # 
-        # - **cn-hongkong**: China (Hong Kong).
+        # - **cn-hongkong**: Hong Kong (China).
         # 
         # - **ap-southeast-3**: Malaysia (Kuala Lumpur).
         # 

@@ -23,11 +23,7 @@ class DeleteApisecEventsRequest(DaraModel):
         # 
         # This parameter is required.
         self.event_ids = event_ids
-        # The dimension of the security event. Valid values:
-        # 
-        # - **ip**: IP-dimension security events.
-        # 
-        # - **account**: account-dimension security events.
+        # The dimension of the security event.
         self.event_scope = event_scope
         # The ID of the WAF instance.
         # > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.

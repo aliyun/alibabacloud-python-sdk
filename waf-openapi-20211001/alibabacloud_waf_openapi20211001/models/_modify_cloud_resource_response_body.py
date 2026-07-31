@@ -10,7 +10,7 @@ class ModifyCloudResourceResponseBody(DaraModel):
         cloud_resource: str = None,
         request_id: str = None,
     ):
-        # The ID of the connected resource.
+        # The connected resource ID.
         self.cloud_resource = cloud_resource
         # The request ID.
         self.request_id = request_id

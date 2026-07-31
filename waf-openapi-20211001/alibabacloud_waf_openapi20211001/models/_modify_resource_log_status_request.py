@@ -16,33 +16,41 @@ class ModifyResourceLogStatusRequest(DaraModel):
         trace_config: main_models.ModifyResourceLogStatusRequestTraceConfig = None,
         trace_status: bool = None,
     ):
-        # The ID of the WAF instance.
+        # Instance ID of the WAF instance.
         # 
-        # > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region of the WAF instance. Valid values:
+        # The region where the WAF instance resides. Valid values:
         # 
-        # - **cn-hangzhou**: The Chinese mainland.
+        # - **cn-hangzhou**: the Chinese mainland.
         # 
-        # - **ap-southeast-1**: Outside the Chinese mainland.
+        # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
-        # The protected object on which you want to manage the log collection feature.
+        # The protected object to modify.
         # 
         # This parameter is required.
         self.resource = resource
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # Specifies whether to enable the log collection feature for the protected object. Valid values:
+        # The log enabling status of the protected object. Valid values:
         # 
-        # - **true**: Enables the feature.
+        # - **true**: Enabled.
         # 
-        # - **false**: Disables the feature.
+        # - **false**: Not enabled.
         # 
         # This parameter is required.
         self.status = status
+        # The Tracing Analysis configuration.
         self.trace_config = trace_config
+        # The Tracing Analysis status. Valid values:
+        # 
+        # - **true**: Enabled.
+        # 
+        # - **false**: Disabled.
+        # 
+        # > To enable Tracing Analysis, you must first enable the log status **Status** for the protected object.
         self.trace_status = trace_status
 
     def validate(self):
@@ -109,7 +117,9 @@ class ModifyResourceLogStatusRequestTraceConfig(DaraModel):
         rate_per_mille: int = None,
         workspace: str = None,
     ):
+        # The per-mille sampling rate for Tracing Analysis.
         self.rate_per_mille = rate_per_mille
+        # The Hybrid Cloud Monitoring 2.0 workspace.
         self.workspace = workspace
 
     def validate(self):

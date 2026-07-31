@@ -20,19 +20,19 @@ class CreateCloudResourceShrinkRequest(DaraModel):
     ):
         # The ID of the WAF instance.
         # 
-        # > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the WAF instance.
+        # > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The listener configuration.
+        # The listening configuration.
         # 
         # This parameter is required.
         self.listen_shrink = listen_shrink
-        # The UID that indicates the resource ownership.
+        # The UID of the current resource ownership.
         self.owner_user_id = owner_user_id
         # The forwarding configuration.
         self.redirect_shrink = redirect_shrink
-        # The region where the WAF instance is deployed. Valid values:
+        # The region where the WAF instance resides. Valid values:
         # 
         # - **cn-hangzhou**: the Chinese mainland.
         # 
@@ -40,7 +40,7 @@ class CreateCloudResourceShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The Alibaba Cloud resource group ID.
+        # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The list of tags. A maximum of 20 tags can be specified.
         self.tag = tag

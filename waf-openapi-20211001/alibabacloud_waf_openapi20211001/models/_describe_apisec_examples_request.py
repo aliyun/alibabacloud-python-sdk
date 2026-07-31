@@ -21,43 +21,38 @@ class DescribeApisecExamplesRequest(DaraModel):
         resource_manager_resource_group_id: str = None,
         response_sensitive_type_list: List[str] = None,
     ):
-        # The type of API security threat.
+        # The risk type.
         self.abnormal_tag = abnormal_tag
         # The ID of the API.
         # 
         # This parameter is required.
         self.api_id = api_id
-        # The ID of the Hybrid Cloud WAF cluster.
-        # 
-        # > This parameter is available only in hybrid cloud scenarios. Call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query information about Hybrid Cloud WAF clusters.
+        # The ID of the hybrid cloud cluster.
+        # > This parameter applies only to hybrid cloud scenarios. You can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query hybrid cloud cluster information.
         self.cluster_id = cluster_id
-        # The type of the example. Valid values:
-        # 
-        # - **sensitive**: sensitive data.
-        # 
-        # - **risk**: threat.
+        # The type of the sample.
         self.example_type = example_type
-        # The ID of the WAF instance.
+        # Instance ID of the WAF instance.
         # 
-        # > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The number of entries to return on each page. Valid values: 1 to 5. Default value: 5.
+        # The number of entries per page in a paged query. Valid values: 1 to 5. Default value: 5. This parameter is used for paging.
         self.max_results = max_results
-        # The token that is used to retrieve the next page of results.
+        # The pagination token.
         self.next_token = next_token
-        # The region where the WAF instance resides. Valid values:
+        # The region where the WAF instance is deployed. Valid values:
         # 
         # - **cn-hangzhou**: the Chinese mainland.
         # 
         # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
-        # The list of sensitive data types in requests.
+        # The list of request sensitive information types.
         self.request_sensitive_type_list = request_sensitive_type_list
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The list of sensitive data types in responses.
+        # The list of response sensitive information types.
         self.response_sensitive_type_list = response_sensitive_type_list
 
     def validate(self):

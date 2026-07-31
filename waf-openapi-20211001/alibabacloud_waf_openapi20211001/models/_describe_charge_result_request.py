@@ -12,25 +12,24 @@ class DescribeChargeResultRequest(DaraModel):
         self,
         charge_cycle: str = None,
         charge_modules: List[main_models.DescribeChargeResultRequestChargeModules] = None,
+        charge_unit: str = None,
         pay_type: str = None,
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
     ):
-        # The billing cycle for the WAF instance. Valid values:
-        # 
-        # - **Year**: yearly billing cycle.
-        # 
-        # - **Month**: monthly billing cycle.
-        # 
-        # - **Day**: daily billing cycle.
+        # The billing cycle for the calculation. Valid values:
+        # - **Year**: Calculates the billing result for one year.
+        # - **Month**: Calculates the billing result for one month.
+        # - **Day**: Calculates the billing result for one day.
         self.charge_cycle = charge_cycle
-        # The billing modules to calculate.
+        # The list of billing modules to calculate.
         # 
         # This parameter is required.
         self.charge_modules = charge_modules
-        # The billing method of the WAF instance. Valid value:
-        # 
-        # - **POSTPAY**: pay-as-you-go.
+        # The metering unit.
+        self.charge_unit = charge_unit
+        # The billing type of the instance. Valid values:
+        # - **POSTPAY**: pay-as-you-go WAF instance.
         # 
         # This parameter is required.
         self.pay_type = pay_type
@@ -40,7 +39,7 @@ class DescribeChargeResultRequest(DaraModel):
         # 
         # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
-        # The ID of the Alibaba Cloud resource group.
+        # The Alibaba Cloud resource group ID.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
 
     def validate(self):
@@ -61,6 +60,9 @@ class DescribeChargeResultRequest(DaraModel):
         if self.charge_modules is not None:
             for k1 in self.charge_modules:
                 result['ChargeModules'].append(k1.to_map() if k1 else None)
+
+        if self.charge_unit is not None:
+            result['ChargeUnit'] = self.charge_unit
 
         if self.pay_type is not None:
             result['PayType'] = self.pay_type
@@ -84,6 +86,9 @@ class DescribeChargeResultRequest(DaraModel):
                 temp_model = main_models.DescribeChargeResultRequestChargeModules()
                 self.charge_modules.append(temp_model.from_map(k1))
 
+        if m.get('ChargeUnit') is not None:
+            self.charge_unit = m.get('ChargeUnit')
+
         if m.get('PayType') is not None:
             self.pay_type = m.get('PayType')
 
@@ -101,9 +106,9 @@ class DescribeChargeResultRequestChargeModules(DaraModel):
         module_code: str = None,
         usage: int = None,
     ):
-        # The ID of the billing module.
+        # The pricing module identifier.
         self.module_code = module_code
-        # The usage amount of the billing module.
+        # The usage of the pricing module.
         self.usage = usage
 
     def validate(self):
