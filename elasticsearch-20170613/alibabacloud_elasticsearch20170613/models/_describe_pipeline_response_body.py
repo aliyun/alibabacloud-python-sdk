@@ -13,7 +13,7 @@ class DescribePipelineResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The returned pipeline information. For more information, see [logstash.yml](https://www.elastic.co/guide/en/logstash/6.7/logstash-settings-file.html).
+        # The pipeline information. For more information, see [logstash.yml](https://www.elastic.co/guide/en/logstash/6.7/logstash-settings-file.html).
         self.result = result
 
     def validate(self):
@@ -78,11 +78,11 @@ class DescribePipelineResponseBodyResult(DaraModel):
         # 
         # - NOT_DEPLOYED: not deployed.
         # - RUNNING: running.
-        # - DELETED: deleted. This status is not displayed in the console.
+        # - DELETED: deleted (this status is not displayed in the console).
         self.pipeline_status = pipeline_status
         # The number of queue checkpoint writes.
         self.queue_check_point_writes = queue_check_point_writes
-        # The total capacity of the queue, in bytes. Unit: MB.
+        # The total capacity of the queue in bytes. Unit: MB.
         self.queue_max_bytes = queue_max_bytes
         # The queue type. Valid values:
         # 

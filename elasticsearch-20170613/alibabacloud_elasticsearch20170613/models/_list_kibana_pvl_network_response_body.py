@@ -59,6 +59,7 @@ class ListKibanaPvlNetworkResponseBodyResult(DaraModel):
         endpoint_id: str = None,
         endpoint_name: str = None,
         endpoint_status: str = None,
+        managed_security_group: bool = None,
         pvl_id: str = None,
         security_groups: List[str] = None,
         v_switch_ids_zone: List[main_models.ListKibanaPvlNetworkResponseBodyResultVSwitchIdsZone] = None,
@@ -72,10 +73,10 @@ class ListKibanaPvlNetworkResponseBodyResult(DaraModel):
         self.endpoint_name = endpoint_name
         # The endpoint status. Valid values:
         # 
-        # - Disconnected: not connected.
-        # 
-        # - Connected: connected.
+        # - Disconnected: disconnected
+        # - Connected: connected
         self.endpoint_status = endpoint_status
+        self.managed_security_group = managed_security_group
         # The Kibana private network connection ID.
         self.pvl_id = pvl_id
         # The list of security groups.
@@ -108,6 +109,9 @@ class ListKibanaPvlNetworkResponseBodyResult(DaraModel):
         if self.endpoint_status is not None:
             result['endpointStatus'] = self.endpoint_status
 
+        if self.managed_security_group is not None:
+            result['managedSecurityGroup'] = self.managed_security_group
+
         if self.pvl_id is not None:
             result['pvlId'] = self.pvl_id
 
@@ -137,6 +141,9 @@ class ListKibanaPvlNetworkResponseBodyResult(DaraModel):
 
         if m.get('endpointStatus') is not None:
             self.endpoint_status = m.get('endpointStatus')
+
+        if m.get('managedSecurityGroup') is not None:
+            self.managed_security_group = m.get('managedSecurityGroup')
 
         if m.get('pvlId') is not None:
             self.pvl_id = m.get('pvlId')

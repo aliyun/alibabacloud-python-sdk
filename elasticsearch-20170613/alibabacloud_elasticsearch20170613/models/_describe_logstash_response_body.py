@@ -71,15 +71,15 @@ class DescribeLogstashResponseBodyResult(DaraModel):
         self.extend_configs = extend_configs
         # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
-        # The instance labels.
+        # The instance tags.
         self.tags = tags
         # The zone information.
         self.zone_infos = zone_infos
-        # The instance configuration.
+        # The instance configuration information.
         self.config = config
         # The time when the instance was created.
         self.created_at = created_at
-        # The name of the instance.
+        # The instance name.
         self.description = description
         self.end_time = end_time
         # The access information of the nodes.
@@ -90,12 +90,12 @@ class DescribeLogstashResponseBodyResult(DaraModel):
         self.network_config = network_config
         # The number of nodes in the instance.
         self.node_amount = node_amount
-        # The configuration of the node.
+        # The configuration information of the node.
         self.node_spec = node_spec
         # The billing method of the instance. Valid values:
         # 
         # - prepaid: subscription
-        # - postpaid: pay-as-you-go.
+        # - postpaid: pay-as-you-go
         self.payment_type = payment_type
         # The status of the instance. Valid values:
         # 
@@ -106,7 +106,7 @@ class DescribeLogstashResponseBodyResult(DaraModel):
         self.status = status
         # The time when the instance was last updated.
         self.updated_at = updated_at
-        # The version of the instance.
+        # The instance version.
         self.version = version
         # The ID of the VPC to which the instance belongs.
         self.vpc_instance_id = vpc_instance_id
@@ -282,7 +282,7 @@ class DescribeLogstashResponseBodyResultNodeSpec(DaraModel):
         self.disk_encryption = disk_encryption
         # The disk type of the node.
         self.disk_type = disk_type
-        # The specification of the node.
+        # The node specification.
         self.spec = spec
 
     def validate(self):
@@ -430,7 +430,7 @@ class DescribeLogstashResponseBodyResultZoneInfos(DaraModel):
         status: str = None,
         zone_id: str = None,
     ):
-        # The status of the zone. Valid values:
+        # The zone status. Valid values:
         # 
         # - ISOLATION: offline.
         # - NORMAL: Normal.

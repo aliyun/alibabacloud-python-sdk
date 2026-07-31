@@ -15,7 +15,7 @@ class CancelDeletionResponseBody(DaraModel):
         # Indicates whether the instance is recovered. Valid values:
         # 
         # - true: The instance is recovered.
-        # - false: The instance failed to be recovered.
+        # - false: The instance is not recovered.
         self.result = result
 
     def validate(self):

@@ -14,7 +14,7 @@ class DeleteDataStreamResponseBody(DaraModel):
         self.request_id = request_id
         # The result of the operation. Valid values:
         # 
-        # - true: The data stream was deleted.
+        # - true: The data stream is deleted.
         # 
         # - false: The data stream failed to be deleted.
         self.result = result

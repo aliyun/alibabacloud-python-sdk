@@ -164,7 +164,7 @@ class ListTagResourcesResponseBodyHeaders(DaraModel):
         self,
         x_total_count: int = None,
     ):
-        # The resource count of TagResource resources found.
+        # The resource count of TagResource entries found.
         self.x_total_count = x_total_count
 
     def validate(self):

@@ -20,37 +20,26 @@ class ListInstanceRequest(DaraModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
-        # The instance name. Fuzzy search is supported. For example, if you search for all instances matching **abc**, all instances named **abc**, **abcde**, **xyabc**, and **xabcy** may be returned.
+        # The instance name. Fuzzy match is supported. For example, if you search for **abc**, all instances whose names contain **abc** may be returned, such as **abc**, **abcde**, **xyabc**, and **xabcy**.
         self.description = description
         # The instance version.
         self.es_version = es_version
-        # The edition type of the instance. Valid values:
-        # 
-        # - x-pack: Commercial Edition
-        # 
-        # - advanced/IS: Enhanced Edition
-        # 
-        # - community: Basic Edition
+        # The edition of the instance. Valid values:
         self.instance_category = instance_category
         # The instance ID.
         self.instance_id = instance_id
         # The page number of the instance list.
-        # Start value: **1**, default value: **1**.
         self.page = page
         # The billing method of the instance. Valid values:
-        # 
-        # - postpaid: pay-as-you-go
-        # 
-        # - prepaid: subscription
         self.payment_type = payment_type
         # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
-        # The number of entries per page for paginated queries. Maximum value: **100**, default value: **10**.
+        # The number of entries per page in a paged query. Settings the number of entries per page for paging. Maximum value: **100**. Default value: **10**.
         self.size = size
         self.status = status
         # The instance tags.
         self.tags = tags
-        # The ID of the virtual private cloud (VPC) where the instance is deployed.
+        # The ID of the virtual private cloud (VPC) in which the instance resides.
         self.vpc_id = vpc_id
         # The zone ID of the instance.
         self.zone_id = zone_id

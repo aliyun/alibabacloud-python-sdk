@@ -58,9 +58,9 @@ class CapacityPlanResponseBodyResult(DaraModel):
         self.extend_configs = extend_configs
         # The edition type. Valid values:
         # 
-        # - advanced: Advanced Edition
+        # - advanced: Advanced Edition.
         # 
-        # - x-pack: Commercial Edition
+        # - x-pack: Commercial Edition.
         # 
         # - community: Community Edition.
         self.instance_category = instance_category
@@ -146,29 +146,29 @@ class CapacityPlanResponseBodyResultNodeConfigurations(DaraModel):
         self.disk = disk
         # The disk type. Valid values:
         # 
-        # - cloud_essd: ESSD
+        # - cloud_essd: ESSD.
         # 
-        # - cloud_ssd: standard SSD
+        # - cloud_ssd: standard SSD.
         # 
-        # - cloud_efficiency: ultra cloud disk
+        # - cloud_efficiency: ultra cloud disk.
         # 
-        # - local_ssd: local SSD
+        # - local_ssd: local SSD.
         # 
         # - local_efficiency: local ultra disk.
         self.disk_type = disk_type
-        # The memory size of the specifications for the current node role.
+        # The memory size of the specification for the current node role.
         self.memory = memory
         # The node type. Valid values:
         # 
-        # - WORKER: data node
+        # - WORKER: data node.
         # 
-        # - WORKER_WARM: warm node
+        # - WORKER_WARM: warm node.
         # 
-        # - MASTER: dedicated master node
+        # - MASTER: dedicated master node.
         # 
-        # - KIBANA: Kibana node
+        # - KIBANA: Kibana node.
         # 
-        # - COORDINATING: client node
+        # - COORDINATING: client node.
         # 
         # - ELASTIC_WORKER: elastic node.
         self.node_type = node_type

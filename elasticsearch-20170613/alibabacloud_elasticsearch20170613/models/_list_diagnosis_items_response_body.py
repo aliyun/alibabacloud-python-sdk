@@ -15,7 +15,7 @@ class ListDiagnosisItemsResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The returned result.
+        # The returned results.
         self.result = result
 
     def validate(self):
@@ -60,12 +60,12 @@ class ListDiagnosisItemsResponseBodyResult(DaraModel):
         key: str = None,
         name: str = None,
     ):
-        # The diagnostic item description.
+        # The description of the diagnostic item.
         self.description = description
         self.es_api_required = es_api_required
-        # The diagnostic item identifier.
+        # The identifier of the diagnostic item.
         self.key = key
-        # The diagnostic item name.
+        # The name of the diagnostic item.
         self.name = name
 
     def validate(self):

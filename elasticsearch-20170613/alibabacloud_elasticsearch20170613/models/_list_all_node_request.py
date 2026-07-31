@@ -9,7 +9,7 @@ class ListAllNodeRequest(DaraModel):
         self,
         extended: bool = None,
     ):
-        # Specifies whether to return monitoring information for the nodes. Valid values:
+        # Specifies whether to return monitoring information for nodes. Valid values:
         # 
         # - true (default): Returns monitoring information.
         # 

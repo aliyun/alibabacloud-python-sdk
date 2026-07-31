@@ -55,7 +55,7 @@ class UpdateKibanaWhiteIpsResponseBodyResult(DaraModel):
     ):
         # The Kibana access whitelist.
         self.kibana_ipwhitelist = kibana_ipwhitelist
-        # The Kibana internal-facing whitelist.
+        # The Kibana private network access whitelist.
         self.kibana_private_ipwhitelist = kibana_private_ipwhitelist
         # The network configuration.
         self.network_config = network_config

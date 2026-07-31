@@ -64,16 +64,16 @@ class DescribeDiagnoseReportResponseBodyResult(DaraModel):
         # The list of diagnostic items in the report.
         self.diagnose_items = diagnose_items
         self.diagnosis_mode = diagnosis_mode
-        # The overall health status of the cluster in the report. Valid values: GREEN, YELLOW, RED, and UNKNOWN.
+        # The overall health of the cluster in the report. Valid values: GREEN, YELLOW, RED, and UNKNOWN.
         self.health = health
-        # The ID of the diagnosed instance.
+        # The instance ID of the diagnosed instance.
         self.instance_id = instance_id
         self.items = items
         # The report ID.
         self.report_id = report_id
         # The diagnostic status. Valid values: SUCCESS, FAILED, and RUNNING.
         self.state = state
-        # The method used to trigger the health diagnosis. Valid values: SYSTEM (automatically triggered by the system), INNER (internally triggered), and USER (manually triggered by the user).
+        # The method used to trigger the health diagnostics. Valid values: SYSTEM (automatically triggered by the system), INNER (internally triggered), and USER (manually triggered by the user).
         self.trigger = trigger
 
     def validate(self):

@@ -14,7 +14,7 @@ class UpdateKibanaSettingsResponseBody(DaraModel):
         self.request_id = request_id
         # The returned result. Valid values:
         # 
-        # - true: The Kibana language was modified.
+        # - true: The Kibana language is modified.
         # - false: The Kibana language failed to be modified.
         self.result = result
 

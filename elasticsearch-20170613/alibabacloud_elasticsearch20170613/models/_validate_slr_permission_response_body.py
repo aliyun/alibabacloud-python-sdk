@@ -14,8 +14,8 @@ class ValidateSlrPermissionResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the service-linked role has been created. Valid values:
         # 
-        # - true: The role has been created.
-        # - false: The role has not been created.
+        # - true: Created.
+        # - false: Not created.
         self.result = result
 
     def validate(self):

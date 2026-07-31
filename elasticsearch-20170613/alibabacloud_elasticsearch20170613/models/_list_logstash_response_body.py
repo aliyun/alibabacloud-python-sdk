@@ -99,7 +99,7 @@ class ListLogstashResponseBodyResult(DaraModel):
         # The billing method of the instance. Valid values: prepaid (subscription) and postpaid (pay-as-you-go).
         self.payment_type = payment_type
         self.resource_group_id = resource_group_id
-        # The status of the instance. Valid values: active (Normal), activating (Taking Effect), inactive (Frozen), and invalid (Expired).
+        # The instance status. Valid values: active (Normal), activating (taking effect), inactive (frozen), and invalid (expired).
         self.status = status
         # The time when the instance was last updated.
         self.updated_at = updated_at

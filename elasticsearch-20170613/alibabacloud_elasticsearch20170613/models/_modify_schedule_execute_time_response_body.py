@@ -12,7 +12,7 @@ class ModifyScheduleExecuteTimeResponseBody(DaraModel):
     ):
         # Id of the request
         self.request_id = request_id
-        # Return Result
+        # The returned result.
         self.result = result
 
     def validate(self):

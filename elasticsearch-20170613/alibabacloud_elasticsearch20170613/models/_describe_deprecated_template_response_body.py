@@ -56,10 +56,10 @@ class DescribeDeprecatedTemplateResponseBodyResult(DaraModel):
         template: main_models.DescribeDeprecatedTemplateResponseBodyResultTemplate = None,
         version: str = None,
     ):
-        # Indicates whether automatic creation of a data stream is enabled. Valid values:
+        # Indicates whether automatic creation of a data stream is enabled at the same time. Valid values:
         # 
-        # - true: Automatic creation of a data stream is enabled.
-        # - false: Automatic creation of a data stream is not enabled.
+        # - true: Yes.
+        # - false: No.
         self.data_stream = data_stream
         # The index pattern information.
         self.index_patterns = index_patterns

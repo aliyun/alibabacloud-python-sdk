@@ -57,9 +57,9 @@ class ListDictInformationResponseBodyResult(DaraModel):
         self.oss_object = oss_object
         # The dictionary type. Valid values:
         # 
-        # - MAIN: primary tokenization dictionary
+        # - MAIN: primary token dictionary
         # 
-        # - STOP: stopword dictionary.
+        # - STOP: stopword dictionary
         self.type = type
 
     def validate(self):
@@ -105,7 +105,7 @@ class ListDictInformationResponseBodyResultOssObject(DaraModel):
     ):
         # The name of the OSS bucket where the file is stored.
         self.bucket_name = bucket_name
-        # The MD5 checksum (ETag) of the OSS file, in uppercase.
+        # The MD5 checksum (ETag) of the OSS file in uppercase.
         self.etag = etag
         # The storage path of the dictionary file in the OSS bucket.
         self.key = key

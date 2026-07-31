@@ -66,7 +66,7 @@ class ListAllNodeResponseBodyResult(DaraModel):
         zone_id: str = None,
     ):
         # The CPU usage.
-        # > When **extended** is set to **true** and the monitoring information of the node is being synchronized, the parameter value returns null. In this case, wait 10 seconds and send the request again to retrieve the value.
+        # > When **extended** is set to **true** and the monitoring information of the node is being synchronized, the parameter value returns null. In this case, wait 10 seconds and resend the request to obtain the value.
         self.cpu_percent = cpu_percent
         # The disk usage.
         self.disk_used_percent = disk_used_percent
@@ -84,7 +84,7 @@ class ListAllNodeResponseBodyResult(DaraModel):
         # - WORKER: hot node
         # - WORKER_WARM: warm node
         # - COORDINATING: client node
-        # - KIBANA: Kibana node.
+        # - KIBANA: Kibana node
         self.node_type = node_type
         # The access port of the node.
         self.port = port

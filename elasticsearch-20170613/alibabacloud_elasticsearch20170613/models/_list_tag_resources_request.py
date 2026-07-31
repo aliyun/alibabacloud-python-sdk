@@ -18,15 +18,15 @@ class ListTagResourcesRequest(DaraModel):
         self.next_token = next_token
         # The page number of the resource relationship list. This parameter is deprecated.
         self.page = page
-        # The list of instance IDs to query. The value is in JSON array format and can contain up to 20 items.
+        # The list of instance IDs to query. The value is in JSON array format and supports up to 20 items.
         self.resource_ids = resource_ids
         # The resource type definition.
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The number of entries per page in Settings for paged query and paging. This field is deprecated.
+        # The number of entries per page for paged query. This is a deprecated field. Settings for paging are no longer supported.
         self.size = size
-        # The list of tags to query. The value is in JSON string format and can contain up to 20 items.
+        # The list of tags to query. The value is in JSON string format and contains up to 20 items.
         self.tags = tags
 
     def validate(self):

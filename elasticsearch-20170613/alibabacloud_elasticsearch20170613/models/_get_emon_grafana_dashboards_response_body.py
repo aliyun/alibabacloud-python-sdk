@@ -20,8 +20,8 @@ class GetEmonGrafanaDashboardsResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the Grafana dashboard list is retrieved. Valid values:
         # 
-        # - true: succeeded.
-        # - false: failed.
+        # - true: The list is retrieved.
+        # - false: The retrieval failed.
         self.success = success
 
     def validate(self):

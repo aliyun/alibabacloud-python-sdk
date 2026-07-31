@@ -91,15 +91,15 @@ class GetEmonMonitorDataResponseBodyResult(DaraModel):
         summary: float = None,
         tags: Dict[str, Any] = None,
     ):
-        # The real-time metric monitoring data, in the format of `{timestamp:data}`.
+        # The real-time metric monitoring data. Format: `{timestamp:data}`.
         self.dps = dps
         # The completeness of time series data points in the metric query result. A value of 1.0 indicates 100% completeness.
         self.integrity = integrity
-        # The timestamp when the request reaches the server. This parameter is used for troubleshooting.
+        # The timestamp when the request reaches the server. This is used for troubleshooting.
         self.message_watermark = message_watermark
         # The metric name.
         self.metric = metric
-        # If the queries contain wildcards, the result includes multiple matched time series datasets. The summary aggregates the values of these time series at each time point based on the aggregator type specified in the query. Currently, only avg is supported as the aggregation method.
+        # If the queries contain wildcards, the result includes multiple matching time series data sequences. The summary is the aggregation of the values across these time series at each time point, based on the aggregator type specified in the query. Currently, only avg is supported as the aggregation method.
         self.summary = summary
         # The query tags.
         self.tags = tags

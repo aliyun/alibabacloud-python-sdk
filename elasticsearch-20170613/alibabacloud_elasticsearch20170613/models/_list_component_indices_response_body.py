@@ -71,7 +71,7 @@ class ListComponentIndicesResponseBodyResult(DaraModel):
         content: main_models.ListComponentIndicesResponseBodyResultContent = None,
         name: str = None,
     ):
-        # The information about the index templates that reference this composable template.
+        # The information about index templates that reference this composable template.
         self.composed = composed
         # The content of the composable template.
         self.content = content
@@ -228,8 +228,8 @@ class ListComponentIndicesResponseBodyResultContentTemplateSettingsIndex(DaraMod
     ):
         # The index compression method. Valid values:
         # 
-        # - LZ4: the default compression algorithm of Elasticsearch. It provides fast compression and decompression but a relatively lower compression ratio.
-        # - best_compression: uses the best_compression algorithm for compression, which provides a higher compression ratio.
+        # - LZ4: The default compression algorithm of Elasticsearch. It provides fast compression and decompression but a relatively lower compression ratio.
+        # - best_compression: Uses the best_compression algorithm for compression, which provides a higher compression ratio.
         self.codec = codec
         # The index lifecycle configuration.
         self.lifecycle = lifecycle

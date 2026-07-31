@@ -15,7 +15,7 @@ class DiagnoseInstanceRequest(DaraModel):
         type: str = None,
         lang: str = None,
     ):
-        # A client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # A unique token used to ensure idempotence of the request. The client generates this value. The value must be unique among different requests and cannot exceed 64 ASCII characters in length.
         self.client_token = client_token
         # The diagnostic items.
         self.diagnose_items = diagnose_items
@@ -32,7 +32,7 @@ class DiagnoseInstanceRequest(DaraModel):
         # - zh: Simplified Chinese
         # - zt: Traditional Chinese
         # - es: Spanish
-        # - fr: French.
+        # - fr: French
         self.lang = lang
 
     def validate(self):

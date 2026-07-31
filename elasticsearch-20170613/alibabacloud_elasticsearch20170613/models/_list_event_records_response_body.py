@@ -13,9 +13,9 @@ class ListEventRecordsResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.ListEventRecordsResponseBodyResult = None,
     ):
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Return Result
+        # The returned result.
         self.result = result
 
     def validate(self):
@@ -52,9 +52,9 @@ class ListEventRecordsResponseBodyResult(DaraModel):
         result: List[main_models.ListEventRecordsResponseBodyResultResult] = None,
         total: str = None,
     ):
-        # Content
+        # The returned content.
         self.result = result
-        # Total number of records
+        # The total number of records.
         self.total = total
 
     def validate(self):
@@ -107,29 +107,29 @@ class ListEventRecordsResponseBodyResultResult(DaraModel):
         status: str = None,
         type: str = None,
     ):
-        # Is auto-alarm enabled
+        # Indicates whether automatic alerting is enabled.
         self.auto_alarm = auto_alarm
-        # Management event display name
+        # The display name of the event.
         self.display_name = display_name
-        # is Preview
+        # Indicates whether this is a dry run.
         self.dry_run = dry_run
-        # event level
+        # The event level.
         self.level = level
-        # is O&M processing required
+        # Indicates whether O&M processing is required.
         self.must_ops = must_ops
-        # product type of the management event
+        # The product type of the event.
         self.product = product
-        # scheduled running time
+        # The scheduled execution time.
         self.schedule_execute_time = schedule_execute_time
-        # scheduled end time
+        # The scheduled end time.
         self.schedule_finish_time = schedule_finish_time
-        # Management event content
+        # The event content.
         self.show_content = show_content
-        # Event occurrence source
+        # The source of the event.
         self.source = source
-        # Event status
+        # The event status.
         self.status = status
-        # Event type
+        # The event type.
         self.type = type
 
     def validate(self):
@@ -232,21 +232,21 @@ class ListEventRecordsResponseBodyResultResultShowContent(DaraModel):
         instance_id: str = None,
         ops_change_id: str = None,
     ):
-        # Operation suggestion
+        # The suggested action.
         self.action_suggest = action_suggest
-        # Description of the management event
+        # The event description.
         self.desc = desc
-        # Management event status
+        # The event status.
         self.event_status = event_status
-        # Time of occurrence
+        # The time when the event occurred.
         self.event_time = event_time
-        # End Time of O&M execution for the management event
+        # The end time of the O&M execution for the event.
         self.execute_finish_time = execute_finish_time
-        # Start Time of O&M execution for the management event
+        # The start time of the O&M execution for the event.
         self.execute_start_time = execute_start_time
-        # Instance ID of the occurrence
+        # The instance ID of the instance on which the event occurred.
         self.instance_id = instance_id
-        # Execution ID of the cluster Change
+        # The execution ID of the cluster change.
         self.ops_change_id = ops_change_id
 
     def validate(self):
@@ -320,11 +320,11 @@ class ListEventRecordsResponseBodyResultResultShowContentActionSuggest(DaraModel
         suggest_text: str = None,
         suggest_type: str = None,
     ):
-        # Operation suggestion
+        # The suggested action.
         self.suggest_actions = suggest_actions
-        # Operation suggestion text
+        # The text of the suggested action.
         self.suggest_text = suggest_text
-        # Operation suggestion type
+        # The type of the suggested action.
         self.suggest_type = suggest_type
 
     def validate(self):

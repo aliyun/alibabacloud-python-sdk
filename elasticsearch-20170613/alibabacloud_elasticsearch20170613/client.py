@@ -25,9 +25,11 @@ class Client(OpenApiClient):
         self._endpoint_map = {
             'us-west-1': 'elasticsearch.us-west-1.aliyuncs.com',
             'us-east-1': 'elasticsearch.us-east-1.aliyuncs.com',
+            'na-south-1': 'elasticsearch.na-south-1.aliyuncs.com',
             'eu-west-1': 'elasticsearch.eu-west-1.aliyuncs.com',
             'eu-central-1': 'elasticsearch.eu-central-1.aliyuncs.com',
             'cn-zhangjiakou': 'elasticsearch.cn-zhangjiakou.aliyuncs.com',
+            'cn-wulanchabu-gic-1': 'elasticsearch.cn-wulanchabu-gic-1.aliyuncs.com',
             'cn-wulanchabu': 'elasticsearch.cn-wulanchabu.aliyuncs.com',
             'cn-shenzhen': 'elasticsearch.cn-shenzhen.aliyuncs.com',
             'cn-shanghai-finance-1': 'elasticsearch.cn-shanghai-finance-1.aliyuncs.com',
@@ -40,11 +42,11 @@ class Client(OpenApiClient):
             'cn-guangzhou': 'elasticsearch.cn-guangzhou.aliyuncs.com',
             'cn-chengdu': 'elasticsearch.cn-chengdu.aliyuncs.com',
             'cn-beijing': 'elasticsearch.cn-beijing.aliyuncs.com',
+            'ap-southeast-7': 'elasticsearch.ap-southeast-7.aliyuncs.com',
             'ap-southeast-5': 'elasticsearch.ap-southeast-5.aliyuncs.com',
             'ap-southeast-3': 'elasticsearch.ap-southeast-3.aliyuncs.com',
-            'ap-southeast-2': 'elasticsearch.ap-southeast-2.aliyuncs.com',
             'ap-southeast-1': 'elasticsearch.ap-southeast-1.aliyuncs.com',
-            'ap-south-1': 'elasticsearch.ap-south-1.aliyuncs.com',
+            'ap-northeast-2': 'elasticsearch.ap-northeast-2.aliyuncs.com',
             'ap-northeast-1': 'elasticsearch.ap-northeast-1.aliyuncs.com'
         }
         self.check_config(config)
@@ -4418,6 +4420,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.endpoint_name):
             body['endpointName'] = request.endpoint_name
+        if not DaraCore.is_null(request.managed_security_group):
+            body['managedSecurityGroup'] = request.managed_security_group
         if not DaraCore.is_null(request.security_groups):
             body['securityGroups'] = request.security_groups
         if not DaraCore.is_null(request.v_switch_ids_zone):
@@ -4459,6 +4463,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.endpoint_name):
             body['endpointName'] = request.endpoint_name
+        if not DaraCore.is_null(request.managed_security_group):
+            body['managedSecurityGroup'] = request.managed_security_group
         if not DaraCore.is_null(request.security_groups):
             body['securityGroups'] = request.security_groups
         if not DaraCore.is_null(request.v_switch_ids_zone):
@@ -9842,10 +9848,14 @@ class Client(OpenApiClient):
     ) -> main_models.ListStatsEventRecordsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['endTime'] = request.end_time
         if not DaraCore.is_null(request.event_type):
             query['eventType'] = request.event_type
         if not DaraCore.is_null(request.level):
             query['level'] = request.level
+        if not DaraCore.is_null(request.start_time):
+            query['startTime'] = request.start_time
         if not DaraCore.is_null(request.status):
             query['status'] = request.status
         req = open_api_util_models.OpenApiRequest(
@@ -9876,10 +9886,14 @@ class Client(OpenApiClient):
     ) -> main_models.ListStatsEventRecordsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['endTime'] = request.end_time
         if not DaraCore.is_null(request.event_type):
             query['eventType'] = request.event_type
         if not DaraCore.is_null(request.level):
             query['level'] = request.level
+        if not DaraCore.is_null(request.start_time):
+            query['startTime'] = request.start_time
         if not DaraCore.is_null(request.status):
             query['status'] = request.status
         req = open_api_util_models.OpenApiRequest(

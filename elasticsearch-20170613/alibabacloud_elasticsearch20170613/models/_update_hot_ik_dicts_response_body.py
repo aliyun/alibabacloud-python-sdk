@@ -67,7 +67,7 @@ class UpdateHotIkDictsResponseBodyResult(DaraModel):
         # The source type of the dictionary file. Valid values:
         # 
         # - OSS: uses OSS open storage.
-        # - ORIGIN: retains a previously uploaded dictionary.
+        # - ORIGIN: retains the previously uploaded dictionary.
         self.source_type = source_type
         # The dictionary type. Valid values:
         # 

@@ -52,7 +52,7 @@ class DescribeComponentIndexResponseBodyResult(DaraModel):
         meta: Dict[str, Any] = None,
         template: main_models.DescribeComponentIndexResponseBodyResultTemplate = None,
     ):
-        # The metadata, which is used to store information such as remarks.
+        # The metadata, which is used to store remarks and other information.
         self.meta = meta
         # The template information.
         self.template = template

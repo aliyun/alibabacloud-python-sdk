@@ -12,10 +12,10 @@ class DeletePipelinesResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The returned result:
+        # The result of the operation. Valid values:
         # 
-        # - true: The pipelines are deleted.
-        # - false: The pipelines failed to be deleted.
+        # - true: The deletion was successful.
+        # - false: The deletion failed.
         self.result = result
 
     def validate(self):

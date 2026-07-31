@@ -14,11 +14,11 @@ class ListSearchLogRequest(DaraModel):
         size: int = None,
         type: str = None,
     ):
-        # The start timestamp of the log, in milliseconds. The value must be within the last 7 days. If this parameter is not specified, all logs within the [current time - 7 days, endTime\\] range are queried.
+        # The start timestamp of the log, in milliseconds. The value must be within the last 7 days. If this parameter is not specified, all logs within the range of [current time - 7 days, endTime\\] are queried.
         self.begin_time = begin_time
         # The end timestamp of the log, in milliseconds. The value must be within the last 7 days. Specify this parameter. If this parameter is not specified, an empty result is returned.
         self.end_time = end_time
-        # The page number of the plug-in list. Minimum value: 1. Default value: 1.
+        # The page number of the plugin list. Minimum value: 1. Default value: 1.
         self.page = page
         # The keyword to query.
         # 

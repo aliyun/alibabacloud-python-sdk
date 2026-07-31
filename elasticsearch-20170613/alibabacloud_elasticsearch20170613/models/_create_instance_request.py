@@ -29,11 +29,11 @@ class CreateInstanceRequest(DaraModel):
         zone_count: int = None,
         client_token: str = None,
     ):
-        # Coordinating node configuration.
+        # The client node configuration.
         self.client_node_configuration = client_node_configuration
         # The instance name.
         self.description = description
-        # Elastic node configuration.
+        # The elastic node configuration.
         self.elastic_data_node_configuration = elastic_data_node_configuration
         # The access password of the instance. The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters (!@#$%^&*()_+-=). The password must be 8 to 32 characters in length.
         # 
@@ -49,24 +49,24 @@ class CreateInstanceRequest(DaraModel):
         # - 5.6_with_X-Pack
         # - 5.5.3_with_X-Pack
         # 
-        # > The versions listed above may not include all versions supported by Elasticsearch instances. You can call the [GetRegionConfiguration](https://help.aliyun.com/document_detail/254099.html) operation to view the actually supported versions.
+        # > The versions listed above may not include all versions supported by Elasticsearch instances. Call the [GetRegionConfiguration](https://help.aliyun.com/document_detail/254099.html) operation to view the actual supported versions.
         # 
         # This parameter is required.
         self.es_version = es_version
-        # The edition type:
+        # The edition type. Valid values:
         # - x-pack: creates a commercial edition instance, or a kernel-enhanced edition instance without Indexing Service or OpenStore enabled.
         # - IS: creates a kernel-enhanced edition instance with Indexing Service or OpenStore enabled.
         self.instance_category = instance_category
-        # Kibana node configuration.
+        # The Kibana node configuration.
         # 
-        # > We strongly recommend that you enable the Kibana node.
+        # > We strongly recommend that you enable Kibana nodes.
         self.kibana_configuration = kibana_configuration
-        # Dedicated master node configuration.
-        # > In the Beijing, Shanghai, Hangzhou, and Shenzhen regions, when you use createInstance to create an instance with next-generation cloud disk dedicated master nodes, you must specify the instance family with the `.new` suffix, for example, elasticsearch.sn1ne.large.new.
+        # The dedicated master node configuration.
+        # > In the Beijing, Shanghai, Hangzhou, and Shenzhen regions, when you call createInstance to create an instance with next-generation cloud disk-based dedicated master nodes, specify the instance family with the `.new` suffix. Example: elasticsearch.sn1ne.large.new.
         self.master_configuration = master_configuration
-        # Network configuration.
+        # The network configuration.
         # 
-        # > Specifying IP whitelists is not supported when creating an instance.
+        # > You cannot specify an IP whitelist when creating an instance.
         # 
         # This parameter is required.
         self.network_config = network_config
@@ -74,26 +74,26 @@ class CreateInstanceRequest(DaraModel):
         # 
         # This parameter is required.
         self.node_amount = node_amount
-        # Data node configuration.
+        # The data node configuration.
         # 
-        # > In the Beijing, Shanghai, Hangzhou, and Shenzhen regions, when you use createInstance to create an instance with next-generation cloud disk data nodes, you must specify the instance family with the `.new` suffix, for example, elasticsearch.sn1ne.large.new.
+        # > In the Beijing, Shanghai, Hangzhou, and Shenzhen regions, when you call createInstance to create an instance with next-generation cloud disk-based data nodes, specify the instance family with the `.new` suffix. Example: elasticsearch.sn1ne.large.new.
         self.node_spec = node_spec
-        # The billing details of the subscription instance. This parameter is required when you create a subscription instance.
+        # The payment details of the subscription instance. This parameter is required when you create a subscription instance.
         self.payment_info = payment_info
         # The billing method. Valid values:
         # 
-        # - postpaid: pay-as-you-go.
+        # - postpaid: pay-as-you-go billing method.
         # - prepaid: subscription.
         self.payment_type = payment_type
         # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
-        # Instance tags.
+        # The instance tags.
         self.tags = tags
-        # Cold data node configuration.
+        # The warm node configuration. Warm nodes are used to store cold data that is migrated from data nodes.
         self.warm_node_configuration = warm_node_configuration
         # The number of zones for the instance. Valid values: 1, 2, and 3. Default value: 1.
         self.zone_count = zone_count
-        # Used to ensure the idempotency of the request. The parameter value is generated by the client and must be unique across different requests. The value cannot exceed 64 ASCII characters.
+        # A client token that is used to ensure the idempotence of the request. The value is generated by the client and must be unique among different requests. The maximum length is 64 ASCII characters.
         self.client_token = client_token
 
     def validate(self):

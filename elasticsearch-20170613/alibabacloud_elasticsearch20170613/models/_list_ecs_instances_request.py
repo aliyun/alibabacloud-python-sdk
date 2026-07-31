@@ -14,20 +14,20 @@ class ListEcsInstancesRequest(DaraModel):
         tags: str = None,
         vpc_id: str = None,
     ):
-        # The list of ECS instance IDs. The value can be a JSON array that consists of up to 100 instance IDs. Separate multiple IDs with commas (,).
+        # The list of ECS instance IDs. The value can be a JSON array that consists of up to 100 instance IDs separated by commas (,).
         self.ecs_instance_ids = ecs_instance_ids
-        # The name of the ECS instance.
+        # The ECS instance name.
         self.ecs_instance_name = ecs_instance_name
         # The page number of the returned results. Maximum value: 500.
         self.page = page
         # The number of results per page. Default value: 10. Maximum value: 500.
         self.size = size
-        # Instance tags of the ECS instance. The following fields must be included:
+        # The ECS instance tags. The following fields must be included:
         # 
-        # - tagKey: instance tag key.
-        # - tagValue: instance tag value.
+        # - tagKey: the tag key.
+        # - tagValue: the tag value.
         self.tags = tags
-        # The ID of the VPC where the ECS instance resides.
+        # The VPC ID of the ECS instance.
         self.vpc_id = vpc_id
 
     def validate(self):

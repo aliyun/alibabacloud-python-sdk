@@ -12,7 +12,7 @@ class AddSnapshotRepoResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The result. Valid values:
+        # The returned result:
         # 
         # - true: The reference repository is created.
         # - false: The reference repository failed to be created.

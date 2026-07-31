@@ -56,8 +56,9 @@ class DescribeXpackMonitorConfigResponseBodyResult(DaraModel):
         user_name: str = None,
     ):
         # Indicates whether X-Pack monitoring is enabled. Valid values:
-        # - true: enabled.
-        # - false: not enabled.
+        # 
+        # - true: Enabled.
+        # - false: Not enabled.
         self.enable = enable
         self.endpoints = endpoints
         # The instance ID of the Elasticsearch instance associated with X-Pack monitoring.

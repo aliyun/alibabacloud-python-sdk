@@ -12,7 +12,7 @@ class ListKibanaPluginsRequest(DaraModel):
     ):
         # The page number of the instance list. Default value: 1.
         self.page = page
-        # The number of entries per page for a paged query.
+        # The number of entries per page Settings for paging in a paged query.
         self.size = size
 
     def validate(self):

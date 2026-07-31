@@ -217,7 +217,7 @@ class ListDataTasksResponseBodyResultSinkCluster(DaraModel):
         self.vpc_id = vpc_id
         # The instance ID of the current cluster or the load balancing SLB (Server Load Balancer) instance ID.
         self.vpc_instance_id = vpc_instance_id
-        # The port number used to access the cluster.
+        # The access port of the cluster.
         self.vpc_instance_port = vpc_instance_port
 
     def validate(self):

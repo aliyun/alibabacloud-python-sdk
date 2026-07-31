@@ -10,14 +10,23 @@ class PluginAnalysisRequest(DaraModel):
         body: str = None,
         dry_run: str = None,
     ):
-        # Request body parameters  
+        # The request body parameters.
         # 
-        # ```json
+        # ```[
+        #   {
+        #     "name": "plugin_name.zip",// plugin name
+        #     "ossObject": {
+        #       "bucketName": "bucketName",// oss bucket name
+        #       "key": "my_plugin_dir/plugin_name.zip" // oss file name 
+        #     }
+        #   }
+        # ]
+        # `
         self.body = body
-        # Whether to perform pre-upgrade validation:  
+        # Specifies whether to perform a pre-upload check. Valid values:
         # 
-        # - true: Validate only  
-        # - false: Upload directly
+        # - true: Only performs the check.
+        # - false: Directly uploads the plug-in.
         self.dry_run = dry_run
 
     def validate(self):

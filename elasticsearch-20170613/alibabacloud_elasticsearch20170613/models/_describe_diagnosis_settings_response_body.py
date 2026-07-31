@@ -61,10 +61,10 @@ class DescribeDiagnosisSettingsResponseBodyResult(DaraModel):
         self.daily_limit = daily_limit
         self.daily_schedule_enabled = daily_schedule_enabled
         self.diagnosis_mode = diagnosis_mode
-        # The scenario of intelligent O&M.
+        # The common scenarios of intelligent diagnosis and optimization.
         self.scene = scene
         self.selected_items = selected_items
-        # The timestamp when the intelligent O&M scenario was last updated.
+        # The UNIX timestamp when the intelligent diagnosis and optimization common scenarios were last updated.
         self.update_time = update_time
 
     def validate(self):

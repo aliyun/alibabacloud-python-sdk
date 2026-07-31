@@ -79,7 +79,7 @@ class UpdateInstanceResponseBodyResult(DaraModel):
         self.created_at = created_at
         # The instance name.
         self.description = description
-        # 实例的私网访问域名。
+        # The internal-facing access endpoint of the instance for private network access.
         self.domain = domain
         # The instance version.
         self.es_version = es_version
@@ -95,14 +95,14 @@ class UpdateInstanceResponseBodyResult(DaraModel):
         self.node_spec = node_spec
         # The billing method of the instance. Valid values:
         # 
-        # - prepaid: subscription
+        # - prepaid: subscription.
         # - postpaid: pay-as-you-go.
         self.payment_type = payment_type
         # The status of the instance. Valid values:
         # 
-        # - active: Normal
-        # - activating: Taking effect
-        # - inactive: Frozen
+        # - active: Normal.
+        # - activating: Taking effect.
+        # - inactive: Frozen.
         # - invalid: Invalid.
         self.status = status
 
@@ -205,10 +205,10 @@ class UpdateInstanceResponseBodyResultNodeSpec(DaraModel):
         self.disk = disk
         # The storage type of the node. Valid values:
         # 
-        # - cloud_ssd: standard SSD
+        # - cloud_ssd: standard SSD.
         # - cloud_efficiency: ultra disk.
         self.disk_type = disk_type
-        # 节点规格。
+        # The node specifications.
         self.spec = spec
 
     def validate(self):
@@ -257,7 +257,7 @@ class UpdateInstanceResponseBodyResultMasterConfiguration(DaraModel):
         self.disk = disk
         # The storage type of the node. Only cloud_ssd (standard SSD) is supported.
         self.disk_type = disk_type
-        # 节点规格。
+        # The node specifications.
         self.spec = spec
 
     def validate(self):
@@ -312,7 +312,7 @@ class UpdateInstanceResponseBodyResultKibanaConfiguration(DaraModel):
         self.disk = disk
         # The storage type of the node. You can ignore this parameter.
         self.disk_type = disk_type
-        # 节点规格。
+        # The node specifications.
         self.spec = spec
 
     def validate(self):

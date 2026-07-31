@@ -14,17 +14,17 @@ class ListEventRecordsRequest(DaraModel):
         term_content: str = None,
         term_type: str = None,
     ):
-        # Start time for event query.
+        # The start time of the event query.
         self.begin_time = begin_time
-        # End time for event query.
+        # The end time of the event query.
         self.end_time = end_time
-        # Page number for paged query.
+        # The page number for a paged query.
         self.page = page
-        # Number of entries per page for paged query.
+        # The number of entries per page for a paged query.
         self.size = size
-        # Object content used for filtering. This parameter is optional. If empty, event records for all instances are returned. Note: The value passed must correspond to the selected filter type.
+        # The filter object content. If this parameter is left empty, event records of all instances are returned. The value varies based on the filter type.
         self.term_content = term_content
-        # Object type used for filtering. This parameter is optional. If empty, event records of all types are returned.
+        # The filter object type. If this parameter is left empty, event records of all types are returned.
         self.term_type = term_type
 
     def validate(self):

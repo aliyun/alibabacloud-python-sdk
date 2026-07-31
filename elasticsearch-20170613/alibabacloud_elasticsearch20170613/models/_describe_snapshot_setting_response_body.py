@@ -52,7 +52,7 @@ class DescribeSnapshotSettingResponseBodyResult(DaraModel):
     ):
         # Indicates whether automatic backup is enabled.
         self.enable = enable
-        # The automatic backup time configuration, specified as a Quartz Cron expression.
+        # The automatic backup time configuration, which uses a Quartz Cron expression.
         self.quartz_regex = quartz_regex
 
     def validate(self):

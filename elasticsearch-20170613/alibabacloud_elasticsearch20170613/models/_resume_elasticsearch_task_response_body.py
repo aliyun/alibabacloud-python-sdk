@@ -12,9 +12,9 @@ class ResumeElasticsearchTaskResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The return result:
+        # The returned result. Valid values:
         # 
-        # - true: The interrupted change was resumed successfully.
+        # - true: The interrupted change is resumed.
         # - false: The interrupted change failed to be resumed.
         self.result = result
 

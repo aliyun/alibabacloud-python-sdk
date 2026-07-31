@@ -25,7 +25,7 @@ class ListDiagnoseReportIdsRequest(DaraModel):
         # - zh: Simplified Chinese
         # - zt: Traditional Chinese
         # - es: Spanish
-        # - fr: French.
+        # - fr: French
         self.lang = lang
         # The page number. Default value: 1. Minimum value: 1. Maximum value: 200.
         self.page = page

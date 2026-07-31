@@ -90,7 +90,7 @@ class ListInstanceIndicesResponseBodyResult(DaraModel):
         self.ilm_explain = ilm_explain
         # This parameter is deprecated and can be ignored.
         self.is_managed = is_managed
-        # The managed status of the index. Valid values:
+        # The index management status. Valid values:
         # 
         # - following: Managed.
         # 
@@ -110,7 +110,7 @@ class ListInstanceIndicesResponseBodyResult(DaraModel):
         # 
         # - delete: Delete phase.
         # 
-        # > If this parameter is empty, the index is not managed by a lifecycle policy.
+        # > If this value is empty, the index is not managed by a lifecycle policy.
         self.phase = phase
         # The total storage space occupied by the index. Unit: bytes.
         self.size = size

@@ -12,9 +12,9 @@ class CancelTaskResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The result of the operation. Valid values:
+        # The result. Valid values:
         # 
-        # - true: The task was canceled.
+        # - true: The task is canceled.
         # - false: The task failed to be canceled.
         self.result = result
 

@@ -11,26 +11,26 @@ class ListDefaultCollectorConfigurationsRequest(DaraModel):
         res_version: str = None,
         source_type: str = None,
     ):
-        # The type of the collector. Valid values:
+        # The collector type. Valid values:
         # 
         # - fileBeat
         # - metricBeat
         # - heartBeat
-        # - auditBeat.
+        # - auditBeat
         # 
         # This parameter is required.
         self.res_type = res_type
-        # The version of the collector. The available versions vary based on the type of machine on which the collector is deployed. Valid values:
+        # The collector version. The available versions vary depending on the machine type on which the collector is deployed. Valid values:
         # 
         # - ECS: 6.8.5_with_community
-        # - ACK: 6.8.13_with_community.
+        # - ACK: 6.8.13_with_community
         # 
         # This parameter is required.
         self.res_version = res_version
         # The type of machine on which the collector is deployed. If you do not specify this parameter, all types are returned. Valid values:
         # 
-        # - ECS: Elastic Compute Service (ECS) instance
-        # - ACK: Container Service for Kubernetes (ACK) cluster.
+        # - ECS: Elastic Compute Service instance
+        # - ACK: Container Kubernetes cluster
         self.source_type = source_type
 
     def validate(self):

@@ -66,10 +66,10 @@ class UpdateCollectorNameResponseBodyResult(DaraModel):
         self.collector_paths = collector_paths
         # The configuration file information of the collector.
         self.configs = configs
-        # Indicates whether the collector is validated only without being created. Valid values:
+        # Indicates whether the collector is validated and created. Valid values:
         # 
-        # - true: Only validates without updating.
-        # - false: Validates and updates.
+        # - true: Only validated, not updated.
+        # - false: Validated and updated.
         self.dry_run = dry_run
         # The extended configurations of the collector.
         self.extend_configs = extend_configs
@@ -88,7 +88,7 @@ class UpdateCollectorNameResponseBodyResult(DaraModel):
         # The collector version. The supported versions depend on the type of machine on which the collector is deployed:
         # 
         # - ECS: 6.8.5_with_community
-        # - ACK: 6.8.13_with_community.
+        # - ACK: 6.8.13_with_community
         self.res_version = res_version
         # The collector status. Valid values: activing (taking effect) and active (active).
         self.status = status
@@ -238,7 +238,7 @@ class UpdateCollectorNameResponseBodyResultExtendConfigs(DaraModel):
         # The internal-facing access address of Kibana on the private network after Kibana Dashboard is enabled. Displayed when **configType** is **collectorElasticsearchForKibana**.
         self.host = host
         self.hosts = hosts
-        # The ID of the instance associated with the collector. When **configType** is **collectorTargetInstance**, this is the instance ID of the collector Output. When **configType** is **collectorDeployMachines** and **type** is **ACKCluster**, this is the ACK cluster ID.
+        # The instance ID associated with the collector. When **configType** is **collectorTargetInstance**, this is the instance ID of the collector Output. When **configType** is **collectorDeployMachines** and **type** is **ACKCluster**, this is the ACK cluster ID.
         self.instance_id = instance_id
         # The type of instance specified in the collector Output. Valid values: elasticsearch and logstash. Displayed when **configType** is **collectorTargetInstance**.
         self.instance_type = instance_type

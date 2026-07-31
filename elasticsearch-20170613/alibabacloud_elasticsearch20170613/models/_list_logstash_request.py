@@ -23,7 +23,7 @@ class ListLogstashRequest(DaraModel):
         self.page = page
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The number of entries per page for paging. Default value: 20.
+        # The number of entries per page in Settings for paging. Default value: 20.
         self.size = size
         # The instance tags.
         self.tags = tags

@@ -12,7 +12,7 @@ class UpdateReadWritePolicyResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The returned result. Valid values:
+        # The returned result.
         # 
         # - true: The write high availability feature is enabled or disabled.
         # - false: Failed to enable or disable the write high availability feature.

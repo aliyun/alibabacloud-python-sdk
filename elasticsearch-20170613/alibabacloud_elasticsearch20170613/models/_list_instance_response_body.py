@@ -103,36 +103,26 @@ class ListInstanceResponseBodyResult(DaraModel):
         zone_infos: List[main_models.ListInstanceResponseBodyResultZoneInfos] = None,
     ):
         # Indicates whether the instance contains dedicated master nodes. Valid values:
-        # 
-        # - true: The instance contains dedicated master nodes.
-        # 
-        # - false: The instance does not contain dedicated master nodes.
         self.advanced_dedicate_master = advanced_dedicate_master
-        # The deployment mode and architecture type:
-        # exclusive: basic management and control
-        # public: cloud-native management and control
+        # The deployment mode. Architecture type:
         self.arch_type = arch_type
         # The configuration of client nodes.
         self.client_node_configuration = client_node_configuration
         # The time when the instance was created.
         self.created_at = created_at
-        # Indicates whether the instance contains dedicated master nodes (deprecated). Valid values:
-        # 
-        # - true: The instance contains dedicated master nodes.
-        # 
-        # - false: The instance does not contain dedicated master nodes.
+        # **[Deprecated]** Indicates whether the instance contains dedicated master nodes. Valid values:
         self.dedicate_master = dedicate_master
-        # The instance name.
+        # The name of the instance.
         self.description = description
         # The internal endpoint of the instance.
         self.domain = domain
         # The configuration of elastic data nodes.
         self.elastic_data_node_configuration = elastic_data_node_configuration
-        # The expiration time of the instance.
+        # The time when the instance expires.
         self.end_time = end_time
         # The instance version.
         self.es_version = es_version
-        # The extended configurations of the cluster.
+        # The extension parameter settings of the cluster.
         self.extend_configs = extend_configs
         # The instance ID.
         self.instance_id = instance_id
@@ -140,9 +130,9 @@ class ListInstanceResponseBodyResult(DaraModel):
         self.is_new_deployment = is_new_deployment
         # The configuration of Kibana nodes.
         self.kibana_configuration = kibana_configuration
-        # The public network access whitelist for Kibana nodes of the cluster.
+        # The public network access whitelist for the Kibana node of the cluster.
         self.kibana_ipwhitelist = kibana_ipwhitelist
-        # The private network access whitelist for Kibana nodes of the cluster.
+        # The private network access whitelist for the Kibana node of the cluster.
         self.kibana_private_ipwhitelist = kibana_private_ipwhitelist
         # The configuration of master nodes.
         self.master_configuration = master_configuration
@@ -153,23 +143,12 @@ class ListInstanceResponseBodyResult(DaraModel):
         # The configuration of data nodes.
         self.node_spec = node_spec
         # The billing method of the instance. Valid values:
-        # 
-        # - **prepaid**: subscription
-        # 
-        # - **postpaid**: pay-as-you-go
         self.payment_type = payment_type
         # The access port of the instance.
-        # >Notice: When the instance is being created or the instance status is abnormal, this value may be empty or 0.
         self.port = port
-        # The status of the pay-as-you-go service that is overlaid on a subscription instance. Valid values:
-        # 
-        # - **active**: normal
-        # 
-        # - **closed**: closed
-        # 
-        # - **indebt**: frozen due to overdue payment
+        # The status of the pay-as-you-go service that is overlaid on the subscription instance. Valid values:
         self.postpaid_service_status = postpaid_service_status
-        # The private network access whitelist for the Elasticsearch cluster.
+        # The private network access IP whitelist for the Elasticsearch cluster.
         self.private_network_ip_white_list = private_network_ip_white_list
         # The access protocol. Valid values: HTTP and HTTPS.
         self.protocol = protocol
@@ -180,16 +159,6 @@ class ListInstanceResponseBodyResult(DaraModel):
         # Indicates whether the instance is a service VPC.
         self.service_vpc = service_vpc
         # The status of the instance. Valid values:
-        # 
-        # - active: normal
-        # 
-        # - activating: taking effect
-        # 
-        # - inactive: frozen
-        # 
-        # - invalid: invalid. The cluster does not exist or is inaccessible. In this case, some fields in the API response may be missing, such as domain and kibanaDomain.
-        # 
-        # - unknown: unknown. The cluster does not exist or is inaccessible. In this case, some fields in the API response may be missing, such as domain and kibanaDomain.
         self.status = status
         # The instance tags.
         self.tags = tags
@@ -530,6 +499,7 @@ class ListInstanceResponseBodyResultNodeSpec(DaraModel):
         self,
         disk: int = None,
         disk_encryption: bool = None,
+        disk_preference: str = None,
         disk_type: str = None,
         performance_level: str = None,
         spec: str = None,
@@ -537,22 +507,16 @@ class ListInstanceResponseBodyResultNodeSpec(DaraModel):
     ):
         # The storage size of the node. Unit: GB.
         self.disk = disk
-        # Indicates whether disk encryption is used. Valid values:
-        # 
-        # - true: Disk encryption is used.
-        # - false: Disk encryption is not used.
+        # Indicates whether disk encryption is enabled. Valid values:
         self.disk_encryption = disk_encryption
+        self.disk_preference = disk_preference
         # The storage type of the node. Valid values:
-        # 
-        # - cloud_ssd: standard SSD
-        # 
-        # - cloud_efficiency: ultra disk
         self.disk_type = disk_type
-        # The performance level of the ESSD. This parameter is required when diskType is cloud_essd. Valid values: PL1, PL2, and PL3.
+        # The performance level (PL) of the ESSD cloud disk. This parameter is required when diskType is set to cloud_essd. Valid values: PL1, PL2, and PL3. When diskType is set to cloud_ssd (standard SSD), this parameter is not required.
         self.performance_level = performance_level
-        # The node specifications. For more information about the specifications, see [Product specifications](https://help.aliyun.com/document_detail/271718.html).
+        # The node specifications. For more information, see [Product specifications](https://help.aliyun.com/document_detail/271718.html).
         self.spec = spec
-        # The description of node specifications.
+        # The node specifications description.
         self.spec_info = spec_info
 
     def validate(self):
@@ -568,6 +532,9 @@ class ListInstanceResponseBodyResultNodeSpec(DaraModel):
 
         if self.disk_encryption is not None:
             result['diskEncryption'] = self.disk_encryption
+
+        if self.disk_preference is not None:
+            result['diskPreference'] = self.disk_preference
 
         if self.disk_type is not None:
             result['diskType'] = self.disk_type
@@ -590,6 +557,9 @@ class ListInstanceResponseBodyResultNodeSpec(DaraModel):
 
         if m.get('diskEncryption') is not None:
             self.disk_encryption = m.get('diskEncryption')
+
+        if m.get('diskPreference') is not None:
+            self.disk_preference = m.get('diskPreference')
 
         if m.get('diskType') is not None:
             self.disk_type = m.get('diskType')
@@ -686,7 +656,7 @@ class ListInstanceResponseBodyResultNetworkConfigWhiteIpGroupList(DaraModel):
     ):
         # The group name.
         self.group_name = group_name
-        # The IP address whitelist.
+        # The network whitelist.
         self.ips = ips
         # The network type. PRIVATE_ES: Elasticsearch private network. PUBLIC_KIBANA: Kibana public network. PUBLIC_ES: Elasticsearch public network. PRIVATE_KIBANA: Kibana private network.
         self.white_ip_type = white_ip_type
@@ -738,9 +708,9 @@ class ListInstanceResponseBodyResultMasterConfiguration(DaraModel):
         self.disk = disk
         # The storage type of the node. Only cloud_ssd (standard SSD) is supported.
         self.disk_type = disk_type
-        # The node specifications. For more information about the specifications, see [Product specifications](https://help.aliyun.com/document_detail/271718.html).
+        # The node specifications. For more information, see [Product specifications](https://help.aliyun.com/document_detail/271718.html).
         self.spec = spec
-        # The description of node specifications.
+        # The node specifications description.
         self.spec_info = spec_info
 
     def validate(self):
@@ -802,9 +772,9 @@ class ListInstanceResponseBodyResultKibanaConfiguration(DaraModel):
         self.disk = disk
         # The storage type of the node.
         self.disk_type = disk_type
-        # The node specifications. For more information about the specifications, see [Product specifications](https://help.aliyun.com/document_detail/271718.html).
+        # The node specifications. For more information, see [Product specifications](https://help.aliyun.com/document_detail/271718.html).
         self.spec = spec
-        # The description of node specifications.
+        # The node specifications description.
         self.spec_info = spec_info
 
     def validate(self):
@@ -865,23 +835,13 @@ class ListInstanceResponseBodyResultElasticDataNodeConfiguration(DaraModel):
         self.amount = amount
         # The storage size of the node. Unit: GB.
         self.disk = disk
-        # Indicates whether disk encryption is enabled for the node. Valid values:
-        # 
-        # - true: Disk encryption is enabled.
-        # 
-        # - false: Disk encryption is not enabled.
+        # Indicates whether cloud disk encryption is enabled for the node. Valid values:
         self.disk_encryption = disk_encryption
         # The storage type of the node. Valid values:
-        # 
-        # - cloud_ssd: standard SSD
-        # 
-        # - cloud_essd: enhanced SSD (ESSD)
-        # 
-        # - cloud_efficiency: ultra disk
         self.disk_type = disk_type
-        # The node specifications. For more information about the specifications, see [Product specifications](https://help.aliyun.com/document_detail/271718.html).
+        # The node specifications. For more information, see [Product specifications](https://help.aliyun.com/document_detail/271718.html).
         self.spec = spec
-        # The description of node specifications.
+        # The node specifications description.
         self.spec_info = spec_info
 
     def validate(self):
@@ -949,9 +909,9 @@ class ListInstanceResponseBodyResultClientNodeConfiguration(DaraModel):
         self.disk = disk
         # The storage type of the node. Only ultra disks (cloud_efficiency) are supported.
         self.disk_type = disk_type
-        # The node specifications. For more information about the specifications, see [Product specifications](https://help.aliyun.com/document_detail/271718.html).
+        # The node specifications. For more information, see [Product specifications](https://help.aliyun.com/document_detail/271718.html).
         self.spec = spec
-        # The description of node specifications.
+        # The node specifications description.
         self.spec_info = spec_info
 
     def validate(self):
@@ -1003,7 +963,7 @@ class ListInstanceResponseBodyHeaders(DaraModel):
         self,
         x_total_count: int = None,
     ):
-        # The total number of instances.
+        # The total number of instance records.
         self.x_total_count = x_total_count
 
     def validate(self):

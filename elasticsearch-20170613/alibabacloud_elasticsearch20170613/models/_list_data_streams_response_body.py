@@ -77,11 +77,11 @@ class ListDataStreamsResponseBodyResult(DaraModel):
     ):
         # The data stream status. Valid values:
         # 
-        # - Green: healthy.
+        # - Green: Healthy.
         # 
-        # - Yellow: warning.
+        # - Yellow: Warning.
         # 
-        # - Red: abnormal.
+        # - Red: Abnormal.
         self.health = health
         # The index lifecycle policy name.
         self.ilm_policy_name = ilm_policy_name
@@ -174,20 +174,20 @@ class ListDataStreamsResponseBodyResultIndices(DaraModel):
         self.create_time = create_time
         # The index status. Valid values:
         # 
-        # - Green: healthy.
+        # - Green: Healthy.
         # 
-        # - Yellow: warning.
+        # - Yellow: Warning.
         # 
-        # - Red: abnormal.
+        # - Red: Abnormal.
         self.health = health
         # This field is deprecated and can be ignored.
         self.is_managed = is_managed
-        # The managed status of the index. Valid values:
-        # - following: managed.
+        # The index managed status. Valid values:
+        # - following: Managed.
         # 
-        # - closing: being unmanaged.
+        # - closing: Being unmanaged.
         # 
-        # - closed: not managed.
+        # - closed: Not managed.
         self.managed_status = managed_status
         # The data stream name.
         self.name = name

@@ -76,7 +76,7 @@ class ListDeprecatedTemplatesResponseBodyResult(DaraModel):
     ):
         # Indicates whether the template matches a data stream. Valid values:
         # 
-        # - true: matched
+        # - true: matched.
         # - false: not matched.
         self.data_stream = data_stream
         # The index template information.
@@ -149,7 +149,7 @@ class ListDeprecatedTemplatesResponseBodyResultTemplate(DaraModel):
         mappings: str = None,
         settings: str = None,
     ):
-        # The alias configuration of the template.
+        # The aliases configuration of the template.
         self.aliases = aliases
         # The mappings configuration of the template.
         self.mappings = mappings

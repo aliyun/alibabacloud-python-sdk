@@ -63,7 +63,7 @@ class DescribeRegionsResponseBodyResult(DaraModel):
     ):
         # The endpoint of the region exposed in the console.
         self.console_endpoint = console_endpoint
-        # The name of the region.
+        # The region name.
         self.local_name = local_name
         # The endpoint of the region.
         self.region_endpoint = region_endpoint

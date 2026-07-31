@@ -76,7 +76,7 @@ class ListEcsInstancesResponseBodyResult(DaraModel):
         status: str = None,
         tags: str = None,
     ):
-        # The installation status of Cloud Assistant. Valid values:
+        # The Cloud Assistant installation status. Valid values:
         # 
         # - true: Installed.
         # - false: Not installed.
@@ -85,7 +85,7 @@ class ListEcsInstancesResponseBodyResult(DaraModel):
         self.collectors = collectors
         # The ECS instance ID.
         self.ecs_instance_id = ecs_instance_id
-        # The name of the ECS instance.
+        # The ECS instance name.
         self.ecs_instance_name = ecs_instance_name
         # The IP address information of the ECS instance.
         self.ip_address = ip_address
@@ -96,10 +96,10 @@ class ListEcsInstancesResponseBodyResult(DaraModel):
         self.os_type = os_type
         # The status of the ECS instance. Valid values:
         # 
-        # - running: Running.
-        # - starting: Starting.
-        # - stopping: Stopping.
-        # - stopped: Stopped.
+        # - running: running.
+        # - starting: starting.
+        # - stopping: stopping.
+        # - stopped: stopped.
         self.status = status
         # The tag information of the ECS instance.
         self.tags = tags
@@ -243,7 +243,7 @@ class ListEcsInstancesResponseBodyResultCollectors(DaraModel):
         self.collector_paths = collector_paths
         # The configuration file information of the collector.
         self.configs = configs
-        # Indicates whether the collector is only validated without being created. Valid values:
+        # Indicates whether to only validate without creating the collector. Valid values:
         # 
         # - true: Only validates without creating.
         # - false: Validates and creates.
@@ -262,14 +262,14 @@ class ListEcsInstancesResponseBodyResultCollectors(DaraModel):
         self.res_id = res_id
         # The collector type. Valid values: fileBeat, metricBeat, heartBeat, and auditBeat.
         self.res_type = res_type
-        # The collector version. When the machine type for collector deployment is ECS, only **6.8.5_with_community** is supported.
+        # The collector version. When the deployment machine type is ECS, only **6.8.5_with_community** is supported.
         self.res_version = res_version
         # The collector status. Valid values:
         # 
-        # - activing: Taking effect.
-        # - active: Active.
+        # - activing: taking effect.
+        # - active: active.
         self.status = status
-        # The ID of the VPC where the collector resides.
+        # The VPC ID of the collector.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -409,20 +409,20 @@ class ListEcsInstancesResponseBodyResultCollectorsExtendConfigs(DaraModel):
         # The machine group ID. This parameter is displayed when configType is set to collectorDeployMachine.
         self.group_id = group_id
         self.hosts = hosts
-        # The ID of the instance associated with the collector. When configType is set to collectorTargetInstance, this is the instance ID of the collector Output. When configType is set to collectorDeployMachines and type is set to ACKCluster, this is the ACK (Container Service for Kubernetes) cluster ID.
+        # The ID of the instance associated with the collector. When configType is set to collectorTargetInstance, this is the instance ID of the collector Output. When configType is set to collectorDeployMachines and type is set to ACKCluster, this is the ACK (Container Kubernetes) cluster ID.
         self.instance_id = instance_id
-        # The type of the instance specified by the collector Output. Valid values: elasticsearch and logstash. This parameter is displayed when configType is set to collectorTargetInstance.
+        # The instance type specified in the collector Output. Valid values: elasticsearch and logstash. This parameter is displayed when configType is set to collectorTargetInstance.
         self.instance_type = instance_type
         # The list of ECS machines on which the collector is deployed. This parameter is displayed when configType is set to collectorDeployMachines and type is set to ECSInstanceId.
         self.machines = machines
-        # The transmission protocol, which must be consistent with the access protocol of the instance specified by the collector Output. Valid values: HTTP and HTTPS. This parameter is displayed when configType is set to collectorTargetInstance.
+        # The transport protocol, which must be consistent with the access protocol of the instance specified in the collector Output. Valid values: HTTP and HTTPS. This parameter is displayed when configType is set to collectorTargetInstance.
         self.protocol = protocol
         # The type of machine on which the collector is deployed. This parameter is displayed when configType is set to collectorDeployMachine. Valid values:
         # 
-        # - ECSInstanceId: ECS
-        # - ACKCluster: Container Service for Kubernetes.
+        # - ECSInstanceId: ECS.
+        # - ACKCluster: Container Kubernetes.
         self.type = type
-        # The username used to access the instance specified by the collector Output. Default value: elastic. This parameter is displayed when configType is set to collectorTargetInstance or collectorElasticsearchForKibana.
+        # The username used to access the instance specified in the collector Output. Default value: elastic. This parameter is displayed when configType is set to collectorTargetInstance or collectorElasticsearchForKibana.
         self.user_name = user_name
 
     def validate(self):
@@ -515,10 +515,10 @@ class ListEcsInstancesResponseBodyResultCollectorsExtendConfigsMachines(DaraMode
     ):
         # The status of each collector on the ECS instance. Valid values:
         # 
-        # - heartOk: The heartbeat is normal.
-        # - heartLost: The heartbeat is abnormal.
-        # - uninstalled: Not installed.
-        # - failed: Installation failed.
+        # - heartOk: normal heartbeat.
+        # - heartLost: abnormal heartbeat.
+        # - uninstalled: not installed.
+        # - failed: installation failed.
         self.agent_status = agent_status
         # The list of ECS machine IDs.
         self.instance_id = instance_id

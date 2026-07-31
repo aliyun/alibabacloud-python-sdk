@@ -10,9 +10,9 @@ class RemovePluginResponseBody(DaraModel):
         request_id: str = None,
         result: bool = None,
     ):
-        # ID of the request
+        # Id of the request
         self.request_id = request_id
-        # Return Result
+        # The returned result.
         self.result = result
 
     def validate(self):

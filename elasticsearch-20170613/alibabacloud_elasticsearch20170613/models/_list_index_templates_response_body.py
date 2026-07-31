@@ -64,9 +64,9 @@ class ListIndexTemplatesResponseBodyResult(DaraModel):
     ):
         # Indicates whether the data stream is enabled. Valid values:
         # 
-        # - true: enabled.
+        # - true: Enabled.
         # 
-        # - false (default): not enabled.
+        # - false (default): Not enabled.
         self.data_stream = data_stream
         # The index lifecycle policy name.
         self.ilm_policy = ilm_policy

@@ -9,7 +9,7 @@ class DescribeDiagnosisSettingsRequest(DaraModel):
         self,
         lang: str = None,
     ):
-        # The language of the returned results. Default value: en.
+        # The language of the response. Default value: en.
         self.lang = lang
 
     def validate(self):

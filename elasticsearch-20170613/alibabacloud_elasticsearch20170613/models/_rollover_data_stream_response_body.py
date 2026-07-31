@@ -14,7 +14,7 @@ class RolloverDataStreamResponseBody(DaraModel):
         self.request_id = request_id
         # The returned result. Valid values:
         # 
-        # - true: The rollover succeeded.
+        # - true: The rollover was successful.
         # 
         # - false: The rollover failed.
         self.result = result

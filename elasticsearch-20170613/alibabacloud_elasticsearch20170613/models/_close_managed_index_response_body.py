@@ -12,7 +12,7 @@ class CloseManagedIndexResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the cloud managed feature for the index is disabled. Valid values:
+        # Indicates whether the cloud-managed feature for the index is disabled. Valid values:
         # 
         # - true: The feature is disabled.
         # 

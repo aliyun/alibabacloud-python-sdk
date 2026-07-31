@@ -82,13 +82,13 @@ class ListShardRecoveriesResponseBodyResult(DaraModel):
         self.source_host = source_host
         # The source node.
         self.source_node = source_node
-        # The stage of the data recovery process. Valid values:
+        # The stage of data recovery. Valid values:
         # 
         # - done: Recovery is complete.
         # 
-        # - finalize: Cleanup operations are in progress.
+        # - finalize: Cleanup work is in progress.
         # 
-        # - index: Reading index metadata and copying bytes from the source to the target.
+        # - index: Reading index metadata and copying bytes from source to target.
         # 
         # - init: Recovery has not started.
         # 

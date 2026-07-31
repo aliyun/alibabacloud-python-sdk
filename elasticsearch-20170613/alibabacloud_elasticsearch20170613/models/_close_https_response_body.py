@@ -15,7 +15,7 @@ class CloseHttpsResponseBody(DaraModel):
         # The returned result. Valid values:
         # 
         # - true: The HTTPS protocol is disabled.
-        # - false: The HTTPS protocol failed to be disabled.
+        # - false: Failed to disable the HTTPS protocol.
         self.result = result
 
     def validate(self):

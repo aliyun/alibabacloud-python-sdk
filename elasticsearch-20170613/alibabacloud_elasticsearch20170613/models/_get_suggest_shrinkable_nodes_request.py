@@ -11,7 +11,7 @@ class GetSuggestShrinkableNodesRequest(DaraModel):
         ignore_status: bool = None,
         node_type: str = None,
     ):
-        # The expected number of removable nodes to retrieve.
+        # The expected number of nodes available for scale-in to retrieve.
         # 
         # This parameter is required.
         self.count = count

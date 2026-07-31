@@ -99,7 +99,7 @@ class ModifyElastictaskResponseBodyResultElasticShrinkTask(DaraModel):
     ):
         # The trigger cycle, specified as a Quartz Cron expression.
         self.cron_expression = cron_expression
-        # The target number of elastic data nodes during off-peak hours.
+        # The number of elastic data nodes during off-peak hours.
         self.elastic_node_count = elastic_node_count
         # The number of replicas for the target index.
         self.replica_count = replica_count
@@ -162,7 +162,7 @@ class ModifyElastictaskResponseBodyResultElasticExpansionTask(DaraModel):
     ):
         # The trigger cycle, specified as a Quartz Cron expression.
         self.cron_expression = cron_expression
-        # The target number of elastic data nodes during peak hours.
+        # The number of elastic data nodes during peak hours.
         self.elastic_node_count = elastic_node_count
         # The number of replicas for the target index.
         self.replica_count = replica_count

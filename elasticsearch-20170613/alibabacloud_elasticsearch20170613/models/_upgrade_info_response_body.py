@@ -11,9 +11,9 @@ class UpgradeInfoResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.UpgradeInfoResponseBodyResult = None,
     ):
-        # ID of the request
+        # Id of the request
         self.request_id = request_id
-        # Result body
+        # The result body.
         self.result = result
 
     def validate(self):
@@ -49,7 +49,7 @@ class UpgradeInfoResponseBodyResult(DaraModel):
         self,
         upgrade_info: main_models.UpgradeInfoResponseBodyResultUpgradeInfo = None,
     ):
-        # Upgrade information.
+        # The upgrade information.
         self.upgrade_info = upgrade_info
 
     def validate(self):
@@ -85,19 +85,19 @@ class UpgradeInfoResponseBodyResultUpgradeInfo(DaraModel):
         upgrade_apack_version: str = None,
         upgrade_es_version: str = None,
     ):
-        # Current repo version.
+        # The current repo version.
         self.cur_repo_version = cur_repo_version
-        # Upgradable repo version.
+        # The repo version available for upgrade.
         self.update_repo_version = update_repo_version
-        # Indicates whether an upgradable version exists.
+        # Indicates whether an upgradeable version is available.
         self.upgrade = upgrade
-        # Current Milvus version
+        # The current kernel version.
         self.cur_apack_version = cur_apack_version
-        # Current ES version
+        # The current Elasticsearch version.
         self.cur_es_version = cur_es_version
-        # Upgradable Milvus version.
+        # The kernel version available for upgrade.
         self.upgrade_apack_version = upgrade_apack_version
-        # Upgradable ES version
+        # The Elasticsearch version available for upgrade.
         self.upgrade_es_version = upgrade_es_version
 
     def validate(self):

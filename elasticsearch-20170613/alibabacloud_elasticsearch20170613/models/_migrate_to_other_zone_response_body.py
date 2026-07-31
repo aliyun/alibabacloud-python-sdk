@@ -12,9 +12,9 @@ class MigrateToOtherZoneResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The returned result. Valid values:
+        # The returned result:
         # 
-        # - true: The migration was successful.
+        # - true: The migration is successful.
         # - false: The migration failed.
         self.result = result
 

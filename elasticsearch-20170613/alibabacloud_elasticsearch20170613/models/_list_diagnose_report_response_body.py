@@ -95,7 +95,7 @@ class ListDiagnoseReportResponseBodyResult(DaraModel):
         # 
         # - SYSTEM: automatically triggered by the system
         # - INNER: internally triggered
-        # - USER: manually triggered by the user.
+        # - USER: manually triggered by the user
         self.trigger = trigger
 
     def validate(self):
@@ -319,7 +319,7 @@ class ListDiagnoseReportResponseBodyResultDiagnoseItemsDetail(DaraModel):
         # 
         # - TEXT: text description
         # - CONSOLE_API: console-triggered
-        # - ES_API: API-triggered.
+        # - ES_API: API-triggered
         self.type = type
 
     def validate(self):

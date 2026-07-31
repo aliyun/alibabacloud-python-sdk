@@ -12,9 +12,9 @@ class UpdateExtendConfigResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The result. Valid values:
+        # The returned result. Valid values:
         # 
-        # - true: The scenario-based configuration template was modified.
+        # - true: The scenario-based configuration template was modified successfully.
         # - false: The scenario-based configuration template failed to be modified.
         self.result = result
 

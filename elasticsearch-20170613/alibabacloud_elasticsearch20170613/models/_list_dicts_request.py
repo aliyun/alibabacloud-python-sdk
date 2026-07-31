@@ -22,7 +22,7 @@ class ListDictsRequest(DaraModel):
         # 
         # This parameter is required.
         self.analyzer_type = analyzer_type
-        # The name of the file to filter.
+        # The file name used to filter results.
         self.name = name
 
     def validate(self):

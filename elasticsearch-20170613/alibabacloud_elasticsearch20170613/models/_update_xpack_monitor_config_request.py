@@ -19,8 +19,8 @@ class UpdateXpackMonitorConfigRequest(DaraModel):
         self.client_token = client_token
         # Specifies whether to enable X-Pack monitoring. Valid values:
         # 
-        # - true: Enable X-Pack monitoring.
-        # - false: Disable X-Pack monitoring.
+        # - true: Enabled.
+        # - false: Not enabled.
         self.enable = enable
         # The access endpoint of the Elasticsearch instance.
         self.endpoints = endpoints

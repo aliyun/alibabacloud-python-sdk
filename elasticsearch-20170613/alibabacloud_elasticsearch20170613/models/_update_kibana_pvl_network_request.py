@@ -18,7 +18,7 @@ class UpdateKibanaPvlNetworkRequest(DaraModel):
         self.endpoint_name = endpoint_name
         # The list of security groups.
         self.security_groups = security_groups
-        # Used to ensure the idempotency of the request.
+        # A client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
         # The Kibana private network connection ID.
         self.pvl_id = pvl_id

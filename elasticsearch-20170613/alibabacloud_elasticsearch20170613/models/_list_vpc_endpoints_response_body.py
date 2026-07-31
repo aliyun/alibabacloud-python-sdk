@@ -87,7 +87,7 @@ class ListVpcEndpointsResponseBodyResult(DaraModel):
         # 
         # - Normal: Normal.
         # 
-        # - FinancialLocked: Locked due to overdue payment.
+        # - FinancialLocked: Financial lock.
         self.endpoint_business_status = endpoint_business_status
         # The endpoint domain name, which is used for connection configuration.
         self.endpoint_domain = endpoint_domain
@@ -99,7 +99,7 @@ class ListVpcEndpointsResponseBodyResult(DaraModel):
         # 
         # - Creating: Being created.
         # 
-        # - Active: Available.
+        # - Active: Active.
         # 
         # - Pending: Being modified.
         # 

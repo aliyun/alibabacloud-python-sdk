@@ -11,6 +11,7 @@ class EnableKibanaPvlNetworkRequest(DaraModel):
     def __init__(
         self,
         endpoint_name: str = None,
+        managed_security_group: bool = None,
         security_groups: List[str] = None,
         v_switch_ids_zone: List[main_models.EnableKibanaPvlNetworkRequestVSwitchIdsZone] = None,
         vpc_id: str = None,
@@ -18,9 +19,8 @@ class EnableKibanaPvlNetworkRequest(DaraModel):
     ):
         # The endpoint name.
         self.endpoint_name = endpoint_name
+        self.managed_security_group = managed_security_group
         # The security groups.
-        # 
-        # This parameter is required.
         self.security_groups = security_groups
         # The vSwitch and zone information.
         self.v_switch_ids_zone = v_switch_ids_zone
@@ -43,6 +43,9 @@ class EnableKibanaPvlNetworkRequest(DaraModel):
         if self.endpoint_name is not None:
             result['endpointName'] = self.endpoint_name
 
+        if self.managed_security_group is not None:
+            result['managedSecurityGroup'] = self.managed_security_group
+
         if self.security_groups is not None:
             result['securityGroups'] = self.security_groups
 
@@ -63,6 +66,9 @@ class EnableKibanaPvlNetworkRequest(DaraModel):
         m = m or dict()
         if m.get('endpointName') is not None:
             self.endpoint_name = m.get('endpointName')
+
+        if m.get('managedSecurityGroup') is not None:
+            self.managed_security_group = m.get('managedSecurityGroup')
 
         if m.get('securityGroups') is not None:
             self.security_groups = m.get('securityGroups')

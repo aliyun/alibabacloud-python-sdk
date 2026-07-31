@@ -12,7 +12,7 @@ class UntagResourcesResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The returned result.
+        # The returned result:
         # 
         # - true: The deletion was successful.
         # - false: The deletion failed.

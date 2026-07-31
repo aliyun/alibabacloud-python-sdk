@@ -15,14 +15,14 @@ class CapacityPlanRequest(DaraModel):
         metric: List[main_models.CapacityPlanRequestMetric] = None,
         usage_scenario: str = None,
     ):
-        # Specifies whether complex aggregate query is required. Valid values:
+        # Specifies whether complex aggregation query is required. Valid values:
         # 
         # - true: Required.
         # - false (default): Not required.
         self.complex_query_available = complex_query_available
         # The disk usage information.
         self.data_info = data_info
-        # The metric information, including disk usage, search and write operations, and aggregation requests.
+        # The metric information for disk usage, search and write operations, and aggregation requests.
         self.metric = metric
         # Scenarios. Valid values:
         # 
@@ -30,7 +30,7 @@ class CapacityPlanRequest(DaraModel):
         # - analysisVisualization: data analytics scenario
         # - dbAcceleration: database acceleration scenario
         # - search: search scenario
-        # - log: log scenario.
+        # - log: log scenario
         self.usage_scenario = usage_scenario
 
     def validate(self):
@@ -104,7 +104,7 @@ class CapacityPlanRequestMetric(DaraModel):
         # The search or write metric code. Valid values:
         # 
         # - write: write
-        # - search: search.
+        # - search: search
         self.code = code
         # The number of concurrent connections.
         self.concurrent = concurrent
@@ -117,7 +117,7 @@ class CapacityPlanRequestMetric(DaraModel):
         # The search or write peak type. Valid values:
         # 
         # - common: normal
-        # - peak: peak.
+        # - peak: peak
         self.type = type
 
     def validate(self):
@@ -192,7 +192,7 @@ class CapacityPlanRequestDataInfo(DaraModel):
         # - dailyIncrement: daily data growth
         # - dailyIncrement: daily incremental documents
         # - retentionTime: data retention period
-        # - replica: replica settings.
+        # - replica: replica settings
         self.code = code
         # The metric value of disk usage.
         self.size = size
@@ -201,12 +201,12 @@ class CapacityPlanRequestDataInfo(DaraModel):
         # The disk data type. Valid values:
         # 
         # - hot: hot data
-        # - warm: warm data.
+        # - warm: warm data
         self.type = type
         # The data unit or time unit. Valid values:
         # 
         # - Data units: MiB, GiB, TB, PB
-        # - Time units: DAYS, WEEKS, MONTHS, YEARS.
+        # - Time units: DAYS, WEEKS, MONTHS, YEARS
         self.unit = unit
 
     def validate(self):

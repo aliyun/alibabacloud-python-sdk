@@ -1,3 +1,10 @@
+2026-07-31 Version: 5.3.4
+- Update API DescribeInstance: add response parameters Body.Result.nodeSpec.diskPreference.
+- Update API EnableKibanaPvlNetwork: add request parameters body.managedSecurityGroup.
+- Update API ListInstance: add response parameters Body.Result.$.nodeSpec.diskPreference.
+- Update API ListKibanaPvlNetwork: add response parameters Body.Result.$.managedSecurityGroup.
+
+
 2026-06-24 Version: 5.3.2
 - Update API DescribeDiagnoseReport: add response parameters Body.Result.diagnosisMode.
 - Update API DescribeDiagnoseReport: add response parameters Body.Result.items.

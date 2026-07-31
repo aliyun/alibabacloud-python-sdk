@@ -19,7 +19,7 @@ class ListDiagnoseReportRequest(DaraModel):
         self.detail = detail
         # The end timestamp of the query. Unit: milliseconds.
         # - Minimum value: 1000000000000
-        # - Maximum value: 2000000000000.
+        # - Maximum value: 2000000000000
         # 
         # This parameter is required.
         self.end_time = end_time
@@ -29,7 +29,7 @@ class ListDiagnoseReportRequest(DaraModel):
         # - zh: Simplified Chinese
         # - zt: Traditional Chinese
         # - es: Spanish
-        # - fr: French.
+        # - fr: French
         self.lang = lang
         # The page number. Default value: 1. Minimum value: 1. Maximum value: 200.
         self.page = page
@@ -38,7 +38,7 @@ class ListDiagnoseReportRequest(DaraModel):
         # The start timestamp of the query. Unit: milliseconds.
         # 
         # - Minimum value: 1000000000000
-        # - Maximum value: 2000000000000.
+        # - Maximum value: 2000000000000
         # 
         # This parameter is required.
         self.start_time = start_time
@@ -46,7 +46,7 @@ class ListDiagnoseReportRequest(DaraModel):
         # 
         # - SYSTEM (default): automatically triggered by the system
         # - INNER: internally triggered
-        # - USER: manually triggered by the user.
+        # - USER: manually triggered by the user
         self.trigger = trigger
 
     def validate(self):

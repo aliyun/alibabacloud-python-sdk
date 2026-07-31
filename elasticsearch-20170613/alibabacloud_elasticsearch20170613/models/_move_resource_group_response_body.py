@@ -75,25 +75,25 @@ class MoveResourceGroupResponseBodyResult(DaraModel):
         self.description = description
         # The IK dictionary configuration.
         self.dict_list = dict_list
-        # The internal endpoint of the instance.
+        # The internal network access address of the instance.
         self.domain = domain
         # The instance version.
         self.es_version = es_version
         # The instance ID.
         self.instance_id = instance_id
-        # The configuration of Kibana nodes.
+        # The Kibana node configuration.
         self.kibana_configuration = kibana_configuration
-        # The public network access address for Kibana.
+        # The Kibana public network access address.
         self.kibana_domain = kibana_domain
-        # The public port for Kibana.
+        # The Kibana public network port.
         self.kibana_port = kibana_port
-        # The configuration of master nodes.
+        # The master node configuration.
         self.master_configuration = master_configuration
         # The network configuration.
         self.network_config = network_config
-        # The number of data nodes of the instance.
+        # The number of data nodes in the instance.
         self.node_amount = node_amount
-        # The configuration of data nodes.
+        # The data node configuration.
         self.node_spec = node_spec
         # The billing method of the instance. Valid values:
         # 
@@ -102,14 +102,14 @@ class MoveResourceGroupResponseBodyResult(DaraModel):
         self.payment_type = payment_type
         # The public network access address.
         self.public_domain = public_domain
-        # The public port.
+        # The public network port.
         self.public_port = public_port
         # The status of the instance. Valid values:
         # 
         # - active: Normal.
         # - activating: Taking effect.
         # - inactive: Frozen.
-        # - invalid: Expired.
+        # - invalid: Invalid.
         self.status = status
         # The synonym dictionary configuration.
         self.synonyms_dicts = synonyms_dicts
@@ -287,7 +287,7 @@ class MoveResourceGroupResponseBodyResultSynonymsDicts(DaraModel):
         self.name = name
         # The source type. Valid values:
         # 
-        # - OSS: OSS open storage. Make sure that the OSS bucket has public-read permission.
+        # - OSS: OSS open storage (the OSS bucket must be publicly readable).
         # - ORIGIN: retains the previously uploaded dictionary.
         self.source_type = source_type
         # The dictionary type. Valid values:
@@ -343,7 +343,7 @@ class MoveResourceGroupResponseBodyResultNodeSpec(DaraModel):
         disk_type: str = None,
         spec: str = None,
     ):
-        # The storage size of the node. Unit: GB.
+        # The storage space size of the node. Unit: GB.
         self.disk = disk
         # The storage type of the node.
         self.disk_type = disk_type
@@ -392,7 +392,7 @@ class MoveResourceGroupResponseBodyResultNetworkConfig(DaraModel):
     ):
         # The network type. Only VPC is supported.
         self.type = type
-        # The virtual private cloud (VPC) ID.
+        # The VPC ID.
         self.vpc_id = vpc_id
         # The zone where the instance resides.
         self.vs_area = vs_area
@@ -447,7 +447,7 @@ class MoveResourceGroupResponseBodyResultMasterConfiguration(DaraModel):
     ):
         # The number of nodes.
         self.amount = amount
-        # The storage size of the node. Unit: GB.
+        # The storage space size of the node. Unit: GB.
         self.disk = disk
         # The storage type of the node.
         self.disk_type = disk_type
@@ -502,7 +502,7 @@ class MoveResourceGroupResponseBodyResultKibanaConfiguration(DaraModel):
     ):
         # The number of nodes.
         self.amount = amount
-        # The storage size of the node. Unit: GB.
+        # The storage space size of the node. Unit: GB.
         self.disk = disk
         # The storage type of the node.
         self.disk_type = disk_type
@@ -561,7 +561,7 @@ class MoveResourceGroupResponseBodyResultDictList(DaraModel):
         self.name = name
         # The source type. Valid values:
         # 
-        # - OSS: OSS open storage. Make sure that the OSS bucket has public-read permission.
+        # - OSS: OSS open storage (the OSS bucket must be publicly readable).
         # - ORIGIN: retains the previously uploaded dictionary.
         self.source_type = source_type
         # The dictionary type. Valid values:

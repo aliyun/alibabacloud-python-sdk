@@ -17,7 +17,7 @@ class ListDiagnosisItemsRequest(DaraModel):
         # - zh: Simplified Chinese
         # - zt: Traditional Chinese
         # - es: Spanish
-        # - fr: French.
+        # - fr: French
         self.lang = lang
 
     def validate(self):

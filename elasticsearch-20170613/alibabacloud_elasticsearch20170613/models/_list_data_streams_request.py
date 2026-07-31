@@ -12,9 +12,9 @@ class ListDataStreamsRequest(DaraModel):
     ):
         # Specifies whether to display only managed indexes. Valid values:
         # 
-        # - true: displays only managed indexes.
+        # - true: Only managed indexes are displayed.
         # 
-        # - false (default): displays all indexes.
+        # - false (default): All indexes are displayed.
         self.is_managed = is_managed
         # The data stream name.
         self.name = name

@@ -67,7 +67,7 @@ class ListLogstashLogResponseBodyResult(DaraModel):
         self.host = host
         # The instance ID.
         self.instance_id = instance_id
-        # The log level. Valid values: trace, debug, info, warn, and error. GC logs do not have a level.
+        # The log level. Valid values include trace, debug, info, warn, and error. GC logs do not have a level.
         self.level = level
         # The timestamp when the log was generated. Unit: milliseconds.
         self.timestamp = timestamp

@@ -12,9 +12,10 @@ class EnableKibanaPvlNetworkResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # Indicates whether private network access for Kibana is created. Valid values:
-        # - true: The operation is successful.
-        # - false: The operation failed.
+        # Indicates whether private network access for Kibana is created.
+        # 
+        # - true: Succeeded.
+        # - false: Failed.
         self.result = result
 
     def validate(self):

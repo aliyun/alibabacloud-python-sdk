@@ -79,7 +79,7 @@ class ListPluginsResponseBodyResult(DaraModel):
         self.name = name
         # The plugin source type.
         self.source = source
-        # The URL of the plugin documentation.
+        # The URL of the plugin specification document.
         self.specification_url = specification_url
         # The plugin status.
         self.state = state

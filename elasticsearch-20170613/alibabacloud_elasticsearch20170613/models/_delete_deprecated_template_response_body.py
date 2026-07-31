@@ -12,7 +12,7 @@ class DeleteDeprecatedTemplateResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The result. Valid values:
+        # The returned result. Valid values:
         # 
         # - true: succeeded.
         # - false: failed.

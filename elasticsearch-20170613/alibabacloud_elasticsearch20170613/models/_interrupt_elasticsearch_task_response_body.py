@@ -12,9 +12,9 @@ class InterruptElasticsearchTaskResponseBody(DaraModel):
         request_id: str = None,
         result: bool = None,
     ):
-        # The error code. This parameter is returned only when an exception occurs.
+        # The error code. This parameter is displayed only when an exception occurs.
         self.code = code
-        # The error message. This parameter is returned only when an exception occurs.
+        # The error message. This parameter is displayed only when an exception occurs.
         self.message = message
         # The request ID.
         self.request_id = request_id

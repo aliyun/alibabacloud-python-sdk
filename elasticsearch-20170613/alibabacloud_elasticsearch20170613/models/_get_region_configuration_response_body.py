@@ -15,7 +15,7 @@ class GetRegionConfigurationResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The returned region configuration information.
+        # The region configuration information returned.
         self.result = result
 
     def validate(self):
@@ -71,14 +71,14 @@ class GetRegionConfigurationResponseBodyResult(DaraModel):
         warm_node_properties: main_models.GetRegionConfigurationResponseBodyResultWarmNodeProperties = None,
         zones: List[str] = None,
     ):
-        # The range for the number of coordinating nodes.
+        # The range of client node counts.
         self.client_node_amount_range = client_node_amount_range
-        # The allowed values for coordinating node disks.
+        # The allowed disk values for client nodes.
         self.client_node_disk_list = client_node_disk_list
         self.client_node_spec = client_node_spec
         # The URL of the purchase page.
         self.create_url = create_url
-        # The allowed values for data node disks.
+        # The allowed disk values for data nodes.
         self.data_disk_list = data_disk_list
         # The elastic node configuration.
         self.elastic_node_properties = elastic_node_properties
@@ -93,7 +93,7 @@ class GetRegionConfigurationResponseBodyResult(DaraModel):
         # The Kibana node configuration.
         self.kibana_node_properties = kibana_node_properties
         self.logstash_zones = logstash_zones
-        # The allowed values for dedicated master node disks.
+        # The allowed disk values for dedicated master nodes.
         self.master_disk_list = master_disk_list
         self.master_spec = master_spec
         # The node configuration.
@@ -326,9 +326,9 @@ class GetRegionConfigurationResponseBodyResultWarmNodeProperties(DaraModel):
         disk_list: List[main_models.GetRegionConfigurationResponseBodyResultWarmNodePropertiesDiskList] = None,
         spec: List[str] = None,
     ):
-        # The range for the number of nodes.
+        # The range of node counts.
         self.amount_range = amount_range
-        # The list of disk configurations.
+        # The disk configuration list.
         self.disk_list = disk_list
         self.spec = spec
 
@@ -385,19 +385,19 @@ class GetRegionConfigurationResponseBodyResultWarmNodePropertiesDiskList(DaraMod
         scale_limit: int = None,
         value_limit_set: List[str] = None,
     ):
-        # Indicates whether disk encryption is supported.
+        # Indicates whether disk encryption is supported. Valid values:
         # 
-        # - true: supported
+        # - true: Supported.
         # 
-        # - false: not supported
+        # - false: Not supported.
         self.disk_encryption = disk_encryption
         # The disk storage type.
         self.disk_type = disk_type
-        # The maximum disk size allowed.
+        # The maximum allowed disk size.
         self.max_size = max_size
-        # The minimum disk size allowed.
+        # The minimum allowed disk size.
         self.min_size = min_size
-        # The maximum continuous value that can be set for the disk size.
+        # The maximum value that can be set as a continuous value for the disk.
         self.scale_limit = scale_limit
         self.value_limit_set = value_limit_set
 
@@ -496,9 +496,9 @@ class GetRegionConfigurationResponseBodyResultSupportVersions(DaraModel):
     ):
         # The instance category. Valid values:
         # 
-        # - advanced: Enhanced Edition
+        # - advanced: Advanced Edition.
         # 
-        # - x-pack: Commercial Edition
+        # - x-pack: Commercial Edition.
         self.instance_category = instance_category
         # The supported Elasticsearch version information.
         self.support_version_list = support_version_list
@@ -543,7 +543,7 @@ class GetRegionConfigurationResponseBodyResultSupportVersionsSupportVersionList(
         key: str = None,
         value: str = None,
     ):
-        # The version available on the purchase page.
+        # The version available for selection on the purchase page.
         self.key = key
         # The detailed version number.
         self.value = value
@@ -585,16 +585,16 @@ class GetRegionConfigurationResponseBodyResultNodeSpecList(DaraModel):
         spec: str = None,
         spec_group_type: str = None,
     ):
-        # The number of CPU cores for this specification.
+        # The number of CPU cores for the specification.
         self.cpu_count = cpu_count
-        # The disk size for this specification.
+        # The disk size for the specification.
         self.disk = disk
         # The disk storage type.
         self.disk_type = disk_type
-        # Indicates whether the specification is available for purchase.
+        # Indicates whether the specification is available for purchase. Valid values:
         # 
-        # - true: available
-        # - false: unavailable
+        # - true: Available.
+        # - false: Not available.
         self.enable = enable
         # The memory size of the node.
         self.memory_size = memory_size
@@ -606,7 +606,7 @@ class GetRegionConfigurationResponseBodyResultNodeSpecList(DaraModel):
         # 
         # - local_efficiency: local SATA disk
         # 
-        # - local_ssd: local SSD disk
+        # - local_ssd: local SSD
         self.spec_group_type = spec_group_type
 
     def validate(self):
@@ -712,11 +712,11 @@ class GetRegionConfigurationResponseBodyResultMasterDiskList(DaraModel):
     ):
         # The disk storage type.
         self.disk_type = disk_type
-        # The maximum disk size allowed.
+        # The maximum allowed disk size.
         self.max_size = max_size
-        # The minimum disk size allowed.
+        # The minimum allowed disk size.
         self.min_size = min_size
-        # The maximum continuous value that can be set for the disk size.
+        # The maximum value that can be set as a continuous value for the disk.
         self.scale_limit = scale_limit
 
     def validate(self):
@@ -763,7 +763,7 @@ class GetRegionConfigurationResponseBodyResultKibanaNodeProperties(DaraModel):
         amount_range: main_models.GetRegionConfigurationResponseBodyResultKibanaNodePropertiesAmountRange = None,
         spec: List[str] = None,
     ):
-        # The allowed range for the number of nodes.
+        # The allowed range of node counts.
         self.amount_range = amount_range
         self.spec = spec
 
@@ -884,7 +884,7 @@ class GetRegionConfigurationResponseBodyResultEsVersionsLatestList(DaraModel):
     ):
         # The supported major version number.
         self.key = key
-        # The full name of the supported minor version.
+        # The full name of the supported minor version number.
         self.value = value
 
     def validate(self):
@@ -920,9 +920,9 @@ class GetRegionConfigurationResponseBodyResultElasticNodeProperties(DaraModel):
         disk_list: List[main_models.GetRegionConfigurationResponseBodyResultElasticNodePropertiesDiskList] = None,
         spec: List[str] = None,
     ):
-        # The range for the number of elastic nodes.
+        # The range of warm node counts.
         self.amount_range = amount_range
-        # The list of disk configurations.
+        # The disk configuration list.
         self.disk_list = disk_list
         self.spec = spec
 
@@ -979,19 +979,19 @@ class GetRegionConfigurationResponseBodyResultElasticNodePropertiesDiskList(Dara
         scale_limit: int = None,
         value_limit_set: List[str] = None,
     ):
-        # Indicates whether disk encryption is supported.
+        # Indicates whether disk encryption is supported. Valid values:
         # 
-        # - true: supported
+        # - true: Supported.
         # 
-        # - false: not supported
+        # - false: Not supported.
         self.disk_encryption = disk_encryption
         # The disk storage type.
         self.disk_type = disk_type
-        # The maximum disk size allowed.
+        # The maximum allowed disk size.
         self.max_size = max_size
-        # The minimum disk size allowed.
+        # The minimum allowed disk size.
         self.min_size = min_size
-        # The maximum continuous value that can be set for the disk size.
+        # The maximum value that can be set as a continuous value for the disk.
         self.scale_limit = scale_limit
         self.value_limit_set = value_limit_set
 
@@ -1093,11 +1093,11 @@ class GetRegionConfigurationResponseBodyResultDataDiskList(DaraModel):
     ):
         # The disk storage type.
         self.disk_type = disk_type
-        # The maximum disk size allowed.
+        # The maximum allowed disk size.
         self.max_size = max_size
-        # The minimum disk size allowed.
+        # The minimum allowed disk size.
         self.min_size = min_size
-        # The maximum continuous value that can be set for the disk size.
+        # The maximum value that can be set as a continuous value for the disk.
         self.scale_limit = scale_limit
         self.value_limit_set = value_limit_set
 
@@ -1155,11 +1155,11 @@ class GetRegionConfigurationResponseBodyResultClientNodeDiskList(DaraModel):
     ):
         # The disk storage type.
         self.disk_type = disk_type
-        # The maximum disk size allowed.
+        # The maximum allowed disk size.
         self.max_size = max_size
-        # The minimum disk size allowed.
+        # The minimum allowed disk size.
         self.min_size = min_size
-        # The maximum continuous value that can be set for the disk size.
+        # The maximum value that can be set as a continuous value for the disk.
         self.scale_limit = scale_limit
 
     def validate(self):
@@ -1206,9 +1206,9 @@ class GetRegionConfigurationResponseBodyResultClientNodeAmountRange(DaraModel):
         max_amount: int = None,
         min_amount: int = None,
     ):
-        # The maximum number of coordinating nodes.
+        # The maximum number of client nodes.
         self.max_amount = max_amount
-        # The minimum number of coordinating nodes.
+        # The minimum number of client nodes.
         self.min_amount = min_amount
 
     def validate(self):

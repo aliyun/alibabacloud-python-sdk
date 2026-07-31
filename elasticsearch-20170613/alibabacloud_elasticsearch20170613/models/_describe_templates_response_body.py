@@ -64,7 +64,7 @@ class DescribeTemplatesResponseBodyResult(DaraModel):
         # - staticSettings: elasticsearch.yml configuration
         # - ilmPolicy: index lifecycle configuration
         # - indexTemplate: index template configuration
-        # - dynamicSettings: cluster dynamic configuration.
+        # - dynamicSettings: cluster dynamic configuration
         self.template_name = template_name
 
     def validate(self):

@@ -28,7 +28,7 @@ class ListCollectorsRequest(DaraModel):
         # 
         # - ECS: ECS instance
         # 
-        # - ACK: Container Kubernetes cluster.
+        # - ACK: Container Kubernetes cluster
         self.source_type = source_type
 
     def validate(self):

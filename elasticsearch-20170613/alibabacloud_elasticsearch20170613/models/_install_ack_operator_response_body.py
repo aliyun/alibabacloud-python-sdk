@@ -14,7 +14,7 @@ class InstallAckOperatorResponseBody(DaraModel):
         self.request_id = request_id
         # The returned result. Valid values:
         # 
-        # - true: The installation was successful.
+        # - true: The installation succeeded.
         # - false: The installation failed.
         self.result = result
 

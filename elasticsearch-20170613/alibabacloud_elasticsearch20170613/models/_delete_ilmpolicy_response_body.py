@@ -12,7 +12,7 @@ class DeleteILMPolicyResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The returned result. Valid values:
+        # The result. Valid values:
         # 
         # - true: The specified lifecycle policy definition is deleted.
         # 

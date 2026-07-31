@@ -14,7 +14,7 @@ class GetTransferableNodesRequest(DaraModel):
         # 
         # This parameter is required.
         self.count = count
-        # The type of node for data migration. **WORKER** indicates a hot node. **WORKER_WARM** indicates a warm node.
+        # The type of nodes for data migration. **WORKER** indicates hot nodes. **WORKER_WARM** indicates warm nodes.
         # 
         # This parameter is required.
         self.node_type = node_type

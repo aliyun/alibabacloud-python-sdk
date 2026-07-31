@@ -18,7 +18,7 @@ class TagResourcesRequest(DaraModel):
         # 
         # This parameter is required.
         self.resource_ids = resource_ids
-        # The resource type. Set this parameter to INSTANCE.
+        # The resource type. The value is fixed as INSTANCE.
         # 
         # This parameter is required.
         self.resource_type = resource_type

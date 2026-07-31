@@ -78,33 +78,33 @@ class ListNodesResponseBodyResult(DaraModel):
     ):
         # The status of each collector on the ECS instance. Valid values:
         # 
-        # - heartOk: normal heartbeat.
-        # - heartLost: abnormal heartbeat.
-        # - uninstalled: not installed.
-        # - failed: installation failed.
+        # - heartOk: Normal heartbeat.
+        # - heartLost: Abnormal heartbeat.
+        # - uninstalled: Not installed.
+        # - failed: Installation failed.
         self.agent_status = agent_status
         # Indicates whether Cloud Assistant is enabled. Valid values:
         # 
-        # - true: enabled.
-        # - false: not enabled.
+        # - true: Enabled.
+        # - false: Not enabled.
         self.cloud_assistant_status = cloud_assistant_status
         # The ECS instance ID.
         self.ecs_instance_id = ecs_instance_id
         # The ECS instance name.
         self.ecs_instance_name = ecs_instance_name
-        # The list of IP address information of the ECS instance.
+        # The list of IP address information for the ECS instance.
         self.ip_address = ip_address
         # The operating system type of the ECS instance. Valid values:
         # 
         # - windows: Windows Server.
         # - linux: Linux.
         self.os_type = os_type
-        # The status of the ECS instance. Valid values:
+        # The ECS instance status. Valid values:
         # 
-        # - running: running.
-        # - starting: starting.
-        # - stopping: stopping.
-        # - stopped: stopped.
+        # - running: Running.
+        # - starting: Starting.
+        # - stopping: Stopping.
+        # - stopped: Stopped.
         self.status = status
         # The tag information of the ECS instance.
         self.tags = tags
@@ -233,7 +233,7 @@ class ListNodesResponseBodyResultIpAddress(DaraModel):
     ):
         # The IP address.
         self.host = host
-        # The type of the IP address. Valid values:
+        # The IP address type. Valid values:
         # 
         # - public: public IP address.
         # - private: private IP address.

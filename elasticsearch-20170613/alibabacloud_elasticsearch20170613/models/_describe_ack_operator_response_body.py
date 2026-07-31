@@ -52,10 +52,10 @@ class DescribeAckOperatorResponseBodyResult(DaraModel):
     ):
         # The Operator installation status. Valid values:
         # 
-        # - deployed: installed
-        # - not-deploy: not installed
-        # - failed: installation failed
-        # - unknown: unknown status.
+        # - deployed: Installed.
+        # - not-deploy: Not installed.
+        # - failed: Installation failed.
+        # - unknown: Unknown status.
         self.status = status
         # The Operator version.
         self.version = version

@@ -58,7 +58,7 @@ class DescribeConnectableClustersResponseBodyResult(DaraModel):
         instances: str = None,
         network_type: str = None,
     ):
-        # The instance ID of instances that can establish private network peering.
+        # The instance IDs that can establish private network peering.
         self.instances = instances
         # The network type of the instance.
         self.network_type = network_type

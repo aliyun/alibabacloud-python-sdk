@@ -12,7 +12,7 @@ class ListTagsRequest(DaraModel):
     ):
         # The number of entries per page. Default value: 20. Minimum value: 1. Maximum value: 50.
         self.page_size = page_size
-        # The resource type. Fixed value: INSTANCE.
+        # The resource type. Set to INSTANCE.
         self.resource_type = resource_type
 
     def validate(self):

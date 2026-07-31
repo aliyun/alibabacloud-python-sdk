@@ -9,7 +9,7 @@ class GrayPublishRequest(DaraModel):
         self,
         x_request_change_id: str = None,
     ):
-        # Change ID
+        # The change ID.
         self.x_request_change_id = x_request_change_id
 
     def validate(self):

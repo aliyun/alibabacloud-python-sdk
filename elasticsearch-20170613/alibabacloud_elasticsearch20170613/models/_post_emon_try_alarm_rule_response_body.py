@@ -18,7 +18,7 @@ class PostEmonTryAlarmRuleResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the alert message was sent. Valid values: true (sent) and false (failed to send).
+        # Indicates whether the alert message is sent. Valid values: true (sent) and false (failed to send).
         self.success = success
 
     def validate(self):

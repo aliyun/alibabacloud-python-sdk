@@ -14,7 +14,7 @@ class DescribeKibanaSettingsResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # Some configurable Kibana settings. For more information, see [Kibana settings](https://www.elastic.co/guide/cn/kibana/current/settings.html).
+        # The configurable Kibana settings. For more information, see [Kibana settings](https://www.elastic.co/guide/cn/kibana/current/settings.html).
         self.result = result
 
     def validate(self):

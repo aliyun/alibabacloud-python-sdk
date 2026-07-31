@@ -52,7 +52,7 @@ class GetOpenStoreUsageResponseBodyResult(DaraModel):
     ):
         # The current OpenStore storage usage, which is an estimated value based on actual indexes. Unit: bytes.
         self.current_usage = current_usage
-        # The OpenStore storage usage on the previous day. Unit: bytes.
+        # The OpenStore storage usage of the previous day. Unit: bytes.
         self.last_day_usage = last_day_usage
 
     def validate(self):

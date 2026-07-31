@@ -21,7 +21,7 @@ class ListNodesRequest(DaraModel):
         self.page = page
         # The number of results per page.
         self.size = size
-        # The tag information of the ECS instance. The tag key (tagKey) and tag value (tagValue) must be included.
+        # The tag information of the ECS instance. Must include the tag key (tagKey) and tag value (tagValue).
         self.tags = tags
 
     def validate(self):

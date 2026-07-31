@@ -64,9 +64,10 @@ class ListSnapshotReposByInstanceIdResponseBodyResult(DaraModel):
         self.instance_id = instance_id
         # The repository address.
         self.repo_path = repo_path
-        # The name of the referenced repository.
+        # The referenced repository name.
         self.snap_warehouse = snap_warehouse
         # The status of the referenced repository. Valid values:
+        # 
         # - available: The repository is active.
         # - unavailable: The repository is inactive.
         self.status = status

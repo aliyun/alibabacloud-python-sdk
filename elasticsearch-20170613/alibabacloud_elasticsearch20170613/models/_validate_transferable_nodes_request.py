@@ -70,7 +70,7 @@ class ValidateTransferableNodesRequestBody(DaraModel):
         self.host = host
         # The access port number of the node.
         self.port = port
-        # The zone ID of the instance node. For example, the ID of Zone C in the China (Shanghai) region is cn-shanghai-c.
+        # The zone ID of the instance node. For example, the zone ID for Shanghai Zone C is cn-shanghai-c.
         self.zone_id = zone_id
 
     def validate(self):

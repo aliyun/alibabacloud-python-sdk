@@ -14,11 +14,11 @@ class ListUserPluginResponseBody(DaraModel):
         request_id: str = None,
         result: List[main_models.ListUserPluginResponseBodyResult] = None,
     ):
-        # Response header information.
+        # The response headers.
         self.headers = headers
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Return Result array
+        # The result array.
         self.result = result
 
     def validate(self):
@@ -70,15 +70,15 @@ class ListUserPluginResponseBodyResult(DaraModel):
         state: str = None,
         version: str = None,
     ):
-        # List of plugins with the same name
+        # The list of plug-ins with the same name.
         self.bingo_plugins = bingo_plugins
-        # Plugin Name.
+        # The plug-in name.
         self.name = name
-        # Plugin Source.
+        # The plug-in source.
         self.source = source
-        # Plugin Status.
+        # The plug-in status.
         self.state = state
-        # Plugin Version.
+        # The plug-in version.
         self.version = version
 
     def validate(self):
@@ -144,31 +144,31 @@ class ListUserPluginResponseBodyResultBingoPlugins(DaraModel):
         state: str = None,
         version: str = None,
     ):
-        # Plugin Description.
+        # The plug-in description.
         self.description = description
-        # Elasticsearch version of the plugin.
+        # The Elasticsearch version of the plug-in.
         self.elasticsearch_version = elasticsearch_version
-        # Plugin UUID
+        # The unique identifier of the plug-in.
         self.file_version = file_version
-        # Plugin Name.
+        # The plug-in name.
         self.name = name
-        # Plugin Source. Valid values:
+        # The plug-in source. Valid values:
         # 
-        # - USER: Custom plugin  
-        # - SYSTEM: Preset system plugin
+        # - USER: custom plug-in.
+        # - SYSTEM: system preset plug-in.
         self.source = source
-        # Plugin Status
+        # The plug-in status. Valid values: 
         # 
-        # - INSTALLED,
-        # - UNINSTALLED,
-        # - INSTALLING,
-        # - UNINSTALLING,
-        # - UPGRADING,
-        # - FAILED,
-        # - UNKNOWN,
-        # - UPLOADING,
+        # - INSTALLED
+        # - UNINSTALLED
+        # - INSTALLING
+        # - UNINSTALLING
+        # - UPGRADING
+        # - FAILED
+        # - UNKNOWN
+        # - UPLOADING
         self.state = state
-        # Plugin Version.
+        # The plug-in version.
         self.version = version
 
     def validate(self):
