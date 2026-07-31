@@ -12,13 +12,13 @@ class CreateScheduledTaskResponseBody(DaraModel):
         scheduled_id: str = None,
         success: bool = None,
     ):
-        # Provides details about the request outcome, such as a success message or an error description.
+        # The returned message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The ID of the scheduled inspection task.
+        # The ID of the scheduled inspection configuration.
         self.scheduled_id = scheduled_id
-        # Indicates whether the request succeeded. A value of true indicates success.
+        # The request result.
         self.success = success
 
     def validate(self):

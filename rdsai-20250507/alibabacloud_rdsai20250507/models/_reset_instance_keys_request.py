@@ -10,8 +10,12 @@ class ResetInstanceKeysRequest(DaraModel):
         instance_name: str = None,
         region_id: str = None,
     ):
+        # The instance ID of the AI application.
+        # 
         # This parameter is required.
         self.instance_name = instance_name
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
 

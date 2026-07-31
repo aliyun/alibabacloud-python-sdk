@@ -1,3 +1,15 @@
+2026-07-31 Version: 3.6.2
+- Update API CreateInspectionTask: add request parameters TemplateId.
+- Update API CreateScheduledTask: add request parameters TemplateId.
+- Update API GetInspectionReport: add response parameters Body.TemplateId.
+- Update API GetInspectionReport: add response parameters Body.TemplateName.
+- Update API GetStandAloneReports: add response parameters Body.Reports.$.TemplateId.
+- Update API GetStandAloneReports: add response parameters Body.Reports.$.TemplateName.
+- Update API ListScheduledTasks: add response parameters Body.Schedules.$.TemplateId.
+- Update API ListScheduledTasks: add response parameters Body.Schedules.$.TemplateName.
+- Update API ModifyScheduledTask: add request parameters TemplateId.
+
+
 2026-07-28 Version: 3.6.1
 - Update API DescribeInstanceEndpoints: add response parameters Body.InstanceEndpoints.$.Domain.
 - Update API DescribeInstanceSSL: add response parameters Body.SSLExpiredTime.

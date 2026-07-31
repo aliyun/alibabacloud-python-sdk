@@ -17,7 +17,7 @@ class ChatMessagesRequest(DaraModel):
         # The conversation ID.
         self.conversation_id = conversation_id
         self.event_mode = event_mode
-        # The task inputs.
+        # The task input.
         self.inputs = inputs
         # The parent message ID.
         self.parent_message_id = parent_message_id

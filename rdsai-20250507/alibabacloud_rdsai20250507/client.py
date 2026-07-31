@@ -681,6 +681,8 @@ class Client(OpenApiClient):
             query['ReportType'] = request.report_type
         if not DaraCore.is_null(request.start_time):
             query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.template_id):
+            query['TemplateId'] = request.template_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -723,6 +725,8 @@ class Client(OpenApiClient):
             query['ReportType'] = request.report_type
         if not DaraCore.is_null(request.start_time):
             query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.template_id):
+            query['TemplateId'] = request.template_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -967,6 +971,8 @@ class Client(OpenApiClient):
             query['ReportType'] = request.report_type
         if not DaraCore.is_null(request.start_time):
             query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.template_id):
+            query['TemplateId'] = request.template_id
         if not DaraCore.is_null(request.time_range):
             query['TimeRange'] = request.time_range
         req = open_api_util_models.OpenApiRequest(
@@ -1015,6 +1021,8 @@ class Client(OpenApiClient):
             query['ReportType'] = request.report_type
         if not DaraCore.is_null(request.start_time):
             query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.template_id):
+            query['TemplateId'] = request.template_id
         if not DaraCore.is_null(request.time_range):
             query['TimeRange'] = request.time_range
         req = open_api_util_models.OpenApiRequest(
@@ -5249,6 +5257,8 @@ class Client(OpenApiClient):
             query['ScheduledId'] = request.scheduled_id
         if not DaraCore.is_null(request.start_time):
             query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.template_id):
+            query['TemplateId'] = request.template_id
         if not DaraCore.is_null(request.time_range):
             query['TimeRange'] = request.time_range
         req = open_api_util_models.OpenApiRequest(
@@ -5293,6 +5303,8 @@ class Client(OpenApiClient):
             query['ScheduledId'] = request.scheduled_id
         if not DaraCore.is_null(request.start_time):
             query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.template_id):
+            query['TemplateId'] = request.template_id
         if not DaraCore.is_null(request.time_range):
             query['TimeRange'] = request.time_range
         req = open_api_util_models.OpenApiRequest(

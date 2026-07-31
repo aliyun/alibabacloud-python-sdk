@@ -13,13 +13,13 @@ class CreateInspectionTaskResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response data.
+        # The result.
         self.data = data
         # The response message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # The request result.
         self.success = success
 
     def validate(self):
@@ -67,7 +67,7 @@ class CreateInspectionTaskResponseBodyData(DaraModel):
         self,
         task_id: str = None,
     ):
-        # The ID of the inspection task.
+        # The inspection task ID.
         self.task_id = task_id
 
     def validate(self):

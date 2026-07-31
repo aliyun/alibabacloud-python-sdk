@@ -19,11 +19,15 @@ class ModifyAppInstanceRequest(DaraModel):
         region_id: str = None,
     ):
         self.branch_name = branch_name
+        # The idempotency parameter.
         self.client_token = client_token
+        # The list of modules.
         self.components = components
         self.dbinstance_name = dbinstance_name
         self.instance_class = instance_class
+        # The instance ID of the AI application.
         self.instance_name = instance_name
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -96,7 +100,9 @@ class ModifyAppInstanceRequestComponents(DaraModel):
         status: str = None,
         type: str = None,
     ):
+        # The module status.
         self.status = status
+        # The module type.
         self.type = type
 
     def validate(self):

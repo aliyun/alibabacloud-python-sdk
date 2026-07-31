@@ -26,11 +26,11 @@ class ListScheduledTasksResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # A list of scheduled inspection tasks.
+        # The list of scheduled inspection tasks.
         self.schedules = schedules
-        # Indicates whether the request was successful.
+        # The request result.
         self.success = success
-        # The total number of entries.
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -111,45 +111,40 @@ class ListScheduledTasksResponseBodySchedules(DaraModel):
         report_type: str = None,
         scheduled_id: str = None,
         task_start_time: str = None,
+        template_id: str = None,
+        template_name: str = None,
         time_range: str = None,
     ):
-        # The time the task was created, in UTC.
+        # The creation time.
         self.create_time = create_time
-        # The description of the inspection.
+        # The inspection description.
         self.description = description
-        # The inspection frequency. Multiple values are separated by commas. The default is DAILY. Valid values:
-        # 
-        # - DAILY: Every day
-        # 
-        # - Monday: Monday
-        # 
-        # - Tuesday: Tuesday
-        # 
-        # - Wednesday: Wednesday
-        # 
-        # - Thursday: Thursday
-        # 
-        # - Friday: Friday
-        # 
-        # - Saturday: Saturday
-        # 
-        # - Sunday: Sunday
-        # 
-        # ### Note: The DAILY setting overrides any specified days of the week. For example, if you specify DAILY,Monday, the inspection runs daily.
+        # The new inspection frequency. Separate multiple values with commas (,). Default value: DAILY. Valid values:
+        # * DAILY: every day
+        # * Monday: Monday
+        # * Tuesday: Tuesday
+        # * Wednesday: Wednesday
+        # * Thursday: Thursday
+        # * Friday: Friday
+        # * Saturday: Saturday
+        # * Sunday: Sunday
+        # ### Note: DAILY overrides weekly values. For example, if you specify DAILY,Monday, the backend uses DAILY as the inspection frequency.
         self.frequency = frequency
         self.inspection_items = inspection_items
-        # The number of instances in the task.
+        # The number of task instances.
         self.instance_count = instance_count
-        # The name of the task.
+        # The task name.
         self.name = name
         self.region_id = region_id
         self.report_language = report_language
         self.report_type = report_type
         # The ID of the scheduled inspection configuration.
         self.scheduled_id = scheduled_id
-        # The task start time, in UTC.
+        # The actual start time of the task.
         self.task_start_time = task_start_time
-        # The inspection time range in hours. Default: 24. Valid values: 1 to 168.
+        self.template_id = template_id
+        self.template_name = template_name
+        # The inspection time range. Default value: the last 24 hours. Valid values: 1 to 168 (up to 7 days).
         self.time_range = time_range
 
     def validate(self):
@@ -193,6 +188,12 @@ class ListScheduledTasksResponseBodySchedules(DaraModel):
         if self.task_start_time is not None:
             result['TaskStartTime'] = self.task_start_time
 
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+
+        if self.template_name is not None:
+            result['TemplateName'] = self.template_name
+
         if self.time_range is not None:
             result['TimeRange'] = self.time_range
 
@@ -232,6 +233,12 @@ class ListScheduledTasksResponseBodySchedules(DaraModel):
 
         if m.get('TaskStartTime') is not None:
             self.task_start_time = m.get('TaskStartTime')
+
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+
+        if m.get('TemplateName') is not None:
+            self.template_name = m.get('TemplateName')
 
         if m.get('TimeRange') is not None:
             self.time_range = m.get('TimeRange')

@@ -15,13 +15,22 @@ class CreateSandboxTemplateRequest(DaraModel):
         replicas: int = None,
         template_name: str = None,
     ):
+        # The number of CPUs for sandboxes created by using this template. Valid values: 1 to 4.
         self.default_cpu = default_cpu
+        # The memory size for sandboxes created by using this template. Unit: Gi. Valid values: 1Gi to 8Gi.
         self.default_memory = default_memory
+        # The description of the sandbox template. The description must be unique within the VPC.
         self.description = description
+        # The instance ID of the AI application.
+        # 
         # This parameter is required.
         self.instance_name = instance_name
+        # The region ID.
         self.region_id = region_id
+        # The number of prewarmed sandboxes. Valid values: 1 to 1000.
         self.replicas = replicas
+        # The name of the sandbox template.
+        # 
         # This parameter is required.
         self.template_name = template_name
 

@@ -17,48 +17,38 @@ class CreateScheduledTaskRequest(DaraModel):
         report_region_id: str = None,
         report_type: str = None,
         start_time: str = None,
+        template_id: str = None,
         time_range: str = None,
     ):
         # The description of the scheduled inspection task.
         self.description = description
-        # The inspection frequency. Use commas (,) to separate multiple values. The default is DAILY. Valid values:
-        # 
-        # - DAILY: Every day
-        # 
-        # - Monday: Monday
-        # 
-        # - Tuesday: Tuesday
-        # 
-        # - Wednesday: Wednesday
-        # 
-        # - Thursday: Thursday
-        # 
-        # - Friday: Friday
-        # 
-        # - Saturday: Saturday
-        # 
-        # - Sunday: Sunday
-        # 
-        # ### Note: DAILY overrides weekly values. For example, if you enter DAILY,Monday, the system uses DAILY as the inspection frequency.
+        # The inspection frequency. Separate multiple values with commas (,). Default value: DAILY. Valid values:
+        # * DAILY: every day.
+        # * Monday: Monday.
+        # * Tuesday: Tuesday.
+        # * Wednesday: Wednesday.
+        # * Thursday: Thursday.
+        # * Friday: Friday.
+        # * Saturday: Saturday.
+        # * Sunday: Sunday.
+        # ### Note: DAILY overrides weekly values. For example, if you specify DAILY,Monday, the system uses DAILY as the inspection frequency.
         self.frequency = frequency
         self.inspection_items = inspection_items
-        # The IDs of the instances for the task. Use commas (,) to separate multiple IDs.
+        # The list of associated instance IDs. Separate multiple IDs with commas (,).
         self.instance_ids = instance_ids
-        # The name of the scheduled inspection task. The maximum length is 64 characters.
+        # The name of the scheduled inspection task. The name can be up to 64 characters in length.
         # 
         # This parameter is required.
         self.name = name
-        # The ID of the region.
         self.region_id = region_id
-        # The report language. The default value is zh-CN. Supported values: zh-CN, zh-TW, ja-JP, and en-US.
+        # The report language. Default value: zh-CN. Valid values: zh-CN, zh-TW, ja-JP, and en-US.
         self.report_language = report_language
-        # The ID of the region where the report is stored.
         self.report_region_id = report_region_id
-        # The type of the report.
         self.report_type = report_type
-        # The execution time for the scheduled inspection task. Specify the time in the HH:mm:ssZ format (UTC time). The default is 02:00:00Z.
+        # The time to run the inspection task. Format: HH:mm:ssZ (UTC). Default value: 02:00:00Z.
         self.start_time = start_time
-        # The time range of data to inspect, in hours. Valid values are from 1 to 168 (7 days). The default is 24.
+        self.template_id = template_id
+        # The time range for the inspection. Default value: the last 24 hours. Valid values: 1 to 168 (up to 7 days).
         self.time_range = time_range
 
     def validate(self):
@@ -99,6 +89,9 @@ class CreateScheduledTaskRequest(DaraModel):
         if self.start_time is not None:
             result['StartTime'] = self.start_time
 
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+
         if self.time_range is not None:
             result['TimeRange'] = self.time_range
 
@@ -135,6 +128,9 @@ class CreateScheduledTaskRequest(DaraModel):
 
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
+
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
 
         if m.get('TimeRange') is not None:
             self.time_range = m.get('TimeRange')

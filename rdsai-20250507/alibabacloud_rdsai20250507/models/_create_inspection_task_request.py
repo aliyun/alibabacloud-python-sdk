@@ -15,48 +15,34 @@ class CreateInspectionTaskRequest(DaraModel):
         report_region_id: str = None,
         report_type: str = None,
         start_time: str = None,
+        template_id: str = None,
     ):
-        # The end of the inspection time range. The time must be in UTC and formatted as YYYY-MM-DDTHH:mm:ssZ. If StartTime and EndTime are not specified, the inspection covers the last 24 hours.
+        # The end time of the inspection range. Format: YYYY-MM-DDTHH:mm:ssZ (UTC). Default value: the current time.
         self.end_time = end_time
-        # The inspection items to run, separated by commas. If this parameter is omitted, all inspection items are run.
-        # 
-        # ### Inspection items
-        # 
-        # - `instance_info` (instance information)
-        # 
-        # - `resource_usage` (resource usage)
-        # 
-        # - `connection_session_management` (connection and session management)
-        # 
-        # - `performance_metrics` (performance metrics)
-        # 
-        # - `slow_query_analysis` (slow query analysis)
-        # 
-        # - `error_log_analysis` (error log analysis)
-        # 
-        # - `lock_wait_deadlock_analysis` (lock wait and deadlock analysis)
-        # 
-        # - `backup_recovery_analysis` (backup and recovery analysis)
-        # 
-        # - `high_availability_disaster_recovery_analysis` (high availability and disaster recovery inspection)
-        # 
-        # - `security_configuration_analysis` (security configuration inspection)
-        # 
-        # - `storage_engine_analysis` (storage engine inspection)
-        # 
-        # - `schema_object_analysis` (schema and object inspection)
+        # The list of inspection items. Separate multiple values with commas (,). If this parameter is left empty or not specified, all inspection items are executed.
+        # ### Available inspection items:
+        # * instance_info (instance information)
+        # * resource_usage (resource usage)
+        # * connection_session_management (connection and session management)
+        # * performance_metrics (performance metrics)
+        # * slow_query_analysis (slow query analysis)
+        # * error_log_analysis (error log analysis)
+        # * lock_wait_deadlock_analysis (lock wait and deadlock analysis)
+        # * backup_recovery_analysis (backup and recovery analysis)
+        # * high_availability_disaster_recovery_analysis (high availability and disaster recovery inspection)
+        # * security_configuration_analysis (security configuration inspection)
+        # * storage_engine_analysis (storage engine inspection)
+        # * schema_object_analysis (schema and object inspection)
         self.inspection_items = inspection_items
-        # The IDs of the instances to inspect. Separate multiple instance IDs with a comma.
+        # The list of associated instance IDs. Separate multiple IDs with commas (,).
         self.instance_ids = instance_ids
-        # The region ID.
         self.region_id = region_id
-        # The language of the inspection report. Valid values are zh-CN (Simplified Chinese) and en-US (English). The default value is en-US.
         self.report_language = report_language
         self.report_region_id = report_region_id
-        # The format of the inspection report. Valid values are pdf and json. The default value is pdf.
         self.report_type = report_type
-        # The beginning of the inspection time range. The time must be in UTC and formatted as YYYY-MM-DDTHH:mm:ssZ. If StartTime and EndTime are not specified, the inspection covers the last 24 hours.
+        # The start time of the inspection range. Format: YYYY-MM-DDTHH:mm:ssZ (UTC). Default value: 24 hours before the current time.
         self.start_time = start_time
+        self.template_id = template_id
 
     def validate(self):
         pass
@@ -90,6 +76,9 @@ class CreateInspectionTaskRequest(DaraModel):
         if self.start_time is not None:
             result['StartTime'] = self.start_time
 
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -117,6 +106,9 @@ class CreateInspectionTaskRequest(DaraModel):
 
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
+
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
 
         return self
 

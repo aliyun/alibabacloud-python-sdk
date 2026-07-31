@@ -11,9 +11,14 @@ class DeleteSandboxTemplateRequest(DaraModel):
         region_id: str = None,
         template_id: str = None,
     ):
+        # The instance ID of the AI application.
+        # 
         # This parameter is required.
         self.instance_name = instance_name
+        # The region ID.
         self.region_id = region_id
+        # The sandbox template ID.
+        # 
         # This parameter is required.
         self.template_id = template_id
 

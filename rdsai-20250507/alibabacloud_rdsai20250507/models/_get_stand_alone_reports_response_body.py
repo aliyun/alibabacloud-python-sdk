@@ -20,17 +20,17 @@ class GetStandAloneReportsResponseBody(DaraModel):
     ):
         # The response message.
         self.message = message
-        # The page number. The default value is 1.
+        # The page number. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page. The default value is 20 and the maximum value is 100.
+        # The number of entries per page. Default value: 20. Maximum value: 100.
         self.page_size = page_size
-        # A list of inspection reports.
+        # The list of reports.
         self.reports = reports
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # The request result.
         self.success = success
-        # The total number of entries across all pages.
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -109,22 +109,25 @@ class GetStandAloneReportsResponseBodyReports(DaraModel):
         start_time: str = None,
         status: str = None,
         task_id: str = None,
+        template_id: str = None,
+        template_name: str = None,
     ):
-        # The time the inspection task was created.
+        # The creation time.
         self.created_time = created_time
-        # The end time of the inspection. The time is in UTC and uses the `YYYY-MM-DDTHH:mm:ssZ` format.
+        # The inspection end time (format: YYYY-MM-DDTHH:mm:ssZ).
         self.end_time = end_time
         self.inspection_items = inspection_items
-        # The ID of the region.
         self.region_id = region_id
         self.report_language = report_language
         self.report_type = report_type
-        # The start time of the inspection. The time is in UTC and uses the `YYYY-MM-DDTHH:mm:ssZ` format.
+        # The inspection start time (format: YYYY-MM-DDTHH:mm:ssZ).
         self.start_time = start_time
-        # The status of the inspection task.
+        # The status.
         self.status = status
-        # The ID of the inspection task.
+        # The inspection report ID.
         self.task_id = task_id
+        self.template_id = template_id
+        self.template_name = template_name
 
     def validate(self):
         pass
@@ -161,6 +164,12 @@ class GetStandAloneReportsResponseBodyReports(DaraModel):
         if self.task_id is not None:
             result['TaskId'] = self.task_id
 
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+
+        if self.template_name is not None:
+            result['TemplateName'] = self.template_name
+
         return result
 
     def from_map(self, m: dict = None):
@@ -191,6 +200,12 @@ class GetStandAloneReportsResponseBodyReports(DaraModel):
 
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
+
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+
+        if m.get('TemplateName') is not None:
+            self.template_name = m.get('TemplateName')
 
         return self
 

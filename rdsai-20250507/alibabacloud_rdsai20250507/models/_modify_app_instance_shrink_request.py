@@ -16,11 +16,15 @@ class ModifyAppInstanceShrinkRequest(DaraModel):
         region_id: str = None,
     ):
         self.branch_name = branch_name
+        # The idempotency parameter.
         self.client_token = client_token
+        # The list of modules.
         self.components_shrink = components_shrink
         self.dbinstance_name = dbinstance_name
         self.instance_class = instance_class
+        # The instance ID of the AI application.
         self.instance_name = instance_name
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

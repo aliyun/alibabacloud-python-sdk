@@ -11,8 +11,12 @@ class DescribeCommonSandboxTemplatesRequest(DaraModel):
         next_token: str = None,
         region_id: str = None,
     ):
+        # A reserved parameter. You do not need to specify this parameter.
         self.max_results = max_results
+        # The token that indicates the position from which the query starts. Set this parameter to empty to start from the beginning.
         self.next_token = next_token
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
 

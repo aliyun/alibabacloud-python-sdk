@@ -14,15 +14,19 @@ class GetInspectionReportResponseBody(DaraModel):
         markdown_text: str = None,
         request_id: str = None,
         task_id: str = None,
+        template_id: str = None,
+        template_name: str = None,
     ):
-        # The details of the result.
+        # The result details.
         self.data = data
-        # The report text in the markdown format.
+        # The Markdown text.
         self.markdown_text = markdown_text
         # The request ID.
         self.request_id = request_id
         # The inspection report ID.
         self.task_id = task_id
+        self.template_id = template_id
+        self.template_name = template_name
 
     def validate(self):
         if self.data:
@@ -49,6 +53,12 @@ class GetInspectionReportResponseBody(DaraModel):
         if self.task_id is not None:
             result['TaskId'] = self.task_id
 
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+
+        if self.template_name is not None:
+            result['TemplateName'] = self.template_name
+
         return result
 
     def from_map(self, m: dict = None):
@@ -68,6 +78,12 @@ class GetInspectionReportResponseBody(DaraModel):
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
 
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+
+        if m.get('TemplateName') is not None:
+            self.template_name = m.get('TemplateName')
+
         return self
 
 class GetInspectionReportResponseBodyData(DaraModel):
@@ -83,26 +99,25 @@ class GetInspectionReportResponseBodyData(DaraModel):
         region: str = None,
         start_time: str = None,
     ):
-        # The returned results.
+        # The request result.
         self.data = data
-        # The end time of the inspection. Specify the time in the YYYY-MM-DDTHH:mm:ssZ format.
+        # The inspection end time in the format of YYYY-MM-DDTHH:mm:ssZ.
         self.end_time = end_time
         # The engine type.
         self.engine_type = engine_type
-        # The description of the instance.
+        # The instance description.
         self.instance_desc = instance_desc
         # The instance ID.
         self.instance_id = instance_id
-        # The hierarchical summary of the report.
+        # The level summary.
         self.level_summary = level_summary
-        # The report text in the markdown format.
-        # 
-        # *   If the InstanceId parameter is not specified, all content of the inspection report is returned. However, the MarkdownText field is empty.
-        # *   If the InstanceId parameter is specified, the content related to the instance is returned in the MarkdownText field.
+        # The Markdown text.
+        # * If the InstanceId parameter is not specified: the reports for all instances in the inspection report are returned, but the MarkdownText field is empty ("").
+        # * If the InstanceId parameter is specified: the report for the specified instance is returned, and the MarkdownText field contains the specific content.
         self.markdown_text = markdown_text
-        # The region where the instance resides.
+        # The region information.
         self.region = region
-        # The start time of the inspection task. Specify the time in the YYYY-MM-DDTHH:mm:ssZ format.
+        # The inspection start time in the format of YYYY-MM-DDTHH:mm:ssZ.
         self.start_time = start_time
 
     def validate(self):
@@ -192,13 +207,13 @@ class GetInspectionReportResponseBodyDataLevelSummary(DaraModel):
         normal: int = None,
         warning: int = None,
     ):
-        # The number of errors in the report.
+        # The number of error items.
         self.error = error
-        # The number of failures in the report.
+        # The number of failed items.
         self.failed = failed
-        # The number of normal records in the report.
+        # The number of normal items.
         self.normal = normal
-        # The number of warnings in the report.
+        # The number of warning items.
         self.warning = warning
 
     def validate(self):
@@ -247,7 +262,7 @@ class GetInspectionReportResponseBodyDataData(DaraModel):
     ):
         # The group ID.
         self.group = group
-        # The items in the result.
+        # The attached resource names.
         self.items = items
 
     def validate(self):
@@ -292,13 +307,13 @@ class GetInspectionReportResponseBodyDataDataItems(DaraModel):
         message: str = None,
         name: str = None,
     ):
-        # The returned results.
+        # The request result.
         self.data = data
-        # The level of the alert.
+        # The alert level.
         self.level = level
-        # The response message.
+        # The result message.
         self.message = message
-        # The name of the category.
+        # The category name.
         self.name = name
 
     def validate(self):

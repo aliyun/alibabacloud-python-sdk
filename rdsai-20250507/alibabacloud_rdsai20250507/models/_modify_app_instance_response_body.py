@@ -16,8 +16,11 @@ class ModifyAppInstanceResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.branch_name = branch_name
+        # The list of modules.
         self.components = components
+        # The instance ID of the AI application.
         self.instance_name = instance_name
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -72,7 +75,9 @@ class ModifyAppInstanceResponseBodyComponents(DaraModel):
         status: str = None,
         type: str = None,
     ):
+        # The module status.
         self.status = status
+        # The module type.
         self.type = type
 
     def validate(self):

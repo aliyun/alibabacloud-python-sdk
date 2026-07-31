@@ -10,7 +10,9 @@ class CreateSandboxTemplateResponseBody(DaraModel):
         instance_name: str = None,
         request_id: str = None,
     ):
+        # The instance ID of the AI application.
         self.instance_name = instance_name
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
