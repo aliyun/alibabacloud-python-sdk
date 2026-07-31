@@ -1,3 +1,9 @@
+2026-07-31 Version: 1.6.0
+- Support API ListVoice.
+- Support API QuerySelectOptions.
+- Support API UpdateMmAppAndBinding.
+
+
 2026-07-28 Version: 1.5.1
 - Generated python 2025-09-09 for SfmMultiModalApp.
 

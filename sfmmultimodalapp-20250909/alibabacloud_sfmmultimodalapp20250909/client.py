@@ -1542,6 +1542,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_published_mm_app_with_options_async(request, runtime)
 
+    def list_voice_with_options(
+        self,
+        request: main_models.ListVoiceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListVoiceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.model_id):
+            query['ModelId'] = request.model_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListVoice',
+            version = '2025-09-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListVoiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_voice_with_options_async(
+        self,
+        request: main_models.ListVoiceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListVoiceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.model_id):
+            query['ModelId'] = request.model_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListVoice',
+            version = '2025-09-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListVoiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_voice(
+        self,
+        request: main_models.ListVoiceRequest,
+    ) -> main_models.ListVoiceResponse:
+        runtime = RuntimeOptions()
+        return self.list_voice_with_options(request, runtime)
+
+    async def list_voice_async(
+        self,
+        request: main_models.ListVoiceRequest,
+    ) -> main_models.ListVoiceResponse:
+        runtime = RuntimeOptions()
+        return await self.list_voice_with_options_async(request, runtime)
+
     def mm_app_binding_mcp_with_options(
         self,
         tmp_req: main_models.MmAppBindingMcpRequest,
@@ -2210,6 +2284,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.query_profile_with_options_async(request, runtime)
 
+    def query_select_options_with_options(
+        self,
+        request: main_models.QuerySelectOptionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QuerySelectOptionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QuerySelectOptions',
+            version = '2025-09-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QuerySelectOptionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_select_options_with_options_async(
+        self,
+        request: main_models.QuerySelectOptionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QuerySelectOptionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QuerySelectOptions',
+            version = '2025-09-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QuerySelectOptionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_select_options(
+        self,
+        request: main_models.QuerySelectOptionsRequest,
+    ) -> main_models.QuerySelectOptionsResponse:
+        runtime = RuntimeOptions()
+        return self.query_select_options_with_options(request, runtime)
+
+    async def query_select_options_async(
+        self,
+        request: main_models.QuerySelectOptionsRequest,
+    ) -> main_models.QuerySelectOptionsResponse:
+        runtime = RuntimeOptions()
+        return await self.query_select_options_with_options_async(request, runtime)
+
     def query_user_profile_with_options(
         self,
         request: main_models.QueryUserProfileRequest,
@@ -2617,6 +2761,124 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateMmAppResponse:
         runtime = RuntimeOptions()
         return await self.update_mm_app_with_options_async(request, runtime)
+
+    def update_mm_app_and_binding_with_options(
+        self,
+        tmp_req: main_models.UpdateMmAppAndBindingRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateMmAppAndBindingResponse:
+        tmp_req.validate()
+        request = main_models.UpdateMmAppAndBindingShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.binding_config):
+            request.binding_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.binding_config, 'BindingConfig', 'json')
+        if not DaraCore.is_null(tmp_req.conversation_config):
+            request.conversation_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.conversation_config, 'ConversationConfig', 'json')
+        if not DaraCore.is_null(tmp_req.memory_config):
+            request.memory_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.memory_config, 'MemoryConfig', 'json')
+        if not DaraCore.is_null(tmp_req.model_config):
+            request.model_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.model_config, 'ModelConfig', 'json')
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.app_name):
+            query['AppName'] = request.app_name
+        if not DaraCore.is_null(request.binding_config_shrink):
+            query['BindingConfig'] = request.binding_config_shrink
+        if not DaraCore.is_null(request.conversation_config_shrink):
+            query['ConversationConfig'] = request.conversation_config_shrink
+        if not DaraCore.is_null(request.memory_config_shrink):
+            query['MemoryConfig'] = request.memory_config_shrink
+        if not DaraCore.is_null(request.model_config_shrink):
+            query['ModelConfig'] = request.model_config_shrink
+        if not DaraCore.is_null(request.prompt):
+            query['Prompt'] = request.prompt
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateMmAppAndBinding',
+            version = '2025-09-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateMmAppAndBindingResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_mm_app_and_binding_with_options_async(
+        self,
+        tmp_req: main_models.UpdateMmAppAndBindingRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateMmAppAndBindingResponse:
+        tmp_req.validate()
+        request = main_models.UpdateMmAppAndBindingShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.binding_config):
+            request.binding_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.binding_config, 'BindingConfig', 'json')
+        if not DaraCore.is_null(tmp_req.conversation_config):
+            request.conversation_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.conversation_config, 'ConversationConfig', 'json')
+        if not DaraCore.is_null(tmp_req.memory_config):
+            request.memory_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.memory_config, 'MemoryConfig', 'json')
+        if not DaraCore.is_null(tmp_req.model_config):
+            request.model_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.model_config, 'ModelConfig', 'json')
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.app_name):
+            query['AppName'] = request.app_name
+        if not DaraCore.is_null(request.binding_config_shrink):
+            query['BindingConfig'] = request.binding_config_shrink
+        if not DaraCore.is_null(request.conversation_config_shrink):
+            query['ConversationConfig'] = request.conversation_config_shrink
+        if not DaraCore.is_null(request.memory_config_shrink):
+            query['MemoryConfig'] = request.memory_config_shrink
+        if not DaraCore.is_null(request.model_config_shrink):
+            query['ModelConfig'] = request.model_config_shrink
+        if not DaraCore.is_null(request.prompt):
+            query['Prompt'] = request.prompt
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateMmAppAndBinding',
+            version = '2025-09-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateMmAppAndBindingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_mm_app_and_binding(
+        self,
+        request: main_models.UpdateMmAppAndBindingRequest,
+    ) -> main_models.UpdateMmAppAndBindingResponse:
+        runtime = RuntimeOptions()
+        return self.update_mm_app_and_binding_with_options(request, runtime)
+
+    async def update_mm_app_and_binding_async(
+        self,
+        request: main_models.UpdateMmAppAndBindingRequest,
+    ) -> main_models.UpdateMmAppAndBindingResponse:
+        runtime = RuntimeOptions()
+        return await self.update_mm_app_and_binding_with_options_async(request, runtime)
 
     def update_mm_app_memory_with_options(
         self,

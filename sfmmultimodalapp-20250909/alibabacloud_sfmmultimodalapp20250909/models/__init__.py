@@ -2,6 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from ._binding_config_agents_intent_few_shot_config_value import BindingConfigAgentsIntentFewShotConfigValue
 from ._create_command_request import CreateCommandRequest
 from ._create_command_shrink_request import CreateCommandShrinkRequest
 from ._create_command_response_body import CreateCommandResponseBody
@@ -58,6 +59,9 @@ from ._list_mm_app_response import ListMmAppResponse
 from ._list_published_mm_app_request import ListPublishedMmAppRequest
 from ._list_published_mm_app_response_body import ListPublishedMmAppResponseBody
 from ._list_published_mm_app_response import ListPublishedMmAppResponse
+from ._list_voice_request import ListVoiceRequest
+from ._list_voice_response_body import ListVoiceResponseBody
+from ._list_voice_response import ListVoiceResponse
 from ._mm_app_binding_mcp_request import MmAppBindingMcpRequest
 from ._mm_app_binding_mcp_shrink_request import MmAppBindingMcpShrinkRequest
 from ._mm_app_binding_mcp_response_body import MmAppBindingMcpResponseBody
@@ -84,6 +88,9 @@ from ._query_memory_list_response import QueryMemoryListResponse
 from ._query_profile_request import QueryProfileRequest
 from ._query_profile_response_body import QueryProfileResponseBody
 from ._query_profile_response import QueryProfileResponse
+from ._query_select_options_request import QuerySelectOptionsRequest
+from ._query_select_options_response_body import QuerySelectOptionsResponseBody
+from ._query_select_options_response import QuerySelectOptionsResponse
 from ._query_user_profile_request import QueryUserProfileRequest
 from ._query_user_profile_response_body import QueryUserProfileResponseBody
 from ._query_user_profile_response import QueryUserProfileResponse
@@ -99,6 +106,10 @@ from ._update_mm_app_request import UpdateMmAppRequest
 from ._update_mm_app_shrink_request import UpdateMmAppShrinkRequest
 from ._update_mm_app_response_body import UpdateMmAppResponseBody
 from ._update_mm_app_response import UpdateMmAppResponse
+from ._update_mm_app_and_binding_request import UpdateMmAppAndBindingRequest
+from ._update_mm_app_and_binding_shrink_request import UpdateMmAppAndBindingShrinkRequest
+from ._update_mm_app_and_binding_response_body import UpdateMmAppAndBindingResponseBody
+from ._update_mm_app_and_binding_response import UpdateMmAppAndBindingResponse
 from ._update_mm_app_memory_request import UpdateMmAppMemoryRequest
 from ._update_mm_app_memory_response_body import UpdateMmAppMemoryResponseBody
 from ._update_mm_app_memory_response import UpdateMmAppMemoryResponse
@@ -152,6 +163,7 @@ from ._list_mm_app_response_body import ListMmAppResponseBodyAppInfoListConversa
 from ._list_mm_app_response_body import ListMmAppResponseBodyAppInfoListModelConfig
 from ._list_mm_app_response_body import ListMmAppResponseBodyAppInfoList
 from ._list_published_mm_app_response_body import ListPublishedMmAppResponseBodyPublishedVersionInfoList
+from ._list_voice_response_body import ListVoiceResponseBodyVoiceList
 from ._mm_app_binding_mcp_request import MmAppBindingMcpRequestMcps
 from ._mm_app_binding_mcp_response_body import MmAppBindingMcpResponseBodyData
 from ._mm_app_binding_rag_response_body import MmAppBindingRagResponseBodyData
@@ -161,6 +173,8 @@ from ._query_memory_list_response_body import QueryMemoryListResponseBodyDataMem
 from ._query_memory_list_response_body import QueryMemoryListResponseBodyData
 from ._query_profile_response_body import QueryProfileResponseBodyDataAttributes
 from ._query_profile_response_body import QueryProfileResponseBodyData
+from ._query_select_options_response_body import QuerySelectOptionsResponseBodySelectOptionsChildren
+from ._query_select_options_response_body import QuerySelectOptionsResponseBodySelectOptions
 from ._query_user_profile_response_body import QueryUserProfileResponseBodyDataAttributes
 from ._query_user_profile_response_body import QueryUserProfileResponseBodyData
 from ._update_command_request import UpdateCommandRequestToolExamples
@@ -171,6 +185,21 @@ from ._update_mm_app_request import UpdateMmAppRequestBindingConfigCommands
 from ._update_mm_app_request import UpdateMmAppRequestBindingConfig
 from ._update_mm_app_request import UpdateMmAppRequestConversationConfig
 from ._update_mm_app_request import UpdateMmAppRequestModelConfig
+from ._update_mm_app_and_binding_request import UpdateMmAppAndBindingRequestBindingConfigAgents
+from ._update_mm_app_and_binding_request import UpdateMmAppAndBindingRequestBindingConfigCommandsToolsToolExamples
+from ._update_mm_app_and_binding_request import UpdateMmAppAndBindingRequestBindingConfigCommandsToolsToolParams
+from ._update_mm_app_and_binding_request import UpdateMmAppAndBindingRequestBindingConfigCommandsTools
+from ._update_mm_app_and_binding_request import UpdateMmAppAndBindingRequestBindingConfigCommands
+from ._update_mm_app_and_binding_request import UpdateMmAppAndBindingRequestBindingConfigMcps
+from ._update_mm_app_and_binding_request import UpdateMmAppAndBindingRequestBindingConfigPlugins
+from ._update_mm_app_and_binding_request import UpdateMmAppAndBindingRequestBindingConfigRagConfig
+from ._update_mm_app_and_binding_request import UpdateMmAppAndBindingRequestBindingConfig
+from ._update_mm_app_and_binding_request import UpdateMmAppAndBindingRequestConversationConfig
+from ._update_mm_app_and_binding_request import UpdateMmAppAndBindingRequestMemoryConfigAttributes
+from ._update_mm_app_and_binding_request import UpdateMmAppAndBindingRequestMemoryConfig
+from ._update_mm_app_and_binding_request import UpdateMmAppAndBindingRequestModelConfigUserPromptParams
+from ._update_mm_app_and_binding_request import UpdateMmAppAndBindingRequestModelConfigUserQueryParams
+from ._update_mm_app_and_binding_request import UpdateMmAppAndBindingRequestModelConfig
 from ._update_mm_app_memory_response_body import UpdateMmAppMemoryResponseBodyData
 from ._update_mm_app_rag_response_body import UpdateMmAppRagResponseBodyData
 from ._update_mm_app_rag_config_response_body import UpdateMmAppRagConfigResponseBodyData
@@ -180,6 +209,7 @@ from ._update_profile_request import UpdateProfileRequestAttributesOperations
 from ._update_profile_response_body import UpdateProfileResponseBodyData
 
 __all__ = [
+    BindingConfigAgentsIntentFewShotConfigValue,
     CreateCommandRequest,
     CreateCommandShrinkRequest,
     CreateCommandResponseBody,
@@ -236,6 +266,9 @@ __all__ = [
     ListPublishedMmAppRequest,
     ListPublishedMmAppResponseBody,
     ListPublishedMmAppResponse,
+    ListVoiceRequest,
+    ListVoiceResponseBody,
+    ListVoiceResponse,
     MmAppBindingMcpRequest,
     MmAppBindingMcpShrinkRequest,
     MmAppBindingMcpResponseBody,
@@ -262,6 +295,9 @@ __all__ = [
     QueryProfileRequest,
     QueryProfileResponseBody,
     QueryProfileResponse,
+    QuerySelectOptionsRequest,
+    QuerySelectOptionsResponseBody,
+    QuerySelectOptionsResponse,
     QueryUserProfileRequest,
     QueryUserProfileResponseBody,
     QueryUserProfileResponse,
@@ -277,6 +313,10 @@ __all__ = [
     UpdateMmAppShrinkRequest,
     UpdateMmAppResponseBody,
     UpdateMmAppResponse,
+    UpdateMmAppAndBindingRequest,
+    UpdateMmAppAndBindingShrinkRequest,
+    UpdateMmAppAndBindingResponseBody,
+    UpdateMmAppAndBindingResponse,
     UpdateMmAppMemoryRequest,
     UpdateMmAppMemoryResponseBody,
     UpdateMmAppMemoryResponse,
@@ -330,6 +370,7 @@ __all__ = [
     ListMmAppResponseBodyAppInfoListModelConfig,
     ListMmAppResponseBodyAppInfoList,
     ListPublishedMmAppResponseBodyPublishedVersionInfoList,
+    ListVoiceResponseBodyVoiceList,
     MmAppBindingMcpRequestMcps,
     MmAppBindingMcpResponseBodyData,
     MmAppBindingRagResponseBodyData,
@@ -339,6 +380,8 @@ __all__ = [
     QueryMemoryListResponseBodyData,
     QueryProfileResponseBodyDataAttributes,
     QueryProfileResponseBodyData,
+    QuerySelectOptionsResponseBodySelectOptionsChildren,
+    QuerySelectOptionsResponseBodySelectOptions,
     QueryUserProfileResponseBodyDataAttributes,
     QueryUserProfileResponseBodyData,
     UpdateCommandRequestToolExamples,
@@ -349,6 +392,21 @@ __all__ = [
     UpdateMmAppRequestBindingConfig,
     UpdateMmAppRequestConversationConfig,
     UpdateMmAppRequestModelConfig,
+    UpdateMmAppAndBindingRequestBindingConfigAgents,
+    UpdateMmAppAndBindingRequestBindingConfigCommandsToolsToolExamples,
+    UpdateMmAppAndBindingRequestBindingConfigCommandsToolsToolParams,
+    UpdateMmAppAndBindingRequestBindingConfigCommandsTools,
+    UpdateMmAppAndBindingRequestBindingConfigCommands,
+    UpdateMmAppAndBindingRequestBindingConfigMcps,
+    UpdateMmAppAndBindingRequestBindingConfigPlugins,
+    UpdateMmAppAndBindingRequestBindingConfigRagConfig,
+    UpdateMmAppAndBindingRequestBindingConfig,
+    UpdateMmAppAndBindingRequestConversationConfig,
+    UpdateMmAppAndBindingRequestMemoryConfigAttributes,
+    UpdateMmAppAndBindingRequestMemoryConfig,
+    UpdateMmAppAndBindingRequestModelConfigUserPromptParams,
+    UpdateMmAppAndBindingRequestModelConfigUserQueryParams,
+    UpdateMmAppAndBindingRequestModelConfig,
     UpdateMmAppMemoryResponseBodyData,
     UpdateMmAppRagResponseBodyData,
     UpdateMmAppRagConfigResponseBodyData,
