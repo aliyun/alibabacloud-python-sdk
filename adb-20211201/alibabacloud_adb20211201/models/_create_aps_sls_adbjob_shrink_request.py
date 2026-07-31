@@ -40,13 +40,13 @@ class CreateApsSlsADBJobShrinkRequest(DaraModel):
         user_name: str = None,
         workload_name: str = None,
     ):
-        # The name of the cross-account role.
+        # The role name for cross-account access.
         self.across_role = across_role
-        # The cross-account UID.
+        # The UID for cross-account access.
         self.across_uid = across_uid
-        # The advanced configurations.
+        # The advanced configuration.
         self.advanced_config = advanced_config
-        # The information about columns.
+        # The column information.
         # 
         # This parameter is required.
         self.columns_shrink = columns_shrink
@@ -56,7 +56,7 @@ class CreateApsSlsADBJobShrinkRequest(DaraModel):
         self.dbcluster_id = dbcluster_id
         # The data source ID.
         self.datasource_id = datasource_id
-        # The name of the database.
+        # The database name.
         # 
         # This parameter is required.
         self.db_name = db_name
@@ -66,61 +66,61 @@ class CreateApsSlsADBJobShrinkRequest(DaraModel):
         self.dirty_data_handle_mode = dirty_data_handle_mode
         # The dirty data processing mode.
         self.dirty_data_process_pattern = dirty_data_process_pattern
-        # Specifies whether to enable the consistency check.
+        # Specifies whether to enable exactly-once semantics.
         self.exactly_once = exactly_once
-        # The number of full AnalyticDB compute units (ACUs).
+        # The number of AnalyticDB compute units (ACUs) for full data synchronization.
         self.full_compute_unit = full_compute_unit
-        # The advanced configurations of Hudi.
+        # The Hudi advanced configuration.
         self.hudi_advanced_config = hudi_advanced_config
-        # The number of increment ACUs.
+        # The number of AnalyticDB compute units (ACUs) for incremental data synchronization.
         self.incremental_compute_unit = incremental_compute_unit
-        # The lakehouse ID.
+        # lakehosue ID。
         self.lakehouse_id = lakehouse_id
-        # The latest offset.
+        # The maximum offset.
         self.max_offsets_per_trigger = max_offsets_per_trigger
-        # The Object Storage Service (OSS) URL.
+        # The OSS address.
         self.oss_location = oss_location
-        # The format of the output file.
+        # The output format.
         self.output_format = output_format
-        # The information about partition.
+        # The partition information.
         self.partition_specs_shrink = partition_specs_shrink
-        # The password of the database account.
+        # The password.
         # 
         # This parameter is required.
         self.password = password
-        # The definition of the primary key.
+        # The primary key definition.
         self.primary_key_definition = primary_key_definition
-        # The name of the SLS project.
+        # The project name.
         self.project = project
         # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The name of the resource group.
+        # The resource group name.
         self.resource_group = resource_group
         # The region ID of the source cluster.
         self.source_region_id = source_region_id
-        # The start offset.
+        # The starting offset for delivery.
         # 
         # This parameter is required.
         self.starting_offsets = starting_offsets
-        # The SLS Logstore.
+        # sls Store。
         self.store = store
-        # The name of the table.
+        # The table name.
         # 
         # This parameter is required.
         self.table_name = table_name
-        # The rules for generating the destination database.
+        # The generation rule for the destination.
         self.target_generate_rule = target_generate_rule
         # The destination type.
         self.target_type = target_type
-        # The timestamp conversion.
+        # The UNIX timestamp conversion configuration.
         self.unix_timestamp_convert_shrink = unix_timestamp_convert_shrink
-        # The name of the database account.
+        # The username.
         # 
         # This parameter is required.
         self.user_name = user_name
-        # The name of the workload.
+        # The workload name.
         # 
         # This parameter is required.
         self.workload_name = workload_name

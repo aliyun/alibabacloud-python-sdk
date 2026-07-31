@@ -20,23 +20,21 @@ class DescribeAdbMySqlColumnsResponseBody(DaraModel):
     ):
         # The total number of columns.
         self.column_count = column_count
-        # Details of the columns.
+        # The column information.
         self.columns = columns
-        # The message returned for the operation. Valid values:
-        # 
-        # *   **Success** is returned if the operation is successful.
-        # *   An error message is returned if the operation fails.
+        # The additional information about the call result. Valid values:
+        # - If the request was successful, **Success** is returned. 
+        # - If the request failed, a specific error code is returned.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The name of the database.
+        # The database name.
         self.schema = schema
-        # Indicates whether the operation is successful. Valid values:
-        # 
-        # *   **true**: The operation is successful.
-        # *   **false**: The operation fails.
+        # Indicates whether the call was successful.
+        # - **true**: The call was successful.
+        # - **false**: The call failed.
         self.success = success
-        # The name of the table.
+        # The table name.
         self.table_name = table_name
 
     def validate(self):
@@ -110,9 +108,9 @@ class DescribeAdbMySqlColumnsResponseBodyColumns(DaraModel):
         name: str = None,
         type: str = None,
     ):
-        # The comments of the column.
+        # The column comment.
         self.comment = comment
-        # The name of the column.
+        # The column name.
         self.name = name
         # The data type of the column.
         self.type = type

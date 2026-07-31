@@ -7,26 +7,28 @@ from darabonba.model import DaraModel
 class DescribeAdbMySqlColumnsRequest(DaraModel):
     def __init__(
         self,
+        catalog: str = None,
         dbcluster_id: str = None,
         region_id: str = None,
         schema: str = None,
         table_name: str = None,
     ):
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
+        self.catalog = catalog
+        # <props="china">The ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
+        # <props="intl">The ID of the Data Lakehouse Edition cluster.
         # 
-        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the cluster IDs of all clusters in a specified region.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The region ID.
-        # 
-        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/454314.html) operation to query the most recent region list.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/454314.html) operation to query the region ID of a specified cluster.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The name of the database.
+        # The database name.
         self.schema = schema
-        # The name of the table.
+        # The table name.
         self.table_name = table_name
 
     def validate(self):
@@ -37,6 +39,9 @@ class DescribeAdbMySqlColumnsRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.catalog is not None:
+            result['Catalog'] = self.catalog
+
         if self.dbcluster_id is not None:
             result['DBClusterId'] = self.dbcluster_id
 
@@ -53,6 +58,9 @@ class DescribeAdbMySqlColumnsRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Catalog') is not None:
+            self.catalog = m.get('Catalog')
+
         if m.get('DBClusterId') is not None:
             self.dbcluster_id = m.get('DBClusterId')
 

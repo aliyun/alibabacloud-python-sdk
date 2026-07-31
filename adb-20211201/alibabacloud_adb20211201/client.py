@@ -5214,6 +5214,8 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeAdbMySqlColumnsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.catalog):
+            query['Catalog'] = request.catalog
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
         if not DaraCore.is_null(request.region_id):
@@ -5248,6 +5250,8 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeAdbMySqlColumnsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.catalog):
+            query['Catalog'] = request.catalog
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
         if not DaraCore.is_null(request.region_id):
@@ -5378,6 +5382,8 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeAdbMySqlSchemasResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.catalog):
+            query['Catalog'] = request.catalog
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
         if not DaraCore.is_null(request.region_id):
@@ -5408,6 +5414,8 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeAdbMySqlSchemasResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.catalog):
+            query['Catalog'] = request.catalog
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
         if not DaraCore.is_null(request.region_id):
@@ -5534,6 +5542,8 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeAdbMySqlTablesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.catalog):
+            query['Catalog'] = request.catalog
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
         if not DaraCore.is_null(request.region_id):
@@ -5566,6 +5576,8 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeAdbMySqlTablesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.catalog):
+            query['Catalog'] = request.catalog
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
         if not DaraCore.is_null(request.region_id):

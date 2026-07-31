@@ -14,19 +14,17 @@ class DescribeAdbMySqlSchemasResponseBody(DaraModel):
         schemas: List[str] = None,
         success: bool = None,
     ):
-        # The returned message.
-        # 
-        # *   If the request was successful, a **success** message is returned.
-        # *   If the request failed, an error message is returned.
+        # The additional information about the call result. Valid values:
+        # - If the request was successful, **Success** is returned. 
+        # - If the request failed, a specific error code is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The queried databases.
+        # The list of databases.
         self.schemas = schemas
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
+        # Indicates whether the call was successful. Valid values:
+        # - **true**: The call was successful.
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):

@@ -1,3 +1,9 @@
+2026-07-31 Version: 4.0.1
+- Update API DescribeAdbMySqlColumns: add request parameters Catalog.
+- Update API DescribeAdbMySqlSchemas: add request parameters Catalog.
+- Update API DescribeAdbMySqlTables: add request parameters Catalog.
+
+
 2026-07-31 Version: 4.0.0
 - Support API AddKnowledgeFile.
 - Support API CheckFormationSchemaExists.
