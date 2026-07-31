@@ -8,6 +8,7 @@ class ModelRouterUpdateClientRequest(DaraModel):
     def __init__(
         self,
         address: str = None,
+        allowed_model_group_config: str = None,
         allowed_models: str = None,
         contact: str = None,
         discount: float = None,
@@ -17,16 +18,19 @@ class ModelRouterUpdateClientRequest(DaraModel):
     ):
         # The company address.
         self.address = address
-        # A comma-separated list of model IDs that the client can use. If this parameter is left empty, the client can use all models.
+        # The allowed model group configuration.
+        self.allowed_model_group_config = allowed_model_group_config
+        # The list of allowed model IDs, separated by commas. An empty value indicates all models are allowed.
         self.allowed_models = allowed_models
         # The contact information.
         self.contact = contact
+        # The discount coefficient.
         self.discount = discount
-        # The client name.
+        # The customer name.
         self.name = name
-        # A remark about the client.
+        # The remarks.
         self.remark = remark
-        # The client\\"s status.
+        # The status.
         self.status = status
 
     def validate(self):
@@ -39,6 +43,9 @@ class ModelRouterUpdateClientRequest(DaraModel):
             result = _map
         if self.address is not None:
             result['address'] = self.address
+
+        if self.allowed_model_group_config is not None:
+            result['allowedModelGroupConfig'] = self.allowed_model_group_config
 
         if self.allowed_models is not None:
             result['allowedModels'] = self.allowed_models
@@ -64,6 +71,9 @@ class ModelRouterUpdateClientRequest(DaraModel):
         m = m or dict()
         if m.get('address') is not None:
             self.address = m.get('address')
+
+        if m.get('allowedModelGroupConfig') is not None:
+            self.allowed_model_group_config = m.get('allowedModelGroupConfig')
 
         if m.get('allowedModels') is not None:
             self.allowed_models = m.get('allowedModels')

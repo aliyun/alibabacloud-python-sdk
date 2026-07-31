@@ -15,17 +15,17 @@ class ModelRouterCopyApiKeyResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Details of the copied API key.
+        # The data object.
         self.data = data
-        # The error code returned when the request fails.
+        # The fault message code.
         self.err_code = err_code
-        # The error message returned when the request fails.
+        # The error message.
         self.err_message = err_message
         # The HTTP status code.
         self.http_status_code = http_status_code
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the operation is successful.
         self.success = success
 
     def validate(self):

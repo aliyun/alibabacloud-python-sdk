@@ -10,9 +10,9 @@ class ModelRouterQueryClientTreeRequest(DaraModel):
         max_results: int = None,
         next_token: str = None,
     ):
-        # The maximum number of items to return per page.
+        # maxResults
         self.max_results = max_results
-        # The token to retrieve the next page of results.
+        # nextToken
         self.next_token = next_token
 
     def validate(self):

@@ -21,15 +21,15 @@ class ModelRouterBillingCostTabsResponseBody(DaraModel):
     ):
         # The data object.
         self.data = data
-        # The error code.
+        # The fault message code.
         self.err_code = err_code
         # The error message.
         self.err_message = err_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The maximum number of results returned on a single page.
+        # The maximum number of results.
         self.max_results = max_results
-        # The token to retrieve the next page of results.
+        # nextToken
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id

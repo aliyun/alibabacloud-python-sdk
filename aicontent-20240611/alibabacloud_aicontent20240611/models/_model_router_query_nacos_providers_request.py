@@ -20,9 +20,9 @@ class ModelRouterQueryNacosProvidersRequest(DaraModel):
         self.group_by = group_by
         # The maximum number of results to return.
         self.max_results = max_results
-        # Specifies whether to return the total count.
+        # Specifies whether the total count is required.
         self.need_total_count = need_total_count
-        # The pagination token for the next page.
+        # The pagination token used for paginated queries. Specify this parameter to retrieve the next page.
         self.next_token = next_token
         # The field by which to sort the results.
         self.order_by = order_by

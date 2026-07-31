@@ -17,11 +17,17 @@ class ModelRouterListSubscriptionsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The subscription information.
         self.data = data
+        # The fault error message encoding.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -83,8 +89,11 @@ class ModelRouterListSubscriptionsResponseBodyData(DaraModel):
         max_results: int = None,
         next_token: str = None,
     ):
+        # The list of subscription information.
         self.list = list
+        # The maximum number of results per page. Default value: 20.
         self.max_results = max_results
+        # The pagination token. Do not specify this parameter for the first query. For subsequent queries, specify the value returned from the previous query. Set to "" when no more data is available. Set to "5" when there is a next page.
         self.next_token = next_token
 
     def validate(self):

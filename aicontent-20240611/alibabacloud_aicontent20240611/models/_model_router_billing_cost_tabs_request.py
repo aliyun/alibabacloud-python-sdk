@@ -10,9 +10,9 @@ class ModelRouterBillingCostTabsRequest(DaraModel):
         max_results: int = None,
         next_token: str = None,
     ):
-        # Specifies the maximum number of results to return.
+        # The maximum number of results.
         self.max_results = max_results
-        # The token to retrieve the next page of results.
+        # nextToken
         self.next_token = next_token
 
     def validate(self):

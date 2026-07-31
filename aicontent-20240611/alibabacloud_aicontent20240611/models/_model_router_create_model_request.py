@@ -20,15 +20,15 @@ class ModelRouterCreateModelRequest(DaraModel):
         symbol: str = None,
         tags: str = None,
     ):
-        # The API key.
+        # API Key
         self.api_key = api_key
-        # The base URL.
+        # Base URL
         self.base_url = base_url
         # The model description.
         self.description = description
-        # The model\\"s extended configuration parameters, provided as a JSON string.
+        # The extension configuration parameters of the model, stored as a JSON string.
         self.extensions = extensions
-        # The supported input and output data types for the model.
+        # The input and output data types supported by the model.
         self.in_out = in_out
         # The maximum input length.
         self.max_input_length = max_input_length
@@ -42,7 +42,7 @@ class ModelRouterCreateModelRequest(DaraModel):
         self.name = name
         # The vendor symbol.
         self.symbol = symbol
-        # Tags for the model. Separate multiple tags with commas.
+        # The tags, separated by commas.
         self.tags = tags
 
     def validate(self):

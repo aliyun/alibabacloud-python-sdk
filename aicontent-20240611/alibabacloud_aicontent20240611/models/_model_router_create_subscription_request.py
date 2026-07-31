@@ -12,9 +12,15 @@ class ModelRouterCreateSubscriptionRequest(DaraModel):
         idempotency_key: str = None,
         subscription_amount: float = None,
     ):
+        # The balance pool to which the recharge is applied. Valid values:
+        # - permanent: the permanent balance pool.
+        # - monthly: the monthly balance pool.
         self.balance_type = balance_type
+        # The effective period, in UNIX timestamp (seconds). Range: from 00:00 of today to 00:00 of the first day of the next month (Asia/Shanghai).
         self.effective_time = effective_time
+        # The idempotency key. UUID v4 format without hyphens is recommended. This prevents duplicate subscription creation.
         self.idempotency_key = idempotency_key
+        # The subscription recharge amount.
         self.subscription_amount = subscription_amount
 
     def validate(self):

@@ -15,15 +15,15 @@ class ModelRouterCreateConversationResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Data object.
+        # The data object.
         self.data = data
-        # Error code.
+        # The fault code.
         self.err_code = err_code
-        # Error message.
+        # The error message.
         self.err_message = err_message
-        # HTTP status code.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success

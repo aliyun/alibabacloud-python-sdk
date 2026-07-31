@@ -17,7 +17,7 @@ class ModelRouterCreateModelResponseBody(DaraModel):
     ):
         # The data object.
         self.data = data
-        # The error code.
+        # The fault code.
         self.err_code = err_code
         # The error message.
         self.err_message = err_message

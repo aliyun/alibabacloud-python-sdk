@@ -19,19 +19,19 @@ class ModelRouterQueryClientTreeResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # An array of objects that form the customer tree.
+        # The response data. The customer tree structure list.
         self.data = data
-        # The error code returned if the request fails.
+        # The fault information code.
         self.err_code = err_code
-        # The error message returned if the request fails.
+        # The error message.
         self.err_message = err_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The maximum number of entries returned on the current page.
+        # maxResults
         self.max_results = max_results
-        # The token to retrieve the next page of results. If this parameter is not returned, it indicates that there are no more results.
+        # nextToken
         self.next_token = next_token
-        # The unique request ID.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success

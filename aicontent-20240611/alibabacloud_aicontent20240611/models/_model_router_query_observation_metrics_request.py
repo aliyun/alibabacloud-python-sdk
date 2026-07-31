@@ -22,33 +22,33 @@ class ModelRouterQueryObservationMetricsRequest(DaraModel):
         start_time: str = None,
         time_range: str = None,
     ):
-        # The API Key ID to use for filtering the results.
+        # The API key ID used to filter the results.
         self.api_key_id = api_key_id
-        # The client ID to use for filtering the results.
+        # The client ID used to filter the results.
         self.client_id = client_id
-        # The end time of a custom time range for the query.
+        # The custom end time.
         self.end_time = end_time
-        # The field to use for grouping the results.
+        # The field by which to group the results.
         self.group_by = group_by
         # The maximum number of results to return.
         self.max_results = max_results
-        # The model ID to use for filtering the results.
+        # The model ID used to filter the results.
         self.model_id = model_id
-        # Specifies whether to return the total count of results.
+        # Specifies whether to return the total count.
         self.need_total_count = need_total_count
-        # The token used to retrieve the next page of results, obtained from the previous response.
+        # The token for the next query. An empty value indicates the last page.
         self.next_token = next_token
-        # The field to use for sorting the results.
+        # The field by which to sort the results.
         self.order_by = order_by
-        # The sort order. Valid values: `ASC` (ascending) and `DESC` (descending).
+        # The sort direction.
         self.order_direction = order_direction
-        # The page number to retrieve.
+        # The page number.
         self.page_index = page_index
-        # The number of results to return per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The start time of a custom time range for the query.
+        # The custom start time.
         self.start_time = start_time
-        # The time range for the query. Valid values: `1h`, `6h`, `24h`, `7d`, and `30d`.
+        # The time range for the query. Valid values: 1h, 6h, 24h, 7d, and 30d.
         self.time_range = time_range
 
     def validate(self):

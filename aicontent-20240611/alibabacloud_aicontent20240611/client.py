@@ -3715,6 +3715,86 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_textbook_assistant_scene_details_with_options_async(request, headers, runtime)
 
+    def model_router_batch_bind_model_group_with_options(
+        self,
+        request: main_models.ModelRouterBatchBindModelGroupRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterBatchBindModelGroupResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.allowed_model_group_config):
+            body['allowedModelGroupConfig'] = request.allowed_model_group_config
+        if not DaraCore.is_null(request.client_id_list):
+            body['clientIdList'] = request.client_id_list
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterBatchBindModelGroup',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/clients/batch-bind-model-group',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterBatchBindModelGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def model_router_batch_bind_model_group_with_options_async(
+        self,
+        request: main_models.ModelRouterBatchBindModelGroupRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterBatchBindModelGroupResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.allowed_model_group_config):
+            body['allowedModelGroupConfig'] = request.allowed_model_group_config
+        if not DaraCore.is_null(request.client_id_list):
+            body['clientIdList'] = request.client_id_list
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterBatchBindModelGroup',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/clients/batch-bind-model-group',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterBatchBindModelGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def model_router_batch_bind_model_group(
+        self,
+        request: main_models.ModelRouterBatchBindModelGroupRequest,
+    ) -> main_models.ModelRouterBatchBindModelGroupResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.model_router_batch_bind_model_group_with_options(request, headers, runtime)
+
+    async def model_router_batch_bind_model_group_async(
+        self,
+        request: main_models.ModelRouterBatchBindModelGroupRequest,
+    ) -> main_models.ModelRouterBatchBindModelGroupResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.model_router_batch_bind_model_group_with_options_async(request, headers, runtime)
+
     def model_router_billing_cost_tabs_with_options(
         self,
         request: main_models.ModelRouterBillingCostTabsRequest,
@@ -4369,6 +4449,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.address):
             body['address'] = request.address
+        if not DaraCore.is_null(request.allowed_model_group_config):
+            body['allowedModelGroupConfig'] = request.allowed_model_group_config
         if not DaraCore.is_null(request.allowed_models):
             body['allowedModels'] = request.allowed_models
         if not DaraCore.is_null(request.contact):
@@ -4411,6 +4493,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.address):
             body['address'] = request.address
+        if not DaraCore.is_null(request.allowed_model_group_config):
+            body['allowedModelGroupConfig'] = request.allowed_model_group_config
         if not DaraCore.is_null(request.allowed_models):
             body['allowedModels'] = request.allowed_models
         if not DaraCore.is_null(request.contact):
@@ -4662,6 +4746,86 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.model_router_create_model_with_options_async(request, headers, runtime)
+
+    def model_router_create_model_group_with_options(
+        self,
+        request: main_models.ModelRouterCreateModelGroupRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterCreateModelGroupResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.model_list):
+            body['modelList'] = request.model_list
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterCreateModelGroup',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/model-groups',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterCreateModelGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def model_router_create_model_group_with_options_async(
+        self,
+        request: main_models.ModelRouterCreateModelGroupRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterCreateModelGroupResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.model_list):
+            body['modelList'] = request.model_list
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterCreateModelGroup',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/model-groups',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterCreateModelGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def model_router_create_model_group(
+        self,
+        request: main_models.ModelRouterCreateModelGroupRequest,
+    ) -> main_models.ModelRouterCreateModelGroupResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.model_router_create_model_group_with_options(request, headers, runtime)
+
+    async def model_router_create_model_group_async(
+        self,
+        request: main_models.ModelRouterCreateModelGroupRequest,
+    ) -> main_models.ModelRouterCreateModelGroupResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.model_router_create_model_group_with_options_async(request, headers, runtime)
 
     def model_router_create_subscription_with_options(
         self,
@@ -5019,6 +5183,78 @@ class Client(OpenApiClient):
         headers = {}
         return await self.model_router_delete_model_with_options_async(id, headers, runtime)
 
+    def model_router_delete_model_group_with_options(
+        self,
+        group_id: str,
+        request: main_models.ModelRouterDeleteModelGroupRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterDeleteModelGroupResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterDeleteModelGroup',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/model-groups/{DaraURL.percent_encode(group_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterDeleteModelGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def model_router_delete_model_group_with_options_async(
+        self,
+        group_id: str,
+        request: main_models.ModelRouterDeleteModelGroupRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterDeleteModelGroupResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterDeleteModelGroup',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/model-groups/{DaraURL.percent_encode(group_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterDeleteModelGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def model_router_delete_model_group(
+        self,
+        group_id: str,
+        request: main_models.ModelRouterDeleteModelGroupRequest,
+    ) -> main_models.ModelRouterDeleteModelGroupResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.model_router_delete_model_group_with_options(group_id, request, headers, runtime)
+
+    async def model_router_delete_model_group_async(
+        self,
+        group_id: str,
+        request: main_models.ModelRouterDeleteModelGroupRequest,
+    ) -> main_models.ModelRouterDeleteModelGroupResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.model_router_delete_model_group_with_options_async(group_id, request, headers, runtime)
+
     def model_router_get_client_balance_with_options(
         self,
         id: str,
@@ -5186,6 +5422,110 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.model_router_get_client_balance_logs_with_options_async(id, request, headers, runtime)
+
+    def model_router_list_balance_orders_with_options(
+        self,
+        id: str,
+        request: main_models.ModelRouterListBalanceOrdersRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterListBalanceOrdersResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.balance_type):
+            query['balanceType'] = request.balance_type
+        if not DaraCore.is_null(request.direction):
+            query['direction'] = request.direction
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.order_type):
+            query['orderType'] = request.order_type
+        if not DaraCore.is_null(request.page):
+            query['page'] = request.page
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterListBalanceOrders',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/clients/{DaraURL.percent_encode(id)}/balance/orders',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterListBalanceOrdersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def model_router_list_balance_orders_with_options_async(
+        self,
+        id: str,
+        request: main_models.ModelRouterListBalanceOrdersRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterListBalanceOrdersResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.balance_type):
+            query['balanceType'] = request.balance_type
+        if not DaraCore.is_null(request.direction):
+            query['direction'] = request.direction
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.order_type):
+            query['orderType'] = request.order_type
+        if not DaraCore.is_null(request.page):
+            query['page'] = request.page
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterListBalanceOrders',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/clients/{DaraURL.percent_encode(id)}/balance/orders',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterListBalanceOrdersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def model_router_list_balance_orders(
+        self,
+        id: str,
+        request: main_models.ModelRouterListBalanceOrdersRequest,
+    ) -> main_models.ModelRouterListBalanceOrdersResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.model_router_list_balance_orders_with_options(id, request, headers, runtime)
+
+    async def model_router_list_balance_orders_async(
+        self,
+        id: str,
+        request: main_models.ModelRouterListBalanceOrdersRequest,
+    ) -> main_models.ModelRouterListBalanceOrdersResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.model_router_list_balance_orders_with_options_async(id, request, headers, runtime)
 
     def model_router_list_subscriptions_with_options(
         self,
@@ -6633,6 +6973,434 @@ class Client(OpenApiClient):
         headers = {}
         return await self.model_router_query_model_with_options_async(id, headers, runtime)
 
+    def model_router_query_model_group_with_options(
+        self,
+        group_id: str,
+        request: main_models.ModelRouterQueryModelGroupRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterQueryModelGroupResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterQueryModelGroup',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/model-groups/{DaraURL.percent_encode(group_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterQueryModelGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def model_router_query_model_group_with_options_async(
+        self,
+        group_id: str,
+        request: main_models.ModelRouterQueryModelGroupRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterQueryModelGroupResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterQueryModelGroup',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/model-groups/{DaraURL.percent_encode(group_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterQueryModelGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def model_router_query_model_group(
+        self,
+        group_id: str,
+        request: main_models.ModelRouterQueryModelGroupRequest,
+    ) -> main_models.ModelRouterQueryModelGroupResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.model_router_query_model_group_with_options(group_id, request, headers, runtime)
+
+    async def model_router_query_model_group_async(
+        self,
+        group_id: str,
+        request: main_models.ModelRouterQueryModelGroupRequest,
+    ) -> main_models.ModelRouterQueryModelGroupResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.model_router_query_model_group_with_options_async(group_id, request, headers, runtime)
+
+    def model_router_query_model_group_clients_with_options(
+        self,
+        group_id: str,
+        request: main_models.ModelRouterQueryModelGroupClientsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterQueryModelGroupClientsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_index):
+            query['pageIndex'] = request.page_index
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterQueryModelGroupClients',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/model-groups/{DaraURL.percent_encode(group_id)}/clients',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterQueryModelGroupClientsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def model_router_query_model_group_clients_with_options_async(
+        self,
+        group_id: str,
+        request: main_models.ModelRouterQueryModelGroupClientsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterQueryModelGroupClientsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_index):
+            query['pageIndex'] = request.page_index
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterQueryModelGroupClients',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/model-groups/{DaraURL.percent_encode(group_id)}/clients',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterQueryModelGroupClientsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def model_router_query_model_group_clients(
+        self,
+        group_id: str,
+        request: main_models.ModelRouterQueryModelGroupClientsRequest,
+    ) -> main_models.ModelRouterQueryModelGroupClientsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.model_router_query_model_group_clients_with_options(group_id, request, headers, runtime)
+
+    async def model_router_query_model_group_clients_async(
+        self,
+        group_id: str,
+        request: main_models.ModelRouterQueryModelGroupClientsRequest,
+    ) -> main_models.ModelRouterQueryModelGroupClientsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.model_router_query_model_group_clients_with_options_async(group_id, request, headers, runtime)
+
+    def model_router_query_model_group_list_with_options(
+        self,
+        request: main_models.ModelRouterQueryModelGroupListRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterQueryModelGroupListResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.keyword):
+            query['keyword'] = request.keyword
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_index):
+            query['pageIndex'] = request.page_index
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.type):
+            query['type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterQueryModelGroupList',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/model-groups',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterQueryModelGroupListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def model_router_query_model_group_list_with_options_async(
+        self,
+        request: main_models.ModelRouterQueryModelGroupListRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterQueryModelGroupListResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.keyword):
+            query['keyword'] = request.keyword
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_index):
+            query['pageIndex'] = request.page_index
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.type):
+            query['type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterQueryModelGroupList',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/model-groups',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterQueryModelGroupListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def model_router_query_model_group_list(
+        self,
+        request: main_models.ModelRouterQueryModelGroupListRequest,
+    ) -> main_models.ModelRouterQueryModelGroupListResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.model_router_query_model_group_list_with_options(request, headers, runtime)
+
+    async def model_router_query_model_group_list_async(
+        self,
+        request: main_models.ModelRouterQueryModelGroupListRequest,
+    ) -> main_models.ModelRouterQueryModelGroupListResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.model_router_query_model_group_list_with_options_async(request, headers, runtime)
+
+    def model_router_query_model_group_models_with_options(
+        self,
+        group_id: str,
+        request: main_models.ModelRouterQueryModelGroupModelsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterQueryModelGroupModelsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.keyword):
+            query['keyword'] = request.keyword
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_index):
+            query['pageIndex'] = request.page_index
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterQueryModelGroupModels',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/model-groups/{DaraURL.percent_encode(group_id)}/models',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterQueryModelGroupModelsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def model_router_query_model_group_models_with_options_async(
+        self,
+        group_id: str,
+        request: main_models.ModelRouterQueryModelGroupModelsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterQueryModelGroupModelsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.keyword):
+            query['keyword'] = request.keyword
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_index):
+            query['pageIndex'] = request.page_index
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterQueryModelGroupModels',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/model-groups/{DaraURL.percent_encode(group_id)}/models',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterQueryModelGroupModelsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def model_router_query_model_group_models(
+        self,
+        group_id: str,
+        request: main_models.ModelRouterQueryModelGroupModelsRequest,
+    ) -> main_models.ModelRouterQueryModelGroupModelsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.model_router_query_model_group_models_with_options(group_id, request, headers, runtime)
+
+    async def model_router_query_model_group_models_async(
+        self,
+        group_id: str,
+        request: main_models.ModelRouterQueryModelGroupModelsRequest,
+    ) -> main_models.ModelRouterQueryModelGroupModelsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.model_router_query_model_group_models_with_options_async(group_id, request, headers, runtime)
+
+    def model_router_query_model_groups_by_api_key_with_options(
+        self,
+        id: str,
+        request: main_models.ModelRouterQueryModelGroupsByApiKeyRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterQueryModelGroupsByApiKeyResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterQueryModelGroupsByApiKey',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/apikeys/{DaraURL.percent_encode(id)}/model-groups',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterQueryModelGroupsByApiKeyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def model_router_query_model_groups_by_api_key_with_options_async(
+        self,
+        id: str,
+        request: main_models.ModelRouterQueryModelGroupsByApiKeyRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterQueryModelGroupsByApiKeyResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterQueryModelGroupsByApiKey',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/apikeys/{DaraURL.percent_encode(id)}/model-groups',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterQueryModelGroupsByApiKeyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def model_router_query_model_groups_by_api_key(
+        self,
+        id: str,
+        request: main_models.ModelRouterQueryModelGroupsByApiKeyRequest,
+    ) -> main_models.ModelRouterQueryModelGroupsByApiKeyResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.model_router_query_model_groups_by_api_key_with_options(id, request, headers, runtime)
+
+    async def model_router_query_model_groups_by_api_key_async(
+        self,
+        id: str,
+        request: main_models.ModelRouterQueryModelGroupsByApiKeyRequest,
+    ) -> main_models.ModelRouterQueryModelGroupsByApiKeyResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.model_router_query_model_groups_by_api_key_with_options_async(id, request, headers, runtime)
+
     def model_router_query_model_list_with_options(
         self,
         request: main_models.ModelRouterQueryModelListRequest,
@@ -7700,6 +8468,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.address):
             body['address'] = request.address
+        if not DaraCore.is_null(request.allowed_model_group_config):
+            body['allowedModelGroupConfig'] = request.allowed_model_group_config
         if not DaraCore.is_null(request.allowed_models):
             body['allowedModels'] = request.allowed_models
         if not DaraCore.is_null(request.contact):
@@ -7743,6 +8513,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.address):
             body['address'] = request.address
+        if not DaraCore.is_null(request.allowed_model_group_config):
+            body['allowedModelGroupConfig'] = request.allowed_model_group_config
         if not DaraCore.is_null(request.allowed_models):
             body['allowedModels'] = request.allowed_models
         if not DaraCore.is_null(request.contact):
@@ -8004,6 +8776,90 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.model_router_update_model_with_options_async(id, request, headers, runtime)
+
+    def model_router_update_model_group_with_options(
+        self,
+        group_id: str,
+        request: main_models.ModelRouterUpdateModelGroupRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterUpdateModelGroupResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.model_list):
+            body['modelList'] = request.model_list
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterUpdateModelGroup',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/model-groups/{DaraURL.percent_encode(group_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterUpdateModelGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def model_router_update_model_group_with_options_async(
+        self,
+        group_id: str,
+        request: main_models.ModelRouterUpdateModelGroupRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterUpdateModelGroupResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.model_list):
+            body['modelList'] = request.model_list
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterUpdateModelGroup',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/model-groups/{DaraURL.percent_encode(group_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterUpdateModelGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def model_router_update_model_group(
+        self,
+        group_id: str,
+        request: main_models.ModelRouterUpdateModelGroupRequest,
+    ) -> main_models.ModelRouterUpdateModelGroupResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.model_router_update_model_group_with_options(group_id, request, headers, runtime)
+
+    async def model_router_update_model_group_async(
+        self,
+        group_id: str,
+        request: main_models.ModelRouterUpdateModelGroupRequest,
+    ) -> main_models.ModelRouterUpdateModelGroupResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.model_router_update_model_group_with_options_async(group_id, request, headers, runtime)
 
     def personalized_text_to_image_add_inference_job_with_options(
         self,

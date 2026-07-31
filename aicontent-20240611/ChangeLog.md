@@ -1,3 +1,16 @@
+2026-07-31 Version: 7.5.0
+- Support API ModelRouterBatchBindModelGroup.
+- Support API ModelRouterCreateModelGroup.
+- Support API ModelRouterDeleteModelGroup.
+- Support API ModelRouterListBalanceOrders.
+- Support API ModelRouterQueryModelGroup.
+- Support API ModelRouterQueryModelGroupClients.
+- Support API ModelRouterQueryModelGroupList.
+- Support API ModelRouterQueryModelGroupModels.
+- Support API ModelRouterQueryModelGroupsByApiKey.
+- Support API ModelRouterUpdateModelGroup.
+
+
 2026-07-21 Version: 7.4.0
 - Support API ModelRouterCreateSubscription.
 - Support API ModelRouterListSubscriptions.

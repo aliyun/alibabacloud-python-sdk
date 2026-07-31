@@ -19,7 +19,7 @@ class ModelRouterQueryNacosProvidersResponseBody(DaraModel):
     ):
         # The data object.
         self.data = data
-        # The error message code.
+        # The fault message code.
         self.err_code = err_code
         # The error message.
         self.err_message = err_message
@@ -161,14 +161,17 @@ class ModelRouterQueryNacosProvidersResponseBodyDataModels(DaraModel):
         output_token: str = None,
         type: str = None,
     ):
+        # The extension configuration parameters of the model, stored as key-value pairs for additional model behavior configuration.
         self.extensions = extensions
         # The model identifier.
         self.identifier = identifier
+        # The input type and output type.
         self.in_out = in_out
         # The input token limit.
         self.input_token = input_token
         # The output token limit.
         self.output_token = output_token
+        # The feature type or capability category of the model.
         self.type = type
 
     def validate(self):
@@ -228,6 +231,7 @@ class ModelRouterQueryNacosProvidersResponseBodyDataModelsExtensions(DaraModel):
         self,
         async_: bool = None,
     ):
+        # The asynchronous call identifier.
         self.async_ = async_
 
     def validate(self):

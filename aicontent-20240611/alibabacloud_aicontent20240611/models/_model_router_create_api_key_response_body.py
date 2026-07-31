@@ -15,17 +15,17 @@ class ModelRouterCreateApiKeyResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The returned data object.
+        # The data object.
         self.data = data
-        # The error code returned if the request fails.
+        # The fault code.
         self.err_code = err_code
-        # The error message returned if the request fails.
+        # The error message.
         self.err_message = err_message
         # The HTTP status code.
         self.http_status_code = http_status_code
         # The request ID.
         self.request_id = request_id
-        # Indicates if the request succeeded.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

@@ -11,7 +11,7 @@ class ModelRouterChatCompletionsRequest(DaraModel):
         self,
         body: Any = None,
     ):
-        # The request body, which must be a JSON object.
+        # The chat request body.
         self.body = body
 
     def validate(self):

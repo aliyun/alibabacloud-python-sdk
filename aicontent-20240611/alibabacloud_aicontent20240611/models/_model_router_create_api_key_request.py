@@ -9,7 +9,7 @@ class ModelRouterCreateApiKeyRequest(DaraModel):
         self,
         client_id: int = None,
     ):
-        # The client ID. A value of `null` represents the default client.
+        # The client ID. A value of null indicates the default client.
         self.client_id = client_id
 
     def validate(self):

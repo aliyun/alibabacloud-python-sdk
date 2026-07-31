@@ -12,9 +12,13 @@ class ModelRouterListSubscriptionsRequest(DaraModel):
         next_token: str = None,
         status: str = None,
     ):
+        # Filters by balance type (permanent/monthly).
         self.balance_type = balance_type
+        # The maximum number of results to return per page.
         self.max_results = max_results
+        # The pagination token. Do not specify this parameter for the first query. For subsequent queries, specify the value returned from the previous query. Set to "" when no more data is available. Set to "5" when there is a next page.
         self.next_token = next_token
+        # Filters by status (active/stopped).
         self.status = status
 
     def validate(self):

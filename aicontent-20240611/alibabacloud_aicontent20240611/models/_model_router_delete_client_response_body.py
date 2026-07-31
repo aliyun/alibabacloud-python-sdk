@@ -14,9 +14,9 @@ class ModelRouterDeleteClientResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Whether the client was deleted successfully.
+        # Indicates whether the customer was deleted.
         self.data = data
-        # The error code.
+        # The fault message code.
         self.err_code = err_code
         # The error message.
         self.err_message = err_message
@@ -24,7 +24,7 @@ class ModelRouterDeleteClientResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The request ID.
         self.request_id = request_id
-        # Whether the request was successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

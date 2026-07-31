@@ -14,15 +14,15 @@ class ModelRouterDeleteConversationResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # A value of true indicates that the conversation was successfully deleted.
+        # Indicates whether the conversation was deleted.
         self.data = data
-        # The error code returned if the request fails.
+        # The fault message code.
         self.err_code = err_code
-        # The error message returned if the request fails.
+        # The error message.
         self.err_message = err_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The unique request ID. Include this ID when contacting technical support.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success

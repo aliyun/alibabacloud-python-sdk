@@ -15,15 +15,15 @@ class ModelRouterQueryObservationMetricsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # An object that contains the results and pagination information.
+        # The data object.
         self.data = data
-        # The error code returned on failure.
+        # The fault code.
         self.err_code = err_code
-        # The error message returned on failure.
+        # The error message.
         self.err_message = err_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The unique request ID.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success

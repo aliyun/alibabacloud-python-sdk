@@ -16,17 +16,17 @@ class ModelRouterChatCompletionsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Contains the core response data.
+        # The data object.
         self.data = data
-        # The error code returned when a request fails.
+        # The fault message code.
         self.err_code = err_code
         # The error message.
         self.err_message = err_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # A unique request identifier for troubleshooting.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the API call was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

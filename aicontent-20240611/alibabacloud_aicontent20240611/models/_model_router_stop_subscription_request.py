@@ -9,6 +9,7 @@ class ModelRouterStopSubscriptionRequest(DaraModel):
         self,
         balance_type: str = None,
     ):
+        # The type of subscription balance to stop (permanent/monthly).
         self.balance_type = balance_type
 
     def validate(self):
