@@ -1,3 +1,32 @@
+2026-08-03 Version: 6.1.0
+- Support API applyRefund.
+- Support API batchGetHotelDetail.
+- Support API cancelOrRefund.
+- Support API cancelOrder.
+- Support API createAndPay.
+- Support API createOrder.
+- Support API globalHotelApplyRefund.
+- Support API globalHotelBatchGetHotelDetail.
+- Support API globalHotelCancelOrRefund.
+- Support API globalHotelCancelOrder.
+- Support API globalHotelCreateAndPay.
+- Support API globalHotelCreateOrder.
+- Support API globalHotelPay.
+- Support API globalHotelQueryAvailability.
+- Support API globalHotelQueryCalendarAvailability.
+- Support API globalHotelQueryOrder.
+- Support API globalHotelSearchCityPage.
+- Support API globalHotelSearchHotelList.
+- Support API globalHotelValidatePrice.
+- Support API pay.
+- Support API queryAvailability.
+- Support API queryCalendarAvailability.
+- Support API queryOrder.
+- Support API searchCityPage.
+- Support API searchHotelList.
+- Support API validatePrice.
+
+
 2026-08-03 Version: 6.0.3
 - Generated python 2023-01-17 for airticketOpen.
 

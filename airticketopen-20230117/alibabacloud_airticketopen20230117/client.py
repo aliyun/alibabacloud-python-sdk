@@ -2743,3 +2743,2563 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = main_models.TransitVisaHeaders()
         return await self.transit_visa_with_options_async(request, headers, runtime)
+
+    def apply_refund_with_options(
+        self,
+        request: main_models.ApplyRefundRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ApplyRefundResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.order_no):
+            body['OrderNo'] = request.order_no
+        if not DaraCore.is_null(request.refund_reason):
+            body['RefundReason'] = request.refund_reason
+        if not DaraCore.is_null(request.tracer_id):
+            body['TracerId'] = request.tracer_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'applyRefund',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/applyRefund',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ApplyRefundResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def apply_refund_with_options_async(
+        self,
+        request: main_models.ApplyRefundRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ApplyRefundResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.order_no):
+            body['OrderNo'] = request.order_no
+        if not DaraCore.is_null(request.refund_reason):
+            body['RefundReason'] = request.refund_reason
+        if not DaraCore.is_null(request.tracer_id):
+            body['TracerId'] = request.tracer_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'applyRefund',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/applyRefund',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ApplyRefundResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def apply_refund(
+        self,
+        request: main_models.ApplyRefundRequest,
+    ) -> main_models.ApplyRefundResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.apply_refund_with_options(request, headers, runtime)
+
+    async def apply_refund_async(
+        self,
+        request: main_models.ApplyRefundRequest,
+    ) -> main_models.ApplyRefundResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.apply_refund_with_options_async(request, headers, runtime)
+
+    def batch_get_hotel_detail_with_options(
+        self,
+        tmp_req: main_models.BatchGetHotelDetailRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchGetHotelDetailResponse:
+        tmp_req.validate()
+        request = main_models.BatchGetHotelDetailShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.standard_hotel_ids):
+            request.standard_hotel_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.standard_hotel_ids, 'StandardHotelIds', 'json')
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.language):
+            body['Language'] = request.language
+        if not DaraCore.is_null(request.standard_hotel_ids_shrink):
+            body['StandardHotelIds'] = request.standard_hotel_ids_shrink
+        if not DaraCore.is_null(request.tracer_id):
+            body['TracerId'] = request.tracer_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'batchGetHotelDetail',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/batchGetHotelDetail',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchGetHotelDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_get_hotel_detail_with_options_async(
+        self,
+        tmp_req: main_models.BatchGetHotelDetailRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchGetHotelDetailResponse:
+        tmp_req.validate()
+        request = main_models.BatchGetHotelDetailShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.standard_hotel_ids):
+            request.standard_hotel_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.standard_hotel_ids, 'StandardHotelIds', 'json')
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.language):
+            body['Language'] = request.language
+        if not DaraCore.is_null(request.standard_hotel_ids_shrink):
+            body['StandardHotelIds'] = request.standard_hotel_ids_shrink
+        if not DaraCore.is_null(request.tracer_id):
+            body['TracerId'] = request.tracer_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'batchGetHotelDetail',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/batchGetHotelDetail',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchGetHotelDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_get_hotel_detail(
+        self,
+        request: main_models.BatchGetHotelDetailRequest,
+    ) -> main_models.BatchGetHotelDetailResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.batch_get_hotel_detail_with_options(request, headers, runtime)
+
+    async def batch_get_hotel_detail_async(
+        self,
+        request: main_models.BatchGetHotelDetailRequest,
+    ) -> main_models.BatchGetHotelDetailResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.batch_get_hotel_detail_with_options_async(request, headers, runtime)
+
+    def cancel_or_refund_with_options(
+        self,
+        request: main_models.CancelOrRefundRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CancelOrRefundResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.order_no):
+            body['OrderNo'] = request.order_no
+        if not DaraCore.is_null(request.tracer_id):
+            body['TracerId'] = request.tracer_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'cancelOrRefund',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/cancelOrRefund',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CancelOrRefundResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cancel_or_refund_with_options_async(
+        self,
+        request: main_models.CancelOrRefundRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CancelOrRefundResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.order_no):
+            body['OrderNo'] = request.order_no
+        if not DaraCore.is_null(request.tracer_id):
+            body['TracerId'] = request.tracer_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'cancelOrRefund',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/cancelOrRefund',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CancelOrRefundResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cancel_or_refund(
+        self,
+        request: main_models.CancelOrRefundRequest,
+    ) -> main_models.CancelOrRefundResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.cancel_or_refund_with_options(request, headers, runtime)
+
+    async def cancel_or_refund_async(
+        self,
+        request: main_models.CancelOrRefundRequest,
+    ) -> main_models.CancelOrRefundResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.cancel_or_refund_with_options_async(request, headers, runtime)
+
+    def cancel_order_with_options(
+        self,
+        request: main_models.CancelOrderRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CancelOrderResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.order_no):
+            body['OrderNo'] = request.order_no
+        if not DaraCore.is_null(request.tracer_id):
+            body['TracerId'] = request.tracer_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'cancelOrder',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/cancelOrder',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CancelOrderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cancel_order_with_options_async(
+        self,
+        request: main_models.CancelOrderRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CancelOrderResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.order_no):
+            body['OrderNo'] = request.order_no
+        if not DaraCore.is_null(request.tracer_id):
+            body['TracerId'] = request.tracer_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'cancelOrder',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/cancelOrder',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CancelOrderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cancel_order(
+        self,
+        request: main_models.CancelOrderRequest,
+    ) -> main_models.CancelOrderResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.cancel_order_with_options(request, headers, runtime)
+
+    async def cancel_order_async(
+        self,
+        request: main_models.CancelOrderRequest,
+    ) -> main_models.CancelOrderResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.cancel_order_with_options_async(request, headers, runtime)
+
+    def create_and_pay_with_options(
+        self,
+        tmp_req: main_models.CreateAndPayRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAndPayResponse:
+        tmp_req.validate()
+        request = main_models.CreateAndPayShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.contact):
+            request.contact_shrink = Utils.array_to_string_with_specified_style(tmp_req.contact, 'Contact', 'json')
+        if not DaraCore.is_null(tmp_req.guests):
+            request.guests_shrink = Utils.array_to_string_with_specified_style(tmp_req.guests, 'Guests', 'json')
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.contact_shrink):
+            body['Contact'] = request.contact_shrink
+        if not DaraCore.is_null(request.external_order_no):
+            body['ExternalOrderNo'] = request.external_order_no
+        if not DaraCore.is_null(request.guests_shrink):
+            body['Guests'] = request.guests_shrink
+        if not DaraCore.is_null(request.item_offer_id):
+            body['ItemOfferId'] = request.item_offer_id
+        if not DaraCore.is_null(request.room_count):
+            body['RoomCount'] = request.room_count
+        if not DaraCore.is_null(request.tracer_id):
+            body['TracerId'] = request.tracer_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'createAndPay',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/createAndPay',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAndPayResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_and_pay_with_options_async(
+        self,
+        tmp_req: main_models.CreateAndPayRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAndPayResponse:
+        tmp_req.validate()
+        request = main_models.CreateAndPayShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.contact):
+            request.contact_shrink = Utils.array_to_string_with_specified_style(tmp_req.contact, 'Contact', 'json')
+        if not DaraCore.is_null(tmp_req.guests):
+            request.guests_shrink = Utils.array_to_string_with_specified_style(tmp_req.guests, 'Guests', 'json')
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.contact_shrink):
+            body['Contact'] = request.contact_shrink
+        if not DaraCore.is_null(request.external_order_no):
+            body['ExternalOrderNo'] = request.external_order_no
+        if not DaraCore.is_null(request.guests_shrink):
+            body['Guests'] = request.guests_shrink
+        if not DaraCore.is_null(request.item_offer_id):
+            body['ItemOfferId'] = request.item_offer_id
+        if not DaraCore.is_null(request.room_count):
+            body['RoomCount'] = request.room_count
+        if not DaraCore.is_null(request.tracer_id):
+            body['TracerId'] = request.tracer_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'createAndPay',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/createAndPay',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAndPayResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_and_pay(
+        self,
+        request: main_models.CreateAndPayRequest,
+    ) -> main_models.CreateAndPayResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_and_pay_with_options(request, headers, runtime)
+
+    async def create_and_pay_async(
+        self,
+        request: main_models.CreateAndPayRequest,
+    ) -> main_models.CreateAndPayResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_and_pay_with_options_async(request, headers, runtime)
+
+    def create_order_with_options(
+        self,
+        tmp_req: main_models.CreateOrderRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateOrderResponse:
+        tmp_req.validate()
+        request = main_models.CreateOrderShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.contact):
+            request.contact_shrink = Utils.array_to_string_with_specified_style(tmp_req.contact, 'Contact', 'json')
+        if not DaraCore.is_null(tmp_req.guests):
+            request.guests_shrink = Utils.array_to_string_with_specified_style(tmp_req.guests, 'Guests', 'json')
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.contact_shrink):
+            body['Contact'] = request.contact_shrink
+        if not DaraCore.is_null(request.external_order_no):
+            body['ExternalOrderNo'] = request.external_order_no
+        if not DaraCore.is_null(request.guests_shrink):
+            body['Guests'] = request.guests_shrink
+        if not DaraCore.is_null(request.item_offer_id):
+            body['ItemOfferId'] = request.item_offer_id
+        if not DaraCore.is_null(request.room_count):
+            body['RoomCount'] = request.room_count
+        if not DaraCore.is_null(request.tracer_id):
+            body['TracerId'] = request.tracer_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'createOrder',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/createOrder',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateOrderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_order_with_options_async(
+        self,
+        tmp_req: main_models.CreateOrderRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateOrderResponse:
+        tmp_req.validate()
+        request = main_models.CreateOrderShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.contact):
+            request.contact_shrink = Utils.array_to_string_with_specified_style(tmp_req.contact, 'Contact', 'json')
+        if not DaraCore.is_null(tmp_req.guests):
+            request.guests_shrink = Utils.array_to_string_with_specified_style(tmp_req.guests, 'Guests', 'json')
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.contact_shrink):
+            body['Contact'] = request.contact_shrink
+        if not DaraCore.is_null(request.external_order_no):
+            body['ExternalOrderNo'] = request.external_order_no
+        if not DaraCore.is_null(request.guests_shrink):
+            body['Guests'] = request.guests_shrink
+        if not DaraCore.is_null(request.item_offer_id):
+            body['ItemOfferId'] = request.item_offer_id
+        if not DaraCore.is_null(request.room_count):
+            body['RoomCount'] = request.room_count
+        if not DaraCore.is_null(request.tracer_id):
+            body['TracerId'] = request.tracer_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'createOrder',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/createOrder',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateOrderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_order(
+        self,
+        request: main_models.CreateOrderRequest,
+    ) -> main_models.CreateOrderResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_order_with_options(request, headers, runtime)
+
+    async def create_order_async(
+        self,
+        request: main_models.CreateOrderRequest,
+    ) -> main_models.CreateOrderResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_order_with_options_async(request, headers, runtime)
+
+    def global_hotel_apply_refund_with_options(
+        self,
+        request: main_models.GlobalHotelApplyRefundRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GlobalHotelApplyRefundResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.order_no):
+            body['OrderNo'] = request.order_no
+        if not DaraCore.is_null(request.refund_reason):
+            body['RefundReason'] = request.refund_reason
+        if not DaraCore.is_null(request.tracer_id):
+            body['TracerId'] = request.tracer_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'globalHotelApplyRefund',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/globalHotelApplyRefund',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GlobalHotelApplyRefundResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def global_hotel_apply_refund_with_options_async(
+        self,
+        request: main_models.GlobalHotelApplyRefundRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GlobalHotelApplyRefundResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.order_no):
+            body['OrderNo'] = request.order_no
+        if not DaraCore.is_null(request.refund_reason):
+            body['RefundReason'] = request.refund_reason
+        if not DaraCore.is_null(request.tracer_id):
+            body['TracerId'] = request.tracer_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'globalHotelApplyRefund',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/globalHotelApplyRefund',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GlobalHotelApplyRefundResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def global_hotel_apply_refund(
+        self,
+        request: main_models.GlobalHotelApplyRefundRequest,
+    ) -> main_models.GlobalHotelApplyRefundResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.global_hotel_apply_refund_with_options(request, headers, runtime)
+
+    async def global_hotel_apply_refund_async(
+        self,
+        request: main_models.GlobalHotelApplyRefundRequest,
+    ) -> main_models.GlobalHotelApplyRefundResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.global_hotel_apply_refund_with_options_async(request, headers, runtime)
+
+    def global_hotel_batch_get_hotel_detail_with_options(
+        self,
+        tmp_req: main_models.GlobalHotelBatchGetHotelDetailRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GlobalHotelBatchGetHotelDetailResponse:
+        tmp_req.validate()
+        request = main_models.GlobalHotelBatchGetHotelDetailShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.standard_hotel_ids):
+            request.standard_hotel_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.standard_hotel_ids, 'StandardHotelIds', 'json')
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.language):
+            body['Language'] = request.language
+        if not DaraCore.is_null(request.standard_hotel_ids_shrink):
+            body['StandardHotelIds'] = request.standard_hotel_ids_shrink
+        if not DaraCore.is_null(request.tracer_id):
+            body['TracerId'] = request.tracer_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'globalHotelBatchGetHotelDetail',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/globalHotelBatchGetHotelDetail',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GlobalHotelBatchGetHotelDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def global_hotel_batch_get_hotel_detail_with_options_async(
+        self,
+        tmp_req: main_models.GlobalHotelBatchGetHotelDetailRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GlobalHotelBatchGetHotelDetailResponse:
+        tmp_req.validate()
+        request = main_models.GlobalHotelBatchGetHotelDetailShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.standard_hotel_ids):
+            request.standard_hotel_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.standard_hotel_ids, 'StandardHotelIds', 'json')
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.language):
+            body['Language'] = request.language
+        if not DaraCore.is_null(request.standard_hotel_ids_shrink):
+            body['StandardHotelIds'] = request.standard_hotel_ids_shrink
+        if not DaraCore.is_null(request.tracer_id):
+            body['TracerId'] = request.tracer_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'globalHotelBatchGetHotelDetail',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/globalHotelBatchGetHotelDetail',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GlobalHotelBatchGetHotelDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def global_hotel_batch_get_hotel_detail(
+        self,
+        request: main_models.GlobalHotelBatchGetHotelDetailRequest,
+    ) -> main_models.GlobalHotelBatchGetHotelDetailResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.global_hotel_batch_get_hotel_detail_with_options(request, headers, runtime)
+
+    async def global_hotel_batch_get_hotel_detail_async(
+        self,
+        request: main_models.GlobalHotelBatchGetHotelDetailRequest,
+    ) -> main_models.GlobalHotelBatchGetHotelDetailResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.global_hotel_batch_get_hotel_detail_with_options_async(request, headers, runtime)
+
+    def global_hotel_cancel_or_refund_with_options(
+        self,
+        request: main_models.GlobalHotelCancelOrRefundRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GlobalHotelCancelOrRefundResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.order_no):
+            body['OrderNo'] = request.order_no
+        if not DaraCore.is_null(request.tracer_id):
+            body['TracerId'] = request.tracer_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'globalHotelCancelOrRefund',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/globalHotelCancelOrRefund',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GlobalHotelCancelOrRefundResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def global_hotel_cancel_or_refund_with_options_async(
+        self,
+        request: main_models.GlobalHotelCancelOrRefundRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GlobalHotelCancelOrRefundResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.order_no):
+            body['OrderNo'] = request.order_no
+        if not DaraCore.is_null(request.tracer_id):
+            body['TracerId'] = request.tracer_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'globalHotelCancelOrRefund',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/globalHotelCancelOrRefund',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GlobalHotelCancelOrRefundResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def global_hotel_cancel_or_refund(
+        self,
+        request: main_models.GlobalHotelCancelOrRefundRequest,
+    ) -> main_models.GlobalHotelCancelOrRefundResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.global_hotel_cancel_or_refund_with_options(request, headers, runtime)
+
+    async def global_hotel_cancel_or_refund_async(
+        self,
+        request: main_models.GlobalHotelCancelOrRefundRequest,
+    ) -> main_models.GlobalHotelCancelOrRefundResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.global_hotel_cancel_or_refund_with_options_async(request, headers, runtime)
+
+    def global_hotel_cancel_order_with_options(
+        self,
+        request: main_models.GlobalHotelCancelOrderRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GlobalHotelCancelOrderResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.order_no):
+            body['OrderNo'] = request.order_no
+        if not DaraCore.is_null(request.tracer_id):
+            body['TracerId'] = request.tracer_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'globalHotelCancelOrder',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/globalHotelCancelOrder',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GlobalHotelCancelOrderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def global_hotel_cancel_order_with_options_async(
+        self,
+        request: main_models.GlobalHotelCancelOrderRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GlobalHotelCancelOrderResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.order_no):
+            body['OrderNo'] = request.order_no
+        if not DaraCore.is_null(request.tracer_id):
+            body['TracerId'] = request.tracer_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'globalHotelCancelOrder',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/globalHotelCancelOrder',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GlobalHotelCancelOrderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def global_hotel_cancel_order(
+        self,
+        request: main_models.GlobalHotelCancelOrderRequest,
+    ) -> main_models.GlobalHotelCancelOrderResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.global_hotel_cancel_order_with_options(request, headers, runtime)
+
+    async def global_hotel_cancel_order_async(
+        self,
+        request: main_models.GlobalHotelCancelOrderRequest,
+    ) -> main_models.GlobalHotelCancelOrderResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.global_hotel_cancel_order_with_options_async(request, headers, runtime)
+
+    def global_hotel_create_and_pay_with_options(
+        self,
+        tmp_req: main_models.GlobalHotelCreateAndPayRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GlobalHotelCreateAndPayResponse:
+        tmp_req.validate()
+        request = main_models.GlobalHotelCreateAndPayShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.contact):
+            request.contact_shrink = Utils.array_to_string_with_specified_style(tmp_req.contact, 'Contact', 'json')
+        if not DaraCore.is_null(tmp_req.guests):
+            request.guests_shrink = Utils.array_to_string_with_specified_style(tmp_req.guests, 'Guests', 'json')
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.contact_shrink):
+            body['Contact'] = request.contact_shrink
+        if not DaraCore.is_null(request.external_order_no):
+            body['ExternalOrderNo'] = request.external_order_no
+        if not DaraCore.is_null(request.guests_shrink):
+            body['Guests'] = request.guests_shrink
+        if not DaraCore.is_null(request.item_offer_id):
+            body['ItemOfferId'] = request.item_offer_id
+        if not DaraCore.is_null(request.room_count):
+            body['RoomCount'] = request.room_count
+        if not DaraCore.is_null(request.tracer_id):
+            body['TracerId'] = request.tracer_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'globalHotelCreateAndPay',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/globalHotelCreateAndPay',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GlobalHotelCreateAndPayResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def global_hotel_create_and_pay_with_options_async(
+        self,
+        tmp_req: main_models.GlobalHotelCreateAndPayRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GlobalHotelCreateAndPayResponse:
+        tmp_req.validate()
+        request = main_models.GlobalHotelCreateAndPayShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.contact):
+            request.contact_shrink = Utils.array_to_string_with_specified_style(tmp_req.contact, 'Contact', 'json')
+        if not DaraCore.is_null(tmp_req.guests):
+            request.guests_shrink = Utils.array_to_string_with_specified_style(tmp_req.guests, 'Guests', 'json')
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.contact_shrink):
+            body['Contact'] = request.contact_shrink
+        if not DaraCore.is_null(request.external_order_no):
+            body['ExternalOrderNo'] = request.external_order_no
+        if not DaraCore.is_null(request.guests_shrink):
+            body['Guests'] = request.guests_shrink
+        if not DaraCore.is_null(request.item_offer_id):
+            body['ItemOfferId'] = request.item_offer_id
+        if not DaraCore.is_null(request.room_count):
+            body['RoomCount'] = request.room_count
+        if not DaraCore.is_null(request.tracer_id):
+            body['TracerId'] = request.tracer_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'globalHotelCreateAndPay',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/globalHotelCreateAndPay',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GlobalHotelCreateAndPayResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def global_hotel_create_and_pay(
+        self,
+        request: main_models.GlobalHotelCreateAndPayRequest,
+    ) -> main_models.GlobalHotelCreateAndPayResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.global_hotel_create_and_pay_with_options(request, headers, runtime)
+
+    async def global_hotel_create_and_pay_async(
+        self,
+        request: main_models.GlobalHotelCreateAndPayRequest,
+    ) -> main_models.GlobalHotelCreateAndPayResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.global_hotel_create_and_pay_with_options_async(request, headers, runtime)
+
+    def global_hotel_create_order_with_options(
+        self,
+        tmp_req: main_models.GlobalHotelCreateOrderRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GlobalHotelCreateOrderResponse:
+        tmp_req.validate()
+        request = main_models.GlobalHotelCreateOrderShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.contact):
+            request.contact_shrink = Utils.array_to_string_with_specified_style(tmp_req.contact, 'Contact', 'json')
+        if not DaraCore.is_null(tmp_req.guests):
+            request.guests_shrink = Utils.array_to_string_with_specified_style(tmp_req.guests, 'Guests', 'json')
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.contact_shrink):
+            body['Contact'] = request.contact_shrink
+        if not DaraCore.is_null(request.external_order_no):
+            body['ExternalOrderNo'] = request.external_order_no
+        if not DaraCore.is_null(request.guests_shrink):
+            body['Guests'] = request.guests_shrink
+        if not DaraCore.is_null(request.item_offer_id):
+            body['ItemOfferId'] = request.item_offer_id
+        if not DaraCore.is_null(request.room_count):
+            body['RoomCount'] = request.room_count
+        if not DaraCore.is_null(request.tracer_id):
+            body['TracerId'] = request.tracer_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'globalHotelCreateOrder',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/globalHotelCreateOrder',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GlobalHotelCreateOrderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def global_hotel_create_order_with_options_async(
+        self,
+        tmp_req: main_models.GlobalHotelCreateOrderRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GlobalHotelCreateOrderResponse:
+        tmp_req.validate()
+        request = main_models.GlobalHotelCreateOrderShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.contact):
+            request.contact_shrink = Utils.array_to_string_with_specified_style(tmp_req.contact, 'Contact', 'json')
+        if not DaraCore.is_null(tmp_req.guests):
+            request.guests_shrink = Utils.array_to_string_with_specified_style(tmp_req.guests, 'Guests', 'json')
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.contact_shrink):
+            body['Contact'] = request.contact_shrink
+        if not DaraCore.is_null(request.external_order_no):
+            body['ExternalOrderNo'] = request.external_order_no
+        if not DaraCore.is_null(request.guests_shrink):
+            body['Guests'] = request.guests_shrink
+        if not DaraCore.is_null(request.item_offer_id):
+            body['ItemOfferId'] = request.item_offer_id
+        if not DaraCore.is_null(request.room_count):
+            body['RoomCount'] = request.room_count
+        if not DaraCore.is_null(request.tracer_id):
+            body['TracerId'] = request.tracer_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'globalHotelCreateOrder',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/globalHotelCreateOrder',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GlobalHotelCreateOrderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def global_hotel_create_order(
+        self,
+        request: main_models.GlobalHotelCreateOrderRequest,
+    ) -> main_models.GlobalHotelCreateOrderResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.global_hotel_create_order_with_options(request, headers, runtime)
+
+    async def global_hotel_create_order_async(
+        self,
+        request: main_models.GlobalHotelCreateOrderRequest,
+    ) -> main_models.GlobalHotelCreateOrderResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.global_hotel_create_order_with_options_async(request, headers, runtime)
+
+    def global_hotel_pay_with_options(
+        self,
+        request: main_models.GlobalHotelPayRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GlobalHotelPayResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.order_no):
+            body['OrderNo'] = request.order_no
+        if not DaraCore.is_null(request.tracer_id):
+            body['TracerId'] = request.tracer_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'globalHotelPay',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/globalHotelPay',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GlobalHotelPayResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def global_hotel_pay_with_options_async(
+        self,
+        request: main_models.GlobalHotelPayRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GlobalHotelPayResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.order_no):
+            body['OrderNo'] = request.order_no
+        if not DaraCore.is_null(request.tracer_id):
+            body['TracerId'] = request.tracer_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'globalHotelPay',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/globalHotelPay',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GlobalHotelPayResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def global_hotel_pay(
+        self,
+        request: main_models.GlobalHotelPayRequest,
+    ) -> main_models.GlobalHotelPayResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.global_hotel_pay_with_options(request, headers, runtime)
+
+    async def global_hotel_pay_async(
+        self,
+        request: main_models.GlobalHotelPayRequest,
+    ) -> main_models.GlobalHotelPayResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.global_hotel_pay_with_options_async(request, headers, runtime)
+
+    def global_hotel_query_availability_with_options(
+        self,
+        tmp_req: main_models.GlobalHotelQueryAvailabilityRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GlobalHotelQueryAvailabilityResponse:
+        tmp_req.validate()
+        request = main_models.GlobalHotelQueryAvailabilityShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.children_ages):
+            request.children_ages_shrink = Utils.array_to_string_with_specified_style(tmp_req.children_ages, 'ChildrenAges', 'json')
+        if not DaraCore.is_null(tmp_req.standard_hotel_ids):
+            request.standard_hotel_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.standard_hotel_ids, 'StandardHotelIds', 'json')
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.adult_count):
+            body['AdultCount'] = request.adult_count
+        if not DaraCore.is_null(request.check_in_date):
+            body['CheckInDate'] = request.check_in_date
+        if not DaraCore.is_null(request.check_out_date):
+            body['CheckOutDate'] = request.check_out_date
+        if not DaraCore.is_null(request.child_count):
+            body['ChildCount'] = request.child_count
+        if not DaraCore.is_null(request.children_ages_shrink):
+            body['ChildrenAges'] = request.children_ages_shrink
+        if not DaraCore.is_null(request.room_count):
+            body['RoomCount'] = request.room_count
+        if not DaraCore.is_null(request.standard_hotel_ids_shrink):
+            body['StandardHotelIds'] = request.standard_hotel_ids_shrink
+        if not DaraCore.is_null(request.tracer_id):
+            body['TracerId'] = request.tracer_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'globalHotelQueryAvailability',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/globalHotelQueryAvailability',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GlobalHotelQueryAvailabilityResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def global_hotel_query_availability_with_options_async(
+        self,
+        tmp_req: main_models.GlobalHotelQueryAvailabilityRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GlobalHotelQueryAvailabilityResponse:
+        tmp_req.validate()
+        request = main_models.GlobalHotelQueryAvailabilityShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.children_ages):
+            request.children_ages_shrink = Utils.array_to_string_with_specified_style(tmp_req.children_ages, 'ChildrenAges', 'json')
+        if not DaraCore.is_null(tmp_req.standard_hotel_ids):
+            request.standard_hotel_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.standard_hotel_ids, 'StandardHotelIds', 'json')
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.adult_count):
+            body['AdultCount'] = request.adult_count
+        if not DaraCore.is_null(request.check_in_date):
+            body['CheckInDate'] = request.check_in_date
+        if not DaraCore.is_null(request.check_out_date):
+            body['CheckOutDate'] = request.check_out_date
+        if not DaraCore.is_null(request.child_count):
+            body['ChildCount'] = request.child_count
+        if not DaraCore.is_null(request.children_ages_shrink):
+            body['ChildrenAges'] = request.children_ages_shrink
+        if not DaraCore.is_null(request.room_count):
+            body['RoomCount'] = request.room_count
+        if not DaraCore.is_null(request.standard_hotel_ids_shrink):
+            body['StandardHotelIds'] = request.standard_hotel_ids_shrink
+        if not DaraCore.is_null(request.tracer_id):
+            body['TracerId'] = request.tracer_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'globalHotelQueryAvailability',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/globalHotelQueryAvailability',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GlobalHotelQueryAvailabilityResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def global_hotel_query_availability(
+        self,
+        request: main_models.GlobalHotelQueryAvailabilityRequest,
+    ) -> main_models.GlobalHotelQueryAvailabilityResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.global_hotel_query_availability_with_options(request, headers, runtime)
+
+    async def global_hotel_query_availability_async(
+        self,
+        request: main_models.GlobalHotelQueryAvailabilityRequest,
+    ) -> main_models.GlobalHotelQueryAvailabilityResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.global_hotel_query_availability_with_options_async(request, headers, runtime)
+
+    def global_hotel_query_calendar_availability_with_options(
+        self,
+        tmp_req: main_models.GlobalHotelQueryCalendarAvailabilityRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GlobalHotelQueryCalendarAvailabilityResponse:
+        tmp_req.validate()
+        request = main_models.GlobalHotelQueryCalendarAvailabilityShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.children_ages):
+            request.children_ages_shrink = Utils.array_to_string_with_specified_style(tmp_req.children_ages, 'ChildrenAges', 'json')
+        if not DaraCore.is_null(tmp_req.standard_hotel_ids):
+            request.standard_hotel_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.standard_hotel_ids, 'StandardHotelIds', 'json')
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.adult_count):
+            body['AdultCount'] = request.adult_count
+        if not DaraCore.is_null(request.check_in_date_end):
+            body['CheckInDateEnd'] = request.check_in_date_end
+        if not DaraCore.is_null(request.check_in_date_start):
+            body['CheckInDateStart'] = request.check_in_date_start
+        if not DaraCore.is_null(request.child_count):
+            body['ChildCount'] = request.child_count
+        if not DaraCore.is_null(request.children_ages_shrink):
+            body['ChildrenAges'] = request.children_ages_shrink
+        if not DaraCore.is_null(request.room_count):
+            body['RoomCount'] = request.room_count
+        if not DaraCore.is_null(request.standard_hotel_ids_shrink):
+            body['StandardHotelIds'] = request.standard_hotel_ids_shrink
+        if not DaraCore.is_null(request.tracer_id):
+            body['TracerId'] = request.tracer_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'globalHotelQueryCalendarAvailability',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/globalHotelQueryCalendarAvailability',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GlobalHotelQueryCalendarAvailabilityResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def global_hotel_query_calendar_availability_with_options_async(
+        self,
+        tmp_req: main_models.GlobalHotelQueryCalendarAvailabilityRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GlobalHotelQueryCalendarAvailabilityResponse:
+        tmp_req.validate()
+        request = main_models.GlobalHotelQueryCalendarAvailabilityShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.children_ages):
+            request.children_ages_shrink = Utils.array_to_string_with_specified_style(tmp_req.children_ages, 'ChildrenAges', 'json')
+        if not DaraCore.is_null(tmp_req.standard_hotel_ids):
+            request.standard_hotel_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.standard_hotel_ids, 'StandardHotelIds', 'json')
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.adult_count):
+            body['AdultCount'] = request.adult_count
+        if not DaraCore.is_null(request.check_in_date_end):
+            body['CheckInDateEnd'] = request.check_in_date_end
+        if not DaraCore.is_null(request.check_in_date_start):
+            body['CheckInDateStart'] = request.check_in_date_start
+        if not DaraCore.is_null(request.child_count):
+            body['ChildCount'] = request.child_count
+        if not DaraCore.is_null(request.children_ages_shrink):
+            body['ChildrenAges'] = request.children_ages_shrink
+        if not DaraCore.is_null(request.room_count):
+            body['RoomCount'] = request.room_count
+        if not DaraCore.is_null(request.standard_hotel_ids_shrink):
+            body['StandardHotelIds'] = request.standard_hotel_ids_shrink
+        if not DaraCore.is_null(request.tracer_id):
+            body['TracerId'] = request.tracer_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'globalHotelQueryCalendarAvailability',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/globalHotelQueryCalendarAvailability',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GlobalHotelQueryCalendarAvailabilityResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def global_hotel_query_calendar_availability(
+        self,
+        request: main_models.GlobalHotelQueryCalendarAvailabilityRequest,
+    ) -> main_models.GlobalHotelQueryCalendarAvailabilityResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.global_hotel_query_calendar_availability_with_options(request, headers, runtime)
+
+    async def global_hotel_query_calendar_availability_async(
+        self,
+        request: main_models.GlobalHotelQueryCalendarAvailabilityRequest,
+    ) -> main_models.GlobalHotelQueryCalendarAvailabilityResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.global_hotel_query_calendar_availability_with_options_async(request, headers, runtime)
+
+    def global_hotel_query_order_with_options(
+        self,
+        request: main_models.GlobalHotelQueryOrderRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GlobalHotelQueryOrderResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.external_order_no):
+            body['ExternalOrderNo'] = request.external_order_no
+        if not DaraCore.is_null(request.order_no):
+            body['OrderNo'] = request.order_no
+        if not DaraCore.is_null(request.tracer_id):
+            body['TracerId'] = request.tracer_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'globalHotelQueryOrder',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/globalHotelQueryOrder',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GlobalHotelQueryOrderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def global_hotel_query_order_with_options_async(
+        self,
+        request: main_models.GlobalHotelQueryOrderRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GlobalHotelQueryOrderResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.external_order_no):
+            body['ExternalOrderNo'] = request.external_order_no
+        if not DaraCore.is_null(request.order_no):
+            body['OrderNo'] = request.order_no
+        if not DaraCore.is_null(request.tracer_id):
+            body['TracerId'] = request.tracer_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'globalHotelQueryOrder',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/globalHotelQueryOrder',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GlobalHotelQueryOrderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def global_hotel_query_order(
+        self,
+        request: main_models.GlobalHotelQueryOrderRequest,
+    ) -> main_models.GlobalHotelQueryOrderResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.global_hotel_query_order_with_options(request, headers, runtime)
+
+    async def global_hotel_query_order_async(
+        self,
+        request: main_models.GlobalHotelQueryOrderRequest,
+    ) -> main_models.GlobalHotelQueryOrderResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.global_hotel_query_order_with_options_async(request, headers, runtime)
+
+    def global_hotel_search_city_page_with_options(
+        self,
+        request: main_models.GlobalHotelSearchCityPageRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GlobalHotelSearchCityPageResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.count):
+            body['Count'] = request.count
+        if not DaraCore.is_null(request.country_code):
+            body['CountryCode'] = request.country_code
+        if not DaraCore.is_null(request.start):
+            body['Start'] = request.start
+        if not DaraCore.is_null(request.tracer_id):
+            body['TracerId'] = request.tracer_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'globalHotelSearchCityPage',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/globalHotelSearchCityPage',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GlobalHotelSearchCityPageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def global_hotel_search_city_page_with_options_async(
+        self,
+        request: main_models.GlobalHotelSearchCityPageRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GlobalHotelSearchCityPageResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.count):
+            body['Count'] = request.count
+        if not DaraCore.is_null(request.country_code):
+            body['CountryCode'] = request.country_code
+        if not DaraCore.is_null(request.start):
+            body['Start'] = request.start
+        if not DaraCore.is_null(request.tracer_id):
+            body['TracerId'] = request.tracer_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'globalHotelSearchCityPage',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/globalHotelSearchCityPage',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GlobalHotelSearchCityPageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def global_hotel_search_city_page(
+        self,
+        request: main_models.GlobalHotelSearchCityPageRequest,
+    ) -> main_models.GlobalHotelSearchCityPageResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.global_hotel_search_city_page_with_options(request, headers, runtime)
+
+    async def global_hotel_search_city_page_async(
+        self,
+        request: main_models.GlobalHotelSearchCityPageRequest,
+    ) -> main_models.GlobalHotelSearchCityPageResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.global_hotel_search_city_page_with_options_async(request, headers, runtime)
+
+    def global_hotel_search_hotel_list_with_options(
+        self,
+        request: main_models.GlobalHotelSearchHotelListRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GlobalHotelSearchHotelListResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.city_code):
+            body['CityCode'] = request.city_code
+        if not DaraCore.is_null(request.page_no):
+            body['PageNo'] = request.page_no
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.tracer_id):
+            body['TracerId'] = request.tracer_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'globalHotelSearchHotelList',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/globalHotelSearchHotelList',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GlobalHotelSearchHotelListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def global_hotel_search_hotel_list_with_options_async(
+        self,
+        request: main_models.GlobalHotelSearchHotelListRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GlobalHotelSearchHotelListResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.city_code):
+            body['CityCode'] = request.city_code
+        if not DaraCore.is_null(request.page_no):
+            body['PageNo'] = request.page_no
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.tracer_id):
+            body['TracerId'] = request.tracer_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'globalHotelSearchHotelList',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/globalHotelSearchHotelList',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GlobalHotelSearchHotelListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def global_hotel_search_hotel_list(
+        self,
+        request: main_models.GlobalHotelSearchHotelListRequest,
+    ) -> main_models.GlobalHotelSearchHotelListResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.global_hotel_search_hotel_list_with_options(request, headers, runtime)
+
+    async def global_hotel_search_hotel_list_async(
+        self,
+        request: main_models.GlobalHotelSearchHotelListRequest,
+    ) -> main_models.GlobalHotelSearchHotelListResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.global_hotel_search_hotel_list_with_options_async(request, headers, runtime)
+
+    def global_hotel_validate_price_with_options(
+        self,
+        tmp_req: main_models.GlobalHotelValidatePriceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GlobalHotelValidatePriceResponse:
+        tmp_req.validate()
+        request = main_models.GlobalHotelValidatePriceShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.children_ages):
+            request.children_ages_shrink = Utils.array_to_string_with_specified_style(tmp_req.children_ages, 'ChildrenAges', 'json')
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.adults):
+            body['Adults'] = request.adults
+        if not DaraCore.is_null(request.children):
+            body['Children'] = request.children
+        if not DaraCore.is_null(request.children_ages_shrink):
+            body['ChildrenAges'] = request.children_ages_shrink
+        if not DaraCore.is_null(request.item_offer_key):
+            body['ItemOfferKey'] = request.item_offer_key
+        if not DaraCore.is_null(request.room_count):
+            body['RoomCount'] = request.room_count
+        if not DaraCore.is_null(request.tracer_id):
+            body['TracerId'] = request.tracer_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'globalHotelValidatePrice',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/globalHotelValidatePrice',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GlobalHotelValidatePriceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def global_hotel_validate_price_with_options_async(
+        self,
+        tmp_req: main_models.GlobalHotelValidatePriceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GlobalHotelValidatePriceResponse:
+        tmp_req.validate()
+        request = main_models.GlobalHotelValidatePriceShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.children_ages):
+            request.children_ages_shrink = Utils.array_to_string_with_specified_style(tmp_req.children_ages, 'ChildrenAges', 'json')
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.adults):
+            body['Adults'] = request.adults
+        if not DaraCore.is_null(request.children):
+            body['Children'] = request.children
+        if not DaraCore.is_null(request.children_ages_shrink):
+            body['ChildrenAges'] = request.children_ages_shrink
+        if not DaraCore.is_null(request.item_offer_key):
+            body['ItemOfferKey'] = request.item_offer_key
+        if not DaraCore.is_null(request.room_count):
+            body['RoomCount'] = request.room_count
+        if not DaraCore.is_null(request.tracer_id):
+            body['TracerId'] = request.tracer_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'globalHotelValidatePrice',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/globalHotelValidatePrice',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GlobalHotelValidatePriceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def global_hotel_validate_price(
+        self,
+        request: main_models.GlobalHotelValidatePriceRequest,
+    ) -> main_models.GlobalHotelValidatePriceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.global_hotel_validate_price_with_options(request, headers, runtime)
+
+    async def global_hotel_validate_price_async(
+        self,
+        request: main_models.GlobalHotelValidatePriceRequest,
+    ) -> main_models.GlobalHotelValidatePriceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.global_hotel_validate_price_with_options_async(request, headers, runtime)
+
+    def pay_with_options(
+        self,
+        request: main_models.PayRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.PayResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.order_no):
+            body['OrderNo'] = request.order_no
+        if not DaraCore.is_null(request.tracer_id):
+            body['TracerId'] = request.tracer_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'pay',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/pay',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PayResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def pay_with_options_async(
+        self,
+        request: main_models.PayRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.PayResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.order_no):
+            body['OrderNo'] = request.order_no
+        if not DaraCore.is_null(request.tracer_id):
+            body['TracerId'] = request.tracer_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'pay',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/pay',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PayResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def pay(
+        self,
+        request: main_models.PayRequest,
+    ) -> main_models.PayResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.pay_with_options(request, headers, runtime)
+
+    async def pay_async(
+        self,
+        request: main_models.PayRequest,
+    ) -> main_models.PayResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.pay_with_options_async(request, headers, runtime)
+
+    def query_availability_with_options(
+        self,
+        tmp_req: main_models.QueryAvailabilityRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryAvailabilityResponse:
+        tmp_req.validate()
+        request = main_models.QueryAvailabilityShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.children_ages):
+            request.children_ages_shrink = Utils.array_to_string_with_specified_style(tmp_req.children_ages, 'ChildrenAges', 'json')
+        if not DaraCore.is_null(tmp_req.standard_hotel_ids):
+            request.standard_hotel_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.standard_hotel_ids, 'StandardHotelIds', 'json')
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.adult_count):
+            body['AdultCount'] = request.adult_count
+        if not DaraCore.is_null(request.check_in_date):
+            body['CheckInDate'] = request.check_in_date
+        if not DaraCore.is_null(request.check_out_date):
+            body['CheckOutDate'] = request.check_out_date
+        if not DaraCore.is_null(request.child_count):
+            body['ChildCount'] = request.child_count
+        if not DaraCore.is_null(request.children_ages_shrink):
+            body['ChildrenAges'] = request.children_ages_shrink
+        if not DaraCore.is_null(request.room_count):
+            body['RoomCount'] = request.room_count
+        if not DaraCore.is_null(request.standard_hotel_ids_shrink):
+            body['StandardHotelIds'] = request.standard_hotel_ids_shrink
+        if not DaraCore.is_null(request.tracer_id):
+            body['TracerId'] = request.tracer_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'queryAvailability',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/queryAvailability',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryAvailabilityResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_availability_with_options_async(
+        self,
+        tmp_req: main_models.QueryAvailabilityRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryAvailabilityResponse:
+        tmp_req.validate()
+        request = main_models.QueryAvailabilityShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.children_ages):
+            request.children_ages_shrink = Utils.array_to_string_with_specified_style(tmp_req.children_ages, 'ChildrenAges', 'json')
+        if not DaraCore.is_null(tmp_req.standard_hotel_ids):
+            request.standard_hotel_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.standard_hotel_ids, 'StandardHotelIds', 'json')
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.adult_count):
+            body['AdultCount'] = request.adult_count
+        if not DaraCore.is_null(request.check_in_date):
+            body['CheckInDate'] = request.check_in_date
+        if not DaraCore.is_null(request.check_out_date):
+            body['CheckOutDate'] = request.check_out_date
+        if not DaraCore.is_null(request.child_count):
+            body['ChildCount'] = request.child_count
+        if not DaraCore.is_null(request.children_ages_shrink):
+            body['ChildrenAges'] = request.children_ages_shrink
+        if not DaraCore.is_null(request.room_count):
+            body['RoomCount'] = request.room_count
+        if not DaraCore.is_null(request.standard_hotel_ids_shrink):
+            body['StandardHotelIds'] = request.standard_hotel_ids_shrink
+        if not DaraCore.is_null(request.tracer_id):
+            body['TracerId'] = request.tracer_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'queryAvailability',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/queryAvailability',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryAvailabilityResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_availability(
+        self,
+        request: main_models.QueryAvailabilityRequest,
+    ) -> main_models.QueryAvailabilityResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.query_availability_with_options(request, headers, runtime)
+
+    async def query_availability_async(
+        self,
+        request: main_models.QueryAvailabilityRequest,
+    ) -> main_models.QueryAvailabilityResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.query_availability_with_options_async(request, headers, runtime)
+
+    def query_calendar_availability_with_options(
+        self,
+        tmp_req: main_models.QueryCalendarAvailabilityRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryCalendarAvailabilityResponse:
+        tmp_req.validate()
+        request = main_models.QueryCalendarAvailabilityShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.children_ages):
+            request.children_ages_shrink = Utils.array_to_string_with_specified_style(tmp_req.children_ages, 'ChildrenAges', 'json')
+        if not DaraCore.is_null(tmp_req.standard_hotel_ids):
+            request.standard_hotel_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.standard_hotel_ids, 'StandardHotelIds', 'json')
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.adult_count):
+            body['AdultCount'] = request.adult_count
+        if not DaraCore.is_null(request.check_in_date_end):
+            body['CheckInDateEnd'] = request.check_in_date_end
+        if not DaraCore.is_null(request.check_in_date_start):
+            body['CheckInDateStart'] = request.check_in_date_start
+        if not DaraCore.is_null(request.child_count):
+            body['ChildCount'] = request.child_count
+        if not DaraCore.is_null(request.children_ages_shrink):
+            body['ChildrenAges'] = request.children_ages_shrink
+        if not DaraCore.is_null(request.room_count):
+            body['RoomCount'] = request.room_count
+        if not DaraCore.is_null(request.standard_hotel_ids_shrink):
+            body['StandardHotelIds'] = request.standard_hotel_ids_shrink
+        if not DaraCore.is_null(request.tracer_id):
+            body['TracerId'] = request.tracer_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'queryCalendarAvailability',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/queryCalendarAvailability',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryCalendarAvailabilityResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_calendar_availability_with_options_async(
+        self,
+        tmp_req: main_models.QueryCalendarAvailabilityRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryCalendarAvailabilityResponse:
+        tmp_req.validate()
+        request = main_models.QueryCalendarAvailabilityShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.children_ages):
+            request.children_ages_shrink = Utils.array_to_string_with_specified_style(tmp_req.children_ages, 'ChildrenAges', 'json')
+        if not DaraCore.is_null(tmp_req.standard_hotel_ids):
+            request.standard_hotel_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.standard_hotel_ids, 'StandardHotelIds', 'json')
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.adult_count):
+            body['AdultCount'] = request.adult_count
+        if not DaraCore.is_null(request.check_in_date_end):
+            body['CheckInDateEnd'] = request.check_in_date_end
+        if not DaraCore.is_null(request.check_in_date_start):
+            body['CheckInDateStart'] = request.check_in_date_start
+        if not DaraCore.is_null(request.child_count):
+            body['ChildCount'] = request.child_count
+        if not DaraCore.is_null(request.children_ages_shrink):
+            body['ChildrenAges'] = request.children_ages_shrink
+        if not DaraCore.is_null(request.room_count):
+            body['RoomCount'] = request.room_count
+        if not DaraCore.is_null(request.standard_hotel_ids_shrink):
+            body['StandardHotelIds'] = request.standard_hotel_ids_shrink
+        if not DaraCore.is_null(request.tracer_id):
+            body['TracerId'] = request.tracer_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'queryCalendarAvailability',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/queryCalendarAvailability',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryCalendarAvailabilityResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_calendar_availability(
+        self,
+        request: main_models.QueryCalendarAvailabilityRequest,
+    ) -> main_models.QueryCalendarAvailabilityResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.query_calendar_availability_with_options(request, headers, runtime)
+
+    async def query_calendar_availability_async(
+        self,
+        request: main_models.QueryCalendarAvailabilityRequest,
+    ) -> main_models.QueryCalendarAvailabilityResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.query_calendar_availability_with_options_async(request, headers, runtime)
+
+    def query_order_with_options(
+        self,
+        request: main_models.QueryOrderRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryOrderResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.external_order_no):
+            body['ExternalOrderNo'] = request.external_order_no
+        if not DaraCore.is_null(request.order_no):
+            body['OrderNo'] = request.order_no
+        if not DaraCore.is_null(request.tracer_id):
+            body['TracerId'] = request.tracer_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'queryOrder',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/queryOrder',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryOrderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_order_with_options_async(
+        self,
+        request: main_models.QueryOrderRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryOrderResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.external_order_no):
+            body['ExternalOrderNo'] = request.external_order_no
+        if not DaraCore.is_null(request.order_no):
+            body['OrderNo'] = request.order_no
+        if not DaraCore.is_null(request.tracer_id):
+            body['TracerId'] = request.tracer_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'queryOrder',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/queryOrder',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryOrderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_order(
+        self,
+        request: main_models.QueryOrderRequest,
+    ) -> main_models.QueryOrderResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.query_order_with_options(request, headers, runtime)
+
+    async def query_order_async(
+        self,
+        request: main_models.QueryOrderRequest,
+    ) -> main_models.QueryOrderResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.query_order_with_options_async(request, headers, runtime)
+
+    def search_city_page_with_options(
+        self,
+        request: main_models.SearchCityPageRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.SearchCityPageResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.count):
+            body['Count'] = request.count
+        if not DaraCore.is_null(request.country_code):
+            body['CountryCode'] = request.country_code
+        if not DaraCore.is_null(request.start):
+            body['Start'] = request.start
+        if not DaraCore.is_null(request.tracer_id):
+            body['TracerId'] = request.tracer_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'searchCityPage',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/searchCityPage',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SearchCityPageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def search_city_page_with_options_async(
+        self,
+        request: main_models.SearchCityPageRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.SearchCityPageResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.count):
+            body['Count'] = request.count
+        if not DaraCore.is_null(request.country_code):
+            body['CountryCode'] = request.country_code
+        if not DaraCore.is_null(request.start):
+            body['Start'] = request.start
+        if not DaraCore.is_null(request.tracer_id):
+            body['TracerId'] = request.tracer_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'searchCityPage',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/searchCityPage',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SearchCityPageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def search_city_page(
+        self,
+        request: main_models.SearchCityPageRequest,
+    ) -> main_models.SearchCityPageResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.search_city_page_with_options(request, headers, runtime)
+
+    async def search_city_page_async(
+        self,
+        request: main_models.SearchCityPageRequest,
+    ) -> main_models.SearchCityPageResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.search_city_page_with_options_async(request, headers, runtime)
+
+    def search_hotel_list_with_options(
+        self,
+        request: main_models.SearchHotelListRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.SearchHotelListResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.city_code):
+            body['CityCode'] = request.city_code
+        if not DaraCore.is_null(request.page_no):
+            body['PageNo'] = request.page_no
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.tracer_id):
+            body['TracerId'] = request.tracer_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'searchHotelList',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/globalHotel/searchHotelList',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SearchHotelListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def search_hotel_list_with_options_async(
+        self,
+        request: main_models.SearchHotelListRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.SearchHotelListResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.city_code):
+            body['CityCode'] = request.city_code
+        if not DaraCore.is_null(request.page_no):
+            body['PageNo'] = request.page_no
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.tracer_id):
+            body['TracerId'] = request.tracer_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'searchHotelList',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/globalHotel/searchHotelList',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SearchHotelListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def search_hotel_list(
+        self,
+        request: main_models.SearchHotelListRequest,
+    ) -> main_models.SearchHotelListResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.search_hotel_list_with_options(request, headers, runtime)
+
+    async def search_hotel_list_async(
+        self,
+        request: main_models.SearchHotelListRequest,
+    ) -> main_models.SearchHotelListResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.search_hotel_list_with_options_async(request, headers, runtime)
+
+    def validate_price_with_options(
+        self,
+        tmp_req: main_models.ValidatePriceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ValidatePriceResponse:
+        tmp_req.validate()
+        request = main_models.ValidatePriceShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.children_ages):
+            request.children_ages_shrink = Utils.array_to_string_with_specified_style(tmp_req.children_ages, 'ChildrenAges', 'json')
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.adults):
+            body['Adults'] = request.adults
+        if not DaraCore.is_null(request.children):
+            body['Children'] = request.children
+        if not DaraCore.is_null(request.children_ages_shrink):
+            body['ChildrenAges'] = request.children_ages_shrink
+        if not DaraCore.is_null(request.item_offer_key):
+            body['ItemOfferKey'] = request.item_offer_key
+        if not DaraCore.is_null(request.room_count):
+            body['RoomCount'] = request.room_count
+        if not DaraCore.is_null(request.tracer_id):
+            body['TracerId'] = request.tracer_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'validatePrice',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/validatePrice',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ValidatePriceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def validate_price_with_options_async(
+        self,
+        tmp_req: main_models.ValidatePriceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ValidatePriceResponse:
+        tmp_req.validate()
+        request = main_models.ValidatePriceShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.children_ages):
+            request.children_ages_shrink = Utils.array_to_string_with_specified_style(tmp_req.children_ages, 'ChildrenAges', 'json')
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.adults):
+            body['Adults'] = request.adults
+        if not DaraCore.is_null(request.children):
+            body['Children'] = request.children
+        if not DaraCore.is_null(request.children_ages_shrink):
+            body['ChildrenAges'] = request.children_ages_shrink
+        if not DaraCore.is_null(request.item_offer_key):
+            body['ItemOfferKey'] = request.item_offer_key
+        if not DaraCore.is_null(request.room_count):
+            body['RoomCount'] = request.room_count
+        if not DaraCore.is_null(request.tracer_id):
+            body['TracerId'] = request.tracer_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'validatePrice',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/validatePrice',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ValidatePriceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def validate_price(
+        self,
+        request: main_models.ValidatePriceRequest,
+    ) -> main_models.ValidatePriceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.validate_price_with_options(request, headers, runtime)
+
+    async def validate_price_async(
+        self,
+        request: main_models.ValidatePriceRequest,
+    ) -> main_models.ValidatePriceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.validate_price_with_options_async(request, headers, runtime)
