@@ -13,11 +13,9 @@ class CreateAnchorResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 123456789
         self.data = data
         self.error_code = error_code
         self.error_message = error_message
-        # Id of the request
         self.request_id = request_id
         self.success = success
 

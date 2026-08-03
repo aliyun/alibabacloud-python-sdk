@@ -1503,6 +1503,106 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_anchor_with_options_async(request, headers, runtime)
 
+    def create_generate_aicoach_script_task_with_options(
+        self,
+        request: main_models.CreateGenerateAICoachScriptTaskRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateGenerateAICoachScriptTaskResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.assessment_point):
+            body['assessmentPoint'] = request.assessment_point
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.dialogue_key):
+            body['dialogueKey'] = request.dialogue_key
+        if not DaraCore.is_null(request.dialogue_url):
+            body['dialogueUrl'] = request.dialogue_url
+        if not DaraCore.is_null(request.doc_list):
+            body['docList'] = request.doc_list
+        if not DaraCore.is_null(request.doc_url_list):
+            body['docUrlList'] = request.doc_url_list
+        if not DaraCore.is_null(request.script_name):
+            body['scriptName'] = request.script_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateGenerateAICoachScriptTask',
+            version = '2024-03-13',
+            protocol = 'HTTPS',
+            pathname = f'/yic/yic-console/openService/v1/aicoach/scriptGenerateTask',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateGenerateAICoachScriptTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_generate_aicoach_script_task_with_options_async(
+        self,
+        request: main_models.CreateGenerateAICoachScriptTaskRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateGenerateAICoachScriptTaskResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.assessment_point):
+            body['assessmentPoint'] = request.assessment_point
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.dialogue_key):
+            body['dialogueKey'] = request.dialogue_key
+        if not DaraCore.is_null(request.dialogue_url):
+            body['dialogueUrl'] = request.dialogue_url
+        if not DaraCore.is_null(request.doc_list):
+            body['docList'] = request.doc_list
+        if not DaraCore.is_null(request.doc_url_list):
+            body['docUrlList'] = request.doc_url_list
+        if not DaraCore.is_null(request.script_name):
+            body['scriptName'] = request.script_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateGenerateAICoachScriptTask',
+            version = '2024-03-13',
+            protocol = 'HTTPS',
+            pathname = f'/yic/yic-console/openService/v1/aicoach/scriptGenerateTask',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateGenerateAICoachScriptTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_generate_aicoach_script_task(
+        self,
+        request: main_models.CreateGenerateAICoachScriptTaskRequest,
+    ) -> main_models.CreateGenerateAICoachScriptTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_generate_aicoach_script_task_with_options(request, headers, runtime)
+
+    async def create_generate_aicoach_script_task_async(
+        self,
+        request: main_models.CreateGenerateAICoachScriptTaskRequest,
+    ) -> main_models.CreateGenerateAICoachScriptTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_generate_aicoach_script_task_with_options_async(request, headers, runtime)
+
     def create_illustration_task_with_options(
         self,
         text_id: str,
@@ -2849,6 +2949,102 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_aicoach_cheat_detection_with_options_async(request, headers, runtime)
 
+    def get_aicoach_debug_result_with_options(
+        self,
+        request: main_models.GetAICoachDebugResultRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAICoachDebugResultResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.data_id):
+            query['dataId'] = request.data_id
+        if not DaraCore.is_null(request.data_type):
+            query['dataType'] = request.data_type
+        if not DaraCore.is_null(request.script_debug_id):
+            query['scriptDebugId'] = request.script_debug_id
+        if not DaraCore.is_null(request.script_record_id):
+            query['scriptRecordId'] = request.script_record_id
+        if not DaraCore.is_null(request.script_snapshot_id):
+            query['scriptSnapshotId'] = request.script_snapshot_id
+        if not DaraCore.is_null(request.task_id):
+            query['taskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAICoachDebugResult',
+            version = '2024-03-13',
+            protocol = 'HTTPS',
+            pathname = f'/yic/yic-console/openService/v1/aicoach/getDebugResult',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAICoachDebugResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_aicoach_debug_result_with_options_async(
+        self,
+        request: main_models.GetAICoachDebugResultRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAICoachDebugResultResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.data_id):
+            query['dataId'] = request.data_id
+        if not DaraCore.is_null(request.data_type):
+            query['dataType'] = request.data_type
+        if not DaraCore.is_null(request.script_debug_id):
+            query['scriptDebugId'] = request.script_debug_id
+        if not DaraCore.is_null(request.script_record_id):
+            query['scriptRecordId'] = request.script_record_id
+        if not DaraCore.is_null(request.script_snapshot_id):
+            query['scriptSnapshotId'] = request.script_snapshot_id
+        if not DaraCore.is_null(request.task_id):
+            query['taskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAICoachDebugResult',
+            version = '2024-03-13',
+            protocol = 'HTTPS',
+            pathname = f'/yic/yic-console/openService/v1/aicoach/getDebugResult',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAICoachDebugResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_aicoach_debug_result(
+        self,
+        request: main_models.GetAICoachDebugResultRequest,
+    ) -> main_models.GetAICoachDebugResultResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_aicoach_debug_result_with_options(request, headers, runtime)
+
+    async def get_aicoach_debug_result_async(
+        self,
+        request: main_models.GetAICoachDebugResultRequest,
+    ) -> main_models.GetAICoachDebugResultResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_aicoach_debug_result_with_options_async(request, headers, runtime)
+
     def get_aicoach_script_with_options(
         self,
         request: main_models.GetAICoachScriptRequest,
@@ -2924,6 +3120,82 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.get_aicoach_script_with_options_async(request, headers, runtime)
+
+    def get_aicoach_script_generate_task_with_options(
+        self,
+        request: main_models.GetAICoachScriptGenerateTaskRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAICoachScriptGenerateTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.task_id):
+            query['taskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAICoachScriptGenerateTask',
+            version = '2024-03-13',
+            protocol = 'HTTPS',
+            pathname = f'/yic/yic-console/openService/v1/aicoach/scriptGenerateTask',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAICoachScriptGenerateTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_aicoach_script_generate_task_with_options_async(
+        self,
+        request: main_models.GetAICoachScriptGenerateTaskRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAICoachScriptGenerateTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.task_id):
+            query['taskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAICoachScriptGenerateTask',
+            version = '2024-03-13',
+            protocol = 'HTTPS',
+            pathname = f'/yic/yic-console/openService/v1/aicoach/scriptGenerateTask',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAICoachScriptGenerateTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_aicoach_script_generate_task(
+        self,
+        request: main_models.GetAICoachScriptGenerateTaskRequest,
+    ) -> main_models.GetAICoachScriptGenerateTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_aicoach_script_generate_task_with_options(request, headers, runtime)
+
+    async def get_aicoach_script_generate_task_async(
+        self,
+        request: main_models.GetAICoachScriptGenerateTaskRequest,
+    ) -> main_models.GetAICoachScriptGenerateTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_aicoach_script_generate_task_with_options_async(request, headers, runtime)
 
     def get_aicoach_task_session_history_with_options(
         self,
@@ -4042,6 +4314,94 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.list_aicoach_task_page_with_options_async(request, headers, runtime)
+
+    def list_aicoach_task_session_with_options(
+        self,
+        request: main_models.ListAICoachTaskSessionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAICoachTaskSessionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.session_id):
+            query['sessionId'] = request.session_id
+        if not DaraCore.is_null(request.task_id):
+            query['taskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAICoachTaskSession',
+            version = '2024-03-13',
+            protocol = 'HTTPS',
+            pathname = f'/yic/yic-console/openService/v1/aicoach/listTaskSession',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAICoachTaskSessionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_aicoach_task_session_with_options_async(
+        self,
+        request: main_models.ListAICoachTaskSessionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAICoachTaskSessionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.session_id):
+            query['sessionId'] = request.session_id
+        if not DaraCore.is_null(request.task_id):
+            query['taskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAICoachTaskSession',
+            version = '2024-03-13',
+            protocol = 'HTTPS',
+            pathname = f'/yic/yic-console/openService/v1/aicoach/listTaskSession',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAICoachTaskSessionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_aicoach_task_session(
+        self,
+        request: main_models.ListAICoachTaskSessionRequest,
+    ) -> main_models.ListAICoachTaskSessionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_aicoach_task_session_with_options(request, headers, runtime)
+
+    async def list_aicoach_task_session_async(
+        self,
+        request: main_models.ListAICoachTaskSessionRequest,
+    ) -> main_models.ListAICoachTaskSessionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_aicoach_task_session_with_options_async(request, headers, runtime)
 
     def list_agents_with_options(
         self,
@@ -6344,6 +6704,102 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.stop_project_task_with_options_async(request, headers, runtime)
+
+    def submit_aicoach_debug_with_options(
+        self,
+        request: main_models.SubmitAICoachDebugRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitAICoachDebugResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.data_id):
+            body['dataId'] = request.data_id
+        if not DaraCore.is_null(request.data_type):
+            body['dataType'] = request.data_type
+        if not DaraCore.is_null(request.deduction_rule):
+            body['deductionRule'] = request.deduction_rule
+        if not DaraCore.is_null(request.dialogue_list):
+            body['dialogueList'] = request.dialogue_list
+        if not DaraCore.is_null(request.expressiveness):
+            body['expressiveness'] = request.expressiveness
+        if not DaraCore.is_null(request.point):
+            body['point'] = request.point
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitAICoachDebug',
+            version = '2024-03-13',
+            protocol = 'HTTPS',
+            pathname = f'/yic/yic-console/openService/v1/aicoach/saveDebug',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitAICoachDebugResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_aicoach_debug_with_options_async(
+        self,
+        request: main_models.SubmitAICoachDebugRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitAICoachDebugResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.data_id):
+            body['dataId'] = request.data_id
+        if not DaraCore.is_null(request.data_type):
+            body['dataType'] = request.data_type
+        if not DaraCore.is_null(request.deduction_rule):
+            body['deductionRule'] = request.deduction_rule
+        if not DaraCore.is_null(request.dialogue_list):
+            body['dialogueList'] = request.dialogue_list
+        if not DaraCore.is_null(request.expressiveness):
+            body['expressiveness'] = request.expressiveness
+        if not DaraCore.is_null(request.point):
+            body['point'] = request.point
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitAICoachDebug',
+            version = '2024-03-13',
+            protocol = 'HTTPS',
+            pathname = f'/yic/yic-console/openService/v1/aicoach/saveDebug',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitAICoachDebugResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_aicoach_debug(
+        self,
+        request: main_models.SubmitAICoachDebugRequest,
+    ) -> main_models.SubmitAICoachDebugResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.submit_aicoach_debug_with_options(request, headers, runtime)
+
+    async def submit_aicoach_debug_async(
+        self,
+        request: main_models.SubmitAICoachDebugRequest,
+    ) -> main_models.SubmitAICoachDebugResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.submit_aicoach_debug_with_options_async(request, headers, runtime)
 
     def submit_image_to_video_task_with_options(
         self,

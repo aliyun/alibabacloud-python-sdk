@@ -1,3 +1,14 @@
+2026-08-03 Version: 2.19.0
+- Support API CreateGenerateAICoachScriptTask.
+- Support API GetAICoachDebugResult.
+- Support API GetAICoachScriptGenerateTask.
+- Support API ListAICoachTaskSession.
+- Support API SubmitAICoachDebug.
+- Update API GetAICoachScript: add response parameters Body.extendCustomNameMap.
+- Update API GetAICoachTaskSessionReport: add response parameters Body.extendCustomNameMap.
+- Update API ListAICoachScriptPage: add response parameters Body.extendCustomNameMap.
+
+
 2026-06-10 Version: 2.18.2
 - Update API GetAICoachScript: add response parameters Body.points.$.questionSample.
 - Update API ListAgents: add response parameters Body.list.$.agentIconUrl.

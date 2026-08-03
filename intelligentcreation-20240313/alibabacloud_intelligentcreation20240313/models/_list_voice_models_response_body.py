@@ -22,7 +22,6 @@ class ListVoiceModelsResponseBody(DaraModel):
         self.error_code = error_code
         self.error_message = error_message
         self.list = list
-        # Id of the request
         self.request_id = request_id
         self.success = success
         self.total = total

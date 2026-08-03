@@ -12,7 +12,6 @@ class DeleteIndividuationProjectResponseBody(DaraModel):
         status: str = None,
     ):
         self.desc = desc
-        # Id of the request
         self.request_id = request_id
         self.status = status
 

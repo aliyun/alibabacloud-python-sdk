@@ -25,6 +25,7 @@ class GetAICoachScriptResponseBody(DaraModel):
         evaluate_report_flag: bool = None,
         expressiveness: Dict[str, int] = None,
         expressiveness_list: List[main_models.GetAICoachScriptResponseBodyExpressivenessList] = None,
+        extend_custom_name_map: Dict[str, str] = None,
         gif_dynamic_url: str = None,
         gif_static_url: str = None,
         gmt_create: str = None,
@@ -68,6 +69,7 @@ class GetAICoachScriptResponseBody(DaraModel):
         self.evaluate_report_flag = evaluate_report_flag
         self.expressiveness = expressiveness
         self.expressiveness_list = expressiveness_list
+        self.extend_custom_name_map = extend_custom_name_map
         self.gif_dynamic_url = gif_dynamic_url
         self.gif_static_url = gif_static_url
         self.gmt_create = gmt_create
@@ -179,6 +181,9 @@ class GetAICoachScriptResponseBody(DaraModel):
         if self.expressiveness_list is not None:
             for k1 in self.expressiveness_list:
                 result['expressivenessList'].append(k1.to_map() if k1 else None)
+
+        if self.extend_custom_name_map is not None:
+            result['extendCustomNameMap'] = self.extend_custom_name_map
 
         if self.gif_dynamic_url is not None:
             result['gifDynamicUrl'] = self.gif_dynamic_url
@@ -323,6 +328,9 @@ class GetAICoachScriptResponseBody(DaraModel):
             for k1 in m.get('expressivenessList'):
                 temp_model = main_models.GetAICoachScriptResponseBodyExpressivenessList()
                 self.expressiveness_list.append(temp_model.from_map(k1))
+
+        if m.get('extendCustomNameMap') is not None:
+            self.extend_custom_name_map = m.get('extendCustomNameMap')
 
         if m.get('gifDynamicUrl') is not None:
             self.gif_dynamic_url = m.get('gifDynamicUrl')

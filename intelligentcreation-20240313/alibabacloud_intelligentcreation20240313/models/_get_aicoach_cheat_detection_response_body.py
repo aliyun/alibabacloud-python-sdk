@@ -25,10 +25,8 @@ class GetAICoachCheatDetectionResponseBody(DaraModel):
         self.error_message = error_message
         self.gmt_create = gmt_create
         self.image_cheat = image_cheat
-        # Id of the request
         self.request_id = request_id
         self.status = status
-        # true
         self.success = success
         self.voice_cheat = voice_cheat
 

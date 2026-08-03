@@ -13,7 +13,6 @@ class BatchQueryIndividuationTextResponseBody(DaraModel):
         request_id: str = None,
         text_list: List[main_models.BatchQueryIndividuationTextResponseBodyTextList] = None,
     ):
-        # Id of the request
         self.request_id = request_id
         self.text_list = text_list
 

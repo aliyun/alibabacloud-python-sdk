@@ -14,7 +14,6 @@ class ListAICoachTaskPageResponseBody(DaraModel):
         task_list: List[main_models.ListAICoachTaskPageResponseBodyTaskList] = None,
         total: int = None,
     ):
-        # Id of the request
         self.request_id = request_id
         self.task_list = task_list
         self.total = total

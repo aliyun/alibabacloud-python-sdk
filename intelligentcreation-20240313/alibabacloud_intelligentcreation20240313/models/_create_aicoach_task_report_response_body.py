@@ -10,7 +10,6 @@ class CreateAICoachTaskReportResponseBody(DaraModel):
         request_id: str = None,
         session_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
         self.session_id = session_id
 

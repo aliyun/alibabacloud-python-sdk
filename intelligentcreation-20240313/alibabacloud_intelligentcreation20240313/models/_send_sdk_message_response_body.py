@@ -16,9 +16,7 @@ class SendSdkMessageResponseBody(DaraModel):
         self.data = data
         self.error_code = error_code
         self.error_message = error_message
-        # Id of the request
         self.request_id = request_id
-        # true
         self.success = success
 
     def validate(self):

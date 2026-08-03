@@ -18,12 +18,10 @@ class ListAnchorResponseBody(DaraModel):
         success: bool = None,
         total: int = None,
     ):
-        # code
         self.code = code
         self.error_code = error_code
         self.error_message = error_message
         self.list = list
-        # requestId
         self.request_id = request_id
         self.success = success
         self.total = total

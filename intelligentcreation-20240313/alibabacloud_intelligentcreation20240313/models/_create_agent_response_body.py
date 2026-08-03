@@ -11,7 +11,6 @@ class CreateAgentResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.agent_id = agent_id
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):

@@ -82,6 +82,9 @@ from ._create_agent_response import CreateAgentResponse
 from ._create_anchor_request import CreateAnchorRequest
 from ._create_anchor_response_body import CreateAnchorResponseBody
 from ._create_anchor_response import CreateAnchorResponse
+from ._create_generate_aicoach_script_task_request import CreateGenerateAICoachScriptTaskRequest
+from ._create_generate_aicoach_script_task_response_body import CreateGenerateAICoachScriptTaskResponseBody
+from ._create_generate_aicoach_script_task_response import CreateGenerateAICoachScriptTaskResponse
 from ._create_illustration_task_request import CreateIllustrationTaskRequest
 from ._create_illustration_task_response import CreateIllustrationTaskResponse
 from ._create_individuation_project_request import CreateIndividuationProjectRequest
@@ -126,9 +129,15 @@ from ._get_aicoach_assessment_point_response import GetAICoachAssessmentPointRes
 from ._get_aicoach_cheat_detection_request import GetAICoachCheatDetectionRequest
 from ._get_aicoach_cheat_detection_response_body import GetAICoachCheatDetectionResponseBody
 from ._get_aicoach_cheat_detection_response import GetAICoachCheatDetectionResponse
+from ._get_aicoach_debug_result_request import GetAICoachDebugResultRequest
+from ._get_aicoach_debug_result_response_body import GetAICoachDebugResultResponseBody
+from ._get_aicoach_debug_result_response import GetAICoachDebugResultResponse
 from ._get_aicoach_script_request import GetAICoachScriptRequest
 from ._get_aicoach_script_response_body import GetAICoachScriptResponseBody
 from ._get_aicoach_script_response import GetAICoachScriptResponse
+from ._get_aicoach_script_generate_task_request import GetAICoachScriptGenerateTaskRequest
+from ._get_aicoach_script_generate_task_response_body import GetAICoachScriptGenerateTaskResponseBody
+from ._get_aicoach_script_generate_task_response import GetAICoachScriptGenerateTaskResponse
 from ._get_aicoach_task_session_history_request import GetAICoachTaskSessionHistoryRequest
 from ._get_aicoach_task_session_history_response_body import GetAICoachTaskSessionHistoryResponseBody
 from ._get_aicoach_task_session_history_response import GetAICoachTaskSessionHistoryResponse
@@ -159,6 +168,9 @@ from ._list_aicoach_script_page_response import ListAICoachScriptPageResponse
 from ._list_aicoach_task_page_request import ListAICoachTaskPageRequest
 from ._list_aicoach_task_page_response_body import ListAICoachTaskPageResponseBody
 from ._list_aicoach_task_page_response import ListAICoachTaskPageResponse
+from ._list_aicoach_task_session_request import ListAICoachTaskSessionRequest
+from ._list_aicoach_task_session_response_body import ListAICoachTaskSessionResponseBody
+from ._list_aicoach_task_session_response import ListAICoachTaskSessionResponse
 from ._list_agents_request import ListAgentsRequest
 from ._list_agents_response_body import ListAgentsResponseBody
 from ._list_agents_response import ListAgentsResponse
@@ -231,6 +243,9 @@ from ._stop_avatar_session_response import StopAvatarSessionResponse
 from ._stop_project_task_request import StopProjectTaskRequest
 from ._stop_project_task_response_body import StopProjectTaskResponseBody
 from ._stop_project_task_response import StopProjectTaskResponse
+from ._submit_aicoach_debug_request import SubmitAICoachDebugRequest
+from ._submit_aicoach_debug_response_body import SubmitAICoachDebugResponseBody
+from ._submit_aicoach_debug_response import SubmitAICoachDebugResponse
 from ._submit_image_to_video_task_request import SubmitImageToVideoTaskRequest
 from ._submit_image_to_video_task_response_body import SubmitImageToVideoTaskResponseBody
 from ._submit_image_to_video_task_response import SubmitImageToVideoTaskResponse
@@ -255,6 +270,8 @@ from ._build_aicoach_script_record_response_body import BuildAICoachScriptRecord
 from ._count_text_response_body import CountTextResponseBodyCountTextCmdList
 from ._create_aicoach_task_report_request import CreateAICoachTaskReportRequestDialogueList
 from ._create_aicoach_task_session_response_body import CreateAICoachTaskSessionResponseBodyScriptInfo
+from ._create_generate_aicoach_script_task_request import CreateGenerateAICoachScriptTaskRequestDocList
+from ._create_generate_aicoach_script_task_response_body import CreateGenerateAICoachScriptTaskResponseBodyData
 from ._get_aicoach_assessment_point_response_body import GetAICoachAssessmentPointResponseBodyAnswerListAnswerValuesKeywordValues
 from ._get_aicoach_assessment_point_response_body import GetAICoachAssessmentPointResponseBodyAnswerListAnswerValuesScoringRules
 from ._get_aicoach_assessment_point_response_body import GetAICoachAssessmentPointResponseBodyAnswerListAnswerValues
@@ -265,6 +282,12 @@ from ._get_aicoach_cheat_detection_response_body import GetAICoachCheatDetection
 from ._get_aicoach_cheat_detection_response_body import GetAICoachCheatDetectionResponseBodyVoiceCheatComparisonList
 from ._get_aicoach_cheat_detection_response_body import GetAICoachCheatDetectionResponseBodyVoiceCheatOriginalList
 from ._get_aicoach_cheat_detection_response_body import GetAICoachCheatDetectionResponseBodyVoiceCheat
+from ._get_aicoach_debug_result_response_body import GetAICoachDebugResultResponseBodyDialogueList
+from ._get_aicoach_debug_result_response_body import GetAICoachDebugResultResponseBodyTaskReportDeductionRule
+from ._get_aicoach_debug_result_response_body import GetAICoachDebugResultResponseBodyTaskReportExpressiveness
+from ._get_aicoach_debug_result_response_body import GetAICoachDebugResultResponseBodyTaskReportPointAnswerList
+from ._get_aicoach_debug_result_response_body import GetAICoachDebugResultResponseBodyTaskReportPoint
+from ._get_aicoach_debug_result_response_body import GetAICoachDebugResultResponseBodyTaskReport
 from ._get_aicoach_script_response_body import GetAICoachScriptResponseBodyCheckCheatConfig
 from ._get_aicoach_script_response_body import GetAICoachScriptResponseBodyCompleteStrategy
 from ._get_aicoach_script_response_body import GetAICoachScriptResponseBodyCustomReplyRulesActionParameters
@@ -285,6 +308,7 @@ from ._get_aicoach_script_response_body import GetAICoachScriptResponseBodySampl
 from ._get_aicoach_script_response_body import GetAICoachScriptResponseBodyScoreConfigLevels
 from ._get_aicoach_script_response_body import GetAICoachScriptResponseBodyScoreConfig
 from ._get_aicoach_script_response_body import GetAICoachScriptResponseBodyWeights
+from ._get_aicoach_script_generate_task_response_body import GetAICoachScriptGenerateTaskResponseBodyData
 from ._get_aicoach_task_session_history_response_body import GetAICoachTaskSessionHistoryResponseBodyConversationList
 from ._get_text_template_response_body import GetTextTemplateResponseBodyAvailableIndustryTextModeTypesTextStyles
 from ._get_text_template_response_body import GetTextTemplateResponseBodyAvailableIndustryTextModeTypes
@@ -302,6 +326,7 @@ from ._list_aicoach_script_page_response_body import ListAICoachScriptPageRespon
 from ._list_aicoach_script_page_response_body import ListAICoachScriptPageResponseBodyListWeights
 from ._list_aicoach_script_page_response_body import ListAICoachScriptPageResponseBodyList
 from ._list_aicoach_task_page_response_body import ListAICoachTaskPageResponseBodyTaskList
+from ._list_aicoach_task_session_response_body import ListAICoachTaskSessionResponseBodySessionList
 from ._list_agents_response_body import ListAgentsResponseBodyList
 from ._list_avatar_project_response_body import ListAvatarProjectResponseBodyQueryAvatarProjectResultList
 from ._query_avatar_project_response_body import QueryAvatarProjectResponseBodyFramesLayersMaterial
@@ -317,6 +342,15 @@ from ._save_avatar_project_request import SaveAvatarProjectRequestFramesVideoScr
 from ._save_avatar_project_request import SaveAvatarProjectRequestFrames
 from ._select_image_task_response_body import SelectImageTaskResponseBodyImageInfos
 from ._select_resource_response_body import SelectResourceResponseBodyResourceInfoList
+from ._submit_aicoach_debug_request import SubmitAICoachDebugRequestDeductionRule
+from ._submit_aicoach_debug_request import SubmitAICoachDebugRequestDialogueList
+from ._submit_aicoach_debug_request import SubmitAICoachDebugRequestExpressiveness
+from ._submit_aicoach_debug_request import SubmitAICoachDebugRequestPointAnswerListAnswerValuesKeywordValues
+from ._submit_aicoach_debug_request import SubmitAICoachDebugRequestPointAnswerListAnswerValuesScoringRules
+from ._submit_aicoach_debug_request import SubmitAICoachDebugRequestPointAnswerListAnswerValues
+from ._submit_aicoach_debug_request import SubmitAICoachDebugRequestPointAnswerListParameters
+from ._submit_aicoach_debug_request import SubmitAICoachDebugRequestPointAnswerList
+from ._submit_aicoach_debug_request import SubmitAICoachDebugRequestPoint
 from ._submit_project_task_request import SubmitProjectTaskRequestFramesLayersMaterialMask
 from ._submit_project_task_request import SubmitProjectTaskRequestFramesLayersMaterial
 from ._submit_project_task_request import SubmitProjectTaskRequestFramesLayers
@@ -405,6 +439,9 @@ __all__ = [
     CreateAnchorRequest,
     CreateAnchorResponseBody,
     CreateAnchorResponse,
+    CreateGenerateAICoachScriptTaskRequest,
+    CreateGenerateAICoachScriptTaskResponseBody,
+    CreateGenerateAICoachScriptTaskResponse,
     CreateIllustrationTaskRequest,
     CreateIllustrationTaskResponse,
     CreateIndividuationProjectRequest,
@@ -449,9 +486,15 @@ __all__ = [
     GetAICoachCheatDetectionRequest,
     GetAICoachCheatDetectionResponseBody,
     GetAICoachCheatDetectionResponse,
+    GetAICoachDebugResultRequest,
+    GetAICoachDebugResultResponseBody,
+    GetAICoachDebugResultResponse,
     GetAICoachScriptRequest,
     GetAICoachScriptResponseBody,
     GetAICoachScriptResponse,
+    GetAICoachScriptGenerateTaskRequest,
+    GetAICoachScriptGenerateTaskResponseBody,
+    GetAICoachScriptGenerateTaskResponse,
     GetAICoachTaskSessionHistoryRequest,
     GetAICoachTaskSessionHistoryResponseBody,
     GetAICoachTaskSessionHistoryResponse,
@@ -482,6 +525,9 @@ __all__ = [
     ListAICoachTaskPageRequest,
     ListAICoachTaskPageResponseBody,
     ListAICoachTaskPageResponse,
+    ListAICoachTaskSessionRequest,
+    ListAICoachTaskSessionResponseBody,
+    ListAICoachTaskSessionResponse,
     ListAgentsRequest,
     ListAgentsResponseBody,
     ListAgentsResponse,
@@ -554,6 +600,9 @@ __all__ = [
     StopProjectTaskRequest,
     StopProjectTaskResponseBody,
     StopProjectTaskResponse,
+    SubmitAICoachDebugRequest,
+    SubmitAICoachDebugResponseBody,
+    SubmitAICoachDebugResponse,
     SubmitImageToVideoTaskRequest,
     SubmitImageToVideoTaskResponseBody,
     SubmitImageToVideoTaskResponse,
@@ -578,6 +627,8 @@ __all__ = [
     CountTextResponseBodyCountTextCmdList,
     CreateAICoachTaskReportRequestDialogueList,
     CreateAICoachTaskSessionResponseBodyScriptInfo,
+    CreateGenerateAICoachScriptTaskRequestDocList,
+    CreateGenerateAICoachScriptTaskResponseBodyData,
     GetAICoachAssessmentPointResponseBodyAnswerListAnswerValuesKeywordValues,
     GetAICoachAssessmentPointResponseBodyAnswerListAnswerValuesScoringRules,
     GetAICoachAssessmentPointResponseBodyAnswerListAnswerValues,
@@ -588,6 +639,12 @@ __all__ = [
     GetAICoachCheatDetectionResponseBodyVoiceCheatComparisonList,
     GetAICoachCheatDetectionResponseBodyVoiceCheatOriginalList,
     GetAICoachCheatDetectionResponseBodyVoiceCheat,
+    GetAICoachDebugResultResponseBodyDialogueList,
+    GetAICoachDebugResultResponseBodyTaskReportDeductionRule,
+    GetAICoachDebugResultResponseBodyTaskReportExpressiveness,
+    GetAICoachDebugResultResponseBodyTaskReportPointAnswerList,
+    GetAICoachDebugResultResponseBodyTaskReportPoint,
+    GetAICoachDebugResultResponseBodyTaskReport,
     GetAICoachScriptResponseBodyCheckCheatConfig,
     GetAICoachScriptResponseBodyCompleteStrategy,
     GetAICoachScriptResponseBodyCustomReplyRulesActionParameters,
@@ -608,6 +665,7 @@ __all__ = [
     GetAICoachScriptResponseBodyScoreConfigLevels,
     GetAICoachScriptResponseBodyScoreConfig,
     GetAICoachScriptResponseBodyWeights,
+    GetAICoachScriptGenerateTaskResponseBodyData,
     GetAICoachTaskSessionHistoryResponseBodyConversationList,
     GetTextTemplateResponseBodyAvailableIndustryTextModeTypesTextStyles,
     GetTextTemplateResponseBodyAvailableIndustryTextModeTypes,
@@ -625,6 +683,7 @@ __all__ = [
     ListAICoachScriptPageResponseBodyListWeights,
     ListAICoachScriptPageResponseBodyList,
     ListAICoachTaskPageResponseBodyTaskList,
+    ListAICoachTaskSessionResponseBodySessionList,
     ListAgentsResponseBodyList,
     ListAvatarProjectResponseBodyQueryAvatarProjectResultList,
     QueryAvatarProjectResponseBodyFramesLayersMaterial,
@@ -640,6 +699,15 @@ __all__ = [
     SaveAvatarProjectRequestFrames,
     SelectImageTaskResponseBodyImageInfos,
     SelectResourceResponseBodyResourceInfoList,
+    SubmitAICoachDebugRequestDeductionRule,
+    SubmitAICoachDebugRequestDialogueList,
+    SubmitAICoachDebugRequestExpressiveness,
+    SubmitAICoachDebugRequestPointAnswerListAnswerValuesKeywordValues,
+    SubmitAICoachDebugRequestPointAnswerListAnswerValuesScoringRules,
+    SubmitAICoachDebugRequestPointAnswerListAnswerValues,
+    SubmitAICoachDebugRequestPointAnswerListParameters,
+    SubmitAICoachDebugRequestPointAnswerList,
+    SubmitAICoachDebugRequestPoint,
     SubmitProjectTaskRequestFramesLayersMaterialMask,
     SubmitProjectTaskRequestFramesLayersMaterial,
     SubmitProjectTaskRequestFramesLayers,

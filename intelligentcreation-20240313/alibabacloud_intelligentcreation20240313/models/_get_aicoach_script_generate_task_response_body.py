@@ -5,21 +5,19 @@ from __future__ import annotations
 from alibabacloud_intelligentcreation20240313 import models as main_models
 from darabonba.model import DaraModel
 
-class BuildAICoachScriptRecordResponseBody(DaraModel):
+class GetAICoachScriptGenerateTaskResponseBody(DaraModel):
     def __init__(
         self,
-        data: main_models.BuildAICoachScriptRecordResponseBodyData = None,
+        data: main_models.GetAICoachScriptGenerateTaskResponseBodyData = None,
         error_code: str = None,
         error_message: str = None,
         request_id: str = None,
-        script_record_id: str = None,
         success: bool = None,
     ):
         self.data = data
         self.error_code = error_code
         self.error_message = error_message
         self.request_id = request_id
-        self.script_record_id = script_record_id
         self.success = success
 
     def validate(self):
@@ -43,9 +41,6 @@ class BuildAICoachScriptRecordResponseBody(DaraModel):
         if self.request_id is not None:
             result['requestId'] = self.request_id
 
-        if self.script_record_id is not None:
-            result['scriptRecordId'] = self.script_record_id
-
         if self.success is not None:
             result['success'] = self.success
 
@@ -54,7 +49,7 @@ class BuildAICoachScriptRecordResponseBody(DaraModel):
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('data') is not None:
-            temp_model = main_models.BuildAICoachScriptRecordResponseBodyData()
+            temp_model = main_models.GetAICoachScriptGenerateTaskResponseBodyData()
             self.data = temp_model.from_map(m.get('data'))
 
         if m.get('errorCode') is not None:
@@ -66,20 +61,23 @@ class BuildAICoachScriptRecordResponseBody(DaraModel):
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
 
-        if m.get('scriptRecordId') is not None:
-            self.script_record_id = m.get('scriptRecordId')
-
         if m.get('success') is not None:
             self.success = m.get('success')
 
         return self
 
-class BuildAICoachScriptRecordResponseBodyData(DaraModel):
+class GetAICoachScriptGenerateTaskResponseBodyData(DaraModel):
     def __init__(
         self,
-        script_id: str = None,
+        script_record_id: str = None,
+        status: str = None,
+        task_id: str = None,
+        total_tokens: int = None,
     ):
-        self.script_id = script_id
+        self.script_record_id = script_record_id
+        self.status = status
+        self.task_id = task_id
+        self.total_tokens = total_tokens
 
     def validate(self):
         pass
@@ -89,15 +87,33 @@ class BuildAICoachScriptRecordResponseBodyData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.script_id is not None:
-            result['scriptId'] = self.script_id
+        if self.script_record_id is not None:
+            result['scriptRecordId'] = self.script_record_id
+
+        if self.status is not None:
+            result['status'] = self.status
+
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+
+        if self.total_tokens is not None:
+            result['totalTokens'] = self.total_tokens
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('scriptId') is not None:
-            self.script_id = m.get('scriptId')
+        if m.get('scriptRecordId') is not None:
+            self.script_record_id = m.get('scriptRecordId')
+
+        if m.get('status') is not None:
+            self.status = m.get('status')
+
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+
+        if m.get('totalTokens') is not None:
+            self.total_tokens = m.get('totalTokens')
 
         return self
 

@@ -10,7 +10,6 @@ class OfflineAICoachScriptResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
         self.status = status
 

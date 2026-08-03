@@ -18,13 +18,11 @@ class CreateAICoachTaskSessionResponseBody(DaraModel):
         token: str = None,
         web_socket_url: str = None,
     ):
-        # rtctoken
         self.channel_token = channel_token
         self.request_id = request_id
         self.script_info = script_info
         self.session_id = session_id
         self.session_status = session_status
-        # Token
         self.token = token
         self.web_socket_url = web_socket_url
 

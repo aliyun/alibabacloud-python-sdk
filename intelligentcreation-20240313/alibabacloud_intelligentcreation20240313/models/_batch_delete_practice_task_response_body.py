@@ -18,7 +18,6 @@ class BatchDeletePracticeTaskResponseBody(DaraModel):
     ):
         self.error_code = error_code
         self.error_message = error_message
-        # Id of the request
         self.request_id = request_id
         self.results = results
         self.success = success

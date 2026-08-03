@@ -13,7 +13,6 @@ class BatchGetProjectTaskResponseBody(DaraModel):
         request_id: str = None,
         result_list: List[main_models.BatchGetProjectTaskResponseBodyResultList] = None,
     ):
-        # Id of the request
         self.request_id = request_id
         self.result_list = result_list
 

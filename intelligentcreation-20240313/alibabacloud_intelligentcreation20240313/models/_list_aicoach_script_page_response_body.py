@@ -2,7 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List, Dict
+from typing import Dict, List
 
 from alibabacloud_intelligentcreation20240313 import models as main_models
 from darabonba.model import DaraModel
@@ -12,6 +12,7 @@ class ListAICoachScriptPageResponseBody(DaraModel):
         self,
         error_code: str = None,
         error_message: str = None,
+        extend_custom_name_map: Dict[str, str] = None,
         list: List[main_models.ListAICoachScriptPageResponseBodyList] = None,
         request_id: str = None,
         success: bool = None,
@@ -19,8 +20,8 @@ class ListAICoachScriptPageResponseBody(DaraModel):
     ):
         self.error_code = error_code
         self.error_message = error_message
+        self.extend_custom_name_map = extend_custom_name_map
         self.list = list
-        # Id of the request
         self.request_id = request_id
         self.success = success
         self.total = total
@@ -41,6 +42,9 @@ class ListAICoachScriptPageResponseBody(DaraModel):
 
         if self.error_message is not None:
             result['errorMessage'] = self.error_message
+
+        if self.extend_custom_name_map is not None:
+            result['extendCustomNameMap'] = self.extend_custom_name_map
 
         result['list'] = []
         if self.list is not None:
@@ -65,6 +69,9 @@ class ListAICoachScriptPageResponseBody(DaraModel):
 
         if m.get('errorMessage') is not None:
             self.error_message = m.get('errorMessage')
+
+        if m.get('extendCustomNameMap') is not None:
+            self.extend_custom_name_map = m.get('extendCustomNameMap')
 
         self.list = []
         if m.get('list') is not None:

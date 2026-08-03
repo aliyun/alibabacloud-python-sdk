@@ -14,7 +14,6 @@ class SendSdkStreamMessageRequest(DaraModel):
         user_id: str = None,
     ):
         self.data = data
-        # header
         self.header = header
         self.module_name = module_name
         self.operation_name = operation_name

@@ -17,7 +17,6 @@ class QueryIndividuationTextTaskResponseBody(DaraModel):
         update_time: str = None,
     ):
         self.create_time = create_time
-        # Id of the request
         self.request_id = request_id
         self.status = status
         self.text_list = text_list

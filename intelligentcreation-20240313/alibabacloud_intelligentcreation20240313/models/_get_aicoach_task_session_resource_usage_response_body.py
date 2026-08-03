@@ -19,7 +19,6 @@ class GetAICoachTaskSessionResourceUsageResponseBody(DaraModel):
         self.deduction_status = deduction_status
         self.error_code = error_code
         self.error_message = error_message
-        # Id of the request
         self.request_id = request_id
         self.success = success
         self.token_usage = token_usage

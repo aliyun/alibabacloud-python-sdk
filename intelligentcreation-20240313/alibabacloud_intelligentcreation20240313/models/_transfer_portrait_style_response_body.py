@@ -10,7 +10,6 @@ class TransferPortraitStyleResponseBody(DaraModel):
         request_id: str = None,
         task_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
         self.task_id = task_id
 

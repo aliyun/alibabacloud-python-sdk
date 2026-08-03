@@ -2,6 +2,8 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import Dict
+
 from darabonba.model import DaraModel
 
 class GetAICoachTaskSessionReportResponseBody(DaraModel):
@@ -11,6 +13,7 @@ class GetAICoachTaskSessionReportResponseBody(DaraModel):
         end_time: str = None,
         evaluation_rating: str = None,
         evaluation_result: str = None,
+        extend_custom_name_map: Dict[str, str] = None,
         feedback: bool = None,
         request_id: str = None,
         script_name: str = None,
@@ -22,6 +25,7 @@ class GetAICoachTaskSessionReportResponseBody(DaraModel):
         self.end_time = end_time
         self.evaluation_rating = evaluation_rating
         self.evaluation_result = evaluation_result
+        self.extend_custom_name_map = extend_custom_name_map
         self.feedback = feedback
         self.request_id = request_id
         self.script_name = script_name
@@ -48,6 +52,9 @@ class GetAICoachTaskSessionReportResponseBody(DaraModel):
 
         if self.evaluation_result is not None:
             result['evaluationResult'] = self.evaluation_result
+
+        if self.extend_custom_name_map is not None:
+            result['extendCustomNameMap'] = self.extend_custom_name_map
 
         if self.feedback is not None:
             result['feedback'] = self.feedback
@@ -82,6 +89,9 @@ class GetAICoachTaskSessionReportResponseBody(DaraModel):
 
         if m.get('evaluationResult') is not None:
             self.evaluation_result = m.get('evaluationResult')
+
+        if m.get('extendCustomNameMap') is not None:
+            self.extend_custom_name_map = m.get('extendCustomNameMap')
 
         if m.get('feedback') is not None:
             self.feedback = m.get('feedback')

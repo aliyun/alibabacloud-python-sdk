@@ -12,7 +12,6 @@ class BatchCreateAICoachTaskResponseBody(DaraModel):
         request_id: str = None,
         task_ids: List[str] = None,
     ):
-        # Id of the request
         self.request_id = request_id
         self.task_ids = task_ids
 

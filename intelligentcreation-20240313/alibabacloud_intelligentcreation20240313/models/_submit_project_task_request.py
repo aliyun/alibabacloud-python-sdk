@@ -15,7 +15,6 @@ class SubmitProjectTaskRequest(DaraModel):
         subtitle_tag: int = None,
         transparent_background: int = None,
     ):
-        # frame
         self.frames = frames
         self.scale_type = scale_type
         self.subtitle_tag = subtitle_tag

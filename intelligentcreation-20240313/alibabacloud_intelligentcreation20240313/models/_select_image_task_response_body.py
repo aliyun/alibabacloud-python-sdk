@@ -27,7 +27,6 @@ class SelectImageTaskResponseBody(DaraModel):
         self.generation_source = generation_source
         self.gmt_create = gmt_create
         self.image_infos = image_infos
-        # Id of the request
         self.request_id = request_id
         self.scene = scene
         self.status = status

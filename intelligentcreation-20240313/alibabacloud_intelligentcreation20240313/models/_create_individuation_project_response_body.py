@@ -11,7 +11,6 @@ class CreateIndividuationProjectResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.project_id = project_id
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):

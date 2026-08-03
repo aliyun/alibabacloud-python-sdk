@@ -12,7 +12,6 @@ class CountTextRequest(DaraModel):
         publish_status: str = None,
         style: str = None,
     ):
-        # API
         self.generation_source = generation_source
         self.industry = industry
         self.publish_status = publish_status

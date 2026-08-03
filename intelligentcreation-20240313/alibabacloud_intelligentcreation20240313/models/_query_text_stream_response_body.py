@@ -14,7 +14,6 @@ class QueryTextStreamResponseBody(DaraModel):
     ):
         self.end = end
         self.index = index
-        # Id of the request
         self.message = message
         self.type = type
 
