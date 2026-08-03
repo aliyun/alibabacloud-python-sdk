@@ -14,9 +14,9 @@ class ListDirectoriesAndFilesResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # The list of directory and file entries.
+        # The collection of directory or file information.
         self.entries = entries
-        # The pagination token. If the response is truncated, include this token in the next request to retrieve the next page of results.
+        # The pagination token that is used in the next request to retrieve a new page of results. If the return results are truncated, you can use NextToken to initiate a new request to retrieve the content after the current truncation position.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -80,83 +80,81 @@ class ListDirectoriesAndFilesResponseBodyEntries(DaraModel):
         storage_type: str = None,
         type: str = None,
     ):
-        # The last access time (atime) of the file.
+        # The query time.
         # 
-        # The time is in the ISO 8601 format: `yyyy-MM-ddTHH:mm:ssZ`.
+        # The time follows the ISO 8601 standard and is returned in the format: `yyyy-MM-ddTHH:mm:ssZ`.
         # 
-        # This parameter is returned only when `Type` is `File`.
+        # This parameter is returned and meaningful only when Type is set to File.
         self.atime = atime
-        # The metadata change time (ctime) of the file.
+        # The time when the metadata was modified.
         # 
-        # The time is in the ISO 8601 format: `yyyy-MM-ddTHH:mm:ssZ`.
+        # The time follows the ISO 8601 standard and is returned in the format: `yyyy-MM-ddTHH:mm:ssZ`.
         # 
-        # This parameter is returned only when `Type` is `File`.
+        # This parameter is returned and meaningful only when Type is set to File.
         self.ctime = ctime
-        # The ID of the file or directory.
+        # The FileId of the directory or file.
         self.file_id = file_id
-        # Specifies whether the directory contains any archive files.
+        # Indicates whether the directory contains archive storage class files.
         # 
-        # This parameter is returned only when `Type` is `Directory`.
+        # This parameter is returned and meaningful only when Type is set to Directory.
         # 
         # Valid values:
         # 
-        # - `true`: Yes
-        # 
-        # - `false`: No
+        # - true: The directory contains archive storage class files.
+        # - false: The directory does not contain archive storage class files.
         self.has_archive_file = has_archive_file
-        # Specifies whether the directory contains any infrequent access files.
+        # Indicates whether the directory contains IA storage class files.
         # 
-        # This parameter is returned only when `Type` is `Directory`.
+        # This parameter is returned and meaningful only when Type is set to Directory.
         # 
         # Valid values:
         # 
-        # - `true`: Yes
-        # 
-        # - `false`: No
+        # - true: The directory contains IA storage class files.
+        # - false: The directory does not contain IA storage class files.
         self.has_infrequent_access_file = has_infrequent_access_file
         # The inode of the file or directory.
         self.inode = inode
-        # The last modification time (mtime) of the file.
+        # The time when the file was modified.
         # 
-        # The time is in the ISO 8601 format: `yyyy-MM-ddTHH:mm:ssZ`.
+        # The time follows the ISO 8601 standard and is returned in the format: `yyyy-MM-ddTHH:mm:ssZ`.
         # 
-        # This parameter is returned only when `Type` is `File`.
+        # This parameter is returned and meaningful only when Type is set to File.
         self.mtime = mtime
-        # The name of the file or directory.
+        # The file name or directory name.
         self.name = name
+        # The total duration for which the file has been stored as an archive file. Unit: seconds.
         self.offline_duration = offline_duration
+        # The total duration for which the file has remained unchanged since it was stored as an archive file. Unit: seconds.
         self.offline_unchanged_duration = offline_unchanged_duration
-        # The owner of the file or directory. This parameter is returned only when `ProtocolType` is `SMB` and access control is enabled.
+        # The portable account ID.
+        # This parameter is meaningful only when ProtocolType is set to SMB and access control is enabled.
         self.owner = owner
-        # The last data retrieval time.
+        # The time when the most recent data retrieval task was run.
         # 
-        # The time is in the ISO 8601 format: `yyyy-MM-ddTHH:mm:ssZ`.
+        # The time follows the ISO 8601 standard and is returned in the format: `yyyy-MM-ddTHH:mm:ssZ`.
         # 
-        # This parameter is returned only when `Type` is `File`.
+        # This parameter is returned and meaningful only when Type is set to File.
         self.retrieve_time = retrieve_time
-        # The size of the file, in bytes.
+        # The size of the file.
         # 
-        # This parameter is returned only when `Type` is `File`.
+        # Unit: bytes.
         # 
-        # This value is returned and is meaningful only when Type is File.
+        # This parameter is returned and meaningful only when Type is set to File.
         self.size = size
-        # The storage class of the file.
+        # The storage class type of the returned file.
         # 
-        # This parameter is returned only when `Type` is `File`.
+        # This parameter is returned and meaningful only when Type is set to File.
         # 
         # Valid values:
-        # 
-        # - `InfrequentAccess`
-        # 
-        # - `Archive`
+        # - InfrequentAccess: IA storage class.
+        # - Archive: Archive storage class.
         self.storage_type = storage_type
-        # The type of the entry.
+        # The type of the returned result.
         # 
         # Valid values:
         # 
-        # - `File`: a file
-        # 
-        # - `Directory`: a directory
+        # - File: file.
+        # - Directory: directory.
         self.type = type
 
     def validate(self):

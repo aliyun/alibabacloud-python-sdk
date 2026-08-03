@@ -15,10 +15,19 @@ class ListAccessPointsRequest(DaraModel):
         max_results: int = None,
         next_token: str = None,
     ):
+        # The file system ID.
+        # 
         # This parameter is required.
         self.file_system_id = file_system_id
+        # The filter information.
         self.filters = filters
+        # The maximum number of results to return per query.
+        # 
+        # - Maximum value: 100.
+        # - Minimum value: 10.
+        # - Default value: 20.
         self.max_results = max_results
+        # The query token. Set this parameter to the value of NextToken that was returned in the previous API call.
         self.next_token = next_token
 
     def validate(self):
@@ -73,7 +82,12 @@ class ListAccessPointsRequestFilters(DaraModel):
         name: str = None,
         value: str = None,
     ):
+        # The name of the filter key. Valid values:
+        # - AccessGroup (not supported for agentic)
+        # - AccessPointId
+        # - AgenticSpaceId
         self.name = name
+        # The value of the filter key.
         self.value = value
 
     def validate(self):

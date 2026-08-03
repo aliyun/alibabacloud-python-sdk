@@ -27,15 +27,15 @@ class DescribeLifecyclePoliciesRequest(DaraModel):
         # The lifecycle policy name. Naming rules:
         # 
         # 
-        # The name must be 3 to 64 characters in length, start with a letter, and can contain letters, digits, underscores (_), or hyphens (-).
+        # The name must be 3 to 64 characters in length, must start with a letter, and can contain letters, digits, underscores (_), or hyphens (-).
         # 
         # >Optional for General-purpose NAS file systems. If specified, this parameter takes precedence. If not specified, LifecyclePolicyId is used instead.
         self.lifecycle_policy_name = lifecycle_policy_name
         # The policy type.
         # 
         # Valid values:
-        # - Auto: automatic execution
-        # - OnDemand: on-demand execution
+        # - Auto: Automatic execution.
+        # - OnDemand: On-demand execution.
         # >Only CPFS for Lingjun supports this parameter.
         self.lifecycle_policy_type = lifecycle_policy_type
         # The page number of the list.
@@ -51,7 +51,7 @@ class DescribeLifecyclePoliciesRequest(DaraModel):
         # Filters results by path.
         # >Only CPFS for Lingjun supports this parameter.
         self.path = path
-        # The storage class type. Valid values:
+        # The storage type. Valid values:
         # - InfrequentAccess: IA storage class.
         # - Archive: Archive storage class.
         # > If StorageType is not specified, all lifecycle policies are returned.

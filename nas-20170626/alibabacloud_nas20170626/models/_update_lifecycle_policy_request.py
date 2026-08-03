@@ -10,6 +10,7 @@ from darabonba.model import DaraModel
 class UpdateLifecyclePolicyRequest(DaraModel):
     def __init__(
         self,
+        delete_rules: List[main_models.UpdateLifecyclePolicyRequestDeleteRules] = None,
         description: str = None,
         file_system_id: str = None,
         lifecycle_policy_id: str = None,
@@ -18,40 +19,45 @@ class UpdateLifecyclePolicyRequest(DaraModel):
         storage_type: str = None,
         transit_rules: List[main_models.UpdateLifecyclePolicyRequestTransitRules] = None,
     ):
+        # The file data expiration and deletion rules.
+        self.delete_rules = delete_rules
         # The description of the lifecycle policy.
         # 
-        # The description must be 3 to 64 characters long and must start with a letter. It can contain letters, digits, underscores (_), and hyphens (-).
-        # 
-        # > This parameter is supported only for CPFS for AI file systems.
+        # Format:
+        # The description must be 3 to 64 characters in length, start with a letter, and can contain letters, digits, underscores (_), or hyphens (-).
+        # > Only CPFS for Lingjun is supported.
         self.description = description
-        # The ID of the file system.
+        # The file system ID. The ID starts with bmcpfs-, such as bmcpfs-290w65p03ok64ya****.
+        # > This parameter is supported only when LifecyclePolicyType is set to OnDemand in the lifecycle management policy of a CPFS for Lingjun file system.
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
         # The ID of the lifecycle policy.
-        # 
-        # > This parameter is required for CPFS for AI file systems.
+        # > This parameter is required for CPFS for Lingjun file systems.
         # 
         # This parameter is required.
         self.lifecycle_policy_id = lifecycle_policy_id
-        # The absolute paths of the directories to which the lifecycle policy applies.
+        # The absolute paths of the directories associated with the lifecycle management policy.
         self.paths = paths
-        # The retrieval rule for files. You can specify only one retrieval rule.
-        # 
-        # > This parameter is supported only for CPFS for AI file systems.
+        # The file data retrieval rules. You can configure up to one rule.
+        # > Only CPFS for Lingjun file systems are supported.
         self.retrieve_rules = retrieve_rules
-        # The storage tier.
+        # The tiered storage type.
         # 
-        # - `InfrequentAccess`: The Infrequent Access storage tier. This is the default value.
-        # 
-        # - `Archive`: The Archive storage tier.
+        # Valid values:
+        # - InfrequentAccess: IA storage class. This is the default value.
+        # - Archive: Archive storage.
         self.storage_type = storage_type
-        # The transition rule for files. You can specify only one transition rule.
+        # The file data transit rules. You can configure up to one rule.
         # 
-        # > This parameter is supported only for CPFS for AI file systems when `LifecyclePolicyType` is set to `Auto`.
+        # > This parameter is supported only when LifecyclePolicyType is set to Auto for a CPFS for Lingjun file system.
         self.transit_rules = transit_rules
 
     def validate(self):
+        if self.delete_rules:
+            for v1 in self.delete_rules:
+                 if v1:
+                    v1.validate()
         if self.retrieve_rules:
             for v1 in self.retrieve_rules:
                  if v1:
@@ -66,6 +72,11 @@ class UpdateLifecyclePolicyRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        result['DeleteRules'] = []
+        if self.delete_rules is not None:
+            for k1 in self.delete_rules:
+                result['DeleteRules'].append(k1.to_map() if k1 else None)
+
         if self.description is not None:
             result['Description'] = self.description
 
@@ -95,6 +106,12 @@ class UpdateLifecyclePolicyRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.delete_rules = []
+        if m.get('DeleteRules') is not None:
+            for k1 in m.get('DeleteRules'):
+                temp_model = main_models.UpdateLifecyclePolicyRequestDeleteRules()
+                self.delete_rules.append(temp_model.from_map(k1))
+
         if m.get('Description') is not None:
             self.description = m.get('Description')
 
@@ -130,17 +147,15 @@ class UpdateLifecyclePolicyRequestTransitRules(DaraModel):
         attribute: str = None,
         threshold: str = None,
     ):
-        # The rule attribute.
+        # The attribute of the rule.
         # 
-        # Valid value:
-        # 
-        # - `Atime`: The last access time of a file.
+        # Valid values:
+        # - Atime: the access time of the file.
         self.attribute = attribute
-        # The rule threshold.
+        # The threshold of the rule.
         # 
-        # Valid value:
-        # 
-        # - If `Attribute` is set to `Atime`, this parameter specifies the number of days since a file was last accessed. The value must be between 1 and 365.
+        # Valid values:
+        # - If Attribute is set to Atime, the value specifies the number of days since the file was last accessed. Valid values: 1 to 365.
         self.threshold = threshold
 
     def validate(self):
@@ -175,17 +190,60 @@ class UpdateLifecyclePolicyRequestRetrieveRules(DaraModel):
         attribute: str = None,
         threshold: str = None,
     ):
-        # The rule attribute. Valid value:
+        # The attribute of the rule.
         # 
-        # - `RetrieveType`: The retrieval method.
+        # Valid values:
+        # - RetrieveType: the retrieval method.
         self.attribute = attribute
-        # The retrieval method. Valid values:
+        # The threshold of the rule.
         # 
-        # - If `Attribute` is set to `RetrieveType`:
+        # Valid values:
+        # - RetrieveType
+        #     - AfterVisit: supported when LifecyclePolicyType is set to Auto. Indicates best-effort recall on visit.
+        #     - All: supported when LifecyclePolicyType is set to OnDemand. Indicates retrieval of all data.
+        self.threshold = threshold
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.attribute is not None:
+            result['Attribute'] = self.attribute
+
+        if self.threshold is not None:
+            result['Threshold'] = self.threshold
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Attribute') is not None:
+            self.attribute = m.get('Attribute')
+
+        if m.get('Threshold') is not None:
+            self.threshold = m.get('Threshold')
+
+        return self
+
+class UpdateLifecyclePolicyRequestDeleteRules(DaraModel):
+    def __init__(
+        self,
+        attribute: str = None,
+        threshold: str = None,
+    ):
+        # The attribute of the rule.
         # 
-        #   - `AfterVisit`: Retrieves data on a best-effort basis after a file is accessed. This value is valid only when `LifecyclePolicyType` is `Auto`.
+        # Valid values:
+        # - Atime: the access time of the file.
+        self.attribute = attribute
+        # The threshold of the rule.
         # 
-        #   - `All`: Retrieves all data. This value is valid only when `LifecyclePolicyType` is `OnDemand`.
+        # Valid values:
+        # - If Attribute is set to Atime, the value specifies the number of days since the file was last accessed. Valid values: 1 to 365.
         self.threshold = threshold
 
     def validate(self):

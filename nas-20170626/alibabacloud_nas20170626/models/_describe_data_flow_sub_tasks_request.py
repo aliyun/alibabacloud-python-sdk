@@ -15,18 +15,19 @@ class DescribeDataFlowSubTasksRequest(DaraModel):
         max_results: int = None,
         next_token: str = None,
     ):
-        # The ID of the file system.
+        # The file system ID.
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
-        # The filter that is used to query data streaming tasks.
+        # The filter keys for querying data flow streaming tasks.
         self.filters = filters
-        # The number of results for each query.
+        # The maximum number of results per query.
         # 
-        # *   Valid values: 20 to 100.
-        # *   Default value: 20.
+        # - Valid values: 20 to 100.
+        # 
+        # - Default value: 20.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+        # If the returned results are truncated, you can use NextToken to initiate a new request to retrieve the content after the current truncation point.
         self.next_token = next_token
 
     def validate(self):
@@ -81,25 +82,25 @@ class DescribeDataFlowSubTasksRequestFilters(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The filter name.
+        # The name of the filter key.
         # 
-        # Valid value:
+        # Valid values:
         # 
-        # *   DataFlowIds: filters data flow subtasks by data flow ID.
-        # *   DataFlowTaskIds: filters data flow subtasks by data flow task ID.
-        # *   DataFlowSubTaskIds: filters data flow subtasks by data streaming task ID.
-        # *   Status: filters data flow subtasks by status.
-        # *   SrcFilePath: filters data flow subtasks by source file path.
-        # *   DstFilePath: filters data flow subtasks by destination file path.
+        # - DataFlowIds: filters by data flow ID.
+        # - DataFlowTaskIds: filters by data flow task ID.
+        # - DataFlowSubTaskIds: filters by data flow streaming task ID.
+        # - Status: filters by data flow status.
+        # - SrcFilePath: filters by source file path.
+        # - DstFilePath: filters by destination file path.
         self.key = key
-        # The filter value. This parameter does not support wildcards.
+        # The value of the filter key. Wildcards are not supported for this parameter.
         # 
-        # *   If Key is set to DataFlowIds, set Value to a data flow ID or a part of the data flow ID. You can specify a data flow ID or a group of data flow IDs. You can specify a maximum of 10 data flow IDs. Example: `df-194433a5be31****` or `df-194433a512a2****,df-234533a5be31****`.
-        # *   If Key is set to DataFlowTaskIds, set Value to a data flow task ID or a part of the data flow task ID. You can specify a data flow task ID or a group of data flow task IDs. You can specify a maximum of 10 data flow task IDs. For example, `task-29ee8e890f45****` or `task-29ee8e890f45****,task-38ae8e890f45****`.
-        # *   If Key is set to DataFlowSubTaskIds, set Value to a data streaming task ID or a part of the data streaming task ID. You can specify a data streaming task ID or a group of data streaming task IDs. You can specify a maximum of 10 data streaming task IDs. For example, `subTaskId-370kyfmyknxcyzw****` or `subTaskId-247kyfmyknxcyzw****,subTaskId-256kyfmyknxcyzw****`.
-        # *   If Key is set to Status, set Value to the status of the data flow task. The status can be EXPIRED, CREATED, RUNNING, COMPLETE, CANCELING, FAILED, or CANCELED. Combined query is supported.
-        # *   If Key is set to SrcFilePath, set Value to the path of the source file. The path can be up to 1,023 characters in length.
-        # *   If Key is set to DstFilePath, set Value to the path of the destination file. The path can be up to 1,023 characters in length.
+        # - If Key is set to DataFlowIds, Value is set to a data flow ID or part of a data flow ID. You can specify one or more data flow IDs. A maximum of 10 data flow IDs can be specified. Example: `df-194433a5be31****` or `df-194433a512a2****,df-234533a5be31****`.
+        # - If Key is set to DataFlowTaskIds, Value is set to a data flow task ID or part of a data flow task ID. You can specify one or more data flow task IDs. A maximum of 10 data flow task IDs can be specified. Example: `task-29ee8e890f45****` or `task-29ee8e890f45****,task-38ae8e890f45****`.
+        # - If Key is set to DataFlowSubTaskIds, Value is set to a data flow streaming task ID or part of a data flow streaming task ID. You can specify one or more data flow streaming task IDs. A maximum of 10 data flow streaming task IDs can be specified. Example: `subTaskId-370kyfmyknxcyzw****` or `subTaskId-247kyfmyknxcyzw****,subTaskId-256kyfmyknxcyzw****`.
+        # - If Key is set to Status, Value is set to the status of the data flow task, including EXPIRED, CREATED, RUNNING, COMPLETE, CANCELING, FAILED, and CANCELED. Combined queries are supported.
+        # - If Key is set to SrcFilePath, Value is set to the source file path. The maximum length is 1023 characters.
+        # - If Key is set to DstFilePath, Value is set to the destination file path. The maximum length is 1023 characters.
         self.value = value
 
     def validate(self):

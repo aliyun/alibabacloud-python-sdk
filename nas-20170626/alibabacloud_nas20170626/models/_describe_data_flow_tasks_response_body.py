@@ -14,7 +14,7 @@ class DescribeDataFlowTasksResponseBody(DaraModel):
         request_id: str = None,
         task_info: main_models.DescribeDataFlowTasksResponseBodyTaskInfo = None,
     ):
-        # If the response is truncated, use NextToken to retrieve the remaining results.
+        # The pagination token that is used in the next request to retrieve a new page of results. If the return results are truncated, you can use NextToken to initiate a new request to retrieve the content after the truncation point.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -99,6 +99,7 @@ class DescribeDataFlowTasksResponseBodyTaskInfoTask(DaraModel):
         directory: str = None,
         dst_directory: str = None,
         end_time: str = None,
+        entry_list: str = None,
         error_msg: str = None,
         file_system_path: str = None,
         filesystem_id: str = None,
@@ -123,6 +124,7 @@ class DescribeDataFlowTasksResponseBodyTaskInfoTask(DaraModel):
         self.directory = directory
         self.dst_directory = dst_directory
         self.end_time = end_time
+        self.entry_list = entry_list
         self.error_msg = error_msg
         self.file_system_path = file_system_path
         self.filesystem_id = filesystem_id
@@ -171,6 +173,9 @@ class DescribeDataFlowTasksResponseBodyTaskInfoTask(DaraModel):
 
         if self.end_time is not None:
             result['EndTime'] = self.end_time
+
+        if self.entry_list is not None:
+            result['EntryList'] = self.entry_list
 
         if self.error_msg is not None:
             result['ErrorMsg'] = self.error_msg
@@ -244,6 +249,9 @@ class DescribeDataFlowTasksResponseBodyTaskInfoTask(DaraModel):
 
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
+
+        if m.get('EntryList') is not None:
+            self.entry_list = m.get('EntryList')
 
         if m.get('ErrorMsg') is not None:
             self.error_msg = m.get('ErrorMsg')

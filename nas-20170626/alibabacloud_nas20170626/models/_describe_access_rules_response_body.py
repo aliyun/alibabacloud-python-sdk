@@ -17,13 +17,13 @@ class DescribeAccessRulesResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.access_rules = access_rules
-        # The page number.
+        # The page number of the file system list.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of permission rules on each page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of rules.
+        # The total number of permission rules.
         self.total_count = total_count
 
     def validate(self):

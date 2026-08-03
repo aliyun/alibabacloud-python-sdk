@@ -19,7 +19,7 @@ class DescribeFileSystemsResponseBody(DaraModel):
         self.file_systems = file_systems
         # The page number of the file system list.
         self.page_number = page_number
-        # The number of file systems on each page.
+        # The number of file systems per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
@@ -670,10 +670,12 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystemOptions(DaraModel):
     def __init__(
         self,
         enable_abe: bool = None,
+        enable_data_insight: bool = None,
         enable_oplock: bool = None,
         vsc_access_point_access_only: bool = None,
     ):
         self.enable_abe = enable_abe
+        self.enable_data_insight = enable_data_insight
         self.enable_oplock = enable_oplock
         self.vsc_access_point_access_only = vsc_access_point_access_only
 
@@ -688,6 +690,9 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystemOptions(DaraModel):
         if self.enable_abe is not None:
             result['EnableABE'] = self.enable_abe
 
+        if self.enable_data_insight is not None:
+            result['EnableDataInsight'] = self.enable_data_insight
+
         if self.enable_oplock is not None:
             result['EnableOplock'] = self.enable_oplock
 
@@ -700,6 +705,9 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystemOptions(DaraModel):
         m = m or dict()
         if m.get('EnableABE') is not None:
             self.enable_abe = m.get('EnableABE')
+
+        if m.get('EnableDataInsight') is not None:
+            self.enable_data_insight = m.get('EnableDataInsight')
 
         if m.get('EnableOplock') is not None:
             self.enable_oplock = m.get('EnableOplock')

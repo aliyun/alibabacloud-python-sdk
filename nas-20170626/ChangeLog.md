@@ -1,3 +1,12 @@
+2026-08-03 Version: 3.6.1
+- Update API CreateLifecyclePolicy: add request parameters DeleteRules.
+- Update API DescribeDataFlowTasks: add response parameters Body.TaskInfo.$.EntryList.
+- Update API DescribeFileSystems: add response parameters Body.FileSystems.$.Options.EnableDataInsight.
+- Update API DescribeLifecyclePolicies: add response parameters Body.LifecyclePolicies.$.DeleteRules.
+- Update API DescribeLifecyclePolicyLogs: add response parameters Body.LifecyclePolicyLogs.$.DeleteRules.
+- Update API UpdateLifecyclePolicy: add request parameters DeleteRules.
+
+
 2026-07-15 Version: 3.6.0
 - Support API CreateCpfsAccessPoint.
 - Support API DeleteCpfsAccessPoint.

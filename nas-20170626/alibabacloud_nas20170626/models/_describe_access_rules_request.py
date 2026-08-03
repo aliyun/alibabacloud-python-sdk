@@ -17,20 +17,20 @@ class DescribeAccessRulesRequest(DaraModel):
         # 
         # This parameter is required.
         self.access_group_name = access_group_name
-        # The rule ID.
+        # The ID of the permission rule.
         self.access_rule_id = access_rule_id
         # The type of the file system.
         # 
         # Valid values:
         # 
-        # *   standard: General-purpose Apsara File Storage NAS (NAS) file system
-        # *   extreme: Extreme NAS file system.
+        # - standard (default): General-purpose NAS.
+        # - extreme: Extreme NAS.
         self.file_system_type = file_system_type
-        # The number of the page to return.
+        # The page number of the file system list.
         # 
-        # Pages start from page 1. Default value: 1.
+        # Start value (default value): 1.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of file systems on each page during a paged query.
         # 
         # Valid values: 1 to 100.
         # 

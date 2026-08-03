@@ -63,15 +63,16 @@ class GetAgenticSpaceResponseBodyAgenticSpace(DaraModel):
         self.agentic_space_id = agentic_space_id
         # The zone ID.
         self.azone = azone
-        # The time when the AgenticSpace was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
+        # The time when the AgenticSpace was created.
+        # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
         self.create_time_utc = create_time_utc
         # AgenticSpace Description。
         self.description = description
-        # The number of files used.
+        # The file count usage.
         self.file_count_usage = file_count_usage
         # The file system ID.
         self.file_system_id = file_system_id
-        # The absolute path of the file.
+        # The absolute file path.
         self.file_system_path = file_system_path
         # The quota information.
         self.quota = quota
@@ -80,7 +81,8 @@ class GetAgenticSpaceResponseBodyAgenticSpace(DaraModel):
         # The status of the AgenticSpace. Valid values:
         # - Running
         self.status = status
-        # The time when the AgenticSpace was last updated. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
+        # The time when the AgenticSpace was last updated.
+        # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
         self.update_time_utc = update_time_utc
 
     def validate(self):
@@ -183,7 +185,7 @@ class GetAgenticSpaceResponseBodyAgenticSpaceQuota(DaraModel):
         # 
         # - Minimum value: 10,737,418,240 (10 GiB).
         # - Maximum value: 1,099,511,627,776,000 (1024000 GiB).
-        # - Step: 1,073,741,824 (1 GiB).
+        # - Increment: 1,073,741,824 (1 GiB).
         self.size_limit = size_limit
 
     def validate(self):

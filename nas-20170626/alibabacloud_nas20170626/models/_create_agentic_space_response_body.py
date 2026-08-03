@@ -10,7 +10,7 @@ class CreateAgenticSpaceResponseBody(DaraModel):
         agentic_space_id: str = None,
         request_id: str = None,
     ):
-        # The AgenticSpace ID. This is a globally unique identifier assigned by the system after the AgenticSpace (an independent workspace allocated to a single Agent end user in AgenticFS) is created.
+        # The Agentic space ID. This is a globally unique identifier assigned by the system after the Agentic space (an independent workspace allocated to a single agent end user in AgenticFS) is created.
         self.agentic_space_id = agentic_space_id
         # The request ID.
         self.request_id = request_id

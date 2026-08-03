@@ -13,31 +13,31 @@ class ListRecycleBinJobsRequest(DaraModel):
         page_size: int = None,
         status: str = None,
     ):
-        # The ID of the file system.
+        # The file system ID.
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
-        # The job ID.
+        # The task ID.
         self.job_id = job_id
-        # The page number.
+        # The page number of the current page in a paged query.
         # 
-        # Pages start from page 1. Default value: 1.
+        # Start value (default value): 1.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries per page in a paged query.
         # 
         # Valid values: 1 to 100.
         # 
         # Default value: 10.
         self.page_size = page_size
-        # The job status. Valid values:
+        # The task status. Valid values:
         # 
-        # *   Running: The job is running.
-        # *   Defragmenting: The job is defragmenting data.
-        # *   PartialSuccess: The job is partially completed.
-        # *   Success: The job is completed.
-        # *   Fail: The job failed.
-        # *   Cancelled: The job is canceled.
-        # *   all (default)
+        # - Running: The task is running.
+        # - Defragmenting: Data is being defragmented.
+        # - PartialSuccess: The task partially succeeded.
+        # - Success: The task succeeded.
+        # - Fail: The task failed.
+        # - Cancelled: The task is canceled.
+        # - All (default): All statuses.
         self.status = status
 
     def validate(self):

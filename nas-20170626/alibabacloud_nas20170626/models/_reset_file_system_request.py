@@ -10,11 +10,11 @@ class ResetFileSystemRequest(DaraModel):
         file_system_id: str = None,
         snapshot_id: str = None,
     ):
-        # The ID of the advanced Extreme NAS file system.
+        # The ID of the Advanced Extreme NAS file system.
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
-        # The snapshot ID.
+        # The ID of the historical snapshot to which you want to roll back the specified file system.
         # 
         # This parameter is required.
         self.snapshot_id = snapshot_id

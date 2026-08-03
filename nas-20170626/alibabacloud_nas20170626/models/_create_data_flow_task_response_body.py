@@ -12,7 +12,7 @@ class CreateDataFlowTaskResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The Dataflow task ID.
+        # The data flow task ID.
         self.task_id = task_id
 
     def validate(self):

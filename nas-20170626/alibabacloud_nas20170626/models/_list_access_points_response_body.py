@@ -15,10 +15,15 @@ class ListAccessPointsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The access point information.
         self.access_points = access_points
+        # The query token. Set this parameter to the value of NextToken that was returned in the previous API call.
         self.next_token = next_token
+        # Id of the request
+        # 
         # This parameter is required.
         self.request_id = request_id
+        # The total number of access points.
         self.total_count = total_count
 
     def validate(self):
@@ -91,25 +96,60 @@ class ListAccessPointsResponseBodyAccessPoints(DaraModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
+        # The access point ARN.
         self.arn = arn
+        # The permission group name.
         self.access_group = access_group
+        # The access point ID.
         self.access_point_id = access_point_id
+        # The access point name.
         self.access_point_name = access_point_name
+        # AgenticSpace Id。
         self.agentic_space_id = agentic_space_id
+        # The time when the access point was created. The time follows the ISO 8601 standard in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
         self.create_time = create_time
+        # The time when the agentic space was created. The time follows the ISO 8601 standard. Format: yyyy-MM-ddTHH:mm:ssZ.
         self.create_time_utc = create_time_utc
+        # The access point domain name.
         self.domain_name = domain_name
+        # Indicates whether the RAM policy is enabled.
         self.enabled_ram = enabled_ram
+        # The file system ID.
         self.file_system_id = file_system_id
+        # The time when the access point was last modified. The time follows the ISO 8601 standard in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
         self.modify_time = modify_time
+        # The time when the agentic space was last modified. The time follows the ISO 8601 standard. Format: yyyy-MM-ddTHH:mm:ssZ.
         self.modify_time_utc = modify_time_utc
+        # The POSIX user.
         self.posix_user = posix_user
+        # The root directory.
         self.root_path = root_path
+        # The root directory permission.
         self.root_path_permission = root_path_permission
+        # The current root directory status.
+        # 
+        # Valid values:
+        # 
+        # - 0: The root path status is unknown.
+        # - 1: The root path does not exist. It may have been deleted by the user.
+        # - 2: The root path status is normal.
         self.root_path_status = root_path_status
+        # The current access point status.
+        # 
+        # Valid values:
+        # 
+        # - Active: Available.
+        # - Inactive: Unavailable.
+        # - Pending: Being created.
+        # - Deleting: Being deleted.
+        # 
+        # > You can mount a file system only when the status is Active.
         self.status = status
+        # The access point tag list.
         self.tags = tags
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -266,7 +306,9 @@ class ListAccessPointsResponseBodyAccessPointsTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -302,8 +344,11 @@ class ListAccessPointsResponseBodyAccessPointsRootPathPermission(DaraModel):
         owner_user_id: int = None,
         permission: str = None,
     ):
+        # The owner group ID.
         self.owner_group_id = owner_group_id
+        # The owner user ID.
         self.owner_user_id = owner_user_id
+        # The POSIX permission.
         self.permission = permission
 
     def validate(self):
@@ -345,8 +390,11 @@ class ListAccessPointsResponseBodyAccessPointsPosixUser(DaraModel):
         posix_secondary_group_ids: List[int] = None,
         posix_user_id: int = None,
     ):
+        # The POSIX group ID.
         self.posix_group_id = posix_group_id
+        # The secondary group ID.
         self.posix_secondary_group_ids = posix_secondary_group_ids
+        # The POSIX user ID.
         self.posix_user_id = posix_user_id
 
     def validate(self):

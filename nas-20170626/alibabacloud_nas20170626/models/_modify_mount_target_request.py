@@ -14,32 +14,30 @@ class ModifyMountTargetRequest(DaraModel):
         mount_target_domain: str = None,
         status: str = None,
     ):
-        # The name of the access group that is associated with the mount target.
+        # The permission group attached to the mount target.
         self.access_group_name = access_group_name
+        # Specifies whether the VPC mount target supports access only through access points. This parameter applies only to CPFS for Lingjun file systems.
         self.access_point_access_only = access_point_access_only
-        # The domain name of the dual-stack mount target.
+        # The IPv4/IPv6 dual-stack mount target.
         # 
-        # > The IPv6 feature is available only for Extreme NAS file systems in the Chinese mainland.
+        # > Currently, only Extreme NAS in regions in the Chinese mainland supports IPv6.
         self.dual_stack_mount_target_domain = dual_stack_mount_target_domain
-        # The ID of the file system.
-        # 
-        # - For a General-purpose NAS file system, the ID is similar to `31a8e4****`.
-        # 
-        # - For an Extreme NAS file system, the ID must start with `extreme-`, for example, `extreme-0015****`.
+        # The file system ID.
+        # - General-purpose NAS: `31a8e4****`.
+        # - Extreme NAS: Must start with `extreme-`, such as `extreme-0015****`.
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
-        # The domain name of the IPv4 mount target.
+        # The IPv4 mount target.
         self.mount_target_domain = mount_target_domain
-        # The status of the mount target.
+        # The mount target status.
         # 
         # Valid values:
         # 
-        # - Active: The mount target is available.
+        # - Active: active
+        # - Inactive: inactive
         # 
-        # - Inactive: The mount target is unavailable.
-        # 
-        # > You can change the status of a mount target only if the mount target is attached to a General-purpose NAS file system.
+        # > Only General-purpose NAS supports changing the mount target status.
         self.status = status
 
     def validate(self):

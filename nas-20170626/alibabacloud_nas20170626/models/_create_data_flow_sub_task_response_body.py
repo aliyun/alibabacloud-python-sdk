@@ -10,7 +10,7 @@ class CreateDataFlowSubTaskResponseBody(DaraModel):
         data_flow_sub_task_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the data streaming task.
+        # The data flow streaming task ID.
         self.data_flow_sub_task_id = data_flow_sub_task_id
         # The request ID.
         self.request_id = request_id

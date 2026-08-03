@@ -16,15 +16,15 @@ class ListRecycleBinJobsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The information about the jobs of the recycle bin.
+        # The collection of task information in the recycle bin.
         self.jobs = jobs
-        # The page number.
+        # The page number of the returned page.
         self.page_number = page_number
-        # The number of jobs returned per page.
+        # The number of tasks per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of jobs.
+        # The total number of tasks in the recycle bin.
         self.total_count = total_count
 
     def validate(self):
@@ -92,39 +92,39 @@ class ListRecycleBinJobsResponseBodyJobs(DaraModel):
         status: str = None,
         type: str = None,
     ):
-        # The time when the job was created.
+        # The time when the task was created. The time follows the ISO 8601 standard in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
         self.create_time = create_time
-        # The error code returned.
+        # The error code.
         # 
-        # A valid value is returned only if you set the Status parameter to Fail or PartialSuccess.
+        # This value is valid only when Status is Fail or PartialSuccess.
         self.error_code = error_code
         # The error message.
         # 
-        # A valid value is returned only if you set the Status parameter to Fail or PartialSuccess.
+        # This value is valid only when JobStatus is Fail or PartialSuccess.
         self.error_message = error_message
-        # The ID of the file or directory in the job.
+        # The FileId of the file or directory associated with the task.
         self.file_id = file_id
-        # The name of the file or directory that is associated with the job.
+        # The name of the file or directory associated with the task.
         self.file_name = file_name
-        # The job ID.
+        # The task ID.
         self.id = id
-        # The progress of the job.
+        # The execution progress of the task.
         # 
         # Valid values: 1 to 100.
         self.progress = progress
-        # The status of the job. Valid values:
+        # The task status. Valid values:
         # 
-        # *   Running: The job is running.
-        # *   Defragmenting: The job is defragmenting data.
-        # *   PartialSuccess: The job is partially completed.
-        # *   Success: The job is completed.
-        # *   Fail: The job failed.
-        # *   Cancelled: The job is canceled.
+        # - Running: The task is running.
+        # - Defragmenting: Data is being defragmented.
+        # - PartialSuccess: The task partially succeeded.
+        # - Success: The task succeeded.
+        # - Fail: The task failed.
+        # - Cancelled: The task is canceled.
         self.status = status
-        # The type of the job. Valid values:
+        # The task type. Valid values:
         # 
-        # *   Restore: a file restoration job
-        # *   Delete: a file deletion job
+        # - Restore: A file restoration task.
+        # - Delete: A file deletion task.
         self.type = type
 
     def validate(self):

@@ -11,7 +11,7 @@ class CreateLifecyclePolicyResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The ID of the lifecycle policy.
+        # The lifecycle policy ID.
         self.lifecycle_policy_id = lifecycle_policy_id
         # The request ID.
         self.request_id = request_id

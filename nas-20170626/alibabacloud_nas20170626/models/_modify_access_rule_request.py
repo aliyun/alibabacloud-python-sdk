@@ -20,7 +20,7 @@ class ModifyAccessRuleRequest(DaraModel):
         # 
         # This parameter is required.
         self.access_group_name = access_group_name
-        # The rule ID.
+        # The ID of the permission rule.
         # 
         # This parameter is required.
         self.access_rule_id = access_rule_id
@@ -28,43 +28,46 @@ class ModifyAccessRuleRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # *   standard: General-purpose Apsara File Storage NAS (NAS) file system
-        # *   extreme: Extreme NAS file system.
+        # - standard (default): General-purpose NAS.
+        # - extreme: Extreme NAS.
         self.file_system_type = file_system_type
-        # The IPv6 address or CIDR block of the authorized object.
+        # The source IPv6 CIDR block.
         # 
-        # You must set this parameter to an IPv6 IP address or CIDR block.
+        # IPv6 addresses and CIDR blocks are supported.
         # 
-        # > *   Only Extreme NAS file systems that reside in the China (Hohhot) region support IPv6.
-        # >*   Only permission groups that reside in virtual private clouds (VPCs) support IPv6.
-        # >*   This parameter is unavailable if you specify the SourceCidrIp parameter.
+        # > - Only Extreme NAS file systems in the China (Hohhot) region support IPv6 CIDR blocks.
+        # > - Only VPCs are supported.
+        # > - IPv4 and IPv6 are mutually exclusive. You cannot convert between the two types.
+        # > - You must specify either SourceCidrIp or Ipv6SourceCidrIp. You cannot leave both parameters empty, and you cannot specify both parameters at the same time.
         self.ipv_6source_cidr_ip = ipv_6source_cidr_ip
-        # The priority of the rule.
+        # The priority of the permission rule.
         # 
         # Valid values: 1 to 100.
         # 
-        # Default value: 1, which indicates the highest priority.
+        # Default value: 1 (highest priority).
         self.priority = priority
-        # The access permissions of the authorized object on the file system.
+        # The read and write permission that the authorized object has on the file system.
         # 
         # Valid values:
         # 
-        # *   RDWR (default): the read and write permissions.
-        # *   RDONLY: the read-only permission.
+        # - RDWR (default): read and write.
+        # - RDONLY: read-only.
         self.rwaccess_type = rwaccess_type
-        # The IP address or CIDR block of the authorized object.
+        # The IP address or CIDR block.
         # 
-        # You must set this parameter to an IP address or CIDR block.
+        # The value must be a single IP address or a CIDR block.
+        # 
+        # > You must specify either SourceCidrIp or Ipv6SourceCidrIp. You cannot leave both parameters empty, and you cannot specify both parameters at the same time.
         self.source_cidr_ip = source_cidr_ip
-        # The access permissions for different types of users in the authorized object.
+        # The access permissions that the system user of the authorization object has on the file system.
         # 
         # Valid values:
         # 
-        # *   no_squash: allows access from root users to the file system.
-        # *   root_squash: grants root users the least permissions as the nobody user.
-        # *   all_squash: grants all users the least permissions as the nobody user.
+        # - no_squash: allows access to the file system as the root user.
+        # - root_squash: maps the root user to the nobody user when the root user accesses the file system.
+        # - all_squash: maps all users to the nobody user regardless of the user identity used to access the file system.
         # 
-        # The nobody user has the least permissions in Linux and can access only the public content of the file system. This ensures the security of the file system.
+        # The nobody user is a default user in Linux. This user can access only public content on the server and has low privileges and high security.
         self.user_access_type = user_access_type
 
     def validate(self):

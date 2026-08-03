@@ -16,46 +16,53 @@ class ModifySmbAclRequest(DaraModel):
         reject_unencrypted_access: bool = None,
         super_admin_sid: str = None,
     ):
-        # Specifies whether to allow anonymous access. Valid values:
+        # Specifies whether to allow anonymous access. 
         # 
-        # *   true: The file system allows anonymous access.
-        # *   false (default): The file system denies anonymous access.
+        # - true: Anonymous access is allowed.
+        # 
+        # - false (default): Anonymous access is not allowed.
         self.enable_anonymous_access = enable_anonymous_access
-        # Specifies whether to enable encryption in transit. Valid values:
+        # Specifies whether to enable encryption in transit.
         # 
-        # *   true: enables encryption in transit.
-        # *   false (default): disables encryption in transit.
+        # - true: Encryption in transit is enabled.
+        # 
+        # - false (default): Encryption in transit is not enabled.
         self.encrypt_data = encrypt_data
-        # The ID of the file system.
+        # The file system ID.
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
-        # The home directory of each user. Each user-specific home directory must meet the following requirements:
+        # The home folder path for each user. The file path format is as follows:
         # 
-        # *   Each segment starts with a forward slash (/) or a backward slash (\\\\).
-        # *   Each segment does not contain the following special characters: `<>":|?*`.
-        # *   Each segment is 0 to 255 characters in length.
-        # *   The total length is 0 to 32,767 characters.
+        # - Use a forward slash (/) or backslash (\\) as the separator.
         # 
-        # For example, if you create a user named A and the home directory is `/home`, the file system automatically creates a directory named `/home/A` when User A logs on to the file system. If the `/home/A` directory already exists, the file system does not create the directory.
+        # - Each segment cannot contain `<>":|?*`.
         # 
-        # > User A must have the permissions to create folders in the \\home directory. Otherwise, the file system cannot create the `/home/A` directory when User A logs on to the file system.
+        # - The length of each segment ranges from 0 to 255.
+        # 
+        # - The total length ranges from 0 to 32767.
+        # 
+        # For example, if the user folder is `/home`, the file system performs automatic creation of the `/home/A` folder when user A performs logon. If `/home/A` already exists, this step is skipped.
+        # 
+        # > User A must have the permission to create folders. Otherwise, the `/home/A` folder cannot be created.
         self.home_dir_path = home_dir_path
-        # The string that is generated after the system encodes the keytab file by using Base64.
+        # The Base64-encoded string of the keytab file content.
         self.keytab = keytab
-        # The string that is generated after the system encodes the keytab file by using MD5.
+        # The MD5-encrypted string of the keytab file content.
         self.keytab_md_5 = keytab_md_5
-        # Specifies whether to deny access from non-encrypted clients. Valid values:
+        # Specifies whether to reject unencrypted clients.
         # 
-        # *   true: The file system denies access from non-encrypted clients.
-        # *   false (default): The file system allows access from non-encrypted clients.
+        # - true: Unencrypted clients are rejected.
+        # 
+        # - false (default): Unencrypted clients are not rejected.
         self.reject_unencrypted_access = reject_unencrypted_access
-        # The ID of a super admin. The ID must meet the following requirements:
+        # The ID of the superuser. The ID must follow these rules:
         # 
-        # *   The ID starts with `S` and does not contain letters except S.
-        # *   The ID contains at least three hyphens (-) as delimiters.
+        # - Must start with `S`, and no other letters are allowed after the initial S.
         # 
-        # Examples: `S-1-5-22` and `S-1-5-22-23`.
+        # - Must contain at least three hyphens (-) as separators.
+        # 
+        # For example, `S-1-5-22` or `S-1-5-22-23`.
         self.super_admin_sid = super_admin_sid
 
     def validate(self):

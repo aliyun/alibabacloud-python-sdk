@@ -15,54 +15,54 @@ class SetDirQuotaRequest(DaraModel):
         user_id: str = None,
         user_type: str = None,
     ):
-        # The number of files that a user can create in the directory.
+        # The maximum number of files in the directory.
         # 
-        # This number includes the number of files, subdirectories, and special files.
+        # This includes files, directories, and special files.
         # 
-        # If you set the QuotaType parameter to Enforcement, you must specify at least one of the SizeLimit and FileCountLimit parameters.
+        # 
+        # When QuotaType is set to Enforcement, you must specify at least one of SizeLimit and FileCountLimit.
         self.file_count_limit = file_count_limit
-        # The ID of the file system.
+        # The file system ID.
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
         # The absolute path of the directory in the file system.
-        # 
-        # > *   You can set quotas only for the directories that have been created in a NAS file system. The path of the directory that you specify for a quota is the absolute path of the directory in the NAS file system, but not the local path of the compute node, such as an Elastic Compute Service (ECS) instance or a container.
-        # > *   Directories whose names contain Chinese characters are not supported.
+        #  > - You can set a quota only for a directory that has been created in the NAS file system. The directory path for the quota is the absolute path in the NAS file system, not the local path on a compute node (for example, an ECS instance or container).
+        #  > - Directories whose path names contain Chinese characters are not supported.
         # 
         # This parameter is required.
         self.path = path
-        # The type of the quota.
+        # The quota type.
         # 
         # Valid values:
-        # 
-        # *   Accounting: a statistical quota. If you set this parameter to Accounting, NAS calculates only the storage usage of the directory.
-        # *   Enforcement: a restricted quota. If you set this parameter to Enforcement and the storage usage exceeds the quota, you can no longer create files or subdirectories for the directory, or write data to the directory.
+        # - Accounting: statistical quota. Only tracks usage.
+        # - Enforcement: restrictive quota. When usage exceeds the limit, operations such as creating files or directories and appending data fail.
         # 
         # This parameter is required.
         self.quota_type = quota_type
-        # The size of files that a user can create in the directory.
+        # The total capacity limit for files in the directory.
         # 
         # Unit: GiB.
         # 
-        # If you set the QuotaType parameter to Enforcement, you must specify at least one of the SizeLimit and FileCountLimit parameters.
-        self.size_limit = size_limit
-        # The UID or GID of the user for whom you want to set a directory quota.
         # 
-        # This parameter is required and valid only if the UserType parameter is set to Uid or Gid.
+        # When QuotaType is set to Enforcement, you must specify at least one of SizeLimit and FileCountLimit.
+        self.size_limit = size_limit
+        # The UID or GID to restrict.
+        # 
+        # This parameter is required and valid only when UserType is set to Uid or Gid.
         # 
         # Examples:
         # 
-        # *   If you want to set a directory quota for a user whose UID is 500, set the UserType parameter to Uid and set the UserId parameter to 500.
-        # *   If you want to set a directory quota for a user group whose GID is 100, set the UserType parameter to Gid and set the UserId parameter to 100.
+        # - To restrict the user whose UID is 500, set UserType to Uid and UserId to 500.
+        # - To restrict the user group whose GID is 100, set UserType to Gid and UserId to 100.
         self.user_id = user_id
-        # The type of the user.
+        # The user type.
         # 
         # Valid values:
         # 
-        # *   Uid: user ID
-        # *   Gid: user group ID
-        # *   AllUsers: all users
+        # - Uid: user ID
+        # - Gid: user group ID
+        # - AllUsers: all users
         # 
         # This parameter is required.
         self.user_type = user_type

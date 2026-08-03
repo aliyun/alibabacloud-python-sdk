@@ -17,9 +17,9 @@ class DescribeAutoSnapshotTasksResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.auto_snapshot_tasks = auto_snapshot_tasks
-        # The page number.
+        # The page number of the automatic snapshot task list.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries per page for the paging query.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id

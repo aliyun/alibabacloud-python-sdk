@@ -11,7 +11,7 @@ class DescribeSmbAclResponseBody(DaraModel):
         acl: main_models.DescribeSmbAclResponseBodyAcl = None,
         request_id: str = None,
     ):
-        # The information about the ACL feature.
+        # The ACL information.
         self.acl = acl
         # The request ID.
         self.request_id = request_id
@@ -54,29 +54,33 @@ class DescribeSmbAclResponseBodyAcl(DaraModel):
         reject_unencrypted_access: bool = None,
         super_admin_sid: str = None,
     ):
-        # Indicates whether the file system allows anonymous access. Valid values:
+        # Indicates whether anonymous access is allowed. Valid values:
         # 
-        # *   true: The file system allows anonymous access.
-        # *   false: The file system does not allow anonymous access.
+        # - true: Anonymous access is allowed.
+        # 
+        # - false: Anonymous access is not allowed.
         self.enable_anonymous_access = enable_anonymous_access
-        # Indicates whether the ACL feature is enabled. Valid values:
+        # Indicates whether the SMB AD ACL feature is enabled.
         # 
-        # *   true: The ACL feature is enabled.
-        # *   false: The ACL feature is disabled.
+        # - true: The SMB AD ACL feature is enabled.
+        # 
+        # - false: The SMB AD ACL feature is not enabled.
         self.enabled = enabled
-        # Indicates whether encryption in transit is enabled. Valid values:
+        # Indicates whether encryption in transit is enabled.
         # 
-        # *   true: Encryption in transit is enabled.
-        # *   false: Encryption in transit is disabled.
+        # - true: Encryption in transit is enabled.
+        # 
+        # - false: Encryption in transit is not enabled.
         self.encrypt_data = encrypt_data
-        # The home directory of each user.
+        # The home directory path for each user.
         self.home_dir_path = home_dir_path
-        # Indicates whether the file system denies access from non-encrypted clients. Valid values:
+        # Indicates whether unencrypted clients are rejected.
         # 
-        # *   true: The file system denies access from non-encrypted clients.
-        # *   false: The file system allows access from non-encrypted clients.
+        # - true: Unencrypted clients are rejected.
+        # 
+        # - false: Unencrypted clients are not rejected.
         self.reject_unencrypted_access = reject_unencrypted_access
-        # The ID of a super admin.
+        # The ID of the superuser.
         self.super_admin_sid = super_admin_sid
 
     def validate(self):

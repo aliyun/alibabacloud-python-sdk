@@ -16,9 +16,9 @@ class ListRecycledDirectoriesAndFilesResponseBody(DaraModel):
     ):
         # The information about files or directories in the recycle bin.
         self.entries = entries
-        # A pagination token.
+        # The pagination token for the next page.
         # 
-        # If all the files and directories are incompletely returned in a query, the return value of the NextToken parameter is not empty. In this case, you can specify a valid value for the NextToken parameter to continue the query.
+        # If a single query does not return all files and directories, a non-empty NextToken is returned. You can specify the correct NextToken in subsequent queries to continue listing.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -76,28 +76,28 @@ class ListRecycledDirectoriesAndFilesResponseBodyEntries(DaraModel):
         size: int = None,
         type: str = None,
     ):
-        # The time when the file or directory was last accessed.
+        # The most recent access time. The time follows the ISO 8601 standard in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
         self.atime = atime
-        # The time when the metadata was last modified.
+        # The most recent metadata modification time. The time follows the ISO 8601 standard in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
         self.ctime = ctime
-        # The time when the file or directory was deleted.
+        # The time when the file or directory was deleted. The time follows the ISO 8601 standard in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
         self.delete_time = delete_time
-        # The IDs of the files or directories.
+        # The FileId of the file or directory.
         self.file_id = file_id
         # The inode of the file or directory.
         self.inode = inode
-        # The time when the file or directory was last modified.
+        # The most recent modification time. The time follows the ISO 8601 standard in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
         self.mtime = mtime
-        # The name of the file or directory before it was deleted.
+        # The name of the file or directory before deletion.
         self.name = name
-        # The size of the file. Unit: bytes.
+        # The file size. Unit: bytes.
         # 
-        # The value 0 is returned for this parameter if Directory is returned for the Type parameter.
+        # If Type is set to Directory, the value 0 is returned.
         self.size = size
-        # The type of the returned object. Valid values:
+        # The object type. Valid values:
         # 
-        # *   File
-        # *   Directory
+        # - File: file
+        # - Directory: folder
         self.type = type
 
     def validate(self):

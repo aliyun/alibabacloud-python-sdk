@@ -20,43 +20,20 @@ class DescribeFileSystemsRequest(DaraModel):
         vpc_id: str = None,
     ):
         # The file system ID.
-        # - General-purpose NAS: 31a8e4****.
-        # - Extreme NAS: must start with extreme-, such as extreme-0015****.
-        # - Cloud Parallel File Storage (CPFS) (locally redundant): must start with cpfs-, such as cpfs-125487****.
-        # - CPFS SE (zone-redundant): must start with cpfsse-, such as cpfsse-022c71b134****.
         self.file_system_id = file_system_id
         # The file system type.
-        # 
-        # Valid values:
-        # 
-        # - all (default): queries all types.
-        # - standard: General-purpose NAS.
-        # - extreme: Extreme NAS.
-        # - cpfs: Cloud Parallel File Storage (CPFS) (locally redundant).
-        # - cpfsse: CPFS SE (zone-redundant).
-        # 
-        # > To query multiple types, separate them with commas (,).
         self.file_system_type = file_system_type
         # The page number of the file system list.
-        # 
-        # Start value (default value): 1.
         self.page_number = page_number
         # The number of file systems on each page during a paged query.
-        # 
-        # Valid values: 1 to 100.
-        # 
-        # Default value: 10.
         self.page_size = page_size
         # The resource group ID.
-        # 
-        # You can view the resource group ID in the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups?).
         self.resource_group_id = resource_group_id
+        # The storage type.
         self.storage_type = storage_type
-        # The tag information.
+        # The collection of tag information.
         self.tag = tag
         # The virtual private cloud (VPC) ID.
-        # 
-        # The VPC must be the same as the VPC of the Elastic Computing Service (ECS) server to which you want to mount the file system.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -136,22 +113,8 @@ class DescribeFileSystemsRequestTag(DaraModel):
         value: str = None,
     ):
         # The tag key.
-        # 
-        # Limits:
-        # 
-        # - Valid values of N: 1 to 20.
-        # - The tag key can be up to 128 characters in length.
-        # - The tag key cannot start with `aliyun` or `acs:`.
-        # - The tag key cannot contain `http://` or `https://`.
         self.key = key
         # The tag value.
-        # 
-        # Limits:
-        # 
-        # - Valid values of N: 1 to 20.
-        # - The tag value can be up to 128 characters in length.
-        # - The tag value cannot start with `aliyun` or `acs:`.
-        # - The tag value cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

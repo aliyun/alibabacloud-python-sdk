@@ -419,6 +419,7 @@ from ._create_data_flow_request import CreateDataFlowRequestAutoRefreshs
 from ._create_data_flow_sub_task_request import CreateDataFlowSubTaskRequestCondition
 from ._create_file_system_request import CreateFileSystemRequestTag
 from ._create_fileset_request import CreateFilesetRequestQuota
+from ._create_lifecycle_policy_request import CreateLifecyclePolicyRequestDeleteRules
 from ._create_lifecycle_policy_request import CreateLifecyclePolicyRequestRetrieveRules
 from ._create_lifecycle_policy_request import CreateLifecyclePolicyRequestTransitRules
 from ._create_mount_target_response_body import CreateMountTargetResponseBodyMountTargetExtra
@@ -498,9 +499,11 @@ from ._describe_filesystems_vsc_attach_info_request import DescribeFilesystemsVs
 from ._describe_filesystems_vsc_attach_info_request import DescribeFilesystemsVscAttachInfoRequestRoleChain
 from ._describe_filesystems_vsc_attach_info_response_body import DescribeFilesystemsVscAttachInfoResponseBodyVscAttachInfoVscAttachInfo
 from ._describe_filesystems_vsc_attach_info_response_body import DescribeFilesystemsVscAttachInfoResponseBodyVscAttachInfo
+from ._describe_lifecycle_policies_response_body import DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesDeleteRules
 from ._describe_lifecycle_policies_response_body import DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesRetrieveRules
 from ._describe_lifecycle_policies_response_body import DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesTransitRules
 from ._describe_lifecycle_policies_response_body import DescribeLifecyclePoliciesResponseBodyLifecyclePolicies
+from ._describe_lifecycle_policy_logs_response_body import DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogsDeleteRules
 from ._describe_lifecycle_policy_logs_response_body import DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogsRetrieveRules
 from ._describe_lifecycle_policy_logs_response_body import DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogsTransitRules
 from ._describe_lifecycle_policy_logs_response_body import DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogs
@@ -556,6 +559,7 @@ from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagRe
 from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResources
 from ._modify_file_system_request import ModifyFileSystemRequestOptions
 from ._tag_resources_request import TagResourcesRequestTag
+from ._update_lifecycle_policy_request import UpdateLifecyclePolicyRequestDeleteRules
 from ._update_lifecycle_policy_request import UpdateLifecyclePolicyRequestRetrieveRules
 from ._update_lifecycle_policy_request import UpdateLifecyclePolicyRequestTransitRules
 
@@ -977,6 +981,7 @@ __all__ = [
     CreateDataFlowSubTaskRequestCondition,
     CreateFileSystemRequestTag,
     CreateFilesetRequestQuota,
+    CreateLifecyclePolicyRequestDeleteRules,
     CreateLifecyclePolicyRequestRetrieveRules,
     CreateLifecyclePolicyRequestTransitRules,
     CreateMountTargetResponseBodyMountTargetExtra,
@@ -1056,9 +1061,11 @@ __all__ = [
     DescribeFilesystemsVscAttachInfoRequestRoleChain,
     DescribeFilesystemsVscAttachInfoResponseBodyVscAttachInfoVscAttachInfo,
     DescribeFilesystemsVscAttachInfoResponseBodyVscAttachInfo,
+    DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesDeleteRules,
     DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesRetrieveRules,
     DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesTransitRules,
     DescribeLifecyclePoliciesResponseBodyLifecyclePolicies,
+    DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogsDeleteRules,
     DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogsRetrieveRules,
     DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogsTransitRules,
     DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogs,
@@ -1114,6 +1121,7 @@ __all__ = [
     ListTagResourcesResponseBodyTagResources,
     ModifyFileSystemRequestOptions,
     TagResourcesRequestTag,
+    UpdateLifecyclePolicyRequestDeleteRules,
     UpdateLifecyclePolicyRequestRetrieveRules,
     UpdateLifecyclePolicyRequestTransitRules
 ]

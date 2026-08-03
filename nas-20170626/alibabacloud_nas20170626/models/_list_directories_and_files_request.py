@@ -14,43 +14,37 @@ class ListDirectoriesAndFilesRequest(DaraModel):
         path: str = None,
         storage_type: str = None,
     ):
-        # Whether to list only directories.
+        # Specifies whether to query only directories.
         # 
         # Valid values:
         # 
-        # - `false` (default): Lists both directories and files.
-        # 
-        # - `true`: Lists only directories.
-        # 
-        # > If you set `StorageType` to `All`, you must set `DirectoryOnly` to `true`.
+        # - false (default): No. Both directories and files can be queried.
+        # - true: Yes. Only directories are queried.
+        # > When StorageType is set to All, DirectoryOnly must be set to true and cannot be set to false.
         self.directory_only = directory_only
-        # The ID of the file system.
+        # The file system ID.
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
-        # The maximum number of directories or files to return per page.
+        # The number of directories or files included in each query result.
         # 
-        # Value range: 10–128
+        # Valid values: 10 to 128.
         # 
-        # Default value: 100
+        # Default value: 100.
         self.max_results = max_results
-        # A continuation token used to retrieve the next page of results when the response is truncated.
+        # The pagination token that is used in the next request to retrieve a new page of results. If the return results are truncated, you can use NextToken to initiate a new request to retrieve the content after the current truncation position.
         self.next_token = next_token
-        # The absolute path of the directory.
+        # The absolute path of the specified directory.
         # 
-        # The path must start with a forward slash (/) and exist on the mount target.
+        # The path must start with a forward slash (/) and must be an existing path in the mount target.
         # 
         # This parameter is required.
         self.path = path
-        # The storage type.
-        # 
-        # - `InfrequentAccess`: infrequent access.
-        # 
-        # - `Archive`: archive storage.
-        # 
-        # - `All`: all storage types.
-        # 
-        # > If you set `StorageType` to `All`, you must set `DirectoryOnly` to `true`.
+        # The storage class type.
+        # - InfrequentAccess: IA storage class.
+        # - Archive: Archive storage class.
+        # - All: queries data of all storage classes.
+        # > When StorageType is set to All, you must set DirectoryOnly to true.
         # 
         # This parameter is required.
         self.storage_type = storage_type

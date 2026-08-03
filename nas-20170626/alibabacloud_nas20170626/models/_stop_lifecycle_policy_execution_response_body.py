@@ -12,14 +12,13 @@ class StopLifecyclePolicyExecutionResponseBody(DaraModel):
     ):
         # The request ID.
         # 
-        # A request ID is returned regardless of whether the call succeeds.
+        # A request ID is returned regardless of whether the call is successful.
         self.request_id = request_id
-        # Indicates whether the request succeeded.
+        # The request status.
         # 
         # Valid values:
         # 
-        # - true: The request succeeded.
-        # 
+        # - true: The request was successful.
         # - false: The request failed.
         self.success = success
 

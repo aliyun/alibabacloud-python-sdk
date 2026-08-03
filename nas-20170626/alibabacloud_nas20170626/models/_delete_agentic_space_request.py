@@ -24,12 +24,12 @@ class DeleteAgenticSpaceRequest(DaraModel):
         self.client_token = client_token
         # Specifies whether to perform a dry run for this request.
         # 
-        # A dry run checks parameter validity and resource availability without actually creating or deleting instances, and incurs no fees.
+        # A dry run checks parameter validity and resource availability without actually creating or deleting the instance, and no fees are incurred.
         # 
         # Valid values:
         # 
-        # - true: Sends a dry run request without deleting the instance. The check items include required parameters, request format, service limits, and NAS resource availability. If the check fails, the corresponding error is returned. If the check passes, HTTP status code 200 is returned, but FileSystemId is empty.
-        # - false (default): Sends a normal request and deletes the instance after the check is passed.
+        # - true: Sends a dry run request without deleting the instance. The check items include whether required parameters are specified, the request format, business limits, and NAS resource availability. If the check fails, the corresponding error is returned. If the check passes, HTTP status code 200 is returned, but FileSystemId is empty.
+        # - false (default): Sends a normal request. After the check passes, the instance is directly deleted.
         self.dry_run = dry_run
         # The file system ID.
         # 

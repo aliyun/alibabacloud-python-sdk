@@ -21,7 +21,7 @@ class DescribeAgenticSpacesRequest(DaraModel):
         self.file_system_id = file_system_id
         # The collection of filter key information.
         self.filters = filters
-        # The number of results per query.
+        # The number of results for each query.
         # 
         # Valid values: 10 to 100. Default value: 20.
         self.max_results = max_results
@@ -83,8 +83,8 @@ class DescribeAgenticSpacesRequestFilters(DaraModel):
         # The name of the filter key. Valid values:
         # - AgenticSpaceIds
         self.key = key
-        # The value of the filter key. Wildcards are not supported.
-        # - AgenticSpaceIds: only a single ID is supported.
+        # The value of the filter key. This parameter does not support wildcards.
+        # - AgenticSpaceIds: Only a single ID can be specified.
         self.value = value
 
     def validate(self):

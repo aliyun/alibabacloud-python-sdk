@@ -11,27 +11,24 @@ class ModifyFileSystemShrinkRequest(DaraModel):
         file_system_id: str = None,
         options_shrink: str = None,
     ):
-        # The description of the file system.
+        # The file system description.
         # 
         # Limits:
         # 
-        # - The description must be 2 to 128 characters.
-        # 
-        # - It must start with an uppercase or lowercase letter or a Chinese character, and cannot start with `http://` or `https://`.
-        # 
-        # - It can contain digits, colons (:), underscores (_), and hyphens (-).
+        # - The description must be 2 to 128 characters in length.
+        # - The description must start with a letter or Chinese character and cannot start with `http://` or `https://`.
+        # - The description can contain digits, colons (:), underscores (_), or hyphens (-).
         self.description = description
-        # The ID of the file system.
+        # The file system ID.
         # 
-        # - General-purpose NAS: For example, `31a8e4****`.
+        # - General-purpose NAS: `31a8e4****`.
         # 
-        # - Extreme NAS: The ID must start with `extreme-`. For example, `extreme-0015****`.
-        # 
-        # - CPFS: The ID must start with `cpfs-`. For example, `cpfs-125487****`.
+        # - Extreme NAS: must start with `extreme-`, for example, `extreme-0015****`.
+        # - CPFS: must start with `cpfs-`, for example, `cpfs-125487****`.
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
-        # Additional options for the file system.
+        # The options.
         self.options_shrink = options_shrink
 
     def validate(self):

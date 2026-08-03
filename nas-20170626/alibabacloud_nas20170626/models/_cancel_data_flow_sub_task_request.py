@@ -14,34 +14,34 @@ class CancelDataFlowSubTaskRequest(DaraModel):
         dry_run: bool = None,
         file_system_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
+        # Ensures the idempotency of the request. Generate a unique parameter value from your client to ensure that the value is unique across different requests.
         # 
-        # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence?](https://help.aliyun.com/document_detail/25693.html)
+        # ClientToken supports only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotency](https://help.aliyun.com/document_detail/25693.html).
         # 
-        # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
+        # > If you do not specify this parameter, the system automatically uses the RequestId of the API request as the ClientToken. The RequestId may differ for each API request.
         self.client_token = client_token
-        # The ID of the dataflow.
+        # The data flow ID.
         # 
         # This parameter is required.
         self.data_flow_id = data_flow_id
-        # The ID of the data streaming task.
+        # The data flow streaming task ID.
         # 
         # This parameter is required.
         self.data_flow_sub_task_id = data_flow_sub_task_id
-        # The ID of the dataflow task.
+        # The data flow task ID.
         # 
         # This parameter is required.
         self.data_flow_task_id = data_flow_task_id
-        # Specifies whether to perform a dry run.
+        # Specifies whether to perform a dry run for this request.
         # 
-        # During the dry run, the system checks whether the request parameters are valid and whether the requested resources are available. During the dry run, no data streaming task is created and no fee is incurred.
+        # A dry run checks parameter validity and resource availability without actually creating an instance or incurring fees.
         # 
         # Valid values:
         # 
-        # *   true: performs a dry run. The system checks the required parameters, request syntax, service limits, and available File Storage NAS (NAS) resources. If the request fails the dry run, an error message is returned. If the request passes the dry run, the HTTP status code 200 is returned.
-        # *   false (default): performs a dry run and sends the request. If the request passes the dry run, a data streaming task is created.
+        # - true: Sends a check request without creating an instance. The check items include whether required parameters are specified, the request format, business limitations, and NAS inventory. If the check fails, the corresponding error is returned. If the check passes, HTTP status code 200 is returned.
+        # - false (default): Sends a normal request. After the check passes, the instance is directly created.
         self.dry_run = dry_run
-        # The ID of the file system.
+        # The file system ID.
         # 
         # This parameter is required.
         self.file_system_id = file_system_id

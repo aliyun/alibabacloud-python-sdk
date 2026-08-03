@@ -21,19 +21,18 @@ class DescribeLifecyclePolicyLogsResponseBody(DaraModel):
         self.lifecycle_policy_logs = lifecycle_policy_logs
         # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of log entries per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # Specifies whether the request succeeded.
+        # The request status.
         # 
         # Valid values:
         # 
-        # - `true`: The request succeeded.
-        # 
-        # - `false`: The request failed.
+        # - true: The request was successful.
+        # - false: The request failed.
         self.success = success
-        # The total number of logs.
+        # The total number of log entries.
         self.total_count = total_count
 
     def validate(self):
@@ -98,6 +97,7 @@ class DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogs(DaraModel):
     def __init__(
         self,
         create_time: str = None,
+        delete_rules: List[main_models.DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogsDeleteRules] = None,
         paths: List[str] = None,
         retrieve_rules: List[main_models.DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogsRetrieveRules] = None,
         status: str = None,
@@ -105,36 +105,35 @@ class DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogs(DaraModel):
         summary: str = None,
         transit_rules: List[main_models.DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogsTransitRules] = None,
     ):
-        # The time when the task was created. The time is displayed in UTC and is in the `yyyy-MM-ddTHH:mm:ssZ` format.
+        # The time when the task was created. The time follows the ISO 8601 standard in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
         self.create_time = create_time
-        # The execution paths of the task.
+        # The file data expiration and deletion rules. A maximum of one rule can be configured.
+        self.delete_rules = delete_rules
+        # The execution paths of the specified retrieval task.
         self.paths = paths
-        # The retrieval rules for file data.
+        # The file data retrieval rules.
         self.retrieve_rules = retrieve_rules
-        # The status of the task. Valid values:
-        # 
-        # - `PENDING`: The task is initializing.
-        # 
-        # - `RUNNING`: The task is running.
-        # 
-        # - `STOPPED`: The task is stopped.
-        # 
-        # - `FINISHED`: The task is complete.
-        # 
-        # - `FAILED`: The task failed.
+        # The status of the data retrieval task. Valid values:
+        # - PENDING: Being created.
+        # - RUNNING: Running.
+        # - STOPPED: Stopped.
+        # - FINISHED: Finished.
+        # - FAILED: Failed.
         self.status = status
-        # The storage tier. Valid values:
-        # 
-        # - `InfrequentAccess`: Infrequent Access (default).
-        # 
-        # - `Archive`: Archive Storage.
+        # The tiered storage type. Valid values:
+        # - InfrequentAccess: IA storage class (default).
+        # - Archive: Archive storage.
         self.storage_type = storage_type
-        # The task summary.
+        # The task overview.
         self.summary = summary
-        # The transition rules for file data.
+        # The file data transit rules.
         self.transit_rules = transit_rules
 
     def validate(self):
+        if self.delete_rules:
+            for v1 in self.delete_rules:
+                 if v1:
+                    v1.validate()
         if self.retrieve_rules:
             for v1 in self.retrieve_rules:
                  if v1:
@@ -151,6 +150,11 @@ class DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogs(DaraModel):
             result = _map
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+
+        result['DeleteRules'] = []
+        if self.delete_rules is not None:
+            for k1 in self.delete_rules:
+                result['DeleteRules'].append(k1.to_map() if k1 else None)
 
         if self.paths is not None:
             result['Paths'] = self.paths
@@ -180,6 +184,12 @@ class DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogs(DaraModel):
         m = m or dict()
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+
+        self.delete_rules = []
+        if m.get('DeleteRules') is not None:
+            for k1 in m.get('DeleteRules'):
+                temp_model = main_models.DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogsDeleteRules()
+                self.delete_rules.append(temp_model.from_map(k1))
 
         if m.get('Paths') is not None:
             self.paths = m.get('Paths')
@@ -215,15 +225,13 @@ class DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogsTransitRules(Dar
     ):
         # The attribute of the rule.
         # 
-        # Valid value:
-        # 
-        # - `Atime`: The last access time of a file.
+        # Valid values:
+        # - Atime: the access time of the file.
         self.attribute = attribute
-        # The rule threshold.
+        # The threshold of the rule.
         # 
         # Valid values:
-        # 
-        # - If `Attribute` is set to `Atime`, this parameter specifies the number of days since a file was last accessed. The value must be an integer from 1 to 365.
+        # - If Attribute is set to Atime, this parameter specifies the number of days since the file was last accessed. Valid values: 1 to 365.
         self.threshold = threshold
 
     def validate(self):
@@ -258,17 +266,56 @@ class DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogsRetrieveRules(Da
         attribute: str = None,
         threshold: str = None,
     ):
-        # The attribute of the rule. Valid value:
-        # 
-        # - `RetrieveType`: The retrieval method.
+        # The attribute of the rule. Valid values:
+        # - RetrieveType: the retrieval method.
         self.attribute = attribute
         # The threshold of the rule. Valid values:
+        # - RetrieveType
+        #     - AfterVisit: Supported when LifecyclePolicyType=Auto. Indicates best-effort recall on visit.
+        #     - All: Supported when LifecyclePolicyType=OnDemand. Indicates retrieving all data.
+        self.threshold = threshold
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.attribute is not None:
+            result['Attribute'] = self.attribute
+
+        if self.threshold is not None:
+            result['Threshold'] = self.threshold
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Attribute') is not None:
+            self.attribute = m.get('Attribute')
+
+        if m.get('Threshold') is not None:
+            self.threshold = m.get('Threshold')
+
+        return self
+
+class DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogsDeleteRules(DaraModel):
+    def __init__(
+        self,
+        attribute: str = None,
+        threshold: str = None,
+    ):
+        # The attribute of the rule.
         # 
-        # - If `Attribute` is set to `RetrieveType`:
+        # Valid values:
+        # - Atime: the access time of the file.
+        self.attribute = attribute
+        # The threshold of the rule.
         # 
-        #   - `AfterVisit`: Data is retrieved on a best-effort basis when accessed. This value is available only if `LifecyclePolicyType` is set to `Auto`.
-        # 
-        #   - `All`: All data is retrieved. This value is available only if `LifecyclePolicyType` is set to `OnDemand`.
+        # Valid values:
+        # - If Attribute is set to Atime, this parameter specifies the number of days since the file was last accessed. Valid values: 1 to 365.
         self.threshold = threshold
 
     def validate(self):

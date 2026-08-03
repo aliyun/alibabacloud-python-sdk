@@ -17,21 +17,21 @@ class ModifyAgenticSpaceRequest(DaraModel):
         # 
         # This parameter is required.
         self.agentic_space_id = agentic_space_id
-        # Ensures the idempotence of the request. Generate a unique parameter value from your client to ensure that the value is unique across different requests.
+        # Ensures the idempotence of the request. Generate a parameter value from your client to ensure that the value is unique across different requests.
         # 
         # ClientToken supports only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         # 
-        # > If you do not specify this parameter, the system automatically uses the RequestId of the API request as the ClientToken. The RequestId may differ for each API request.
+        # > If you do not specify this parameter, the system automatically uses the RequestId of the API request as the ClientToken. The RequestId may vary for each API request.
         self.client_token = client_token
-        # The description of the AgenticSpace.
+        # The description of the Agentic space.
         self.description = description
         # Specifies whether to perform a dry run for this request.
         # 
-        # A dry run checks parameter validity and resource availability without actually modifying the instance or incurring charges.
+        # A dry run checks parameter validity and resource availability without actually creating or modifying the instance, and does not incur fees.
         # 
         # Valid values:
         # 
-        # - true: Sends a check request without modifying the instance. The check items include whether required parameters are specified, request format, business limits, and NAS resource availability. If the check fails, the corresponding error is returned. If the check passes, HTTP status code 200 is returned, but FileSystemId is empty.
+        # - true: Sends a check request without modifying the instance. The check items include whether required parameters are specified, request format, business limits, and NAS inventory. If the check fails, the corresponding error is returned. If the check passes, HTTP status code 200 is returned, but FileSystemId is empty.
         # - false (default): Sends a normal request and directly modifies the instance after the check passes.
         self.dry_run = dry_run
         # The file system ID.

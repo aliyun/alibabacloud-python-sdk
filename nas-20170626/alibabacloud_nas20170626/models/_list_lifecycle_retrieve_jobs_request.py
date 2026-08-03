@@ -13,31 +13,28 @@ class ListLifecycleRetrieveJobsRequest(DaraModel):
         status: str = None,
         storage_type: str = None,
     ):
-        # The ID of the file system.
+        # The file system ID.
         self.file_system_id = file_system_id
-        # The number of the page to return.
+        # The page number of the list.
         # 
-        # Pages start from page 1. Default value: 1.
+        # Start value (default value): 1.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The number of data retrieval tasks on each page.
         # 
         # Valid values: 1 to 100.
         # 
         # Default value: 10.
         self.page_size = page_size
         # The status of the data retrieval task. Valid values:
-        # 
-        # *   active: The task is running.
-        # *   canceled: The task is canceled.
-        # *   completed: The task is completed.
-        # *   failed: The task has failed.
+        # - active: running.
+        # - canceled: canceled.
+        # - completed: completed.
+        # - failed: failed.
         self.status = status
-        # The storage class.
-        # 
-        # *   InfrequentAccess: the Infrequent Access (IA) storage class.
-        # *   Archive: the Archive storage class.
-        # 
-        # >  If the StorageType parameter is not specified, data retrieval tasks of all types are returned.
+        # The storage class. Valid values:
+        # - InfrequentAccess: IA storage class.
+        # - Archive: Archive storage class.
+        # > If StorageType is not specified, data retrieval tasks of all storage classes are returned.
         self.storage_type = storage_type
 
     def validate(self):

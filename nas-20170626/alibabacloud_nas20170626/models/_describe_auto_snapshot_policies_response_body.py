@@ -17,7 +17,7 @@ class DescribeAutoSnapshotPoliciesResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.auto_snapshot_policies = auto_snapshot_policies
-        # The page number.
+        # The page number of the automatic snapshot policy list.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size

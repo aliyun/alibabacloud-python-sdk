@@ -83,9 +83,9 @@ class DescribeAccessPointResponseBodyAccessPoint(DaraModel):
         self.access_point_name = access_point_name
         # AgenticSpace Id。
         self.agentic_space_id = agentic_space_id
-        # The time when the access point was created.
+        # The time when the access point was created. Format: Unix/POSIX timestamp.
         self.create_time = create_time
-        # The time when the AgenticSpace was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
+        # The time when the access point was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
         self.create_time_utc = create_time_utc
         # The access point domain name.
         self.domain_name = domain_name
@@ -93,9 +93,9 @@ class DescribeAccessPointResponseBodyAccessPoint(DaraModel):
         self.enabled_ram = enabled_ram
         # The file system ID.
         self.file_system_id = file_system_id
-        # The time when the access point was last modified.
+        # The time when the access point was last modified. Format: Unix/POSIX timestamp.
         self.modify_time = modify_time
-        # The time when the AgenticSpace was last modified. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
+        # The time when the access point was last modified. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
         self.modify_time_utc = modify_time_utc
         # The POSIX user.
         self.posix_user = posix_user
@@ -103,7 +103,7 @@ class DescribeAccessPointResponseBodyAccessPoint(DaraModel):
         self.region_id = region_id
         # The root directory.
         self.root_path = root_path
-        # The permissions for creating the root directory.
+        # The root directory creation permissions.
         self.root_path_permission = root_path_permission
         # The current root directory status.
         # 
@@ -117,10 +117,10 @@ class DescribeAccessPointResponseBodyAccessPoint(DaraModel):
         # 
         # Valid values:
         # 
-        # - Active: active
-        # - Inactive: inactive
-        # - Pending: being created
-        # - Deleting: being deleted
+        # - Active: available.
+        # - Inactive: unavailable.
+        # - Pending: being created.
+        # - Deleting: being deleted.
         self.status = status
         # The list of access point tags.
         self.tags = tags
@@ -128,7 +128,7 @@ class DescribeAccessPointResponseBodyAccessPoint(DaraModel):
         self.v_switch_id = v_switch_id
         # The VPC ID.
         # 
-        # The VPC must be the same as the VPC of the Elastic Computing Service (ECS) server to which you want to mount the file system.
+        # The VPC must be the same as the VPC of the Elastic Computing Service (ECS) server to be mounted.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -329,11 +329,11 @@ class DescribeAccessPointResponseBodyAccessPointRootPathPermission(DaraModel):
         owner_user_id: int = None,
         permission: str = None,
     ):
-        # The file group ID.
+        # The file group ID of the owner.
         self.owner_group_id = owner_group_id
-        # The file owner ID.
+        # The user ID of the owner.
         self.owner_user_id = owner_user_id
-        # The POSIX permissions.
+        # The POSIX permission.
         self.permission = permission
 
     def validate(self):
@@ -375,9 +375,9 @@ class DescribeAccessPointResponseBodyAccessPointPosixUser(DaraModel):
         posix_secondary_group_ids: List[int] = None,
         posix_user_id: int = None,
     ):
-        # The POSIX user group ID.
+        # The POSIX group ID.
         self.posix_group_id = posix_group_id
-        # The secondary user group ID.
+        # The secondary group IDs.
         self.posix_secondary_group_ids = posix_secondary_group_ids
         # The POSIX user ID.
         self.posix_user_id = posix_user_id

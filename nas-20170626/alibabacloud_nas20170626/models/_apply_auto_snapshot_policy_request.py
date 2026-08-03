@@ -14,9 +14,9 @@ class ApplyAutoSnapshotPolicyRequest(DaraModel):
         # 
         # This parameter is required.
         self.auto_snapshot_policy_id = auto_snapshot_policy_id
-        # The IDs of advanced Extreme NAS file systems.
+        # The IDs of Advanced Extreme NAS file systems.
         # 
-        # You can specify a maximum of 100 file system IDs at a time. If you want to apply an automatic snapshot policy to multiple file systems, separate the file system IDs with commas (,).
+        # You can specify up to 100 file system IDs in a single request. Separate multiple file system IDs with commas (,).
         # 
         # This parameter is required.
         self.file_system_ids = file_system_ids

@@ -83,6 +83,7 @@ class DescribeLifecyclePoliciesResponseBodyLifecyclePolicies(DaraModel):
     def __init__(
         self,
         create_time: str = None,
+        delete_rules: List[main_models.DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesDeleteRules] = None,
         description: str = None,
         file_system_id: str = None,
         lifecycle_policy_id: str = None,
@@ -99,38 +100,44 @@ class DescribeLifecyclePoliciesResponseBodyLifecyclePolicies(DaraModel):
         # 
         # The time follows the ISO 8601 standard in the format: `yyyy-MM-ddTHH:mm:ssZ`.
         self.create_time = create_time
+        # The file data expiration and deletion rules. A maximum of one rule can be configured.
+        self.delete_rules = delete_rules
         # The description of the policy.
         self.description = description
         # The file system ID.
         self.file_system_id = file_system_id
         # The ID of the lifecycle policy.
         self.lifecycle_policy_id = lifecycle_policy_id
-        # The lifecycle management policy name.
+        # The name of the lifecycle management policy.
         self.lifecycle_policy_name = lifecycle_policy_name
         # The policy type.
         self.lifecycle_policy_type = lifecycle_policy_type
         # The management rule associated with the lifecycle management policy.
         # 
         # Valid values:
-        # - DEFAULT_ATIME_14: files not accessed in the last 14 days
-        # - DEFAULT_ATIME_30: files not accessed in the last 30 days
-        # - DEFAULT_ATIME_60: files not accessed in the last 60 days
-        # - DEFAULT_ATIME_90: files not accessed in the last 90 days.
+        # - DEFAULT_ATIME_14: Files not accessed in the last 14 days.
+        # - DEFAULT_ATIME_30: Files not accessed in the last 30 days.
+        # - DEFAULT_ATIME_60: Files not accessed in the last 60 days.
+        # - DEFAULT_ATIME_90: Files not accessed in the last 90 days.
         self.lifecycle_rule_name = lifecycle_rule_name
         # The absolute path of the single directory configured in the lifecycle management policy.
         self.path = path
         # The list of absolute paths of multiple directories configured in the lifecycle management policy.
         self.paths = paths
-        # The data retrieval rules for files.
+        # The file data retrieval rules.
         self.retrieve_rules = retrieve_rules
-        # The storage class type. Valid values:
+        # The storage type. Valid values:
         # - InfrequentAccess: IA storage class.
         # - Archive: Archive storage class.
         self.storage_type = storage_type
-        # The data transit rules for files.
+        # The file data transit rules.
         self.transit_rules = transit_rules
 
     def validate(self):
+        if self.delete_rules:
+            for v1 in self.delete_rules:
+                 if v1:
+                    v1.validate()
         if self.retrieve_rules:
             for v1 in self.retrieve_rules:
                  if v1:
@@ -147,6 +154,11 @@ class DescribeLifecyclePoliciesResponseBodyLifecyclePolicies(DaraModel):
             result = _map
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+
+        result['DeleteRules'] = []
+        if self.delete_rules is not None:
+            for k1 in self.delete_rules:
+                result['DeleteRules'].append(k1.to_map() if k1 else None)
 
         if self.description is not None:
             result['Description'] = self.description
@@ -191,6 +203,12 @@ class DescribeLifecyclePoliciesResponseBodyLifecyclePolicies(DaraModel):
         m = m or dict()
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+
+        self.delete_rules = []
+        if m.get('DeleteRules') is not None:
+            for k1 in m.get('DeleteRules'):
+                temp_model = main_models.DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesDeleteRules()
+                self.delete_rules.append(temp_model.from_map(k1))
 
         if m.get('Description') is not None:
             self.description = m.get('Description')
@@ -279,6 +297,49 @@ class DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesRetrieveRules(DaraMo
         # The attribute of the retrieval rule.
         self.attribute = attribute
         # The threshold of the retrieval rule.
+        self.threshold = threshold
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.attribute is not None:
+            result['Attribute'] = self.attribute
+
+        if self.threshold is not None:
+            result['Threshold'] = self.threshold
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Attribute') is not None:
+            self.attribute = m.get('Attribute')
+
+        if m.get('Threshold') is not None:
+            self.threshold = m.get('Threshold')
+
+        return self
+
+class DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesDeleteRules(DaraModel):
+    def __init__(
+        self,
+        attribute: str = None,
+        threshold: str = None,
+    ):
+        # The attribute of the rule.
+        # 
+        # Valid values:
+        # - Atime: The access time of the file.
+        self.attribute = attribute
+        # The threshold of the rule.
+        # 
+        # Valid values:
+        # - When Attribute is set to Atime, the value indicates the number of days since the file was last accessed. Valid values: 1 to 365.
         self.threshold = threshold
 
     def validate(self):

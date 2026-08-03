@@ -13,29 +13,29 @@ class DescribeAutoSnapshotTasksRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The IDs of automatic snapshot policies.
+        # The IDs of the automatic snapshot policies.
         # 
-        # You can specify a maximum of 100 policy IDs. If you want to query the tasks of multiple automatic snapshot policies, you must separate the policy IDs with commas (,).
+        # You can specify up to 100 automatic snapshot policy IDs. To query tasks of multiple automatic snapshot policies, separate the policy IDs with commas (,).
         self.auto_snapshot_policy_ids = auto_snapshot_policy_ids
-        # The ID of the file system.
+        # The IDs of the file systems.
         # 
-        # You can specify a maximum of 100 file system IDs. If you want to query the snapshots of multiple file systems, you must separate the file system IDs with commas (,).
+        # You can specify up to 100 file system IDs in a single request. To query snapshots of multiple file systems, separate the file system IDs with commas (,).
         self.file_system_ids = file_system_ids
         # The type of the file system.
         # 
-        # Valid value: extreme, which indicates Extreme NAS file systems.
+        # Valid values: extreme (Extreme NAS file system)
         # 
         # This parameter is required.
         self.file_system_type = file_system_type
-        # The number of entries per page.
+        # The number of snapshot tasks on each page.
         # 
         # Valid values: 1 to 100.
         # 
         # Default value: 10.
         self.page_number = page_number
-        # The page number.
+        # The page number of the automatic snapshot task list.
         # 
-        # Pages start from page 1. Default value: 1.
+        # Start value (default value): 1
         self.page_size = page_size
 
     def validate(self):

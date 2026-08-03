@@ -20,7 +20,7 @@ class DescribeAccessPointsRequest(DaraModel):
         # 
         # This parameter is required if the file system is a General-purpose NAS file system.
         # 
-        # Default permission group: DEFAULT_VPC_GROUP_NAME (the default VPC permission group).
+        # Default permission group: DEFAULT_VPC_GROUP_NAME (the default permission group for VPCs).
         self.access_group = access_group
         # The file system ID.
         self.file_system_id = file_system_id
