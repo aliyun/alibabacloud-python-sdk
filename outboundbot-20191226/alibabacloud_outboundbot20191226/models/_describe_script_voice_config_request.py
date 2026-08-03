@@ -11,15 +11,15 @@ class DescribeScriptVoiceConfigRequest(DaraModel):
         script_id: str = None,
         script_voice_config_id: str = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the script.
+        # The scene ID.
         # 
         # This parameter is required.
         self.script_id = script_id
-        # The ID of the script voice configuration.
+        # The scene voice configuration ID.
         # 
         # This parameter is required.
         self.script_voice_config_id = script_voice_config_id

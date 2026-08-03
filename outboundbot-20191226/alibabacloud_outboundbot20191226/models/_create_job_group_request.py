@@ -23,61 +23,61 @@ class CreateJobGroupRequest(DaraModel):
         script_id: str = None,
         strategy_json: str = None,
     ):
-        # List of caller numbers. If not specified, all numbers attached to the instance are selected by default.
+        # The list of calling numbers. If not specified, all numbers bound to the instance are selected by default.
         self.calling_number = calling_number
-        # Configuration parameters for flash SMS push, in JSON format, containing third-party flash SMS configuration information.  
-        # - templateId: Flash SMS Template ID.  
-        # - configId: Flash SMS configuration ID.  
-        # - templateContent: Flash SMS Content.  
+        # The configuration parameters for flash SMS in JSON format, including third-party flash SMS configuration information.  
+        # - templateId: the flash SMS template ID.  
+        # - configId: the flash SMS configuration ID.
+        # - templateContent: the flash SMS content.
         # 
-        # > Obtain the value of templateContent from the partner providing the flash SMS capability.
+        # > Obtain the value of templateContent from the corresponding flash SMS capability provider.
         self.flash_sms_extras = flash_sms_extras
-        # Instance ID
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Task description.
+        # The task description.
         self.job_group_description = job_group_description
-        # Task name.
+        # The task name.
         # 
         # This parameter is required.
         self.job_group_name = job_group_name
-        # Concurrent guarantee value.  
-        # - When a job starts, it is guaranteed a minimum of N concurrent executions.  
-        # - The sum of concurrent guarantee values for jobs with the same priority must not exceed the instance concurrency limit.  
-        # - If the concurrent guarantee value is configured as 0, the system intelligently assigns idle concurrency resources.
+        # The guaranteed concurrency value.  
+        # - When the task starts, a minimum of N concurrent calls are guaranteed.
+        # - The sum of guaranteed concurrency values for tasks with the same priority cannot exceed the instance concurrency.  
+        # - If the guaranteed concurrency value is set to 0, the system intelligently allocates idle concurrency.
         self.min_concurrency = min_concurrency
-        # Job group priority. Valid values:
-        # - **Urgent**: Urgent job.
-        # - **Daily**: Daily job.
+        # The job group priority. Valid values:
+        # - **Urgent**: urgent task.
+        # - **Daily**: daily task.
         self.priority = priority
-        # List of caller numbers for redial.
+        # The list of redial calling numbers.
         self.recall_calling_number = recall_calling_number
-        # Redial policy in JSON format. The default value of parameters in the JSON is false.
+        # The redial strategy in JSON format. Parameter values default to false.
         # 
-        # - **emptyNumberIgnore**: Do not make outbound calls to nonexistent numbers.
-        # - **inArrearsIgnore**: Do not make outbound calls for overdue payments.
-        # - **outOfServiceIgnore**: Do not make outbound calls to out-of-service numbers.
+        # - **emptyNumberIgnore**: does not call nonexistent numbers.
+        # - **inArrearsIgnore**: does not call numbers with overdue payments.
+        # - **outOfServiceIgnore**: does not call numbers that are out of service.
         self.recall_strategy_json = recall_strategy_json
-        # Optimal ringing duration. Default value is 25.
+        # The optimal ringing duration. Default value: 25.
         self.ringing_duration = ringing_duration
-        # Deprecated
+        # Deprecated.
         self.scenario_id = scenario_id
-        # Scenario ID.
+        # The scenario ID.
         self.script_id = script_id
-        # Job execution policy.  
-        # - repeatBy: Recurrence type. Options are Once (no recurrence), Week (weekly recurrence), and Month (monthly recurrence).  
-        # - startTime: Policy start time for time-based execution.  
-        # - endTime: Policy end time for time-based execution.  
-        # > Execution modes are as follows:  
-        # > - If no start or end time is specified, the job executes immediately.  
-        # > - If start and end times are provided, the job executes based on the schedule, and a recurrence type (repeatBy) must be selected.  
-        # - workingTime: Allowed outbound calling time segment.  
-        # - maxAttemptsPerDay: Maximum number of call attempts per day for numbers under this job.  
-        # - minAttemptInterval: Minimum time interval between retry calls for a number, in minutes.  
-        # - routingStrategy: Number routing strategy. Options are None (not specified), LocalFirst (local city numbers prioritized), and LocalProvinceFirst (local province numbers prioritized).  
-        # - repeatDays: Execution dates corresponding to the recurrence type. If repeatBy is Week, 0 represents Sunday and 1–6 represent Monday through Saturday. If repeatBy is Month, values 1–31 represent the 1st through the 31st day of the month; months without the specified date skip execution (for example, if the 30th is selected, February skips execution).  
-        # - repeatable: Whether loop task is enabled, true/false.
+        # The task execution strategy.  
+        # - repeatBy: the repeat type. Valid values: Once (no repeat), Week (repeat weekly), and Month (repeat monthly).  
+        # - startTime: the strategy start time for time-based execution.
+        # - endTime: the strategy end time for time-based execution.  
+        # > The execution mode is determined as follows:
+        # > - If no strategy start time or end time is specified, the task is executed immediately.
+        # > - If a strategy time is specified, the task is executed based on the schedule. You must also specify the repeat type repeatBy.
+        # - workingTime: the time window during which outbound calls can be made.
+        # - maxAttemptsPerDay: the maximum number of call attempts per day for each number in the task.
+        # - minAttemptInterval: the retry interval for a number, in minutes.
+        # - routingStrategy: the number strategy. Valid values: None (not specified), LocalFirst (local city numbers preferred), and LocalProvinceFirst (local province numbers preferred).
+        # - repeatDays: the execution days corresponding to the repeat type. If RepeatBy is set to Week, 0 indicates Sunday and 1-6 indicate Monday through Saturday. If RepeatBy is set to Month, 1-31 indicate the 1st through 31st day. The task is not executed in months that do not have the specified day. For example, if the 30th is selected, the task is not executed in February.
+        # - repeatable: specifies whether to enable cyclic tasks. Valid values: true and false.
         self.strategy_json = strategy_json
 
     def validate(self):

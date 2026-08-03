@@ -35,60 +35,62 @@ class CreateTaskExportTaskRequest(DaraModel):
         task_status_string_list: str = None,
         user_id_match: str = None,
     ):
-        # Start time of the call time range (inclusive)
+        # The start time (inclusive) for searching by call time.
         self.actual_time_gte = actual_time_gte
-        # End time of the call time range (inclusive)
+        # The end time (inclusive) for searching by call time.
         self.actual_time_lte = actual_time_lte
-        # Minimum call duration
+        # The minimum call duration for the search.
         self.call_duration_gte = call_duration_gte
-        # Maximum call duration
+        # The maximum call duration for the search.
         self.call_duration_lte = call_duration_lte
-        # Called number
+        # The called number.
         self.called_number = called_number
         self.calling_number = calling_number
-        # Whether the call was answered
+        # Specifies whether the call was answered.
         self.has_answered = has_answered
-        # Whether the call ended because the contact rejected it
+        # Specifies whether the call was hung up due to rejection.
         self.has_hang_up_by_rejection = has_hang_up_by_rejection
-        # Whether the conversation ended normally
+        # Specifies whether the conversation was completed.
         self.has_reached_end_of_flow = has_reached_end_of_flow
-        # Instance ID
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Task group ID
+        # The job group ID.
         self.job_group_id = job_group_id
-        # Task name
+        # The task name.
         self.job_group_name_query = job_group_name_query
-        # Job ID
+        # The job ID.
         self.job_id = job_id
-        # Job status
+        # The job status.
         self.job_status_string_list = job_status_string_list
-        # Other ID
+        # The other ID.
         self.other_id = other_id
-        # Page number, starting from 0
+        # The page number. Pages start from 0.
         self.page_index = page_index
-        # Number of items per page
+        # The number of entries per page.
         self.page_size = page_size
-        # The start time for the ring duration search.
+        # The minimum ringing duration for the search.
         self.recording_duration_gte = recording_duration_gte
-        # End time of the ring duration search.
+        # The maximum ringing duration for the search.
         self.recording_duration_lte = recording_duration_lte
-        # Scenario name
+        # The scenario name.
         self.script_name_query = script_name_query
-        # Sort field
+        # The field by which to sort the results.
         self.sort_by = sort_by
-        # Sort order. Valid values: asc (ascending), desc (descending)
+        # The sort order. Valid values:
+        # - asr: ascending order
+        # - desc: descending order
         self.sort_order = sort_order
-        # Start time of the task creation time range
+        # The start time for searching by task creation time.
         self.task_create_time_gte = task_create_time_gte
-        # End time of the task creation time range
+        # The end time for searching by task creation time.
         self.task_create_time_lte = task_create_time_lte
-        # Task ID
+        # The task ID.
         self.task_id = task_id
-        # Call status
+        # The call status.
         self.task_status_string_list = task_status_string_list
-        # User ID
+        # The user ID.
         self.user_id_match = user_id_match
 
     def validate(self):

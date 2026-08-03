@@ -11,15 +11,14 @@ class SaveAfterAnswerDelayPlaybackRequest(DaraModel):
         entry_id: str = None,
         strategy_level: int = None,
     ):
-        # Delay before playback starts, in seconds. Default is 0 if not specified.
+        # The playback time for delayed playback. If this parameter is not specified, the default value 0 is used.
         self.after_answer_delay_playback = after_answer_delay_playback
-        # Instance ID
+        # The instance ID.
         # 
         # This parameter is required.
         self.entry_id = entry_id
-        # Policy level (required)
-        # 
-        # - 2: Instance
+        # The policy level (required). Valid values:
+        # - 2: instance
         self.strategy_level = strategy_level
 
     def validate(self):

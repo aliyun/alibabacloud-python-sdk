@@ -1,3 +1,7 @@
+2026-08-03 Version: 2.1.5
+- Update API DownloadRecording: add response parameters Body.DownloadParams.EarlyMediaSignatureUrl.
+
+
 2026-06-25 Version: 2.1.4
 - Update API DescribeTTSDemo: add request parameters ExtParams.
 

@@ -15,13 +15,13 @@ class DownloadRecordingResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code.
+        # The interface status code.
         self.code = code
-        # Download parameters for the recording file.
+        # The download URL of the file.
         self.download_params = download_params
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The response message.
+        # The interface prompt message.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -83,15 +83,17 @@ class DownloadRecordingResponseBody(DaraModel):
 class DownloadRecordingResponseBodyDownloadParams(DaraModel):
     def __init__(
         self,
+        early_media_signature_url: str = None,
         file_name: str = None,
         signature_url: str = None,
         voice_slice_recording_list_json: str = None,
     ):
-        # The name of the recording file, typically a universally unique identifier (UUID).
+        self.early_media_signature_url = early_media_signature_url
+        # The recording file name, which is typically a UUID.
         self.file_name = file_name
-        # The signed URL for downloading the recording file.
+        # A URL that points to the recording file. Use HTTP to download the file.
         self.signature_url = signature_url
-        # A JSON-formatted string that contains a list of voice slice recordings. Each item in the list includes the file name and URL of a slice.
+        # The list of segmented recordings, including file names and file URLs.
         self.voice_slice_recording_list_json = voice_slice_recording_list_json
 
     def validate(self):
@@ -102,6 +104,9 @@ class DownloadRecordingResponseBodyDownloadParams(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.early_media_signature_url is not None:
+            result['EarlyMediaSignatureUrl'] = self.early_media_signature_url
+
         if self.file_name is not None:
             result['FileName'] = self.file_name
 
@@ -115,6 +120,9 @@ class DownloadRecordingResponseBodyDownloadParams(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EarlyMediaSignatureUrl') is not None:
+            self.early_media_signature_url = m.get('EarlyMediaSignatureUrl')
+
         if m.get('FileName') is not None:
             self.file_name = m.get('FileName')
 

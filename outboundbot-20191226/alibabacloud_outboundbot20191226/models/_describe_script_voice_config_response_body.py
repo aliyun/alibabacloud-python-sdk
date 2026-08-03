@@ -19,11 +19,11 @@ class DescribeScriptVoiceConfigResponseBody(DaraModel):
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The response message.
+        # The message returned by the API.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The details of the script voice configuration.
+        # The scene voice configuration information.
         self.script_voice_config = script_voice_config
         # Indicates whether the request was successful.
         self.success = success
@@ -91,23 +91,22 @@ class DescribeScriptVoiceConfigResponseBodyScriptVoiceConfig(DaraModel):
         source: str = None,
         type: str = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
         # The script content.
         self.script_content = script_content
-        # The ID of the script.
+        # The scene ID.
         self.script_id = script_id
-        # The ID of the script voice configuration.
+        # The scene voice configuration ID.
         self.script_voice_config_id = script_voice_config_id
-        # The script waveform relation data. Returned only when `Type` is `WAVEFORM`.
+        # The script recording data. This parameter has a value only when Type is set to WAVEFORM.
         self.script_waveform_relation = script_waveform_relation
-        # The source of the script.
+        # The script source.
         self.source = source
-        # The type of the voice configuration. Valid values:
+        # The recording type. Valid values:
         # 
-        # - `WAVEFORM`: A recording.
-        # 
-        # - `TTS`: Text-to-speech.
+        # - WAVEFORM: recording.
+        # - TTS: text-to-speech.
         self.type = type
 
     def validate(self):

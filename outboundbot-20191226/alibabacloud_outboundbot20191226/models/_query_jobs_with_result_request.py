@@ -24,124 +24,86 @@ class QueryJobsWithResultRequest(DaraModel):
         start_actual_time_filter: int = None,
         task_status_filter: str = None,
     ):
-        # Filters for calls that ended on or before the specified time. Specify the time as a UNIX timestamp in milliseconds.
+        # The filter condition for the call end time.
         self.end_actual_time_filter = end_actual_time_filter
-        # Filters jobs by whether the call was answered.
+        # Specifies whether the call was answered.
         self.has_answered_filter = has_answered_filter
-        # Filters jobs by whether the call was disconnected due to a rejection.
+        # Specifies whether the call was hung up due to rejection.
         self.has_hang_up_by_rejection_filter = has_hang_up_by_rejection_filter
-        # Filters jobs by whether the call flow was completed.
+        # Specifies whether the call reached the end of the flow.
         self.has_reached_end_of_flow_filter = has_reached_end_of_flow_filter
         # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The job failure reasons to filter by.
+        # The list of job failure reasons.
         self.job_failure_reasons_filter = job_failure_reasons_filter
         # The ID of the job group.
         # 
         # This parameter is required.
         self.job_group_id = job_group_id
-        # The job status to filter by. Valid values:
-        # 
-        # - `Scheduling`: The job is scheduled and awaiting execution.
-        # 
-        # - `Executing`: The job is in progress.
-        # 
-        # - `Succeeded`: The job is completed and the contact was reached.
-        # 
-        # - `Paused`: The job is paused.
-        # 
-        # - `Failed`: The job completed but failed to reach the contact.
-        # 
-        # - `Cancelled`: The job was canceled by a user.
+        # The job status filter. Valid values:
+        # - Scheduling: scheduling.
+        # - Executing: executing.
+        # - Succeeded: ended - reached.
+        # - Paused: paused.
+        # - Failed: ended - not reached.
+        # - Cancelled: cancelled - manual intervention.
         self.job_status_filter = job_status_filter
-        # The filter conditions for calls, based on their labels.
+        # The filter condition for labels associated with calls.
         # 
-        # > This filter applies only to labels that are configured with a predefined set of values (enumerated values). These labels are typically used in large model scenarios.
+        # > This condition only supports filtering by labels that have specific enumerated label values configured, that is, labels with specific label values configured in large language model scenarios.
         self.labels_json = labels_json
         # The page number.
         # 
-        # >Notice: 
-        # 
-        # This parameter is required.
+        # >Notice: This parameter is required.</notice>
         self.page_number = page_number
-        # Page size
-        # >Notice: This parameter is required.
+        # The page size.
+        # >Notice: This parameter is required.</notice>
         self.page_size = page_size
-        # The search query for a specific job, such as the contact\\"s phone number.
+        # The search content. You can search by phone number.
         self.query_text = query_text
-        # Filters for calls that started on or after the specified time. Specify the time as a UNIX timestamp in milliseconds.
+        # The filter condition for the call start time.
         self.start_actual_time_filter = start_actual_time_filter
-        # The call statuses to filter by. You can specify multiple statuses as a JSON array of strings, such as `["Executing", "Succeeded"]`.
+        # The call status, such as ["Executing","Succeeded"]. Separate multiple values with commas (,).
+        # 
         # Valid values:
-        # (Note: The **Succeeded** status is subdivided into more specific reasons. The general **Succeeded** (1: Connected) status is no longer returned. Instead, one of the more specific sub-statuses is returned.)
         # 
-        # - **Executing** (0): The call is being placed.
+        # (Note: The **Succeeded** status has been subdivided into specific reasons. The **Succeeded**: 1 (answered) status is no longer returned. Instead, specific sub-reason types are returned.)
         # 
-        # - **Succeeded** (1): The call was connected.
-        # 
-        # - **NoAnswer** (2): Not connected - No answer.
-        # 
-        # - **NotExist** (3): Not connected - The dialed number does not exist.
-        # 
-        # - **Busy** (4): Not connected - The line was busy.
-        # 
-        # - **Cancelled** (5): Not placed - The job was stopped before the call could be dialed.
-        # 
-        # - **Failed** (6): The call failed.
-        # 
-        # - **NotConnected** (7): Not connected - The call could not be connected.
-        # 
-        # - **PoweredOff** (8): Not connected - The recipient\\"s phone was powered off.
-        # 
-        # - **OutOfService** (9): Not connected - The recipient\\"s number is out of service.
-        # 
-        # - **InArrears** (10): Not connected - The recipient\\"s account is in arrears.
-        # 
-        # - **EmptyNumber** (11): Not placed - The number was identified as an empty number and was not dialed.
-        # 
-        # - **PerDayCallCountLimit** (12): Not placed - The daily call limit was reached.
-        # 
-        # - **ContactBlockList** (13): Not placed - The number is on a blocklist.
-        # 
-        # - **CallerNotRegistered** (14): Not placed - The calling number is not registered.
-        # 
-        # - **Terminated** (15): Not placed - The call was terminated.
-        # 
-        # - **VerificationCancelled** (16): Not placed - Canceled after failing a pre-call verification.
-        # 
-        # - **OutOfServiceNoCall** (17): Not placed - The number is out of service and was not dialed.
-        # 
-        # - **InArrearsNoCall** (18): Not placed - The recipient is in arrears and was not dialed.
-        # 
-        # - **CallingNumberNotExist** (19): Not placed - The calling number does not exist.
-        # 
-        # - **SucceededFinish** (20): Connected - The call completed normally.
-        # 
-        # - **SucceededChatbotHangUpAfterNoAnswer** (21): Connected - The chatbot hung up after a rejection.
-        # 
-        # - **SucceededChatbotHangUpAfterSilence** (22): Connected - The chatbot hung up due to a silence timeout.
-        # 
-        # - **SucceededClientHangUpAfterNoAnswer** (23): Connected - The user hung up after a rejection.
-        # 
-        # - **SucceededClientHangUp** (24): Connected - The user hung up for no specific reason.
-        # 
-        # - **SucceededTransferByIntent** (25): Connected - The call was transferred to an agent based on user intent.
-        # 
-        # - **SucceededTransferAfterNoAnswer** (26): Connected - The call was transferred to an agent after a rejection.
-        # 
-        # - **SucceededInoInterAction** (27): Connected - No interaction from the user.
-        # 
-        # - **SucceededError** (28): Connected - The call was interrupted by a system error.
-        # 
-        # - **SucceededSpecialInterceptVoiceAssistant** (29): Connected - Intercepted by a voice assistant.
-        # 
-        # - **SucceededSpecialInterceptExtensionNumberTransfer** (30): Connected - Intercepted for an extension number transfer.
-        # 
-        # - **SucceededSpecialInterceptCustomSpecialIntercept** (31): Connected - Intercepted by a custom rule.
-        # 
-        # - **HighRiskSipCode** (32): Not placed - High-risk SIP code.
+        # - **Executing**: 0 (dialing).
+        # - **Succeeded**: 1 (answered).
+        # - **NoAnswer**: 2 (not answered - no one picked up).
+        # - **NotExist**: 3 (not answered - nonexistent number).
+        # - **Busy**: 4 (not answered - busy).
+        # - **Cancelled**: 5 (not dialed - task stopped).
+        # - **Failed**: 6 (failed).
+        # - **NotConnected**: 7 (not answered - unreachable).
+        # - **PoweredOff**: 8 (not answered - powered off).
+        # - **OutOfService**: 9 (not answered - callee out of service).
+        # - **InArrears**: 10 (not answered - callee has overdue payment).
+        # - **EmptyNumber**: 11 (not dialed - nonexistent number, no outbound call).
+        # - **PerDayCallCountLimit**: 12 (not dialed - daily limit exceeded).
+        # - **ContactBlockList**: 13 (not dialed - blacklisted).
+        # - **CallerNotRegistered**: 14 (not dialed - caller number not registered).
+        # - **Terminated**: 15 (not dialed - terminated).
+        # - **VerificationCancelled**: 16 (not dialed - cancelled due to pre-call verification failure).
+        # - **OutOfServiceNoCall**: 17 (not dialed - callee out of service, no outbound call).
+        # - **InArrearsNoCall**: 18 (not dialed - callee has overdue payment, no outbound call).
+        # - **CallingNumberNotExist**: 19 (not dialed - caller number does not exist).
+        # - **SucceededFinish**: 20 (answered - completed normally).
+        # - **SucceededChatbotHangUpAfterNoAnswer**: 21 (answered - robot hung up after rejection).
+        # - **SucceededChatbotHangUpAfterSilence**: 22 (answered - hung up due to silence timeout).
+        # - **SucceededClientHangUpAfterNoAnswer**: 23 (answered - user hung up after rejection).
+        # - **SucceededClientHangUp**: 24 (answered - user hung up without reason).
+        # - **SucceededTransferByIntent**: 25 (answered - transferred to agent by intent).
+        # - **SucceededTransferAfterNoAnswer**: 26 (answered - transferred to agent after rejection).
+        # - **SucceededInoInterAction**: 27 (answered - no interaction from user side).
+        # - **SucceededError**: 28 (answered - interrupted by system error).
+        # - **SucceededSpecialInterceptVoiceAssistant**: 29 (answered - special interception - voice assistant).
+        # - **SucceededSpecialInterceptExtensionNumberTransfer**: 30 (answered - special interception - extension number transfer).
+        # - **SucceededSpecialInterceptCustomSpecialIntercept**: 31 (answered - special interception - custom interception).
+        # - **HighRiskSipCode**: 32 (not dialed - high risk, no outbound call).
         self.task_status_filter = task_status_filter
 
     def validate(self):

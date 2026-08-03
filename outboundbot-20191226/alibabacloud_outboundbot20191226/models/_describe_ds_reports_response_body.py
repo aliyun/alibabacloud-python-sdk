@@ -14,17 +14,17 @@ class DescribeDsReportsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # API status code
+        # The API status code.
         self.code = code
-        # Conversation flow information, formatted as key:{value:count}
+        # The dialog flow information in the format: key:{value:aaa}}, where aaa indicates the number of occurrences.
         self.ds_reports = ds_reports
-        # HTTP status code
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # API message
+        # The API response message.
         self.message = message
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call succeeded
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

@@ -11,15 +11,15 @@ class DuplicateScriptRequest(DaraModel):
         name: str = None,
         source_script_id: str = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The name for the new script.
+        # The name of the new scenario.
         # 
         # This parameter is required.
         self.name = name
-        # The ID of the source script.
+        # The ID of the source scenario.
         # 
         # This parameter is required.
         self.source_script_id = source_script_id

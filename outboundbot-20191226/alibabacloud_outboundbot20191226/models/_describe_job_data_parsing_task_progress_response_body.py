@@ -15,17 +15,17 @@ class DescribeJobDataParsingTaskProgressResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Response code.
+        # The response code.
         self.code = code
-        # HTTP status code.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Response message.
+        # The response message.
         self.message = message
-        # Parsing progress.
+        # The progress information.
         self.progress = progress
-        # ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call succeeded.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -90,27 +90,22 @@ class DescribeJobDataParsingTaskProgressResponseBodyProgress(DaraModel):
         status: str = None,
         total_job_count: int = None,
     ):
-        # Error code for a failed parsing task.
+        # The error code for the failure.
         self.fail_error_code = fail_error_code
-        # Reason for failure.
+        # The failure reason.
         self.fail_reason = fail_reason
-        # Download URL for the file that lists parsing failures. This field is deprecated.
+        # The download URL of the parsing failure record file. [Deprecated]
         self.feedback_url = feedback_url
-        # Number of jobs processed so far.
+        # The number of jobs being processed.
         self.handled_job_count = handled_job_count
-        # Status of the job.
-        # 
-        # - Pending: The job is waiting to start.
-        # 
-        # - InProgress: The job is running.
-        # 
-        # - Finished: The job completed successfully.
-        # 
-        # - PartialFinished: The job completed partially.
-        # 
-        # - Failed: The job failed.
+        # The job status. Valid values:
+        # - Pending: pending.
+        # - InProgress: in progress.
+        # - Finished: finished.
+        # - PartialFinished: partially finished.
+        # - Failed: failed.
         self.status = status
-        # Total number of jobs in the task.
+        # The total number of jobs.
         self.total_job_count = total_job_count
 
     def validate(self):

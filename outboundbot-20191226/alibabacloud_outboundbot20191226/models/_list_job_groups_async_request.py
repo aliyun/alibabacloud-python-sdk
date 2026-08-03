@@ -9,7 +9,7 @@ class ListJobGroupsAsyncRequest(DaraModel):
         self,
         async_task_id: str = None,
     ):
-        # The ID returned by an asynchronous call to `ListJobGroup`. Use this ID to retrieve the results of the asynchronous query.
+        # The value of AsyncTaskId returned by ListJobGroup when the Async mode is used. You can use this ID to retrieve the results of the asynchronous query.
         # 
         # This parameter is required.
         self.async_task_id = async_task_id

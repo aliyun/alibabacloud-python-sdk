@@ -10,14 +10,12 @@ class CreateDownloadUrlRequest(DaraModel):
         download_task_id: str = None,
         file_id: str = None,
     ):
-        # The ID of the download task.
-        # 
+        # The download task ID.
         # > This parameter is obtained from the TaskId response parameter of the ListDownloadTasks operation.
         # 
         # This parameter is required.
         self.download_task_id = download_task_id
-        # The ID of the file.
-        # 
+        # The file ID.
         # > This parameter is obtained from the FileId response parameter of the ListDownloadTasks operation.
         # 
         # This parameter is required.

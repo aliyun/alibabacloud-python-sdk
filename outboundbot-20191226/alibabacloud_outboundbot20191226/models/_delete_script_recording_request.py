@@ -11,17 +11,17 @@ class DeleteScriptRecordingRequest(DaraModel):
         script_id: str = None,
         uuids_json: str = None,
     ):
-        # The ID of the instance to which the recording belongs.
+        # The instance ID to which the recordings belong.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the scenario to which the recording belongs.
+        # The ID of the scenario to which the recordings belong.
         # 
         # This parameter is required.
         self.script_id = script_id
-        # A list of recording IDs. If this parameter is empty, all recordings are selected by default.
+        # The list of recording IDs. If this parameter is left empty, all recordings are selected by default.
         # 
-        # > Obtain the recording IDs from the ListScriptRecording operation.
+        # > You can obtain recording IDs by calling the ListScriptRecording operation.
         self.uuids_json = uuids_json
 
     def validate(self):

@@ -98,11 +98,11 @@ class WithdrawScriptReviewResponseBodyScript(DaraModel):
         self.debug_status = debug_status
         # The industry.
         self.industry = industry
-        # Indicates whether the debug version is a draft.
+        # Indicates whether the debug version is in draft state.
         self.is_debug_drafted = is_debug_drafted
-        # Indicates whether the application version is a draft.
+        # Indicates whether the application version is in draft state.
         self.is_drafted = is_drafted
-        # The scenario.
+        # The scene.
         self.scene = scene
         # The script description.
         self.script_description = script_description
@@ -112,7 +112,7 @@ class WithdrawScriptReviewResponseBodyScript(DaraModel):
         self.script_name = script_name
         # The status of the application version.
         self.status = status
-        # The time when the script was updated.
+        # The update time.
         self.update_time = update_time
 
     def validate(self):

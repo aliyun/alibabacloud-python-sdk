@@ -10,13 +10,13 @@ class DescribeJobDataParsingTaskProgressRequest(DaraModel):
         instance_id: str = None,
         job_data_parsing_task_id: str = None,
     ):
-        # ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # ID of the job data parsing task.
+        # The job data analytics node ID.
         # 
-        # > Get this value from the CreateJobDataParsingTask operation.
+        # > This parameter value is obtained from the CreateJobDataParsingTask operation.
         # 
         # This parameter is required.
         self.job_data_parsing_task_id = job_data_parsing_task_id

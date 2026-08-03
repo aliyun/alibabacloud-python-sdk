@@ -13,23 +13,23 @@ class ModifyOutboundCallNumberRequest(DaraModel):
         rate_limit_count: int = None,
         rate_limit_period: int = None,
     ):
-        # Instance ID
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The number to modify
+        # The number to modify.
         # 
         # This parameter is required.
         self.number = number
-        # Number ID
+        # The number ID.
         # 
         # This parameter is required.
         self.outbound_call_number_id = outbound_call_number_id
-        # Number of rate limiting rules
+        # The number of rate limit rules.
         # 
         # This parameter is required.
         self.rate_limit_count = rate_limit_count
-        # Rate limiting time window, in seconds
+        # The rate limit period. Unit: seconds.
         # 
         # This parameter is required.
         self.rate_limit_period = rate_limit_period

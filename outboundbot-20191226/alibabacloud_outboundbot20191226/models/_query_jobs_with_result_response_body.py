@@ -19,15 +19,15 @@ class QueryJobsWithResultResponseBody(DaraModel):
         success: bool = None,
         variable_names: List[str] = None,
     ):
-        # The response code. The value `OK` indicates that the request was successful.
+        # Code
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The paginated list of jobs.
+        # The jobs.
         self.jobs = jobs
-        # The tag information that can be used as filter criteria.
+        # The label information that can be used as filter conditions.
         # 
-        # > Displays information for all tags in the job group that have enumerated values.
+        # > Displays all label information with enumerated values in the job group.
         self.labels = labels
         # The response message.
         self.message = message
@@ -35,7 +35,7 @@ class QueryJobsWithResultResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success
-        # The names of tags to be collected.
+        # The label names to be collected.
         self.variable_names = variable_names
 
     def validate(self):
@@ -117,9 +117,9 @@ class QueryJobsWithResultResponseBodyLabels(DaraModel):
         name: str = None,
         value_list: List[str] = None,
     ):
-        # Tag Name
+        # The label name.
         self.name = name
-        # Tag value list.
+        # The list of label values.
         self.value_list = value_list
 
     def validate(self):
@@ -157,15 +157,15 @@ class QueryJobsWithResultResponseBodyJobs(DaraModel):
         page_size: int = None,
         row_count: int = None,
     ):
-        # A list of jobs.
+        # The job list.
         self.list = list
         # The total number of pages.
         self.page_count = page_count
         # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The page size.
         self.page_size = page_size
-        # The total number of entries.
+        # The total number of records.
         self.row_count = row_count
 
     def validate(self):
@@ -231,27 +231,20 @@ class QueryJobsWithResultResponseBodyJobsList(DaraModel):
     ):
         # The job ID.
         self.id = id
-        # The reason the job failed.
+        # The job failure reason.
         self.job_failure_reason = job_failure_reason
-        # The most recent call.
+        # The latest call.
         self.latest_task = latest_task
         # The job status. Valid values:
-        # 
-        # - `Scheduling`: The job is being scheduled.
-        # 
-        # - `Executing`: The job is in progress.
-        # 
-        # - `Succeeded`: The job succeeded, and the contact was reached.
-        # 
-        # - `Paused`: The job is paused.
-        # 
-        # - `Failed`: The job failed because the contact was not reached.
-        # 
-        # - `Cancelled`: The job was cancelled by a user.
-        # 
-        # - `Drafted`: The job is a draft.
+        # - Scheduling(0, "Scheduling")
+        # - Executing(1, "Executing")
+        # - Succeeded(2, "Ended - Reached")
+        # - Paused(3, "Paused")
+        # - Failed(4, "Ended - Not reached")
+        # - Cancelled(5, "Cancelled - Manual intervention")
+        # - Drafted(6, "Draft")
         self.status = status
-        # The name of the job status.
+        # The job status name.
         self.status_name = status_name
 
     def validate(self):
@@ -319,34 +312,34 @@ class QueryJobsWithResultResponseBodyJobsListLatestTask(DaraModel):
         tag_hits: List[main_models.QueryJobsWithResultResponseBodyJobsListLatestTaskTagHits] = None,
         task_end_reason: str = None,
     ):
-        # The call duration, in milliseconds.
+        # The call duration.
         self.call_duration = call_duration
-        # The call duration, formatted for display.
+        # The call duration.
         self.call_duration_display = call_duration_display
-        # The time when the call was made. This value is a UNIX timestamp in milliseconds.
+        # The call time.
         self.call_time = call_time
         # The contact.
         self.contact = contact
-        # The error codes for the call.
+        # The call exception codes.
         self.dial_exception_codes = dial_exception_codes
-        # The custom tags (key-value pairs) associated with the call.
+        # The label names to be collected.
         self.extras = extras
         self.hang_up_direction = hang_up_direction
         # Indicates whether the call was answered.
         self.has_answered = has_answered
-        # Indicates whether the call was hung up due to rejection.
+        # Specifies whether the call was hung up due to rejection.
         self.has_hang_up_by_rejection = has_hang_up_by_rejection
-        # Indicates whether the last voice playback was completed before the call was hung up.
+        # Indicates whether the playback was completed when the call was hung up.
         self.has_last_playback_completed = has_last_playback_completed
-        # Indicates whether the call flow was completed.
+        # Specifies whether the call reached the end of the flow.
         self.has_reached_end_of_flow = has_reached_end_of_flow
         # The call status.
         self.status = status
-        # The name of the call status.
+        # The call status name.
         self.status_name = status_name
-        # Information about tags that were matched. This parameter is returned for flows created using the legacy canvas.
+        # The label hit information (returned by the legacy canvas).
         self.tag_hits = tag_hits
-        # The call end reason.
+        # The call result.
         self.task_end_reason = task_end_reason
 
     def validate(self):
@@ -488,9 +481,9 @@ class QueryJobsWithResultResponseBodyJobsListLatestTaskTagHits(DaraModel):
         tag_group: str = None,
         tag_name: str = None,
     ):
-        # The tag group to which the tag belongs.
+        # The label group to which the label belongs.
         self.tag_group = tag_group
-        # The tag name.
+        # The label name.
         self.tag_name = tag_name
 
     def validate(self):
@@ -525,9 +518,9 @@ class QueryJobsWithResultResponseBodyJobsListLatestTaskExtras(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
+        # The label key.
         self.key = key
-        # The tag value.
+        # The label value.
         self.value = value
 
     def validate(self):
@@ -564,7 +557,7 @@ class QueryJobsWithResultResponseBodyJobsListLatestTaskDialExceptionCodes(DaraMo
     ):
         # The error code.
         self.code = code
-        # Error message
+        # The error message.
         self.hint = hint
 
     def validate(self):
@@ -607,33 +600,30 @@ class QueryJobsWithResultResponseBodyJobsListLatestTaskContact(DaraModel):
         round: int = None,
         state: str = None,
     ):
-        # The honorific for the contact, such as Mr. or Ms. If not provided, it defaults to the value of the `Name` parameter.
-        # 
-        # > This is a custom parameter. You can specify it in the JSON object when you start an outbound job.
+        # The honorific for the contact. If not specified, it defaults to the same value as the name.
+        # > Custom-defined by the customer. Passed in JSON format when calling the API to execute an outbound call task.
         self.honorific = honorific
-        # The unique ID of the contact, generated by the system when the contact list is uploaded.
+        # The contact ID. A unique identifier generated by the system when the outbound call list is uploaded.
         self.id = id
         # The job ID.
         self.job_uuid = job_uuid
-        # The name of the contact. For example, John Smith.
+        # The name of the contact.
         self.name = name
         # The phone number of the contact.
         self.phone_number = phone_number
-        # The phone number specified by the callee during the conversation. If provided, Outbound Bot calls this number.
-        # 
-        # > This is a custom parameter. You can specify it in the JSON object when you start an outbound job.
+        # The phone number specified by the callee during the conversation. If provided, this number is actually dialed.
+        # > Custom-defined by the customer. Passed in JSON format when calling the API to execute an outbound call task.
         self.preferred_phone_number = preferred_phone_number
-        # Your custom ID for the contact. This ID helps you uniquely identify the contact and prevent issues caused by duplicate names.
+        # The contact ID uploaded by the customer. This must be provided by the business side to avoid duplicate name issues.
         self.reference_id = reference_id
-        # The role of the contact in the outbound calling scenario. This parameter is optional. For example, in a debt collection scenario, roles can include `borrower`, `co-borrower`, or `guarantor`.
+        # The role of the contact in this outbound call scenario. If not specified, no role distinction is made. For example, in a debt collection scenario, contact roles can include borrower, co-borrower, and guarantor.
         # 
-        # > This is a custom parameter. You can specify it in the JSON object when starting a job.
+        # > Custom-defined by the customer. Passed in JSON format when calling the API.
         self.role = role
-        # The call attempt number.
+        # The round number.
         self.round = round
-        # The status of the contact. For example, `Available` (the contact is available), `WrongNumber` (the phone number is incorrect), or `DoesNotExist` (the phone number does not exist).
-        # 
-        # > This is a custom parameter. You can specify it in the JSON object when you start an outbound job.
+        # The status of the contact, such as Available, WrongNumber, or DoesNotExist.
+        # > Custom-defined by the customer. Passed in JSON format when calling the API to execute an outbound call task.
         self.state = state
 
     def validate(self):

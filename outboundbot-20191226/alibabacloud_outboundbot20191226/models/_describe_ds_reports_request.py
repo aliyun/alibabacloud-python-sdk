@@ -10,11 +10,11 @@ class DescribeDsReportsRequest(DaraModel):
         instance_id: str = None,
         job_group_id: str = None,
     ):
-        # Instance ID
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Task group ID
+        # The job group ID.
         # 
         # This parameter is required.
         self.job_group_id = job_group_id
