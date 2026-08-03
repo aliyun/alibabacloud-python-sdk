@@ -1,3 +1,7 @@
+2026-08-03 Version: 4.0.2
+- Update API DescribeAuditLogRecords: add request parameters EngineType.
+
+
 2026-07-31 Version: 4.0.1
 - Update API DescribeAdbMySqlColumns: add request parameters Catalog.
 - Update API DescribeAdbMySqlSchemas: add request parameters Catalog.

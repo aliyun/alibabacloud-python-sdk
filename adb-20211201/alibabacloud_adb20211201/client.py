@@ -6686,6 +6686,8 @@ class Client(OpenApiClient):
             query['DBName'] = request.dbname
         if not DaraCore.is_null(request.end_time):
             query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.engine_type):
+            query['EngineType'] = request.engine_type
         if not DaraCore.is_null(request.host_address):
             query['HostAddress'] = request.host_address
         if not DaraCore.is_null(request.order):
@@ -6750,6 +6752,8 @@ class Client(OpenApiClient):
             query['DBName'] = request.dbname
         if not DaraCore.is_null(request.end_time):
             query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.engine_type):
+            query['EngineType'] = request.engine_type
         if not DaraCore.is_null(request.host_address):
             query['HostAddress'] = request.host_address
         if not DaraCore.is_null(request.order):
