@@ -4,19 +4,16 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class DescribeTaskDetailRequest(DaraModel):
+class RetryInspectionTaskRequest(DaraModel):
     def __init__(
         self,
         instance_id: str = None,
+        security_token: str = None,
         task_id: str = None,
     ):
-        # The instance ID.
-        # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The task ID.
-        # 
-        # This parameter is required.
+        self.security_token = security_token
         self.task_id = task_id
 
     def validate(self):
@@ -30,6 +27,9 @@ class DescribeTaskDetailRequest(DaraModel):
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
 
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+
         if self.task_id is not None:
             result['TaskId'] = self.task_id
 
@@ -39,6 +39,9 @@ class DescribeTaskDetailRequest(DaraModel):
         m = m or dict()
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
 
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')

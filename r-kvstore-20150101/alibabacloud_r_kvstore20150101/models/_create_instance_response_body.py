@@ -30,63 +30,57 @@ class CreateInstanceResponseBody(DaraModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
-        # The bandwidth of the instance. Unit: MB/s.
+        # The bandwidth limit of the instance. Unit: MB/s.
         self.bandwidth = bandwidth
-        # The storage capacity of the instance, in MB.
+        # The storage capacity of the instance. Unit: MB.
         self.capacity = capacity
         # The billing method. Valid values:
-        # 
-        # - **PrePaid**: subscription
-        # 
-        # - **PostPaid**: pay-as-you-go
+        # * **PrePaid**: subscription.
+        # * **PostPaid**: pay-as-you-go.
         self.charge_type = charge_type
-        # The configurations of the instance.
+        # The detailed configuration of the instance.
         self.config = config
-        # The private connection endpoint of the instance.
+        # The internal network endpoint of the Redis instance.
         self.connection_domain = connection_domain
-        # The maximum number of connections.
+        # The maximum number of connections supported by the instance.
         self.connections = connections
-        # The expiration time of the subscription instance. The time is displayed in UTC. Format: *yyyy-MM-dd*T*HH:mm:ss*Z.
+        # The time when the subscription instance expires. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format in UTC.
         self.end_time = end_time
-        # The ID of the instance.
+        # The instance ID, which is globally unique.
         self.instance_id = instance_id
         # The name of the instance.
         self.instance_name = instance_name
-        # The state of the instance. For this operation, the returned value is always `Creating`.
+        # The current status of the instance. The return value is fixed as Creating.
         self.instance_status = instance_status
         # The network type. Valid values:
-        # 
-        # - **CLASSIC**: classic network
-        # 
-        # - **VPC**: VPC
+        # * **CLASSIC**: classic network.
+        # * **VPC**: VPC.
         self.network_type = network_type
         # The node type. Valid values:
-        # 
-        # - **STAND_ALONE**: standalone
-        # 
-        # - **MASTER_SLAVE**: primary-replica
+        # * **STAND_ALONE**: single replica.
+        # * **MASTER_SLAVE**: dual-replica.
         self.node_type = node_type
-        # The ID of the order.
+        # The order ID.
         # 
         # This parameter is required.
         self.order_id = order_id
-        # The connection port of the instance.
+        # The Redis service port.
         self.port = port
-        # The private IP address of the instance.
+        # The internal IP address of the instance.
         self.private_ip_addr = private_ip_addr
-        # The theoretical queries per second (QPS) of the instance.
+        # The queries per second (QPS). This value is the theoretical maximum for the current instance type.
         self.qps = qps
-        # The ID of the region.
+        # The region ID of the instance.
         self.region_id = region_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The username of the account. By default, the username is the same as the instance ID.
+        # The account used to connect to the Redis instance. By default, an account named after the instance ID is included.
         self.user_name = user_name
-        # The ID of the vSwitch.
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
         # The ID of the VPC.
         self.vpc_id = vpc_id
-        # The ID of the zone.
+        # The zone ID of the instance.
         self.zone_id = zone_id
 
     def validate(self):

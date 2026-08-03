@@ -4,19 +4,12 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class DescribeTaskDetailResponseBody(DaraModel):
+class SwitchInstanceToTargetZoneResponseBody(DaraModel):
     def __init__(
         self,
-        begin_time: str = None,
         request_id: str = None,
-        status: str = None,
     ):
-        # The time when the task started. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
-        self.begin_time = begin_time
-        # The request ID.
         self.request_id = request_id
-        # The task status.
-        self.status = status
 
     def validate(self):
         pass
@@ -26,27 +19,15 @@ class DescribeTaskDetailResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.begin_time is not None:
-            result['BeginTime'] = self.begin_time
-
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-
-        if self.status is not None:
-            result['Status'] = self.status
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('BeginTime') is not None:
-            self.begin_time = m.get('BeginTime')
-
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
 
         return self
 

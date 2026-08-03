@@ -14,9 +14,9 @@ class DescribeInstancesOverviewResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The queried instances.
+        # The list of instances.
         self.instances = instances
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The total number of instances.
         self.total_count = total_count
@@ -78,6 +78,7 @@ class DescribeInstancesOverviewResponseBodyInstances(DaraModel):
         instance_status: str = None,
         instance_type: str = None,
         network_type: str = None,
+        node_type: str = None,
         private_ip: str = None,
         region_id: str = None,
         resource_group_id: str = None,
@@ -86,18 +87,16 @@ class DescribeInstancesOverviewResponseBodyInstances(DaraModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
-        # The architecture of the instance. Valid values:
-        # 
-        # *   **cluster**: cluster architecture
-        # *   **standard**: standard architecture
-        # *   **rwsplit**: read/write splitting architecture
+        # The architecture type. Valid values:
+        # * **cluster**: Cluster Edition.
+        # * **standard**: Standard Edition.
+        # * **rwsplit**: read/write splitting edition.
         self.architecture_type = architecture_type
         # The storage capacity of the instance. Unit: MB.
         self.capacity = capacity
-        # The billing method of the instance. Valid values:
-        # 
-        # *   **PrePaid**: subscription
-        # *   **PostPaid**: pay-as-you-go
+        # The billing method. Valid values:
+        # * **PrePaid**: subscription.
+        # * **PostPaid**: pay-as-you-go.
         self.charge_type = charge_type
         # The internal endpoint of the instance.
         self.connection_domain = connection_domain
@@ -105,63 +104,60 @@ class DescribeInstancesOverviewResponseBodyInstances(DaraModel):
         self.create_time = create_time
         # The time when the subscription instance expires.
         self.end_time = end_time
-        # The engine version of the instance. Valid values: **2.8**, **4.0**, **5.0**, **6.0**, and **7.0**.
+        # The Redis-compatible engine version of the instance. Valid values: **2.8**, **4.0**, **5.0**, **6.0**, and **7.0**.
         self.engine_version = engine_version
-        # The ID of the distributed instance.
-        # 
+        # The distributed instance ID.
         # > This parameter is returned only when the instance is a child instance of a distributed instance.
         self.global_instance_id = global_instance_id
-        # The instance type of the instance.
+        # The instance type.
         self.instance_class = instance_class
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
         # The name of the instance.
         self.instance_name = instance_name
-        # The state of the instance. Valid values:
-        # 
-        # *   **Normal**: The instance is normal.
-        # *   **Creating**: The instance is being created.
-        # *   **Changing**: The configurations of the instance are being changed.
-        # *   **Inactive**: The instance is disabled.
-        # *   **Flushing**: The instance is being released.
-        # *   **Released**: The instance is released.
-        # *   **Transforming**: The billing method of the instance is being changed.
-        # *   **Unavailable**: The instance is unavailable.
-        # *   **Error**: The instance failed to be created.
-        # *   **Migrating**: The instance is being migrated.
-        # *   **BackupRecovering**: The instance is being restored from a backup.
-        # *   **MinorVersionUpgrading**: The minor version of the instance is being updated.
-        # *   **NetworkModifying**: The network type of the instance is being changed.
-        # *   **SSLModifying**: The SSL certificate of the instance is being changed.
-        # *   **MajorVersionUpgrading**: The major version of the instance is being upgraded. The instance remains accessible during the upgrade.
+        # The instance status. Valid values:
+        # * **Normal**: The instance is running.
+        # * **Creating**: The instance is being created.
+        # * **Changing**: The instance is being modified.
+        # * **Inactive**: The instance is disabled.
+        # * **Flushing**: The instance is being purged.
+        # * **Released**: The instance is released.
+        # * **Transforming**: The instance is being transformed.
+        # * **Unavailable**: The instance is unavailable.
+        # * **Error**: The instance failed to be created.
+        # * **Migrating**: The instance is being migrated.
+        # * **BackupRecovering**: The instance is being restored from a backup.
+        # * **MinorVersionUpgrading**: A minor version upgrade is in progress.
+        # * **NetworkModifying**: The network configuration is being modified.
+        # * **SSLModifying**: The SSL configuration is being modified.
+        # * **MajorVersionUpgrading**: A major engine version upgrade is in progress. The instance can be accessed normally.
         self.instance_status = instance_status
-        # The edition of the instance. Valid values:
-        # 
-        # *   **Tair**: Tair (Enterprise Edition)
-        # *   **Redis**: Redis Open-Source Edition
-        # *   **Memcache**
+        # The instance type. Valid values:
+        # * **Tair**: Tair (Enterprise Edition).
+        # * **Redis**: Redis Community Edition.
+        # * **Memcache**
         self.instance_type = instance_type
-        # The network type of the instance. Valid values:
-        # 
-        # *   **CLASSIC**: classic network
-        # *   **VPC**: VPC
+        # The network type. Valid values:
+        # * **CLASSIC**: classic network.
+        # * **VPC**: virtual private cloud (VPC).
         self.network_type = network_type
-        # The private IP address of the instance.
-        # 
-        # > This parameter is not returned when the instance is deployed in the classic network.
+        self.node_type = node_type
+        # The private IP address of the instance in a VPC. The IP address may change. Use ConnectionDomain (internal endpoint) to connect to the instance.
+        # > - This parameter is not returned if the network type of the instance is classic network.
+        # > - This parameter is not returned for cloud-native instances.
         self.private_ip = private_ip
-        # The region ID of the instance.
+        # The region ID.
         self.region_id = region_id
-        # The ID of the resource group to which the instance belongs.
+        # The resource group ID to which the instance belongs.
         self.resource_group_id = resource_group_id
-        # Instance\\"s secondary zone id.
-        # > This parameter is only returned when the instance has a secondary zone ID.
+        # The secondary zone ID.
+        # > This parameter is returned only when the instance has a secondary zone.
         self.secondary_zone_id = secondary_zone_id
-        # The ID of the vSwitch to which the instance is connected.
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # The ID of the VPC.
+        # The VPC ID.
         self.vpc_id = vpc_id
-        # The zone ID of the instance.
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -213,6 +209,9 @@ class DescribeInstancesOverviewResponseBodyInstances(DaraModel):
 
         if self.network_type is not None:
             result['NetworkType'] = self.network_type
+
+        if self.node_type is not None:
+            result['NodeType'] = self.node_type
 
         if self.private_ip is not None:
             result['PrivateIp'] = self.private_ip
@@ -280,6 +279,9 @@ class DescribeInstancesOverviewResponseBodyInstances(DaraModel):
 
         if m.get('NetworkType') is not None:
             self.network_type = m.get('NetworkType')
+
+        if m.get('NodeType') is not None:
+            self.node_type = m.get('NodeType')
 
         if m.get('PrivateIp') is not None:
             self.private_ip = m.get('PrivateIp')

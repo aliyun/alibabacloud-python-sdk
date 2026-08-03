@@ -15,6 +15,7 @@ class CreateTairSkvDdbTableRequest(DaraModel):
         region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        restore_time: str = None,
         schema: str = None,
         security_token: str = None,
         src_dbinstance_id: str = None,
@@ -22,9 +23,9 @@ class CreateTairSkvDdbTableRequest(DaraModel):
         ttl_spec: str = None,
         workspace_id: str = None,
     ):
-        # The cluster backup set ID. Some new cluster architectures support cluster backup set IDs. You can call [DescribeClusterBackupList](https://www.alibabacloud.com/help/en/redis/developer-reference/api-r-kvstore-2015-01-01-describeclusterbackuplist-redis) to obtain the ID.
+        # The cluster backup set ID. Some new cluster architectures support this parameter. You can call [DescribeClusterBackupList](https://www.alibabacloud.com/help/en/redis/developer-reference/api-r-kvstore-2015-01-01-describeclusterbackuplist-redis) to obtain the ID.
         self.backup_id = backup_id
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value. Make sure that the value is unique among different requests. The token is case-sensitive and can contain up to 64 ASCII characters.
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value. Make sure that the value is unique among different requests. The token is case-sensitive and cannot exceed 64 ASCII characters in length.
         self.client_token = client_token
         # The instance type. Set the value to tair_skv_ddb_table.
         # 
@@ -38,10 +39,11 @@ class CreateTairSkvDdbTableRequest(DaraModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.restore_time = restore_time
         # The table schema configuration in JSON format.
         self.schema = schema
         self.security_token = security_token
-        # To create an instance from a backup set of an existing instance, specify the ID of the source instance in this parameter.
+        # To create an instance from a backup set of an existing instance, specify the source instance ID in this parameter.
         # 
         # > This parameter must be used together with BackupId.
         self.src_dbinstance_id = src_dbinstance_id
@@ -88,6 +90,9 @@ class CreateTairSkvDdbTableRequest(DaraModel):
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
 
+        if self.restore_time is not None:
+            result['RestoreTime'] = self.restore_time
+
         if self.schema is not None:
             result['Schema'] = self.schema
 
@@ -133,6 +138,9 @@ class CreateTairSkvDdbTableRequest(DaraModel):
 
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+
+        if m.get('RestoreTime') is not None:
+            self.restore_time = m.get('RestoreTime')
 
         if m.get('Schema') is not None:
             self.schema = m.get('Schema')

@@ -13,6 +13,8 @@ class DescribeInstanceMultiVIPRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account

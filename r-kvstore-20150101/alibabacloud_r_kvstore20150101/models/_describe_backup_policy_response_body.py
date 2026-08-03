@@ -9,6 +9,7 @@ class DescribeBackupPolicyResponseBody(DaraModel):
     def __init__(
         self,
         access_denied_detail: main_models.DescribeBackupPolicyResponseBodyAccessDeniedDetail = None,
+        backup_log_start_time: str = None,
         backup_retention_period: str = None,
         dbs_instance: str = None,
         enable_backup_log: int = None,
@@ -17,35 +18,33 @@ class DescribeBackupPolicyResponseBody(DaraModel):
         preferred_next_backup_time: str = None,
         request_id: str = None,
     ):
-        # The following parameters are no longer used. Ignore the parameters.
+        # This parameter is deprecated. Ignore this parameter.
         self.access_denied_detail = access_denied_detail
-        # The retention period of the backup data. Unit: days.
+        self.backup_log_start_time = backup_log_start_time
+        # The number of days for which backup data is retained.
         self.backup_retention_period = backup_retention_period
-        # Indicates whether the backup-as-a-service feature is enabled for the instance. Valid values:
-        # 
-        # *   **1**: The backup-as-a-service feature is enabled for the instance.
-        # *   **0**: The backup-as-a-service feature is disabled for the instance.
+        # Indicates whether the backup service is enabled for the instance. Valid values:
+        # * **1**: enabled.
+        # * **0**: disabled.
         self.dbs_instance = dbs_instance
-        # Indicates whether incremental data backup is enabled. Valid values:
-        # 
-        # *   **1**: Incremental data backup is enabled.
-        # *   **0**: Incremental data backup is disabled.
+        # Indicates whether incremental backup is enabled. Valid values:
+        # * **1**: enabled.
+        # * **0**: disabled.
         self.enable_backup_log = enable_backup_log
         # The backup cycle. Valid values:
-        # 
-        # *   **Monday**
-        # *   **Tuesday**
-        # *   **Wednesday**
-        # *   **Thursday**
-        # *   **Friday**
-        # *   **Saturday**
-        # *   **Sunday**
+        # * **Monday**
+        # * **Tuesday**
+        # * **Wednesday**
+        # * **Thursday**
+        # * **Friday**
+        # * **Saturday**
+        # * **Sunday**
         self.preferred_backup_period = preferred_backup_period
-        # The time range during which the backup was created. The time follows the ISO 8601 standard in the *HH:mm*Z-*HH:mm*Z format. The time is displayed in UTC.
+        # The backup time. The time is in the <i>HH:mm</i>Z-<i>HH:mm</i>Z format (UTC).
         self.preferred_backup_time = preferred_backup_time
-        # The next backup time. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time is displayed in UTC.
+        # The next backup time. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z format (UTC).
         self.preferred_next_backup_time = preferred_next_backup_time
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -59,6 +58,9 @@ class DescribeBackupPolicyResponseBody(DaraModel):
             result = _map
         if self.access_denied_detail is not None:
             result['AccessDeniedDetail'] = self.access_denied_detail.to_map()
+
+        if self.backup_log_start_time is not None:
+            result['BackupLogStartTime'] = self.backup_log_start_time
 
         if self.backup_retention_period is not None:
             result['BackupRetentionPeriod'] = self.backup_retention_period
@@ -88,6 +90,9 @@ class DescribeBackupPolicyResponseBody(DaraModel):
         if m.get('AccessDeniedDetail') is not None:
             temp_model = main_models.DescribeBackupPolicyResponseBodyAccessDeniedDetail()
             self.access_denied_detail = temp_model.from_map(m.get('AccessDeniedDetail'))
+
+        if m.get('BackupLogStartTime') is not None:
+            self.backup_log_start_time = m.get('BackupLogStartTime')
 
         if m.get('BackupRetentionPeriod') is not None:
             self.backup_retention_period = m.get('BackupRetentionPeriod')
@@ -123,19 +128,19 @@ class DescribeBackupPolicyResponseBodyAccessDeniedDetail(DaraModel):
         no_permission_type: str = None,
         policy_type: str = None,
     ):
-        # This parameter is no longer used. Ignore this parameter.
+        # Same as above.
         self.auth_action = auth_action
-        # This parameter is no longer used. Ignore this parameter.
+        # Same as above.
         self.auth_principal_display_name = auth_principal_display_name
-        # This parameter is no longer used. Ignore this parameter.
+        # Same as above.
         self.auth_principal_owner_id = auth_principal_owner_id
-        # This parameter is no longer used. Ignore this parameter.
+        # Same as above.
         self.auth_principal_type = auth_principal_type
-        # This parameter is no longer used. Ignore this parameter.
+        # Same as above.
         self.encoded_diagnostic_message = encoded_diagnostic_message
-        # This parameter is no longer used. Ignore this parameter.
+        # Same as above.
         self.no_permission_type = no_permission_type
-        # This parameter is no longer used. Ignore this parameter.
+        # Same as above.
         self.policy_type = policy_type
 
     def validate(self):

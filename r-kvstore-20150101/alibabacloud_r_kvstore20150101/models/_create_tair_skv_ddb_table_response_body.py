@@ -37,13 +37,13 @@ class CreateTairSkvDdbTableResponseBody(DaraModel):
         self.connections = connections
         # The globally unique instance ID.
         self.instance_id = instance_id
-        # The current status of the instance. The value is fixed to Creating.
+        # The current status of the instance. The value is fixed as Creating.
         self.instance_status = instance_status
         # The order ID.
         self.order_id = order_id
         # The Redis service port.
         self.port = port
-        # The queries per second (QPS). This value is the theoretical value for the current instance specification.
+        # The queries per second (QPS). This value is the theoretical maximum for the current instance specifications.
         self.qps = qps
         # The region ID.
         self.region_id = region_id

@@ -64,22 +64,20 @@ class DescribeParameterGroupsResponseBodyParameterGroups(DaraModel):
         parameter_group_desc: str = None,
         parameter_group_name: str = None,
     ):
-        # The service category. Valid values:
-        # 
-        # *   **0**: Redis Open-Source Edition
-        # *   **1**: Tair (Enterprise Edition)
+        # The product category. Valid values:
+        # - **0**: Redis Community Edition
+        # - **1**: Tair (Enhanced Edition)
         self.category = category
-        # The time when the parameter template was created.
+        # The creation time of the parameter template.
         self.created = created
         # The engine type. Valid values:
-        # 
-        # *   **redis**: Redis Open-Source Edition or Tair (In-Memory)
-        # *   **tair_pena**: Tair (On NVM)
-        # *   **tair_pdb**: Tair (On Disk)
+        # - **redis**: Redis Community Edition or Tair (Enhanced Edition) in-memory type.
+        # - **tair_pena**: Tair (Enhanced Edition) persistent memory type.
+        # - **tair_pdb**: Tair (Enhanced Edition) cloud disk type.
         self.engine = engine
-        # The compatible engine version.
+        # The engine-compatible version.
         self.engine_version = engine_version
-        # The time when the parameter template was last modified.
+        # The most recent modification time of the parameter template.
         self.modified = modified
         # The parameter template ID.
         self.param_group_id = param_group_id

@@ -46,7 +46,7 @@ class CreateTairSkvDdbWorkspaceResponseBody(DaraModel):
         self.order_id = order_id
         # The Redis service port.
         self.port = port
-        # The queries per second (QPS). This value is the theoretical value for the current instance specification.
+        # The queries per second (QPS). This value is the theoretical value for the current instance specifications.
         self.qps = qps
         # The region in which the instance resides.
         self.region_id = region_id

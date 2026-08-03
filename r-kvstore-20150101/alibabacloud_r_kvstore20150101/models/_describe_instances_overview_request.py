@@ -16,6 +16,7 @@ class DescribeInstancesOverviewRequest(DaraModel):
         instance_status: str = None,
         instance_type: str = None,
         network_type: str = None,
+        node_type: str = None,
         owner_account: str = None,
         owner_id: int = None,
         private_ip: str = None,
@@ -29,90 +30,72 @@ class DescribeInstancesOverviewRequest(DaraModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
-        # The architecture of the instance. Valid values:
-        # 
-        # *   **cluster**: cluster architecture
-        # *   **standard**: standard architecture
-        # *   **rwsplit**: read/write splitting architecture
+        # The architecture type. Valid values:
+        # * **cluster**: Cluster Edition.
+        # * **standard**: Standard Edition.
+        # * **rwsplit**: read/write splitting edition.
         self.architecture_type = architecture_type
-        # The billing method of the instance. Valid values:
-        # 
-        # *   **PrePaid**: subscription
-        # *   **PostPaid**: pay-as-you-go
+        # The billing method. Valid values:
+        # * **PrePaid**: subscription.
+        # * **PostPaid**: pay-as-you-go.
         self.charge_type = charge_type
-        # The edition of the instance. Valid values:
-        # 
-        # *   **Community**: Redis Open-Source Edition
-        # *   **Enterprise**: Tair (Enterprise Edition)
+        # The edition type. Valid values:
+        # * **Community**: Community Edition.
+        # * **Enterprise**: Enterprise Edition.
         self.edition_type = edition_type
-        # The engine version of the instance. Valid values: **2.8**, **4.0**, **5.0**, **6.0**, and **7.0**.
-        # 
-        # Valid values:
-        # 
-        # *   1.0
-        # *   2.8
-        # *   4.0
-        # *   5.0
-        # *   6.0
-        # *   7.0
+        # The Redis-compatible engine version of the instance. Valid values: **2.8**, **4.0**, **5.0**, **6.0**, and **7.0**.
         self.engine_version = engine_version
-        # The instance type of the instance. For more information, see [Instance types](https://help.aliyun.com/document_detail/107984.html).
+        # The instance type. For more information, see [Instance types](https://help.aliyun.com/document_detail/107984.html).
         self.instance_class = instance_class
-        # The IDs of instances.
-        # 
-        # > By default, all instances that belong to this account are queried. If you specify multiple instance IDs, separate the instance IDs with commas (,).
+        # The IDs of the instances that you want to query.
+        # > By default, all instances under the current account are queried. To specify multiple instance IDs, separate them with commas (,).
         self.instance_ids = instance_ids
-        # The state of the instance. Valid values:
+        # The instance status. Valid values:
+        # * **Normal**: The instance is running.
+        # * **Creating**: The instance is being created.
+        # * **Changing**: The instance is being modified.
+        # * **Inactive**: The instance is disabled.
+        # * **Flushing**: The instance is being purged.
+        # * **Released**: The instance is released.
+        # * **Transforming**: The instance is being transformed.
+        # * **Migrating**: The instance is being migrated.
+        # * **BackupRecovering**: The instance is being restored from a backup.
+        # * **MinorVersionUpgrading**: A minor version upgrade is in progress.
+        # * **NetworkModifying**: The network configuration is being modified.
+        # * **SSLModifying**: The SSL configuration is being modified.
+        # * **MajorVersionUpgrading**: A major engine version upgrade is in progress. The instance can be accessed normally.
         # 
-        # *   **Normal**: The instance is normal.
-        # *   **Creating**: The instance is being created.
-        # *   **Changing**: The configurations of the instance are being changed.
-        # *   **Inactive**: The instance is disabled.
-        # *   **Flushing**: The instance is being released.
-        # *   **Released**: The instance is released.
-        # *   **Transforming**: The billing method of the instance is being changed.
-        # *   **Unavailable**: The instance is unavailable.
-        # *   **Error**: The instance failed to be created.
-        # *   **Migrating**: The instance is being migrated.
-        # *   **BackupRecovering**: The instance is being restored from a backup.
-        # *   **MinorVersionUpgrading**: The minor version of the instance is being updated.
-        # *   **NetworkModifying**: The network type of the instance is being changed.
-        # *   **SSLModifying**: The SSL certificate of the instance is being changed.
-        # *   **MajorVersionUpgrading**: The major version of the instance is being upgraded. The instance remains accessible during the upgrade.
-        # 
-        # > For more information about instance states, see [Instance states and impacts](https://help.aliyun.com/document_detail/200740.html).
+        # > For more information about instance statuses, see [Instance states and impacts](https://help.aliyun.com/document_detail/200740.html).
         self.instance_status = instance_status
-        # The category of the instance. Valid values:
-        # 
-        # *   **Tair**
-        # *   **Redis**
-        # *   **Memcache**
+        # The instance type. Valid values:
+        # * **Tair**
+        # * **Redis**
+        # * **Memcache**
         self.instance_type = instance_type
-        # The network type of the instance. Valid values:
-        # 
-        # *   **CLASSIC**: classic network
-        # *   **VPC**: Virtual Private Cloud (VPC)
+        # The network type. Valid values:
+        # * **CLASSIC**: classic network.
+        # * **VPC**: virtual private cloud (VPC).
         self.network_type = network_type
+        self.node_type = node_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The private IP address of the instance.
+        # The private IP address.
         self.private_ip = private_ip
-        # The ID of the region in which the instances you want to query reside. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/473763.html) operation to query the most recent region list.
+        # The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/473763.html) operation to query the region ID.
         self.region_id = region_id
-        # The ID of the resource group to which the instances you want to query belong.
-        # 
-        # > You can query resource group IDs by using the Tair (Redis OSS-compatible) console or by calling the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation. For more information, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
+        # The resource group ID.
+        # > You can invoke the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation or use the console to obtain the resource group ID. Related operations, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The keyword used for fuzzy search. The keyword can be based on an instance ID or an instance description.
+        # The keyword used for fuzzy search by instance ID or instance description.
         self.search_key = search_key
         self.security_token = security_token
-        # The ID of the vSwitch.
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # The ID of the VPC.
+        # The VPC ID.
         self.vpc_id = vpc_id
-        # The zone ID of the instance.
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -149,6 +132,9 @@ class DescribeInstancesOverviewRequest(DaraModel):
 
         if self.network_type is not None:
             result['NetworkType'] = self.network_type
+
+        if self.node_type is not None:
+            result['NodeType'] = self.node_type
 
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
@@ -216,6 +202,9 @@ class DescribeInstancesOverviewRequest(DaraModel):
 
         if m.get('NetworkType') is not None:
             self.network_type = m.get('NetworkType')
+
+        if m.get('NodeType') is not None:
+            self.node_type = m.get('NodeType')
 
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')

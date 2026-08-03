@@ -16,10 +16,15 @@ class DescribeInstanceMultiVIPResponseBody(DaraModel):
         multi_viplist: List[main_models.DescribeInstanceMultiVIPResponseBodyMultiVIPList] = None,
         request_id: str = None,
     ):
+        # The IP address of the primary DNS server.
         self.master_dns = master_dns
+        # The list of IP addresses corresponding to all LBs of the current instance.
         self.master_dns_record = master_dns_record
+        # The maximum number of VIPs that can be created.
         self.max_quota = max_quota
+        # The list of multiple LB VIPs.
         self.multi_viplist = multi_viplist
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -79,6 +84,7 @@ class DescribeInstanceMultiVIPResponseBodyMultiVIPList(DaraModel):
         self,
         connection_string: str = None,
     ):
+        # The endpoint of the instance.
         self.connection_string = connection_string
 
     def validate(self):

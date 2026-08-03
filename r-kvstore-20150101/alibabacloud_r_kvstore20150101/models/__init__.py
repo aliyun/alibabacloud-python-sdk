@@ -14,6 +14,9 @@ from ._allocate_instance_public_connection_response import AllocateInstancePubli
 from ._cancel_active_operation_tasks_request import CancelActiveOperationTasksRequest
 from ._cancel_active_operation_tasks_response_body import CancelActiveOperationTasksResponseBody
 from ._cancel_active_operation_tasks_response import CancelActiveOperationTasksResponse
+from ._cancel_inspection_task_request import CancelInspectionTaskRequest
+from ._cancel_inspection_task_response_body import CancelInspectionTaskResponseBody
+from ._cancel_inspection_task_response import CancelInspectionTaskResponse
 from ._check_cloud_resource_authorized_request import CheckCloudResourceAuthorizedRequest
 from ._check_cloud_resource_authorized_response_body import CheckCloudResourceAuthorizedResponseBody
 from ._check_cloud_resource_authorized_response import CheckCloudResourceAuthorizedResponse
@@ -32,6 +35,12 @@ from ._create_global_distribute_cache_response import CreateGlobalDistributeCach
 from ._create_global_security_ipgroup_request import CreateGlobalSecurityIPGroupRequest
 from ._create_global_security_ipgroup_response_body import CreateGlobalSecurityIPGroupResponseBody
 from ._create_global_security_ipgroup_response import CreateGlobalSecurityIPGroupResponse
+from ._create_inspection_schedule_request import CreateInspectionScheduleRequest
+from ._create_inspection_schedule_response_body import CreateInspectionScheduleResponseBody
+from ._create_inspection_schedule_response import CreateInspectionScheduleResponse
+from ._create_inspection_task_request import CreateInspectionTaskRequest
+from ._create_inspection_task_response_body import CreateInspectionTaskResponseBody
+from ._create_inspection_task_response import CreateInspectionTaskResponse
 from ._create_instance_request import CreateInstanceRequest
 from ._create_instance_response_body import CreateInstanceResponseBody
 from ._create_instance_response import CreateInstanceResponse
@@ -68,6 +77,9 @@ from ._delete_backup_response import DeleteBackupResponse
 from ._delete_global_security_ipgroup_request import DeleteGlobalSecurityIPGroupRequest
 from ._delete_global_security_ipgroup_response_body import DeleteGlobalSecurityIPGroupResponseBody
 from ._delete_global_security_ipgroup_response import DeleteGlobalSecurityIPGroupResponse
+from ._delete_inspection_schedule_request import DeleteInspectionScheduleRequest
+from ._delete_inspection_schedule_response_body import DeleteInspectionScheduleResponseBody
+from ._delete_inspection_schedule_response import DeleteInspectionScheduleResponse
 from ._delete_instance_request import DeleteInstanceRequest
 from ._delete_instance_response_body import DeleteInstanceResponseBody
 from ._delete_instance_response import DeleteInstanceResponse
@@ -170,6 +182,18 @@ from ._describe_history_tasks_response import DescribeHistoryTasksResponse
 from ._describe_history_tasks_stat_request import DescribeHistoryTasksStatRequest
 from ._describe_history_tasks_stat_response_body import DescribeHistoryTasksStatResponseBody
 from ._describe_history_tasks_stat_response import DescribeHistoryTasksStatResponse
+from ._describe_inspection_schedule_reports_request import DescribeInspectionScheduleReportsRequest
+from ._describe_inspection_schedule_reports_response_body import DescribeInspectionScheduleReportsResponseBody
+from ._describe_inspection_schedule_reports_response import DescribeInspectionScheduleReportsResponse
+from ._describe_inspection_schedules_request import DescribeInspectionSchedulesRequest
+from ._describe_inspection_schedules_response_body import DescribeInspectionSchedulesResponseBody
+from ._describe_inspection_schedules_response import DescribeInspectionSchedulesResponse
+from ._describe_inspection_task_report_request import DescribeInspectionTaskReportRequest
+from ._describe_inspection_task_report_response_body import DescribeInspectionTaskReportResponseBody
+from ._describe_inspection_task_report_response import DescribeInspectionTaskReportResponse
+from ._describe_inspection_tasks_request import DescribeInspectionTasksRequest
+from ._describe_inspection_tasks_response_body import DescribeInspectionTasksResponseBody
+from ._describe_inspection_tasks_response import DescribeInspectionTasksResponse
 from ._describe_instance_attribute_request import DescribeInstanceAttributeRequest
 from ._describe_instance_attribute_response_body import DescribeInstanceAttributeResponseBody
 from ._describe_instance_attribute_response import DescribeInstanceAttributeResponse
@@ -356,6 +380,9 @@ from ._modify_global_security_ipgroup_name_response import ModifyGlobalSecurityI
 from ._modify_global_security_ipgroup_relation_request import ModifyGlobalSecurityIPGroupRelationRequest
 from ._modify_global_security_ipgroup_relation_response_body import ModifyGlobalSecurityIPGroupRelationResponseBody
 from ._modify_global_security_ipgroup_relation_response import ModifyGlobalSecurityIPGroupRelationResponse
+from ._modify_inspection_schedule_request import ModifyInspectionScheduleRequest
+from ._modify_inspection_schedule_response_body import ModifyInspectionScheduleResponseBody
+from ._modify_inspection_schedule_response import ModifyInspectionScheduleResponse
 from ._modify_instance_attribute_request import ModifyInstanceAttributeRequest
 from ._modify_instance_attribute_response_body import ModifyInstanceAttributeResponseBody
 from ._modify_instance_attribute_response import ModifyInstanceAttributeResponse
@@ -452,6 +479,9 @@ from ._restart_tair_kvcache_custom_instance_response import RestartTairKVCacheCu
 from ._restore_instance_request import RestoreInstanceRequest
 from ._restore_instance_response_body import RestoreInstanceResponseBody
 from ._restore_instance_response import RestoreInstanceResponse
+from ._retry_inspection_task_request import RetryInspectionTaskRequest
+from ._retry_inspection_task_response_body import RetryInspectionTaskResponseBody
+from ._retry_inspection_task_response import RetryInspectionTaskResponse
 from ._start_tair_kvcache_custom_instance_request import StartTairKVCacheCustomInstanceRequest
 from ._start_tair_kvcache_custom_instance_response_body import StartTairKVCacheCustomInstanceResponseBody
 from ._start_tair_kvcache_custom_instance_response import StartTairKVCacheCustomInstanceResponse
@@ -464,6 +494,9 @@ from ._switch_instance_haresponse import SwitchInstanceHAResponse
 from ._switch_instance_proxy_request import SwitchInstanceProxyRequest
 from ._switch_instance_proxy_response_body import SwitchInstanceProxyResponseBody
 from ._switch_instance_proxy_response import SwitchInstanceProxyResponse
+from ._switch_instance_to_target_zone_request import SwitchInstanceToTargetZoneRequest
+from ._switch_instance_to_target_zone_response_body import SwitchInstanceToTargetZoneResponseBody
+from ._switch_instance_to_target_zone_response import SwitchInstanceToTargetZoneResponse
 from ._switch_instance_zone_fail_over_request import SwitchInstanceZoneFailOverRequest
 from ._switch_instance_zone_fail_over_response_body import SwitchInstanceZoneFailOverResponseBody
 from ._switch_instance_zone_fail_over_response import SwitchInstanceZoneFailOverResponse
@@ -495,6 +528,7 @@ from ._upgrade_proxy_request import UpgradeProxyRequest
 from ._upgrade_proxy_response_body import UpgradeProxyResponseBody
 from ._upgrade_proxy_response import UpgradeProxyResponse
 from ._create_global_security_ipgroup_response_body import CreateGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup
+from ._create_inspection_task_response_body import CreateInspectionTaskResponseBodyData
 from ._create_instance_request import CreateInstanceRequestTag
 from ._create_instances_response_body import CreateInstancesResponseBodyInstanceIds
 from ._create_tcinstance_request import CreateTCInstanceRequestDataDisk
@@ -566,6 +600,14 @@ from ._describe_history_events_response_body import DescribeHistoryEventsRespons
 from ._describe_history_events_stat_response_body import DescribeHistoryEventsStatResponseBodyItems
 from ._describe_history_tasks_response_body import DescribeHistoryTasksResponseBodyItems
 from ._describe_history_tasks_stat_response_body import DescribeHistoryTasksStatResponseBodyItems
+from ._describe_inspection_schedule_reports_response_body import DescribeInspectionScheduleReportsResponseBodyDataItems
+from ._describe_inspection_schedule_reports_response_body import DescribeInspectionScheduleReportsResponseBodyData
+from ._describe_inspection_schedules_response_body import DescribeInspectionSchedulesResponseBodyDataItems
+from ._describe_inspection_schedules_response_body import DescribeInspectionSchedulesResponseBodyData
+from ._describe_inspection_task_report_response_body import DescribeInspectionTaskReportResponseBodyDataSummary
+from ._describe_inspection_task_report_response_body import DescribeInspectionTaskReportResponseBodyData
+from ._describe_inspection_tasks_response_body import DescribeInspectionTasksResponseBodyDataItems
+from ._describe_inspection_tasks_response_body import DescribeInspectionTasksResponseBodyData
 from ._describe_instance_attribute_response_body import DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttributeTagsTag
 from ._describe_instance_attribute_response_body import DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttributeTags
 from ._describe_instance_attribute_response_body import DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttribute
@@ -678,6 +720,9 @@ __all__ = [
     CancelActiveOperationTasksRequest,
     CancelActiveOperationTasksResponseBody,
     CancelActiveOperationTasksResponse,
+    CancelInspectionTaskRequest,
+    CancelInspectionTaskResponseBody,
+    CancelInspectionTaskResponse,
     CheckCloudResourceAuthorizedRequest,
     CheckCloudResourceAuthorizedResponseBody,
     CheckCloudResourceAuthorizedResponse,
@@ -696,6 +741,12 @@ __all__ = [
     CreateGlobalSecurityIPGroupRequest,
     CreateGlobalSecurityIPGroupResponseBody,
     CreateGlobalSecurityIPGroupResponse,
+    CreateInspectionScheduleRequest,
+    CreateInspectionScheduleResponseBody,
+    CreateInspectionScheduleResponse,
+    CreateInspectionTaskRequest,
+    CreateInspectionTaskResponseBody,
+    CreateInspectionTaskResponse,
     CreateInstanceRequest,
     CreateInstanceResponseBody,
     CreateInstanceResponse,
@@ -732,6 +783,9 @@ __all__ = [
     DeleteGlobalSecurityIPGroupRequest,
     DeleteGlobalSecurityIPGroupResponseBody,
     DeleteGlobalSecurityIPGroupResponse,
+    DeleteInspectionScheduleRequest,
+    DeleteInspectionScheduleResponseBody,
+    DeleteInspectionScheduleResponse,
     DeleteInstanceRequest,
     DeleteInstanceResponseBody,
     DeleteInstanceResponse,
@@ -834,6 +888,18 @@ __all__ = [
     DescribeHistoryTasksStatRequest,
     DescribeHistoryTasksStatResponseBody,
     DescribeHistoryTasksStatResponse,
+    DescribeInspectionScheduleReportsRequest,
+    DescribeInspectionScheduleReportsResponseBody,
+    DescribeInspectionScheduleReportsResponse,
+    DescribeInspectionSchedulesRequest,
+    DescribeInspectionSchedulesResponseBody,
+    DescribeInspectionSchedulesResponse,
+    DescribeInspectionTaskReportRequest,
+    DescribeInspectionTaskReportResponseBody,
+    DescribeInspectionTaskReportResponse,
+    DescribeInspectionTasksRequest,
+    DescribeInspectionTasksResponseBody,
+    DescribeInspectionTasksResponse,
     DescribeInstanceAttributeRequest,
     DescribeInstanceAttributeResponseBody,
     DescribeInstanceAttributeResponse,
@@ -1020,6 +1086,9 @@ __all__ = [
     ModifyGlobalSecurityIPGroupRelationRequest,
     ModifyGlobalSecurityIPGroupRelationResponseBody,
     ModifyGlobalSecurityIPGroupRelationResponse,
+    ModifyInspectionScheduleRequest,
+    ModifyInspectionScheduleResponseBody,
+    ModifyInspectionScheduleResponse,
     ModifyInstanceAttributeRequest,
     ModifyInstanceAttributeResponseBody,
     ModifyInstanceAttributeResponse,
@@ -1116,6 +1185,9 @@ __all__ = [
     RestoreInstanceRequest,
     RestoreInstanceResponseBody,
     RestoreInstanceResponse,
+    RetryInspectionTaskRequest,
+    RetryInspectionTaskResponseBody,
+    RetryInspectionTaskResponse,
     StartTairKVCacheCustomInstanceRequest,
     StartTairKVCacheCustomInstanceResponseBody,
     StartTairKVCacheCustomInstanceResponse,
@@ -1128,6 +1200,9 @@ __all__ = [
     SwitchInstanceProxyRequest,
     SwitchInstanceProxyResponseBody,
     SwitchInstanceProxyResponse,
+    SwitchInstanceToTargetZoneRequest,
+    SwitchInstanceToTargetZoneResponseBody,
+    SwitchInstanceToTargetZoneResponse,
     SwitchInstanceZoneFailOverRequest,
     SwitchInstanceZoneFailOverResponseBody,
     SwitchInstanceZoneFailOverResponse,
@@ -1159,6 +1234,7 @@ __all__ = [
     UpgradeProxyResponseBody,
     UpgradeProxyResponse,
     CreateGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup,
+    CreateInspectionTaskResponseBodyData,
     CreateInstanceRequestTag,
     CreateInstancesResponseBodyInstanceIds,
     CreateTCInstanceRequestDataDisk,
@@ -1230,6 +1306,14 @@ __all__ = [
     DescribeHistoryEventsStatResponseBodyItems,
     DescribeHistoryTasksResponseBodyItems,
     DescribeHistoryTasksStatResponseBodyItems,
+    DescribeInspectionScheduleReportsResponseBodyDataItems,
+    DescribeInspectionScheduleReportsResponseBodyData,
+    DescribeInspectionSchedulesResponseBodyDataItems,
+    DescribeInspectionSchedulesResponseBodyData,
+    DescribeInspectionTaskReportResponseBodyDataSummary,
+    DescribeInspectionTaskReportResponseBodyData,
+    DescribeInspectionTasksResponseBodyDataItems,
+    DescribeInspectionTasksResponseBodyData,
     DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttributeTagsTag,
     DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttributeTags,
     DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttribute,

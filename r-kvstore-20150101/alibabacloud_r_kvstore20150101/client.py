@@ -65,28 +65,32 @@ class Client(OpenApiClient):
             'na-south-1': 'r-kvstore.na-south-1.aliyuncs.com',
             'me-east-1': 'r-kvstore.me-east-1.aliyuncs.com',
             'me-central-1': 'r-kvstore.me-central-1.aliyuncs.com',
+            'eu-west-2': 'r-kvstore.eu-west-2.aliyuncs.com',
             'eu-west-1': 'r-kvstore.eu-west-1.aliyuncs.com',
             'eu-central-1': 'r-kvstore.eu-central-1.aliyuncs.com',
+            'cn-zhongwei': 'r-kvstore.cn-zhongwei.aliyuncs.com',
             'cn-zhengzhou-jva': 'r-kvstore.cn-zhengzhou-jva.aliyuncs.com',
             'cn-zhangjiakou': 'r-kvstore.cn-zhangjiakou.aliyuncs.com',
+            'cn-wulanchabu-gic-1': 'r-kvstore.cn-wulanchabu-gic-1.aliyuncs.com',
             'cn-wuhan-lr': 'r-kvstore.cn-wuhan-lr.aliyuncs.com',
             'cn-shenzhen-finance-1': 'r-kvstore.cn-shenzhen-finance-1.aliyuncs.com',
             'cn-shenzhen': 'r-kvstore.cn-shenzhen.aliyuncs.com',
             'cn-shanghai-finance-1': 'r-kvstore.cn-shanghai-finance-1.aliyuncs.com',
+            'cn-north-2-gov-1': 'r-kvstore.cn-north-2-gov-1.aliyuncs.com',
             'cn-nanjing': 'r-kvstore.cn-nanjing.aliyuncs.com',
             'cn-huhehaote': 'r-kvstore.cn-huhehaote.aliyuncs.com',
             'cn-hongkong': 'r-kvstore.cn-hongkong.aliyuncs.com',
+            'cn-heyuan-acdr-1': 'r-kvstore.cn-heyuan-acdr-1.aliyuncs.com',
             'cn-guangzhou': 'r-kvstore.cn-guangzhou.aliyuncs.com',
             'cn-fuzhou': 'r-kvstore.cn-fuzhou.aliyuncs.com',
             'cn-chengdu': 'r-kvstore.cn-chengdu.aliyuncs.com',
             'cn-beijing-finance-1': 'r-kvstore.cn-beijing-finance-1.aliyuncs.com',
+            'ap-southeast-8': 'r-kvstore.ap-southeast-8.aliyuncs.com',
             'ap-southeast-7': 'r-kvstore.ap-southeast-7.aliyuncs.com',
             'ap-southeast-6': 'r-kvstore.ap-southeast-6.aliyuncs.com',
             'ap-southeast-5': 'r-kvstore.ap-southeast-5.aliyuncs.com',
             'ap-southeast-3': 'r-kvstore.ap-southeast-3.aliyuncs.com',
-            'ap-southeast-2': 'r-kvstore.ap-southeast-2.aliyuncs.com',
             'ap-southeast-1': 'r-kvstore.ap-southeast-1.aliyuncs.com',
-            'ap-south-1': 'r-kvstore.ap-south-1.aliyuncs.com',
             'ap-northeast-2': 'r-kvstore.ap-northeast-2.aliyuncs.com',
             'ap-northeast-1': 'r-kvstore.ap-northeast-1.aliyuncs.com'
         }
@@ -512,6 +516,84 @@ class Client(OpenApiClient):
     ) -> main_models.CancelActiveOperationTasksResponse:
         runtime = RuntimeOptions()
         return await self.cancel_active_operation_tasks_with_options_async(request, runtime)
+
+    def cancel_inspection_task_with_options(
+        self,
+        request: main_models.CancelInspectionTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CancelInspectionTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CancelInspectionTask',
+            version = '2015-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CancelInspectionTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cancel_inspection_task_with_options_async(
+        self,
+        request: main_models.CancelInspectionTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CancelInspectionTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CancelInspectionTask',
+            version = '2015-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CancelInspectionTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cancel_inspection_task(
+        self,
+        request: main_models.CancelInspectionTaskRequest,
+    ) -> main_models.CancelInspectionTaskResponse:
+        runtime = RuntimeOptions()
+        return self.cancel_inspection_task_with_options(request, runtime)
+
+    async def cancel_inspection_task_async(
+        self,
+        request: main_models.CancelInspectionTaskRequest,
+    ) -> main_models.CancelInspectionTaskResponse:
+        runtime = RuntimeOptions()
+        return await self.cancel_inspection_task_with_options_async(request, runtime)
 
     def check_cloud_resource_authorized_with_options(
         self,
@@ -1104,6 +1186,198 @@ class Client(OpenApiClient):
     ) -> main_models.CreateGlobalSecurityIPGroupResponse:
         runtime = RuntimeOptions()
         return await self.create_global_security_ipgroup_with_options_async(request, runtime)
+
+    def create_inspection_schedule_with_options(
+        self,
+        request: main_models.CreateInspectionScheduleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateInspectionScheduleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cron_expression):
+            query['CronExpression'] = request.cron_expression
+        if not DaraCore.is_null(request.inspection_items):
+            query['InspectionItems'] = request.inspection_items
+        if not DaraCore.is_null(request.inspection_window):
+            query['InspectionWindow'] = request.inspection_window
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not DaraCore.is_null(request.report_language):
+            query['ReportLanguage'] = request.report_language
+        if not DaraCore.is_null(request.schedule_name):
+            query['ScheduleName'] = request.schedule_name
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not DaraCore.is_null(request.timezone):
+            query['Timezone'] = request.timezone
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateInspectionSchedule',
+            version = '2015-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateInspectionScheduleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_inspection_schedule_with_options_async(
+        self,
+        request: main_models.CreateInspectionScheduleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateInspectionScheduleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cron_expression):
+            query['CronExpression'] = request.cron_expression
+        if not DaraCore.is_null(request.inspection_items):
+            query['InspectionItems'] = request.inspection_items
+        if not DaraCore.is_null(request.inspection_window):
+            query['InspectionWindow'] = request.inspection_window
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not DaraCore.is_null(request.report_language):
+            query['ReportLanguage'] = request.report_language
+        if not DaraCore.is_null(request.schedule_name):
+            query['ScheduleName'] = request.schedule_name
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not DaraCore.is_null(request.timezone):
+            query['Timezone'] = request.timezone
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateInspectionSchedule',
+            version = '2015-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateInspectionScheduleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_inspection_schedule(
+        self,
+        request: main_models.CreateInspectionScheduleRequest,
+    ) -> main_models.CreateInspectionScheduleResponse:
+        runtime = RuntimeOptions()
+        return self.create_inspection_schedule_with_options(request, runtime)
+
+    async def create_inspection_schedule_async(
+        self,
+        request: main_models.CreateInspectionScheduleRequest,
+    ) -> main_models.CreateInspectionScheduleResponse:
+        runtime = RuntimeOptions()
+        return await self.create_inspection_schedule_with_options_async(request, runtime)
+
+    def create_inspection_task_with_options(
+        self,
+        request: main_models.CreateInspectionTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateInspectionTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.inspection_items):
+            query['InspectionItems'] = request.inspection_items
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not DaraCore.is_null(request.report_language):
+            query['ReportLanguage'] = request.report_language
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateInspectionTask',
+            version = '2015-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateInspectionTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_inspection_task_with_options_async(
+        self,
+        request: main_models.CreateInspectionTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateInspectionTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.inspection_items):
+            query['InspectionItems'] = request.inspection_items
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not DaraCore.is_null(request.report_language):
+            query['ReportLanguage'] = request.report_language
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateInspectionTask',
+            version = '2015-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateInspectionTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_inspection_task(
+        self,
+        request: main_models.CreateInspectionTaskRequest,
+    ) -> main_models.CreateInspectionTaskResponse:
+        runtime = RuntimeOptions()
+        return self.create_inspection_task_with_options(request, runtime)
+
+    async def create_inspection_task_async(
+        self,
+        request: main_models.CreateInspectionTaskRequest,
+    ) -> main_models.CreateInspectionTaskResponse:
+        runtime = RuntimeOptions()
+        return await self.create_inspection_task_with_options_async(request, runtime)
 
     def create_instance_with_options(
         self,
@@ -2330,6 +2604,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not DaraCore.is_null(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.restore_time):
+            query['RestoreTime'] = request.restore_time
         if not DaraCore.is_null(request.schema):
             query['Schema'] = request.schema
         if not DaraCore.is_null(request.security_token):
@@ -2384,6 +2660,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not DaraCore.is_null(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.restore_time):
+            query['RestoreTime'] = request.restore_time
         if not DaraCore.is_null(request.schema):
             query['Schema'] = request.schema
         if not DaraCore.is_null(request.security_token):
@@ -2844,6 +3122,84 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteGlobalSecurityIPGroupResponse:
         runtime = RuntimeOptions()
         return await self.delete_global_security_ipgroup_with_options_async(request, runtime)
+
+    def delete_inspection_schedule_with_options(
+        self,
+        request: main_models.DeleteInspectionScheduleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteInspectionScheduleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.schedule_id):
+            query['ScheduleId'] = request.schedule_id
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteInspectionSchedule',
+            version = '2015-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteInspectionScheduleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_inspection_schedule_with_options_async(
+        self,
+        request: main_models.DeleteInspectionScheduleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteInspectionScheduleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.schedule_id):
+            query['ScheduleId'] = request.schedule_id
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteInspectionSchedule',
+            version = '2015-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteInspectionScheduleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_inspection_schedule(
+        self,
+        request: main_models.DeleteInspectionScheduleRequest,
+    ) -> main_models.DeleteInspectionScheduleResponse:
+        runtime = RuntimeOptions()
+        return self.delete_inspection_schedule_with_options(request, runtime)
+
+    async def delete_inspection_schedule_async(
+        self,
+        request: main_models.DeleteInspectionScheduleRequest,
+    ) -> main_models.DeleteInspectionScheduleResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_inspection_schedule_with_options_async(request, runtime)
 
     def delete_instance_with_options(
         self,
@@ -6349,6 +6705,350 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_history_tasks_stat_with_options_async(request, runtime)
 
+    def describe_inspection_schedule_reports_with_options(
+        self,
+        request: main_models.DescribeInspectionScheduleReportsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeInspectionScheduleReportsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.schedule_id):
+            query['ScheduleId'] = request.schedule_id
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeInspectionScheduleReports',
+            version = '2015-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeInspectionScheduleReportsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_inspection_schedule_reports_with_options_async(
+        self,
+        request: main_models.DescribeInspectionScheduleReportsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeInspectionScheduleReportsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.schedule_id):
+            query['ScheduleId'] = request.schedule_id
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeInspectionScheduleReports',
+            version = '2015-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeInspectionScheduleReportsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_inspection_schedule_reports(
+        self,
+        request: main_models.DescribeInspectionScheduleReportsRequest,
+    ) -> main_models.DescribeInspectionScheduleReportsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_inspection_schedule_reports_with_options(request, runtime)
+
+    async def describe_inspection_schedule_reports_async(
+        self,
+        request: main_models.DescribeInspectionScheduleReportsRequest,
+    ) -> main_models.DescribeInspectionScheduleReportsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_inspection_schedule_reports_with_options_async(request, runtime)
+
+    def describe_inspection_schedules_with_options(
+        self,
+        request: main_models.DescribeInspectionSchedulesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeInspectionSchedulesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.enabled):
+            query['Enabled'] = request.enabled
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.schedule_id):
+            query['ScheduleId'] = request.schedule_id
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeInspectionSchedules',
+            version = '2015-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeInspectionSchedulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_inspection_schedules_with_options_async(
+        self,
+        request: main_models.DescribeInspectionSchedulesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeInspectionSchedulesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.enabled):
+            query['Enabled'] = request.enabled
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.schedule_id):
+            query['ScheduleId'] = request.schedule_id
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeInspectionSchedules',
+            version = '2015-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeInspectionSchedulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_inspection_schedules(
+        self,
+        request: main_models.DescribeInspectionSchedulesRequest,
+    ) -> main_models.DescribeInspectionSchedulesResponse:
+        runtime = RuntimeOptions()
+        return self.describe_inspection_schedules_with_options(request, runtime)
+
+    async def describe_inspection_schedules_async(
+        self,
+        request: main_models.DescribeInspectionSchedulesRequest,
+    ) -> main_models.DescribeInspectionSchedulesResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_inspection_schedules_with_options_async(request, runtime)
+
+    def describe_inspection_task_report_with_options(
+        self,
+        request: main_models.DescribeInspectionTaskReportRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeInspectionTaskReportResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.inspection_ins_id):
+            query['InspectionInsId'] = request.inspection_ins_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeInspectionTaskReport',
+            version = '2015-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeInspectionTaskReportResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_inspection_task_report_with_options_async(
+        self,
+        request: main_models.DescribeInspectionTaskReportRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeInspectionTaskReportResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.inspection_ins_id):
+            query['InspectionInsId'] = request.inspection_ins_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeInspectionTaskReport',
+            version = '2015-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeInspectionTaskReportResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_inspection_task_report(
+        self,
+        request: main_models.DescribeInspectionTaskReportRequest,
+    ) -> main_models.DescribeInspectionTaskReportResponse:
+        runtime = RuntimeOptions()
+        return self.describe_inspection_task_report_with_options(request, runtime)
+
+    async def describe_inspection_task_report_async(
+        self,
+        request: main_models.DescribeInspectionTaskReportRequest,
+    ) -> main_models.DescribeInspectionTaskReportResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_inspection_task_report_with_options_async(request, runtime)
+
+    def describe_inspection_tasks_with_options(
+        self,
+        request: main_models.DescribeInspectionTasksRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeInspectionTasksResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeInspectionTasks',
+            version = '2015-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeInspectionTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_inspection_tasks_with_options_async(
+        self,
+        request: main_models.DescribeInspectionTasksRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeInspectionTasksResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeInspectionTasks',
+            version = '2015-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeInspectionTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_inspection_tasks(
+        self,
+        request: main_models.DescribeInspectionTasksRequest,
+    ) -> main_models.DescribeInspectionTasksResponse:
+        runtime = RuntimeOptions()
+        return self.describe_inspection_tasks_with_options(request, runtime)
+
+    async def describe_inspection_tasks_async(
+        self,
+        request: main_models.DescribeInspectionTasksRequest,
+    ) -> main_models.DescribeInspectionTasksResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_inspection_tasks_with_options_async(request, runtime)
+
     def describe_instance_attribute_with_options(
         self,
         request: main_models.DescribeInstanceAttributeRequest,
@@ -7096,6 +7796,8 @@ class Client(OpenApiClient):
             query['InstanceType'] = request.instance_type
         if not DaraCore.is_null(request.network_type):
             query['NetworkType'] = request.network_type
+        if not DaraCore.is_null(request.node_type):
+            query['NodeType'] = request.node_type
         if not DaraCore.is_null(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
@@ -7164,6 +7866,8 @@ class Client(OpenApiClient):
             query['InstanceType'] = request.instance_type
         if not DaraCore.is_null(request.network_type):
             query['NetworkType'] = request.network_type
+        if not DaraCore.is_null(request.node_type):
+            query['NodeType'] = request.node_type
         if not DaraCore.is_null(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
@@ -7794,6 +8498,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.db_type):
             query['DbType'] = request.db_type
+        if not DaraCore.is_null(request.engine_version):
+            query['EngineVersion'] = request.engine_version
         if not DaraCore.is_null(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
@@ -7834,6 +8540,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.db_type):
             query['DbType'] = request.db_type
+        if not DaraCore.is_null(request.engine_version):
+            query['EngineVersion'] = request.engine_version
         if not DaraCore.is_null(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
@@ -12445,6 +13153,112 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.modify_global_security_ipgroup_relation_with_options_async(request, runtime)
 
+    def modify_inspection_schedule_with_options(
+        self,
+        request: main_models.ModifyInspectionScheduleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyInspectionScheduleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cron_expression):
+            query['CronExpression'] = request.cron_expression
+        if not DaraCore.is_null(request.enabled):
+            query['Enabled'] = request.enabled
+        if not DaraCore.is_null(request.inspection_items):
+            query['InspectionItems'] = request.inspection_items
+        if not DaraCore.is_null(request.inspection_window):
+            query['InspectionWindow'] = request.inspection_window
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not DaraCore.is_null(request.report_language):
+            query['ReportLanguage'] = request.report_language
+        if not DaraCore.is_null(request.schedule_id):
+            query['ScheduleId'] = request.schedule_id
+        if not DaraCore.is_null(request.schedule_name):
+            query['ScheduleName'] = request.schedule_name
+        if not DaraCore.is_null(request.timezone):
+            query['Timezone'] = request.timezone
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyInspectionSchedule',
+            version = '2015-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyInspectionScheduleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_inspection_schedule_with_options_async(
+        self,
+        request: main_models.ModifyInspectionScheduleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyInspectionScheduleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cron_expression):
+            query['CronExpression'] = request.cron_expression
+        if not DaraCore.is_null(request.enabled):
+            query['Enabled'] = request.enabled
+        if not DaraCore.is_null(request.inspection_items):
+            query['InspectionItems'] = request.inspection_items
+        if not DaraCore.is_null(request.inspection_window):
+            query['InspectionWindow'] = request.inspection_window
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not DaraCore.is_null(request.report_language):
+            query['ReportLanguage'] = request.report_language
+        if not DaraCore.is_null(request.schedule_id):
+            query['ScheduleId'] = request.schedule_id
+        if not DaraCore.is_null(request.schedule_name):
+            query['ScheduleName'] = request.schedule_name
+        if not DaraCore.is_null(request.timezone):
+            query['Timezone'] = request.timezone
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyInspectionSchedule',
+            version = '2015-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyInspectionScheduleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_inspection_schedule(
+        self,
+        request: main_models.ModifyInspectionScheduleRequest,
+    ) -> main_models.ModifyInspectionScheduleResponse:
+        runtime = RuntimeOptions()
+        return self.modify_inspection_schedule_with_options(request, runtime)
+
+    async def modify_inspection_schedule_async(
+        self,
+        request: main_models.ModifyInspectionScheduleRequest,
+    ) -> main_models.ModifyInspectionScheduleResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_inspection_schedule_with_options_async(request, runtime)
+
     def modify_instance_attribute_with_options(
         self,
         request: main_models.ModifyInstanceAttributeRequest,
@@ -15729,6 +16543,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.restore_instance_with_options_async(request, runtime)
 
+    def retry_inspection_task_with_options(
+        self,
+        request: main_models.RetryInspectionTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RetryInspectionTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RetryInspectionTask',
+            version = '2015-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RetryInspectionTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def retry_inspection_task_with_options_async(
+        self,
+        request: main_models.RetryInspectionTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RetryInspectionTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RetryInspectionTask',
+            version = '2015-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RetryInspectionTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def retry_inspection_task(
+        self,
+        request: main_models.RetryInspectionTaskRequest,
+    ) -> main_models.RetryInspectionTaskResponse:
+        runtime = RuntimeOptions()
+        return self.retry_inspection_task_with_options(request, runtime)
+
+    async def retry_inspection_task_async(
+        self,
+        request: main_models.RetryInspectionTaskRequest,
+    ) -> main_models.RetryInspectionTaskResponse:
+        runtime = RuntimeOptions()
+        return await self.retry_inspection_task_with_options_async(request, runtime)
+
     def start_tair_kvcache_custom_instance_with_options(
         self,
         request: main_models.StartTairKVCacheCustomInstanceRequest,
@@ -16112,6 +17004,88 @@ class Client(OpenApiClient):
     ) -> main_models.SwitchInstanceProxyResponse:
         runtime = RuntimeOptions()
         return await self.switch_instance_proxy_with_options_async(request, runtime)
+
+    def switch_instance_to_target_zone_with_options(
+        self,
+        request: main_models.SwitchInstanceToTargetZoneRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SwitchInstanceToTargetZoneResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.node_id):
+            query['NodeId'] = request.node_id
+        if not DaraCore.is_null(request.switch_type):
+            query['SwitchType'] = request.switch_type
+        if not DaraCore.is_null(request.target_zone_id):
+            query['TargetZoneId'] = request.target_zone_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SwitchInstanceToTargetZone',
+            version = '2015-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SwitchInstanceToTargetZoneResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def switch_instance_to_target_zone_with_options_async(
+        self,
+        request: main_models.SwitchInstanceToTargetZoneRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SwitchInstanceToTargetZoneResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.node_id):
+            query['NodeId'] = request.node_id
+        if not DaraCore.is_null(request.switch_type):
+            query['SwitchType'] = request.switch_type
+        if not DaraCore.is_null(request.target_zone_id):
+            query['TargetZoneId'] = request.target_zone_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SwitchInstanceToTargetZone',
+            version = '2015-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SwitchInstanceToTargetZoneResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def switch_instance_to_target_zone(
+        self,
+        request: main_models.SwitchInstanceToTargetZoneRequest,
+    ) -> main_models.SwitchInstanceToTargetZoneResponse:
+        runtime = RuntimeOptions()
+        return self.switch_instance_to_target_zone_with_options(request, runtime)
+
+    async def switch_instance_to_target_zone_async(
+        self,
+        request: main_models.SwitchInstanceToTargetZoneRequest,
+    ) -> main_models.SwitchInstanceToTargetZoneResponse:
+        runtime = RuntimeOptions()
+        return await self.switch_instance_to_target_zone_with_options_async(request, runtime)
 
     def switch_instance_zone_fail_over_with_options(
         self,
