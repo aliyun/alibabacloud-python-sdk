@@ -1,3 +1,6 @@
+2026-08-03 Version: 6.0.3
+- Generated python 2023-01-17 for airticketOpen.
+
 2026-07-24 Version: 6.0.2
 - Update API ChangeDetail: add response parameters Body.data.change_fee_details.$.change_fee.suez_service_fee.
 - Update API ChangeDetailListOfOrderNum: add response parameters Body.data.list.$.change_fee_details.$.change_fee.suez_service_fee.
