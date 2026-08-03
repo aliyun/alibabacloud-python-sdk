@@ -83,9 +83,9 @@ class CreateInstanceRequest(DaraModel):
         self.auto_renew = auto_renew
         # The auto-renewal period. This parameter is required when AutoRenew is set to True.
         self.auto_renew_period = auto_renew_period
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
-        # The cluster ID of the instance.
+        # The ID of the cluster to which the instance belongs.
         self.cluster_id = cluster_id
         # The running mode of the burstable instance. Valid values:
         self.credit_specification = credit_specification
@@ -93,9 +93,9 @@ class CreateInstanceRequest(DaraModel):
         self.data_disk = data_disk
         # The ID of the dedicated host.
         self.dedicated_host_id = dedicated_host_id
-        # The release protection attribute of the instance. Specifies whether the instance can be released from the ECS console or by calling the [DeleteInstance](https://help.aliyun.com/document_detail/25507.html) operation.
+        # The release protection attribute of the instance. Specifies whether the instance can be released from the console or by calling the [DeleteInstance](https://help.aliyun.com/document_detail/25507.html) operation.
         self.deletion_protection = deletion_protection
-        # The group number of the instance in the deployment set. This parameter takes effect only when the deployment set uses the high availability group strategy (AvailabilityGroup). Valid values: 1 to 7.
+        # The number of the deployment set group to which to deploy the instance in the deployment set. This parameter takes effect only when the deployment set uses the high availability group strategy (AvailabilityGroup). Valid values: 1 to 7.
         self.deployment_set_group_no = deployment_set_group_no
         # The ID of the deployment set.
         self.deployment_set_id = deployment_set_id
@@ -115,15 +115,15 @@ class CreateInstanceRequest(DaraModel):
         self.http_tokens = http_tokens
         # The name of the image family. You can set this parameter to obtain the latest available image from the specified image family to create the instance.
         self.image_family = image_family
-        # The ID of the image used to start the instance. To use an Alibaba Cloud Marketplace image, you can view the `ImageId` on the image product page. If you do not specify `ImageFamily` to select the latest available image from an image family, this parameter is required.
+        # The ID of the image used to start the instance. To use an Alibaba Cloud Marketplace image, you can view the `ImageId` on the product page of the Alibaba Cloud Marketplace image. This parameter is required if you do not specify `ImageFamily` to select the latest available image from an image family.
         self.image_id = image_id
         # The internal IP address of the instance.
         self.inner_ip_address = inner_ip_address
         # The billing method of the instance. Valid values:
         self.instance_charge_type = instance_charge_type
-        # The name of the instance. The name must be 2 to 128 characters in length and can contain letters, digits, and Unicode characters classified under the letter category (including Chinese characters). The name can also contain colons (:), underscores (_), periods (.), and hyphens (-). If this parameter is not specified, the default value is the instance ID.
+        # The name of the instance. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-). The name supports characters categorized as letters in Unicode, including Chinese characters. If this parameter is not specified, the default value is the instance ID.
         self.instance_name = instance_name
-        # The instance type.
+        # The instance type of the instance.
         # 
         # This parameter is required.
         self.instance_type = instance_type
@@ -133,8 +133,8 @@ class CreateInstanceRequest(DaraModel):
         self.internet_max_bandwidth_in = internet_max_bandwidth_in
         # The maximum outbound public bandwidth, in Mbit/s. Valid values: 0 to 100.
         self.internet_max_bandwidth_out = internet_max_bandwidth_out
-        # Specifies whether the instance is an I/O optimized instance. The I/O optimization improves instance performance. Valid values:
-        # The default value for [retired instance types](https://help.aliyun.com/document_detail/55263.html) is none.
+        # Specifies whether the instance is I/O optimization enabled. Valid values:
+        # The default value for [retired instance types](https://help.aliyun.com/document_detail/55263.html) is none. For other instance types, the default value is optimized.
         self.io_optimized = io_optimized
         # The name of the key pair.
         self.key_pair_name = key_pair_name
@@ -150,7 +150,7 @@ class CreateInstanceRequest(DaraModel):
         self.period = period
         # The unit of the subscription period. Valid values:
         self.period_unit = period_unit
-        # The private IP address of the instance. The IP address must be an available address within the CIDR block of the specified vSwitch (VSwitchId).
+        # The private IP address of the instance. The IP address must be an available address in the CIDR block of the specified vSwitch (VSwitchId).
         self.private_ip_address = private_ip_address
         # The name of the instance RAM role. You can call the RAM API [ListRoles](https://help.aliyun.com/document_detail/28713.html) to query the instance RAM roles that you have created.
         self.ram_role_name = ram_role_name
@@ -168,9 +168,9 @@ class CreateInstanceRequest(DaraModel):
         self.security_group_id = security_group_id
         # The protection period of the spot instance, in hours. Default value: 1. Valid values:
         self.spot_duration = spot_duration
-        # The interruption pattern of the spot instance. Valid values:
+        # The break mode of the spot instance. Valid values:
         self.spot_interruption_behavior = spot_interruption_behavior
-        # The maximum hourly price of the instance. A maximum of three decimal places is supported. This parameter takes effect only when `SpotStrategy` is set to `SpotWithPriceLimit`.
+        # The maximum hourly price of the instance. A maximum of three decimal places are supported. This parameter takes effect only when `SpotStrategy` is set to `SpotWithPriceLimit`.
         self.spot_price_limit = spot_price_limit
         # The bidding policy for the instance. This parameter takes effect only when `InstanceChargeType` is set to `PostPaid`. Valid values:
         self.spot_strategy = spot_strategy
@@ -184,9 +184,9 @@ class CreateInstanceRequest(DaraModel):
         self.tenancy = tenancy
         # Specifies whether to use the virtual machine system configuration provided by Alibaba Cloud (Windows: NTP and KMS. Linux: NTP and YUM).
         self.use_additional_service = use_additional_service
-        # The instance user data. The data must be encoded in Base64. The raw data can be up to 32 KB in size.
+        # Instance user data of the instance. Instance user data must be encoded in Base64. The raw data can be up to 32 KB in size.
         self.user_data = user_data
-        # The vSwitch ID. This parameter is required when you create a VPC-connected instance. You can call [DescribeVSwitches](https://help.aliyun.com/document_detail/35748.html) to query created vSwitches.
+        # The vSwitch ID. This parameter is required if you create a VPC-connected instance. You can call [DescribeVSwitches](https://help.aliyun.com/document_detail/35748.html) to query created vSwitches.
         self.v_switch_id = v_switch_id
         # The virtual local area network ID.
         self.vlan_id = vlan_id
@@ -614,9 +614,9 @@ class CreateInstanceRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the instance, disk, and primary ENI. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. The tag key cannot contain `http://` or `https://`.
+        # The tag key of the instance, disk, and primary ENI. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
-        # The tag value of the instance, disk, and primary ENI. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`.
+        # The tag value of the instance, disk, and primary ENI. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length. It cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -669,21 +669,21 @@ class CreateInstanceRequestDataDisk(DaraModel):
         self.description = description
         # The mount point of the data disk.
         self.device = device
-        # The name of the data disk. The name must be 2 to 128 characters in length and can contain letters, digits, and Unicode characters classified under the letter category (including Chinese characters). The name can also contain colons (:), underscores (_), periods (.), and hyphens (-).
+        # The name of the data disk. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-). The name supports characters categorized as letters in Unicode, including Chinese characters.
         self.disk_name = disk_name
         # > This parameter is not publicly available.
         self.encrypt_algorithm = encrypt_algorithm
         # Specifies whether to encrypt data disk N.
         self.encrypted = encrypted
-        # The Key Management Service (KMS) key ID for the disk.
+        # The ID of the Key Management Service (KMS) key used by the disk.
         self.kmskey_id = kmskey_id
-        # The performance level (PL) of the enterprise SSD used as a data disk. The value of N must be the same as that in `DataDisk.N.Category=cloud_essd`. Settings for the performance level. If the data disk is a standard SSD, this parameter is ignored. Valid values:
+        # The performance level of the enterprise SSD used as a data disk. Settings depend on the disk category. The value of N must be the same as that in `DataDisk.N.Category=cloud_essd`. Valid values:
         self.performance_level = performance_level
         # The size of data disk N, in GiB. Valid values of N: 1 to 16. Valid values:
         self.size = size
-        # The snapshot ID used to create data disk N. Valid values of N: 1 to 16.
+        # The ID of the snapshot used to create data disk N. Valid values of N: 1 to 16.
         self.snapshot_id = snapshot_id
-        # The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as data disks when you create an ECS instance, set this parameter.
+        # The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as data disks when you create the ECS instance, set this parameter.
         self.storage_cluster_id = storage_cluster_id
 
     def validate(self):
@@ -832,9 +832,9 @@ class CreateInstanceRequestSystemDisk(DaraModel):
         self.category = category
         # The description of the system disk. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description
-        # The name of the system disk. The name must be 2 to 128 characters in length and can contain letters, digits, and Unicode characters classified under the letter category (including Chinese characters). The name can also contain colons (:), underscores (_), periods (.), and hyphens (-).
+        # The name of the system disk. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-). The name supports characters categorized as letters in Unicode, including Chinese characters.
         self.disk_name = disk_name
-        # The performance level (PL) of the enterprise SSD (ESSD) used as the system disk. Settings for the performance level. If the system disk is a standard SSD, this parameter is ignored. Valid values:
+        # The performance level of the enterprise SSD used as the system disk. Settings depend on the disk category. Valid values:
         self.performance_level = performance_level
         # The size of the system disk, in GiB. Valid values:
         self.size = size
@@ -897,9 +897,9 @@ class CreateInstanceRequestPrivatePoolOptions(DaraModel):
         id: str = None,
         match_criteria: str = None,
     ):
-        # The ID of the private pool. The ID of an elasticity assurance or capacity reservation.
+        # The ID of the private pool. The ID of the private pool is the same as that of the elasticity assurance or capacity reservation.
         self.id = id
-        # The private pool option for the instance launch. A private pool is generated when an elasticity assurance or capacity reservation takes effect. You can select a private pool when you start an instance. Valid values:
+        # The private pool options for the instance launch. A private pool is generated when an elasticity assurance or a capacity reservation takes effect. You can select a private pool when you start an instance. Valid values:
         self.match_criteria = match_criteria
 
     def validate(self):

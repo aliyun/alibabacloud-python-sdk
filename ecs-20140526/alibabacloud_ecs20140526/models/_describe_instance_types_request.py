@@ -62,29 +62,29 @@ class DescribeInstanceTypesRequest(DaraModel):
         self.additional_attributes = additional_attributes
         # The CPU architecture. Valid values:
         self.cpu_architecture = cpu_architecture
-        # The CPU architectures to query. Array length: 1 to 2.
+        # The specified CPU architectures to query. Array length: 1 to 2.
         self.cpu_architectures = cpu_architectures
         # The GPU type.
         self.gpuspec = gpuspec
-        # The GPU types to query. Array length: 1 to 10.
+        # The specified GPU types to query. Array length: 1 to 10.
         self.gpu_specs = gpu_specs
-        # The instance type categories to query. Array length: 1 to 10.
+        # The specified instance type categories to query. Array length: 1 to 10.
         self.instance_categories = instance_categories
         # The instance type category. Valid values:
         self.instance_category = instance_category
         # The level of the instance family. Valid values:
         self.instance_family_level = instance_family_level
-        # The instance families to query. Array length: 1 to 10.
+        # The specified instance families to query. Array length: 1 to 10.
         self.instance_type_families = instance_type_families
         # The instance family to which the instance type belongs. For more information, see [DescribeInstanceTypeFamilies](https://help.aliyun.com/document_detail/25621.html).
         self.instance_type_family = instance_type_family
         # The specified instance types. Array length: 1 to 10. If this parameter is not specified, information about all instance types is queried by default.
         self.instance_types = instance_types
-        # The local disk types to query. Array length: 1 to 2.
+        # The specified local disk types. Array length: 1 to 2.
         self.local_storage_categories = local_storage_categories
         # The local disk type. For more information, see [Local disks](~~63138#section_n2w_8yc_5u1~~). Valid values:
         self.local_storage_category = local_storage_category
-        # The maximum number of entries per page for paging query. Maximum value: 1600.
+        # The maximum number of entries per page for a paged query. Maximum value: 1600. This parameter is used for paging.
         self.max_results = max_results
         # The expected maximum number of vCPU cores when querying instance types. Valid values: positive integers.
         self.maximum_cpu_core_count = maximum_cpu_core_count
@@ -106,17 +106,17 @@ class DescribeInstanceTypesRequest(DaraModel):
         self.minimum_cpu_turbo_frequency = minimum_cpu_turbo_frequency
         # The expected minimum number of cloud disks that can be attached when querying instance types.
         self.minimum_disk_quantity = minimum_disk_quantity
-        # The expected minimum number of IPv6 addresses per Elastic Network Interface (ENI) network interface controller (NIC) when querying instance types.
+        # The expected minimum number of IPv6 addresses per Elastic Network Interface (ENI) when querying instance types.
         self.minimum_eni_ipv_6address_quantity = minimum_eni_ipv_6address_quantity
-        # The expected minimum number of IPv4 addresses per Elastic Network Interface (ENI) network interface controller (NIC) when querying instance types.
+        # The expected minimum number of IPv4 addresses per Elastic Network Interface (ENI) when querying instance types.
         self.minimum_eni_private_ip_address_quantity = minimum_eni_private_ip_address_quantity
-        # The expected minimum number of Elastic Network Interfaces (ENIs) that can be attached per network interface controller (NIC) when querying instance types.
+        # The expected minimum number of Elastic Network Interfaces (ENIs) that can be attached when querying instance types.
         self.minimum_eni_quantity = minimum_eni_quantity
-        # The expected minimum number of Elastic RDMA Interfaces (ERIs) per network interface controller (NIC) when querying instance types.
+        # The expected minimum number of Elastic RDMA Interfaces (ERIs) when querying instance types.
         self.minimum_eri_quantity = minimum_eri_quantity
         # The expected minimum number of GPUs when querying instance types. Valid values: positive integers.
         self.minimum_gpuamount = minimum_gpuamount
-        # The expected minimum initial vCPU CPU credits for burstable instances t5 and t6 when querying instance types.
+        # The expected minimum initial vCPU credits for burstable instances t5 and t6 when querying instance types.
         self.minimum_initial_credit = minimum_initial_credit
         # The expected minimum inbound internal bandwidth when querying instance types. Unit: kbit/s.
         self.minimum_instance_bandwidth_rx = minimum_instance_bandwidth_rx
@@ -136,7 +136,7 @@ class DescribeInstanceTypesRequest(DaraModel):
         self.minimum_primary_eni_queue_number = minimum_primary_eni_queue_number
         # The expected minimum number of QueuePair (QP) queues per Elastic RDMA Interface (ERI) when querying instance types.
         self.minimum_queue_pair_number = minimum_queue_pair_number
-        # The expected minimum number of default queues for secondary Elastic Network Interfaces (ENIs) per network interface controller (NIC) when querying instance types.
+        # The expected minimum number of default queues for the secondary Elastic Network Interface (ENI) when querying instance types.
         self.minimum_secondary_eni_queue_number = minimum_secondary_eni_queue_number
         # The query token. Set this parameter to the NextToken value returned in the previous call. You do not need to set this parameter for the first call.
         self.next_token = next_token
@@ -146,7 +146,7 @@ class DescribeInstanceTypesRequest(DaraModel):
         self.owner_id = owner_id
         # The processor model.
         self.physical_processor_model = physical_processor_model
-        # The processor models to query. Array length: 1 to 10.
+        # The specified processor models to query. Array length: 1 to 10.
         self.physical_processor_models = physical_processor_models
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

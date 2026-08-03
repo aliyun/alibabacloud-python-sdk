@@ -121,7 +121,7 @@ class RunInstancesRequest(DaraModel):
         self.dedicated_host_id = dedicated_host_id
         # The release protection attribute of the instance. Specifies whether the instance can be released from the console or by calling [DeleteInstance](https://help.aliyun.com/document_detail/25507.html). Valid values:
         self.deletion_protection = deletion_protection
-        # If the deployment set uses the high availability group strategy (AvailabilityGroup), you can use this parameter to specify the group number of the instance in the deployment set. Valid values: 1 to 7.
+        # If the deployment set policy is set to the high availability group policy (AvailabilityGroup), you can use this parameter to specify the group number of the instance in the deployment set. Valid values: 1 to 7.
         self.deployment_set_group_no = deployment_set_group_no
         # The ID of the deployment set.
         self.deployment_set_id = deployment_set_id
@@ -131,7 +131,7 @@ class RunInstancesRequest(DaraModel):
         self.dry_run = dry_run
         # The hostname of the instance. The following limits apply:
         self.host_name = host_name
-        # The hostnames of the instances. You can specify a different hostname for each instance when you create multiple instances.
+        # Specifies a different hostname for each instance when you create multiple instances.
         self.host_names = host_names
         # The ID of the HPC cluster to which the instance belongs.
         self.hpc_cluster_id = hpc_cluster_id
@@ -159,9 +159,9 @@ class RunInstancesRequest(DaraModel):
         self.internet_max_bandwidth_in = internet_max_bandwidth_in
         # The maximum outbound public bandwidth, in Mbit/s. Valid values: 0 to 100.
         self.internet_max_bandwidth_out = internet_max_bandwidth_out
-        # Specifies whether the instance is an I/O optimized instance. The default value for [retired instance types](https://help.aliyun.com/document_detail/55263.html) is none, which indicates that I/O optimization is disabled. The default value for other instance types is optimized. Valid values:
+        # Specifies whether the instance is an I/O optimized instance. The default value for [retired instance types](https://help.aliyun.com/document_detail/55263.html) is none, which indicates that the instance is not I/O optimization enabled. The default value for other instance types is optimized. Valid values:
         self.io_optimized = io_optimized
-        # The IPv6 addresses to assign to the primary ENI. You can specify up to 10 IPv6 addresses. Valid values of N: 1 to 10.
+        # Specifies one or more IPv6 addresses for the primary ENI. You can specify up to 10 IPv6 addresses. Valid values of N: 1 to 10.
         self.ipv_6address = ipv_6address
         # The number of randomly generated IPv6 addresses for the primary ENI. Valid values: 1 to 10.
         self.ipv_6address_count = ipv_6address_count
@@ -211,7 +211,7 @@ class RunInstancesRequest(DaraModel):
         self.security_enhancement_strategy = security_enhancement_strategy
         # The ID of the security group to which the new instance belongs. Instances in the same security group can communicate with each other. The maximum number of instances that a security group can contain depends on the security group type. For more information, see the security group section in [Limits](~~25412#SecurityGroupQuota~~).
         self.security_group_id = security_group_id
-        # The IDs of the security groups to which to add the instance. The valid values of N depend on the maximum number of security groups to which an instance can belong. For more information, see [Security group limits](https://help.aliyun.com/document_detail/101348.html).
+        # Adds the instance to multiple security groups. Valid values of N depend on the maximum number of security groups to which an instance can belong. For more information, see [Security group limits](https://help.aliyun.com/document_detail/101348.html).
         self.security_group_ids = security_group_ids
         # The retention period of the spot instance, in hours. Valid values:
         self.spot_duration = spot_duration
@@ -221,7 +221,7 @@ class RunInstancesRequest(DaraModel):
         self.spot_price_limit = spot_price_limit
         # The bidding policy for the pay-as-you-go instance. This parameter takes effect when the `InstanceChargeType` parameter is set to `PostPaid`. Valid values:
         self.spot_strategy = spot_strategy
-        # The storage set ID.
+        # The ID of the storage set.
         self.storage_set_id = storage_set_id
         # The maximum number of partitions in the storage set. Valid values: greater than or equal to 1.
         self.storage_set_partition_number = storage_set_partition_number
@@ -893,9 +893,9 @@ class RunInstancesRequestNetworkOptions(DaraModel):
         enable_jumbo_frame: bool = None,
         enable_network_encryption: bool = None,
     ):
-        # The bandwidth weight value of the instance. The valid values vary by instance type. To query the supported bandwidth weight tiers for a specific instance type, call DescribeInstanceTypes. The BandwidthWeighting field in the response indicates the supported bandwidth weight tiers. You can use the name field in the returned dictionary values, such as Vpc-L1 and Ebs-L1.
+        # The bandwidth weight value of the instance. The valid values vary by instance type. To query the supported bandwidth weight levels for a specific instance type, call DescribeInstanceTypes. The BandwidthWeighting field in the response indicates the supported bandwidth weight levels. You can use the name field in the returned values as the dictionary value, such as Vpc-L1 or Ebs-L1.
         self.bandwidth_weighting = bandwidth_weighting
-        # Specifies whether to enable the Jumbo Frame feature for the instance. Valid values:
+        # Specifies whether to enable the Jumbo frame feature for the instance. Valid values:
         self.enable_jumbo_frame = enable_jumbo_frame
         # > This parameter is in invitational preview and is not publicly available.
         self.enable_network_encryption = enable_network_encryption
@@ -959,9 +959,9 @@ class RunInstancesRequestNetworkInterface(DaraModel):
         self.delete_on_release = delete_on_release
         # The description of the network interface controller (NIC).
         self.description = description
-        # The type of the network interface controller (NIC). The valid values of N cannot exceed the maximum number of NICs supported by the instance type. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html) or call [DescribeInstanceTypes](https://help.aliyun.com/document_detail/2679699.html) to query the maximum number of NICs supported by the target instance type.
+        # The type of the network interface controller (NIC). Valid values of N cannot exceed the number of NICs supported by the instance family. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html) or invoke [DescribeInstanceTypes](https://help.aliyun.com/document_detail/2679699.html) to query the number of NICs supported by the target instance type.
         self.instance_type = instance_type
-        # The IPv6 addresses to assign to the primary ENI. You can specify up to 10 IPv6 addresses. Valid values of the second N: 1 to 10.
+        # Specifies one or more IPv6 addresses for the primary ENI. You can specify up to 10 IPv6 addresses. Valid values of the second N: 1 to 10.
         self.ipv_6address = ipv_6address
         # The number of randomly generated IPv6 addresses for the primary ENI. Valid values: 1 to 10.
         self.ipv_6address_count = ipv_6address_count
@@ -969,19 +969,19 @@ class RunInstancesRequestNetworkInterface(DaraModel):
         self.network_card_index = network_card_index
         # The ID of the network interface controller (NIC) to attach to the instance.
         self.network_interface_id = network_interface_id
-        # The name of the network interface controller (NIC). The name must be 2 to 128 characters in length and can contain letters, digits, and characters that are supported by the Unicode letter categorization. The name can also contain colons (:), underscores (_), periods (.), or hyphens (-).
+        # The name of the network interface controller (NIC). The name must be 2 to 128 characters in length and can contain letters, digits, and characters categorized under the Unicode letter categorization (which includes characters from various languages such as English, Chinese, and digits). The name can contain colons (:), underscores (_), periods (.), or hyphens (-).
         self.network_interface_name = network_interface_name
         # The communication mode of the ENI. Valid values:
         self.network_interface_traffic_mode = network_interface_traffic_mode
-        # Adds a network interface controller (NIC) and sets the primary IP address.
+        # Adds a network interface controller (NIC) and settings for the primary IP address.
         self.primary_ip_address = primary_ip_address
-        # The number of queues supported by the network interface controller (NIC).
+        # The number of queues for the network interface controller (NIC).
         self.queue_number = queue_number
-        # The number of queues supported by the RDMA ENI.
+        # The number of queues for the RDMA network interface.
         self.queue_pair_number = queue_pair_number
         # The inbound queue depth of the network interface controller (NIC).
         self.rx_queue_size = rx_queue_size
-        # The number of secondary private IPv4 addresses to assign to the ENI. Valid values: 1 to 49.
+        # The number of secondary private IPv4 addresses for the ENI. Valid values: 1 to 49.
         self.secondary_private_ip_address_count = secondary_private_ip_address_count
         # The ID of the security group to which the network interface controller (NIC) belongs.
         self.security_group_id = security_group_id
@@ -1181,23 +1181,23 @@ class RunInstancesRequestDataDisk(DaraModel):
         self.description = description
         # The mount point of the data disk. The naming conventions for mount points vary based on the number of data disks attached:
         self.device = device
-        # The name of the data disk. The name must be 2 to 128 characters in length and can contain letters, digits, and characters that are supported by the Unicode letter category. The name can also contain colons (:), underscores (_), periods (.), or hyphens (-).
+        # The name of the data disk. The name must be 2 to 128 characters in length and can contain letters, digits, and characters categorized as letter in Unicode. The name can contain colons (:), underscores (_), periods (.), or hyphens (-).
         self.disk_name = disk_name
         # > This parameter is not publicly available.
         self.encrypt_algorithm = encrypt_algorithm
         # Specifies whether to encrypt data disk N. Valid values:
         self.encrypted = encrypted
-        # The ID of the Key Management Service (KMS) key for the data disk.
+        # The KMS key ID for the data disk.
         self.kmskey_id = kmskey_id
-        # The performance level of the data disk that is an enterprise SSD (ESSD). The value of N must be the same as that in `DataDisk.N.Category=cloud_essd`. Valid values:
+        # Settings for the performance level of the data disk when you create an enterprise SSD as a data disk. The value of N must be the same as that in `DataDisk.N.Category=cloud_essd`. Valid values:
         self.performance_level = performance_level
-        # The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × Capacity - baseline performance}.
+        # The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1000 × Capacity - baseline performance}.
         self.provisioned_iops = provisioned_iops
         # The size of data disk N. Valid values of N: 1 to 16. Unit: GiB. Valid values:
         self.size = size
         # The ID of the snapshot to use to create data disk N. Valid values of N: 1 to 16.
         self.snapshot_id = snapshot_id
-        # The ID of the dedicated block storage cluster. To use a disk in a dedicated block storage cluster as the data disk when you create an ECS instance, specify this parameter.
+        # The ID of the dedicated block storage cluster. If you want to use a disk in a dedicated block storage cluster as the data disk when you create an ECS instance, specify this parameter.
         self.storage_cluster_id = storage_cluster_id
 
     def validate(self):
@@ -1309,7 +1309,7 @@ class RunInstancesRequestClockOptions(DaraModel):
         self,
         ptp_status: str = None,
     ):
-        # The Precision Time Protocol (PTP) status. Valid values:
+        # The PTP status. Valid values:
         self.ptp_status = ptp_status
 
     def validate(self):
@@ -1414,9 +1414,9 @@ class RunInstancesRequestSystemDisk(DaraModel):
         self.encrypted = encrypted
         # The KMS key ID of the system disk.
         self.kmskey_id = kmskey_id
-        # The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × Capacity - baseline performance}.
+        # The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1000 × Capacity - baseline performance}.
         self.provisioned_iops = provisioned_iops
-        # The ID of the dedicated block storage cluster. To use a disk in a dedicated block storage cluster as the system disk when you create an ECS instance, specify this parameter.
+        # The ID of the dedicated block storage cluster. If you want to use a disk in a dedicated block storage cluster as the system disk when you create an ECS instance, specify this parameter.
         self.storage_cluster_id = storage_cluster_id
 
     def validate(self):
@@ -1555,7 +1555,7 @@ class RunInstancesRequestSchedulerOptions(DaraModel):
         self,
         dedicated_host_cluster_id: str = None,
     ):
-        # The ID of the dedicated host cluster to which the ECS instance belongs. The system automatically selects a dedicated host in the cluster to deploy the ECS instance.
+        # The ID of the dedicated host cluster to which the ECS instance belongs. The system automatically selects a dedicated host in the specified cluster to deploy the ECS instance.
         self.dedicated_host_cluster_id = dedicated_host_cluster_id
 
     def validate(self):
@@ -1586,7 +1586,7 @@ class RunInstancesRequestPrivatePoolOptions(DaraModel):
     ):
         # The private pool ID, which is the ID of the elasticity assurance or capacity reservation.
         self.id = id
-        # The private pool options for instance startup. After an elasticity assurance or capacity reservation takes effect, a private pool is generated for instance startup. Valid values:
+        # The private pool capacity option for instance startup. A private pool is generated after an elasticity assurance or capacity reservation takes effect. You can select a private pool when you start an instance. Valid values:
         self.match_criteria = match_criteria
 
     def validate(self):

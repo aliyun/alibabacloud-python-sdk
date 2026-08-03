@@ -17,8 +17,8 @@ class RebootInstanceRequest(DaraModel):
     ):
         # Specifies whether to perform only a dry run. Valid values:
         # 
-        # - true: performs only a dry run. The instance is not restarted. The system checks whether required parameters are specified, whether the request format is valid, whether business restrictions are met, and whether ECS resources are available. If the check fails, the corresponding error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
-        # - false: performs a dry run and sends the request. If the check succeeds, the instance is restarted.
+        # - true: Performs only a dry run without restarting the instance. The system checks the required parameters, request syntax, business restrictions, and ECS inventory. If the check fails, the corresponding error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
+        # - false: Performs a dry run and sends the request. If the check succeeds, the instance is restarted.
         # 
         # Default value: false.
         self.dry_run = dry_run

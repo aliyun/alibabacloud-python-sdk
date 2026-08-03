@@ -92,7 +92,7 @@ class DescribeNetworkInterfaceAttributeResponseBody(DaraModel):
         self.queue_pair_number = queue_pair_number
         # The request ID.
         self.request_id = request_id
-        # The ID of the resource group to which the instance belongs. When you use this parameter to filter resources, the resource count cannot exceed 1000.
+        # The ID of the resource group to which the instance belongs. When you use this parameter to filter resources, the resource count cannot exceed 1,000.
         self.resource_group_id = resource_group_id
         self.security_group_ids = security_group_ids
         # The ID of the Virtual Network Operator (VNO) to which the network interface controller (NIC) belongs.
@@ -766,7 +766,7 @@ class DescribeNetworkInterfaceAttributeResponseBodyNetworkInterfaceTrafficConfig
         self.network_interface_traffic_mode = network_interface_traffic_mode
         # The number of queues supported by the network interface controller (NIC).
         self.queue_number = queue_number
-        # The number of queues supported by the RDMA ENI.
+        # The number of queues supported by the RDMA network interface.
         self.queue_pair_number = queue_pair_number
 
     def validate(self):
@@ -998,11 +998,13 @@ class DescribeNetworkInterfaceAttributeResponseBodyIpv4PrefixSetsIpv4PrefixSet(D
 class DescribeNetworkInterfaceAttributeResponseBodyEnhancedNetwork(DaraModel):
     def __init__(
         self,
+        enable_express: bool = None,
         enable_rss: bool = None,
         enable_sriov: bool = None,
         virtual_function_quantity: int = None,
         virtual_function_total_queue_number: int = None,
     ):
+        self.enable_express = enable_express
         # > This parameter is not yet available for use.
         self.enable_rss = enable_rss
         # This parameter is not publicly available.
@@ -1018,6 +1020,9 @@ class DescribeNetworkInterfaceAttributeResponseBodyEnhancedNetwork(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.enable_express is not None:
+            result['EnableExpress'] = self.enable_express
+
         if self.enable_rss is not None:
             result['EnableRss'] = self.enable_rss
 
@@ -1034,6 +1039,9 @@ class DescribeNetworkInterfaceAttributeResponseBodyEnhancedNetwork(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EnableExpress') is not None:
+            self.enable_express = m.get('EnableExpress')
+
         if m.get('EnableRss') is not None:
             self.enable_rss = m.get('EnableRss')
 
@@ -1055,11 +1063,11 @@ class DescribeNetworkInterfaceAttributeResponseBodyConnectionTrackingConfigurati
         tcp_established_timeout: int = None,
         udp_timeout: int = None,
     ):
-        # The timeout period for a TCP connection in the TIME_WAIT or CLOSED state. Unit: seconds. Valid values: an integer from 3 to 15.
+        # The timeout period for TCP connections in the TIME_WAIT or CLOSED state. Unit: seconds. Valid values: an integer from 3 to 15.
         self.tcp_closed_and_time_wait_timeout = tcp_closed_and_time_wait_timeout
-        # The timeout period for an established TCP connection. Unit: seconds. Valid values: [30, 60, 80, 100, 200, 300, 500, 700, 910].
+        # The timeout period for established TCP connections. Unit: seconds. Valid values: [30, 60, 80, 100, 200, 300, 500, 700, 910].
         self.tcp_established_timeout = tcp_established_timeout
-        # The timeout period for a UDP flow. Unit: seconds. Valid values: [10, 20, 30, 60, 80, 100].
+        # The timeout period for UDP flows. Unit: seconds. Valid values: [10, 20, 30, 60, 80, 100].
         self.udp_timeout = udp_timeout
 
     def validate(self):

@@ -1,3 +1,10 @@
+2026-08-03 Version: 7.9.4
+- Update API CreateNetworkInterface: add request parameters EnhancedNetwork.EnableExpress.
+- Update API DescribeInstanceTypes: add response parameters Body.InstanceTypes.$.EnhancedNetwork.ExpressSupport.
+- Update API DescribeNetworkInterfaceAttribute: add response parameters Body.EnhancedNetwork.EnableExpress.
+- Update API ModifyNetworkInterfaceAttribute: add request parameters EnhancedNetwork.EnableExpress.
+
+
 2026-07-31 Version: 7.9.3
 - Update API CreateImagePipeline: add request parameters RepairItem.
 - Update API CreateLaunchTemplate: add request parameters SecurityOptions.EnableSecureBoot.

@@ -770,10 +770,12 @@ class DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeNetworkCardsNetw
 class DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeEnhancedNetwork(DaraModel):
     def __init__(
         self,
+        express_support: bool = None,
         rss_support: bool = None,
         sriov_support: bool = None,
         vf_queue_number_per_eni: int = None,
     ):
+        self.express_support = express_support
         self.rss_support = rss_support
         self.sriov_support = sriov_support
         self.vf_queue_number_per_eni = vf_queue_number_per_eni
@@ -786,6 +788,9 @@ class DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeEnhancedNetwork(
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.express_support is not None:
+            result['ExpressSupport'] = self.express_support
+
         if self.rss_support is not None:
             result['RssSupport'] = self.rss_support
 
@@ -799,6 +804,9 @@ class DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeEnhancedNetwork(
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ExpressSupport') is not None:
+            self.express_support = m.get('ExpressSupport')
+
         if m.get('RssSupport') is not None:
             self.rss_support = m.get('RssSupport')
 

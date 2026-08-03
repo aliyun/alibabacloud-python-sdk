@@ -49,7 +49,7 @@ class CreateNetworkInterfaceRequest(DaraModel):
     ):
         # > This parameter is deprecated.
         self.business_type = business_type
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **ClientToken** value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. The **ClientToken** value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The network connectivity tracking configuration of the ENI.
         self.connection_tracking_configuration = connection_tracking_configuration
@@ -470,11 +470,13 @@ class CreateNetworkInterfaceRequestNetworkInterfaceTrafficConfig(DaraModel):
 class CreateNetworkInterfaceRequestEnhancedNetwork(DaraModel):
     def __init__(
         self,
+        enable_express: bool = None,
         enable_rss: bool = None,
         enable_sriov: bool = None,
         virtual_function_quantity: int = None,
         virtual_function_total_queue_number: int = None,
     ):
+        self.enable_express = enable_express
         # > This parameter is not publicly available.
         self.enable_rss = enable_rss
         # > This parameter is not publicly available.
@@ -490,6 +492,9 @@ class CreateNetworkInterfaceRequestEnhancedNetwork(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.enable_express is not None:
+            result['EnableExpress'] = self.enable_express
+
         if self.enable_rss is not None:
             result['EnableRss'] = self.enable_rss
 
@@ -506,6 +511,9 @@ class CreateNetworkInterfaceRequestEnhancedNetwork(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EnableExpress') is not None:
+            self.enable_express = m.get('EnableExpress')
+
         if m.get('EnableRss') is not None:
             self.enable_rss = m.get('EnableRss')
 

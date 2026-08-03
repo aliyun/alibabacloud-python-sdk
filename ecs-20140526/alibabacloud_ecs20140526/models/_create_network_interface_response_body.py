@@ -51,10 +51,10 @@ class CreateNetworkInterfaceResponseBody(DaraModel):
         self.private_ip_sets = private_ip_sets
         # The request ID.
         self.request_id = request_id
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         self.security_group_ids = security_group_ids
-        # The Virtual Network Operator (VNO) ID associated with the network interface controller (NIC).
+        # The ID of the Virtual Network Operator (VNO) to which the network interface controller (NIC) corresponds.
         self.service_id = service_id
         # Indicates whether the user of the network interface controller (NIC) is an Alibaba Cloud service or a VNO.
         self.service_managed = service_managed

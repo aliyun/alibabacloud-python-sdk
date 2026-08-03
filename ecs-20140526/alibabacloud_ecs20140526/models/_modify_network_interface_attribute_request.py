@@ -42,9 +42,9 @@ class ModifyNetworkInterfaceAttributeRequest(DaraModel):
         # 
         # This parameter is required.
         self.network_interface_id = network_interface_id
-        # The name of the network interface controller (NIC). The name must be 2 to 128 characters in length and must start with a letter or a Chinese character. It cannot start with `http://` or `https://`. The name can contain characters under the letter categorization in Unicode, including English letters, Chinese characters, and digits. It can also contain colons (:), underscores (_), periods (.), or hyphens (-).
+        # The name of the network interface controller (NIC). The name must be 2 to 128 characters in length and must start with a letter or a Chinese character. It cannot start with `http://` or `https://`. The name can contain characters under the letter categorization in Unicode, including English letters, Chinese characters, and digits. It can also contain colons (:), underscores (_), periods (.), and hyphens (-).
         self.network_interface_name = network_interface_name
-        # The communication parameters of the network interface controller (NIC).
+        # The communication parameter of the network interface controller (NIC).
         self.network_interface_traffic_config = network_interface_traffic_config
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -262,11 +262,13 @@ class ModifyNetworkInterfaceAttributeRequestNetworkInterfaceTrafficConfig(DaraMo
 class ModifyNetworkInterfaceAttributeRequestEnhancedNetwork(DaraModel):
     def __init__(
         self,
+        enable_express: bool = None,
         enable_rss: bool = None,
         enable_sriov: bool = None,
         virtual_function_quantity: int = None,
         virtual_function_total_queue_number: int = None,
     ):
+        self.enable_express = enable_express
         # > This parameter is not publicly available.
         self.enable_rss = enable_rss
         # This parameter is not publicly available.
@@ -282,6 +284,9 @@ class ModifyNetworkInterfaceAttributeRequestEnhancedNetwork(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.enable_express is not None:
+            result['EnableExpress'] = self.enable_express
+
         if self.enable_rss is not None:
             result['EnableRss'] = self.enable_rss
 
@@ -298,6 +303,9 @@ class ModifyNetworkInterfaceAttributeRequestEnhancedNetwork(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EnableExpress') is not None:
+            self.enable_express = m.get('EnableExpress')
+
         if m.get('EnableRss') is not None:
             self.enable_rss = m.get('EnableRss')
 
@@ -319,7 +327,7 @@ class ModifyNetworkInterfaceAttributeRequestConnectionTrackingConfiguration(Dara
         tcp_established_timeout: int = None,
         udp_timeout: int = None,
     ):
-        # The timeout period for TCP connections in the TIME_WAIT or CLOSED state. Unit: seconds. Valid values: integers from 3 to 15.
+        # The timeout period for TCP connections in the TIME_WAIT and CLOSED states. Unit: seconds. Valid values: integers from 3 to 15.
         self.tcp_closed_and_time_wait_timeout = tcp_closed_and_time_wait_timeout
         # The timeout period for established TCP connections. Unit: seconds. Valid values: [30, 60, 80, 100, 200, 300, 500, 700, 910].
         self.tcp_established_timeout = tcp_established_timeout

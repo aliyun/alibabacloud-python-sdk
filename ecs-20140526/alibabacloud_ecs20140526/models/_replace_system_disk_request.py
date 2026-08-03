@@ -51,7 +51,7 @@ class ReplaceSystemDiskRequest(DaraModel):
         # 
         # Default value: false.
         # 
-        # >Notice: When you use a shared encrypted image to create a disk based on an encrypted snapshot, you must set the request parameter Encrypted to true to ensure that the disk uses the key of the image recipient.
+        # >Notice: When you use a shared encrypted image to create a disk from an encrypted snapshot, you must set the request parameter Encrypted to true to ensure that the created disk uses the key of the image recipient.
         self.encrypted = encrypted
         # The ID of the image to use to reset the system. This parameter is required.
         self.image_id = image_id
@@ -93,15 +93,15 @@ class ReplaceSystemDiskRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # Specifies whether to use the free Security Center service after the system disk is replaced. Valid values: 
         # 
-        # - Active: Security Center is enabled. This value is applicable only to public images.
+        # - Active: Security Center is enabled. This value is valid only for public images.
         # 
-        # - Deactive: Security Center is not enabled. This value is applicable to all images.
+        # - Deactive: Security Center is not enabled. This value is valid for all images.
         # 
         # Default value: Deactive.
         self.security_enhancement_strategy = security_enhancement_strategy
         # Specifies whether to use the virtual machine system configuration provided by Alibaba Cloud (Windows: NTP and KMS. Linux: NTP and YUM).
         # 
-        # > This parameter takes effect only when the system disk is attached (the device name is /dev/xvda).
+        # > This parameter takes effect only when a system disk is attached (the device name is /dev/xvda).
         self.use_additional_service = use_additional_service
 
     def validate(self):

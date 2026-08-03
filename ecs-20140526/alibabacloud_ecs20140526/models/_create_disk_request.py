@@ -46,17 +46,17 @@ class CreateDiskRequest(DaraModel):
         self.bursting_enabled = bursting_enabled
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. The **ClientToken** value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
-        # The description of the disk. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+        # The disk description. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description
         # The category of the data disk. Valid values:
         self.disk_category = disk_category
-        # The name of the disk. The name must be 2 to 128 characters in length and can contain characters that are categorized as letter in Unicode, including Chinese and English characters, and ASCII digits (0-9). The name can contain colons (:), underscores (_), periods (.), or hyphens (-). The name must start with a character that is categorized as letter in Unicode.
+        # The disk name. The name must be 2 to 128 characters in length and can contain characters that are classified as letter in Unicode (including English and Chinese characters) and ASCII digits (0-9). The name can contain colons (:), underscores (_), periods (.), or hyphens (-). The name must start with a character that is classified as letter in Unicode.
         self.disk_name = disk_name
         # This parameter is not publicly available.
         self.encrypt_algorithm = encrypt_algorithm
         # Specifies whether to encrypt the disk. Valid values:
         self.encrypted = encrypted
-        # The ID of the subscription instance to which the subscription disk is automatically attached after the disk is created.
+        # Creates a subscription disk and automatically attaches it to the specified subscription instance.
         self.instance_id = instance_id
         # The ID of the Key Management Service (KMS) key used by the disk.
         self.kmskey_id = kmskey_id
@@ -64,7 +64,7 @@ class CreateDiskRequest(DaraModel):
         self.multi_attach = multi_attach
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The performance level of the enterprise SSD (ESSD) to create. Valid values:
+        # The performance level of the enterprise SSD (ESSD) disk. Valid values:
         self.performance_level = performance_level
         # The provisioned performance read/write IOPS of the ESSD AutoPL disk. Valid values:
         self.provisioned_iops = provisioned_iops
@@ -78,15 +78,15 @@ class CreateDiskRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The size of the disk. Unit: GiB. You must specify a value for this parameter. Valid values:
         self.size = size
-        # The ID of the snapshot to use to create the disk. Snapshots created on or before July 15, 2013 cannot be used to create disks.
+        # The snapshot ID that is used to create the disk. Snapshots created on or before July 15, 2013 cannot be used to create disks.
         self.snapshot_id = snapshot_id
         # The ID of the dedicated block storage cluster. To create a disk in a specific dedicated block storage cluster, specify this parameter.
         self.storage_cluster_id = storage_cluster_id
-        # The ID of the storage set.
+        # The storage set ID.
         self.storage_set_id = storage_set_id
         # The number of partitions in the storage set. Valid values: greater than or equal to 2, up to the privilege quota limit returned by calling [DescribeAccountAttributes](https://help.aliyun.com/document_detail/73772.html).
         self.storage_set_partition_number = storage_set_partition_number
-        # The list of tags for the disk.
+        # The tags of the disk.
         self.tag = tag
         # The ID of the zone in which to create a pay-as-you-go disk.
         self.zone_id = zone_id

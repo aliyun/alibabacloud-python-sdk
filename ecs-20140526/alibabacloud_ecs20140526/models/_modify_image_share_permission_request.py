@@ -21,12 +21,12 @@ class ModifyImageSharePermissionRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The Alibaba Cloud account ID to which you want to grant authorization to share the image. Valid values of N: 1 to 10. If you commit more than 10 Alibaba Cloud accounts at a time, the system processes only the first 10 accounts and ignores the rest.
+        # The Alibaba Cloud account ID for which you want to grant authorization to share the image. Valid values of N: 1 to 10. If you submit more than 10 Alibaba Cloud accounts in a single request, the system processes only the first 10 and ignores the rest.
         self.add_account = add_account
         self.dry_run = dry_run
         # The ID of the custom image to be shared.
         # 
-        # >Notice: Sharing images encrypted with a service key is no longer supported. Only images encrypted with a customer master key (CMK) can be shared. An error is returned if you attempt to share an image encrypted with a service key.
+        # >Notice: Images encrypted with a service key can no longer be shared. Only images encrypted with a customer master key (CMK) can be shared. An error is returned if you attempt to share an image that uses service key encryption.
         # 
         # This parameter is required.
         self.image_id = image_id
@@ -45,7 +45,7 @@ class ModifyImageSharePermissionRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The Alibaba Cloud account ID from which you want to delete image sharing. Valid values of N: 1 to 10. If you commit more than 10 Alibaba Cloud accounts at a time, the system processes only the first 10 accounts and ignores the rest.
+        # The Alibaba Cloud account ID from which you want to delete image sharing. Valid values of N: 1 to 10. If you submit more than 10 Alibaba Cloud accounts in a single request, the system processes only the first 10 and ignores the rest.
         self.remove_account = remove_account
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
