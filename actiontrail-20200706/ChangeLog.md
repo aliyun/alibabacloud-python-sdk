@@ -1,3 +1,8 @@
+2026-08-03 Version: 2.5.3
+- Update API CreateAdvancedQueryHistory: add request parameters DryRun.
+- Update API CreateAdvancedQueryHistory: add response parameters Body.DryRunResult.
+
+
 2025-12-04 Version: 2.5.0
 - Support API DeleteDataEventSelector.
 - Support API GetDataEventSelector.
