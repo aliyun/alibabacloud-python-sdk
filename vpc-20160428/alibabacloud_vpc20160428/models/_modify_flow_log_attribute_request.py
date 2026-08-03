@@ -33,7 +33,7 @@ class ModifyFlowLogAttributeRequest(DaraModel):
         # 
         # The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         self.flow_log_name = flow_log_name
-        # The IP address version of the traffic captured by the flow log.
+        # The IP version of the traffic captured by the flow log.
         self.ip_version = ip_version
         self.log_format = log_format
         self.owner_account = owner_account

@@ -66,7 +66,7 @@ class CreateFlowLogRequest(DaraModel):
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The type of the resource whose traffic you want to capture. Valid values:
+        # The type of the resource whose traffic you want to catch. Valid values:
         # 
         # - **NetworkInterface**: network interface controller (NIC).
         #   
@@ -89,7 +89,7 @@ class CreateFlowLogRequest(DaraModel):
         #   
         # - **Allow**: traffic allowed by access control.
         #   
-        # - **Drop**: traffic denied by access control.
+        # - **Drop**: traffic deny by access control.
         # 
         # This parameter is required.
         self.traffic_type = traffic_type
@@ -232,11 +232,11 @@ class CreateFlowLogRequestTag(DaraModel):
     ):
         # The tag key of the resource. You can specify up to 20 tag keys. Do not specify an empty string.
         # 
-        # A tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`, or contain `http://` or `https://`.
+        # A tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         self.key = key
         # The tag value of the resource. You can specify up to 20 tag values. You can specify an empty string.
         # 
-        # The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`, or contain `http://` or `https://`.
+        # The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

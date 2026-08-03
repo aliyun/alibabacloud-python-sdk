@@ -120,6 +120,8 @@ class DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnec
         circuit_code: str = None,
         creation_time: str = None,
         description: str = None,
+        device_features_selected: str = None,
+        down_delay_time: int = None,
         enabled_time: str = None,
         end_time: str = None,
         expect_spec: str = None,
@@ -161,6 +163,8 @@ class DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnec
         self.circuit_code = circuit_code
         self.creation_time = creation_time
         self.description = description
+        self.device_features_selected = device_features_selected
+        self.down_delay_time = down_delay_time
         self.enabled_time = enabled_time
         self.end_time = end_time
         self.expect_spec = expect_spec
@@ -232,6 +236,12 @@ class DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnec
 
         if self.description is not None:
             result['Description'] = self.description
+
+        if self.device_features_selected is not None:
+            result['DeviceFeaturesSelected'] = self.device_features_selected
+
+        if self.down_delay_time is not None:
+            result['DownDelayTime'] = self.down_delay_time
 
         if self.enabled_time is not None:
             result['EnabledTime'] = self.enabled_time
@@ -356,6 +366,12 @@ class DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnec
 
         if m.get('Description') is not None:
             self.description = m.get('Description')
+
+        if m.get('DeviceFeaturesSelected') is not None:
+            self.device_features_selected = m.get('DeviceFeaturesSelected')
+
+        if m.get('DownDelayTime') is not None:
+            self.down_delay_time = m.get('DownDelayTime')
 
         if m.get('EnabledTime') is not None:
             self.enabled_time = m.get('EnabledTime')

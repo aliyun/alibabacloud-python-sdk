@@ -1,3 +1,9 @@
+2026-08-03 Version: 7.1.5
+- Update API DescribePhysicalConnections: add response parameters Body.PhysicalConnectionSet.$.DeviceFeaturesSelected.
+- Update API DescribePhysicalConnections: add response parameters Body.PhysicalConnectionSet.$.DownDelayTime.
+- Update API ModifyPhysicalConnectionAttribute: add request parameters DownDelayTime.
+
+
 2026-07-28 Version: 7.1.4
 - Update API CreateFlowLog: add request parameters LogFormat.
 - Update API DescribeFlowLogs: add response parameters Body.FlowLogs.$.LogFormat.

@@ -69,8 +69,8 @@ class Client(OpenApiClient):
             'eu-west-1': 'vpc.eu-west-1.aliyuncs.com',
             'eu-central-1': 'vpc.eu-central-1.aliyuncs.com',
             'cn-zhongwei': 'vpc.cn-zhongwei.aliyuncs.com',
-            'cn-zhengzhou-jva': 'vpc.cn-zhengzhou-jva.aliyuncs.com',
             'cn-zhangjiakou': 'vpc.cn-zhangjiakou.aliyuncs.com',
+            'cn-wulanchabu-gic-1': 'vpc.cn-wulanchabu-gic-1.aliyuncs.com',
             'cn-wulanchabu': 'vpc.cn-wulanchabu.aliyuncs.com',
             'cn-wuhan-lr': 'vpc.cn-wuhan-lr.aliyuncs.com',
             'cn-shenzhen': 'vpc.cn-shenzhen.aliyuncs.com',
@@ -34691,6 +34691,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
+        if not DaraCore.is_null(request.down_delay_time):
+            query['DownDelayTime'] = request.down_delay_time
         if not DaraCore.is_null(request.line_operator):
             query['LineOperator'] = request.line_operator
         if not DaraCore.is_null(request.name):
@@ -34749,6 +34751,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
+        if not DaraCore.is_null(request.down_delay_time):
+            query['DownDelayTime'] = request.down_delay_time
         if not DaraCore.is_null(request.line_operator):
             query['LineOperator'] = request.line_operator
         if not DaraCore.is_null(request.name):

@@ -10,6 +10,7 @@ class ModifyPhysicalConnectionAttributeRequest(DaraModel):
         circuit_code: str = None,
         client_token: str = None,
         description: str = None,
+        down_delay_time: int = None,
         line_operator: str = None,
         name: str = None,
         owner_account: str = None,
@@ -27,22 +28,23 @@ class ModifyPhysicalConnectionAttributeRequest(DaraModel):
         self.circuit_code = circuit_code
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # Generate a parameter value from your client to ensure uniqueness across different requests. ClientToken supports only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
         # 
-        # > If you do not specify this parameter, the system uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
+        # > If you do not specify this parameter, the system uses the **RequestId** as the **ClientToken**. The **RequestId** may be different for each API request.
         self.client_token = client_token
         # The description of the Express Connect circuit.  
         # 
         # The description must be 2 to 256 characters in length and must start with a letter or a Chinese character. It cannot start with `http://` or `https://`.
         self.description = description
-        # The carrier that provides the access to the physical line. Valid values:
+        self.down_delay_time = down_delay_time
+        # The carrier that provides the access to the physical connection. Valid values:
         # 
-        # - **CT**: China Telecom.
-        # - **CU**: China Unicom.
-        # - **CM**: China Mobile.
-        # - **CO**: other carriers in the Chinese mainland.
-        # - **Equinix**: Equinix.
-        # - **Other**: other carriers outside the Chinese mainland.
+        # - **CT**: China Telecom
+        # - **CU**: China Unicom
+        # - **CM**: China Mobile
+        # - **CO**: Other carriers in the Chinese mainland
+        # - **Equinix**: Equinix
+        # - **Other**: Other carriers outside the Chinese mainland
         self.line_operator = line_operator
         # The name of the Express Connect circuit.  
         # 
@@ -59,14 +61,14 @@ class ModifyPhysicalConnectionAttributeRequest(DaraModel):
         # The port type of the Express Connect circuit access point. Valid values:
         # 
         # - **100Base-T**: 100M Ethernet port.
-        # - **1000Base-T (default)**: 1 GE port.
+        # - **1000Base-T (default)**: 1 GE electrical port.
         # - **1000Base-LX**: GE single-mode optical port (10 km).
-        # - **10GBase-T**: 10 GE port.
+        # - **10GBase-T**: 10 GE electrical port.
         # - **10GBase-LR**: 10 GE single-mode optical port (10 km).
         # - **40GBase-LR**: 40 GE single-mode optical port.
         # - **100GBase-LR**: 100 GE single-mode optical port.
         # 
-        # > 40GBase-LR and 100GBase-LR are subject to the availability of backend ports. Contact your account manager for more information.
+        # > To create 40GBase-LR or 100GBase-LR ports, check the actual port availability on the backend. Contact your account manager for details.
         self.port_type = port_type
         # The ID of the redundant Express Connect circuit. The redundant circuit must be in the **Allocated**, **Confirmed**, or **Enabled** state.
         self.redundant_physical_connection_id = redundant_physical_connection_id
@@ -97,6 +99,9 @@ class ModifyPhysicalConnectionAttributeRequest(DaraModel):
 
         if self.description is not None:
             result['Description'] = self.description
+
+        if self.down_delay_time is not None:
+            result['DownDelayTime'] = self.down_delay_time
 
         if self.line_operator is not None:
             result['LineOperator'] = self.line_operator
@@ -146,6 +151,9 @@ class ModifyPhysicalConnectionAttributeRequest(DaraModel):
 
         if m.get('Description') is not None:
             self.description = m.get('Description')
+
+        if m.get('DownDelayTime') is not None:
+            self.down_delay_time = m.get('DownDelayTime')
 
         if m.get('LineOperator') is not None:
             self.line_operator = m.get('LineOperator')
