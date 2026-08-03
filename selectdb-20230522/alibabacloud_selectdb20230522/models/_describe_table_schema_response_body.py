@@ -12,9 +12,13 @@ class DescribeTableSchemaResponseBody(DaraModel):
         request_id: str = None,
         table: str = None,
     ):
+        # The CREATE TABLE statement.
         self.create_statement = create_statement
+        # The database name.
         self.database = database
+        # The request ID.
         self.request_id = request_id
+        # The table name.
         self.table = table
 
     def validate(self):

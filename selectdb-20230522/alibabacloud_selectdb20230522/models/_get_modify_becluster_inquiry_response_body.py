@@ -13,7 +13,7 @@ class GetModifyBEClusterInquiryResponseBody(DaraModel):
         data: main_models.GetModifyBEClusterInquiryResponseBodyData = None,
         request_id: str = None,
     ):
-        # The returned data.
+        # The response data.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -57,11 +57,13 @@ class GetModifyBEClusterInquiryResponseBodyData(DaraModel):
     ):
         # The currency.
         self.currency = currency
+        # The coupon codes.
         self.optional_promotions = optional_promotions
+        # The unit price results of billing items.
         self.pricing_rules = pricing_rules
-        # The estimated refund amount when you change the billing method of a subscription cluster to pay-as-you-go.
+        # The estimated refund amount when converting a subscription cluster to a pay-as-you-go cluster under a subscription instance.
         self.refund_amount = refund_amount
-        # The amount.
+        # The trade amount.
         self.trade_amount = trade_amount
 
     def validate(self):
@@ -125,10 +127,17 @@ class GetModifyBEClusterInquiryResponseBodyDataOptionalPromotions(DaraModel):
         promotion_name: str = None,
         promotion_option_no: str = None,
     ):
+        # The discount amount.
+        # 
+        # > This parameter is not applicable to the China site.
         self.can_prom_fee = can_prom_fee
+        # The promotion rule description.
         self.option_code = option_code
+        # The coupon description.
         self.promotion_desc = promotion_desc
+        # The coupon name.
         self.promotion_name = promotion_name
+        # The coupon code.
         self.promotion_option_no = promotion_option_no
 
     def validate(self):

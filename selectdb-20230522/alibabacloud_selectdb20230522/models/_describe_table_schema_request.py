@@ -12,12 +12,20 @@ class DescribeTableSchemaRequest(DaraModel):
         region_id: str = None,
         table: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The database name.
+        # 
         # This parameter is required.
         self.database = database
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The table name.
+        # 
         # This parameter is required.
         self.table = table
 

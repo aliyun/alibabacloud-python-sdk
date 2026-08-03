@@ -12,10 +12,16 @@ class CheckIpExistsInSecurityIpListRequest(DaraModel):
         region_id: str = None,
         resource_owner_id: int = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The IP address.
+        # 
         # This parameter is required.
         self.ip = ip
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_id = resource_owner_id

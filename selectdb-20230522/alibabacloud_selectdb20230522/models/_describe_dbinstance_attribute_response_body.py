@@ -24,6 +24,7 @@ class DescribeDBInstanceAttributeResponseBody(DaraModel):
         engine_minor_version: str = None,
         engine_version: str = None,
         expire_time: str = None,
+        fecluster_list: List[main_models.DescribeDBInstanceAttributeResponseBodyFEClusterList] = None,
         gmt_modified: str = None,
         langfuse_instance_ids: List[str] = None,
         lock_mode: int = None,
@@ -51,98 +52,73 @@ class DescribeDBInstanceAttributeResponseBody(DaraModel):
         zone_id: str = None,
     ):
         self.can_upgrade_version_community_map = can_upgrade_version_community_map
-        # The engine versions to which the instance can be upgraded.
+        # The list of versions to which the instance can be upgraded.
         self.can_upgrade_versions = can_upgrade_versions
-        # The billing method of the instance. Valid values:
-        # 
-        # - **Postpaid**: pay-as-you-go
-        # 
-        # - **Prepaid**: subscription
+        # The billing type of the instance. Valid values:
         self.charge_type = charge_type
         self.community_version = community_version
         # The configuration template applied to the instance.
         self.config_pattern_type = config_pattern_type
-        # The time when the instance was created.
+        # The creation time of the instance.
         self.create_time = create_time
-        # A list of clusters in the instance.
+        # The list of clusters that belong to the instance.
         self.dbcluster_list = dbcluster_list
         # The instance ID.
         self.dbinstance_id = dbinstance_id
-        # The instance deployment mode.
+        # The deployment mode of the instance.
         self.deploy_scheme = deploy_scheme
-        # The instance description.
+        # The description of the instance.
         self.description = description
-        # The database engine.
+        # The database engine type.
         self.engine = engine
         # The minor engine version of the instance.
         self.engine_minor_version = engine_minor_version
         # The database engine version.
         self.engine_version = engine_version
-        # The expiration time of the subscription instance.
+        # The time when the instance expires.
         self.expire_time = expire_time
-        # The time when the instance was last modified. The time is in `yyyy-MM-ddTHH:mmZ` format and is displayed in UTC.
+        self.fecluster_list = fecluster_list
+        # The time when the instance was last modified (for example, restarted or had public network access enabled). The time is in the yyyy-MM-ddTHH:mmZ format (UTC).
         self.gmt_modified = gmt_modified
         self.langfuse_instance_ids = langfuse_instance_ids
-        # The lock mode of the instance. A value of **lock** indicates that the instance was automatically locked due to an expired subscription or an overdue payment.
+        # The lock mode of the instance. The value is **lock**, which indicates that the instance is automatically expired or has an overdue payment.
         self.lock_mode = lock_mode
-        # The reason the instance is locked.
+        # The reason why the instance is locked.
         self.lock_reason = lock_reason
         self.mcpserver_service_status = mcpserver_service_status
-        # The end time of the maintenance window.
+        # The end time of the maintenance window of the instance.
         self.maintain_endtime = maintain_endtime
-        # The start time of the maintenance window.
+        # The start time of the maintenance window of the instance.
         self.maintain_starttime = maintain_starttime
         # The multi-zone configuration.
-        # 
-        # > - This parameter is returned only if the `DeployScheme` parameter is set to `multi_az`.
         self.multi_zone = multi_zone
         self.otel_bearer_token = otel_bearer_token
         self.otel_grafana_service_status = otel_grafana_service_status
-        # The object storage space, in GB.
+        # The storage space.
         self.object_store_size = object_store_size
         # The region ID.
         self.region_id = region_id
         # The request ID.
         self.request_id = request_id
-        # The number of CPU cores.
+        # The number of CPU resources.
         self.resource_cpu = resource_cpu
-        # The ID of the instance\\"s resource group.
+        # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
-        # Indicates whether the direct port connection feature is enabled for the instance\\"s VPC.
-        # 
-        # - `true`: Enabled.
-        # 
-        # - `false`: Disabled.
+        # Indicates whether the direct port connection feature is enabled for the VPC in which the instance resides.
         self.sec_group_conn_valid = sec_group_conn_valid
         # Indicates whether the serverless feature is enabled for the instance.
-        # 
-        # - `true`: Enabled.
-        # 
-        # - `false`: Disabled.
         self.serverless = serverless
-        # The state of the instance. Valid values:
-        # 
-        # - **CREATING**: The instance is being created.
-        # 
-        # - **ACTIVE**: The instance is running.
-        # 
-        # - **RESOURCE_CHANGING**: The instance configuration is being changed.
-        # 
-        # - **ORDER_PREPARING**: The order is being confirmed.
-        # 
-        # - **READONLY_RESOURCE_CHANGING**: The instance configuration is being changed, and the instance is write-locked.
-        # 
-        # - **DELETING**: The instance is being deleted.
+        # The status of the instance. Valid values:
         self.status = status
-        # The storage space, in GB.
+        # The storage size.
         self.storage_size = storage_size
-        # The subdomain.
+        # The zone.
         self.sub_domain = sub_domain
-        # A list of tags attached to the instance.
+        # The list of instance labels.
         self.tags = tags
         # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # A list of virtual clusters.
+        # The list of virtual clusters.
         self.virtual_cluster_list = virtual_cluster_list
         # The VPC ID of the instance.
         self.vpc_id = vpc_id
@@ -152,6 +128,10 @@ class DescribeDBInstanceAttributeResponseBody(DaraModel):
     def validate(self):
         if self.dbcluster_list:
             for v1 in self.dbcluster_list:
+                 if v1:
+                    v1.validate()
+        if self.fecluster_list:
+            for v1 in self.fecluster_list:
                  if v1:
                     v1.validate()
         if self.multi_zone:
@@ -215,6 +195,11 @@ class DescribeDBInstanceAttributeResponseBody(DaraModel):
 
         if self.expire_time is not None:
             result['ExpireTime'] = self.expire_time
+
+        result['FEClusterList'] = []
+        if self.fecluster_list is not None:
+            for k1 in self.fecluster_list:
+                result['FEClusterList'].append(k1.to_map() if k1 else None)
 
         if self.gmt_modified is not None:
             result['GmtModified'] = self.gmt_modified
@@ -346,6 +331,12 @@ class DescribeDBInstanceAttributeResponseBody(DaraModel):
         if m.get('ExpireTime') is not None:
             self.expire_time = m.get('ExpireTime')
 
+        self.fecluster_list = []
+        if m.get('FEClusterList') is not None:
+            for k1 in m.get('FEClusterList'):
+                temp_model = main_models.DescribeDBInstanceAttributeResponseBodyFEClusterList()
+                self.fecluster_list.append(temp_model.from_map(k1))
+
         if m.get('GmtModified') is not None:
             self.gmt_modified = m.get('GmtModified')
 
@@ -448,7 +439,7 @@ class DescribeDBInstanceAttributeResponseBodyVirtualClusterList(DaraModel):
         self.active_cluster_id = active_cluster_id
         # The name of the primary cluster.
         self.active_cluster_name = active_cluster_name
-        # The time when the virtual cluster was created.
+        # The creation time of the instance.
         self.created_time = created_time
         # The cluster ID.
         self.db_cluster_id = db_cluster_id
@@ -458,15 +449,7 @@ class DescribeDBInstanceAttributeResponseBodyVirtualClusterList(DaraModel):
         self.standby_cluster_id = standby_cluster_id
         # The name of the standby cluster.
         self.standby_cluster_name = standby_cluster_name
-        # The state of the virtual cluster. Valid values:
-        # 
-        # - **CREATING**: The virtual cluster is being created.
-        # 
-        # - **RUNNING**: The virtual cluster is running.
-        # 
-        # - **DELETING**: The virtual cluster is being deleted.
-        # 
-        # - **UPDATING**: The virtual cluster is being updated.
+        # The status of the instance. Valid values:
         self.status = status
 
     def validate(self):
@@ -537,9 +520,9 @@ class DescribeDBInstanceAttributeResponseBodyTags(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag key.
+        # The key of the tag.
         self.tag_key = tag_key
-        # The tag value.
+        # The value of the tag.
         self.tag_value = tag_value
 
     def validate(self):
@@ -578,9 +561,9 @@ class DescribeDBInstanceAttributeResponseBodyMultiZone(DaraModel):
     ):
         # The number of available IP addresses in the zone.
         self.available_ip_count = available_ip_count
-        # The CIDR block.
+        # The Classless Inter-Domain Routing block of the prefix list entry.
         self.cidr = cidr
-        # A list of vSwitch IDs.
+        # The list of vSwitch IDs.
         self.v_switch_ids = v_switch_ids
         # The zone ID.
         self.zone_id = zone_id
@@ -623,6 +606,65 @@ class DescribeDBInstanceAttributeResponseBodyMultiZone(DaraModel):
 
         return self
 
+class DescribeDBInstanceAttributeResponseBodyFEClusterList(DaraModel):
+    def __init__(
+        self,
+        db_cluster_id: str = None,
+        node_count: int = None,
+        single_node_cpu_cores: int = None,
+        single_node_memory_in_gb: int = None,
+        status: str = None,
+    ):
+        self.db_cluster_id = db_cluster_id
+        self.node_count = node_count
+        self.single_node_cpu_cores = single_node_cpu_cores
+        self.single_node_memory_in_gb = single_node_memory_in_gb
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.db_cluster_id is not None:
+            result['DbClusterId'] = self.db_cluster_id
+
+        if self.node_count is not None:
+            result['NodeCount'] = self.node_count
+
+        if self.single_node_cpu_cores is not None:
+            result['SingleNodeCpuCores'] = self.single_node_cpu_cores
+
+        if self.single_node_memory_in_gb is not None:
+            result['SingleNodeMemoryInGB'] = self.single_node_memory_in_gb
+
+        if self.status is not None:
+            result['Status'] = self.status
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DbClusterId') is not None:
+            self.db_cluster_id = m.get('DbClusterId')
+
+        if m.get('NodeCount') is not None:
+            self.node_count = m.get('NodeCount')
+
+        if m.get('SingleNodeCpuCores') is not None:
+            self.single_node_cpu_cores = m.get('SingleNodeCpuCores')
+
+        if m.get('SingleNodeMemoryInGB') is not None:
+            self.single_node_memory_in_gb = m.get('SingleNodeMemoryInGB')
+
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+
+        return self
+
 class DescribeDBInstanceAttributeResponseBodyDBClusterList(DaraModel):
     def __init__(
         self,
@@ -650,41 +692,23 @@ class DescribeDBInstanceAttributeResponseBodyDBClusterList(DaraModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
-        # The cache storage size, in GB.
+        # The cache storage size. Unit: GB.
         self.cache_storage_size_gb = cache_storage_size_gb
         # The cache storage type.
         self.cache_storage_type = cache_storage_type
         # The billing method of the cluster. Valid values:
-        # 
-        # - **Postpaid**: pay-as-you-go
-        # 
-        # - **Prepaid**: subscription
         self.charge_type = charge_type
-        # The ID of the target cluster to which this cluster is bound.
+        # The bound target cluster.
         self.cluster_binding = cluster_binding
-        # The number of nodes in the cluster. This parameter applies only to serverless instances.
+        # The number of cluster nodes. This parameter takes effect only in serverless mode.
         self.cluster_node_count = cluster_node_count
-        # The cluster node type. This parameter applies only to serverless instances.
+        # The cluster node type. This parameter takes effect only in serverless mode.
         self.cluster_node_type = cluster_node_type
         # The number of CPU cores.
         self.cpu_cores = cpu_cores
         # The time when the cluster was created.
         self.created_time = created_time
-        # The cluster class. Valid values:
-        # 
-        # - **selectdb.xlarge**: 4 CPU cores, 16 GB of memory.
-        # 
-        # - **selectdb.2xlarge**: 8 CPU cores, 32 GB of memory.
-        # 
-        # - **selectdb.4xlarge**: 16 CPU cores, 64 GB of memory.
-        # 
-        # - **selectdb.8xlarge**: 32 CPU cores, 128 GB of memory.
-        # 
-        # - **selectdb.16xlarge**: 64 CPU cores, 256 GB of memory.
-        # 
-        # - **selectdb.24xlarge**: 96 CPU cores, 384 GB of memory.
-        # 
-        # - **selectdb.32xlarge**: 128 CPU cores, 512 GB of memory.
+        # The cluster specifications. Valid values:
         self.db_cluster_class = db_cluster_class
         # The cluster ID.
         self.db_cluster_id = db_cluster_id
@@ -692,33 +716,21 @@ class DescribeDBInstanceAttributeResponseBodyDBClusterList(DaraModel):
         self.db_cluster_name = db_cluster_name
         # The instance name.
         self.db_instance_name = db_instance_name
-        # The memory size, in GB.
+        # The memory size.
         self.memory = memory
-        # The time when the cluster was last modified.
+        # The modification time.
         self.modified_time = modified_time
-        # The performance level.
+        # The performance level (PL).
         self.performance_level = performance_level
-        # The maximum value of the auto-scaling range for the cluster\\"s RDS Capacity Units (RCUs).
+        # The maximum value of the automatic scaling range for the instance RCU (RDS Capacity Unit).
         self.scale_max = scale_max
-        # The minimum value of the auto-scaling range for the cluster\\"s RDS Capacity Units (RCUs).
+        # The minimum value of the automatic scaling range for the instance RCU (RDS Capacity Unit).
         self.scale_min = scale_min
-        # Indicates whether a scheduled scaling policy is enabled.
+        # Indicates whether the time-based elastic policy is enabled.
         self.scaling_rules_enable = scaling_rules_enable
-        # The time when the cluster was started.
+        # The start time of the cluster.
         self.start_time = start_time
-        # The state of the cluster. Valid values:
-        # 
-        # - **CREATING**: The cluster is being created.
-        # 
-        # - **ACTIVATION**: The cluster is running.
-        # 
-        # - **RESOURCE_CHANGING**: The cluster configuration is being changed.
-        # 
-        # - **ORDER_PREPARING**: The order is being confirmed.
-        # 
-        # - **READONLY_RESOURCE_CHANGING**: The cluster configuration is being changed, and the cluster is write-locked.
-        # 
-        # - **DELETING**: The cluster is being deleted.
+        # The status of the cluster. Valid values:
         self.status = status
         # The subdomain.
         self.sub_domain = sub_domain

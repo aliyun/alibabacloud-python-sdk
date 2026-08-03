@@ -24,7 +24,7 @@ class GetModifyBEClusterInquiryRequest(DaraModel):
     ):
         # The elastic cache space.
         self.cache_size = cache_size
-        # The billing method.
+        # The billing type.
         # 
         # This parameter is required.
         self.charge_type = charge_type
@@ -34,22 +34,23 @@ class GetModifyBEClusterInquiryRequest(DaraModel):
         # 
         # This parameter is required.
         self.commodity_code = commodity_code
-        # The elastic computing resources.
+        # The elastic compute resources.
         self.compute_size = compute_size
         # The instance ID.
         # 
         # This parameter is required.
         self.db_instance_id = db_instance_id
-        # Specifies whether this is an inquiry for changing the billing method of the cluster.
+        # Specifies whether to query the price for converting the cluster billing type.
         self.modify_cluster_charge_type = modify_cluster_charge_type
         # The reserved cache space.
         self.pre_cache_size = pre_cache_size
-        # The reserved computing resources.
+        # The reserved compute resources.
         self.pre_compute_size = pre_compute_size
         # The billing cycle.
         # 
         # This parameter is required.
         self.pricing_cycle = pricing_cycle
+        # The coupon code.
         self.promotion_option_no = promotion_option_no
         # The quantity.
         # 

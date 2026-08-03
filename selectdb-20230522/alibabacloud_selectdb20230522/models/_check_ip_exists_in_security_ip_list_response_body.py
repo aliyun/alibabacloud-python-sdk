@@ -11,7 +11,9 @@ class CheckIpExistsInSecurityIpListResponseBody(DaraModel):
         data: main_models.CheckIpExistsInSecurityIpListResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -49,6 +51,7 @@ class CheckIpExistsInSecurityIpListResponseBodyData(DaraModel):
         self,
         ip_exists: bool = None,
     ):
+        # Indicates whether the IP address exists.
         self.ip_exists = ip_exists
 
     def validate(self):

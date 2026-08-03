@@ -1,3 +1,9 @@
+2026-08-03 Version: 5.1.1
+- Update API CreateDBInstance: add request parameters FEClassCode.
+- Update API CreateDBInstance: add request parameters FENodeCount.
+- Update API DescribeDBInstanceAttribute: add response parameters Body.FEClusterList.
+
+
 2026-07-28 Version: 5.1.0
 - Support API DescribeProfile.
 - Support API DescribeQueryExplain.

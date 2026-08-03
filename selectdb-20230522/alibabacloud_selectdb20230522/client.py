@@ -772,6 +772,10 @@ class Client(OpenApiClient):
             query['Engine'] = request.engine
         if not DaraCore.is_null(request.engine_version):
             query['EngineVersion'] = request.engine_version
+        if not DaraCore.is_null(request.feclass_code):
+            query['FEClassCode'] = request.feclass_code
+        if not DaraCore.is_null(request.fenode_count):
+            query['FENodeCount'] = request.fenode_count
         if not DaraCore.is_null(request.multi_zone_shrink):
             query['MultiZone'] = request.multi_zone_shrink
         if not DaraCore.is_null(request.period):
@@ -858,6 +862,10 @@ class Client(OpenApiClient):
             query['Engine'] = request.engine
         if not DaraCore.is_null(request.engine_version):
             query['EngineVersion'] = request.engine_version
+        if not DaraCore.is_null(request.feclass_code):
+            query['FEClassCode'] = request.feclass_code
+        if not DaraCore.is_null(request.fenode_count):
+            query['FENodeCount'] = request.fenode_count
         if not DaraCore.is_null(request.multi_zone_shrink):
             query['MultiZone'] = request.multi_zone_shrink
         if not DaraCore.is_null(request.period):
