@@ -10,9 +10,9 @@ class VideoModerationResultRequest(DaraModel):
         service: str = None,
         service_parameters: str = None,
     ):
-        # The ServiceCode for video moderation.
+        # The service code for video moderation.
         self.service = service
-        # The parameter set required by the moderation service. taskId specifies the taskId of the moderation task to query. Only one taskId can be specified per request.
+        # The parameter set required by the moderation service. taskId specifies the task ID of the moderation task to query. Only one taskId can be specified per request.
         self.service_parameters = service_parameters
 
     def validate(self):
