@@ -75,13 +75,13 @@ class DescribeFileModerationResultResponseBodyData(DaraModel):
         risk_level: str = None,
         url: str = None,
     ):
-        # The AccountId passed in by the customer.
+        # The AccountId specified in the request.
         self.account_id = account_id
         # The data ID.
         self.data_id = data_id
-        # Optional. The document type.
+        # The document type. This parameter is optional.
         self.doc_type = doc_type
-        # The list of moderation results.
+        # The list of detection results.
         self.page_result = page_result
         # The summary information.
         self.page_summary = page_summary
@@ -169,6 +169,7 @@ class DescribeFileModerationResultResponseBodyDataPageSummary(DaraModel):
         self.image_summary = image_summary
         # The total number of pages.
         self.page_sum = page_sum
+        # The document authenticity verification risk summary.
         self.risk_summary = risk_summary
         # The text summary information.
         self.text_summary = text_summary
@@ -317,8 +318,11 @@ class DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummary(DaraMod
         risk_labels: List[main_models.DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryRiskLabels] = None,
         risk_level: str = None,
     ):
+        # The extended information.
         self.ext = ext
+        # The list of hit authenticity verification risk labels.
         self.risk_labels = risk_labels
+        # The overall risk level of the document, which is the highest level among all hit labels.
         self.risk_level = risk_level
 
     def validate(self):
@@ -371,8 +375,11 @@ class DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryRiskLabe
         description: str = None,
         label: str = None,
     ):
+        # The label confidence score.
         self.confidence = confidence
+        # The Chinese description of the risk label.
         self.description = description
+        # The risk label.
         self.label = label
 
     def validate(self):
@@ -412,6 +419,7 @@ class DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExt(Dara
         self,
         aigc_data: main_models.DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAigcData = None,
     ):
+        # The detection details of AI-generated content.
         self.aigc_data = aigc_data
 
     def validate(self):
@@ -442,7 +450,9 @@ class DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAigcD
         aigc: main_models.DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAigcDataAIGC = None,
         explain: str = None,
     ):
+        # The implicit identifier information of AI-generated content.
         self.aigc = aigc
+        # The comprehensive analysis report of large model authenticity verification.
         self.explain = explain
 
     def validate(self):
@@ -484,12 +494,19 @@ class DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAigcD
         reserved_code_1: str = None,
         reserved_code_2: str = None,
     ):
+        # The content producer code.
         self.content_producer = content_producer
+        # The content propagator code.
         self.content_propagator = content_propagator
+        # The content attribute declared by the implicit identifier.
         self.label = label
+        # The content production ID.
         self.produce_id = produce_id
+        # The content propagation ID.
         self.propagate_id = propagate_id
+        # Reserved field 1.
         self.reserved_code_1 = reserved_code_1
+        # Reserved field 2.
         self.reserved_code_2 = reserved_code_2
 
     def validate(self):
@@ -648,13 +665,13 @@ class DescribeFileModerationResultResponseBodyDataPageResult(DaraModel):
         text_result: List[main_models.DescribeFileModerationResultResponseBodyDataPageResultTextResult] = None,
         text_url: str = None,
     ):
-        # The image moderation result.
+        # The image detection results.
         self.image_result = image_result
         # The image URL.
         self.image_url = image_url
         # The page number.
         self.page_num = page_num
-        # The text moderation result.
+        # The text moderation results.
         self.text_result = text_result
         # The URL where the text content is stored.
         self.text_url = text_url
@@ -741,7 +758,7 @@ class DescribeFileModerationResultResponseBodyDataPageResultTextResult(DaraModel
         self.labels = labels
         # The risk level.
         self.risk_level = risk_level
-        # The details of the hit risks.
+        # The details of the hit risk.
         self.risk_tips = risk_tips
         # The risk keywords that are hit.
         self.risk_words = risk_words
@@ -749,7 +766,7 @@ class DescribeFileModerationResultResponseBodyDataPageResultTextResult(DaraModel
         self.service = service
         # The text content.
         self.text = text
-        # The text segment information.
+        # The text segmentation information.
         self.text_segment = text_segment
 
     def validate(self):

@@ -79,13 +79,13 @@ class ManualModerationResultResponseBodyData(DaraModel):
         self.result = result
         # The number of reviews.
         self.review_count = review_count
-        # The risk level, returned based on the configured high and low risk scores. Valid values:
+        # The risk level, returned based on the configured high and low risk thresholds. Valid values:
         # 
         # - high: High risk.
         #  
         # - low: Low risk.
         # 
-        # - none: No risk detected.
+        #  - none: No risk detected.
         self.risk_level = risk_level
         # The task ID.
         self.task_id = task_id

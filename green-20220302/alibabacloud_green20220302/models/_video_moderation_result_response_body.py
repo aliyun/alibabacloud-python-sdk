@@ -334,6 +334,7 @@ class VideoModerationResultResponseBodyDataFrameResultFrames(DaraModel):
 class VideoModerationResultResponseBodyDataFrameResultFramesResults(DaraModel):
     def __init__(
         self,
+        aigc_data: main_models.VideoModerationResultResponseBodyDataFrameResultFramesResultsAigcData = None,
         custom_image: List[main_models.VideoModerationResultResponseBodyDataFrameResultFramesResultsCustomImage] = None,
         logo_data: List[main_models.VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoData] = None,
         public_figure: List[main_models.VideoModerationResultResponseBodyDataFrameResultFramesResultsPublicFigure] = None,
@@ -342,6 +343,7 @@ class VideoModerationResultResponseBodyDataFrameResultFramesResults(DaraModel):
         text_in_image: Dict[str, Any] = None,
         vl_content: main_models.VideoModerationResultResponseBodyDataFrameResultFramesResultsVlContent = None,
     ):
+        self.aigc_data = aigc_data
         # The custom image library information returned when a custom image library is hit.
         self.custom_image = custom_image
         # The logo information returned when a logo is detected in the video.
@@ -358,6 +360,8 @@ class VideoModerationResultResponseBodyDataFrameResultFramesResults(DaraModel):
         self.vl_content = vl_content
 
     def validate(self):
+        if self.aigc_data:
+            self.aigc_data.validate()
         if self.custom_image:
             for v1 in self.custom_image:
                  if v1:
@@ -382,6 +386,9 @@ class VideoModerationResultResponseBodyDataFrameResultFramesResults(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.aigc_data is not None:
+            result['AigcData'] = self.aigc_data.to_map()
+
         result['CustomImage'] = []
         if self.custom_image is not None:
             for k1 in self.custom_image:
@@ -415,6 +422,10 @@ class VideoModerationResultResponseBodyDataFrameResultFramesResults(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AigcData') is not None:
+            temp_model = main_models.VideoModerationResultResponseBodyDataFrameResultFramesResultsAigcData()
+            self.aigc_data = temp_model.from_map(m.get('AigcData'))
+
         self.custom_image = []
         if m.get('CustomImage') is not None:
             for k1 in m.get('CustomImage'):
@@ -817,6 +828,33 @@ class VideoModerationResultResponseBodyDataFrameResultFramesResultsCustomImage(D
 
         if m.get('LibId') is not None:
             self.lib_id = m.get('LibId')
+
+        return self
+
+class VideoModerationResultResponseBodyDataFrameResultFramesResultsAigcData(DaraModel):
+    def __init__(
+        self,
+        explain: str = None,
+    ):
+        self.explain = explain
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.explain is not None:
+            result['Explain'] = self.explain
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Explain') is not None:
+            self.explain = m.get('Explain')
 
         return self
 

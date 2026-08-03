@@ -1,3 +1,7 @@
+2026-08-03 Version: 3.5.3
+- Update API VideoModerationResult: add response parameters Body.Data.FrameResult.Frames.$.Results.$.AigcData.
+
+
 2026-07-28 Version: 3.5.2
 - Update API DescribeFileModerationResult: add response parameters Body.Data.PageSummary.RiskSummary.
 - Update API MultiModalGuardForBase64: add request parameters FileBase64Str.
