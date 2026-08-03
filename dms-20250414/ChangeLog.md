@@ -1,3 +1,11 @@
+2026-08-03 Version: 1.19.0
+- Support API CheckDataAgentMemoryConfig.
+- Support API ConfigDataAgentMemory.
+- Support API DeleteDataAgentMemory.
+- Support API ListDataAgentMemory.
+- Support API UpdateDataAgentMemory.
+
+
 2026-07-27 Version: 1.18.1
 - Update API CreateCustomAgent: add request parameters WebReportTheme.
 - Update API CreateCustomAgent: add response parameters Body.Data.WebReportTheme.

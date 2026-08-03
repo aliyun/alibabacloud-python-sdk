@@ -21,13 +21,13 @@ class ListDataAgentWorkspaceRequest(DaraModel):
         self.dmsunit = dmsunit
         # The maximum number of entries per page.
         self.max_results = max_results
-        # The token information.
+        # The pagination token.
         self.next_token = next_token
         # The sort order.
         self.order = order
-        # The name of the field by which to sort.
+        # The field name used for sorting.
         self.order_by = order_by
-        # The page number to start from.
+        # The page number.
         # 
         # This parameter is required.
         self.page_number = page_number

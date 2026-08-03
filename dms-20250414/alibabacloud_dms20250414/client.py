@@ -440,6 +440,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.batch_update_data_lake_partitions_with_options_async(request, runtime)
 
+    def check_data_agent_memory_config_with_options(
+        self,
+        request: main_models.CheckDataAgentMemoryConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CheckDataAgentMemoryConfigResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dmsunit):
+            query['DMSUnit'] = request.dmsunit
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CheckDataAgentMemoryConfig',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CheckDataAgentMemoryConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_data_agent_memory_config_with_options_async(
+        self,
+        request: main_models.CheckDataAgentMemoryConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CheckDataAgentMemoryConfigResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dmsunit):
+            query['DMSUnit'] = request.dmsunit
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CheckDataAgentMemoryConfig',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CheckDataAgentMemoryConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_data_agent_memory_config(
+        self,
+        request: main_models.CheckDataAgentMemoryConfigRequest,
+    ) -> main_models.CheckDataAgentMemoryConfigResponse:
+        runtime = RuntimeOptions()
+        return self.check_data_agent_memory_config_with_options(request, runtime)
+
+    async def check_data_agent_memory_config_async(
+        self,
+        request: main_models.CheckDataAgentMemoryConfigRequest,
+    ) -> main_models.CheckDataAgentMemoryConfigResponse:
+        runtime = RuntimeOptions()
+        return await self.check_data_agent_memory_config_with_options_async(request, runtime)
+
     def config_airflow_with_options(
         self,
         tmp_req: main_models.ConfigAirflowRequest,
@@ -525,6 +595,84 @@ class Client(OpenApiClient):
     ) -> main_models.ConfigAirflowResponse:
         runtime = RuntimeOptions()
         return await self.config_airflow_with_options_async(request, runtime)
+
+    def config_data_agent_memory_with_options(
+        self,
+        request: main_models.ConfigDataAgentMemoryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ConfigDataAgentMemoryResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dmsunit):
+            query['DMSUnit'] = request.dmsunit
+        if not DaraCore.is_null(request.enabled):
+            query['Enabled'] = request.enabled
+        if not DaraCore.is_null(request.recall_enabled):
+            query['RecallEnabled'] = request.recall_enabled
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ConfigDataAgentMemory',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ConfigDataAgentMemoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def config_data_agent_memory_with_options_async(
+        self,
+        request: main_models.ConfigDataAgentMemoryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ConfigDataAgentMemoryResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dmsunit):
+            query['DMSUnit'] = request.dmsunit
+        if not DaraCore.is_null(request.enabled):
+            query['Enabled'] = request.enabled
+        if not DaraCore.is_null(request.recall_enabled):
+            query['RecallEnabled'] = request.recall_enabled
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ConfigDataAgentMemory',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ConfigDataAgentMemoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def config_data_agent_memory(
+        self,
+        request: main_models.ConfigDataAgentMemoryRequest,
+    ) -> main_models.ConfigDataAgentMemoryResponse:
+        runtime = RuntimeOptions()
+        return self.config_data_agent_memory_with_options(request, runtime)
+
+    async def config_data_agent_memory_async(
+        self,
+        request: main_models.ConfigDataAgentMemoryRequest,
+    ) -> main_models.ConfigDataAgentMemoryResponse:
+        runtime = RuntimeOptions()
+        return await self.config_data_agent_memory_with_options_async(request, runtime)
 
     def create_airflow_with_options(
         self,
@@ -2069,6 +2217,80 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteDataAgentKnowledgeBaseResponse:
         runtime = RuntimeOptions()
         return await self.delete_data_agent_knowledge_base_with_options_async(request, runtime)
+
+    def delete_data_agent_memory_with_options(
+        self,
+        request: main_models.DeleteDataAgentMemoryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteDataAgentMemoryResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dmsunit):
+            query['DMSUnit'] = request.dmsunit
+        if not DaraCore.is_null(request.uuid):
+            query['Uuid'] = request.uuid
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteDataAgentMemory',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteDataAgentMemoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_data_agent_memory_with_options_async(
+        self,
+        request: main_models.DeleteDataAgentMemoryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteDataAgentMemoryResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dmsunit):
+            query['DMSUnit'] = request.dmsunit
+        if not DaraCore.is_null(request.uuid):
+            query['Uuid'] = request.uuid
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteDataAgentMemory',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteDataAgentMemoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_data_agent_memory(
+        self,
+        request: main_models.DeleteDataAgentMemoryRequest,
+    ) -> main_models.DeleteDataAgentMemoryResponse:
+        runtime = RuntimeOptions()
+        return self.delete_data_agent_memory_with_options(request, runtime)
+
+    async def delete_data_agent_memory_async(
+        self,
+        request: main_models.DeleteDataAgentMemoryRequest,
+    ) -> main_models.DeleteDataAgentMemoryResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_data_agent_memory_with_options_async(request, runtime)
 
     def delete_data_agent_workspace_with_options(
         self,
@@ -5350,6 +5572,108 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_data_agent_accuracy_test_tasks_with_options_async(request, runtime)
 
+    def list_data_agent_memory_with_options(
+        self,
+        request: main_models.ListDataAgentMemoryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDataAgentMemoryResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.content_pattern):
+            query['ContentPattern'] = request.content_pattern
+        if not DaraCore.is_null(request.dmsunit):
+            query['DMSUnit'] = request.dmsunit
+        if not DaraCore.is_null(request.from_id):
+            query['FromId'] = request.from_id
+        if not DaraCore.is_null(request.mem_from):
+            query['MemFrom'] = request.mem_from
+        if not DaraCore.is_null(request.order):
+            query['Order'] = request.order
+        if not DaraCore.is_null(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.query_all):
+            query['QueryAll'] = request.query_all
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDataAgentMemory',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDataAgentMemoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_data_agent_memory_with_options_async(
+        self,
+        request: main_models.ListDataAgentMemoryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDataAgentMemoryResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.content_pattern):
+            query['ContentPattern'] = request.content_pattern
+        if not DaraCore.is_null(request.dmsunit):
+            query['DMSUnit'] = request.dmsunit
+        if not DaraCore.is_null(request.from_id):
+            query['FromId'] = request.from_id
+        if not DaraCore.is_null(request.mem_from):
+            query['MemFrom'] = request.mem_from
+        if not DaraCore.is_null(request.order):
+            query['Order'] = request.order
+        if not DaraCore.is_null(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.query_all):
+            query['QueryAll'] = request.query_all
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDataAgentMemory',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDataAgentMemoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_data_agent_memory(
+        self,
+        request: main_models.ListDataAgentMemoryRequest,
+    ) -> main_models.ListDataAgentMemoryResponse:
+        runtime = RuntimeOptions()
+        return self.list_data_agent_memory_with_options(request, runtime)
+
+    async def list_data_agent_memory_async(
+        self,
+        request: main_models.ListDataAgentMemoryRequest,
+    ) -> main_models.ListDataAgentMemoryResponse:
+        runtime = RuntimeOptions()
+        return await self.list_data_agent_memory_with_options_async(request, runtime)
+
     def list_data_agent_session_with_options(
         self,
         request: main_models.ListDataAgentSessionRequest,
@@ -8591,6 +8915,92 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateDataAgentAccuracyTestResponse:
         runtime = RuntimeOptions()
         return await self.update_data_agent_accuracy_test_with_options_async(request, runtime)
+
+    def update_data_agent_memory_with_options(
+        self,
+        request: main_models.UpdateDataAgentMemoryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateDataAgentMemoryResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.content):
+            query['Content'] = request.content
+        if not DaraCore.is_null(request.dmsunit):
+            query['DMSUnit'] = request.dmsunit
+        if not DaraCore.is_null(request.from_id):
+            query['FromId'] = request.from_id
+        if not DaraCore.is_null(request.mem_from):
+            query['MemFrom'] = request.mem_from
+        if not DaraCore.is_null(request.uuid):
+            query['Uuid'] = request.uuid
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateDataAgentMemory',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateDataAgentMemoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_data_agent_memory_with_options_async(
+        self,
+        request: main_models.UpdateDataAgentMemoryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateDataAgentMemoryResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.content):
+            query['Content'] = request.content
+        if not DaraCore.is_null(request.dmsunit):
+            query['DMSUnit'] = request.dmsunit
+        if not DaraCore.is_null(request.from_id):
+            query['FromId'] = request.from_id
+        if not DaraCore.is_null(request.mem_from):
+            query['MemFrom'] = request.mem_from
+        if not DaraCore.is_null(request.uuid):
+            query['Uuid'] = request.uuid
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateDataAgentMemory',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateDataAgentMemoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_data_agent_memory(
+        self,
+        request: main_models.UpdateDataAgentMemoryRequest,
+    ) -> main_models.UpdateDataAgentMemoryResponse:
+        runtime = RuntimeOptions()
+        return self.update_data_agent_memory_with_options(request, runtime)
+
+    async def update_data_agent_memory_async(
+        self,
+        request: main_models.UpdateDataAgentMemoryRequest,
+    ) -> main_models.UpdateDataAgentMemoryResponse:
+        runtime = RuntimeOptions()
+        return await self.update_data_agent_memory_with_options_async(request, runtime)
 
     def update_data_agent_space_info_with_options(
         self,

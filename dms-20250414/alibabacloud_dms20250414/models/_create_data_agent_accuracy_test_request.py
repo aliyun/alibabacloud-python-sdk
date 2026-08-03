@@ -24,8 +24,9 @@ class CreateDataAgentAccuracyTestRequest(DaraModel):
     ):
         # The ID of the custom agent to be tested for accuracy.
         self.custom_agent_id = custom_agent_id
-        # The data source. We recommend that you configure this in the custom agent.
+        # Deprecated.
         self.dataset = dataset
+        # The data source. We recommend that you configure this in the custom agent.
         self.datasource = datasource
         # The description.
         self.desc = desc

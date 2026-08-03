@@ -26,7 +26,7 @@ class ListDataAgentWorkspaceResponseBody(DaraModel):
         self.error_message = error_message
         # The maximum number of entries per page.
         self.max_results = max_results
-        # The token information.
+        # The pagination token.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -178,19 +178,21 @@ class ListDataAgentWorkspaceResponseBodyDataContent(DaraModel):
         workspace_name: str = None,
         workspace_status: str = None,
     ):
-        # The creation time of the workspace. This value is a UNIX timestamp in seconds.
+        # The creation time of the workspace, in UNIX timestamp format (milliseconds).
         self.create_time = create_time
         # The UID of the workspace creator.
         self.creator = creator
         # The description of the workspace.
         self.description = description
+        # Indicates whether session sharing is enabled for the workspace.
         self.is_session_share_enabled = is_session_share_enabled
-        # The most recent modification time of the workspace. This value is a UNIX timestamp in seconds.
+        # The most recent modification time of the workspace, in UNIX timestamp format (milliseconds).
         self.modify_time = modify_time
         # The role name of the user in the workspace.
         self.role_name = role_name
         # The number of members in the workspace.
         self.total_member = total_member
+        # The workspace type.
         self.type = type
         # The workspace ID.
         self.workspace_id = workspace_id

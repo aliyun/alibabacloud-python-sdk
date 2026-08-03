@@ -68,10 +68,16 @@ from ._batch_update_data_lake_partitions_request import BatchUpdateDataLakeParti
 from ._batch_update_data_lake_partitions_shrink_request import BatchUpdateDataLakePartitionsShrinkRequest
 from ._batch_update_data_lake_partitions_response_body import BatchUpdateDataLakePartitionsResponseBody
 from ._batch_update_data_lake_partitions_response import BatchUpdateDataLakePartitionsResponse
+from ._check_data_agent_memory_config_request import CheckDataAgentMemoryConfigRequest
+from ._check_data_agent_memory_config_response_body import CheckDataAgentMemoryConfigResponseBody
+from ._check_data_agent_memory_config_response import CheckDataAgentMemoryConfigResponse
 from ._config_airflow_request import ConfigAirflowRequest
 from ._config_airflow_shrink_request import ConfigAirflowShrinkRequest
 from ._config_airflow_response_body import ConfigAirflowResponseBody
 from ._config_airflow_response import ConfigAirflowResponse
+from ._config_data_agent_memory_request import ConfigDataAgentMemoryRequest
+from ._config_data_agent_memory_response_body import ConfigDataAgentMemoryResponseBody
+from ._config_data_agent_memory_response import ConfigDataAgentMemoryResponse
 from ._create_airflow_request import CreateAirflowRequest
 from ._create_airflow_shrink_request import CreateAirflowShrinkRequest
 from ._create_airflow_response_body import CreateAirflowResponseBody
@@ -127,6 +133,9 @@ from ._delete_data_agent_accuracy_test_response import DeleteDataAgentAccuracyTe
 from ._delete_data_agent_knowledge_base_request import DeleteDataAgentKnowledgeBaseRequest
 from ._delete_data_agent_knowledge_base_response_body import DeleteDataAgentKnowledgeBaseResponseBody
 from ._delete_data_agent_knowledge_base_response import DeleteDataAgentKnowledgeBaseResponse
+from ._delete_data_agent_memory_request import DeleteDataAgentMemoryRequest
+from ._delete_data_agent_memory_response_body import DeleteDataAgentMemoryResponseBody
+from ._delete_data_agent_memory_response import DeleteDataAgentMemoryResponse
 from ._delete_data_agent_workspace_request import DeleteDataAgentWorkspaceRequest
 from ._delete_data_agent_workspace_response_body import DeleteDataAgentWorkspaceResponseBody
 from ._delete_data_agent_workspace_response import DeleteDataAgentWorkspaceResponse
@@ -247,6 +256,9 @@ from ._list_data_agent_accuracy_test_results_response import ListDataAgentAccura
 from ._list_data_agent_accuracy_test_tasks_request import ListDataAgentAccuracyTestTasksRequest
 from ._list_data_agent_accuracy_test_tasks_response_body import ListDataAgentAccuracyTestTasksResponseBody
 from ._list_data_agent_accuracy_test_tasks_response import ListDataAgentAccuracyTestTasksResponse
+from ._list_data_agent_memory_request import ListDataAgentMemoryRequest
+from ._list_data_agent_memory_response_body import ListDataAgentMemoryResponseBody
+from ._list_data_agent_memory_response import ListDataAgentMemoryResponse
 from ._list_data_agent_session_request import ListDataAgentSessionRequest
 from ._list_data_agent_session_response_body import ListDataAgentSessionResponseBody
 from ._list_data_agent_session_response import ListDataAgentSessionResponse
@@ -350,6 +362,9 @@ from ._update_airflow_response import UpdateAirflowResponse
 from ._update_data_agent_accuracy_test_request import UpdateDataAgentAccuracyTestRequest
 from ._update_data_agent_accuracy_test_response_body import UpdateDataAgentAccuracyTestResponseBody
 from ._update_data_agent_accuracy_test_response import UpdateDataAgentAccuracyTestResponse
+from ._update_data_agent_memory_request import UpdateDataAgentMemoryRequest
+from ._update_data_agent_memory_response_body import UpdateDataAgentMemoryResponseBody
+from ._update_data_agent_memory_response import UpdateDataAgentMemoryResponse
 from ._update_data_agent_space_info_request import UpdateDataAgentSpaceInfoRequest
 from ._update_data_agent_space_info_response_body import UpdateDataAgentSpaceInfoResponseBody
 from ._update_data_agent_space_info_response import UpdateDataAgentSpaceInfoResponse
@@ -397,7 +412,9 @@ from ._workspace_code_publish_response import WorkspaceCodePublishResponse
 from ._agentic_dms_instance_sync_task_instance import AgenticDmsInstanceSyncTaskInstanceDmsInstanceSummary
 from ._open_claw_instance_vo import OpenClawInstanceVOImageInfo
 from ._add_user_to_data_agent_workspace_response_body import AddUserToDataAgentWorkspaceResponseBodyData
+from ._check_data_agent_memory_config_response_body import CheckDataAgentMemoryConfigResponseBodyData
 from ._config_airflow_response_body import ConfigAirflowResponseBodyRoot
+from ._config_data_agent_memory_response_body import ConfigDataAgentMemoryResponseBodyData
 from ._create_airflow_response_body import CreateAirflowResponseBodyRoot
 from ._create_airflow_login_token_response_body import CreateAirflowLoginTokenResponseBodyData
 from ._create_custom_agent_request import CreateCustomAgentRequestCallbackConfig
@@ -420,6 +437,7 @@ from ._delete_airflow_response_body import DeleteAirflowResponseBodyRoot
 from ._delete_custom_agent_response_body import DeleteCustomAgentResponseBodyData
 from ._delete_data_agent_response_body import DeleteDataAgentResponseBodyData
 from ._delete_data_agent_knowledge_base_response_body import DeleteDataAgentKnowledgeBaseResponseBodyData
+from ._delete_data_agent_memory_response_body import DeleteDataAgentMemoryResponseBodyData
 from ._delete_file_upload_response_body import DeleteFileUploadResponseBodyData
 from ._describe_custom_agent_response_body import DescribeCustomAgentResponseBodyDataCallbackConfig
 from ._describe_custom_agent_response_body import DescribeCustomAgentResponseBodyDataExecutionConfig
@@ -460,6 +478,8 @@ from ._list_data_agent_accuracy_test_instances_response_body import ListDataAgen
 from ._list_data_agent_accuracy_test_results_response_body import ListDataAgentAccuracyTestResultsResponseBodyDataContent
 from ._list_data_agent_accuracy_test_results_response_body import ListDataAgentAccuracyTestResultsResponseBodyData
 from ._list_data_agent_accuracy_test_tasks_response_body import ListDataAgentAccuracyTestTasksResponseBodyData
+from ._list_data_agent_memory_response_body import ListDataAgentMemoryResponseBodyDataData
+from ._list_data_agent_memory_response_body import ListDataAgentMemoryResponseBodyData
 from ._list_data_agent_session_response_body import ListDataAgentSessionResponseBodyDataSessionConfig
 from ._list_data_agent_session_response_body import ListDataAgentSessionResponseBodyData
 from ._list_data_agent_workspace_response_body import ListDataAgentWorkspaceResponseBodyDataContent
@@ -499,6 +519,7 @@ from ._set_workspace_quota_response_body import SetWorkspaceQuotaResponseBodyDat
 from ._start_data_agent_accuracy_test_task_response_body import StartDataAgentAccuracyTestTaskResponseBodyData
 from ._update_airflow_response_body import UpdateAirflowResponseBodyRoot
 from ._update_data_agent_accuracy_test_response_body import UpdateDataAgentAccuracyTestResponseBodyData
+from ._update_data_agent_memory_response_body import UpdateDataAgentMemoryResponseBodyData
 from ._update_data_agent_space_info_response_body import UpdateDataAgentSpaceInfoResponseBodyData
 from ._update_data_agent_workspace_member_role_response_body import UpdateDataAgentWorkspaceMemberRoleResponseBodyData
 from ._workspace_action_status_response_body import WorkspaceActionStatusResponseBodyData
@@ -571,10 +592,16 @@ __all__ = [
     BatchUpdateDataLakePartitionsShrinkRequest,
     BatchUpdateDataLakePartitionsResponseBody,
     BatchUpdateDataLakePartitionsResponse,
+    CheckDataAgentMemoryConfigRequest,
+    CheckDataAgentMemoryConfigResponseBody,
+    CheckDataAgentMemoryConfigResponse,
     ConfigAirflowRequest,
     ConfigAirflowShrinkRequest,
     ConfigAirflowResponseBody,
     ConfigAirflowResponse,
+    ConfigDataAgentMemoryRequest,
+    ConfigDataAgentMemoryResponseBody,
+    ConfigDataAgentMemoryResponse,
     CreateAirflowRequest,
     CreateAirflowShrinkRequest,
     CreateAirflowResponseBody,
@@ -630,6 +657,9 @@ __all__ = [
     DeleteDataAgentKnowledgeBaseRequest,
     DeleteDataAgentKnowledgeBaseResponseBody,
     DeleteDataAgentKnowledgeBaseResponse,
+    DeleteDataAgentMemoryRequest,
+    DeleteDataAgentMemoryResponseBody,
+    DeleteDataAgentMemoryResponse,
     DeleteDataAgentWorkspaceRequest,
     DeleteDataAgentWorkspaceResponseBody,
     DeleteDataAgentWorkspaceResponse,
@@ -750,6 +780,9 @@ __all__ = [
     ListDataAgentAccuracyTestTasksRequest,
     ListDataAgentAccuracyTestTasksResponseBody,
     ListDataAgentAccuracyTestTasksResponse,
+    ListDataAgentMemoryRequest,
+    ListDataAgentMemoryResponseBody,
+    ListDataAgentMemoryResponse,
     ListDataAgentSessionRequest,
     ListDataAgentSessionResponseBody,
     ListDataAgentSessionResponse,
@@ -853,6 +886,9 @@ __all__ = [
     UpdateDataAgentAccuracyTestRequest,
     UpdateDataAgentAccuracyTestResponseBody,
     UpdateDataAgentAccuracyTestResponse,
+    UpdateDataAgentMemoryRequest,
+    UpdateDataAgentMemoryResponseBody,
+    UpdateDataAgentMemoryResponse,
     UpdateDataAgentSpaceInfoRequest,
     UpdateDataAgentSpaceInfoResponseBody,
     UpdateDataAgentSpaceInfoResponse,
@@ -900,7 +936,9 @@ __all__ = [
     AgenticDmsInstanceSyncTaskInstanceDmsInstanceSummary,
     OpenClawInstanceVOImageInfo,
     AddUserToDataAgentWorkspaceResponseBodyData,
+    CheckDataAgentMemoryConfigResponseBodyData,
     ConfigAirflowResponseBodyRoot,
+    ConfigDataAgentMemoryResponseBodyData,
     CreateAirflowResponseBodyRoot,
     CreateAirflowLoginTokenResponseBodyData,
     CreateCustomAgentRequestCallbackConfig,
@@ -923,6 +961,7 @@ __all__ = [
     DeleteCustomAgentResponseBodyData,
     DeleteDataAgentResponseBodyData,
     DeleteDataAgentKnowledgeBaseResponseBodyData,
+    DeleteDataAgentMemoryResponseBodyData,
     DeleteFileUploadResponseBodyData,
     DescribeCustomAgentResponseBodyDataCallbackConfig,
     DescribeCustomAgentResponseBodyDataExecutionConfig,
@@ -963,6 +1002,8 @@ __all__ = [
     ListDataAgentAccuracyTestResultsResponseBodyDataContent,
     ListDataAgentAccuracyTestResultsResponseBodyData,
     ListDataAgentAccuracyTestTasksResponseBodyData,
+    ListDataAgentMemoryResponseBodyDataData,
+    ListDataAgentMemoryResponseBodyData,
     ListDataAgentSessionResponseBodyDataSessionConfig,
     ListDataAgentSessionResponseBodyData,
     ListDataAgentWorkspaceResponseBodyDataContent,
@@ -1002,6 +1043,7 @@ __all__ = [
     StartDataAgentAccuracyTestTaskResponseBodyData,
     UpdateAirflowResponseBodyRoot,
     UpdateDataAgentAccuracyTestResponseBodyData,
+    UpdateDataAgentMemoryResponseBodyData,
     UpdateDataAgentSpaceInfoResponseBodyData,
     UpdateDataAgentWorkspaceMemberRoleResponseBodyData,
     WorkspaceActionStatusResponseBodyData,
