@@ -184,8 +184,10 @@ class ListWorkspacesResponseBodyItems(DaraModel):
 class ListWorkspacesResponseBodyItemsServices(DaraModel):
     def __init__(
         self,
+        components: List[main_models.ListWorkspacesResponseBodyItemsServicesComponents] = None,
         create_time: str = None,
         cu: str = None,
+        deletion_protection: bool = None,
         expire_time: str = None,
         pay_type: str = None,
         plan: str = None,
@@ -194,10 +196,12 @@ class ListWorkspacesResponseBodyItemsServices(DaraModel):
         service_type: str = None,
         status: str = None,
     ):
+        self.components = components
         # The creation time.
         self.create_time = create_time
         # The compute resource.
         self.cu = cu
+        self.deletion_protection = deletion_protection
         # The expiration time.
         self.expire_time = expire_time
         # The billing type. Valid values:
@@ -208,7 +212,7 @@ class ListWorkspacesResponseBodyItemsServices(DaraModel):
         # > - If this parameter is not specified, the default value is pay-as-you-go.
         # > - In subscription billing mode, a discount is available when you purchase a duration of one year or longer. Select the billing type as needed.
         self.pay_type = pay_type
-        # [Deprecated]
+        # **[Deprecated]**
         self.plan = plan
         # The service ID.
         self.service_id = service_id
@@ -226,18 +230,29 @@ class ListWorkspacesResponseBodyItemsServices(DaraModel):
         self.status = status
 
     def validate(self):
-        pass
+        if self.components:
+            for v1 in self.components:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
         _map = super().to_map()
         if _map is not None:
             result = _map
+        result['Components'] = []
+        if self.components is not None:
+            for k1 in self.components:
+                result['Components'].append(k1.to_map() if k1 else None)
+
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
 
         if self.cu is not None:
             result['Cu'] = self.cu
+
+        if self.deletion_protection is not None:
+            result['DeletionProtection'] = self.deletion_protection
 
         if self.expire_time is not None:
             result['ExpireTime'] = self.expire_time
@@ -264,11 +279,20 @@ class ListWorkspacesResponseBodyItemsServices(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.components = []
+        if m.get('Components') is not None:
+            for k1 in m.get('Components'):
+                temp_model = main_models.ListWorkspacesResponseBodyItemsServicesComponents()
+                self.components.append(temp_model.from_map(k1))
+
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
 
         if m.get('Cu') is not None:
             self.cu = m.get('Cu')
+
+        if m.get('DeletionProtection') is not None:
+            self.deletion_protection = m.get('DeletionProtection')
 
         if m.get('ExpireTime') is not None:
             self.expire_time = m.get('ExpireTime')
@@ -290,6 +314,73 @@ class ListWorkspacesResponseBodyItemsServices(DaraModel):
 
         if m.get('Status') is not None:
             self.status = m.get('Status')
+
+        return self
+
+class ListWorkspacesResponseBodyItemsServicesComponents(DaraModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        cu: str = None,
+        deletion_protection: bool = None,
+        status: str = None,
+        component_id: str = None,
+        component_type: str = None,
+    ):
+        self.create_time = create_time
+        self.cu = cu
+        self.deletion_protection = deletion_protection
+        self.status = status
+        self.component_id = component_id
+        self.component_type = component_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+
+        if self.cu is not None:
+            result['Cu'] = self.cu
+
+        if self.deletion_protection is not None:
+            result['DeletionProtection'] = self.deletion_protection
+
+        if self.status is not None:
+            result['Status'] = self.status
+
+        if self.component_id is not None:
+            result['componentId'] = self.component_id
+
+        if self.component_type is not None:
+            result['componentType'] = self.component_type
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+
+        if m.get('Cu') is not None:
+            self.cu = m.get('Cu')
+
+        if m.get('DeletionProtection') is not None:
+            self.deletion_protection = m.get('DeletionProtection')
+
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+
+        if m.get('componentId') is not None:
+            self.component_id = m.get('componentId')
+
+        if m.get('componentType') is not None:
+            self.component_type = m.get('componentType')
 
         return self
 

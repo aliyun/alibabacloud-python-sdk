@@ -10,8 +10,11 @@ class DeleteApiKeyRequest(DaraModel):
         key_id: str = None,
         region_id: str = None,
     ):
+        # API KEY ID。
+        # 
         # This parameter is required.
         self.key_id = key_id
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

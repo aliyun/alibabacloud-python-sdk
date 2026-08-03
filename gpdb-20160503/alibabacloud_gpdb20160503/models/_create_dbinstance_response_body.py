@@ -13,15 +13,15 @@ class CreateDBInstanceResponseBody(DaraModel):
         port: str = None,
         request_id: str = None,
     ):
-        # This parameter is deprecated and is no longer returned.
+        # **[Deprecated]** This parameter is deprecated and no value is returned.
         # 
-        # You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/86910.html) operation to query the connection string of the instance.
+        # You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/86910.html) operation to query the endpoint of the instance.
         self.connection_string = connection_string
         # The instance ID.
         self.dbinstance_id = dbinstance_id
         # The order ID.
         self.order_id = order_id
-        # This parameter is deprecated and is no longer returned.
+        # **[Deprecated]** This parameter is deprecated and no value is returned.
         # 
         # You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/86910.html) operation to query the port number of the instance.
         self.port = port

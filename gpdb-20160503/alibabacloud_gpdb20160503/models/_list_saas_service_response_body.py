@@ -82,8 +82,10 @@ class ListSaasServiceResponseBody(DaraModel):
 class ListSaasServiceResponseBodyItems(DaraModel):
     def __init__(
         self,
+        components: List[main_models.ListSaasServiceResponseBodyItemsComponents] = None,
         create_time: str = None,
         cu: int = None,
+        deletion_protection: bool = None,
         expire_time: str = None,
         pay_type: str = None,
         plan: str = None,
@@ -92,10 +94,12 @@ class ListSaasServiceResponseBodyItems(DaraModel):
         service_type: str = None,
         status: str = None,
     ):
+        self.components = components
         # The creation time.
         self.create_time = create_time
         # The compute resource.
         self.cu = cu
+        self.deletion_protection = deletion_protection
         # The expiration time.
         self.expire_time = expire_time
         # The billing type. Valid values:
@@ -103,7 +107,7 @@ class ListSaasServiceResponseBodyItems(DaraModel):
         # - **POSTPAY**: Pay-as-you-go.
         # - **PREPAY**: Subscription.
         self.pay_type = pay_type
-        # [Deprecated]
+        # **[Deprecated]**
         self.plan = plan
         # The service ID.
         self.service_id = service_id
@@ -121,18 +125,29 @@ class ListSaasServiceResponseBodyItems(DaraModel):
         self.status = status
 
     def validate(self):
-        pass
+        if self.components:
+            for v1 in self.components:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
         _map = super().to_map()
         if _map is not None:
             result = _map
+        result['Components'] = []
+        if self.components is not None:
+            for k1 in self.components:
+                result['Components'].append(k1.to_map() if k1 else None)
+
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
 
         if self.cu is not None:
             result['Cu'] = self.cu
+
+        if self.deletion_protection is not None:
+            result['DeletionProtection'] = self.deletion_protection
 
         if self.expire_time is not None:
             result['ExpireTime'] = self.expire_time
@@ -159,11 +174,20 @@ class ListSaasServiceResponseBodyItems(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.components = []
+        if m.get('Components') is not None:
+            for k1 in m.get('Components'):
+                temp_model = main_models.ListSaasServiceResponseBodyItemsComponents()
+                self.components.append(temp_model.from_map(k1))
+
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
 
         if m.get('Cu') is not None:
             self.cu = m.get('Cu')
+
+        if m.get('DeletionProtection') is not None:
+            self.deletion_protection = m.get('DeletionProtection')
 
         if m.get('ExpireTime') is not None:
             self.expire_time = m.get('ExpireTime')
@@ -182,6 +206,73 @@ class ListSaasServiceResponseBodyItems(DaraModel):
 
         if m.get('ServiceType') is not None:
             self.service_type = m.get('ServiceType')
+
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+
+        return self
+
+class ListSaasServiceResponseBodyItemsComponents(DaraModel):
+    def __init__(
+        self,
+        component_id: str = None,
+        component_type: str = None,
+        create_time: str = None,
+        cu: str = None,
+        deletion_protection: bool = None,
+        status: str = None,
+    ):
+        self.component_id = component_id
+        self.component_type = component_type
+        self.create_time = create_time
+        self.cu = cu
+        self.deletion_protection = deletion_protection
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.component_id is not None:
+            result['ComponentId'] = self.component_id
+
+        if self.component_type is not None:
+            result['ComponentType'] = self.component_type
+
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+
+        if self.cu is not None:
+            result['Cu'] = self.cu
+
+        if self.deletion_protection is not None:
+            result['DeletionProtection'] = self.deletion_protection
+
+        if self.status is not None:
+            result['Status'] = self.status
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ComponentId') is not None:
+            self.component_id = m.get('ComponentId')
+
+        if m.get('ComponentType') is not None:
+            self.component_type = m.get('ComponentType')
+
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+
+        if m.get('Cu') is not None:
+            self.cu = m.get('Cu')
+
+        if m.get('DeletionProtection') is not None:
+            self.deletion_protection = m.get('DeletionProtection')
 
         if m.get('Status') is not None:
             self.status = m.get('Status')

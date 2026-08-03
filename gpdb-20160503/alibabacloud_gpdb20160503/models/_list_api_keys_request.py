@@ -13,10 +13,16 @@ class ListApiKeysRequest(DaraModel):
         region_id: str = None,
         workspace_id: str = None,
     ):
+        # The name of the API key.
         self.key_name = key_name
+        # The maximum number of records to return in this query.
         self.max_results = max_results
+        # The token for the next query.
         self.next_token = next_token
+        # The region ID.
         self.region_id = region_id
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

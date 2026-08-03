@@ -10,7 +10,10 @@ class DeleteWorkspaceRequest(DaraModel):
         region_id: str = None,
         workspace_id: str = None,
     ):
+        # The region ID of the instance.
         self.region_id = region_id
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

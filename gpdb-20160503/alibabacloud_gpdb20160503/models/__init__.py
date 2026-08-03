@@ -948,6 +948,7 @@ from ._create_dbinstance_request import CreateDBInstanceRequestTag
 from ._create_document_collection_request import CreateDocumentCollectionRequestSparseVectorIndexConfig
 from ._create_document_collection_request import CreateDocumentCollectionRequestVectorIndexConfig
 from ._create_remote_adbdata_source_response_body import CreateRemoteADBDataSourceResponseBodyDataSourceItem
+from ._create_supabase_project_request import CreateSupabaseProjectRequestTags
 from ._describe_accounts_response_body import DescribeAccountsResponseBodyAccountsDBInstanceAccount
 from ._describe_accounts_response_body import DescribeAccountsResponseBodyAccounts
 from ._describe_active_sqlrecords_response_body import DescribeActiveSQLRecordsResponseBodyQueries
@@ -1100,6 +1101,7 @@ from ._list_model_services_response_body import ListModelServicesResponseBodyMod
 from ._list_namespaces_response_body import ListNamespacesResponseBodyNamespaces
 from ._list_remote_adbdata_sources_response_body import ListRemoteADBDataSourcesResponseBodyDataSourceItemsRemoteDataSources
 from ._list_remote_adbdata_sources_response_body import ListRemoteADBDataSourcesResponseBodyDataSourceItems
+from ._list_saas_service_response_body import ListSaasServiceResponseBodyItemsComponents
 from ._list_saas_service_response_body import ListSaasServiceResponseBodyItems
 from ._list_schemas_response_body import ListSchemasResponseBodySchemas
 from ._list_secrets_response_body import ListSecretsResponseBodySecretsSecrets
@@ -1118,6 +1120,7 @@ from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagRe
 from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResources
 from ._list_workspaces_response_body import ListWorkspacesResponseBodyItemsApikeysAuthServices
 from ._list_workspaces_response_body import ListWorkspacesResponseBodyItemsApikeys
+from ._list_workspaces_response_body import ListWorkspacesResponseBodyItemsServicesComponents
 from ._list_workspaces_response_body import ListWorkspacesResponseBodyItemsServices
 from ._list_workspaces_response_body import ListWorkspacesResponseBodyItems
 from ._modify_dbresource_group_request import ModifyDBResourceGroupRequestResourceGroupItems
@@ -2120,6 +2123,7 @@ __all__ = [
     CreateDocumentCollectionRequestSparseVectorIndexConfig,
     CreateDocumentCollectionRequestVectorIndexConfig,
     CreateRemoteADBDataSourceResponseBodyDataSourceItem,
+    CreateSupabaseProjectRequestTags,
     DescribeAccountsResponseBodyAccountsDBInstanceAccount,
     DescribeAccountsResponseBodyAccounts,
     DescribeActiveSQLRecordsResponseBodyQueries,
@@ -2272,6 +2276,7 @@ __all__ = [
     ListNamespacesResponseBodyNamespaces,
     ListRemoteADBDataSourcesResponseBodyDataSourceItemsRemoteDataSources,
     ListRemoteADBDataSourcesResponseBodyDataSourceItems,
+    ListSaasServiceResponseBodyItemsComponents,
     ListSaasServiceResponseBodyItems,
     ListSchemasResponseBodySchemas,
     ListSecretsResponseBodySecretsSecrets,
@@ -2290,6 +2295,7 @@ __all__ = [
     ListTagResourcesResponseBodyTagResources,
     ListWorkspacesResponseBodyItemsApikeysAuthServices,
     ListWorkspacesResponseBodyItemsApikeys,
+    ListWorkspacesResponseBodyItemsServicesComponents,
     ListWorkspacesResponseBodyItemsServices,
     ListWorkspacesResponseBodyItems,
     ModifyDBResourceGroupRequestResourceGroupItems,

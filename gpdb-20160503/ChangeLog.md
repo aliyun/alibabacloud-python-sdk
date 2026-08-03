@@ -1,3 +1,11 @@
+2026-08-03 Version: 5.9.1
+- Update API CreateSupabaseProject: add request parameters Tags.
+- Update API ListSaasService: add response parameters Body.Items.$.Components.
+- Update API ListSaasService: add response parameters Body.Items.$.DeletionProtection.
+- Update API ListWorkspaces: add response parameters Body.Items.$.Services.$.Components.
+- Update API ListWorkspaces: add response parameters Body.Items.$.Services.$.DeletionProtection.
+
+
 2026-07-14 Version: 5.9.0
 - Support API CreateApiKey.
 - Support API DeleteApiKey.

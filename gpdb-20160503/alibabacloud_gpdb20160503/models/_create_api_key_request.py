@@ -15,11 +15,18 @@ class CreateApiKeyRequest(DaraModel):
         service_ids: List[str] = None,
         workspace_id: str = None,
     ):
+        # The description.
         self.description = description
+        # The name of the API key.
+        # 
         # This parameter is required.
         self.key_name = key_name
+        # The region ID.
         self.region_id = region_id
+        # The list of service IDs to authorize.
         self.service_ids = service_ids
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

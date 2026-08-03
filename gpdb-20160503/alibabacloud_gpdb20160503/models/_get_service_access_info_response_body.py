@@ -11,8 +11,11 @@ class GetServiceAccessInfoResponseBody(DaraModel):
         request_id: str = None,
         verify_code: str = None,
     ):
+        # The redirect URL for logging on to the service console.
         self.callback_url = callback_url
+        # The request ID.
         self.request_id = request_id
+        # The verification code for the service console logon URL.
         self.verify_code = verify_code
 
     def validate(self):

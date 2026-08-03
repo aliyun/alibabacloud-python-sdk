@@ -10,7 +10,9 @@ class DeleteApiKeyResponseBody(DaraModel):
         key_id: str = None,
         request_id: str = None,
     ):
+        # API KEY ID。
         self.key_id = key_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -17,14 +17,34 @@ class GetSaasServiceResponseBody(DaraModel):
         status: str = None,
         workspace_id: str = None,
     ):
+        # The compute resource of the service.
         self.cu = cu
+        # The billing type. Valid values:
+        # 
+        # - **POSTPAY**: pay-as-you-go
+        # - **PREPAY**: subscription
+        # 
+        # > - If this parameter is not specified, the default value is pay-as-you-go.
+        # > - In subscription billing mode, a discount is available when you purchase a duration of one year or longer. Select a billing type as needed.
         self.pay_type = pay_type
+        # The region ID where the service resides.
         self.region_id = region_id
+        # The request ID.
         self.request_id = request_id
+        # The service ID.
         self.service_id = service_id
+        # The service name.
         self.service_name = service_name
+        # The service type. Valid values:
+        # 
+        # - **drama**
+        # - **memroy**
         self.service_type = service_type
+        # The service status. Valid values:
+        # - **creating**: Being created.
+        # - **active**: Running.
         self.status = status
+        # The workspace ID where the service resides.
         self.workspace_id = workspace_id
 
     def validate(self):

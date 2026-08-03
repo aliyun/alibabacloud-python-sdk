@@ -2,6 +2,9 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
+from alibabacloud_gpdb20160503 import models as main_models
 from darabonba.model import DaraModel
 
 class CreateSupabaseProjectRequest(DaraModel):
@@ -19,6 +22,7 @@ class CreateSupabaseProjectRequest(DaraModel):
         region_id: str = None,
         security_iplist: str = None,
         storage_size: int = None,
+        tags: List[main_models.CreateSupabaseProjectRequestTags] = None,
         used_time: str = None,
         v_switch_id: str = None,
         vpc_id: str = None,
@@ -34,9 +38,9 @@ class CreateSupabaseProjectRequest(DaraModel):
         # 
         # This parameter is required.
         self.account_password = account_password
-        # Specifies whether to enable auto start/stop. If this parameter is not specified, the default value false is used.
+        # Specifies whether to enable auto start/stop. If this parameter is not specified, the default value is false.
         self.auto_scale = auto_scale
-        # The idempotency token. Ensures that duplicate requests do not result in duplicate operations.
+        # The idempotency token. Ensures that repeated requests do not execute the same operation more than once.
         self.client_token = client_token
         # The performance level (PL) of the cloud disk. If this parameter is not specified, the default value PL0 is used.
         # 
@@ -58,9 +62,9 @@ class CreateSupabaseProjectRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # - Free: free tier.
-        # - Postpaid: pay-as-you-go.
-        # - Prepaid: subscription.
+        # - Free: Free tier.
+        # - Postpaid: Pay-as-you-go.
+        # - Prepaid: Subscription.
         self.pay_type = pay_type
         # The unit of the subscription duration. This parameter takes effect only when PayType is set to PrePay. If this parameter is not specified, the default value Month is used.
         # 
@@ -91,6 +95,7 @@ class CreateSupabaseProjectRequest(DaraModel):
         self.security_iplist = security_iplist
         # The storage size. Unit: GB. If this parameter is not specified for non-Free billing types, the default value is 1 GB.
         self.storage_size = storage_size
+        self.tags = tags
         # The subscription duration. This parameter takes effect only when PayType is set to PrePay. If this parameter is not specified, the default value is 1.
         self.used_time = used_time
         # The vSwitch ID. This parameter is required. The zone of the vSwitch must be the same as the value of ZoneId.
@@ -107,7 +112,10 @@ class CreateSupabaseProjectRequest(DaraModel):
         self.zone_id = zone_id
 
     def validate(self):
-        pass
+        if self.tags:
+            for v1 in self.tags:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -149,6 +157,11 @@ class CreateSupabaseProjectRequest(DaraModel):
 
         if self.storage_size is not None:
             result['StorageSize'] = self.storage_size
+
+        result['Tags'] = []
+        if self.tags is not None:
+            for k1 in self.tags:
+                result['Tags'].append(k1.to_map() if k1 else None)
 
         if self.used_time is not None:
             result['UsedTime'] = self.used_time
@@ -202,6 +215,12 @@ class CreateSupabaseProjectRequest(DaraModel):
         if m.get('StorageSize') is not None:
             self.storage_size = m.get('StorageSize')
 
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k1 in m.get('Tags'):
+                temp_model = main_models.CreateSupabaseProjectRequestTags()
+                self.tags.append(temp_model.from_map(k1))
+
         if m.get('UsedTime') is not None:
             self.used_time = m.get('UsedTime')
 
@@ -213,6 +232,41 @@ class CreateSupabaseProjectRequest(DaraModel):
 
         if m.get('ZoneId') is not None:
             self.zone_id = m.get('ZoneId')
+
+        return self
+
+class CreateSupabaseProjectRequestTags(DaraModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.key is not None:
+            result['Key'] = self.key
+
+        if self.value is not None:
+            result['Value'] = self.value
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
 
         return self
 

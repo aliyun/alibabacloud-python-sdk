@@ -16,10 +16,15 @@ class ListApiKeysResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
+        # The list of API keys.
         self.items = items
+        # The maximum number of records to return in this query.
         self.max_results = max_results
+        # The token for the next page in a paged query.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The total number of records.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -84,11 +89,17 @@ class ListApiKeysResponseBodyItems(DaraModel):
         key_name: str = None,
         key_prefix: str = None,
     ):
+        # The service IDs.
         self.auth_services = auth_services
+        # The creation time.
         self.create_time = create_time
+        # The description of the API key.
         self.description = description
+        # The ID of the API key.
         self.key_id = key_id
+        # The name of the API key.
         self.key_name = key_name
+        # The prefix of the API key.
         self.key_prefix = key_prefix
 
     def validate(self):
@@ -155,7 +166,13 @@ class ListApiKeysResponseBodyItemsAuthServices(DaraModel):
         service_id: str = None,
         service_type: str = None,
     ):
+        # The service IDs.
         self.service_id = service_id
+        # The service type.
+        # 
+        # Valid values:
+        # - memory
+        # - drama
         self.service_type = service_type
 
     def validate(self):

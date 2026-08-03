@@ -10,7 +10,10 @@ class GetWorkspaceRequest(DaraModel):
         region_id: str = None,
         workspace_id: str = None,
     ):
+        # The region ID of the workspace.
         self.region_id = region_id
+        # The ID of the workspace where the service resides.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

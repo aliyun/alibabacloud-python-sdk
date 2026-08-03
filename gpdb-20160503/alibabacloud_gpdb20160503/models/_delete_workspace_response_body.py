@@ -10,7 +10,9 @@ class DeleteWorkspaceResponseBody(DaraModel):
         request_id: str = None,
         workspace_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):

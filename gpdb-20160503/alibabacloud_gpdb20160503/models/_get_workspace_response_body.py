@@ -17,11 +17,17 @@ class GetWorkspaceResponseBody(DaraModel):
         workspace_id: str = None,
         workspace_name: str = None,
     ):
+        # The list of workspace API keys.
         self.apikeys = apikeys
+        # The creation time.
         self.create_time = create_time
+        # The request ID.
         self.request_id = request_id
+        # The list of service details.
         self.services = services
+        # The workspace ID.
         self.workspace_id = workspace_id
+        # The workspace name.
         self.workspace_name = workspace_name
 
     def validate(self):
@@ -103,13 +109,32 @@ class GetWorkspaceResponseBodyServices(DaraModel):
         service_type: str = None,
         status: str = None,
     ):
+        # The creation time.
         self.create_time = create_time
+        # The compute resource.
         self.cu = cu
+        # The expiration time.
         self.expire_time = expire_time
+        # The billing type. Valid values:
+        # 
+        # - **POSTPAY**: pay-as-you-go.
+        # - **PREPAY**: subscription.
+        # 
+        # > - If this parameter is not specified, the default value is pay-as-you-go.
+        # > - In subscription billing mode, a discount is available when you purchase a duration of one year or longer. Select a billing type as needed.
         self.pay_type = pay_type
+        # The service ID.
         self.service_id = service_id
+        # The service name.
         self.service_name = service_name
+        # The service type. Valid values:
+        # 
+        # - **memory**
+        # - **drama**
         self.service_type = service_type
+        # The service status. Valid values:
+        # - creating: being created.
+        # - active: running.
         self.status = status
 
     def validate(self):
@@ -184,11 +209,17 @@ class GetWorkspaceResponseBodyApikeys(DaraModel):
         key_name: str = None,
         key_prefix: str = None,
     ):
+        # The service ID.
         self.auth_services = auth_services
+        # The creation time.
         self.create_time = create_time
+        # The description.
         self.description = description
+        # The ID of the API key.
         self.key_id = key_id
+        # The name of the API key.
         self.key_name = key_name
+        # The prefix of the API key.
         self.key_prefix = key_prefix
 
     def validate(self):
@@ -255,7 +286,12 @@ class GetWorkspaceResponseBodyApikeysAuthServices(DaraModel):
         service_id: str = None,
         service_type: str = None,
     ):
+        # The service ID.
         self.service_id = service_id
+        # The service type. Valid values:
+        # 
+        # - memory
+        # - drama
         self.service_type = service_type
 
     def validate(self):

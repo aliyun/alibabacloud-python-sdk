@@ -51,14 +51,13 @@ class Client(OpenApiClient):
             'eu-west-1': 'gpdb.eu-west-1.aliyuncs.com',
             'eu-central-1': 'gpdb.eu-central-1.aliyuncs.com',
             'cn-zhangjiakou': 'gpdb.cn-zhangjiakou.aliyuncs.com',
+            'cn-wulanchabu': 'gpdb.cn-wulanchabu.aliyuncs.com',
             'cn-huhehaote': 'gpdb.cn-huhehaote.aliyuncs.com',
             'cn-chengdu': 'gpdb.cn-chengdu.aliyuncs.com',
-            'cn-beijing-finance-1': 'gpdb.aliyuncs.com',
+            'cn-beijing-finance-1': 'gpdb.cn-beijing-finance-1.aliyuncs.com',
             'ap-southeast-7': 'gpdb.ap-southeast-7.aliyuncs.com',
             'ap-southeast-5': 'gpdb.ap-southeast-5.aliyuncs.com',
             'ap-southeast-3': 'gpdb.ap-southeast-3.aliyuncs.com',
-            'ap-southeast-2': 'gpdb.ap-southeast-2.aliyuncs.com',
-            'ap-south-1': 'gpdb.ap-south-1.aliyuncs.com',
             'ap-northeast-2': 'gpdb.ap-northeast-2.aliyuncs.com',
             'ap-northeast-1': 'gpdb.ap-northeast-1.aliyuncs.com'
         }
@@ -4666,6 +4665,8 @@ class Client(OpenApiClient):
             query['SecurityIPList'] = request.security_iplist
         if not DaraCore.is_null(request.storage_size):
             query['StorageSize'] = request.storage_size
+        if not DaraCore.is_null(request.tags):
+            query['Tags'] = request.tags
         if not DaraCore.is_null(request.used_time):
             query['UsedTime'] = request.used_time
         if not DaraCore.is_null(request.v_switch_id):
@@ -4724,6 +4725,8 @@ class Client(OpenApiClient):
             query['SecurityIPList'] = request.security_iplist
         if not DaraCore.is_null(request.storage_size):
             query['StorageSize'] = request.storage_size
+        if not DaraCore.is_null(request.tags):
+            query['Tags'] = request.tags
         if not DaraCore.is_null(request.used_time):
             query['UsedTime'] = request.used_time
         if not DaraCore.is_null(request.v_switch_id):

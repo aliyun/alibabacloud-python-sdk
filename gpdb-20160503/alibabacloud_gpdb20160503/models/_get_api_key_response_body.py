@@ -19,13 +19,21 @@ class GetApiKeyResponseBody(DaraModel):
         key_prefix: str = None,
         request_id: str = None,
     ):
+        # The content of the API key.
         self.api_key = api_key
+        # The service IDs.
         self.auth_services = auth_services
+        # The creation time.
         self.create_time = create_time
+        # The description.
         self.description = description
+        # The ID of the API key.
         self.key_id = key_id
+        # The name of the API key.
         self.key_name = key_name
+        # The prefix of the API key.
         self.key_prefix = key_prefix
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -104,7 +112,12 @@ class GetApiKeyResponseBodyAuthServices(DaraModel):
         service_id: str = None,
         service_type: str = None,
     ):
+        # The service IDs.
         self.service_id = service_id
+        # The service type. Valid values:
+        # 
+        # - **drama**
+        # - **memroy**
         self.service_type = service_type
 
     def validate(self):

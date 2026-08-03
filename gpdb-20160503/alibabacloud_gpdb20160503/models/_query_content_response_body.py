@@ -33,8 +33,8 @@ class QueryContentResponseBody(DaraModel):
         self.request_id = request_id
         # The status. Valid values:
         # 
-        # - **success**: Succeeded.
-        # - **fail**: Failed.
+        # - **success**: The operation is successful.
+        # - **fail**: The operation failed.
         self.status = status
         # The resource usage of this query.
         self.usage = usage
