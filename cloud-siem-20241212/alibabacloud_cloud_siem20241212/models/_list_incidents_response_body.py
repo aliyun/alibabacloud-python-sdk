@@ -104,6 +104,7 @@ class ListIncidentsResponseBodyIncidents(DaraModel):
         attck_tactics: str = None,
         create_time: int = None,
         detection_rule_id: str = None,
+        detection_rule_name: str = None,
         entity_infos: str = None,
         incident_description: str = None,
         incident_name: str = None,
@@ -124,6 +125,7 @@ class ListIncidentsResponseBodyIncidents(DaraModel):
         self.create_time = create_time
         # The detection rule ID.
         self.detection_rule_id = detection_rule_id
+        self.detection_rule_name = detection_rule_name
         self.entity_infos = entity_infos
         self.incident_description = incident_description
         # The event name.
@@ -177,6 +179,9 @@ class ListIncidentsResponseBodyIncidents(DaraModel):
 
         if self.detection_rule_id is not None:
             result['DetectionRuleId'] = self.detection_rule_id
+
+        if self.detection_rule_name is not None:
+            result['DetectionRuleName'] = self.detection_rule_name
 
         if self.entity_infos is not None:
             result['EntityInfos'] = self.entity_infos
@@ -232,6 +237,9 @@ class ListIncidentsResponseBodyIncidents(DaraModel):
 
         if m.get('DetectionRuleId') is not None:
             self.detection_rule_id = m.get('DetectionRuleId')
+
+        if m.get('DetectionRuleName') is not None:
+            self.detection_rule_name = m.get('DetectionRuleName')
 
         if m.get('EntityInfos') is not None:
             self.entity_infos = m.get('EntityInfos')

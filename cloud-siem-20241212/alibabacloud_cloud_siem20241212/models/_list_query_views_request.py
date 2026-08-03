@@ -21,9 +21,9 @@ class ListQueryViewsRequest(DaraModel):
         # - **zh** (default): Chinese.
         # - **en**: English.
         self.lang = lang
-        # The maximum number of results to return per request when using the NextToken-based pagination. Valid values: 1 to 100. Default value: 50.
+        # The maximum number of results to return when you use the NextToken-based pagination method. Valid values: 1 to 100. Default value: 50.
         self.max_results = max_results
-        # The pagination token for the next query. You do not need to specify this parameter for the first query or if no more results exist. If more results exist, set this parameter to the NextToken value returned by the previous API call.
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request or if no more results exist. If more results exist, set this parameter to the NextToken value returned in the previous API call.
         self.next_token = next_token
         # The scene to which the query view belongs.
         self.query_view_scene = query_view_scene
@@ -38,8 +38,8 @@ class ListQueryViewsRequest(DaraModel):
         self.role_for = role_for
         # The view type.
         # 
-        # - 0: the view of the current Alibaba Cloud account.
-        # - 1: the view of all accounts in the enterprise.
+        # - 0: The view of the current Alibaba Cloud account.
+        # - 1: The view of all accounts in the enterprise.
         self.role_type = role_type
 
     def validate(self):

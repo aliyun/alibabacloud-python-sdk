@@ -10,6 +10,7 @@ class ListIncidentsRequest(DaraModel):
     def __init__(
         self,
         alert_uuid: str = None,
+        detection_rule_ids: List[str] = None,
         end_time: int = None,
         incident_name: str = None,
         incident_status: int = None,
@@ -34,6 +35,7 @@ class ListIncidentsRequest(DaraModel):
     ):
         # The alert ID.
         self.alert_uuid = alert_uuid
+        self.detection_rule_ids = detection_rule_ids
         # The end time as a UNIX timestamp in milliseconds (ms).
         self.end_time = end_time
         # The event name.
@@ -110,6 +112,9 @@ class ListIncidentsRequest(DaraModel):
         if self.alert_uuid is not None:
             result['AlertUuid'] = self.alert_uuid
 
+        if self.detection_rule_ids is not None:
+            result['DetectionRuleIds'] = self.detection_rule_ids
+
         if self.end_time is not None:
             result['EndTime'] = self.end_time
 
@@ -179,6 +184,9 @@ class ListIncidentsRequest(DaraModel):
         m = m or dict()
         if m.get('AlertUuid') is not None:
             self.alert_uuid = m.get('AlertUuid')
+
+        if m.get('DetectionRuleIds') is not None:
+            self.detection_rule_ids = m.get('DetectionRuleIds')
 
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')

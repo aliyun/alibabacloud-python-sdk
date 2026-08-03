@@ -28,6 +28,7 @@ class CreateDetectionRuleRequest(DaraModel):
         detection_rule_template_id: str = None,
         detection_rule_template_version: str = None,
         detection_rule_type: str = None,
+        detection_rules: str = None,
         entity_mappings: str = None,
         incident_aggregation_expression: str = None,
         incident_aggregation_type: str = None,
@@ -45,66 +46,47 @@ class CreateDetectionRuleRequest(DaraModel):
         schedule_type: str = None,
         schedule_window: str = None,
     ):
-        # The ATT\\&CK stage of the alert.
+        # The alert ATT&CK technique.
         self.alert_att_ck = alert_att_ck
         self.alert_att_ck_mapping = alert_att_ck_mapping
-        # The alert description. You can use $$ to reference fields from the query output.
+        # The alert description. You can use $$ to reference query output fields.
         self.alert_description = alert_description
         # The threat level of the alert. Valid values:
-        # 
-        # - 5: critical.
-        # 
-        # - 4: important.
-        # 
-        # - 3: medium.
-        # 
-        # - 2: low.
-        # 
-        # - 1: informational.
-        # 
-        # This parameter is required.
+        # - 5: Critical.
+        # - 4: High.
+        # - 3: Medium.
+        # - 2: Low.
+        # - 1: Informational.
         self.alert_level = alert_level
         self.alert_level_mapping = alert_level_mapping
-        # The alert name. You can use $$ to reference fields from the query output.
+        # The alert name. You can use $$ to reference query output fields.
         self.alert_name = alert_name
-        # The ID of the alert template for the detection rule. Valid values:
-        # 
+        # The ID of the detection rule alert template. Valid values:
         # - ALERT_ACTIVITY: other alerts.
-        # 
-        # - EDR_ALERT_ACTIVITY: Endpoint Detection and Response (EDR) alerts.
-        # 
+        # - EDR_ALERT_ACTIVITY: endpoint detection and response alerts.
         # - FIREWALL_ALERT_ACTIVITY: firewall alerts.
-        # 
-        # - WAF_ALERT_ACTIVITY: Web Application Firewall (WAF) alerts.
-        # 
-        # This parameter is required.
+        # - WAF_ALERT_ACTIVITY: web application firewall alerts.
         self.alert_schema_id = alert_schema_id
-        # The tactic phase of the alert.
+        # The alert tactic stage.
         self.alert_tactic_id = alert_tactic_id
-        # The count for the alert threshold.
+        # The alert threshold count.
         self.alert_threshold_count = alert_threshold_count
-        # The list of fields for the alert threshold. Separate multiple fields with commas.
+        # The list of alert threshold fields, separated by commas (,).
         self.alert_threshold_group = alert_threshold_group
         # The length of the alert threshold period.
         self.alert_threshold_period = alert_threshold_period
-        # The alert type.
-        # 
-        # This parameter is required.
+        # The Alarm Metric of the alerting rule.
         self.alert_type = alert_type
         self.alert_type_mapping = alert_type_mapping
         # The content of the detection rule expression.
         self.detection_expression_content = detection_expression_content
         # The type of the detection rule expression. Valid values:
-        # 
         # - sql: SQL.
-        # 
         # - playbook: playbook.
         self.detection_expression_type = detection_expression_type
         # The description of the detection rule.
         self.detection_rule_description = detection_rule_description
         # The name of the detection rule.
-        # 
-        # This parameter is required.
         self.detection_rule_name = detection_rule_name
         # The status of the detection rule.
         self.detection_rule_status = detection_rule_status
@@ -113,67 +95,50 @@ class CreateDetectionRuleRequest(DaraModel):
         # The version of the detection rule template.
         self.detection_rule_template_version = detection_rule_template_version
         # The type of the detection rule. Valid values:
-        # 
-        # - preset: predefined detection rule.
-        # 
+        # - preset: preset detection rule.
         # - custom: custom detection rule.
-        # 
         # - custom_template: rule template.
-        # 
-        # This parameter is required.
         self.detection_rule_type = detection_rule_type
+        self.detection_rules = detection_rules
         # The entity mapping configuration.
         self.entity_mappings = entity_mappings
-        # The configuration of the event aggregation period.
+        # The event aggregation period configuration.
         self.incident_aggregation_expression = incident_aggregation_expression
         # The event aggregation type. Valid values:
-        # 
-        # - none: Events are not generated.
-        # 
-        # - graph_compute: graph computing (supported by predefined rules).
-        # 
-        # - expert: expert rules.
-        # 
-        # - passthrough: Alerts are passed through (one-to-one).
-        # 
-        # - window: Similar alerts are aggregated (window).
+        # - none: No event is generated.
+        # - graph_compute: Graph computing. This value is supported by predefined rules.
+        # - expert: Expert rule.
+        # - passthrough: Alerting pass-through (one-to-one).
+        # - window: Same-type aggregation (window).
         self.incident_aggregation_type = incident_aggregation_type
         # The language of the response. Valid values:
-        # 
         # - **zh** (default): Chinese.
-        # 
         # - **en**: English.
         self.lang = lang
         # The ID of the log normalization category.
         self.log_category_id = log_category_id
         # The ID of the log normalization schema.
-        # 
-        # This parameter is required.
         self.log_schema_id = log_schema_id
-        # The custom parameters for the playbook.
+        # The custom parameters of the playbook.
         self.playbook_parameters = playbook_parameters
         # The UUID of the playbook.
         self.playbook_uuid = playbook_uuid
-        # The region where the Data Management center of Threat Analysis is located. Select a region based on the region where your assets are located. Valid values:
-        # 
-        # - cn-hangzhou: Your assets are in the Chinese mainland.
-        # 
-        # - ap-southeast-1: Your assets are in a region outside China.
+        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the region where your assets reside. Valid values:
+        # - cn-hangzhou: Your assets reside in the Chinese mainland.
+        # - ap-southeast-1: Your assets reside outside the Chinese mainland.
         self.region_id = region_id
-        # The user ID that an administrator uses to switch to the perspective of another member.
+        # The ID of the member to which the administrator switches the view.
         self.role_for = role_for
-        # The start time for scheduling. This is a 13-digit UNIX timestamp.
+        # The scheduling start time. The value is a 13-digit UNIX timestamp.
         self.schedule_begin_time = schedule_begin_time
-        # The cron expression for scheduling. This parameter is required if you set ScheduleType to cron.
+        # The scheduling cron expression. This parameter is required when ScheduleType is set to cron.
         self.schedule_expression = schedule_expression
-        # The maximum number of retries after a timeout. Valid values: 1 to 100.
+        # The maximum number of retries upon timeout. Valid values: 1 to 100.
         self.schedule_max_retries = schedule_max_retries
-        # The maximum timeout period in seconds. Valid values: 60 to 1800.
+        # The maximum timeout period, in seconds. Valid values: 60 to 1800.
         self.schedule_max_timeout = schedule_max_timeout
         # The scheduling type. Valid values:
-        # 
         # - fixed_rate: fixed interval.
-        # 
         # - cron: cron expression.
         self.schedule_type = schedule_type
         # The length of the scheduling window.
@@ -249,6 +214,9 @@ class CreateDetectionRuleRequest(DaraModel):
 
         if self.detection_rule_type is not None:
             result['DetectionRuleType'] = self.detection_rule_type
+
+        if self.detection_rules is not None:
+            result['DetectionRules'] = self.detection_rules
 
         if self.entity_mappings is not None:
             result['EntityMappings'] = self.entity_mappings
@@ -364,6 +332,9 @@ class CreateDetectionRuleRequest(DaraModel):
 
         if m.get('DetectionRuleType') is not None:
             self.detection_rule_type = m.get('DetectionRuleType')
+
+        if m.get('DetectionRules') is not None:
+            self.detection_rules = m.get('DetectionRules')
 
         if m.get('EntityMappings') is not None:
             self.entity_mappings = m.get('EntityMappings')

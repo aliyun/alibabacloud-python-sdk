@@ -1,3 +1,8 @@
+2026-08-03 Version: 2.5.2
+- Update API ListIncidents: add request parameters DetectionRuleIds.
+- Update API ListIncidents: add response parameters Body.Incidents.$.DetectionRuleName.
+
+
 2026-07-16 Version: 2.5.0
 - Support API DeleteNormalizationSchema.
 - Support API UpdateDataConnector.

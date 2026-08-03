@@ -640,6 +640,8 @@ class Client(OpenApiClient):
             body['DetectionRuleTemplateVersion'] = request.detection_rule_template_version
         if not DaraCore.is_null(request.detection_rule_type):
             body['DetectionRuleType'] = request.detection_rule_type
+        if not DaraCore.is_null(request.detection_rules):
+            body['DetectionRules'] = request.detection_rules
         if not DaraCore.is_null(request.entity_mappings):
             body['EntityMappings'] = request.entity_mappings
         if not DaraCore.is_null(request.incident_aggregation_expression):
@@ -740,6 +742,8 @@ class Client(OpenApiClient):
             body['DetectionRuleTemplateVersion'] = request.detection_rule_template_version
         if not DaraCore.is_null(request.detection_rule_type):
             body['DetectionRuleType'] = request.detection_rule_type
+        if not DaraCore.is_null(request.detection_rules):
+            body['DetectionRules'] = request.detection_rules
         if not DaraCore.is_null(request.entity_mappings):
             body['EntityMappings'] = request.entity_mappings
         if not DaraCore.is_null(request.incident_aggregation_expression):
@@ -5325,6 +5329,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.alert_uuid):
             body['AlertUuid'] = request.alert_uuid
+        if not DaraCore.is_null(request.detection_rule_ids):
+            body['DetectionRuleIds'] = request.detection_rule_ids
         if not DaraCore.is_null(request.end_time):
             body['EndTime'] = request.end_time
         if not DaraCore.is_null(request.incident_status):
@@ -5401,6 +5407,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.alert_uuid):
             body['AlertUuid'] = request.alert_uuid
+        if not DaraCore.is_null(request.detection_rule_ids):
+            body['DetectionRuleIds'] = request.detection_rule_ids
         if not DaraCore.is_null(request.end_time):
             body['EndTime'] = request.end_time
         if not DaraCore.is_null(request.incident_status):

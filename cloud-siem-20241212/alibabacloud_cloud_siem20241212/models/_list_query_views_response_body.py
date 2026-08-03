@@ -10,14 +10,20 @@ from darabonba.model import DaraModel
 class ListQueryViewsResponseBody(DaraModel):
     def __init__(
         self,
+        log_project_name: str = None,
+        log_region_id: str = None,
+        log_store_name: str = None,
         max_results: int = None,
         next_token: str = None,
         query_views: List[main_models.ListQueryViewsResponseBodyQueryViews] = None,
         request_id: str = None,
     ):
-        # The maximum number of results to return per request when using the NextToken-based pagination. Valid values: 1 to 100. Default value: 50.
+        self.log_project_name = log_project_name
+        self.log_region_id = log_region_id
+        self.log_store_name = log_store_name
+        # The maximum number of results to return when you use the NextToken-based pagination method. Valid values: 1 to 100. Default value: 50.
         self.max_results = max_results
-        # The pagination token for the next query. You do not need to specify this parameter for the first query or if no more results exist. If more results exist, set this parameter to the NextToken value returned by the previous API call.
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request or if no more results exist. If more results exist, set this parameter to the NextToken value returned in the previous API call.
         self.next_token = next_token
         # The list of query views.
         self.query_views = query_views
@@ -35,6 +41,15 @@ class ListQueryViewsResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.log_project_name is not None:
+            result['LogProjectName'] = self.log_project_name
+
+        if self.log_region_id is not None:
+            result['LogRegionId'] = self.log_region_id
+
+        if self.log_store_name is not None:
+            result['LogStoreName'] = self.log_store_name
+
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
 
@@ -53,6 +68,15 @@ class ListQueryViewsResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('LogProjectName') is not None:
+            self.log_project_name = m.get('LogProjectName')
+
+        if m.get('LogRegionId') is not None:
+            self.log_region_id = m.get('LogRegionId')
+
+        if m.get('LogStoreName') is not None:
+            self.log_store_name = m.get('LogStoreName')
+
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
 
