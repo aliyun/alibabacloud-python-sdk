@@ -102,7 +102,7 @@ class DescribeMultiPriceResponseBodyPriceInfoRules(DaraModel):
     ):
         # The description of the promotion rule.
         self.description = description
-        # The ID of the promotion rule.
+        # The promotion rule ID.
         self.rule_id = rule_id
 
     def validate(self):
@@ -149,7 +149,7 @@ class DescribeMultiPriceResponseBodyPriceInfoPrice(DaraModel):
         # 
         # International site: USD.
         self.currency = currency
-        # The discount amount.
+        # The discount price.
         self.discount_price = discount_price
         # The original price.
         self.original_price = original_price
@@ -161,7 +161,7 @@ class DescribeMultiPriceResponseBodyPriceInfoPrice(DaraModel):
         self.refund_instance_id_price_map = refund_instance_id_price_map
         # The unsubscription price.
         self.refund_price = refund_price
-        # The actual payment price. The value is the original price minus the discount amount.
+        # The actual payment price. The value is the original price minus the discount.
         self.trade_price = trade_price
 
     def validate(self):
@@ -247,23 +247,33 @@ class DescribeMultiPriceResponseBodyPriceInfoPricePromotions(DaraModel):
     def __init__(
         self,
         activity_id: str = None,
+        effective: bool = None,
+        end_timestamp: str = None,
         option_code: str = None,
+        price_break_reduce_value: str = None,
+        price_break_threshold: str = None,
         promotion_desc: str = None,
         promotion_id: str = None,
         promotion_name: str = None,
         selected: bool = None,
+        start_timestamp: str = None,
     ):
         self.activity_id = activity_id
+        self.effective = effective
+        self.end_timestamp = end_timestamp
         # The description of the promotion rule.
         self.option_code = option_code
+        self.price_break_reduce_value = price_break_reduce_value
+        self.price_break_threshold = price_break_threshold
         # The description of the promotion.
         self.promotion_desc = promotion_desc
-        # The ID of the promotion.
+        # The promotion ID.
         self.promotion_id = promotion_id
-        # The name of the promotion.
+        # The promotion name.
         self.promotion_name = promotion_name
         # Indicates whether the promotion is selected.
         self.selected = selected
+        self.start_timestamp = start_timestamp
 
     def validate(self):
         pass
@@ -276,8 +286,20 @@ class DescribeMultiPriceResponseBodyPriceInfoPricePromotions(DaraModel):
         if self.activity_id is not None:
             result['ActivityId'] = self.activity_id
 
+        if self.effective is not None:
+            result['Effective'] = self.effective
+
+        if self.end_timestamp is not None:
+            result['EndTimestamp'] = self.end_timestamp
+
         if self.option_code is not None:
             result['OptionCode'] = self.option_code
+
+        if self.price_break_reduce_value is not None:
+            result['PriceBreakReduceValue'] = self.price_break_reduce_value
+
+        if self.price_break_threshold is not None:
+            result['PriceBreakThreshold'] = self.price_break_threshold
 
         if self.promotion_desc is not None:
             result['PromotionDesc'] = self.promotion_desc
@@ -291,6 +313,9 @@ class DescribeMultiPriceResponseBodyPriceInfoPricePromotions(DaraModel):
         if self.selected is not None:
             result['Selected'] = self.selected
 
+        if self.start_timestamp is not None:
+            result['StartTimestamp'] = self.start_timestamp
+
         return result
 
     def from_map(self, m: dict = None):
@@ -298,8 +323,20 @@ class DescribeMultiPriceResponseBodyPriceInfoPricePromotions(DaraModel):
         if m.get('ActivityId') is not None:
             self.activity_id = m.get('ActivityId')
 
+        if m.get('Effective') is not None:
+            self.effective = m.get('Effective')
+
+        if m.get('EndTimestamp') is not None:
+            self.end_timestamp = m.get('EndTimestamp')
+
         if m.get('OptionCode') is not None:
             self.option_code = m.get('OptionCode')
+
+        if m.get('PriceBreakReduceValue') is not None:
+            self.price_break_reduce_value = m.get('PriceBreakReduceValue')
+
+        if m.get('PriceBreakThreshold') is not None:
+            self.price_break_threshold = m.get('PriceBreakThreshold')
 
         if m.get('PromotionDesc') is not None:
             self.promotion_desc = m.get('PromotionDesc')
@@ -312,6 +349,9 @@ class DescribeMultiPriceResponseBodyPriceInfoPricePromotions(DaraModel):
 
         if m.get('Selected') is not None:
             self.selected = m.get('Selected')
+
+        if m.get('StartTimestamp') is not None:
+            self.start_timestamp = m.get('StartTimestamp')
 
         return self
 
@@ -381,14 +421,14 @@ class DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsPriceDetail(DaraMo
         saving_plan_recommend_price: float = None,
         trade_price: float = None,
     ):
-        # The discount amount.
+        # The discount price.
         self.discount_price = discount_price
         # The original price.
         self.original_price = original_price
         # The resource type.
         self.resource_type = resource_type
         self.saving_plan_recommend_price = saving_plan_recommend_price
-        # The actual payment price. The value is the original price minus the discount amount.
+        # The actual payment price. The value is the original price minus the discount.
         self.trade_price = trade_price
 
     def validate(self):
@@ -446,7 +486,7 @@ class DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsModuleDetails(Dara
         saving_plan_discount_price: float = None,
         trade_price: float = None,
     ):
-        # The discount amount.
+        # The discount price.
         self.discount_price = discount_price
         # The module code.
         self.module_code = module_code
@@ -457,7 +497,7 @@ class DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsModuleDetails(Dara
         # The original price.
         self.original_price = original_price
         self.saving_plan_discount_price = saving_plan_discount_price
-        # The actual payment price. The value is the original price minus the discount amount.
+        # The actual payment price. The value is the original price minus the discount.
         self.trade_price = trade_price
 
     def validate(self):

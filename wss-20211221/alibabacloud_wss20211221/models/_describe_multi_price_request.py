@@ -21,7 +21,7 @@ class DescribeMultiPriceRequest(DaraModel):
         self.order_type = order_type
         # The package code. You do not need to specify this parameter for non-package types.
         self.package_code = package_code
-        # The user ID for resource ownership in the reseller pattern. You do not need to specify this parameter in the non-reseller pattern.
+        # The user ID of the resource ownership in reseller pattern. You do not need to specify this parameter in non-reseller pattern.
         self.reseller_owner_uid = reseller_owner_uid
 
     def validate(self):
@@ -104,7 +104,7 @@ class DescribeMultiPriceRequestOrderItems(DaraModel):
         # The list of resource IDs.
         self.resource_ids = resource_ids
         # The resource type.
-        # > This parameter is case-sensitive. Make sure that the spelling is correct.
+        # > This parameter is case-sensitive. Make sure that the value is spelled correctly.
         self.resource_type = resource_type
         self.saving_plan_period = saving_plan_period
 

@@ -1,3 +1,11 @@
+2026-08-03 Version: 1.4.4
+- Update API DescribeMultiPrice: add response parameters Body.PriceInfo.Price.Promotions.$.Effective.
+- Update API DescribeMultiPrice: add response parameters Body.PriceInfo.Price.Promotions.$.EndTimestamp.
+- Update API DescribeMultiPrice: add response parameters Body.PriceInfo.Price.Promotions.$.PriceBreakReduceValue.
+- Update API DescribeMultiPrice: add response parameters Body.PriceInfo.Price.Promotions.$.PriceBreakThreshold.
+- Update API DescribeMultiPrice: add response parameters Body.PriceInfo.Price.Promotions.$.StartTimestamp.
+
+
 2026-07-31 Version: 1.4.3
 - Update API CreateMultiOrder: add request parameters OrderItems.$.PaidCallBackUrl.
 - Update API DescribeMultiPrice: add response parameters Body.PriceInfo.Price.Promotions.$.ActivityId.
