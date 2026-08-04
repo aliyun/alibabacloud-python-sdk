@@ -1,3 +1,6 @@
+2026-08-04 Version: 2.2.3
+- Generated python ssp_1.0 for AliGenie.
+
 2025-09-02 Version: 2.2.2
 - Generated python ssp_1.0 for AliGenie.
 
