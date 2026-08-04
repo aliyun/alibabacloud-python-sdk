@@ -8,6 +8,7 @@ class GetCaInstanceCrlAddressResponseBody(DaraModel):
     def __init__(
         self,
         ca_instance_status: str = None,
+        ca_type: str = None,
         crl_url: str = None,
         hash_code: str = None,
         next_update_time: str = None,
@@ -15,6 +16,7 @@ class GetCaInstanceCrlAddressResponseBody(DaraModel):
     ):
         # The status of the CA instance.
         self.ca_instance_status = ca_instance_status
+        self.ca_type = ca_type
         # The cron expression.
         self.crl_url = crl_url
         # Used to identify whether there are new revoked certificates in the revocation list.
@@ -35,6 +37,9 @@ class GetCaInstanceCrlAddressResponseBody(DaraModel):
         if self.ca_instance_status is not None:
             result['CaInstanceStatus'] = self.ca_instance_status
 
+        if self.ca_type is not None:
+            result['CaType'] = self.ca_type
+
         if self.crl_url is not None:
             result['CrlUrl'] = self.crl_url
 
@@ -53,6 +58,9 @@ class GetCaInstanceCrlAddressResponseBody(DaraModel):
         m = m or dict()
         if m.get('CaInstanceStatus') is not None:
             self.ca_instance_status = m.get('CaInstanceStatus')
+
+        if m.get('CaType') is not None:
+            self.ca_type = m.get('CaType')
 
         if m.get('CrlUrl') is not None:
             self.crl_url = m.get('CrlUrl')

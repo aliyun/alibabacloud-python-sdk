@@ -1,3 +1,7 @@
+2026-08-04 Version: 2.1.1
+- Update API GetCaInstanceCrlAddress: add response parameters Body.CaType.
+
+
 2026-06-16 Version: 2.1.0
 - Support API GetCaInstanceCrlAddress.
 - Update API DescribeCACertificate: add response parameters Body.Certificate.CertMaxTime.
