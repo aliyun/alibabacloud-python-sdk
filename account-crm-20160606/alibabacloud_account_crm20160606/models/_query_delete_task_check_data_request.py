@@ -1,0 +1,86 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from darabonba.model import DaraModel
+
+class QueryDeleteTaskCheckDataRequest(DaraModel):
+    def __init__(
+        self,
+        ag_account_type: str = None,
+        app_name: str = None,
+        long_lang: str = None,
+        mpk: str = None,
+        pk: str = None,
+        task_id: str = None,
+        task_type: str = None,
+    ):
+        # This parameter is required.
+        self.ag_account_type = ag_account_type
+        self.app_name = app_name
+        self.long_lang = long_lang
+        # This parameter is required.
+        self.mpk = mpk
+        # This parameter is required.
+        self.pk = pk
+        # This parameter is required.
+        self.task_id = task_id
+        # This parameter is required.
+        self.task_type = task_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.ag_account_type is not None:
+            result['AgAccountType'] = self.ag_account_type
+
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+
+        if self.long_lang is not None:
+            result['LongLang'] = self.long_lang
+
+        if self.mpk is not None:
+            result['Mpk'] = self.mpk
+
+        if self.pk is not None:
+            result['Pk'] = self.pk
+
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+
+        if self.task_type is not None:
+            result['TaskType'] = self.task_type
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgAccountType') is not None:
+            self.ag_account_type = m.get('AgAccountType')
+
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+
+        if m.get('LongLang') is not None:
+            self.long_lang = m.get('LongLang')
+
+        if m.get('Mpk') is not None:
+            self.mpk = m.get('Mpk')
+
+        if m.get('Pk') is not None:
+            self.pk = m.get('Pk')
+
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+
+        if m.get('TaskType') is not None:
+            self.task_type = m.get('TaskType')
+
+        return self
+
