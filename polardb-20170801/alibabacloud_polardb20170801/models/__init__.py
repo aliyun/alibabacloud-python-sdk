@@ -91,6 +91,9 @@ from ._continue_dbcluster_migration_response import ContinueDBClusterMigrationRe
 from ._create_aidbcluster_request import CreateAIDBClusterRequest
 from ._create_aidbcluster_response_body import CreateAIDBClusterResponseBody
 from ._create_aidbcluster_response import CreateAIDBClusterResponse
+from ._create_aidbcluster_api_key_request import CreateAIDBClusterApiKeyRequest
+from ._create_aidbcluster_api_key_response_body import CreateAIDBClusterApiKeyResponseBody
+from ._create_aidbcluster_api_key_response import CreateAIDBClusterApiKeyResponse
 from ._create_aidbcluster_dataset_request import CreateAIDBClusterDatasetRequest
 from ._create_aidbcluster_dataset_response_body import CreateAIDBClusterDatasetResponseBody
 from ._create_aidbcluster_dataset_response import CreateAIDBClusterDatasetResponse
@@ -245,6 +248,9 @@ from ._create_storage_plan_response import CreateStoragePlanResponse
 from ._delete_aidbcluster_request import DeleteAIDBClusterRequest
 from ._delete_aidbcluster_response_body import DeleteAIDBClusterResponseBody
 from ._delete_aidbcluster_response import DeleteAIDBClusterResponse
+from ._delete_aidbcluster_api_key_request import DeleteAIDBClusterApiKeyRequest
+from ._delete_aidbcluster_api_key_response_body import DeleteAIDBClusterApiKeyResponseBody
+from ._delete_aidbcluster_api_key_response import DeleteAIDBClusterApiKeyResponse
 from ._delete_aidbcluster_dataset_request import DeleteAIDBClusterDatasetRequest
 from ._delete_aidbcluster_dataset_response_body import DeleteAIDBClusterDatasetResponseBody
 from ._delete_aidbcluster_dataset_response import DeleteAIDBClusterDatasetResponse
@@ -384,6 +390,9 @@ from ._delete_resource_control_response import DeleteResourceControlResponse
 from ._delete_sqlrate_limiting_rules_request import DeleteSQLRateLimitingRulesRequest
 from ._delete_sqlrate_limiting_rules_response_body import DeleteSQLRateLimitingRulesResponseBody
 from ._delete_sqlrate_limiting_rules_response import DeleteSQLRateLimitingRulesResponse
+from ._describe_aidbcluster_api_keys_request import DescribeAIDBClusterApiKeysRequest
+from ._describe_aidbcluster_api_keys_response_body import DescribeAIDBClusterApiKeysResponseBody
+from ._describe_aidbcluster_api_keys_response import DescribeAIDBClusterApiKeysResponse
 from ._describe_aidbcluster_attribute_request import DescribeAIDBClusterAttributeRequest
 from ._describe_aidbcluster_attribute_response_body import DescribeAIDBClusterAttributeResponseBody
 from ._describe_aidbcluster_attribute_response import DescribeAIDBClusterAttributeResponse
@@ -1345,6 +1354,7 @@ from ._approve_polar_claw_device_pair_response_body import ApprovePolarClawDevic
 from ._bind_polar_claw_agent_response_body import BindPolarClawAgentResponseBodyBinding
 from ._check_polar_fs_quota_consistency_response_body import CheckPolarFsQuotaConsistencyResponseBodyQuotaItem
 from ._create_aidbcluster_request import CreateAIDBClusterRequestTimeSlices
+from ._create_aidbcluster_api_key_response_body import CreateAIDBClusterApiKeyResponseBodyApiKey
 from ._create_ainodes_request import CreateAINodesRequestDBNodes
 from ._create_application_request import CreateApplicationRequestComponents
 from ._create_application_request import CreateApplicationRequestEndpoints
@@ -1376,6 +1386,7 @@ from ._create_polar_claw_cron_job_response_body import CreatePolarClawCronJobRes
 from ._delete_global_security_ipgroup_response_body import DeleteGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup
 from ._delete_polar_fs_path_mapping_request import DeletePolarFsPathMappingRequestCustomBucketPathList
 from ._delete_polar_fs_quota_request import DeletePolarFsQuotaRequestQuotas
+from ._describe_aidbcluster_api_keys_response_body import DescribeAIDBClusterApiKeysResponseBodyApiKeys
 from ._describe_aidbcluster_attribute_response_body import DescribeAIDBClusterAttributeResponseBodyDBNodesChildVolumes
 from ._describe_aidbcluster_attribute_response_body import DescribeAIDBClusterAttributeResponseBodyDBNodes
 from ._describe_aidbcluster_attribute_response_body import DescribeAIDBClusterAttributeResponseBodyEndpointListNetInfoItems
@@ -1832,6 +1843,9 @@ __all__ = [
     CreateAIDBClusterRequest,
     CreateAIDBClusterResponseBody,
     CreateAIDBClusterResponse,
+    CreateAIDBClusterApiKeyRequest,
+    CreateAIDBClusterApiKeyResponseBody,
+    CreateAIDBClusterApiKeyResponse,
     CreateAIDBClusterDatasetRequest,
     CreateAIDBClusterDatasetResponseBody,
     CreateAIDBClusterDatasetResponse,
@@ -1986,6 +2000,9 @@ __all__ = [
     DeleteAIDBClusterRequest,
     DeleteAIDBClusterResponseBody,
     DeleteAIDBClusterResponse,
+    DeleteAIDBClusterApiKeyRequest,
+    DeleteAIDBClusterApiKeyResponseBody,
+    DeleteAIDBClusterApiKeyResponse,
     DeleteAIDBClusterDatasetRequest,
     DeleteAIDBClusterDatasetResponseBody,
     DeleteAIDBClusterDatasetResponse,
@@ -2125,6 +2142,9 @@ __all__ = [
     DeleteSQLRateLimitingRulesRequest,
     DeleteSQLRateLimitingRulesResponseBody,
     DeleteSQLRateLimitingRulesResponse,
+    DescribeAIDBClusterApiKeysRequest,
+    DescribeAIDBClusterApiKeysResponseBody,
+    DescribeAIDBClusterApiKeysResponse,
     DescribeAIDBClusterAttributeRequest,
     DescribeAIDBClusterAttributeResponseBody,
     DescribeAIDBClusterAttributeResponse,
@@ -3086,6 +3106,7 @@ __all__ = [
     BindPolarClawAgentResponseBodyBinding,
     CheckPolarFsQuotaConsistencyResponseBodyQuotaItem,
     CreateAIDBClusterRequestTimeSlices,
+    CreateAIDBClusterApiKeyResponseBodyApiKey,
     CreateAINodesRequestDBNodes,
     CreateApplicationRequestComponents,
     CreateApplicationRequestEndpoints,
@@ -3117,6 +3138,7 @@ __all__ = [
     DeleteGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup,
     DeletePolarFsPathMappingRequestCustomBucketPathList,
     DeletePolarFsQuotaRequestQuotas,
+    DescribeAIDBClusterApiKeysResponseBodyApiKeys,
     DescribeAIDBClusterAttributeResponseBodyDBNodesChildVolumes,
     DescribeAIDBClusterAttributeResponseBodyDBNodes,
     DescribeAIDBClusterAttributeResponseBodyEndpointListNetInfoItems,

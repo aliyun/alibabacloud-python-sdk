@@ -1,3 +1,6 @@
+2026-08-04 Version: 7.11.2
+- Generated python 2017-08-01 for polardb.
+
 2026-07-28 Version: 7.10.0
 - Support API BindResourceControl.
 - Support API CreateResourceControl.

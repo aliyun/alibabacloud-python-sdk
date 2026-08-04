@@ -4,14 +4,14 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class SetPolarFsFileQuotaResponseBody(DaraModel):
+class DeleteAIDBClusterApiKeyResponseBody(DaraModel):
     def __init__(
         self,
-        polar_fs_instance_id: str = None,
+        api_key: str = None,
         request_id: str = None,
     ):
-        # The Polarlakebase instance ID.
-        self.polar_fs_instance_id = polar_fs_instance_id
+        # The API key of the model service.
+        self.api_key = api_key
         # Id of the request
         self.request_id = request_id
 
@@ -23,8 +23,8 @@ class SetPolarFsFileQuotaResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.polar_fs_instance_id is not None:
-            result['PolarFsInstanceId'] = self.polar_fs_instance_id
+        if self.api_key is not None:
+            result['ApiKey'] = self.api_key
 
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -33,8 +33,8 @@ class SetPolarFsFileQuotaResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('PolarFsInstanceId') is not None:
-            self.polar_fs_instance_id = m.get('PolarFsInstanceId')
+        if m.get('ApiKey') is not None:
+            self.api_key = m.get('ApiKey')
 
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')

@@ -16,11 +16,11 @@ class SetPolarFsFileQuotaRequest(DaraModel):
     ):
         # The cluster ID.
         self.dbcluster_id = dbcluster_id
-        # An array of objects defining the file quota rules for specific directories.
+        # The details of the quota rules to apply to directories.
         # 
         # This parameter is required.
         self.file_path_quotas = file_path_quotas
-        # The ID of the PolarFS instance.
+        # The Polarlakebase instance ID.
         # 
         # This parameter is required.
         self.polar_fs_instance_id = polar_fs_instance_id
@@ -75,21 +75,20 @@ class SetPolarFsFileQuotaRequestFilePathQuotas(DaraModel):
         quota_ids: str = None,
         strategy: str = None,
     ):
-        # The capacity quota in GB.
+        # The quota capacity. Unit: GB.
         self.capacity = capacity
-        # The absolute path of the directory.
+        # The directory path.
         self.file_path_id = file_path_id
-        # The inode quota.
+        # The quota inodes.
         self.inodes = inodes
-        # The maximum depth of subdirectories to traverse under the path specified by `FilePathId`. A value of 1 traverses only the first level of subdirectories. A value of 0 traverses to the deepest level.
+        # The number of subdirectory levels to traverse under `FilePathId`. A value of 1 indicates that only the first-level subdirectories are traversed. A value of 0 indicates that all levels are traversed to the deepest level.
         self.max_depth = max_depth
-        # A list of file quota rule IDs, separated by a comma (`,`).
+        # The IDs of the rules to apply, separated by commas (,).
         self.quota_ids = quota_ids
-        # Specifies how to apply the rule to existing files. Valid values:
+        # The mode in which rules take effect on existing files. Valid values:
         # 
-        # - **missing**: Applies the rule only if one does not already exist. (Default)
-        # 
-        # - **all**: Applies the rule to all files.
+        # - **missing**: Rules take effect only when they are missing. This is the default value.
+        # - **all**: Rules take effect on all files.
         self.strategy = strategy
 
     def validate(self):

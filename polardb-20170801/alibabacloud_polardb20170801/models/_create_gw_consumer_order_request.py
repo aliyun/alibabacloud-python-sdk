@@ -14,25 +14,19 @@ class CreateGwConsumerOrderRequest(DaraModel):
         package_spec: str = None,
         region_id: str = None,
     ):
-        # The idempotence token.
+        # The idempotency token.
         self.client_token = client_token
-        # The expiration time of the API key in ISO 8601 format. The value must be later than the current time.
-        # 
-        # This parameter is required.
+        # The expiration time of the API key in ISO-8601 format. The value must be later than the current time.
         self.expire_time = expire_time
         # The ID of the AI gateway instance.
         # 
         # This parameter is required.
         self.gateway_id = gateway_id
-        # The number of API keys to generate, which corresponds to the number of resource plans to purchase. Valid values: 1 to 30.
+        # The number of API keys to generate (the number of capacity plans to order). Valid values: 1 to 30.
         # 
         # This parameter is required.
         self.key_count = key_count
-        # The specification tier of the resource plan. Valid values:
-        # 
-        # - basic: 3000 points per plan.
-        # - advanced: 6000 points per plan.
-        # - pro: 9000 points per plan.
+        # The number of credits per API key. The value is a positive integer string.
         # 
         # This parameter is required.
         self.package_spec = package_spec

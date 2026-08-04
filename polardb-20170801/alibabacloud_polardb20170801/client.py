@@ -77,6 +77,7 @@ class Client(OpenApiClient):
             'cn-hongkong': 'polardb.cn-hongkong.aliyuncs.com',
             'cn-guangzhou': 'polardb.cn-guangzhou.aliyuncs.com',
             'cn-chengdu': 'polardb.cn-chengdu.aliyuncs.com',
+            'ap-southeast-8': 'polardb.ap-southeast-8.aliyuncs.com',
             'ap-southeast-7': 'polardb.ap-southeast-7.aliyuncs.com',
             'ap-southeast-6': 'polardb.ap-southeast-6.aliyuncs.com',
             'ap-southeast-5': 'polardb.ap-southeast-5.aliyuncs.com',
@@ -2769,6 +2770,80 @@ class Client(OpenApiClient):
     ) -> main_models.CreateAIDBClusterResponse:
         runtime = RuntimeOptions()
         return await self.create_aidbcluster_with_options_async(request, runtime)
+
+    def create_aidbcluster_api_key_with_options(
+        self,
+        request: main_models.CreateAIDBClusterApiKeyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAIDBClusterApiKeyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAIDBClusterApiKey',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAIDBClusterApiKeyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_aidbcluster_api_key_with_options_async(
+        self,
+        request: main_models.CreateAIDBClusterApiKeyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAIDBClusterApiKeyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAIDBClusterApiKey',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAIDBClusterApiKeyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_aidbcluster_api_key(
+        self,
+        request: main_models.CreateAIDBClusterApiKeyRequest,
+    ) -> main_models.CreateAIDBClusterApiKeyResponse:
+        runtime = RuntimeOptions()
+        return self.create_aidbcluster_api_key_with_options(request, runtime)
+
+    async def create_aidbcluster_api_key_async(
+        self,
+        request: main_models.CreateAIDBClusterApiKeyRequest,
+    ) -> main_models.CreateAIDBClusterApiKeyResponse:
+        runtime = RuntimeOptions()
+        return await self.create_aidbcluster_api_key_with_options_async(request, runtime)
 
     def create_aidbcluster_dataset_with_options(
         self,
@@ -8306,6 +8381,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_aidbcluster_with_options_async(request, runtime)
 
+    def delete_aidbcluster_api_key_with_options(
+        self,
+        request: main_models.DeleteAIDBClusterApiKeyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAIDBClusterApiKeyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.api_key):
+            query['ApiKey'] = request.api_key
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAIDBClusterApiKey',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAIDBClusterApiKeyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_aidbcluster_api_key_with_options_async(
+        self,
+        request: main_models.DeleteAIDBClusterApiKeyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAIDBClusterApiKeyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.api_key):
+            query['ApiKey'] = request.api_key
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAIDBClusterApiKey',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAIDBClusterApiKeyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_aidbcluster_api_key(
+        self,
+        request: main_models.DeleteAIDBClusterApiKeyRequest,
+    ) -> main_models.DeleteAIDBClusterApiKeyResponse:
+        runtime = RuntimeOptions()
+        return self.delete_aidbcluster_api_key_with_options(request, runtime)
+
+    async def delete_aidbcluster_api_key_async(
+        self,
+        request: main_models.DeleteAIDBClusterApiKeyRequest,
+    ) -> main_models.DeleteAIDBClusterApiKeyResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_aidbcluster_api_key_with_options_async(request, runtime)
+
     def delete_aidbcluster_dataset_with_options(
         self,
         request: main_models.DeleteAIDBClusterDatasetRequest,
@@ -12237,6 +12386,76 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteSQLRateLimitingRulesResponse:
         runtime = RuntimeOptions()
         return await self.delete_sqlrate_limiting_rules_with_options_async(request, runtime)
+
+    def describe_aidbcluster_api_keys_with_options(
+        self,
+        request: main_models.DescribeAIDBClusterApiKeysRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAIDBClusterApiKeysResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAIDBClusterApiKeys',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAIDBClusterApiKeysResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_aidbcluster_api_keys_with_options_async(
+        self,
+        request: main_models.DescribeAIDBClusterApiKeysRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAIDBClusterApiKeysResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAIDBClusterApiKeys',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAIDBClusterApiKeysResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_aidbcluster_api_keys(
+        self,
+        request: main_models.DescribeAIDBClusterApiKeysRequest,
+    ) -> main_models.DescribeAIDBClusterApiKeysResponse:
+        runtime = RuntimeOptions()
+        return self.describe_aidbcluster_api_keys_with_options(request, runtime)
+
+    async def describe_aidbcluster_api_keys_async(
+        self,
+        request: main_models.DescribeAIDBClusterApiKeysRequest,
+    ) -> main_models.DescribeAIDBClusterApiKeysResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_aidbcluster_api_keys_with_options_async(request, runtime)
 
     def describe_aidbcluster_attribute_with_options(
         self,

@@ -21,7 +21,7 @@ class CreateGwConsumerOrderResponseBody(DaraModel):
         self.gateway_id = gateway_id
         # The order ID returned after the order is placed.
         self.order_id = order_id
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

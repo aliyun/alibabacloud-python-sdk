@@ -13,22 +13,22 @@ class UnbindResourceControlRequest(DaraModel):
         target_type: str = None,
         target_value: str = None,
     ):
-        # The instance ID.
+        # The PolarDB cluster ID.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The region ID.
-        # >You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query the region ID.
+        # The region ID of the PolarDB cluster.
+        # >You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query region IDs.
         self.region_id = region_id
-        # The resource control name.
+        # The name of the resource control rule. The name must be 1 to 63 ASCII bytes in length, start with a letter, and can contain only letters, digits, and underscores.
         # 
         # This parameter is required.
         self.resource_control_name = resource_control_name
-        # The target instance type.
+        # The type of the target to unbind. Valid values: USER, DATABASE, QUERY, CONNECTION. The value is case-insensitive.
         # 
         # This parameter is required.
         self.target_type = target_type
-        # The target value. This parameter applies to target tracking rules and prediction rules. The value of TargetValue can contain up to three decimal places and must be greater than 0.
+        # The value of the target to unbind. The format is the same as the TargetValue for the corresponding target type in the BindResourceControl operation.
         # 
         # This parameter is required.
         self.target_value = target_value
