@@ -11,6 +11,7 @@ class ModelRouterQueryCostModelDetailRequest(DaraModel):
         client_id: int = None,
         end_time: int = None,
         max_results: int = None,
+        member_user_ids: str = None,
         model_id: int = None,
         next_token: str = None,
         page: int = None,
@@ -18,28 +19,31 @@ class ModelRouterQueryCostModelDetailRequest(DaraModel):
         page_size: int = None,
         start_time: int = None,
     ):
+        # Optional. Filters by API Key ID. This parameter is linked to the department and requires clientId to be specified first.
         self.api_key_id = api_key_id
-        # The department ID by which to filter results.
+        # The department ID used to filter results.
         self.client_id = client_id
-        # The end of the time range to query, specified as a Unix timestamp in seconds.
+        # The end time, in UNIX timestamp (seconds).
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The maximum number of results to return per page. This parameter is recommended for pagination.
+        # maxResults
         self.max_results = max_results
+        # Optional. Filters by member IDs. Separate multiple IDs with commas. If not specified, the department and all its members are included. If an empty value is specified, only the department is included without members.
+        self.member_user_ids = member_user_ids
         # The model ID.
         # 
         # This parameter is required.
         self.model_id = model_id
-        # The token to retrieve the next page of results. Obtain this token from the `nextToken` field in a previous response.
+        # nextToken
         self.next_token = next_token
-        # The page number. This parameter is part of an older pagination method. For better performance and consistency, use `maxResults` and `nextToken` instead.
+        # The page number. Default value: 1.
         self.page = page
-        # The page number. This parameter is part of an older pagination method. For better performance and consistency, use `maxResults` and `nextToken` instead.
+        # The page number. This parameter takes priority over the page parameter.
         self.page_index = page_index
-        # The page size. Default: 20.
+        # The number of entries per page. Default value: 20.
         self.page_size = page_size
-        # The start of the time range to query, specified as a Unix timestamp in seconds.
+        # The start time, in UNIX timestamp (seconds).
         # 
         # This parameter is required.
         self.start_time = start_time
@@ -63,6 +67,9 @@ class ModelRouterQueryCostModelDetailRequest(DaraModel):
 
         if self.max_results is not None:
             result['maxResults'] = self.max_results
+
+        if self.member_user_ids is not None:
+            result['memberUserIds'] = self.member_user_ids
 
         if self.model_id is not None:
             result['modelId'] = self.model_id
@@ -97,6 +104,9 @@ class ModelRouterQueryCostModelDetailRequest(DaraModel):
 
         if m.get('maxResults') is not None:
             self.max_results = m.get('maxResults')
+
+        if m.get('memberUserIds') is not None:
+            self.member_user_ids = m.get('memberUserIds')
 
         if m.get('modelId') is not None:
             self.model_id = m.get('modelId')

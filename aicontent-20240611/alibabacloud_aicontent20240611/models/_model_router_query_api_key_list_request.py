@@ -9,8 +9,10 @@ class ModelRouterQueryApiKeyListRequest(DaraModel):
         self,
         client_id: int = None,
         group_by: str = None,
+        include_member_keys: bool = None,
         keyword: str = None,
         max_results: int = None,
+        member_user_ids: str = None,
         need_total_count: bool = None,
         next_token: str = None,
         order_by: str = None,
@@ -19,27 +21,31 @@ class ModelRouterQueryApiKeyListRequest(DaraModel):
         page_size: int = None,
         status: int = None,
     ):
-        # Filters the results by the specified client ID.
+        # The client ID used to filter the results.
         self.client_id = client_id
-        # The grouping field.
+        # The field by which to group the results.
         self.group_by = group_by
+        # Optional. If set to true, the keys of members under the department are also included when filtering by department.
+        self.include_member_keys = include_member_keys
         # The search keyword.
         self.keyword = keyword
         # The maximum number of results to return.
         self.max_results = max_results
-        # Specifies whether to return the total count of results.
+        # Optional. Filters by member IDs. Separate multiple member IDs with commas. If this parameter is not specified, the department and all its members are included. If an empty value is specified, only the department is included without members.
+        self.member_user_ids = member_user_ids
+        # Specifies whether to return the total count.
         self.need_total_count = need_total_count
-        # The token for retrieving the next page of results. An empty value indicates that all results have been returned.
+        # The pagination token. An empty value indicates that no more pages are available.
         self.next_token = next_token
-        # The sort field.
+        # The field by which to sort the results.
         self.order_by = order_by
-        # The sort order.
+        # The sort direction.
         self.order_direction = order_direction
-        # The page number to retrieve.
+        # The page number.
         self.page_index = page_index
-        # The number of results per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # Filters the results by the specified status.
+        # The status used to filter the results.
         self.status = status
 
     def validate(self):
@@ -56,11 +62,17 @@ class ModelRouterQueryApiKeyListRequest(DaraModel):
         if self.group_by is not None:
             result['groupBy'] = self.group_by
 
+        if self.include_member_keys is not None:
+            result['includeMemberKeys'] = self.include_member_keys
+
         if self.keyword is not None:
             result['keyword'] = self.keyword
 
         if self.max_results is not None:
             result['maxResults'] = self.max_results
+
+        if self.member_user_ids is not None:
+            result['memberUserIds'] = self.member_user_ids
 
         if self.need_total_count is not None:
             result['needTotalCount'] = self.need_total_count
@@ -93,11 +105,17 @@ class ModelRouterQueryApiKeyListRequest(DaraModel):
         if m.get('groupBy') is not None:
             self.group_by = m.get('groupBy')
 
+        if m.get('includeMemberKeys') is not None:
+            self.include_member_keys = m.get('includeMemberKeys')
+
         if m.get('keyword') is not None:
             self.keyword = m.get('keyword')
 
         if m.get('maxResults') is not None:
             self.max_results = m.get('maxResults')
+
+        if m.get('memberUserIds') is not None:
+            self.member_user_ids = m.get('memberUserIds')
 
         if m.get('needTotalCount') is not None:
             self.need_total_count = m.get('needTotalCount')

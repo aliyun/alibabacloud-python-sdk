@@ -18,15 +18,15 @@ class ModelRouterQueryApiKeyListResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # An array of API key objects.
+        # The data object.
         self.data = data
-        # The error code.
+        # The error message code.
         self.err_code = err_code
         # The error message.
         self.err_message = err_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The maximum number of results per page.
+        # maxResults
         self.max_results = max_results
         # The request ID.
         self.request_id = request_id

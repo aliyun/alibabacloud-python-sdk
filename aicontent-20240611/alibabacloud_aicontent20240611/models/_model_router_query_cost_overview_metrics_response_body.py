@@ -19,17 +19,17 @@ class ModelRouterQueryCostOverviewMetricsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The data object that contains the returned metrics.
+        # The data object.
         self.data = data
-        # The error code that is returned if the request fails.
+        # The fault code.
         self.err_code = err_code
-        # The error message that is returned if the request fails.
+        # The error message.
         self.err_message = err_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The maximum number of entries returned on each page.
+        # The maximum number of results to return.
         self.max_results = max_results
-        # The token to retrieve the next page of results.
+        # nextToken
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id

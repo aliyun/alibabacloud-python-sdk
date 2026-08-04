@@ -9,8 +9,12 @@ from ._api_key_decrypted_dto import ApiKeyDecryptedDTO
 from ._api_key_list_qry import ApiKeyListQry
 from ._api_key_update_cmd import ApiKeyUpdateCmd
 from ._balance_order_dto import BalanceOrderDTO
+from ._balance_pool_summary_dto import BalancePoolSummaryDTO
 from ._batch_create_model_item_dto import BatchCreateModelItemDTO
+from ._batch_failed_item_dto import BatchFailedItemDTO
 from ._batch_model_error_dto import BatchModelErrorDTO
+from ._batch_op_result_dto import BatchOpResultDTO
+from ._bill_order_entry_dto import BillOrderEntryDTO
 from ._billing_bill_summary_point_dto import BillingBillSummaryPointDTO
 from ._billing_bill_summary_resp_dto import BillingBillSummaryRespDTO
 from ._billing_bill_tier_dto import BillingBillTierDTO
@@ -32,6 +36,11 @@ from ._cost_model_detail_row_dto import CostModelDetailRowDTO
 from ._cost_query_models_dto import CostQueryModelsDTO
 from ._cost_query_trend_dto import CostQueryTrendDTO
 from ._cost_tab_dto import CostTabDTO
+from ._department_role_cmd import DepartmentRoleCmd
+from ._dept_balance_summary_dto import DeptBalanceSummaryDTO
+from ._dept_member_dto import DeptMemberDTO
+from ._export_task_dto import ExportTaskDTO
+from ._member_api_key_dto import MemberApiKeyDTO
 from ._metric_def_resp_dto import MetricDefRespDTO
 from ._metric_kvpair_dto import MetricKVPairDTO
 from ._metric_value_dto import MetricValueDTO
@@ -41,6 +50,7 @@ from ._model_group_client_dto import ModelGroupClientDTO
 from ._model_group_client_key_item_dto import ModelGroupClientKeyItemDTO
 from ._model_group_dto import ModelGroupDTO
 from ._model_group_model_dto import ModelGroupModelDTO
+from ._model_group_user_dto import ModelGroupUserDTO
 from ._model_list_qry import ModelListQry
 from ._model_metrics_dto import ModelMetricsDTO
 from ._model_row_dto import ModelRowDTO
@@ -71,6 +81,8 @@ from ._trend_point_dto import TrendPointDTO
 from ._usage_breakdown_resp_dto import UsageBreakdownRespDTO
 from ._usage_breakdown_row_dto import UsageBreakdownRowDTO
 from ._usage_info_dto import UsageInfoDTO
+from ._user_department_dto import UserDepartmentDTO
+from ._user_list_item_dto import UserListItemDTO
 from ._aiteacher_expansion_practice_task_generate_request import AITeacherExpansionPracticeTaskGenerateRequest
 from ._aiteacher_expansion_practice_task_generate_response_body import AITeacherExpansionPracticeTaskGenerateResponseBody
 from ._aiteacher_expansion_practice_task_generate_response import AITeacherExpansionPracticeTaskGenerateResponse
@@ -183,6 +195,21 @@ from ._list_textbook_assistant_scene_details_response import ListTextbookAssista
 from ._model_router_batch_bind_model_group_request import ModelRouterBatchBindModelGroupRequest
 from ._model_router_batch_bind_model_group_response_body import ModelRouterBatchBindModelGroupResponseBody
 from ._model_router_batch_bind_model_group_response import ModelRouterBatchBindModelGroupResponse
+from ._model_router_batch_create_member_api_keys_request import ModelRouterBatchCreateMemberApiKeysRequest
+from ._model_router_batch_create_member_api_keys_response_body import ModelRouterBatchCreateMemberApiKeysResponseBody
+from ._model_router_batch_create_member_api_keys_response import ModelRouterBatchCreateMemberApiKeysResponse
+from ._model_router_batch_create_model_request import ModelRouterBatchCreateModelRequest
+from ._model_router_batch_create_model_response_body import ModelRouterBatchCreateModelResponseBody
+from ._model_router_batch_create_model_response import ModelRouterBatchCreateModelResponse
+from ._model_router_batch_disable_member_api_keys_request import ModelRouterBatchDisableMemberApiKeysRequest
+from ._model_router_batch_disable_member_api_keys_response_body import ModelRouterBatchDisableMemberApiKeysResponseBody
+from ._model_router_batch_disable_member_api_keys_response import ModelRouterBatchDisableMemberApiKeysResponse
+from ._model_router_batch_reset_member_authorization_request import ModelRouterBatchResetMemberAuthorizationRequest
+from ._model_router_batch_reset_member_authorization_response_body import ModelRouterBatchResetMemberAuthorizationResponseBody
+from ._model_router_batch_reset_member_authorization_response import ModelRouterBatchResetMemberAuthorizationResponse
+from ._model_router_batch_set_member_authorization_request import ModelRouterBatchSetMemberAuthorizationRequest
+from ._model_router_batch_set_member_authorization_response_body import ModelRouterBatchSetMemberAuthorizationResponseBody
+from ._model_router_batch_set_member_authorization_response import ModelRouterBatchSetMemberAuthorizationResponse
 from ._model_router_billing_cost_tabs_request import ModelRouterBillingCostTabsRequest
 from ._model_router_billing_cost_tabs_response_body import ModelRouterBillingCostTabsResponseBody
 from ._model_router_billing_cost_tabs_response import ModelRouterBillingCostTabsResponse
@@ -192,6 +219,9 @@ from ._model_router_chat_completions_response import ModelRouterChatCompletionsR
 from ._model_router_configure_client_balance_request import ModelRouterConfigureClientBalanceRequest
 from ._model_router_configure_client_balance_response_body import ModelRouterConfigureClientBalanceResponseBody
 from ._model_router_configure_client_balance_response import ModelRouterConfigureClientBalanceResponse
+from ._model_router_configure_member_balance_request import ModelRouterConfigureMemberBalanceRequest
+from ._model_router_configure_member_balance_response_body import ModelRouterConfigureMemberBalanceResponseBody
+from ._model_router_configure_member_balance_response import ModelRouterConfigureMemberBalanceResponse
 from ._model_router_copy_api_key_response_body import ModelRouterCopyApiKeyResponseBody
 from ._model_router_copy_api_key_response import ModelRouterCopyApiKeyResponse
 from ._model_router_create_api_key_request import ModelRouterCreateApiKeyRequest
@@ -209,6 +239,15 @@ from ._model_router_create_client_response import ModelRouterCreateClientRespons
 from ._model_router_create_conversation_request import ModelRouterCreateConversationRequest
 from ._model_router_create_conversation_response_body import ModelRouterCreateConversationResponseBody
 from ._model_router_create_conversation_response import ModelRouterCreateConversationResponse
+from ._model_router_create_member_api_key_request import ModelRouterCreateMemberApiKeyRequest
+from ._model_router_create_member_api_key_response_body import ModelRouterCreateMemberApiKeyResponseBody
+from ._model_router_create_member_api_key_response import ModelRouterCreateMemberApiKeyResponse
+from ._model_router_create_member_balance_transaction_request import ModelRouterCreateMemberBalanceTransactionRequest
+from ._model_router_create_member_balance_transaction_response_body import ModelRouterCreateMemberBalanceTransactionResponseBody
+from ._model_router_create_member_balance_transaction_response import ModelRouterCreateMemberBalanceTransactionResponse
+from ._model_router_create_member_subscription_request import ModelRouterCreateMemberSubscriptionRequest
+from ._model_router_create_member_subscription_response_body import ModelRouterCreateMemberSubscriptionResponseBody
+from ._model_router_create_member_subscription_response import ModelRouterCreateMemberSubscriptionResponse
 from ._model_router_create_model_request import ModelRouterCreateModelRequest
 from ._model_router_create_model_response_body import ModelRouterCreateModelResponseBody
 from ._model_router_create_model_response import ModelRouterCreateModelResponse
@@ -218,6 +257,9 @@ from ._model_router_create_model_group_response import ModelRouterCreateModelGro
 from ._model_router_create_subscription_request import ModelRouterCreateSubscriptionRequest
 from ._model_router_create_subscription_response_body import ModelRouterCreateSubscriptionResponseBody
 from ._model_router_create_subscription_response import ModelRouterCreateSubscriptionResponse
+from ._model_router_create_user_request import ModelRouterCreateUserRequest
+from ._model_router_create_user_response_body import ModelRouterCreateUserResponseBody
+from ._model_router_create_user_response import ModelRouterCreateUserResponse
 from ._model_router_delete_api_key_response_body import ModelRouterDeleteApiKeyResponseBody
 from ._model_router_delete_api_key_response import ModelRouterDeleteApiKeyResponse
 from ._model_router_delete_client_response_body import ModelRouterDeleteClientResponseBody
@@ -229,15 +271,45 @@ from ._model_router_delete_model_response import ModelRouterDeleteModelResponse
 from ._model_router_delete_model_group_request import ModelRouterDeleteModelGroupRequest
 from ._model_router_delete_model_group_response_body import ModelRouterDeleteModelGroupResponseBody
 from ._model_router_delete_model_group_response import ModelRouterDeleteModelGroupResponse
+from ._model_router_delete_user_request import ModelRouterDeleteUserRequest
+from ._model_router_delete_user_response_body import ModelRouterDeleteUserResponseBody
+from ._model_router_delete_user_response import ModelRouterDeleteUserResponse
+from ._model_router_export_member_balance_orders_request import ModelRouterExportMemberBalanceOrdersRequest
+from ._model_router_export_member_balance_orders_response_body import ModelRouterExportMemberBalanceOrdersResponseBody
+from ._model_router_export_member_balance_orders_response import ModelRouterExportMemberBalanceOrdersResponse
 from ._model_router_get_client_balance_request import ModelRouterGetClientBalanceRequest
 from ._model_router_get_client_balance_response_body import ModelRouterGetClientBalanceResponseBody
 from ._model_router_get_client_balance_response import ModelRouterGetClientBalanceResponse
 from ._model_router_get_client_balance_logs_request import ModelRouterGetClientBalanceLogsRequest
 from ._model_router_get_client_balance_logs_response_body import ModelRouterGetClientBalanceLogsResponseBody
 from ._model_router_get_client_balance_logs_response import ModelRouterGetClientBalanceLogsResponse
+from ._model_router_get_dept_balance_summary_request import ModelRouterGetDeptBalanceSummaryRequest
+from ._model_router_get_dept_balance_summary_response_body import ModelRouterGetDeptBalanceSummaryResponseBody
+from ._model_router_get_dept_balance_summary_response import ModelRouterGetDeptBalanceSummaryResponse
+from ._model_router_get_member_api_keys_request import ModelRouterGetMemberApiKeysRequest
+from ._model_router_get_member_api_keys_response_body import ModelRouterGetMemberApiKeysResponseBody
+from ._model_router_get_member_api_keys_response import ModelRouterGetMemberApiKeysResponse
+from ._model_router_get_member_balance_request import ModelRouterGetMemberBalanceRequest
+from ._model_router_get_member_balance_response_body import ModelRouterGetMemberBalanceResponseBody
+from ._model_router_get_member_balance_response import ModelRouterGetMemberBalanceResponse
+from ._model_router_get_member_balance_logs_request import ModelRouterGetMemberBalanceLogsRequest
+from ._model_router_get_member_balance_logs_response_body import ModelRouterGetMemberBalanceLogsResponseBody
+from ._model_router_get_member_balance_logs_response import ModelRouterGetMemberBalanceLogsResponse
+from ._model_router_get_user_roles_request import ModelRouterGetUserRolesRequest
+from ._model_router_get_user_roles_response_body import ModelRouterGetUserRolesResponseBody
+from ._model_router_get_user_roles_response import ModelRouterGetUserRolesResponse
 from ._model_router_list_balance_orders_request import ModelRouterListBalanceOrdersRequest
 from ._model_router_list_balance_orders_response_body import ModelRouterListBalanceOrdersResponseBody
 from ._model_router_list_balance_orders_response import ModelRouterListBalanceOrdersResponse
+from ._model_router_list_dept_members_request import ModelRouterListDeptMembersRequest
+from ._model_router_list_dept_members_response_body import ModelRouterListDeptMembersResponseBody
+from ._model_router_list_dept_members_response import ModelRouterListDeptMembersResponse
+from ._model_router_list_member_balance_orders_request import ModelRouterListMemberBalanceOrdersRequest
+from ._model_router_list_member_balance_orders_response_body import ModelRouterListMemberBalanceOrdersResponseBody
+from ._model_router_list_member_balance_orders_response import ModelRouterListMemberBalanceOrdersResponse
+from ._model_router_list_member_subscriptions_request import ModelRouterListMemberSubscriptionsRequest
+from ._model_router_list_member_subscriptions_response_body import ModelRouterListMemberSubscriptionsResponseBody
+from ._model_router_list_member_subscriptions_response import ModelRouterListMemberSubscriptionsResponse
 from ._model_router_list_subscriptions_request import ModelRouterListSubscriptionsRequest
 from ._model_router_list_subscriptions_response_body import ModelRouterListSubscriptionsResponseBody
 from ._model_router_list_subscriptions_response import ModelRouterListSubscriptionsResponse
@@ -292,6 +364,9 @@ from ._model_router_query_model_group_list_response import ModelRouterQueryModel
 from ._model_router_query_model_group_models_request import ModelRouterQueryModelGroupModelsRequest
 from ._model_router_query_model_group_models_response_body import ModelRouterQueryModelGroupModelsResponseBody
 from ._model_router_query_model_group_models_response import ModelRouterQueryModelGroupModelsResponse
+from ._model_router_query_model_group_users_request import ModelRouterQueryModelGroupUsersRequest
+from ._model_router_query_model_group_users_response_body import ModelRouterQueryModelGroupUsersResponseBody
+from ._model_router_query_model_group_users_response import ModelRouterQueryModelGroupUsersResponse
 from ._model_router_query_model_groups_by_api_key_request import ModelRouterQueryModelGroupsByApiKeyRequest
 from ._model_router_query_model_groups_by_api_key_response_body import ModelRouterQueryModelGroupsByApiKeyResponseBody
 from ._model_router_query_model_groups_by_api_key_response import ModelRouterQueryModelGroupsByApiKeyResponse
@@ -316,12 +391,33 @@ from ._model_router_query_observation_metrics_response import ModelRouterQueryOb
 from ._model_router_query_usage_breakdown_request import ModelRouterQueryUsageBreakdownRequest
 from ._model_router_query_usage_breakdown_response_body import ModelRouterQueryUsageBreakdownResponseBody
 from ._model_router_query_usage_breakdown_response import ModelRouterQueryUsageBreakdownResponse
+from ._model_router_query_user_list_request import ModelRouterQueryUserListRequest
+from ._model_router_query_user_list_response_body import ModelRouterQueryUserListResponseBody
+from ._model_router_query_user_list_response import ModelRouterQueryUserListResponse
+from ._model_router_reset_member_authorization_request import ModelRouterResetMemberAuthorizationRequest
+from ._model_router_reset_member_authorization_response_body import ModelRouterResetMemberAuthorizationResponseBody
+from ._model_router_reset_member_authorization_response import ModelRouterResetMemberAuthorizationResponse
 from ._model_router_save_flow_config_request import ModelRouterSaveFlowConfigRequest
 from ._model_router_save_flow_config_response_body import ModelRouterSaveFlowConfigResponseBody
 from ._model_router_save_flow_config_response import ModelRouterSaveFlowConfigResponse
+from ._model_router_search_client_tree_request import ModelRouterSearchClientTreeRequest
+from ._model_router_search_client_tree_response_body import ModelRouterSearchClientTreeResponseBody
+from ._model_router_search_client_tree_response import ModelRouterSearchClientTreeResponse
+from ._model_router_set_member_authorization_request import ModelRouterSetMemberAuthorizationRequest
+from ._model_router_set_member_authorization_response_body import ModelRouterSetMemberAuthorizationResponseBody
+from ._model_router_set_member_authorization_response import ModelRouterSetMemberAuthorizationResponse
+from ._model_router_set_user_roles_request import ModelRouterSetUserRolesRequest
+from ._model_router_set_user_roles_response_body import ModelRouterSetUserRolesResponseBody
+from ._model_router_set_user_roles_response import ModelRouterSetUserRolesResponse
+from ._model_router_stop_member_subscription_request import ModelRouterStopMemberSubscriptionRequest
+from ._model_router_stop_member_subscription_response_body import ModelRouterStopMemberSubscriptionResponseBody
+from ._model_router_stop_member_subscription_response import ModelRouterStopMemberSubscriptionResponse
 from ._model_router_stop_subscription_request import ModelRouterStopSubscriptionRequest
 from ._model_router_stop_subscription_response_body import ModelRouterStopSubscriptionResponseBody
 from ._model_router_stop_subscription_response import ModelRouterStopSubscriptionResponse
+from ._model_router_transfer_to_member_request import ModelRouterTransferToMemberRequest
+from ._model_router_transfer_to_member_response_body import ModelRouterTransferToMemberResponseBody
+from ._model_router_transfer_to_member_response import ModelRouterTransferToMemberResponse
 from ._model_router_update_billing_rule_request import ModelRouterUpdateBillingRuleRequest
 from ._model_router_update_billing_rule_response_body import ModelRouterUpdateBillingRuleResponseBody
 from ._model_router_update_billing_rule_response import ModelRouterUpdateBillingRuleResponse
@@ -337,6 +433,9 @@ from ._model_router_update_model_response import ModelRouterUpdateModelResponse
 from ._model_router_update_model_group_request import ModelRouterUpdateModelGroupRequest
 from ._model_router_update_model_group_response_body import ModelRouterUpdateModelGroupResponseBody
 from ._model_router_update_model_group_response import ModelRouterUpdateModelGroupResponse
+from ._model_router_update_user_request import ModelRouterUpdateUserRequest
+from ._model_router_update_user_response_body import ModelRouterUpdateUserResponseBody
+from ._model_router_update_user_response import ModelRouterUpdateUserResponse
 from ._personalized_text_to_image_add_inference_job_request import PersonalizedTextToImageAddInferenceJobRequest
 from ._personalized_text_to_image_add_inference_job_response_body import PersonalizedTextToImageAddInferenceJobResponseBody
 from ._personalized_text_to_image_add_inference_job_response import PersonalizedTextToImageAddInferenceJobResponse
@@ -471,10 +570,19 @@ from ._list_textbook_assistant_scene_details_response_body import ListTextbookAs
 from ._list_textbook_assistant_scene_details_response_body import ListTextbookAssistantSceneDetailsResponseBodyDataTopic
 from ._list_textbook_assistant_scene_details_response_body import ListTextbookAssistantSceneDetailsResponseBodyDataWordList
 from ._list_textbook_assistant_scene_details_response_body import ListTextbookAssistantSceneDetailsResponseBodyData
+from ._model_router_batch_create_model_response_body import ModelRouterBatchCreateModelResponseBodyData
 from ._model_router_create_billing_rule_response_body import ModelRouterCreateBillingRuleResponseBodyData
+from ._model_router_create_member_api_key_response_body import ModelRouterCreateMemberApiKeyResponseBodyData
 from ._model_router_create_model_group_response_body import ModelRouterCreateModelGroupResponseBodyData
+from ._model_router_create_user_response_body import ModelRouterCreateUserResponseBodyData
 from ._model_router_get_client_balance_logs_response_body import ModelRouterGetClientBalanceLogsResponseBodyData
+from ._model_router_get_member_api_keys_response_body import ModelRouterGetMemberApiKeysResponseBodyData
+from ._model_router_get_member_balance_logs_response_body import ModelRouterGetMemberBalanceLogsResponseBodyData
+from ._model_router_get_user_roles_response_body import ModelRouterGetUserRolesResponseBodyData
 from ._model_router_list_balance_orders_response_body import ModelRouterListBalanceOrdersResponseBodyData
+from ._model_router_list_dept_members_response_body import ModelRouterListDeptMembersResponseBodyData
+from ._model_router_list_member_balance_orders_response_body import ModelRouterListMemberBalanceOrdersResponseBodyData
+from ._model_router_list_member_subscriptions_response_body import ModelRouterListMemberSubscriptionsResponseBodyData
 from ._model_router_list_subscriptions_response_body import ModelRouterListSubscriptionsResponseBodyData
 from ._model_router_query_api_key_list_response_body import ModelRouterQueryApiKeyListResponseBodyData
 from ._model_router_query_billing_rule_list_response_body import ModelRouterQueryBillingRuleListResponseBodyDataList
@@ -485,6 +593,7 @@ from ._model_router_query_conversation_list_response_body import ModelRouterQuer
 from ._model_router_query_model_group_clients_response_body import ModelRouterQueryModelGroupClientsResponseBodyData
 from ._model_router_query_model_group_list_response_body import ModelRouterQueryModelGroupListResponseBodyData
 from ._model_router_query_model_group_models_response_body import ModelRouterQueryModelGroupModelsResponseBodyData
+from ._model_router_query_model_group_users_response_body import ModelRouterQueryModelGroupUsersResponseBodyData
 from ._model_router_query_model_groups_by_api_key_response_body import ModelRouterQueryModelGroupsByApiKeyResponseBodyData
 from ._model_router_query_model_list_response_body import ModelRouterQueryModelListResponseBodyData
 from ._model_router_query_nacos_providers_response_body import ModelRouterQueryNacosProvidersResponseBodyDataModelsExtensions
@@ -492,7 +601,9 @@ from ._model_router_query_nacos_providers_response_body import ModelRouterQueryN
 from ._model_router_query_nacos_providers_response_body import ModelRouterQueryNacosProvidersResponseBodyData
 from ._model_router_query_nacos_tags_response_body import ModelRouterQueryNacosTagsResponseBodyData
 from ._model_router_query_observation_logs_response_body import ModelRouterQueryObservationLogsResponseBodyData
+from ._model_router_query_user_list_response_body import ModelRouterQueryUserListResponseBodyData
 from ._model_router_save_flow_config_response_body import ModelRouterSaveFlowConfigResponseBodyData
+from ._model_router_search_client_tree_response_body import ModelRouterSearchClientTreeResponseBodyData
 from ._model_router_update_billing_rule_response_body import ModelRouterUpdateBillingRuleResponseBodyData
 from ._personalized_text_to_image_add_inference_job_response_body import PersonalizedTextToImageAddInferenceJobResponseBodyData
 from ._personalized_text_to_image_query_pre_model_inference_job_info_response_body import PersonalizedTextToImageQueryPreModelInferenceJobInfoResponseBodyData
@@ -525,8 +636,12 @@ __all__ = [
     ApiKeyListQry,
     ApiKeyUpdateCmd,
     BalanceOrderDTO,
+    BalancePoolSummaryDTO,
     BatchCreateModelItemDTO,
+    BatchFailedItemDTO,
     BatchModelErrorDTO,
+    BatchOpResultDTO,
+    BillOrderEntryDTO,
     BillingBillSummaryPointDTO,
     BillingBillSummaryRespDTO,
     BillingBillTierDTO,
@@ -548,6 +663,11 @@ __all__ = [
     CostQueryModelsDTO,
     CostQueryTrendDTO,
     CostTabDTO,
+    DepartmentRoleCmd,
+    DeptBalanceSummaryDTO,
+    DeptMemberDTO,
+    ExportTaskDTO,
+    MemberApiKeyDTO,
     MetricDefRespDTO,
     MetricKVPairDTO,
     MetricValueDTO,
@@ -557,6 +677,7 @@ __all__ = [
     ModelGroupClientKeyItemDTO,
     ModelGroupDTO,
     ModelGroupModelDTO,
+    ModelGroupUserDTO,
     ModelListQry,
     ModelMetricsDTO,
     ModelRowDTO,
@@ -587,6 +708,8 @@ __all__ = [
     UsageBreakdownRespDTO,
     UsageBreakdownRowDTO,
     UsageInfoDTO,
+    UserDepartmentDTO,
+    UserListItemDTO,
     AITeacherExpansionPracticeTaskGenerateRequest,
     AITeacherExpansionPracticeTaskGenerateResponseBody,
     AITeacherExpansionPracticeTaskGenerateResponse,
@@ -699,6 +822,21 @@ __all__ = [
     ModelRouterBatchBindModelGroupRequest,
     ModelRouterBatchBindModelGroupResponseBody,
     ModelRouterBatchBindModelGroupResponse,
+    ModelRouterBatchCreateMemberApiKeysRequest,
+    ModelRouterBatchCreateMemberApiKeysResponseBody,
+    ModelRouterBatchCreateMemberApiKeysResponse,
+    ModelRouterBatchCreateModelRequest,
+    ModelRouterBatchCreateModelResponseBody,
+    ModelRouterBatchCreateModelResponse,
+    ModelRouterBatchDisableMemberApiKeysRequest,
+    ModelRouterBatchDisableMemberApiKeysResponseBody,
+    ModelRouterBatchDisableMemberApiKeysResponse,
+    ModelRouterBatchResetMemberAuthorizationRequest,
+    ModelRouterBatchResetMemberAuthorizationResponseBody,
+    ModelRouterBatchResetMemberAuthorizationResponse,
+    ModelRouterBatchSetMemberAuthorizationRequest,
+    ModelRouterBatchSetMemberAuthorizationResponseBody,
+    ModelRouterBatchSetMemberAuthorizationResponse,
     ModelRouterBillingCostTabsRequest,
     ModelRouterBillingCostTabsResponseBody,
     ModelRouterBillingCostTabsResponse,
@@ -708,6 +846,9 @@ __all__ = [
     ModelRouterConfigureClientBalanceRequest,
     ModelRouterConfigureClientBalanceResponseBody,
     ModelRouterConfigureClientBalanceResponse,
+    ModelRouterConfigureMemberBalanceRequest,
+    ModelRouterConfigureMemberBalanceResponseBody,
+    ModelRouterConfigureMemberBalanceResponse,
     ModelRouterCopyApiKeyResponseBody,
     ModelRouterCopyApiKeyResponse,
     ModelRouterCreateApiKeyRequest,
@@ -725,6 +866,15 @@ __all__ = [
     ModelRouterCreateConversationRequest,
     ModelRouterCreateConversationResponseBody,
     ModelRouterCreateConversationResponse,
+    ModelRouterCreateMemberApiKeyRequest,
+    ModelRouterCreateMemberApiKeyResponseBody,
+    ModelRouterCreateMemberApiKeyResponse,
+    ModelRouterCreateMemberBalanceTransactionRequest,
+    ModelRouterCreateMemberBalanceTransactionResponseBody,
+    ModelRouterCreateMemberBalanceTransactionResponse,
+    ModelRouterCreateMemberSubscriptionRequest,
+    ModelRouterCreateMemberSubscriptionResponseBody,
+    ModelRouterCreateMemberSubscriptionResponse,
     ModelRouterCreateModelRequest,
     ModelRouterCreateModelResponseBody,
     ModelRouterCreateModelResponse,
@@ -734,6 +884,9 @@ __all__ = [
     ModelRouterCreateSubscriptionRequest,
     ModelRouterCreateSubscriptionResponseBody,
     ModelRouterCreateSubscriptionResponse,
+    ModelRouterCreateUserRequest,
+    ModelRouterCreateUserResponseBody,
+    ModelRouterCreateUserResponse,
     ModelRouterDeleteApiKeyResponseBody,
     ModelRouterDeleteApiKeyResponse,
     ModelRouterDeleteClientResponseBody,
@@ -745,15 +898,45 @@ __all__ = [
     ModelRouterDeleteModelGroupRequest,
     ModelRouterDeleteModelGroupResponseBody,
     ModelRouterDeleteModelGroupResponse,
+    ModelRouterDeleteUserRequest,
+    ModelRouterDeleteUserResponseBody,
+    ModelRouterDeleteUserResponse,
+    ModelRouterExportMemberBalanceOrdersRequest,
+    ModelRouterExportMemberBalanceOrdersResponseBody,
+    ModelRouterExportMemberBalanceOrdersResponse,
     ModelRouterGetClientBalanceRequest,
     ModelRouterGetClientBalanceResponseBody,
     ModelRouterGetClientBalanceResponse,
     ModelRouterGetClientBalanceLogsRequest,
     ModelRouterGetClientBalanceLogsResponseBody,
     ModelRouterGetClientBalanceLogsResponse,
+    ModelRouterGetDeptBalanceSummaryRequest,
+    ModelRouterGetDeptBalanceSummaryResponseBody,
+    ModelRouterGetDeptBalanceSummaryResponse,
+    ModelRouterGetMemberApiKeysRequest,
+    ModelRouterGetMemberApiKeysResponseBody,
+    ModelRouterGetMemberApiKeysResponse,
+    ModelRouterGetMemberBalanceRequest,
+    ModelRouterGetMemberBalanceResponseBody,
+    ModelRouterGetMemberBalanceResponse,
+    ModelRouterGetMemberBalanceLogsRequest,
+    ModelRouterGetMemberBalanceLogsResponseBody,
+    ModelRouterGetMemberBalanceLogsResponse,
+    ModelRouterGetUserRolesRequest,
+    ModelRouterGetUserRolesResponseBody,
+    ModelRouterGetUserRolesResponse,
     ModelRouterListBalanceOrdersRequest,
     ModelRouterListBalanceOrdersResponseBody,
     ModelRouterListBalanceOrdersResponse,
+    ModelRouterListDeptMembersRequest,
+    ModelRouterListDeptMembersResponseBody,
+    ModelRouterListDeptMembersResponse,
+    ModelRouterListMemberBalanceOrdersRequest,
+    ModelRouterListMemberBalanceOrdersResponseBody,
+    ModelRouterListMemberBalanceOrdersResponse,
+    ModelRouterListMemberSubscriptionsRequest,
+    ModelRouterListMemberSubscriptionsResponseBody,
+    ModelRouterListMemberSubscriptionsResponse,
     ModelRouterListSubscriptionsRequest,
     ModelRouterListSubscriptionsResponseBody,
     ModelRouterListSubscriptionsResponse,
@@ -808,6 +991,9 @@ __all__ = [
     ModelRouterQueryModelGroupModelsRequest,
     ModelRouterQueryModelGroupModelsResponseBody,
     ModelRouterQueryModelGroupModelsResponse,
+    ModelRouterQueryModelGroupUsersRequest,
+    ModelRouterQueryModelGroupUsersResponseBody,
+    ModelRouterQueryModelGroupUsersResponse,
     ModelRouterQueryModelGroupsByApiKeyRequest,
     ModelRouterQueryModelGroupsByApiKeyResponseBody,
     ModelRouterQueryModelGroupsByApiKeyResponse,
@@ -832,12 +1018,33 @@ __all__ = [
     ModelRouterQueryUsageBreakdownRequest,
     ModelRouterQueryUsageBreakdownResponseBody,
     ModelRouterQueryUsageBreakdownResponse,
+    ModelRouterQueryUserListRequest,
+    ModelRouterQueryUserListResponseBody,
+    ModelRouterQueryUserListResponse,
+    ModelRouterResetMemberAuthorizationRequest,
+    ModelRouterResetMemberAuthorizationResponseBody,
+    ModelRouterResetMemberAuthorizationResponse,
     ModelRouterSaveFlowConfigRequest,
     ModelRouterSaveFlowConfigResponseBody,
     ModelRouterSaveFlowConfigResponse,
+    ModelRouterSearchClientTreeRequest,
+    ModelRouterSearchClientTreeResponseBody,
+    ModelRouterSearchClientTreeResponse,
+    ModelRouterSetMemberAuthorizationRequest,
+    ModelRouterSetMemberAuthorizationResponseBody,
+    ModelRouterSetMemberAuthorizationResponse,
+    ModelRouterSetUserRolesRequest,
+    ModelRouterSetUserRolesResponseBody,
+    ModelRouterSetUserRolesResponse,
+    ModelRouterStopMemberSubscriptionRequest,
+    ModelRouterStopMemberSubscriptionResponseBody,
+    ModelRouterStopMemberSubscriptionResponse,
     ModelRouterStopSubscriptionRequest,
     ModelRouterStopSubscriptionResponseBody,
     ModelRouterStopSubscriptionResponse,
+    ModelRouterTransferToMemberRequest,
+    ModelRouterTransferToMemberResponseBody,
+    ModelRouterTransferToMemberResponse,
     ModelRouterUpdateBillingRuleRequest,
     ModelRouterUpdateBillingRuleResponseBody,
     ModelRouterUpdateBillingRuleResponse,
@@ -853,6 +1060,9 @@ __all__ = [
     ModelRouterUpdateModelGroupRequest,
     ModelRouterUpdateModelGroupResponseBody,
     ModelRouterUpdateModelGroupResponse,
+    ModelRouterUpdateUserRequest,
+    ModelRouterUpdateUserResponseBody,
+    ModelRouterUpdateUserResponse,
     PersonalizedTextToImageAddInferenceJobRequest,
     PersonalizedTextToImageAddInferenceJobResponseBody,
     PersonalizedTextToImageAddInferenceJobResponse,
@@ -987,10 +1197,19 @@ __all__ = [
     ListTextbookAssistantSceneDetailsResponseBodyDataTopic,
     ListTextbookAssistantSceneDetailsResponseBodyDataWordList,
     ListTextbookAssistantSceneDetailsResponseBodyData,
+    ModelRouterBatchCreateModelResponseBodyData,
     ModelRouterCreateBillingRuleResponseBodyData,
+    ModelRouterCreateMemberApiKeyResponseBodyData,
     ModelRouterCreateModelGroupResponseBodyData,
+    ModelRouterCreateUserResponseBodyData,
     ModelRouterGetClientBalanceLogsResponseBodyData,
+    ModelRouterGetMemberApiKeysResponseBodyData,
+    ModelRouterGetMemberBalanceLogsResponseBodyData,
+    ModelRouterGetUserRolesResponseBodyData,
     ModelRouterListBalanceOrdersResponseBodyData,
+    ModelRouterListDeptMembersResponseBodyData,
+    ModelRouterListMemberBalanceOrdersResponseBodyData,
+    ModelRouterListMemberSubscriptionsResponseBodyData,
     ModelRouterListSubscriptionsResponseBodyData,
     ModelRouterQueryApiKeyListResponseBodyData,
     ModelRouterQueryBillingRuleListResponseBodyDataList,
@@ -1001,6 +1220,7 @@ __all__ = [
     ModelRouterQueryModelGroupClientsResponseBodyData,
     ModelRouterQueryModelGroupListResponseBodyData,
     ModelRouterQueryModelGroupModelsResponseBodyData,
+    ModelRouterQueryModelGroupUsersResponseBodyData,
     ModelRouterQueryModelGroupsByApiKeyResponseBodyData,
     ModelRouterQueryModelListResponseBodyData,
     ModelRouterQueryNacosProvidersResponseBodyDataModelsExtensions,
@@ -1008,7 +1228,9 @@ __all__ = [
     ModelRouterQueryNacosProvidersResponseBodyData,
     ModelRouterQueryNacosTagsResponseBodyData,
     ModelRouterQueryObservationLogsResponseBodyData,
+    ModelRouterQueryUserListResponseBodyData,
     ModelRouterSaveFlowConfigResponseBodyData,
+    ModelRouterSearchClientTreeResponseBodyData,
     ModelRouterUpdateBillingRuleResponseBodyData,
     PersonalizedTextToImageAddInferenceJobResponseBodyData,
     PersonalizedTextToImageQueryPreModelInferenceJobInfoResponseBodyData,

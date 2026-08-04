@@ -12,6 +12,7 @@ class ModelRouterQueryObservationMetricsRequest(DaraModel):
         end_time: str = None,
         group_by: str = None,
         max_results: int = None,
+        member_user_ids: str = None,
         model_id: int = None,
         need_total_count: bool = None,
         next_token: str = None,
@@ -32,6 +33,8 @@ class ModelRouterQueryObservationMetricsRequest(DaraModel):
         self.group_by = group_by
         # The maximum number of results to return.
         self.max_results = max_results
+        # Optional. Filters by member IDs. Separate multiple IDs with commas. If not specified, the department and all its members are included. If an empty value is specified, only the department is included without members.
+        self.member_user_ids = member_user_ids
         # The model ID used to filter the results.
         self.model_id = model_id
         # Specifies whether to return the total count.
@@ -48,7 +51,7 @@ class ModelRouterQueryObservationMetricsRequest(DaraModel):
         self.page_size = page_size
         # The custom start time.
         self.start_time = start_time
-        # The time range for the query. Valid values: 1h, 6h, 24h, 7d, and 30d.
+        # The time range for the query. Valid values: 1h, 6h, 24h, 7d, 30d.
         self.time_range = time_range
 
     def validate(self):
@@ -73,6 +76,9 @@ class ModelRouterQueryObservationMetricsRequest(DaraModel):
 
         if self.max_results is not None:
             result['maxResults'] = self.max_results
+
+        if self.member_user_ids is not None:
+            result['memberUserIds'] = self.member_user_ids
 
         if self.model_id is not None:
             result['modelId'] = self.model_id
@@ -119,6 +125,9 @@ class ModelRouterQueryObservationMetricsRequest(DaraModel):
 
         if m.get('maxResults') is not None:
             self.max_results = m.get('maxResults')
+
+        if m.get('memberUserIds') is not None:
+            self.member_user_ids = m.get('memberUserIds')
 
         if m.get('modelId') is not None:
             self.model_id = m.get('modelId')

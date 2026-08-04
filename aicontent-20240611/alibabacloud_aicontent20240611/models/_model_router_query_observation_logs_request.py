@@ -12,6 +12,7 @@ class ModelRouterQueryObservationLogsRequest(DaraModel):
         end_time: str = None,
         group_by: str = None,
         max_results: int = None,
+        member_user_ids: str = None,
         model_id: int = None,
         need_total_count: bool = None,
         next_token: str = None,
@@ -32,6 +33,7 @@ class ModelRouterQueryObservationLogsRequest(DaraModel):
         self.group_by = group_by
         # The maximum number of results to return.
         self.max_results = max_results
+        self.member_user_ids = member_user_ids
         # The model ID used to filter the results.
         self.model_id = model_id
         # Specifies whether to return the total count.
@@ -73,6 +75,9 @@ class ModelRouterQueryObservationLogsRequest(DaraModel):
 
         if self.max_results is not None:
             result['maxResults'] = self.max_results
+
+        if self.member_user_ids is not None:
+            result['memberUserIds'] = self.member_user_ids
 
         if self.model_id is not None:
             result['modelId'] = self.model_id
@@ -119,6 +124,9 @@ class ModelRouterQueryObservationLogsRequest(DaraModel):
 
         if m.get('maxResults') is not None:
             self.max_results = m.get('maxResults')
+
+        if m.get('memberUserIds') is not None:
+            self.member_user_ids = m.get('memberUserIds')
 
         if m.get('modelId') is not None:
             self.model_id = m.get('modelId')

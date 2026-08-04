@@ -24,8 +24,10 @@ class ClientTreeDTO(DaraModel):
         level: int = None,
         main: int = None,
         name: str = None,
+        node_type: str = None,
         parent_id: int = None,
         remark: str = None,
+        user_id: int = None,
     ):
         self.address = address
         self.allowed_models = allowed_models
@@ -41,8 +43,10 @@ class ClientTreeDTO(DaraModel):
         self.level = level
         self.main = main
         self.name = name
+        self.node_type = node_type
         self.parent_id = parent_id
         self.remark = remark
+        self.user_id = user_id
 
     def validate(self):
         if self.balance:
@@ -101,11 +105,17 @@ class ClientTreeDTO(DaraModel):
         if self.name is not None:
             result['name'] = self.name
 
+        if self.node_type is not None:
+            result['nodeType'] = self.node_type
+
         if self.parent_id is not None:
             result['parentId'] = self.parent_id
 
         if self.remark is not None:
             result['remark'] = self.remark
+
+        if self.user_id is not None:
+            result['userId'] = self.user_id
 
         return result
 
@@ -157,11 +167,17 @@ class ClientTreeDTO(DaraModel):
         if m.get('name') is not None:
             self.name = m.get('name')
 
+        if m.get('nodeType') is not None:
+            self.node_type = m.get('nodeType')
+
         if m.get('parentId') is not None:
             self.parent_id = m.get('parentId')
 
         if m.get('remark') is not None:
             self.remark = m.get('remark')
+
+        if m.get('userId') is not None:
+            self.user_id = m.get('userId')
 
         return self
 

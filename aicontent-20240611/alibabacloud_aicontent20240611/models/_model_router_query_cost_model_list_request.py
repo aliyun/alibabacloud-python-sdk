@@ -12,29 +12,33 @@ class ModelRouterQueryCostModelListRequest(DaraModel):
         end_time: int = None,
         granularity: str = None,
         max_results: int = None,
+        member_user_ids: str = None,
         model_types: str = None,
         next_token: str = None,
         search: str = None,
         start_time: int = None,
     ):
+        # Optional. Filters results by API key ID. This parameter works in conjunction with the department and requires clientId to be specified first.
         self.api_key_id = api_key_id
-        # The department ID to filter the results.
+        # Filters results by department ID.
         self.client_id = client_id
-        # The query\\"s end time, specified as a UNIX timestamp in seconds.
+        # The end time, as a UNIX timestamp in seconds.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The time granularity for data aggregation. Valid values: `hourly` and `daily`. Default value: `hourly`.
+        # Automatic aggregation. You do not need to pass this parameter. Granularity: hourly/daily. Default value: hourly.
         self.granularity = granularity
-        # The maximum number of results per page.
+        # The maximum number of results to return.
         self.max_results = max_results
-        # The model types to query. Separate multiple types with a comma.
+        # Optional. Filters results by member IDs, separated by commas. If not specified, the department and all its members are included. If an empty value is passed, only the department is included without members.
+        self.member_user_ids = member_user_ids
+        # The model types, separated by commas.
         self.model_types = model_types
-        # A token from a previous response used to retrieve the next page of results.
+        # nextToken
         self.next_token = next_token
-        # A keyword for a fuzzy search on the model name or model code.
+        # Performs a fuzzy match on the model name or code.
         self.search = search
-        # The query\\"s start time, specified as a UNIX timestamp in seconds.
+        # The start time, as a UNIX timestamp in seconds.
         # 
         # This parameter is required.
         self.start_time = start_time
@@ -61,6 +65,9 @@ class ModelRouterQueryCostModelListRequest(DaraModel):
 
         if self.max_results is not None:
             result['maxResults'] = self.max_results
+
+        if self.member_user_ids is not None:
+            result['memberUserIds'] = self.member_user_ids
 
         if self.model_types is not None:
             result['modelTypes'] = self.model_types
@@ -92,6 +99,9 @@ class ModelRouterQueryCostModelListRequest(DaraModel):
 
         if m.get('maxResults') is not None:
             self.max_results = m.get('maxResults')
+
+        if m.get('memberUserIds') is not None:
+            self.member_user_ids = m.get('memberUserIds')
 
         if m.get('modelTypes') is not None:
             self.model_types = m.get('modelTypes')

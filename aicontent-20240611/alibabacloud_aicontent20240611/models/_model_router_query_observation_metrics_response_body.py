@@ -17,7 +17,7 @@ class ModelRouterQueryObservationMetricsResponseBody(DaraModel):
     ):
         # The data object.
         self.data = data
-        # The fault code.
+        # The error message code.
         self.err_code = err_code
         # The error message.
         self.err_message = err_message

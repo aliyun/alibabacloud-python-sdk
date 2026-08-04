@@ -16,6 +16,7 @@ class ModelRouterQueryClientListRequest(DaraModel):
         order_direction: str = None,
         page_index: int = None,
         page_size: int = None,
+        parent_id: int = None,
         status: int = None,
     ):
         # The field to group the results by.
@@ -36,6 +37,7 @@ class ModelRouterQueryClientListRequest(DaraModel):
         self.page_index = page_index
         # The number of entries to return per page.
         self.page_size = page_size
+        self.parent_id = parent_id
         # Filters the results by status.
         self.status = status
 
@@ -74,6 +76,9 @@ class ModelRouterQueryClientListRequest(DaraModel):
         if self.page_size is not None:
             result['pageSize'] = self.page_size
 
+        if self.parent_id is not None:
+            result['parentId'] = self.parent_id
+
         if self.status is not None:
             result['status'] = self.status
 
@@ -107,6 +112,9 @@ class ModelRouterQueryClientListRequest(DaraModel):
 
         if m.get('pageSize') is not None:
             self.page_size = m.get('pageSize')
+
+        if m.get('parentId') is not None:
+            self.parent_id = m.get('parentId')
 
         if m.get('status') is not None:
             self.status = m.get('status')

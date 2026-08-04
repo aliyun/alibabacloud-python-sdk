@@ -14,6 +14,8 @@ class UsageBreakdownRowDTO(DaraModel):
         api_key_name: str = None,
         client_id: int = None,
         client_name: str = None,
+        member_user_id: int = None,
+        member_user_name: str = None,
         metrics: List[main_models.MetricKVPairDTO] = None,
         model_code: str = None,
         model_id: int = None,
@@ -27,6 +29,8 @@ class UsageBreakdownRowDTO(DaraModel):
         self.client_id = client_id
         # Department name
         self.client_name = client_name
+        self.member_user_id = member_user_id
+        self.member_user_name = member_user_name
         # Array of usage metrics, containing only entries with non-zero values
         self.metrics = metrics
         # Model identifier
@@ -63,6 +67,12 @@ class UsageBreakdownRowDTO(DaraModel):
         if self.client_name is not None:
             result['clientName'] = self.client_name
 
+        if self.member_user_id is not None:
+            result['memberUserId'] = self.member_user_id
+
+        if self.member_user_name is not None:
+            result['memberUserName'] = self.member_user_name
+
         result['metrics'] = []
         if self.metrics is not None:
             for k1 in self.metrics:
@@ -98,6 +108,12 @@ class UsageBreakdownRowDTO(DaraModel):
 
         if m.get('clientName') is not None:
             self.client_name = m.get('clientName')
+
+        if m.get('memberUserId') is not None:
+            self.member_user_id = m.get('memberUserId')
+
+        if m.get('memberUserName') is not None:
+            self.member_user_name = m.get('memberUserName')
 
         self.metrics = []
         if m.get('metrics') is not None:

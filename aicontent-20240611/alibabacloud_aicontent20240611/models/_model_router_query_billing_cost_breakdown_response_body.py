@@ -17,17 +17,17 @@ class ModelRouterQueryBillingCostBreakdownResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The data object containing the billing breakdown. For details, see the response example.
+        # The data object.
         self.data = data
-        # The error code.
+        # The error message code.
         self.err_code = err_code
         # The error message.
         self.err_message = err_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The maximum number of results returned.
+        # The maximum number of results to return.
         self.max_results = max_results
-        # The pagination token. If this parameter is not empty, pass its value in a subsequent request to retrieve the next page of results.
+        # The pagination token.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id

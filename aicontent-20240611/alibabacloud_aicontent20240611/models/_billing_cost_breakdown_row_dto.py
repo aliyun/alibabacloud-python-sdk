@@ -16,10 +16,14 @@ class BillingCostBreakdownRowDTO(DaraModel):
         client_id: int = None,
         client_name: str = None,
         dim_values: str = None,
+        member_user_id: int = None,
+        member_user_name: str = None,
         model_code: str = None,
         model_id: int = None,
         model_name: str = None,
+        model_symbol: str = None,
         model_type: str = None,
+        model_version: int = None,
         payable_amount: float = None,
         summary_time: int = None,
         tiers: List[main_models.BillingBillTierDTO] = None,
@@ -34,14 +38,18 @@ class BillingCostBreakdownRowDTO(DaraModel):
         # Department name
         self.client_name = client_name
         self.dim_values = dim_values
+        self.member_user_id = member_user_id
+        self.member_user_name = member_user_name
         # Model identifier
         self.model_code = model_code
         # Model ID
         self.model_id = model_id
         # Model name
         self.model_name = model_name
+        self.model_symbol = model_symbol
         # Statistics category
         self.model_type = model_type
+        self.model_version = model_version
         # Payable amount, rounded to 8 decimal places
         self.payable_amount = payable_amount
         # Statistics time point, Unix timestamp (seconds)
@@ -78,6 +86,12 @@ class BillingCostBreakdownRowDTO(DaraModel):
         if self.dim_values is not None:
             result['dimValues'] = self.dim_values
 
+        if self.member_user_id is not None:
+            result['memberUserId'] = self.member_user_id
+
+        if self.member_user_name is not None:
+            result['memberUserName'] = self.member_user_name
+
         if self.model_code is not None:
             result['modelCode'] = self.model_code
 
@@ -87,8 +101,14 @@ class BillingCostBreakdownRowDTO(DaraModel):
         if self.model_name is not None:
             result['modelName'] = self.model_name
 
+        if self.model_symbol is not None:
+            result['modelSymbol'] = self.model_symbol
+
         if self.model_type is not None:
             result['modelType'] = self.model_type
+
+        if self.model_version is not None:
+            result['modelVersion'] = self.model_version
 
         if self.payable_amount is not None:
             result['payableAmount'] = self.payable_amount
@@ -126,6 +146,12 @@ class BillingCostBreakdownRowDTO(DaraModel):
         if m.get('dimValues') is not None:
             self.dim_values = m.get('dimValues')
 
+        if m.get('memberUserId') is not None:
+            self.member_user_id = m.get('memberUserId')
+
+        if m.get('memberUserName') is not None:
+            self.member_user_name = m.get('memberUserName')
+
         if m.get('modelCode') is not None:
             self.model_code = m.get('modelCode')
 
@@ -135,8 +161,14 @@ class BillingCostBreakdownRowDTO(DaraModel):
         if m.get('modelName') is not None:
             self.model_name = m.get('modelName')
 
+        if m.get('modelSymbol') is not None:
+            self.model_symbol = m.get('modelSymbol')
+
         if m.get('modelType') is not None:
             self.model_type = m.get('modelType')
+
+        if m.get('modelVersion') is not None:
+            self.model_version = m.get('modelVersion')
 
         if m.get('payableAmount') is not None:
             self.payable_amount = m.get('payableAmount')

@@ -3795,6 +3795,426 @@ class Client(OpenApiClient):
         headers = {}
         return await self.model_router_batch_bind_model_group_with_options_async(request, headers, runtime)
 
+    def model_router_batch_create_member_api_keys_with_options(
+        self,
+        id: str,
+        request: main_models.ModelRouterBatchCreateMemberApiKeysRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterBatchCreateMemberApiKeysResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.expire_at):
+            body['expireAt'] = request.expire_at
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.user_ids):
+            body['userIds'] = request.user_ids
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterBatchCreateMemberApiKeys',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/clients/{DaraURL.percent_encode(id)}/member-apikeys',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterBatchCreateMemberApiKeysResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def model_router_batch_create_member_api_keys_with_options_async(
+        self,
+        id: str,
+        request: main_models.ModelRouterBatchCreateMemberApiKeysRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterBatchCreateMemberApiKeysResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.expire_at):
+            body['expireAt'] = request.expire_at
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.user_ids):
+            body['userIds'] = request.user_ids
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterBatchCreateMemberApiKeys',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/clients/{DaraURL.percent_encode(id)}/member-apikeys',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterBatchCreateMemberApiKeysResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def model_router_batch_create_member_api_keys(
+        self,
+        id: str,
+        request: main_models.ModelRouterBatchCreateMemberApiKeysRequest,
+    ) -> main_models.ModelRouterBatchCreateMemberApiKeysResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.model_router_batch_create_member_api_keys_with_options(id, request, headers, runtime)
+
+    async def model_router_batch_create_member_api_keys_async(
+        self,
+        id: str,
+        request: main_models.ModelRouterBatchCreateMemberApiKeysRequest,
+    ) -> main_models.ModelRouterBatchCreateMemberApiKeysResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.model_router_batch_create_member_api_keys_with_options_async(id, request, headers, runtime)
+
+    def model_router_batch_create_model_with_options(
+        self,
+        request: main_models.ModelRouterBatchCreateModelRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterBatchCreateModelResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.api_key):
+            body['apiKey'] = request.api_key
+        if not DaraCore.is_null(request.base_url):
+            body['baseUrl'] = request.base_url
+        if not DaraCore.is_null(request.models):
+            body['models'] = request.models
+        if not DaraCore.is_null(request.symbol):
+            body['symbol'] = request.symbol
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterBatchCreateModel',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/models/batch',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterBatchCreateModelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def model_router_batch_create_model_with_options_async(
+        self,
+        request: main_models.ModelRouterBatchCreateModelRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterBatchCreateModelResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.api_key):
+            body['apiKey'] = request.api_key
+        if not DaraCore.is_null(request.base_url):
+            body['baseUrl'] = request.base_url
+        if not DaraCore.is_null(request.models):
+            body['models'] = request.models
+        if not DaraCore.is_null(request.symbol):
+            body['symbol'] = request.symbol
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterBatchCreateModel',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/models/batch',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterBatchCreateModelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def model_router_batch_create_model(
+        self,
+        request: main_models.ModelRouterBatchCreateModelRequest,
+    ) -> main_models.ModelRouterBatchCreateModelResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.model_router_batch_create_model_with_options(request, headers, runtime)
+
+    async def model_router_batch_create_model_async(
+        self,
+        request: main_models.ModelRouterBatchCreateModelRequest,
+    ) -> main_models.ModelRouterBatchCreateModelResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.model_router_batch_create_model_with_options_async(request, headers, runtime)
+
+    def model_router_batch_disable_member_api_keys_with_options(
+        self,
+        id: str,
+        request: main_models.ModelRouterBatchDisableMemberApiKeysRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterBatchDisableMemberApiKeysResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.user_ids):
+            body['userIds'] = request.user_ids
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterBatchDisableMemberApiKeys',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/clients/{DaraURL.percent_encode(id)}/member-apikeys/disable',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterBatchDisableMemberApiKeysResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def model_router_batch_disable_member_api_keys_with_options_async(
+        self,
+        id: str,
+        request: main_models.ModelRouterBatchDisableMemberApiKeysRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterBatchDisableMemberApiKeysResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.user_ids):
+            body['userIds'] = request.user_ids
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterBatchDisableMemberApiKeys',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/clients/{DaraURL.percent_encode(id)}/member-apikeys/disable',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterBatchDisableMemberApiKeysResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def model_router_batch_disable_member_api_keys(
+        self,
+        id: str,
+        request: main_models.ModelRouterBatchDisableMemberApiKeysRequest,
+    ) -> main_models.ModelRouterBatchDisableMemberApiKeysResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.model_router_batch_disable_member_api_keys_with_options(id, request, headers, runtime)
+
+    async def model_router_batch_disable_member_api_keys_async(
+        self,
+        id: str,
+        request: main_models.ModelRouterBatchDisableMemberApiKeysRequest,
+    ) -> main_models.ModelRouterBatchDisableMemberApiKeysResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.model_router_batch_disable_member_api_keys_with_options_async(id, request, headers, runtime)
+
+    def model_router_batch_reset_member_authorization_with_options(
+        self,
+        id: str,
+        request: main_models.ModelRouterBatchResetMemberAuthorizationRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterBatchResetMemberAuthorizationResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.user_ids):
+            body['userIds'] = request.user_ids
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterBatchResetMemberAuthorization',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/clients/{DaraURL.percent_encode(id)}/member-authorizations/reset',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterBatchResetMemberAuthorizationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def model_router_batch_reset_member_authorization_with_options_async(
+        self,
+        id: str,
+        request: main_models.ModelRouterBatchResetMemberAuthorizationRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterBatchResetMemberAuthorizationResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.user_ids):
+            body['userIds'] = request.user_ids
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterBatchResetMemberAuthorization',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/clients/{DaraURL.percent_encode(id)}/member-authorizations/reset',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterBatchResetMemberAuthorizationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def model_router_batch_reset_member_authorization(
+        self,
+        id: str,
+        request: main_models.ModelRouterBatchResetMemberAuthorizationRequest,
+    ) -> main_models.ModelRouterBatchResetMemberAuthorizationResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.model_router_batch_reset_member_authorization_with_options(id, request, headers, runtime)
+
+    async def model_router_batch_reset_member_authorization_async(
+        self,
+        id: str,
+        request: main_models.ModelRouterBatchResetMemberAuthorizationRequest,
+    ) -> main_models.ModelRouterBatchResetMemberAuthorizationResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.model_router_batch_reset_member_authorization_with_options_async(id, request, headers, runtime)
+
+    def model_router_batch_set_member_authorization_with_options(
+        self,
+        id: str,
+        request: main_models.ModelRouterBatchSetMemberAuthorizationRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterBatchSetMemberAuthorizationResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.allowed_model_group_config):
+            body['allowedModelGroupConfig'] = request.allowed_model_group_config
+        if not DaraCore.is_null(request.user_id_list):
+            body['userIdList'] = request.user_id_list
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterBatchSetMemberAuthorization',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/clients/{DaraURL.percent_encode(id)}/member-authorizations',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterBatchSetMemberAuthorizationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def model_router_batch_set_member_authorization_with_options_async(
+        self,
+        id: str,
+        request: main_models.ModelRouterBatchSetMemberAuthorizationRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterBatchSetMemberAuthorizationResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.allowed_model_group_config):
+            body['allowedModelGroupConfig'] = request.allowed_model_group_config
+        if not DaraCore.is_null(request.user_id_list):
+            body['userIdList'] = request.user_id_list
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterBatchSetMemberAuthorization',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/clients/{DaraURL.percent_encode(id)}/member-authorizations',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterBatchSetMemberAuthorizationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def model_router_batch_set_member_authorization(
+        self,
+        id: str,
+        request: main_models.ModelRouterBatchSetMemberAuthorizationRequest,
+    ) -> main_models.ModelRouterBatchSetMemberAuthorizationResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.model_router_batch_set_member_authorization_with_options(id, request, headers, runtime)
+
+    async def model_router_batch_set_member_authorization_async(
+        self,
+        id: str,
+        request: main_models.ModelRouterBatchSetMemberAuthorizationRequest,
+    ) -> main_models.ModelRouterBatchSetMemberAuthorizationResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.model_router_batch_set_member_authorization_with_options_async(id, request, headers, runtime)
+
     def model_router_billing_cost_tabs_with_options(
         self,
         request: main_models.ModelRouterBillingCostTabsRequest,
@@ -4104,6 +4524,98 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.model_router_configure_client_balance_with_options_async(id, request, headers, runtime)
+
+    def model_router_configure_member_balance_with_options(
+        self,
+        client_id: str,
+        id: str,
+        request: main_models.ModelRouterConfigureMemberBalanceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterConfigureMemberBalanceResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.balance_type):
+            body['balanceType'] = request.balance_type
+        if not DaraCore.is_null(request.enable_balance):
+            body['enableBalance'] = request.enable_balance
+        if not DaraCore.is_null(request.initial_balance):
+            body['initialBalance'] = request.initial_balance
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterConfigureMemberBalance',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/clients/{DaraURL.percent_encode(client_id)}/members/{DaraURL.percent_encode(id)}/balance',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterConfigureMemberBalanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def model_router_configure_member_balance_with_options_async(
+        self,
+        client_id: str,
+        id: str,
+        request: main_models.ModelRouterConfigureMemberBalanceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterConfigureMemberBalanceResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.balance_type):
+            body['balanceType'] = request.balance_type
+        if not DaraCore.is_null(request.enable_balance):
+            body['enableBalance'] = request.enable_balance
+        if not DaraCore.is_null(request.initial_balance):
+            body['initialBalance'] = request.initial_balance
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterConfigureMemberBalance',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/clients/{DaraURL.percent_encode(client_id)}/members/{DaraURL.percent_encode(id)}/balance',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterConfigureMemberBalanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def model_router_configure_member_balance(
+        self,
+        client_id: str,
+        id: str,
+        request: main_models.ModelRouterConfigureMemberBalanceRequest,
+    ) -> main_models.ModelRouterConfigureMemberBalanceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.model_router_configure_member_balance_with_options(client_id, id, request, headers, runtime)
+
+    async def model_router_configure_member_balance_async(
+        self,
+        client_id: str,
+        id: str,
+        request: main_models.ModelRouterConfigureMemberBalanceRequest,
+    ) -> main_models.ModelRouterConfigureMemberBalanceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.model_router_configure_member_balance_with_options_async(client_id, id, request, headers, runtime)
 
     def model_router_copy_api_key_with_options(
         self,
@@ -4627,6 +5139,290 @@ class Client(OpenApiClient):
         headers = {}
         return await self.model_router_create_conversation_with_options_async(request, headers, runtime)
 
+    def model_router_create_member_api_key_with_options(
+        self,
+        client_id: str,
+        id: str,
+        request: main_models.ModelRouterCreateMemberApiKeyRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterCreateMemberApiKeyResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.expire_at):
+            body['expireAt'] = request.expire_at
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterCreateMemberApiKey',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/clients/{DaraURL.percent_encode(client_id)}/members/{DaraURL.percent_encode(id)}/apikeys',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterCreateMemberApiKeyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def model_router_create_member_api_key_with_options_async(
+        self,
+        client_id: str,
+        id: str,
+        request: main_models.ModelRouterCreateMemberApiKeyRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterCreateMemberApiKeyResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.expire_at):
+            body['expireAt'] = request.expire_at
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterCreateMemberApiKey',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/clients/{DaraURL.percent_encode(client_id)}/members/{DaraURL.percent_encode(id)}/apikeys',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterCreateMemberApiKeyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def model_router_create_member_api_key(
+        self,
+        client_id: str,
+        id: str,
+        request: main_models.ModelRouterCreateMemberApiKeyRequest,
+    ) -> main_models.ModelRouterCreateMemberApiKeyResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.model_router_create_member_api_key_with_options(client_id, id, request, headers, runtime)
+
+    async def model_router_create_member_api_key_async(
+        self,
+        client_id: str,
+        id: str,
+        request: main_models.ModelRouterCreateMemberApiKeyRequest,
+    ) -> main_models.ModelRouterCreateMemberApiKeyResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.model_router_create_member_api_key_with_options_async(client_id, id, request, headers, runtime)
+
+    def model_router_create_member_balance_transaction_with_options(
+        self,
+        client_id: str,
+        id: str,
+        request: main_models.ModelRouterCreateMemberBalanceTransactionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterCreateMemberBalanceTransactionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.amount):
+            body['amount'] = request.amount
+        if not DaraCore.is_null(request.balance_type):
+            body['balanceType'] = request.balance_type
+        if not DaraCore.is_null(request.idempotency_key):
+            body['idempotencyKey'] = request.idempotency_key
+        if not DaraCore.is_null(request.remark):
+            body['remark'] = request.remark
+        if not DaraCore.is_null(request.type):
+            body['type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterCreateMemberBalanceTransaction',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/clients/{DaraURL.percent_encode(client_id)}/members/{DaraURL.percent_encode(id)}/balance/transactions',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterCreateMemberBalanceTransactionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def model_router_create_member_balance_transaction_with_options_async(
+        self,
+        client_id: str,
+        id: str,
+        request: main_models.ModelRouterCreateMemberBalanceTransactionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterCreateMemberBalanceTransactionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.amount):
+            body['amount'] = request.amount
+        if not DaraCore.is_null(request.balance_type):
+            body['balanceType'] = request.balance_type
+        if not DaraCore.is_null(request.idempotency_key):
+            body['idempotencyKey'] = request.idempotency_key
+        if not DaraCore.is_null(request.remark):
+            body['remark'] = request.remark
+        if not DaraCore.is_null(request.type):
+            body['type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterCreateMemberBalanceTransaction',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/clients/{DaraURL.percent_encode(client_id)}/members/{DaraURL.percent_encode(id)}/balance/transactions',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterCreateMemberBalanceTransactionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def model_router_create_member_balance_transaction(
+        self,
+        client_id: str,
+        id: str,
+        request: main_models.ModelRouterCreateMemberBalanceTransactionRequest,
+    ) -> main_models.ModelRouterCreateMemberBalanceTransactionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.model_router_create_member_balance_transaction_with_options(client_id, id, request, headers, runtime)
+
+    async def model_router_create_member_balance_transaction_async(
+        self,
+        client_id: str,
+        id: str,
+        request: main_models.ModelRouterCreateMemberBalanceTransactionRequest,
+    ) -> main_models.ModelRouterCreateMemberBalanceTransactionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.model_router_create_member_balance_transaction_with_options_async(client_id, id, request, headers, runtime)
+
+    def model_router_create_member_subscription_with_options(
+        self,
+        client_id: str,
+        id: str,
+        request: main_models.ModelRouterCreateMemberSubscriptionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterCreateMemberSubscriptionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.amount):
+            body['amount'] = request.amount
+        if not DaraCore.is_null(request.balance_type):
+            body['balanceType'] = request.balance_type
+        if not DaraCore.is_null(request.effective_time):
+            body['effectiveTime'] = request.effective_time
+        if not DaraCore.is_null(request.idempotency_key):
+            body['idempotencyKey'] = request.idempotency_key
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterCreateMemberSubscription',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/clients/{DaraURL.percent_encode(client_id)}/members/{DaraURL.percent_encode(id)}/balance/subscription',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterCreateMemberSubscriptionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def model_router_create_member_subscription_with_options_async(
+        self,
+        client_id: str,
+        id: str,
+        request: main_models.ModelRouterCreateMemberSubscriptionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterCreateMemberSubscriptionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.amount):
+            body['amount'] = request.amount
+        if not DaraCore.is_null(request.balance_type):
+            body['balanceType'] = request.balance_type
+        if not DaraCore.is_null(request.effective_time):
+            body['effectiveTime'] = request.effective_time
+        if not DaraCore.is_null(request.idempotency_key):
+            body['idempotencyKey'] = request.idempotency_key
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterCreateMemberSubscription',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/clients/{DaraURL.percent_encode(client_id)}/members/{DaraURL.percent_encode(id)}/balance/subscription',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterCreateMemberSubscriptionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def model_router_create_member_subscription(
+        self,
+        client_id: str,
+        id: str,
+        request: main_models.ModelRouterCreateMemberSubscriptionRequest,
+    ) -> main_models.ModelRouterCreateMemberSubscriptionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.model_router_create_member_subscription_with_options(client_id, id, request, headers, runtime)
+
+    async def model_router_create_member_subscription_async(
+        self,
+        client_id: str,
+        id: str,
+        request: main_models.ModelRouterCreateMemberSubscriptionRequest,
+    ) -> main_models.ModelRouterCreateMemberSubscriptionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.model_router_create_member_subscription_with_options_async(client_id, id, request, headers, runtime)
+
     def model_router_create_model_with_options(
         self,
         request: main_models.ModelRouterCreateModelRequest,
@@ -4918,6 +5714,94 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.model_router_create_subscription_with_options_async(id, request, headers, runtime)
+
+    def model_router_create_user_with_options(
+        self,
+        request: main_models.ModelRouterCreateUserRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterCreateUserResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.department_roles):
+            body['departmentRoles'] = request.department_roles
+        if not DaraCore.is_null(request.login_name):
+            body['loginName'] = request.login_name
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.phone):
+            body['phone'] = request.phone
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterCreateUser',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/users',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterCreateUserResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def model_router_create_user_with_options_async(
+        self,
+        request: main_models.ModelRouterCreateUserRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterCreateUserResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.department_roles):
+            body['departmentRoles'] = request.department_roles
+        if not DaraCore.is_null(request.login_name):
+            body['loginName'] = request.login_name
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.phone):
+            body['phone'] = request.phone
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterCreateUser',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/users',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterCreateUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def model_router_create_user(
+        self,
+        request: main_models.ModelRouterCreateUserRequest,
+    ) -> main_models.ModelRouterCreateUserResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.model_router_create_user_with_options(request, headers, runtime)
+
+    async def model_router_create_user_async(
+        self,
+        request: main_models.ModelRouterCreateUserRequest,
+    ) -> main_models.ModelRouterCreateUserResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.model_router_create_user_with_options_async(request, headers, runtime)
 
     def model_router_delete_api_key_with_options(
         self,
@@ -5255,6 +6139,166 @@ class Client(OpenApiClient):
         headers = {}
         return await self.model_router_delete_model_group_with_options_async(group_id, request, headers, runtime)
 
+    def model_router_delete_user_with_options(
+        self,
+        id: str,
+        request: main_models.ModelRouterDeleteUserRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterDeleteUserResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterDeleteUser',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/users/{DaraURL.percent_encode(id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterDeleteUserResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def model_router_delete_user_with_options_async(
+        self,
+        id: str,
+        request: main_models.ModelRouterDeleteUserRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterDeleteUserResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterDeleteUser',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/users/{DaraURL.percent_encode(id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterDeleteUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def model_router_delete_user(
+        self,
+        id: str,
+        request: main_models.ModelRouterDeleteUserRequest,
+    ) -> main_models.ModelRouterDeleteUserResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.model_router_delete_user_with_options(id, request, headers, runtime)
+
+    async def model_router_delete_user_async(
+        self,
+        id: str,
+        request: main_models.ModelRouterDeleteUserRequest,
+    ) -> main_models.ModelRouterDeleteUserResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.model_router_delete_user_with_options_async(id, request, headers, runtime)
+
+    def model_router_export_member_balance_orders_with_options(
+        self,
+        client_id: str,
+        id: str,
+        request: main_models.ModelRouterExportMemberBalanceOrdersRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterExportMemberBalanceOrdersResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.balance_type):
+            query['balanceType'] = request.balance_type
+        if not DaraCore.is_null(request.direction):
+            query['direction'] = request.direction
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterExportMemberBalanceOrders',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/clients/{DaraURL.percent_encode(client_id)}/members/{DaraURL.percent_encode(id)}/balance/orders/export',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterExportMemberBalanceOrdersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def model_router_export_member_balance_orders_with_options_async(
+        self,
+        client_id: str,
+        id: str,
+        request: main_models.ModelRouterExportMemberBalanceOrdersRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterExportMemberBalanceOrdersResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.balance_type):
+            query['balanceType'] = request.balance_type
+        if not DaraCore.is_null(request.direction):
+            query['direction'] = request.direction
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterExportMemberBalanceOrders',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/clients/{DaraURL.percent_encode(client_id)}/members/{DaraURL.percent_encode(id)}/balance/orders/export',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterExportMemberBalanceOrdersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def model_router_export_member_balance_orders(
+        self,
+        client_id: str,
+        id: str,
+        request: main_models.ModelRouterExportMemberBalanceOrdersRequest,
+    ) -> main_models.ModelRouterExportMemberBalanceOrdersResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.model_router_export_member_balance_orders_with_options(client_id, id, request, headers, runtime)
+
+    async def model_router_export_member_balance_orders_async(
+        self,
+        client_id: str,
+        id: str,
+        request: main_models.ModelRouterExportMemberBalanceOrdersRequest,
+    ) -> main_models.ModelRouterExportMemberBalanceOrdersResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.model_router_export_member_balance_orders_with_options_async(client_id, id, request, headers, runtime)
+
     def model_router_get_client_balance_with_options(
         self,
         id: str,
@@ -5423,6 +6467,414 @@ class Client(OpenApiClient):
         headers = {}
         return await self.model_router_get_client_balance_logs_with_options_async(id, request, headers, runtime)
 
+    def model_router_get_dept_balance_summary_with_options(
+        self,
+        id: str,
+        request: main_models.ModelRouterGetDeptBalanceSummaryRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterGetDeptBalanceSummaryResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterGetDeptBalanceSummary',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/clients/{DaraURL.percent_encode(id)}/balance-summary',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterGetDeptBalanceSummaryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def model_router_get_dept_balance_summary_with_options_async(
+        self,
+        id: str,
+        request: main_models.ModelRouterGetDeptBalanceSummaryRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterGetDeptBalanceSummaryResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterGetDeptBalanceSummary',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/clients/{DaraURL.percent_encode(id)}/balance-summary',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterGetDeptBalanceSummaryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def model_router_get_dept_balance_summary(
+        self,
+        id: str,
+        request: main_models.ModelRouterGetDeptBalanceSummaryRequest,
+    ) -> main_models.ModelRouterGetDeptBalanceSummaryResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.model_router_get_dept_balance_summary_with_options(id, request, headers, runtime)
+
+    async def model_router_get_dept_balance_summary_async(
+        self,
+        id: str,
+        request: main_models.ModelRouterGetDeptBalanceSummaryRequest,
+    ) -> main_models.ModelRouterGetDeptBalanceSummaryResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.model_router_get_dept_balance_summary_with_options_async(id, request, headers, runtime)
+
+    def model_router_get_member_api_keys_with_options(
+        self,
+        client_id: str,
+        id: str,
+        request: main_models.ModelRouterGetMemberApiKeysRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterGetMemberApiKeysResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.keyword):
+            query['keyword'] = request.keyword
+        if not DaraCore.is_null(request.page_index):
+            query['pageIndex'] = request.page_index
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterGetMemberApiKeys',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/clients/{DaraURL.percent_encode(client_id)}/members/{DaraURL.percent_encode(id)}/apikeys',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterGetMemberApiKeysResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def model_router_get_member_api_keys_with_options_async(
+        self,
+        client_id: str,
+        id: str,
+        request: main_models.ModelRouterGetMemberApiKeysRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterGetMemberApiKeysResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.keyword):
+            query['keyword'] = request.keyword
+        if not DaraCore.is_null(request.page_index):
+            query['pageIndex'] = request.page_index
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterGetMemberApiKeys',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/clients/{DaraURL.percent_encode(client_id)}/members/{DaraURL.percent_encode(id)}/apikeys',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterGetMemberApiKeysResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def model_router_get_member_api_keys(
+        self,
+        client_id: str,
+        id: str,
+        request: main_models.ModelRouterGetMemberApiKeysRequest,
+    ) -> main_models.ModelRouterGetMemberApiKeysResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.model_router_get_member_api_keys_with_options(client_id, id, request, headers, runtime)
+
+    async def model_router_get_member_api_keys_async(
+        self,
+        client_id: str,
+        id: str,
+        request: main_models.ModelRouterGetMemberApiKeysRequest,
+    ) -> main_models.ModelRouterGetMemberApiKeysResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.model_router_get_member_api_keys_with_options_async(client_id, id, request, headers, runtime)
+
+    def model_router_get_member_balance_with_options(
+        self,
+        client_id: str,
+        id: str,
+        request: main_models.ModelRouterGetMemberBalanceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterGetMemberBalanceResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterGetMemberBalance',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/clients/{DaraURL.percent_encode(client_id)}/members/{DaraURL.percent_encode(id)}/balance',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterGetMemberBalanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def model_router_get_member_balance_with_options_async(
+        self,
+        client_id: str,
+        id: str,
+        request: main_models.ModelRouterGetMemberBalanceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterGetMemberBalanceResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterGetMemberBalance',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/clients/{DaraURL.percent_encode(client_id)}/members/{DaraURL.percent_encode(id)}/balance',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterGetMemberBalanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def model_router_get_member_balance(
+        self,
+        client_id: str,
+        id: str,
+        request: main_models.ModelRouterGetMemberBalanceRequest,
+    ) -> main_models.ModelRouterGetMemberBalanceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.model_router_get_member_balance_with_options(client_id, id, request, headers, runtime)
+
+    async def model_router_get_member_balance_async(
+        self,
+        client_id: str,
+        id: str,
+        request: main_models.ModelRouterGetMemberBalanceRequest,
+    ) -> main_models.ModelRouterGetMemberBalanceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.model_router_get_member_balance_with_options_async(client_id, id, request, headers, runtime)
+
+    def model_router_get_member_balance_logs_with_options(
+        self,
+        client_id: str,
+        id: str,
+        request: main_models.ModelRouterGetMemberBalanceLogsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterGetMemberBalanceLogsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.change_type):
+            query['changeType'] = request.change_type
+        if not DaraCore.is_null(request.page):
+            query['page'] = request.page
+        if not DaraCore.is_null(request.size):
+            query['size'] = request.size
+        if not DaraCore.is_null(request.skip_total):
+            query['skipTotal'] = request.skip_total
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterGetMemberBalanceLogs',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/clients/{DaraURL.percent_encode(client_id)}/members/{DaraURL.percent_encode(id)}/balance/logs',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterGetMemberBalanceLogsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def model_router_get_member_balance_logs_with_options_async(
+        self,
+        client_id: str,
+        id: str,
+        request: main_models.ModelRouterGetMemberBalanceLogsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterGetMemberBalanceLogsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.change_type):
+            query['changeType'] = request.change_type
+        if not DaraCore.is_null(request.page):
+            query['page'] = request.page
+        if not DaraCore.is_null(request.size):
+            query['size'] = request.size
+        if not DaraCore.is_null(request.skip_total):
+            query['skipTotal'] = request.skip_total
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterGetMemberBalanceLogs',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/clients/{DaraURL.percent_encode(client_id)}/members/{DaraURL.percent_encode(id)}/balance/logs',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterGetMemberBalanceLogsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def model_router_get_member_balance_logs(
+        self,
+        client_id: str,
+        id: str,
+        request: main_models.ModelRouterGetMemberBalanceLogsRequest,
+    ) -> main_models.ModelRouterGetMemberBalanceLogsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.model_router_get_member_balance_logs_with_options(client_id, id, request, headers, runtime)
+
+    async def model_router_get_member_balance_logs_async(
+        self,
+        client_id: str,
+        id: str,
+        request: main_models.ModelRouterGetMemberBalanceLogsRequest,
+    ) -> main_models.ModelRouterGetMemberBalanceLogsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.model_router_get_member_balance_logs_with_options_async(client_id, id, request, headers, runtime)
+
+    def model_router_get_user_roles_with_options(
+        self,
+        id: str,
+        request: main_models.ModelRouterGetUserRolesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterGetUserRolesResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterGetUserRoles',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/users/{DaraURL.percent_encode(id)}/roles',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterGetUserRolesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def model_router_get_user_roles_with_options_async(
+        self,
+        id: str,
+        request: main_models.ModelRouterGetUserRolesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterGetUserRolesResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterGetUserRoles',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/users/{DaraURL.percent_encode(id)}/roles',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterGetUserRolesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def model_router_get_user_roles(
+        self,
+        id: str,
+        request: main_models.ModelRouterGetUserRolesRequest,
+    ) -> main_models.ModelRouterGetUserRolesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.model_router_get_user_roles_with_options(id, request, headers, runtime)
+
+    async def model_router_get_user_roles_async(
+        self,
+        id: str,
+        request: main_models.ModelRouterGetUserRolesRequest,
+    ) -> main_models.ModelRouterGetUserRolesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.model_router_get_user_roles_with_options_async(id, request, headers, runtime)
+
     def model_router_list_balance_orders_with_options(
         self,
         id: str,
@@ -5526,6 +6978,286 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.model_router_list_balance_orders_with_options_async(id, request, headers, runtime)
+
+    def model_router_list_dept_members_with_options(
+        self,
+        id: str,
+        request: main_models.ModelRouterListDeptMembersRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterListDeptMembersResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auth_config):
+            query['authConfig'] = request.auth_config
+        if not DaraCore.is_null(request.include_authorization):
+            query['includeAuthorization'] = request.include_authorization
+        if not DaraCore.is_null(request.include_balance):
+            query['includeBalance'] = request.include_balance
+        if not DaraCore.is_null(request.keyword):
+            query['keyword'] = request.keyword
+        if not DaraCore.is_null(request.model):
+            query['model'] = request.model
+        if not DaraCore.is_null(request.page_index):
+            query['pageIndex'] = request.page_index
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterListDeptMembers',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/clients/{DaraURL.percent_encode(id)}/members',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterListDeptMembersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def model_router_list_dept_members_with_options_async(
+        self,
+        id: str,
+        request: main_models.ModelRouterListDeptMembersRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterListDeptMembersResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auth_config):
+            query['authConfig'] = request.auth_config
+        if not DaraCore.is_null(request.include_authorization):
+            query['includeAuthorization'] = request.include_authorization
+        if not DaraCore.is_null(request.include_balance):
+            query['includeBalance'] = request.include_balance
+        if not DaraCore.is_null(request.keyword):
+            query['keyword'] = request.keyword
+        if not DaraCore.is_null(request.model):
+            query['model'] = request.model
+        if not DaraCore.is_null(request.page_index):
+            query['pageIndex'] = request.page_index
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterListDeptMembers',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/clients/{DaraURL.percent_encode(id)}/members',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterListDeptMembersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def model_router_list_dept_members(
+        self,
+        id: str,
+        request: main_models.ModelRouterListDeptMembersRequest,
+    ) -> main_models.ModelRouterListDeptMembersResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.model_router_list_dept_members_with_options(id, request, headers, runtime)
+
+    async def model_router_list_dept_members_async(
+        self,
+        id: str,
+        request: main_models.ModelRouterListDeptMembersRequest,
+    ) -> main_models.ModelRouterListDeptMembersResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.model_router_list_dept_members_with_options_async(id, request, headers, runtime)
+
+    def model_router_list_member_balance_orders_with_options(
+        self,
+        client_id: str,
+        id: str,
+        request: main_models.ModelRouterListMemberBalanceOrdersRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterListMemberBalanceOrdersResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.balance_type):
+            query['balanceType'] = request.balance_type
+        if not DaraCore.is_null(request.direction):
+            query['direction'] = request.direction
+        if not DaraCore.is_null(request.order_type):
+            query['orderType'] = request.order_type
+        if not DaraCore.is_null(request.page):
+            query['page'] = request.page
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterListMemberBalanceOrders',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/clients/{DaraURL.percent_encode(client_id)}/members/{DaraURL.percent_encode(id)}/balance/orders',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterListMemberBalanceOrdersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def model_router_list_member_balance_orders_with_options_async(
+        self,
+        client_id: str,
+        id: str,
+        request: main_models.ModelRouterListMemberBalanceOrdersRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterListMemberBalanceOrdersResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.balance_type):
+            query['balanceType'] = request.balance_type
+        if not DaraCore.is_null(request.direction):
+            query['direction'] = request.direction
+        if not DaraCore.is_null(request.order_type):
+            query['orderType'] = request.order_type
+        if not DaraCore.is_null(request.page):
+            query['page'] = request.page
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterListMemberBalanceOrders',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/clients/{DaraURL.percent_encode(client_id)}/members/{DaraURL.percent_encode(id)}/balance/orders',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterListMemberBalanceOrdersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def model_router_list_member_balance_orders(
+        self,
+        client_id: str,
+        id: str,
+        request: main_models.ModelRouterListMemberBalanceOrdersRequest,
+    ) -> main_models.ModelRouterListMemberBalanceOrdersResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.model_router_list_member_balance_orders_with_options(client_id, id, request, headers, runtime)
+
+    async def model_router_list_member_balance_orders_async(
+        self,
+        client_id: str,
+        id: str,
+        request: main_models.ModelRouterListMemberBalanceOrdersRequest,
+    ) -> main_models.ModelRouterListMemberBalanceOrdersResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.model_router_list_member_balance_orders_with_options_async(client_id, id, request, headers, runtime)
+
+    def model_router_list_member_subscriptions_with_options(
+        self,
+        client_id: str,
+        id: str,
+        request: main_models.ModelRouterListMemberSubscriptionsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterListMemberSubscriptionsResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterListMemberSubscriptions',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/clients/{DaraURL.percent_encode(client_id)}/members/{DaraURL.percent_encode(id)}/balance/subscription',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterListMemberSubscriptionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def model_router_list_member_subscriptions_with_options_async(
+        self,
+        client_id: str,
+        id: str,
+        request: main_models.ModelRouterListMemberSubscriptionsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterListMemberSubscriptionsResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterListMemberSubscriptions',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/clients/{DaraURL.percent_encode(client_id)}/members/{DaraURL.percent_encode(id)}/balance/subscription',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterListMemberSubscriptionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def model_router_list_member_subscriptions(
+        self,
+        client_id: str,
+        id: str,
+        request: main_models.ModelRouterListMemberSubscriptionsRequest,
+    ) -> main_models.ModelRouterListMemberSubscriptionsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.model_router_list_member_subscriptions_with_options(client_id, id, request, headers, runtime)
+
+    async def model_router_list_member_subscriptions_async(
+        self,
+        client_id: str,
+        id: str,
+        request: main_models.ModelRouterListMemberSubscriptionsRequest,
+    ) -> main_models.ModelRouterListMemberSubscriptionsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.model_router_list_member_subscriptions_with_options_async(client_id, id, request, headers, runtime)
 
     def model_router_list_subscriptions_with_options(
         self,
@@ -5697,10 +7429,14 @@ class Client(OpenApiClient):
             query['clientId'] = request.client_id
         if not DaraCore.is_null(request.group_by):
             query['groupBy'] = request.group_by
+        if not DaraCore.is_null(request.include_member_keys):
+            query['includeMemberKeys'] = request.include_member_keys
         if not DaraCore.is_null(request.keyword):
             query['keyword'] = request.keyword
         if not DaraCore.is_null(request.max_results):
             query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.member_user_ids):
+            query['memberUserIds'] = request.member_user_ids
         if not DaraCore.is_null(request.need_total_count):
             query['needTotalCount'] = request.need_total_count
         if not DaraCore.is_null(request.next_token):
@@ -5747,10 +7483,14 @@ class Client(OpenApiClient):
             query['clientId'] = request.client_id
         if not DaraCore.is_null(request.group_by):
             query['groupBy'] = request.group_by
+        if not DaraCore.is_null(request.include_member_keys):
+            query['includeMemberKeys'] = request.include_member_keys
         if not DaraCore.is_null(request.keyword):
             query['keyword'] = request.keyword
         if not DaraCore.is_null(request.max_results):
             query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.member_user_ids):
+            query['memberUserIds'] = request.member_user_ids
         if not DaraCore.is_null(request.need_total_count):
             query['needTotalCount'] = request.need_total_count
         if not DaraCore.is_null(request.next_token):
@@ -5819,6 +7559,8 @@ class Client(OpenApiClient):
             query['granularity'] = request.granularity
         if not DaraCore.is_null(request.max_results):
             query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.member_user_ids):
+            query['memberUserIds'] = request.member_user_ids
         if not DaraCore.is_null(request.model_id):
             query['modelId'] = request.model_id
         if not DaraCore.is_null(request.model_types):
@@ -5869,6 +7611,8 @@ class Client(OpenApiClient):
             query['granularity'] = request.granularity
         if not DaraCore.is_null(request.max_results):
             query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.member_user_ids):
+            query['memberUserIds'] = request.member_user_ids
         if not DaraCore.is_null(request.model_id):
             query['modelId'] = request.model_id
         if not DaraCore.is_null(request.model_types):
@@ -6135,6 +7879,8 @@ class Client(OpenApiClient):
             query['pageIndex'] = request.page_index
         if not DaraCore.is_null(request.page_size):
             query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.parent_id):
+            query['parentId'] = request.parent_id
         if not DaraCore.is_null(request.status):
             query['status'] = request.status
         req = open_api_util_models.OpenApiRequest(
@@ -6183,6 +7929,8 @@ class Client(OpenApiClient):
             query['pageIndex'] = request.page_index
         if not DaraCore.is_null(request.page_size):
             query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.parent_id):
+            query['parentId'] = request.parent_id
         if not DaraCore.is_null(request.status):
             query['status'] = request.status
         req = open_api_util_models.OpenApiRequest(
@@ -6495,6 +8243,8 @@ class Client(OpenApiClient):
             query['endTime'] = request.end_time
         if not DaraCore.is_null(request.max_results):
             query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.member_user_ids):
+            query['memberUserIds'] = request.member_user_ids
         if not DaraCore.is_null(request.model_id):
             query['modelId'] = request.model_id
         if not DaraCore.is_null(request.next_token):
@@ -6543,6 +8293,8 @@ class Client(OpenApiClient):
             query['endTime'] = request.end_time
         if not DaraCore.is_null(request.max_results):
             query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.member_user_ids):
+            query['memberUserIds'] = request.member_user_ids
         if not DaraCore.is_null(request.model_id):
             query['modelId'] = request.model_id
         if not DaraCore.is_null(request.next_token):
@@ -6609,6 +8361,8 @@ class Client(OpenApiClient):
             query['granularity'] = request.granularity
         if not DaraCore.is_null(request.max_results):
             query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.member_user_ids):
+            query['memberUserIds'] = request.member_user_ids
         if not DaraCore.is_null(request.model_types):
             query['modelTypes'] = request.model_types
         if not DaraCore.is_null(request.next_token):
@@ -6655,6 +8409,8 @@ class Client(OpenApiClient):
             query['granularity'] = request.granularity
         if not DaraCore.is_null(request.max_results):
             query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.member_user_ids):
+            query['memberUserIds'] = request.member_user_ids
         if not DaraCore.is_null(request.model_types):
             query['modelTypes'] = request.model_types
         if not DaraCore.is_null(request.next_token):
@@ -6717,6 +8473,8 @@ class Client(OpenApiClient):
             query['granularity'] = request.granularity
         if not DaraCore.is_null(request.max_results):
             query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.member_user_ids):
+            query['memberUserIds'] = request.member_user_ids
         if not DaraCore.is_null(request.model_types):
             query['modelTypes'] = request.model_types
         if not DaraCore.is_null(request.next_token):
@@ -6761,6 +8519,8 @@ class Client(OpenApiClient):
             query['granularity'] = request.granularity
         if not DaraCore.is_null(request.max_results):
             query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.member_user_ids):
+            query['memberUserIds'] = request.member_user_ids
         if not DaraCore.is_null(request.model_types):
             query['modelTypes'] = request.model_types
         if not DaraCore.is_null(request.next_token):
@@ -6821,6 +8581,8 @@ class Client(OpenApiClient):
             query['granularity'] = request.granularity
         if not DaraCore.is_null(request.max_results):
             query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.member_user_ids):
+            query['memberUserIds'] = request.member_user_ids
         if not DaraCore.is_null(request.model_types):
             query['modelTypes'] = request.model_types
         if not DaraCore.is_null(request.next_token):
@@ -6865,6 +8627,8 @@ class Client(OpenApiClient):
             query['granularity'] = request.granularity
         if not DaraCore.is_null(request.max_results):
             query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.member_user_ids):
+            query['memberUserIds'] = request.member_user_ids
         if not DaraCore.is_null(request.model_types):
             query['modelTypes'] = request.model_types
         if not DaraCore.is_null(request.next_token):
@@ -7329,6 +9093,98 @@ class Client(OpenApiClient):
         headers = {}
         return await self.model_router_query_model_group_models_with_options_async(group_id, request, headers, runtime)
 
+    def model_router_query_model_group_users_with_options(
+        self,
+        group_id: str,
+        request: main_models.ModelRouterQueryModelGroupUsersRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterQueryModelGroupUsersResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_index):
+            query['pageIndex'] = request.page_index
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterQueryModelGroupUsers',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/model-groups/{DaraURL.percent_encode(group_id)}/users',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterQueryModelGroupUsersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def model_router_query_model_group_users_with_options_async(
+        self,
+        group_id: str,
+        request: main_models.ModelRouterQueryModelGroupUsersRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterQueryModelGroupUsersResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_index):
+            query['pageIndex'] = request.page_index
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterQueryModelGroupUsers',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/model-groups/{DaraURL.percent_encode(group_id)}/users',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterQueryModelGroupUsersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def model_router_query_model_group_users(
+        self,
+        group_id: str,
+        request: main_models.ModelRouterQueryModelGroupUsersRequest,
+    ) -> main_models.ModelRouterQueryModelGroupUsersResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.model_router_query_model_group_users_with_options(group_id, request, headers, runtime)
+
+    async def model_router_query_model_group_users_async(
+        self,
+        group_id: str,
+        request: main_models.ModelRouterQueryModelGroupUsersRequest,
+    ) -> main_models.ModelRouterQueryModelGroupUsersResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.model_router_query_model_group_users_with_options_async(group_id, request, headers, runtime)
+
     def model_router_query_model_groups_by_api_key_with_options(
         self,
         id: str,
@@ -7743,6 +9599,8 @@ class Client(OpenApiClient):
             query['clientId'] = request.client_id
         if not DaraCore.is_null(request.end_time):
             query['endTime'] = request.end_time
+        if not DaraCore.is_null(request.member_user_ids):
+            query['memberUserIds'] = request.member_user_ids
         if not DaraCore.is_null(request.model_id):
             query['modelId'] = request.model_id
         if not DaraCore.is_null(request.start_time):
@@ -7783,6 +9641,8 @@ class Client(OpenApiClient):
             query['clientId'] = request.client_id
         if not DaraCore.is_null(request.end_time):
             query['endTime'] = request.end_time
+        if not DaraCore.is_null(request.member_user_ids):
+            query['memberUserIds'] = request.member_user_ids
         if not DaraCore.is_null(request.model_id):
             query['modelId'] = request.model_id
         if not DaraCore.is_null(request.start_time):
@@ -7843,6 +9703,8 @@ class Client(OpenApiClient):
             query['groupBy'] = request.group_by
         if not DaraCore.is_null(request.max_results):
             query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.member_user_ids):
+            query['memberUserIds'] = request.member_user_ids
         if not DaraCore.is_null(request.model_id):
             query['modelId'] = request.model_id
         if not DaraCore.is_null(request.need_total_count):
@@ -7899,6 +9761,8 @@ class Client(OpenApiClient):
             query['groupBy'] = request.group_by
         if not DaraCore.is_null(request.max_results):
             query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.member_user_ids):
+            query['memberUserIds'] = request.member_user_ids
         if not DaraCore.is_null(request.model_id):
             query['modelId'] = request.model_id
         if not DaraCore.is_null(request.need_total_count):
@@ -7971,6 +9835,8 @@ class Client(OpenApiClient):
             query['groupBy'] = request.group_by
         if not DaraCore.is_null(request.max_results):
             query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.member_user_ids):
+            query['memberUserIds'] = request.member_user_ids
         if not DaraCore.is_null(request.model_id):
             query['modelId'] = request.model_id
         if not DaraCore.is_null(request.need_total_count):
@@ -8027,6 +9893,8 @@ class Client(OpenApiClient):
             query['groupBy'] = request.group_by
         if not DaraCore.is_null(request.max_results):
             query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.member_user_ids):
+            query['memberUserIds'] = request.member_user_ids
         if not DaraCore.is_null(request.model_id):
             query['modelId'] = request.model_id
         if not DaraCore.is_null(request.need_total_count):
@@ -8099,6 +9967,8 @@ class Client(OpenApiClient):
             query['granularity'] = request.granularity
         if not DaraCore.is_null(request.max_results):
             query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.member_user_ids):
+            query['memberUserIds'] = request.member_user_ids
         if not DaraCore.is_null(request.next_token):
             query['nextToken'] = request.next_token
         if not DaraCore.is_null(request.page):
@@ -8145,6 +10015,8 @@ class Client(OpenApiClient):
             query['granularity'] = request.granularity
         if not DaraCore.is_null(request.max_results):
             query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.member_user_ids):
+            query['memberUserIds'] = request.member_user_ids
         if not DaraCore.is_null(request.next_token):
             query['nextToken'] = request.next_token
         if not DaraCore.is_null(request.page):
@@ -8188,6 +10060,166 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.model_router_query_usage_breakdown_with_options_async(request, headers, runtime)
+
+    def model_router_query_user_list_with_options(
+        self,
+        request: main_models.ModelRouterQueryUserListRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterQueryUserListResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.keyword):
+            query['keyword'] = request.keyword
+        if not DaraCore.is_null(request.page_index):
+            query['pageIndex'] = request.page_index
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterQueryUserList',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/users',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterQueryUserListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def model_router_query_user_list_with_options_async(
+        self,
+        request: main_models.ModelRouterQueryUserListRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterQueryUserListResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.keyword):
+            query['keyword'] = request.keyword
+        if not DaraCore.is_null(request.page_index):
+            query['pageIndex'] = request.page_index
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterQueryUserList',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/users',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterQueryUserListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def model_router_query_user_list(
+        self,
+        request: main_models.ModelRouterQueryUserListRequest,
+    ) -> main_models.ModelRouterQueryUserListResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.model_router_query_user_list_with_options(request, headers, runtime)
+
+    async def model_router_query_user_list_async(
+        self,
+        request: main_models.ModelRouterQueryUserListRequest,
+    ) -> main_models.ModelRouterQueryUserListResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.model_router_query_user_list_with_options_async(request, headers, runtime)
+
+    def model_router_reset_member_authorization_with_options(
+        self,
+        client_id: str,
+        id: str,
+        request: main_models.ModelRouterResetMemberAuthorizationRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterResetMemberAuthorizationResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterResetMemberAuthorization',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/clients/{DaraURL.percent_encode(client_id)}/members/{DaraURL.percent_encode(id)}/authorization',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterResetMemberAuthorizationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def model_router_reset_member_authorization_with_options_async(
+        self,
+        client_id: str,
+        id: str,
+        request: main_models.ModelRouterResetMemberAuthorizationRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterResetMemberAuthorizationResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterResetMemberAuthorization',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/clients/{DaraURL.percent_encode(client_id)}/members/{DaraURL.percent_encode(id)}/authorization',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterResetMemberAuthorizationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def model_router_reset_member_authorization(
+        self,
+        client_id: str,
+        id: str,
+        request: main_models.ModelRouterResetMemberAuthorizationRequest,
+    ) -> main_models.ModelRouterResetMemberAuthorizationResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.model_router_reset_member_authorization_with_options(client_id, id, request, headers, runtime)
+
+    async def model_router_reset_member_authorization_async(
+        self,
+        client_id: str,
+        id: str,
+        request: main_models.ModelRouterResetMemberAuthorizationRequest,
+    ) -> main_models.ModelRouterResetMemberAuthorizationResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.model_router_reset_member_authorization_with_options_async(client_id, id, request, headers, runtime)
 
     def model_router_save_flow_config_with_options(
         self,
@@ -8277,6 +10309,334 @@ class Client(OpenApiClient):
         headers = {}
         return await self.model_router_save_flow_config_with_options_async(request, headers, runtime)
 
+    def model_router_search_client_tree_with_options(
+        self,
+        request: main_models.ModelRouterSearchClientTreeRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterSearchClientTreeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.keyword):
+            query['keyword'] = request.keyword
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterSearchClientTree',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/clients/tree/search',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterSearchClientTreeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def model_router_search_client_tree_with_options_async(
+        self,
+        request: main_models.ModelRouterSearchClientTreeRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterSearchClientTreeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.keyword):
+            query['keyword'] = request.keyword
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterSearchClientTree',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/clients/tree/search',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterSearchClientTreeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def model_router_search_client_tree(
+        self,
+        request: main_models.ModelRouterSearchClientTreeRequest,
+    ) -> main_models.ModelRouterSearchClientTreeResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.model_router_search_client_tree_with_options(request, headers, runtime)
+
+    async def model_router_search_client_tree_async(
+        self,
+        request: main_models.ModelRouterSearchClientTreeRequest,
+    ) -> main_models.ModelRouterSearchClientTreeResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.model_router_search_client_tree_with_options_async(request, headers, runtime)
+
+    def model_router_set_member_authorization_with_options(
+        self,
+        client_id: str,
+        id: str,
+        request: main_models.ModelRouterSetMemberAuthorizationRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterSetMemberAuthorizationResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.allowed_model_group_config):
+            body['allowedModelGroupConfig'] = request.allowed_model_group_config
+        if not DaraCore.is_null(request.allowed_models):
+            body['allowedModels'] = request.allowed_models
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterSetMemberAuthorization',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/clients/{DaraURL.percent_encode(client_id)}/members/{DaraURL.percent_encode(id)}/authorization',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterSetMemberAuthorizationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def model_router_set_member_authorization_with_options_async(
+        self,
+        client_id: str,
+        id: str,
+        request: main_models.ModelRouterSetMemberAuthorizationRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterSetMemberAuthorizationResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.allowed_model_group_config):
+            body['allowedModelGroupConfig'] = request.allowed_model_group_config
+        if not DaraCore.is_null(request.allowed_models):
+            body['allowedModels'] = request.allowed_models
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterSetMemberAuthorization',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/clients/{DaraURL.percent_encode(client_id)}/members/{DaraURL.percent_encode(id)}/authorization',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterSetMemberAuthorizationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def model_router_set_member_authorization(
+        self,
+        client_id: str,
+        id: str,
+        request: main_models.ModelRouterSetMemberAuthorizationRequest,
+    ) -> main_models.ModelRouterSetMemberAuthorizationResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.model_router_set_member_authorization_with_options(client_id, id, request, headers, runtime)
+
+    async def model_router_set_member_authorization_async(
+        self,
+        client_id: str,
+        id: str,
+        request: main_models.ModelRouterSetMemberAuthorizationRequest,
+    ) -> main_models.ModelRouterSetMemberAuthorizationResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.model_router_set_member_authorization_with_options_async(client_id, id, request, headers, runtime)
+
+    def model_router_set_user_roles_with_options(
+        self,
+        id: str,
+        request: main_models.ModelRouterSetUserRolesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterSetUserRolesResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.department_roles):
+            body['departmentRoles'] = request.department_roles
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterSetUserRoles',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/users/{DaraURL.percent_encode(id)}/roles',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterSetUserRolesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def model_router_set_user_roles_with_options_async(
+        self,
+        id: str,
+        request: main_models.ModelRouterSetUserRolesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterSetUserRolesResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.department_roles):
+            body['departmentRoles'] = request.department_roles
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterSetUserRoles',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/users/{DaraURL.percent_encode(id)}/roles',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterSetUserRolesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def model_router_set_user_roles(
+        self,
+        id: str,
+        request: main_models.ModelRouterSetUserRolesRequest,
+    ) -> main_models.ModelRouterSetUserRolesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.model_router_set_user_roles_with_options(id, request, headers, runtime)
+
+    async def model_router_set_user_roles_async(
+        self,
+        id: str,
+        request: main_models.ModelRouterSetUserRolesRequest,
+    ) -> main_models.ModelRouterSetUserRolesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.model_router_set_user_roles_with_options_async(id, request, headers, runtime)
+
+    def model_router_stop_member_subscription_with_options(
+        self,
+        client_id: str,
+        id: str,
+        request: main_models.ModelRouterStopMemberSubscriptionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterStopMemberSubscriptionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.balance_type):
+            body['balanceType'] = request.balance_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterStopMemberSubscription',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/clients/{DaraURL.percent_encode(client_id)}/members/{DaraURL.percent_encode(id)}/balance/subscription/stop',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterStopMemberSubscriptionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def model_router_stop_member_subscription_with_options_async(
+        self,
+        client_id: str,
+        id: str,
+        request: main_models.ModelRouterStopMemberSubscriptionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterStopMemberSubscriptionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.balance_type):
+            body['balanceType'] = request.balance_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterStopMemberSubscription',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/clients/{DaraURL.percent_encode(client_id)}/members/{DaraURL.percent_encode(id)}/balance/subscription/stop',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterStopMemberSubscriptionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def model_router_stop_member_subscription(
+        self,
+        client_id: str,
+        id: str,
+        request: main_models.ModelRouterStopMemberSubscriptionRequest,
+    ) -> main_models.ModelRouterStopMemberSubscriptionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.model_router_stop_member_subscription_with_options(client_id, id, request, headers, runtime)
+
+    async def model_router_stop_member_subscription_async(
+        self,
+        client_id: str,
+        id: str,
+        request: main_models.ModelRouterStopMemberSubscriptionRequest,
+    ) -> main_models.ModelRouterStopMemberSubscriptionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.model_router_stop_member_subscription_with_options_async(client_id, id, request, headers, runtime)
+
     def model_router_stop_subscription_with_options(
         self,
         id: str,
@@ -8356,6 +10716,106 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.model_router_stop_subscription_with_options_async(id, request, headers, runtime)
+
+    def model_router_transfer_to_member_with_options(
+        self,
+        client_id: str,
+        id: str,
+        request: main_models.ModelRouterTransferToMemberRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterTransferToMemberResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.amount):
+            body['amount'] = request.amount
+        if not DaraCore.is_null(request.balance_type):
+            body['balanceType'] = request.balance_type
+        if not DaraCore.is_null(request.idempotency_key):
+            body['idempotencyKey'] = request.idempotency_key
+        if not DaraCore.is_null(request.monthly_quota):
+            body['monthlyQuota'] = request.monthly_quota
+        if not DaraCore.is_null(request.remark):
+            body['remark'] = request.remark
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterTransferToMember',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/clients/{DaraURL.percent_encode(client_id)}/members/{DaraURL.percent_encode(id)}/transfer',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterTransferToMemberResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def model_router_transfer_to_member_with_options_async(
+        self,
+        client_id: str,
+        id: str,
+        request: main_models.ModelRouterTransferToMemberRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterTransferToMemberResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.amount):
+            body['amount'] = request.amount
+        if not DaraCore.is_null(request.balance_type):
+            body['balanceType'] = request.balance_type
+        if not DaraCore.is_null(request.idempotency_key):
+            body['idempotencyKey'] = request.idempotency_key
+        if not DaraCore.is_null(request.monthly_quota):
+            body['monthlyQuota'] = request.monthly_quota
+        if not DaraCore.is_null(request.remark):
+            body['remark'] = request.remark
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterTransferToMember',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/clients/{DaraURL.percent_encode(client_id)}/members/{DaraURL.percent_encode(id)}/transfer',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterTransferToMemberResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def model_router_transfer_to_member(
+        self,
+        client_id: str,
+        id: str,
+        request: main_models.ModelRouterTransferToMemberRequest,
+    ) -> main_models.ModelRouterTransferToMemberResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.model_router_transfer_to_member_with_options(client_id, id, request, headers, runtime)
+
+    async def model_router_transfer_to_member_async(
+        self,
+        client_id: str,
+        id: str,
+        request: main_models.ModelRouterTransferToMemberRequest,
+    ) -> main_models.ModelRouterTransferToMemberResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.model_router_transfer_to_member_with_options_async(client_id, id, request, headers, runtime)
 
     def model_router_update_billing_rule_with_options(
         self,
@@ -8860,6 +11320,90 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.model_router_update_model_group_with_options_async(group_id, request, headers, runtime)
+
+    def model_router_update_user_with_options(
+        self,
+        id: str,
+        request: main_models.ModelRouterUpdateUserRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterUpdateUserResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.phone):
+            body['phone'] = request.phone
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterUpdateUser',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/users/{DaraURL.percent_encode(id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterUpdateUserResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def model_router_update_user_with_options_async(
+        self,
+        id: str,
+        request: main_models.ModelRouterUpdateUserRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterUpdateUserResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.phone):
+            body['phone'] = request.phone
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterUpdateUser',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/users/{DaraURL.percent_encode(id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterUpdateUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def model_router_update_user(
+        self,
+        id: str,
+        request: main_models.ModelRouterUpdateUserRequest,
+    ) -> main_models.ModelRouterUpdateUserResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.model_router_update_user_with_options(id, request, headers, runtime)
+
+    async def model_router_update_user_async(
+        self,
+        id: str,
+        request: main_models.ModelRouterUpdateUserRequest,
+    ) -> main_models.ModelRouterUpdateUserResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.model_router_update_user_with_options_async(id, request, headers, runtime)
 
     def personalized_text_to_image_add_inference_job_with_options(
         self,

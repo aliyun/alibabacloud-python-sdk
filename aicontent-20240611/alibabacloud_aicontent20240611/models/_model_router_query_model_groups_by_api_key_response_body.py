@@ -85,11 +85,13 @@ class ModelRouterQueryModelGroupsByApiKeyResponseBody(DaraModel):
 class ModelRouterQueryModelGroupsByApiKeyResponseBodyData(DaraModel):
     def __init__(
         self,
+        bind_type: str = None,
         client_id: int = None,
         groups: List[main_models.ModelGroupDTO] = None,
         standalone_model_list: List[int] = None,
     ):
-        # The ID of the department to which the key belongs.
+        self.bind_type = bind_type
+        # The department ID to which the key belongs.
         self.client_id = client_id
         # The list of bound model groups.
         self.groups = groups
@@ -107,6 +109,9 @@ class ModelRouterQueryModelGroupsByApiKeyResponseBodyData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.bind_type is not None:
+            result['bindType'] = self.bind_type
+
         if self.client_id is not None:
             result['clientId'] = self.client_id
 
@@ -122,6 +127,9 @@ class ModelRouterQueryModelGroupsByApiKeyResponseBodyData(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('bindType') is not None:
+            self.bind_type = m.get('bindType')
+
         if m.get('clientId') is not None:
             self.client_id = m.get('clientId')
 

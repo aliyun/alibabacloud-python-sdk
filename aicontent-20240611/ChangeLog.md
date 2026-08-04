@@ -1,3 +1,48 @@
+2026-08-04 Version: 7.6.0
+- Support API ModelRouterBatchCreateMemberApiKeys.
+- Support API ModelRouterBatchCreateModel.
+- Support API ModelRouterBatchDisableMemberApiKeys.
+- Support API ModelRouterBatchResetMemberAuthorization.
+- Support API ModelRouterBatchSetMemberAuthorization.
+- Support API ModelRouterConfigureMemberBalance.
+- Support API ModelRouterCreateMemberApiKey.
+- Support API ModelRouterCreateMemberBalanceTransaction.
+- Support API ModelRouterCreateMemberSubscription.
+- Support API ModelRouterCreateUser.
+- Support API ModelRouterDeleteUser.
+- Support API ModelRouterExportMemberBalanceOrders.
+- Support API ModelRouterGetDeptBalanceSummary.
+- Support API ModelRouterGetMemberApiKeys.
+- Support API ModelRouterGetMemberBalance.
+- Support API ModelRouterGetMemberBalanceLogs.
+- Support API ModelRouterGetUserRoles.
+- Support API ModelRouterListDeptMembers.
+- Support API ModelRouterListMemberBalanceOrders.
+- Support API ModelRouterListMemberSubscriptions.
+- Support API ModelRouterQueryModelGroupUsers.
+- Support API ModelRouterQueryUserList.
+- Support API ModelRouterResetMemberAuthorization.
+- Support API ModelRouterSearchClientTree.
+- Support API ModelRouterSetMemberAuthorization.
+- Support API ModelRouterSetUserRoles.
+- Support API ModelRouterStopMemberSubscription.
+- Support API ModelRouterTransferToMember.
+- Support API ModelRouterUpdateUser.
+- Update API ModelRouterQueryApiKeyList: add request parameters includeMemberKeys.
+- Update API ModelRouterQueryApiKeyList: add request parameters memberUserIds.
+- Update API ModelRouterQueryBillingCostBreakdown: add request parameters memberUserIds.
+- Update API ModelRouterQueryClientList: add request parameters parentId.
+- Update API ModelRouterQueryCostModelDetail: add request parameters memberUserIds.
+- Update API ModelRouterQueryCostModelList: add request parameters memberUserIds.
+- Update API ModelRouterQueryCostOverviewMetrics: add request parameters memberUserIds.
+- Update API ModelRouterQueryCostTrendMetrics: add request parameters memberUserIds.
+- Update API ModelRouterQueryModelGroupsByApiKey: add response parameters Body.data.bindType.
+- Update API ModelRouterQueryObservationCharts: add request parameters memberUserIds.
+- Update API ModelRouterQueryObservationLogs: add request parameters memberUserIds.
+- Update API ModelRouterQueryObservationMetrics: add request parameters memberUserIds.
+- Update API ModelRouterQueryUsageBreakdown: add request parameters memberUserIds.
+
+
 2026-07-31 Version: 7.5.0
 - Support API ModelRouterBatchBindModelGroup.
 - Support API ModelRouterCreateModelGroup.

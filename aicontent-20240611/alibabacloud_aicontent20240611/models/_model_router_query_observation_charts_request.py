@@ -10,21 +10,24 @@ class ModelRouterQueryObservationChartsRequest(DaraModel):
         api_key_id: int = None,
         client_id: int = None,
         end_time: str = None,
+        member_user_ids: str = None,
         model_id: int = None,
         start_time: str = None,
         time_range: str = None,
     ):
-        # The API key ID to use as a filter.
+        # The API key ID used to filter results.
         self.api_key_id = api_key_id
-        # The client ID to use as a filter.
+        # The client ID used to filter results.
         self.client_id = client_id
-        # The end time of the custom time range, in ISO 8601 UTC format. If specified, `startTime` must also be provided.
+        # The custom end time.
         self.end_time = end_time
-        # The model ID to use as a filter.
+        # Optional. Filters by member IDs. Separate multiple IDs with commas. If this parameter is not specified, the department and all its members are included. If an empty value is specified, only the department is included without members.
+        self.member_user_ids = member_user_ids
+        # The model ID used to filter results.
         self.model_id = model_id
-        # The start time of the custom time range, in ISO 8601 UTC format. If specified, `endTime` must also be provided.
+        # The custom start time.
         self.start_time = start_time
-        # The time range for the query. Valid values are `1h`, `6h`, `24h`, `7d`, and `30d`. This parameter is mutually exclusive with `startTime` and `endTime`.
+        # The time range for the query. Valid values: 1h, 6h, 24h, 7d, and 30d.
         self.time_range = time_range
 
     def validate(self):
@@ -43,6 +46,9 @@ class ModelRouterQueryObservationChartsRequest(DaraModel):
 
         if self.end_time is not None:
             result['endTime'] = self.end_time
+
+        if self.member_user_ids is not None:
+            result['memberUserIds'] = self.member_user_ids
 
         if self.model_id is not None:
             result['modelId'] = self.model_id
@@ -65,6 +71,9 @@ class ModelRouterQueryObservationChartsRequest(DaraModel):
 
         if m.get('endTime') is not None:
             self.end_time = m.get('endTime')
+
+        if m.get('memberUserIds') is not None:
+            self.member_user_ids = m.get('memberUserIds')
 
         if m.get('modelId') is not None:
             self.model_id = m.get('modelId')

@@ -16,6 +16,8 @@ class ApiKeyDTO(DaraModel):
         id: int = None,
         key: str = None,
         key_preview: str = None,
+        member_user_id: int = None,
+        member_user_name: str = None,
         name: str = None,
     ):
         self.client = client
@@ -26,6 +28,8 @@ class ApiKeyDTO(DaraModel):
         self.id = id
         self.key = key
         self.key_preview = key_preview
+        self.member_user_id = member_user_id
+        self.member_user_name = member_user_name
         self.name = name
 
     def validate(self):
@@ -61,6 +65,12 @@ class ApiKeyDTO(DaraModel):
         if self.key_preview is not None:
             result['keyPreview'] = self.key_preview
 
+        if self.member_user_id is not None:
+            result['memberUserId'] = self.member_user_id
+
+        if self.member_user_name is not None:
+            result['memberUserName'] = self.member_user_name
+
         if self.name is not None:
             result['name'] = self.name
 
@@ -92,6 +102,12 @@ class ApiKeyDTO(DaraModel):
 
         if m.get('keyPreview') is not None:
             self.key_preview = m.get('keyPreview')
+
+        if m.get('memberUserId') is not None:
+            self.member_user_id = m.get('memberUserId')
+
+        if m.get('memberUserName') is not None:
+            self.member_user_name = m.get('memberUserName')
 
         if m.get('name') is not None:
             self.name = m.get('name')

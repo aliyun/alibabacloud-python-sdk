@@ -12,6 +12,7 @@ class ModelRouterQueryUsageBreakdownRequest(DaraModel):
         end_time: int = None,
         granularity: str = None,
         max_results: int = None,
+        member_user_ids: str = None,
         next_token: str = None,
         page: int = None,
         page_size: int = None,
@@ -21,7 +22,7 @@ class ModelRouterQueryUsageBreakdownRequest(DaraModel):
         self.api_key_id = api_key_id
         # Optional. Filters results by department ID.
         self.client_id = client_id
-        # The query end time, in UNIX timestamp (seconds).
+        # The query end time, in UNIX timestamp format (seconds).
         # 
         # This parameter is required.
         self.end_time = end_time
@@ -31,13 +32,15 @@ class ModelRouterQueryUsageBreakdownRequest(DaraModel):
         self.granularity = granularity
         # The maximum number of results to return.
         self.max_results = max_results
+        # Optional. Filters results by members (member IDs, separated by commas). If not specified, the department and all its members are included. If an empty value is specified, only the department is included without members.
+        self.member_user_ids = member_user_ids
         # The pagination token.
         self.next_token = next_token
         # The page number. Default value: 1.
         self.page = page
         # The number of entries per page. Default value: 20. Maximum value: 500.
         self.page_size = page_size
-        # The query start time, in UNIX timestamp (seconds).
+        # The query start time, in UNIX timestamp format (seconds).
         # 
         # This parameter is required.
         self.start_time = start_time
@@ -64,6 +67,9 @@ class ModelRouterQueryUsageBreakdownRequest(DaraModel):
 
         if self.max_results is not None:
             result['maxResults'] = self.max_results
+
+        if self.member_user_ids is not None:
+            result['memberUserIds'] = self.member_user_ids
 
         if self.next_token is not None:
             result['nextToken'] = self.next_token
@@ -95,6 +101,9 @@ class ModelRouterQueryUsageBreakdownRequest(DaraModel):
 
         if m.get('maxResults') is not None:
             self.max_results = m.get('maxResults')
+
+        if m.get('memberUserIds') is not None:
+            self.member_user_ids = m.get('memberUserIds')
 
         if m.get('nextToken') is not None:
             self.next_token = m.get('nextToken')
