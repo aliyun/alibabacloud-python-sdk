@@ -16,11 +16,15 @@ class ListWorkspacesResponseBody(DaraModel):
         total: int = None,
         workspaces: List[main_models.ListWorkspacesResponseBodyWorkspaces] = None,
     ):
-        # The number of entries returned per page. Default value: 50. Maximum value: 50.
+        # The number of entries per page.
+        # Default value:
+        # 	50
+        # Maximum value:
+        # 	50
         self.max_results = max_results
-        # The token for the next page of results.
+        # The pagination token.
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The total number of entries.
         self.total = total
@@ -87,7 +91,9 @@ class ListWorkspacesResponseBodyWorkspaces(DaraModel):
         display_name: str = None,
         last_modify_time: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         sls_project: str = None,
+        tags: List[main_models.ListWorkspacesResponseBodyWorkspacesTags] = None,
         workspace_name: str = None,
     ):
         # The time when the workspace was created.
@@ -102,17 +108,24 @@ class ListWorkspacesResponseBodyWorkspaces(DaraModel):
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.last_modify_time = last_modify_time
-        # The ID of the region.
+        # The region ID.
         self.region_id = region_id
-        # The name of the Simple Log Service project.
+        # The resource group ID.
+        self.resource_group_id = resource_group_id
+        # The Simple Log Service project name.
         self.sls_project = sls_project
-        # The name of the workspace.
+        # The tags.
+        self.tags = tags
+        # The workspace name.
         # 
         # This parameter is required.
         self.workspace_name = workspace_name
 
     def validate(self):
-        pass
+        if self.tags:
+            for v1 in self.tags:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -134,8 +147,16 @@ class ListWorkspacesResponseBodyWorkspaces(DaraModel):
         if self.region_id is not None:
             result['regionId'] = self.region_id
 
+        if self.resource_group_id is not None:
+            result['resourceGroupId'] = self.resource_group_id
+
         if self.sls_project is not None:
             result['slsProject'] = self.sls_project
+
+        result['tags'] = []
+        if self.tags is not None:
+            for k1 in self.tags:
+                result['tags'].append(k1.to_map() if k1 else None)
 
         if self.workspace_name is not None:
             result['workspaceName'] = self.workspace_name
@@ -159,11 +180,57 @@ class ListWorkspacesResponseBodyWorkspaces(DaraModel):
         if m.get('regionId') is not None:
             self.region_id = m.get('regionId')
 
+        if m.get('resourceGroupId') is not None:
+            self.resource_group_id = m.get('resourceGroupId')
+
         if m.get('slsProject') is not None:
             self.sls_project = m.get('slsProject')
 
+        self.tags = []
+        if m.get('tags') is not None:
+            for k1 in m.get('tags'):
+                temp_model = main_models.ListWorkspacesResponseBodyWorkspacesTags()
+                self.tags.append(temp_model.from_map(k1))
+
         if m.get('workspaceName') is not None:
             self.workspace_name = m.get('workspaceName')
+
+        return self
+
+class ListWorkspacesResponseBodyWorkspacesTags(DaraModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # The tag key.
+        self.key = key
+        # The tag value.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.key is not None:
+            result['key'] = self.key
+
+        if self.value is not None:
+            result['value'] = self.value
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('key') is not None:
+            self.key = m.get('key')
+
+        if m.get('value') is not None:
+            self.value = m.get('value')
 
         return self
 

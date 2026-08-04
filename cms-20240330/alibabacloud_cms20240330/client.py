@@ -11000,6 +11000,8 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.ListWorkspacesShrinkRequest()
         Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.tags):
+            request.tags_shrink = Utils.array_to_string_with_specified_style(tmp_req.tags, 'tags', 'json')
         if not DaraCore.is_null(tmp_req.workspace_name_list):
             request.workspace_name_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.workspace_name_list, 'workspaceNameList', 'simple')
         query = {}
@@ -11009,6 +11011,10 @@ class Client(OpenApiClient):
             query['nextToken'] = request.next_token
         if not DaraCore.is_null(request.region):
             query['region'] = request.region
+        if not DaraCore.is_null(request.resource_group_id):
+            query['resourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.tags_shrink):
+            query['tags'] = request.tags_shrink
         if not DaraCore.is_null(request.workspace_name):
             query['workspaceName'] = request.workspace_name
         if not DaraCore.is_null(request.workspace_name_list_shrink):
@@ -11042,6 +11048,8 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.ListWorkspacesShrinkRequest()
         Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.tags):
+            request.tags_shrink = Utils.array_to_string_with_specified_style(tmp_req.tags, 'tags', 'json')
         if not DaraCore.is_null(tmp_req.workspace_name_list):
             request.workspace_name_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.workspace_name_list, 'workspaceNameList', 'simple')
         query = {}
@@ -11051,6 +11059,10 @@ class Client(OpenApiClient):
             query['nextToken'] = request.next_token
         if not DaraCore.is_null(request.region):
             query['region'] = request.region
+        if not DaraCore.is_null(request.resource_group_id):
+            query['resourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.tags_shrink):
+            query['tags'] = request.tags_shrink
         if not DaraCore.is_null(request.workspace_name):
             query['workspaceName'] = request.workspace_name
         if not DaraCore.is_null(request.workspace_name_list_shrink):
@@ -11264,8 +11276,12 @@ class Client(OpenApiClient):
             body['description'] = request.description
         if not DaraCore.is_null(request.display_name):
             body['displayName'] = request.display_name
+        if not DaraCore.is_null(request.resource_group_id):
+            body['resourceGroupId'] = request.resource_group_id
         if not DaraCore.is_null(request.sls_project):
             body['slsProject'] = request.sls_project
+        if not DaraCore.is_null(request.tags):
+            body['tags'] = request.tags
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             body = Utils.parse_to_map(body)
@@ -11299,8 +11315,12 @@ class Client(OpenApiClient):
             body['description'] = request.description
         if not DaraCore.is_null(request.display_name):
             body['displayName'] = request.display_name
+        if not DaraCore.is_null(request.resource_group_id):
+            body['resourceGroupId'] = request.resource_group_id
         if not DaraCore.is_null(request.sls_project):
             body['slsProject'] = request.sls_project
+        if not DaraCore.is_null(request.tags):
+            body['tags'] = request.tags
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             body = Utils.parse_to_map(body)

@@ -15,10 +15,15 @@ class ListServiceTaskResponseBody(DaraModel):
         service_tasks: List[Dict[str, Any]] = None,
         total_count: int = None,
     ):
+        # The maxResults value of the current request.
         self.max_results = max_results
+        # The pagination token for the next page. An encrypted hexadecimal string is returned when a next page exists. An empty value or absence of this field indicates no more data. Pass this value as-is in the nextToken parameter for the next page request.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The list of tasks.
         self.service_tasks = service_tasks
+        # The total number of entries that match the conditions.
         self.total_count = total_count
 
     def validate(self):

@@ -14,12 +14,12 @@ class UntagResourcesRequest(DaraModel):
         resource_type: str = None,
         tag_key: List[str] = None,
     ):
-        # Specifies whether to remove all tags from the specified resources. Valid values:
+        # Specifies whether to unbind all labels from the specified resource. Valid values:
         # 
-        # false (default): No
-        # true: Yes
+        # - false (default): No.
+        # - true: Yes.
         self.all = all
-        # A list of resource IDs.
+        # The list of resource IDs.
         # 
         # This parameter is required.
         self.resource_id = resource_id
@@ -27,9 +27,9 @@ class UntagResourcesRequest(DaraModel):
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The tag key.
+        # The label key.
         # 
-        # You can detach tags with up to 20 tag keys.
+        # You can unbind up to 20 label keys at a time.
         self.tag_key = tag_key
 
     def validate(self):

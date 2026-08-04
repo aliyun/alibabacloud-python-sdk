@@ -14,7 +14,7 @@ class TagResourcesRequest(DaraModel):
         resource_type: str = None,
         tag: List[main_models.Tag] = None,
     ):
-        # A list of resource IDs.
+        # The list of resource IDs.
         # 
         # This parameter is required.
         self.resource_id = resource_id
@@ -22,9 +22,9 @@ class TagResourcesRequest(DaraModel):
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The tags.
+        # The labels.
         # 
-        # You can attach a maximum of 20 tags.
+        # You can attach up to 20 labels.
         self.tag = tag
 
     def validate(self):

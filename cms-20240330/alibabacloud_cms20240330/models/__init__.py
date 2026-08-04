@@ -888,6 +888,7 @@ from ._get_service_record_response_body import GetServiceRecordResponseBodyRecor
 from ._get_umodel_response_body import GetUmodelResponseBodyCommonSchemaRef
 from ._get_umodel_common_schema_ref_response_body import GetUmodelCommonSchemaRefResponseBodyCommonSchemaRef
 from ._get_umodel_data_response_body import GetUmodelDataResponseBodyErrors
+from ._get_workspace_response_body import GetWorkspaceResponseBodyTags
 from ._list_addon_releases_response_body import ListAddonReleasesResponseBodyReleasesConditions
 from ._list_addon_releases_response_body import ListAddonReleasesResponseBodyReleasesSubAddonRelease
 from ._list_addon_releases_response_body import ListAddonReleasesResponseBodyReleases
@@ -968,7 +969,10 @@ from ._list_service_records_response_body import ListServiceRecordsResponseBodyR
 from ._list_services_request import ListServicesRequestTags
 from ._list_services_response_body import ListServicesResponseBodyServices
 from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResources
+from ._list_workspaces_request import ListWorkspacesRequestTags
+from ._list_workspaces_response_body import ListWorkspacesResponseBodyWorkspacesTags
 from ._list_workspaces_response_body import ListWorkspacesResponseBodyWorkspaces
+from ._put_workspace_request import PutWorkspaceRequestTags
 from ._search_memories_response_body import SearchMemoriesResponseBodyRelations
 from ._search_memories_response_body import SearchMemoriesResponseBodyResults
 from ._update_agg_task_group_request import UpdateAggTaskGroupRequestTags
@@ -1875,6 +1879,7 @@ __all__ = [
     GetUmodelResponseBodyCommonSchemaRef,
     GetUmodelCommonSchemaRefResponseBodyCommonSchemaRef,
     GetUmodelDataResponseBodyErrors,
+    GetWorkspaceResponseBodyTags,
     ListAddonReleasesResponseBodyReleasesConditions,
     ListAddonReleasesResponseBodyReleasesSubAddonRelease,
     ListAddonReleasesResponseBodyReleases,
@@ -1955,7 +1960,10 @@ __all__ = [
     ListServicesRequestTags,
     ListServicesResponseBodyServices,
     ListTagResourcesResponseBodyTagResources,
+    ListWorkspacesRequestTags,
+    ListWorkspacesResponseBodyWorkspacesTags,
     ListWorkspacesResponseBodyWorkspaces,
+    PutWorkspaceRequestTags,
     SearchMemoriesResponseBodyRelations,
     SearchMemoriesResponseBodyResults,
     UpdateAggTaskGroupRequestTags,

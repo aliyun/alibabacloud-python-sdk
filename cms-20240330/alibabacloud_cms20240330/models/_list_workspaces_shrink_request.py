@@ -10,18 +10,28 @@ class ListWorkspacesShrinkRequest(DaraModel):
         max_results: int = None,
         next_token: str = None,
         region: str = None,
+        resource_group_id: str = None,
+        tags_shrink: str = None,
         workspace_name: str = None,
         workspace_name_list_shrink: str = None,
     ):
-        # The number of entries to return on each page. Default value: 50. Maximum value: 50.
+        # The number of entries per page.
+        # Default value:
+        # 	50
+        # Maximum value:
+        # 	50
         self.max_results = max_results
-        # The token for the next page of results.
+        # The pagination token.
         self.next_token = next_token
         # The region.
         self.region = region
-        # The name of the workspace. This parameter supports fuzzy search.
+        # The resource group ID.
+        self.resource_group_id = resource_group_id
+        # The tags.
+        self.tags_shrink = tags_shrink
+        # The workspace name. Fuzzy match is used.
         self.workspace_name = workspace_name
-        # The names of the workspaces. This parameter supports exact search.
+        # The workspace name. Exact match is used.
         self.workspace_name_list_shrink = workspace_name_list_shrink
 
     def validate(self):
@@ -41,6 +51,12 @@ class ListWorkspacesShrinkRequest(DaraModel):
         if self.region is not None:
             result['region'] = self.region
 
+        if self.resource_group_id is not None:
+            result['resourceGroupId'] = self.resource_group_id
+
+        if self.tags_shrink is not None:
+            result['tags'] = self.tags_shrink
+
         if self.workspace_name is not None:
             result['workspaceName'] = self.workspace_name
 
@@ -59,6 +75,12 @@ class ListWorkspacesShrinkRequest(DaraModel):
 
         if m.get('region') is not None:
             self.region = m.get('region')
+
+        if m.get('resourceGroupId') is not None:
+            self.resource_group_id = m.get('resourceGroupId')
+
+        if m.get('tags') is not None:
+            self.tags_shrink = m.get('tags')
 
         if m.get('workspaceName') is not None:
             self.workspace_name = m.get('workspaceName')

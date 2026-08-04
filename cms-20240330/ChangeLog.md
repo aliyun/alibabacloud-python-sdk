@@ -1,3 +1,14 @@
+2026-08-04 Version: 10.3.1
+- Update API GetWorkspace: add response parameters Body.resourceGroupId.
+- Update API GetWorkspace: add response parameters Body.tags.
+- Update API ListWorkspaces: add request parameters resourceGroupId.
+- Update API ListWorkspaces: add request parameters tags.
+- Update API ListWorkspaces: add response parameters Body.workspaces.$.resourceGroupId.
+- Update API ListWorkspaces: add response parameters Body.workspaces.$.tags.
+- Update API PutWorkspace: add request parameters body.resourceGroupId.
+- Update API PutWorkspace: add request parameters body.tags.
+
+
 2026-07-29 Version: 10.3.0
 - Support API CreateServiceTask.
 - Support API DeleteServiceTask.
