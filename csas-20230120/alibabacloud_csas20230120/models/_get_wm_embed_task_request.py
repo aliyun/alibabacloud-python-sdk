@@ -9,6 +9,9 @@ class GetWmEmbedTaskRequest(DaraModel):
         self,
         task_id: str = None,
     ):
+        # The job ID obtained when creating the embedding job. Source of the value:  
+        # - [CreateWmEmbedTask](~~CreateWmEmbedTask~~): Create a watermark embedding job.
+        # 
         # This parameter is required.
         self.task_id = task_id
 

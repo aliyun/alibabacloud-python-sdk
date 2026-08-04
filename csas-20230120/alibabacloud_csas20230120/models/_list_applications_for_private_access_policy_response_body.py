@@ -13,7 +13,9 @@ class ListApplicationsForPrivateAccessPolicyResponseBody(DaraModel):
         polices: List[main_models.ListApplicationsForPrivateAccessPolicyResponseBodyPolices] = None,
         request_id: str = None,
     ):
+        # A list of private access policies.
         self.polices = polices
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -56,7 +58,9 @@ class ListApplicationsForPrivateAccessPolicyResponseBodyPolices(DaraModel):
         applications: List[main_models.ListApplicationsForPrivateAccessPolicyResponseBodyPolicesApplications] = None,
         policy_id: str = None,
     ):
+        # A collection of private access applications.
         self.applications = applications
+        # The policy ID.
         self.policy_id = policy_id
 
     def validate(self):
@@ -105,13 +109,31 @@ class ListApplicationsForPrivateAccessPolicyResponseBodyPolicesApplications(Dara
         protocol: str = None,
         status: str = None,
     ):
+        # A collection of private access application addresses.
         self.addresses = addresses
+        # The ID of the private access application.
         self.application_id = application_id
+        # The time when the private access application was created.
         self.create_time = create_time
+        # The description of the private access application.
         self.description = description
+        # The name of the private access application.
         self.name = name
+        # A collection of port ranges for the private access application.
         self.port_ranges = port_ranges
+        # The protocol of the private access application. Valid values:
+        # 
+        # - **All**: All protocols.
+        # 
+        # - **TCP**
+        # 
+        # - **UDP**
         self.protocol = protocol
+        # The status of the private access application. Valid values:
+        # 
+        # - **Enabled**: The application is enabled.
+        # 
+        # - **Disabled**: The application is disabled.
         self.status = status
 
     def validate(self):
@@ -190,7 +212,9 @@ class ListApplicationsForPrivateAccessPolicyResponseBodyPolicesApplicationsPortR
         begin: int = None,
         end: int = None,
     ):
+        # The start port.
         self.begin = begin
+        # The end port.
         self.end = end
 
     def validate(self):

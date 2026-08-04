@@ -13,10 +13,43 @@ class PAL7ConfigRewriteOp(DaraModel):
         value: str = None,
         value_variable: str = None,
     ):
+        # HTTP header or query parameter name. Required.
         self.key = key
+        # Value to find and replace. Used only for the replace operation.
         self.old_value = old_value
+        # Operation type. Required.
+        # 
+        # - **add**: Add an item.
+        # 
+        # - **set**: Set a value.
+        # 
+        # - **delete**: Delete an item.
+        # 
+        # - **replace**: Replace a value.
         self.op = op
+        # Target value as a string.
         self.value = value
+        # Target value as a string. Valid values:
+        # 
+        # - **sase_app_name**: Application name.
+        # 
+        # - **sase_app_id**: Application ID.
+        # 
+        # - **sase_policy_name**: Zero Trust policy name.
+        # 
+        # - **sase_user_username**: Username.
+        # 
+        # - **sase_user_department**: User department.
+        # 
+        # - **sase_user_group_infos**: User organizational structure information.
+        # 
+        # - **sase_user_matched_user_groups**: User group information.
+        # 
+        # - **sase_client_addr**: Client address.
+        # 
+        # - **sase_client_ip**: Client IP address.
+        # 
+        # - **sase_client_port**: Client port.
         self.value_variable = value_variable
 
     def validate(self):

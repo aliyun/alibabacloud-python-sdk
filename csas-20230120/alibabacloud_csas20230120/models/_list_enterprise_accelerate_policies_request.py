@@ -11,9 +11,14 @@ class ListEnterpriseAcceleratePoliciesRequest(DaraModel):
         name: str = None,
         page_size: int = None,
     ):
+        # The number of the page to return for a paged query. Valid values: 1 to 10000.
+        # 
         # This parameter is required.
         self.current_page = current_page
+        # The name of the enterprise acceleration policy.
         self.name = name
+        # The number of entries to return on each page for a paged query. Valid values: 1 to 1000.
+        # 
         # This parameter is required.
         self.page_size = page_size
 

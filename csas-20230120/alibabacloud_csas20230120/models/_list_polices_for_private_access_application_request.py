@@ -11,6 +11,8 @@ class ListPolicesForPrivateAccessApplicationRequest(DaraModel):
         self,
         application_ids: List[str] = None,
     ):
+        # The IDs of the private access applications. You can specify up to 100 IDs.
+        # 
         # This parameter is required.
         self.application_ids = application_ids
 

@@ -10,7 +10,9 @@ class PAL7ConfigReplaceRule(DaraModel):
         from_: str = None,
         to: str = None,
     ):
+        # The original content to be replaced.
         self.from_ = from_
+        # The target content for replacement.
         self.to = to
 
     def validate(self):

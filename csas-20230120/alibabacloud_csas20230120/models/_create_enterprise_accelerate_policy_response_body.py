@@ -11,6 +11,7 @@ class CreateEnterpriseAcceleratePolicyResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.eap_id = eap_id
+        # ID of the request.
         self.request_id = request_id
 
     def validate(self):

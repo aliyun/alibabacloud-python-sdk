@@ -13,7 +13,9 @@ class UpdateUserDevicesStatusResponseBody(DaraModel):
         devices: List[main_models.UpdateUserDevicesStatusResponseBodyDevices] = None,
         request_id: str = None,
     ):
+        # A list of endpoint devices.
         self.devices = devices
+        # The ID of this request.
         self.request_id = request_id
 
     def validate(self):
@@ -80,31 +82,119 @@ class UpdateUserDevicesStatusResponseBodyDevices(DaraModel):
         update_time: str = None,
         username: str = None,
     ):
+        # The client status. Valid values:
+        # 
+        # - **Online**: Online.
+        # 
+        # - **Offline**: Offline.
         self.app_status = app_status
+        # The client version.
         self.app_version = app_version
+        # The CPU model of the endpoint device.
         self.cpu = cpu
+        # The time when the endpoint device was registered.
         self.create_time = create_time
+        # The department to which the user belongs.
         self.department = department
+        # The ownership of the endpoint device. Valid values:
+        # 
+        # - **Personal**: Personal device.
+        # 
+        # - **Company**: Company device.
         self.device_belong = device_belong
+        # The model of the endpoint device.
         self.device_model = device_model
+        # The status of the endpoint device. Valid values:
+        # 
+        # - **Online**: Online.
+        # 
+        # - **Offline**: Offline.
+        # 
+        # - **LongTermOffline**: Long-term offline.
+        # 
+        # - **Locked**: Locked.
+        # 
+        # - **Lost**: Reported as lost.
+        # 
+        # - **Unbound**: Detached.
         self.device_status = device_status
+        # The endpoint device ID.
         self.device_tag = device_tag
+        # The operating system type of the endpoint device. Valid values:
+        # 
+        # - **Windows**: Windows.
+        # 
+        # - **macOS**: macOS.
+        # 
+        # - **Linux**: Linux.
+        # 
+        # - **Android**: Android.
+        # 
+        # - **iOS**: iOS.
+        # 
+        # - **Windows_Wuying**: Alibaba Cloud Cloud Desktop.
         self.device_type = device_type
+        # The operating system version of the endpoint device.
         self.device_version = device_version
+        # The disk model of the endpoint device.
         self.disk = disk
+        # The data protection status. Valid values:
+        # 
+        # - **Enabled**: Enabled.
+        # 
+        # - **Disabled**: Disabled.
+        # 
+        # - **Unprovisioned**: Not configured.
+        # 
+        # - **Unauthorized**: Unauthorized.
         self.dlp_status = dlp_status
+        # The device name.
         self.hostname = hostname
+        # Internet access status. Valid values:
+        # 
+        # - **Enabled**: Internet access is enabled.
+        # 
+        # - **Disabled**: Internet access is disabled.
+        # 
+        # - **Unprovisioned**: The device is unconfigured.
         self.ia_status = ia_status
+        # The private network IP address of the endpoint device.
         self.inner_ip = inner_ip
+        # The MAC address of the endpoint device.
         self.mac = mac
+        # The memory capacity of the endpoint device, in GB.
         self.memory = memory
+        # The network admission control status. Valid values:
+        # 
+        # - **Enabled**: Enabled.
+        # 
+        # - **Disabled**: Disabled.
+        # 
+        # - **Unprovisioned**: Not configured.
         self.nac_status = nac_status
+        # A list of network interface controllers (NICs) on the endpoint device.
         self.net_interface_info = net_interface_info
+        # The private network access status. Valid values:
+        # 
+        # - **Enabled**: Enabled.
+        # 
+        # - **Disabled**: Disabled.
+        # 
+        # - **Unprovisioned**: Not configured.
         self.pa_status = pa_status
+        # The user ID.
         self.sase_user_id = sase_user_id
+        # Whether sharing is enabled for the device. Valid values:
+        # 
+        # - **true**: Sharing is enabled.
+        # 
+        # - **false**: Sharing is disabled.
         self.sharing_status = sharing_status
+        # The IP address used to log on to the endpoint device.
         self.src_ip = src_ip
+        # The last time the endpoint device was online.
         self.update_time = update_time
+        # The username.
         self.username = username
 
     def validate(self):
@@ -291,7 +381,9 @@ class UpdateUserDevicesStatusResponseBodyDevicesNetInterfaceInfo(DaraModel):
         mac: str = None,
         name: str = None,
     ):
+        # The MAC address of the NIC.
         self.mac = mac
+        # The NIC name.
         self.name = name
 
     def validate(self):

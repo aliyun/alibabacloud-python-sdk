@@ -11,7 +11,9 @@ class GetApprovalSchemaResponseBody(DaraModel):
         request_id: str = None,
         schema: main_models.GetApprovalSchemaResponseBodySchema = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The approval template.
         self.schema = schema
 
     def validate(self):
@@ -54,13 +56,33 @@ class GetApprovalSchemaResponseBodySchema(DaraModel):
         schema_name: str = None,
         schema_version: int = None,
     ):
+        # The time when the approval template was created.
         self.create_time = create_time
+        # The description of the approval template.
         self.description = description
+        # Indicates whether the template is an official template.
         self.is_default = is_default
+        # The policy type. Valid values:
+        # 
+        # - **DomainBlacklist**: Domain name blacklist.
+        # 
+        # - **DomainWhitelist**: Domain name whitelist.
+        # 
+        # - **SoftwareBlock**: Software blocking.
+        # 
+        # - **AppUninstall**: Application uninstallation.
+        # 
+        # - **DlpSend**: Outbound file transfer.
+        # 
+        # - **PeripheralBlock**: Peripheral control.
         self.policy_type = policy_type
+        # The content of the approval template.
         self.schema_content = schema_content
+        # The ID of the approval template.
         self.schema_id = schema_id
+        # The name of the approval template.
         self.schema_name = schema_name
+        # The version of the approval template.
         self.schema_version = schema_version
 
     def validate(self):

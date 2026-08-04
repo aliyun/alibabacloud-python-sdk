@@ -10,8 +10,12 @@ class ImportEnterpriseAccelerateTargetsRequest(DaraModel):
         eap_id: str = None,
         file_url: str = None,
     ):
+        # ID of the enterprise acceleration policy.
+        # 
         # This parameter is required.
         self.eap_id = eap_id
+        # URL of the file to import.
+        # 
         # This parameter is required.
         self.file_url = file_url
 

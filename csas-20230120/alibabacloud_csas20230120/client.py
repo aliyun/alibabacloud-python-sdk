@@ -21,7 +21,11 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'public': 'csas.aliyuncs.com',
+            'cn-hangzhou': 'csas.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('csas', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -877,6 +881,8 @@ class Client(OpenApiClient):
         Utils.convert(tmp_req, request)
         if not DaraCore.is_null(tmp_req.l_7config):
             request.l_7config_shrink = Utils.array_to_string_with_specified_style(tmp_req.l_7config, 'L7Config', 'json')
+        if not DaraCore.is_null(tmp_req.unauthorized_access_config):
+            request.unauthorized_access_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.unauthorized_access_config, 'UnauthorizedAccessConfig', 'json')
         body = {}
         body_flat = {}
         if not DaraCore.is_null(request.address_groups):
@@ -905,6 +911,8 @@ class Client(OpenApiClient):
             body['Status'] = request.status
         if not DaraCore.is_null(request.tag_ids):
             body_flat['TagIds'] = request.tag_ids
+        if not DaraCore.is_null(request.unauthorized_access_config_shrink):
+            body['UnauthorizedAccessConfig'] = request.unauthorized_access_config_shrink
         body = DaraCore.merge({}, body, Utils.query(body_flat))
         req = open_api_util_models.OpenApiRequest(
             body = Utils.parse_to_map(body)
@@ -935,6 +943,8 @@ class Client(OpenApiClient):
         Utils.convert(tmp_req, request)
         if not DaraCore.is_null(tmp_req.l_7config):
             request.l_7config_shrink = Utils.array_to_string_with_specified_style(tmp_req.l_7config, 'L7Config', 'json')
+        if not DaraCore.is_null(tmp_req.unauthorized_access_config):
+            request.unauthorized_access_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.unauthorized_access_config, 'UnauthorizedAccessConfig', 'json')
         body = {}
         body_flat = {}
         if not DaraCore.is_null(request.address_groups):
@@ -963,6 +973,8 @@ class Client(OpenApiClient):
             body['Status'] = request.status
         if not DaraCore.is_null(request.tag_ids):
             body_flat['TagIds'] = request.tag_ids
+        if not DaraCore.is_null(request.unauthorized_access_config_shrink):
+            body['UnauthorizedAccessConfig'] = request.unauthorized_access_config_shrink
         body = DaraCore.merge({}, body, Utils.query(body_flat))
         req = open_api_util_models.OpenApiRequest(
             body = Utils.parse_to_map(body)
@@ -6867,7 +6879,57 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.ListUserDevicesResponse:
         request.validate()
-        query = Utils.query(request.to_map())
+        query = {}
+        if not DaraCore.is_null(request.app_statuses):
+            query['AppStatuses'] = request.app_statuses
+        if not DaraCore.is_null(request.app_versions):
+            query['AppVersions'] = request.app_versions
+        if not DaraCore.is_null(request.auto_login_statuses):
+            query['AutoLoginStatuses'] = request.auto_login_statuses
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.department):
+            query['Department'] = request.department
+        if not DaraCore.is_null(request.device_belong):
+            query['DeviceBelong'] = request.device_belong
+        if not DaraCore.is_null(request.device_group_id):
+            query['DeviceGroupId'] = request.device_group_id
+        if not DaraCore.is_null(request.device_statuses):
+            query['DeviceStatuses'] = request.device_statuses
+        if not DaraCore.is_null(request.device_tags):
+            query['DeviceTags'] = request.device_tags
+        if not DaraCore.is_null(request.device_types):
+            query['DeviceTypes'] = request.device_types
+        if not DaraCore.is_null(request.dlp_statuses):
+            query['DlpStatuses'] = request.dlp_statuses
+        if not DaraCore.is_null(request.hostname):
+            query['Hostname'] = request.hostname
+        if not DaraCore.is_null(request.ia_statuses):
+            query['IaStatuses'] = request.ia_statuses
+        if not DaraCore.is_null(request.inner_ip):
+            query['InnerIp'] = request.inner_ip
+        if not DaraCore.is_null(request.mac):
+            query['Mac'] = request.mac
+        if not DaraCore.is_null(request.nac_statuses):
+            query['NacStatuses'] = request.nac_statuses
+        if not DaraCore.is_null(request.pa_statuses):
+            query['PaStatuses'] = request.pa_statuses
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.sase_user_id):
+            query['SaseUserId'] = request.sase_user_id
+        if not DaraCore.is_null(request.sharing_status):
+            query['SharingStatus'] = request.sharing_status
+        if not DaraCore.is_null(request.sn_bios):
+            query['SnBios'] = request.sn_bios
+        if not DaraCore.is_null(request.sn_system):
+            query['SnSystem'] = request.sn_system
+        if not DaraCore.is_null(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not DaraCore.is_null(request.username):
+            query['Username'] = request.username
+        if not DaraCore.is_null(request.workshop):
+            query['Workshop'] = request.workshop
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -6876,7 +6938,7 @@ class Client(OpenApiClient):
             version = '2023-01-20',
             protocol = 'HTTPS',
             pathname = '/',
-            method = 'GET',
+            method = 'POST',
             auth_type = 'AK',
             style = 'RPC',
             req_body_type = 'formData',
@@ -6893,7 +6955,57 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.ListUserDevicesResponse:
         request.validate()
-        query = Utils.query(request.to_map())
+        query = {}
+        if not DaraCore.is_null(request.app_statuses):
+            query['AppStatuses'] = request.app_statuses
+        if not DaraCore.is_null(request.app_versions):
+            query['AppVersions'] = request.app_versions
+        if not DaraCore.is_null(request.auto_login_statuses):
+            query['AutoLoginStatuses'] = request.auto_login_statuses
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.department):
+            query['Department'] = request.department
+        if not DaraCore.is_null(request.device_belong):
+            query['DeviceBelong'] = request.device_belong
+        if not DaraCore.is_null(request.device_group_id):
+            query['DeviceGroupId'] = request.device_group_id
+        if not DaraCore.is_null(request.device_statuses):
+            query['DeviceStatuses'] = request.device_statuses
+        if not DaraCore.is_null(request.device_tags):
+            query['DeviceTags'] = request.device_tags
+        if not DaraCore.is_null(request.device_types):
+            query['DeviceTypes'] = request.device_types
+        if not DaraCore.is_null(request.dlp_statuses):
+            query['DlpStatuses'] = request.dlp_statuses
+        if not DaraCore.is_null(request.hostname):
+            query['Hostname'] = request.hostname
+        if not DaraCore.is_null(request.ia_statuses):
+            query['IaStatuses'] = request.ia_statuses
+        if not DaraCore.is_null(request.inner_ip):
+            query['InnerIp'] = request.inner_ip
+        if not DaraCore.is_null(request.mac):
+            query['Mac'] = request.mac
+        if not DaraCore.is_null(request.nac_statuses):
+            query['NacStatuses'] = request.nac_statuses
+        if not DaraCore.is_null(request.pa_statuses):
+            query['PaStatuses'] = request.pa_statuses
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.sase_user_id):
+            query['SaseUserId'] = request.sase_user_id
+        if not DaraCore.is_null(request.sharing_status):
+            query['SharingStatus'] = request.sharing_status
+        if not DaraCore.is_null(request.sn_bios):
+            query['SnBios'] = request.sn_bios
+        if not DaraCore.is_null(request.sn_system):
+            query['SnSystem'] = request.sn_system
+        if not DaraCore.is_null(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not DaraCore.is_null(request.username):
+            query['Username'] = request.username
+        if not DaraCore.is_null(request.workshop):
+            query['Workshop'] = request.workshop
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -6902,7 +7014,7 @@ class Client(OpenApiClient):
             version = '2023-01-20',
             protocol = 'HTTPS',
             pathname = '/',
-            method = 'GET',
+            method = 'POST',
             auth_type = 'AK',
             style = 'RPC',
             req_body_type = 'formData',
@@ -8479,6 +8591,8 @@ class Client(OpenApiClient):
         Utils.convert(tmp_req, request)
         if not DaraCore.is_null(tmp_req.l_7config):
             request.l_7config_shrink = Utils.array_to_string_with_specified_style(tmp_req.l_7config, 'L7Config', 'json')
+        if not DaraCore.is_null(tmp_req.unauthorized_access_config):
+            request.unauthorized_access_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.unauthorized_access_config, 'UnauthorizedAccessConfig', 'json')
         body = {}
         body_flat = {}
         if not DaraCore.is_null(request.address_groups):
@@ -8511,6 +8625,8 @@ class Client(OpenApiClient):
             body['Status'] = request.status
         if not DaraCore.is_null(request.tag_ids):
             body_flat['TagIds'] = request.tag_ids
+        if not DaraCore.is_null(request.unauthorized_access_config_shrink):
+            body['UnauthorizedAccessConfig'] = request.unauthorized_access_config_shrink
         body = DaraCore.merge({}, body, Utils.query(body_flat))
         req = open_api_util_models.OpenApiRequest(
             body = Utils.parse_to_map(body)
@@ -8541,6 +8657,8 @@ class Client(OpenApiClient):
         Utils.convert(tmp_req, request)
         if not DaraCore.is_null(tmp_req.l_7config):
             request.l_7config_shrink = Utils.array_to_string_with_specified_style(tmp_req.l_7config, 'L7Config', 'json')
+        if not DaraCore.is_null(tmp_req.unauthorized_access_config):
+            request.unauthorized_access_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.unauthorized_access_config, 'UnauthorizedAccessConfig', 'json')
         body = {}
         body_flat = {}
         if not DaraCore.is_null(request.address_groups):
@@ -8573,6 +8691,8 @@ class Client(OpenApiClient):
             body['Status'] = request.status
         if not DaraCore.is_null(request.tag_ids):
             body_flat['TagIds'] = request.tag_ids
+        if not DaraCore.is_null(request.unauthorized_access_config_shrink):
+            body['UnauthorizedAccessConfig'] = request.unauthorized_access_config_shrink
         body = DaraCore.merge({}, body, Utils.query(body_flat))
         req = open_api_util_models.OpenApiRequest(
             body = Utils.parse_to_map(body)

@@ -11,9 +11,13 @@ class ListIdpDepartmentsRequest(DaraModel):
         idp_config_id: str = None,
         page_size: int = None,
     ):
+        # The current page number.
         self.current_page = current_page
+        # The ID of the custom IdP configuration.
+        # 
         # This parameter is required.
         self.idp_config_id = idp_config_id
+        # The number of entries per page.
         self.page_size = page_size
 
     def validate(self):

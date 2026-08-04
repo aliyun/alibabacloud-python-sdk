@@ -9,6 +9,8 @@ class GetDynamicRouteRequest(DaraModel):
         self,
         dynamic_route_id: str = None,
     ):
+        # The ID of the dynamic route.
+        # 
         # This parameter is required.
         self.dynamic_route_id = dynamic_route_id
 

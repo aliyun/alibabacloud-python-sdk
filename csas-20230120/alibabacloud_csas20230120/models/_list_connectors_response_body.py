@@ -14,11 +14,11 @@ class ListConnectorsResponseBody(DaraModel):
         request_id: str = None,
         total_num: int = None,
     ):
-        # List of Connectors.
+        # A list of connectors.
         self.connectors = connectors
-        # The ID of the current request.
+        # The request ID.
         self.request_id = request_id
-        # Total number of Connectors.
+        # The total number of connectors.
         self.total_num = total_num
 
     def validate(self):
@@ -76,37 +76,45 @@ class ListConnectorsResponseBodyConnectors(DaraModel):
         status: str = None,
         switch_status: str = None,
         upgrade_time: main_models.ListConnectorsResponseBodyConnectorsUpgradeTime = None,
+        vip_cidr: str = None,
     ):
-        # Whether to enable global acceleration. Values: 
-        # - **Enabled**: Turn on. 
-        # - **Disabled**: Turn off.
+        # Indicates whether global acceleration is enabled. Valid values:
+        # 
+        # - **Enabled**: Global acceleration is enabled.
+        # 
+        # - **Disabled**: Global acceleration is disabled.
         self.accelerate_status = accelerate_status
-        # Collection of associated internal network access applications.
+        # A list of associated private access applications.
         self.applications = applications
-        # Cluster IP.
+        # The cluster IP address.
         self.cluster_ip = cluster_ip
-        # Cluster port.
+        # The cluster port.
         self.cluster_port = cluster_port
-        # Collection of deployed ConnectorClients.
+        # A list of deployed connector clients.
         self.connector_clients = connector_clients
-        # ConnectorID.
+        # The connector ID.
         self.connector_id = connector_id
-        # Connector creation time.
+        # The time the connector was created.
         self.create_time = create_time
-        # Connector name.
+        # The connector name.
         self.name = name
-        # Region ID.
+        # The region ID.
         self.region_id = region_id
-        # Connector connection status. Values:
-        # - **Online**: Online.
-        # - **Offline**: Offline.
+        # The connection status of the connector. Valid values:
+        # 
+        # - **Online**: The connector is online.
+        # 
+        # - **Offline**: The connector is offline.
         self.status = status
-        # Connector instance status. Values:
-        # - **Enabled**: Enabled.
-        # - **Disabled**: Disabled.
+        # The status of the connector instance. Valid values:
+        # 
+        # - **Enabled**: The connector is enabled.
+        # 
+        # - **Disabled**: The connector is disabled.
         self.switch_status = switch_status
-        # Connector升级时间。
+        # The upgrade window for the connector.
         self.upgrade_time = upgrade_time
+        self.vip_cidr = vip_cidr
 
     def validate(self):
         if self.applications:
@@ -165,6 +173,9 @@ class ListConnectorsResponseBodyConnectors(DaraModel):
         if self.upgrade_time is not None:
             result['UpgradeTime'] = self.upgrade_time.to_map()
 
+        if self.vip_cidr is not None:
+            result['VipCidr'] = self.vip_cidr
+
         return result
 
     def from_map(self, m: dict = None):
@@ -212,6 +223,9 @@ class ListConnectorsResponseBodyConnectors(DaraModel):
             temp_model = main_models.ListConnectorsResponseBodyConnectorsUpgradeTime()
             self.upgrade_time = temp_model.from_map(m.get('UpgradeTime'))
 
+        if m.get('VipCidr') is not None:
+            self.vip_cidr = m.get('VipCidr')
+
         return self
 
 class ListConnectorsResponseBodyConnectorsUpgradeTime(DaraModel):
@@ -220,9 +234,9 @@ class ListConnectorsResponseBodyConnectorsUpgradeTime(DaraModel):
         end: str = None,
         start: str = None,
     ):
-        # End time.
+        # The end time of the upgrade window.
         self.end = end
-        # Start time.
+        # The start time of the upgrade window.
         self.start = start
 
     def validate(self):
@@ -259,13 +273,13 @@ class ListConnectorsResponseBodyConnectorsConnectorClients(DaraModel):
         hostname: str = None,
         public_ip: str = None,
     ):
-        # Connection status between the ConnectorClient and ConnectorServer.
+        # The connection status between the connector client and connector server.
         self.connection_status = connection_status
-        # Unique device identifier for the ConnectorClient.
+        # The unique device ID of the connector client.
         self.dev_tag = dev_tag
-        # Hostname of the ConnectorClient.
+        # The hostname of the connector client.
         self.hostname = hostname
-        # Public IP of the ConnectorClient.
+        # The public IP address of the connector client.
         self.public_ip = public_ip
 
     def validate(self):
@@ -312,9 +326,9 @@ class ListConnectorsResponseBodyConnectorsApplications(DaraModel):
         application_id: str = None,
         application_name: str = None,
     ):
-        # Internal network access application ID.
+        # The private access application ID.
         self.application_id = application_id
-        # Internal network access application name.
+        # The private access application name.
         self.application_name = application_name
 
     def validate(self):

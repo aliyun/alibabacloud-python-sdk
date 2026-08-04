@@ -11,7 +11,9 @@ class GetWmExtractTaskResponseBody(DaraModel):
         data: main_models.GetWmExtractTaskResponseBodyData = None,
         request_id: str = None,
     ):
+        # The task result.
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -54,13 +56,27 @@ class GetWmExtractTaskResponseBodyData(DaraModel):
         wm_info_uint: int = None,
         wm_type: str = None,
     ):
+        # The time when the task was created.
         self.create_time = create_time
+        # The name of the file that was provided when the extraction task was created.
         self.filename = filename
+        # The status of the task. Valid values:
+        # 
+        # - **Running**: The task is running.
+        # 
+        # - **Success**: The task is successful.
+        # 
+        # - **Failed**: The task failed.
         self.status = status
+        # The task ID.
         self.task_id = task_id
+        # The extracted watermark information as a Base64-encoded string.
         self.wm_info_bytes_b64 = wm_info_bytes_b64
+        # The size of the watermark information, which was provided when the extraction task was created.
         self.wm_info_size = wm_info_size
+        # The extracted watermark information in decimal format.
         self.wm_info_uint = wm_info_uint
+        # The watermark type that was provided when the extraction task was created.
         self.wm_type = wm_type
 
     def validate(self):

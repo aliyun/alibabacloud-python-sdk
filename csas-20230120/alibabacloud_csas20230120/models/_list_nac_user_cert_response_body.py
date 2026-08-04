@@ -16,10 +16,23 @@ class ListNacUserCertResponseBody(DaraModel):
         request_id: str = None,
         total_num: int = None,
     ):
+        # API status or POP error code. Valid values:
+        # 
+        # - **2xx**: Success.
+        # 
+        # - **3xx**: Redirection.
+        # 
+        # - **4xx**: Request error.
+        # 
+        # - **5xx**: Server error.
         self.code = code
+        # List of onboarding user certificate statuses.
         self.data_list = data_list
+        # Additional information.
         self.message = message
+        # ID of the request.
         self.request_id = request_id
+        # Total number of entries that match the conditions.
         self.total_num = total_num
 
     def validate(self):
@@ -88,15 +101,39 @@ class ListNacUserCertResponseBodyDataList(DaraModel):
         user_id: str = None,
         username: str = None,
     ):
+        # Alibaba Cloud account ID.
         self.aliuid = aliuid
+        # Department that the user belongs to.
         self.department = department
+        # Endpoint device ID.
         self.dev_tag = dev_tag
+        # Operating system type of the endpoint device. Valid values:
+        # 
+        # - **windows**: Windows.
+        # 
+        # - **macos**: macOS.
+        # 
+        # - **linux**: Linux.
+        # 
+        # - **android**: Android.
+        # 
+        # - **ios**: iOS.
         self.device_type = device_type
+        # Expired At.
         self.expired_time = expired_time
+        # Endpoint device name. The value must be 1 to 128 characters in length. It can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), commas (,), semicolons (;), hyphens (-), underscores (_), forward slashes (/), at signs (@), and spaces. If you enter only an underscore (_), the system returns all endpoint devices whose names contain 4-byte UTF-8 characters.
         self.hostname = hostname
+        # Endpoint device MAC address.
         self.mac = mac
+        # Onboarding user certificate status. Valid values:
+        # 
+        # - **Enabled**: Enabled.
+        # 
+        # - **Disabled**: Disabled.
         self.status = status
+        # User ID.
         self.user_id = user_id
+        # Username.
         self.username = username
 
     def validate(self):

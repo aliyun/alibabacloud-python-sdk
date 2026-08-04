@@ -14,8 +14,11 @@ class ListUninstallApplicationsResponseBody(DaraModel):
         request_id: str = None,
         total_num: int = None,
     ):
+        # The list of uninstall applications.
         self.applications = applications
+        # The request ID.
         self.request_id = request_id
+        # The total number of uninstall applications.
         self.total_num = total_num
 
     def validate(self):
@@ -76,19 +79,51 @@ class ListUninstallApplicationsResponseBodyApplications(DaraModel):
         status: str = None,
         username: str = None,
     ):
+        # The uninstall application ID.
         self.application_id = application_id
+        # The time when the uninstall application was created.
         self.create_time = create_time
+        # The user\\"s department.
         self.department = department
+        # The device ID.
         self.dev_tag = dev_tag
+        # The operating system of the device. Valid values:
+        # 
+        # - **Windows**
+        # 
+        # - **macOS**
+        # 
+        # - **Linux**
+        # 
+        # - **Android**
+        # 
+        # - **iOS**
+        # 
+        # - **Windows_Wuying**: Elastic Desktop Service.
         self.dev_type = dev_type
+        # The list of full department paths.
         self.full_department = full_department
+        # The hostname of the device.
         self.hostname = hostname
+        # The name of the Identity Provider (IdP).
         self.idp_name = idp_name
+        # Indicates whether the application has been uninstalled.
         self.is_uninstall = is_uninstall
+        # The MAC address of the device.
         self.mac = mac
+        # The reason for the application.
         self.reason = reason
+        # The user ID.
         self.sase_user_id = sase_user_id
+        # The status of the uninstall application. Valid values:
+        # 
+        # - **Pending**
+        # 
+        # - **Approved**
+        # 
+        # - **Rejected**
         self.status = status
+        # The username.
         self.username = username
 
     def validate(self):

@@ -13,7 +13,9 @@ class ListPrivateAccessTagsForDynamicRouteResponseBody(DaraModel):
         dynamic_routes: List[main_models.ListPrivateAccessTagsForDynamicRouteResponseBodyDynamicRoutes] = None,
         request_id: str = None,
     ):
+        # The dynamic route list.
         self.dynamic_routes = dynamic_routes
+        # The ID of this request.
         self.request_id = request_id
 
     def validate(self):
@@ -56,7 +58,9 @@ class ListPrivateAccessTagsForDynamicRouteResponseBodyDynamicRoutes(DaraModel):
         dynamic_route_id: str = None,
         tags: List[main_models.ListPrivateAccessTagsForDynamicRouteResponseBodyDynamicRoutesTags] = None,
     ):
+        # The dynamic route ID.
         self.dynamic_route_id = dynamic_route_id
+        # A collection of private network access tags.
         self.tags = tags
 
     def validate(self):
@@ -102,10 +106,19 @@ class ListPrivateAccessTagsForDynamicRouteResponseBodyDynamicRoutesTags(DaraMode
         tag_id: str = None,
         tag_type: str = None,
     ):
+        # The private network access tag creation time.
         self.create_time = create_time
+        # The private network access tag description.
         self.description = description
+        # The private network access tag name.
         self.name = name
+        # The private network access tag ID.
         self.tag_id = tag_id
+        # The private network access tag type. Valid values:
+        # 
+        # - **Default**: Default.
+        # 
+        # - **Custom**: Custom.
         self.tag_type = tag_type
 
     def validate(self):

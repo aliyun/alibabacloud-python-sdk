@@ -9,6 +9,9 @@ class GetApprovalProcessRequest(DaraModel):
         self,
         process_id: str = None,
     ):
+        # The approval flow ID. Value source:
+        # - [ListApprovalProcesses](~~ListApprovalProcesses~~): queries the list of approval flows.
+        # 
         # This parameter is required.
         self.process_id = process_id
 

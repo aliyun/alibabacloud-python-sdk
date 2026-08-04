@@ -12,17 +12,17 @@ class ListUserPrivateAccessPoliciesRequest(DaraModel):
         page_size: int = None,
         sase_user_id: str = None,
     ):
-        # Current page number.
+        # The current page number.
         # 
         # This parameter is required.
         self.current_page = current_page
-        # Intranet access policy name. Length should be between 1 to 128 characters, supporting Chinese and case-sensitive English letters, and can include numbers, periods (.), underscores (_), and hyphens (-).
+        # The name of the private access policy. The name must be 1 to 128 characters in length, and can contain Chinese characters, uppercase letters, lowercase letters, digits, periods (.), underscores (_), and hyphens (-).
         self.name = name
-        # Number of items per page for pagination. Range: 1~100.
+        # The number of entries per page set for the paginated query. Valid values: 1 to 100.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # User ID.
+        # The user ID.
         # 
         # This parameter is required.
         self.sase_user_id = sase_user_id

@@ -10,7 +10,9 @@ class CreateClientUserResponseBody(DaraModel):
         data: str = None,
         request_id: str = None,
     ):
+        # ID of the created user.
         self.data = data
+        # ID of this request.
         self.request_id = request_id
 
     def validate(self):

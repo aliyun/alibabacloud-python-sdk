@@ -23,47 +23,46 @@ class CreatePrivateAccessApplicationShrinkRequest(DaraModel):
         protocol: str = None,
         status: str = None,
         tag_ids: List[str] = None,
+        unauthorized_access_config_shrink: str = None,
     ):
         self.address_groups = address_groups
-        # The addresses of the office applications. You can enter up to 1,000 addresses of office applications.
+        # The addresses of the internal-facing access application. You can specify up to 1,000 addresses.
         self.addresses = addresses
-        # Specifies whether to allow access from a browser. Default value: **Disabled**. Valid values:
-        # 
-        # *   **Enabled**
-        # *   **Disabled**
+        # The browser access status of the internal-facing access application. After this feature is enabled, you can access internal applications without a client. Default value: **Disabled**. Valid values:
+        # - **Enabled**: enabled.
+        # - **Disabled**: disabled.
         self.browser_access_status = browser_access_status
         self.config_mode = config_mode
-        # The description of the office application. The value must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), hyphens (-), and spaces.
+        # The description of the internal-facing access application. The description must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), hyphens (-), and spaces. Chinese characters are supported.
         self.description = description
-        # The browser access mode parameter. The parameter specifies the configurations of Layer 7 applications.
+        # The browser access mode parameter: the application configuration.
         self.l_7config_shrink = l_7config_shrink
-        # The browser access mode parameter. The parameter specifies the prefix of the domain name that the proxy gateway uses. The prefix must be 3 to 20 characters in length, and can contain lowercase letters, digits, and hyphens (-).
+        # The browser access mode parameter: the prefix of the mapped proxy domain name. The prefix must be 3 to 20 characters in length and can contain lowercase letters, digits, and hyphens (-).
         self.l_7proxy_domain_automatic_prefix = l_7proxy_domain_automatic_prefix
-        # The browser access mode parameter. The parameter specifies the custom domain name of the proxy gateway. Enter a valid domain name.
+        # The browser access mode parameter: the custom proxy domain name. The value must be a valid domain name.
         self.l_7proxy_domain_custom = l_7proxy_domain_custom
-        # The name of the office application. The value must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
+        # The name of the internal-facing access application. The name must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). Chinese characters are supported.
         # 
         # This parameter is required.
         self.name = name
-        # The port ranges of the office applications. You can enter up to 65,535 port ranges. Multiple port ranges cannot be duplicated or overlapped.
+        # The port ranges of the internal-facing access application. You can specify up to 65,535 port ranges. Port ranges cannot be duplicate or overlapping.
         self.port_ranges = port_ranges
-        # The protocol that is used by the office application. Valid values:
-        # 
-        # *   **All**
-        # *   **TCP**
-        # *   **UDP**
+        # The protocol of the internal-facing access application. Valid values:
+        # - **All**: all protocols.
+        # - **TCP**
+        # - **UDP**.
         # 
         # This parameter is required.
         self.protocol = protocol
-        # The status of the office application. Valid values:
-        # 
-        # *   **Enabled**
-        # *   **Disabled**
+        # The status of the internal-facing access application. Valid values:
+        # - **Enabled**: enabled.
+        # - **Disabled**: disabled.
         # 
         # This parameter is required.
         self.status = status
-        # The IDs of the tags for the office applications. You can add up to six custom tags to an office application.
+        # The IDs of internal-facing access tags. You can associate up to 6 custom internal-facing access tags with each internal-facing access application.
         self.tag_ids = tag_ids
+        self.unauthorized_access_config_shrink = unauthorized_access_config_shrink
 
     def validate(self):
         if self.address_groups:
@@ -123,6 +122,9 @@ class CreatePrivateAccessApplicationShrinkRequest(DaraModel):
         if self.tag_ids is not None:
             result['TagIds'] = self.tag_ids
 
+        if self.unauthorized_access_config_shrink is not None:
+            result['UnauthorizedAccessConfig'] = self.unauthorized_access_config_shrink
+
         return result
 
     def from_map(self, m: dict = None):
@@ -172,6 +174,9 @@ class CreatePrivateAccessApplicationShrinkRequest(DaraModel):
         if m.get('TagIds') is not None:
             self.tag_ids = m.get('TagIds')
 
+        if m.get('UnauthorizedAccessConfig') is not None:
+            self.unauthorized_access_config_shrink = m.get('UnauthorizedAccessConfig')
+
         return self
 
 class CreatePrivateAccessApplicationShrinkRequestPortRanges(DaraModel):
@@ -180,11 +185,11 @@ class CreatePrivateAccessApplicationShrinkRequestPortRanges(DaraModel):
         begin: int = None,
         end: int = None,
     ):
-        # The start port. The start port must be less than or equal to the end port.
+        # The start port. The value must be less than or equal to the end port.
         # 
         # This parameter is required.
         self.begin = begin
-        # The end port. The end port must be greater than or equal to the start port.
+        # The end port. The value must be greater than or equal to the start port.
         # 
         # This parameter is required.
         self.end = end

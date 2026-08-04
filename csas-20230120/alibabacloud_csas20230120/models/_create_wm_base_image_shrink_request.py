@@ -18,20 +18,55 @@ class CreateWmBaseImageShrinkRequest(DaraModel):
         wm_type: str = None,
         comment: str = None,
     ):
+        # Height of the watermark image, in pixels. Valid values: 100 to 5000.
+        # 
         # This parameter is required.
         self.height = height
+        # Image watermark control parameters.
         self.image_control_shrink = image_control_shrink
+        # Opacity of the watermark image. Valid values: 1 to 255. Higher values mean lower transparency.
+        # 
         # This parameter is required.
         self.opacity = opacity
+        # Scaling factor of the watermark image.
+        # 
         # This parameter is required.
         self.scale = scale
+        # Width of the watermark image, in pixels. Valid values: 100 to 5000.
+        # 
         # This parameter is required.
         self.width = width
+        # Base64-encoded watermark information. Length: 1 to 300 characters. Do not set this parameter if you set WmInfoUint.
         self.wm_info_bytes_b64 = wm_info_bytes_b64
+        # Bit width of the watermark information. Default value: 32. This value must be the same during embedding and extraction. For example, if you use a 40-bit SDK to embed the watermark, set this value to 40 when extracting it.
         self.wm_info_size = wm_info_size
+        # Decimal-form watermark information. Do not set this parameter if you set WmInfoBytesB64.
+        # 
+        # The valid range depends on the WmInfoSize value:
+        # 
+        # - If WmInfoSize is **32**, the valid range is 1 to 4294967295.
+        # 
+        # - If WmInfoSize is **40**, the valid range is 1 to 1099511627775.
+        # 
+        # - If WmInfoSize is **64**, the valid range is 1 to 18446744073709551615.
         self.wm_info_uint = wm_info_uint
+        # Watermark type. Valid values:
+        # 
+        # - **PureWebappInvisible**: Web watermark.
+        # 
+        # - **PureAppInvisible**: App watermark.
+        # 
+        # - **PureScreenInvisible**: Screen watermark.
+        # 
+        # - **AigcWebappInvisible**: AIGC web watermark.
+        # 
+        # - **AigcAppInvisible**: AIGC app watermark.
+        # 
+        # - **AigcScreenInvisible**: AIGC screen watermark.
+        # 
         # This parameter is required.
         self.wm_type = wm_type
+        # Comments.
         self.comment = comment
 
     def validate(self):

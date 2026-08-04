@@ -18,15 +18,32 @@ class ListApprovalProcessesRequest(DaraModel):
         sase_user_id: str = None,
         username: str = None,
     ):
+        # The page number of the current page when paging is used. Valid values: 1 to 10000.
+        # 
         # This parameter is required.
         self.current_page = current_page
+        # The number of entries per page when paging is used. Valid values: 1 to 500.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The ID of the associated business policy.
         self.policy_id = policy_id
+        # The type of the associated policy. Valid values:
+        # - **DomainBlacklist**: domain name blacklist.
+        # - **DomainWhitelist**: domain name whitelist.
+        # - **SoftwareBlock**: software blocking.
+        # - **AppUninstall**: agent uninstallation.
+        # - **DlpSend**: file outgoing.
+        # - **PeripheralBlock**: peripheral control.
         self.policy_type = policy_type
+        # The collection of approval process IDs.
         self.process_ids = process_ids
+        # The template name. The name must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). Chinese characters are supported.
         self.process_name = process_name
+        # The ID of the associated approver. You can call the following operation to obtain the ID:
+        # - [ListUsers](~~ListUsers~~): lists users.
         self.sase_user_id = sase_user_id
+        # The username of the associated approver.
         self.username = username
 
     def validate(self):

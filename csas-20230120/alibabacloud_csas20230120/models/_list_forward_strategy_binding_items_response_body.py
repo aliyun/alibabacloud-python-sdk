@@ -14,7 +14,11 @@ class ListForwardStrategyBindingItemsResponseBody(DaraModel):
         item_type: str = None,
         request_id: str = None,
     ):
+        # The list of forwarding rule bindings.
         self.forward_strategy_binding_items_list = forward_strategy_binding_items_list
+        # The binding item type. Valid values:
+        # - **Application**: internal-facing application
+        # - **UserGroup**: user group.
         self.item_type = item_type
         # Id of the request
         self.request_id = request_id
@@ -66,8 +70,16 @@ class ListForwardStrategyBindingItemsResponseBodyForwardStrategyBindingItemsList
         items: List[main_models.ListForwardStrategyBindingItemsResponseBodyForwardStrategyBindingItemsListItems] = None,
         match_mode: str = None,
     ):
+        # The forwarding rule ID.
         self.forward_id = forward_id
+        # The binding items.
         self.items = items
+        # The policy matching target type. Valid values:
+        # - **UserGroupAll**: all users.
+        # - **UserGroupNormal**: specific user groups.
+        # - **ApplicationAll**: all internal-facing applications.
+        # - **Application**: specific internal-facing applications.
+        # - **Tag**: internal-facing application tags.
         self.match_mode = match_mode
 
     def validate(self):
@@ -120,11 +132,17 @@ class ListForwardStrategyBindingItemsResponseBodyForwardStrategyBindingItemsList
         user_group_id: str = None,
         user_group_name: str = None,
     ):
+        # The ID of the internal-facing application.
         self.application_id = application_id
+        # The name of the internal-facing application.
         self.application_name = application_name
+        # The internal-facing tag ID.
         self.tag_id = tag_id
+        # The tag name.
         self.tag_name = tag_name
+        # The user group ID.
         self.user_group_id = user_group_id
+        # The user group name.
         self.user_group_name = user_group_name
 
     def validate(self):

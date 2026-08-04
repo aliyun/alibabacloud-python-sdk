@@ -9,6 +9,7 @@ class UpdateClientUserResponseBody(DaraModel):
         self,
         request_id: str = None,
     ):
+        # ID of this request.
         self.request_id = request_id
 
     def validate(self):

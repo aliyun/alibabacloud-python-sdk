@@ -13,7 +13,9 @@ class ListIdpConfigsResponseBody(DaraModel):
         data: main_models.ListIdpConfigsResponseBodyData = None,
         request_id: str = None,
     ):
+        # IdP configurations.
         self.data = data
+        # The ID of this request.
         self.request_id = request_id
 
     def validate(self):
@@ -50,7 +52,9 @@ class ListIdpConfigsResponseBodyData(DaraModel):
         data_list: List[main_models.ListIdpConfigsResponseBodyDataDataList] = None,
         total_num: int = None,
     ):
+        # List of IdP configurations.
         self.data_list = data_list
+        # Total number of records.
         self.total_num = total_num
 
     def validate(self):
@@ -102,16 +106,31 @@ class ListIdpConfigsResponseBodyDataDataList(DaraModel):
         type: str = None,
         update_time: str = None,
     ):
+        # IdP configuration description.
         self.description = description
+        # IdP configuration ID.
         self.id = id
+        # Multi-factor authentication (MFA) type.
         self.mfa = mfa
+        # Mobile login type.
         self.mobile_login_type = mobile_login_type
+        # Mobile MFA configuration type.
         self.mobile_mfa_config_type = mobile_mfa_config_type
+        # List of multiple IdP configuration IDs.
         self.multi_idp_info = multi_idp_info
+        # IdP configuration name.
         self.name = name
+        # PC login type.
         self.pc_login_type = pc_login_type
+        # IdP configuration enable status. Values:
+        # 
+        # - **Enabled**: Enabled.
+        # 
+        # - **Disabled**: Disabled.
         self.status = status
+        # IdP configuration type.
         self.type = type
+        # Update time.
         self.update_time = update_time
 
     def validate(self):

@@ -11,6 +11,8 @@ class ListUserGroupsForRegistrationPolicyRequest(DaraModel):
         self,
         policy_ids: List[str] = None,
     ):
+        # A collection of device registration policy IDs. You can specify up to 100 IDs.
+        # 
         # This parameter is required.
         self.policy_ids = policy_ids
 

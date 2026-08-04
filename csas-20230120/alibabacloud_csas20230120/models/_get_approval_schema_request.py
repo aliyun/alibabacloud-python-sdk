@@ -9,6 +9,10 @@ class GetApprovalSchemaRequest(DaraModel):
         self,
         schema_id: str = None,
     ):
+        # The ID of the approval template. Call [ListApprovalSchemas](~~ListApprovalSchemas~~) to list approval templates.
+        # 
+        # - [ListApprovalSchemas](~~ListApprovalSchemas~~): List approval templates in batches.
+        # 
         # This parameter is required.
         self.schema_id = schema_id
 

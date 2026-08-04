@@ -11,7 +11,9 @@ class CreateWmEmbedTaskResponseBody(DaraModel):
         data: main_models.CreateWmEmbedTaskResponseBodyData = None,
         request_id: str = None,
     ):
+        # Job information.
         self.data = data
+        # The ID of this request.
         self.request_id = request_id
 
     def validate(self):
@@ -47,6 +49,7 @@ class CreateWmEmbedTaskResponseBodyData(DaraModel):
         self,
         task_id: str = None,
     ):
+        # The Job ID, used for subsequent queries of task execution results.
         self.task_id = task_id
 
     def validate(self):

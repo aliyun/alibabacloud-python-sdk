@@ -14,8 +14,11 @@ class ListEnterpriseAcceleratePoliciesResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
+        # The list of policies.
         self.policies = policies
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of policies.
         self.total = total
 
     def validate(self):
@@ -74,17 +77,47 @@ class ListEnterpriseAcceleratePoliciesResponseBodyPolicies(DaraModel):
         upstream_type: str = None,
         user_attribute_group: str = None,
     ):
+        # The acceleration pattern.
+        # 
+        # - **whitelist**: accelerates access to applications in the whitelist.
+        # 
+        # - **global**: accelerates access to all applications.
+        # 
+        # - **build-in-list:** accelerates access to built-in applications.
         self.acceleration_type = acceleration_type
+        # The description of the policy.
         self.description = description
+        # The policy ID.
         self.eap_id = eap_id
+        # Indicates whether the policy is enabled.
+        # 
+        # - **1**: enabled
+        # 
+        # - **0**: disabled
         self.enabled = enabled
+        # The policy name.
         self.name = name
+        # Indicates whether to enable Transport Layer Security (TLS).
+        # 
+        # - **0**: disable
+        # 
+        # - **1**: enable
         self.on_tls = on_tls
+        # The policy priority.
         self.priority = priority
+        # Indicates whether the policy is visible on the client.
+        # 
+        # - **0**: not visible
+        # 
+        # - **1**: visible
         self.show_in_client = show_in_client
+        # The address of the acceleration instance. The address can be an IP address or a domain name.
         self.upstream_host = upstream_host
+        # The port of the acceleration instance. The port must be between 1000 and 60000.
         self.upstream_port = upstream_port
+        # The acceleration instance.
         self.upstream_type = upstream_type
+        # The user group for acceleration.
         self.user_attribute_group = user_attribute_group
 
     def validate(self):

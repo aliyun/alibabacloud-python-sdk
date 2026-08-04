@@ -13,7 +13,9 @@ class UpdateExcessiveDeviceRegistrationApplicationsStatusResponseBody(DaraModel)
         applications: List[main_models.UpdateExcessiveDeviceRegistrationApplicationsStatusResponseBodyApplications] = None,
         request_id: str = None,
     ):
+        # List of device registration applications that exceed your quota.
         self.applications = applications
+        # ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -66,17 +68,51 @@ class UpdateExcessiveDeviceRegistrationApplicationsStatusResponseBodyApplication
         status: str = None,
         username: str = None,
     ):
+        # ID of the device registration application.
         self.application_id = application_id
+        # Time when the device registration application was created.
         self.create_time = create_time
+        # Department to which the user belongs.
         self.department = department
+        # This field indicates the reason for the excessive device registration request.
         self.description = description
+        # ID of the endpoint device.
         self.device_tag = device_tag
+        # Operating system of the endpoint device. Valid values:
+        # 
+        # - **Windows**: Windows operating system.
+        # 
+        # - **macOS**: macOS operating system.
+        # 
+        # - **Linux**: Linux operating system.
+        # 
+        # - **Android**: Android operating system.
+        # 
+        # - **iOS**: iOS operating system.
+        # 
+        # - **Windows_Wuying**: Alibaba Cloud Cloud Desktop operating system.
         self.device_type = device_type
+        # Name of the endpoint device.
         self.hostname = hostname
+        # Indicates whether the device registration application has been used. Valid values:
+        # 
+        # - **true**: Used.
+        # 
+        # - **false**: Not used.
         self.is_used = is_used
+        # MAC address of the endpoint device.
         self.mac = mac
+        # User ID.
         self.sase_user_id = sase_user_id
+        # Status of the device registration application. Valid values:
+        # 
+        # - **Pending**: Pending review.
+        # 
+        # - **Approved**: Approved.
+        # 
+        # - **Rejected**: Rejected.
         self.status = status
+        # Username.
         self.username = username
 
     def validate(self):

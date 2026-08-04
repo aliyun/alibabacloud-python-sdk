@@ -15,14 +15,24 @@ class CreateClientUserRequest(DaraModel):
         password: str = None,
         username: str = None,
     ):
+        # Department ID.
         self.department_id = department_id
+        # User description.
         self.description = description
+        # Email address.
+        # 
         # This parameter is required.
         self.email = email
+        # ID of the custom identity source configuration.
+        # 
         # This parameter is required.
         self.idp_config_id = idp_config_id
+        # Mobile phone number without country code.
         self.mobile_number = mobile_number
+        # Password. If empty, a random password is generated automatically.
         self.password = password
+        # Username.
+        # 
         # This parameter is required.
         self.username = username
 

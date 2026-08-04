@@ -14,7 +14,7 @@ class ListPrivateAccessPolicesResponseBody(DaraModel):
         request_id: str = None,
         total_num: int = None,
     ):
-        # The private access policies.
+        # The list of private access policies.
         self.polices = polices
         # The request ID.
         self.request_id = request_id
@@ -87,66 +87,63 @@ class ListPrivateAccessPolicesResponseBodyPolices(DaraModel):
         valid_time_status: str = None,
         valid_until: int = None,
     ):
-        # The IDs of the applications that are specified in the private access policy. If the value of ApplicationType is **Application**, this parameter is returned.
+        # The collection of application IDs of the private access policy. This field has a value when the application type is **Application**.
         self.application_ids = application_ids
         # The application type of the private access policy. Valid values:
-        # 
-        # *   **Application**
-        # *   **Tag**
+        # - **Application**: Application.
+        # - **Tag**: Tag.
         self.application_type = application_type
         # The creation time of the private access policy.
         self.create_time = create_time
-        # The attributes of the custom user group. The attributes of the custom user group are evaluated by using a logical OR. If an attribute is matched, the policy takes effect.
+        # The collection of custom user group attributes. Multiple custom user group attributes have an OR relationship and take effect by union.
         self.custom_user_attributes = custom_user_attributes
         # The description of the private access policy.
         self.description = description
-        # The action that is performed when the security baseline is not met. Valid values:
-        # 
-        # *   **Block**
-        # *   **Observe**
+        # The action to take when the security baseline is not met. Valid values:
+        # - **Block**: Block.
+        # - **Observe**: Observe.
         self.device_attribute_action = device_attribute_action
-        # The ID of the security baseline.
+        # The ID of the security baseline policy.
         self.device_attribute_id = device_attribute_id
         # The name of the private access policy.
         self.name = name
-        # The action in the private access policy. Valid values:
-        # 
-        # *   **Block**
-        # *   **Allow**
+        # The action of the private access policy. Valid values:
+        # - **Block**: Block.
+        # - **Allow**: Allow.
         self.policy_action = policy_action
         # The ID of the private access policy.
         self.policy_id = policy_id
-        # The priority of the private access policy. The value 1 indicates the highest priority.
+        # The priority of the private access policy. A value of 1 indicates the highest priority.
         self.priority = priority
         # The status of the private access policy. Valid values:
-        # 
-        # *   **Enabled**
-        # *   **Disabled**
+        # - **Enabled**: Enabled.
+        # - **Disabled**: Disabled.
         self.status = status
-        # The IDs of the tags that are specified in the private access policy. If the value of ApplicationType is **Tag**, this parameter is returned.
+        # The collection of tag IDs of the private access policy. This field has a value when the application type is **Tag**.
         self.tag_ids = tag_ids
         # The ID of the trigger template.
         self.trigger_template_id = trigger_template_id
-        # List of trusted process group IDs.
+        # The list of trusted process group IDs.
         self.trusted_process_group_ids = trusted_process_group_ids
-        # Trusted process switch status. Values: 
-        # - **Enabled**: On.
-        # - **Disabled**: Off.
+        # The status of the trusted process switch. Valid values:
+        # - **Enabled**: Enabled.
+        # - **Disabled**: Disabled.
         self.trusted_process_status = trusted_process_status
-        # List of trusted software IDs.
+        # The list of trusted software IDs.
         self.trusted_software_ids = trusted_software_ids
-        # The IDs of user groups in the private access policy. If the value of UserGroupMode is **Normal**, this parameter is returned.
+        # The collection of user group IDs for the private access policy. This field has a value when the user group type is **Normal**.
         self.user_group_ids = user_group_ids
-        # The type of the user group in the private access policy. Valid values:
-        # 
-        # *   **Normal**: regular user group.
-        # *   **Custom**: custom user group.
+        # The user group type of the private access policy. Valid values:
+        # - **Normal**: Normal user group.
+        # - **Custom**: Custom user group.
         self.user_group_mode = user_group_mode
-        # The start time when the zero trust policy takes effect, represented as a timestamp in seconds.
+        # The effective start time of the zero trust policy, in second-level Unix timestamp.
         self.valid_from = valid_from
-        # Switch status for effective time. Values: - **Enabled**: On. - **Disabled**: Off.
+        # The status of the effective time switch. Valid values:
+        # - **Enabled**: Enabled.
+        # - **Disabled**: Disabled.
         self.valid_time_status = valid_time_status
-        # The expiration time of the zero trust policy, in seconds timestamp.
+        # The effective end time of the zero trust policy, in second-level Unix timestamp.
         self.valid_until = valid_until
 
     def validate(self):
@@ -311,26 +308,23 @@ class ListPrivateAccessPolicesResponseBodyPolicesCustomUserAttributes(DaraModel)
         user_group_type: str = None,
         value: str = None,
     ):
-        # The ID of the identity provider (IdP) for the user group. If the value of UserGroupType is **department**, this parameter is returned.
+        # The identity provider ID of the user group. This value exists when the custom user group type is **department**.
         self.idp_id = idp_id
-        # The logical operator for the user group. Valid values:
-        # 
-        # *   **Equal**
-        # *   **Unequal**
+        # The relation of the user group. Valid values:
+        # - **Equal**: Equal.
+        # - **Unequal**: Not equal.
         self.relation = relation
-        # The type of the user group, which is the key of the attribute. Valid values:
-        # 
-        # *   **username**
-        # *   **department**
-        # *   **email**
-        # *   **telephone**
+        # The type of the user group. Valid values:
+        # - **username**: Username.
+        # - **department**: Department.
+        # - **email**: Email.
+        # - **telephone**: Mobile phone.
         self.user_group_type = user_group_type
-        # The value of the attribute.
-        # 
-        # *   If the value of UserGroupType is **username**, the value of this parameter is a username. The value must be 1 to 128 characters in length and can contain letters, digits, hyphens (-), underscores (_), and periods (.).
-        # *   If the value of UserGroupType is **department**, the value of this parameter is a department. Examples: OU=Department 1, OU=SASE DingTalk.
-        # *   If the value of UserGroupType is **email**, the value of this parameter is an email address. Example: username@example.com.
-        # *   If the value of UserGroupType is **telephone**, the value of this parameter is a mobile phone number. Example: 13900001234.
+        # The value of the user group attribute.
+        # - When the user group type is **username**, this indicates the value of the username. The value must be 1 to 128 characters in length and supports Chinese characters and uppercase and lowercase English letters. It can contain digits, periods (.), underscores (_), and hyphens (-).
+        # - When the user group type is **department**, this indicates the value of the department. For example: OU=Department1,OU=SASE DingTalk.
+        # - When the user group type is **email**, this indicates the value of the email. For example: username@example.com.
+        # - When the user group type is **telephone**, this indicates the value of the mobile phone. For example: 13900001234.
         self.value = value
 
     def validate(self):

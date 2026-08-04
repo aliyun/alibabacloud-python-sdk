@@ -14,8 +14,11 @@ class ListExcessiveDeviceRegistrationApplicationsResponseBody(DaraModel):
         request_id: str = None,
         total_num: int = None,
     ):
+        # A list of excessive device registration applications.
         self.applications = applications
+        # The request ID.
         self.request_id = request_id
+        # The total number of excessive device registration applications.
         self.total_num = total_num
 
     def validate(self):
@@ -75,18 +78,53 @@ class ListExcessiveDeviceRegistrationApplicationsResponseBodyApplications(DaraMo
         status: str = None,
         username: str = None,
     ):
+        # The application ID.
         self.application_id = application_id
+        # The creation time of the excessive device registration application.
         self.create_time = create_time
+        # The user\\"s department.
         self.department = department
+        # The reason for the excessive device registration application.
         self.description = description
+        # The device ID.
         self.device_tag = device_tag
+        # The operating system of the device. Valid values:
+        # 
+        # - **Windows**: The Windows operating system.
+        # 
+        # - **macOS**: The macOS operating system.
+        # 
+        # - **Linux**: The Linux operating system.
+        # 
+        # - **Android**: The Android operating system.
+        # 
+        # - **iOS**: The iOS operating system.
+        # 
+        # - **Windows_Wuying**: Wuying Workspace.
         self.device_type = device_type
+        # A list of full department paths.
         self.full_department = full_department
+        # The hostname of the device.
         self.hostname = hostname
+        # Specifies whether the excessive device registration application has been used. Valid values:
+        # 
+        # - **true**: The application has been used.
+        # 
+        # - **false**: The application has not been used.
         self.is_used = is_used
+        # The MAC address of the device.
         self.mac = mac
+        # The user ID.
         self.sase_user_id = sase_user_id
+        # The status of the excessive device registration application. Valid values:
+        # 
+        # - **Pending**
+        # 
+        # - **Approved**
+        # 
+        # - **Rejected**
         self.status = status
+        # The username.
         self.username = username
 
     def validate(self):

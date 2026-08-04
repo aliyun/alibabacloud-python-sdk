@@ -10,8 +10,16 @@ class UpdateClientUserStatusRequest(DaraModel):
         id: str = None,
         status: str = None,
     ):
+        # The user ID.
+        # 
         # This parameter is required.
         self.id = id
+        # The status of the user. Valid values:
+        # 
+        # - **Enabled**: The user is enabled.
+        # 
+        # - **Disabled**: The user is disabled.
+        # 
         # This parameter is required.
         self.status = status
 

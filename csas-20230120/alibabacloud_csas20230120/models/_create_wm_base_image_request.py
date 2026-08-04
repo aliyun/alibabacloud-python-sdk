@@ -19,20 +19,55 @@ class CreateWmBaseImageRequest(DaraModel):
         wm_type: str = None,
         comment: str = None,
     ):
+        # Height of the watermark image, in pixels. Valid values: 100 to 5000.
+        # 
         # This parameter is required.
         self.height = height
+        # Image watermark control parameters.
         self.image_control = image_control
+        # Opacity of the watermark image. Valid values: 1 to 255. Higher values mean lower transparency.
+        # 
         # This parameter is required.
         self.opacity = opacity
+        # Scaling factor of the watermark image.
+        # 
         # This parameter is required.
         self.scale = scale
+        # Width of the watermark image, in pixels. Valid values: 100 to 5000.
+        # 
         # This parameter is required.
         self.width = width
+        # Base64-encoded watermark information. Length: 1 to 300 characters. Do not set this parameter if you set WmInfoUint.
         self.wm_info_bytes_b64 = wm_info_bytes_b64
+        # Bit width of the watermark information. Default value: 32. This value must be the same during embedding and extraction. For example, if you use a 40-bit SDK to embed the watermark, set this value to 40 when extracting it.
         self.wm_info_size = wm_info_size
+        # Decimal-form watermark information. Do not set this parameter if you set WmInfoBytesB64.
+        # 
+        # The valid range depends on the WmInfoSize value:
+        # 
+        # - If WmInfoSize is **32**, the valid range is 1 to 4294967295.
+        # 
+        # - If WmInfoSize is **40**, the valid range is 1 to 1099511627775.
+        # 
+        # - If WmInfoSize is **64**, the valid range is 1 to 18446744073709551615.
         self.wm_info_uint = wm_info_uint
+        # Watermark type. Valid values:
+        # 
+        # - **PureWebappInvisible**: Web watermark.
+        # 
+        # - **PureAppInvisible**: App watermark.
+        # 
+        # - **PureScreenInvisible**: Screen watermark.
+        # 
+        # - **AigcWebappInvisible**: AIGC web watermark.
+        # 
+        # - **AigcAppInvisible**: AIGC app watermark.
+        # 
+        # - **AigcScreenInvisible**: AIGC screen watermark.
+        # 
         # This parameter is required.
         self.wm_type = wm_type
+        # Comments.
         self.comment = comment
 
     def validate(self):
@@ -117,7 +152,9 @@ class CreateWmBaseImageRequestImageControl(DaraModel):
         logo_visible_control: main_models.CreateWmBaseImageRequestImageControlLogoVisibleControl = None,
         text_visible_control: main_models.CreateWmBaseImageRequestImageControlTextVisibleControl = None,
     ):
+        # Logo watermark control parameters.
         self.logo_visible_control = logo_visible_control
+        # Text watermark control parameters.
         self.text_visible_control = text_visible_control
 
     def validate(self):
@@ -169,19 +206,41 @@ class CreateWmBaseImageRequestImageControlTextVisibleControl(DaraModel):
         visible: bool = None,
         visible_text: str = None,
     ):
+        # Rotation angle of the text watermark, in degrees clockwise. Valid values: 0 to 360.
         self.angle = angle
+        # Text watermark color. Format: RGB, such as 0xFFFFFF or #FFFFFF. For example, 0x000000 or #000000 means black.
         self.font_color = font_color
+        # Font size of the text watermark. Larger values produce larger fonts.
         self.font_size = font_size
+        # Takes effect only when Mode is top-left, top-right, bottom-left, or bottom-right. Margin settings.
         self.margin = margin
+        # Text watermark display mode. Valid values:
+        # 
+        # - **pos**: Fixed position mode.
+        # 
+        # - **repeat**: Tiled mode.
         self.mode = mode
+        # Text watermark opacity. Valid values: 1 to 255. Higher values mean less transparency.
         self.opacity = opacity
+        # Horizontal anchor point for the text watermark. Valid values: 0 to 1. When (PosAx, PosAy) is (0, 0), the top-left corner of the text is used as the anchor point. When it is 0.5, the center point is used. When it is (1, 1), the bottom-right corner is used.
         self.pos_ax = pos_ax
+        # Vertical anchor point for the text watermark. Valid values: 0 to 1. When (PosAx, PosAy) is (0, 0), the top-left corner of the text is used as the anchor point. When it is 0.5, the center point is used. When it is (1, 1), the bottom-right corner is used.
         self.pos_ay = pos_ay
+        # Takes effect only when Mode is pos. Horizontal position of the text watermark, measured in pixels from the top-left corner.
         self.pos_x = pos_x
+        # Takes effect only when Mode is pos. Vertical position of the text watermark, measured in pixels from the top-left corner.
         self.pos_y = pos_y
+        # Takes effect only when Mode is repeat. Horizontal spacing between repeated text watermarks.
         self.space_x = space_x
+        # Takes effect only when Mode is repeat. Vertical spacing between repeated text watermarks.
         self.space_y = space_y
+        # Visibility setting:
+        # 
+        # true: Show the watermark.
+        # 
+        # false: Hide the watermark.
         self.visible = visible
+        # Text watermark content. Format: UTF-8 string.
         self.visible_text = visible_text
 
     def validate(self):
@@ -292,9 +351,13 @@ class CreateWmBaseImageRequestImageControlTextVisibleControlMargin(DaraModel):
         right: float = None,
         top: float = None,
     ):
+        # Takes effect only when Mode is bottom-left or bottom-right. Bottom margin.
         self.bottom = bottom
+        # Takes effect only when Mode is top-left or bottom-left. Left margin.
         self.left = left
+        # Takes effect only when Mode is top-right or bottom-right. Right margin.
         self.right = right
+        # Takes effect only when Mode is top-left or top-right. Top margin.
         self.top = top
 
     def validate(self):
@@ -352,18 +415,39 @@ class CreateWmBaseImageRequestImageControlLogoVisibleControl(DaraModel):
         space_y: int = None,
         visible: bool = None,
     ):
+        # The clockwise rotation angle of the logo watermark text. Valid values: 1 to 360.
         self.angle = angle
+        # Enable enhanced visible logo watermark. If enabled, the logo is converted into a watermark and added to the image.
         self.enhance = enhance
+        # Base64-encoded logo watermark. The logo file must be a PNG image encoded in Base64 format.
         self.logo_base_64 = logo_base_64
+        # Applies when Mode is top-left, top-right, bottom-left, or bottom-right. Specifies the margin.
         self.margin = margin
+        # The display mode for the logo watermark. Valid values:
+        # 
+        # - **pos**: Fixed position pattern.
+        # 
+        # - **repeat**: Tile pattern.
         self.mode = mode
+        # Logo watermark opacity. Valid values: 1 to 255. A higher value means lower transparency.
         self.opacity = opacity
+        # The horizontal anchor point for the logo watermark. Valid values: 0 to 1. When (PosAx, PosAy) is (0, 0), the watermark anchors to the top-left corner of the text. When the value is 0.5, the watermark anchors to the centroid of the text. When (PosAx, PosAy) is (1, 1), the watermark anchors to the bottom-right corner of the text.
         self.pos_ax = pos_ax
+        # The vertical anchor point for the logo watermark. The value ranges from 0 to 1. The coordinates (PosAx, PosAy) define the anchor point on the watermark. For example, (0,0) represents the top-left corner, (0.5, 0.5) represents the centroid, and (1,1) represents the bottom-right corner.
         self.pos_ay = pos_ay
+        # Takes effect when Mode is set to pos. This parameter controls the horizontal position of a visible watermark, using pixel coordinates with the top-left corner as the origin.
         self.pos_x = pos_x
+        # Specifies the vertical position of the visible watermark in pixels. The top-left corner is the origin. This parameter is valid only when Mode is set to pos.
         self.pos_y = pos_y
+        # This parameter takes effect when Mode is set to repeat. It specifies the horizontal pitch for the tiled visible watermark.
         self.space_x = space_x
+        # Applies only when Mode is set to repeat. Controls the vertical pitch between tiled visible watermarks.
         self.space_y = space_y
+        # Visibility:
+        # 
+        # **true**: Display
+        # 
+        # **false**: Hide
         self.visible = visible
 
     def validate(self):
@@ -468,9 +552,13 @@ class CreateWmBaseImageRequestImageControlLogoVisibleControlMargin(DaraModel):
         right: float = None,
         top: float = None,
     ):
+        # Applies when Mode is bottom-left or bottom-right. The bottom margin.
         self.bottom = bottom
+        # Applies when Mode is top-left or bottom-left. The left margin.
         self.left = left
+        # The right margin. This parameter is valid only when Mode is set to top-right or bottom-right.
         self.right = right
+        # Applies when Mode is top-left or top-right. The top margin.
         self.top = top
 
     def validate(self):

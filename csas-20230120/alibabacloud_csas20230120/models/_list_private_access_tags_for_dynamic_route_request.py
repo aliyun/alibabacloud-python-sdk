@@ -11,6 +11,8 @@ class ListPrivateAccessTagsForDynamicRouteRequest(DaraModel):
         self,
         dynamic_route_ids: List[str] = None,
     ):
+        # A collection of dynamic route IDs. You can enter a maximum of 100 dynamic route IDs.
+        # 
         # This parameter is required.
         self.dynamic_route_ids = dynamic_route_ids
 

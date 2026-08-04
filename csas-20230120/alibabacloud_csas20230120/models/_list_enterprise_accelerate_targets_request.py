@@ -12,12 +12,19 @@ class ListEnterpriseAccelerateTargetsRequest(DaraModel):
         page_size: int = None,
         target: str = None,
     ):
+        # Page number to display in a paged query. Valid values: 1 to 10000.
+        # 
         # This parameter is required.
         self.current_page = current_page
+        # Enterprise Acceleration Policy ID.
+        # 
         # This parameter is required.
         self.eap_id = eap_id
+        # Number of entries per page in a paged query. Valid values: 1 to 1000.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # Enterprise acceleration target. Supports fuzzy query.
         self.target = target
 
     def validate(self):

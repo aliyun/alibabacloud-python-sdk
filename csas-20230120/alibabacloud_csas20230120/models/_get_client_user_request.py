@@ -10,8 +10,12 @@ class GetClientUserRequest(DaraModel):
         idp_config_id: str = None,
         username: str = None,
     ):
+        # ID of the custom identity source configuration.
+        # 
         # This parameter is required.
         self.idp_config_id = idp_config_id
+        # Username.
+        # 
         # This parameter is required.
         self.username = username
 

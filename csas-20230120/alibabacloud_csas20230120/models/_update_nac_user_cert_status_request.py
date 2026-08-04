@@ -13,7 +13,13 @@ class UpdateNacUserCertStatusRequest(DaraModel):
         id_list: List[main_models.UpdateNacUserCertStatusRequestIdList] = None,
         status: str = None,
     ):
+        # A collection of end user IDs and device IDs.
         self.id_list = id_list
+        # The certificate status for the end user device. Valid values:
+        # 
+        # - **Enabled**
+        # 
+        # - **Disabled**
         self.status = status
 
     def validate(self):
@@ -56,7 +62,9 @@ class UpdateNacUserCertStatusRequestIdList(DaraModel):
         dev_tag: str = None,
         user_id: str = None,
     ):
+        # The device ID.
         self.dev_tag = dev_tag
+        # The end user ID.
         self.user_id = user_id
 
     def validate(self):

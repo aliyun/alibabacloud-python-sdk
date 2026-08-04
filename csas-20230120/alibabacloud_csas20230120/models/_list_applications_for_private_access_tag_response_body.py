@@ -13,7 +13,9 @@ class ListApplicationsForPrivateAccessTagResponseBody(DaraModel):
         request_id: str = None,
         tags: List[main_models.ListApplicationsForPrivateAccessTagResponseBodyTags] = None,
     ):
+        # The ID of this request.
         self.request_id = request_id
+        # The list of private network access tags.
         self.tags = tags
 
     def validate(self):
@@ -56,7 +58,9 @@ class ListApplicationsForPrivateAccessTagResponseBodyTags(DaraModel):
         applications: List[main_models.ListApplicationsForPrivateAccessTagResponseBodyTagsApplications] = None,
         tag_id: str = None,
     ):
+        # The collection of private network access applications.
         self.applications = applications
+        # The ID of the private network access tag.
         self.tag_id = tag_id
 
     def validate(self):
@@ -105,14 +109,31 @@ class ListApplicationsForPrivateAccessTagResponseBodyTagsApplications(DaraModel)
         protocol: str = None,
         status: str = None,
     ):
+        # The collection of addresses for the private network access application.
         self.addresses = addresses
+        # The ID of the private network access application.
         self.application_id = application_id
-        # 内网访问应用创建时间。
+        # The time when the private network access application was created.
         self.create_time = create_time
+        # The description of the private network access application.
         self.description = description
+        # The name of the private network access application.
         self.name = name
+        # The collection of port ranges for the private network access application. Port ranges must not overlap or duplicate each other.
         self.port_ranges = port_ranges
+        # The protocol used by the private network access application. Valid values:
+        # 
+        # - **All**: All protocols.
+        # 
+        # - **TCP**
+        # 
+        # - **UDP**
         self.protocol = protocol
+        # The status of the private network access application. Valid values:
+        # 
+        # - **Enabled**: Enabled.
+        # 
+        # - **Disabled**: Disabled.
         self.status = status
 
     def validate(self):
@@ -191,7 +212,9 @@ class ListApplicationsForPrivateAccessTagResponseBodyTagsApplicationsPortRanges(
         begin: int = None,
         end: int = None,
     ):
+        # The start port.
         self.begin = begin
+        # The end port.
         self.end = end
 
     def validate(self):

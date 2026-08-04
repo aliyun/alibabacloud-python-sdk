@@ -11,7 +11,9 @@ class GetActiveIdpConfigResponseBody(DaraModel):
         data: main_models.GetActiveIdpConfigResponseBodyData = None,
         request_id: str = None,
     ):
+        # The identity provider configuration.
         self.data = data
+        # The ID of this request.
         self.request_id = request_id
 
     def validate(self):
@@ -50,9 +52,13 @@ class GetActiveIdpConfigResponseBodyData(DaraModel):
         name: str = None,
         type: str = None,
     ):
+        # A description of the identity provider configuration.
         self.description = description
+        # The ID of the identity provider configuration.
         self.id = id
+        # The name of the identity provider configuration.
         self.name = name
+        # The type of the identity provider configuration.
         self.type = type
 
     def validate(self):

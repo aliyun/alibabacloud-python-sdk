@@ -20,17 +20,37 @@ class ListExcessiveDeviceRegistrationApplicationsRequest(DaraModel):
         statuses: List[str] = None,
         username: str = None,
     ):
+        # The IDs of the excessive device registration applications.
         self.application_ids = application_ids
+        # The page number. Valid values: 1 to 10,000.
+        # 
         # This parameter is required.
         self.current_page = current_page
+        # The user\\"s department. The value must be 1 to 128 characters long and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), commas (,), semicolons (;), hyphens (-), underscores (_), forward slashes (/), at signs (@), and spaces.
         self.department = department
+        # The device ID. You can get the device ID from the `DeviceTag` parameter returned by the following operations:
+        # 
+        # - [GetUserDevice](~~GetUserDevice~~): Queries the details of a user\\"s device.
+        # 
+        # - [ListUserDevices](~~ListUserDevices~~): Queries a list of devices for a user.
         self.device_tag = device_tag
+        # The hostname of the device. The value must be 1 to 128 characters long and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), commas (,), semicolons (;), hyphens (-), underscores (_), forward slashes (/), at signs (@), and spaces. If you specify only an underscore (_), the query is extended to include devices whose hostnames contain 4-byte UTF-8 characters.
         self.hostname = hostname
+        # The MAC address of the device.
         self.mac = mac
+        # The number of entries on each page. Valid values: 1 to 500.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The user ID. You can get the user ID from the `SaseUserId` parameter returned by the following operations:
+        # 
+        # - [GetUserDevice](~~GetUserDevice~~): Queries the details of a user\\"s device.
+        # 
+        # - [ListUserDevices](~~ListUserDevices~~): Queries a list of devices for a user.
         self.sase_user_id = sase_user_id
+        # The statuses of excessive device registration applications.
         self.statuses = statuses
+        # The username. The value must be 1 to 128 characters long and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), underscores (_), hyphens (-), asterisks (\\*), at signs (@), and spaces.
         self.username = username
 
     def validate(self):

@@ -19,19 +19,41 @@ class ModifyEnterpriseAcceleratePolicyRequest(DaraModel):
         upstream_type: str = None,
         user_attribute_group: str = None,
     ):
+        # The acceleration mode:
+        # - **whiltelist**: whitelist acceleration
+        # - **global**: global acceleration
+        # - **build-in-list**: built-in system application acceleration
         self.acceleration_type = acceleration_type
+        # The description of the enterprise acceleration policy.
         self.description = description
+        # The ID of the enterprise acceleration policy.
         self.eap_id = eap_id
+        # The name of the enterprise acceleration policy.
         self.name = name
+        # Specifies whether to enable TLS mode:
+        # - **0**: disable
+        # - **1**: enable
         self.on_tls = on_tls
+        # The priority.
         self.priority = priority
+        # Specifies whether to display on the client:
+        # - **0**: do not display
+        # - **1**: display
         self.show_in_client = show_in_client
+        # The address (IP or domain name) of the acceleration instance.
+        # 
         # This parameter is required.
         self.upstream_host = upstream_host
+        # The port of the acceleration instance (between 1000 and 60000).
+        # 
         # This parameter is required.
         self.upstream_port = upstream_port
+        # The acceleration instance.
+        # 
         # This parameter is required.
         self.upstream_type = upstream_type
+        # The acceleration user group.
+        # 
         # This parameter is required.
         self.user_attribute_group = user_attribute_group
 

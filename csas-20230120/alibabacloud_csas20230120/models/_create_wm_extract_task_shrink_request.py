@@ -33,7 +33,12 @@ class CreateWmExtractTaskShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.filename = filename
+        # Image extraction parameters
         self.image_extract_params_open_api_shrink = image_extract_params_open_api_shrink
+        # Audio watermark parameter: specifies whether the watermark was embedded by the client SDK. Default value: false. Valid values:  
+        # 
+        # - **true**: Yes  
+        # - **false**: No
         self.is_client_embed = is_client_embed
         # The watermark parameter for videos that specifies whether to use the long video watermark SDK. Default value: false. Valid values:
         # 

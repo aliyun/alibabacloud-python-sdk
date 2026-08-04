@@ -14,8 +14,11 @@ class ListUserGroupsResponseBody(DaraModel):
         total_num: int = None,
         user_groups: List[main_models.ListUserGroupsResponseBodyUserGroups] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of user groups.
         self.total_num = total_num
+        # A list of user groups.
         self.user_groups = user_groups
 
     def validate(self):
@@ -67,10 +70,15 @@ class ListUserGroupsResponseBodyUserGroups(DaraModel):
         name: str = None,
         user_group_id: str = None,
     ):
+        # A collection of user group properties. Multiple properties are combined with OR logic.
         self.attributes = attributes
+        # The time when the user group was created.
         self.create_time = create_time
+        # A description of the user group.
         self.description = description
+        # The name of the user group.
         self.name = name
+        # The ID of the user group.
         self.user_group_id = user_group_id
 
     def validate(self):
@@ -133,9 +141,33 @@ class ListUserGroupsResponseBodyUserGroupsAttributes(DaraModel):
         user_group_type: str = None,
         value: str = None,
     ):
+        # The identity provider ID for the user group. This parameter appears only when the user group type is **department**.
         self.idp_id = idp_id
+        # The relation for the user group. Valid values:
+        # 
+        # - **Equal**: Equal to.
+        # 
+        # - **Unequal**: Not equal to.
         self.relation = relation
+        # The type of the user group. Valid values:
+        # 
+        # - **username**: Username.
+        # 
+        # - **department**: Department.
+        # 
+        # - **email**: Email address.
+        # 
+        # - **telephone**: Phone number.
         self.user_group_type = user_group_type
+        # The value of the user group property.
+        # 
+        # - If the user group type is **username**, this is the username. The value must be 1 to 128 characters in length. It can contain letters, digits, periods (.), underscores (_), and hyphens (-). It supports both uppercase and lowercase letters and Chinese characters.
+        # 
+        # - If the user group type is **department**, this is the department name. Example: OU=Department 1,OU=SASE DingTalk.
+        # 
+        # - If the user group type is **email**, this is the email address. Example: username\\@example.com.
+        # 
+        # - If the user group type is **telephone**, this is the phone number. Example: 13900001234.
         self.value = value
 
     def validate(self):

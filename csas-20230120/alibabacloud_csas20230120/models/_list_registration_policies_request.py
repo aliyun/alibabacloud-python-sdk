@@ -19,16 +19,51 @@ class ListRegistrationPoliciesRequest(DaraModel):
         status: str = None,
         user_group_id: str = None,
     ):
+        # The type of company device registration limit. Valid values:
+        # 
+        # - **Unlimited**: No limit.
+        # 
+        # - **LimitAll**: Limit by total number.
+        # 
+        # - **LimitDiff**: Limit by device categorization.
         self.company_limit_type = company_limit_type
+        # The current page number for paged queries. Values range from 1 to 10000.
+        # 
         # This parameter is required.
         self.current_page = current_page
+        # The policy matching target type. Valid values:
+        # 
+        # - **UserGroupAll**: Associate all users.
+        # 
+        # - **UserGroupNormal**: Associate some user groups.
         self.match_mode = match_mode
+        # The name of the device registration policy. It can be 1 to 128 characters long. It supports Chinese characters, uppercase and lowercase English letters, numbers, periods (.), underscores (_), and hyphens (-).
         self.name = name
+        # The number of items per page for paged queries. Values range from 1 to 500.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The type of personal device registration limit. Valid values:
+        # 
+        # - **Unlimited**: No limit.
+        # 
+        # - **LimitAll**: Limit by total number.
+        # 
+        # - **LimitDiff**: Limit by device categorization.
         self.personal_limit_type = personal_limit_type
+        # A collection of device registration policy IDs. You can enter up to 100 device registration policy IDs.
         self.policy_ids = policy_ids
+        # The status of the device registration policy. Valid values:
+        # 
+        # - **Enabled**: Enabled.
+        # 
+        # - **Disabled**: Disabled.
         self.status = status
+        # The user group ID. Get this value from:
+        # 
+        # - [ListUserGroups](~~ListUserGroups~~): Batch query user groups.
+        # 
+        # - [CreateUserGroup](~~CreateUserGroup~~): Create user groups.
         self.user_group_id = user_group_id
 
     def validate(self):

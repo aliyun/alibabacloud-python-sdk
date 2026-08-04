@@ -14,8 +14,11 @@ class ListApprovalsResponseBody(DaraModel):
         request_id: str = None,
         total_num: str = None,
     ):
+        # List of approval instances.
         self.approvals = approvals
+        # ID of the request.
         self.request_id = request_id
+        # Total number of approval instances.
         self.total_num = total_num
 
     def validate(self):
@@ -80,23 +83,62 @@ class ListApprovalsResponseBodyApprovals(DaraModel):
         schema_name: str = None,
         status: str = None,
     ):
+        # Details of the approval instance.
         self.approval_detail = approval_detail
+        # Approval instance ID.
         self.approval_id = approval_id
+        # List of approval progress nodes.
         self.approval_progresses = approval_progresses
         self.approval_type = approval_type
+        # Time when the approval instance was created.
         self.create_time = create_time
+        # Department of the user who created the approval instance.
         self.creator_department = creator_department
+        # ID of the device used to create the approval instance.
         self.creator_dev_tag = creator_dev_tag
+        # ID of the user who created the approval instance.
         self.creator_user_id = creator_user_id
+        # Username of the user who created the approval instance.
         self.creator_username = creator_username
+        # Expiration time of the approval instance, in seconds since the Unix epoch.
         self.end_timestamp = end_timestamp
+        # Policy type associated with the approval instance. Valid values:
+        # 
+        # - **DomainBlacklist**: Domain blacklist.
+        # 
+        # - **DomainWhitelist**: Domain whitelist.
+        # 
+        # - **SoftwareBlock**: Software blocking.
+        # 
+        # - **AppUninstall**: App uninstallation.
+        # 
+        # - **DlpSend**: File outbound transfer.
+        # 
+        # - **PeripheralBlock**: Peripheral control.
         self.policy_type = policy_type
+        # ID of the associated approval process.
         self.process_id = process_id
+        # Name of the associated approval process.
         self.process_name = process_name
+        # Reason for creating the approval instance.
         self.reason = reason
+        # Content of the associated approval template.
         self.schema_content = schema_content
+        # ID of the associated approval template.
         self.schema_id = schema_id
+        # Name of the associated approval template.
         self.schema_name = schema_name
+        # Status of the approval instance. Valid values:
+        # 
+        # - **Pending**: Pending approval.
+        # 
+        # - **Approved**: Approved.
+        # 
+        # - **Rejected**: Rejected.
+        # 
+        # - **Revoked**: Revoked.
+        # 
+        # - **Expired**: Expired.
         self.status = status
 
     def validate(self):
@@ -239,11 +281,33 @@ class ListApprovalsResponseBodyApprovalsApprovalProgresses(DaraModel):
         status: str = None,
         timestamp: int = None,
     ):
+        # Action performed at the approval progress node. Valid values:
+        # 
+        # - **Approve**: Approve.
+        # 
+        # - **Reject**: Reject.
+        # 
+        # - **Revoke**: Revoke.
+        # 
+        # - **Comment**: Comment.
         self.action = action
+        # Comment added at the approval progress node.
         self.comment = comment
+        # ID of the executor for the approval progress node.
         self.executor = executor
+        # List of operators for the approval progress node.
         self.operators = operators
+        # Status of the approval progress node. Valid values:
+        # 
+        # - **Pending**: Pending approval.
+        # 
+        # - **Approved**: Approved.
+        # 
+        # - **Rejected**: Rejected.
+        # 
+        # - **Revoked**: Revoked.
         self.status = status
+        # Time when the action was performed at the approval progress node, in seconds since the Unix epoch.
         self.timestamp = timestamp
 
     def validate(self):
@@ -310,7 +374,9 @@ class ListApprovalsResponseBodyApprovalsApprovalProgressesOperators(DaraModel):
         sase_user_id: str = None,
         username: str = None,
     ):
+        # ID of the operator for the approval progress node.
         self.sase_user_id = sase_user_id
+        # Username of the operator for the approval progress node.
         self.username = username
 
     def validate(self):

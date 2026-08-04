@@ -11,6 +11,8 @@ class ListUserGroupsForPrivateAccessPolicyRequest(DaraModel):
         self,
         policy_ids: List[str] = None,
     ):
+        # A collection of private network access policy IDs. Enter a maximum of 100 private network access policy IDs.
+        # 
         # This parameter is required.
         self.policy_ids = policy_ids
 

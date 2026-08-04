@@ -14,8 +14,11 @@ class ListApprovalProcessesResponseBody(DaraModel):
         request_id: str = None,
         total_num: str = None,
     ):
+        # The list of approval processes.
         self.processes = processes
+        # The request ID.
         self.request_id = request_id
+        # The total number of approval processes.
         self.total_num = total_num
 
     def validate(self):
@@ -71,25 +74,39 @@ class ListApprovalProcessesResponseBodyProcesses(DaraModel):
         domain_whitelist_policies: main_models.ListApprovalProcessesResponseBodyProcessesDomainWhitelistPolicies = None,
         endpoint_hardening_policies: main_models.ListApprovalProcessesResponseBodyProcessesEndpointHardeningPolicies = None,
         peripheral_block_policies: main_models.ListApprovalProcessesResponseBodyProcessesPeripheralBlockPolicies = None,
+        private_access_block_policies: main_models.ListApprovalProcessesResponseBodyProcessesPrivateAccessBlockPolicies = None,
         process_id: str = None,
         process_name: str = None,
         process_nodes: List[List[main_models.ListApprovalProcessesResponseBodyProcessesProcessNodes]] = None,
         software_block_policies: main_models.ListApprovalProcessesResponseBodyProcessesSoftwareBlockPolicies = None,
         software_hardening_policies: main_models.ListApprovalProcessesResponseBodyProcessesSoftwareHardeningPolicies = None,
     ):
+        # The list of policies associated with agent uninstallation.
         self.app_uninstall_policies = app_uninstall_policies
         self.approval_type = approval_type
+        # The time when the approval process was created.
         self.create_time = create_time
+        # The description of the approval process.
         self.description = description
+        # The list of policies associated with device registration.
         self.device_registration_policies = device_registration_policies
+        # The list of policies associated with file outgoing.
         self.dlp_send_policies = dlp_send_policies
+        # The list of policies associated with the domain name blacklist.
         self.domain_blacklist_policies = domain_blacklist_policies
+        # The list of policies associated with the domain name whitelist.
         self.domain_whitelist_policies = domain_whitelist_policies
         self.endpoint_hardening_policies = endpoint_hardening_policies
+        # The list of policies associated with peripheral control.
         self.peripheral_block_policies = peripheral_block_policies
+        self.private_access_block_policies = private_access_block_policies
+        # The approval process ID.
         self.process_id = process_id
+        # The name of the approval process.
         self.process_name = process_name
+        # The list of approval nodes.
         self.process_nodes = process_nodes
+        # The list of policies associated with software blocking.
         self.software_block_policies = software_block_policies
         self.software_hardening_policies = software_hardening_policies
 
@@ -108,6 +125,8 @@ class ListApprovalProcessesResponseBodyProcesses(DaraModel):
             self.endpoint_hardening_policies.validate()
         if self.peripheral_block_policies:
             self.peripheral_block_policies.validate()
+        if self.private_access_block_policies:
+            self.private_access_block_policies.validate()
         if self.process_nodes:
             for v1 in self.process_nodes:
                 for v2 in v1:
@@ -152,6 +171,9 @@ class ListApprovalProcessesResponseBodyProcesses(DaraModel):
 
         if self.peripheral_block_policies is not None:
             result['PeripheralBlockPolicies'] = self.peripheral_block_policies.to_map()
+
+        if self.private_access_block_policies is not None:
+            result['PrivateAccessBlockPolicies'] = self.private_access_block_policies.to_map()
 
         if self.process_id is not None:
             result['ProcessId'] = self.process_id
@@ -213,6 +235,10 @@ class ListApprovalProcessesResponseBodyProcesses(DaraModel):
         if m.get('PeripheralBlockPolicies') is not None:
             temp_model = main_models.ListApprovalProcessesResponseBodyProcessesPeripheralBlockPolicies()
             self.peripheral_block_policies = temp_model.from_map(m.get('PeripheralBlockPolicies'))
+
+        if m.get('PrivateAccessBlockPolicies') is not None:
+            temp_model = main_models.ListApprovalProcessesResponseBodyProcessesPrivateAccessBlockPolicies()
+            self.private_access_block_policies = temp_model.from_map(m.get('PrivateAccessBlockPolicies'))
 
         if m.get('ProcessId') is not None:
             self.process_id = m.get('ProcessId')
@@ -280,7 +306,9 @@ class ListApprovalProcessesResponseBodyProcessesSoftwareBlockPolicies(DaraModel)
         policy_ids: List[str] = None,
         schema_id: str = None,
     ):
+        # The list of software blocking policy IDs.
         self.policy_ids = policy_ids
+        # The approval template ID.
         self.schema_id = schema_id
 
     def validate(self):
@@ -315,7 +343,9 @@ class ListApprovalProcessesResponseBodyProcessesProcessNodes(DaraModel):
         sase_user_id: str = None,
         username: str = None,
     ):
+        # 审批人ID。
         self.sase_user_id = sase_user_id
+        # 审批人用户名。
         self.username = username
 
     def validate(self):
@@ -344,13 +374,50 @@ class ListApprovalProcessesResponseBodyProcessesProcessNodes(DaraModel):
 
         return self
 
-class ListApprovalProcessesResponseBodyProcessesPeripheralBlockPolicies(DaraModel):
+class ListApprovalProcessesResponseBodyProcessesPrivateAccessBlockPolicies(DaraModel):
     def __init__(
         self,
         policy_ids: List[str] = None,
         schema_id: str = None,
     ):
         self.policy_ids = policy_ids
+        self.schema_id = schema_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.policy_ids is not None:
+            result['PolicyIds'] = self.policy_ids
+
+        if self.schema_id is not None:
+            result['SchemaId'] = self.schema_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PolicyIds') is not None:
+            self.policy_ids = m.get('PolicyIds')
+
+        if m.get('SchemaId') is not None:
+            self.schema_id = m.get('SchemaId')
+
+        return self
+
+class ListApprovalProcessesResponseBodyProcessesPeripheralBlockPolicies(DaraModel):
+    def __init__(
+        self,
+        policy_ids: List[str] = None,
+        schema_id: str = None,
+    ):
+        # The list of peripheral control policy IDs.
+        self.policy_ids = policy_ids
+        # The approval template ID.
         self.schema_id = schema_id
 
     def validate(self):
@@ -420,7 +487,9 @@ class ListApprovalProcessesResponseBodyProcessesDomainWhitelistPolicies(DaraMode
         policy_ids: List[str] = None,
         schema_id: str = None,
     ):
+        # The list of domain name whitelist policy IDs.
         self.policy_ids = policy_ids
+        # The approval template ID.
         self.schema_id = schema_id
 
     def validate(self):
@@ -455,7 +524,9 @@ class ListApprovalProcessesResponseBodyProcessesDomainBlacklistPolicies(DaraMode
         policy_ids: List[str] = None,
         schema_id: str = None,
     ):
+        # The list of domain name blacklist policy IDs.
         self.policy_ids = policy_ids
+        # The approval template ID.
         self.schema_id = schema_id
 
     def validate(self):
@@ -490,7 +561,9 @@ class ListApprovalProcessesResponseBodyProcessesDlpSendPolicies(DaraModel):
         policy_ids: List[str] = None,
         schema_id: str = None,
     ):
+        # The list of file outgoing policy IDs.
         self.policy_ids = policy_ids
+        # The approval template ID.
         self.schema_id = schema_id
 
     def validate(self):
@@ -525,7 +598,9 @@ class ListApprovalProcessesResponseBodyProcessesDeviceRegistrationPolicies(DaraM
         policy_ids: List[str] = None,
         schema_id: str = None,
     ):
+        # The list of device registration policy IDs.
         self.policy_ids = policy_ids
+        # The approval template ID.
         self.schema_id = schema_id
 
     def validate(self):
@@ -560,7 +635,9 @@ class ListApprovalProcessesResponseBodyProcessesAppUninstallPolicies(DaraModel):
         policy_ids: List[str] = None,
         schema_id: str = None,
     ):
+        # The list of agent uninstallation policy IDs.
         self.policy_ids = policy_ids
+        # The approval template ID.
         self.schema_id = schema_id
 
     def validate(self):

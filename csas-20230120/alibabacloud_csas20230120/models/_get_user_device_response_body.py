@@ -13,7 +13,9 @@ class GetUserDeviceResponseBody(DaraModel):
         device: main_models.GetUserDeviceResponseBodyDevice = None,
         request_id: str = None,
     ):
+        # The terminal device.
         self.device = device
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -54,8 +56,14 @@ class GetUserDeviceResponseBodyDevice(DaraModel):
         battery_remaining_percentage: int = None,
         cpu: str = None,
         city: str = None,
+        city_en: str = None,
+        city_zh: str = None,
         continent: str = None,
+        continent_en: str = None,
+        continent_zh: str = None,
         country: str = None,
+        country_en: str = None,
+        country_zh: str = None,
         create_time: str = None,
         department: str = None,
         device_belong: str = None,
@@ -82,6 +90,8 @@ class GetUserDeviceResponseBodyDevice(DaraModel):
         pa_status: str = None,
         processes: List[main_models.GetUserDeviceResponseBodyDeviceProcesses] = None,
         province: str = None,
+        province_en: str = None,
+        province_zh: str = None,
         sase_user_id: str = None,
         sharing_status: bool = None,
         sn_base_board: str = None,
@@ -95,52 +105,115 @@ class GetUserDeviceResponseBodyDevice(DaraModel):
         username: str = None,
         workshop: str = None,
     ):
+        # The client status. Valid values:
         self.app_status = app_status
+        # The client version.
         self.app_version = app_version
+        # The auto-logon status of the device. Valid values:
         self.auto_login_status = auto_login_status
+        # The battery health percentage.
         self.battery_health_percentage = battery_health_percentage
+        # The battery remaining charge percentage.
         self.battery_remaining_percentage = battery_remaining_percentage
+        # The CPU model of the terminal device.
         self.cpu = cpu
+        # The city to which the public IP address belongs.
         self.city = city
+        # The city name in English.
+        self.city_en = city_en
+        # The city name in Chinese.
+        self.city_zh = city_zh
+        # The continent to which the public IP address belongs.
         self.continent = continent
+        # The continent name in English.
+        self.continent_en = continent_en
+        # The continent name in Chinese.
+        self.continent_zh = continent_zh
+        # The country to which the public IP address belongs.
         self.country = country
+        # The country name in English.
+        self.country_en = country_en
+        # The country name in Chinese.
+        self.country_zh = country_zh
+        # The registration time of the terminal device.
         self.create_time = create_time
+        # The department to which the user belongs.
         self.department = department
+        # The ownership of the terminal device. Valid values:
         self.device_belong = device_belong
+        # The model of the terminal device.
         self.device_model = device_model
+        # The status of the terminal device. Valid values:
         self.device_status = device_status
+        # The ID of the terminal device.
         self.device_tag = device_tag
+        # The operating system type of the terminal device. Valid values:
         self.device_type = device_type
+        # The operating system version of the terminal device.
         self.device_version = device_version
+        # The disk model of the terminal device.
         self.disk = disk
+        # The available disk space, in GB.
         self.disk_available = disk_available
+        # The used disk space, in GB.
         self.disk_used = disk_used
+        # The office data protection status. Valid values:
         self.dlp_status = dlp_status
+        # The anti-intrusion status. Valid values:
         self.edr_status = edr_status
+        # The historical users of the terminal device.
         self.history_users = history_users
+        # The name of the terminal device.
         self.hostname = hostname
+        # The Internet access status. Valid values:
         self.ia_status = ia_status
+        # The internal IP address of the terminal device.
         self.inner_ip = inner_ip
+        # Indicates whether the terminal has joined an AD domain.
         self.join_ad_domain = join_ad_domain
+        # The MAC address of the terminal device.
         self.mac = mac
+        # The IDs of matched device groups.
         self.match_device_group_ids = match_device_group_ids
+        # The memory capacity of the terminal device. Unit: GB.
         self.memory = memory
+        # The network access control status. Valid values:
         self.nac_status = nac_status
+        # The list of network interface controllers (NICs) of the terminal device.
         self.net_interface_info = net_interface_info
+        # The private access status. Valid values:
         self.pa_status = pa_status
+        # The list of processes running on the terminal.
         self.processes = processes
+        # The province to which the public IP address belongs.
         self.province = province
+        # The province name in English.
+        self.province_en = province_en
+        # The province name in Chinese.
+        self.province_zh = province_zh
+        # The user ID.
         self.sase_user_id = sase_user_id
+        # Indicates whether sharing is enabled for the device. Valid values:
         self.sharing_status = sharing_status
+        # The motherboard serial number.
         self.sn_base_board = sn_base_board
+        # The serial number (SN) of the BIOS system.
         self.sn_bios = sn_bios
+        # The hard disk serial number.
         self.sn_disk_drive = sn_disk_drive
+        # The serial number (SN) of the processor.
         self.sn_processor = sn_processor
+        # The system serial number.
         self.sn_system = sn_system
+        # The logon IP address of the terminal device.
         self.src_ip = src_ip
+        # The timestamp when the terminal process information was collected.
         self.terminal_info_collect_time = terminal_info_collect_time
+        # The last online time of the terminal device.
         self.update_time = update_time
+        # The username.
         self.username = username
+        # The name of the office area.
         self.workshop = workshop
 
     def validate(self):
@@ -183,11 +256,29 @@ class GetUserDeviceResponseBodyDevice(DaraModel):
         if self.city is not None:
             result['City'] = self.city
 
+        if self.city_en is not None:
+            result['CityEn'] = self.city_en
+
+        if self.city_zh is not None:
+            result['CityZh'] = self.city_zh
+
         if self.continent is not None:
             result['Continent'] = self.continent
 
+        if self.continent_en is not None:
+            result['ContinentEn'] = self.continent_en
+
+        if self.continent_zh is not None:
+            result['ContinentZh'] = self.continent_zh
+
         if self.country is not None:
             result['Country'] = self.country
+
+        if self.country_en is not None:
+            result['CountryEn'] = self.country_en
+
+        if self.country_zh is not None:
+            result['CountryZh'] = self.country_zh
 
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
@@ -273,6 +364,12 @@ class GetUserDeviceResponseBodyDevice(DaraModel):
         if self.province is not None:
             result['Province'] = self.province
 
+        if self.province_en is not None:
+            result['ProvinceEn'] = self.province_en
+
+        if self.province_zh is not None:
+            result['ProvinceZh'] = self.province_zh
+
         if self.sase_user_id is not None:
             result['SaseUserId'] = self.sase_user_id
 
@@ -334,11 +431,29 @@ class GetUserDeviceResponseBodyDevice(DaraModel):
         if m.get('City') is not None:
             self.city = m.get('City')
 
+        if m.get('CityEn') is not None:
+            self.city_en = m.get('CityEn')
+
+        if m.get('CityZh') is not None:
+            self.city_zh = m.get('CityZh')
+
         if m.get('Continent') is not None:
             self.continent = m.get('Continent')
 
+        if m.get('ContinentEn') is not None:
+            self.continent_en = m.get('ContinentEn')
+
+        if m.get('ContinentZh') is not None:
+            self.continent_zh = m.get('ContinentZh')
+
         if m.get('Country') is not None:
             self.country = m.get('Country')
+
+        if m.get('CountryEn') is not None:
+            self.country_en = m.get('CountryEn')
+
+        if m.get('CountryZh') is not None:
+            self.country_zh = m.get('CountryZh')
 
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
@@ -427,6 +542,12 @@ class GetUserDeviceResponseBodyDevice(DaraModel):
         if m.get('Province') is not None:
             self.province = m.get('Province')
 
+        if m.get('ProvinceEn') is not None:
+            self.province_en = m.get('ProvinceEn')
+
+        if m.get('ProvinceZh') is not None:
+            self.province_zh = m.get('ProvinceZh')
+
         if m.get('SaseUserId') is not None:
             self.sase_user_id = m.get('SaseUserId')
 
@@ -473,9 +594,13 @@ class GetUserDeviceResponseBodyDeviceProcesses(DaraModel):
         memory: int = None,
         name: str = None,
     ):
+        # The CPU usage percentage of the process.
         self.cpu = cpu
+        # The process running description.
         self.description = description
+        # The memory usage of the process, in MB.
         self.memory = memory
+        # The process name.
         self.name = name
 
     def validate(self):
@@ -522,7 +647,9 @@ class GetUserDeviceResponseBodyDeviceNetInterfaceInfo(DaraModel):
         mac: str = None,
         name: str = None,
     ):
+        # The MAC address of the NIC.
         self.mac = mac
+        # The name of the NIC.
         self.name = name
 
     def validate(self):
@@ -557,7 +684,9 @@ class GetUserDeviceResponseBodyDeviceHistoryUsers(DaraModel):
         sase_user_id: str = None,
         username: str = None,
     ):
+        # The user ID.
         self.sase_user_id = sase_user_id
+        # The username.
         self.username = username
 
     def validate(self):

@@ -13,7 +13,9 @@ class GetUserGroupResponseBody(DaraModel):
         request_id: str = None,
         user_group: main_models.GetUserGroupResponseBodyUserGroup = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The user group.
         self.user_group = user_group
 
     def validate(self):
@@ -53,10 +55,15 @@ class GetUserGroupResponseBodyUserGroup(DaraModel):
         name: str = None,
         user_group_id: str = None,
     ):
+        # The collection of user group properties. The properties are evaluated with a logical OR operator.
         self.attributes = attributes
+        # The time when the user group was created.
         self.create_time = create_time
+        # The description of the user group.
         self.description = description
+        # The name of the user group.
         self.name = name
+        # The ID of the user group.
         self.user_group_id = user_group_id
 
     def validate(self):
@@ -119,9 +126,33 @@ class GetUserGroupResponseBodyUserGroupAttributes(DaraModel):
         user_group_type: str = None,
         value: str = None,
     ):
+        # The ID of the identity provider (IdP) for the user group. This parameter is returned when UserGroupType is set to **department**.
         self.idp_id = idp_id
+        # The relationship of the user group. Valid values:
+        # 
+        # - **Equal**: Equal to.
+        # 
+        # - **Unequal**: Not equal to.
         self.relation = relation
+        # The type of the user group. Valid values:
+        # 
+        # - **username**: The username.
+        # 
+        # - **department**: The department.
+        # 
+        # - **email**: The email address.
+        # 
+        # - **telephone**: The mobile phone number.
         self.user_group_type = user_group_type
+        # The value of the user group property.
+        # 
+        # - If UserGroupType is set to **username**, this parameter specifies the value of the username. The value can be 1 to 128 characters in length and can contain Chinese characters, letters, digits, periods (.), underscores (_), and hyphens (-).
+        # 
+        # - If UserGroupType is set to **department**, this parameter specifies the value of the department. Example: OU=Department 1,OU=SASE DingTalk.
+        # 
+        # - If UserGroupType is set to **email**, this parameter specifies the value of the email address. Example: username\\@example.com.
+        # 
+        # - If UserGroupType is set to **telephone**, this parameter specifies the value of the mobile phone number. Example: 13900001234.
         self.value = value
 
     def validate(self):

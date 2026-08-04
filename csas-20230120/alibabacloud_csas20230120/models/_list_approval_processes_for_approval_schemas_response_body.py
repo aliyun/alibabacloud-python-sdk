@@ -13,7 +13,9 @@ class ListApprovalProcessesForApprovalSchemasResponseBody(DaraModel):
         request_id: str = None,
         schemas: List[main_models.ListApprovalProcessesForApprovalSchemasResponseBodySchemas] = None,
     ):
+        # The ID of this request.
         self.request_id = request_id
+        # A list of approval templates.
         self.schemas = schemas
 
     def validate(self):
@@ -56,7 +58,9 @@ class ListApprovalProcessesForApprovalSchemasResponseBodySchemas(DaraModel):
         processes: List[main_models.ListApprovalProcessesForApprovalSchemasResponseBodySchemasProcesses] = None,
         schema_id: str = None,
     ):
+        # A collection of approval flows.
         self.processes = processes
+        # The ID of the approval template.
         self.schema_id = schema_id
 
     def validate(self):
@@ -101,9 +105,13 @@ class ListApprovalProcessesForApprovalSchemasResponseBodySchemasProcesses(DaraMo
         process_id: str = None,
         process_name: str = None,
     ):
+        # The time when the approval flow was created.
         self.create_time = create_time
+        # The description of the approval flow.
         self.description = description
+        # The ID of the approval flow.
         self.process_id = process_id
+        # The name of the approval flow.
         self.process_name = process_name
 
     def validate(self):

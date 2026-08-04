@@ -14,9 +14,11 @@ class ListUserApplicationsResponseBody(DaraModel):
         request_id: str = None,
         total_num: int = None,
     ):
+        # The list of applications that the user is authorized to access.
         self.applications = applications
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The total number of applications that the user is authorized to access.
         self.total_num = total_num
 
     def validate(self):
@@ -71,13 +73,39 @@ class ListUserApplicationsResponseBodyApplications(DaraModel):
         port_ranges: List[main_models.ListUserApplicationsResponseBodyApplicationsPortRanges] = None,
         protocol: str = None,
     ):
+        # The action for private application access:
+        # 
+        # - **Block**: blocks access.
+        # 
+        # - **Allow**: allows access.
         self.action = action
+        # The application address group. This parameter is returned when ConfigMode is set to Precise. This parameter is empty when ConfigMode is an empty string.
         self.address_groups = address_groups
+        # The list of private access application addresses.
         self.addresses = addresses
+        # The application ID.
         self.application_id = application_id
+        # The configuration mode. Valid values:
+        # 
+        # - Empty string: default mode.
+        # 
+        # - Precise: precise mode.
         self.config_mode = config_mode
+        # The application name.
         self.name = name
+        # The port ranges of the private access application. Multiple port ranges cannot be repeated or overlap.
         self.port_ranges = port_ranges
+        # The protocol of the private access application. Valid values:
+        # 
+        # - **All**: all protocols.
+        # 
+        # - **TCP**: TCP.
+        # 
+        # - **UDP**: UDP.
+        # 
+        # - **HTTP**: HTTP.
+        # 
+        # - **HTTPS**: HTTPS.
         self.protocol = protocol
 
     def validate(self):
@@ -165,7 +193,9 @@ class ListUserApplicationsResponseBodyApplicationsPortRanges(DaraModel):
         begin: str = None,
         end: str = None,
     ):
+        # The start port.
         self.begin = begin
+        # The end port.
         self.end = end
 
     def validate(self):

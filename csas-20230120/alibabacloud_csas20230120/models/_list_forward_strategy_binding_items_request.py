@@ -12,8 +12,13 @@ class ListForwardStrategyBindingItemsRequest(DaraModel):
         forward_ids: List[str] = None,
         item_type: str = None,
     ):
+        # The forwarding rule ID.
+        # 
         # This parameter is required.
         self.forward_ids = forward_ids
+        # The binding item type. Valid values:
+        # - **Application**: internal-facing application
+        # - **UserGroup**: user group.
         self.item_type = item_type
 
     def validate(self):

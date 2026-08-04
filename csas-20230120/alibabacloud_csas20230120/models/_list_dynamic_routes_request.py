@@ -19,16 +19,41 @@ class ListDynamicRoutesRequest(DaraModel):
         status: str = None,
         tag_id: str = None,
     ):
+        # The ID of the private access application for the dynamic route. You cannot filter by both the private access application ID and the private access tag ID. You can obtain the ID from the following sources:
+        # 
+        # - [ListPrivateAccessApplications](~~ListPrivateAccessApplications~~): Queries multiple private access applications.
+        # 
+        # - [CreatePrivateAccessApplication](~~CreatePrivateAccessApplication~~): Creates a private access application.
         self.application_id = application_id
+        # The number of the page to return for a paged query. Valid values: 1 to 10000.
+        # 
         # This parameter is required.
         self.current_page = current_page
+        # The IDs of the dynamic routes. You can specify up to 100 dynamic route IDs.
         self.dynamic_route_ids = dynamic_route_ids
+        # The name of the dynamic route. The name must be 1 to 128 characters in length and can contain Chinese characters, letters, digits, periods (.), underscores (_), and hyphens (-).
         self.name = name
+        # The ID of the next hop instance for the dynamic route. You can obtain the ID from the following source:
+        # 
+        # - [ListConnectors](~~ListConnectors~~): Queries multiple connectors.
         self.next_hop = next_hop
+        # The number of entries to return on each page for a paged query. Valid values: 1 to 1000.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The list of regions where the SASE POP cluster endpoint is supported.
         self.region_ids = region_ids
+        # The status of the dynamic route. Valid values:
+        # 
+        # - **Enabled**: The dynamic route is enabled.
+        # 
+        # - **Disabled**: The dynamic route is disabled.
         self.status = status
+        # The ID of the private access tag for the dynamic route. You cannot filter by both the private access tag ID and the private access application ID. You can obtain the ID from the following sources:
+        # 
+        # - [ListPrivateAccessTags](~~ListPrivateAccessTags~~): Queries multiple private access tags.
+        # 
+        # - [CreatePrivateAccessTag](~~CreatePrivateAccessTag~~): Creates a private access tag.
         self.tag_id = tag_id
 
     def validate(self):

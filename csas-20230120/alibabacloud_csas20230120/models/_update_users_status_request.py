@@ -12,8 +12,16 @@ class UpdateUsersStatusRequest(DaraModel):
         sase_user_ids: List[str] = None,
         status: str = None,
     ):
+        # Collection of user IDs.
+        # 
         # This parameter is required.
         self.sase_user_ids = sase_user_ids
+        # User status. Valid values:
+        # 
+        # - **Enabled**: Enable the user.
+        # 
+        # - **Disabled**: Disable the user.
+        # 
         # This parameter is required.
         self.status = status
 

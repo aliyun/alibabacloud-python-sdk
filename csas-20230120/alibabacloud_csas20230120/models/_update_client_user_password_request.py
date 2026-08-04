@@ -11,8 +11,11 @@ class UpdateClientUserPasswordRequest(DaraModel):
         password: str = None,
         username: str = None,
     ):
+        # The user ID.
         self.id = id
+        # The password. If this parameter is left empty, a random password is automatically generated.
         self.password = password
+        # The username.
         self.username = username
 
     def validate(self):

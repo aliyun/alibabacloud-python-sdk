@@ -13,7 +13,9 @@ class UpdateBootAndAntiUninstallPolicyResponseBody(DaraModel):
         request_id: str = None,
         strategy: main_models.UpdateBootAndAntiUninstallPolicyResponseBodyStrategy = None,
     ):
+        # ID of this request.
         self.request_id = request_id
+        # Auto-start and anti-uninstall policy.
         self.strategy = strategy
 
     def validate(self):
@@ -58,15 +60,25 @@ class UpdateBootAndAntiUninstallPolicyResponseBodyStrategy(DaraModel):
         user_group_ids: List[str] = None,
         whitelist_users: List[str] = None,
     ):
+        # End users can submit approval requests.
         self.allow_report = allow_report
+        # Content shown in the client-side block dialog.
         self.block_content = block_content
+        # Time when the policy was created.
         self.create_time = create_time
+        # Indicates whether the anti-uninstall feature is enabled.
         self.is_anti_uninstall = is_anti_uninstall
+        # Indicates whether the auto-start feature is enabled.
         self.is_boot = is_boot
+        # Policy ID.
         self.policy_id = policy_id
+        # ID of the approval process associated with this policy.
         self.report_process_id = report_process_id
+        # Time when the policy was last updated.
         self.update_time = update_time
+        # List of user group IDs to which this policy applies.
         self.user_group_ids = user_group_ids
+        # List of whitelisted users.
         self.whitelist_users = whitelist_users
 
     def validate(self):
@@ -151,7 +163,9 @@ class UpdateBootAndAntiUninstallPolicyResponseBodyStrategyBlockContent(DaraModel
         block_text_en: main_models.UpdateBootAndAntiUninstallPolicyResponseBodyStrategyBlockContentBlockTextEn = None,
         block_text_zh: main_models.UpdateBootAndAntiUninstallPolicyResponseBodyStrategyBlockContentBlockTextZh = None,
     ):
+        # English text.
         self.block_text_en = block_text_en
+        # Chinese text.
         self.block_text_zh = block_text_zh
 
     def validate(self):
@@ -193,9 +207,13 @@ class UpdateBootAndAntiUninstallPolicyResponseBodyStrategyBlockContentBlockTextZ
         minor_button_text: str = None,
         title: str = None,
     ):
+        # Dialog content.
         self.content = content
+        # Main button text.
         self.main_button_text = main_button_text
+        # Secondary button text.
         self.minor_button_text = minor_button_text
+        # Dialog title.
         self.title = title
 
     def validate(self):
@@ -244,9 +262,13 @@ class UpdateBootAndAntiUninstallPolicyResponseBodyStrategyBlockContentBlockTextE
         minor_button_text: str = None,
         title: str = None,
     ):
+        # Dialog content.
         self.content = content
+        # Main button text.
         self.main_button_text = main_button_text
+        # Secondary button text.
         self.minor_button_text = minor_button_text
+        # Dialog title.
         self.title = title
 
     def validate(self):

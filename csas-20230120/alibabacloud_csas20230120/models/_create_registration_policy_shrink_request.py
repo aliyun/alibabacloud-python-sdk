@@ -21,21 +21,57 @@ class CreateRegistrationPolicyShrinkRequest(DaraModel):
         user_group_ids: List[str] = None,
         whitelist: List[str] = None,
     ):
+        # The restriction count for company devices.
         self.company_limit_count_shrink = company_limit_count_shrink
+        # The restriction type for company devices. Valid values:
+        # 
+        # - **Unlimited**: No restrictions.
+        # 
+        # - **LimitAll**: Limit by total count.
+        # 
+        # - **LimitDiff**: Limit by device category.
+        # 
         # This parameter is required.
         self.company_limit_type = company_limit_type
+        # A description of the device registration policy. The description must be 1 to 128 characters in length. It can contain letters, digits, periods (.), underscores (_), hyphens (-), and spaces.
         self.description = description
+        # The target type for policy matching. Valid values:
+        # 
+        # - **UserGroupAll**: Apply to all users.
+        # 
+        # - **UserGroupNormal**: Apply to selected user groups.
+        # 
         # This parameter is required.
         self.match_mode = match_mode
+        # The name of the device registration policy. The name must be 1 to 128 characters in length. It can contain letters, digits, periods (.), underscores (_), and hyphens (-).
+        # 
         # This parameter is required.
         self.name = name
+        # The restriction count for personal devices.
         self.personal_limit_count_shrink = personal_limit_count_shrink
+        # The restriction type for personal devices. Valid values:
+        # 
+        # - **Unlimited**: No restrictions.
+        # 
+        # - **LimitAll**: Limit by total count.
+        # 
+        # - **LimitDiff**: Limit by device category.
+        # 
         # This parameter is required.
         self.personal_limit_type = personal_limit_type
+        # The priority of the device registration policy. A value of 0 indicates the highest priority. A value of 99 indicates the lowest priority.
         self.priority = priority
+        # The status of the device registration policy. Valid values:
+        # 
+        # - **Enabled**: Enabled.
+        # 
+        # - **Disabled**: Disabled.
+        # 
         # This parameter is required.
         self.status = status
+        # The IDs of user groups to which the device registration policy applies. Required if MatchMode is set to **UserGroupNormal**. A maximum of 100 user groups can be specified per policy.
         self.user_group_ids = user_group_ids
+        # The list of usernames in the whitelist for the device registration policy. You can specify up to 1,000 usernames.
         self.whitelist = whitelist
 
     def validate(self):

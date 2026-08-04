@@ -14,8 +14,11 @@ class ListApprovalSchemasResponseBody(DaraModel):
         schemas: List[main_models.ListApprovalSchemasResponseBodySchemas] = None,
         total_num: str = None,
     ):
+        # The ID of this request.
         self.request_id = request_id
+        # The list of approval templates.
         self.schemas = schemas
+        # The total number of approval templates.
         self.total_num = total_num
 
     def validate(self):
@@ -70,13 +73,33 @@ class ListApprovalSchemasResponseBodySchemas(DaraModel):
         schema_name: str = None,
         schema_version: int = None,
     ):
+        # The creation time of the approval template.
         self.create_time = create_time
+        # The description of the approval template.
         self.description = description
+        # Indicates if it is an officially maintained template.
         self.is_default = is_default
+        # The policy type. Valid values:
+        # 
+        # - **DomainBlacklist**: Domain blacklist.
+        # 
+        # - **DomainWhitelist**: Domain whitelist.
+        # 
+        # - **SoftwareBlock**: Software disable.
+        # 
+        # - **AppUninstall**: Terminal uninstall.
+        # 
+        # - **DlpSend**: File outbound.
+        # 
+        # - **PeripheralBlock**: Peripheral control.
         self.policy_type = policy_type
+        # The content of the approval template.
         self.schema_content = schema_content
+        # The approval template ID.
         self.schema_id = schema_id
+        # The approval template name.
         self.schema_name = schema_name
+        # The approval template version.
         self.schema_version = schema_version
 
     def validate(self):

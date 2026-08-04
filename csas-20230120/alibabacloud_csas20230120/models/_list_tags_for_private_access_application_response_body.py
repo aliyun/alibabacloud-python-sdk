@@ -13,7 +13,9 @@ class ListTagsForPrivateAccessApplicationResponseBody(DaraModel):
         applications: List[main_models.ListTagsForPrivateAccessApplicationResponseBodyApplications] = None,
         request_id: str = None,
     ):
+        # List of private network access applications.
         self.applications = applications
+        # The ID of this request.
         self.request_id = request_id
 
     def validate(self):
@@ -56,7 +58,9 @@ class ListTagsForPrivateAccessApplicationResponseBodyApplications(DaraModel):
         application_id: str = None,
         tags: List[main_models.ListTagsForPrivateAccessApplicationResponseBodyApplicationsTags] = None,
     ):
+        # Private network access application ID.
         self.application_id = application_id
+        # Collection of private network access tags.
         self.tags = tags
 
     def validate(self):
@@ -102,10 +106,19 @@ class ListTagsForPrivateAccessApplicationResponseBodyApplicationsTags(DaraModel)
         tag_id: str = None,
         tag_type: str = None,
     ):
+        # Creation time of the private network access tag.
         self.create_time = create_time
+        # Description of the private network access tag.
         self.description = description
+        # Name of the internal network access tag.
         self.name = name
+        # Private network access tag ID.
         self.tag_id = tag_id
+        # Private network access tag type. Values:
+        # 
+        # - **Default**: Default.
+        # 
+        # - **Custom**: Custom.
         self.tag_type = tag_type
 
     def validate(self):

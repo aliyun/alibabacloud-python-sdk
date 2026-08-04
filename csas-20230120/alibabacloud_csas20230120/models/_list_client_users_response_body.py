@@ -13,7 +13,9 @@ class ListClientUsersResponseBody(DaraModel):
         data: main_models.ListClientUsersResponseBodyData = None,
         request_id: str = None,
     ):
+        # User information.
         self.data = data
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -50,7 +52,9 @@ class ListClientUsersResponseBodyData(DaraModel):
         data_list: List[main_models.ListClientUsersResponseBodyDataDataList] = None,
         total_num: int = None,
     ):
+        # List of user information.
         self.data_list = data_list
+        # Total number of records.
         self.total_num = total_num
 
     def validate(self):
@@ -101,15 +105,29 @@ class ListClientUsersResponseBodyDataDataList(DaraModel):
         user_id: str = None,
         username: str = None,
     ):
+        # Department to which the user belongs.
         self.department = department
+        # Department ID.
         self.department_id = department_id
+        # User description.
         self.description = description
+        # Email address.
         self.email = email
+        # User ID.
         self.id = id
+        # Custom identity source configuration ID.
         self.idp_config_id = idp_config_id
+        # Mobile phone number without country code.
         self.mobile_number = mobile_number
+        # User enable status. Valid values:
+        # 
+        # - **Enabled**: enabled.
+        # 
+        # - **Disabled**: disabled.
         self.status = status
+        # Unique user identifier.
         self.user_id = user_id
+        # Username.
         self.username = username
 
     def validate(self):
@@ -194,7 +212,9 @@ class ListClientUsersResponseBodyDataDataListDepartment(DaraModel):
         id: str = None,
         name: str = None,
     ):
+        # Department ID.
         self.id = id
+        # Department name.
         self.name = name
 
     def validate(self):

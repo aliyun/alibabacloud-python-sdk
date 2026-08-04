@@ -10,9 +10,11 @@ class AttachApplication2ConnectorShrinkRequest(DaraModel):
         application_ids_shrink: str = None,
         connector_id: str = None,
     ):
+        # The set of private access application IDs. The number of private access applications that can be attached to a single Connector cannot exceed the total number of private access applications.
+        # 
         # This parameter is required.
         self.application_ids_shrink = application_ids_shrink
-        # ConnectorID。
+        # The Connector ID.
         # 
         # This parameter is required.
         self.connector_id = connector_id

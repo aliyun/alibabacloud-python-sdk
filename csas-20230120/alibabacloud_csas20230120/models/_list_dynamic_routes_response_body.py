@@ -14,8 +14,11 @@ class ListDynamicRoutesResponseBody(DaraModel):
         request_id: str = None,
         total_num: int = None,
     ):
+        # The list of dynamic routes.
         self.dynamic_routes = dynamic_routes
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of dynamic routes.
         self.total_num = total_num
 
     def validate(self):
@@ -74,17 +77,39 @@ class ListDynamicRoutesResponseBodyDynamicRoutes(DaraModel):
         status: str = None,
         tag_ids: List[str] = None,
     ):
+        # The IDs of the private access applications for the dynamic route. This field has a value when the application type is **Application**.
         self.application_ids = application_ids
+        # The application type of the dynamic route. Valid values:
+        # 
+        # - **All**: All applications.
+        # 
+        # - **Application**: A specific application.
+        # 
+        # - **Tag**: A specific tag.
         self.application_type = application_type
+        # The time when the dynamic route was created.
         self.create_time = create_time
+        # The description of the dynamic route.
         self.description = description
+        # The ID of the dynamic route.
         self.dynamic_route_id = dynamic_route_id
+        # The type of the dynamic route. Valid value: **connector**, which indicates a private leased line.
         self.dynamic_route_type = dynamic_route_type
+        # The name of the dynamic route.
         self.name = name
+        # The ID of the next hop instance for the dynamic route.
         self.next_hop = next_hop
+        # The priority of the dynamic route. A value of 1 indicates the highest priority. The priority is consistent with the order in the list query results.
         self.priority = priority
+        # The list of regions where the SASE POP cluster endpoint is supported.
         self.region_ids = region_ids
+        # The status of the dynamic route. Valid values:
+        # 
+        # - **Enabled**: The dynamic route is enabled.
+        # 
+        # - **Disabled**: The dynamic route is disabled.
         self.status = status
+        # The IDs of the private access tags for the dynamic route. This field has a value when the application type is **Tag**.
         self.tag_ids = tag_ids
 
     def validate(self):

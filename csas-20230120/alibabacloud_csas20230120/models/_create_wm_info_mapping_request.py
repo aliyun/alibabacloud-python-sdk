@@ -11,9 +11,28 @@ class CreateWmInfoMappingRequest(DaraModel):
         wm_info_size: int = None,
         wm_type: str = None,
     ):
+        # The Base64-encoded string-format watermark information. Length: 1 to 300 characters.
+        # 
         # This parameter is required.
         self.wm_info_bytes_b64 = wm_info_bytes_b64
+        # The capacity bit width of the watermark information. Default is 32. This parameter must be consistent with the capacity bit width used during actual embedding or transparent image generation. Valid range: 32 to 64.
         self.wm_info_size = wm_info_size
+        # Watermark type. Valid values:
+        # - **PureWebappInvisible**: Webpage watermark.
+        # - **PureAppInvisible**: App watermark.
+        # - **PureScreenInvisible**: Screen watermark.
+        # - **PureDocument**: Document watermark.
+        # - **PureImage**: Image watermark.
+        # - **PureAudio**: Audio watermark.
+        # - **PureVideo**: Video watermark.
+        # - **AigcWebappInvisible**: AIGC webpage watermark.
+        # - **AigcAppInvisible**: AIGC App watermark.
+        # - **AigcScreenInvisible**: AIGC screen watermark.
+        # - **AigcDocument**: AIGC document watermark.
+        # - **AigcImage**: AIGC image watermark.
+        # - **AigcAudio**: AIGC audio watermark.
+        # - **AigcVideo**: AIGC video watermark.
+        # 
         # This parameter is required.
         self.wm_type = wm_type
 

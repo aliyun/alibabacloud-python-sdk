@@ -27,24 +27,55 @@ class ListApprovalsRequest(DaraModel):
         schema_name: str = None,
         statuses: List[str] = None,
     ):
+        # Collection of approval instance IDs.
         self.approval_ids = approval_ids
+        # End time when the approval instance was created, in seconds since the Unix epoch.
         self.create_end_time = create_end_time
+        # Start time when the approval instance was created, in seconds since the Unix epoch.
         self.create_start_time = create_start_time
+        # Department of the user who created the approval instance.
         self.creator_department = creator_department
+        # ID of the device used to create the approval instance.
         self.creator_dev_tag = creator_dev_tag
+        # ID of the user who created the approval instance.
         self.creator_user_id = creator_user_id
+        # Username of the user who created the approval instance.
         self.creator_username = creator_username
+        # Page number for the current page in a paged query. Valid values: 1 to 10000.
+        # 
         # This parameter is required.
         self.current_page = current_page
+        # ID of the user who performed an operation on the approval instance.
         self.operator_user_id = operator_user_id
+        # Username of the user who performed an operation on the approval instance.
         self.operator_username = operator_username
+        # Number of entries per page in a paged query. Valid values: 1 to 500.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # Policy type. Valid values:
+        # 
+        # - **DomainBlacklist**: Domain blacklist.
+        # 
+        # - **DomainWhitelist**: Domain whitelist.
+        # 
+        # - **SoftwareBlock**: Software blocking.
+        # 
+        # - **AppUninstall**: App uninstallation.
+        # 
+        # - **DlpSend**: File outbound transfer.
+        # 
+        # - **PeripheralBlock**: Peripheral control.
         self.policy_type = policy_type
+        # ID of the associated approval process.
         self.process_id = process_id
+        # Name of the associated approval process.
         self.process_name = process_name
+        # ID of the associated approval template.
         self.schema_id = schema_id
+        # Name of the associated approval template.
         self.schema_name = schema_name
+        # Collection of approval instance statuses.
         self.statuses = statuses
 
     def validate(self):

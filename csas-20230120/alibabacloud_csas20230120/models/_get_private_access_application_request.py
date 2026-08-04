@@ -9,10 +9,9 @@ class GetPrivateAccessApplicationRequest(DaraModel):
         self,
         application_id: str = None,
     ):
-        # The ID of the office application. You can obtain the value by calling the following operations:
-        # 
-        # *   [ListPrivateAccessApplications](~~ListPrivateAccessApplications~~): queries office applications.
-        # *   [CreatePrivateAccessApplication](~~CreatePrivateAccessApplication~~): creates an office application.
+        # The ID of the internal-facing access application. You can obtain the value from:
+        # - [ListPrivateAccessApplications](~~ListPrivateAccessApplications~~): Lists internal-facing access applications.
+        # - [CreatePrivateAccessApplication](~~CreatePrivateAccessApplication~~): Creates an internal-facing access application.
         # 
         # This parameter is required.
         self.application_id = application_id

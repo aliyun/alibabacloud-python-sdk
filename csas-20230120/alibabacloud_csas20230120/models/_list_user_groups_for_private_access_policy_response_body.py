@@ -13,7 +13,9 @@ class ListUserGroupsForPrivateAccessPolicyResponseBody(DaraModel):
         polices: List[main_models.ListUserGroupsForPrivateAccessPolicyResponseBodyPolices] = None,
         request_id: str = None,
     ):
+        # List of private network access policies.
         self.polices = polices
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -56,7 +58,9 @@ class ListUserGroupsForPrivateAccessPolicyResponseBodyPolices(DaraModel):
         policy_id: str = None,
         user_groups: List[main_models.ListUserGroupsForPrivateAccessPolicyResponseBodyPolicesUserGroups] = None,
     ):
+        # Private network access policy ID.
         self.policy_id = policy_id
+        # Collection of user groups for the private network access policy.
         self.user_groups = user_groups
 
     def validate(self):
@@ -102,11 +106,15 @@ class ListUserGroupsForPrivateAccessPolicyResponseBodyPolicesUserGroups(DaraMode
         name: str = None,
         user_group_id: str = None,
     ):
+        # Collection of user group properties.
         self.attributes = attributes
-        # 用户组创建时间。
+        # User group creation time.
         self.create_time = create_time
+        # User group description.
         self.description = description
+        # User group name.
         self.name = name
+        # User group ID.
         self.user_group_id = user_group_id
 
     def validate(self):
@@ -169,9 +177,33 @@ class ListUserGroupsForPrivateAccessPolicyResponseBodyPolicesUserGroupsAttribute
         user_group_type: str = None,
         value: str = None,
     ):
+        # The identity source ID of the user group. This value exists if the custom user group type is **department**.
         self.idp_id = idp_id
+        # The relationship of the user group. Values:
+        # 
+        # - **Equal**: Equal.
+        # 
+        # - **Unequal**: Unequal.
         self.relation = relation
+        # The type of the user group. Values:
+        # 
+        # - **username**: username.
+        # 
+        # - **department**: department.
+        # 
+        # - **email**: mailbox.
+        # 
+        # - **telephone**: telephone.
         self.user_group_type = user_group_type
+        # Value of the user group property.
+        # 
+        # - If the user group type is **username**, this indicates the username\\"s value. The length is 1 to 128 characters. It supports Chinese characters and uppercase and lowercase English letters. It can contain numbers, periods (.), underscores (_), and hyphens (-).
+        # 
+        # - If the user group type is **department**, this indicates the department\\"s value, such as OU=Department 1,OU=SASE DingTalk.
+        # 
+        # - If the user group type is **email**, this indicates the mailbox\\"s value, such as username\\@example.com.
+        # 
+        # - If the user group type is **telephone**, this indicates the telephone\\"s value, such as 13900001234.
         self.value = value
 
     def validate(self):

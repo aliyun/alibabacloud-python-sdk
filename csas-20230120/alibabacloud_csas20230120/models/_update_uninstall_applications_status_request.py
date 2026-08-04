@@ -12,7 +12,13 @@ class UpdateUninstallApplicationsStatusRequest(DaraModel):
         application_ids: List[str] = None,
         status: str = None,
     ):
+        # List of uninstall request IDs.
         self.application_ids = application_ids
+        # Status of the uninstall request. Valid values:
+        # 
+        # - **Approved**: Approved.
+        # 
+        # - **Rejected**: Rejected.
         self.status = status
 
     def validate(self):

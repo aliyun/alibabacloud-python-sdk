@@ -16,14 +16,27 @@ class ListClientUsersRequest(DaraModel):
         status: str = None,
         username: str = None,
     ):
+        # Current page number.
         self.current_page = current_page
+        # Department ID.
         self.department_id = department_id
+        # Email address.
         self.email = email
+        # Custom identity source configuration ID.
+        # 
         # This parameter is required.
         self.idp_config_id = idp_config_id
+        # Mobile phone number without country code.
         self.mobile_number = mobile_number
+        # Page size.
         self.page_size = page_size
+        # User enable status. Valid values:
+        # 
+        # - **Enabled**: enabled.
+        # 
+        # - **Disabled**: disabled.
         self.status = status
+        # Username.
         self.username = username
 
     def validate(self):

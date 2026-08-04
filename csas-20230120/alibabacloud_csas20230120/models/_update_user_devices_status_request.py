@@ -12,8 +12,22 @@ class UpdateUserDevicesStatusRequest(DaraModel):
         device_action: str = None,
         device_tags: List[str] = None,
     ):
+        # The action to perform on the endpoint device status. Valid values:
+        # 
+        # - **Locked**: Lock the device.
+        # 
+        # - **Lost**: Report the device as lost.
+        # 
+        # - **Unbound**: Detach the device. You can detach only offline or long-term offline devices.
+        # 
+        # - **Unlocked**: Unlock the device. You can unlock only locked devices.
+        # 
+        # - **Found**: Mark the device as found. You can mark only lost devices as found.
+        # 
         # This parameter is required.
         self.device_action = device_action
+        # A list of endpoint device IDs.
+        # 
         # This parameter is required.
         self.device_tags = device_tags
 

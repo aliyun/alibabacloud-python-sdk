@@ -13,7 +13,9 @@ class CreateRegistrationPolicyResponseBody(DaraModel):
         policy: main_models.CreateRegistrationPolicyResponseBodyPolicy = None,
         request_id: str = None,
     ):
+        # The device registration policy.
         self.policy = policy
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -58,15 +60,33 @@ class CreateRegistrationPolicyResponseBodyPolicy(DaraModel):
         user_group_ids: List[str] = None,
         whitelist: List[str] = None,
     ):
+        # The time when the device registration policy was created.
         self.create_time = create_time
+        # A description of the device registration policy.
         self.description = description
+        # The list of device registration limits.
         self.limit_detail = limit_detail
+        # The target type for policy matching. Valid values:
+        # 
+        # - **UserGroupAll**: Apply to all users.
+        # 
+        # - **UserGroupNormal**: Apply to selected user groups.
         self.match_mode = match_mode
+        # The name of the device registration policy.
         self.name = name
+        # The ID of the device registration policy.
         self.policy_id = policy_id
+        # The priority of the device registration policy. A value of 0 indicates the highest priority. A value of 99 indicates the lowest priority.
         self.priority = priority
+        # The status of the device registration policy. Valid values:
+        # 
+        # - **Enabled**: Enabled.
+        # 
+        # - **Disabled**: Disabled.
         self.status = status
+        # The IDs of user groups to which the device registration policy applies. This field has a value only when MatchMode is set to **UserGroupNormal**.
         self.user_group_ids = user_group_ids
+        # The list of usernames in the whitelist for the device registration policy.
         self.whitelist = whitelist
 
     def validate(self):
@@ -158,8 +178,21 @@ class CreateRegistrationPolicyResponseBodyPolicyLimitDetail(DaraModel):
         limit_count: main_models.CreateRegistrationPolicyResponseBodyPolicyLimitDetailLimitCount = None,
         limit_type: str = None,
     ):
+        # The ownership of the device. Valid values:
+        # 
+        # - **Company**: Company device.
+        # 
+        # - **Personal**: Personal device.
         self.device_belong = device_belong
+        # The restriction count for device registration.
         self.limit_count = limit_count
+        # The restriction type for device registration. Valid values:
+        # 
+        # - **Unlimited**: No restrictions.
+        # 
+        # - **LimitAll**: Limit by total count.
+        # 
+        # - **LimitDiff**: Limit by device category.
         self.limit_type = limit_type
 
     def validate(self):
@@ -203,8 +236,11 @@ class CreateRegistrationPolicyResponseBodyPolicyLimitDetailLimitCount(DaraModel)
         mobile: int = None,
         pc: int = None,
     ):
+        # The total restriction count for device registration. This parameter takes effect only when LimitType is set to **LimitAll**.
         self.all = all
+        # The restriction count for mobile logins. This parameter takes effect only when LimitType is set to **LimitDiff**.
         self.mobile = mobile
+        # The restriction count for PC logins. This parameter takes effect only when LimitType is set to **LimitDiff**.
         self.pc = pc
 
     def validate(self):

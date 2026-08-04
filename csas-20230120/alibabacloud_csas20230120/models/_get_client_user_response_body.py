@@ -11,7 +11,9 @@ class GetClientUserResponseBody(DaraModel):
         data: main_models.GetClientUserResponseBodyData = None,
         request_id: str = None,
     ):
+        # User details.
         self.data = data
+        # ID of this request.
         self.request_id = request_id
 
     def validate(self):
@@ -56,15 +58,29 @@ class GetClientUserResponseBodyData(DaraModel):
         user_id: str = None,
         username: str = None,
     ):
+        # Department to which the user belongs.
         self.department = department
+        # Department ID.
         self.department_id = department_id
+        # User description.
         self.description = description
+        # Email address.
         self.email = email
+        # User ID.
         self.id = id
+        # ID of the custom identity source configuration.
         self.idp_config_id = idp_config_id
+        # Mobile phone number without country code.
         self.mobile_number = mobile_number
+        # User status. Valid values:
+        # 
+        # - **Enabled**: Enabled.
+        # 
+        # - **Disabled**: Disabled.
         self.status = status
+        # Unique identifier of the user.
         self.user_id = user_id
+        # Username.
         self.username = username
 
     def validate(self):
@@ -149,7 +165,9 @@ class GetClientUserResponseBodyDataDepartment(DaraModel):
         id: str = None,
         name: str = None,
     ):
+        # Department ID.
         self.id = id
+        # Department name.
         self.name = name
 
     def validate(self):

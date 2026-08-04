@@ -15,12 +15,31 @@ class ListApprovalSchemasRequest(DaraModel):
         schema_ids: List[str] = None,
         schema_name: str = None,
     ):
+        # The current page number for paged queries. Valid values: 1 to 10000.
+        # 
         # This parameter is required.
         self.current_page = current_page
+        # The number of entries per page for paged queries. Valid values: 1 to 500.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The policy type. Valid values:
+        # 
+        # - **DomainBlacklist**: Domain blacklist.
+        # 
+        # - **DomainWhitelist**: Domain whitelist.
+        # 
+        # - **SoftwareBlock**: Software disable.
+        # 
+        # - **AppUninstall**: Terminal uninstall.
+        # 
+        # - **DlpSend**: File outbound.
+        # 
+        # - **PeripheralBlock**: Peripheral control.
         self.policy_type = policy_type
+        # Collection of approval template IDs.
         self.schema_ids = schema_ids
+        # The template name. It can be 1 to 128 characters long. It supports Chinese characters, uppercase and lowercase English letters, numbers, periods (.), underscores (_), and hyphens (-).
         self.schema_name = schema_name
 
     def validate(self):

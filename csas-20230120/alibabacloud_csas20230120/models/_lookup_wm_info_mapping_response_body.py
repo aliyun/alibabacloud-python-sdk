@@ -11,7 +11,9 @@ class LookupWmInfoMappingResponseBody(DaraModel):
         data: main_models.LookupWmInfoMappingResponseBodyData = None,
         request_id: str = None,
     ):
+        # Query result of the mapping.
         self.data = data
+        # The ID of this request.
         self.request_id = request_id
 
     def validate(self):
@@ -47,6 +49,9 @@ class LookupWmInfoMappingResponseBodyData(DaraModel):
         self,
         wm_info_bytes_b64: str = None,
     ):
+        # String-formatted watermark information obtained from the mapping lookup. Value source:
+        # 
+        # - [CreateWmInfoMapping](~~CreateWmInfoMapping~~): The **WmInfoBytesB64** parameter from the CreateWmInfoMapping API.
         self.wm_info_bytes_b64 = wm_info_bytes_b64
 
     def validate(self):

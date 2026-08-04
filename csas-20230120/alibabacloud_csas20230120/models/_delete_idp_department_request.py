@@ -10,8 +10,12 @@ class DeleteIdpDepartmentRequest(DaraModel):
         department_id: str = None,
         idp_config_id: str = None,
     ):
+        # ID of the department.
+        # 
         # This parameter is required.
         self.department_id = department_id
+        # ID of the custom identity provider configuration.
+        # 
         # This parameter is required.
         self.idp_config_id = idp_config_id
 

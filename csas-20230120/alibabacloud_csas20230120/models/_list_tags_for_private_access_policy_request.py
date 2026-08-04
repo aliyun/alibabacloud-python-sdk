@@ -11,6 +11,8 @@ class ListTagsForPrivateAccessPolicyRequest(DaraModel):
         self,
         policy_ids: List[str] = None,
     ):
+        # IDs of internal network access policies. You can specify up to 100 policy IDs.
+        # 
         # This parameter is required.
         self.policy_ids = policy_ids
 

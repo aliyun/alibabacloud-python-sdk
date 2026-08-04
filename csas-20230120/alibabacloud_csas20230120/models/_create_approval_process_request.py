@@ -15,10 +15,16 @@ class CreateApprovalProcessRequest(DaraModel):
         process_name: str = None,
         process_nodes: List[List[str]] = None,
     ):
+        # The description of the approval process. The description must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), hyphens (-), and spaces. Chinese characters are supported.
         self.description = description
+        # The matched approval templates.
         self.match_schemas = match_schemas
+        # The process name. The name must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). Chinese characters are supported.
+        # 
         # This parameter is required.
         self.process_name = process_name
+        # The list of approval nodes. You can define up to 5 approval nodes.
+        # 
         # This parameter is required.
         self.process_nodes = process_nodes
 
@@ -72,16 +78,25 @@ class CreateApprovalProcessRequestMatchSchemas(DaraModel):
         domain_whitelist_schema_id: str = None,
         endpoint_hardening_schema_id: str = None,
         peripheral_block_schema_id: str = None,
+        private_access_block_schema_id: str = None,
         software_block_schema_id: str = None,
         software_hardening_schema_id: str = None,
     ):
+        # The ID of the device uninstall approval template.
         self.app_uninstall_schema_id = app_uninstall_schema_id
+        # The ID of the device registration approval template.
         self.device_registration_schema_id = device_registration_schema_id
+        # The ID of the file outbound transfer approval template.
         self.dlp_send_schema_id = dlp_send_schema_id
+        # The ID of the domain name blacklist approval template.
         self.domain_blacklist_schema_id = domain_blacklist_schema_id
+        # The ID of the domain name whitelist approval template.
         self.domain_whitelist_schema_id = domain_whitelist_schema_id
         self.endpoint_hardening_schema_id = endpoint_hardening_schema_id
+        # The ID of the peripheral control approval template.
         self.peripheral_block_schema_id = peripheral_block_schema_id
+        self.private_access_block_schema_id = private_access_block_schema_id
+        # The ID of the software blocking approval template.
         self.software_block_schema_id = software_block_schema_id
         self.software_hardening_schema_id = software_hardening_schema_id
 
@@ -114,6 +129,9 @@ class CreateApprovalProcessRequestMatchSchemas(DaraModel):
         if self.peripheral_block_schema_id is not None:
             result['PeripheralBlockSchemaId'] = self.peripheral_block_schema_id
 
+        if self.private_access_block_schema_id is not None:
+            result['PrivateAccessBlockSchemaId'] = self.private_access_block_schema_id
+
         if self.software_block_schema_id is not None:
             result['SoftwareBlockSchemaId'] = self.software_block_schema_id
 
@@ -144,6 +162,9 @@ class CreateApprovalProcessRequestMatchSchemas(DaraModel):
 
         if m.get('PeripheralBlockSchemaId') is not None:
             self.peripheral_block_schema_id = m.get('PeripheralBlockSchemaId')
+
+        if m.get('PrivateAccessBlockSchemaId') is not None:
+            self.private_access_block_schema_id = m.get('PrivateAccessBlockSchemaId')
 
         if m.get('SoftwareBlockSchemaId') is not None:
             self.software_block_schema_id = m.get('SoftwareBlockSchemaId')

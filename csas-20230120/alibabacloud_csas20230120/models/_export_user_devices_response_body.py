@@ -10,7 +10,9 @@ class ExportUserDevicesResponseBody(DaraModel):
         request_id: str = None,
         signed_url: str = None,
     ):
+        # ID of this request.
         self.request_id = request_id
+        # URL to download the file. The URL expires in one minute.
         self.signed_url = signed_url
 
     def validate(self):

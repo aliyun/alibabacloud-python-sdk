@@ -13,7 +13,9 @@ class ListPolicesForPrivateAccessApplicationResponseBody(DaraModel):
         applications: List[main_models.ListPolicesForPrivateAccessApplicationResponseBodyApplications] = None,
         request_id: str = None,
     ):
+        # The list of private access applications.
         self.applications = applications
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -56,7 +58,9 @@ class ListPolicesForPrivateAccessApplicationResponseBodyApplications(DaraModel):
         application_id: str = None,
         policies: List[main_models.ListPolicesForPrivateAccessApplicationResponseBodyApplicationsPolicies] = None,
     ):
+        # The ID of the private access application.
         self.application_id = application_id
+        # The collection of private access policies.
         self.policies = policies
 
     def validate(self):
@@ -107,15 +111,41 @@ class ListPolicesForPrivateAccessApplicationResponseBodyApplicationsPolicies(Dar
         status: str = None,
         user_group_type: str = None,
     ):
+        # The application type of the private access policy. Valid values:
+        # 
+        # - **Application**: Application.
+        # 
+        # - **Tag**: Tag.
         self.application_type = application_type
+        # The time when the private access policy was created.
         self.create_time = create_time
+        # The collection of custom user group attributes. If you specify multiple attributes, the relationship between them is OR.
         self.custom_user_attributes = custom_user_attributes
+        # The description of the private access policy.
         self.description = description
+        # The name of the private access policy.
         self.name = name
+        # The action of the private access policy. Valid values:
+        # 
+        # - **Block**: Blocks access.
+        # 
+        # - **Allow**: Allows access.
         self.policy_action = policy_action
+        # The ID of the private access policy.
         self.policy_id = policy_id
+        # The priority of the private access policy. The value 1 indicates the highest priority.
         self.priority = priority
+        # The status of the private access policy. Valid values:
+        # 
+        # - **Enabled**: The policy is enabled.
+        # 
+        # - **Disabled**: The policy is disabled.
         self.status = status
+        # The user group type of the private access policy. Valid values:
+        # 
+        # - **Normal**: Regular user group.
+        # 
+        # - **Custom**: Custom user group.
         self.user_group_type = user_group_type
 
     def validate(self):
@@ -208,9 +238,33 @@ class ListPolicesForPrivateAccessApplicationResponseBodyApplicationsPoliciesCust
         user_group_type: str = None,
         value: str = None,
     ):
+        # The ID of the identity provider (IdP) for the user group. This parameter is returned when the custom user group type is **department**.
         self.idp_id = idp_id
+        # The relationship of the user group. Valid values:
+        # 
+        # - **Equal**: Equal to.
+        # 
+        # - **Unequal**: Not equal to.
         self.relation = relation
+        # The type of the user group. Valid values:
+        # 
+        # - **username**: Username.
+        # 
+        # - **department**: Department.
+        # 
+        # - **email**: Email.
+        # 
+        # - **telephone**: Mobile number.
         self.user_group_type = user_group_type
+        # The value of the user group attribute.
+        # 
+        # - If the user group type is **username**, this parameter specifies the value of the username. The value can be 1 to 128 characters in length and can contain Chinese characters, letters, digits, periods (.), underscores (_), and hyphens (-).
+        # 
+        # - If the user group type is **department**, this parameter specifies the value of the department. Example: OU=Department 1,OU=SASE DingTalk.
+        # 
+        # - If the user group type is **email**, this parameter specifies the value of the email address. Example: username\\@example.com.
+        # 
+        # - If the user group type is **telephone**, this parameter specifies the value of the mobile number. Example: 13900001234.
         self.value = value
 
     def validate(self):

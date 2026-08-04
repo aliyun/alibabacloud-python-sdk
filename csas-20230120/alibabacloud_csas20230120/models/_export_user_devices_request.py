@@ -25,20 +25,43 @@ class ExportUserDevicesRequest(DaraModel):
         sharing_status: bool = None,
         username: str = None,
     ):
+        # Collection of client statuses.
         self.app_statuses = app_statuses
+        # Department name. Must be 1 to 128 characters long. Supports Chinese, uppercase and lowercase letters, digits, periods (.), commas (,), semicolons (;), hyphens (-), underscores (_), forward slashes (/), at signs (@), and spaces.
         self.department = department
+        # Terminal device ownership. Valid values:
+        # 
+        # - **Personal**: Personal device.
+        # 
+        # - **Company**: Company device.
         self.device_belong = device_belong
+        # Collection of terminal device statuses.
         self.device_statuses = device_statuses
+        # Collection of terminal device IDs.
         self.device_tags = device_tags
+        # Collection of terminal device operating system types.
         self.device_types = device_types
+        # Collection of office data protection statuses.
         self.dlp_statuses = dlp_statuses
+        # Terminal device name. Must be 1 to 128 characters long. Supports Chinese, uppercase and lowercase letters, digits, periods (.), commas (,), semicolons (;), hyphens (-), underscores (_), forward slashes (/), at signs (@), and spaces. If you enter only an underscore (_), the system returns all terminal devices whose names contain four-byte UTF-8 characters.
         self.hostname = hostname
+        # Collection of Internet access statuses.
         self.ia_statuses = ia_statuses
+        # MAC address of the terminal device.
         self.mac = mac
+        # Collection of network admission statuses.
         self.nac_statuses = nac_statuses
+        # Collection of private network access statuses.
         self.pa_statuses = pa_statuses
+        # User ID.
         self.sase_user_id = sase_user_id
+        # Whether device sharing is enabled. Valid values:
+        # 
+        # - **true**: Sharing is enabled.
+        # 
+        # - **false**: Sharing is disabled.
         self.sharing_status = sharing_status
+        # Username. Must be 1 to 128 characters long. Supports Chinese, uppercase and lowercase letters, digits, periods (.), underscores (_), hyphens (-), asterisks (\\*), at signs (@), and spaces.
         self.username = username
 
     def validate(self):

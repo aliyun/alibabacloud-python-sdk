@@ -14,8 +14,11 @@ class ListUsersResponseBody(DaraModel):
         total_num: str = None,
         users: List[main_models.ListUsersResponseBodyUsers] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The total number of users.
         self.total_num = total_num
+        # An array of user objects.
         self.users = users
 
     def validate(self):
@@ -70,13 +73,21 @@ class ListUsersResponseBodyUsers(DaraModel):
         status: str = None,
         username: str = None,
     ):
+        # The user\\"s department.
         self.department = department
+        # The user\\"s email address.
         self.email = email
+        # A list of full department paths.
         self.full_department = full_department
+        # The name of the Identity Provider (IdP).
         self.idp_name = idp_name
+        # The user\\"s phone number.
         self.phone = phone
+        # The user ID.
         self.sase_user_id = sase_user_id
+        # The user status.
         self.status = status
+        # The username.
         self.username = username
 
     def validate(self):

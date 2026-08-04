@@ -22,18 +22,47 @@ class UpdateDynamicRouteRequest(DaraModel):
         status: str = None,
         tag_ids: List[str] = None,
     ):
+        # A collection of private network access application IDs for the dynamic route. You can specify up to 200 IDs. This parameter is required when **ApplicationType** is set to **Application**. Specify either this parameter or **TagIds**, but not both. Do not specify this parameter when **ApplicationType** is set to **All**.
         self.application_ids = application_ids
+        # The application type of the dynamic route. Valid values:
+        # 
+        # - **All**: All applications.
+        # 
+        # - **Application**: Application.
+        # 
+        # - **Tag**: Tag.
         self.application_type = application_type
+        # The description of the dynamic route. The description must be 1 to 128 characters long and can contain letters, digits, periods (.), underscores (_), hyphens (-), and spaces.
         self.description = description
+        # The ID of the dynamic route.
+        # 
         # This parameter is required.
         self.dynamic_route_id = dynamic_route_id
+        # The type of the dynamic route. Valid value: **connector**: leased line.
         self.dynamic_route_type = dynamic_route_type
+        # The modification type of the dynamic route. Valid values:
+        # 
+        # - **Cover** (default): Use the values of **RegionIds**, **ApplicationIds**, and **TagIds** to overwrite the existing regions, private network access application IDs, and private network access tag IDs supported by the SASE POP cluster access points.
+        # 
+        # - **Append**: Add the values specified in **RegionIds**, **ApplicationIds**, and **TagIds** to the existing regions, private network access application IDs, and private network access tag IDs supported by the SASE POP cluster access points.
         self.modify_type = modify_type
+        # The name of the dynamic route. The name must be 1 to 128 characters long and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
         self.name = name
+        # The next hop instance ID of the dynamic route. To get valid values, see:
+        # 
+        # - [ListConnectors](~~ListConnectors~~): Query connectors in bulk.
         self.next_hop = next_hop
+        # The route priority. A value of 1 indicates the highest priority. Valid values: 1 to 99.
         self.priority = priority
+        # A list of regions supported by the SASE POP cluster access points.
         self.region_ids = region_ids
+        # The status of the dynamic route. Valid values:
+        # 
+        # - **Enabled**: Enable the route.
+        # 
+        # - **Disabled**: Disable the route.
         self.status = status
+        # A collection of private network access tag IDs for the dynamic route. You can specify up to 40 IDs. This parameter is required when **ApplicationType** is set to **Tag**. Specify either this parameter or **ApplicationIds**, but not both. Do not specify this parameter when **ApplicationType** is set to **All**.
         self.tag_ids = tag_ids
 
     def validate(self):

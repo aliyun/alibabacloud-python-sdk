@@ -11,8 +11,11 @@ class ListPopTrafficStatisticsRequest(DaraModel):
         region: str = None,
         start_time: str = None,
     ):
+        # The end time for the data. This is a UNIX timestamp in seconds.
         self.end_time = end_time
+        # The region ID.
         self.region = region
+        # The start time for the data. This is a UNIX timestamp in seconds.
         self.start_time = start_time
 
     def validate(self):

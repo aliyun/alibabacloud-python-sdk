@@ -9,6 +9,8 @@ class GetUserDeviceRequest(DaraModel):
         self,
         device_tag: str = None,
     ):
+        # The ID of the endpoint device. Valid values:
+        # 
         # This parameter is required.
         self.device_tag = device_tag
 

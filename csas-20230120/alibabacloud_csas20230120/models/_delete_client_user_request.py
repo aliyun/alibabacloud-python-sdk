@@ -9,6 +9,8 @@ class DeleteClientUserRequest(DaraModel):
         self,
         id: str = None,
     ):
+        # The ID of the user to delete.
+        # 
         # This parameter is required.
         self.id = id
 

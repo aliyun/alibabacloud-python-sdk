@@ -2,6 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from ._aiusage_limit_policy import AIUsageLimitPolicy
 from ._address_group import AddressGroup
 from ._auth_report_interval import AuthReportInterval
 from ._common_config import CommonConfig
@@ -27,6 +28,7 @@ from ._open_struct_idp_wuying_sub_config import OpenStructIdpWuyingSubConfig
 from ._open_struct_sase_department import OpenStructSaseDepartment
 from ._open_struct_sase_user import OpenStructSaseUser
 from ._open_struct_sase_user_simple import OpenStructSaseUserSimple
+from ._paapplication_unauthorized_access_config import PAApplicationUnauthorizedAccessConfig
 from ._pal7config import PAL7Config
 from ._pal7config_replace_rule import PAL7ConfigReplaceRule
 from ._pal7config_rewrite_op import PAL7ConfigRewriteOp
@@ -412,6 +414,9 @@ from ._execute_period import ExecutePeriodScheduleEffect
 from ._idp_sync_config import IdpSyncConfigIdpDepartmentInfos
 from ._open_struct_sase_user import OpenStructSaseUserUserTags
 from ._open_struct_sase_user_simple import OpenStructSaseUserSimpleDepartments
+from ._paapplication_unauthorized_access_config import PAApplicationUnauthorizedAccessConfigBlockContentBlockTextEn
+from ._paapplication_unauthorized_access_config import PAApplicationUnauthorizedAccessConfigBlockContentBlockTextZh
+from ._paapplication_unauthorized_access_config import PAApplicationUnauthorizedAccessConfigBlockContent
 from ._pal7config import PAL7ConfigBypassConfigUrlBypassRules
 from ._pal7config import PAL7ConfigBypassConfig
 from ._pal7config import PAL7ConfigDnsConfig
@@ -428,6 +433,7 @@ from ._create_approval_process_response_body import CreateApprovalProcessRespons
 from ._create_approval_process_response_body import CreateApprovalProcessResponseBodyProcessDomainWhitelistPolicies
 from ._create_approval_process_response_body import CreateApprovalProcessResponseBodyProcessEndpointHardeningPolicies
 from ._create_approval_process_response_body import CreateApprovalProcessResponseBodyProcessPeripheralBlockPolicies
+from ._create_approval_process_response_body import CreateApprovalProcessResponseBodyProcessPrivateAccessBlockPolicies
 from ._create_approval_process_response_body import CreateApprovalProcessResponseBodyProcessProcessNodes
 from ._create_approval_process_response_body import CreateApprovalProcessResponseBodyProcessSoftwareBlockPolicies
 from ._create_approval_process_response_body import CreateApprovalProcessResponseBodyProcessSoftwareHardeningPolicies
@@ -491,6 +497,8 @@ from ._get_approval_process_response_body import GetApprovalProcessResponseBodyP
 from ._get_approval_process_response_body import GetApprovalProcessResponseBodyProcessEndpointHardeningPolicies
 from ._get_approval_process_response_body import GetApprovalProcessResponseBodyProcessPeripheralBlockPoliciesFieldMap
 from ._get_approval_process_response_body import GetApprovalProcessResponseBodyProcessPeripheralBlockPolicies
+from ._get_approval_process_response_body import GetApprovalProcessResponseBodyProcessPrivateAccessBlockPoliciesFieldMap
+from ._get_approval_process_response_body import GetApprovalProcessResponseBodyProcessPrivateAccessBlockPolicies
 from ._get_approval_process_response_body import GetApprovalProcessResponseBodyProcessProcessNodes
 from ._get_approval_process_response_body import GetApprovalProcessResponseBodyProcessSoftwareBlockPoliciesFieldMap
 from ._get_approval_process_response_body import GetApprovalProcessResponseBodyProcessSoftwareBlockPolicies
@@ -551,6 +559,7 @@ from ._list_approval_processes_response_body import ListApprovalProcessesRespons
 from ._list_approval_processes_response_body import ListApprovalProcessesResponseBodyProcessesDomainWhitelistPolicies
 from ._list_approval_processes_response_body import ListApprovalProcessesResponseBodyProcessesEndpointHardeningPolicies
 from ._list_approval_processes_response_body import ListApprovalProcessesResponseBodyProcessesPeripheralBlockPolicies
+from ._list_approval_processes_response_body import ListApprovalProcessesResponseBodyProcessesPrivateAccessBlockPolicies
 from ._list_approval_processes_response_body import ListApprovalProcessesResponseBodyProcessesProcessNodes
 from ._list_approval_processes_response_body import ListApprovalProcessesResponseBodyProcessesSoftwareBlockPolicies
 from ._list_approval_processes_response_body import ListApprovalProcessesResponseBodyProcessesSoftwareHardeningPolicies
@@ -648,6 +657,8 @@ from ._update_approval_process_request import UpdateApprovalProcessRequestMatchS
 from ._update_approval_process_request import UpdateApprovalProcessRequestMatchSchemaConfigsEndpointHardeningSchemaConfig
 from ._update_approval_process_request import UpdateApprovalProcessRequestMatchSchemaConfigsPeripheralBlockSchemaConfigFieldMap
 from ._update_approval_process_request import UpdateApprovalProcessRequestMatchSchemaConfigsPeripheralBlockSchemaConfig
+from ._update_approval_process_request import UpdateApprovalProcessRequestMatchSchemaConfigsPrivateAccessBlockSchemaConfigFieldMap
+from ._update_approval_process_request import UpdateApprovalProcessRequestMatchSchemaConfigsPrivateAccessBlockSchemaConfig
 from ._update_approval_process_request import UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareBlockSchemaConfigFieldMap
 from ._update_approval_process_request import UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareBlockSchemaConfig
 from ._update_approval_process_request import UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareHardeningSchemaConfigFieldMap
@@ -668,6 +679,8 @@ from ._update_approval_process_response_body import UpdateApprovalProcessRespons
 from ._update_approval_process_response_body import UpdateApprovalProcessResponseBodyProcessEndpointHardeningPolicies
 from ._update_approval_process_response_body import UpdateApprovalProcessResponseBodyProcessPeripheraBlockPoliciesFieldMap
 from ._update_approval_process_response_body import UpdateApprovalProcessResponseBodyProcessPeripheraBlockPolicies
+from ._update_approval_process_response_body import UpdateApprovalProcessResponseBodyProcessPrivateAccessBlockPoliciesFieldMap
+from ._update_approval_process_response_body import UpdateApprovalProcessResponseBodyProcessPrivateAccessBlockPolicies
 from ._update_approval_process_response_body import UpdateApprovalProcessResponseBodyProcessProcessNodes
 from ._update_approval_process_response_body import UpdateApprovalProcessResponseBodyProcessSoftwareBlockPoliciesFieldMap
 from ._update_approval_process_response_body import UpdateApprovalProcessResponseBodyProcessSoftwareBlockPolicies
@@ -702,6 +715,7 @@ from ._update_user_devices_status_response_body import UpdateUserDevicesStatusRe
 from ._update_user_group_request import UpdateUserGroupRequestAttributes
 
 __all__ = [
+    AIUsageLimitPolicy,
     AddressGroup,
     AuthReportInterval,
     CommonConfig,
@@ -727,6 +741,7 @@ __all__ = [
     OpenStructSaseDepartment,
     OpenStructSaseUser,
     OpenStructSaseUserSimple,
+    PAApplicationUnauthorizedAccessConfig,
     PAL7Config,
     PAL7ConfigReplaceRule,
     PAL7ConfigRewriteOp,
@@ -1112,6 +1127,9 @@ __all__ = [
     IdpSyncConfigIdpDepartmentInfos,
     OpenStructSaseUserUserTags,
     OpenStructSaseUserSimpleDepartments,
+    PAApplicationUnauthorizedAccessConfigBlockContentBlockTextEn,
+    PAApplicationUnauthorizedAccessConfigBlockContentBlockTextZh,
+    PAApplicationUnauthorizedAccessConfigBlockContent,
     PAL7ConfigBypassConfigUrlBypassRules,
     PAL7ConfigBypassConfig,
     PAL7ConfigDnsConfig,
@@ -1128,6 +1146,7 @@ __all__ = [
     CreateApprovalProcessResponseBodyProcessDomainWhitelistPolicies,
     CreateApprovalProcessResponseBodyProcessEndpointHardeningPolicies,
     CreateApprovalProcessResponseBodyProcessPeripheralBlockPolicies,
+    CreateApprovalProcessResponseBodyProcessPrivateAccessBlockPolicies,
     CreateApprovalProcessResponseBodyProcessProcessNodes,
     CreateApprovalProcessResponseBodyProcessSoftwareBlockPolicies,
     CreateApprovalProcessResponseBodyProcessSoftwareHardeningPolicies,
@@ -1191,6 +1210,8 @@ __all__ = [
     GetApprovalProcessResponseBodyProcessEndpointHardeningPolicies,
     GetApprovalProcessResponseBodyProcessPeripheralBlockPoliciesFieldMap,
     GetApprovalProcessResponseBodyProcessPeripheralBlockPolicies,
+    GetApprovalProcessResponseBodyProcessPrivateAccessBlockPoliciesFieldMap,
+    GetApprovalProcessResponseBodyProcessPrivateAccessBlockPolicies,
     GetApprovalProcessResponseBodyProcessProcessNodes,
     GetApprovalProcessResponseBodyProcessSoftwareBlockPoliciesFieldMap,
     GetApprovalProcessResponseBodyProcessSoftwareBlockPolicies,
@@ -1251,6 +1272,7 @@ __all__ = [
     ListApprovalProcessesResponseBodyProcessesDomainWhitelistPolicies,
     ListApprovalProcessesResponseBodyProcessesEndpointHardeningPolicies,
     ListApprovalProcessesResponseBodyProcessesPeripheralBlockPolicies,
+    ListApprovalProcessesResponseBodyProcessesPrivateAccessBlockPolicies,
     ListApprovalProcessesResponseBodyProcessesProcessNodes,
     ListApprovalProcessesResponseBodyProcessesSoftwareBlockPolicies,
     ListApprovalProcessesResponseBodyProcessesSoftwareHardeningPolicies,
@@ -1348,6 +1370,8 @@ __all__ = [
     UpdateApprovalProcessRequestMatchSchemaConfigsEndpointHardeningSchemaConfig,
     UpdateApprovalProcessRequestMatchSchemaConfigsPeripheralBlockSchemaConfigFieldMap,
     UpdateApprovalProcessRequestMatchSchemaConfigsPeripheralBlockSchemaConfig,
+    UpdateApprovalProcessRequestMatchSchemaConfigsPrivateAccessBlockSchemaConfigFieldMap,
+    UpdateApprovalProcessRequestMatchSchemaConfigsPrivateAccessBlockSchemaConfig,
     UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareBlockSchemaConfigFieldMap,
     UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareBlockSchemaConfig,
     UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareHardeningSchemaConfigFieldMap,
@@ -1368,6 +1392,8 @@ __all__ = [
     UpdateApprovalProcessResponseBodyProcessEndpointHardeningPolicies,
     UpdateApprovalProcessResponseBodyProcessPeripheraBlockPoliciesFieldMap,
     UpdateApprovalProcessResponseBodyProcessPeripheraBlockPolicies,
+    UpdateApprovalProcessResponseBodyProcessPrivateAccessBlockPoliciesFieldMap,
+    UpdateApprovalProcessResponseBodyProcessPrivateAccessBlockPolicies,
     UpdateApprovalProcessResponseBodyProcessProcessNodes,
     UpdateApprovalProcessResponseBodyProcessSoftwareBlockPoliciesFieldMap,
     UpdateApprovalProcessResponseBodyProcessSoftwareBlockPolicies,

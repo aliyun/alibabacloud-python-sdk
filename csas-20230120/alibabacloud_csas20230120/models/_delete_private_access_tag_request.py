@@ -9,6 +9,10 @@ class DeletePrivateAccessTagRequest(DaraModel):
         self,
         tag_id: str = None,
     ):
+        # The ID of the internal access tag. You can obtain the value from the following operations:
+        # - [ListPrivateAccessTags](~~ListPrivateAccessTags~~): Lists internal access tags.
+        # - [CreatePrivateAccessTag](~~CreatePrivateAccessTag~~): Creates an internal access tag.
+        # 
         # This parameter is required.
         self.tag_id = tag_id
 

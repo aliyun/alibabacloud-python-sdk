@@ -13,7 +13,9 @@ class AddressGroup(DaraModel):
         addresses: List[str] = None,
         ports: List[main_models.AddressGroupPorts] = None,
     ):
+        # Address list.
         self.addresses = addresses
+        # Port list.
         self.ports = ports
 
     def validate(self):
@@ -58,7 +60,9 @@ class AddressGroupPorts(DaraModel):
         begin: int = None,
         end: int = None,
     ):
+        # Start port. Must be less than or equal to the end port.
         self.begin = begin
+        # End port. Must be greater than or equal to the start port.
         self.end = end
 
     def validate(self):

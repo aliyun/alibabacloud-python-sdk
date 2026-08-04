@@ -12,8 +12,16 @@ class UpdateExcessiveDeviceRegistrationApplicationsStatusRequest(DaraModel):
         application_ids: List[str] = None,
         status: str = None,
     ):
+        # List of IDs for device registration applications that exceed your quota.
+        # 
         # This parameter is required.
         self.application_ids = application_ids
+        # Status of the device registration application. Valid values:
+        # 
+        # - **Approved**: Approve the application. You can approve only applications with a Pending status.
+        # 
+        # - **Rejected**: Reject the application. You can reject only applications with a Pending status.
+        # 
         # This parameter is required.
         self.status = status
 

@@ -9,6 +9,10 @@ class GetWmExtractTaskRequest(DaraModel):
         self,
         task_id: str = None,
     ):
+        # The ID of the extraction task. You can obtain the task ID by calling the [CreateWmExtractTask](~~CreateWmExtractTask~~) operation.
+        # 
+        # - [CreateWmExtractTask](~~CreateWmExtractTask~~): Create a watermark extraction task.
+        # 
         # This parameter is required.
         self.task_id = task_id
 

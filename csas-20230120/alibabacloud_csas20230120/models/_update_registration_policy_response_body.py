@@ -13,7 +13,9 @@ class UpdateRegistrationPolicyResponseBody(DaraModel):
         policy: main_models.UpdateRegistrationPolicyResponseBodyPolicy = None,
         request_id: str = None,
     ):
+        # The device registration policy.
         self.policy = policy
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -58,15 +60,33 @@ class UpdateRegistrationPolicyResponseBodyPolicy(DaraModel):
         user_group_ids: List[str] = None,
         whitelist: List[str] = None,
     ):
+        # The time when the device registration policy was created.
         self.create_time = create_time
+        # The description of the device registration policy.
         self.description = description
+        # The list of limit details for the device registration policy.
         self.limit_detail = limit_detail
+        # The matching target type of the policy. Valid values:
+        # 
+        # - **UserGroupAll**: Associates with all users.
+        # 
+        # - **UserGroupNormal**: Associates with specific user groups.
         self.match_mode = match_mode
+        # The name of the device registration policy.
         self.name = name
+        # The ID of the device registration policy.
         self.policy_id = policy_id
+        # The priority of the device registration policy. A smaller value indicates a higher priority. The value 0 indicates the highest priority, and 99 indicates the lowest priority.
         self.priority = priority
+        # The status of the device registration policy. Valid values:
+        # 
+        # - **Enabled**
+        # 
+        # - **Disabled**
         self.status = status
+        # The collection of user group IDs for the device registration policy. This field has a value when the policy target type is **UserGroupNormal**.
         self.user_group_ids = user_group_ids
+        # The list of whitelisted users for the device registration policy.
         self.whitelist = whitelist
 
     def validate(self):
@@ -158,8 +178,21 @@ class UpdateRegistrationPolicyResponseBodyPolicyLimitDetail(DaraModel):
         limit_count: main_models.UpdateRegistrationPolicyResponseBodyPolicyLimitDetailLimitCount = None,
         limit_type: str = None,
     ):
+        # The owner of the device. Valid values:
+        # 
+        # - **Company**: Corporate device.
+        # 
+        # - **Personal**: Personal device.
         self.device_belong = device_belong
+        # The registration limit count.
         self.limit_count = limit_count
+        # The registration limit type. Valid values:
+        # 
+        # - **Unlimited**: No limit.
+        # 
+        # - **LimitAll**: Limits the total number of devices.
+        # 
+        # - **LimitDiff**: Limits devices by terminal type.
         self.limit_type = limit_type
 
     def validate(self):
@@ -203,8 +236,11 @@ class UpdateRegistrationPolicyResponseBodyPolicyLimitDetailLimitCount(DaraModel)
         mobile: int = None,
         pc: int = None,
     ):
+        # The total number of devices that can be registered. This parameter is valid only when LimitType is set to **LimitAll**.
         self.all = all
+        # The number of mobile devices that can be registered. This parameter is valid only when LimitType is set to **LimitDiff**.
         self.mobile = mobile
+        # The number of PCs that can be registered. This parameter is valid only when LimitType is set to **LimitDiff**.
         self.pc = pc
 
     def validate(self):

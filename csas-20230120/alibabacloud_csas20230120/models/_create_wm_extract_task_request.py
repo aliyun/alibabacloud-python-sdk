@@ -34,7 +34,12 @@ class CreateWmExtractTaskRequest(DaraModel):
         # 
         # This parameter is required.
         self.filename = filename
+        # Image extraction parameters
         self.image_extract_params_open_api = image_extract_params_open_api
+        # Audio watermark parameter: specifies whether the watermark was embedded by the client SDK. Default value: false. Valid values:  
+        # 
+        # - **true**: Yes  
+        # - **false**: No
         self.is_client_embed = is_client_embed
         # The watermark parameter for videos that specifies whether to use the long video watermark SDK. Default value: false. Valid values:
         # 
@@ -149,6 +154,7 @@ class CreateWmExtractTaskRequestImageExtractParamsOpenApi(DaraModel):
         self,
         src_logo_base_64: str = None,
     ):
+        # Enhanced visible watermark logo in base64 format. Used to extract the enhanced visible watermark.
         self.src_logo_base_64 = src_logo_base_64
 
     def validate(self):

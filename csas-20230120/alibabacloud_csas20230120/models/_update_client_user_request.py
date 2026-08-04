@@ -13,11 +13,17 @@ class UpdateClientUserRequest(DaraModel):
         id: str = None,
         mobile_number: str = None,
     ):
+        # Department ID.
         self.department_id = department_id
+        # User description.
         self.description = description
+        # Email address.
         self.email = email
+        # User ID.
+        # 
         # This parameter is required.
         self.id = id
+        # Mobile phone number without country code.
         self.mobile_number = mobile_number
 
     def validate(self):

@@ -16,13 +16,35 @@ class ListNacUserCertRequest(DaraModel):
         status: str = None,
         username: str = None,
     ):
+        # Page number of the current page in a paged query. Valid values: 1 to 10000.
         self.current_page = current_page
+        # Department that the user belongs to. The value must be 1 to 128 characters in length. It can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), commas (,), semicolons (;), hyphens (-), underscores (_), forward slashes (/), at signs (@), and spaces.
         self.department = department
+        # Operating system type of the endpoint device. Valid values:
+        # 
+        # - **windows**: Windows.
+        # 
+        # - **macos**: macOS.
+        # 
+        # - **linux**: Linux.
+        # 
+        # - **android**: Android.
+        # 
+        # - **ios**: iOS.
         self.device_type = device_type
+        # End time.
         self.end_time = end_time
+        # Number of entries per page for a paged query. Valid values: 1 to 1000.
         self.page_size = page_size
+        # Start time.
         self.start_time = start_time
+        # Certificate status. Valid values:
+        # 
+        # - **Enabled**: Enabled.
+        # 
+        # - **Disabled**: Disabled.
         self.status = status
+        # Username.
         self.username = username
 
     def validate(self):

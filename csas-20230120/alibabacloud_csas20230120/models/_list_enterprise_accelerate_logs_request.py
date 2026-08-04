@@ -16,15 +16,29 @@ class ListEnterpriseAccelerateLogsRequest(DaraModel):
         start_time: int = None,
         username: str = None,
     ):
+        # The current page number displayed during paged queries. Value range: 1 to 10000.
         self.current_page = current_page
+        # Department.
         self.department = department
+        # Endpoint.
         self.dst_addr = dst_addr
+        # End time, UNIX timestamp, in seconds.
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # The number of items per page for paged queries. Value range: 1 to 1000.
         self.page_size = page_size
+        # Query mode. Only the DstAddr field supports the following modes:
+        # 
+        # - **Exact**: Term query
+        # 
+        # - **Fuzzy**: Fuzzy query
         self.search_mode = search_mode
+        # Start time, UNIX timestamp, in seconds.
+        # 
         # This parameter is required.
         self.start_time = start_time
+        # Username.
         self.username = username
 
     def validate(self):

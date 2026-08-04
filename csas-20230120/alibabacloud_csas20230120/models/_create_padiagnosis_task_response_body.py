@@ -11,6 +11,7 @@ class CreatePADiagnosisTaskResponseBody(DaraModel):
         diagnosis_task: main_models.CreatePADiagnosisTaskResponseBodyDiagnosisTask = None,
         request_id: str = None,
     ):
+        # The diagnostic task.
         self.diagnosis_task = diagnosis_task
         # Id of the request
         self.request_id = request_id
@@ -59,17 +60,39 @@ class CreatePADiagnosisTaskResponseBodyDiagnosisTask(DaraModel):
         user_group: main_models.CreatePADiagnosisTaskResponseBodyDiagnosisTaskUserGroup = None,
         username: str = None,
     ):
+        # The ID of the terminal device.
         self.dev_tag = dev_tag
+        # The diagnostic task ID.
         self.diagnose_id = diagnose_id
+        # The diagnosis type. Valid values:
+        # 
+        # - FullLink: full-link diagnosis.
+        # - Application: application diagnosis.
         self.diagnose_type = diagnose_type
+        # The address to diagnose.
         self.host = host
+        # The POP point ID. This parameter is required when manual selection is used.
         self.pop_id = pop_id
+        # The POP point selection mode. Valid values:
+        # - **AutoSelect**: automatic selection.
+        # - **ManualSelect**: manual selection.
         self.pop_mode = pop_mode
+        # The port.
         self.port = port
+        # The protocol used by the internal network access application. Valid values:
+        # - **TCP**
+        # - **UDP**.
         self.protocol = protocol
+        # The task running status. Valid values:
+        # - **Running**: The task is running.
+        # - **Finished**: The task is complete.
+        # - **Failed**: The task failed.
         self.status = status
+        # The extra information for UDP diagnosis.
         self.udp_extra_configs = udp_extra_configs
+        # The user group.
         self.user_group = user_group
+        # The username.
         self.username = username
 
     def validate(self):
@@ -169,7 +192,9 @@ class CreatePADiagnosisTaskResponseBodyDiagnosisTaskUserGroup(DaraModel):
         user_group_id: str = None,
         user_group_name: str = None,
     ):
+        # The user group ID.
         self.user_group_id = user_group_id
+        # The user group name.
         self.user_group_name = user_group_name
 
     def validate(self):
@@ -204,7 +229,9 @@ class CreatePADiagnosisTaskResponseBodyDiagnosisTaskUdpExtraConfigs(DaraModel):
         expected_response: str = None,
         request_content: str = None,
     ):
+        # The expected response from the backend server.
         self.expected_response = expected_response
+        # The UDP request content.
         self.request_content = request_content
 
     def validate(self):

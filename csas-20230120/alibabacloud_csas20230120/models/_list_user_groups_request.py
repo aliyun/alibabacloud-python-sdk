@@ -16,14 +16,25 @@ class ListUserGroupsRequest(DaraModel):
         page_size: int = None,
         user_group_ids: List[str] = None,
     ):
+        # The value of a user group property. The value must be 1 to 128 characters in length.
         self.attribute_value = attribute_value
+        # The page number of the current page in a paged query. Valid values: 1 to 10000.
+        # 
         # This parameter is required.
         self.current_page = current_page
-        # 用户组名称。长度为1~128个字符，支持中文和大小写英文字母，可包含数字、半角句号（.）、下划线（_）和短划线（-）。
+        # The name of the user group. The name must be 1 to 128 characters in length. It can contain letters, digits, periods (.), underscores (_), and hyphens (-). It supports both uppercase and lowercase letters and Chinese characters.
         self.name = name
+        # The ID of an internal network access policy. You can get this value from:
+        # 
+        # - [ListPrivateAccessPolices](~~ListPrivateAccessPolices~~): List internal network access policies.
+        # 
+        # - [CreatePrivateAccessPolicy](~~CreatePrivateAccessPolicy~~): Create an internal network access policy.
         self.papolicy_id = papolicy_id
+        # The number of entries per page in a paged query. Valid values: 1 to 1000.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # A collection of user group IDs. You can specify up to 100 IDs.
         self.user_group_ids = user_group_ids
 
     def validate(self):

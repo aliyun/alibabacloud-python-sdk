@@ -11,8 +11,11 @@ class ListIdpConfigsRequest(DaraModel):
         include: str = None,
         page_size: int = None,
     ):
+        # Current page number.
         self.current_page = current_page
+        # Specified IdP configuration types. Separate multiple types with a comma (,).
         self.include = include
+        # Page size.
         self.page_size = page_size
 
     def validate(self):

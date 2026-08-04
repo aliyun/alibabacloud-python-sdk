@@ -14,8 +14,11 @@ class ListEnterpriseAccelerateLogsResponseBody(DaraModel):
         request_id: str = None,
         total_number: int = None,
     ):
+        # List of logs.
         self.logs = logs
+        # The ID of this request.
         self.request_id = request_id
+        # Total number of logs.
         self.total_number = total_number
 
     def validate(self):
@@ -71,14 +74,23 @@ class ListEnterpriseAccelerateLogsResponseBodyLogs(DaraModel):
         unix_time: str = None,
         username: str = None,
     ):
+        # Department.
         self.department = department
+        # Device type.
         self.device_type = device_type
+        # Destination endpoint.
         self.dst_addr = dst_addr
+        # Inbound traffic, in bytes.
         self.in_bytes = in_bytes
+        # Outbound traffic, in bytes.
         self.out_bytes = out_bytes
+        # Enterprise acceleration policy name.
         self.policy_name = policy_name
+        # Enterprise acceleration instance address.
         self.proxy_addr = proxy_addr
+        # Time.
         self.unix_time = unix_time
+        # Username.
         self.username = username
 
     def validate(self):

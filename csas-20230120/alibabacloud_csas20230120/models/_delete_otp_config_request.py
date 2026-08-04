@@ -9,6 +9,7 @@ class DeleteOtpConfigRequest(DaraModel):
         self,
         username: str = None,
     ):
+        # The username.
         self.username = username
 
     def validate(self):

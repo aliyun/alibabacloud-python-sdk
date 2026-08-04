@@ -13,7 +13,9 @@ class ListRegistrationPoliciesForUserGroupResponseBody(DaraModel):
         request_id: str = None,
         user_groups: List[main_models.ListRegistrationPoliciesForUserGroupResponseBodyUserGroups] = None,
     ):
+        # The ID of this request.
         self.request_id = request_id
+        # The list of user groups.
         self.user_groups = user_groups
 
     def validate(self):
@@ -56,7 +58,9 @@ class ListRegistrationPoliciesForUserGroupResponseBodyUserGroups(DaraModel):
         policies: List[main_models.ListRegistrationPoliciesForUserGroupResponseBodyUserGroupsPolicies] = None,
         user_group_id: str = None,
     ):
+        # The collection of device registration policies.
         self.policies = policies
+        # The user group ID.
         self.user_group_id = user_group_id
 
     def validate(self):
@@ -106,14 +110,31 @@ class ListRegistrationPoliciesForUserGroupResponseBodyUserGroupsPolicies(DaraMod
         status: str = None,
         whitelist: List[str] = None,
     ):
+        # The time when the device registration policy was created.
         self.create_time = create_time
+        # The description of the device registration policy.
         self.description = description
+        # The list of device registration policy limit details.
         self.limit_detail = limit_detail
+        # The target type for policy matching. Valid values:
+        # 
+        # - **UserGroupAll**: Associate with all users.
+        # 
+        # - **UserGroupNormal**: Associate with specific user groups.
         self.match_mode = match_mode
+        # The name of the device registration policy.
         self.name = name
+        # The ID of the device registration policy.
         self.policy_id = policy_id
+        # The policy priority. The number 0 indicates the highest priority. The number 99 indicates the lowest priority.
         self.priority = priority
+        # The status of the device registration policy. Valid values:
+        # 
+        # - **Enabled**: Enabled.
+        # 
+        # - **Disabled**: Disabled.
         self.status = status
+        # The list of users on the device registration policy whitelist.
         self.whitelist = whitelist
 
     def validate(self):
@@ -199,8 +220,21 @@ class ListRegistrationPoliciesForUserGroupResponseBodyUserGroupsPoliciesLimitDet
         limit_count: main_models.ListRegistrationPoliciesForUserGroupResponseBodyUserGroupsPoliciesLimitDetailLimitCount = None,
         limit_type: str = None,
     ):
+        # Device ownership. Valid values:
+        # 
+        # - **Company**: Company-owned device.
+        # 
+        # - **Personal**: Personal device.
         self.device_belong = device_belong
+        # The number of allowed device registrations.
         self.limit_count = limit_count
+        # The device registration limit type. Valid values:
+        # 
+        # - **Unlimited**: No limit.
+        # 
+        # - **LimitAll**: Limit by total count.
+        # 
+        # - **LimitDiff**: Limit by device category.
         self.limit_type = limit_type
 
     def validate(self):
@@ -244,8 +278,11 @@ class ListRegistrationPoliciesForUserGroupResponseBodyUserGroupsPoliciesLimitDet
         mobile: str = None,
         pc: str = None,
     ):
+        # The total number of allowed device registrations. This field is valid only when LimitType is set to **LimitAll**.
         self.all = all
+        # The number of allowed mobile logons. This field is valid only when LimitType is set to **LimitDiff**.
         self.mobile = mobile
+        # The number of allowed PC logons. This field is valid only when LimitType is set to **LimitDiff**.
         self.pc = pc
 
     def validate(self):

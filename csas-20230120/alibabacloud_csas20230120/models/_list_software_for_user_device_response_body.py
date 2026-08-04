@@ -14,8 +14,11 @@ class ListSoftwareForUserDeviceResponseBody(DaraModel):
         software: List[main_models.ListSoftwareForUserDeviceResponseBodySoftware] = None,
         total_num: int = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # A list of software applications.
         self.software = software
+        # The total number of software applications.
         self.total_num = total_num
 
     def validate(self):
@@ -66,9 +69,13 @@ class ListSoftwareForUserDeviceResponseBodySoftware(DaraModel):
         name: str = None,
         versions: List[str] = None,
     ):
+        # The publisher of the software.
         self.inc = inc
+        # The time when the software was installed.
         self.install_time = install_time
+        # The name of the software.
         self.name = name
+        # The versions of the software.
         self.versions = versions
 
     def validate(self):

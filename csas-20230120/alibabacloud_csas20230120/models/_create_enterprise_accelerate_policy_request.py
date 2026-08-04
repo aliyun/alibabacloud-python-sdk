@@ -17,17 +17,40 @@ class CreateEnterpriseAcceleratePolicyRequest(DaraModel):
         upstream_type: str = None,
         user_attribute_group: str = None,
     ):
+        # Acceleration pattern:
+        # 
+        # - **whitelist**: Whitelist acceleration
+        # 
+        # - **global**: Global acceleration
+        # 
+        # - **build-in-list**: Built-in application acceleration
         self.acceleration_type = acceleration_type
+        # Policy description. Length: 1 to 512 characters.
         self.description = description
+        # Policy Name.
         self.name = name
+        # Priority.
         self.priority = priority
+        # Whether to display this policy in the client:
+        # 
+        # - **0**: Do not display
+        # 
+        # - **1**: Display
         self.show_in_client = show_in_client
+        # The IP address or domain name of the acceleration instance.
+        # 
         # This parameter is required.
         self.upstream_host = upstream_host
+        # Port for the accelerated instance. The port must be between 1000 and 60000.
+        # 
         # This parameter is required.
         self.upstream_port = upstream_port
+        # Accelerated instance.
+        # 
         # This parameter is required.
         self.upstream_type = upstream_type
+        # User group for acceleration.
+        # 
         # This parameter is required.
         self.user_attribute_group = user_attribute_group
 

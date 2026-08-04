@@ -14,8 +14,11 @@ class ListUserDevicesResponseBody(DaraModel):
         request_id: str = None,
         total_num: int = None,
     ):
+        # The list of endpoint devices.
         self.devices = devices
+        # The request ID.
         self.request_id = request_id
+        # The total number of endpoint devices.
         self.total_num = total_num
 
     def validate(self):
@@ -66,8 +69,14 @@ class ListUserDevicesResponseBodyDevices(DaraModel):
         auto_login_status: str = None,
         cpu: str = None,
         city: str = None,
+        city_en: str = None,
+        city_zh: str = None,
         continent: str = None,
+        continent_en: str = None,
+        continent_zh: str = None,
         country: str = None,
+        country_en: str = None,
+        country_zh: str = None,
         create_time: str = None,
         department: str = None,
         device_belong: str = None,
@@ -91,6 +100,8 @@ class ListUserDevicesResponseBodyDevices(DaraModel):
         net_interface_info: List[main_models.ListUserDevicesResponseBodyDevicesNetInterfaceInfo] = None,
         pa_status: str = None,
         province: str = None,
+        province_en: str = None,
+        province_zh: str = None,
         sase_user_id: str = None,
         sharing_status: bool = None,
         sn_base_board: str = None,
@@ -103,46 +114,132 @@ class ListUserDevicesResponseBodyDevices(DaraModel):
         username: str = None,
         workshop: str = None,
     ):
+        # The client status. Valid values:
+        # - **Online**: online.
+        # - **Offline**: offline.
         self.app_status = app_status
+        # The client version.
         self.app_version = app_version
+        # The auto-logon status of the client.
         self.auto_login_status = auto_login_status
+        # The CPU model of the endpoint device.
         self.cpu = cpu
         self.city = city
+        # The city name in English.
+        self.city_en = city_en
+        # The city name in Chinese.
+        self.city_zh = city_zh
         self.continent = continent
+        # The continent name in English.
+        self.continent_en = continent_en
+        # The continent name in Chinese.
+        self.continent_zh = continent_zh
         self.country = country
+        # The country name in English.
+        self.country_en = country_en
+        # The country name in Chinese.
+        self.country_zh = country_zh
+        # The registration time of the endpoint device.
         self.create_time = create_time
+        # The department to which the user belongs.
         self.department = department
+        # The ownership of the endpoint device. Valid values:
+        # - **Personal**: personal device.
+        # - **Company**: company device.
         self.device_belong = device_belong
+        # The model of the endpoint device.
         self.device_model = device_model
+        # The status of the endpoint device. Valid values:
+        # - **Online**: online.
+        # - **Offline**: offline.
+        # - **LongTermOffline**: long-term offline.
+        # - **Locked**: locked.
+        # - **Lost**: reported as lost.
+        # - **Unbound**: unbound.
         self.device_status = device_status
+        # The endpoint device ID.
         self.device_tag = device_tag
+        # The operating system type of the endpoint device. Valid values:
+        # - **Windows**: Windows.
+        # - **macOS**: macOS.
+        # - **Linux**: Linux.
+        # - **Android**: Android.
+        # - **iOS**: iOS.
+        # - **Windows_Wuying**: WUYING Workspace.
         self.device_type = device_type
+        # The operating system version of the endpoint device.
         self.device_version = device_version
+        # The disk model of the endpoint device.
         self.disk = disk
+        # The office data protection status. Valid values:
+        # - **Enabled**: enabled.
+        # - **Disabled**: disabled.
+        # - **Unprovisioned**: not configured.
+        # - **Unauthorized**: unauthorized.
         self.dlp_status = dlp_status
+        # The anti-intrusion status. Valid values:
+        # - **Enabled**: enabled.
+        # - **Disabled**: disabled.
         self.edr_status = edr_status
+        # The list of full department paths.
         self.full_department = full_department
+        # The name of the endpoint device.
         self.hostname = hostname
+        # The Internet access status. Valid values:
+        # - **Enabled**: enabled.
+        # - **Disabled**: disabled.
+        # - **Unprovisioned**: not configured.
         self.ia_status = ia_status
+        # The internal IP address of the endpoint device.
         self.inner_ip = inner_ip
+        # Indicates whether the device is joined to an Active Directory (AD) domain.
         self.join_ad_domain = join_ad_domain
+        # The MAC address of the endpoint device.
         self.mac = mac
+        # The collection of matched device group IDs.
         self.match_device_group_ids = match_device_group_ids
+        # The memory capacity of the endpoint device. Unit: GB.
         self.memory = memory
+        # The network access control status. Valid values:
+        # - **Enabled**: enabled.
+        # - **Disabled**: disabled.
+        # - **Unprovisioned**: not configured.
         self.nac_status = nac_status
+        # The list of network interfaces of the endpoint device.
         self.net_interface_info = net_interface_info
+        # The private access status. Valid values:
+        # - **Enabled**: enabled.
+        # - **Disabled**: disabled.
+        # - **Unprovisioned**: not configured.
         self.pa_status = pa_status
         self.province = province
+        # The province name in English.
+        self.province_en = province_en
+        # The province name in Chinese.
+        self.province_zh = province_zh
+        # The user ID.
         self.sase_user_id = sase_user_id
+        # Specifies whether sharing is enabled for the device. Valid values:
+        # - **true**: Sharing is enabled.
+        # - **false**: Sharing is disabled.
         self.sharing_status = sharing_status
+        # The motherboard serial number.
         self.sn_base_board = sn_base_board
+        # The BIOS system serial number.
         self.sn_bios = sn_bios
+        # The hard disk serial number.
         self.sn_disk_drive = sn_disk_drive
+        # The processor serial number.
         self.sn_processor = sn_processor
+        # The system serial number.
         self.sn_system = sn_system
+        # The logon IP address of the endpoint device.
         self.src_ip = src_ip
+        # The last online time of the endpoint device.
         self.update_time = update_time
+        # The username.
         self.username = username
+        # The name of the office area.
         self.workshop = workshop
 
     def validate(self):
@@ -171,11 +268,29 @@ class ListUserDevicesResponseBodyDevices(DaraModel):
         if self.city is not None:
             result['City'] = self.city
 
+        if self.city_en is not None:
+            result['CityEn'] = self.city_en
+
+        if self.city_zh is not None:
+            result['CityZh'] = self.city_zh
+
         if self.continent is not None:
             result['Continent'] = self.continent
 
+        if self.continent_en is not None:
+            result['ContinentEn'] = self.continent_en
+
+        if self.continent_zh is not None:
+            result['ContinentZh'] = self.continent_zh
+
         if self.country is not None:
             result['Country'] = self.country
+
+        if self.country_en is not None:
+            result['CountryEn'] = self.country_en
+
+        if self.country_zh is not None:
+            result['CountryZh'] = self.country_zh
 
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
@@ -248,6 +363,12 @@ class ListUserDevicesResponseBodyDevices(DaraModel):
         if self.province is not None:
             result['Province'] = self.province
 
+        if self.province_en is not None:
+            result['ProvinceEn'] = self.province_en
+
+        if self.province_zh is not None:
+            result['ProvinceZh'] = self.province_zh
+
         if self.sase_user_id is not None:
             result['SaseUserId'] = self.sase_user_id
 
@@ -300,11 +421,29 @@ class ListUserDevicesResponseBodyDevices(DaraModel):
         if m.get('City') is not None:
             self.city = m.get('City')
 
+        if m.get('CityEn') is not None:
+            self.city_en = m.get('CityEn')
+
+        if m.get('CityZh') is not None:
+            self.city_zh = m.get('CityZh')
+
         if m.get('Continent') is not None:
             self.continent = m.get('Continent')
 
+        if m.get('ContinentEn') is not None:
+            self.continent_en = m.get('ContinentEn')
+
+        if m.get('ContinentZh') is not None:
+            self.continent_zh = m.get('ContinentZh')
+
         if m.get('Country') is not None:
             self.country = m.get('Country')
+
+        if m.get('CountryEn') is not None:
+            self.country_en = m.get('CountryEn')
+
+        if m.get('CountryZh') is not None:
+            self.country_zh = m.get('CountryZh')
 
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
@@ -378,6 +517,12 @@ class ListUserDevicesResponseBodyDevices(DaraModel):
         if m.get('Province') is not None:
             self.province = m.get('Province')
 
+        if m.get('ProvinceEn') is not None:
+            self.province_en = m.get('ProvinceEn')
+
+        if m.get('ProvinceZh') is not None:
+            self.province_zh = m.get('ProvinceZh')
+
         if m.get('SaseUserId') is not None:
             self.sase_user_id = m.get('SaseUserId')
 
@@ -419,7 +564,9 @@ class ListUserDevicesResponseBodyDevicesNetInterfaceInfo(DaraModel):
         mac: str = None,
         name: str = None,
     ):
+        # The MAC address of the network interface.
         self.mac = mac
+        # The name of the network interface.
         self.name = name
 
     def validate(self):

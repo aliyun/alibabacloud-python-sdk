@@ -24,23 +24,64 @@ class CreateWmEmbedTaskShrinkRequest(DaraModel):
         wm_info_uint: str = None,
         wm_type: str = None,
     ):
+        # Audio control parameters.
         self.audio_control_shrink = audio_control_shrink
+        # CSV watermark embedding control parameters.
         self.csv_control_shrink = csv_control_shrink
+        # Document watermark control parameters.
         self.document_control_shrink = document_control_shrink
+        # URL for downloading the file to embed. The URL must support public network access.
+        # 
         # This parameter is required.
         self.file_url = file_url
+        # The filename of the file to embed. The backend validates the file type based on the filename extension.
+        # 
         # This parameter is required.
         self.filename = filename
+        # Image watermark control parameters.
         self.image_control_shrink = image_control_shrink
+        # Image watermark parameter: the desired JPEG compression quality factor for the output image. Default value is 95. Valid range: 1 to 100.
         self.image_embed_jpeg_quality = image_embed_jpeg_quality
+        # Image watermark parameter: A higher value indicates greater robustness but reduced visual quality. Default value: 2. Valid values: 0 to 4.
         self.image_embed_level = image_embed_level
+        # Specifies whether to enable invisible watermark embedding. Default value: true.  
+        # Valid values:  
+        # - **true**: Yes  
+        # - **false**: No
         self.invisible_enable = invisible_enable
+        # Short video watermark parameter: specifies the video bitrate. By default, the video bitrate is automatically retrieved. You can use this parameter to explicitly specify the bitrate used during extraction. This parameter usually does not need to be set.
         self.video_bitrate = video_bitrate
+        # Video control parameters.
         self.video_control_shrink = video_control_shrink
+        # Video watermark parameter: whether to use the long-video watermark software development kit (SDK). The default value is false. Valid values:
+        # 
+        # - **true**: Yes
+        # - **false**: No
         self.video_is_long = video_is_long
+        # Base64-encoded string-formatted watermark information. If this value is set, WmInfoUint cannot be set.
         self.wm_info_bytes_b64 = wm_info_bytes_b64
+        # The bit width of the watermark information. The default value is 32. This parameter must be consistent between embedding and extraction. For example, if a 40-bit software development kit (SDK) is used for embedding, this value must also be set to 40 during extraction.
         self.wm_info_size = wm_info_size
+        # Watermark information in decimal numeric format. If this parameter is set, WmInfoBytesB64 cannot be set.  
+        # 
+        # The valid value range depends on the WmInfoSize parameter:  
+        # 
+        # - When WmInfoSize is 32, the value range is 1 to 4294967295.  
+        # 
+        # - When WmInfoSize is 40, the value range is 1 to 1099511627775.  
+        # 
+        # - When WmInfoSize is 64, the value range is 1 to 18446744073709551615.
         self.wm_info_uint = wm_info_uint
+        # Watermark type. Valid values:  
+        # - **PureDocument**: Document watermark.  
+        # - **PureImage**: Image watermark.  
+        # - **PureAudio**: Audio watermark.  
+        # - **PureVideo**: Video watermark.  
+        # - **AigcDocument**: AIGC document watermark.  
+        # - **AigcImage**: AIGC image watermark.  
+        # - **AigcAudio**: AIGC audio watermark.  
+        # - **AigcVideo**: AIGC video watermark.
+        # 
         # This parameter is required.
         self.wm_type = wm_type
 

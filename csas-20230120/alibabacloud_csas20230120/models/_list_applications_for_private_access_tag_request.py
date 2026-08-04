@@ -11,6 +11,8 @@ class ListApplicationsForPrivateAccessTagRequest(DaraModel):
         self,
         tag_ids: List[str] = None,
     ):
+        # A collection of private network access tag IDs. You can specify up to 100 tag IDs.
+        # 
         # This parameter is required.
         self.tag_ids = tag_ids
 

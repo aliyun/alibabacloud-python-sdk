@@ -11,7 +11,9 @@ class GetIdpConfigResponseBody(DaraModel):
         data: main_models.GetIdpConfigResponseBodyData = None,
         request_id: str = None,
     ):
+        # Identity provider configuration.
         self.data = data
+        # ID of this request.
         self.request_id = request_id
 
     def validate(self):
@@ -64,25 +66,45 @@ class GetIdpConfigResponseBodyData(DaraModel):
         verify_token: str = None,
         verify_url: str = None,
     ):
-        # AccessKey ID
+        # AccessKey ID for the IDaaS identity provider.
         self.access_key = access_key
-        # AccessKey Secret
+        # AccessKey for the IDaaS identity provider.
         self.access_key_secret = access_key_secret
+        # Description of the identity provider configuration.
         self.description = description
+        # URL to query the organizational structure from a custom identity provider.
         self.get_group_url = get_group_url
+        # ID of the identity provider configuration.
         self.id = id
+        # Metadata of the identity provider (IdP).
         self.idp_metadata = idp_metadata
+        # Type of multi-factor authentication (MFA) configuration.
         self.mfa_config_type = mfa_config_type
+        # Login type for mobile clients.
         self.mobile_login_type = mobile_login_type
+        # Type of MFA configuration for mobile clients.
         self.mobile_mfa_config_type = mobile_mfa_config_type
+        # List of IDs for multiple identity providers.
         self.multi_idp_info = multi_idp_info
+        # Name of the identity provider configuration.
         self.name = name
+        # Login type for PC clients.
         self.pc_login_type = pc_login_type
+        # Status of the identity provider configuration. Valid values:
+        # 
+        # - **Enabled**: Enabled.
+        # 
+        # - **Disabled**: Disabled.
         self.status = status
+        # Type of the identity provider configuration.
         self.type = type
+        # Time when the configuration was last updated.
         self.update_time = update_time
+        # AES key used to encrypt requests to a custom MFA service.
         self.verify_aes_key = verify_aes_key
+        # Token used to verify signatures in requests to a custom MFA service.
         self.verify_token = verify_token
+        # URL used to verify one-time passwords with a custom MFA service.
         self.verify_url = verify_url
 
     def validate(self):

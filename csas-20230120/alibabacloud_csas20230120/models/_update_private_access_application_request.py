@@ -25,49 +25,47 @@ class UpdatePrivateAccessApplicationRequest(DaraModel):
         protocol: str = None,
         status: str = None,
         tag_ids: List[str] = None,
+        unauthorized_access_config: main_models.PAApplicationUnauthorizedAccessConfig = None,
     ):
         self.address_groups = address_groups
-        # The addresses of the office applications. You can enter up to 1,000 addresses of office applications.
+        # The addresses of the internal-facing access application. You can specify up to 1000 addresses.
         self.addresses = addresses
-        # The ID of the office application. You can obtain the value by calling the following operations:
-        # 
-        # *   [ListPrivateAccessApplications](~~ListPrivateAccessApplications~~): queries office applications.
-        # *   [CreatePrivateAccessApplication](~~CreatePrivateAccessApplication~~): creates an office application.
+        # The ID of the internal-facing access application. You can obtain the value from the following operations:
+        # - [ListPrivateAccessApplications](~~ListPrivateAccessApplications~~): lists internal-facing access applications.
+        # - [CreatePrivateAccessApplication](~~CreatePrivateAccessApplication~~): creates an internal-facing access application.
         # 
         # This parameter is required.
         self.application_id = application_id
         self.config_mode = config_mode
-        # The description of the office application. The value must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), hyphens (-), and spaces.
+        # The description of the internal-facing access application. The description must be 1 to 128 characters in length and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), underscores (_), hyphens (-), and spaces.
         self.description = description
-        # The browser access mode parameter. The parameter specifies the configurations of Layer 7 applications.
+        # The browser access mode parameter: the Layer 7 application configuration.
         self.l_7config = l_7config
-        # The browser access mode parameter. The parameter specifies the prefix of the domain name that the proxy gateway uses. The prefix must be 3 to 20 characters in length, and can contain lowercase letters, digits, and hyphens (-).
+        # The browser access mode parameter: the prefix of the mapped proxy domain name. The prefix must be 3 to 20 characters in length and can contain lowercase letters, digits, and hyphens (-).
         self.l_7proxy_domain_automatic_prefix = l_7proxy_domain_automatic_prefix
-        # The browser access mode parameter. The parameter specifies the custom domain name of the proxy gateway.
+        # The browser access mode parameter: the custom proxy domain name.
         self.l_7proxy_domain_custom = l_7proxy_domain_custom
-        # 浏览器访问模式参数：私有代理域名。
+        # The browser access mode parameter: the private proxy domain name.
         self.l_7proxy_domain_private = l_7proxy_domain_private
-        # The modification type of the office application. Valid values:
-        # 
-        # *   **Cover**: uses the values of the **Addresses**, **PortRanges**, and **TagIds** parameters to overwrite the original addresses, port ranges, and tag IDs. This is the default value.
-        # *   **Append**: adds the values of the **Addresses**, **PortRanges**, and **TagIds** parameters respectively to the original addresses, port ranges, and tag IDs.
+        # The modification type of the internal-facing access application. Valid values:
+        # - **Cover** (default): overwrites the original addresses, port ranges, and tag IDs with the values of the **Addresses**, **PortRanges**, and **TagIds** parameters.
+        # - **Append**: adds the values of the **Addresses**, **PortRanges**, and **TagIds** parameters to the original addresses, port ranges, and tag IDs.
         self.modify_type = modify_type
         self.name = name
-        # The port ranges of the office applications. You can enter up to 65,535 port ranges. Multiple port ranges cannot be duplicated or overlapped.
+        # The port ranges of the internal-facing access application. You can specify up to 65535 port ranges. Multiple port ranges cannot be duplicate or overlap.
         self.port_ranges = port_ranges
-        # The protocol that is used by the office application. Valid values:
-        # 
-        # *   **All**
-        # *   **TCP**
-        # *   **UDP**
+        # The protocol of the internal-facing access application. Valid values:
+        # - **All**: all protocols.
+        # - **TCP**
+        # - **UDP**
         self.protocol = protocol
-        # The status of the office application. Valid values:
-        # 
-        # *   **Enabled**
-        # *   **Disabled**
+        # The status of the internal-facing access application. Valid values:
+        # - **Enabled**: enabled.
+        # - **Disabled**: disabled.
         self.status = status
-        # The IDs of the tags for the office applications. You can add up to six custom tags to an office application.
+        # The IDs of internal-facing access tags. You can associate up to 6 custom internal-facing access tags with each internal-facing access application.
         self.tag_ids = tag_ids
+        self.unauthorized_access_config = unauthorized_access_config
 
     def validate(self):
         if self.address_groups:
@@ -80,6 +78,8 @@ class UpdatePrivateAccessApplicationRequest(DaraModel):
             for v1 in self.port_ranges:
                  if v1:
                     v1.validate()
+        if self.unauthorized_access_config:
+            self.unauthorized_access_config.validate()
 
     def to_map(self):
         result = dict()
@@ -134,6 +134,9 @@ class UpdatePrivateAccessApplicationRequest(DaraModel):
 
         if self.tag_ids is not None:
             result['TagIds'] = self.tag_ids
+
+        if self.unauthorized_access_config is not None:
+            result['UnauthorizedAccessConfig'] = self.unauthorized_access_config.to_map()
 
         return result
 
@@ -191,6 +194,10 @@ class UpdatePrivateAccessApplicationRequest(DaraModel):
         if m.get('TagIds') is not None:
             self.tag_ids = m.get('TagIds')
 
+        if m.get('UnauthorizedAccessConfig') is not None:
+            temp_model = main_models.PAApplicationUnauthorizedAccessConfig()
+            self.unauthorized_access_config = temp_model.from_map(m.get('UnauthorizedAccessConfig'))
+
         return self
 
 class UpdatePrivateAccessApplicationRequestPortRanges(DaraModel):
@@ -199,9 +206,9 @@ class UpdatePrivateAccessApplicationRequestPortRanges(DaraModel):
         begin: int = None,
         end: int = None,
     ):
-        # The start port. The start port must be less than or equal to the end port.
+        # The start port. The value must be less than or equal to the end port.
         self.begin = begin
-        # The end port. The end port must be greater than or equal to the start port.
+        # The end port. The value must be greater than or equal to the start port.
         self.end = end
 
     def validate(self):

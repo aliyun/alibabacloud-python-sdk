@@ -11,10 +11,16 @@ class UpdateIdpDepartmentRequest(DaraModel):
         department_name: str = None,
         idp_config_id: str = None,
     ):
+        # The department ID.
+        # 
         # This parameter is required.
         self.department_id = department_id
+        # The department name.
+        # 
         # This parameter is required.
         self.department_name = department_name
+        # The ID of the custom identity source configuration.
+        # 
         # This parameter is required.
         self.idp_config_id = idp_config_id
 

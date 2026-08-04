@@ -13,7 +13,9 @@ class ListTagsForPrivateAccessPolicyResponseBody(DaraModel):
         polices: List[main_models.ListTagsForPrivateAccessPolicyResponseBodyPolices] = None,
         request_id: str = None,
     ):
+        # List of internal network access policies.
         self.polices = polices
+        # ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -56,7 +58,9 @@ class ListTagsForPrivateAccessPolicyResponseBodyPolices(DaraModel):
         policy_id: str = None,
         tags: List[main_models.ListTagsForPrivateAccessPolicyResponseBodyPolicesTags] = None,
     ):
+        # ID of the internal network access policy.
         self.policy_id = policy_id
+        # Tags for the internal network access policy.
         self.tags = tags
 
     def validate(self):
@@ -102,11 +106,19 @@ class ListTagsForPrivateAccessPolicyResponseBodyPolicesTags(DaraModel):
         tag_id: str = None,
         tag_type: str = None,
     ):
-        # 内网访问标签创建时间。
+        # Time when the tag was created.
         self.create_time = create_time
+        # Description of the tag.
         self.description = description
+        # Name of the tag.
         self.name = name
+        # ID of the tag.
         self.tag_id = tag_id
+        # Type of the tag. Valid values:
+        # 
+        # - **Default**: Default tag.
+        # 
+        # - **Custom**: Custom tag.
         self.tag_type = tag_type
 
     def validate(self):

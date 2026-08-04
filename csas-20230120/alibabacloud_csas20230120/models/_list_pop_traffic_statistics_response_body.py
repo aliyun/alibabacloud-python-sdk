@@ -15,6 +15,7 @@ class ListPopTrafficStatisticsResponseBody(DaraModel):
     ):
         # Id of the request
         self.request_id = request_id
+        # A list of bandwidth data for the POPs.
         self.traffic_data = traffic_data
 
     def validate(self):
@@ -57,7 +58,9 @@ class ListPopTrafficStatisticsResponseBodyTrafficData(DaraModel):
         datapoints: List[main_models.ListPopTrafficStatisticsResponseBodyTrafficDataDatapoints] = None,
         metric_name: str = None,
     ):
+        # A list of bandwidth data points for the POPs.
         self.datapoints = datapoints
+        # The name of the metric. Metrics are categorized as inbound or outbound.
         self.metric_name = metric_name
 
     def validate(self):
@@ -100,7 +103,9 @@ class ListPopTrafficStatisticsResponseBodyTrafficDataDatapoints(DaraModel):
         average: float = None,
         date_time: str = None,
     ):
+        # The average bandwidth value per minute. The unit is Byte/s.
         self.average = average
+        # The time that corresponds to the data point.
         self.date_time = date_time
 
     def validate(self):

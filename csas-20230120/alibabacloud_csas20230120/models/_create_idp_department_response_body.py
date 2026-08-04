@@ -10,7 +10,9 @@ class CreateIdpDepartmentResponseBody(DaraModel):
         data: str = None,
         request_id: str = None,
     ):
+        # The ID of the created department.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

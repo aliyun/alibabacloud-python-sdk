@@ -11,7 +11,9 @@ class CreateWmInfoMappingResponseBody(DaraModel):
         data: main_models.CreateWmInfoMappingResponseBodyData = None,
         request_id: str = None,
     ):
+        # The mapping result.
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -47,6 +49,7 @@ class CreateWmInfoMappingResponseBodyData(DaraModel):
         self,
         wm_info_uint: int = None,
     ):
+        # The mapped digital-format watermark information. This value can be used to look up the corresponding string-format watermark information.
         self.wm_info_uint = wm_info_uint
 
     def validate(self):

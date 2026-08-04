@@ -20,22 +20,51 @@ class CreateDynamicRouteRequest(DaraModel):
         status: str = None,
         tag_ids: List[str] = None,
     ):
+        # A collection of internal network access application IDs for the dynamic route. You can enter a maximum of 200 internal network access application IDs. Required when ApplicationType is **Application**. Choose one of **ApplicationIds** or **TagIds**. Do not enter when **ApplicationType** is **All**.
         self.application_ids = application_ids
+        # The application type of the dynamic route. Valid values:
+        # 
+        # - **All**: All applications.
+        # 
+        # - **Application**: Application.
+        # 
+        # - **Tag**: Tag.
+        # 
         # This parameter is required.
         self.application_type = application_type
+        # The dynamic route description. It is 1 to 128 characters long. It supports Chinese characters, uppercase and lowercase letters, numbers, periods (.), underscores (_), hyphens (-), and spaces.
         self.description = description
+        # The dynamic route type. Valid values: **connector**: Leased line.
+        # 
         # This parameter is required.
         self.dynamic_route_type = dynamic_route_type
+        # The dynamic route name. It is 1 to 128 characters long. It supports Chinese characters, uppercase and lowercase letters, numbers, periods (.), underscores (_), and hyphens (-).
+        # 
         # This parameter is required.
         self.name = name
+        # The next hop instance ID of the dynamic route. Source:
+        # 
+        # - For more information, see [ListConnectors](): Query Connectors in batches.
+        # 
         # This parameter is required.
         self.next_hop = next_hop
+        # The dynamic route priority. 1 indicates the highest priority. Valid values: 1-99.
+        # 
         # This parameter is required.
         self.priority = priority
+        # A list of regions supported by SASE POP cluster access points.
+        # 
         # This parameter is required.
         self.region_ids = region_ids
+        # The dynamic route status. Valid values:
+        # 
+        # - **Enabled**: Enabled.
+        # 
+        # - **Disabled**: Disabled.
+        # 
         # This parameter is required.
         self.status = status
+        # A collection of internal network access tag IDs for the dynamic route. You can enter a maximum of 40 internal network access tag IDs. Required when ApplicationType is **Tag**. Choose one of **ApplicationIds** or **TagIds**. Do not enter when **ApplicationType** is **All**.
         self.tag_ids = tag_ids
 
     def validate(self):

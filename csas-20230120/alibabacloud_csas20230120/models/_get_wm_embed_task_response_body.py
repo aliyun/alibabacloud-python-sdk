@@ -11,7 +11,9 @@ class GetWmEmbedTaskResponseBody(DaraModel):
         data: main_models.GetWmEmbedTaskResponseBodyData = None,
         request_id: str = None,
     ):
+        # The result of the watermark embedding job.
         self.data = data
+        # The ID of this request.
         self.request_id = request_id
 
     def validate(self):
@@ -53,12 +55,22 @@ class GetWmEmbedTaskResponseBodyData(DaraModel):
         task_id: str = None,
         task_status: str = None,
     ):
+        # The temporary URL of the file embedded with watermark information.
         self.file_url = file_url
+        # Expiration time of FileUrl, formatted as a Unix timestamp with second-level precision.
         self.file_url_exp = file_url_exp
+        # The filename of the file embedded with watermark information.
         self.filename = filename
+        # The MD5 hash of the file with embedded watermark information, used for troubleshooting.
         self.out_file_hash_md_5 = out_file_hash_md_5
+        # The size in bytes of the file embedded with watermark information. This is used for troubleshooting.
         self.out_file_size = out_file_size
+        # The job ID.
         self.task_id = task_id
+        # Task Status. Valid values:  
+        # - **Running**: The job is running.  
+        # - **Success**: The job succeeded.  
+        # - **Failed**: The job failed.
         self.task_status = task_status
 
     def validate(self):

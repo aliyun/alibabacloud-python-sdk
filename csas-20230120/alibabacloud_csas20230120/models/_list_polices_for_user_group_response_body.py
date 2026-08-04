@@ -13,7 +13,9 @@ class ListPolicesForUserGroupResponseBody(DaraModel):
         request_id: str = None,
         user_groups: List[main_models.ListPolicesForUserGroupResponseBodyUserGroups] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The list of user groups.
         self.user_groups = user_groups
 
     def validate(self):
@@ -56,7 +58,9 @@ class ListPolicesForUserGroupResponseBodyUserGroups(DaraModel):
         polices: List[main_models.ListPolicesForUserGroupResponseBodyUserGroupsPolices] = None,
         user_group_id: str = None,
     ):
+        # The policies.
         self.polices = polices
+        # The ID of the user group.
         self.user_group_id = user_group_id
 
     def validate(self):
@@ -100,8 +104,21 @@ class ListPolicesForUserGroupResponseBodyUserGroupsPolices(DaraModel):
         policy_id: str = None,
         policy_type: str = None,
     ):
+        # The name of the policy.
         self.name = name
+        # The ID of the policy.
         self.policy_id = policy_id
+        # The policy type. Valid values:
+        # 
+        # - **PrivateAccess**: private network access.
+        # 
+        # - **URLFilter**: URL filtering.
+        # 
+        # - **AppAccessControl**: application control.
+        # 
+        # - **DLP**: Data Leakage Prevention.
+        # 
+        # - **NAC**: Network Access Control.
         self.policy_type = policy_type
 
     def validate(self):

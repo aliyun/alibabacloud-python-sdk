@@ -13,12 +13,20 @@ class ListUserApplicationsRequest(DaraModel):
         page_size: int = None,
         sase_user_id: str = None,
     ):
+        # The address of the private access application. The address must be 1 to 128 characters in length. It supports IPv4 addresses, CIDR blocks, domain names, and wildcard domain names. Fuzzy search is supported.
         self.address = address
+        # The current page number.
+        # 
         # This parameter is required.
         self.current_page = current_page
+        # The name of the private access application. The name must be 1 to 128 characters in length. It can contain Chinese characters, letters, digits, periods (.), underscores (_), and hyphens (-).
         self.name = name
+        # The number of entries per page for pagination. Valid values: 1 to 100.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The user ID.
+        # 
         # This parameter is required.
         self.sase_user_id = sase_user_id
 

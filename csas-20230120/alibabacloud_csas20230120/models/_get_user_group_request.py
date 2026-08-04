@@ -9,6 +9,12 @@ class GetUserGroupRequest(DaraModel):
         self,
         user_group_id: str = None,
     ):
+        # The ID of the user group. You can obtain the ID from the following sources:
+        # 
+        # - [ListUserGroups](~~ListUserGroups~~): Queries a list of user groups.
+        # 
+        # - [CreateUserGroup](~~CreateUserGroup~~): Creates a user group.
+        # 
         # This parameter is required.
         self.user_group_id = user_group_id
 

@@ -11,6 +11,7 @@ class DeleteUserDevicesRequest(DaraModel):
         self,
         device_tags: List[str] = None,
     ):
+        # The collection of endpoint device IDs. A maximum of 100 entries are supported.
         self.device_tags = device_tags
 
     def validate(self):

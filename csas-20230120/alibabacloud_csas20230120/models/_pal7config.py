@@ -20,14 +20,27 @@ class PAL7Config(DaraModel):
         response_header_rewrite_config: main_models.PAL7ConfigResponseHeaderRewriteConfig = None,
         response_rewrite_config: main_models.PAL7ConfigResponseRewriteConfig = None,
     ):
+        # The configuration for anonymous access.
         self.bypass_config = bypass_config
+        # The certificate ID. This parameter is required when you use a custom proxy domain name.
         self.cert_id = cert_id
+        # The DNS configuration.
         self.dns_config = dns_config
+        # The configuration for rewriting internal network requests in JavaScript.
         self.js_hook_config = js_hook_config
+        # The type of the proxy domain name. Valid values:
+        # 
+        # - **automatic**: Uses a mapped proxy domain name.
+        # 
+        # - **custom**: Uses a custom proxy domain name.
         self.proxy_domain_types = proxy_domain_types
+        # The rules for rewriting HTTP request headers.
         self.request_header_rewrite_config = request_header_rewrite_config
+        # The configuration for rewriting HTTP request query parameters.
         self.request_query_rewrite_config = request_query_rewrite_config
+        # The configuration for rewriting HTTP response headers.
         self.response_header_rewrite_config = response_header_rewrite_config
+        # The configuration for rewriting internal domain names in HTML.
         self.response_rewrite_config = response_rewrite_config
 
     def validate(self):
@@ -124,7 +137,13 @@ class PAL7ConfigResponseRewriteConfig(DaraModel):
         mode: str = None,
         replace_rules: List[main_models.PAL7ConfigReplaceRule] = None,
     ):
+        # The rewrite mode. The default value is **auto**. Valid values:
+        # 
+        # - **disabled**: Disables rewriting of internal domain names in HTML.
+        # 
+        # - **auto**: Enables the automatic mode. The system automatically detects and rewrites internal domain names in HTML.
         self.mode = mode
+        # An array of rewrite rules.
         self.replace_rules = replace_rules
 
     def validate(self):
@@ -166,6 +185,7 @@ class PAL7ConfigResponseHeaderRewriteConfig(DaraModel):
         self,
         ops: List[main_models.PAL7ConfigRewriteOp] = None,
     ):
+        # An array of rewrite operations.
         self.ops = ops
 
     def validate(self):
@@ -201,6 +221,7 @@ class PAL7ConfigRequestQueryRewriteConfig(DaraModel):
         self,
         ops: List[main_models.PAL7ConfigRewriteOp] = None,
     ):
+        # An array of rewrite operations.
         self.ops = ops
 
     def validate(self):
@@ -236,6 +257,7 @@ class PAL7ConfigRequestHeaderRewriteConfig(DaraModel):
         self,
         ops: List[main_models.PAL7ConfigRewriteOp] = None,
     ):
+        # An array of rewrite operations.
         self.ops = ops
 
     def validate(self):
@@ -272,7 +294,13 @@ class PAL7ConfigJsHookConfig(DaraModel):
         mode: str = None,
         replace_rules: List[main_models.PAL7ConfigReplaceRule] = None,
     ):
+        # The mode for rewriting internal network requests in JavaScript. The default value is **disabled**. Valid values:
+        # 
+        # - **disabled**: Disables traffic redirection for JavaScript.
+        # 
+        # - **whitelist**: Enables the whitelist mode to redirect traffic as needed.
         self.mode = mode
+        # An array of rules for rewriting internal network requests in JavaScript.
         self.replace_rules = replace_rules
 
     def validate(self):
@@ -314,6 +342,7 @@ class PAL7ConfigDnsConfig(DaraModel):
         self,
         dns_servers: List[str] = None,
     ):
+        # An array of DNS server addresses. The gateway preferentially uses the DNS servers configured here to resolve internal domain names.
         self.dns_servers = dns_servers
 
     def validate(self):
@@ -343,8 +372,17 @@ class PAL7ConfigBypassConfig(DaraModel):
         mode: str = None,
         url_bypass_rules: List[main_models.PAL7ConfigBypassConfigUrlBypassRules] = None,
     ):
+        # An array of source IP address ranges that are allowed to anonymously access the application.
         self.app_bypass_froms = app_bypass_froms
+        # The anonymous access mode. The default value is **disabled**. Valid values:
+        # 
+        # - **disabled**: Disables anonymous access.
+        # 
+        # - **url**: Sets anonymous access at the URL level.
+        # 
+        # - **app**: Sets anonymous access at the application level.
         self.mode = mode
+        # An array of rules for anonymous access to URLs.
         self.url_bypass_rules = url_bypass_rules
 
     def validate(self):
@@ -393,7 +431,9 @@ class PAL7ConfigBypassConfigUrlBypassRules(DaraModel):
         froms: List[str] = None,
         paths: List[str] = None,
     ):
+        # An array of source IP address ranges that are allowed to anonymously access the application paths.
         self.froms = froms
+        # The URL paths that allow anonymous access.
         self.paths = paths
 
     def validate(self):

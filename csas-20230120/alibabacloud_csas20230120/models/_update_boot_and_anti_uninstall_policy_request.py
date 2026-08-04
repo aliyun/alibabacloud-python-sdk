@@ -17,11 +17,17 @@ class UpdateBootAndAntiUninstallPolicyRequest(DaraModel):
         user_group_ids: List[str] = None,
         whitelist_users: List[str] = None,
     ):
+        # Let end users submit approval requests.
         self.allow_report = allow_report
+        # Content shown in the client-side block dialog.
         self.block_content = block_content
+        # Enable anti-uninstall.
         self.is_anti_uninstall = is_anti_uninstall
+        # Enable auto-start.
         self.is_boot = is_boot
+        # List of user group IDs to which this policy applies.
         self.user_group_ids = user_group_ids
+        # List of whitelisted users.
         self.whitelist_users = whitelist_users
 
     def validate(self):
@@ -82,7 +88,9 @@ class UpdateBootAndAntiUninstallPolicyRequestBlockContent(DaraModel):
         block_text_en: main_models.UpdateBootAndAntiUninstallPolicyRequestBlockContentBlockTextEn = None,
         block_text_zh: main_models.UpdateBootAndAntiUninstallPolicyRequestBlockContentBlockTextZh = None,
     ):
+        # English text.
         self.block_text_en = block_text_en
+        # Chinese text.
         self.block_text_zh = block_text_zh
 
     def validate(self):
@@ -124,9 +132,13 @@ class UpdateBootAndAntiUninstallPolicyRequestBlockContentBlockTextZh(DaraModel):
         minor_button_text: str = None,
         title: str = None,
     ):
+        # Dialog content.
         self.content = content
+        # Main button text.
         self.main_button_text = main_button_text
+        # Secondary button text.
         self.minor_button_text = minor_button_text
+        # Dialog title.
         self.title = title
 
     def validate(self):
@@ -175,9 +187,13 @@ class UpdateBootAndAntiUninstallPolicyRequestBlockContentBlockTextEn(DaraModel):
         minor_button_text: str = None,
         title: str = None,
     ):
+        # Dialog content.
         self.content = content
+        # Main button text.
         self.main_button_text = main_button_text
+        # Secondary button text.
         self.minor_button_text = minor_button_text
+        # Dialog title.
         self.title = title
 
     def validate(self):

@@ -9,6 +9,12 @@ class DeletePrivateAccessApplicationRequest(DaraModel):
         self,
         application_id: str = None,
     ):
+        # The ID of the internal network access application. You can get this value from:
+        # 
+        # - [ListPrivateAccessApplications](~~ListPrivateAccessApplications~~): List internal network access applications.
+        # 
+        # - [CreatePrivateAccessApplication](~~CreatePrivateAccessApplication~~): Create an internal network access application.
+        # 
         # This parameter is required.
         self.application_id = application_id
 

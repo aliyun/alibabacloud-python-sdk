@@ -14,15 +14,26 @@ class IdpDingtalkSubConfig(DaraModel):
         event_label: str = None,
         event_verify_token: str = None,
         exclusive: bool = None,
+        oauth: bool = None,
         redirect_uri: str = None,
     ):
+        # Your application\\"s unique identifier. You can get this identifier from the DingTalk Open Platform.
         self.app_key = app_key
+        # Your application\\"s secret key. You can get this key from the DingTalk Open Platform.
         self.app_secret = app_secret
+        # Your enterprise\\"s unique ID in DingTalk.
         self.corp_id = corp_id
+        # The AES key used to decrypt the content of event callbacks. This ensures the confidentiality of the event data.
         self.event_aes_key = event_aes_key
+        # A custom label for event subscriptions. This field is reserved for future use.
         self.event_label = event_label
+        # The token used to verify the authenticity of event callback requests from DingTalk.
         self.event_verify_token = event_verify_token
+        # Specifies whether this identity provider is the exclusive login method. If set to `true`, other login methods are disabled.
         self.exclusive = exclusive
+        # Specifies whether to enable the OAuth authentication flow.
+        self.oauth = oauth
+        # The URL where the user is redirected after successful authorization. You must register this URL on the DingTalk Open Platform.
         self.redirect_uri = redirect_uri
 
     def validate(self):
@@ -54,6 +65,9 @@ class IdpDingtalkSubConfig(DaraModel):
         if self.exclusive is not None:
             result['Exclusive'] = self.exclusive
 
+        if self.oauth is not None:
+            result['Oauth'] = self.oauth
+
         if self.redirect_uri is not None:
             result['RedirectUri'] = self.redirect_uri
 
@@ -81,6 +95,9 @@ class IdpDingtalkSubConfig(DaraModel):
 
         if m.get('Exclusive') is not None:
             self.exclusive = m.get('Exclusive')
+
+        if m.get('Oauth') is not None:
+            self.oauth = m.get('Oauth')
 
         if m.get('RedirectUri') is not None:
             self.redirect_uri = m.get('RedirectUri')

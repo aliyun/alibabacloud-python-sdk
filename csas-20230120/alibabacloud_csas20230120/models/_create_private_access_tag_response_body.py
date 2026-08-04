@@ -10,7 +10,9 @@ class CreatePrivateAccessTagResponseBody(DaraModel):
         request_id: str = None,
         tag_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The private access tag ID.
         self.tag_id = tag_id
 
     def validate(self):

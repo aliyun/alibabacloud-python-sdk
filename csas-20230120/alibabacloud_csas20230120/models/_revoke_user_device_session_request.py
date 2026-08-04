@@ -10,8 +10,12 @@ class RevokeUserDeviceSessionRequest(DaraModel):
         dev_tag: str = None,
         sase_user_id: str = None,
     ):
+        # The device tag.
+        # 
         # This parameter is required.
         self.dev_tag = dev_tag
+        # The SASE user ID.
+        # 
         # This parameter is required.
         self.sase_user_id = sase_user_id
 

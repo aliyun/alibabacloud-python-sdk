@@ -13,7 +13,9 @@ class UpdateUninstallApplicationsStatusResponseBody(DaraModel):
         applications: List[main_models.UpdateUninstallApplicationsStatusResponseBodyApplications] = None,
         request_id: str = None,
     ):
+        # List of uninstall requests.
         self.applications = applications
+        # The ID of this request.
         self.request_id = request_id
 
     def validate(self):
@@ -67,18 +69,49 @@ class UpdateUninstallApplicationsStatusResponseBodyApplications(DaraModel):
         status: str = None,
         username: str = None,
     ):
+        # Uninstall request ID.
         self.application_id = application_id
+        # Time when the uninstall request was created.
         self.create_time = create_time
+        # Department to which the user belongs.
         self.department = department
+        # Endpoint device ID.
         self.dev_tag = dev_tag
+        # Operating system type of the endpoint device. Valid values:
+        # 
+        # - **Windows**: Windows operating system.
+        # 
+        # - **macOS**: macOS operating system.
+        # 
+        # - **Linux**: Linux operating system.
+        # 
+        # - **Android**: Android operating system.
+        # 
+        # - **iOS**: iOS operating system.
+        # 
+        # - **Windows_Wuying**: Alibaba Cloud Desktop operating system.
         self.dev_type = dev_type
+        # Device name of the endpoint.
         self.hostname = hostname
+        # Name of the user identity source.
         self.idp_name = idp_name
+        # Indicates whether the uninstall has been executed.
         self.is_uninstall = is_uninstall
+        # MAC address of the endpoint device.
         self.mac = mac
+        # Reason for the request.
         self.reason = reason
+        # User ID.
         self.sase_user_id = sase_user_id
+        # Status of the uninstall request. Valid values:
+        # 
+        # - **Pending**: Pending.
+        # 
+        # - **Approved**: Approved.
+        # 
+        # - **Rejected**: Rejected.
         self.status = status
+        # Username.
         self.username = username
 
     def validate(self):

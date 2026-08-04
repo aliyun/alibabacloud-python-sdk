@@ -10,8 +10,12 @@ class RevokeUserSessionRequest(DaraModel):
         external_ids: str = None,
         idp_id: str = None,
     ):
+        # The unique ID of the user in the external identity source.
+        # 
         # This parameter is required.
         self.external_ids = external_ids
+        # The ID of the identity source configuration to which the user belongs.
+        # 
         # This parameter is required.
         self.idp_id = idp_id
 

@@ -14,9 +14,14 @@ class CreateUserGroupRequest(DaraModel):
         description: str = None,
         name: str = None,
     ):
+        # The collection of user group attributes. You can specify a maximum of 3,000 attributes. The attributes are combined using a logical OR.
+        # 
         # This parameter is required.
         self.attributes = attributes
+        # The user group description. The description must be 1 to 128 characters long and can contain Chinese characters, letters, digits, periods (.), underscores (_), hyphens (-), and spaces.
         self.description = description
+        # The user group name. The name must be 1 to 128 characters long and can contain Chinese characters, letters, digits, periods (.), underscores (_), and hyphens (-).
+        # 
         # This parameter is required.
         self.name = name
 
@@ -68,11 +73,38 @@ class CreateUserGroupRequestAttributes(DaraModel):
         user_group_type: str = None,
         value: str = None,
     ):
+        # The ID of the identity provider (IdP) for the user group. This parameter is used when UserGroupType is set to **department**.
         self.idp_id = idp_id
+        # The relationship for the user group. Valid values:
+        # 
+        # - **Equal**: Equal to.
+        # 
+        # - **Unequal**: Not equal to.
+        # 
         # This parameter is required.
         self.relation = relation
+        # The type of the user group. Valid values:
+        # 
+        # - **username**: Username.
+        # 
+        # - **department**: Department.
+        # 
+        # - **email**: Email.
+        # 
+        # - **telephone**: Mobile phone.
+        # 
         # This parameter is required.
         self.user_group_type = user_group_type
+        # The value of the user group attribute.
+        # 
+        # - If UserGroupType is set to **username**, this parameter specifies the username value. The value must be 1 to 128 characters long. It can contain Chinese characters, letters, digits, periods (.), underscores (_), hyphens (-), asterisks (\\*), at signs (@), and spaces.
+        # 
+        # - If UserGroupType is set to **department**, this parameter specifies the department value. For example: OU=Department 1,OU=SASE DingTalk.
+        # 
+        # - If UserGroupType is set to **email**, this parameter specifies the email address. For example: username\\@example.com.
+        # 
+        # - If UserGroupType is set to **telephone**, this parameter specifies the mobile phone number. For example: 13900001234.
+        # 
         # This parameter is required.
         self.value = value
 

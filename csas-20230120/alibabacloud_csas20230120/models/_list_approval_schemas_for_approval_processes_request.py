@@ -11,6 +11,8 @@ class ListApprovalSchemasForApprovalProcessesRequest(DaraModel):
         self,
         process_ids: List[str] = None,
     ):
+        # A collection of approval process IDs.
+        # 
         # This parameter is required.
         self.process_ids = process_ids
 

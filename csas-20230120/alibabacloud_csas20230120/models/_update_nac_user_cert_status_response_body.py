@@ -11,8 +11,19 @@ class UpdateNacUserCertStatusResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The HTTP status code or POP error code. Valid values:
+        # 
+        # - **2xx**: Success.
+        # 
+        # - **3xx**: Redirection.
+        # 
+        # - **4xx**: Client error.
+        # 
+        # - **5xx**: Server error.
         self.code = code
+        # Additional information about the result.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

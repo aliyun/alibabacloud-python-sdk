@@ -12,8 +12,12 @@ class CreateEnterpriseAccelerateTargetRequest(DaraModel):
         eap_id: str = None,
         target: List[str] = None,
     ):
+        # The ID of the enterprise acceleration policy.
+        # 
         # This parameter is required.
         self.eap_id = eap_id
+        # A list of enterprise acceleration addresses.
+        # 
         # This parameter is required.
         self.target = target
 

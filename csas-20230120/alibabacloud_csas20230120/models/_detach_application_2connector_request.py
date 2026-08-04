@@ -12,9 +12,11 @@ class DetachApplication2ConnectorRequest(DaraModel):
         application_ids: List[str] = None,
         connector_id: str = None,
     ):
+        # Collection of private network access application IDs. Enter a maximum of 100 private network access application IDs.
+        # 
         # This parameter is required.
         self.application_ids = application_ids
-        # ConnectorID。
+        # Connector ID.
         # 
         # This parameter is required.
         self.connector_id = connector_id

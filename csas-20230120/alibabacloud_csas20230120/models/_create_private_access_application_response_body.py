@@ -10,9 +10,9 @@ class CreatePrivateAccessApplicationResponseBody(DaraModel):
         application_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the office application.
+        # The ID of the internal-facing access application.
         self.application_id = application_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

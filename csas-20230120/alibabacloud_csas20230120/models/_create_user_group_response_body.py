@@ -10,7 +10,9 @@ class CreateUserGroupResponseBody(DaraModel):
         request_id: str = None,
         user_group_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The ID of the user group.
         self.user_group_id = user_group_id
 
     def validate(self):

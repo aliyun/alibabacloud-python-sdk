@@ -13,7 +13,9 @@ class UpdateUserDevicesSharingStatusResponseBody(DaraModel):
         devices: List[main_models.UpdateUserDevicesSharingStatusResponseBodyDevices] = None,
         request_id: str = None,
     ):
+        # Device list.
         self.devices = devices
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -80,31 +82,119 @@ class UpdateUserDevicesSharingStatusResponseBodyDevices(DaraModel):
         update_time: str = None,
         username: str = None,
     ):
+        # The client status. Values:
+        # 
+        # - **Online**: Online.
+        # 
+        # - **Offline**: Offline.
         self.app_status = app_status
+        # Client version.
         self.app_version = app_version
+        # Device CPU model.
         self.cpu = cpu
+        # Device registration time.
         self.create_time = create_time
+        # User\\"s department.
         self.department = department
+        # Device ownership. Values:
+        # 
+        # - **Personal**: Personal device.
+        # 
+        # - **Company**: Company device.
         self.device_belong = device_belong
+        # Device model.
         self.device_model = device_model
+        # The status of the device. Values:
+        # 
+        # - **Online**: Online.
+        # 
+        # - **Offline**: Offline.
+        # 
+        # - **LongTermOffline**: Long-term offline.
+        # 
+        # - **Locked**: Locked.
+        # 
+        # - **Lost**: Lost.
+        # 
+        # - **Unbound**: Unbound.
         self.device_status = device_status
+        # Device ID.
         self.device_tag = device_tag
+        # The operating system type of the device. Values:
+        # 
+        # - **Windows**: Windows system.
+        # 
+        # - **macOS**: macOS system.
+        # 
+        # - **Linux**: Linux system.
+        # 
+        # - **Android**: Android system.
+        # 
+        # - **iOS**: iOS system.
+        # 
+        # - **Windows_Wuying**: Wuying Cloud Desktop system.
         self.device_type = device_type
+        # Device operating system version.
         self.device_version = device_version
+        # Device disk model.
         self.disk = disk
+        # Data protection status. Values:
+        # 
+        # - **Enabled**: Enabled.
+        # 
+        # - **Disabled**: Disabled.
+        # 
+        # - **Unprovisioned**: Unprovisioned.
+        # 
+        # - **Unauthorized**: Unauthorized.
         self.dlp_status = dlp_status
+        # Device name.
         self.hostname = hostname
+        # Internet access status. Values:
+        # 
+        # - **Enabled**: Enabled.
+        # 
+        # - **Disabled**: Disabled.
+        # 
+        # - **Unprovisioned**: Unprovisioned.
         self.ia_status = ia_status
+        # Device private network IP address.
         self.inner_ip = inner_ip
+        # Device MAC address.
         self.mac = mac
+        # Device memory capacity. Unit: GB.
         self.memory = memory
+        # Network access control status. Values:
+        # 
+        # - **Enabled**: Enabled.
+        # 
+        # - **Disabled**: Disabled.
+        # 
+        # - **Unprovisioned**: Unprovisioned.
         self.nac_status = nac_status
+        # NIC list.
         self.net_interface_info = net_interface_info
+        # Private network access status. Values:
+        # 
+        # - **Enabled**: Enabled.
+        # 
+        # - **Disabled**: Disabled.
+        # 
+        # - **Unprovisioned**: Unprovisioned.
         self.pa_status = pa_status
+        # User ID.
         self.sase_user_id = sase_user_id
+        # Indicates whether device sharing is enabled. Values:
+        # 
+        # - **true**: Enable sharing.
+        # 
+        # - **false**: Disable sharing.
         self.sharing_status = sharing_status
+        # Device logon IP address.
         self.src_ip = src_ip
+        # Device last online time.
         self.update_time = update_time
+        # Username.
         self.username = username
 
     def validate(self):
@@ -291,7 +381,9 @@ class UpdateUserDevicesSharingStatusResponseBodyDevicesNetInterfaceInfo(DaraMode
         mac: str = None,
         name: str = None,
     ):
+        # NIC MAC address.
         self.mac = mac
+        # NIC name.
         self.name = name
 
     def validate(self):

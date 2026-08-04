@@ -14,8 +14,11 @@ class ListPrivateAccessApplicationsResponseBody(DaraModel):
         request_id: str = None,
         total_num: int = None,
     ):
+        # The list of internal-facing access applications.
         self.applications = applications
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of internal-facing access applications.
         self.total_num = total_num
 
     def validate(self):
@@ -80,21 +83,42 @@ class ListPrivateAccessApplicationsResponseBodyApplications(DaraModel):
         tag_ids: List[str] = None,
     ):
         self.address_groups = address_groups
+        # The addresses of the internal-facing access application.
         self.addresses = addresses
+        # The ID of the internal-facing access application.
         self.application_id = application_id
         self.auto_generated = auto_generated
+        # The browser access mode. Valid values:
+        # - **Enabled**: enabled.
+        # - **Disabled**: disabled.
         self.browser_access_status = browser_access_status
         self.config_mode = config_mode
+        # The connector IDs.
         self.connector_ids = connector_ids
+        # The time when the internal-facing access application was created.
         self.create_time = create_time
+        # The description of the internal-facing access application.
         self.description = description
+        # The browser access mode parameter: mapped proxy domain name.
         self.l_7proxy_domain_automatic = l_7proxy_domain_automatic
+        # The browser access mode parameter: custom proxy domain name.
         self.l_7proxy_domain_custom = l_7proxy_domain_custom
+        # The name of the internal-facing access application.
         self.name = name
+        # The IDs of internal-facing access policies.
         self.policy_ids = policy_ids
+        # The port ranges of the internal-facing access application. Multiple port ranges cannot be duplicate or overlapping.
         self.port_ranges = port_ranges
+        # The protocol of the internal-facing access application. Valid values:
+        # - **All**: all protocols.
+        # - **TCP**
+        # - **UDP**.
         self.protocol = protocol
+        # The status of the internal-facing access application. Valid values:
+        # - **Enabled**: enabled.
+        # - **Disabled**: disabled.
         self.status = status
+        # The IDs of internal-facing access tags.
         self.tag_ids = tag_ids
 
     def validate(self):
@@ -236,7 +260,9 @@ class ListPrivateAccessApplicationsResponseBodyApplicationsPortRanges(DaraModel)
         begin: int = None,
         end: int = None,
     ):
+        # The start port.
         self.begin = begin
+        # The end port.
         self.end = end
 
     def validate(self):

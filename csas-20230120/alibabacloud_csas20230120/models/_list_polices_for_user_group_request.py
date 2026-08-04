@@ -11,6 +11,8 @@ class ListPolicesForUserGroupRequest(DaraModel):
         self,
         user_group_ids: List[str] = None,
     ):
+        # The IDs of the user groups. You can enter up to 100 user group IDs.
+        # 
         # This parameter is required.
         self.user_group_ids = user_group_ids
 

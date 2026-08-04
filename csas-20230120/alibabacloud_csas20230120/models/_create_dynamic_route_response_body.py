@@ -10,7 +10,9 @@ class CreateDynamicRouteResponseBody(DaraModel):
         dynamic_route_id: str = None,
         request_id: str = None,
     ):
+        # The dynamic route ID.
         self.dynamic_route_id = dynamic_route_id
+        # The ID of this request.
         self.request_id = request_id
 
     def validate(self):

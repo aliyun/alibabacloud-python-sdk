@@ -11,6 +11,8 @@ class ListApprovalProcessesForApprovalSchemasRequest(DaraModel):
         self,
         schema_ids: List[str] = None,
     ):
+        # A collection of approval template IDs.
+        # 
         # This parameter is required.
         self.schema_ids = schema_ids
 

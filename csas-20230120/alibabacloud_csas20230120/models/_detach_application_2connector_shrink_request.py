@@ -10,9 +10,11 @@ class DetachApplication2ConnectorShrinkRequest(DaraModel):
         application_ids_shrink: str = None,
         connector_id: str = None,
     ):
+        # Collection of private network access application IDs. Enter a maximum of 100 private network access application IDs.
+        # 
         # This parameter is required.
         self.application_ids_shrink = application_ids_shrink
-        # ConnectorID。
+        # Connector ID.
         # 
         # This parameter is required.
         self.connector_id = connector_id

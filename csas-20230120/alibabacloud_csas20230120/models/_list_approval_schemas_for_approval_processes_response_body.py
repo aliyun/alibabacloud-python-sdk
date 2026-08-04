@@ -13,7 +13,9 @@ class ListApprovalSchemasForApprovalProcessesResponseBody(DaraModel):
         processes: List[main_models.ListApprovalSchemasForApprovalProcessesResponseBodyProcesses] = None,
         request_id: str = None,
     ):
+        # A list of approval processes.
         self.processes = processes
+        # The ID of this request.
         self.request_id = request_id
 
     def validate(self):
@@ -56,7 +58,9 @@ class ListApprovalSchemasForApprovalProcessesResponseBodyProcesses(DaraModel):
         process_id: str = None,
         schemas: List[main_models.ListApprovalSchemasForApprovalProcessesResponseBodyProcessesSchemas] = None,
     ):
+        # The ID of the approval process.
         self.process_id = process_id
+        # A list of approval templates.
         self.schemas = schemas
 
     def validate(self):
@@ -105,13 +109,33 @@ class ListApprovalSchemasForApprovalProcessesResponseBodyProcessesSchemas(DaraMo
         schema_name: str = None,
         schema_version: int = None,
     ):
+        # The time when the approval template was created.
         self.create_time = create_time
+        # The description of the approval template.
         self.description = description
+        # Indicates whether the template is maintained by Alibaba Cloud.
         self.is_default = is_default
+        # The policy type that the template applies to. Valid values:
+        # 
+        # - **DomainBlacklist**: Domain blacklist.
+        # 
+        # - **DomainWhitelist**: Domain whitelist.
+        # 
+        # - **SoftwareBlock**: Software disable.
+        # 
+        # - **AppUninstall**: Application uninstall.
+        # 
+        # - **DlpSend**: File transfer.
+        # 
+        # - **PeripheralBlock**: Peripheral control.
         self.policy_type = policy_type
+        # The content of the approval template.
         self.schema_content = schema_content
+        # The ID of the approval template.
         self.schema_id = schema_id
+        # The name of the approval template.
         self.schema_name = schema_name
+        # The version of the approval template.
         self.schema_version = schema_version
 
     def validate(self):

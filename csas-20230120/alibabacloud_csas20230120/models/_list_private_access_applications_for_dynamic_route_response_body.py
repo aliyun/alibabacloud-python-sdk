@@ -13,7 +13,9 @@ class ListPrivateAccessApplicationsForDynamicRouteResponseBody(DaraModel):
         dynamic_routes: List[main_models.ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutes] = None,
         request_id: str = None,
     ):
+        # List of dynamic routes.
         self.dynamic_routes = dynamic_routes
+        # ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -56,7 +58,9 @@ class ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutes(Dara
         applications: List[main_models.ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutesApplications] = None,
         dynamic_route_id: str = None,
     ):
+        # Collection of private access applications.
         self.applications = applications
+        # Dynamic route ID.
         self.dynamic_route_id = dynamic_route_id
 
     def validate(self):
@@ -105,13 +109,31 @@ class ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutesAppli
         protocol: str = None,
         status: str = None,
     ):
+        # Collection of private access application addresses.
         self.addresses = addresses
+        # Private access application ID.
         self.application_id = application_id
+        # Time when the private access application was created.
         self.create_time = create_time
+        # Private access application description.
         self.description = description
+        # Private access application name.
         self.name = name
+        # Collection of private access application port ranges.
         self.port_ranges = port_ranges
+        # Protocol used by the private access application. Valid values:
+        # 
+        # - **All**: All protocols.
+        # 
+        # - **TCP**
+        # 
+        # - **UDP**
         self.protocol = protocol
+        # Status of the private access application. Valid values:
+        # 
+        # - **Enabled**: Enabled.
+        # 
+        # - **Disabled**: Disabled.
         self.status = status
 
     def validate(self):
@@ -190,7 +212,9 @@ class ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutesAppli
         begin: int = None,
         end: int = None,
     ):
+        # Start port.
         self.begin = begin
+        # End port.
         self.end = end
 
     def validate(self):

@@ -13,7 +13,9 @@ class ListIdpDepartmentsResponseBody(DaraModel):
         data: main_models.ListIdpDepartmentsResponseBodyData = None,
         request_id: str = None,
     ):
+        # The department information.
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -50,7 +52,9 @@ class ListIdpDepartmentsResponseBodyData(DaraModel):
         data_list: List[main_models.ListIdpDepartmentsResponseBodyDataDataList] = None,
         total_num: int = None,
     ):
+        # A list of department information.
         self.data_list = data_list
+        # The total number of records.
         self.total_num = total_num
 
     def validate(self):
@@ -94,8 +98,11 @@ class ListIdpDepartmentsResponseBodyDataDataList(DaraModel):
         idp_config_id: str = None,
         name: str = None,
     ):
+        # The department ID.
         self.id = id
+        # The ID of the custom IdP configuration.
         self.idp_config_id = idp_config_id
+        # The department name.
         self.name = name
 
     def validate(self):

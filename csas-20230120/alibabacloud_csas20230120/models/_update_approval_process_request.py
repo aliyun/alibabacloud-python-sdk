@@ -21,14 +21,20 @@ class UpdateApprovalProcessRequest(DaraModel):
         process_nodes: List[List[str]] = None,
     ):
         self.approval_type = approval_type
+        # The description of the approval flow. The description must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), hyphens (-), and spaces. Chinese characters are supported.
         self.description = description
         self.event_label = event_label
         self.external_config = external_config
         self.match_schema_configs = match_schema_configs
+        # The matched approval templates.
         self.match_schemas = match_schemas
+        # The ID of the approval flow.
+        # 
         # This parameter is required.
         self.process_id = process_id
+        # The name of the approval flow. The name must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). Chinese characters are supported.
         self.process_name = process_name
+        # The list of approval nodes. You can define up to 5 approval nodes.
         self.process_nodes = process_nodes
 
     def validate(self):
@@ -114,16 +120,25 @@ class UpdateApprovalProcessRequestMatchSchemas(DaraModel):
         domain_whitelist_schema_id: str = None,
         endpoint_hardening_schema_id: str = None,
         peripheral_block_schema_id: str = None,
+        private_access_block_schema_id: str = None,
         software_block_schema_id: str = None,
         software_hardening_schema_id: str = None,
     ):
+        # The ID of the device uninstall approval template.
         self.app_uninstall_schema_id = app_uninstall_schema_id
+        # The ID of the device registration approval template.
         self.device_registration_schema_id = device_registration_schema_id
+        # The ID of the file outgoing approval template.
         self.dlp_send_schema_id = dlp_send_schema_id
+        # The ID of the domain name blacklist approval template.
         self.domain_blacklist_schema_id = domain_blacklist_schema_id
+        # The ID of the domain name whitelist approval template.
         self.domain_whitelist_schema_id = domain_whitelist_schema_id
         self.endpoint_hardening_schema_id = endpoint_hardening_schema_id
+        # The ID of the peripheral control approval template.
         self.peripheral_block_schema_id = peripheral_block_schema_id
+        self.private_access_block_schema_id = private_access_block_schema_id
+        # The ID of the software blocking approval template.
         self.software_block_schema_id = software_block_schema_id
         self.software_hardening_schema_id = software_hardening_schema_id
 
@@ -156,6 +171,9 @@ class UpdateApprovalProcessRequestMatchSchemas(DaraModel):
         if self.peripheral_block_schema_id is not None:
             result['PeripheralBlockSchemaId'] = self.peripheral_block_schema_id
 
+        if self.private_access_block_schema_id is not None:
+            result['PrivateAccessBlockSchemaId'] = self.private_access_block_schema_id
+
         if self.software_block_schema_id is not None:
             result['SoftwareBlockSchemaId'] = self.software_block_schema_id
 
@@ -187,6 +205,9 @@ class UpdateApprovalProcessRequestMatchSchemas(DaraModel):
         if m.get('PeripheralBlockSchemaId') is not None:
             self.peripheral_block_schema_id = m.get('PeripheralBlockSchemaId')
 
+        if m.get('PrivateAccessBlockSchemaId') is not None:
+            self.private_access_block_schema_id = m.get('PrivateAccessBlockSchemaId')
+
         if m.get('SoftwareBlockSchemaId') is not None:
             self.software_block_schema_id = m.get('SoftwareBlockSchemaId')
 
@@ -205,6 +226,7 @@ class UpdateApprovalProcessRequestMatchSchemaConfigs(DaraModel):
         domain_whitelist_schema_config: main_models.UpdateApprovalProcessRequestMatchSchemaConfigsDomainWhitelistSchemaConfig = None,
         endpoint_hardening_schema_config: main_models.UpdateApprovalProcessRequestMatchSchemaConfigsEndpointHardeningSchemaConfig = None,
         peripheral_block_schema_config: main_models.UpdateApprovalProcessRequestMatchSchemaConfigsPeripheralBlockSchemaConfig = None,
+        private_access_block_schema_config: main_models.UpdateApprovalProcessRequestMatchSchemaConfigsPrivateAccessBlockSchemaConfig = None,
         software_block_schema_config: main_models.UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareBlockSchemaConfig = None,
         software_hardening_schema_config: main_models.UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareHardeningSchemaConfig = None,
     ):
@@ -215,6 +237,7 @@ class UpdateApprovalProcessRequestMatchSchemaConfigs(DaraModel):
         self.domain_whitelist_schema_config = domain_whitelist_schema_config
         self.endpoint_hardening_schema_config = endpoint_hardening_schema_config
         self.peripheral_block_schema_config = peripheral_block_schema_config
+        self.private_access_block_schema_config = private_access_block_schema_config
         self.software_block_schema_config = software_block_schema_config
         self.software_hardening_schema_config = software_hardening_schema_config
 
@@ -233,6 +256,8 @@ class UpdateApprovalProcessRequestMatchSchemaConfigs(DaraModel):
             self.endpoint_hardening_schema_config.validate()
         if self.peripheral_block_schema_config:
             self.peripheral_block_schema_config.validate()
+        if self.private_access_block_schema_config:
+            self.private_access_block_schema_config.validate()
         if self.software_block_schema_config:
             self.software_block_schema_config.validate()
         if self.software_hardening_schema_config:
@@ -263,6 +288,9 @@ class UpdateApprovalProcessRequestMatchSchemaConfigs(DaraModel):
 
         if self.peripheral_block_schema_config is not None:
             result['PeripheralBlockSchemaConfig'] = self.peripheral_block_schema_config.to_map()
+
+        if self.private_access_block_schema_config is not None:
+            result['PrivateAccessBlockSchemaConfig'] = self.private_access_block_schema_config.to_map()
 
         if self.software_block_schema_config is not None:
             result['SoftwareBlockSchemaConfig'] = self.software_block_schema_config.to_map()
@@ -301,6 +329,10 @@ class UpdateApprovalProcessRequestMatchSchemaConfigs(DaraModel):
         if m.get('PeripheralBlockSchemaConfig') is not None:
             temp_model = main_models.UpdateApprovalProcessRequestMatchSchemaConfigsPeripheralBlockSchemaConfig()
             self.peripheral_block_schema_config = temp_model.from_map(m.get('PeripheralBlockSchemaConfig'))
+
+        if m.get('PrivateAccessBlockSchemaConfig') is not None:
+            temp_model = main_models.UpdateApprovalProcessRequestMatchSchemaConfigsPrivateAccessBlockSchemaConfig()
+            self.private_access_block_schema_config = temp_model.from_map(m.get('PrivateAccessBlockSchemaConfig'))
 
         if m.get('SoftwareBlockSchemaConfig') is not None:
             temp_model = main_models.UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareBlockSchemaConfig()
@@ -458,6 +490,100 @@ class UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareBlockSchemaConfig(Da
         return self
 
 class UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareBlockSchemaConfigFieldMap(DaraModel):
+    def __init__(
+        self,
+        display_field: str = None,
+        display_field_value: str = None,
+        system_field: str = None,
+    ):
+        self.display_field = display_field
+        self.display_field_value = display_field_value
+        self.system_field = system_field
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.display_field is not None:
+            result['DisplayField'] = self.display_field
+
+        if self.display_field_value is not None:
+            result['DisplayFieldValue'] = self.display_field_value
+
+        if self.system_field is not None:
+            result['SystemField'] = self.system_field
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DisplayField') is not None:
+            self.display_field = m.get('DisplayField')
+
+        if m.get('DisplayFieldValue') is not None:
+            self.display_field_value = m.get('DisplayFieldValue')
+
+        if m.get('SystemField') is not None:
+            self.system_field = m.get('SystemField')
+
+        return self
+
+class UpdateApprovalProcessRequestMatchSchemaConfigsPrivateAccessBlockSchemaConfig(DaraModel):
+    def __init__(
+        self,
+        external_process_id: str = None,
+        field_map: List[main_models.UpdateApprovalProcessRequestMatchSchemaConfigsPrivateAccessBlockSchemaConfigFieldMap] = None,
+        schema_id: str = None,
+    ):
+        self.external_process_id = external_process_id
+        self.field_map = field_map
+        self.schema_id = schema_id
+
+    def validate(self):
+        if self.field_map:
+            for v1 in self.field_map:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.external_process_id is not None:
+            result['ExternalProcessId'] = self.external_process_id
+
+        result['FieldMap'] = []
+        if self.field_map is not None:
+            for k1 in self.field_map:
+                result['FieldMap'].append(k1.to_map() if k1 else None)
+
+        if self.schema_id is not None:
+            result['SchemaId'] = self.schema_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExternalProcessId') is not None:
+            self.external_process_id = m.get('ExternalProcessId')
+
+        self.field_map = []
+        if m.get('FieldMap') is not None:
+            for k1 in m.get('FieldMap'):
+                temp_model = main_models.UpdateApprovalProcessRequestMatchSchemaConfigsPrivateAccessBlockSchemaConfigFieldMap()
+                self.field_map.append(temp_model.from_map(k1))
+
+        if m.get('SchemaId') is not None:
+            self.schema_id = m.get('SchemaId')
+
+        return self
+
+class UpdateApprovalProcessRequestMatchSchemaConfigsPrivateAccessBlockSchemaConfigFieldMap(DaraModel):
     def __init__(
         self,
         display_field: str = None,

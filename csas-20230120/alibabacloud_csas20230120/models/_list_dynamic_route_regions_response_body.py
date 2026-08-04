@@ -13,8 +13,11 @@ class ListDynamicRouteRegionsResponseBody(DaraModel):
         request_id: str = None,
         total_num: int = None,
     ):
+        # The list of regions for POP cluster access points authorized for the SASE Global Office service.
         self.regions = regions
+        # The ID of this request.
         self.request_id = request_id
+        # The total number of regions for POP cluster access points authorized for the SASE Global Office service.
         self.total_num = total_num
 
     def validate(self):

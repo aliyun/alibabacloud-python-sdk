@@ -9,6 +9,7 @@ class DeleteEnterpriseAccelerateTargetResponseBody(DaraModel):
         self,
         request_id: str = None,
     ):
+        # ID of the current request.
         self.request_id = request_id
 
     def validate(self):

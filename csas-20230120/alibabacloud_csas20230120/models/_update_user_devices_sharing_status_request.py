@@ -12,8 +12,16 @@ class UpdateUserDevicesSharingStatusRequest(DaraModel):
         device_tags: List[str] = None,
         sharing_status: bool = None,
     ):
+        # Collection of device IDs.
+        # 
         # This parameter is required.
         self.device_tags = device_tags
+        # Indicates whether device sharing is enabled. Values:
+        # 
+        # - **true**: Enable sharing.
+        # 
+        # - **false**: Disable sharing.
+        # 
         # This parameter is required.
         self.sharing_status = sharing_status
 

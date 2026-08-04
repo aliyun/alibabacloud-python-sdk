@@ -14,11 +14,11 @@ class ListUserPrivateAccessPoliciesResponseBody(DaraModel):
         request_id: str = None,
         total_num: int = None,
     ):
-        # List of authorized policies.
+        # The list of authorized access policies.
         self.polices = polices
-        # ID of the request.
+        # Id of the request.
         self.request_id = request_id
-        # Total number of authorized policies.
+        # The total number of authorized access policies.
         self.total_num = total_num
 
     def validate(self):
@@ -75,29 +75,29 @@ class ListUserPrivateAccessPoliciesResponseBodyPolices(DaraModel):
         trusted_software_ids: List[str] = None,
         user_group_mode: str = None,
     ):
-        # Set of custom user group attributes. Multiple custom user group attributes are in an OR relationship, effective as a union.
+        # The collection of custom user group attributes. Multiple custom user group attributes have an OR relationship and take effect as a union.
         self.custom_user_attributes = custom_user_attributes
-        # Associated security baseline.
+        # The associated security baseline.
         self.device_attribute_name = device_attribute_name
-        # Associated user group.
+        # The user group to which the policy belongs.
         self.matched_user_group = matched_user_group
-        # Intranet access policy name.
+        # The name of the private access policy.
         self.name = name
-        # Action of the intranet access policy. Values:
-        # - **Block**: Block.
-        # - **Allow**: Allow.
+        # The action of the private access policy. Valid values:
+        # - **Block**: blocks the access.
+        # - **Allow**: allows the access.
         self.policy_action = policy_action
-        # Intranet access policy ID.
+        # The ID of the private access policy.
         self.policy_id = policy_id
-        # Priority of the intranet access policy. The number 1 indicates the highest priority.
+        # The priority of the private access policy. The number 1 indicates the highest priority.
         self.priority = priority
-        # List of trusted process group IDs.
+        # The list of trusted process group IDs.
         self.trusted_process_group_ids = trusted_process_group_ids
-        # List of trusted software IDs.
+        # The list of trusted software IDs.
         self.trusted_software_ids = trusted_software_ids
-        # Type of the user group for the intranet access policy. Values:
-        # - **Normal**: Normal user group.
-        # - **Custom**: Custom user group.
+        # The user group type of the private access policy. Valid values:
+        # - **Normal**: a normal user group.
+        # - **Custom**: a custom user group.
         self.user_group_mode = user_group_mode
 
     def validate(self):
@@ -192,21 +192,21 @@ class ListUserPrivateAccessPoliciesResponseBodyPolicesCustomUserAttributes(DaraM
     ):
         # The identity provider ID of the user group. This value exists when the custom user group type is **department**.
         self.idp_id = idp_id
-        # Relation of the user group. Values:
-        # - **Equal**: Equal.
-        # - **Unequal**: Not equal.
+        # The relationship of the user group. Valid values:
+        # - **Equal**: equal to.
+        # - **Unequal**: not equal to.
         self.relation = relation
-        # Type of the user group. Values:
-        # - **username**: Username.
-        # - **department**: Department.
-        # - **email**: Email.
-        # - **telephone**: Telephone.
+        # The type of the user group. Valid values:
+        # - **username**: the username.
+        # - **department**: the department.
+        # - **email**: the email address.
+        # - **telephone**: the mobile phone number.
         self.user_group_type = user_group_type
         # The value of the user group attribute.
-        # - When the user group type is **username**, it represents the value of the username. The length is 1 to 128 characters, supporting Chinese and case-sensitive English letters, and can include numbers, periods (.), underscores (_), and hyphens (-).
-        # - When the user group type is **department**, it represents the value of the department. For example: OU=Department1,OU=SASE DingTalk.
-        # - When the user group type is **email**, it represents the value of the email. For example: username@example.com.
-        # - When the user group type is **telephone**, it represents the value of the phone number. For example: 13900001234.
+        # - When the user group type is **username**, this parameter indicates the value of the username. The value must be 1 to 128 characters in length, and can contain Chinese characters, uppercase letters, lowercase letters, digits, periods (.), underscores (_), and hyphens (-).
+        # - When the user group type is **department**, this parameter indicates the value of the department. For example: OU=Department1,OU=SASE DingTalk.
+        # - When the user group type is **email**, this parameter indicates the value of the email address. For example: username@example.com.
+        # - When the user group type is **telephone**, this parameter indicates the value of the mobile phone number. For example: 13900001234.
         self.value = value
 
     def validate(self):

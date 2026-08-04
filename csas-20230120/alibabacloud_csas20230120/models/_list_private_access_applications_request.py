@@ -20,17 +20,37 @@ class ListPrivateAccessApplicationsRequest(DaraModel):
         status: str = None,
         tag_id: str = None,
     ):
+        # The access mode. Valid values:
+        # - **app**: application access. Filters applications that support application access.
+        # - **browser**: browser access. Filters applications that support browser access.
         self.access_modes = access_modes
+        # The address of the internal-facing access application. The address is 1 to 128 characters in length and supports IPv4 addresses, CIDR blocks, domain names, and wildcard domain names.
         self.address = address
+        # The IDs of internal-facing access applications. You can specify up to 100 application IDs.
         self.application_ids = application_ids
+        # The connector ID. You can obtain the ID from the [ListConnectors](~~ListConnectors~~) operation.
         self.connector_id = connector_id
+        # The page number of the current page displayed in a paged query. Valid values: 1 to 10000.
+        # 
         # This parameter is required.
         self.current_page = current_page
+        # The name of the internal-facing access application. The name is 1 to 128 characters in length, supports Chinese and uppercase and lowercase letters, and can contain digits, periods (.), underscores (_), and hyphens (-).
         self.name = name
+        # The number of entries per page in a paged query. Valid values: 1 to 1000.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The ID of the internal-facing access policy. You can obtain the ID from the following operations:
+        # - [ListPrivateAccessPolices](~~ListPrivateAccessPolices~~): queries internal-facing access policies in batches.
+        # - [CreatePrivateAccessPolicy](~~CreatePrivateAccessPolicy~~): creates an internal-facing access policy.
         self.policy_id = policy_id
+        # The status of the internal-facing access application. Valid values:
+        # - **Enabled**: enabled.
+        # - **Disabled**: disabled.
         self.status = status
+        # The ID of the internal-facing access tag. You can obtain the ID from the following operations:
+        # - [ListPrivateAccessTags](~~ListPrivateAccessTags~~): queries internal-facing access tags in batches.
+        # - [CreatePrivateAccessTag](~~CreatePrivateAccessTag~~): creates an internal-facing access tag.
         self.tag_id = tag_id
 
     def validate(self):

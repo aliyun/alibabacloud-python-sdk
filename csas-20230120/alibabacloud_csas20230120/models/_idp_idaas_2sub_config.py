@@ -17,14 +17,23 @@ class IdpIdaas2SubConfig(DaraModel):
         region: str = None,
         saml_metadata: str = None,
     ):
+        # The unique identifier of the application within the IDaaS instance.
         self.application_id = application_id
+        # The client ID of the application registered with the identity provider.
         self.client_id = client_id
+        # The client secret used to authenticate the application with the identity provider.
         self.client_secret = client_secret
+        # The AES encryption key for securing event data.
         self.event_aes_key = event_aes_key
+        # A label that identifies the event subscription.
         self.event_label = event_label
+        # The unique identifier of the IDaaS instance.
         self.instance_id = instance_id
+        # The URL of the endpoint providing the public key for token signature verification.
         self.public_key_endpoint = public_key_endpoint
+        # The deployment region of the IDaaS instance.
         self.region = region
+        # The SAML metadata in XML format. It specifies the identity provider\\"s configuration, including endpoints and certificates.
         self.saml_metadata = saml_metadata
 
     def validate(self):

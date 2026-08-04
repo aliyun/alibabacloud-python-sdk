@@ -29,36 +29,74 @@ class ListUserDevicesRequest(DaraModel):
         page_size: int = None,
         sase_user_id: str = None,
         sharing_status: bool = None,
+        sn_bios: str = None,
         sn_system: str = None,
         sort_by: str = None,
         username: str = None,
         workshop: str = None,
     ):
+        # The collection of client statuses.
         self.app_statuses = app_statuses
+        # The collection of client versions.
         self.app_versions = app_versions
         self.auto_login_statuses = auto_login_statuses
+        # The page number of the current page in a paging query. Valid values: 1 to 10000.
+        # 
         # This parameter is required.
         self.current_page = current_page
+        # The department to which the user belongs. The value is 1 to 128 characters in length and supports Chinese characters and uppercase and lowercase letters. It can contain digits, periods (.), commas (,), semicolons (;), hyphens (-), underscores (_), forward slashes (/), at signs (@), and spaces.
         self.department = department
+        # The ownership of the endpoint device. Valid values:
+        # - **Personal**: personal device.
+        # - **Company**: company device.
         self.device_belong = device_belong
+        # The device group ID.
         self.device_group_id = device_group_id
+        # The collection of endpoint device statuses.
         self.device_statuses = device_statuses
+        # The collection of endpoint device IDs.
         self.device_tags = device_tags
+        # The collection of endpoint device operating system types.
         self.device_types = device_types
+        # The collection of office data protection statuses.
         self.dlp_statuses = dlp_statuses
+        # The name of the endpoint device. The value is 1 to 128 characters in length and supports Chinese characters and uppercase and lowercase letters. It can contain digits, periods (.), commas (,), semicolons (;), hyphens (-), underscores (_), forward slashes (/), at signs (@), and spaces. If you enter only an underscore (_), endpoint devices whose names contain 4-byte UTF-8 characters are also queried.
         self.hostname = hostname
+        # The collection of Internet access statuses.
         self.ia_statuses = ia_statuses
+        # The internal IP address of the endpoint device.
         self.inner_ip = inner_ip
+        # The MAC address of the endpoint device.
         self.mac = mac
+        # The collection of network access control statuses.
         self.nac_statuses = nac_statuses
+        # The collection of private access statuses.
         self.pa_statuses = pa_statuses
+        # The number of entries per page in a paging query. Settings: 1 to 500.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The user ID. You can obtain this value from the following operations:
+        # - [GetUserDevice](~~GetUserDevice~~): Queries the details of a user endpoint device.
+        # - [ListUserDevices](~~ListUserDevices~~): Lists user endpoint devices.
         self.sase_user_id = sase_user_id
+        # Specifies whether sharing is enabled for the device. Valid values:
+        # - **true**: Sharing is enabled.
+        # - **false**: Sharing is disabled.
         self.sharing_status = sharing_status
+        # The BIOS system serial number.
+        self.sn_bios = sn_bios
+        # The system serial number.
         self.sn_system = sn_system
+        # The sort parameter. Valid values:
+        # - **Username**: sorted by Username in ascending order.
+        # - **AppVersion**: sorted by AppVersion in descending order.
+        # - **UpdateTime**: sorted by UpdateTime in descending order.
+        # - **CreateTime**: sorted by CreateTime in descending order.
         self.sort_by = sort_by
+        # The username. The value is 1 to 128 characters in length and supports Chinese characters and uppercase and lowercase letters. It can contain digits, periods (.), underscores (_), hyphens (-), asterisks (*), at signs (@), and spaces.
         self.username = username
+        # The name of the office area.
         self.workshop = workshop
 
     def validate(self):
@@ -128,6 +166,9 @@ class ListUserDevicesRequest(DaraModel):
 
         if self.sharing_status is not None:
             result['SharingStatus'] = self.sharing_status
+
+        if self.sn_bios is not None:
+            result['SnBios'] = self.sn_bios
 
         if self.sn_system is not None:
             result['SnSystem'] = self.sn_system
@@ -204,6 +245,9 @@ class ListUserDevicesRequest(DaraModel):
 
         if m.get('SharingStatus') is not None:
             self.sharing_status = m.get('SharingStatus')
+
+        if m.get('SnBios') is not None:
+            self.sn_bios = m.get('SnBios')
 
         if m.get('SnSystem') is not None:
             self.sn_system = m.get('SnSystem')

@@ -11,6 +11,8 @@ class DeleteRegistrationPoliciesRequest(DaraModel):
         self,
         policy_ids: List[str] = None,
     ):
+        # A collection of device registration policy IDs.
+        # 
         # This parameter is required.
         self.policy_ids = policy_ids
 

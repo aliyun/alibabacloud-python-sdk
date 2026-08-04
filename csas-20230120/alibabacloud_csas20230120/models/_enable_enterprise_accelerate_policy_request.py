@@ -9,6 +9,8 @@ class EnableEnterpriseAcceleratePolicyRequest(DaraModel):
         self,
         eap_id: str = None,
     ):
+        # The ID of the enterprise acceleration policy.
+        # 
         # This parameter is required.
         self.eap_id = eap_id
 

@@ -14,9 +14,11 @@ class ListForwardStrategiesResponseBody(DaraModel):
         request_id: str = None,
         total_num: int = None,
     ):
+        # The list of forwarding rules.
         self.forward_strategies = forward_strategies
         # Id of the request
         self.request_id = request_id
+        # The total number of policies.
         self.total_num = total_num
 
     def validate(self):
@@ -70,12 +72,22 @@ class ListForwardStrategiesResponseBodyForwardStrategies(DaraModel):
         priority: str = None,
         status: str = None,
     ):
+        # The description of the forwarding rule.
         self.description = description
+        # The ID of the destination instance.
         self.destination_id = destination_id
+        # The type of the access destination. Valid values:
+        # - **Connector**: connector.
         self.destination_type = destination_type
+        # The ID of the forwarding rule.
         self.forward_id = forward_id
+        # The name of the forwarding rule.
         self.name = name
+        # The policy priority.
         self.priority = priority
+        # The status of the policy. Valid values:
+        # - **Enabled**: Enabled.
+        # - **Disabled**: Disabled.
         self.status = status
 
     def validate(self):

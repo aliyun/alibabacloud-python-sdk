@@ -14,9 +14,13 @@ class ListEnterpriseAccelerateTargetsResponseBody(DaraModel):
         targets: List[str] = None,
         total: int = None,
     ):
+        # Enterprise Acceleration Policy ID.
         self.eap_id = eap_id
+        # ID of the current request.
         self.request_id = request_id
+        # List of enterprise acceleration targets.
         self.targets = targets
+        # The total number of addresses.
         self.total = total
 
     def validate(self):

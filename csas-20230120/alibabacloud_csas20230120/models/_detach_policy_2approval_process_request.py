@@ -11,10 +11,28 @@ class DetachPolicy2ApprovalProcessRequest(DaraModel):
         policy_type: str = None,
         process_id: str = None,
     ):
+        # Business policy ID.
+        # 
         # This parameter is required.
         self.policy_id = policy_id
+        # Policy type. Valid values:
+        # 
+        # - **DomainBlacklist**: Domain blacklist.
+        # 
+        # - **DomainWhitelist**: Domain whitelist.
+        # 
+        # - **SoftwareBlock**: Software disable.
+        # 
+        # - **AppUninstall**: Terminal uninstall.
+        # 
+        # - **DlpSend**: File outbound transfer.
+        # 
+        # - **PeripheralBlock**: Peripheral control.
+        # 
         # This parameter is required.
         self.policy_type = policy_type
+        # Approval process ID.
+        # 
         # This parameter is required.
         self.process_id = process_id
 

@@ -13,7 +13,9 @@ class GetDynamicRouteResponseBody(DaraModel):
         dynamic_route: main_models.GetDynamicRouteResponseBodyDynamicRoute = None,
         request_id: str = None,
     ):
+        # The dynamic route.
         self.dynamic_route = dynamic_route
+        # The ID of this request.
         self.request_id = request_id
 
     def validate(self):
@@ -60,17 +62,39 @@ class GetDynamicRouteResponseBodyDynamicRoute(DaraModel):
         status: str = None,
         tag_ids: List[str] = None,
     ):
+        # The list of internal network application IDs for the dynamic route. This field appears only when ApplicationType is set to **Application**.
         self.application_ids = application_ids
+        # The application type for the dynamic route. Valid values:
+        # 
+        # - **All**: All applications.
+        # 
+        # - **Application**: An application.
+        # 
+        # - **Tag**: A tag.
         self.application_type = application_type
+        # The time when the dynamic route was created.
         self.create_time = create_time
+        # A description of the dynamic route.
         self.description = description
+        # The ID of the dynamic route.
         self.dynamic_route_id = dynamic_route_id
+        # The type of the dynamic route. Valid value: **connector** (dedicated line).
         self.dynamic_route_type = dynamic_route_type
+        # The name of the dynamic route.
         self.name = name
+        # The instance ID of the next hop for the dynamic route.
         self.next_hop = next_hop
+        # The priority of the dynamic route. A value of 1 indicates the highest priority. Priority order matches the display order in lists.
         self.priority = priority
+        # The list of regions supported by the SASE POP cluster access points.
         self.region_ids = region_ids
+        # The status of the dynamic route. Valid values:
+        # 
+        # - **Enabled**: The dynamic route is enabled.
+        # 
+        # - **Disabled**: The dynamic route is disabled.
         self.status = status
+        # The list of internal network tag IDs for the dynamic route. This field appears only when ApplicationType is set to **Tag**.
         self.tag_ids = tag_ids
 
     def validate(self):
