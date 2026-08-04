@@ -9,6 +9,7 @@ class GetResourceGroupMachineGroupShrinkRequest(DaraModel):
         self,
         tag_shrink: str = None,
     ):
+        # A list of up to 20 tags.
         self.tag_shrink = tag_shrink
 
     def validate(self):

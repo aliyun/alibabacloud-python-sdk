@@ -36,30 +36,66 @@ class Quota(DaraModel):
         version: str = None,
         workspaces: List[main_models.WorkspaceIdName] = None,
     ):
+        # The resource allocation strategy. Currently, only `ByNodeSpec` is supported.
         self.allocate_strategy = allocate_strategy
+        # The ID of the user who created the quota.
         self.creator_id = creator_id
+        # The quota description.
         self.description = description
         self.gputype = gputype
+        # The time when the quota was created.
         self.gmt_created_time = gmt_created_time
+        # The time when the quota was last modified.
         self.gmt_modified_time = gmt_modified_time
         self.hyper_zones = hyper_zones
+        # The quota labels.
         self.labels = labels
+        # The ID of the most recent operation on the quota.
         self.latest_operation_id = latest_operation_id
+        # The guaranteed resources.
         self.min = min
+        # The parent quota ID.
         self.parent_quota_id = parent_quota_id
+        # The queuing strategy. Valid values:
+        # 
+        # - `PaiStrategyIntelligent`: intelligent strategy.
+        # 
+        # - `PaiStrategyBalance`: balanced strategy.
+        # 
+        # - `PaiStrategyRoundRobin`: round-robin strategy.
+        # 
+        # - `PaiStrategyStrictFIFO`: FIFO strategy.
         self.queue_strategy = queue_strategy
         self.quota_cluster = quota_cluster
+        # The quota configuration.
         self.quota_config = quota_config
+        # The quota details.
         self.quota_details = quota_details
+        # The quota ID.
         self.quota_id = quota_id
+        # The quota name.
         self.quota_name = quota_name
+        # The error code.
         self.reason_code = reason_code
+        # The error message.
         self.reason_message = reason_message
+        # A list of resource group IDs.
         self.resource_group_ids = resource_group_ids
+        # The resource type. Valid values:
+        # 
+        # - `Lingjun`
+        # 
+        # - `ECS` (default)
+        # 
+        # - `ACS`
         self.resource_type = resource_type
+        # The quota status.
         self.status = status
+        # A list of sub-quotas.
         self.sub_quotas = sub_quotas
+        # The version.
         self.version = version
+        # The workspaces that are associated with the quota.
         self.workspaces = workspaces
 
     def validate(self):

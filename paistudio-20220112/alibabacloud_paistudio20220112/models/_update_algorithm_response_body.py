@@ -10,7 +10,9 @@ class UpdateAlgorithmResponseBody(DaraModel):
         algorithm_id: str = None,
         request_id: str = None,
     ):
+        # The algorithm ID.
         self.algorithm_id = algorithm_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

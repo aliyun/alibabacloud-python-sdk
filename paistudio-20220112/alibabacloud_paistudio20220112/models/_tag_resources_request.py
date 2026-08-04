@@ -15,9 +15,13 @@ class TagResourcesRequest(DaraModel):
         resource_type: str = None,
         tag: List[main_models.TagResourcesRequestTag] = None,
     ):
+        # The region.
         self.region_id = region_id
+        # The resource IDs. You can specify up to 50 resource IDs.
         self.resource_id = resource_id
+        # The resource type.
         self.resource_type = resource_type
+        # The tags to add. You can specify up to 20 tags.
         self.tag = tag
 
     def validate(self):
@@ -72,7 +76,9 @@ class TagResourcesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):

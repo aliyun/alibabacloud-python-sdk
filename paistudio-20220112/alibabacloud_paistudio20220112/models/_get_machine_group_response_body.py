@@ -28,23 +28,41 @@ class GetMachineGroupResponseBody(DaraModel):
         status: str = None,
         supported_drivers: List[str] = None,
     ):
+        # The number of instances in the machine group.
         self.count = count
+        # The default driver.
         self.default_driver = default_driver
+        # The subscription duration. This parameter is returned only when `PayType` is `PrePay`.
         self.duration = duration
+        # The ECS instance type of the machine group.
         self.ecs_type = ecs_type
+        # The time when the machine group was created.
         self.gmt_created = gmt_created
+        # The expiration time. This parameter is returned only when `PayType` is `PrePay`.
         self.gmt_expired = gmt_expired
+        # The time when the machine group was last modified.
         self.gmt_modified = gmt_modified
+        # The time when the machine group started.
         self.gmt_started = gmt_started
+        # The ID of the machine group.
         self.machine_group_id = machine_group_id
+        # The order ID.
         self.order_id = order_id
+        # The instance ID of the order.
         self.order_instance_id = order_instance_id
+        # The PAI resource ID.
         self.pairesource_id = pairesource_id
+        # The payment type. Valid values: `PostPay` (pay-as-you-go) and `PrePay` (subscription).
         self.pay_type = pay_type
+        # The billing cycle. This parameter is returned only when `PayType` is `PrePay`.
         self.pricing_cycle = pricing_cycle
+        # The region ID.
         self.region_id = region_id
+        # The request ID.
         self.request_id = request_id
+        # The status of the machine group.
         self.status = status
+        # The drivers that the machine group supports.
         self.supported_drivers = supported_drivers
 
     def validate(self):

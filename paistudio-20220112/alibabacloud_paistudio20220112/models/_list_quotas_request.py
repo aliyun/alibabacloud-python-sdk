@@ -26,23 +26,63 @@ class ListQuotasRequest(DaraModel):
         workspace_ids: str = None,
         workspace_name: str = None,
     ):
+        # Filters the results by cluster type.
         self.cluster_type = cluster_type
         self.gputype = gputype
         self.has_resource = has_resource
+        # Filters the results by labels. Specify labels as key=value pairs, separated by commas (,).
         self.labels = labels
+        # The layout mode. Valid values: Tree and List.
         self.layout_mode = layout_mode
+        # The sort order. Valid values are desc and asc.
         self.order = order
+        # The page number of the results to return. The minimum value is 1.
         self.page_number = page_number
+        # The number of entries to return on each page. The minimum value is 1.
         self.page_size = page_size
+        # Filters the results by parent quota ID:
+        # 
+        # - If this parameter is not specified, all quotas within the tenant are returned, including both root and child quotas.
+        # 
+        # - If this parameter is set to an empty string, all root quotas are returned.
+        # 
+        # - If a specific parent quota ID is provided, all child quotas of that parent are returned.
         self.parent_quota_id = parent_quota_id
+        # A comma-separated list of up to 100 quota IDs to filter the results. Only exact matching is supported.
         self.quota_ids = quota_ids
+        # Filters the results by quota name. Fuzzy matching is supported.
         self.quota_name = quota_name
+        # The resource type. Valid values are Lingjun, ECS, and ACS. The default value is ECS.
         self.resource_type = resource_type
+        # The field to sort the results by. Valid values:
+        # 
+        # - QuotaName
+        # 
+        # - Status
+        # 
+        # - CPU
+        # 
+        # - Memory
+        # 
+        # - GPU
+        # 
+        # - GmtCreatedTime
+        # 
+        # - GmtModifiedTime
         self.sort_by = sort_by
+        # A comma-separated list of quota statuses to filter the results. Only exact matching is supported.
         self.statuses = statuses
+        # Specifies whether to return detailed information. Valid values:
+        # 
+        # - true: Returns detailed information.
+        # 
+        # - false: Does not return detailed information.
         self.verbose = verbose
+        # Filters the results by version.
         self.versions = versions
+        # A comma-separated list of up to 10 workspace IDs to filter the results. Only exact matching is supported.
         self.workspace_ids = workspace_ids
+        # The name of the associated workspace.
         self.workspace_name = workspace_name
 
     def validate(self):

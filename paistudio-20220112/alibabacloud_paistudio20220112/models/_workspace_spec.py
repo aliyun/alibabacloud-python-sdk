@@ -16,12 +16,19 @@ class WorkspaceSpec(DaraModel):
         spec: main_models.ResourceAmount = None,
         spec_name: str = None,
     ):
+        # Invalidity reason code when using guaranteed resources is invalid
         self.code = code
+        # Type of invalidity reason when using guaranteed resources is invalid
         self.code_type = code_type
+        # Indicates whether the use of guaranteed resources is valid.
         self.is_guaranteed_valid = is_guaranteed_valid
+        # Indicates whether the use of oversold resources is valid.
         self.is_over_sold_valid = is_over_sold_valid
+        # Invalidity reason content when using guaranteed resources is invalid
         self.reason = reason
+        # Specification resource information
         self.spec = spec
+        # Template Name
         self.spec_name = spec_name
 
     def validate(self):

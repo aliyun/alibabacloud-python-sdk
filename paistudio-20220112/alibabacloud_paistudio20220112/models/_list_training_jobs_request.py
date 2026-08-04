@@ -24,19 +24,33 @@ class ListTrainingJobsRequest(DaraModel):
         training_job_name: str = None,
         workspace_id: str = None,
     ):
+        # The algorithm name.
         self.algorithm_name = algorithm_name
+        # The algorithm provider.
         self.algorithm_provider = algorithm_provider
+        # The end time of the job creation time range for the query. Default value: current time.
         self.end_time = end_time
+        # Specifies whether the algorithm is a temporary algorithm.
         self.is_temp_algo = is_temp_algo
+        # The labels of the training job.
         self.labels = labels
+        # The sort order. Valid values:
         self.order = order
+        # The page number for paging.
         self.page_number = page_number
+        # The page size.
         self.page_size = page_size
+        # The field by which to sort the results.
         self.sort_by = sort_by
+        # The start time of the job creation time range for the query. Default value: 7 days ago.
         self.start_time = start_time
+        # The status of the training job.
         self.status = status
+        # The training job ID.
         self.training_job_id = training_job_id
+        # The name of the training job.
         self.training_job_name = training_job_name
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):

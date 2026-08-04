@@ -18,18 +18,21 @@ class UserVpc(DaraModel):
         switch_id: str = None,
         vpc_id: str = None,
     ):
+        # The default public gateway information.
         self.default_forward_info = default_forward_info
-        # DefaultRoute
+        # The default routing. Valid values:
+        # - eth0: uses the default network interface controller (NIC) to access external networks through the public gateway.
+        # - eth1: uses the user\\"s elastic network interfaces (ENIs) to access external networks through the private gateway.
         self.default_route = default_route
-        # ExtendedCIDRs
+        # The secondary CIDR blocks.
         self.extended_cidrs = extended_cidrs
-        # RoleArn
+        # The OSS access authorization information.
         self.role_arn = role_arn
-        # SecurityGroupID
+        # The security group ID.
         self.security_group_id = security_group_id
-        # VSW ID
+        # The vSwitch ID.
         self.switch_id = switch_id
-        # VPC ID
+        # VPC ID。
         self.vpc_id = vpc_id
 
     def validate(self):

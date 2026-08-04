@@ -14,13 +14,21 @@ class ListTrainingJobLogsRequest(DaraModel):
         start_time: str = None,
         worker_id: str = None,
     ):
+        # The end UTC time in ISO 8601 format. If empty, the current time is used.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.end_time = end_time
+        # The instance ID.
         self.instance_id = instance_id
+        # The page number.
         self.page_number = page_number
+        # The page size.
         self.page_size = page_size
+        # The start UTC time in ISO 8601 format. If empty, the task start time is used.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.start_time = start_time
+        # The instance ID of the training task. This parameter is deprecated. Use InstanceId instead.
         self.worker_id = worker_id
 
     def validate(self):

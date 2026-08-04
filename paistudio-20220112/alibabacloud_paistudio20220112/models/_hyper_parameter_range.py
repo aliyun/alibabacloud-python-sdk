@@ -18,13 +18,21 @@ class HyperParameterRange(DaraModel):
         minimum: str = None,
         pattern: str = None,
     ):
+        # Hyperparameter enumeration list.
         self.enum = enum
+        # Whether the maximum value is exclusive.
         self.exclusive_maximum = exclusive_maximum
+        # Whether the minimum value is exclusive.
         self.exclusive_minimum = exclusive_minimum
+        # Maximum length.
         self.max_length = max_length
+        # Maximum value.
         self.maximum = maximum
+        # Minimum length.
         self.min_length = min_length
+        # Minimum value.
         self.minimum = minimum
+        # Regular expression.
         self.pattern = pattern
 
     def validate(self):

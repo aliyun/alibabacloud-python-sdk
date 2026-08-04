@@ -9,6 +9,7 @@ class GetTrainingJobLatestMetricsRequest(DaraModel):
         self,
         names: str = None,
     ):
+        # The name of the metric.
         self.names = names
 
     def validate(self):

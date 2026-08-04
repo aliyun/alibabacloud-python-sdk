@@ -13,10 +13,16 @@ class ConditionExpression(DaraModel):
         operator: str = None,
         values: List[str] = None,
     ):
+        # The type of required resource.
+        # 
         # This parameter is required.
         self.key = key
+        # The criterion for evaluation.
+        # 
         # This parameter is required.
         self.operator = operator
+        # List of resource values.
+        # 
         # This parameter is required.
         self.values = values
 

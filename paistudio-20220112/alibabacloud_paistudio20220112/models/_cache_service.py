@@ -15,6 +15,7 @@ class CacheService(DaraModel):
         cluster_id: str = None,
         created_by: str = None,
         gmt_created: str = None,
+        is_sharded: bool = None,
         network_type: str = None,
         quota_id: str = None,
         status: str = None,
@@ -24,18 +25,33 @@ class CacheService(DaraModel):
         user_id: str = None,
         user_vpc: main_models.UserVpc = None,
     ):
+        # Information about each cache node in the service.
         self.cache_infos = cache_infos
+        # The unique identifier of the CacheService.
         self.cache_service_id = cache_service_id
+        # The ID of the PAI cluster where the CacheService is deployed.
         self.cluster_id = cluster_id
+        # The user or entity that created the resource.
         self.created_by = created_by
+        # The time (in UTC, ISO 8601 format) when the CacheService was created.
         self.gmt_created = gmt_created
+        # Indicates whether the CacheService is sharded across multiple nodes.
+        self.is_sharded = is_sharded
+        # The network type of the CacheService. For example, `VPC`.
         self.network_type = network_type
+        # The ID of the resource quota associated with the CacheService.
         self.quota_id = quota_id
+        # The current status of the CacheService. For example: `Creating`, `Available`, or `Deleting`.
         self.status = status
+        # Indicates whether the CacheService supports RDMA.
         self.support_rdma = support_rdma
+        # A list of quota IDs for clients that can connect to this CacheService.
         self.supported_client_quota_ids = supported_client_quota_ids
+        # The ID of the tenant that owns the CacheService.
         self.tenant_id = tenant_id
+        # The ID of the user associated with the CacheService.
         self.user_id = user_id
+        # The configuration of the user\\"s VPC where the CacheService is deployed.
         self.user_vpc = user_vpc
 
     def validate(self):
@@ -67,6 +83,9 @@ class CacheService(DaraModel):
 
         if self.gmt_created is not None:
             result['GmtCreated'] = self.gmt_created
+
+        if self.is_sharded is not None:
+            result['IsSharded'] = self.is_sharded
 
         if self.network_type is not None:
             result['NetworkType'] = self.network_type
@@ -113,6 +132,9 @@ class CacheService(DaraModel):
 
         if m.get('GmtCreated') is not None:
             self.gmt_created = m.get('GmtCreated')
+
+        if m.get('IsSharded') is not None:
+            self.is_sharded = m.get('IsSharded')
 
         if m.get('NetworkType') is not None:
             self.network_type = m.get('NetworkType')

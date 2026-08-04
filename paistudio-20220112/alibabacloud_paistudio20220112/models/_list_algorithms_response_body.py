@@ -14,8 +14,11 @@ class ListAlgorithmsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # Algorithm list.
         self.algorithms = algorithms
+        # Request ID.
         self.request_id = request_id
+        # Total algorithms.
         self.total_count = total_count
 
     def validate(self):
@@ -71,14 +74,23 @@ class ListAlgorithmsResponseBodyAlgorithms(DaraModel):
         user_id: str = None,
         workspace_id: str = None,
     ):
+        # Algorithm description.
         self.algorithm_description = algorithm_description
+        # Algorithm ID.
         self.algorithm_id = algorithm_id
+        # Algorithm name.
         self.algorithm_name = algorithm_name
+        # Algorithm provider.
         self.algorithm_provider = algorithm_provider
+        # Algorithm display name.
         self.display_name = display_name
+        # Algorithm creation time.
         self.gmt_create_time = gmt_create_time
+        # Algorithm update time.
         self.gmt_modified_time = gmt_modified_time
+        # Algorithm owner ID.
         self.user_id = user_id
+        # Workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):

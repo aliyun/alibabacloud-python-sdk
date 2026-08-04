@@ -11,8 +11,11 @@ class NodeCordonParameters(DaraModel):
         quota_id: str = None,
         workspace_id: str = None,
     ):
+        # User-configurable reason for disabling scheduling
         self.comment = comment
+        # Quota ID, used when disabling edge zone scheduling in a workspace
         self.quota_id = quota_id
+        # Workspace ID, used when disabling edge zone scheduling in a workspace
         self.workspace_id = workspace_id
 
     def validate(self):

@@ -11,7 +11,9 @@ class GetTrainingJobErrorInfoResponseBody(DaraModel):
         error_info: main_models.GetTrainingJobErrorInfoResponseBodyErrorInfo = None,
         request_id: str = None,
     ):
+        # The fault error message.
         self.error_info = error_info
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -49,8 +51,11 @@ class GetTrainingJobErrorInfoResponseBodyErrorInfo(DaraModel):
         code: str = None,
         message: str = None,
     ):
+        # The additional information.
         self.additional_info = additional_info
+        # The error code.
         self.code = code
+        # The fault error message.
         self.message = message
 
     def validate(self):

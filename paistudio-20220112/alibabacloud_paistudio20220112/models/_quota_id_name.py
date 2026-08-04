@@ -10,7 +10,9 @@ class QuotaIdName(DaraModel):
         quota_id: str = None,
         quota_name: str = None,
     ):
+        # Resource quota ID
         self.quota_id = quota_id
+        # Resource quota name
         self.quota_name = quota_name
 
     def validate(self):

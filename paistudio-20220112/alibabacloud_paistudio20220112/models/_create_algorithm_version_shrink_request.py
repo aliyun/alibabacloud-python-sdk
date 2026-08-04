@@ -9,6 +9,7 @@ class CreateAlgorithmVersionShrinkRequest(DaraModel):
         self,
         algorithm_spec_shrink: str = None,
     ):
+        # Algorithm configuration.
         self.algorithm_spec_shrink = algorithm_spec_shrink
 
     def validate(self):

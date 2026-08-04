@@ -14,8 +14,12 @@ class ListResourceGroupsResponseBody(DaraModel):
         resource_groups: List[main_models.ResourceGroup] = None,
         total_count: int = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The list of resource groups.
         self.resource_groups = resource_groups
+        # The total number of matching resource groups.
+        # 
         # This parameter is required.
         self.total_count = total_count
 

@@ -9,6 +9,7 @@ class CheckInstanceWebTerminalRequest(DaraModel):
         self,
         check_info: str = None,
     ):
+        # The check information.
         self.check_info = check_info
 
     def validate(self):

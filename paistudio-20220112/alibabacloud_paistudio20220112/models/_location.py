@@ -12,7 +12,9 @@ class Location(DaraModel):
         location_type: str = None,
         location_value: Dict[str, Any] = None,
     ):
+        # The code location type. Valid values: OSS and NAS.
         self.location_type = location_type
+        # The code path.
         self.location_value = location_value
 
     def validate(self):

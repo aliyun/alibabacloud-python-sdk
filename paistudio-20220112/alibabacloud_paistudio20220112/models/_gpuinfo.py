@@ -10,7 +10,9 @@ class GPUInfo(DaraModel):
         count: int = None,
         type: str = None,
     ):
+        # Quantity
         self.count = count
+        # Type
         self.type = type
 
     def validate(self):

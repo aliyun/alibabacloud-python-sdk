@@ -13,10 +13,32 @@ class GetNodeMetricsRequest(DaraModel):
         time_step: str = None,
         verbose: bool = None,
     ):
+        # The end time.
         self.end_time = end_time
+        # The GPU type. Valid values:
+        # - V100
+        # - A100
+        # - A10
+        # - T4
+        # - P100
         self.gputype = gputype
+        # The start time.
         self.start_time = start_time
+        # The time step. Default value: 5m. The supported time units are:
+        # 
+        # - h: hours.
+        # 
+        # - m: minutes.
+        # 
+        # - s: seconds.
+        # 
+        # If the value does not contain a unit, the default unit is s (seconds).
         self.time_step = time_step
+        # Specifies whether to display non-essential information. Non-essential information currently includes Labels.
+        # Valid values:
+        # 
+        # false: does not display non-essential information (default value)
+        # true: displays non-essential information
         self.verbose = verbose
 
     def validate(self):

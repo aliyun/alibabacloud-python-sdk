@@ -33,28 +33,51 @@ class UserViewMetric(DaraModel):
         total_memory: int = None,
         user_id: str = None,
     ):
+        # Number of CPU nodes.
         self.cpunode_number = cpunode_number
+        # CPU usage rate.
         self.cpuusage_rate = cpuusage_rate
+        # CPU jobs.
         self.cpu_job_names = cpu_job_names
+        # List of CPU nodes.
         self.cpu_node_names = cpu_node_names
+        # Disk read rate.
         self.disk_read_rate = disk_read_rate
+        # Disk write rate.
         self.disk_write_rate = disk_write_rate
+        # Number of GPU nodes.
         self.gpunode_number = gpunode_number
+        # GPU usage rate.
         self.gpuusage_rate = gpuusage_rate
+        # GPU jobs.
         self.gpu_job_names = gpu_job_names
+        # List of GPU nodes.
         self.gpu_node_names = gpu_node_names
+        # Job type.
         self.job_type = job_type
+        # Memory usage rate.
         self.memory_usage_rate = memory_usage_rate
+        # The network input rate.
         self.network_input_rate = network_input_rate
+        # Network output rate.
         self.network_output_rate = network_output_rate
+        # List of nodes.
         self.node_names = node_names
+        # Number of CPU cores allocated.
         self.request_cpu = request_cpu
+        # Number of GPU cores allocated.
         self.request_gpu = request_gpu
+        # Allocated memory, in KB.
         self.request_memory = request_memory
+        # Resource group ID.
         self.resource_group_id = resource_group_id
+        # Total number of CPU cores.
         self.total_cpu = total_cpu
+        # Total number of GPU cards.
         self.total_gpu = total_gpu
+        # Total memory, in KB.
         self.total_memory = total_memory
+        # User ID.
         self.user_id = user_id
 
     def validate(self):

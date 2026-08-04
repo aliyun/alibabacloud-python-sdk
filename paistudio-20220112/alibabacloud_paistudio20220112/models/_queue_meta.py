@@ -20,16 +20,27 @@ class QueueMeta(DaraModel):
         status: str = None,
         use_oversold_resource: bool = None,
     ):
+        # The time the entry was removed from the queue.
         self.gmt_dequeued_time = gmt_dequeued_time
+        # The time the entry was added to the queue.
         self.gmt_enqueued_time = gmt_enqueued_time
+        # The last time the position of the entry was modified.
         self.gmt_position_modified_time = gmt_position_modified_time
+        # The name of the queue entry.
         self.name = name
+        # The position of the entry in the queue.
         self.position = position
+        # The queuing strategy for the entry.
         self.queue_strategy = queue_strategy
+        # The ID of the associated quota.
         self.quota_id = quota_id
+        # The resources that the queue entry requires.
         self.resource = resource
+        # The resources scheduled for the entry.
         self.scheduled_resource = scheduled_resource
+        # The current status of the entry.
         self.status = status
+        # Indicates whether the entry can use oversold resources.
         self.use_oversold_resource = use_oversold_resource
 
     def validate(self):

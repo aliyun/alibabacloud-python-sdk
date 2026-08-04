@@ -13,8 +13,11 @@ class BindingPolicy(DaraModel):
         include_nodes: List[str] = None,
         node_spec_count: int = None,
     ):
+        # A list of node IDs to exclude from scheduling.
         self.exclude_nodes = exclude_nodes
+        # A list of node IDs to include in the scheduling.
         self.include_nodes = include_nodes
+        # The number of nodes to be selected by the scheduler.
         self.node_spec_count = node_spec_count
 
     def validate(self):

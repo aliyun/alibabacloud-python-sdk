@@ -10,7 +10,9 @@ class UpdateAlgorithmRequest(DaraModel):
         algorithm_description: str = None,
         display_name: str = None,
     ):
+        # The algorithm description.
         self.algorithm_description = algorithm_description
+        # The display name of the algorithm.
         self.display_name = display_name
 
     def validate(self):

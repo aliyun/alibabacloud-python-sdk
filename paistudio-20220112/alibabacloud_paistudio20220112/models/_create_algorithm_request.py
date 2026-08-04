@@ -12,9 +12,13 @@ class CreateAlgorithmRequest(DaraModel):
         display_name: str = None,
         workspace_id: str = None,
     ):
+        # The description of the algorithm.
         self.algorithm_description = algorithm_description
+        # The name of the algorithm.
         self.algorithm_name = algorithm_name
+        # The display name of the algorithm.
         self.display_name = display_name
+        # The ID of the workspace.
         self.workspace_id = workspace_id
 
     def validate(self):

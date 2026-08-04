@@ -10,7 +10,9 @@ class Metric(DaraModel):
         time: int = None,
         value: str = None,
     ):
+        # The UNIX timestamp.
         self.time = time
+        # The metric value.
         self.value = value
 
     def validate(self):

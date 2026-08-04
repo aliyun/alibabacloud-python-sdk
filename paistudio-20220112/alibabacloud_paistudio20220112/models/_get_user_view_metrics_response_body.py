@@ -15,9 +15,13 @@ class GetUserViewMetricsResponseBody(DaraModel):
         total: int = None,
         user_metrics: List[main_models.UserViewMetric] = None,
     ):
+        # 资源组ID
         self.resource_group_id = resource_group_id
+        # 用户监控数据。
         self.summary = summary
+        # 总条数
         self.total = total
+        # 按照用户维度统计的指标
         self.user_metrics = user_metrics
 
     def validate(self):

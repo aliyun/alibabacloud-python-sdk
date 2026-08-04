@@ -41,7 +41,12 @@ class Client(OpenApiClient):
             'cn-qingdao': 'pai.cn-qingdao.aliyuncs.com',
             'cn-shanghai-finance-1': 'pai.cn-shanghai-finance-1.aliyuncs.com',
             'cn-wulanchabu': 'pai.cn-wulanchabu.aliyuncs.com',
-            'cn-zhangjiakou': 'pai.cn-zhangjiakou.aliyuncs.com'
+            'cn-zhangjiakou': 'pai.cn-zhangjiakou.aliyuncs.com',
+            'us-southeast-1': 'pai.us-southeast-1.aliyuncs.com',
+            'cn-zhongwei': 'pai.cn-zhongwei.aliyuncs.com',
+            'cn-guangzhou': 'pai.cn-guangzhou.aliyuncs.com',
+            'ap-southeast-8': 'pai.ap-southeast-8.aliyuncs.com',
+            'ap-northeast-2': 'pai.ap-northeast-2.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('paistudio', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -634,6 +639,8 @@ class Client(OpenApiClient):
             body['CodeDir'] = request.code_dir
         if not DaraCore.is_null(request.compute_resource):
             body['ComputeResource'] = request.compute_resource
+        if not DaraCore.is_null(request.credential_config):
+            body['CredentialConfig'] = request.credential_config
         if not DaraCore.is_null(request.environments):
             body['Environments'] = request.environments
         if not DaraCore.is_null(request.experiment_config):
@@ -706,6 +713,8 @@ class Client(OpenApiClient):
             body['CodeDir'] = request.code_dir
         if not DaraCore.is_null(request.compute_resource):
             body['ComputeResource'] = request.compute_resource
+        if not DaraCore.is_null(request.credential_config):
+            body['CredentialConfig'] = request.credential_config
         if not DaraCore.is_null(request.environments):
             body['Environments'] = request.environments
         if not DaraCore.is_null(request.experiment_config):
@@ -2727,6 +2736,94 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.list_algorithms_with_options_async(request, headers, runtime)
+
+    def list_node_pods_with_options(
+        self,
+        node_id: str,
+        request: main_models.ListNodePodsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListNodePodsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.gpuindexes):
+            query['GPUIndexes'] = request.gpuindexes
+        if not DaraCore.is_null(request.oversold_types):
+            query['OversoldTypes'] = request.oversold_types
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListNodePods',
+            version = '2022-01-12',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/nodes/{DaraURL.percent_encode(node_id)}/Pods',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListNodePodsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_node_pods_with_options_async(
+        self,
+        node_id: str,
+        request: main_models.ListNodePodsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListNodePodsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.gpuindexes):
+            query['GPUIndexes'] = request.gpuindexes
+        if not DaraCore.is_null(request.oversold_types):
+            query['OversoldTypes'] = request.oversold_types
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListNodePods',
+            version = '2022-01-12',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/nodes/{DaraURL.percent_encode(node_id)}/Pods',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListNodePodsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_node_pods(
+        self,
+        node_id: str,
+        request: main_models.ListNodePodsRequest,
+    ) -> main_models.ListNodePodsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_node_pods_with_options(node_id, request, headers, runtime)
+
+    async def list_node_pods_async(
+        self,
+        node_id: str,
+        request: main_models.ListNodePodsRequest,
+    ) -> main_models.ListNodePodsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_node_pods_with_options_async(node_id, request, headers, runtime)
 
     def list_node_types_with_options(
         self,
@@ -5117,6 +5214,8 @@ class Client(OpenApiClient):
             body['Description'] = request.description
         if not DaraCore.is_null(request.labels):
             body['Labels'] = request.labels
+        if not DaraCore.is_null(request.propagate_default_gpudriver):
+            body['PropagateDefaultGPUDriver'] = request.propagate_default_gpudriver
         if not DaraCore.is_null(request.queue_strategy):
             body['QueueStrategy'] = request.queue_strategy
         if not DaraCore.is_null(request.quota_config):
@@ -5156,6 +5255,8 @@ class Client(OpenApiClient):
             body['Description'] = request.description
         if not DaraCore.is_null(request.labels):
             body['Labels'] = request.labels
+        if not DaraCore.is_null(request.propagate_default_gpudriver):
+            body['PropagateDefaultGPUDriver'] = request.propagate_default_gpudriver
         if not DaraCore.is_null(request.queue_strategy):
             body['QueueStrategy'] = request.queue_strategy
         if not DaraCore.is_null(request.quota_config):

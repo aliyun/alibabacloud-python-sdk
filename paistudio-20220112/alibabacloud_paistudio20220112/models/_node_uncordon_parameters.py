@@ -10,7 +10,9 @@ class NodeUncordonParameters(DaraModel):
         quota_id: str = None,
         workspace_id: str = None,
     ):
+        # Quota ID. You can use this ID when you start a workspace or disable scheduling nodes.
         self.quota_id = quota_id
+        # The ID of the workspace that contains the node to uncordon.
         self.workspace_id = workspace_id
 
     def validate(self):

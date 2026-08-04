@@ -20,24 +20,24 @@ class ResourceGroup(DaraModel):
         version: str = None,
         workspace_id: str = None,
     ):
-        # CreatorID
+        # The user ID of the creator.
         self.creator_id = creator_id
-        # pai resource created time
+        # The time the PAI resource group was created.
         self.gmt_created_time = gmt_created_time
-        # GmtModified
+        # The time the PAI resource group was last modified.
         self.gmt_modified_time = gmt_modified_time
-        # pai resource group name
+        # The name of the PAI resource group.
         self.name = name
-        # NodeCount
+        # The number of nodes.
         self.node_count = node_count
-        # pai resource group id
+        # The ID of the PAI resource group.
         self.resource_group_id = resource_group_id
         self.resource_type = resource_type
         self.status = status
-        # UserVpc
+        # The VPC configuration.
         self.user_vpc = user_vpc
         self.version = version
-        # pworkspace id
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):

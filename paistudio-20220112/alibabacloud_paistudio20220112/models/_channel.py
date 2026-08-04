@@ -15,11 +15,17 @@ class Channel(DaraModel):
         required: bool = None,
         supported_channel_types: List[str] = None,
     ):
+        # Channel description.
         self.description = description
+        # Channel name.
+        # 
         # This parameter is required.
         self.name = name
+        # Storage configuration of the channel.
         self.properties = properties
+        # Indicates whether the channel must be configured.
         self.required = required
+        # List of storage classes supported by the channel.
         self.supported_channel_types = supported_channel_types
 
     def validate(self):

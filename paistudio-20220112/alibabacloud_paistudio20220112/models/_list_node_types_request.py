@@ -13,10 +13,15 @@ class ListNodeTypesRequest(DaraModel):
         quota_id: str = None,
         resource_group_ids: str = None,
     ):
+        # The accelerator type used to filter the results. Valid values: `CPU` and `GPU`.
         self.accelerator_type = accelerator_type
+        # The GPU type used to filter the results. Fuzzy matching is supported.
         self.gputype = gputype
+        # A comma-separated list of node types. If omitted, all node types are returned.
         self.node_types = node_types
+        # The quota ID. You must specify either this parameter or `ResourceGroupIds`.
         self.quota_id = quota_id
+        # A comma-separated list of resource group IDs. You must specify either this parameter or `QuotaId`. The `UserId` for the specified `ResourceGroupId` must match the `UserId` of the requesting user. All specified `resource group` instances must be of the same type and associated with the same Virtual Private Cloud (VPC).
         self.resource_group_ids = resource_group_ids
 
     def validate(self):

@@ -9,6 +9,7 @@ class UntagResourcesResponseBody(DaraModel):
         self,
         request_id: str = None,
     ):
+        # Common parameter. Each request has a unique ID. Use this ID to troubleshoot and locate issues.
         self.request_id = request_id
 
     def validate(self):

@@ -14,8 +14,11 @@ class ListResourceGroupMachineGroupsResponseBody(DaraModel):
         request_id: str = None,
         total_count: str = None,
     ):
+        # A list of machine groups.
         self.machine_groups = machine_groups
+        # The request ID.
         self.request_id = request_id
+        # The total number of machine groups.
         self.total_count = total_count
 
     def validate(self):

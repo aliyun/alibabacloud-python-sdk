@@ -13,12 +13,19 @@ class ListTagResourcesShrinkRequest(DaraModel):
         resource_type: str = None,
         tag_shrink: str = None,
     ):
+        # Pagination token for the next page of results
         self.next_token = next_token
+        # Region ID
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # Resource IDs. Maximum: 50 items.
         self.resource_id_shrink = resource_id_shrink
+        # Resource type
+        # 
         # This parameter is required.
         self.resource_type = resource_type
+        # Tags to filter by. Maximum: 20 items.
         self.tag_shrink = tag_shrink
 
     def validate(self):

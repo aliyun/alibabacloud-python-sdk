@@ -11,9 +11,14 @@ class MetricDefinition(DaraModel):
         name: str = None,
         regex: str = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
+        # 
         # This parameter is required.
         self.name = name
+        # The regular expression to collect metrics from logs.
+        # 
         # This parameter is required.
         self.regex = regex
 

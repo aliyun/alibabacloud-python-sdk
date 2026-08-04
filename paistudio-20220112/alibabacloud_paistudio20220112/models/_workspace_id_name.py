@@ -10,7 +10,9 @@ class WorkspaceIdName(DaraModel):
         workspace_id: str = None,
         workspace_name: str = None,
     ):
+        # The workspace ID.
         self.workspace_id = workspace_id
+        # The workspace name.
         self.workspace_name = workspace_name
 
     def validate(self):

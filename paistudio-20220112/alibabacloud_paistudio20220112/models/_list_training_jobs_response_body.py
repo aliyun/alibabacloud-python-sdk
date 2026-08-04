@@ -14,8 +14,11 @@ class ListTrainingJobsResponseBody(DaraModel):
         total_count: int = None,
         training_jobs: List[main_models.ListTrainingJobsResponseBodyTrainingJobs] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The total number of training jobs.
         self.total_count = total_count
+        # The list of training job details.
         self.training_jobs = training_jobs
 
     def validate(self):
@@ -66,6 +69,7 @@ class ListTrainingJobsResponseBodyTrainingJobs(DaraModel):
         algorithm_version: str = None,
         assign_node_spec: main_models.AssignNodeSpec = None,
         compute_resource: main_models.ListTrainingJobsResponseBodyTrainingJobsComputeResource = None,
+        credential_config: main_models.CredentialConfig = None,
         dlc_job_id: str = None,
         environments: Dict[str, str] = None,
         experiment_config: main_models.ListTrainingJobsResponseBodyTrainingJobsExperimentConfig = None,
@@ -90,33 +94,60 @@ class ListTrainingJobsResponseBodyTrainingJobs(DaraModel):
         user_vpc: main_models.ListTrainingJobsResponseBodyTrainingJobsUserVpc = None,
         workspace_id: str = None,
     ):
+        # The algorithm name.
         self.algorithm_name = algorithm_name
+        # The algorithm provider.
         self.algorithm_provider = algorithm_provider
+        # The algorithm version.
         self.algorithm_version = algorithm_version
         self.assign_node_spec = assign_node_spec
+        # The compute resource configuration.
         self.compute_resource = compute_resource
+        self.credential_config = credential_config
         self.dlc_job_id = dlc_job_id
+        # The list of environment variables.
         self.environments = environments
+        # The experiment configuration associated with the training job.
         self.experiment_config = experiment_config
+        # The time when the training job was created.
         self.gmt_create_time = gmt_create_time
+        # The time when the training job status was last updated.
         self.gmt_modified_time = gmt_modified_time
+        # The hyperparameter settings for training.
         self.hyper_parameters = hyper_parameters
+        # The input data configuration for training.
         self.input_channels = input_channels
+        # Indicates whether a temporary algorithm is used.
         self.is_temp_algo = is_temp_algo
+        # The labels of the training job.
         self.labels = labels
+        # The output data configuration for training.
         self.output_channels = output_channels
+        # The Python package configuration for the training job.
         self.python_requirements = python_requirements
+        # The status code of the training job.
         self.reason_code = reason_code
+        # The error message of the training job.
         self.reason_message = reason_message
+        # The role ARN used for delegated authorization.
         self.role_arn = role_arn
+        # The scheduling configuration of the training job.
         self.scheduler = scheduler
+        # The job status.
         self.status = status
+        # The list of training job status transitions.
         self.status_transitions = status_transitions
+        # The description of the training job.
         self.training_job_description = training_job_description
+        # The training job ID.
         self.training_job_id = training_job_id
+        # The name of the training job.
         self.training_job_name = training_job_name
+        # The user ID.
         self.user_id = user_id
+        # The user VPC configuration.
         self.user_vpc = user_vpc
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -124,6 +155,8 @@ class ListTrainingJobsResponseBodyTrainingJobs(DaraModel):
             self.assign_node_spec.validate()
         if self.compute_resource:
             self.compute_resource.validate()
+        if self.credential_config:
+            self.credential_config.validate()
         if self.experiment_config:
             self.experiment_config.validate()
         if self.hyper_parameters:
@@ -170,6 +203,9 @@ class ListTrainingJobsResponseBodyTrainingJobs(DaraModel):
 
         if self.compute_resource is not None:
             result['ComputeResource'] = self.compute_resource.to_map()
+
+        if self.credential_config is not None:
+            result['CredentialConfig'] = self.credential_config.to_map()
 
         if self.dlc_job_id is not None:
             result['DlcJobId'] = self.dlc_job_id
@@ -271,6 +307,10 @@ class ListTrainingJobsResponseBodyTrainingJobs(DaraModel):
             temp_model = main_models.ListTrainingJobsResponseBodyTrainingJobsComputeResource()
             self.compute_resource = temp_model.from_map(m.get('ComputeResource'))
 
+        if m.get('CredentialConfig') is not None:
+            temp_model = main_models.CredentialConfig()
+            self.credential_config = temp_model.from_map(m.get('CredentialConfig'))
+
         if m.get('DlcJobId') is not None:
             self.dlc_job_id = m.get('DlcJobId')
 
@@ -369,9 +409,13 @@ class ListTrainingJobsResponseBodyTrainingJobsUserVpc(DaraModel):
         switch_id: str = None,
         vpc_id: str = None,
     ):
+        # The default route.
         self.default_route = default_route
+        # The extended CIDR block configuration.
         self.extended_cidrs = extended_cidrs
+        # The security group ID.
         self.security_group_id = security_group_id
+        # The vSwitch ID.
         self.switch_id = switch_id
         # VPC ID。
         self.vpc_id = vpc_id
@@ -429,10 +473,15 @@ class ListTrainingJobsResponseBodyTrainingJobsStatusTransitions(DaraModel):
         start_time: str = None,
         status: str = None,
     ):
+        # The end time of the status.
         self.end_time = end_time
+        # The status code.
         self.reason_code = reason_code
+        # The status update message.
         self.reason_message = reason_message
+        # The start time of the status.
         self.start_time = start_time
+        # The status of the training job.
         self.status = status
 
     def validate(self):
@@ -484,6 +533,7 @@ class ListTrainingJobsResponseBodyTrainingJobsScheduler(DaraModel):
         self,
         max_running_time_in_seconds: int = None,
     ):
+        # The maximum training runtime in seconds. A value of 0 indicates no limit on the maximum runtime.
         self.max_running_time_in_seconds = max_running_time_in_seconds
 
     def validate(self):
@@ -512,11 +562,16 @@ class ListTrainingJobsResponseBodyTrainingJobsOutputChannels(DaraModel):
         dataset_id: str = None,
         name: str = None,
         output_uri: str = None,
+        role_arn: str = None,
         version_name: str = None,
     ):
+        # The dataset ID.
         self.dataset_id = dataset_id
+        # The output data name.
         self.name = name
+        # The output data URI.
         self.output_uri = output_uri
+        self.role_arn = role_arn
         self.version_name = version_name
 
     def validate(self):
@@ -536,6 +591,9 @@ class ListTrainingJobsResponseBodyTrainingJobsOutputChannels(DaraModel):
         if self.output_uri is not None:
             result['OutputUri'] = self.output_uri
 
+        if self.role_arn is not None:
+            result['RoleArn'] = self.role_arn
+
         if self.version_name is not None:
             result['VersionName'] = self.version_name
 
@@ -552,6 +610,9 @@ class ListTrainingJobsResponseBodyTrainingJobsOutputChannels(DaraModel):
         if m.get('OutputUri') is not None:
             self.output_uri = m.get('OutputUri')
 
+        if m.get('RoleArn') is not None:
+            self.role_arn = m.get('RoleArn')
+
         if m.get('VersionName') is not None:
             self.version_name = m.get('VersionName')
 
@@ -563,7 +624,9 @@ class ListTrainingJobsResponseBodyTrainingJobsLabels(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The label key.
         self.key = key
+        # The label value.
         self.value = value
 
     def validate(self):
@@ -598,11 +661,16 @@ class ListTrainingJobsResponseBodyTrainingJobsInputChannels(DaraModel):
         dataset_id: str = None,
         input_uri: str = None,
         name: str = None,
+        role_arn: str = None,
         version_name: str = None,
     ):
+        # The dataset ID.
         self.dataset_id = dataset_id
+        # The input data URI.
         self.input_uri = input_uri
+        # The input data name.
         self.name = name
+        self.role_arn = role_arn
         self.version_name = version_name
 
     def validate(self):
@@ -622,6 +690,9 @@ class ListTrainingJobsResponseBodyTrainingJobsInputChannels(DaraModel):
         if self.name is not None:
             result['Name'] = self.name
 
+        if self.role_arn is not None:
+            result['RoleArn'] = self.role_arn
+
         if self.version_name is not None:
             result['VersionName'] = self.version_name
 
@@ -638,6 +709,9 @@ class ListTrainingJobsResponseBodyTrainingJobsInputChannels(DaraModel):
         if m.get('Name') is not None:
             self.name = m.get('Name')
 
+        if m.get('RoleArn') is not None:
+            self.role_arn = m.get('RoleArn')
+
         if m.get('VersionName') is not None:
             self.version_name = m.get('VersionName')
 
@@ -649,7 +723,9 @@ class ListTrainingJobsResponseBodyTrainingJobsHyperParameters(DaraModel):
         name: str = None,
         value: str = None,
     ):
+        # The parameter name.
         self.name = name
+        # The parameter value.
         self.value = value
 
     def validate(self):
@@ -684,7 +760,9 @@ class ListTrainingJobsResponseBodyTrainingJobsExperimentConfig(DaraModel):
         experiment_id: str = None,
         experiment_name: str = None,
     ):
+        # The ID of the experiment associated with the training job.
         self.experiment_id = experiment_id
+        # The name of the experiment associated with the training job.
         self.experiment_name = experiment_name
 
     def validate(self):
@@ -723,11 +801,17 @@ class ListTrainingJobsResponseBodyTrainingJobsComputeResource(DaraModel):
         resource_id: str = None,
         resource_name: str = None,
     ):
+        # The number of ECS instances.
         self.ecs_count = ecs_count
+        # The ECS instance type.
         self.ecs_spec = ecs_spec
+        # The number of resource quota instances.
         self.instance_count = instance_count
+        # The resource quota instance specification.
         self.instance_spec = instance_spec
+        # The resource quota ID.
         self.resource_id = resource_id
+        # The resource quota name.
         self.resource_name = resource_name
 
     def validate(self):
@@ -791,10 +875,15 @@ class ListTrainingJobsResponseBodyTrainingJobsComputeResourceInstanceSpec(DaraMo
         memory: str = None,
         shared_memory: str = None,
     ):
+        # The number of CPU cores of the instance.
         self.cpu = cpu
+        # The number of GPUs of the instance.
         self.gpu = gpu
+        # The GPU type of the instance.
         self.gputype = gputype
+        # The memory size of the instance. Unit: GiB.
         self.memory = memory
+        # The shared memory size of the instance. Unit: GiB.
         self.shared_memory = shared_memory
 
     def validate(self):

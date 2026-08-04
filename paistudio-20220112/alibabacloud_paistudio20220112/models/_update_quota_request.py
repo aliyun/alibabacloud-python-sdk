@@ -12,14 +12,21 @@ class UpdateQuotaRequest(DaraModel):
         self,
         description: str = None,
         labels: List[main_models.Label] = None,
+        propagate_default_gpudriver: bool = None,
         queue_strategy: str = None,
         quota_config: main_models.QuotaConfig = None,
         quota_name: str = None,
     ):
+        # The description of the resource quota.
         self.description = description
+        # The list of user-defined labels. This is a full update.
         self.labels = labels
+        self.propagate_default_gpudriver = propagate_default_gpudriver
+        # The queuing strategy for jobs in the quota.
         self.queue_strategy = queue_strategy
+        # The resource quota configuration.
         self.quota_config = quota_config
+        # The resource quota name.
         self.quota_name = quota_name
 
     def validate(self):
@@ -43,6 +50,9 @@ class UpdateQuotaRequest(DaraModel):
             for k1 in self.labels:
                 result['Labels'].append(k1.to_map() if k1 else None)
 
+        if self.propagate_default_gpudriver is not None:
+            result['PropagateDefaultGPUDriver'] = self.propagate_default_gpudriver
+
         if self.queue_strategy is not None:
             result['QueueStrategy'] = self.queue_strategy
 
@@ -64,6 +74,9 @@ class UpdateQuotaRequest(DaraModel):
             for k1 in m.get('Labels'):
                 temp_model = main_models.Label()
                 self.labels.append(temp_model.from_map(k1))
+
+        if m.get('PropagateDefaultGPUDriver') is not None:
+            self.propagate_default_gpudriver = m.get('PropagateDefaultGPUDriver')
 
         if m.get('QueueStrategy') is not None:
             self.queue_strategy = m.get('QueueStrategy')

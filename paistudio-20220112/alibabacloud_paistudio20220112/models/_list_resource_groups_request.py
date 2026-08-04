@@ -20,17 +20,35 @@ class ListResourceGroupsRequest(DaraModel):
         status: str = None,
         versions: str = None,
     ):
+        # The provider of the compute resources.
         self.computing_resource_provider = computing_resource_provider
         self.has_resource = has_resource
+        # The name of the resource group.
         self.name = name
+        # The sort order. Valid values:
+        # 
+        # - `desc`: descending.
+        # 
+        # - `asc`: ascending.
         self.order = order
+        # The page number.
         self.page_number = page_number
+        # The page size.
         self.page_size = page_size
         self.resource_group_ids = resource_group_ids
+        # The resource type. Valid values:
+        # 
+        # - `ECS`: ECS.
+        # 
+        # - `Lingjun`: Lingjun intelligent computing resources.
         self.resource_type = resource_type
+        # Specifies whether to return all results.
         self.show_all = show_all
+        # The field to sort by. Valid values include: `DisplayName`, `GmtCreated`, `GmtModified`, `RegionID`, `Duration`, `PricingCycle`, and `PayType`.
         self.sort_by = sort_by
+        # The status of the resource group.
         self.status = status
+        # The version to filter by.
         self.versions = versions
 
     def validate(self):

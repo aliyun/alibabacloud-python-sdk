@@ -26,21 +26,37 @@ class JobSettings(DaraModel):
         sanity_check_args: str = None,
         tags: Dict[str, str] = None,
     ):
+        # Additional advanced parameter settings.
         self.advanced_settings = advanced_settings
+        # User ID associated with the job.
         self.business_user_id = business_user_id
+        # Caller.
         self.caller = caller
+        # NVIDIA driver configuration.
         self.driver = driver
+        # Enable job fault tolerance monitoring.
         self.enable_error_monitoring_in_aimaster = enable_error_monitoring_in_aimaster
+        # Enable OSS append writes.
         self.enable_oss_append = enable_oss_append
+        # Enable the job to use RDMA.
         self.enable_rdma = enable_rdma
+        # Enable computing power health check for the job.
         self.enable_sanity_check = enable_sanity_check
+        # Enable the job to use tide resources.
         self.enable_tide_resource = enable_tide_resource
+        # Specify configuration parameters for fault tolerance monitoring, such as whether to enable log hang-based detection.
         self.error_monitoring_args = error_monitoring_args
+        # Duration in minutes to retain the job after completion.
         self.job_reserved_minutes = job_reserved_minutes
+        # Policy for retaining the job after completion.
         self.job_reserved_policy = job_reserved_policy
+        # Job\\"s oversold resource usage method (not accepted, accepted, or only accepted).
         self.oversold_type = oversold_type
+        # Workflow ID.
         self.pipeline_id = pipeline_id
+        # Configuration parameters for computing power health check.
         self.sanity_check_args = sanity_check_args
+        # Custom tags.
         self.tags = tags
 
     def validate(self):

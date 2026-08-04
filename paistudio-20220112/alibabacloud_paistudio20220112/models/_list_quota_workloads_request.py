@@ -33,29 +33,48 @@ class ListQuotaWorkloadsRequest(DaraModel):
         workload_type: str = None,
         workspace_ids: str = None,
     ):
+        # Retrieves workloads that precede the specified workload ID in the queue.
         self.before_workload_id = before_workload_id
+        # Filters workloads by their dequeue time range.
         self.gmt_dequeued_time_range = gmt_dequeued_time_range
+        # Filters workloads by their enqueue time range.
         self.gmt_enqueued_time_range = gmt_enqueued_time_range
+        # Filters workloads by the time range of their last queue position change.
         self.gmt_position_modified_time_range = gmt_position_modified_time_range
         self.instance_id = instance_id
+        # Filters workloads by node name.
         self.node_name = node_name
+        # The sort order for the results. Valid values are `asc` for ascending and `desc` for descending.
         self.order = order
+        # The number of the page to return.
         self.page_number = page_number
+        # The maximum number of entries to return on a single page.
         self.page_size = page_size
         self.position = position
         self.priority = priority
+        # Specifies whether to return only workloads that belong to the specified quota.
         self.show_own = show_own
+        # The field to use for sorting the results.
         self.sort_by = sort_by
+        # Filters workloads by their status in the queue.
         self.status = status
+        # Filters workloads by sub-quota ID. You can specify multiple IDs, separated by commas.
         self.sub_quota_ids = sub_quota_ids
         self.use_oversold_resource = use_oversold_resource
+        # Filters workloads by user ID. You can specify multiple IDs, separated by commas.
         self.user_ids = user_ids
+        # Specifies whether to include historical data in the query results.
         self.with_historical_data = with_historical_data
+        # Filters workloads based on their creation time range.
         self.workload_created_time_range = workload_created_time_range
+        # Filters workloads by workload ID. You can specify multiple IDs, separated by commas.
         self.workload_ids = workload_ids
         self.workload_names = workload_names
+        # Filters workloads by status. You can specify multiple statuses, separated by commas.
         self.workload_statuses = workload_statuses
+        # Filters workloads by the sub-product type of the instance.
         self.workload_type = workload_type
+        # Filters workloads by workspace ID. You can specify multiple IDs, separated by commas.
         self.workspace_ids = workspace_ids
 
     def validate(self):

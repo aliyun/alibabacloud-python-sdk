@@ -12,6 +12,7 @@ class GetResourceGroupMachineGroupRequest(DaraModel):
         self,
         tag: List[main_models.GetResourceGroupMachineGroupRequestTag] = None,
     ):
+        # A list of up to 20 tags.
         self.tag = tag
 
     def validate(self):
@@ -48,7 +49,9 @@ class GetResourceGroupMachineGroupRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):

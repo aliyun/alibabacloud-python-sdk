@@ -13,7 +13,10 @@ class ScaleQuotaRequest(DaraModel):
         min: main_models.ResourceSpec = None,
         resource_group_ids: List[str] = None,
     ):
+        # Scaling Min Quota.
+        # >Notice: NodeSpecs specifies the post-scaling specifications and quantity. If the Count in NodeSpecs is less than the current Quota\\"s Count, it indicates scale-in. Otherwise, it indicates scale-out.
         self.min = min
+        # Resource group IDs.
         self.resource_group_ids = resource_group_ids
 
     def validate(self):

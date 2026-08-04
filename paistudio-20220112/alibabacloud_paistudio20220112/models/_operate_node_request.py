@@ -12,9 +12,19 @@ class OperateNodeRequest(DaraModel):
         operation_parameters: main_models.NodeOperationParameters = None,
         resource_group_id: str = None,
     ):
+        # The operation to perform.
+        # 
+        # - Cordon: Disables scheduling on the node.
+        # 
+        # - Uncordon: Enables scheduling on the node.
+        # 
+        # - Drain: Evicts pods from the node.
+        # 
         # This parameter is required.
         self.operation = operation
+        # The parameter settings for the node operation.
         self.operation_parameters = operation_parameters
+        # The ID of the resource group that contains the node.
         self.resource_group_id = resource_group_id
 
     def validate(self):

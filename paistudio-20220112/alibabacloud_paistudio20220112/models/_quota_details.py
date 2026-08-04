@@ -21,17 +21,27 @@ class QuotaDetails(DaraModel):
         system_reserved_quota: main_models.ResourceAmount = None,
         used_quota: main_models.ResourceAmount = None,
     ):
+        # Total MinQuota amount actually assigned
         self.actual_min_quota = actual_min_quota
+        # Quota amount assignable by the User
         self.allocatable_quota = allocatable_quota
+        # Total Quota usage information
         self.allocated_quota = allocated_quota
+        # Quota usage information of ancestors
         self.ancestors_allocated_quota = ancestors_allocated_quota
+        # Quota usage information of descendants
         self.descendants_allocated_quota = descendants_allocated_quota
+        # Total MinQuota amount requested by the User
         self.desired_min_quota = desired_min_quota
         self.node_statistics = node_statistics
+        # Quota request amount
         self.requested_quota = requested_quota
+        # Quota usage information at the current level
         self.self_allocated_quota = self_allocated_quota
         self.self_submitted_quota = self_submitted_quota
+        # System-reserved Quota amount
         self.system_reserved_quota = system_reserved_quota
+        # Quota usage amount
         self.used_quota = used_quota
 
     def validate(self):

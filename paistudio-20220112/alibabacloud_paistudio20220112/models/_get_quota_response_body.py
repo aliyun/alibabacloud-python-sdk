@@ -36,31 +36,61 @@ class GetQuotaResponseBody(DaraModel):
         version: str = None,
         workspaces: List[main_models.WorkspaceIdName] = None,
     ):
+        # The resource allocation policy.
         self.allocate_strategy = allocate_strategy
+        # The ID of the user who created the resource quota.
         self.creator_id = creator_id
+        # The description of the resource quota.
         self.description = description
+        # The time when the resource quota was created.
         self.gmt_created_time = gmt_created_time
+        # The time when the resource quota was last modified.
         self.gmt_modified_time = gmt_modified_time
+        # A list of high-performance network zones.
         self.hyper_zones = hyper_zones
+        # The labels of the resource quota.
         self.labels = labels
+        # The ID of the most recent change to the resource quota.
         self.latest_operation_id = latest_operation_id
+        # The configuration of the minimum quota.
         self.min = min
+        # The ID of the parent resource quota.
         self.parent_quota_id = parent_quota_id
+        # The queuing policy for tasks in the resource quota.
         self.queue_strategy = queue_strategy
+        # The specifications and status of the cluster that is composed of resources within the quota.
         self.quota_cluster = quota_cluster
+        # The configurations of the resource quota:
+        # 
+        # - VPC information
+        # 
+        # - Whether Remote Direct Memory Access (RDMA) is supported
+        # 
+        # - ACS configurations, which take effect if the resource type is ACS
         self.quota_config = quota_config
+        # The details of the resource quota.
         self.quota_details = quota_details
-        # Quota Id
+        # The ID of the resource quota.
         self.quota_id = quota_id
+        # The name of the resource quota.
         self.quota_name = quota_name
+        # The error code.
         self.reason_code = reason_code
+        # The cause of the error.
         self.reason_message = reason_message
+        # The request ID.
         self.request_id = request_id
+        # The resource groups that are associated with the resource quota.
         self.resource_group_ids = resource_group_ids
+        # The resource type of the quota.
         self.resource_type = resource_type
+        # The status of the resource quota.
         self.status = status
+        # A list of sub-quotas of the resource quota.
         self.sub_quotas = sub_quotas
+        # The version information. This parameter takes effect when ResourceType is set to ECS.
         self.version = version
+        # The workspaces that are associated with the resource quota.
         self.workspaces = workspaces
 
     def validate(self):

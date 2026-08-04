@@ -14,8 +14,11 @@ class NodeMetric(DaraModel):
         metrics: List[main_models.Metric] = None,
         node_id: str = None,
     ):
+        # The type of GPU.
         self.gputype = gputype
+        # Performance Metrics.
         self.metrics = metrics
+        # Edge zone ID.
         self.node_id = node_id
 
     def validate(self):

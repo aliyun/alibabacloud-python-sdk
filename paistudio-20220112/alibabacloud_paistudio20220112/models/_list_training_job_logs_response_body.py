@@ -13,8 +13,11 @@ class ListTrainingJobLogsResponseBody(DaraModel):
         request_id: str = None,
         total_count: str = None,
     ):
+        # The list of logs.
         self.logs = logs
+        # The request ID.
         self.request_id = request_id
+        # The number of logs that match the filter condition.
         self.total_count = total_count
 
     def validate(self):

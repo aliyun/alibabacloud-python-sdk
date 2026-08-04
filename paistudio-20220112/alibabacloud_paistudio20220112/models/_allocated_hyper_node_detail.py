@@ -12,9 +12,13 @@ class AllocatedHyperNodeDetail(DaraModel):
         hyper_node_name: str = None,
         total_node_num: int = None,
     ):
+        # The number of allocated nodes in the hyper node.
         self.allocated_node_num = allocated_node_num
+        # The number of idle nodes in the hyper node.
         self.empty_node_num = empty_node_num
+        # The name of the hyper node.
         self.hyper_node_name = hyper_node_name
+        # The total number of nodes in the hyper node.
         self.total_node_num = total_node_num
 
     def validate(self):

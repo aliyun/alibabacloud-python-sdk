@@ -14,9 +14,11 @@ class ListQuotaWorkloadsResponseBody(DaraModel):
         total_count: int = None,
         workloads: List[main_models.QueueInfo] = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The total number of workloads that match the filter criteria.
         self.total_count = total_count
+        # A list of workloads.
         self.workloads = workloads
 
     def validate(self):

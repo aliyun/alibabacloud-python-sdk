@@ -9,6 +9,8 @@ class DeleteTrainingJobLabelsRequest(DaraModel):
         self,
         keys: str = None,
     ):
+        # The keys of the labels.
+        # 
         # This parameter is required.
         self.keys = keys
 

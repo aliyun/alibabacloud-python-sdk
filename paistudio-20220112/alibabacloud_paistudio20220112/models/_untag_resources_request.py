@@ -15,13 +15,29 @@ class UntagResourcesRequest(DaraModel):
         resource_type: str = None,
         tag_key: List[str] = None,
     ):
+        # Whether to detach all tags from the resource. Valid values:
+        # 
+        # - **true**: Detach all tags from the resource.
+        # 
+        # - **false**: Do not detach all tags from the resource.
+        # 
+        # > * Default value: false.
+        # 
+        # - If you specify both TagKey and this parameter, this parameter is ignored.
         self.all = all
+        # Region
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # Resource IDs. Maximum: 50 items.
+        # 
         # This parameter is required.
         self.resource_id = resource_id
+        # Resource type
+        # 
         # This parameter is required.
         self.resource_type = resource_type
+        # List of tag keys. Maximum: 20 items.
         self.tag_key = tag_key
 
     def validate(self):

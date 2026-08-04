@@ -17,11 +17,17 @@ class QuotaNodeStatistics(DaraModel):
         allocated_node_num: int = None,
         empty_node_num: int = None,
     ):
+        # The guaranteed minimum number of hyper nodes available in the quota.
         self.actual_min_hyper_node_num = actual_min_hyper_node_num
+        # The guaranteed minimum number of nodes available in the quota.
         self.actual_min_node_num = actual_min_node_num
+        # The details of an allocated hyper node.
         self.allocated_hyper_node_details = allocated_hyper_node_details
+        # The number of hyper nodes currently allocated from the quota.
         self.allocated_hyper_node_num = allocated_hyper_node_num
+        # The number of nodes currently allocated from the quota.
         self.allocated_node_num = allocated_node_num
+        # The number of allocated nodes currently idle.
         self.empty_node_num = empty_node_num
 
     def validate(self):

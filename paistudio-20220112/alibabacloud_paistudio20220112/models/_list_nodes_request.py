@@ -40,12 +40,22 @@ class ListNodesRequest(DaraModel):
         workload_num: int = None,
         workspace_id: str = None,
     ):
+        # The accelerator type. Valid values:
+        # 
+        # - CPU
+        # 
+        # - GPU
+        # 
+        # If omitted, this operation returns nodes of all accelerator types.
         self.accelerator_type = accelerator_type
         self.availability_zone = availability_zone
         self.clique_id = clique_id
         self.disk_pl = disk_pl
+        # When used with `ResourceGroupIds`, this parameter further filters the results to include only nodes from the specified resource quota.
         self.filter_by_quota_id = filter_by_quota_id
+        # When used with `QuotaId`, this parameter further filters the results to include only nodes from the specified resource groups.
         self.filter_by_resource_group_ids = filter_by_resource_group_ids
+        # The GPU type. Fuzzy matching is supported.
         self.gputype = gputype
         self.health_count = health_count
         self.health_rate = health_rate
@@ -53,21 +63,44 @@ class ListNodesRequest(DaraModel):
         self.hyper_zone = hyper_zone
         self.layout_mode = layout_mode
         self.machine_group_ids = machine_group_ids
+        # A comma-separated list of node names. Only nodes with names that match this list are returned.
         self.node_names = node_names
+        # A comma-separated list of node statuses. If this parameter is omitted, this operation returns nodes of all statuses.
         self.node_statuses = node_statuses
+        # A comma-separated list of node specifications. If this parameter is omitted, this operation returns nodes of all specifications.
         self.node_types = node_types
+        # The sort order. Valid values:
+        # 
+        # - `desc`: Descending
+        # 
+        # - `asc`: Ascending
         self.order = order
+        # A comma-separated list of order IDs.
         self.order_instance_ids = order_instance_ids
+        # A comma-separated list of order statuses.
         self.order_statuses = order_statuses
+        # The page number. The first page is 1.
         self.page_number = page_number
+        # The number of entries to return per page.
         self.page_size = page_size
         self.payment_type = payment_type
         self.pod_num = pod_num
+        # The ID of the resource quota that contains the nodes.
         self.quota_id = quota_id
         self.reason_codes = reason_codes
+        # A comma-separated list of resource group IDs. You must specify either this parameter or `QuotaId`.
+        # Constraints:
+        # 
+        # 1. The user ID of the request must match the user ID associated with the specified resource groups.
+        # 
+        # 2. All specified resource groups must be of the same type.
+        # 
+        # 3. All specified resource groups must be in the same VPC.
         self.resource_group_ids = resource_group_ids
         self.resource_group_name = resource_group_name
+        # The field by which to sort the results.
         self.sort_by = sort_by
+        # Specifies whether to return resource usage information. This parameter applies only when `QuotaId` is specified.
         self.verbose = verbose
         self.workload_num = workload_num
         self.workspace_id = workspace_id

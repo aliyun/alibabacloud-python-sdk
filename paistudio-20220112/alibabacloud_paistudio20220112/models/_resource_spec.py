@@ -12,6 +12,7 @@ class ResourceSpec(DaraModel):
         self,
         node_specs: List[main_models.NodeSpec] = None,
     ):
+        # The resource node specifications.
         self.node_specs = node_specs
 
     def validate(self):

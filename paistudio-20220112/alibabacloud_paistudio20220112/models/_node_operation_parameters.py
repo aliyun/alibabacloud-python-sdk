@@ -12,8 +12,11 @@ class NodeOperationParameters(DaraModel):
         drain_parameters: main_models.NodeDrainParameters = None,
         uncordon_parameters: main_models.NodeUncordonParameters = None,
     ):
+        # Node cordon parameter settings
         self.cordon_parameters = cordon_parameters
+        # Node drain task instance parameter settings
         self.drain_parameters = drain_parameters
+        # Node uncordon parameter settings
         self.uncordon_parameters = uncordon_parameters
 
     def validate(self):

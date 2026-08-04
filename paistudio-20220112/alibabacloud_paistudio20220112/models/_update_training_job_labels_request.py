@@ -12,6 +12,7 @@ class UpdateTrainingJobLabelsRequest(DaraModel):
         self,
         labels: List[main_models.UpdateTrainingJobLabelsRequestLabels] = None,
     ):
+        # The list of labels.
         self.labels = labels
 
     def validate(self):
@@ -48,7 +49,9 @@ class UpdateTrainingJobLabelsRequestLabels(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):

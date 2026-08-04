@@ -8,6 +8,7 @@ from ._algorithm_spec import AlgorithmSpec
 from ._allocate_strategy_spec import AllocateStrategySpec
 from ._allocated_hyper_node_detail import AllocatedHyperNodeDetail
 from ._assign_node_spec import AssignNodeSpec
+from ._assume_user_info import AssumeUserInfo
 from ._binding_policy import BindingPolicy
 from ._cache_info import CacheInfo
 from ._cache_service import CacheService
@@ -17,6 +18,9 @@ from ._channel_property import ChannelProperty
 from ._cluster_spec import ClusterSpec
 from ._component_spec import ComponentSpec
 from ._condition_expression import ConditionExpression
+from ._credential_config import CredentialConfig
+from ._credential_config_item import CredentialConfigItem
+from ._credential_role import CredentialRole
 from ._data_source import DataSource
 from ._ecs_spec import EcsSpec
 from ._eni_cache_config import EniCacheConfig
@@ -79,7 +83,10 @@ from ._rules import Rules
 from ._sandbox_cache_config import SandboxCacheConfig
 from ._scheduling_rule import SchedulingRule
 from ._self_quota_preemption_config import SelfQuotaPreemptionConfig
+from ._spot_bid_preview_item import SpotBidPreviewItem
 from ._spot_price_item import SpotPriceItem
+from ._spot_stock_internal_info import SpotStockInternalInfo
+from ._spot_stock_item import SpotStockItem
 from ._spot_stock_preview import SpotStockPreview
 from ._statistics_details import StatisticsDetails
 from ._statistics_resources import StatisticsResources
@@ -184,6 +191,9 @@ from ._list_algorithm_versions_response import ListAlgorithmVersionsResponse
 from ._list_algorithms_request import ListAlgorithmsRequest
 from ._list_algorithms_response_body import ListAlgorithmsResponseBody
 from ._list_algorithms_response import ListAlgorithmsResponse
+from ._list_node_pods_request import ListNodePodsRequest
+from ._list_node_pods_response_body import ListNodePodsResponseBody
+from ._list_node_pods_response import ListNodePodsResponse
 from ._list_node_types_request import ListNodeTypesRequest
 from ._list_node_types_response_body import ListNodeTypesResponseBody
 from ._list_node_types_response import ListNodeTypesResponse
@@ -339,6 +349,7 @@ __all__ = [
     AllocateStrategySpec,
     AllocatedHyperNodeDetail,
     AssignNodeSpec,
+    AssumeUserInfo,
     BindingPolicy,
     CacheInfo,
     CacheService,
@@ -348,6 +359,9 @@ __all__ = [
     ClusterSpec,
     ComponentSpec,
     ConditionExpression,
+    CredentialConfig,
+    CredentialConfigItem,
+    CredentialRole,
     DataSource,
     EcsSpec,
     EniCacheConfig,
@@ -410,7 +424,10 @@ __all__ = [
     SandboxCacheConfig,
     SchedulingRule,
     SelfQuotaPreemptionConfig,
+    SpotBidPreviewItem,
     SpotPriceItem,
+    SpotStockInternalInfo,
+    SpotStockItem,
     SpotStockPreview,
     StatisticsDetails,
     StatisticsResources,
@@ -515,6 +532,9 @@ __all__ = [
     ListAlgorithmsRequest,
     ListAlgorithmsResponseBody,
     ListAlgorithmsResponse,
+    ListNodePodsRequest,
+    ListNodePodsResponseBody,
+    ListNodePodsResponse,
     ListNodeTypesRequest,
     ListNodeTypesResponseBody,
     ListNodeTypesResponse,

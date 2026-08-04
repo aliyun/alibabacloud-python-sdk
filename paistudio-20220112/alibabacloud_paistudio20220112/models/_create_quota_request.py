@@ -22,16 +22,61 @@ class CreateQuotaRequest(DaraModel):
         resource_group_ids: List[str] = None,
         resource_type: str = None,
     ):
+        # The allocation strategy for the quota. Only `ByNodeSpecs` is supported.
         self.allocate_strategy = allocate_strategy
+        # The native cluster specification for the quota.
         self.cluster_spec = cluster_spec
+        # The description of the quota.
         self.description = description
+        # The tags for the quota.
         self.labels = labels
+        # The minimum resources for the quota. You can define this in one of the following ways:
+        # 
+        # - `ResourceAmount`: Specifies the CPU, memory, and GPU details.
+        # 
+        # - `NodeSpecs`: Specifies the node specification and the number of nodes.
+        # 
+        # Constraints:
+        # 
+        # - If this quota allocates resources from a dedicated resource group, you must use the `NodeSpecs` method.
+        # 
+        # - If this quota allocates resources from a parent quota, both methods are allowed. However, all its child quotas must use the same method.
+        # 
+        # - All GPU specifications within the quota must have the same GPU type.
+        # 
+        # - For quotas with the resource type set to ECS or Lingjun, only the `NodeSpecs` method can be used.
         self.min = min
+        # The ID of the parent quota.
+        # 
+        # - If you do not specify this parameter, a root quota is created. Resources are allocated from a dedicated resource group.
+        # 
+        # - If you specify this parameter, a child quota is created. Resources are allocated from the nodes that are bound to the root quota.
         self.parent_quota_id = parent_quota_id
+        # The queuing strategy for the quota. Four strategies are supported:
+        # 
+        # - `PaiStrategyIntelligent`: The intelligent strategy.
+        # 
+        # - `PaiStrategyBalance`: The balance strategy.
+        # 
+        # - `PaiStrategyRoundRobin`: The round-robin strategy.
+        # 
+        # - `PaiStrategyStrictFIFO`: The FIFO strategy.
         self.queue_strategy = queue_strategy
+        # Constraints for the `QuotaConfig` parameter:
+        # 
+        # - This parameter is ignored if the resource type is ECS or Lingjun.
+        # 
+        # - If the resource type is ACS, the specified VPC and ACS configurations are applied.
         self.quota_config = quota_config
+        # The name of the quota.
         self.quota_name = quota_name
+        # The IDs of the dedicated resource groups. The following constraints apply:
+        # 
+        # - Only a root quota, for which `ParentQuotaId` is empty, can allocate nodes from a resource group.
+        # 
+        # - The VPC configurations of the specified resource groups must be the same.
         self.resource_group_ids = resource_group_ids
+        # The resource type of the quota. Valid values: Lingjun, ECS, and ACS. Default value: ECS.
         self.resource_type = resource_type
 
     def validate(self):

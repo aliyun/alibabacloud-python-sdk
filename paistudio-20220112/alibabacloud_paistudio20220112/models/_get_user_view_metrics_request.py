@@ -15,14 +15,33 @@ class GetUserViewMetricsRequest(DaraModel):
         user_id: str = None,
         workspace_id: str = None,
     ):
+        # The sort order. Valid values:
+        # - asc: ascending order.
+        # - desc: descending order.
         self.order = order
+        # The current page number.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # The page size.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The sorting criterion.
         self.sort_by = sort_by
+        # The time step. Default value: 5m. Valid values for the time unit:
+        # 
+        # - h: hours.
+        # 
+        # - m: minutes.
+        # 
+        # - s: seconds.
+        # 
+        # If no unit is specified, the default unit s (seconds) is used.
         self.time_step = time_step
+        # The ID of the Alibaba Cloud account.
         self.user_id = user_id
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):

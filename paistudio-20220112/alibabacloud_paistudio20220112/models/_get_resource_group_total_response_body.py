@@ -15,9 +15,13 @@ class GetResourceGroupTotalResponseBody(DaraModel):
         total_gpuinfos: List[main_models.GPUInfo] = None,
         total_memory: int = None,
     ):
+        # The total number of CPU cores.
         self.total_cpu = total_cpu
+        # The total number of GPU cores.
         self.total_gpu = total_gpu
+        # The resources counted by GPU card type.
         self.total_gpuinfos = total_gpuinfos
+        # The total memory.
         self.total_memory = total_memory
 
     def validate(self):

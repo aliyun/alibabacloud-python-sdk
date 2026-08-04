@@ -19,6 +19,7 @@ class QuotaConfig(DaraModel):
         enable_self_quota_preemption: bool = None,
         enable_sub_quota_preemption: bool = None,
         eni_cache_config: main_models.EniCacheConfig = None,
+        is_encrypted_resource: bool = None,
         oversold_usage_config: main_models.OversoldUsageConfig = None,
         resource_specs: List[main_models.WorkspaceSpecs] = None,
         sandbox_cache_config: main_models.SandboxCacheConfig = None,
@@ -28,25 +29,39 @@ class QuotaConfig(DaraModel):
         support_rdma: bool = None,
         use_case: str = None,
         user_vpc: main_models.UserVpc = None,
+        workload_types: List[str] = None,
     ):
+        # The ACS-related configurations.
         self.acs = acs
+        # The ID of the cluster where the quota resides.
         self.cluster_id = cluster_id
         self.control_plane_cluster_id = control_plane_cluster_id
+        # The default GPU driver version for the resource quota.
         self.default_gpudriver = default_gpudriver
         self.enable_gpushare = enable_gpushare
+        # Specifies whether workloads in sub-quotas can be preempted.
         self.enable_preempt_subquota_workloads = enable_preempt_subquota_workloads
+        # Specifies whether guaranteed resources within this quota can be preempted.
         self.enable_self_quota_preemption = enable_self_quota_preemption
+        # Specifies whether resources in sub-quotas can be preempted.
         self.enable_sub_quota_preemption = enable_sub_quota_preemption
         self.eni_cache_config = eni_cache_config
+        self.is_encrypted_resource = is_encrypted_resource
         self.oversold_usage_config = oversold_usage_config
+        # The resource specification templates.
         self.resource_specs = resource_specs
         self.sandbox_cache_config = sandbox_cache_config
         self.self_quota_preemption_config = self_quota_preemption_config
+        # The configuration for the sub-quota preemption task.
         self.sub_quota_preemption_config = sub_quota_preemption_config
+        # The GPU driver versions supported by the resource quota.
         self.support_gpudrivers = support_gpudrivers
+        # Specifies whether RDMA is supported.
         self.support_rdma = support_rdma
         self.use_case = use_case
+        # The user VPC information.
         self.user_vpc = user_vpc
+        self.workload_types = workload_types
 
     def validate(self):
         if self.acs:
@@ -100,6 +115,9 @@ class QuotaConfig(DaraModel):
         if self.eni_cache_config is not None:
             result['EniCacheConfig'] = self.eni_cache_config.to_map()
 
+        if self.is_encrypted_resource is not None:
+            result['IsEncryptedResource'] = self.is_encrypted_resource
+
         if self.oversold_usage_config is not None:
             result['OversoldUsageConfig'] = self.oversold_usage_config.to_map()
 
@@ -128,6 +146,9 @@ class QuotaConfig(DaraModel):
 
         if self.user_vpc is not None:
             result['UserVpc'] = self.user_vpc.to_map()
+
+        if self.workload_types is not None:
+            result['WorkloadTypes'] = self.workload_types
 
         return result
 
@@ -161,6 +182,9 @@ class QuotaConfig(DaraModel):
         if m.get('EniCacheConfig') is not None:
             temp_model = main_models.EniCacheConfig()
             self.eni_cache_config = temp_model.from_map(m.get('EniCacheConfig'))
+
+        if m.get('IsEncryptedResource') is not None:
+            self.is_encrypted_resource = m.get('IsEncryptedResource')
 
         if m.get('OversoldUsageConfig') is not None:
             temp_model = main_models.OversoldUsageConfig()
@@ -196,6 +220,9 @@ class QuotaConfig(DaraModel):
         if m.get('UserVpc') is not None:
             temp_model = main_models.UserVpc()
             self.user_vpc = temp_model.from_map(m.get('UserVpc'))
+
+        if m.get('WorkloadTypes') is not None:
+            self.workload_types = m.get('WorkloadTypes')
 
         return self
 

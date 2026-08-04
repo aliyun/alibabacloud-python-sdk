@@ -25,22 +25,39 @@ class AlgorithmSpec(DaraModel):
         supported_instance_types: List[str] = None,
         supports_distributed_training: bool = None,
     ):
+        # The custom code configuration.
         self.code_dir = code_dir
+        # The list of commands to run the training task.
+        # 
         # This parameter is required.
         self.command = command
+        # The compute resource definition.
         self.compute_resource = compute_resource
+        # The custom configuration.
         self.customization = customization
+        # The list of hyperparameter definitions.
         self.hyper_parameters = hyper_parameters
+        # The training runtime image.
+        # 
         # This parameter is required.
         self.image = image
+        # The list of input channels for the algorithm.
         self.input_channels = input_channels
+        # The job type.
+        # 
         # This parameter is required.
         self.job_type = job_type
+        # The list of metric definitions for the training task.
         self.metric_definitions = metric_definitions
+        # The list of output channels for the algorithm.
         self.output_channels = output_channels
+        # You can use this feature to monitor the training progress.
         self.progress_definitions = progress_definitions
+        # The resource requirements.
         self.resource_requirements = resource_requirements
+        # The list of supported elastic computing instance types for training.
         self.supported_instance_types = supported_instance_types
+        # Indicates whether distributed training is supported.
         self.supports_distributed_training = supports_distributed_training
 
     def validate(self):
@@ -203,7 +220,9 @@ class AlgorithmSpecProgressDefinitions(DaraModel):
         overall_progress: main_models.AlgorithmSpecProgressDefinitionsOverallProgress = None,
         remaining_time: main_models.AlgorithmSpecProgressDefinitionsRemainingTime = None,
     ):
+        # Monitors training progress.
         self.overall_progress = overall_progress
+        # The definition for monitoring the remaining training time.
         self.remaining_time = remaining_time
 
     def validate(self):
@@ -243,7 +262,9 @@ class AlgorithmSpecProgressDefinitionsRemainingTime(DaraModel):
         description: str = None,
         regex: str = None,
     ):
+        # The description of the monitoring definition.
         self.description = description
+        # The regular expression for monitoring.
         self.regex = regex
 
     def validate(self):
@@ -278,7 +299,9 @@ class AlgorithmSpecProgressDefinitionsOverallProgress(DaraModel):
         description: str = None,
         regex: str = None,
     ):
+        # The description of the monitoring definition.
         self.description = description
+        # The regular expression for monitoring.
         self.regex = regex
 
     def validate(self):
@@ -312,6 +335,7 @@ class AlgorithmSpecCustomization(DaraModel):
         self,
         code_dir: bool = None,
     ):
+        # Indicates whether custom-mounted code is used.
         self.code_dir = code_dir
 
     def validate(self):
@@ -339,6 +363,8 @@ class AlgorithmSpecComputeResource(DaraModel):
         self,
         policy: main_models.AlgorithmSpecComputeResourcePolicy = None,
     ):
+        # Computing resource configuration policy for the algorithm.
+        # 
         # This parameter is required.
         self.policy = policy
 
@@ -372,10 +398,12 @@ class AlgorithmSpecComputeResourcePolicy(DaraModel):
         value: str = None,
         version: str = None,
     ):
-        # Policy Value
+        # Policy content, serialized from a JSON array.
         # 
         # This parameter is required.
         self.value = value
+        # Policy version.
+        # 
         # This parameter is required.
         self.version = version
 

@@ -10,7 +10,9 @@ class ListAlgorithmVersionsRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The current page number.
         self.page_number = page_number
+        # The page size for paging.
         self.page_size = page_size
 
     def validate(self):

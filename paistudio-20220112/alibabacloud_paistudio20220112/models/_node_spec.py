@@ -13,9 +13,13 @@ class NodeSpec(DaraModel):
         hyper_type: str = None,
         type: str = None,
     ):
+        # Rule for attaching resource nodes.
         self.binding_policy = binding_policy
+        # Number of resource nodes with this specification.
         self.count = count
+        # Type of supernode to use. You cannot specify both a node specification and a supernode type.
         self.hyper_type = hyper_type
+        # Type of the resource node specification.
         self.type = type
 
     def validate(self):

@@ -14,7 +14,9 @@ class ListTrainingJobMetricsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of metrics.
         self.metrics = metrics
+        # The request ID.
         self.request_id = request_id
         self.total_count = total_count
 
@@ -65,9 +67,13 @@ class ListTrainingJobMetricsResponseBodyMetrics(DaraModel):
         timestamp: str = None,
         value: float = None,
     ):
+        # The name of the metric.
         self.name = name
+        # The timestamp when the metric was collected.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.timestamp = timestamp
+        # The value of the metric.
         self.value = value
 
     def validate(self):

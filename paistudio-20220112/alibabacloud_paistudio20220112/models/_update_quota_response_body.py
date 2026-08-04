@@ -10,8 +10,9 @@ class UpdateQuotaResponseBody(DaraModel):
         quota_id: str = None,
         request_id: str = None,
     ):
-        # Quota Id
+        # Quota ID。
         self.quota_id = quota_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

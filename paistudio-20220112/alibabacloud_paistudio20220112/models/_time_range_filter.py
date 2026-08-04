@@ -10,7 +10,9 @@ class TimeRangeFilter(DaraModel):
         end_time: str = None,
         start_time: str = None,
     ):
+        # The end time.
         self.end_time = end_time
+        # The start time.
         self.start_time = start_time
 
     def validate(self):

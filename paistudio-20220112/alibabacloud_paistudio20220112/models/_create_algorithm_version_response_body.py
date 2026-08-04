@@ -10,7 +10,9 @@ class CreateAlgorithmVersionResponseBody(DaraModel):
         algorithm_id: str = None,
         algorithm_version: str = None,
     ):
+        # ID of the training algorithm.
         self.algorithm_id = algorithm_id
+        # Algorithm version.
         self.algorithm_version = algorithm_version
 
     def validate(self):

@@ -43,31 +43,48 @@ class MachineGroup(DaraModel):
         self.allocatable_cpu = allocatable_cpu
         self.allocatable_memory = allocatable_memory
         self.cpu = cpu
+        # Machine group creator ID
         self.creator_id = creator_id
+        # Default driver supported by the machine group
         self.default_driver = default_driver
         self.disk_capacity = disk_capacity
         self.disk_pl = disk_pl
+        # Resource count
         self.ecs_count = ecs_count
+        # ECS specification
         self.ecs_spec = ecs_spec
+        # Creation Time
         self.gmt_created_time = gmt_created_time
+        # Expiration Time
         self.gmt_expired_time = gmt_expired_time
+        # Update Time
         self.gmt_modified_time = gmt_modified_time
+        # Start At
         self.gmt_started_time = gmt_started_time
         self.gpu = gpu
         self.gpu_memory = gpu_memory
         self.gpu_type = gpu_type
+        # Machine Group ID
         self.machine_group_id = machine_group_id
         self.memory = memory
+        # Order ID
         self.order_instance_id = order_instance_id
+        # Duration
         self.payment_duration = payment_duration
-        # region ID
+        # Region ID
         self.payment_duration_unit = payment_duration_unit
+        # Payment type
         self.payment_type = payment_type
+        # Machine group error code
         self.reason_code = reason_code
+        # Machine group fault message
         self.reason_message = reason_message
+        # Resource group ID
         self.resource_group_id = resource_group_id
         self.resource_type = resource_type
+        # Machine group status
         self.status = status
+        # List of NVIDIA GPU driver versions supported by the machine group
         self.supported_drivers = supported_drivers
         self.system_reserved_cpu = system_reserved_cpu
         self.system_reserved_memory = system_reserved_memory

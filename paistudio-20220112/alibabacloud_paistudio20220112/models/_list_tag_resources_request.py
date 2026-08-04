@@ -16,12 +16,19 @@ class ListTagResourcesRequest(DaraModel):
         resource_type: str = None,
         tag: List[main_models.ListTagResourcesRequestTag] = None,
     ):
+        # Pagination token for the next page of results
         self.next_token = next_token
+        # Region ID
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # Resource IDs. Maximum: 50 items.
         self.resource_id = resource_id
+        # Resource type
+        # 
         # This parameter is required.
         self.resource_type = resource_type
+        # Tags to filter by. Maximum: 20 items.
         self.tag = tag
 
     def validate(self):
@@ -82,7 +89,9 @@ class ListTagResourcesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # Tag key
         self.key = key
+        # Tag value
         self.value = value
 
     def validate(self):

@@ -10,7 +10,9 @@ class UserInfo(DaraModel):
         user_id: str = None,
         user_name: str = None,
     ):
+        # User ID
         self.user_id = user_id
+        # username
         self.user_name = user_name
 
     def validate(self):

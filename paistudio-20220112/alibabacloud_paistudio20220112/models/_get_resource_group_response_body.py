@@ -26,20 +26,34 @@ class GetResourceGroupResponseBody(DaraModel):
         version: str = None,
         workspace_id: str = None,
     ):
+        # The ID of the cluster to which the resource group belongs.
         self.cluster_id = cluster_id
+        # The provider of computing resources for the resource group.
         self.computing_resource_provider = computing_resource_provider
+        # The ID of the user who created the resource group.
         self.creator_id = creator_id
+        # The description of the resource group.
         self.description = description
+        # The time when the resource group was created.
         self.gmt_created_time = gmt_created_time
+        # The time when the resource group was last modified.
         self.gmt_modified_time = gmt_modified_time
+        # The name of the resource group.
         self.name = name
+        # The request ID.
         self.request_id = request_id
+        # The type of computing resource for the resource group.
         self.resource_type = resource_type
+        # The status of the resource group.
         self.status = status
+        # Indicates whether the resource group supports RDMA.
         self.support_rdma = support_rdma
+        # A list of tags.
         self.tags = tags
+        # The details of the VPC connected to the resource group.
         self.user_vpc = user_vpc
         self.version = version
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -163,7 +177,9 @@ class GetResourceGroupResponseBodyTags(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The tag key.
         self.tag_key = tag_key
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):

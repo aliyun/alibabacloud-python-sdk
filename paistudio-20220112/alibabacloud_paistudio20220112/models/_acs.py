@@ -12,8 +12,14 @@ class ACS(DaraModel):
         acsquota_id: str = None,
         associated_products: List[str] = None,
     ):
-        # ACS Identifier
+        # ACS resource ID.
         self.acsquota_id = acsquota_id
+        # Product codes that can use the ACS Quota.
+        # 
+        # Constraints:  
+        # You can select multiple sub-products, but some sub-products are mutually exclusive. The following combinations can be selected simultaneously:  
+        # - PAI-DLC, PAI-DSW  
+        # - PAI-EAS
         self.associated_products = associated_products
 
     def validate(self):

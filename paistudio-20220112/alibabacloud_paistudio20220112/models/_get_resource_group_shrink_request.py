@@ -10,7 +10,9 @@ class GetResourceGroupShrinkRequest(DaraModel):
         is_aiworkspace_data_enabled: bool = None,
         tag_shrink: str = None,
     ):
+        # Optional. Defaults to `true`.
         self.is_aiworkspace_data_enabled = is_aiworkspace_data_enabled
+        # A list of up to 20 tags to add to the instance.
         self.tag_shrink = tag_shrink
 
     def validate(self):

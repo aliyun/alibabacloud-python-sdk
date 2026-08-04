@@ -22,19 +22,36 @@ class ListResourceGroupMachineGroupsRequest(DaraModel):
         sort_by: str = None,
         status: str = None,
     ):
+        # The ID of the user who created the machine group.
         self.creator_id = creator_id
         self.disk_pl = disk_pl
+        # The ECS instance type.
         self.ecs_spec = ecs_spec
+        # The machine group IDs. Separate multiple IDs with a comma (,).
         self.machine_group_ids = machine_group_ids
+        # The name of the machine group.
         self.name = name
+        # The sort order.
+        # 
+        # - `Asc`: Sorts the results in ascending order.
+        # 
+        # - `Desc`: Sorts the results in descending order.
         self.order = order
+        # The ID of the purchase order.
         self.order_instance_id = order_instance_id
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The payment duration. If `PaymentDurationUnit` is set to `Month`, valid values are 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, and 60.
         self.payment_duration = payment_duration
+        # The billing duration unit of the machine group.
         self.payment_duration_unit = payment_duration_unit
+        # The payment type.
         self.payment_type = payment_type
+        # The field to sort by.
         self.sort_by = sort_by
+        # The instance status. `Creating`: The instance is being created. `Ready`: The instance is running. `Expiring`: The instance is expiring. `Expired`: The instance has expired. `Stopping`: The instance is being stopped. `Stopped`: The instance is stopped.
         self.status = status
 
     def validate(self):

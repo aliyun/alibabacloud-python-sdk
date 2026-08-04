@@ -14,8 +14,11 @@ class ListNodesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of nodes.
         self.nodes = nodes
+        # The request ID.
         self.request_id = request_id
+        # The number of nodes that meet the filter conditions.
         self.total_count = total_count
 
     def validate(self):

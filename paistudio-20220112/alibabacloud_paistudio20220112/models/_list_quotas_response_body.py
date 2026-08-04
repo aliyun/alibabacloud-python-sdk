@@ -14,8 +14,11 @@ class ListQuotasResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of quotas.
         self.quotas = quotas
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries that match the request.
         self.total_count = total_count
 
     def validate(self):

@@ -18,14 +18,23 @@ class GetAlgorithmVersionResponseBody(DaraModel):
         tenant_id: str = None,
         user_id: str = None,
     ):
+        # The ID of the algorithm.
         self.algorithm_id = algorithm_id
+        # The name of the algorithm.
         self.algorithm_name = algorithm_name
+        # The provider of the algorithm.
         self.algorithm_provider = algorithm_provider
+        # Details about the algorithm.
         self.algorithm_spec = algorithm_spec
+        # The version of the algorithm.
         self.algorithm_version = algorithm_version
+        # The time when the algorithm was created.
         self.gmt_create_time = gmt_create_time
+        # The time when the algorithm was last updated.
         self.gmt_modified_time = gmt_modified_time
+        # The ID of the tenant who owns the algorithm.
         self.tenant_id = tenant_id
+        # The ID of the user who owns the algorithm.
         self.user_id = user_id
 
     def validate(self):

@@ -12,6 +12,7 @@ class ListTrainingJobOutputModelsResponseBody(DaraModel):
         self,
         output_models: List[main_models.ListTrainingJobOutputModelsResponseBodyOutputModels] = None,
     ):
+        # List of models produced by training.
         self.output_models = output_models
 
     def validate(self):
@@ -56,15 +57,31 @@ class ListTrainingJobOutputModelsResponseBodyOutputModels(DaraModel):
         training_spec: Dict[str, Any] = None,
         uri: str = None,
     ):
+        # Model compression configuration.
         self.compression_spec = compression_spec
+        # Model evaluation configuration.
         self.evaluation_spec = evaluation_spec
+        # Model inference configuration.
         self.inference_spec = inference_spec
+        # List of tags.
         self.labels = labels
+        # Training job metrics.
         self.metrics = metrics
+        # Name of the training output data.
         self.output_channel_name = output_channel_name
+        # Source ID (optional):
+        # 
+        # - If the source is Custom, there are no format requirements.
+        # 
+        # - If the source is PAIFlow, use the format: region=cn-shanghai,workspaceId=1345,kind=PipelineRun,id=run-sakdbaskjdf.
+        # 
+        # - If the source is TrainingService, use the format: region=cn-shanghai,workspaceId=1345,kind=TrainingJob,id=job-sakdbaskjdf.
         self.source_id = source_id
+        # Source (the type of job that produced the model). Default: Custom.
         self.source_type = source_type
+        # Model training configuration.
         self.training_spec = training_spec
+        # Link to the training output data.
         self.uri = uri
 
     def validate(self):
@@ -155,7 +172,9 @@ class ListTrainingJobOutputModelsResponseBodyOutputModelsLabels(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # Tag name.
         self.key = key
+        # Tag value.
         self.value = value
 
     def validate(self):

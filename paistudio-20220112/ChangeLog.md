@@ -1,3 +1,17 @@
+2026-08-04 Version: 2.6.0
+- Support API ListNodePods.
+- Update API CreateTrainingJob: add request parameters body.CredentialConfig.
+- Update API CreateTrainingJob: add request parameters body.InputChannels.$.RoleArn.
+- Update API CreateTrainingJob: add request parameters body.OutputChannels.$.RoleArn.
+- Update API GetTrainingJob: add response parameters Body.CredentialConfig.
+- Update API GetTrainingJob: add response parameters Body.InputChannels.$.RoleArn.
+- Update API GetTrainingJob: add response parameters Body.OutputChannels.$.RoleArn.
+- Update API ListTrainingJobs: add response parameters Body.TrainingJobs.$.CredentialConfig.
+- Update API ListTrainingJobs: add response parameters Body.TrainingJobs.$.InputChannels.$.RoleArn.
+- Update API ListTrainingJobs: add response parameters Body.TrainingJobs.$.OutputChannels.$.RoleArn.
+- Update API UpdateQuota: add request parameters body.PropagateDefaultGPUDriver.
+
+
 2026-05-21 Version: 2.5.0
 - Support API ListNodeTypes.
 

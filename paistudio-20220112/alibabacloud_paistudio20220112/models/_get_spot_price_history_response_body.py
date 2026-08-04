@@ -14,8 +14,11 @@ class GetSpotPriceHistoryResponseBody(DaraModel):
         spot_price_history: List[main_models.SpotPriceItem] = None,
         total_count: int = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # A list of historical spot instance price details
         self.spot_price_history = spot_price_history
+        # The total number of historical spot instance prices
         self.total_count = total_count
 
     def validate(self):

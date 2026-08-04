@@ -10,7 +10,9 @@ class CreateTrainingJobResponseBody(DaraModel):
         request_id: str = None,
         training_job_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The training job ID.
         self.training_job_id = training_job_id
 
     def validate(self):

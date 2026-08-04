@@ -14,8 +14,11 @@ class ListNodeTypesResponseBody(DaraModel):
         request_id: str = None,
         statistics: List[main_models.NodeTypeStatistic] = None,
     ):
+        # A collection of node types.
         self.node_types = node_types
+        # The request ID.
         self.request_id = request_id
+        # Statistics for the node types that match the filter criteria.
         self.statistics = statistics
 
     def validate(self):

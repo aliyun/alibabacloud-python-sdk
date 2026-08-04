@@ -54,48 +54,82 @@ class Node(DaraModel):
         users: List[main_models.UserInfo] = None,
         workload_num: int = None,
     ):
+        # The accelerator type of the resource node instance, such as CPU or GPU.
         self.accelerator_type = accelerator_type
+        # The number of allocatable CPU cores.
         self.allocatable_cpu = allocatable_cpu
+        # The amount of allocatable memory in GiB.
         self.allocatable_memory = allocatable_memory
         self.ancestor_quota_workload_num = ancestor_quota_workload_num
         self.availability_zone = availability_zone
+        # The list of quotas that are bound to the node.
         self.bound_quotas = bound_quotas
+        # The number of CPU cores.
         self.cpu = cpu
+        # The ID of the user who created the resource node.
         self.creator_id = creator_id
         self.descendant_quota_workload_num = descendant_quota_workload_num
         self.disk_capacity = disk_capacity
         self.disk_pl = disk_pl
+        # The number of GPUs.
         self.gpu = gpu
+        # The GPU memory size in GiB.
         self.gpumemory = gpumemory
+        # The GPU model.
         self.gputype = gputype
+        # The time when the resource node was created.
         self.gmt_create_time = gmt_create_time
         self.gmt_created_time = gmt_created_time
+        # The time when the resource node expires.
         self.gmt_expired_time = gmt_expired_time
+        # The time when the resource node was last modified.
         self.gmt_modified_time = gmt_modified_time
         self.hyper_zone = hyper_zone
+        # Indicates whether the node is bound to a quota.
         self.is_bound = is_bound
+        # The maximum number of CPU cores.
         self.limit_cpu = limit_cpu
+        # The maximum number of GPUs.
         self.limit_gpu = limit_gpu
+        # The maximum memory size in GiB.
         self.limit_memory = limit_memory
+        # The ID of the machine group to which the resource node belongs.
         self.machine_group_id = machine_group_id
+        # The memory size in GiB.
         self.memory = memory
+        # The name of the resource node.
         self.node_name = node_name
+        # The status of the resource node.
         self.node_status = node_status
+        # The instance type of the resource node.
         self.node_type = node_type
+        # The order status of the resource node.
         self.order_status = order_status
+        # The number of pods on the node.
         self.pod_num = pod_num
+        # The error code.
         self.reason_code = reason_code
+        # The error message.
         self.reason_message = reason_message
+        # The number of requested CPU cores.
         self.request_cpu = request_cpu
+        # The number of requested GPUs.
         self.request_gpu = request_gpu
+        # The requested memory size in GiB.
         self.request_memory = request_memory
+        # The ID of the resource group to which the resource node belongs.
         self.resource_group_id = resource_group_id
+        # The name of the resource group to which the resource node belongs.
         self.resource_group_name = resource_group_name
         self.self_quota_workload_num = self_quota_workload_num
         self.sub_nodes = sub_nodes
+        # The number of CPU cores that are reserved for the system.
         self.system_reserved_cpu = system_reserved_cpu
+        # The amount of memory that is reserved for the system in GiB.
         self.system_reserved_memory = system_reserved_memory
+        # The user information.
         self.users = users
+        # The number of workloads on the node.
         self.workload_num = workload_num
 
     def validate(self):

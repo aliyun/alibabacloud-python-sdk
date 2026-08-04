@@ -14,8 +14,11 @@ class WorkspaceSpecs(DaraModel):
         specs: List[main_models.WorkspaceSpec] = None,
         workspace_id: str = None,
     ):
+        # Applicable product (DLC, DSW, EAS, ...)
         self.product = product
+        # List of resource specifications
         self.specs = specs
+        # Workspace ID
         self.workspace_id = workspace_id
 
     def validate(self):

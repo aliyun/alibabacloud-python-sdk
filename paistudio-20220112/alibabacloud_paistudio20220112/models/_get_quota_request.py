@@ -10,7 +10,9 @@ class GetQuotaRequest(DaraModel):
         verbose: bool = None,
         with_node_meta: bool = None,
     ):
+        # Specifies whether to return detailed information.
         self.verbose = verbose
+        # Specifies whether to return the metadata of nodes that are attached to the resource quota.
         self.with_node_meta = with_node_meta
 
     def validate(self):

@@ -10,7 +10,9 @@ class CreateInstanceWebTerminalResponseBody(DaraModel):
         request_id: str = None,
         web_terminal_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The ID of the web terminal used to access the instance container.
         self.web_terminal_id = web_terminal_id
 
     def validate(self):

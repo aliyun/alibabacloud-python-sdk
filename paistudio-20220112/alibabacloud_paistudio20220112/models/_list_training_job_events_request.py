@@ -12,10 +12,16 @@ class ListTrainingJobEventsRequest(DaraModel):
         page_size: int = None,
         start_time: str = None,
     ):
+        # End UTC time (ISO8601 format). If empty, it is the current time.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.end_time = end_time
+        # Page number (default is 1).
         self.page_number = page_number
+        # Page size (default is 100).
         self.page_size = page_size
+        # Start UTC time (ISO8601 format). If empty, it is the task start time.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.start_time = start_time
 

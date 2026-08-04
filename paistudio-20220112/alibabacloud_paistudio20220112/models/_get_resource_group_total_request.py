@@ -9,6 +9,7 @@ class GetResourceGroupTotalRequest(DaraModel):
         self,
         resource_group_id: str = None,
     ):
+        # The ID of the Resource Group.
         self.resource_group_id = resource_group_id
 
     def validate(self):

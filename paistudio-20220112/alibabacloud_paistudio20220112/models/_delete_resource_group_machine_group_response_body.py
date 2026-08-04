@@ -10,7 +10,9 @@ class DeleteResourceGroupMachineGroupResponseBody(DaraModel):
         machine_group_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the deleted machine group.
         self.machine_group_id = machine_group_id
+        # The request ID. Provide this ID to our technical support for troubleshooting.
         self.request_id = request_id
 
     def validate(self):

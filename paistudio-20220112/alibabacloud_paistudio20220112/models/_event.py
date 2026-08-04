@@ -19,16 +19,27 @@ class Event(DaraModel):
         trigger_user_id: str = None,
         triggered_by: str = None,
     ):
+        # The event content.
         self.content = content
+        # The event ID.
         self.event_id = event_id
+        # The event type.
         self.event_type = event_type
+        # The reserved field.
         self.function = function
+        # Indicates whether the content is truncated.
         self.is_truncated = is_truncated
+        # Object ID
         self.object_id = object_id
+        # The object type.
         self.object_type = object_type
+        # The Alibaba Cloud account.
         self.trigger_tenant_id = trigger_tenant_id
+        # The trigger time.
         self.trigger_time = trigger_time
+        # The RAM user.
         self.trigger_user_id = trigger_user_id
+        # The trigger source.
         self.triggered_by = triggered_by
 
     def validate(self):

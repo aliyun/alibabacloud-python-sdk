@@ -10,7 +10,14 @@ class GetResourceGroupRequestRequest(DaraModel):
         pod_status: str = None,
         resource_group_id: str = None,
     ):
+        # The container status. Valid values:
+        # 
+        # - Waiting
+        # - Running
+        # - Terminated
         self.pod_status = pod_status
+        # The resource group ID. Each resource group has a globally unique resource group ID. You can use the resource group ID to obtain information about the resource group.
+        # 
         # This parameter is required.
         self.resource_group_id = resource_group_id
 

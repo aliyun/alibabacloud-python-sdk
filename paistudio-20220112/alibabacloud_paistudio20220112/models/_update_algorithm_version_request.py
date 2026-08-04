@@ -10,6 +10,7 @@ class UpdateAlgorithmVersionRequest(DaraModel):
         self,
         algorithm_spec: main_models.AlgorithmSpec = None,
     ):
+        # The details of the algorithm.
         self.algorithm_spec = algorithm_spec
 
     def validate(self):

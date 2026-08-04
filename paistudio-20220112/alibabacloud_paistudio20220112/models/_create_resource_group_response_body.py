@@ -10,8 +10,9 @@ class CreateResourceGroupResponseBody(DaraModel):
         request_id: str = None,
         resource_group_id: str = None,
     ):
+        # Request ID.
         self.request_id = request_id
-        # ResourceGroup ID。
+        # Resource group ID.
         self.resource_group_id = resource_group_id
 
     def validate(self):

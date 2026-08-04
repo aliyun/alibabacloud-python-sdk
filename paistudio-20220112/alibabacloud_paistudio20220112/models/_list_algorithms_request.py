@@ -14,11 +14,17 @@ class ListAlgorithmsRequest(DaraModel):
         page_size: int = None,
         workspace_id: str = None,
     ):
+        # Algorithm ID.
         self.algorithm_id = algorithm_id
+        # Algorithm name.
         self.algorithm_name = algorithm_name
+        # Algorithm provider.
         self.algorithm_provider = algorithm_provider
+        # Page number.
         self.page_number = page_number
+        # Page size.
         self.page_size = page_size
+        # Workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):

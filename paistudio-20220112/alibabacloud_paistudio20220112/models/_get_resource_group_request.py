@@ -13,7 +13,9 @@ class GetResourceGroupRequest(DaraModel):
         is_aiworkspace_data_enabled: bool = None,
         tag: List[main_models.GetResourceGroupRequestTag] = None,
     ):
+        # Optional. Defaults to `true`.
         self.is_aiworkspace_data_enabled = is_aiworkspace_data_enabled
+        # A list of up to 20 tags to add to the instance.
         self.tag = tag
 
     def validate(self):
@@ -56,7 +58,9 @@ class GetResourceGroupRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):

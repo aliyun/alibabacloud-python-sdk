@@ -16,13 +16,22 @@ class HyperParameterDefinition(DaraModel):
         required: bool = None,
         type: str = None,
     ):
+        # The default value of the hyperparameter.
         self.default_value = default_value
+        # The description of the hyperparameter.
         self.description = description
+        # The display name of the parameter.
         self.display_name = display_name
+        # The name of the parameter.
+        # 
         # This parameter is required.
         self.name = name
+        # The value range of the parameter.
         self.range = range
+        # Specifies whether the parameter is required.
         self.required = required
+        # The type of the hyperparameter.
+        # 
         # This parameter is required.
         self.type = type
 

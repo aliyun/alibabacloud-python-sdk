@@ -13,8 +13,11 @@ class ListTrainingJobEventsResponseBody(DaraModel):
         request_id: str = None,
         total_count: str = None,
     ):
+        # List of events.
         self.events = events
+        # Request ID.
         self.request_id = request_id
+        # Total number of events.
         self.total_count = total_count
 
     def validate(self):

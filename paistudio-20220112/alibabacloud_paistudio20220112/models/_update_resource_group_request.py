@@ -13,9 +13,13 @@ class UpdateResourceGroupRequest(DaraModel):
         unbind: bool = None,
         user_vpc: main_models.UserVpc = None,
     ):
+        # The description of the resource group.
         self.description = description
+        # The name of the resource group.
         self.name = name
+        # Whether to detach the resource group from the currently connected VPC.
         self.unbind = unbind
+        # Information about the VPC connected to the resource group.
         self.user_vpc = user_vpc
 
     def validate(self):
