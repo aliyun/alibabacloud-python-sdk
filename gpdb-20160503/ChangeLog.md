@@ -1,3 +1,12 @@
+2026-08-04 Version: 5.10.0
+- Support API CheckSaasServiceVersion.
+- Support API GetApiEndpoints.
+- Support API GrantApiKey.
+- Support API ModifySaasServiceDeletionProtection.
+- Support API RevokeApiKey.
+- Support API UpdateSaasServiceVersion.
+
+
 2026-08-03 Version: 5.9.1
 - Update API CreateSupabaseProject: add request parameters Tags.
 - Update API ListSaasService: add response parameters Body.Items.$.Components.

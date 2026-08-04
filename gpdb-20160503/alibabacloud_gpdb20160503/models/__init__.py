@@ -41,6 +41,9 @@ from ._check_hadoop_net_connection_response import CheckHadoopNetConnectionRespo
 from ._check_jdbcsource_net_connection_request import CheckJDBCSourceNetConnectionRequest
 from ._check_jdbcsource_net_connection_response_body import CheckJDBCSourceNetConnectionResponseBody
 from ._check_jdbcsource_net_connection_response import CheckJDBCSourceNetConnectionResponse
+from ._check_saas_service_version_request import CheckSaasServiceVersionRequest
+from ._check_saas_service_version_response_body import CheckSaasServiceVersionResponseBody
+from ._check_saas_service_version_response import CheckSaasServiceVersionResponse
 from ._check_service_linked_role_request import CheckServiceLinkedRoleRequest
 from ._check_service_linked_role_response_body import CheckServiceLinkedRoleResponseBody
 from ._check_service_linked_role_response import CheckServiceLinkedRoleResponse
@@ -508,6 +511,9 @@ from ._execute_statement_response import ExecuteStatementResponse
 from ._get_account_request import GetAccountRequest
 from ._get_account_response_body import GetAccountResponseBody
 from ._get_account_response import GetAccountResponse
+from ._get_api_endpoints_request import GetApiEndpointsRequest
+from ._get_api_endpoints_response_body import GetApiEndpointsResponseBody
+from ._get_api_endpoints_response import GetApiEndpointsResponse
 from ._get_api_key_request import GetApiKeyRequest
 from ._get_api_key_response_body import GetApiKeyResponseBody
 from ._get_api_key_response import GetApiKeyResponse
@@ -547,6 +553,10 @@ from ._get_upsert_collection_data_job_response import GetUpsertCollectionDataJob
 from ._get_workspace_request import GetWorkspaceRequest
 from ._get_workspace_response_body import GetWorkspaceResponseBody
 from ._get_workspace_response import GetWorkspaceResponse
+from ._grant_api_key_request import GrantApiKeyRequest
+from ._grant_api_key_shrink_request import GrantApiKeyShrinkRequest
+from ._grant_api_key_response_body import GrantApiKeyResponseBody
+from ._grant_api_key_response import GrantApiKeyResponse
 from ._grant_collection_request import GrantCollectionRequest
 from ._grant_collection_response_body import GrantCollectionResponseBody
 from ._grant_collection_response import GrantCollectionResponse
@@ -722,6 +732,9 @@ from ._modify_remote_adbdata_source_response import ModifyRemoteADBDataSourceRes
 from ._modify_sqlcollector_policy_request import ModifySQLCollectorPolicyRequest
 from ._modify_sqlcollector_policy_response_body import ModifySQLCollectorPolicyResponseBody
 from ._modify_sqlcollector_policy_response import ModifySQLCollectorPolicyResponse
+from ._modify_saas_service_deletion_protection_request import ModifySaasServiceDeletionProtectionRequest
+from ._modify_saas_service_deletion_protection_response_body import ModifySaasServiceDeletionProtectionResponseBody
+from ._modify_saas_service_deletion_protection_response import ModifySaasServiceDeletionProtectionResponse
 from ._modify_security_ips_request import ModifySecurityIpsRequest
 from ._modify_security_ips_response_body import ModifySecurityIpsResponseBody
 from ._modify_security_ips_response import ModifySecurityIpsResponse
@@ -821,6 +834,10 @@ from ._resume_saas_service_response import ResumeSaasServiceResponse
 from ._resume_supabase_project_request import ResumeSupabaseProjectRequest
 from ._resume_supabase_project_response_body import ResumeSupabaseProjectResponseBody
 from ._resume_supabase_project_response import ResumeSupabaseProjectResponse
+from ._revoke_api_key_request import RevokeApiKeyRequest
+from ._revoke_api_key_shrink_request import RevokeApiKeyShrinkRequest
+from ._revoke_api_key_response_body import RevokeApiKeyResponseBody
+from ._revoke_api_key_response import RevokeApiKeyResponse
 from ._set_as_default_branch_request import SetAsDefaultBranchRequest
 from ._set_as_default_branch_response_body import SetAsDefaultBranchResponseBody
 from ._set_as_default_branch_response import SetAsDefaultBranchResponse
@@ -867,6 +884,9 @@ from ._update_collection_data_metadata_response import UpdateCollectionDataMetad
 from ._update_dbinstance_plan_request import UpdateDBInstancePlanRequest
 from ._update_dbinstance_plan_response_body import UpdateDBInstancePlanResponseBody
 from ._update_dbinstance_plan_response import UpdateDBInstancePlanResponse
+from ._update_saas_service_version_request import UpdateSaasServiceVersionRequest
+from ._update_saas_service_version_response_body import UpdateSaasServiceVersionResponseBody
+from ._update_saas_service_version_response import UpdateSaasServiceVersionResponse
 from ._upgrade_dbinstance_request import UpgradeDBInstanceRequest
 from ._upgrade_dbinstance_response_body import UpgradeDBInstanceResponseBody
 from ._upgrade_dbinstance_response import UpgradeDBInstanceResponse
@@ -1052,6 +1072,7 @@ from ._execute_statement_response_body import ExecuteStatementResponseBodyDataCo
 from ._execute_statement_response_body import ExecuteStatementResponseBodyDataRecordsRecords
 from ._execute_statement_response_body import ExecuteStatementResponseBodyDataRecords
 from ._execute_statement_response_body import ExecuteStatementResponseBodyData
+from ._get_api_endpoints_response_body import GetApiEndpointsResponseBodyItems
 from ._get_api_key_response_body import GetApiKeyResponseBodyAuthServices
 from ._get_graph_ragjob_response_body import GetGraphRAGJobResponseBodyJob
 from ._get_graph_ragjob_response_body import GetGraphRAGJobResponseBodyUsage
@@ -1216,6 +1237,9 @@ __all__ = [
     CheckJDBCSourceNetConnectionRequest,
     CheckJDBCSourceNetConnectionResponseBody,
     CheckJDBCSourceNetConnectionResponse,
+    CheckSaasServiceVersionRequest,
+    CheckSaasServiceVersionResponseBody,
+    CheckSaasServiceVersionResponse,
     CheckServiceLinkedRoleRequest,
     CheckServiceLinkedRoleResponseBody,
     CheckServiceLinkedRoleResponse,
@@ -1683,6 +1707,9 @@ __all__ = [
     GetAccountRequest,
     GetAccountResponseBody,
     GetAccountResponse,
+    GetApiEndpointsRequest,
+    GetApiEndpointsResponseBody,
+    GetApiEndpointsResponse,
     GetApiKeyRequest,
     GetApiKeyResponseBody,
     GetApiKeyResponse,
@@ -1722,6 +1749,10 @@ __all__ = [
     GetWorkspaceRequest,
     GetWorkspaceResponseBody,
     GetWorkspaceResponse,
+    GrantApiKeyRequest,
+    GrantApiKeyShrinkRequest,
+    GrantApiKeyResponseBody,
+    GrantApiKeyResponse,
     GrantCollectionRequest,
     GrantCollectionResponseBody,
     GrantCollectionResponse,
@@ -1897,6 +1928,9 @@ __all__ = [
     ModifySQLCollectorPolicyRequest,
     ModifySQLCollectorPolicyResponseBody,
     ModifySQLCollectorPolicyResponse,
+    ModifySaasServiceDeletionProtectionRequest,
+    ModifySaasServiceDeletionProtectionResponseBody,
+    ModifySaasServiceDeletionProtectionResponse,
     ModifySecurityIpsRequest,
     ModifySecurityIpsResponseBody,
     ModifySecurityIpsResponse,
@@ -1996,6 +2030,10 @@ __all__ = [
     ResumeSupabaseProjectRequest,
     ResumeSupabaseProjectResponseBody,
     ResumeSupabaseProjectResponse,
+    RevokeApiKeyRequest,
+    RevokeApiKeyShrinkRequest,
+    RevokeApiKeyResponseBody,
+    RevokeApiKeyResponse,
     SetAsDefaultBranchRequest,
     SetAsDefaultBranchResponseBody,
     SetAsDefaultBranchResponse,
@@ -2042,6 +2080,9 @@ __all__ = [
     UpdateDBInstancePlanRequest,
     UpdateDBInstancePlanResponseBody,
     UpdateDBInstancePlanResponse,
+    UpdateSaasServiceVersionRequest,
+    UpdateSaasServiceVersionResponseBody,
+    UpdateSaasServiceVersionResponse,
     UpgradeDBInstanceRequest,
     UpgradeDBInstanceResponseBody,
     UpgradeDBInstanceResponse,
@@ -2227,6 +2268,7 @@ __all__ = [
     ExecuteStatementResponseBodyDataRecordsRecords,
     ExecuteStatementResponseBodyDataRecords,
     ExecuteStatementResponseBodyData,
+    GetApiEndpointsResponseBodyItems,
     GetApiKeyResponseBodyAuthServices,
     GetGraphRAGJobResponseBodyJob,
     GetGraphRAGJobResponseBodyUsage,

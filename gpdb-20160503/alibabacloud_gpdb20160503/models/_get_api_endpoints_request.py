@@ -4,32 +4,19 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class ListSaasServiceRequest(DaraModel):
+class GetApiEndpointsRequest(DaraModel):
     def __init__(
         self,
         max_results: int = None,
         next_token: str = None,
         region_id: str = None,
-        service_type: str = None,
-        workspace_id: str = None,
     ):
-        # The maximum number of entries to return. Default value: 10.
+        # The maximum number of records to return in this query.
         self.max_results = max_results
-        # The paging token for the next query. When you perform a paging query, the next query begins from the specified token.
+        # The pagination token for the next query.
         self.next_token = next_token
-        # The region ID of the workspace.
+        # The region ID.
         self.region_id = region_id
-        # Service type, with the following value:
-        # 
-        # - **memroy**
-        # - **drama**
-        # 
-        # This parameter is required.
-        self.service_type = service_type
-        # The workspace ID.
-        # 
-        # This parameter is required.
-        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -48,12 +35,6 @@ class ListSaasServiceRequest(DaraModel):
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
-        if self.service_type is not None:
-            result['ServiceType'] = self.service_type
-
-        if self.workspace_id is not None:
-            result['WorkspaceId'] = self.workspace_id
-
         return result
 
     def from_map(self, m: dict = None):
@@ -66,12 +47,6 @@ class ListSaasServiceRequest(DaraModel):
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
-
-        if m.get('ServiceType') is not None:
-            self.service_type = m.get('ServiceType')
-
-        if m.get('WorkspaceId') is not None:
-            self.workspace_id = m.get('WorkspaceId')
 
         return self
 

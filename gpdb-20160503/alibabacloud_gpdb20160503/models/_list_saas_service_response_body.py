@@ -94,11 +94,16 @@ class ListSaasServiceResponseBodyItems(DaraModel):
         service_type: str = None,
         status: str = None,
     ):
+        # The list of service subcomponents.
         self.components = components
         # The creation time.
         self.create_time = create_time
         # The compute resource.
         self.cu = cu
+        # Indicates whether the release protection feature is enabled. Valid values:
+        # 
+        # * **true**: Enabled.
+        # * **false**: Disabled.
         self.deletion_protection = deletion_protection
         # The expiration time.
         self.expire_time = expire_time
@@ -222,11 +227,20 @@ class ListSaasServiceResponseBodyItemsComponents(DaraModel):
         deletion_protection: bool = None,
         status: str = None,
     ):
+        # The component ID.
         self.component_id = component_id
+        # The type of the subcomponent.
         self.component_type = component_type
+        # The creation time.
         self.create_time = create_time
+        # The compute resource of the component.
         self.cu = cu
+        # The release protection status.
         self.deletion_protection = deletion_protection
+        # The service status. Valid values:
+        # 
+        # - active: Running.
+        # - creating: Being created.
         self.status = status
 
     def validate(self):
