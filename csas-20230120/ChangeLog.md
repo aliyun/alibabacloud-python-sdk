@@ -13,6 +13,21 @@
 - Update API UpdatePrivateAccessApplication: add request parameters UnauthorizedAccessConfig.
 
 
+2026-08-04 Version: 1.12.2
+- Update API CreateApprovalProcess: add request parameters MatchSchemas.PrivateAccessBlockSchemaId.
+- Update API CreateApprovalProcess: add response parameters Body.Process.PrivateAccessBlockPolicies.
+- Update API CreatePrivateAccessApplication: add request parameters UnauthorizedAccessConfig.
+- Update API GetApprovalProcess: add response parameters Body.Process.PrivateAccessBlockPolicies.
+- Update API GetPrivateAccessApplication: add response parameters Body.Application.UnauthorizedAccessConfig.
+- Update API ListApprovalProcesses: add response parameters Body.Processes.$.PrivateAccessBlockPolicies.
+- Update API ListConnectors: add response parameters Body.Connectors.$.VipCidr.
+- Update API ListUserDevices: add request parameters SnBios.
+- Update API UpdateApprovalProcess: add request parameters MatchSchemaConfigs.PrivateAccessBlockSchemaConfig.
+- Update API UpdateApprovalProcess: add request parameters MatchSchemas.PrivateAccessBlockSchemaId.
+- Update API UpdateApprovalProcess: add response parameters Body.Process.PrivateAccessBlockPolicies.
+- Update API UpdatePrivateAccessApplication: add request parameters UnauthorizedAccessConfig.
+
+
 2026-04-28 Version: 1.12.0
 - Support API RevokeUserDeviceSession.
 
