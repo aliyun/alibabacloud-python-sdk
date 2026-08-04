@@ -21,102 +21,91 @@ class SubmitIndexAddDocumentsJobRequest(DaraModel):
         separator: str = None,
         source_type: str = None,
     ):
-        # A list of category IDs.
+        # The list of category IDs.
         self.category_ids = category_ids
         # <props="china">
+        # Enables custom chunking (applies only to files appended in this request). For more information, see [Knowledge base](https://help.aliyun.com/document_detail/2807740.html). Valid values (only one value can be specified at a time):
         # 
-        # The custom chunking mode. This setting applies only to the documents added in the current job. For more information, see [knowledge base](https://help.aliyun.com/document_detail/2807740.html). Valid values (you can specify only one value):
+        # - **length**: chunk by length. Strictly chunks according to the specified `ChunkSize` and `OverlapSize`. If these two parameters are not specified, the system uses default values (`ChunkSize` of 500 and `OverlapSize` of 100). Chunking by length does not support `Separator` (even if specified, it does not take effect).
+        # - **page**: chunk by page. If `ChunkSize` is specified, it is also considered during chunking (if not specified, the default value of 500 is used). Chunking by page does not support `OverlapSize` or `Separator` (even if specified, they do not take effect).
+        # - **h1**~**h5**: chunk by headings at the corresponding level (`h1` is the first-level heading, and so on, with support up to `h5` fifth-level heading). If `ChunkSize` is specified, it is also considered during chunking (if not specified, the default value of 500 is used). Chunking by heading does not support `OverlapSize` or `Separator` (even if specified, they do not take effect).
+        # - **regex**: chunk by regular expression. The `Separator` parameter must be specified. If `ChunkSize` is specified, it is also considered during chunking (if not specified, the default value of 500 is used). Chunking by regex does not support `OverlapSize` (even if specified, it does not take effect).
         # 
-        # - **length**: Splits the text by a fixed length. The chunking strictly follows the specified `ChunkSize` and `OverlapSize`. If you do not specify these parameters, the system uses the default values: a `ChunkSize` of 500 and an `OverlapSize` of 100. This mode ignores the `Separator` parameter.
+        # Default value: empty, which uses intelligent chunking.
         # 
-        # - **page**: Splits the text by page. If `ChunkSize` is specified, its value is also applied during chunking. If `ChunkSize` is not set, a default value of 500 is used. This mode ignores the `OverlapSize` and `Separator` parameters.
-        # 
-        # - **h1**: Splits the text by level-1 headings. If `ChunkSize` is specified, its value is also applied during chunking. If `ChunkSize` is not set, a default value of 500 is used. This mode ignores the `OverlapSize` and `Separator` parameters.
-        # 
-        # - **h2**: Splits the text by level-2 headings. If `ChunkSize` is specified, its value is also applied during chunking. If `ChunkSize` is not set, a default value of 500 is used. This mode ignores the `OverlapSize` and `Separator` parameters.
-        # 
-        # - **regex**: Splits the text by using a regular expression. The `Separator` parameter is required for this mode. If `ChunkSize` is specified, its value is also applied during chunking. If `ChunkSize` is not set, a default value of 500 is used. This mode ignores the `OverlapSize` parameter.
-        # 
-        # If this parameter is not set, intelligent chunking is used by default.
         # 
         # 
         # 
         # <props="intl">
         # 
-        # > This parameter is not available. Do not specify it.
+        # > This parameter is not yet available. Do not specify this parameter.
         self.chunk_mode = chunk_mode
         # <props="china">
+        # The chunk length, which is the maximum number of characters per text chunk (applies only to files appended in this request). When this length is exceeded:
         # 
-        # The chunk size. Specifies the maximum number of characters for each text chunk. This setting applies only to the documents added in the current job. If a text segment exceeds this size, the behavior depends on the chunking mode:
+        # - **Intelligent chunking** (without specifying `chunkMode`): the text is likely to be truncated.
+        # - **Custom chunking** (with `chunkMode` specified): the text is forcibly split.
         # 
-        # - **Intelligent chunking** (if `ChunkMode` is not set): The text may be truncated.
+        # Valid values: 1 to 6000. If this parameter is not specified, the default value of 500 is used.
         # 
-        # - **Custom chunking** (if `ChunkMode` is set): The text is forcibly split.
+        # For more information, see [Knowledge base](https://help.aliyun.com/document_detail/2807740.html).
         # 
-        # The value must be in the range of [1, 6000]. Defaults to 500 if not specified.
-        # 
-        # For more information, see [knowledge base](https://help.aliyun.com/document_detail/2807740.html).
-        # 
-        # > If you specify a `ChunkSize` less than 100, you must also specify the `OverlapSize` parameter. You can also omit both parameters to use the system defaults.
+        # > If you specify `ChunkSize` with a value less than 100, you must also specify `OverlapSize`. You can also leave both parameters unspecified (the system uses default values).
         # 
         # 
         # 
         # <props="intl">
         # 
-        # > This parameter is not available. Do not specify it.
+        # > This parameter is not yet available. Do not specify this parameter.
         self.chunk_size = chunk_size
-        # A list of file IDs.
+        # The list of file IDs.
         self.document_ids = document_ids
-        # Specifies whether to include Excel file headers. If set to `true`, the knowledge base treats the first row of all .xlsx and .xls files as the header and automatically prepends it to each text chunk (data row). This prevents the large language model (LLM) from misinterpreting the header as a regular data row.
+        # Specifies whether to enable header assembly for Excel files. When enabled, the knowledge base treats the first row of all xlsx and xls files as headers and automatically appends them to each text chunk (data row), preventing the large language model from treating headers as regular data rows.
         # 
-        # > Enable this parameter only if all imported documents are Excel files that contain a header.
+        # 
+        # > Enable this feature only when all imported files are in xlsx or xls format and contain headers. Otherwise, leave it disabled.
+        # >
         # 
         # Valid values:
-        # 
         # - true: Enabled.
-        # 
         # - false: Disabled.
         # 
         # Default value: false.
         self.enable_headers = enable_headers
         self.extra = extra
-        # The knowledge base ID. This is the `Data.Id` returned by the **CreateIndex** API.
+        # The knowledge base ID, which is the `Data.Id` returned by the **CreateIndex** operation.
         # 
         # This parameter is required.
         self.index_id = index_id
         # <props="china">
+        # The chunk overlap length (applies only to files appended in this request). It indicates the number of overlapping characters between the current text chunk and the previous text chunk. For more information, see [Knowledge base](https://help.aliyun.com/document_detail/2807740.html). Valid values: 0 to 1024.
         # 
-        # Specifies the number of overlapping characters between adjacent text chunks. This setting applies only to the documents added in the current job. For more information, see [knowledge base](https://help.aliyun.com/document_detail/2807740.html). The value must be in the range of [0, 1024].
-        # 
-        # Defaults to 100 if not specified.
-        # 
-        # > The value of `OverlapSize` must be less than the value of `ChunkSize`. Otherwise, the chunking process may fail.
+        # If this parameter is not specified, the default value of 100 is used.
+        # > The value of `OverlapSize` must be less than the value of `ChunkSize`. Otherwise, chunking exceptions may occur.
         # 
         # 
         # 
         # <props="intl">
         # 
-        # > This parameter is not available. Do not specify it.
+        # > This parameter is not yet available. Do not specify this parameter.
         self.overlap_size = overlap_size
         # <props="china">
+        # The sentence separator, which takes effect only when `chunkMode` is set to **regex** (otherwise, it does not take effect even if specified). You can specify a regular expression (only one is supported) to split the file into small text chunks. For more information, see [Knowledge base](https://help.aliyun.com/document_detail/2807740.html).
         # 
-        # The separator for chunking. This parameter is used only when `ChunkMode` is set to **regex**. You can specify a single regular expression (multiple expressions are not supported) to split the file into smaller text chunks. For more information, see [knowledge base](https://help.aliyun.com/document_detail/2807740.html).
-        # 
-        # When you use intelligent chunking (when `ChunkMode` is not specified), leave this parameter empty.
+        # When using intelligent chunking (without specifying `chunkMode`), keep the default empty value.
         # 
         # 
         # 
         # <props="intl">
         # 
-        # > This parameter is not available. Do not specify it.
+        # > This parameter is not yet available. Do not specify this parameter.
         self.separator = separator
-        # The type of the data source. Valid values:
+        # The data source type. Valid values:
+        # - DATA_CENTER_CATEGORY: category type. Imports all documents under specified categories in <props="china">[Application Data](https://bailian.console.aliyun.com/?tab=app#/data-center)<props="intl">[Application Data](https://modelstudio.console.alibabacloud.com/?tab=app#/data-center). Multiple categories are supported.
+        # - DATA_CENTER_FILE: document type. Imports specified files from <props="china">[Application Data](https://bailian.console.aliyun.com/?tab=app#/data-center)<props="intl">[Application Data](https://modelstudio.console.alibabacloud.com/?tab=app#/data-center). Multiple files are supported.
         # 
-        # - DATA_CENTER_CATEGORY: Imports all documents from specified categories in <props="china">[application data](https://bailian.console.aliyun.com/?tab=app#/data-center)<props="intl">[application data](https://modelstudio.console.alibabacloud.com/?tab=app#/data-center). You can import documents from multiple categories.
-        # 
-        # - DATA_CENTER_FILE: Imports specified files from <props="china">[application data](https://bailian.console.aliyun.com/?tab=app#/data-center)<props="intl">[application data](https://modelstudio.console.alibabacloud.com/?tab=app#/data-center). You can import multiple files.
-        # 
-        # > If you set this parameter to `DATA_CENTER_CATEGORY`, you must specify the `CategoryIds` parameter. If you set this parameter to `DATA_CENTER_FILE`, you must specify the `DocumentIds` parameter.
+        # > If this parameter is set to DATA_CENTER_CATEGORY, you must specify the `CategoryIds` parameter. If this parameter is set to DATA_CENTER_FILE, you must specify the `DocumentIds` parameter.
+        # >
         # 
         # This parameter is required.
         self.source_type = source_type

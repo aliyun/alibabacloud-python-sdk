@@ -1,3 +1,7 @@
+2026-08-04 Version: 2.14.3
+- Update API ListIndices: add response parameters Body.Data.Indices.$.StructuredIndexConfig.
+
+
 2026-07-29 Version: 2.14.2
 - Update API ListPublishedAgent: add request parameters subTypes.
 - Update API ListPublishedAgent: add response parameters Body.data.list.$.description.

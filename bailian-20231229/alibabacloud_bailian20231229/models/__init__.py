@@ -274,6 +274,7 @@ from ._list_index_documents_response_body import ListIndexDocumentsResponseBodyD
 from ._list_index_documents_response_body import ListIndexDocumentsResponseBodyData
 from ._list_index_file_details_response_body import ListIndexFileDetailsResponseBodyDataDocuments
 from ._list_index_file_details_response_body import ListIndexFileDetailsResponseBodyData
+from ._list_indices_response_body import ListIndicesResponseBodyDataIndicesStructuredIndexConfig
 from ._list_indices_response_body import ListIndicesResponseBodyDataIndices
 from ._list_indices_response_body import ListIndicesResponseBodyData
 from ._list_memories_response_body import ListMemoriesResponseBodyMemories
@@ -594,6 +595,7 @@ __all__ = [
     ListIndexDocumentsResponseBodyData,
     ListIndexFileDetailsResponseBodyDataDocuments,
     ListIndexFileDetailsResponseBodyData,
+    ListIndicesResponseBodyDataIndicesStructuredIndexConfig,
     ListIndicesResponseBodyDataIndices,
     ListIndicesResponseBodyData,
     ListMemoriesResponseBodyMemories,

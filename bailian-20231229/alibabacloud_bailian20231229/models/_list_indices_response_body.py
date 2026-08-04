@@ -17,7 +17,7 @@ class ListIndicesResponseBody(DaraModel):
         status: str = None,
         success: bool = None,
     ):
-        # The error code.
+        # The error status code.
         self.code = code
         # The returned data.
         self.data = data
@@ -94,9 +94,9 @@ class ListIndicesResponseBodyData(DaraModel):
     ):
         # The list of knowledge bases.
         self.indices = indices
-        # The page number returned.
+        # The specified page number.
         self.page_number = page_number
-        # The number of entries per page returned.
+        # The specified number of entries per page.
         self.page_size = page_size
         # The total number of entries returned.
         self.total_count = total_count
@@ -167,32 +167,31 @@ class ListIndicesResponseBodyDataIndices(DaraModel):
         sink_type: str = None,
         source_type: str = None,
         structure_type: str = None,
+        structured_index_config: List[main_models.ListIndicesResponseBodyDataIndicesStructuredIndexConfig] = None,
     ):
-        # The estimated chunk length. Valid values: 1 to 2048.
+        # The estimated chunk size. Valid values: 1 to 2048.
         self.chunk_size = chunk_size
         # The configuration mode used by this knowledge base. Valid values:
         # - recommend: recommended configuration.
         # - user-defined: custom configuration.
         self.confg_model = confg_model
-        # The description of the knowledge base.
+        # The knowledge base description.
         self.description = description
         # The list of file IDs.
         self.document_ids = document_ids
-        # The name of the embedding model. Valid values:
+        # The embedding model name. Valid values:
         # 
         # <props="china">
         # 
-        # - text-embedding-v4: the text-embedding-v4 model.
-        # - text-embedding-v3: the text-embedding-v3 model.
-        # - text-embedding-v2: the text-embedding-v2 model.
+        # - text-embedding-v4: text-embedding-v4 model.
+        # - text-embedding-v3: text-embedding-v3 model.
+        # - text-embedding-v2: text-embedding-v2 model.
         # 
         # 
         # 
         # <props="intl">
         # 
-        # - text-embedding-v2: the text-embedding-v2 model.
-        # 
-        # .
+        # - text-embedding-v2: text-embedding-v2 model.
         self.embedding_model_name = embedding_model_name
         # Indicates whether <props="china">[multi-turn conversation rewriting](https://help.aliyun.com/model-studio/use-cases/rag-optimization#b7031e2ad6cji)<props="intl">[multi-turn conversation rewriting](https://www.alibabacloud.com/help/model-studio/use-cases/rag-optimization#b7031e2ad6cji) is enabled for this knowledge base. Valid values:
         # - true: Enabled.
@@ -200,13 +199,13 @@ class ListIndicesResponseBodyDataIndices(DaraModel):
         self.enable_rewrite = enable_rewrite
         # The knowledge base ID, which is the `Data.Id` returned by the **CreateIndex** operation.
         self.id = id
-        # The name of the knowledge base.
+        # The knowledge base name.
         self.name = name
-        # The chunk overlap length. Valid values: 0 to 1024.
+        # The chunk overlap size. Valid values: 0 to 1024.
         self.overlap_size = overlap_size
         # The similarity threshold. Valid values: 0.01 to 1.00.
         self.rerank_min_score = rerank_min_score
-        # The name of the rerank model. Valid values:
+        # The rerank model name. Valid values:
         # 
         # <props="china">
         # 
@@ -221,8 +220,6 @@ class ListIndicesResponseBodyDataIndices(DaraModel):
         # 
         # - gte-rerank-hybrid: official reranking.
         # - gte-rerank: gte-rerank reranking.
-        # 
-        # .
         self.rerank_model_name = rerank_model_name
         # The sentence separator. If multiple separators are used, they are separated by |. Valid values:
         # - \\
@@ -236,7 +233,7 @@ class ListIndicesResponseBodyDataIndices(DaraModel):
         # - ；: Chinese semicolon
         # - ;: English semicolon
         # - ？: Chinese question mark
-        # - ?: English question mark.
+        # - ?: English question mark
         self.separator = separator
         # The instance ID of the vector storage for the knowledge base.
         self.sink_instance_id = sink_instance_id
@@ -247,7 +244,7 @@ class ListIndicesResponseBodyDataIndices(DaraModel):
         # - BUILT_IN: built-in vector database.
         # - ADB: AnalyticDB for PostgreSQL database.
         self.sink_type = sink_type
-        # The data type of Alibaba Cloud Model Studio <props="china">[application data](https://bailian.console.aliyun.com/?tab=app#/data-center)<props="intl">[application data](https://modelstudio.console.alibabacloud.com/?tab=app#/data-center).
+        # The data type in Alibaba Cloud Model Studio <props="china">[Application Data](https://bailian.console.aliyun.com/?tab=app#/data-center)<props="intl">[Application Data](https://modelstudio.console.alibabacloud.com/?tab=app#/data-center).
         # 
         # 
         # For document search<props="china">/audio and video search knowledge bases, valid values:
@@ -257,13 +254,17 @@ class ListIndicesResponseBodyDataIndices(DaraModel):
         # For data query/image Q&A knowledge bases, valid values:
         # - DATA_CENTER_STRUCTURED_TABLE: data table type.
         self.source_type = source_type
-        # The type of the knowledge base. Valid values:
+        # The knowledge base type. Valid values:
         # 
         # - UNSTRUCTURED: document search.
         self.structure_type = structure_type
+        self.structured_index_config = structured_index_config
 
     def validate(self):
-        pass
+        if self.structured_index_config:
+            for v1 in self.structured_index_config:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -321,6 +322,11 @@ class ListIndicesResponseBodyDataIndices(DaraModel):
         if self.structure_type is not None:
             result['StructureType'] = self.structure_type
 
+        result['StructuredIndexConfig'] = []
+        if self.structured_index_config is not None:
+            for k1 in self.structured_index_config:
+                result['StructuredIndexConfig'].append(k1.to_map() if k1 else None)
+
         return result
 
     def from_map(self, m: dict = None):
@@ -375,6 +381,63 @@ class ListIndicesResponseBodyDataIndices(DaraModel):
 
         if m.get('StructureType') is not None:
             self.structure_type = m.get('StructureType')
+
+        self.structured_index_config = []
+        if m.get('StructuredIndexConfig') is not None:
+            for k1 in m.get('StructuredIndexConfig'):
+                temp_model = main_models.ListIndicesResponseBodyDataIndicesStructuredIndexConfig()
+                self.structured_index_config.append(temp_model.from_map(k1))
+
+        return self
+
+class ListIndicesResponseBodyDataIndicesStructuredIndexConfig(DaraModel):
+    def __init__(
+        self,
+        is_recall: bool = None,
+        is_search: bool = None,
+        name: str = None,
+        type: str = None,
+    ):
+        self.is_recall = is_recall
+        self.is_search = is_search
+        self.name = name
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.is_recall is not None:
+            result['IsRecall'] = self.is_recall
+
+        if self.is_search is not None:
+            result['IsSearch'] = self.is_search
+
+        if self.name is not None:
+            result['Name'] = self.name
+
+        if self.type is not None:
+            result['Type'] = self.type
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IsRecall') is not None:
+            self.is_recall = m.get('IsRecall')
+
+        if m.get('IsSearch') is not None:
+            self.is_search = m.get('IsSearch')
+
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
 
         return self
 

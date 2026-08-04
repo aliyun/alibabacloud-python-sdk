@@ -94,13 +94,13 @@ class ListIndexFileDetailsResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The list of files in the knowledge base, sorted by file import time in descending order (consistent with the console).
+        # The list of files in the knowledge base, sorted in descending order by file import time (consistent with the console).
         self.documents = documents
         # The knowledge base ID.
         self.index_id = index_id
-        # The specified page number.
+        # The returned page number.
         self.page_number = page_number
-        # The specified number of entries per page.
+        # The returned number of items per page.
         self.page_size = page_size
         # The total number of returned results.
         self.total_count = total_count
@@ -186,12 +186,13 @@ class ListIndexFileDetailsResponseBodyDataDocuments(DaraModel):
         self.document_type = document_type
         # Indicates whether Excel file headers support concatenation.
         self.enable_headers = enable_headers
-        # The time when the file was imported to the knowledge base, in Unix timestamp format.
+        # The time when the file was imported to the knowledge base, in UNIX timestamp format.
         self.gmt_modified = gmt_modified
         # The file ID.
         self.id = id
         # The file import error message.
         self.message = message
+        # The metadata extracted from the document.
         self.meta_extract_info = meta_extract_info
         # The file name.
         self.name = name
