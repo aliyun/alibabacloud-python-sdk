@@ -12,13 +12,13 @@ class DeleteInstanceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The return code. A value of 200 indicates success.
+        # The response code. A value of 200 indicates success.
         self.code = code
-        # The return message.
+        # The response message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the call is successful.
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):

@@ -18,91 +18,80 @@ class DeleteAclRequest(DaraModel):
         region_id: str = None,
         username: str = None,
     ):
-        # Operation type. Valid values:
+        # The operation type. Valid values:
         # 
-        # - **Write**: Write
+        # - **Write**: write.
         # 
-        # - **Read**: Read
+        # - **Read**: read.
         # 
-        # - **Describe**: Read TransactionalId
-        # 
-        # - **IdempotentWrite**: Idempotent write to Cluster
-        # 
-        # - **IDEMPOTENT_WRITE**: Idempotent write to Cluster, only available for Serverless instances.
-        # 
-        # - **DESCRIBE_CONFIGS**: Query configuration, only available for Serverless instances.
+        # - **Describe**: read TransactionalId.
+        # - **IdempotentWrite**: idempotent write to Cluster.
+        # - **IDEMPOTENT_WRITE**: idempotent write to Cluster. This value is available only for serverless instances.
+        # - **DESCRIBE_CONFIGS**: query configurations. This value is available only for serverless instances.
         # 
         # This parameter is required.
         self.acl_operation_type = acl_operation_type
-        # Batch authorization operation types. Multiple operations are separated by commas (,).
+        # The batch authorization operation types. Separate multiple operations with commas (,).
         # 
         # Valid values:
+        # - **Write**: write.
         # 
-        # - **Write**: Read
+        # - **Read**: read.
         # 
-        # - **Read**: Write
+        # - **Describe**: read TransactionalId.
+        # - **IdempotentWrite**: idempotent write to Cluster.
+        # - **IDEMPOTENT_WRITE**: idempotent write to Cluster. This value is available only for serverless instances.
+        # - **DESCRIBE_CONFIGS**: query configurations. This value is available only for serverless instances.
         # 
-        # - **Describe**: Read TransactionalId
-        # 
-        # - **IdempotentWrite**: Idempotent write to Cluster
-        # 
-        # - **IDEMPOTENT_WRITE**: Idempotent write to Cluster, only available for Serverless instances.
-        # 
-        # - **DESCRIBE_CONFIGS**: Query configuration, only available for Serverless instances.
-        # 
-        # > This parameter is only supported for Serverless instances.
+        # > This parameter is available only for serverless instances.
         self.acl_operation_types = acl_operation_types
-        # Authorization method. Valid values:
+        # The authorization method. Valid values:
         # 
-        # - DENY: Deny
+        # - DENY: deny.
+        # - ALLOW: allow.
         # 
-        # - ALLOW: Allow
-        # 
-        # > This parameter is only supported for Serverless instances.
+        # > This parameter is available only for serverless instances.
         self.acl_permission_type = acl_permission_type
-        # Resource name.
+        # The resource name.
         # 
-        # - Topic name or Group name.
+        # - The name of a topic or consumer group.
         # 
-        # - Asterisk (\\*) represents all Topic or Group names.
+        # - An asterisk (\\*) indicates the names of all topics or consumer groups.
         # 
         # This parameter is required.
         self.acl_resource_name = acl_resource_name
-        # Matching pattern. Valid values:
+        # The matching mode. Valid values:
         # 
-        # - **LITERAL**: Exact matching pattern
+        # - **LITERAL**: full-name match.
         # 
-        # - **PREFIXED**: Prefix matching pattern
+        # - **PREFIXED**: prefix match.
         # 
         # This parameter is required.
         self.acl_resource_pattern_type = acl_resource_pattern_type
-        # Resource type.
+        # The resource type. Valid values:
         # 
-        # - **Topic**: Message topic.
+        # - **Topic**: topic.
         # 
-        # - **Group**: Consumer group.
+        # - **Group**: consumer group.
         # 
-        # - **Cluster**: Instance.
-        # 
-        # - **TransactionalId**: Transaction ID.
+        # - **Cluster**: instance.
+        # - **TransactionalId**: transaction ID.
         # 
         # This parameter is required.
         self.acl_resource_type = acl_resource_type
-        # Source IP.
-        # 
-        # > - Only supports specific IP addresses or setting \\* (all IPs), does not support IP segments.
-        # >
-        # > - This parameter is only supported for Serverless instances.
+        # The source IP address.
+        # >- Only specific IP addresses or an asterisk (\\*) to allow all IP addresses are supported. CIDR blocks are not supported.
+        # >- This parameter is available only for serverless instances.
         self.host = host
-        # Instance ID.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Region ID.
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # Username.
+        # The username.
         # 
         # This parameter is required.
         self.username = username

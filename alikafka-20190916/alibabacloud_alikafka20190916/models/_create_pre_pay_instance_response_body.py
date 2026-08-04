@@ -14,15 +14,15 @@ class CreatePrePayInstanceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code. A value of 200 indicates a successful request.
+        # The HTTP status code. A value of 200 indicates success.
         self.code = code
-        # The response data.
+        # The returned data.
         self.data = data
-        # The response message.
+        # The returned message.
         self.message = message
-        # The unique ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -79,7 +79,7 @@ class CreatePrePayInstanceResponseBodyData(DaraModel):
     ):
         # The instance ID.
         self.instance_id = instance_id
-        # The unique ID of the order.
+        # The order ID.
         self.order_id = order_id
 
     def validate(self):

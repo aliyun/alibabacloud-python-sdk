@@ -23,13 +23,16 @@ class Client(OpenApiClient):
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
             'us-west-1': 'alikafka.us-west-1.aliyuncs.com',
+            'us-southeast-1': 'alikafka.us-southeast-1.aliyuncs.com',
             'us-east-1': 'alikafka.us-east-1.aliyuncs.com',
             'na-south-1': 'alikafka.na-south-1.aliyuncs.com',
             'me-east-1': 'alikafka.me-east-1.aliyuncs.com',
             'me-central-1': 'alikafka.me-central-1.aliyuncs.com',
             'eu-west-1': 'alikafka.eu-west-1.aliyuncs.com',
             'eu-central-1': 'alikafka.eu-central-1.aliyuncs.com',
+            'cn-zhengzhou-jva': 'alikafka.cn-zhengzhou-jva.aliyuncs.com',
             'cn-zhangjiakou': 'alikafka.cn-zhangjiakou.aliyuncs.com',
+            'cn-wulanchabu-gic-1': 'alikafka.cn-wulanchabu-gic-1.aliyuncs.com',
             'cn-wulanchabu': 'alikafka.cn-wulanchabu.aliyuncs.com',
             'cn-shenzhen-finance-1': 'alikafka.cn-shenzhen-finance-1.aliyuncs.com',
             'cn-shenzhen': 'alikafka.cn-shenzhen.aliyuncs.com',
@@ -42,13 +45,14 @@ class Client(OpenApiClient):
             'cn-hangzhou-finance': 'alikafka.cn-hangzhou-finance.aliyuncs.com',
             'cn-hangzhou': 'alikafka.cn-hangzhou.aliyuncs.com',
             'cn-guangzhou': 'alikafka.cn-guangzhou.aliyuncs.com',
+            'cn-fuzhou': 'alikafka.cn-fuzhou.aliyuncs.com',
             'cn-chengdu': 'alikafka.cn-chengdu.aliyuncs.com',
             'cn-beijing-finance-1': 'alikafka.cn-beijing-finance-1.aliyuncs.com',
             'cn-beijing': 'alikafka.cn-beijing.aliyuncs.com',
             'ap-southeast-7': 'alikafka.ap-southeast-7.aliyuncs.com',
+            'ap-southeast-6': 'alikafka.ap-southeast-6.aliyuncs.com',
             'ap-southeast-5': 'alikafka.ap-southeast-5.aliyuncs.com',
             'ap-southeast-3': 'alikafka.ap-southeast-3.aliyuncs.com',
-            'ap-southeast-2': 'alikafka.ap-southeast-2.aliyuncs.com',
             'ap-southeast-1': 'alikafka.ap-southeast-1.aliyuncs.com',
             'ap-northeast-2': 'alikafka.ap-northeast-2.aliyuncs.com',
             'ap-northeast-1': 'alikafka.ap-northeast-1.aliyuncs.com'
@@ -157,6 +161,92 @@ class Client(OpenApiClient):
     ) -> main_models.AddUserDefinedSgResponse:
         runtime = RuntimeOptions()
         return await self.add_user_defined_sg_with_options_async(request, runtime)
+
+    def batch_delete_topics_with_options(
+        self,
+        tmp_req: main_models.BatchDeleteTopicsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchDeleteTopicsResponse:
+        tmp_req.validate()
+        request = main_models.BatchDeleteTopicsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.topics):
+            request.topics_shrink = Utils.array_to_string_with_specified_style(tmp_req.topics, 'Topics', 'json')
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.topics_shrink):
+            query['Topics'] = request.topics_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchDeleteTopics',
+            version = '2019-09-16',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchDeleteTopicsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_delete_topics_with_options_async(
+        self,
+        tmp_req: main_models.BatchDeleteTopicsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchDeleteTopicsResponse:
+        tmp_req.validate()
+        request = main_models.BatchDeleteTopicsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.topics):
+            request.topics_shrink = Utils.array_to_string_with_specified_style(tmp_req.topics, 'Topics', 'json')
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.topics_shrink):
+            query['Topics'] = request.topics_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchDeleteTopics',
+            version = '2019-09-16',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchDeleteTopicsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_delete_topics(
+        self,
+        request: main_models.BatchDeleteTopicsRequest,
+    ) -> main_models.BatchDeleteTopicsResponse:
+        runtime = RuntimeOptions()
+        return self.batch_delete_topics_with_options(request, runtime)
+
+    async def batch_delete_topics_async(
+        self,
+        request: main_models.BatchDeleteTopicsRequest,
+    ) -> main_models.BatchDeleteTopicsResponse:
+        runtime = RuntimeOptions()
+        return await self.batch_delete_topics_with_options_async(request, runtime)
 
     def change_resource_group_with_options(
         self,

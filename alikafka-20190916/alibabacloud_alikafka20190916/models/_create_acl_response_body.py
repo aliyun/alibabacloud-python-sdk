@@ -12,11 +12,11 @@ class CreateAclResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Status code. A value of 200 indicates success.
+        # The HTTP status code. A value of 200 indicates success.
         self.code = code
-        # Return message.
+        # The returned message.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the call was successful.
         self.success = success

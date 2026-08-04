@@ -16,24 +16,25 @@ class CreateConsumerGroupRequest(DaraModel):
         remark: str = None,
         tag: List[main_models.CreateConsumerGroupRequestTag] = None,
     ):
-        # Group name.
-        # 
-        # - Reserved instance: Supports uppercase and lowercase letters, numbers, underscores (_), hyphens (-), and periods (.), limited to 3-64 characters.
-        # - Serverless instance: Can only contain letters, numbers, and special characters "@._\\*$#^!&-", limited to 1-249 characters.
+        # The consumer group name.
+        # - Reserved instances:
+        # Can contain letters, digits, underscores (_), hyphens (-), and periods (.). The value must be 3 to 64 characters in length.
+        # - Serverless instances:
+        # Can contain only letters, digits, and special characters "@._*$#^!&-". The value must be 1 to 249 characters in length.
         # 
         # This parameter is required.
         self.consumer_id = consumer_id
-        # Instance ID.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Region ID of the instance.
+        # The region ID of the instance.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # Remarks.
+        # The description.
         self.remark = remark
-        # Tag list.
+        # The tags.
         self.tag = tag
 
     def validate(self):
@@ -88,8 +89,6 @@ class CreateConsumerGroupRequest(DaraModel):
 
         return self
 
-
-
 class CreateConsumerGroupRequestTag(DaraModel):
     def __init__(
         self,
@@ -99,16 +98,20 @@ class CreateConsumerGroupRequestTag(DaraModel):
         # The tag key of the resource.
         # 
         # - N ranges from 1 to 20.
-        # - Cannot be empty.
-        # - Supports up to 128 characters, cannot start with aliyun or acs:, and cannot contain `http://` or `https://`.
+        # 
+        # - The tag key cannot be empty.
+        # 
+        # - The tag key can be up to 128 characters in length and cannot start with aliyun or acs:. It cannot contain `http://` or `https://`.
         # 
         # This parameter is required.
         self.key = key
         # The tag value of the resource.
         # 
         # - N ranges from 1 to 20.
-        # - Can be empty.
-        # - Supports up to 128 characters, cannot start with aliyun or acs:, and cannot contain `http://` or `https://`.
+        # 
+        # - The tag value can be empty.
+        # 
+        # - The tag value can be up to 128 characters in length and cannot start with aliyun or acs:. It cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

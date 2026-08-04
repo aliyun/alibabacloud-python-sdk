@@ -11,17 +11,16 @@ class EnableAutoGroupCreationRequest(DaraModel):
         instance_id: str = None,
         region_id: str = None,
     ):
-        # Enable or disable the free use of Groups. Valid values:
+        # Specifies whether to enable the free use of groups. Valid values:
         # 
         # - **true**: Enable.
-        # 
         # - **false**: Disable.
         # 
         # This parameter is required.
         self.enable = enable
         # The instance ID.
         # 
-        # You can call [GetInstanceList](https://help.aliyun.com/document_detail/437663.html) to obtain it.
+        # You can call [GetInstanceList](https://help.aliyun.com/document_detail/437663.html) to obtain the instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

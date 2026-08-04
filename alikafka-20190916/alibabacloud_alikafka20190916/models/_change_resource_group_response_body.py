@@ -13,11 +13,11 @@ class ChangeResourceGroupResponseBody(DaraModel):
         request_id: str = None,
         success: int = None,
     ):
-        # The status code. A value of 200 indicates that the call was successful.
+        # The status code. A value of 200 indicates success.
         self.code = code
-        # The returned message.
+        # The response message.
         self.message = message
-        # The new resource group ID. You can view available resource groups in the resource group console.
+        # The new resource group ID. You can view available resource groups in the Resource Group console.
         self.new_resource_group_id = new_resource_group_id
         # The request ID.
         self.request_id = request_id

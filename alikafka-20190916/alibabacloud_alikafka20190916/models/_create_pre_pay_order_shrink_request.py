@@ -26,77 +26,78 @@ class CreatePrePayOrderShrinkRequest(DaraModel):
         tag: List[main_models.CreatePrePayOrderShrinkRequestTag] = None,
         topic_quota: int = None,
     ):
-        # The configuration of Confluent components.
+        # The Confluent component configurations.
         # 
-        # > This parameter is required when you create a Confluent series instance.
+        # 
+        # > This parameter is required when you create a Confluent instance.
         self.confluent_config_shrink = confluent_config_shrink
         # The deployment type. Valid values:
         # 
-        # - **4**: Internet/VPC instance
+        # - **4**: Internet- and VPC-connected instance
         # 
-        # - **5**: VPC instance
+        # - **5**: VPC-connected instance
         # 
-        # > If you are creating a Confluent series instance, you cannot select the deployment type. You can only set the value to 5. After the purchase, you can adjust whether each component is open to the Internet.
+        # 
+        # > If you create a Confluent instance, the deployment type is not supported. You can only set this parameter to 5. After the purchase, you can configure whether to enable public access for each component.
         self.deploy_type = deploy_type
         # The disk capacity. Unit: GB.
         # 
-        # For the valid values, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+        # For the value range, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         # 
-        # > If you are creating a Confluent series instance, you do not need to pass this parameter.
+        # > If you create a Confluent instance, you do not need to specify this parameter.
         self.disk_size = disk_size
         # The disk type. Valid values:
         # 
-        # - **0**: ultra disk
+        # - **0**: ultra cloud disk
         # 
         # - **1**: SSD
         # 
-        # > If you are creating a Confluent series instance, you do not need to pass this parameter.
+        # > If you create a Confluent instance, you do not need to specify this parameter.
         self.disk_type = disk_type
-        # The subscription duration. Unit: month. Default value: 1. Valid values:
+        # The subscription duration. Unit: months. Default value: 1. Valid values:
         # 
         # - **Confluent instances: 1 or 12**
-        # 
         # - **Kafka instances: 1**
         self.duration = duration
-        # The Internet traffic.
+        # The public network traffic.
         # 
-        # - If **DeployType** is set to **4**, you must specify this parameter.
+        # - This parameter is required if **DeployType** is set to **4**.
         # 
-        # - For the valid values, see [pay-as-you-go](https://help.aliyun.com/document_detail/72142.html).
+        # - For the value range, see [Pay-as-you-go billing method](https://help.aliyun.com/document_detail/72142.html).
         # 
-        # > If you are creating a Confluent series instance, you do not need to pass this parameter.
+        # 
+        # > If you create a Confluent instance, you do not need to specify this parameter.
         self.eip_max = eip_max
-        # The traffic peak (not recommended).
+        # The peak traffic (not recommended).
         # 
-        # - You must specify either **IoMax** or **IoMaxSpec**. If you specify both parameters, **IoMaxSpec** takes precedence. We recommend that you specify only **IoMaxSpec**.
+        # - You must specify at least one of **IoMax** and **IoMaxSpec**. If you specify both, **IoMaxSpec** takes precedence. We recommend that you specify only **IoMaxSpec**.
         # 
-        # - For the valid values, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+        # - For the value range, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         # 
-        # > If you are creating a Confluent series instance, you do not need to pass this parameter.
+        # > If you create a Confluent instance, you do not need to specify this parameter.
         self.io_max = io_max
         # The traffic specification (recommended).
         # 
-        # - You must specify either **IoMax** or **IoMaxSpec**. If you specify both parameters, **IoMaxSpec** takes precedence. We recommend that you specify only **IoMaxSpec**.
+        # - You must specify at least one of **IoMax** and **IoMaxSpec**. If you specify both, **IoMaxSpec** takes precedence. We recommend that you specify only **IoMaxSpec**.
         # 
-        # - For the valid values, see [Billing](https://help.aliyun.com/document_detail/84737.html).
-        # 
-        # > If you are creating a Confluent series instance, you do not need to pass this parameter.
+        # - For the value range, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+        # > If you create a Confluent instance, you do not need to specify this parameter.
         self.io_max_spec = io_max_spec
-        # The billing method. Valid values:
+        # The billing type. Valid values:
         # 
         # - **0**: subscription
         # 
-        # - **4**: Confluent series subscription
+        # - **4**: Confluent subscription
         self.paid_type = paid_type
         # The number of partitions (recommended).
         # 
-        # - You must specify either the number of partitions or the topic specification. We recommend that you specify only the number of partitions.
+        # * You must specify either the number of partitions or the topic specification. We recommend that you specify only the number of partitions.
         # 
-        # - If you specify both the number of partitions and the topic specification, the system verifies whether the number of partitions is equivalent to the topic specification based on the old topic sales model. If they are not equivalent, the system returns a failure. If they are equivalent, the system makes the purchase based on the number of partitions.
+        # * If you specify both the number of partitions and the topic specification, the system verifies whether the number of partitions and the topic specification are equivalent based on the legacy topic sales model. If they are not equivalent, the request fails. If they are equivalent, the purchase is made based on the number of partitions.
         # 
-        # - For the valid values, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+        # * For the value range, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         # 
-        # > If you are creating a Confluent series instance, you do not need to pass this parameter.
+        # > If you create a Confluent instance, you do not need to specify this parameter.
         self.partition_num = partition_num
         # The region ID of the instance.
         # 
@@ -104,17 +105,17 @@ class CreatePrePayOrderShrinkRequest(DaraModel):
         self.region_id = region_id
         # The resource group ID.
         # 
-        # If you do not specify this parameter, the instance is added to the default resource group. You can view the resource group ID in the Resource Group console.
+        # If you do not specify this parameter, the instance is placed in the default resource group. You can view the resource group ID in the Resource Group console.
         self.resource_group_id = resource_group_id
         # The specification type.
         # 
-        # Valid values for Kafka instances:
+        # Valid values for ApsaraMQ for Kafka instances:
         # 
-        # - **normal**: Standard Edition (high write)
+        # - **normal**: Normal Edition (shared high-write)
         # 
-        # - **professional**: Professional Edition (high write)
+        # - **professional**: Professional Edition (shared high-write)
         # 
-        # - **professionalForHighRead**: Professional Edition (high read)
+        # - **professionalForHighRead**: Professional Edition (shared high-read)
         # 
         # Valid values for Confluent instances:
         # 
@@ -124,19 +125,18 @@ class CreatePrePayOrderShrinkRequest(DaraModel):
         # 
         # For more information, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         self.spec_type = spec_type
-        # The list of tags.
+        # The tags.
         self.tag = tag
         # The number of topics (not recommended).
         # 
         # - You must specify either the number of partitions or the topic specification. We recommend that you specify only the number of partitions.
         # 
-        # - If you specify both the number of partitions and the topic specification, the system verifies whether the number of partitions is equivalent to the topic specification based on the old topic sales model. If they are not equivalent, the system returns a failure. If they are equivalent, the system makes the purchase based on the number of partitions.
+        # - If you specify both the number of partitions and the topic specification, the system verifies whether the number of partitions and the topic specification are equivalent based on the legacy topic sales model. If they are not equivalent, the request fails. If they are equivalent, the purchase is made based on the number of partitions.
         # 
         # - The default value varies based on the traffic specification. Additional fees are charged if the value exceeds the default value.
         # 
-        # - For the valid values, see [Billing](https://help.aliyun.com/document_detail/84737.html).
-        # 
-        # > If you are creating a Confluent series instance, you do not need to pass this parameter.
+        # - For the value range, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+        # > If you create a Confluent instance, you do not need to specify this parameter.
         self.topic_quota = topic_quota
 
     def validate(self):
@@ -261,9 +261,9 @@ class CreatePrePayOrderShrinkRequestTag(DaraModel):
         # 
         # - N ranges from 1 to 20.
         # 
-        # - If this parameter is empty, all tag keys are matched.
+        # - If this parameter is left empty, all tag keys are matched.
         # 
-        # - The tag key can be up to 128 characters in length and cannot start with aliyun or acs:. It cannot contain http\\:// or https\\://.
+        # - The tag key can be up to 128 characters in length and cannot start with aliyun or acs:. It cannot contain http:// or https://.
         # 
         # This parameter is required.
         self.key = key
@@ -271,9 +271,9 @@ class CreatePrePayOrderShrinkRequestTag(DaraModel):
         # 
         # - N ranges from 1 to 20.
         # 
-        # - This parameter can be empty.
+        # - This parameter can be left empty.
         # 
-        # - The tag value can be up to 128 characters in length and cannot start with aliyun or acs:. It cannot contain http\\:// or https\\://.
+        # - The tag value can be up to 128 characters in length and cannot start with aliyun or acs:. It cannot contain http:// or https://.
         self.value = value
 
     def validate(self):

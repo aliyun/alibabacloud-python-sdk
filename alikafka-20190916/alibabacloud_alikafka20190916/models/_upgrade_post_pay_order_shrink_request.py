@@ -27,13 +27,13 @@ class UpgradePostPayOrderShrinkRequest(DaraModel):
         # 
         # > If the instance is a serverless instance, you do not need to specify this parameter. This parameter is required for pay-as-you-go instances.
         self.disk_size = disk_size
-        # The Internet traffic.
+        # The public network traffic.
         # 
-        # - The Internet traffic that you specify must be greater than or equal to the current Internet traffic of the instance.
+        # - The public network traffic that you specify must be greater than or equal to the current public network traffic of the instance.
         # - For the value range, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         # 
-        # > - If EipModel is set to true, the value of EipMax must be greater than 0.
-        # > - If EipModel is set to false, the value of EipMax must be 0.
+        # > - If **EipModel** is set to **true**, the value of **EipMax** must be greater than 0.
+        # > - If **EipModel** is set to **false**, the value of **EipMax** must be **0**.
         # > - If the instance is a serverless instance, you do not need to specify this parameter.
         self.eip_max = eip_max
         # Specifies whether the instance requires Internet access. Valid values:
@@ -51,7 +51,7 @@ class UpgradePostPayOrderShrinkRequest(DaraModel):
         # 
         # - The peak traffic that you specify must be greater than or equal to the current peak traffic of the instance.
         # 
-        # - You must specify either the peak traffic or the traffic specification. If you specify both, the traffic specification takes precedence. Specify only the traffic specification.
+        # - You must specify either the traffic specification or the peak traffic. If you specify both, the traffic specification takes precedence. Specify only the traffic specification.
         # 
         # - For the value range, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         # > If the instance is a serverless instance, you do not need to specify this parameter.
@@ -60,7 +60,7 @@ class UpgradePostPayOrderShrinkRequest(DaraModel):
         # 
         # - The traffic specification that you specify must be greater than or equal to the current traffic specification of the instance.
         # 
-        # - You must specify either the peak traffic or the traffic specification. If you specify both, the traffic specification takes precedence. Specify only the traffic specification.
+        # - You must specify either the traffic specification or the peak traffic. If you specify both, the traffic specification takes precedence. Specify only the traffic specification.
         # 
         # - For the value range, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         # > If the instance is a serverless instance, you do not need to specify this parameter. This parameter is required for pay-as-you-go instances.
@@ -69,7 +69,7 @@ class UpgradePostPayOrderShrinkRequest(DaraModel):
         # 
         # * You must specify either the number of partitions or the topic specification. Specify only the number of partitions.
         # 
-        # * If you specify both the number of partitions and the topic specification, the system validates whether the number of partitions and the topic specification are equivalent based on the legacy topic sales model. If they are not equivalent, an error is returned. If they are equivalent, the purchase is made based on the number of partitions.
+        # * If you specify both the number of partitions and the topic specification, the system verifies whether the number of partitions and the topic specification are equivalent based on the legacy topic sales model. If they are not equivalent, the request fails. If they are equivalent, the purchase is made based on the number of partitions.
         # 
         # * For the value range, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         # > If the instance is a serverless instance, you do not need to specify this parameter. This parameter is required for pay-as-you-go instances.
@@ -78,7 +78,7 @@ class UpgradePostPayOrderShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The settings of the serverless instance. This parameter is required when you change the specifications of a serverless instance.
+        # The settings of the serverless instance. This parameter is required when you upgrade a serverless instance.
         self.serverless_config_shrink = serverless_config_shrink
         # The specification type.
         # 
@@ -86,7 +86,7 @@ class UpgradePostPayOrderShrinkRequest(DaraModel):
         # 
         # - normal: Standard Edition (shared throughput)
         # - professional: Professional Edition (shared throughput)
-        # - professionalForHighRead: Professional Edition (shared read throughput)
+        # - professionalForHighRead: Professional Edition (shared throughput for high read)
         # 
         # If the PaidType of the instance is 3 (reserved specification pay-as-you-go + serverless elastic scaling pay-as-you-go), valid values:
         # - normal: Serverless Standard Edition
@@ -97,7 +97,7 @@ class UpgradePostPayOrderShrinkRequest(DaraModel):
         # 
         # - You must specify either the number of partitions or the topic specification. Specify only the number of partitions.
         # 
-        # - If you specify both the number of partitions and the topic specification, the system validates whether the number of partitions and the topic specification are equivalent based on the legacy topic sales model. If they are not equivalent, an error is returned. If they are equivalent, the purchase is made based on the number of partitions.
+        # - If you specify both the number of partitions and the topic specification, the system verifies whether the number of partitions and the topic specification are equivalent based on the legacy topic sales model. If they are not equivalent, the request fails. If they are equivalent, the purchase is made based on the number of partitions.
         # 
         # - The default value varies based on the traffic specification. Additional fees are charged if the value exceeds the default value.
         # 

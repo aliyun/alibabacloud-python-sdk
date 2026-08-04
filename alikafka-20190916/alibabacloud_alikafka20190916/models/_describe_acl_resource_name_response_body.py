@@ -16,18 +16,14 @@ class DescribeAclResourceNameResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Return code. A value of 200 indicates success.
+        # The response code. A value of 200 indicates success.
         self.code = code
         self.data = data
-        # Return message.
+        # The response message.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the call was successful.
-        # 
-        # - **true**: The call was successful.
-        # 
-        # - **false**: The call failed.
         self.success = success
 
     def validate(self):

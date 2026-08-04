@@ -12,13 +12,13 @@ class CreateTopicResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code. A value of 200 indicates that the request is successful.
+        # The response code. A value of 200 indicates success.
         self.code = code
         # The response message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):

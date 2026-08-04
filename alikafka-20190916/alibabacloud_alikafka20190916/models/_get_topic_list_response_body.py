@@ -19,15 +19,15 @@ class GetTopicListResponseBody(DaraModel):
         topic_list: main_models.GetTopicListResponseBodyTopicList = None,
         total: int = None,
     ):
-        # The return code. A value of 200 indicates that the call was successful.
+        # The response code. A value of 200 indicates success.
         self.code = code
-        # The number of the page returned.
+        # The current page number.
         self.current_page = current_page
-        # The returned message.
+        # The response message.
         self.message = message
-        # The number of entries returned per page.
+        # The page size.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the call was successful.
         self.success = success

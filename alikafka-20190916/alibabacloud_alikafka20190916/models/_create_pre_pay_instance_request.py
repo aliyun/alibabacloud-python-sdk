@@ -24,81 +24,82 @@ class CreatePrePayInstanceRequest(DaraModel):
         spec_type: str = None,
         tag: List[main_models.CreatePrePayInstanceRequestTag] = None,
     ):
-        # The configurations of the Confluent components.
+        # The Confluent component configurations.
         # 
-        # > This parameter is required if you create a Confluent instance.
+        # 
+        # > This parameter is required when you create a Confluent instance.
         self.confluent_config = confluent_config
         # The deployment type. Valid values:
         # 
-        # - **4**: an instance accessible from the internet and a VPC
+        # - **4**: Internet- and VPC-connected instance
         # 
-        # - **5**: an instance accessible from a VPC only
+        # - **5**: VPC-connected instance
         # 
-        # > If you create a Confluent instance, you cannot specify the deployment type and must set this parameter to 5. After the instance is created, you can configure internet access for each component.
+        # 
+        # > When you create a Confluent instance, you cannot select the deployment type. Only the value 5 is allowed. After the purchase, you can configure whether to enable public access for each component.
         self.deploy_type = deploy_type
-        # The disk capacity, in GB.
+        # The disk capacity. Unit: GB.
         # 
         # For the value range, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         # 
-        # > This parameter is not required if you create a Confluent instance.
+        # > This parameter is not required when you create a Confluent instance.
         self.disk_size = disk_size
         # The disk type. Valid values:
         # 
-        # - **0**: ultra disk
+        # - **0**: ultra cloud disk
         # 
         # - **1**: SSD
         # 
-        # > This parameter is not required if you create a Confluent instance.
+        # > This parameter is not required when you create a Confluent instance.
         self.disk_type = disk_type
-        # The subscription duration, in months. Default value: 1. Valid values:
+        # The subscription duration. Unit: months. Default value: 1. Valid values:
         # 
-        # - Confluent instances: **1** and **12**
-        # 
-        # - Kafka instances: **1**
+        # - **Confluent instances: 1 or 12**
+        # - **ApsaraMQ for Kafka instances: 1**
         self.duration = duration
-        # The peak internet bandwidth.
+        # The Internet traffic.
         # 
-        # - This parameter is required if you set **DeployType** to **4**.
+        # - This parameter is required if **DeployType** is set to **4**.
         # 
-        # - For the value range, see [pay-as-you-go](https://help.aliyun.com/document_detail/72142.html).
+        # - For the value range, see [Pay-as-you-go billing method](https://help.aliyun.com/document_detail/72142.html).
         # 
-        # > This parameter is not required if you create a Confluent instance.
+        # 
+        # > This parameter is not required when you create a Confluent instance.
         self.eip_max = eip_max
-        # The I/O specification.
+        # The traffic specification.
+        #  
         # 
         # - For the value range, see [Billing](https://help.aliyun.com/document_detail/84737.html).
-        # 
-        # > This parameter is not required if you create a Confluent instance.
+        # > This parameter is not required when you create a Confluent instance.
         self.io_max_spec = io_max_spec
-        # The billing method. Valid values:
+        # The billing type. Valid values:
         # 
         # - **0**: subscription
         # 
-        # - **4**: subscription for Confluent instances
+        # - **4**: Confluent subscription
         self.paid_type = paid_type
-        # The number of partitions.
+        # The number of partitions to purchase.
         # 
-        # - For the value range, see [Billing](https://help.aliyun.com/document_detail/84737.html).
-        # 
-        # > This parameter is not required if you create a Confluent instance.
+        # * For the value range, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+        # > This parameter is not required when you create a Confluent instance.
         self.partition_num = partition_num
         # The region ID of the instance.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group.
+        # The resource group ID.
         # 
-        # If you do not specify this parameter, the instance is placed in the default resource group. You can find the resource group ID in the Resource Group console.
+        # If you do not specify this parameter, the instance is placed in the default resource group. You can view the resource group ID in the Resource Management console.
         self.resource_group_id = resource_group_id
-        # The specification type.
+        # The edition type.
         # 
-        # Valid values for Kafka instances:
+        # Valid values for ApsaraMQ for Kafka instances:
         # 
-        # - **normal**: Standard Edition (High-write)
+        # - **normal**: Standard Edition (shared throughput for writes)
         # 
-        # - **professional**: Professional Edition (High-write)
+        # - **professional**: Professional Edition (shared throughput for writes)
         # 
-        # - **professionalForHighRead**: Professional Edition (High-read)
+        # - **professionalForHighRead**: Professional Edition (shared throughput for reads)
         # 
         # Valid values for Confluent instances:
         # 
@@ -108,7 +109,7 @@ class CreatePrePayInstanceRequest(DaraModel):
         # 
         # For more information, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         self.spec_type = spec_type
-        # The tags to attach to the instance. You can specify up to 20 tags.
+        # The tags.
         self.tag = tag
 
     def validate(self):
@@ -220,23 +221,23 @@ class CreatePrePayInstanceRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
+        # The tag key of the resource.
         # 
-        # -
+        # - N ranges from 1 to 20.
         # 
-        # -
+        # - If this parameter is left empty, all tag keys are matched.
         # 
-        # - The key must be 1 to 128 characters long. It cannot start with aliyun or acs:, nor can it contain http\\:// or https\\://.
+        # - The tag key can be up to 128 characters in length and cannot start with aliyun or acs:. It cannot contain http:// or https://.
         # 
         # This parameter is required.
         self.key = key
-        # The tag value.
+        # The tag value of the resource.
         # 
-        # -
+        # - N ranges from 1 to 20.
         # 
-        # -
+        # - This parameter can be left empty.
         # 
-        # - The value can be 0 to 128 characters long. It cannot start with aliyun or acs:, nor can it contain http\\:// or https\\://.
+        # - The tag value can be up to 128 characters in length and cannot start with aliyun or acs:. It cannot contain http:// or https://.
         self.value = value
 
     def validate(self):
@@ -268,6 +269,7 @@ class CreatePrePayInstanceRequestTag(DaraModel):
 class CreatePrePayInstanceRequestConfluentConfig(DaraModel):
     def __init__(
         self,
+        confluent_version: str = None,
         connect_cu: int = None,
         connect_replica: int = None,
         control_center_cu: int = None,
@@ -278,6 +280,9 @@ class CreatePrePayInstanceRequestConfluentConfig(DaraModel):
         kafka_rest_proxy_cu: int = None,
         kafka_rest_proxy_replica: int = None,
         kafka_storage: int = None,
+        kraft_controller_cu: int = None,
+        kraft_controller_replica: int = None,
+        kraft_controller_storage: int = None,
         ksql_cu: int = None,
         ksql_list: List[main_models.CreatePrePayInstanceRequestConfluentConfigKsqlList] = None,
         ksql_replica: int = None,
@@ -288,42 +293,46 @@ class CreatePrePayInstanceRequestConfluentConfig(DaraModel):
         zoo_keeper_replica: int = None,
         zoo_keeper_storage: int = None,
     ):
-        # The number of CPU cores for Connect.
+        self.confluent_version = confluent_version
+        # The number of CPU cores for the Connect component.
         self.connect_cu = connect_cu
-        # The number of replicas for Connect.
+        # The number of Connect component replicas.
         self.connect_replica = connect_replica
-        # The number of CPU cores for Control Center.
+        # The number of CPU cores for the ControlCenter component.
         self.control_center_cu = control_center_cu
-        # The number of replicas for Control Center.
+        # The number of ControlCenter component replicas.
         self.control_center_replica = control_center_replica
-        # The disk capacity for Control Center, in GB.
+        # The disk capacity of the ControlCenter component. Unit: GB.
         self.control_center_storage = control_center_storage
-        # The number of CPU cores for the Kafka broker.
+        # The number of CPU cores for Kafka Broker.
         self.kafka_cu = kafka_cu
-        # The number of replicas for the Kafka broker.
+        # The number of Kafka Broker replicas.
         self.kafka_replica = kafka_replica
-        # The number of CPU cores for Kafka REST Proxy.
+        # The number of CPU cores for the KafkaRestProxy component.
         self.kafka_rest_proxy_cu = kafka_rest_proxy_cu
-        # The number of replicas for Kafka REST Proxy.
+        # The number of KafkaRestProxy component replicas.
         self.kafka_rest_proxy_replica = kafka_rest_proxy_replica
-        # The disk capacity for the Kafka broker, in GB.
+        # The disk capacity of Kafka Broker. Unit: GB.
         self.kafka_storage = kafka_storage
-        # The number of CPU cores for ksqlDB.
+        self.kraft_controller_cu = kraft_controller_cu
+        self.kraft_controller_replica = kraft_controller_replica
+        self.kraft_controller_storage = kraft_controller_storage
+        # The number of CPU cores for the KsqlDB component.
         self.ksql_cu = ksql_cu
         self.ksql_list = ksql_list
-        # The number of replicas for ksqlDB.
+        # The number of KsqlDB component replicas.
         self.ksql_replica = ksql_replica
-        # The disk capacity for ksqlDB, in GB.
+        # The disk capacity of the KsqlDB component. Unit: GB.
         self.ksql_storage = ksql_storage
-        # The number of CPU cores for Schema Registry.
+        # The number of CPU cores for the SchemaRegistry component.
         self.schema_registry_cu = schema_registry_cu
-        # The number of replicas for Schema Registry.
+        # The number of SchemaRegistry component replicas.
         self.schema_registry_replica = schema_registry_replica
-        # The number of CPU cores for ZooKeeper.
+        # The number of CPU cores for the ZooKeeper component.
         self.zoo_keeper_cu = zoo_keeper_cu
-        # The number of replicas for ZooKeeper.
+        # The number of ZooKeeper component replicas.
         self.zoo_keeper_replica = zoo_keeper_replica
-        # The disk capacity for ZooKeeper, in GB.
+        # The disk capacity of the ZooKeeper component. Unit: GB.
         self.zoo_keeper_storage = zoo_keeper_storage
 
     def validate(self):
@@ -337,6 +346,9 @@ class CreatePrePayInstanceRequestConfluentConfig(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.confluent_version is not None:
+            result['ConfluentVersion'] = self.confluent_version
+
         if self.connect_cu is not None:
             result['ConnectCU'] = self.connect_cu
 
@@ -366,6 +378,15 @@ class CreatePrePayInstanceRequestConfluentConfig(DaraModel):
 
         if self.kafka_storage is not None:
             result['KafkaStorage'] = self.kafka_storage
+
+        if self.kraft_controller_cu is not None:
+            result['KraftControllerCU'] = self.kraft_controller_cu
+
+        if self.kraft_controller_replica is not None:
+            result['KraftControllerReplica'] = self.kraft_controller_replica
+
+        if self.kraft_controller_storage is not None:
+            result['KraftControllerStorage'] = self.kraft_controller_storage
 
         if self.ksql_cu is not None:
             result['KsqlCU'] = self.ksql_cu
@@ -400,6 +421,9 @@ class CreatePrePayInstanceRequestConfluentConfig(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ConfluentVersion') is not None:
+            self.confluent_version = m.get('ConfluentVersion')
+
         if m.get('ConnectCU') is not None:
             self.connect_cu = m.get('ConnectCU')
 
@@ -429,6 +453,15 @@ class CreatePrePayInstanceRequestConfluentConfig(DaraModel):
 
         if m.get('KafkaStorage') is not None:
             self.kafka_storage = m.get('KafkaStorage')
+
+        if m.get('KraftControllerCU') is not None:
+            self.kraft_controller_cu = m.get('KraftControllerCU')
+
+        if m.get('KraftControllerReplica') is not None:
+            self.kraft_controller_replica = m.get('KraftControllerReplica')
+
+        if m.get('KraftControllerStorage') is not None:
+            self.kraft_controller_storage = m.get('KraftControllerStorage')
 
         if m.get('KsqlCU') is not None:
             self.ksql_cu = m.get('KsqlCU')

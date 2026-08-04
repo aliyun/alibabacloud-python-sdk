@@ -12,9 +12,9 @@ class CreateScheduledScalingRuleResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The return code. A value of 200 indicates success.
+        # The response code. A value of 200 indicates success.
         self.code = code
-        # The returned message.
+        # The response message.
         self.message = message
         # Id of the request
         self.request_id = request_id

@@ -11,7 +11,7 @@ class DeleteTopicRequest(DaraModel):
         region_id: str = None,
         topic: str = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -19,7 +19,7 @@ class DeleteTopicRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The name of the topic.
+        # The topic name.
         # 
         # This parameter is required.
         self.topic = topic

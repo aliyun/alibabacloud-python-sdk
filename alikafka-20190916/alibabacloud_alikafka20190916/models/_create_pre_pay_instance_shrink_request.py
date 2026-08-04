@@ -24,81 +24,82 @@ class CreatePrePayInstanceShrinkRequest(DaraModel):
         spec_type: str = None,
         tag: List[main_models.CreatePrePayInstanceShrinkRequestTag] = None,
     ):
-        # The configurations of the Confluent components.
+        # The Confluent component configurations.
         # 
-        # > This parameter is required if you create a Confluent instance.
+        # 
+        # > This parameter is required when you create a Confluent instance.
         self.confluent_config_shrink = confluent_config_shrink
         # The deployment type. Valid values:
         # 
-        # - **4**: an instance accessible from the internet and a VPC
+        # - **4**: Internet- and VPC-connected instance
         # 
-        # - **5**: an instance accessible from a VPC only
+        # - **5**: VPC-connected instance
         # 
-        # > If you create a Confluent instance, you cannot specify the deployment type and must set this parameter to 5. After the instance is created, you can configure internet access for each component.
+        # 
+        # > When you create a Confluent instance, you cannot select the deployment type. Only the value 5 is allowed. After the purchase, you can configure whether to enable public access for each component.
         self.deploy_type = deploy_type
-        # The disk capacity, in GB.
+        # The disk capacity. Unit: GB.
         # 
         # For the value range, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         # 
-        # > This parameter is not required if you create a Confluent instance.
+        # > This parameter is not required when you create a Confluent instance.
         self.disk_size = disk_size
         # The disk type. Valid values:
         # 
-        # - **0**: ultra disk
+        # - **0**: ultra cloud disk
         # 
         # - **1**: SSD
         # 
-        # > This parameter is not required if you create a Confluent instance.
+        # > This parameter is not required when you create a Confluent instance.
         self.disk_type = disk_type
-        # The subscription duration, in months. Default value: 1. Valid values:
+        # The subscription duration. Unit: months. Default value: 1. Valid values:
         # 
-        # - Confluent instances: **1** and **12**
-        # 
-        # - Kafka instances: **1**
+        # - **Confluent instances: 1 or 12**
+        # - **ApsaraMQ for Kafka instances: 1**
         self.duration = duration
-        # The peak internet bandwidth.
+        # The Internet traffic.
         # 
-        # - This parameter is required if you set **DeployType** to **4**.
+        # - This parameter is required if **DeployType** is set to **4**.
         # 
-        # - For the value range, see [pay-as-you-go](https://help.aliyun.com/document_detail/72142.html).
+        # - For the value range, see [Pay-as-you-go billing method](https://help.aliyun.com/document_detail/72142.html).
         # 
-        # > This parameter is not required if you create a Confluent instance.
+        # 
+        # > This parameter is not required when you create a Confluent instance.
         self.eip_max = eip_max
-        # The I/O specification.
+        # The traffic specification.
+        #  
         # 
         # - For the value range, see [Billing](https://help.aliyun.com/document_detail/84737.html).
-        # 
-        # > This parameter is not required if you create a Confluent instance.
+        # > This parameter is not required when you create a Confluent instance.
         self.io_max_spec = io_max_spec
-        # The billing method. Valid values:
+        # The billing type. Valid values:
         # 
         # - **0**: subscription
         # 
-        # - **4**: subscription for Confluent instances
+        # - **4**: Confluent subscription
         self.paid_type = paid_type
-        # The number of partitions.
+        # The number of partitions to purchase.
         # 
-        # - For the value range, see [Billing](https://help.aliyun.com/document_detail/84737.html).
-        # 
-        # > This parameter is not required if you create a Confluent instance.
+        # * For the value range, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+        # > This parameter is not required when you create a Confluent instance.
         self.partition_num = partition_num
         # The region ID of the instance.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group.
+        # The resource group ID.
         # 
-        # If you do not specify this parameter, the instance is placed in the default resource group. You can find the resource group ID in the Resource Group console.
+        # If you do not specify this parameter, the instance is placed in the default resource group. You can view the resource group ID in the Resource Management console.
         self.resource_group_id = resource_group_id
-        # The specification type.
+        # The edition type.
         # 
-        # Valid values for Kafka instances:
+        # Valid values for ApsaraMQ for Kafka instances:
         # 
-        # - **normal**: Standard Edition (High-write)
+        # - **normal**: Standard Edition (shared throughput for writes)
         # 
-        # - **professional**: Professional Edition (High-write)
+        # - **professional**: Professional Edition (shared throughput for writes)
         # 
-        # - **professionalForHighRead**: Professional Edition (High-read)
+        # - **professionalForHighRead**: Professional Edition (shared throughput for reads)
         # 
         # Valid values for Confluent instances:
         # 
@@ -108,7 +109,7 @@ class CreatePrePayInstanceShrinkRequest(DaraModel):
         # 
         # For more information, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         self.spec_type = spec_type
-        # The tags to attach to the instance. You can specify up to 20 tags.
+        # The tags.
         self.tag = tag
 
     def validate(self):
@@ -217,23 +218,23 @@ class CreatePrePayInstanceShrinkRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
+        # The tag key of the resource.
         # 
-        # -
+        # - N ranges from 1 to 20.
         # 
-        # -
+        # - If this parameter is left empty, all tag keys are matched.
         # 
-        # - The key must be 1 to 128 characters long. It cannot start with aliyun or acs:, nor can it contain http\\:// or https\\://.
+        # - The tag key can be up to 128 characters in length and cannot start with aliyun or acs:. It cannot contain http:// or https://.
         # 
         # This parameter is required.
         self.key = key
-        # The tag value.
+        # The tag value of the resource.
         # 
-        # -
+        # - N ranges from 1 to 20.
         # 
-        # -
+        # - This parameter can be left empty.
         # 
-        # - The value can be 0 to 128 characters long. It cannot start with aliyun or acs:, nor can it contain http\\:// or https\\://.
+        # - The tag value can be up to 128 characters in length and cannot start with aliyun or acs:. It cannot contain http:// or https://.
         self.value = value
 
     def validate(self):

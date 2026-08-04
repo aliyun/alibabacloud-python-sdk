@@ -15,7 +15,7 @@ class QueryMessageRequest(DaraModel):
         region_id: str = None,
         topic: str = None,
     ):
-        # The start timestamp of the query range. Unit: milliseconds.
+        # The beginning of the time range to query. Unit: milliseconds.
         self.begin_time = begin_time
         # The instance ID.
         # 
@@ -27,9 +27,9 @@ class QueryMessageRequest(DaraModel):
         self.partition = partition
         # The query type. Valid values:
         # 
-        # - byOffset: Query by offset. When selecting offset query, you need to fill in the partition ID and partition offset parameters.
+        # - byOffset: queries messages by offset. If you select this type, you must specify the Partition and Offset parameters.
         # 
-        # - byTimestamp: Query by time. When selecting time query, you need to fill in the BeginTime parameter.
+        # - byTimestamp: queries messages by time. If you select this type, you must specify the BeginTime parameter.
         # 
         # This parameter is required.
         self.query_type = query_type

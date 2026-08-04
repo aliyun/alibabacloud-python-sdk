@@ -11,15 +11,15 @@ class DeleteConsumerGroupRequest(DaraModel):
         instance_id: str = None,
         region_id: str = None,
     ):
-        # Group name.
+        # The name of the consumer group.
         # 
         # This parameter is required.
         self.consumer_id = consumer_id
-        # Instance ID.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Region ID of the instance.
+        # The region ID of the instance.
         # 
         # This parameter is required.
         self.region_id = region_id

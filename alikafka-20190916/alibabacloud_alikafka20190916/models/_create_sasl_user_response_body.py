@@ -12,13 +12,13 @@ class CreateSaslUserResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code. A value of 200 indicates that the request was successful.
+        # The status code. A value of 200 indicates success.
         self.code = code
-        # The returned message.
+        # The response message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):

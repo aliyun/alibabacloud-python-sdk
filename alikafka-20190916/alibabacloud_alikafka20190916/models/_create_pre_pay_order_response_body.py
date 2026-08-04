@@ -13,13 +13,13 @@ class CreatePrePayOrderResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The return code. A value of 200 indicates that the call is successful.
+        # The response code. A value of 200 indicates success.
         self.code = code
-        # The returned message.
+        # The response message.
         self.message = message
-        # The ID of the order.
+        # The order ID.
         self.order_id = order_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the call was successful.
         self.success = success

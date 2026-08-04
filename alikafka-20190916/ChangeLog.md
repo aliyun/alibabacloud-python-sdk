@@ -1,3 +1,11 @@
+2026-08-04 Version: 2.16.0
+- Support API BatchDeleteTopics.
+- Update API CreatePrePayInstance: add request parameters ConfluentConfig.ConfluentVersion.
+- Update API CreatePrePayInstance: add request parameters ConfluentConfig.KraftControllerCU.
+- Update API CreatePrePayInstance: add request parameters ConfluentConfig.KraftControllerReplica.
+- Update API CreatePrePayInstance: add request parameters ConfluentConfig.KraftControllerStorage.
+
+
 2026-07-06 Version: 2.15.2
 - Update API CreatePrePayOrder: add request parameters ConfluentConfig.ConfluentVersion.
 - Update API CreatePrePayOrder: add request parameters ConfluentConfig.KraftControllerCU.

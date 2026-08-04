@@ -22,91 +22,85 @@ class CreateTopicRequest(DaraModel):
         tag: List[main_models.CreateTopicRequestTag] = None,
         topic: str = None,
     ):
-        # The cleanup policy for the topic. This parameter is available only if the storage engine of the topic is local storage. Valid values:
+        # The cleanup policy configured when the storage engine of the topic is set to local storage. Valid values:
         # 
-        # - false: The delete cleanup policy.
-        # 
-        # - true: The compact cleanup policy.
+        # - false: delete cleanup policy.
+        # - true: compact cleanup policy.
         self.compact_topic = compact_topic
-        # The advanced configurations of the topic.
+        # The supplementary configuration.
         # 
-        # - Configure this parameter in the JSON format.
+        # - Must be in JSON format.
         # 
-        # - This parameter is available only if **LocalTopic** is set to **true**.
         # 
-        # - The following configurations are supported for reserved instances:
+        # - This parameter takes effect only when **LocalTopic** is set to **true**.
         # 
-        #   - **retention.ms**: The message retention period. The value must be an integer from 3,600,000 to 31,536,000,000. Unit: milliseconds.
+        # - Supported configurations for reserved instances:
+        #   -   **retention.ms** (message retention period): ranges from 3600000 to 31536000000 milliseconds.
+        #   - **max.message.bytes** (maximum message size): ranges from 1048576 to 10485760 bytes. 
+        #   - **message.timestamp.type**: specifies the type of message timestamp. CreateTime indicates the timestamp specified by the producer when sending a message. If not specified, it is the message creation time on the client. LogAppendTime indicates the time when the message is written to disk on the server. Valid values: CreateTime or LogAppendTime. Default value: CreateTime. We recommend LogAppendTime.
         # 
-        #   - **max.message.bytes**: The maximum size of a message that can be sent. The value must be an integer from 1,048,576 to 10,485,760. Unit: bytes.
-        # 
-        #   - message.timestamp.type: The timestamp type of a message. Valid values: CreateTime or LogAppendTime. CreateTime indicates that the message timestamp is the time when the producer creates the message. If you do not specify a timestamp, the client time is used. LogAppendTime indicates that the message timestamp is the time when the server stores the message. The default value is CreateTime. We recommend that you set this parameter to **LogAppendTime**.
-        # 
-        # - The following configurations are supported for Serverless instances:
-        # 
-        #   - **retention.hours**: The message retention period. The value is of the string type. The value must be an integer from 24 to 8,760.
-        # 
-        #   - **max.message.bytes**: The maximum size of a message that can be sent. The value is of the string type. The value must be an integer from 1,048,576 to 10,485,760.
-        # 
-        #   - message.timestamp.type: The timestamp type of a message. Valid values: CreateTime or LogAppendTime. CreateTime indicates that the message timestamp is the time when the producer creates the message. If you do not specify a timestamp, the client time is used. LogAppendTime indicates that the message timestamp is the time when the server stores the message. The default value is CreateTime. We recommend that you set this parameter to **LogAppendTime**.
+        #  - Supported configurations for Serverless instances:
+        #    -  **retention.hours** (message retention period): value type is String. Valid values: 24 to 8760.
+        #    -  **max.message.bytes** (maximum message size): value type is String. Valid values: 1048576 to 10485760.
+        #    -  **message.timestamp.type** (type of message timestamp): CreateTime indicates the timestamp specified by the producer when sending a message. If not specified, it is the message creation time on the client. LogAppendTime indicates the time when the message is written to disk on the server. Valid values: CreateTime or LogAppendTime. Default value: CreateTime. We recommend LogAppendTime.
         self.config = config
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
         # The storage engine of the topic. Valid values:
         # 
         # - false: cloud storage.
-        # 
         # - true: local storage.
         self.local_topic = local_topic
-        # The minimum number of in-sync replicas (ISRs).
+        # The minimum number of in-sync replicas (ISR).
         # 
-        # - This parameter is available only if **LocalTopic** is set to **true**.
+        # - This parameter takes effect only when **LocalTopic** is set to **true**.
         # 
-        # - The value of this parameter must be smaller than the number of replicas for the topic.
+        # - The value must be less than the number of topic replicas.
         # 
-        # - The value must be an integer from 1 to 3.
+        # - The number of in-sync replicas ranges from 1 to 3.
         self.min_insync_replicas = min_insync_replicas
-        # The number of partitions in the topic.
+        # The number of partitions for the topic.
         # 
-        # - The value must be an integer from 1 to 360.
+        # - The number of partitions ranges from 1 to 360.
         # 
-        # - The console suggests a number of partitions based on the instance type. Follow the suggestion to reduce the risk of data skew.
+        # - The console provides different configuration suggestions based on the instance edition. Configure the number of partitions based on the console suggestions to reduce the risk of data skew.
         # 
         # Default value:
         # 
-        # - Reserved instance: 12
+        # - Reserved instances: 12
         # 
-        # - Serverless instance: 3
+        # - Serverless instances: 3
         self.partition_num = partition_num
-        # The ID of the region where the instance that contains the topic is located.
+        # The region ID of the instance to which the topic belongs.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The remarks on the topic.
+        # The description of the topic.
         # 
-        # - The remarks can contain only letters, digits, underscores (_), and hyphens (-).
+        # - Can contain only letters, digits, underscores (_), and hyphens (-).
         # 
-        # - The remarks must be 3 to 64 characters in length.
+        # - Must be 3 to 64 characters in length.
         # 
         # This parameter is required.
         self.remark = remark
         # The number of replicas for the topic.
         # 
-        # - This parameter is available only if **LocalTopic** is set to **true**.
+        # - This parameter takes effect only when **LocalTopic** is set to **true**.
         # 
-        # - The value must be an integer from 1 to 3.
+        # - The number of replicas ranges from 1 to 3.
         # 
-        # > If you set the number of replicas to **1**, you may lose data. Set this parameter with caution.
+        # > If the number of replicas is set to **1**, data loss may occur. Set this parameter with caution.
         self.replication_factor = replication_factor
-        # The list of tags.
+        # The tag list.
         self.tag = tag
         # The name of the topic.
         # 
-        # - Reserved instance: The name can contain uppercase letters, lowercase letters, digits, underscores (_), hyphens (-), and periods (.). The name must be 3 to 64 characters in length.
-        # 
-        # - Serverless instance: The name can contain uppercase letters, lowercase letters, digits, underscores (_), hyphens (-), and periods (.). The name must be 1 to 249 characters in length.
+        # - Reserved instances:
+        # Supports uppercase and lowercase letters, digits, underscores (_), hyphens (-), and periods (.). The name must be 3 to 64 characters in length.
+        # - Serverless instances:
+        # Supports uppercase and lowercase letters, digits, underscores (_), hyphens (-), and periods (.). The name must be 1 to 249 characters in length.
         # 
         # This parameter is required.
         self.topic = topic
@@ -207,21 +201,21 @@ class CreateTopicRequestTag(DaraModel):
     ):
         # The tag key of the resource.
         # 
-        # - N specifies the number of the tag. The value of N must be an integer from 1 to 20.
+        # - N ranges from 1 to 20.
         # 
         # - If this parameter is left empty, all tag keys are matched.
         # 
-        # - The tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # - The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`, or contain `http://` or `https://`.
         # 
         # This parameter is required.
         self.key = key
         # The tag value of the resource.
         # 
-        # - N specifies the number of the tag. The value of N must be an integer from 1 to 20.
+        # - N ranges from 1 to 20.
         # 
-        # - The tag value can be empty.
+        # - This parameter can be left empty.
         # 
-        # - The tag value can be up to 128 characters in length. It cannot start with aliyun or acs:, and cannot contain http\\:// or https\\://.
+        # - The tag value can be up to 128 characters in length and cannot start with aliyun or acs:, or contain http:// or https://.
         self.value = value
 
     def validate(self):

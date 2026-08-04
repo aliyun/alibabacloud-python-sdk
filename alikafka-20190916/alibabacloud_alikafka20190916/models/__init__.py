@@ -6,6 +6,10 @@ from ._add_user_defined_sg_request import AddUserDefinedSgRequest
 from ._add_user_defined_sg_shrink_request import AddUserDefinedSgShrinkRequest
 from ._add_user_defined_sg_response_body import AddUserDefinedSgResponseBody
 from ._add_user_defined_sg_response import AddUserDefinedSgResponse
+from ._batch_delete_topics_request import BatchDeleteTopicsRequest
+from ._batch_delete_topics_shrink_request import BatchDeleteTopicsShrinkRequest
+from ._batch_delete_topics_response_body import BatchDeleteTopicsResponseBody
+from ._batch_delete_topics_response import BatchDeleteTopicsResponse
 from ._change_resource_group_request import ChangeResourceGroupRequest
 from ._change_resource_group_response_body import ChangeResourceGroupResponseBody
 from ._change_resource_group_response import ChangeResourceGroupResponse
@@ -195,6 +199,9 @@ from ._upgrade_pre_pay_order_request import UpgradePrePayOrderRequest
 from ._upgrade_pre_pay_order_shrink_request import UpgradePrePayOrderShrinkRequest
 from ._upgrade_pre_pay_order_response_body import UpgradePrePayOrderResponseBody
 from ._upgrade_pre_pay_order_response import UpgradePrePayOrderResponse
+from ._batch_delete_topics_response_body import BatchDeleteTopicsResponseBodyDataResultsTopicDeleteResultItemVO
+from ._batch_delete_topics_response_body import BatchDeleteTopicsResponseBodyDataResults
+from ._batch_delete_topics_response_body import BatchDeleteTopicsResponseBodyData
 from ._create_consumer_group_request import CreateConsumerGroupRequestTag
 from ._create_post_pay_instance_request import CreatePostPayInstanceRequestServerlessConfig
 from ._create_post_pay_instance_request import CreatePostPayInstanceRequestTag
@@ -283,6 +290,10 @@ __all__ = [
     AddUserDefinedSgShrinkRequest,
     AddUserDefinedSgResponseBody,
     AddUserDefinedSgResponse,
+    BatchDeleteTopicsRequest,
+    BatchDeleteTopicsShrinkRequest,
+    BatchDeleteTopicsResponseBody,
+    BatchDeleteTopicsResponse,
     ChangeResourceGroupRequest,
     ChangeResourceGroupResponseBody,
     ChangeResourceGroupResponse,
@@ -472,6 +483,9 @@ __all__ = [
     UpgradePrePayOrderShrinkRequest,
     UpgradePrePayOrderResponseBody,
     UpgradePrePayOrderResponse,
+    BatchDeleteTopicsResponseBodyDataResultsTopicDeleteResultItemVO,
+    BatchDeleteTopicsResponseBodyDataResults,
+    BatchDeleteTopicsResponseBodyData,
     CreateConsumerGroupRequestTag,
     CreatePostPayInstanceRequestServerlessConfig,
     CreatePostPayInstanceRequestTag,

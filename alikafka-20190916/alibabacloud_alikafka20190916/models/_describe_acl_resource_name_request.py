@@ -12,31 +12,19 @@ class DescribeAclResourceNameRequest(DaraModel):
         instance_id: str = None,
         region_id: str = None,
     ):
-        # Matching pattern. Valid values:
-        # 
-        # - LITERAL: exact match
-        # 
-        # - PREFIXED: prefix match
+        # The matching mode. Valid values:
         # 
         # This parameter is required.
         self.acl_resource_pattern_type = acl_resource_pattern_type
-        # Resource type.
-        # 
-        # - **Topic**: message topic.
-        # 
-        # - **Group**: consumer group.
-        # 
-        # - **Cluster**: instance.
-        # 
-        # - **TransactionalId**: transaction ID.
+        # The resource type.
         # 
         # This parameter is required.
         self.acl_resource_type = acl_resource_type
-        # Instance ID.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Region ID.
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
