@@ -133,6 +133,10 @@ from ._delete_data_agent_accuracy_test_response import DeleteDataAgentAccuracyTe
 from ._delete_data_agent_knowledge_base_request import DeleteDataAgentKnowledgeBaseRequest
 from ._delete_data_agent_knowledge_base_response_body import DeleteDataAgentKnowledgeBaseResponseBody
 from ._delete_data_agent_knowledge_base_response import DeleteDataAgentKnowledgeBaseResponse
+from ._delete_data_agent_mcp_request import DeleteDataAgentMcpRequest
+from ._delete_data_agent_mcp_shrink_request import DeleteDataAgentMcpShrinkRequest
+from ._delete_data_agent_mcp_response_body import DeleteDataAgentMcpResponseBody
+from ._delete_data_agent_mcp_response import DeleteDataAgentMcpResponse
 from ._delete_data_agent_memory_request import DeleteDataAgentMemoryRequest
 from ._delete_data_agent_memory_response_body import DeleteDataAgentMemoryResponseBody
 from ._delete_data_agent_memory_response import DeleteDataAgentMemoryResponse
@@ -198,6 +202,9 @@ from ._get_airflow_response import GetAirflowResponse
 from ._get_chat_content_request import GetChatContentRequest
 from ._get_chat_content_response_body import GetChatContentResponseBody
 from ._get_chat_content_response import GetChatContentResponse
+from ._get_data_agent_mcp_request import GetDataAgentMcpRequest
+from ._get_data_agent_mcp_response_body import GetDataAgentMcpResponseBody
+from ._get_data_agent_mcp_response import GetDataAgentMcpResponse
 from ._get_data_agent_sub_account_info_request import GetDataAgentSubAccountInfoRequest
 from ._get_data_agent_sub_account_info_response_body import GetDataAgentSubAccountInfoResponseBody
 from ._get_data_agent_sub_account_info_response import GetDataAgentSubAccountInfoResponse
@@ -220,6 +227,9 @@ from ._get_data_lake_partition_response import GetDataLakePartitionResponse
 from ._get_data_lake_table_request import GetDataLakeTableRequest
 from ._get_data_lake_table_response_body import GetDataLakeTableResponseBody
 from ._get_data_lake_table_response import GetDataLakeTableResponse
+from ._get_list_mcp_server_tools_result_request import GetListMcpServerToolsResultRequest
+from ._get_list_mcp_server_tools_result_response_body import GetListMcpServerToolsResultResponseBody
+from ._get_list_mcp_server_tools_result_response import GetListMcpServerToolsResultResponse
 from ._get_notebook_and_submit_task_request import GetNotebookAndSubmitTaskRequest
 from ._get_notebook_and_submit_task_response_body import GetNotebookAndSubmitTaskResponseBody
 from ._get_notebook_and_submit_task_response import GetNotebookAndSubmitTaskResponse
@@ -238,6 +248,12 @@ from ._get_workspace_code_publish_setting_response import GetWorkspaceCodePublis
 from ._get_workspace_quota_request import GetWorkspaceQuotaRequest
 from ._get_workspace_quota_response_body import GetWorkspaceQuotaResponseBody
 from ._get_workspace_quota_response import GetWorkspaceQuotaResponse
+from ._init_workspace_system_mcp_server_request import InitWorkspaceSystemMcpServerRequest
+from ._init_workspace_system_mcp_server_response_body import InitWorkspaceSystemMcpServerResponseBody
+from ._init_workspace_system_mcp_server_response import InitWorkspaceSystemMcpServerResponse
+from ._install_data_agent_mcp_request import InstallDataAgentMcpRequest
+from ._install_data_agent_mcp_response_body import InstallDataAgentMcpResponseBody
+from ._install_data_agent_mcp_response import InstallDataAgentMcpResponse
 from ._list_airflow_versions_request import ListAirflowVersionsRequest
 from ._list_airflow_versions_response_body import ListAirflowVersionsResponseBody
 from ._list_airflow_versions_response import ListAirflowVersionsResponse
@@ -256,6 +272,9 @@ from ._list_data_agent_accuracy_test_results_response import ListDataAgentAccura
 from ._list_data_agent_accuracy_test_tasks_request import ListDataAgentAccuracyTestTasksRequest
 from ._list_data_agent_accuracy_test_tasks_response_body import ListDataAgentAccuracyTestTasksResponseBody
 from ._list_data_agent_accuracy_test_tasks_response import ListDataAgentAccuracyTestTasksResponse
+from ._list_data_agent_mcp_request import ListDataAgentMcpRequest
+from ._list_data_agent_mcp_response_body import ListDataAgentMcpResponseBody
+from ._list_data_agent_mcp_response import ListDataAgentMcpResponse
 from ._list_data_agent_memory_request import ListDataAgentMemoryRequest
 from ._list_data_agent_memory_response_body import ListDataAgentMemoryResponseBody
 from ._list_data_agent_memory_response import ListDataAgentMemoryResponse
@@ -324,6 +343,9 @@ from ._modify_custom_agent_request import ModifyCustomAgentRequest
 from ._modify_custom_agent_shrink_request import ModifyCustomAgentShrinkRequest
 from ._modify_custom_agent_response_body import ModifyCustomAgentResponseBody
 from ._modify_custom_agent_response import ModifyCustomAgentResponse
+from ._modify_data_agent_mcp_request import ModifyDataAgentMcpRequest
+from ._modify_data_agent_mcp_response_body import ModifyDataAgentMcpResponseBody
+from ._modify_data_agent_mcp_response import ModifyDataAgentMcpResponse
 from ._operate_custom_agent_request import OperateCustomAgentRequest
 from ._operate_custom_agent_response_body import OperateCustomAgentResponseBody
 from ._operate_custom_agent_response import OperateCustomAgentResponse
@@ -352,6 +374,9 @@ from ._set_workspace_quota_response import SetWorkspaceQuotaResponse
 from ._start_data_agent_accuracy_test_task_request import StartDataAgentAccuracyTestTaskRequest
 from ._start_data_agent_accuracy_test_task_response_body import StartDataAgentAccuracyTestTaskResponseBody
 from ._start_data_agent_accuracy_test_task_response import StartDataAgentAccuracyTestTaskResponse
+from ._start_list_mcp_server_tools_request import StartListMcpServerToolsRequest
+from ._start_list_mcp_server_tools_response_body import StartListMcpServerToolsResponseBody
+from ._start_list_mcp_server_tools_response import StartListMcpServerToolsResponse
 from ._stop_data_agent_accuracy_test_task_request import StopDataAgentAccuracyTestTaskRequest
 from ._stop_data_agent_accuracy_test_task_response_body import StopDataAgentAccuracyTestTaskResponseBody
 from ._stop_data_agent_accuracy_test_task_response import StopDataAgentAccuracyTestTaskResponse
@@ -461,6 +486,8 @@ from ._get_agentic_agent_by_install_token_response_body import GetAgenticAgentBy
 from ._get_airflow_response_body import GetAirflowResponseBodyRoot
 from ._get_data_agent_sub_account_info_response_body import GetDataAgentSubAccountInfoResponseBodyData
 from ._get_data_agent_workspace_info_response_body import GetDataAgentWorkspaceInfoResponseBodyData
+from ._get_list_mcp_server_tools_result_response_body import GetListMcpServerToolsResultResponseBodyDataTools
+from ._get_list_mcp_server_tools_result_response_body import GetListMcpServerToolsResultResponseBodyData
 from ._get_notebook_task_status_response_body import GetNotebookTaskStatusResponseBodyData
 from ._get_sql_console_operation_log_response_body import GetSqlConsoleOperationLogResponseBodyData
 from ._get_workspace_code_publish_setting_response_body import GetWorkspaceCodePublishSettingResponseBodyDataRepos
@@ -478,6 +505,7 @@ from ._list_data_agent_accuracy_test_instances_response_body import ListDataAgen
 from ._list_data_agent_accuracy_test_results_response_body import ListDataAgentAccuracyTestResultsResponseBodyDataContent
 from ._list_data_agent_accuracy_test_results_response_body import ListDataAgentAccuracyTestResultsResponseBodyData
 from ._list_data_agent_accuracy_test_tasks_response_body import ListDataAgentAccuracyTestTasksResponseBodyData
+from ._list_data_agent_mcp_response_body import ListDataAgentMcpResponseBodyData
 from ._list_data_agent_memory_response_body import ListDataAgentMemoryResponseBodyDataData
 from ._list_data_agent_memory_response_body import ListDataAgentMemoryResponseBodyData
 from ._list_data_agent_session_response_body import ListDataAgentSessionResponseBodyDataSessionConfig
@@ -517,6 +545,7 @@ from ._send_chat_message_request import SendChatMessageRequestTaskConfig
 from ._send_chat_message_response_body import SendChatMessageResponseBodyData
 from ._set_workspace_quota_response_body import SetWorkspaceQuotaResponseBodyData
 from ._start_data_agent_accuracy_test_task_response_body import StartDataAgentAccuracyTestTaskResponseBodyData
+from ._start_list_mcp_server_tools_response_body import StartListMcpServerToolsResponseBodyData
 from ._update_airflow_response_body import UpdateAirflowResponseBodyRoot
 from ._update_data_agent_accuracy_test_response_body import UpdateDataAgentAccuracyTestResponseBodyData
 from ._update_data_agent_memory_response_body import UpdateDataAgentMemoryResponseBodyData
@@ -657,6 +686,10 @@ __all__ = [
     DeleteDataAgentKnowledgeBaseRequest,
     DeleteDataAgentKnowledgeBaseResponseBody,
     DeleteDataAgentKnowledgeBaseResponse,
+    DeleteDataAgentMcpRequest,
+    DeleteDataAgentMcpShrinkRequest,
+    DeleteDataAgentMcpResponseBody,
+    DeleteDataAgentMcpResponse,
     DeleteDataAgentMemoryRequest,
     DeleteDataAgentMemoryResponseBody,
     DeleteDataAgentMemoryResponse,
@@ -722,6 +755,9 @@ __all__ = [
     GetChatContentRequest,
     GetChatContentResponseBody,
     GetChatContentResponse,
+    GetDataAgentMcpRequest,
+    GetDataAgentMcpResponseBody,
+    GetDataAgentMcpResponse,
     GetDataAgentSubAccountInfoRequest,
     GetDataAgentSubAccountInfoResponseBody,
     GetDataAgentSubAccountInfoResponse,
@@ -744,6 +780,9 @@ __all__ = [
     GetDataLakeTableRequest,
     GetDataLakeTableResponseBody,
     GetDataLakeTableResponse,
+    GetListMcpServerToolsResultRequest,
+    GetListMcpServerToolsResultResponseBody,
+    GetListMcpServerToolsResultResponse,
     GetNotebookAndSubmitTaskRequest,
     GetNotebookAndSubmitTaskResponseBody,
     GetNotebookAndSubmitTaskResponse,
@@ -762,6 +801,12 @@ __all__ = [
     GetWorkspaceQuotaRequest,
     GetWorkspaceQuotaResponseBody,
     GetWorkspaceQuotaResponse,
+    InitWorkspaceSystemMcpServerRequest,
+    InitWorkspaceSystemMcpServerResponseBody,
+    InitWorkspaceSystemMcpServerResponse,
+    InstallDataAgentMcpRequest,
+    InstallDataAgentMcpResponseBody,
+    InstallDataAgentMcpResponse,
     ListAirflowVersionsRequest,
     ListAirflowVersionsResponseBody,
     ListAirflowVersionsResponse,
@@ -780,6 +825,9 @@ __all__ = [
     ListDataAgentAccuracyTestTasksRequest,
     ListDataAgentAccuracyTestTasksResponseBody,
     ListDataAgentAccuracyTestTasksResponse,
+    ListDataAgentMcpRequest,
+    ListDataAgentMcpResponseBody,
+    ListDataAgentMcpResponse,
     ListDataAgentMemoryRequest,
     ListDataAgentMemoryResponseBody,
     ListDataAgentMemoryResponse,
@@ -848,6 +896,9 @@ __all__ = [
     ModifyCustomAgentShrinkRequest,
     ModifyCustomAgentResponseBody,
     ModifyCustomAgentResponse,
+    ModifyDataAgentMcpRequest,
+    ModifyDataAgentMcpResponseBody,
+    ModifyDataAgentMcpResponse,
     OperateCustomAgentRequest,
     OperateCustomAgentResponseBody,
     OperateCustomAgentResponse,
@@ -876,6 +927,9 @@ __all__ = [
     StartDataAgentAccuracyTestTaskRequest,
     StartDataAgentAccuracyTestTaskResponseBody,
     StartDataAgentAccuracyTestTaskResponse,
+    StartListMcpServerToolsRequest,
+    StartListMcpServerToolsResponseBody,
+    StartListMcpServerToolsResponse,
     StopDataAgentAccuracyTestTaskRequest,
     StopDataAgentAccuracyTestTaskResponseBody,
     StopDataAgentAccuracyTestTaskResponse,
@@ -985,6 +1039,8 @@ __all__ = [
     GetAirflowResponseBodyRoot,
     GetDataAgentSubAccountInfoResponseBodyData,
     GetDataAgentWorkspaceInfoResponseBodyData,
+    GetListMcpServerToolsResultResponseBodyDataTools,
+    GetListMcpServerToolsResultResponseBodyData,
     GetNotebookTaskStatusResponseBodyData,
     GetSqlConsoleOperationLogResponseBodyData,
     GetWorkspaceCodePublishSettingResponseBodyDataRepos,
@@ -1002,6 +1058,7 @@ __all__ = [
     ListDataAgentAccuracyTestResultsResponseBodyDataContent,
     ListDataAgentAccuracyTestResultsResponseBodyData,
     ListDataAgentAccuracyTestTasksResponseBodyData,
+    ListDataAgentMcpResponseBodyData,
     ListDataAgentMemoryResponseBodyDataData,
     ListDataAgentMemoryResponseBodyData,
     ListDataAgentSessionResponseBodyDataSessionConfig,
@@ -1041,6 +1098,7 @@ __all__ = [
     SendChatMessageResponseBodyData,
     SetWorkspaceQuotaResponseBodyData,
     StartDataAgentAccuracyTestTaskResponseBodyData,
+    StartListMcpServerToolsResponseBodyData,
     UpdateAirflowResponseBodyRoot,
     UpdateDataAgentAccuracyTestResponseBodyData,
     UpdateDataAgentMemoryResponseBodyData,

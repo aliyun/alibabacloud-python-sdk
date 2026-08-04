@@ -9,6 +9,7 @@ class ListDataAgentSessionRequest(DaraModel):
         self,
         create_end_time: int = None,
         create_start_time: int = None,
+        creator_id: str = None,
         custom_agent_id: str = None,
         dmsunit: str = None,
         is_saved: bool = None,
@@ -19,22 +20,26 @@ class ListDataAgentSessionRequest(DaraModel):
         title: str = None,
         workspace_id: str = None,
     ):
-        # The end time of the session creation period.
+        # The end time for session creation.
         self.create_end_time = create_end_time
-        # The start time of the session creation period.
+        # The start time for session creation.
         self.create_start_time = create_start_time
+        self.creator_id = creator_id
         # The custom agent ID.
         self.custom_agent_id = custom_agent_id
-        # The current DMS unit.
+        # The current Data Management unit.
         self.dmsunit = dmsunit
         # Specifies whether to retrieve only favorited sessions.
         self.is_saved = is_saved
+        # The mode. Valid values:
+        # - Analysis
+        # - Coding
         self.mode = mode
         # The page number.
         self.page_number = page_number
         # The number of records per page.
         self.page_size = page_size
-        # The session type. This parameter is required if a workspace is specified.
+        # The session type. This parameter is required when a workspace is specified.
         self.query_type = query_type
         # The Data Agent title. Fuzzy match is supported.
         self.title = title
@@ -54,6 +59,9 @@ class ListDataAgentSessionRequest(DaraModel):
 
         if self.create_start_time is not None:
             result['CreateStartTime'] = self.create_start_time
+
+        if self.creator_id is not None:
+            result['CreatorId'] = self.creator_id
 
         if self.custom_agent_id is not None:
             result['CustomAgentId'] = self.custom_agent_id
@@ -91,6 +99,9 @@ class ListDataAgentSessionRequest(DaraModel):
 
         if m.get('CreateStartTime') is not None:
             self.create_start_time = m.get('CreateStartTime')
+
+        if m.get('CreatorId') is not None:
+            self.creator_id = m.get('CreatorId')
 
         if m.get('CustomAgentId') is not None:
             self.custom_agent_id = m.get('CustomAgentId')

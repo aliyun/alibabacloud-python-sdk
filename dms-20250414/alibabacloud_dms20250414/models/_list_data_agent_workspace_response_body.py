@@ -168,30 +168,36 @@ class ListDataAgentWorkspaceResponseBodyDataContent(DaraModel):
         self,
         create_time: int = None,
         creator: str = None,
+        creator_name: str = None,
         description: str = None,
         is_session_share_enabled: bool = None,
         modify_time: int = None,
         role_name: str = None,
+        running_session_count: int = None,
         total_member: int = None,
+        total_session_count: int = None,
         type: str = None,
         workspace_id: str = None,
         workspace_name: str = None,
         workspace_status: str = None,
     ):
-        # The creation time of the workspace, in UNIX timestamp format (milliseconds).
+        # The creation time of the workspace, in milliseconds (UNIX timestamp).
         self.create_time = create_time
         # The UID of the workspace creator.
         self.creator = creator
+        self.creator_name = creator_name
         # The description of the workspace.
         self.description = description
         # Indicates whether session sharing is enabled for the workspace.
         self.is_session_share_enabled = is_session_share_enabled
-        # The most recent modification time of the workspace, in UNIX timestamp format (milliseconds).
+        # The most recent modification time of the workspace, in milliseconds (UNIX timestamp).
         self.modify_time = modify_time
         # The role name of the user in the workspace.
         self.role_name = role_name
+        self.running_session_count = running_session_count
         # The number of members in the workspace.
         self.total_member = total_member
+        self.total_session_count = total_session_count
         # The workspace type.
         self.type = type
         # The workspace ID.
@@ -215,6 +221,9 @@ class ListDataAgentWorkspaceResponseBodyDataContent(DaraModel):
         if self.creator is not None:
             result['Creator'] = self.creator
 
+        if self.creator_name is not None:
+            result['CreatorName'] = self.creator_name
+
         if self.description is not None:
             result['Description'] = self.description
 
@@ -227,8 +236,14 @@ class ListDataAgentWorkspaceResponseBodyDataContent(DaraModel):
         if self.role_name is not None:
             result['RoleName'] = self.role_name
 
+        if self.running_session_count is not None:
+            result['RunningSessionCount'] = self.running_session_count
+
         if self.total_member is not None:
             result['TotalMember'] = self.total_member
+
+        if self.total_session_count is not None:
+            result['TotalSessionCount'] = self.total_session_count
 
         if self.type is not None:
             result['Type'] = self.type
@@ -252,6 +267,9 @@ class ListDataAgentWorkspaceResponseBodyDataContent(DaraModel):
         if m.get('Creator') is not None:
             self.creator = m.get('Creator')
 
+        if m.get('CreatorName') is not None:
+            self.creator_name = m.get('CreatorName')
+
         if m.get('Description') is not None:
             self.description = m.get('Description')
 
@@ -264,8 +282,14 @@ class ListDataAgentWorkspaceResponseBodyDataContent(DaraModel):
         if m.get('RoleName') is not None:
             self.role_name = m.get('RoleName')
 
+        if m.get('RunningSessionCount') is not None:
+            self.running_session_count = m.get('RunningSessionCount')
+
         if m.get('TotalMember') is not None:
             self.total_member = m.get('TotalMember')
+
+        if m.get('TotalSessionCount') is not None:
+            self.total_session_count = m.get('TotalSessionCount')
 
         if m.get('Type') is not None:
             self.type = m.get('Type')

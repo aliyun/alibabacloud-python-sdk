@@ -2218,6 +2218,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_data_agent_knowledge_base_with_options_async(request, runtime)
 
+    def delete_data_agent_mcp_with_options(
+        self,
+        tmp_req: main_models.DeleteDataAgentMcpRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteDataAgentMcpResponse:
+        tmp_req.validate()
+        request = main_models.DeleteDataAgentMcpShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.mcp_server_ids):
+            request.mcp_server_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.mcp_server_ids, 'McpServerIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.mcp_server_ids_shrink):
+            query['McpServerIds'] = request.mcp_server_ids_shrink
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteDataAgentMcp',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteDataAgentMcpResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_data_agent_mcp_with_options_async(
+        self,
+        tmp_req: main_models.DeleteDataAgentMcpRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteDataAgentMcpResponse:
+        tmp_req.validate()
+        request = main_models.DeleteDataAgentMcpShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.mcp_server_ids):
+            request.mcp_server_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.mcp_server_ids, 'McpServerIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.mcp_server_ids_shrink):
+            query['McpServerIds'] = request.mcp_server_ids_shrink
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteDataAgentMcp',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteDataAgentMcpResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_data_agent_mcp(
+        self,
+        request: main_models.DeleteDataAgentMcpRequest,
+    ) -> main_models.DeleteDataAgentMcpResponse:
+        runtime = RuntimeOptions()
+        return self.delete_data_agent_mcp_with_options(request, runtime)
+
+    async def delete_data_agent_mcp_async(
+        self,
+        request: main_models.DeleteDataAgentMcpRequest,
+    ) -> main_models.DeleteDataAgentMcpResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_data_agent_mcp_with_options_async(request, runtime)
+
     def delete_data_agent_memory_with_options(
         self,
         request: main_models.DeleteDataAgentMemoryRequest,
@@ -3974,6 +4056,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_chat_content_with_options_async(request, runtime)
 
+    def get_data_agent_mcp_with_options(
+        self,
+        request: main_models.GetDataAgentMcpRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetDataAgentMcpResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.mcp_server_id):
+            query['McpServerId'] = request.mcp_server_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetDataAgentMcp',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetDataAgentMcpResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_data_agent_mcp_with_options_async(
+        self,
+        request: main_models.GetDataAgentMcpRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetDataAgentMcpResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.mcp_server_id):
+            query['McpServerId'] = request.mcp_server_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetDataAgentMcp',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetDataAgentMcpResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_data_agent_mcp(
+        self,
+        request: main_models.GetDataAgentMcpRequest,
+    ) -> main_models.GetDataAgentMcpResponse:
+        runtime = RuntimeOptions()
+        return self.get_data_agent_mcp_with_options(request, runtime)
+
+    async def get_data_agent_mcp_async(
+        self,
+        request: main_models.GetDataAgentMcpRequest,
+    ) -> main_models.GetDataAgentMcpResponse:
+        runtime = RuntimeOptions()
+        return await self.get_data_agent_mcp_with_options_async(request, runtime)
+
     def get_data_agent_sub_account_info_with_options(
         self,
         request: main_models.GetDataAgentSubAccountInfoRequest,
@@ -4552,6 +4708,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_data_lake_table_with_options_async(request, runtime)
 
+    def get_list_mcp_server_tools_result_with_options(
+        self,
+        request: main_models.GetListMcpServerToolsResultRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetListMcpServerToolsResultResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dmsunit):
+            query['DMSUnit'] = request.dmsunit
+        if not DaraCore.is_null(request.mcp_server_uuid):
+            query['McpServerUuid'] = request.mcp_server_uuid
+        if not DaraCore.is_null(request.session_id):
+            query['SessionId'] = request.session_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetListMcpServerToolsResult',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetListMcpServerToolsResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_list_mcp_server_tools_result_with_options_async(
+        self,
+        request: main_models.GetListMcpServerToolsResultRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetListMcpServerToolsResultResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dmsunit):
+            query['DMSUnit'] = request.dmsunit
+        if not DaraCore.is_null(request.mcp_server_uuid):
+            query['McpServerUuid'] = request.mcp_server_uuid
+        if not DaraCore.is_null(request.session_id):
+            query['SessionId'] = request.session_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetListMcpServerToolsResult',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetListMcpServerToolsResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_list_mcp_server_tools_result(
+        self,
+        request: main_models.GetListMcpServerToolsResultRequest,
+    ) -> main_models.GetListMcpServerToolsResultResponse:
+        runtime = RuntimeOptions()
+        return self.get_list_mcp_server_tools_result_with_options(request, runtime)
+
+    async def get_list_mcp_server_tools_result_async(
+        self,
+        request: main_models.GetListMcpServerToolsResultRequest,
+    ) -> main_models.GetListMcpServerToolsResultResponse:
+        runtime = RuntimeOptions()
+        return await self.get_list_mcp_server_tools_result_with_options_async(request, runtime)
+
     def get_notebook_and_submit_task_with_options(
         self,
         request: main_models.GetNotebookAndSubmitTaskRequest,
@@ -5035,6 +5269,186 @@ class Client(OpenApiClient):
     ) -> main_models.GetWorkspaceQuotaResponse:
         runtime = RuntimeOptions()
         return await self.get_workspace_quota_with_options_async(request, runtime)
+
+    def init_workspace_system_mcp_server_with_options(
+        self,
+        request: main_models.InitWorkspaceSystemMcpServerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.InitWorkspaceSystemMcpServerResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'InitWorkspaceSystemMcpServer',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.InitWorkspaceSystemMcpServerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def init_workspace_system_mcp_server_with_options_async(
+        self,
+        request: main_models.InitWorkspaceSystemMcpServerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.InitWorkspaceSystemMcpServerResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'InitWorkspaceSystemMcpServer',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.InitWorkspaceSystemMcpServerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def init_workspace_system_mcp_server(
+        self,
+        request: main_models.InitWorkspaceSystemMcpServerRequest,
+    ) -> main_models.InitWorkspaceSystemMcpServerResponse:
+        runtime = RuntimeOptions()
+        return self.init_workspace_system_mcp_server_with_options(request, runtime)
+
+    async def init_workspace_system_mcp_server_async(
+        self,
+        request: main_models.InitWorkspaceSystemMcpServerRequest,
+    ) -> main_models.InitWorkspaceSystemMcpServerResponse:
+        runtime = RuntimeOptions()
+        return await self.init_workspace_system_mcp_server_with_options_async(request, runtime)
+
+    def install_data_agent_mcp_with_options(
+        self,
+        request: main_models.InstallDataAgentMcpRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.InstallDataAgentMcpResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.endpoint):
+            query['Endpoint'] = request.endpoint
+        if not DaraCore.is_null(request.from_json):
+            query['FromJson'] = request.from_json
+        if not DaraCore.is_null(request.headers):
+            query['Headers'] = request.headers
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.need_uid_in_header):
+            query['NeedUidInHeader'] = request.need_uid_in_header
+        if not DaraCore.is_null(request.net_type):
+            query['NetType'] = request.net_type
+        if not DaraCore.is_null(request.transport_type):
+            query['TransportType'] = request.transport_type
+        if not DaraCore.is_null(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not DaraCore.is_null(request.vsw_id):
+            query['VswId'] = request.vsw_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'InstallDataAgentMcp',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.InstallDataAgentMcpResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def install_data_agent_mcp_with_options_async(
+        self,
+        request: main_models.InstallDataAgentMcpRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.InstallDataAgentMcpResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.endpoint):
+            query['Endpoint'] = request.endpoint
+        if not DaraCore.is_null(request.from_json):
+            query['FromJson'] = request.from_json
+        if not DaraCore.is_null(request.headers):
+            query['Headers'] = request.headers
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.need_uid_in_header):
+            query['NeedUidInHeader'] = request.need_uid_in_header
+        if not DaraCore.is_null(request.net_type):
+            query['NetType'] = request.net_type
+        if not DaraCore.is_null(request.transport_type):
+            query['TransportType'] = request.transport_type
+        if not DaraCore.is_null(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not DaraCore.is_null(request.vsw_id):
+            query['VswId'] = request.vsw_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'InstallDataAgentMcp',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.InstallDataAgentMcpResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def install_data_agent_mcp(
+        self,
+        request: main_models.InstallDataAgentMcpRequest,
+    ) -> main_models.InstallDataAgentMcpResponse:
+        runtime = RuntimeOptions()
+        return self.install_data_agent_mcp_with_options(request, runtime)
+
+    async def install_data_agent_mcp_async(
+        self,
+        request: main_models.InstallDataAgentMcpRequest,
+    ) -> main_models.InstallDataAgentMcpResponse:
+        runtime = RuntimeOptions()
+        return await self.install_data_agent_mcp_with_options_async(request, runtime)
 
     def list_airflow_versions_with_options(
         self,
@@ -5572,6 +5986,104 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_data_agent_accuracy_test_tasks_with_options_async(request, runtime)
 
+    def list_data_agent_mcp_with_options(
+        self,
+        request: main_models.ListDataAgentMcpRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDataAgentMcpResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.ready_only):
+            query['ReadyOnly'] = request.ready_only
+        if not DaraCore.is_null(request.search_key):
+            query['SearchKey'] = request.search_key
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDataAgentMcp',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDataAgentMcpResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_data_agent_mcp_with_options_async(
+        self,
+        request: main_models.ListDataAgentMcpRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDataAgentMcpResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.ready_only):
+            query['ReadyOnly'] = request.ready_only
+        if not DaraCore.is_null(request.search_key):
+            query['SearchKey'] = request.search_key
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDataAgentMcp',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDataAgentMcpResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_data_agent_mcp(
+        self,
+        request: main_models.ListDataAgentMcpRequest,
+    ) -> main_models.ListDataAgentMcpResponse:
+        runtime = RuntimeOptions()
+        return self.list_data_agent_mcp_with_options(request, runtime)
+
+    async def list_data_agent_mcp_async(
+        self,
+        request: main_models.ListDataAgentMcpRequest,
+    ) -> main_models.ListDataAgentMcpResponse:
+        runtime = RuntimeOptions()
+        return await self.list_data_agent_mcp_with_options_async(request, runtime)
+
     def list_data_agent_memory_with_options(
         self,
         request: main_models.ListDataAgentMemoryRequest,
@@ -5685,6 +6197,8 @@ class Client(OpenApiClient):
             query['CreateEndTime'] = request.create_end_time
         if not DaraCore.is_null(request.create_start_time):
             query['CreateStartTime'] = request.create_start_time
+        if not DaraCore.is_null(request.creator_id):
+            query['CreatorId'] = request.creator_id
         if not DaraCore.is_null(request.custom_agent_id):
             query['CustomAgentId'] = request.custom_agent_id
         if not DaraCore.is_null(request.dmsunit):
@@ -5733,6 +6247,8 @@ class Client(OpenApiClient):
             query['CreateEndTime'] = request.create_end_time
         if not DaraCore.is_null(request.create_start_time):
             query['CreateStartTime'] = request.create_start_time
+        if not DaraCore.is_null(request.creator_id):
+            query['CreatorId'] = request.creator_id
         if not DaraCore.is_null(request.custom_agent_id):
             query['CustomAgentId'] = request.custom_agent_id
         if not DaraCore.is_null(request.dmsunit):
@@ -5791,6 +6307,8 @@ class Client(OpenApiClient):
     ) -> main_models.ListDataAgentWorkspaceResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.creator):
+            query['Creator'] = request.creator
         if not DaraCore.is_null(request.dmsunit):
             query['DMSUnit'] = request.dmsunit
         if not DaraCore.is_null(request.max_results):
@@ -5835,6 +6353,8 @@ class Client(OpenApiClient):
     ) -> main_models.ListDataAgentWorkspaceResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.creator):
+            query['Creator'] = request.creator
         if not DaraCore.is_null(request.dmsunit):
             query['DMSUnit'] = request.dmsunit
         if not DaraCore.is_null(request.max_results):
@@ -7744,6 +8264,108 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.modify_custom_agent_with_options_async(request, runtime)
 
+    def modify_data_agent_mcp_with_options(
+        self,
+        request: main_models.ModifyDataAgentMcpRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyDataAgentMcpResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.enable):
+            query['Enable'] = request.enable
+        if not DaraCore.is_null(request.endpoint):
+            query['Endpoint'] = request.endpoint
+        if not DaraCore.is_null(request.headers):
+            query['Headers'] = request.headers
+        if not DaraCore.is_null(request.mcp_server_id):
+            query['McpServerId'] = request.mcp_server_id
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.need_uid_in_header):
+            query['NeedUidInHeader'] = request.need_uid_in_header
+        if not DaraCore.is_null(request.transport_type):
+            query['TransportType'] = request.transport_type
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyDataAgentMcp',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyDataAgentMcpResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_data_agent_mcp_with_options_async(
+        self,
+        request: main_models.ModifyDataAgentMcpRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyDataAgentMcpResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.enable):
+            query['Enable'] = request.enable
+        if not DaraCore.is_null(request.endpoint):
+            query['Endpoint'] = request.endpoint
+        if not DaraCore.is_null(request.headers):
+            query['Headers'] = request.headers
+        if not DaraCore.is_null(request.mcp_server_id):
+            query['McpServerId'] = request.mcp_server_id
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.need_uid_in_header):
+            query['NeedUidInHeader'] = request.need_uid_in_header
+        if not DaraCore.is_null(request.transport_type):
+            query['TransportType'] = request.transport_type
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyDataAgentMcp',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyDataAgentMcpResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_data_agent_mcp(
+        self,
+        request: main_models.ModifyDataAgentMcpRequest,
+    ) -> main_models.ModifyDataAgentMcpResponse:
+        runtime = RuntimeOptions()
+        return self.modify_data_agent_mcp_with_options(request, runtime)
+
+    async def modify_data_agent_mcp_async(
+        self,
+        request: main_models.ModifyDataAgentMcpRequest,
+    ) -> main_models.ModifyDataAgentMcpResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_data_agent_mcp_with_options_async(request, runtime)
+
     def operate_custom_agent_with_options(
         self,
         request: main_models.OperateCustomAgentRequest,
@@ -8585,6 +9207,84 @@ class Client(OpenApiClient):
     ) -> main_models.StartDataAgentAccuracyTestTaskResponse:
         runtime = RuntimeOptions()
         return await self.start_data_agent_accuracy_test_task_with_options_async(request, runtime)
+
+    def start_list_mcp_server_tools_with_options(
+        self,
+        request: main_models.StartListMcpServerToolsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.StartListMcpServerToolsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dmsunit):
+            query['DMSUnit'] = request.dmsunit
+        if not DaraCore.is_null(request.language):
+            query['Language'] = request.language
+        if not DaraCore.is_null(request.mcp_server_uuid):
+            query['McpServerUuid'] = request.mcp_server_uuid
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'StartListMcpServerTools',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.StartListMcpServerToolsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def start_list_mcp_server_tools_with_options_async(
+        self,
+        request: main_models.StartListMcpServerToolsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.StartListMcpServerToolsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dmsunit):
+            query['DMSUnit'] = request.dmsunit
+        if not DaraCore.is_null(request.language):
+            query['Language'] = request.language
+        if not DaraCore.is_null(request.mcp_server_uuid):
+            query['McpServerUuid'] = request.mcp_server_uuid
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'StartListMcpServerTools',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.StartListMcpServerToolsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def start_list_mcp_server_tools(
+        self,
+        request: main_models.StartListMcpServerToolsRequest,
+    ) -> main_models.StartListMcpServerToolsResponse:
+        runtime = RuntimeOptions()
+        return self.start_list_mcp_server_tools_with_options(request, runtime)
+
+    async def start_list_mcp_server_tools_async(
+        self,
+        request: main_models.StartListMcpServerToolsRequest,
+    ) -> main_models.StartListMcpServerToolsResponse:
+        runtime = RuntimeOptions()
+        return await self.start_list_mcp_server_tools_with_options_async(request, runtime)
 
     def stop_data_agent_accuracy_test_task_with_options(
         self,

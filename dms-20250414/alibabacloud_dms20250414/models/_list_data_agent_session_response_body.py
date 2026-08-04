@@ -22,9 +22,9 @@ class ListDataAgentSessionResponseBody(DaraModel):
     ):
         # The response struct.
         self.data = data
-        # The error code returned if the request fails.
+        # The error code returned when the request is abnormal.
         self.error_code = error_code
-        # The error message returned if the request fails.
+        # The error message returned when the call fails.
         self.error_message = error_message
         # The current page number.
         self.page_number = page_number
@@ -32,10 +32,10 @@ class ListDataAgentSessionResponseBody(DaraModel):
         self.page_size = page_size
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request is successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # - **true**: The request is successful.
-        # - **false**: The request fails.
+        # - **true**: The request was successful.
+        # - **false**: The request failed.
         self.success = success
         # The total number of records.
         self.total = total
@@ -252,7 +252,7 @@ class ListDataAgentSessionResponseBodyDataSessionConfig(DaraModel):
         self.custom_agent_id = custom_agent_id
         # The usage stage of the custom agent. Valid values:
         # - **debug**: Debug stage.
-        # - **prod**: Production stage.
+        # - **prod**: Production environment stage.
         self.custom_agent_stage = custom_agent_stage
         # Specifies whether to enable web search.
         self.enable_search = enable_search
@@ -261,13 +261,13 @@ class ListDataAgentSessionResponseBodyDataSessionConfig(DaraModel):
         # - **ENGLISH**: English.
         self.language = language
         # The mode. Valid values:
-        #  - **ASK_DATA**: Ask data mode.
-        #  - **ANALYSIS**: Analysis mode.
-        #  - **INSIGHT**: Insight mode.
+        # - **ASK_DATA**: Ask data mode.
+        # - **ANALYSIS**: Analysis mode.
+        # - **INSIGHT**: Insight mode.
         self.mode = mode
         # The name of the user OSS bucket.
         # 
-        # - Analysis process files and report artifacts can be uploaded to the user-specified OSS bucket.
+        # - Analysis process files and report outputs can be uploaded to the user-specified OSS bucket.
         self.user_oss_bucket = user_oss_bucket
 
     def validate(self):

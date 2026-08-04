@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class ListDataAgentWorkspaceRequest(DaraModel):
     def __init__(
         self,
+        creator: str = None,
         dmsunit: str = None,
         max_results: int = None,
         next_token: str = None,
@@ -17,6 +18,7 @@ class ListDataAgentWorkspaceRequest(DaraModel):
         workspace_name: str = None,
         workspace_type: str = None,
     ):
+        self.creator = creator
         # The current DMS unit.
         self.dmsunit = dmsunit
         # The maximum number of entries per page.
@@ -25,7 +27,7 @@ class ListDataAgentWorkspaceRequest(DaraModel):
         self.next_token = next_token
         # The sort order.
         self.order = order
-        # The field name used for sorting.
+        # The name of the field by which to sort.
         self.order_by = order_by
         # The page number.
         # 
@@ -50,6 +52,9 @@ class ListDataAgentWorkspaceRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.creator is not None:
+            result['Creator'] = self.creator
+
         if self.dmsunit is not None:
             result['DMSUnit'] = self.dmsunit
 
@@ -81,6 +86,9 @@ class ListDataAgentWorkspaceRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Creator') is not None:
+            self.creator = m.get('Creator')
+
         if m.get('DMSUnit') is not None:
             self.dmsunit = m.get('DMSUnit')
 

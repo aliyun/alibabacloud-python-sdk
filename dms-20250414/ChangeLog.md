@@ -1,3 +1,19 @@
+2026-08-04 Version: 1.20.0
+- Support API DeleteDataAgentMcp.
+- Support API GetDataAgentMcp.
+- Support API GetListMcpServerToolsResult.
+- Support API InitWorkspaceSystemMcpServer.
+- Support API InstallDataAgentMcp.
+- Support API ListDataAgentMcp.
+- Support API ModifyDataAgentMcp.
+- Support API StartListMcpServerTools.
+- Update API ListDataAgentSession: add request parameters CreatorId.
+- Update API ListDataAgentWorkspace: add request parameters Creator.
+- Update API ListDataAgentWorkspace: add response parameters Body.Data.Content.$.CreatorName.
+- Update API ListDataAgentWorkspace: add response parameters Body.Data.Content.$.RunningSessionCount.
+- Update API ListDataAgentWorkspace: add response parameters Body.Data.Content.$.TotalSessionCount.
+
+
 2026-08-03 Version: 1.19.0
 - Support API CheckDataAgentMemoryConfig.
 - Support API ConfigDataAgentMemory.

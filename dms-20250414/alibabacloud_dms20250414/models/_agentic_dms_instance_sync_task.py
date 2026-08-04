@@ -15,6 +15,8 @@ class AgenticDmsInstanceSyncTask(DaraModel):
         failed_count: int = None,
         gmt_create: str = None,
         gmt_modified: str = None,
+        operator_mode: str = None,
+        requested_operator_mode: str = None,
         skipped_count: int = None,
         status: str = None,
         success_count: int = None,
@@ -30,6 +32,8 @@ class AgenticDmsInstanceSyncTask(DaraModel):
         self.failed_count = failed_count
         self.gmt_create = gmt_create
         self.gmt_modified = gmt_modified
+        self.operator_mode = operator_mode
+        self.requested_operator_mode = requested_operator_mode
         self.skipped_count = skipped_count
         self.status = status
         self.success_count = success_count
@@ -68,6 +72,12 @@ class AgenticDmsInstanceSyncTask(DaraModel):
 
         if self.gmt_modified is not None:
             result['GmtModified'] = self.gmt_modified
+
+        if self.operator_mode is not None:
+            result['OperatorMode'] = self.operator_mode
+
+        if self.requested_operator_mode is not None:
+            result['RequestedOperatorMode'] = self.requested_operator_mode
 
         if self.skipped_count is not None:
             result['SkippedCount'] = self.skipped_count
@@ -114,6 +124,12 @@ class AgenticDmsInstanceSyncTask(DaraModel):
 
         if m.get('GmtModified') is not None:
             self.gmt_modified = m.get('GmtModified')
+
+        if m.get('OperatorMode') is not None:
+            self.operator_mode = m.get('OperatorMode')
+
+        if m.get('RequestedOperatorMode') is not None:
+            self.requested_operator_mode = m.get('RequestedOperatorMode')
 
         if m.get('SkippedCount') is not None:
             self.skipped_count = m.get('SkippedCount')
