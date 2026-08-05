@@ -1,3 +1,6 @@
+2026-08-05 Version: 2.6.1
+- Generated python 2022-01-12 for PaiStudio.
+
 2026-08-04 Version: 2.6.0
 - Support API ListNodePods.
 - Update API CreateTrainingJob: add request parameters body.CredentialConfig.

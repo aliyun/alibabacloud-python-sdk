@@ -2,12 +2,15 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
 from alibabacloud_paistudio20220112 import models as main_models
 from darabonba.model import DaraModel
 
 class NodePodInfo(DaraModel):
     def __init__(
         self,
+        gpuindexes: List[int] = None,
         phase: str = None,
         pod_ip: str = None,
         pod_name: str = None,
@@ -16,12 +19,21 @@ class NodePodInfo(DaraModel):
         workload_id: str = None,
         workload_type: str = None,
     ):
+        # The occupied GPU indexes.
+        self.gpuindexes = gpuindexes
+        # The Pod status.
         self.phase = phase
+        # The IP address of the Pod.
         self.pod_ip = pod_ip
+        # The Pod name.
         self.pod_name = pod_name
+        # The namespace of the Pod.
         self.pod_namespace = pod_namespace
+        # The resource usage information.
         self.resource_spec = resource_spec
+        # The task ID or service ID.
         self.workload_id = workload_id
+        # The sub-product that the Pod belongs to.
         self.workload_type = workload_type
 
     def validate(self):
@@ -33,6 +45,9 @@ class NodePodInfo(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.gpuindexes is not None:
+            result['GPUIndexes'] = self.gpuindexes
+
         if self.phase is not None:
             result['Phase'] = self.phase
 
@@ -58,6 +73,9 @@ class NodePodInfo(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('GPUIndexes') is not None:
+            self.gpuindexes = m.get('GPUIndexes')
+
         if m.get('Phase') is not None:
             self.phase = m.get('Phase')
 
