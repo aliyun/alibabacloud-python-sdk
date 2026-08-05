@@ -10,8 +10,12 @@ class GetYikeAgentJobEstimatedCreditRequest(DaraModel):
         job_action: str = None,
         job_params: str = None,
     ):
+        # The name of the task submission operation.
+        # 
         # This parameter is required.
         self.job_action = job_action
+        # The task request content. This is a JSON string and uses the same JobParams parameter as the task submission operation.
+        # 
         # This parameter is required.
         self.job_params = job_params
 

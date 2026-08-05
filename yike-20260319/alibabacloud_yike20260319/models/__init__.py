@@ -15,6 +15,9 @@ from ._batch_get_yike_aiapp_job_response import BatchGetYikeAIAppJobResponse
 from ._batch_get_yike_asset_media_infos_request import BatchGetYikeAssetMediaInfosRequest
 from ._batch_get_yike_asset_media_infos_response_body import BatchGetYikeAssetMediaInfosResponseBody
 from ._batch_get_yike_asset_media_infos_response import BatchGetYikeAssetMediaInfosResponse
+from ._create_infinite_canvas_request import CreateInfiniteCanvasRequest
+from ._create_infinite_canvas_response_body import CreateInfiniteCanvasResponseBody
+from ._create_infinite_canvas_response import CreateInfiniteCanvasResponse
 from ._create_yike_asset_upload_request import CreateYikeAssetUploadRequest
 from ._create_yike_asset_upload_response_body import CreateYikeAssetUploadResponseBody
 from ._create_yike_asset_upload_response import CreateYikeAssetUploadResponse
@@ -30,12 +33,21 @@ from ._create_yike_user_response import CreateYikeUserResponse
 from ._create_yike_workspace_request import CreateYikeWorkspaceRequest
 from ._create_yike_workspace_response_body import CreateYikeWorkspaceResponseBody
 from ._create_yike_workspace_response import CreateYikeWorkspaceResponse
+from ._delete_infinite_canvas_request import DeleteInfiniteCanvasRequest
+from ._delete_infinite_canvas_response_body import DeleteInfiniteCanvasResponseBody
+from ._delete_infinite_canvas_response import DeleteInfiniteCanvasResponse
 from ._delete_yike_asset_media_infos_request import DeleteYikeAssetMediaInfosRequest
 from ._delete_yike_asset_media_infos_response_body import DeleteYikeAssetMediaInfosResponseBody
 from ._delete_yike_asset_media_infos_response import DeleteYikeAssetMediaInfosResponse
+from ._generate_yike_login_token_request import GenerateYikeLoginTokenRequest
+from ._generate_yike_login_token_response_body import GenerateYikeLoginTokenResponseBody
+from ._generate_yike_login_token_response import GenerateYikeLoginTokenResponse
 from ._get_image_generation_job_request import GetImageGenerationJobRequest
 from ._get_image_generation_job_response_body import GetImageGenerationJobResponseBody
 from ._get_image_generation_job_response import GetImageGenerationJobResponse
+from ._get_infinite_canvas_request import GetInfiniteCanvasRequest
+from ._get_infinite_canvas_response_body import GetInfiniteCanvasResponseBody
+from ._get_infinite_canvas_response import GetInfiniteCanvasResponse
 from ._get_video_generation_job_request import GetVideoGenerationJobRequest
 from ._get_video_generation_job_response_body import GetVideoGenerationJobResponseBody
 from ._get_video_generation_job_response import GetVideoGenerationJobResponse
@@ -75,6 +87,9 @@ from ._get_yike_user_credit_response import GetYikeUserCreditResponse
 from ._get_yike_voice_narrator_job_request import GetYikeVoiceNarratorJobRequest
 from ._get_yike_voice_narrator_job_response_body import GetYikeVoiceNarratorJobResponseBody
 from ._get_yike_voice_narrator_job_response import GetYikeVoiceNarratorJobResponse
+from ._list_infinite_canvases_request import ListInfiniteCanvasesRequest
+from ._list_infinite_canvases_response_body import ListInfiniteCanvasesResponseBody
+from ._list_infinite_canvases_response import ListInfiniteCanvasesResponse
 from ._list_yike_asset_folders_request import ListYikeAssetFoldersRequest
 from ._list_yike_asset_folders_response_body import ListYikeAssetFoldersResponseBody
 from ._list_yike_asset_folders_response import ListYikeAssetFoldersResponse
@@ -129,6 +144,9 @@ from ._submit_yike_video_clone_job_response import SubmitYikeVideoCloneJobRespon
 from ._submit_yike_voice_narrator_job_request import SubmitYikeVoiceNarratorJobRequest
 from ._submit_yike_voice_narrator_job_response_body import SubmitYikeVoiceNarratorJobResponseBody
 from ._submit_yike_voice_narrator_job_response import SubmitYikeVoiceNarratorJobResponse
+from ._update_infinite_canvas_request import UpdateInfiniteCanvasRequest
+from ._update_infinite_canvas_response_body import UpdateInfiniteCanvasResponseBody
+from ._update_infinite_canvas_response import UpdateInfiniteCanvasResponse
 from ._update_yike_production_request import UpdateYikeProductionRequest
 from ._update_yike_production_response_body import UpdateYikeProductionResponseBody
 from ._update_yike_production_response import UpdateYikeProductionResponse
@@ -147,6 +165,7 @@ from ._batch_get_yike_asset_media_infos_response_body import BatchGetYikeAssetMe
 from ._batch_get_yike_asset_media_infos_response_body import BatchGetYikeAssetMediaInfosResponseBodyMediaInfos
 from ._create_yike_user_response_body import CreateYikeUserResponseBodyUserInfo
 from ._get_image_generation_job_response_body import GetImageGenerationJobResponseBodyImageGenerationJob
+from ._get_infinite_canvas_response_body import GetInfiniteCanvasResponseBodyInfiniteCanvas
 from ._get_video_generation_job_response_body import GetVideoGenerationJobResponseBodyVideoGenerationJob
 from ._get_yike_aiapp_job_response_body import GetYikeAIAppJobResponseBodyResultAudioResult
 from ._get_yike_aiapp_job_response_body import GetYikeAIAppJobResponseBodyResultImageResult
@@ -172,6 +191,7 @@ from ._get_yike_storyboard_job_response_body import GetYikeStoryboardJobResponse
 from ._get_yike_storyboard_job_response_body import GetYikeStoryboardJobResponseBodyJobResult
 from ._get_yike_user_response_body import GetYikeUserResponseBodyUserInfo
 from ._get_yike_voice_narrator_job_response_body import GetYikeVoiceNarratorJobResponseBodyJobResult
+from ._list_infinite_canvases_response_body import ListInfiniteCanvasesResponseBodyCanvasList
 from ._list_yike_asset_folders_response_body import ListYikeAssetFoldersResponseBodyFolderList
 from ._list_yike_productions_response_body import ListYikeProductionsResponseBodyProductionList
 from ._list_yike_workspaces_response_body import ListYikeWorkspacesResponseBodyWorkspaceList
@@ -191,6 +211,9 @@ __all__ = [
     BatchGetYikeAssetMediaInfosRequest,
     BatchGetYikeAssetMediaInfosResponseBody,
     BatchGetYikeAssetMediaInfosResponse,
+    CreateInfiniteCanvasRequest,
+    CreateInfiniteCanvasResponseBody,
+    CreateInfiniteCanvasResponse,
     CreateYikeAssetUploadRequest,
     CreateYikeAssetUploadResponseBody,
     CreateYikeAssetUploadResponse,
@@ -206,12 +229,21 @@ __all__ = [
     CreateYikeWorkspaceRequest,
     CreateYikeWorkspaceResponseBody,
     CreateYikeWorkspaceResponse,
+    DeleteInfiniteCanvasRequest,
+    DeleteInfiniteCanvasResponseBody,
+    DeleteInfiniteCanvasResponse,
     DeleteYikeAssetMediaInfosRequest,
     DeleteYikeAssetMediaInfosResponseBody,
     DeleteYikeAssetMediaInfosResponse,
+    GenerateYikeLoginTokenRequest,
+    GenerateYikeLoginTokenResponseBody,
+    GenerateYikeLoginTokenResponse,
     GetImageGenerationJobRequest,
     GetImageGenerationJobResponseBody,
     GetImageGenerationJobResponse,
+    GetInfiniteCanvasRequest,
+    GetInfiniteCanvasResponseBody,
+    GetInfiniteCanvasResponse,
     GetVideoGenerationJobRequest,
     GetVideoGenerationJobResponseBody,
     GetVideoGenerationJobResponse,
@@ -251,6 +283,9 @@ __all__ = [
     GetYikeVoiceNarratorJobRequest,
     GetYikeVoiceNarratorJobResponseBody,
     GetYikeVoiceNarratorJobResponse,
+    ListInfiniteCanvasesRequest,
+    ListInfiniteCanvasesResponseBody,
+    ListInfiniteCanvasesResponse,
     ListYikeAssetFoldersRequest,
     ListYikeAssetFoldersResponseBody,
     ListYikeAssetFoldersResponse,
@@ -305,6 +340,9 @@ __all__ = [
     SubmitYikeVoiceNarratorJobRequest,
     SubmitYikeVoiceNarratorJobResponseBody,
     SubmitYikeVoiceNarratorJobResponse,
+    UpdateInfiniteCanvasRequest,
+    UpdateInfiniteCanvasResponseBody,
+    UpdateInfiniteCanvasResponse,
     UpdateYikeProductionRequest,
     UpdateYikeProductionResponseBody,
     UpdateYikeProductionResponse,
@@ -323,6 +361,7 @@ __all__ = [
     BatchGetYikeAssetMediaInfosResponseBodyMediaInfos,
     CreateYikeUserResponseBodyUserInfo,
     GetImageGenerationJobResponseBodyImageGenerationJob,
+    GetInfiniteCanvasResponseBodyInfiniteCanvas,
     GetVideoGenerationJobResponseBodyVideoGenerationJob,
     GetYikeAIAppJobResponseBodyResultAudioResult,
     GetYikeAIAppJobResponseBodyResultImageResult,
@@ -348,6 +387,7 @@ __all__ = [
     GetYikeStoryboardJobResponseBodyJobResult,
     GetYikeUserResponseBodyUserInfo,
     GetYikeVoiceNarratorJobResponseBodyJobResult,
+    ListInfiniteCanvasesResponseBodyCanvasList,
     ListYikeAssetFoldersResponseBodyFolderList,
     ListYikeProductionsResponseBodyProductionList,
     ListYikeWorkspacesResponseBodyWorkspaceList,

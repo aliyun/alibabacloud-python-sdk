@@ -63,13 +63,13 @@ class GetImageGenerationJobResponseBodyImageGenerationJob(DaraModel):
     ):
         # The aspect ratio of the video.
         self.aspect_ratio = aspect_ratio
-        # The error message. The value is of the String type. This parameter is returned when the task is in the Failed state.
+        # The error message. This parameter is returned when the task is in the Failed state.
         self.error_message = error_message
         # The task input.
         self.input = input
         # The task ID.
         self.job_id = job_id
-        # The task feature configuration. You do not need to set this parameter.
+        # The task feature configuration. No configuration is required at this time.
         self.job_parameters = job_parameters
         # The task type.
         self.job_type = job_type
@@ -77,14 +77,14 @@ class GetImageGenerationJobResponseBodyImageGenerationJob(DaraModel):
         self.model = model
         # The number of generated images.
         self.n = n
-        # The generation result. The value is a JSON string that contains the following fields:
-        # - Medias: a list of media information (Media objects). A Media object contains the following fields:
-        #   - MediaId: the media asset ID. The value is of the String type.
-        #   - OutputUrl: the media URL (with an authentication string). The value is of the String type.
+        # The generation result in JSON string format. Fields:
+        # - Medias: a list of media information (Media objects). Fields of a Media object:
+        #   - MediaId: String. The media asset ID.
+        #   - OutputUrl: String. The media URL (with authentication string).
         self.output = output
         # The resolution of the generated video.
         self.resolution = resolution
-        # The scene type. Currently, only `general` is supported.
+        # The scene type. Currently only `general` is supported.
         self.scene = scene
         # The task status. Valid values:
         # - Created: The task is created.

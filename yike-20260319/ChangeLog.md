@@ -1,3 +1,12 @@
+2026-08-05 Version: 2.2.0
+- Support API CreateInfiniteCanvas.
+- Support API DeleteInfiniteCanvas.
+- Support API GenerateYikeLoginToken.
+- Support API GetInfiniteCanvas.
+- Support API ListInfiniteCanvases.
+- Support API UpdateInfiniteCanvas.
+
+
 2026-07-25 Version: 2.1.0
 - Support API GetYikeAgentJobEstimatedCredit.
 - Support API GetYikeJobCredit.

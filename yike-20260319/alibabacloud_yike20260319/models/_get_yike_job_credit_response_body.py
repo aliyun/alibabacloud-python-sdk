@@ -12,9 +12,13 @@ class GetYikeJobCreditResponseBody(DaraModel):
         job_id: str = None,
         request_id: str = None,
     ):
+        # The credit deduction status.
         self.credit_status = credit_status
+        # The actual credits consumed.
         self.job_credit_cost = job_credit_cost
+        # The task ID.
         self.job_id = job_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

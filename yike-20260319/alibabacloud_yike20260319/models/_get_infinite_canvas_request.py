@@ -4,15 +4,13 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class GetYikeJobCreditRequest(DaraModel):
+class GetInfiniteCanvasRequest(DaraModel):
     def __init__(
         self,
-        job_id: str = None,
+        canvas_id: str = None,
     ):
-        # The task ID.
-        # 
         # This parameter is required.
-        self.job_id = job_id
+        self.canvas_id = canvas_id
 
     def validate(self):
         pass
@@ -22,15 +20,15 @@ class GetYikeJobCreditRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.job_id is not None:
-            result['JobId'] = self.job_id
+        if self.canvas_id is not None:
+            result['CanvasId'] = self.canvas_id
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('JobId') is not None:
-            self.job_id = m.get('JobId')
+        if m.get('CanvasId') is not None:
+            self.canvas_id = m.get('CanvasId')
 
         return self
 

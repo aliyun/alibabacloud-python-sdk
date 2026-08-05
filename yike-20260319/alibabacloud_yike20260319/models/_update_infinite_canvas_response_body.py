@@ -4,15 +4,13 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class GetYikeAgentJobEstimatedCreditResponseBody(DaraModel):
+class UpdateInfiniteCanvasResponseBody(DaraModel):
     def __init__(
         self,
-        estimated_credit_cost: float = None,
+        canvas_id: str = None,
         request_id: str = None,
     ):
-        # The estimated credits to be deducted.
-        self.estimated_credit_cost = estimated_credit_cost
-        # Id of the request
+        self.canvas_id = canvas_id
         self.request_id = request_id
 
     def validate(self):
@@ -23,8 +21,8 @@ class GetYikeAgentJobEstimatedCreditResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.estimated_credit_cost is not None:
-            result['EstimatedCreditCost'] = self.estimated_credit_cost
+        if self.canvas_id is not None:
+            result['CanvasId'] = self.canvas_id
 
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -33,8 +31,8 @@ class GetYikeAgentJobEstimatedCreditResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('EstimatedCreditCost') is not None:
-            self.estimated_credit_cost = m.get('EstimatedCreditCost')
+        if m.get('CanvasId') is not None:
+            self.canvas_id = m.get('CanvasId')
 
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')

@@ -66,13 +66,13 @@ class GetVideoGenerationJobResponseBodyVideoGenerationJob(DaraModel):
         self.aspect_ratio = aspect_ratio
         # The video duration. Unit: seconds.
         self.duration = duration
-        # The error message. This parameter is returned when the task is in the Failed state.
+        # The error message. This parameter is returned only when the task is in the Failed state.
         self.error_message = error_message
         # The task input.
         self.input = input
         # The task ID.
         self.job_id = job_id
-        # The task feature configuration. You do not need to set this parameter.
+        # The task feature configuration. No configuration is required at this time.
         self.job_parameters = job_parameters
         # The task type.
         self.job_type = job_type
@@ -97,7 +97,7 @@ class GetVideoGenerationJobResponseBodyVideoGenerationJob(DaraModel):
         # - Finished: The task is completed.
         # - Failed: The task failed.
         self.status = status
-        # The custom business information.
+        # The user business information.
         self.user_data = user_data
 
     def validate(self):
