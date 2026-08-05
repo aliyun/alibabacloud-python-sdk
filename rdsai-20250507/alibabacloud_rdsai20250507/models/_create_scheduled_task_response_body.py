@@ -12,7 +12,7 @@ class CreateScheduledTaskResponseBody(DaraModel):
         scheduled_id: str = None,
         success: bool = None,
     ):
-        # The returned message.
+        # The response message.
         self.message = message
         # The request ID.
         self.request_id = request_id

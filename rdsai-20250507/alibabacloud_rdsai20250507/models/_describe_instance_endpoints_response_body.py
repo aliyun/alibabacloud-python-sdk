@@ -16,10 +16,11 @@ class DescribeInstanceEndpointsResponseBody(DaraModel):
         instance_name: str = None,
         request_id: str = None,
     ):
+        # Reserved parameter.
         self.branch_name = branch_name
-        # The endpoints of the database instance.
+        # The list of endpoint information of the database instance.
         self.dbinstance_endpoints = dbinstance_endpoints
-        # The endpoints of the AI application instance.
+        # The list of endpoint information of the AI application instance.
         self.instance_endpoints = instance_endpoints
         # The instance ID of the AI application.
         self.instance_name = instance_name
@@ -98,6 +99,7 @@ class DescribeInstanceEndpointsResponseBodyInstanceEndpoints(DaraModel):
     ):
         # The endpoint.
         self.connection_string = connection_string
+        # The domain name.
         self.domain = domain
         # The IP address.
         self.ip = ip

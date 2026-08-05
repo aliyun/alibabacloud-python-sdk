@@ -1,3 +1,7 @@
+2026-08-05 Version: 3.6.3
+- Update API ChatMessages: add request parameters Inputs.ModelId.
+
+
 2026-07-31 Version: 3.6.2
 - Update API CreateInspectionTask: add request parameters TemplateId.
 - Update API CreateScheduledTask: add request parameters TemplateId.

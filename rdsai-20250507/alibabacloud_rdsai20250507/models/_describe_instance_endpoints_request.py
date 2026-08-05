@@ -11,6 +11,7 @@ class DescribeInstanceEndpointsRequest(DaraModel):
         instance_name: str = None,
         region_id: str = None,
     ):
+        # Reserved parameter.
         self.branch_name = branch_name
         # The instance ID of the AI application.
         self.instance_name = instance_name

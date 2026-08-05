@@ -31,7 +31,7 @@ class CreateScheduledTaskRequest(DaraModel):
         # * Friday: Friday.
         # * Saturday: Saturday.
         # * Sunday: Sunday.
-        # ### Note: DAILY overrides weekly values. For example, if you specify DAILY,Monday, the system uses DAILY as the inspection frequency.
+        # ### Note: DAILY overrides weekly values. For example, if you specify DAILY,Monday, the backend uses DAILY as the inspection frequency.
         self.frequency = frequency
         self.inspection_items = inspection_items
         # The list of associated instance IDs. Separate multiple IDs with commas (,).

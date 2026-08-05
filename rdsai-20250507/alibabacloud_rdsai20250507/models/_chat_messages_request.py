@@ -16,6 +16,7 @@ class ChatMessagesRequest(DaraModel):
     ):
         # The conversation ID.
         self.conversation_id = conversation_id
+        # The event output type. Valid values: inline and separate. Default value: inline. When set to inline, tool invocation events, sub-node events, and document events are included in the answer field of event = message. When set to separate, tool invocation events, sub-node events, and document events each have their own event.
         self.event_mode = event_mode
         # The task input.
         self.inputs = inputs
@@ -80,6 +81,7 @@ class ChatMessagesRequestInputs(DaraModel):
         custom_agent_id: str = None,
         enable_thinking: str = None,
         language: str = None,
+        model_id: str = None,
         region_id: str = None,
         think_effort: str = None,
         timezone: str = None,
@@ -89,6 +91,7 @@ class ChatMessagesRequestInputs(DaraModel):
         self.enable_thinking = enable_thinking
         # The conversation language.
         self.language = language
+        self.model_id = model_id
         # The region ID.
         self.region_id = region_id
         self.think_effort = think_effort
@@ -112,6 +115,9 @@ class ChatMessagesRequestInputs(DaraModel):
         if self.language is not None:
             result['Language'] = self.language
 
+        if self.model_id is not None:
+            result['ModelId'] = self.model_id
+
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
@@ -133,6 +139,9 @@ class ChatMessagesRequestInputs(DaraModel):
 
         if m.get('Language') is not None:
             self.language = m.get('Language')
+
+        if m.get('ModelId') is not None:
+            self.model_id = m.get('ModelId')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
