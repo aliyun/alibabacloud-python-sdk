@@ -28,6 +28,7 @@ class Client(OpenApiClient):
         self._endpoint_map = {
             'us-west-1': 'kms.us-west-1.aliyuncs.com',
             'us-east-1': 'kms.us-east-1.aliyuncs.com',
+            'na-south-1': 'kms.na-south-1.aliyuncs.com',
             'me-east-1': 'kms.me-east-1.aliyuncs.com',
             'me-central-1': 'kms.me-central-1.aliyuncs.com',
             'eu-west-1': 'kms.eu-west-1.aliyuncs.com',
@@ -43,6 +44,7 @@ class Client(OpenApiClient):
             'cn-qingdao': 'kms.cn-qingdao.aliyuncs.com',
             'cn-huhehaote': 'kms.cn-huhehaote.aliyuncs.com',
             'cn-hongkong': 'kms.cn-hongkong.aliyuncs.com',
+            'cn-heyuan-acdr-1': 'kms.cn-heyuan-acdr-1.aliyuncs.com',
             'cn-heyuan': 'kms.cn-heyuan.aliyuncs.com',
             'cn-hangzhou-finance': 'kms.cn-hangzhou-finance.aliyuncs.com',
             'cn-hangzhou': 'kms.cn-hangzhou.aliyuncs.com',
@@ -425,6 +427,84 @@ class Client(OpenApiClient):
     ) -> main_models.AsymmetricVerifyResponse:
         runtime = RuntimeOptions()
         return await self.asymmetric_verify_with_options_async(request, runtime)
+
+    def batch_get_secret_value_with_options(
+        self,
+        tmp_req: main_models.BatchGetSecretValueRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchGetSecretValueResponse:
+        tmp_req.validate()
+        request = main_models.BatchGetSecretValueShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.secrets_list):
+            request.secrets_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.secrets_list, 'SecretsList', 'json')
+        query = {}
+        if not DaraCore.is_null(request.secrets_list_shrink):
+            query['SecretsList'] = request.secrets_list_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchGetSecretValue',
+            version = '2016-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchGetSecretValueResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_get_secret_value_with_options_async(
+        self,
+        tmp_req: main_models.BatchGetSecretValueRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchGetSecretValueResponse:
+        tmp_req.validate()
+        request = main_models.BatchGetSecretValueShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.secrets_list):
+            request.secrets_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.secrets_list, 'SecretsList', 'json')
+        query = {}
+        if not DaraCore.is_null(request.secrets_list_shrink):
+            query['SecretsList'] = request.secrets_list_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchGetSecretValue',
+            version = '2016-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchGetSecretValueResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_get_secret_value(
+        self,
+        request: main_models.BatchGetSecretValueRequest,
+    ) -> main_models.BatchGetSecretValueResponse:
+        runtime = RuntimeOptions()
+        return self.batch_get_secret_value_with_options(request, runtime)
+
+    async def batch_get_secret_value_async(
+        self,
+        request: main_models.BatchGetSecretValueRequest,
+    ) -> main_models.BatchGetSecretValueResponse:
+        runtime = RuntimeOptions()
+        return await self.batch_get_secret_value_with_options_async(request, runtime)
 
     def cancel_key_deletion_with_options(
         self,

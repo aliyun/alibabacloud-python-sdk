@@ -14,6 +14,10 @@ from ._asymmetric_sign_response import AsymmetricSignResponse
 from ._asymmetric_verify_request import AsymmetricVerifyRequest
 from ._asymmetric_verify_response_body import AsymmetricVerifyResponseBody
 from ._asymmetric_verify_response import AsymmetricVerifyResponse
+from ._batch_get_secret_value_request import BatchGetSecretValueRequest
+from ._batch_get_secret_value_shrink_request import BatchGetSecretValueShrinkRequest
+from ._batch_get_secret_value_response_body import BatchGetSecretValueResponseBody
+from ._batch_get_secret_value_response import BatchGetSecretValueResponse
 from ._cancel_key_deletion_request import CancelKeyDeletionRequest
 from ._cancel_key_deletion_response_body import CancelKeyDeletionResponseBody
 from ._cancel_key_deletion_response import CancelKeyDeletionResponse
@@ -274,6 +278,10 @@ from ._update_secret_version_stage_response import UpdateSecretVersionStageRespo
 from ._verify_mac_request import VerifyMacRequest
 from ._verify_mac_response_body import VerifyMacResponseBody
 from ._verify_mac_response import VerifyMacResponse
+from ._batch_get_secret_value_request import BatchGetSecretValueRequestSecretsList
+from ._batch_get_secret_value_response_body import BatchGetSecretValueResponseBodyErrors
+from ._batch_get_secret_value_response_body import BatchGetSecretValueResponseBodySecretValuesVersionStages
+from ._batch_get_secret_value_response_body import BatchGetSecretValueResponseBodySecretValues
 from ._create_key_response_body import CreateKeyResponseBodyKeyMetadata
 from ._create_key_version_response_body import CreateKeyVersionResponseBodyKeyVersion
 from ._describe_key_response_body import DescribeKeyResponseBodyKeyMetadata
@@ -336,6 +344,10 @@ __all__ = [
     AsymmetricVerifyRequest,
     AsymmetricVerifyResponseBody,
     AsymmetricVerifyResponse,
+    BatchGetSecretValueRequest,
+    BatchGetSecretValueShrinkRequest,
+    BatchGetSecretValueResponseBody,
+    BatchGetSecretValueResponse,
     CancelKeyDeletionRequest,
     CancelKeyDeletionResponseBody,
     CancelKeyDeletionResponse,
@@ -596,6 +608,10 @@ __all__ = [
     VerifyMacRequest,
     VerifyMacResponseBody,
     VerifyMacResponse,
+    BatchGetSecretValueRequestSecretsList,
+    BatchGetSecretValueResponseBodyErrors,
+    BatchGetSecretValueResponseBodySecretValuesVersionStages,
+    BatchGetSecretValueResponseBodySecretValues,
     CreateKeyResponseBodyKeyMetadata,
     CreateKeyVersionResponseBodyKeyVersion,
     DescribeKeyResponseBodyKeyMetadata,

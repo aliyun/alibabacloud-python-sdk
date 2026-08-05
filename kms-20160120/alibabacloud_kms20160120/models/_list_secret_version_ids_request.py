@@ -12,21 +12,18 @@ class ListSecretVersionIdsRequest(DaraModel):
         page_size: int = None,
         secret_name: str = None,
     ):
-        # Specifies whether to include credential versions that have no version stages in the response.
+        # Specifies whether to include secret versions that do not have version stages in the response.
         # 
         # Valid values:
-        # 
-        # - false (default): No
-        # 
-        # - true: Yes
+        # - false (default): does not include
+        # - true: includes
         self.include_deprecated = include_deprecated
-        # The number of the page to return for a paged query. Default value: 1.
+        # The page number of the current page in a paged query. Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page for a paged query. Default value: 20.
+        # The number of entries per page in a paged query. Default value: 20.
         self.page_size = page_size
-        # The name or Alibaba Cloud Resource Name (ARN) of the credential.
-        # 
-        # > When you access a credential that belongs to another Alibaba Cloud account, you must specify the ARN of the credential. The ARN of a credential is in the format of `acs:kms:${region}:${account}:secret/${secret-name}`.
+        # The secret name or secret Amazon Resource Name (ARN).
+        # >When accessing a secret under another Alibaba Cloud account, you must specify the secret ARN. The format of the secret ARN is `acs:kms:${region}:${account}:secret/${secret-name}`.
         # 
         # This parameter is required.
         self.secret_name = secret_name

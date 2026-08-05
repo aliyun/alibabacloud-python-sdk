@@ -44,8 +44,6 @@ class CreateKeyResponseBody(DaraModel):
 
         return self
 
-
-
 class CreateKeyResponseBodyKeyMetadata(DaraModel):
     def __init__(
         self,

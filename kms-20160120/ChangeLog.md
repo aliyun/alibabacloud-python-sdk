@@ -1,3 +1,7 @@
+2026-08-05 Version: 3.2.0
+- Support API BatchGetSecretValue.
+
+
 2026-07-23 Version: 3.1.0
 - Support API GetManagedDataKey.
 - Support API ListManagedDataKeyVersions.
