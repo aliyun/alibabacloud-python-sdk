@@ -204,6 +204,9 @@ from ._create_global_security_ipgroup_response import CreateGlobalSecurityIPGrou
 from ._create_gw_consumer_order_request import CreateGwConsumerOrderRequest
 from ._create_gw_consumer_order_response_body import CreateGwConsumerOrderResponseBody
 from ._create_gw_consumer_order_response import CreateGwConsumerOrderResponse
+from ._create_lakebase_s3account_request import CreateLakebaseS3AccountRequest
+from ._create_lakebase_s3account_response_body import CreateLakebaseS3AccountResponseBody
+from ._create_lakebase_s3account_response import CreateLakebaseS3AccountResponse
 from ._create_model_api_request import CreateModelApiRequest
 from ._create_model_api_response_body import CreateModelApiResponseBody
 from ._create_model_api_response import CreateModelApiResponse
@@ -230,6 +233,9 @@ from ._create_polar_claw_cron_job_request import CreatePolarClawCronJobRequest
 from ._create_polar_claw_cron_job_shrink_request import CreatePolarClawCronJobShrinkRequest
 from ._create_polar_claw_cron_job_response_body import CreatePolarClawCronJobResponseBody
 from ._create_polar_claw_cron_job_response import CreatePolarClawCronJobResponse
+from ._create_polar_fs_request import CreatePolarFsRequest
+from ._create_polar_fs_response_body import CreatePolarFsResponseBody
+from ._create_polar_fs_response import CreatePolarFsResponse
 from ._create_polar_fs_object_request import CreatePolarFsObjectRequest
 from ._create_polar_fs_object_response_body import CreatePolarFsObjectResponseBody
 from ._create_polar_fs_object_response import CreatePolarFsObjectResponse
@@ -347,6 +353,9 @@ from ._delete_global_database_network_response import DeleteGlobalDatabaseNetwor
 from ._delete_global_security_ipgroup_request import DeleteGlobalSecurityIPGroupRequest
 from ._delete_global_security_ipgroup_response_body import DeleteGlobalSecurityIPGroupResponseBody
 from ._delete_global_security_ipgroup_response import DeleteGlobalSecurityIPGroupResponse
+from ._delete_lakebase_s3account_request import DeleteLakebaseS3AccountRequest
+from ._delete_lakebase_s3account_response_body import DeleteLakebaseS3AccountResponseBody
+from ._delete_lakebase_s3account_response import DeleteLakebaseS3AccountResponse
 from ._delete_masking_rules_request import DeleteMaskingRulesRequest
 from ._delete_masking_rules_response_body import DeleteMaskingRulesResponseBody
 from ._delete_masking_rules_response import DeleteMaskingRulesResponse
@@ -371,6 +380,9 @@ from ._delete_polar_claw_channel_response import DeletePolarClawChannelResponse
 from ._delete_polar_claw_cron_job_request import DeletePolarClawCronJobRequest
 from ._delete_polar_claw_cron_job_response_body import DeletePolarClawCronJobResponseBody
 from ._delete_polar_claw_cron_job_response import DeletePolarClawCronJobResponse
+from ._delete_polar_fs_request import DeletePolarFsRequest
+from ._delete_polar_fs_response_body import DeletePolarFsResponseBody
+from ._delete_polar_fs_response import DeletePolarFsResponse
 from ._delete_polar_fs_objects_request import DeletePolarFsObjectsRequest
 from ._delete_polar_fs_objects_shrink_request import DeletePolarFsObjectsShrinkRequest
 from ._delete_polar_fs_objects_response_body import DeletePolarFsObjectsResponseBody
@@ -717,6 +729,9 @@ from ._describe_history_tasks_response import DescribeHistoryTasksResponse
 from ._describe_history_tasks_stat_request import DescribeHistoryTasksStatRequest
 from ._describe_history_tasks_stat_response_body import DescribeHistoryTasksStatResponseBody
 from ._describe_history_tasks_stat_response import DescribeHistoryTasksStatResponse
+from ._describe_lakebase_s3account_request import DescribeLakebaseS3AccountRequest
+from ._describe_lakebase_s3account_response_body import DescribeLakebaseS3AccountResponseBody
+from ._describe_lakebase_s3account_response import DescribeLakebaseS3AccountResponse
 from ._describe_license_order_details_request import DescribeLicenseOrderDetailsRequest
 from ._describe_license_order_details_response_body import DescribeLicenseOrderDetailsResponseBody
 from ._describe_license_order_details_response import DescribeLicenseOrderDetailsResponse
@@ -807,6 +822,9 @@ from ._describe_polar_fs_response import DescribePolarFsResponse
 from ._describe_polar_fs_attribute_request import DescribePolarFsAttributeRequest
 from ._describe_polar_fs_attribute_response_body import DescribePolarFsAttributeResponseBody
 from ._describe_polar_fs_attribute_response import DescribePolarFsAttributeResponse
+from ._describe_polar_fs_mapping_request import DescribePolarFsMappingRequest
+from ._describe_polar_fs_mapping_response_body import DescribePolarFsMappingResponseBody
+from ._describe_polar_fs_mapping_response import DescribePolarFsMappingResponse
 from ._describe_polar_fs_objects_request import DescribePolarFsObjectsRequest
 from ._describe_polar_fs_objects_response_body import DescribePolarFsObjectsResponseBody
 from ._describe_polar_fs_objects_response import DescribePolarFsObjectsResponse
@@ -947,6 +965,9 @@ from ._install_polar_claw_plugin_response import InstallPolarClawPluginResponse
 from ._install_polar_claw_skill_request import InstallPolarClawSkillRequest
 from ._install_polar_claw_skill_response_body import InstallPolarClawSkillResponseBody
 from ._install_polar_claw_skill_response import InstallPolarClawSkillResponse
+from ._list_lakebase_s3accounts_request import ListLakebaseS3AccountsRequest
+from ._list_lakebase_s3accounts_response_body import ListLakebaseS3AccountsResponseBody
+from ._list_lakebase_s3accounts_response import ListLakebaseS3AccountsResponse
 from ._list_orders_request import ListOrdersRequest
 from ._list_orders_response_body import ListOrdersResponseBody
 from ._list_orders_response import ListOrdersResponse
@@ -1171,6 +1192,9 @@ from ._modify_model_service_response import ModifyModelServiceResponse
 from ._modify_pending_maintenance_action_request import ModifyPendingMaintenanceActionRequest
 from ._modify_pending_maintenance_action_response_body import ModifyPendingMaintenanceActionResponseBody
 from ._modify_pending_maintenance_action_response import ModifyPendingMaintenanceActionResponse
+from ._modify_polar_fs_mapping_auth_request import ModifyPolarFsMappingAuthRequest
+from ._modify_polar_fs_mapping_auth_response_body import ModifyPolarFsMappingAuthResponseBody
+from ._modify_polar_fs_mapping_auth_response import ModifyPolarFsMappingAuthResponse
 from ._modify_rate_limit_policy_request import ModifyRateLimitPolicyRequest
 from ._modify_rate_limit_policy_response_body import ModifyRateLimitPolicyResponseBody
 from ._modify_rate_limit_policy_response import ModifyRateLimitPolicyResponse
@@ -1383,6 +1407,7 @@ from ._create_polar_claw_cron_job_response_body import CreatePolarClawCronJobRes
 from ._create_polar_claw_cron_job_response_body import CreatePolarClawCronJobResponseBodyJobSchedule
 from ._create_polar_claw_cron_job_response_body import CreatePolarClawCronJobResponseBodyJobState
 from ._create_polar_claw_cron_job_response_body import CreatePolarClawCronJobResponseBodyJob
+from ._create_polar_fs_request import CreatePolarFsRequestCustomBucketPathList
 from ._delete_global_security_ipgroup_response_body import DeleteGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup
 from ._delete_polar_fs_path_mapping_request import DeletePolarFsPathMappingRequestCustomBucketPathList
 from ._delete_polar_fs_quota_request import DeletePolarFsQuotaRequestQuotas
@@ -1676,6 +1701,7 @@ from ._describe_polar_fs_attribute_response_body import DescribePolarFsAttribute
 from ._describe_polar_fs_attribute_response_body import DescribePolarFsAttributeResponseBodyEndpointItemsAddressItems
 from ._describe_polar_fs_attribute_response_body import DescribePolarFsAttributeResponseBodyEndpointItems
 from ._describe_polar_fs_attribute_response_body import DescribePolarFsAttributeResponseBodyMountInfo
+from ._describe_polar_fs_mapping_response_body import DescribePolarFsMappingResponseBodyPathMappingItems
 from ._describe_polar_fs_objects_response_body import DescribePolarFsObjectsResponseBodyItems
 from ._describe_polar_fs_quota_response_body import DescribePolarFsQuotaResponseBodyPolicyItems
 from ._describe_polar_fs_quota_response_body import DescribePolarFsQuotaResponseBodyQuotaItems
@@ -1712,6 +1738,7 @@ from ._describe_vpcs_response_body import DescribeVpcsResponseBodyVpcs
 from ._describe_zones_response_body import DescribeZonesResponseBodyZones
 from ._get_polar_agent_response_body import GetPolarAgentResponseBodyFunctionCall
 from ._get_polar_agent_response_body import GetPolarAgentResponseBodyUiFunctionCall
+from ._list_lakebase_s3accounts_response_body import ListLakebaseS3AccountsResponseBodyS3Accounts
 from ._list_orders_response_body import ListOrdersResponseBodyOrderList
 from ._list_polar_claw_bindings_response_body import ListPolarClawBindingsResponseBodyBindings
 from ._list_polar_claw_device_pairs_response_body import ListPolarClawDevicePairsResponseBodyPaired
@@ -1956,6 +1983,9 @@ __all__ = [
     CreateGwConsumerOrderRequest,
     CreateGwConsumerOrderResponseBody,
     CreateGwConsumerOrderResponse,
+    CreateLakebaseS3AccountRequest,
+    CreateLakebaseS3AccountResponseBody,
+    CreateLakebaseS3AccountResponse,
     CreateModelApiRequest,
     CreateModelApiResponseBody,
     CreateModelApiResponse,
@@ -1982,6 +2012,9 @@ __all__ = [
     CreatePolarClawCronJobShrinkRequest,
     CreatePolarClawCronJobResponseBody,
     CreatePolarClawCronJobResponse,
+    CreatePolarFsRequest,
+    CreatePolarFsResponseBody,
+    CreatePolarFsResponse,
     CreatePolarFsObjectRequest,
     CreatePolarFsObjectResponseBody,
     CreatePolarFsObjectResponse,
@@ -2099,6 +2132,9 @@ __all__ = [
     DeleteGlobalSecurityIPGroupRequest,
     DeleteGlobalSecurityIPGroupResponseBody,
     DeleteGlobalSecurityIPGroupResponse,
+    DeleteLakebaseS3AccountRequest,
+    DeleteLakebaseS3AccountResponseBody,
+    DeleteLakebaseS3AccountResponse,
     DeleteMaskingRulesRequest,
     DeleteMaskingRulesResponseBody,
     DeleteMaskingRulesResponse,
@@ -2123,6 +2159,9 @@ __all__ = [
     DeletePolarClawCronJobRequest,
     DeletePolarClawCronJobResponseBody,
     DeletePolarClawCronJobResponse,
+    DeletePolarFsRequest,
+    DeletePolarFsResponseBody,
+    DeletePolarFsResponse,
     DeletePolarFsObjectsRequest,
     DeletePolarFsObjectsShrinkRequest,
     DeletePolarFsObjectsResponseBody,
@@ -2469,6 +2508,9 @@ __all__ = [
     DescribeHistoryTasksStatRequest,
     DescribeHistoryTasksStatResponseBody,
     DescribeHistoryTasksStatResponse,
+    DescribeLakebaseS3AccountRequest,
+    DescribeLakebaseS3AccountResponseBody,
+    DescribeLakebaseS3AccountResponse,
     DescribeLicenseOrderDetailsRequest,
     DescribeLicenseOrderDetailsResponseBody,
     DescribeLicenseOrderDetailsResponse,
@@ -2559,6 +2601,9 @@ __all__ = [
     DescribePolarFsAttributeRequest,
     DescribePolarFsAttributeResponseBody,
     DescribePolarFsAttributeResponse,
+    DescribePolarFsMappingRequest,
+    DescribePolarFsMappingResponseBody,
+    DescribePolarFsMappingResponse,
     DescribePolarFsObjectsRequest,
     DescribePolarFsObjectsResponseBody,
     DescribePolarFsObjectsResponse,
@@ -2699,6 +2744,9 @@ __all__ = [
     InstallPolarClawSkillRequest,
     InstallPolarClawSkillResponseBody,
     InstallPolarClawSkillResponse,
+    ListLakebaseS3AccountsRequest,
+    ListLakebaseS3AccountsResponseBody,
+    ListLakebaseS3AccountsResponse,
     ListOrdersRequest,
     ListOrdersResponseBody,
     ListOrdersResponse,
@@ -2923,6 +2971,9 @@ __all__ = [
     ModifyPendingMaintenanceActionRequest,
     ModifyPendingMaintenanceActionResponseBody,
     ModifyPendingMaintenanceActionResponse,
+    ModifyPolarFsMappingAuthRequest,
+    ModifyPolarFsMappingAuthResponseBody,
+    ModifyPolarFsMappingAuthResponse,
     ModifyRateLimitPolicyRequest,
     ModifyRateLimitPolicyResponseBody,
     ModifyRateLimitPolicyResponse,
@@ -3135,6 +3186,7 @@ __all__ = [
     CreatePolarClawCronJobResponseBodyJobSchedule,
     CreatePolarClawCronJobResponseBodyJobState,
     CreatePolarClawCronJobResponseBodyJob,
+    CreatePolarFsRequestCustomBucketPathList,
     DeleteGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup,
     DeletePolarFsPathMappingRequestCustomBucketPathList,
     DeletePolarFsQuotaRequestQuotas,
@@ -3428,6 +3480,7 @@ __all__ = [
     DescribePolarFsAttributeResponseBodyEndpointItemsAddressItems,
     DescribePolarFsAttributeResponseBodyEndpointItems,
     DescribePolarFsAttributeResponseBodyMountInfo,
+    DescribePolarFsMappingResponseBodyPathMappingItems,
     DescribePolarFsObjectsResponseBodyItems,
     DescribePolarFsQuotaResponseBodyPolicyItems,
     DescribePolarFsQuotaResponseBodyQuotaItems,
@@ -3464,6 +3517,7 @@ __all__ = [
     DescribeZonesResponseBodyZones,
     GetPolarAgentResponseBodyFunctionCall,
     GetPolarAgentResponseBodyUiFunctionCall,
+    ListLakebaseS3AccountsResponseBodyS3Accounts,
     ListOrdersResponseBodyOrderList,
     ListPolarClawBindingsResponseBodyBindings,
     ListPolarClawDevicePairsResponseBodyPaired,

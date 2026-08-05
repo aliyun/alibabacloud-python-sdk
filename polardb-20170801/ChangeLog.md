@@ -1,3 +1,14 @@
+2026-08-05 Version: 7.12.0
+- Support API CreateLakebaseS3Account.
+- Support API CreatePolarFs.
+- Support API DeleteLakebaseS3Account.
+- Support API DeletePolarFs.
+- Support API DescribeLakebaseS3Account.
+- Support API DescribePolarFsMapping.
+- Support API ListLakebaseS3Accounts.
+- Support API ModifyPolarFsMappingAuth.
+
+
 2026-08-05 Version: 7.11.3
 - Generated python 2017-08-01 for polardb.
 

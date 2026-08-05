@@ -7001,6 +7001,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_gw_consumer_order_with_options_async(request, runtime)
 
+    def create_lakebase_s3account_with_options(
+        self,
+        request: main_models.CreateLakebaseS3AccountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateLakebaseS3AccountResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.pfs_instance_id):
+            query['PfsInstanceId'] = request.pfs_instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.user_acc_ak):
+            query['UserAccAk'] = request.user_acc_ak
+        if not DaraCore.is_null(request.user_acc_policy):
+            query['UserAccPolicy'] = request.user_acc_policy
+        if not DaraCore.is_null(request.user_acc_sk):
+            query['UserAccSk'] = request.user_acc_sk
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateLakebaseS3Account',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateLakebaseS3AccountResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_lakebase_s3account_with_options_async(
+        self,
+        request: main_models.CreateLakebaseS3AccountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateLakebaseS3AccountResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.pfs_instance_id):
+            query['PfsInstanceId'] = request.pfs_instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.user_acc_ak):
+            query['UserAccAk'] = request.user_acc_ak
+        if not DaraCore.is_null(request.user_acc_policy):
+            query['UserAccPolicy'] = request.user_acc_policy
+        if not DaraCore.is_null(request.user_acc_sk):
+            query['UserAccSk'] = request.user_acc_sk
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateLakebaseS3Account',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateLakebaseS3AccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_lakebase_s3account(
+        self,
+        request: main_models.CreateLakebaseS3AccountRequest,
+    ) -> main_models.CreateLakebaseS3AccountResponse:
+        runtime = RuntimeOptions()
+        return self.create_lakebase_s3account_with_options(request, runtime)
+
+    async def create_lakebase_s3account_async(
+        self,
+        request: main_models.CreateLakebaseS3AccountRequest,
+    ) -> main_models.CreateLakebaseS3AccountResponse:
+        runtime = RuntimeOptions()
+        return await self.create_lakebase_s3account_with_options_async(request, runtime)
+
     def create_model_api_with_options(
         self,
         request: main_models.CreateModelApiRequest,
@@ -7868,6 +7954,168 @@ class Client(OpenApiClient):
     ) -> main_models.CreatePolarClawCronJobResponse:
         runtime = RuntimeOptions()
         return await self.create_polar_claw_cron_job_with_options_async(request, runtime)
+
+    def create_polar_fs_with_options(
+        self,
+        request: main_models.CreatePolarFsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreatePolarFsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.accelerate_storage_size):
+            query['AccelerateStorageSize'] = request.accelerate_storage_size
+        if not DaraCore.is_null(request.accelerate_switch):
+            query['AccelerateSwitch'] = request.accelerate_switch
+        if not DaraCore.is_null(request.accelerate_type):
+            query['AccelerateType'] = request.accelerate_type
+        if not DaraCore.is_null(request.authorized_user_ids):
+            query['AuthorizedUserIds'] = request.authorized_user_ids
+        if not DaraCore.is_null(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not DaraCore.is_null(request.auto_use_coupon):
+            query['AutoUseCoupon'] = request.auto_use_coupon
+        if not DaraCore.is_null(request.creation_category):
+            query['CreationCategory'] = request.creation_category
+        if not DaraCore.is_null(request.custom_bucket_count):
+            query['CustomBucketCount'] = request.custom_bucket_count
+        if not DaraCore.is_null(request.custom_bucket_path):
+            query['CustomBucketPath'] = request.custom_bucket_path
+        if not DaraCore.is_null(request.custom_bucket_path_list):
+            query['CustomBucketPathList'] = request.custom_bucket_path_list
+        if not DaraCore.is_null(request.custom_oss_ak):
+            query['CustomOssAk'] = request.custom_oss_ak
+        if not DaraCore.is_null(request.custom_oss_sk):
+            query['CustomOssSk'] = request.custom_oss_sk
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.dbtype):
+            query['DBType'] = request.dbtype
+        if not DaraCore.is_null(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
+        if not DaraCore.is_null(request.promotion_code):
+            query['PromotionCode'] = request.promotion_code
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.storage_space):
+            query['StorageSpace'] = request.storage_space
+        if not DaraCore.is_null(request.storage_type):
+            query['StorageType'] = request.storage_type
+        if not DaraCore.is_null(request.used_time):
+            query['UsedTime'] = request.used_time
+        if not DaraCore.is_null(request.vpcid):
+            query['VPCId'] = request.vpcid
+        if not DaraCore.is_null(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not DaraCore.is_null(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreatePolarFs',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreatePolarFsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_polar_fs_with_options_async(
+        self,
+        request: main_models.CreatePolarFsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreatePolarFsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.accelerate_storage_size):
+            query['AccelerateStorageSize'] = request.accelerate_storage_size
+        if not DaraCore.is_null(request.accelerate_switch):
+            query['AccelerateSwitch'] = request.accelerate_switch
+        if not DaraCore.is_null(request.accelerate_type):
+            query['AccelerateType'] = request.accelerate_type
+        if not DaraCore.is_null(request.authorized_user_ids):
+            query['AuthorizedUserIds'] = request.authorized_user_ids
+        if not DaraCore.is_null(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not DaraCore.is_null(request.auto_use_coupon):
+            query['AutoUseCoupon'] = request.auto_use_coupon
+        if not DaraCore.is_null(request.creation_category):
+            query['CreationCategory'] = request.creation_category
+        if not DaraCore.is_null(request.custom_bucket_count):
+            query['CustomBucketCount'] = request.custom_bucket_count
+        if not DaraCore.is_null(request.custom_bucket_path):
+            query['CustomBucketPath'] = request.custom_bucket_path
+        if not DaraCore.is_null(request.custom_bucket_path_list):
+            query['CustomBucketPathList'] = request.custom_bucket_path_list
+        if not DaraCore.is_null(request.custom_oss_ak):
+            query['CustomOssAk'] = request.custom_oss_ak
+        if not DaraCore.is_null(request.custom_oss_sk):
+            query['CustomOssSk'] = request.custom_oss_sk
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.dbtype):
+            query['DBType'] = request.dbtype
+        if not DaraCore.is_null(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
+        if not DaraCore.is_null(request.promotion_code):
+            query['PromotionCode'] = request.promotion_code
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.storage_space):
+            query['StorageSpace'] = request.storage_space
+        if not DaraCore.is_null(request.storage_type):
+            query['StorageType'] = request.storage_type
+        if not DaraCore.is_null(request.used_time):
+            query['UsedTime'] = request.used_time
+        if not DaraCore.is_null(request.vpcid):
+            query['VPCId'] = request.vpcid
+        if not DaraCore.is_null(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not DaraCore.is_null(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreatePolarFs',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreatePolarFsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_polar_fs(
+        self,
+        request: main_models.CreatePolarFsRequest,
+    ) -> main_models.CreatePolarFsResponse:
+        runtime = RuntimeOptions()
+        return self.create_polar_fs_with_options(request, runtime)
+
+    async def create_polar_fs_async(
+        self,
+        request: main_models.CreatePolarFsRequest,
+    ) -> main_models.CreatePolarFsResponse:
+        runtime = RuntimeOptions()
+        return await self.create_polar_fs_with_options_async(request, runtime)
 
     def create_polar_fs_object_with_options(
         self,
@@ -11223,6 +11471,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_global_security_ipgroup_with_options_async(request, runtime)
 
+    def delete_lakebase_s3account_with_options(
+        self,
+        request: main_models.DeleteLakebaseS3AccountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteLakebaseS3AccountResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.pfs_instance_id):
+            query['PfsInstanceId'] = request.pfs_instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.user_acc_ak):
+            query['UserAccAk'] = request.user_acc_ak
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteLakebaseS3Account',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteLakebaseS3AccountResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_lakebase_s3account_with_options_async(
+        self,
+        request: main_models.DeleteLakebaseS3AccountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteLakebaseS3AccountResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.pfs_instance_id):
+            query['PfsInstanceId'] = request.pfs_instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.user_acc_ak):
+            query['UserAccAk'] = request.user_acc_ak
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteLakebaseS3Account',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteLakebaseS3AccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_lakebase_s3account(
+        self,
+        request: main_models.DeleteLakebaseS3AccountRequest,
+    ) -> main_models.DeleteLakebaseS3AccountResponse:
+        runtime = RuntimeOptions()
+        return self.delete_lakebase_s3account_with_options(request, runtime)
+
+    async def delete_lakebase_s3account_async(
+        self,
+        request: main_models.DeleteLakebaseS3AccountRequest,
+    ) -> main_models.DeleteLakebaseS3AccountResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_lakebase_s3account_with_options_async(request, runtime)
+
     def delete_masking_rules_with_options(
         self,
         request: main_models.DeleteMaskingRulesRequest,
@@ -11898,6 +12224,80 @@ class Client(OpenApiClient):
     ) -> main_models.DeletePolarClawCronJobResponse:
         runtime = RuntimeOptions()
         return await self.delete_polar_claw_cron_job_with_options_async(request, runtime)
+
+    def delete_polar_fs_with_options(
+        self,
+        request: main_models.DeletePolarFsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeletePolarFsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.polar_fs_instance_id):
+            query['PolarFsInstanceId'] = request.polar_fs_instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeletePolarFs',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeletePolarFsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_polar_fs_with_options_async(
+        self,
+        request: main_models.DeletePolarFsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeletePolarFsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.polar_fs_instance_id):
+            query['PolarFsInstanceId'] = request.polar_fs_instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeletePolarFs',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeletePolarFsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_polar_fs(
+        self,
+        request: main_models.DeletePolarFsRequest,
+    ) -> main_models.DeletePolarFsResponse:
+        runtime = RuntimeOptions()
+        return self.delete_polar_fs_with_options(request, runtime)
+
+    async def delete_polar_fs_async(
+        self,
+        request: main_models.DeletePolarFsRequest,
+    ) -> main_models.DeletePolarFsResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_polar_fs_with_options_async(request, runtime)
 
     def delete_polar_fs_objects_with_options(
         self,
@@ -22723,6 +23123,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_history_tasks_stat_with_options_async(request, runtime)
 
+    def describe_lakebase_s3account_with_options(
+        self,
+        request: main_models.DescribeLakebaseS3AccountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeLakebaseS3AccountResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.pfs_instance_id):
+            query['PfsInstanceId'] = request.pfs_instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.user_acc_ak):
+            query['UserAccAk'] = request.user_acc_ak
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeLakebaseS3Account',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeLakebaseS3AccountResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_lakebase_s3account_with_options_async(
+        self,
+        request: main_models.DescribeLakebaseS3AccountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeLakebaseS3AccountResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.pfs_instance_id):
+            query['PfsInstanceId'] = request.pfs_instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.user_acc_ak):
+            query['UserAccAk'] = request.user_acc_ak
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeLakebaseS3Account',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeLakebaseS3AccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_lakebase_s3account(
+        self,
+        request: main_models.DescribeLakebaseS3AccountRequest,
+    ) -> main_models.DescribeLakebaseS3AccountResponse:
+        runtime = RuntimeOptions()
+        return self.describe_lakebase_s3account_with_options(request, runtime)
+
+    async def describe_lakebase_s3account_async(
+        self,
+        request: main_models.DescribeLakebaseS3AccountRequest,
+    ) -> main_models.DescribeLakebaseS3AccountResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_lakebase_s3account_with_options_async(request, runtime)
+
     def describe_license_order_details_with_options(
         self,
         request: main_models.DescribeLicenseOrderDetailsRequest,
@@ -25300,6 +25778,88 @@ class Client(OpenApiClient):
     ) -> main_models.DescribePolarFsAttributeResponse:
         runtime = RuntimeOptions()
         return await self.describe_polar_fs_attribute_with_options_async(request, runtime)
+
+    def describe_polar_fs_mapping_with_options(
+        self,
+        request: main_models.DescribePolarFsMappingRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePolarFsMappingResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.polar_fs_instance_id):
+            query['PolarFsInstanceId'] = request.polar_fs_instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePolarFsMapping',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePolarFsMappingResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_polar_fs_mapping_with_options_async(
+        self,
+        request: main_models.DescribePolarFsMappingRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePolarFsMappingResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.polar_fs_instance_id):
+            query['PolarFsInstanceId'] = request.polar_fs_instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePolarFsMapping',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePolarFsMappingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_polar_fs_mapping(
+        self,
+        request: main_models.DescribePolarFsMappingRequest,
+    ) -> main_models.DescribePolarFsMappingResponse:
+        runtime = RuntimeOptions()
+        return self.describe_polar_fs_mapping_with_options(request, runtime)
+
+    async def describe_polar_fs_mapping_async(
+        self,
+        request: main_models.DescribePolarFsMappingRequest,
+    ) -> main_models.DescribePolarFsMappingResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_polar_fs_mapping_with_options_async(request, runtime)
 
     def describe_polar_fs_objects_with_options(
         self,
@@ -29752,6 +30312,88 @@ class Client(OpenApiClient):
     ) -> main_models.InstallPolarClawSkillResponse:
         runtime = RuntimeOptions()
         return await self.install_polar_claw_skill_with_options_async(request, runtime)
+
+    def list_lakebase_s3accounts_with_options(
+        self,
+        request: main_models.ListLakebaseS3AccountsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListLakebaseS3AccountsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.pfs_instance_id):
+            query['PfsInstanceId'] = request.pfs_instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListLakebaseS3Accounts',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListLakebaseS3AccountsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_lakebase_s3accounts_with_options_async(
+        self,
+        request: main_models.ListLakebaseS3AccountsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListLakebaseS3AccountsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.pfs_instance_id):
+            query['PfsInstanceId'] = request.pfs_instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListLakebaseS3Accounts',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListLakebaseS3AccountsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_lakebase_s3accounts(
+        self,
+        request: main_models.ListLakebaseS3AccountsRequest,
+    ) -> main_models.ListLakebaseS3AccountsResponse:
+        runtime = RuntimeOptions()
+        return self.list_lakebase_s3accounts_with_options(request, runtime)
+
+    async def list_lakebase_s3accounts_async(
+        self,
+        request: main_models.ListLakebaseS3AccountsRequest,
+    ) -> main_models.ListLakebaseS3AccountsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_lakebase_s3accounts_with_options_async(request, runtime)
 
     def list_orders_with_options(
         self,
@@ -37178,6 +37820,96 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyPendingMaintenanceActionResponse:
         runtime = RuntimeOptions()
         return await self.modify_pending_maintenance_action_with_options_async(request, runtime)
+
+    def modify_polar_fs_mapping_auth_with_options(
+        self,
+        request: main_models.ModifyPolarFsMappingAuthRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyPolarFsMappingAuthResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.bucket):
+            query['Bucket'] = request.bucket
+        if not DaraCore.is_null(request.bucket_access_key_id):
+            query['BucketAccessKeyId'] = request.bucket_access_key_id
+        if not DaraCore.is_null(request.bucket_access_key_secret):
+            query['BucketAccessKeySecret'] = request.bucket_access_key_secret
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.path):
+            query['Path'] = request.path
+        if not DaraCore.is_null(request.polar_fs_instance_id):
+            query['PolarFsInstanceId'] = request.polar_fs_instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyPolarFsMappingAuth',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyPolarFsMappingAuthResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_polar_fs_mapping_auth_with_options_async(
+        self,
+        request: main_models.ModifyPolarFsMappingAuthRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyPolarFsMappingAuthResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.bucket):
+            query['Bucket'] = request.bucket
+        if not DaraCore.is_null(request.bucket_access_key_id):
+            query['BucketAccessKeyId'] = request.bucket_access_key_id
+        if not DaraCore.is_null(request.bucket_access_key_secret):
+            query['BucketAccessKeySecret'] = request.bucket_access_key_secret
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.path):
+            query['Path'] = request.path
+        if not DaraCore.is_null(request.polar_fs_instance_id):
+            query['PolarFsInstanceId'] = request.polar_fs_instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyPolarFsMappingAuth',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyPolarFsMappingAuthResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_polar_fs_mapping_auth(
+        self,
+        request: main_models.ModifyPolarFsMappingAuthRequest,
+    ) -> main_models.ModifyPolarFsMappingAuthResponse:
+        runtime = RuntimeOptions()
+        return self.modify_polar_fs_mapping_auth_with_options(request, runtime)
+
+    async def modify_polar_fs_mapping_auth_async(
+        self,
+        request: main_models.ModifyPolarFsMappingAuthRequest,
+    ) -> main_models.ModifyPolarFsMappingAuthResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_polar_fs_mapping_auth_with_options_async(request, runtime)
 
     def modify_rate_limit_policy_with_options(
         self,
