@@ -1,0 +1,55 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from ._add_documents_request import AddDocumentsRequest
+from ._add_documents_response_body import AddDocumentsResponseBody
+from ._add_documents_response import AddDocumentsResponse
+from ._get_knowledge_base_pre_signed_url_request import GetKnowledgeBasePreSignedUrlRequest
+from ._get_knowledge_base_pre_signed_url_response_body import GetKnowledgeBasePreSignedUrlResponseBody
+from ._get_knowledge_base_pre_signed_url_response import GetKnowledgeBasePreSignedUrlResponse
+from ._search_knowledge_base_request import SearchKnowledgeBaseRequest
+from ._search_knowledge_base_response_body import SearchKnowledgeBaseResponseBody
+from ._search_knowledge_base_response import SearchKnowledgeBaseResponse
+from ._add_documents_request import AddDocumentsRequestDedup
+from ._add_documents_request import AddDocumentsRequestDocuments
+from ._add_documents_request import AddDocumentsRequestDingTalkConfiguration
+from ._add_documents_response_body import AddDocumentsResponseBodyDataDocuments
+from ._add_documents_response_body import AddDocumentsResponseBodyData
+from ._get_knowledge_base_pre_signed_url_request import GetKnowledgeBasePreSignedUrlRequestDocuments
+from ._get_knowledge_base_pre_signed_url_response_body import GetKnowledgeBasePreSignedUrlResponseBodyData
+from ._search_knowledge_base_request import SearchKnowledgeBaseRequestImage
+from ._search_knowledge_base_request import SearchKnowledgeBaseRequestRetrievalConfig
+from ._search_knowledge_base_request import SearchKnowledgeBaseRequestTagFilterConditions
+from ._search_knowledge_base_request import SearchKnowledgeBaseRequestTagFilter
+from ._search_knowledge_base_response_body import SearchKnowledgeBaseResponseBodyResultsImages
+from ._search_knowledge_base_response_body import SearchKnowledgeBaseResponseBodyResultsLocations
+from ._search_knowledge_base_response_body import SearchKnowledgeBaseResponseBodyResultsScoreDetails
+from ._search_knowledge_base_response_body import SearchKnowledgeBaseResponseBodyResults
+
+__all__ = [
+    AddDocumentsRequest,
+    AddDocumentsResponseBody,
+    AddDocumentsResponse,
+    GetKnowledgeBasePreSignedUrlRequest,
+    GetKnowledgeBasePreSignedUrlResponseBody,
+    GetKnowledgeBasePreSignedUrlResponse,
+    SearchKnowledgeBaseRequest,
+    SearchKnowledgeBaseResponseBody,
+    SearchKnowledgeBaseResponse,
+    AddDocumentsRequestDedup,
+    AddDocumentsRequestDocuments,
+    AddDocumentsRequestDingTalkConfiguration,
+    AddDocumentsResponseBodyDataDocuments,
+    AddDocumentsResponseBodyData,
+    GetKnowledgeBasePreSignedUrlRequestDocuments,
+    GetKnowledgeBasePreSignedUrlResponseBodyData,
+    SearchKnowledgeBaseRequestImage,
+    SearchKnowledgeBaseRequestRetrievalConfig,
+    SearchKnowledgeBaseRequestTagFilterConditions,
+    SearchKnowledgeBaseRequestTagFilter,
+    SearchKnowledgeBaseResponseBodyResultsImages,
+    SearchKnowledgeBaseResponseBodyResultsLocations,
+    SearchKnowledgeBaseResponseBodyResultsScoreDetails,
+    SearchKnowledgeBaseResponseBodyResults
+]
