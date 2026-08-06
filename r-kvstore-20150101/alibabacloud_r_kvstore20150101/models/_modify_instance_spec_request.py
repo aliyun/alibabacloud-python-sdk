@@ -26,6 +26,7 @@ class ModifyInstanceSpecRequest(DaraModel):
         replica_count: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        secondary_zone_id: str = None,
         security_token: str = None,
         shard_count: int = None,
         slave_read_only_count: int = None,
@@ -113,6 +114,7 @@ class ModifyInstanceSpecRequest(DaraModel):
         self.replica_count = replica_count
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.secondary_zone_id = secondary_zone_id
         self.security_token = security_token
         # The number of shards. This parameter is applicable only to cloud-native cluster instances.
         # 
@@ -204,6 +206,9 @@ class ModifyInstanceSpecRequest(DaraModel):
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
 
+        if self.secondary_zone_id is not None:
+            result['SecondaryZoneId'] = self.secondary_zone_id
+
         if self.security_token is not None:
             result['SecurityToken'] = self.security_token
 
@@ -285,6 +290,9 @@ class ModifyInstanceSpecRequest(DaraModel):
 
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+
+        if m.get('SecondaryZoneId') is not None:
+            self.secondary_zone_id = m.get('SecondaryZoneId')
 
         if m.get('SecurityToken') is not None:
             self.security_token = m.get('SecurityToken')

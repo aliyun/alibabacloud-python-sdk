@@ -14308,6 +14308,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not DaraCore.is_null(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.secondary_zone_id):
+            query['SecondaryZoneId'] = request.secondary_zone_id
         if not DaraCore.is_null(request.security_token):
             query['SecurityToken'] = request.security_token
         if not DaraCore.is_null(request.shard_count):
@@ -14386,6 +14388,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not DaraCore.is_null(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.secondary_zone_id):
+            query['SecondaryZoneId'] = request.secondary_zone_id
         if not DaraCore.is_null(request.security_token):
             query['SecurityToken'] = request.security_token
         if not DaraCore.is_null(request.shard_count):

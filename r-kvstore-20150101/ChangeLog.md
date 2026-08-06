@@ -1,3 +1,8 @@
+2026-08-06 Version: 6.5.1
+- Update API ModifyInstanceSpec: add request parameters SecondaryZoneId.
+- Update API SwitchInstanceToTargetZone: add response parameters Body.TaskId.
+
+
 2026-08-03 Version: 6.5.0
 - Support API CancelInspectionTask.
 - Support API CreateInspectionSchedule.
