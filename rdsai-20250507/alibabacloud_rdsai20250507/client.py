@@ -2510,6 +2510,96 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_motoken_usage_detail_with_options_async(request, runtime)
 
+    def describe_motoken_usage_summary_with_options(
+        self,
+        request: main_models.DescribeMOTokenUsageSummaryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeMOTokenUsageSummaryResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.api_key):
+            query['ApiKey'] = request.api_key
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.model):
+            query['Model'] = request.model
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.usage_type):
+            query['UsageType'] = request.usage_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeMOTokenUsageSummary',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeMOTokenUsageSummaryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_motoken_usage_summary_with_options_async(
+        self,
+        request: main_models.DescribeMOTokenUsageSummaryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeMOTokenUsageSummaryResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.api_key):
+            query['ApiKey'] = request.api_key
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.model):
+            query['Model'] = request.model
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.usage_type):
+            query['UsageType'] = request.usage_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeMOTokenUsageSummary',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeMOTokenUsageSummaryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_motoken_usage_summary(
+        self,
+        request: main_models.DescribeMOTokenUsageSummaryRequest,
+    ) -> main_models.DescribeMOTokenUsageSummaryResponse:
+        runtime = RuntimeOptions()
+        return self.describe_motoken_usage_summary_with_options(request, runtime)
+
+    async def describe_motoken_usage_summary_async(
+        self,
+        request: main_models.DescribeMOTokenUsageSummaryRequest,
+    ) -> main_models.DescribeMOTokenUsageSummaryResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_motoken_usage_summary_with_options_async(request, runtime)
+
     def describe_mousage_detail_export_with_options(
         self,
         request: main_models.DescribeMOUsageDetailExportRequest,

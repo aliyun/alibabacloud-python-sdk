@@ -1,3 +1,7 @@
+2026-08-06 Version: 3.7.0
+- Support API DescribeMOTokenUsageSummary.
+
+
 2026-08-05 Version: 3.6.3
 - Update API ChatMessages: add request parameters Inputs.ModelId.
 
