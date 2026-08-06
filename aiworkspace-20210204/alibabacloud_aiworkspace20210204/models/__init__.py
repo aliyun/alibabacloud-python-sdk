@@ -100,6 +100,9 @@ from ._create_model_version_labels_response import CreateModelVersionLabelsRespo
 from ._create_product_orders_request import CreateProductOrdersRequest
 from ._create_product_orders_response_body import CreateProductOrdersResponseBody
 from ._create_product_orders_response import CreateProductOrdersResponse
+from ._create_prompt_request import CreatePromptRequest
+from ._create_prompt_response_body import CreatePromptResponseBody
+from ._create_prompt_response import CreatePromptResponse
 from ._create_run_request import CreateRunRequest
 from ._create_run_response_body import CreateRunResponseBody
 from ._create_run_response import CreateRunResponse
@@ -163,6 +166,9 @@ from ._delete_model_version_response import DeleteModelVersionResponse
 from ._delete_model_version_labels_request import DeleteModelVersionLabelsRequest
 from ._delete_model_version_labels_response_body import DeleteModelVersionLabelsResponseBody
 from ._delete_model_version_labels_response import DeleteModelVersionLabelsResponse
+from ._delete_prompt_request import DeletePromptRequest
+from ._delete_prompt_response_body import DeletePromptResponseBody
+from ._delete_prompt_response import DeletePromptResponse
 from ._delete_run_request import DeleteRunRequest
 from ._delete_run_response_body import DeleteRunResponseBody
 from ._delete_run_response import DeleteRunResponse
@@ -232,6 +238,9 @@ from ._get_permission_request import GetPermissionRequest
 from ._get_permission_shrink_request import GetPermissionShrinkRequest
 from ._get_permission_response_body import GetPermissionResponseBody
 from ._get_permission_response import GetPermissionResponse
+from ._get_prompt_request import GetPromptRequest
+from ._get_prompt_response_body import GetPromptResponseBody
+from ._get_prompt_response import GetPromptResponse
 from ._get_run_request import GetRunRequest
 from ._get_run_response import GetRunResponse
 from ._get_workspace_request import GetWorkspaceRequest
@@ -295,6 +304,9 @@ from ._list_permissions_response import ListPermissionsResponse
 from ._list_products_request import ListProductsRequest
 from ._list_products_response_body import ListProductsResponseBody
 from ._list_products_response import ListProductsResponse
+from ._list_prompts_request import ListPromptsRequest
+from ._list_prompts_response_body import ListPromptsResponseBody
+from ._list_prompts_response import ListPromptsResponse
 from ._list_quotas_request import ListQuotasRequest
 from ._list_quotas_response_body import ListQuotasResponseBody
 from ._list_quotas_response import ListQuotasResponse
@@ -388,6 +400,9 @@ from ._update_model_response import UpdateModelResponse
 from ._update_model_version_request import UpdateModelVersionRequest
 from ._update_model_version_response_body import UpdateModelVersionResponseBody
 from ._update_model_version_response import UpdateModelVersionResponse
+from ._update_prompt_request import UpdatePromptRequest
+from ._update_prompt_response_body import UpdatePromptResponseBody
+from ._update_prompt_response import UpdatePromptResponse
 from ._update_run_request import UpdateRunRequest
 from ._update_run_response_body import UpdateRunResponseBody
 from ._update_run_response import UpdateRunResponse
@@ -579,6 +594,9 @@ __all__ = [
     CreateProductOrdersRequest,
     CreateProductOrdersResponseBody,
     CreateProductOrdersResponse,
+    CreatePromptRequest,
+    CreatePromptResponseBody,
+    CreatePromptResponse,
     CreateRunRequest,
     CreateRunResponseBody,
     CreateRunResponse,
@@ -642,6 +660,9 @@ __all__ = [
     DeleteModelVersionLabelsRequest,
     DeleteModelVersionLabelsResponseBody,
     DeleteModelVersionLabelsResponse,
+    DeletePromptRequest,
+    DeletePromptResponseBody,
+    DeletePromptResponse,
     DeleteRunRequest,
     DeleteRunResponseBody,
     DeleteRunResponse,
@@ -711,6 +732,9 @@ __all__ = [
     GetPermissionShrinkRequest,
     GetPermissionResponseBody,
     GetPermissionResponse,
+    GetPromptRequest,
+    GetPromptResponseBody,
+    GetPromptResponse,
     GetRunRequest,
     GetRunResponse,
     GetWorkspaceRequest,
@@ -774,6 +798,9 @@ __all__ = [
     ListProductsRequest,
     ListProductsResponseBody,
     ListProductsResponse,
+    ListPromptsRequest,
+    ListPromptsResponseBody,
+    ListPromptsResponse,
     ListQuotasRequest,
     ListQuotasResponseBody,
     ListQuotasResponse,
@@ -867,6 +894,9 @@ __all__ = [
     UpdateModelVersionRequest,
     UpdateModelVersionResponseBody,
     UpdateModelVersionResponse,
+    UpdatePromptRequest,
+    UpdatePromptResponseBody,
+    UpdatePromptResponse,
     UpdateRunRequest,
     UpdateRunResponseBody,
     UpdateRunResponse,

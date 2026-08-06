@@ -24,9 +24,9 @@ class DatasetJob(DaraModel):
         total_file_count: int = None,
         workspace_id: str = None,
     ):
-        # The total number of completed files.
+        # The number of completed files.
         self.completed_file_count = completed_file_count
-        # The time when the job was created (UTC).
+        # The job creation time (UTC).
         self.create_time = create_time
         # The job ID.
         self.dataset_job_id = dataset_job_id
@@ -34,21 +34,25 @@ class DatasetJob(DaraModel):
         self.dataset_version = dataset_version
         # The job description.
         self.description = description
-        # The total number of failed files.
+        # The number of failed files.
         self.failed_file_count = failed_file_count
-        # The time when the job was finished (UTC).
+        # The job finish time (UTC).
         self.finish_time = finish_time
-        # The job operation.
+        # The job action.
         self.job_action = job_action
         # The job mode.
+        # 
+        # Valid value:
+        # 
+        # *   Full
         self.job_mode = job_mode
-        # The job specifications.
+        # The job details.
         self.job_spec = job_spec
-        # A list of task logs.
+        # The job logs.
         self.logs = logs
         # The job status.
         self.status = status
-        # The total number of files for the job.
+        # The number of job files.
         self.total_file_count = total_file_count
         # The workspace ID.
         self.workspace_id = workspace_id

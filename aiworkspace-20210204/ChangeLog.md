@@ -1,3 +1,11 @@
+2026-08-06 Version: 8.3.0
+- Support API CreatePrompt.
+- Support API DeletePrompt.
+- Support API GetPrompt.
+- Support API ListPrompts.
+- Support API UpdatePrompt.
+
+
 2026-06-25 Version: 8.2.0
 - Support API CreateWorkspaceRole.
 - Support API DeleteWorkspaceRoles.

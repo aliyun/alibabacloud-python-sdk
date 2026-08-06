@@ -16,9 +16,9 @@ class ListConfigsResponseBody(DaraModel):
     ):
         # The list of configuration items.
         self.configs = configs
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of returned entries.
         self.total_count = total_count
 
     def validate(self):
@@ -64,27 +64,28 @@ class ListConfigsResponseBody(DaraModel):
 class ListConfigsResponseBodyConfigs(DaraModel):
     def __init__(
         self,
+        config_id: str = None,
         config_key: str = None,
         config_value: str = None,
         gmt_create_time: str = None,
         gmt_modified_time: str = None,
         labels: List[main_models.ListConfigsResponseBodyConfigsLabels] = None,
     ):
+        # The configuration ID, which is globally unique.
+        self.config_id = config_id
         # The key of the configuration item. The following keys are supported:
         # 
-        # - tempStoragePath: The path for temporary storage. This key is valid only when CategoryName is set to CommonResourceConfig.
-        # 
-        # - isAutoRecycle: The automatic recycling configuration. This key is valid only when CategoryName is set to DLCAutoRecycle.
-        # 
-        # - priorityConfig: The priority configuration. This key is valid only when CategoryName is set to DLCPriorityConfig or DSWPriorityConfig.
-        # 
-        # - quotaMaximumDuration: The configuration for the maximum runtime of a DLC task in a quota. This key is valid only when CategoryName is set to QuotaMaximumDuration.
-        # 
-        # - predefinedTags: The predefined labels for the workspace. Resources that you create must have these labels.
+        # - tempStoragePath: the temporary storage path. This ConfigKey can be used only when CategoryName is set to CommonResourceConfig.
+        # - isAutoRecycle: the automatic recycling configuration. This ConfigKey can be used only when CategoryName is set to DLCAutoRecycle.
+        # - priorityConfig: the priority configuration. This ConfigKey can be used only when CategoryName is set to DLCPriorityConfig or DSWPriorityConfig.
+        # - quotaMaximumDuration: the maximum runtime duration configuration for DLC jobs in a quota. This ConfigKey can be used only when CategoryName is set to QuotaMaximumDuration.
+        # - predefinedTags: the preset tags for the workspace. Resources that are created must include these tags.
         self.config_key = config_key
-        # The value of the configuration item.
+        # The configuration value.
         self.config_value = config_value
+        # The UTC time when the configuration item was created.
         self.gmt_create_time = gmt_create_time
+        # The UTC time when the configuration item was last modified.
         self.gmt_modified_time = gmt_modified_time
         # The list of labels for the configuration item.
         self.labels = labels
@@ -100,6 +101,9 @@ class ListConfigsResponseBodyConfigs(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+
         if self.config_key is not None:
             result['ConfigKey'] = self.config_key
 
@@ -121,6 +125,9 @@ class ListConfigsResponseBodyConfigs(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+
         if m.get('ConfigKey') is not None:
             self.config_key = m.get('ConfigKey')
 

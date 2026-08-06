@@ -33,48 +33,47 @@ class Model(DaraModel):
         user_id: str = None,
         workspace_id: str = None,
     ):
-        # The workspace accessibility. Valid values:
-        # 
-        # *   PRIVATE (default): The model is accessible only to you and the administrator of the workspace.
-        # *   PUBLIC: The model is accessible to all members of the workspace.
+        # The workspace visibility. Valid values:
+        # - PRIVATE (default): visible only to yourself and administrators within the workspace.
+        # - PUBLIC: visible to all users in the workspace.
         self.accessibility = accessibility
-        # The domain where the model is applied, such as nlp (Natural Language Processing) and cv (Computer Vision).
+        # The domain. Describes the domain of the problem that the model solves, such as nlp (natural language processing) or cv (computer vision).
         self.domain = domain
         # The additional information.
         self.extra_info = extra_info
-        # The time when the model was created, in UTC. The time follows the ISO 8601 standard.
+        # The UTC time of model creation, in ISO 8601 format.
         self.gmt_create_time = gmt_create_time
-        # 最后版本更新时间。
+        # The time when the latest version was updated.
         self.gmt_latest_version_modified_time = gmt_latest_version_modified_time
-        # The time when the model was last modified, in UTC. The time follows the ISO 8601 standard.
+        # The time when the model was last updated in UTC, in ISO 8601 format.
         self.gmt_modified_time = gmt_modified_time
-        # The labels.
+        # The label list. This parameter will be deprecated and replaced by Tag.
         self.labels = labels
         # The latest version of the model.
         self.latest_version = latest_version
         # The model description.
         self.model_description = model_description
-        # The model document.
+        # The model documentation.
         self.model_doc = model_doc
         # The model ID.
         self.model_id = model_id
         # The model name.
         self.model_name = model_name
-        # The model type, such as checkpoint and LoRA.
+        # The model type, such as Checkpoint or LoRA.
         self.model_type = model_type
-        # The sequence number of the model.
+        # The model sequence number.
         self.order_number = order_number
-        # The community or organization to which the source model belongs, such as ModelScope or Hugging Face.
+        # The model origin. Describes the community or organization to which the source model belongs, such as ModelScope or HuggingFace.
         self.origin = origin
-        # The ID of the Alibaba Cloud account.
+        # The Alibaba Cloud account ID.
         self.owner_id = owner_id
-        # 参数量，单位M。
+        # The number of parameters, in millions (M).
         self.parameter_size = parameter_size
         # The model provider.
         self.provider = provider
-        # 标签列表
+        # The tag list.
         self.tags = tags
-        # The task. The specific issue that the model resolves, such as text-classification.
+        # The task. Describes the specific problem that the model solves, such as text-classification (text categorization).
         self.task = task
         # The user ID.
         self.user_id = user_id

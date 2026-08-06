@@ -8,6 +8,8 @@ class GetPermissionShrinkRequest(DaraModel):
     def __init__(
         self,
         accessibility: str = None,
+        caller_access_key_id: str = None,
+        caller_security_token: str = None,
         caller_type: str = None,
         caller_uid: str = None,
         creator: str = None,
@@ -18,20 +20,19 @@ class GetPermissionShrinkRequest(DaraModel):
     ):
         # The access type. Valid values:
         # 
-        # - PUBLIC: All members in the workspace can perform the operation.
-        # 
-        # - PRIVATE: Only the creator can perform the operation.
+        # - PUBLIC: All members in the current workspace can access the instance.
+        # - PRIVATE: Only the creator can access the instance.
         self.accessibility = accessibility
+        self.caller_access_key_id = caller_access_key_id
+        self.caller_security_token = caller_security_token
         self.caller_type = caller_type
         self.caller_uid = caller_uid
-        # The UID of the Alibaba Cloud account that created the workspace permission.
+        # The Alibaba Cloud account UID of the workspace permission creator.
         self.creator = creator
         self.labels_shrink = labels_shrink
-        # Optional configurations. Separate multiple configurations with commas (,). Valid values:
-        # 
-        # - ResourceEmpty: The resource is empty. This value is used if you do not set the Resource parameter.
-        # 
-        # - DisableRam: RAM verification is disabled.
+        # The optional configurations. Separate multiple configurations with commas (,). Valid values:
+        # - ResourceEmpty: The resource is empty. The resource is empty if Resource is not specified.
+        # - DisableRam: RAM authentication is not performed.
         self.option = option
         # The resource.
         self.resource = resource
@@ -47,6 +48,12 @@ class GetPermissionShrinkRequest(DaraModel):
             result = _map
         if self.accessibility is not None:
             result['Accessibility'] = self.accessibility
+
+        if self.caller_access_key_id is not None:
+            result['CallerAccessKeyId'] = self.caller_access_key_id
+
+        if self.caller_security_token is not None:
+            result['CallerSecurityToken'] = self.caller_security_token
 
         if self.caller_type is not None:
             result['CallerType'] = self.caller_type
@@ -75,6 +82,12 @@ class GetPermissionShrinkRequest(DaraModel):
         m = m or dict()
         if m.get('Accessibility') is not None:
             self.accessibility = m.get('Accessibility')
+
+        if m.get('CallerAccessKeyId') is not None:
+            self.caller_access_key_id = m.get('CallerAccessKeyId')
+
+        if m.get('CallerSecurityToken') is not None:
+            self.caller_security_token = m.get('CallerSecurityToken')
 
         if m.get('CallerType') is not None:
             self.caller_type = m.get('CallerType')

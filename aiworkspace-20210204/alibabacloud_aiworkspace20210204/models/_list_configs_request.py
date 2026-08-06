@@ -14,37 +14,27 @@ class ListConfigsRequest(DaraModel):
     ):
         # The category of the configuration item. The following categories are supported:
         # 
-        # - CommonResourceConfig: The common resource configuration.
-        # 
-        # - DLCAutoRecycle: The automatic recycling configuration for DLC.
-        # 
-        # - DLCPriorityConfig: The priority configuration for DLC.
-        # 
-        # - DSWPriorityConfig: The priority configuration for DSW.
-        # 
-        # - QuotaMaximumDuration: The configuration for the maximum runtime of a DLC task in a quota.
-        # 
-        # - CommonTagConfig: The label configuration.
+        # - CommonResourceConfig: common resource configuration.
+        # - DLCAutoRecycle: DLC automatic recycling.
+        # - DLCPriorityConfig: DLC priority settings.
+        # - DSWPriorityConfig: DSW priority settings.
+        # - QuotaMaximumDuration: maximum runtime duration configuration for DLC jobs in a quota.
+        # - CommonTagConfig: tag settings.
         self.category_name = category_name
-        # The key of the configuration item. The following keys are supported:
+        # The keys of the configuration items. The following keys are supported:
         # 
-        # - tempStoragePath: The path for temporary storage. This key is valid only when CategoryName is set to CommonResourceConfig.
-        # 
-        # - isAutoRecycle: The automatic recycling configuration. This key is valid only when CategoryName is set to DLCAutoRecycle.
-        # 
-        # - priorityConfig: The priority configuration. This key is valid only when CategoryName is set to DLCPriorityConfig or DSWPriorityConfig.
-        # 
-        # - quotaMaximumDuration: The configuration for the maximum runtime of a DLC task in a quota. This key is valid only when CategoryName is set to QuotaMaximumDuration.
-        # 
-        # - predefinedTags: The predefined labels for the workspace. Resources that you create must have these labels.
+        # - tempStoragePath: the temporary storage path. This ConfigKey can be used only when CategoryName is set to CommonResourceConfig.
+        # - isAutoRecycle: the automatic recycling configuration. This ConfigKey can be used only when CategoryName is set to DLCAutoRecycle.
+        # - priorityConfig: the priority configuration. This ConfigKey can be used only when CategoryName is set to DLCPriorityConfig or DSWPriorityConfig.
+        # - quotaMaximumDuration: the maximum runtime duration configuration for DLC jobs in a quota. This ConfigKey can be used only when CategoryName is set to QuotaMaximumDuration.
+        # - predefinedTags: the preset tags for the workspace. Resources that are created must include these tags.
         self.config_keys = config_keys
-        # The labels to use as filter conditions. Separate multiple labels with commas. A logical AND operation is performed on these labels.
+        # The labels used as filter conditions. Separate multiple conditions with commas. These conditions are evaluated using a logical AND.
         self.labels = labels
-        # Specifies whether to return label information.
+        # Specifies whether to display label information. Valid values:
         # 
-        # - true: Returns label information.
-        # 
-        # - false: Does not return label information.
+        # - true: Display label information.
+        # - false: Do not display label information.
         self.verbose = verbose
 
     def validate(self):

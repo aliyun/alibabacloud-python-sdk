@@ -19,32 +19,31 @@ class CreateCodeSourceRequest(DaraModel):
         mount_path: str = None,
         workspace_id: str = None,
     ):
-        # The visibility of the code configuration. Valid values:
-        # 
-        # - PUBLIC: The configuration is visible to everyone in the workspace.
-        # 
-        # - PRIVATE: The configuration is visible only to you and workspace administrators.
+        # The visibility of the code configuration.
         self.accessibility = accessibility
+        # The clone mode. Valid values:
+        # - 0 (default): creates a new subdirectory.
+        # - 1: tiles to the current directory.
         self.clone_type = clone_type
         # The code branch.
         self.code_branch = code_branch
-        # The commit ID of the code. \\`CodeCommit\\` takes precedence over \\`CodeBranch\\`. If you specify \\`CodeCommit\\`, \\`CodeBranch\\` is ignored.
+        # The CommitID of the code. CodeCommit takes priority over CodeBranch. If you specify CodeCommit, CodeBranch does not take effect.
         self.code_commit = code_commit
-        # The URL of the code repository.
+        # The URL of the code repository. This parameter is required.
         self.code_repo = code_repo
-        # The access token for the code repository.
+        # The access token of the code repository.
         self.code_repo_access_token = code_repo_access_token
-        # The username for the code repository.
+        # The username of the code repository.
         self.code_repo_user_name = code_repo_user_name
-        # The description of the code configuration, which helps distinguish it from other configurations.
+        # The description of the code configuration, which helps distinguish different code configurations.
         self.description = description
         # The name of the code configuration.
         # 
         # This parameter is required.
         self.display_name = display_name
-        # The local mount path for the code. The default is `/root/code/`.
+        # The local mount directory for the code. This parameter is required.
         self.mount_path = mount_path
-        # The workspace ID. For more information, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
+        # The workspace ID. For information about how to obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
         # 
         # This parameter is required.
         self.workspace_id = workspace_id

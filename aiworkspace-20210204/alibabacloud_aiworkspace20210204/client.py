@@ -2308,6 +2308,102 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_product_orders_with_options_async(request, headers, runtime)
 
+    def create_prompt_with_options(
+        self,
+        request: main_models.CreatePromptRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreatePromptResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.accessibility):
+            body['Accessibility'] = request.accessibility
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.framework_content):
+            body['FrameworkContent'] = request.framework_content
+        if not DaraCore.is_null(request.framework_type):
+            body['FrameworkType'] = request.framework_type
+        if not DaraCore.is_null(request.prompt_name):
+            body['PromptName'] = request.prompt_name
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreatePrompt',
+            version = '2021-02-04',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/prompts',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreatePromptResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_prompt_with_options_async(
+        self,
+        request: main_models.CreatePromptRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreatePromptResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.accessibility):
+            body['Accessibility'] = request.accessibility
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.framework_content):
+            body['FrameworkContent'] = request.framework_content
+        if not DaraCore.is_null(request.framework_type):
+            body['FrameworkType'] = request.framework_type
+        if not DaraCore.is_null(request.prompt_name):
+            body['PromptName'] = request.prompt_name
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreatePrompt',
+            version = '2021-02-04',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/prompts',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreatePromptResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_prompt(
+        self,
+        request: main_models.CreatePromptRequest,
+    ) -> main_models.CreatePromptResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_prompt_with_options(request, headers, runtime)
+
+    async def create_prompt_async(
+        self,
+        request: main_models.CreatePromptRequest,
+    ) -> main_models.CreatePromptResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_prompt_with_options_async(request, headers, runtime)
+
     def create_run_with_options(
         self,
         request: main_models.CreateRunRequest,
@@ -3999,6 +4095,86 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.delete_model_version_labels_with_options_async(model_id, version_name, request, headers, runtime)
+
+    def delete_prompt_with_options(
+        self,
+        prompt_id: str,
+        request: main_models.DeletePromptRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeletePromptResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeletePrompt',
+            version = '2021-02-04',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/prompts/{DaraURL.percent_encode(prompt_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeletePromptResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_prompt_with_options_async(
+        self,
+        prompt_id: str,
+        request: main_models.DeletePromptRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeletePromptResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeletePrompt',
+            version = '2021-02-04',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/prompts/{DaraURL.percent_encode(prompt_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeletePromptResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_prompt(
+        self,
+        prompt_id: str,
+        request: main_models.DeletePromptRequest,
+    ) -> main_models.DeletePromptResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_prompt_with_options(prompt_id, request, headers, runtime)
+
+    async def delete_prompt_async(
+        self,
+        prompt_id: str,
+        request: main_models.DeletePromptRequest,
+    ) -> main_models.DeletePromptResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_prompt_with_options_async(prompt_id, request, headers, runtime)
 
     def delete_run_with_options(
         self,
@@ -5780,6 +5956,10 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.accessibility):
             query['Accessibility'] = request.accessibility
+        if not DaraCore.is_null(request.caller_access_key_id):
+            query['CallerAccessKeyId'] = request.caller_access_key_id
+        if not DaraCore.is_null(request.caller_security_token):
+            query['CallerSecurityToken'] = request.caller_security_token
         if not DaraCore.is_null(request.caller_type):
             query['CallerType'] = request.caller_type
         if not DaraCore.is_null(request.caller_uid):
@@ -5830,6 +6010,10 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.accessibility):
             query['Accessibility'] = request.accessibility
+        if not DaraCore.is_null(request.caller_access_key_id):
+            query['CallerAccessKeyId'] = request.caller_access_key_id
+        if not DaraCore.is_null(request.caller_security_token):
+            query['CallerSecurityToken'] = request.caller_security_token
         if not DaraCore.is_null(request.caller_type):
             query['CallerType'] = request.caller_type
         if not DaraCore.is_null(request.caller_uid):
@@ -5883,6 +6067,86 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.get_permission_with_options_async(workspace_id, permission_code, request, headers, runtime)
+
+    def get_prompt_with_options(
+        self,
+        prompt_id: str,
+        request: main_models.GetPromptRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetPromptResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetPrompt',
+            version = '2021-02-04',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/prompts/{DaraURL.percent_encode(prompt_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetPromptResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_prompt_with_options_async(
+        self,
+        prompt_id: str,
+        request: main_models.GetPromptRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetPromptResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetPrompt',
+            version = '2021-02-04',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/prompts/{DaraURL.percent_encode(prompt_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetPromptResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_prompt(
+        self,
+        prompt_id: str,
+        request: main_models.GetPromptRequest,
+    ) -> main_models.GetPromptResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_prompt_with_options(prompt_id, request, headers, runtime)
+
+    async def get_prompt_async(
+        self,
+        prompt_id: str,
+        request: main_models.GetPromptRequest,
+    ) -> main_models.GetPromptResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_prompt_with_options_async(prompt_id, request, headers, runtime)
 
     def get_run_with_options(
         self,
@@ -8063,6 +8327,102 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.list_products_with_options_async(request, headers, runtime)
+
+    def list_prompts_with_options(
+        self,
+        request: main_models.ListPromptsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListPromptsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.framework_type):
+            query['FrameworkType'] = request.framework_type
+        if not DaraCore.is_null(request.order):
+            query['Order'] = request.order
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListPrompts',
+            version = '2021-02-04',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/prompts',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListPromptsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_prompts_with_options_async(
+        self,
+        request: main_models.ListPromptsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListPromptsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.framework_type):
+            query['FrameworkType'] = request.framework_type
+        if not DaraCore.is_null(request.order):
+            query['Order'] = request.order
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListPrompts',
+            version = '2021-02-04',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/prompts',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListPromptsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_prompts(
+        self,
+        request: main_models.ListPromptsRequest,
+    ) -> main_models.ListPromptsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_prompts_with_options(request, headers, runtime)
+
+    async def list_prompts_async(
+        self,
+        request: main_models.ListPromptsRequest,
+    ) -> main_models.ListPromptsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_prompts_with_options_async(request, headers, runtime)
 
     def list_quotas_with_options(
         self,
@@ -10911,6 +11271,98 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.update_model_version_with_options_async(model_id, version_name, request, headers, runtime)
+
+    def update_prompt_with_options(
+        self,
+        prompt_id: str,
+        request: main_models.UpdatePromptRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdatePromptResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.framework_content):
+            body['FrameworkContent'] = request.framework_content
+        if not DaraCore.is_null(request.framework_type):
+            body['FrameworkType'] = request.framework_type
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdatePrompt',
+            version = '2021-02-04',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/prompts/{DaraURL.percent_encode(prompt_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdatePromptResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_prompt_with_options_async(
+        self,
+        prompt_id: str,
+        request: main_models.UpdatePromptRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdatePromptResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.framework_content):
+            body['FrameworkContent'] = request.framework_content
+        if not DaraCore.is_null(request.framework_type):
+            body['FrameworkType'] = request.framework_type
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdatePrompt',
+            version = '2021-02-04',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/prompts/{DaraURL.percent_encode(prompt_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdatePromptResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_prompt(
+        self,
+        prompt_id: str,
+        request: main_models.UpdatePromptRequest,
+    ) -> main_models.UpdatePromptResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_prompt_with_options(prompt_id, request, headers, runtime)
+
+    async def update_prompt_async(
+        self,
+        prompt_id: str,
+        request: main_models.UpdatePromptRequest,
+    ) -> main_models.UpdatePromptResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_prompt_with_options_async(prompt_id, request, headers, runtime)
 
     def update_run_with_options(
         self,
