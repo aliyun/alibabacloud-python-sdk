@@ -8,19 +8,23 @@ class ListRepoTagRequest(DaraModel):
     def __init__(
         self,
         instance_id: str = None,
+        max_results: int = None,
+        next_token: str = None,
         page_no: int = None,
         page_size: int = None,
         repo_id: str = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The number of the page to return.
+        self.max_results = max_results
+        self.next_token = next_token
+        # The page number.
         self.page_no = page_no
-        # The number of entries per page. Maximum value: 100.
+        # The number of entries per page. The maximum value is 100.
         self.page_size = page_size
-        # The ID of the repository.
+        # The repository ID.
         # 
         # This parameter is required.
         self.repo_id = repo_id
@@ -35,6 +39,12 @@ class ListRepoTagRequest(DaraModel):
             result = _map
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
 
         if self.page_no is not None:
             result['PageNo'] = self.page_no
@@ -51,6 +61,12 @@ class ListRepoTagRequest(DaraModel):
         m = m or dict()
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
 
         if m.get('PageNo') is not None:
             self.page_no = m.get('PageNo')

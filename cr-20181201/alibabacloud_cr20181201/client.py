@@ -60,9 +60,7 @@ class Client(OpenApiClient):
             'ap-southeast-6': 'cr.ap-southeast-6.aliyuncs.com',
             'ap-southeast-5': 'cr.ap-southeast-5.aliyuncs.com',
             'ap-southeast-3': 'cr.ap-southeast-3.aliyuncs.com',
-            'ap-southeast-2': 'cr.ap-southeast-2.aliyuncs.com',
             'ap-southeast-1': 'cr.ap-southeast-1.aliyuncs.com',
-            'ap-south-1': 'cr.ap-south-1.aliyuncs.com',
             'ap-northeast-2': 'cr.ap-northeast-2.aliyuncs.com',
             'ap-northeast-1': 'cr.ap-northeast-1.aliyuncs.com'
         }
@@ -4416,6 +4414,8 @@ class Client(OpenApiClient):
     ) -> main_models.GetAuthorizationTokenResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.expires_in_hours):
+            query['ExpiresInHours'] = request.expires_in_hours
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         req = open_api_util_models.OpenApiRequest(
@@ -4444,6 +4444,8 @@ class Client(OpenApiClient):
     ) -> main_models.GetAuthorizationTokenResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.expires_in_hours):
+            query['ExpiresInHours'] = request.expires_in_hours
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         req = open_api_util_models.OpenApiRequest(
@@ -7572,6 +7574,10 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
         if not DaraCore.is_null(request.page_no):
             query['PageNo'] = request.page_no
         if not DaraCore.is_null(request.page_size):
@@ -7606,6 +7612,10 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
         if not DaraCore.is_null(request.page_no):
             query['PageNo'] = request.page_no
         if not DaraCore.is_null(request.page_size):
@@ -7838,6 +7848,10 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
         if not DaraCore.is_null(request.page_no):
             query['PageNo'] = request.page_no
         if not DaraCore.is_null(request.page_size):
@@ -7876,6 +7890,10 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
         if not DaraCore.is_null(request.page_no):
             query['PageNo'] = request.page_no
         if not DaraCore.is_null(request.page_size):

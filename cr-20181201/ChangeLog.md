@@ -1,3 +1,6 @@
+2026-08-06 Version: 2.2.2
+- Generated python 2018-12-01 for cr.
+
 2026-07-09 Version: 2.2.0
 - Support API CreateInstanceCustomizedDomain.
 - Support API DeleteInstanceCustomizedDomain.

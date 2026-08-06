@@ -13,13 +13,22 @@ class UpdateInstanceCustomizedDomainRequest(DaraModel):
         instance_id: str = None,
         module_name: str = None,
     ):
+        # The certificate ID.
+        # 
         # This parameter is required.
         self.cert_id = cert_id
+        # The region where the certificate resides.
         self.cert_region_id = cert_region_id
+        # The custom domain name.
+        # 
         # This parameter is required.
         self.domain = domain
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The modified domain name.
+        # 
         # This parameter is required.
         self.module_name = module_name
 

@@ -20,17 +20,29 @@ class GetInstanceCustomizedDomainResponseBody(DaraModel):
         region_id: str = None,
         request_id: str = None,
     ):
+        # The certificate ID.
         self.cert_id = cert_id
+        # The return code.
         self.code = code
+        # The creation time.
         self.create_time = create_time
+        # The custom domain name.
         self.domain = domain
+        # The domain type.
         self.domain_type = domain_type
+        # The custom endpoint type.
         self.endpoint_type = endpoint_type
+        # The instance ID.
         self.instance_id = instance_id
+        # Indicates whether the operation is successful.
         self.is_success = is_success
+        # The modification time.
         self.modified_time = modified_time
+        # The custom module name.
         self.module_name = module_name
+        # The region ID.
         self.region_id = region_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

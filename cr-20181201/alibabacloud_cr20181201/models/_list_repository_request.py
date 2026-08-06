@@ -8,29 +8,33 @@ class ListRepositoryRequest(DaraModel):
     def __init__(
         self,
         instance_id: str = None,
+        max_results: int = None,
+        next_token: str = None,
         page_no: int = None,
         page_size: int = None,
         repo_name: str = None,
         repo_namespace_name: str = None,
         repo_status: str = None,
     ):
-        # The ID of the Container Registry instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
+        self.max_results = max_results
+        self.next_token = next_token
         # The page number.
         self.page_no = page_no
-        # The number of entries per page. Maximum value: 100. If you specify a value larger than 100 for this parameter, the system reports a parameter error or uses 100 as the maximum value.
+        # The number of entries per page. The maximum value is 100. If the specified value exceeds 100, the system returns a parameter error or uses 100 as the actual maximum number of entries returned.
         self.page_size = page_size
-        # The name of the repository.
+        # The repository name.
         self.repo_name = repo_name
-        # The name of the namespace to which the repository belongs.
+        # The repository namespace name.
         self.repo_namespace_name = repo_namespace_name
-        # Repository status. Valid values:
+        # The repository status. Valid values:
         # 
         # - `NORMAL`: Normal.
         # 
-        # - `DELETING`: Deleting.
+        # - `DELETING`: Being deleted.
         # 
         # - `DELETED`: Deleted.
         # 
@@ -47,6 +51,12 @@ class ListRepositoryRequest(DaraModel):
             result = _map
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
 
         if self.page_no is not None:
             result['PageNo'] = self.page_no
@@ -69,6 +79,12 @@ class ListRepositoryRequest(DaraModel):
         m = m or dict()
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
 
         if m.get('PageNo') is not None:
             self.page_no = m.get('PageNo')

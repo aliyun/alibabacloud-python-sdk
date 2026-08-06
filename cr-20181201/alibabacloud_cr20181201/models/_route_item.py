@@ -11,15 +11,15 @@ class RouteItem(DaraModel):
         instance_domain: str = None,
         storage_domain: str = None,
     ):
-        # Instance Endpoint Type
+        # The endpoint type.
         # 
         # This parameter is required.
         self.endpoint_type = endpoint_type
-        # Instance Domain
+        # The instance domain name.
         # 
         # This parameter is required.
         self.instance_domain = instance_domain
-        # OSS Domain
+        # The OSS domain name.
         # 
         # This parameter is required.
         self.storage_domain = storage_domain

@@ -11,10 +11,16 @@ class DeleteInstanceCustomizedDomainRequest(DaraModel):
         instance_id: str = None,
         module_name: str = None,
     ):
+        # The custom domain name.
+        # 
         # This parameter is required.
         self.domain = domain
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The custom module name.
+        # 
         # This parameter is required.
         self.module_name = module_name
 

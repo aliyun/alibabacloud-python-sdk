@@ -12,6 +12,8 @@ class ListRepositoryResponseBody(DaraModel):
         self,
         code: str = None,
         is_success: bool = None,
+        max_results: int = None,
+        next_token: str = None,
         page_no: int = None,
         page_size: int = None,
         repositories: List[main_models.ListRepositoryResponseBodyRepositories] = None,
@@ -22,15 +24,17 @@ class ListRepositoryResponseBody(DaraModel):
         self.code = code
         # Indicates whether the request is successful.
         self.is_success = is_success
+        self.max_results = max_results
+        self.next_token = next_token
         # The page number.
         self.page_no = page_no
-        # The number of entries per page.
+        # The page size.
         self.page_size = page_size
-        # The information about the repositories.
+        # The list of repositories.
         self.repositories = repositories
         # The request ID.
         self.request_id = request_id
-        # The total number of the queried image repositories.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -49,6 +53,12 @@ class ListRepositoryResponseBody(DaraModel):
 
         if self.is_success is not None:
             result['IsSuccess'] = self.is_success
+
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
 
         if self.page_no is not None:
             result['PageNo'] = self.page_no
@@ -76,6 +86,12 @@ class ListRepositoryResponseBody(DaraModel):
 
         if m.get('IsSuccess') is not None:
             self.is_success = m.get('IsSuccess')
+
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
 
         if m.get('PageNo') is not None:
             self.page_no = m.get('PageNo')
@@ -113,35 +129,37 @@ class ListRepositoryResponseBodyRepositories(DaraModel):
         summary: str = None,
         tag_immutability: bool = None,
     ):
-        # The time when the repository was created.
+        # The creation time.
         self.create_time = create_time
-        # The ID of the Container Registry instance to which the repository belongs.
+        # The instance ID.
         self.instance_id = instance_id
-        # The time when the repository was last modified.
+        # The last modification time.
         self.modified_time = modified_time
-        # The type of the repository building. Valid values:
+        # The repository build type. Valid values:
         # 
-        # *   `AUTO`: The repository is automatically built.
-        # *   `MANUAL`: The repository is manually built.
+        # - `AUTO`: Automatically triggered build.
+        # 
+        # - `MANUAL`: Manually triggered build.
         self.repo_build_type = repo_build_type
-        # The ID of the repository.
+        # The repository ID.
         self.repo_id = repo_id
-        # The name of the repository.
+        # The repository name.
         self.repo_name = repo_name
-        # The name of the namespace to which the repository belongs.
+        # The repository namespace.
         self.repo_namespace_name = repo_namespace_name
-        # The status of the repository.
+        # The repository status.
         self.repo_status = repo_status
-        # The type of the repository. Valid values:
+        # The repository type. Valid values:
         # 
-        # *   `PUBLIC`
-        # *   `PRIVATE`
+        # - `PUBLIC`: Public.
+        # 
+        # - `PRIVATE`: Private.
         self.repo_type = repo_type
-        # The ID of the resource group to which the repository belongs.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The summary of the repository.
+        # The summary information.
         self.summary = summary
-        # Indicates whether the feature of image tag immutability is enabled for the repository.
+        # The image tag immutability.
         self.tag_immutability = tag_immutability
 
     def validate(self):

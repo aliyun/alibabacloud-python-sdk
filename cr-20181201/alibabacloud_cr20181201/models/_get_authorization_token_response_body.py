@@ -14,7 +14,7 @@ class GetAuthorizationTokenResponseBody(DaraModel):
         request_id: str = None,
         temp_username: str = None,
     ):
-        # The password used to log on to the Registry.
+        # The password used to log on to the registry.
         self.authorization_token = authorization_token
         # The return code.
         self.code = code
@@ -24,7 +24,7 @@ class GetAuthorizationTokenResponseBody(DaraModel):
         self.is_success = is_success
         # The request ID.
         self.request_id = request_id
-        # The username used to log on to the Registry.
+        # The username used to log on to the registry.
         self.temp_username = temp_username
 
     def validate(self):

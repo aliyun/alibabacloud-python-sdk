@@ -13,24 +13,28 @@ class ListRepoTagResponseBody(DaraModel):
         code: str = None,
         images: List[main_models.ListRepoTagResponseBodyImages] = None,
         is_success: bool = None,
+        max_results: int = None,
+        next_token: str = None,
         page_no: int = None,
         page_size: int = None,
         request_id: str = None,
         total_count: str = None,
     ):
-        # The return value.
+        # The return code.
         self.code = code
-        # The images.
+        # The image list.
         self.images = images
         # Indicates whether the request is successful.
         self.is_success = is_success
-        # The page number of the returned page.
+        self.max_results = max_results
+        self.next_token = next_token
+        # The page number.
         self.page_no = page_no
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of returned entries.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -54,6 +58,12 @@ class ListRepoTagResponseBody(DaraModel):
 
         if self.is_success is not None:
             result['IsSuccess'] = self.is_success
+
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
 
         if self.page_no is not None:
             result['PageNo'] = self.page_no
@@ -83,6 +93,12 @@ class ListRepoTagResponseBody(DaraModel):
         if m.get('IsSuccess') is not None:
             self.is_success = m.get('IsSuccess')
 
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+
         if m.get('PageNo') is not None:
             self.page_no = m.get('PageNo')
 
@@ -108,19 +124,19 @@ class ListRepoTagResponseBodyImages(DaraModel):
         status: str = None,
         tag: str = None,
     ):
-        # The digest of the image.
+        # The digest value.
         self.digest = digest
         # The time when the image was created.
         self.image_create = image_create
-        # The ID of the image.
+        # The image ID.
         self.image_id = image_id
-        # The size of the image.
+        # The image size, in bytes.
         self.image_size = image_size
-        # The time when the image was last updated.
+        # The time when the image was updated.
         self.image_update = image_update
-        # The status of the image.
+        # The status.
         self.status = status
-        # The tag of the image.
+        # The image tag.
         self.tag = tag
 
     def validate(self):
