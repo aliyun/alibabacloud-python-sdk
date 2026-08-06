@@ -12,12 +12,20 @@ class GetKgRelationRequest(DaraModel):
         relation_type: str = None,
         workspace_id: str = None,
     ):
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The relationship record ID.
+        # 
         # This parameter is required.
         self.relation_id = relation_id
+        # The relationship type code.
+        # 
         # This parameter is required.
         self.relation_type = relation_type
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

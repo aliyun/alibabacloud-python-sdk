@@ -17,11 +17,17 @@ class GetKgNeighborResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The backend response code.
         self.code = code
+        # The query result.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The backend exception details.
         self.message = message
+        # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -82,7 +88,9 @@ class GetKgNeighborResponseBodyData(DaraModel):
         edge_list: List[main_models.GetKgNeighborResponseBodyDataEdgeList] = None,
         node_list: List[main_models.GetKgNeighborResponseBodyDataNodeList] = None,
     ):
+        # The edge list.
         self.edge_list = edge_list
+        # The node list.
         self.node_list = node_list
 
     def validate(self):
@@ -135,8 +143,11 @@ class GetKgNeighborResponseBodyDataNodeList(DaraModel):
         entity_type: str = None,
         property_list: List[main_models.GetKgNeighborResponseBodyDataNodeListPropertyList] = None,
     ):
+        # The entity record ID.
         self.entity_id = entity_id
+        # The entity type code.
         self.entity_type = entity_type
+        # The entity record property list.
         self.property_list = property_list
 
     def validate(self):
@@ -186,8 +197,11 @@ class GetKgNeighborResponseBodyDataNodeListPropertyList(DaraModel):
         data_type: str = None,
         value: str = None,
     ):
+        # The property code.
         self.code = code
+        # The property data type. Valid values: STRING (string), INTEGER (integer), FLOAT (float), BOOLEAN (Boolean), DATE (date), LIST (list), and others.
         self.data_type = data_type
+        # The property value.
         self.value = value
 
     def validate(self):
@@ -231,10 +245,15 @@ class GetKgNeighborResponseBodyDataEdgeList(DaraModel):
         source_entity_id: str = None,
         target_entity_id: str = None,
     ):
+        # The relation record property list.
         self.property_list = property_list
+        # The relation record ID.
         self.relation_id = relation_id
+        # The relation type code.
         self.relation_type = relation_type
+        # The source entity ID.
         self.source_entity_id = source_entity_id
+        # The target entity ID.
         self.target_entity_id = target_entity_id
 
     def validate(self):
@@ -296,8 +315,11 @@ class GetKgNeighborResponseBodyDataEdgeListPropertyList(DaraModel):
         data_type: str = None,
         value: str = None,
     ):
+        # The property code.
         self.code = code
+        # The property data type. Valid values: STRING (string), INTEGER (integer), FLOAT (float), BOOLEAN (Boolean), DATE (date), LIST (list), and others.
         self.data_type = data_type
+        # The property value.
         self.value = value
 
     def validate(self):

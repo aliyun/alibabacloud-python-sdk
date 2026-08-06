@@ -15,11 +15,17 @@ class ImportKgSchemaResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The backend response code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The import result.
         self.import_result = import_result
+        # The backend exception details.
         self.message = message
+        # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -80,7 +86,9 @@ class ImportKgSchemaResponseBodyImportResult(DaraModel):
         entity_type_count: int = None,
         relation_type_count: int = None,
     ):
+        # The number of entity types that were changed.
         self.entity_type_count = entity_type_count
+        # The number of relation types that were changed.
         self.relation_type_count = relation_type_count
 
     def validate(self):

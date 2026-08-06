@@ -11,9 +11,14 @@ class GetKgSchemaPublishResultRequest(DaraModel):
         version_id: int = None,
         workspace_id: str = None,
     ):
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The version number. If this parameter is left empty, the most recent publish record is returned.
         self.version_id = version_id
+        # The model ID.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

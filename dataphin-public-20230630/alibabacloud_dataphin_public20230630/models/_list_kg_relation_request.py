@@ -13,11 +13,18 @@ class ListKgRelationRequest(DaraModel):
         relation_type: str = None,
         workspace_id: str = None,
     ):
+        # The paged search filter conditions.
         self.list_query = list_query
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The relationship type code.
+        # 
         # This parameter is required.
         self.relation_type = relation_type
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -69,9 +76,13 @@ class ListKgRelationRequestListQuery(DaraModel):
         source_entity_id: str = None,
         target_entity_id: str = None,
     ):
+        # The page number. Default value: 1.
         self.page_num = page_num
+        # The number of records per page. Default value: 20.
         self.page_size = page_size
+        # The source entity record ID.
         self.source_entity_id = source_entity_id
+        # The target entity record ID.
         self.target_entity_id = target_entity_id
 
     def validate(self):

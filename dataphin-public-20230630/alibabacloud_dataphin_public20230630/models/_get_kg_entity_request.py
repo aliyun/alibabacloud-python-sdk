@@ -12,12 +12,20 @@ class GetKgEntityRequest(DaraModel):
         op_tenant_id: int = None,
         workspace_id: str = None,
     ):
+        # The entity record ID.
+        # 
         # This parameter is required.
         self.entity_id = entity_id
+        # The entity type code.
+        # 
         # This parameter is required.
         self.entity_type = entity_type
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

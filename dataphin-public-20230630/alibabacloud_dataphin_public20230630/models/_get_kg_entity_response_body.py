@@ -17,11 +17,17 @@ class GetKgEntityResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The backend response code.
         self.code = code
+        # The entity record details.
         self.entity_info = entity_info
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The backend exception details.
         self.message = message
+        # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -83,8 +89,11 @@ class GetKgEntityResponseBodyEntityInfo(DaraModel):
         entity_type: str = None,
         property_list: List[main_models.GetKgEntityResponseBodyEntityInfoPropertyList] = None,
     ):
+        # The entity record ID.
         self.entity_id = entity_id
+        # The entity type code.
         self.entity_type = entity_type
+        # The list of entity record properties.
         self.property_list = property_list
 
     def validate(self):
@@ -134,8 +143,18 @@ class GetKgEntityResponseBodyEntityInfoPropertyList(DaraModel):
         data_type: str = None,
         value: str = None,
     ):
+        # The property code.
         self.code = code
+        # The property data type. Valid values:
+        # 
+        # - STRING: string
+        # - INTEGER: integer
+        # - FLOAT: floating-point number
+        # - BOOLEAN: Boolean
+        # - DATE: date
+        # - LIST: list
         self.data_type = data_type
+        # The property value.
         self.value = value
 
     def validate(self):

@@ -16,13 +16,22 @@ class GetKgNeighborRequest(DaraModel):
         op_tenant_id: int = None,
         workspace_id: str = None,
     ):
+        # The entity record data ID.
+        # 
         # This parameter is required.
         self.entity_data_id = entity_data_id
+        # The entity type.
+        # 
         # This parameter is required.
         self.entity_type = entity_type
+        # The entity record neighbor node query instruction.
         self.neighbors_query = neighbors_query
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The model ID.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -79,8 +88,16 @@ class GetKgNeighborRequestNeighborsQuery(DaraModel):
         direction_type: str = None,
         relation_types: List[str] = None,
     ):
+        # The maximum depth of neighbor nodes. Default value: 1.
         self.depth = depth
+        # The direction type. Valid values:
+        # - in: the current entity is the target node.
+        # - out: the current entity is the source node.
+        # - both: the current entity is both the source node and the target node.
+        # 
+        # Default value: both.
         self.direction_type = direction_type
+        # The list of relation types.
         self.relation_types = relation_types
 
     def validate(self):

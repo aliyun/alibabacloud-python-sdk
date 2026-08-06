@@ -17,11 +17,17 @@ class ListKgRelationResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The backend response code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The backend exception details.
         self.message = message
+        # The paged query result.
         self.page_result = page_result
+        # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -82,7 +88,9 @@ class ListKgRelationResponseBodyPageResult(DaraModel):
         relation_list: List[main_models.ListKgRelationResponseBodyPageResultRelationList] = None,
         total_count: int = None,
     ):
+        # The paged relationship record list.
         self.relation_list = relation_list
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -128,10 +136,15 @@ class ListKgRelationResponseBodyPageResultRelationList(DaraModel):
         source_entity_id: str = None,
         target_entity_id: str = None,
     ):
+        # The relationship record property list.
         self.property_list = property_list
+        # The relationship record ID.
         self.relation_id = relation_id
+        # The relationship type code.
         self.relation_type = relation_type
+        # The source entity ID.
         self.source_entity_id = source_entity_id
+        # The target entity ID.
         self.target_entity_id = target_entity_id
 
     def validate(self):
@@ -193,8 +206,11 @@ class ListKgRelationResponseBodyPageResultRelationListPropertyList(DaraModel):
         data_type: str = None,
         value: str = None,
     ):
+        # The property code.
         self.code = code
+        # The property data type. Valid values: STRING (string), INTEGER (integer), FLOAT (float), BOOLEAN (boolean), DATE (date), LIST (list), and others.
         self.data_type = data_type
+        # The property value.
         self.value = value
 
     def validate(self):

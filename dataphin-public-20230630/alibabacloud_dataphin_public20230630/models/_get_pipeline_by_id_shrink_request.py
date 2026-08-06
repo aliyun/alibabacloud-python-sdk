@@ -19,7 +19,7 @@ class GetPipelineByIdShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
-        # The ID used to query the pipeline task.
+        # The query ID used to query the pipeline node.
         # 
         # This parameter is required.
         self.query_id_shrink = query_id_shrink

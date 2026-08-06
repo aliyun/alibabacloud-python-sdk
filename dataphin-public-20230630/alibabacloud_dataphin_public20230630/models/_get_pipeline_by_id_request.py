@@ -20,7 +20,7 @@ class GetPipelineByIdRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
-        # The ID used to query the pipeline task.
+        # The query ID used to query the pipeline node.
         # 
         # This parameter is required.
         self.query_id = query_id
@@ -69,11 +69,11 @@ class GetPipelineByIdRequestQueryId(DaraModel):
         node_id: str = None,
         pipeline_id: int = None,
     ):
-        # Supports querying by the integration task file ID (fileId).
+        # The file ID of the integration node. You can use this parameter to query the pipeline node.
         self.file_id = file_id
-        # Supports querying by the integration task scheduling node ID (nodeId).
+        # The scheduling node ID of the integration node. You can use this parameter to query the pipeline node.
         self.node_id = node_id
-        # Supports querying by the integration pipeline primary key (pipelineId).
+        # The primary key ID of the integration pipeline. You can use this parameter to query the pipeline node.
         self.pipeline_id = pipeline_id
 
     def validate(self):
@@ -120,7 +120,7 @@ class GetPipelineByIdRequestContext(DaraModel):
         # 
         # This parameter is required.
         self.env = env
-        # The ID of the project to which the integration pipeline task belongs.
+        # The project ID to which the integration pipeline node belongs.
         # 
         # This parameter is required.
         self.project_id = project_id

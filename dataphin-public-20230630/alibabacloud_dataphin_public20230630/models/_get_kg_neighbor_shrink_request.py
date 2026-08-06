@@ -13,13 +13,22 @@ class GetKgNeighborShrinkRequest(DaraModel):
         op_tenant_id: int = None,
         workspace_id: str = None,
     ):
+        # The entity record data ID.
+        # 
         # This parameter is required.
         self.entity_data_id = entity_data_id
+        # The entity type.
+        # 
         # This parameter is required.
         self.entity_type = entity_type
+        # The entity record neighbor node query instruction.
         self.neighbors_query_shrink = neighbors_query_shrink
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The model ID.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

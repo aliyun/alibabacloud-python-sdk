@@ -11,10 +11,16 @@ class UpdateDatasetShrinkRequest(DaraModel):
         project_id: str = None,
         update_command_shrink: str = None,
     ):
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The project ID.
+        # 
         # This parameter is required.
         self.project_id = project_id
+        # The update request struct.
+        # 
         # This parameter is required.
         self.update_command_shrink = update_command_shrink
 
