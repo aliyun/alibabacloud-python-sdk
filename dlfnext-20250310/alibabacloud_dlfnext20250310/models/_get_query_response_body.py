@@ -18,12 +18,19 @@ class GetQueryResponseBody(DaraModel):
         status: str = None,
         tier: str = None,
     ):
+        # The completion time of the task.
         self.completed_at = completed_at
+        # The creation time of the task.
         self.created_at = created_at
+        # The query ID, used for subsequent polling of results.
         self.query_id = query_id
+        # The result list.
         self.results = results
+        # The SQL text. Multiple statements separated by semicolons are supported and executed sequentially within the same session.
         self.sql = sql
+        # The task running status.
         self.status = status
+        # The execution specifications. Default value: standard.
         self.tier = tier
 
     def validate(self):

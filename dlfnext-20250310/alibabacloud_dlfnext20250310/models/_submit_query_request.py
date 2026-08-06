@@ -13,10 +13,15 @@ class SubmitQueryRequest(DaraModel):
         sql: str = None,
         tier: str = None,
     ):
+        # The default catalog.
         self.default_catalog = default_catalog
+        # The default database.
         self.default_database = default_database
+        # The limit on the number of returned results.
         self.limit = limit
+        # The SQL text. Multiple statements separated by semicolons are supported and executed sequentially within the same session.
         self.sql = sql
+        # The execution specifications. Default value: standard.
         self.tier = tier
 
     def validate(self):

@@ -12,7 +12,9 @@ class ListTablesResponseBody(DaraModel):
         next_page_token: str = None,
         tables: List[str] = None,
     ):
+        # The token to retrieve the next page of results. If this parameter is null, all results have been returned.
         self.next_page_token = next_page_token
+        # A list of tables.
         self.tables = tables
 
     def validate(self):

@@ -10,6 +10,7 @@ class AlterTableSchemaRequest(DaraModel):
         self,
         schema: main_models.Schema = None,
     ):
+        # The table schema.
         self.schema = schema
 
     def validate(self):

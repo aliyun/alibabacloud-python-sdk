@@ -17,15 +17,15 @@ class FunctionDefinition(DaraModel):
         language: str = None,
         type: str = None,
     ):
-        # required in FileFunctionDefinition
+        # Required in FileFunctionDefinition.
         self.class_name = class_name
-        # required in SQLFunctionDefinition/LambdaFunctionDefinition
+        # Required in SQLFunctionDefinition and LambdaFunctionDefinition.
         self.definition = definition
-        # required in FileFunctionDefinition
+        # Required in FileFunctionDefinition.
         self.file_resources = file_resources
-        # required in FileFunctionDefinition
+        # Required in FileFunctionDefinition.
         self.function_name = function_name
-        # required in LambdaFunctionDefinition/FileFunctionDefinition
+        # Required in LambdaFunctionDefinition and FileFunctionDefinition.
         self.language = language
         self.type = type
 

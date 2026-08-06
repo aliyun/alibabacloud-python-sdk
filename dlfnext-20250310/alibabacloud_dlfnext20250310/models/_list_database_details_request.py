@@ -12,8 +12,15 @@ class ListDatabaseDetailsRequest(DaraModel):
         page_token: str = None,
         status: str = None,
     ):
+        # The SQL-style right fuzzy match pattern for database names. The percent sign (%) wildcard is supported.
         self.database_name_pattern = database_name_pattern
+        # The page size.
+        # 
+        # Default value: 1000.
+        # 
+        # Maximum value: 1000.
         self.max_results = max_results
+        # The pagination token used to retrieve the next page of results. If the response does not include this token, pass an empty string ("") or an empty character (\\"\\").
         self.page_token = page_token
         self.status = status
 

@@ -1,3 +1,7 @@
+2026-08-06 Version: 3.9.0
+- Support API UpdateVpcConfig.
+
+
 2026-07-20 Version: 3.8.0
 - Support API GetCatalogKmsGrants.
 - Support API GetQuery.

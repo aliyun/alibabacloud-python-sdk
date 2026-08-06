@@ -14,8 +14,13 @@ class BatchGrantPermissionsResponseBody(DaraModel):
         failure_permissions: List[main_models.FailurePermission] = None,
         success: bool = None,
     ):
+        # The error message. This parameter is not empty when success is false, indicating a business error. This parameter is empty when success is true.
         self.error_message = error_message
+        # The list of permissions that failed to be granted.
         self.failure_permissions = failure_permissions
+        # Indicates whether the API call was successful. Valid values:
+        # - true: The API call was successful.
+        # - false: The API call failed.
         self.success = success
 
     def validate(self):

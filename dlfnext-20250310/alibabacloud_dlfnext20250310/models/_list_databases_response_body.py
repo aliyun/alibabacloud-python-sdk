@@ -12,7 +12,9 @@ class ListDatabasesResponseBody(DaraModel):
         databases: List[str] = None,
         next_page_token: str = None,
     ):
+        # The databases.
         self.databases = databases
+        # The token for the next page of results. A null value indicates that this is the last page.
         self.next_page_token = next_page_token
 
     def validate(self):

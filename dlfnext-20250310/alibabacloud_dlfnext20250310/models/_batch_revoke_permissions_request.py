@@ -12,6 +12,7 @@ class BatchRevokePermissionsRequest(DaraModel):
         self,
         permissions: List[main_models.Permission] = None,
     ):
+        # The list of permissions to be revoked.
         self.permissions = permissions
 
     def validate(self):

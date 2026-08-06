@@ -13,7 +13,9 @@ class ListRoleUsersResponseBody(DaraModel):
         next_page_token: str = None,
         users: List[main_models.User] = None,
     ):
+        # The token to retrieve the next page of results. If null is returned, all results have been retrieved.
         self.next_page_token = next_page_token
+        # The users.
         self.users = users
 
     def validate(self):

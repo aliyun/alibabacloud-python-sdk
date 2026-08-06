@@ -229,6 +229,8 @@ from ._update_role_request import UpdateRoleRequest
 from ._update_role_response import UpdateRoleResponse
 from ._update_role_users_request import UpdateRoleUsersRequest
 from ._update_role_users_response import UpdateRoleUsersResponse
+from ._update_vpc_config_request import UpdateVpcConfigRequest
+from ._update_vpc_config_response import UpdateVpcConfigResponse
 from ._verify_catalog_kms_request import VerifyCatalogKmsRequest
 from ._verify_catalog_kms_response_body import VerifyCatalogKmsResponseBody
 from ._verify_catalog_kms_response import VerifyCatalogKmsResponse
@@ -237,6 +239,7 @@ from ._permission import PermissionColumns
 from ._statement_result import StatementResultSchema
 from ._describe_regions_response_body import DescribeRegionsResponseBodyRegions
 from ._get_vpc_config_response_body import GetVpcConfigResponseBodyTrustedVpcs
+from ._update_vpc_config_request import UpdateVpcConfigRequestUpdates
 
 __all__ = [
     CacheCluster,
@@ -466,6 +469,8 @@ __all__ = [
     UpdateRoleResponse,
     UpdateRoleUsersRequest,
     UpdateRoleUsersResponse,
+    UpdateVpcConfigRequest,
+    UpdateVpcConfigResponse,
     VerifyCatalogKmsRequest,
     VerifyCatalogKmsResponseBody,
     VerifyCatalogKmsResponse,
@@ -473,5 +478,6 @@ __all__ = [
     PermissionColumns,
     StatementResultSchema,
     DescribeRegionsResponseBodyRegions,
-    GetVpcConfigResponseBodyTrustedVpcs
+    GetVpcConfigResponseBodyTrustedVpcs,
+    UpdateVpcConfigRequestUpdates
 ]

@@ -22,15 +22,20 @@ class Permission(DaraModel):
         table: str = None,
         view: str = None,
     ):
+        # The access type.
         self.access = access
         self.column_masking = column_masking
         self.columns = columns
+        # The database name.
         self.database = database
         self.expire_time = expire_time
         self.function = function
+        # The user resource descriptor.
         self.principal = principal
+        # The permission resource type.
         self.resource_type = resource_type
         self.row_filter = row_filter
+        # The table name.
         self.table = table
         self.view = view
 

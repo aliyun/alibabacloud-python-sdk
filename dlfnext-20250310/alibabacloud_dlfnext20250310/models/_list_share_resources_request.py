@@ -10,7 +10,9 @@ class ListShareResourcesRequest(DaraModel):
         max_results: int = None,
         page_token: str = None,
     ):
+        # The maximum number of records to return.
         self.max_results = max_results
+        # The token used to page through results. If this parameter is not returned, pass an empty string ("").
         self.page_token = page_token
 
     def validate(self):

@@ -9,6 +9,8 @@ class VerifyCatalogKmsRequest(DaraModel):
         self,
         kms_key_id: str = None,
     ):
+        # The ID of the KMS customer master key (CMK) to be validated. The server uses this key to perform an SSE-KMS write probe.
+        # 
         # This parameter is required.
         self.kms_key_id = kms_key_id
 

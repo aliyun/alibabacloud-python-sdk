@@ -11,8 +11,11 @@ class Move(DaraModel):
         reference_field_name: str = None,
         type: str = None,
     ):
+        # The name of the column.
         self.field_name = field_name
+        # The name of the reference column.
         self.reference_field_name = reference_field_name
+        # The move type.
         self.type = type
 
     def validate(self):

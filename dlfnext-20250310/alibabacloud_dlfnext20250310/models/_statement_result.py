@@ -20,14 +20,23 @@ class StatementResult(DaraModel):
         sql: str = None,
         status: str = None,
     ):
+        # The presigned URL of the Arrow IPC file. This parameter is returned when a result set exists. The URL is valid for 1 hour and contains full data. The value is null for an empty result set (rowCount == 0).
         self.download_url = download_url
+        # The error message. This parameter is returned only when the status is FAILED.
         self.error = error
+        # The error code. This parameter is returned only when the status is FAILED.
         self.error_code = error_code
+        # The execution duration of the statement, in milliseconds.
         self.execution_time = execution_time
+        # The statement sequence number (0-based).
         self.index = index
+        # The total number of rows in the result. The value is 0 for statements that do not return a result set.
         self.row_count = row_count
+        # The result column information. This parameter is returned when a result set exists.
         self.schema = schema
+        # The SQL text of the statement.
         self.sql = sql
+        # The status of the statement. Valid values: COMPLETED and FAILED.
         self.status = status
 
     def validate(self):
@@ -112,7 +121,9 @@ class StatementResultSchema(DaraModel):
         name: str = None,
         type: str = None,
     ):
+        # The column name.
         self.name = name
+        # The data type.
         self.type = type
 
     def validate(self):

@@ -13,10 +13,15 @@ class VerifyCatalogKmsResponseBody(DaraModel):
         server_side_encryption: str = None,
         success: bool = None,
     ):
+        # The error code returned when the validation fails. An empty string is returned when the validation is successful.
         self.error_code = error_code
+        # The description of the failure cause and remediation suggestions returned when the validation fails. An empty string is returned when the validation is successful.
         self.hint = hint
+        # The KMS key identifier actually used by the probe object. When the validation is successful, this corresponds to the customer master key (CMK) specified in the request.
         self.kms_key_id = kms_key_id
+        # The server-side encryption method actually used by the probe object. Returns KMS when the validation is successful.
         self.server_side_encryption = server_side_encryption
+        # Indicates whether the validation is successful. A value of true indicates that the write probe succeeded and the SSE-KMS configuration of the object meets expectations. A value of false indicates that the validation failed.
         self.success = success
 
     def validate(self):

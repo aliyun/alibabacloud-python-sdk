@@ -13,7 +13,9 @@ class ListTableDetailsResponseBody(DaraModel):
         next_page_token: str = None,
         table_details: List[main_models.Table] = None,
     ):
+        # The pagination token used to retrieve the next page of data. If null is returned, the current page is the last page of results.
         self.next_page_token = next_page_token
+        # The list of tables.
         self.table_details = table_details
 
     def validate(self):

@@ -17,14 +17,23 @@ class User(DaraModel):
         user_name: str = None,
         user_principal: str = None,
     ):
+        # The creation time. The value is a UNIX timestamp in milliseconds.
         self.created_at = created_at
+        # The name of the creator.
         self.created_by = created_by
+        # The display name of the user.
         self.display_name = display_name
+        # The type of the user.
         self.type = type
+        # The time of the last update. The value is a UNIX timestamp in milliseconds.
         self.updated_at = updated_at
+        # The name of the updater.
         self.updated_by = updated_by
+        # The ID of the user.
         self.user_id = user_id
+        # The username.
         self.user_name = user_name
+        # The resource descriptor of the user.
         self.user_principal = user_principal
 
     def validate(self):

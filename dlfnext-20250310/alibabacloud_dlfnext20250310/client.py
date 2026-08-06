@@ -6353,6 +6353,86 @@ class Client(OpenApiClient):
         headers = {}
         return await self.update_role_users_with_options_async(request, headers, runtime)
 
+    def update_vpc_config_with_options(
+        self,
+        request: main_models.UpdateVpcConfigRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateVpcConfigResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.removals):
+            body['removals'] = request.removals
+        if not DaraCore.is_null(request.updates):
+            body['updates'] = request.updates
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateVpcConfig',
+            version = '2025-03-10',
+            protocol = 'HTTPS',
+            pathname = f'/dlf/v1/auth/vpc',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'none'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateVpcConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_vpc_config_with_options_async(
+        self,
+        request: main_models.UpdateVpcConfigRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateVpcConfigResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.removals):
+            body['removals'] = request.removals
+        if not DaraCore.is_null(request.updates):
+            body['updates'] = request.updates
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateVpcConfig',
+            version = '2025-03-10',
+            protocol = 'HTTPS',
+            pathname = f'/dlf/v1/auth/vpc',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'none'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateVpcConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_vpc_config(
+        self,
+        request: main_models.UpdateVpcConfigRequest,
+    ) -> main_models.UpdateVpcConfigResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_vpc_config_with_options(request, headers, runtime)
+
+    async def update_vpc_config_async(
+        self,
+        request: main_models.UpdateVpcConfigRequest,
+    ) -> main_models.UpdateVpcConfigResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_vpc_config_with_options_async(request, headers, runtime)
+
     def verify_catalog_kms_with_options(
         self,
         catalog: str,

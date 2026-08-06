@@ -13,8 +13,9 @@ class PartitionSummaries(DaraModel):
         next_page_token: str = None,
         partitions: List[main_models.PartitionSummary] = None,
     ):
+        # The token to retrieve the next page of results. A null value indicates that the last page of results has been returned.
         self.next_page_token = next_page_token
-        # Current page of partition profiles
+        # The partitions.
         self.partitions = partitions
 
     def validate(self):

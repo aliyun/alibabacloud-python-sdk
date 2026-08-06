@@ -12,6 +12,7 @@ class ListPartitionsByNamesResponseBody(DaraModel):
         self,
         partitions: List[main_models.Partition] = None,
     ):
+        # The partitions.
         self.partitions = partitions
 
     def validate(self):

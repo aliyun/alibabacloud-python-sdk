@@ -9,6 +9,7 @@ class SubmitQueryResponseBody(DaraModel):
         self,
         query_id: str = None,
     ):
+        # The query ID, which is used for subsequent polling of results.
         self.query_id = query_id
 
     def validate(self):

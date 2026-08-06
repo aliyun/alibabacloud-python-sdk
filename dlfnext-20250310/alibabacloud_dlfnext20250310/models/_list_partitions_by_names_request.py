@@ -11,6 +11,7 @@ class ListPartitionsByNamesRequest(DaraModel):
         self,
         specs: List[Dict[str, str]] = None,
     ):
+        # The list of partition specifications.
         self.specs = specs
 
     def validate(self):

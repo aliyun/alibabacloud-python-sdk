@@ -13,7 +13,9 @@ class ListReceivedSharesResponseBody(DaraModel):
         next_page_token: str = None,
         shares: List[main_models.ReceivedShare] = None,
     ):
+        # The token to retrieve the next page of results. If this parameter is null, all results have been returned.
         self.next_page_token = next_page_token
+        # The received shares.
         self.shares = shares
 
     def validate(self):

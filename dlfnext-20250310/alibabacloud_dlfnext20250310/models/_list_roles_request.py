@@ -11,8 +11,11 @@ class ListRolesRequest(DaraModel):
         page_token: str = None,
         role_name: str = None,
     ):
+        # The number of entries to return on each page.
         self.max_results = max_results
+        # The token used to retrieve the next page of results. If the response does not return this parameter, pass an empty string ("").
         self.page_token = page_token
+        # The role name.
         self.role_name = role_name
 
     def validate(self):

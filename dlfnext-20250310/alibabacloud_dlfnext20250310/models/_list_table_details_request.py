@@ -13,10 +13,17 @@ class ListTableDetailsRequest(DaraModel):
         table_name_pattern: str = None,
         type: str = None,
     ):
+        # The maximum number of records to retrieve in a single request.
         self.max_results = max_results
+        # The pagination token used to retrieve the next page of data. If the response does not provide this value, pass an empty string ("") or an empty character (\\"\\").
         self.page_token = page_token
+        # The deletion status of the table. Valid values:
+        # - retained: The table is deleted and temporarily stored in the recycle bin.
+        # - active: The table is in a normal state. This is the default value.
         self.status = status
+        # The fuzzy match pattern for the table name.
         self.table_name_pattern = table_name_pattern
+        # The type.
         self.type = type
 
     def validate(self):

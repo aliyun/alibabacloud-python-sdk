@@ -13,7 +13,9 @@ class ListRolesResponseBody(DaraModel):
         next_page_token: str = None,
         roles: List[main_models.Role] = None,
     ):
+        # The token used to retrieve the next page of results. If a null value is returned, the current page is the last page.
         self.next_page_token = next_page_token
+        # The roles.
         self.roles = roles
 
     def validate(self):

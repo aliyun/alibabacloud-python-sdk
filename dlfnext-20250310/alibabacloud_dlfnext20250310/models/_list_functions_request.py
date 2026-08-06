@@ -11,8 +11,11 @@ class ListFunctionsRequest(DaraModel):
         max_results: int = None,
         page_token: str = None,
     ):
+        # A pattern to filter function names.
         self.function_name_pattern = function_name_pattern
+        # The maximum number of records to return in the response.
         self.max_results = max_results
+        # A pagination token. Use this token to retrieve the next page of results. Pass an empty string ("") if this parameter is not returned in the response.
         self.page_token = page_token
 
     def validate(self):

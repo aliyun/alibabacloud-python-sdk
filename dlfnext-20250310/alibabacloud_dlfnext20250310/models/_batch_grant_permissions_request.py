@@ -12,6 +12,7 @@ class BatchGrantPermissionsRequest(DaraModel):
         self,
         permissions: List[main_models.Permission] = None,
     ):
+        # The list of permissions.
         self.permissions = permissions
 
     def validate(self):

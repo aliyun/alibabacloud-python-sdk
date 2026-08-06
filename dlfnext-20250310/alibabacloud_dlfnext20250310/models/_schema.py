@@ -16,10 +16,15 @@ class Schema(DaraModel):
         partition_keys: List[str] = None,
         primary_keys: List[str] = None,
     ):
+        # The comment for the table.
         self.comment = comment
+        # A list of table column definitions.
         self.fields = fields
+        # A list of table configuration options.
         self.options = options
+        # A list of partition column names.
         self.partition_keys = partition_keys
+        # A list of primary key column names.
         self.primary_keys = primary_keys
 
     def validate(self):

@@ -7,17 +7,20 @@ from typing import List, Dict
 from alibabacloud_dlfnext20250310 import models as main_models
 from darabonba.model import DaraModel
 
-class GetVpcConfigResponseBody(DaraModel):
+class UpdateVpcConfigRequest(DaraModel):
     def __init__(
         self,
-        trusted_vpcs: List[main_models.GetVpcConfigResponseBodyTrustedVpcs] = None,
+        removals: List[str] = None,
+        updates: List[main_models.UpdateVpcConfigRequestUpdates] = None,
     ):
-        # List of trusted VPCs.
-        self.trusted_vpcs = trusted_vpcs
+        # The list of VPC IDs to delete.
+        self.removals = removals
+        # The list of VPCs to update.
+        self.updates = updates
 
     def validate(self):
-        if self.trusted_vpcs:
-            for v1 in self.trusted_vpcs:
+        if self.updates:
+            for v1 in self.updates:
                  if v1:
                     v1.validate()
 
@@ -26,35 +29,38 @@ class GetVpcConfigResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        result['trustedVpcs'] = []
-        if self.trusted_vpcs is not None:
-            for k1 in self.trusted_vpcs:
-                result['trustedVpcs'].append(k1.to_map() if k1 else None)
+        if self.removals is not None:
+            result['removals'] = self.removals
+
+        result['updates'] = []
+        if self.updates is not None:
+            for k1 in self.updates:
+                result['updates'].append(k1.to_map() if k1 else None)
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        self.trusted_vpcs = []
-        if m.get('trustedVpcs') is not None:
-            for k1 in m.get('trustedVpcs'):
-                temp_model = main_models.GetVpcConfigResponseBodyTrustedVpcs()
-                self.trusted_vpcs.append(temp_model.from_map(k1))
+        if m.get('removals') is not None:
+            self.removals = m.get('removals')
+
+        self.updates = []
+        if m.get('updates') is not None:
+            for k1 in m.get('updates'):
+                temp_model = main_models.UpdateVpcConfigRequestUpdates()
+                self.updates.append(temp_model.from_map(k1))
 
         return self
 
-class GetVpcConfigResponseBodyTrustedVpcs(DaraModel):
+class UpdateVpcConfigRequestUpdates(DaraModel):
     def __init__(
         self,
-        created_at: int = None,
         extended_options: Dict[str, str] = None,
         vpc_id: str = None,
     ):
-        # The time when the VPC was created, in UNIX timestamp milliseconds.
-        self.created_at = created_at
-        # List of configuration items.
+        # The list of configuration items.
         self.extended_options = extended_options
-        # The ID of the VPC.
+        # VPC ID。
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -65,9 +71,6 @@ class GetVpcConfigResponseBodyTrustedVpcs(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.created_at is not None:
-            result['createdAt'] = self.created_at
-
         if self.extended_options is not None:
             result['extendedOptions'] = self.extended_options
 
@@ -78,9 +81,6 @@ class GetVpcConfigResponseBodyTrustedVpcs(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('createdAt') is not None:
-            self.created_at = m.get('createdAt')
-
         if m.get('extendedOptions') is not None:
             self.extended_options = m.get('extendedOptions')
 

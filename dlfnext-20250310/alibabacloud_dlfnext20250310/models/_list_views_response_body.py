@@ -12,7 +12,9 @@ class ListViewsResponseBody(DaraModel):
         next_page_token: str = None,
         views: List[str] = None,
     ):
+        # The token to retrieve the next page of results. A null value indicates that this is the last page.
         self.next_page_token = next_page_token
+        # A list of view names.
         self.views = views
 
     def validate(self):

@@ -19,15 +19,25 @@ class IcebergTable(DaraModel):
         updated_by: str = None,
         version: int = None,
     ):
+        # The table creation time.
         self.created_at = created_at
+        # The table creator.
         self.created_by = created_by
+        # The metadata of the table.
         self.iceberg_table_metadata = iceberg_table_metadata
+        # The table UUID.
         self.id = id
+        # The table name.
         self.name = name
+        # The owner of the table.
         self.owner = owner
+        # The table URI.
         self.path = path
+        # The time when the table was last updated.
         self.updated_at = updated_at
+        # The user who last updated the table.
         self.updated_by = updated_by
+        # The version of the table.
         self.version = version
 
     def validate(self):

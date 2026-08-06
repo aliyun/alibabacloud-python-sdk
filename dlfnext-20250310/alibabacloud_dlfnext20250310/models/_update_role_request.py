@@ -11,8 +11,11 @@ class UpdateRoleRequest(DaraModel):
         display_name: str = None,
         role_principal: str = None,
     ):
+        # The description of the role.
         self.description = description
+        # The display name of the role.
         self.display_name = display_name
+        # The resource descriptor of the role.
         self.role_principal = role_principal
 
     def validate(self):

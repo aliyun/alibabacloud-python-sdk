@@ -21,16 +21,25 @@ class Database(DaraModel):
         updated_at: int = None,
         updated_by: str = None,
     ):
+        # The creation time.
         self.created_at = created_at
+        # The creator.
         self.created_by = created_by
+        # The UUID of the database.
         self.id = id
+        # The storage path of the database.
         self.location = location
+        # The name of the database.
         self.name = name
+        # The extension options.
         self.options = options
+        # The owner of the database.
         self.owner = owner
         self.status = status
         self.table_count = table_count
+        # The update time.
         self.updated_at = updated_at
+        # The updater.
         self.updated_by = updated_by
 
     def validate(self):

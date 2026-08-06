@@ -16,10 +16,15 @@ class FullDataType(DaraModel):
         type: str = None,
         value: main_models.FullDataType = None,
     ):
+        # The data type.
         self.element = element
+        # The list of field definitions. This parameter is required when `type` is `ROW`.
         self.fields = fields
+        # The data type of the key. This parameter is required when `type` is `MAP`.
         self.key = key
+        # The data type. This parameter is required when `type` is `ARRAY` or `MULTISET`.
         self.type = type
+        # The data type of the value. This parameter is required when `type` is `MAP`.
         self.value = value
 
     def validate(self):

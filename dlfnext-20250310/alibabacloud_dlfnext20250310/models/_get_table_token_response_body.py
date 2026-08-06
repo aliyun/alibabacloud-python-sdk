@@ -12,7 +12,9 @@ class GetTableTokenResponseBody(DaraModel):
         expires_at_millis: int = None,
         token: Dict[str, str] = None,
     ):
+        # The expiration time of the temporary access credential.
         self.expires_at_millis = expires_at_millis
+        # The temporary access credential for the catalog hosting the table.
         self.token = token
 
     def validate(self):
