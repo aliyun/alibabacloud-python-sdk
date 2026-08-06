@@ -20,25 +20,25 @@ class ListMetaEntitiesRequest(DaraModel):
         order: str = None,
         sort_by: str = None,
     ):
-        # Conditions for filtering entities by entity attributes. The `AND` operator is used between different filters, and the `OR` operator is used for multiple values within a single filter.
+        # The entity attribute filter conditions. Multiple filter conditions have an AND relationship. Multiple values within the same filter condition have an OR relationship.
         self.attribute_filters = attribute_filters
-        # Filters entities by comment. This is a token-based match.
+        # The comment filter. Performs token matching.
         self.comment = comment
-        # Conditions for filtering entities by custom attributes. The `AND` operator is used between different filters, and the `OR` operator is used for multiple values within a single filter. This parameter supports only `ENUM` custom attributes.
+        # The custom attribute filter conditions. Multiple filter conditions have an AND relationship. Multiple values within the same filter condition have an OR relationship. Only ENUM custom attributes are supported.
         self.custom_attribute_filters = custom_attribute_filters
-        # The type of the entity to list.
+        # The entity type.
         # 
         # This parameter is required.
         self.entity_type = entity_type
-        # The maximum number of results to return per page. Default value: 10. Maximum value: 100.
+        # The maximum number of results per page. Default value: 10. Maximum value: 100.
         self.max_results = max_results
-        # Filters entities by name. This is a containment match.
+        # The entity name filter. Performs keyword-contains matching.
         self.name = name
-        # The pagination token that specifies the next page of results. To retrieve the first page, do not specify this parameter. To retrieve subsequent pages, set this parameter to the `NextToken` value from the previous response.
+        # The pagination token. Do not specify this parameter for the first request. For subsequent requests, use the NextToken value returned in the previous response.
         self.next_token = next_token
-        # The sort order. Valid values: `Asc` and `Desc`.
+        # The sort direction.
         self.order = order
-        # The field to use for sorting the results.
+        # The sort field.
         self.sort_by = sort_by
 
     def validate(self):
@@ -132,11 +132,11 @@ class ListMetaEntitiesRequestCustomAttributeFilters(DaraModel):
         key: str = None,
         values: List[str] = None,
     ):
-        # The key of the custom attribute to filter by.
+        # The filter attribute key.
         # 
         # This parameter is required.
         self.key = key
-        # A list of values for the specified custom attribute.
+        # The list of filter attribute values.
         self.values = values
 
     def validate(self):
@@ -171,11 +171,11 @@ class ListMetaEntitiesRequestAttributeFilters(DaraModel):
         key: str = None,
         values: List[str] = None,
     ):
-        # The key of the entity attribute to filter by.
+        # The filter attribute key.
         # 
         # This parameter is required.
         self.key = key
-        # A list of values for the specified entity attribute.
+        # The list of filter attribute values.
         self.values = values
 
     def validate(self):

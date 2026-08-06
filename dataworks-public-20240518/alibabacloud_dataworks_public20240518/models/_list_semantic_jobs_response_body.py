@@ -14,11 +14,11 @@ class ListSemanticJobsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The paginated result of task definitions. Use the Name field of a list item to run, delete, query run records, or download results. Use the ProjectId field to query run details, view logs, or stop a run.
+        # The paginated result of job definitions. Use the Name field of a list item to run, delete, query run records, or download results. Use the ProjectId field to query run details, logs, or stop a run.
         self.data = data
         # The request ID. Used for locating logs and troubleshooting issues.
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -63,13 +63,13 @@ class ListSemanticJobsResponseBodyData(DaraModel):
         semantic_jobs: List[main_models.ListSemanticJobsResponseBodyDataSemanticJobs] = None,
         total_count: int = None,
     ):
-        # The page number of the returned page, starting from 1.
+        # The page number returned, starting from 1.
         self.page_number = page_number
-        # The number of task definitions per page in the current response.
+        # The number of job definitions per page returned.
         self.page_size = page_size
-        # The list of task definitions.
+        # The list of job definitions.
         self.semantic_jobs = semantic_jobs
-        # The total number of task definitions that meet the conditions within the current tenant.
+        # The total number of job definitions that meet the conditions in the current tenant.
         self.total_count = total_count
 
     def validate(self):
@@ -134,29 +134,29 @@ class ListSemanticJobsResponseBodyDataSemanticJobs(DaraModel):
         type: str = None,
         user_id: str = None,
     ):
-        # The user ID of the semantic task creator.
+        # The user identifier of the semantic job creator.
         self.creator = creator
         # The creation time, expressed as a UNIX timestamp in milliseconds.
         self.gmt_create = gmt_create
         # The last modification time, expressed as a UNIX timestamp in milliseconds.
         self.gmt_modified = gmt_modified
-        # The internal unique ID of the task definition.
+        # The internal unique ID of the job definition.
         self.id = id
-        # The task name. Used for RunSemanticJob, DeleteSemanticJob, ListSemanticJobRuns, and DownloadSemanticResults.
+        # The job name. Used for RunSemanticJob, DeleteSemanticJob, ListSemanticJobRuns, and DownloadSemanticResults.
         self.name = name
-        # The workspace ID to which the task belongs. Used for GetSemanticJobDetail, GetSemanticJobLog, and KillSemanticJob.
+        # The workspace ID to which the job belongs. Used for GetSemanticJobDetail, GetSemanticJobLog, and KillSemanticJob.
         self.project_id = project_id
-        # The list of uploaded file IDs associated with the task.
+        # The list of uploaded file IDs associated with the job.
         self.reference_file_ids = reference_file_ids
-        # The list of external reference file URIs associated with the task.
+        # The list of external reference file URIs associated with the job.
         self.reference_file_uris = reference_file_uris
-        # The ID of the resource group used to run this task.
+        # The resource group identifier used when running this job.
         self.resource_group_id = resource_group_id
-        # The input datasource config saved in the node. This configuration determines the analysis scope at runtime.
+        # The input datasource config saved with the node. This configuration determines the analysis scope at runtime.
         self.source = source
-        # The Source.type data source type saved in the task.
+        # The Source.type data source type saved with the job.
         self.type = type
-        # The user ID of the semantic task creator.
+        # The user identifier of the semantic job creator.
         self.user_id = user_id
 
     def validate(self):

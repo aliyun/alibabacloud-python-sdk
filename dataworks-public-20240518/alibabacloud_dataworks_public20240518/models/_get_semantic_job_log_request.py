@@ -14,7 +14,7 @@ class GetSemanticJobLogRequest(DaraModel):
         # 
         # This parameter is required.
         self.executor_job_id = executor_job_id
-        # The ID of the DataWorks workspace to which the job belongs. Use the ProjectId from the CreateSemanticJob response or a ListSemanticJobs list item.
+        # The ID of the DataWorks workspace to which the task belongs. Use the ProjectId from the CreateSemanticJob response or a ListSemanticJobs list item.
         # 
         # This parameter is required.
         self.project_id = project_id

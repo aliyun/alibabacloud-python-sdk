@@ -11,7 +11,7 @@ class CreateCustomAttributeResponseBody(DaraModel):
         result: bool = None,
         success: bool = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The creation result.
         self.result = result

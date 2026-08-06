@@ -11,7 +11,7 @@ class CreateMetaEntityDefResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The unique identifier of the created entity type.
+        # The entity type after creation.
         self.entity_type = entity_type
         # The request ID.
         self.request_id = request_id

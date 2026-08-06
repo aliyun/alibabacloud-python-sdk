@@ -9,7 +9,7 @@ class DeleteLineageRelationshipRequest(DaraModel):
         self,
         id: str = None,
     ):
-        # The lineage ID. You can refer to the ListLineageRelationships operation.
+        # The ID of the lineage relationship. You can obtain this ID from the response of the ListLineageRelationships operation. The ID is in the format of `${accountId}:${srcEntityType}.${srcEntityId}:${dstEntityType}.${dstEntityId}:${taskType}.${taskId}`, where accountId is the Alibaba Cloud account ID, srcEntityType and srcEntityId are the source entity type and source entity ID, dstEntityType and dstEntityId are the destination entity type and destination entity ID, and taskType and taskId are the lineage task type and task ID. Example: `1245491995595649:custom-report.report_test_001:custom-table.table_test_001:custom-lineage-task.test_task_001`.
         # 
         # This parameter is required.
         self.id = id

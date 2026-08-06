@@ -14,9 +14,9 @@ class ListSemanticJobRunsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The paginated run record results. Use the JobRunId to download the results of a specific run, and use the ExecutorJobId to query details, logs, or stop a run.
+        # The paginated run record results. Use the JobRunId to download the results of a specific run, and use the ExecutorJobId to query details, retrieve logs, or stop a run.
         self.data = data
-        # The request ID. Used for locating logs and troubleshooting issues.
+        # The request ID. You can use this ID to locate logs and troubleshoot issues.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success
@@ -65,9 +65,9 @@ class ListSemanticJobRunsResponseBodyData(DaraModel):
     ):
         # The list of run records.
         self.job_runs = job_runs
-        # The page number returned, starting from 1.
+        # The page number of the returned page, starting from 1.
         self.page_number = page_number
-        # The number of records per page returned.
+        # The number of records per page in the current response.
         self.page_size = page_size
         # The total number of run records that match the current job criteria.
         self.total_count = total_count
@@ -127,13 +127,13 @@ class ListSemanticJobRunsResponseBodyDataJobRuns(DaraModel):
         job_run_id: str = None,
         user_id: str = None,
     ):
-        # The executor job ID. Pass this value to the ExecutorJobId parameter of GetSemanticJobDetail, GetSemanticJobLog, or KillSemanticJob.
+        # The executor job ID. Pass this value as the ExecutorJobId parameter to GetSemanticJobDetail, GetSemanticJobLog, or KillSemanticJob.
         self.executor_job_id = executor_job_id
         # The time when the run record was created. The value is a UNIX timestamp in milliseconds.
         self.gmt_create = gmt_create
-        # The name of the job to which this run belongs. This value can be used to re-run the job, query run records, or download results.
+        # The name of the job to which this run belongs. You can use this value to rerun the job, query run records, or download results.
         self.job_name = job_name
-        # The semantic job run ID. Pass this value to the JobRunId parameter of DownloadSemanticResults to download the results of this run.
+        # The semantic job run ID. Pass this value as the JobRunId parameter to DownloadSemanticResults to download the results of this run.
         self.job_run_id = job_run_id
         # The ID of the user who submitted this run.
         self.user_id = user_id

@@ -14,31 +14,28 @@ class ListPartitionsRequest(DaraModel):
         sort_by: str = None,
         table_id: str = None,
     ):
-        # The partition name.
+        # The partition name. Fuzzy match is supported. This parameter is valid only for MaxCompute tables.
         self.name = name
-        # The sort order. Default: Asc. Valid values:
+        # The sort direction. Default value: Asc. Valid values:
         # 
-        # - Asc: Ascending order.
         # 
-        # - Desc: Descending order.
+        # - Asc: ascending order.
+        # - Desc: descending order.
         self.order = order
-        # The page number. Default: 1.
+        # The page number. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page. Default: 10. Maximum: 100.
+        # The number of entries per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
-        # The sort field. Default value: CreateTime. Valid values:
+        # The field by which to sort the results. Default value: CreateTime. Valid values:
         # 
-        # - CreateTime: Creation time. Supported only for MaxCompute tables.
         # 
-        # - ModifyTime: Modification time. Supported only for MaxCompute tables.
-        # 
-        # - Name: Name. Used for HMS-type tables.
-        # 
-        # - RecordCount: Record count. Supported only for MaxCompute tables.
-        # 
-        # - DataSize: Storage size. Supported only for MaxCompute tables.
+        # - CreateTime: the creation time. Only MaxCompute tables are supported.
+        # - ModifyTime: the modification time. Only MaxCompute tables are supported.
+        # - Name: the name. This is the sort method used for HMS tables.
+        # - RecordCount: the number of records. Only MaxCompute tables are supported.
+        # - DataSize: the storage size. Only MaxCompute tables are supported.
         self.sort_by = sort_by
-        # The ID of the data table.You can refer to the ListTables API response and [Concepts related to metadata entities](https://help.aliyun.com/document_detail/2880092.html).
+        # The ID of the table. You can obtain this value from the response of the [ListTables](https://help.aliyun.com/document_detail/2880092.html) operation. For more information, see [Metadata entity concepts](https://help.aliyun.com/document_detail/2880092.html).
         # 
         # This parameter is required.
         self.table_id = table_id

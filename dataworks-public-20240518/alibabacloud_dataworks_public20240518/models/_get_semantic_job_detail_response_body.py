@@ -74,7 +74,7 @@ class GetSemanticJobDetailResponseBodyData(DaraModel):
     ):
         # The advanced runtime settings returned by the executor.
         self.advance_settings = advance_settings
-        # The code parameter information returned by the executor. Used for troubleshooting the runtime configuration of this run.
+        # The code parameter information returned by the executor. Used to troubleshoot the runtime configuration of this run.
         self.code_parameters = code_parameters
         # The index of the SQL fragment currently being processed by the executor.
         self.current_sql_index = current_sql_index

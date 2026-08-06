@@ -19,6 +19,7 @@ class ListTablesShrinkRequest(DaraModel):
     ):
         # The comment. Fuzzy match is supported.
         self.comment = comment
+        # Specifies whether to return extended properties. Set this parameter to `true` to return extended properties or `false` to not return them.
         self.include_extended_properties = include_extended_properties
         # The name. Fuzzy match is supported.
         self.name = name
@@ -32,19 +33,19 @@ class ListTablesShrinkRequest(DaraModel):
         self.page_size = page_size
         # The ID of the parent-level metadata entity. You can obtain this value from the response of the ListDatabases or ListSchemas operation. For more information, see [Metadata entity concepts](https://help.aliyun.com/document_detail/2880092.html).
         # 
-        # - The value can be the database to which the table belongs. The ParentMetaEntityId format is `${EntityType}:${InstanceID or encoded URL}:${DataCatalogIdentifier}:${DatabaseName}`. Use an empty string as a placeholder for levels that do not exist.
+        # - The value can be the database to which the table belongs. The format of `ParentMetaEntityId` is `${EntityType}:${InstanceID or encoded URL}:${DataCatalogIdentifier}:${DatabaseName}`. Use an empty string as a placeholder for levels that do not exist.
         # 
-        # - The value can also be the database schema to which the table belongs. The ParentMetaEntityId format is `${EntityType}:${InstanceID or encoded URL}:${DataCatalogIdentifier}:${DatabaseName}:${SchemaName}`. Use an empty string as a placeholder for levels that do not exist.
+        # - The value can also be the database schema to which the table belongs. The format of `ParentMetaEntityId` is `${EntityType}:${InstanceID or encoded URL}:${DataCatalogIdentifier}:${DatabaseName}:${SchemaName}`. Use an empty string as a placeholder for levels that do not exist.
         # 
-        # > - You can set ParentMetaEntityId to a database schema only when the database type supports schemas (`maxcompute/holo/postgresql/sqlserver/hybriddb_for_postgresql/oracle`, and the three-level model must be enabled for the maxcompute type). Otherwise, you can set this parameter only to a database.
+        # > - You can set `ParentMetaEntityId` to a database schema only when the database type supports schemas (`maxcompute/holo/postgresql/sqlserver/hybriddb_for_postgresql/oracle`, where the three-layer model must be enabled for the maxcompute type). Otherwise, you can set it only to a database.
         # > - For the maxcompute and dlf types, use an empty string as a placeholder for the instance ID. For the maxcompute type, the database name is the MaxCompute project name.
-        # > - For the starrocks type, the data catalog identifier is the catalog name. For the dlf type, the data catalog identifier is the catalog ID. Other types do not support the catalog level. Use an empty string as a placeholder.
+        # > - For the starrocks type, the data catalog identifier is the catalog name. For the dlf type, the data catalog identifier is the catalog ID. Other types do not support the catalog level, and you can use an empty string as a placeholder.
         # 
-        # The following examples show the ParentMetaEntityId formats for common types:
+        # The following examples show the format of ParentMetaEntityId for common types:
         # 
         # - `maxcompute-project:::project_name`
         # 
-        # - `maxcompute-schema:::project_name:schema_name` (only when the three-level model is enabled for the project)
+        # - `maxcompute-schema:::project_name:schema_name` (only when the three-layer model is enabled for the project)
         # 
         # - `dlf-database::catalog_id:database_name`
         # 

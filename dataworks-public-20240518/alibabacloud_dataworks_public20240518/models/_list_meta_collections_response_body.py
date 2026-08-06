@@ -13,7 +13,7 @@ class ListMetaCollectionsResponseBody(DaraModel):
         data: main_models.ListMetaCollectionsResponseBodyData = None,
         request_id: str = None,
     ):
-        # Pagination information.
+        # The paged result object.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -58,7 +58,7 @@ class ListMetaCollectionsResponseBodyData(DaraModel):
         self.meta_collections = meta_collections
         # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The page size.
         self.page_size = page_size
         # The total number of records.
         self.total_count = total_count
@@ -122,29 +122,27 @@ class ListMetaCollectionsResponseBodyDataMetaCollections(DaraModel):
         parent_id: str = None,
         type: str = None,
     ):
-        # The list of administrator IDs. Supported only for album types. Administrators must be users within the same tenant. Multiple administrators can be specified.
+        # The list of administrator user IDs. This parameter is supported only for the album type. The administrators must be users within the same tenant. You can specify multiple administrators.
         self.administrators = administrators
-        # The creation time in milliseconds (timestamp).
+        # The creation time as a millisecond-level timestamp.
         self.create_time = create_time
-        # The creator user ID.
+        # The user ID of the creator.
         self.create_user = create_user
-        # The collection description.
+        # The description of the collection object.
         self.description = description
-        # The collection name.
+        # The name of the collection object.
         self.id = id
-        # The modification time in milliseconds (timestamp).
+        # The modification time as a millisecond-level timestamp.
         self.modify_time = modify_time
-        # The collection name.
+        # The name of the collection object.
         self.name = name
-        # The ID of the parent collection. Can be empty.
+        # The ID of the parent node collection object. This value can be empty.
         self.parent_id = parent_id
         # The collection type. Valid values:
         # 
-        # - Category
-        # 
-        # - Album
-        # 
-        # - AlbumCategory: Album subcategory
+        #  - Category: category.
+        #  - Album: data album.
+        #  - AlbumCategory: album subcategory.
         self.type = type
 
     def validate(self):

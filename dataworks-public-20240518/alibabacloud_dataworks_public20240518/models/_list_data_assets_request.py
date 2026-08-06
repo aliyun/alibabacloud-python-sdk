@@ -21,13 +21,15 @@ class ListDataAssetsRequest(DaraModel):
         project_id: int = None,
         tags: List[main_models.ListDataAssetsRequestTags] = None,
     ):
+        # The ID of the asset domain.
         self.asset_domain_id = asset_domain_id
+        # The ID of the asset category.
         self.category_uuid = category_uuid
         # The list of unique data asset IDs.
         self.data_asset_ids = data_asset_ids
         # The Asset Type of the data asset. Valid values:
         # 
-        # - ACS::DataWorks::Table: table.
+        # - ACS::DataWorks::Table: data table.
         # 
         # - ACS::DataWorks::Task: scheduling node.
         self.data_asset_type = data_asset_type
@@ -35,15 +37,16 @@ class ListDataAssetsRequest(DaraModel):
         # - Dev: development environment.
         # - Prod: production environment.
         self.env_type = env_type
+        # The name of the asset. Fuzzy search by name is supported.
         self.name = name
-        # The page number. Pages start from page 1. Default value: 1.
+        # The page number. Pages start from 1. Default value: 1.
         self.page_number = page_number
         # The number of entries per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
-        # The workspace ID.
+        # The ID of the workspace.
         self.project_id = project_id
         # The list of tags associated with data assets. Tags are used as query filters:
-        # - Multiple values have an OR relationship. For example, `["key1:v1", "key2:v1", "key3:v1"]` queries data assets that contain any of the specified tags.
+        # - Multiple values have an OR relationship. For example, `["key1:v1", "key2:v1", "key3:v1"]` queries data assets that contain any one of the specified tags.
         # - If this parameter is not specified or is left empty, no tag-based filtering is applied.
         self.tags = tags
 
@@ -135,7 +138,7 @@ class ListDataAssetsRequestTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The custom tag key.
+        # The custom tag key specified by the user.
         # 
         # The tag key can be up to 64 characters in length, cannot start with `dw:`, and supports only letters, digits, and the following special characters: `-@#*<>|[]()+=&%$!~`.
         self.key = key

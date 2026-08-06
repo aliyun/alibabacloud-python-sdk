@@ -75,7 +75,7 @@ class RunSemanticJobResponseBodyData(DaraModel):
         self.executor_job_id = executor_job_id
         # The unique identifier of this run. Pass this value to the JobRunId parameter of DownloadSemanticResults to obtain the output of this run.
         self.job_run_id = job_run_id
-        # The list of status codes returned by the executor in the submission response. The status at the submission stage does not indicate that the results are complete.
+        # The list of status codes returned by the executor in the submission response. The status at the submission stage does not indicate that results are complete.
         self.statuses = statuses
 
     def validate(self):

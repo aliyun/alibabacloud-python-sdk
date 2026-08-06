@@ -15,7 +15,7 @@ class KillSemanticJobResponseBody(DaraModel):
         self.data = data
         # The request ID. Used for locating logs and troubleshooting issues.
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

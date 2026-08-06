@@ -120,6 +120,7 @@ class ListDataAssetsResponseBodyPagingInfoDataAssets(DaraModel):
         project_id: int = None,
         type: str = None,
     ):
+        # The asset category information.
         self.asset_categories = asset_categories
         # The list of tags associated with the data asset.
         self.data_asset_tag_mappings = data_asset_tag_mappings
@@ -127,15 +128,15 @@ class ListDataAssetsResponseBodyPagingInfoDataAssets(DaraModel):
         # - Dev: development environment.
         # - Prod: production environment.
         self.env_type = env_type
-        # The data asset ID.
+        # The ID of the data asset.
         self.id = id
         # The name of the data asset.
         self.name = name
-        # The DataWorks workspace ID.
+        # The ID of the DataWorks workspace.
         self.project_id = project_id
         # The Asset Type of the data asset. Valid values:
         # 
-        # - ACS::DataWorks::Table: table.
+        # - ACS::DataWorks::Table: data table.
         # 
         # - ACS::DataWorks::Task: scheduling node.
         self.type = type
@@ -227,14 +228,14 @@ class ListDataAssetsResponseBodyPagingInfoDataAssetsDataAssetTagMappings(DaraMod
         self.auto_trace_enabled = auto_trace_enabled
         # The creator of the mapping between the data asset and the tag.
         self.creator = creator
-        # The data asset ID.
+        # The ID of the data asset.
         self.data_asset_id = data_asset_id
         # The tag key.
         self.key = key
         # The source of the mapping between the data asset and the tag. Valid values:
         # 
-        # - System: The mapping is created by the data asset governance system.
-        # - UserDefined: The mapping is manually created by a user.
+        # - System: The mapping originates from data asset governance system operations.
+        # - UserDefined: The mapping originates from manual user-defined operations.
         self.tag_source = tag_source
         # The tag value.
         self.value = value
@@ -296,8 +297,11 @@ class ListDataAssetsResponseBodyPagingInfoDataAssetsAssetCategories(DaraModel):
         id: str = None,
         name: str = None,
     ):
+        # The ID of the asset domain.
         self.asset_domain_id = asset_domain_id
+        # The ID of the asset category.
         self.id = id
+        # The name of the asset category.
         self.name = name
 
     def validate(self):

@@ -1,3 +1,15 @@
+2026-08-06 Version: 9.1.0
+- Support API CreateCrawler.
+- Support API DeleteCrawler.
+- Support API GetCrawler.
+- Support API GetCrawlerTypeCapabilities.
+- Support API ListCrawlerRuns.
+- Support API ListCrawlers.
+- Support API RunCrawler.
+- Support API StopCrawler.
+- Support API UpdateCrawler.
+
+
 2026-07-31 Version: 9.0.0
 - Support API CreateSemanticJob.
 - Support API DeleteSemanticJob.

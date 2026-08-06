@@ -12,9 +12,9 @@ class UploadSemanticFileResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The attachment upload slot information. PUT the file to Data.UploadUrl before Data.ExpiresAt, and then use Data.FileId to create a single-file semantic job.
+        # The attachment upload slot information. PUT the file to Data.UploadUrl before Data.ExpiresAt, then use Data.FileId to create a single-file semantic task.
         self.data = data
-        # The request ID. You can use this ID to locate logs and troubleshoot issues.
+        # The request ID. Used for locating logs and troubleshooting issues.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success
@@ -60,11 +60,11 @@ class UploadSemanticFileResponseBodyData(DaraModel):
         file_id: str = None,
         upload_url: str = None,
     ):
-        # The expiration time of UploadUrl, expressed as a UNIX timestamp in milliseconds. After this time, call UploadSemanticFile again to request a new URL.
+        # The expiration time of UploadUrl, expressed as a Unix timestamp in milliseconds. After this time, call UploadSemanticFile again to request a new URL.
         self.expires_at = expires_at
-        # The unique identifier of the attachment. After the PUT upload to UploadUrl is complete, pass this value to the ReferenceFileIds parameter of CreateSemanticJob.
+        # The unique identifier of the attachment. After completing the PUT upload to UploadUrl, pass this value to the ReferenceFileIds parameter of CreateSemanticJob.
         self.file_id = file_id
-        # The temporary OSS PUT upload URL. The URL is valid for 30 minutes and can only be used to upload the specified object. Use the ContentType specified in the request when you perform the PUT request. Do not log or distribute the full URL.
+        # The temporary OSS PUT upload URL. Valid for 30 minutes. Only the specified object can be uploaded. Use the ContentType from the request when performing the PUT request. Do not log or distribute the full URL.
         self.upload_url = upload_url
 
     def validate(self):

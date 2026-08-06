@@ -15,9 +15,9 @@ class ListSemanticJobRunsRequest(DaraModel):
         # 
         # This parameter is required.
         self.job_name = job_name
-        # The page number, starting from 1. If this parameter is omitted or set to a value less than or equal to 0, page 1 is returned.
+        # The page number, starting from 1. If this parameter is not specified or set to a value less than or equal to 0, page 1 is returned.
         self.page_number = page_number
-        # The number of run records per page. If this parameter is omitted or set to a value less than or equal to 0, the default value 50 is used. Maximum value: 200.
+        # The number of run records to return per page. If this parameter is not specified or set to a value less than or equal to 0, the default value 50 is used. Maximum value: 200.
         self.page_size = page_size
 
     def validate(self):

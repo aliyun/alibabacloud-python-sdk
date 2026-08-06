@@ -18,22 +18,23 @@ class ListColumnsRequest(DaraModel):
     ):
         # The comment. Fuzzy match is supported.
         self.comment = comment
+        # Specifies whether to return extended properties. Set this parameter to `true` to return extended properties or `false` to not return them.
         self.include_extended_properties = include_extended_properties
         # The name. Fuzzy match is supported.
         self.name = name
-        # The sort order. Default value: Asc. Valid values:
-        # - Asc: ascending order
-        # - Desc: descending order
+        # The sort direction. Default value: Asc. Valid values:
+        # - Asc: ascending order.
+        # - Desc: descending order.
         self.order = order
         # The page number. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page. Default value: 10. Maximum value: 100.
+        # The page size. Default value: 10. Maximum value: 100.
         self.page_size = page_size
         # The sort field. Default value: Position. Valid values:
-        # - Name: name
-        # - Position: position
+        # - Name: name.
+        # - Position: position.
         self.sort_by = sort_by
-        # The ID of the data table. You can obtain the ID from the response of the ListTables operation. For more information, see [Metadata entity concepts](https://help.aliyun.com/document_detail/2880092.html).
+        # The table ID. You can obtain the ID from the response of the ListTables operation. For more information, see [Metadata entity concepts](https://help.aliyun.com/document_detail/2880092.html).
         # 
         # This parameter is required.
         self.table_id = table_id

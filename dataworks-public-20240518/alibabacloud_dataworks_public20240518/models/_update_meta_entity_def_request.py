@@ -18,7 +18,7 @@ class UpdateMetaEntityDefRequest(DaraModel):
     ):
         # The new description.
         self.description = description
-        # The new display name. The maximum length is 32 characters.
+        # The new display name, up to 32 characters.
         self.display_name = display_name
         # The entity type.
         # 
@@ -26,7 +26,7 @@ class UpdateMetaEntityDefRequest(DaraModel):
         self.entity_type = entity_type
         # The new attribute definitions. New attributes must be optional.
         self.new_attribute_defs = new_attribute_defs
-        # The updates to existing attribute definitions. You can modify only the display name and description. You can also add enumerated values for attributes of the ENUM type.
+        # Updates to existing attribute definitions. Only modifying the display name, description, and appending enum values to ENUM types are supported.
         self.update_attribute_defs = update_attribute_defs
 
     def validate(self):

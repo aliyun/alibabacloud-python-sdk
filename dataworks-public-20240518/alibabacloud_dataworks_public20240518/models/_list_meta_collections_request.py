@@ -18,45 +18,38 @@ class ListMetaCollectionsRequest(DaraModel):
         sort_by: str = None,
         type: str = None,
     ):
-        # The administrator ID. Valid only for album types. Default: The current user ID.
+        # The ID of the collection administrator. This parameter is valid only for the album type. Default value: the current user ID.
         self.administrator = administrator
-        # The creator user ID. Valid only for album types. Default: The current user ID.
+        # The user ID of the creator. This parameter is valid only for the album type. Default value: the current user ID.
         self.create_user = create_user
-        # The collection description. Supports fuzzy matching.
+        # The collection description. Fuzzy match is supported.
         self.description = description
-        # The collection name. Supports fuzzy matching.
+        # The collection name. Fuzzy match is supported.
         self.name = name
-        # The sort order. Valid values:
+        # The sort direction. Valid values:
         # 
-        # - Asc (default): Ascending order
-        # 
-        # - Desc
+        #  - Asc (default)
+        #  - Desc
         self.order = order
-        # The page number. Default: 1.
+        # The page number. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page. Default: 10. Maximum: 100.
+        # The page size. Default value: 10. Maximum value: 100.
         self.page_size = page_size
-        # The ID of the parent collection.
+        # The ID of the parent node collection object.
         self.parent_id = parent_id
         # The sort field. Valid values:
         # 
-        # - Id (default)
-        # 
-        # - Name
-        # 
-        # - CreateUser: Creator ID
-        # 
-        # - CreateTime: Creation time
-        # 
-        # - ModifyTime: Modification time
+        #  - Id (default)
+        #  - Name: name.
+        #  - CreateUser: creator ID.
+        #  - CreateTime: creation time.
+        #  - ModifyTime: modification time.
         self.sort_by = sort_by
         # The collection type. Valid values:
         # 
-        # - Category
-        # 
-        # - Album
-        # 
-        # - AlbumCategory: Album subcategory
+        #  - Category: category.
+        #  - Album: data album.
+        #  - AlbumCategory: album subcategory.
         # 
         # This parameter is required.
         self.type = type

@@ -14,11 +14,11 @@ class ListMetaEntityDefsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The pagination information.
+        # The paging information.
         self.paging_info = paging_info
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request succeeded.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -63,13 +63,13 @@ class ListMetaEntityDefsResponseBodyPagingInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # A list of custom entity definitions.
+        # The list of custom entity definitions.
         self.meta_entity_defs = meta_entity_defs
         # The page number.
         self.page_number = page_number
-        # The page size.
+        # The number of entries per page.
         self.page_size = page_size
-        # The total count.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):

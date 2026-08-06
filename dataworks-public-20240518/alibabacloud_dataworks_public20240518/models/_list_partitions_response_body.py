@@ -14,11 +14,11 @@ class ListPartitionsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Pagination information.
+        # The pagination result.
         self.paging_info = paging_info
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request succeeded.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -67,9 +67,9 @@ class ListPartitionsResponseBodyPagingInfo(DaraModel):
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The list of table partitions.
+        # The partition list of the table.
         self.partition_list = partition_list
-        # The total number of entries.
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):

@@ -1804,6 +1804,120 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_compute_resource_with_options_async(request, runtime)
 
+    def create_crawler_with_options(
+        self,
+        tmp_req: main_models.CreateCrawlerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateCrawlerResponse:
+        tmp_req.validate()
+        request = main_models.CreateCrawlerShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.options):
+            request.options_shrink = Utils.array_to_string_with_specified_style(tmp_req.options, 'Options', 'json')
+        if not DaraCore.is_null(tmp_req.schedule_config):
+            request.schedule_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.schedule_config, 'ScheduleConfig', 'json')
+        if not DaraCore.is_null(tmp_req.scope):
+            request.scope_shrink = Utils.array_to_string_with_specified_style(tmp_req.scope, 'Scope', 'json')
+        body = {}
+        if not DaraCore.is_null(request.data_source_id):
+            body['DataSourceId'] = request.data_source_id
+        if not DaraCore.is_null(request.enable_ai_comment):
+            body['EnableAiComment'] = request.enable_ai_comment
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.options_shrink):
+            body['Options'] = request.options_shrink
+        if not DaraCore.is_null(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.schedule_config_shrink):
+            body['ScheduleConfig'] = request.schedule_config_shrink
+        if not DaraCore.is_null(request.scope_shrink):
+            body['Scope'] = request.scope_shrink
+        if not DaraCore.is_null(request.type):
+            body['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateCrawler',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateCrawlerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_crawler_with_options_async(
+        self,
+        tmp_req: main_models.CreateCrawlerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateCrawlerResponse:
+        tmp_req.validate()
+        request = main_models.CreateCrawlerShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.options):
+            request.options_shrink = Utils.array_to_string_with_specified_style(tmp_req.options, 'Options', 'json')
+        if not DaraCore.is_null(tmp_req.schedule_config):
+            request.schedule_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.schedule_config, 'ScheduleConfig', 'json')
+        if not DaraCore.is_null(tmp_req.scope):
+            request.scope_shrink = Utils.array_to_string_with_specified_style(tmp_req.scope, 'Scope', 'json')
+        body = {}
+        if not DaraCore.is_null(request.data_source_id):
+            body['DataSourceId'] = request.data_source_id
+        if not DaraCore.is_null(request.enable_ai_comment):
+            body['EnableAiComment'] = request.enable_ai_comment
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.options_shrink):
+            body['Options'] = request.options_shrink
+        if not DaraCore.is_null(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.schedule_config_shrink):
+            body['ScheduleConfig'] = request.schedule_config_shrink
+        if not DaraCore.is_null(request.scope_shrink):
+            body['Scope'] = request.scope_shrink
+        if not DaraCore.is_null(request.type):
+            body['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateCrawler',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateCrawlerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_crawler(
+        self,
+        request: main_models.CreateCrawlerRequest,
+    ) -> main_models.CreateCrawlerResponse:
+        runtime = RuntimeOptions()
+        return self.create_crawler_with_options(request, runtime)
+
+    async def create_crawler_async(
+        self,
+        request: main_models.CreateCrawlerRequest,
+    ) -> main_models.CreateCrawlerResponse:
+        runtime = RuntimeOptions()
+        return await self.create_crawler_with_options_async(request, runtime)
+
     def create_custom_attribute_with_options(
         self,
         tmp_req: main_models.CreateCustomAttributeRequest,
@@ -6848,6 +6962,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_compute_resource_with_options_async(request, runtime)
 
+    def delete_crawler_with_options(
+        self,
+        request: main_models.DeleteCrawlerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteCrawlerResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteCrawler',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteCrawlerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_crawler_with_options_async(
+        self,
+        request: main_models.DeleteCrawlerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteCrawlerResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteCrawler',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteCrawlerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_crawler(
+        self,
+        request: main_models.DeleteCrawlerRequest,
+    ) -> main_models.DeleteCrawlerResponse:
+        runtime = RuntimeOptions()
+        return self.delete_crawler_with_options(request, runtime)
+
+    async def delete_crawler_async(
+        self,
+        request: main_models.DeleteCrawlerRequest,
+    ) -> main_models.DeleteCrawlerResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_crawler_with_options_async(request, runtime)
+
     def delete_custom_attribute_with_options(
         self,
         request: main_models.DeleteCustomAttributeRequest,
@@ -11201,6 +11385,136 @@ class Client(OpenApiClient):
     ) -> main_models.GetComputeResourceResponse:
         runtime = RuntimeOptions()
         return await self.get_compute_resource_with_options_async(request, runtime)
+
+    def get_crawler_with_options(
+        self,
+        request: main_models.GetCrawlerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCrawlerResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetCrawler',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetCrawlerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_crawler_with_options_async(
+        self,
+        request: main_models.GetCrawlerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCrawlerResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetCrawler',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetCrawlerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_crawler(
+        self,
+        request: main_models.GetCrawlerRequest,
+    ) -> main_models.GetCrawlerResponse:
+        runtime = RuntimeOptions()
+        return self.get_crawler_with_options(request, runtime)
+
+    async def get_crawler_async(
+        self,
+        request: main_models.GetCrawlerRequest,
+    ) -> main_models.GetCrawlerResponse:
+        runtime = RuntimeOptions()
+        return await self.get_crawler_with_options_async(request, runtime)
+
+    def get_crawler_type_capabilities_with_options(
+        self,
+        request: main_models.GetCrawlerTypeCapabilitiesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCrawlerTypeCapabilitiesResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'GetCrawlerTypeCapabilities',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetCrawlerTypeCapabilitiesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_crawler_type_capabilities_with_options_async(
+        self,
+        request: main_models.GetCrawlerTypeCapabilitiesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCrawlerTypeCapabilitiesResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'GetCrawlerTypeCapabilities',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetCrawlerTypeCapabilitiesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_crawler_type_capabilities(
+        self,
+        request: main_models.GetCrawlerTypeCapabilitiesRequest,
+    ) -> main_models.GetCrawlerTypeCapabilitiesResponse:
+        runtime = RuntimeOptions()
+        return self.get_crawler_type_capabilities_with_options(request, runtime)
+
+    async def get_crawler_type_capabilities_async(
+        self,
+        request: main_models.GetCrawlerTypeCapabilitiesRequest,
+    ) -> main_models.GetCrawlerTypeCapabilitiesResponse:
+        runtime = RuntimeOptions()
+        return await self.get_crawler_type_capabilities_with_options_async(request, runtime)
 
     def get_create_workflow_instances_result_with_options(
         self,
@@ -16408,6 +16722,96 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_compute_resources_with_options_async(request, runtime)
 
+    def list_crawler_runs_with_options(
+        self,
+        request: main_models.ListCrawlerRunsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCrawlerRunsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.start_time_from):
+            body['StartTimeFrom'] = request.start_time_from
+        if not DaraCore.is_null(request.start_time_to):
+            body['StartTimeTo'] = request.start_time_to
+        if not DaraCore.is_null(request.status):
+            body['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCrawlerRuns',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCrawlerRunsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_crawler_runs_with_options_async(
+        self,
+        request: main_models.ListCrawlerRunsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCrawlerRunsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.start_time_from):
+            body['StartTimeFrom'] = request.start_time_from
+        if not DaraCore.is_null(request.start_time_to):
+            body['StartTimeTo'] = request.start_time_to
+        if not DaraCore.is_null(request.status):
+            body['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCrawlerRuns',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCrawlerRunsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_crawler_runs(
+        self,
+        request: main_models.ListCrawlerRunsRequest,
+    ) -> main_models.ListCrawlerRunsResponse:
+        runtime = RuntimeOptions()
+        return self.list_crawler_runs_with_options(request, runtime)
+
+    async def list_crawler_runs_async(
+        self,
+        request: main_models.ListCrawlerRunsRequest,
+    ) -> main_models.ListCrawlerRunsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_crawler_runs_with_options_async(request, runtime)
+
     def list_crawler_types_with_options(
         self,
         runtime: RuntimeOptions,
@@ -16457,6 +16861,112 @@ class Client(OpenApiClient):
     async def list_crawler_types_async(self) -> main_models.ListCrawlerTypesResponse:
         runtime = RuntimeOptions()
         return await self.list_crawler_types_with_options_async(runtime)
+
+    def list_crawlers_with_options(
+        self,
+        tmp_req: main_models.ListCrawlersRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCrawlersResponse:
+        tmp_req.validate()
+        request = main_models.ListCrawlersShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.data_source_ids):
+            request.data_source_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.data_source_ids, 'DataSourceIds', 'simple')
+        body = {}
+        if not DaraCore.is_null(request.data_source_ids_shrink):
+            body['DataSourceIds'] = request.data_source_ids_shrink
+        if not DaraCore.is_null(request.env_type):
+            body['EnvType'] = request.env_type
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.owner):
+            body['Owner'] = request.owner
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.type):
+            body['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCrawlers',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCrawlersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_crawlers_with_options_async(
+        self,
+        tmp_req: main_models.ListCrawlersRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCrawlersResponse:
+        tmp_req.validate()
+        request = main_models.ListCrawlersShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.data_source_ids):
+            request.data_source_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.data_source_ids, 'DataSourceIds', 'simple')
+        body = {}
+        if not DaraCore.is_null(request.data_source_ids_shrink):
+            body['DataSourceIds'] = request.data_source_ids_shrink
+        if not DaraCore.is_null(request.env_type):
+            body['EnvType'] = request.env_type
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.owner):
+            body['Owner'] = request.owner
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.type):
+            body['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCrawlers',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCrawlersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_crawlers(
+        self,
+        request: main_models.ListCrawlersRequest,
+    ) -> main_models.ListCrawlersResponse:
+        runtime = RuntimeOptions()
+        return self.list_crawlers_with_options(request, runtime)
+
+    async def list_crawlers_async(
+        self,
+        request: main_models.ListCrawlersRequest,
+    ) -> main_models.ListCrawlersResponse:
+        runtime = RuntimeOptions()
+        return await self.list_crawlers_with_options_async(request, runtime)
 
     def list_custom_agents_with_options(
         self,
@@ -24570,6 +25080,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.rollback_parameter_with_options_async(request, runtime)
 
+    def run_crawler_with_options(
+        self,
+        request: main_models.RunCrawlerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RunCrawlerResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RunCrawler',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RunCrawlerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def run_crawler_with_options_async(
+        self,
+        request: main_models.RunCrawlerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RunCrawlerResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RunCrawler',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RunCrawlerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def run_crawler(
+        self,
+        request: main_models.RunCrawlerRequest,
+    ) -> main_models.RunCrawlerResponse:
+        runtime = RuntimeOptions()
+        return self.run_crawler_with_options(request, runtime)
+
+    async def run_crawler_async(
+        self,
+        request: main_models.RunCrawlerRequest,
+    ) -> main_models.RunCrawlerResponse:
+        runtime = RuntimeOptions()
+        return await self.run_crawler_with_options_async(request, runtime)
+
     def run_semantic_job_with_options(
         self,
         request: main_models.RunSemanticJobRequest,
@@ -24877,6 +25457,76 @@ class Client(OpenApiClient):
     ) -> main_models.StartWorkflowInstancesResponse:
         runtime = RuntimeOptions()
         return await self.start_workflow_instances_with_options_async(request, runtime)
+
+    def stop_crawler_with_options(
+        self,
+        request: main_models.StopCrawlerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.StopCrawlerResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'StopCrawler',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.StopCrawlerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def stop_crawler_with_options_async(
+        self,
+        request: main_models.StopCrawlerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.StopCrawlerResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'StopCrawler',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.StopCrawlerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def stop_crawler(
+        self,
+        request: main_models.StopCrawlerRequest,
+    ) -> main_models.StopCrawlerResponse:
+        runtime = RuntimeOptions()
+        return self.stop_crawler_with_options(request, runtime)
+
+    async def stop_crawler_async(
+        self,
+        request: main_models.StopCrawlerRequest,
+    ) -> main_models.StopCrawlerResponse:
+        runtime = RuntimeOptions()
+        return await self.stop_crawler_with_options_async(request, runtime)
 
     def stop_dijob_with_options(
         self,
@@ -26155,6 +26805,112 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateComputeResourceResponse:
         runtime = RuntimeOptions()
         return await self.update_compute_resource_with_options_async(request, runtime)
+
+    def update_crawler_with_options(
+        self,
+        tmp_req: main_models.UpdateCrawlerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateCrawlerResponse:
+        tmp_req.validate()
+        request = main_models.UpdateCrawlerShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.options):
+            request.options_shrink = Utils.array_to_string_with_specified_style(tmp_req.options, 'Options', 'json')
+        if not DaraCore.is_null(tmp_req.schedule_config):
+            request.schedule_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.schedule_config, 'ScheduleConfig', 'json')
+        if not DaraCore.is_null(tmp_req.scope):
+            request.scope_shrink = Utils.array_to_string_with_specified_style(tmp_req.scope, 'Scope', 'json')
+        body = {}
+        if not DaraCore.is_null(request.enable_ai_comment):
+            body['EnableAiComment'] = request.enable_ai_comment
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        if not DaraCore.is_null(request.options_shrink):
+            body['Options'] = request.options_shrink
+        if not DaraCore.is_null(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.schedule_config_shrink):
+            body['ScheduleConfig'] = request.schedule_config_shrink
+        if not DaraCore.is_null(request.scope_shrink):
+            body['Scope'] = request.scope_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateCrawler',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateCrawlerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_crawler_with_options_async(
+        self,
+        tmp_req: main_models.UpdateCrawlerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateCrawlerResponse:
+        tmp_req.validate()
+        request = main_models.UpdateCrawlerShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.options):
+            request.options_shrink = Utils.array_to_string_with_specified_style(tmp_req.options, 'Options', 'json')
+        if not DaraCore.is_null(tmp_req.schedule_config):
+            request.schedule_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.schedule_config, 'ScheduleConfig', 'json')
+        if not DaraCore.is_null(tmp_req.scope):
+            request.scope_shrink = Utils.array_to_string_with_specified_style(tmp_req.scope, 'Scope', 'json')
+        body = {}
+        if not DaraCore.is_null(request.enable_ai_comment):
+            body['EnableAiComment'] = request.enable_ai_comment
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        if not DaraCore.is_null(request.options_shrink):
+            body['Options'] = request.options_shrink
+        if not DaraCore.is_null(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.schedule_config_shrink):
+            body['ScheduleConfig'] = request.schedule_config_shrink
+        if not DaraCore.is_null(request.scope_shrink):
+            body['Scope'] = request.scope_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateCrawler',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateCrawlerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_crawler(
+        self,
+        request: main_models.UpdateCrawlerRequest,
+    ) -> main_models.UpdateCrawlerResponse:
+        runtime = RuntimeOptions()
+        return self.update_crawler_with_options(request, runtime)
+
+    async def update_crawler_async(
+        self,
+        request: main_models.UpdateCrawlerRequest,
+    ) -> main_models.UpdateCrawlerResponse:
+        runtime = RuntimeOptions()
+        return await self.update_crawler_with_options_async(request, runtime)
 
     def update_custom_attribute_with_options(
         self,

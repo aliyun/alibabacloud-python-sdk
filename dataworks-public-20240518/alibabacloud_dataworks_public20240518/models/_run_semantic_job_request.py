@@ -9,7 +9,7 @@ class RunSemanticJobRequest(DaraModel):
         self,
         name: str = None,
     ):
-        # The name of the job to run. Use the Data.Name value returned by CreateSemanticJob or the Name field from the ListSemanticJobs response. The Source, ResourceGroupId, and reference files of the job are determined by the definition saved at creation time.
+        # The name of the job to run. Use the Data.Name value from the CreateSemanticJob response or the Name value from a ListSemanticJobs list item. The Source, ResourceGroupId, and reference files of the job are determined by the definition saved at creation time.
         # 
         # This parameter is required.
         self.name = name

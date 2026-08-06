@@ -90,6 +90,10 @@ from ._create_component_response import CreateComponentResponse
 from ._create_compute_resource_request import CreateComputeResourceRequest
 from ._create_compute_resource_response_body import CreateComputeResourceResponseBody
 from ._create_compute_resource_response import CreateComputeResourceResponse
+from ._create_crawler_request import CreateCrawlerRequest
+from ._create_crawler_shrink_request import CreateCrawlerShrinkRequest
+from ._create_crawler_response_body import CreateCrawlerResponseBody
+from ._create_crawler_response import CreateCrawlerResponse
 from ._create_custom_attribute_request import CreateCustomAttributeRequest
 from ._create_custom_attribute_shrink_request import CreateCustomAttributeShrinkRequest
 from ._create_custom_attribute_response_body import CreateCustomAttributeResponseBody
@@ -264,6 +268,9 @@ from ._delete_component_response import DeleteComponentResponse
 from ._delete_compute_resource_request import DeleteComputeResourceRequest
 from ._delete_compute_resource_response_body import DeleteComputeResourceResponseBody
 from ._delete_compute_resource_response import DeleteComputeResourceResponse
+from ._delete_crawler_request import DeleteCrawlerRequest
+from ._delete_crawler_response_body import DeleteCrawlerResponseBody
+from ._delete_crawler_response import DeleteCrawlerResponse
 from ._delete_custom_attribute_request import DeleteCustomAttributeRequest
 from ._delete_custom_attribute_response_body import DeleteCustomAttributeResponseBody
 from ._delete_custom_attribute_response import DeleteCustomAttributeResponse
@@ -446,6 +453,12 @@ from ._get_component_response import GetComponentResponse
 from ._get_compute_resource_request import GetComputeResourceRequest
 from ._get_compute_resource_response_body import GetComputeResourceResponseBody
 from ._get_compute_resource_response import GetComputeResourceResponse
+from ._get_crawler_request import GetCrawlerRequest
+from ._get_crawler_response_body import GetCrawlerResponseBody
+from ._get_crawler_response import GetCrawlerResponse
+from ._get_crawler_type_capabilities_request import GetCrawlerTypeCapabilitiesRequest
+from ._get_crawler_type_capabilities_response_body import GetCrawlerTypeCapabilitiesResponseBody
+from ._get_crawler_type_capabilities_response import GetCrawlerTypeCapabilitiesResponse
 from ._get_create_workflow_instances_result_request import GetCreateWorkflowInstancesResultRequest
 from ._get_create_workflow_instances_result_response_body import GetCreateWorkflowInstancesResultResponseBody
 from ._get_create_workflow_instances_result_response import GetCreateWorkflowInstancesResultResponse
@@ -664,8 +677,15 @@ from ._list_compute_resources_request import ListComputeResourcesRequest
 from ._list_compute_resources_shrink_request import ListComputeResourcesShrinkRequest
 from ._list_compute_resources_response_body import ListComputeResourcesResponseBody
 from ._list_compute_resources_response import ListComputeResourcesResponse
+from ._list_crawler_runs_request import ListCrawlerRunsRequest
+from ._list_crawler_runs_response_body import ListCrawlerRunsResponseBody
+from ._list_crawler_runs_response import ListCrawlerRunsResponse
 from ._list_crawler_types_response_body import ListCrawlerTypesResponseBody
 from ._list_crawler_types_response import ListCrawlerTypesResponse
+from ._list_crawlers_request import ListCrawlersRequest
+from ._list_crawlers_shrink_request import ListCrawlersShrinkRequest
+from ._list_crawlers_response_body import ListCrawlersResponseBody
+from ._list_crawlers_response import ListCrawlersResponse
 from ._list_custom_agents_request import ListCustomAgentsRequest
 from ._list_custom_agents_shrink_request import ListCustomAgentsShrinkRequest
 from ._list_custom_agents_response_body import ListCustomAgentsResponseBody
@@ -980,6 +1000,9 @@ from ._revoke_member_project_roles_response import RevokeMemberProjectRolesRespo
 from ._rollback_parameter_request import RollbackParameterRequest
 from ._rollback_parameter_response_body import RollbackParameterResponseBody
 from ._rollback_parameter_response import RollbackParameterResponse
+from ._run_crawler_request import RunCrawlerRequest
+from ._run_crawler_response_body import RunCrawlerResponseBody
+from ._run_crawler_response import RunCrawlerResponse
 from ._run_semantic_job_request import RunSemanticJobRequest
 from ._run_semantic_job_response_body import RunSemanticJobResponseBody
 from ._run_semantic_job_response import RunSemanticJobResponse
@@ -995,6 +1018,9 @@ from ._start_workflow_instances_request import StartWorkflowInstancesRequest
 from ._start_workflow_instances_shrink_request import StartWorkflowInstancesShrinkRequest
 from ._start_workflow_instances_response_body import StartWorkflowInstancesResponseBody
 from ._start_workflow_instances_response import StartWorkflowInstancesResponse
+from ._stop_crawler_request import StopCrawlerRequest
+from ._stop_crawler_response_body import StopCrawlerResponseBody
+from ._stop_crawler_response import StopCrawlerResponse
 from ._stop_dijob_request import StopDIJobRequest
 from ._stop_dijob_response_body import StopDIJobResponseBody
 from ._stop_dijob_response import StopDIJobResponse
@@ -1047,6 +1073,10 @@ from ._update_component_response import UpdateComponentResponse
 from ._update_compute_resource_request import UpdateComputeResourceRequest
 from ._update_compute_resource_response_body import UpdateComputeResourceResponseBody
 from ._update_compute_resource_response import UpdateComputeResourceResponse
+from ._update_crawler_request import UpdateCrawlerRequest
+from ._update_crawler_shrink_request import UpdateCrawlerShrinkRequest
+from ._update_crawler_response_body import UpdateCrawlerResponseBody
+from ._update_crawler_response import UpdateCrawlerResponse
 from ._update_custom_attribute_request import UpdateCustomAttributeRequest
 from ._update_custom_attribute_shrink_request import UpdateCustomAttributeShrinkRequest
 from ._update_custom_attribute_response_body import UpdateCustomAttributeResponseBody
@@ -1266,6 +1296,8 @@ from ._create_alert_rule_request import CreateAlertRuleRequestTriggerConditionEx
 from ._create_alert_rule_request import CreateAlertRuleRequestTriggerConditionExtension
 from ._create_alert_rule_request import CreateAlertRuleRequestTriggerConditionTarget
 from ._create_alert_rule_request import CreateAlertRuleRequestTriggerCondition
+from ._create_crawler_request import CreateCrawlerRequestScheduleConfig
+from ._create_crawler_request import CreateCrawlerRequestScope
 from ._create_dialarm_rule_request import CreateDIAlarmRuleRequestNotificationSettingsNotificationChannels
 from ._create_dialarm_rule_request import CreateDIAlarmRuleRequestNotificationSettingsNotificationReceivers
 from ._create_dialarm_rule_request import CreateDIAlarmRuleRequestNotificationSettings
@@ -1400,6 +1432,12 @@ from ._get_business_response_body import GetBusinessResponseBodyData
 from ._get_certificate_response_body import GetCertificateResponseBodyCertificate
 from ._get_component_response_body import GetComponentResponseBodyComponent
 from ._get_compute_resource_response_body import GetComputeResourceResponseBodyComputeResource
+from ._get_crawler_response_body import GetCrawlerResponseBodyCrawlerScheduleConfig
+from ._get_crawler_response_body import GetCrawlerResponseBodyCrawlerScope
+from ._get_crawler_response_body import GetCrawlerResponseBodyCrawler
+from ._get_crawler_type_capabilities_response_body import GetCrawlerTypeCapabilitiesResponseBodyCrawlerTypesSupportedEntityTypes
+from ._get_crawler_type_capabilities_response_body import GetCrawlerTypeCapabilitiesResponseBodyCrawlerTypesSupportedOptionKeys
+from ._get_crawler_type_capabilities_response_body import GetCrawlerTypeCapabilitiesResponseBodyCrawlerTypes
 from ._get_create_workflow_instances_result_response_body import GetCreateWorkflowInstancesResultResponseBodyResult
 from ._get_dijob_response_body import GetDIJobResponseBodyPagingInfoDestinationDataSourceSettings
 from ._get_dijob_response_body import GetDIJobResponseBodyPagingInfoJobSettingsColumnDataTypeSettings
@@ -1635,6 +1673,11 @@ from ._list_components_response_body import ListComponentsResponseBodyPagingInfo
 from ._list_compute_resources_response_body import ListComputeResourcesResponseBodyPagingInfoComputeResourcesComputeResource
 from ._list_compute_resources_response_body import ListComputeResourcesResponseBodyPagingInfoComputeResources
 from ._list_compute_resources_response_body import ListComputeResourcesResponseBodyPagingInfo
+from ._list_crawler_runs_response_body import ListCrawlerRunsResponseBodyPagingInfoCrawlerRuns
+from ._list_crawler_runs_response_body import ListCrawlerRunsResponseBodyPagingInfo
+from ._list_crawlers_response_body import ListCrawlersResponseBodyPagingInfoCrawlersScheduleConfig
+from ._list_crawlers_response_body import ListCrawlersResponseBodyPagingInfoCrawlers
+from ._list_crawlers_response_body import ListCrawlersResponseBodyPagingInfo
 from ._list_custom_agents_response_body import ListCustomAgentsResponseBodyPagingInfoAgents
 from ._list_custom_agents_response_body import ListCustomAgentsResponseBodyPagingInfo
 from ._list_custom_attributes_response_body import ListCustomAttributesResponseBodyPagingInfo
@@ -1973,6 +2016,8 @@ from ._update_alert_rule_request import UpdateAlertRuleRequestTriggerConditionEx
 from ._update_alert_rule_request import UpdateAlertRuleRequestTriggerConditionExtension
 from ._update_alert_rule_request import UpdateAlertRuleRequestTriggerConditionTarget
 from ._update_alert_rule_request import UpdateAlertRuleRequestTriggerCondition
+from ._update_crawler_request import UpdateCrawlerRequestScheduleConfig
+from ._update_crawler_request import UpdateCrawlerRequestScope
 from ._update_dialarm_rule_request import UpdateDIAlarmRuleRequestNotificationSettingsNotificationChannels
 from ._update_dialarm_rule_request import UpdateDIAlarmRuleRequestNotificationSettingsNotificationReceivers
 from ._update_dialarm_rule_request import UpdateDIAlarmRuleRequestNotificationSettings
@@ -2157,6 +2202,10 @@ __all__ = [
     CreateComputeResourceRequest,
     CreateComputeResourceResponseBody,
     CreateComputeResourceResponse,
+    CreateCrawlerRequest,
+    CreateCrawlerShrinkRequest,
+    CreateCrawlerResponseBody,
+    CreateCrawlerResponse,
     CreateCustomAttributeRequest,
     CreateCustomAttributeShrinkRequest,
     CreateCustomAttributeResponseBody,
@@ -2331,6 +2380,9 @@ __all__ = [
     DeleteComputeResourceRequest,
     DeleteComputeResourceResponseBody,
     DeleteComputeResourceResponse,
+    DeleteCrawlerRequest,
+    DeleteCrawlerResponseBody,
+    DeleteCrawlerResponse,
     DeleteCustomAttributeRequest,
     DeleteCustomAttributeResponseBody,
     DeleteCustomAttributeResponse,
@@ -2513,6 +2565,12 @@ __all__ = [
     GetComputeResourceRequest,
     GetComputeResourceResponseBody,
     GetComputeResourceResponse,
+    GetCrawlerRequest,
+    GetCrawlerResponseBody,
+    GetCrawlerResponse,
+    GetCrawlerTypeCapabilitiesRequest,
+    GetCrawlerTypeCapabilitiesResponseBody,
+    GetCrawlerTypeCapabilitiesResponse,
     GetCreateWorkflowInstancesResultRequest,
     GetCreateWorkflowInstancesResultResponseBody,
     GetCreateWorkflowInstancesResultResponse,
@@ -2731,8 +2789,15 @@ __all__ = [
     ListComputeResourcesShrinkRequest,
     ListComputeResourcesResponseBody,
     ListComputeResourcesResponse,
+    ListCrawlerRunsRequest,
+    ListCrawlerRunsResponseBody,
+    ListCrawlerRunsResponse,
     ListCrawlerTypesResponseBody,
     ListCrawlerTypesResponse,
+    ListCrawlersRequest,
+    ListCrawlersShrinkRequest,
+    ListCrawlersResponseBody,
+    ListCrawlersResponse,
     ListCustomAgentsRequest,
     ListCustomAgentsShrinkRequest,
     ListCustomAgentsResponseBody,
@@ -3047,6 +3112,9 @@ __all__ = [
     RollbackParameterRequest,
     RollbackParameterResponseBody,
     RollbackParameterResponse,
+    RunCrawlerRequest,
+    RunCrawlerResponseBody,
+    RunCrawlerResponse,
     RunSemanticJobRequest,
     RunSemanticJobResponseBody,
     RunSemanticJobResponse,
@@ -3062,6 +3130,9 @@ __all__ = [
     StartWorkflowInstancesShrinkRequest,
     StartWorkflowInstancesResponseBody,
     StartWorkflowInstancesResponse,
+    StopCrawlerRequest,
+    StopCrawlerResponseBody,
+    StopCrawlerResponse,
     StopDIJobRequest,
     StopDIJobResponseBody,
     StopDIJobResponse,
@@ -3114,6 +3185,10 @@ __all__ = [
     UpdateComputeResourceRequest,
     UpdateComputeResourceResponseBody,
     UpdateComputeResourceResponse,
+    UpdateCrawlerRequest,
+    UpdateCrawlerShrinkRequest,
+    UpdateCrawlerResponseBody,
+    UpdateCrawlerResponse,
     UpdateCustomAttributeRequest,
     UpdateCustomAttributeShrinkRequest,
     UpdateCustomAttributeResponseBody,
@@ -3333,6 +3408,8 @@ __all__ = [
     CreateAlertRuleRequestTriggerConditionExtension,
     CreateAlertRuleRequestTriggerConditionTarget,
     CreateAlertRuleRequestTriggerCondition,
+    CreateCrawlerRequestScheduleConfig,
+    CreateCrawlerRequestScope,
     CreateDIAlarmRuleRequestNotificationSettingsNotificationChannels,
     CreateDIAlarmRuleRequestNotificationSettingsNotificationReceivers,
     CreateDIAlarmRuleRequestNotificationSettings,
@@ -3467,6 +3544,12 @@ __all__ = [
     GetCertificateResponseBodyCertificate,
     GetComponentResponseBodyComponent,
     GetComputeResourceResponseBodyComputeResource,
+    GetCrawlerResponseBodyCrawlerScheduleConfig,
+    GetCrawlerResponseBodyCrawlerScope,
+    GetCrawlerResponseBodyCrawler,
+    GetCrawlerTypeCapabilitiesResponseBodyCrawlerTypesSupportedEntityTypes,
+    GetCrawlerTypeCapabilitiesResponseBodyCrawlerTypesSupportedOptionKeys,
+    GetCrawlerTypeCapabilitiesResponseBodyCrawlerTypes,
     GetCreateWorkflowInstancesResultResponseBodyResult,
     GetDIJobResponseBodyPagingInfoDestinationDataSourceSettings,
     GetDIJobResponseBodyPagingInfoJobSettingsColumnDataTypeSettings,
@@ -3702,6 +3785,11 @@ __all__ = [
     ListComputeResourcesResponseBodyPagingInfoComputeResourcesComputeResource,
     ListComputeResourcesResponseBodyPagingInfoComputeResources,
     ListComputeResourcesResponseBodyPagingInfo,
+    ListCrawlerRunsResponseBodyPagingInfoCrawlerRuns,
+    ListCrawlerRunsResponseBodyPagingInfo,
+    ListCrawlersResponseBodyPagingInfoCrawlersScheduleConfig,
+    ListCrawlersResponseBodyPagingInfoCrawlers,
+    ListCrawlersResponseBodyPagingInfo,
     ListCustomAgentsResponseBodyPagingInfoAgents,
     ListCustomAgentsResponseBodyPagingInfo,
     ListCustomAttributesResponseBodyPagingInfo,
@@ -4040,6 +4128,8 @@ __all__ = [
     UpdateAlertRuleRequestTriggerConditionExtension,
     UpdateAlertRuleRequestTriggerConditionTarget,
     UpdateAlertRuleRequestTriggerCondition,
+    UpdateCrawlerRequestScheduleConfig,
+    UpdateCrawlerRequestScope,
     UpdateDIAlarmRuleRequestNotificationSettingsNotificationChannels,
     UpdateDIAlarmRuleRequestNotificationSettingsNotificationReceivers,
     UpdateDIAlarmRuleRequestNotificationSettings,

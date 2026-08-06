@@ -11,11 +11,11 @@ class UploadSemanticFileRequest(DaraModel):
         file_name: str = None,
         size_bytes: int = None,
     ):
-        # The MIME type of the object to upload. Maximum length: 128 characters. This value is included in the signature of UploadUrl. Use the same Content-Type when you perform the PUT request.
+        # The MIME type of the object to upload. Maximum length: 128 characters. This value is included in the UploadUrl signature. Use the same Content-Type when performing the PUT request.
         # 
         # This parameter is required.
         self.content_type = content_type
-        # The original file name of the reference file to upload. Maximum length: 255 characters. When FileId is used for singleTableFile, only CSV or XLSX files are supported.
+        # The original file name of the reference file to upload. Maximum length: 255 characters. When singleTableFile uses a FileId, only CSV or XLSX files are supported.
         # 
         # This parameter is required.
         self.file_name = file_name
