@@ -261,12 +261,18 @@ from ._detach_vsc_from_filesystems_response import DetachVscFromFilesystemsRespo
 from ._disable_and_clean_recycle_bin_request import DisableAndCleanRecycleBinRequest
 from ._disable_and_clean_recycle_bin_response_body import DisableAndCleanRecycleBinResponseBody
 from ._disable_and_clean_recycle_bin_response import DisableAndCleanRecycleBinResponse
+from ._disable_data_insight_request import DisableDataInsightRequest
+from ._disable_data_insight_response_body import DisableDataInsightResponseBody
+from ._disable_data_insight_response import DisableDataInsightResponse
 from ._disable_nfs_acl_request import DisableNfsAclRequest
 from ._disable_nfs_acl_response_body import DisableNfsAclResponseBody
 from ._disable_nfs_acl_response import DisableNfsAclResponse
 from ._disable_smb_acl_request import DisableSmbAclRequest
 from ._disable_smb_acl_response_body import DisableSmbAclResponseBody
 from ._disable_smb_acl_response import DisableSmbAclResponse
+from ._enable_data_insight_request import EnableDataInsightRequest
+from ._enable_data_insight_response_body import EnableDataInsightResponseBody
+from ._enable_data_insight_response import EnableDataInsightResponse
 from ._enable_nfs_acl_request import EnableNfsAclRequest
 from ._enable_nfs_acl_response_body import EnableNfsAclResponseBody
 from ._enable_nfs_acl_response import EnableNfsAclResponse
@@ -294,6 +300,9 @@ from ._get_recycle_bin_attribute_response import GetRecycleBinAttributeResponse
 from ._list_access_points_request import ListAccessPointsRequest
 from ._list_access_points_response_body import ListAccessPointsResponseBody
 from ._list_access_points_response import ListAccessPointsResponse
+from ._list_data_insight_directories_request import ListDataInsightDirectoriesRequest
+from ._list_data_insight_directories_response_body import ListDataInsightDirectoriesResponseBody
+from ._list_data_insight_directories_response import ListDataInsightDirectoriesResponse
 from ._list_directories_and_files_request import ListDirectoriesAndFilesRequest
 from ._list_directories_and_files_response_body import ListDirectoriesAndFilesResponseBody
 from ._list_directories_and_files_response import ListDirectoriesAndFilesResponse
@@ -549,6 +558,8 @@ from ._list_access_points_response_body import ListAccessPointsResponseBodyAcces
 from ._list_access_points_response_body import ListAccessPointsResponseBodyAccessPointsRootPathPermission
 from ._list_access_points_response_body import ListAccessPointsResponseBodyAccessPointsTags
 from ._list_access_points_response_body import ListAccessPointsResponseBodyAccessPoints
+from ._list_data_insight_directories_response_body import ListDataInsightDirectoriesResponseBodyDirectorySubDirectories
+from ._list_data_insight_directories_response_body import ListDataInsightDirectoriesResponseBodyDirectory
 from ._list_directories_and_files_response_body import ListDirectoriesAndFilesResponseBodyEntries
 from ._list_lifecycle_retrieve_jobs_response_body import ListLifecycleRetrieveJobsResponseBodyLifecycleRetrieveJobs
 from ._list_recently_recycled_directories_response_body import ListRecentlyRecycledDirectoriesResponseBodyEntries
@@ -823,12 +834,18 @@ __all__ = [
     DisableAndCleanRecycleBinRequest,
     DisableAndCleanRecycleBinResponseBody,
     DisableAndCleanRecycleBinResponse,
+    DisableDataInsightRequest,
+    DisableDataInsightResponseBody,
+    DisableDataInsightResponse,
     DisableNfsAclRequest,
     DisableNfsAclResponseBody,
     DisableNfsAclResponse,
     DisableSmbAclRequest,
     DisableSmbAclResponseBody,
     DisableSmbAclResponse,
+    EnableDataInsightRequest,
+    EnableDataInsightResponseBody,
+    EnableDataInsightResponse,
     EnableNfsAclRequest,
     EnableNfsAclResponseBody,
     EnableNfsAclResponse,
@@ -856,6 +873,9 @@ __all__ = [
     ListAccessPointsRequest,
     ListAccessPointsResponseBody,
     ListAccessPointsResponse,
+    ListDataInsightDirectoriesRequest,
+    ListDataInsightDirectoriesResponseBody,
+    ListDataInsightDirectoriesResponse,
     ListDirectoriesAndFilesRequest,
     ListDirectoriesAndFilesResponseBody,
     ListDirectoriesAndFilesResponse,
@@ -1111,6 +1131,8 @@ __all__ = [
     ListAccessPointsResponseBodyAccessPointsRootPathPermission,
     ListAccessPointsResponseBodyAccessPointsTags,
     ListAccessPointsResponseBodyAccessPoints,
+    ListDataInsightDirectoriesResponseBodyDirectorySubDirectories,
+    ListDataInsightDirectoriesResponseBodyDirectory,
     ListDirectoriesAndFilesResponseBodyEntries,
     ListLifecycleRetrieveJobsResponseBodyLifecycleRetrieveJobs,
     ListRecentlyRecycledDirectoriesResponseBodyEntries,

@@ -7354,6 +7354,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.disable_and_clean_recycle_bin_with_options_async(request, runtime)
 
+    def disable_data_insight_with_options(
+        self,
+        request: main_models.DisableDataInsightRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DisableDataInsightResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DisableDataInsight',
+            version = '2017-06-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DisableDataInsightResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def disable_data_insight_with_options_async(
+        self,
+        request: main_models.DisableDataInsightRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DisableDataInsightResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DisableDataInsight',
+            version = '2017-06-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DisableDataInsightResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def disable_data_insight(
+        self,
+        request: main_models.DisableDataInsightRequest,
+    ) -> main_models.DisableDataInsightResponse:
+        runtime = RuntimeOptions()
+        return self.disable_data_insight_with_options(request, runtime)
+
+    async def disable_data_insight_async(
+        self,
+        request: main_models.DisableDataInsightRequest,
+    ) -> main_models.DisableDataInsightResponse:
+        runtime = RuntimeOptions()
+        return await self.disable_data_insight_with_options_async(request, runtime)
+
     def disable_nfs_acl_with_options(
         self,
         request: main_models.DisableNfsAclRequest,
@@ -7493,6 +7563,76 @@ class Client(OpenApiClient):
     ) -> main_models.DisableSmbAclResponse:
         runtime = RuntimeOptions()
         return await self.disable_smb_acl_with_options_async(request, runtime)
+
+    def enable_data_insight_with_options(
+        self,
+        request: main_models.EnableDataInsightRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.EnableDataInsightResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'EnableDataInsight',
+            version = '2017-06-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EnableDataInsightResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enable_data_insight_with_options_async(
+        self,
+        request: main_models.EnableDataInsightRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.EnableDataInsightResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'EnableDataInsight',
+            version = '2017-06-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EnableDataInsightResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enable_data_insight(
+        self,
+        request: main_models.EnableDataInsightRequest,
+    ) -> main_models.EnableDataInsightResponse:
+        runtime = RuntimeOptions()
+        return self.enable_data_insight_with_options(request, runtime)
+
+    async def enable_data_insight_async(
+        self,
+        request: main_models.EnableDataInsightRequest,
+    ) -> main_models.EnableDataInsightResponse:
+        runtime = RuntimeOptions()
+        return await self.enable_data_insight_with_options_async(request, runtime)
 
     def enable_nfs_acl_with_options(
         self,
@@ -8175,6 +8315,88 @@ class Client(OpenApiClient):
     ) -> main_models.ListAccessPointsResponse:
         runtime = RuntimeOptions()
         return await self.list_access_points_with_options_async(request, runtime)
+
+    def list_data_insight_directories_with_options(
+        self,
+        request: main_models.ListDataInsightDirectoriesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDataInsightDirectoriesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.parent_dir):
+            query['ParentDir'] = request.parent_dir
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDataInsightDirectories',
+            version = '2017-06-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDataInsightDirectoriesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_data_insight_directories_with_options_async(
+        self,
+        request: main_models.ListDataInsightDirectoriesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDataInsightDirectoriesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.parent_dir):
+            query['ParentDir'] = request.parent_dir
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDataInsightDirectories',
+            version = '2017-06-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDataInsightDirectoriesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_data_insight_directories(
+        self,
+        request: main_models.ListDataInsightDirectoriesRequest,
+    ) -> main_models.ListDataInsightDirectoriesResponse:
+        runtime = RuntimeOptions()
+        return self.list_data_insight_directories_with_options(request, runtime)
+
+    async def list_data_insight_directories_async(
+        self,
+        request: main_models.ListDataInsightDirectoriesRequest,
+    ) -> main_models.ListDataInsightDirectoriesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_data_insight_directories_with_options_async(request, runtime)
 
     def list_directories_and_files_with_options(
         self,

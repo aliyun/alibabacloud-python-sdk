@@ -1,3 +1,9 @@
+2026-08-06 Version: 3.7.0
+- Support API DisableDataInsight.
+- Support API EnableDataInsight.
+- Support API ListDataInsightDirectories.
+
+
 2026-08-03 Version: 3.6.1
 - Update API CreateLifecyclePolicy: add request parameters DeleteRules.
 - Update API DescribeDataFlowTasks: add response parameters Body.TaskInfo.$.EntryList.
