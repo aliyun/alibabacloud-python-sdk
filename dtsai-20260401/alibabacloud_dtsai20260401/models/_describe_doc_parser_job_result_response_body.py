@@ -12,13 +12,23 @@ class DescribeDocParserJobResultResponseBody(DaraModel):
         http_status_code: int = None,
         request_id: str = None,
         result: str = None,
+        result_type: str = None,
+        result_url: str = None,
         success: bool = None,
     ):
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_message = error_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The request ID.
         self.request_id = request_id
+        # The document parsing result. The format is determined by the OutputFormat parameter specified in the CreateDocParserJob request.
         self.result = result
+        self.result_type = result_type
+        self.result_url = result_url
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -44,6 +54,12 @@ class DescribeDocParserJobResultResponseBody(DaraModel):
         if self.result is not None:
             result['Result'] = self.result
 
+        if self.result_type is not None:
+            result['ResultType'] = self.result_type
+
+        if self.result_url is not None:
+            result['ResultUrl'] = self.result_url
+
         if self.success is not None:
             result['Success'] = self.success
 
@@ -65,6 +81,12 @@ class DescribeDocParserJobResultResponseBody(DaraModel):
 
         if m.get('Result') is not None:
             self.result = m.get('Result')
+
+        if m.get('ResultType') is not None:
+            self.result_type = m.get('ResultType')
+
+        if m.get('ResultUrl') is not None:
+            self.result_url = m.get('ResultUrl')
 
         if m.get('Success') is not None:
             self.success = m.get('Success')

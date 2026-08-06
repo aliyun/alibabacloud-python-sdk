@@ -10,8 +10,12 @@ class DescribeDocParserJobResultRequest(DaraModel):
         job_id: str = None,
         region_id: str = None,
     ):
+        # The document parsing task ID. You can obtain this ID by calling CreateDocParserJob.
+        # 
         # This parameter is required.
         self.job_id = job_id
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
 

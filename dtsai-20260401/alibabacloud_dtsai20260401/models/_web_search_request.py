@@ -10,12 +10,21 @@ class WebSearchRequest(DaraModel):
         max_results: int = None,
         query: str = None,
         region_id: str = None,
+        url_scope_domains: str = None,
+        url_scope_mode: str = None,
     ):
+        # The maximum number of results to return. Default value: 10. Valid values: 1 to 50.
         self.max_results = max_results
+        # The search query statement.
+        # 
         # This parameter is required.
         self.query = query
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        self.url_scope_domains = url_scope_domains
+        self.url_scope_mode = url_scope_mode
 
     def validate(self):
         pass
@@ -34,6 +43,12 @@ class WebSearchRequest(DaraModel):
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
+        if self.url_scope_domains is not None:
+            result['UrlScopeDomains'] = self.url_scope_domains
+
+        if self.url_scope_mode is not None:
+            result['UrlScopeMode'] = self.url_scope_mode
+
         return result
 
     def from_map(self, m: dict = None):
@@ -46,6 +61,12 @@ class WebSearchRequest(DaraModel):
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+
+        if m.get('UrlScopeDomains') is not None:
+            self.url_scope_domains = m.get('UrlScopeDomains')
+
+        if m.get('UrlScopeMode') is not None:
+            self.url_scope_mode = m.get('UrlScopeMode')
 
         return self
 

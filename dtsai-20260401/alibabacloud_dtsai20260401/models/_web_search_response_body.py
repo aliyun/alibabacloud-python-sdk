@@ -19,13 +19,21 @@ class WebSearchResponseBody(DaraModel):
         success: bool = None,
         total_results: int = None,
     ):
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_message = error_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The search query statement.
         self.query = query
+        # The request ID.
         self.request_id = request_id
+        # The search result list.
         self.search_result = search_result
+        # Indicates whether the request was successful.
         self.success = success
+        # The total number of results returned.
         self.total_results = total_results
 
     def validate(self):
@@ -107,8 +115,11 @@ class WebSearchResponseBodySearchResult(DaraModel):
         title: str = None,
         url: str = None,
     ):
+        # The summary of the web page content.
         self.snippet = snippet
+        # The title of the web page.
         self.title = title
+        # The URL of the web page.
         self.url = url
 
     def validate(self):

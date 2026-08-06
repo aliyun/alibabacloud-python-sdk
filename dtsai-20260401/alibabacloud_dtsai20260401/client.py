@@ -29,7 +29,10 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'cn-beijing': 'dtsai.cn-beijing.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('dtsai', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -218,10 +221,18 @@ class Client(OpenApiClient):
             query['FileName'] = request.file_name
         if not DaraCore.is_null(request.file_url):
             query['FileUrl'] = request.file_url
+        if not DaraCore.is_null(request.image_mode):
+            query['ImageMode'] = request.image_mode
+        if not DaraCore.is_null(request.oss_file_url):
+            query['OssFileUrl'] = request.oss_file_url
         if not DaraCore.is_null(request.output_format):
             query['OutputFormat'] = request.output_format
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.result_type):
+            query['ResultType'] = request.result_type
+        if not DaraCore.is_null(request.table_format):
+            query['TableFormat'] = request.table_format
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -254,10 +265,18 @@ class Client(OpenApiClient):
             query['FileName'] = request.file_name
         if not DaraCore.is_null(request.file_url):
             query['FileUrl'] = request.file_url
+        if not DaraCore.is_null(request.image_mode):
+            query['ImageMode'] = request.image_mode
+        if not DaraCore.is_null(request.oss_file_url):
+            query['OssFileUrl'] = request.oss_file_url
         if not DaraCore.is_null(request.output_format):
             query['OutputFormat'] = request.output_format
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.result_type):
+            query['ResultType'] = request.result_type
+        if not DaraCore.is_null(request.table_format):
+            query['TableFormat'] = request.table_format
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -692,6 +711,10 @@ class Client(OpenApiClient):
             query['Query'] = request.query
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.url_scope_domains):
+            query['UrlScopeDomains'] = request.url_scope_domains
+        if not DaraCore.is_null(request.url_scope_mode):
+            query['UrlScopeMode'] = request.url_scope_mode
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -724,6 +747,10 @@ class Client(OpenApiClient):
             query['Query'] = request.query
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.url_scope_domains):
+            query['UrlScopeDomains'] = request.url_scope_domains
+        if not DaraCore.is_null(request.url_scope_mode):
+            query['UrlScopeMode'] = request.url_scope_mode
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )

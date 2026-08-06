@@ -15,12 +15,31 @@ class DescribeDocParserJobStatusResponseBody(DaraModel):
         status: str = None,
         success: bool = None,
     ):
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_message = error_message
+        # The failure cause. This parameter has a value only when Status is failed.
         self.failure_message = failure_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The request ID.
         self.request_id = request_id
+        # The task status. Valid values:
+        # 
+        # - **init**: Created and being prepared.
+        # 
+        # - **pending**: Queued and waiting to be scheduled.
+        # 
+        # - **running**: Being processed and parsed.
+        # 
+        # - **success**: Completed. You can call DescribeDocParserJobResult to obtain the result.
+        # 
+        # - **failed**: Failed. The cause is provided in FailureMessage.
+        # 
+        # - **cancelled**: Canceled.
         self.status = status
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
