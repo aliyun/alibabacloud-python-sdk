@@ -1,3 +1,7 @@
+2026-08-07 Version: 2.3.3
+- Update API ListNodes: add response parameters Body.Nodes.$.Reason.
+
+
 2026-07-07 Version: 2.3.2
 - Update API ListClusters: add response parameters Body.EhpcVersionStatistics.
 

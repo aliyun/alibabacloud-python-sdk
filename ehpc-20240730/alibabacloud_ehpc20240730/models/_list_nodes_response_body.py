@@ -94,6 +94,7 @@ class ListNodesResponseBodyNodes(DaraModel):
         keep_alive: bool = None,
         public_ip_address: str = None,
         queue_name: str = None,
+        reason: str = None,
         spot_strategy: str = None,
         state_in_sched: str = None,
         status: str = None,
@@ -129,6 +130,7 @@ class ListNodesResponseBodyNodes(DaraModel):
         self.public_ip_address = public_ip_address
         # The name of the queue to which the node belongs.
         self.queue_name = queue_name
+        self.reason = reason
         # The bidding policy of the node. Valid values:
         # 
         # *   NoSpot: The instances of the compute node are pay-as-you-go instances.
@@ -201,6 +203,9 @@ class ListNodesResponseBodyNodes(DaraModel):
         if self.queue_name is not None:
             result['QueueName'] = self.queue_name
 
+        if self.reason is not None:
+            result['Reason'] = self.reason
+
         if self.spot_strategy is not None:
             result['SpotStrategy'] = self.spot_strategy
 
@@ -261,6 +266,9 @@ class ListNodesResponseBodyNodes(DaraModel):
 
         if m.get('QueueName') is not None:
             self.queue_name = m.get('QueueName')
+
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
 
         if m.get('SpotStrategy') is not None:
             self.spot_strategy = m.get('SpotStrategy')
