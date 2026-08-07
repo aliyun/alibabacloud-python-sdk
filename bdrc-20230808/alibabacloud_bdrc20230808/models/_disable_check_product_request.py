@@ -9,7 +9,7 @@ class DisableCheckProductRequest(DaraModel):
         self,
         product_type: str = None,
     ):
-        # Product type
+        # The product type.
         # 
         # This parameter is required.
         self.product_type = product_type

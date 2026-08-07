@@ -11,15 +11,15 @@ class CreateResourceCategoryRequest(DaraModel):
         resource_matcher: str = None,
         resource_type: str = None,
     ):
-        # Resource category name.
+        # The resource category name.
         # 
         # This parameter is required.
         self.resource_category_name = resource_category_name
-        # Resource matcher.
+        # The resource matcher.
         # 
         # This parameter is required.
         self.resource_matcher = resource_matcher
-        # Resource type.
+        # The resource type.
         self.resource_type = resource_type
 
     def validate(self):

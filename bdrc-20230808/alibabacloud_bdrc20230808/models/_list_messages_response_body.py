@@ -13,9 +13,9 @@ class ListMessagesResponseBody(DaraModel):
         data: main_models.ListMessagesResponseBodyData = None,
         request_id: str = None,
     ):
-        # The data returned.
+        # The response data.
         self.data = data
-        # The request ID.
+        # The unique request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -54,13 +54,13 @@ class ListMessagesResponseBodyData(DaraModel):
         next_token: str = None,
         total_count: int = None,
     ):
-        # Response parameters.
+        # The response content.
         self.content = content
         # The maximum number of results requested.
         self.max_results = max_results
         # The pagination token.
         self.next_token = next_token
-        # The total number of entries returned.
+        # The total number of results.
         self.total_count = total_count
 
     def validate(self):
@@ -121,21 +121,21 @@ class ListMessagesResponseBodyDataContent(DaraModel):
         message_time: int = None,
         message_type: str = None,
     ):
-        # Message ID.
+        # The message ID.
         self.message_id = message_id
-        # Message level.
+        # The message level.
         self.message_level = message_level
-        # Message name.
+        # The message name.
         self.message_name = message_name
-        # Message source ID.
+        # The message source ID.
         self.message_source_id = message_source_id
-        # Message source region ID.
+        # The region ID of the message source.
         self.message_source_region_id = message_source_region_id
-        # Message source type.
+        # The message source type.
         self.message_source_type = message_source_type
-        # Message time.
+        # The message time.
         self.message_time = message_time
-        # Message type.
+        # The message type.
         self.message_type = message_type
 
     def validate(self):

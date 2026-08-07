@@ -16,14 +16,14 @@ class DescribeRulesRequest(DaraModel):
         resource_region_id: str = None,
         resource_type: str = None,
     ):
-        # The number of entries to return on each page. Maximum value: 50. Default value: 10.
+        # The maximum number of entries per page for a paged query. Maximum value: 50. Default value: 10.
         self.max_results = max_results
-        # The token to retrieve the next page of results. You can obtain this token from the `NextToken` parameter in the previous response.
+        # Specifies whether a next query token exists. Valid values: If NextToken is empty, no more results exist. If NextToken is returned, the value indicates the token for the next query.
         self.next_token = next_token
         # The resource category ID.
         self.resource_category_id = resource_category_id
         self.resource_owner_ids = resource_owner_ids
-        # The ID of the region where the resource resides.
+        # The region ID of the resource.
         self.resource_region_id = resource_region_id
         # The resource type.
         self.resource_type = resource_type

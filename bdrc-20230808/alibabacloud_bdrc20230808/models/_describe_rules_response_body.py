@@ -15,7 +15,7 @@ class DescribeRulesResponseBody(DaraModel):
     ):
         # The returned data.
         self.data = data
-        # The unique ID of the request.
+        # The unique identifier of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -54,13 +54,13 @@ class DescribeRulesResponseBodyData(DaraModel):
         next_token: str = None,
         total_count: int = None,
     ):
-        # The list of returned records.
+        # The collection of records returned in this request.
         self.content = content
-        # The maximum number of entries returned on the current page.
+        # The maximum number of records returned in this request.
         self.max_results = max_results
-        # The token that is used to retrieve the next page of results. If this parameter is empty, all results have been returned.
+        # The position from which the current call starts reading. An empty value indicates that all data has been read.
         self.next_token = next_token
-        # The total number of entries that meet the filter criteria. This parameter is optional and is not returned by default.
+        # The total number of records that match the request conditions. This parameter is optional and may not be returned by default.
         self.total_count = total_count
 
     def validate(self):
@@ -124,21 +124,26 @@ class DescribeRulesResponseBodyDataContent(DaraModel):
     ):
         # The number of resources for which the check failed.
         self.check_failed_resource_count = check_failed_resource_count
-        # The check status. Valid values: NOT_CHECKED (Not checked), PASSED (Passed), FAILED (Failed), CHECKING (Checking), and CHECK_FAILED (Check failed).
+        # The check status. Valid values:
+        # - NOT_CHECKED: not checked.
+        # - PASSED: check passed.
+        # - FAILED: check failed.
+        # - CHECKING: checking in progress.
+        # - CHECK_FAILED: check execution failed.
         self.check_status = check_status
-        # The UNIX timestamp that indicates when the check was performed.
+        # The check time.
         self.check_time = check_time
-        # The product type to which the rule applies.
+        # The applicable product type.
         self.product_type = product_type
-        # The resource type to which the rule applies.
+        # The applicable resource type.
         self.resource_type = resource_type
-        # The number of at-risk resources.
+        # The number of resources with risks.
         self.risky_resource_count = risky_resource_count
-        # The unique ID of the rule.
+        # The unique identifier of the rule.
         self.rule_id = rule_id
         # The rule template.
         self.rule_template = rule_template
-        # The total number of resources that were checked.
+        # The total number of checked resources.
         self.total_resource_count = total_resource_count
 
     def validate(self):

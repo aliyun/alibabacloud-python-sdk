@@ -31,6 +31,9 @@ from ._describe_products_request import DescribeProductsRequest
 from ._describe_products_shrink_request import DescribeProductsShrinkRequest
 from ._describe_products_response_body import DescribeProductsResponseBody
 from ._describe_products_response import DescribeProductsResponse
+from ._describe_regions_request import DescribeRegionsRequest
+from ._describe_regions_response_body import DescribeRegionsResponseBody
+from ._describe_regions_response import DescribeRegionsResponse
 from ._describe_resources_request import DescribeResourcesRequest
 from ._describe_resources_shrink_request import DescribeResourcesShrinkRequest
 from ._describe_resources_response_body import DescribeResourcesResponseBody
@@ -107,6 +110,8 @@ from ._describe_products_response_body import DescribeProductsResponseBodyDataCo
 from ._describe_products_response_body import DescribeProductsResponseBodyDataContentProtectionScoreDistribution
 from ._describe_products_response_body import DescribeProductsResponseBodyDataContent
 from ._describe_products_response_body import DescribeProductsResponseBodyData
+from ._describe_regions_response_body import DescribeRegionsResponseBodyDataRegions
+from ._describe_regions_response_body import DescribeRegionsResponseBodyData
 from ._describe_resources_response_body import DescribeResourcesResponseBodyDataContent
 from ._describe_resources_response_body import DescribeResourcesResponseBodyData
 from ._describe_rules_response_body import DescribeRulesResponseBodyDataContent
@@ -168,6 +173,9 @@ __all__ = [
     DescribeProductsShrinkRequest,
     DescribeProductsResponseBody,
     DescribeProductsResponse,
+    DescribeRegionsRequest,
+    DescribeRegionsResponseBody,
+    DescribeRegionsResponse,
     DescribeResourcesRequest,
     DescribeResourcesShrinkRequest,
     DescribeResourcesResponseBody,
@@ -244,6 +252,8 @@ __all__ = [
     DescribeProductsResponseBodyDataContentProtectionScoreDistribution,
     DescribeProductsResponseBodyDataContent,
     DescribeProductsResponseBodyData,
+    DescribeRegionsResponseBodyDataRegions,
+    DescribeRegionsResponseBodyData,
     DescribeResourcesResponseBodyDataContent,
     DescribeResourcesResponseBodyData,
     DescribeRulesResponseBodyDataContent,

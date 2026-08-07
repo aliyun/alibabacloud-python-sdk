@@ -15,7 +15,7 @@ class DescribeProductsResponseBody(DaraModel):
     ):
         # The returned data.
         self.data = data
-        # The request ID.
+        # The unique ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -54,13 +54,13 @@ class DescribeProductsResponseBodyData(DaraModel):
         next_token: str = None,
         total_count: int = None,
     ):
-        # A list of cloud products and their data protection status.
+        # The collection of records returned in this request.
         self.content = content
-        # The maximum number of entries returned per page.
+        # The maximum number of records returned in this request.
         self.max_results = max_results
-        # The token for the next page of results. If this parameter is absent from the response, all results have been retrieved.
+        # The position from which the current call starts reading. An empty value indicates that all data has been read.
         self.next_token = next_token
-        # The total number of entries that match the query. This parameter is not returned by default.
+        # The total number of records that match the request conditions. This is an optional parameter and may not be returned by default.
         self.total_count = total_count
 
     def validate(self):
@@ -125,29 +125,29 @@ class DescribeProductsResponseBodyDataContent(DaraModel):
         total_resource_count: int = None,
         wait_for_check_resource_count: int = None,
     ):
-        # The count of failed check items.
+        # The number of failed check items.
         self.check_failed_count = check_failed_count
-        # The count of resources that failed the check.
+        # The number of resources that failed the check.
         self.check_failed_resource_count = check_failed_resource_count
-        # The count of resources for which the check is disabled.
+        # The number of resources for which the check is disabled.
         self.disable_check_resource_count = disable_check_resource_count
-        # Indicates whether the data protection score is enabled for the cloud product.
+        # Indicates whether data protection score assessment is enabled.
         self.enable_check = enable_check
-        # The cloud product type, such as `ECS` and `OSS`.
+        # The cloud service type, such as ecs or oss.
         self.product_type = product_type
-        # The data protection score, ranging from 0 to 100.
+        # The data protection score (0 to 100).
         self.protection_score = protection_score
         # The distribution of resources across different score ranges.
         self.protection_score_distribution = protection_score_distribution
-        # The UNIX timestamp of the last data protection score update.
+        # The time when the data protection score was last updated (UNIX timestamp).
         self.protection_score_updated_time = protection_score_updated_time
-        # The count of risky check items.
+        # The number of check items with risks.
         self.risk_count = risk_count
-        # The count of risky resources.
+        # The number of resources with risks.
         self.risky_resource_count = risky_resource_count
-        # The total count of resources for the cloud product.
+        # The total number of resources.
         self.total_resource_count = total_resource_count
-        # The count of resources pending a check.
+        # The number of resources pending check.
         self.wait_for_check_resource_count = wait_for_check_resource_count
 
     def validate(self):
@@ -250,7 +250,7 @@ class DescribeProductsResponseBodyDataContentProtectionScoreDistribution(DaraMod
         count: int = None,
         range: main_models.DescribeProductsResponseBodyDataContentProtectionScoreDistributionRange = None,
     ):
-        # The count of resources within this score range.
+        # The number of resources within the range.
         self.count = count
         # The score range.
         self.range = range
@@ -289,9 +289,9 @@ class DescribeProductsResponseBodyDataContentProtectionScoreDistributionRange(Da
         from_: int = None,
         to: int = None,
     ):
-        # The lower bound of the score range, inclusive.
+        # The lower bound of the range (inclusive).
         self.from_ = from_
-        # The upper bound of the score range, inclusive.
+        # The upper bound of the range (inclusive).
         self.to = to
 
     def validate(self):

@@ -4,14 +4,9 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class DisableCheckProductResponseBody(DaraModel):
-    def __init__(
-        self,
-        request_id: str = None,
-    ):
-        # The request ID.
-        self.request_id = request_id
-
+class DescribeRegionsRequest(DaraModel):
+    def __init__(self):
+        pass
     def validate(self):
         pass
 
@@ -20,15 +15,9 @@ class DisableCheckProductResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-
         return self
 

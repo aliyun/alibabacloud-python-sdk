@@ -16,17 +16,15 @@ class ListMessagesRequest(DaraModel):
     ):
         # The maximum number of records to return in this request.
         self.max_results = max_results
-        # Message level.
+        # The message level.
         self.message_level = message_level
-        # Messages with time earlier than this value.
+        # Filters messages with a time earlier than the specified value.
         self.message_time_earlier_than = message_time_earlier_than
-        # Messages with time later than this value.
+        # Filters messages with a time later than the specified value.
         self.message_time_later_than = message_time_later_than
-        # Message type.
+        # The message type.
         self.message_type = message_type
-        # The pagination token. If more entries are to be returned on the next page, a pagination token is returned.
-        # 
-        # > If this parameter returns data, it indicates that there are more pages. You can use the returned NextToken as a request parameter to obtain the next page of data until it returns Null, indicating that all data has been obtained.
+        # The pagination token. If there is a next page, this field has a return value. This parameter indicates that there is a next page as long as data is returned. You can use the returned NextToken as a request parameter to obtain the next page of data until Null is returned, which indicates that all data has been retrieved.
         self.next_token = next_token
 
     def validate(self):

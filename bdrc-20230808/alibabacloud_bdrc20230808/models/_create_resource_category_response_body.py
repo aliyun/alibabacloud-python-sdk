@@ -11,7 +11,7 @@ class CreateResourceCategoryResponseBody(DaraModel):
         data: main_models.CreateResourceCategoryResponseBodyData = None,
         request_id: str = None,
     ):
-        # The returned data.
+        # The response data.
         self.data = data
         # The unique identifier of the request.
         self.request_id = request_id
@@ -49,7 +49,7 @@ class CreateResourceCategoryResponseBodyData(DaraModel):
         self,
         resource_category_id: str = None,
     ):
-        # Resource category ID.
+        # The resource category ID.
         self.resource_category_id = resource_category_id
 
     def validate(self):
