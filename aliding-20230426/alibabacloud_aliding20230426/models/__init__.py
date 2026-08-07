@@ -520,6 +520,12 @@ from ._finish_ticket_request import FinishTicketRequest
 from ._finish_ticket_shrink_request import FinishTicketShrinkRequest
 from ._finish_ticket_response_body import FinishTicketResponseBody
 from ._finish_ticket_response import FinishTicketResponse
+from ._generate_auth_code_headers import GenerateAuthCodeHeaders
+from ._generate_auth_code_shrink_headers import GenerateAuthCodeShrinkHeaders
+from ._generate_auth_code_request import GenerateAuthCodeRequest
+from ._generate_auth_code_shrink_request import GenerateAuthCodeShrinkRequest
+from ._generate_auth_code_response_body import GenerateAuthCodeResponseBody
+from ._generate_auth_code_response import GenerateAuthCodeResponse
 from ._get_activity_list_headers import GetActivityListHeaders
 from ._get_activity_list_shrink_headers import GetActivityListShrinkHeaders
 from ._get_activity_list_request import GetActivityListRequest
@@ -910,6 +916,12 @@ from ._get_user_request import GetUserRequest
 from ._get_user_shrink_request import GetUserShrinkRequest
 from ._get_user_response_body import GetUserResponseBody
 from ._get_user_response import GetUserResponse
+from ._get_user_document_permission_headers import GetUserDocumentPermissionHeaders
+from ._get_user_document_permission_shrink_headers import GetUserDocumentPermissionShrinkHeaders
+from ._get_user_document_permission_request import GetUserDocumentPermissionRequest
+from ._get_user_document_permission_shrink_request import GetUserDocumentPermissionShrinkRequest
+from ._get_user_document_permission_response_body import GetUserDocumentPermissionResponseBody
+from ._get_user_document_permission_response import GetUserDocumentPermissionResponse
 from ._get_user_id_headers import GetUserIdHeaders
 from ._get_user_id_shrink_headers import GetUserIdShrinkHeaders
 from ._get_user_id_request import GetUserIdRequest
@@ -1985,6 +1997,8 @@ from ._finish_ticket_request import FinishTicketRequestNotify
 from ._finish_ticket_request import FinishTicketRequestTenantContext
 from ._finish_ticket_request import FinishTicketRequestTicketMemoAttachments
 from ._finish_ticket_request import FinishTicketRequestTicketMemo
+from ._generate_auth_code_headers import GenerateAuthCodeHeadersAccountContext
+from ._generate_auth_code_request import GenerateAuthCodeRequestTenantContext
 from ._get_activity_list_headers import GetActivityListHeadersAccountContext
 from ._get_activity_list_response_body import GetActivityListResponseBodyResult
 from ._get_aliding_assistant_info_headers import GetAlidingAssistantInfoHeadersAccountContext
@@ -2251,6 +2265,8 @@ from ._get_user_response_body import GetUserResponseBodyLeaderInDept
 from ._get_user_response_body import GetUserResponseBodyRoleList
 from ._get_user_response_body import GetUserResponseBodyUnionEmpExtUnionEmpMapList
 from ._get_user_response_body import GetUserResponseBodyUnionEmpExt
+from ._get_user_document_permission_headers import GetUserDocumentPermissionHeadersAccountContext
+from ._get_user_document_permission_request import GetUserDocumentPermissionRequestTenantContext
 from ._get_user_id_headers import GetUserIdHeadersAccountContext
 from ._get_user_id_request import GetUserIdRequestTenantContext
 from ._get_user_id_by_open_dingtalk_id_headers import GetUserIdByOpenDingtalkIdHeadersAccountContext
@@ -3279,6 +3295,12 @@ __all__ = [
     FinishTicketShrinkRequest,
     FinishTicketResponseBody,
     FinishTicketResponse,
+    GenerateAuthCodeHeaders,
+    GenerateAuthCodeShrinkHeaders,
+    GenerateAuthCodeRequest,
+    GenerateAuthCodeShrinkRequest,
+    GenerateAuthCodeResponseBody,
+    GenerateAuthCodeResponse,
     GetActivityListHeaders,
     GetActivityListShrinkHeaders,
     GetActivityListRequest,
@@ -3669,6 +3691,12 @@ __all__ = [
     GetUserShrinkRequest,
     GetUserResponseBody,
     GetUserResponse,
+    GetUserDocumentPermissionHeaders,
+    GetUserDocumentPermissionShrinkHeaders,
+    GetUserDocumentPermissionRequest,
+    GetUserDocumentPermissionShrinkRequest,
+    GetUserDocumentPermissionResponseBody,
+    GetUserDocumentPermissionResponse,
     GetUserIdHeaders,
     GetUserIdShrinkHeaders,
     GetUserIdRequest,
@@ -4744,6 +4772,8 @@ __all__ = [
     FinishTicketRequestTenantContext,
     FinishTicketRequestTicketMemoAttachments,
     FinishTicketRequestTicketMemo,
+    GenerateAuthCodeHeadersAccountContext,
+    GenerateAuthCodeRequestTenantContext,
     GetActivityListHeadersAccountContext,
     GetActivityListResponseBodyResult,
     GetAlidingAssistantInfoHeadersAccountContext,
@@ -5010,6 +5040,8 @@ __all__ = [
     GetUserResponseBodyRoleList,
     GetUserResponseBodyUnionEmpExtUnionEmpMapList,
     GetUserResponseBodyUnionEmpExt,
+    GetUserDocumentPermissionHeadersAccountContext,
+    GetUserDocumentPermissionRequestTenantContext,
     GetUserIdHeadersAccountContext,
     GetUserIdRequestTenantContext,
     GetUserIdByOpenDingtalkIdHeadersAccountContext,

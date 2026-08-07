@@ -1,3 +1,8 @@
+2026-08-07 Version: 2.57.0
+- Support API GenerateAuthCode.
+- Support API GetUserDocumentPermission.
+
+
 2026-07-16 Version: 2.56.0
 - Support API EnableSceneGroupTemplate.
 

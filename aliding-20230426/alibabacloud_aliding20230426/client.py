@@ -10816,6 +10816,120 @@ class Client(OpenApiClient):
         headers = main_models.FinishTicketHeaders()
         return await self.finish_ticket_with_options_async(request, headers, runtime)
 
+    def generate_auth_code_with_options(
+        self,
+        tmp_req: main_models.GenerateAuthCodeRequest,
+        tmp_header: main_models.GenerateAuthCodeHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.GenerateAuthCodeResponse:
+        tmp_req.validate()
+        request = main_models.GenerateAuthCodeShrinkRequest()
+        Utils.convert(tmp_req, request)
+        headers = main_models.GenerateAuthCodeShrinkHeaders()
+        Utils.convert(tmp_header, headers)
+        if not DaraCore.is_null(tmp_header.account_context):
+            headers.account_context_shrink = Utils.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not DaraCore.is_null(tmp_req.tenant_context):
+            request.tenant_context_shrink = Utils.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not DaraCore.is_null(request.buc_app_name):
+            body['BucAppName'] = request.buc_app_name
+        if not DaraCore.is_null(request.sso_ticket):
+            body['SsoTicket'] = request.sso_ticket
+        if not DaraCore.is_null(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not DaraCore.is_null(request.valid_redirect_uri):
+            body['ValidRedirectUri'] = request.valid_redirect_uri
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.account_context_shrink):
+            real_headers['AccountContext'] = DaraCore.to_json_string(headers.account_context_shrink)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GenerateAuthCode',
+            version = '2023-04-26',
+            protocol = 'HTTPS',
+            pathname = f'/dingtalk/v1/auth/generateAuthCode',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GenerateAuthCodeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def generate_auth_code_with_options_async(
+        self,
+        tmp_req: main_models.GenerateAuthCodeRequest,
+        tmp_header: main_models.GenerateAuthCodeHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.GenerateAuthCodeResponse:
+        tmp_req.validate()
+        request = main_models.GenerateAuthCodeShrinkRequest()
+        Utils.convert(tmp_req, request)
+        headers = main_models.GenerateAuthCodeShrinkHeaders()
+        Utils.convert(tmp_header, headers)
+        if not DaraCore.is_null(tmp_header.account_context):
+            headers.account_context_shrink = Utils.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not DaraCore.is_null(tmp_req.tenant_context):
+            request.tenant_context_shrink = Utils.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not DaraCore.is_null(request.buc_app_name):
+            body['BucAppName'] = request.buc_app_name
+        if not DaraCore.is_null(request.sso_ticket):
+            body['SsoTicket'] = request.sso_ticket
+        if not DaraCore.is_null(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not DaraCore.is_null(request.valid_redirect_uri):
+            body['ValidRedirectUri'] = request.valid_redirect_uri
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.account_context_shrink):
+            real_headers['AccountContext'] = DaraCore.to_json_string(headers.account_context_shrink)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GenerateAuthCode',
+            version = '2023-04-26',
+            protocol = 'HTTPS',
+            pathname = f'/dingtalk/v1/auth/generateAuthCode',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GenerateAuthCodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def generate_auth_code(
+        self,
+        request: main_models.GenerateAuthCodeRequest,
+    ) -> main_models.GenerateAuthCodeResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.GenerateAuthCodeHeaders()
+        return self.generate_auth_code_with_options(request, headers, runtime)
+
+    async def generate_auth_code_async(
+        self,
+        request: main_models.GenerateAuthCodeRequest,
+    ) -> main_models.GenerateAuthCodeResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.GenerateAuthCodeHeaders()
+        return await self.generate_auth_code_with_options_async(request, headers, runtime)
+
     def get_activity_list_with_options(
         self,
         request: main_models.GetActivityListRequest,
@@ -18701,6 +18815,124 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = main_models.GetUserHeaders()
         return await self.get_user_with_options_async(request, headers, runtime)
+
+    def get_user_document_permission_with_options(
+        self,
+        tmp_req: main_models.GetUserDocumentPermissionRequest,
+        tmp_header: main_models.GetUserDocumentPermissionHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetUserDocumentPermissionResponse:
+        tmp_req.validate()
+        request = main_models.GetUserDocumentPermissionShrinkRequest()
+        Utils.convert(tmp_req, request)
+        headers = main_models.GetUserDocumentPermissionShrinkHeaders()
+        Utils.convert(tmp_header, headers)
+        if not DaraCore.is_null(tmp_header.account_context):
+            headers.account_context_shrink = Utils.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not DaraCore.is_null(tmp_req.tenant_context):
+            request.tenant_context_shrink = Utils.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not DaraCore.is_null(request.dentry_id):
+            body['DentryId'] = request.dentry_id
+        if not DaraCore.is_null(request.dentry_uuid):
+            body['DentryUuid'] = request.dentry_uuid
+        if not DaraCore.is_null(request.resource_type):
+            body['ResourceType'] = request.resource_type
+        if not DaraCore.is_null(request.space_id):
+            body['SpaceId'] = request.space_id
+        if not DaraCore.is_null(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.account_context_shrink):
+            real_headers['AccountContext'] = DaraCore.to_json_string(headers.account_context_shrink)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetUserDocumentPermission',
+            version = '2023-04-26',
+            protocol = 'HTTPS',
+            pathname = f'/dingtalk/v1/documents/getUserDocumentPermission',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetUserDocumentPermissionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_user_document_permission_with_options_async(
+        self,
+        tmp_req: main_models.GetUserDocumentPermissionRequest,
+        tmp_header: main_models.GetUserDocumentPermissionHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetUserDocumentPermissionResponse:
+        tmp_req.validate()
+        request = main_models.GetUserDocumentPermissionShrinkRequest()
+        Utils.convert(tmp_req, request)
+        headers = main_models.GetUserDocumentPermissionShrinkHeaders()
+        Utils.convert(tmp_header, headers)
+        if not DaraCore.is_null(tmp_header.account_context):
+            headers.account_context_shrink = Utils.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not DaraCore.is_null(tmp_req.tenant_context):
+            request.tenant_context_shrink = Utils.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not DaraCore.is_null(request.dentry_id):
+            body['DentryId'] = request.dentry_id
+        if not DaraCore.is_null(request.dentry_uuid):
+            body['DentryUuid'] = request.dentry_uuid
+        if not DaraCore.is_null(request.resource_type):
+            body['ResourceType'] = request.resource_type
+        if not DaraCore.is_null(request.space_id):
+            body['SpaceId'] = request.space_id
+        if not DaraCore.is_null(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.account_context_shrink):
+            real_headers['AccountContext'] = DaraCore.to_json_string(headers.account_context_shrink)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetUserDocumentPermission',
+            version = '2023-04-26',
+            protocol = 'HTTPS',
+            pathname = f'/dingtalk/v1/documents/getUserDocumentPermission',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetUserDocumentPermissionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_user_document_permission(
+        self,
+        request: main_models.GetUserDocumentPermissionRequest,
+    ) -> main_models.GetUserDocumentPermissionResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.GetUserDocumentPermissionHeaders()
+        return self.get_user_document_permission_with_options(request, headers, runtime)
+
+    async def get_user_document_permission_async(
+        self,
+        request: main_models.GetUserDocumentPermissionRequest,
+    ) -> main_models.GetUserDocumentPermissionResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.GetUserDocumentPermissionHeaders()
+        return await self.get_user_document_permission_with_options_async(request, headers, runtime)
 
     def get_user_id_with_options(
         self,
