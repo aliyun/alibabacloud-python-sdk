@@ -220,8 +220,6 @@ class AgentServiceConfigDashScopeConfigAppCredentials(DaraModel):
 
         return self
 
-
-
 class AgentServiceConfigCustomConfig(DaraModel):
     def __init__(
         self,

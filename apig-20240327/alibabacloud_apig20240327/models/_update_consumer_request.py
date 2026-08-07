@@ -22,7 +22,7 @@ class UpdateConsumerRequest(DaraModel):
         self.apikey_identity_config = apikey_identity_config
         # The description.
         self.description = description
-        # Specifies whether to enable the API consumer.
+        # Specifies whether to enable the consumer.
         self.enable = enable
         # The JWT authentication configuration.
         self.jwt_identity_config = jwt_identity_config

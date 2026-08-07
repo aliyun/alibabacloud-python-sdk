@@ -2,6 +2,10 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from ._agent_access_config import AgentAccessConfig
+from ._agent_authorization_principal import AgentAuthorizationPrincipal
+from ._agent_info import AgentInfo
+from ._agent_model_access_config import AgentModelAccessConfig
 from ._agent_service_config import AgentServiceConfig
 from ._ai_cache_config import AiCacheConfig
 from ._ai_fallback_config import AiFallbackConfig
@@ -486,6 +490,9 @@ from ._update_service_version_response import UpdateServiceVersionResponse
 from ._upgrade_gateway_request import UpgradeGatewayRequest
 from ._upgrade_gateway_response_body import UpgradeGatewayResponseBody
 from ._upgrade_gateway_response import UpgradeGatewayResponse
+from ._agent_access_config import AgentAccessConfigAuthorization
+from ._agent_info import AgentInfoAgentAccess
+from ._agent_info import AgentInfoModelAccess
 from ._agent_service_config import AgentServiceConfigCustomConfig
 from ._agent_service_config import AgentServiceConfigDashScopeConfigAppCredentials
 from ._agent_service_config import AgentServiceConfigDashScopeConfig
@@ -512,6 +519,7 @@ from ._ai_tool_selection_config import AiToolSelectionConfigQueryRewriting
 from ._ai_tool_selection_config import AiToolSelectionConfigToolRerankingModelService
 from ._ai_tool_selection_config import AiToolSelectionConfigToolReranking
 from ._api_key_identity_config import ApiKeyIdentityConfigApikeySource
+from ._api_key_identity_config import ApiKeyIdentityConfigApikeySources
 from ._api_key_identity_config import ApiKeyIdentityConfigCredentials
 from ._api_route_conflict_info import ApiRouteConflictInfoConflictsDetailsConflictingMatchOperationInfo
 from ._api_route_conflict_info import ApiRouteConflictInfoConflictsDetailsConflictingMatch
@@ -844,6 +852,10 @@ from ._update_service_request import UpdateServiceRequestPorts
 from ._update_service_version_request import UpdateServiceVersionRequestLabels
 
 __all__ = [
+    AgentAccessConfig,
+    AgentAuthorizationPrincipal,
+    AgentInfo,
+    AgentModelAccessConfig,
     AgentServiceConfig,
     AiCacheConfig,
     AiFallbackConfig,
@@ -1328,6 +1340,9 @@ __all__ = [
     UpgradeGatewayRequest,
     UpgradeGatewayResponseBody,
     UpgradeGatewayResponse,
+    AgentAccessConfigAuthorization,
+    AgentInfoAgentAccess,
+    AgentInfoModelAccess,
     AgentServiceConfigCustomConfig,
     AgentServiceConfigDashScopeConfigAppCredentials,
     AgentServiceConfigDashScopeConfig,
@@ -1354,6 +1369,7 @@ __all__ = [
     AiToolSelectionConfigToolRerankingModelService,
     AiToolSelectionConfigToolReranking,
     ApiKeyIdentityConfigApikeySource,
+    ApiKeyIdentityConfigApikeySources,
     ApiKeyIdentityConfigCredentials,
     ApiRouteConflictInfoConflictsDetailsConflictingMatchOperationInfo,
     ApiRouteConflictInfoConflictsDetailsConflictingMatch,

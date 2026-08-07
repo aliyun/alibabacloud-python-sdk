@@ -12,6 +12,7 @@ class CreateGatewayRequest(DaraModel):
         self,
         charge_type: str = None,
         gateway_edition: str = None,
+        gateway_mode: str = None,
         gateway_type: str = None,
         log_config: main_models.CreateGatewayRequestLogConfig = None,
         name: str = None,
@@ -22,9 +23,7 @@ class CreateGatewayRequest(DaraModel):
         vpc_id: str = None,
         zone_config: main_models.CreateGatewayRequestZoneConfig = None,
     ):
-        # The billing method. Valid values:
-        # - POSTPAY: subscription.
-        # - PREPAY: pay-as-you-go.
+        # The billing method.
         self.charge_type = charge_type
         # The gateway instance edition. Valid values:
         # 
@@ -36,9 +35,8 @@ class CreateGatewayRequest(DaraModel):
         # 
         # - Unknown: unknown.
         self.gateway_edition = gateway_edition
-        # The gateway type. Valid values:
-        # - AI: AI gateway.
-        # - API: cloud-native API gateway.
+        self.gateway_mode = gateway_mode
+        # The gateway type.
         self.gateway_type = gateway_type
         # The gateway log configuration.
         self.log_config = log_config
@@ -80,6 +78,9 @@ class CreateGatewayRequest(DaraModel):
         if self.gateway_edition is not None:
             result['gatewayEdition'] = self.gateway_edition
 
+        if self.gateway_mode is not None:
+            result['gatewayMode'] = self.gateway_mode
+
         if self.gateway_type is not None:
             result['gatewayType'] = self.gateway_type
 
@@ -118,6 +119,9 @@ class CreateGatewayRequest(DaraModel):
 
         if m.get('gatewayEdition') is not None:
             self.gateway_edition = m.get('gatewayEdition')
+
+        if m.get('gatewayMode') is not None:
+            self.gateway_mode = m.get('gatewayMode')
 
         if m.get('gatewayType') is not None:
             self.gateway_type = m.get('gatewayType')
@@ -161,9 +165,7 @@ class CreateGatewayRequestZoneConfig(DaraModel):
         v_switch_id: str = None,
         zones: List[main_models.CreateGatewayRequestZoneConfigZones] = None,
     ):
-        # The zone selection option. Valid values:
-        # - Auto: automatic.
-        # - Manual: manual.
+        # The zone selection option.
         self.select_option = select_option
         # The vSwitch ID.
         self.v_switch_id = v_switch_id
@@ -289,10 +291,7 @@ class CreateGatewayRequestNetworkAccessConfig(DaraModel):
         self,
         type: str = None,
     ):
-        # The network access type. Valid values:
-        # - InternetAndIntranet: public and internal network.
-        # - Intranet: internal network.
-        # - Internet: public network.
+        # The network access type.
         self.type = type
 
     def validate(self):
@@ -320,7 +319,7 @@ class CreateGatewayRequestLogConfig(DaraModel):
         self,
         sls: main_models.CreateGatewayRequestLogConfigSls = None,
     ):
-        # The Simple Log Service (SLS) log configuration.
+        # The Simple Log Service (SLS) configuration, which controls gateway log collection.
         self.sls = sls
 
     def validate(self):
@@ -350,7 +349,7 @@ class CreateGatewayRequestLogConfigSls(DaraModel):
         self,
         enable: bool = None,
     ):
-        # Specifies whether to enable SLS logging.
+        # Specifies whether to enable SLS log collection.
         self.enable = enable
 
     def validate(self):

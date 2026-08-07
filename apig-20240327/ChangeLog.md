@@ -1,3 +1,7 @@
+2026-08-07 Version: 10.1.4
+- Update API QueryConsumerAuthorizationRules: add request parameters consumerGroupNameLike.
+
+
 2026-07-30 Version: 10.1.1
 - Update API CreateAiModelProvider: add request parameters clientToken.
 - Update API CreateAiModelProvider: add response parameters Body.data.modelCards.$.sourceURL.

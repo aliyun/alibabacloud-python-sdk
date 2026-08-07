@@ -58,7 +58,7 @@ class TlsCipherSuitesConfigTlsCipherSuite(DaraModel):
         name: str = None,
         support_versions: List[str] = None,
     ):
-        # The suite name.
+        # The TLS cipher suite name, such as ECDHE-ECDSA-AES256-GCM-SHA384.
         self.name = name
         # The supported versions.
         self.support_versions = support_versions

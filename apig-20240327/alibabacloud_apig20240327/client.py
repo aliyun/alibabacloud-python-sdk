@@ -1496,6 +1496,8 @@ class Client(OpenApiClient):
             body['chargeType'] = request.charge_type
         if not DaraCore.is_null(request.gateway_edition):
             body['gatewayEdition'] = request.gateway_edition
+        if not DaraCore.is_null(request.gateway_mode):
+            body['gatewayMode'] = request.gateway_mode
         if not DaraCore.is_null(request.gateway_type):
             body['gatewayType'] = request.gateway_type
         if not DaraCore.is_null(request.log_config):
@@ -1546,6 +1548,8 @@ class Client(OpenApiClient):
             body['chargeType'] = request.charge_type
         if not DaraCore.is_null(request.gateway_edition):
             body['gatewayEdition'] = request.gateway_edition
+        if not DaraCore.is_null(request.gateway_mode):
+            body['gatewayMode'] = request.gateway_mode
         if not DaraCore.is_null(request.gateway_type):
             body['gatewayType'] = request.gateway_type
         if not DaraCore.is_null(request.log_config):
@@ -9508,6 +9512,8 @@ class Client(OpenApiClient):
             query['apiNameLike'] = request.api_name_like
         if not DaraCore.is_null(request.consumer_group_id):
             query['consumerGroupId'] = request.consumer_group_id
+        if not DaraCore.is_null(request.consumer_group_name_like):
+            query['consumerGroupNameLike'] = request.consumer_group_name_like
         if not DaraCore.is_null(request.consumer_id):
             query['consumerId'] = request.consumer_id
         if not DaraCore.is_null(request.consumer_name_like):
@@ -9562,6 +9568,8 @@ class Client(OpenApiClient):
             query['apiNameLike'] = request.api_name_like
         if not DaraCore.is_null(request.consumer_group_id):
             query['consumerGroupId'] = request.consumer_group_id
+        if not DaraCore.is_null(request.consumer_group_name_like):
+            query['consumerGroupNameLike'] = request.consumer_group_name_like
         if not DaraCore.is_null(request.consumer_id):
             query['consumerId'] = request.consumer_id
         if not DaraCore.is_null(request.consumer_name_like):

@@ -79,7 +79,7 @@ class GetConsumerResponseBodyData(DaraModel):
         name: str = None,
         update_timestamp: int = None,
     ):
-        # The AccessKey identity authentication configurations.
+        # The AK/SK identity authentication configuration.
         self.ak_sk_identity_configs = ak_sk_identity_configs
         # The API key identity authentication configuration.
         self.api_key_identity_config = api_key_identity_config
@@ -89,7 +89,7 @@ class GetConsumerResponseBodyData(DaraModel):
         self.consumer_id = consumer_id
         # The creation timestamp.
         self.create_timestamp = create_timestamp
-        # The deployment status of the API in the current environment.
+        # The publish status of the API in the current environment.
         self.deploy_status = deploy_status
         # The description.
         self.description = description
@@ -217,7 +217,7 @@ class GetConsumerResponseBodyDataConsumerGroups(DaraModel):
         self.consumer_group_id = consumer_group_id
         # The consumer group description.
         self.description = description
-        # The time when the API consumer joined the consumer group. The value is a UNIX timestamp in milliseconds.
+        # The time when the API consumer joined the consumer group, in Unix milliseconds timestamp.
         self.join_timestamp = join_timestamp
         # The consumer group name.
         self.name = name

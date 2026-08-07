@@ -17,7 +17,7 @@ class ListGatewaysResponseBody(DaraModel):
     ):
         # The response status code.
         self.code = code
-        # The gateway list query result.
+        # The query result of the gateway list.
         self.data = data
         # The response message.
         self.message = message
@@ -136,6 +136,7 @@ class ListGatewaysResponseBodyDataItems(DaraModel):
         expire_timestamp: int = None,
         gateway_edition: str = None,
         gateway_id: str = None,
+        gateway_mode: str = None,
         gateway_type: str = None,
         legacy: bool = None,
         load_balancers: List[main_models.ListGatewaysResponseBodyDataItemsLoadBalancers] = None,
@@ -166,6 +167,7 @@ class ListGatewaysResponseBodyDataItems(DaraModel):
         self.gateway_edition = gateway_edition
         # The gateway ID.
         self.gateway_id = gateway_id
+        self.gateway_mode = gateway_mode
         # The gateway type.
         self.gateway_type = gateway_type
         # Indicates whether the gateway instance was created before AI gateway was released.
@@ -188,7 +190,7 @@ class ListGatewaysResponseBodyDataItems(DaraModel):
         self.sub_domain_infos = sub_domain_infos
         # The list of tags.
         self.tags = tags
-        # The target version of the gateway. When this value differs from version, a version upgrade can be performed.
+        # The target version of the gateway. If this value differs from the version, a version upgrade can be performed.
         self.target_version = target_version
         # The update timestamp. Unit: milliseconds.
         self.update_timestamp = update_timestamp
@@ -247,6 +249,9 @@ class ListGatewaysResponseBodyDataItems(DaraModel):
 
         if self.gateway_id is not None:
             result['gatewayId'] = self.gateway_id
+
+        if self.gateway_mode is not None:
+            result['gatewayMode'] = self.gateway_mode
 
         if self.gateway_type is not None:
             result['gatewayType'] = self.gateway_type
@@ -328,6 +333,9 @@ class ListGatewaysResponseBodyDataItems(DaraModel):
 
         if m.get('gatewayId') is not None:
             self.gateway_id = m.get('gatewayId')
+
+        if m.get('gatewayMode') is not None:
+            self.gateway_mode = m.get('gatewayMode')
 
         if m.get('gatewayType') is not None:
             self.gateway_type = m.get('gatewayType')
@@ -618,7 +626,7 @@ class ListGatewaysResponseBodyDataItemsLoadBalancers(DaraModel):
         self.mode = mode
         # The list of listening ports.
         self.ports = ports
-        # The load balancing status. Valid values:
+        # The status of the load balancing instance.
         self.status = status
         # The load balancing type of the gateway. Valid values:
         self.type = type

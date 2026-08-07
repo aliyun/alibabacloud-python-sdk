@@ -9,6 +9,7 @@ class QueryConsumerAuthorizationRulesRequest(DaraModel):
         self,
         api_name_like: str = None,
         consumer_group_id: str = None,
+        consumer_group_name_like: str = None,
         consumer_id: str = None,
         consumer_name_like: str = None,
         environment_id: str = None,
@@ -25,6 +26,7 @@ class QueryConsumerAuthorizationRulesRequest(DaraModel):
         self.api_name_like = api_name_like
         # The consumer group ID. If specified, the authorization rules of the consumer group are queried.
         self.consumer_group_id = consumer_group_id
+        self.consumer_group_name_like = consumer_group_name_like
         # The consumer ID.
         self.consumer_id = consumer_id
         # The consumer name.
@@ -61,6 +63,9 @@ class QueryConsumerAuthorizationRulesRequest(DaraModel):
 
         if self.consumer_group_id is not None:
             result['consumerGroupId'] = self.consumer_group_id
+
+        if self.consumer_group_name_like is not None:
+            result['consumerGroupNameLike'] = self.consumer_group_name_like
 
         if self.consumer_id is not None:
             result['consumerId'] = self.consumer_id
@@ -104,6 +109,9 @@ class QueryConsumerAuthorizationRulesRequest(DaraModel):
 
         if m.get('consumerGroupId') is not None:
             self.consumer_group_id = m.get('consumerGroupId')
+
+        if m.get('consumerGroupNameLike') is not None:
+            self.consumer_group_name_like = m.get('consumerGroupNameLike')
 
         if m.get('consumerId') is not None:
             self.consumer_id = m.get('consumerId')
