@@ -87,6 +87,7 @@ class DescribeDataObjectsResponseBodyItems(DaraModel):
         comment: str = None,
         data_type: str = None,
         db_name: str = None,
+        engine_type: str = None,
         file_category_code: int = None,
         id: str = None,
         instance_description: str = None,
@@ -129,6 +130,7 @@ class DescribeDataObjectsResponseBodyItems(DaraModel):
         self.data_type = data_type
         # The name of the database.
         self.db_name = db_name
+        self.engine_type = engine_type
         # The code for the file category.
         self.file_category_code = file_category_code
         # The unique ID of the data object.
@@ -272,6 +274,9 @@ class DescribeDataObjectsResponseBodyItems(DaraModel):
         if self.db_name is not None:
             result['DbName'] = self.db_name
 
+        if self.engine_type is not None:
+            result['EngineType'] = self.engine_type
+
         if self.file_category_code is not None:
             result['FileCategoryCode'] = self.file_category_code
 
@@ -390,6 +395,9 @@ class DescribeDataObjectsResponseBodyItems(DaraModel):
 
         if m.get('DbName') is not None:
             self.db_name = m.get('DbName')
+
+        if m.get('EngineType') is not None:
+            self.engine_type = m.get('EngineType')
 
         if m.get('FileCategoryCode') is not None:
             self.file_category_code = m.get('FileCategoryCode')

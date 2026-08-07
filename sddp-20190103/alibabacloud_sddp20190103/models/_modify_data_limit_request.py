@@ -28,104 +28,75 @@ class ModifyDataLimitRequest(DaraModel):
         vpc_id: str = None,
     ):
         # Specifies whether to enable auditing. Valid values:
-        # 
         # - **0**: Disable auditing.
-        # 
         # - **1**: Enable auditing.
         self.audit_status = audit_status
-        # Specifies whether to automatically trigger a rescan when a rule is changed. Valid values:
+        # Specifies whether to automatically trigger a rescan when rules change. Valid values:
+        # - **0**: Do not trigger an automatic scan.
+        # - **1**: Trigger an automatic scan.  
         # 
-        # - **0**: Do not automatically trigger a rescan.
-        # 
-        # - **1**: Automatically trigger a rescan.
-        # 
-        # > If a rescan is automatically triggered, a full scan is performed on the data asset.
+        # > When a rule change triggers an automatic scan, a full scan is performed on all data in the data source.
         self.auto_scan = auto_scan
-        # The type of the database. Valid values:
-        # 
+        # The database type. Valid values:
         # - **MySQL**
-        # 
         # - **SQLServer**
         self.engine_type = engine_type
         # This parameter is deprecated.
         self.feature_type = feature_type
-        # The unique ID of the data asset.
-        # 
-        # > Call the [DescribeDataLimits](~~DescribeDataLimits~~) operation to query the ID of the data asset.
+        # The unique ID of the data asset that belongs to the product associated with the DSC connection authorization configuration item.
+        # > To modify a DSC connection authorization configuration item, you must provide the unique ID of the data asset that belongs to the associated product. You can call the [DescribeDataLimits](~~DescribeDataLimits~~) operation to obtain the ID.
         # 
         # This parameter is required.
         self.id = id
-        # The language of the content within the request and response. Valid values:
+        # The language of the request and response messages. Valid values:
         # 
         # - **zh**: Chinese (default)
-        # 
         # - **en**: English
         self.lang = lang
         # The retention period of raw logs after auditing is enabled. Unit: days. Valid values:
-        # 
         # - **30**
-        # 
         # - **90**
-        # 
         # - **180**
-        # 
         # - **365**
         self.log_store_day = log_store_day
-        # Specifies whether to modify the username and password that are used to connect to the database. Valid values:
-        # 
-        # - **true**: Modify the username and password.
-        # 
-        # - **false**: Do not modify the username and password.
+        # Specifies whether to modify the username and password for connecting to the database. Valid values:
+        # - **true**: Modify.
+        # - **false**: Do not modify.
         self.modify_password = modify_password
-        # The password for the ApsaraDB RDS database.
+        # The password used for the DSC connection authorization to the RDS database.
         self.password = password
         # The port used to connect to the database.
         self.port = port
-        # The service to which the data asset belongs. Valid values:
-        # 
+        # The name of the product to which the data of the DSC connection authorization configuration item belongs. Valid values:
         # - **1**: MaxCompute
-        # 
         # - **2**: OSS
-        # 
         # - **3**: ADS
-        # 
         # - **4**: OTS
-        # 
         # - **5**: RDS
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The number of sensitive data samples to return. This parameter takes effect only after data detection is enabled. Valid values:
-        # 
+        # The number of sample entries for sensitive data detection after data detection is enabled. Valid values:
         # - **0**
-        # 
         # - **5**
-        # 
         # - **10**
         self.sampling_size = sampling_size
-        # The security groups for agent-based auditing that uses PrivateLink.
+        # The security groups used by PrivateLink in agent-based auditing.
         self.security_group_id_list = security_group_id_list
-        # The ID of the region in which the data asset is located. Valid values:
-        # 
+        # The region where the asset resides. Valid values:
         # - **cn-beijing**: China (Beijing)
-        # 
         # - **cn-zhangjiakou**: China (Zhangjiakou)
-        # 
         # - **cn-huhehaote**: China (Hohhot)
-        # 
         # - **cn-hangzhou**: China (Hangzhou)
-        # 
         # - **cn-shanghai**: China (Shanghai)
-        # 
         # - **cn-shenzhen**: China (Shenzhen)
-        # 
-        # - **cn-hongkong**: China (Hong Kong)
+        # - **cn-hongkong**: Hong Kong (China)
         self.service_region_id = service_region_id
-        # The username for the ApsaraDB RDS database.
+        # The username used for the DSC connection authorization to the RDS database.
         self.user_name = user_name
-        # The vSwitches for agent-based auditing that uses PrivateLink.
+        # The vSwitches used by PrivateLink in agent-based auditing.
         self.v_switch_id_list = v_switch_id_list
-        # The ID of the virtual private cloud (VPC) to which the data asset belongs.
+        # The VPC ID to which the data asset belongs.
         self.vpc_id = vpc_id
 
     def validate(self):

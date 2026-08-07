@@ -13,9 +13,9 @@ class DescribeOssObjectDetailResponseBody(DaraModel):
         oss_object_detail: main_models.DescribeOssObjectDetailResponseBodyOssObjectDetail = None,
         request_id: str = None,
     ):
-        # The details of the OSS object.
+        # The details of the OSS storage object.
         self.oss_object_detail = oss_object_detail
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -56,17 +56,17 @@ class DescribeOssObjectDetailResponseBodyOssObjectDetail(DaraModel):
         risk_level_name: str = None,
         rule_list: List[main_models.DescribeOssObjectDetailResponseBodyOssObjectDetailRuleList] = None,
     ):
-        # The name of the bucket to which the OSS object belongs.
+        # The name of the bucket to which the OSS storage object belongs.
         self.bucket_name = bucket_name
-        # The name of the OSS object type.
+        # The object type name of the OSS storage object.
         self.category_name = category_name
-        # The name of the OSS object.
+        # The name of the OSS storage object.
         self.name = name
-        # The ID of the region where the OSS object is stored.
+        # The region ID of the OSS storage object.
         self.region_id = region_id
-        # The name of the risk level for the OSS object.
+        # The risk level name of the OSS storage object.
         self.risk_level_name = risk_level_name
-        # A list of sensitive data detection rules that the OSS object hits.
+        # The list of sensitive data detection rules that the OSS storage object hits.
         self.rule_list = rule_list
 
     def validate(self):
@@ -137,27 +137,22 @@ class DescribeOssObjectDetailResponseBodyOssObjectDetailRuleList(DaraModel):
         risk_level_name: str = None,
         rule_name: str = None,
     ):
-        # The name of the OSS object type.
+        # The object type name of the OSS storage object.
         self.category_name = category_name
-        # The number of times the sensitive data detection rule was hit.
+        # The number of times the sensitive data detection rule is hit.
         self.count = count
-        # A list of data tags that are hit by the detection model.
+        # The list of data tags for the detection model that is hit.
         self.model_tags = model_tags
-        # The ID of the risk level for the OSS object.
-        # 
+        # The risk level ID of the OSS storage object. Valid values:
         # - **1**: No sensitive data is detected.
-        # 
         # - **2**: Level 1 sensitive data.
-        # 
         # - **3**: Level 2 sensitive data.
-        # 
         # - **4**: Level 3 sensitive data.
-        # 
         # - **5**: Level 4 sensitive data.
         self.risk_level_id = risk_level_id
-        # The name of the risk level for the OSS object.
+        # The risk level name of the OSS storage object.
         self.risk_level_name = risk_level_name
-        # The name of the sensitive data detection rule that was hit.
+        # The name of the sensitive data detection rule that is hit.
         self.rule_name = rule_name
 
     def validate(self):
@@ -224,20 +219,14 @@ class DescribeOssObjectDetailResponseBodyOssObjectDetailRuleListModelTags(DaraMo
         id: int = None,
         name: str = None,
     ):
-        # The ID of the data tag for the detection model.
-        # 
-        # - **101**: Personal sensitive information.
-        # 
-        # - **102**: Personal information.
-        # 
-        # - **103**: Important data.
+        # The data tag ID of the detection model. Valid values:
+        # - **101**: personal sensitive information.
+        # - **102**: personal information.
+        # - **103**: important data.
         self.id = id
-        # The name of the data tag for the detection model.
-        # 
+        # The data tag name of the detection model. Valid values:
         # - Personal sensitive information.
-        # 
         # - Personal information.
-        # 
         # - Important data.
         self.name = name
 

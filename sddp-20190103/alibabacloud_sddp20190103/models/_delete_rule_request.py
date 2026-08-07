@@ -18,7 +18,9 @@ class DeleteRuleRequest(DaraModel):
         # 
         # This parameter is required.
         self.id = id
-        # The language of the data asset. Valid values: -**zh**: Chinese -**en**: English
+        # The language of the data asset. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
         # This parameter is deprecated.
         self.source_ip = source_ip

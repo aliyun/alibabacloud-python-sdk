@@ -19,43 +19,35 @@ class DescribeDataMaskingRunHistoryRequest(DaraModel):
         status: int = None,
         task_id: str = None,
     ):
-        # The page number to return.
+        # The page number for a paged query.
         self.current_page = current_page
-        # The type of service to which the masked data is destined. Valid values: **1** for MaxCompute, **2** for OSS, **3** for ADS, **4** for OTS, and **5** for RDS.
+        # The type of the destination product where the masked data is stored. Valid values: **1**: MaxCompute, **2**: OSS, **3**: ADS, **4**: OTS, **5**: RDS, and others.
         self.dst_type = dst_type
-        # The end time to query for task executions. This is a UNIX timestamp in milliseconds.
+        # The end time of the task execution to query. The value is a timestamp in milliseconds.
         self.end_time = end_time
         # The language of the request and response. Default value: **zh_cn**. Valid values:
-        # 
         # - **zh_cn**: Chinese.
-        # 
         # - **en_us**: English.
         self.lang = lang
         # The ID of the main task.
         # 
-        # > If a task has subtasks, this parameter specifies the ID of the main task. Otherwise, this parameter is empty.
+        # >If the task contains subtasks, this parameter is set to the current task ID. Otherwise, this parameter is empty.
         self.main_process_id = main_process_id
-        # The number of entries to return on each page.
+        # The maximum number of entries per page.
         self.page_size = page_size
         # The name of the source table.
         self.src_table_name = src_table_name
-        # The type of service to which the source data belongs. Valid values: **1** for MaxCompute, **2** for OSS, **3** for ADS, **4** for OTS, and **5** for RDS.
+        # The type of the source product to which the data to be masked belongs. Valid values: **1**: MaxCompute, **2**: OSS, **3**: ADS, **4**: OTS, **5**: RDS, and others.
         self.src_type = src_type
-        # The start time to query for task executions. This is a UNIX timestamp in milliseconds.
+        # The start time of the task execution to query. The value is a timestamp in milliseconds.
         self.start_time = start_time
-        # The execution status of the task. Valid values:
-        # 
-        # - **-1**: pending.
-        # 
-        # - **0**: running.
-        # 
-        # - **1**: successful.
-        # 
-        # - **2**: failed.
-        # 
-        # - **3**: stopped by user.
-        # 
-        # - **4**: partially failed.
+        # The task execution status. Valid values:
+        # - **-1**: Waiting for execution.
+        # - **0**: Running.
+        # - **1**: Executed successfully.
+        # - **2**: Execution failed.
+        # - **3**: Terminated by user.
+        # - **4**: Partially failed.
         self.status = status
         # The ID of the data masking task.
         self.task_id = task_id

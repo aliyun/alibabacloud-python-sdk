@@ -13,11 +13,11 @@ class ModifyEventTypeStatusRequest(DaraModel):
     ):
         # This parameter is deprecated.
         self.feature_type = feature_type
-        # The language of the request and response. Valid values are **zh** for Chinese and **en** for English.
+        # The language of the request and response. Valid values:- **zh**: Chinese- **en**: English.
         self.lang = lang
-        # The unique IDs of the anomalous activity subtypes. Separate multiple IDs with commas.
+        # The unique IDs of the anomalous activity child classes, separated by commas (,).
         # 
-        # > To enable SDDP to detect anomalous activities for subtypes, provide the unique IDs of the anomalous activity subtypes. Call the **DescribeEventTypes** operation to obtain the IDs.
+        # > To enable the detection of anomalous activities of specified child classes, provide the unique IDs of the child classes. You can call the **DescribeEventTypes** operation to obtain the IDs.
         self.sub_type_ids = sub_type_ids
 
     def validate(self):

@@ -27,84 +27,59 @@ class CreateRuleRequest(DaraModel):
         template_rule_ids: str = None,
         warn_level: int = None,
     ):
-        # The content type of the sensitive data detection rule. Valid values:
-        # 
+        # The type of content in the sensitive data detection rule. Valid values:
         # - **0**: keyword.
-        # 
         # - **2**: regular expression.
         self.category = category
-        # The content of the sensitive data detection rule. The content can be a regular expression or a keyword that is used to match sensitive data fields or text.
+        # The content of the sensitive data detection rule. The content can be a regular expression or keyword used to match sensitive data fields or text.
         # 
         # This parameter is required.
         self.content = content
         # The content type. Valid values:
         # 
-        # - **1**: SQL injection exploit.
-        # 
-        # - **2**: SQL injection bypass.
-        # 
+        # - **1**: SQL injection exploitation attempt.
+        # - **2**: SQL injection bypass attempt.
         # - **3**: stored procedure abuse.
-        # 
         # - **4**: buffer overflow.
-        # 
         # - **5**: error-based SQL injection.
         self.content_category = content_category
         # The description of the rule.
         self.description = description
-        # The language of the content in the request and response. Valid values:
-        # 
+        # The language type for the request and response messages. Valid values:
         # - **zh**: Chinese.
-        # 
         # - **en**: English.
         self.lang = lang
         # The match type. Valid values:
-        # 
         # - **1**: rule-based match.
-        # 
         # - **2**: dictionary-based match.
         self.match_type = match_type
-        # The IDs of the model rules for sensitive data auditing.
+        # The collection of model IDs for sensitive data auditing.
         self.model_rule_ids = model_rule_ids
         # The name of the sensitive data detection rule.
         # 
         # This parameter is required.
         self.name = name
-        # The name of the service to which the data asset belongs. Valid values: **MaxCompute**, **OSS**, **ADS**, **OTS**, and **RDS**.
+        # The name of the product to which the column data in the data asset table belongs. Valid values: **MaxCompute**, **OSS**, **ADS**, **OTS**, **RDS**, and others.
         self.product_code = product_code
-        # The ID of the service to which the data asset belongs. Valid values:
-        # 
+        # The ID that corresponds to the product name of the data asset. Valid values:
         # - **1**: MaxCompute
-        # 
         # - **2**: OSS
-        # 
         # - **3**: ADS
-        # 
         # - **4**: OTS
-        # 
         # - **5**: RDS
-        # 
         # - **6**: SELF_DB
         self.product_id = product_id
         # The sensitivity level ID of the sensitive data detection rule. Valid values:
-        # 
         # - **1**: N/A. No sensitive data is detected.
-        # 
-        # - **2**: S1. Level 1 sensitive data.
-        # 
-        # - **3**: S2. Level 2 sensitive data.
-        # 
-        # - **4**: S3. Level 3 sensitive data.
-        # 
-        # - **5**: S4. Level 4 sensitive data.
+        # - **2**: S1. Level-1 sensitive data.
+        # - **3**: S2. Level-2 sensitive data.
+        # - **4**: S3. Level-3 sensitive data.
+        # - **5**: S4. Level-4 sensitive data.
         self.risk_level_id = risk_level_id
-        # The type of the rule. Valid values:
-        # 
+        # The feature type of the rule. Valid values:
         # - **1**: data detection rule.
-        # 
         # - **2**: audit policy.
-        # 
-        # - **3**: anomaly detection rule.
-        # 
+        # - **3**: outlier detection rule.
         # - **99**: custom rule.
         self.rule_type = rule_type
         # This parameter is deprecated.
@@ -112,30 +87,22 @@ class CreateRuleRequest(DaraModel):
         # The statistical expression.
         self.stat_express = stat_express
         # The status of the rule. Valid values:
-        # 
-        # - **1**: Enabled.
-        # 
-        # - **0**: Disabled.
+        # - **1**: enabled.
+        # - **0**: disabled.
         self.status = status
-        # The type of data assets that the rule supports. Valid values:
-        # 
+        # The asset form supported by the rule. Valid values:
         # - **0**: all assets.
-        # 
         # - **1**: structured assets.
-        # 
         # - **2**: unstructured assets.
         self.support_form = support_form
-        # The code of the service to which the rule applies. Valid values: **MaxCompute**, **OSS**, **ADS**, **OTS**, and **RDS**.
+        # The target product code. Valid values: **MaxCompute**, **OSS**, **ADS**, **OTS**, **RDS**, and others.
         self.target = target
-        # The IDs of the template rules for sensitive data auditing.
+        # The collection of template IDs for sensitive data auditing.
         self.template_rule_ids = template_rule_ids
         # The risk level. Valid values:
-        # 
-        # - **1**: Low.
-        # 
-        # - **2**: Medium.
-        # 
-        # - **3**: High.
+        # - **1**: low.
+        # - **2**: medium.
+        # - **3**: high.
         self.warn_level = warn_level
 
     def validate(self):

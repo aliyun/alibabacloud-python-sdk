@@ -10,9 +10,9 @@ class ModifyRuleStatusResponseBody(DaraModel):
         failed_ids: str = None,
         request_id: str = None,
     ):
-        # The IDs of the rules whose status failed to be changed. Multiple IDs are separated by commas.
+        # The IDs of the rules whose status failed to be updated. Multiple IDs are separated by commas (,).
         self.failed_ids = failed_ids
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

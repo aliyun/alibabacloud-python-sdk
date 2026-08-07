@@ -16,15 +16,15 @@ class DescribeDataMaskingTasksResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The page number of the returned page.
+        # The page number of the current page in the results.
         self.current_page = current_page
-        # A list of data masking tasks.
+        # The list of static data masking tasks.
         self.items = items
-        # The number of entries returned per page.
+        # The number of entries per page in the results.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries in the results.
         self.total_count = total_count
 
     def validate(self):
@@ -101,98 +101,69 @@ class DescribeDataMaskingTasksResponseBodyItems(DaraModel):
         task_name: str = None,
         trigger_type: int = None,
     ):
-        # The member account that the data masking destination belongs to.
+        # The member accounts to which the destination data belongs.
         self.dst_member_account = dst_member_account
         # The destination path.
         self.dst_path = dst_path
-        # The product that the destination data source belongs to. Valid values:
-        # 
+        # The service to which the destination data source belongs. Valid values:
         # - **1**: MaxCompute.
-        # 
         # - **2**: OSS.
-        # 
         # - **3**: ADS.
-        # 
         # - **4**: OTS.
-        # 
         # - **5**: RDS.
-        # 
         # - **6**: SELF_DB.
         self.dst_type = dst_type
-        # The type of the destination product. Valid values:
-        # 
+        # The destination service type. Valid values:
         # - **MaxCompute**.
-        # 
         # - **OSS**.
-        # 
         # - **ADS**.
-        # 
         # - **OTS**.
-        # 
         # - **RDS**.
-        # 
         # - **SELF_DB**.
         self.dst_type_code = dst_type_code
-        # The time when the task was created. The value is a UNIX timestamp. Unit: milliseconds.
+        # The creation time. Format: timestamp. Unit: milliseconds.
         self.gmt_create = gmt_create
-        # Indicates whether the task is running.
+        # Indicates whether the task is being executed.
         self.has_unfinish_process = has_unfinish_process
-        # The numerical ID of the task.
+        # The task ID.
         self.id = id
-        # Indicates whether the source table is masked.
+        # Indicates whether the task masks data in the original table.
         self.original_table = original_table
-        # The creator of the task.
+        # The task creator.
         self.owner = owner
         # The number of executions.
         self.run_count = run_count
-        # The member account that the data masking source belongs to.
+        # The member accounts to which the source data belongs.
         self.src_member_account = src_member_account
         # The source path.
         self.src_path = src_path
-        # The type of the source product. Valid values:
-        # 
+        # The source service type. Valid values:
         # - **1**: MaxCompute.
-        # 
         # - **2**: OSS.
-        # 
         # - **3**: ADS.
-        # 
         # - **4**: OTS.
-        # 
         # - **5**: RDS.
-        # 
         # - **6**: SELF_DB.
         self.src_type = src_type
-        # The type of the source product. Valid values:
-        # 
+        # The source service type. Valid values:
         # - **MaxCompute**.
-        # 
         # - **OSS**.
-        # 
         # - **ADS**.
-        # 
         # - **OTS**.
-        # 
         # - **RDS**.
-        # 
         # - **SELF_DB**.
         self.src_type_code = src_type_code
-        # The status of the task. Valid values:
-        # 
+        # The task status. Valid values:
         # - **0**: Disabled.
-        # 
         # - **1**: Enabled.
         self.status = status
-        # The string ID of the task.
+        # The task ID.
         self.task_id = task_id
-        # The name of the task.
+        # The task name.
         self.task_name = task_name
-        # The execution method of the task. Valid values:
-        # 
+        # The execution mode. Valid values:
         # - **1**: Manual.
-        # 
         # - **2**: Scheduled.
-        # 
         # - **3**: Manual and scheduled.
         self.trigger_type = trigger_type
 

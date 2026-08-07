@@ -13,9 +13,9 @@ class DescribeDocTypesResponseBody(DaraModel):
         doc_type_list: List[main_models.DescribeDocTypesResponseBodyDocTypeList] = None,
         request_id: str = None,
     ):
-        # A list of OSS file types.
+        # The list of OSS file types in the result.
         self.doc_type_list = doc_type_list
-        # The ID of the request.
+        # The unique identifier that Alibaba Cloud generated for the request.
         self.request_id = request_id
 
     def validate(self):
@@ -59,11 +59,11 @@ class DescribeDocTypesResponseBodyDocTypeList(DaraModel):
         id: int = None,
         name: str = None,
     ):
-        # The code of the file type.
+        # The file type code.
         self.code = code
         # The unique ID of the file type.
         self.id = id
-        # The name of the file type.
+        # The file type name.
         self.name = name
 
     def validate(self):

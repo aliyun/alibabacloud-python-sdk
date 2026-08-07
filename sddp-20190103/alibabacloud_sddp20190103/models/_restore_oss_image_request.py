@@ -13,20 +13,20 @@ class RestoreOssImageRequest(DaraModel):
         service_region_id: str = None,
         target_object_key: str = None,
     ):
-        # The OSS bucket.
+        # The name of the OSS bucket.
         # 
         # This parameter is required.
         self.bucket = bucket
         self.lang = lang
-        # The full path of the file stored in OSS.
+        # The full name of the file stored in OSS.
         # 
         # This parameter is required.
         self.object_key = object_key
-        # The ID of the region where the bucket is located.
+        # The region ID of the bucket.
         # 
         # This parameter is required.
         self.service_region_id = service_region_id
-        # The storage path for the restored image.
+        # The storage path of the restored image.
         self.target_object_key = target_object_key
 
     def validate(self):

@@ -1,3 +1,8 @@
+2026-08-07 Version: 2.0.2
+- Update API DescribeDataObjects: add request parameters EngineType.
+- Update API DescribeDataObjects: add response parameters Body.Items.$.EngineType.
+
+
 2026-07-03 Version: 2.0.1
 - Generated python 2019-01-03 for Sddp.
 

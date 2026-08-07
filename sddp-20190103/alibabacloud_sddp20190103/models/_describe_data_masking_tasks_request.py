@@ -15,35 +15,27 @@ class DescribeDataMaskingTasksRequest(DaraModel):
         search_key: str = None,
         start_time: int = None,
     ):
-        # The page number to return.
+        # The page number for a paged query.
         self.current_page = current_page
-        # The product that the destination data source belongs to. Valid values:
-        # 
+        # The service to which the destination data source belongs. Valid values:
         # - **1**: MaxCompute.
-        # 
         # - **2**: OSS.
-        # 
         # - **3**: ADS.
-        # 
         # - **4**: OTS.
-        # 
         # - **5**: RDS.
-        # 
         # - **6**: SELF_DB.
         self.dst_type = dst_type
-        # The end time for creating the data masking task. The value is a UNIX timestamp. Unit: milliseconds.
+        # The end time of the task creation period. Format: timestamp. Unit: milliseconds.
         self.end_time = end_time
         # The language of the request and response. Default value: **zh_cn**. Valid values:
-        # 
         # - **zh_cn**: Chinese.
-        # 
         # - **en_us**: English.
         self.lang = lang
-        # The number of entries to return on each page.
+        # The maximum number of entries per page.
         self.page_size = page_size
-        # A keyword to search for tasks. You can search by task name or task ID.
+        # The keyword used to search for tasks. You can search by task name or task ID.
         self.search_key = search_key
-        # The start time for creating the task. The value is a UNIX timestamp. Unit: milliseconds.
+        # The start time of the task creation period. Format: timestamp. Unit: milliseconds.
         self.start_time = start_time
 
     def validate(self):

@@ -10,9 +10,9 @@ class CreateRuleResponseBody(DaraModel):
         id: int = None,
         request_id: str = None,
     ):
-        # The unique ID of the sensitive data detection rule.
+        # The unique ID of the saved sensitive data detection rule.
         self.id = id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

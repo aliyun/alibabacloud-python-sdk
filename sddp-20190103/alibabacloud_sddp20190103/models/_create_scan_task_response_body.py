@@ -12,7 +12,7 @@ class CreateScanTaskResponseBody(DaraModel):
     ):
         # The resource ID of the custom scan task.
         self.id = id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

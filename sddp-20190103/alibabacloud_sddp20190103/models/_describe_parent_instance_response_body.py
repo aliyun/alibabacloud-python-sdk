@@ -16,13 +16,13 @@ class DescribeParentInstanceResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The page number of the returned page. Default value: **1**.
+        # The page number of the current page when paging is used. Default value: **1**.
         self.current_page = current_page
-        # The list of queried data assets.
+        # The list of data assets returned.
         self.items = items
-        # The maximum number of data asset instances returned on each page. Default value: **10**.
+        # The maximum number of data asset instances displayed per page when paging is used. Default value: **10**.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The total number of entries returned.
         self.total_count = total_count
@@ -104,102 +104,73 @@ class DescribeParentInstanceResponseBodyItems(DaraModel):
         un_support_one_click_auth_reason: str = None,
     ):
         # The audit authorization status. Valid values:
-        # 
         # - **1**: Authorized.
-        # 
         # - **0**: Unauthorized.
         self.audit_status = audit_status
-        # The authorization status of the data asset instance.
-        # 
+        # The authorization status of the data asset instance. Valid values:
         # - **0**: Unauthorized.
-        # 
         # - **1**: Authorized.
         self.auth_status = auth_status
         # The time when the instance was authorized. Unit: milliseconds.
         self.auth_time = auth_time
         # The instance status.
         self.cluster_status = cluster_status
-        # The type of the connection node. This parameter is valid only for MongoDB assets.
+        # The connection node type. This parameter is valid only for the MongoDB Asset Type.
         self.connect_node = connect_node
-        # The number of databases in the instance.
+        # The number of databases under the instance.
         self.db_num = db_num
-        # The type of the database engine. Valid values:
-        # 
-        # - **MySQL**.
-        # 
-        # - **MariaDB**.
-        # 
-        # - **Oracle**.
-        # 
-        # - **PostgreSQL**.
-        # 
-        # - **SQLServer**.
+        # The engine type. Valid values:
+        # - **MySQL**
+        # - **MariaDB**
+        # - **Oracle**
+        # - **PostgreSQL**
+        # - **SQLServer**
         self.engine_type = engine_type
         # The description of the instance.
         self.instance_description = instance_description
         # The instance ID.
         self.instance_id = instance_id
-        # The storage space of the instance. This parameter is valid only for OSS assets. Unit: bytes.
+        # The storage size of the instance. This parameter is valid only for the OSS Asset Type. Unit: bytes.
         self.instance_size = instance_size
-        # The name of the region. The following list describes the valid values:
+        # The region name. Valid values:
         # 
         # - **China (Hangzhou)**
-        # 
         # - **China (Shanghai)**
-        # 
         # - **China (Beijing)**
-        # 
         # - **China (Zhangjiakou)**
-        # 
         # - **China (Shenzhen)**
-        # 
         # - **China (Guangzhou)**
-        # 
-        # - **China (Hong Kong)**
-        # 
+        # - **Hong Kong (China)**
         # - **Singapore**
-        # 
         # - **US (Silicon Valley)**
         self.local_name = local_name
-        # The ID of the member account.
+        # The ID of the member accounts.
         self.member_account = member_account
-        # The identifier of the authorized asset. If the asset is structured data, the identifier is in the format of \\`Instance ID.Database name\\`.
+        # The identifier of the authorized asset. For structured data, the identifier is in the format of instance ID.database name.
         self.parent_id = parent_id
         # The region where the asset resides.
         self.region_id = region_id
-        # The name of the asset type. Valid values:
-        # 
+        # The asset type name. Valid values:
         # - **MaxCompute**
-        # 
         # - **OSS**
-        # 
         # - **ADB-MYSQL**
-        # 
         # - **TableStore**
-        # 
         # - **RDS**
-        # 
         # - **SelfDB**
-        # 
         # - **PolarDB-X**
-        # 
         # - **PolarDB**
-        # 
         # - **ADB-PG**
-        # 
         # - **OceanBase**
-        # 
         # - **MongoDB**
-        # 
         # - **Redis**
         self.resource_type = resource_type
-        # The supported connection nodes. Multiple nodes are separated by commas.
+        # The supported connection nodes. Multiple nodes are separated by commas (,).
         self.support_connect_nodes = support_connect_nodes
         # The tenant ID. This parameter is valid only for OceanBase assets.
         self.tenant_id = tenant_id
         # The tenant name. This parameter is valid only for OceanBase assets.
         self.tenant_name = tenant_name
-        # The number of unconnected databases in the instance.
+        # The number of unconnected databases under the instance.
         self.un_connect_db_count = un_connect_db_count
         # The reason why one-click authorization is not supported.
         self.un_support_one_click_auth_reason = un_support_one_click_auth_reason

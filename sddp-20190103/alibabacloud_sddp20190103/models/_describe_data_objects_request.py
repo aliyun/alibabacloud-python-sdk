@@ -12,6 +12,7 @@ class DescribeDataObjectsRequest(DaraModel):
         current_page: int = None,
         db_name: str = None,
         domain_id: int = None,
+        engine_type: str = None,
         feature_type: int = None,
         file_category_code: int = None,
         file_type: int = None,
@@ -48,6 +49,7 @@ class DescribeDataObjectsRequest(DaraModel):
         self.db_name = db_name
         # The ID of the data domain to which the data asset belongs.
         self.domain_id = domain_id
+        self.engine_type = engine_type
         # This parameter is deprecated.
         self.feature_type = feature_type
         # The code of the file category.
@@ -188,6 +190,9 @@ class DescribeDataObjectsRequest(DaraModel):
         if self.domain_id is not None:
             result['DomainId'] = self.domain_id
 
+        if self.engine_type is not None:
+            result['EngineType'] = self.engine_type
+
         if self.feature_type is not None:
             result['FeatureType'] = self.feature_type
 
@@ -281,6 +286,9 @@ class DescribeDataObjectsRequest(DaraModel):
 
         if m.get('DomainId') is not None:
             self.domain_id = m.get('DomainId')
+
+        if m.get('EngineType') is not None:
+            self.engine_type = m.get('EngineType')
 
         if m.get('FeatureType') is not None:
             self.feature_type = m.get('FeatureType')

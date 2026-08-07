@@ -16,15 +16,15 @@ class DescribeDataLimitsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The number of the returned page.
+        # The page number of the current page.
         self.current_page = current_page
-        # A list of data assets.
+        # The list of data assets.
         self.items = items
-        # The number of entries returned per page.
+        # The maximum number of entries returned per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -125,166 +125,126 @@ class DescribeDataLimitsResponseBodyItems(DaraModel):
         vpc_id: str = None,
     ):
         # The audit status. Valid values:
-        # 
-        # - **1**: Auditing enabled.
-        # 
-        # - **0**: Auditing disabled.
+        # - **1**: audit enabled.
+        # - **0**: audit disabled.
         self.audit_status = audit_status
         # Indicates whether automatic scanning is enabled. Valid values:
-        # 
-        # - **0**: No.
-        # 
-        # - **1**: Yes.
+        # - **0**: disabled.
+        # - **1**: enabled.
         self.auto_scan = auto_scan
-        # The connectivity test status. Valid values:
-        # 
-        # - **0**: Ready.
-        # 
-        # - **1**: Running.
-        # 
-        # - **2**: Connectivity test in progress.
-        # 
-        # - **3**: Connectivity test passed.
-        # 
-        # - **4**: Connectivity test failed.
+        # The data detection status. Valid values:
+        # - **0**: ready.
+        # - **1**: running.
+        # - **2**: connectivity test in progress.
+        # - **3**: connectivity test passed.
+        # - **4**: connectivity test failed.
         self.check_status = check_status
-        # The name of the connectivity test status.
+        # The name of the data detection status.
         self.check_status_name = check_status_name
-        # The data masking status. Valid values:
-        # 
-        # - **1**: Enabled.
-        # 
-        # - **0**: Disabled.
+        # The data masking permission status. Valid values:
+        # - **1**: enabled.
+        # - **0**: disabled.
         self.datamask_status = datamask_status
         # The database version.
         self.db_version = db_version
-        # The sensitive data detection status. Valid values:
-        # 
-        # - **1**: Enabled.
-        # 
-        # - **0**: Disabled.
+        # The detection permission status. Valid values:
+        # - **1**: enabled.
+        # - **0**: disabled.
         self.enable = enable
-        # The database engine type. Examples: **MySQL**, **SQLServer**, **Oracle**, **PostgreSQL**, and **MongoDB**.
+        # The database type. Valid values: **MySQL**, **SQLServer**, **Oracle**, **PostgreSQL**, **MongoDB**, and others.
         self.engine_type = engine_type
-        # The error code that is returned if the connectivity test fails.
+        # The error code.
         self.error_code = error_code
-        # The error message that is returned if the connectivity test fails.
+        # The failure reason.
         self.error_message = error_message
-        # The anomaly detection status. Valid values:
-        # 
-        # - **0**: Disabled.
-        # 
-        # - **1**: Enabled (default).
+        # The data leak prevention switch. Valid values:
+        # - **0**: disabled.
+        # - **1**: enabled (default).
         self.event_status = event_status
-        # The time when the data asset was created. This value is a UNIX timestamp. Unit: milliseconds.
+        # The creation time. Format: timestamp. Unit: milliseconds.
         self.gmt_create = gmt_create
         # The unique ID of the data asset.
         self.id = id
         # The description of the instance.
         self.instance_description = instance_description
-        # The ID of the instance to which the data asset belongs.
+        # The instance ID of the asset to which the data asset table belongs.
         self.instance_id = instance_id
-        # The time when the last full scan was complete. This value is a UNIX timestamp in milliseconds.
-        # 
-        # - Format: UNIX timestamp
-        # 
+        # The time when the last full scan was completed.
+        # - Format: timestamp
         # - Unit: milliseconds
         self.last_finished_time = last_finished_time
-        # The time when the last scan started. This value is a UNIX timestamp in milliseconds.
+        # The time when the last scan of the data asset started. Unit: milliseconds.
         self.last_start_time = last_start_time
-        # The name of the region in which the data asset is located.
+        # The name of the region where the data resides.
         self.local_name = local_name
-        # The retention period of raw logs, in days.
+        # The raw log storage duration. Unit: days.
         self.log_store_day = log_store_day
-        # The ID of the member account to which the data asset belongs.
+        # The member accounts ID.
         self.member_account = member_account
-        # The time when the next scan is scheduled to start. This value is a UNIX timestamp. Unit: milliseconds.
+        # The next execution time. Format: timestamp. Unit: milliseconds.
         self.next_start_time = next_start_time
-        # The status of Optical Character Recognition (OCR). Valid values:
-        # 
-        # - **0**: Disabled.
-        # 
-        # - **1**: Enabled.
+        # The OCR status. Valid values:
+        # - **0**: disabled.
+        # - **1**: enabled.
         self.ocr_status = ocr_status
-        # The ID of the parent asset, such as a bucket, DB, or **project**.
+        # The parent ID of the asset to query. Valid values: **bucket**, **db**, **project**, and others.
         self.parent_id = parent_id
         # The port number of the self-managed database.
         self.port = port
-        # The status of the scan task. Valid values:
-        # 
-        # - **-1**: Invalid.
-        # 
-        # - **0**: Pending.
-        # 
-        # - **1**: Scanning.
-        # 
-        # - **2**: Paused.
-        # 
-        # - **3**: Completed.
+        # The scan status. Valid values:
+        # - **-1**: invalid.
+        # - **0**: waiting.
+        # - **1**: scanning.
+        # - **2**: paused.
+        # - **3**: completed.
         self.process_status = process_status
-        # The total number of data tables or files.
+        # The total number of tables or files.
         self.process_total_count = process_total_count
-        # The ID of the region in which the data asset is located.
+        # The region where the asset resides.
         self.region_id = region_id
-        # The type of service to which the data asset belongs. Data assets can be instances, databases, or buckets. Valid values:
-        # 
+        # The type of the product to which the data asset belongs. Valid values:
         # - **1**: MaxCompute
-        # 
         # - **2**: OSS
-        # 
-        # - **3**: AnalyticDB for MySQL
-        # 
-        # - **4**: Tablestore
-        # 
+        # - **3**: ADS
+        # - **4**: OTS
         # - **5**: RDS
-        # 
-        # - **6**: A self-managed database
+        # - **6**: SELF_DB
         self.resource_type = resource_type
-        # The code of the service to which the data asset belongs. Examples: MaxCompute, OSS, ADS, OTS, and **RDS**.
+        # The product type code of the data source. Valid values: **MaxCompute**, **OSS**, **ADS**, **OTS**, **RDS**, and others.
         self.resource_type_code = resource_type_code
-        # The number of sensitive data samples. Valid values: **0**, **5**, and **10**. Unit: entries.
+        # The sensitive data sampling size. Valid values: **0**, **5**, and **10**. Unit: entries.
         self.sampling_size = sampling_size
-        # A list of security group IDs that are used by PrivateLink for agent-based auditing.
+        # The list of security group IDs used by PrivateLink in agent-based auditing.
         self.security_group_id_list = security_group_id_list
         # Indicates whether auditing is supported. Valid values:
-        # 
-        # - **true**: Yes.
-        # 
-        # - **false**: No.
+        # - **true**: Supported.
+        # - **false**: Not supported.
         self.support_audit = support_audit
         # Indicates whether data masking is supported. Valid values:
-        # 
-        # - **true**: Yes.
-        # 
-        # - **false**: No.
+        # - **true**: Supported.
+        # - **false**: Not supported.
         self.support_datamask = support_datamask
-        # Indicates whether anomaly detection is supported. Valid values:
-        # 
-        # - **true**: Yes.
-        # 
-        # - **false**: No.
+        # Indicates whether anomalous activity detection is supported. Valid values:
+        # - **true**: Supported.
+        # - **false**: Not supported.
         self.support_event = support_event
         # Indicates whether OCR is supported. Valid values:
-        # 
-        # - **true**: Yes.
-        # 
-        # - **false**: No.
+        # - **true**: Supported.
+        # - **false**: Not supported.
         self.support_ocr = support_ocr
-        # Indicates whether sensitive data detection is supported. Valid values:
-        # 
-        # - **true**: Yes.
-        # 
-        # - **false**: No.
+        # Indicates whether scanning is supported. Valid values:
+        # - **true**: Supported.
+        # - **false**: Not supported.
         self.support_scan = support_scan
-        # The alias of the tenant.
+        # The tenant alias.
         self.tenant_name = tenant_name
-        # The total number of fields. This parameter is returned only when the data asset is a table.
+        # The total number of fields in the data asset table.
         self.total_count = total_count
-        # The username of the data asset owner.
+        # The username of the data owner.
         self.user_name = user_name
-        # A list of vSwitch IDs that are used by PrivateLink for agent-based auditing.
+        # The list of vSwitch IDs used by PrivateLink in agent-based auditing.
         self.v_switch_id_list = v_switch_id_list
-        # The ID of the virtual private cloud (VPC) in which the data asset resides.
+        # The VPC ID to which the data asset belongs.
         self.vpc_id = vpc_id
 
     def validate(self):

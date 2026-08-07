@@ -24,6 +24,9 @@ class Client(OpenApiClient):
         self._endpoint_map = {
             'cn-hongkong': 'sddp-api.cn-hongkong.aliyuncs.com',
             'cn-zhangjiakou': 'sddp.cn-zhangjiakou.aliyuncs.com',
+            'cn-shanghai': 'sddp.cn-shanghai.aliyuncs.com',
+            'cn-hangzhou': 'sddp.cn-hangzhou.aliyuncs.com',
+            'ap-southeast-5': 'sddp.ap-southeast-5.aliyuncs.com',
             'ap-southeast-1': 'sddp.ap-southeast-1.aliyuncs.com'
         }
         self.check_config(config)
@@ -2268,6 +2271,8 @@ class Client(OpenApiClient):
             query['DbName'] = request.db_name
         if not DaraCore.is_null(request.domain_id):
             query['DomainId'] = request.domain_id
+        if not DaraCore.is_null(request.engine_type):
+            query['EngineType'] = request.engine_type
         if not DaraCore.is_null(request.feature_type):
             query['FeatureType'] = request.feature_type
         if not DaraCore.is_null(request.file_category_code):
@@ -2354,6 +2359,8 @@ class Client(OpenApiClient):
             query['DbName'] = request.db_name
         if not DaraCore.is_null(request.domain_id):
             query['DomainId'] = request.domain_id
+        if not DaraCore.is_null(request.engine_type):
+            query['EngineType'] = request.engine_type
         if not DaraCore.is_null(request.feature_type):
             query['FeatureType'] = request.feature_type
         if not DaraCore.is_null(request.file_category_code):

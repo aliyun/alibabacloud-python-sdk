@@ -16,15 +16,15 @@ class DescribeDataMaskingRunHistoryResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The page number of the returned page.
+        # The page number of the current page in the results.
         self.current_page = current_page
-        # A list of data masking task details.
+        # The list of data masking task information.
         self.items = items
-        # The number of entries returned per page.
+        # The number of entries per page in the results.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries in the results.
         self.total_count = total_count
 
     def validate(self):
@@ -102,63 +102,54 @@ class DescribeDataMaskingRunHistoryResponseBodyItems(DaraModel):
         task_id: str = None,
         type: int = None,
     ):
-        # The number of data conflicts. This is the number of rows to be inserted into the destination table that conflict with existing data.
+        # The number of data conflict rows, which indicates the number of rows where the masked data to be inserted into the destination table conflicts with the existing data in the destination table.
         self.conflict_count = conflict_count
-        # The type of service to which the masked data is destined. Valid values: **1** for MaxCompute, **2** for OSS, **3** for ADS, **4** for OTS, and **5** for RDS.
+        # The type of the destination product where the masked data is stored. Valid values: **1**: MaxCompute, **2**: OSS, **3**: ADS, **4**: OTS, **5**: RDS, and others.
         self.dst_type = dst_type
-        # The type of the destination service. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
+        # The type of the destination product. Valid values: **MaxCompute, OSS, ADS, OTS, RDS**, and others.
         self.dst_type_code = dst_type_code
-        # The time when the execution ended. This is a UNIX timestamp in milliseconds.
+        # The end time of the execution.
         self.end_time = end_time
-        # The error code returned when the task fails. This parameter has a value only if the task fails.
+        # The error code for the task execution failure. This parameter has a value only when the task execution fails.
         self.fail_code = fail_code
-        # The reason the task failed.
+        # The reason for the task execution failure.
         self.fail_msg = fail_msg
-        # Indicates whether a download file is available.
+        # Indicates whether a download file exists. Valid values:
         # 
         # - **1**: Yes.
-        # 
         # - **0**: No.
         self.has_download_file = has_download_file
-        # The number of created subtasks.
+        # The number of subtasks that have been created.
         self.has_sub_process = has_sub_process
         # The ID of the execution record.
         self.id = id
-        # The number of masked rows.
+        # The number of rows masked.
         self.masking_count = masking_count
         # The execution progress.
         self.percentage = percentage
-        # The number of times the task has been executed.
+        # The sequence number of the task execution.
         self.run_index = run_index
         # The name of the source table.
         self.src_table_name = src_table_name
-        # The type of service to which the source data belongs. Valid values: **1** for MaxCompute, **2** for OSS, **3** for ADS, **4** for OTS, and **5** for RDS.
+        # The type of the source product to which the data to be masked belongs. Valid values: **1**: MaxCompute, **2**: OSS, **3**: ADS, **4**: OTS, **5**: RDS, and others.
         self.src_type = src_type
-        # The type of the source service. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
+        # The type of the source product. Valid values: **MaxCompute, OSS, ADS, OTS, RDS**, and others.
         self.src_type_code = src_type_code
-        # The time when the execution started. This is a UNIX timestamp in milliseconds.
+        # The execution time. The value is a timestamp in milliseconds.
         self.start_time = start_time
-        # The execution status of the task. Valid values:
-        # 
-        # - -**1**: pending.
-        # 
-        # - **0**: running.
-        # 
-        # - **1**: successful.
-        # 
-        # - **2**: failed.
-        # 
-        # - **3**: stopped by user.
-        # 
-        # - **4**: partially failed.
+        # The task execution status. Valid values:
+        # - **-1**: Waiting for execution.
+        # - **0**: Running.
+        # - **1**: Executed successfully.
+        # - **2**: Execution failed.
+        # - **3**: Terminated by user.
+        # - **4**: Partially failed.
         self.status = status
-        # The ID of the task.
+        # The task ID.
         self.task_id = task_id
-        # The execution method. Valid values:
-        # 
-        # - **1**: manual.
-        # 
-        # - **2**: scheduled.
+        # The execution mode. Valid values:
+        # - **1**: Manual.
+        # - **2**: Scheduled.
         self.type = type
 
     def validate(self):

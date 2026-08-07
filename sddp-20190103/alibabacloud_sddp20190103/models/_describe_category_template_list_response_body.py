@@ -16,13 +16,13 @@ class DescribeCategoryTemplateListResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The page number of the returned page. Default value: 1.
+        # The page number in a paged query. Default value: 1.
         self.current_page = current_page
-        # A list of industry-specific templates.
+        # The list of industry templates.
         self.items = items
-        # The number of entries returned per page. Default value: 10.
+        # The number of entries per page in a paging query. Default value: 10.
         self.page_size = page_size
-        # The ID of the request.
+        # The unique ID that Alibaba Cloud generates for the request.
         self.request_id = request_id
         # The total number of entries returned.
         self.total_count = total_count
@@ -96,39 +96,33 @@ class DescribeCategoryTemplateListResponseBodyItems(DaraModel):
     ):
         # The ID of the current risk level.
         self.current_risk_level = current_risk_level
-        # The description of the industry-specific template.
+        # The description of the industry template.
         self.description = description
-        # The time when the industry-specific template was created.
+        # The time when the industry template was created.
         self.gmt_create = gmt_create
-        # The time when the industry-specific template was last modified.
+        # The time when the industry template was last modified.
         self.gmt_modified = gmt_modified
-        # The unique ID of the industry-specific template.
+        # The unique ID of the industry template.
         self.id = id
-        # The maximum categorization level.
+        # The maximum category level.
         self.max_category_level = max_category_level
         # The ID of the maximum risk level.
         self.max_risk_level = max_risk_level
-        # The name of the industry-specific template.
+        # The name of the industry template.
         self.name = name
-        # The status of the industry-specific template. Valid values:
-        # 
+        # The status of the industry template. Valid values:
         # - **0**: Disabled.
+        # - **1**: Enabled. The template is the current primary template of the user.
+        # - **2**: Active. Both enabled and active templates can be applied to detection tasks.
+        # - **3**: General detection model template.
         # 
-        # - **1**: Enabled. This is the current primary template of the user.
-        # 
-        # - **2**: Active. Both enabled and active templates can be used in detection tasks.
-        # 
-        # - **3**: The status of the template for the general-purpose detection model.
-        # 
-        # > The IDs of enabled and active templates can be used as the industry-specific template ID for the [DescribeDataObjects](https://help.aliyun.com/document_detail/2399253.html) operation.
+        # > Templates in the enabled or active state can be used as the industry template ID parameter for [DescribeDataObjects](https://help.aliyun.com/document_detail/2399253.html).
         self.status = status
-        # Specifies whether the industry-specific template can be edited. Valid values:
-        # 
-        # - **0**: No.
-        # 
-        # - **1**: Yes.
+        # Indicates whether the industry template supports editing. Valid values:
+        # - **0**: Not supported.
+        # - **1**: Supported.
         self.support_edit = support_edit
-        # The type of the industry-specific template.
+        # The type of the industry template.
         self.type = type
 
     def validate(self):

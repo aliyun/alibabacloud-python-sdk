@@ -13,25 +13,25 @@ class DescribeCategoryTemplateListRequest(DaraModel):
         page_size: int = None,
         usage_scenario: int = None,
     ):
-        # The page number. Default value: 1.
+        # The page number in a paged query. Default value: 1.
         self.current_page = current_page
         # This parameter is deprecated.
         self.feature_type = feature_type
-        # The language of the content within the request and response. Default value: **zh_cn**. Valid values:
+        # The language of the request and response. Default value: **zh_cn**.
         # 
-        # - **zh_cn**: Simplified Chinese
+        # Valid values:
         # 
-        # - **en_us**: U.S. English
+        # - **zh_cn**: Simplified Chinese.
+        # - **en_us**: English.
         self.lang = lang
-        # The number of entries per page. Default value: **10**.
+        # The number of entries per page in a paged query. Default value: **10**.
         self.page_size = page_size
-        # The scenario in which the operation is called. Default value: **null**. Valid values:
+        # The scenario in which the API is called. Default value: **null**.
         # 
-        # - **null**: an earlier version
-        # 
-        # - **0**: an earlier version
-        # 
-        # - **1**: the latest version
+        # Valid values:
+        # - **null**: legacy version.
+        # - **0**: legacy version.
+        # - **1**: new version.
         self.usage_scenario = usage_scenario
 
     def validate(self):

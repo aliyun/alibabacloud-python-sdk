@@ -22,74 +22,59 @@ class DescribeColumnsV2Request(DaraModel):
         table_id: str = None,
         table_name: str = None,
     ):
-        # The page number. Default value: **1**.
+        # The page number in a paged query. Default value: **1**.
         self.current_page = current_page
-        # The type of the database engine. Valid values:
-        # 
+        # The engine type. Valid values:
         # - **MySQL**
-        # 
         # - **MariaDB**
-        # 
         # - **Oracle**
-        # 
         # - **PostgreSQL**
-        # 
         # - **SQLServer**
         self.engine_type = engine_type
-        # The ID of the data asset instance to which the data in the column belongs.
+        # The ID of the asset instance to which the column data in the data asset table belongs.
         # 
-        # > Query data in columns of a data asset table based on the ID of the data asset instance. The data asset table must be authorized in Data Security Center. To obtain the ID of the data asset instance, call the [DescribeInstances](https://help.aliyun.com/document_detail/141708.html) operation.
+        # > Queries column data in data asset tables that are connected to and authorized by Data Security Center based on the asset instance ID. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/141708.html) operation to obtain the instance ID.
         self.instance_id = instance_id
-        # The name of the data asset instance to which the data in the column belongs.
+        # The name of the asset instance to which the column data in the data asset table belongs.
         self.instance_name = instance_name
         # The language of the request and response. Default value: **zh_cn**.
+        # 
         # Valid values:
         # 
-        # - **zh_cn**: Simplified Chinese
-        # 
-        # - **en_us**: English
+        # - **zh_cn**: Chinese (Simplified).
+        # - **en_us**: English (US).
         self.lang = lang
-        # The keyword for the search. Fuzzy match is supported.
+        # The keyword to search for. Fuzzy match is supported.
         # 
-        # For example, if you enter **test**, all data that contains **test** is returned.
+        # For example, if you enter **test**, all data entries that contain **test** in the search fields are returned.
         self.name = name
-        # The maximum number of entries to return on each page. Default value: **10**.
+        # The maximum number of entries per page in a paged query. Default value: **10**.
         self.page_size = page_size
-        # The name of the product to which the data in the column of the data asset table belongs. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
+        # The name of the product to which the column data in the data asset table belongs. Valid values: **MaxCompute, OSS, ADS, OTS, RDS**, and others.
         self.product_code = product_code
-        # The ID of the risk level for the sensitive data detection rule. Valid values:
-        # 
-        # - **1**: N/A
-        # 
-        # - **2**: S1
-        # 
-        # - **3**: S2
-        # 
-        # - **4**: S3
-        # 
-        # - **5**: S4
+        # The risk level ID of the sensitive data detection rule. Valid values:
+        # - **1**: N/A.
+        # - **2**: S1.
+        # - **3**: S2.
+        # - **4**: S3.
+        # - **5**: S4.
         self.risk_level_id = risk_level_id
-        # The unique ID of the sensitive data detection rule that is hit by the data in the column.
+        # The unique ID of the sensitive data detection rule that the column data matches.
         # 
-        # > Query data in columns of a data asset table based on the ID of the sensitive data detection rule that is hit. The data asset table must be authorized in Data Security Center. To obtain the ID of the sensitive data detection rule, call the [DescribeRules](https://help.aliyun.com/document_detail/141389.html) operation.
+        # > Queries column data in data asset tables that are connected to and authorized by Data Security Center based on the ID of the sensitive data detection rule that the column data matches. You can call the [DescribeRules](https://help.aliyun.com/document_detail/141389.html) operation to obtain the rule ID.
         self.rule_id = rule_id
-        # The name of the sensitive data detection rule that is hit by the data in the column.
+        # The name of the sensitive data detection rule that the column data in the data asset table matches.
         self.rule_name = rule_name
-        # The name of the sensitivity level. Valid values:
-        # 
-        # - **N/A**: No sensitive data is detected.
-        # 
+        # The sensitivity level name. Valid values:
+        # - **N/A**: no sensitive data detected.
         # - **S1**: Level 1 sensitive data.
-        # 
         # - **S2**: Level 2 sensitive data.
-        # 
         # - **S3**: Level 3 sensitive data.
-        # 
         # - **S4**: Level 4 sensitive data.
         self.sens_level_name = sens_level_name
-        # The unique ID of the data asset table that contains the column. The table can be in a data asset such as MaxCompute or RDS.
+        # The unique ID of the data asset table to which the columns belong in MaxCompute, ApsaraDB RDS, or other data assets.
         # 
-        # > Query data in columns of a data asset table by the table ID. The data asset table must be authorized in Data Security Center. To obtain the ID of the data asset table, call the [DescribeTables](https://help.aliyun.com/document_detail/141709.html) operation.
+        # > Queries column data in data asset tables that are connected to and authorized by Data Security Center based on the table ID. You can call the [DescribeTables](https://help.aliyun.com/document_detail/141709.html) operation to obtain the table ID.
         self.table_id = table_id
         # The name of the data asset table.
         self.table_name = table_name

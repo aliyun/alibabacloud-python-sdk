@@ -29,123 +29,89 @@ class CreateDataLimitRequest(DaraModel):
     ):
         # Specifies whether to enable auditing. Valid values:
         # 
-        # - **0**: Do not enable auditing.
-        # 
-        # - **1**: Enable auditing.
+        # - **0**: Auditing is disabled.
+        # - **1**: Auditing is enabled.
         self.audit_status = audit_status
-        # Specifies whether to automatically trigger a rescan when a rule changes. Valid values:
+        # Specifies whether to automatically trigger a rescan when rules are changed. Valid values:
         # 
-        # - **0**: Do not trigger an automatic scan.
+        # - **0**: Automatic rescan is not triggered.
+        # - **1**: Automatic rescan is triggered.
         # 
-        # - **1**: Trigger an automatic scan.
-        # 
-        # > If you enable this feature, a rule change triggers a full scan of all data in the data source.
+        # > When a rule change triggers an automatic rescan, a full scan is performed on all data in the data source.
         self.auto_scan = auto_scan
-        # The permission level of the credential. Valid values:
-        # 
-        # - **ReadOnly**: Read-only permissions.
-        # 
-        # - **ReadWrite**: Read and write permissions.
+        # The credential permission. Valid values:
+        # - **ReadOnly**: read-only permission.
+        # - **ReadWrite**: read and write permission.
         self.certificate_permission = certificate_permission
         # Specifies whether to enable sensitive data detection. Valid values:
-        # 
         # - **1**: Enabled.
-        # 
         # - **0**: Disabled.
         # 
-        # > The default value is 1 for the first authorization. For later authorizations, the value from the previous authorization is used. Set this parameter to 1 to detect sensitive data.
+        # > If the asset is authorized for the first time, the default value is 1. If the asset has been previously authorized, the value from the last authorization is used, which may be 0 or 1. To perform sensitive data detection on the asset, set this parameter to 1.
         self.enable = enable
-        # The database engine type. Valid values:
-        # 
+        # The type of the database. Valid values:
         # - **MySQL**
-        # 
         # - **SQLServer**
         self.engine_type = engine_type
-        # Specifies whether to enable anomalous activity detection. Valid values:
-        # 
+        # The anomalous activity detection status. Valid values:
         # - **0**: Disabled.
-        # 
-        # - **1**: Enabled. This is the default value.
+        # - **1**: Enabled (default).
         self.event_status = event_status
         # This parameter is deprecated.
         self.feature_type = feature_type
-        # Specifies whether to immediately scan the authorized data asset. Valid values:
+        # Specifies whether to immediately scan the authorized asset. Valid values:
         # 
-        # - **false**: Do not scan immediately.
-        # 
-        # - **true**: Scan immediately.
+        # - **false**: The asset is not immediately scanned.
+        # - **true**: The asset is immediately scanned.
         self.instantly_scan = instantly_scan
-        # The language of the content that is returned in the response. Default value: **zh_cn**. Valid values:
-        # 
-        # - **zh_cn**: Chinese
-        # 
-        # - **en_us**: English
+        # The language of the request and response. Default value: **zh_cn**. Valid values:
+        # - **zh_cn**: Chinese.
+        # - **en_us**: English.
         self.lang = lang
-        # The retention period of raw logs after you enable auditing. Unit: days. Valid values:
-        # 
+        # The retention period of raw logs after auditing is enabled. Unit: days. Valid values:
         # - **30**
-        # 
         # - **90**
-        # 
         # - **180**
-        # 
         # - **365**
         self.log_store_day = log_store_day
-        # Specifies whether to enable Optical Character Recognition (OCR). Valid values:
-        # 
+        # The OCR status. Valid values:
         # - **1**: Enabled.
-        # 
         # - **0**: Disabled.
         self.ocr_status = ocr_status
-        # The name of the data asset. The name consists of the instance ID and the database name, separated by a period (.).
+        # Required. The name of the asset, which consists of the instance ID and the database connection string separated by a period (.).
         self.parent_id = parent_id
-        # The password to access the database.
+        # The password used to access the database asset.
         self.password = password
         # The database connection port.
         self.port = port
-        # The service to which the data asset belongs. Valid values:
+        # The type of the service to which the asset to be scanned belongs. Valid values:
         # 
-        # - **1**: MaxCompute
-        # 
-        # - **2**: OSS
-        # 
-        # - **3**: ADS
-        # 
-        # - **4**: OTS
-        # 
-        # - **5**: RDS
+        # - **1**: MaxCompute.
+        # - **2**: OSS.
+        # - **3**: ADS.
+        # - **4**: OTS.
+        # - **5**: RDS.
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The number of sensitive data samples to return after a scan. Valid values:
-        # 
+        # The number of sample entries for sensitive data detection after data detection is enabled. Valid values:
         # - **0**
-        # 
         # - **5**
-        # 
         # - **10**
-        # 
-        # > The default value is 10.
+        # > Default value: 10.
         self.sampling_size = sampling_size
-        # The region where the data asset is located. Valid values:
-        # 
-        # - **cn-beijing**: China (Beijing)
-        # 
-        # - **cn-zhangjiakou**: China (Zhangjiakou)
-        # 
-        # - **cn-huhehaote**: China (Hohhot)
-        # 
-        # - **cn-hangzhou**: China (Hangzhou)
-        # 
-        # - **cn-shanghai**: China (Shanghai)
-        # 
-        # - **cn-shenzhen**: China (Shenzhen)
-        # 
-        # - **cn-hongkong**: China (Hong Kong)
+        # Required. The region in which the asset resides. Valid values:
+        # - **cn-beijing**: China (Beijing).
+        # - **cn-zhangjiakou**: China (Zhangjiakou).
+        # - **cn-huhehaote**: China (Hohhot).
+        # - **cn-hangzhou**: China (Hangzhou).
+        # - **cn-shanghai**: China (Shanghai).
+        # - **cn-shenzhen**: China (Shenzhen).
+        # - **cn-hongkong**: Hong Kong (China).
         self.service_region_id = service_region_id
         # This parameter is deprecated.
         self.source_ip = source_ip
-        # The username for the database.
+        # The username of the database asset.
         self.user_name = user_name
 
     def validate(self):

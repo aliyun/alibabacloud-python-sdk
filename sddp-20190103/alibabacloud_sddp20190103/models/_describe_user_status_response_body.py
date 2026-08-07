@@ -11,9 +11,9 @@ class DescribeUserStatusResponseBody(DaraModel):
         request_id: str = None,
         user_status: main_models.DescribeUserStatusResponseBodyUserStatus = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The details of the current account.
+        # The details of the current logon account.
         self.user_status = user_status
 
     def validate(self):
@@ -69,87 +69,68 @@ class DescribeUserStatusResponseBodyUserStatus(DaraModel):
         use_instance_num: int = None,
         use_oss_size: int = None,
     ):
-        # The authorized AccessKey ID of the user.
+        # The AccessKey ID authorized by the user.
         self.access_key_id = access_key_id
-        # Indicates whether the currently logged-in account has been granted the service role permissions for DSC asset synchronization. Valid values:
-        # 
+        # Indicates whether the current logon account has authorized the service-linked role for DSC asset synchronization. Valid values:
         # - **true**: authorized.
-        # 
-        # - **false**: unauthorized.
+        # - **false**: not authorized.
         self.asset_role_authed = asset_role_authed
-        # Indicates whether SQL Insights can be disabled. Valid values:
-        # 
-        # - **true**: yes.
-        # 
-        # - **false**: no.
+        # Indicates whether SQL Explorer can be disabled. Valid values:
+        # - **true**: can be disabled.
+        # - **false**: cannot be disabled.
         self.audit_closable = audit_closable
-        # Indicates whether SQL Insights can be released.
-        # 
-        # - **true**: yes.
-        # 
-        # - **false**: no.
+        # Indicates whether SQL Explorer can be released. Valid values:
+        # - **true**: can be released.
+        # - **false**: cannot be released.
         self.audit_releasable = audit_releasable
-        # Indicates whether the current account is granted Resource Access Management (RAM) permissions on DSC. Valid values:
-        # 
-        # - **true**: The account is granted the permissions.
-        # 
-        # - **false**: The account is not granted the permissions.
+        # Indicates whether the current logon account has authorized DSC to access RAM. Valid values:
+        # - **true**: authorized.
+        # - **false**: not authorized.
         self.authed = authed
-        # The billing method of the DSC service for the current account. Valid values:
-        # 
+        # The billing method of the DSC service purchased by the current logon account. Valid values:
         # - **PREPAY**: subscription.
-        # 
         # - **POSTPAY**: pay-as-you-go.
         self.charge_type = charge_type
-        # The permissions that the current account has. Valid values:
-        # 
-        # - **0**: The account has the management or read-only permissions on Data Security Center.
-        # 
-        # - **1**: The account has the management permissions on data domains.
+        # The permissions of the current account. Valid values:
+        # - **0**: has management or read-only permissions for Data Security Center.
+        # - **1**: has data domain management permissions.
         self.data_manager_role = data_manager_role
-        # The ID of the Data Security Center instance purchased by the Alibaba Cloud account.
+        # The instance ID of the Data Security Center product purchased by the Alibaba Cloud account.
         self.instance_id = instance_id
-        # The number of instances in the current account.
+        # The number of instances in the current logon account.
         self.instance_num = instance_num
         # The total number of instances.
         self.instance_total_count = instance_total_count
-        # Indicates whether the Asset Lab feature is enabled. Valid values:
-        # 
+        # Indicates whether the asset lab feature is enabled. Valid values:
         # - **1**: enabled.
-        # 
-        # - **0**: disabled.
+        # - **0**: not enabled.
         self.lab_status = lab_status
-        # The total OSS storage. Unit: bytes.
+        # The total OSS storage capacity. Unit: bytes.
         self.oss_total_size = oss_total_size
-        # The total number of days that assets have been protected.
+        # The total number of days that user assets have been protected.
         self.protection_days = protection_days
         # Indicates whether the DSC service is purchased. Valid values:
         # 
-        # - **true**: yes.
-        # 
-        # - **false**: no.
+        # - **true**: purchased.
+        # - **false**: not purchased.
         self.purchased = purchased
-        # The number of days from service expiration to service release. Unit: days.
+        # The number of days from expiration to release. Unit: days.
         self.release_days = release_days
         # The release time. Unit: milliseconds.
         self.release_time = release_time
-        # The number of remaining days in the protection period for the assets of the current account.
+        # The remaining days of the protection period for assets in the current logon account.
         self.remain_days = remain_days
-        # Indicates whether the current account uses the trial version of the DSC service. Valid values:
-        # 
-        # - **true**: yes.
-        # 
-        # - **false**: no.
+        # Indicates whether the current logon account is using a trial version of DSC. Valid values:
+        # - **true**: trial.
+        # - **false**: non-trial.
         self.trail = trail
-        # Indicates whether the agent-based audit feature has been used. Valid values:
-        # 
-        # - **1**: yes.
-        # 
-        # - **0**: no.
+        # Indicates whether the Agent audit feature has been used. Valid values:
+        # - **1**: has been used.
+        # - **0**: has not been used.
         self.use_agent_audit = use_agent_audit
-        # The number of used instances.
+        # The number of instances that are used.
         self.use_instance_num = use_instance_num
-        # The used Object Storage Service (OSS) storage. Unit: bytes.
+        # The used OSS storage capacity. Unit: bytes.
         self.use_oss_size = use_oss_size
 
     def validate(self):

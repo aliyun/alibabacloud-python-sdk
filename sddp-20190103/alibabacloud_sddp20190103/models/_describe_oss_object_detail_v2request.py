@@ -14,25 +14,23 @@ class DescribeOssObjectDetailV2Request(DaraModel):
         service_region_id: str = None,
         template_id: int = None,
     ):
-        # The name of the bucket.
+        # The bucket name.
         self.bucket_name = bucket_name
-        # The unique ID of the OSS object.
+        # The unique ID of the OSS storage object.
         # 
         # > Call the [DescribeOssObjects](https://help.aliyun.com/document_detail/410152.html) operation to obtain the ID.
         self.id = id
-        # The language of the content within the request and response. Default value: **en_us**. Valid values:
+        # The language of the request and response. Default value: **zh_cn**. Valid values:
         # 
-        # - **en_us**: Simplified Chinese
-        # 
-        # - **en_us**: English (US)
+        # - **zh_cn**: Simplified Chinese.
+        # - **en_us**: English (US).
         self.lang = lang
-        # The full name of the object stored in OSS.
+        # The full name of the file stored in OSS.
         self.object_key = object_key
-        # The ID of the region where the service is enabled. This is also the region where the bucket is located.
+        # The service region ID, which is the region ID of the bucket.
         self.service_region_id = service_region_id
-        # The ID of the industry-specific template.
-        # 
-        # > Call the [DescribeCategoryTemplateList](https://help.aliyun.com/document_detail/2399296.html) operation to obtain the ID of the industry-specific template.
+        # The industry template ID.
+        # > Call the [DescribeCategoryTemplateList](https://help.aliyun.com/document_detail/2399296.html) operation to obtain the industry template ID.
         self.template_id = template_id
 
     def validate(self):

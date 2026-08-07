@@ -27,116 +27,85 @@ class DescribeColumnsRequest(DaraModel):
         template_id: str = None,
         template_rule_id: str = None,
     ):
-        # The page number for paged query.
+        # The page number for a paged query.
         self.current_page = current_page
-        # Engine type. Valid values:
-        # 
-        # - **MySQL**.
-        # 
-        # - **MariaDB**.
-        # 
-        # - **Oracle**.
-        # 
-        # - **PostgreSQL**.
-        # 
-        # - **SQLServer**.
+        # The database engine type. Valid values:
+        # - **MySQL**
+        # - **MariaDB**
+        # - **Oracle**
+        # - **PostgreSQL**
+        # - **SQLServer**
         self.engine_type = engine_type
         # The ID of the asset instance to which the column data in the data asset table belongs.
         # 
-        # > Query column data in data asset tables authorized to connect to Data Security Center using the ID of the asset instance to which the column data in the data asset table belongs. Obtain the asset instance ID by calling the [DescribeInstances](~~DescribeRules~~) API.
+        # > Queries column data in data asset tables authorized for connection by Data Security Center based on the asset instance ID. You can call the [DescribeInstances](~~DescribeRules~~) operation to obtain the instance ID.
         self.instance_id = instance_id
         # The name of the asset instance to which the column data in the data asset table belongs.
         self.instance_name = instance_name
-        # The language type for requests and responses. The default value is **zh_cn**. Valid values:
-        # 
+        # The language of the request and response. Default value: **zh_cn**. Valid values:
         # - **zh_cn**: Chinese.
-        # 
         # - **en_us**: English.
         self.lang = lang
-        # Data tag.
+        # The data tag.
         # 
-        # - 101: Personal sensitive information
+        # - 101: personal sensitive information
         # 
-        # - 102: Personal information
+        # - 102: personal information
         self.model_tag_id = model_tag_id
-        # The keyword for search. Supports fuzzy match.
+        # The keyword to search for. Fuzzy match is supported.
         # 
-        # For example, entering **test** returns all data containing **test**.
+        # For example, if you enter **test**, all data entries that contain **test** in the search fields are returned.
         self.name = name
-        # The maximum number of data entries displayed per page in the list.
+        # The maximum number of entries per page.
         self.page_size = page_size
-        # The product name to which the column data in the data asset table belongs. Valid values: **MaxCompute, OSS, ADS, OTS, RDS**, and others.
+        # The name of the product to which the column data in the data asset table belongs. Valid values: **MaxCompute, OSS, ADS, OTS, RDS**, and others.
         self.product_code = product_code
-        # The ID corresponding to the product name to which the data object belongs. Valid values:
-        # 
+        # The ID that corresponds to the product name to which the data object belongs. Valid values:
         # - **1**: MaxCompute
-        # 
         # - **2**: OSS
-        # 
         # - **3**: ADB-MYSQL
-        # 
         # - **4**: TableStore
-        # 
         # - **5**: RDS
-        # 
         # - **6**: SELF_DB
-        # 
         # - **7**: PolarDB-X
-        # 
         # - **8**: PolarDB
-        # 
         # - **9**: ADB-PG
-        # 
         # - **10**: OceanBase
-        # 
         # - **11**: MongoDB
-        # 
         # - **25**: Redis
         self.product_id = product_id
         # The risk level ID of the sensitive data detection rule. Valid values:
-        # 
         # - **1**: N/A.
-        # 
         # - **2**: S1.
-        # 
         # - **3**: S2.
-        # 
         # - **4**: S3.
-        # 
         # - **5**: S4.
         self.risk_level_id = risk_level_id
-        # The unique ID of the sensitive data detection rule hit by the column data in the asset table.
+        # The unique ID of the sensitive data detection rule that the column data matches.
         # 
-        # > Query column data in data asset tables authorized to connect to Data Security Center using the ID of the sensitive data detection rule hit by the column data in the asset table. Obtain the sensitive data detection rule ID by calling the [DescribeRules](~~DescribeRules~~) API.
+        # > Queries column data in data asset tables authorized for connection by Data Security Center based on the ID of the sensitive data detection rule that the column data matches. You can call the [DescribeRules](~~DescribeRules~~) operation to obtain the rule ID.
         self.rule_id = rule_id
-        # The name of the sensitive data detection rule hit by the column data in the data asset table.
+        # The name of the sensitive data detection rule that the column data in the data asset table matches.
         self.rule_name = rule_name
-        # Sensitivity level name. Valid values:
-        # 
-        # - **N/A**: No sensitive data detected.
-        # 
-        # - **S1**: Level 1 sensitive data.
-        # 
-        # - **S2**: Level 2 sensitive data.
-        # 
-        # - **S3**: Level 3 sensitive data.
-        # 
-        # - **S4**: Level 4 sensitive data.
+        # The sensitivity level name. Valid values:
+        # - **N/A**: No sensitive data is detected.
+        # - **S1**: Level-1 sensitive data.
+        # - **S2**: Level-2 sensitive data.
+        # - **S3**: Level-3 sensitive data.
+        # - **S4**: Level-4 sensitive data.
         self.sens_level_name = sens_level_name
         self.service_region_id = service_region_id
-        # The unique ID of the asset table that contains the columns in data asset tables such as MaxCompute and RDS.
+        # The unique ID of the data asset table to which the columns belong in MaxCompute, ApsaraDB RDS, or other assets.
         # 
-        # > Query column data in data asset tables authorized to connect to Data Security Center using the asset table ID. Obtain the asset table ID by calling the [DescribeTables](~~DescribeTables~~) API.
+        # > Queries column data in data asset tables authorized for connection by Data Security Center based on the table ID. You can call the [DescribeTables](~~DescribeTables~~) operation to obtain the table ID.
         self.table_id = table_id
         # The name of the data asset table.
         self.table_name = table_name
-        # Industry template ID.
-        # 
-        # > Obtain the industry template ID by calling [DescribeCategoryTemplateList](https://help.aliyun.com/document_detail/2399296.html).
+        # The industry template ID.
+        # > You can call the [DescribeCategoryTemplateList](https://help.aliyun.com/document_detail/2399296.html) operation to obtain the industry template ID.
         self.template_id = template_id
-        # The ID of the hit template rule.
-        # 
-        # > Obtain the hit template rule ID by calling [DescribeCategoryTemplateRuleList](https://help.aliyun.com/document_detail/410143.html).
+        # The ID of the matched template rule.
+        # > You can call the [DescribeCategoryTemplateRuleList](https://help.aliyun.com/document_detail/410143.html) operation to obtain the matched template rule ID.
         self.template_rule_id = template_rule_id
 
     def validate(self):
