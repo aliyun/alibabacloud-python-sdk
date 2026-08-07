@@ -17,15 +17,15 @@ class GetOssCheckStatusResponseBody(DaraModel):
     ):
         # Bid。
         self.bid = bid
-        # Indicates whether the service is activated on Alibaba Cloud.
+        # Indicates whether the commodity is activated on Alibaba Cloud.
         self.buy = buy
         # The commodity code.
         self.commodity_code = commodity_code
-        # Indicates whether the account has an overdue payment.
+        # Indicates whether there is an overdue payment.
         self.indebt = indebt
         # Indicates whether Security Center is authorized.
         self.ram_status = ram_status
-        # The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
+        # The ID assigned by the backend to uniquely identify a request. This ID can be used for troubleshooting.
         self.request_id = request_id
         # Indicates whether the log analysis feature is authorized.
         self.sls_status = sls_status

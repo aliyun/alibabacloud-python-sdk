@@ -12,13 +12,13 @@ class CreateOnlineTestRequest(DaraModel):
         service_code: str = None,
         url: str = None,
     ):
-        # Data ID
+        # The data ID.
         self.data_id = data_id
-        # Resource Type
+        # The resource type.
         self.resource_type = resource_type
-        # Service Code
+        # The service code.
         self.service_code = service_code
-        # Detection URL
+        # The URL to be detected.
         self.url = url
 
     def validate(self):

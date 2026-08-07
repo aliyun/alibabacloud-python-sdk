@@ -12,9 +12,9 @@ class UpdateKeywordLibRequest(DaraModel):
         region_id: str = None,
         tenant_code: str = None,
     ):
-        # The ID of the keyword library.
+        # The keyword library ID.
         self.lib_id = lib_id
-        # The name of the keyword library.
+        # The keyword library name.
         self.lib_name = lib_name
         # The region ID.
         self.region_id = region_id

@@ -16,10 +16,15 @@ class DescribeOssV2ResultResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The current page number.
         self.current_page = current_page
+        # The data on the current page.
         self.items = items
+        # The page size.
         self.page_size = page_size
+        # The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -102,29 +107,53 @@ class DescribeOssV2ResultResponseBodyItems(DaraModel):
         task_id: str = None,
         url: str = None,
     ):
+        # The storage bucket.
         self.bucket = bucket
+        # The error code.
         self.code = code
+        # The moderation modality type.
         self.content_type = content_type
+        # Indicates whether automatic freezing is configured.
         self.freeze = freeze
+        # The freeze status.
         self.freeze_status = freeze_status
+        # The freeze type.
         self.freeze_type = freeze_type
+        # The label details, corresponding to labels.
         self.label_details = label_details
+        # The details of labels2, corresponding to labels2.
         self.label_details_2 = label_details_2
+        # The image labels.
         self.labels = labels
+        # The text labels.
         self.labels_2 = labels_2
+        # The manual disposition status.
         self.manual_freeze_action = manual_freeze_action
+        # The disposition time.
         self.manual_operate_time = manual_operate_time
+        # The operator who performed the disposition.
         self.manual_operator = manual_operator
+        # The MD5 hash of the file.
         self.md_5 = md_5
+        # The object name.
         self.object = object
+        # The request ID.
         self.request_id = request_id
+        # The image risk level.
         self.risk_level = risk_level
+        # The overall risk level.
         self.risk_level_0 = risk_level_0
+        # The audio or text risk level.
         self.risk_level_2 = risk_level_2
+        # The result details.
         self.scan_result = scan_result
+        # Service code。
         self.service_code = service_code
+        # The automatic system freeze operation.
         self.sys_disposal_status = sys_disposal_status
+        # The task ID.
         self.task_id = task_id
+        # The task URL.
         self.url = url
 
     def validate(self):
@@ -309,8 +338,11 @@ class DescribeOssV2ResultResponseBodyItemsLabelDetails2(DaraModel):
         description: str = None,
         label: str = None,
     ):
+        # The confidence score.
         self.confidence = confidence
+        # The label description.
         self.description = description
+        # The label.
         self.label = label
 
     def validate(self):
@@ -352,8 +384,11 @@ class DescribeOssV2ResultResponseBodyItemsLabelDetails(DaraModel):
         description: str = None,
         label: str = None,
     ):
+        # The confidence score.
         self.confidence = confidence
+        # The label description.
         self.description = description
+        # The label.
         self.label = label
 
     def validate(self):

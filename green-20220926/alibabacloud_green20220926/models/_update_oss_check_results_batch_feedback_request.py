@@ -11,11 +11,11 @@ class UpdateOssCheckResultsBatchFeedbackRequest(DaraModel):
         items: str = None,
         parent_task_id: str = None,
     ):
-        # Feedback.
+        # The feedback.
         self.feedback = feedback
-        # Result items.
+        # The result items.
         self.items = items
-        # Parent job ID.
+        # The ID of the parent task.
         self.parent_task_id = parent_task_id
 
     def validate(self):

@@ -19,7 +19,7 @@ class UpdateKeywordLibResponseBody(DaraModel):
         self.data = data
         # The description of the error code.
         self.msg = msg
-        # The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
+        # The request ID assigned by the backend, which uniquely identifies the request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success

@@ -1,3 +1,8 @@
+2026-08-07 Version: 1.12.0
+- Support API GetGuardLogStats.
+- Support API GetUploadContent.
+
+
 2026-07-24 Version: 1.10.0
 - Support API ConfirmAiAppScan.
 - Update API GetScanResult: add response parameters Body.Data.Items.$.BailianRequestId.

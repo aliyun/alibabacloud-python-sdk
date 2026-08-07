@@ -15,12 +15,19 @@ class DescribeOssV2ResultRequest(DaraModel):
         start_date: str = None,
         task_name: str = None,
     ):
+        # The OSS bucket.
         self.bucket = bucket
+        # The current page number.
         self.current_page = current_page
+        # The end time.
         self.end_date = end_date
+        # The page size.
         self.page_size = page_size
+        # The risk level.
         self.risk_level = risk_level
+        # The start time.
         self.start_date = start_date
+        # The task name.
         self.task_name = task_name
 
     def validate(self):

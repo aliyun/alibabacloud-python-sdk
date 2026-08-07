@@ -20,23 +20,23 @@ class LlmStreamChatResponseBody(DaraModel):
         system_fingerprint: str = None,
         usage: str = None,
     ):
-        # List of model generation results
+        # The list of model generation results.
         self.choices = choices
-        # Timestamp of session creation
+        # The timestamp when the session was created.
         self.created = created
-        # Streaming response error information content
+        # The fault information content in the streaming response.
         self.error = error
-        # Unique ID for this session
+        # The unique ID of this session.
         self.id = id
-        # Model identifier
+        # The model identifier.
         self.model = model
-        # Response type
+        # The response type.
         self.object = object
-        # Unique request ID
+        # The unique request ID.
         self.request_id = request_id
-        # System fingerprint
+        # The system fingerprint.
         self.system_fingerprint = system_fingerprint
-        # Token usage
+        # The token usage information.
         self.usage = usage
 
     def validate(self):
@@ -126,13 +126,13 @@ class LlmStreamChatResponseBodyError(DaraModel):
         param: str = None,
         type: str = None,
     ):
-        # Error code
+        # The error code.
         self.code = code
-        # Error message
+        # The error message.
         self.message = message
-        # Parameter that caused the error
+        # The parameter that caused the error.
         self.param = param
-        # Error type
+        # The error type.
         self.type = type
 
     def validate(self):
@@ -181,13 +181,13 @@ class LlmStreamChatResponseBodyChoices(DaraModel):
         index: int = None,
         logprobs: str = None,
     ):
-        # Incremental content object
+        # The incremental content object.
         self.delta = delta
-        # For streaming output, it is null while generating and becomes \\"stop\\" if the generation ends due to a stop token.
+        # During streaming output, this value is null while content is being generated. When generation is complete, the value is stop if the generation ended due to a stop token.
         self.finish_reason = finish_reason
-        # Stream sequence number
+        # The stream sequence number.
         self.index = index
-        # Token probability information
+        # The token probability information.
         self.logprobs = logprobs
 
     def validate(self):
@@ -236,9 +236,9 @@ class LlmStreamChatResponseBodyChoicesDelta(DaraModel):
         content: str = None,
         role: str = None,
     ):
-        # Real-time generated text content
+        # The text content generated in real time.
         self.content = content
-        # Role identifier
+        # The role identifier.
         self.role = role
 
     def validate(self):

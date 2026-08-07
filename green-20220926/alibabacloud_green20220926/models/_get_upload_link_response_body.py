@@ -10,9 +10,9 @@ class GetUploadLinkResponseBody(DaraModel):
         data: str = None,
         request_id: str = None,
     ):
-        # Returned Data.
+        # The returned data.
         self.data = data
-        # An ID assigned by the backend to uniquely identify a request. It can be used for troubleshooting.
+        # The ID assigned by the backend to uniquely identify a request. This ID can be used for troubleshooting.
         self.request_id = request_id
 
     def validate(self):

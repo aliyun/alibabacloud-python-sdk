@@ -22,7 +22,7 @@ class GetStockOssCheckTasksListResponseBody(DaraModel):
         self.items = items
         # The number of entries per page.
         self.page_size = page_size
-        # The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
+        # The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
         # The total number of records.
         self.total_count = total_count
@@ -98,7 +98,7 @@ class GetStockOssCheckTasksListResponseBodyItems(DaraModel):
         task_name: str = None,
         task_type: str = None,
     ):
-        # The OSS bucket.
+        # The storage space.
         self.buckets = buckets
         # The configuration item.
         self.config = config
@@ -269,11 +269,11 @@ class GetStockOssCheckTasksListResponseBodyItemsConfig(DaraModel):
         self.distinct_history_tasks = distinct_history_tasks
         # The end time. Format: YYYY-MM-DD HH:mm:ss.
         self.end_time = end_time
-        # The execution date of the scheduled task.
+        # The scheduled execution date of the task. An integer value, such as 1.
         self.execute_date = execute_date
-        # The expected execution time of the scheduled task. Format: HH:mm:ss.
+        # The scheduled execution time of the task. Format: HH:mm:ss.
         self.execute_time = execute_time
-        # Specifies whether to freeze files.
+        # Specifies whether to freeze.
         self.freeze = freeze
         # Specifies whether to freeze high-risk images.
         self.freeze_high_risk_1 = freeze_high_risk_1
@@ -295,9 +295,9 @@ class GetStockOssCheckTasksListResponseBodyItemsConfig(DaraModel):
         self.priority = priority
         # Referer。
         self.referer = referer
-        # The maximum number of files to scan.
+        # The scan limit.
         self.scan_limit = scan_limit
-        # Specifies whether to scan images without file name extensions.
+        # Specifies whether to scan images without file extensions.
         self.scan_no_file_type = scan_no_file_type
         # The type of files to scan.
         self.scan_resource_type = scan_resource_type
@@ -307,7 +307,7 @@ class GetStockOssCheckTasksListResponseBodyItemsConfig(DaraModel):
         self.scan_service_infos = scan_service_infos
         # The start time. Format: YYYY-MM-DD HH:mm:ss.
         self.start_time = start_time
-        # The scheduling date.
+        # The scheduling cycle. An integer value, such as 1.
         self.task_cycle = task_cycle
         # The manual freeze configuration.
         self.user_freeze_config = user_freeze_config
@@ -528,7 +528,7 @@ class GetStockOssCheckTasksListResponseBodyItemsConfigScanServiceInfos(DaraModel
     ):
         # The primary service.
         self.copy_from = copy_from
-        # Indicates whether the service is a copy.
+        # Indicates whether the service is copied.
         self.is_copy = is_copy
         # The service code.
         self.service_code = service_code

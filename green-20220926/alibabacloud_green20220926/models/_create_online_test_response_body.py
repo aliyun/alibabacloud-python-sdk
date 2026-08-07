@@ -13,15 +13,15 @@ class CreateOnlineTestResponseBody(DaraModel):
         task_status: str = None,
         url: str = None,
     ):
-        # ID assigned by the backend, used to uniquely identify a request. Can be used for troubleshooting.
+        # The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
-        # Service Code
+        # The service code.
         self.service_code = service_code
-        # Detection Task ID
+        # The ID of the detection task.
         self.task_id = task_id
-        # Detection Status
+        # The detection status.
         self.task_status = task_status
-        # Detection URL
+        # The URL to be detected.
         self.url = url
 
     def validate(self):

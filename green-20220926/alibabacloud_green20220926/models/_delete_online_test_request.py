@@ -10,9 +10,9 @@ class DeleteOnlineTestRequest(DaraModel):
         region_id: str = None,
         resource_type: str = None,
     ):
-        # Region ID
+        # The region ID.
         self.region_id = region_id
-        # Resource type.
+        # The resource type.
         self.resource_type = resource_type
 
     def validate(self):

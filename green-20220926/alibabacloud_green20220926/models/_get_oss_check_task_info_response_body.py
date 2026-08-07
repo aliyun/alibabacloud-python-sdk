@@ -27,7 +27,7 @@ class GetOssCheckTaskInfoResponseBody(DaraModel):
         task_name: str = None,
         task_type: str = None,
     ):
-        # The OSS buckets.
+        # The storage buckets.
         self.buckets = buckets
         # The configuration item.
         self.config = config
@@ -41,7 +41,7 @@ class GetOssCheckTaskInfoResponseBody(DaraModel):
         self.last_execute_date = last_execute_date
         # The media asset type.
         self.media_type = media_type
-        # The previous execution time of the scheduled task. The format is YYYY-MM-DD HH:mm:ss.
+        # The last execution time of the scheduled task. The format is YYYY-MM-DD HH:mm:ss.
         self.next_execute_date = next_execute_date
         # The total number of files in the bucket.
         self.object_num = object_num
@@ -201,27 +201,27 @@ class GetOssCheckTaskInfoResponseBodyConfig(DaraModel):
         task_cycle: int = None,
         user_freeze_config: main_models.GetOssCheckTaskInfoResponseBodyConfigUserFreezeConfig = None,
     ):
-        # The filter configuration for each bucket. The key is the bucket name, and the value is the filter configuration, which includes prefix and suffix filters and filter character lists.
+        # The filter configuration for each bucket. The key is the bucket name, and the value is the filter configuration, which includes prefix/suffix filters and filter character lists.
         self.bucket_prefix_filter_config = bucket_prefix_filter_config
         # The callback notification ID.
         self.callback_id = callback_id
-        # Indicates whether to deduplicate historically scanned tasks.
+        # Indicates whether to deduplicate previously scanned tasks.
         self.distinct_history_tasks = distinct_history_tasks
         # The end time. The format is YYYY-MM-DD HH:mm:ss.
         self.end_time = end_time
-        # The execution date of the scheduled task. The value is an integer.
+        # The execution date of the scheduled task. The value is an integer in the format of a single digit, such as 1.
         self.execute_date = execute_date
-        # The estimated execution time of the scheduled task. The format is YYYY-MM-DD HH:mm:ss.
+        # The expected execution time of the scheduled task. The format is YYYY-MM-DD HH:mm:ss.
         self.execute_time = execute_time
-        # Indicates whether freezing is enabled.
+        # Indicates whether to freeze.
         self.freeze = freeze
-        # Indicates whether to freeze high-risk images.
+        # Specifies whether to freeze high-risk images.
         self.freeze_high_risk_1 = freeze_high_risk_1
-        # Indicates whether to freeze high-risk audio and text.
+        # Specifies whether to freeze high-risk audio and text.
         self.freeze_high_risk_2 = freeze_high_risk_2
-        # Indicates whether to freeze medium-risk images.
+        # Specifies whether to freeze medium-risk images.
         self.freeze_medium_risk_1 = freeze_medium_risk_1
-        # Indicates whether to freeze medium-risk audio and text.
+        # Specifies whether to freeze medium-risk audio and text.
         self.freeze_medium_risk_2 = freeze_medium_risk_2
         # The transfer path.
         self.freeze_restore_path = freeze_restore_path
@@ -235,11 +235,11 @@ class GetOssCheckTaskInfoResponseBodyConfig(DaraModel):
         self.priority = priority
         # Referer。
         self.referer = referer
-        # The scan limit.
+        # The scan limit quantity.
         self.scan_limit = scan_limit
         # Indicates whether to scan images without file extensions.
         self.scan_no_file_type = scan_no_file_type
-        # The type of files to scan.
+        # The file type to scan.
         self.scan_resource_type = scan_resource_type
         # The scan service code.
         self.scan_service = scan_service
@@ -483,7 +483,7 @@ class GetOssCheckTaskInfoResponseBodyConfigScanServiceInfos(DaraModel):
     ):
         # The primary service.
         self.copy_from = copy_from
-        # Indicates whether the service is a copy.
+        # Indicates whether the service is copied.
         self.is_copy = is_copy
         # The service code.
         self.service_code = service_code

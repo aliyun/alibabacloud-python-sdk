@@ -149,6 +149,96 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.add_answer_sample_with_options_async(request, runtime)
 
+    def add_app_agent_with_options(
+        self,
+        request: main_models.AddAppAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddAppAgentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_id):
+            query['AgentId'] = request.agent_id
+        if not DaraCore.is_null(request.agent_name):
+            query['AgentName'] = request.agent_name
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.enable):
+            query['Enable'] = request.enable
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddAppAgent',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddAppAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_app_agent_with_options_async(
+        self,
+        request: main_models.AddAppAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddAppAgentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_id):
+            query['AgentId'] = request.agent_id
+        if not DaraCore.is_null(request.agent_name):
+            query['AgentName'] = request.agent_name
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.enable):
+            query['Enable'] = request.enable
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddAppAgent',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddAppAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_app_agent(
+        self,
+        request: main_models.AddAppAgentRequest,
+    ) -> main_models.AddAppAgentResponse:
+        runtime = RuntimeOptions()
+        return self.add_app_agent_with_options(request, runtime)
+
+    async def add_app_agent_async(
+        self,
+        request: main_models.AddAppAgentRequest,
+    ) -> main_models.AddAppAgentResponse:
+        runtime = RuntimeOptions()
+        return await self.add_app_agent_with_options_async(request, runtime)
+
     def add_image_lib_with_options(
         self,
         request: main_models.AddImageLibRequest,
@@ -739,6 +829,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.confirm_ai_app_scan_with_options_async(request, runtime)
 
+    def copy_app_config_with_options(
+        self,
+        request: main_models.CopyAppConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CopyAppConfigResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CopyAppConfig',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CopyAppConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def copy_app_config_with_options_async(
+        self,
+        request: main_models.CopyAppConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CopyAppConfigResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CopyAppConfig',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CopyAppConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def copy_app_config(
+        self,
+        request: main_models.CopyAppConfigRequest,
+    ) -> main_models.CopyAppConfigResponse:
+        runtime = RuntimeOptions()
+        return self.copy_app_config_with_options(request, runtime)
+
+    async def copy_app_config_async(
+        self,
+        request: main_models.CopyAppConfigRequest,
+    ) -> main_models.CopyAppConfigResponse:
+        runtime = RuntimeOptions()
+        return await self.copy_app_config_with_options_async(request, runtime)
+
     def copy_service_config_with_options(
         self,
         request: main_models.CopyServiceConfigRequest,
@@ -1100,6 +1272,92 @@ class Client(OpenApiClient):
     ) -> main_models.CreateAnswerLibResponse:
         runtime = RuntimeOptions()
         return await self.create_answer_lib_with_options_async(request, runtime)
+
+    def create_app_config_with_options(
+        self,
+        request: main_models.CreateAppConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAppConfigResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not DaraCore.is_null(request.sys_app_id):
+            query['SysAppId'] = request.sys_app_id
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAppConfig',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAppConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_app_config_with_options_async(
+        self,
+        request: main_models.CreateAppConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAppConfigResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not DaraCore.is_null(request.sys_app_id):
+            query['SysAppId'] = request.sys_app_id
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAppConfig',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAppConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_app_config(
+        self,
+        request: main_models.CreateAppConfigRequest,
+    ) -> main_models.CreateAppConfigResponse:
+        runtime = RuntimeOptions()
+        return self.create_app_config_with_options(request, runtime)
+
+    async def create_app_config_async(
+        self,
+        request: main_models.CreateAppConfigRequest,
+    ) -> main_models.CreateAppConfigResponse:
+        runtime = RuntimeOptions()
+        return await self.create_app_config_with_options_async(request, runtime)
 
     def create_callback_with_options(
         self,
@@ -1640,6 +1898,88 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteAnswerSampleResponse:
         runtime = RuntimeOptions()
         return await self.delete_answer_sample_with_options_async(request, runtime)
+
+    def delete_app_agent_with_options(
+        self,
+        request: main_models.DeleteAppAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAppAgentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_id):
+            query['AgentId'] = request.agent_id
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAppAgent',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAppAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_app_agent_with_options_async(
+        self,
+        request: main_models.DeleteAppAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAppAgentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_id):
+            query['AgentId'] = request.agent_id
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAppAgent',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAppAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_app_agent(
+        self,
+        request: main_models.DeleteAppAgentRequest,
+    ) -> main_models.DeleteAppAgentResponse:
+        runtime = RuntimeOptions()
+        return self.delete_app_agent_with_options(request, runtime)
+
+    async def delete_app_agent_async(
+        self,
+        request: main_models.DeleteAppAgentRequest,
+    ) -> main_models.DeleteAppAgentResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_app_agent_with_options_async(request, runtime)
 
     def delete_callback_with_options(
         self,
@@ -3061,6 +3401,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_answer_import_progress_with_options_async(request, runtime)
 
+    def get_app_config_with_options(
+        self,
+        request: main_models.GetAppConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAppConfigResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_id):
+            query['AgentId'] = request.agent_id
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.app_version):
+            query['AppVersion'] = request.app_version
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAppConfig',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAppConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_app_config_with_options_async(
+        self,
+        request: main_models.GetAppConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAppConfigResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_id):
+            query['AgentId'] = request.agent_id
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.app_version):
+            query['AppVersion'] = request.app_version
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAppConfig',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAppConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_app_config(
+        self,
+        request: main_models.GetAppConfigRequest,
+    ) -> main_models.GetAppConfigResponse:
+        runtime = RuntimeOptions()
+        return self.get_app_config_with_options(request, runtime)
+
+    async def get_app_config_async(
+        self,
+        request: main_models.GetAppConfigRequest,
+    ) -> main_models.GetAppConfigResponse:
+        runtime = RuntimeOptions()
+        return await self.get_app_config_with_options_async(request, runtime)
+
     def get_backup_buckets_list_with_options(
         self,
         request: main_models.GetBackupBucketsListRequest,
@@ -3618,6 +4044,66 @@ class Client(OpenApiClient):
     ) -> main_models.GetFeatureConfigResponse:
         runtime = RuntimeOptions()
         return await self.get_feature_config_with_options_async(request, runtime)
+
+    def get_guard_log_stats_with_options(
+        self,
+        request: main_models.GetGuardLogStatsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetGuardLogStatsResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'GetGuardLogStats',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetGuardLogStatsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_guard_log_stats_with_options_async(
+        self,
+        request: main_models.GetGuardLogStatsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetGuardLogStatsResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'GetGuardLogStats',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetGuardLogStatsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_guard_log_stats(
+        self,
+        request: main_models.GetGuardLogStatsRequest,
+    ) -> main_models.GetGuardLogStatsResponse:
+        runtime = RuntimeOptions()
+        return self.get_guard_log_stats_with_options(request, runtime)
+
+    async def get_guard_log_stats_async(
+        self,
+        request: main_models.GetGuardLogStatsRequest,
+    ) -> main_models.GetGuardLogStatsResponse:
+        runtime = RuntimeOptions()
+        return await self.get_guard_log_stats_with_options_async(request, runtime)
 
     def get_image_scene_label_conf_with_options(
         self,
@@ -5277,6 +5763,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_tune_proposal_by_id_with_options_async(request, runtime)
 
+    def get_upload_content_with_options(
+        self,
+        request: main_models.GetUploadContentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetUploadContentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.upload_url):
+            query['UploadUrl'] = request.upload_url
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetUploadContent',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetUploadContentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_upload_content_with_options_async(
+        self,
+        request: main_models.GetUploadContentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetUploadContentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.upload_url):
+            query['UploadUrl'] = request.upload_url
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetUploadContent',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetUploadContentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_upload_content(
+        self,
+        request: main_models.GetUploadContentRequest,
+    ) -> main_models.GetUploadContentResponse:
+        runtime = RuntimeOptions()
+        return self.get_upload_content_with_options(request, runtime)
+
+    async def get_upload_content_async(
+        self,
+        request: main_models.GetUploadContentRequest,
+    ) -> main_models.GetUploadContentResponse:
+        runtime = RuntimeOptions()
+        return await self.get_upload_content_with_options_async(request, runtime)
+
     def get_upload_info_with_options(
         self,
         request: main_models.GetUploadInfoRequest,
@@ -5576,6 +6132,162 @@ class Client(OpenApiClient):
     ) -> main_models.ListAnswerLibResponse:
         runtime = RuntimeOptions()
         return await self.list_answer_lib_with_options_async(request, runtime)
+
+    def list_app_config_history_with_options(
+        self,
+        request: main_models.ListAppConfigHistoryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAppConfigHistoryResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAppConfigHistory',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAppConfigHistoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_app_config_history_with_options_async(
+        self,
+        request: main_models.ListAppConfigHistoryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAppConfigHistoryResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAppConfigHistory',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAppConfigHistoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_app_config_history(
+        self,
+        request: main_models.ListAppConfigHistoryRequest,
+    ) -> main_models.ListAppConfigHistoryResponse:
+        runtime = RuntimeOptions()
+        return self.list_app_config_history_with_options(request, runtime)
+
+    async def list_app_config_history_async(
+        self,
+        request: main_models.ListAppConfigHistoryRequest,
+    ) -> main_models.ListAppConfigHistoryResponse:
+        runtime = RuntimeOptions()
+        return await self.list_app_config_history_with_options_async(request, runtime)
+
+    def list_app_configs_with_options(
+        self,
+        request: main_models.ListAppConfigsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAppConfigsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.classify):
+            query['Classify'] = request.classify
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAppConfigs',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAppConfigsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_app_configs_with_options_async(
+        self,
+        request: main_models.ListAppConfigsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAppConfigsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.classify):
+            query['Classify'] = request.classify
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAppConfigs',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAppConfigsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_app_configs(
+        self,
+        request: main_models.ListAppConfigsRequest,
+    ) -> main_models.ListAppConfigsResponse:
+        runtime = RuntimeOptions()
+        return self.list_app_configs_with_options(request, runtime)
+
+    async def list_app_configs_async(
+        self,
+        request: main_models.ListAppConfigsRequest,
+    ) -> main_models.ListAppConfigsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_app_configs_with_options_async(request, runtime)
 
     def list_callback_with_options(
         self,
@@ -6559,6 +7271,182 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.modify_answer_lib_with_options_async(request, runtime)
 
+    def modify_app_agent_with_options(
+        self,
+        request: main_models.ModifyAppAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyAppAgentResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_id):
+            body['AgentId'] = request.agent_id
+        if not DaraCore.is_null(request.agent_name):
+            body['AgentName'] = request.agent_name
+        if not DaraCore.is_null(request.app_id):
+            body['AppId'] = request.app_id
+        if not DaraCore.is_null(request.config):
+            body['Config'] = request.config
+        if not DaraCore.is_null(request.enable):
+            body['Enable'] = request.enable
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_type):
+            body['ResourceType'] = request.resource_type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyAppAgent',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyAppAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_app_agent_with_options_async(
+        self,
+        request: main_models.ModifyAppAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyAppAgentResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_id):
+            body['AgentId'] = request.agent_id
+        if not DaraCore.is_null(request.agent_name):
+            body['AgentName'] = request.agent_name
+        if not DaraCore.is_null(request.app_id):
+            body['AppId'] = request.app_id
+        if not DaraCore.is_null(request.config):
+            body['Config'] = request.config
+        if not DaraCore.is_null(request.enable):
+            body['Enable'] = request.enable
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_type):
+            body['ResourceType'] = request.resource_type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyAppAgent',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyAppAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_app_agent(
+        self,
+        request: main_models.ModifyAppAgentRequest,
+    ) -> main_models.ModifyAppAgentResponse:
+        runtime = RuntimeOptions()
+        return self.modify_app_agent_with_options(request, runtime)
+
+    async def modify_app_agent_async(
+        self,
+        request: main_models.ModifyAppAgentRequest,
+    ) -> main_models.ModifyAppAgentResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_app_agent_with_options_async(request, runtime)
+
+    def modify_app_info_with_options(
+        self,
+        request: main_models.ModifyAppInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyAppInfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyAppInfo',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyAppInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_app_info_with_options_async(
+        self,
+        request: main_models.ModifyAppInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyAppInfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyAppInfo',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyAppInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_app_info(
+        self,
+        request: main_models.ModifyAppInfoRequest,
+    ) -> main_models.ModifyAppInfoResponse:
+        runtime = RuntimeOptions()
+        return self.modify_app_info_with_options(request, runtime)
+
+    async def modify_app_info_async(
+        self,
+        request: main_models.ModifyAppInfoRequest,
+    ) -> main_models.ModifyAppInfoResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_app_info_with_options_async(request, runtime)
+
     def modify_callback_with_options(
         self,
         request: main_models.ModifyCallbackRequest,
@@ -6951,6 +7839,100 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.oss_check_result_list_with_options_async(request, runtime)
 
+    def publish_app_config_with_options(
+        self,
+        request: main_models.PublishAppConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.PublishAppConfigResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_id):
+            query['AgentId'] = request.agent_id
+        if not DaraCore.is_null(request.agent_name):
+            query['AgentName'] = request.agent_name
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.config):
+            query['Config'] = request.config
+        if not DaraCore.is_null(request.enable):
+            query['Enable'] = request.enable
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'PublishAppConfig',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PublishAppConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def publish_app_config_with_options_async(
+        self,
+        request: main_models.PublishAppConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.PublishAppConfigResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_id):
+            query['AgentId'] = request.agent_id
+        if not DaraCore.is_null(request.agent_name):
+            query['AgentName'] = request.agent_name
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.config):
+            query['Config'] = request.config
+        if not DaraCore.is_null(request.enable):
+            query['Enable'] = request.enable
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'PublishAppConfig',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PublishAppConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def publish_app_config(
+        self,
+        request: main_models.PublishAppConfigRequest,
+    ) -> main_models.PublishAppConfigResponse:
+        runtime = RuntimeOptions()
+        return self.publish_app_config_with_options(request, runtime)
+
+    async def publish_app_config_async(
+        self,
+        request: main_models.PublishAppConfigRequest,
+    ) -> main_models.PublishAppConfigResponse:
+        runtime = RuntimeOptions()
+        return await self.publish_app_config_with_options_async(request, runtime)
+
     def query_answer_sample_by_page_with_options(
         self,
         tmp_req: main_models.QueryAnswerSampleByPageRequest,
@@ -7212,6 +8194,88 @@ class Client(OpenApiClient):
     ) -> main_models.QueryCallbackByPageResponse:
         runtime = RuntimeOptions()
         return await self.query_callback_by_page_with_options_async(request, runtime)
+
+    def recover_app_config_history_with_options(
+        self,
+        request: main_models.RecoverAppConfigHistoryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RecoverAppConfigHistoryResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.app_version):
+            query['AppVersion'] = request.app_version
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RecoverAppConfigHistory',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RecoverAppConfigHistoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def recover_app_config_history_with_options_async(
+        self,
+        request: main_models.RecoverAppConfigHistoryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RecoverAppConfigHistoryResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.app_version):
+            query['AppVersion'] = request.app_version
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RecoverAppConfigHistory',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RecoverAppConfigHistoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def recover_app_config_history(
+        self,
+        request: main_models.RecoverAppConfigHistoryRequest,
+    ) -> main_models.RecoverAppConfigHistoryResponse:
+        runtime = RuntimeOptions()
+        return self.recover_app_config_history_with_options(request, runtime)
+
+    async def recover_app_config_history_async(
+        self,
+        request: main_models.RecoverAppConfigHistoryRequest,
+    ) -> main_models.RecoverAppConfigHistoryResponse:
+        runtime = RuntimeOptions()
+        return await self.recover_app_config_history_with_options_async(request, runtime)
 
     def stop_online_test_with_options(
         self,

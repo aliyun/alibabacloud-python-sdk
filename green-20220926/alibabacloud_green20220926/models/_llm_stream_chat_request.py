@@ -17,13 +17,13 @@ class LlmStreamChatRequest(DaraModel):
     ):
         # channel
         self.channel = channel
-        # Conversation information
+        # The conversation messages.
         self.messages = messages
-        # Temperature value for the large model
+        # The temperature value of the large language model.
         self.temperature = temperature
-        # Top p parameter controlling the randomness of the large model\\"s output.
+        # The top_p parameter that controls the randomness of the large language model output.
         self.top_p = top_p
-        # Type of conversation
+        # The conversation type.
         self.type = type
 
     def validate(self):
