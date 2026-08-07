@@ -1,3 +1,7 @@
+2026-08-07 Version: 9.1.1
+- Update API ListLineages: add request parameters RecentDays.
+
+
 2026-08-06 Version: 9.1.0
 - Support API CreateCrawler.
 - Support API DeleteCrawler.

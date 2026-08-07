@@ -13,6 +13,7 @@ class ListLineagesRequest(DaraModel):
         order: str = None,
         page_number: int = None,
         page_size: int = None,
+        recent_days: int = None,
         sort_by: str = None,
         src_entity_id: str = None,
         src_entity_name: str = None,
@@ -33,6 +34,7 @@ class ListLineagesRequest(DaraModel):
         self.page_number = page_number
         # The number of entries per page. Default: 10. Maximum: 100.
         self.page_size = page_size
+        self.recent_days = recent_days
         # The field to sort the results by. The default is `Name`, which sorts by entity name.
         self.sort_by = sort_by
         # The ID of the source entity. This can be a table or column ID returned by the `ListTables` or `ListColumns` API, or the ID of a custom entity.
@@ -66,6 +68,9 @@ class ListLineagesRequest(DaraModel):
         if self.page_size is not None:
             result['PageSize'] = self.page_size
 
+        if self.recent_days is not None:
+            result['RecentDays'] = self.recent_days
+
         if self.sort_by is not None:
             result['SortBy'] = self.sort_by
 
@@ -96,6 +101,9 @@ class ListLineagesRequest(DaraModel):
 
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+
+        if m.get('RecentDays') is not None:
+            self.recent_days = m.get('RecentDays')
 
         if m.get('SortBy') is not None:
             self.sort_by = m.get('SortBy')
