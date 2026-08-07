@@ -7,35 +7,37 @@ from typing import List
 from alibabacloud_outboundbot20251111 import models as main_models
 from darabonba.model import DaraModel
 
-class GetInstanceResponseBody(DaraModel):
+class ListScriptProfileTemplatesResponseBody(DaraModel):
     def __init__(
         self,
         code: str = None,
-        data: main_models.GetInstanceResponseBodyData = None,
+        data: List[main_models.ListScriptProfileTemplatesResponseBodyData] = None,
         http_status_code: int = None,
         message: str = None,
         params: List[str] = None,
         request_id: str = None,
         success: bool = None,
     ):
-        # The return code.
+        # 返回码
         self.code = code
-        # The instance details.
+        # 返回数据
         self.data = data
-        # The HTTP status code.
+        # HTTP状态码
         self.http_status_code = http_status_code
-        # The error message.
+        # 错误信息
         self.message = message
-        # The list of variable values in the error message.
+        # 错误信息中的变量值列表
         self.params = params
-        # Id of the request
+        # 请求ID
         self.request_id = request_id
-        # Indicates whether the call was successful.
+        # 是否调用成功
         self.success = success
 
     def validate(self):
         if self.data:
-            self.data.validate()
+            for v1 in self.data:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -45,8 +47,10 @@ class GetInstanceResponseBody(DaraModel):
         if self.code is not None:
             result['Code'] = self.code
 
+        result['Data'] = []
         if self.data is not None:
-            result['Data'] = self.data.to_map()
+            for k1 in self.data:
+                result['Data'].append(k1.to_map() if k1 else None)
 
         if self.http_status_code is not None:
             result['HttpStatusCode'] = self.http_status_code
@@ -70,9 +74,11 @@ class GetInstanceResponseBody(DaraModel):
         if m.get('Code') is not None:
             self.code = m.get('Code')
 
+        self.data = []
         if m.get('Data') is not None:
-            temp_model = main_models.GetInstanceResponseBodyData()
-            self.data = temp_model.from_map(m.get('Data'))
+            for k1 in m.get('Data'):
+                temp_model = main_models.ListScriptProfileTemplatesResponseBodyData()
+                self.data.append(temp_model.from_map(k1))
 
         if m.get('HttpStatusCode') is not None:
             self.http_status_code = m.get('HttpStatusCode')
@@ -91,37 +97,34 @@ class GetInstanceResponseBody(DaraModel):
 
         return self
 
-class GetInstanceResponseBodyData(DaraModel):
+class ListScriptProfileTemplatesResponseBodyData(DaraModel):
     def __init__(
         self,
-        concurrency: int = None,
         created_time: int = None,
         description: str = None,
-        instance_id: str = None,
+        labels: str = None,
         name: str = None,
-        nlu_profile: str = None,
-        service_mode: str = None,
-        tenant_id: str = None,
+        schema: str = None,
+        template_id: str = None,
         updated_time: int = None,
+        variables: str = None,
     ):
-        # The number of concurrent connections.
-        self.concurrency = concurrency
-        # The time when the instance was created.
+        # 创建时间，毫秒级时间戳
         self.created_time = created_time
-        # The instance description.
+        # 描述
         self.description = description
-        # The instance ID.
-        self.instance_id = instance_id
-        # The instance name.
+        # 标签定义
+        self.labels = labels
+        # 名称
         self.name = name
-        # The Xiaomi business space information.
-        self.nlu_profile = nlu_profile
-        # The service mode.
-        self.service_mode = service_mode
-        # The tenant ID.
-        self.tenant_id = tenant_id
-        # The time when the instance was last updated.
+        # schema定义
+        self.schema = schema
+        # 模板ID
+        self.template_id = template_id
+        # 更新时间，毫秒级时间戳
         self.updated_time = updated_time
+        # 变量定义
+        self.variables = variables
 
     def validate(self):
         pass
@@ -131,63 +134,57 @@ class GetInstanceResponseBodyData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.concurrency is not None:
-            result['Concurrency'] = self.concurrency
-
         if self.created_time is not None:
             result['CreatedTime'] = self.created_time
 
         if self.description is not None:
             result['Description'] = self.description
 
-        if self.instance_id is not None:
-            result['InstanceId'] = self.instance_id
+        if self.labels is not None:
+            result['Labels'] = self.labels
 
         if self.name is not None:
             result['Name'] = self.name
 
-        if self.nlu_profile is not None:
-            result['NluProfile'] = self.nlu_profile
+        if self.schema is not None:
+            result['Schema'] = self.schema
 
-        if self.service_mode is not None:
-            result['ServiceMode'] = self.service_mode
-
-        if self.tenant_id is not None:
-            result['TenantId'] = self.tenant_id
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
 
         if self.updated_time is not None:
             result['UpdatedTime'] = self.updated_time
+
+        if self.variables is not None:
+            result['Variables'] = self.variables
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Concurrency') is not None:
-            self.concurrency = m.get('Concurrency')
-
         if m.get('CreatedTime') is not None:
             self.created_time = m.get('CreatedTime')
 
         if m.get('Description') is not None:
             self.description = m.get('Description')
 
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
+        if m.get('Labels') is not None:
+            self.labels = m.get('Labels')
 
         if m.get('Name') is not None:
             self.name = m.get('Name')
 
-        if m.get('NluProfile') is not None:
-            self.nlu_profile = m.get('NluProfile')
+        if m.get('Schema') is not None:
+            self.schema = m.get('Schema')
 
-        if m.get('ServiceMode') is not None:
-            self.service_mode = m.get('ServiceMode')
-
-        if m.get('TenantId') is not None:
-            self.tenant_id = m.get('TenantId')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
 
         if m.get('UpdatedTime') is not None:
             self.updated_time = m.get('UpdatedTime')
+
+        if m.get('Variables') is not None:
+            self.variables = m.get('Variables')
 
         return self
 

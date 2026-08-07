@@ -7,30 +7,30 @@ from typing import List
 from alibabacloud_outboundbot20251111 import models as main_models
 from darabonba.model import DaraModel
 
-class GetInstanceResponseBody(DaraModel):
+class ListCloneVoiceModelsResponseBody(DaraModel):
     def __init__(
         self,
         code: str = None,
-        data: main_models.GetInstanceResponseBodyData = None,
+        data: main_models.ListCloneVoiceModelsResponseBodyData = None,
         http_status_code: int = None,
         message: str = None,
         params: List[str] = None,
         request_id: str = None,
         success: bool = None,
     ):
-        # The return code.
+        # 返回码
         self.code = code
-        # The instance details.
+        # 返回数据
         self.data = data
-        # The HTTP status code.
+        # HTTP状态码
         self.http_status_code = http_status_code
-        # The error message.
+        # 错误信息
         self.message = message
-        # The list of variable values in the error message.
+        # 错误信息中的变量值列表
         self.params = params
-        # Id of the request
+        # 请求ID
         self.request_id = request_id
-        # Indicates whether the call was successful.
+        # 是否调用成功
         self.success = success
 
     def validate(self):
@@ -71,7 +71,7 @@ class GetInstanceResponseBody(DaraModel):
             self.code = m.get('Code')
 
         if m.get('Data') is not None:
-            temp_model = main_models.GetInstanceResponseBodyData()
+            temp_model = main_models.ListCloneVoiceModelsResponseBodyData()
             self.data = temp_model.from_map(m.get('Data'))
 
         if m.get('HttpStatusCode') is not None:
@@ -91,37 +91,82 @@ class GetInstanceResponseBody(DaraModel):
 
         return self
 
-class GetInstanceResponseBodyData(DaraModel):
+class ListCloneVoiceModelsResponseBodyData(DaraModel):
     def __init__(
         self,
-        concurrency: int = None,
-        created_time: int = None,
-        description: str = None,
-        instance_id: str = None,
-        name: str = None,
-        nlu_profile: str = None,
-        service_mode: str = None,
-        tenant_id: str = None,
-        updated_time: int = None,
+        clone_voice_models: List[main_models.ListCloneVoiceModelsResponseBodyDataCloneVoiceModels] = None,
+        page_number: int = None,
+        page_size: int = None,
+        total_count: int = None,
     ):
-        # The number of concurrent connections.
-        self.concurrency = concurrency
-        # The time when the instance was created.
-        self.created_time = created_time
-        # The instance description.
+        # 数据列表
+        self.clone_voice_models = clone_voice_models
+        # 页码，从1开始
+        self.page_number = page_number
+        # 每页记录数
+        self.page_size = page_size
+        # 符合条件的记录总数
+        self.total_count = total_count
+
+    def validate(self):
+        if self.clone_voice_models:
+            for v1 in self.clone_voice_models:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        result['CloneVoiceModels'] = []
+        if self.clone_voice_models is not None:
+            for k1 in self.clone_voice_models:
+                result['CloneVoiceModels'].append(k1.to_map() if k1 else None)
+
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.clone_voice_models = []
+        if m.get('CloneVoiceModels') is not None:
+            for k1 in m.get('CloneVoiceModels'):
+                temp_model = main_models.ListCloneVoiceModelsResponseBodyDataCloneVoiceModels()
+                self.clone_voice_models.append(temp_model.from_map(k1))
+
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+
+        return self
+
+class ListCloneVoiceModelsResponseBodyDataCloneVoiceModels(DaraModel):
+    def __init__(
+        self,
+        description: str = None,
+        display_name: str = None,
+        name: str = None,
+    ):
+        # 描述
         self.description = description
-        # The instance ID.
-        self.instance_id = instance_id
-        # The instance name.
+        # 显示名称
+        self.display_name = display_name
+        # 名称
         self.name = name
-        # The Xiaomi business space information.
-        self.nlu_profile = nlu_profile
-        # The service mode.
-        self.service_mode = service_mode
-        # The tenant ID.
-        self.tenant_id = tenant_id
-        # The time when the instance was last updated.
-        self.updated_time = updated_time
 
     def validate(self):
         pass
@@ -131,63 +176,27 @@ class GetInstanceResponseBodyData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.concurrency is not None:
-            result['Concurrency'] = self.concurrency
-
-        if self.created_time is not None:
-            result['CreatedTime'] = self.created_time
-
         if self.description is not None:
             result['Description'] = self.description
 
-        if self.instance_id is not None:
-            result['InstanceId'] = self.instance_id
+        if self.display_name is not None:
+            result['DisplayName'] = self.display_name
 
         if self.name is not None:
             result['Name'] = self.name
-
-        if self.nlu_profile is not None:
-            result['NluProfile'] = self.nlu_profile
-
-        if self.service_mode is not None:
-            result['ServiceMode'] = self.service_mode
-
-        if self.tenant_id is not None:
-            result['TenantId'] = self.tenant_id
-
-        if self.updated_time is not None:
-            result['UpdatedTime'] = self.updated_time
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Concurrency') is not None:
-            self.concurrency = m.get('Concurrency')
-
-        if m.get('CreatedTime') is not None:
-            self.created_time = m.get('CreatedTime')
-
         if m.get('Description') is not None:
             self.description = m.get('Description')
 
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
+        if m.get('DisplayName') is not None:
+            self.display_name = m.get('DisplayName')
 
         if m.get('Name') is not None:
             self.name = m.get('Name')
-
-        if m.get('NluProfile') is not None:
-            self.nlu_profile = m.get('NluProfile')
-
-        if m.get('ServiceMode') is not None:
-            self.service_mode = m.get('ServiceMode')
-
-        if m.get('TenantId') is not None:
-            self.tenant_id = m.get('TenantId')
-
-        if m.get('UpdatedTime') is not None:
-            self.updated_time = m.get('UpdatedTime')
 
         return self
 

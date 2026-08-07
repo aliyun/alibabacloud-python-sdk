@@ -7,30 +7,30 @@ from typing import List
 from alibabacloud_outboundbot20251111 import models as main_models
 from darabonba.model import DaraModel
 
-class GetInstanceResponseBody(DaraModel):
+class ListCloneVoicesResponseBody(DaraModel):
     def __init__(
         self,
         code: str = None,
-        data: main_models.GetInstanceResponseBodyData = None,
+        data: main_models.ListCloneVoicesResponseBodyData = None,
         http_status_code: int = None,
         message: str = None,
         params: List[str] = None,
         request_id: str = None,
         success: bool = None,
     ):
-        # The return code.
+        # 返回码
         self.code = code
-        # The instance details.
+        # 返回数据
         self.data = data
-        # The HTTP status code.
+        # HTTP状态码
         self.http_status_code = http_status_code
-        # The error message.
+        # 错误信息
         self.message = message
-        # The list of variable values in the error message.
+        # 错误信息中的变量值列表
         self.params = params
-        # Id of the request
+        # 请求ID
         self.request_id = request_id
-        # Indicates whether the call was successful.
+        # 是否调用成功
         self.success = success
 
     def validate(self):
@@ -71,7 +71,7 @@ class GetInstanceResponseBody(DaraModel):
             self.code = m.get('Code')
 
         if m.get('Data') is not None:
-            temp_model = main_models.GetInstanceResponseBodyData()
+            temp_model = main_models.ListCloneVoicesResponseBodyData()
             self.data = temp_model.from_map(m.get('Data'))
 
         if m.get('HttpStatusCode') is not None:
@@ -91,37 +91,103 @@ class GetInstanceResponseBody(DaraModel):
 
         return self
 
-class GetInstanceResponseBodyData(DaraModel):
+class ListCloneVoicesResponseBodyData(DaraModel):
     def __init__(
         self,
-        concurrency: int = None,
+        clone_voices: List[main_models.ListCloneVoicesResponseBodyDataCloneVoices] = None,
+        page_number: int = None,
+        page_size: int = None,
+        total_count: int = None,
+    ):
+        # 数据列表
+        self.clone_voices = clone_voices
+        # 页码，从1开始
+        self.page_number = page_number
+        # 每页记录数
+        self.page_size = page_size
+        # 符合条件的记录总数
+        self.total_count = total_count
+
+    def validate(self):
+        if self.clone_voices:
+            for v1 in self.clone_voices:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        result['CloneVoices'] = []
+        if self.clone_voices is not None:
+            for k1 in self.clone_voices:
+                result['CloneVoices'].append(k1.to_map() if k1 else None)
+
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.clone_voices = []
+        if m.get('CloneVoices') is not None:
+            for k1 in m.get('CloneVoices'):
+                temp_model = main_models.ListCloneVoicesResponseBodyDataCloneVoices()
+                self.clone_voices.append(temp_model.from_map(k1))
+
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+
+        return self
+
+class ListCloneVoicesResponseBodyDataCloneVoices(DaraModel):
+    def __init__(
+        self,
+        clone_voice_id: str = None,
         created_time: int = None,
-        description: str = None,
         instance_id: str = None,
+        model: str = None,
         name: str = None,
-        nlu_profile: str = None,
-        service_mode: str = None,
+        nls_engine: str = None,
+        status: str = None,
         tenant_id: str = None,
         updated_time: int = None,
+        voice: str = None,
     ):
-        # The number of concurrent connections.
-        self.concurrency = concurrency
-        # The time when the instance was created.
+        # 克隆音色ID
+        self.clone_voice_id = clone_voice_id
+        # 创建时间，毫秒级时间戳
         self.created_time = created_time
-        # The instance description.
-        self.description = description
-        # The instance ID.
+        # 实例ID
         self.instance_id = instance_id
-        # The instance name.
+        # 模型名称
+        self.model = model
+        # 名称
         self.name = name
-        # The Xiaomi business space information.
-        self.nlu_profile = nlu_profile
-        # The service mode.
-        self.service_mode = service_mode
-        # The tenant ID.
+        # 目前支持IFLYTEK、VOLC
+        self.nls_engine = nls_engine
+        # 状态
+        self.status = status
+        # 租户ID
         self.tenant_id = tenant_id
-        # The time when the instance was last updated.
+        # 更新时间，毫秒级时间戳
         self.updated_time = updated_time
+        # 音色
+        self.voice = voice
 
     def validate(self):
         pass
@@ -131,26 +197,26 @@ class GetInstanceResponseBodyData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.concurrency is not None:
-            result['Concurrency'] = self.concurrency
+        if self.clone_voice_id is not None:
+            result['CloneVoiceId'] = self.clone_voice_id
 
         if self.created_time is not None:
             result['CreatedTime'] = self.created_time
 
-        if self.description is not None:
-            result['Description'] = self.description
-
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+
+        if self.model is not None:
+            result['Model'] = self.model
 
         if self.name is not None:
             result['Name'] = self.name
 
-        if self.nlu_profile is not None:
-            result['NluProfile'] = self.nlu_profile
+        if self.nls_engine is not None:
+            result['NlsEngine'] = self.nls_engine
 
-        if self.service_mode is not None:
-            result['ServiceMode'] = self.service_mode
+        if self.status is not None:
+            result['Status'] = self.status
 
         if self.tenant_id is not None:
             result['TenantId'] = self.tenant_id
@@ -158,36 +224,42 @@ class GetInstanceResponseBodyData(DaraModel):
         if self.updated_time is not None:
             result['UpdatedTime'] = self.updated_time
 
+        if self.voice is not None:
+            result['Voice'] = self.voice
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Concurrency') is not None:
-            self.concurrency = m.get('Concurrency')
+        if m.get('CloneVoiceId') is not None:
+            self.clone_voice_id = m.get('CloneVoiceId')
 
         if m.get('CreatedTime') is not None:
             self.created_time = m.get('CreatedTime')
 
-        if m.get('Description') is not None:
-            self.description = m.get('Description')
-
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
 
         if m.get('Name') is not None:
             self.name = m.get('Name')
 
-        if m.get('NluProfile') is not None:
-            self.nlu_profile = m.get('NluProfile')
+        if m.get('NlsEngine') is not None:
+            self.nls_engine = m.get('NlsEngine')
 
-        if m.get('ServiceMode') is not None:
-            self.service_mode = m.get('ServiceMode')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
 
         if m.get('TenantId') is not None:
             self.tenant_id = m.get('TenantId')
 
         if m.get('UpdatedTime') is not None:
             self.updated_time = m.get('UpdatedTime')
+
+        if m.get('Voice') is not None:
+            self.voice = m.get('Voice')
 
         return self
 
