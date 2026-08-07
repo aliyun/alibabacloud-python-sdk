@@ -9,7 +9,7 @@ class GetAppCodeWorkspaceDetailRequest(DaraModel):
         self,
         site_id: str = None,
     ):
-        # Site ID
+        # The site ID.
         self.site_id = site_id
 
     def validate(self):

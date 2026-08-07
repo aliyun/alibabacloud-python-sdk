@@ -10,9 +10,9 @@ class UpdateAppSupabaseAuthConfigRequest(DaraModel):
         biz_id: str = None,
         configs_json: str = None,
     ):
-        # Business ID
+        # The business ID.
         self.biz_id = biz_id
-        # Configuration JSON
+        # The configuration JSON.
         self.configs_json = configs_json
 
     def validate(self):

@@ -22,28 +22,28 @@ class GetAppTemplateResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # permission denied information
+        # The access denied details.
         self.access_denied_detail = access_denied_detail
-        # is retry allowed
+        # Indicates whether a retry is allowed.
         self.allow_retry = allow_retry
-        # App Name.
+        # The application name.
         self.app_name = app_name
-        # dynamic error Code
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # dynamic error message, used to replace the `%s` placeholder in the **ErrMessage** error message.  
-        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, it indicates that the request parameter **DtsJobId** is invalid.
+        # The dynamic error message, which is used to replace the `%s` in the **ErrMessage** response parameter.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the value of the request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
-        # returned error parameters
+        # The error parameters.
         self.error_args = error_args
-        # whether deletion succeeded
+        # Indicates whether the deletion is successful.
         self.module = module
         # Id of the request
         self.request_id = request_id
-        # Error code
+        # The error code.
         self.root_error_code = root_error_code
-        # abnormal message
+        # The exception message.
         self.root_error_msg = root_error_msg
-        # Reserved parameter.
+        # A reserved parameter.
         self.synchro = synchro
 
     def validate(self):
@@ -157,83 +157,83 @@ class GetAppTemplateResponseBodyModule(DaraModel):
         view_count: int = None,
         weight: int = None,
     ):
-        # Application type
+        # The application type.
         self.app_type = app_type
-        # Business ID
+        # The business ID.
         self.biz_id = biz_id
-        # color
+        # The color scheme.
         self.color_scheme = color_scheme
-        # Color name
+        # The color scheme name.
         self.color_scheme_name = color_scheme_name
-        # The actual data volume of the original table copied during DMS lockless change.
+        # The actual amount of data copied from the original table during a DMS lock-free schema change.
         self.copy_count = copy_count
-        # User ID of the creator.
+        # The user ID of the creator.
         self.creator = creator
-        # Creation UTC time, in ISO 8601 date format.
+        # The creation time in UTC. The date format follows ISO 8601.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.gmt_create_time = gmt_create_time
-        # Modify time
+        # modify time
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.gmt_modified_time = gmt_modified_time
-        # Primary key
+        # The primary key.
         self.id = id
-        # Industry. Default value: **common** (general industry). Valid values:
+        # The industry. Default value: **common** (general industry). Valid values:
         # 
-        # - **microVideo**: Short video industry.
+        # - **microVideo**: short video industry.
         # 
-        # - **common**: General industry.
+        # - **common**: general industry.
         self.industry = industry
-        # Industry name.
+        # The industry name.
         self.industry_name = industry_name
-        # Last modifier
+        # The last modifier.
         self.last_modifier = last_modifier
-        # Like count.
+        # The number of likes.
         self.like_count = like_count
-        # Whether the current user has liked it
+        # Indicates whether the current user has liked the template.
         self.liked = liked
         # <props="china">
         # 
-        # Map of metadata for text segmentation.
+        # The metadata map of the text chunk.
         # 
-        # > In document-search-type knowledge bases, the `file_path` field in the metadata Map is meaningless. Do not use it in your business code.
+        # > The `file_path` field in the metadata map of a document search knowledge base is meaningless. Do not use it in your business code.
         # 
-        # > When retrieving a document-search-type knowledge base, if a segment contains an image, the image URL will be exposed through the `image_url` field in the metadata Map, along with a time-to-live (TTL).
+        # > When retrieving a document search knowledge base, if a chunk contains images, the image URL is returned through the `image_url` field in the metadata map, along with an expiration time.
         # 
         # 
         # <props="intl">
         # 
-        # Map of metadata for text segmentation.
+        # The metadata map of the text chunk.
         # 
-        # > In document-search-type knowledge bases, the `file_path` field in the metadata Map is meaningless. Do not use it in your business code.
+        # > The `file_path` field in the metadata map of a document search knowledge base is meaningless. Do not use it in your business code.
         # 
-        # > When retrieving a document-search-type knowledge base, if a segment contains an image, the image URL will be exposed through the `image_url` field in the metadata Map, along with a time-to-live (TTL).
+        # > When retrieving a document search knowledge base, if a chunk contains images, the image URL is returned through the `image_url` field in the metadata map, along with an expiration time.
         self.metadata = metadata
-        # Preview URL
+        # The preview URL.
         self.preview_url = preview_url
-        # Edition. Valid values:
-        # - **BasicVersion**: Basic Edition.
-        # - **EnterpriseVersion**: Enterprise Edition.
+        # The product version. Valid values:
+        # - **BasicVersion**: Basic edition.
+        # - **EnterpriseVersion**: Enterprise edition.
         # > This parameter is required only when ProductForm is set to IntegrationForm.
         self.product_version = product_version
-        # Edition Name.
+        # The edition name.
         self.product_version_name = product_version_name
-        # Share count
+        # The number of shares.
         self.share_count = share_count
-        # trial, draft, live, refunded, expired, released
+        # trial,draft,live,refunded,expired,released
         self.status = status
-        # Template ID
+        # The template ID.
         self.template_id = template_id
-        # Template Name
+        # The template name.
         self.template_name = template_name
-        # application thumbnail
+        # The application thumbnail URL.
         self.thumbnail_url = thumbnail_url
-        # View count.
+        # The number of views.
         self.view_count = view_count
-        # Hot word weight, an integer in the range [1, 5].  
-        # Common value: 4.  
-        # If the effect is not obvious, you can moderately increase the weight. However, if the weight is too high, it may cause negative effects and reduce the accuracy of detecting other words.
+        # The weight of the hot word. Valid values: integers in the range of [1, 5].
+        # Common value: 4.
+        # If the effect is not obvious, increase the weight as needed. However, a large weight may cause negative effects and lead to inaccurate recognition of other words.
         self.weight = weight
 
     def validate(self):

@@ -22,11 +22,11 @@ class GetOssUploadPolicyResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # The detailed reason why access is denied.
+        # The detailed reason why access was denied.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether a retry is allowed. Valid values:
-        # - false: No retry is allowed.
-        # - true: A retry is allowed.
+        # Indicates whether retry is allowed. Valid values:
+        # - false: Retry is not allowed.
+        # - true: Retry is allowed.
         self.allow_retry = allow_retry
         # The application name.
         self.app_name = app_name
@@ -147,7 +147,7 @@ class GetOssUploadPolicyResponseBodyModule(DaraModel):
         self.host = host
         # The Base64-encoded policy.
         self.policy = policy
-        # The Security Token Service (STS) token. This parameter is null in non-STS scenarios.
+        # The Security Token Service (STS) token. This value is null in non-STS scenarios.
         self.security_token = security_token
         # The calculated signature.
         self.signature = signature

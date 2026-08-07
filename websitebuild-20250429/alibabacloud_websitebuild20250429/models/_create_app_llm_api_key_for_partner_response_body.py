@@ -22,27 +22,27 @@ class CreateAppLlmApiKeyForPartnerResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # Detailed reason for access denial.
+        # The detailed reason why access was denied.
         self.access_denied_detail = access_denied_detail
-        # is retry allowed
+        # Indicates whether retry is allowed.
         self.allow_retry = allow_retry
-        # App Name.
+        # The application name.
         self.app_name = app_name
-        # dynamic error code.
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # dynamic error message.
+        # The dynamic error message.
         self.dynamic_message = dynamic_message
-        # returned error parameters
+        # The error arguments returned.
         self.error_args = error_args
-        # response data
+        # The response data.
         self.module = module
         # Id of the request
         self.request_id = request_id
-        # error code
+        # The error code.
         self.root_error_code = root_error_code
-        # abnormal message
+        # The root error message.
         self.root_error_msg = root_error_msg
-        # is processed synchronously
+        # Indicates whether the request is processed synchronously.
         self.synchro = synchro
 
     def validate(self):
@@ -132,7 +132,7 @@ class CreateAppLlmApiKeyForPartnerResponseBodyModule(DaraModel):
         self,
         encrypted_api_key: str = None,
     ):
-        # ciphertext of the API key encrypted by AES
+        # The AES-encrypted API key ciphertext.
         self.encrypted_api_key = encrypted_api_key
 
     def validate(self):

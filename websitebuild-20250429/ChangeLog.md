@@ -1,3 +1,7 @@
+2026-08-07 Version: 2.37.0
+- Support API QueryInspirationBalanceForPartner.
+
+
 2026-07-27 Version: 2.36.0
 - Support API UploadMaterialFileForAdmin.
 

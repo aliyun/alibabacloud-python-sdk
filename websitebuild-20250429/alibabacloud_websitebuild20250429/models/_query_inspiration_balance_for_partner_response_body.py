@@ -4,9 +4,10 @@ from __future__ import annotations
 
 from typing import List, Any
 
+from alibabacloud_websitebuild20250429 import models as main_models
 from darabonba.model import DaraModel
 
-class GetTempDownloadUrlResponseBody(DaraModel):
+class QueryInspirationBalanceForPartnerResponseBody(DaraModel):
     def __init__(
         self,
         access_denied_detail: str = None,
@@ -15,38 +16,27 @@ class GetTempDownloadUrlResponseBody(DaraModel):
         dynamic_code: str = None,
         dynamic_message: str = None,
         error_args: List[Any] = None,
-        module: str = None,
+        module: main_models.QueryInspirationBalanceForPartnerResponseBodyModule = None,
         request_id: str = None,
         root_error_code: str = None,
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # The details of the permission verification failure.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether retry is allowed.
         self.allow_retry = allow_retry
-        # The application name.
         self.app_name = app_name
-        # The error code.
         self.dynamic_code = dynamic_code
-        # The dynamic error message, which is used to replace the `%s` variable in the **ErrMessage** return parameter.
-        # > For example, if **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the **DtsJobId** request parameter is invalid.
         self.dynamic_message = dynamic_message
-        # The error parameters.
         self.error_args = error_args
-        # The response data.
         self.module = module
-        # Id of the request
         self.request_id = request_id
-        # The error code.
         self.root_error_code = root_error_code
-        # The error message.
         self.root_error_msg = root_error_msg
-        # Indicates whether the request is processed synchronously.
         self.synchro = synchro
 
     def validate(self):
-        pass
+        if self.module:
+            self.module.validate()
 
     def to_map(self):
         result = dict()
@@ -72,7 +62,7 @@ class GetTempDownloadUrlResponseBody(DaraModel):
             result['ErrorArgs'] = self.error_args
 
         if self.module is not None:
-            result['Module'] = self.module
+            result['Module'] = self.module.to_map()
 
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -109,7 +99,8 @@ class GetTempDownloadUrlResponseBody(DaraModel):
             self.error_args = m.get('ErrorArgs')
 
         if m.get('Module') is not None:
-            self.module = m.get('Module')
+            temp_model = main_models.QueryInspirationBalanceForPartnerResponseBodyModule()
+            self.module = temp_model.from_map(m.get('Module'))
 
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
@@ -122,6 +113,73 @@ class GetTempDownloadUrlResponseBody(DaraModel):
 
         if m.get('Synchro') is not None:
             self.synchro = m.get('Synchro')
+
+        return self
+
+class QueryInspirationBalanceForPartnerResponseBodyModule(DaraModel):
+    def __init__(
+        self,
+        remaining: int = None,
+        remaining_str: str = None,
+        total_quota: int = None,
+        total_quota_str: str = None,
+        total_used: int = None,
+        total_used_str: str = None,
+    ):
+        self.remaining = remaining
+        self.remaining_str = remaining_str
+        self.total_quota = total_quota
+        self.total_quota_str = total_quota_str
+        self.total_used = total_used
+        self.total_used_str = total_used_str
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.remaining is not None:
+            result['Remaining'] = self.remaining
+
+        if self.remaining_str is not None:
+            result['RemainingStr'] = self.remaining_str
+
+        if self.total_quota is not None:
+            result['TotalQuota'] = self.total_quota
+
+        if self.total_quota_str is not None:
+            result['TotalQuotaStr'] = self.total_quota_str
+
+        if self.total_used is not None:
+            result['TotalUsed'] = self.total_used
+
+        if self.total_used_str is not None:
+            result['TotalUsedStr'] = self.total_used_str
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Remaining') is not None:
+            self.remaining = m.get('Remaining')
+
+        if m.get('RemainingStr') is not None:
+            self.remaining_str = m.get('RemainingStr')
+
+        if m.get('TotalQuota') is not None:
+            self.total_quota = m.get('TotalQuota')
+
+        if m.get('TotalQuotaStr') is not None:
+            self.total_quota_str = m.get('TotalQuotaStr')
+
+        if m.get('TotalUsed') is not None:
+            self.total_used = m.get('TotalUsed')
+
+        if m.get('TotalUsedStr') is not None:
+            self.total_used_str = m.get('TotalUsedStr')
 
         return self
 

@@ -14,19 +14,19 @@ class ListAppConversationMessagesRequest(DaraModel):
         site_id: str = None,
         start_create_time: str = None,
     ):
-        # Session ID.
+        # The conversation ID.
         self.conversation_id = conversation_id
-        # Number of results per query.
+        # The number of entries per query.
         # 
-        # Valid values: 10 to 100. Default Value: 20.
+        # Valid values: 10 to 100. Default value: 20.
         self.max_results = max_results
-        # Token indicating the start of the next query. This value is empty if there is no subsequent query.
+        # The token for the next query. This parameter is empty if no more results are available.
         self.next_token = next_token
-        # Number of entries per page (10–100).
+        # The number of entries per page (10-100).
         self.page_size = page_size
-        # Site ID.
+        # The site ID.
         self.site_id = site_id
-        # Creation Time of the last entry on the previous page (in ISO 8601 format).
+        # The creation time of the last entry on the previous page (ISO 8601 format).
         self.start_create_time = start_create_time
 
     def validate(self):

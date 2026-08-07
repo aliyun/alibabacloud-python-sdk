@@ -24,7 +24,7 @@ class GetAppPluginResponseBody(DaraModel):
     ):
         # The detailed reason why access was denied.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether retry is allowed.
+        # Indicates whether retries are allowed.
         self.allow_retry = allow_retry
         # The application name.
         self.app_name = app_name
@@ -138,6 +138,7 @@ class GetAppPluginResponseBodyModule(DaraModel):
         display: int = None,
         enabled: int = None,
         extend: str = None,
+        git_ref: str = None,
         gmt_create: str = None,
         gmt_modified: str = None,
         hooks: str = None,
@@ -145,6 +146,7 @@ class GetAppPluginResponseBodyModule(DaraModel):
         icon: str = None,
         plugin_id: str = None,
         plugin_name: str = None,
+        repository_url: str = None,
         skill_header: str = None,
         status: str = None,
         tags: str = None,
@@ -172,6 +174,8 @@ class GetAppPluginResponseBodyModule(DaraModel):
         self.enabled = enabled
         # The extended information.
         self.extend = extend
+        # The version number.
+        self.git_ref = git_ref
         # The creation time.
         self.gmt_create = gmt_create
         # The modification time.
@@ -182,10 +186,12 @@ class GetAppPluginResponseBodyModule(DaraModel):
         self.hot_count = hot_count
         # The plug-in description.
         self.icon = icon
-        # The bound API gateway plug-in ID.
+        # The bound API Gateway plug-in ID.
         self.plugin_id = plugin_id
         # The plug-in name. The name can contain uppercase and lowercase letters, Chinese characters, digits, and underscores (_). The name must be 4 to 50 characters in length and cannot start with an underscore.
         self.plugin_name = plugin_name
+        # The image repository URL.
+        self.repository_url = repository_url
         # The skill header information for model selection.
         self.skill_header = skill_header
         # trial,draft,live,refunded,expired,released
@@ -194,7 +200,7 @@ class GetAppPluginResponseBodyModule(DaraModel):
         self.tags = tags
         # The application instance version.
         self.version = version
-        # The visibility level.
+        # **The visibility level.**
         self.visibility = visibility
 
     def validate(self):
@@ -226,6 +232,9 @@ class GetAppPluginResponseBodyModule(DaraModel):
         if self.extend is not None:
             result['Extend'] = self.extend
 
+        if self.git_ref is not None:
+            result['GitRef'] = self.git_ref
+
         if self.gmt_create is not None:
             result['GmtCreate'] = self.gmt_create
 
@@ -246,6 +255,9 @@ class GetAppPluginResponseBodyModule(DaraModel):
 
         if self.plugin_name is not None:
             result['PluginName'] = self.plugin_name
+
+        if self.repository_url is not None:
+            result['RepositoryUrl'] = self.repository_url
 
         if self.skill_header is not None:
             result['SkillHeader'] = self.skill_header
@@ -287,6 +299,9 @@ class GetAppPluginResponseBodyModule(DaraModel):
         if m.get('Extend') is not None:
             self.extend = m.get('Extend')
 
+        if m.get('GitRef') is not None:
+            self.git_ref = m.get('GitRef')
+
         if m.get('GmtCreate') is not None:
             self.gmt_create = m.get('GmtCreate')
 
@@ -307,6 +322,9 @@ class GetAppPluginResponseBodyModule(DaraModel):
 
         if m.get('PluginName') is not None:
             self.plugin_name = m.get('PluginName')
+
+        if m.get('RepositoryUrl') is not None:
+            self.repository_url = m.get('RepositoryUrl')
 
         if m.get('SkillHeader') is not None:
             self.skill_header = m.get('SkillHeader')

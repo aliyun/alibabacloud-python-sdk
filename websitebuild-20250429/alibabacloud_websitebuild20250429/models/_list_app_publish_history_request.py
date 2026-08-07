@@ -20,28 +20,28 @@ class ListAppPublishHistoryRequest(DaraModel):
         subchannel: str = None,
         website_domain: str = None,
     ):
-        # Business ID
+        # The business ID.
         self.biz_id = biz_id
         self.deploy_channel = deploy_channel
-        # Search keyword
+        # The search keyword.
         self.keyword = keyword
-        # Number of results per query.  
+        # The number of entries per query.
         # 
-        # Value range: 10 to 100. Default value: 20.
+        # Valid values: 10 to 100. Default value: 20.
         self.max_results = max_results
-        # Token indicating the start of the next query. Empty if there is no next query.
+        # The token for the next query. This parameter is empty if no more results exist.
         self.next_token = next_token
-        # Page number
+        # The page number.
         self.page_num = page_num
-        # Page size
+        # The page size.
         self.page_size = page_size
         self.publish_env = publish_env
-        # Sorting method
+        # The sort method.
         self.sort = sort
-        # Publish status
+        # The publish status.
         self.status = status
         self.subchannel = subchannel
-        # Website domain name
+        # The website domain name.
         self.website_domain = website_domain
 
     def validate(self):

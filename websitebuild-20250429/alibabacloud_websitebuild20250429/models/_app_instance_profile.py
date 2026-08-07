@@ -15,6 +15,7 @@ class AppInstanceProfile(DaraModel):
         commodity_code: str = None,
         customer_service: str = None,
         deploy_area: str = None,
+        icpba_no: str = None,
         instance_id: str = None,
         open_chat_bi: bool = None,
         ord_time: str = None,
@@ -28,25 +29,42 @@ class AppInstanceProfile(DaraModel):
         template_etag: str = None,
         template_id: str = None,
     ):
+        # The application type code.
         self.application_type = application_type
+        # The text description of the application type.
         self.application_type_text = application_type_text
+        # The business ID.
         self.biz_id = biz_id
         self.chatbi_task_id = chatbi_task_id
         self.chatbi_task_status = chatbi_task_status
+        # The commodity code.
         self.commodity_code = commodity_code
+        # The customer service information.
         self.customer_service = customer_service
+        # The deployment area.
         self.deploy_area = deploy_area
+        self.icpba_no = icpba_no
+        # The associated instance ID.
         self.instance_id = instance_id
         self.open_chat_bi = open_chat_bi
+        # The time when the order was placed.
         self.ord_time = ord_time
+        # The order ID.
         self.order_id = order_id
+        # The payment time.
         self.pay_time = pay_time
         self.preview_url = preview_url
+        # The SEO site information.
         self.seo_site = seo_site
+        # The site version code.
         self.site_version = site_version
+        # The text description of the site version.
         self.site_version_text = site_version_text
+        # The source information.
         self.source = source
+        # The ETag of the template.
         self.template_etag = template_etag
+        # The template ID.
         self.template_id = template_id
 
     def validate(self):
@@ -80,6 +98,9 @@ class AppInstanceProfile(DaraModel):
 
         if self.deploy_area is not None:
             result['DeployArea'] = self.deploy_area
+
+        if self.icpba_no is not None:
+            result['IcpbaNo'] = self.icpba_no
 
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
@@ -144,6 +165,9 @@ class AppInstanceProfile(DaraModel):
 
         if m.get('DeployArea') is not None:
             self.deploy_area = m.get('DeployArea')
+
+        if m.get('IcpbaNo') is not None:
+            self.icpba_no = m.get('IcpbaNo')
 
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')

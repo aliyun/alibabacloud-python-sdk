@@ -24,34 +24,34 @@ class ListAppTemplateDictsResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # Detailed reason why access was denied.
+        # The detailed reason why access is denied.
         self.access_denied_detail = access_denied_detail
-        # is retry allowed
+        # Indicates whether retry is allowed.
         self.allow_retry = allow_retry
-        # application name; queries the application with this name
+        # The application name to query.
         self.app_name = app_name
-        # dynamic error code.
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # dynamic error message used to replace the `%s` placeholder in the **ErrMessage** response parameter.  
-        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, it indicates that the request parameter **DtsJobId** is invalid.
+        # The dynamic error message, which is used to replace the `%s` in the **ErrMessage** return parameter.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
-        # faulty parameters
+        # The error parameters.
         self.error_args = error_args
-        # Number of results per query.  
+        # The number of entries per query.
         # 
-        # Value range: 10–100. Default Value: 20.
+        # Valid values: 10 to 100. Default value: 20.
         self.max_results = max_results
-        # response Data
+        # The response data.
         self.module = module
-        # Token for the start of the next query. It is empty when there is no next query.
+        # The token for the next query. This parameter is empty if no more results exist.
         self.next_token = next_token
         # Id of the request
         self.request_id = request_id
-        # error code
+        # The error code.
         self.root_error_code = root_error_code
-        # abnormal message
+        # The exception message.
         self.root_error_msg = root_error_msg
-        # is processing synchronous
+        # Indicates whether the request is synchronously processed.
         self.synchro = synchro
 
     def validate(self):
@@ -164,23 +164,23 @@ class ListAppTemplateDictsResponseBodyModule(DaraModel):
         has_templates: bool = None,
         sort_order: int = None,
     ):
-        # Dictionary Code
+        # The dictionary code.
         self.dict_code = dict_code
-        # Dictionary label
+        # The dictionary label.
         self.dict_label = dict_label
-        # Enumeration of template dictionary types
+        # The template dictionary type enumeration.
         self.dict_type = dict_type
-        # Dictionary value
+        # The dictionary value.
         self.dict_value = dict_value
-        # Indicates whether a template exists.
+        # Indicates whether templates exist.
         self.has_templates = has_templates
-        # Sorting order. The default is descending.  
+        # The sort order. Default value: DESC.
         # 
-        # Enumeration values:  
+        # Valid values:
         # 
-        # ASC: ascending.  
+        # - ASC: Ascending order.
         # 
-        # DESC: descending.
+        # - DESC: Descending order.
         self.sort_order = sort_order
 
     def validate(self):

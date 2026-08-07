@@ -10589,6 +10589,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.query_inspiration_balance_with_options_async(runtime)
 
+    def query_inspiration_balance_for_partner_with_options(
+        self,
+        request: main_models.QueryInspirationBalanceForPartnerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryInspirationBalanceForPartnerResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.belong_id):
+            query['BelongId'] = request.belong_id
+        if not DaraCore.is_null(request.belong_id_type):
+            query['BelongIdType'] = request.belong_id_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryInspirationBalanceForPartner',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryInspirationBalanceForPartnerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_inspiration_balance_for_partner_with_options_async(
+        self,
+        request: main_models.QueryInspirationBalanceForPartnerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryInspirationBalanceForPartnerResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.belong_id):
+            query['BelongId'] = request.belong_id
+        if not DaraCore.is_null(request.belong_id_type):
+            query['BelongIdType'] = request.belong_id_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryInspirationBalanceForPartner',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryInspirationBalanceForPartnerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_inspiration_balance_for_partner(
+        self,
+        request: main_models.QueryInspirationBalanceForPartnerRequest,
+    ) -> main_models.QueryInspirationBalanceForPartnerResponse:
+        runtime = RuntimeOptions()
+        return self.query_inspiration_balance_for_partner_with_options(request, runtime)
+
+    async def query_inspiration_balance_for_partner_async(
+        self,
+        request: main_models.QueryInspirationBalanceForPartnerRequest,
+    ) -> main_models.QueryInspirationBalanceForPartnerResponse:
+        runtime = RuntimeOptions()
+        return await self.query_inspiration_balance_for_partner_with_options_async(request, runtime)
+
     def query_inspiration_consume_records_with_options(
         self,
         request: main_models.QueryInspirationConsumeRecordsRequest,

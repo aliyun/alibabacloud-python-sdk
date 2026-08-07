@@ -153,7 +153,7 @@ class ListMarketplaceAppPluginsResponseBodyModule(DaraModel):
         self.page_size = page_size
         # Indicates whether a previous page exists.
         self.pre_page = pre_page
-        # In addition to pagination limits, the server processes a maximum of 1000 recent records for the current query. If the results exceed 1000 entries, **ResultLimit** is **true**. Narrow the time range and search again. Otherwise, **ResultLimit** is **false**.
+        # In addition to pagination limits, the server processes a maximum of 1000 recent records for the current query. If the results exceed 1000 records, **ResultLimit** is **true**, and you need to narrow the time range and search again. Otherwise, **ResultLimit** is **false**.
         self.result_limit = result_limit
         # The total number of entries.
         self.total_item_num = total_item_num
@@ -357,6 +357,7 @@ class ListMarketplaceAppPluginsResponseBodyModuleData(DaraModel):
         self,
         category: str = None,
         description: str = None,
+        extend: str = None,
         gmt_create: str = None,
         gmt_modified: str = None,
         hot_count: int = None,
@@ -376,6 +377,7 @@ class ListMarketplaceAppPluginsResponseBodyModuleData(DaraModel):
         self.category = category
         # The scenario description.
         self.description = description
+        self.extend = extend
         # The creation time.
         self.gmt_create = gmt_create
         # The modification time.
@@ -411,6 +413,9 @@ class ListMarketplaceAppPluginsResponseBodyModuleData(DaraModel):
 
         if self.description is not None:
             result['Description'] = self.description
+
+        if self.extend is not None:
+            result['Extend'] = self.extend
 
         if self.gmt_create is not None:
             result['GmtCreate'] = self.gmt_create
@@ -448,6 +453,9 @@ class ListMarketplaceAppPluginsResponseBodyModuleData(DaraModel):
 
         if m.get('Description') is not None:
             self.description = m.get('Description')
+
+        if m.get('Extend') is not None:
+            self.extend = m.get('Extend')
 
         if m.get('GmtCreate') is not None:
             self.gmt_create = m.get('GmtCreate')

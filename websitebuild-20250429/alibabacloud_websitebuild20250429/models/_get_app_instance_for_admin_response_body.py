@@ -32,7 +32,7 @@ class GetAppInstanceForAdminResponseBody(DaraModel):
         self.dynamic_code = dynamic_code
         # The dynamic error message.
         self.dynamic_message = dynamic_message
-        # The error parameters returned.
+        # The returned error parameters.
         self.error_args = error_args
         # The response data.
         self.module = module

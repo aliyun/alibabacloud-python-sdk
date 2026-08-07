@@ -9,6 +9,7 @@ class GetTempDownloadUrlRequest(DaraModel):
         self,
         oss_key: str = None,
     ):
+        # The key of the OSS object.
         self.oss_key = oss_key
 
     def validate(self):

@@ -11,7 +11,7 @@ class UpdateMiniAppBindingResponseBody(DaraModel):
         data: main_models.UpdateMiniAppBindingResponseBodyData = None,
         request_id: str = None,
     ):
-        # Request result.
+        # The request result.
         self.data = data
         # Id of the request
         self.request_id = request_id
@@ -49,7 +49,7 @@ class UpdateMiniAppBindingResponseBodyData(DaraModel):
         self,
         success: bool = None,
     ):
-        # Indicates whether the operation succeeded.
+        # Indicates whether the operation is successful.
         self.success = success
 
     def validate(self):

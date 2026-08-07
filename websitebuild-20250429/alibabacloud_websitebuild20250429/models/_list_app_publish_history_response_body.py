@@ -24,39 +24,39 @@ class ListAppPublishHistoryResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # Detailed reason for access denial.
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
-        # is retry allowed
+        # Indicates whether retry is allowed.
         self.allow_retry = allow_retry
-        # frontend application Name.
+        # The frontend application name.
         self.app_name = app_name
-        # dynamic error code.
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # dynamic message, not currently used. Please ignore.
+        # The dynamic message. This parameter is not in use. Ignore this parameter.
         self.dynamic_message = dynamic_message
-        # fault parameters
+        # The error parameters.
         self.error_args = error_args
-        # Number of results per query.  
+        # The number of entries per query.
         # 
-        # Value range: 10 to 100. Default Value: 20.
+        # Valid values: 10 to 100. Default value: 20.
         self.max_results = max_results
-        # Data Table module.  
+        # The data table module.
         # 
-        # - ABTest: experiment Data Table  
+        # - ABTest: the experiment data table.
         # 
-        # - ExperimentTool: experiment tool table  
+        # - ExperimentTool: the experiment tool table.
         # 
-        # - DataDiagnosis: Data Diagnosis
+        # - DataDiagnosis: data modeling diagnostics.
         self.module = module
-        # Token for the start of the next query. It is empty if there is no next query.
+        # The token for the next query. This parameter is empty if no more results exist.
         self.next_token = next_token
         # Id of the request
         self.request_id = request_id
-        # error code
+        # The error code.
         self.root_error_code = root_error_code
-        # abnormal message
+        # The error message.
         self.root_error_msg = root_error_msg
-        # Reserved parameter.
+        # The reserved parameter.
         self.synchro = synchro
 
     def validate(self):
@@ -162,19 +162,19 @@ class ListAppPublishHistoryResponseBodyModule(DaraModel):
         page_size: int = None,
         total: int = None,
     ):
-        # Current publish order ID
+        # The current publish order ID.
         self.current_publish_order_id = current_publish_order_id
-        # Indicates whether to display the history of applying the alert template to application groups. Valid values:
+        # Indicates whether to display the history of alert templates applied to application groups. Valid values:
         # 
-        # - true: Display.
+        # - true: Displayed.
         # 
-        # - false (default): Do not display.
+        # - false (default): Not displayed.
         self.history = history
-        # Page number. Default value is 1.
+        # The page number. Default value: 1.
         self.page_num = page_num
-        # Paging size.
+        # The page size.
         self.page_size = page_size
-        # Total count.
+        # The total number of entries.
         self.total = total
 
     def validate(self):
@@ -252,35 +252,35 @@ class ListAppPublishHistoryResponseBodyModuleHistory(DaraModel):
         # Indicates whether quick rollback is supported.
         self.can_quick_revert = can_quick_revert
         self.commit_hash = commit_hash
-        # Current step.
+        # The current step number.
         self.current_step = current_step
-        # Deployment channel.
+        # The deployment channel.
         self.deploy_channel = deploy_channel
-        # Application description.
+        # The application description.
         self.description = description
-        # Publishing procedure.
+        # The publish process.
         self.error_step = error_step
-        # Indicates whether the process is complete.
+        # Indicates whether the task is complete.
         self.is_finish = is_finish
-        # Indicates whether resource allocation to the cost center succeeded.
-        # - true indicates success.
-        # - false indicates failure.
+        # Indicates whether the resource allocation of the business unit is successful.
+        # - true: The allocation is successful.
+        # - false: The allocation failed.
         self.is_success = is_success
-        # Error message.
+        # The error message.
         self.msg = msg
-        # Sorting type: ASC or DESC.
+        # The sort type. Valid values: ASC and DESC.
         self.order_type = order_type
-        # Transcoding progress.
+        # The transcoding progress.
         self.percent = percent
-        # Publish number.
+        # The publish number.
         self.publish_number = publish_number
-        # Publish order ID.
+        # The publish order ID.
         self.publish_order_id = publish_order_id
-        # Published At.
+        # The publish time.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.publish_time = publish_time
-        # Specific widget configuration.
+        # The component-specific configurations.
         self.steps = steps
         self.subchannel = subchannel
 

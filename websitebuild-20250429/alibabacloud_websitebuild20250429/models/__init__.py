@@ -418,6 +418,9 @@ from ._query_inspiration_account_details_response_body import QueryInspirationAc
 from ._query_inspiration_account_details_response import QueryInspirationAccountDetailsResponse
 from ._query_inspiration_balance_response_body import QueryInspirationBalanceResponseBody
 from ._query_inspiration_balance_response import QueryInspirationBalanceResponse
+from ._query_inspiration_balance_for_partner_request import QueryInspirationBalanceForPartnerRequest
+from ._query_inspiration_balance_for_partner_response_body import QueryInspirationBalanceForPartnerResponseBody
+from ._query_inspiration_balance_for_partner_response import QueryInspirationBalanceForPartnerResponse
 from ._query_inspiration_consume_records_request import QueryInspirationConsumeRecordsRequest
 from ._query_inspiration_consume_records_response_body import QueryInspirationConsumeRecordsResponseBody
 from ._query_inspiration_consume_records_response import QueryInspirationConsumeRecordsResponse
@@ -758,6 +761,7 @@ from ._query_inspiration_account_details_response_body import QueryInspirationAc
 from ._query_inspiration_account_details_response_body import QueryInspirationAccountDetailsResponseBodyModuleNext
 from ._query_inspiration_account_details_response_body import QueryInspirationAccountDetailsResponseBodyModule
 from ._query_inspiration_balance_response_body import QueryInspirationBalanceResponseBodyModule
+from ._query_inspiration_balance_for_partner_response_body import QueryInspirationBalanceForPartnerResponseBodyModule
 from ._query_inspiration_consume_records_response_body import QueryInspirationConsumeRecordsResponseBodyModuleData
 from ._query_inspiration_consume_records_response_body import QueryInspirationConsumeRecordsResponseBodyModuleNext
 from ._query_inspiration_consume_records_response_body import QueryInspirationConsumeRecordsResponseBodyModule
@@ -1218,6 +1222,9 @@ __all__ = [
     QueryInspirationAccountDetailsResponse,
     QueryInspirationBalanceResponseBody,
     QueryInspirationBalanceResponse,
+    QueryInspirationBalanceForPartnerRequest,
+    QueryInspirationBalanceForPartnerResponseBody,
+    QueryInspirationBalanceForPartnerResponse,
     QueryInspirationConsumeRecordsRequest,
     QueryInspirationConsumeRecordsResponseBody,
     QueryInspirationConsumeRecordsResponse,
@@ -1558,6 +1565,7 @@ __all__ = [
     QueryInspirationAccountDetailsResponseBodyModuleNext,
     QueryInspirationAccountDetailsResponseBodyModule,
     QueryInspirationBalanceResponseBodyModule,
+    QueryInspirationBalanceForPartnerResponseBodyModule,
     QueryInspirationConsumeRecordsResponseBodyModuleData,
     QueryInspirationConsumeRecordsResponseBodyModuleNext,
     QueryInspirationConsumeRecordsResponseBodyModule,

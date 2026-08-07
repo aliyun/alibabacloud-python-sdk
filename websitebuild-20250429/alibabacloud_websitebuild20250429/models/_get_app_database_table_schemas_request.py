@@ -10,7 +10,9 @@ class GetAppDatabaseTableSchemasRequest(DaraModel):
         biz_id: str = None,
         table_name: str = None,
     ):
+        # The business ID.
         self.biz_id = biz_id
+        # The table name.
         self.table_name = table_name
 
     def validate(self):

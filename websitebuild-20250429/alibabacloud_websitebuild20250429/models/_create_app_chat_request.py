@@ -13,15 +13,15 @@ class CreateAppChatRequest(DaraModel):
         messages: str = None,
         site_id: str = None,
     ):
-        # Bot ID
+        # The bot ID.
         self.bot_id = bot_id
-        # Chat ID to be provided when recovering a conversation after an execution break
+        # The chat ID passed in to resume a conversation after execution is interrupted.
         self.chat_id = chat_id
-        # Session ID; required from the second turn onward in a multi-turn conversation scenario
+        # The conversation ID. This parameter is required from the second round onward in multi-turn conversation scenarios.
         self.conversation_id = conversation_id
-        # List of conversation messages (in JSON array format)
+        # The list of conversation messages in JSON array format.
         self.messages = messages
-        # Site ID
+        # The site ID.
         self.site_id = site_id
 
     def validate(self):

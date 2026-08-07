@@ -10,9 +10,9 @@ class GetAppSandboxPreviewUrlRequest(DaraModel):
         conversation_id: str = None,
         restart: bool = None,
     ):
-        # session ID
+        # The session ID.
         self.conversation_id = conversation_id
-        # Specifies whether to restart the application process. This parameter is optional and defaults to false.
+        # Specifies whether to restart the application process. This parameter is optional. Default value: false.
         self.restart = restart
 
     def validate(self):

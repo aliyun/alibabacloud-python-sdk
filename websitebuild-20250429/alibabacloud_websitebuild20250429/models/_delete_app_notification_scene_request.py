@@ -10,7 +10,9 @@ class DeleteAppNotificationSceneRequest(DaraModel):
         biz_id: str = None,
         scene_id: str = None,
     ):
+        # The business ID.
         self.biz_id = biz_id
+        # The scenario ID.
         self.scene_id = scene_id
 
     def validate(self):
