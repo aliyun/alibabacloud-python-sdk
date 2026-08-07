@@ -7,8 +7,10 @@ from darabonba.model import DaraModel
 class CreateAIDBClusterTaskRequest(DaraModel):
     def __init__(
         self,
+        custom_oss_bucket_name: str = None,
         dbcluster_id: str = None,
         dbinstance_class: str = None,
+        dataservice_mode: str = None,
         dataset_path: str = None,
         eval_dataset_path: str = None,
         kube_type: str = None,
@@ -28,12 +30,14 @@ class CreateAIDBClusterTaskRequest(DaraModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
+        self.custom_oss_bucket_name = custom_oss_bucket_name
         # The cluster ID.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The instance type.
         self.dbinstance_class = dbinstance_class
+        self.dataservice_mode = dataservice_mode
         # The training dataset ID. This parameter is required for fine-tuning.
         self.dataset_path = dataset_path
         # The validation dataset ID. This parameter is required for evaluation.
@@ -87,11 +91,17 @@ class CreateAIDBClusterTaskRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.custom_oss_bucket_name is not None:
+            result['CustomOssBucketName'] = self.custom_oss_bucket_name
+
         if self.dbcluster_id is not None:
             result['DBClusterId'] = self.dbcluster_id
 
         if self.dbinstance_class is not None:
             result['DBInstanceClass'] = self.dbinstance_class
+
+        if self.dataservice_mode is not None:
+            result['DataserviceMode'] = self.dataservice_mode
 
         if self.dataset_path is not None:
             result['DatasetPath'] = self.dataset_path
@@ -151,11 +161,17 @@ class CreateAIDBClusterTaskRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CustomOssBucketName') is not None:
+            self.custom_oss_bucket_name = m.get('CustomOssBucketName')
+
         if m.get('DBClusterId') is not None:
             self.dbcluster_id = m.get('DBClusterId')
 
         if m.get('DBInstanceClass') is not None:
             self.dbinstance_class = m.get('DBInstanceClass')
+
+        if m.get('DataserviceMode') is not None:
+            self.dataservice_mode = m.get('DataserviceMode')
 
         if m.get('DatasetPath') is not None:
             self.dataset_path = m.get('DatasetPath')

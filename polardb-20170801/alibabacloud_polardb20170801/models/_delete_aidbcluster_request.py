@@ -8,11 +8,13 @@ class DeleteAIDBClusterRequest(DaraModel):
     def __init__(
         self,
         dbcluster_id: str = None,
+        model_space: str = None,
     ):
         # The ID of the AI cluster.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        self.model_space = model_space
 
     def validate(self):
         pass
@@ -25,12 +27,18 @@ class DeleteAIDBClusterRequest(DaraModel):
         if self.dbcluster_id is not None:
             result['DBClusterId'] = self.dbcluster_id
 
+        if self.model_space is not None:
+            result['ModelSpace'] = self.model_space
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('DBClusterId') is not None:
             self.dbcluster_id = m.get('DBClusterId')
+
+        if m.get('ModelSpace') is not None:
+            self.model_space = m.get('ModelSpace')
 
         return self
 

@@ -7,6 +7,8 @@ from darabonba.model import DaraModel
 class DescribeCostRulesRequest(DaraModel):
     def __init__(
         self,
+        effective_target_type: str = None,
+        effective_target_value: str = None,
         gw_cluster_id: str = None,
         model_name: str = None,
         model_service_id: str = None,
@@ -14,23 +16,24 @@ class DescribeCostRulesRequest(DaraModel):
         page_size: int = None,
         region_id: str = None,
     ):
+        # Filters by effective target type. Valid values: global, consumerGroup, and consumer.
+        self.effective_target_type = effective_target_type
+        # Filters by effective target value.
+        self.effective_target_value = effective_target_value
         # The gateway instance ID.
         # 
         # This parameter is required.
         self.gw_cluster_id = gw_cluster_id
-        # The model name, such as `gpt-4` or `qwen-turbo`.
+        # The model name, such as gpt-4 or qwen-turbo.
         self.model_name = model_name
         # The model service ID.
         self.model_service_id = model_service_id
         # The page number.
         self.page_number = page_number
         # The number of entries per page. Valid values:
-        # 
-        # - **30**
-        # 
-        # - **50**
-        # 
-        # - **100**
+        # * **30**
+        # * **50**
+        # * **100**
         # 
         # Default value: 30.
         self.page_size = page_size
@@ -45,6 +48,12 @@ class DescribeCostRulesRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.effective_target_type is not None:
+            result['EffectiveTargetType'] = self.effective_target_type
+
+        if self.effective_target_value is not None:
+            result['EffectiveTargetValue'] = self.effective_target_value
+
         if self.gw_cluster_id is not None:
             result['GwClusterId'] = self.gw_cluster_id
 
@@ -67,6 +76,12 @@ class DescribeCostRulesRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EffectiveTargetType') is not None:
+            self.effective_target_type = m.get('EffectiveTargetType')
+
+        if m.get('EffectiveTargetValue') is not None:
+            self.effective_target_value = m.get('EffectiveTargetValue')
+
         if m.get('GwClusterId') is not None:
             self.gw_cluster_id = m.get('GwClusterId')
 

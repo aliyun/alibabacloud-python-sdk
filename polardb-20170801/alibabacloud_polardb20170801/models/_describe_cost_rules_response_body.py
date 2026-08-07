@@ -17,15 +17,15 @@ class DescribeCostRulesResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
-        # A list of cost rules.
+        # The list of cost rules.
         self.items = items
         # The page number.
         self.page_number = page_number
         # The number of records on the current page.
         self.page_record_count = page_record_count
-        # The number of entries returned per page.
+        # The number of entries per page. Valid values: 30, 50, and 100. Default value: 30.
         self.page_size = page_size
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
         # The total number of records.
         self.total_record_count = total_record_count
@@ -93,6 +93,8 @@ class DescribeCostRulesResponseBodyItems(DaraModel):
         self,
         cache_cost_points_per_million: str = None,
         cost_rule_id: str = None,
+        effective_target_type: str = None,
+        effective_target_value: str = None,
         gmt_created: str = None,
         gmt_modified: str = None,
         gw_cluster_id: str = None,
@@ -101,23 +103,27 @@ class DescribeCostRulesResponseBodyItems(DaraModel):
         model_service_id: str = None,
         output_cost_points_per_million: str = None,
     ):
-        # The cost in points per one million cached tokens.
+        # The cost points per million cache tokens. Default value: 0.
         self.cache_cost_points_per_million = cache_cost_points_per_million
         # The cost rule ID.
         self.cost_rule_id = cost_rule_id
-        # The time when the cost rule was created.
+        # The effective target type.
+        self.effective_target_type = effective_target_type
+        # The effective target value.
+        self.effective_target_value = effective_target_value
+        # The creation time.
         self.gmt_created = gmt_created
-        # The time when the cost rule was last updated.
+        # The last modification time.
         self.gmt_modified = gmt_modified
         # The gateway instance ID.
         self.gw_cluster_id = gw_cluster_id
-        # The cost in points per one million input tokens.
+        # The cost points per million input tokens. Default value: 0.
         self.input_cost_points_per_million = input_cost_points_per_million
         # The model name.
         self.model = model
         # The model service ID.
         self.model_service_id = model_service_id
-        # The cost in points per one million output tokens.
+        # The cost points per million output tokens. Default value: 0.
         self.output_cost_points_per_million = output_cost_points_per_million
 
     def validate(self):
@@ -133,6 +139,12 @@ class DescribeCostRulesResponseBodyItems(DaraModel):
 
         if self.cost_rule_id is not None:
             result['CostRuleId'] = self.cost_rule_id
+
+        if self.effective_target_type is not None:
+            result['EffectiveTargetType'] = self.effective_target_type
+
+        if self.effective_target_value is not None:
+            result['EffectiveTargetValue'] = self.effective_target_value
 
         if self.gmt_created is not None:
             result['GmtCreated'] = self.gmt_created
@@ -164,6 +176,12 @@ class DescribeCostRulesResponseBodyItems(DaraModel):
 
         if m.get('CostRuleId') is not None:
             self.cost_rule_id = m.get('CostRuleId')
+
+        if m.get('EffectiveTargetType') is not None:
+            self.effective_target_type = m.get('EffectiveTargetType')
+
+        if m.get('EffectiveTargetValue') is not None:
+            self.effective_target_value = m.get('EffectiveTargetValue')
 
         if m.get('GmtCreated') is not None:
             self.gmt_created = m.get('GmtCreated')

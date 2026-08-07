@@ -13,6 +13,8 @@ class DescribePolarFsAttributeResponseBody(DaraModel):
         accelerate_type: str = None,
         accelerated_storage_space: float = None,
         accelerating_enable: str = None,
+        authorized_user_arn_ids: str = None,
+        authorized_user_ids: str = None,
         bandwidth: float = None,
         bandwidth_base_line: float = None,
         bucket_id: str = None,
@@ -57,19 +59,23 @@ class DescribePolarFsAttributeResponseBody(DaraModel):
     ):
         # The acceleration type.
         self.accelerate_type = accelerate_type
-        # The acceleration storage space. Unit: GB.
+        # The acceleration storage space, in GB.
         self.accelerated_storage_space = accelerated_storage_space
-        # Specifies whether the acceleration cache is enabled. Valid values:
+        # Indicates whether the acceleration cache is enabled. Valid values:
         # - **ON**: Enabled.
         # - **OFF**: Disabled.
         self.accelerating_enable = accelerating_enable
-        # The bandwidth. Unit: MB/s.
+        # The list of authorized RAM role ARNs, separated by commas.
+        self.authorized_user_arn_ids = authorized_user_arn_ids
+        # The list of authorized UIDs, separated by commas.
+        self.authorized_user_ids = authorized_user_ids
+        # The bandwidth, in MB/s.
         self.bandwidth = bandwidth
-        # The bandwidth baseline. Unit: MB/s/TiB.
+        # The bandwidth baseline, in MB/s/TiB.
         self.bandwidth_base_line = bandwidth_base_line
         # The bucket ID.
         self.bucket_id = bucket_id
-        # The PolarLakebase edition. Valid values:
+        # The Polarlakebase edition. Valid values:
         # 
         # - **high_performance**: High-performance Edition.
         # 
@@ -85,18 +91,20 @@ class DescribePolarFsAttributeResponseBody(DaraModel):
         self.custom_bucket_path = custom_bucket_path
         # The list of custom storage paths.
         self.custom_bucket_path_list = custom_bucket_path_list
+        # The endpoint ID.
         self.dbendpoint_id = dbendpoint_id
         # The database ecosystem type. Valid values: 
         # * **MySQL**
         # * **PostgreSQL**
         self.dbtype = dbtype
+        # The list of endpoints, including endpoint information for NAS, S3Gateway, and other types.
         self.endpoint_items = endpoint_items
         # The expiration time of the cluster.
         # 
-        # > This parameter is returned only for clusters that use the **Prepaid** (subscription) billing method. An empty value is returned for **Postpaid** (pay-as-you-go) clusters.
+        # > This parameter is returned only for clusters whose billing method is **Prepaid** (subscription). An empty value is returned for **Postpaid** (pay-as-you-go) clusters.
         self.expire_time = expire_time
         # Indicates whether the cluster has expired.
-        # > This parameter is returned only for clusters that use the **Prepaid** (subscription) billing method.
+        # > This parameter is returned only for clusters whose billing method is **Prepaid** (subscription).
         self.expired = expired
         # The file system ID.
         self.file_system_id = file_system_id
@@ -106,11 +114,15 @@ class DescribePolarFsAttributeResponseBody(DaraModel):
         # - **ManualLock**: Manually locked. 
         # - **LockByExpiration**: Automatically locked due to cluster expiration.
         self.lock_mode = lock_mode
+        # The proxy endpoint ID.
         self.maxscale_endpoint_id = maxscale_endpoint_id
+        # The metadata service cluster endpoint.
         self.meta_conn_string = meta_conn_string
+        # The metadata instance name.
         self.meta_instance_name = meta_instance_name
+        # The metadata proxy service cluster endpoint.
         self.meta_mxs_conn_string = meta_mxs_conn_string
-        # The encrypted metadata URL for Fuse mounting.
+        # The metadata address for Fuse mount (encrypted).
         self.meta_url = meta_url
         # The minor version of the instance.
         self.minor_version = minor_version
@@ -121,15 +133,15 @@ class DescribePolarFsAttributeResponseBody(DaraModel):
         # - **Postpaid**: pay-as-you-go.
         # - **Prepaid**: subscription.
         self.pay_type = pay_type
-        # The description of the PolarLakebase instance.
+        # The description of the Polarlakebase instance.
         self.polar_fs_instance_description = polar_fs_instance_description
-        # The PolarLakebase instance ID.
+        # The Polarlakebase instance ID.
         self.polar_fs_instance_id = polar_fs_instance_id
-        # The PolarLakebase instance status.
+        # The Polarlakebase instance status.
         self.polar_fs_status = polar_fs_status
         # The instance version. Valid values:
-        # - **PolarFS 2.0**: 2.0.
-        # - **PolarFS 1.0**: 1.0.
+        # - **PolarFS 2.0**: 2.0
+        # - **PolarFS 1.0**: 1.0
         self.polar_fs_type = polar_fs_type
         # The version.
         self.polar_fs_version = polar_fs_version
@@ -137,24 +149,26 @@ class DescribePolarFsAttributeResponseBody(DaraModel):
         self.region_id = region_id
         # The ID of the associated PolarDB cluster.
         self.relative_db_cluster_id = relative_db_cluster_id
-        # The instance ID of the associated PolarLakebase instance.
+        # The instance ID of the associated Polarlakebase instance.
         self.relative_pfs_cluster_id = relative_pfs_cluster_id
         # Id of the request
         self.request_id = request_id
         # The managed security group ID.
         self.security_group_id = security_group_id
-        # The storage space. Unit: GB.
+        # The storage space, in GB.
         self.storage_space = storage_space
         # The storage type for the High-performance Edition. Valid values:
         # * **ESSDPL1**
         # * **ESSDPL0**
         # 
         # The storage type for the Basic Edition. Valid values:
-        # * **city_redundancy**: zone-redundant storage.
+        # * **city_redundancy**: cross-zone redundancy.
         self.storage_type = storage_type
-        # The used storage space. Unit: bytes.
+        # The storage usage, in bytes.
         self.storage_used = storage_used
+        # The default user account name for S3 Gateway.
         self.user_default_acc_name = user_default_acc_name
+        # The default user account key for S3 Gateway (encrypted ciphertext).
         self.user_default_acc_sk = user_default_acc_sk
         # The VPC ID.
         self.vpcid = vpcid
@@ -188,6 +202,12 @@ class DescribePolarFsAttributeResponseBody(DaraModel):
 
         if self.accelerating_enable is not None:
             result['AcceleratingEnable'] = self.accelerating_enable
+
+        if self.authorized_user_arn_ids is not None:
+            result['AuthorizedUserArnIds'] = self.authorized_user_arn_ids
+
+        if self.authorized_user_ids is not None:
+            result['AuthorizedUserIds'] = self.authorized_user_ids
 
         if self.bandwidth is not None:
             result['Bandwidth'] = self.bandwidth
@@ -328,6 +348,12 @@ class DescribePolarFsAttributeResponseBody(DaraModel):
 
         if m.get('AcceleratingEnable') is not None:
             self.accelerating_enable = m.get('AcceleratingEnable')
+
+        if m.get('AuthorizedUserArnIds') is not None:
+            self.authorized_user_arn_ids = m.get('AuthorizedUserArnIds')
+
+        if m.get('AuthorizedUserIds') is not None:
+            self.authorized_user_ids = m.get('AuthorizedUserIds')
 
         if m.get('Bandwidth') is not None:
             self.bandwidth = m.get('Bandwidth')
@@ -514,8 +540,11 @@ class DescribePolarFsAttributeResponseBodyEndpointItems(DaraModel):
         dbendpoint_id: str = None,
         endpoint_type: str = None,
     ):
+        # The list of addresses.
         self.address_items = address_items
+        # The endpoint ID.
         self.dbendpoint_id = dbendpoint_id
+        # The endpoint type. Valid values: Nas, S3Gateway, and others.
         self.endpoint_type = endpoint_type
 
     def validate(self):
@@ -568,11 +597,20 @@ class DescribePolarFsAttributeResponseBodyEndpointItemsAddressItems(DaraModel):
         vpcid: str = None,
         v_switch_id: str = None,
     ):
+        # The endpoint of the protocol connection.
         self.connection_string = connection_string
+        # The IP address.
         self.ipaddress = ipaddress
+        # The network type of the connection string. Valid values:
+        # * **Public**: public endpoint.
+        # * **Private**: private endpoint.
+        # * **Inner**: private endpoint (classic network).
         self.net_type = net_type
+        # The port number.
         self.port = port
+        # The VPC ID.
         self.vpcid = vpcid
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
 
     def validate(self):

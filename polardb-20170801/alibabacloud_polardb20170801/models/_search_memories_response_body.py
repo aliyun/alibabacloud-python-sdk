@@ -10,13 +10,21 @@ from darabonba.model import DaraModel
 class SearchMemoriesResponseBody(DaraModel):
     def __init__(
         self,
+        page: str = None,
+        page_size: str = None,
         request_id: str = None,
         results: List[main_models.SearchMemoriesResponseBodyResults] = None,
+        total: str = None,
+        total_pages: str = None,
     ):
-        # The unique request ID.
+        self.page = page
+        self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
-        # An array of search results.
+        # The list of results.
         self.results = results
+        self.total = total
+        self.total_pages = total_pages
 
     def validate(self):
         if self.results:
@@ -29,6 +37,12 @@ class SearchMemoriesResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.page is not None:
+            result['Page'] = self.page
+
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+
         if self.request_id is not None:
             result['RequestId'] = self.request_id
 
@@ -37,10 +51,22 @@ class SearchMemoriesResponseBody(DaraModel):
             for k1 in self.results:
                 result['Results'].append(k1.to_map() if k1 else None)
 
+        if self.total is not None:
+            result['Total'] = self.total
+
+        if self.total_pages is not None:
+            result['TotalPages'] = self.total_pages
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Page') is not None:
+            self.page = m.get('Page')
+
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
 
@@ -49,6 +75,12 @@ class SearchMemoriesResponseBody(DaraModel):
             for k1 in m.get('Results'):
                 temp_model = main_models.SearchMemoriesResponseBodyResults()
                 self.results.append(temp_model.from_map(k1))
+
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+
+        if m.get('TotalPages') is not None:
+            self.total_pages = m.get('TotalPages')
 
         return self
 
@@ -64,21 +96,21 @@ class SearchMemoriesResponseBodyResults(DaraModel):
         score: str = None,
         update_time: str = None,
     ):
-        # The creation time of the memory.
+        # The creation time.
         self.create_time = create_time
-        # The unique ID of the memory.
+        # The memory ID.
         self.id = id
-        # The content of the memory.
+        # The memory content.
         self.memory = memory
-        # The agent ID that owns the memory.
+        # The agent to which the memory belongs.
         self.memory_agent_id = memory_agent_id
-        # The user ID that owns the memory.
+        # The user to whom the memory belongs.
         self.memory_user_id = memory_user_id
-        # Additional metadata associated with the memory.
+        # The metadata.
         self.metadata = metadata
-        # The relevance score of the result.
+        # The score.
         self.score = score
-        # The update time of the memory.
+        # The update time.
         self.update_time = update_time
 
     def validate(self):

@@ -21,6 +21,9 @@ from ._add_polar_fs_path_mapping_response import AddPolarFsPathMappingResponse
 from ._add_polar_fs_quota_request import AddPolarFsQuotaRequest
 from ._add_polar_fs_quota_response_body import AddPolarFsQuotaResponseBody
 from ._add_polar_fs_quota_response import AddPolarFsQuotaResponse
+from ._add_polar_ossauthorized_account_request import AddPolarOSSAuthorizedAccountRequest
+from ._add_polar_ossauthorized_account_response_body import AddPolarOSSAuthorizedAccountResponseBody
+from ._add_polar_ossauthorized_account_response import AddPolarOSSAuthorizedAccountResponse
 from ._add_sqlrate_limiting_rules_request import AddSQLRateLimitingRulesRequest
 from ._add_sqlrate_limiting_rules_response_body import AddSQLRateLimitingRulesResponseBody
 from ._add_sqlrate_limiting_rules_response import AddSQLRateLimitingRulesResponse
@@ -393,6 +396,9 @@ from ._delete_polar_fs_path_mapping_response import DeletePolarFsPathMappingResp
 from ._delete_polar_fs_quota_request import DeletePolarFsQuotaRequest
 from ._delete_polar_fs_quota_response_body import DeletePolarFsQuotaResponseBody
 from ._delete_polar_fs_quota_response import DeletePolarFsQuotaResponse
+from ._delete_polar_ossauthorized_account_request import DeletePolarOSSAuthorizedAccountRequest
+from ._delete_polar_ossauthorized_account_response_body import DeletePolarOSSAuthorizedAccountResponseBody
+from ._delete_polar_ossauthorized_account_response import DeletePolarOSSAuthorizedAccountResponse
 from ._delete_rate_limit_policy_request import DeleteRateLimitPolicyRequest
 from ._delete_rate_limit_policy_response_body import DeleteRateLimitPolicyResponseBody
 from ._delete_rate_limit_policy_response import DeleteRateLimitPolicyResponse
@@ -491,6 +497,7 @@ from ._describe_application_parameters_shrink_request import DescribeApplication
 from ._describe_application_parameters_response_body import DescribeApplicationParametersResponseBody
 from ._describe_application_parameters_response import DescribeApplicationParametersResponse
 from ._describe_application_performance_request import DescribeApplicationPerformanceRequest
+from ._describe_application_performance_shrink_request import DescribeApplicationPerformanceShrinkRequest
 from ._describe_application_performance_response_body import DescribeApplicationPerformanceResponseBody
 from ._describe_application_performance_response import DescribeApplicationPerformanceResponse
 from ._describe_application_prompts_request import DescribeApplicationPromptsRequest
@@ -1413,6 +1420,7 @@ from ._delete_polar_fs_path_mapping_request import DeletePolarFsPathMappingReque
 from ._delete_polar_fs_quota_request import DeletePolarFsQuotaRequestQuotas
 from ._describe_aidbcluster_api_keys_response_body import DescribeAIDBClusterApiKeysResponseBodyApiKeys
 from ._describe_aidbcluster_attribute_response_body import DescribeAIDBClusterAttributeResponseBodyDBNodesChildVolumes
+from ._describe_aidbcluster_attribute_response_body import DescribeAIDBClusterAttributeResponseBodyDBNodesSupportedApis
 from ._describe_aidbcluster_attribute_response_body import DescribeAIDBClusterAttributeResponseBodyDBNodes
 from ._describe_aidbcluster_attribute_response_body import DescribeAIDBClusterAttributeResponseBodyEndpointListNetInfoItems
 from ._describe_aidbcluster_attribute_response_body import DescribeAIDBClusterAttributeResponseBodyEndpointList
@@ -1425,6 +1433,7 @@ from ._describe_aidbcluster_attribute_response_body import DescribeAIDBClusterAt
 from ._describe_aidbcluster_datasets_response_body import DescribeAIDBClusterDatasetsResponseBodyDatasets
 from ._describe_aidbcluster_performance_response_body import DescribeAIDBClusterPerformanceResponseBodyPerformanceKeysPoints
 from ._describe_aidbcluster_performance_response_body import DescribeAIDBClusterPerformanceResponseBodyPerformanceKeys
+from ._describe_aidbcluster_task_attribute_response_body import DescribeAIDBClusterTaskAttributeResponseBodyCustomBucketInfo
 from ._describe_aidbcluster_task_attribute_response_body import DescribeAIDBClusterTaskAttributeResponseBodyDataSets
 from ._describe_aidbcluster_task_attribute_response_body import DescribeAIDBClusterTaskAttributeResponseBodyTaskInfo
 from ._describe_aidbcluster_task_log_files_response_body import DescribeAIDBClusterTaskLogFilesResponseBodyItemsSlsLogItems
@@ -1800,6 +1809,9 @@ __all__ = [
     AddPolarFsQuotaRequest,
     AddPolarFsQuotaResponseBody,
     AddPolarFsQuotaResponse,
+    AddPolarOSSAuthorizedAccountRequest,
+    AddPolarOSSAuthorizedAccountResponseBody,
+    AddPolarOSSAuthorizedAccountResponse,
     AddSQLRateLimitingRulesRequest,
     AddSQLRateLimitingRulesResponseBody,
     AddSQLRateLimitingRulesResponse,
@@ -2172,6 +2184,9 @@ __all__ = [
     DeletePolarFsQuotaRequest,
     DeletePolarFsQuotaResponseBody,
     DeletePolarFsQuotaResponse,
+    DeletePolarOSSAuthorizedAccountRequest,
+    DeletePolarOSSAuthorizedAccountResponseBody,
+    DeletePolarOSSAuthorizedAccountResponse,
     DeleteRateLimitPolicyRequest,
     DeleteRateLimitPolicyResponseBody,
     DeleteRateLimitPolicyResponse,
@@ -2270,6 +2285,7 @@ __all__ = [
     DescribeApplicationParametersResponseBody,
     DescribeApplicationParametersResponse,
     DescribeApplicationPerformanceRequest,
+    DescribeApplicationPerformanceShrinkRequest,
     DescribeApplicationPerformanceResponseBody,
     DescribeApplicationPerformanceResponse,
     DescribeApplicationPromptsRequest,
@@ -3192,6 +3208,7 @@ __all__ = [
     DeletePolarFsQuotaRequestQuotas,
     DescribeAIDBClusterApiKeysResponseBodyApiKeys,
     DescribeAIDBClusterAttributeResponseBodyDBNodesChildVolumes,
+    DescribeAIDBClusterAttributeResponseBodyDBNodesSupportedApis,
     DescribeAIDBClusterAttributeResponseBodyDBNodes,
     DescribeAIDBClusterAttributeResponseBodyEndpointListNetInfoItems,
     DescribeAIDBClusterAttributeResponseBodyEndpointList,
@@ -3204,6 +3221,7 @@ __all__ = [
     DescribeAIDBClusterDatasetsResponseBodyDatasets,
     DescribeAIDBClusterPerformanceResponseBodyPerformanceKeysPoints,
     DescribeAIDBClusterPerformanceResponseBodyPerformanceKeys,
+    DescribeAIDBClusterTaskAttributeResponseBodyCustomBucketInfo,
     DescribeAIDBClusterTaskAttributeResponseBodyDataSets,
     DescribeAIDBClusterTaskAttributeResponseBodyTaskInfo,
     DescribeAIDBClusterTaskLogFilesResponseBodyItemsSlsLogItems,

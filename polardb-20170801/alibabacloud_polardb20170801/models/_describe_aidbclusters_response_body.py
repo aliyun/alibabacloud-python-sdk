@@ -122,6 +122,7 @@ class DescribeAIDBClustersResponseBodyItemsDBCluster(DaraModel):
         expired: bool = None,
         kube_cluster_id: str = None,
         lock_mode: str = None,
+        model_space: str = None,
         model_type: str = None,
         pay_type: str = None,
         region_id: str = None,
@@ -145,6 +146,7 @@ class DescribeAIDBClustersResponseBodyItemsDBCluster(DaraModel):
         self.expired = expired
         self.kube_cluster_id = kube_cluster_id
         self.lock_mode = lock_mode
+        self.model_space = model_space
         self.model_type = model_type
         self.pay_type = pay_type
         self.region_id = region_id
@@ -198,6 +200,9 @@ class DescribeAIDBClustersResponseBodyItemsDBCluster(DaraModel):
 
         if self.lock_mode is not None:
             result['LockMode'] = self.lock_mode
+
+        if self.model_space is not None:
+            result['ModelSpace'] = self.model_space
 
         if self.model_type is not None:
             result['ModelType'] = self.model_type
@@ -268,6 +273,9 @@ class DescribeAIDBClustersResponseBodyItemsDBCluster(DaraModel):
 
         if m.get('LockMode') is not None:
             self.lock_mode = m.get('LockMode')
+
+        if m.get('ModelSpace') is not None:
+            self.model_space = m.get('ModelSpace')
 
         if m.get('ModelType') is not None:
             self.model_type = m.get('ModelType')

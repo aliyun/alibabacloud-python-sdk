@@ -12,6 +12,8 @@ class SearchMemoriesRequest(DaraModel):
         create_time_end: str = None,
         memory_agent_id: str = None,
         memory_user_id: str = None,
+        page: int = None,
+        page_size: int = None,
         query: str = None,
         top_k: str = None,
     ):
@@ -19,21 +21,23 @@ class SearchMemoriesRequest(DaraModel):
         # 
         # This parameter is required.
         self.application_id = application_id
-        # The start time for filtering memories by creation time. Must be in UTC and ISO 8601 format.
+        # The start time for memory creation.
         self.create_time_begin = create_time_begin
-        # The end time for filtering memories by creation time. Must be in UTC and ISO 8601 format.
+        # The end time for memory creation.
         self.create_time_end = create_time_end
-        # The agent ID associated with the memory.
+        # The memory agent ID.
         self.memory_agent_id = memory_agent_id
-        # The user ID associated with the memory.
+        # The memory user ID.
         # 
         # This parameter is required.
         self.memory_user_id = memory_user_id
+        # The page number.
+        self.page = page
+        # The number of records per page.
+        self.page_size = page_size
         # The search query.
-        # 
-        # This parameter is required.
         self.query = query
-        # The maximum number of results to return.
+        # Specifies the number of top results to return.
         self.top_k = top_k
 
     def validate(self):
@@ -59,6 +63,12 @@ class SearchMemoriesRequest(DaraModel):
         if self.memory_user_id is not None:
             result['MemoryUserId'] = self.memory_user_id
 
+        if self.page is not None:
+            result['Page'] = self.page
+
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+
         if self.query is not None:
             result['Query'] = self.query
 
@@ -83,6 +93,12 @@ class SearchMemoriesRequest(DaraModel):
 
         if m.get('MemoryUserId') is not None:
             self.memory_user_id = m.get('MemoryUserId')
+
+        if m.get('Page') is not None:
+            self.page = m.get('Page')
+
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
 
         if m.get('Query') is not None:
             self.query = m.get('Query')

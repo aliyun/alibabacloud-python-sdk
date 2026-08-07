@@ -11,10 +11,14 @@ class DescribeAIDBClusterApiKeysResponseBody(DaraModel):
     def __init__(
         self,
         api_keys: List[main_models.DescribeAIDBClusterApiKeysResponseBodyApiKeys] = None,
+        page_number: str = None,
+        page_size: str = None,
         request_id: str = None,
     ):
         # API Keys。
         self.api_keys = api_keys
+        self.page_number = page_number
+        self.page_size = page_size
         # Id of the request
         self.request_id = request_id
 
@@ -34,6 +38,12 @@ class DescribeAIDBClusterApiKeysResponseBody(DaraModel):
             for k1 in self.api_keys:
                 result['ApiKeys'].append(k1.to_map() if k1 else None)
 
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+
         if self.request_id is not None:
             result['RequestId'] = self.request_id
 
@@ -46,6 +56,12 @@ class DescribeAIDBClusterApiKeysResponseBody(DaraModel):
             for k1 in m.get('ApiKeys'):
                 temp_model = main_models.DescribeAIDBClusterApiKeysResponseBodyApiKeys()
                 self.api_keys.append(temp_model.from_map(k1))
+
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
 
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')

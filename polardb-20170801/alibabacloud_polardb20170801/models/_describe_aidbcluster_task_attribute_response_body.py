@@ -13,6 +13,7 @@ class DescribeAIDBClusterTaskAttributeResponseBody(DaraModel):
         access_info: str = None,
         cluster_network_type: str = None,
         create_time: str = None,
+        custom_bucket_info: main_models.DescribeAIDBClusterTaskAttributeResponseBodyCustomBucketInfo = None,
         dbcluster_description: str = None,
         dbcluster_id: str = None,
         dbcluster_status: str = None,
@@ -38,6 +39,7 @@ class DescribeAIDBClusterTaskAttributeResponseBody(DaraModel):
         self.cluster_network_type = cluster_network_type
         # The creation time.
         self.create_time = create_time
+        self.custom_bucket_info = custom_bucket_info
         # The task name.
         self.dbcluster_description = dbcluster_description
         # The task ID.
@@ -90,6 +92,8 @@ class DescribeAIDBClusterTaskAttributeResponseBody(DaraModel):
         self.v_switch_id = v_switch_id
 
     def validate(self):
+        if self.custom_bucket_info:
+            self.custom_bucket_info.validate()
         if self.data_sets:
             for v1 in self.data_sets:
                  if v1:
@@ -112,6 +116,9 @@ class DescribeAIDBClusterTaskAttributeResponseBody(DaraModel):
 
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+
+        if self.custom_bucket_info is not None:
+            result['CustomBucketInfo'] = self.custom_bucket_info.to_map()
 
         if self.dbcluster_description is not None:
             result['DBClusterDescription'] = self.dbcluster_description
@@ -183,6 +190,10 @@ class DescribeAIDBClusterTaskAttributeResponseBody(DaraModel):
 
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+
+        if m.get('CustomBucketInfo') is not None:
+            temp_model = main_models.DescribeAIDBClusterTaskAttributeResponseBodyCustomBucketInfo()
+            self.custom_bucket_info = temp_model.from_map(m.get('CustomBucketInfo'))
 
         if m.get('DBClusterDescription') is not None:
             self.dbcluster_description = m.get('DBClusterDescription')
@@ -401,6 +412,33 @@ class DescribeAIDBClusterTaskAttributeResponseBodyDataSets(DaraModel):
 
         if m.get('Type') is not None:
             self.type = m.get('Type')
+
+        return self
+
+class DescribeAIDBClusterTaskAttributeResponseBodyCustomBucketInfo(DaraModel):
+    def __init__(
+        self,
+        custom_oss_bucket_name: str = None,
+    ):
+        self.custom_oss_bucket_name = custom_oss_bucket_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.custom_oss_bucket_name is not None:
+            result['CustomOssBucketName'] = self.custom_oss_bucket_name
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomOssBucketName') is not None:
+            self.custom_oss_bucket_name = m.get('CustomOssBucketName')
 
         return self
 

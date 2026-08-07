@@ -633,6 +633,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.add_polar_fs_quota_with_options_async(request, runtime)
 
+    def add_polar_ossauthorized_account_with_options(
+        self,
+        request: main_models.AddPolarOSSAuthorizedAccountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddPolarOSSAuthorizedAccountResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.authorized_user_ids):
+            query['AuthorizedUserIds'] = request.authorized_user_ids
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.pfs_instance_id):
+            query['PfsInstanceId'] = request.pfs_instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddPolarOSSAuthorizedAccount',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddPolarOSSAuthorizedAccountResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_polar_ossauthorized_account_with_options_async(
+        self,
+        request: main_models.AddPolarOSSAuthorizedAccountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddPolarOSSAuthorizedAccountResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.authorized_user_ids):
+            query['AuthorizedUserIds'] = request.authorized_user_ids
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.pfs_instance_id):
+            query['PfsInstanceId'] = request.pfs_instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddPolarOSSAuthorizedAccount',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddPolarOSSAuthorizedAccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_polar_ossauthorized_account(
+        self,
+        request: main_models.AddPolarOSSAuthorizedAccountRequest,
+    ) -> main_models.AddPolarOSSAuthorizedAccountResponse:
+        runtime = RuntimeOptions()
+        return self.add_polar_ossauthorized_account_with_options(request, runtime)
+
+    async def add_polar_ossauthorized_account_async(
+        self,
+        request: main_models.AddPolarOSSAuthorizedAccountRequest,
+    ) -> main_models.AddPolarOSSAuthorizedAccountResponse:
+        runtime = RuntimeOptions()
+        return await self.add_polar_ossauthorized_account_with_options_async(request, runtime)
+
     def add_sqlrate_limiting_rules_with_options(
         self,
         request: main_models.AddSQLRateLimitingRulesRequest,
@@ -2588,6 +2670,8 @@ class Client(OpenApiClient):
             query['AutoUseCoupon'] = request.auto_use_coupon
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.create_public_endpoint):
+            query['CreatePublicEndpoint'] = request.create_public_endpoint
         if not DaraCore.is_null(request.dbcluster_description):
             query['DBClusterDescription'] = request.dbcluster_description
         if not DaraCore.is_null(request.dbcluster_id):
@@ -2612,6 +2696,8 @@ class Client(OpenApiClient):
             query['ManagementMode'] = request.management_mode
         if not DaraCore.is_null(request.model_name):
             query['ModelName'] = request.model_name
+        if not DaraCore.is_null(request.model_space):
+            query['ModelSpace'] = request.model_space
         if not DaraCore.is_null(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
@@ -2680,6 +2766,8 @@ class Client(OpenApiClient):
             query['AutoUseCoupon'] = request.auto_use_coupon
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.create_public_endpoint):
+            query['CreatePublicEndpoint'] = request.create_public_endpoint
         if not DaraCore.is_null(request.dbcluster_description):
             query['DBClusterDescription'] = request.dbcluster_description
         if not DaraCore.is_null(request.dbcluster_id):
@@ -2704,6 +2792,8 @@ class Client(OpenApiClient):
             query['ManagementMode'] = request.management_mode
         if not DaraCore.is_null(request.model_name):
             query['ModelName'] = request.model_name
+        if not DaraCore.is_null(request.model_space):
+            query['ModelSpace'] = request.model_space
         if not DaraCore.is_null(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
@@ -2780,6 +2870,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
+        if not DaraCore.is_null(request.model_space_name):
+            query['ModelSpaceName'] = request.model_space_name
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -2810,6 +2902,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
+        if not DaraCore.is_null(request.model_space_name):
+            query['ModelSpaceName'] = request.model_space_name
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -2958,10 +3052,14 @@ class Client(OpenApiClient):
     ) -> main_models.CreateAIDBClusterTaskResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.custom_oss_bucket_name):
+            query['CustomOssBucketName'] = request.custom_oss_bucket_name
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
         if not DaraCore.is_null(request.dbinstance_class):
             query['DBInstanceClass'] = request.dbinstance_class
+        if not DaraCore.is_null(request.dataservice_mode):
+            query['DataserviceMode'] = request.dataservice_mode
         if not DaraCore.is_null(request.dataset_path):
             query['DatasetPath'] = request.dataset_path
         if not DaraCore.is_null(request.eval_dataset_path):
@@ -3024,10 +3122,14 @@ class Client(OpenApiClient):
     ) -> main_models.CreateAIDBClusterTaskResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.custom_oss_bucket_name):
+            query['CustomOssBucketName'] = request.custom_oss_bucket_name
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
         if not DaraCore.is_null(request.dbinstance_class):
             query['DBInstanceClass'] = request.dbinstance_class
+        if not DaraCore.is_null(request.dataservice_mode):
+            query['DataserviceMode'] = request.dataservice_mode
         if not DaraCore.is_null(request.dataset_path):
             query['DatasetPath'] = request.dataset_path
         if not DaraCore.is_null(request.eval_dataset_path):
@@ -4934,6 +5036,10 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.cache_cost_points_per_million):
             query['CacheCostPointsPerMillion'] = request.cache_cost_points_per_million
+        if not DaraCore.is_null(request.effective_target_type):
+            query['EffectiveTargetType'] = request.effective_target_type
+        if not DaraCore.is_null(request.effective_target_value):
+            query['EffectiveTargetValue'] = request.effective_target_value
         if not DaraCore.is_null(request.gw_cluster_id):
             query['GwClusterId'] = request.gw_cluster_id
         if not DaraCore.is_null(request.input_cost_points_per_million):
@@ -4974,6 +5080,10 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.cache_cost_points_per_million):
             query['CacheCostPointsPerMillion'] = request.cache_cost_points_per_million
+        if not DaraCore.is_null(request.effective_target_type):
+            query['EffectiveTargetType'] = request.effective_target_type
+        if not DaraCore.is_null(request.effective_target_value):
+            query['EffectiveTargetValue'] = request.effective_target_value
         if not DaraCore.is_null(request.gw_cluster_id):
             query['GwClusterId'] = request.gw_cluster_id
         if not DaraCore.is_null(request.input_cost_points_per_million):
@@ -8568,6 +8678,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.model_space):
+            query['ModelSpace'] = request.model_space
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -8596,6 +8708,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.model_space):
+            query['ModelSpace'] = request.model_space
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -8638,6 +8752,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.api_key):
             query['ApiKey'] = request.api_key
+        if not DaraCore.is_null(request.model_space_name):
+            query['ModelSpaceName'] = request.model_space_name
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -8668,6 +8784,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.api_key):
             query['ApiKey'] = request.api_key
+        if not DaraCore.is_null(request.model_space_name):
+            query['ModelSpaceName'] = request.model_space_name
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -12541,6 +12659,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_polar_fs_quota_with_options_async(request, runtime)
 
+    def delete_polar_ossauthorized_account_with_options(
+        self,
+        request: main_models.DeletePolarOSSAuthorizedAccountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeletePolarOSSAuthorizedAccountResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.authorized_user_ids):
+            query['AuthorizedUserIds'] = request.authorized_user_ids
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.pfs_instance_id):
+            query['PfsInstanceId'] = request.pfs_instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeletePolarOSSAuthorizedAccount',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeletePolarOSSAuthorizedAccountResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_polar_ossauthorized_account_with_options_async(
+        self,
+        request: main_models.DeletePolarOSSAuthorizedAccountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeletePolarOSSAuthorizedAccountResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.authorized_user_ids):
+            query['AuthorizedUserIds'] = request.authorized_user_ids
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.pfs_instance_id):
+            query['PfsInstanceId'] = request.pfs_instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeletePolarOSSAuthorizedAccount',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeletePolarOSSAuthorizedAccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_polar_ossauthorized_account(
+        self,
+        request: main_models.DeletePolarOSSAuthorizedAccountRequest,
+    ) -> main_models.DeletePolarOSSAuthorizedAccountResponse:
+        runtime = RuntimeOptions()
+        return self.delete_polar_ossauthorized_account_with_options(request, runtime)
+
+    async def delete_polar_ossauthorized_account_async(
+        self,
+        request: main_models.DeletePolarOSSAuthorizedAccountRequest,
+    ) -> main_models.DeletePolarOSSAuthorizedAccountResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_polar_ossauthorized_account_with_options_async(request, runtime)
+
     def delete_rate_limit_policy_with_options(
         self,
         request: main_models.DeleteRateLimitPolicyRequest,
@@ -12794,6 +12994,8 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeAIDBClusterApiKeysResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.model_space_name):
+            query['ModelSpaceName'] = request.model_space_name
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -12822,6 +13024,8 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeAIDBClusterApiKeysResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.model_space_name):
+            query['ModelSpaceName'] = request.model_space_name
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -15519,10 +15723,14 @@ class Client(OpenApiClient):
 
     def describe_application_performance_with_options(
         self,
-        request: main_models.DescribeApplicationPerformanceRequest,
+        tmp_req: main_models.DescribeApplicationPerformanceRequest,
         runtime: RuntimeOptions,
     ) -> main_models.DescribeApplicationPerformanceResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.DescribeApplicationPerformanceShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.filter):
+            request.filter_shrink = Utils.array_to_string_with_specified_style(tmp_req.filter, 'filter', 'json')
         query = {}
         if not DaraCore.is_null(request.application_id):
             query['ApplicationId'] = request.application_id
@@ -15548,6 +15756,8 @@ class Client(OpenApiClient):
             query['StartStep'] = request.start_step
         if not DaraCore.is_null(request.start_time):
             query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.filter_shrink):
+            query['filter'] = request.filter_shrink
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -15569,10 +15779,14 @@ class Client(OpenApiClient):
 
     async def describe_application_performance_with_options_async(
         self,
-        request: main_models.DescribeApplicationPerformanceRequest,
+        tmp_req: main_models.DescribeApplicationPerformanceRequest,
         runtime: RuntimeOptions,
     ) -> main_models.DescribeApplicationPerformanceResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.DescribeApplicationPerformanceShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.filter):
+            request.filter_shrink = Utils.array_to_string_with_specified_style(tmp_req.filter, 'filter', 'json')
         query = {}
         if not DaraCore.is_null(request.application_id):
             query['ApplicationId'] = request.application_id
@@ -15598,6 +15812,8 @@ class Client(OpenApiClient):
             query['StartStep'] = request.start_step
         if not DaraCore.is_null(request.start_time):
             query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.filter_shrink):
+            query['filter'] = request.filter_shrink
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -17584,6 +17800,10 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeCostRulesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.effective_target_type):
+            query['EffectiveTargetType'] = request.effective_target_type
+        if not DaraCore.is_null(request.effective_target_value):
+            query['EffectiveTargetValue'] = request.effective_target_value
         if not DaraCore.is_null(request.gw_cluster_id):
             query['GwClusterId'] = request.gw_cluster_id
         if not DaraCore.is_null(request.model_name):
@@ -17622,6 +17842,10 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeCostRulesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.effective_target_type):
+            query['EffectiveTargetType'] = request.effective_target_type
+        if not DaraCore.is_null(request.effective_target_value):
+            query['EffectiveTargetValue'] = request.effective_target_value
         if not DaraCore.is_null(request.gw_cluster_id):
             query['GwClusterId'] = request.gw_cluster_id
         if not DaraCore.is_null(request.model_name):
@@ -40626,6 +40850,10 @@ class Client(OpenApiClient):
             query['MemoryAgentId'] = request.memory_agent_id
         if not DaraCore.is_null(request.memory_user_id):
             query['MemoryUserId'] = request.memory_user_id
+        if not DaraCore.is_null(request.page):
+            query['Page'] = request.page
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.query):
             query['Query'] = request.query
         if not DaraCore.is_null(request.top_k):
@@ -40666,6 +40894,10 @@ class Client(OpenApiClient):
             query['MemoryAgentId'] = request.memory_agent_id
         if not DaraCore.is_null(request.memory_user_id):
             query['MemoryUserId'] = request.memory_user_id
+        if not DaraCore.is_null(request.page):
+            query['Page'] = request.page
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.query):
             query['Query'] = request.query
         if not DaraCore.is_null(request.top_k):

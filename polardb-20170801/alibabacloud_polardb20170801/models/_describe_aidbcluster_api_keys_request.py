@@ -7,8 +7,10 @@ from darabonba.model import DaraModel
 class DescribeAIDBClusterApiKeysRequest(DaraModel):
     def __init__(
         self,
+        model_space_name: str = None,
         region_id: str = None,
     ):
+        self.model_space_name = model_space_name
         # The region ID.
         # 
         # This parameter is required.
@@ -22,6 +24,9 @@ class DescribeAIDBClusterApiKeysRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.model_space_name is not None:
+            result['ModelSpaceName'] = self.model_space_name
+
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
@@ -29,6 +34,9 @@ class DescribeAIDBClusterApiKeysRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ModelSpaceName') is not None:
+            self.model_space_name = m.get('ModelSpaceName')
+
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
 

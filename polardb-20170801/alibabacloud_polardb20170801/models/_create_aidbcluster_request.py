@@ -14,6 +14,7 @@ class CreateAIDBClusterRequest(DaraModel):
         auto_renew: str = None,
         auto_use_coupon: bool = None,
         client_token: str = None,
+        create_public_endpoint: str = None,
         dbcluster_description: str = None,
         dbcluster_id: str = None,
         dbnode_class: str = None,
@@ -26,6 +27,7 @@ class CreateAIDBClusterRequest(DaraModel):
         kubernetes_config: str = None,
         management_mode: str = None,
         model_name: str = None,
+        model_space: str = None,
         owner_account: str = None,
         owner_id: int = None,
         password: str = None,
@@ -60,13 +62,12 @@ class CreateAIDBClusterRequest(DaraModel):
         self.auto_use_coupon = auto_use_coupon
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        self.create_public_endpoint = create_public_endpoint
         # The description of the cluster. You can use the description to perform a fuzzy search.
         self.dbcluster_description = dbcluster_description
         # The ID of the PolarDB cluster that the application depends on.
         self.dbcluster_id = dbcluster_id
         # The node specification.
-        # 
-        # This parameter is required.
         self.dbnode_class = dbnode_class
         # The extension.
         self.extension = extension
@@ -85,6 +86,7 @@ class CreateAIDBClusterRequest(DaraModel):
         # The management mode.
         self.management_mode = management_mode
         self.model_name = model_name
+        self.model_space = model_space
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The password.
@@ -163,6 +165,9 @@ class CreateAIDBClusterRequest(DaraModel):
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
 
+        if self.create_public_endpoint is not None:
+            result['CreatePublicEndpoint'] = self.create_public_endpoint
+
         if self.dbcluster_description is not None:
             result['DBClusterDescription'] = self.dbcluster_description
 
@@ -198,6 +203,9 @@ class CreateAIDBClusterRequest(DaraModel):
 
         if self.model_name is not None:
             result['ModelName'] = self.model_name
+
+        if self.model_space is not None:
+            result['ModelSpace'] = self.model_space
 
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
@@ -268,6 +276,9 @@ class CreateAIDBClusterRequest(DaraModel):
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
 
+        if m.get('CreatePublicEndpoint') is not None:
+            self.create_public_endpoint = m.get('CreatePublicEndpoint')
+
         if m.get('DBClusterDescription') is not None:
             self.dbcluster_description = m.get('DBClusterDescription')
 
@@ -303,6 +314,9 @@ class CreateAIDBClusterRequest(DaraModel):
 
         if m.get('ModelName') is not None:
             self.model_name = m.get('ModelName')
+
+        if m.get('ModelSpace') is not None:
+            self.model_space = m.get('ModelSpace')
 
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')

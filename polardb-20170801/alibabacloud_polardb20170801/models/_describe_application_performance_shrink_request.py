@@ -2,11 +2,9 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import Dict, Any
-
 from darabonba.model import DaraModel
 
-class DescribeApplicationPerformanceRequest(DaraModel):
+class DescribeApplicationPerformanceShrinkRequest(DaraModel):
     def __init__(
         self,
         application_id: str = None,
@@ -21,7 +19,7 @@ class DescribeApplicationPerformanceRequest(DaraModel):
         model_service: str = None,
         start_step: int = None,
         start_time: str = None,
-        filter: Dict[str, Any] = None,
+        filter_shrink: str = None,
     ):
         # The application cluster ID.
         # 
@@ -64,7 +62,7 @@ class DescribeApplicationPerformanceRequest(DaraModel):
         # 
         # This parameter is required.
         self.start_time = start_time
-        self.filter = filter
+        self.filter_shrink = filter_shrink
 
     def validate(self):
         pass
@@ -110,8 +108,8 @@ class DescribeApplicationPerformanceRequest(DaraModel):
         if self.start_time is not None:
             result['StartTime'] = self.start_time
 
-        if self.filter is not None:
-            result['filter'] = self.filter
+        if self.filter_shrink is not None:
+            result['filter'] = self.filter_shrink
 
         return result
 
@@ -154,7 +152,7 @@ class DescribeApplicationPerformanceRequest(DaraModel):
             self.start_time = m.get('StartTime')
 
         if m.get('filter') is not None:
-            self.filter = m.get('filter')
+            self.filter_shrink = m.get('filter')
 
         return self
 

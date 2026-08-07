@@ -16,6 +16,7 @@ class DescribeAIDBClusterAttributeResponseBody(DaraModel):
         dbcluster_description: str = None,
         dbcluster_id: str = None,
         dbcluster_status: str = None,
+        dbinstance_status_desc: str = None,
         dbnodes: List[main_models.DescribeAIDBClusterAttributeResponseBodyDBNodes] = None,
         dbversion: str = None,
         ecs_security_group_id: str = None,
@@ -28,7 +29,9 @@ class DescribeAIDBClusterAttributeResponseBody(DaraModel):
         kube_cluster_id: str = None,
         lock_mode: str = None,
         max_qpm: str = None,
+        max_tpm: str = None,
         model_name: str = None,
+        model_space_name: str = None,
         model_type: str = None,
         pay_type: str = None,
         public_ip: str = None,
@@ -46,7 +49,7 @@ class DescribeAIDBClusterAttributeResponseBody(DaraModel):
         zone_ids: str = None,
     ):
         # The node type. Valid values:
-        # - vnode: ACK-managed
+        # - vnode: managed by ACK
         # - container: loginable container
         # - maas: model service
         self.ai_node_type = ai_node_type
@@ -68,6 +71,7 @@ class DescribeAIDBClusterAttributeResponseBody(DaraModel):
         # - **ClassChanging**: changing node specifications 
         # - **Deleted**: released
         self.dbcluster_status = dbcluster_status
+        self.dbinstance_status_desc = dbinstance_status_desc
         # The node details.
         self.dbnodes = dbnodes
         # The cluster version. Valid values:
@@ -84,7 +88,7 @@ class DescribeAIDBClusterAttributeResponseBody(DaraModel):
         self.endpoint_list = endpoint_list
         # The cluster expiration time.
         # 
-        # > This parameter returns a value only for clusters whose billing method is **Prepaid** (subscription). An empty value is returned for **Postpaid** (pay-as-you-go) clusters.
+        # > A specific value is returned only for clusters whose billing method is **Prepaid** (subscription). An empty value is returned for **Postpaid** (pay-as-you-go) clusters.
         self.expire_time = expire_time
         # Indicates whether the cluster has expired. Valid values:
         # 
@@ -103,8 +107,10 @@ class DescribeAIDBClusterAttributeResponseBody(DaraModel):
         self.lock_mode = lock_mode
         # The maximum number of requests per minute.
         self.max_qpm = max_qpm
+        self.max_tpm = max_tpm
         # The model name.
         self.model_name = model_name
+        self.model_space_name = model_space_name
         # The model type.
         self.model_type = model_type
         # The billing method. Valid values:
@@ -122,11 +128,11 @@ class DescribeAIDBClusterAttributeResponseBody(DaraModel):
         # - container: AI container
         # - ainode: AI node
         self.run_type = run_type
-        # Valid values for Enterprise Edition storage type:
+        # The storage type for Enterprise Edition. Valid values:
         # - **PSL5**
         # - **PSL4**
         # 
-        # Valid values for Standard Edition storage type:
+        # The storage type for Standard Edition. Valid values:
         # - **ESSDPL0**
         # - **ESSDPL1**
         # - **ESSDPL2**
@@ -135,7 +141,7 @@ class DescribeAIDBClusterAttributeResponseBody(DaraModel):
         self.storage_type = storage_type
         self.time_slices_info = time_slices_info
         self.time_slices_type = time_slices_type
-        # The VPC ID specified for the zone switchover.
+        # The VPC ID that can be specified when switching zones.
         self.vpcid = vpcid
         # The vSwitch ID.
         # 
@@ -146,7 +152,7 @@ class DescribeAIDBClusterAttributeResponseBody(DaraModel):
         self.volumes = volumes
         # The zone ID of the PolarDB cluster node.
         self.zone_id = zone_id
-        # The zone IDs.
+        # The zone ID.
         self.zone_ids = zone_ids
 
     def validate(self):
@@ -190,6 +196,9 @@ class DescribeAIDBClusterAttributeResponseBody(DaraModel):
         if self.dbcluster_status is not None:
             result['DBClusterStatus'] = self.dbcluster_status
 
+        if self.dbinstance_status_desc is not None:
+            result['DBInstanceStatusDesc'] = self.dbinstance_status_desc
+
         result['DBNodes'] = []
         if self.dbnodes is not None:
             for k1 in self.dbnodes:
@@ -230,8 +239,14 @@ class DescribeAIDBClusterAttributeResponseBody(DaraModel):
         if self.max_qpm is not None:
             result['MaxQPM'] = self.max_qpm
 
+        if self.max_tpm is not None:
+            result['MaxTPM'] = self.max_tpm
+
         if self.model_name is not None:
             result['ModelName'] = self.model_name
+
+        if self.model_space_name is not None:
+            result['ModelSpaceName'] = self.model_space_name
 
         if self.model_type is not None:
             result['ModelType'] = self.model_type
@@ -302,6 +317,9 @@ class DescribeAIDBClusterAttributeResponseBody(DaraModel):
         if m.get('DBClusterStatus') is not None:
             self.dbcluster_status = m.get('DBClusterStatus')
 
+        if m.get('DBInstanceStatusDesc') is not None:
+            self.dbinstance_status_desc = m.get('DBInstanceStatusDesc')
+
         self.dbnodes = []
         if m.get('DBNodes') is not None:
             for k1 in m.get('DBNodes'):
@@ -344,8 +362,14 @@ class DescribeAIDBClusterAttributeResponseBody(DaraModel):
         if m.get('MaxQPM') is not None:
             self.max_qpm = m.get('MaxQPM')
 
+        if m.get('MaxTPM') is not None:
+            self.max_tpm = m.get('MaxTPM')
+
         if m.get('ModelName') is not None:
             self.model_name = m.get('ModelName')
+
+        if m.get('ModelSpaceName') is not None:
+            self.model_space_name = m.get('ModelSpaceName')
 
         if m.get('ModelType') is not None:
             self.model_type = m.get('ModelType')
@@ -706,7 +730,7 @@ class DescribeAIDBClusterAttributeResponseBodyEndpointListNetInfoItems(DaraModel
         net_type: str = None,
         port: str = None,
     ):
-        # The database connection address.
+        # The database endpoint.
         self.connection_string = connection_string
         # The network type of the connection string. Valid values:
         # * **Public**: public endpoint
@@ -761,7 +785,9 @@ class DescribeAIDBClusterAttributeResponseBodyDBNodes(DaraModel):
         gpu: str = None,
         link_ip: str = None,
         memory_size: str = None,
+        model_name: str = None,
         public_ip: str = None,
+        supported_apis: List[main_models.DescribeAIDBClusterAttributeResponseBodyDBNodesSupportedApis] = None,
         vnode_id: str = None,
         vpcid: str = None,
         v_switch_id: str = None,
@@ -788,7 +814,7 @@ class DescribeAIDBClusterAttributeResponseBodyDBNodes(DaraModel):
         # * **DBNodeDeleting**: deleting a node 
         # * **ClassChanging**: changing node specifications  
         # * **MinorVersionUpgrading**: upgrading the minor version
-        # * **Maintaining**: under maintenance  
+        # * **Maintaining**: being maintained  
         # * **Switching**: being switched
         self.dbnode_status = dbnode_status
         # The number of GPU cards.
@@ -797,8 +823,10 @@ class DescribeAIDBClusterAttributeResponseBodyDBNodes(DaraModel):
         self.link_ip = link_ip
         # The memory size of the node. Unit: MB.
         self.memory_size = memory_size
+        self.model_name = model_name
         # The public IP address.
         self.public_ip = public_ip
+        self.supported_apis = supported_apis
         # The Kubernetes virtual node ID.
         self.vnode_id = vnode_id
         # The VPC ID.
@@ -811,6 +839,10 @@ class DescribeAIDBClusterAttributeResponseBodyDBNodes(DaraModel):
     def validate(self):
         if self.child_volumes:
             for v1 in self.child_volumes:
+                 if v1:
+                    v1.validate()
+        if self.supported_apis:
+            for v1 in self.supported_apis:
                  if v1:
                     v1.validate()
 
@@ -851,8 +883,16 @@ class DescribeAIDBClusterAttributeResponseBodyDBNodes(DaraModel):
         if self.memory_size is not None:
             result['MemorySize'] = self.memory_size
 
+        if self.model_name is not None:
+            result['ModelName'] = self.model_name
+
         if self.public_ip is not None:
             result['PublicIp'] = self.public_ip
+
+        result['SupportedApis'] = []
+        if self.supported_apis is not None:
+            for k1 in self.supported_apis:
+                result['SupportedApis'].append(k1.to_map() if k1 else None)
 
         if self.vnode_id is not None:
             result['VNodeId'] = self.vnode_id
@@ -903,8 +943,17 @@ class DescribeAIDBClusterAttributeResponseBodyDBNodes(DaraModel):
         if m.get('MemorySize') is not None:
             self.memory_size = m.get('MemorySize')
 
+        if m.get('ModelName') is not None:
+            self.model_name = m.get('ModelName')
+
         if m.get('PublicIp') is not None:
             self.public_ip = m.get('PublicIp')
+
+        self.supported_apis = []
+        if m.get('SupportedApis') is not None:
+            for k1 in m.get('SupportedApis'):
+                temp_model = main_models.DescribeAIDBClusterAttributeResponseBodyDBNodesSupportedApis()
+                self.supported_apis.append(temp_model.from_map(k1))
 
         if m.get('VNodeId') is not None:
             self.vnode_id = m.get('VNodeId')
@@ -917,6 +966,57 @@ class DescribeAIDBClusterAttributeResponseBodyDBNodes(DaraModel):
 
         if m.get('ZoneId') is not None:
             self.zone_id = m.get('ZoneId')
+
+        return self
+
+class DescribeAIDBClusterAttributeResponseBodyDBNodesSupportedApis(DaraModel):
+    def __init__(
+        self,
+        api_name: str = None,
+        generation_mode: str = None,
+        path: str = None,
+        protocol: str = None,
+    ):
+        self.api_name = api_name
+        self.generation_mode = generation_mode
+        self.path = path
+        self.protocol = protocol
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.api_name is not None:
+            result['ApiName'] = self.api_name
+
+        if self.generation_mode is not None:
+            result['GenerationMode'] = self.generation_mode
+
+        if self.path is not None:
+            result['Path'] = self.path
+
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApiName') is not None:
+            self.api_name = m.get('ApiName')
+
+        if m.get('GenerationMode') is not None:
+            self.generation_mode = m.get('GenerationMode')
+
+        if m.get('Path') is not None:
+            self.path = m.get('Path')
+
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
 
         return self
 

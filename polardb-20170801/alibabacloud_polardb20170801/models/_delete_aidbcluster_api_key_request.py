@@ -8,12 +8,14 @@ class DeleteAIDBClusterApiKeyRequest(DaraModel):
     def __init__(
         self,
         api_key: str = None,
+        model_space_name: str = None,
         region_id: str = None,
     ):
         # The API key of the model service.
         # 
         # This parameter is required.
         self.api_key = api_key
+        self.model_space_name = model_space_name
         # The region ID.
         # >You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query region IDs.
         # 
@@ -31,6 +33,9 @@ class DeleteAIDBClusterApiKeyRequest(DaraModel):
         if self.api_key is not None:
             result['ApiKey'] = self.api_key
 
+        if self.model_space_name is not None:
+            result['ModelSpaceName'] = self.model_space_name
+
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
@@ -40,6 +45,9 @@ class DeleteAIDBClusterApiKeyRequest(DaraModel):
         m = m or dict()
         if m.get('ApiKey') is not None:
             self.api_key = m.get('ApiKey')
+
+        if m.get('ModelSpaceName') is not None:
+            self.model_space_name = m.get('ModelSpaceName')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')

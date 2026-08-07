@@ -1,3 +1,8 @@
+2026-08-07 Version: 7.13.0
+- Support API AddPolarOSSAuthorizedAccount.
+- Support API DeletePolarOSSAuthorizedAccount.
+
+
 2026-08-05 Version: 7.12.0
 - Support API CreateLakebaseS3Account.
 - Support API CreatePolarFs.
