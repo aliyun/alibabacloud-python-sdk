@@ -17,7 +17,7 @@ class ApplyAutoSnapshotPolicyRequest(DaraModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the automatic snapshot policy.
+        # The ID of the target automatic snapshot policy.
         # 
         # This parameter is required.
         self.auto_snapshot_policy_id = auto_snapshot_policy_id

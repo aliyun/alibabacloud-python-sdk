@@ -19,7 +19,7 @@ class DescribeAutoSnapshotPolicyExResponseBody(DaraModel):
         self.auto_snapshot_policies = auto_snapshot_policies
         # The page number of the automatic snapshot policy list.
         self.page_number = page_number
-        # The number of entries per page when automatic snapshot policies are returned with pagination.
+        # The number of entries per page when the automatic snapshot policies are displayed by page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
@@ -110,6 +110,7 @@ class DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPolicies(DaraModel):
 class DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPoliciesAutoSnapshotPolicy(DaraModel):
     def __init__(
         self,
+        association_type: str = None,
         auto_snapshot_policy_id: str = None,
         auto_snapshot_policy_name: str = None,
         copied_snapshots_retention_days: int = None,
@@ -124,10 +125,12 @@ class DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPoliciesAutoSnapshotPo
         status: str = None,
         tags: main_models.DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPoliciesAutoSnapshotPolicyTags = None,
         target_copy_regions: str = None,
+        target_tags: main_models.DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPoliciesAutoSnapshotPolicyTargetTags = None,
         time_points: str = None,
         type: str = None,
         volume_nums: int = None,
     ):
+        self.association_type = association_type
         self.auto_snapshot_policy_id = auto_snapshot_policy_id
         self.auto_snapshot_policy_name = auto_snapshot_policy_name
         self.copied_snapshots_retention_days = copied_snapshots_retention_days
@@ -142,6 +145,7 @@ class DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPoliciesAutoSnapshotPo
         self.status = status
         self.tags = tags
         self.target_copy_regions = target_copy_regions
+        self.target_tags = target_tags
         self.time_points = time_points
         self.type = type
         self.volume_nums = volume_nums
@@ -151,12 +155,17 @@ class DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPoliciesAutoSnapshotPo
             self.copy_encryption_configuration.validate()
         if self.tags:
             self.tags.validate()
+        if self.target_tags:
+            self.target_tags.validate()
 
     def to_map(self):
         result = dict()
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.association_type is not None:
+            result['AssociationType'] = self.association_type
+
         if self.auto_snapshot_policy_id is not None:
             result['AutoSnapshotPolicyId'] = self.auto_snapshot_policy_id
 
@@ -199,6 +208,9 @@ class DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPoliciesAutoSnapshotPo
         if self.target_copy_regions is not None:
             result['TargetCopyRegions'] = self.target_copy_regions
 
+        if self.target_tags is not None:
+            result['TargetTags'] = self.target_tags.to_map()
+
         if self.time_points is not None:
             result['TimePoints'] = self.time_points
 
@@ -212,6 +224,9 @@ class DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPoliciesAutoSnapshotPo
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AssociationType') is not None:
+            self.association_type = m.get('AssociationType')
+
         if m.get('AutoSnapshotPolicyId') is not None:
             self.auto_snapshot_policy_id = m.get('AutoSnapshotPolicyId')
 
@@ -256,6 +271,10 @@ class DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPoliciesAutoSnapshotPo
         if m.get('TargetCopyRegions') is not None:
             self.target_copy_regions = m.get('TargetCopyRegions')
 
+        if m.get('TargetTags') is not None:
+            temp_model = main_models.DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPoliciesAutoSnapshotPolicyTargetTags()
+            self.target_tags = temp_model.from_map(m.get('TargetTags'))
+
         if m.get('TimePoints') is not None:
             self.time_points = m.get('TimePoints')
 
@@ -264,6 +283,76 @@ class DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPoliciesAutoSnapshotPo
 
         if m.get('VolumeNums') is not None:
             self.volume_nums = m.get('VolumeNums')
+
+        return self
+
+class DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPoliciesAutoSnapshotPolicyTargetTags(DaraModel):
+    def __init__(
+        self,
+        target_tag: List[main_models.DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPoliciesAutoSnapshotPolicyTargetTagsTargetTag] = None,
+    ):
+        self.target_tag = target_tag
+
+    def validate(self):
+        if self.target_tag:
+            for v1 in self.target_tag:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        result['TargetTag'] = []
+        if self.target_tag is not None:
+            for k1 in self.target_tag:
+                result['TargetTag'].append(k1.to_map() if k1 else None)
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.target_tag = []
+        if m.get('TargetTag') is not None:
+            for k1 in m.get('TargetTag'):
+                temp_model = main_models.DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPoliciesAutoSnapshotPolicyTargetTagsTargetTag()
+                self.target_tag.append(temp_model.from_map(k1))
+
+        return self
+
+class DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPoliciesAutoSnapshotPolicyTargetTagsTargetTag(DaraModel):
+    def __init__(
+        self,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
 
         return self
 

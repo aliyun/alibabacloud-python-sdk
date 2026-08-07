@@ -21,13 +21,13 @@ class AssignPrivateIpAddressesRequest(DaraModel):
         resource_owner_id: int = None,
         secondary_private_ip_address_count: int = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. The **ClientToken** value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **ClientToken** value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # One or more IPv4 prefixes to assign to the network interface controller (NIC). Valid values of N: 1 to 10.
-        # > To set IPv4 prefixes for the NIC, you must set either the Ipv4Prefix.N parameter or the Ipv4PrefixCount parameter, but not both.
+        # > If you need to set IPv4 prefixes for the NIC, you must set either the Ipv4Prefix.N parameter or the Ipv4PrefixCount parameter, but not both.
         self.ipv_4prefix = ipv_4prefix
         # The number of randomly generated IPv4 prefixes to assign to the network interface controller (NIC). Valid values: 1 to 10.
-        # > To set IPv4 prefixes for the NIC, you must set either the Ipv4Prefix.N parameter or the Ipv4PrefixCount parameter, but not both.
+        # > If you need to set IPv4 prefixes for the NIC, you must set either the Ipv4Prefix.N parameter or the Ipv4PrefixCount parameter, but not both.
         self.ipv_4prefix_count = ipv_4prefix_count
         # The ID of the network interface controller (NIC).
         # 
@@ -38,11 +38,11 @@ class AssignPrivateIpAddressesRequest(DaraModel):
         # One or more secondary private IP addresses selected from the idle IP addresses within the vSwitch to which the network interface controller (NIC) belongs. Valid values of N:
         # 
         # - When the NIC is in the active (`Available`) state: 1 to 32.
-        # - When the NIC is in the `InUse` state: subject to the instance type. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html).
+        # - When the NIC is in the `InUse` state: subject to the instance family. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html).
         # 
-        # When you allocate secondary private IP addresses, you cannot specify both `PrivateIpAddress.N` and `SecondaryPrivateIpAddressCount`.
+        # When you allocate secondary private IP addresses, you cannot specify both PrivateIpAddress.N and SecondaryPrivateIpAddressCount.
         self.private_ip_address = private_ip_address
-        # The region ID of the network interface controller (NIC). You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+        # The region ID of the network interface controller (NIC). You can invoke [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -50,7 +50,7 @@ class AssignPrivateIpAddressesRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The number of private IP addresses to be automatically assigned from the idle IP addresses within the vSwitch.
         # 
-        # When you assign secondary private IP addresses, you cannot specify both `PrivateIpAddress.N` and `SecondaryPrivateIpAddressCount`.
+        # When you assign secondary private IP addresses, you cannot specify both PrivateIpAddress.N and SecondaryPrivateIpAddressCount.
         self.secondary_private_ip_address_count = secondary_private_ip_address_count
 
     def validate(self):

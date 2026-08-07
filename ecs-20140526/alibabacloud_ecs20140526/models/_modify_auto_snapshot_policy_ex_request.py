@@ -17,6 +17,7 @@ class ModifyAutoSnapshotPolicyExRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         target_copy_regions: str = None,
+        target_tags: List[main_models.ModifyAutoSnapshotPolicyExRequestTargetTags] = None,
         auto_snapshot_policy_id: str = None,
         auto_snapshot_policy_name: str = None,
         region_id: str = None,
@@ -26,28 +27,31 @@ class ModifyAutoSnapshotPolicyExRequest(DaraModel):
     ):
         # The retention period of cross-region snapshot replicas. Unit: days. Valid values:
         # 
-        # - -1: Snapshot replicas are permanently retained.
-        # - 1 to 65535: the number of days for which snapshot replicas are retained.
+        # - -1: permanently retained.
+        # - 1 to 65535: retained for the specified number of days.
         # 
         # Default value: -1.
         self.copied_snapshots_retention_days = copied_snapshots_retention_days
-        # The encryption parameter for cross-region snapshot replication.
+        # The encryption parameter object for cross-region snapshot replication.
         self.copy_encryption_configuration = copy_encryption_configuration
-        # Specifies whether to allow automatic cross-region replication. Valid values:
+        # Specifies whether to allow automatic cross-region replication.
         # 
-        # - true: Allowed.
-        # - false: Not allowed.
+        # - true: allowed.
+        # - false: not allowed.
         self.enable_cross_region_copy = enable_cross_region_copy
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The destination region for cross-region snapshot replication. You can set one destination region.
+        # The destination region to which snapshots are replicated. Currently, you can set only one destination region.
         self.target_copy_regions = target_copy_regions
+        # The list of target resource tags. The automatic snapshot policy matches target resources based on tags.
+        # This parameter is required when AssociationType is set to AssociatedWithInstanceTag.
+        self.target_tags = target_tags
         # The ID of the automatic snapshot policy. You can call [DescribeAutoSnapshotPolicyEx](https://help.aliyun.com/document_detail/25530.html) to query available automatic snapshot policies.
         # 
         # This parameter is required.
         self.auto_snapshot_policy_id = auto_snapshot_policy_id
-        # The name of the automatic snapshot policy. If this parameter is empty, the name is not modified.
+        # The name of the automatic snapshot policy. If this parameter is left empty, the name is not modified.
         self.auto_snapshot_policy_name = auto_snapshot_policy_name
         # The region ID of the automatic snapshot policy. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
@@ -62,8 +66,8 @@ class ModifyAutoSnapshotPolicyExRequest(DaraModel):
         self.repeat_weekdays = repeat_weekdays
         # The retention period of automatic snapshots. Unit: days. Valid values:
         # 
-        # - -1: Automatic snapshots are permanently retained.
-        # - 1 to 65536: the number of days for which automatic snapshots are retained.
+        # - -1: permanently retained.
+        # - 1 to 65536: retained for the specified number of days.
         # 
         # Default value: -1.
         self.retention_days = retention_days
@@ -78,6 +82,10 @@ class ModifyAutoSnapshotPolicyExRequest(DaraModel):
     def validate(self):
         if self.copy_encryption_configuration:
             self.copy_encryption_configuration.validate()
+        if self.target_tags:
+            for v1 in self.target_tags:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -104,6 +112,11 @@ class ModifyAutoSnapshotPolicyExRequest(DaraModel):
 
         if self.target_copy_regions is not None:
             result['TargetCopyRegions'] = self.target_copy_regions
+
+        result['TargetTags'] = []
+        if self.target_tags is not None:
+            for k1 in self.target_tags:
+                result['TargetTags'].append(k1.to_map() if k1 else None)
 
         if self.auto_snapshot_policy_id is not None:
             result['autoSnapshotPolicyId'] = self.auto_snapshot_policy_id
@@ -149,6 +162,12 @@ class ModifyAutoSnapshotPolicyExRequest(DaraModel):
         if m.get('TargetCopyRegions') is not None:
             self.target_copy_regions = m.get('TargetCopyRegions')
 
+        self.target_tags = []
+        if m.get('TargetTags') is not None:
+            for k1 in m.get('TargetTags'):
+                temp_model = main_models.ModifyAutoSnapshotPolicyExRequestTargetTags()
+                self.target_tags.append(temp_model.from_map(k1))
+
         if m.get('autoSnapshotPolicyId') is not None:
             self.auto_snapshot_policy_id = m.get('autoSnapshotPolicyId')
 
@@ -169,6 +188,47 @@ class ModifyAutoSnapshotPolicyExRequest(DaraModel):
 
         return self
 
+class ModifyAutoSnapshotPolicyExRequestTargetTags(DaraModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # The tag key.
+        # Valid values of N: 1 to 10.
+        # The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with aliyun or acs:. The tag key cannot contain http:// or https://.
+        self.key = key
+        # The tag value.
+        # Valid values of N: 1 to 10. The tag value can be up to 128 characters in length and cannot contain http:// or https://.
+        # Note: If you pass in an empty value or an empty string, it indicates any value.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.key is not None:
+            result['Key'] = self.key
+
+        if self.value is not None:
+            result['Value'] = self.value
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+
+        return self
+
 class ModifyAutoSnapshotPolicyExRequestCopyEncryptionConfiguration(DaraModel):
     def __init__(
         self,
@@ -180,8 +240,8 @@ class ModifyAutoSnapshotPolicyExRequestCopyEncryptionConfiguration(DaraModel):
         self.arn = arn
         # Specifies whether to enable encryption for cross-region snapshot replication. Valid values:
         # 
-        # - true: Enabled. 
-        # - false: Disabled. 
+        # - true: enabled. 
+        # - false: disabled. 
         # 
         # Default value: false.
         self.encrypted = encrypted

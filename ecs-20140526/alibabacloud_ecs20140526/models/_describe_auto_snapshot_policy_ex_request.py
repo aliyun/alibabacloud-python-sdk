@@ -24,17 +24,17 @@ class DescribeAutoSnapshotPolicyExRequest(DaraModel):
     ):
         # The ID of the automatic snapshot policy.
         self.auto_snapshot_policy_id = auto_snapshot_policy_id
-        # The name of the automatic snapshot policy. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-). It must support characters in the Unicode letter category, which includes characters from various languages such as English and Chinese.
+        # The name of the automatic snapshot policy. The name must be 2 to 128 characters in length and can contain characters that are classified as letter in Unicode, including Chinese characters, English letters, and digits. The name can also contain colons (:), underscores (_), periods (.), or hyphens (-).
         self.auto_snapshot_policy_name = auto_snapshot_policy_name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number of the automatic snapshot policy list.
+        # The page number of the automatic snapshot policy list. The results are displayed on multiple pages.
         # 
         # Minimum value: 1.
         # 
         # Default value: 1.
         self.page_number = page_number
-        # The number of entries per page when automatic snapshot policies are returned with pagination.
+        # The number of entries per page when the automatic snapshot policies are displayed by page.
         # 
         # Maximum value: 100.
         # 
@@ -44,13 +44,13 @@ class DescribeAutoSnapshotPolicyExRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group. When you use this parameter to filter resources, the resource count cannot exceed 1000.
+        # The ID of the resource group. If you use this parameter to filter resources, the resource count cannot exceed 1,000.
         # 
-        # > Filtering by the default resource group is not supported.
+        # >Filtering by the default resource group is not supported.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The tags.
+        # The list of tags.
         self.tag = tag
 
     def validate(self):

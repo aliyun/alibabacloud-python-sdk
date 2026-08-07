@@ -1,3 +1,11 @@
+2026-08-07 Version: 7.9.6
+- Update API CreateAutoSnapshotPolicy: add request parameters AssociationType.
+- Update API CreateAutoSnapshotPolicy: add request parameters TargetTags.
+- Update API DescribeAutoSnapshotPolicyEx: add response parameters Body.AutoSnapshotPolicies.$.AssociationType.
+- Update API DescribeAutoSnapshotPolicyEx: add response parameters Body.AutoSnapshotPolicies.$.TargetTags.
+- Update API ModifyAutoSnapshotPolicyEx: add request parameters TargetTags.
+
+
 2026-08-03 Version: 7.9.4
 - Update API CreateNetworkInterface: add request parameters EnhancedNetwork.EnableExpress.
 - Update API DescribeInstanceTypes: add response parameters Body.InstanceTypes.$.EnhancedNetwork.ExpressSupport.

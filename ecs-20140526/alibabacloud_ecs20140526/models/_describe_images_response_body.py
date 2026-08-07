@@ -147,6 +147,7 @@ class DescribeImagesResponseBodyImagesImage(DaraModel):
         product_code: str = None,
         progress: str = None,
         resource_group_id: str = None,
+        secure_boot_options: main_models.DescribeImagesResponseBodyImagesImageSecureBootOptions = None,
         size: int = None,
         status: str = None,
         supplier_name: str = None,
@@ -182,6 +183,7 @@ class DescribeImagesResponseBodyImagesImage(DaraModel):
         self.product_code = product_code
         self.progress = progress
         self.resource_group_id = resource_group_id
+        self.secure_boot_options = secure_boot_options
         self.size = size
         self.status = status
         self.supplier_name = supplier_name
@@ -196,6 +198,8 @@ class DescribeImagesResponseBodyImagesImage(DaraModel):
             self.disk_device_mappings.validate()
         if self.features:
             self.features.validate()
+        if self.secure_boot_options:
+            self.secure_boot_options.validate()
         if self.tags:
             self.tags.validate()
 
@@ -287,6 +291,9 @@ class DescribeImagesResponseBodyImagesImage(DaraModel):
 
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
+
+        if self.secure_boot_options is not None:
+            result['SecureBootOptions'] = self.secure_boot_options.to_map()
 
         if self.size is not None:
             result['Size'] = self.size
@@ -397,6 +404,10 @@ class DescribeImagesResponseBodyImagesImage(DaraModel):
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
 
+        if m.get('SecureBootOptions') is not None:
+            temp_model = main_models.DescribeImagesResponseBodyImagesImageSecureBootOptions()
+            self.secure_boot_options = temp_model.from_map(m.get('SecureBootOptions'))
+
         if m.get('Size') is not None:
             self.size = m.get('Size')
 
@@ -485,6 +496,33 @@ class DescribeImagesResponseBodyImagesImageTagsTag(DaraModel):
 
         if m.get('TagValue') is not None:
             self.tag_value = m.get('TagValue')
+
+        return self
+
+class DescribeImagesResponseBodyImagesImageSecureBootOptions(DaraModel):
+    def __init__(
+        self,
+        secure_boot_support: str = None,
+    ):
+        self.secure_boot_support = secure_boot_support
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.secure_boot_support is not None:
+            result['SecureBootSupport'] = self.secure_boot_support
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SecureBootSupport') is not None:
+            self.secure_boot_support = m.get('SecureBootSupport')
 
         return self
 
