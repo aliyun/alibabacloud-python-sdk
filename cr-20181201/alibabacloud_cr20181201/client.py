@@ -1762,6 +1762,10 @@ class Client(OpenApiClient):
             query['LinkId'] = request.link_id
         if not DaraCore.is_null(request.namespace_name):
             query['NamespaceName'] = request.namespace_name
+        if not DaraCore.is_null(request.namespace_name_filter):
+            query['NamespaceNameFilter'] = request.namespace_name_filter
+        if not DaraCore.is_null(request.priority):
+            query['Priority'] = request.priority
         if not DaraCore.is_null(request.repo_name):
             query['RepoName'] = request.repo_name
         if not DaraCore.is_null(request.repo_name_filter):
@@ -1816,6 +1820,10 @@ class Client(OpenApiClient):
             query['LinkId'] = request.link_id
         if not DaraCore.is_null(request.namespace_name):
             query['NamespaceName'] = request.namespace_name
+        if not DaraCore.is_null(request.namespace_name_filter):
+            query['NamespaceNameFilter'] = request.namespace_name_filter
+        if not DaraCore.is_null(request.priority):
+            query['Priority'] = request.priority
         if not DaraCore.is_null(request.repo_name):
             query['RepoName'] = request.repo_name
         if not DaraCore.is_null(request.repo_name_filter):
@@ -1882,6 +1890,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.override):
             query['Override'] = request.override
+        if not DaraCore.is_null(request.priority):
+            query['Priority'] = request.priority
         if not DaraCore.is_null(request.repo_id):
             query['RepoId'] = request.repo_id
         if not DaraCore.is_null(request.tag):
@@ -1928,6 +1938,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.override):
             query['Override'] = request.override
+        if not DaraCore.is_null(request.priority):
+            query['Priority'] = request.priority
         if not DaraCore.is_null(request.repo_id):
             query['RepoId'] = request.repo_id
         if not DaraCore.is_null(request.tag):
@@ -1986,6 +1998,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.priority):
+            query['Priority'] = request.priority
         if not DaraCore.is_null(request.repo_id):
             query['RepoId'] = request.repo_id
         if not DaraCore.is_null(request.sync_rule_id):
@@ -2020,6 +2034,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.priority):
+            query['Priority'] = request.priority
         if not DaraCore.is_null(request.repo_id):
             query['RepoId'] = request.repo_id
         if not DaraCore.is_null(request.sync_rule_id):

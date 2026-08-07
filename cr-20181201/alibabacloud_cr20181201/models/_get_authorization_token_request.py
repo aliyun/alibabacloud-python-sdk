@@ -10,7 +10,7 @@ class GetAuthorizationTokenRequest(DaraModel):
         expires_in_hours: int = None,
         instance_id: str = None,
     ):
-        # The validity period of the temporary credential, in hours. Valid values: 1 to 24.
+        # The validity period of the temporary credential in hours. Valid values: 1 to 24. When you use STS to call this operation, the actual validity period is the minimum of the STS token validity period and this parameter value.
         self.expires_in_hours = expires_in_hours
         # The repository instance ID.
         # 

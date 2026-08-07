@@ -9,6 +9,7 @@ class CreateRepoSyncTaskRequest(DaraModel):
         self,
         instance_id: str = None,
         override: bool = None,
+        priority: int = None,
         repo_id: str = None,
         tag: str = None,
         target_instance_id: str = None,
@@ -28,6 +29,7 @@ class CreateRepoSyncTaskRequest(DaraModel):
         # 
         # - `false`: Do not overwrite the existing image.
         self.override = override
+        self.priority = priority
         # Image repository ID in the source instance
         # 
         # This parameter is required.
@@ -73,6 +75,9 @@ class CreateRepoSyncTaskRequest(DaraModel):
         if self.override is not None:
             result['Override'] = self.override
 
+        if self.priority is not None:
+            result['Priority'] = self.priority
+
         if self.repo_id is not None:
             result['RepoId'] = self.repo_id
 
@@ -106,6 +111,9 @@ class CreateRepoSyncTaskRequest(DaraModel):
 
         if m.get('Override') is not None:
             self.override = m.get('Override')
+
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
 
         if m.get('RepoId') is not None:
             self.repo_id = m.get('RepoId')

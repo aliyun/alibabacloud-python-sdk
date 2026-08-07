@@ -108,6 +108,8 @@ class ListRepoSyncRuleResponseBodySyncRules(DaraModel):
         local_region_id: str = None,
         local_repo_name: str = None,
         modified_time: int = None,
+        namespace_name_filter: str = None,
+        priority: int = None,
         repo_name_filter: str = None,
         sync_direction: str = None,
         sync_rule_id: str = None,
@@ -141,6 +143,8 @@ class ListRepoSyncRuleResponseBodySyncRules(DaraModel):
         self.local_repo_name = local_repo_name
         # The time when the synchronization rule was last modified. This value is a UNIX timestamp. Unit: milliseconds.
         self.modified_time = modified_time
+        self.namespace_name_filter = namespace_name_filter
+        self.priority = priority
         # The regular expression that is used to filter repositories.
         # 
         # > This parameter is valid only when `SyncScope` is set to `NAMESPACE`.
@@ -210,6 +214,12 @@ class ListRepoSyncRuleResponseBodySyncRules(DaraModel):
         if self.modified_time is not None:
             result['ModifiedTime'] = self.modified_time
 
+        if self.namespace_name_filter is not None:
+            result['NamespaceNameFilter'] = self.namespace_name_filter
+
+        if self.priority is not None:
+            result['Priority'] = self.priority
+
         if self.repo_name_filter is not None:
             result['RepoNameFilter'] = self.repo_name_filter
 
@@ -270,6 +280,12 @@ class ListRepoSyncRuleResponseBodySyncRules(DaraModel):
 
         if m.get('ModifiedTime') is not None:
             self.modified_time = m.get('ModifiedTime')
+
+        if m.get('NamespaceNameFilter') is not None:
+            self.namespace_name_filter = m.get('NamespaceNameFilter')
+
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
 
         if m.get('RepoNameFilter') is not None:
             self.repo_name_filter = m.get('RepoNameFilter')

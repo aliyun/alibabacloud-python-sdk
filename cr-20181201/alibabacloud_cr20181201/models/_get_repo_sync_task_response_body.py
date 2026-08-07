@@ -16,6 +16,7 @@ class GetRepoSyncTaskResponseBody(DaraModel):
         image_to: main_models.GetRepoSyncTaskResponseBodyImageTo = None,
         is_success: bool = None,
         layer_tasks: List[main_models.GetRepoSyncTaskResponseBodyLayerTasks] = None,
+        priority: int = None,
         progress: int = None,
         request_id: str = None,
         sync_batch_task_id: str = None,
@@ -39,6 +40,7 @@ class GetRepoSyncTaskResponseBody(DaraModel):
         self.is_success = is_success
         # The synchronization tasks for the image layer.
         self.layer_tasks = layer_tasks
+        self.priority = priority
         # The synchronization progress. Valid values:
         # 
         # *   `0`: The synchronization starts or failed.
@@ -109,6 +111,9 @@ class GetRepoSyncTaskResponseBody(DaraModel):
             for k1 in self.layer_tasks:
                 result['LayerTasks'].append(k1.to_map() if k1 else None)
 
+        if self.priority is not None:
+            result['Priority'] = self.priority
+
         if self.progress is not None:
             result['Progress'] = self.progress
 
@@ -165,6 +170,9 @@ class GetRepoSyncTaskResponseBody(DaraModel):
             for k1 in m.get('LayerTasks'):
                 temp_model = main_models.GetRepoSyncTaskResponseBodyLayerTasks()
                 self.layer_tasks.append(temp_model.from_map(k1))
+
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
 
         if m.get('Progress') is not None:
             self.progress = m.get('Progress')

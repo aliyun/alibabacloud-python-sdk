@@ -10,6 +10,8 @@ class CreateRepoSyncRuleRequest(DaraModel):
         instance_id: str = None,
         link_id: str = None,
         namespace_name: str = None,
+        namespace_name_filter: str = None,
+        priority: int = None,
         repo_name: str = None,
         repo_name_filter: str = None,
         sync_rule_name: str = None,
@@ -28,9 +30,9 @@ class CreateRepoSyncRuleRequest(DaraModel):
         self.instance_id = instance_id
         self.link_id = link_id
         # The namespace name of the source instance.
-        # 
-        # This parameter is required.
         self.namespace_name = namespace_name
+        self.namespace_name_filter = namespace_name_filter
+        self.priority = priority
         # The name of the image repository in the source instance.
         self.repo_name = repo_name
         # The regular expression that is used to filter repositories.
@@ -62,8 +64,6 @@ class CreateRepoSyncRuleRequest(DaraModel):
         # This parameter is required.
         self.target_instance_id = target_instance_id
         # The namespace name of the destination instance.
-        # 
-        # This parameter is required.
         self.target_namespace_name = target_namespace_name
         # The region ID of the destination instance.
         # 
@@ -92,6 +92,12 @@ class CreateRepoSyncRuleRequest(DaraModel):
 
         if self.namespace_name is not None:
             result['NamespaceName'] = self.namespace_name
+
+        if self.namespace_name_filter is not None:
+            result['NamespaceNameFilter'] = self.namespace_name_filter
+
+        if self.priority is not None:
+            result['Priority'] = self.priority
 
         if self.repo_name is not None:
             result['RepoName'] = self.repo_name
@@ -138,6 +144,12 @@ class CreateRepoSyncRuleRequest(DaraModel):
 
         if m.get('NamespaceName') is not None:
             self.namespace_name = m.get('NamespaceName')
+
+        if m.get('NamespaceNameFilter') is not None:
+            self.namespace_name_filter = m.get('NamespaceNameFilter')
+
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
 
         if m.get('RepoName') is not None:
             self.repo_name = m.get('RepoName')

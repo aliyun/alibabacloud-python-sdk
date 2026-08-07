@@ -108,6 +108,7 @@ class ListRepoSyncTaskResponseBodySyncTasks(DaraModel):
         link_id: str = None,
         modifed_time: int = None,
         modified_time: int = None,
+        priority: int = None,
         sync_batch_task_id: str = None,
         sync_rule_id: str = None,
         sync_task_id: str = None,
@@ -138,6 +139,7 @@ class ListRepoSyncTaskResponseBodySyncTasks(DaraModel):
         self.modifed_time = modifed_time
         # The modification time of the task.
         self.modified_time = modified_time
+        self.priority = priority
         # The ID of the batch sync task. This ID is the same as the sync record ID (`SyncRecordId`).
         # 
         # > If an image matches multiple sync rules, multiple sync tasks are generated. These tasks share the same `SyncBatchTaskId`.
@@ -198,6 +200,9 @@ class ListRepoSyncTaskResponseBodySyncTasks(DaraModel):
         if self.modified_time is not None:
             result['ModifiedTime'] = self.modified_time
 
+        if self.priority is not None:
+            result['Priority'] = self.priority
+
         if self.sync_batch_task_id is not None:
             result['SyncBatchTaskId'] = self.sync_batch_task_id
 
@@ -248,6 +253,9 @@ class ListRepoSyncTaskResponseBodySyncTasks(DaraModel):
 
         if m.get('ModifiedTime') is not None:
             self.modified_time = m.get('ModifiedTime')
+
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
 
         if m.get('SyncBatchTaskId') is not None:
             self.sync_batch_task_id = m.get('SyncBatchTaskId')

@@ -20,7 +20,7 @@ class GetAuthorizationTokenResponseBody(DaraModel):
         self.code = code
         # The expiration timestamp of the temporary token, in milliseconds.
         self.expire_time = expire_time
-        # Indicates whether the request is successful.
+        # Indicates whether the operation is successful.
         self.is_success = is_success
         # The request ID.
         self.request_id = request_id

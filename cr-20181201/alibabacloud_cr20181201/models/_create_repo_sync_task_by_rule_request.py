@@ -8,6 +8,7 @@ class CreateRepoSyncTaskByRuleRequest(DaraModel):
     def __init__(
         self,
         instance_id: str = None,
+        priority: int = None,
         repo_id: str = None,
         sync_rule_id: str = None,
         tag: str = None,
@@ -16,6 +17,7 @@ class CreateRepoSyncTaskByRuleRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
+        self.priority = priority
         # The ID of the image repository.
         # 
         # This parameter is required.
@@ -40,6 +42,9 @@ class CreateRepoSyncTaskByRuleRequest(DaraModel):
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
 
+        if self.priority is not None:
+            result['Priority'] = self.priority
+
         if self.repo_id is not None:
             result['RepoId'] = self.repo_id
 
@@ -55,6 +60,9 @@ class CreateRepoSyncTaskByRuleRequest(DaraModel):
         m = m or dict()
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
 
         if m.get('RepoId') is not None:
             self.repo_id = m.get('RepoId')
