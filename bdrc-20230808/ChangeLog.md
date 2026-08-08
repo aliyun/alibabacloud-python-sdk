@@ -1,3 +1,10 @@
+2026-08-08 Version: 2.2.0
+- Support API EnableCrossAccountManagement.
+- Support API ListCrossAccounts.
+- Support API PrecheckResourceCount.
+- Support API UpdateCrossAccounts.
+
+
 2026-08-07 Version: 2.1.0
 - Support API DescribeRegions.
 

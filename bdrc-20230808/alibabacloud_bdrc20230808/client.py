@@ -1650,6 +1650,74 @@ class Client(OpenApiClient):
         headers = {}
         return await self.enable_check_resource_with_options_async(request, headers, runtime)
 
+    def enable_cross_account_management_with_options(
+        self,
+        request: main_models.EnableCrossAccountManagementRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.EnableCrossAccountManagementResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'EnableCrossAccountManagement',
+            version = '2023-08-08',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/cross-accounts/enable-management',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EnableCrossAccountManagementResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enable_cross_account_management_with_options_async(
+        self,
+        request: main_models.EnableCrossAccountManagementRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.EnableCrossAccountManagementResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'EnableCrossAccountManagement',
+            version = '2023-08-08',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/cross-accounts/enable-management',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EnableCrossAccountManagementResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enable_cross_account_management(
+        self,
+        request: main_models.EnableCrossAccountManagementRequest,
+    ) -> main_models.EnableCrossAccountManagementResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.enable_cross_account_management_with_options(request, headers, runtime)
+
+    async def enable_cross_account_management_async(
+        self,
+        request: main_models.EnableCrossAccountManagementRequest,
+    ) -> main_models.EnableCrossAccountManagementResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.enable_cross_account_management_with_options_async(request, headers, runtime)
+
     def get_bdrc_service_with_options(
         self,
         headers: Dict[str, str],
@@ -1927,6 +1995,102 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.get_resource_category_with_options_async(request, headers, runtime)
+
+    def list_cross_accounts_with_options(
+        self,
+        request: main_models.ListCrossAccountsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCrossAccountsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cross_account_owner_id):
+            query['CrossAccountOwnerId'] = request.cross_account_owner_id
+        if not DaraCore.is_null(request.management_mode):
+            query['ManagementMode'] = request.management_mode
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.target_id):
+            query['TargetId'] = request.target_id
+        if not DaraCore.is_null(request.target_type):
+            query['TargetType'] = request.target_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCrossAccounts',
+            version = '2023-08-08',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/cross-accounts',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCrossAccountsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_cross_accounts_with_options_async(
+        self,
+        request: main_models.ListCrossAccountsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCrossAccountsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cross_account_owner_id):
+            query['CrossAccountOwnerId'] = request.cross_account_owner_id
+        if not DaraCore.is_null(request.management_mode):
+            query['ManagementMode'] = request.management_mode
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.target_id):
+            query['TargetId'] = request.target_id
+        if not DaraCore.is_null(request.target_type):
+            query['TargetType'] = request.target_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCrossAccounts',
+            version = '2023-08-08',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/cross-accounts',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCrossAccountsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_cross_accounts(
+        self,
+        request: main_models.ListCrossAccountsRequest,
+    ) -> main_models.ListCrossAccountsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_cross_accounts_with_options(request, headers, runtime)
+
+    async def list_cross_accounts_async(
+        self,
+        request: main_models.ListCrossAccountsRequest,
+    ) -> main_models.ListCrossAccountsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_cross_accounts_with_options_async(request, headers, runtime)
 
     def list_messages_with_options(
         self,
@@ -2353,6 +2517,186 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.open_bdrc_service_with_options_async(headers, runtime)
+
+    def precheck_resource_count_with_options(
+        self,
+        tmp_req: main_models.PrecheckResourceCountRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.PrecheckResourceCountResponse:
+        tmp_req.validate()
+        request = main_models.PrecheckResourceCountShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.tag_resource_matchers):
+            request.tag_resource_matchers_shrink = Utils.array_to_string_with_specified_style(tmp_req.tag_resource_matchers, 'TagResourceMatchers', 'json')
+        body = {}
+        if not DaraCore.is_null(request.resource_type):
+            body['ResourceType'] = request.resource_type
+        if not DaraCore.is_null(request.tag_resource_matchers_shrink):
+            body['TagResourceMatchers'] = request.tag_resource_matchers_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'PrecheckResourceCount',
+            version = '2023-08-08',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/resources/precheck-count',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PrecheckResourceCountResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def precheck_resource_count_with_options_async(
+        self,
+        tmp_req: main_models.PrecheckResourceCountRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.PrecheckResourceCountResponse:
+        tmp_req.validate()
+        request = main_models.PrecheckResourceCountShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.tag_resource_matchers):
+            request.tag_resource_matchers_shrink = Utils.array_to_string_with_specified_style(tmp_req.tag_resource_matchers, 'TagResourceMatchers', 'json')
+        body = {}
+        if not DaraCore.is_null(request.resource_type):
+            body['ResourceType'] = request.resource_type
+        if not DaraCore.is_null(request.tag_resource_matchers_shrink):
+            body['TagResourceMatchers'] = request.tag_resource_matchers_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'PrecheckResourceCount',
+            version = '2023-08-08',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/resources/precheck-count',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PrecheckResourceCountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def precheck_resource_count(
+        self,
+        request: main_models.PrecheckResourceCountRequest,
+    ) -> main_models.PrecheckResourceCountResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.precheck_resource_count_with_options(request, headers, runtime)
+
+    async def precheck_resource_count_async(
+        self,
+        request: main_models.PrecheckResourceCountRequest,
+    ) -> main_models.PrecheckResourceCountResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.precheck_resource_count_with_options_async(request, headers, runtime)
+
+    def update_cross_accounts_with_options(
+        self,
+        tmp_req: main_models.UpdateCrossAccountsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateCrossAccountsResponse:
+        tmp_req.validate()
+        request = main_models.UpdateCrossAccountsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.create_targets):
+            request.create_targets_shrink = Utils.array_to_string_with_specified_style(tmp_req.create_targets, 'CreateTargets', 'json')
+        if not DaraCore.is_null(tmp_req.delete_targets):
+            request.delete_targets_shrink = Utils.array_to_string_with_specified_style(tmp_req.delete_targets, 'DeleteTargets', 'json')
+        body = {}
+        if not DaraCore.is_null(request.create_targets_shrink):
+            body['CreateTargets'] = request.create_targets_shrink
+        if not DaraCore.is_null(request.delete_targets_shrink):
+            body['DeleteTargets'] = request.delete_targets_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateCrossAccounts',
+            version = '2023-08-08',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/cross-accounts',
+            method = 'PATCH',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateCrossAccountsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_cross_accounts_with_options_async(
+        self,
+        tmp_req: main_models.UpdateCrossAccountsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateCrossAccountsResponse:
+        tmp_req.validate()
+        request = main_models.UpdateCrossAccountsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.create_targets):
+            request.create_targets_shrink = Utils.array_to_string_with_specified_style(tmp_req.create_targets, 'CreateTargets', 'json')
+        if not DaraCore.is_null(tmp_req.delete_targets):
+            request.delete_targets_shrink = Utils.array_to_string_with_specified_style(tmp_req.delete_targets, 'DeleteTargets', 'json')
+        body = {}
+        if not DaraCore.is_null(request.create_targets_shrink):
+            body['CreateTargets'] = request.create_targets_shrink
+        if not DaraCore.is_null(request.delete_targets_shrink):
+            body['DeleteTargets'] = request.delete_targets_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateCrossAccounts',
+            version = '2023-08-08',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/cross-accounts',
+            method = 'PATCH',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateCrossAccountsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_cross_accounts(
+        self,
+        request: main_models.UpdateCrossAccountsRequest,
+    ) -> main_models.UpdateCrossAccountsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_cross_accounts_with_options(request, headers, runtime)
+
+    async def update_cross_accounts_async(
+        self,
+        request: main_models.UpdateCrossAccountsRequest,
+    ) -> main_models.UpdateCrossAccountsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_cross_accounts_with_options_async(request, headers, runtime)
 
     def update_protection_policy_with_options(
         self,

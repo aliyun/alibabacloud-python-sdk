@@ -63,6 +63,9 @@ from ._enable_check_product_response import EnableCheckProductResponse
 from ._enable_check_resource_request import EnableCheckResourceRequest
 from ._enable_check_resource_response_body import EnableCheckResourceResponseBody
 from ._enable_check_resource_response import EnableCheckResourceResponse
+from ._enable_cross_account_management_request import EnableCrossAccountManagementRequest
+from ._enable_cross_account_management_response_body import EnableCrossAccountManagementResponseBody
+from ._enable_cross_account_management_response import EnableCrossAccountManagementResponse
 from ._get_bdrc_service_response_body import GetBdrcServiceResponseBody
 from ._get_bdrc_service_response import GetBdrcServiceResponse
 from ._get_message_request import GetMessageRequest
@@ -74,6 +77,9 @@ from ._get_protection_policy_response import GetProtectionPolicyResponse
 from ._get_resource_category_request import GetResourceCategoryRequest
 from ._get_resource_category_response_body import GetResourceCategoryResponseBody
 from ._get_resource_category_response import GetResourceCategoryResponse
+from ._list_cross_accounts_request import ListCrossAccountsRequest
+from ._list_cross_accounts_response_body import ListCrossAccountsResponseBody
+from ._list_cross_accounts_response import ListCrossAccountsResponse
 from ._list_messages_request import ListMessagesRequest
 from ._list_messages_response_body import ListMessagesResponseBody
 from ._list_messages_response import ListMessagesResponse
@@ -88,6 +94,14 @@ from ._list_resource_categories_response_body import ListResourceCategoriesRespo
 from ._list_resource_categories_response import ListResourceCategoriesResponse
 from ._open_bdrc_service_response_body import OpenBdrcServiceResponseBody
 from ._open_bdrc_service_response import OpenBdrcServiceResponse
+from ._precheck_resource_count_request import PrecheckResourceCountRequest
+from ._precheck_resource_count_shrink_request import PrecheckResourceCountShrinkRequest
+from ._precheck_resource_count_response_body import PrecheckResourceCountResponseBody
+from ._precheck_resource_count_response import PrecheckResourceCountResponse
+from ._update_cross_accounts_request import UpdateCrossAccountsRequest
+from ._update_cross_accounts_shrink_request import UpdateCrossAccountsShrinkRequest
+from ._update_cross_accounts_response_body import UpdateCrossAccountsResponseBody
+from ._update_cross_accounts_response import UpdateCrossAccountsResponse
 from ._update_protection_policy_request import UpdateProtectionPolicyRequest
 from ._update_protection_policy_shrink_request import UpdateProtectionPolicyShrinkRequest
 from ._update_protection_policy_response_body import UpdateProtectionPolicyResponseBody
@@ -127,6 +141,8 @@ from ._get_protection_policy_response_body import GetProtectionPolicyResponseBod
 from ._get_protection_policy_response_body import GetProtectionPolicyResponseBodyData
 from ._get_resource_category_response_body import GetResourceCategoryResponseBodyDataResourceCount
 from ._get_resource_category_response_body import GetResourceCategoryResponseBodyData
+from ._list_cross_accounts_response_body import ListCrossAccountsResponseBodyDataContent
+from ._list_cross_accounts_response_body import ListCrossAccountsResponseBodyData
 from ._list_messages_response_body import ListMessagesResponseBodyDataContent
 from ._list_messages_response_body import ListMessagesResponseBodyData
 from ._list_protection_policies_response_body import ListProtectionPoliciesResponseBodyDataContentLatestApplySummaryApplyStatusCount
@@ -140,6 +156,11 @@ from ._list_protection_policy_applications_response_body import ListProtectionPo
 from ._list_resource_categories_response_body import ListResourceCategoriesResponseBodyDataContentResourceCount
 from ._list_resource_categories_response_body import ListResourceCategoriesResponseBodyDataContent
 from ._list_resource_categories_response_body import ListResourceCategoriesResponseBodyData
+from ._precheck_resource_count_request import PrecheckResourceCountRequestTagResourceMatchers
+from ._precheck_resource_count_response_body import PrecheckResourceCountResponseBodyData
+from ._update_cross_accounts_request import UpdateCrossAccountsRequestCreateTargets
+from ._update_cross_accounts_request import UpdateCrossAccountsRequestDeleteTargets
+from ._update_cross_accounts_response_body import UpdateCrossAccountsResponseBodyData
 from ._update_protection_policy_request import UpdateProtectionPolicyRequestSubProtectionPolicies
 from ._update_resources_response_body import UpdateResourcesResponseBodyData
 
@@ -205,6 +226,9 @@ __all__ = [
     EnableCheckResourceRequest,
     EnableCheckResourceResponseBody,
     EnableCheckResourceResponse,
+    EnableCrossAccountManagementRequest,
+    EnableCrossAccountManagementResponseBody,
+    EnableCrossAccountManagementResponse,
     GetBdrcServiceResponseBody,
     GetBdrcServiceResponse,
     GetMessageRequest,
@@ -216,6 +240,9 @@ __all__ = [
     GetResourceCategoryRequest,
     GetResourceCategoryResponseBody,
     GetResourceCategoryResponse,
+    ListCrossAccountsRequest,
+    ListCrossAccountsResponseBody,
+    ListCrossAccountsResponse,
     ListMessagesRequest,
     ListMessagesResponseBody,
     ListMessagesResponse,
@@ -230,6 +257,14 @@ __all__ = [
     ListResourceCategoriesResponse,
     OpenBdrcServiceResponseBody,
     OpenBdrcServiceResponse,
+    PrecheckResourceCountRequest,
+    PrecheckResourceCountShrinkRequest,
+    PrecheckResourceCountResponseBody,
+    PrecheckResourceCountResponse,
+    UpdateCrossAccountsRequest,
+    UpdateCrossAccountsShrinkRequest,
+    UpdateCrossAccountsResponseBody,
+    UpdateCrossAccountsResponse,
     UpdateProtectionPolicyRequest,
     UpdateProtectionPolicyShrinkRequest,
     UpdateProtectionPolicyResponseBody,
@@ -269,6 +304,8 @@ __all__ = [
     GetProtectionPolicyResponseBodyData,
     GetResourceCategoryResponseBodyDataResourceCount,
     GetResourceCategoryResponseBodyData,
+    ListCrossAccountsResponseBodyDataContent,
+    ListCrossAccountsResponseBodyData,
     ListMessagesResponseBodyDataContent,
     ListMessagesResponseBodyData,
     ListProtectionPoliciesResponseBodyDataContentLatestApplySummaryApplyStatusCount,
@@ -282,6 +319,11 @@ __all__ = [
     ListResourceCategoriesResponseBodyDataContentResourceCount,
     ListResourceCategoriesResponseBodyDataContent,
     ListResourceCategoriesResponseBodyData,
+    PrecheckResourceCountRequestTagResourceMatchers,
+    PrecheckResourceCountResponseBodyData,
+    UpdateCrossAccountsRequestCreateTargets,
+    UpdateCrossAccountsRequestDeleteTargets,
+    UpdateCrossAccountsResponseBodyData,
     UpdateProtectionPolicyRequestSubProtectionPolicies,
     UpdateResourcesResponseBodyData
 ]
