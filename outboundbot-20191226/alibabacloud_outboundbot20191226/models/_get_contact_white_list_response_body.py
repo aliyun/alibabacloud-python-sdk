@@ -17,17 +17,17 @@ class GetContactWhiteListResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # API status code
+        # The API status code.
         self.code = code
-        # Contact list
+        # The contact list.
         self.contact_whitelist_list = contact_whitelist_list
-        # HTTP status code
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # API message
+        # The API response message.
         self.message = message
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request succeeded
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -90,13 +90,13 @@ class GetContactWhiteListResponseBodyContactWhitelistList(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # Contact list
+        # The contact list.
         self.list = list
-        # Page number
+        # The page number.
         self.page_number = page_number
-        # Number of entries per page
+        # The number of entries per page.
         self.page_size = page_size
-        # Total number of entries
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -157,21 +157,21 @@ class GetContactWhiteListResponseBodyContactWhitelistListList(DaraModel):
         phone_number: str = None,
         remark: str = None,
     ):
-        # Whitelist ID
+        # The whitelist ID.
         self.contact_white_list_id = contact_white_list_id
-        # Creation time
+        # The creation time.
         self.creation_time = creation_time
-        # Creator
+        # The creator.
         self.creator = creator
-        # Instance ID
+        # The instance ID.
         self.instance_id = instance_id
-        # Name
+        # The name.
         self.name = name
-        # Operator
+        # The operator.
         self.operator = operator
-        # Mobile phone number
+        # The phone number.
         self.phone_number = phone_number
-        # Remarks
+        # The remarks.
         self.remark = remark
 
     def validate(self):

@@ -11,17 +11,19 @@ class GetContactWhiteListRequest(DaraModel):
         instance_id: str = None,
         page_number: int = None,
         page_size: int = None,
+        search_pattern: str = None,
     ):
-        # Whether to return the total count
+        # Specifies whether to return the total number of entries.
         self.count_total_row = count_total_row
-        # Instance ID
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Page number
+        # The page number.
         self.page_number = page_number
-        # Number of entries per page
+        # The number of entries per page.
         self.page_size = page_size
+        self.search_pattern = search_pattern
 
     def validate(self):
         pass
@@ -43,6 +45,9 @@ class GetContactWhiteListRequest(DaraModel):
         if self.page_size is not None:
             result['PageSize'] = self.page_size
 
+        if self.search_pattern is not None:
+            result['SearchPattern'] = self.search_pattern
+
         return result
 
     def from_map(self, m: dict = None):
@@ -58,6 +63,9 @@ class GetContactWhiteListRequest(DaraModel):
 
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+
+        if m.get('SearchPattern') is not None:
+            self.search_pattern = m.get('SearchPattern')
 
         return self
 

@@ -1,3 +1,10 @@
+2026-08-09 Version: 2.1.6
+- Update API GetContactBlockList: add request parameters SearchPattern.
+- Update API GetContactWhiteList: add request parameters SearchPattern.
+- Update API ListScripts: add response parameters Body.Scripts.List.$.ChatBotId.
+- Update API QueryJobsWithResult: add response parameters Body.Jobs.List.$.LatestTask.VoiceName.
+
+
 2026-08-03 Version: 2.1.5
 - Update API DownloadRecording: add response parameters Body.DownloadParams.EarlyMediaSignatureUrl.
 

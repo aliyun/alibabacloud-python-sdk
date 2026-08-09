@@ -6124,6 +6124,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.search_pattern):
+            query['SearchPattern'] = request.search_pattern
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -6158,6 +6160,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.search_pattern):
+            query['SearchPattern'] = request.search_pattern
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -6206,6 +6210,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.search_pattern):
+            query['SearchPattern'] = request.search_pattern
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -6240,6 +6246,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.search_pattern):
+            query['SearchPattern'] = request.search_pattern
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )

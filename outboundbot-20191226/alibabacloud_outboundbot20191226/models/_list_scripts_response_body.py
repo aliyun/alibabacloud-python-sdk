@@ -25,7 +25,7 @@ class ListScriptsResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The paginated list of scripts.
+        # The script list.
         self.scripts = scripts
         # Indicates whether the request was successful.
         self.success = success
@@ -90,13 +90,13 @@ class ListScriptsResponseBodyScripts(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The list of scripts.
+        # The script array.
         self.list = list
         # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The page size.
         self.page_size = page_size
-        # The total number of scripts.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -150,6 +150,7 @@ class ListScriptsResponseBodyScriptsList(DaraModel):
         self,
         agent_key: str = None,
         agent_llm: bool = None,
+        chat_bot_id: str = None,
         create_time: int = None,
         debug_status: str = None,
         emotion_enable: bool = None,
@@ -172,39 +173,40 @@ class ListScriptsResponseBodyScriptsList(DaraModel):
         update_time: int = None,
         agent_id: int = None,
     ):
-        # The agent access key.
+        # The access key of the robot business workspace.
         self.agent_key = agent_key
-        # Indicates whether the agent is an LLM agent.
+        # Indicates whether the robot business workspace is a large model workspace.
         self.agent_llm = agent_llm
+        self.chat_bot_id = chat_bot_id
         # The creation time.
         self.create_time = create_time
         # The debug status.
         self.debug_status = debug_status
-        # Indicates whether emotion detection is enabled. This parameter is always false for LLM-based scripts.
+        # Indicates whether the emotion recognition feature is enabled. This parameter is set to false for all large model scenarios.
         self.emotion_enable = emotion_enable
         # The industry.
         self.industry = industry
-        # Indicates whether the debug version of the script is a draft.
+        # Indicates whether the debug version is in draft state.
         self.is_debug_drafted = is_debug_drafted
         # Indicates whether the script is a draft.
         self.is_drafted = is_drafted
-        # Indicates whether the script is for a preset scene.
+        # Indicates whether the scenario is a preset scenario.
         self.is_preset = is_preset
-        # Indicates whether long wait is enabled. This parameter is always false for LLM-based scripts.
+        # Indicates whether the long pause detection feature is enabled. This parameter is set to false for all large model scenarios.
         self.long_wait_enable = long_wait_enable
-        # Indicates whether mini playback is enabled.
+        # Indicates whether the filler phrase feature is enabled.
         self.mini_playback_enable = mini_playback_enable
-        # Indicates whether graceful barge-in is enabled. This parameter is always false for LLM-based scripts.
+        # Indicates whether the graceful barge-in feature is enabled. This parameter is set to false for all large model scenarios.
         self.new_barge_in_enable = new_barge_in_enable
-        # The NLU access type, which is set to Managed for LLM scenarios and is empty for small model scenarios.
+        # The robot access type. If the scenario uses a small model, this field is empty. If the scenario uses a large model, this field is set to Managed.
         self.nlu_access_type = nlu_access_type
-        # The NLU engine, which is set to Prompts for LLM scenarios and is empty for small model scenarios.
+        # The robot engine. If the scenario uses a small model, this field is empty. If the scenario uses a large model, this field is set to Prompts.
         self.nlu_engine = nlu_engine
-        # The Function Compute configuration for function calling mode.
+        # The function computing service mode configuration.
         self.nlu_profile = nlu_profile
-        # The rejection reason.
+        # The reason for review rejection.
         self.reject_reason = reject_reason
-        # The scene.
+        # The scenario.
         self.scene = scene
         # The script description.
         self.script_description = script_description
@@ -216,7 +218,7 @@ class ListScriptsResponseBodyScriptsList(DaraModel):
         self.status = status
         # The update time.
         self.update_time = update_time
-        # The agent ID.
+        # The robot business workspace ID.
         self.agent_id = agent_id
 
     def validate(self):
@@ -233,6 +235,9 @@ class ListScriptsResponseBodyScriptsList(DaraModel):
 
         if self.agent_llm is not None:
             result['AgentLlm'] = self.agent_llm
+
+        if self.chat_bot_id is not None:
+            result['ChatBotId'] = self.chat_bot_id
 
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
@@ -307,6 +312,9 @@ class ListScriptsResponseBodyScriptsList(DaraModel):
         if m.get('AgentLlm') is not None:
             self.agent_llm = m.get('AgentLlm')
 
+        if m.get('ChatBotId') is not None:
+            self.chat_bot_id = m.get('ChatBotId')
+
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
 
@@ -380,11 +388,11 @@ class ListScriptsResponseBodyScriptsListNluProfile(DaraModel):
         fc_http_trigger_url: str = None,
         fc_region: str = None,
     ):
-        # The function name.
+        # The function service name.
         self.fc_function = fc_function
-        # The URL of the function trigger.
+        # The function service trigger URL.
         self.fc_http_trigger_url = fc_http_trigger_url
-        # The function region.
+        # The function service region.
         self.fc_region = fc_region
 
     def validate(self):

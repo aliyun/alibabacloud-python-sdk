@@ -19,11 +19,11 @@ class GetContactBlockListResponseBody(DaraModel):
     ):
         # The response code.
         self.code = code
-        # The list of blocked contacts.
+        # The contact blocklist.
         self.contact_blocklist_list = contact_blocklist_list
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The returned message.
+        # The response message.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -90,7 +90,7 @@ class GetContactBlockListResponseBodyContactBlocklistList(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The data array.
+        # The array data.
         self.list = list
         # The page number.
         self.page_number = page_number
@@ -157,19 +157,19 @@ class GetContactBlockListResponseBodyContactBlocklistListList(DaraModel):
         phone_number: str = None,
         remark: str = None,
     ):
-        # The unique key of the entry in the do-not-call list.
+        # The unique business key of the outbound call blocklist entry.
         self.contact_block_list_id = contact_block_list_id
-        # The time when the entry was created.
+        # The creation time.
         self.creation_time = creation_time
-        # The user who created the entry.
+        # The creator.
         self.creator = creator
         # The instance ID.
         self.instance_id = instance_id
-        # The name of the contact.
+        # The name.
         self.name = name
         # The operator.
         self.operator = operator
-        # The mobile phone number.
+        # The phone number.
         self.phone_number = phone_number
         # The remarks.
         self.remark = remark
