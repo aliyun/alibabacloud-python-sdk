@@ -17,11 +17,17 @@ class GlobalHotelQueryCalendarAvailabilityResponseBody(DaraModel):
         success: bool = None,
         tracer_id: str = None,
     ):
+        # The business data.
         self.data = data
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_msg = error_msg
+        # The unique request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # TraceId
         self.tracer_id = tracer_id
 
     def validate(self):
@@ -83,8 +89,11 @@ class GlobalHotelQueryCalendarAvailabilityResponseBodyData(DaraModel):
         hotels: Dict[str, List[main_models.DataHotelsValue]] = None,
         tracer_id: str = None,
     ):
+        # The list of failed hotels (in partial success mode).
         self.failed_hotels = failed_hotels
+        # The calendar quotes grouped by standard hotel ID.
         self.hotels = hotels
+        # TraceId
         self.tracer_id = tracer_id
 
     def validate(self):
@@ -150,8 +159,11 @@ class GlobalHotelQueryCalendarAvailabilityResponseBodyDataFailedHotels(DaraModel
         error_message: str = None,
         standard_hotel_id: str = None,
     ):
+        # The error code.
         self.error_code = error_code
+        # The error description.
         self.error_message = error_message
+        # The standard hotel ID.
         self.standard_hotel_id = standard_hotel_id
 
     def validate(self):

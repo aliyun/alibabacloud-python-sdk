@@ -13,12 +13,19 @@ class GlobalHotelSearchCityPageRequest(DaraModel):
         start: int = None,
         tracer_id: str = None,
     ):
+        # The distributor account ID.
+        # 
         # This parameter is required.
         self.account_no = account_no
+        # The number of entries per page.
+        # 
         # This parameter is required.
         self.count = count
+        # The country code in ISO 3166-1 alpha-2 format.
         self.country_code = country_code
+        # The pagination offset, starting from 0.
         self.start = start
+        # TraceId
         self.tracer_id = tracer_id
 
     def validate(self):

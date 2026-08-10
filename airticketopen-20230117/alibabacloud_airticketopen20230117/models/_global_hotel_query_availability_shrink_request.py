@@ -17,20 +17,35 @@ class GlobalHotelQueryAvailabilityShrinkRequest(DaraModel):
         standard_hotel_ids_shrink: str = None,
         tracer_id: str = None,
     ):
+        # The account ID of the distributor.
+        # 
         # This parameter is required.
         self.account_no = account_no
+        # The number of adults.
+        # 
         # This parameter is required.
         self.adult_count = adult_count
+        # The check-in date in the format of yyyy-MM-dd.
+        # 
         # This parameter is required.
         self.check_in_date = check_in_date
+        # The check-out date in the format of yyyy-MM-dd.
+        # 
         # This parameter is required.
         self.check_out_date = check_out_date
+        # The number of children.
         self.child_count = child_count
+        # The list of children\\"s ages.
         self.children_ages_shrink = children_ages_shrink
+        # The number of rooms.
+        # 
         # This parameter is required.
         self.room_count = room_count
+        # The list of standard hotel IDs.
+        # 
         # This parameter is required.
         self.standard_hotel_ids_shrink = standard_hotel_ids_shrink
+        # TraceId
         self.tracer_id = tracer_id
 
     def validate(self):

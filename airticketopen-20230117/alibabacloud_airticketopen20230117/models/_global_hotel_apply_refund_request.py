@@ -12,11 +12,17 @@ class GlobalHotelApplyRefundRequest(DaraModel):
         refund_reason: str = None,
         tracer_id: str = None,
     ):
+        # The distributor account ID.
+        # 
         # This parameter is required.
         self.account_no = account_no
+        # The sales order number.
+        # 
         # This parameter is required.
         self.order_no = order_no
+        # The refund reason.
         self.refund_reason = refund_reason
+        # TraceId
         self.tracer_id = tracer_id
 
     def validate(self):

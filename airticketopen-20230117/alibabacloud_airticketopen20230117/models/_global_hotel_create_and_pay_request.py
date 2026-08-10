@@ -18,18 +18,31 @@ class GlobalHotelCreateAndPayRequest(DaraModel):
         room_count: int = None,
         tracer_id: str = None,
     ):
+        # The distributor account ID.
+        # 
         # This parameter is required.
         self.account_no = account_no
+        # The contact information.
+        # 
         # This parameter is required.
         self.contact = contact
+        # The external order number.
+        # 
         # This parameter is required.
         self.external_order_no = external_order_no
+        # The guests grouped by room.
+        # 
         # This parameter is required.
         self.guests = guests
+        # The offer ID.
+        # 
         # This parameter is required.
         self.item_offer_id = item_offer_id
+        # The number of rooms.
+        # 
         # This parameter is required.
         self.room_count = room_count
+        # TraceId
         self.tracer_id = tracer_id
 
     def validate(self):
@@ -113,10 +126,15 @@ class GlobalHotelCreateAndPayRequestGuests(DaraModel):
         last_name: str = None,
         tracer_id: str = None,
     ):
+        # The first name.
+        # 
         # This parameter is required.
         self.first_name = first_name
+        # The last name.
+        # 
         # This parameter is required.
         self.last_name = last_name
+        # TraceId
         self.tracer_id = tracer_id
 
     def validate(self):
@@ -160,13 +178,21 @@ class GlobalHotelCreateAndPayRequestContact(DaraModel):
         phone: str = None,
         tracer_id: str = None,
     ):
+        # The email address of the contact.
+        # 
         # This parameter is required.
         self.email = email
+        # The first name of the contact.
+        # 
         # This parameter is required.
         self.first_name = first_name
+        # The last name of the contact.
+        # 
         # This parameter is required.
         self.last_name = last_name
+        # The phone number of the contact.
         self.phone = phone
+        # TraceId
         self.tracer_id = tracer_id
 
     def validate(self):

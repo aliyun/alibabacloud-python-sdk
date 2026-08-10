@@ -13,12 +13,19 @@ class GlobalHotelSearchHotelListRequest(DaraModel):
         page_size: int = None,
         tracer_id: str = None,
     ):
+        # The distributor account ID.
+        # 
         # This parameter is required.
         self.account_no = account_no
+        # The city code.
+        # 
         # This parameter is required.
         self.city_code = city_code
+        # The page number. Pages start from 1.
         self.page_no = page_no
+        # The number of entries per page.
         self.page_size = page_size
+        # traceId
         self.tracer_id = tracer_id
 
     def validate(self):

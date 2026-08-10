@@ -17,11 +17,17 @@ class GlobalHotelSearchCityPageResponseBody(DaraModel):
         success: bool = None,
         tracer_id: str = None,
     ):
+        # The business data.
         self.data = data
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_msg = error_msg
+        # The unique request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
+        # TraceId
         self.tracer_id = tracer_id
 
     def validate(self):
@@ -83,8 +89,11 @@ class GlobalHotelSearchCityPageResponseBodyData(DaraModel):
         has_next: bool = None,
         total: int = None,
     ):
+        # The list of cities.
         self.cities = cities
+        # Indicates whether there is a next page.
         self.has_next = has_next
+        # The total number of entries.
         self.total = total
 
     def validate(self):
@@ -138,17 +147,23 @@ class GlobalHotelSearchCityPageResponseBodyDataCities(DaraModel):
         level: int = None,
         parent_code: int = None,
         region: int = None,
-        type: int = None,
     ):
+        # The Chinese name of the city.
         self.cn_name = cn_name
+        # The city code.
         self.code = code
+        # The country code.
         self.country = country
+        # The country code in ISO 3166-1 alpha-2 format.
         self.country_code = country_code
+        # The English name of the city.
         self.en_name = en_name
+        # The administrative level.
         self.level = level
+        # The parent city code.
         self.parent_code = parent_code
+        # The region.
         self.region = region
-        self.type = type
 
     def validate(self):
         pass
@@ -182,9 +197,6 @@ class GlobalHotelSearchCityPageResponseBodyDataCities(DaraModel):
         if self.region is not None:
             result['Region'] = self.region
 
-        if self.type is not None:
-            result['Type'] = self.type
-
         return result
 
     def from_map(self, m: dict = None):
@@ -212,9 +224,6 @@ class GlobalHotelSearchCityPageResponseBodyDataCities(DaraModel):
 
         if m.get('Region') is not None:
             self.region = m.get('Region')
-
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
 
         return self
 

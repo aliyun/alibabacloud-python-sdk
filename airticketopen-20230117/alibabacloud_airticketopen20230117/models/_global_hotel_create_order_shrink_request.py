@@ -15,18 +15,31 @@ class GlobalHotelCreateOrderShrinkRequest(DaraModel):
         room_count: int = None,
         tracer_id: str = None,
     ):
+        # The distributor account ID.
+        # 
         # This parameter is required.
         self.account_no = account_no
+        # The contact information.
+        # 
         # This parameter is required.
         self.contact_shrink = contact_shrink
+        # The external order number.
+        # 
         # This parameter is required.
         self.external_order_no = external_order_no
+        # The guests grouped by room.
+        # 
         # This parameter is required.
         self.guests_shrink = guests_shrink
+        # The offer ID.
+        # 
         # This parameter is required.
         self.item_offer_id = item_offer_id
+        # The number of rooms.
+        # 
         # This parameter is required.
         self.room_count = room_count
+        # TraceId
         self.tracer_id = tracer_id
 
     def validate(self):

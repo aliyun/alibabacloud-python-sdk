@@ -1,3 +1,11 @@
+2026-08-10 Version: 7.0.0
+- Update API globalHotelBatchGetHotelDetail: add response parameters Body.Data.Hotels.$.Facilities.$.Type.
+- Update API globalHotelBatchGetHotelDetail: delete response parameters Body.Data.Hotels.$.Facilities.$.FacilityId.
+- Update API globalHotelQueryOrder: add response parameters Body.Data.RoomStays.$.Status.
+- Update API globalHotelQueryOrder: delete response parameters Body.Data.RoomStays.$.RoomName.
+- Update API globalHotelSearchCityPage: delete response parameters Body.Data.Cities.$.Type.
+
+
 2026-08-03 Version: 6.1.0
 - Support API applyRefund.
 - Support API batchGetHotelDetail.

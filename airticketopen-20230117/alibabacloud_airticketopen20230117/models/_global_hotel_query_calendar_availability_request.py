@@ -19,20 +19,35 @@ class GlobalHotelQueryCalendarAvailabilityRequest(DaraModel):
         standard_hotel_ids: List[str] = None,
         tracer_id: str = None,
     ):
+        # The account ID of the distributor.
+        # 
         # This parameter is required.
         self.account_no = account_no
+        # The number of adults.
+        # 
         # This parameter is required.
         self.adult_count = adult_count
+        # The end date of the check-in date range in the format yyyy-MM-dd.
+        # 
         # This parameter is required.
         self.check_in_date_end = check_in_date_end
+        # The start date of the check-in date range in the format yyyy-MM-dd.
+        # 
         # This parameter is required.
         self.check_in_date_start = check_in_date_start
+        # The number of children.
         self.child_count = child_count
+        # The list of children\\"s ages.
         self.children_ages = children_ages
+        # The number of rooms.
+        # 
         # This parameter is required.
         self.room_count = room_count
+        # The IDs of the hotels.
+        # 
         # This parameter is required.
         self.standard_hotel_ids = standard_hotel_ids
+        # TraceId
         self.tracer_id = tracer_id
 
     def validate(self):

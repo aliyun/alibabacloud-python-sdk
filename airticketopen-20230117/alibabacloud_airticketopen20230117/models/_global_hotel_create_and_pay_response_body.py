@@ -15,11 +15,17 @@ class GlobalHotelCreateAndPayResponseBody(DaraModel):
         success: bool = None,
         tracer_id: str = None,
     ):
+        # The business data.
         self.data = data
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_msg = error_msg
+        # The unique request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
+        # TraceId
         self.tracer_id = tracer_id
 
     def validate(self):
@@ -80,7 +86,9 @@ class GlobalHotelCreateAndPayResponseBodyData(DaraModel):
         order_no: str = None,
         tracer_id: str = None,
     ):
+        # The sales order number.
         self.order_no = order_no
+        # TraceId
         self.tracer_id = tracer_id
 
     def validate(self):

@@ -17,11 +17,17 @@ class GlobalHotelBatchGetHotelDetailResponseBody(DaraModel):
         success: bool = None,
         tracer_id: str = None,
     ):
+        # The business data.
         self.data = data
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_msg = error_msg
+        # The unique ID of the request.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
+        # traceId
         self.tracer_id = tracer_id
 
     def validate(self):
@@ -81,6 +87,7 @@ class GlobalHotelBatchGetHotelDetailResponseBodyData(DaraModel):
         self,
         hotels: List[main_models.GlobalHotelBatchGetHotelDetailResponseBodyDataHotels] = None,
     ):
+        # The list of hotel details.
         self.hotels = hotels
 
     def validate(self):
@@ -140,30 +147,55 @@ class GlobalHotelBatchGetHotelDetailResponseBodyDataHotels(DaraModel):
         tel: str = None,
         timezone: str = None,
     ):
+        # The address of the hotel.
         self.address = address
+        # The default check-in time.
         self.check_in_time = check_in_time
+        # The default check-out time.
         self.check_out_time = check_out_time
+        # The city name.
         self.city_name = city_name
+        # The country name.
         self.country_name = country_name
+        # The description of the hotel.
         self.description = description
+        # The error code for the individual hotel.
         self.error_code = error_code
+        # The error message for the individual hotel.
         self.error_message = error_message
+        # The list of facilities.
         self.facilities = facilities
+        # The hotel name.
         self.hotel_name = hotel_name
+        # The Chinese name of the hotel.
         self.hotel_name_cn = hotel_name_cn
+        # The type of the hotel. Valid values: LUXURY, DELUXE, and COMFORT.
         self.hotel_type = hotel_type
+        # The latitude of the hotel.
         self.latitude = latitude
+        # The longitude of the hotel.
         self.longitude = longitude
+        # The year the hotel opened.
         self.opening_time = opening_time
+        # The list of pictures.
         self.pictures = pictures
+        # The hotel policy information.
         self.policies = policies
+        # The source of the latitude and longitude coordinates.
         self.position_type = position_type
+        # The year the hotel was last renovated.
         self.renovation_time = renovation_time
+        # The list of room types.
         self.room_types = room_types
+        # The standard hotel ID on the platform.
         self.standard_hotel_id = standard_hotel_id
+        # The star rating of the hotel.
         self.star = star
+        # The status of the hotel. Valid values: ONLINE and OFFLINE.
         self.status = status
+        # The phone number of the hotel.
         self.tel = tel
+        # The time zone of the hotel in IANA ID format.
         self.timezone = timezone
 
     def validate(self):
@@ -378,14 +410,23 @@ class GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypes(DaraModel):
         window_type: str = None,
         window_type_defect: str = None,
     ):
+        # The list of bed types.
         self.bed_type = bed_type
+        # The list of room type pictures.
         self.pictures = pictures
+        # The room type name.
         self.room_name = room_name
+        # The Chinese room type name.
         self.room_name_cn = room_name_cn
+        # The room size.
         self.room_size = room_size
+        # The size unit (SQM/SQFT).
         self.room_size_unit = room_size_unit
+        # The platform standard room type ID.
         self.standard_room_id = standard_room_id
+        # The window type.
         self.window_type = window_type
+        # The defective window type code.
         self.window_type_defect = window_type_defect
 
     def validate(self):
@@ -485,13 +526,21 @@ class GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesPictures(Dara
         second_category_name: str = None,
         url: str = None,
     ):
+        # The description of the picture.
         self.description = description
+        # The first-level category code.
         self.first_category_code = first_category_code
+        # The first-level category name.
         self.first_category_name = first_category_name
+        # Indicates whether the picture is the cover image.
         self.is_head_pic = is_head_pic
+        # The picture ID. The URL takes precedence.
         self.picture_id = picture_id
+        # The second-level category code.
         self.second_category_code = second_category_code
+        # The second-level category name.
         self.second_category_name = second_category_name
+        # The URL of the picture.
         self.url = url
 
     def validate(self):
@@ -563,8 +612,11 @@ class GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesBedType(DaraM
         bed_size: str = None,
         bed_type: str = None,
     ):
+        # The number of beds.
         self.bed_count = bed_count
+        # The bed width in meters.
         self.bed_size = bed_size
+        # The bed type name.
         self.bed_type = bed_type
 
     def validate(self):
@@ -606,8 +658,11 @@ class GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsPolicies(DaraModel):
         group_type_id: str = None,
         items: List[main_models.GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsPoliciesItems] = None,
     ):
+        # The group name.
         self.group_name = group_name
+        # The group type ID.
         self.group_type_id = group_type_id
+        # The list of policy items.
         self.items = items
 
     def validate(self):
@@ -658,9 +713,13 @@ class GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsPoliciesItems(DaraMode
         item_type_id: str = None,
         value: str = None,
     ):
+        # The list of child items.
         self.children = children
+        # The item name.
         self.item_name = item_name
+        # The item type ID.
         self.item_type_id = item_type_id
+        # The text value.
         self.value = value
 
     def validate(self):
@@ -713,13 +772,21 @@ class GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsPictures(DaraModel):
         second_category_name: str = None,
         url: str = None,
     ):
+        # The description of the picture.
         self.description = description
+        # The first-level category code.
         self.first_category_code = first_category_code
+        # The first-level category name.
         self.first_category_name = first_category_name
+        # Indicates whether the picture is the cover image.
         self.is_head_pic = is_head_pic
+        # The picture ID. The URL takes precedence.
         self.picture_id = picture_id
+        # The second-level category code.
         self.second_category_code = second_category_code
+        # The second-level category name.
         self.second_category_name = second_category_name
+        # The URL of the picture.
         self.url = url
 
     def validate(self):
@@ -788,12 +855,15 @@ class GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsFacilities(DaraModel):
     def __init__(
         self,
         description: str = None,
-        facility_id: str = None,
         name: str = None,
+        type: str = None,
     ):
+        # The facility description.
         self.description = description
-        self.facility_id = facility_id
+        # The name of the facility.
         self.name = name
+        # The type of the facility.
+        self.type = type
 
     def validate(self):
         pass
@@ -806,11 +876,11 @@ class GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsFacilities(DaraModel):
         if self.description is not None:
             result['Description'] = self.description
 
-        if self.facility_id is not None:
-            result['FacilityId'] = self.facility_id
-
         if self.name is not None:
             result['Name'] = self.name
+
+        if self.type is not None:
+            result['Type'] = self.type
 
         return result
 
@@ -819,11 +889,11 @@ class GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsFacilities(DaraModel):
         if m.get('Description') is not None:
             self.description = m.get('Description')
 
-        if m.get('FacilityId') is not None:
-            self.facility_id = m.get('FacilityId')
-
         if m.get('Name') is not None:
             self.name = m.get('Name')
+
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
 
         return self
 

@@ -17,11 +17,17 @@ class GlobalHotelSearchHotelListResponseBody(DaraModel):
         success: bool = None,
         tracer_id: str = None,
     ):
+        # The business data.
         self.data = data
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_msg = error_msg
+        # The unique request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
+        # traceId
         self.tracer_id = tracer_id
 
     def validate(self):
@@ -82,7 +88,9 @@ class GlobalHotelSearchHotelListResponseBodyData(DaraModel):
         hotels: List[main_models.GlobalHotelSearchHotelListResponseBodyDataHotels] = None,
         total: int = None,
     ):
+        # The list of hotels.
         self.hotels = hotels
+        # The total number of hotels.
         self.total = total
 
     def validate(self):
@@ -128,10 +136,15 @@ class GlobalHotelSearchHotelListResponseBodyDataHotels(DaraModel):
         standard_hotel_id: str = None,
         status: str = None,
     ):
+        # The city name.
         self.city_name = city_name
+        # The country name.
         self.country_name = country_name
+        # The hotel name.
         self.hotel_name = hotel_name
+        # The platform standard hotel ID.
         self.standard_hotel_id = standard_hotel_id
+        # The hotel status (ONLINE/OFFLINE).
         self.status = status
 
     def validate(self):

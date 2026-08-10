@@ -15,11 +15,17 @@ class GlobalHotelApplyRefundResponseBody(DaraModel):
         success: bool = None,
         tracer_id: str = None,
     ):
+        # The business data.
         self.data = data
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_msg = error_msg
+        # The unique request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
+        # TraceId
         self.tracer_id = tracer_id
 
     def validate(self):
@@ -82,9 +88,13 @@ class GlobalHotelApplyRefundResponseBodyData(DaraModel):
         total_refund_amount: main_models.GlobalHotelApplyRefundResponseBodyDataTotalRefundAmount = None,
         tracer_id: str = None,
     ):
+        # The after-sales refund order ID.
         self.sell_refund_order_id = sell_refund_order_id
+        # The total penalty amount.
         self.total_penalty_amount = total_penalty_amount
+        # The total refund amount.
         self.total_refund_amount = total_refund_amount
+        # TraceId
         self.tracer_id = tracer_id
 
     def validate(self):
@@ -137,8 +147,11 @@ class GlobalHotelApplyRefundResponseBodyDataTotalRefundAmount(DaraModel):
         currency: str = None,
         tracer_id: str = None,
     ):
+        # The amount in the smallest currency unit.
         self.amount = amount
+        # The currency code in ISO 4217 format.
         self.currency = currency
+        # TraceId
         self.tracer_id = tracer_id
 
     def validate(self):
@@ -180,8 +193,11 @@ class GlobalHotelApplyRefundResponseBodyDataTotalPenaltyAmount(DaraModel):
         currency: str = None,
         tracer_id: str = None,
     ):
+        # The amount in the smallest currency unit.
         self.amount = amount
+        # The currency code in ISO 4217 format.
         self.currency = currency
+        # TraceId
         self.tracer_id = tracer_id
 
     def validate(self):

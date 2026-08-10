@@ -12,10 +12,15 @@ class GlobalHotelQueryOrderRequest(DaraModel):
         order_no: str = None,
         tracer_id: str = None,
     ):
+        # The distributor account ID.
+        # 
         # This parameter is required.
         self.account_no = account_no
+        # The external order number. At least one of ExternalOrderNo and OrderNo is required.
         self.external_order_no = external_order_no
+        # The sales order number. At least one of OrderNo and ExternalOrderNo is required.
         self.order_no = order_no
+        # TracerId
         self.tracer_id = tracer_id
 
     def validate(self):
