@@ -1,0 +1,45 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from ._describe_projects_request import DescribeProjectsRequest
+from ._describe_projects_response_body import DescribeProjectsResponseBody
+from ._describe_projects_response import DescribeProjectsResponse
+from ._describe_scan_results_by_engine_request import DescribeScanResultsByEngineRequest
+from ._describe_scan_results_by_engine_response_body import DescribeScanResultsByEngineResponseBody
+from ._describe_scan_results_by_engine_response import DescribeScanResultsByEngineResponse
+from ._describe_scans_request import DescribeScansRequest
+from ._describe_scans_response_body import DescribeScansResponseBody
+from ._describe_scans_response import DescribeScansResponse
+from ._describe_projects_response_body import DescribeProjectsResponseBodyItemsEngines
+from ._describe_projects_response_body import DescribeProjectsResponseBodyItemsSource
+from ._describe_projects_response_body import DescribeProjectsResponseBodyItems
+from ._describe_scan_results_by_engine_response_body import DescribeScanResultsByEngineResponseBodyItemsScaComponentCveDetails
+from ._describe_scan_results_by_engine_response_body import DescribeScanResultsByEngineResponseBodyItemsScaComponent
+from ._describe_scan_results_by_engine_response_body import DescribeScanResultsByEngineResponseBodyItemsTaintFlow
+from ._describe_scan_results_by_engine_response_body import DescribeScanResultsByEngineResponseBodyItems
+from ._describe_scans_response_body import DescribeScansResponseBodyItemsEngineSnapshot
+from ._describe_scans_response_body import DescribeScansResponseBodyItemsScanMetrics
+from ._describe_scans_response_body import DescribeScansResponseBodyItems
+
+__all__ = [
+    DescribeProjectsRequest,
+    DescribeProjectsResponseBody,
+    DescribeProjectsResponse,
+    DescribeScanResultsByEngineRequest,
+    DescribeScanResultsByEngineResponseBody,
+    DescribeScanResultsByEngineResponse,
+    DescribeScansRequest,
+    DescribeScansResponseBody,
+    DescribeScansResponse,
+    DescribeProjectsResponseBodyItemsEngines,
+    DescribeProjectsResponseBodyItemsSource,
+    DescribeProjectsResponseBodyItems,
+    DescribeScanResultsByEngineResponseBodyItemsScaComponentCveDetails,
+    DescribeScanResultsByEngineResponseBodyItemsScaComponent,
+    DescribeScanResultsByEngineResponseBodyItemsTaintFlow,
+    DescribeScanResultsByEngineResponseBodyItems,
+    DescribeScansResponseBodyItemsEngineSnapshot,
+    DescribeScansResponseBodyItemsScanMetrics,
+    DescribeScansResponseBodyItems
+]
