@@ -1,3 +1,10 @@
+2026-08-10 Version: 3.22.2
+- Update API FaceDuplicationCheckIntl: add request parameters UpdateFaceIfUserExists.
+- Update API FaceVerifyIntl: add request parameters UpdateFaceIfUserExists.
+- Update API Initialize: add request parameters UpdateFaceIfUserExists.
+- Update API InitializeV2: add request parameters UpdateFaceIfUserExists.
+
+
 2026-07-24 Version: 3.22.1
 - Update API FaceDuplicationCheckIntl: add request parameters FaceAttributeCheck.
 - Update API FaceLiveness: add request parameters FaceAttributeCheck.

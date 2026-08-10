@@ -4203,6 +4203,8 @@ class Client(OpenApiClient):
             body['TargetFacePicture'] = request.target_face_picture
         if not DaraCore.is_null(request.target_face_picture_url):
             body['TargetFacePictureUrl'] = request.target_face_picture_url
+        if not DaraCore.is_null(request.update_face_if_user_exists):
+            body['UpdateFaceIfUserExists'] = request.update_face_if_user_exists
         if not DaraCore.is_null(request.verify_model):
             body['VerifyModel'] = request.verify_model
         req = open_api_util_models.OpenApiRequest(
@@ -4267,6 +4269,8 @@ class Client(OpenApiClient):
             body['TargetFacePicture'] = request.target_face_picture
         if not DaraCore.is_null(request.target_face_picture_url):
             body['TargetFacePictureUrl'] = request.target_face_picture_url
+        if not DaraCore.is_null(request.update_face_if_user_exists):
+            body['UpdateFaceIfUserExists'] = request.update_face_if_user_exists
         if not DaraCore.is_null(request.verify_model):
             body['VerifyModel'] = request.verify_model
         req = open_api_util_models.OpenApiRequest(
@@ -4796,6 +4800,8 @@ class Client(OpenApiClient):
             query['TargetFacePictureFile'] = request.target_face_picture_file
         if not DaraCore.is_null(request.target_face_picture_url):
             query['TargetFacePictureUrl'] = request.target_face_picture_url
+        if not DaraCore.is_null(request.update_face_if_user_exists):
+            query['UpdateFaceIfUserExists'] = request.update_face_if_user_exists
         if not DaraCore.is_null(request.verify_model):
             query['VerifyModel'] = request.verify_model
         body = {}
@@ -4856,6 +4862,8 @@ class Client(OpenApiClient):
             query['TargetFacePictureFile'] = request.target_face_picture_file
         if not DaraCore.is_null(request.target_face_picture_url):
             query['TargetFacePictureUrl'] = request.target_face_picture_url
+        if not DaraCore.is_null(request.update_face_if_user_exists):
+            query['UpdateFaceIfUserExists'] = request.update_face_if_user_exists
         if not DaraCore.is_null(request.verify_model):
             query['VerifyModel'] = request.verify_model
         body = {}
@@ -5772,6 +5780,8 @@ class Client(OpenApiClient):
             query['TemplateRanCount'] = request.template_ran_count
         if not DaraCore.is_null(request.template_type):
             query['TemplateType'] = request.template_type
+        if not DaraCore.is_null(request.update_face_if_user_exists):
+            query['UpdateFaceIfUserExists'] = request.update_face_if_user_exists
         if not DaraCore.is_null(request.use_nfc):
             query['UseNFC'] = request.use_nfc
         if not DaraCore.is_null(request.verify_model):
@@ -5920,6 +5930,8 @@ class Client(OpenApiClient):
             query['TemplateRanCount'] = request.template_ran_count
         if not DaraCore.is_null(request.template_type):
             query['TemplateType'] = request.template_type
+        if not DaraCore.is_null(request.update_face_if_user_exists):
+            query['UpdateFaceIfUserExists'] = request.update_face_if_user_exists
         if not DaraCore.is_null(request.use_nfc):
             query['UseNFC'] = request.use_nfc
         if not DaraCore.is_null(request.verify_model):
@@ -6084,6 +6096,8 @@ class Client(OpenApiClient):
             query['TemplateRanCount'] = request.template_ran_count
         if not DaraCore.is_null(request.template_type):
             query['TemplateType'] = request.template_type
+        if not DaraCore.is_null(request.update_face_if_user_exists):
+            query['UpdateFaceIfUserExists'] = request.update_face_if_user_exists
         if not DaraCore.is_null(request.use_nfc):
             query['UseNFC'] = request.use_nfc
         if not DaraCore.is_null(request.verify_model):
@@ -6236,6 +6250,8 @@ class Client(OpenApiClient):
             query['TemplateRanCount'] = request.template_ran_count
         if not DaraCore.is_null(request.template_type):
             query['TemplateType'] = request.template_type
+        if not DaraCore.is_null(request.update_face_if_user_exists):
+            query['UpdateFaceIfUserExists'] = request.update_face_if_user_exists
         if not DaraCore.is_null(request.use_nfc):
             query['UseNFC'] = request.use_nfc
         if not DaraCore.is_null(request.verify_model):
