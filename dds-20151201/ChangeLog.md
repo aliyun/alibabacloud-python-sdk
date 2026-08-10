@@ -1,3 +1,6 @@
+2026-08-10 Version: 9.4.2
+- Generated python 2015-12-01 for Dds.
+
 2026-07-15 Version: 9.4.1
 - Update API CreateNode: add request parameters SearchDBInstanceClass.
 - Update API CreateNode: add request parameters SearchNodeCount.

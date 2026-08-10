@@ -19,21 +19,14 @@ class ModifyAuditLogFilterRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The type of logs collected by the audit log feature of the instance. Separate multiple types with commas (,). Valid values:
-        # 
-        # - **admin**: O\\&M and management operations
-        # 
-        # - **slow**: slow query logs
-        # 
-        # - **query**: query operations
-        # 
-        # - **insert**: insert operations
-        # 
-        # - **update**: update operations
-        # 
-        # - **delete**: delete operations
-        # 
-        # - **command**: protocol commands such as the aggregate method
+        # The collection types of audit logs. Separate multiple collection types with commas (,).
+        # - **admin**: O&M and management operations.
+        # - **slow**: Slow queries.
+        # - **query**: Query operations.
+        # - **insert**: Insert operations.  
+        # - **update**: Update operations.  
+        # - **delete**: Delete operations. 
+        # - **command**: Protocol commands, such as the aggregate method.
         # 
         # This parameter is required.
         self.filter = filter
@@ -42,10 +35,16 @@ class ModifyAuditLogFilterRequest(DaraModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The role of the node in the instance. Valid values:
+        # - **db**: shard node
+        # - **mongos**: mongos node
         # 
-        # - **primary**
         # 
-        # - **secondary**
+        # 
+        # 
+        # 
+        # 
+        # > Metric description
+        # > - This parameter applies only to sharded cluster instances. If this parameter is left empty, the default value db is used. You do not need to specify this parameter for replica set instances.
         self.role_type = role_type
 
     def validate(self):
