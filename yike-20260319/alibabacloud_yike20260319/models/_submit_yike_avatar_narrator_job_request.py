@@ -10,32 +10,42 @@ class SubmitYikeAvatarNarratorJobRequest(DaraModel):
         job_params: str = None,
         user_data: str = None,
     ):
-        # The task request content. The value is a JSON string that contains the following parameters:
+        # The node request content. JSON string that contains the following parameters:
         # 
         # - SceneType: string. The common scenario type. Valid values:
-        #   - creator-talk: knowledge explanation. Applicable to scenarios such as news, popular science, and financial explanation.
-        #   - avatar-broadcast: digital human broadcasting. A fixed single-shot scenario.
+        #   - creator-talk: knowledge explanation, suitable for news, science, and finance explanation scenarios.
+        #   - avatar-broadcast: digital human broadcast, fixed single-shot scenario.
+        #   - creator-sales-oneshot: influencer marketing, single-shot oral broadcast mixed-editing scenario.
         # - TextType: int. The text type. Valid values:
-        #   - 1: raw script. The system automatically converts product or news information into an oral broadcast script. This value is not supported for avatar-broadcast.
+        #   - 1: raw script (product or news information, automatically converted to oral broadcast script by the system. Not supported for avatar-broadcast).
         #   - 2: oral broadcast script.
-        # - TextContent: string. The text content. Maximum length: 10,000 characters.
-        # - UserMaterials: Array\\<Object\\>. The list of user materials. This parameter is not supported for avatar-broadcast. Fields:
-        #   - MediaId: the media asset ID. The ID of an image or video uploaded to Wanjing Yike.
+        # - TextContent: string. The text content. Maximum length: 10000 characters.
+        # - UserMaterials: Array<Object>. The user material list (not supported for avatar-broadcast). Contains the following fields:
+        #   - MediaId: the media asset ID (image or video uploaded to Wanjing Yike).
+        #   - Type: the media type (valid values: image, video).
+        #   - Action: the material usage method. Valid values:
+        #     - match: intelligently matches suitable segments from video materials based on the oral broadcast script.
+        #     - insert: intelligently determines the insertion position of video materials based on the oral broadcast script.
+        #     - insert_first: prepends the video material.
+        #     - insert_last: appends the video material.
         # - AvatarData: object. The digital human information.
-        #   - AvatarPortrait: required. String. The URL of the portrait image.
-        #   - AvatarVoice: optional. String. The URL of an audio file for voice cloning reference, or a voice ID from the built-in voice library. For more information, see the Wanjing Yike voice library. If this parameter is not specified, the system automatically selects a voice.
-        # - VoiceDuration: int. The expected oral broadcast duration. Set this parameter when TextType is set to 1. Unit: seconds. Default value: 60. The final video duration is slightly shorter than the expected duration.
-        # - AspectRatio: string. The video dimensions. Valid values: 16:9, 9:16, 4:3, and 3:4.
-        # - Resolution: string. The video resolution. Valid values: 720P and 1080P.
-        # - WithSubtitles: bool. Specifies whether to add subtitles. Valid values:
-        #   - true (default): Add subtitles.
-        #   - false: Do not add subtitles.
+        #   - AvatarPortrait: required. String. The portrait image URL.
+        #   - AvatarVoice: optional. String. An audio URL (used as a reference for voice cloning) or a voice ID from the library (refer to the Wanjing Yike voice library. The system selects automatically if not specified).
+        # - VoiceDuration: int. The expected oral broadcast duration. Set this parameter when TextType is 1. Unit: seconds. Default value: 60. The final video duration is slightly less than the expected duration.
+        # - AspectRatio: string. The output dimensions. Valid values: 16:9, 9:16, 4:3, 3:4.
+        # - Resolution: string. The video resolution. Valid values: 720P, 1080P.
+        # - WithSubtitles: bool. Specifies whether to include subtitles. Valid values:
+        #   - true: includes subtitles. This is the default value.
+        #   - false: does not include subtitles.
+        # - EnabledAICover: bool. Specifies whether to generate a cover image (AI-generated based on the oral broadcast content).
+        # - IPCharacter: object. The AI cover character. Specify either MediaId or MediaUrl.
+        # - EndCard: string. The video ending image (image media asset ID or URL). Commonly used for marketing CTA conversion.
         # 
         # This parameter is required.
         self.job_params = job_params
-        # The custom user parameter. The value is a JSON string that is returned as-is in the callback result, for example, newsKey.
+        # The custom user parameter. JSON string. The callback result carries this parameter as-is (for example, newsKey).
         # 
-        # The system reserved field NotifyAddress specifies the callback URL. The system sends a callback to this URL after the task is complete. Example: {"NotifyAddress": "http://xxx.callback.url"}.
+        # System reserved field: NotifyAddress. The callback URL. The system sends a callback to this URL after the task is completed. Example: {"NotifyAddress": "http://xxx.callback.url"}.
         self.user_data = user_data
 
     def validate(self):

@@ -12,10 +12,15 @@ class CreateInfiniteCanvasRequest(DaraModel):
         title: str = None,
         workspace_id: str = None,
     ):
+        # The cover URL.
         self.cover_url = cover_url
+        # The project ID.
         self.production_id = production_id
+        # The title of the infinite canvas.
+        # 
         # This parameter is required.
         self.title = title
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):

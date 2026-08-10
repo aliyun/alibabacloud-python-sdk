@@ -11,9 +11,13 @@ class UpdateInfiniteCanvasRequest(DaraModel):
         cover_url: str = None,
         title: str = None,
     ):
+        # The ID of the infinite canvas.
+        # 
         # This parameter is required.
         self.canvas_id = canvas_id
+        # The cover URL.
         self.cover_url = cover_url
+        # The title of the infinite canvas.
         self.title = title
 
     def validate(self):

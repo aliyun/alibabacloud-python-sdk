@@ -9,6 +9,8 @@ class GetInfiniteCanvasRequest(DaraModel):
         self,
         canvas_id: str = None,
     ):
+        # The ID of the infinite canvas.
+        # 
         # This parameter is required.
         self.canvas_id = canvas_id
 

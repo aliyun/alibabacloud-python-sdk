@@ -11,7 +11,9 @@ class GetInfiniteCanvasResponseBody(DaraModel):
         infinite_canvas: main_models.GetInfiniteCanvasResponseBodyInfiniteCanvas = None,
         request_id: str = None,
     ):
+        # The details of the infinite canvas.
         self.infinite_canvas = infinite_canvas
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -52,11 +54,17 @@ class GetInfiniteCanvasResponseBodyInfiniteCanvas(DaraModel):
         thumbnail: str = None,
         title: str = None,
     ):
+        # The ID of the infinite canvas.
         self.canvas_id = canvas_id
+        # The cover URL.
         self.cover_url = cover_url
+        # The creation time in UTC.
         self.gmt_create = gmt_create
+        # The modification time.
         self.gmt_modified = gmt_modified
+        # The thumbnail URL.
         self.thumbnail = thumbnail
+        # The title of the infinite canvas.
         self.title = title
 
     def validate(self):

@@ -1,3 +1,6 @@
+2026-08-10 Version: 2.2.1
+- Generated python 2026-03-19 for Yike.
+
 2026-08-05 Version: 2.2.0
 - Support API CreateInfiniteCanvas.
 - Support API DeleteInfiniteCanvas.

@@ -16,10 +16,15 @@ class ListInfiniteCanvasesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of infinite canvases.
         self.canvas_list = canvas_list
+        # The current page number. Default value: 1.
         self.page_no = page_no
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of infinite canvases.
         self.total_count = total_count
 
     def validate(self):
@@ -84,11 +89,17 @@ class ListInfiniteCanvasesResponseBodyCanvasList(DaraModel):
         thumbnail: str = None,
         title: str = None,
     ):
+        # The infinite canvas ID.
         self.canvas_id = canvas_id
+        # The cover URL.
         self.cover_url = cover_url
+        # The creation time, in milliseconds.
         self.gmt_create = gmt_create
+        # The last modification time.
         self.gmt_modified = gmt_modified
+        # The thumbnail height, in px.
         self.thumbnail = thumbnail
+        # The title of the infinite canvas.
         self.title = title
 
     def validate(self):

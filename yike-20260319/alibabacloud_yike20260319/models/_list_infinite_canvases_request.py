@@ -13,10 +13,19 @@ class ListInfiniteCanvasesRequest(DaraModel):
         sort_by: str = None,
         sort_order: str = None,
     ):
+        # The query keyword. Currently, only searching by infinite canvas ID is supported.
         self.keyword = keyword
+        # The current page number. Default value: 1.
         self.page_no = page_no
+        # The number of entries per page.
         self.page_size = page_size
+        # The field by which the results are sorted.
         self.sort_by = sort_by
+        # The sort order. Valid values:
+        # 
+        #  * asc: ascending order
+        # 
+        #  * desc: descending order
         self.sort_order = sort_order
 
     def validate(self):

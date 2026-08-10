@@ -10,7 +10,9 @@ class CreateInfiniteCanvasResponseBody(DaraModel):
         canvas_id: str = None,
         request_id: str = None,
     ):
+        # The canvas ID.
         self.canvas_id = canvas_id
+        # RequestId
         self.request_id = request_id
 
     def validate(self):

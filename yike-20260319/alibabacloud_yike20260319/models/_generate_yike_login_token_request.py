@@ -16,13 +16,28 @@ class GenerateYikeLoginTokenRequest(DaraModel):
         user_name: str = None,
         workspace_id: str = None,
     ):
+        # Specifies whether automatic creation of a project is enabled. Default value: false.
         self.auto_create_production = auto_create_production
+        # The token expiration time, in seconds. Default value: 30 days.
         self.expires = expires
+        # The nickname.
+        # 
+        # - Format check: The maximum length is 50 characters.
+        # - Special character check: Chinese characters, English letters, digits, _ \\ / () ] [
         self.nick_name = nick_name
+        # The role of the user in the project. Valid values:
+        # 
+        # - common: Regular member.
+        # - edit: Operator with editing permissions.
+        # - manage: Administrator.
         self.production_auth = production_auth
+        # The default credits granted to the user.
         self.sub_user_credit = sub_user_credit
+        # The tenant ID. Submit a ticket to create one.
         self.tenant = tenant
+        # The username.
         self.user_name = user_name
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
