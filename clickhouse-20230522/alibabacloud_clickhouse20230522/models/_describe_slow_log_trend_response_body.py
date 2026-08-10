@@ -13,7 +13,7 @@ class DescribeSlowLogTrendResponseBody(DaraModel):
         data: main_models.DescribeSlowLogTrendResponseBodyData = None,
         request_id: str = None,
     ):
-        # The data returned.
+        # The returned result.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -109,15 +109,15 @@ class DescribeSlowLogTrendResponseBodyDataResultSet(DaraModel):
         min_query_duration_ms: int = None,
         query_start_time: str = None,
     ):
-        # The average execution duration, in milliseconds, of slow SQL queries within the time interval.
+        # The average execution duration of slow SQL statements. Unit: ms. The minimum value is **1000**.
         self.avg_query_duration_ms = avg_query_duration_ms
-        # The number of slow SQL queries in the time interval.
+        # The total number of SQL statements within the current time period.
         self.cnt = cnt
-        # The maximum execution duration, in milliseconds, of slow SQL queries within the time interval.
+        # The maximum execution duration of slow SQL statements. Unit: ms. The minimum value is **1000**.
         self.max_query_duration_ms = max_query_duration_ms
-        # The minimum execution duration, in milliseconds, of slow SQL queries within the time interval.
+        # The minimum execution duration of slow SQL statements. Unit: ms. The minimum value is **1000**.
         self.min_query_duration_ms = min_query_duration_ms
-        # The start of the time interval for the data point. The time is in UTC and uses the yyyy-MM-dd hh:mm:ss format.
+        # The time when the query starts. Format: yyyy-MM-dd hh:mm:ss (UTC).
         self.query_start_time = query_start_time
 
     def validate(self):

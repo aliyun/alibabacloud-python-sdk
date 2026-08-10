@@ -5228,6 +5228,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.modify_langfuse_project_membership_with_options_async(request, runtime)
 
+    def modify_langfuse_security_iplist_with_options(
+        self,
+        request: main_models.ModifyLangfuseSecurityIPListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyLangfuseSecurityIPListResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.group_name):
+            query['GroupName'] = request.group_name
+        if not DaraCore.is_null(request.modify_mode):
+            query['ModifyMode'] = request.modify_mode
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.security_iplist):
+            query['SecurityIPList'] = request.security_iplist
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyLangfuseSecurityIPList',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyLangfuseSecurityIPListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_langfuse_security_iplist_with_options_async(
+        self,
+        request: main_models.ModifyLangfuseSecurityIPListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyLangfuseSecurityIPListResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.group_name):
+            query['GroupName'] = request.group_name
+        if not DaraCore.is_null(request.modify_mode):
+            query['ModifyMode'] = request.modify_mode
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.security_iplist):
+            query['SecurityIPList'] = request.security_iplist
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyLangfuseSecurityIPList',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyLangfuseSecurityIPListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_langfuse_security_iplist(
+        self,
+        request: main_models.ModifyLangfuseSecurityIPListRequest,
+    ) -> main_models.ModifyLangfuseSecurityIPListResponse:
+        runtime = RuntimeOptions()
+        return self.modify_langfuse_security_iplist_with_options(request, runtime)
+
+    async def modify_langfuse_security_iplist_async(
+        self,
+        request: main_models.ModifyLangfuseSecurityIPListRequest,
+    ) -> main_models.ModifyLangfuseSecurityIPListResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_langfuse_security_iplist_with_options_async(request, runtime)
+
     def modify_security_iplist_with_options(
         self,
         request: main_models.ModifySecurityIPListRequest,

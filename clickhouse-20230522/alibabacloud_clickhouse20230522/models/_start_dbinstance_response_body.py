@@ -11,7 +11,7 @@ class StartDBInstanceResponseBody(DaraModel):
         data: main_models.StartDBInstanceResponseBodyData = None,
         request_id: str = None,
     ):
-        # The data returned.
+        # The returned result.
         self.data = data
         # The request ID.
         self.request_id = request_id

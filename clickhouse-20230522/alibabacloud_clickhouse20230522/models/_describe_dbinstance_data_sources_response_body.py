@@ -54,13 +54,13 @@ class DescribeDBInstanceDataSourcesResponseBodyData(DaraModel):
         schemas: str = None,
         tables: List[str] = None,
     ):
-        # The columns.
+        # The column types.
         self.columns = columns
         # The cluster ID.
         self.dbinstance_id = dbinstance_id
-        # The account.
+        # The accounts.
         self.schemas = schemas
-        # The tables.
+        # The list of tables.
         self.tables = tables
 
     def validate(self):
@@ -125,15 +125,14 @@ class DescribeDBInstanceDataSourcesResponseBodyDataColumns(DaraModel):
         self.comment = comment
         # The database name.
         self.dbname = dbname
-        # Indicates whether the column is the primary key of the table. Valid values:
+        # Indicates whether the column is a primary key. Valid values:
         # 
-        # - **true**
-        # 
-        # - **false**
+        # - **true**: The column is a primary key.
+        # - **false**: The column is not a primary key.
         self.primary_key = primary_key
         # The table name.
         self.table_name = table_name
-        # The type of the stored data.
+        # The data type of the stored data.
         self.type = type
 
     def validate(self):

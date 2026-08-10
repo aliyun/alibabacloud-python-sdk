@@ -15,11 +15,11 @@ class ModifyDBInstanceConnectionStringRequest(DaraModel):
         disable_ports: str = None,
         region_id: str = None,
     ):
-        # The computing group ID.
+        # The compute group ID.
         self.computing_group_id = computing_group_id
-        # The connection string.
+        # The endpoint.
         self.connection_string = connection_string
-        # The connection string prefix.
+        # The prefix of the database endpoint.
         self.connection_string_prefix = connection_string_prefix
         # The cluster ID.
         # 
@@ -27,18 +27,12 @@ class ModifyDBInstanceConnectionStringRequest(DaraModel):
         self.dbinstance_id = dbinstance_id
         # The network type. Valid values:
         # 
-        # - `Vpc`: VPC
-        # 
-        # - `Public`: public network
+        # - Vpc: VPC network.
+        # - Public: public network.
         self.dbinstance_net_type = dbinstance_net_type
-        # - The database ports to disable. You can specify multiple ports, separated by commas.
-        # 
-        # - This parameter is supported only for clusters with a kernel version of 24.10.1.11098_1 or later.
-        # 
-        # 
-        #   >Notice: 
-        # 
-        #   This parameter is not supported for clusters that were upgraded to kernel version 24.10.1.11098_1 or later from an earlier version.
+        # - Disables specified database ports. You can specify multiple ports separated by commas (,).
+        # - Only clusters with a kernel version of 24.10.1.11098_1 or later support this parameter.
+        # >Notice: If the cluster was created with a version earlier than 24.10.1.11098_1 and later upgraded to version 24.10.1.11098_1 or later, this parameter is not supported.</notice>
         self.disable_ports = disable_ports
         # The region ID.
         # 

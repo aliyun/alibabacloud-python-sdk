@@ -5,15 +5,15 @@ from __future__ import annotations
 from alibabacloud_clickhouse20230522 import models as main_models
 from darabonba.model import DaraModel
 
-class ModifySecurityIPListResponseBody(DaraModel):
+class ModifyLangfuseSecurityIPListResponseBody(DaraModel):
     def __init__(
         self,
-        data: main_models.ModifySecurityIPListResponseBodyData = None,
+        data: main_models.ModifyLangfuseSecurityIPListResponseBodyData = None,
         request_id: str = None,
     ):
-        # The returned data.
+        # The returned result.
         self.data = data
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -36,7 +36,7 @@ class ModifySecurityIPListResponseBody(DaraModel):
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Data') is not None:
-            temp_model = main_models.ModifySecurityIPListResponseBodyData()
+            temp_model = main_models.ModifyLangfuseSecurityIPListResponseBodyData()
             self.data = temp_model.from_map(m.get('Data'))
 
         if m.get('RequestId') is not None:
@@ -44,7 +44,7 @@ class ModifySecurityIPListResponseBody(DaraModel):
 
         return self
 
-class ModifySecurityIPListResponseBodyData(DaraModel):
+class ModifyLangfuseSecurityIPListResponseBodyData(DaraModel):
     def __init__(
         self,
         dbinstance_id: int = None,
@@ -56,17 +56,17 @@ class ModifySecurityIPListResponseBodyData(DaraModel):
         task_id: int = None,
         whitelist_net_type: str = None,
     ):
-        # The cluster ID.
+        # The instance ID.
         self.dbinstance_id = dbinstance_id
-        # The cluster name.
+        # The Langfuse instance ID.
         self.dbinstance_name = dbinstance_name
-        # The group name.
+        # The name of the whitelist group.
         self.group_name = group_name
         # The group tag.
         self.group_tag = group_tag
-        # The list of IP addresses in the whitelist group.
+        # The IP whitelist.
         self.security_iplist = security_iplist
-        # The IP address type.
+        # The IP address type. The value is fixed to IPv4. IPv6 is not supported.
         self.security_iptype = security_iptype
         # The task ID.
         self.task_id = task_id

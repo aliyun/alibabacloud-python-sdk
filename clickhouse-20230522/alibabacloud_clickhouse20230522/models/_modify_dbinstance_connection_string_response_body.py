@@ -52,13 +52,13 @@ class ModifyDBInstanceConnectionStringResponseBodyData(DaraModel):
         dbinstance_name: str = None,
         disabled_ports: str = None,
     ):
-        # The connection string.
+        # The endpoint.
         self.connection_string = connection_string
         # The cluster ID.
         self.dbinstance_id = dbinstance_id
         # The cluster name.
         self.dbinstance_name = dbinstance_name
-        # The disabled database ports.
+        # The database ports that are disabled.
         self.disabled_ports = disabled_ports
 
     def validate(self):

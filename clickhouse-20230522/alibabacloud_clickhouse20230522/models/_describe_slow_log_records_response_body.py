@@ -13,7 +13,7 @@ class DescribeSlowLogRecordsResponseBody(DaraModel):
         data: main_models.DescribeSlowLogRecordsResponseBodyData = None,
         request_id: str = None,
     ):
-        # The result.
+        # The returned result.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -58,7 +58,7 @@ class DescribeSlowLogRecordsResponseBodyData(DaraModel):
         self.dbinstance_id = dbinstance_id
         # The cluster name.
         self.dbinstance_name = dbinstance_name
-        # The list of slow log records.
+        # The result set.
         self.result_set = result_set
         # The total number of records.
         self.total_count = total_count
@@ -124,27 +124,27 @@ class DescribeSlowLogRecordsResponseBodyDataResultSet(DaraModel):
         result_bytes: int = None,
         type: str = None,
     ):
-        # The IP address from which the query was initiated.
+        # The query address.
         self.initial_address = initial_address
         # The query ID.
         self.initial_query_id = initial_query_id
-        # The user who initiated the query.
+        # The query user.
         self.initial_user = initial_user
-        # The peak memory usage for the query. Unit: bytes.
+        # The peak memory usage of the query. Unit: bytes.
         self.memory_usage = memory_usage
-        # The statement that was being executed.
+        # The query statement being executed.
         self.query = query
-        # The execution duration of the slow query. The minimum value is **1000**. Unit: milliseconds.
+        # The execution duration of the slow SQL statement. The minimum value is **1000**. Unit: milliseconds.
         self.query_duration_ms = query_duration_ms
-        # The start time of the query. The time is in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The time when the query started. Format: yyyy-MM-dd hh:mm:ss (UTC).
         self.query_start_time = query_start_time
-        # The size of the scanned data. Unit: bytes.
+        # The size of scanned data. Unit: bytes.
         self.read_bytes = read_bytes
         # The number of rows read.
         self.read_rows = read_rows
         # The size of the result data. Unit: bytes.
         self.result_bytes = result_bytes
-        # The type of the slow query log.
+        # The slow log type.
         self.type = type
 
     def validate(self):

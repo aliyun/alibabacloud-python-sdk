@@ -13,7 +13,7 @@ class DescribeDBInstancesResponseBody(DaraModel):
         data: main_models.DescribeDBInstancesResponseBodyData = None,
         request_id: str = None,
     ):
-        # The response data.
+        # The returned result.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -137,55 +137,54 @@ class DescribeDBInstancesResponseBodyDataDBInstances(DaraModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
-        # The account ID.
+        # The user ID.
         self.ali_uid = ali_uid
         # The channel ID.
         self.bid = bid
-        # The billing method for the instance. Valid values:
+        # The billing method. Valid values:
         # 
-        # - `PrePaid`: subscription.
-        # 
-        # - `PostPaid`: pay-as-you-go.
+        # - PrePaid: subscription.
+        # - PostPaid: pay-as-you-go.
         self.charge_type = charge_type
-        # The instance creation time.
+        # The creation time.
         self.create_time = create_time
-        # The instance ID.
+        # The cluster ID.
         self.dbinstance_id = dbinstance_id
         # Indicates whether deletion protection is enabled.
         self.deletion_protection = deletion_protection
-        # The instance description.
+        # The parameter description.
         self.description = description
-        # The engine.
+        # The engine type.
         self.engine = engine
-        # The engine version.
+        # The DPI engine version.
         self.engine_version = engine_version
         # The expiration time.
         self.expire_time = expire_time
         # The lock mode.
         self.lock_mode = lock_mode
-        # The reason for the lock.
+        # The lock reason.
         self.lock_reason = lock_reason
-        # The maintenance window end time.
+        # The end time of the maintenance window.
         self.maintain_end_time = maintain_end_time
-        # The maintenance window start time.
+        # The start time of the maintenance window.
         self.maintain_start_time = maintain_start_time
         # The region ID.
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The maximum compute capacity for serverless elastic scaling.
+        # The maximum value for serverless elastic scaling.
         self.scale_max = scale_max
-        # The minimum compute capacity for serverless elastic scaling.
+        # The minimum value for serverless elastic scaling.
         self.scale_min = scale_min
         # The instance status.
         self.status = status
         # The instance storage type.
         self.storage_type = storage_type
-        # The tags attached to the instance.
+        # The tags.
         self.tags = tags
         # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # The VPC ID.
+        # VPC ID。
         self.vpc_id = vpc_id
         # The zone ID.
         self.zone_id = zone_id

@@ -13,7 +13,7 @@ class ModifyBackupPolicyRequest(DaraModel):
         preferred_backup_time: str = None,
         region_id: str = None,
     ):
-        # The number of days to retain backups.
+        # The number of days for which backups are retained.
         self.backup_retention_period = backup_retention_period
         # The cluster ID.
         # 
