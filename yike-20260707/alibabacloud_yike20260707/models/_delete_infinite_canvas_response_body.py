@@ -4,17 +4,14 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class SubmitVideoRenderJobResponseBody(DaraModel):
+class DeleteInfiniteCanvasResponseBody(DaraModel):
     def __init__(
         self,
-        error_code: str = None,
-        job_id: str = None,
+        canvas_id: str = None,
         request_id: str = None,
     ):
-        # The error code. This parameter is returned when the task is in the Failed state.
-        self.error_code = error_code
-        # The task ID.
-        self.job_id = job_id
+        # The ID of the infinite canvas.
+        self.canvas_id = canvas_id
         # The request ID.
         self.request_id = request_id
 
@@ -26,11 +23,8 @@ class SubmitVideoRenderJobResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
-
-        if self.job_id is not None:
-            result['JobId'] = self.job_id
+        if self.canvas_id is not None:
+            result['CanvasId'] = self.canvas_id
 
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -39,11 +33,8 @@ class SubmitVideoRenderJobResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-
-        if m.get('JobId') is not None:
-            self.job_id = m.get('JobId')
+        if m.get('CanvasId') is not None:
+            self.canvas_id = m.get('CanvasId')
 
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')

@@ -5,15 +5,13 @@ from __future__ import annotations
 from alibabacloud_yike20260707 import models as main_models
 from darabonba.model import DaraModel
 
-class GetVideoRenderJobResponseBody(DaraModel):
+class GetVideoTranslationJobResponseBody(DaraModel):
     def __init__(
         self,
-        job: main_models.GetVideoRenderJobResponseBodyJob = None,
+        job: main_models.GetVideoTranslationJobResponseBodyJob = None,
         request_id: str = None,
     ):
-        # The video rendering and composition task object.
         self.job = job
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -36,7 +34,7 @@ class GetVideoRenderJobResponseBody(DaraModel):
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Job') is not None:
-            temp_model = main_models.GetVideoRenderJobResponseBodyJob()
+            temp_model = main_models.GetVideoTranslationJobResponseBodyJob()
             self.job = temp_model.from_map(m.get('Job'))
 
         if m.get('RequestId') is not None:
@@ -44,40 +42,30 @@ class GetVideoRenderJobResponseBody(DaraModel):
 
         return self
 
-class GetVideoRenderJobResponseBodyJob(DaraModel):
+class GetVideoTranslationJobResponseBodyJob(DaraModel):
     def __init__(
         self,
+        duration: float = None,
         editing_project_id: str = None,
         error_code: str = None,
         error_message: str = None,
+        input: str = None,
         job_id: str = None,
-        language: str = None,
-        result: str = None,
+        job_parameters: str = None,
+        job_type: str = None,
+        output: str = None,
         status: str = None,
-        user_data: str = None,
     ):
-        # The online editing project ID, which can be used for secondary editing of the output video.
+        self.duration = duration
         self.editing_project_id = editing_project_id
-        # The error code. This parameter is returned when the task is in the Failed state.
         self.error_code = error_code
-        # The error message. This parameter is returned when the task is in the Failed state.
         self.error_message = error_message
-        # The task ID.
+        self.input = input
         self.job_id = job_id
-        # The narration language of the output video.
-        self.language = language
-        # The download URL of the rendered and composed video.
-        self.result = result
-        # The task status. Valid values:
-        # 
-        # - Created: The task is created.
-        # - Executing: The task is being executed.
-        # - Finished: The task is completed.
-        # - Failed: The task has failed.
-        # - Deleted: The task is deleted.
+        self.job_parameters = job_parameters
+        self.job_type = job_type
+        self.output = output
         self.status = status
-        # The custom user data in JSON format.
-        self.user_data = user_data
 
     def validate(self):
         pass
@@ -87,6 +75,9 @@ class GetVideoRenderJobResponseBodyJob(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.duration is not None:
+            result['Duration'] = self.duration
+
         if self.editing_project_id is not None:
             result['EditingProjectId'] = self.editing_project_id
 
@@ -96,25 +87,31 @@ class GetVideoRenderJobResponseBodyJob(DaraModel):
         if self.error_message is not None:
             result['ErrorMessage'] = self.error_message
 
+        if self.input is not None:
+            result['Input'] = self.input
+
         if self.job_id is not None:
             result['JobId'] = self.job_id
 
-        if self.language is not None:
-            result['Language'] = self.language
+        if self.job_parameters is not None:
+            result['JobParameters'] = self.job_parameters
 
-        if self.result is not None:
-            result['Result'] = self.result
+        if self.job_type is not None:
+            result['JobType'] = self.job_type
+
+        if self.output is not None:
+            result['Output'] = self.output
 
         if self.status is not None:
             result['Status'] = self.status
-
-        if self.user_data is not None:
-            result['UserData'] = self.user_data
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+
         if m.get('EditingProjectId') is not None:
             self.editing_project_id = m.get('EditingProjectId')
 
@@ -124,20 +121,23 @@ class GetVideoRenderJobResponseBodyJob(DaraModel):
         if m.get('ErrorMessage') is not None:
             self.error_message = m.get('ErrorMessage')
 
+        if m.get('Input') is not None:
+            self.input = m.get('Input')
+
         if m.get('JobId') is not None:
             self.job_id = m.get('JobId')
 
-        if m.get('Language') is not None:
-            self.language = m.get('Language')
+        if m.get('JobParameters') is not None:
+            self.job_parameters = m.get('JobParameters')
 
-        if m.get('Result') is not None:
-            self.result = m.get('Result')
+        if m.get('JobType') is not None:
+            self.job_type = m.get('JobType')
+
+        if m.get('Output') is not None:
+            self.output = m.get('Output')
 
         if m.get('Status') is not None:
             self.status = m.get('Status')
-
-        if m.get('UserData') is not None:
-            self.user_data = m.get('UserData')
 
         return self
 

@@ -39,9 +39,7 @@ class SubmitVideoTranslationJobRequest(DaraModel):
         # 
         # This parameter is required.
         self.job_type = job_type
-        # The output configuration JSON string.
-        # 
-        # This parameter is required.
+        # The output configuration JSON string. The OssUri value must be a folder.
         self.output = output
         # If not specified, the service generates a default title.
         self.title = title

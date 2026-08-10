@@ -4,12 +4,12 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class GetVideoRenderJobRequest(DaraModel):
+class GetVideoTranslationJobRequest(DaraModel):
     def __init__(
         self,
         job_id: str = None,
     ):
-        # The task ID.
+        # This parameter is required.
         self.job_id = job_id
 
     def validate(self):

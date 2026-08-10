@@ -8,18 +8,30 @@ from ._batch_get_medias_response import BatchGetMediasResponse
 from ._create_asset_category_request import CreateAssetCategoryRequest
 from ._create_asset_category_response_body import CreateAssetCategoryResponseBody
 from ._create_asset_category_response import CreateAssetCategoryResponse
+from ._create_infinite_canvas_request import CreateInfiniteCanvasRequest
+from ._create_infinite_canvas_response_body import CreateInfiniteCanvasResponseBody
+from ._create_infinite_canvas_response import CreateInfiniteCanvasResponse
 from ._delete_asset_category_request import DeleteAssetCategoryRequest
 from ._delete_asset_category_response_body import DeleteAssetCategoryResponseBody
 from ._delete_asset_category_response import DeleteAssetCategoryResponse
+from ._delete_infinite_canvas_request import DeleteInfiniteCanvasRequest
+from ._delete_infinite_canvas_response_body import DeleteInfiniteCanvasResponseBody
+from ._delete_infinite_canvas_response import DeleteInfiniteCanvasResponse
 from ._delete_medias_request import DeleteMediasRequest
 from ._delete_medias_response_body import DeleteMediasResponseBody
 from ._delete_medias_response import DeleteMediasResponse
+from ._generate_yike_login_token_request import GenerateYikeLoginTokenRequest
+from ._generate_yike_login_token_response_body import GenerateYikeLoginTokenResponseBody
+from ._generate_yike_login_token_response import GenerateYikeLoginTokenResponse
 from ._get_asset_category_request import GetAssetCategoryRequest
 from ._get_asset_category_response_body import GetAssetCategoryResponseBody
 from ._get_asset_category_response import GetAssetCategoryResponse
 from ._get_image_generation_job_request import GetImageGenerationJobRequest
 from ._get_image_generation_job_response_body import GetImageGenerationJobResponseBody
 from ._get_image_generation_job_response import GetImageGenerationJobResponse
+from ._get_infinite_canvas_request import GetInfiniteCanvasRequest
+from ._get_infinite_canvas_response_body import GetInfiniteCanvasResponseBody
+from ._get_infinite_canvas_response import GetInfiniteCanvasResponse
 from ._get_media_request import GetMediaRequest
 from ._get_media_response_body import GetMediaResponseBody
 from ._get_media_response import GetMediaResponse
@@ -35,6 +47,9 @@ from ._get_video_generation_job_response import GetVideoGenerationJobResponse
 from ._get_video_render_job_request import GetVideoRenderJobRequest
 from ._get_video_render_job_response_body import GetVideoRenderJobResponseBody
 from ._get_video_render_job_response import GetVideoRenderJobResponse
+from ._get_video_translation_job_request import GetVideoTranslationJobRequest
+from ._get_video_translation_job_response_body import GetVideoTranslationJobResponseBody
+from ._get_video_translation_job_response import GetVideoTranslationJobResponse
 from ._get_yike_account_credit_request import GetYikeAccountCreditRequest
 from ._get_yike_account_credit_response_body import GetYikeAccountCreditResponseBody
 from ._get_yike_account_credit_response import GetYikeAccountCreditResponse
@@ -47,6 +62,9 @@ from ._import_media_response import ImportMediaResponse
 from ._list_asset_categories_request import ListAssetCategoriesRequest
 from ._list_asset_categories_response_body import ListAssetCategoriesResponseBody
 from ._list_asset_categories_response import ListAssetCategoriesResponse
+from ._list_infinite_canvases_request import ListInfiniteCanvasesRequest
+from ._list_infinite_canvases_response_body import ListInfiniteCanvasesResponseBody
+from ._list_infinite_canvases_response import ListInfiniteCanvasesResponse
 from ._search_media_request import SearchMediaRequest
 from ._search_media_response_body import SearchMediaResponseBody
 from ._search_media_response import SearchMediaResponse
@@ -71,6 +89,9 @@ from ._submit_video_translation_job_response import SubmitVideoTranslationJobRes
 from ._update_asset_category_request import UpdateAssetCategoryRequest
 from ._update_asset_category_response_body import UpdateAssetCategoryResponseBody
 from ._update_asset_category_response import UpdateAssetCategoryResponse
+from ._update_infinite_canvas_request import UpdateInfiniteCanvasRequest
+from ._update_infinite_canvas_response_body import UpdateInfiniteCanvasResponseBody
+from ._update_infinite_canvas_response import UpdateInfiniteCanvasResponse
 from ._update_media_request import UpdateMediaRequest
 from ._update_media_response_body import UpdateMediaResponseBody
 from ._update_media_response import UpdateMediaResponse
@@ -87,6 +108,7 @@ from ._create_asset_category_response_body import CreateAssetCategoryResponseBod
 from ._get_asset_category_response_body import GetAssetCategoryResponseBodyCategory
 from ._get_asset_category_response_body import GetAssetCategoryResponseBodySubCategories
 from ._get_image_generation_job_response_body import GetImageGenerationJobResponseBodyImageGenerationJob
+from ._get_infinite_canvas_response_body import GetInfiniteCanvasResponseBodyInfiniteCanvas
 from ._get_media_response_body import GetMediaResponseBodyMediaInfoFileInfoListAudioStreamInfoList
 from ._get_media_response_body import GetMediaResponseBodyMediaInfoFileInfoListFileBasicInfo
 from ._get_media_response_body import GetMediaResponseBodyMediaInfoFileInfoListSubtitleStreamInfoList
@@ -101,9 +123,11 @@ from ._get_media_comprehension_job_response_body import GetMediaComprehensionJob
 from ._get_remake_script_job_response_body import GetRemakeScriptJobResponseBodyJob
 from ._get_video_generation_job_response_body import GetVideoGenerationJobResponseBodyVideoGenerationJob
 from ._get_video_render_job_response_body import GetVideoRenderJobResponseBodyJob
+from ._get_video_translation_job_response_body import GetVideoTranslationJobResponseBodyJob
 from ._get_yike_account_credit_response_body import GetYikeAccountCreditResponseBodyCreditInfo
 from ._get_yike_account_credit_response_body import GetYikeAccountCreditResponseBodyMembershipInfo
 from ._list_asset_categories_response_body import ListAssetCategoriesResponseBodyCategories
+from ._list_infinite_canvases_response_body import ListInfiniteCanvasesResponseBodyCanvasList
 from ._search_media_response_body import SearchMediaResponseBodyMediaInfoListFileInfoListFileBasicInfo
 from ._search_media_response_body import SearchMediaResponseBodyMediaInfoListFileInfoList
 from ._search_media_response_body import SearchMediaResponseBodyMediaInfoListMediaBasicInfo
@@ -118,18 +142,30 @@ __all__ = [
     CreateAssetCategoryRequest,
     CreateAssetCategoryResponseBody,
     CreateAssetCategoryResponse,
+    CreateInfiniteCanvasRequest,
+    CreateInfiniteCanvasResponseBody,
+    CreateInfiniteCanvasResponse,
     DeleteAssetCategoryRequest,
     DeleteAssetCategoryResponseBody,
     DeleteAssetCategoryResponse,
+    DeleteInfiniteCanvasRequest,
+    DeleteInfiniteCanvasResponseBody,
+    DeleteInfiniteCanvasResponse,
     DeleteMediasRequest,
     DeleteMediasResponseBody,
     DeleteMediasResponse,
+    GenerateYikeLoginTokenRequest,
+    GenerateYikeLoginTokenResponseBody,
+    GenerateYikeLoginTokenResponse,
     GetAssetCategoryRequest,
     GetAssetCategoryResponseBody,
     GetAssetCategoryResponse,
     GetImageGenerationJobRequest,
     GetImageGenerationJobResponseBody,
     GetImageGenerationJobResponse,
+    GetInfiniteCanvasRequest,
+    GetInfiniteCanvasResponseBody,
+    GetInfiniteCanvasResponse,
     GetMediaRequest,
     GetMediaResponseBody,
     GetMediaResponse,
@@ -145,6 +181,9 @@ __all__ = [
     GetVideoRenderJobRequest,
     GetVideoRenderJobResponseBody,
     GetVideoRenderJobResponse,
+    GetVideoTranslationJobRequest,
+    GetVideoTranslationJobResponseBody,
+    GetVideoTranslationJobResponse,
     GetYikeAccountCreditRequest,
     GetYikeAccountCreditResponseBody,
     GetYikeAccountCreditResponse,
@@ -157,6 +196,9 @@ __all__ = [
     ListAssetCategoriesRequest,
     ListAssetCategoriesResponseBody,
     ListAssetCategoriesResponse,
+    ListInfiniteCanvasesRequest,
+    ListInfiniteCanvasesResponseBody,
+    ListInfiniteCanvasesResponse,
     SearchMediaRequest,
     SearchMediaResponseBody,
     SearchMediaResponse,
@@ -181,6 +223,9 @@ __all__ = [
     UpdateAssetCategoryRequest,
     UpdateAssetCategoryResponseBody,
     UpdateAssetCategoryResponse,
+    UpdateInfiniteCanvasRequest,
+    UpdateInfiniteCanvasResponseBody,
+    UpdateInfiniteCanvasResponse,
     UpdateMediaRequest,
     UpdateMediaResponseBody,
     UpdateMediaResponse,
@@ -197,6 +242,7 @@ __all__ = [
     GetAssetCategoryResponseBodyCategory,
     GetAssetCategoryResponseBodySubCategories,
     GetImageGenerationJobResponseBodyImageGenerationJob,
+    GetInfiniteCanvasResponseBodyInfiniteCanvas,
     GetMediaResponseBodyMediaInfoFileInfoListAudioStreamInfoList,
     GetMediaResponseBodyMediaInfoFileInfoListFileBasicInfo,
     GetMediaResponseBodyMediaInfoFileInfoListSubtitleStreamInfoList,
@@ -211,9 +257,11 @@ __all__ = [
     GetRemakeScriptJobResponseBodyJob,
     GetVideoGenerationJobResponseBodyVideoGenerationJob,
     GetVideoRenderJobResponseBodyJob,
+    GetVideoTranslationJobResponseBodyJob,
     GetYikeAccountCreditResponseBodyCreditInfo,
     GetYikeAccountCreditResponseBodyMembershipInfo,
     ListAssetCategoriesResponseBodyCategories,
+    ListInfiniteCanvasesResponseBodyCanvasList,
     SearchMediaResponseBodyMediaInfoListFileInfoListFileBasicInfo,
     SearchMediaResponseBodyMediaInfoListFileInfoList,
     SearchMediaResponseBodyMediaInfoListMediaBasicInfo,

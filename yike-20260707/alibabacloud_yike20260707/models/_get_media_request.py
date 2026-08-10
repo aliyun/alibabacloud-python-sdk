@@ -11,8 +11,11 @@ class GetMediaRequest(DaraModel):
         input_url: str = None,
         media_id: str = None,
     ):
+        # The validity period of the signed file URL. Unit: seconds.
         self.auth_timeout = auth_timeout
+        # Currently unavailable.
         self.input_url = input_url
+        # The media asset ID. If this parameter is not empty, the system queries the media asset by this ID and validates whether the value is a valid MediaId.
         self.media_id = media_id
 
     def validate(self):

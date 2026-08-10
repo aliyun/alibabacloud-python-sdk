@@ -1,3 +1,13 @@
+2026-08-10 Version: 2.3.0
+- Support API CreateInfiniteCanvas.
+- Support API DeleteInfiniteCanvas.
+- Support API GenerateYikeLoginToken.
+- Support API GetInfiniteCanvas.
+- Support API ListInfiniteCanvases.
+- Support API UpdateInfiniteCanvas.
+- Update API SubmitVideoGenerationJob: add request parameters Output.
+
+
 2026-07-30 Version: 2.1.0
 - Support API GetRemakeScriptJob.
 - Support API GetVideoRenderJob.

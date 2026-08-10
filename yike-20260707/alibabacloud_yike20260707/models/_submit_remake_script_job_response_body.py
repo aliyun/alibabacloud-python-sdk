@@ -11,8 +11,11 @@ class SubmitRemakeScriptJobResponseBody(DaraModel):
         job_id: str = None,
         request_id: str = None,
     ):
+        # The business error code. An empty string is returned when the submission is successful.
         self.error_code = error_code
+        # The task ID.
         self.job_id = job_id
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):

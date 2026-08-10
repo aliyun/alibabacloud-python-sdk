@@ -192,6 +192,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_asset_category_with_options_async(request, runtime)
 
+    def create_infinite_canvas_with_options(
+        self,
+        request: main_models.CreateInfiniteCanvasRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateInfiniteCanvasResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cover_url):
+            query['CoverUrl'] = request.cover_url
+        if not DaraCore.is_null(request.production_id):
+            query['ProductionId'] = request.production_id
+        if not DaraCore.is_null(request.title):
+            query['Title'] = request.title
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateInfiniteCanvas',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateInfiniteCanvasResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_infinite_canvas_with_options_async(
+        self,
+        request: main_models.CreateInfiniteCanvasRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateInfiniteCanvasResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cover_url):
+            query['CoverUrl'] = request.cover_url
+        if not DaraCore.is_null(request.production_id):
+            query['ProductionId'] = request.production_id
+        if not DaraCore.is_null(request.title):
+            query['Title'] = request.title
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateInfiniteCanvas',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateInfiniteCanvasResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_infinite_canvas(
+        self,
+        request: main_models.CreateInfiniteCanvasRequest,
+    ) -> main_models.CreateInfiniteCanvasResponse:
+        runtime = RuntimeOptions()
+        return self.create_infinite_canvas_with_options(request, runtime)
+
+    async def create_infinite_canvas_async(
+        self,
+        request: main_models.CreateInfiniteCanvasRequest,
+    ) -> main_models.CreateInfiniteCanvasResponse:
+        runtime = RuntimeOptions()
+        return await self.create_infinite_canvas_with_options_async(request, runtime)
+
     def delete_asset_category_with_options(
         self,
         request: main_models.DeleteAssetCategoryRequest,
@@ -261,6 +343,76 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteAssetCategoryResponse:
         runtime = RuntimeOptions()
         return await self.delete_asset_category_with_options_async(request, runtime)
+
+    def delete_infinite_canvas_with_options(
+        self,
+        request: main_models.DeleteInfiniteCanvasRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteInfiniteCanvasResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.canvas_id):
+            query['CanvasId'] = request.canvas_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteInfiniteCanvas',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteInfiniteCanvasResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_infinite_canvas_with_options_async(
+        self,
+        request: main_models.DeleteInfiniteCanvasRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteInfiniteCanvasResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.canvas_id):
+            query['CanvasId'] = request.canvas_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteInfiniteCanvas',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteInfiniteCanvasResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_infinite_canvas(
+        self,
+        request: main_models.DeleteInfiniteCanvasRequest,
+    ) -> main_models.DeleteInfiniteCanvasResponse:
+        runtime = RuntimeOptions()
+        return self.delete_infinite_canvas_with_options(request, runtime)
+
+    async def delete_infinite_canvas_async(
+        self,
+        request: main_models.DeleteInfiniteCanvasRequest,
+    ) -> main_models.DeleteInfiniteCanvasResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_infinite_canvas_with_options_async(request, runtime)
 
     def delete_medias_with_options(
         self,
@@ -339,6 +491,104 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteMediasResponse:
         runtime = RuntimeOptions()
         return await self.delete_medias_with_options_async(request, runtime)
+
+    def generate_yike_login_token_with_options(
+        self,
+        request: main_models.GenerateYikeLoginTokenRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GenerateYikeLoginTokenResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auto_create_production):
+            query['AutoCreateProduction'] = request.auto_create_production
+        if not DaraCore.is_null(request.expires):
+            query['Expires'] = request.expires
+        if not DaraCore.is_null(request.nick_name):
+            query['NickName'] = request.nick_name
+        if not DaraCore.is_null(request.production_auth):
+            query['ProductionAuth'] = request.production_auth
+        if not DaraCore.is_null(request.sub_user_credit):
+            query['SubUserCredit'] = request.sub_user_credit
+        if not DaraCore.is_null(request.tenant):
+            query['Tenant'] = request.tenant
+        if not DaraCore.is_null(request.user_name):
+            query['UserName'] = request.user_name
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GenerateYikeLoginToken',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GenerateYikeLoginTokenResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def generate_yike_login_token_with_options_async(
+        self,
+        request: main_models.GenerateYikeLoginTokenRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GenerateYikeLoginTokenResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auto_create_production):
+            query['AutoCreateProduction'] = request.auto_create_production
+        if not DaraCore.is_null(request.expires):
+            query['Expires'] = request.expires
+        if not DaraCore.is_null(request.nick_name):
+            query['NickName'] = request.nick_name
+        if not DaraCore.is_null(request.production_auth):
+            query['ProductionAuth'] = request.production_auth
+        if not DaraCore.is_null(request.sub_user_credit):
+            query['SubUserCredit'] = request.sub_user_credit
+        if not DaraCore.is_null(request.tenant):
+            query['Tenant'] = request.tenant
+        if not DaraCore.is_null(request.user_name):
+            query['UserName'] = request.user_name
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GenerateYikeLoginToken',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GenerateYikeLoginTokenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def generate_yike_login_token(
+        self,
+        request: main_models.GenerateYikeLoginTokenRequest,
+    ) -> main_models.GenerateYikeLoginTokenResponse:
+        runtime = RuntimeOptions()
+        return self.generate_yike_login_token_with_options(request, runtime)
+
+    async def generate_yike_login_token_async(
+        self,
+        request: main_models.GenerateYikeLoginTokenRequest,
+    ) -> main_models.GenerateYikeLoginTokenResponse:
+        runtime = RuntimeOptions()
+        return await self.generate_yike_login_token_with_options_async(request, runtime)
 
     def get_asset_category_with_options(
         self,
@@ -479,6 +729,76 @@ class Client(OpenApiClient):
     ) -> main_models.GetImageGenerationJobResponse:
         runtime = RuntimeOptions()
         return await self.get_image_generation_job_with_options_async(request, runtime)
+
+    def get_infinite_canvas_with_options(
+        self,
+        request: main_models.GetInfiniteCanvasRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetInfiniteCanvasResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.canvas_id):
+            query['CanvasId'] = request.canvas_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetInfiniteCanvas',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetInfiniteCanvasResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_infinite_canvas_with_options_async(
+        self,
+        request: main_models.GetInfiniteCanvasRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetInfiniteCanvasResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.canvas_id):
+            query['CanvasId'] = request.canvas_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetInfiniteCanvas',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetInfiniteCanvasResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_infinite_canvas(
+        self,
+        request: main_models.GetInfiniteCanvasRequest,
+    ) -> main_models.GetInfiniteCanvasResponse:
+        runtime = RuntimeOptions()
+        return self.get_infinite_canvas_with_options(request, runtime)
+
+    async def get_infinite_canvas_async(
+        self,
+        request: main_models.GetInfiniteCanvasRequest,
+    ) -> main_models.GetInfiniteCanvasResponse:
+        runtime = RuntimeOptions()
+        return await self.get_infinite_canvas_with_options_async(request, runtime)
 
     def get_media_with_options(
         self,
@@ -842,6 +1162,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_video_render_job_with_options_async(request, runtime)
 
+    def get_video_translation_job_with_options(
+        self,
+        request: main_models.GetVideoTranslationJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetVideoTranslationJobResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.job_id):
+            body['JobId'] = request.job_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetVideoTranslationJob',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetVideoTranslationJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_video_translation_job_with_options_async(
+        self,
+        request: main_models.GetVideoTranslationJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetVideoTranslationJobResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.job_id):
+            body['JobId'] = request.job_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetVideoTranslationJob',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetVideoTranslationJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_video_translation_job(
+        self,
+        request: main_models.GetVideoTranslationJobRequest,
+    ) -> main_models.GetVideoTranslationJobResponse:
+        runtime = RuntimeOptions()
+        return self.get_video_translation_job_with_options(request, runtime)
+
+    async def get_video_translation_job_async(
+        self,
+        request: main_models.GetVideoTranslationJobRequest,
+    ) -> main_models.GetVideoTranslationJobResponse:
+        runtime = RuntimeOptions()
+        return await self.get_video_translation_job_with_options_async(request, runtime)
+
     def get_yike_account_credit_with_options(
         self,
         request: main_models.GetYikeAccountCreditRequest,
@@ -1163,6 +1553,92 @@ class Client(OpenApiClient):
     ) -> main_models.ListAssetCategoriesResponse:
         runtime = RuntimeOptions()
         return await self.list_asset_categories_with_options_async(request, runtime)
+
+    def list_infinite_canvases_with_options(
+        self,
+        request: main_models.ListInfiniteCanvasesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListInfiniteCanvasesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.keyword):
+            query['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.page_no):
+            query['PageNo'] = request.page_no
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not DaraCore.is_null(request.sort_order):
+            query['SortOrder'] = request.sort_order
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListInfiniteCanvases',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListInfiniteCanvasesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_infinite_canvases_with_options_async(
+        self,
+        request: main_models.ListInfiniteCanvasesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListInfiniteCanvasesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.keyword):
+            query['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.page_no):
+            query['PageNo'] = request.page_no
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not DaraCore.is_null(request.sort_order):
+            query['SortOrder'] = request.sort_order
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListInfiniteCanvases',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListInfiniteCanvasesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_infinite_canvases(
+        self,
+        request: main_models.ListInfiniteCanvasesRequest,
+    ) -> main_models.ListInfiniteCanvasesResponse:
+        runtime = RuntimeOptions()
+        return self.list_infinite_canvases_with_options(request, runtime)
+
+    async def list_infinite_canvases_async(
+        self,
+        request: main_models.ListInfiniteCanvasesRequest,
+    ) -> main_models.ListInfiniteCanvasesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_infinite_canvases_with_options_async(request, runtime)
 
     def search_media_with_options(
         self,
@@ -1543,6 +2019,8 @@ class Client(OpenApiClient):
             query['Model'] = request.model
         if not DaraCore.is_null(request.n):
             query['N'] = request.n
+        if not DaraCore.is_null(request.output):
+            query['Output'] = request.output
         if not DaraCore.is_null(request.resolution):
             query['Resolution'] = request.resolution
         if not DaraCore.is_null(request.scene):
@@ -1591,6 +2069,8 @@ class Client(OpenApiClient):
             query['Model'] = request.model
         if not DaraCore.is_null(request.n):
             query['N'] = request.n
+        if not DaraCore.is_null(request.output):
+            query['Output'] = request.output
         if not DaraCore.is_null(request.resolution):
             query['Resolution'] = request.resolution
         if not DaraCore.is_null(request.scene):
@@ -1879,6 +2359,84 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateAssetCategoryResponse:
         runtime = RuntimeOptions()
         return await self.update_asset_category_with_options_async(request, runtime)
+
+    def update_infinite_canvas_with_options(
+        self,
+        request: main_models.UpdateInfiniteCanvasRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateInfiniteCanvasResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.canvas_id):
+            query['CanvasId'] = request.canvas_id
+        if not DaraCore.is_null(request.cover_url):
+            query['CoverUrl'] = request.cover_url
+        if not DaraCore.is_null(request.title):
+            query['Title'] = request.title
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateInfiniteCanvas',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateInfiniteCanvasResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_infinite_canvas_with_options_async(
+        self,
+        request: main_models.UpdateInfiniteCanvasRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateInfiniteCanvasResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.canvas_id):
+            query['CanvasId'] = request.canvas_id
+        if not DaraCore.is_null(request.cover_url):
+            query['CoverUrl'] = request.cover_url
+        if not DaraCore.is_null(request.title):
+            query['Title'] = request.title
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateInfiniteCanvas',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateInfiniteCanvasResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_infinite_canvas(
+        self,
+        request: main_models.UpdateInfiniteCanvasRequest,
+    ) -> main_models.UpdateInfiniteCanvasResponse:
+        runtime = RuntimeOptions()
+        return self.update_infinite_canvas_with_options(request, runtime)
+
+    async def update_infinite_canvas_async(
+        self,
+        request: main_models.UpdateInfiniteCanvasRequest,
+    ) -> main_models.UpdateInfiniteCanvasResponse:
+        runtime = RuntimeOptions()
+        return await self.update_infinite_canvas_with_options_async(request, runtime)
 
     def update_media_with_options(
         self,

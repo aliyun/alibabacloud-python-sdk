@@ -15,6 +15,7 @@ class SubmitVideoGenerationJobRequest(DaraModel):
         job_type: str = None,
         model: str = None,
         n: int = None,
+        output: str = None,
         resolution: str = None,
         scene: str = None,
         user_data: str = None,
@@ -28,15 +29,14 @@ class SubmitVideoGenerationJobRequest(DaraModel):
         # The task input in JSON string format. Fields include:
         # 
         # - Prompt: String. Required. The prompt.
-        # - Medias: The list of media items.
-        #   - When JobType is image_to_video, this field is required and only 1 Media item is needed.
-        #   - When JobType is first_last_frame, this field is required and exactly 2 Media items are needed.
-        #   - When JobType is reference_to_video, this field is required and up to 9 Media items are allowed.
-        # 
-        # > The Media structure contains: Type, the media type (String, valid values: `image`/`video`/`audio`); URL, the media download URL (String); MediaId, the media asset ID (String).
+        # - Medias: The media list.
+        #   - When JobType is image_to_video, this field is required. Only 1 Media item is needed.
+        #   - When JobType is first_last_frame, this field is required. Only 2 Media items are needed.
+        #   - When JobType is reference_to_video, this field is required. A maximum of 9 Media items are supported.
+        # > The Media struct contains: Type, the media type, String, valid values are `image`/`video`/`audio`; URL, the media download URL, String; MediaId, the media asset ID, String.
         # >
         self.input = input
-        # The task feature parameters. No configuration is required at this time.
+        # The task function parameters. No configuration is required at this time.
         self.job_parameters = job_parameters
         # The task type. Valid values:
         # 
@@ -53,6 +53,7 @@ class SubmitVideoGenerationJobRequest(DaraModel):
         self.model = model
         # The number of outputs. Valid values: 1 to 4. Default value: 1.
         self.n = n
+        self.output = output
         # The resolution. Valid values: 720P (default) and 1080P.
         self.resolution = resolution
         # The scene type. Currently only `general` is supported.
@@ -92,6 +93,9 @@ class SubmitVideoGenerationJobRequest(DaraModel):
         if self.n is not None:
             result['N'] = self.n
 
+        if self.output is not None:
+            result['Output'] = self.output
+
         if self.resolution is not None:
             result['Resolution'] = self.resolution
 
@@ -128,6 +132,9 @@ class SubmitVideoGenerationJobRequest(DaraModel):
 
         if m.get('N') is not None:
             self.n = m.get('N')
+
+        if m.get('Output') is not None:
+            self.output = m.get('Output')
 
         if m.get('Resolution') is not None:
             self.resolution = m.get('Resolution')
