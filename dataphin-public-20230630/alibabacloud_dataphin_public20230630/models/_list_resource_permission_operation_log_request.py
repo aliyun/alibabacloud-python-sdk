@@ -11,7 +11,7 @@ class ListResourcePermissionOperationLogRequest(DaraModel):
         list_query: main_models.ListResourcePermissionOperationLogRequestListQuery = None,
         op_tenant_id: int = None,
     ):
-        # The paged request parameters.
+        # The pagination request.
         # 
         # This parameter is required.
         self.list_query = list_query
@@ -60,15 +60,16 @@ class ListResourcePermissionOperationLogRequestListQuery(DaraModel):
         # 
         # This parameter is required.
         self.page = page
-        # The number of records per page.
+        # The number of entries per page.
         # 
         # This parameter is required.
         self.page_size = page_size
         # The search keyword.
         self.search_text = search_text
-        # The tab name. Valid values:
-        # - TABLE: table
-        # - DATASOURCE: datasource.
+        # The tab type. Valid values:
+        # 
+        # - TABLE: table.
+        # - DATASOURCE: data source.
         # 
         # This parameter is required.
         self.tab_type = tab_type

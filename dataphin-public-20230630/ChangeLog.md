@@ -1,3 +1,12 @@
+2026-08-10 Version: 2.11.0
+- Support API ExecuteDDL.
+- Support API ListPipelines.
+- Support API ListSecurityClassify.
+- Support API SearchKgBySemantic.
+- Support API SubmitPipelineById.
+- Update API AddTenantMembersBySourceUser: add request parameters AddCommand.SourceUserList.$.SourceType.
+
+
 2026-08-06 Version: 2.10.1
 - Generated python 2023-06-30 for dataphin-public.
 

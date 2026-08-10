@@ -10,7 +10,7 @@ class ListResourcePermissionOperationLogShrinkRequest(DaraModel):
         list_query_shrink: str = None,
         op_tenant_id: int = None,
     ):
-        # The paged request parameters.
+        # The pagination request.
         # 
         # This parameter is required.
         self.list_query_shrink = list_query_shrink

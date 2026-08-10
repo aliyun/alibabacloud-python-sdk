@@ -21,9 +21,9 @@ class ListResourcePermissionOperationLogResponseBody(DaraModel):
         self.code = code
         # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
-        # The error message.
+        # The error message returned if the request failed.
         self.message = message
-        # The paging query result.
+        # The paged query result.
         self.page_result = page_result
         # The request ID.
         self.request_id = request_id
@@ -88,7 +88,7 @@ class ListResourcePermissionOperationLogResponseBodyPageResult(DaraModel):
         data: List[main_models.ListResourcePermissionOperationLogResponseBodyPageResultData] = None,
         total_count: int = None,
     ):
-        # The paginated records.
+        # The paged records.
         self.data = data
         # The total number of records.
         self.total_count = total_count
@@ -143,17 +143,18 @@ class ListResourcePermissionOperationLogResponseBodyPageResultData(DaraModel):
         # The operator.
         self.account = account
         # The authorization scope of the table. Valid values:
+        # 
         # - selectTable: specified table
         # - projectAllTable: all tables in the project
-        # - bizUnitAllLogicTable: all logical tables in the business unit.
+        # - bizUnitAllLogicTable: all logical tables in the business unit
         self.auth_scope = auth_scope
         # The operation ID.
         self.operate_id = operate_id
         # The operation time.
         self.operate_time = operate_time
         # The operation type. Valid values:
-        # - APPLY: Apply for permissions.
-        # - GRANT: Grant permissions.
+        # - APPLY: apply.
+        # - GRANT: grant.
         self.operate_type = operate_type
         # The validity period settings.
         self.period = period
@@ -250,11 +251,14 @@ class ListResourcePermissionOperationLogResponseBodyPageResultDataTargetAccount(
         name: str = None,
         type: str = None,
     ):
-        # The account ID.
+        # The account ID. For a personal account, this is the Dataphin-side userId. For a production account, this is the UserId obtained through the GetProjectProduceUser operation. For a user group, this is the user group ID obtained through the ListUserGroup operation.
         self.id = id
         # The account name.
         self.name = name
-        # The authorized account type.
+        # The authorized account type. Valid values:
+        # - PERSONAL: personal account.
+        # - PRODUCE: production account.
+        # - USER_GROUP: user group.
         self.type = type
 
     def validate(self):
@@ -300,28 +304,28 @@ class ListResourcePermissionOperationLogResponseBodyPageResultDataResourceInfo(D
         project_info: main_models.ListResourcePermissionOperationLogResponseBodyPageResultDataResourceInfoProjectInfo = None,
         type: str = None,
     ):
-        # The business unit information.
+        # The business unit.
         self.biz_unit_info = biz_unit_info
         # The display name of the resource.
         self.display_name = display_name
         # The resource environment. Valid values:
-        # - DEV
-        # - PROD.
+        # - DEV: development.
+        # - PROD: production.
         self.env = env
         # The permission resource ID.
         self.id = id
         # The permission resource name.
         self.name = name
-        # The project information.
+        # The project.
         self.project_info = project_info
         # The resource type. Valid values:
-        # - PHYSICAL_TABLE: physical table
-        # - PHYSICAL_VIEW: physical view
-        # - LOGICAL_TABLE: fact logical table
-        # - LOGICAL_VIEW: fact logical view
-        # - REALTIME_LOGICAL_TABLE: real-time meta table
-        # - REALTIME_MIRROR_TABLE: real-time meta table
-        # - DATASOURCE: datasource.
+        # - PHYSICAL_TABLE: physical table.
+        # - PHYSICAL_VIEW: physical view.
+        # - LOGICAL_TABLE: fact logical table.
+        # - LOGICAL_VIEW: fact logical view.
+        # - REALTIME_LOGICAL_TABLE: real-time meta table.
+        # - REALTIME_MIRROR_TABLE: real-time meta table.
+        # - DATASOURCE: data source.
         self.type = type
 
     def validate(self):
@@ -395,9 +399,9 @@ class ListResourcePermissionOperationLogResponseBodyPageResultDataResourceInfoPr
     ):
         # The display name.
         self.display_name = display_name
-        # The environment identifier. Valid values: 
-        # - DEV
-        # - PROD.
+        # The environment identifier. Valid values:
+        # - DEV: development.
+        # - PROD: production.
         self.env = env
         # The project ID.
         self.id = id
@@ -452,9 +456,9 @@ class ListResourcePermissionOperationLogResponseBodyPageResultDataResourceInfoBi
     ):
         # The display name.
         self.display_name = display_name
-        # The environment identifier. Valid values: 
-        # - DEV
-        # - PROD.
+        # The environment identifier. Valid values:
+        # - DEV: development.
+        # - PROD: production.
         self.env = env
         # Id
         self.id = id
@@ -509,10 +513,10 @@ class ListResourcePermissionOperationLogResponseBodyPageResultDataPeriod(DaraMod
         self.end_time = end_time
         # The validity period type. Valid values:
         # - CUSTOM: custom
-        # - LONG_TERM: permanently valid
+        # - LONG_TERM: long-term validity
         # - DAYS_30: valid for 30 days
         # - DAYS_90: valid for 90 days
-        # - DAYS_180: valid for 180 days.
+        # - DAYS_180: valid for 180 days
         self.type = type
 
     def validate(self):
@@ -548,16 +552,13 @@ class ListResourcePermissionOperationLogResponseBodyPageResultDataAccount(DaraMo
         name: str = None,
         type: str = None,
     ):
-        # The account ID.
-        # - Individual account: the userId on the Dataphin side.
-        # - Production account: the UserId obtained by calling the GetProjectProduceUser operation.
-        # - User group: the user group ID obtained by calling the ListUserGroup operation.
+        # The account ID. For a personal account, this is the Dataphin-side userId. For a production account, this is the UserId obtained through the GetProjectProduceUser operation. For a user group, this is the user group ID obtained through the ListUserGroup operation.
         self.id = id
         # The account name.
         self.name = name
-        # The authorization account type. Valid values:
-        # - PERSONAL: individual account
-        # - PRODUCE: production account
+        # The authorized account type. Valid values:
+        # - PERSONAL: personal account.
+        # - PRODUCE: production account.
         # - USER_GROUP: user group.
         self.type = type
 

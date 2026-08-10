@@ -93,6 +93,7 @@ class AddTenantMembersBySourceUserRequestAddCommandSourceUserList(DaraModel):
         mail: str = None,
         mobile_phone: str = None,
         source_id: str = None,
+        source_type: str = None,
     ):
         # The account name.
         self.account_name = account_name
@@ -104,8 +105,9 @@ class AddTenantMembersBySourceUserRequestAddCommandSourceUserList(DaraModel):
         self.mail = mail
         # The phone number.
         self.mobile_phone = mobile_phone
-        # The original ID of the user.
+        # The source user ID.
         self.source_id = source_id
+        self.source_type = source_type
 
     def validate(self):
         pass
@@ -133,6 +135,9 @@ class AddTenantMembersBySourceUserRequestAddCommandSourceUserList(DaraModel):
         if self.source_id is not None:
             result['SourceId'] = self.source_id
 
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+
         return result
 
     def from_map(self, m: dict = None):
@@ -154,6 +159,9 @@ class AddTenantMembersBySourceUserRequestAddCommandSourceUserList(DaraModel):
 
         if m.get('SourceId') is not None:
             self.source_id = m.get('SourceId')
+
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
 
         return self
 

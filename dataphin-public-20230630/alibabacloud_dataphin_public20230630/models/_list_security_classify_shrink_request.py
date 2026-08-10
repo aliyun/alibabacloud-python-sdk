@@ -4,15 +4,13 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class ListResourcePermissionsShrinkRequest(DaraModel):
+class ListSecurityClassifyShrinkRequest(DaraModel):
     def __init__(
         self,
         list_query_shrink: str = None,
         op_tenant_id: int = None,
     ):
-        # The paged query request.
-        # 
-        # This parameter is required.
+        # The query conditions.
         self.list_query_shrink = list_query_shrink
         # The tenant ID.
         # 

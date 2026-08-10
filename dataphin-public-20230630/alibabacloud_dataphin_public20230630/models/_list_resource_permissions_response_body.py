@@ -17,17 +17,17 @@ class ListResourcePermissionsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Error code. OK indicates a normal request.
+        # The error code. A value of OK indicates that the request was successful.
         self.code = code
-        # HTTP status code returned by the backend.
+        # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
-        # Error message.
+        # The error message returned for the request.
         self.message = message
-        # Paginated query result.
+        # The paged query result.
         self.page_result = page_result
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Whether the request is successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -88,9 +88,9 @@ class ListResourcePermissionsResponseBodyPageResult(DaraModel):
         data: List[main_models.ListResourcePermissionsResponseBodyPageResultData] = None,
         total_count: int = None,
     ):
-        # Paginated list.
+        # The paged list.
         self.data = data
-        # Total number of records.
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -137,17 +137,20 @@ class ListResourcePermissionsResponseBodyPageResultData(DaraModel):
         resource_info: main_models.ListResourcePermissionsResponseBodyPageResultDataResourceInfo = None,
         target_account: main_models.ListResourcePermissionsResponseBodyPageResultDataTargetAccount = None,
     ):
-        # Authorization scope of the table. Specified table: selectTable. All tables in the project: projectAllTable. All logical tables in the business unit: bizUnitAllLogicTable.
+        # The authorization scope of the table. Valid values:
+        # - selectTable: a specified table.
+        # - projectAllTable: all tables in the project.
+        # - bizUnitAllLogicTable: all logical tables in the business unit.
         self.auth_scope = auth_scope
-        # Validity period settings.
+        # The validity period settings.
         self.period = period
-        # List of validity periods for different permission types.
+        # The list of validity periods for different permission types.
         self.permission_period_list = permission_period_list
-        # Record ID.
+        # The record ID.
         self.record_id = record_id
-        # Permission resource.
+        # The permission resource.
         self.resource_info = resource_info
-        # Authorized object.
+        # The authorized object.
         self.target_account = target_account
 
     def validate(self):
@@ -224,11 +227,14 @@ class ListResourcePermissionsResponseBodyPageResultDataTargetAccount(DaraModel):
         name: str = None,
         type: str = None,
     ):
-        # Personal account: the userId on the Dataphin side. Production account: the UserId obtained by calling the GetProjectProduceUser operation. User group: the user group ID obtained by calling the ListUserGroup operation.
+        # The account ID. For an individual account, this is the Dataphin-side userId. For a production account, this is the UserId obtained by calling the GetProjectProduceUser operation. For a user group, this is the user group ID obtained by calling the ListUserGroup operation.
         self.id = id
-        # Personal account: the userId on the Dataphin side. Production account: the UserId obtained by calling the GetProjectProduceUser operation. User group: the user group ID obtained by calling the ListUserGroup operation.
+        # The account ID. For an individual account, this is the Dataphin-side userId. For a production account, this is the UserId obtained by calling the GetProjectProduceUser operation. For a user group, this is the user group ID obtained by calling the ListUserGroup operation.
         self.name = name
-        # Authorization account type. Valid values: PERSONAL (personal account), PRODUCE (production account), and USER_GROUP (user group).
+        # The type of the authorized account. Valid values:
+        # - PERSONAL: individual account.
+        # - PRODUCE: production account.
+        # - USER_GROUP: user group.
         self.type = type
 
     def validate(self):
@@ -274,19 +280,21 @@ class ListResourcePermissionsResponseBodyPageResultDataResourceInfo(DaraModel):
         project_info: main_models.ListResourcePermissionsResponseBodyPageResultDataResourceInfoProjectInfo = None,
         type: str = None,
     ):
-        # Business unit.
+        # The business unit.
         self.biz_unit_info = biz_unit_info
-        # Resource display name.
+        # The display name of the resource.
         self.display_name = display_name
-        # Resource environment type. Development: DEV. Production: PROD.
+        # The resource environment type. Valid values:
+        # - DEV: development.
+        # - PROD: production.
         self.env = env
-        # Permission resource ID.
+        # The ID of the permission resource.
         self.id = id
-        # Permission resource name.
+        # The name of the permission resource.
         self.name = name
-        # Project.
+        # The project.
         self.project_info = project_info
-        # Resource type. Valid values: PHYSICAL_TABLE, PHYSICAL_VIEW, LOGICAL_TABLE, LOGICAL_VIEW, REALTIME_LOGICAL_TABLE, REALTIME_MIRROR_TABLE, and DATASOURCE.
+        # The resource type. Valid values: PHYSICAL_TABLE, PHYSICAL_VIEW, LOGICAL_TABLE, LOGICAL_VIEW, REALTIME_LOGICAL_TABLE, REALTIME_MIRROR_TABLE, DATASOURCE.
         self.type = type
 
     def validate(self):
@@ -358,13 +366,15 @@ class ListResourcePermissionsResponseBodyPageResultDataResourceInfoProjectInfo(D
         id: int = None,
         name: str = None,
     ):
-        # Display name.
+        # The display name.
         self.display_name = display_name
-        # Environment identifier. Development: DEV. Production: PROD.
+        # The environment identifier. Valid values:
+        # - DEV: development.
+        # - PROD: production.
         self.env = env
-        # Project ID.
+        # The project ID.
         self.id = id
-        # Name.
+        # The name.
         self.name = name
 
     def validate(self):
@@ -413,13 +423,15 @@ class ListResourcePermissionsResponseBodyPageResultDataResourceInfoBizUnitInfo(D
         id: str = None,
         name: str = None,
     ):
-        # Display name.
+        # The display name.
         self.display_name = display_name
-        # Environment identifier. Development: DEV. Production: PROD.
+        # The environment identifier. Valid values:
+        # - DEV: development.
+        # - PROD: production.
         self.env = env
-        # ID.
+        # Id
         self.id = id
-        # Name.
+        # The name.
         self.name = name
 
     def validate(self):
@@ -466,9 +478,9 @@ class ListResourcePermissionsResponseBodyPageResultDataPermissionPeriodList(Dara
         period: main_models.ListResourcePermissionsResponseBodyPageResultDataPermissionPeriodListPeriod = None,
         permission_type: str = None,
     ):
-        # Validity period settings.
+        # The validity period settings.
         self.period = period
-        # Permission type.
+        # The permission type.
         self.permission_type = permission_type
 
     def validate(self):
@@ -505,9 +517,9 @@ class ListResourcePermissionsResponseBodyPageResultDataPermissionPeriodListPerio
         end_time: str = None,
         type: str = None,
     ):
-        # Expiration time.
+        # The expiration time.
         self.end_time = end_time
-        # Validity period type. Custom: CUSTOM. Long-term: LONG_TERM.
+        # The validity period type.
         self.type = type
 
     def validate(self):
@@ -542,9 +554,9 @@ class ListResourcePermissionsResponseBodyPageResultDataPeriod(DaraModel):
         end_time: str = None,
         type: str = None,
     ):
-        # Expiration time.
+        # The expiration time.
         self.end_time = end_time
-        # Validity period type. Custom: CUSTOM. Long-term: LONG_TERM.
+        # The validity period type.
         self.type = type
 
     def validate(self):

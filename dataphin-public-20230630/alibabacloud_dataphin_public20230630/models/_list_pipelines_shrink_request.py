@@ -4,16 +4,21 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class ListResourcePermissionsShrinkRequest(DaraModel):
+class ListPipelinesShrinkRequest(DaraModel):
     def __init__(
         self,
-        list_query_shrink: str = None,
+        context_shrink: str = None,
+        list_command_shrink: str = None,
         op_tenant_id: int = None,
     ):
-        # The paged query request.
+        # The request context.
         # 
         # This parameter is required.
-        self.list_query_shrink = list_query_shrink
+        self.context_shrink = context_shrink
+        # The query parameters.
+        # 
+        # This parameter is required.
+        self.list_command_shrink = list_command_shrink
         # The tenant ID.
         # 
         # This parameter is required.
@@ -27,8 +32,11 @@ class ListResourcePermissionsShrinkRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.list_query_shrink is not None:
-            result['ListQuery'] = self.list_query_shrink
+        if self.context_shrink is not None:
+            result['Context'] = self.context_shrink
+
+        if self.list_command_shrink is not None:
+            result['ListCommand'] = self.list_command_shrink
 
         if self.op_tenant_id is not None:
             result['OpTenantId'] = self.op_tenant_id
@@ -37,8 +45,11 @@ class ListResourcePermissionsShrinkRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ListQuery') is not None:
-            self.list_query_shrink = m.get('ListQuery')
+        if m.get('Context') is not None:
+            self.context_shrink = m.get('Context')
+
+        if m.get('ListCommand') is not None:
+            self.list_command_shrink = m.get('ListCommand')
 
         if m.get('OpTenantId') is not None:
             self.op_tenant_id = m.get('OpTenantId')

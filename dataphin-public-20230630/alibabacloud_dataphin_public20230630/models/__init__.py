@@ -353,6 +353,10 @@ from ._execute_ad_hoc_task_request import ExecuteAdHocTaskRequest
 from ._execute_ad_hoc_task_shrink_request import ExecuteAdHocTaskShrinkRequest
 from ._execute_ad_hoc_task_response_body import ExecuteAdHocTaskResponseBody
 from ._execute_ad_hoc_task_response import ExecuteAdHocTaskResponse
+from ._execute_ddlrequest import ExecuteDDLRequest
+from ._execute_ddlshrink_request import ExecuteDDLShrinkRequest
+from ._execute_ddlresponse_body import ExecuteDDLResponseBody
+from ._execute_ddlresponse import ExecuteDDLResponse
 from ._execute_manual_node_request import ExecuteManualNodeRequest
 from ._execute_manual_node_shrink_request import ExecuteManualNodeShrinkRequest
 from ._execute_manual_node_response_body import ExecuteManualNodeResponseBody
@@ -836,6 +840,10 @@ from ._list_operation_record_request import ListOperationRecordRequest
 from ._list_operation_record_shrink_request import ListOperationRecordShrinkRequest
 from ._list_operation_record_response_body import ListOperationRecordResponseBody
 from ._list_operation_record_response import ListOperationRecordResponse
+from ._list_pipelines_request import ListPipelinesRequest
+from ._list_pipelines_shrink_request import ListPipelinesShrinkRequest
+from ._list_pipelines_response_body import ListPipelinesResponseBody
+from ._list_pipelines_response import ListPipelinesResponse
 from ._list_project_members_request import ListProjectMembersRequest
 from ._list_project_members_shrink_request import ListProjectMembersShrinkRequest
 from ._list_project_members_response_body import ListProjectMembersResponseBody
@@ -884,6 +892,10 @@ from ._list_row_permission_by_user_id_request import ListRowPermissionByUserIdRe
 from ._list_row_permission_by_user_id_shrink_request import ListRowPermissionByUserIdShrinkRequest
 from ._list_row_permission_by_user_id_response_body import ListRowPermissionByUserIdResponseBody
 from ._list_row_permission_by_user_id_response import ListRowPermissionByUserIdResponse
+from ._list_security_classify_request import ListSecurityClassifyRequest
+from ._list_security_classify_shrink_request import ListSecurityClassifyShrinkRequest
+from ._list_security_classify_response_body import ListSecurityClassifyResponseBody
+from ._list_security_classify_response import ListSecurityClassifyResponse
 from ._list_security_identify_records_request import ListSecurityIdentifyRecordsRequest
 from ._list_security_identify_records_shrink_request import ListSecurityIdentifyRecordsShrinkRequest
 from ._list_security_identify_records_response_body import ListSecurityIdentifyRecordsResponseBody
@@ -1010,6 +1022,10 @@ from ._revoke_resource_permission_request import RevokeResourcePermissionRequest
 from ._revoke_resource_permission_shrink_request import RevokeResourcePermissionShrinkRequest
 from ._revoke_resource_permission_response_body import RevokeResourcePermissionResponseBody
 from ._revoke_resource_permission_response import RevokeResourcePermissionResponse
+from ._search_kg_by_semantic_request import SearchKgBySemanticRequest
+from ._search_kg_by_semantic_shrink_request import SearchKgBySemanticShrinkRequest
+from ._search_kg_by_semantic_response_body import SearchKgBySemanticResponseBody
+from ._search_kg_by_semantic_response import SearchKgBySemanticResponse
 from ._stop_ad_hoc_task_request import StopAdHocTaskRequest
 from ._stop_ad_hoc_task_response_body import StopAdHocTaskResponseBody
 from ._stop_ad_hoc_task_response import StopAdHocTaskResponse
@@ -1017,6 +1033,10 @@ from ._submit_batch_task_request import SubmitBatchTaskRequest
 from ._submit_batch_task_shrink_request import SubmitBatchTaskShrinkRequest
 from ._submit_batch_task_response_body import SubmitBatchTaskResponseBody
 from ._submit_batch_task_response import SubmitBatchTaskResponse
+from ._submit_pipeline_by_id_request import SubmitPipelineByIdRequest
+from ._submit_pipeline_by_id_shrink_request import SubmitPipelineByIdShrinkRequest
+from ._submit_pipeline_by_id_response_body import SubmitPipelineByIdResponseBody
+from ._submit_pipeline_by_id_response import SubmitPipelineByIdResponse
 from ._submit_quality_rule_tasks_request import SubmitQualityRuleTasksRequest
 from ._submit_quality_rule_tasks_shrink_request import SubmitQualityRuleTasksShrinkRequest
 from ._submit_quality_rule_tasks_response_body import SubmitQualityRuleTasksResponseBody
@@ -1441,6 +1461,9 @@ from ._exec_kg_cypher_response_body import ExecKgCypherResponseBodyData
 from ._execute_ad_hoc_task_request import ExecuteAdHocTaskRequestExecuteCommandParamList
 from ._execute_ad_hoc_task_request import ExecuteAdHocTaskRequestExecuteCommand
 from ._execute_ad_hoc_task_response_body import ExecuteAdHocTaskResponseBodyExecuteResult
+from ._execute_ddlrequest import ExecuteDDLRequestContext
+from ._execute_ddlrequest import ExecuteDDLRequestDDLCommandDatasourceId
+from ._execute_ddlrequest import ExecuteDDLRequestDDLCommand
 from ._execute_manual_node_request import ExecuteManualNodeRequestExecuteCommandParamList
 from ._execute_manual_node_request import ExecuteManualNodeRequestExecuteCommand
 from ._export_kg_schema_response_body import ExportKgSchemaResponseBodySchemaInfo
@@ -1920,6 +1943,10 @@ from ._list_nodes_response_body import ListNodesResponseBodyPageResult
 from ._list_operation_record_request import ListOperationRecordRequestListCommand
 from ._list_operation_record_response_body import ListOperationRecordResponseBodyOperationLogListResponseResultData
 from ._list_operation_record_response_body import ListOperationRecordResponseBodyOperationLogListResponse
+from ._list_pipelines_request import ListPipelinesRequestContext
+from ._list_pipelines_request import ListPipelinesRequestListCommand
+from ._list_pipelines_response_body import ListPipelinesResponseBodyDataList
+from ._list_pipelines_response_body import ListPipelinesResponseBodyData
 from ._list_project_members_request import ListProjectMembersRequestListQuery
 from ._list_project_members_response_body import ListProjectMembersResponseBodyPageResultProjectMemberList
 from ._list_project_members_response_body import ListProjectMembersResponseBodyPageResult
@@ -1998,6 +2025,9 @@ from ._list_row_permission_by_user_id_response_body import ListRowPermissionByUs
 from ._list_row_permission_by_user_id_response_body import ListRowPermissionByUserIdResponseBodyPageResultDataTables
 from ._list_row_permission_by_user_id_response_body import ListRowPermissionByUserIdResponseBodyPageResultData
 from ._list_row_permission_by_user_id_response_body import ListRowPermissionByUserIdResponseBodyPageResult
+from ._list_security_classify_request import ListSecurityClassifyRequestListQuery
+from ._list_security_classify_response_body import ListSecurityClassifyResponseBodyClassifyListResultClassifyList
+from ._list_security_classify_response_body import ListSecurityClassifyResponseBodyClassifyListResult
 from ._list_security_identify_records_request import ListSecurityIdentifyRecordsRequestListQuery
 from ._list_security_identify_records_response_body import ListSecurityIdentifyRecordsResponseBodyPageResultIdentifyRecordList
 from ._list_security_identify_records_response_body import ListSecurityIdentifyRecordsResponseBodyPageResult
@@ -2084,6 +2114,9 @@ from ._retry_transfer_ownership_request import RetryTransferOwnershipRequestPriv
 from ._revoke_data_service_api_request import RevokeDataServiceApiRequestRevokeCommand
 from ._revoke_resource_permission_request import RevokeResourcePermissionRequestRevokeCommandResourceList
 from ._revoke_resource_permission_request import RevokeResourcePermissionRequestRevokeCommand
+from ._search_kg_by_semantic_request import SearchKgBySemanticRequestSearchCommand
+from ._search_kg_by_semantic_response_body import SearchKgBySemanticResponseBodyDataSearchResults
+from ._search_kg_by_semantic_response_body import SearchKgBySemanticResponseBodyData
 from ._submit_batch_task_request import SubmitBatchTaskRequestSubmitCommandCustomScheduleConfig
 from ._submit_batch_task_request import SubmitBatchTaskRequestSubmitCommandOfflineCodeTemplateParams
 from ._submit_batch_task_request import SubmitBatchTaskRequestSubmitCommandParamList
@@ -2092,6 +2125,9 @@ from ._submit_batch_task_request import SubmitBatchTaskRequestSubmitCommandUpStr
 from ._submit_batch_task_request import SubmitBatchTaskRequestSubmitCommandUpStreamList
 from ._submit_batch_task_request import SubmitBatchTaskRequestSubmitCommand
 from ._submit_batch_task_response_body import SubmitBatchTaskResponseBodySubmitResult
+from ._submit_pipeline_by_id_request import SubmitPipelineByIdRequestContext
+from ._submit_pipeline_by_id_request import SubmitPipelineByIdRequestQueryId
+from ._submit_pipeline_by_id_response_body import SubmitPipelineByIdResponseBodyData
 from ._submit_quality_rule_tasks_request import SubmitQualityRuleTasksRequestSubmitCommandWatchRuleIdList
 from ._submit_quality_rule_tasks_request import SubmitQualityRuleTasksRequestSubmitCommand
 from ._submit_quality_rule_tasks_response_body import SubmitQualityRuleTasksResponseBodySubmitResult
@@ -2597,6 +2633,10 @@ __all__ = [
     ExecuteAdHocTaskShrinkRequest,
     ExecuteAdHocTaskResponseBody,
     ExecuteAdHocTaskResponse,
+    ExecuteDDLRequest,
+    ExecuteDDLShrinkRequest,
+    ExecuteDDLResponseBody,
+    ExecuteDDLResponse,
     ExecuteManualNodeRequest,
     ExecuteManualNodeShrinkRequest,
     ExecuteManualNodeResponseBody,
@@ -3080,6 +3120,10 @@ __all__ = [
     ListOperationRecordShrinkRequest,
     ListOperationRecordResponseBody,
     ListOperationRecordResponse,
+    ListPipelinesRequest,
+    ListPipelinesShrinkRequest,
+    ListPipelinesResponseBody,
+    ListPipelinesResponse,
     ListProjectMembersRequest,
     ListProjectMembersShrinkRequest,
     ListProjectMembersResponseBody,
@@ -3128,6 +3172,10 @@ __all__ = [
     ListRowPermissionByUserIdShrinkRequest,
     ListRowPermissionByUserIdResponseBody,
     ListRowPermissionByUserIdResponse,
+    ListSecurityClassifyRequest,
+    ListSecurityClassifyShrinkRequest,
+    ListSecurityClassifyResponseBody,
+    ListSecurityClassifyResponse,
     ListSecurityIdentifyRecordsRequest,
     ListSecurityIdentifyRecordsShrinkRequest,
     ListSecurityIdentifyRecordsResponseBody,
@@ -3254,6 +3302,10 @@ __all__ = [
     RevokeResourcePermissionShrinkRequest,
     RevokeResourcePermissionResponseBody,
     RevokeResourcePermissionResponse,
+    SearchKgBySemanticRequest,
+    SearchKgBySemanticShrinkRequest,
+    SearchKgBySemanticResponseBody,
+    SearchKgBySemanticResponse,
     StopAdHocTaskRequest,
     StopAdHocTaskResponseBody,
     StopAdHocTaskResponse,
@@ -3261,6 +3313,10 @@ __all__ = [
     SubmitBatchTaskShrinkRequest,
     SubmitBatchTaskResponseBody,
     SubmitBatchTaskResponse,
+    SubmitPipelineByIdRequest,
+    SubmitPipelineByIdShrinkRequest,
+    SubmitPipelineByIdResponseBody,
+    SubmitPipelineByIdResponse,
     SubmitQualityRuleTasksRequest,
     SubmitQualityRuleTasksShrinkRequest,
     SubmitQualityRuleTasksResponseBody,
@@ -3685,6 +3741,9 @@ __all__ = [
     ExecuteAdHocTaskRequestExecuteCommandParamList,
     ExecuteAdHocTaskRequestExecuteCommand,
     ExecuteAdHocTaskResponseBodyExecuteResult,
+    ExecuteDDLRequestContext,
+    ExecuteDDLRequestDDLCommandDatasourceId,
+    ExecuteDDLRequestDDLCommand,
     ExecuteManualNodeRequestExecuteCommandParamList,
     ExecuteManualNodeRequestExecuteCommand,
     ExportKgSchemaResponseBodySchemaInfo,
@@ -4164,6 +4223,10 @@ __all__ = [
     ListOperationRecordRequestListCommand,
     ListOperationRecordResponseBodyOperationLogListResponseResultData,
     ListOperationRecordResponseBodyOperationLogListResponse,
+    ListPipelinesRequestContext,
+    ListPipelinesRequestListCommand,
+    ListPipelinesResponseBodyDataList,
+    ListPipelinesResponseBodyData,
     ListProjectMembersRequestListQuery,
     ListProjectMembersResponseBodyPageResultProjectMemberList,
     ListProjectMembersResponseBodyPageResult,
@@ -4242,6 +4305,9 @@ __all__ = [
     ListRowPermissionByUserIdResponseBodyPageResultDataTables,
     ListRowPermissionByUserIdResponseBodyPageResultData,
     ListRowPermissionByUserIdResponseBodyPageResult,
+    ListSecurityClassifyRequestListQuery,
+    ListSecurityClassifyResponseBodyClassifyListResultClassifyList,
+    ListSecurityClassifyResponseBodyClassifyListResult,
     ListSecurityIdentifyRecordsRequestListQuery,
     ListSecurityIdentifyRecordsResponseBodyPageResultIdentifyRecordList,
     ListSecurityIdentifyRecordsResponseBodyPageResult,
@@ -4328,6 +4394,9 @@ __all__ = [
     RevokeDataServiceApiRequestRevokeCommand,
     RevokeResourcePermissionRequestRevokeCommandResourceList,
     RevokeResourcePermissionRequestRevokeCommand,
+    SearchKgBySemanticRequestSearchCommand,
+    SearchKgBySemanticResponseBodyDataSearchResults,
+    SearchKgBySemanticResponseBodyData,
     SubmitBatchTaskRequestSubmitCommandCustomScheduleConfig,
     SubmitBatchTaskRequestSubmitCommandOfflineCodeTemplateParams,
     SubmitBatchTaskRequestSubmitCommandParamList,
@@ -4336,6 +4405,9 @@ __all__ = [
     SubmitBatchTaskRequestSubmitCommandUpStreamList,
     SubmitBatchTaskRequestSubmitCommand,
     SubmitBatchTaskResponseBodySubmitResult,
+    SubmitPipelineByIdRequestContext,
+    SubmitPipelineByIdRequestQueryId,
+    SubmitPipelineByIdResponseBodyData,
     SubmitQualityRuleTasksRequestSubmitCommandWatchRuleIdList,
     SubmitQualityRuleTasksRequestSubmitCommand,
     SubmitQualityRuleTasksResponseBodySubmitResult,

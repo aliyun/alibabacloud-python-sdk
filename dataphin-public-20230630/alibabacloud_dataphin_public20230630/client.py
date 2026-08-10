@@ -7905,6 +7905,100 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.execute_ad_hoc_task_with_options_async(request, runtime)
 
+    def execute_ddlwith_options(
+        self,
+        tmp_req: main_models.ExecuteDDLRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ExecuteDDLResponse:
+        tmp_req.validate()
+        request = main_models.ExecuteDDLShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.context):
+            request.context_shrink = Utils.array_to_string_with_specified_style(tmp_req.context, 'Context', 'json')
+        if not DaraCore.is_null(tmp_req.ddlcommand):
+            request.ddlcommand_shrink = Utils.array_to_string_with_specified_style(tmp_req.ddlcommand, 'DDLCommand', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not DaraCore.is_null(request.context_shrink):
+            body['Context'] = request.context_shrink
+        if not DaraCore.is_null(request.ddlcommand_shrink):
+            body['DDLCommand'] = request.ddlcommand_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ExecuteDDL',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ExecuteDDLResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def execute_ddlwith_options_async(
+        self,
+        tmp_req: main_models.ExecuteDDLRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ExecuteDDLResponse:
+        tmp_req.validate()
+        request = main_models.ExecuteDDLShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.context):
+            request.context_shrink = Utils.array_to_string_with_specified_style(tmp_req.context, 'Context', 'json')
+        if not DaraCore.is_null(tmp_req.ddlcommand):
+            request.ddlcommand_shrink = Utils.array_to_string_with_specified_style(tmp_req.ddlcommand, 'DDLCommand', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not DaraCore.is_null(request.context_shrink):
+            body['Context'] = request.context_shrink
+        if not DaraCore.is_null(request.ddlcommand_shrink):
+            body['DDLCommand'] = request.ddlcommand_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ExecuteDDL',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ExecuteDDLResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def execute_ddl(
+        self,
+        request: main_models.ExecuteDDLRequest,
+    ) -> main_models.ExecuteDDLResponse:
+        runtime = RuntimeOptions()
+        return self.execute_ddlwith_options(request, runtime)
+
+    async def execute_ddl_async(
+        self,
+        request: main_models.ExecuteDDLRequest,
+    ) -> main_models.ExecuteDDLResponse:
+        runtime = RuntimeOptions()
+        return await self.execute_ddlwith_options_async(request, runtime)
+
     def execute_manual_node_with_options(
         self,
         tmp_req: main_models.ExecuteManualNodeRequest,
@@ -19549,6 +19643,100 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_operation_record_with_options_async(request, runtime)
 
+    def list_pipelines_with_options(
+        self,
+        tmp_req: main_models.ListPipelinesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListPipelinesResponse:
+        tmp_req.validate()
+        request = main_models.ListPipelinesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.context):
+            request.context_shrink = Utils.array_to_string_with_specified_style(tmp_req.context, 'Context', 'json')
+        if not DaraCore.is_null(tmp_req.list_command):
+            request.list_command_shrink = Utils.array_to_string_with_specified_style(tmp_req.list_command, 'ListCommand', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not DaraCore.is_null(request.context_shrink):
+            body['Context'] = request.context_shrink
+        if not DaraCore.is_null(request.list_command_shrink):
+            body['ListCommand'] = request.list_command_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListPipelines',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListPipelinesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_pipelines_with_options_async(
+        self,
+        tmp_req: main_models.ListPipelinesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListPipelinesResponse:
+        tmp_req.validate()
+        request = main_models.ListPipelinesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.context):
+            request.context_shrink = Utils.array_to_string_with_specified_style(tmp_req.context, 'Context', 'json')
+        if not DaraCore.is_null(tmp_req.list_command):
+            request.list_command_shrink = Utils.array_to_string_with_specified_style(tmp_req.list_command, 'ListCommand', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not DaraCore.is_null(request.context_shrink):
+            body['Context'] = request.context_shrink
+        if not DaraCore.is_null(request.list_command_shrink):
+            body['ListCommand'] = request.list_command_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListPipelines',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListPipelinesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_pipelines(
+        self,
+        request: main_models.ListPipelinesRequest,
+    ) -> main_models.ListPipelinesResponse:
+        runtime = RuntimeOptions()
+        return self.list_pipelines_with_options(request, runtime)
+
+    async def list_pipelines_async(
+        self,
+        request: main_models.ListPipelinesRequest,
+    ) -> main_models.ListPipelinesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_pipelines_with_options_async(request, runtime)
+
     def list_project_members_with_options(
         self,
         tmp_req: main_models.ListProjectMembersRequest,
@@ -20584,6 +20772,92 @@ class Client(OpenApiClient):
     ) -> main_models.ListRowPermissionByUserIdResponse:
         runtime = RuntimeOptions()
         return await self.list_row_permission_by_user_id_with_options_async(request, runtime)
+
+    def list_security_classify_with_options(
+        self,
+        tmp_req: main_models.ListSecurityClassifyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListSecurityClassifyResponse:
+        tmp_req.validate()
+        request = main_models.ListSecurityClassifyShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.list_query):
+            request.list_query_shrink = Utils.array_to_string_with_specified_style(tmp_req.list_query, 'ListQuery', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not DaraCore.is_null(request.list_query_shrink):
+            body['ListQuery'] = request.list_query_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListSecurityClassify',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListSecurityClassifyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_security_classify_with_options_async(
+        self,
+        tmp_req: main_models.ListSecurityClassifyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListSecurityClassifyResponse:
+        tmp_req.validate()
+        request = main_models.ListSecurityClassifyShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.list_query):
+            request.list_query_shrink = Utils.array_to_string_with_specified_style(tmp_req.list_query, 'ListQuery', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not DaraCore.is_null(request.list_query_shrink):
+            body['ListQuery'] = request.list_query_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListSecurityClassify',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListSecurityClassifyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_security_classify(
+        self,
+        request: main_models.ListSecurityClassifyRequest,
+    ) -> main_models.ListSecurityClassifyResponse:
+        runtime = RuntimeOptions()
+        return self.list_security_classify_with_options(request, runtime)
+
+    async def list_security_classify_async(
+        self,
+        request: main_models.ListSecurityClassifyRequest,
+    ) -> main_models.ListSecurityClassifyResponse:
+        runtime = RuntimeOptions()
+        return await self.list_security_classify_with_options_async(request, runtime)
 
     def list_security_identify_records_with_options(
         self,
@@ -23373,6 +23647,96 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.revoke_resource_permission_with_options_async(request, runtime)
 
+    def search_kg_by_semantic_with_options(
+        self,
+        tmp_req: main_models.SearchKgBySemanticRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SearchKgBySemanticResponse:
+        tmp_req.validate()
+        request = main_models.SearchKgBySemanticShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.search_command):
+            request.search_command_shrink = Utils.array_to_string_with_specified_style(tmp_req.search_command, 'SearchCommand', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        body = {}
+        if not DaraCore.is_null(request.search_command_shrink):
+            body['SearchCommand'] = request.search_command_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SearchKgBySemantic',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SearchKgBySemanticResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def search_kg_by_semantic_with_options_async(
+        self,
+        tmp_req: main_models.SearchKgBySemanticRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SearchKgBySemanticResponse:
+        tmp_req.validate()
+        request = main_models.SearchKgBySemanticShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.search_command):
+            request.search_command_shrink = Utils.array_to_string_with_specified_style(tmp_req.search_command, 'SearchCommand', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        body = {}
+        if not DaraCore.is_null(request.search_command_shrink):
+            body['SearchCommand'] = request.search_command_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SearchKgBySemantic',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SearchKgBySemanticResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def search_kg_by_semantic(
+        self,
+        request: main_models.SearchKgBySemanticRequest,
+    ) -> main_models.SearchKgBySemanticResponse:
+        runtime = RuntimeOptions()
+        return self.search_kg_by_semantic_with_options(request, runtime)
+
+    async def search_kg_by_semantic_async(
+        self,
+        request: main_models.SearchKgBySemanticRequest,
+    ) -> main_models.SearchKgBySemanticResponse:
+        runtime = RuntimeOptions()
+        return await self.search_kg_by_semantic_with_options_async(request, runtime)
+
     def stop_ad_hoc_task_with_options(
         self,
         request: main_models.StopAdHocTaskRequest,
@@ -23536,6 +23900,100 @@ class Client(OpenApiClient):
     ) -> main_models.SubmitBatchTaskResponse:
         runtime = RuntimeOptions()
         return await self.submit_batch_task_with_options_async(request, runtime)
+
+    def submit_pipeline_by_id_with_options(
+        self,
+        tmp_req: main_models.SubmitPipelineByIdRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitPipelineByIdResponse:
+        tmp_req.validate()
+        request = main_models.SubmitPipelineByIdShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.context):
+            request.context_shrink = Utils.array_to_string_with_specified_style(tmp_req.context, 'Context', 'json')
+        if not DaraCore.is_null(tmp_req.query_id):
+            request.query_id_shrink = Utils.array_to_string_with_specified_style(tmp_req.query_id, 'QueryId', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not DaraCore.is_null(request.context_shrink):
+            body['Context'] = request.context_shrink
+        if not DaraCore.is_null(request.query_id_shrink):
+            body['QueryId'] = request.query_id_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitPipelineById',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitPipelineByIdResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_pipeline_by_id_with_options_async(
+        self,
+        tmp_req: main_models.SubmitPipelineByIdRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitPipelineByIdResponse:
+        tmp_req.validate()
+        request = main_models.SubmitPipelineByIdShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.context):
+            request.context_shrink = Utils.array_to_string_with_specified_style(tmp_req.context, 'Context', 'json')
+        if not DaraCore.is_null(tmp_req.query_id):
+            request.query_id_shrink = Utils.array_to_string_with_specified_style(tmp_req.query_id, 'QueryId', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not DaraCore.is_null(request.context_shrink):
+            body['Context'] = request.context_shrink
+        if not DaraCore.is_null(request.query_id_shrink):
+            body['QueryId'] = request.query_id_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitPipelineById',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitPipelineByIdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_pipeline_by_id(
+        self,
+        request: main_models.SubmitPipelineByIdRequest,
+    ) -> main_models.SubmitPipelineByIdResponse:
+        runtime = RuntimeOptions()
+        return self.submit_pipeline_by_id_with_options(request, runtime)
+
+    async def submit_pipeline_by_id_async(
+        self,
+        request: main_models.SubmitPipelineByIdRequest,
+    ) -> main_models.SubmitPipelineByIdResponse:
+        runtime = RuntimeOptions()
+        return await self.submit_pipeline_by_id_with_options_async(request, runtime)
 
     def submit_quality_rule_tasks_with_options(
         self,
