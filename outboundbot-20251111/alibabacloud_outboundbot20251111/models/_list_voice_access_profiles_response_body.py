@@ -18,19 +18,19 @@ class ListVoiceAccessProfilesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 返回码
+        # The return code.
         self.code = code
-        # 返回数据
+        # The response data.
         self.data = data
-        # HTTP状态码
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # 错误信息
+        # The error message.
         self.message = message
-        # 错误信息中的变量值列表
+        # The list of variable values in the error message.
         self.params = params
-        # 请求ID
+        # The request ID.
         self.request_id = request_id
-        # 是否调用成功
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -99,13 +99,13 @@ class ListVoiceAccessProfilesResponseBodyData(DaraModel):
         total_count: int = None,
         voice_access_profiles: List[main_models.ListVoiceAccessProfilesResponseBodyDataVoiceAccessProfiles] = None,
     ):
-        # 页码，从1开始
+        # The page number, starting from 1.
         self.page_number = page_number
-        # 每页记录数
+        # The number of records per page.
         self.page_size = page_size
-        # 符合条件的记录总数
+        # The total number of records that match the conditions.
         self.total_count = total_count
-        # 数据列表
+        # The data list.
         self.voice_access_profiles = voice_access_profiles
 
     def validate(self):
@@ -166,21 +166,25 @@ class ListVoiceAccessProfilesResponseBodyDataVoiceAccessProfiles(DaraModel):
         profile: main_models.ListVoiceAccessProfilesResponseBodyDataVoiceAccessProfilesProfile = None,
         updated_time: int = None,
     ):
-        # 接入配置ID
+        # The access profile ID.
         self.access_profile_id = access_profile_id
-        # 能力列表
+        # The list of supported capabilities.
         self.capabilities = capabilities
-        # 创建时间，毫秒级时间戳
+        # The creation time, in millisecond-level timestamp.
         self.created_time = created_time
-        # 实例ID
+        # The instance ID.
         self.instance_id = instance_id
-        # 目前支持IFLYTEK、VOLC
+        # The voice engine vendor. Valid values:
+        # - BAILIAN: Bailian.
+        # - VOLC: Doubao.
+        # - IFLYTEK: iFLYTEK.
+        # - TENCENT: Tencent.
         self.nls_engine = nls_engine
-        # 引擎显示名称(例如：豆包、货拉拉)
+        # The display name of the voice engine vendor.
         self.nls_engine_name = nls_engine_name
-        # 配置
+        # The configuration.
         self.profile = profile
-        # 更新时间，毫秒级时间戳
+        # The update time, in millisecond-level timestamp.
         self.updated_time = updated_time
 
     def validate(self):
@@ -260,23 +264,23 @@ class ListVoiceAccessProfilesResponseBodyDataVoiceAccessProfilesProfile(DaraMode
         secret_key: str = None,
         tts_api_key: str = None,
     ):
-        # 访问密钥
+        # Required when NlsEngine=VOLC.
         self.access_key = access_key
-        # 百炼同时使用
+        # Required when NlsEngine=IFLYTEK or NlsEngine=BAILIAN.
         self.api_key = api_key
-        # API密钥
+        # Required when NlsEngine=IFLYTEK.
         self.api_secret = api_secret
-        # 科大讯飞使用
+        # Required when NlsEngine=IFLYTEK or NlsEngine=TENCENT.
         self.app_id = app_id
-        # 豆包使用
+        # Required when NlsEngine=VOLC.
         self.app_key = app_key
-        # 货拉拉使用
+        # Not currently in use.
         self.asr_app_key = asr_app_key
-        # 腾讯云使用，appId 已存在
+        # Required when NlsEngine=TENCENT.
         self.secret_id = secret_id
-        # 密钥
+        # Required when NlsEngine=TENCENT.
         self.secret_key = secret_key
-        # TTS服务API Key
+        # Not currently in use.
         self.tts_api_key = tts_api_key
 
     def validate(self):

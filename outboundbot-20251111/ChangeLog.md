@@ -1,3 +1,7 @@
+2026-08-11 Version: 1.3.0
+- Support API UpdateScriptVersion.
+
+
 2026-08-07 Version: 1.2.0
 - Support API CreateCloneVoice.
 - Support API CreateFlashSmsAccessProfile.

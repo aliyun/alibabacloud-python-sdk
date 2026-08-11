@@ -2755,6 +2755,128 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.update_script_with_options_async(request, runtime)
 
+    def update_script_version_with_options(
+        self,
+        tmp_req: main_models.UpdateScriptVersionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateScriptVersionResponse:
+        tmp_req.validate()
+        request = main_models.UpdateScriptVersionShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.interaction_config):
+            request.interaction_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.interaction_config, 'InteractionConfig', 'json')
+        if not DaraCore.is_null(tmp_req.label_configs):
+            request.label_configs_shrink = Utils.array_to_string_with_specified_style(tmp_req.label_configs, 'LabelConfigs', 'json')
+        if not DaraCore.is_null(tmp_req.script_profile):
+            request.script_profile_shrink = Utils.array_to_string_with_specified_style(tmp_req.script_profile, 'ScriptProfile', 'json')
+        if not DaraCore.is_null(tmp_req.synthesizer_config):
+            request.synthesizer_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.synthesizer_config, 'SynthesizerConfig', 'json')
+        if not DaraCore.is_null(tmp_req.transcriber_config):
+            request.transcriber_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.transcriber_config, 'TranscriberConfig', 'json')
+        body = {}
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.interaction_config_shrink):
+            body['InteractionConfig'] = request.interaction_config_shrink
+        if not DaraCore.is_null(request.label_configs_shrink):
+            body['LabelConfigs'] = request.label_configs_shrink
+        if not DaraCore.is_null(request.script_id):
+            body['ScriptId'] = request.script_id
+        if not DaraCore.is_null(request.script_profile_shrink):
+            body['ScriptProfile'] = request.script_profile_shrink
+        if not DaraCore.is_null(request.synthesizer_config_shrink):
+            body['SynthesizerConfig'] = request.synthesizer_config_shrink
+        if not DaraCore.is_null(request.transcriber_config_shrink):
+            body['TranscriberConfig'] = request.transcriber_config_shrink
+        if not DaraCore.is_null(request.version_id):
+            body['VersionId'] = request.version_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateScriptVersion',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateScriptVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_script_version_with_options_async(
+        self,
+        tmp_req: main_models.UpdateScriptVersionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateScriptVersionResponse:
+        tmp_req.validate()
+        request = main_models.UpdateScriptVersionShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.interaction_config):
+            request.interaction_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.interaction_config, 'InteractionConfig', 'json')
+        if not DaraCore.is_null(tmp_req.label_configs):
+            request.label_configs_shrink = Utils.array_to_string_with_specified_style(tmp_req.label_configs, 'LabelConfigs', 'json')
+        if not DaraCore.is_null(tmp_req.script_profile):
+            request.script_profile_shrink = Utils.array_to_string_with_specified_style(tmp_req.script_profile, 'ScriptProfile', 'json')
+        if not DaraCore.is_null(tmp_req.synthesizer_config):
+            request.synthesizer_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.synthesizer_config, 'SynthesizerConfig', 'json')
+        if not DaraCore.is_null(tmp_req.transcriber_config):
+            request.transcriber_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.transcriber_config, 'TranscriberConfig', 'json')
+        body = {}
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.interaction_config_shrink):
+            body['InteractionConfig'] = request.interaction_config_shrink
+        if not DaraCore.is_null(request.label_configs_shrink):
+            body['LabelConfigs'] = request.label_configs_shrink
+        if not DaraCore.is_null(request.script_id):
+            body['ScriptId'] = request.script_id
+        if not DaraCore.is_null(request.script_profile_shrink):
+            body['ScriptProfile'] = request.script_profile_shrink
+        if not DaraCore.is_null(request.synthesizer_config_shrink):
+            body['SynthesizerConfig'] = request.synthesizer_config_shrink
+        if not DaraCore.is_null(request.transcriber_config_shrink):
+            body['TranscriberConfig'] = request.transcriber_config_shrink
+        if not DaraCore.is_null(request.version_id):
+            body['VersionId'] = request.version_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateScriptVersion',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateScriptVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_script_version(
+        self,
+        request: main_models.UpdateScriptVersionRequest,
+    ) -> main_models.UpdateScriptVersionResponse:
+        runtime = RuntimeOptions()
+        return self.update_script_version_with_options(request, runtime)
+
+    async def update_script_version_async(
+        self,
+        request: main_models.UpdateScriptVersionRequest,
+    ) -> main_models.UpdateScriptVersionResponse:
+        runtime = RuntimeOptions()
+        return await self.update_script_version_with_options_async(request, runtime)
+
     def update_subscription_with_options(
         self,
         tmp_req: main_models.UpdateSubscriptionRequest,

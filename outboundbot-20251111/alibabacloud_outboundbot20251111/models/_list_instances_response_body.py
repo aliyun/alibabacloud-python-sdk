@@ -99,7 +99,7 @@ class ListInstancesResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The list of instances.
+        # The instance list.
         self.instances = instances
         # The current page number.
         self.page_number = page_number
@@ -166,7 +166,7 @@ class ListInstancesResponseBodyDataInstances(DaraModel):
         tenant_id: str = None,
         updated_time: int = None,
     ):
-        # The number of concurrent connections.
+        # The concurrency.
         self.concurrency = concurrency
         # The creation time.
         self.created_time = created_time

@@ -12,13 +12,13 @@ class UpdateScriptRequest(DaraModel):
         name: str = None,
         script_id: str = None,
     ):
-        # 描述
+        # The description.
         self.description = description
-        # 实例ID
+        # The instance ID.
         self.instance_id = instance_id
-        # 名称
+        # The name.
         self.name = name
-        # 场景ID
+        # The script ID.
         self.script_id = script_id
 
     def validate(self):

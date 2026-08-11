@@ -18,19 +18,19 @@ class ListFlashSmsProvidersResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 返回码
+        # The return code.
         self.code = code
-        # 返回数据
+        # The response data.
         self.data = data
-        # HTTP状态码
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # 错误信息
+        # The error message.
         self.message = message
-        # 错误信息中的变量值列表
+        # The list of variable values in the error message.
         self.params = params
-        # 请求ID
+        # The request ID.
         self.request_id = request_id
-        # 是否调用成功
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -104,11 +104,11 @@ class ListFlashSmsProvidersResponseBodyData(DaraModel):
         provider_id: str = None,
         provider_name: str = None,
     ):
-        # 配置schema
+        # The provider parameter information.
         self.profile_schema = profile_schema
-        # 供应商ID
+        # The provider ID.
         self.provider_id = provider_id
-        # 供应商名称
+        # The provider name.
         self.provider_name = provider_name
 
     def validate(self):

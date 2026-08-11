@@ -18,19 +18,19 @@ class ListScriptProfileTemplatesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 返回码
+        # The return code.
         self.code = code
-        # 返回数据
+        # The response data.
         self.data = data
-        # HTTP状态码
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # 错误信息
+        # The error message.
         self.message = message
-        # 错误信息中的变量值列表
+        # The list of variable values in the error message.
         self.params = params
-        # 请求ID
+        # The request ID.
         self.request_id = request_id
-        # 是否调用成功
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -109,21 +109,21 @@ class ListScriptProfileTemplatesResponseBodyData(DaraModel):
         updated_time: int = None,
         variables: str = None,
     ):
-        # 创建时间，毫秒级时间戳
+        # The creation time, in millisecond-level timestamp.
         self.created_time = created_time
-        # 描述
+        # The description.
         self.description = description
-        # 标签定义
+        # The label definition.
         self.labels = labels
-        # 名称
+        # The name.
         self.name = name
-        # schema定义
+        # The template details.
         self.schema = schema
-        # 模板ID
+        # The template ID.
         self.template_id = template_id
-        # 更新时间，毫秒级时间戳
+        # The update time, in millisecond-level timestamp.
         self.updated_time = updated_time
-        # 变量定义
+        # The variable definition.
         self.variables = variables
 
     def validate(self):

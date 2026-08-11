@@ -11,11 +11,11 @@ class UpdateCloneVoiceRequest(DaraModel):
         instance_id: str = None,
         name: str = None,
     ):
-        # 克隆音色ID
+        # The UUID of the cloned voice.
         self.clone_voice_id = clone_voice_id
-        # 实例ID
+        # The instance ID.
         self.instance_id = instance_id
-        # 名称
+        # The name of the cloned voice.
         self.name = name
 
     def validate(self):

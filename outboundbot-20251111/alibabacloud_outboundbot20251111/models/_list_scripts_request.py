@@ -16,17 +16,17 @@ class ListScriptsRequest(DaraModel):
         publish_only: bool = None,
         script_ids: List[str] = None,
     ):
-        # 实例ID
+        # The instance ID.
         self.instance_id = instance_id
-        # 搜索关键词
+        # The scenario name.
         self.name = name
-        # 页码，从1开始
+        # The page number, starting from 1.
         self.page_number = page_number
-        # 每页记录数
+        # The number of records per page.
         self.page_size = page_size
-        # 是否仅返回已发布的场景
+        # Specifies whether to return only published scenarios.
         self.publish_only = publish_only
-        # 场景ID列表
+        # The list of scenario IDs.
         self.script_ids = script_ids
 
     def validate(self):

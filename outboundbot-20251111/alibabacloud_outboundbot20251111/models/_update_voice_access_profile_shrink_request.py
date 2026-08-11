@@ -12,13 +12,18 @@ class UpdateVoiceAccessProfileShrinkRequest(DaraModel):
         nls_engine: str = None,
         profile_shrink: str = None,
     ):
-        # 接入配置ID
+        # The access profile ID.
         self.access_profile_id = access_profile_id
-        # 实例ID
+        # The instance ID.
         self.instance_id = instance_id
-        # 目前支持IFLYTEK、VOLC
+        # The voice service provider. Valid values:
+        # 
+        # - BAILIAN: Bailian.
+        # - VOLC: Doubao.
+        # - IFLYTEK: iFLYTEK.
+        # - TENCENT: Tencent.
         self.nls_engine = nls_engine
-        # 配置
+        # The vendor configuration information.
         self.profile_shrink = profile_shrink
 
     def validate(self):

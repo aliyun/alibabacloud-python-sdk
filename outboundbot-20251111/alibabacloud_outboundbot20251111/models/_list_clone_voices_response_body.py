@@ -18,19 +18,19 @@ class ListCloneVoicesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 返回码
+        # The return code.
         self.code = code
-        # 返回数据
+        # The response data.
         self.data = data
-        # HTTP状态码
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # 错误信息
+        # The error message.
         self.message = message
-        # 错误信息中的变量值列表
+        # The list of variable values in the error message.
         self.params = params
-        # 请求ID
+        # The request ID.
         self.request_id = request_id
-        # 是否调用成功
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -99,13 +99,13 @@ class ListCloneVoicesResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # 数据列表
+        # The list of cloned voices.
         self.clone_voices = clone_voices
-        # 页码，从1开始
+        # The page number, starting from 1.
         self.page_number = page_number
-        # 每页记录数
+        # The number of records per page.
         self.page_size = page_size
-        # 符合条件的记录总数
+        # The total number of records that match the conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -168,25 +168,25 @@ class ListCloneVoicesResponseBodyDataCloneVoices(DaraModel):
         updated_time: int = None,
         voice: str = None,
     ):
-        # 克隆音色ID
+        # The UUID of the cloned voice.
         self.clone_voice_id = clone_voice_id
-        # 创建时间，毫秒级时间戳
+        # The creation time, in millisecond-level timestamp.
         self.created_time = created_time
-        # 实例ID
+        # The instance ID.
         self.instance_id = instance_id
-        # 模型名称
+        # The model name.
         self.model = model
-        # 名称
+        # The name.
         self.name = name
-        # 目前支持IFLYTEK、VOLC
+        # The speech vendor.
         self.nls_engine = nls_engine
-        # 状态
+        # The status.
         self.status = status
-        # 租户ID
+        # The tenant ID.
         self.tenant_id = tenant_id
-        # 更新时间，毫秒级时间戳
+        # The update time, in millisecond-level timestamp.
         self.updated_time = updated_time
-        # 音色
+        # The voice ID.
         self.voice = voice
 
     def validate(self):

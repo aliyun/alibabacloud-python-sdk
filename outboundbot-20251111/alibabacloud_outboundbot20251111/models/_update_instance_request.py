@@ -12,7 +12,7 @@ class UpdateInstanceRequest(DaraModel):
         instance_id: str = None,
         name: str = None,
     ):
-        # The number of concurrent calls.
+        # The number of concurrent connections.
         self.concurrency = concurrency
         # The instance description.
         self.description = description

@@ -12,13 +12,19 @@ class UpdateFlashSmsAccessProfileShrinkRequest(DaraModel):
         instance_id: str = None,
         provider_id: str = None,
     ):
-        # 接入配置
+        # The access configuration.
         self.access_profile_shrink = access_profile_shrink
-        # 接入配置ID
+        # The access configuration ID.
         self.access_profile_id = access_profile_id
-        # 实例ID
+        # The instance ID.
         self.instance_id = instance_id
-        # 供应商ID
+        # The provider ID. Valid values:
+        # - Uincall: Beijing Youyin Communication Co., Ltd.
+        # - ChuangLan: Beijing Chuanglan Cloud Intelligence Information Co., Ltd.
+        # - ChinaMobile: China Mobile.
+        # - ShangHaiTianNan: Shanghai Tiannan.
+        # - HeDao: Galaxis.
+        # - DySms: Alibaba Communication.
         self.provider_id = provider_id
 
     def validate(self):

@@ -18,19 +18,19 @@ class ListCloneVoiceModelsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 返回码
+        # The return code.
         self.code = code
-        # 返回数据
+        # The response data.
         self.data = data
-        # HTTP状态码
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # 错误信息
+        # The error message.
         self.message = message
-        # 错误信息中的变量值列表
+        # The list of variable values in the error message.
         self.params = params
-        # 请求ID
+        # The request ID.
         self.request_id = request_id
-        # 是否调用成功
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -99,13 +99,13 @@ class ListCloneVoiceModelsResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # 数据列表
+        # The list of voice cloning models.
         self.clone_voice_models = clone_voice_models
-        # 页码，从1开始
+        # The page number, starting from 1.
         self.page_number = page_number
-        # 每页记录数
+        # The number of records per page.
         self.page_size = page_size
-        # 符合条件的记录总数
+        # The total number of records that match the conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -161,11 +161,11 @@ class ListCloneVoiceModelsResponseBodyDataCloneVoiceModels(DaraModel):
         display_name: str = None,
         name: str = None,
     ):
-        # 描述
+        # The description.
         self.description = description
-        # 显示名称
+        # The display name.
         self.display_name = display_name
-        # 名称
+        # The model name.
         self.name = name
 
     def validate(self):

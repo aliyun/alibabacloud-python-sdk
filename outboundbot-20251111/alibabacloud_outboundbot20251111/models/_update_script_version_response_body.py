@@ -6,7 +6,7 @@ from typing import List
 
 from darabonba.model import DaraModel
 
-class UpdateSubscriptionResponseBody(DaraModel):
+class UpdateScriptVersionResponseBody(DaraModel):
     def __init__(
         self,
         code: str = None,
@@ -17,19 +17,19 @@ class UpdateSubscriptionResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The return code.
+        # 返回码
         self.code = code
-        # The ID of the event push configuration.
+        # 返回数据
         self.data = data
-        # The HTTP status code.
+        # HTTP状态码
         self.http_status_code = http_status_code
-        # The error message.
+        # 错误信息
         self.message = message
-        # The list of variable values in the error message.
+        # 错误信息中的变量值列表
         self.params = params
-        # The request ID.
+        # 请求ID
         self.request_id = request_id
-        # Indicates whether the call was successful.
+        # 是否调用成功
         self.success = success
 
     def validate(self):

@@ -9,7 +9,7 @@ class GetSubscriptionRequest(DaraModel):
         self,
         instance_id: str = None,
     ):
-        # 实例ID
+        # The instance ID.
         self.instance_id = instance_id
 
     def validate(self):

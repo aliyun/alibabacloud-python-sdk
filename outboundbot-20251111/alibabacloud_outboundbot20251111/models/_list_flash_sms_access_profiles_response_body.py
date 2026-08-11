@@ -18,19 +18,19 @@ class ListFlashSmsAccessProfilesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 返回码
+        # The return code.
         self.code = code
-        # 返回数据
+        # The response data.
         self.data = data
-        # HTTP状态码
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # 错误信息
+        # The error message.
         self.message = message
-        # 错误信息中的变量值列表
+        # The list of variable values in the error message.
         self.params = params
-        # 请求ID
+        # The request ID.
         self.request_id = request_id
-        # 是否调用成功
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -99,13 +99,13 @@ class ListFlashSmsAccessProfilesResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # 数据列表
+        # The data list.
         self.flash_sms_access_profiles = flash_sms_access_profiles
-        # 页码，从1开始
+        # The page number, starting from 1.
         self.page_number = page_number
-        # 每页记录数
+        # The number of records per page.
         self.page_size = page_size
-        # 符合条件的记录总数
+        # The total number of records that match the conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -164,17 +164,23 @@ class ListFlashSmsAccessProfilesResponseBodyDataFlashSmsAccessProfiles(DaraModel
         provider_name: str = None,
         updated_time: int = None,
     ):
-        # 接入配置
+        # The provider configuration information.
         self.access_profile = access_profile
-        # 接入配置ID
+        # The flash SMS configuration ID.
         self.access_profile_id = access_profile_id
-        # 创建时间，毫秒级时间戳
+        # The creation time, in millisecond-level timestamp.
         self.created_time = created_time
-        # 供应商ID
+        # The provider ID. Valid values:\\
+        # Uincall: Beijing Youyin Communication Co., Ltd.\\
+        # ChuangLan: Beijing ChuangLan Cloud Intelligence Information Co., Ltd.\\
+        # ChinaMobile: China Mobile.\\
+        # ShangHaiTianNan: Shanghai Tiannan.\\
+        # HeDao: Galexis.\\
+        # DySms: Alibaba Communication.
         self.provider_id = provider_id
-        # 供应商名称
+        # The provider name.
         self.provider_name = provider_name
-        # 更新时间，毫秒级时间戳
+        # The update time, in millisecond-level timestamp.
         self.updated_time = updated_time
 
     def validate(self):

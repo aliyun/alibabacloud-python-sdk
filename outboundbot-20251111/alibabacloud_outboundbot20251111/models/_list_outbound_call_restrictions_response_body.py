@@ -30,7 +30,7 @@ class ListOutboundCallRestrictionsResponseBody(DaraModel):
         self.params = params
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the call was successful.
+        # Indicates whether the call is successful.
         self.success = success
 
     def validate(self):

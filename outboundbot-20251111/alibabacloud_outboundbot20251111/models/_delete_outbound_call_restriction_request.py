@@ -14,7 +14,7 @@ class DeleteOutboundCallRestrictionRequest(DaraModel):
     ):
         # The instance ID.
         self.instance_id = instance_id
-        # The list of outbound restriction IDs.
+        # The list of outbound call restriction IDs.
         self.restriction_id_list = restriction_id_list
 
     def validate(self):

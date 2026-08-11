@@ -18,19 +18,19 @@ class GetSubscriptionResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 返回码
+        # The return code.
         self.code = code
-        # 返回数据
+        # The response data.
         self.data = data
-        # HTTP状态码
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # 错误信息
+        # The error message.
         self.message = message
-        # 错误信息中的变量值列表
+        # The list of variable values in the error message.
         self.params = params
-        # 请求ID
+        # The request ID.
         self.request_id = request_id
-        # 是否调用成功
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -105,25 +105,25 @@ class GetSubscriptionResponseBodyData(DaraModel):
         topic: str = None,
         user_name: str = None,
     ):
-        # true 表示禁用，false 表示启用
+        # Indicates whether the event push is disabled. A value of true indicates disabled, and a value of false indicates enabled.
         self.disabled = disabled
-        # 接入点
+        # The endpoint.
         self.endpoint = endpoint
-        # 事件列表
+        # The list of push content.
         self.event_list = event_list
-        # 实例ID
+        # The instance ID.
         self.instance_id = instance_id
-        # MQ的实例ID
+        # The MQ instance ID.
         self.mq_instance_id = mq_instance_id
-        # 消息队列类型
+        # The MSMQ type.
         self.mq_type = mq_type
-        # 田南+伽雷可斯
+        # The password.
         self.password = password
-        # 生产者ID
+        # The producer ID.
         self.producer_id = producer_id
-        # 主题
+        # The topic.
         self.topic = topic
-        # 伽雷可斯
+        # The username.
         self.user_name = user_name
 
     def validate(self):
@@ -215,11 +215,11 @@ class GetSubscriptionResponseBodyDataEventList(DaraModel):
         display_name: str = None,
         name: str = None,
     ):
-        # true 表示禁用，false 表示启用
+        # Indicates whether the event push is disabled. A value of true indicates disabled, and a value of false indicates enabled.
         self.disabled = disabled
-        # 显示名称
+        # The display name.
         self.display_name = display_name
-        # 名称
+        # The name.
         self.name = name
 
     def validate(self):

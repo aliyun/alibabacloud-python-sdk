@@ -29,7 +29,7 @@ class UpdateInstanceResponseBody(DaraModel):
         self.params = params
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the call was successful.
+        # Indicates whether the call is successful.
         self.success = success
 
     def validate(self):

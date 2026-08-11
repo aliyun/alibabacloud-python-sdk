@@ -11,11 +11,11 @@ class PublishScriptRequest(DaraModel):
         script_id: str = None,
         version_id: str = None,
     ):
-        # 实例ID
+        # The instance ID.
         self.instance_id = instance_id
-        # 场景ID
+        # The scenario ID.
         self.script_id = script_id
-        # 版本ID
+        # The version ID.
         self.version_id = version_id
 
     def validate(self):

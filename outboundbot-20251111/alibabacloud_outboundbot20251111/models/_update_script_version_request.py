@@ -7,34 +7,34 @@ from typing import List
 from alibabacloud_outboundbot20251111 import models as main_models
 from darabonba.model import DaraModel
 
-class CreateScriptVersionRequest(DaraModel):
+class UpdateScriptVersionRequest(DaraModel):
     def __init__(
         self,
         instance_id: str = None,
-        interaction_config: main_models.CreateScriptVersionRequestInteractionConfig = None,
-        label_configs: List[main_models.CreateScriptVersionRequestLabelConfigs] = None,
+        interaction_config: main_models.UpdateScriptVersionRequestInteractionConfig = None,
+        label_configs: List[main_models.UpdateScriptVersionRequestLabelConfigs] = None,
         script_id: str = None,
-        script_profile: main_models.CreateScriptVersionRequestScriptProfile = None,
-        source_version_id: str = None,
-        synthesizer_config: main_models.CreateScriptVersionRequestSynthesizerConfig = None,
-        transcriber_config: main_models.CreateScriptVersionRequestTranscriberConfig = None,
+        script_profile: main_models.UpdateScriptVersionRequestScriptProfile = None,
+        synthesizer_config: main_models.UpdateScriptVersionRequestSynthesizerConfig = None,
+        transcriber_config: main_models.UpdateScriptVersionRequestTranscriberConfig = None,
+        version_id: str = None,
     ):
-        # The instance ID.
+        # 实例ID
         self.instance_id = instance_id
-        # The interaction configuration.
+        # 交互配置
         self.interaction_config = interaction_config
-        # The label configurations.
+        # 草稿版本的标签配置（JSON字符串）
         self.label_configs = label_configs
-        # The scenario ID.
+        # 场景ID
         self.script_id = script_id
-        # The dialogue capability configuration.
+        # 话术配置
         self.script_profile = script_profile
-        # The source version ID.
-        self.source_version_id = source_version_id
-        # The TTS configuration.
+        # 语音合成配置
         self.synthesizer_config = synthesizer_config
-        # The ASR configuration.
+        # 语音识别配置
         self.transcriber_config = transcriber_config
+        # 版本ID
+        self.version_id = version_id
 
     def validate(self):
         if self.interaction_config:
@@ -72,14 +72,14 @@ class CreateScriptVersionRequest(DaraModel):
         if self.script_profile is not None:
             result['ScriptProfile'] = self.script_profile.to_map()
 
-        if self.source_version_id is not None:
-            result['SourceVersionId'] = self.source_version_id
-
         if self.synthesizer_config is not None:
             result['SynthesizerConfig'] = self.synthesizer_config.to_map()
 
         if self.transcriber_config is not None:
             result['TranscriberConfig'] = self.transcriber_config.to_map()
+
+        if self.version_id is not None:
+            result['VersionId'] = self.version_id
 
         return result
 
@@ -89,65 +89,56 @@ class CreateScriptVersionRequest(DaraModel):
             self.instance_id = m.get('InstanceId')
 
         if m.get('InteractionConfig') is not None:
-            temp_model = main_models.CreateScriptVersionRequestInteractionConfig()
+            temp_model = main_models.UpdateScriptVersionRequestInteractionConfig()
             self.interaction_config = temp_model.from_map(m.get('InteractionConfig'))
 
         self.label_configs = []
         if m.get('LabelConfigs') is not None:
             for k1 in m.get('LabelConfigs'):
-                temp_model = main_models.CreateScriptVersionRequestLabelConfigs()
+                temp_model = main_models.UpdateScriptVersionRequestLabelConfigs()
                 self.label_configs.append(temp_model.from_map(k1))
 
         if m.get('ScriptId') is not None:
             self.script_id = m.get('ScriptId')
 
         if m.get('ScriptProfile') is not None:
-            temp_model = main_models.CreateScriptVersionRequestScriptProfile()
+            temp_model = main_models.UpdateScriptVersionRequestScriptProfile()
             self.script_profile = temp_model.from_map(m.get('ScriptProfile'))
 
-        if m.get('SourceVersionId') is not None:
-            self.source_version_id = m.get('SourceVersionId')
-
         if m.get('SynthesizerConfig') is not None:
-            temp_model = main_models.CreateScriptVersionRequestSynthesizerConfig()
+            temp_model = main_models.UpdateScriptVersionRequestSynthesizerConfig()
             self.synthesizer_config = temp_model.from_map(m.get('SynthesizerConfig'))
 
         if m.get('TranscriberConfig') is not None:
-            temp_model = main_models.CreateScriptVersionRequestTranscriberConfig()
+            temp_model = main_models.UpdateScriptVersionRequestTranscriberConfig()
             self.transcriber_config = temp_model.from_map(m.get('TranscriberConfig'))
+
+        if m.get('VersionId') is not None:
+            self.version_id = m.get('VersionId')
 
         return self
 
-class CreateScriptVersionRequestTranscriberConfig(DaraModel):
+class UpdateScriptVersionRequestTranscriberConfig(DaraModel):
     def __init__(
         self,
-        correction_rules: List[main_models.CreateScriptVersionRequestTranscriberConfigCorrectionRules] = None,
+        correction_rules: List[main_models.UpdateScriptVersionRequestTranscriberConfigCorrectionRules] = None,
         customization_id: str = None,
         end_silence_timeout: int = None,
         model: str = None,
-        nls_access_profile: main_models.CreateScriptVersionRequestTranscriberConfigNlsAccessProfile = None,
+        nls_access_profile: main_models.UpdateScriptVersionRequestTranscriberConfigNlsAccessProfile = None,
         nls_access_type: str = None,
         nls_engine: str = None,
         speech_noise_threshold: int = None,
         vocabulary_id: str = None,
     ):
-        # The ASR correction dictionary.
         self.correction_rules = correction_rules
-        # The custom language model ID for ASR.
         self.customization_id = customization_id
-        # The silence detection threshold. Sentence segmentation is triggered when the speaking interval exceeds x milliseconds, which is also known as Voice Activity Detection (VAD).
         self.end_silence_timeout = end_silence_timeout
-        # The ASR model.
         self.model = model
-        # The associated configuration.
         self.nls_access_profile = nls_access_profile
-        # The ASR invocation method.
         self.nls_access_type = nls_access_type
-        # The ASR engine.
         self.nls_engine = nls_engine
-        # The noise parameter threshold. Valid values: -100 to 100. Description:
         self.speech_noise_threshold = speech_noise_threshold
-        # The hot word list ID. You can obtain this ID from the hot word management page.
         self.vocabulary_id = vocabulary_id
 
     def validate(self):
@@ -199,7 +190,7 @@ class CreateScriptVersionRequestTranscriberConfig(DaraModel):
         self.correction_rules = []
         if m.get('CorrectionRules') is not None:
             for k1 in m.get('CorrectionRules'):
-                temp_model = main_models.CreateScriptVersionRequestTranscriberConfigCorrectionRules()
+                temp_model = main_models.UpdateScriptVersionRequestTranscriberConfigCorrectionRules()
                 self.correction_rules.append(temp_model.from_map(k1))
 
         if m.get('CustomizationId') is not None:
@@ -212,7 +203,7 @@ class CreateScriptVersionRequestTranscriberConfig(DaraModel):
             self.model = m.get('Model')
 
         if m.get('NlsAccessProfile') is not None:
-            temp_model = main_models.CreateScriptVersionRequestTranscriberConfigNlsAccessProfile()
+            temp_model = main_models.UpdateScriptVersionRequestTranscriberConfigNlsAccessProfile()
             self.nls_access_profile = temp_model.from_map(m.get('NlsAccessProfile'))
 
         if m.get('NlsAccessType') is not None:
@@ -229,12 +220,11 @@ class CreateScriptVersionRequestTranscriberConfig(DaraModel):
 
         return self
 
-class CreateScriptVersionRequestTranscriberConfigNlsAccessProfile(DaraModel):
+class UpdateScriptVersionRequestTranscriberConfigNlsAccessProfile(DaraModel):
     def __init__(
         self,
         access_profile_id: str = None,
     ):
-        # The third-party speech configuration ID. This parameter is required when you use a third-party ASR service such as Doubao or iFLYTEK.
         self.access_profile_id = access_profile_id
 
     def validate(self):
@@ -257,15 +247,13 @@ class CreateScriptVersionRequestTranscriberConfigNlsAccessProfile(DaraModel):
 
         return self
 
-class CreateScriptVersionRequestTranscriberConfigCorrectionRules(DaraModel):
+class UpdateScriptVersionRequestTranscriberConfigCorrectionRules(DaraModel):
     def __init__(
         self,
         pattern: str = None,
         replacement: str = None,
     ):
-        # The incorrectly recognized text.
         self.pattern = pattern
-        # The corrected text.
         self.replacement = replacement
 
     def validate(self):
@@ -294,36 +282,27 @@ class CreateScriptVersionRequestTranscriberConfigCorrectionRules(DaraModel):
 
         return self
 
-class CreateScriptVersionRequestSynthesizerConfig(DaraModel):
+class UpdateScriptVersionRequestSynthesizerConfig(DaraModel):
     def __init__(
         self,
         model: str = None,
-        nls_access_profile: main_models.CreateScriptVersionRequestSynthesizerConfigNlsAccessProfile = None,
+        nls_access_profile: main_models.UpdateScriptVersionRequestSynthesizerConfigNlsAccessProfile = None,
         nls_access_type: str = None,
         nls_engine: str = None,
         pitch_rate: int = None,
-        pron_rules: List[main_models.CreateScriptVersionRequestSynthesizerConfigPronRules] = None,
+        pron_rules: List[main_models.UpdateScriptVersionRequestSynthesizerConfigPronRules] = None,
         speech_rate: int = None,
         voice: str = None,
         volume: int = None,
     ):
-        # The TTS model.
         self.model = model
-        # The associated configuration.
         self.nls_access_profile = nls_access_profile
-        # The TTS invocation method.
         self.nls_access_type = nls_access_type
-        # The TTS engine.
         self.nls_engine = nls_engine
-        # The pitch.
         self.pitch_rate = pitch_rate
-        # The TTS correction dictionary.
         self.pron_rules = pron_rules
-        # The speech rate.
         self.speech_rate = speech_rate
-        # The voice.
         self.voice = voice
-        # The volume.
         self.volume = volume
 
     def validate(self):
@@ -376,7 +355,7 @@ class CreateScriptVersionRequestSynthesizerConfig(DaraModel):
             self.model = m.get('Model')
 
         if m.get('NlsAccessProfile') is not None:
-            temp_model = main_models.CreateScriptVersionRequestSynthesizerConfigNlsAccessProfile()
+            temp_model = main_models.UpdateScriptVersionRequestSynthesizerConfigNlsAccessProfile()
             self.nls_access_profile = temp_model.from_map(m.get('NlsAccessProfile'))
 
         if m.get('NlsAccessType') is not None:
@@ -391,7 +370,7 @@ class CreateScriptVersionRequestSynthesizerConfig(DaraModel):
         self.pron_rules = []
         if m.get('PronRules') is not None:
             for k1 in m.get('PronRules'):
-                temp_model = main_models.CreateScriptVersionRequestSynthesizerConfigPronRules()
+                temp_model = main_models.UpdateScriptVersionRequestSynthesizerConfigPronRules()
                 self.pron_rules.append(temp_model.from_map(k1))
 
         if m.get('SpeechRate') is not None:
@@ -405,15 +384,13 @@ class CreateScriptVersionRequestSynthesizerConfig(DaraModel):
 
         return self
 
-class CreateScriptVersionRequestSynthesizerConfigPronRules(DaraModel):
+class UpdateScriptVersionRequestSynthesizerConfigPronRules(DaraModel):
     def __init__(
         self,
         pattern: str = None,
         replacement: str = None,
     ):
-        # The easily mispronounced word.
         self.pattern = pattern
-        # The homophonic word.
         self.replacement = replacement
 
     def validate(self):
@@ -442,12 +419,11 @@ class CreateScriptVersionRequestSynthesizerConfigPronRules(DaraModel):
 
         return self
 
-class CreateScriptVersionRequestSynthesizerConfigNlsAccessProfile(DaraModel):
+class UpdateScriptVersionRequestSynthesizerConfigNlsAccessProfile(DaraModel):
     def __init__(
         self,
         access_profile_id: str = None,
     ):
-        # The third-party speech configuration ID. This parameter is required when you use a third-party ASR service such as Doubao or iFLYTEK.
         self.access_profile_id = access_profile_id
 
     def validate(self):
@@ -470,36 +446,27 @@ class CreateScriptVersionRequestSynthesizerConfigNlsAccessProfile(DaraModel):
 
         return self
 
-class CreateScriptVersionRequestScriptProfile(DaraModel):
+class UpdateScriptVersionRequestScriptProfile(DaraModel):
     def __init__(
         self,
         agent_key: str = None,
-        agent_profile: main_models.CreateScriptVersionRequestScriptProfileAgentProfile = None,
+        agent_profile: main_models.UpdateScriptVersionRequestScriptProfileAgentProfile = None,
         builder_type: str = None,
         chatbot_id: str = None,
-        function_meta: main_models.CreateScriptVersionRequestScriptProfileFunctionMeta = None,
+        function_meta: main_models.UpdateScriptVersionRequestScriptProfileFunctionMeta = None,
         model: str = None,
-        nlu_access_profile: main_models.CreateScriptVersionRequestScriptProfileNluAccessProfile = None,
+        nlu_access_profile: main_models.UpdateScriptVersionRequestScriptProfileNluAccessProfile = None,
         nlu_access_type: str = None,
         omni_model: bool = None,
     ):
-        # The chatbot AgentKey.
         self.agent_key = agent_key
-        # The dialogue agent configuration.
         self.agent_profile = agent_profile
-        # The chatbot type.
         self.builder_type = builder_type
-        # The chatbot ID.
         self.chatbot_id = chatbot_id
-        # The Function Compute configuration.
         self.function_meta = function_meta
-        # The dialogue model.
         self.model = model
-        # The associated configuration.
         self.nlu_access_profile = nlu_access_profile
-        # The dialogue model invocation method.
         self.nlu_access_type = nlu_access_type
-        # Specifies whether the model is an Omni model.
         self.omni_model = omni_model
 
     def validate(self):
@@ -550,7 +517,7 @@ class CreateScriptVersionRequestScriptProfile(DaraModel):
             self.agent_key = m.get('AgentKey')
 
         if m.get('AgentProfile') is not None:
-            temp_model = main_models.CreateScriptVersionRequestScriptProfileAgentProfile()
+            temp_model = main_models.UpdateScriptVersionRequestScriptProfileAgentProfile()
             self.agent_profile = temp_model.from_map(m.get('AgentProfile'))
 
         if m.get('BuilderType') is not None:
@@ -560,14 +527,14 @@ class CreateScriptVersionRequestScriptProfile(DaraModel):
             self.chatbot_id = m.get('ChatbotId')
 
         if m.get('FunctionMeta') is not None:
-            temp_model = main_models.CreateScriptVersionRequestScriptProfileFunctionMeta()
+            temp_model = main_models.UpdateScriptVersionRequestScriptProfileFunctionMeta()
             self.function_meta = temp_model.from_map(m.get('FunctionMeta'))
 
         if m.get('Model') is not None:
             self.model = m.get('Model')
 
         if m.get('NluAccessProfile') is not None:
-            temp_model = main_models.CreateScriptVersionRequestScriptProfileNluAccessProfile()
+            temp_model = main_models.UpdateScriptVersionRequestScriptProfileNluAccessProfile()
             self.nlu_access_profile = temp_model.from_map(m.get('NluAccessProfile'))
 
         if m.get('NluAccessType') is not None:
@@ -578,12 +545,11 @@ class CreateScriptVersionRequestScriptProfile(DaraModel):
 
         return self
 
-class CreateScriptVersionRequestScriptProfileNluAccessProfile(DaraModel):
+class UpdateScriptVersionRequestScriptProfileNluAccessProfile(DaraModel):
     def __init__(
         self,
         access_profile_id: str = None,
     ):
-        # The third-party dialogue model configuration ID.
         self.access_profile_id = access_profile_id
 
     def validate(self):
@@ -606,7 +572,7 @@ class CreateScriptVersionRequestScriptProfileNluAccessProfile(DaraModel):
 
         return self
 
-class CreateScriptVersionRequestScriptProfileFunctionMeta(DaraModel):
+class UpdateScriptVersionRequestScriptProfileFunctionMeta(DaraModel):
     def __init__(
         self,
         function_id: str = None,
@@ -615,15 +581,10 @@ class CreateScriptVersionRequestScriptProfileFunctionMeta(DaraModel):
         http_trigger_url: str = None,
         region_id: str = None,
     ):
-        # The function service ID.
         self.function_id = function_id
-        # The function service name.
         self.function_name = function_name
-        # The function trigger name.
         self.http_trigger_name = http_trigger_name
-        # The function trigger URL.
         self.http_trigger_url = http_trigger_url
-        # The region where the function service resides.
         self.region_id = region_id
 
     def validate(self):
@@ -670,15 +631,13 @@ class CreateScriptVersionRequestScriptProfileFunctionMeta(DaraModel):
 
         return self
 
-class CreateScriptVersionRequestScriptProfileAgentProfile(DaraModel):
+class UpdateScriptVersionRequestScriptProfileAgentProfile(DaraModel):
     def __init__(
         self,
         prompts_json: str = None,
         script_profile_template_id: str = None,
     ):
-        # The prompt JSON.
         self.prompts_json = prompts_json
-        # The scenario template ID.
         self.script_profile_template_id = script_profile_template_id
 
     def validate(self):
@@ -707,18 +666,15 @@ class CreateScriptVersionRequestScriptProfileAgentProfile(DaraModel):
 
         return self
 
-class CreateScriptVersionRequestLabelConfigs(DaraModel):
+class UpdateScriptVersionRequestLabelConfigs(DaraModel):
     def __init__(
         self,
         candidate_values: List[str] = None,
         description: str = None,
         name: str = None,
     ):
-        # The candidate values for the label.
         self.candidate_values = candidate_values
-        # The description.
         self.description = description
-        # The label name.
         self.name = name
 
     def validate(self):
@@ -753,27 +709,21 @@ class CreateScriptVersionRequestLabelConfigs(DaraModel):
 
         return self
 
-class CreateScriptVersionRequestInteractionConfig(DaraModel):
+class UpdateScriptVersionRequestInteractionConfig(DaraModel):
     def __init__(
         self,
         background_music_id: str = None,
-        barge_in_config: main_models.CreateScriptVersionRequestInteractionConfigBargeInConfig = None,
-        end_conversation_config: main_models.CreateScriptVersionRequestInteractionConfigEndConversationConfig = None,
+        barge_in_config: main_models.UpdateScriptVersionRequestInteractionConfigBargeInConfig = None,
+        end_conversation_config: main_models.UpdateScriptVersionRequestInteractionConfigEndConversationConfig = None,
         initial_greeting_delay_milliseconds: int = None,
-        silence_detection_config: main_models.CreateScriptVersionRequestInteractionConfigSilenceDetectionConfig = None,
-        transition_config: main_models.CreateScriptVersionRequestInteractionConfigTransitionConfig = None,
+        silence_detection_config: main_models.UpdateScriptVersionRequestInteractionConfigSilenceDetectionConfig = None,
+        transition_config: main_models.UpdateScriptVersionRequestInteractionConfigTransitionConfig = None,
     ):
-        # The background music ID.
         self.background_music_id = background_music_id
-        # The barge-in configuration.
         self.barge_in_config = barge_in_config
-        # The hang-up configuration.
         self.end_conversation_config = end_conversation_config
-        # The delay in milliseconds before playing audio after the call is connected.
         self.initial_greeting_delay_milliseconds = initial_greeting_delay_milliseconds
-        # The silence detection configuration.
         self.silence_detection_config = silence_detection_config
-        # The transition phrase model configuration.
         self.transition_config = transition_config
 
     def validate(self):
@@ -817,27 +767,27 @@ class CreateScriptVersionRequestInteractionConfig(DaraModel):
             self.background_music_id = m.get('BackgroundMusicId')
 
         if m.get('BargeInConfig') is not None:
-            temp_model = main_models.CreateScriptVersionRequestInteractionConfigBargeInConfig()
+            temp_model = main_models.UpdateScriptVersionRequestInteractionConfigBargeInConfig()
             self.barge_in_config = temp_model.from_map(m.get('BargeInConfig'))
 
         if m.get('EndConversationConfig') is not None:
-            temp_model = main_models.CreateScriptVersionRequestInteractionConfigEndConversationConfig()
+            temp_model = main_models.UpdateScriptVersionRequestInteractionConfigEndConversationConfig()
             self.end_conversation_config = temp_model.from_map(m.get('EndConversationConfig'))
 
         if m.get('InitialGreetingDelayMilliseconds') is not None:
             self.initial_greeting_delay_milliseconds = m.get('InitialGreetingDelayMilliseconds')
 
         if m.get('SilenceDetectionConfig') is not None:
-            temp_model = main_models.CreateScriptVersionRequestInteractionConfigSilenceDetectionConfig()
+            temp_model = main_models.UpdateScriptVersionRequestInteractionConfigSilenceDetectionConfig()
             self.silence_detection_config = temp_model.from_map(m.get('SilenceDetectionConfig'))
 
         if m.get('TransitionConfig') is not None:
-            temp_model = main_models.CreateScriptVersionRequestInteractionConfigTransitionConfig()
+            temp_model = main_models.UpdateScriptVersionRequestInteractionConfigTransitionConfig()
             self.transition_config = temp_model.from_map(m.get('TransitionConfig'))
 
         return self
 
-class CreateScriptVersionRequestInteractionConfigTransitionConfig(DaraModel):
+class UpdateScriptVersionRequestInteractionConfigTransitionConfig(DaraModel):
     def __init__(
         self,
         ai_phrase_prompt: str = None,
@@ -845,13 +795,9 @@ class CreateScriptVersionRequestInteractionConfigTransitionConfig(DaraModel):
         phrase_source: str = None,
         transition_switch: bool = None,
     ):
-        # The model generation prompt.
         self.ai_phrase_prompt = ai_phrase_prompt
-        # The list of fixed transition phrases.
         self.fixed_phrase_list = fixed_phrase_list
-        # The method for generating transition phrases.
         self.phrase_source = phrase_source
-        # Specifies whether to enable transition phrases.
         self.transition_switch = transition_switch
 
     def validate(self):
@@ -892,23 +838,17 @@ class CreateScriptVersionRequestInteractionConfigTransitionConfig(DaraModel):
 
         return self
 
-class CreateScriptVersionRequestInteractionConfigSilenceDetectionConfig(DaraModel):
+class UpdateScriptVersionRequestInteractionConfigSilenceDetectionConfig(DaraModel):
     def __init__(
         self,
-        fallback_control_params_list: List[main_models.CreateScriptVersionRequestInteractionConfigSilenceDetectionConfigFallbackControlParamsList] = None,
+        fallback_control_params_list: List[main_models.UpdateScriptVersionRequestInteractionConfigSilenceDetectionConfigFallbackControlParamsList] = None,
         max_repeats: int = None,
         prompt: str = None,
         timeout: int = None,
     ):
-        # The list of actions to perform during consecutive silence.
         self.fallback_control_params_list = fallback_control_params_list
-        # The number of consecutive silence rounds before hanging up.
         self.max_repeats = max_repeats
-        # The silence prompt.
         self.prompt = prompt
-        # The silence timeout period, in milliseconds.\\
-        # When the user remains silent for longer than the specified value, the silence timeout prompt is played.\\
-        # Valid range: 2000 to 10000.
         self.timeout = timeout
 
     def validate(self):
@@ -943,7 +883,7 @@ class CreateScriptVersionRequestInteractionConfigSilenceDetectionConfig(DaraMode
         self.fallback_control_params_list = []
         if m.get('FallbackControlParamsList') is not None:
             for k1 in m.get('FallbackControlParamsList'):
-                temp_model = main_models.CreateScriptVersionRequestInteractionConfigSilenceDetectionConfigFallbackControlParamsList()
+                temp_model = main_models.UpdateScriptVersionRequestInteractionConfigSilenceDetectionConfigFallbackControlParamsList()
                 self.fallback_control_params_list.append(temp_model.from_map(k1))
 
         if m.get('MaxRepeats') is not None:
@@ -957,12 +897,11 @@ class CreateScriptVersionRequestInteractionConfigSilenceDetectionConfig(DaraMode
 
         return self
 
-class CreateScriptVersionRequestInteractionConfigSilenceDetectionConfigFallbackControlParamsList(DaraModel):
+class UpdateScriptVersionRequestInteractionConfigSilenceDetectionConfigFallbackControlParamsList(DaraModel):
     def __init__(
         self,
         type: str = None,
     ):
-        # The action to perform during consecutive silence.
         self.type = type
 
     def validate(self):
@@ -985,18 +924,15 @@ class CreateScriptVersionRequestInteractionConfigSilenceDetectionConfigFallbackC
 
         return self
 
-class CreateScriptVersionRequestInteractionConfigEndConversationConfig(DaraModel):
+class UpdateScriptVersionRequestInteractionConfigEndConversationConfig(DaraModel):
     def __init__(
         self,
         barge_in_enabled: bool = None,
         delay: int = None,
-        triggers: List[main_models.CreateScriptVersionRequestInteractionConfigEndConversationConfigTriggers] = None,
+        triggers: List[main_models.UpdateScriptVersionRequestInteractionConfigEndConversationConfigTriggers] = None,
     ):
-        # Specifies whether barge-in is supported during the delayed hang-up waiting period.
         self.barge_in_enabled = barge_in_enabled
-        # The number of seconds to wait after the closing statement is played before executing the hang-up action. Valid values: 0 to 5.
         self.delay = delay
-        # The special condition interception settings.
         self.triggers = triggers
 
     def validate(self):
@@ -1034,12 +970,12 @@ class CreateScriptVersionRequestInteractionConfigEndConversationConfig(DaraModel
         self.triggers = []
         if m.get('Triggers') is not None:
             for k1 in m.get('Triggers'):
-                temp_model = main_models.CreateScriptVersionRequestInteractionConfigEndConversationConfigTriggers()
+                temp_model = main_models.UpdateScriptVersionRequestInteractionConfigEndConversationConfigTriggers()
                 self.triggers.append(temp_model.from_map(k1))
 
         return self
 
-class CreateScriptVersionRequestInteractionConfigEndConversationConfigTriggers(DaraModel):
+class UpdateScriptVersionRequestInteractionConfigEndConversationConfigTriggers(DaraModel):
     def __init__(
         self,
         closing_statement: str = None,
@@ -1047,18 +983,9 @@ class CreateScriptVersionRequestInteractionConfigEndConversationConfigTriggers(D
         trigger_type: str = None,
         turn_limit: int = None,
     ):
-        # The closing statement played when hanging up after reaching the turn limit.
         self.closing_statement = closing_statement
-        # The list of custom interception keywords.
         self.keywords = keywords
-        # Valid values:
-        # 
-        # - TurnLimit: maximum number of interaction turns.
-        # - IntelligentVoiceAssistant: voice assistant.
-        # - InteractiveVoiceResponse: extension transfer.
-        # - KeyWords: custom interception.
         self.trigger_type = trigger_type
-        # Hangs up when the number of interaction turns exceeds x. Valid values: 0 to 100. A value of 0 indicates that the turn limit hang-up is disabled.
         self.turn_limit = turn_limit
 
     def validate(self):
@@ -1099,18 +1026,15 @@ class CreateScriptVersionRequestInteractionConfigEndConversationConfigTriggers(D
 
         return self
 
-class CreateScriptVersionRequestInteractionConfigBargeInConfig(DaraModel):
+class UpdateScriptVersionRequestInteractionConfigBargeInConfig(DaraModel):
     def __init__(
         self,
         closing_barge_in_enabled: bool = None,
         global_barge_in_enabled: bool = None,
         opening_barge_in_enabled: bool = None,
     ):
-        # Specifies whether barge-in is supported during the closing statement.
         self.closing_barge_in_enabled = closing_barge_in_enabled
-        # Specifies whether barge-in is supported during the conversation.
         self.global_barge_in_enabled = global_barge_in_enabled
-        # Specifies whether barge-in is supported during the opening greeting.
         self.opening_barge_in_enabled = opening_barge_in_enabled
 
     def validate(self):

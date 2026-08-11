@@ -10,9 +10,9 @@ class GetScriptProfileTemplateRequest(DaraModel):
         instance_id: str = None,
         template_id: str = None,
     ):
-        # 实例ID
+        # The instance ID.
         self.instance_id = instance_id
-        # 模板ID
+        # The template ID.
         self.template_id = template_id
 
     def validate(self):

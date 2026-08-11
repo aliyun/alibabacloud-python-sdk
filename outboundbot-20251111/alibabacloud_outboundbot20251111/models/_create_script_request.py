@@ -12,13 +12,16 @@ class CreateScriptRequest(DaraModel):
         name: str = None,
         nlu_engine: str = None,
     ):
-        # 描述
+        # The description.
         self.description = description
-        # 实例ID
+        # The instance ID.
         self.instance_id = instance_id
-        # 名称
+        # The scenario name.
         self.name = name
-        # NLU引擎类型
+        # The NLU engine type. Valid values:
+        # - BEEBOT: integrates with Chatbot.
+        # - PROMPTS: prompt mode.
+        # - FUNCTION: integrates with Function Compute.
         self.nlu_engine = nlu_engine
 
     def validate(self):

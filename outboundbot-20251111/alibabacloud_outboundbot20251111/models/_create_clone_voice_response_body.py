@@ -18,19 +18,19 @@ class CreateCloneVoiceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 返回码
+        # The return code.
         self.code = code
-        # 返回数据
+        # The response data.
         self.data = data
-        # HTTP状态码
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # 错误信息
+        # The error message.
         self.message = message
-        # 错误信息中的变量值列表
+        # The list of variable values in the error message.
         self.params = params
-        # 请求ID
+        # The request ID.
         self.request_id = request_id
-        # 是否调用成功
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -99,9 +99,9 @@ class CreateCloneVoiceResponseBodyData(DaraModel):
         clone_voice_id: str = None,
         voice: str = None,
     ):
-        # 克隆音色ID
+        # The UUID of the cloned voice.
         self.clone_voice_id = clone_voice_id
-        # 音色
+        # The voice ID.
         self.voice = voice
 
     def validate(self):

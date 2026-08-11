@@ -10,9 +10,9 @@ class DeleteScriptRequest(DaraModel):
         instance_id: str = None,
         script_id: str = None,
     ):
-        # 实例ID
+        # The instance ID.
         self.instance_id = instance_id
-        # 场景ID
+        # The scenario ID.
         self.script_id = script_id
 
     def validate(self):

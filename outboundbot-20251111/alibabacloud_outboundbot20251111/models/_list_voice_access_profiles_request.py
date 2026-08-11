@@ -11,11 +11,11 @@ class ListVoiceAccessProfilesRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # 实例ID
+        # The instance ID.
         self.instance_id = instance_id
-        # 页码，从1开始
+        # The page number, starting from 1.
         self.page_number = page_number
-        # 每页记录数
+        # The number of records per page.
         self.page_size = page_size
 
     def validate(self):

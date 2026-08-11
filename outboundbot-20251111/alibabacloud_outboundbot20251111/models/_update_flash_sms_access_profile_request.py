@@ -15,13 +15,19 @@ class UpdateFlashSmsAccessProfileRequest(DaraModel):
         instance_id: str = None,
         provider_id: str = None,
     ):
-        # 接入配置
+        # The access configuration.
         self.access_profile = access_profile
-        # 接入配置ID
+        # The access configuration ID.
         self.access_profile_id = access_profile_id
-        # 实例ID
+        # The instance ID.
         self.instance_id = instance_id
-        # 供应商ID
+        # The provider ID. Valid values:
+        # - Uincall: Beijing Youyin Communication Co., Ltd.
+        # - ChuangLan: Beijing Chuanglan Cloud Intelligence Information Co., Ltd.
+        # - ChinaMobile: China Mobile.
+        # - ShangHaiTianNan: Shanghai Tiannan.
+        # - HeDao: Galaxis.
+        # - DySms: Alibaba Communication.
         self.provider_id = provider_id
 
     def validate(self):
@@ -84,21 +90,37 @@ class UpdateFlashSmsAccessProfileRequestAccessProfile(DaraModel):
         user: str = None,
         user_name: str = None,
     ):
+        # Required when ProviderId is set to ShangHaiTianNan or Uincall.
         self.account = account
+        # Required when ProviderId is set to ChinaMobile.
         self.aes_key = aes_key
+        # Required when ProviderId is set to ChuangLan.
         self.api_account = api_account
+        # Required when ProviderId is set to ChinaMobile.
         self.api_id = api_id
+        # Required when ProviderId is set to ChinaMobile.
         self.api_key = api_key
+        # Required when ProviderId is set to ChuangLan.
         self.api_password = api_password
+        # Required when ProviderId is set to ChinaMobile.
         self.cap_app_id = cap_app_id
+        # The list of Alibaba Communication configurations. Required when ProviderId is set to DySms.
         self.dy_sms_access_profiles = dy_sms_access_profiles
+        # Required when ProviderId is set to ShangHaiTianNan.
         self.extno = extno
+        # Required when ProviderId is set to ChuangLan.
         self.management_password = management_password
+        # Required when ProviderId is set to ChuangLan.
         self.management_sub_user_id = management_sub_user_id
+        # Required when ProviderId is set to ChuangLan.
         self.management_username = management_username
+        # Required when ProviderId is set to ShangHaiTianNan or HeDao.
         self.password = password
+        # Required when ProviderId is set to Uincall.
         self.pwd = pwd
+        # Required when ProviderId is set to Uincall.
         self.user = user
+        # Required when ProviderId is set to HeDao.
         self.user_name = user_name
 
     def validate(self):
@@ -227,9 +249,13 @@ class UpdateFlashSmsAccessProfileRequestAccessProfileDySmsAccessProfiles(DaraMod
         sign_name: str = None,
         template_code: str = None,
     ):
+        # The template content.
         self.description = description
+        # The template name.
         self.name = name
+        # The signature name.
         self.sign_name = sign_name
+        # The template code.
         self.template_code = template_code
 
     def validate(self):

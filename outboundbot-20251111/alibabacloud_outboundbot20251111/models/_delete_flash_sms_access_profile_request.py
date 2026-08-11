@@ -10,9 +10,9 @@ class DeleteFlashSmsAccessProfileRequest(DaraModel):
         access_profile_id: str = None,
         instance_id: str = None,
     ):
-        # 接入配置ID
+        # The flash message configuration ID.
         self.access_profile_id = access_profile_id
-        # 实例ID
+        # The instance ID.
         self.instance_id = instance_id
 
     def validate(self):

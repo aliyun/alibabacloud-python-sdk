@@ -13,13 +13,18 @@ class UpdateVoiceAccessProfileRequest(DaraModel):
         nls_engine: str = None,
         profile: main_models.UpdateVoiceAccessProfileRequestProfile = None,
     ):
-        # 接入配置ID
+        # The access profile ID.
         self.access_profile_id = access_profile_id
-        # 实例ID
+        # The instance ID.
         self.instance_id = instance_id
-        # 目前支持IFLYTEK、VOLC
+        # The voice service provider. Valid values:
+        # 
+        # - BAILIAN: Bailian.
+        # - VOLC: Doubao.
+        # - IFLYTEK: iFLYTEK.
+        # - TENCENT: Tencent.
         self.nls_engine = nls_engine
-        # 配置
+        # The vendor configuration information.
         self.profile = profile
 
     def validate(self):
@@ -75,14 +80,23 @@ class UpdateVoiceAccessProfileRequestProfile(DaraModel):
         secret_key: str = None,
         tts_api_key: str = None,
     ):
+        # Required when NlsEngine is set to VOLC.
         self.access_key = access_key
+        # Required when NlsEngine is set to IFLYTEK or BAILIAN.
         self.api_key = api_key
+        # Required when NlsEngine is set to IFLYTEK.
         self.api_secret = api_secret
+        # Required when NlsEngine is set to IFLYTEK or TENCENT.
         self.app_id = app_id
+        # Required when NlsEngine is set to VOLC.
         self.app_key = app_key
+        # Not currently in use.
         self.asr_app_key = asr_app_key
+        # Required when NlsEngine is set to TENCENT.
         self.secret_id = secret_id
+        # Required when NlsEngine is set to TENCENT.
         self.secret_key = secret_key
+        # Not currently in use.
         self.tts_api_key = tts_api_key
 
     def validate(self):

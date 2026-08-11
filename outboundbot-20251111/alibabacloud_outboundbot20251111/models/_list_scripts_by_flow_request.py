@@ -10,9 +10,9 @@ class ListScriptsByFlowRequest(DaraModel):
         flow_id: str = None,
         instance_id: str = None,
     ):
-        # 流程ID
+        # The flow ID.
         self.flow_id = flow_id
-        # 实例ID
+        # The instance ID.
         self.instance_id = instance_id
 
     def validate(self):

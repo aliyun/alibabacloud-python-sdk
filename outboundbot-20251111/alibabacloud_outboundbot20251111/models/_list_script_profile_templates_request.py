@@ -10,9 +10,9 @@ class ListScriptProfileTemplatesRequest(DaraModel):
         instance_id: str = None,
         nlu_engine: str = None,
     ):
-        # 实例ID
+        # The instance ID.
         self.instance_id = instance_id
-        # NLU引擎类型
+        # The NLU engine type.
         self.nlu_engine = nlu_engine
 
     def validate(self):

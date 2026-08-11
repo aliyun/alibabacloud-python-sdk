@@ -19,7 +19,7 @@ class DeleteOutboundCallRestrictionResponseBody(DaraModel):
     ):
         # The return code.
         self.code = code
-        # Not in use.
+        # The response data.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code

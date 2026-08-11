@@ -18,19 +18,19 @@ class ListSystemConfigsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 返回码
+        # The return code.
         self.code = code
-        # 返回数据
+        # The response data.
         self.data = data
-        # HTTP状态码
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # 错误信息
+        # The error message.
         self.message = message
-        # 错误信息中的变量值列表
+        # The list of variable values in the error message.
         self.params = params
-        # 请求ID
+        # The request ID.
         self.request_id = request_id
-        # 是否调用成功
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -107,17 +107,23 @@ class ListSystemConfigsResponseBodyData(DaraModel):
         updated_time: str = None,
         value: str = None,
     ):
-        # 创建时间，毫秒级时间戳
+        # The creation time, in millisecond-level timestamp.
         self.created_time = created_time
-        # 名称
+        # The system configuration name.\\
+        # callableTime: the outbound job window.\\
+        # calleeDailyAttemptLimit: the maximum number of daily calls to a single callee number.
         self.name = name
-        # 对象ID
+        # The configuration type ID.\\
+        # If ObjectType is set to INSTANCE, this parameter specifies the instance ID.\\
+        # If ObjectType is set to TENANT, this parameter specifies the tenant ID.
         self.object_id = object_id
-        # 外呼开发时补充参数限制
+        # The configuration type.\\
+        # INSTANCE: instance-level.\\
+        # TENANT: tenant-level.
         self.object_type = object_type
-        # 更新时间，毫秒级时间戳
+        # The update time, in millisecond-level timestamp.
         self.updated_time = updated_time
-        # 值
+        # The system configuration content.
         self.value = value
 
     def validate(self):

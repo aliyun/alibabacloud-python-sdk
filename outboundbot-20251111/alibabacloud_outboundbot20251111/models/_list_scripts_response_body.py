@@ -18,19 +18,19 @@ class ListScriptsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 返回码
+        # The return code.
         self.code = code
-        # 返回数据
+        # The response data.
         self.data = data
-        # HTTP状态码
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # 错误信息
+        # The error message.
         self.message = message
-        # 错误信息中的变量值列表
+        # The list of variable values in the error message.
         self.params = params
-        # 请求ID
+        # The request ID.
         self.request_id = request_id
-        # 是否调用成功
+        # Indicates whether the call is successful.
         self.success = success
 
     def validate(self):
@@ -99,13 +99,13 @@ class ListScriptsResponseBodyData(DaraModel):
         scripts: List[main_models.ListScriptsResponseBodyDataScripts] = None,
         total_count: int = None,
     ):
-        # 页码，从1开始
+        # The page number, starting from 1.
         self.page_number = page_number
-        # 每页记录数
+        # The number of records per page.
         self.page_size = page_size
-        # 数据列表
+        # The data list.
         self.scripts = scripts
-        # 符合条件的记录总数
+        # The total number of records that match the conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -170,29 +170,29 @@ class ListScriptsResponseBodyDataScripts(DaraModel):
         status: str = None,
         updated_time: int = None,
     ):
-        # 并发数
+        # The concurrency.
         self.concurrency = concurrency
-        # 创建时间，毫秒级时间戳
+        # The creation time, in millisecond-level timestamp.
         self.created_time = created_time
-        # 描述
+        # The description.
         self.description = description
-        # 草稿版本ID
+        # The draft version ID.
         self.draft_version_id = draft_version_id
-        # 名称
+        # The name.
         self.name = name
-        # NLU接入类型
+        # The NLU access type.
         self.nlu_access_type = nlu_access_type
-        # NLU引擎类型
+        # The NLU engine type.
         self.nlu_engine = nlu_engine
-        # 电话号码
+        # The phone number bound to the scenario.
         self.number = number
-        # 已发布版本ID
+        # The published version ID.
         self.published_version_id = published_version_id
-        # 场景ID
+        # The scenario ID.
         self.script_id = script_id
-        # 状态
+        # The scenario status.
         self.status = status
-        # 更新时间，毫秒级时间戳
+        # The update time, in millisecond-level timestamp.
         self.updated_time = updated_time
 
     def validate(self):

@@ -11,11 +11,13 @@ class UpdateSystemConfigsShrinkRequest(DaraModel):
         object_id: str = None,
         object_type: str = None,
     ):
-        # 配置列表
+        # The list of configurations.
         self.configs_shrink = configs_shrink
-        # 对象ID
+        # The configuration type ID. If ObjectType is set to INSTANCE, this parameter specifies the instance ID. If ObjectType is set to TENANT, this parameter specifies the tenant ID.
         self.object_id = object_id
-        # 外呼开发时补充参数限制
+        # The configuration type. Valid values:
+        # - INSTANCE: instance level.
+        # - TENANT: tenant level.
         self.object_type = object_type
 
     def validate(self):

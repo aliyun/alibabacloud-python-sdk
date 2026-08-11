@@ -19,23 +19,23 @@ class UpdateSubscriptionRequest(DaraModel):
         topic: str = None,
         user_name: str = None,
     ):
-        # 接入点
+        # The endpoint.
         self.endpoint = endpoint
-        # 事件订阅列表
+        # The list of subscription items.
         self.event_subscriptions = event_subscriptions
-        # 实例ID
+        # The instance ID.
         self.instance_id = instance_id
-        # MQ的实例ID
+        # The instance ID of the message queue.
         self.mq_instance_id = mq_instance_id
-        # 消息队列类型
+        # The MSMQ type.
         self.mq_type = mq_type
-        # 田南+伽雷可斯
+        # The password.
         self.password = password
-        # 生产者ID
+        # The producer ID.
         self.producer_id = producer_id
-        # 主题
+        # The topic.
         self.topic = topic
-        # 伽雷可斯
+        # The username.
         self.user_name = user_name
 
     def validate(self):

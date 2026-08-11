@@ -11,11 +11,11 @@ class CreateCloneVoiceRequest(DaraModel):
         instance_id: str = None,
         model: str = None,
     ):
-        # 文件Key
+        # The file upload identifier.
         self.file_key = file_key
-        # 实例ID
+        # The instance ID.
         self.instance_id = instance_id
-        # 模型名称
+        # The model name.
         self.model = model
 
     def validate(self):

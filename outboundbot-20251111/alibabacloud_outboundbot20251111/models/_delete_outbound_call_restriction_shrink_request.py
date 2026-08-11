@@ -12,7 +12,7 @@ class DeleteOutboundCallRestrictionShrinkRequest(DaraModel):
     ):
         # The instance ID.
         self.instance_id = instance_id
-        # The list of outbound restriction IDs.
+        # The list of outbound call restriction IDs.
         self.restriction_id_list_shrink = restriction_id_list_shrink
 
     def validate(self):

@@ -11,11 +11,17 @@ class ListSystemConfigsRequest(DaraModel):
         object_id: str = None,
         object_type: str = None,
     ):
-        # 名称
+        # The system configuration name.\\
+        # callableTime: the outbound job window.\\
+        # calleeDailyAttemptLimit: the maximum number of daily calls to a single callee number.
         self.name = name
-        # 对象ID
+        # The configuration type ID.\\
+        # If ObjectType is set to INSTANCE, this parameter specifies the instance ID.\\
+        # If ObjectType is set to TENANT, this parameter specifies the tenant ID.
         self.object_id = object_id
-        # 外呼开发时补充参数限制
+        # The configuration type.\\
+        # INSTANCE: instance-level.\\
+        # TENANT: tenant-level.
         self.object_type = object_type
 
     def validate(self):
