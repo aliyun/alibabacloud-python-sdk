@@ -1,3 +1,8 @@
+2026-08-11 Version: 2.3.2
+- Update API ListInfiniteCanvases: add request parameters ProductionId.
+- Update API ListInfiniteCanvases: add request parameters WorkspaceId.
+
+
 2026-08-10 Version: 2.3.1
 - Generated python 2026-07-07 for Yike.
 

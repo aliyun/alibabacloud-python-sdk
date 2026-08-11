@@ -1567,10 +1567,14 @@ class Client(OpenApiClient):
             query['PageNo'] = request.page_no
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.production_id):
+            query['ProductionId'] = request.production_id
         if not DaraCore.is_null(request.sort_by):
             query['SortBy'] = request.sort_by
         if not DaraCore.is_null(request.sort_order):
             query['SortOrder'] = request.sort_order
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -1603,10 +1607,14 @@ class Client(OpenApiClient):
             query['PageNo'] = request.page_no
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.production_id):
+            query['ProductionId'] = request.production_id
         if not DaraCore.is_null(request.sort_by):
             query['SortBy'] = request.sort_by
         if not DaraCore.is_null(request.sort_order):
             query['SortOrder'] = request.sort_order
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )

@@ -10,8 +10,10 @@ class ListInfiniteCanvasesRequest(DaraModel):
         keyword: str = None,
         page_no: int = None,
         page_size: int = None,
+        production_id: str = None,
         sort_by: str = None,
         sort_order: str = None,
+        workspace_id: str = None,
     ):
         # The keyword for querying site monitoring tasks. Supports fuzzy match based on task name or task address.
         self.keyword = keyword
@@ -19,6 +21,7 @@ class ListInfiniteCanvasesRequest(DaraModel):
         self.page_no = page_no
         # The number of entries per page.
         self.page_size = page_size
+        self.production_id = production_id
         # The sort field and sort order. Separate multiple values with commas (,).
         self.sort_by = sort_by
         # The sort direction.
@@ -29,6 +32,7 @@ class ListInfiniteCanvasesRequest(DaraModel):
         # 
         # Default value: Desc.
         self.sort_order = sort_order
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -47,11 +51,17 @@ class ListInfiniteCanvasesRequest(DaraModel):
         if self.page_size is not None:
             result['PageSize'] = self.page_size
 
+        if self.production_id is not None:
+            result['ProductionId'] = self.production_id
+
         if self.sort_by is not None:
             result['SortBy'] = self.sort_by
 
         if self.sort_order is not None:
             result['SortOrder'] = self.sort_order
+
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
 
         return result
 
@@ -66,11 +76,17 @@ class ListInfiniteCanvasesRequest(DaraModel):
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
 
+        if m.get('ProductionId') is not None:
+            self.production_id = m.get('ProductionId')
+
         if m.get('SortBy') is not None:
             self.sort_by = m.get('SortBy')
 
         if m.get('SortOrder') is not None:
             self.sort_order = m.get('SortOrder')
+
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
 
         return self
 

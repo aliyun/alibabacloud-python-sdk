@@ -11,7 +11,9 @@ class GetVideoTranslationJobResponseBody(DaraModel):
         job: main_models.GetVideoTranslationJobResponseBodyJob = None,
         request_id: str = None,
     ):
+        # The video translation task.
         self.job = job
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -56,15 +58,25 @@ class GetVideoTranslationJobResponseBodyJob(DaraModel):
         output: str = None,
         status: str = None,
     ):
+        # The duration of the input video, in seconds.
         self.duration = duration
+        # The editing project ID.
         self.editing_project_id = editing_project_id
+        # Optional. The error code returned when the task ultimately fails.
         self.error_code = error_code
+        # Optional. The error message returned when the task ultimately fails.
         self.error_message = error_message
+        # The normalized Input JSON.
         self.input = input
+        # The task ID.
         self.job_id = job_id
+        # The normalized JobParameters JSON, including default values.
         self.job_parameters = job_parameters
+        # The normalized task type.
         self.job_type = job_type
+        # The JSON string of the final task result.
         self.output = output
+        # The task status. Valid values: Created, Queuing, Executing, Finished, and Failed.
         self.status = status
 
     def validate(self):
