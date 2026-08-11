@@ -17,16 +17,27 @@ class GlobalHotelValidatePriceRequest(DaraModel):
         room_count: int = None,
         tracer_id: str = None,
     ):
+        # The distributor account ID.
+        # 
         # This parameter is required.
         self.account_no = account_no
+        # The number of adults per room.
+        # 
         # This parameter is required.
         self.adults = adults
+        # The number of children per room.
         self.children = children
+        # The list of children ages.
         self.children_ages = children_ages
+        # The offer key.
+        # 
         # This parameter is required.
         self.item_offer_key = item_offer_key
+        # The number of rooms.
+        # 
         # This parameter is required.
         self.room_count = room_count
+        # TracerId
         self.tracer_id = tracer_id
 
     def validate(self):

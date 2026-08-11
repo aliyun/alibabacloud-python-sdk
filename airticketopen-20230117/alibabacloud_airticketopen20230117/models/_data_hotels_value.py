@@ -16,9 +16,9 @@ class DataHotelsValue(DaraModel):
         standard_room_id: str = None,
         offers: List[main_models.DataHotelsValueOffers] = None,
     ):
-        # The check-in date in the format of yyyy-MM-dd.
+        # The check-in date (yyyy-MM-dd).
         self.check_in_date = check_in_date
-        # The check-out date in the format of yyyy-MM-dd.
+        # The check-out date (yyyy-MM-dd).
         self.check_out_date = check_out_date
         # The list of available room types for the day.
         self.rooms = rooms
@@ -96,13 +96,13 @@ class DataHotelsValueOffers(DaraModel):
         meal_type: str = None,
         meal_count: int = None,
         cancel_policy: main_models.DataHotelsValueOffersCancelPolicy = None,
-        selling_total_price: main_models.DataHotelsValueOffersSellingTotalPrice = None,
-        selling_daily_prices: List[main_models.DataHotelsValueOffersSellingDailyPrices] = None,
+        total_price: main_models.DataHotelsValueOffersTotalPrice = None,
+        daily_prices: List[main_models.DataHotelsValueOffersDailyPrices] = None,
         available_rooms: int = None,
         max_occupancy: int = None,
         confirm_type: str = None,
     ):
-        # The item-domain offer identifier (price verification key, passed through as-is).
+        # The item offer key used for price verification. Pass through this value as-is.
         self.item_offer_key = item_offer_key
         # The rate plan name.
         self.rate_plan_name = rate_plan_name
@@ -110,12 +110,12 @@ class DataHotelsValueOffers(DaraModel):
         self.meal_type = meal_type
         # The number of meals included.
         self.meal_count = meal_count
-        # The cancellation and modification policy.
+        # The cancellation policy.
         self.cancel_policy = cancel_policy
         # The total selling price.
-        self.selling_total_price = selling_total_price
-        # The list of daily selling prices.
-        self.selling_daily_prices = selling_daily_prices
+        self.total_price = total_price
+        # The list of daily prices.
+        self.daily_prices = daily_prices
         # The number of available rooms.
         self.available_rooms = available_rooms
         # The maximum number of guests allowed.
@@ -126,10 +126,10 @@ class DataHotelsValueOffers(DaraModel):
     def validate(self):
         if self.cancel_policy:
             self.cancel_policy.validate()
-        if self.selling_total_price:
-            self.selling_total_price.validate()
-        if self.selling_daily_prices:
-            for v1 in self.selling_daily_prices:
+        if self.total_price:
+            self.total_price.validate()
+        if self.daily_prices:
+            for v1 in self.daily_prices:
                  if v1:
                     v1.validate()
 
@@ -153,13 +153,13 @@ class DataHotelsValueOffers(DaraModel):
         if self.cancel_policy is not None:
             result['CancelPolicy'] = self.cancel_policy.to_map()
 
-        if self.selling_total_price is not None:
-            result['SellingTotalPrice'] = self.selling_total_price.to_map()
+        if self.total_price is not None:
+            result['TotalPrice'] = self.total_price.to_map()
 
-        result['SellingDailyPrices'] = []
-        if self.selling_daily_prices is not None:
-            for k1 in self.selling_daily_prices:
-                result['SellingDailyPrices'].append(k1.to_map() if k1 else None)
+        result['DailyPrices'] = []
+        if self.daily_prices is not None:
+            for k1 in self.daily_prices:
+                result['DailyPrices'].append(k1.to_map() if k1 else None)
 
         if self.available_rooms is not None:
             result['AvailableRooms'] = self.available_rooms
@@ -190,15 +190,15 @@ class DataHotelsValueOffers(DaraModel):
             temp_model = main_models.DataHotelsValueOffersCancelPolicy()
             self.cancel_policy = temp_model.from_map(m.get('CancelPolicy'))
 
-        if m.get('SellingTotalPrice') is not None:
-            temp_model = main_models.DataHotelsValueOffersSellingTotalPrice()
-            self.selling_total_price = temp_model.from_map(m.get('SellingTotalPrice'))
+        if m.get('TotalPrice') is not None:
+            temp_model = main_models.DataHotelsValueOffersTotalPrice()
+            self.total_price = temp_model.from_map(m.get('TotalPrice'))
 
-        self.selling_daily_prices = []
-        if m.get('SellingDailyPrices') is not None:
-            for k1 in m.get('SellingDailyPrices'):
-                temp_model = main_models.DataHotelsValueOffersSellingDailyPrices()
-                self.selling_daily_prices.append(temp_model.from_map(k1))
+        self.daily_prices = []
+        if m.get('DailyPrices') is not None:
+            for k1 in m.get('DailyPrices'):
+                temp_model = main_models.DataHotelsValueOffersDailyPrices()
+                self.daily_prices.append(temp_model.from_map(k1))
 
         if m.get('AvailableRooms') is not None:
             self.available_rooms = m.get('AvailableRooms')
@@ -211,18 +211,18 @@ class DataHotelsValueOffers(DaraModel):
 
         return self
 
-class DataHotelsValueOffersSellingDailyPrices(DaraModel):
+class DataHotelsValueOffersDailyPrices(DaraModel):
     def __init__(
         self,
         date: str = None,
-        price: main_models.DataHotelsValueOffersSellingDailyPricesPrice = None,
+        price: main_models.DataHotelsValueOffersDailyPricesPrice = None,
         tracer_id: str = None,
     ):
-        # The check-in date.
+        # The check-in date in yyyy-MM-dd format, based on the hotel local time zone.
         self.date = date
         # The price for the day.
         self.price = price
-        # TraceId
+        # null
         self.tracer_id = tracer_id
 
     def validate(self):
@@ -251,7 +251,7 @@ class DataHotelsValueOffersSellingDailyPrices(DaraModel):
             self.date = m.get('Date')
 
         if m.get('Price') is not None:
-            temp_model = main_models.DataHotelsValueOffersSellingDailyPricesPrice()
+            temp_model = main_models.DataHotelsValueOffersDailyPricesPrice()
             self.price = temp_model.from_map(m.get('Price'))
 
         if m.get('TracerId') is not None:
@@ -259,18 +259,18 @@ class DataHotelsValueOffersSellingDailyPrices(DaraModel):
 
         return self
 
-class DataHotelsValueOffersSellingDailyPricesPrice(DaraModel):
+class DataHotelsValueOffersDailyPricesPrice(DaraModel):
     def __init__(
         self,
-        amount: float = None,
+        amount: str = None,
         currency: str = None,
         tracer_id: str = None,
     ):
-        # The amount.
+        # The amount in the smallest currency unit.
         self.amount = amount
         # The currency code.
         self.currency = currency
-        # TraceId
+        # null
         self.tracer_id = tracer_id
 
     def validate(self):
@@ -305,18 +305,18 @@ class DataHotelsValueOffersSellingDailyPricesPrice(DaraModel):
 
         return self
 
-class DataHotelsValueOffersSellingTotalPrice(DaraModel):
+class DataHotelsValueOffersTotalPrice(DaraModel):
     def __init__(
         self,
-        amount: float = None,
+        amount: str = None,
         currency: str = None,
         tracer_id: str = None,
     ):
-        # The amount.
+        # The amount in the smallest currency unit.
         self.amount = amount
         # The currency code.
         self.currency = currency
-        # TraceId
+        # null
         self.tracer_id = tracer_id
 
     def validate(self):
@@ -408,8 +408,8 @@ class DataHotelsValueOffersCancelPolicy(DaraModel):
 class DataHotelsValueOffersCancelPolicyPenalties(DaraModel):
     def __init__(
         self,
-        start: int = None,
-        end: int = None,
+        start: str = None,
+        end: str = None,
         penalty_type: str = None,
         penalty_value: str = None,
         currency: str = None,
@@ -421,9 +421,9 @@ class DataHotelsValueOffersCancelPolicyPenalties(DaraModel):
         self.end = end
         # The penalty type (PERCENTAGE/AMOUNT/NIGHTS).
         self.penalty_type = penalty_type
-        # The penalty value (percentage/amount/number of nights).
+        # The penalty value (percentage/amount/nights).
         self.penalty_value = penalty_value
-        # The currency code (only applicable when the penalty type is AMOUNT).
+        # The currency code. This field has a value only when the penalty type is AMOUNT.
         self.currency = currency
         # TraceId
         self.tracer_id = tracer_id
@@ -482,19 +482,19 @@ class DataHotelsValueRooms(DaraModel):
     def __init__(
         self,
         standard_room_id: str = None,
-        lowest_selling_price: main_models.DataHotelsValueRoomsLowestSellingPrice = None,
+        lowest_price: main_models.DataHotelsValueRoomsLowestPrice = None,
         offers: List[main_models.DataHotelsValueRoomsOffers] = None,
     ):
         # The standard room type ID.
         self.standard_room_id = standard_room_id
-        # The lowest selling price for the room type on the day.
-        self.lowest_selling_price = lowest_selling_price
-        # The list of all available offers for the room type. Calendar quotes cannot be used for price verification, so itemOfferKey is not returned.
+        # The lowest price for the room type on the day.
+        self.lowest_price = lowest_price
+        # The list of all available offers for the room type.
         self.offers = offers
 
     def validate(self):
-        if self.lowest_selling_price:
-            self.lowest_selling_price.validate()
+        if self.lowest_price:
+            self.lowest_price.validate()
         if self.offers:
             for v1 in self.offers:
                  if v1:
@@ -508,8 +508,8 @@ class DataHotelsValueRooms(DaraModel):
         if self.standard_room_id is not None:
             result['StandardRoomId'] = self.standard_room_id
 
-        if self.lowest_selling_price is not None:
-            result['LowestSellingPrice'] = self.lowest_selling_price.to_map()
+        if self.lowest_price is not None:
+            result['LowestPrice'] = self.lowest_price.to_map()
 
         result['Offers'] = []
         if self.offers is not None:
@@ -523,9 +523,9 @@ class DataHotelsValueRooms(DaraModel):
         if m.get('StandardRoomId') is not None:
             self.standard_room_id = m.get('StandardRoomId')
 
-        if m.get('LowestSellingPrice') is not None:
-            temp_model = main_models.DataHotelsValueRoomsLowestSellingPrice()
-            self.lowest_selling_price = temp_model.from_map(m.get('LowestSellingPrice'))
+        if m.get('LowestPrice') is not None:
+            temp_model = main_models.DataHotelsValueRoomsLowestPrice()
+            self.lowest_price = temp_model.from_map(m.get('LowestPrice'))
 
         self.offers = []
         if m.get('Offers') is not None:
@@ -543,13 +543,13 @@ class DataHotelsValueRoomsOffers(DaraModel):
         meal_type: str = None,
         meal_count: int = None,
         cancel_policy: main_models.DataHotelsValueRoomsOffersCancelPolicy = None,
-        selling_total_price: main_models.DataHotelsValueRoomsOffersSellingTotalPrice = None,
-        selling_daily_prices: List[main_models.DataHotelsValueRoomsOffersSellingDailyPrices] = None,
+        total_price: main_models.DataHotelsValueRoomsOffersTotalPrice = None,
+        daily_prices: List[main_models.DataHotelsValueRoomsOffersDailyPrices] = None,
         available_rooms: int = None,
         max_occupancy: int = None,
         confirm_type: str = None,
     ):
-        # The item-level offer identifier (price verification key, passed through as-is).
+        # The item-level offer identifier (price verification key, pass through as-is).
         self.item_offer_key = item_offer_key
         # The rate plan name.
         self.rate_plan_name = rate_plan_name
@@ -560,23 +560,23 @@ class DataHotelsValueRoomsOffers(DaraModel):
         # The cancellation policy.
         self.cancel_policy = cancel_policy
         # The total selling price.
-        self.selling_total_price = selling_total_price
-        # The list of daily selling prices.
-        self.selling_daily_prices = selling_daily_prices
+        self.total_price = total_price
+        # The list of daily prices.
+        self.daily_prices = daily_prices
         # The number of available rooms.
         self.available_rooms = available_rooms
-        # The maximum number of guests.
+        # The maximum number of guests allowed.
         self.max_occupancy = max_occupancy
-        # The confirmation type. Valid values: INSTANT_CONFIRM and NON_INSTANT_CONFIRM.
+        # The confirmation type (INSTANT_CONFIRM/NON_INSTANT_CONFIRM).
         self.confirm_type = confirm_type
 
     def validate(self):
         if self.cancel_policy:
             self.cancel_policy.validate()
-        if self.selling_total_price:
-            self.selling_total_price.validate()
-        if self.selling_daily_prices:
-            for v1 in self.selling_daily_prices:
+        if self.total_price:
+            self.total_price.validate()
+        if self.daily_prices:
+            for v1 in self.daily_prices:
                  if v1:
                     v1.validate()
 
@@ -600,13 +600,13 @@ class DataHotelsValueRoomsOffers(DaraModel):
         if self.cancel_policy is not None:
             result['CancelPolicy'] = self.cancel_policy.to_map()
 
-        if self.selling_total_price is not None:
-            result['SellingTotalPrice'] = self.selling_total_price.to_map()
+        if self.total_price is not None:
+            result['TotalPrice'] = self.total_price.to_map()
 
-        result['SellingDailyPrices'] = []
-        if self.selling_daily_prices is not None:
-            for k1 in self.selling_daily_prices:
-                result['SellingDailyPrices'].append(k1.to_map() if k1 else None)
+        result['DailyPrices'] = []
+        if self.daily_prices is not None:
+            for k1 in self.daily_prices:
+                result['DailyPrices'].append(k1.to_map() if k1 else None)
 
         if self.available_rooms is not None:
             result['AvailableRooms'] = self.available_rooms
@@ -637,15 +637,15 @@ class DataHotelsValueRoomsOffers(DaraModel):
             temp_model = main_models.DataHotelsValueRoomsOffersCancelPolicy()
             self.cancel_policy = temp_model.from_map(m.get('CancelPolicy'))
 
-        if m.get('SellingTotalPrice') is not None:
-            temp_model = main_models.DataHotelsValueRoomsOffersSellingTotalPrice()
-            self.selling_total_price = temp_model.from_map(m.get('SellingTotalPrice'))
+        if m.get('TotalPrice') is not None:
+            temp_model = main_models.DataHotelsValueRoomsOffersTotalPrice()
+            self.total_price = temp_model.from_map(m.get('TotalPrice'))
 
-        self.selling_daily_prices = []
-        if m.get('SellingDailyPrices') is not None:
-            for k1 in m.get('SellingDailyPrices'):
-                temp_model = main_models.DataHotelsValueRoomsOffersSellingDailyPrices()
-                self.selling_daily_prices.append(temp_model.from_map(k1))
+        self.daily_prices = []
+        if m.get('DailyPrices') is not None:
+            for k1 in m.get('DailyPrices'):
+                temp_model = main_models.DataHotelsValueRoomsOffersDailyPrices()
+                self.daily_prices.append(temp_model.from_map(k1))
 
         if m.get('AvailableRooms') is not None:
             self.available_rooms = m.get('AvailableRooms')
@@ -658,18 +658,18 @@ class DataHotelsValueRoomsOffers(DaraModel):
 
         return self
 
-class DataHotelsValueRoomsOffersSellingDailyPrices(DaraModel):
+class DataHotelsValueRoomsOffersDailyPrices(DaraModel):
     def __init__(
         self,
         date: str = None,
-        price: main_models.DataHotelsValueRoomsOffersSellingDailyPricesPrice = None,
+        price: main_models.DataHotelsValueRoomsOffersDailyPricesPrice = None,
         tracer_id: str = None,
     ):
-        # The check-in date.
+        # The check-in date (yyyy-MM-dd, time zone: hotel local time zone).
         self.date = date
         # The price for the day.
         self.price = price
-        # TraceId
+        # null
         self.tracer_id = tracer_id
 
     def validate(self):
@@ -698,7 +698,7 @@ class DataHotelsValueRoomsOffersSellingDailyPrices(DaraModel):
             self.date = m.get('Date')
 
         if m.get('Price') is not None:
-            temp_model = main_models.DataHotelsValueRoomsOffersSellingDailyPricesPrice()
+            temp_model = main_models.DataHotelsValueRoomsOffersDailyPricesPrice()
             self.price = temp_model.from_map(m.get('Price'))
 
         if m.get('TracerId') is not None:
@@ -706,18 +706,18 @@ class DataHotelsValueRoomsOffersSellingDailyPrices(DaraModel):
 
         return self
 
-class DataHotelsValueRoomsOffersSellingDailyPricesPrice(DaraModel):
+class DataHotelsValueRoomsOffersDailyPricesPrice(DaraModel):
     def __init__(
         self,
-        amount: float = None,
+        amount: str = None,
         currency: str = None,
         tracer_id: str = None,
     ):
-        # The amount.
+        # The amount in the smallest currency unit.
         self.amount = amount
         # The currency code.
         self.currency = currency
-        # traceId
+        # null
         self.tracer_id = tracer_id
 
     def validate(self):
@@ -752,18 +752,18 @@ class DataHotelsValueRoomsOffersSellingDailyPricesPrice(DaraModel):
 
         return self
 
-class DataHotelsValueRoomsOffersSellingTotalPrice(DaraModel):
+class DataHotelsValueRoomsOffersTotalPrice(DaraModel):
     def __init__(
         self,
-        amount: float = None,
+        amount: str = None,
         currency: str = None,
         tracer_id: str = None,
     ):
-        # The amount.
+        # The amount in the smallest currency unit.
         self.amount = amount
         # The currency code.
         self.currency = currency
-        # TraceId
+        # null
         self.tracer_id = tracer_id
 
     def validate(self):
@@ -805,7 +805,7 @@ class DataHotelsValueRoomsOffersCancelPolicy(DaraModel):
         penalties: List[main_models.DataHotelsValueRoomsOffersCancelPolicyPenalties] = None,
         tracer_id: str = None,
     ):
-        # The policy type. Valid values: NON_REFUNDABLE, FREE_CANCELLATION, and PARTIAL_REFUND.
+        # The policy type (NON_REFUNDABLE/FREE_CANCELLATION/PARTIAL_REFUND).
         self.policy_type = policy_type
         # The list of penalty details.
         self.penalties = penalties
@@ -855,22 +855,22 @@ class DataHotelsValueRoomsOffersCancelPolicy(DaraModel):
 class DataHotelsValueRoomsOffersCancelPolicyPenalties(DaraModel):
     def __init__(
         self,
-        start: int = None,
-        end: int = None,
+        start: str = None,
+        end: str = None,
         penalty_type: str = None,
         penalty_value: str = None,
         currency: str = None,
         tracer_id: str = None,
     ):
-        # The effective start time, in UTC millisecond timestamp.
+        # The effective start time (UTC millisecond timestamp).
         self.start = start
-        # The effective end time, in UTC millisecond timestamp.
+        # The effective end time (UTC millisecond timestamp).
         self.end = end
-        # The penalty type. Valid values: PERCENTAGE, AMOUNT, and NIGHTS.
+        # The penalty type (PERCENTAGE/AMOUNT/NIGHTS).
         self.penalty_type = penalty_type
-        # The penalty value (percentage, amount, or number of nights).
+        # The penalty value (percentage/amount/nights).
         self.penalty_value = penalty_value
-        # The currency. This parameter has a value only when PenaltyType is set to AMOUNT.
+        # The currency code (present only when the penalty type is AMOUNT).
         self.currency = currency
         # traceId
         self.tracer_id = tracer_id
@@ -925,18 +925,18 @@ class DataHotelsValueRoomsOffersCancelPolicyPenalties(DaraModel):
 
         return self
 
-class DataHotelsValueRoomsLowestSellingPrice(DaraModel):
+class DataHotelsValueRoomsLowestPrice(DaraModel):
     def __init__(
         self,
-        amount: float = None,
+        amount: str = None,
         currency: str = None,
         tracer_id: str = None,
     ):
-        # The amount.
+        # The amount in the smallest currency unit.
         self.amount = amount
         # The currency code.
         self.currency = currency
-        # traceId
+        # null
         self.tracer_id = tracer_id
 
     def validate(self):

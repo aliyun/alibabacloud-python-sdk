@@ -83,13 +83,13 @@ class GlobalHotelApplyRefundResponseBody(DaraModel):
 class GlobalHotelApplyRefundResponseBodyData(DaraModel):
     def __init__(
         self,
-        sell_refund_order_id: int = None,
+        refund_order_no: str = None,
         total_penalty_amount: main_models.GlobalHotelApplyRefundResponseBodyDataTotalPenaltyAmount = None,
         total_refund_amount: main_models.GlobalHotelApplyRefundResponseBodyDataTotalRefundAmount = None,
         tracer_id: str = None,
     ):
-        # The after-sales refund order ID.
-        self.sell_refund_order_id = sell_refund_order_id
+        # The after-sales refund order number.
+        self.refund_order_no = refund_order_no
         # The total penalty amount.
         self.total_penalty_amount = total_penalty_amount
         # The total refund amount.
@@ -108,8 +108,8 @@ class GlobalHotelApplyRefundResponseBodyData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.sell_refund_order_id is not None:
-            result['SellRefundOrderId'] = self.sell_refund_order_id
+        if self.refund_order_no is not None:
+            result['RefundOrderNo'] = self.refund_order_no
 
         if self.total_penalty_amount is not None:
             result['TotalPenaltyAmount'] = self.total_penalty_amount.to_map()
@@ -124,8 +124,8 @@ class GlobalHotelApplyRefundResponseBodyData(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SellRefundOrderId') is not None:
-            self.sell_refund_order_id = m.get('SellRefundOrderId')
+        if m.get('RefundOrderNo') is not None:
+            self.refund_order_no = m.get('RefundOrderNo')
 
         if m.get('TotalPenaltyAmount') is not None:
             temp_model = main_models.GlobalHotelApplyRefundResponseBodyDataTotalPenaltyAmount()

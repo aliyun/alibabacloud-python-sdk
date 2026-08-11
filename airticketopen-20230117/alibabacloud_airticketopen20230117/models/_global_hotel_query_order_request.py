@@ -16,9 +16,9 @@ class GlobalHotelQueryOrderRequest(DaraModel):
         # 
         # This parameter is required.
         self.account_no = account_no
-        # The external order number. At least one of ExternalOrderNo and OrderNo is required.
+        # The external order number. You must specify at least one of ExternalOrderNo and OrderNo.
         self.external_order_no = external_order_no
-        # The sales order number. At least one of OrderNo and ExternalOrderNo is required.
+        # The sales order number. You must specify at least one of OrderNo and ExternalOrderNo.
         self.order_no = order_no
         # TracerId
         self.tracer_id = tracer_id

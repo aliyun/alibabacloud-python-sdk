@@ -2,7 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List, Dict
+from typing import Dict, List
 
 from alibabacloud_airticketopen20230117 import models as main_models
 from darabonba.model import DaraModel
@@ -85,22 +85,15 @@ class GlobalHotelQueryCalendarAvailabilityResponseBody(DaraModel):
 class GlobalHotelQueryCalendarAvailabilityResponseBodyData(DaraModel):
     def __init__(
         self,
-        failed_hotels: List[main_models.GlobalHotelQueryCalendarAvailabilityResponseBodyDataFailedHotels] = None,
         hotels: Dict[str, List[main_models.DataHotelsValue]] = None,
         tracer_id: str = None,
     ):
-        # The list of failed hotels (in partial success mode).
-        self.failed_hotels = failed_hotels
         # The calendar quotes grouped by standard hotel ID.
         self.hotels = hotels
         # TraceId
         self.tracer_id = tracer_id
 
     def validate(self):
-        if self.failed_hotels:
-            for v1 in self.failed_hotels:
-                 if v1:
-                    v1.validate()
         if self.hotels:
             for v1 in self.hotels.values():
                 for v2 in v1:
@@ -112,11 +105,6 @@ class GlobalHotelQueryCalendarAvailabilityResponseBodyData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        result['FailedHotels'] = []
-        if self.failed_hotels is not None:
-            for k1 in self.failed_hotels:
-                result['FailedHotels'].append(k1.to_map() if k1 else None)
-
         result['Hotels'] = {}
         if self.hotels is not None:
             for k1, v1 in self.hotels.items():
@@ -132,12 +120,6 @@ class GlobalHotelQueryCalendarAvailabilityResponseBodyData(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        self.failed_hotels = []
-        if m.get('FailedHotels') is not None:
-            for k1 in m.get('FailedHotels'):
-                temp_model = main_models.GlobalHotelQueryCalendarAvailabilityResponseBodyDataFailedHotels()
-                self.failed_hotels.append(temp_model.from_map(k1))
-
         self.hotels = {}
         if m.get('Hotels') is not None:
             for k1, v1 in m.get('Hotels').items():
@@ -149,52 +131,6 @@ class GlobalHotelQueryCalendarAvailabilityResponseBodyData(DaraModel):
 
         if m.get('TracerId') is not None:
             self.tracer_id = m.get('TracerId')
-
-        return self
-
-class GlobalHotelQueryCalendarAvailabilityResponseBodyDataFailedHotels(DaraModel):
-    def __init__(
-        self,
-        error_code: str = None,
-        error_message: str = None,
-        standard_hotel_id: str = None,
-    ):
-        # The error code.
-        self.error_code = error_code
-        # The error description.
-        self.error_message = error_message
-        # The standard hotel ID.
-        self.standard_hotel_id = standard_hotel_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        _map = super().to_map()
-        if _map is not None:
-            result = _map
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
-
-        if self.error_message is not None:
-            result['ErrorMessage'] = self.error_message
-
-        if self.standard_hotel_id is not None:
-            result['StandardHotelId'] = self.standard_hotel_id
-
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-
-        if m.get('ErrorMessage') is not None:
-            self.error_message = m.get('ErrorMessage')
-
-        if m.get('StandardHotelId') is not None:
-            self.standard_hotel_id = m.get('StandardHotelId')
 
         return self
 

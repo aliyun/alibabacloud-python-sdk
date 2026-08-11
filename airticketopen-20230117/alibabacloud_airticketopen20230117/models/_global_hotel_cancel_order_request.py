@@ -11,10 +11,15 @@ class GlobalHotelCancelOrderRequest(DaraModel):
         order_no: str = None,
         tracer_id: str = None,
     ):
+        # The distributor account ID.
+        # 
         # This parameter is required.
         self.account_no = account_no
+        # The sales order number.
+        # 
         # This parameter is required.
         self.order_no = order_no
+        # TraceId
         self.tracer_id = tracer_id
 
     def validate(self):

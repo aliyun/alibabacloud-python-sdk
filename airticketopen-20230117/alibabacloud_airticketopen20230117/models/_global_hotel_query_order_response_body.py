@@ -23,9 +23,9 @@ class GlobalHotelQueryOrderResponseBody(DaraModel):
         self.error_code = error_code
         # The error message.
         self.error_msg = error_msg
-        # The unique ID of the request.
+        # The unique identifier of the request.
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the request was successful.
         self.success = success
         # TracerId
         self.tracer_id = tracer_id
@@ -87,7 +87,7 @@ class GlobalHotelQueryOrderResponseBodyData(DaraModel):
         self,
         buyer_id: str = None,
         external_order_no: str = None,
-        gmt_create: int = None,
+        gmt_create: str = None,
         item_info: main_models.GlobalHotelQueryOrderResponseBodyDataItemInfo = None,
         order_no: str = None,
         payment: main_models.GlobalHotelQueryOrderResponseBodyDataPayment = None,
@@ -101,7 +101,7 @@ class GlobalHotelQueryOrderResponseBodyData(DaraModel):
         self.buyer_id = buyer_id
         # The external order number of the buyer.
         self.external_order_no = external_order_no
-        # The creation time in UTC millisecond timestamp.
+        # The creation time (UTC millisecond timestamp).
         self.gmt_create = gmt_create
         # The item information.
         self.item_info = item_info
@@ -237,7 +237,7 @@ class GlobalHotelQueryOrderResponseBodyDataRoomStays(DaraModel):
         self.guests = guests
         # The room index, starting from 1.
         self.room_index = room_index
-        # The delivery status. Valid values: PENDING_CHECKIN, CHECKED_IN, CHECKED_OUT, and CANCELLED. The value is null before the delivery is created.
+        # The fulfillment status (PENDING_CHECKIN/CHECKED_IN/CHECKED_OUT/CANCELLED). The value is null before the fulfillment is created.
         self.status = status
 
     def validate(self):
@@ -335,22 +335,22 @@ class GlobalHotelQueryOrderResponseBodyDataRoomStaysGuests(DaraModel):
 class GlobalHotelQueryOrderResponseBodyDataRefundOrders(DaraModel):
     def __init__(
         self,
-        gmt_create: int = None,
+        gmt_create: str = None,
+        refund_order_no: str = None,
         refund_transaction_id: str = None,
         reject_reason: str = None,
-        sell_refund_order_no: str = None,
         status: str = None,
         total_penalty_amount: main_models.GlobalHotelQueryOrderResponseBodyDataRefundOrdersTotalPenaltyAmount = None,
         total_refund_amount: main_models.GlobalHotelQueryOrderResponseBodyDataRefundOrdersTotalRefundAmount = None,
     ):
-        # The creation time of the refund order, in UTC millisecond timestamp.
+        # The refund order creation time (UTC millisecond timestamp).
         self.gmt_create = gmt_create
+        # The external refund order number.
+        self.refund_order_no = refund_order_no
         # The refund transaction ID.
         self.refund_transaction_id = refund_transaction_id
-        # The reason for rejection.
+        # The rejection reason.
         self.reject_reason = reject_reason
-        # The external refund order number.
-        self.sell_refund_order_no = sell_refund_order_no
         # The unified refund status.
         self.status = status
         # The penalty amount on the sales side.
@@ -372,14 +372,14 @@ class GlobalHotelQueryOrderResponseBodyDataRefundOrders(DaraModel):
         if self.gmt_create is not None:
             result['GmtCreate'] = self.gmt_create
 
+        if self.refund_order_no is not None:
+            result['RefundOrderNo'] = self.refund_order_no
+
         if self.refund_transaction_id is not None:
             result['RefundTransactionId'] = self.refund_transaction_id
 
         if self.reject_reason is not None:
             result['RejectReason'] = self.reject_reason
-
-        if self.sell_refund_order_no is not None:
-            result['SellRefundOrderNo'] = self.sell_refund_order_no
 
         if self.status is not None:
             result['Status'] = self.status
@@ -397,14 +397,14 @@ class GlobalHotelQueryOrderResponseBodyDataRefundOrders(DaraModel):
         if m.get('GmtCreate') is not None:
             self.gmt_create = m.get('GmtCreate')
 
+        if m.get('RefundOrderNo') is not None:
+            self.refund_order_no = m.get('RefundOrderNo')
+
         if m.get('RefundTransactionId') is not None:
             self.refund_transaction_id = m.get('RefundTransactionId')
 
         if m.get('RejectReason') is not None:
             self.reject_reason = m.get('RejectReason')
-
-        if m.get('SellRefundOrderNo') is not None:
-            self.sell_refund_order_no = m.get('SellRefundOrderNo')
 
         if m.get('Status') is not None:
             self.status = m.get('Status')
@@ -428,7 +428,7 @@ class GlobalHotelQueryOrderResponseBodyDataRefundOrdersTotalRefundAmount(DaraMod
     ):
         # The amount in the smallest currency unit.
         self.amount = amount
-        # The currency code in ISO 4217 format.
+        # The currency code (ISO 4217).
         self.currency = currency
         # TraceId
         self.tracer_id = tracer_id
@@ -474,7 +474,7 @@ class GlobalHotelQueryOrderResponseBodyDataRefundOrdersTotalPenaltyAmount(DaraMo
     ):
         # The amount in the smallest currency unit.
         self.amount = amount
-        # The currency code in ISO 4217 format.
+        # The currency code (ISO 4217).
         self.currency = currency
         # TraceId
         self.tracer_id = tracer_id
@@ -515,13 +515,13 @@ class GlobalHotelQueryOrderResponseBodyDataPayment(DaraModel):
     def __init__(
         self,
         amount: main_models.GlobalHotelQueryOrderResponseBodyDataPaymentAmount = None,
-        gmt_paid: int = None,
+        gmt_paid: str = None,
         payment_method: str = None,
         payment_transaction_id: str = None,
     ):
         # The payment amount.
         self.amount = amount
-        # The payment completion time in UTC millisecond timestamp.
+        # The payment completion time (UTC millisecond timestamp).
         self.gmt_paid = gmt_paid
         # The payment method.
         self.payment_method = payment_method
@@ -577,7 +577,7 @@ class GlobalHotelQueryOrderResponseBodyDataPaymentAmount(DaraModel):
     ):
         # The amount in the smallest currency unit.
         self.amount = amount
-        # The currency code in ISO 4217 format.
+        # The currency code (ISO 4217).
         self.currency = currency
         # TracerId
         self.tracer_id = tracer_id
@@ -624,15 +624,15 @@ class GlobalHotelQueryOrderResponseBodyDataItemInfo(DaraModel):
         daily_prices: List[main_models.GlobalHotelQueryOrderResponseBodyDataItemInfoDailyPrices] = None,
         meal: main_models.GlobalHotelQueryOrderResponseBodyDataItemInfoMeal = None,
         room_count: int = None,
-        selling_total_price: main_models.GlobalHotelQueryOrderResponseBodyDataItemInfoSellingTotalPrice = None,
+        total_price: main_models.GlobalHotelQueryOrderResponseBodyDataItemInfoTotalPrice = None,
     ):
         # The cancellation policy.
         self.cancel_policy = cancel_policy
-        # The check-in date in yyyy-MM-dd format.
+        # The check-in date (yyyy-MM-dd).
         self.check_in = check_in
         # The number of guests checking in.
         self.check_in_number = check_in_number
-        # The check-out date in yyyy-MM-dd format.
+        # The check-out date (yyyy-MM-dd).
         self.check_out = check_out
         # The list of nightly rates.
         self.daily_prices = daily_prices
@@ -641,7 +641,7 @@ class GlobalHotelQueryOrderResponseBodyDataItemInfo(DaraModel):
         # The number of rooms.
         self.room_count = room_count
         # The total selling price.
-        self.selling_total_price = selling_total_price
+        self.total_price = total_price
 
     def validate(self):
         if self.cancel_policy:
@@ -652,8 +652,8 @@ class GlobalHotelQueryOrderResponseBodyDataItemInfo(DaraModel):
                     v1.validate()
         if self.meal:
             self.meal.validate()
-        if self.selling_total_price:
-            self.selling_total_price.validate()
+        if self.total_price:
+            self.total_price.validate()
 
     def to_map(self):
         result = dict()
@@ -683,8 +683,8 @@ class GlobalHotelQueryOrderResponseBodyDataItemInfo(DaraModel):
         if self.room_count is not None:
             result['RoomCount'] = self.room_count
 
-        if self.selling_total_price is not None:
-            result['SellingTotalPrice'] = self.selling_total_price.to_map()
+        if self.total_price is not None:
+            result['TotalPrice'] = self.total_price.to_map()
 
         return result
 
@@ -716,13 +716,13 @@ class GlobalHotelQueryOrderResponseBodyDataItemInfo(DaraModel):
         if m.get('RoomCount') is not None:
             self.room_count = m.get('RoomCount')
 
-        if m.get('SellingTotalPrice') is not None:
-            temp_model = main_models.GlobalHotelQueryOrderResponseBodyDataItemInfoSellingTotalPrice()
-            self.selling_total_price = temp_model.from_map(m.get('SellingTotalPrice'))
+        if m.get('TotalPrice') is not None:
+            temp_model = main_models.GlobalHotelQueryOrderResponseBodyDataItemInfoTotalPrice()
+            self.total_price = temp_model.from_map(m.get('TotalPrice'))
 
         return self
 
-class GlobalHotelQueryOrderResponseBodyDataItemInfoSellingTotalPrice(DaraModel):
+class GlobalHotelQueryOrderResponseBodyDataItemInfoTotalPrice(DaraModel):
     def __init__(
         self,
         amount: str = None,
@@ -731,9 +731,9 @@ class GlobalHotelQueryOrderResponseBodyDataItemInfoSellingTotalPrice(DaraModel):
     ):
         # The amount in the smallest currency unit.
         self.amount = amount
-        # The currency code in ISO 4217 format.
+        # The currency code (ISO 4217).
         self.currency = currency
-        # TracerId
+        # null
         self.tracer_id = tracer_id
 
     def validate(self):
@@ -819,11 +819,14 @@ class GlobalHotelQueryOrderResponseBodyDataItemInfoDailyPrices(DaraModel):
         self,
         date: str = None,
         price: main_models.GlobalHotelQueryOrderResponseBodyDataItemInfoDailyPricesPrice = None,
+        tracer_id: str = None,
     ):
         # LocalDate
         self.date = date
         # The price.
         self.price = price
+        # null
+        self.tracer_id = tracer_id
 
     def validate(self):
         if self.price:
@@ -840,6 +843,9 @@ class GlobalHotelQueryOrderResponseBodyDataItemInfoDailyPrices(DaraModel):
         if self.price is not None:
             result['Price'] = self.price.to_map()
 
+        if self.tracer_id is not None:
+            result['TracerId'] = self.tracer_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -851,60 +857,24 @@ class GlobalHotelQueryOrderResponseBodyDataItemInfoDailyPrices(DaraModel):
             temp_model = main_models.GlobalHotelQueryOrderResponseBodyDataItemInfoDailyPricesPrice()
             self.price = temp_model.from_map(m.get('Price'))
 
+        if m.get('TracerId') is not None:
+            self.tracer_id = m.get('TracerId')
+
         return self
 
 class GlobalHotelQueryOrderResponseBodyDataItemInfoDailyPricesPrice(DaraModel):
     def __init__(
         self,
-        cent: int = None,
-        currency: main_models.GlobalHotelQueryOrderResponseBodyDataItemInfoDailyPricesPriceCurrency = None,
+        amount: str = None,
+        currency: str = None,
+        tracer_id: str = None,
     ):
-        # cent
-        self.cent = cent
+        # The amount in the smallest currency unit.
+        self.amount = amount
         # The currency.
         self.currency = currency
-
-    def validate(self):
-        if self.currency:
-            self.currency.validate()
-
-    def to_map(self):
-        result = dict()
-        _map = super().to_map()
-        if _map is not None:
-            result = _map
-        if self.cent is not None:
-            result['Cent'] = self.cent
-
-        if self.currency is not None:
-            result['Currency'] = self.currency.to_map()
-
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Cent') is not None:
-            self.cent = m.get('Cent')
-
-        if m.get('Currency') is not None:
-            temp_model = main_models.GlobalHotelQueryOrderResponseBodyDataItemInfoDailyPricesPriceCurrency()
-            self.currency = temp_model.from_map(m.get('Currency'))
-
-        return self
-
-class GlobalHotelQueryOrderResponseBodyDataItemInfoDailyPricesPriceCurrency(DaraModel):
-    def __init__(
-        self,
-        currency_code: str = None,
-        default_fraction_digits: int = None,
-        numeric_code: int = None,
-    ):
-        # The currency code.
-        self.currency_code = currency_code
-        # DefaultFractionDigits
-        self.default_fraction_digits = default_fraction_digits
-        # NumericCode
-        self.numeric_code = numeric_code
+        # null
+        self.tracer_id = tracer_id
 
     def validate(self):
         pass
@@ -914,27 +884,27 @@ class GlobalHotelQueryOrderResponseBodyDataItemInfoDailyPricesPriceCurrency(Dara
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.currency_code is not None:
-            result['CurrencyCode'] = self.currency_code
+        if self.amount is not None:
+            result['Amount'] = self.amount
 
-        if self.default_fraction_digits is not None:
-            result['DefaultFractionDigits'] = self.default_fraction_digits
+        if self.currency is not None:
+            result['Currency'] = self.currency
 
-        if self.numeric_code is not None:
-            result['NumericCode'] = self.numeric_code
+        if self.tracer_id is not None:
+            result['TracerId'] = self.tracer_id
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('CurrencyCode') is not None:
-            self.currency_code = m.get('CurrencyCode')
+        if m.get('Amount') is not None:
+            self.amount = m.get('Amount')
 
-        if m.get('DefaultFractionDigits') is not None:
-            self.default_fraction_digits = m.get('DefaultFractionDigits')
+        if m.get('Currency') is not None:
+            self.currency = m.get('Currency')
 
-        if m.get('NumericCode') is not None:
-            self.numeric_code = m.get('NumericCode')
+        if m.get('TracerId') is not None:
+            self.tracer_id = m.get('TracerId')
 
         return self
 
@@ -945,7 +915,7 @@ class GlobalHotelQueryOrderResponseBodyDataItemInfoCancelPolicy(DaraModel):
         policy_type: str = None,
         tracer_id: str = None,
     ):
-        # The list of cancellation penalties.
+        # The list of cancellation penalty details.
         self.penalties = penalties
         # The cancellation policy type.
         self.policy_type = policy_type
@@ -996,21 +966,21 @@ class GlobalHotelQueryOrderResponseBodyDataItemInfoCancelPolicyPenalties(DaraMod
     def __init__(
         self,
         currency: str = None,
-        end: int = None,
+        end: str = None,
         penalty_type: str = None,
         penalty_value: str = None,
-        start: int = None,
+        start: str = None,
         tracer_id: str = None,
     ):
-        # The currency code. This parameter is valid only when the penalty type is AMOUNT.
+        # The currency code (present only for AMOUNT type penalties).
         self.currency = currency
-        # The effective end time in UTC millisecond timestamp.
+        # The effective end time (UTC millisecond timestamp).
         self.end = end
         # The penalty type.
         self.penalty_type = penalty_type
-        # The penalty value, which can be a percentage, amount, or number of nights.
+        # The penalty value (percentage, amount, or number of nights).
         self.penalty_value = penalty_value
-        # The effective start time in UTC millisecond timestamp.
+        # The effective start time (UTC millisecond timestamp).
         self.start = start
         # TracerId
         self.tracer_id = tracer_id

@@ -1,3 +1,58 @@
+2026-08-11 Version: 8.0.0
+- Update API globalHotelApplyRefund: add response parameters Body.Data.RefundOrderNo.
+- Update API globalHotelApplyRefund: delete response parameters Body.Data.SellRefundOrderId.
+- Update API globalHotelBatchGetHotelDetail: update response parameters Body.Data.Hotels.$.RoomTypes.$.RoomSize' type has changed.
+- Update API globalHotelBatchGetHotelDetail: update response parameters Body.Data.Hotels.$.RoomTypes.$.RoomSize' format has changed.
+- Update API globalHotelCancelOrRefund: add response parameters Body.Data.RefundOrderNo.
+- Update API globalHotelCancelOrRefund: delete response parameters Body.Data.RefundOrderId.
+- Update API globalHotelQueryAvailability: add response parameters Body.Data.Hotels.$.Offers.$.TotalPrice.
+- Update API globalHotelQueryAvailability: add response parameters Body.Data.Hotels.$.Offers.$.DailyPrices.
+- Update API globalHotelQueryAvailability: update response parameters Body.Data.Hotels.$.Offers.$.CancelPolicy.Penalties.$.Start' type has changed.
+- Update API globalHotelQueryAvailability: update response parameters Body.Data.Hotels.$.Offers.$.CancelPolicy.Penalties.$.Start' format has changed.
+- Update API globalHotelQueryAvailability: update response parameters Body.Data.Hotels.$.Offers.$.CancelPolicy.Penalties.$.End' type has changed.
+- Update API globalHotelQueryAvailability: update response parameters Body.Data.Hotels.$.Offers.$.CancelPolicy.Penalties.$.End' format has changed.
+- Update API globalHotelQueryAvailability: delete response parameters Body.Data.Hotels.$.Offers.$.SellingTotalPrice.
+- Update API globalHotelQueryAvailability: delete response parameters Body.Data.Hotels.$.Offers.$.SellingDailyPrices.
+- Update API globalHotelQueryCalendarAvailability: add response parameters Body.Data.Hotels.$.Rooms.$.LowestPrice.
+- Update API globalHotelQueryCalendarAvailability: add response parameters Body.Data.Hotels.$.Rooms.$.Offers.$.TotalPrice.
+- Update API globalHotelQueryCalendarAvailability: add response parameters Body.Data.Hotels.$.Rooms.$.Offers.$.DailyPrices.
+- Update API globalHotelQueryCalendarAvailability: delete response parameters Body.Data.FailedHotels.
+- Update API globalHotelQueryCalendarAvailability: delete response parameters Body.Data.Hotels.$.Rooms.$.LowestSellingPrice.
+- Update API globalHotelQueryCalendarAvailability: update response parameters Body.Data.Hotels.$.Rooms.$.Offers.$.CancelPolicy.Penalties.$.Start' type has changed.
+- Update API globalHotelQueryCalendarAvailability: update response parameters Body.Data.Hotels.$.Rooms.$.Offers.$.CancelPolicy.Penalties.$.Start' format has changed.
+- Update API globalHotelQueryCalendarAvailability: update response parameters Body.Data.Hotels.$.Rooms.$.Offers.$.CancelPolicy.Penalties.$.End' type has changed.
+- Update API globalHotelQueryCalendarAvailability: update response parameters Body.Data.Hotels.$.Rooms.$.Offers.$.CancelPolicy.Penalties.$.End' format has changed.
+- Update API globalHotelQueryCalendarAvailability: delete response parameters Body.Data.Hotels.$.Rooms.$.Offers.$.SellingTotalPrice.
+- Update API globalHotelQueryCalendarAvailability: delete response parameters Body.Data.Hotels.$.Rooms.$.Offers.$.SellingDailyPrices.
+- Update API globalHotelQueryOrder: add response parameters Body.Data.ItemInfo.TotalPrice.
+- Update API globalHotelQueryOrder: add response parameters Body.Data.ItemInfo.DailyPrices.$.TracerId.
+- Update API globalHotelQueryOrder: add response parameters Body.Data.ItemInfo.DailyPrices.$.Price.Amount.
+- Update API globalHotelQueryOrder: add response parameters Body.Data.ItemInfo.DailyPrices.$.Price.TracerId.
+- Update API globalHotelQueryOrder: add response parameters Body.Data.RefundOrders.$.RefundOrderNo.
+- Update API globalHotelQueryOrder: update response parameters Body.Data.GmtCreate' type has changed.
+- Update API globalHotelQueryOrder: update response parameters Body.Data.GmtCreate' format has changed.
+- Update API globalHotelQueryOrder: update response parameters Body.Data.ItemInfo.CancelPolicy.Penalties.$.End' type has changed.
+- Update API globalHotelQueryOrder: update response parameters Body.Data.ItemInfo.CancelPolicy.Penalties.$.End' format has changed.
+- Update API globalHotelQueryOrder: update response parameters Body.Data.ItemInfo.CancelPolicy.Penalties.$.Start' type has changed.
+- Update API globalHotelQueryOrder: update response parameters Body.Data.ItemInfo.CancelPolicy.Penalties.$.Start' format has changed.
+- Update API globalHotelQueryOrder: delete response parameters Body.Data.ItemInfo.DailyPrices.$.Price.Cent.
+- Update API globalHotelQueryOrder: update response parameters Body.Data.ItemInfo.DailyPrices.$.Price.Currency' type has changed.
+- Update API globalHotelQueryOrder: delete response parameters Body.Data.ItemInfo.DailyPrices.$.Price.Currency.
+- Update API globalHotelQueryOrder: delete response parameters Body.Data.ItemInfo.SellingTotalPrice.
+- Update API globalHotelQueryOrder: update response parameters Body.Data.Payment.GmtPaid' type has changed.
+- Update API globalHotelQueryOrder: update response parameters Body.Data.Payment.GmtPaid' format has changed.
+- Update API globalHotelQueryOrder: update response parameters Body.Data.RefundOrders.$.GmtCreate' type has changed.
+- Update API globalHotelQueryOrder: update response parameters Body.Data.RefundOrders.$.GmtCreate' format has changed.
+- Update API globalHotelQueryOrder: delete response parameters Body.Data.RefundOrders.$.SellRefundOrderNo.
+- Update API globalHotelValidatePrice: add response parameters Body.Data.DailyPrices.
+- Update API globalHotelValidatePrice: add response parameters Body.Data.TotalPrice.
+- Update API globalHotelValidatePrice: update response parameters Body.Data.CancellationPolicies.$.Penalties.$.End' type has changed.
+- Update API globalHotelValidatePrice: update response parameters Body.Data.CancellationPolicies.$.Penalties.$.End' format has changed.
+- Update API globalHotelValidatePrice: update response parameters Body.Data.CancellationPolicies.$.Penalties.$.Start' type has changed.
+- Update API globalHotelValidatePrice: update response parameters Body.Data.CancellationPolicies.$.Penalties.$.Start' format has changed.
+- Update API globalHotelValidatePrice: delete response parameters Body.Data.Pricing.
+
+
 2026-08-10 Version: 7.0.0
 - Update API globalHotelBatchGetHotelDetail: add response parameters Body.Data.Hotels.$.Facilities.$.Type.
 - Update API globalHotelBatchGetHotelDetail: delete response parameters Body.Data.Hotels.$.Facilities.$.FacilityId.
