@@ -18,6 +18,7 @@ class CreateCustomAgentRequest(DaraModel):
         instruction: str = None,
         knowledge: str = None,
         knowledge_config_list: List[main_models.CreateCustomAgentRequestKnowledgeConfigList] = None,
+        knowledge_semantic_config_list: List[main_models.CreateCustomAgentRequestKnowledgeSemanticConfigList] = None,
         name: str = None,
         related_session_id: str = None,
         schedule_task_config: main_models.CreateCustomAgentRequestScheduleTaskConfig = None,
@@ -27,9 +28,73 @@ class CreateCustomAgentRequest(DaraModel):
         workspace_id: str = None,
     ):
         self.callback_config = callback_config
-        # The current DMS unit.
+        # The current Data Management unit.
         self.dmsunit = dmsunit
-        # The specified data scope, in **JSON string format**.
+        # The specified data scope in **JSON string format**.
+        # - Common parameter description
+        #   - tableFlag: true indicates a specified data scope
+        #   - scope: personal is a fixed value
+        #   - personal: pass parameters for file or database types
+        # 
+        # **File type**. Pass parameters in the following format:
+        # - DataSourceType: remote_data_center is a fixed value
+        # - FileId: the file ID
+        # - Database: the database name returned by the ListDataCenterTable operation, which is typically the file name
+        # - Tables: the table name returned by the ListDataCenterTable operation
+        # - TableIds: the TableId returned by the ListDataCenterTable operation
+        # - RegionId: the current region
+        # ```
+        # {
+        #   "tableFlag": true,
+        #   "scope": "personal",
+        #   "personal": {
+        #     "DataSourceType": "remote_data_center",
+        #     "FileId": "f-f0jksn001ibmkoo********6v2zn6",
+        #     "Database": "diamonds.csv",
+        #     "Tables": [
+        #       "diamonds"
+        #     ],
+        #     "TableIds": [
+        #       "35hfn94pxl********50pi"
+        #     ],
+        #     "RegionId": "ap-southeast-1"
+        #   }
+        # }
+        # ```
+        # 
+        # **Database type**. Pass parameters in the following format:
+        # - DataSourceType: database is a fixed value
+        # - DmsInstanceId: the DMS instance ID returned by the data center operation
+        # - DmsDatabaseId: the DMS database ID returned by the data center operation
+        # - FileId: the instance name (deprecated)
+        # - DbName: the database name returned by the data center operation
+        # - Database: the database name returned by the data center operation
+        # - Tables: the table name returned by the data center operation
+        # - TableIds: the TableId returned by the data center operation
+        # - Engine: the engine type (mysql or postgresql)
+        # - RegionId: the current region
+        # ```
+        # {
+        #   "tableFlag": true,
+        #   "scope": "personal",
+        #   "personal": {
+        #     "DataSourceType": "database",
+        #     "DmsInstanceId": "284***8",
+        #     "DmsDatabaseId": "769***45",
+        #     "FileId": "pgm-bp15095e*******6t",
+        #     "DbName": "pg_catalog",
+        #     "Database": "pg_catalog",
+        #     "Tables": [
+        #       "pg_aggregate"
+        #     ],
+        #     "TableIds": [
+        #       "5263****31"
+        #     ],
+        #     "Engine": "postgresql",
+        #     "RegionId": "ap-southeast-1"
+        #   }
+        # }
+        # ```
         self.data_json = data_json
         # The description of the custom agent.
         self.description = description
@@ -41,8 +106,10 @@ class CreateCustomAgentRequest(DaraModel):
         self.knowledge = knowledge
         # The external knowledge base configurations.
         self.knowledge_config_list = knowledge_config_list
+        self.knowledge_semantic_config_list = knowledge_semantic_config_list
         # The name of the custom agent.
         self.name = name
+        # The ID of the referenced historical session.
         self.related_session_id = related_session_id
         # The scheduled task configuration.
         self.schedule_task_config = schedule_task_config
@@ -61,6 +128,10 @@ class CreateCustomAgentRequest(DaraModel):
             self.execution_config.validate()
         if self.knowledge_config_list:
             for v1 in self.knowledge_config_list:
+                 if v1:
+                    v1.validate()
+        if self.knowledge_semantic_config_list:
+            for v1 in self.knowledge_semantic_config_list:
                  if v1:
                     v1.validate()
         if self.schedule_task_config:
@@ -96,6 +167,11 @@ class CreateCustomAgentRequest(DaraModel):
         if self.knowledge_config_list is not None:
             for k1 in self.knowledge_config_list:
                 result['KnowledgeConfigList'].append(k1.to_map() if k1 else None)
+
+        result['KnowledgeSemanticConfigList'] = []
+        if self.knowledge_semantic_config_list is not None:
+            for k1 in self.knowledge_semantic_config_list:
+                result['KnowledgeSemanticConfigList'].append(k1.to_map() if k1 else None)
 
         if self.name is not None:
             result['Name'] = self.name
@@ -151,6 +227,12 @@ class CreateCustomAgentRequest(DaraModel):
                 temp_model = main_models.CreateCustomAgentRequestKnowledgeConfigList()
                 self.knowledge_config_list.append(temp_model.from_map(k1))
 
+        self.knowledge_semantic_config_list = []
+        if m.get('KnowledgeSemanticConfigList') is not None:
+            for k1 in m.get('KnowledgeSemanticConfigList'):
+                temp_model = main_models.CreateCustomAgentRequestKnowledgeSemanticConfigList()
+                self.knowledge_semantic_config_list.append(temp_model.from_map(k1))
+
         if m.get('Name') is not None:
             self.name = m.get('Name')
 
@@ -182,7 +264,7 @@ class CreateCustomAgentRequestScheduleTaskConfig(DaraModel):
         query: str = None,
         related_session_id: str = None,
     ):
-        # The cron expression for the time-based scheduling.
+        # The cron expression for time-based scheduling.
         self.cron_expression = cron_expression
         # The query for the scheduled task.
         self.query = query
@@ -218,6 +300,57 @@ class CreateCustomAgentRequestScheduleTaskConfig(DaraModel):
 
         if m.get('RelatedSessionId') is not None:
             self.related_session_id = m.get('RelatedSessionId')
+
+        return self
+
+class CreateCustomAgentRequestKnowledgeSemanticConfigList(DaraModel):
+    def __init__(
+        self,
+        db_id: str = None,
+        instance_id: str = None,
+        knowledge_uuid: str = None,
+        type: str = None,
+    ):
+        self.db_id = db_id
+        self.instance_id = instance_id
+        self.knowledge_uuid = knowledge_uuid
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.db_id is not None:
+            result['DbId'] = self.db_id
+
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+
+        if self.knowledge_uuid is not None:
+            result['KnowledgeUuid'] = self.knowledge_uuid
+
+        if self.type is not None:
+            result['Type'] = self.type
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DbId') is not None:
+            self.db_id = m.get('DbId')
+
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+
+        if m.get('KnowledgeUuid') is not None:
+            self.knowledge_uuid = m.get('KnowledgeUuid')
+
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
 
         return self
 

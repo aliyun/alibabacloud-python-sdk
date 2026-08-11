@@ -16,6 +16,7 @@ class ModifyCustomAgentShrinkRequest(DaraModel):
         instruction: str = None,
         knowledge: str = None,
         knowledge_config_list_shrink: str = None,
+        knowledge_semantic_config_list_shrink: str = None,
         name: str = None,
         related_session_id: str = None,
         schedule_task_config_shrink: str = None,
@@ -29,9 +30,73 @@ class ModifyCustomAgentShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.custom_agent_id = custom_agent_id
-        # The current DMS unit.
+        # The current Data Management unit.
         self.dmsunit = dmsunit
-        # The specified data scope, in **JSON string format**.
+        # The specified data scope in **JSON string format**.
+        # - Common parameter description
+        #   - tableFlag: true indicates a specified data scope
+        #   - scope: personal is a fixed value
+        #   - personal: pass parameters for file or database types
+        # 
+        # **File type**. Pass parameters in the following format:
+        # - DataSourceType: remote_data_center is a fixed value
+        # - FileId: the file ID
+        # - Database: the database name returned by the ListDataCenterTable operation, which is typically the file name
+        # - Tables: the table name returned by the ListDataCenterTable operation
+        # - TableIds: the TableId returned by the ListDataCenterTable operation
+        # - RegionId: the current region
+        # ```
+        # {
+        #   "tableFlag": true,
+        #   "scope": "personal",
+        #   "personal": {
+        #     "DataSourceType": "remote_data_center",
+        #     "FileId": "f-f0jksn001ibmkoo********6v2zn6",
+        #     "Database": "diamonds.csv",
+        #     "Tables": [
+        #       "diamonds"
+        #     ],
+        #     "TableIds": [
+        #       "35hfn94pxl********50pi"
+        #     ],
+        #     "RegionId": "ap-southeast-1"
+        #   }
+        # }
+        # ```
+        # 
+        # **Database type**. Pass parameters in the following format:
+        # - DataSourceType: database is a fixed value
+        # - DmsInstanceId: the DMS instance ID returned by the data center operation
+        # - DmsDatabaseId: the DMS database ID returned by the data center operation
+        # - FileId: the instance name (deprecated)
+        # - DbName: the database name returned by the data center operation
+        # - Database: the database name returned by the data center operation
+        # - Tables: the table name returned by the data center operation
+        # - TableIds: the TableId returned by the data center operation
+        # - Engine: the engine type (mysql or postgresql)
+        # - RegionId: the current region
+        # ```
+        # {
+        #   "tableFlag": true,
+        #   "scope": "personal",
+        #   "personal": {
+        #     "DataSourceType": "database",
+        #     "DmsInstanceId": "284***8",
+        #     "DmsDatabaseId": "769***45",
+        #     "FileId": "pgm-bp15095e*******6t",
+        #     "DbName": "pg_catalog",
+        #     "Database": "pg_catalog",
+        #     "Tables": [
+        #       "pg_aggregate"
+        #     ],
+        #     "TableIds": [
+        #       "5263****31"
+        #     ],
+        #     "Engine": "postgresql",
+        #     "RegionId": "ap-southeast-1"
+        #   }
+        # }
+        # ```
         self.data_json = data_json
         # The description of the custom agent.
         self.description = description
@@ -43,8 +108,10 @@ class ModifyCustomAgentShrinkRequest(DaraModel):
         self.knowledge = knowledge
         # The external knowledge bases.
         self.knowledge_config_list_shrink = knowledge_config_list_shrink
+        self.knowledge_semantic_config_list_shrink = knowledge_semantic_config_list_shrink
         # The name of the custom agent.
         self.name = name
+        # The ID of the referenced historical session.
         self.related_session_id = related_session_id
         # The scheduled task configuration.
         self.schedule_task_config_shrink = schedule_task_config_shrink
@@ -90,6 +157,9 @@ class ModifyCustomAgentShrinkRequest(DaraModel):
 
         if self.knowledge_config_list_shrink is not None:
             result['KnowledgeConfigList'] = self.knowledge_config_list_shrink
+
+        if self.knowledge_semantic_config_list_shrink is not None:
+            result['KnowledgeSemanticConfigList'] = self.knowledge_semantic_config_list_shrink
 
         if self.name is not None:
             result['Name'] = self.name
@@ -142,6 +212,9 @@ class ModifyCustomAgentShrinkRequest(DaraModel):
 
         if m.get('KnowledgeConfigList') is not None:
             self.knowledge_config_list_shrink = m.get('KnowledgeConfigList')
+
+        if m.get('KnowledgeSemanticConfigList') is not None:
+            self.knowledge_semantic_config_list_shrink = m.get('KnowledgeSemanticConfigList')
 
         if m.get('Name') is not None:
             self.name = m.get('Name')

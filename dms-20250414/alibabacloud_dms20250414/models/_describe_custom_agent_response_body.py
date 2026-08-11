@@ -20,7 +20,7 @@ class DescribeCustomAgentResponseBody(DaraModel):
         self.data = data
         # The error code.
         self.error_code = error_code
-        # The error message returned when the call fails.
+        # The error message returned if the request failed.
         self.error_message = error_message
         # Id of the request
         self.request_id = request_id
@@ -96,6 +96,7 @@ class DescribeCustomAgentResponseBodyData(DaraModel):
         is_schedule_task: bool = None,
         knowledge: str = None,
         knowledge_config_list: List[main_models.DescribeCustomAgentResponseBodyDataKnowledgeConfigList] = None,
+        knowledge_semantic_config_list: List[main_models.DescribeCustomAgentResponseBodyDataKnowledgeSemanticConfigList] = None,
         modifier: str = None,
         modifier_user_name: str = None,
         name: str = None,
@@ -120,6 +121,7 @@ class DescribeCustomAgentResponseBodyData(DaraModel):
         self.creator_user_name = creator_user_name
         # The custom agent ID.
         self.custom_agent_id = custom_agent_id
+        # The current DMS unit.
         self.dmsunit = dmsunit
         # The specified data scope in JSON string format.
         self.data_json = data_json
@@ -141,6 +143,7 @@ class DescribeCustomAgentResponseBodyData(DaraModel):
         # The knowledge.
         self.knowledge = knowledge
         self.knowledge_config_list = knowledge_config_list
+        self.knowledge_semantic_config_list = knowledge_semantic_config_list
         # The modifier.
         self.modifier = modifier
         # The name of the modifier.
@@ -153,9 +156,11 @@ class DescribeCustomAgentResponseBodyData(DaraModel):
         self.offline_time = offline_time
         # The region.
         self.region = region
+        # The referenced historical session ID.
         self.related_session_id = related_session_id
         # The publish time.
         self.release_time = release_time
+        # The periodic task configuration.
         self.schedule_task_config = schedule_task_config
         # The status of the custom agent.
         self.status = status
@@ -174,6 +179,10 @@ class DescribeCustomAgentResponseBodyData(DaraModel):
             self.execution_config.validate()
         if self.knowledge_config_list:
             for v1 in self.knowledge_config_list:
+                 if v1:
+                    v1.validate()
+        if self.knowledge_semantic_config_list:
+            for v1 in self.knowledge_semantic_config_list:
                  if v1:
                     v1.validate()
         if self.schedule_task_config:
@@ -236,6 +245,11 @@ class DescribeCustomAgentResponseBodyData(DaraModel):
         if self.knowledge_config_list is not None:
             for k1 in self.knowledge_config_list:
                 result['KnowledgeConfigList'].append(k1.to_map() if k1 else None)
+
+        result['KnowledgeSemanticConfigList'] = []
+        if self.knowledge_semantic_config_list is not None:
+            for k1 in self.knowledge_semantic_config_list:
+                result['KnowledgeSemanticConfigList'].append(k1.to_map() if k1 else None)
 
         if self.modifier is not None:
             result['Modifier'] = self.modifier
@@ -339,6 +353,12 @@ class DescribeCustomAgentResponseBodyData(DaraModel):
                 temp_model = main_models.DescribeCustomAgentResponseBodyDataKnowledgeConfigList()
                 self.knowledge_config_list.append(temp_model.from_map(k1))
 
+        self.knowledge_semantic_config_list = []
+        if m.get('KnowledgeSemanticConfigList') is not None:
+            for k1 in m.get('KnowledgeSemanticConfigList'):
+                temp_model = main_models.DescribeCustomAgentResponseBodyDataKnowledgeSemanticConfigList()
+                self.knowledge_semantic_config_list.append(temp_model.from_map(k1))
+
         if m.get('Modifier') is not None:
             self.modifier = m.get('Modifier')
 
@@ -430,6 +450,57 @@ class DescribeCustomAgentResponseBodyDataScheduleTaskConfig(DaraModel):
 
         return self
 
+class DescribeCustomAgentResponseBodyDataKnowledgeSemanticConfigList(DaraModel):
+    def __init__(
+        self,
+        db_id: str = None,
+        instance_id: str = None,
+        knowledge_uuid: str = None,
+        type: str = None,
+    ):
+        self.db_id = db_id
+        self.instance_id = instance_id
+        self.knowledge_uuid = knowledge_uuid
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.db_id is not None:
+            result['DbId'] = self.db_id
+
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+
+        if self.knowledge_uuid is not None:
+            result['KnowledgeUuid'] = self.knowledge_uuid
+
+        if self.type is not None:
+            result['Type'] = self.type
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DbId') is not None:
+            self.db_id = m.get('DbId')
+
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+
+        if m.get('KnowledgeUuid') is not None:
+            self.knowledge_uuid = m.get('KnowledgeUuid')
+
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+
+        return self
+
 class DescribeCustomAgentResponseBodyDataKnowledgeConfigList(DaraModel):
     def __init__(
         self,
@@ -487,7 +558,7 @@ class DescribeCustomAgentResponseBodyDataExecutionConfig(DaraModel):
         self.skip_plan = skip_plan
         # Specifies whether to skip all SQL confirmations.
         self.skip_sql_confirm = skip_sql_confirm
-        # Specifies whether to skip the web report rendering confirmation.
+        # Specifies whether to skip the web report drawing confirmation.
         self.skip_web_report_confirm = skip_web_report_confirm
 
     def validate(self):

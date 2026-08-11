@@ -92,6 +92,7 @@ class ModifyCustomAgentResponseBodyData(DaraModel):
         is_schedule_task: bool = None,
         knowledge: str = None,
         knowledge_config_list: List[main_models.ModifyCustomAgentResponseBodyDataKnowledgeConfigList] = None,
+        knowledge_semantic_config_list: List[main_models.ModifyCustomAgentResponseBodyDataKnowledgeSemanticConfigList] = None,
         modifier: str = None,
         modifier_user_name: str = None,
         name: str = None,
@@ -116,13 +117,13 @@ class ModifyCustomAgentResponseBodyData(DaraModel):
         self.creator_user_name = creator_user_name
         # The custom agent ID.
         self.custom_agent_id = custom_agent_id
-        # The current DMS unit.
+        # The current Data Management unit.
         self.dmsunit = dmsunit
         # The specified data range in JSON string format.
         self.data_json = data_json
         # The description of the custom agent.
         self.description = description
-        # The current DMS unit.
+        # The current Data Management unit.
         self.dms_unit = dms_unit
         # The execution configuration.
         self.execution_config = execution_config
@@ -138,6 +139,7 @@ class ModifyCustomAgentResponseBodyData(DaraModel):
         self.knowledge = knowledge
         # The external knowledge bases.
         self.knowledge_config_list = knowledge_config_list
+        self.knowledge_semantic_config_list = knowledge_semantic_config_list
         # The modifier.
         self.modifier = modifier
         # The name of the modifier.
@@ -150,6 +152,7 @@ class ModifyCustomAgentResponseBodyData(DaraModel):
         self.offline_time = offline_time
         # The region.
         self.region = region
+        # The ID of the referenced historical session.
         self.related_session_id = related_session_id
         # The publish time.
         self.release_time = release_time
@@ -172,6 +175,10 @@ class ModifyCustomAgentResponseBodyData(DaraModel):
             self.execution_config.validate()
         if self.knowledge_config_list:
             for v1 in self.knowledge_config_list:
+                 if v1:
+                    v1.validate()
+        if self.knowledge_semantic_config_list:
+            for v1 in self.knowledge_semantic_config_list:
                  if v1:
                     v1.validate()
         if self.schedule_task_config:
@@ -231,6 +238,11 @@ class ModifyCustomAgentResponseBodyData(DaraModel):
         if self.knowledge_config_list is not None:
             for k1 in self.knowledge_config_list:
                 result['KnowledgeConfigList'].append(k1.to_map() if k1 else None)
+
+        result['KnowledgeSemanticConfigList'] = []
+        if self.knowledge_semantic_config_list is not None:
+            for k1 in self.knowledge_semantic_config_list:
+                result['KnowledgeSemanticConfigList'].append(k1.to_map() if k1 else None)
 
         if self.modifier is not None:
             result['Modifier'] = self.modifier
@@ -331,6 +343,12 @@ class ModifyCustomAgentResponseBodyData(DaraModel):
                 temp_model = main_models.ModifyCustomAgentResponseBodyDataKnowledgeConfigList()
                 self.knowledge_config_list.append(temp_model.from_map(k1))
 
+        self.knowledge_semantic_config_list = []
+        if m.get('KnowledgeSemanticConfigList') is not None:
+            for k1 in m.get('KnowledgeSemanticConfigList'):
+                temp_model = main_models.ModifyCustomAgentResponseBodyDataKnowledgeSemanticConfigList()
+                self.knowledge_semantic_config_list.append(temp_model.from_map(k1))
+
         if m.get('Modifier') is not None:
             self.modifier = m.get('Modifier')
 
@@ -383,7 +401,7 @@ class ModifyCustomAgentResponseBodyDataScheduleTaskConfig(DaraModel):
         query: str = None,
         related_session_id: str = None,
     ):
-        # The cron expression for time-based scheduling.
+        # The cron expression for the time-based scheduling.
         self.cron_expression = cron_expression
         # The query for the scheduled task.
         self.query = query
@@ -422,6 +440,57 @@ class ModifyCustomAgentResponseBodyDataScheduleTaskConfig(DaraModel):
 
         return self
 
+class ModifyCustomAgentResponseBodyDataKnowledgeSemanticConfigList(DaraModel):
+    def __init__(
+        self,
+        db_id: str = None,
+        instance_id: str = None,
+        knowledge_uuid: str = None,
+        type: str = None,
+    ):
+        self.db_id = db_id
+        self.instance_id = instance_id
+        self.knowledge_uuid = knowledge_uuid
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.db_id is not None:
+            result['DbId'] = self.db_id
+
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+
+        if self.knowledge_uuid is not None:
+            result['KnowledgeUuid'] = self.knowledge_uuid
+
+        if self.type is not None:
+            result['Type'] = self.type
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DbId') is not None:
+            self.db_id = m.get('DbId')
+
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+
+        if m.get('KnowledgeUuid') is not None:
+            self.knowledge_uuid = m.get('KnowledgeUuid')
+
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+
+        return self
+
 class ModifyCustomAgentResponseBodyDataKnowledgeConfigList(DaraModel):
     def __init__(
         self,
@@ -432,7 +501,7 @@ class ModifyCustomAgentResponseBodyDataKnowledgeConfigList(DaraModel):
         # The access type.
         self.access_type = access_type
         self.kb_uuid = kb_uuid
-        # The ID of the MCP Server.
+        # The ID of the MCP server.
         self.mcp_server_id = mcp_server_id
 
     def validate(self):

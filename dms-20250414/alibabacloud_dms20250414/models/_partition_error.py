@@ -12,7 +12,7 @@ class PartitionError(DaraModel):
         error_detail: str = None,
         values: List[str] = None,
     ):
-        # The details of the error.
+        # The error details.
         self.error_detail = error_detail
         # The partition values.
         self.values = values

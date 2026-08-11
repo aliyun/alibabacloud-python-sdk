@@ -24,14 +24,14 @@ class Client(OpenApiClient):
         super().__init__(config)
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
-            'us-west-1': 'dms.us-west-1.aliyuncs.com',
-            'us-east-1': 'dms.us-east-1.aliyuncs.com',
             'cn-shenzhen': 'dms.cn-shenzhen.aliyuncs.com',
+            'cn-beijing': 'dms.cn-beijing.aliyuncs.com',
             'cn-shanghai': 'dms.cn-shanghai.aliyuncs.com',
             'cn-hongkong': 'dms.cn-hongkong.aliyuncs.com',
+            'ap-southeast-1': 'dms.ap-southeast-1.aliyuncs.com',
             'cn-hangzhou': 'dms.cn-hangzhou.aliyuncs.com',
-            'cn-beijing': 'dms.cn-beijing.aliyuncs.com',
-            'ap-southeast-1': 'dms.ap-southeast-1.aliyuncs.com'
+            'us-west-1': 'dms.us-west-1.aliyuncs.com',
+            'us-east-1': 'dms.us-east-1.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('dms', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -912,6 +912,8 @@ class Client(OpenApiClient):
             request.execution_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.execution_config, 'ExecutionConfig', 'json')
         if not DaraCore.is_null(tmp_req.knowledge_config_list):
             request.knowledge_config_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.knowledge_config_list, 'KnowledgeConfigList', 'json')
+        if not DaraCore.is_null(tmp_req.knowledge_semantic_config_list):
+            request.knowledge_semantic_config_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.knowledge_semantic_config_list, 'KnowledgeSemanticConfigList', 'json')
         if not DaraCore.is_null(tmp_req.schedule_task_config):
             request.schedule_task_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.schedule_task_config, 'ScheduleTaskConfig', 'json')
         query = {}
@@ -931,6 +933,8 @@ class Client(OpenApiClient):
             query['Knowledge'] = request.knowledge
         if not DaraCore.is_null(request.knowledge_config_list_shrink):
             query['KnowledgeConfigList'] = request.knowledge_config_list_shrink
+        if not DaraCore.is_null(request.knowledge_semantic_config_list_shrink):
+            query['KnowledgeSemanticConfigList'] = request.knowledge_semantic_config_list_shrink
         if not DaraCore.is_null(request.name):
             query['Name'] = request.name
         if not DaraCore.is_null(request.related_session_id):
@@ -978,6 +982,8 @@ class Client(OpenApiClient):
             request.execution_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.execution_config, 'ExecutionConfig', 'json')
         if not DaraCore.is_null(tmp_req.knowledge_config_list):
             request.knowledge_config_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.knowledge_config_list, 'KnowledgeConfigList', 'json')
+        if not DaraCore.is_null(tmp_req.knowledge_semantic_config_list):
+            request.knowledge_semantic_config_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.knowledge_semantic_config_list, 'KnowledgeSemanticConfigList', 'json')
         if not DaraCore.is_null(tmp_req.schedule_task_config):
             request.schedule_task_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.schedule_task_config, 'ScheduleTaskConfig', 'json')
         query = {}
@@ -997,6 +1003,8 @@ class Client(OpenApiClient):
             query['Knowledge'] = request.knowledge
         if not DaraCore.is_null(request.knowledge_config_list_shrink):
             query['KnowledgeConfigList'] = request.knowledge_config_list_shrink
+        if not DaraCore.is_null(request.knowledge_semantic_config_list_shrink):
+            query['KnowledgeSemanticConfigList'] = request.knowledge_semantic_config_list_shrink
         if not DaraCore.is_null(request.name):
             query['Name'] = request.name
         if not DaraCore.is_null(request.related_session_id):
@@ -4203,6 +4211,170 @@ class Client(OpenApiClient):
     ) -> main_models.GetDataAgentSubAccountInfoResponse:
         runtime = RuntimeOptions()
         return await self.get_data_agent_sub_account_info_with_options_async(request, runtime)
+
+    def get_data_agent_task_model_usage_with_options(
+        self,
+        request: main_models.GetDataAgentTaskModelUsageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetDataAgentTaskModelUsageResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.begin_time):
+            query['BeginTime'] = request.begin_time
+        if not DaraCore.is_null(request.dmsunit):
+            query['DMSUnit'] = request.dmsunit
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetDataAgentTaskModelUsage',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetDataAgentTaskModelUsageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_data_agent_task_model_usage_with_options_async(
+        self,
+        request: main_models.GetDataAgentTaskModelUsageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetDataAgentTaskModelUsageResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.begin_time):
+            query['BeginTime'] = request.begin_time
+        if not DaraCore.is_null(request.dmsunit):
+            query['DMSUnit'] = request.dmsunit
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetDataAgentTaskModelUsage',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetDataAgentTaskModelUsageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_data_agent_task_model_usage(
+        self,
+        request: main_models.GetDataAgentTaskModelUsageRequest,
+    ) -> main_models.GetDataAgentTaskModelUsageResponse:
+        runtime = RuntimeOptions()
+        return self.get_data_agent_task_model_usage_with_options(request, runtime)
+
+    async def get_data_agent_task_model_usage_async(
+        self,
+        request: main_models.GetDataAgentTaskModelUsageRequest,
+    ) -> main_models.GetDataAgentTaskModelUsageResponse:
+        runtime = RuntimeOptions()
+        return await self.get_data_agent_task_model_usage_with_options_async(request, runtime)
+
+    def get_data_agent_task_model_usage_metrics_with_options(
+        self,
+        request: main_models.GetDataAgentTaskModelUsageMetricsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetDataAgentTaskModelUsageMetricsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.begin_time):
+            query['BeginTime'] = request.begin_time
+        if not DaraCore.is_null(request.dmsunit):
+            query['DMSUnit'] = request.dmsunit
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetDataAgentTaskModelUsageMetrics',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetDataAgentTaskModelUsageMetricsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_data_agent_task_model_usage_metrics_with_options_async(
+        self,
+        request: main_models.GetDataAgentTaskModelUsageMetricsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetDataAgentTaskModelUsageMetricsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.begin_time):
+            query['BeginTime'] = request.begin_time
+        if not DaraCore.is_null(request.dmsunit):
+            query['DMSUnit'] = request.dmsunit
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetDataAgentTaskModelUsageMetrics',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetDataAgentTaskModelUsageMetricsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_data_agent_task_model_usage_metrics(
+        self,
+        request: main_models.GetDataAgentTaskModelUsageMetricsRequest,
+    ) -> main_models.GetDataAgentTaskModelUsageMetricsResponse:
+        runtime = RuntimeOptions()
+        return self.get_data_agent_task_model_usage_metrics_with_options(request, runtime)
+
+    async def get_data_agent_task_model_usage_metrics_async(
+        self,
+        request: main_models.GetDataAgentTaskModelUsageMetricsRequest,
+    ) -> main_models.GetDataAgentTaskModelUsageMetricsResponse:
+        runtime = RuntimeOptions()
+        return await self.get_data_agent_task_model_usage_metrics_with_options_async(request, runtime)
 
     def get_data_agent_workspace_info_with_options(
         self,
@@ -8128,6 +8300,8 @@ class Client(OpenApiClient):
             request.execution_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.execution_config, 'ExecutionConfig', 'json')
         if not DaraCore.is_null(tmp_req.knowledge_config_list):
             request.knowledge_config_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.knowledge_config_list, 'KnowledgeConfigList', 'json')
+        if not DaraCore.is_null(tmp_req.knowledge_semantic_config_list):
+            request.knowledge_semantic_config_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.knowledge_semantic_config_list, 'KnowledgeSemanticConfigList', 'json')
         if not DaraCore.is_null(tmp_req.schedule_task_config):
             request.schedule_task_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.schedule_task_config, 'ScheduleTaskConfig', 'json')
         query = {}
@@ -8149,6 +8323,8 @@ class Client(OpenApiClient):
             query['Knowledge'] = request.knowledge
         if not DaraCore.is_null(request.knowledge_config_list_shrink):
             query['KnowledgeConfigList'] = request.knowledge_config_list_shrink
+        if not DaraCore.is_null(request.knowledge_semantic_config_list_shrink):
+            query['KnowledgeSemanticConfigList'] = request.knowledge_semantic_config_list_shrink
         if not DaraCore.is_null(request.name):
             query['Name'] = request.name
         if not DaraCore.is_null(request.related_session_id):
@@ -8196,6 +8372,8 @@ class Client(OpenApiClient):
             request.execution_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.execution_config, 'ExecutionConfig', 'json')
         if not DaraCore.is_null(tmp_req.knowledge_config_list):
             request.knowledge_config_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.knowledge_config_list, 'KnowledgeConfigList', 'json')
+        if not DaraCore.is_null(tmp_req.knowledge_semantic_config_list):
+            request.knowledge_semantic_config_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.knowledge_semantic_config_list, 'KnowledgeSemanticConfigList', 'json')
         if not DaraCore.is_null(tmp_req.schedule_task_config):
             request.schedule_task_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.schedule_task_config, 'ScheduleTaskConfig', 'json')
         query = {}
@@ -8217,6 +8395,8 @@ class Client(OpenApiClient):
             query['Knowledge'] = request.knowledge
         if not DaraCore.is_null(request.knowledge_config_list_shrink):
             query['KnowledgeConfigList'] = request.knowledge_config_list_shrink
+        if not DaraCore.is_null(request.knowledge_semantic_config_list_shrink):
+            query['KnowledgeSemanticConfigList'] = request.knowledge_semantic_config_list_shrink
         if not DaraCore.is_null(request.name):
             query['Name'] = request.name
         if not DaraCore.is_null(request.related_session_id):

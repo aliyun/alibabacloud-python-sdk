@@ -169,6 +169,7 @@ class ListCustomAgentResponseBodyDataContent(DaraModel):
         is_schedule_task: bool = None,
         knowledge: str = None,
         knowledge_config_list: List[main_models.ListCustomAgentResponseBodyDataContentKnowledgeConfigList] = None,
+        knowledge_semantic_config_list: List[main_models.ListCustomAgentResponseBodyDataContentKnowledgeSemanticConfigList] = None,
         modifier: str = None,
         modifier_user_name: str = None,
         name: str = None,
@@ -215,6 +216,7 @@ class ListCustomAgentResponseBodyDataContent(DaraModel):
         # The provided knowledge.
         self.knowledge = knowledge
         self.knowledge_config_list = knowledge_config_list
+        self.knowledge_semantic_config_list = knowledge_semantic_config_list
         # The user who last modified the agent.
         self.modifier = modifier
         # The name of the user who last modified the agent.
@@ -249,6 +251,10 @@ class ListCustomAgentResponseBodyDataContent(DaraModel):
             self.execution_config.validate()
         if self.knowledge_config_list:
             for v1 in self.knowledge_config_list:
+                 if v1:
+                    v1.validate()
+        if self.knowledge_semantic_config_list:
+            for v1 in self.knowledge_semantic_config_list:
                  if v1:
                     v1.validate()
         if self.schedule_task_config:
@@ -311,6 +317,11 @@ class ListCustomAgentResponseBodyDataContent(DaraModel):
         if self.knowledge_config_list is not None:
             for k1 in self.knowledge_config_list:
                 result['KnowledgeConfigList'].append(k1.to_map() if k1 else None)
+
+        result['KnowledgeSemanticConfigList'] = []
+        if self.knowledge_semantic_config_list is not None:
+            for k1 in self.knowledge_semantic_config_list:
+                result['KnowledgeSemanticConfigList'].append(k1.to_map() if k1 else None)
 
         if self.modifier is not None:
             result['Modifier'] = self.modifier
@@ -414,6 +425,12 @@ class ListCustomAgentResponseBodyDataContent(DaraModel):
                 temp_model = main_models.ListCustomAgentResponseBodyDataContentKnowledgeConfigList()
                 self.knowledge_config_list.append(temp_model.from_map(k1))
 
+        self.knowledge_semantic_config_list = []
+        if m.get('KnowledgeSemanticConfigList') is not None:
+            for k1 in m.get('KnowledgeSemanticConfigList'):
+                temp_model = main_models.ListCustomAgentResponseBodyDataContentKnowledgeSemanticConfigList()
+                self.knowledge_semantic_config_list.append(temp_model.from_map(k1))
+
         if m.get('Modifier') is not None:
             self.modifier = m.get('Modifier')
 
@@ -502,6 +519,57 @@ class ListCustomAgentResponseBodyDataContentScheduleTaskConfig(DaraModel):
 
         if m.get('RelatedSessionId') is not None:
             self.related_session_id = m.get('RelatedSessionId')
+
+        return self
+
+class ListCustomAgentResponseBodyDataContentKnowledgeSemanticConfigList(DaraModel):
+    def __init__(
+        self,
+        db_id: str = None,
+        instance_id: str = None,
+        knowledge_uuid: str = None,
+        type: str = None,
+    ):
+        self.db_id = db_id
+        self.instance_id = instance_id
+        self.knowledge_uuid = knowledge_uuid
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.db_id is not None:
+            result['DbId'] = self.db_id
+
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+
+        if self.knowledge_uuid is not None:
+            result['KnowledgeUuid'] = self.knowledge_uuid
+
+        if self.type is not None:
+            result['Type'] = self.type
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DbId') is not None:
+            self.db_id = m.get('DbId')
+
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+
+        if m.get('KnowledgeUuid') is not None:
+            self.knowledge_uuid = m.get('KnowledgeUuid')
+
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
 
         return self
 

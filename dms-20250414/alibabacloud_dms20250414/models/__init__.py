@@ -45,6 +45,7 @@ from ._one_meta_database_object import OneMetaDatabaseObject
 from ._one_meta_knowledge_base import OneMetaKnowledgeBase
 from ._one_meta_knowledge_base_chunk import OneMetaKnowledgeBaseChunk
 from ._one_meta_knowledge_base_document import OneMetaKnowledgeBaseDocument
+from ._one_meta_sql_template_view import OneMetaSqlTemplateView
 from ._one_meta_table_base_info import OneMetaTableBaseInfo
 from ._one_meta_table_column import OneMetaTableColumn
 from ._one_meta_table_column_engine_meta import OneMetaTableColumnEngineMeta
@@ -52,6 +53,7 @@ from ._one_meta_table_engine_meta import OneMetaTableEngineMeta
 from ._one_meta_table_index import OneMetaTableIndex
 from ._open_claw_instance_quota_vo import OpenClawInstanceQuotaVO
 from ._open_claw_instance_vo import OpenClawInstanceVO
+from ._ossie_model_view import OssieModelView
 from ._partition_error import PartitionError
 from ._trial_order_eligibility_vo import TrialOrderEligibilityVO
 from ._add_user_to_data_agent_workspace_request import AddUserToDataAgentWorkspaceRequest
@@ -208,6 +210,12 @@ from ._get_data_agent_mcp_response import GetDataAgentMcpResponse
 from ._get_data_agent_sub_account_info_request import GetDataAgentSubAccountInfoRequest
 from ._get_data_agent_sub_account_info_response_body import GetDataAgentSubAccountInfoResponseBody
 from ._get_data_agent_sub_account_info_response import GetDataAgentSubAccountInfoResponse
+from ._get_data_agent_task_model_usage_request import GetDataAgentTaskModelUsageRequest
+from ._get_data_agent_task_model_usage_response_body import GetDataAgentTaskModelUsageResponseBody
+from ._get_data_agent_task_model_usage_response import GetDataAgentTaskModelUsageResponse
+from ._get_data_agent_task_model_usage_metrics_request import GetDataAgentTaskModelUsageMetricsRequest
+from ._get_data_agent_task_model_usage_metrics_response_body import GetDataAgentTaskModelUsageMetricsResponseBody
+from ._get_data_agent_task_model_usage_metrics_response import GetDataAgentTaskModelUsageMetricsResponse
 from ._get_data_agent_workspace_info_request import GetDataAgentWorkspaceInfoRequest
 from ._get_data_agent_workspace_info_response_body import GetDataAgentWorkspaceInfoResponseBody
 from ._get_data_agent_workspace_info_response import GetDataAgentWorkspaceInfoResponse
@@ -445,10 +453,12 @@ from ._create_airflow_login_token_response_body import CreateAirflowLoginTokenRe
 from ._create_custom_agent_request import CreateCustomAgentRequestCallbackConfig
 from ._create_custom_agent_request import CreateCustomAgentRequestExecutionConfig
 from ._create_custom_agent_request import CreateCustomAgentRequestKnowledgeConfigList
+from ._create_custom_agent_request import CreateCustomAgentRequestKnowledgeSemanticConfigList
 from ._create_custom_agent_request import CreateCustomAgentRequestScheduleTaskConfig
 from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataCallbackConfig
 from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataExecutionConfig
 from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataKnowledgeConfigList
+from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataKnowledgeSemanticConfigList
 from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataScheduleTaskConfig
 from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyData
 from ._create_data_agent_accuracy_test_response_body import CreateDataAgentAccuracyTestResponseBodyData
@@ -467,6 +477,7 @@ from ._delete_file_upload_response_body import DeleteFileUploadResponseBodyData
 from ._describe_custom_agent_response_body import DescribeCustomAgentResponseBodyDataCallbackConfig
 from ._describe_custom_agent_response_body import DescribeCustomAgentResponseBodyDataExecutionConfig
 from ._describe_custom_agent_response_body import DescribeCustomAgentResponseBodyDataKnowledgeConfigList
+from ._describe_custom_agent_response_body import DescribeCustomAgentResponseBodyDataKnowledgeSemanticConfigList
 from ._describe_custom_agent_response_body import DescribeCustomAgentResponseBodyDataScheduleTaskConfig
 from ._describe_custom_agent_response_body import DescribeCustomAgentResponseBodyData
 from ._describe_data_agent_metrics_response_body import DescribeDataAgentMetricsResponseBodyDataMetrics
@@ -485,6 +496,8 @@ from ._file_upload_callback_response_body import FileUploadCallbackResponseBodyD
 from ._get_agentic_agent_by_install_token_response_body import GetAgenticAgentByInstallTokenResponseBodyData
 from ._get_airflow_response_body import GetAirflowResponseBodyRoot
 from ._get_data_agent_sub_account_info_response_body import GetDataAgentSubAccountInfoResponseBodyData
+from ._get_data_agent_task_model_usage_response_body import GetDataAgentTaskModelUsageResponseBodyData
+from ._get_data_agent_task_model_usage_metrics_response_body import GetDataAgentTaskModelUsageMetricsResponseBodyData
 from ._get_data_agent_workspace_info_response_body import GetDataAgentWorkspaceInfoResponseBodyData
 from ._get_list_mcp_server_tools_result_response_body import GetListMcpServerToolsResultResponseBodyDataTools
 from ._get_list_mcp_server_tools_result_response_body import GetListMcpServerToolsResultResponseBodyData
@@ -498,6 +511,7 @@ from ._list_airflows_response_body import ListAirflowsResponseBodyRoot
 from ._list_custom_agent_response_body import ListCustomAgentResponseBodyDataContentCallbackConfig
 from ._list_custom_agent_response_body import ListCustomAgentResponseBodyDataContentExecutionConfig
 from ._list_custom_agent_response_body import ListCustomAgentResponseBodyDataContentKnowledgeConfigList
+from ._list_custom_agent_response_body import ListCustomAgentResponseBodyDataContentKnowledgeSemanticConfigList
 from ._list_custom_agent_response_body import ListCustomAgentResponseBodyDataContentScheduleTaskConfig
 from ._list_custom_agent_response_body import ListCustomAgentResponseBodyDataContent
 from ._list_custom_agent_response_body import ListCustomAgentResponseBodyData
@@ -523,10 +537,12 @@ from ._list_workspace_code_response_body import ListWorkspaceCodeResponseBodyDat
 from ._modify_custom_agent_request import ModifyCustomAgentRequestCallbackConfig
 from ._modify_custom_agent_request import ModifyCustomAgentRequestExecutionConfig
 from ._modify_custom_agent_request import ModifyCustomAgentRequestKnowledgeConfigList
+from ._modify_custom_agent_request import ModifyCustomAgentRequestKnowledgeSemanticConfigList
 from ._modify_custom_agent_request import ModifyCustomAgentRequestScheduleTaskConfig
 from ._modify_custom_agent_response_body import ModifyCustomAgentResponseBodyDataCallbackConfig
 from ._modify_custom_agent_response_body import ModifyCustomAgentResponseBodyDataExecutionConfig
 from ._modify_custom_agent_response_body import ModifyCustomAgentResponseBodyDataKnowledgeConfigList
+from ._modify_custom_agent_response_body import ModifyCustomAgentResponseBodyDataKnowledgeSemanticConfigList
 from ._modify_custom_agent_response_body import ModifyCustomAgentResponseBodyDataScheduleTaskConfig
 from ._modify_custom_agent_response_body import ModifyCustomAgentResponseBodyData
 from ._operate_custom_agent_response_body import OperateCustomAgentResponseBodyData
@@ -598,6 +614,7 @@ __all__ = [
     OneMetaKnowledgeBase,
     OneMetaKnowledgeBaseChunk,
     OneMetaKnowledgeBaseDocument,
+    OneMetaSqlTemplateView,
     OneMetaTableBaseInfo,
     OneMetaTableColumn,
     OneMetaTableColumnEngineMeta,
@@ -605,6 +622,7 @@ __all__ = [
     OneMetaTableIndex,
     OpenClawInstanceQuotaVO,
     OpenClawInstanceVO,
+    OssieModelView,
     PartitionError,
     TrialOrderEligibilityVO,
     AddUserToDataAgentWorkspaceRequest,
@@ -761,6 +779,12 @@ __all__ = [
     GetDataAgentSubAccountInfoRequest,
     GetDataAgentSubAccountInfoResponseBody,
     GetDataAgentSubAccountInfoResponse,
+    GetDataAgentTaskModelUsageRequest,
+    GetDataAgentTaskModelUsageResponseBody,
+    GetDataAgentTaskModelUsageResponse,
+    GetDataAgentTaskModelUsageMetricsRequest,
+    GetDataAgentTaskModelUsageMetricsResponseBody,
+    GetDataAgentTaskModelUsageMetricsResponse,
     GetDataAgentWorkspaceInfoRequest,
     GetDataAgentWorkspaceInfoResponseBody,
     GetDataAgentWorkspaceInfoResponse,
@@ -998,10 +1022,12 @@ __all__ = [
     CreateCustomAgentRequestCallbackConfig,
     CreateCustomAgentRequestExecutionConfig,
     CreateCustomAgentRequestKnowledgeConfigList,
+    CreateCustomAgentRequestKnowledgeSemanticConfigList,
     CreateCustomAgentRequestScheduleTaskConfig,
     CreateCustomAgentResponseBodyDataCallbackConfig,
     CreateCustomAgentResponseBodyDataExecutionConfig,
     CreateCustomAgentResponseBodyDataKnowledgeConfigList,
+    CreateCustomAgentResponseBodyDataKnowledgeSemanticConfigList,
     CreateCustomAgentResponseBodyDataScheduleTaskConfig,
     CreateCustomAgentResponseBodyData,
     CreateDataAgentAccuracyTestResponseBodyData,
@@ -1020,6 +1046,7 @@ __all__ = [
     DescribeCustomAgentResponseBodyDataCallbackConfig,
     DescribeCustomAgentResponseBodyDataExecutionConfig,
     DescribeCustomAgentResponseBodyDataKnowledgeConfigList,
+    DescribeCustomAgentResponseBodyDataKnowledgeSemanticConfigList,
     DescribeCustomAgentResponseBodyDataScheduleTaskConfig,
     DescribeCustomAgentResponseBodyData,
     DescribeDataAgentMetricsResponseBodyDataMetrics,
@@ -1038,6 +1065,8 @@ __all__ = [
     GetAgenticAgentByInstallTokenResponseBodyData,
     GetAirflowResponseBodyRoot,
     GetDataAgentSubAccountInfoResponseBodyData,
+    GetDataAgentTaskModelUsageResponseBodyData,
+    GetDataAgentTaskModelUsageMetricsResponseBodyData,
     GetDataAgentWorkspaceInfoResponseBodyData,
     GetListMcpServerToolsResultResponseBodyDataTools,
     GetListMcpServerToolsResultResponseBodyData,
@@ -1051,6 +1080,7 @@ __all__ = [
     ListCustomAgentResponseBodyDataContentCallbackConfig,
     ListCustomAgentResponseBodyDataContentExecutionConfig,
     ListCustomAgentResponseBodyDataContentKnowledgeConfigList,
+    ListCustomAgentResponseBodyDataContentKnowledgeSemanticConfigList,
     ListCustomAgentResponseBodyDataContentScheduleTaskConfig,
     ListCustomAgentResponseBodyDataContent,
     ListCustomAgentResponseBodyData,
@@ -1076,10 +1106,12 @@ __all__ = [
     ModifyCustomAgentRequestCallbackConfig,
     ModifyCustomAgentRequestExecutionConfig,
     ModifyCustomAgentRequestKnowledgeConfigList,
+    ModifyCustomAgentRequestKnowledgeSemanticConfigList,
     ModifyCustomAgentRequestScheduleTaskConfig,
     ModifyCustomAgentResponseBodyDataCallbackConfig,
     ModifyCustomAgentResponseBodyDataExecutionConfig,
     ModifyCustomAgentResponseBodyDataKnowledgeConfigList,
+    ModifyCustomAgentResponseBodyDataKnowledgeSemanticConfigList,
     ModifyCustomAgentResponseBodyDataScheduleTaskConfig,
     ModifyCustomAgentResponseBodyData,
     OperateCustomAgentResponseBodyData,

@@ -18,7 +18,7 @@ class DLDatabase(DaraModel):
     ):
         # The name of the data catalog.
         self.catalog_name = catalog_name
-        # The ID of the database.
+        # The database ID.
         self.db_id = db_id
         # The description of the database.
         self.description = description
