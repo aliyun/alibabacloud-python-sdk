@@ -1,3 +1,9 @@
+2026-08-11 Version: 1.3.0
+- Support API EnterpriseOrgCreateNode.
+- Support API EnterpriseOrgDeleteNode.
+- Support API EnterpriseOrgRenameNode.
+
+
 2026-01-07 Version: 1.2.0
 - Support API AccountContactAdd.
 - Support API AccountContactDelete.

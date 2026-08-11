@@ -21,18 +21,36 @@ class EnterpriseContactAddRequest(DaraModel):
         oriented_nb_id: str = None,
         shared_contact: bool = None,
     ):
+        # The application name.
         self.app_name = app_name
+        # Specifies whether to asynchronously verify the email address. Set this parameter to true for API calls. Otherwise, the verification code is synchronously verified. Call the SendAsyncEmailCaptcha operation to send a verification link.
         self.async_email_verify = async_email_verify
+        # Specifies whether to asynchronously verify the mobile phone number. Set this parameter to true for API calls. Otherwise, the verification code is synchronously verified. Call the SendAsyncMobileCaptcha operation to send a verification link.
         self.async_mobile_verify = async_mobile_verify
+        # The email address of the contact.
         self.contact_email = contact_email
+        # The mobile phone number of the contact.
         self.contact_mobile = contact_mobile
+        # The name of the contact.
         self.contact_name = contact_name
+        # The position of the contact. Valid values:
+        # - TECH_MANAGER: technical manager.
+        # - MAINTAIN_MANAGER: O&M manager.
+        # - PROJECT_MANAGER: project manager.
+        # - FINANCE_MANAGER: finance manager.
+        # - OTHER: other.
         self.contact_position = contact_position
+        # The email verification code.
         self.email_code = email_code
+        # The SMS verification code.
         self.mobile_code = mobile_code
+        # The entity ID of the cross-enterprise management object.
         self.oriented_ec_id = oriented_ec_id
+        # The ID of the enterprise to which you have switched.
         self.oriented_le_id = oriented_le_id
+        # The sales site ID of the cross-enterprise management object.
         self.oriented_nb_id = oriented_nb_id
+        # Specifies whether the contact is a public contact. This operation sets this parameter to true by default.
         self.shared_contact = shared_contact
 
     def validate(self):

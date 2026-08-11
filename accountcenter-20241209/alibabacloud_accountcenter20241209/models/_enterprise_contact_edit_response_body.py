@@ -16,10 +16,17 @@ class EnterpriseContactEditResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The data result of the current category statistics.
         self.data = data
+        # The result message of the call.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the operation was successful. Valid values:
+        # - true: Successful.
+        # - false: Failed.
         self.success = success
 
     def validate(self):
@@ -75,8 +82,11 @@ class EnterpriseContactEditResponseBodyData(DaraModel):
         error_list: List[main_models.EnterpriseContactEditResponseBodyDataErrorList] = None,
         result: bool = None,
     ):
+        # The contact ID.
         self.contact_id = contact_id
+        # The error message reported by the backup server.
         self.error_list = error_list
+        # Indicates whether the operation was successful.
         self.result = result
 
     def validate(self):
@@ -126,8 +136,11 @@ class EnterpriseContactEditResponseBodyDataErrorList(DaraModel):
         error_desc: str = None,
         item: str = None,
     ):
+        # The error code.
         self.error_code = error_code
+        # The description of the diagnosed issue.
         self.error_desc = error_desc
+        # The field with an exception.
         self.item = item
 
     def validate(self):

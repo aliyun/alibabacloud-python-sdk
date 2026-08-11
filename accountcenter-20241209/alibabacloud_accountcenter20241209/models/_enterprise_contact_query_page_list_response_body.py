@@ -20,15 +20,23 @@ class EnterpriseContactQueryPageListResponseBody(DaraModel):
         total_count: int = None,
         total_page: int = None,
     ):
+        # The status code.
         self.code = code
+        # The operation result.
         self.data = data
-        # msg
+        # The returned message.
         self.message = message
+        # Current page number.
         self.page_no = page_no
+        # Page size.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the operation is successful. Valid values: true: The operation is successful. false: The operation failed.
         self.success = success
+        # Total data count.
         self.total_count = total_count
+        # Total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -124,19 +132,31 @@ class EnterpriseContactQueryPageListResponseBodyData(DaraModel):
         update_date: int = None,
         update_user: str = None,
     ):
+        # The contact email.
         self.contact_email = contact_email
+        # The contact ID.
         self.contact_id = contact_id
+        # The contact mobile number.
         self.contact_mobile = contact_mobile
+        # The contact name.
         self.contact_name = contact_name
+        # The position.
         self.contact_position = contact_position
+        # The customer ID, compatible with the old model.
         self.customer_id = customer_id
+        # Whether the email is verified.
         self.email_confirmed = email_confirmed
+        # The entity ID.
         self.entity_id = entity_id
-        # leId/customerId
+        # The entity type. Valid values: leId and customerId.
         self.entity_type = entity_type
+        # Whether the mobile number is verified.
         self.mobile_confirmed = mobile_confirmed
+        # Whether it is a shared contact.
         self.shared_contact = shared_contact
+        # The time when the contact was last modified.
         self.update_date = update_date
+        # The user who last modified the contact.
         self.update_user = update_user
 
     def validate(self):

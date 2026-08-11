@@ -13,10 +13,15 @@ class AccountContactDeleteResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The result data.
         self.data = data
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the operation is successful. A value of true indicates success. A value of false indicates failure.
         self.success = success
 
     def validate(self):

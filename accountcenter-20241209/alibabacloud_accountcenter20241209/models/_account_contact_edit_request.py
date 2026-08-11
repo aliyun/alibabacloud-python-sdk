@@ -22,19 +22,33 @@ class AccountContactEditRequest(DaraModel):
         oriented_nb_id: str = None,
         shared_contact: bool = None,
     ):
+        # Application name.
         self.app_name = app_name
+        # Whether to asynchronously verify the email. Must be set to true for API calls. Otherwise, the verification code will be synchronously validated. Use the SendAsyncEmailCaptcha API to send the verification link.
         self.async_email_verify = async_email_verify
+        # Whether to asynchronously verify the mobile number. Must be set to true for API calls. Otherwise, the verification code will be synchronously validated. Use the SendAsyncMobileCaptcha API to send the verification link.
         self.async_mobile_verify = async_mobile_verify
+        # Contact email
         self.contact_email = contact_email
+        # Contact ID. You can call AccountContactQueryPageList to query account contact information by page.
         self.contact_id = contact_id
+        # Contact mobile number
         self.contact_mobile = contact_mobile
+        # Contact name
         self.contact_name = contact_name
+        # Position:
         self.contact_position = contact_position
+        # Email verification code
         self.email_code = email_code
+        # SMS verification code
         self.mobile_code = mobile_code
+        # Cross-enterprise management object entity ID
         self.oriented_ec_id = oriented_ec_id
+        # Currently switched enterprise
         self.oriented_le_id = oriented_le_id
+        # Cross-enterprise management object marketplace ID
         self.oriented_nb_id = oriented_nb_id
+        # Whether it is an enterprise contact. This API sets the value to false by default.
         self.shared_contact = shared_contact
 
     def validate(self):

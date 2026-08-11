@@ -20,7 +20,11 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'ap-southeast-1': 'accountcenter-intl.aliyuncs.com',
+            'cn-hangzhou': 'accountcenter.cn-hangzhou.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('accountcenter', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -2464,6 +2468,254 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.enterprise_contact_query_page_list_with_options_async(request, runtime)
 
+    def enterprise_org_create_node_with_options(
+        self,
+        tmp_req: main_models.EnterpriseOrgCreateNodeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.EnterpriseOrgCreateNodeResponse:
+        tmp_req.validate()
+        request = main_models.EnterpriseOrgCreateNodeShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.ext):
+            request.ext_shrink = Utils.array_to_string_with_specified_style(tmp_req.ext, 'Ext', 'json')
+        body = {}
+        if not DaraCore.is_null(request.app_name):
+            body['AppName'] = request.app_name
+        if not DaraCore.is_null(request.biz_name):
+            body['BizName'] = request.biz_name
+        if not DaraCore.is_null(request.ext_shrink):
+            body['Ext'] = request.ext_shrink
+        if not DaraCore.is_null(request.is_open_api):
+            body['IsOpenApi'] = request.is_open_api
+        if not DaraCore.is_null(request.node_id):
+            body['NodeId'] = request.node_id
+        if not DaraCore.is_null(request.node_name):
+            body['NodeName'] = request.node_name
+        if not DaraCore.is_null(request.node_type):
+            body['NodeType'] = request.node_type
+        if not DaraCore.is_null(request.oriented_ec_id):
+            body['OrientedEcId'] = request.oriented_ec_id
+        if not DaraCore.is_null(request.oriented_le_id):
+            body['OrientedLeId'] = request.oriented_le_id
+        if not DaraCore.is_null(request.oriented_nb_id):
+            body['OrientedNbId'] = request.oriented_nb_id
+        if not DaraCore.is_null(request.parent_node_id):
+            body['ParentNodeId'] = request.parent_node_id
+        if not DaraCore.is_null(request.parent_node_type):
+            body['ParentNodeType'] = request.parent_node_type
+        if not DaraCore.is_null(request.show_complete_info):
+            body['ShowCompleteInfo'] = request.show_complete_info
+        if not DaraCore.is_null(request.tree_id):
+            body['TreeId'] = request.tree_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'EnterpriseOrgCreateNode',
+            version = '2024-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EnterpriseOrgCreateNodeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enterprise_org_create_node_with_options_async(
+        self,
+        tmp_req: main_models.EnterpriseOrgCreateNodeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.EnterpriseOrgCreateNodeResponse:
+        tmp_req.validate()
+        request = main_models.EnterpriseOrgCreateNodeShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.ext):
+            request.ext_shrink = Utils.array_to_string_with_specified_style(tmp_req.ext, 'Ext', 'json')
+        body = {}
+        if not DaraCore.is_null(request.app_name):
+            body['AppName'] = request.app_name
+        if not DaraCore.is_null(request.biz_name):
+            body['BizName'] = request.biz_name
+        if not DaraCore.is_null(request.ext_shrink):
+            body['Ext'] = request.ext_shrink
+        if not DaraCore.is_null(request.is_open_api):
+            body['IsOpenApi'] = request.is_open_api
+        if not DaraCore.is_null(request.node_id):
+            body['NodeId'] = request.node_id
+        if not DaraCore.is_null(request.node_name):
+            body['NodeName'] = request.node_name
+        if not DaraCore.is_null(request.node_type):
+            body['NodeType'] = request.node_type
+        if not DaraCore.is_null(request.oriented_ec_id):
+            body['OrientedEcId'] = request.oriented_ec_id
+        if not DaraCore.is_null(request.oriented_le_id):
+            body['OrientedLeId'] = request.oriented_le_id
+        if not DaraCore.is_null(request.oriented_nb_id):
+            body['OrientedNbId'] = request.oriented_nb_id
+        if not DaraCore.is_null(request.parent_node_id):
+            body['ParentNodeId'] = request.parent_node_id
+        if not DaraCore.is_null(request.parent_node_type):
+            body['ParentNodeType'] = request.parent_node_type
+        if not DaraCore.is_null(request.show_complete_info):
+            body['ShowCompleteInfo'] = request.show_complete_info
+        if not DaraCore.is_null(request.tree_id):
+            body['TreeId'] = request.tree_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'EnterpriseOrgCreateNode',
+            version = '2024-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EnterpriseOrgCreateNodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enterprise_org_create_node(
+        self,
+        request: main_models.EnterpriseOrgCreateNodeRequest,
+    ) -> main_models.EnterpriseOrgCreateNodeResponse:
+        runtime = RuntimeOptions()
+        return self.enterprise_org_create_node_with_options(request, runtime)
+
+    async def enterprise_org_create_node_async(
+        self,
+        request: main_models.EnterpriseOrgCreateNodeRequest,
+    ) -> main_models.EnterpriseOrgCreateNodeResponse:
+        runtime = RuntimeOptions()
+        return await self.enterprise_org_create_node_with_options_async(request, runtime)
+
+    def enterprise_org_delete_node_with_options(
+        self,
+        tmp_req: main_models.EnterpriseOrgDeleteNodeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.EnterpriseOrgDeleteNodeResponse:
+        tmp_req.validate()
+        request = main_models.EnterpriseOrgDeleteNodeShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.ext):
+            request.ext_shrink = Utils.array_to_string_with_specified_style(tmp_req.ext, 'Ext', 'json')
+        body = {}
+        if not DaraCore.is_null(request.app_name):
+            body['AppName'] = request.app_name
+        if not DaraCore.is_null(request.biz_name):
+            body['BizName'] = request.biz_name
+        if not DaraCore.is_null(request.ext_shrink):
+            body['Ext'] = request.ext_shrink
+        if not DaraCore.is_null(request.is_open_api):
+            body['IsOpenApi'] = request.is_open_api
+        if not DaraCore.is_null(request.node_id):
+            body['NodeId'] = request.node_id
+        if not DaraCore.is_null(request.node_type):
+            body['NodeType'] = request.node_type
+        if not DaraCore.is_null(request.oriented_ec_id):
+            body['OrientedEcId'] = request.oriented_ec_id
+        if not DaraCore.is_null(request.oriented_le_id):
+            body['OrientedLeId'] = request.oriented_le_id
+        if not DaraCore.is_null(request.oriented_nb_id):
+            body['OrientedNbId'] = request.oriented_nb_id
+        if not DaraCore.is_null(request.show_complete_info):
+            body['ShowCompleteInfo'] = request.show_complete_info
+        if not DaraCore.is_null(request.tree_id):
+            body['TreeId'] = request.tree_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'EnterpriseOrgDeleteNode',
+            version = '2024-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EnterpriseOrgDeleteNodeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enterprise_org_delete_node_with_options_async(
+        self,
+        tmp_req: main_models.EnterpriseOrgDeleteNodeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.EnterpriseOrgDeleteNodeResponse:
+        tmp_req.validate()
+        request = main_models.EnterpriseOrgDeleteNodeShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.ext):
+            request.ext_shrink = Utils.array_to_string_with_specified_style(tmp_req.ext, 'Ext', 'json')
+        body = {}
+        if not DaraCore.is_null(request.app_name):
+            body['AppName'] = request.app_name
+        if not DaraCore.is_null(request.biz_name):
+            body['BizName'] = request.biz_name
+        if not DaraCore.is_null(request.ext_shrink):
+            body['Ext'] = request.ext_shrink
+        if not DaraCore.is_null(request.is_open_api):
+            body['IsOpenApi'] = request.is_open_api
+        if not DaraCore.is_null(request.node_id):
+            body['NodeId'] = request.node_id
+        if not DaraCore.is_null(request.node_type):
+            body['NodeType'] = request.node_type
+        if not DaraCore.is_null(request.oriented_ec_id):
+            body['OrientedEcId'] = request.oriented_ec_id
+        if not DaraCore.is_null(request.oriented_le_id):
+            body['OrientedLeId'] = request.oriented_le_id
+        if not DaraCore.is_null(request.oriented_nb_id):
+            body['OrientedNbId'] = request.oriented_nb_id
+        if not DaraCore.is_null(request.show_complete_info):
+            body['ShowCompleteInfo'] = request.show_complete_info
+        if not DaraCore.is_null(request.tree_id):
+            body['TreeId'] = request.tree_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'EnterpriseOrgDeleteNode',
+            version = '2024-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EnterpriseOrgDeleteNodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enterprise_org_delete_node(
+        self,
+        request: main_models.EnterpriseOrgDeleteNodeRequest,
+    ) -> main_models.EnterpriseOrgDeleteNodeResponse:
+        runtime = RuntimeOptions()
+        return self.enterprise_org_delete_node_with_options(request, runtime)
+
+    async def enterprise_org_delete_node_async(
+        self,
+        request: main_models.EnterpriseOrgDeleteNodeRequest,
+    ) -> main_models.EnterpriseOrgDeleteNodeResponse:
+        runtime = RuntimeOptions()
+        return await self.enterprise_org_delete_node_with_options_async(request, runtime)
+
     def enterprise_org_query_load_tree_with_options(
         self,
         request: main_models.EnterpriseOrgQueryLoadTreeRequest,
@@ -2557,6 +2809,128 @@ class Client(OpenApiClient):
     ) -> main_models.EnterpriseOrgQueryLoadTreeResponse:
         runtime = RuntimeOptions()
         return await self.enterprise_org_query_load_tree_with_options_async(request, runtime)
+
+    def enterprise_org_rename_node_with_options(
+        self,
+        tmp_req: main_models.EnterpriseOrgRenameNodeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.EnterpriseOrgRenameNodeResponse:
+        tmp_req.validate()
+        request = main_models.EnterpriseOrgRenameNodeShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.ext):
+            request.ext_shrink = Utils.array_to_string_with_specified_style(tmp_req.ext, 'Ext', 'json')
+        body = {}
+        if not DaraCore.is_null(request.app_name):
+            body['AppName'] = request.app_name
+        if not DaraCore.is_null(request.biz_name):
+            body['BizName'] = request.biz_name
+        if not DaraCore.is_null(request.ext_shrink):
+            body['Ext'] = request.ext_shrink
+        if not DaraCore.is_null(request.is_open_api):
+            body['IsOpenApi'] = request.is_open_api
+        if not DaraCore.is_null(request.node_id):
+            body['NodeId'] = request.node_id
+        if not DaraCore.is_null(request.node_name):
+            body['NodeName'] = request.node_name
+        if not DaraCore.is_null(request.node_type):
+            body['NodeType'] = request.node_type
+        if not DaraCore.is_null(request.oriented_ec_id):
+            body['OrientedEcId'] = request.oriented_ec_id
+        if not DaraCore.is_null(request.oriented_le_id):
+            body['OrientedLeId'] = request.oriented_le_id
+        if not DaraCore.is_null(request.oriented_nb_id):
+            body['OrientedNbId'] = request.oriented_nb_id
+        if not DaraCore.is_null(request.show_complete_info):
+            body['ShowCompleteInfo'] = request.show_complete_info
+        if not DaraCore.is_null(request.tree_id):
+            body['TreeId'] = request.tree_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'EnterpriseOrgRenameNode',
+            version = '2024-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EnterpriseOrgRenameNodeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enterprise_org_rename_node_with_options_async(
+        self,
+        tmp_req: main_models.EnterpriseOrgRenameNodeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.EnterpriseOrgRenameNodeResponse:
+        tmp_req.validate()
+        request = main_models.EnterpriseOrgRenameNodeShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.ext):
+            request.ext_shrink = Utils.array_to_string_with_specified_style(tmp_req.ext, 'Ext', 'json')
+        body = {}
+        if not DaraCore.is_null(request.app_name):
+            body['AppName'] = request.app_name
+        if not DaraCore.is_null(request.biz_name):
+            body['BizName'] = request.biz_name
+        if not DaraCore.is_null(request.ext_shrink):
+            body['Ext'] = request.ext_shrink
+        if not DaraCore.is_null(request.is_open_api):
+            body['IsOpenApi'] = request.is_open_api
+        if not DaraCore.is_null(request.node_id):
+            body['NodeId'] = request.node_id
+        if not DaraCore.is_null(request.node_name):
+            body['NodeName'] = request.node_name
+        if not DaraCore.is_null(request.node_type):
+            body['NodeType'] = request.node_type
+        if not DaraCore.is_null(request.oriented_ec_id):
+            body['OrientedEcId'] = request.oriented_ec_id
+        if not DaraCore.is_null(request.oriented_le_id):
+            body['OrientedLeId'] = request.oriented_le_id
+        if not DaraCore.is_null(request.oriented_nb_id):
+            body['OrientedNbId'] = request.oriented_nb_id
+        if not DaraCore.is_null(request.show_complete_info):
+            body['ShowCompleteInfo'] = request.show_complete_info
+        if not DaraCore.is_null(request.tree_id):
+            body['TreeId'] = request.tree_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'EnterpriseOrgRenameNode',
+            version = '2024-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EnterpriseOrgRenameNodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enterprise_org_rename_node(
+        self,
+        request: main_models.EnterpriseOrgRenameNodeRequest,
+    ) -> main_models.EnterpriseOrgRenameNodeResponse:
+        runtime = RuntimeOptions()
+        return self.enterprise_org_rename_node_with_options(request, runtime)
+
+    async def enterprise_org_rename_node_async(
+        self,
+        request: main_models.EnterpriseOrgRenameNodeRequest,
+    ) -> main_models.EnterpriseOrgRenameNodeResponse:
+        runtime = RuntimeOptions()
+        return await self.enterprise_org_rename_node_with_options_async(request, runtime)
 
     def enterprise_register_account_with_options(
         self,

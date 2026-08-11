@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class EnterpriseContactDeleteResponseBody(DaraModel):
+class EnterpriseOrgDeleteNodeResponseBody(DaraModel):
     def __init__(
         self,
         code: str = None,
@@ -13,17 +13,10 @@ class EnterpriseContactDeleteResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code.
         self.code = code
-        # The processing result.
         self.data = data
-        # The message.
         self.message = message
-        # The request ID.
         self.request_id = request_id
-        # Indicates whether the operation was successful. Valid values:
-        # - true: Successful.
-        # - false: Failed.
         self.success = success
 
     def validate(self):

@@ -18,15 +18,25 @@ class AccountContactQueryPageListRequest(DaraModel):
         shared_contact: bool = None,
         show_complete_info: bool = None,
     ):
+        # The application name.
         self.app_name = app_name
+        # The entity ID of the cross-enterprise management object.
         self.oriented_ec_id = oriented_ec_id
+        # The ID of the enterprise currently switched to.
         self.oriented_le_id = oriented_le_id
+        # The entity ID of the cross-enterprise management object.
         self.oriented_nb_id = oriented_nb_id
+        # The page number. Default value: 1.
         self.page_no = page_no
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
+        # Specifies whether to query only private contacts of the account. Default value: true.
         self.private_contact = private_contact
+        # The name, email address, or mobile number used to filter contacts.
         self.query = query
+        # Specifies whether to query only shared contacts. Default value: false.
         self.shared_contact = shared_contact
+        # Specifies whether to display complete information.
         self.show_complete_info = show_complete_info
 
     def validate(self):

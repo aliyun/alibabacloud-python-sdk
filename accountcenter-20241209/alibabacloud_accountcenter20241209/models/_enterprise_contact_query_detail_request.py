@@ -13,10 +13,15 @@ class EnterpriseContactQueryDetailRequest(DaraModel):
         oriented_le_id: str = None,
         oriented_nb_id: str = None,
     ):
+        # The application name.
         self.app_name = app_name
+        # The contact ID.
         self.contact_id = contact_id
+        # The entity ID of the cross-enterprise management object.
         self.oriented_ec_id = oriented_ec_id
+        # The enterprise currently switched to.
         self.oriented_le_id = oriented_le_id
+        # The marketplace ID of the cross-enterprise management object.
         self.oriented_nb_id = oriented_nb_id
 
     def validate(self):

@@ -20,14 +20,25 @@ class AccountContactQueryPageListResponseBody(DaraModel):
         total_count: int = None,
         total_page: int = None,
     ):
+        # The status code.
         self.code = code
+        # The operation result.
         self.data = data
+        # The log content of the standard output during function execution.
         self.message = message
+        # The current page number.
         self.page_no = page_no
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the call was successful. Valid values:
+        # - true: The call was successful.
+        # - false: The call failed.
         self.success = success
+        # The total number of entries.
         self.total_count = total_count
+        # The total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -123,19 +134,31 @@ class AccountContactQueryPageListResponseBodyData(DaraModel):
         update_date: int = None,
         update_user: str = None,
     ):
+        # The email address of the contact.
         self.contact_email = contact_email
+        # The contact ID.
         self.contact_id = contact_id
+        # The mobile number of the contact.
         self.contact_mobile = contact_mobile
+        # The contact name.
         self.contact_name = contact_name
+        # The position of the contact.
         self.contact_position = contact_position
+        # The customer ID, compatible with the legacy model.
         self.customer_id = customer_id
+        # Indicates whether the email address is verified.
         self.email_confirmed = email_confirmed
+        # The entity ID.
         self.entity_id = entity_id
         # leId/customerId
         self.entity_type = entity_type
+        # Indicates whether the mobile number is verified.
         self.mobile_confirmed = mobile_confirmed
+        # Indicates whether the contact is a shared contact.
         self.shared_contact = shared_contact
+        # The time when the contact was last modified.
         self.update_date = update_date
+        # The user who last modified the contact.
         self.update_user = update_user
 
     def validate(self):

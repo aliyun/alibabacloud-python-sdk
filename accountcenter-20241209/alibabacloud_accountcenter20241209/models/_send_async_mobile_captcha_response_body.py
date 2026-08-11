@@ -13,10 +13,15 @@ class SendAsyncMobileCaptchaResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The operation result.
         self.data = data
+        # The message.
         self.message = message
+        # The unique identifier of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

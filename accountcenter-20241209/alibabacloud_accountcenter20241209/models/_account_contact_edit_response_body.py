@@ -16,10 +16,15 @@ class AccountContactEditResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code
         self.code = code
+        # Data result of the current category statistics
         self.data = data
+        # Error message.
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Indicates whether the operation is successful. Valid values: true: succeeded. false: failed.
         self.success = success
 
     def validate(self):
@@ -75,8 +80,11 @@ class AccountContactEditResponseBodyData(DaraModel):
         error_list: List[main_models.AccountContactEditResponseBodyDataErrorList] = None,
         result: bool = None,
     ):
+        # Contact ID
         self.contact_id = contact_id
+        # Error codes.
         self.error_list = error_list
+        # Whether successful
         self.result = result
 
     def validate(self):
@@ -126,8 +134,11 @@ class AccountContactEditResponseBodyDataErrorList(DaraModel):
         error_desc: str = None,
         item: str = None,
     ):
+        # Error code
         self.error_code = error_code
+        # Cause of the diagnostic issue.
         self.error_desc = error_desc
+        # Exception field
         self.item = item
 
     def validate(self):

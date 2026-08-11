@@ -74,9 +74,21 @@ from ._enterprise_contact_query_detail_response import EnterpriseContactQueryDet
 from ._enterprise_contact_query_page_list_request import EnterpriseContactQueryPageListRequest
 from ._enterprise_contact_query_page_list_response_body import EnterpriseContactQueryPageListResponseBody
 from ._enterprise_contact_query_page_list_response import EnterpriseContactQueryPageListResponse
+from ._enterprise_org_create_node_request import EnterpriseOrgCreateNodeRequest
+from ._enterprise_org_create_node_shrink_request import EnterpriseOrgCreateNodeShrinkRequest
+from ._enterprise_org_create_node_response_body import EnterpriseOrgCreateNodeResponseBody
+from ._enterprise_org_create_node_response import EnterpriseOrgCreateNodeResponse
+from ._enterprise_org_delete_node_request import EnterpriseOrgDeleteNodeRequest
+from ._enterprise_org_delete_node_shrink_request import EnterpriseOrgDeleteNodeShrinkRequest
+from ._enterprise_org_delete_node_response_body import EnterpriseOrgDeleteNodeResponseBody
+from ._enterprise_org_delete_node_response import EnterpriseOrgDeleteNodeResponse
 from ._enterprise_org_query_load_tree_request import EnterpriseOrgQueryLoadTreeRequest
 from ._enterprise_org_query_load_tree_response_body import EnterpriseOrgQueryLoadTreeResponseBody
 from ._enterprise_org_query_load_tree_response import EnterpriseOrgQueryLoadTreeResponse
+from ._enterprise_org_rename_node_request import EnterpriseOrgRenameNodeRequest
+from ._enterprise_org_rename_node_shrink_request import EnterpriseOrgRenameNodeShrinkRequest
+from ._enterprise_org_rename_node_response_body import EnterpriseOrgRenameNodeResponseBody
+from ._enterprise_org_rename_node_response import EnterpriseOrgRenameNodeResponse
 from ._enterprise_register_account_request import EnterpriseRegisterAccountRequest
 from ._enterprise_register_account_response_body import EnterpriseRegisterAccountResponseBody
 from ._enterprise_register_account_response import EnterpriseRegisterAccountResponse
@@ -133,6 +145,7 @@ from ._enterprise_contact_edit_response_body import EnterpriseContactEditRespons
 from ._enterprise_contact_edit_response_body import EnterpriseContactEditResponseBodyData
 from ._enterprise_contact_query_detail_response_body import EnterpriseContactQueryDetailResponseBodyData
 from ._enterprise_contact_query_page_list_response_body import EnterpriseContactQueryPageListResponseBodyData
+from ._enterprise_org_create_node_response_body import EnterpriseOrgCreateNodeResponseBodyData
 from ._enterprise_register_account_response_body import EnterpriseRegisterAccountResponseBodyAccountInfo
 from ._enterprise_role_query_account_for_role_grant_by_page_response_body import EnterpriseRoleQueryAccountForRoleGrantByPageResponseBodyAccounts
 from ._enterprise_role_query_biz_role_by_page_response_body import EnterpriseRoleQueryBizRoleByPageResponseBodyBizRoles
@@ -227,9 +240,21 @@ __all__ = [
     EnterpriseContactQueryPageListRequest,
     EnterpriseContactQueryPageListResponseBody,
     EnterpriseContactQueryPageListResponse,
+    EnterpriseOrgCreateNodeRequest,
+    EnterpriseOrgCreateNodeShrinkRequest,
+    EnterpriseOrgCreateNodeResponseBody,
+    EnterpriseOrgCreateNodeResponse,
+    EnterpriseOrgDeleteNodeRequest,
+    EnterpriseOrgDeleteNodeShrinkRequest,
+    EnterpriseOrgDeleteNodeResponseBody,
+    EnterpriseOrgDeleteNodeResponse,
     EnterpriseOrgQueryLoadTreeRequest,
     EnterpriseOrgQueryLoadTreeResponseBody,
     EnterpriseOrgQueryLoadTreeResponse,
+    EnterpriseOrgRenameNodeRequest,
+    EnterpriseOrgRenameNodeShrinkRequest,
+    EnterpriseOrgRenameNodeResponseBody,
+    EnterpriseOrgRenameNodeResponse,
     EnterpriseRegisterAccountRequest,
     EnterpriseRegisterAccountResponseBody,
     EnterpriseRegisterAccountResponse,
@@ -286,6 +311,7 @@ __all__ = [
     EnterpriseContactEditResponseBodyData,
     EnterpriseContactQueryDetailResponseBodyData,
     EnterpriseContactQueryPageListResponseBodyData,
+    EnterpriseOrgCreateNodeResponseBodyData,
     EnterpriseRegisterAccountResponseBodyAccountInfo,
     EnterpriseRoleQueryAccountForRoleGrantByPageResponseBodyAccounts,
     EnterpriseRoleQueryBizRoleByPageResponseBodyBizRoles,

@@ -11,8 +11,11 @@ class SendAsyncEmailCaptchaRequest(DaraModel):
         contact_info: str = None,
         contactor_id: str = None,
     ):
+        # The application name.
         self.app_name = app_name
+        # The contact information.
         self.contact_info = contact_info
+        # The contact ID.
         self.contactor_id = contactor_id
 
     def validate(self):

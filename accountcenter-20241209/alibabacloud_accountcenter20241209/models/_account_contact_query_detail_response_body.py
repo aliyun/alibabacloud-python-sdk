@@ -14,10 +14,17 @@ class AccountContactQueryDetailResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The operation result.
         self.data = data
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the call was successful. Valid values:
+        # - true: The call was successful.
+        # - false: The call failed.
         self.success = success
 
     def validate(self):
@@ -85,21 +92,35 @@ class AccountContactQueryDetailResponseBodyData(DaraModel):
         update_date: int = None,
         update_user: str = None,
     ):
+        # The email address of the contact.
         self.contact_email = contact_email
+        # The contact ID.
         self.contact_id = contact_id
+        # The mobile phone number of the contact.
         self.contact_mobile = contact_mobile
+        # The contact name.
         self.contact_name = contact_name
+        # The position of the contact.
         self.contact_position = contact_position
+        # The customer ID. This parameter is compatible with the legacy model.
         self.customer_id = customer_id
+        # Indicates whether the email address is verified.
         self.email_confirmed = email_confirmed
+        # The entity ID.
         self.entity_id = entity_id
         # leId/customerId
         self.entity_type = entity_type
+        # Indicates whether the contact has subscriptions when querying contact details.
         self.has_subscription = has_subscription
+        # Indicates whether the mobile phone number is verified.
         self.mobile_confirmed = mobile_confirmed
+        # Indicates whether the contact is a shared contact.
         self.shared_contact = shared_contact
+        # The owner of the contact.
         self.uid = uid
+        # The time when the contact was last modified.
         self.update_date = update_date
+        # The user who last modified the contact.
         self.update_user = update_user
 
     def validate(self):
