@@ -1,6 +1,9 @@
 2026-08-11 Version: 1.9.1
 - Generated python 2024-06-24 for SchedulerX3.
 
+2026-08-11 Version: 1.9.1
+- Generated python 2024-06-24 for SchedulerX3.
+
 2026-07-22 Version: 1.9.0
 - Support API ImportAgentJobs.
 - Update API DeleteJobs: add request parameters AppGroupId.
