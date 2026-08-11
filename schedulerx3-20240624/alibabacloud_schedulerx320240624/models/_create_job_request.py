@@ -21,6 +21,7 @@ class CreateJobRequest(DaraModel):
         executor_block_strategy: int = None,
         job_handler: str = None,
         job_type: str = None,
+        label: str = None,
         max_attempt: int = None,
         max_concurrency: int = None,
         name: str = None,
@@ -43,7 +44,7 @@ class CreateJobRequest(DaraModel):
         # 
         # This parameter is required.
         self.app_name = app_name
-        # The retry interval. Unit: seconds. Default value: 30.
+        # The retry interval upon failure. Unit: seconds. Default value: 30.
         self.attempt_interval = attempt_interval
         # The custom calendar. This parameter is optional for the cron time type.
         self.calendar = calendar
@@ -70,6 +71,8 @@ class CreateJobRequest(DaraModel):
         # 
         # This parameter is required.
         self.job_type = job_type
+        # The node label information.
+        self.label = label
         # The maximum number of retry attempts upon failure. Set this parameter based on your business requirements.
         self.max_attempt = max_attempt
         # The maximum number of concurrent instances.
@@ -106,7 +109,7 @@ class CreateJobRequest(DaraModel):
         self.start_time = start_time
         # The start time type.
         self.start_time_type = start_time_type
-        # The node status. Default value: 1 (enabled). Valid values:
+        # The node status. Default value: enabled. Valid values:
         # - 0: disabled
         # - 1: enabled
         self.status = status
@@ -130,7 +133,7 @@ class CreateJobRequest(DaraModel):
         self.timezone = timezone
         # The node weight.
         self.weight = weight
-        # The configuration for K8s node types. Set this parameter if the node type is K8s.
+        # The configuration for K8s node types. This parameter is required for K8s node types.
         # Job node: {"resource":"job"}
         # Shell node: {"image":"busybox","resource":"shell"}
         self.xattrs = xattrs
@@ -182,6 +185,9 @@ class CreateJobRequest(DaraModel):
 
         if self.job_type is not None:
             result['JobType'] = self.job_type
+
+        if self.label is not None:
+            result['Label'] = self.label
 
         if self.max_attempt is not None:
             result['MaxAttempt'] = self.max_attempt
@@ -274,6 +280,9 @@ class CreateJobRequest(DaraModel):
         if m.get('JobType') is not None:
             self.job_type = m.get('JobType')
 
+        if m.get('Label') is not None:
+            self.label = m.get('Label')
+
         if m.get('MaxAttempt') is not None:
             self.max_attempt = m.get('MaxAttempt')
 
@@ -337,7 +346,7 @@ class CreateJobRequestNoticeContacts(DaraModel):
         contact_type: int = None,
         name: str = None,
     ):
-        # The object type of the notification recipient. Valid values:
+        # The Notification Recipient type. Valid values:
         # 
         # - 1: alert contact
         # 
@@ -386,7 +395,9 @@ class CreateJobRequestNoticeConfig(DaraModel):
         timeout_enable: bool = None,
         timeout_kill_enable: bool = None,
     ):
+        # The early completion threshold. Unit: seconds.
         self.end_early = end_early
+        # Specifies whether to enable the early completion alert.
         self.end_early_enable = end_early_enable
         # Specifies whether to enable the failure alert. Valid values:
         # 
@@ -420,7 +431,7 @@ class CreateJobRequestNoticeConfig(DaraModel):
         # 
         # - **false**: Disabled.
         self.timeout_enable = timeout_enable
-        # Specifies whether to enable the timeout termination feature. Valid values:
+        # Specifies whether to enable the timeout termination. Valid values:
         # 
         # - **true**: Enabled.
         # - **false**: Disabled.

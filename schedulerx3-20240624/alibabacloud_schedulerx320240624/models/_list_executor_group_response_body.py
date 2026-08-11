@@ -154,6 +154,7 @@ class ListExecutorGroupResponseBodyDataRecords(DaraModel):
         cms_workspace_id: str = None,
         current_jobs: int = None,
         description: str = None,
+        enable_jobs: int = None,
         integration_type: str = None,
         max_jobs: int = None,
         name: str = None,
@@ -172,6 +173,7 @@ class ListExecutorGroupResponseBodyDataRecords(DaraModel):
         self.cms_workspace_id = cms_workspace_id
         self.current_jobs = current_jobs
         self.description = description
+        self.enable_jobs = enable_jobs
         self.integration_type = integration_type
         self.max_jobs = max_jobs
         self.name = name
@@ -216,6 +218,9 @@ class ListExecutorGroupResponseBodyDataRecords(DaraModel):
 
         if self.description is not None:
             result['Description'] = self.description
+
+        if self.enable_jobs is not None:
+            result['EnableJobs'] = self.enable_jobs
 
         if self.integration_type is not None:
             result['IntegrationType'] = self.integration_type
@@ -274,6 +279,9 @@ class ListExecutorGroupResponseBodyDataRecords(DaraModel):
 
         if m.get('Description') is not None:
             self.description = m.get('Description')
+
+        if m.get('EnableJobs') is not None:
+            self.enable_jobs = m.get('EnableJobs')
 
         if m.get('IntegrationType') is not None:
             self.integration_type = m.get('IntegrationType')

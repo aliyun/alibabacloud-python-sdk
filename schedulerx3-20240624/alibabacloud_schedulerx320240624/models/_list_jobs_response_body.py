@@ -85,7 +85,7 @@ class ListJobsResponseBodyData(DaraModel):
     ):
         # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The page size.
         self.page_size = page_size
         # -
         self.records = records
@@ -156,6 +156,7 @@ class ListJobsResponseBodyDataRecords(DaraModel):
         job_handler: str = None,
         job_id: int = None,
         job_type: str = None,
+        label: str = None,
         last_execute_end_time: str = None,
         last_execute_status: int = None,
         max_attempt: int = None,
@@ -179,10 +180,11 @@ class ListJobsResponseBodyDataRecords(DaraModel):
         workflow_id: int = None,
         xattrs: str = None,
     ):
+        # The application ID.
         self.app_group_id = app_group_id
         # The application name.
         self.app_name = app_name
-        # The retry interval upon a fault. Unit: seconds.
+        # The retry interval on error. Unit: seconds.
         self.attempt_interval = attempt_interval
         # The calendar.
         self.calendar = calendar
@@ -193,10 +195,10 @@ class ListJobsResponseBodyDataRecords(DaraModel):
         # The creator.
         self.creator = creator
         # The current execution status. Valid values:
-        # - 0: not started
-        # - 1: running
-        # - 2: queued
-        # - 3: waiting
+        # - 0: Not started.
+        # - 1: Running.
+        # - 2: Queued.
+        # - 3: Waiting.
         self.current_execute_status = current_execute_status
         # The data offset.
         self.data_offset = data_offset
@@ -204,32 +206,34 @@ class ListJobsResponseBodyDataRecords(DaraModel):
         self.dependent_strategy = dependent_strategy
         # The job description.
         self.description = description
-        # The client-side blocking strategy. Valid values:
-        # - 1: serial execution on a single machine
-        # - 2: ignore subsequent triggers
-        # - 3: override previous triggers
+        # The client blocking strategy. Valid values:
+        # - 1: Serial execution on a single machine.
+        # - 2: Ignore subsequent schedules.
+        # - 3: Override previous schedules.
         self.executor_block_strategy = executor_block_strategy
-        # The jobhandler name.
+        # The `jobhandler` name.
         self.job_handler = job_handler
         # The job ID.
         self.job_id = job_id
         # The job type.
         self.job_type = job_type
+        # The job label information.
+        self.label = label
         # The end time of the last execution.
         self.last_execute_end_time = last_execute_end_time
         # The result of the last execution. Valid values:
-        # - 4: succeeded
-        # - 5: failed
+        # - 4: Succeeded.
+        # - 5: Failed.
         self.last_execute_status = last_execute_status
-        # The maximum number of retry attempts upon failure. Set this value based on your business requirements.
+        # The maximum number of retry attempts on error. Set this based on your business requirements.
         self.max_attempt = max_attempt
-        # The maximum number of concurrent instances.
+        # The maximum concurrency threshold.
         self.max_concurrency = max_concurrency
         # The job name.
         self.name = name
         # The node type.
         self.node_type = node_type
-        # The notice configuration.
+        # The `Notice` configuration.
         self.notice_config = notice_config
         # The notification contacts.
         self.notice_contacts = notice_contacts
@@ -238,32 +242,32 @@ class ListJobsResponseBodyDataRecords(DaraModel):
         # The job execution priority.
         self.priority = priority
         # The routing strategy. Valid values:
-        # - 1: round-robin
-        # - 2: random
-        # - 3: first
-        # - 4: last
-        # - 5: least frequently used
-        # - 6: least recently used
-        # - 7: consistent hashing
-        # - 8: shard broadcast
+        # - 1: polling.
+        # - 2: random.
+        # - 3: first.
+        # - 4: last.
+        # - 5: least frequently used.
+        # - 6: least recently used.
+        # - 7: consistent hashing.
+        # - 8: shard broadcast.
         self.route_strategy = route_strategy
         # The script content.
         self.script = script
         # The start time type.
         self.start_time_type = start_time_type
         # The job status. Valid values:
-        # - 0: disabled
-        # - 1: enabled
+        # - 0: DISABLE (disabled).
+        # - 1: ENABLE (enabled).
         self.status = status
         # The time expression.
         self.time_expression = time_expression
         # The time type. Valid values:
         # 
-        # - -1: none
-        # - 1: cron
-        # - 3: fix_rate
-        # - 5: one_time
-        # - 100: api
+        # - -1: none.
+        # - 1: cron.
+        # - 3: fix_rate.
+        # - 5: one_time.
+        # - 100: api.
         self.time_type = time_type
         # The time zone.
         self.time_zone = time_zone
@@ -276,7 +280,7 @@ class ListJobsResponseBodyDataRecords(DaraModel):
         # The workflow ID.
         self.workflow_id = workflow_id
         # The extended attributes.
-        # > Not supported.
+        # > Not supported currently.
         self.xattrs = xattrs
 
     def validate(self):
@@ -331,6 +335,9 @@ class ListJobsResponseBodyDataRecords(DaraModel):
 
         if self.job_type is not None:
             result['JobType'] = self.job_type
+
+        if self.label is not None:
+            result['Label'] = self.label
 
         if self.last_execute_end_time is not None:
             result['LastExecuteEndTime'] = self.last_execute_end_time
@@ -446,6 +453,9 @@ class ListJobsResponseBodyDataRecords(DaraModel):
 
         if m.get('JobType') is not None:
             self.job_type = m.get('JobType')
+
+        if m.get('Label') is not None:
+            self.label = m.get('Label')
 
         if m.get('LastExecuteEndTime') is not None:
             self.last_execute_end_time = m.get('LastExecuteEndTime')

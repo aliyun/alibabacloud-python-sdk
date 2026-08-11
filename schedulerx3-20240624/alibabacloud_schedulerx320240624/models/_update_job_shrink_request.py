@@ -18,6 +18,7 @@ class UpdateJobShrinkRequest(DaraModel):
         executor_block_strategy: int = None,
         job_handler: str = None,
         job_id: int = None,
+        label: str = None,
         max_attempt: int = None,
         max_concurrency: int = None,
         name: str = None,
@@ -35,6 +36,7 @@ class UpdateJobShrinkRequest(DaraModel):
         weight: int = None,
         xattrs: str = None,
     ):
+        # The application ID.
         self.app_group_id = app_group_id
         # The application name.
         # 
@@ -59,15 +61,17 @@ class UpdateJobShrinkRequest(DaraModel):
         # - 2: ignore subsequent scheduling
         # - 3: override previous scheduling
         self.executor_block_strategy = executor_block_strategy
-        # The JobHandler name.
+        # The jobhandler name.
         self.job_handler = job_handler
         # The node ID.
         # 
         # This parameter is required.
         self.job_id = job_id
+        # The node label information.
+        self.label = label
         # The maximum number of retry attempts upon node failure.
         self.max_attempt = max_attempt
-        # The maximum number of concurrent instances for the node.
+        # The maximum concurrency of the node.
         # >The maximum number of instances that can run simultaneously for the same node. A value of 1 indicates that repeated execution is not allowed. If the concurrency limit is exceeded, the current scheduling is skipped.
         self.max_concurrency = max_concurrency
         # The node name.
@@ -78,7 +82,7 @@ class UpdateJobShrinkRequest(DaraModel):
         self.notice_contacts_shrink = notice_contacts_shrink
         # The node parameters.
         self.parameters = parameters
-        # The node execution priority. Valid values:
+        # The execution priority of the node. Valid values:
         # 
         # - 1: low
         # - 5: medium
@@ -96,7 +100,7 @@ class UpdateJobShrinkRequest(DaraModel):
         # - 7: consistent hashing
         # - 8: shard broadcast
         self.route_strategy = route_strategy
-        # The script content for non-BEAN nodes. Use this field to configure the script.
+        # The script configured for non-BEAN nodes.
         self.script = script
         # The scheduling start time.
         self.start_time = start_time
@@ -105,10 +109,10 @@ class UpdateJobShrinkRequest(DaraModel):
         # The time expression. Set the time expression based on the selected time type.
         # 
         # - none: No value is required.
-        # - cron: Specify a standard cron expression. Online verification is supported.
+        # - cron: Enter a standard cron expression. Online verification is supported.
         # - api: No value is required.
-        # - fixed_rate: Specify a fixed frequency value in seconds. For example, 30 indicates that the node is triggered every 30 seconds.
-        # - one_time: Specify a scheduling time in the format of yyyy-MM-dd HH:mm:ss or a timestamp in milliseconds. For example, "2022-10-10 10:10:00".
+        # - fixed_rate: Enter a fixed frequency value in seconds. For example, 30 indicates that the node is triggered every 30 seconds.
+        # - one_time: Enter a scheduling time in the format of yyyy-MM-dd HH:mm:ss or a timestamp in milliseconds. For example, "2022-10-10 10:10:00".
         self.time_expression = time_expression
         # The time type. Valid values:
         # 
@@ -119,10 +123,11 @@ class UpdateJobShrinkRequest(DaraModel):
         # - 100: api
         self.time_type = time_type
         # The time zone.
-        # > The default value is the time zone of the SchedulerX server.
+        # > Default value: the time zone of the SchedulerX server.
         self.timezone = timezone
         # The node weight.
         self.weight = weight
+        # The extended properties of the node.
         self.xattrs = xattrs
 
     def validate(self):
@@ -165,6 +170,9 @@ class UpdateJobShrinkRequest(DaraModel):
 
         if self.job_id is not None:
             result['JobId'] = self.job_id
+
+        if self.label is not None:
+            result['Label'] = self.label
 
         if self.max_attempt is not None:
             result['MaxAttempt'] = self.max_attempt
@@ -250,6 +258,9 @@ class UpdateJobShrinkRequest(DaraModel):
 
         if m.get('JobId') is not None:
             self.job_id = m.get('JobId')
+
+        if m.get('Label') is not None:
+            self.label = m.get('Label')
 
         if m.get('MaxAttempt') is not None:
             self.max_attempt = m.get('MaxAttempt')

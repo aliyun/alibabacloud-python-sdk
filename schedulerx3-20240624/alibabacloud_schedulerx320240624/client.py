@@ -24,18 +24,18 @@ class Client(OpenApiClient):
         super().__init__(config)
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
-            'eu-central-1': 'schedulerx3.eu-central-1.aliyuncs.com',
-            'cn-zhangjiakou': 'schedulerx3.cn-zhangjiakou.aliyuncs.com',
             'cn-shenzhen': 'schedulerx3.cn-shenzhen.aliyuncs.com',
-            'cn-shanghai-finance-1': 'schedulerx3.cn-shanghai-finance-1.aliyuncs.com',
-            'cn-shanghai': 'schedulerx3.cn-shanghai.aliyuncs.com',
-            'cn-hongkong': 'schedulerx3.cn-hongkong.aliyuncs.com',
-            'cn-hangzhou': 'schedulerx3.cn-hangzhou.aliyuncs.com',
-            'cn-guangzhou': 'schedulerx3.cn-guangzhou.aliyuncs.com',
-            'cn-chengdu': 'schedulerx3.cn-chengdu.aliyuncs.com',
             'cn-beijing': 'schedulerx3.cn-beijing.aliyuncs.com',
+            'ap-northeast-1': 'schedulerx3.ap-northeast-1.aliyuncs.com',
+            'cn-chengdu': 'schedulerx3.cn-chengdu.aliyuncs.com',
+            'cn-shanghai': 'schedulerx3.cn-shanghai.aliyuncs.com',
+            'cn-guangzhou': 'schedulerx3.cn-guangzhou.aliyuncs.com',
+            'cn-hongkong': 'schedulerx3.cn-hongkong.aliyuncs.com',
             'ap-southeast-1': 'schedulerx3.ap-southeast-1.aliyuncs.com',
-            'ap-northeast-1': 'schedulerx3.ap-northeast-1.aliyuncs.com'
+            'cn-zhangjiakou': 'schedulerx3.cn-zhangjiakou.aliyuncs.com',
+            'cn-hangzhou': 'schedulerx3.cn-hangzhou.aliyuncs.com',
+            'eu-central-1': 'schedulerx3.eu-central-1.aliyuncs.com',
+            'cn-shanghai-finance-1': 'schedulerx3.cn-shanghai-finance-1.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('schedulerx3', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -767,6 +767,8 @@ class Client(OpenApiClient):
             body['JobHandler'] = request.job_handler
         if not DaraCore.is_null(request.job_type):
             body['JobType'] = request.job_type
+        if not DaraCore.is_null(request.label):
+            body['Label'] = request.label
         if not DaraCore.is_null(request.max_attempt):
             body['MaxAttempt'] = request.max_attempt
         if not DaraCore.is_null(request.max_concurrency):
@@ -857,6 +859,8 @@ class Client(OpenApiClient):
             body['JobHandler'] = request.job_handler
         if not DaraCore.is_null(request.job_type):
             body['JobType'] = request.job_type
+        if not DaraCore.is_null(request.label):
+            body['Label'] = request.label
         if not DaraCore.is_null(request.max_attempt):
             body['MaxAttempt'] = request.max_attempt
         if not DaraCore.is_null(request.max_concurrency):
@@ -4419,6 +4423,8 @@ class Client(OpenApiClient):
             query['JobId'] = request.job_id
         if not DaraCore.is_null(request.job_name):
             query['JobName'] = request.job_name
+        if not DaraCore.is_null(request.label):
+            query['Label'] = request.label
         if not DaraCore.is_null(request.page_num):
             query['PageNum'] = request.page_num
         if not DaraCore.is_null(request.page_size):
@@ -4465,6 +4471,8 @@ class Client(OpenApiClient):
             query['JobId'] = request.job_id
         if not DaraCore.is_null(request.job_name):
             query['JobName'] = request.job_name
+        if not DaraCore.is_null(request.label):
+            query['Label'] = request.label
         if not DaraCore.is_null(request.page_num):
             query['PageNum'] = request.page_num
         if not DaraCore.is_null(request.page_size):
@@ -7827,6 +7835,8 @@ class Client(OpenApiClient):
             body['JobHandler'] = request.job_handler
         if not DaraCore.is_null(request.job_id):
             body['JobId'] = request.job_id
+        if not DaraCore.is_null(request.label):
+            body['Label'] = request.label
         if not DaraCore.is_null(request.max_attempt):
             body['MaxAttempt'] = request.max_attempt
         if not DaraCore.is_null(request.max_concurrency):
@@ -7913,6 +7923,8 @@ class Client(OpenApiClient):
             body['JobHandler'] = request.job_handler
         if not DaraCore.is_null(request.job_id):
             body['JobId'] = request.job_id
+        if not DaraCore.is_null(request.label):
+            body['Label'] = request.label
         if not DaraCore.is_null(request.max_attempt):
             body['MaxAttempt'] = request.max_attempt
         if not DaraCore.is_null(request.max_concurrency):

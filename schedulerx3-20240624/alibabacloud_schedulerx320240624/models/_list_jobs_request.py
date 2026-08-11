@@ -13,6 +13,7 @@ class ListJobsRequest(DaraModel):
         job_handler: str = None,
         job_id: int = None,
         job_name: str = None,
+        label: str = None,
         page_num: int = None,
         page_size: int = None,
         status: str = None,
@@ -24,19 +25,21 @@ class ListJobsRequest(DaraModel):
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # The job description.
+        # The description.
         self.description = description
-        # The jobhandler name.
+        # The `jobhandler` name.
         self.job_handler = job_handler
         # The job ID.
         self.job_id = job_id
         # The job name.
         self.job_name = job_name
+        # The job label filter condition.
+        self.label = label
         # The page number.
         self.page_num = page_num
         # The number of entries per page.
         self.page_size = page_size
-        # The job status.
+        # The status.
         self.status = status
         # The workflow ID.
         self.workflow_id = workflow_id
@@ -66,6 +69,9 @@ class ListJobsRequest(DaraModel):
 
         if self.job_name is not None:
             result['JobName'] = self.job_name
+
+        if self.label is not None:
+            result['Label'] = self.label
 
         if self.page_num is not None:
             result['PageNum'] = self.page_num
@@ -100,6 +106,9 @@ class ListJobsRequest(DaraModel):
 
         if m.get('JobName') is not None:
             self.job_name = m.get('JobName')
+
+        if m.get('Label') is not None:
+            self.label = m.get('Label')
 
         if m.get('PageNum') is not None:
             self.page_num = m.get('PageNum')

@@ -21,6 +21,7 @@ class UpdateJobRequest(DaraModel):
         executor_block_strategy: int = None,
         job_handler: str = None,
         job_id: int = None,
+        label: str = None,
         max_attempt: int = None,
         max_concurrency: int = None,
         name: str = None,
@@ -38,6 +39,7 @@ class UpdateJobRequest(DaraModel):
         weight: int = None,
         xattrs: str = None,
     ):
+        # The application ID.
         self.app_group_id = app_group_id
         # The application name.
         # 
@@ -62,15 +64,17 @@ class UpdateJobRequest(DaraModel):
         # - 2: ignore subsequent scheduling
         # - 3: override previous scheduling
         self.executor_block_strategy = executor_block_strategy
-        # The JobHandler name.
+        # The jobhandler name.
         self.job_handler = job_handler
         # The node ID.
         # 
         # This parameter is required.
         self.job_id = job_id
+        # The node label information.
+        self.label = label
         # The maximum number of retry attempts upon node failure.
         self.max_attempt = max_attempt
-        # The maximum number of concurrent instances for the node.
+        # The maximum concurrency of the node.
         # >The maximum number of instances that can run simultaneously for the same node. A value of 1 indicates that repeated execution is not allowed. If the concurrency limit is exceeded, the current scheduling is skipped.
         self.max_concurrency = max_concurrency
         # The node name.
@@ -81,7 +85,7 @@ class UpdateJobRequest(DaraModel):
         self.notice_contacts = notice_contacts
         # The node parameters.
         self.parameters = parameters
-        # The node execution priority. Valid values:
+        # The execution priority of the node. Valid values:
         # 
         # - 1: low
         # - 5: medium
@@ -99,7 +103,7 @@ class UpdateJobRequest(DaraModel):
         # - 7: consistent hashing
         # - 8: shard broadcast
         self.route_strategy = route_strategy
-        # The script content for non-BEAN nodes. Use this field to configure the script.
+        # The script configured for non-BEAN nodes.
         self.script = script
         # The scheduling start time.
         self.start_time = start_time
@@ -108,10 +112,10 @@ class UpdateJobRequest(DaraModel):
         # The time expression. Set the time expression based on the selected time type.
         # 
         # - none: No value is required.
-        # - cron: Specify a standard cron expression. Online verification is supported.
+        # - cron: Enter a standard cron expression. Online verification is supported.
         # - api: No value is required.
-        # - fixed_rate: Specify a fixed frequency value in seconds. For example, 30 indicates that the node is triggered every 30 seconds.
-        # - one_time: Specify a scheduling time in the format of yyyy-MM-dd HH:mm:ss or a timestamp in milliseconds. For example, "2022-10-10 10:10:00".
+        # - fixed_rate: Enter a fixed frequency value in seconds. For example, 30 indicates that the node is triggered every 30 seconds.
+        # - one_time: Enter a scheduling time in the format of yyyy-MM-dd HH:mm:ss or a timestamp in milliseconds. For example, "2022-10-10 10:10:00".
         self.time_expression = time_expression
         # The time type. Valid values:
         # 
@@ -122,10 +126,11 @@ class UpdateJobRequest(DaraModel):
         # - 100: api
         self.time_type = time_type
         # The time zone.
-        # > The default value is the time zone of the SchedulerX server.
+        # > Default value: the time zone of the SchedulerX server.
         self.timezone = timezone
         # The node weight.
         self.weight = weight
+        # The extended properties of the node.
         self.xattrs = xattrs
 
     def validate(self):
@@ -173,6 +178,9 @@ class UpdateJobRequest(DaraModel):
 
         if self.job_id is not None:
             result['JobId'] = self.job_id
+
+        if self.label is not None:
+            result['Label'] = self.label
 
         if self.max_attempt is not None:
             result['MaxAttempt'] = self.max_attempt
@@ -261,6 +269,9 @@ class UpdateJobRequest(DaraModel):
         if m.get('JobId') is not None:
             self.job_id = m.get('JobId')
 
+        if m.get('Label') is not None:
+            self.label = m.get('Label')
+
         if m.get('MaxAttempt') is not None:
             self.max_attempt = m.get('MaxAttempt')
 
@@ -322,7 +333,7 @@ class UpdateJobRequestNoticeContacts(DaraModel):
         name: str = None,
     ):
         # The contact type. 
-        # > Default configurations: 1.
+        # >Default configurations: 1.
         self.contact_type = contact_type
         # The contact name.
         self.name = name
@@ -367,25 +378,25 @@ class UpdateJobRequestNoticeConfig(DaraModel):
         timeout_enable: bool = None,
         timeout_kill_enable: bool = None,
     ):
-        # The early termination threshold, in seconds.
+        # The early completion threshold, in seconds.
         self.end_early = end_early
-        # Specifies whether to enable the early termination alert.
+        # Specifies whether to enable the early completion alert.
         self.end_early_enable = end_early_enable
         # Specifies whether to enable the failure alert. Valid values:
         # 
-        # - **true**: Enabled.
-        # - **false**: Disabled.
+        # - **true**: Enables the failure alert.
+        # - **false**: Disables the failure alert.
         self.fail_enable = fail_enable
         # The number of consecutive failures.
         # > An alert is sent only when the number of consecutive failures exceeds the configured value.
         self.fail_limit_times = fail_limit_times
         # Specifies whether to enable the no-available-machine alert. Valid values:
-        # - **true**: Enabled.
-        # - **false**: Disabled.
+        # - **true**: Enables the no-available-machine alert.
+        # - **false**: Disables the no-available-machine alert.
         self.miss_worker_enable = miss_worker_enable
         # The notification channel. Valid values:
-        # - sms: text message
-        # - phone: phone call
+        #  - sms: SMS
+        #  - phone: phone call
         # - mail: email
         # - webhook: webhook
         # > Separate multiple notification channels with commas.
@@ -405,8 +416,8 @@ class UpdateJobRequestNoticeConfig(DaraModel):
         self.timeout_enable = timeout_enable
         # Specifies whether to enable the timeout termination for the current trigger. Valid values:
         # 
-        # - **true**: Enabled.
-        # - **false**: Disabled.
+        # - **true**: Enables the timeout termination.
+        # - **false**: Disables the timeout termination.
         self.timeout_kill_enable = timeout_kill_enable
 
     def validate(self):
