@@ -1,3 +1,11 @@
+2026-08-11 Version: 2.1.0
+- Support API ListModelLimits.
+- Support API ListModelPermissions.
+- Support API ListModels.
+- Support API UpdateModelLimits.
+- Support API UpdateModelPermissions.
+
+
 2026-07-01 Version: 2.0.2
 - Generated python 2026-02-10 for ModelStudio.
 

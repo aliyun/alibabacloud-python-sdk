@@ -23,10 +23,12 @@ class Client(OpenApiClient):
         super().__init__(config)
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
-            'eu-central-1': 'modelstudio.eu-central-1.aliyuncs.com',
-            'cn-hongkong': 'modelstudio.cn-hongkong.aliyuncs.com',
             'cn-beijing': 'modelstudio.cn-beijing.aliyuncs.com',
-            'ap-southeast-1': 'modelstudio.ap-southeast-1.aliyuncs.com'
+            'cn-hongkong': 'modelstudio.cn-hongkong.aliyuncs.com',
+            'ap-southeast-1': 'modelstudio.ap-southeast-1.aliyuncs.com',
+            'ap-northeast-1': 'modelstudio.ap-northeast-1.aliyuncs.com',
+            'us-east-1': 'modelstudio.us-east-1.aliyuncs.com',
+            'eu-central-1': 'modelstudio.eu-central-1.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('modelstudio', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -1583,6 +1585,318 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_api_keys_with_options_async(request, headers, runtime)
 
+    def list_model_limits_with_options(
+        self,
+        request: main_models.ListModelLimitsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListModelLimitsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.model):
+            query['model'] = request.model
+        if not DaraCore.is_null(request.name):
+            query['name'] = request.name
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListModelLimits',
+            version = '2026-02-10',
+            protocol = 'HTTPS',
+            pathname = f'/modelstudio/models/limits',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListModelLimitsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_model_limits_with_options_async(
+        self,
+        request: main_models.ListModelLimitsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListModelLimitsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.model):
+            query['model'] = request.model
+        if not DaraCore.is_null(request.name):
+            query['name'] = request.name
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListModelLimits',
+            version = '2026-02-10',
+            protocol = 'HTTPS',
+            pathname = f'/modelstudio/models/limits',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListModelLimitsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_model_limits(
+        self,
+        request: main_models.ListModelLimitsRequest,
+    ) -> main_models.ListModelLimitsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_model_limits_with_options(request, headers, runtime)
+
+    async def list_model_limits_async(
+        self,
+        request: main_models.ListModelLimitsRequest,
+    ) -> main_models.ListModelLimitsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_model_limits_with_options_async(request, headers, runtime)
+
+    def list_model_permissions_with_options(
+        self,
+        request: main_models.ListModelPermissionsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListModelPermissionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.authorization_scope):
+            query['authorizationScope'] = request.authorization_scope
+        if not DaraCore.is_null(request.filter):
+            query['filter'] = request.filter
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.model_action):
+            query['modelAction'] = request.model_action
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListModelPermissions',
+            version = '2026-02-10',
+            protocol = 'HTTPS',
+            pathname = f'/modelstudio/models/permissions',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListModelPermissionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_model_permissions_with_options_async(
+        self,
+        request: main_models.ListModelPermissionsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListModelPermissionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.authorization_scope):
+            query['authorizationScope'] = request.authorization_scope
+        if not DaraCore.is_null(request.filter):
+            query['filter'] = request.filter
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.model_action):
+            query['modelAction'] = request.model_action
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListModelPermissions',
+            version = '2026-02-10',
+            protocol = 'HTTPS',
+            pathname = f'/modelstudio/models/permissions',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListModelPermissionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_model_permissions(
+        self,
+        request: main_models.ListModelPermissionsRequest,
+    ) -> main_models.ListModelPermissionsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_model_permissions_with_options(request, headers, runtime)
+
+    async def list_model_permissions_async(
+        self,
+        request: main_models.ListModelPermissionsRequest,
+    ) -> main_models.ListModelPermissionsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_model_permissions_with_options_async(request, headers, runtime)
+
+    def list_models_with_options(
+        self,
+        tmp_req: main_models.ListModelsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListModelsResponse:
+        tmp_req.validate()
+        request = main_models.ListModelsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.capabilities):
+            request.capabilities_shrink = Utils.array_to_string_with_specified_style(tmp_req.capabilities, 'capabilities', 'json')
+        if not DaraCore.is_null(tmp_req.features):
+            request.features_shrink = Utils.array_to_string_with_specified_style(tmp_req.features, 'features', 'json')
+        if not DaraCore.is_null(tmp_req.providers):
+            request.providers_shrink = Utils.array_to_string_with_specified_style(tmp_req.providers, 'providers', 'json')
+        query = {}
+        if not DaraCore.is_null(request.capabilities_shrink):
+            query['capabilities'] = request.capabilities_shrink
+        if not DaraCore.is_null(request.context_window):
+            query['contextWindow'] = request.context_window
+        if not DaraCore.is_null(request.features_shrink):
+            query['features'] = request.features_shrink
+        if not DaraCore.is_null(request.language):
+            query['language'] = request.language
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.model):
+            query['model'] = request.model
+        if not DaraCore.is_null(request.name):
+            query['name'] = request.name
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.providers_shrink):
+            query['providers'] = request.providers_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListModels',
+            version = '2026-02-10',
+            protocol = 'HTTPS',
+            pathname = f'/modelstudio/models',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListModelsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_models_with_options_async(
+        self,
+        tmp_req: main_models.ListModelsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListModelsResponse:
+        tmp_req.validate()
+        request = main_models.ListModelsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.capabilities):
+            request.capabilities_shrink = Utils.array_to_string_with_specified_style(tmp_req.capabilities, 'capabilities', 'json')
+        if not DaraCore.is_null(tmp_req.features):
+            request.features_shrink = Utils.array_to_string_with_specified_style(tmp_req.features, 'features', 'json')
+        if not DaraCore.is_null(tmp_req.providers):
+            request.providers_shrink = Utils.array_to_string_with_specified_style(tmp_req.providers, 'providers', 'json')
+        query = {}
+        if not DaraCore.is_null(request.capabilities_shrink):
+            query['capabilities'] = request.capabilities_shrink
+        if not DaraCore.is_null(request.context_window):
+            query['contextWindow'] = request.context_window
+        if not DaraCore.is_null(request.features_shrink):
+            query['features'] = request.features_shrink
+        if not DaraCore.is_null(request.language):
+            query['language'] = request.language
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.model):
+            query['model'] = request.model
+        if not DaraCore.is_null(request.name):
+            query['name'] = request.name
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.providers_shrink):
+            query['providers'] = request.providers_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListModels',
+            version = '2026-02-10',
+            protocol = 'HTTPS',
+            pathname = f'/modelstudio/models',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListModelsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_models(
+        self,
+        request: main_models.ListModelsRequest,
+    ) -> main_models.ListModelsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_models_with_options(request, headers, runtime)
+
+    async def list_models_async(
+        self,
+        request: main_models.ListModelsRequest,
+    ) -> main_models.ListModelsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_models_with_options_async(request, headers, runtime)
+
     def list_organization_members_with_options(
         self,
         request: main_models.ListOrganizationMembersRequest,
@@ -2310,6 +2624,178 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.update_api_key_with_options_async(api_key_id, request, headers, runtime)
+
+    def update_model_limits_with_options(
+        self,
+        tmp_req: main_models.UpdateModelLimitsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateModelLimitsResponse:
+        tmp_req.validate()
+        request = main_models.UpdateModelLimitsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.workspace_limits):
+            request.workspace_limits_shrink = Utils.array_to_string_with_specified_style(tmp_req.workspace_limits, 'workspaceLimits', 'json')
+        body = {}
+        if not DaraCore.is_null(request.workspace_id):
+            body['workspaceId'] = request.workspace_id
+        if not DaraCore.is_null(request.workspace_limits_shrink):
+            body['workspaceLimits'] = request.workspace_limits_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateModelLimits',
+            version = '2026-02-10',
+            protocol = 'HTTPS',
+            pathname = f'/modelstudio/models/limits',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateModelLimitsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_model_limits_with_options_async(
+        self,
+        tmp_req: main_models.UpdateModelLimitsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateModelLimitsResponse:
+        tmp_req.validate()
+        request = main_models.UpdateModelLimitsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.workspace_limits):
+            request.workspace_limits_shrink = Utils.array_to_string_with_specified_style(tmp_req.workspace_limits, 'workspaceLimits', 'json')
+        body = {}
+        if not DaraCore.is_null(request.workspace_id):
+            body['workspaceId'] = request.workspace_id
+        if not DaraCore.is_null(request.workspace_limits_shrink):
+            body['workspaceLimits'] = request.workspace_limits_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateModelLimits',
+            version = '2026-02-10',
+            protocol = 'HTTPS',
+            pathname = f'/modelstudio/models/limits',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateModelLimitsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_model_limits(
+        self,
+        request: main_models.UpdateModelLimitsRequest,
+    ) -> main_models.UpdateModelLimitsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_model_limits_with_options(request, headers, runtime)
+
+    async def update_model_limits_async(
+        self,
+        request: main_models.UpdateModelLimitsRequest,
+    ) -> main_models.UpdateModelLimitsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_model_limits_with_options_async(request, headers, runtime)
+
+    def update_model_permissions_with_options(
+        self,
+        request: main_models.UpdateModelPermissionsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateModelPermissionsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.access_all_entities):
+            body['accessAllEntities'] = request.access_all_entities
+        if not DaraCore.is_null(request.models):
+            body['models'] = request.models
+        if not DaraCore.is_null(request.workspace_id):
+            body['workspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateModelPermissions',
+            version = '2026-02-10',
+            protocol = 'HTTPS',
+            pathname = f'/modelstudio/models/permissions',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateModelPermissionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_model_permissions_with_options_async(
+        self,
+        request: main_models.UpdateModelPermissionsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateModelPermissionsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.access_all_entities):
+            body['accessAllEntities'] = request.access_all_entities
+        if not DaraCore.is_null(request.models):
+            body['models'] = request.models
+        if not DaraCore.is_null(request.workspace_id):
+            body['workspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateModelPermissions',
+            version = '2026-02-10',
+            protocol = 'HTTPS',
+            pathname = f'/modelstudio/models/permissions',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateModelPermissionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_model_permissions(
+        self,
+        request: main_models.UpdateModelPermissionsRequest,
+    ) -> main_models.UpdateModelPermissionsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_model_permissions_with_options(request, headers, runtime)
+
+    async def update_model_permissions_async(
+        self,
+        request: main_models.UpdateModelPermissionsRequest,
+    ) -> main_models.UpdateModelPermissionsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_model_permissions_with_options_async(request, headers, runtime)
 
     def update_organization_with_options(
         self,
