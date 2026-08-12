@@ -15,39 +15,33 @@ class ModifyDefenseRuleStatusRequest(DaraModel):
         rule_status: int = None,
         template_id: int = None,
     ):
-        # The type of the protection rule. Valid values:
-        # 
-        # - **template** (default): a template protection rule.
-        # 
-        # - **resource**: a rule that is configured for a protected object.
+        # The type of the protection rule.
         self.defense_type = defense_type
-        # The ID of the WAF instance.
+        # Instance ID of the WAF instance.
         # 
-        # > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the WAF instance.
+        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the current WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region of the WAF instance. Valid values:
+        # The region where the WAF instance is deployed. Valid values:
         # 
         # - **cn-hangzhou**: the Chinese mainland.
         # 
         # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
-        # The ID of the resource group.
+        # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The ID of the protection rule to modify.
         # 
         # This parameter is required.
         self.rule_id = rule_id
-        # The new status of the protection rule. Valid values:
-        # 
-        # - **0**: disabled
-        # 
-        # - **1**: enabled
+        # The status of the protection rule to set. Valid values: 
+        # - **0**: Disabled.  
+        # - **1**: Enabled.
         # 
         # This parameter is required.
         self.rule_status = rule_status
-        # The ID of the protection template.
+        # The ID of the protection rule template.
         self.template_id = template_id
 
     def validate(self):

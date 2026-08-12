@@ -22,7 +22,7 @@ class DescribeHybridCloudResourceDetailRequest(DaraModel):
         # 
         # - **true**: Public cloud disaster recovery is enabled.
         # 
-        # - **false**: Public cloud disaster recovery is disabled.
+        # - **false**: Public cloud disaster recovery is not enabled.
         self.cname_enabled = cname_enabled
         # The domain name.
         # 

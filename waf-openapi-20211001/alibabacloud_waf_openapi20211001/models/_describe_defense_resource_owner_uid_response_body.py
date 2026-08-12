@@ -58,7 +58,7 @@ class DescribeDefenseResourceOwnerUidResponseBodyOwnerInfos(DaraModel):
         owner_user_id: str = None,
         resource_name: str = None,
     ):
-        # The owner account ID of the protected object.
+        # The ID of the asset owner account of the protected object.
         self.owner_user_id = owner_user_id
         # The name of the protected object.
         self.resource_name = resource_name

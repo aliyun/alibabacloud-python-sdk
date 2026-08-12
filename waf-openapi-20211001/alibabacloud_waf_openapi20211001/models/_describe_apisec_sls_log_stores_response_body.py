@@ -12,7 +12,7 @@ class DescribeApisecSlsLogStoresResponseBody(DaraModel):
         log_stores: List[str] = None,
         request_id: str = None,
     ):
-        # The names of the Logstores in Simple Log Service.
+        # The list of Logstores in Simple Log Service.
         self.log_stores = log_stores
         # The request ID.
         self.request_id = request_id

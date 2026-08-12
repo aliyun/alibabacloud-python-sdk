@@ -13,25 +13,24 @@ class DescribeApisecSlsLogStoresRequest(DaraModel):
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
     ):
-        # The ID of the Web Application Firewall (WAF) instance.
-        # 
-        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # The ID of the WAF instance.
+        # > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
         # The ID of the region where logs are stored.
         # 
-        # > You can call the [DescribeUserSlsLogRegions](https://help.aliyun.com/document_detail/2712598.html) operation to query available log storage regions.
+        # > You can call [DescribeUserSlsLogRegions](https://help.aliyun.com/document_detail/2712598.html) to query the available log storage regions.
         # 
         # This parameter is required.
         self.log_region_id = log_region_id
-        # The name of the project in Simple Log Service.
+        # The name of the Simple Log Service project.
         # 
         # This parameter is required.
         self.project_name = project_name
         # The region where the WAF instance is deployed. Valid values:
         # 
-        # - **cn-hangzhou**: Chinese mainland.
+        # - **cn-hangzhou**: the Chinese mainland.
         # 
         # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id

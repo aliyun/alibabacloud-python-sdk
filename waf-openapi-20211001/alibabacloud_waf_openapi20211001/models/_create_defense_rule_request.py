@@ -18,11 +18,60 @@ class CreateDefenseRuleRequest(DaraModel):
     ):
         # The WAF protection scenario to create.
         # 
+        # When the protection rule type **DefenseType** is set to **template**, valid values:
+        # 
+        # - **waf_group**: Basic Web Protection.
+        # - **waf_base**: new version of Web core protection.
+        # 
+        # - **antiscan**: scan protection.
+        # 
+        # - **ip_blacklist**: IP blacklist.
+        # 
+        # - **custom_acl**: custom rules.
+        # 
+        # - **whitelist**: whitelist.
+        # 
+        # - **region_block**: Location Blacklist.
+        # 
+        # - **custom_response**: legacy custom response.
+        # 
+        # - **cc**: HTTP flood mitigation.
+        # 
+        # - **tamperproof**: web tamper proofing.
+        # 
+        # - **dlp**: information leak prevention.
+        # 
+        # - **spike_throttle**: peak traffic throttling.
+        # 
+        # - **bot_manager**: bot management.
+        # 
+        # 
+        # When the protection rule type **DefenseType** is set to **resource**, valid values:
+        # 
+        # - **account_identifier**: account extraction.
+        # 
+        # - **custom_response**: new version of custom response.
+        # 
+        # - **waf_codec**: decoding.
+        # 
+        # - **websdk**: WebSDK integration.
+        # 
+        # When the protection rule type **DefenseType** is set to **global**, valid values:
+        # 
+        # - **regular_custom**: custom regular expression.
+        # 
+        # - **address_book**: address book.
+        # 
+        # - **custom_response**: new version of custom response.
+        # >  The custom response in global configurations can be referenced by protected objects or rules. When custom response rules are referenced at different levels, the effective priority is: rule level > protected object level > default page.
+        # 
         # This parameter is required.
         self.defense_scene = defense_scene
         # The type of the protection rule.
         self.defense_type = defense_type
-        # The WAF instance ID.
+        # The ID of the WAF instance.
+        # 
+        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the current WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -32,11 +81,14 @@ class CreateDefenseRuleRequest(DaraModel):
         self.resource = resource
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The rule configuration content, which is a string converted from a JSON object constructed with a series of parameters.
+        # The rule configuration content, which is a JSON string constructed from a series of parameters.
+        # >  The specific parameters vary depending on the **mitigation setting type** (**DefenseScene**) that you specify. For more information, refer to **Protection rule parameter description**.
         # 
         # This parameter is required.
         self.rules = rules
-        # The ID of the protection template for the protection rule to create.
+        # The ID of the protection template for which you want to create a protection rule.
+        # > This parameter is required only when **DefenseType** is set to **template**.
+        # > There is an upper limit on the number of rules that can be created in a protection template. For more information, see **Rule quantity limits**. If the number of rules has reached the upper limit, you can call the [CreateDefenseTemplate](https://help.aliyun.com/document_detail/461613.html) operation to create a new protection template. You can also call the [ModifyDefenseRule](https://help.aliyun.com/document_detail/461422.html) operation to modify an existing rule.
         self.template_id = template_id
 
     def validate(self):

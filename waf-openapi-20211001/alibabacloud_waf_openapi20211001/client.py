@@ -10703,6 +10703,8 @@ class Client(OpenApiClient):
             query['ClusterId'] = request.cluster_id
         if not DaraCore.is_null(request.cluster_proxy_type):
             query['ClusterProxyType'] = request.cluster_proxy_type
+        if not DaraCore.is_null(request.group_display_name):
+            query['GroupDisplayName'] = request.group_display_name
         if not DaraCore.is_null(request.group_name):
             query['GroupName'] = request.group_name
         if not DaraCore.is_null(request.group_type):
@@ -10747,6 +10749,8 @@ class Client(OpenApiClient):
             query['ClusterId'] = request.cluster_id
         if not DaraCore.is_null(request.cluster_proxy_type):
             query['ClusterProxyType'] = request.cluster_proxy_type
+        if not DaraCore.is_null(request.group_display_name):
+            query['GroupDisplayName'] = request.group_display_name
         if not DaraCore.is_null(request.group_name):
             query['GroupName'] = request.group_name
         if not DaraCore.is_null(request.group_type):

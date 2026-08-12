@@ -20,16 +20,23 @@ class CreateDomainRequest(DaraModel):
         tag: List[main_models.CreateDomainRequestTag] = None,
     ):
         # The access type of the WAF instance. Valid values:
+        # 
+        # - **share** (default): CNAME access.
+        # 
+        # - **hybrid_cloud_cname**: hybrid cloud CNAME access.
+        # 
+        # > If the value is **share**, or the value is **hybrid_cloud_cname** and public cloud disaster recovery is enabled, call the [DescribeVerifyContent](https://help.aliyun.com/document_detail/2985193.html) and [VerifyDomainOwner](https://help.aliyun.com/document_detail/2985192.html) operations to verify domain name ownership first. If the domain name is connected to a region in the Chinese mainland, ICP filing must be completed.
         self.access_type = access_type
         # The domain name to query.
         # 
         # This parameter is required.
         self.domain = domain
         # The ID of the WAF instance.
+        # > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The listening configuration.
+        # The listener configuration.
         # 
         # This parameter is required.
         self.listen = listen
@@ -43,7 +50,7 @@ class CreateDomainRequest(DaraModel):
         self.region_id = region_id
         # The Alibaba Cloud resource group ID.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The tag list, which contains up to 20 items.
+        # The list of tags. You can specify up to 20 tags.
         self.tag = tag
 
     def validate(self):
@@ -199,39 +206,69 @@ class CreateDomainRequestRedirect(DaraModel):
         self.cname_enabled = cname_enabled
         # The connection timeout period. Unit: seconds.
         self.connect_timeout = connect_timeout
-        # Specifies whether to enable forced HTTP back-to-origin. This parameter is available only when **HttpsPorts** is not empty, which indicates that the domain name uses HTTPS. Valid values:
+        # Specifies whether to enable forced HTTP back-to-origin. This parameter is used only when **HttpsPorts** is not empty, which indicates that the domain name uses the HTTPS protocol. Valid values:
+        # 
+        # - **true**: Forced HTTP back-to-origin is enabled.
+        # 
+        # - **false**: Forced HTTP back-to-origin is not enabled.
         self.focus_http_backend = focus_http_backend
-        # Specifies whether to enable HTTP/2 back-to-origin. Valid values:
+        # Specifies whether to enable origin fetch over HTTP/2. Valid values:
+        # 
+        # - **true**: Enables origin fetch over HTTP/2.
+        # 
+        # - **false**: Disables origin fetch over HTTP/2.
         self.http_2origin = http_2origin
         # The maximum number of concurrent HTTP/2 back-to-origin connections. Valid values: 1 to 512. Default value: 128.
         self.http_2origin_max_concurrency = http_2origin_max_concurrency
         # Specifies whether to enable persistent connections. Valid values:
         self.keepalive = keepalive
-        # The number of requests that reuse a persistent connection. Valid values: 60 to 1000. Default value: 1000.
+        # The number of requests that can reuse a persistent connection. Valid values: 60 to 1000. Default value: 1000.
+        # 
+        # > After persistent connections are enabled, this parameter specifies how many requests can reuse a persistent connection.
         self.keepalive_requests = keepalive_requests
-        # The idle persistent connection timeout period. Valid values: 1 to 60. Default value: 15. Unit: seconds.
+        # The timeout period for idle persistent connections. Valid values: 1 to 60. Default value: 15. Unit: seconds.
         self.keepalive_timeout = keepalive_timeout
         # The load balancing algorithm used for back-to-origin requests. Valid values:
+        # 
+        # - **iphash**: IP hash algorithm.
+        # 
+        # - **roundRobin**: round-robin algorithm.
+        # 
+        # - **leastTime**: Least Time algorithm. This value is available only when **ProtectionResource** is set to **gslb**, which indicates that the protection resource type uses intelligent load balancing of the shared cluster.
         # 
         # This parameter is required.
         self.loadbalance = loadbalance
         # The maximum request body size. Valid values: 2 to 10. Default value: 2. Unit: GB.
         self.max_body_size = max_body_size
-        # Specifies whether the feature for preserving the originating IP address of the client is enabled.
+        # Indicates whether the client source IP preservation feature is enabled.
+        # - **true**: The client source IP preservation feature is enabled. After this feature is enabled, backend services can view the originating IP address of the client.
+        # - **false**: The client source IP preservation feature is not enabled.
         self.proxy_protocol = proxy_protocol
         # The read timeout period. Unit: seconds.
         self.read_timeout = read_timeout
-        # The traffic tag fields and values of the domain name, used to tag traffic processed by WAF.
+        # The traffic tag fields and values for the domain name, used to mark traffic processed by WAF.
         self.request_headers = request_headers
-        # Specifies whether to retry when WAF fails to fetch from the origin server. Valid values:
+        # Specifies whether to retry when WAF fails to forward requests to the origin server. Valid values:
+        # 
+        # - **true** (default): Retry.
+        # 
+        # - **false**: Do not retry.
         self.retry = retry
-        # The hybrid cloud forwarding rules, expressed as a string converted from a JSON array. Each element in the JSON array is a struct that contains the following fields:
+        # The hybrid cloud forwarding rules. The value is a string converted from a JSON array. Each element in the JSON array is a struct that contains the following fields:
         self.routing_rules = routing_rules
-        # Specifies whether to enable back-to-origin SNI. This parameter is available only when **HttpsPorts** is not empty, which indicates that the domain name uses HTTPS. Valid values:
+        # Specifies whether to enable back-to-origin SNI. This parameter is used only when **HttpsPorts** is not empty, which indicates that the domain name uses HTTPS. Valid values:
         self.sni_enabled = sni_enabled
-        # The value of the custom SNI extension field. If you do not set this parameter, the value of the **Host** field in the request header is used as the SNI extension field value by default.
+        # The value of the custom SNI extension field. If you do not set this parameter, the value of the **Host** field in the request header is used as the value of the SNI extension field by default.
+        # 
+        # In most cases, you do not need to customize the SNI unless your business has special configuration requirements and you want WAF to use an SNI that is different from the actual request Host in back-to-origin requests (that is, the custom SNI set here).
+        # 
+        # > This parameter is required only when **SniEnabled** is set to **true** (indicating that back-to-origin SNI is enabled).
         self.sni_host = sni_host
-        # Specifies whether to allow WAF to overwrite WL-Proxy-Client-IP. Valid values:
+        # Specifies whether WAF is allowed to overwrite the WL-Proxy-Client-IP header. Valid values:
+        # 
+        # - **true** (default): WAF is allowed to overwrite the header.
+        # 
+        # - **false**: WAF is not allowed to overwrite the header.
         self.wlproxy_client_ip = wlproxy_client_ip
         # Specifies whether to allow WAF to overwrite Web-Server-Type. Valid values:
         self.web_server_type = web_server_type
@@ -241,7 +278,7 @@ class CreateDomainRequestRedirect(DaraModel):
         self.xclient_ip = xclient_ip
         # Specifies whether to allow WAF to overwrite X-True-IP. Valid values:
         self.xtrue_ip = xtrue_ip
-        # Specifies whether X-Forward-For-Proto passes the WAF protocol. Valid values:
+        # Specifies whether to use X-Forward-For-Proto to pass the protocol used by WAF. Valid values:
         self.xff_proto = xff_proto
 
     def validate(self):
@@ -437,9 +474,9 @@ class CreateDomainRequestRedirectRequestHeaders(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The custom request header field.
+        # The specified custom request header field.
         self.key = key
-        # The value of the custom request header field.
+        # The value set for the custom request header field.
         self.value = value
 
     def validate(self):
@@ -475,11 +512,15 @@ class CreateDomainRequestRedirectBackendPorts(DaraModel):
         listen_port: int = None,
         protocol: str = None,
     ):
-        # The back-to-origin port.
+        # The origin server port.
         self.backend_port = backend_port
         # The listening port.
         self.listen_port = listen_port
-        # The protocol of the listening port. Valid values:
+        # The protocol of the listener port. Valid values:
+        # 
+        # - **http**: The protocol of the listener port is HTTP.
+        # 
+        # - **https**: The protocol of the listener port is HTTPS.
         self.protocol = protocol
 
     def validate(self):
@@ -538,25 +579,35 @@ class CreateDomainRequestListen(DaraModel):
         xff_header_mode: int = None,
         xff_headers: List[str] = None,
     ):
-        # The ID of the certificate to add. This parameter is available only when **HttpsPorts** is not empty, which indicates that the domain name uses HTTPS.
+        # The ID of the certificate to add. This parameter is used only when **HttpsPorts** is not empty, which indicates that the domain name uses HTTPS.
         self.cert_id = cert_id
-        # The type of cipher suite to add. This parameter is available only when **HttpsPorts** is not empty, which indicates that the domain name uses HTTPS. Valid values:
+        # The type of cipher suite to add. This parameter is used only when **HttpsPorts** is not empty, which indicates that the domain name uses the HTTPS protocol. Valid values:
+        # 
+        # - **1**: adds all cipher suites.
+        # 
+        # - **2**: adds strong cipher suites. This value is available only when **TLSVersion** is set to **tlsv1.2**.
+        # 
+        # - **99**: adds custom cipher suites. This value is available only when **TLSVersion** is not set to **tlsv1.3**.
         self.cipher_suite = cipher_suite
         # The specific custom cipher suites to add.
         self.custom_ciphers = custom_ciphers
         # Specifies whether to support TLS 1.3. Valid values:
         self.enable_tlsv_3 = enable_tlsv_3
-        # Specifies whether to enable an exclusive IP address. This parameter is available only when **IPv6Enabled** is set to **false** and **ProtectionResource** is set to **share** (which indicates that a shared cluster is used). Valid values:
+        # Specifies whether to enable an exclusive IP address. This parameter is used only when **IPv6Enabled** is set to **false** (which indicates that IPv6 is disabled) and **ProtectionResource** is set to **share** (which indicates that a shared cluster is used). Valid values:
         self.exclusive_ip = exclusive_ip
-        # Specifies whether to enable forced HTTPS redirect. This parameter is available only when HttpsPorts is not empty (which indicates that the domain name uses HTTPS) and HttpPorts is empty (which indicates that the domain name does not use HTTP). Valid values:
+        # Specifies whether to enable forced HTTPS redirect. This parameter is used only when HttpsPorts is not empty (which indicates that the domain name uses HTTPS) and HttpPorts is empty (which indicates that the domain name does not use HTTP). Valid values:
         self.focus_https = focus_https
         # Specifies whether HSTS includes subdomains. Valid values:
+        # 
+        # - **true**: Enabled.
+        # 
+        # - **false**: Not enabled.
         self.hsts_include_sub_domain = hsts_include_sub_domain
         # The HSTS expiration time. Unit: seconds.
         self.hsts_max_age = hsts_max_age
         # Specifies whether to enable HSTS preloading. This feature is disabled by default. Valid values:
         self.hsts_preload = hsts_preload
-        # Specifies whether to enable HTTP/2. This parameter is available only when **HttpsPorts** is not empty, which indicates that the domain name uses HTTPS. Valid values:
+        # Specifies whether to enable HTTP/2. This parameter is used only when **HttpsPorts** is not empty, which indicates that the domain name uses HTTPS. Valid values:
         self.http_2enabled = http_2enabled
         # The listening ports for HTTP.
         self.http_ports = http_ports
@@ -566,13 +617,13 @@ class CreateDomainRequestListen(DaraModel):
         self.ipv_6enabled = ipv_6enabled
         # The type of protection resource to use. Valid values:
         self.protection_resource = protection_resource
-        # Specifies whether to allow only SM2 client access. This parameter is available only when SM2Enabled is set to true.
+        # Specifies whether only China SM client access is allowed. This parameter is used only when SM2Enabled is set to true.
         self.sm2access_only = sm2access_only
-        # The ID of the SM2 certificate to add. This parameter is available only when SM2Enabled is set to true.
+        # The ID of the China SM certificate to add. This parameter is used only when SM2Enabled is set to true.
         self.sm2cert_id = sm2cert_id
-        # Specifies whether to enable SM2 certificates.
+        # Specifies whether to enable China Encryption (China SM) certificates.
         self.sm2enabled = sm2enabled
-        # The TLS version to add. This parameter is available only when **HttpsPorts** is not empty, which indicates that the domain name uses HTTPS. Valid values:
+        # The TLS version to add. This parameter is used only when **HttpsPorts** is not empty, which indicates that the domain name uses HTTPS. Valid values:
         self.tlsversion = tlsversion
         # The method that WAF uses to obtain the originating IP address of the client. Valid values:
         self.xff_header_mode = xff_header_mode

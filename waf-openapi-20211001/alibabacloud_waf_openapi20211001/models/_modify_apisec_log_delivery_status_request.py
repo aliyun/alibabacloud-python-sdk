@@ -37,9 +37,9 @@ class ModifyApisecLogDeliveryStatusRequest(DaraModel):
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The enabling status of API security log subscribe. Valid values:
         # 
-        # - **true**: Enabled.
+        # - **true**: subscribe is enabled.
         # 
-        # - **false**: shutdown.
+        # - **false**: subscribe is shutdown.
         # 
         # This parameter is required.
         self.status = status

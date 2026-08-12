@@ -17,6 +17,8 @@ class DescribePostpayBillsRequest(DaraModel):
         start_time: int = None,
     ):
         # The end time. The value is a UNIX timestamp (UTC). Unit: seconds.
+        # 
+        # > When querying pay-as-you-go bills, **StartTime** and **EndTime** are required parameters. You must specify both to determine the query time range.
         self.end_time = end_time
         # Instance ID of the WAF instance.
         # 
@@ -24,15 +26,15 @@ class DescribePostpayBillsRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The number of entries per page for a paged query.
+        # The number of entries per page in a paged query.
         self.max_results = max_results
         # The pagination token for the next page. If a next page exists, this field has a return value.
         # 
-        # > If this parameter has a return value, a next page exists. Use the returned **NextToken** as a request parameter to obtain the next page of data. Repeat until no value is returned, which indicates that all data has been retrieved.
+        # > If this parameter has a return value, a next page exists. You can use the returned **NextToken** as a request parameter to obtain the data on the next page. Repeat this process until no value is returned, which indicates that all data has been retrieved.
         self.next_token = next_token
-        # The statistical period type for billing.
+        # The statistical period type of the bill.
         self.period_type = period_type
-        # The region where the WAF instance is deployed. Valid values:
+        # The region where the WAF instance resides. Valid values:
         # 
         # - **cn-hangzhou**: the Chinese mainland.
         # 
@@ -41,6 +43,8 @@ class DescribePostpayBillsRequest(DaraModel):
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The start time. The value is a UNIX timestamp (UTC). Unit: seconds.
+        # 
+        # > When querying pay-as-you-go bills, **StartTime** and **EndTime** are required parameters. You must specify both to determine the query time range.
         self.start_time = start_time
 
     def validate(self):

@@ -20,16 +20,23 @@ class CreateDomainShrinkRequest(DaraModel):
         tag: List[main_models.CreateDomainShrinkRequestTag] = None,
     ):
         # The access type of the WAF instance. Valid values:
+        # 
+        # - **share** (default): CNAME access.
+        # 
+        # - **hybrid_cloud_cname**: hybrid cloud CNAME access.
+        # 
+        # > If the value is **share**, or the value is **hybrid_cloud_cname** and public cloud disaster recovery is enabled, call the [DescribeVerifyContent](https://help.aliyun.com/document_detail/2985193.html) and [VerifyDomainOwner](https://help.aliyun.com/document_detail/2985192.html) operations to verify domain name ownership first. If the domain name is connected to a region in the Chinese mainland, ICP filing must be completed.
         self.access_type = access_type
         # The domain name to query.
         # 
         # This parameter is required.
         self.domain = domain
         # The ID of the WAF instance.
+        # > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The listening configuration.
+        # The listener configuration.
         # 
         # This parameter is required.
         self.listen_shrink = listen_shrink
@@ -43,7 +50,7 @@ class CreateDomainShrinkRequest(DaraModel):
         self.region_id = region_id
         # The Alibaba Cloud resource group ID.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The tag list, which contains up to 20 items.
+        # The list of tags. You can specify up to 20 tags.
         self.tag = tag
 
     def validate(self):

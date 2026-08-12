@@ -12,7 +12,7 @@ class CreateDefenseResourceResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The name of the protected object that is created.
+        # The name of the created protected object.
         self.resource = resource
 
     def validate(self):

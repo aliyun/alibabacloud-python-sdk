@@ -14,7 +14,7 @@ class DescribeHybridCloudClusterServersResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The servers in the hybrid cloud cluster.
+        # The result list.
         self.cluster_servers = cluster_servers
         # The request ID.
         self.request_id = request_id
@@ -85,19 +85,19 @@ class DescribeHybridCloudClusterServersResponseBodyClusterServers(DaraModel):
         status: str = None,
         update_timestamp: int = None,
     ):
-        # The continent identifier of the server, such as `asiapacific`.
+        # The continent.
         self.continents = continents
         # The continent code of the protection cluster.
         # 
-        # > For a list of valid codes, see the supplementary description of response parameters.
+        # > For the list of code values, see the supplementary description of response parameters.
         self.continents_value = continents_value
-        # The number of CPU cores of the server.
+        # The number of CPU cores.
         self.cpu = cpu
-        # The time when the server was created. This value is a UNIX timestamp. Unit: milliseconds.
+        # The creation timestamp, in milliseconds.
         self.create_timestamp = create_timestamp
-        # The custom name of the server.
+        # The node name.
         self.custom_name = custom_name
-        # The ID of the node group.
+        # The node group ID.
         self.group_id = group_id
         # The name of the node group.
         self.group_name = group_name
@@ -105,35 +105,35 @@ class DescribeHybridCloudClusterServersResponseBodyClusterServers(DaraModel):
         # 
         # - **protect**: protection.
         # 
-        # - **control**: control.
+        # - **control**: management.
         # 
         # - **storage**: storage.
         # 
-        # - **controlStorage**: control and storage.
+        # - **controlStorage**: management and storage.
         self.group_type = group_type
-        # The hostname of the server.
+        # The hostname.
         self.host_name = host_name
-        # The IP address of the server.
+        # The IP address.
         self.ip = ip
-        # The running status of the server.
+        # The running status of the machine.
         self.job_status = job_status
-        # The MAC address of the server.
+        # The MAC address.
         self.mac = mac
-        # The memory size of the server. Unit: bytes.
+        # The memory data.
         self.memory = memory
-        # The machine ID (MID) of the server.
+        # The machine identifier (MID).
         self.mid = mid
-        # The cloud service provider where the server resides.
+        # The cloud service provider.
         self.operator = operator
-        # The carrier code of the server.
+        # The operator value.
         self.operator_value = operator_value
-        # The region identifier of the server, such as `beijing`.
+        # The region name.
         self.region_code = region_code
-        # The numeric code of the region where the server resides.
+        # The region code.
         self.region_code_value = region_code_value
-        # The health status of the server in the hybrid cloud cluster.
+        # The machine status.
         self.status = status
-        # The time when the server was last updated. This value is a UNIX timestamp. Unit: milliseconds.
+        # The last update timestamp.
         self.update_timestamp = update_timestamp
 
     def validate(self):

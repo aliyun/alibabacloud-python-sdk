@@ -11,7 +11,7 @@ class DescribeHybridCloudClusterRuleResponseBody(DaraModel):
         cluster_rule: main_models.DescribeHybridCloudClusterRuleResponseBodyClusterRule = None,
         request_id: str = None,
     ):
-        # The information about the rule.
+        # The rule information.
         self.cluster_rule = cluster_rule
         # The request ID.
         self.request_id = request_id
@@ -52,33 +52,27 @@ class DescribeHybridCloudClusterRuleResponseBodyClusterRule(DaraModel):
         rule_status: str = None,
         rule_type: str = None,
     ):
-        # The resource ID of the cluster rule.
+        # The cluster rule resource ID.
         self.cluster_rule_resource_id = cluster_rule_resource_id
-        # The configuration of the traffic routing rule.
+        # The traffic redirection rule configuration:
         # 
-        # - **check_mode**: Defines the traffic scope for the routing rule. Valid values:
-        # 
-        #   - **all**: Routes all traffic.
-        # 
-        #   - **part**: Routes a portion of the traffic.
-        # 
-        # - **type**: The rule\\"s match type. Valid values:
-        # 
-        #   - **exact**: Exact match.
-        # 
-        #   - **regex**: Regular expression match.
-        # 
-        # - **substance**: The value of the rule.
+        # - **check_mode**: the mode selection. Valid values:
+        #   - **all**: full traffic redirection
+        #   - **part**: partial traffic redirection
+        # - **type**: the rule matching type. Valid values:
+        #   - **exact**: exact match
+        #   - **regex**: regular expression
+        # - **substance**: the rule value
         self.rule_config = rule_config
-        # The status of the rule. Valid values:
+        # The rule status. Valid values:
         # 
-        # - **on**: Enabled.
+        # - **on**: enabled.
         # 
-        # - **off**: Disabled.
+        # - **off**: disabled.
         self.rule_status = rule_status
-        # The type of the rule.
+        # The rule type. Valid values:
         # 
-        # - pullin: The traffic routing rule.
+        # - pullin: traffic redirection rule
         self.rule_type = rule_type
 
     def validate(self):

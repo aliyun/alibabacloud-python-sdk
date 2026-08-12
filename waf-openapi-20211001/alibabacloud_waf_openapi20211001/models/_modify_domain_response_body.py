@@ -53,7 +53,7 @@ class ModifyDomainResponseBodyDomainInfo(DaraModel):
     ):
         # The CNAME assigned by WAF to the domain name.
         self.cname = cname
-        # The domain name to modify.
+        # The domain name to be modified.
         self.domain = domain
         # The domain name ID.
         self.domain_id = domain_id

@@ -17,19 +17,22 @@ class DescribeSensitiveStatisticRequest(DaraModel):
         start_time: int = None,
         statistic_type: str = None,
     ):
-        # The ID of the hybrid cloud cluster.
+        # The hybrid cloud cluster ID.
         # > This parameter applies only to hybrid cloud scenarios. You can call [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) to obtain hybrid cloud cluster information.
         self.cluster_id = cluster_id
-        # The end of the time range to query. The value is a UNIX timestamp (UTC). Unit: seconds.
+        # The end of the time range to query, in UNIX timestamp (UTC) format. Unit: seconds.
+        # 
+        # > Only data within the last month can be queried. **StartTime** cannot be earlier than one month before the current time. The query fails if the value is out of the supported range.
+        # > This parameter is optional. Default value: the current time.
         self.end_time = end_time
         # The ID of the WAF instance.
-        # > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the WAF instance.
+        # > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The page number to return in a paging query. Default value: **1**, which indicates that the first page is returned.
+        # The page number to return in a paged query. Default value: **1**, which indicates the first page.
         self.page_number = page_number
-        # The number of entries per page in a paging query. Default value: **10**, which indicates that each page contains 10 entries.
+        # The number of entries per page in a paged query. Default value: **10**, which indicates 10 entries per page.
         self.page_size = page_size
         # The region where the WAF instance is deployed. Valid values:
         # 
@@ -37,15 +40,18 @@ class DescribeSensitiveStatisticRequest(DaraModel):
         # 
         # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
-        # The ID of the Alibaba Cloud resource group.
+        # The Alibaba Cloud resource group ID.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The beginning of the time range to query. The value is a UNIX timestamp (UTC). Unit: seconds.
+        # The beginning of the time range to query, in UNIX timestamp (UTC) format. Unit: seconds.
+        # 
+        # > Only data within the last month can be queried. **StartTime** cannot be earlier than one month before the current time. The query fails if the value is out of the supported range.
+        # > This parameter is optional. Default value: one month before the current time.
         self.start_time = start_time
         # The type of data statistics. Valid values:
         # - **ip**: IP address statistics.
         # - **host**: domain name statistics.
         # - **sensitive_code**: sensitive data type statistics.
-        # - **api**: sensitive data API operation statistics.
+        # - **api**: sensitive data API statistics.
         self.statistic_type = statistic_type
 
     def validate(self):

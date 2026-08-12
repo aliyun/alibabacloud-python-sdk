@@ -16,38 +16,39 @@ class ModifyMajorProtectionBlackIpRequest(DaraModel):
         rule_id: int = None,
         template_id: int = None,
     ):
-        # The description of the IP address blacklist.
+        # The description.
         self.description = description
-        # The time after which the IP address blacklist becomes invalid. Unit: seconds.
-        # 
-        # > If the value is **0**, the IP address blacklist is permanently valid.
+        # The expiration timestamp, in seconds.
+        # > If the value is **0**, the rule takes effect permanently.
         # 
         # This parameter is required.
         self.expired_time = expired_time
-        # The ID of the Web Application Firewall (WAF) instance.
+        # The ID of the WAF instance.
         # 
-        # > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
+        # > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The IP address blacklist to add. You can specify custom IP addresses or CIDR blocks. Both IPv4 and IPv6 addresses are supported. Separate multiple IP addresses with commas (,).
+        # The IP blacklist to add. You can specify custom IP addresses or CIDR blocks. Both IPv4 and IPv6 are supported. Separate multiple IP addresses with commas (,).
         # For more information, see [Critical event protection](https://help.aliyun.com/document_detail/425591.html).
         # 
         # This parameter is required.
         self.ip_list = ip_list
-        # The region of the WAF instance. Valid values:
+        # The region where the WAF instance is deployed. Valid values:
         # 
-        # - **cn-hangzhou**: The Chinese mainland.
+        # - **cn-hangzhou**: the Chinese mainland.
         # 
-        # - **ap-southeast-1**: Outside the Chinese mainland.
+        # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The ID of the IP address blacklist rule for critical event protection.
+        # The ID of the IP blacklist rule for critical event protection.
         # 
         # This parameter is required.
         self.rule_id = rule_id
-        # The ID of the critical event protection template.
+        # The ID of the critical event protection scenario template.
+        # 
+        # > This parameter must be set to the ID of a protection template of the critical event protection type. You can create this type of template only after you purchase the critical event protection upgrade.
         # 
         # This parameter is required.
         self.template_id = template_id

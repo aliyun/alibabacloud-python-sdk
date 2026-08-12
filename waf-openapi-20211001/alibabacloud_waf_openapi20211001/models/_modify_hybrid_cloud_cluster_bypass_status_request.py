@@ -13,17 +13,17 @@ class ModifyHybridCloudClusterBypassStatusRequest(DaraModel):
         resource_manager_resource_group_id: str = None,
         rule_status: str = None,
     ):
-        # The ID of the hybrid cloud cluster.
+        # The resource ID of the hybrid cloud cluster.
         # 
         # This parameter is required.
         self.cluster_resource_id = cluster_resource_id
-        # The ID of the Web Application Firewall (WAF) instance.
+        # The ID of the WAF instance.
         # 
-        # > Call the [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) operation to query the ID of the WAF instance.
+        # > You can call the [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) operation to query the ID of the current WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region where the WAF instance resides. Valid values:
+        # The region where the WAF instance is deployed. Valid values:
         # 
         # - **cn-hangzhou**: the Chinese mainland.
         # 
@@ -31,11 +31,11 @@ class ModifyHybridCloudClusterBypassStatusRequest(DaraModel):
         self.region_id = region_id
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The status of the manual bypass. Valid values:
+        # The manual bypass enabling status. Valid values:
         # 
-        # - **on**: The manual bypass is enabled.
+        # - **on**: enabled.
         # 
-        # - **off** (default): The manual bypass is disabled.
+        # - **off (default)**: shutdown.
         # 
         # This parameter is required.
         self.rule_status = rule_status

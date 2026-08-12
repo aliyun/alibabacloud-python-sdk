@@ -16,17 +16,17 @@ class DescribeHybridCloudSdkServersRequest(DaraModel):
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
     ):
-        # The name of the hybrid cloud cluster that you want to query.
+        # The cluster name.
         self.cluster_name = cluster_name
-        # The hostname of the hybrid cloud SDK server that you want to query.
+        # The hostname.
         self.host_name = host_name
         # The ID of the WAF instance.
         # 
-        # > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the current WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The IP address of the hybrid cloud SDK server that you want to query.
+        # The device IP address.
         self.ip = ip
         # The page number. Default value: 1.
         self.page_number = page_number
@@ -38,7 +38,7 @@ class DescribeHybridCloudSdkServersRequest(DaraModel):
         # 
         # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
-        # The ID of the Alibaba Cloud resource group.
+        # The Alibaba Cloud resource group ID.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
 
     def validate(self):

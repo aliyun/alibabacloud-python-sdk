@@ -14,11 +14,11 @@ class DescribeMajorProtectionBlackIpsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of IP addresses in the blacklist.
+        # The list of blacklisted IP addresses.
         self.ip_list = ip_list
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of IP addresses in the blacklist.
+        # The total number of blacklisted IP addresses.
         self.total_count = total_count
 
     def validate(self):
@@ -71,17 +71,16 @@ class DescribeMajorProtectionBlackIpsResponseBodyIpList(DaraModel):
         rule_id: int = None,
         template_id: int = None,
     ):
-        # The description of the template.
+        # The description.
         self.description = description
-        # The timestamp after which the IP address blacklist becomes invalid. Unit: seconds.
-        # 
-        # > If the value is **0**, the IP address blacklist is permanently valid.
+        # The expiration timestamp, in seconds.
+        # > A value of **0** indicates that the entry is permanently effective.
         self.expired_time = expired_time
-        # The time when the IP address in the blacklist was modified.
+        # The time when the blacklisted IP address was last modified.
         self.gmt_modified = gmt_modified
         # The IP address.
         self.ip = ip
-        # The ID of the IP address blacklist rule for critical event protection.
+        # The ID of the critical event protection IP blacklist rule.
         self.rule_id = rule_id
         # The ID of the critical event protection template.
         self.template_id = template_id

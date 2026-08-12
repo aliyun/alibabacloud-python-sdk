@@ -96,22 +96,22 @@ class DescribeBaseSystemRulesResponseBodyRules(DaraModel):
         # - **protocol_violation**: protocol violation.
         # - **scanner_behavior**: scanner behavior.
         # - **logic_flaw**: business logic bug.
-        # - **arbitrary_file_reading**: arbitrary file reading.
+        # - **arbitrary_file_reading**: arbitrary file read.
         # - **arbitrary_file_download**: arbitrary file download.
         # - **xxe**: XML external entity injection.
         # - **csrf**: cross-site request forgery.
-        # - **crlf**: CRLF.
+        # - **crlf**: CRLF injection.
         # - **other**: other.
         self.detect_type = detect_type
         # The risk level. Valid values:
         # 
-        # - **super_strict**: Super strict.
+        # - **super_strict**: super strict.
         # 
-        # - **strict**: Strict.
+        # - **strict**: strict.
         # 
-        # - **medium**: Medium.
+        # - **medium**: medium.
         # 
-        # - **loose**: Loose.
+        # - **loose**: loose.
         self.risk_level = risk_level
         # The rule action. Valid values:
         # 
@@ -124,10 +124,10 @@ class DescribeBaseSystemRulesResponseBodyRules(DaraModel):
         # The name of the protection rule.
         self.rule_name = rule_name
         # The rule status. Valid values:
-        # - **1**: Disabled.
-        # - **0**: Enabled.
+        # - **1**: disabled.
+        # - **0**: enabled.
         self.rule_status = rule_status
-        # The time when the rule was last updated.
+        # The time when the rule was last updated. The value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
 
     def validate(self):

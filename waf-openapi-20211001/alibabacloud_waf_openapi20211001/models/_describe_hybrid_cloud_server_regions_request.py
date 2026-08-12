@@ -19,9 +19,9 @@ class DescribeHybridCloudServerRegionsRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region code.>Notice: This parameter is required when RegionType is set to region. Set this parameter to the code of the selected continent.
+        # The region code.>Notice: This parameter is required when RegionType is set to region. The value is the code of the selected continent.</notice>
         self.region_code = region_code
-        # The region where the WAF instance resides. Valid values:
+        # The region where the WAF instance is deployed. Valid values:
         # 
         # - **cn-hangzhou**: the Chinese mainland.
         # 

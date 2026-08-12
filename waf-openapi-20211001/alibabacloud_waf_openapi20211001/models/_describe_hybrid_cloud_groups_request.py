@@ -9,6 +9,7 @@ class DescribeHybridCloudGroupsRequest(DaraModel):
         self,
         cluster_id: int = None,
         cluster_proxy_type: str = None,
+        group_display_name: str = None,
         group_name: int = None,
         group_type: str = None,
         instance_id: str = None,
@@ -19,41 +20,43 @@ class DescribeHybridCloudGroupsRequest(DaraModel):
     ):
         # The ID of the hybrid cloud cluster.
         self.cluster_id = cluster_id
-        # The proxy type of the hybrid cloud cluster. Valid values:
+        # The proxy type of the cluster. Valid values:
         # 
-        # - **service**: SDK-based integration.
+        # - **service**: SDK integration.
         # 
-        # - **cname**: CNAME-based reverse proxy.
+        # - **cname**: reverse proxy.
         self.cluster_proxy_type = cluster_proxy_type
-        # The name of the hybrid cloud node group that you want to query.
+        # The name of the hybrid cloud node group to query.
+        self.group_display_name = group_display_name
+        # **[Deprecated]** Use GroupDisplayName for queries instead.
         self.group_name = group_name
         # The type of the hybrid cloud node group. Valid values:
         # 
-        # - **protect**: protection node group.
+        # - **protect**: protection.
         # 
-        # - **control**: control node group.
+        # - **control**: management.
         # 
-        # - **storage**: storage node group.
+        # - **storage**: storage.
         # 
-        # - **controlStorage**: control and storage node group.
+        # - **controlStorage**: management and storage.
         self.group_type = group_type
         # The ID of the WAF instance.
         # 
-        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the current WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The number of the page to return. Default value: **1**.
+        # The page number to return in a paging query. Default value: **1**, which indicates that the first page is returned.
         self.page_number = page_number
-        # The number of entries to return on each page. Default value: **10**.
+        # The number of entries per page in a paged query. Default value: **10**.
         self.page_size = page_size
-        # The region in which the WAF instance resides. Valid values:
+        # The region where the WAF instance is deployed. Valid values:
         # 
         # - **cn-hangzhou**: the Chinese mainland.
         # 
         # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
-        # The ID of the resource group to which the WAF instance belongs.
+        # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
 
     def validate(self):
@@ -69,6 +72,9 @@ class DescribeHybridCloudGroupsRequest(DaraModel):
 
         if self.cluster_proxy_type is not None:
             result['ClusterProxyType'] = self.cluster_proxy_type
+
+        if self.group_display_name is not None:
+            result['GroupDisplayName'] = self.group_display_name
 
         if self.group_name is not None:
             result['GroupName'] = self.group_name
@@ -100,6 +106,9 @@ class DescribeHybridCloudGroupsRequest(DaraModel):
 
         if m.get('ClusterProxyType') is not None:
             self.cluster_proxy_type = m.get('ClusterProxyType')
+
+        if m.get('GroupDisplayName') is not None:
+            self.group_display_name = m.get('GroupDisplayName')
 
         if m.get('GroupName') is not None:
             self.group_name = m.get('GroupName')

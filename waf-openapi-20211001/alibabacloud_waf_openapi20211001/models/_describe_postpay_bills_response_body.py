@@ -17,7 +17,7 @@ class DescribePostpayBillsResponseBody(DaraModel):
     ):
         # The list of bill details.
         self.bill_detail = bill_detail
-        # The number of entries per page for a paged query.
+        # The number of entries per page in a paged query.
         self.max_results = max_results
         # The pagination token for the next page. If a next page exists, this field has a return value.
         self.next_token = next_token
@@ -86,23 +86,23 @@ class DescribePostpayBillsResponseBodyBillDetail(DaraModel):
     ):
         # The bill usage details. The value is a JSON string constructed from a series of parameters. For more information, refer to **Supplementary description of response parameters**.
         self.charge_data = charge_data
-        # The total number of Credits.
+        # The total Credit.
         self.credit = credit
         # The Credit bill usage details. The value is a JSON string constructed from a series of parameters. For more information, refer to **Supplementary description of response parameters**.
         self.credit_charge_data = credit_charge_data
-        # The total number of SeCUs.
+        # The total SeCU.
         self.cu = cu
         # The end time. The value is a UNIX timestamp (UTC). Unit: seconds.
         self.end_time = end_time
-        # The number of Credits consumed by features.
+        # The Credit consumed by features.
         self.function_credit = function_credit
-        # The number of SeCUs consumed by features.
+        # The SeCU consumed by features.
         self.function_cu = function_cu
         # The start time. The value is a UNIX timestamp (UTC). Unit: seconds.
         self.start_time = start_time
-        # The number of Credits consumed by traffic processing.
+        # The Credit consumed by traffic processing.
         self.traffic_credit = traffic_credit
-        # The number of SeCUs consumed by traffic processing.
+        # The SeCU consumed by traffic processing.
         self.traffic_cu = traffic_cu
 
     def validate(self):

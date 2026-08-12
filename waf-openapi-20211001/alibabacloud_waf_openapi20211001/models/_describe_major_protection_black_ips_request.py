@@ -23,9 +23,9 @@ class DescribeMajorProtectionBlackIpsRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The IP address to query. You can set this parameter to perform a fuzzy query on the added IP address blacklist.
+        # The IP address to query. You can set this parameter to perform a fuzzy match against the added IP blacklist.
         self.ip_like = ip_like
-        # The property by which to sort the results in **descending order**. Valid values:
+        # The sorting attribute. Results are sorted in **descending order** by the specified attribute. Valid values:
         # 
         # - **gmtModified**: sorts by modification time.
         # 
@@ -35,21 +35,23 @@ class DescribeMajorProtectionBlackIpsRequest(DaraModel):
         # 
         # - **id**: sorts by primary key.
         self.order_by = order_by
-        # The page number. Default value: **1**, which indicates the first page.
+        # The page number to return when paging is used. Default value: **1**, which indicates the first page.
         self.page_number = page_number
-        # The number of entries per page. Default value: **10**, which indicates 10 entries per page.
+        # The number of entries per page when paging is used. Default value: **10**, which indicates 10 entries per page.
         self.page_size = page_size
-        # The region in which the WAF instance is deployed. Valid values:
+        # The region where the WAF instance is deployed. Valid values:
         # 
         # - **cn-hangzhou**: the Chinese mainland.
         # 
-        # - **ap-southeast-1**: regions outside the Chinese mainland.
+        # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
-        # The ID of the Alibaba Cloud resource group.
+        # The Alibaba Cloud resource group ID.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The ID of the IP address blacklist rule for critical event protection.
+        # The ID of the critical event protection IP blacklist rule.
         self.rule_id = rule_id
         # The ID of the critical event protection template.
+        # 
+        # > This parameter requires the ID of a protection template of the critical event protection type. You can create this type of template only after purchasing the critical event protection upgrade separately.
         self.template_id = template_id
 
     def validate(self):

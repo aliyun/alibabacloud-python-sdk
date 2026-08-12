@@ -23,6 +23,8 @@ class ModifyDomainShrinkRequest(DaraModel):
         self.domain_id = domain_id
         # The ID of the WAF instance.
         # 
+        # > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
         # The listening configuration.
@@ -33,7 +35,10 @@ class ModifyDomainShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.redirect_shrink = redirect_shrink
-        # The region where the WAF instance resides. Valid values:
+        # The region where the WAF instance is deployed. Valid values:
+        # 
+        # - **cn-hangzhou**: the Chinese mainland.
+        # - **ap-southeast-1**: outside the Chinese mainland.
         # 
         # This parameter is required.
         self.region_id = region_id

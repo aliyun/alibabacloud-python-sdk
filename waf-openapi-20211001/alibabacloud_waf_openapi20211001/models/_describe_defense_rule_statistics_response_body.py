@@ -61,7 +61,7 @@ class DescribeDefenseRuleStatisticsResponseBodyStatisticsInfos(DaraModel):
         secondary_value: str = None,
         third_value: str = None,
     ):
-        # The number of rules that meet all the query conditions.
+        # The number of rules that meet all query conditions.
         self.count = count
         # The value corresponding to the quaternary query condition.
         self.fourth_value = fourth_value

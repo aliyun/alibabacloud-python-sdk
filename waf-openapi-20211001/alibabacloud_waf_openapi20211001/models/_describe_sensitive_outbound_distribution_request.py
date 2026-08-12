@@ -14,31 +14,32 @@ class DescribeSensitiveOutboundDistributionRequest(DaraModel):
         resource_manager_resource_group_id: str = None,
         start_time: int = None,
     ):
-        # The ID of the hybrid cloud cluster.
-        # 
-        # > This parameter applies only to hybrid cloud scenarios. Call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to obtain information about hybrid cloud clusters.
+        # The hybrid cloud cluster ID.
+        # > This parameter applies only to hybrid cloud scenarios. You can call [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) to obtain hybrid cloud cluster information.
         self.cluster_id = cluster_id
-        # The end of the time range to query. This value is a UNIX timestamp. Unit: seconds. The time is in UTC.
+        # The end time of the query. Specify the value as a UNIX timestamp (UTC). Unit: seconds.
         # 
-        # > Compliance review supports queries for the last month, the last 3 months, the last 6 months, the last 12 months, and the period from January 1 of the previous year to the present. Make sure that the specified time range is valid.
+        # > Compliance audit currently supports querying data only for the last 1 month, last 3 months, last 6 months, last 12 months, or from January 1 of the previous year to the present. The query time range must fall within one of these supported intervals. **StartTime** must not be earlier than the start time of the corresponding interval. The query fails if the time range exceeds the supported scope.
+        # > This parameter is optional. Default value: the current time.
         self.end_time = end_time
-        # The ID of the Web Application Firewall (WAF) instance.
+        # The ID of the WAF instance.
         # 
-        # > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region where the WAF instance resides. Valid values:
+        # The region where the WAF instance is deployed. Valid values:
         # 
         # - **cn-hangzhou**: the Chinese mainland.
         # 
-        # - **ap-southeast-1**: regions outside the Chinese mainland.
+        # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
-        # The ID of the Alibaba Cloud resource group.
+        # The Alibaba Cloud resource group ID.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The beginning of the time range to query. This value is a UNIX timestamp. Unit: seconds. The time is in Coordinated Universal Time (UTC).
+        # The start time of the query. Specify the value as a UNIX timestamp (UTC). Unit: seconds.
         # 
-        # > Compliance review supports queries for the last month, the last 3 months, the last 6 months, the last 12 months, and the period from January 1 of the previous year to the present. Make sure that the specified time range is valid.
+        # > Compliance audit currently supports querying data only for the last 1 month, last 3 months, last 6 months, last 12 months, or from January 1 of the previous year to the present. The query time range must fall within one of these supported intervals. **StartTime** must not be earlier than the start time of the corresponding interval. The query fails if the time range exceeds the supported scope.
+        # > This parameter is optional. Default value: 1 month before the current time.
         self.start_time = start_time
 
     def validate(self):

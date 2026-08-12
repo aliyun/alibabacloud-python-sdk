@@ -39,7 +39,7 @@ class DescribeDomainDetailResponseBody(DaraModel):
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The SM2 certificate information.
         self.sm2cert_detail = sm2cert_detail
-        # The status of the domain name. Valid values:
+        # The domain name status. Valid values:
         self.status = status
 
     def validate(self):
@@ -238,47 +238,89 @@ class DescribeDomainDetailResponseBodyRedirect(DaraModel):
         self.backend_ports = backend_ports
         # The back-to-origin addresses of the domain name.
         self.backends = backends
-        # The secondary back-to-origin addresses of the domain name.
+        # The secondary origin addresses of the domain name.
+        # 
+        # > This parameter is about to be deprecated. Use **BackUpBackendList** to obtain the related information.
         self.backup_backends = backup_backends
         # The connection timeout period. Unit: seconds.
         self.connect_timeout = connect_timeout
         # Indicates whether forced HTTP back-to-origin is enabled. Valid values:
+        # 
+        # - **true**: Forced HTTP back-to-origin is enabled.
+        # 
+        # - **false**: Forced HTTP back-to-origin is not enabled.
         self.focus_http_backend = focus_http_backend
-        # The HTTP/2 back-to-origin setting.
+        # Indicates whether HTTP/2 back-to-origin is enabled.
         self.http_2origin = http_2origin
-        # The number of concurrent connections for HTTP/2 back-to-origin.
+        # The maximum number of concurrent connections for HTTP/2 back-to-origin.
         self.http_2origin_max_concurrency = http_2origin_max_concurrency
-        # Indicates whether persistent connections are enabled. Valid values:
+        # Specifies whether to keep the connection alive. Valid values:
+        # 
+        # - **true** (default): The connection is kept alive.
+        # 
+        # - **false**: The connection is not kept alive.
         self.keepalive = keepalive
         # The number of requests that reuse a persistent connection. Valid values: 60 to 1000.
         self.keepalive_requests = keepalive_requests
         # The idle timeout period for persistent connections. Valid values: 1 to 60. Default value: 15. Unit: seconds.
         self.keepalive_timeout = keepalive_timeout
-        # The load balancing algorithm used for back-to-origin. Valid values:
+        # The load balancing algorithm used for back-to-origin requests. Valid values:
+        # 
+        # - **iphash**: IP Hash algorithm.
+        # 
+        # - **roundRobin**: round-robin algorithm.
+        # 
+        # - **leastTime**: Least Time algorithm.
         self.loadbalance = loadbalance
         # The maximum request body size. Valid values: 2 to 10. Default value: 2. Unit: GB.
         self.max_body_size = max_body_size
-        # Indicates whether the feature for preserving the originating IP address of the client is enabled.
+        # Indicates whether the client source IP address preservation feature is enabled.
+        # - **true**: The client source IP address preservation feature is enabled. After this feature is enabled, backend services can view the original IP address of the client.
+        # - **false**: The client source IP address preservation feature is not enabled.
         self.proxy_protocol = proxy_protocol
         # The read timeout period. Unit: seconds.
         self.read_timeout = read_timeout
-        # The traffic mark fields and values of the domain name, which are used to mark traffic processed by WAF.
+        # The traffic tag fields and values of the domain name, which are used to tag traffic processed by WAF.
         self.request_headers = request_headers
-        # Indicates whether WAF retries when back-to-origin fails. Valid values:
+        # Specifies whether to retry when WAF fails to forward requests to the origin server. Valid values:
+        # 
+        # - **true** (default): Retry.
+        # 
+        # - **false**: Do not retry.
         self.retry = retry
-        # Indicates whether back-to-origin SNI is enabled. Valid values:
+        # Indicates whether Server Name Indication (SNI) is enabled for back-to-origin requests. Valid values:
+        # 
+        # - **true**: SNI is enabled for back-to-origin requests.
+        # 
+        # - **false** (default): SNI is not enabled for back-to-origin requests.
         self.sni_enabled = sni_enabled
         # The value of the custom SNI extension field.
         self.sni_host = sni_host
-        # Indicates whether WAF is allowed to overwrite WL-Proxy-Client-IP. Valid values:
+        # Specifies whether WAF is allowed to overwrite the WL-Proxy-Client-IP header. Valid values:
+        # 
+        # - **true** (default): WAF is allowed to overwrite the header.
+        # 
+        # - **false**: WAF is not allowed to overwrite the header.
         self.wlproxy_client_ip = wlproxy_client_ip
-        # Indicates whether WAF is allowed to overwrite Web-Server-Type. Valid values:
+        # Specifies whether WAF is allowed to overwrite the Web-Server-Type header. Valid values:
+        # 
+        # - **true** (default): WAF is allowed to overwrite the header.
+        # 
+        # - **false**: WAF is not allowed to overwrite the header.
         self.web_server_type = web_server_type
         # The write timeout period. Unit: seconds.
         self.write_timeout = write_timeout
-        # Indicates whether WAF is allowed to overwrite X-Client-IP. Valid values:
+        # Specifies whether WAF is allowed to overwrite X-Client-IP. Valid values:
+        # 
+        # - **true** (default): WAF is allowed to overwrite the header.
+        # 
+        # - **false**: WAF is not allowed to overwrite the header.
         self.xclient_ip = xclient_ip
-        # Indicates whether WAF is allowed to overwrite X-True-IP. Valid values:
+        # Specifies whether WAF is allowed to overwrite the X-True-IP header. Valid values:
+        # 
+        # - **true** (default): WAF is allowed to overwrite the header.
+        # 
+        # - **false**: WAF is not allowed to overwrite the header.
         self.xtrue_ip = xtrue_ip
         # Indicates whether X-Forward-For-Proto is used to pass the protocol used by WAF. Valid values:
         self.xff_proto = xff_proto
@@ -593,6 +635,9 @@ class DescribeDomainDetailResponseBodyRedirectBackendPorts(DaraModel):
         # The listener port.
         self.listen_port = listen_port
         # The protocol type of the listener port. Valid values:
+        # 
+        # - **http**: HTTP protocol.
+        # - **https**: HTTPS protocol.
         self.protocol = protocol
 
     def validate(self):
@@ -659,23 +704,39 @@ class DescribeDomainDetailResponseBodyListen(DaraModel):
         self.custom_ciphers = custom_ciphers
         # Indicates whether TLS 1.3 is supported. Valid values:
         self.enable_tlsv_3 = enable_tlsv_3
-        # Indicates whether the exclusive IP address feature is enabled. Valid values:
+        # Indicates whether an exclusive IP address is enabled. Valid values:
+        # 
+        # - **true**: An exclusive IP address is enabled.
+        # 
+        # - **false**: An exclusive IP address is not enabled.
         self.exclusive_ip = exclusive_ip
         # Indicates whether HTTPS forced redirect is enabled. Valid values:
         self.focus_https = focus_https
         # Indicates whether HSTS includes subdomains. Valid values:
+        # 
+        # - **true**: Enabled.
+        # 
+        # - **false**: Not enabled.
         self.hsts_include_sub_domain = hsts_include_sub_domain
         # The HSTS expiration time. Unit: seconds.
         self.hsts_max_age = hsts_max_age
         # Indicates whether HSTS preloading is enabled. This feature is disabled by default. Valid values:
         self.hsts_preload = hsts_preload
         # Indicates whether HTTP/2 is enabled. Valid values:
+        # 
+        # - **true**: HTTP/2 is enabled.
+        # 
+        # - **false**: HTTP/2 is not enabled.
         self.http_2enabled = http_2enabled
         # The listening port for the HTTP protocol.
         self.http_ports = http_ports
         # The listening port for the HTTPS protocol.
         self.https_ports = https_ports
         # Indicates whether IPv6 is enabled. Valid values:
+        # 
+        # - **true**: IPv6 is enabled.
+        # 
+        # - **false**: IPv6 is not enabled.
         self.ipv_6enabled = ipv_6enabled
         # The type of protection resource to use. Valid values:
         self.protection_resource = protection_resource
@@ -686,10 +747,26 @@ class DescribeDomainDetailResponseBodyListen(DaraModel):
         # Indicates whether the China Encryption Standard (SM) certificate is enabled. Valid values:
         self.sm2enabled = sm2enabled
         # The TLS version. Valid values:
+        # 
+        # - **tlsv1**: Supports TLS 1.0 and later. Provides the highest compatibility and the lowest security.
+        # 
+        # - **tlsv1.1**: Supports TLS 1.1 and later. Provides good compatibility and good security.
+        # 
+        # - **tlsv1.2**: Supports TLS 1.2 and later. Provides good compatibility and the highest security.
+        # 
+        # - **tlsv1.3**: Supports only TLS 1.3. Provides the highest security and the lowest compatibility.
         self.tlsversion = tlsversion
         # The method that WAF uses to obtain the originating IP address of the client. Valid values:
+        # 
+        # - **0**: The client access traffic is not forwarded by other Layer 7 proxies before reaching WAF.
+        # 
+        # - **1**: WAF reads the first value in the X-Forwarded-For (XFF) header field of the request as the client IP address.
+        # 
+        # - **2**: WAF reads the value of a custom header field that you specify in the request as the client IP address.
+        # 
+        # - **3**: WAF reads the Client IP from the Proxy Protocol header as the client IP address.
         self.xff_header_mode = xff_header_mode
-        # The list of custom header fields used to obtain the client IP address.
+        # The custom header fields used to obtain the client IP address.
         self.xff_headers = xff_headers
 
     def validate(self):

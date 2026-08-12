@@ -26,11 +26,11 @@ class ModifyHybridCloudServerRequest(DaraModel):
         self.custom_name = custom_name
         # The ID of the WAF instance.
         # 
-        # > You can call [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) to query the ID of the current WAF instance.
+        # > You can call the [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) operation to query the ID of the current WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The node ID.
+        # The machine identifier (MID).
         # 
         # This parameter is required.
         self.mid = mid
@@ -42,7 +42,7 @@ class ModifyHybridCloudServerRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_code = region_code
-        # The region where the WAF instance is deployed. Valid values:
+        # The region where the WAF instance resides. Valid values:
         # 
         # - **cn-hangzhou**: the Chinese mainland.
         # 

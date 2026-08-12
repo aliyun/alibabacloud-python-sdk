@@ -19,11 +19,15 @@ class DeleteDomainRequest(DaraModel):
         # - **hybrid_cloud_cname**: hybrid cloud reverse proxy access.
         self.access_type = access_type
         # The domain name that has been connected to WAF.
+        # 
+        # > You must specify at least one of **Domain** and **DomainId**.
         self.domain = domain
         # The domain name ID.
+        # 
+        # > You must specify at least one of **Domain** and **DomainId**.
         self.domain_id = domain_id
         # The ID of the WAF instance.
-        # > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the WAF instance.
+        # > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id

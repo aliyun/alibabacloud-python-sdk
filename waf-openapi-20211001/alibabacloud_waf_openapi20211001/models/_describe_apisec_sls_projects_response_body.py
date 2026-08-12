@@ -12,7 +12,7 @@ class DescribeApisecSlsProjectsResponseBody(DaraModel):
         projects: List[str] = None,
         request_id: str = None,
     ):
-        # The names of the projects in Simple Log Service.
+        # The list of Simple Log Service projects.
         self.projects = projects
         # The request ID.
         self.request_id = request_id

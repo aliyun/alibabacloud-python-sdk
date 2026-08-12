@@ -20,21 +20,21 @@ class DescribeHybridCloudUnassignedMachinesRequest(DaraModel):
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # The hostname of the server that you want to query.
+        # The hostname.
         self.host_name = host_name
-        # The ID of the Web Application Firewall (WAF) instance.
+        # The ID of the WAF instance.
         # 
-        # > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the current WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The IP address of the server that you want to query.
+        # The IP address of the server.
         self.ip = ip
-        # The page number of the page to return. Default value: **1**.
+        # The page number to return in a paged query. Default value: **1**. For more information about paging, see the relevant parameter descriptions.
         self.page_number = page_number
-        # The number of entries to return on each page. Default value: **10**.
+        # The number of entries per page in a paged query. Default value: **10**, which indicates that each page contains 10 entries. For more information about paging, see the relevant parameter descriptions.
         self.page_size = page_size
-        # The region where the WAF instance resides. Valid values:
+        # The region where the WAF instance is deployed. Valid values:
         # 
         # - **cn-hangzhou**: the Chinese mainland.
         # 

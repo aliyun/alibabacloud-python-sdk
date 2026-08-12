@@ -14,11 +14,11 @@ class DescribeHybridCloudBasicMonitorResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of basic monitoring metrics.
+        # The list of basic monitoring items.
         self.basic_monitors = basic_monitors
         # The request ID.
         self.request_id = request_id
-        # > This parameter is deprecated. No meaningful data is returned.
+        # > This parameter is deprecated and no longer returns meaningful data.
         self.total_count = total_count
 
     def validate(self):
@@ -72,9 +72,9 @@ class DescribeHybridCloudBasicMonitorResponseBodyBasicMonitors(DaraModel):
         # 
         # - **normal**: Normal.
         # 
-        # - \\*\\*\\*\\*: Abnormal.
+        # - `****`: abnormal (four asterisk characters are returned).
         self.levle = levle
-        # The metric. Valid values:
+        # The monitoring item. Valid values:
         # 
         # - **basic_monitor_cpu_usage**: CPU.
         # 
@@ -82,7 +82,7 @@ class DescribeHybridCloudBasicMonitorResponseBodyBasicMonitors(DaraModel):
         # 
         # - **basic_monitor_disk_usage**: disk.
         self.monitor_name = monitor_name
-        # The usage percentage.
+        # The usage ratio.
         self.use_ratio = use_ratio
 
     def validate(self):

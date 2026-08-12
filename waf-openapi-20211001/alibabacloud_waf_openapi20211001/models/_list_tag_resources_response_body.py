@@ -14,11 +14,11 @@ class ListTagResourcesResponseBody(DaraModel):
         request_id: str = None,
         tag_resources: List[main_models.ListTagResourcesResponseBodyTagResources] = None,
     ):
-        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+        # The token that is used to start the next query. If NextToken is empty, no more results exist.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The resource list.
+        # The list of resources.
         self.tag_resources = tag_resources
 
     def validate(self):
@@ -71,11 +71,11 @@ class ListTagResourcesResponseBodyTagResources(DaraModel):
     ):
         # The resource ID.
         self.resource_id = resource_id
-        # The resource type. ALIYUN::WAF::DEFENSERESOURCE is returned.
+        # The resource type. Fixed value: ALIYUN::WAF::DEFENSERESOURCE.
         self.resource_type = resource_type
-        # The tag key.
+        # The tag key of the resource.
         self.tag_key = tag_key
-        # The tag value.
+        # The tag value of the resource.
         self.tag_value = tag_value
 
     def validate(self):

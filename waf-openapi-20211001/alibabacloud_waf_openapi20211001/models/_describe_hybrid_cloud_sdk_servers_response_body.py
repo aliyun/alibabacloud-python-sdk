@@ -14,11 +14,11 @@ class DescribeHybridCloudSdkServersResponseBody(DaraModel):
         sdk_servers: List[main_models.DescribeHybridCloudSdkServersResponseBodySdkServers] = None,
         total_count: int = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The information about the hybrid cloud SDK servers.
+        # The SDK information.
         self.sdk_servers = sdk_servers
-        # The total number of hybrid cloud SDK servers returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -75,29 +75,27 @@ class DescribeHybridCloudSdkServersResponseBodySdkServers(DaraModel):
         status: str = None,
         update_time: int = None,
     ):
-        # The name of the hybrid cloud cluster to which the SDK server belongs.
+        # The cluster name.
         self.cluster_name = cluster_name
-        # The time when the hybrid cloud SDK server was created. This value is a UNIX timestamp in milliseconds.
+        # The timestamp when the entry was created.
         self.create_time = create_time
-        # The hostname of the hybrid cloud SDK server.
+        # The hostname.
         self.host_name = host_name
-        # The IP address of the hybrid cloud SDK server.
+        # The IP address.
         self.ip = ip
-        # The ID of the SDK server.
+        # The machine identifier (MID).
         self.mid = mid
-        # The address of the protection group associated with the SDK server.
+        # The IP address of the backend server.
         self.protection_group_address = protection_group_address
-        # Indicates whether traffic redirection is enabled. Valid values:
-        # 
-        # - **on**: Traffic redirection is enabled.
-        # 
-        # - **off**: Traffic redirection is disabled.
+        # The traffic redirection status. Valid values:
+        # - **on**: enabled.
+        # - **off**: disabled.
         self.pullin_status = pullin_status
-        # The ID of the resource.
+        # The resource ID.
         self.resource_id = resource_id
-        # The status of the hybrid cloud SDK server.
+        # The status.
         self.status = status
-        # The time when the hybrid cloud SDK server was last updated. This value is a UNIX timestamp in milliseconds.
+        # The timestamp when the entry was updated.
         self.update_time = update_time
 
     def validate(self):

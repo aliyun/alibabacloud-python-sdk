@@ -15,43 +15,41 @@ class ModifyApisecLogDeliveryRequest(DaraModel):
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
     ):
-        # The type of the log subscription. Valid values:
+        # The log subscription type. Valid values:
         # 
         # - **risk**: risk information.
-        # 
         # - **event**: attack event information.
-        # 
         # - **asset**: asset information.
         # 
         # This parameter is required.
         self.assert_key = assert_key
-        # The ID of the WAF instance.
+        # Instance ID of the WAF instance.
         # 
-        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the region where logs are stored.
+        # The region ID for log storage.
         # 
         # > You can call the [DescribeUserSlsLogRegions](https://help.aliyun.com/document_detail/2712598.html) operation to query available log storage regions.
         # 
         # This parameter is required.
         self.log_region_id = log_region_id
-        # The name of the Logstore in Simple Log Service.
+        # The name of the SLS Logstore.
         # 
-        # > API security logs can only be delivered to Logstores whose name starts with apisec-.
+        # > You can call the [DescribeApisecSlsLogStores](https://help.aliyun.com/document_detail/2932935.html) operation to query available Logstores.
         # 
         # This parameter is required.
         self.log_store_name = log_store_name
-        # The name of the project in Simple Log Service.
+        # The name of the SLS project.
         # 
-        # > API security logs can only be delivered to projects whose name starts with apisec-.
+        # > You can call the [DescribeApisecSlsProjects](https://help.aliyun.com/document_detail/2932936.html) operation to query available projects.
         # 
         # This parameter is required.
         self.project_name = project_name
-        # The region in which the WAF instance is deployed. Valid values:
+        # The region where the WAF instance is deployed. Valid values:
         # 
-        # - **cn-hangzhou**: Chinese mainland.
+        # - **cn-hangzhou**: the Chinese mainland.
         # 
         # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id

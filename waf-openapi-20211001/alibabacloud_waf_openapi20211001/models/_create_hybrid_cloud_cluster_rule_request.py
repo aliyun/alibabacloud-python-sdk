@@ -15,19 +15,18 @@ class CreateHybridCloudClusterRuleRequest(DaraModel):
         rule_status: str = None,
         rule_type: str = None,
     ):
-        # The ID of the Hybrid Cloud WAF cluster.
-        # 
-        # > This parameter applies only to hybrid cloud scenarios. Call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to obtain information about Hybrid Cloud WAF clusters.
+        # The ID of the hybrid cloud cluster.
+        # > This parameter applies only to hybrid cloud scenarios. You can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to obtain hybrid cloud cluster information.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # The ID of the WAF instance.
+        # Instance ID of the WAF instance.
         # 
-        # > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the current WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region where the WAF instance resides. Valid values:
+        # The region where the WAF instance is deployed. Valid values:
         # 
         # - **cn-hangzhou**: the Chinese mainland.
         # 
@@ -35,35 +34,25 @@ class CreateHybridCloudClusterRuleRequest(DaraModel):
         self.region_id = region_id
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The configuration of the traffic redirection rule, in JSON format.
+        # The traffic redirection rule configuration.
         # 
-        # > The modes are mutually exclusive. You can select only one mode. If you change the mode, all traffic redirection rules in the previous mode are cleared.
-        # 
-        # - **check_mode**: the traffic redirection mode. Valid values:
-        # 
-        #   - **all**: redirects all traffic.
-        # 
-        #   - **part**: redirects a specific portion of traffic.
-        # 
-        # - **type**: the match type for the rule. Valid values:
-        # 
-        #   - **exact**: exact match.
-        # 
-        #   - **regex**: regular expression match.
-        # 
-        # - **substance**: the match value of the rule.
+        # > The mode options are mutually exclusive. You can select only one. If you change the mode, all traffic redirection rules under the original mode are cleared.
+        # - **check_mode**: the mode. Valid values:
+        #     - **all**: full traffic redirection.
+        #     - **part**: partial traffic redirection.
+        # - **type**: the rule matching type. Valid values:
+        #     - **exact**: exact match.
+        #     - **regex**: regular expression.
+        # - **substance**: the rule value.
         self.rule_config = rule_config
-        # The status of the traffic redirection rule. Valid values:
-        # 
+        # The rule status. Valid values:
         # - **on**: enabled.
-        # 
         # - **off**: disabled.
         # 
         # This parameter is required.
         self.rule_status = rule_status
-        # The type of the traffic redirection rule. Valid values:
-        # 
-        # - **pullin**: traffic redirection
+        # The rule type. Valid values:
+        # - **pullin**: cluster traffic redirection.
         # 
         # This parameter is required.
         self.rule_type = rule_type

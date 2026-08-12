@@ -17,17 +17,17 @@ class DescribeBotRuleLabelsRequest(DaraModel):
     ):
         # Instance ID of the WAF instance.
         # 
-        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of your current WAF instance.
+        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of your WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
         # The type of bot rule tag to query.
         self.label_type = label_type
-        # The number of entries per page for paging. Valid values: 1 to 200. Default value: 20.
+        # The number of entries per page in a paged query. Valid values: 1 to 200. Default value: 20. This parameter is used for paging.
         self.max_results = max_results
-        # The pagination token for the next page. If a next page exists, this field has a return value.
+        # The pagination token for the next page. If a value is returned for this parameter, the next page exists.
         # 
-        # > If this parameter has a return value, a next page exists. You can use the returned **NextToken** as a request parameter to obtain the data on the next page. Repeat this process until no value is returned, which indicates that all data has been retrieved.
+        # > If this parameter has a return value, the next page exists. Use the returned NextToken value as a request parameter to retrieve the next page of data. Repeat until no value is returned, which indicates that all data has been retrieved.
         self.next_token = next_token
         # The region where the WAF instance is deployed. Valid values:
         # 
@@ -37,7 +37,7 @@ class DescribeBotRuleLabelsRequest(DaraModel):
         self.region_id = region_id
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The bot management protection scenario type.
+        # The type of bot management protection scenario.
         self.sub_scene = sub_scene
 
     def validate(self):

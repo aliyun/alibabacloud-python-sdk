@@ -16,13 +16,13 @@ class ModifyHybridCloudClusterRuleRequest(DaraModel):
         rule_status: str = None,
         rule_type: str = None,
     ):
-        # [Deprecated] The ID of the hybrid cloud cluster.
+        # **[Deprecated]** The ID of the hybrid cloud cluster.
         self.cluster_id = cluster_id
         # The resource ID of the cluster rule.
         self.cluster_rule_resource_id = cluster_rule_resource_id
         # Instance ID of the WAF instance.
         # 
-        # > You can call [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) to query instance ID of the current WAF instance.
+        # > You can call the [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) operation to query instance ID of the current WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -37,19 +37,19 @@ class ModifyHybridCloudClusterRuleRequest(DaraModel):
         # The traffic redirection rule configuration.
         # 
         # <notice>The mode cannot be modified.</notice>
-        # - **check_mode**: The mode. Valid values:
+        # - **check_mode**: the mode. Valid values:
         #   - **all**: full traffic redirection.
         #   - **part**: partial traffic redirection.
-        # - **type**: The rule matching type. Valid values:
+        # - **type**: the rule matching type. Valid values:
         #   - **exact**: exact match.
         #   - **regex**: regular expression.
-        # - **substance**: The rule value.
+        # - **substance**: the rule value.
         self.rule_config = rule_config
         # The rule status. Valid values:
         # - **on**: enabled.
         # - **off**: disabled.
         self.rule_status = rule_status
-        # [Deprecated] The rule type. Valid values:
+        # **[Deprecated]** The rule type. Valid values:
         # - **pullin**: traffic redirection configuration.
         self.rule_type = rule_type
 

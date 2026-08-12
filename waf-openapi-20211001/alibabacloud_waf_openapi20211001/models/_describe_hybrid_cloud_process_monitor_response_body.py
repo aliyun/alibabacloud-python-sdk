@@ -14,11 +14,11 @@ class DescribeHybridCloudProcessMonitorResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of application statuses.
+        # The application status list.
         self.process_monitors = process_monitors
         # The request ID.
         self.request_id = request_id
-        # > This parameter is deprecated and no longer returns a valid value.
+        # **[Deprecated]** This parameter is deprecated and no longer returns meaningful data.
         self.total_count = total_count
 
     def validate(self):
@@ -68,39 +68,26 @@ class DescribeHybridCloudProcessMonitorResponseBodyProcessMonitors(DaraModel):
         process_name: str = None,
         process_status: int = None,
     ):
-        # The severity level of the application status. Valid values:
+        # The status. Valid values:
         # 
-        # - **normal**: normal.
-        # 
+        # - **normal**: Normal.
         # - **critical**: abnormal.
         self.levle = levle
-        # The name of the application running on the cluster node. Valid values:
-        # 
-        # - **tianqingproxy**: the central management service
-        # 
-        # - **redis**: the storage service
-        # 
-        # - **scc**: the traffic metering service
-        # 
-        # - **keeper**: the threat intelligence service
-        # 
-        # - **node_exporter**: the application log upload service
-        # 
-        # - **xagent**: the traffic detection service
-        # 
-        # - **noproxy**: the traffic forwarding service
-        # 
-        # - **xloge**: the attack log upload service
-        # 
-        # - **ilogtail**: the log collection service
-        # 
-        # - **xlogd**: the log analysis service
+        # The service. Valid values:
+        # - **tianqingproxy**: centralized management service.
+        # - **redis**: storage service.
+        # - **scc**: traffic computing service.
+        # - **keeper**: threat intelligence service.
+        # - **node_exporter**: application log upload service.
+        # - **xagent**: traffic detection service.
+        # - **noproxy**: traffic forwarding service.
+        # - **xloge**: attack log upload service.
+        # - **ilogtail**: log collection service.
+        # - **xlogd**: log analysis feature.
         self.process_name = process_name
-        # The running status of the application. Valid values:
-        # 
+        # The running status. Valid values:
         # - **0**: abnormal.
-        # 
-        # - **1**: normal.
+        # - **1**: Normal.
         self.process_status = process_status
 
     def validate(self):

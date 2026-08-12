@@ -88,7 +88,7 @@ class DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails(DaraMo
         xff_headers: List[str] = None,
         xff_proto: bool = None,
     ):
-        # The list of certificates for the cloud service ports connected to WAF.
+        # The list of certificates for the cloud service port connected to WAF.
         self.certificates = certificates
         # The cipher suite type. Valid values:
         # 
@@ -128,7 +128,7 @@ class DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails(DaraMo
         self.keepalive_requests = keepalive_requests
         # The idle timeout period for keep-alive connections. Valid values: 10 to 3600. Default value: 15. Unit: seconds.
         # 
-        # > Specifies how long an idle keep-alive connection is retained before it is released.
+        # > Specifies how long an idle keep-alive connection remains open before it is released.
         self.keepalive_timeout = keepalive_timeout
         # The traffic tag fields and values of the domain name, used to mark traffic processed by WAF.
         # 
@@ -136,7 +136,7 @@ class DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails(DaraMo
         self.log_headers = log_headers
         # The maximum request body size. Valid values: 2 to 10. Default value: 2. Unit: GB.
         self.max_body_size = max_body_size
-        # The UID that indicates the resource ownership of the cloud service.
+        # The UID of the cloud service resource ownership.
         self.owner_user_id = owner_user_id
         # The port of the cloud service that is connected to WAF.
         self.port = port
@@ -144,7 +144,7 @@ class DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails(DaraMo
         # - **http**: HTTP protocol.
         # - **https**: HTTPS protocol.
         self.protocol = protocol
-        # The read timeout period. Unit: seconds.
+        # The read timeout period, in seconds.
         # Valid values: 1 to 3600.
         self.read_timeout = read_timeout
         # The domain name status. Valid values:
@@ -162,7 +162,7 @@ class DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails(DaraMo
         # - **InvalidCert**: invalid certificate.
         # 
         # - **ClientCertOpend**: mutual authentication is enabled.
-        # - **NetworkConfigLost**: the cloud service network configuration is abnormal.
+        # - **NetworkConfigLost**: cloud service network configuration exception.
         self.sub_status = sub_status
         # The specific reasons for the protection exception status. This parameter has a value only when SubStatus is set to InvalidCert.
         self.sub_status_details = sub_status_details
@@ -176,7 +176,7 @@ class DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails(DaraMo
         # 
         # - **tlsv1.3**: Supports only TLS 1.3. Highest security, lower compatibility.
         self.tlsversion = tlsversion
-        # The write timeout period. Unit: seconds.
+        # The write timeout period, in seconds.
         # Valid values: 1 to 3600.
         self.write_timeout = write_timeout
         # The method that WAF uses to obtain the originating IP address of the client. Valid values:
@@ -186,12 +186,14 @@ class DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails(DaraMo
         # - **1**: WAF reads the first value in the X-Forwarded-For (XFF) header as the client IP address.
         # 
         # - **2**: WAF reads the value of a custom header field that you specify as the client IP address.
+        # 
+        # - **3**: WAF reads the Client IP from the Proxy Protocol header as the client IP address.
         self.xff_header_mode = xff_header_mode
-        # The list of custom header fields used to obtain the client IP address, in the format **["header1","header2",...]**.
+        # The list of custom header fields used to obtain the client IP address, in the format **["header1","header2",……]**.
         # 
         # > This parameter is required only when **XffHeaderMode** is set to 2 (WAF reads the value of a custom header field that you specify as the client IP address).
         self.xff_headers = xff_headers
-        # Specifies whether the X-Forward-For-Proto header is used to pass the WAF protocol. Valid values:
+        # Specifies whether the X-Forward-For-Proto header passes the WAF protocol. Valid values:
         # 
         # - **true** (default): The WAF protocol is passed.
         # 
@@ -411,7 +413,7 @@ class DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetailsSubStat
         self.product_cert_name = product_cert_name
         # The specific reason for the protection exception status. Valid values:
         # 
-        # - **UserUploadCert**: The certificate is manually uploaded.
+        # - **UserUploadCert**: The certificate was manually uploaded.
         # 
         # - **CertNotExistInCertCenter**: The certificate does not exist in SSL Certificates Service.
         # - **CertExpired**: The cloud certificate has expired.
@@ -494,7 +496,7 @@ class DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetailsLogHead
     ):
         # The specified custom request header field.
         self.key = key
-        # The value of the specified custom request header field.
+        # The value set for the specified custom request header field.
         self.value = value
 
     def validate(self):

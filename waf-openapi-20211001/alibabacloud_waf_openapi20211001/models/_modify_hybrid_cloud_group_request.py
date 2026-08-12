@@ -15,25 +15,25 @@ class ModifyHybridCloudGroupRequest(DaraModel):
         remark: str = None,
         resource_manager_resource_group_id: str = None,
     ):
-        # The ID of the cluster.
+        # The cluster ID.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # The ID of the hybrid cloud group.
+        # The node group ID.
         # 
         # This parameter is required.
         self.group_id = group_id
-        # The name of the hybrid cloud group.
+        # The node group name.
         # 
         # This parameter is required.
         self.group_name = group_name
         # The ID of the WAF instance.
         # 
-        # > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to obtain the ID of the WAF instance.
+        # > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region of the WAF instance. Valid values:
+        # The region where the WAF instance is deployed. Valid values:
         # 
         # - **cn-hangzhou**: the Chinese mainland.
         # 
@@ -41,7 +41,7 @@ class ModifyHybridCloudGroupRequest(DaraModel):
         self.region_id = region_id
         # The remarks.
         self.remark = remark
-        # The ID of the resource group.
+        # The Alibaba Cloud resource group ID.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
 
     def validate(self):

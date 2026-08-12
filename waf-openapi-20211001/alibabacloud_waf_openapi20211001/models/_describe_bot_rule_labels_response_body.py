@@ -16,13 +16,13 @@ class DescribeBotRuleLabelsResponseBody(DaraModel):
         rule_labels: List[main_models.DescribeBotRuleLabelsResponseBodyRuleLabels] = None,
         total_count: int = None,
     ):
-        # The number of entries per page for paging. Valid values: 1 to 200. Default value: 20.
+        # The number of entries per page in a paged query. Valid values: 1 to 200. Default value: 20. This parameter is used for paging.
         self.max_results = max_results
-        # The pagination token for the next page. If a next page exists, this field has a return value.
+        # The pagination token for the next page. If a value is returned for this parameter, the next page exists.
         # 
-        # > If this parameter has a return value, a next page exists. You can use the returned **NextToken** as a request parameter to obtain the data on the next page. Repeat this process until no value is returned, which indicates that all data has been retrieved.
+        # > If this parameter has a return value, the next page exists. Use the returned NextToken value as a request parameter to retrieve the next page of data. Repeat until no value is returned, which indicates that all data has been retrieved.
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The list of bot management rule tags.
         self.rule_labels = rule_labels
@@ -104,8 +104,8 @@ class DescribeBotRuleLabelsResponseBodyRuleLabels(DaraModel):
         # - **block**: Block.
         # - **monitor**: Monitor.
         # - **js**: JavaScript verification.
-        # - **captcha**: Slider CAPTCHA.
-        # - **captcha_strict**: Strict slider CAPTCHA.
+        # - **captcha**: slider CAPTCHA.
+        # - **captcha_strict**: strict slider CAPTCHA.
         # - **bypass**: Allow.
         self.default_action = default_action
         # The default configurations corresponding to the label.
