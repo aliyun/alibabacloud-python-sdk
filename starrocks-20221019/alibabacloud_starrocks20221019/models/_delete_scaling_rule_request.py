@@ -11,10 +11,16 @@ class DeleteScalingRuleRequest(DaraModel):
         scaling_rule_id: str = None,
         trigger_type: str = None,
     ):
+        # Compute group ID.
+        # 
         # This parameter is required.
         self.node_group_id = node_group_id
+        # ID of the scaling rule to delete.
+        # 
         # This parameter is required.
         self.scaling_rule_id = scaling_rule_id
+        # Trigger type.
+        # 
         # This parameter is required.
         self.trigger_type = trigger_type
 

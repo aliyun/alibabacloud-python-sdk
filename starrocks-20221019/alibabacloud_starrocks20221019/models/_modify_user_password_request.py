@@ -10,7 +10,9 @@ class ModifyUserPasswordRequest(DaraModel):
         instance_id: str = None,
         password: str = None,
     ):
+        # The instance ID.
         self.instance_id = instance_id
+        # The client\\"s new password.
         self.password = password
 
     def validate(self):

@@ -23,18 +23,33 @@ class RestoreInstanceRequest(DaraModel):
         v_switches: List[main_models.RestoreInstanceRequestVSwitches] = None,
         vpc_id: str = None,
     ):
+        # Cluster administrator password.
         self.admin_password = admin_password
+        # Enable auto-renewal. This parameter applies only when PayType is prePaid. Default: false.
         self.auto_renew = auto_renew
+        # Backup job ID.
         self.backup_task_id = backup_task_id
+        # Subscription duration. This parameter applies only when PayType is prePaid.
         self.duration = duration
+        # Instance name.
         self.instance_name = instance_name
+        # Payment type:
+        # prePaid for subscription
+        # postPaid for pay-as-you-go
         self.pay_type = pay_type
+        # Billing cycle unit. This parameter applies only when PayType is prePaid.
+        # Month for monthly billing
+        # Year for yearly billing
         self.pricing_cycle = pricing_cycle
+        # Region ID.
         self.region_id = region_id
+        # Resource group ID.
         self.resource_group_id = resource_group_id
+        # Tag struct.
         self.tags = tags
+        # VSwitch and zone information.
         self.v_switches = v_switches
-        # vpc ID
+        # VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -146,7 +161,9 @@ class RestoreInstanceRequestVSwitches(DaraModel):
         vsw_id: str = None,
         zone_id: str = None,
     ):
+        # VSwitch ID.
         self.vsw_id = vsw_id
+        # Zone ID of the VSwitch.
         self.zone_id = zone_id
 
     def validate(self):
@@ -181,7 +198,9 @@ class RestoreInstanceRequestTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # Tag key.
         self.key = key
+        # Tag value.
         self.value = value
 
     def validate(self):

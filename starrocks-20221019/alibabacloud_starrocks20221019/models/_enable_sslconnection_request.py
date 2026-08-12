@@ -14,11 +14,17 @@ class EnableSSLConnectionRequest(DaraModel):
         ssl_key_password: str = None,
         ssl_keystore_password: str = None,
     ):
+        # Custom SSL certificate.
         self.custom_sslcertificate = custom_sslcertificate
+        # Specifies whether to use a custom certificate.
         self.enable_custom = enable_custom
+        # Instance ID.
         self.instance_id = instance_id
+        # Indicates whether this request renews an existing certificate.
         self.renewal = renewal
+        # Key password.
         self.ssl_key_password = ssl_key_password
+        # Keystore password.
         self.ssl_keystore_password = ssl_keystore_password
 
     def validate(self):

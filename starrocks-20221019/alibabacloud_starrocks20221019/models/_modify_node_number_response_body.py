@@ -15,7 +15,7 @@ class ModifyNodeNumberResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The detailed information about the failed permission verification.
+        # The details of the permission verification failure.
         self.access_denied_detail = access_denied_detail
         # The order ID.
         self.data = data

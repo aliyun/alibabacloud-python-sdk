@@ -17,15 +17,31 @@ class DescribeInstanceConfigsRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # Indicates whether the configuration item can be modified.
         self.allow_modify = allow_modify
+        # The key of the configuration item.
         self.config_key = config_key
+        # The type of the configuration item. Valid values:
+        # 
+        # - FE
+        # 
+        # - BE
+        # 
+        # - CORE
         self.config_type = config_type
+        # The description of the configuration item\\"s feature.
         self.description = description
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Indicates whether to return all configuration items.
         self.need_total = need_total
+        # The compute group ID.
         self.node_group_id = node_group_id
+        # The page number for the query. The default value is 1.
         self.page_number = page_number
+        # The number of entries per page for a paged query. The default value is 20.
         self.page_size = page_size
 
     def validate(self):

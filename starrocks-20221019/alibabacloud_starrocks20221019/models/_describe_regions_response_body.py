@@ -18,13 +18,19 @@ class DescribeRegionsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # AccessDeniedDetail
+        # Details about access denial.
         self.access_denied_detail = access_denied_detail
+        # The instance information.
         self.data = data
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP request status code.
         self.http_status_code = http_status_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -99,9 +105,13 @@ class DescribeRegionsResponseBodyData(DaraModel):
         region_id: str = None,
         region_name: str = None,
     ):
+        # The description of the region.
         self.description = description
+        # The English description.
         self.description_en = description_en
+        # The region ID.
         self.region_id = region_id
+        # The region name.
         self.region_name = region_name
 
     def validate(self):

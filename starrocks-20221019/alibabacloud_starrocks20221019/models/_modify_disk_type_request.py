@@ -13,13 +13,22 @@ class ModifyDiskTypeRequest(DaraModel):
         target_disk_type: str = None,
         target_performance_level: str = None,
     ):
+        # The ID of the instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the compute group.
+        # 
         # This parameter is required.
         self.node_group_id = node_group_id
+        # The ID of the coupon.
         self.promotion_option_no = promotion_option_no
+        # The target disk type.
+        # 
         # This parameter is required.
         self.target_disk_type = target_disk_type
+        # The target disk performance level.
+        # 
         # This parameter is required.
         self.target_performance_level = target_performance_level
 

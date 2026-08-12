@@ -20,11 +20,17 @@ class QueryPriceV1ResponseBody(DaraModel):
     ):
         # AccessDeniedDetail
         self.access_denied_detail = access_denied_detail
+        # Response data.
         self.data = data
+        # Error code.
         self.err_code = err_code
+        # Error message.
         self.err_message = err_message
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the request succeeded.
         self.success = success
 
     def validate(self):
@@ -100,16 +106,27 @@ class QueryPriceV1ResponseBodyData(DaraModel):
         stand_price: float = None,
         trade_amount: float = None,
     ):
+        # Component prices.
         self.component_prices = component_prices
+        # Currency.
         self.currency = currency
+        # Promotion information.
         self.depreciate_info = depreciate_info
+        # Discount amount = original amount − billable amount (including coupon discounts).
         self.discount_amount = discount_amount
+        # Product original price.
         self.module_instance = module_instance
+        # Coupon information.
         self.optional_promotions = optional_promotions
+        # Original amount = list price × usage.
         self.original_amount = original_amount
+        # Response data structure.
         self.rules = rules
+        # Discounted price.
         self.stand_discount_price = stand_discount_price
+        # Official discounted price.
         self.stand_price = stand_price
+        # Final amount.
         self.trade_amount = trade_amount
 
     def validate(self):
@@ -237,8 +254,11 @@ class QueryPriceV1ResponseBodyDataRules(DaraModel):
         name: str = None,
         rule_desc_id: str = None,
     ):
+        # Quantity.
         self.amount = amount
+        # Rule name.
         self.name = name
+        # Rule ID.
         self.rule_desc_id = rule_desc_id
 
     def validate(self):
@@ -280,8 +300,11 @@ class QueryPriceV1ResponseBodyDataOptionalPromotions(DaraModel):
         promotion_name: str = None,
         promotion_option_no: str = None,
     ):
+        # Coupon description.
         self.promotion_desc = promotion_desc
+        # Coupon name.
         self.promotion_name = promotion_name
+        # Coupon ID.
         self.promotion_option_no = promotion_option_no
 
     def validate(self):
@@ -324,9 +347,13 @@ class QueryPriceV1ResponseBodyDataModuleInstance(DaraModel):
         stand_price: str = None,
         total_product_fee: str = None,
     ):
+        # Pricing module code.
         self.module_code = module_code
+        # Pricing module name.
         self.module_name = module_name
+        # Discounted price.
         self.stand_price = stand_price
+        # Product original price.
         self.total_product_fee = total_product_fee
 
     def validate(self):
@@ -375,9 +402,13 @@ class QueryPriceV1ResponseBodyDataDepreciateInfo(DaraModel):
         is_show: bool = None,
         original_stand_amount: float = None,
     ):
+        # Discount rate.
         self.cheap_rate = cheap_rate
+        # Total official price after discount.
         self.cheap_stand_amount = cheap_stand_amount
+        # Indicates whether to display the discount rate.
         self.is_show = is_show
+        # Original total official price.
         self.original_stand_amount = original_stand_amount
 
     def validate(self):
@@ -426,9 +457,13 @@ class QueryPriceV1ResponseBodyDataComponentPrices(DaraModel):
         original_amount: float = None,
         trade_amount: float = None,
     ):
+        # Component name.
         self.component_name = component_name
+        # Order discount amount.
         self.discount_amount = discount_amount
+        # Original price.
         self.original_amount = original_amount
+        # Final price = original price − discount amount.
         self.trade_amount = trade_amount
 
     def validate(self):

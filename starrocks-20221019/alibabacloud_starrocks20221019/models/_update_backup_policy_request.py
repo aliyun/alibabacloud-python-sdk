@@ -17,12 +17,19 @@ class UpdateBackupPolicyRequest(DaraModel):
         recurrence_values: List[int] = None,
         timeout_seconds: int = None,
     ):
+        # Validity period in days.
         self.expire_days = expire_days
+        # Trigger time: hour.
         self.hour = hour
+        # Instance ID.
         self.instance_id = instance_id
+        # Trigger time: minute.
         self.minute = minute
+        # Backup policy ID.
         self.policy_id = policy_id
+        # Numerical values for the policy execution cycle.
         self.recurrence_values = recurrence_values
+        # Timeout duration for the backup policy.
         self.timeout_seconds = timeout_seconds
 
     def validate(self):

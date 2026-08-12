@@ -10,8 +10,11 @@ class ListOperationActivityRequest(DaraModel):
         instance_id: str = None,
         operation_id: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The operation ID.
         self.operation_id = operation_id
 
     def validate(self):

@@ -15,13 +15,21 @@ class DescribeConfigHistoryRequest(DaraModel):
         page_size: int = None,
         start_time: int = None,
     ):
+        # Filters the results by the effective status of the configuration.
         self.effect_statuses = effect_statuses
+        # The end time for the query, specified as a Unix timestamp in milliseconds.
         self.end_time = end_time
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Specifies whether to return the total number of configuration history records.
         self.need_total = need_total
+        # The page number. The default value is 1.
         self.page_number = page_number
+        # The number of entries to return on each page. The default value is 10.
         self.page_size = page_size
+        # The start time for the query, specified as a Unix timestamp in milliseconds.
         self.start_time = start_time
 
     def validate(self):

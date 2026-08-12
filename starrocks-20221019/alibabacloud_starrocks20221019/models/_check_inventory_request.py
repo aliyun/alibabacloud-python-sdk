@@ -10,7 +10,9 @@ class CheckInventoryRequest(DaraModel):
         cluster_info: str = None,
         zone_id: str = None,
     ):
+        # Cluster information.
         self.cluster_info = cluster_info
+        # Zone.
         self.zone_id = zone_id
 
     def validate(self):

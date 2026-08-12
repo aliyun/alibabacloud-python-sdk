@@ -11,8 +11,11 @@ class DataZoneSupportCompactionServiceValue(DaraModel):
         resource_level: str = None,
         recommended: bool = None,
     ):
+        # The availability zone ID.
         self.zone_id = zone_id
+        # The resource level.
         self.resource_level = resource_level
+        # Indicates whether this is the recommended option.
         self.recommended = recommended
 
     def validate(self):

@@ -12,17 +12,19 @@ class UpgradeVersionRequest(DaraModel):
         minor: bool = None,
         target_version: str = None,
     ):
+        # Specifies whether to perform a fast restart.
         self.fast_mode = fast_mode
         # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Specifies whether the minor version is upgraded. Default value: true. Valid values:
+        # Specifies whether this upgrade is a minor version upgrade. Default value: true.
         # 
-        # *   true: The minor version is upgraded.
-        # *   false: The major version is upgraded.
+        # Valid values:
+        # - true: minor version upgrade.
+        # - false: major engine version upgrade.
         self.minor = minor
-        # The version to which you want to upgrade.
+        # The target version number.
         # 
         # This parameter is required.
         self.target_version = target_version

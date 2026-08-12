@@ -18,13 +18,19 @@ class QueryModifyDiskPerformanceLevelPriceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # AccessDeniedDetail
+        # The details about access denial.
         self.access_denied_detail = access_denied_detail
+        # The order ID.
         self.data = data
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code of the request.
         self.http_status_code = http_status_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -99,15 +105,31 @@ class QueryModifyDiskPerformanceLevelPriceResponseBodyData(DaraModel):
         stand_price: float = None,
         trade_amount: float = None,
     ):
+        # The component prices.
         self.component_prices = component_prices
+        # The currency. Valid values:
+        # 
+        # - CNY: Chinese Yuan.
+        # 
+        # - USD: US Dollar.
+        # 
+        # - JPY: Japanese Yen.
         self.currency = currency
+        # The total official price after the price reduction.
         self.depreciate_info = depreciate_info
+        # The discount amount. Discount amount = Original price - Amount payable (including the amount deducted by coupons).
         self.discount_amount = discount_amount
+        # The coupon information.
         self.optional_promotions = optional_promotions
+        # The original price. Original price = List price × Usage.
         self.original_amount = original_amount
+        # A list of hit rules. Each item is a rule. Only information about the hit rules and their locations is returned.
         self.rules = rules
+        # The discounted price based on the official discount.
         self.stand_discount_price = stand_discount_price
+        # The official discounted price.
         self.stand_price = stand_price
+        # The amount.
         self.trade_amount = trade_amount
 
     def validate(self):
@@ -220,8 +242,11 @@ class QueryModifyDiskPerformanceLevelPriceResponseBodyDataRules(DaraModel):
         name: str = None,
         rule_desc_id: str = None,
     ):
+        # The number of purchased resources.
         self.amount = amount
+        # The rule name.
         self.name = name
+        # The rule ID.
         self.rule_desc_id = rule_desc_id
 
     def validate(self):
@@ -263,8 +288,11 @@ class QueryModifyDiskPerformanceLevelPriceResponseBodyDataOptionalPromotions(Dar
         promotion_name: str = None,
         promotion_option_no: str = None,
     ):
+        # The coupon description.
         self.promotion_desc = promotion_desc
+        # The coupon name.
         self.promotion_name = promotion_name
+        # The coupon ID.
         self.promotion_option_no = promotion_option_no
 
     def validate(self):
@@ -307,9 +335,13 @@ class QueryModifyDiskPerformanceLevelPriceResponseBodyDataDepreciateInfo(DaraMod
         is_show: bool = None,
         original_stand_amount: float = None,
     ):
+        # The price reduction ratio.
         self.cheap_rate = cheap_rate
+        # The total official price after the price reduction.
         self.cheap_stand_amount = cheap_stand_amount
+        # Indicates whether to display the price reduction range.
         self.is_show = is_show
+        # The original total official price.
         self.original_stand_amount = original_stand_amount
 
     def validate(self):
@@ -358,9 +390,13 @@ class QueryModifyDiskPerformanceLevelPriceResponseBodyDataComponentPrices(DaraMo
         original_amount: float = None,
         trade_amount: float = None,
     ):
+        # Resource group ID
         self.component_name = component_name
+        # The discount.
         self.discount_amount = discount_amount
+        # The original price.
         self.original_amount = original_amount
+        # The final price, which is the original price minus the discount.
         self.trade_amount = trade_amount
 
     def validate(self):

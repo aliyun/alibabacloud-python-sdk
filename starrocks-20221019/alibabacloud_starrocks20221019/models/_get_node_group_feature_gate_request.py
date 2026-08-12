@@ -10,8 +10,12 @@ class GetNodeGroupFeatureGateRequest(DaraModel):
         instance_id: str = None,
         node_group_id: str = None,
     ):
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Compute group ID.
+        # 
         # This parameter is required.
         self.node_group_id = node_group_id
 

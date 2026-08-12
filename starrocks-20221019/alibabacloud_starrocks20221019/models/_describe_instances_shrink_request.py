@@ -16,13 +16,65 @@ class DescribeInstancesShrinkRequest(DaraModel):
         resource_group_id: str = None,
         tag_shrink: str = None,
     ):
+        # The instance ID.
         self.instance_id = instance_id
+        # The instance name.
         self.instance_name = instance_name
+        # The instance status to filter by. You can specify multiple statuses, separated by commas. Valid values:
+        # 
+        # - unpaid
+        # 
+        # - paid
+        # 
+        # - creating
+        # 
+        # - running
+        # 
+        # - updating
+        # 
+        # - disable
+        # 
+        # - deleting
+        # 
+        # - scaling_out
+        # 
+        # - scaling_in
+        # 
+        # - scaling_up
+        # 
+        # - scaling_down
+        # 
+        # - upgrading
+        # 
+        # - modifying_config
+        # 
+        # - enable_public_network
+        # 
+        # - disable_public_network
+        # 
+        # - convert_from_trial_to_official
+        # 
+        # - restarting
+        # 
+        # - migration_cluster_to_serverless
+        # 
+        # - actively_disabled
+        # 
+        # - enabling
+        # 
+        # - agent_creating
+        # 
+        # - agent_scaling_up
         self.instance_status = instance_status
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The region ID of the instance.
         self.region_id = region_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The list of tags.
         self.tag_shrink = tag_shrink
 
     def validate(self):

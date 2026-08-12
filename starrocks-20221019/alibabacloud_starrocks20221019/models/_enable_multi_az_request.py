@@ -14,8 +14,11 @@ class EnableMultiAzRequest(DaraModel):
         observers: List[main_models.EnableMultiAzRequestObservers] = None,
         promotion_option_no: str = None,
     ):
+        # Instance ID.
         self.instance_id = instance_id
+        # Multi-zone information.
         self.observers = observers
+        # Coupon.
         self.promotion_option_no = promotion_option_no
 
     def validate(self):
@@ -64,7 +67,9 @@ class EnableMultiAzRequestObservers(DaraModel):
         vsw_id: str = None,
         zone_id: str = None,
     ):
+        # vSwitch ID.
         self.vsw_id = vsw_id
+        # Zone ID.
         self.zone_id = zone_id
 
     def validate(self):

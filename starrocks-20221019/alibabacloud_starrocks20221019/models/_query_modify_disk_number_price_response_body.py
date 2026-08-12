@@ -20,11 +20,17 @@ class QueryModifyDiskNumberPriceResponseBody(DaraModel):
     ):
         # AccessDeniedDetail
         self.access_denied_detail = access_denied_detail
+        # The ID of the order.
         self.data = data
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code of the request.
         self.http_status_code = http_status_code
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request succeeded.
         self.success = success
 
     def validate(self):
@@ -99,15 +105,25 @@ class QueryModifyDiskNumberPriceResponseBodyData(DaraModel):
         stand_price: float = None,
         trade_amount: float = None,
     ):
+        # The prices of components.
         self.component_prices = component_prices
+        # The currency.
         self.currency = currency
+        # The total official price after discount.
         self.depreciate_info = depreciate_info
+        # The discount amount = original amount − payable amount on the bill (including coupon deductions).
         self.discount_amount = discount_amount
+        # The coupon information.
         self.optional_promotions = optional_promotions
+        # The original amount = catalog price × usage.
         self.original_amount = original_amount
+        # The list of rules that match your request. Each item is a matching rule. Only matching rule information and the location of each matching rule are returned.
         self.rules = rules
+        # The discounted price.
         self.stand_discount_price = stand_discount_price
+        # The official discounted price.
         self.stand_price = stand_price
+        # The final amount.
         self.trade_amount = trade_amount
 
     def validate(self):
@@ -220,8 +236,13 @@ class QueryModifyDiskNumberPriceResponseBodyDataRules(DaraModel):
         name: str = None,
         rule_desc_id: str = None,
     ):
+        # The number of Elastic Compute Service (ECS) instances for which you want to query the price. Valid values: 1 to 1000. Default value: 1.
+        # 
+        # Default value: 1.
         self.amount = amount
+        # The name of the rule.
         self.name = name
+        # The ID of the rule.
         self.rule_desc_id = rule_desc_id
 
     def validate(self):
@@ -263,8 +284,11 @@ class QueryModifyDiskNumberPriceResponseBodyDataOptionalPromotions(DaraModel):
         promotion_name: str = None,
         promotion_option_no: str = None,
     ):
+        # The description of the coupon.
         self.promotion_desc = promotion_desc
+        # The name of the coupon.
         self.promotion_name = promotion_name
+        # The ID of the coupon.
         self.promotion_option_no = promotion_option_no
 
     def validate(self):
@@ -307,9 +331,13 @@ class QueryModifyDiskNumberPriceResponseBodyDataDepreciateInfo(DaraModel):
         is_show: bool = None,
         original_stand_amount: float = None,
     ):
+        # The discount rate.
         self.cheap_rate = cheap_rate
+        # The total official price after discount.
         self.cheap_stand_amount = cheap_stand_amount
+        # Indicates whether to show the discount amount.
         self.is_show = is_show
+        # The original total official price.
         self.original_stand_amount = original_stand_amount
 
     def validate(self):
@@ -358,9 +386,13 @@ class QueryModifyDiskNumberPriceResponseBodyDataComponentPrices(DaraModel):
         original_amount: float = None,
         trade_amount: float = None,
     ):
+        # The name of the component.
         self.component_name = component_name
+        # The discount amount for the order.
         self.discount_amount = discount_amount
+        # The original amount.
         self.original_amount = original_amount
+        # The final amount, which equals the original amount minus the discount.
         self.trade_amount = trade_amount
 
     def validate(self):

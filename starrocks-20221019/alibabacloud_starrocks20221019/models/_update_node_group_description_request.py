@@ -11,8 +11,11 @@ class UpdateNodeGroupDescriptionRequest(DaraModel):
         node_group_id: str = None,
         x_acs_ram_auth_context: str = None,
     ):
+        # The description of the compute group.
         self.description = description
+        # The ID of the compute group.
         self.node_group_id = node_group_id
+        # The RAM authorization information.
         self.x_acs_ram_auth_context = x_acs_ram_auth_context
 
     def validate(self):

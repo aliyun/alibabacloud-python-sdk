@@ -13,14 +13,24 @@ class ModifyScalingRuleRequest(DaraModel):
         rule: str = None,
         scaling_rule_id: str = None,
     ):
+        # New trigger type.
+        # 
         # This parameter is required.
         self.new_trigger_type = new_trigger_type
+        # Compute group ID.
+        # 
         # This parameter is required.
         self.node_group_id = node_group_id
+        # Old trigger type.
+        # 
         # This parameter is required.
         self.old_trigger_type = old_trigger_type
+        # Rule content.
+        # 
         # This parameter is required.
         self.rule = rule
+        # ID of the scaling rule to modify.
+        # 
         # This parameter is required.
         self.scaling_rule_id = scaling_rule_id
 

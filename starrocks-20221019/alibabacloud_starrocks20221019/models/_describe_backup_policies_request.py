@@ -11,8 +11,11 @@ class DescribeBackupPoliciesRequest(DaraModel):
         policy_id: str = None,
         region_id: str = None,
     ):
+        # The instance ID.
         self.instance_id = instance_id
+        # The policy ID.
         self.policy_id = policy_id
+        # The ID of the region where the instance resides.
         self.region_id = region_id
 
     def validate(self):

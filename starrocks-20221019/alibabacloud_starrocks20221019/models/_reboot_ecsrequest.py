@@ -11,8 +11,11 @@ class RebootECSRequest(DaraModel):
         instance_id: str = None,
         reboot_time: int = None,
     ):
+        # The system event ID.
         self.event_id = event_id
+        # The instance ID.
         self.instance_id = instance_id
+        # The reboot time for the instance.
         self.reboot_time = reboot_time
 
     def validate(self):

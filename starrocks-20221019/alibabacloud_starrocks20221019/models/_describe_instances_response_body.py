@@ -18,12 +18,19 @@ class DescribeInstancesResponseBody(DaraModel):
         success: bool = None,
         total: int = None,
     ):
+        # The query results.
         self.data = data
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # The total number of instances.
         self.total = total
 
     def validate(self):
@@ -126,38 +133,184 @@ class DescribeInstancesResponseBodyData(DaraModel):
         version: str = None,
         vpc_id: str = None,
     ):
+        # The ID of the network access control list (ACL).
         self.acl_id = acl_id
         self.ai_function_instance_id = ai_function_instance_id
+        # The instance architecture. Valid values:
+        # 
+        # - onEci: deployed on ECI.
+        # 
+        # - onECS: deployed on ECS.
+        # 
+        # - onBareMetal: deployed on a bare metal resource pool.
         self.architecture = architecture
+        # The time when the cluster was created.
         self.begin_time = begin_time
         self.enable_ai_function = enable_ai_function
+        # Indicates whether automatic minor version upgrades are enabled.
         self.enable_auto_minor_version_upgrade = enable_auto_minor_version_upgrade
         self.enable_multi_az = enable_multi_az
+        # Indicates whether SSL is enabled.
         self.enable_ssl = enable_ssl
+        # Indicates whether the audit plugin is enabled.
         self.enabled_audit_loader = enabled_audit_loader
+        # Indicates whether encryption is enabled.
         self.encrypted = encrypted
+        # The time when the cluster expires.
         self.expire_time = expire_time
+        # The instance ID.
         self.instance_id = instance_id
+        # The instance name.
         self.instance_name = instance_name
+        # The instance status. Valid values:
+        # 
+        # - not_init: The instance is not initialized.
+        # 
+        # - unpaid: The instance is pending payment.
+        # 
+        # - paid: The payment is made.
+        # 
+        # - creating: The instance is being created.
+        # 
+        # - creating_failed: The instance failed to be created.
+        # 
+        # - created: The instance is created.
+        # 
+        # - running: The instance is running.
+        # 
+        # - updating: The instance is being upgraded.
+        # 
+        # - agent_creating: The agent is being created.
+        # 
+        # - agent_scaling_up: The agent is being upgraded.
+        # 
+        # - modifying_config: The configurations are being updated.
+        # 
+        # - scaling_out: The instance is being scaled out.
+        # 
+        # - restarting: The instance is restarting.
+        # 
+        # - scaling_in: The instance is being scaled in.
+        # 
+        # - scaling_up: The instance is being upgraded.
+        # 
+        # - scaling_down: The instance is being downgraded.
+        # 
+        # - upgrading: The instance is being upgraded.
+        # 
+        # - enable_public_network: The public endpoint is being enabled.
+        # 
+        # - disable_public_network: The public endpoint is being disabled.
+        # 
+        # - convert_from_trial_to_official: The instance edition is being changed.
+        # 
+        # - migration_cluster_to_serverless: The cluster is being migrated.
+        # 
+        # - modifying_timezone: The time zone is being modified.
+        # 
+        # - switch_az: The primary and secondary zones are being switched.
+        # 
+        # - enabling: The instance is being resumed.
+        # 
+        # - disable: The instance is unavailable.
+        # 
+        # - actively_disabled: The instance is unavailable.
+        # 
+        # - deleting: The instance is being deleted.
+        # 
+        # - deleting_failed: The instance failed to be deleted.
+        # 
+        # - deleted_with_error: The instance is deleted due to a creation failure.
+        # 
+        # - deleted: The instance is deleted.
         self.instance_status = instance_status
+        # Indicates whether read/write splitting is enabled. If this parameter is set to true, the leader FE node processes write requests, and the other FE nodes process read requests.
         self.isolate_leader = isolate_leader
+        # The ID of the KMS key.
         self.kms_key_id = kms_key_id
+        # The maintenance window of the instance. Valid values:
+        # 
+        # - 00:00-06:00
+        # 
+        # - 06:00-07:00
+        # 
+        # - 07:00-08:00
+        # 
+        # - 08:00-09:00
+        # 
+        # - 09:00-10:00
+        # 
+        # - 10:00-11:00
+        # 
+        # - 11:00-12:00
+        # 
+        # - 12:00-13:00
+        # 
+        # - 13:00-14:00
+        # 
+        # - 14:00-15:00
+        # 
+        # - 15:00-16:00
+        # 
+        # - 16:00-17:00
+        # 
+        # - 17:00-18:00
+        # 
+        # - 18:00-19:00
+        # 
+        # - 19:00-20:00
+        # 
+        # - 20:00-21:00
+        # 
+        # - 21:00-22:00
+        # 
+        # - 22:00-23:00
+        # 
+        # - 23:00-24:00
         self.maintainable_period = maintainable_period
+        # The minor version number.
         self.minor_version = minor_version
+        # The type of the monitoring service.
         self.monitor_type = monitor_type
+        # The OSS URL.
         self.oss_location = oss_location
+        # The instance edition. Valid values:
+        # 
+        # - trial: Trial Edition.
+        # 
+        # - official: Standard Edition.
         self.package_type = package_type
+        # The billing method:
+        # 
+        # - prePaid: subscription.
+        # 
+        # - postPaid: pay-as-you-go.
         self.pay_type = pay_type
+        # The region ID.
         self.region_id = region_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The running mode of the cluster:
+        # 
+        # - shared_nothing: all-in-one.
+        # 
+        # - shared_data: storage-compute separation.
+        # 
+        # - lakehouse: data lake analytics.
         self.run_mode = run_mode
+        # The duration for which the cluster has been running. Unit: seconds.
         self.running_time = running_time
+        # Indicates whether the security group is a managed security group.
         self.security_group_managed = security_group_managed
+        # The security group ID.
         self.sg_id = sg_id
+        # The tags attached to the instance.
         self.tags = tags
+        # The list of vSwitches.
         self.v_switches = v_switches
+        # The cluster version.
         self.version = version
-        # VPC ID。
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -390,8 +543,11 @@ class DescribeInstancesResponseBodyDataVSwitches(DaraModel):
         vsw_id: str = None,
         zone_id: str = None,
     ):
+        # Indicates whether the vSwitch is the primary vSwitch.
         self.primary = primary
+        # The vSwitch ID.
         self.vsw_id = vsw_id
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -432,7 +588,9 @@ class DescribeInstancesResponseBodyDataTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):

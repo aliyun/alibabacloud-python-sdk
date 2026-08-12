@@ -15,7 +15,7 @@ class ModifyDiskNumberResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The detailed information about the failed permission verification.
+        # Details about the access denial.
         self.access_denied_detail = access_denied_detail
         # The order ID.
         self.data = data

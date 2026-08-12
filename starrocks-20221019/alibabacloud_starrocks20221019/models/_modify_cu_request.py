@@ -13,29 +13,22 @@ class ModifyCuRequest(DaraModel):
         promotion_option_no: str = None,
         target: int = None,
     ):
-        # Specifies whether to restart compute nodes in quick restart mode. Default value: false. Valid values:
+        # Specifies whether to restart the instance in fast restart mode. The default value is false.
         # 
-        # *   true: Compute nodes are restarted in quick restart mode in multiple batches. The batches are executed in parallel, and the nodes in each batch are restarted at the same time.
-        # *   false: Compute nodes are restarted in rolling restart mode.
+        # - true: Restarts the compute nodes in fast restart mode. The compute nodes are restarted in batches. Nodes within a batch are restarted in parallel, and batches are processed sequentially.
+        # 
+        # - false: Restarts the compute nodes in rolling restart mode.
         self.fast_mode = fast_mode
         # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The warehouse ID.
+        # The compute group ID.
         # 
         # This parameter is required.
         self.node_group_id = node_group_id
         self.promotion_option_no = promotion_option_no
-        # The number of CUs to which you want to change.
-        # 
-        # Valid values:
-        # 
-        # *   4
-        # *   8
-        # *   16
-        # *   32
-        # *   64
+        # The target number of CUs.
         # 
         # This parameter is required.
         self.target = target

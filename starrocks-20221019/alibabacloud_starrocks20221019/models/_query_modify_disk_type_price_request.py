@@ -13,13 +13,22 @@ class QueryModifyDiskTypePriceRequest(DaraModel):
         target_disk_type: str = None,
         target_performance_level: str = None,
     ):
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Compute group ID.
+        # 
         # This parameter is required.
         self.node_group_id = node_group_id
+        # Coupon ID.
         self.promotion_option_no = promotion_option_no
+        # Target disk type.
+        # 
         # This parameter is required.
         self.target_disk_type = target_disk_type
+        # Target disk performance.
+        # 
         # This parameter is required.
         self.target_performance_level = target_performance_level
 

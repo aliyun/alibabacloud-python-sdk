@@ -12,10 +12,15 @@ class UpdatePublicNetworkStatusRequest(DaraModel):
         node_group_id: str = None,
         public_network_enabled: bool = None,
     ):
+        # Data returned by the operation.
         self.component_type = component_type
+        # Data returned by the operation.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The compute group ID.
         self.node_group_id = node_group_id
+        # Enable or disable the public network.
         self.public_network_enabled = public_network_enabled
 
     def validate(self):

@@ -14,11 +14,17 @@ class AddGatewayResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The returned data.
         self.data = data
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code of the request.
         self.http_status_code = http_status_code
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request succeeded.
         self.success = success
 
     def validate(self):

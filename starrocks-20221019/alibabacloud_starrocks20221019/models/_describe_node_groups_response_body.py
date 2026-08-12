@@ -19,13 +19,21 @@ class DescribeNodeGroupsResponseBody(DaraModel):
         success: bool = None,
         total: int = None,
     ):
+        # The details of the permission verification failure.
         self.access_denied_detail = access_denied_detail
+        # The returned data.
         self.data = data
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # The total number of query results.
         self.total = total
 
     def validate(self):
@@ -135,38 +143,120 @@ class DescribeNodeGroupsResponseBodyData(DaraModel):
         target_elastic_node_number: int = None,
         zone_id: str = None,
     ):
+        # The account status. Valid values:
+        # 
+        # - NORMAL: The account is in a normal state.
+        # - OVERDUE: The account has an overdue payment.
         self.account_status = account_status
+        # The compute group architecture. Valid values:
+        # 
+        # - onEci: Deployed on Elastic Container Instance (ECI).
+        # - onECS: Deployed on Elastic Compute Service (ECS).
+        # - onBareMetal: Deployed on a bare metal resource pool.
         self.architecture = architecture
+        # The creation time of the compute group.
         self.begin_time = begin_time
+        # The instance ID associated with the bill. For default compute groups (FE compute group and default BE compute group), this value is the instance ID. Otherwise, it is the compute group ID.
         self.billing_instance_id = billing_instance_id
+        # The commodity code.
         self.commodity_code = commodity_code
+        # The compute group type. Valid values:
+        # 
+        # - FE
+        # - BE
+        # - CN
+        # - OBSERVER
+        # - AGENT
         self.component_type = component_type
+        # The number of CUs. A CU (Compute Unit) is the basic metering unit of the service. 1 CU = 1 CPU core + 4 GiB memory. When SpecType is memory-enhanced instance family, 1 CU = 1 CPU core + 8 GiB memory.
         self.cu = cu
+        # Indicates whether this is the default compute group.
         self.default_group = default_group
+        # The compute group description.
         self.description = description
+        # The number of disks.
         self.disk_number = disk_number
+        # The number of elastic nodes.
         self.elastic_node_number = elastic_node_number
+        # Indicates whether public network access is enabled.
         self.enable_public_network = enable_public_network
+        # The compute group endpoint.
         self.endpoint = endpoint
+        # The expiration time of the compute group.
         self.expire_time = expire_time
+        # The HTTP port of the compute group.
         self.http_port = http_port
+        # The instance ID.
         self.instance_id = instance_id
+        # The local SSD instance type of the node group. This value is meaningful only when the deployment is based on ECS instances and SpecType is local SSD or large-scale storage.
         self.local_storage_instance_type = local_storage_instance_type
+        # The ratio of memory size to the number of CUs. The value is 8 when SpecType is memory-enhanced instance family, and 4 for other specification types.
         self.memory_cpu_ratio = memory_cpu_ratio
+        # The compute group ID.
         self.node_group_id = node_group_id
+        # The compute group name.
         self.node_group_name = node_group_name
+        # The information about nodes in the compute group.
         self.node_info = node_info
+        # The billing type:
+        # <ol>
+        # <li>Subscription (prePaid).</li>
+        # <li>Pay-as-you-go (postPaid).</li>
+        # </ol>
         self.pay_type = pay_type
+        # The public network address. This field has a value only when EnablePublicNetwork is set to true.
         self.public_address = public_address
+        # The region ID.
         self.region_id = region_id
+        # The number of nodes.
         self.resident_node_number = resident_node_number
+        # The duration that the compute group has been running. Unit: seconds.
         self.running_time = running_time
+        # The compute group specification type. Valid values:
+        # 
+        # - standard: Standard.
+        # - localSSD: Local SSD.
+        # - bigData: Large-scale storage.
+        # - ramEnhanced: Memory-enhanced instance family.
+        # - networkEnhanced: Network-enhanced.
         self.spec_type = spec_type
+        # The compute group status. Valid values:
+        # 
+        # - UNPAID: Unpaid.
+        # - PAID: Paid.
+        # - CREATING_FAILED: Creation failed.
+        # - CREATING: Being created.
+        # - RUNNING: Running.
+        # - MODIFYING_CONFIG: Configuration being modified.
+        # - MODIFYING_TIMEZONE: Time zone being modified.
+        # - ELASTIC_SCALING_OUT: Elastic scale-out in progress.
+        # - ELASTIC_SCALING_IN: Elastic scale-in in progress.
+        # - SCALING_OUT: Scale-out in progress.
+        # - RESTARTING: Restarting.
+        # - SCALING_IN: Scale-in in progress.
+        # - SCALING_UP: Upgrading specifications.
+        # - SCALING_DOWN: Downgrading specifications.
+        # - UPGRADING: Upgrading.
+        # - ENABLE_PUBLIC_NETWORK: Enabling public network access.
+        # - DISABLE_PUBLIC_NETWORK: Disabling public network access.
+        # - SWITCH_AZ: Switching zone.
+        # - DISABLE: Disabled.
+        # - DELETING: Being deleted.
+        # - DELETED: Deleted.
         self.status = status
+        # The performance level (PL) of the cloud disk. Valid values:
+        # 
+        # - pl0: Maximum random read/write IOPS of 10,000 per disk.
+        # - pl1: Maximum random read/write IOPS of 50,000 per disk.
+        # - pl2: Maximum random read/write IOPS of 100,000 per disk.
+        # - pl3: Maximum random read/write IOPS of 1,000,000 per disk.
         self.storage_performance_level = storage_performance_level
+        # The storage size. Unit: GiB.
         self.storage_size = storage_size
         self.tags = tags
+        # The target number of elastic nodes.
         self.target_elastic_node_number = target_elastic_node_number
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -438,6 +528,7 @@ class DescribeNodeGroupsResponseBodyDataNodeInfo(DaraModel):
         self,
         node_id: str = None,
     ):
+        # The node ID.
         self.node_id = node_id
 
     def validate(self):

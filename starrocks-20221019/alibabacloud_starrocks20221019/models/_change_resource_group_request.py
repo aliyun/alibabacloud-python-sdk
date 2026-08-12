@@ -12,11 +12,18 @@ class ChangeResourceGroupRequest(DaraModel):
         region_id: str = None,
         resource_type: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the destination resource group.
+        # 
         # This parameter is required.
         self.new_resource_group_id = new_resource_group_id
+        # The ID of the region where the cluster resides.
         self.region_id = region_id
+        # The resource type. Only instance is supported.
+        # 
         # This parameter is required.
         self.resource_type = resource_type
 

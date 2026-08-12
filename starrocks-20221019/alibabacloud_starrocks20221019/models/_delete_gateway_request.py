@@ -10,7 +10,9 @@ class DeleteGatewayRequest(DaraModel):
         gateway_id: str = None,
         instance_id: str = None,
     ):
+        # The gateway ID.
         self.gateway_id = gateway_id
+        # The instance ID.
         self.instance_id = instance_id
 
     def validate(self):

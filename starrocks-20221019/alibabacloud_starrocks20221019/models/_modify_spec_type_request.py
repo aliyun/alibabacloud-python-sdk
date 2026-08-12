@@ -13,12 +13,24 @@ class ModifySpecTypeRequest(DaraModel):
         promotion_option_no: str = None,
         target_spec_type: str = None,
     ):
+        # Restart in fast restart mode. Default is false.
+        # 
+        # - true: Restarts compute nodes in fast restart mode. Nodes restart in parallel within a batch, and batches execute sequentially.
+        # 
+        # - false: Restarts compute nodes in rolling restart mode.
         self.fast_mode = fast_mode
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Compute group ID.
+        # 
         # This parameter is required.
         self.node_group_id = node_group_id
+        # Coupon ID.
         self.promotion_option_no = promotion_option_no
+        # Target specifications type.
+        # 
         # This parameter is required.
         self.target_spec_type = target_spec_type
 

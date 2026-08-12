@@ -13,10 +13,16 @@ class UpdateInnerIpWhitelistGroupRequest(DaraModel):
         inner_ip_whitelist_group_id: str = None,
         instance_id: str = None,
     ):
+        # The list of CIDR blocks for the whitelist.
+        # 
         # This parameter is required.
         self.cidr_ip_list = cidr_ip_list
+        # The ID of the private network whitelist group.
+        # 
         # This parameter is required.
         self.inner_ip_whitelist_group_id = inner_ip_whitelist_group_id
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

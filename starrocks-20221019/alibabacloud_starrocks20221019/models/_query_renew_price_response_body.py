@@ -17,11 +17,17 @@ class QueryRenewPriceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Response data.
         self.data = data
+        # Error code.
         self.err_code = err_code
+        # Error message.
         self.err_message = err_message
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the request succeeded.
         self.success = success
 
     def validate(self):
@@ -96,15 +102,25 @@ class QueryRenewPriceResponseBodyData(DaraModel):
         stand_price: float = None,
         trade_amount: float = None,
     ):
+        # Billing instance ID. For the default compute group (FE compute group and default BE compute group), this value is the instance ID. Otherwise, it is the compute group ID.
         self.billing_instance_id = billing_instance_id
+        # Currency.
         self.currency = currency
+        # Total official price after discount.
         self.depreciate_info = depreciate_info
+        # Discount amount = original amount − billable amount (including coupon discounts).
         self.discount_amount = discount_amount
+        # Coupon ID.
         self.optional_promotions = optional_promotions
+        # Original amount = catalog price × usage.
         self.original_amount = original_amount
+        # Data structure of the response.
         self.rules = rules
+        # Discounted price based on the official discount.
         self.stand_discount_price = stand_discount_price
+        # Official discounted price.
         self.stand_price = stand_price
+        # Amount.
         self.trade_amount = trade_amount
 
     def validate(self):
@@ -208,8 +224,11 @@ class QueryRenewPriceResponseBodyDataRules(DaraModel):
         name: str = None,
         rule_desc_id: str = None,
     ):
+        # Resource count.
         self.amount = amount
+        # Rule name.
         self.name = name
+        # Rule ID.
         self.rule_desc_id = rule_desc_id
 
     def validate(self):
@@ -251,8 +270,11 @@ class QueryRenewPriceResponseBodyDataOptionalPromotions(DaraModel):
         promotion_name: str = None,
         promotion_option_no: str = None,
     ):
+        # Coupon description.
         self.promotion_desc = promotion_desc
+        # Coupon name.
         self.promotion_name = promotion_name
+        # Coupon ID.
         self.promotion_option_no = promotion_option_no
 
     def validate(self):
@@ -295,9 +317,13 @@ class QueryRenewPriceResponseBodyDataDepreciateInfo(DaraModel):
         is_show: bool = None,
         original_stand_amount: float = None,
     ):
+        # Discount rate.
         self.cheap_rate = cheap_rate
+        # Total official price after discount.
         self.cheap_stand_amount = cheap_stand_amount
+        # Indicates whether the discount amount is displayed.
         self.is_show = is_show
+        # Original total official price.
         self.original_stand_amount = original_stand_amount
 
     def validate(self):

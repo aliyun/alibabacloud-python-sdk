@@ -12,9 +12,13 @@ class UpdateGatewayRequest(DaraModel):
         gateway_name: str = None,
         instance_id: str = None,
     ):
+        # The number of gateway nodes.
         self.fe_node_number = fe_node_number
+        # The ID of the gateway.
         self.gateway_id = gateway_id
+        # The name of the gateway.
         self.gateway_name = gateway_name
+        # The ID of the instance.
         self.instance_id = instance_id
 
     def validate(self):

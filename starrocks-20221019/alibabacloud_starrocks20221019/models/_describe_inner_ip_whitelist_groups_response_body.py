@@ -17,11 +17,17 @@ class DescribeInnerIpWhitelistGroupsResponseBody(DaraModel):
         success: bool = None,
         data: List[main_models.DescribeInnerIpWhitelistGroupsResponseBodyData] = None,
     ):
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code of the request.
         self.http_status_code = http_status_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # List of devices.
         self.data = data
 
     def validate(self):
@@ -88,7 +94,9 @@ class DescribeInnerIpWhitelistGroupsResponseBodyData(DaraModel):
         cidr_ip_list: List[str] = None,
         inner_ip_whitelist_group_id: str = None,
     ):
+        # The list of CIDR blocks.
         self.cidr_ip_list = cidr_ip_list
+        # The name of the whitelist group.
         self.inner_ip_whitelist_group_id = inner_ip_whitelist_group_id
 
     def validate(self):

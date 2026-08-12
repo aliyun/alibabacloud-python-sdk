@@ -17,12 +17,25 @@ class AddBackupPolicyRequest(DaraModel):
         recurrence_values: List[int] = None,
         timeout_seconds: int = None,
     ):
+        # The number of days to retain the backup data.
         self.expire_days = expire_days
+        # The hour.
         self.hour = hour
+        # The instance ID.
         self.instance_id = instance_id
+        # The minute.
         self.minute = minute
+        # The recurrence type for the policy. Valid values:
+        # 
+        # - DAILY: Daily.
+        # 
+        # - WEEKLY: Weekly.
+        # 
+        # - MONTHLY: Monthly.
         self.recurrence_type = recurrence_type
+        # The values for the recurrence.
         self.recurrence_values = recurrence_values
+        # The timeout period for the backup job in seconds.
         self.timeout_seconds = timeout_seconds
 
     def validate(self):

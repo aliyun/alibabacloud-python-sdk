@@ -10,8 +10,16 @@ class ToggleAutoMinorVersionUpgradeRequest(DaraModel):
         auto_upgrade: bool = None,
         instance_id: str = None,
     ):
+        # Specifies whether to enable automatic minor version upgrades. Valid values:
+        # 
+        # - true: Enables automatic upgrades.
+        # 
+        # - false: Disables automatic upgrades.
+        # 
         # This parameter is required.
         self.auto_upgrade = auto_upgrade
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

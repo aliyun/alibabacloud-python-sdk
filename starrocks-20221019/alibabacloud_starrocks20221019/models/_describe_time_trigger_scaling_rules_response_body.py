@@ -18,12 +18,19 @@ class DescribeTimeTriggerScalingRulesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The details of the access denial.
         self.access_denied_detail = access_denied_detail
+        # The returned data.
         self.data = data
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code of the request.
         self.http_status_code = http_status_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -100,11 +107,23 @@ class DescribeTimeTriggerScalingRulesResponseBodyData(DaraModel):
         scaling_rule_name: str = None,
         status: str = None,
     ):
+        # The number of elastic nodes.
         self.node_number = node_number
+        # The scale-in rule.
         self.scaling_in_rule = scaling_in_rule
+        # The scale-out rule.
         self.scaling_out_rule = scaling_out_rule
+        # The ID of the scaling rule.
         self.scaling_rule_id = scaling_rule_id
+        # The name of the Auto Scaling policy.
         self.scaling_rule_name = scaling_rule_name
+        # The current status of the rule. Valid values:
+        # 
+        # - INACTIVE: The rule is not triggered.
+        # 
+        # - ACTIVE: The rule is triggered.
+        # 
+        # - DISABLED: The rule is disabled due to an overdue payment.
         self.status = status
 
     def validate(self):
@@ -175,14 +194,41 @@ class DescribeTimeTriggerScalingRulesResponseBodyDataScalingOutRule(DaraModel):
         second: int = None,
         year: int = None,
     ):
+        # The day of the execution time.
         self.day = day
+        # The hour of the execution time.
         self.hour = hour
+        # The minute of the execution time.
         self.minute = minute
+        # The month of the execution time.
         self.month = month
+        # The trigger interval. Its meaning depends on the RecurrenceType value:
+        # 
+        # - DAILY: The interval in days.
+        # 
+        # - WEEKLY: The interval in weeks.
+        # 
+        # - MONTHLY: The interval in months.
         self.recurrence_interval = recurrence_interval
+        # The trigger method. Valid values:
+        # 
+        # - ONCE: One-time
+        # 
+        # - DAILY: Daily
+        # 
+        # - WEEKLY: Weekly
+        # 
+        # - MONTHLY: Monthly
         self.recurrence_type = recurrence_type
+        # The trigger values. Their meaning depends on the RecurrenceType value:
+        # 
+        # -WEEKLY: The days of the week for execution.
+        # 
+        # -MONTHLY: The days of the month for execution.
         self.recurrence_values = recurrence_values
+        # The second of the execution time.
         self.second = second
+        # The year of the execution time.
         self.year = year
 
     def validate(self):
@@ -266,14 +312,41 @@ class DescribeTimeTriggerScalingRulesResponseBodyDataScalingInRule(DaraModel):
         second: int = None,
         year: int = None,
     ):
+        # The day of the execution time.
         self.day = day
+        # The hour of the execution time.
         self.hour = hour
+        # The minute of the execution time.
         self.minute = minute
+        # The month of the execution time.
         self.month = month
+        # The trigger interval. Its meaning depends on the RecurrenceType value:
+        # 
+        # - DAILY: The interval in days.
+        # 
+        # - WEEKLY: The interval in weeks.
+        # 
+        # - MONTHLY: The interval in months.
         self.recurrence_interval = recurrence_interval
+        # The trigger method. Valid values:
+        # 
+        # - ONCE: One-time
+        # 
+        # - DAILY: Daily
+        # 
+        # - WEEKLY: Weekly
+        # 
+        # - MONTHLY: Monthly
         self.recurrence_type = recurrence_type
+        # The trigger values. Their meaning depends on the RecurrenceType value:
+        # 
+        # -WEEKLY: The days of the week for execution.
+        # 
+        # -MONTHLY: The days of the month for execution.
         self.recurrence_values = recurrence_values
+        # The second of the execution time.
         self.second = second
+        # The year of the execution time.
         self.year = year
 
     def validate(self):

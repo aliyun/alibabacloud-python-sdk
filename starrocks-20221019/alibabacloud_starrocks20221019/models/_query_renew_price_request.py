@@ -13,14 +13,23 @@ class QueryRenewPriceRequest(DaraModel):
         pricing_cycle: str = None,
         promotion_option_no: str = None,
     ):
+        # List of billing instance IDs to renew. Separate multiple IDs with commas.
+        # 
         # This parameter is required.
         self.billing_instance_ids = billing_instance_ids
+        # Renewal period.
+        # 
         # This parameter is required.
         self.duration = duration
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Renewal unit.
+        # 
         # This parameter is required.
         self.pricing_cycle = pricing_cycle
+        # Coupon ID.
         self.promotion_option_no = promotion_option_no
 
     def validate(self):

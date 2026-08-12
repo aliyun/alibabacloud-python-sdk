@@ -13,14 +13,29 @@ class RenewInstanceRequest(DaraModel):
         pricing_cycle: str = None,
         promotion_option_no: str = None,
     ):
+        # A comma-separated list of billing instance IDs to renew. Billing instances include clusters and compute groups.
+        # 
         # This parameter is required.
         self.billing_instance_ids = billing_instance_ids
+        # The subscription duration.
+        # 
         # This parameter is required.
         self.duration = duration
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Duration unit:
+        # 
+        # - Month
+        # 
+        # - Year
+        # 
+        # Valid only when payType is PrePaid.
+        # 
         # This parameter is required.
         self.pricing_cycle = pricing_cycle
+        # The coupon ID.
         self.promotion_option_no = promotion_option_no
 
     def validate(self):

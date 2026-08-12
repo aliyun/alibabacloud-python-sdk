@@ -16,12 +16,19 @@ class CreateInstanceV1ResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The details of the permission verification failure.
         self.access_denied_detail = access_denied_detail
+        # The response data.
         self.data = data
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -88,7 +95,9 @@ class CreateInstanceV1ResponseBodyData(DaraModel):
         instance_id: str = None,
         order_id: int = None,
     ):
+        # The instance ID.
         self.instance_id = instance_id
+        # The order ID.
         self.order_id = order_id
 
     def validate(self):

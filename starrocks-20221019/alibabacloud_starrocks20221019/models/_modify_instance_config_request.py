@@ -21,16 +21,27 @@ class ModifyInstanceConfigRequest(DaraModel):
         fast_mode: bool = None,
         restart: bool = None,
     ):
+        # [Deprecated] List of configurations to add
         self.add_config_list = add_config_list
+        # Additional information
         self.config_list = config_list
+        # [Deprecated] List of configurations to delete
         self.delete_config_list = delete_config_list
+        # Sample ID
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Reason for modification
         self.reason = reason
+        # Configurations to add
         self.configs_to_add = configs_to_add
+        # Configurations to delete
         self.configs_to_delete = configs_to_delete
+        # Configurations to update
         self.configs_to_update = configs_to_update
+        # Whether to restart quickly
         self.fast_mode = fast_mode
+        # Whether to restart.
         self.restart = restart
 
     def validate(self):

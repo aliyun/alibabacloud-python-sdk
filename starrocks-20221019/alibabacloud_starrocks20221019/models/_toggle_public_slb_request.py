@@ -11,8 +11,15 @@ class TogglePublicSlbRequest(DaraModel):
         gateway_id: str = None,
         instance_id: str = None,
     ):
+        # Is Internet-facing SLB enabled?
+        # 
+        # - Enable: true
+        # 
+        # - Disable: false
         self.enable_public_slb = enable_public_slb
+        # Private gateway ID.
         self.gateway_id = gateway_id
+        # Instance ID.
         self.instance_id = instance_id
 
     def validate(self):

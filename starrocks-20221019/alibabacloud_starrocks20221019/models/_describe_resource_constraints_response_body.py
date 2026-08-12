@@ -18,13 +18,19 @@ class DescribeResourceConstraintsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # AccessDeniedDetail
+        # Details about the access denial.
         self.access_denied_detail = access_denied_detail
+        # The response data.
         self.data = data
+        # The error message.
         self.err_message = err_message
+        # The error code. A value of `Success` indicates that the request was successful.
         self.error_code = error_code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -110,26 +116,57 @@ class DescribeResourceConstraintsResponseBodyData(DaraModel):
         compaction_service_cu_constraint: main_models.DescribeResourceConstraintsResponseBodyDataCompactionServiceCuConstraint = None,
         zone_support_compaction_service: Dict[str, List[main_models.DataZoneSupportCompactionServiceValue]] = None,
     ):
+        # The CU sizes for agents.
         self.agent_cu = agent_cu
+        # The available CU (Compute Unit) sizes for BE nodes.
         self.be_cu = be_cu
+        # The CU sizes for BE nodes on ECS.
         self.be_cu_on_ecs = be_cu_on_ecs
+        # The BE node configuration.
         self.be_number = be_number
+        # The storage constraints for BE nodes.
         self.be_storage_constraints = be_storage_constraints
+        # The specification constraints for big data instance types.
         self.big_data_instance_type_constraints = big_data_instance_type_constraints
+        # The available CU sizes for FE nodes.
         self.fe_cu = fe_cu
+        # The CU sizes for FE nodes on ECS.
         self.fe_cu_on_ecs = fe_cu_on_ecs
+        # The number of FE nodes.
         self.fe_number = fe_number
+        # The instance types for FE nodes.
         self.fe_spec_type = fe_spec_type
+        # The storage size for the FE node.
         self.fe_storage = fe_storage
+        # The high availability (HA) FE node configuration.
         self.ha_fe_resource_spec = ha_fe_resource_spec
+        # The specification constraints for local SSD instance types.
         self.local_ssdinstance_type_constraints = local_ssdinstance_type_constraints
+        # The standard FE resource configuration.
         self.normal_fe_resource_spec = normal_fe_resource_spec
+        # The instance type for compute nodes. Valid values:
+        # 
+        # - `standard`: Standard.
+        # 
+        # - `localSSD`: Local SSD.
+        # 
+        # - `bigData`: Large-capacity storage.
+        # 
+        # - `ramEnhanced`: Memory-enhanced.
+        # 
+        # - `networkEnhanced`: Network-enhanced.
         self.spec_type = spec_type
+        # This parameter is deprecated.
         self.split_disk_threshold_map = split_disk_threshold_map
+        # The version constraint.
         self.version_constraint = version_constraint
+        # The EED types supported in each availability zone.
         self.zone_supported_eed_types = zone_supported_eed_types
+        # The instance types supported in each availability zone.
         self.zone_supported_spec_types = zone_supported_spec_types
+        # The CU constraints for the compaction service.
         self.compaction_service_cu_constraint = compaction_service_cu_constraint
+        # The compaction services supported in each availability zone.
         self.zone_support_compaction_service = zone_support_compaction_service
 
     def validate(self):
@@ -361,9 +398,13 @@ class DescribeResourceConstraintsResponseBodyDataCompactionServiceCuConstraint(D
         min: int = None,
         step: int = None,
     ):
+        # The default value.
         self.def_ = def_
+        # The maximum value.
         self.max = max
+        # The minimum value.
         self.min = min
+        # The step.
         self.step = step
 
     def validate(self):
@@ -411,8 +452,11 @@ class DescribeResourceConstraintsResponseBodyDataVersionConstraint(DaraModel):
         default_version: str = None,
         versions: List[str] = None,
     ):
+        # The beta versions.
         self.beta_versions = beta_versions
+        # The default version.
         self.default_version = default_version
+        # The available versions.
         self.versions = versions
 
     def validate(self):
@@ -453,7 +497,9 @@ class DescribeResourceConstraintsResponseBodyDataSpecType(DaraModel):
         display: str = None,
         name: str = None,
     ):
+        # The display name.
         self.display = display
+        # The name.
         self.name = name
 
     def validate(self):
@@ -489,8 +535,11 @@ class DescribeResourceConstraintsResponseBodyDataNormalFeResourceSpec(DaraModel)
         node_number: int = None,
         storage_size: int = None,
     ):
+        # The CU (Compute Unit) size.
         self.cu = cu
+        # The total number of nodes.
         self.node_number = node_number
+        # The storage size, in GiB.
         self.storage_size = storage_size
 
     def validate(self):
@@ -537,13 +586,21 @@ class DescribeResourceConstraintsResponseBodyDataLocalSSDInstanceTypeConstraints
         memory: int = None,
         storage_size: str = None,
     ):
+        # The number of vCPUs.
         self.cpu = cpu
+        # The disk count.
         self.disk_number = disk_number
+        # The display name.
         self.display = display
+        # The corresponding ECS instance family.
         self.ecs_instance_type = ecs_instance_type
+        # The instance type.
         self.instance_type = instance_type
+        # Indicates whether this is the default option.
         self.is_default = is_default
+        # The memory size, in GiB.
         self.memory = memory
+        # The storage size, in GiB.
         self.storage_size = storage_size
 
     def validate(self):
@@ -615,8 +672,11 @@ class DescribeResourceConstraintsResponseBodyDataHaFeResourceSpec(DaraModel):
         node_number: int = None,
         storage_size: int = None,
     ):
+        # The CU (Compute Unit) size.
         self.cu = cu
+        # The total number of nodes.
         self.node_number = node_number
+        # The storage size, in GiB.
         self.storage_size = storage_size
 
     def validate(self):
@@ -659,9 +719,13 @@ class DescribeResourceConstraintsResponseBodyDataFeStorage(DaraModel):
         min: int = None,
         step: int = None,
     ):
+        # The default value.
         self.default = default
+        # The maximum value.
         self.max = max
+        # The minimum value.
         self.min = min
+        # The step.
         self.step = step
 
     def validate(self):
@@ -708,7 +772,9 @@ class DescribeResourceConstraintsResponseBodyDataFeSpecType(DaraModel):
         display: str = None,
         name: str = None,
     ):
+        # The display name.
         self.display = display
+        # The name.
         self.name = name
 
     def validate(self):
@@ -745,9 +811,13 @@ class DescribeResourceConstraintsResponseBodyDataFeNumber(DaraModel):
         min: int = None,
         step: int = None,
     ):
+        # The default value.
         self.default = default
+        # The maximum value.
         self.max = max
+        # The minimum value.
         self.min = min
+        # The step.
         self.step = step
 
     def validate(self):
@@ -800,13 +870,21 @@ class DescribeResourceConstraintsResponseBodyDataBigDataInstanceTypeConstraints(
         memory: int = None,
         storage_size: str = None,
     ):
+        # The number of vCPUs.
         self.cpu = cpu
+        # The disk count.
         self.disk_number = disk_number
+        # The display name.
         self.display = display
+        # The corresponding ECS instance family.
         self.ecs_instance_type = ecs_instance_type
+        # The instance type.
         self.instance_type = instance_type
+        # Indicates whether this is the default option.
         self.is_default = is_default
+        # The memory size, in GiB.
         self.memory = memory
+        # The storage size, in GiB.
         self.storage_size = storage_size
 
     def validate(self):
@@ -880,10 +958,15 @@ class DescribeResourceConstraintsResponseBodyDataBeStorageConstraints(DaraModel)
         level: str = None,
         value_constraint: main_models.DescribeResourceConstraintsResponseBodyDataBeStorageConstraintsValueConstraint = None,
     ):
+        # The description.
         self.desc = desc
+        # The disk count constraint.
         self.disk_number_constraint = disk_number_constraint
+        # Indicates whether this is the default option.
         self.is_default = is_default
+        # The disk performance level.
         self.level = level
+        # The value constraint.
         self.value_constraint = value_constraint
 
     def validate(self):
@@ -943,9 +1026,13 @@ class DescribeResourceConstraintsResponseBodyDataBeStorageConstraintsValueConstr
         min: int = None,
         step: int = None,
     ):
+        # The default value.
         self.default = default
+        # The maximum value.
         self.max = max
+        # The minimum value.
         self.min = min
+        # The step.
         self.step = step
 
     def validate(self):
@@ -994,9 +1081,13 @@ class DescribeResourceConstraintsResponseBodyDataBeStorageConstraintsDiskNumberC
         min: int = None,
         step: int = None,
     ):
+        # The default value.
         self.default = default
+        # The maximum number of disks.
         self.max = max
+        # The minimum number of disks.
         self.min = min
+        # The step.
         self.step = step
 
     def validate(self):
@@ -1045,9 +1136,13 @@ class DescribeResourceConstraintsResponseBodyDataBeNumber(DaraModel):
         min: int = None,
         step: int = None,
     ):
+        # The default value.
         self.default = default
+        # The maximum value.
         self.max = max
+        # The minimum value.
         self.min = min
+        # The step.
         self.step = step
 
     def validate(self):

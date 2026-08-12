@@ -11,8 +11,11 @@ class AddGatewayRequest(DaraModel):
         gateway_name: str = None,
         instance_id: str = None,
     ):
+        # The number of gateway nodes.
         self.fe_node_number = fe_node_number
+        # The alias for the private gateway.
         self.gateway_name = gateway_name
+        # The ID of the instance.
         self.instance_id = instance_id
 
     def validate(self):

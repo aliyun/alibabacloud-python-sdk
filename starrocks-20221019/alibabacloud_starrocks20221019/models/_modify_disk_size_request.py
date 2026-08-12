@@ -14,16 +14,16 @@ class ModifyDiskSizeRequest(DaraModel):
         target: int = None,
     ):
         self.fast_mode = fast_mode
-        # The instance ID.
+        # The ID of the instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The warehouse ID.
+        # The ID of the compute group.
         # 
         # This parameter is required.
         self.node_group_id = node_group_id
         self.promotion_option_no = promotion_option_no
-        # The disk size to which you want to change to. Unit: GB.
+        # The target disk size. Unit: GB.
         # 
         # This parameter is required.
         self.target = target

@@ -21,12 +21,19 @@ class DescribeInstanceDiagnosisResultResponseBody(DaraModel):
     ):
         # AccessDeniedDetail
         self.access_denied_detail = access_denied_detail
+        # Returned data.
         self.data = data
+        # Error code.
         self.err_code = err_code
+        # Error message.
         self.err_message = err_message
+        # HTTP request status code.
         self.http_status_code = http_status_code
+        # Request ID.
         self.request_id = request_id
+        # Whether the request was successful.
         self.success = success
+        # Total number of query results.
         self.total = total
 
     def validate(self):
@@ -116,18 +123,39 @@ class DescribeInstanceDiagnosisResultResponseBodyData(DaraModel):
         status: str = None,
         suggestion: str = None,
     ):
+        # Best Practices.
         self.best_practice = best_practice
+        # Diagnosis item description.
         self.description = description
+        # Evaluation dimension.
         self.dimension = dimension
+        # Evaluation time.
         self.evaluation_time = evaluation_time
+        # Full score for the evaluation item.
         self.full_score = full_score
+        # Instance ID.
         self.instance_id = instance_id
+        # Evaluation item introduction.
         self.introduction = introduction
+        # Evaluation item ID.
         self.item_id = item_id
+        # Evaluation item name.
         self.item_name = item_name
+        # Report date.
         self.report_date = report_date
+        # Diagnosis score.
         self.score = score
+        # Status list.
+        # 
+        # - healthy
+        # 
+        # - info
+        # 
+        # - medium
+        # 
+        # - critical
         self.status = status
+        # Diagnosis suggestion.
         self.suggestion = suggestion
 
     def validate(self):

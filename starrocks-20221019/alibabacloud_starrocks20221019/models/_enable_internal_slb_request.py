@@ -9,6 +9,7 @@ class EnableInternalSlbRequest(DaraModel):
         self,
         instance_id: str = None,
     ):
+        # The instance ID of the EMR Serverless StarRocks instance.
         self.instance_id = instance_id
 
     def validate(self):

@@ -10,7 +10,9 @@ class DeleteBackupPolicyRequest(DaraModel):
         instance_id: str = None,
         policy_id: str = None,
     ):
+        # Instance ID.
         self.instance_id = instance_id
+        # Policy ID.
         self.policy_id = policy_id
 
     def validate(self):

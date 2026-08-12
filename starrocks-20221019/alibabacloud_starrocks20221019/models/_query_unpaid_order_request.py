@@ -11,10 +11,15 @@ class QueryUnpaidOrderRequest(DaraModel):
         instance_id: str = None,
         order_type: str = None,
     ):
+        # The ID of the instance that is associated with the bill. For the default compute group, which includes the FE compute group and the default BE compute group, this parameter is the instance ID. For other compute groups, this parameter is the compute group ID.
+        # 
         # This parameter is required.
         self.billing_instance_id = billing_instance_id
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Order type
         self.order_type = order_type
 
     def validate(self):

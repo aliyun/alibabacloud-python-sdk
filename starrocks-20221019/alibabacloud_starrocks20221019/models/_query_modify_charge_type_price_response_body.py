@@ -20,11 +20,17 @@ class QueryModifyChargeTypePriceResponseBody(DaraModel):
     ):
         # AccessDeniedDetail
         self.access_denied_detail = access_denied_detail
+        # The order amount.
         self.data = data
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -100,16 +106,27 @@ class QueryModifyChargeTypePriceResponseBodyData(DaraModel):
         stand_price: float = None,
         trade_amount: float = None,
     ):
+        # The component prices.
         self.component_prices = component_prices
+        # The currency.
         self.currency = currency
+        # The cost after discounts.
         self.depreciate_info = depreciate_info
+        # The discount amount. This is the original amount minus the payable amount, which includes coupon deductions.
         self.discount_amount = discount_amount
+        # The module ID.
         self.module_instance = module_instance
+        # The coupon information.
         self.optional_promotions = optional_promotions
+        # The original price (list price × usage).
         self.original_amount = original_amount
+        # The price calculation rules.
         self.rules = rules
+        # The discount price.
         self.stand_discount_price = stand_discount_price
+        # The official discounted price.
         self.stand_price = stand_price
+        # The amount.
         self.trade_amount = trade_amount
 
     def validate(self):
@@ -237,8 +254,11 @@ class QueryModifyChargeTypePriceResponseBodyDataRules(DaraModel):
         name: str = None,
         rule_desc_id: str = None,
     ):
+        # The amount.
         self.amount = amount
+        # The rule name.
         self.name = name
+        # The rule ID.
         self.rule_desc_id = rule_desc_id
 
     def validate(self):
@@ -280,8 +300,11 @@ class QueryModifyChargeTypePriceResponseBodyDataOptionalPromotions(DaraModel):
         promotion_name: str = None,
         promotion_option_no: str = None,
     ):
+        # The coupon description.
         self.promotion_desc = promotion_desc
+        # The coupon name.
         self.promotion_name = promotion_name
+        # The coupon ID.
         self.promotion_option_no = promotion_option_no
 
     def validate(self):
@@ -324,9 +347,13 @@ class QueryModifyChargeTypePriceResponseBodyDataModuleInstance(DaraModel):
         stand_price: str = None,
         total_product_fee: str = None,
     ):
+        # The code of the pricing module.
         self.module_code = module_code
+        # The name of the pricing module.
         self.module_name = module_name
+        # The discounted price.
         self.stand_price = stand_price
+        # The original price of the product.
         self.total_product_fee = total_product_fee
 
     def validate(self):
@@ -375,9 +402,13 @@ class QueryModifyChargeTypePriceResponseBodyDataDepreciateInfo(DaraModel):
         is_show: bool = None,
         original_stand_amount: float = None,
     ):
+        # The price reduction ratio.
         self.cheap_rate = cheap_rate
+        # The total official price after the price reduction.
         self.cheap_stand_amount = cheap_stand_amount
+        # Indicates whether to display the price reduction amount.
         self.is_show = is_show
+        # The original total official price.
         self.original_stand_amount = original_stand_amount
 
     def validate(self):
@@ -426,9 +457,13 @@ class QueryModifyChargeTypePriceResponseBodyDataComponentPrices(DaraModel):
         original_amount: float = None,
         trade_amount: float = None,
     ):
+        # The component name.
         self.component_name = component_name
+        # The discount amount for the order.
         self.discount_amount = discount_amount
+        # The original price.
         self.original_amount = original_amount
+        # The final price. This is the original price minus the discount amount.
         self.trade_amount = trade_amount
 
     def validate(self):

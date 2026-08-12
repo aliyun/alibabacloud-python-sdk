@@ -17,11 +17,17 @@ class RenewInstanceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response data.
         self.data = data
+        # The error message.
         self.err_message = err_message
+        # The error code.
         self.error_code = error_code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request succeeded.
         self.success = success
 
     def validate(self):
@@ -81,6 +87,7 @@ class RenewInstanceResponseBodyData(DaraModel):
         self,
         order_ids: List[str] = None,
     ):
+        # A list of order IDs.
         self.order_ids = order_ids
 
     def validate(self):

@@ -12,11 +12,18 @@ class QueryModifyDiskSizePriceRequest(DaraModel):
         promotion_option_no: str = None,
         target: int = None,
     ):
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Compute group ID.
+        # 
         # This parameter is required.
         self.node_group_id = node_group_id
+        # Coupon ID.
         self.promotion_option_no = promotion_option_no
+        # Target disk size. Unit: GB.
+        # 
         # This parameter is required.
         self.target = target
 

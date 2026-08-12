@@ -13,13 +13,21 @@ class UnTagResourcesShrinkRequest(DaraModel):
         resource_type: str = None,
         tag_key_shrink: str = None,
     ):
+        # Specifies whether to remove all tags from the resources. This parameter is valid only when the TagKey parameter is left empty. The default value is false.
         self.all = all
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # A list of resource IDs. The list can contain up to 50 resource IDs.
+        # 
         # This parameter is required.
         self.resource_id_shrink = resource_id_shrink
+        # The resource type.
+        # 
         # This parameter is required.
         self.resource_type = resource_type
+        # A list of tag keys to remove. The list can contain up to 20 tag keys.
         self.tag_key_shrink = tag_key_shrink
 
     def validate(self):

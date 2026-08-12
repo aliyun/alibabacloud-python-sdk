@@ -16,16 +16,37 @@ class CreateAgentResourceRequest(DaraModel):
         promotion_option_no: str = None,
         spec_type: str = None,
     ):
+        # Enable auto-renewal. This parameter is valid only when payType is set to PrePaid. Auto-renewal is disabled by default.
         self.auto_renew = auto_renew
+        # Number of CUs. A CU (Compute Unit) is the basic unit of service measurement. 1 CU = 1 CPU core + 4 GiB memory. For memory-enhanced instance family, 1 CU = 1 CPU core + 8 GiB memory.
+        # 
         # This parameter is required.
         self.cu = cu
+        # Duration. This parameter is valid only when payType is set to PrePaid.
         self.duration = duration
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Payment type:
+        # 
+        # 1. Subscription (prePaid).
+        # 
+        # 2. Pay-as-you-go (postPaid).
+        # 
         # This parameter is required.
         self.pay_type = pay_type
+        # Unit of subscription duration:
+        # 
+        # - Month
+        # 
+        # - Year
+        # 
+        # This parameter is valid only when payType is set to PrePaid.
         self.pricing_cycle = pricing_cycle
+        # Coupon ID.
         self.promotion_option_no = promotion_option_no
+        # Compute group specification type.
         self.spec_type = spec_type
 
     def validate(self):

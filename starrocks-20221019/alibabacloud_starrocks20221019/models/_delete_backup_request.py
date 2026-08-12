@@ -11,10 +11,16 @@ class DeleteBackupRequest(DaraModel):
         instance_id: str = None,
         region_id: str = None,
     ):
+        # The backup task ID.
+        # 
         # This parameter is required.
         self.backup_task_id = backup_task_id
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The region ID of the instance.
+        # 
         # This parameter is required.
         self.region_id = region_id
 

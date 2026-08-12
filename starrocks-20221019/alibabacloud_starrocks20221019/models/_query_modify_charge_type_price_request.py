@@ -14,11 +14,23 @@ class QueryModifyChargeTypePriceRequest(DaraModel):
         pricing_cycle: str = None,
         promotion_option_no: str = None,
     ):
+        # Specifies whether to enable auto-renewal. This parameter is valid only when \\`payType\\` is set to \\`PrePaid\\`. The default value is false.
         self.auto_renew = auto_renew
+        # A list of billing instance IDs to modify. Separate multiple IDs with commas.
         self.billing_instance_ids = billing_instance_ids
+        # The subscription duration. This parameter is valid only when \\`payType\\` is set to \\`PrePaid\\`.
         self.duration = duration
+        # The cluster ID.
         self.instance_id = instance_id
+        # The unit of the subscription duration:
+        # 
+        # - Month
+        # 
+        # - Year
+        # 
+        # This parameter is valid only when \\`payType\\` is set to \\`PrePaid\\`.
         self.pricing_cycle = pricing_cycle
+        # The coupon ID.
         self.promotion_option_no = promotion_option_no
 
     def validate(self):

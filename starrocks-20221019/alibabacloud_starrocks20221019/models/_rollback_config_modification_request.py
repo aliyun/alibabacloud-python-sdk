@@ -11,8 +11,15 @@ class RollbackConfigModificationRequest(DaraModel):
         instance_id: str = None,
         restart: bool = None,
     ):
+        # The ID of the configuration modification history.
         self.config_history_id = config_history_id
+        # The instance ID.
         self.instance_id = instance_id
+        # Specifies whether to restart the instance after the configuration is changed. Valid values:
+        # 
+        # - **true**: Restart the instance.
+        # 
+        # - **false**: Do not restart the instance.
         self.restart = restart
 
     def validate(self):

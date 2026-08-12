@@ -15,13 +15,19 @@ class AddBackupPolicyResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # AccessDeniedDetail
+        # Details about the access denial.
         self.access_denied_detail = access_denied_detail
+        # The data returned.
         self.data = data
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

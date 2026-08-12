@@ -20,7 +20,22 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'ap-southeast-1': 'starrocks.ap-southeast-1.aliyuncs.com',
+            'ap-southeast-5': 'starrocks.ap-southeast-5.aliyuncs.com',
+            'cn-beijing': 'starrocks.cn-beijing.aliyuncs.com',
+            'cn-hangzhou': 'starrocks.cn-hangzhou.aliyuncs.com',
+            'cn-hongkong': 'starrocks.cn-hongkong.aliyuncs.com',
+            'cn-qingdao': 'starrocks.cn-qingdao.aliyuncs.com',
+            'cn-shanghai': 'starrocks.cn-shanghai.aliyuncs.com',
+            'cn-shenzhen': 'starrocks.cn-shenzhen.aliyuncs.com',
+            'cn-wulanchabu': 'starrocks.cn-wulanchabu.aliyuncs.com',
+            'cn-zhangjiakou': 'starrocks.cn-zhangjiakou.aliyuncs.com',
+            'us-west-1': 'starrocks.us-west-1.aliyuncs.com',
+            'us-east-1': 'starrocks.us-east-1.aliyuncs.com',
+            'eu-central-1': 'starrocks.eu-central-1.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('starrocks', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -522,6 +537,8 @@ class Client(OpenApiClient):
             body['DlfCatalogType'] = request.dlf_catalog_type
         if not DaraCore.is_null(request.duration):
             body['Duration'] = request.duration
+        if not DaraCore.is_null(request.enable_ai_function):
+            body['EnableAiFunction'] = request.enable_ai_function
         if not DaraCore.is_null(request.enable_multi_az):
             body['EnableMultiAz'] = request.enable_multi_az
         if not DaraCore.is_null(request.encrypted):
@@ -614,6 +631,8 @@ class Client(OpenApiClient):
             body['DlfCatalogType'] = request.dlf_catalog_type
         if not DaraCore.is_null(request.duration):
             body['Duration'] = request.duration
+        if not DaraCore.is_null(request.enable_ai_function):
+            body['EnableAiFunction'] = request.enable_ai_function
         if not DaraCore.is_null(request.enable_multi_az):
             body['EnableMultiAz'] = request.enable_multi_az
         if not DaraCore.is_null(request.encrypted):

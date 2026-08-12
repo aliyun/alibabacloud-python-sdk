@@ -19,13 +19,21 @@ class DescribeInstanceConfigsResponseBody(DaraModel):
         success: bool = None,
         total: int = None,
     ):
+        # The details of the access denied error.
         self.access_denied_detail = access_denied_detail
+        # The returned data.
         self.data = data
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP request status code.
         self.http_status_code = http_status_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # The total number of query results.
         self.total = total
 
     def validate(self):
@@ -117,20 +125,45 @@ class DescribeInstanceConfigsResponseBodyData(DaraModel):
         value_range: str = None,
         value_type: str = None,
     ):
+        # Indicates whether the configuration item can be modified.
         self.allow_modify = allow_modify
+        # The key of the configuration item.
         self.config_key = config_key
+        # The type of the configuration item. Valid values:
+        # 
+        # - FE
+        # 
+        # - BE
+        # 
+        # - CORE
         self.config_type = config_type
+        # The value of the configuration item.
         self.config_value = config_value
+        # Indicates whether the item is a custom configuration.
         self.custom = custom
+        # Indicates whether it is the default compute group.
         self.default_node_group = default_node_group
+        # The default value of the configuration item.
         self.default_value = default_value
+        # The description of the configuration item\\"s feature.
         self.description = description
+        # The English description of the configuration item.
         self.description_en = description_en
+        # The compute group ID.
         self.node_group_id = node_group_id
+        # The name of the compute group.
         self.node_group_name = node_group_name
+        # Indicates whether the instance needs to be restarted after the configuration item is changed. Valid values:
+        # 
+        # - **true**: Restart.
+        # 
+        # - **false**: Do not restart.
         self.restart = restart
+        # The unit of the configuration item. An empty string is returned if no unit is available.
         self.unit = unit
+        # The value range of the configuration item. An empty string is returned if no value range is available.
         self.value_range = value_range
+        # The data type of the configuration item\\"s value.
         self.value_type = value_type
 
     def validate(self):

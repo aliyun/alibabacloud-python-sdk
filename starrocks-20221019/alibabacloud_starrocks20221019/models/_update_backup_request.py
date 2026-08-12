@@ -11,8 +11,11 @@ class UpdateBackupRequest(DaraModel):
         backup_task_id: str = None,
         description: str = None,
     ):
+        # The ID of the region where the cluster is located.
         self.region_id = region_id
+        # The ID of the backup job.
         self.backup_task_id = backup_task_id
+        # The description of the backup.
         self.description = description
 
     def validate(self):

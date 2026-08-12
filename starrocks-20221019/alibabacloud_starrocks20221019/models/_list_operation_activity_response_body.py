@@ -19,13 +19,21 @@ class ListOperationActivityResponseBody(DaraModel):
         success: bool = None,
         total: int = None,
     ):
+        # The details of the permission verification failure.
         self.access_denied_detail = access_denied_detail
+        # The returned data.
         self.data = data
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # The total number of query results.
         self.total = total
 
     def validate(self):
@@ -109,12 +117,20 @@ class ListOperationActivityResponseBodyData(DaraModel):
         name: str = None,
         start_time: int = None,
     ):
+        # The activity ID.
         self.activity_id = activity_id
+        # The activity status. Valid values:
+        # 
+        # - COMPLETED
+        # - RUNNING
         self.activity_status = activity_status
         self.console_retry_count = console_retry_count
+        # The end time of the activity.
         self.end_time = end_time
         self.err_message = err_message
+        # The activity name.
         self.name = name
+        # The start time of the activity.
         self.start_time = start_time
 
     def validate(self):

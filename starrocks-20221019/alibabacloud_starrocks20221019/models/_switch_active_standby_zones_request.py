@@ -10,7 +10,9 @@ class SwitchActiveStandbyZonesRequest(DaraModel):
         instance_id: str = None,
         target_zone_id: str = None,
     ):
+        # The instance ID.
         self.instance_id = instance_id
+        # The ID of the target zone.
         self.target_zone_id = target_zone_id
 
     def validate(self):

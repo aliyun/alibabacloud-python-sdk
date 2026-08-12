@@ -10,8 +10,12 @@ class ModifyMaintainableTimeRequest(DaraModel):
         instance_id: str = None,
         maintainable_time_period: str = None,
     ):
+        # The ID of the instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The maintenance window for the instance.
+        # 
         # This parameter is required.
         self.maintainable_time_period = maintainable_time_period
 

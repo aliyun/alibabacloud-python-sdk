@@ -19,14 +19,21 @@ class GetInstanceFeatureGateResponseBody(DaraModel):
         success: bool = None,
         total: int = None,
     ):
-        # AccessDeniedDetail
+        # The details of the access denial.
         self.access_denied_detail = access_denied_detail
+        # The returned data.
         self.data = data
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # The total number of instances.
         self.total = total
 
     def validate(self):
@@ -118,27 +125,50 @@ class GetInstanceFeatureGateResponseBodyData(DaraModel):
         support_compaction_service: bool = None,
         support_compaction_service_white_list: bool = None,
     ):
+        # Whether the restart process can be controlled from the console.
         self.console_control_restart = console_control_restart
+        # Whether materialized views can be managed.
         self.enable_manage_mv = enable_manage_mv
+        # Whether managed security groups are supported.
         self.full_managed_security_group = full_managed_security_group
+        # Whether DLF meta tokens can be mounted.
         self.mount_dlf_meta_token = mount_dlf_meta_token
+        # A list of new configuration types.
         self.support_add_config_types = support_add_config_types
+        # Whether data backup is supported.
+        # 
+        # - **1**: Supports data backup.
+        # 
+        # - **2**: Does not support data backup.
         self.support_backup = support_backup
+        # Whether agents can be created.
         self.support_create_agent = support_create_agent
+        # Whether compute groups with specifications other than `standard` can be created.
         self.support_create_non_standard_node_group = support_create_non_standard_node_group
+        # Whether elastic ephemeral disks are supported.
         self.support_eed = support_eed
+        # Whether the AI function is supported.
         self.support_enable_ai = support_enable_ai
+        # Whether SSL can be enabled.
         self.support_enable_ssl = support_enable_ssl
+        # Whether fast restart is supported for configuration changes.
         self.support_fast_mode_modify_config = support_fast_mode_modify_config
+        # Whether resources can be modified by using fast restart.
         self.support_fast_mode_modify_resource = support_fast_mode_modify_resource
+        # Whether fast restart is supported.
         self.support_fast_restart = support_fast_restart
+        # Whether the FE gateway is supported.
         self.support_fe_gateway = support_fe_gateway
+        # Whether custom domain names are supported.
         self.support_host_alias = support_host_alias
+        # Whether the time zone can be modified.
         self.support_modify_timezone = support_modify_timezone
+        # Whether observers can be deployed across multiple availability zones (AZs).
         self.support_multi_az = support_multi_az
+        # Whether the instance uses compute nodes (CNs).
         self.use_compute_node = use_compute_node
         self.support_compaction_service = support_compaction_service
-        # 是否支持Compaction Service白名单功能
+        # Whether the Compaction Service allowlist feature is supported.
         self.support_compaction_service_white_list = support_compaction_service_white_list
 
     def validate(self):

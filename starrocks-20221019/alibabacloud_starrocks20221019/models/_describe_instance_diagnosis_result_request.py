@@ -14,11 +14,17 @@ class DescribeInstanceDiagnosisResultRequest(DaraModel):
         report_date: str = None,
         statuses: str = None,
     ):
+        # Evaluation dimension.
         self.dimension = dimension
+        # Instance ID.
         self.instance_id = instance_id
+        # The page number for paged queries. The default value is 1.
         self.page_number = page_number
+        # The number of authorized entries displayed per page for paged queries. The default value is 10, and the maximum value is 50.
         self.page_size = page_size
+        # Report time.
         self.report_date = report_date
+        # Status collection.
         self.statuses = statuses
 
     def validate(self):

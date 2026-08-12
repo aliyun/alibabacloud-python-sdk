@@ -11,10 +11,15 @@ class ModifySpecTypePreCheckRequest(DaraModel):
         node_group_id: str = None,
         target_spec_type: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The compute group ID.
+        # 
         # This parameter is required.
         self.node_group_id = node_group_id
+        # The target specification type.
         self.target_spec_type = target_spec_type
 
     def validate(self):

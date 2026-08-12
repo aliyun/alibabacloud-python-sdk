@@ -16,19 +16,12 @@ class ModifyDiskPerformanceLevelRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The warehouse ID.
+        # The compute group ID.
         # 
         # This parameter is required.
         self.node_group_id = node_group_id
         self.promotion_option_no = promotion_option_no
-        # The disk performance level to which you want to change.
-        # 
-        # Valid values:
-        # 
-        # *   pl0
-        # *   pl1
-        # *   pl2
-        # *   pl3
+        # The target disk performance level.
         # 
         # This parameter is required.
         self.target = target

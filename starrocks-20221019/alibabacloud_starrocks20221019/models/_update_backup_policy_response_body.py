@@ -17,11 +17,17 @@ class UpdateBackupPolicyResponseBody(DaraModel):
     ):
         # AccessDeniedDetail
         self.access_denied_detail = access_denied_detail
+        # Indicates whether the role was created successfully.
         self.data = data
+        # Error code.
         self.err_code = err_code
+        # Error message.
         self.err_message = err_message
+        # HTTP request status code.
         self.http_status_code = http_status_code
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the request succeeded.
         self.success = success
 
     def validate(self):

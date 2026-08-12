@@ -16,8 +16,9 @@ class QueryUpgradableVersionsRequest(DaraModel):
         self.instance_id = instance_id
         # Specifies whether to query the minor versions that you can upgrade to. Default value: true. Valid values:
         # 
-        # *   true: The minor versions that you can upgrade to.
-        # *   false: The major versions that you can upgrade to.
+        # - true: The minor versions that you can upgrade to.
+        # 
+        # - false: The major versions that you can upgrade to.
         self.minor = minor
 
     def validate(self):

@@ -17,11 +17,17 @@ class QueryMinorVersionResponseBody(DaraModel):
     ):
         # AccessDeniedDetail
         self.access_denied_detail = access_denied_detail
+        # Minor version.
         self.data = data
+        # Error code.
         self.err_code = err_code
+        # Error message.
         self.err_message = err_message
+        # HTTP request status code.
         self.http_status_code = http_status_code
+        # Request ID.
         self.request_id = request_id
+        # Whether the request was successful.
         self.success = success
 
     def validate(self):

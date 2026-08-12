@@ -18,11 +18,17 @@ class ModifySpecTypePreCheckResponseBody(DaraModel):
     ):
         # AccessDeniedDetail
         self.access_denied_detail = access_denied_detail
+        # The returned data.
         self.data = data
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code of the request.
         self.http_status_code = http_status_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -89,7 +95,9 @@ class ModifySpecTypePreCheckResponseBodyData(DaraModel):
         allow: bool = None,
         reason: str = None,
     ):
+        # Indicates whether the number of CUs can be modified.
         self.allow = allow
+        # The reason why the number of CUs cannot be modified.
         self.reason = reason
 
     def validate(self):

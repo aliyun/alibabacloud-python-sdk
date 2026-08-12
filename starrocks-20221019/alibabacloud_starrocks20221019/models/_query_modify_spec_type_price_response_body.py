@@ -18,13 +18,19 @@ class QueryModifySpecTypePriceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # AccessDeniedDetail
+        # Details about access denial.
         self.access_denied_detail = access_denied_detail
+        # The returned data.
         self.data = data
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -99,15 +105,25 @@ class QueryModifySpecTypePriceResponseBodyData(DaraModel):
         stand_price: float = None,
         trade_amount: float = None,
     ):
+        # The component prices.
         self.component_prices = component_prices
+        # The currency.
         self.currency = currency
+        # The name of the campaign.
         self.depreciate_info = depreciate_info
+        # The discount amount. Formula: Original amount - Payable amount on the bill. The payable amount includes the amount deducted by coupons.
         self.discount_amount = discount_amount
+        # The coupon information.
         self.optional_promotions = optional_promotions
+        # The original price. Formula: List price × Billed usage.
         self.original_amount = original_amount
+        # The price calculation rules.
         self.rules = rules
+        # The discounted price that is based on the official website discount.
         self.stand_discount_price = stand_discount_price
+        # The official website discount price.
         self.stand_price = stand_price
+        # The amount.
         self.trade_amount = trade_amount
 
     def validate(self):
@@ -220,8 +236,11 @@ class QueryModifySpecTypePriceResponseBodyDataRules(DaraModel):
         name: str = None,
         rule_desc_id: str = None,
     ):
+        # The resource count.
         self.amount = amount
+        # The rule name.
         self.name = name
+        # The rule ID.
         self.rule_desc_id = rule_desc_id
 
     def validate(self):
@@ -263,8 +282,11 @@ class QueryModifySpecTypePriceResponseBodyDataOptionalPromotions(DaraModel):
         promotion_name: str = None,
         promotion_option_no: str = None,
     ):
+        # The coupon description.
         self.promotion_desc = promotion_desc
+        # The coupon name.
         self.promotion_name = promotion_name
+        # The coupon ID.
         self.promotion_option_no = promotion_option_no
 
     def validate(self):
@@ -307,9 +329,13 @@ class QueryModifySpecTypePriceResponseBodyDataDepreciateInfo(DaraModel):
         is_show: bool = None,
         original_stand_amount: float = None,
     ):
+        # The price reduction ratio.
         self.cheap_rate = cheap_rate
+        # The total official website price after the price reduction.
         self.cheap_stand_amount = cheap_stand_amount
+        # Indicates whether to display the price reduction.
         self.is_show = is_show
+        # The original total official website price.
         self.original_stand_amount = original_stand_amount
 
     def validate(self):
@@ -358,9 +384,13 @@ class QueryModifySpecTypePriceResponseBodyDataComponentPrices(DaraModel):
         original_amount: float = None,
         trade_amount: float = None,
     ):
+        # The component name.
         self.component_name = component_name
+        # The discount amount.
         self.discount_amount = discount_amount
+        # The original price.
         self.original_amount = original_amount
+        # The final price. The final price is the original price minus the discount.
         self.trade_amount = trade_amount
 
     def validate(self):

@@ -18,13 +18,19 @@ class QueryModifyCuPriceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # AccessDeniedDetail
+        # Details about the access denial.
         self.access_denied_detail = access_denied_detail
+        # The returned data.
         self.data = data
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -99,15 +105,25 @@ class QueryModifyCuPriceResponseBodyData(DaraModel):
         stand_price: float = None,
         trade_amount: float = None,
     ):
+        # The prices of the components.
         self.component_prices = component_prices
+        # The currency.
         self.currency = currency
+        # The depreciation rate.
         self.depreciate_info = depreciate_info
+        # The discount amount. Discount amount = Original amount - Billable amount. The billable amount includes coupon deductions.
         self.discount_amount = discount_amount
+        # The coupon information.
         self.optional_promotions = optional_promotions
+        # The original price. Original price = List price × Billing usage.
         self.original_amount = original_amount
+        # The data structure returned in the response.
         self.rules = rules
+        # The price after the standard discount is applied.
         self.stand_discount_price = stand_discount_price
+        # The discounted price on the official website.
         self.stand_price = stand_price
+        # The transaction amount.
         self.trade_amount = trade_amount
 
     def validate(self):
@@ -220,8 +236,13 @@ class QueryModifyCuPriceResponseBodyDataRules(DaraModel):
         name: str = None,
         rule_desc_id: str = None,
     ):
+        # The number of instances to purchase in a batch. You can use this parameter to query the price of purchasing multiple Elastic Compute Service (ECS) instances with a specific configuration. Valid values: 1 to 1000.
+        # 
+        # Default value: 1.
         self.amount = amount
+        # The name of the rule.
         self.name = name
+        # The ID of the rule.
         self.rule_desc_id = rule_desc_id
 
     def validate(self):
@@ -263,8 +284,11 @@ class QueryModifyCuPriceResponseBodyDataOptionalPromotions(DaraModel):
         promotion_name: str = None,
         promotion_option_no: str = None,
     ):
+        # The description of the coupon.
         self.promotion_desc = promotion_desc
+        # The name of the coupon.
         self.promotion_name = promotion_name
+        # The ID of the coupon.
         self.promotion_option_no = promotion_option_no
 
     def validate(self):
@@ -307,9 +331,13 @@ class QueryModifyCuPriceResponseBodyDataDepreciateInfo(DaraModel):
         is_show: bool = None,
         original_stand_amount: float = None,
     ):
+        # The price reduction ratio.
         self.cheap_rate = cheap_rate
+        # The total list price after the price reduction.
         self.cheap_stand_amount = cheap_stand_amount
+        # Indicates whether to show the price reduction information.
         self.is_show = is_show
+        # The original total list price.
         self.original_stand_amount = original_stand_amount
 
     def validate(self):
@@ -358,9 +386,13 @@ class QueryModifyCuPriceResponseBodyDataComponentPrices(DaraModel):
         original_amount: float = None,
         trade_amount: float = None,
     ):
+        # The name of the component.
         self.component_name = component_name
+        # The discount amount.
         self.discount_amount = discount_amount
+        # The original price.
         self.original_amount = original_amount
+        # The final price, which is the original price minus the discount.
         self.trade_amount = trade_amount
 
     def validate(self):

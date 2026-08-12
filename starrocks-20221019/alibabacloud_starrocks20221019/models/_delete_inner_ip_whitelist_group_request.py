@@ -10,8 +10,12 @@ class DeleteInnerIpWhitelistGroupRequest(DaraModel):
         inner_ip_whitelist_group_id: str = None,
         instance_id: str = None,
     ):
+        # Internal network whitelist group name.
+        # 
         # This parameter is required.
         self.inner_ip_whitelist_group_id = inner_ip_whitelist_group_id
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

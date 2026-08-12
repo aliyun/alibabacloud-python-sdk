@@ -17,11 +17,17 @@ class ListGatewayResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The returned data.
         self.data = data
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -97,17 +103,27 @@ class ListGatewayResponseBodyData(DaraModel):
         public_slb_acl_id: str = None,
         public_slb_id: str = None,
     ):
+        # Indicates whether public network access is enabled.
         self.enable_public_net = enable_public_net
+        # The number of gateway nodes.
         self.fe_node_number = fe_node_number
+        # The gateway ID.
         self.gateway_id = gateway_id
+        # The gateway name.
         self.gateway_name = gateway_name
+        # The gateway type. Valid values are \\`Slb\\` and \\`Privatezone\\`.
         self.gateway_type = gateway_type
+        # The internal endpoint.
         self.internal_domain = internal_domain
+        # The ID of the internal-facing Server Load Balancer (SLB) instance.
         self.internal_slb_id = internal_slb_id
-        # PrivatezoneId
+        # The ID of the PrivateZone.
         self.privatezone_id = privatezone_id
+        # The public endpoint.
         self.public_domain = public_domain
+        # The ID of the access control list (ACL) for public network access.
         self.public_slb_acl_id = public_slb_acl_id
+        # The ID of the public-facing SLB instance.
         self.public_slb_id = public_slb_id
 
     def validate(self):

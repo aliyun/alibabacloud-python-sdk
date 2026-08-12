@@ -12,11 +12,18 @@ class QueryModifySpecTypePriceRequest(DaraModel):
         promotion_option_no: str = None,
         target_spec_type: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The compute group ID.
+        # 
         # This parameter is required.
         self.node_group_id = node_group_id
+        # The coupon ID.
         self.promotion_option_no = promotion_option_no
+        # The node type of the compute group.
+        # 
         # This parameter is required.
         self.target_spec_type = target_spec_type
 

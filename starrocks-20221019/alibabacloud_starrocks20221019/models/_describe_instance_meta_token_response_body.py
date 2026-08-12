@@ -16,14 +16,21 @@ class DescribeInstanceMetaTokenResponseBody(DaraModel):
         success: bool = None,
         total: int = None,
     ):
-        # AccessDeniedDetail
+        # Details about an access-denied error.
         self.access_denied_detail = access_denied_detail
+        # The token value.
         self.data = data
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code of the request.
         self.http_status_code = http_status_code
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request succeeded.
         self.success = success
+        # The total number of instances.
         self.total = total
 
     def validate(self):

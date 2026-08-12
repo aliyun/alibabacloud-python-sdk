@@ -11,10 +11,16 @@ class CreateScalingRuleRequest(DaraModel):
         rule: str = None,
         trigger_type: str = None,
     ):
+        # The compute group ID.
+        # 
         # This parameter is required.
         self.node_group_id = node_group_id
+        # The rule content.
+        # 
         # This parameter is required.
         self.rule = rule
+        # The trigger type.
+        # 
         # This parameter is required.
         self.trigger_type = trigger_type
 

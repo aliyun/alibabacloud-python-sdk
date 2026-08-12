@@ -19,12 +19,19 @@ class GetNodeGroupFeatureGateResponseBody(DaraModel):
     ):
         # AccessDeniedDetail
         self.access_denied_detail = access_denied_detail
+        # Returned data.
         self.data = data
+        # Error code.
         self.err_code = err_code
+        # Error message.
         self.err_message = err_message
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Request ID.
         self.request_id = request_id
+        # Is the request successful?
         self.success = success
+        # Total number of instances.
         self.total = total
 
     def validate(self):
@@ -99,9 +106,13 @@ class GetNodeGroupFeatureGateResponseBodyData(DaraModel):
         support_fast_restart: bool = None,
         support_modify_spec_type: bool = None,
     ):
+        # Node restart required after modifying disk size.
         self.need_restart_after_modify_disk_size = need_restart_after_modify_disk_size
+        # Supports modifying resources with fast restart.
         self.support_fast_mode_modify_resource = support_fast_mode_modify_resource
+        # Supports fast restart.
         self.support_fast_restart = support_fast_restart
+        # Supports modifying specification type.
         self.support_modify_spec_type = support_modify_spec_type
 
     def validate(self):

@@ -20,11 +20,17 @@ class QueryModifyNodeNumberPriceResponseBody(DaraModel):
     ):
         # AccessDeniedDetail
         self.access_denied_detail = access_denied_detail
+        # The order information.
         self.data = data
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -99,15 +105,31 @@ class QueryModifyNodeNumberPriceResponseBodyData(DaraModel):
         stand_price: float = None,
         trade_amount: float = None,
     ):
+        # The component prices.
         self.component_prices = component_prices
+        # The currency. Valid values:
+        # 
+        # - CNY: Chinese Yuan.
+        # 
+        # - USD: US Dollar.
+        # 
+        # - JPY: Japanese Yen.
         self.currency = currency
+        # The price reduction ratio.
         self.depreciate_info = depreciate_info
+        # The discount amount is the difference between the original amount and the amount payable. The amount payable is the final cost after any coupon deductions.
         self.discount_amount = discount_amount
+        # The coupon information.
         self.optional_promotions = optional_promotions
+        # The original price. This is calculated as: List Price × Billable Usage.
         self.original_amount = original_amount
+        # The returned data structure.
         self.rules = rules
+        # The discounted price based on the official website discount.
         self.stand_discount_price = stand_discount_price
+        # The official website discount price.
         self.stand_price = stand_price
+        # The payable amount.
         self.trade_amount = trade_amount
 
     def validate(self):
@@ -220,8 +242,13 @@ class QueryModifyNodeNumberPriceResponseBodyDataRules(DaraModel):
         name: str = None,
         rule_desc_id: str = None,
     ):
+        # The price for purchasing a batch of Elastic Compute Service (ECS) instances with a specific configuration. Valid values: 1 to 1000.
+        # 
+        # Default value: 1.
         self.amount = amount
+        # The rule name.
         self.name = name
+        # The rule ID.
         self.rule_desc_id = rule_desc_id
 
     def validate(self):
@@ -263,8 +290,11 @@ class QueryModifyNodeNumberPriceResponseBodyDataOptionalPromotions(DaraModel):
         promotion_name: str = None,
         promotion_option_no: str = None,
     ):
+        # The coupon description.
         self.promotion_desc = promotion_desc
+        # The coupon name.
         self.promotion_name = promotion_name
+        # The coupon ID.
         self.promotion_option_no = promotion_option_no
 
     def validate(self):
@@ -307,9 +337,13 @@ class QueryModifyNodeNumberPriceResponseBodyDataDepreciateInfo(DaraModel):
         is_show: bool = None,
         original_stand_amount: float = None,
     ):
+        # The price reduction ratio.
         self.cheap_rate = cheap_rate
+        # The total price on the official website after the price reduction.
         self.cheap_stand_amount = cheap_stand_amount
+        # Indicates whether to display the price reduction range.
         self.is_show = is_show
+        # The original total price on the official website.
         self.original_stand_amount = original_stand_amount
 
     def validate(self):
@@ -358,9 +392,13 @@ class QueryModifyNodeNumberPriceResponseBodyDataComponentPrices(DaraModel):
         original_amount: float = None,
         trade_amount: float = None,
     ):
+        # The component name.
         self.component_name = component_name
+        # The discount.
         self.discount_amount = discount_amount
+        # The original price of the order.
         self.original_amount = original_amount
+        # The actual transaction price of the order.
         self.trade_amount = trade_amount
 
     def validate(self):

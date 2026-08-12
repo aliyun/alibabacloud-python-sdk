@@ -9,6 +9,8 @@ class DescribeAvailableZonesRequest(DaraModel):
         self,
         region_id: str = None,
     ):
+        # The region ID of the instance.
+        # 
         # This parameter is required.
         self.region_id = region_id
 

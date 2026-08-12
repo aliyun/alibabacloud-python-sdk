@@ -22,16 +22,45 @@ class QueryPriceV1Request(DaraModel):
         region_id: str = None,
         run_mode: str = None,
     ):
+        # Agent compute group.
         self.agent_node_group = agent_node_group
+        # BE or CN compute group information.
         self.backend_node_groups = backend_node_groups
+        # Subscription duration. Valid only when PayType is prePaid.
         self.duration = duration
+        # FE node group information.
         self.frontend_node_groups = frontend_node_groups
+        # Observer compute group information.
         self.observer_node_groups = observer_node_groups
+        # Instance edition:
+        # 
+        # - Trial Edition (trial).
+        # 
+        # - Standard Edition (official).
         self.package_type = package_type
+        # Payment type:
+        # 
+        # 1. Subscription (prePaid).
+        # 
+        # 2. Pay-as-you-go (postPaid).
         self.pay_type = pay_type
+        # Subscription duration unit:
+        # 
+        # - Month (Month)
+        # 
+        # - Year (Year)
+        # 
+        # Valid only when PayType is prePaid.
         self.pricing_cycle = pricing_cycle
+        # Coupon ID.
         self.promotion_option_no = promotion_option_no
+        # Region ID.
         self.region_id = region_id
+        # Cluster run mode:
+        # 
+        # - Shared-nothing (shared_nothing).
+        # 
+        # - Shared-data (shared_data).
         self.run_mode = run_mode
 
     def validate(self):
@@ -154,12 +183,19 @@ class QueryPriceV1RequestObserverNodeGroups(DaraModel):
         storage_performance_level: str = None,
         storage_size: int = None,
     ):
+        # Number of CUs. A Compute Unit (CU) is the basic billing unit. One CU equals one vCPU plus 4 GiB of memory.
         self.cu = cu
+        # Number of disks.
         self.disk_number = disk_number
+        # Local SSD instance type. Do not set this field for Observer compute groups.
         self.local_storage_instance_type = local_storage_instance_type
+        # Number of nodes.
         self.resident_node_number = resident_node_number
+        # Compute group specification type. Only standard is supported.
         self.spec_type = spec_type
+        # Disk performance level. Only pl1 is supported. Maximum random read/write IOPS per disk is 50,000.
         self.storage_performance_level = storage_performance_level
+        # Storage size in GiB.
         self.storage_size = storage_size
 
     def validate(self):
@@ -229,12 +265,19 @@ class QueryPriceV1RequestFrontendNodeGroups(DaraModel):
         storage_performance_level: str = None,
         storage_size: int = None,
     ):
+        # Number of CUs. A Compute Unit (CU) is the basic billing unit. One CU equals one vCPU plus 4 GiB of memory.
         self.cu = cu
+        # Number of disks.
         self.disk_number = disk_number
+        # Local SSD instance type. Do not set this field for FE compute groups.
         self.local_storage_instance_type = local_storage_instance_type
+        # Number of nodes.
         self.resident_node_number = resident_node_number
+        # Compute group specification type. Only standard is supported.
         self.spec_type = spec_type
+        # Disk performance level. Only pl1 is supported. Maximum random read/write IOPS per disk is 50,000.
         self.storage_performance_level = storage_performance_level
+        # Storage size in GiB.
         self.storage_size = storage_size
 
     def validate(self):
@@ -304,12 +347,37 @@ class QueryPriceV1RequestBackendNodeGroups(DaraModel):
         storage_performance_level: str = None,
         storage_size: int = None,
     ):
+        # Number of CUs. A Compute Unit (CU) is the basic billing unit. One CU equals one vCPU plus 4 GiB of memory. For ramEnhanced instances, one CU equals one vCPU plus 8 GiB of memory.
         self.cu = cu
+        # Number of disks.
         self.disk_number = disk_number
+        # Local SSD instance type for the node group. This field applies only to ECS-based instances with specType set to localSSD or bigData.
         self.local_storage_instance_type = local_storage_instance_type
+        # Number of nodes.
         self.resident_node_number = resident_node_number
+        # Compute group specification type. Supported types include the following:
+        # 
+        # - standard: Standard Edition.
+        # 
+        # - localSSD: Local SSD.
+        # 
+        # - bigData: Large-storage Edition.
+        # 
+        # - ramEnhanced: Memory-enhanced instance family.
+        # 
+        # - networkEnhanced: Network-enhanced instance family.
         self.spec_type = spec_type
+        # Disk performance level. Supported values include the following:
+        # 
+        # - pl0: Maximum random read/write IOPS per disk is 10,000.
+        # 
+        # - pl1: Maximum random read/write IOPS per disk is 50,000.
+        # 
+        # - pl2: Maximum random read/write IOPS per disk is 100,000.
+        # 
+        # - pl3: Maximum random read/write IOPS per disk is 1,000,000.
         self.storage_performance_level = storage_performance_level
+        # Storage size in GiB.
         self.storage_size = storage_size
 
     def validate(self):
@@ -373,6 +441,7 @@ class QueryPriceV1RequestAgentNodeGroup(DaraModel):
         self,
         cu: int = None,
     ):
+        # Number of CUs. A Compute Unit (CU) is the basic billing unit. One CU equals one vCPU plus 4 GiB of memory.
         self.cu = cu
 
     def validate(self):

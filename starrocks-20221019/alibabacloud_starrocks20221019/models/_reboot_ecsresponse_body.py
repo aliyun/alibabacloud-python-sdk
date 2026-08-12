@@ -15,12 +15,19 @@ class RebootECSResponseBody(DaraModel):
         success: bool = None,
         total: int = None,
     ):
+        # Indicates whether the reboot succeeded.
         self.data = data
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request succeeded.
         self.success = success
+        # The total number of instances.
         self.total = total
 
     def validate(self):

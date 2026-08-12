@@ -20,11 +20,17 @@ class QueryModifyDiskTypePriceResponseBody(DaraModel):
     ):
         # AccessDeniedDetail
         self.access_denied_detail = access_denied_detail
+        # Returned data.
         self.data = data
+        # Error code.
         self.err_code = err_code
+        # Error message.
         self.err_message = err_message
+        # HTTP request status code.
         self.http_status_code = http_status_code
+        # Request ID.
         self.request_id = request_id
+        # Is the request successful.
         self.success = success
 
     def validate(self):
@@ -99,15 +105,25 @@ class QueryModifyDiskTypePriceResponseBodyData(DaraModel):
         stand_price: float = None,
         trade_amount: float = None,
     ):
+        # Component prices.
         self.component_prices = component_prices
+        # Currency.
         self.currency = currency
+        # Price reduction ratio.
         self.depreciate_info = depreciate_info
+        # Discount amount = original amount - bill payable amount (including coupon deduction amount).
         self.discount_amount = discount_amount
+        # Coupon information.
         self.optional_promotions = optional_promotions
+        # Original price (original amount) = catalog price × usage.
         self.original_amount = original_amount
+        # Returned data structure.
         self.rules = rules
+        # Discounted price based on the official website discount.
         self.stand_discount_price = stand_discount_price
+        # Official website discount price.
         self.stand_price = stand_price
+        # Amount.
         self.trade_amount = trade_amount
 
     def validate(self):
@@ -220,8 +236,11 @@ class QueryModifyDiskTypePriceResponseBodyDataRules(DaraModel):
         name: str = None,
         rule_desc_id: str = None,
     ):
+        # Quantity.
         self.amount = amount
+        # Rule name.
         self.name = name
+        # Rule ID.
         self.rule_desc_id = rule_desc_id
 
     def validate(self):
@@ -263,8 +282,11 @@ class QueryModifyDiskTypePriceResponseBodyDataOptionalPromotions(DaraModel):
         promotion_name: str = None,
         promotion_option_no: str = None,
     ):
+        # The description of the coupon.
         self.promotion_desc = promotion_desc
+        # Coupon name.
         self.promotion_name = promotion_name
+        # Coupon ID.
         self.promotion_option_no = promotion_option_no
 
     def validate(self):
@@ -307,9 +329,13 @@ class QueryModifyDiskTypePriceResponseBodyDataDepreciateInfo(DaraModel):
         is_show: bool = None,
         original_stand_amount: float = None,
     ):
+        # Price reduction ratio.
         self.cheap_rate = cheap_rate
+        # Total official website price after reduction.
         self.cheap_stand_amount = cheap_stand_amount
+        # Display price reduction range.
         self.is_show = is_show
+        # Original total official website price.
         self.original_stand_amount = original_stand_amount
 
     def validate(self):
@@ -358,9 +384,13 @@ class QueryModifyDiskTypePriceResponseBodyDataComponentPrices(DaraModel):
         original_amount: float = None,
         trade_amount: float = None,
     ):
+        # Resource group ID.
         self.component_name = component_name
+        # Discount.
         self.discount_amount = discount_amount
+        # Original price.
         self.original_amount = original_amount
+        # Final price, which is the original price minus the discount amount.
         self.trade_amount = trade_amount
 
     def validate(self):

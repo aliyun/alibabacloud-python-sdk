@@ -10,7 +10,9 @@ class IsolateLeaderRequest(DaraModel):
         instance_id: str = None,
         isolate_leader: bool = None,
     ):
+        # The instance ID.
         self.instance_id = instance_id
+        # Enable read/write splitting. The Leader FE node handles write requests, and other nodes handle read requests.
         self.isolate_leader = isolate_leader
 
     def validate(self):

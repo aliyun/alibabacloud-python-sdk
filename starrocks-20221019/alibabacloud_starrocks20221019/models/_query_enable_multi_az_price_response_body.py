@@ -20,11 +20,17 @@ class QueryEnableMultiAzPriceResponseBody(DaraModel):
     ):
         # AccessDeniedDetail
         self.access_denied_detail = access_denied_detail
+        # The returned data.
         self.data = data
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -100,16 +106,33 @@ class QueryEnableMultiAzPriceResponseBodyData(DaraModel):
         stand_price: float = None,
         trade_amount: float = None,
     ):
+        # The component prices.
         self.component_prices = component_prices
+        # The currency. Valid values:
+        # 
+        # - CNY: Chinese Yuan.
+        # 
+        # - USD: U.S. dollar.
+        # 
+        # - JPY: Japanese Yen.
         self.currency = currency
+        # The total official price after the price reduction.
         self.depreciate_info = depreciate_info
+        # The discount amount. This is the original amount minus the bill\\"s payable amount, which includes coupon deductions.
         self.discount_amount = discount_amount
+        # The module ID.
         self.module_instance = module_instance
+        # The coupon information.
         self.optional_promotions = optional_promotions
+        # The original price. This is the list price multiplied by the usage.
         self.original_amount = original_amount
+        # The returned data structure.
         self.rules = rules
+        # The discounted price based on the official discount.
         self.stand_discount_price = stand_discount_price
+        # The official discounted price.
         self.stand_price = stand_price
+        # The amount.
         self.trade_amount = trade_amount
 
     def validate(self):
@@ -237,8 +260,11 @@ class QueryEnableMultiAzPriceResponseBodyDataRules(DaraModel):
         name: str = None,
         rule_desc_id: str = None,
     ):
+        # The quantity.
         self.amount = amount
+        # The rule name.
         self.name = name
+        # The rule ID.
         self.rule_desc_id = rule_desc_id
 
     def validate(self):
@@ -280,8 +306,11 @@ class QueryEnableMultiAzPriceResponseBodyDataOptionalPromotions(DaraModel):
         promotion_name: str = None,
         promotion_option_no: str = None,
     ):
+        # The coupon description.
         self.promotion_desc = promotion_desc
+        # The coupon name.
         self.promotion_name = promotion_name
+        # The coupon ID.
         self.promotion_option_no = promotion_option_no
 
     def validate(self):
@@ -324,9 +353,13 @@ class QueryEnableMultiAzPriceResponseBodyDataModuleInstance(DaraModel):
         stand_price: str = None,
         total_product_fee: str = None,
     ):
+        # The identifier of the billing module.
         self.module_code = module_code
+        # The module name.
         self.module_name = module_name
+        # The discounted price.
         self.stand_price = stand_price
+        # The original price of the product.
         self.total_product_fee = total_product_fee
 
     def validate(self):
@@ -375,9 +408,13 @@ class QueryEnableMultiAzPriceResponseBodyDataDepreciateInfo(DaraModel):
         is_show: bool = None,
         original_stand_amount: float = None,
     ):
+        # The price reduction percentage.
         self.cheap_rate = cheap_rate
+        # The total official price after the price reduction.
         self.cheap_stand_amount = cheap_stand_amount
+        # Indicates whether to show the price reduction.
         self.is_show = is_show
+        # The original total official price.
         self.original_stand_amount = original_stand_amount
 
     def validate(self):
@@ -426,9 +463,13 @@ class QueryEnableMultiAzPriceResponseBodyDataComponentPrices(DaraModel):
         original_amount: float = None,
         trade_amount: float = None,
     ):
+        # The component name.
         self.component_name = component_name
+        # The discount amount for the order.
         self.discount_amount = discount_amount
+        # The original price of the order.
         self.original_amount = original_amount
+        # The final price, which is the original price minus the discount.
         self.trade_amount = trade_amount
 
     def validate(self):

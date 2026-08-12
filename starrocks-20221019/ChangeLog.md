@@ -1,3 +1,7 @@
+2026-08-12 Version: 1.6.2
+- Update API CreateInstanceV1: add request parameters body.EnableAiFunction.
+
+
 2026-05-11 Version: 1.6.1
 - Update API DescribeInstances: add response parameters Body.Data.$.AiFunctionInstanceId.
 - Update API GetInstanceFeatureGate: add response parameters Body.Data.supportCompactionServiceWhiteList.

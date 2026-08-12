@@ -20,11 +20,17 @@ class DescribeAvailableZonesResponseBody(DaraModel):
     ):
         # AccessDeniedDetail
         self.access_denied_detail = access_denied_detail
+        # The list of zones.
         self.data = data
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP request status code.
         self.http_status_code = http_status_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -91,7 +97,9 @@ class DescribeAvailableZonesResponseBodyData(DaraModel):
         official_available_zones: List[str] = None,
         trial_available_zones: List[str] = None,
     ):
+        # The official version.
         self.official_available_zones = official_available_zones
+        # The trial version.
         self.trial_available_zones = trial_available_zones
 
     def validate(self):

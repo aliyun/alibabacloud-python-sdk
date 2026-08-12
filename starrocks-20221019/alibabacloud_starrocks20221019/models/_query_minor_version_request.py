@@ -10,7 +10,9 @@ class QueryMinorVersionRequest(DaraModel):
         region_id: str = None,
         version: str = None,
     ):
+        # The region ID of the cluster.
         self.region_id = region_id
+        # The major version of the instance.
         self.version = version
 
     def validate(self):

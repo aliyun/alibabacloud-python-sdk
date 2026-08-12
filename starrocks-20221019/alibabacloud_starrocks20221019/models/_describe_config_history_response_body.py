@@ -19,13 +19,21 @@ class DescribeConfigHistoryResponseBody(DaraModel):
         success: bool = None,
         total: int = None,
     ):
+        # The access denied details.
         self.access_denied_detail = access_denied_detail
+        # The returned data.
         self.data = data
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # The total number of records.
         self.total = total
 
     def validate(self):
@@ -111,14 +119,23 @@ class DescribeConfigHistoryResponseBodyData(DaraModel):
         reason: str = None,
         rollback: bool = None,
     ):
+        # Details about the effect of the configuration change.
         self.config_history_effect_details = config_history_effect_details
+        # The configuration history ID.
         self.config_history_id = config_history_id
+        # A list of configuration mementos.
         self.config_mementos = config_mementos
+        # The effective status.
         self.effect_status = effect_status
+        # Indicates whether the configuration modification has taken effect.
         self.effected = effected
+        # The modification time.
         self.gmt_create = gmt_create
+        # The ID of the user who modified the configuration.
         self.operator_id = operator_id
+        # The reason for the configuration modification.
         self.reason = reason
+        # Indicates whether the change was a rollback.
         self.rollback = rollback
 
     def validate(self):
@@ -215,10 +232,39 @@ class DescribeConfigHistoryResponseBodyDataConfigMementos(DaraModel):
         config_key: str = None,
         config_type: str = None,
     ):
+        # The action performed. Valid values:
+        # 
+        # - `MODIFY`
+        # 
+        # - `ADD`
+        # 
+        # - `DELETE`
         self.action = action
+        # The new value.
         self.after = after
+        # The previous value.
         self.before = before
+        # The name of the configuration item.
         self.config_key = config_key
+        # The configuration type. Valid values:
+        # 
+        # - `FE`
+        # 
+        # - `BE`
+        # 
+        # - `core-site.xml`
+        # 
+        # - `hdfs-site.xml`
+        # 
+        # - `kerberos.keytab`
+        # 
+        # - `krb5.conf`
+        # 
+        # - `jindosdk.cfg`
+        # 
+        # - `hadoop-env.sh`
+        # 
+        # - `hive-site.xml`
         self.config_type = config_type
 
     def validate(self):
@@ -272,8 +318,11 @@ class DescribeConfigHistoryResponseBodyDataConfigHistoryEffectDetails(DaraModel)
         node_group_id: str = None,
         node_id: str = None,
     ):
+        # The effective status on the node.
         self.effect_status = effect_status
+        # The compute group ID.
         self.node_group_id = node_group_id
+        # The node ID.
         self.node_id = node_id
 
     def validate(self):

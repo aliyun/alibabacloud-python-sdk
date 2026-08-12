@@ -12,11 +12,18 @@ class QueryModifyNodeNumberPriceRequest(DaraModel):
         promotion_option_no: str = None,
         target: int = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The compute group ID.
+        # 
         # This parameter is required.
         self.node_group_id = node_group_id
+        # The coupon ID.
         self.promotion_option_no = promotion_option_no
+        # The target number of nodes.
+        # 
         # This parameter is required.
         self.target = target
 

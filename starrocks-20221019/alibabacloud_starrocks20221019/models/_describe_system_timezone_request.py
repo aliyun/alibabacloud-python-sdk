@@ -9,6 +9,8 @@ class DescribeSystemTimezoneRequest(DaraModel):
         self,
         instance_id: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

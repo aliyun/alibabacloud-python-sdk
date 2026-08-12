@@ -18,11 +18,17 @@ class RestoreInstanceResponseBody(DaraModel):
     ):
         # AccessDeniedDetail
         self.access_denied_detail = access_denied_detail
+        # Response data.
         self.data = data
+        # Error code.
         self.err_code = err_code
+        # Error message.
         self.err_message = err_message
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the request succeeded.
         self.success = success
 
     def validate(self):
@@ -89,7 +95,9 @@ class RestoreInstanceResponseBodyData(DaraModel):
         instance_id: str = None,
         order_id: int = None,
     ):
+        # Instance ID.
         self.instance_id = instance_id
+        # Order ID.
         self.order_id = order_id
 
     def validate(self):

@@ -15,10 +15,15 @@ class ModifyInstanceConfigPreCheckRequest(DaraModel):
         configs_to_delete: List[main_models.InstanceConfigDto] = None,
         configs_to_update: List[main_models.InstanceConfigDto] = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The configurations to add.
         self.configs_to_add = configs_to_add
+        # The configurations to delete.
         self.configs_to_delete = configs_to_delete
+        # The configurations to update.
         self.configs_to_update = configs_to_update
 
     def validate(self):

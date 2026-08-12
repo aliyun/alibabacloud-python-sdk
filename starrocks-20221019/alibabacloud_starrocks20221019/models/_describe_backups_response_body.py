@@ -18,12 +18,19 @@ class DescribeBackupsResponseBody(DaraModel):
         success: bool = None,
         total: int = None,
     ):
+        # The returned data.
         self.data = data
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP request status code.
         self.http_status_code = http_status_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # The total number of query results.
         self.total = total
 
     def validate(self):
@@ -106,17 +113,33 @@ class DescribeBackupsResponseBodyData(DaraModel):
         status: str = None,
         sub_tasks: List[main_models.DescribeBackupsResponseBodyDataSubTasks] = None,
     ):
+        # The end time of this backup.
         self.backup_finished_time = backup_finished_time
+        # The start time of this backup.
         self.backup_start_time = backup_start_time
+        # The backup task ID.
         self.backup_task_id = backup_task_id
+        # The backup type:
+        # 
+        # - **0**: Fast backup.
+        # 
+        # - **1**: Consistent backup.
         self.backup_type = backup_type
+        # The task description.
         self.description = description
+        # The expiration time of the backup data.
         self.expire_time = expire_time
+        # The instance ID.
         self.instance_id = instance_id
+        # The backup instance information.
         self.instance_snapshot = instance_snapshot
+        # The region ID.
         self.region_id = region_id
+        # The cloud disk size in GiB.
         self.size = size
+        # The backup job status.
         self.status = status
+        # The list of backup subtasks.
         self.sub_tasks = sub_tasks
 
     def validate(self):
@@ -228,13 +251,21 @@ class DescribeBackupsResponseBodyDataSubTasks(DaraModel):
         status: str = None,
         table: str = None,
     ):
+        # The database name.
         self.data_base = data_base
+        # The snapshot ID.
         self.detail = detail
+        # The task end time.
         self.finished_time = finished_time
+        # The data size in GiB.
         self.size = size
+        # The snapshot name.
         self.snapshot_name = snapshot_name
+        # The task start date.
         self.start_time = start_time
+        # The backup job status.
         self.status = status
+        # The data table name.
         self.table = table
 
     def validate(self):
@@ -313,16 +344,39 @@ class DescribeBackupsResponseBodyDataInstanceSnapshot(DaraModel):
         version: str = None,
         vpc_id: str = None,
     ):
+        # The instance name.
         self.instance_name = instance_name
+        # The minor version number.
         self.minor_version = minor_version
+        # The compute group information.
         self.node_groups = node_groups
+        # The region ID of the instance.
         self.region_id = region_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The cluster\\"s running mode:
+        # 
+        # - Shared-nothing.
+        # 
+        # - Shared-data.
         self.run_mode = run_mode
+        # The compute group specification type. Includes the following types:
+        # 
+        # - standard: Standard Edition.
+        # 
+        # - localSSD: Local SSD.
+        # 
+        # - bigData: Large-capacity storage.
+        # 
+        # - ramEnhanced: Memory-enhanced instance family.
+        # 
+        # - networkEnhanced: Network-enhanced.
         self.spec_type = spec_type
+        # The tag information.
         self.tags = tags
+        # The cluster version.
         self.version = version
-        # VPC ID。
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -422,7 +476,9 @@ class DescribeBackupsResponseBodyDataInstanceSnapshotTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -463,13 +519,49 @@ class DescribeBackupsResponseBodyDataInstanceSnapshotNodeGroups(DaraModel):
         storage_performance_level: str = None,
         storage_size: int = None,
     ):
+        # The compute group type. Includes the following values:
+        # 
+        # - FE
+        # 
+        # - BE
+        # 
+        # - CN
+        # 
+        # - OBSERVER
+        # 
+        # - AGENT
         self.component_type = component_type
+        # The number of CUs. A CU (Compute Unit) is the basic unit of measurement for the service. 1 CU equals 1 CPU core + 4 GiB memory. If SpecType is memory-enhanced instance family, 1 CU equals 1 CPU core + 8 GiB memory.
         self.cu = cu
+        # The number of disks.
         self.disk_number = disk_number
+        # The node group\\"s local SSD instance type. This value is only meaningful for ECS instances where SpecType is local SSD or large-capacity storage.
         self.local_storage_instance_type = local_storage_instance_type
+        # The number of nodes.
         self.resident_node_number = resident_node_number
+        # The compute group specification type. Includes the following types:
+        # 
+        # - standard: Standard Edition.
+        # 
+        # - localSSD: Local SSD.
+        # 
+        # - bigData: Large-capacity storage.
+        # 
+        # - ramEnhanced: Memory-enhanced instance family.
+        # 
+        # - networkEnhanced: Network-enhanced.
         self.spec_type = spec_type
+        # The performance level (PL) of the cloud disk. Includes the following values:
+        # 
+        # - pl0: Maximum random read/write IOPS of 10,000 per disk.
+        # 
+        # - pl1: Maximum random read/write IOPS of 50,000 per disk.
+        # 
+        # - pl2: Maximum random read/write IOPS of 100,000 per disk.
+        # 
+        # - pl3: Maximum random read/write IOPS of 1,000,000 per disk.
         self.storage_performance_level = storage_performance_level
+        # The storage size in GiB.
         self.storage_size = storage_size
 
     def validate(self):

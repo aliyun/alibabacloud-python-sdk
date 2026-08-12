@@ -19,6 +19,7 @@ class CreateInstanceV1Request(DaraModel):
         dlf_catalog_name: str = None,
         dlf_catalog_type: str = None,
         duration: int = None,
+        enable_ai_function: bool = None,
         enable_multi_az: bool = None,
         encrypted: bool = None,
         frontend_node_groups: List[main_models.CreateInstanceV1RequestFrontendNodeGroups] = None,
@@ -43,47 +44,102 @@ class CreateInstanceV1Request(DaraModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
+        # The administrator password of the instance.
+        # 
         # This parameter is required.
         self.admin_password = admin_password
         self.agent_node_group = agent_node_group
         self.auto_pay = auto_pay
+        # Specifies whether to enable auto-renewal. This parameter takes effect only when payType is set to PrePaid. Auto-renewal is disabled by default.
         self.auto_renew = auto_renew
+        # The BE or CN node group information.
         self.backend_node_groups = backend_node_groups
+        # Ensures the idempotence of the request. Generate a unique parameter value from your client. The ClientToken value supports only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The name of the DLF Catalog.
         self.dlf_catalog_name = dlf_catalog_name
+        # The type of the DLF Catalog. Valid values: paimon and iceberg.
         self.dlf_catalog_type = dlf_catalog_type
+        # The subscription duration. This parameter takes effect only when payType is set to PrePaid.
         self.duration = duration
+        self.enable_ai_function = enable_ai_function
+        # Specifies whether to enable disaster recovery.
         self.enable_multi_az = enable_multi_az
+        # Specifies whether to enable encryption.
         self.encrypted = encrypted
+        # The FE node group information.
         self.frontend_node_groups = frontend_node_groups
         self.gateway_type = gateway_type
+        # The instance name.
+        # 
         # This parameter is required.
         self.instance_name = instance_name
+        # The KMS key ID.
         self.kms_key_id = kms_key_id
+        # The username of the associated Resource Access Management (RAM) user or the name of the associated RAM role.
         self.linked_ram_user_name = linked_ram_user_name
+        # The Observer node group information. Specify this parameter only when you need to enable cross-zone disaster recovery. The Observer node group specifications must be the same as those of the FE node group.
         self.observer_node_groups = observer_node_groups
+        # The name of the role used for password-free access to Object Storage Service (OSS).
         self.oss_accessing_role_name = oss_accessing_role_name
+        # The instance edition. Valid values:
+        # <ul>
+        # <li>trial: Trial Edition.</li>
+        # <li>official: Standard Edition.</li>
+        # </ul>
+        # 
         # This parameter is required.
         self.package_type = package_type
+        # The billing method. Valid values:
+        # <ol>
+        # <li>prePaid: subscription.</li>
+        # <li>postPaid: pay-as-you-go.</li>
+        # </ol>
+        # 
         # This parameter is required.
         self.pay_type = pay_type
+        # The unit of the subscription duration. Valid values:
+        # <ul>
+        # <li>Month</li>
+        # <li>Year</li>
+        # </ul>
+        # This parameter takes effect only when payType is set to PrePaid.
         self.pricing_cycle = pricing_cycle
+        # The RAM authentication type. Valid values:
+        # - RS: Resource Access Management (RAM) user.
+        # - RR: RAM role.
         self.principal_type = principal_type
+        # The coupon ID.
         self.promotion_option_no = promotion_option_no
+        # The ID of the Resource Access Management (RAM) user or RAM role.
         self.ram_user_id = ram_user_id
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The running mode of the cluster. Valid values:
+        # 
+        # - shared_nothing: compute-storage coupled.
+        # - shared_data: storage-compute disaggregation.
+        # 
         # This parameter is required.
         self.run_mode = run_mode
+        # The instance tags.
         self.tags = tags
+        # The vSwitch and zone information.
         self.v_switches = v_switches
+        # The major version of the instance.
+        # 
         # This parameter is required.
         self.version = version
         # VPC ID。
         # 
         # This parameter is required.
         self.vpc_id = vpc_id
+        # The primary zone ID.
+        # 
         # This parameter is required.
         self.zone_id = zone_id
 
@@ -144,6 +200,9 @@ class CreateInstanceV1Request(DaraModel):
 
         if self.duration is not None:
             result['Duration'] = self.duration
+
+        if self.enable_ai_function is not None:
+            result['EnableAiFunction'] = self.enable_ai_function
 
         if self.enable_multi_az is not None:
             result['EnableMultiAz'] = self.enable_multi_az
@@ -257,6 +316,9 @@ class CreateInstanceV1Request(DaraModel):
         if m.get('Duration') is not None:
             self.duration = m.get('Duration')
 
+        if m.get('EnableAiFunction') is not None:
+            self.enable_ai_function = m.get('EnableAiFunction')
+
         if m.get('EnableMultiAz') is not None:
             self.enable_multi_az = m.get('EnableMultiAz')
 
@@ -346,8 +408,11 @@ class CreateInstanceV1RequestVSwitches(DaraModel):
         vsw_id: str = None,
         zone_id: str = None,
     ):
+        # The vSwitch ID.
+        # 
         # This parameter is required.
         self.vsw_id = vsw_id
+        # The zone ID of the vSwitch.
         self.zone_id = zone_id
 
     def validate(self):
@@ -382,7 +447,9 @@ class CreateInstanceV1RequestTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -423,13 +490,21 @@ class CreateInstanceV1RequestObserverNodeGroups(DaraModel):
         storage_size: int = None,
         zone_id: str = None,
     ):
+        # The number of CUs. A CU (Compute Unit) is the basic metering unit of the service. 1 CU = 1 CPU core + 4 GiB memory.
         self.cu = cu
+        # The number of disks.
         self.disk_number = disk_number
+        # The local SSD instance type. This parameter does not need to be set for the Observer node group.
         self.local_storage_instance_type = local_storage_instance_type
+        # The number of nodes.
         self.resident_node_number = resident_node_number
+        # The specification type of the node group. Only standard is supported.
         self.spec_type = spec_type
+        # The performance level (PL) of the cloud disk. Only pl1 is supported, which provides up to 50,000 random read/write IOPS per disk.
         self.storage_performance_level = storage_performance_level
+        # The storage size. Unit: GiB.
         self.storage_size = storage_size
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -506,13 +581,21 @@ class CreateInstanceV1RequestFrontendNodeGroups(DaraModel):
         storage_size: int = None,
         zone_id: str = None,
     ):
+        # The number of CUs. A CU (Compute Unit) is the basic metering unit of the service. 1 CU = 1 CPU core + 4 GiB memory.
         self.cu = cu
+        # The number of disks.
         self.disk_number = disk_number
+        # The local SSD instance type. This parameter does not need to be set for the FE node group.
         self.local_storage_instance_type = local_storage_instance_type
+        # The number of nodes.
         self.resident_node_number = resident_node_number
+        # The specification type of the node group. Only standard is supported.
         self.spec_type = spec_type
+        # The performance level (PL) of the cloud disk. Only pl1 is supported, which provides up to 50,000 random read/write IOPS per disk.
         self.storage_performance_level = storage_performance_level
+        # The storage size. Unit: GiB.
         self.storage_size = storage_size
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -589,13 +672,26 @@ class CreateInstanceV1RequestBackendNodeGroups(DaraModel):
         storage_size: int = None,
         zone_id: str = None,
     ):
+        # The number of CUs. A CU (Compute Unit) is the basic metering unit of the service. 1 CU = 1 CPU core + 4 GiB memory. When SpecType is set to memory-enhanced instance family, 1 CU = 1 CPU core + 8 GiB memory.
         self.cu = cu
+        # The number of disks.
         self.disk_number = disk_number
+        # The local SSD instance type of the node group. This parameter takes effect only when the instance is ECS-based and SpecType is set to local SSD or large-scale storage.
         self.local_storage_instance_type = local_storage_instance_type
+        # The number of nodes.
         self.resident_node_number = resident_node_number
+        # The specification type of the node group. Valid values:
         self.spec_type = spec_type
+        # The performance level of the cloud disk. Valid values:
+        # 
+        # - pl0: A single disk delivers up to 10,000 random read/write IOPS.
+        # - pl1: A single disk delivers up to 50,000 random read/write IOPS.
+        # - pl2: A single disk delivers up to 100,000 random read/write IOPS.
+        # - pl3: A single disk delivers up to 1,000,000 random read/write IOPS.
         self.storage_performance_level = storage_performance_level
+        # The storage size. Unit: GiB.
         self.storage_size = storage_size
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):

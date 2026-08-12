@@ -9,6 +9,7 @@ class DescribeTimeTriggerScalingRulesRequest(DaraModel):
         self,
         node_group_id: str = None,
     ):
+        # The ID of the compute group.
         self.node_group_id = node_group_id
 
     def validate(self):

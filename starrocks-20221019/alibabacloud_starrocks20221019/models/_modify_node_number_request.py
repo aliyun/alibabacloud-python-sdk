@@ -18,16 +18,19 @@ class ModifyNodeNumberRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The warehouse ID.
+        # The compute group ID.
         # 
         # This parameter is required.
         self.node_group_id = node_group_id
+        # The decommission concurrency for BE scale-in scenarios in compute-storage decoupled architecture. Default value: 1.
         self.parallelism = parallelism
+        # The coupon ID.
         self.promotion_option_no = promotion_option_no
-        # The number of nodes to which you want to change to.
+        # The target number of nodes.
         # 
         # This parameter is required.
         self.target = target
+        # The duration to wait for running tasks to complete before dropping nodes during CN scale-in scenarios in storage-compute disaggregation architecture.
         self.termination_grace_period_seconds = termination_grace_period_seconds
 
     def validate(self):

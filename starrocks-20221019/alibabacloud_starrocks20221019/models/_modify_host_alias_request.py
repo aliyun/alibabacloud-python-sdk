@@ -13,7 +13,9 @@ class ModifyHostAliasRequest(DaraModel):
         instance_id: str = None,
         host_aliases: List[main_models.ModifyHostAliasRequestHostAliases] = None,
     ):
+        # Instance ID.
         self.instance_id = instance_id
+        # Host alias list.
         self.host_aliases = host_aliases
 
     def validate(self):
@@ -56,7 +58,9 @@ class ModifyHostAliasRequestHostAliases(DaraModel):
         hostnames: List[str] = None,
         ip: str = None,
     ):
+        # Host alias.
         self.hostnames = hostnames
+        # Machine IP
         self.ip = ip
 
     def validate(self):

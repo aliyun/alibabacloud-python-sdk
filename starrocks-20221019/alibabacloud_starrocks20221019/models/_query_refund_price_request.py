@@ -10,7 +10,9 @@ class QueryRefundPriceRequest(DaraModel):
         billing_instance_ids: str = None,
         instance_id: str = None,
     ):
+        # A comma-separated list of instance IDs to cancel.
         self.billing_instance_ids = billing_instance_ids
+        # The instance ID. This field is deprecated.
         self.instance_id = instance_id
 
     def validate(self):

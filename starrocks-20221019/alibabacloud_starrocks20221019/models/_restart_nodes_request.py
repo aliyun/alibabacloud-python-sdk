@@ -13,7 +13,9 @@ class RestartNodesRequest(DaraModel):
         instance_id: str = None,
         restart_node_groups: List[main_models.RestartNodesRequestRestartNodeGroups] = None,
     ):
+        # The instance ID.
         self.instance_id = instance_id
+        # Information about compute group nodes to restart.
         self.restart_node_groups = restart_node_groups
 
     def validate(self):
@@ -57,8 +59,15 @@ class RestartNodesRequestRestartNodeGroups(DaraModel):
         node_group_id: str = None,
         node_ids: List[str] = None,
     ):
+        # Whether to use fast restart mode. Default is false.
+        # 
+        # - true: Restart compute nodes in fast mode. Nodes restart in multiple batches. Within each batch, nodes restart in parallel. Batches execute sequentially.
+        # 
+        # - false: Restart compute nodes using rolling restart.
         self.fast_mode = fast_mode
+        # The compute group ID.
         self.node_group_id = node_group_id
+        # List of node IDs.
         self.node_ids = node_ids
 
     def validate(self):
