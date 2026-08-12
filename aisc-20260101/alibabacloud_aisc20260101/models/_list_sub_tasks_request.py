@@ -12,9 +12,13 @@ class ListSubTasksRequest(DaraModel):
         root_task_id: str = None,
         task_type: str = None,
     ):
+        # The current page number.
         self.current_page = current_page
+        # The page size.
         self.page_size = page_size
+        # The main task ID returned upon task submission.
         self.root_task_id = root_task_id
+        # The task type.
         self.task_type = task_type
 
     def validate(self):

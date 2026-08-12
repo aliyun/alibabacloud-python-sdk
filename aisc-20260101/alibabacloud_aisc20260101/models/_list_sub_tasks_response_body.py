@@ -14,8 +14,11 @@ class ListSubTasksResponseBody(DaraModel):
         page_info: main_models.ListSubTasksResponseBodyPageInfo = None,
         request_id: str = None,
     ):
+        # The list of task results.
         self.data = data
+        # The pagination information.
         self.page_info = page_info
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -69,9 +72,13 @@ class ListSubTasksResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The number of data entries displayed on the current page.
         self.count = count
+        # The current page number.
         self.current_page = current_page
+        # The page size.
         self.page_size = page_size
+        # The total number of records in the query result.
         self.total_count = total_count
 
     def validate(self):
@@ -121,10 +128,15 @@ class ListSubTasksResponseBodyData(DaraModel):
         task_result_message: main_models.ListSubTasksResponseBodyDataTaskResultMessage = None,
         task_status: str = None,
     ):
+        # The hash value of the uploaded file.
         self.file_hash = file_hash
+        # The task ID.
         self.id = id
+        # The detection target.
         self.target = target
+        # The task result information.
         self.task_result_message = task_result_message
+        # The task status.
         self.task_status = task_status
 
     def validate(self):
@@ -178,6 +190,7 @@ class ListSubTasksResponseBodyDataTaskResultMessage(DaraModel):
         self,
         skill_check_result: main_models.ListSubTasksResponseBodyDataTaskResultMessageSkillCheckResult = None,
     ):
+        # The skill check task result.
         self.skill_check_result = skill_check_result
 
     def validate(self):
@@ -207,6 +220,7 @@ class ListSubTasksResponseBodyDataTaskResultMessageSkillCheckResult(DaraModel):
         self,
         risk_info: List[main_models.ListSubTasksResponseBodyDataTaskResultMessageSkillCheckResultRiskInfo] = None,
     ):
+        # The file detection risk information.
         self.risk_info = risk_info
 
     def validate(self):
@@ -244,8 +258,11 @@ class ListSubTasksResponseBodyDataTaskResultMessageSkillCheckResultRiskInfo(Dara
         path: str = None,
         result_type: str = None,
     ):
+        # The file detection risk list.
         self.ext = ext
+        # The file path.
         self.path = path
+        # The result type.
         self.result_type = result_type
 
     def validate(self):
@@ -290,9 +307,13 @@ class ListSubTasksResponseBodyDataTaskResultMessageSkillCheckResultRiskInfoExt(D
         sensitive: main_models.ListSubTasksResponseBodyDataTaskResultMessageSkillCheckResultRiskInfoExtSensitive = None,
         virus: List[main_models.ListSubTasksResponseBodyDataTaskResultMessageSkillCheckResultRiskInfoExtVirus] = None,
     ):
+        # The configuration detection risks.
         self.config = config
+        # The safety guardrail detection risks.
         self.guardrail = guardrail
+        # The sensitive information risks.
         self.sensitive = sensitive
+        # The virus detection risks.
         self.virus = virus
 
     def validate(self):
@@ -357,8 +378,11 @@ class ListSubTasksResponseBodyDataTaskResultMessageSkillCheckResultRiskInfoExtVi
         score: int = None,
         type: str = None,
     ):
+        # The extended information field. This is a reserved parameter.
         self.ext = ext
+        # The risk score. Maximum value: 100.
         self.score = score
+        # The virus type.
         self.type = type
 
     def validate(self):
@@ -398,6 +422,7 @@ class ListSubTasksResponseBodyDataTaskResultMessageSkillCheckResultRiskInfoExtSe
         self,
         detail: List[main_models.ListSubTasksResponseBodyDataTaskResultMessageSkillCheckResultRiskInfoExtSensitiveDetail] = None,
     ):
+        # The list of risk details.
         self.detail = detail
 
     def validate(self):
@@ -434,7 +459,9 @@ class ListSubTasksResponseBodyDataTaskResultMessageSkillCheckResultRiskInfoExtSe
         desc: str = None,
         result: List[str] = None,
     ):
+        # The description.
         self.desc = desc
+        # The list of sensitive information.
         self.result = result
 
     def validate(self):
@@ -469,7 +496,9 @@ class ListSubTasksResponseBodyDataTaskResultMessageSkillCheckResultRiskInfoExtGu
         detail: List[main_models.ListSubTasksResponseBodyDataTaskResultMessageSkillCheckResultRiskInfoExtGuardrailDetail] = None,
         suggestion: str = None,
     ):
+        # The list of risk details.
         self.detail = detail
+        # The processing suggestion.
         self.suggestion = suggestion
 
     def validate(self):
@@ -514,9 +543,18 @@ class ListSubTasksResponseBodyDataTaskResultMessageSkillCheckResultRiskInfoExtGu
         suggestion: str = None,
         type: str = None,
     ):
+        # The risk level. Valid values:
+        # 
+        # - **high**: High risk.
+        # - **medium**: Medium risk.
+        # - **low**: Low risk.
+        # - **none**: No risk.
         self.level = level
+        # The list of result details.
         self.result = result
+        # The processing suggestion.
         self.suggestion = suggestion
+        # The risk type.
         self.type = type
 
     def validate(self):
@@ -573,9 +611,18 @@ class ListSubTasksResponseBodyDataTaskResultMessageSkillCheckResultRiskInfoExtGu
         label: str = None,
         level: str = None,
     ):
+        # The confidence score. Valid values: 0 to 100.
         self.confidence = confidence
+        # The result description.
         self.description = description
+        # The label information.
         self.label = label
+        # The risk level. Valid values:
+        # 
+        # - **high**: High risk.
+        # - **medium**: Medium risk.
+        # - **low**: Low risk.
+        # - **none**: No risk.
         self.level = level
 
     def validate(self):
@@ -621,6 +668,7 @@ class ListSubTasksResponseBodyDataTaskResultMessageSkillCheckResultRiskInfoExtCo
         self,
         detail: List[main_models.ListSubTasksResponseBodyDataTaskResultMessageSkillCheckResultRiskInfoExtConfigDetail] = None,
     ):
+        # The list of risk details.
         self.detail = detail
 
     def validate(self):
@@ -659,9 +707,13 @@ class ListSubTasksResponseBodyDataTaskResultMessageSkillCheckResultRiskInfoExtCo
         item_name: str = None,
         line: str = None,
     ):
+        # The detected content.
         self.content = content
+        # The description.
         self.description = description
+        # The check item name.
         self.item_name = item_name
+        # The line number of the detected content.
         self.line = line
 
     def validate(self):

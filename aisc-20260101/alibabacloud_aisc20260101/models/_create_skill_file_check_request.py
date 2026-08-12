@@ -12,6 +12,7 @@ class CreateSkillFileCheckRequest(DaraModel):
         self,
         files: List[main_models.CreateSkillFileCheckRequestFiles] = None,
     ):
+        # The file information.
         self.files = files
 
     def validate(self):
@@ -50,7 +51,9 @@ class CreateSkillFileCheckRequestFiles(DaraModel):
         download_url: str = None,
         file_name: str = None,
     ):
+        # The public URL for downloading the file. The downloaded file must be a compressed package in tar.gz or zip format.
         self.download_url = download_url
+        # The file name. If this parameter is not specified, the file name is parsed from DownloadUrl.
         self.file_name = file_name
 
     def validate(self):

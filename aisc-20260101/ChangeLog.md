@@ -1,3 +1,7 @@
+2026-08-12 Version: 1.2.0
+- Support API ListAIAgentEvent.
+
+
 2026-06-11 Version: 1.1.0
 - Support API ListSubTasks.
 

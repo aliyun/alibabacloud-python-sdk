@@ -20,7 +20,34 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'cn-zhangjiakou': 'aisc.cn-shanghai.aliyuncs.com',
+            'cn-wulanchabu': 'aisc.cn-shanghai.aliyuncs.com',
+            'cn-shanghai': 'aisc.cn-shanghai.aliyuncs.com',
+            'cn-qingdao': 'aisc.cn-shanghai.aliyuncs.com',
+            'cn-nanjing': 'aisc.cn-shanghai.aliyuncs.com',
+            'cn-huhehaote': 'aisc.cn-shanghai.aliyuncs.com',
+            'cn-hangzhou': 'aisc.cn-shanghai.aliyuncs.com',
+            'cn-guangzhou': 'aisc.cn-shanghai.aliyuncs.com',
+            'cn-beijing': 'aisc.cn-shanghai.aliyuncs.com',
+            'ap-southeast-7': 'aisc.ap-southeast-1.aliyuncs.com',
+            'ap-southeast-6': 'aisc.ap-southeast-1.aliyuncs.com',
+            'ap-southeast-5': 'aisc.ap-southeast-1.aliyuncs.com',
+            'ap-southeast-1': 'aisc.ap-southeast-1.aliyuncs.com',
+            'ap-northeast-2': 'aisc.ap-southeast-1.aliyuncs.com',
+            'ap-northeast-1': 'aisc.ap-southeast-1.aliyuncs.com',
+            'eu-central-1': 'aisc.ap-southeast-1.aliyuncs.com',
+            'eu-west-1': 'aisc.ap-southeast-1.aliyuncs.com',
+            'us-east-1': 'aisc.ap-southeast-1.aliyuncs.com',
+            'us-west-1': 'aisc.ap-southeast-1.aliyuncs.com',
+            'me-east-1': 'aisc.ap-southeast-1.aliyuncs.com',
+            'cn-beijing-finance-1': 'aisc.cn-shanghai.aliyuncs.com',
+            'cn-hangzhou-finance': 'aisc.cn-shanghai.aliyuncs.com',
+            'cn-heyuan-acdr-1': 'aisc.cn-shanghai.aliyuncs.com',
+            'cn-shanghai-finance-1': 'aisc.cn-shanghai.aliyuncs.com',
+            'cn-shenzhen-finance-1': 'aisc.cn-shanghai.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('aisc', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -109,6 +136,136 @@ class Client(OpenApiClient):
     ) -> main_models.CreateSkillFileCheckResponse:
         runtime = RuntimeOptions()
         return await self.create_skill_file_check_with_options_async(request, runtime)
+
+    def list_aiagent_event_with_options(
+        self,
+        request: main_models.ListAIAgentEventRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAIAgentEventResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.app_name):
+            query['AppName'] = request.app_name
+        if not DaraCore.is_null(request.asset_name):
+            query['AssetName'] = request.asset_name
+        if not DaraCore.is_null(request.asset_type):
+            query['AssetType'] = request.asset_type
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.infra_instance_id):
+            query['InfraInstanceId'] = request.infra_instance_id
+        if not DaraCore.is_null(request.infra_name):
+            query['InfraName'] = request.infra_name
+        if not DaraCore.is_null(request.infra_region_id):
+            query['InfraRegionId'] = request.infra_region_id
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.risk_level):
+            query['RiskLevel'] = request.risk_level
+        if not DaraCore.is_null(request.risk_name):
+            query['RiskName'] = request.risk_name
+        if not DaraCore.is_null(request.source):
+            query['Source'] = request.source
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        if not DaraCore.is_null(request.status_list):
+            query['StatusList'] = request.status_list
+        if not DaraCore.is_null(request.vendor):
+            query['Vendor'] = request.vendor
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAIAgentEvent',
+            version = '2026-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAIAgentEventResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_aiagent_event_with_options_async(
+        self,
+        request: main_models.ListAIAgentEventRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAIAgentEventResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.app_name):
+            query['AppName'] = request.app_name
+        if not DaraCore.is_null(request.asset_name):
+            query['AssetName'] = request.asset_name
+        if not DaraCore.is_null(request.asset_type):
+            query['AssetType'] = request.asset_type
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.infra_instance_id):
+            query['InfraInstanceId'] = request.infra_instance_id
+        if not DaraCore.is_null(request.infra_name):
+            query['InfraName'] = request.infra_name
+        if not DaraCore.is_null(request.infra_region_id):
+            query['InfraRegionId'] = request.infra_region_id
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.risk_level):
+            query['RiskLevel'] = request.risk_level
+        if not DaraCore.is_null(request.risk_name):
+            query['RiskName'] = request.risk_name
+        if not DaraCore.is_null(request.source):
+            query['Source'] = request.source
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        if not DaraCore.is_null(request.status_list):
+            query['StatusList'] = request.status_list
+        if not DaraCore.is_null(request.vendor):
+            query['Vendor'] = request.vendor
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAIAgentEvent',
+            version = '2026-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAIAgentEventResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_aiagent_event(
+        self,
+        request: main_models.ListAIAgentEventRequest,
+    ) -> main_models.ListAIAgentEventResponse:
+        runtime = RuntimeOptions()
+        return self.list_aiagent_event_with_options(request, runtime)
+
+    async def list_aiagent_event_async(
+        self,
+        request: main_models.ListAIAgentEventRequest,
+    ) -> main_models.ListAIAgentEventResponse:
+        runtime = RuntimeOptions()
+        return await self.list_aiagent_event_with_options_async(request, runtime)
 
     def list_sub_tasks_with_options(
         self,

@@ -13,7 +13,9 @@ class CreateSkillFileCheckResponseBody(DaraModel):
         data: main_models.CreateSkillFileCheckResponseBodyData = None,
         request_id: str = None,
     ):
+        # The task creation result.
         self.data = data
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -52,9 +54,13 @@ class CreateSkillFileCheckResponseBodyData(DaraModel):
         success_count: int = None,
         upload_results: List[main_models.CreateSkillFileCheckResponseBodyDataUploadResults] = None,
     ):
+        # The number of files that failed to be uploaded.
         self.fail_count = fail_count
+        # The ID of the root task returned after the task is submitted.
         self.root_task_id = root_task_id
+        # The number of files that are uploaded.
         self.success_count = success_count
+        # The upload results.
         self.upload_results = upload_results
 
     def validate(self):
@@ -112,10 +118,17 @@ class CreateSkillFileCheckResponseBodyDataUploadResults(DaraModel):
         identify_id: str = None,
         success: bool = None,
     ):
+        # The error message returned when the file fails to be uploaded.
         self.error_msg = error_msg
+        # The SHA256 value of the uploaded file.
         self.file_hash = file_hash
+        # The name of the file.
         self.file_name = file_name
+        # The unique ID of the uploaded file. You can use this ID to query the task result.
         self.identify_id = identify_id
+        # Indicates whether the operation is successful. Valid values:
+        # - true: Successful.
+        # - false: Failed.
         self.success = success
 
     def validate(self):
