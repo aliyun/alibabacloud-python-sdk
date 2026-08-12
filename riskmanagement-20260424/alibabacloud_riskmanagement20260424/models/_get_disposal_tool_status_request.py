@@ -9,6 +9,9 @@ class GetDisposalToolStatusRequest(DaraModel):
         self,
         auth_type: str = None,
     ):
+        # The authorization type.
+        # 
+        # - **DisposalTool**: one-click disposal authorization type
         self.auth_type = auth_type
 
     def validate(self):

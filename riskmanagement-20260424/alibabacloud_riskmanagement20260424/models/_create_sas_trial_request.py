@@ -11,7 +11,9 @@ class CreateSasTrialRequest(DaraModel):
         region_id: str = None,
         sdk_request: main_models.CreateSasTrialRequestSdkRequest = None,
     ):
+        # The region ID of the access control instance. You can call the DescribeRegions operation to query the region ID.
         self.region_id = region_id
+        # The Security Center SDK request.
         self.sdk_request = sdk_request
 
     def validate(self):
@@ -51,10 +53,31 @@ class CreateSasTrialRequestSdkRequest(DaraModel):
         try_type: int = None,
         try_version: int = None,
     ):
+        # Specifies whether the request is from the ECS console. Valid values:
+        # - **true**: The request is from the ECS console.
+        # - **false**: The request is not from the ECS console.
         self.from_ecs = from_ecs
+        # The language of the request and response. Valid values:
+        # 
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
+        # The reason for applying for the trial.
         self.request_form = request_form
+        # The trial type. Valid values:
+        # - **0**: trial not allowed
+        # - **1**: first trial
+        # - **2**: second trial
+        # 
+        # 
+        # > Call the [GetCanTrySas](https://help.aliyun.com/document_detail/2623574.html) operation to obtain this parameter. The trial can be started only when the value is not 0.
         self.try_type = try_type
+        # The trial edition. Valid values:
+        # - **3**: Enterprise Edition.
+        # - **7**: Ultimate Edition.
+        # 
+        # > Call the [GetCanTrySas](https://help.aliyun.com/document_detail/2623574.html) operation to obtain this parameter.
         self.try_version = try_version
 
     def validate(self):
@@ -108,6 +131,7 @@ class CreateSasTrialRequestSdkRequestRequestForm(DaraModel):
         self,
         try_reason: str = None,
     ):
+        # The reason for applying for the trial.
         self.try_reason = try_reason
 
     def validate(self):

@@ -11,8 +11,11 @@ class CreateVirusScanOnceTaskRequest(DaraModel):
         ip: str = None,
         region_id: str = None,
     ):
+        # The instance ID.
         self.instance_id = instance_id
+        # The public IP address.
         self.ip = ip
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

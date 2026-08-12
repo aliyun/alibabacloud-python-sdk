@@ -15,9 +15,16 @@ class InitSasModuleRuleRequest(DaraModel):
         is_trial: bool = None,
         region_id: str = None,
     ):
+        # Specifies whether to enable automatic binding. Valid values:
+        # 
+        # - **0**: Disabled.
+        # - **1**: Enabled.
         self.auto_bind = auto_bind
+        # The list of instances.
         self.instances = instances
+        # Specifies whether to use the trial version.
         self.is_trial = is_trial
+        # The region ID of the access control instance.
         self.region_id = region_id
 
     def validate(self):
@@ -74,9 +81,13 @@ class InitSasModuleRuleRequestInstances(DaraModel):
         region_id: str = None,
         uuid: str = None,
     ):
+        # The number of CPU cores of the asset.
         self.cores = cores
+        # The instance ID.
         self.instance_id = instance_id
+        # The region of the cloud phone.
         self.region_id = region_id
+        # The UUID of the instance.
         self.uuid = uuid
 
     def validate(self):

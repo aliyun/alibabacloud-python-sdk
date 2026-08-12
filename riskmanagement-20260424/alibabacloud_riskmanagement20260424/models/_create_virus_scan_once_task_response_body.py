@@ -14,10 +14,18 @@ class CreateVirusScanOnceTaskResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the call fails. For more information, refer to error codes.
         self.code = code
+        # The returned data.
         self.data = data
+        # The message information.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the call is successful. Valid values:
+        # 
+        # - **true**: The call is successful.                               
+        # - **false**: The call fails.
         self.success = success
 
     def validate(self):
@@ -76,11 +84,28 @@ class CreateVirusScanOnceTaskResponseBodyData(DaraModel):
         target_type: str = None,
         uuid: str = None,
     ):
+        # The asset selection business type. Valid values:
+        # 
+        # - **VIRUS_SCAN_CYCLE_CONFIG**: virus scan configuration
+        # - **VIRUS_SCAN_ONCE_TASK**: virus scan one-time task
         self.business_type = business_type
+        # The operating system of the target asset. Valid values:
+        # 
+        # - **windows**: Windows operating system
+        # - **linux**: Linux operating system
         self.platform = platform
+        # The request ID.
         self.request_id = request_id
+        # The unique identifier of this asset selection, which can be used to query or modify the assets corresponding to this selection.
         self.selection_key = selection_key
+        # The target asset type. Valid values:
+        # 
+        # - **all_instance**: all servers
+        # - **instance**: select by server
+        # - **group**: select by group
+        # - **vpc**: select by VPC
         self.target_type = target_type
+        # The server ID.
         self.uuid = uuid
 
     def validate(self):

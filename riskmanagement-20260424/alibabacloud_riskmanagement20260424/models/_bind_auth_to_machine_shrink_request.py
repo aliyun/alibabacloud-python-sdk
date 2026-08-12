@@ -10,7 +10,9 @@ class BindAuthToMachineShrinkRequest(DaraModel):
         region_id: str = None,
         sdk_request_shrink: str = None,
     ):
+        # The region ID of the Smart Access Gateway instance.
         self.region_id = region_id
+        # The Security Center SDK request.
         self.sdk_request_shrink = sdk_request_shrink
 
     def validate(self):

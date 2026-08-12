@@ -16,10 +16,17 @@ class GetAliYunSafeCenterResultResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
+        # 
+        # > 200: Success. Other values (500, 400, etc.): Error codes.
         self.code = code
+        # The returned data.
         self.data = data
+        # The message returned.
         self.message = message
+        # Id of the request
         self.request_id = request_id
+        # Indicates whether the current API call is successful. Valid values: True/False. This does not indicate the success of subsequent business operations.
         self.success = success
 
     def validate(self):
@@ -79,12 +86,31 @@ class GetAliYunSafeCenterResultResponseBodyData(DaraModel):
         task_id: int = None,
         task_status: bool = None,
     ):
+        # The status of the Security Center Agent.
+        # 
+        # - **true**: Enabled.
+        # - **false**: Not enabled.
         self.agent_status = agent_status
+        # The running status of the ECS instance.
+        # 
+        # - **true**: Running.
+        # - **false**: Not running.
         self.ecs_instance_status = ecs_instance_status
+        # The list of instance IDs of identical security alert events in Security Center.
         self.instance_ids = instance_ids
+        # The request ID.
         self.request_id = request_id
+        # The running status of the simple application server.
+        # 
+        # - **true**: Running.
+        # - **false**: Not running.
         self.swas_instance_status = swas_instance_status
+        # The task ID for querying security alerting events triggered by the same rule or alerting type.
         self.task_id = task_id
+        # Indicates whether the list of security alerting events that match the same IP rule or same alerting type as the alerting event to be handled is empty.
+        # 
+        # - **true**: Empty.
+        # - **false**: Not empty.
         self.task_status = task_status
 
     def validate(self):

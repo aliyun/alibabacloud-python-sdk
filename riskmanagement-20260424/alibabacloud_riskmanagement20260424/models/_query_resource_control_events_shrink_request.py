@@ -11,6 +11,7 @@ class QueryResourceControlEventsShrinkRequest(DaraModel):
         action_codes_shrink: str = None,
         aliyun_lang: str = None,
         business_code: str = None,
+        business_codes_shrink: str = None,
         case_codes_prefix_shrink: str = None,
         current: int = None,
         domain: str = None,
@@ -33,30 +34,56 @@ class QueryResourceControlEventsShrinkRequest(DaraModel):
         status_list_shrink: str = None,
         url: str = None,
     ):
+        # The action name code.
         self.action_code = action_code
+        # The collection of control action name codes.
         self.action_codes_shrink = action_codes_shrink
+        # The internationalization language.
         self.aliyun_lang = aliyun_lang
+        # The product.
         self.business_code = business_code
+        self.business_codes_shrink = business_codes_shrink
+        # The collection of event name code prefixes.
         self.case_codes_prefix_shrink = case_codes_prefix_shrink
+        # The current page number.
         self.current = current
+        # The domain name.
         self.domain = domain
+        # The event name code.
         self.event_code = event_code
+        # The collection of event name codes.
         self.event_codes_shrink = event_codes_shrink
+        # The event ID.
         self.event_id = event_id
+        # The collection of event IDs.
         self.event_id_list_shrink = event_id_list_shrink
+        # The collection of excluded control action name codes.
         self.exclude_action_codes_shrink = exclude_action_codes_shrink
+        # The collection of excluded event name codes.
         self.exclude_event_codes_shrink = exclude_event_codes_shrink
+        # The collection of excluded event reasons.
         self.exclude_reasons_shrink = exclude_reasons_shrink
+        # The collection of included event reasons.
         self.include_reasons_shrink = include_reasons_shrink
+        # The instance ID.
         self.instance_id = instance_id
+        # IP
         self.ip = ip
+        # The number of records per page.
         self.page_size = page_size
+        # The penalty end time.
         self.punish_end_time = punish_end_time
+        # The penalty start time.
         self.punish_start_time = punish_start_time
+        # The event reason.
         self.reason = reason
+        # The collection of event source codes.
         self.source_codes_shrink = source_codes_shrink
+        # The task status.
         self.status = status
+        # The collection of task statuses.
         self.status_list_shrink = status_list_shrink
+        # The control URL.
         self.url = url
 
     def validate(self):
@@ -78,6 +105,9 @@ class QueryResourceControlEventsShrinkRequest(DaraModel):
 
         if self.business_code is not None:
             result['BusinessCode'] = self.business_code
+
+        if self.business_codes_shrink is not None:
+            result['BusinessCodes'] = self.business_codes_shrink
 
         if self.case_codes_prefix_shrink is not None:
             result['CaseCodesPrefix'] = self.case_codes_prefix_shrink
@@ -157,6 +187,9 @@ class QueryResourceControlEventsShrinkRequest(DaraModel):
 
         if m.get('BusinessCode') is not None:
             self.business_code = m.get('BusinessCode')
+
+        if m.get('BusinessCodes') is not None:
+            self.business_codes_shrink = m.get('BusinessCodes')
 
         if m.get('CaseCodesPrefix') is not None:
             self.case_codes_prefix_shrink = m.get('CaseCodesPrefix')

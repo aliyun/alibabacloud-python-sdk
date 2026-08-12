@@ -16,10 +16,15 @@ class QueryResourceControlEventsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The metadata returned.
         self.data = data
+        # The description.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -74,7 +79,9 @@ class QueryResourceControlEventsResponseBodyData(DaraModel):
         list: List[main_models.QueryResourceControlEventsResponseBodyDataList] = None,
         page_info: main_models.QueryResourceControlEventsResponseBodyDataPageInfo = None,
     ):
+        # The event list data.
         self.list = list
+        # The pagination information.
         self.page_info = page_info
 
     def validate(self):
@@ -121,8 +128,11 @@ class QueryResourceControlEventsResponseBodyDataPageInfo(DaraModel):
         page_size: int = None,
         total: int = None,
     ):
+        # The current page number.
         self.current = current
+        # The number of records per page.
         self.page_size = page_size
+        # The total number of events.
         self.total = total
 
     def validate(self):
@@ -192,36 +202,67 @@ class QueryResourceControlEventsResponseBodyDataList(DaraModel):
         trigger_type: str = None,
         url: str = None,
     ):
+        # The action code.
         self.action_code = action_code
+        # The action name.
         self.action_name = action_name
+        # The time when the alert ended.
         self.alert_end_time = alert_end_time
+        # The time when the first alert was triggered.
         self.alert_start_time = alert_start_time
+        # The time when the control action was released.
         self.anti_punish_time = anti_punish_time
+        # The number of unblock application records.
         self.apply_record_count = apply_record_count
+        # The application status.
         self.apply_status = apply_status
+        # Indicates whether the unblock application is processed through the review platform.
         self.apply_trial = apply_trial
+        # The product type name.
         self.business_name = business_name
+        # The event name code.
         self.case_code = case_code
+        # The controlled domain name.
         self.domain = domain
+        # The event ID.
         self.event_id = event_id
+        # The event name.
         self.event_name = event_name
+        # The extended information about the penalty.
         self.extras = extras
+        # The event type.
         self.form_type = form_type
+        # The latest time.
         self.gmt_latest = gmt_latest
+        # The instance ID.
         self.instance_id = instance_id
+        # The controlled IP address.
         self.ip = ip
+        # The latest detection time.
         self.last_check_time = last_check_time
+        # The estimated shutdown time.
         self.pre_close_time = pre_close_time
+        # The source of the penalty.
         self.punish_from = punish_from
+        # The time when the control action was applied.
         self.punish_time = punish_time
+        # The event reason.
         self.reason = reason
+        # The region information.
         self.region = region
+        # The region ID.
         self.region_id = region_id
+        # The security hardening suggestion.
         self.reinforcement = reinforcement
+        # The task status.
         self.status = status
+        # Indicates whether batch unblock applications are supported.
         self.support_batch_apply = support_batch_apply
+        # Indicates whether a single unblock application is supported.
         self.support_single_apply = support_single_apply
+        # The trigger type.
         self.trigger_type = trigger_type
+        # The controlled URL.
         self.url = url
 
     def validate(self):

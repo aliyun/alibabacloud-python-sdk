@@ -13,10 +13,18 @@ class GetNotificationPendNumberResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The number of pending items for security contacts.
         self.data = data
+        # The prompt message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the call was successful. Valid values:
+        # 
+        # - **true**: The call was successful.                                
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):

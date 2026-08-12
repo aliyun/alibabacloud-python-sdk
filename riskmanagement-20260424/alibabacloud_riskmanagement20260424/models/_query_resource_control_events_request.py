@@ -13,6 +13,7 @@ class QueryResourceControlEventsRequest(DaraModel):
         action_codes: List[str] = None,
         aliyun_lang: str = None,
         business_code: str = None,
+        business_codes: List[str] = None,
         case_codes_prefix: List[str] = None,
         current: int = None,
         domain: str = None,
@@ -35,30 +36,56 @@ class QueryResourceControlEventsRequest(DaraModel):
         status_list: List[str] = None,
         url: str = None,
     ):
+        # The action name code.
         self.action_code = action_code
+        # The collection of control action name codes.
         self.action_codes = action_codes
+        # The internationalization language.
         self.aliyun_lang = aliyun_lang
+        # The product.
         self.business_code = business_code
+        self.business_codes = business_codes
+        # The collection of event name code prefixes.
         self.case_codes_prefix = case_codes_prefix
+        # The current page number.
         self.current = current
+        # The domain name.
         self.domain = domain
+        # The event name code.
         self.event_code = event_code
+        # The collection of event name codes.
         self.event_codes = event_codes
+        # The event ID.
         self.event_id = event_id
+        # The collection of event IDs.
         self.event_id_list = event_id_list
+        # The collection of excluded control action name codes.
         self.exclude_action_codes = exclude_action_codes
+        # The collection of excluded event name codes.
         self.exclude_event_codes = exclude_event_codes
+        # The collection of excluded event reasons.
         self.exclude_reasons = exclude_reasons
+        # The collection of included event reasons.
         self.include_reasons = include_reasons
+        # The instance ID.
         self.instance_id = instance_id
+        # IP
         self.ip = ip
+        # The number of records per page.
         self.page_size = page_size
+        # The penalty end time.
         self.punish_end_time = punish_end_time
+        # The penalty start time.
         self.punish_start_time = punish_start_time
+        # The event reason.
         self.reason = reason
+        # The collection of event source codes.
         self.source_codes = source_codes
+        # The task status.
         self.status = status
+        # The collection of task statuses.
         self.status_list = status_list
+        # The control URL.
         self.url = url
 
     def validate(self):
@@ -80,6 +107,9 @@ class QueryResourceControlEventsRequest(DaraModel):
 
         if self.business_code is not None:
             result['BusinessCode'] = self.business_code
+
+        if self.business_codes is not None:
+            result['BusinessCodes'] = self.business_codes
 
         if self.case_codes_prefix is not None:
             result['CaseCodesPrefix'] = self.case_codes_prefix
@@ -159,6 +189,9 @@ class QueryResourceControlEventsRequest(DaraModel):
 
         if m.get('BusinessCode') is not None:
             self.business_code = m.get('BusinessCode')
+
+        if m.get('BusinessCodes') is not None:
+            self.business_codes = m.get('BusinessCodes')
 
         if m.get('CaseCodesPrefix') is not None:
             self.case_codes_prefix = m.get('CaseCodesPrefix')

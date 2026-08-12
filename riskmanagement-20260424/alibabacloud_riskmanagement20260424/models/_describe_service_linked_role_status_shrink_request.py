@@ -10,7 +10,9 @@ class DescribeServiceLinkedRoleStatusShrinkRequest(DaraModel):
         region_id: str = None,
         sdk_request_shrink: str = None,
     ):
+        # The ID of the region in which the instance resides.
         self.region_id = region_id
+        # The Security Center SDK request.
         self.sdk_request_shrink = sdk_request_shrink
 
     def validate(self):

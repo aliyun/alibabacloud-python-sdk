@@ -16,10 +16,18 @@ class GetCanTrySasResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The detailed information.
         self.data = data
+        # The message. The value is the same as the Code parameter value.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the current API call is successful. This does not indicate whether subsequent business operations are successful.
+        # 
+        # - **true**: Successful.
+        # - **false**: Failed.
         self.success = success
 
     def validate(self):
@@ -73,6 +81,7 @@ class GetCanTrySasResponseBodyData(DaraModel):
         self,
         body: main_models.GetCanTrySasResponseBodyDataBody = None,
     ):
+        # The message body.
         self.body = body
 
     def validate(self):
@@ -103,7 +112,9 @@ class GetCanTrySasResponseBodyDataBody(DaraModel):
         data: main_models.GetCanTrySasResponseBodyDataBodyData = None,
         request_id: str = None,
     ):
+        # The data.
         self.data = data
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -141,8 +152,16 @@ class GetCanTrySasResponseBodyDataBodyData(DaraModel):
         can_try_versions: List[int] = None,
         try_type: int = None,
     ):
+        # Indicates whether the user is eligible for a free trial. Valid values:
+        # - **1**: Eligible.
+        # - **0**: Not eligible.
         self.can_try = can_try
+        # The list of editions available for trial.
         self.can_try_versions = can_try_versions
+        # The trial type. Valid values:
+        # - **0**: Trial is not allowed.
+        # - **1**: First trial.
+        # - **2**: Second trial.
         self.try_type = try_type
 
     def validate(self):

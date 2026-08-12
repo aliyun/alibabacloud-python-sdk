@@ -13,10 +13,21 @@ class QueryGuideSubStatusResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status of the API call.
         self.code = code
+        # The subscription status. Valid values:
+        # 
+        # - **SUBSCRIBED**: Subscribed.
+        # - **UNSUBSCRIBED**: Unsubscribed.
         self.data = data
+        # The prompt message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the call was successful. Valid values:
+        # 
+        # - **true**: The call was successful.              
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):

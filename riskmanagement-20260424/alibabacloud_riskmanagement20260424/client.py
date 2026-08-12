@@ -21,6 +21,9 @@ class Client(OpenApiClient):
     ):
         super().__init__(config)
         self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'public': 'riskmanagement.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('riskmanagement', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -2242,6 +2245,8 @@ class Client(OpenApiClient):
         Utils.convert(tmp_req, request)
         if not DaraCore.is_null(tmp_req.action_codes):
             request.action_codes_shrink = Utils.array_to_string_with_specified_style(tmp_req.action_codes, 'ActionCodes', 'json')
+        if not DaraCore.is_null(tmp_req.business_codes):
+            request.business_codes_shrink = Utils.array_to_string_with_specified_style(tmp_req.business_codes, 'BusinessCodes', 'json')
         if not DaraCore.is_null(tmp_req.case_codes_prefix):
             request.case_codes_prefix_shrink = Utils.array_to_string_with_specified_style(tmp_req.case_codes_prefix, 'CaseCodesPrefix', 'json')
         if not DaraCore.is_null(tmp_req.event_codes):
@@ -2269,6 +2274,8 @@ class Client(OpenApiClient):
             query['AliyunLang'] = request.aliyun_lang
         if not DaraCore.is_null(request.business_code):
             query['BusinessCode'] = request.business_code
+        if not DaraCore.is_null(request.business_codes_shrink):
+            query['BusinessCodes'] = request.business_codes_shrink
         if not DaraCore.is_null(request.case_codes_prefix_shrink):
             query['CaseCodesPrefix'] = request.case_codes_prefix_shrink
         if not DaraCore.is_null(request.current):
@@ -2340,6 +2347,8 @@ class Client(OpenApiClient):
         Utils.convert(tmp_req, request)
         if not DaraCore.is_null(tmp_req.action_codes):
             request.action_codes_shrink = Utils.array_to_string_with_specified_style(tmp_req.action_codes, 'ActionCodes', 'json')
+        if not DaraCore.is_null(tmp_req.business_codes):
+            request.business_codes_shrink = Utils.array_to_string_with_specified_style(tmp_req.business_codes, 'BusinessCodes', 'json')
         if not DaraCore.is_null(tmp_req.case_codes_prefix):
             request.case_codes_prefix_shrink = Utils.array_to_string_with_specified_style(tmp_req.case_codes_prefix, 'CaseCodesPrefix', 'json')
         if not DaraCore.is_null(tmp_req.event_codes):
@@ -2367,6 +2376,8 @@ class Client(OpenApiClient):
             query['AliyunLang'] = request.aliyun_lang
         if not DaraCore.is_null(request.business_code):
             query['BusinessCode'] = request.business_code
+        if not DaraCore.is_null(request.business_codes_shrink):
+            query['BusinessCodes'] = request.business_codes_shrink
         if not DaraCore.is_null(request.case_codes_prefix_shrink):
             query['CaseCodesPrefix'] = request.case_codes_prefix_shrink
         if not DaraCore.is_null(request.current):

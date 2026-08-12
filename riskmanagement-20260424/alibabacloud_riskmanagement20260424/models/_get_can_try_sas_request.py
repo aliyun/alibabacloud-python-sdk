@@ -11,7 +11,9 @@ class GetCanTrySasRequest(DaraModel):
         region_id: str = None,
         sdk_request: main_models.GetCanTrySasRequestSdkRequest = None,
     ):
+        # The region ID.
         self.region_id = region_id
+        # The Security Center SDK request parameters.
         self.sdk_request = sdk_request
 
     def validate(self):
@@ -48,7 +50,14 @@ class GetCanTrySasRequestSdkRequest(DaraModel):
         from_ecs: bool = None,
         lang: str = None,
     ):
+        # Specifies whether the request is from the ECS console. Valid values:
+        # - **true**: The request is from the ECS console.
+        # - **false**: The request is not from the ECS console.
         self.from_ecs = from_ecs
+        # The language type for the request and response messages. Default value: zh. Valid values:
+        # 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
 
     def validate(self):

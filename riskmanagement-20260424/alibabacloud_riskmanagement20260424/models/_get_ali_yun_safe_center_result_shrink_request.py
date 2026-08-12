@@ -18,16 +18,46 @@ class GetAliYunSafeCenterResultShrinkRequest(DaraModel):
         list_instances_request_shrink: str = None,
         region_id: str = None,
     ):
+        # Creates a node to query security alerting events triggered by the same rule or alerting type.
         self.create_similar_security_events_query_task_request_shrink = create_similar_security_events_query_task_request_shrink
+        # Queries the running status of ECS instances.
         self.describe_instances_full_status_request_shrink = describe_instances_full_status_request_shrink
+        # Queries whether the list of security alerting events that match the same IP rule or same alerting type as the alerting event to be handled is empty.
         self.describe_security_event_operation_status_request_shrink = describe_security_event_operation_status_request_shrink
+        # Queries identical security alert events in Security Center.
         self.describe_similar_security_events_request_shrink = describe_similar_security_events_request_shrink
+        # The request parameters for querying the Security Center Agent status.
         self.get_asset_detail_by_uuid_request_shrink = get_asset_detail_by_uuid_request_shrink
+        # Handles security alert events.
         self.handle_security_events_request_shrink = handle_security_events_request_shrink
+        # Handles security alert events in batches based on the same IP rule or type.
         self.handle_similar_security_events_request_shrink = handle_similar_security_events_request_shrink
+        # The code of the public API operation.
+        # 
+        # - **GetAssetDetailByUuid**: Retrieves the Agent status. Request parameter: GetAssetDetailByUuidRequest.
+        # 
+        # - **DescribeSimilarSecurityEvents**: Retrieves the list of instance IDs for identical security alerting events. Request parameter: DescribeSimilarSecurityEventsRequest.
+        # 
+        # - **CreateSimilarSecurityEventsQueryTask**: Creates a node to query security alerting events triggered by the same rule or alerting type. Request parameter: CreateSimilarSecurityEventsQueryTaskRequest.
+        # 
+        # - **DescribeSecurityEventOperationStatus**: Queries whether the list of security alerting events that match the same IP rule or same alerting type as the alerting event to be handled is empty. Request parameter: DescribeSecurityEventOperationStatusRequest.
+        # 
+        # - **HandleSimilarSecurityEvents**: Handles security alerting events in batches based on the same IP rule or type. Request parameter: HandleSimilarSecurityEventsRequest.
+        # HandleSecurityEvents: Handles security alerting events. Request parameter: HandleSecurityEventsRequest.
+        # 
+        # - **DescribeInstancesFullStatus**: Queries the running status of ECS instances. Request parameter: DescribeInstancesFullStatusRequest.
+        # 
+        # - **ListInstances**: Queries the running status of simple application servers. Request parameter: ListInstancesRequest.
+        # 
+        # - **StartConfigRuleEvaluation**: Re-evaluates security check rules.
+        # 
+        # > Each API operation name corresponds to its own request parameters.
+        # 
         # This parameter is required.
         self.interface_code = interface_code
+        # Queries the running status of simple application servers.
         self.list_instances_request_shrink = list_instances_request_shrink
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

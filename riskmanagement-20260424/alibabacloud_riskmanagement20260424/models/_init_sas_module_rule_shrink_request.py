@@ -12,9 +12,16 @@ class InitSasModuleRuleShrinkRequest(DaraModel):
         is_trial: bool = None,
         region_id: str = None,
     ):
+        # Specifies whether to enable automatic binding. Valid values:
+        # 
+        # - **0**: Disabled.
+        # - **1**: Enabled.
         self.auto_bind = auto_bind
+        # The list of instances.
         self.instances_shrink = instances_shrink
+        # Specifies whether to use the trial version.
         self.is_trial = is_trial
+        # The region ID of the access control instance.
         self.region_id = region_id
 
     def validate(self):

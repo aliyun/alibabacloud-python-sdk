@@ -14,10 +14,15 @@ class UpdatePostPaidBindRelResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the call fails. For more information, see error codes.
         self.code = code
+        # The response data.
         self.data = data
+        # The response message.
         self.message = message
+        # Id of the request
         self.request_id = request_id
+        # Indicates whether the call is successful. Valid values: true: The call is successful. false: The call fails.
         self.success = success
 
     def validate(self):
@@ -71,6 +76,7 @@ class UpdatePostPaidBindRelResponseBodyData(DaraModel):
         self,
         body: main_models.UpdatePostPaidBindRelResponseBodyDataBody = None,
     ):
+        # The message body.
         self.body = body
 
     def validate(self):
@@ -102,8 +108,11 @@ class UpdatePostPaidBindRelResponseBodyDataBody(DaraModel):
         request_id: str = None,
         result_code: int = None,
     ):
+        # The number of servers that are successfully bound.
         self.bind_count = bind_count
+        # Id of the request
         self.request_id = request_id
+        # The result code.
         self.result_code = result_code
 
     def validate(self):

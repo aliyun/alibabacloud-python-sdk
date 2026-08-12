@@ -11,7 +11,9 @@ class GetValidDeductInstancesRequest(DaraModel):
         region_id: str = None,
         sdk_request: main_models.GetValidDeductInstancesRequestSdkRequest = None,
     ):
+        # The region ID.
         self.region_id = region_id
+        # The Security Center SDK request parameters.
         self.sdk_request = sdk_request
 
     def validate(self):
@@ -49,8 +51,15 @@ class GetValidDeductInstancesRequestSdkRequest(DaraModel):
         modules: str = None,
         status: int = None,
     ):
+        # The resource plan instance ID. You can call QueryResourcePackageInstances to query the ID.
         self.instance_id = instance_id
+        # The resource plan name code. Valid values:
+        # 
+        # - Vulnerability resource plan: **sas_vul_dp_cn**
+        # - CSPM resource plan: **sas_cspm_dp_cn**
+        # - Anti-virus Edition resource plan: **sas_viruspackage_dp_cn**
         self.modules = modules
+        # The resource plan status. Default value: valid. This parameter cannot be modified.
         self.status = status
 
     def validate(self):

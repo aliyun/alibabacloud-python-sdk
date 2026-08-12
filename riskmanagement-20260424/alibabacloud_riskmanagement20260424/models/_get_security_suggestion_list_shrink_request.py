@@ -9,6 +9,7 @@ class GetSecuritySuggestionListShrinkRequest(DaraModel):
         self,
         list_config_rules_request_shrink: str = None,
     ):
+        # The request parameters.
         self.list_config_rules_request_shrink = list_config_rules_request_shrink
 
     def validate(self):

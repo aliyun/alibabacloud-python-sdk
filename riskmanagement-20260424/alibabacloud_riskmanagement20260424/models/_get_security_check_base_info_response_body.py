@@ -14,10 +14,19 @@ class GetSecurityCheckBaseInfoResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
+        # 
+        # >  200: Success. Other codes (500, 400, etc.): Error codes.
         self.code = code
+        # The query result.
         self.data = data
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the call was successful.
+        # - **true**: Successful.
+        # - **false**: Failed.
         self.success = success
 
     def validate(self):
@@ -72,7 +81,15 @@ class GetSecurityCheckBaseInfoResponseBodyData(DaraModel):
         enabled: bool = None,
         task_completed: bool = None,
     ):
+        # Indicates whether the security check is enabled.
+        # 
+        # - **true**: Enabled.
+        # - **false**: Disabled.
         self.enabled = enabled
+        # Indicates whether the security check is completed.
+        # 
+        # - **true**: Completed.
+        # - **false**: Not completed.
         self.task_completed = task_completed
 
     def validate(self):

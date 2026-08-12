@@ -11,7 +11,9 @@ class CreateServiceLinkedRoleRequest(DaraModel):
         region_id: str = None,
         sdk_request: main_models.CreateServiceLinkedRoleRequestSdkRequest = None,
     ):
+        # The region ID of the Smart Access Gateway instance.
         self.region_id = region_id
+        # The Security Center SDK request.
         self.sdk_request = sdk_request
 
     def validate(self):
@@ -47,6 +49,10 @@ class CreateServiceLinkedRoleRequestSdkRequest(DaraModel):
         self,
         service_linked_role: str = None,
     ):
+        # The service-linked role. Default value: **AliyunServiceRoleForSas**. Valid values:
+        # 
+        # - **AliyunServiceRoleForSas**: the service-linked role for Security Center (SAS). Security Center uses this role to access your resources in other Alibaba Cloud services.
+        # - **AliyunServiceRoleForSasCspm**: the service-linked role for Security Center - Cloud Security Posture Management (CSPM). SAS-CSPM uses this role to access your resources in other Alibaba Cloud services.
         self.service_linked_role = service_linked_role
 
     def validate(self):

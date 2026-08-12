@@ -14,10 +14,20 @@ class GetSecurityCheckResultBaseInfoResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
+        # 
+        # >  200: The request was successful. Other codes (such as 500 or 400): An error occurred.
         self.code = code
+        # The returned data list.
         self.data = data
+        # The prompt message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the current API call itself was successful. This does not indicate the success of subsequent business operations.
+        # 
+        # - **true**: Successful.
+        # - **false**: Failed.
         self.success = success
 
     def validate(self):
@@ -74,9 +84,13 @@ class GetSecurityCheckResultBaseInfoResponseBodyData(DaraModel):
         pending_vulnerability_count: int = None,
         progress: str = None,
     ):
+        # The configuration item check result.
         self.config_completed = config_completed
+        # The number of pending security alerts.
         self.pending_security_alert_count = pending_security_alert_count
+        # The number of pending vulnerabilities.
         self.pending_vulnerability_count = pending_vulnerability_count
+        # The percentage of the health check task progress.
         self.progress = progress
 
     def validate(self):

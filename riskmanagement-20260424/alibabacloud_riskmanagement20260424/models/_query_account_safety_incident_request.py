@@ -17,14 +17,35 @@ class QueryAccountSafetyIncidentRequest(DaraModel):
         resource_id: str = None,
         status: str = None,
     ):
+        # The language. Default value: zh.
+        # 
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.aliyun_lang = aliyun_lang
+        # The event name code.
         self.case_code = case_code
+        # The current page number. The value must be greater than 0.
         self.current = current
+        # The event ID.
         self.event_id = event_id
+        # The number of records per page. Valid values: 1 to 100.
         self.page_size = page_size
+        # The end time of the control action.
+        # 
+        # > Format: yyyy-MM-dd HH:mm:ss
         self.punish_end_time = punish_end_time
+        # The start time of the control action.
+        # 
+        # > Format: yyyy-MM-dd HH:mm:ss
         self.punish_start_time = punish_start_time
+        # The resource ID.
         self.resource_id = resource_id
+        # The event status. Valid values:
+        # 
+        # - **Executing**: In progress.
+        # - **Removed**: Removed.
+        # - **Alerting**: Alerting.
+        # - **Ended**: Ended.
         self.status = status
 
     def validate(self):

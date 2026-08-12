@@ -12,9 +12,18 @@ class StartSecurityCheckServiceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
+        # 
+        # - **200**: Succeeded.
+        # - **Others (400, 500)**: Failed.
         self.code = code
+        # The message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the call is successful.
+        # - **true**: Succeeded.
+        # - **false**: Failed.
         self.success = success
 
     def validate(self):

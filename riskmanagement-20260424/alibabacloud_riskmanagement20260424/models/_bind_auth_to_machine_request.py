@@ -13,7 +13,9 @@ class BindAuthToMachineRequest(DaraModel):
         region_id: str = None,
         sdk_request: main_models.BindAuthToMachineRequestSdkRequest = None,
     ):
+        # The region ID of the Smart Access Gateway instance.
         self.region_id = region_id
+        # The Security Center SDK request.
         self.sdk_request = sdk_request
 
     def validate(self):
@@ -60,15 +62,57 @@ class BindAuthToMachineRequestSdkRequest(DaraModel):
         pre_bind_order_id: int = None,
         un_bind: List[str] = None,
     ):
+        # The authorization version of the asset. Valid values:
+        # 
+        # - **6**: Anti-virus Edition
+        # - **5**: Advanced Edition
+        # - **3**: Enterprise Edition
+        # - **7**: Ultimate Edition
+        # - **10**: Value-added Service Edition
         self.auth_version = auth_version
+        # Specifies whether to enable automatic binding. Valid values:
+        # 
+        # - **0**: disabled
+        # - **1**: enabled
         self.auto_bind = auto_bind
+        # The collection of UUIDs to bind.
+        # 
+        # > Bind and UnBind cannot both be empty.
+        # Maximum number of child entries: 1000.
         self.bind = bind
+        # Specifies whether to bind all assets. Default value: **false**. Valid values:
+        # 
+        # - **true**: yes
+        # - **false**: no
         self.bind_all = bind_all
+        # The search conditions for assets. This parameter is in JSON format. Pay attention to the letter case when you specify this parameter.
+        # > You can search for assets by instance ID, instance name, VPC ID, region, public IP address, and other conditions. You can call the DescribeCriteria operation to query the supported search conditions.
         self.criteria = criteria
+        # Specifies whether this is a pre-binding operation. Valid values:
+        # 
+        # - **0**: no
+        # - **1**: yes
+        # 
+        # > After pre-binding is enabled, the corresponding authorization quota is automatically bound to the specified servers after the purchase is completed.
         self.is_pre_bind = is_pre_bind
+        # The logical relationship between multiple search conditions. Valid values:
+        # 
+        # - **OR**: The search conditions are in an **OR** relationship.
+        # - **AND**: The search conditions are in an **AND** relationship.
         self.logical_exp = logical_exp
+        # The order version associated with the pre-binding. Valid values:
+        # 
+        # - **level7**: Anti-virus Edition
+        # - **level3**: Advanced Edition
+        # - **level2**: Enterprise Edition
+        # - **level8**: Ultimate Edition
+        # - **level10**: value-added service only
         self.ntm_version = ntm_version
+        # The order ID associated with the pre-binding.
+        # > Note: This field is of the Long type. Precision loss may occur during the sequence/deserialization procedure. The value must not exceed 9007199254740991.
         self.pre_bind_order_id = pre_bind_order_id
+        # The collection of UUIDs to unbind.
+        # > **Bind** and **UnBind** cannot both be empty.
         self.un_bind = un_bind
 
     def validate(self):

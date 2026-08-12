@@ -16,10 +16,15 @@ class DescribeSuspEventsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The response information returned by Meta.
         self.data = data
+        # The returned message. If the request is successful, a success message is returned. If the request fails, the failure reason is returned.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the operation is successful. Valid values: true: Successful. false: Failed.
         self.success = success
 
     def validate(self):
@@ -73,6 +78,7 @@ class DescribeSuspEventsResponseBodyData(DaraModel):
         self,
         body: main_models.DescribeSuspEventsResponseBodyDataBody = None,
     ):
+        # The message body.
         self.body = body
 
     def validate(self):
@@ -107,11 +113,17 @@ class DescribeSuspEventsResponseBodyDataBody(DaraModel):
         susp_events: List[main_models.DescribeSuspEventsResponseBodyDataBodySuspEvents] = None,
         total_count: int = None,
     ):
+        # The number of tasks.
         self.count = count
+        # The current page number.
         self.current_page = current_page
+        # The number of records per page.
         self.page_size = page_size
+        # The request ID of Security Center.
         self.request_id = request_id
+        # The security alert event information.
         self.susp_events = susp_events
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -233,62 +245,119 @@ class DescribeSuspEventsResponseBodyDataBodySuspEvents(DaraModel):
         unique_info: str = None,
         uuid: str = None,
     ):
+        # Indicates whether the alert is from offline analysis.
         self.advanced = advanced
+        # The name of the alert event.
         self.alarm_event_name = alarm_event_name
+        # The display name of the alerting event.
         self.alarm_event_name_display = alarm_event_name_display
+        # The event type of the alerting event.
         self.alarm_event_type = alarm_event_type
+        # The display name of the alerting event type.
         self.alarm_event_type_display = alarm_event_type_display
+        # The unique ID of the alert event.
         self.alarm_unique_info = alarm_unique_info
+        # The name of the application to which the alerting event belongs.
         self.app_name = app_name
+        # Indicates whether automatic defense is enabled.
         self.auto_breaking = auto_breaking
+        # Specifies whether the alerting event is supported for online handling, such as quarantine. Valid values:
         self.can_be_deal_on_line = can_be_deal_on_line
+        # Indicates whether the false positive marking can be unmarked. Valid values:
         self.can_cancel_fault = can_cancel_fault
+        # The cluster ID.
         self.cluster_id = cluster_id
+        # Indicates whether critical event protection pattern is enabled for the server. Valid values:
         self.contain_hw_mode = contain_hw_mode
+        # The container ID.
         self.container_id = container_id
+        # The container image ID.
         self.container_image_id = container_image_id
+        # The container image name.
         self.container_image_name = container_image_name
+        # The data source. You can ignore this field.
         self.data_source = data_source
+        # The description of the impact of the alerting event.
         self.desc = desc
+        # The details of the alerting event.
         self.details = details
+        # The detection source. This is an invalid field.
         self.detect_source = detect_source
+        # Indicates whether cloud sandbox detection is supported. Valid values:
         self.display_sandbox_result = display_sandbox_result
+        # The remarks of the alerting event.
         self.event_notes = event_notes
+        # The status of the alerting event. Valid values:
         self.event_status = event_status
+        # The child class of the alerting event.
         self.event_sub_type = event_sub_type
+        # Indicates whether the alerting event is associated with tracing information. Valid values:
         self.has_trace_info = has_trace_info
+        # The unique identity of the alerting event.
         self.id = id
+        # The unique identity of the image.
         self.image_uuid = image_uuid
+        # The ID of the asset instance affected by the alerting event.
         self.instance_id = instance_id
+        # The instance name.
         self.instance_name = instance_name
+        # The public IP address of the associated instance.
         self.internet_ip = internet_ip
+        # The private network IP address of the instance.
         self.intranet_ip = intranet_ip
+        # The K8s cluster ID.
         self.k_8s_cluster_id = k_8s_cluster_id
+        # The K8s cluster name.
         self.k_8s_cluster_name = k_8s_cluster_name
+        # The K8s namespace.
         self.k_8s_namespace = k_8s_namespace
+        # The K8s node ID.
         self.k_8s_node_id = k_8s_node_id
+        # The K8s node name.
         self.k_8s_node_name = k_8s_node_name
+        # The K8s pod name.
         self.k_8s_pod_name = k_8s_pod_name
+        # Indicates whether large model analysis label is supported. Valid values:
         self.large_model = large_model
+        # The most recent time when the alerting event occurred.
         self.last_time = last_time
+        # The UNIX timestamp of the last occurrence, in milliseconds.
         self.last_time_stamp = last_time_stamp
+        # The risk level of the alerting event. Valid values:
         self.level = level
+        # The status of the malicious behavior defense rule. Valid values:
         self.malicious_rule_status = malicious_rule_status
+        # The collection of alerting event labels.
         self.mark_list = mark_list
+        # The advanced whitelist rules.
         self.mark_mis_rules = mark_mis_rules
+        # The full name of the alerting event.
         self.name = name
+        # The time when the alerting event first occurred.
         self.occurrence_time = occurrence_time
+        # The UNIX timestamp of the first occurrence, in milliseconds.
         self.occurrence_time_stamp = occurrence_time_stamp
+        # The fault code of the alerting event operation.
         self.operate_error_code = operate_error_code
+        # The remarks of the alerting event operation.
         self.operate_msg = operate_msg
+        # The UNIX timestamp of the alerting event operation, in milliseconds.
         self.operate_time = operate_time
+        # The required edition:
         self.sale_version = sale_version
+        # The IDs of the alerting events associated with this alerting event.
         self.security_event_ids = security_event_ids
+        # The Alibaba Cloud account ID that generated the alert.
         self.source_ali_uid = source_ali_uid
+        # The attack stage.
         self.stages = stages
+        # The operation type supported by the alert:
         self.support_operate_code = support_operate_code
+        # The display name of the attack stage.
         self.tactic_items = tactic_items
+        # The unique key of the security alert.
         self.unique_info = unique_info
+        # The unique identifier of the associated instance.
         self.uuid = uuid
 
     def validate(self):
@@ -679,7 +748,9 @@ class DescribeSuspEventsResponseBodyDataBodySuspEventsTacticItems(DaraModel):
         tactic_display_name: str = None,
         tactic_id: str = None,
     ):
+        # The ATT&CK tactic name.
         self.tactic_display_name = tactic_display_name
+        # The ATT&CK attack stage information.
         self.tactic_id = tactic_id
 
     def validate(self):
@@ -715,8 +786,11 @@ class DescribeSuspEventsResponseBodyDataBodySuspEventsEventNotes(DaraModel):
         note_id: int = None,
         note_time: str = None,
     ):
+        # The remark information.
         self.note = note
+        # The ID of the remark record.
         self.note_id = note_id
+        # The time when the event was recorded.
         self.note_time = note_time
 
     def validate(self):
@@ -759,9 +833,13 @@ class DescribeSuspEventsResponseBodyDataBodySuspEventsDetails(DaraModel):
         value: str = None,
         value_display: str = None,
     ):
+        # The display name of the alerting event.
         self.name_display = name_display
+        # The event type of the alerting event.
         self.type = type
+        # The path where the alerting event occurred.
         self.value = value
+        # The display path where the alerting event occurred.
         self.value_display = value_display
 
     def validate(self):

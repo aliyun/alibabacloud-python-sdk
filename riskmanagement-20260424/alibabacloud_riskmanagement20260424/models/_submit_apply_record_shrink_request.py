@@ -14,12 +14,30 @@ class SubmitApplyRecordShrinkRequest(DaraModel):
         qualification_proof: str = None,
         trial: bool = None,
     ):
+        # The request reason.
+        # 
+        # - **AR01**: Rectified. Request to unblock.
+        # - **AR02**: No violation found after investigation.
+        # - **AR03**: The instance or service has been shut down and cannot be operated. Request to unblock and then clear the violation information.
+        # - **AR04**: Files deleted. Request to unblock.
+        # - **AR05**: The instance has been released.
+        # - **AR00**: Other. Provide a description.
+        # 
         # This parameter is required.
         self.apply_request = apply_request
+        # The commitment letter.
         self.commitment_letter = commitment_letter
+        # The description of the situation.
         self.description = description
+        # The list of specified event IDs.
         self.event_id_list_shrink = event_id_list_shrink
+        # The qualification proof.
         self.qualification_proof = qualification_proof
+        # Specifies whether manual review is required.
+        # - **true**: Manual review is required.
+        # - **false**: Manual review is not required.
+        # 
+        # > Default value: manual review is not required.
         self.trial = trial
 
     def validate(self):

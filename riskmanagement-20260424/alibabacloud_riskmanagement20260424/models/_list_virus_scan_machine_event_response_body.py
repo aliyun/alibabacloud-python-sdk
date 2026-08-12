@@ -16,10 +16,17 @@ class ListVirusScanMachineEventResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # code
         self.code = code
+        # The returned data.
         self.data = data
+        # The message information.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the call was successful. Valid values:
+        # - true: The call was successful.
+        # - false: The call failed.
         self.success = success
 
     def validate(self):
@@ -75,8 +82,11 @@ class ListVirusScanMachineEventResponseBodyData(DaraModel):
         virus_scan_latest_task_statistic: main_models.ListVirusScanMachineEventResponseBodyDataVirusScanLatestTaskStatistic = None,
         virus_scan_machine_event_list: main_models.ListVirusScanMachineEventResponseBodyDataVirusScanMachineEventList = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The information about the latest virus scan task.
         self.virus_scan_latest_task_statistic = virus_scan_latest_task_statistic
+        # The virus alerts detected on specific machines during virus scanning.
         self.virus_scan_machine_event_list = virus_scan_machine_event_list
 
     def validate(self):
@@ -122,7 +132,9 @@ class ListVirusScanMachineEventResponseBodyDataVirusScanMachineEventList(DaraMod
         data: List[main_models.ListVirusScanMachineEventResponseBodyDataVirusScanMachineEventListData] = None,
         page_info: main_models.ListVirusScanMachineEventResponseBodyDataVirusScanMachineEventListPageInfo = None,
     ):
+        # The details of the alert events.
         self.data = data
+        # The pagination information.
         self.page_info = page_info
 
     def validate(self):
@@ -169,8 +181,11 @@ class ListVirusScanMachineEventResponseBodyDataVirusScanMachineEventListPageInfo
         page_size: int = None,
         total_count: int = None,
     ):
+        # The page number of the current page in a paged query.
         self.current_page = current_page
+        # The maximum number of entries displayed per page in a paged query.
         self.page_size = page_size
+        # The total number of alert events returned.
         self.total_count = total_count
 
     def validate(self):
@@ -217,13 +232,21 @@ class ListVirusScanMachineEventResponseBodyDataVirusScanMachineEventListData(Dar
         last_time_stamp: int = None,
         level: str = None,
     ):
+        # The details of the anomalous event.
         self.details = details
+        # The ID of the alert event.
         self.event_id = event_id
+        # The name (subtype) of the alert event.
         self.event_name = event_name
+        # The instance name.
         self.instance_name = instance_name
+        # The public IP address.
         self.internet_ip = internet_ip
+        # The private IP address.
         self.intranet_ip = intranet_ip
+        # The timestamp of the last occurrence, in milliseconds.
         self.last_time_stamp = last_time_stamp
+        # The risk level of the alert event. Valid values:
         self.level = level
 
     def validate(self):
@@ -304,9 +327,13 @@ class ListVirusScanMachineEventResponseBodyDataVirusScanMachineEventListDataDeta
         type: str = None,
         value_display: str = None,
     ):
+        # The display type of valueDisplay. Valid values:
         self.info_type = info_type
+        # The display name of the alert event.
         self.name_display = name_display
+        # The display method of the anomalous event details.
         self.type = type
+        # The additional attribute information of the anomalous event, such as the logon time or logon location for abnormal logon alerts, or the trojan file path or trojan type for trojan alerts.
         self.value_display = value_display
 
     def validate(self):
@@ -365,19 +392,33 @@ class ListVirusScanMachineEventResponseBodyDataVirusScanLatestTaskStatistic(Dara
         task_id: str = None,
         un_complete_machine: int = None,
     ):
+        # The number of machines that completed scanning.
         self.complete_machine = complete_machine
+        # The server machine name.
         self.machine_name = machine_name
+        # The percentage of the scan task progress.
         self.progress = progress
+        # The highest risk level of the detected alerts. Valid values:
         self.risk_level = risk_level
+        # The number of machines on which no risks were detected.
         self.safe_machine = safe_machine
+        # The number of machines scanned in this virus scan.
         self.scan_machine = scan_machine
+        # The file paths specified for scanning when the user-defined scan type is used.
         self.scan_path = scan_path
+        # The scan timestamp, in milliseconds.
         self.scan_time = scan_time
+        # The scan type of this virus scan. Valid values:
         self.scan_type = scan_type
+        # The status of the scan task.
         self.status = status
+        # The number of security alerts detected during the scan.
         self.suspicious_count = suspicious_count
+        # The number of machines on which risks were detected.
         self.suspicious_machine = suspicious_machine
+        # The ID of the scan task.
         self.task_id = task_id
+        # The number of machines that did not complete scanning or failed during scanning.
         self.un_complete_machine = un_complete_machine
 
     def validate(self):

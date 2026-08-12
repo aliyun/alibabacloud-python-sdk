@@ -16,10 +16,18 @@ class GetAlertRecordAnalysisResultResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the call fails. For more information, see error codes.
         self.code = code
+        # The returned data.
         self.data = data
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the call is successful. Valid values:
+        # 
+        # - **true**: The call is successful.                               
+        # - **false**: The call fails.
         self.success = success
 
     def validate(self):
@@ -74,7 +82,9 @@ class GetAlertRecordAnalysisResultResponseBodyData(DaraModel):
         analysis_code: str = None,
         unique_tag_list: List[main_models.GetAlertRecordAnalysisResultResponseBodyDataUniqueTagList] = None,
     ):
+        # The code of the tracing result. (Deprecated)
         self.analysis_code = analysis_code
+        # The list of tracing results.
         self.unique_tag_list = unique_tag_list
 
     def validate(self):
@@ -125,15 +135,31 @@ class GetAlertRecordAnalysisResultResponseBodyDataUniqueTagList(DaraModel):
         unique_info: str = None,
         uuid: str = None,
     ):
+        # The unique identifier of the alert event.
         self.alarm_unique_info = alarm_unique_info
+        # The 16-digit AliUid of the user.
         self.ali_uid = ali_uid
+        # The code of the tracing result.
         self.analysis_code = analysis_code
+        # The text of the tracing result.
         self.analysis_result = analysis_result
+        # Indicates whether the result is liked. Valid values:
+        # 
+        # - **true**: Liked.
+        # - **false**: Not liked.
         self.choose_like = choose_like
+        # The IP address.
         self.ip = ip
+        # The instance ID of the server.
         self.machine_instance_id = machine_instance_id
+        # The display mode of the exception event details. Valid values:
+        # 
+        # - **text**: plain text
+        # - **html**: rich text
         self.type = type
+        # The unique ID of the alert event.
         self.unique_info = unique_info
+        # The UUID of the server.
         self.uuid = uuid
 
     def validate(self):

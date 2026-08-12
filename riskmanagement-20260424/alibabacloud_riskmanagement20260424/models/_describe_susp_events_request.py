@@ -13,7 +13,9 @@ class DescribeSuspEventsRequest(DaraModel):
         region_id: str = None,
         sdk_request: main_models.DescribeSuspEventsRequestSdkRequest = None,
     ):
+        # The region ID.
         self.region_id = region_id
+        # The Security Center SDK request parameters.
         self.sdk_request = sdk_request
 
     def validate(self):
@@ -84,41 +86,77 @@ class DescribeSuspEventsRequestSdkRequest(DaraModel):
         unique_info: str = None,
         uuids: str = None,
     ):
+        # The unique ID of the alert event.
         self.alarm_unique_info = alarm_unique_info
+        # The list of asset types.
         self.assets_type_list = assets_type_list
+        # The cluster ID.
         self.cluster_id = cluster_id
+        # The container search field. Valid values:
         self.container_field_name = container_field_name
+        # The value of the container search field.
         self.container_field_value = container_field_value
+        # The current page number.
         self.current_page = current_page
+        # The status of the alert event.
         self.dealed = dealed
+        # The detection source. This is an invalid field.
         self.detect_source = detect_source
+        # The subtypes of the alert event. Separate multiple subtypes with commas (,).
         self.event_names = event_names
+        # The request source identifier. Set the value to **sas**.
         self.from_ = from_
+        # The tag group ID.
         self.group_id = group_id
+        # The unique ID that identifies the alert event record.
         self.id = id
+        # The language type of the response. Valid values:
         self.lang = lang
+        # The severity levels of the alert event. Separate multiple levels with commas (in descending order of severity).
         self.levels = levels
+        # The multi-account query type. Default value: **0**. Valid values:
         self.multi_account_action_type = multi_account_action_type
+        # The name of the asset affected by the alert event.
         self.name = name
+        # The list of alert event handling result codes.
         self.operate_error_code_list = operate_error_code_list
+        # The end timestamp of the handling time.
         self.operate_time_end = operate_time_end
+        # The start timestamp of the handling time.
         self.operate_time_start = operate_time_start
+        # The maximum number of entries per page in a paged query.
         self.page_size = page_size
+        # The Alarm Metric of the alerting events to query. Valid values:
         self.parent_event_types = parent_event_types
+        # The alert name or asset information to query.
         self.remark = remark
+        # The Alibaba Cloud account ID of the member accounts in the resource folder.
         self.resource_directory_account_id = resource_directory_account_id
+        # The custom sort field. Default value: **operateTime**. Valid values:
         self.sort_column = sort_column
+        # The sort order based on certificate expiration time.
         self.sort_type = sort_type
+        # The alert source.
         self.source = source
+        # The list of Alibaba Cloud account IDs that generated the alerts.
         self.source_ali_uids = source_ali_uids
+        # The IP address of the access source.
         self.source_ip = source_ip
+        # Indicates whether the alert belongs to strict mode.
         self.strict_mode = strict_mode
+        # The list of operation types supported by the alert.
         self.support_operate_code_list = support_operate_code_list
+        # The ATT&CK tactic ID.
         self.tactic_id = tactic_id
+        # The container search target type. Valid values:
         self.target_type = target_type
+        # The end time of the latest occurrence time.
         self.time_end = time_end
+        # The start time of the latest occurrence time.
         self.time_start = time_start
+        # The unique key of the security alert.
         self.unique_info = unique_info
+        # The UUIDs of the servers for which to query alerts. Separate multiple UUIDs with commas (,).
         self.uuids = uuids
 
     def validate(self):

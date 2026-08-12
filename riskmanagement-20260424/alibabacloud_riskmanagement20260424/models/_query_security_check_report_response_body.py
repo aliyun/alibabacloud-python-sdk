@@ -14,10 +14,19 @@ class QuerySecurityCheckReportResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
+        # 
+        # >  200: The request was successful. Other codes (such as 500 or 400): An error occurred.
         self.code = code
+        # The query result.
         self.data = data
+        # The description.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the call was successful. Valid values:
+        # - true: The call was successful.
+        # - false: The call failed.
         self.success = success
 
     def validate(self):
@@ -77,12 +86,26 @@ class QuerySecurityCheckReportResponseBodyData(DaraModel):
         security_status: int = None,
         suggestion_text: str = None,
     ):
+        # The subscription status of the cloud security guide. Valid values:
+        # 
+        # - **0**: not subscribed 
+        # - **1**: subscribed
         self.cloud_security_guide = cloud_security_guide
+        # The number of pending items for configuration audit.
         self.config_check_number = config_check_number
+        # The number of pending items for security contacts.
         self.contact_check_number = contact_check_number
+        # The number of risk events.
         self.risk_event_number = risk_event_number
+        # The number of pending items for Elastic Compute Service.
         self.sas_check_number = sas_check_number
+        # The security check result status. Valid values:
+        # 
+        # - **0**: no risk
+        # - **1**: risks exist 
+        # - **2**: items to be optimized exist
         self.security_status = security_status
+        # The suggestion text.
         self.suggestion_text = suggestion_text
 
     def validate(self):

@@ -13,9 +13,16 @@ class GetResourceControlEventRequest(DaraModel):
         event_id: str = None,
         event_id_list: List[str] = None,
     ):
+        # The language. Valid values:
+        # 
+        # - **zh** (default): Chinese
+        # - **en**: English
         self.aliyun_lang = aliyun_lang
+        # The alert event ID.
+        # 
         # This parameter is required.
         self.event_id = event_id
+        # The list of specified event IDs.
         self.event_id_list = event_id_list
 
     def validate(self):

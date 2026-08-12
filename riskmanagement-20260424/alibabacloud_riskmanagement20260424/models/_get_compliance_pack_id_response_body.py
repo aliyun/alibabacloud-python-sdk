@@ -13,10 +13,21 @@ class GetCompliancePackIdResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code. Valid values:
+        # 
+        # - **200**: Succeeded.
+        # - **Others (400, 500)**: Failed.
         self.code = code
+        # The compliance package ID.
         self.data = data
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the call was successful. Valid values:
+        # 
+        # - **true**: The call was successful.                               
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):

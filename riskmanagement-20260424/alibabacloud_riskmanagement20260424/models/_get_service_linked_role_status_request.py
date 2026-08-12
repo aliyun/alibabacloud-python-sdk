@@ -9,6 +9,12 @@ class GetServiceLinkedRoleStatusRequest(DaraModel):
         self,
         auth_type: str = None,
     ):
+        # The authorization type. Valid values:
+        # 
+        # - **SecuritySense**: security check authorization
+        # - **DisposalTool**: threat removal tool authorization
+        # - **SensePosture**: security posture authorization
+        # 
         # This parameter is required.
         self.auth_type = auth_type
 

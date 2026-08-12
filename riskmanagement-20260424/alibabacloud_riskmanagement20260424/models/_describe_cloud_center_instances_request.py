@@ -11,7 +11,9 @@ class DescribeCloudCenterInstancesRequest(DaraModel):
         region_id: str = None,
         sdk_request: main_models.DescribeCloudCenterInstancesRequestSdkRequest = None,
     ):
+        # The ID of the region in which the instance resides.
         self.region_id = region_id
+        # The Security Center SDK request.
         self.sdk_request = sdk_request
 
     def validate(self):
@@ -58,17 +60,29 @@ class DescribeCloudCenterInstancesRequestSdkRequest(DaraModel):
         resource_directory_account_id: str = None,
         use_next_token: bool = None,
     ):
+        # The search conditions for assets. This parameter is in JSON format. Note that the parameter names are case-sensitive.
         self.criteria = criteria
+        # The current page number.
         self.current_page = current_page
+        # The asset vendor. Separate multiple asset vendors with commas (,). Valid values:
         self.flags = flags
+        # The importance level of the asset. Valid values:
         self.importance = importance
+        # The language of the response. Valid values:
         self.lang = lang
+        # The logical relationship between multiple search conditions. Valid values:
         self.logical_exp = logical_exp
+        # The type of asset to query. Valid values:
         self.machine_types = machine_types
+        # The pagination token used to retrieve the next page of results. If no more results are available, this field is not returned.
         self.next_token = next_token
+        # Specifies whether to internationalize the default group name **Ungrouped**. Default value: **false**. Valid values:
         self.no_group_trace = no_group_trace
+        # The number of assets to display per page in a paged query. Default value: 20, which indicates that 20 asset records are displayed per page.
         self.page_size = page_size
+        # The ID of the member accounts in the resource folder.
         self.resource_directory_account_id = resource_directory_account_id
+        # Specifies whether to use the NextToken method to retrieve the vulnerability list data. If this parameter is used, TotalCount is no longer returned. Valid values:
         self.use_next_token = use_next_token
 
     def validate(self):

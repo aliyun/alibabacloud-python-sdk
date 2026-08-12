@@ -21,16 +21,46 @@ class GetAliYunSafeCenterResultRequest(DaraModel):
         list_instances_request: main_models.GetAliYunSafeCenterResultRequestListInstancesRequest = None,
         region_id: str = None,
     ):
+        # Creates a node to query security alerting events triggered by the same rule or alerting type.
         self.create_similar_security_events_query_task_request = create_similar_security_events_query_task_request
+        # Queries the running status of ECS instances.
         self.describe_instances_full_status_request = describe_instances_full_status_request
+        # Queries whether the list of security alerting events that match the same IP rule or same alerting type as the alerting event to be handled is empty.
         self.describe_security_event_operation_status_request = describe_security_event_operation_status_request
+        # Queries identical security alert events in Security Center.
         self.describe_similar_security_events_request = describe_similar_security_events_request
+        # The request parameters for querying the Security Center Agent status.
         self.get_asset_detail_by_uuid_request = get_asset_detail_by_uuid_request
+        # Handles security alert events.
         self.handle_security_events_request = handle_security_events_request
+        # Handles security alert events in batches based on the same IP rule or type.
         self.handle_similar_security_events_request = handle_similar_security_events_request
+        # The code of the public API operation.
+        # 
+        # - **GetAssetDetailByUuid**: Retrieves the Agent status. Request parameter: GetAssetDetailByUuidRequest.
+        # 
+        # - **DescribeSimilarSecurityEvents**: Retrieves the list of instance IDs for identical security alerting events. Request parameter: DescribeSimilarSecurityEventsRequest.
+        # 
+        # - **CreateSimilarSecurityEventsQueryTask**: Creates a node to query security alerting events triggered by the same rule or alerting type. Request parameter: CreateSimilarSecurityEventsQueryTaskRequest.
+        # 
+        # - **DescribeSecurityEventOperationStatus**: Queries whether the list of security alerting events that match the same IP rule or same alerting type as the alerting event to be handled is empty. Request parameter: DescribeSecurityEventOperationStatusRequest.
+        # 
+        # - **HandleSimilarSecurityEvents**: Handles security alerting events in batches based on the same IP rule or type. Request parameter: HandleSimilarSecurityEventsRequest.
+        # HandleSecurityEvents: Handles security alerting events. Request parameter: HandleSecurityEventsRequest.
+        # 
+        # - **DescribeInstancesFullStatus**: Queries the running status of ECS instances. Request parameter: DescribeInstancesFullStatusRequest.
+        # 
+        # - **ListInstances**: Queries the running status of simple application servers. Request parameter: ListInstancesRequest.
+        # 
+        # - **StartConfigRuleEvaluation**: Re-evaluates security check rules.
+        # 
+        # > Each API operation name corresponds to its own request parameters.
+        # 
         # This parameter is required.
         self.interface_code = interface_code
+        # Queries the running status of simple application servers.
         self.list_instances_request = list_instances_request
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -136,7 +166,9 @@ class GetAliYunSafeCenterResultRequestListInstancesRequest(DaraModel):
         instance_ids: str = None,
         region_id: str = None,
     ):
+        # The instance IDs of simple application servers. The value is a JSON array that can contain up to 100 IDs. Separate multiple IDs with commas (,).
         self.instance_ids = instance_ids
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -177,13 +209,39 @@ class GetAliYunSafeCenterResultRequestHandleSimilarSecurityEventsRequest(DaraMod
         source_ip: str = None,
         task_id: int = None,
     ):
+        # The alerting type.
         self.alert_type = alert_type
+        # The instance ID.
         self.instance_id = instance_id
+        # The IP address of the instance.
         self.ip = ip
+        # The operation type for batch handling similar security alert events.
+        # 
+        # > You can call the DescribeSecurityEventOperations operation to obtain this parameter.
         self.operation_code = operation_code
+        # The configuration of the sub-operation for handling alerting events. The value is in JSON format.
+        # 
+        # > This parameter is required only when **OperationCode** is set to **kill_and_quara**, **block_ip**, or **virus_quara**. For other values of **OperationCode**, this parameter can be left empty.
+        # 
+        # > When **OperationCode** is set to **block_ip**, the following field is included:
+        # > - **expireTime**: The lock expiration time. Unit: milliseconds.
+        # >
+        # > When **OperationCode** is set to **kill_and_quara**, the following field is included:
+        # > - **subOperation**: The method for killing and quarantining. Valid values:
+        # >     - **killAndQuaraFileByMd5andPath**: Terminates the process and quarantines the file.
+        # >     - **killByMd5andPath**: Terminates the running process.
+        # >
+        # > When **OperationCode** is set to **virus_quara**, the following field is included:
+        # > - **subOperation**: The method for killing and quarantining. Valid values:
+        # >    - **quaraFileByMd5andPath**: Quarantines the source file of the process.
         self.operation_params = operation_params
+        # The region ID.
         self.region_id = region_id
+        # The IP address of the access source.
         self.source_ip = source_ip
+        # The ID of the task for batch handling all security alert events of the same type.
+        # 
+        # > You can call the CreateSimilarSecurityEventsQueryTask operation to obtain this parameter.
         self.task_id = task_id
 
     def validate(self):
@@ -264,17 +322,72 @@ class GetAliYunSafeCenterResultRequestHandleSecurityEventsRequest(DaraModel):
         remark: str = None,
         security_event_ids: List[str] = None,
     ):
+        # The alert rule type.
         self.alert_type = alert_type
+        # The MD5 hash of the file.
         self.file_md_5 = file_md_5
+        # The path of the sensitive file.
         self.file_path = file_path
+        # The instance ID.
         self.instance_id = instance_id
+        # The user IP address.
         self.ip = ip
+        # Specifies whether to add to the whitelist in batches.
+        # 
+        # - **true**: Yes.
+        # - **false**: No.
         self.mark_batch = mark_batch
+        # The whitelist rule configuration. The value is in JSON format and contains the following fields:
+        # 
+        # - **field**: The whitelist field.
+        # - **operate**: The whitelist method. Valid values:
+        #   - **notContains**: Does not contain.
+        #   - **contains**: Contains.
+        #   - **regex**: Regular expression match.
+        #   - **strEqual**: Equals.
+        #   - **strNotEqual**: Does not equal.
+        # - **fieldValue**: The match value.
+        # - **uuid**: The scope of the whitelist rule. Valid values:
+        #   - **part**: Only the current asset.
+        #   - **ALL**: All assets.
+        # 
+        # > Call the DescribeSecurityEventOperations operation to obtain the field whitelist field.
         self.mark_miss_param = mark_miss_param
+        # The method for handling the security alert event. Valid values:
+        # 
+        # - **block_ip**: Block.
+        # - **advance_mark_mis_info**: Add to whitelist.
+        # - **ignore**: Ignore.
+        # - **manual_handled**: Manually handled.
+        # - **kill_process**: Terminate process.
+        # - **cleanup**: Deep scan and cleanup.
+        # - **kill_and_quara**: Virus scan and quarantine.
+        # - **disable_malicious_defense**: Disable malicious behavior defense.
+        # - **client_problem_check**: Troubleshoot.
+        # - **quara**: Quarantine.
         self.operation_code = operation_code
+        # The configuration of the sub-operation for handling security alert events.
+        # 
+        # When OperationCode is set to kill_and_quara, specify the parameter type "subOperation":${code}.
+        # Valid code values:
+        # - Quarantined file: quaraFileByMd5andPath
+        # - Kill process and quarantined file by process ID and path: killAndQuaraFileByPidAndMd5andPath
+        # - Kill process only: killByMd5andPath
+        # - Kill process and quarantined file: killAndQuaraFileByMd5andPath
+        # - Kill container process by process ID and path: killProcessByPidandPathandCmdline
+        # - Kill container process by file MD5 and path: killContainerProcessByMd5AndPath
+        # 
+        # When OperationCode is set to block_ip, the parameter is:
+        # - Expiration time: expireTime:${timestamp}
+        # > This parameter is required only when OperationCode is set to `kill_and_quara` or `block_ip`. For other values of OperationCode, this parameter can be left empty. ${timestamp} indicates the timestamp of the deadline for blocking this IP address.
         self.operation_params = operation_params
+        # The region ID.
         self.region_id = region_id
+        # The remarks.
         self.remark = remark
+        # The collection of IDs of the security alert events to handle.
+        # 
+        # Example:
         self.security_event_ids = security_event_ids
 
     def validate(self):
@@ -369,7 +482,9 @@ class GetAliYunSafeCenterResultRequestGetAssetDetailByUuidRequest(DaraModel):
         region_id: str = None,
         uuid: str = None,
     ):
+        # The region ID.
         self.region_id = region_id
+        # The UUID of the asset to query.
         self.uuid = uuid
 
     def validate(self):
@@ -404,7 +519,9 @@ class GetAliYunSafeCenterResultRequestDescribeSimilarSecurityEventsRequest(DaraM
         region_id: str = None,
         task_id: int = None,
     ):
+        # The region ID.
         self.region_id = region_id
+        # The ID of the query task. You can call the CreateSimilarSecurityEventsQueryTask operation to obtain this parameter.
         self.task_id = task_id
 
     def validate(self):
@@ -440,8 +557,15 @@ class GetAliYunSafeCenterResultRequestDescribeSecurityEventOperationStatusReques
         security_event_ids: List[str] = None,
         task_id: int = None,
     ):
+        # The region ID. Example: ap-southeast-1.
         self.region_id = region_id
+        # The list of security alert event IDs.
+        # 
+        # > You must specify either TaskId or SecurityEventIds.N. At least one of these parameters is required for a successful call.
         self.security_event_ids = security_event_ids
+        # The ID of the task for handling security alert events.
+        # 
+        # > You must specify either TaskId or SecurityEventIds. At least one of these parameters is required for a successful call.
         self.task_id = task_id
 
     def validate(self):
@@ -482,7 +606,9 @@ class GetAliYunSafeCenterResultRequestDescribeInstancesFullStatusRequest(DaraMod
         instance_id: List[str] = None,
         region_id: str = None,
     ):
+        # The list of instance IDs.
         self.instance_id = instance_id
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -518,8 +644,11 @@ class GetAliYunSafeCenterResultRequestCreateSimilarSecurityEventsQueryTaskReques
         security_event_id: int = None,
         similar_event_scenario_code: str = None,
     ):
+        # The region ID.
         self.region_id = region_id
+        # The ID of the security alert event.
         self.security_event_id = security_event_id
+        # The code of the alerting event that has the same type or rule hits.
         self.similar_event_scenario_code = similar_event_scenario_code
 
     def validate(self):

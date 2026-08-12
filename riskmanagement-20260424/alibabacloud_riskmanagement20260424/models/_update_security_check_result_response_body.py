@@ -13,10 +13,23 @@ class UpdateSecurityCheckResultResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
+        # 
+        # >  200: The request was successful. Other codes (500, 400, etc.): An error occurred.
         self.code = code
+        # The result of updating the health check result.
+        # 
+        # - **true**: Succeeded.
+        # - **false**: Failed.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the call was successful:
+        # 
+        # - **true**: The call was successful.                                
+        # -  **false**: The call failed.
         self.success = success
 
     def validate(self):

@@ -16,10 +16,21 @@ class GetNotificationContactsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
+        # 
+        # - **200**: Success.
+        # - **Other (400, 500)**: Failure.
         self.code = code
+        # The query result.
         self.data = data
+        # The prompt message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the operation is successful.
+        # 
+        # - **true**: Success.
+        # - **false**: Failure.
         self.success = success
 
     def validate(self):
@@ -87,14 +98,26 @@ class GetNotificationContactsResponseBodyData(DaraModel):
         choose_all_channel: bool = None,
         contact_info_list: List[main_models.GetNotificationContactsResponseBodyDataContactInfoList] = None,
     ):
+        # The Alibaba Cloud account ID.
         self.ali_uid = ali_uid
+        # The message category code.
         self.category_code = category_code
+        # The message category description.
         self.category_desc = category_desc
+        # The category group code.
         self.category_group_code = category_group_code
+        # The category group name.
         self.category_group_name = category_group_name
+        # The message category name.
         self.category_name = category_name
+        # The channel list.
         self.channel_configs = channel_configs
+        # Indicates whether all notification methods are selected.
+        # 
+        # - **true**
+        # - **false**
         self.choose_all_channel = choose_all_channel
+        # The general contact list.
         self.contact_info_list = contact_info_list
 
     def validate(self):
@@ -195,14 +218,32 @@ class GetNotificationContactsResponseBodyDataContactInfoList(DaraModel):
         mobile_confirmed: bool = None,
         position: str = None,
     ):
+        # The Alibaba Cloud account ID.
         self.ali_uid = ali_uid
+        # Indicates whether the contact is bound.
+        # 
+        # - **true**
+        # - **fasle**
         self.bind_contact = bind_contact
+        # The contact email address.
         self.contact_email = contact_email
+        # The Account Center contact ID. A value of 0 indicates the account contact.
         self.contact_id = contact_id
+        # The Account Center contact mobile number (masked).
         self.contact_mobile = contact_mobile
+        # The Account Center contact name.
         self.contact_name = contact_name
+        # Indicates whether the email address is verified.
+        # 
+        # - **true**
+        # - **false**
         self.email_confirmed = email_confirmed
+        # Indicates whether the Account Center contact mobile number is verified.
+        # 
+        # - **true**
+        # - **false**
         self.mobile_confirmed = mobile_confirmed
+        # The Account Center contact position.
         self.position = position
 
     def validate(self):
@@ -282,10 +323,24 @@ class GetNotificationContactsResponseBodyDataChannelConfigs(DaraModel):
         fatigue_day_limit: int = None,
         optional: str = None,
     ):
+        # The channel type.
         self.channel_type = channel_type
+        # Indicates whether the subscription is configured.
+        # 
+        # - **NO**
+        # - **YES**
         self.checked_state = checked_state
+        # Indicates whether the channel is selected by default.
+        # 
+        # - **NO**
+        # - **YES**
         self.default_checked = default_checked
+        # The fatigue limit.
         self.fatigue_day_limit = fatigue_day_limit
+        # Indicates whether the channel is modifiable.
+        # 
+        # - **NO**
+        # - **YES**
         self.optional = optional
 
     def validate(self):

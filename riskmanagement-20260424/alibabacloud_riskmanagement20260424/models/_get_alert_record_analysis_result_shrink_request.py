@@ -13,10 +13,18 @@ class GetAlertRecordAnalysisResultShrinkRequest(DaraModel):
         unique_tag_list_shrink: str = None,
         uuid: str = None,
     ):
+        # The unique identifier of the alert event. (Deprecated)
         self.alarm_unique_info = alarm_unique_info
+        # The language of the content. Valid values:
+        # 
+        # - **zh** (default): Chinese
+        # - **en**: English
         self.aliyun_lang = aliyun_lang
+        # The unique ID of the alert event. (Deprecated)
         self.unique_info = unique_info
+        # The array of tracing requests.
         self.unique_tag_list_shrink = unique_tag_list_shrink
+        # The unique identifier of the asset. (Deprecated)
         self.uuid = uuid
 
     def validate(self):

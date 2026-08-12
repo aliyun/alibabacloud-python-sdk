@@ -14,10 +14,15 @@ class InitSasModuleRuleResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the call fails. For more information, refer to error codes.
         self.code = code
+        # The approval result.
         self.data = data
+        # The error message. The value is the same as the Code parameter.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the call is successful. true: The call is successful. false: The call fails.
         self.success = success
 
     def validate(self):
@@ -71,6 +76,7 @@ class InitSasModuleRuleResponseBodyData(DaraModel):
         self,
         request_id: str = None,
     ):
+        # The Security Center request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -11,7 +11,9 @@ class DescribeVersionConfigRequest(DaraModel):
         region_id: str = None,
         sdk_request: main_models.DescribeVersionConfigRequestSdkRequest = None,
     ):
+        # The ID of the region in which the instance resides.
         self.region_id = region_id
+        # The Security Center SDK request.
         self.sdk_request = sdk_request
 
     def validate(self):
@@ -48,7 +50,10 @@ class DescribeVersionConfigRequestSdkRequest(DaraModel):
         resource_directory_account_id: int = None,
         source_ip: str = None,
     ):
+        # The ID of the Alibaba Cloud account of the resource folder member accounts.
+        # >Invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
         self.resource_directory_account_id = resource_directory_account_id
+        # The IP address of the access source.
         self.source_ip = source_ip
 
     def validate(self):

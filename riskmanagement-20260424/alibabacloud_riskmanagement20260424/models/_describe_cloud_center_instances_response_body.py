@@ -16,10 +16,15 @@ class DescribeCloudCenterInstancesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status of the API call.
         self.code = code
+        # The list of instance details.
         self.data = data
+        # The error message.
         self.message = message
+        # The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -73,6 +78,7 @@ class DescribeCloudCenterInstancesResponseBodyData(DaraModel):
         self,
         body: main_models.DescribeCloudCenterInstancesResponseBodyDataBody = None,
     ):
+        # The string of the message body content encoded by using the Base64 algorithm.
         self.body = body
 
     def validate(self):
@@ -105,9 +111,15 @@ class DescribeCloudCenterInstancesResponseBodyDataBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The list of asset details.
         self.instances = instances
+        # The pagination information.
         self.page_info = page_info
+        # The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the call was successful. Valid values:
+        # - true: The call was successful.
+        # - false: The call failed.
         self.success = success
 
     def validate(self):
@@ -168,10 +180,15 @@ class DescribeCloudCenterInstancesResponseBodyDataBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The total count.
         self.count = count
+        # The maximum number of rows per page in a paged query.
         self.current_page = current_page
+        # The NextToken value returned when the NextToken method is used.
         self.next_token = next_token
+        # The number of records per page.
         self.page_size = page_size
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -282,65 +299,125 @@ class DescribeCloudCenterInstancesResponseBodyDataBodyInstances(DaraModel):
         vul_count: int = None,
         vul_status: str = None,
     ):
+        # Indicates whether the image has security alerts. Valid values:
         self.alarm_status = alarm_status
+        # The application ID.
         self.app_id = app_id
+        # The application name.
         self.app_name = app_name
+        # The type of the asset. Valid values:
         self.asset_type = asset_type
+        # The name of the asset type.
         self.asset_type_name = asset_type_name
+        # The timestamp when the asset was bound for authorization. Unit: milliseconds.
         self.auth_modify_time = auth_modify_time
+        # The authorization version of the asset. Valid values:
         self.auth_version = auth_version
+        # The authorization version name of the asset. Valid values:
         self.auth_version_name = auth_version_name
+        # Indicates whether the asset is bound with authorization. Valid values:
         self.bind = bind
+        # Indicates whether web tamper-proofing authorization is bound. Valid values:
         self.bind_file_protect_type = bind_file_protect_type
+        # The online status of the client on the instance. Valid values:
         self.client_status = client_status
+        # The sub-status of the client on the instance. Valid values:
         self.client_sub_status = client_sub_status
+        # The ID of the cluster where the resource group resides.
         self.cluster_id = cluster_id
+        # The cluster name.
         self.cluster_name = cluster_name
+        # The number of CPU cores of the asset.
         self.cores = cores
+        # The CPU information of the asset.
         self.cpu_info = cpu_info
+        # The timestamp when the cluster was created. Unit: milliseconds.
         self.created_time = created_time
+        # The exposure status of the asset. Valid values:
         self.exposed_status = exposed_status
+        # The asset vendor. Separate multiple asset vendors with commas (,). Valid values:
         self.flag = flag
+        # The vendor of the asset. Valid values:
         self.flag_name = flag_name
+        # The ID of the group to which the instance belongs.
         self.group_id = group_id
+        # The name of the group to which the asset belongs.
         self.group_trace = group_trace
+        # Indicates whether the asset contains containers. Valid values:
         self.has_container = has_container
+        # Indicates whether baseline risks are detected on the instance. Valid values:
         self.hc_status = hc_status
+        # The number of baseline risks on the instance.
         self.health_check_count = health_check_count
+        # The importance level of the asset. Valid values:
         self.importance = importance
+        # The instance ID.
         self.instance_id = instance_id
+        # The instance name.
         self.instance_name = instance_name
+        # The public IP address of the associated instance.
         self.internet_ip = internet_ip
+        # The private IP address of the current server.
         self.intranet_ip = intranet_ip
+        # The management IP address.
         self.ip = ip
+        # The list of IP addresses of the system.
         self.ip_list_string = ip_list_string
+        # The kernel version information.
         self.kernel = kernel
+        # The timestamp when the client last went online. Unit: milliseconds.
         self.last_login_timestamp = last_login_timestamp
+        # The MAC address of the system.
         self.mac_list_string = mac_list_string
+        # The total memory. Unit: MB.
         self.mem = mem
+        # The namespace.
         self.namespace = namespace
+        # The operating system of the instance. Valid values:
         self.os = os
+        # The kernel version of the instance.
         self.os_name = os_name
+        # The number of pods.
         self.pod_count = pod_count
+        # The billing method of the protection edition bound to the current asset. Valid values:
         self.post_paid_flag = post_paid_flag
+        # The region ID of the instance.
         self.region = region
+        # The ID of the region where the asset resides.
         self.region_id = region_id
+        # The region name.
         self.region_name = region_name
+        # The statistics of risk items on the asset. The value is in JSON format and contains the following fields:
         self.risk_count = risk_count
+        # Indicates whether risks exist. Valid values:
         self.risk_status = risk_status
+        # The number of security alerts on the asset.
         self.safe_event_count = safe_event_count
+        # The service ID. This parameter has a value only when the instance is a serverless instance that belongs to the PAI platform.
         self.service_id = service_id
+        # The running status of the instance. Valid values:
         self.status = status
+        # The tag name of the asset instance.
         self.tag = tag
+        # The tag ID of the asset.
         self.tag_id = tag_id
+        # The custom tags of the Lingjun node. This parameter is returned only when the machine is a Lingjun machine.
         self.tag_resources = tag_resources
+        # The UUID of the terminal device.
         self.uuid = uuid
+        # The vendor of the asset. Valid values:
         self.vendor = vendor
+        # The service provider name of the asset.
         self.vendor_name = vendor_name
+        # The account ID of the multi-cloud instance.
         self.vendor_uid = vendor_uid
+        # The account name of the multi-cloud instance.
         self.vendor_user_name = vendor_user_name
+        # The ID of the VPC to which the instance belongs.
         self.vpc_instance_id = vpc_instance_id
+        # The number of vulnerabilities on the instance.
         self.vul_count = vul_count
+        # Indicates whether vulnerabilities exist on the instance. Valid values:
         self.vul_status = vul_status
 
     def validate(self):

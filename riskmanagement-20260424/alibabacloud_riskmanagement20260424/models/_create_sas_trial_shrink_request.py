@@ -10,7 +10,9 @@ class CreateSasTrialShrinkRequest(DaraModel):
         region_id: str = None,
         sdk_request_shrink: str = None,
     ):
+        # The region ID of the access control instance. You can call the DescribeRegions operation to query the region ID.
         self.region_id = region_id
+        # The Security Center SDK request.
         self.sdk_request_shrink = sdk_request_shrink
 
     def validate(self):

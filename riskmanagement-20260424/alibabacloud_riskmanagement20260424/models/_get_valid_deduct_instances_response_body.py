@@ -16,10 +16,18 @@ class GetValidDeductInstancesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The return code. A value of 200 indicates success.
         self.code = code
+        # The returned data list.
         self.data = data
+        # The return message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the current API call itself is successful. This does not indicate the success of subsequent business operations.
+        # 
+        # - **true**: Successful.
+        # - **false**: Failed.
         self.success = success
 
     def validate(self):
@@ -73,6 +81,7 @@ class GetValidDeductInstancesResponseBodyData(DaraModel):
         self,
         body: main_models.GetValidDeductInstancesResponseBodyDataBody = None,
     ):
+        # The message body.
         self.body = body
 
     def validate(self):
@@ -103,7 +112,9 @@ class GetValidDeductInstancesResponseBodyDataBody(DaraModel):
         data: main_models.GetValidDeductInstancesResponseBodyDataBodyData = None,
         request_id: str = None,
     ):
+        # The data body.
         self.data = data
+        # The Security Center request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -140,7 +151,11 @@ class GetValidDeductInstancesResponseBodyDataBodyData(DaraModel):
         can_try: bool = None,
         deduct_package_list: List[main_models.GetValidDeductInstancesResponseBodyDataBodyDataDeductPackageList] = None,
     ):
+        # Indicates whether the account is eligible for a trial. Valid values:
+        # - **true**: Eligible.
+        # - **false**: Not eligible.
         self.can_try = can_try
+        # The resource plan usage details.
         self.deduct_package_list = deduct_package_list
 
     def validate(self):
@@ -189,13 +204,28 @@ class GetValidDeductInstancesResponseBodyDataBodyDataDeductPackageList(DaraModel
         start_time: int = None,
         status: str = None,
     ):
+        # The number of authorizations consumed in the current metering cycle.
         self.current_period_used = current_period_used
+        # The end time.
         self.end_time = end_time
+        # The total capacity of the resource plan.
         self.init_capacity = init_capacity
+        # The resource plan instance ID.
         self.instance_id = instance_id
+        # The module code. Valid values:
+        # 
+        # - **POST_HOST**: Host and container protection.
+        # - **CSPM**: Cloud product configuration check.
+        # - **VUL**: Vulnerability scanning.
         self.module = module
+        # The number of authorizations consumed up to the previous billing cycle.
         self.period_capacity = period_capacity
+        # The start timestamp, in milliseconds.
         self.start_time = start_time
+        # The resource plan status. Valid values:
+        # 
+        # - **valid**: Valid.
+        # - **invalid**: Invalid.
         self.status = status
 
     def validate(self):

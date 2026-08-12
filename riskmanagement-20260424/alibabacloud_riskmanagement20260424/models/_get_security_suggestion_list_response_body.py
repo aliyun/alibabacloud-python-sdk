@@ -16,10 +16,21 @@ class GetSecuritySuggestionListResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
+        # 
+        # - **200**: Success.
+        # - **Other (400, 500)**: Failure.
         self.code = code
+        # The query result.
         self.data = data
+        # The message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the call was successful.
+        # 
+        # - **true**: The call was successful.         
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):
@@ -76,9 +87,13 @@ class GetSecuritySuggestionListResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The list of rules.
         self.config_rule_list = config_rule_list
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of rules.
         self.total_count = total_count
 
     def validate(self):
@@ -146,20 +161,49 @@ class GetSecuritySuggestionListResponseBodyDataConfigRuleList(DaraModel):
         source_owner: str = None,
         tags: List[main_models.GetSecuritySuggestionListResponseBodyDataConfigRuleListTags] = None,
     ):
+        # The ID of the account to which the rule belongs.
         self.account_id = account_id
+        # The remediation type. Only OOS (CloudOps Orchestration Service) is supported.
         self.automation_type = automation_type
+        # The aggregated compliance result of the rule.
         self.compliance = compliance
+        # The aggregated compliance result of the rule.
         self.compliance_object = compliance_object
+        # The ARN of the rule.
         self.config_rule_arn = config_rule_arn
+        # The rule ID.
         self.config_rule_id = config_rule_id
+        # The rule name.
         self.config_rule_name = config_rule_name
+        # The rule running status. Valid values:
+        # - **ACTIVE**: Active.
+        # - **DELETING**: Being deleted.
+        # - **EVALUATING**: Being evaluated.
+        # - **INACTIVE**: Inactive.
         self.config_rule_state = config_rule_state
+        # The information about the rule creator.
         self.create_by = create_by
+        # The rule description.
         self.description = description
+        # The resource type scope. Multiple resource types are separated by commas (,).
         self.resource_types_scope = resource_types_scope
+        # The risk level of the rule. Valid values:
+        # 
+        # - **1**: High risk.
+        # - **2**: Medium risk.
+        # - **3**: Low risk.
         self.risk_level = risk_level
+        # The rule identifier.
+        # 
+        # - If the rule uses a managed rule, this parameter is the managed rule name.
+        # 
+        # - If the rule uses a custom function, this parameter is the function ARN.
         self.source_identifier = source_identifier
+        # The owner of the rule source. Valid values:
+        # - **CUSTOM_FC**: Custom rule.
+        # - **ALIYUN**: Rule template.
         self.source_owner = source_owner
+        # The tags of the rule.
         self.tags = tags
 
     def validate(self):
@@ -286,7 +330,9 @@ class GetSecuritySuggestionListResponseBodyDataConfigRuleListTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key of the rule.
         self.key = key
+        # The tag value of the rule.
         self.value = value
 
     def validate(self):
@@ -321,7 +367,9 @@ class GetSecuritySuggestionListResponseBodyDataConfigRuleListCreateBy(DaraModel)
         compliance_pack_id: str = None,
         compliance_pack_name: str = None,
     ):
+        # The ID of the compliance package to which the rule belongs.
         self.compliance_pack_id = compliance_pack_id
+        # The compliance package name.
         self.compliance_pack_name = compliance_pack_name
 
     def validate(self):
@@ -356,7 +404,13 @@ class GetSecuritySuggestionListResponseBodyDataConfigRuleListComplianceObject(Da
         compliance_type: str = None,
         count: int = None,
     ):
+        # The compliance evaluation result of the rule. Valid values:
+        # - **COMPLIANT**: Compliant.
+        # - **NON_COMPLIANT**: Non-compliant.
+        # - **NOT_APPLICABLE**: Not applicable.
+        # - **INSUFFICIENT_DATA**: Insufficient data.
         self.compliance_type = compliance_type
+        # The number of evaluations corresponding to the summary result of the rule evaluation.
         self.count = count
 
     def validate(self):

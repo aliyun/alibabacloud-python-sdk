@@ -13,10 +13,24 @@ class SubmitApplyRecordResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
+        # 
+        # - **200**: Succeeded.
+        # - **Other (400, 500)**: Failed.
         self.code = code
+        # The submission result.
+        # 
+        # - **true**: Submitted.
+        # - **false**: Submission failed.
         self.data = data
+        # The message content.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The call status.
+        # 
+        # - **true**: Succeeded.
+        # - **false**: Failed.
         self.success = success
 
     def validate(self):

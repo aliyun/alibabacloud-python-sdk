@@ -14,10 +14,23 @@ class GetNotificationClickRecordResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
+        # 
+        # - **200**: Succeeded.
+        # - **Others (400, 500)**: Failed.
         self.code = code
+        # The metadata.
         self.data = data
+        # The returned message.
+        # 
+        # > If the request was successful, a success message is returned. If the request failed, the failure reason is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the call was successful.
+        # 
+        # - **true**: The call was successful.         
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):
@@ -72,7 +85,15 @@ class GetNotificationClickRecordResponseBodyData(DaraModel):
         user_cancel: str = None,
         user_confirm: str = None,
     ):
+        # Indicates whether the user clicked cancel.
+        # 
+        # - **true**: Canceled.
+        # - **false**: Not canceled.
         self.user_cancel = user_cancel
+        # Indicates whether the user clicked confirm.
+        # 
+        # - **true**: Confirmed.
+        # - **false**: Not confirmed.
         self.user_confirm = user_confirm
 
     def validate(self):

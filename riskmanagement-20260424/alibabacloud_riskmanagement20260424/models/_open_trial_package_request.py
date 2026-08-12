@@ -10,7 +10,14 @@ class OpenTrialPackageRequest(DaraModel):
         auto_close_switch: int = None,
         region_id: str = None,
     ):
+        # Specifies whether to automatically disable the trial plan when it expires.
+        # 
+        # - **1**: Enabled.
+        # - **0**: Disabled.
+        # 
+        # Default value: 1.
         self.auto_close_switch = auto_close_switch
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

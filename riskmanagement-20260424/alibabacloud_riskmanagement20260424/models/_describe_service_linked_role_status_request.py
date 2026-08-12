@@ -11,7 +11,9 @@ class DescribeServiceLinkedRoleStatusRequest(DaraModel):
         region_id: str = None,
         sdk_request: main_models.DescribeServiceLinkedRoleStatusRequestSdkRequest = None,
     ):
+        # The ID of the region in which the instance resides.
         self.region_id = region_id
+        # The Security Center SDK request.
         self.sdk_request = sdk_request
 
     def validate(self):
@@ -47,6 +49,10 @@ class DescribeServiceLinkedRoleStatusRequestSdkRequest(DaraModel):
         self,
         service_linked_role: str = None,
     ):
+        # The service-linked role. Default value: **AliyunServiceRoleForSas**. Valid values:
+        # 
+        # - **AliyunServiceRoleForSas**: the service-linked role for Security Center (sas). Security Center uses this role to access your resources in other Alibaba Cloud services.
+        # - **AliyunServiceRoleForSasCspm**: the service-linked role for Security Center - CSPM (sas-cspm). sas-cspm uses this role to access your resources in other Alibaba Cloud services.
         self.service_linked_role = service_linked_role
 
     def validate(self):

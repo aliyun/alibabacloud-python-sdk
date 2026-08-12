@@ -12,9 +12,16 @@ class StartDisposalToolServiceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code. A value of 200 indicates success.
         self.code = code
+        # The message information.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the call was successful. Valid values:
+        # 
+        # - **true**: The call was successful.                               
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):

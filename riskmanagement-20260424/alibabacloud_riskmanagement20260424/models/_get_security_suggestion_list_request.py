@@ -10,6 +10,7 @@ class GetSecuritySuggestionListRequest(DaraModel):
         self,
         list_config_rules_request: main_models.GetSecuritySuggestionListRequestListConfigRulesRequest = None,
     ):
+        # The request parameters.
         self.list_config_rules_request = list_config_rules_request
 
     def validate(self):
@@ -47,14 +48,42 @@ class GetSecuritySuggestionListRequestListConfigRulesRequest(DaraModel):
         resource_types: str = None,
         risk_level: int = None,
     ):
+        # The compliance package ID.
         self.compliance_pack_id = compliance_pack_id
+        # The compliance evaluation result. Valid values:
+        # - **COMPLIANT**: Compliant.
+        # - **NON_COMPLIANT**: Non-compliant.
+        # - **NOT_APPLICABLE**: Not applicable.
+        # - **INSUFFICIENT_DATA**: Insufficient data.
+        # - **IGNORED**: Ignored.
         self.compliance_type = compliance_type
+        # The rule name.
         self.config_rule_name = config_rule_name
+        # The rule running status. Valid values:
+        # - **ACTIVE**: Active.
+        # - **DELETING**: Being deleted.
+        # - **EVALUATING**: Being evaluated.
+        # - **INACTIVE**: Inactive.
         self.config_rule_state = config_rule_state
+        # The query keyword.
+        # 
+        # Supports fuzzy match on the rule ID, rule name, rule description, and rule template identifier.
         self.keyword = keyword
+        # The page number.
+        # 
+        # > Minimum value: 1. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page.
+        # 
+        # > Valid values: 1 to 100. Minimum value: 1. Default value: 10.
         self.page_size = page_size
+        # The resource type evaluated by the rule.
         self.resource_types = resource_types
+        # The risk level of the rule. Valid values:
+        # 
+        # - **1**: High risk.
+        # - **2**: Medium risk.
+        # - **3**: Low risk.
         self.risk_level = risk_level
 
     def validate(self):

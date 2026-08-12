@@ -16,10 +16,18 @@ class GetAlertRecordAnalysisResultRequest(DaraModel):
         unique_tag_list: List[main_models.GetAlertRecordAnalysisResultRequestUniqueTagList] = None,
         uuid: str = None,
     ):
+        # The unique identifier of the alert event. (Deprecated)
         self.alarm_unique_info = alarm_unique_info
+        # The language of the content. Valid values:
+        # 
+        # - **zh** (default): Chinese
+        # - **en**: English
         self.aliyun_lang = aliyun_lang
+        # The unique ID of the alert event. (Deprecated)
         self.unique_info = unique_info
+        # The array of tracing requests.
         self.unique_tag_list = unique_tag_list
+        # The unique identifier of the asset. (Deprecated)
         self.uuid = uuid
 
     def validate(self):
@@ -86,13 +94,24 @@ class GetAlertRecordAnalysisResultRequestUniqueTagList(DaraModel):
         unique_info: str = None,
         uuid: str = None,
     ):
+        # The unique ID of the alert event.
         self.alarm_unique_info = alarm_unique_info
+        # Indicates whether the result is liked. Valid values:
+        # 
+        # - **true**: Liked.
+        # - **false**: Not liked.
         self.choose_like = choose_like
+        # The public IP address.
         self.ip = ip
+        # The instance ID.
         self.machine_instance_id = machine_instance_id
+        # The query tracing time.
         self.query_time = query_time
+        # The vulnerability type.
         self.type = type
+        # The unique identifier of the alert event.
         self.unique_info = unique_info
+        # The unique identifier of the asset.
         self.uuid = uuid
 
     def validate(self):

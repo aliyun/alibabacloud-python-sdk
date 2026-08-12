@@ -13,10 +13,20 @@ class GetSecuritySuggestionNumberResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
+        # 
+        # - **200**: Successful.
+        # - **Others (400, 500)**: Failed.
         self.code = code
+        # The number of pending items.
         self.data = data
+        # The message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the call was successful.
+        # - **true**: Successful.
+        # - **false**: Failed.
         self.success = success
 
     def validate(self):

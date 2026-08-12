@@ -13,7 +13,9 @@ class UpdatePostPaidBindRelRequest(DaraModel):
         region_id: str = None,
         sdk_request: main_models.UpdatePostPaidBindRelRequestSdkRequest = None,
     ):
+        # The region ID of the instance.
         self.region_id = region_id
+        # The Security Center SDK request parameters.
         self.sdk_request = sdk_request
 
     def validate(self):
@@ -52,9 +54,21 @@ class UpdatePostPaidBindRelRequestSdkRequest(DaraModel):
         bind_action: List[main_models.UpdatePostPaidBindRelRequestSdkRequestBindAction] = None,
         update_if_necessary: bool = None,
     ):
+        # Specifies whether to automatically bind newly added assets. Valid values:
+        # 
+        # - **0**: Disabled.
+        # - **1**: Enabled.
         self.auto_bind = auto_bind
+        # The edition to automatically bind when new assets are added. Valid values:
+        # - **1**: Free Edition. 
+        # - **3**: Enterprise Edition.
+        # - **5**: Advanced Edition.
+        # - **6**: Anti-virus Edition.    
+        # - **7**: Ultimate Edition.
         self.auto_bind_version = auto_bind_version
+        # The list of binding action parameters.
         self.bind_action = bind_action
+        # Specifies whether to forcibly upgrade the edition.
         self.update_if_necessary = update_if_necessary
 
     def validate(self):
@@ -110,8 +124,21 @@ class UpdatePostPaidBindRelRequestSdkRequestBindAction(DaraModel):
         uuid_list: List[str] = None,
         version: str = None,
     ):
+        # Specifies whether to bind all assets. Default value: **false**. Valid values:
+        # 
+        # - **true**: Yes.
+        # - **false**: No.
         self.bind_all = bind_all
+        # The list of specified server UUIDs.
+        # > Number of items <= 1000. Number of items >= 0.
         self.uuid_list = uuid_list
+        # The Security Center protection edition to bind. Valid values:
+        # 
+        # - **1**: Free Edition.
+        # - **3**: Enterprise Edition.
+        # - **5**: Advanced Edition.
+        # - **6**: Anti-virus Edition.
+        # - **7**: Ultimate Edition.
         self.version = version
 
     def validate(self):

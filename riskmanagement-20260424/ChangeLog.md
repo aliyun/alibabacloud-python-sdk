@@ -1,3 +1,7 @@
+2026-08-12 Version: 1.1.2
+- Update API QueryResourceControlEvents: add request parameters BusinessCodes.
+
+
 2026-07-20 Version: 1.1.1
 - Generated python 2026-04-24 for RiskManagement.
 
