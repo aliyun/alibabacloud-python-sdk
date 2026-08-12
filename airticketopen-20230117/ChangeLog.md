@@ -1,3 +1,6 @@
+2026-08-12 Version: 8.0.2
+- Generated python 2023-01-17 for airticketOpen.
+
 2026-08-12 Version: 8.0.1
 - Generated python 2023-01-17 for airticketOpen.
 
