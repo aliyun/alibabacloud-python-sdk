@@ -1,3 +1,6 @@
+2026-08-12 Version: 8.0.1
+- Generated python 2023-01-17 for airticketOpen.
+
 2026-08-11 Version: 8.0.0
 - Update API globalHotelApplyRefund: add response parameters Body.Data.RefundOrderNo.
 - Update API globalHotelApplyRefund: delete response parameters Body.Data.SellRefundOrderId.
