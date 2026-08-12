@@ -16,15 +16,15 @@ class ListServicesResponseBody(DaraModel):
         services: List[main_models.ListServicesResponseBodyServices] = None,
         total_count: int = None,
     ):
-        # The maximum number of results returned. The maximum value is 200.
+        # The maximum number of entries returned. Maximum value: 200.
         self.max_results = max_results
-        # The paging token.
+        # The pagination token.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # A list of service information.
+        # The list of service information.
         self.services = services
-        # The total number of records.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -94,15 +94,15 @@ class ListServicesResponseBodyServices(DaraModel):
         service_type: str = None,
         workspace: str = None,
     ):
-        # Additional information.
+        # The extended information.
         self.attributes = attributes
         # The creation time.
         self.create_time = create_time
-        # The service description. This parameter is valid only when serviceType is RUM.
+        # The service description. This parameter is valid only when serviceType is set to RUM.
         self.description = description
-        # The display name. This parameter is valid only when serviceType is RUM.
+        # The display name. This parameter is valid only when serviceType is set to RUM.
         self.display_name = display_name
-        # The ID of the ARMS application for backward compatibility.
+        # The ARMS application ID for backward compatibility.
         self.pid = pid
         # The resource group ID.
         self.resource_group_id = resource_group_id
@@ -110,7 +110,7 @@ class ListServicesResponseBodyServices(DaraModel):
         self.service_id = service_id
         # The service name.
         self.service_name = service_name
-        # The service status. This parameter is valid only when serviceType is RUM.
+        # The service status. This parameter is valid only when serviceType is set to RUM.
         self.service_status = service_status
         # The service type.
         self.service_type = service_type

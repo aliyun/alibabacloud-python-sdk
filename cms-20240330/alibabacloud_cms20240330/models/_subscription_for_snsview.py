@@ -29,9 +29,10 @@ class SubscriptionForSNSView(DaraModel):
         self.filter_setting = filter_setting
         self.mode = mode
         self.name = name
+        # The reverse association to SNS (= snsUuid).
         self.notify_strategy_uuid = notify_strategy_uuid
         self.region_id = region_id
-        # Specifies whether to subscribe to legacy product events (CMS 1.0, ARMS, or SLS events where workspace=null). Valid values: true: subscribed. false or null: not subscribed.
+        # Indicates whether to subscribe to legacy product events (CMS 1.0, ARMS, or SLS events where workspace=null). Valid values: true: subscribed. false or null: not subscribed.
         self.subscribe_legacy_event = subscribe_legacy_event
         self.subscription_type = subscription_type
         self.sync_from_type = sync_from_type

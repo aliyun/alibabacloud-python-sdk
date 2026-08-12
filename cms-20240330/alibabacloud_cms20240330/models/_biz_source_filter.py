@@ -9,6 +9,7 @@ class BizSourceFilter(DaraModel):
         self,
         eq: str = None,
     ):
+        # The exact match value.
         self.eq = eq
 
     def validate(self):

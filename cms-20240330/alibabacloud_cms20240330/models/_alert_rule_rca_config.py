@@ -10,7 +10,9 @@ class AlertRuleRcaConfig(DaraModel):
         digital_employee_name: str = None,
         enable_rca: bool = None,
     ):
+        # The digital employee name.
         self.digital_employee_name = digital_employee_name
+        # Indicates whether RCA is enabled.
         self.enable_rca = enable_rca
 
     def validate(self):

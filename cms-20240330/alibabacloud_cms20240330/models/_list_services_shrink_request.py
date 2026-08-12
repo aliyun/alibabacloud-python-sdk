@@ -14,9 +14,9 @@ class ListServicesShrinkRequest(DaraModel):
         service_type: str = None,
         tags_shrink: str = None,
     ):
-        # The maximum number of records to return for this request.
+        # The maximum number of entries to return in this request.
         self.max_results = max_results
-        # The token for the next page of results. If this parameter is empty, it means you have reached the last page.
+        # The token for the next query. An empty value indicates the last page.
         self.next_token = next_token
         # The resource group ID.
         self.resource_group_id = resource_group_id
@@ -24,7 +24,7 @@ class ListServicesShrinkRequest(DaraModel):
         self.service_name = service_name
         # The service type.
         self.service_type = service_type
-        # An array of tags.
+        # The tags.
         self.tags_shrink = tags_shrink
 
     def validate(self):

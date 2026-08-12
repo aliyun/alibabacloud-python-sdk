@@ -12,11 +12,13 @@ class SubscriptionForSNSModify(DaraModel):
         subscribe_legacy_event: bool = None,
         workspace_filter_setting: main_models.WorkspaceFilterSetting = None,
     ):
+        # The filter configuration.
         self.filter_setting = filter_setting
-        # Specifies whether to subscribe to legacy product events (CMS 1.0 / ARMS / SLS events where workspace=null). Valid values:
+        # Specifies whether to subscribe to legacy product events (CMS 1.0, ARMS, or SLS events where workspace is null). Valid values:
         # - true: Subscribe.
         # - false or null: Do not subscribe.
         self.subscribe_legacy_event = subscribe_legacy_event
+        # The workspace filter configuration.
         self.workspace_filter_setting = workspace_filter_setting
 
     def validate(self):

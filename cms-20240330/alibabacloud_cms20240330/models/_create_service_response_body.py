@@ -11,7 +11,7 @@ class CreateServiceResponseBody(DaraModel):
         request_id: str = None,
         service_id: str = None,
     ):
-        # The ID of the ARMS application for backward compatibility.
+        # The ARMS application ID for backward compatibility.
         self.pid = pid
         # The request ID.
         self.request_id = request_id

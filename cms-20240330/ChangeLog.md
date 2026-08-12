@@ -1,3 +1,12 @@
+2026-08-12 Version: 10.4.0
+- Support API CreateDataPipeline.
+- Support API DeleteDataPipeline.
+- Support API GetDataPipeline.
+- Support API ListDataPipelines.
+- Support API PreviewDataPipeline.
+- Support API UpdateDataPipeline.
+
+
 2026-08-04 Version: 10.3.1
 - Update API GetWorkspace: add response parameters Body.resourceGroupId.
 - Update API GetWorkspace: add response parameters Body.tags.

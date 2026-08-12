@@ -12,10 +12,11 @@ class SubscriptionOp(DaraModel):
         payload: main_models.SubscriptionForModify = None,
         uuid: str = None,
     ):
+        # The operation type.
         self.op = op
-        # create/update 必填
+        # Required for create and update operations.
         self.payload = payload
-        # update/remove 必填
+        # Required for update and remove operations.
         self.uuid = uuid
 
     def validate(self):

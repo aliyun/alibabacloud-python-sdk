@@ -13,8 +13,11 @@ class DirectNotifyReceiver(DaraModel):
         identifiers: List[str] = None,
         target_type: str = None,
     ):
+        # The list of notification channels. This parameter is valid only for person-based types (CONTACT/GROUP/DUTY). Valid values: SMS, CALL, EMAIL.
         self.channels = channels
+        # The list of Notification Recipient identifiers. For person-based types, the identifiers are contacts, contact groups, or on-call schedule identifiers. For IM-based types, the identifiers are webhook identifiers.
         self.identifiers = identifiers
+        # The Notification Recipient type. Person-object types (CONTACT/GROUP/DUTY) require channels to specify notification methods. IM-object types (DINGTALK/FEISHU/SLACK/WEIXIN/WEBHOOK) do not require channels.
         self.target_type = target_type
 
     def validate(self):

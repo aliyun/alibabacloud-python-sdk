@@ -14,11 +14,17 @@ class CloudMonitoringCompositeEscalationEntry(DaraModel):
         statistics: str = None,
         threshold: str = None,
     ):
+        # The comparison operator.
         self.comparison_operator = comparison_operator
+        # The metric name.
         self.metric_name = metric_name
+        # The collection period, in seconds.
         self.period = period
+        # The precondition.
         self.pre_condition = pre_condition
+        # The statistical method.
         self.statistics = statistics
+        # The threshold.
         self.threshold = threshold
 
     def validate(self):

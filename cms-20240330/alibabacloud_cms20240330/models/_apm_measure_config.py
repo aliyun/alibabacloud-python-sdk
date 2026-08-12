@@ -13,13 +13,13 @@ class ApmMeasureConfig(DaraModel):
         measure_code: str = None,
         window_secs: int = None,
     ):
-        # An array of dimension keys used to group the results.
+        # The grouping dimension.
         self.group_by = group_by
-        # The unique code that identifies the metric.
+        # The metric code.
         # 
         # This parameter is required.
         self.measure_code = measure_code
-        # The aggregation period in seconds, which determines the time granularity of data points.
+        # The query time window in seconds.
         # 
         # This parameter is required.
         self.window_secs = window_secs

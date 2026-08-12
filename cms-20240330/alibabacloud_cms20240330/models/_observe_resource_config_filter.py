@@ -15,11 +15,17 @@ class ObserveResourceConfigFilter(DaraModel):
         relation_type: main_models.QueryAlertRulesRelationTypeFilter = None,
         resources: main_models.QueryAlertRulesResourcesFilter = None,
     ):
+        # The UModel resource domain filter (exact match).
         self.entity_domain = entity_domain
+        # The UModel entity type filter (set inclusion/exclusion).
         self.entity_type = entity_type
+        # The CloudMonitor namespace filter (exact match).
         self.namespace = namespace
+        # The CloudMonitor product category filter (exact match).
         self.product_category = product_category
+        # The relationship type filter (set inclusion/exclusion): ALL/UMODEL_ENTITY/CLOUD_INSTANCE/GROUP_V1/GROUP_V2/TAG.
         self.relation_type = relation_type
+        # The resources filter (contains uses OR matching; notContains excludes all).
         self.resources = resources
 
     def validate(self):

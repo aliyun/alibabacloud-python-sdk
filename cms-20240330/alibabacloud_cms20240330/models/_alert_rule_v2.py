@@ -40,32 +40,53 @@ class AlertRuleV2(DaraModel):
         workspace: str = None,
     ):
         self.action_integration_config = action_integration_config
+        # The annotations.
         self.annotations = annotations
         self.arms_integration_config = arms_integration_config
+        # The business source. This field is read-only. Example values: managed_service_for_prometheus, umodel, application_insights, cloud_monitoring, and sls.
         self.biz_source = biz_source
         self.condition_config = condition_config
+        # The content template.
         self.content_template = content_template
+        # The creation time in ISO 8601 format. This field is read-only.
         self.created_at = created_at
         self.datasource_config = datasource_config
+        # The data source type. This field is read-only and derived.
         self.datasource_type = datasource_type
+        # The display name.
         self.display_name = display_name
+        # Specifies whether the alert rule is enabled.
         self.enabled = enabled
+        # The labels.
         self.labels = labels
         self.notify_config = notify_config
+        # The notification strategy ID. This field is read-only and derived from the first item in the notification strategy list.
         self.notify_strategy_id = notify_strategy_id
+        # The observable resource configuration.
         self.observe_resource_config = observe_resource_config
+        # **[Deprecated]** Indicates whether the rule applies to all resources of this type. This field is read-only and derived. Use observeResourceConfig.relationType set to ALL for equivalent semantics in new integrations.
         self.observe_resource_global_scope = observe_resource_global_scope
+        # The list of observable resource IDs. This field is read-only and derived.
         self.observe_resource_list = observe_resource_list
+        # **[Deprecated]** The observable resource type. This field is read-only and derived. Use observeResourceConfig.entityType instead for new integrations.
         self.observe_resource_type = observe_resource_type
+        # The partition key. This field is read-only and maintained by the system for rule routing and sharding.
         self.partition_key = partition_key
         self.query_config = query_config
+        # The RCA (root cause analysis) configuration.
         self.rca_config = rca_config
+        # The region ID. This field is aligned with V1 AlertRule.regionId. Priority: request body regionId > gateway callerRegionId.
         self.region_id = region_id
         self.schedule_config = schedule_config
+        # The severity levels covered by this rule, separated by commas. This field is read-only and derived. The format is the same as the filter.severityLevels query parameter.
         self.severity_levels = severity_levels
+        # The alert status. This field is read-only.
         self.status = status
+        # The update time in ISO 8601 format. This field is read-only.
         self.updated_at = updated_at
+        # The rule UUID. This field is system-generated and read-only.
         self.uuid = uuid
+        # The workspace.
         self.workspace = workspace
 
     def validate(self):

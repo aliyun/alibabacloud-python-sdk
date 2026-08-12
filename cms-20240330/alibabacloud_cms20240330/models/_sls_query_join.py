@@ -13,7 +13,9 @@ class SlsQueryJoin(DaraModel):
         conditions: List[main_models.SlsJoinCondition] = None,
         type: str = None,
     ):
+        # The list of join conditions.
         self.conditions = conditions
+        # The set operation type. Valid values: InnerJoin, LeftJoin, RightJoin, FullJoin, LeftExclude, RightExclude, CrossJoin, NoJoin, and Concat.
         self.type = type
 
     def validate(self):

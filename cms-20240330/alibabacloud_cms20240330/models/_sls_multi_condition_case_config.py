@@ -14,11 +14,17 @@ class SlsMultiConditionCaseConfig(DaraModel):
         match_value: str = None,
         severity: str = None,
     ):
+        # The count comparison operator. Valid values: GTE, GT, EQ, LTE, LT.
         self.count_operator = count_operator
+        # The count threshold. The alert is triggered when this threshold is met.
         self.count_threshold = count_threshold
+        # The log field name. Required when matchOperator is set to CONTAINS, EQUALS, or REGEX. Specify the field name when matchOperator is set to PRESENT or NOT_PRESENT.
         self.match_field = match_field
+        # The log matching operator. Valid values: PRESENT (field exists), NOT_PRESENT (field does not exist), CONTAINS (contains), EQUALS (equals), REGEX (regular expression). If left empty, any data matches.
         self.match_operator = match_operator
+        # The log match value. Required when matchOperator is set to CONTAINS, EQUALS, or REGEX.
         self.match_value = match_value
+        # The severity level.
         self.severity = severity
 
     def validate(self):

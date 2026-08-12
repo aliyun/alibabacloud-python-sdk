@@ -23,48 +23,48 @@ class Client(OpenApiClient):
         super().__init__(config)
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
-            'us-west-1': 'metrics.us-west-1.aliyuncs.com',
-            'us-southeast-1': 'metrics.us-southeast-1.aliyuncs.com',
-            'us-east-1': 'metrics.us-east-1.aliyuncs.com',
-            'na-south-1': 'metrics.na-south-1.aliyuncs.com',
-            'me-east-1': 'metrics.me-east-1.aliyuncs.com',
-            'me-central-1': 'metrics.me-central-1.aliyuncs.com',
-            'eu-west-2': 'metrics.eu-west-2.aliyuncs.com',
-            'eu-west-1': 'metrics.eu-west-1.aliyuncs.com',
-            'eu-central-1': 'metrics.eu-central-1.aliyuncs.com',
-            'cn-zhongwei': 'metrics.cn-zhongwei.aliyuncs.com',
+            'cn-beijing': 'metrics.cn-beijing.aliyuncs.com',
             'cn-zhengzhou-jva': 'metrics.cn-zhengzhou-jva.aliyuncs.com',
-            'cn-zhangjiakou': 'metrics.cn-zhangjiakou.aliyuncs.com',
-            'cn-wulanchabu-gic-1': 'metrics.cn-wulanchabu-gic-1.aliyuncs.com',
-            'cn-wulanchabu': 'metrics.cn-wulanchabu.aliyuncs.com',
-            'cn-wuhan-lr': 'metrics.cn-wuhan-lr.aliyuncs.com',
-            'cn-shenzhen-finance-1': 'metrics.cn-shenzhen-finance-1.aliyuncs.com',
-            'cn-shenzhen': 'metrics.cn-shenzhen.aliyuncs.com',
-            'cn-shanghai-finance-1': 'metrics.cn-shanghai-finance-1.aliyuncs.com',
-            'cn-shanghai': 'metrics.cn-shanghai.aliyuncs.com',
-            'cn-qingdao': 'metrics.cn-qingdao.aliyuncs.com',
-            'cn-north-2-gov-1': 'metrics.cn-north-2-gov-1.aliyuncs.com',
-            'cn-nanjing': 'metrics.cn-nanjing.aliyuncs.com',
-            'cn-huhehaote': 'metrics.cn-huhehaote.aliyuncs.com',
-            'cn-hongkong': 'metrics.cn-hongkong.aliyuncs.com',
-            'cn-heyuan-acdr-1': 'metrics.cn-heyuan-acdr-1.aliyuncs.com',
             'cn-heyuan': 'metrics.cn-heyuan.aliyuncs.com',
-            'cn-hangzhou-finance': 'metrics.cn-hangzhou-finance.aliyuncs.com',
-            'cn-hangzhou': 'metrics.cn-hangzhou.aliyuncs.com',
-            'cn-guangzhou': 'metrics.cn-guangzhou.aliyuncs.com',
+            'cn-zhangjiakou': 'metrics.cn-zhangjiakou.aliyuncs.com',
+            'ap-northeast-2': 'metrics.ap-northeast-2.aliyuncs.com',
+            'ap-northeast-1': 'metrics.ap-northeast-1.aliyuncs.com',
+            'ap-southeast-1': 'metrics.ap-southeast-1.aliyuncs.com',
+            'ap-southeast-3': 'metrics.ap-southeast-3.aliyuncs.com',
+            'ap-southeast-5': 'metrics.ap-southeast-5.aliyuncs.com',
+            'ap-southeast-6': 'metrics.ap-southeast-6.aliyuncs.com',
+            'ap-southeast-7': 'metrics.ap-southeast-7.aliyuncs.com',
+            'ap-southeast-8': 'metrics.ap-southeast-8.aliyuncs.com',
+            'cn-zhongwei': 'metrics.cn-zhongwei.aliyuncs.com',
+            'cn-wulanchabu': 'metrics.cn-wulanchabu.aliyuncs.com',
+            'cn-qingdao': 'metrics.cn-qingdao.aliyuncs.com',
+            'cn-wuhan-lr': 'metrics.cn-wuhan-lr.aliyuncs.com',
+            'cn-shanghai': 'metrics.cn-shanghai.aliyuncs.com',
+            'cn-hongkong': 'metrics.cn-hongkong.aliyuncs.com',
+            'cn-shenzhen': 'metrics.cn-shenzhen.aliyuncs.com',
+            'cn-nanjing': 'metrics.cn-nanjing.aliyuncs.com',
             'cn-fuzhou': 'metrics.cn-fuzhou.aliyuncs.com',
             'cn-chengdu': 'metrics.cn-chengdu.aliyuncs.com',
-            'cn-beijing-finance-1': 'metrics.cn-beijing-finance-1.aliyuncs.com',
-            'cn-beijing': 'metrics.cn-beijing.aliyuncs.com',
-            'ap-southeast-8': 'metrics.ap-southeast-8.aliyuncs.com',
-            'ap-southeast-7': 'metrics.ap-southeast-7.aliyuncs.com',
-            'ap-southeast-6': 'metrics.ap-southeast-6.aliyuncs.com',
-            'ap-southeast-5': 'metrics.ap-southeast-5.aliyuncs.com',
-            'ap-southeast-3': 'metrics.ap-southeast-3.aliyuncs.com',
-            'ap-southeast-1': 'metrics.ap-southeast-1.aliyuncs.com',
+            'cn-guangzhou': 'metrics.cn-guangzhou.aliyuncs.com',
+            'cn-huhehaote': 'metrics.cn-huhehaote.aliyuncs.com',
+            'cn-hangzhou': 'metrics.cn-hangzhou.aliyuncs.com',
+            'us-southeast-1': 'metrics.us-southeast-1.aliyuncs.com',
+            'eu-west-1': 'metrics.eu-west-1.aliyuncs.com',
+            'eu-west-2': 'metrics.eu-west-2.aliyuncs.com',
+            'eu-central-1': 'metrics.eu-central-1.aliyuncs.com',
+            'us-east-1': 'metrics.us-east-1.aliyuncs.com',
+            'us-west-1': 'metrics.us-west-1.aliyuncs.com',
+            'na-south-1': 'metrics.na-south-1.aliyuncs.com',
+            'me-east-1': 'metrics.me-east-1.aliyuncs.com',
             'ap-south-1': 'metrics.ap-south-1.aliyuncs.com',
-            'ap-northeast-2': 'metrics.ap-northeast-2.aliyuncs.com',
-            'ap-northeast-1': 'metrics.ap-northeast-1.aliyuncs.com'
+            'me-central-1': 'metrics.me-central-1.aliyuncs.com',
+            'cn-hangzhou-finance': 'metrics.cn-hangzhou-finance.aliyuncs.com',
+            'cn-shenzhen-finance-1': 'metrics.cn-shenzhen-finance-1.aliyuncs.com',
+            'cn-beijing-finance-1': 'metrics.cn-beijing-finance-1.aliyuncs.com',
+            'cn-shanghai-finance-1': 'metrics.cn-shanghai-finance-1.aliyuncs.com',
+            'cn-wulanchabu-gic-1': 'metrics.cn-wulanchabu-gic-1.aliyuncs.com',
+            'cn-heyuan-acdr-1': 'metrics.cn-heyuan-acdr-1.aliyuncs.com',
+            'cn-north-2-gov-1': 'metrics.cn-north-2-gov-1.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('cms', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -1078,6 +1078,110 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.create_context_store_apikey_with_options_async(workspace, context_store_name, request, headers, runtime)
+
+    def create_data_pipeline_with_options(
+        self,
+        workspace: str,
+        request: main_models.CreateDataPipelineRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateDataPipelineResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.kind):
+            body['kind'] = request.kind
+        if not DaraCore.is_null(request.outputs):
+            body['outputs'] = request.outputs
+        if not DaraCore.is_null(request.pipeline_name):
+            body['pipelineName'] = request.pipeline_name
+        if not DaraCore.is_null(request.processors):
+            body['processors'] = request.processors
+        if not DaraCore.is_null(request.sinks):
+            body['sinks'] = request.sinks
+        if not DaraCore.is_null(request.source):
+            body['source'] = request.source
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateDataPipeline',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/datapipeline',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateDataPipelineResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_data_pipeline_with_options_async(
+        self,
+        workspace: str,
+        request: main_models.CreateDataPipelineRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateDataPipelineResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.kind):
+            body['kind'] = request.kind
+        if not DaraCore.is_null(request.outputs):
+            body['outputs'] = request.outputs
+        if not DaraCore.is_null(request.pipeline_name):
+            body['pipelineName'] = request.pipeline_name
+        if not DaraCore.is_null(request.processors):
+            body['processors'] = request.processors
+        if not DaraCore.is_null(request.sinks):
+            body['sinks'] = request.sinks
+        if not DaraCore.is_null(request.source):
+            body['source'] = request.source
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateDataPipeline',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/datapipeline',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateDataPipelineResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_data_pipeline(
+        self,
+        workspace: str,
+        request: main_models.CreateDataPipelineRequest,
+    ) -> main_models.CreateDataPipelineResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_data_pipeline_with_options(workspace, request, headers, runtime)
+
+    async def create_data_pipeline_async(
+        self,
+        workspace: str,
+        request: main_models.CreateDataPipelineRequest,
+    ) -> main_models.CreateDataPipelineResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_data_pipeline_with_options_async(workspace, request, headers, runtime)
 
     def create_dataset_with_options(
         self,
@@ -3270,6 +3374,82 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.delete_contexts_with_options_async(workspace, context_store_name, request, headers, runtime)
+
+    def delete_data_pipeline_with_options(
+        self,
+        workspace: str,
+        pipeline_name: str,
+        request: main_models.DeleteDataPipelineRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteDataPipelineResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteDataPipeline',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/datapipeline/{DaraURL.percent_encode(pipeline_name)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteDataPipelineResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_data_pipeline_with_options_async(
+        self,
+        workspace: str,
+        pipeline_name: str,
+        request: main_models.DeleteDataPipelineRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteDataPipelineResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteDataPipeline',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/datapipeline/{DaraURL.percent_encode(pipeline_name)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteDataPipelineResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_data_pipeline(
+        self,
+        workspace: str,
+        pipeline_name: str,
+        request: main_models.DeleteDataPipelineRequest,
+    ) -> main_models.DeleteDataPipelineResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_data_pipeline_with_options(workspace, pipeline_name, request, headers, runtime)
+
+    async def delete_data_pipeline_async(
+        self,
+        workspace: str,
+        pipeline_name: str,
+        request: main_models.DeleteDataPipelineRequest,
+    ) -> main_models.DeleteDataPipelineResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_data_pipeline_with_options_async(workspace, pipeline_name, request, headers, runtime)
 
     def delete_dataset_with_options(
         self,
@@ -6056,6 +6236,82 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.get_context_store_with_options_async(workspace, context_store_name, request, headers, runtime)
+
+    def get_data_pipeline_with_options(
+        self,
+        workspace: str,
+        pipeline_name: str,
+        request: main_models.GetDataPipelineRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetDataPipelineResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetDataPipeline',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/datapipeline/{DaraURL.percent_encode(pipeline_name)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetDataPipelineResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_data_pipeline_with_options_async(
+        self,
+        workspace: str,
+        pipeline_name: str,
+        request: main_models.GetDataPipelineRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetDataPipelineResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetDataPipeline',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/datapipeline/{DaraURL.percent_encode(pipeline_name)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetDataPipelineResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_data_pipeline(
+        self,
+        workspace: str,
+        pipeline_name: str,
+        request: main_models.GetDataPipelineRequest,
+    ) -> main_models.GetDataPipelineResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_data_pipeline_with_options(workspace, pipeline_name, request, headers, runtime)
+
+    async def get_data_pipeline_async(
+        self,
+        workspace: str,
+        pipeline_name: str,
+        request: main_models.GetDataPipelineRequest,
+    ) -> main_models.GetDataPipelineResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_data_pipeline_with_options_async(workspace, pipeline_name, request, headers, runtime)
 
     def get_dataset_with_options(
         self,
@@ -8983,6 +9239,90 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_context_stores_with_options_async(workspace, request, headers, runtime)
 
+    def list_data_pipelines_with_options(
+        self,
+        workspace: str,
+        request: main_models.ListDataPipelinesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDataPipelinesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDataPipelines',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/datapipeline',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDataPipelinesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_data_pipelines_with_options_async(
+        self,
+        workspace: str,
+        request: main_models.ListDataPipelinesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDataPipelinesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDataPipelines',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/datapipeline',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDataPipelinesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_data_pipelines(
+        self,
+        workspace: str,
+        request: main_models.ListDataPipelinesRequest,
+    ) -> main_models.ListDataPipelinesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_data_pipelines_with_options(workspace, request, headers, runtime)
+
+    async def list_data_pipelines_async(
+        self,
+        workspace: str,
+        request: main_models.ListDataPipelinesRequest,
+    ) -> main_models.ListDataPipelinesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_data_pipelines_with_options_async(workspace, request, headers, runtime)
+
     def list_datasets_with_options(
         self,
         workspace: str,
@@ -11263,6 +11603,118 @@ class Client(OpenApiClient):
         headers = {}
         return await self.open_cms_service_with_options_async(request, headers, runtime)
 
+    def preview_data_pipeline_with_options(
+        self,
+        workspace: str,
+        request: main_models.PreviewDataPipelineRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.PreviewDataPipelineResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.from_time):
+            body['fromTime'] = request.from_time
+        if not DaraCore.is_null(request.kind):
+            body['kind'] = request.kind
+        if not DaraCore.is_null(request.outputs):
+            body['outputs'] = request.outputs
+        if not DaraCore.is_null(request.pipeline_name):
+            body['pipelineName'] = request.pipeline_name
+        if not DaraCore.is_null(request.processors):
+            body['processors'] = request.processors
+        if not DaraCore.is_null(request.sinks):
+            body['sinks'] = request.sinks
+        if not DaraCore.is_null(request.source):
+            body['source'] = request.source
+        if not DaraCore.is_null(request.to_time):
+            body['toTime'] = request.to_time
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'PreviewDataPipeline',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/datapipeline/preview',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PreviewDataPipelineResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def preview_data_pipeline_with_options_async(
+        self,
+        workspace: str,
+        request: main_models.PreviewDataPipelineRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.PreviewDataPipelineResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.from_time):
+            body['fromTime'] = request.from_time
+        if not DaraCore.is_null(request.kind):
+            body['kind'] = request.kind
+        if not DaraCore.is_null(request.outputs):
+            body['outputs'] = request.outputs
+        if not DaraCore.is_null(request.pipeline_name):
+            body['pipelineName'] = request.pipeline_name
+        if not DaraCore.is_null(request.processors):
+            body['processors'] = request.processors
+        if not DaraCore.is_null(request.sinks):
+            body['sinks'] = request.sinks
+        if not DaraCore.is_null(request.source):
+            body['source'] = request.source
+        if not DaraCore.is_null(request.to_time):
+            body['toTime'] = request.to_time
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'PreviewDataPipeline',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/datapipeline/preview',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PreviewDataPipelineResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def preview_data_pipeline(
+        self,
+        workspace: str,
+        request: main_models.PreviewDataPipelineRequest,
+    ) -> main_models.PreviewDataPipelineResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.preview_data_pipeline_with_options(workspace, request, headers, runtime)
+
+    async def preview_data_pipeline_async(
+        self,
+        workspace: str,
+        request: main_models.PreviewDataPipelineRequest,
+    ) -> main_models.PreviewDataPipelineResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.preview_data_pipeline_with_options_async(workspace, request, headers, runtime)
+
     def put_workspace_with_options(
         self,
         workspace_name: str,
@@ -12590,6 +13042,114 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.update_context_store_with_options_async(workspace, context_store_name, request, headers, runtime)
+
+    def update_data_pipeline_with_options(
+        self,
+        workspace: str,
+        pipeline_name: str,
+        request: main_models.UpdateDataPipelineRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateDataPipelineResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.expected_version):
+            body['expectedVersion'] = request.expected_version
+        if not DaraCore.is_null(request.kind):
+            body['kind'] = request.kind
+        if not DaraCore.is_null(request.outputs):
+            body['outputs'] = request.outputs
+        if not DaraCore.is_null(request.processors):
+            body['processors'] = request.processors
+        if not DaraCore.is_null(request.sinks):
+            body['sinks'] = request.sinks
+        if not DaraCore.is_null(request.source):
+            body['source'] = request.source
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateDataPipeline',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/datapipeline/{DaraURL.percent_encode(pipeline_name)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateDataPipelineResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_data_pipeline_with_options_async(
+        self,
+        workspace: str,
+        pipeline_name: str,
+        request: main_models.UpdateDataPipelineRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateDataPipelineResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.expected_version):
+            body['expectedVersion'] = request.expected_version
+        if not DaraCore.is_null(request.kind):
+            body['kind'] = request.kind
+        if not DaraCore.is_null(request.outputs):
+            body['outputs'] = request.outputs
+        if not DaraCore.is_null(request.processors):
+            body['processors'] = request.processors
+        if not DaraCore.is_null(request.sinks):
+            body['sinks'] = request.sinks
+        if not DaraCore.is_null(request.source):
+            body['source'] = request.source
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateDataPipeline',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/datapipeline/{DaraURL.percent_encode(pipeline_name)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateDataPipelineResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_data_pipeline(
+        self,
+        workspace: str,
+        pipeline_name: str,
+        request: main_models.UpdateDataPipelineRequest,
+    ) -> main_models.UpdateDataPipelineResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_data_pipeline_with_options(workspace, pipeline_name, request, headers, runtime)
+
+    async def update_data_pipeline_async(
+        self,
+        workspace: str,
+        pipeline_name: str,
+        request: main_models.UpdateDataPipelineRequest,
+    ) -> main_models.UpdateDataPipelineResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_data_pipeline_with_options_async(workspace, pipeline_name, request, headers, runtime)
 
     def update_dataset_with_options(
         self,

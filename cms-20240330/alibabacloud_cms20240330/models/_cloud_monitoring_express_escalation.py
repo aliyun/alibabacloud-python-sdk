@@ -11,11 +11,11 @@ class CloudMonitoringExpressEscalation(DaraModel):
         severity: str = None,
         times: int = None,
     ):
-        # The expression that defines the alert condition.
+        # The raw expression.
         self.raw_expression = raw_expression
-        # The alert severity that triggers the escalation.
+        # The severity level.
         self.severity = severity
-        # The number of alert occurrences required to trigger the escalation.
+        # The number of consecutive times the alert is triggered.
         self.times = times
 
     def validate(self):

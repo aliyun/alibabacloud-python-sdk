@@ -13,10 +13,15 @@ class SlsNamedQueryEntry(DaraModel):
         time_unit: str = None,
         window: int = None,
     ):
+        # The end offset of the time range. This parameter is mutually exclusive with window.
         self.end = end
+        # The SPL query expression.
         self.expr = expr
+        # The start offset of the time range. This parameter is mutually exclusive with window.
         self.start = start
+        # The time unit. Valid values: day, hour, minute, and second.
         self.time_unit = time_unit
+        # The snap window size. This parameter is mutually exclusive with start and end.
         self.window = window
 
     def validate(self):

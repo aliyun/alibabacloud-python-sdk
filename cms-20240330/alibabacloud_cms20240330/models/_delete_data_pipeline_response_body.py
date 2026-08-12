@@ -4,16 +4,16 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class UpdateServiceResponseBody(DaraModel):
+class DeleteDataPipelineResponseBody(DaraModel):
     def __init__(
         self,
         request_id: str = None,
-        service_id: str = None,
+        success: bool = None,
     ):
         # The request ID.
         self.request_id = request_id
-        # The service ID.
-        self.service_id = service_id
+        # The deletion result.
+        self.success = success
 
     def validate(self):
         pass
@@ -26,8 +26,8 @@ class UpdateServiceResponseBody(DaraModel):
         if self.request_id is not None:
             result['requestId'] = self.request_id
 
-        if self.service_id is not None:
-            result['serviceId'] = self.service_id
+        if self.success is not None:
+            result['success'] = self.success
 
         return result
 
@@ -36,8 +36,8 @@ class UpdateServiceResponseBody(DaraModel):
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
 
-        if m.get('serviceId') is not None:
-            self.service_id = m.get('serviceId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
 
         return self
 

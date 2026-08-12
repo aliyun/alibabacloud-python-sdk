@@ -15,13 +15,13 @@ class CloudMonitoringCompositeEscalation(DaraModel):
         severity: str = None,
         times: int = None,
     ):
-        # A single entry in the escalation policy. See the `CloudMonitoringCompositeEscalationEntry` object for details.
+        # The list of multi-condition configurations.
         self.escalations = escalations
-        # Specifies the logical relationship for evaluating the conditions of the composite alert rule. Valid values: `and` and `or`.
+        # The logical relationship between conditions (AND/OR).
         self.relation = relation
-        # Specifies the severity level of the alert. For example: `Critical`, `Warning`, and `Info`.
+        # The severity level.
         self.severity = severity
-        # Specifies the number of times the alert conditions must be met to trigger this escalation policy.
+        # The number of consecutive times the conditions are met before the alert is triggered.
         self.times = times
 
     def validate(self):

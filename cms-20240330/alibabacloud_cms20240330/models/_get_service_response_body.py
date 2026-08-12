@@ -65,13 +65,13 @@ class GetServiceResponseBodyService(DaraModel):
     ):
         # The extended information.
         self.attributes = attributes
-        # The time when the service was created.
+        # The creation time.
         self.create_time = create_time
         # The description. This parameter is valid only when serviceType is set to RUM.
         self.description = description
         # The display name. This parameter is valid only when serviceType is set to RUM.
         self.display_name = display_name
-        # The ID of the ARMS application that is compatible with earlier versions.
+        # The ARMS application ID for backward compatibility.
         self.pid = pid
         # The region ID.
         self.region_id = region_id
@@ -85,7 +85,7 @@ class GetServiceResponseBodyService(DaraModel):
         self.service_status = service_status
         # The service type.
         self.service_type = service_type
-        # The array of tags.
+        # The tags.
         self.tags = tags
         # The workspace name.
         self.workspace = workspace

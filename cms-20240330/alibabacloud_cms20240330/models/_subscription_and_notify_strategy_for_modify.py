@@ -20,18 +20,20 @@ class SubscriptionAndNotifyStrategyForModify(DaraModel):
         uuid: str = None,
         version: int = None,
     ):
+        # The description.
         self.description = description
+        # Specifies whether to enable the subscription. Enabled by default during creation.
         self.enabled = enabled
-        # Optional. If omitted, the backend derives the name from `notifyStrategy`.
+        # Optional. The backend derives the name from notifyStrategy if this parameter is not specified.
         self.name = name
         self.notify_strategy = notify_strategy
         self.response_plan = response_plan
         self.subscription = subscription
-        # For update operations only. Use this parameter to batch create, update, and remove member subscriptions.
+        # Used exclusively for Update operations. Performs batch create, update, or remove adjustments on member subscriptions.
         self.subscriptions = subscriptions
-        # Required for update operations but optional for create operations. If omitted during creation, the backend automatically generates a UUID.
+        # Required for Update. Can be omitted for Create, in which case the backend generates it.
         self.uuid = uuid
-        # Required for update operations. The value must match the current version of the record. If the versions do not match, the request fails with an `OPTIMISTIC_LOCK_FAILED` error.
+        # Required for Update. The value must match the backend record for the write to succeed. If the values do not match, OPTIMISTIC_LOCK_FAILED is returned.
         self.version = version
 
     def validate(self):

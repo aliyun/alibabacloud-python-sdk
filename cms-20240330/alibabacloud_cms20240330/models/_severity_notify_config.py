@@ -13,7 +13,9 @@ class SeverityNotifyConfig(DaraModel):
         receivers: List[main_models.DirectNotifyReceiver] = None,
         send_recover_notification: bool = None,
     ):
+        # The list of notification recipients. Each recipient specifies a type, an identifier, and the enabled channels.
         self.receivers = receivers
+        # Specifies whether to send recovery notifications for this severity level. If this parameter is left empty, the value falls back to the top-level sendRecoverNotification parameter.
         self.send_recover_notification = send_recover_notification
 
     def validate(self):

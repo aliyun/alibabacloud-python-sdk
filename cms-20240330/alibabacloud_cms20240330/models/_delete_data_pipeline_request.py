@@ -4,14 +4,9 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class QueryAlertRulesNamespaceFilter(DaraModel):
-    def __init__(
-        self,
-        eq: str = None,
-    ):
-        # The exact match.
-        self.eq = eq
-
+class DeleteDataPipelineRequest(DaraModel):
+    def __init__(self):
+        pass
     def validate(self):
         pass
 
@@ -20,15 +15,9 @@ class QueryAlertRulesNamespaceFilter(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.eq is not None:
-            result['eq'] = self.eq
-
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('eq') is not None:
-            self.eq = m.get('eq')
-
         return self
 

@@ -14,11 +14,17 @@ class CloudMonitoringSimpleEscalationEntry(DaraModel):
         threshold: str = None,
         times: int = None,
     ):
+        # The comparison operator.
         self.comparison_operator = comparison_operator
+        # The precondition.
         self.pre_condition = pre_condition
+        # The severity level.
         self.severity = severity
+        # The statistics method.
         self.statistics = statistics
+        # The threshold.
         self.threshold = threshold
+        # The number of consecutive times the condition is triggered.
         self.times = times
 
     def validate(self):

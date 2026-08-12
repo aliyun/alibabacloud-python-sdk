@@ -223,6 +223,9 @@ from ._create_context_store_response import CreateContextStoreResponse
 from ._create_context_store_apikey_request import CreateContextStoreAPIKeyRequest
 from ._create_context_store_apikey_response_body import CreateContextStoreAPIKeyResponseBody
 from ._create_context_store_apikey_response import CreateContextStoreAPIKeyResponse
+from ._create_data_pipeline_request import CreateDataPipelineRequest
+from ._create_data_pipeline_response_body import CreateDataPipelineResponseBody
+from ._create_data_pipeline_response import CreateDataPipelineResponse
 from ._create_dataset_request import CreateDatasetRequest
 from ._create_dataset_response_body import CreateDatasetResponseBody
 from ._create_dataset_response import CreateDatasetResponse
@@ -298,6 +301,9 @@ from ._delete_context_store_apikey_response import DeleteContextStoreAPIKeyRespo
 from ._delete_contexts_request import DeleteContextsRequest
 from ._delete_contexts_response_body import DeleteContextsResponseBody
 from ._delete_contexts_response import DeleteContextsResponse
+from ._delete_data_pipeline_request import DeleteDataPipelineRequest
+from ._delete_data_pipeline_response_body import DeleteDataPipelineResponseBody
+from ._delete_data_pipeline_response import DeleteDataPipelineResponse
 from ._delete_dataset_request import DeleteDatasetRequest
 from ._delete_dataset_response_body import DeleteDatasetResponseBody
 from ._delete_dataset_response import DeleteDatasetResponse
@@ -402,6 +408,9 @@ from ._get_context_response import GetContextResponse
 from ._get_context_store_request import GetContextStoreRequest
 from ._get_context_store_response_body import GetContextStoreResponseBody
 from ._get_context_store_response import GetContextStoreResponse
+from ._get_data_pipeline_request import GetDataPipelineRequest
+from ._get_data_pipeline_response_body import GetDataPipelineResponseBody
+from ._get_data_pipeline_response import GetDataPipelineResponse
 from ._get_dataset_request import GetDatasetRequest
 from ._get_dataset_response_body import GetDatasetResponseBody
 from ._get_dataset_response import GetDatasetResponse
@@ -511,6 +520,9 @@ from ._list_context_store_apikeys_response import ListContextStoreAPIKeysRespons
 from ._list_context_stores_request import ListContextStoresRequest
 from ._list_context_stores_response_body import ListContextStoresResponseBody
 from ._list_context_stores_response import ListContextStoresResponse
+from ._list_data_pipelines_request import ListDataPipelinesRequest
+from ._list_data_pipelines_response_body import ListDataPipelinesResponseBody
+from ._list_data_pipelines_response import ListDataPipelinesResponse
 from ._list_datasets_request import ListDatasetsRequest
 from ._list_datasets_response_body import ListDatasetsResponseBody
 from ._list_datasets_response import ListDatasetsResponse
@@ -590,6 +602,9 @@ from ._manage_alert_rules_response import ManageAlertRulesResponse
 from ._open_cms_service_request import OpenCmsServiceRequest
 from ._open_cms_service_response_body import OpenCmsServiceResponseBody
 from ._open_cms_service_response import OpenCmsServiceResponse
+from ._preview_data_pipeline_request import PreviewDataPipelineRequest
+from ._preview_data_pipeline_response_body import PreviewDataPipelineResponseBody
+from ._preview_data_pipeline_response import PreviewDataPipelineResponse
 from ._put_workspace_request import PutWorkspaceRequest
 from ._put_workspace_response_body import PutWorkspaceResponseBody
 from ._put_workspace_response import PutWorkspaceResponse
@@ -629,6 +644,9 @@ from ._update_context_response import UpdateContextResponse
 from ._update_context_store_request import UpdateContextStoreRequest
 from ._update_context_store_response_body import UpdateContextStoreResponseBody
 from ._update_context_store_response import UpdateContextStoreResponse
+from ._update_data_pipeline_request import UpdateDataPipelineRequest
+from ._update_data_pipeline_response_body import UpdateDataPipelineResponseBody
+from ._update_data_pipeline_response import UpdateDataPipelineResponse
 from ._update_dataset_request import UpdateDatasetRequest
 from ._update_dataset_response_body import UpdateDatasetResponseBody
 from ._update_dataset_response import UpdateDatasetResponse
@@ -795,6 +813,37 @@ from ._create_agg_task_group_request import CreateAggTaskGroupRequestTags
 from ._create_context_store_request import CreateContextStoreRequestConfigSource
 from ._create_context_store_request import CreateContextStoreRequestConfig
 from ._create_context_store_request import CreateContextStoreRequestDataset
+from ._create_data_pipeline_request import CreateDataPipelineRequestOutputsProcessorsConfigRules
+from ._create_data_pipeline_request import CreateDataPipelineRequestOutputsProcessorsConfigSelector
+from ._create_data_pipeline_request import CreateDataPipelineRequestOutputsProcessorsConfigTarget
+from ._create_data_pipeline_request import CreateDataPipelineRequestOutputsProcessorsConfig
+from ._create_data_pipeline_request import CreateDataPipelineRequestOutputsProcessors
+from ._create_data_pipeline_request import CreateDataPipelineRequestOutputs
+from ._create_data_pipeline_request import CreateDataPipelineRequestProcessorsConfigRules
+from ._create_data_pipeline_request import CreateDataPipelineRequestProcessorsConfigSelector
+from ._create_data_pipeline_request import CreateDataPipelineRequestProcessorsConfigTarget
+from ._create_data_pipeline_request import CreateDataPipelineRequestProcessorsConfig
+from ._create_data_pipeline_request import CreateDataPipelineRequestProcessors
+from ._create_data_pipeline_request import CreateDataPipelineRequestSinks
+from ._create_data_pipeline_request import CreateDataPipelineRequestSourceConfigTimeRange
+from ._create_data_pipeline_request import CreateDataPipelineRequestSourceConfig
+from ._create_data_pipeline_request import CreateDataPipelineRequestSource
+from ._create_data_pipeline_response_body import CreateDataPipelineResponseBodyPipelineOutputsProcessorsConfigRules
+from ._create_data_pipeline_response_body import CreateDataPipelineResponseBodyPipelineOutputsProcessorsConfigSelector
+from ._create_data_pipeline_response_body import CreateDataPipelineResponseBodyPipelineOutputsProcessorsConfigTarget
+from ._create_data_pipeline_response_body import CreateDataPipelineResponseBodyPipelineOutputsProcessorsConfig
+from ._create_data_pipeline_response_body import CreateDataPipelineResponseBodyPipelineOutputsProcessors
+from ._create_data_pipeline_response_body import CreateDataPipelineResponseBodyPipelineOutputs
+from ._create_data_pipeline_response_body import CreateDataPipelineResponseBodyPipelineProcessorsConfigRules
+from ._create_data_pipeline_response_body import CreateDataPipelineResponseBodyPipelineProcessorsConfigSelector
+from ._create_data_pipeline_response_body import CreateDataPipelineResponseBodyPipelineProcessorsConfigTarget
+from ._create_data_pipeline_response_body import CreateDataPipelineResponseBodyPipelineProcessorsConfig
+from ._create_data_pipeline_response_body import CreateDataPipelineResponseBodyPipelineProcessors
+from ._create_data_pipeline_response_body import CreateDataPipelineResponseBodyPipelineSinks
+from ._create_data_pipeline_response_body import CreateDataPipelineResponseBodyPipelineSourceConfigTimeRange
+from ._create_data_pipeline_response_body import CreateDataPipelineResponseBodyPipelineSourceConfig
+from ._create_data_pipeline_response_body import CreateDataPipelineResponseBodyPipelineSource
+from ._create_data_pipeline_response_body import CreateDataPipelineResponseBodyPipeline
 from ._create_delivery_task_request import CreateDeliveryTaskRequestSinkList
 from ._create_delivery_task_request import CreateDeliveryTaskRequestTags
 from ._create_integration_policy_request import CreateIntegrationPolicyRequestEntityGroup
@@ -844,6 +893,22 @@ from ._get_context_store_response_body import GetContextStoreResponseBodyConfigI
 from ._get_context_store_response_body import GetContextStoreResponseBodyConfigSource
 from ._get_context_store_response_body import GetContextStoreResponseBodyConfig
 from ._get_context_store_response_body import GetContextStoreResponseBodyDataset
+from ._get_data_pipeline_response_body import GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigRules
+from ._get_data_pipeline_response_body import GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigSelector
+from ._get_data_pipeline_response_body import GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigTarget
+from ._get_data_pipeline_response_body import GetDataPipelineResponseBodyPipelineOutputsProcessorsConfig
+from ._get_data_pipeline_response_body import GetDataPipelineResponseBodyPipelineOutputsProcessors
+from ._get_data_pipeline_response_body import GetDataPipelineResponseBodyPipelineOutputs
+from ._get_data_pipeline_response_body import GetDataPipelineResponseBodyPipelineProcessorsConfigRules
+from ._get_data_pipeline_response_body import GetDataPipelineResponseBodyPipelineProcessorsConfigSelector
+from ._get_data_pipeline_response_body import GetDataPipelineResponseBodyPipelineProcessorsConfigTarget
+from ._get_data_pipeline_response_body import GetDataPipelineResponseBodyPipelineProcessorsConfig
+from ._get_data_pipeline_response_body import GetDataPipelineResponseBodyPipelineProcessors
+from ._get_data_pipeline_response_body import GetDataPipelineResponseBodyPipelineSinks
+from ._get_data_pipeline_response_body import GetDataPipelineResponseBodyPipelineSourceConfigTimeRange
+from ._get_data_pipeline_response_body import GetDataPipelineResponseBodyPipelineSourceConfig
+from ._get_data_pipeline_response_body import GetDataPipelineResponseBodyPipelineSource
+from ._get_data_pipeline_response_body import GetDataPipelineResponseBodyPipeline
 from ._get_delivery_task_response_body import GetDeliveryTaskResponseBodyDeliveryTaskExtraInfo
 from ._get_delivery_task_response_body import GetDeliveryTaskResponseBodyDeliveryTaskSinkList
 from ._get_delivery_task_response_body import GetDeliveryTaskResponseBodyDeliveryTaskTags
@@ -917,6 +982,22 @@ from ._list_contact_groups_response_body import ListContactGroupsResponseBodyCon
 from ._list_contacts_response_body import ListContactsResponseBodyContacts
 from ._list_context_store_apikeys_response_body import ListContextStoreAPIKeysResponseBodyResults
 from ._list_context_stores_response_body import ListContextStoresResponseBodyResults
+from ._list_data_pipelines_response_body import ListDataPipelinesResponseBodyPipelinesOutputsProcessorsConfigRules
+from ._list_data_pipelines_response_body import ListDataPipelinesResponseBodyPipelinesOutputsProcessorsConfigSelector
+from ._list_data_pipelines_response_body import ListDataPipelinesResponseBodyPipelinesOutputsProcessorsConfigTarget
+from ._list_data_pipelines_response_body import ListDataPipelinesResponseBodyPipelinesOutputsProcessorsConfig
+from ._list_data_pipelines_response_body import ListDataPipelinesResponseBodyPipelinesOutputsProcessors
+from ._list_data_pipelines_response_body import ListDataPipelinesResponseBodyPipelinesOutputs
+from ._list_data_pipelines_response_body import ListDataPipelinesResponseBodyPipelinesProcessorsConfigRules
+from ._list_data_pipelines_response_body import ListDataPipelinesResponseBodyPipelinesProcessorsConfigSelector
+from ._list_data_pipelines_response_body import ListDataPipelinesResponseBodyPipelinesProcessorsConfigTarget
+from ._list_data_pipelines_response_body import ListDataPipelinesResponseBodyPipelinesProcessorsConfig
+from ._list_data_pipelines_response_body import ListDataPipelinesResponseBodyPipelinesProcessors
+from ._list_data_pipelines_response_body import ListDataPipelinesResponseBodyPipelinesSinks
+from ._list_data_pipelines_response_body import ListDataPipelinesResponseBodyPipelinesSourceConfigTimeRange
+from ._list_data_pipelines_response_body import ListDataPipelinesResponseBodyPipelinesSourceConfig
+from ._list_data_pipelines_response_body import ListDataPipelinesResponseBodyPipelinesSource
+from ._list_data_pipelines_response_body import ListDataPipelinesResponseBodyPipelines
 from ._list_datasets_response_body import ListDatasetsResponseBodyDatasets
 from ._list_delivery_tasks_request import ListDeliveryTasksRequestTag
 from ._list_delivery_tasks_response_body import ListDeliveryTasksResponseBodyDeliveryTasksExtraInfo
@@ -972,6 +1053,23 @@ from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagRe
 from ._list_workspaces_request import ListWorkspacesRequestTags
 from ._list_workspaces_response_body import ListWorkspacesResponseBodyWorkspacesTags
 from ._list_workspaces_response_body import ListWorkspacesResponseBodyWorkspaces
+from ._preview_data_pipeline_request import PreviewDataPipelineRequestOutputsProcessorsConfigRules
+from ._preview_data_pipeline_request import PreviewDataPipelineRequestOutputsProcessorsConfigSelector
+from ._preview_data_pipeline_request import PreviewDataPipelineRequestOutputsProcessorsConfigTarget
+from ._preview_data_pipeline_request import PreviewDataPipelineRequestOutputsProcessorsConfig
+from ._preview_data_pipeline_request import PreviewDataPipelineRequestOutputsProcessors
+from ._preview_data_pipeline_request import PreviewDataPipelineRequestOutputs
+from ._preview_data_pipeline_request import PreviewDataPipelineRequestProcessorsConfigRules
+from ._preview_data_pipeline_request import PreviewDataPipelineRequestProcessorsConfigSelector
+from ._preview_data_pipeline_request import PreviewDataPipelineRequestProcessorsConfigTarget
+from ._preview_data_pipeline_request import PreviewDataPipelineRequestProcessorsConfig
+from ._preview_data_pipeline_request import PreviewDataPipelineRequestProcessors
+from ._preview_data_pipeline_request import PreviewDataPipelineRequestSinks
+from ._preview_data_pipeline_request import PreviewDataPipelineRequestSourceConfigTimeRange
+from ._preview_data_pipeline_request import PreviewDataPipelineRequestSourceConfig
+from ._preview_data_pipeline_request import PreviewDataPipelineRequestSource
+from ._preview_data_pipeline_response_body import PreviewDataPipelineResponseBodyDatasetsMeta
+from ._preview_data_pipeline_response_body import PreviewDataPipelineResponseBodyDatasets
 from ._put_workspace_request import PutWorkspaceRequestTags
 from ._search_memories_response_body import SearchMemoriesResponseBodyRelations
 from ._search_memories_response_body import SearchMemoriesResponseBodyResults
@@ -979,6 +1077,37 @@ from ._update_agg_task_group_request import UpdateAggTaskGroupRequestTags
 from ._update_context_store_request import UpdateContextStoreRequestConfigSource
 from ._update_context_store_request import UpdateContextStoreRequestConfig
 from ._update_context_store_request import UpdateContextStoreRequestDataset
+from ._update_data_pipeline_request import UpdateDataPipelineRequestOutputsProcessorsConfigRules
+from ._update_data_pipeline_request import UpdateDataPipelineRequestOutputsProcessorsConfigSelector
+from ._update_data_pipeline_request import UpdateDataPipelineRequestOutputsProcessorsConfigTarget
+from ._update_data_pipeline_request import UpdateDataPipelineRequestOutputsProcessorsConfig
+from ._update_data_pipeline_request import UpdateDataPipelineRequestOutputsProcessors
+from ._update_data_pipeline_request import UpdateDataPipelineRequestOutputs
+from ._update_data_pipeline_request import UpdateDataPipelineRequestProcessorsConfigRules
+from ._update_data_pipeline_request import UpdateDataPipelineRequestProcessorsConfigSelector
+from ._update_data_pipeline_request import UpdateDataPipelineRequestProcessorsConfigTarget
+from ._update_data_pipeline_request import UpdateDataPipelineRequestProcessorsConfig
+from ._update_data_pipeline_request import UpdateDataPipelineRequestProcessors
+from ._update_data_pipeline_request import UpdateDataPipelineRequestSinks
+from ._update_data_pipeline_request import UpdateDataPipelineRequestSourceConfigTimeRange
+from ._update_data_pipeline_request import UpdateDataPipelineRequestSourceConfig
+from ._update_data_pipeline_request import UpdateDataPipelineRequestSource
+from ._update_data_pipeline_response_body import UpdateDataPipelineResponseBodyPipelineOutputsProcessorsConfigRules
+from ._update_data_pipeline_response_body import UpdateDataPipelineResponseBodyPipelineOutputsProcessorsConfigSelector
+from ._update_data_pipeline_response_body import UpdateDataPipelineResponseBodyPipelineOutputsProcessorsConfigTarget
+from ._update_data_pipeline_response_body import UpdateDataPipelineResponseBodyPipelineOutputsProcessorsConfig
+from ._update_data_pipeline_response_body import UpdateDataPipelineResponseBodyPipelineOutputsProcessors
+from ._update_data_pipeline_response_body import UpdateDataPipelineResponseBodyPipelineOutputs
+from ._update_data_pipeline_response_body import UpdateDataPipelineResponseBodyPipelineProcessorsConfigRules
+from ._update_data_pipeline_response_body import UpdateDataPipelineResponseBodyPipelineProcessorsConfigSelector
+from ._update_data_pipeline_response_body import UpdateDataPipelineResponseBodyPipelineProcessorsConfigTarget
+from ._update_data_pipeline_response_body import UpdateDataPipelineResponseBodyPipelineProcessorsConfig
+from ._update_data_pipeline_response_body import UpdateDataPipelineResponseBodyPipelineProcessors
+from ._update_data_pipeline_response_body import UpdateDataPipelineResponseBodyPipelineSinks
+from ._update_data_pipeline_response_body import UpdateDataPipelineResponseBodyPipelineSourceConfigTimeRange
+from ._update_data_pipeline_response_body import UpdateDataPipelineResponseBodyPipelineSourceConfig
+from ._update_data_pipeline_response_body import UpdateDataPipelineResponseBodyPipelineSource
+from ._update_data_pipeline_response_body import UpdateDataPipelineResponseBodyPipeline
 from ._update_delivery_task_request import UpdateDeliveryTaskRequestSinkList
 from ._update_integration_policy_request import UpdateIntegrationPolicyRequestTags
 from ._update_pipeline_request import UpdatePipelineRequestExecutePolicyRunOnce
@@ -1214,6 +1343,9 @@ __all__ = [
     CreateContextStoreAPIKeyRequest,
     CreateContextStoreAPIKeyResponseBody,
     CreateContextStoreAPIKeyResponse,
+    CreateDataPipelineRequest,
+    CreateDataPipelineResponseBody,
+    CreateDataPipelineResponse,
     CreateDatasetRequest,
     CreateDatasetResponseBody,
     CreateDatasetResponse,
@@ -1289,6 +1421,9 @@ __all__ = [
     DeleteContextsRequest,
     DeleteContextsResponseBody,
     DeleteContextsResponse,
+    DeleteDataPipelineRequest,
+    DeleteDataPipelineResponseBody,
+    DeleteDataPipelineResponse,
     DeleteDatasetRequest,
     DeleteDatasetResponseBody,
     DeleteDatasetResponse,
@@ -1393,6 +1528,9 @@ __all__ = [
     GetContextStoreRequest,
     GetContextStoreResponseBody,
     GetContextStoreResponse,
+    GetDataPipelineRequest,
+    GetDataPipelineResponseBody,
+    GetDataPipelineResponse,
     GetDatasetRequest,
     GetDatasetResponseBody,
     GetDatasetResponse,
@@ -1502,6 +1640,9 @@ __all__ = [
     ListContextStoresRequest,
     ListContextStoresResponseBody,
     ListContextStoresResponse,
+    ListDataPipelinesRequest,
+    ListDataPipelinesResponseBody,
+    ListDataPipelinesResponse,
     ListDatasetsRequest,
     ListDatasetsResponseBody,
     ListDatasetsResponse,
@@ -1581,6 +1722,9 @@ __all__ = [
     OpenCmsServiceRequest,
     OpenCmsServiceResponseBody,
     OpenCmsServiceResponse,
+    PreviewDataPipelineRequest,
+    PreviewDataPipelineResponseBody,
+    PreviewDataPipelineResponse,
     PutWorkspaceRequest,
     PutWorkspaceResponseBody,
     PutWorkspaceResponse,
@@ -1620,6 +1764,9 @@ __all__ = [
     UpdateContextStoreRequest,
     UpdateContextStoreResponseBody,
     UpdateContextStoreResponse,
+    UpdateDataPipelineRequest,
+    UpdateDataPipelineResponseBody,
+    UpdateDataPipelineResponse,
     UpdateDatasetRequest,
     UpdateDatasetResponseBody,
     UpdateDatasetResponse,
@@ -1786,6 +1933,37 @@ __all__ = [
     CreateContextStoreRequestConfigSource,
     CreateContextStoreRequestConfig,
     CreateContextStoreRequestDataset,
+    CreateDataPipelineRequestOutputsProcessorsConfigRules,
+    CreateDataPipelineRequestOutputsProcessorsConfigSelector,
+    CreateDataPipelineRequestOutputsProcessorsConfigTarget,
+    CreateDataPipelineRequestOutputsProcessorsConfig,
+    CreateDataPipelineRequestOutputsProcessors,
+    CreateDataPipelineRequestOutputs,
+    CreateDataPipelineRequestProcessorsConfigRules,
+    CreateDataPipelineRequestProcessorsConfigSelector,
+    CreateDataPipelineRequestProcessorsConfigTarget,
+    CreateDataPipelineRequestProcessorsConfig,
+    CreateDataPipelineRequestProcessors,
+    CreateDataPipelineRequestSinks,
+    CreateDataPipelineRequestSourceConfigTimeRange,
+    CreateDataPipelineRequestSourceConfig,
+    CreateDataPipelineRequestSource,
+    CreateDataPipelineResponseBodyPipelineOutputsProcessorsConfigRules,
+    CreateDataPipelineResponseBodyPipelineOutputsProcessorsConfigSelector,
+    CreateDataPipelineResponseBodyPipelineOutputsProcessorsConfigTarget,
+    CreateDataPipelineResponseBodyPipelineOutputsProcessorsConfig,
+    CreateDataPipelineResponseBodyPipelineOutputsProcessors,
+    CreateDataPipelineResponseBodyPipelineOutputs,
+    CreateDataPipelineResponseBodyPipelineProcessorsConfigRules,
+    CreateDataPipelineResponseBodyPipelineProcessorsConfigSelector,
+    CreateDataPipelineResponseBodyPipelineProcessorsConfigTarget,
+    CreateDataPipelineResponseBodyPipelineProcessorsConfig,
+    CreateDataPipelineResponseBodyPipelineProcessors,
+    CreateDataPipelineResponseBodyPipelineSinks,
+    CreateDataPipelineResponseBodyPipelineSourceConfigTimeRange,
+    CreateDataPipelineResponseBodyPipelineSourceConfig,
+    CreateDataPipelineResponseBodyPipelineSource,
+    CreateDataPipelineResponseBodyPipeline,
     CreateDeliveryTaskRequestSinkList,
     CreateDeliveryTaskRequestTags,
     CreateIntegrationPolicyRequestEntityGroup,
@@ -1835,6 +2013,22 @@ __all__ = [
     GetContextStoreResponseBodyConfigSource,
     GetContextStoreResponseBodyConfig,
     GetContextStoreResponseBodyDataset,
+    GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigRules,
+    GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigSelector,
+    GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigTarget,
+    GetDataPipelineResponseBodyPipelineOutputsProcessorsConfig,
+    GetDataPipelineResponseBodyPipelineOutputsProcessors,
+    GetDataPipelineResponseBodyPipelineOutputs,
+    GetDataPipelineResponseBodyPipelineProcessorsConfigRules,
+    GetDataPipelineResponseBodyPipelineProcessorsConfigSelector,
+    GetDataPipelineResponseBodyPipelineProcessorsConfigTarget,
+    GetDataPipelineResponseBodyPipelineProcessorsConfig,
+    GetDataPipelineResponseBodyPipelineProcessors,
+    GetDataPipelineResponseBodyPipelineSinks,
+    GetDataPipelineResponseBodyPipelineSourceConfigTimeRange,
+    GetDataPipelineResponseBodyPipelineSourceConfig,
+    GetDataPipelineResponseBodyPipelineSource,
+    GetDataPipelineResponseBodyPipeline,
     GetDeliveryTaskResponseBodyDeliveryTaskExtraInfo,
     GetDeliveryTaskResponseBodyDeliveryTaskSinkList,
     GetDeliveryTaskResponseBodyDeliveryTaskTags,
@@ -1908,6 +2102,22 @@ __all__ = [
     ListContactsResponseBodyContacts,
     ListContextStoreAPIKeysResponseBodyResults,
     ListContextStoresResponseBodyResults,
+    ListDataPipelinesResponseBodyPipelinesOutputsProcessorsConfigRules,
+    ListDataPipelinesResponseBodyPipelinesOutputsProcessorsConfigSelector,
+    ListDataPipelinesResponseBodyPipelinesOutputsProcessorsConfigTarget,
+    ListDataPipelinesResponseBodyPipelinesOutputsProcessorsConfig,
+    ListDataPipelinesResponseBodyPipelinesOutputsProcessors,
+    ListDataPipelinesResponseBodyPipelinesOutputs,
+    ListDataPipelinesResponseBodyPipelinesProcessorsConfigRules,
+    ListDataPipelinesResponseBodyPipelinesProcessorsConfigSelector,
+    ListDataPipelinesResponseBodyPipelinesProcessorsConfigTarget,
+    ListDataPipelinesResponseBodyPipelinesProcessorsConfig,
+    ListDataPipelinesResponseBodyPipelinesProcessors,
+    ListDataPipelinesResponseBodyPipelinesSinks,
+    ListDataPipelinesResponseBodyPipelinesSourceConfigTimeRange,
+    ListDataPipelinesResponseBodyPipelinesSourceConfig,
+    ListDataPipelinesResponseBodyPipelinesSource,
+    ListDataPipelinesResponseBodyPipelines,
     ListDatasetsResponseBodyDatasets,
     ListDeliveryTasksRequestTag,
     ListDeliveryTasksResponseBodyDeliveryTasksExtraInfo,
@@ -1963,6 +2173,23 @@ __all__ = [
     ListWorkspacesRequestTags,
     ListWorkspacesResponseBodyWorkspacesTags,
     ListWorkspacesResponseBodyWorkspaces,
+    PreviewDataPipelineRequestOutputsProcessorsConfigRules,
+    PreviewDataPipelineRequestOutputsProcessorsConfigSelector,
+    PreviewDataPipelineRequestOutputsProcessorsConfigTarget,
+    PreviewDataPipelineRequestOutputsProcessorsConfig,
+    PreviewDataPipelineRequestOutputsProcessors,
+    PreviewDataPipelineRequestOutputs,
+    PreviewDataPipelineRequestProcessorsConfigRules,
+    PreviewDataPipelineRequestProcessorsConfigSelector,
+    PreviewDataPipelineRequestProcessorsConfigTarget,
+    PreviewDataPipelineRequestProcessorsConfig,
+    PreviewDataPipelineRequestProcessors,
+    PreviewDataPipelineRequestSinks,
+    PreviewDataPipelineRequestSourceConfigTimeRange,
+    PreviewDataPipelineRequestSourceConfig,
+    PreviewDataPipelineRequestSource,
+    PreviewDataPipelineResponseBodyDatasetsMeta,
+    PreviewDataPipelineResponseBodyDatasets,
     PutWorkspaceRequestTags,
     SearchMemoriesResponseBodyRelations,
     SearchMemoriesResponseBodyResults,
@@ -1970,6 +2197,37 @@ __all__ = [
     UpdateContextStoreRequestConfigSource,
     UpdateContextStoreRequestConfig,
     UpdateContextStoreRequestDataset,
+    UpdateDataPipelineRequestOutputsProcessorsConfigRules,
+    UpdateDataPipelineRequestOutputsProcessorsConfigSelector,
+    UpdateDataPipelineRequestOutputsProcessorsConfigTarget,
+    UpdateDataPipelineRequestOutputsProcessorsConfig,
+    UpdateDataPipelineRequestOutputsProcessors,
+    UpdateDataPipelineRequestOutputs,
+    UpdateDataPipelineRequestProcessorsConfigRules,
+    UpdateDataPipelineRequestProcessorsConfigSelector,
+    UpdateDataPipelineRequestProcessorsConfigTarget,
+    UpdateDataPipelineRequestProcessorsConfig,
+    UpdateDataPipelineRequestProcessors,
+    UpdateDataPipelineRequestSinks,
+    UpdateDataPipelineRequestSourceConfigTimeRange,
+    UpdateDataPipelineRequestSourceConfig,
+    UpdateDataPipelineRequestSource,
+    UpdateDataPipelineResponseBodyPipelineOutputsProcessorsConfigRules,
+    UpdateDataPipelineResponseBodyPipelineOutputsProcessorsConfigSelector,
+    UpdateDataPipelineResponseBodyPipelineOutputsProcessorsConfigTarget,
+    UpdateDataPipelineResponseBodyPipelineOutputsProcessorsConfig,
+    UpdateDataPipelineResponseBodyPipelineOutputsProcessors,
+    UpdateDataPipelineResponseBodyPipelineOutputs,
+    UpdateDataPipelineResponseBodyPipelineProcessorsConfigRules,
+    UpdateDataPipelineResponseBodyPipelineProcessorsConfigSelector,
+    UpdateDataPipelineResponseBodyPipelineProcessorsConfigTarget,
+    UpdateDataPipelineResponseBodyPipelineProcessorsConfig,
+    UpdateDataPipelineResponseBodyPipelineProcessors,
+    UpdateDataPipelineResponseBodyPipelineSinks,
+    UpdateDataPipelineResponseBodyPipelineSourceConfigTimeRange,
+    UpdateDataPipelineResponseBodyPipelineSourceConfig,
+    UpdateDataPipelineResponseBodyPipelineSource,
+    UpdateDataPipelineResponseBodyPipeline,
     UpdateDeliveryTaskRequestSinkList,
     UpdateIntegrationPolicyRequestTags,
     UpdatePipelineRequestExecutePolicyRunOnce,

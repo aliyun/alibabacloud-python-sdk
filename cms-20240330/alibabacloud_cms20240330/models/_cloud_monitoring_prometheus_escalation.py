@@ -11,11 +11,11 @@ class CloudMonitoringPrometheusEscalation(DaraModel):
         severity: str = None,
         times: int = None,
     ):
-        # The PromQL expression that defines the alert condition. This parameter is required.
+        # The PromQL query statement.
         self.prom_ql = prom_ql
-        # The severity of the alert that triggers the escalation. This parameter is required.
+        # The severity level.
         self.severity = severity
-        # The number of consecutive times the condition must be met to trigger an escalation. This parameter is required.
+        # The number of consecutive times the alert is triggered.
         self.times = times
 
     def validate(self):
