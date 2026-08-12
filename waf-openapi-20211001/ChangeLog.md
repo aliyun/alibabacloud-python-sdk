@@ -7,6 +7,15 @@
 - Update API DescribeInstance: add response parameters Body.Details.ResourceDirectory.
 
 
+2026-08-12 Version: 7.8.4
+- Update API DescribeHybridCloudGroups: add request parameters GroupDisplayName.
+- Update API DescribeInstance: add response parameters Body.Details.AgenticApisec.
+- Update API DescribeInstance: add response parameters Body.Details.Apisec.
+- Update API DescribeInstance: add response parameters Body.Details.HybridCloud.
+- Update API DescribeInstance: add response parameters Body.Details.HybridCloudNodeExtend.
+- Update API DescribeInstance: add response parameters Body.Details.ResourceDirectory.
+
+
 2026-07-31 Version: 7.8.3
 - Update API DescribeBotRuleLabels: add response parameters Body.RuleLabels.$.DefaultAction.
 - Update API DescribeBotRuleLabels: add response parameters Body.RuleLabels.$.DefaultConfig.
