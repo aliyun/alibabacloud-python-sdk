@@ -52,6 +52,9 @@ from ._create_approval_process_response import CreateApprovalProcessResponse
 from ._create_client_user_request import CreateClientUserRequest
 from ._create_client_user_response_body import CreateClientUserResponseBody
 from ._create_client_user_response import CreateClientUserResponse
+from ._create_domain_meta_request import CreateDomainMetaRequest
+from ._create_domain_meta_response_body import CreateDomainMetaResponseBody
+from ._create_domain_meta_response import CreateDomainMetaResponse
 from ._create_dynamic_route_request import CreateDynamicRouteRequest
 from ._create_dynamic_route_response_body import CreateDynamicRouteResponseBody
 from ._create_dynamic_route_response import CreateDynamicRouteResponse
@@ -106,6 +109,9 @@ from ._delete_approval_processes_response import DeleteApprovalProcessesResponse
 from ._delete_client_user_request import DeleteClientUserRequest
 from ._delete_client_user_response_body import DeleteClientUserResponseBody
 from ._delete_client_user_response import DeleteClientUserResponse
+from ._delete_domain_meta_request import DeleteDomainMetaRequest
+from ._delete_domain_meta_response_body import DeleteDomainMetaResponseBody
+from ._delete_domain_meta_response import DeleteDomainMetaResponse
 from ._delete_dynamic_route_request import DeleteDynamicRouteRequest
 from ._delete_dynamic_route_response_body import DeleteDynamicRouteResponseBody
 from ._delete_dynamic_route_response import DeleteDynamicRouteResponse
@@ -177,6 +183,9 @@ from ._get_dynamic_route_response import GetDynamicRouteResponse
 from ._get_idp_config_request import GetIdpConfigRequest
 from ._get_idp_config_response_body import GetIdpConfigResponseBody
 from ._get_idp_config_response import GetIdpConfigResponse
+from ._get_nac_portal_sms_phone_whitelist_request import GetNacPortalSmsPhoneWhitelistRequest
+from ._get_nac_portal_sms_phone_whitelist_response_body import GetNacPortalSmsPhoneWhitelistResponseBody
+from ._get_nac_portal_sms_phone_whitelist_response import GetNacPortalSmsPhoneWhitelistResponse
 from ._get_padiagnosis_task_request import GetPADiagnosisTaskRequest
 from ._get_padiagnosis_task_response_body import GetPADiagnosisTaskResponseBody
 from ._get_padiagnosis_task_response import GetPADiagnosisTaskResponse
@@ -231,6 +240,9 @@ from ._list_client_users_response import ListClientUsersResponse
 from ._list_connectors_request import ListConnectorsRequest
 from ._list_connectors_response_body import ListConnectorsResponseBody
 from ._list_connectors_response import ListConnectorsResponse
+from ._list_domain_metas_request import ListDomainMetasRequest
+from ._list_domain_metas_response_body import ListDomainMetasResponseBody
+from ._list_domain_metas_response import ListDomainMetasResponse
 from ._list_dynamic_disposal_processes_request import ListDynamicDisposalProcessesRequest
 from ._list_dynamic_disposal_processes_response_body import ListDynamicDisposalProcessesResponseBody
 from ._list_dynamic_disposal_processes_response import ListDynamicDisposalProcessesResponse
@@ -299,6 +311,9 @@ from ._list_registration_policies_response import ListRegistrationPoliciesRespon
 from ._list_registration_policies_for_user_group_request import ListRegistrationPoliciesForUserGroupRequest
 from ._list_registration_policies_for_user_group_response_body import ListRegistrationPoliciesForUserGroupResponseBody
 from ._list_registration_policies_for_user_group_response import ListRegistrationPoliciesForUserGroupResponse
+from ._list_risk_items_request import ListRiskItemsRequest
+from ._list_risk_items_response_body import ListRiskItemsResponseBody
+from ._list_risk_items_response import ListRiskItemsResponse
 from ._list_software_for_user_device_request import ListSoftwareForUserDeviceRequest
 from ._list_software_for_user_device_response_body import ListSoftwareForUserDeviceResponseBody
 from ._list_software_for_user_device_response import ListSoftwareForUserDeviceResponse
@@ -364,6 +379,9 @@ from ._update_client_user_password_response import UpdateClientUserPasswordRespo
 from ._update_client_user_status_request import UpdateClientUserStatusRequest
 from ._update_client_user_status_response_body import UpdateClientUserStatusResponseBody
 from ._update_client_user_status_response import UpdateClientUserStatusResponse
+from ._update_domain_meta_request import UpdateDomainMetaRequest
+from ._update_domain_meta_response_body import UpdateDomainMetaResponseBody
+from ._update_domain_meta_response import UpdateDomainMetaResponse
 from ._update_dynamic_route_request import UpdateDynamicRouteRequest
 from ._update_dynamic_route_response_body import UpdateDynamicRouteResponseBody
 from ._update_dynamic_route_response import UpdateDynamicRouteResponse
@@ -373,6 +391,9 @@ from ._update_excessive_device_registration_applications_status_response import 
 from ._update_idp_department_request import UpdateIdpDepartmentRequest
 from ._update_idp_department_response_body import UpdateIdpDepartmentResponseBody
 from ._update_idp_department_response import UpdateIdpDepartmentResponse
+from ._update_nac_portal_sms_phone_whitelist_request import UpdateNacPortalSmsPhoneWhitelistRequest
+from ._update_nac_portal_sms_phone_whitelist_response_body import UpdateNacPortalSmsPhoneWhitelistResponseBody
+from ._update_nac_portal_sms_phone_whitelist_response import UpdateNacPortalSmsPhoneWhitelistResponse
 from ._update_nac_user_cert_status_request import UpdateNacUserCertStatusRequest
 from ._update_nac_user_cert_status_response_body import UpdateNacUserCertStatusResponseBody
 from ._update_nac_user_cert_status_response import UpdateNacUserCertStatusResponse
@@ -387,6 +408,9 @@ from ._update_registration_policy_request import UpdateRegistrationPolicyRequest
 from ._update_registration_policy_shrink_request import UpdateRegistrationPolicyShrinkRequest
 from ._update_registration_policy_response_body import UpdateRegistrationPolicyResponseBody
 from ._update_registration_policy_response import UpdateRegistrationPolicyResponse
+from ._update_risk_status_request import UpdateRiskStatusRequest
+from ._update_risk_status_response_body import UpdateRiskStatusResponseBody
+from ._update_risk_status_response import UpdateRiskStatusResponse
 from ._update_uninstall_applications_status_request import UpdateUninstallApplicationsStatusRequest
 from ._update_uninstall_applications_status_response_body import UpdateUninstallApplicationsStatusResponseBody
 from ._update_uninstall_applications_status_response import UpdateUninstallApplicationsStatusResponse
@@ -579,6 +603,7 @@ from ._list_connectors_response_body import ListConnectorsResponseBodyConnectors
 from ._list_connectors_response_body import ListConnectorsResponseBodyConnectorsConnectorClients
 from ._list_connectors_response_body import ListConnectorsResponseBodyConnectorsUpgradeTime
 from ._list_connectors_response_body import ListConnectorsResponseBodyConnectors
+from ._list_domain_metas_response_body import ListDomainMetasResponseBodyDomainMetas
 from ._list_dynamic_disposal_processes_response_body import ListDynamicDisposalProcessesResponseBodyDisposalProcessesDeviceBasicInfo
 from ._list_dynamic_disposal_processes_response_body import ListDynamicDisposalProcessesResponseBodyDisposalProcessesDeviceStatusInfo
 from ._list_dynamic_disposal_processes_response_body import ListDynamicDisposalProcessesResponseBodyDisposalProcesses
@@ -621,6 +646,7 @@ from ._list_registration_policies_for_user_group_response_body import ListRegist
 from ._list_registration_policies_for_user_group_response_body import ListRegistrationPoliciesForUserGroupResponseBodyUserGroupsPoliciesLimitDetail
 from ._list_registration_policies_for_user_group_response_body import ListRegistrationPoliciesForUserGroupResponseBodyUserGroupsPolicies
 from ._list_registration_policies_for_user_group_response_body import ListRegistrationPoliciesForUserGroupResponseBodyUserGroups
+from ._list_risk_items_response_body import ListRiskItemsResponseBodyRiskItems
 from ._list_software_for_user_device_response_body import ListSoftwareForUserDeviceResponseBodySoftware
 from ._list_tags_for_private_access_application_response_body import ListTagsForPrivateAccessApplicationResponseBodyApplicationsTags
 from ._list_tags_for_private_access_application_response_body import ListTagsForPrivateAccessApplicationResponseBodyApplications
@@ -765,6 +791,9 @@ __all__ = [
     CreateClientUserRequest,
     CreateClientUserResponseBody,
     CreateClientUserResponse,
+    CreateDomainMetaRequest,
+    CreateDomainMetaResponseBody,
+    CreateDomainMetaResponse,
     CreateDynamicRouteRequest,
     CreateDynamicRouteResponseBody,
     CreateDynamicRouteResponse,
@@ -819,6 +848,9 @@ __all__ = [
     DeleteClientUserRequest,
     DeleteClientUserResponseBody,
     DeleteClientUserResponse,
+    DeleteDomainMetaRequest,
+    DeleteDomainMetaResponseBody,
+    DeleteDomainMetaResponse,
     DeleteDynamicRouteRequest,
     DeleteDynamicRouteResponseBody,
     DeleteDynamicRouteResponse,
@@ -890,6 +922,9 @@ __all__ = [
     GetIdpConfigRequest,
     GetIdpConfigResponseBody,
     GetIdpConfigResponse,
+    GetNacPortalSmsPhoneWhitelistRequest,
+    GetNacPortalSmsPhoneWhitelistResponseBody,
+    GetNacPortalSmsPhoneWhitelistResponse,
     GetPADiagnosisTaskRequest,
     GetPADiagnosisTaskResponseBody,
     GetPADiagnosisTaskResponse,
@@ -944,6 +979,9 @@ __all__ = [
     ListConnectorsRequest,
     ListConnectorsResponseBody,
     ListConnectorsResponse,
+    ListDomainMetasRequest,
+    ListDomainMetasResponseBody,
+    ListDomainMetasResponse,
     ListDynamicDisposalProcessesRequest,
     ListDynamicDisposalProcessesResponseBody,
     ListDynamicDisposalProcessesResponse,
@@ -1012,6 +1050,9 @@ __all__ = [
     ListRegistrationPoliciesForUserGroupRequest,
     ListRegistrationPoliciesForUserGroupResponseBody,
     ListRegistrationPoliciesForUserGroupResponse,
+    ListRiskItemsRequest,
+    ListRiskItemsResponseBody,
+    ListRiskItemsResponse,
     ListSoftwareForUserDeviceRequest,
     ListSoftwareForUserDeviceResponseBody,
     ListSoftwareForUserDeviceResponse,
@@ -1077,6 +1118,9 @@ __all__ = [
     UpdateClientUserStatusRequest,
     UpdateClientUserStatusResponseBody,
     UpdateClientUserStatusResponse,
+    UpdateDomainMetaRequest,
+    UpdateDomainMetaResponseBody,
+    UpdateDomainMetaResponse,
     UpdateDynamicRouteRequest,
     UpdateDynamicRouteResponseBody,
     UpdateDynamicRouteResponse,
@@ -1086,6 +1130,9 @@ __all__ = [
     UpdateIdpDepartmentRequest,
     UpdateIdpDepartmentResponseBody,
     UpdateIdpDepartmentResponse,
+    UpdateNacPortalSmsPhoneWhitelistRequest,
+    UpdateNacPortalSmsPhoneWhitelistResponseBody,
+    UpdateNacPortalSmsPhoneWhitelistResponse,
     UpdateNacUserCertStatusRequest,
     UpdateNacUserCertStatusResponseBody,
     UpdateNacUserCertStatusResponse,
@@ -1100,6 +1147,9 @@ __all__ = [
     UpdateRegistrationPolicyShrinkRequest,
     UpdateRegistrationPolicyResponseBody,
     UpdateRegistrationPolicyResponse,
+    UpdateRiskStatusRequest,
+    UpdateRiskStatusResponseBody,
+    UpdateRiskStatusResponse,
     UpdateUninstallApplicationsStatusRequest,
     UpdateUninstallApplicationsStatusResponseBody,
     UpdateUninstallApplicationsStatusResponse,
@@ -1292,6 +1342,7 @@ __all__ = [
     ListConnectorsResponseBodyConnectorsConnectorClients,
     ListConnectorsResponseBodyConnectorsUpgradeTime,
     ListConnectorsResponseBodyConnectors,
+    ListDomainMetasResponseBodyDomainMetas,
     ListDynamicDisposalProcessesResponseBodyDisposalProcessesDeviceBasicInfo,
     ListDynamicDisposalProcessesResponseBodyDisposalProcessesDeviceStatusInfo,
     ListDynamicDisposalProcessesResponseBodyDisposalProcesses,
@@ -1334,6 +1385,7 @@ __all__ = [
     ListRegistrationPoliciesForUserGroupResponseBodyUserGroupsPoliciesLimitDetail,
     ListRegistrationPoliciesForUserGroupResponseBodyUserGroupsPolicies,
     ListRegistrationPoliciesForUserGroupResponseBodyUserGroups,
+    ListRiskItemsResponseBodyRiskItems,
     ListSoftwareForUserDeviceResponseBodySoftware,
     ListTagsForPrivateAccessApplicationResponseBodyApplicationsTags,
     ListTagsForPrivateAccessApplicationResponseBodyApplications,

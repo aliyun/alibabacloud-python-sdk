@@ -15,8 +15,11 @@ class IdpSyncConfig(DaraModel):
         schedule_sync_interval_second: int = None,
         user_sync_enabled: bool = None,
     ):
+        # Specifies whether automatic synchronization is enabled.
         self.auto_sync_enabled = auto_sync_enabled
+        # The names of the departments selected for synchronization. The names have a one-to-one relationship with IdpDepartmentIds.
         self.idp_department_infos = idp_department_infos
+        # The scheduled synchronization interval, in seconds.
         self.schedule_sync_interval_second = schedule_sync_interval_second
         self.user_sync_enabled = user_sync_enabled
 

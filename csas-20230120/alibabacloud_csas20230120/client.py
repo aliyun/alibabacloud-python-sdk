@@ -23,8 +23,8 @@ class Client(OpenApiClient):
         super().__init__(config)
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
-            'public': 'csas.aliyuncs.com',
-            'cn-hangzhou': 'csas.aliyuncs.com'
+            'cn-hangzhou': 'csas.aliyuncs.com',
+            'public': 'csas.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('csas', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -392,6 +392,80 @@ class Client(OpenApiClient):
     ) -> main_models.CreateClientUserResponse:
         runtime = RuntimeOptions()
         return await self.create_client_user_with_options_async(request, runtime)
+
+    def create_domain_meta_with_options(
+        self,
+        request: main_models.CreateDomainMetaRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateDomainMetaResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.list_type):
+            body['ListType'] = request.list_type
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateDomainMeta',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateDomainMetaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_domain_meta_with_options_async(
+        self,
+        request: main_models.CreateDomainMetaRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateDomainMetaResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.list_type):
+            body['ListType'] = request.list_type
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateDomainMeta',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateDomainMetaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_domain_meta(
+        self,
+        request: main_models.CreateDomainMetaRequest,
+    ) -> main_models.CreateDomainMetaResponse:
+        runtime = RuntimeOptions()
+        return self.create_domain_meta_with_options(request, runtime)
+
+    async def create_domain_meta_async(
+        self,
+        request: main_models.CreateDomainMetaRequest,
+    ) -> main_models.CreateDomainMetaResponse:
+        runtime = RuntimeOptions()
+        return await self.create_domain_meta_with_options_async(request, runtime)
 
     def create_dynamic_route_with_options(
         self,
@@ -2056,6 +2130,80 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteClientUserResponse:
         runtime = RuntimeOptions()
         return await self.delete_client_user_with_options_async(request, runtime)
+
+    def delete_domain_meta_with_options(
+        self,
+        request: main_models.DeleteDomainMetaRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteDomainMetaResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.list_id):
+            body['ListId'] = request.list_id
+        if not DaraCore.is_null(request.list_type):
+            body['ListType'] = request.list_type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteDomainMeta',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteDomainMetaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_domain_meta_with_options_async(
+        self,
+        request: main_models.DeleteDomainMetaRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteDomainMetaResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.list_id):
+            body['ListId'] = request.list_id
+        if not DaraCore.is_null(request.list_type):
+            body['ListType'] = request.list_type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteDomainMeta',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteDomainMetaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_domain_meta(
+        self,
+        request: main_models.DeleteDomainMetaRequest,
+    ) -> main_models.DeleteDomainMetaResponse:
+        runtime = RuntimeOptions()
+        return self.delete_domain_meta_with_options(request, runtime)
+
+    async def delete_domain_meta_async(
+        self,
+        request: main_models.DeleteDomainMetaRequest,
+    ) -> main_models.DeleteDomainMetaResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_domain_meta_with_options_async(request, runtime)
 
     def delete_dynamic_route_with_options(
         self,
@@ -3773,6 +3921,66 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_idp_config_with_options_async(request, runtime)
 
+    def get_nac_portal_sms_phone_whitelist_with_options(
+        self,
+        request: main_models.GetNacPortalSmsPhoneWhitelistRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetNacPortalSmsPhoneWhitelistResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'GetNacPortalSmsPhoneWhitelist',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetNacPortalSmsPhoneWhitelistResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_nac_portal_sms_phone_whitelist_with_options_async(
+        self,
+        request: main_models.GetNacPortalSmsPhoneWhitelistRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetNacPortalSmsPhoneWhitelistResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'GetNacPortalSmsPhoneWhitelist',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetNacPortalSmsPhoneWhitelistResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_nac_portal_sms_phone_whitelist(
+        self,
+        request: main_models.GetNacPortalSmsPhoneWhitelistRequest,
+    ) -> main_models.GetNacPortalSmsPhoneWhitelistResponse:
+        runtime = RuntimeOptions()
+        return self.get_nac_portal_sms_phone_whitelist_with_options(request, runtime)
+
+    async def get_nac_portal_sms_phone_whitelist_async(
+        self,
+        request: main_models.GetNacPortalSmsPhoneWhitelistRequest,
+    ) -> main_models.GetNacPortalSmsPhoneWhitelistResponse:
+        runtime = RuntimeOptions()
+        return await self.get_nac_portal_sms_phone_whitelist_with_options_async(request, runtime)
+
     def get_padiagnosis_task_with_options(
         self,
         request: main_models.GetPADiagnosisTaskRequest,
@@ -4968,6 +5176,92 @@ class Client(OpenApiClient):
     ) -> main_models.ListConnectorsResponse:
         runtime = RuntimeOptions()
         return await self.list_connectors_with_options_async(request, runtime)
+
+    def list_domain_metas_with_options(
+        self,
+        request: main_models.ListDomainMetasRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDomainMetasResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.default_template):
+            query['DefaultTemplate'] = request.default_template
+        if not DaraCore.is_null(request.list_type):
+            query['ListType'] = request.list_type
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDomainMetas',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDomainMetasResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_domain_metas_with_options_async(
+        self,
+        request: main_models.ListDomainMetasRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDomainMetasResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.default_template):
+            query['DefaultTemplate'] = request.default_template
+        if not DaraCore.is_null(request.list_type):
+            query['ListType'] = request.list_type
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDomainMetas',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDomainMetasResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_domain_metas(
+        self,
+        request: main_models.ListDomainMetasRequest,
+    ) -> main_models.ListDomainMetasResponse:
+        runtime = RuntimeOptions()
+        return self.list_domain_metas_with_options(request, runtime)
+
+    async def list_domain_metas_async(
+        self,
+        request: main_models.ListDomainMetasRequest,
+    ) -> main_models.ListDomainMetasResponse:
+        runtime = RuntimeOptions()
+        return await self.list_domain_metas_with_options_async(request, runtime)
 
     def list_dynamic_disposal_processes_with_options(
         self,
@@ -6542,6 +6836,112 @@ class Client(OpenApiClient):
     ) -> main_models.ListRegistrationPoliciesForUserGroupResponse:
         runtime = RuntimeOptions()
         return await self.list_registration_policies_for_user_group_with_options_async(request, runtime)
+
+    def list_risk_items_with_options(
+        self,
+        request: main_models.ListRiskItemsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListRiskItemsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.policy_name):
+            query['PolicyName'] = request.policy_name
+        if not DaraCore.is_null(request.risk_category):
+            query['RiskCategory'] = request.risk_category
+        if not DaraCore.is_null(request.risk_id):
+            query['RiskId'] = request.risk_id
+        if not DaraCore.is_null(request.risk_level):
+            query['RiskLevel'] = request.risk_level
+        if not DaraCore.is_null(request.risk_scene):
+            query['RiskScene'] = request.risk_scene
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        if not DaraCore.is_null(request.status_list):
+            query['StatusList'] = request.status_list
+        if not DaraCore.is_null(request.username):
+            query['Username'] = request.username
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListRiskItems',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListRiskItemsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_risk_items_with_options_async(
+        self,
+        request: main_models.ListRiskItemsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListRiskItemsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.policy_name):
+            query['PolicyName'] = request.policy_name
+        if not DaraCore.is_null(request.risk_category):
+            query['RiskCategory'] = request.risk_category
+        if not DaraCore.is_null(request.risk_id):
+            query['RiskId'] = request.risk_id
+        if not DaraCore.is_null(request.risk_level):
+            query['RiskLevel'] = request.risk_level
+        if not DaraCore.is_null(request.risk_scene):
+            query['RiskScene'] = request.risk_scene
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        if not DaraCore.is_null(request.status_list):
+            query['StatusList'] = request.status_list
+        if not DaraCore.is_null(request.username):
+            query['Username'] = request.username
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListRiskItems',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListRiskItemsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_risk_items(
+        self,
+        request: main_models.ListRiskItemsRequest,
+    ) -> main_models.ListRiskItemsResponse:
+        runtime = RuntimeOptions()
+        return self.list_risk_items_with_options(request, runtime)
+
+    async def list_risk_items_async(
+        self,
+        request: main_models.ListRiskItemsRequest,
+    ) -> main_models.ListRiskItemsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_risk_items_with_options_async(request, runtime)
 
     def list_software_for_user_device_with_options(
         self,
@@ -8229,6 +8629,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.update_client_user_status_with_options_async(request, runtime)
 
+    def update_domain_meta_with_options(
+        self,
+        request: main_models.UpdateDomainMetaRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateDomainMetaResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.list_id):
+            body['ListId'] = request.list_id
+        if not DaraCore.is_null(request.list_type):
+            body['ListType'] = request.list_type
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateDomainMeta',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateDomainMetaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_domain_meta_with_options_async(
+        self,
+        request: main_models.UpdateDomainMetaRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateDomainMetaResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.list_id):
+            body['ListId'] = request.list_id
+        if not DaraCore.is_null(request.list_type):
+            body['ListType'] = request.list_type
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateDomainMeta',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateDomainMetaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_domain_meta(
+        self,
+        request: main_models.UpdateDomainMetaRequest,
+    ) -> main_models.UpdateDomainMetaResponse:
+        runtime = RuntimeOptions()
+        return self.update_domain_meta_with_options(request, runtime)
+
+    async def update_domain_meta_async(
+        self,
+        request: main_models.UpdateDomainMetaRequest,
+    ) -> main_models.UpdateDomainMetaResponse:
+        runtime = RuntimeOptions()
+        return await self.update_domain_meta_with_options_async(request, runtime)
+
     def update_dynamic_route_with_options(
         self,
         request: main_models.UpdateDynamicRouteRequest,
@@ -8502,6 +8980,76 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateIdpDepartmentResponse:
         runtime = RuntimeOptions()
         return await self.update_idp_department_with_options_async(request, runtime)
+
+    def update_nac_portal_sms_phone_whitelist_with_options(
+        self,
+        request: main_models.UpdateNacPortalSmsPhoneWhitelistRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateNacPortalSmsPhoneWhitelistResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.phones):
+            query['Phones'] = request.phones
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateNacPortalSmsPhoneWhitelist',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateNacPortalSmsPhoneWhitelistResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_nac_portal_sms_phone_whitelist_with_options_async(
+        self,
+        request: main_models.UpdateNacPortalSmsPhoneWhitelistRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateNacPortalSmsPhoneWhitelistResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.phones):
+            query['Phones'] = request.phones
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateNacPortalSmsPhoneWhitelist',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateNacPortalSmsPhoneWhitelistResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_nac_portal_sms_phone_whitelist(
+        self,
+        request: main_models.UpdateNacPortalSmsPhoneWhitelistRequest,
+    ) -> main_models.UpdateNacPortalSmsPhoneWhitelistResponse:
+        runtime = RuntimeOptions()
+        return self.update_nac_portal_sms_phone_whitelist_with_options(request, runtime)
+
+    async def update_nac_portal_sms_phone_whitelist_async(
+        self,
+        request: main_models.UpdateNacPortalSmsPhoneWhitelistRequest,
+    ) -> main_models.UpdateNacPortalSmsPhoneWhitelistResponse:
+        runtime = RuntimeOptions()
+        return await self.update_nac_portal_sms_phone_whitelist_with_options_async(request, runtime)
 
     def update_nac_user_cert_status_with_options(
         self,
@@ -9014,6 +9562,92 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateRegistrationPolicyResponse:
         runtime = RuntimeOptions()
         return await self.update_registration_policy_with_options_async(request, runtime)
+
+    def update_risk_status_with_options(
+        self,
+        request: main_models.UpdateRiskStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateRiskStatusResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.risk_confirm):
+            body['RiskConfirm'] = request.risk_confirm
+        if not DaraCore.is_null(request.risk_confirm_desc):
+            body['RiskConfirmDesc'] = request.risk_confirm_desc
+        if not DaraCore.is_null(request.risk_id):
+            body['RiskId'] = request.risk_id
+        if not DaraCore.is_null(request.risk_scene):
+            body['RiskScene'] = request.risk_scene
+        if not DaraCore.is_null(request.status):
+            body['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateRiskStatus',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateRiskStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_risk_status_with_options_async(
+        self,
+        request: main_models.UpdateRiskStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateRiskStatusResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.risk_confirm):
+            body['RiskConfirm'] = request.risk_confirm
+        if not DaraCore.is_null(request.risk_confirm_desc):
+            body['RiskConfirmDesc'] = request.risk_confirm_desc
+        if not DaraCore.is_null(request.risk_id):
+            body['RiskId'] = request.risk_id
+        if not DaraCore.is_null(request.risk_scene):
+            body['RiskScene'] = request.risk_scene
+        if not DaraCore.is_null(request.status):
+            body['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateRiskStatus',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateRiskStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_risk_status(
+        self,
+        request: main_models.UpdateRiskStatusRequest,
+    ) -> main_models.UpdateRiskStatusResponse:
+        runtime = RuntimeOptions()
+        return self.update_risk_status_with_options(request, runtime)
+
+    async def update_risk_status_async(
+        self,
+        request: main_models.UpdateRiskStatusRequest,
+    ) -> main_models.UpdateRiskStatusResponse:
+        runtime = RuntimeOptions()
+        return await self.update_risk_status_with_options_async(request, runtime)
 
     def update_uninstall_applications_status_with_options(
         self,
