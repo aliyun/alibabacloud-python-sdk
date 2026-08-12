@@ -15,6 +15,7 @@ class HttpApiDeployConfig(DaraModel):
         builtin_route_names: List[str] = None,
         custom_domain_ids: List[str] = None,
         custom_domain_infos: List[main_models.HttpApiDeployConfigCustomDomainInfos] = None,
+        enable_system_models: bool = None,
         env_domain_ids: List[str] = None,
         env_domain_infos: List[main_models.HttpApiDeployConfigEnvDomainInfos] = None,
         environment_id: str = None,
@@ -27,19 +28,21 @@ class HttpApiDeployConfig(DaraModel):
         service_configs: List[main_models.HttpApiDeployConfigServiceConfigs] = None,
         sub_domains: List[main_models.HttpApiDeployConfigSubDomains] = None,
     ):
-        # Indicates whether auto-deploy is enabled.
+        # Specifies whether to automatically deploy.
         self.auto_deploy = auto_deploy
-        # The publishing scenario.
+        # The deployment scenario.
         self.backend_scene = backend_scene
         # The list of built-in route names.
         self.builtin_route_names = builtin_route_names
         # The list of custom domain name IDs.
         self.custom_domain_ids = custom_domain_ids
-        # The list of custom domain name information.
+        # The list of custom domain name details.
         self.custom_domain_infos = custom_domain_infos
-        # The list of environment domain name IDs. If this parameter is not specified, all environment domain names are bound. An empty array indicates that no environment domain names are bound.
+        # Specifies whether to enable gateway system models. This parameter takes effect only when the deployment scenario is AiAutoRouter. Default value: false. If enabled, built-in Qwen candidates from the platform are merged with the user\\"s own candidates.
+        self.enable_system_models = enable_system_models
+        # The list of environment domain name IDs. If not specified, all environment domain names are bound. An empty array indicates that no environment domain names are bound.
         self.env_domain_ids = env_domain_ids
-        # The list of environment domain name information.
+        # The list of environment domain name details.
         self.env_domain_infos = env_domain_infos
         # The environment ID.
         self.environment_id = environment_id
@@ -57,7 +60,7 @@ class HttpApiDeployConfig(DaraModel):
         self.route_backend = route_backend
         # The list of service configurations.
         self.service_configs = service_configs
-        # The list of subdomain information.
+        # The subdomain content list.
         self.sub_domains = sub_domains
 
     def validate(self):
@@ -109,6 +112,9 @@ class HttpApiDeployConfig(DaraModel):
         if self.custom_domain_infos is not None:
             for k1 in self.custom_domain_infos:
                 result['customDomainInfos'].append(k1.to_map() if k1 else None)
+
+        if self.enable_system_models is not None:
+            result['enableSystemModels'] = self.enable_system_models
 
         if self.env_domain_ids is not None:
             result['envDomainIds'] = self.env_domain_ids
@@ -172,6 +178,9 @@ class HttpApiDeployConfig(DaraModel):
             for k1 in m.get('customDomainInfos'):
                 temp_model = main_models.HttpApiDeployConfigCustomDomainInfos()
                 self.custom_domain_infos.append(temp_model.from_map(k1))
+
+        if m.get('enableSystemModels') is not None:
+            self.enable_system_models = m.get('enableSystemModels')
 
         if m.get('envDomainIds') is not None:
             self.env_domain_ids = m.get('envDomainIds')
@@ -309,7 +318,7 @@ class HttpApiDeployConfigServiceConfigs(DaraModel):
         self.multi_service_route_strategy = multi_service_route_strategy
         # The service display name.
         self.name = name
-        # The observability-based routing configuration.
+        # The observability metric routing configuration.
         self.observability_route_config = observability_route_config
         # The service port number.
         self.port = port

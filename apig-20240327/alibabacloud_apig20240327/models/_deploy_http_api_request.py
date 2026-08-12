@@ -148,7 +148,7 @@ class DeployHttpApiRequestRestApiConfigOperationDeployments(DaraModel):
         action: str = None,
         operation_id: str = None,
     ):
-        # The action type.
+        # The operation type.
         self.action = action
         # The unique identifier of the operation.
         self.operation_id = operation_id
@@ -193,7 +193,7 @@ class DeployHttpApiRequestRestApiConfigEnvironment(DaraModel):
         self.custom_domain_ids = custom_domain_ids
         # The environment ID.
         self.environment_id = environment_id
-        # The existing service configurations. In the single-service scenario, only one entry is allowed. In scenarios such as by-ratio or by-content, multiple entries are allowed.
+        # The existing service configurations. In the single service scenario, only one entry is allowed. In the by-ratio or by-content scenarios, multiple entries are allowed.
         self.service_configs = service_configs
 
     def validate(self):
@@ -257,8 +257,8 @@ class DeployHttpApiRequestRestApiConfigEnvironmentServiceConfigs(DaraModel):
         # The service port. Do not specify this parameter for dynamic ports.
         self.port = port
         # The service protocol. Valid values:
-        # - HTTP
-        # - HTTPS
+        # - HTTP.
+        # - HTTPS.
         self.protocol = protocol
         # The service ID.
         self.service_id = service_id

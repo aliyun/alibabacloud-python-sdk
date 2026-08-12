@@ -1,3 +1,9 @@
+2026-08-12 Version: 10.2.1
+- Update API CreateHttpApiRoute: add request parameters body.backendConfig.services.$.modelName.
+- Update API ListGatewayFeatures: add response parameters Body.data.items.$.constraints.
+- Update API UpdateHttpApiRoute: add request parameters body.backendConfig.services.$.modelName.
+
+
 2026-08-07 Version: 10.1.4
 - Update API QueryConsumerAuthorizationRules: add request parameters consumerGroupNameLike.
 

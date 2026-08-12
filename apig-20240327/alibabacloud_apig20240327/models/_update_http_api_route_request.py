@@ -200,12 +200,15 @@ class UpdateHttpApiRouteRequestBackendConfig(DaraModel):
 class UpdateHttpApiRouteRequestBackendConfigServices(DaraModel):
     def __init__(
         self,
+        model_name: str = None,
         port: int = None,
         protocol: str = None,
         service_id: str = None,
         version: str = None,
         weight: int = None,
     ):
+        # The target model name. This field is shared by multiple existing model backend scenarios. The specific routing or model rewrite semantics are determined by backendConfig.scene. This field is required for the SemanticRouter scenario. If this field is not configured in the AiAutoRouter scenario, the default model of the AI service is used.
+        self.model_name = model_name
         # The service port. Do not specify this parameter for dynamic ports.
         self.port = port
         # The service protocol. Valid values:
@@ -227,6 +230,9 @@ class UpdateHttpApiRouteRequestBackendConfigServices(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.model_name is not None:
+            result['modelName'] = self.model_name
+
         if self.port is not None:
             result['port'] = self.port
 
@@ -246,6 +252,9 @@ class UpdateHttpApiRouteRequestBackendConfigServices(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('modelName') is not None:
+            self.model_name = m.get('modelName')
+
         if m.get('port') is not None:
             self.port = m.get('port')
 

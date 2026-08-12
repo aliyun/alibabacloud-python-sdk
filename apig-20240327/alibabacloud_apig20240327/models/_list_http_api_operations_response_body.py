@@ -17,7 +17,7 @@ class ListHttpApiOperationsResponseBody(DaraModel):
     ):
         # The response status code.
         self.code = code
-        # The list of API operations.
+        # The list of operations.
         self.data = data
         # The response message.
         self.message = message
@@ -72,7 +72,7 @@ class ListHttpApiOperationsResponseBodyData(DaraModel):
         page_size: int = None,
         total_size: int = None,
     ):
-        # The list of API operations.
+        # The list of operations.
         self.items = items
         # The page number.
         self.page_number = page_number

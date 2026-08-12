@@ -25,15 +25,15 @@ class ListHttpApiRoutesRequest(DaraModel):
     ):
         # The backend service name. You can use this name to filter routes.
         self.backend_service_name = backend_service_name
-        # Filters the API list by a specific consumer authorization rule ID. The response only includes authorized APIs.
+        # Filters the API list by a specific consumer authorization rule ID. The response includes only authorized APIs.
         self.consumer_authorization_rule_id = consumer_authorization_rule_id
         # The deployment status of the route.
         self.deploy_statuses = deploy_statuses
-        # Filters route information by domain name ID.
+        # The domain name ID used to filter route information.
         self.domain_id = domain_id
         # The environment ID.
         self.environment_id = environment_id
-        # Specifies whether the request is for a deployment scenario.
+        # Specifies whether this is a deployment scenario.
         self.for_deploy = for_deploy
         # The cloud-native API gateway ID.
         self.gateway_id = gateway_id
@@ -47,11 +47,11 @@ class ListHttpApiRoutesRequest(DaraModel):
         self.page_size = page_size
         # Fuzzy match by route path.
         self.path_like = path_like
-        # Includes consumer authorization information in the response.
+        # Specifies whether to include consumer authorization information in the response.
         self.with_auth_policy_info = with_auth_policy_info
-        # Includes the authorization rule list of the specified consumer ID for each route in the response.
+        # Specifies a consumer ID so that the response includes the authorization rule list for the specified consumer in each route.
         self.with_consumer_info_by_id = with_consumer_info_by_id
-        # Includes the mount information of the specified plug-in ID for each route in the response.
+        # Specifies a plug-in ID so that the response includes the mount information of the specified plug-in in each route.
         self.with_plugin_attachment_by_plugin_id = with_plugin_attachment_by_plugin_id
 
     def validate(self):

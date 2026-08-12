@@ -103,15 +103,19 @@ class ListGatewayFeaturesResponseBodyData(DaraModel):
 class ListGatewayFeaturesResponseBodyDataItems(DaraModel):
     def __init__(
         self,
+        constraints: main_models.ListGatewayFeaturesResponseBodyDataItemsConstraints = None,
         definition: main_models.ListGatewayFeaturesResponseBodyDataItemsDefinition = None,
         value: str = None,
     ):
+        self.constraints = constraints
         # The parameter definition.
         self.definition = definition
         # The parameter value.
         self.value = value
 
     def validate(self):
+        if self.constraints:
+            self.constraints.validate()
         if self.definition:
             self.definition.validate()
 
@@ -120,6 +124,9 @@ class ListGatewayFeaturesResponseBodyDataItems(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.constraints is not None:
+            result['constraints'] = self.constraints.to_map()
+
         if self.definition is not None:
             result['definition'] = self.definition.to_map()
 
@@ -130,6 +137,10 @@ class ListGatewayFeaturesResponseBodyDataItems(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('constraints') is not None:
+            temp_model = main_models.ListGatewayFeaturesResponseBodyDataItemsConstraints()
+            self.constraints = temp_model.from_map(m.get('constraints'))
+
         if m.get('definition') is not None:
             temp_model = main_models.ListGatewayFeaturesResponseBodyDataItemsDefinition()
             self.definition = temp_model.from_map(m.get('definition'))
@@ -348,6 +359,33 @@ class ListGatewayFeaturesResponseBodyDataItemsDefinitionValueOptions(DaraModel):
 
         if m.get('label') is not None:
             self.label = m.get('label')
+
+        return self
+
+class ListGatewayFeaturesResponseBodyDataItemsConstraints(DaraModel):
+    def __init__(
+        self,
+        body_max_size_limit: int = None,
+    ):
+        self.body_max_size_limit = body_max_size_limit
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.body_max_size_limit is not None:
+            result['bodyMaxSizeLimit'] = self.body_max_size_limit
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('bodyMaxSizeLimit') is not None:
+            self.body_max_size_limit = m.get('bodyMaxSizeLimit')
 
         return self
 

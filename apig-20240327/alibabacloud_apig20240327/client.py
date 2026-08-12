@@ -23,31 +23,31 @@ class Client(OpenApiClient):
         super().__init__(config)
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
+            'ap-southeast-2': 'apig.ap-southeast-2.aliyuncs.com',
+            'ap-southeast-6': 'apig.ap-southeast-6.aliyuncs.com',
+            'ap-southeast-7': 'apig.ap-southeast-7.aliyuncs.com',
+            'cn-guangzhou': 'apig.cn-guangzhou.aliyuncs.com',
+            'cn-heyuan': 'apig.cn-heyuan.aliyuncs.com',
+            'cn-shenzhen': 'apig.cn-shenzhen.aliyuncs.com',
+            'cn-wulanchabu': 'apig.cn-wulanchabu.aliyuncs.com',
+            'cn-beijing': 'apig.cn-beijing.aliyuncs.com',
+            'ap-northeast-2': 'apig.ap-northeast-2.aliyuncs.com',
+            'ap-northeast-1': 'apig.ap-northeast-1.aliyuncs.com',
+            'cn-chengdu': 'apig.cn-chengdu.aliyuncs.com',
+            'cn-qingdao': 'apig.cn-qingdao.aliyuncs.com',
+            'cn-shanghai': 'apig.cn-shanghai.aliyuncs.com',
+            'cn-hongkong': 'apig.cn-hongkong.aliyuncs.com',
+            'ap-southeast-1': 'apig.ap-southeast-1.aliyuncs.com',
+            'ap-southeast-3': 'apig.ap-southeast-3.aliyuncs.com',
+            'ap-southeast-5': 'apig.ap-southeast-5.aliyuncs.com',
+            'cn-zhangjiakou': 'apig.cn-zhangjiakou.aliyuncs.com',
+            'cn-hangzhou': 'apig.cn-hangzhou.aliyuncs.com',
             'us-west-1': 'apig.us-west-1.aliyuncs.com',
             'us-east-1': 'apig.us-east-1.aliyuncs.com',
-            'me-east-1': 'apig.me-east-1.aliyuncs.com',
-            'me-central-1': 'apig.me-central-1.aliyuncs.com',
-            'eu-west-1': 'apig.eu-west-1.aliyuncs.com',
             'eu-central-1': 'apig.eu-central-1.aliyuncs.com',
-            'cn-zhangjiakou': 'apig.cn-zhangjiakou.aliyuncs.com',
-            'cn-wulanchabu': 'apig.cn-wulanchabu.aliyuncs.com',
-            'cn-shenzhen': 'apig.cn-shenzhen.aliyuncs.com',
-            'cn-shanghai': 'apig.cn-shanghai.aliyuncs.com',
-            'cn-qingdao': 'apig.cn-qingdao.aliyuncs.com',
-            'cn-hongkong': 'apig.cn-hongkong.aliyuncs.com',
-            'cn-heyuan': 'apig.cn-heyuan.aliyuncs.com',
-            'cn-hangzhou': 'apig.cn-hangzhou.aliyuncs.com',
-            'cn-guangzhou': 'apig.cn-guangzhou.aliyuncs.com',
-            'cn-chengdu': 'apig.cn-chengdu.aliyuncs.com',
-            'cn-beijing': 'apig.cn-beijing.aliyuncs.com',
-            'ap-southeast-7': 'apig.ap-southeast-7.aliyuncs.com',
-            'ap-southeast-6': 'apig.ap-southeast-6.aliyuncs.com',
-            'ap-southeast-5': 'apig.ap-southeast-5.aliyuncs.com',
-            'ap-southeast-3': 'apig.ap-southeast-3.aliyuncs.com',
-            'ap-southeast-2': 'apig.ap-southeast-2.aliyuncs.com',
-            'ap-southeast-1': 'apig.ap-southeast-1.aliyuncs.com',
-            'ap-northeast-2': 'apig.ap-northeast-2.aliyuncs.com',
-            'ap-northeast-1': 'apig.ap-northeast-1.aliyuncs.com'
+            'eu-west-1': 'apig.eu-west-1.aliyuncs.com',
+            'me-east-1': 'apig.me-east-1.aliyuncs.com',
+            'me-central-1': 'apig.me-central-1.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('apig', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -435,6 +435,206 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.batch_delete_consumer_authorization_rule_with_options_async(request, headers, runtime)
+
+    def batch_export_http_apis_with_options(
+        self,
+        request: main_models.BatchExportHttpApisRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchExportHttpApisResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.api_ids):
+            body['apiIds'] = request.api_ids
+        if not DaraCore.is_null(request.api_type):
+            body['apiType'] = request.api_type
+        if not DaraCore.is_null(request.extension_config):
+            body['extensionConfig'] = request.extension_config
+        if not DaraCore.is_null(request.format):
+            body['format'] = request.format
+        if not DaraCore.is_null(request.gateway_id):
+            body['gatewayId'] = request.gateway_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchExportHttpApis',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/http-apis/batch-export',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchExportHttpApisResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_export_http_apis_with_options_async(
+        self,
+        request: main_models.BatchExportHttpApisRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchExportHttpApisResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.api_ids):
+            body['apiIds'] = request.api_ids
+        if not DaraCore.is_null(request.api_type):
+            body['apiType'] = request.api_type
+        if not DaraCore.is_null(request.extension_config):
+            body['extensionConfig'] = request.extension_config
+        if not DaraCore.is_null(request.format):
+            body['format'] = request.format
+        if not DaraCore.is_null(request.gateway_id):
+            body['gatewayId'] = request.gateway_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchExportHttpApis',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/http-apis/batch-export',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchExportHttpApisResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_export_http_apis(
+        self,
+        request: main_models.BatchExportHttpApisRequest,
+    ) -> main_models.BatchExportHttpApisResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.batch_export_http_apis_with_options(request, headers, runtime)
+
+    async def batch_export_http_apis_async(
+        self,
+        request: main_models.BatchExportHttpApisRequest,
+    ) -> main_models.BatchExportHttpApisResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.batch_export_http_apis_with_options_async(request, headers, runtime)
+
+    def batch_import_http_apis_with_options(
+        self,
+        request: main_models.BatchImportHttpApisRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchImportHttpApisResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.allow_update):
+            body['allowUpdate'] = request.allow_update
+        if not DaraCore.is_null(request.api_type):
+            body['apiType'] = request.api_type
+        if not DaraCore.is_null(request.dry_run):
+            body['dryRun'] = request.dry_run
+        if not DaraCore.is_null(request.gateway_id):
+            body['gatewayId'] = request.gateway_id
+        if not DaraCore.is_null(request.resource_group_id):
+            body['resourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.spec_file_url):
+            body['specFileUrl'] = request.spec_file_url
+        if not DaraCore.is_null(request.spec_oss_config):
+            body['specOssConfig'] = request.spec_oss_config
+        if not DaraCore.is_null(request.strategy):
+            body['strategy'] = request.strategy
+        if not DaraCore.is_null(request.with_gateway_extension):
+            body['withGatewayExtension'] = request.with_gateway_extension
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchImportHttpApis',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/http-apis/batch-import',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchImportHttpApisResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_import_http_apis_with_options_async(
+        self,
+        request: main_models.BatchImportHttpApisRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchImportHttpApisResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.allow_update):
+            body['allowUpdate'] = request.allow_update
+        if not DaraCore.is_null(request.api_type):
+            body['apiType'] = request.api_type
+        if not DaraCore.is_null(request.dry_run):
+            body['dryRun'] = request.dry_run
+        if not DaraCore.is_null(request.gateway_id):
+            body['gatewayId'] = request.gateway_id
+        if not DaraCore.is_null(request.resource_group_id):
+            body['resourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.spec_file_url):
+            body['specFileUrl'] = request.spec_file_url
+        if not DaraCore.is_null(request.spec_oss_config):
+            body['specOssConfig'] = request.spec_oss_config
+        if not DaraCore.is_null(request.strategy):
+            body['strategy'] = request.strategy
+        if not DaraCore.is_null(request.with_gateway_extension):
+            body['withGatewayExtension'] = request.with_gateway_extension
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchImportHttpApis',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/http-apis/batch-import',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchImportHttpApisResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_import_http_apis(
+        self,
+        request: main_models.BatchImportHttpApisRequest,
+    ) -> main_models.BatchImportHttpApisResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.batch_import_http_apis_with_options(request, headers, runtime)
+
+    async def batch_import_http_apis_async(
+        self,
+        request: main_models.BatchImportHttpApisRequest,
+    ) -> main_models.BatchImportHttpApisResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.batch_import_http_apis_with_options_async(request, headers, runtime)
 
     def batch_remove_consumer_group_consumers_with_options(
         self,
@@ -4814,6 +5014,150 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_ai_model_provider_with_options_async(model_provider_id, request, headers, runtime)
 
+    def get_batch_export_task_with_options(
+        self,
+        task_id: str,
+        request: main_models.GetBatchExportTaskRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetBatchExportTaskResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetBatchExportTask',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/http-api-batch-export-tasks/{DaraURL.percent_encode(task_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetBatchExportTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_batch_export_task_with_options_async(
+        self,
+        task_id: str,
+        request: main_models.GetBatchExportTaskRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetBatchExportTaskResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetBatchExportTask',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/http-api-batch-export-tasks/{DaraURL.percent_encode(task_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetBatchExportTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_batch_export_task(
+        self,
+        task_id: str,
+        request: main_models.GetBatchExportTaskRequest,
+    ) -> main_models.GetBatchExportTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_batch_export_task_with_options(task_id, request, headers, runtime)
+
+    async def get_batch_export_task_async(
+        self,
+        task_id: str,
+        request: main_models.GetBatchExportTaskRequest,
+    ) -> main_models.GetBatchExportTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_batch_export_task_with_options_async(task_id, request, headers, runtime)
+
+    def get_batch_import_task_with_options(
+        self,
+        task_id: str,
+        request: main_models.GetBatchImportTaskRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetBatchImportTaskResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetBatchImportTask',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/http-api-batch-import-tasks/{DaraURL.percent_encode(task_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetBatchImportTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_batch_import_task_with_options_async(
+        self,
+        task_id: str,
+        request: main_models.GetBatchImportTaskRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetBatchImportTaskResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetBatchImportTask',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/http-api-batch-import-tasks/{DaraURL.percent_encode(task_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetBatchImportTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_batch_import_task(
+        self,
+        task_id: str,
+        request: main_models.GetBatchImportTaskRequest,
+    ) -> main_models.GetBatchImportTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_batch_import_task_with_options(task_id, request, headers, runtime)
+
+    async def get_batch_import_task_async(
+        self,
+        task_id: str,
+        request: main_models.GetBatchImportTaskRequest,
+    ) -> main_models.GetBatchImportTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_batch_import_task_with_options_async(task_id, request, headers, runtime)
+
     def get_consumer_with_options(
         self,
         consumer_id: str,
@@ -6905,6 +7249,110 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.list_ai_model_providers_with_options_async(request, headers, runtime)
+
+    def list_batch_export_tasks_with_options(
+        self,
+        request: main_models.ListBatchExportTasksRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListBatchExportTasksResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['endTime'] = request.end_time
+        if not DaraCore.is_null(request.gateway_id):
+            query['gatewayId'] = request.gateway_id
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.start_time):
+            query['startTime'] = request.start_time
+        if not DaraCore.is_null(request.statuses):
+            query['statuses'] = request.statuses
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListBatchExportTasks',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/http-api-batch-export-tasks',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListBatchExportTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_batch_export_tasks_with_options_async(
+        self,
+        request: main_models.ListBatchExportTasksRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListBatchExportTasksResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['endTime'] = request.end_time
+        if not DaraCore.is_null(request.gateway_id):
+            query['gatewayId'] = request.gateway_id
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.start_time):
+            query['startTime'] = request.start_time
+        if not DaraCore.is_null(request.statuses):
+            query['statuses'] = request.statuses
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListBatchExportTasks',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/http-api-batch-export-tasks',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListBatchExportTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_batch_export_tasks(
+        self,
+        request: main_models.ListBatchExportTasksRequest,
+    ) -> main_models.ListBatchExportTasksResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_batch_export_tasks_with_options(request, headers, runtime)
+
+    async def list_batch_export_tasks_async(
+        self,
+        request: main_models.ListBatchExportTasksRequest,
+    ) -> main_models.ListBatchExportTasksResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_batch_export_tasks_with_options_async(request, headers, runtime)
 
     def list_consumer_authorization_rules_with_options(
         self,

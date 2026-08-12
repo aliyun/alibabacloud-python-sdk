@@ -333,7 +333,7 @@ class QueryConsumerAuthorizationRulesResponseBodyDataItemsResourceInfo(DaraModel
         operation_info: main_models.HttpApiOperationInfo = None,
         route: main_models.HttpRoute = None,
     ):
-        # The API operation information.
+        # The operation information.
         self.operation_info = operation_info
         # The routing rule.
         self.route = route

@@ -24,8 +24,9 @@ class QueryConsumerAuthorizationRulesRequest(DaraModel):
     ):
         # The API name.
         self.api_name_like = api_name_like
-        # The consumer group ID. If specified, the authorization rules of the consumer group are queried.
+        # The consumer group ID. If specified, the authorization rules for the consumer group are queried.
         self.consumer_group_id = consumer_group_id
+        # The consumer group name for fuzzy match.
         self.consumer_group_name_like = consumer_group_name_like
         # The consumer ID.
         self.consumer_id = consumer_id

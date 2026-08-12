@@ -111,6 +111,12 @@ from ._batch_add_consumer_group_consumers_response import BatchAddConsumerGroupC
 from ._batch_delete_consumer_authorization_rule_request import BatchDeleteConsumerAuthorizationRuleRequest
 from ._batch_delete_consumer_authorization_rule_response_body import BatchDeleteConsumerAuthorizationRuleResponseBody
 from ._batch_delete_consumer_authorization_rule_response import BatchDeleteConsumerAuthorizationRuleResponse
+from ._batch_export_http_apis_request import BatchExportHttpApisRequest
+from ._batch_export_http_apis_response_body import BatchExportHttpApisResponseBody
+from ._batch_export_http_apis_response import BatchExportHttpApisResponse
+from ._batch_import_http_apis_request import BatchImportHttpApisRequest
+from ._batch_import_http_apis_response_body import BatchImportHttpApisResponseBody
+from ._batch_import_http_apis_response import BatchImportHttpApisResponse
 from ._batch_remove_consumer_group_consumers_request import BatchRemoveConsumerGroupConsumersRequest
 from ._batch_remove_consumer_group_consumers_response_body import BatchRemoveConsumerGroupConsumersResponseBody
 from ._batch_remove_consumer_group_consumers_response import BatchRemoveConsumerGroupConsumersResponse
@@ -250,6 +256,12 @@ from ._get_ai_model_card_response import GetAiModelCardResponse
 from ._get_ai_model_provider_request import GetAiModelProviderRequest
 from ._get_ai_model_provider_response_body import GetAiModelProviderResponseBody
 from ._get_ai_model_provider_response import GetAiModelProviderResponse
+from ._get_batch_export_task_request import GetBatchExportTaskRequest
+from ._get_batch_export_task_response_body import GetBatchExportTaskResponseBody
+from ._get_batch_export_task_response import GetBatchExportTaskResponse
+from ._get_batch_import_task_request import GetBatchImportTaskRequest
+from ._get_batch_import_task_response_body import GetBatchImportTaskResponseBody
+from ._get_batch_import_task_response import GetBatchImportTaskResponse
 from ._get_consumer_response_body import GetConsumerResponseBody
 from ._get_consumer_response import GetConsumerResponse
 from ._get_consumer_authorization_rule_response_body import GetConsumerAuthorizationRuleResponseBody
@@ -318,6 +330,9 @@ from ._list_ai_model_cards_response import ListAiModelCardsResponse
 from ._list_ai_model_providers_request import ListAiModelProvidersRequest
 from ._list_ai_model_providers_response_body import ListAiModelProvidersResponseBody
 from ._list_ai_model_providers_response import ListAiModelProvidersResponse
+from ._list_batch_export_tasks_request import ListBatchExportTasksRequest
+from ._list_batch_export_tasks_response_body import ListBatchExportTasksResponseBody
+from ._list_batch_export_tasks_response import ListBatchExportTasksResponse
 from ._list_consumer_authorization_rules_request import ListConsumerAuthorizationRulesRequest
 from ._list_consumer_authorization_rules_response_body import ListConsumerAuthorizationRulesResponseBody
 from ._list_consumer_authorization_rules_response import ListConsumerAuthorizationRulesResponse
@@ -600,6 +615,10 @@ from ._add_gateway_quota_rule_response_body import AddGatewayQuotaRuleResponseBo
 from ._add_gateway_quota_rule_response_body import AddGatewayQuotaRuleResponseBodyDataConflictPreview
 from ._add_gateway_quota_rule_response_body import AddGatewayQuotaRuleResponseBodyData
 from ._batch_add_consumer_group_consumers_response_body import BatchAddConsumerGroupConsumersResponseBodyData
+from ._batch_export_http_apis_request import BatchExportHttpApisRequestExtensionConfig
+from ._batch_export_http_apis_response_body import BatchExportHttpApisResponseBodyData
+from ._batch_import_http_apis_request import BatchImportHttpApisRequestSpecOssConfig
+from ._batch_import_http_apis_response_body import BatchImportHttpApisResponseBodyData
 from ._batch_remove_consumer_group_consumers_response_body import BatchRemoveConsumerGroupConsumersResponseBodyData
 from ._create_ai_model_card_request import CreateAiModelCardRequestAvailablePaths
 from ._create_ai_model_card_request import CreateAiModelCardRequestCredit
@@ -676,6 +695,26 @@ from ._get_ai_model_provider_response_body import GetAiModelProviderResponseBody
 from ._get_ai_model_provider_response_body import GetAiModelProviderResponseBodyDataModelCardsMeta
 from ._get_ai_model_provider_response_body import GetAiModelProviderResponseBodyDataModelCards
 from ._get_ai_model_provider_response_body import GetAiModelProviderResponseBodyData
+from ._get_batch_export_task_response_body import GetBatchExportTaskResponseBodyDataResultFailureItems
+from ._get_batch_export_task_response_body import GetBatchExportTaskResponseBodyDataResultSuccessItems
+from ._get_batch_export_task_response_body import GetBatchExportTaskResponseBodyDataResult
+from ._get_batch_export_task_response_body import GetBatchExportTaskResponseBodyData
+from ._get_batch_import_task_response_body import GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoExistHttpApiInfoVersionInfo
+from ._get_batch_import_task_response_body import GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoExistHttpApiInfo
+from ._get_batch_import_task_response_body import GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoFailureComponents
+from ._get_batch_import_task_response_body import GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoFailureOperations
+from ._get_batch_import_task_response_body import GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoFailureRoutes
+from ._get_batch_import_task_response_body import GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoSuccessComponents
+from ._get_batch_import_task_response_body import GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoSuccessOperations
+from ._get_batch_import_task_response_body import GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoSuccessRoutes
+from ._get_batch_import_task_response_body import GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfo
+from ._get_batch_import_task_response_body import GetBatchImportTaskResponseBodyDataResultDryRunResults
+from ._get_batch_import_task_response_body import GetBatchImportTaskResponseBodyDataResultFailureItems
+from ._get_batch_import_task_response_body import GetBatchImportTaskResponseBodyDataResultImportRequestSpecOssConfig
+from ._get_batch_import_task_response_body import GetBatchImportTaskResponseBodyDataResultImportRequest
+from ._get_batch_import_task_response_body import GetBatchImportTaskResponseBodyDataResultSuccessItems
+from ._get_batch_import_task_response_body import GetBatchImportTaskResponseBodyDataResult
+from ._get_batch_import_task_response_body import GetBatchImportTaskResponseBodyData
 from ._get_consumer_response_body import GetConsumerResponseBodyDataConsumerGroups
 from ._get_consumer_response_body import GetConsumerResponseBodyData
 from ._get_consumer_group_response_body import GetConsumerGroupResponseBodyData
@@ -744,6 +783,8 @@ from ._list_ai_model_providers_response_body import ListAiModelProvidersResponse
 from ._list_ai_model_providers_response_body import ListAiModelProvidersResponseBodyDataItemsModelCards
 from ._list_ai_model_providers_response_body import ListAiModelProvidersResponseBodyDataItems
 from ._list_ai_model_providers_response_body import ListAiModelProvidersResponseBodyData
+from ._list_batch_export_tasks_response_body import ListBatchExportTasksResponseBodyDataItems
+from ._list_batch_export_tasks_response_body import ListBatchExportTasksResponseBodyData
 from ._list_consumer_authorization_rules_response_body import ListConsumerAuthorizationRulesResponseBodyDataItems
 from ._list_consumer_authorization_rules_response_body import ListConsumerAuthorizationRulesResponseBodyData
 from ._list_consumer_group_consumers_response_body import ListConsumerGroupConsumersResponseBodyDataItems
@@ -759,6 +800,7 @@ from ._list_environments_response_body import ListEnvironmentsResponseBodyData
 from ._list_external_services_response_body import ListExternalServicesResponseBodyDataItemsServices
 from ._list_external_services_response_body import ListExternalServicesResponseBodyDataItems
 from ._list_external_services_response_body import ListExternalServicesResponseBodyData
+from ._list_gateway_features_response_body import ListGatewayFeaturesResponseBodyDataItemsConstraints
 from ._list_gateway_features_response_body import ListGatewayFeaturesResponseBodyDataItemsDefinitionValueOptions
 from ._list_gateway_features_response_body import ListGatewayFeaturesResponseBodyDataItemsDefinition
 from ._list_gateway_features_response_body import ListGatewayFeaturesResponseBodyDataItems
@@ -961,6 +1003,12 @@ __all__ = [
     BatchDeleteConsumerAuthorizationRuleRequest,
     BatchDeleteConsumerAuthorizationRuleResponseBody,
     BatchDeleteConsumerAuthorizationRuleResponse,
+    BatchExportHttpApisRequest,
+    BatchExportHttpApisResponseBody,
+    BatchExportHttpApisResponse,
+    BatchImportHttpApisRequest,
+    BatchImportHttpApisResponseBody,
+    BatchImportHttpApisResponse,
     BatchRemoveConsumerGroupConsumersRequest,
     BatchRemoveConsumerGroupConsumersResponseBody,
     BatchRemoveConsumerGroupConsumersResponse,
@@ -1100,6 +1148,12 @@ __all__ = [
     GetAiModelProviderRequest,
     GetAiModelProviderResponseBody,
     GetAiModelProviderResponse,
+    GetBatchExportTaskRequest,
+    GetBatchExportTaskResponseBody,
+    GetBatchExportTaskResponse,
+    GetBatchImportTaskRequest,
+    GetBatchImportTaskResponseBody,
+    GetBatchImportTaskResponse,
     GetConsumerResponseBody,
     GetConsumerResponse,
     GetConsumerAuthorizationRuleResponseBody,
@@ -1168,6 +1222,9 @@ __all__ = [
     ListAiModelProvidersRequest,
     ListAiModelProvidersResponseBody,
     ListAiModelProvidersResponse,
+    ListBatchExportTasksRequest,
+    ListBatchExportTasksResponseBody,
+    ListBatchExportTasksResponse,
     ListConsumerAuthorizationRulesRequest,
     ListConsumerAuthorizationRulesResponseBody,
     ListConsumerAuthorizationRulesResponse,
@@ -1450,6 +1507,10 @@ __all__ = [
     AddGatewayQuotaRuleResponseBodyDataConflictPreview,
     AddGatewayQuotaRuleResponseBodyData,
     BatchAddConsumerGroupConsumersResponseBodyData,
+    BatchExportHttpApisRequestExtensionConfig,
+    BatchExportHttpApisResponseBodyData,
+    BatchImportHttpApisRequestSpecOssConfig,
+    BatchImportHttpApisResponseBodyData,
     BatchRemoveConsumerGroupConsumersResponseBodyData,
     CreateAiModelCardRequestAvailablePaths,
     CreateAiModelCardRequestCredit,
@@ -1526,6 +1587,26 @@ __all__ = [
     GetAiModelProviderResponseBodyDataModelCardsMeta,
     GetAiModelProviderResponseBodyDataModelCards,
     GetAiModelProviderResponseBodyData,
+    GetBatchExportTaskResponseBodyDataResultFailureItems,
+    GetBatchExportTaskResponseBodyDataResultSuccessItems,
+    GetBatchExportTaskResponseBodyDataResult,
+    GetBatchExportTaskResponseBodyData,
+    GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoExistHttpApiInfoVersionInfo,
+    GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoExistHttpApiInfo,
+    GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoFailureComponents,
+    GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoFailureOperations,
+    GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoFailureRoutes,
+    GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoSuccessComponents,
+    GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoSuccessOperations,
+    GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoSuccessRoutes,
+    GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfo,
+    GetBatchImportTaskResponseBodyDataResultDryRunResults,
+    GetBatchImportTaskResponseBodyDataResultFailureItems,
+    GetBatchImportTaskResponseBodyDataResultImportRequestSpecOssConfig,
+    GetBatchImportTaskResponseBodyDataResultImportRequest,
+    GetBatchImportTaskResponseBodyDataResultSuccessItems,
+    GetBatchImportTaskResponseBodyDataResult,
+    GetBatchImportTaskResponseBodyData,
     GetConsumerResponseBodyDataConsumerGroups,
     GetConsumerResponseBodyData,
     GetConsumerGroupResponseBodyData,
@@ -1594,6 +1675,8 @@ __all__ = [
     ListAiModelProvidersResponseBodyDataItemsModelCards,
     ListAiModelProvidersResponseBodyDataItems,
     ListAiModelProvidersResponseBodyData,
+    ListBatchExportTasksResponseBodyDataItems,
+    ListBatchExportTasksResponseBodyData,
     ListConsumerAuthorizationRulesResponseBodyDataItems,
     ListConsumerAuthorizationRulesResponseBodyData,
     ListConsumerGroupConsumersResponseBodyDataItems,
@@ -1609,6 +1692,7 @@ __all__ = [
     ListExternalServicesResponseBodyDataItemsServices,
     ListExternalServicesResponseBodyDataItems,
     ListExternalServicesResponseBodyData,
+    ListGatewayFeaturesResponseBodyDataItemsConstraints,
     ListGatewayFeaturesResponseBodyDataItemsDefinitionValueOptions,
     ListGatewayFeaturesResponseBodyDataItemsDefinition,
     ListGatewayFeaturesResponseBodyDataItems,

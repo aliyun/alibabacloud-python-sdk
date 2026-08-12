@@ -29,31 +29,25 @@ class ImportHttpApiRequest(DaraModel):
         self.deploy_configs = deploy_configs
         # The description of the imported API. If not specified, the description is extracted from the API definition. Maximum length: 255 bytes.
         self.description = description
-        # Specifies whether to enable dry run mode. If enabled, only validation is performed without performing the actual import.
+        # Specifies whether to perform a dry run. If enabled, only validation is performed without the actual import.
         self.dry_run = dry_run
         # The gateway ID.
         self.gateway_id = gateway_id
         # The MCP route ID.
         self.mcp_route_id = mcp_route_id
-        # The name of the imported API. If not specified, the name is extracted from the API definition file. If the API name and version configuration already exist, this import updates the existing API definition based on the strategy field.
+        # The name of the imported API. If not specified, the name is extracted from the API definition file. If an API with the same name and version configuration already exists, this import updates the existing API definition based on the strategy field.
         self.name = name
         # The [resource group ID](https://help.aliyun.com/document_detail/151181.html).
         self.resource_group_id = resource_group_id
-        # The Base64-encoded API definition that supports OAS 2.0 and OAS 3.0 specifications in YAML or JSON format. This parameter takes priority over the specFileUrl parameter. If the file size exceeds 10 MB, use the specFileUrl parameter instead.
+        # The Base64-encoded API definition. OAS 2.0 and OAS 3.0 specifications are supported in YAML or JSON format. This parameter takes priority over the specFileUrl parameter. If the file size exceeds 10 MB, use the specFileUrl parameter instead.
         self.spec_content_base_64 = spec_content_base_64
-        # The download URL of the API definition file. The URL must be accessible from the public network or be an internal network OSS download URL in the same region. The URL must have download permissions. For OSS files that are not publicly readable, see References [Download objects using presigned URLs](https://help.aliyun.com/document_detail/39607.html) and provide a URL with download permissions. Currently, only API definition files stored on OSS are supported.
+        # The download URL of the API definition file. The URL must be accessible over the Internet or be an internal network OSS download URL in the same region. The URL must have download permissions. For OSS files that are not publicly readable, see References [Download objects using presigned URLs](https://help.aliyun.com/document_detail/39607.html) and provide a URL with download permissions. Only API definition files stored in OSS are supported.
         self.spec_file_url = spec_file_url
-        # The OSS configuration.
+        # The OSS information.
         self.spec_oss_config = spec_oss_config
         # The update strategy to use when the imported API name and version management match an existing API. Valid values:
-        # 
-        # - SpecFirst: the imported file takes priority. New operations are added and existing operations are updated. Operations not mentioned in the file remain unchanged.
-        # - SpecOnly: the imported file is used as the sole source of truth.
-        # - ExistFirst: the existing API takes priority. Only new operations are added. Existing operations are not updated.
-        # 
-        # Default value: ExistFirst.
         self.strategy = strategy
-        # If this field is specified, this import updates the specified API instead of importing a new one or searching for an existing API based on the API name and version management configuration. The target API must be of the REST type.
+        # If this field is specified, the import updates the specified API instead of importing a new one or searching for an existing API by name and version management configuration. The target API must be of the REST type.
         self.target_http_api_id = target_http_api_id
         # The API version configuration. If version configuration is enabled and the version number and API name match an existing API, this import is treated as an update. If version configuration is not enabled and the API name matches an existing API, this import is treated as an update.
         self.version_config = version_config

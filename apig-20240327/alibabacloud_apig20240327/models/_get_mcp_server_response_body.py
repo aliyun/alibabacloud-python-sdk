@@ -93,7 +93,7 @@ class GetMcpServerResponseBodyData(DaraModel):
     ):
         # API ID。
         self.api_id = api_id
-        # The list of assembly sources. This parameter is required when type is AssemblyMCP.
+        # The list of assembled sources. This parameter is required when type is AssemblyMCP.
         self.assembled_sources = assembled_sources
         # The backend service of the route.
         self.backend = backend
