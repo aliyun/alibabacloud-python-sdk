@@ -12,22 +12,28 @@ class UpdateEngineConfigRequest(DaraModel):
         environment: str = None,
         instance_id: str = None,
         name: str = None,
+        type: str = None,
     ):
         # The content of the engine configuration.
         self.config_value = config_value
+        # The description.
         self.description = description
-        # The environment.
+        # The runtime environment.
         # 
-        # - Daily: Daily environment.
+        # Valid values:
         # 
-        # - Pre: Pre-production environment.
+        # - Daily: daily environment.
         # 
-        # - Prod: Production environment.
+        # - Pre: staging environment.
+        # 
+        # - Prod: production environment.
         self.environment = environment
-        # The instance ID. To get the instance ID, see [ListInstances](https://help.aliyun.com/document_detail/2411819.html).
+        # The instance ID. For information about how to obtain the instance ID, see [ListInstances](https://help.aliyun.com/document_detail/2411819.html).
         self.instance_id = instance_id
-        # The name of the engine configuration.
+        # The engine configuration name.
         self.name = name
+        # The engine configuration type.
+        self.type = type
 
     def validate(self):
         pass
@@ -52,6 +58,9 @@ class UpdateEngineConfigRequest(DaraModel):
         if self.name is not None:
             result['Name'] = self.name
 
+        if self.type is not None:
+            result['Type'] = self.type
+
         return result
 
     def from_map(self, m: dict = None):
@@ -70,6 +79,9 @@ class UpdateEngineConfigRequest(DaraModel):
 
         if m.get('Name') is not None:
             self.name = m.get('Name')
+
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
 
         return self
 

@@ -12,22 +12,26 @@ class CreateEngineConfigRequest(DaraModel):
         environment: str = None,
         instance_id: str = None,
         name: str = None,
+        type: str = None,
     ):
-        # The content of the engine config.
+        # The content of the engine configuration.
         self.config_value = config_value
+        # The description.
         self.description = description
-        # The environment. Valid values:
+        # The runtime environment. Valid values:
         # 
-        # - `Daily`: The daily environment.
+        # - Daily: daily environment.
         # 
-        # - `Pre`: The pre-production environment.
+        # - Pre: staging environment.
         # 
-        # - `Prod`: The production environment.
+        # - Prod: production environment.
         self.environment = environment
-        # The ID of the instance. You can obtain this ID by calling the [ListInstances](https://help.aliyun.com/document_detail/2411819.html) operation.
+        # The instance ID. You can obtain the ID from the [ListInstances](https://help.aliyun.com/document_detail/2411819.html) operation.
         self.instance_id = instance_id
-        # The name of the engine config.
+        # The name of the engine configuration.
         self.name = name
+        # The type of the engine configuration.
+        self.type = type
 
     def validate(self):
         pass
@@ -52,6 +56,9 @@ class CreateEngineConfigRequest(DaraModel):
         if self.name is not None:
             result['Name'] = self.name
 
+        if self.type is not None:
+            result['Type'] = self.type
+
         return result
 
     def from_map(self, m: dict = None):
@@ -70,6 +77,9 @@ class CreateEngineConfigRequest(DaraModel):
 
         if m.get('Name') is not None:
             self.name = m.get('Name')
+
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
 
         return self
 

@@ -14,11 +14,11 @@ class ListEngineConfigsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # A list of engine configurations.
+        # The list of engine configurations.
         self.engine_configs = engine_configs
         # The request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # The total number of elements in the list.
         self.total_count = total_count
 
     def validate(self):
@@ -73,37 +73,40 @@ class ListEngineConfigsResponseBodyEngineConfigs(DaraModel):
         gmt_released_time: str = None,
         name: str = None,
         status: str = None,
+        type: str = None,
         version: str = None,
     ):
         # The content of the engine configuration.
         self.config_value = config_value
-        # The description of the engine configuration.
+        # The description.
         self.description = description
-        # The ID of the engine configuration.
+        # The engine configuration ID.
         self.engine_config_id = engine_config_id
-        # The environment. Valid values:
+        # The runtime environment.
         # 
-        # - **Daily**: the development and test environment.
+        # - Daily: daily environment.
         # 
-        # - **Pre**: the pre-production environment.
+        # - Pre: staging environment.
         # 
-        # - **Prod**: the production environment.
+        # - Prod: production environment.
         self.environment = environment
         # The creation time.
         self.gmt_create_time = gmt_create_time
-        # The modification time.
+        # The update time.
         self.gmt_modified_time = gmt_modified_time
         # The release time.
         self.gmt_released_time = gmt_released_time
-        # The name of the engine configuration.
+        # The engine configuration name.
         self.name = name
-        # The status of the engine configuration. Valid values:
+        # The status.
         # 
-        # - **Released**: The configuration has been released.
+        # - Released: released.
         # 
-        # - **Unreleased**: The configuration has not been released.
+        # - UnReleased: not released.
         self.status = status
-        # The version of the currently released or most recently updated engine configuration.
+        # The engine configuration type.
+        self.type = type
+        # The version number of the currently released or most recently updated version.
         self.version = version
 
     def validate(self):
@@ -141,6 +144,9 @@ class ListEngineConfigsResponseBodyEngineConfigs(DaraModel):
         if self.status is not None:
             result['Status'] = self.status
 
+        if self.type is not None:
+            result['Type'] = self.type
+
         if self.version is not None:
             result['Version'] = self.version
 
@@ -174,6 +180,9 @@ class ListEngineConfigsResponseBodyEngineConfigs(DaraModel):
 
         if m.get('Status') is not None:
             self.status = m.get('Status')
+
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
 
         if m.get('Version') is not None:
             self.version = m.get('Version')

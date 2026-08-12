@@ -1,3 +1,13 @@
+2026-08-12 Version: 7.1.2
+- Update API CreateEngineConfig: add request parameters body.Type.
+- Update API GetEngineConfig: add response parameters Body.Type.
+- Update API ListEngineConfigs: add response parameters Body.EngineConfigs.$.Type.
+- Update API ListRecallManagementServices: add request parameters Name.
+- Update API QuerySampleConsistencyJobDifference: add response parameters Body.NumberFeatureDifferences.$.ReplyTableFeatureRawValue.
+- Update API QuerySampleConsistencyJobDifference: add response parameters Body.NumberFeatureDifferences.$.SampleTableFeatureRawValue.
+- Update API UpdateEngineConfig: add request parameters body.Type.
+
+
 2026-07-23 Version: 7.2.0
 - Support API ShoppingAssistant.
 - Support API StopTrafficControlFlinkTask.

@@ -14,7 +14,7 @@ class GetInstanceResourceTableResponseBody(DaraModel):
         request_id: str = None,
         table_name: str = None,
     ):
-        # The list of fields in the data table.
+        # The list of fields in the table.
         self.fields = fields
         # The request ID.
         self.request_id = request_id
@@ -74,7 +74,7 @@ class GetInstanceResourceTableResponseBodyFields(DaraModel):
         self.is_dimension_field = is_dimension_field
         # Indicates whether the field is a partition field.
         self.is_partition_field = is_partition_field
-        # The meaning of the field.
+        # The field meaning.
         self.meaning = meaning
         # The field name.
         self.name = name

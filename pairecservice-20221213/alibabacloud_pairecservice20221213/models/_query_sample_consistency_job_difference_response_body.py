@@ -148,15 +148,19 @@ class QuerySampleConsistencyJobDifferenceResponseBodyNumberFeatureDifferences(Da
         self,
         diff_value: float = None,
         item_id: str = None,
+        reply_table_feature_raw_value: str = None,
         reply_table_feature_value: float = None,
         request_id: str = None,
+        sample_table_feature_raw_value: str = None,
         sample_table_feature_value: float = None,
         user_id: str = None,
     ):
         self.diff_value = diff_value
         self.item_id = item_id
+        self.reply_table_feature_raw_value = reply_table_feature_raw_value
         self.reply_table_feature_value = reply_table_feature_value
         self.request_id = request_id
+        self.sample_table_feature_raw_value = sample_table_feature_raw_value
         self.sample_table_feature_value = sample_table_feature_value
         self.user_id = user_id
 
@@ -174,11 +178,17 @@ class QuerySampleConsistencyJobDifferenceResponseBodyNumberFeatureDifferences(Da
         if self.item_id is not None:
             result['ItemId'] = self.item_id
 
+        if self.reply_table_feature_raw_value is not None:
+            result['ReplyTableFeatureRawValue'] = self.reply_table_feature_raw_value
+
         if self.reply_table_feature_value is not None:
             result['ReplyTableFeatureValue'] = self.reply_table_feature_value
 
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+
+        if self.sample_table_feature_raw_value is not None:
+            result['SampleTableFeatureRawValue'] = self.sample_table_feature_raw_value
 
         if self.sample_table_feature_value is not None:
             result['SampleTableFeatureValue'] = self.sample_table_feature_value
@@ -196,11 +206,17 @@ class QuerySampleConsistencyJobDifferenceResponseBodyNumberFeatureDifferences(Da
         if m.get('ItemId') is not None:
             self.item_id = m.get('ItemId')
 
+        if m.get('ReplyTableFeatureRawValue') is not None:
+            self.reply_table_feature_raw_value = m.get('ReplyTableFeatureRawValue')
+
         if m.get('ReplyTableFeatureValue') is not None:
             self.reply_table_feature_value = m.get('ReplyTableFeatureValue')
 
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+
+        if m.get('SampleTableFeatureRawValue') is not None:
+            self.sample_table_feature_raw_value = m.get('SampleTableFeatureRawValue')
 
         if m.get('SampleTableFeatureValue') is not None:
             self.sample_table_feature_value = m.get('SampleTableFeatureValue')

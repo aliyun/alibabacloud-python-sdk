@@ -16,24 +16,25 @@ class GetEngineConfigResponseBody(DaraModel):
         name: str = None,
         request_id: str = None,
         status: str = None,
+        type: str = None,
     ):
         # The content of the engine configuration.
         self.config_value = config_value
-        # The description of the engine configuration.
+        # The description.
         self.description = description
-        # The environment. Valid values:
+        # The runtime environment. Valid values:
         # 
-        # - Daily: The daily environment.
+        # - Daily: daily environment.
         # 
-        # - Pre: The pre-production environment.
+        # - Pre: staging environment.
         # 
-        # - Prod: The production environment.
+        # - Prod: production environment.
         self.environment = environment
-        # The time the engine configuration was created.
+        # The creation time.
         self.gmt_create_time = gmt_create_time
-        # The time the engine configuration was last modified.
+        # The update time.
         self.gmt_modified_time = gmt_modified_time
-        # The time the engine configuration was published.
+        # The publish time.
         self.gmt_released_time = gmt_released_time
         # The engine configuration name.
         self.name = name
@@ -41,10 +42,12 @@ class GetEngineConfigResponseBody(DaraModel):
         self.request_id = request_id
         # The status. Valid values:
         # 
-        # - Released: Published
+        # - Released: published.
         # 
-        # - UnReleased: Unpublished
+        # - UnReleased: not published.
         self.status = status
+        # The engine configuration type.
+        self.type = type
 
     def validate(self):
         pass
@@ -81,6 +84,9 @@ class GetEngineConfigResponseBody(DaraModel):
         if self.status is not None:
             result['Status'] = self.status
 
+        if self.type is not None:
+            result['Type'] = self.type
+
         return result
 
     def from_map(self, m: dict = None):
@@ -111,6 +117,9 @@ class GetEngineConfigResponseBody(DaraModel):
 
         if m.get('Status') is not None:
             self.status = m.get('Status')
+
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
 
         return self
 

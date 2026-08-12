@@ -9,33 +9,32 @@ class ListRecallManagementServicesRequest(DaraModel):
         self,
         instance_id: str = None,
         max_results: int = None,
+        name: str = None,
         next_token: str = None,
         order: str = None,
         page_number: int = None,
         page_size: int = None,
         sort_by: str = None,
     ):
-        # **The ID of the instance.**
+        # The instance ID.
         self.instance_id = instance_id
-        # This parameter is not yet available.
+        # This parameter is not currently in effect.
         self.max_results = max_results
-        # This parameter is not yet available.
+        # Filters results by name.
+        self.name = name
+        # This parameter is not currently in effect.
         self.next_token = next_token
-        # **The sort order.** Valid values:
-        # 
+        # The sort order. Valid values:  
         # - ASC: ascending order.
-        # 
         # - DESC: descending order.
         self.order = order
-        # **The number of the page to return.**
+        # The page number.
         self.page_number = page_number
-        # **The number of entries to return on each page.**
+        # The page size.
         self.page_size = page_size
-        # **The field to sort by.** Valid values:
-        # 
-        # - GmtCreateTime: Sort by creation time.
-        # 
-        # - GmtModifiedTime: Sort by modification time.
+        # The sorting field. Valid values:  
+        # - GmtCreateTime: creation time.
+        # - GmtModifiedTime: update time.
         self.sort_by = sort_by
 
     def validate(self):
@@ -51,6 +50,9 @@ class ListRecallManagementServicesRequest(DaraModel):
 
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
+
+        if self.name is not None:
+            result['Name'] = self.name
 
         if self.next_token is not None:
             result['NextToken'] = self.next_token
@@ -76,6 +78,9 @@ class ListRecallManagementServicesRequest(DaraModel):
 
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
+
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
 
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
