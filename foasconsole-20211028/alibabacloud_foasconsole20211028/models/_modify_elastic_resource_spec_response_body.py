@@ -11,8 +11,11 @@ class ModifyElasticResourceSpecResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The order ID.
         self.order_id = order_id
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the operation was successful.
         self.success = success
 
     def validate(self):

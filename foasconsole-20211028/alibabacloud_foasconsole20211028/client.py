@@ -20,7 +20,28 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = 'central'
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'cn-qingdao': 'foasconsole.cn-qingdao.aliyuncs.com',
+            'cn-wulanchabu': 'foasconsole.cn-wulanchabu.aliyuncs.com',
+            'cn-beijing': 'foasconsole.cn-beijing.aliyuncs.com',
+            'cn-shanghai': 'foasconsole.cn-shanghai.aliyuncs.com',
+            'cn-hongkong': 'foasconsole.cn-hongkong.aliyuncs.com',
+            'cn-zhangjiakou': 'foasconsole.cn-zhangjiakou.aliyuncs.com',
+            'cn-shenzhen': 'foasconsole.cn-shenzhen.aliyuncs.com',
+            'ap-northeast-1': 'foasconsole.ap-northeast-1.aliyuncs.com',
+            'ap-southeast-1': 'foasconsole.ap-southeast-1.aliyuncs.com',
+            'ap-southeast-3': 'foasconsole.ap-southeast-3.aliyuncs.com',
+            'ap-southeast-5': 'foasconsole.ap-southeast-5.aliyuncs.com',
+            'cn-hangzhou': 'foasconsole.cn-hangzhou.aliyuncs.com',
+            'us-east-1': 'foasconsole.us-east-1.aliyuncs.com',
+            'eu-west-1': 'foasconsole.eu-west-1.aliyuncs.com',
+            'us-west-1': 'foasconsole.us-west-1.aliyuncs.com',
+            'eu-central-1': 'foasconsole.eu-central-1.aliyuncs.com',
+            'cn-shenzhen-finance-1': 'foasconsole.cn-shenzhen-finance-1.aliyuncs.com',
+            'cn-shanghai-finance-1': 'foasconsole.cn-shanghai-finance-1.aliyuncs.com',
+            'cn-north-2-gov-1': 'foasconsole.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('foasconsole', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 

@@ -18,12 +18,21 @@ class DescribeInstancesResponseBody(DaraModel):
         total_count: int = None,
         total_page: int = None,
     ):
+        # The details of the instance group.
         self.instances = instances
+        # The current page number.
         self.page_index = page_index
+        # The number of instances per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # - true: The request was successful.
+        # - false: The request failed.
         self.success = success
+        # The total number of instances.
         self.total_count = total_count
+        # The total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -123,6 +132,7 @@ class DescribeInstancesResponseBodyInstances(DaraModel):
         resource_id: str = None,
         resource_spec: main_models.DescribeInstancesResponseBodyInstancesResourceSpec = None,
         storage: main_models.DescribeInstancesResponseBodyInstancesStorage = None,
+        support_disaster_recovery_drill: bool = None,
         tags: List[main_models.DescribeInstancesResponseBodyInstancesTags] = None,
         uid: str = None,
         v_switch_ids: List[str] = None,
@@ -134,12 +144,22 @@ class DescribeInstancesResponseBodyInstances(DaraModel):
         self.ansm = ansm
         self.architecture_type = architecture_type
         self.ask_cluster_id = ask_cluster_id
+        # The billing method. Valid values:
+        # - POST: pay-as-you-go.
+        # - PRE: subscription.
         self.charge_type = charge_type
         self.cluster_state = cluster_state
+        # The cluster status. Valid values:
+        # - CREATING: Being created.
+        # - RUNNING: Running.
+        # - DISABLE: Invalid.
+        # - DELETING: Being deleted.
+        # - DELETED: Deleted.
         self.cluster_status = cluster_status
         self.cluster_used_resources = cluster_used_resources
         self.cluster_used_storage = cluster_used_storage
         self.elastic = elastic
+        # The elastic order ID.
         self.elastic_instance_id = elastic_instance_id
         self.elastic_order_state = elastic_order_state
         self.elastic_resource_spec = elastic_resource_spec
@@ -150,24 +170,43 @@ class DescribeInstancesResponseBodyInstances(DaraModel):
         self.ha_zone_id = ha_zone_id
         # This parameter is required.
         self.host_aliases = host_aliases
+        # The instance ID.
         self.instance_id = instance_id
+        # The workspace name.
         self.instance_name = instance_name
         self.monitor_type = monitor_type
+        # The order status. Valid values:
+        # - NOT_INIT: The order is placed but components are not deployed.
+        # - NORMAL: Normal.
+        # - CEASE: Expired.
+        # - RELEASE: Overdue.
         self.order_state = order_state
         self.oss_info = oss_info
+        # The region of the instance.
         self.region = region
+        # The time when the instance was created.
         self.resource_create_time = resource_create_time
+        # The expiration time.
         self.resource_expired_time = resource_expired_time
         self.resource_group_id = resource_group_id
+        # The resource ID.
         self.resource_id = resource_id
+        # The resource specification information.
         self.resource_spec = resource_spec
+        # The storage information.
         self.storage = storage
+        self.support_disaster_recovery_drill = support_disaster_recovery_drill
+        # The tags.
         self.tags = tags
+        # The ID of the user to whom the instance belongs.
         self.uid = uid
+        # The vSwitch IDs.
         self.v_switch_ids = v_switch_ids
         self.v_switch_info = v_switch_info
+        # The VPC ID.
         self.vpc_id = vpc_id
         self.vpc_info = vpc_info
+        # The zone ID of the instance.
         self.zone_id = zone_id
 
     def validate(self):
@@ -305,6 +344,9 @@ class DescribeInstancesResponseBodyInstances(DaraModel):
         if self.storage is not None:
             result['Storage'] = self.storage.to_map()
 
+        if self.support_disaster_recovery_drill is not None:
+            result['SupportDisasterRecoveryDrill'] = self.support_disaster_recovery_drill
+
         result['Tags'] = []
         if self.tags is not None:
             for k1 in self.tags:
@@ -437,6 +479,9 @@ class DescribeInstancesResponseBodyInstances(DaraModel):
         if m.get('Storage') is not None:
             temp_model = main_models.DescribeInstancesResponseBodyInstancesStorage()
             self.storage = temp_model.from_map(m.get('Storage'))
+
+        if m.get('SupportDisasterRecoveryDrill') is not None:
+            self.support_disaster_recovery_drill = m.get('SupportDisasterRecoveryDrill')
 
         self.tags = []
         if m.get('Tags') is not None:
@@ -624,7 +669,9 @@ class DescribeInstancesResponseBodyInstancesTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -664,6 +711,7 @@ class DescribeInstancesResponseBodyInstancesStorage(DaraModel):
     ):
         self.fully_managed = fully_managed
         self.order_state = order_state
+        # The OSS storage information.
         self.oss = oss
         self.support_create_fully_managed_storage = support_create_fully_managed_storage
         self.support_migration_progress_detection = support_migration_progress_detection
@@ -719,6 +767,7 @@ class DescribeInstancesResponseBodyInstancesStorageOss(DaraModel):
         self,
         bucket: str = None,
     ):
+        # The name of the OSS bucket.
         self.bucket = bucket
 
     def validate(self):
@@ -747,7 +796,9 @@ class DescribeInstancesResponseBodyInstancesResourceSpec(DaraModel):
         cpu: int = None,
         memory_gb: int = None,
     ):
+        # The number of CPUs.
         self.cpu = cpu
+        # The configured memory size.
         self.memory_gb = memory_gb
 
     def validate(self):

@@ -12,10 +12,16 @@ class ModifyElasticResourceSpecRequest(DaraModel):
         region: str = None,
         resource_spec: main_models.ModifyElasticResourceSpecRequestResourceSpec = None,
     ):
+        # The order instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The region ID.
+        # 
         # This parameter is required.
         self.region = region
+        # The maximum pay-as-you-go resource specifications.
+        # 
         # This parameter is required.
         self.resource_spec = resource_spec
 
@@ -59,8 +65,13 @@ class ModifyElasticResourceSpecRequestResourceSpec(DaraModel):
         cpu: int = None,
         memory_gb: int = None,
     ):
+        # The number of CPUs.
+        # 
         # This parameter is required.
         self.cpu = cpu
+        # The memory size.
+        # > The memory size must be 4 times the number of CPUs.
+        # 
         # This parameter is required.
         self.memory_gb = memory_gb
 

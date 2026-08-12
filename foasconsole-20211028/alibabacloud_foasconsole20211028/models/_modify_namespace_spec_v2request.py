@@ -15,14 +15,24 @@ class ModifyNamespaceSpecV2Request(DaraModel):
         namespace: str = None,
         region: str = None,
     ):
+        # The upper limit of pay-as-you-go resources allocated to the project namespace.
         self.elastic_resource_spec = elastic_resource_spec
+        # The size of subscription resources allocated to the project namespace.
         self.guaranteed_resource_spec = guaranteed_resource_spec
+        # Specifies whether the project namespace uses zone-disaster recovery.
+        # 
         # This parameter is required.
         self.ha = ha
+        # The order instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The project namespace name.
+        # 
         # This parameter is required.
         self.namespace = namespace
+        # The region.
+        # 
         # This parameter is required.
         self.region = region
 
@@ -87,8 +97,14 @@ class ModifyNamespaceSpecV2RequestGuaranteedResourceSpec(DaraModel):
         cpu: int = None,
         memory_gb: int = None,
     ):
+        # The number of CPUs.
+        # 
         # This parameter is required.
         self.cpu = cpu
+        # The memory size. Unit: GB.
+        # 
+        # > The memory size must be 4 times the number of CPUs.
+        # 
         # This parameter is required.
         self.memory_gb = memory_gb
 
@@ -124,8 +140,14 @@ class ModifyNamespaceSpecV2RequestElasticResourceSpec(DaraModel):
         cpu: int = None,
         memory_gb: int = None,
     ):
+        # The number of CPUs.
+        # 
         # This parameter is required.
         self.cpu = cpu
+        # The memory size. Unit: GB.
+        # 
+        # > The memory size must be 4 times the number of CPUs.
+        # 
         # This parameter is required.
         self.memory_gb = memory_gb
 

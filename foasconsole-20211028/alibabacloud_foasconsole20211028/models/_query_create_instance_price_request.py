@@ -27,23 +27,46 @@ class QueryCreateInstancePriceRequest(DaraModel):
         v_switch_ids: List[str] = None,
         vpc_id: str = None,
     ):
+        # The processor architecture.
         self.architecture_type = architecture_type
+        # Specifies whether to enable auto-renewal. Valid values:
+        # 
+        # - **true**: enables auto-renewal.
+        # - **false**: does not enable auto-renewal. (Default)
+        # 
+        # >This parameter is invalid for pay-as-you-go instances.
         self.auto_renew = auto_renew
+        # The billing type. Valid values:
+        # 
         # This parameter is required.
         self.charge_type = charge_type
+        # The number of billing cycles.
         self.duration = duration
+        # The extended reserved field.
         self.extra = extra
+        # Specifies whether to select zone-disaster recovery resources.
         self.ha = ha
+        # The zone-disaster recovery resource specifications.
         self.ha_resource_spec = ha_resource_spec
+        # The workspace name.
         self.instance_name = instance_name
+        # The billing cycle. Subscription instances support only Year and Month. Pay-as-you-go instances support Hour.
         self.pricing_cycle = pricing_cycle
+        # The coupon code.
         self.promotion_code = promotion_code
+        # The region.
+        # 
         # This parameter is required.
         self.region = region
+        # The resource specifications.
         self.resource_spec = resource_spec
+        # The storage information.
         self.storage = storage
+        # Specifies whether to use a coupon. Valid values:
         self.use_promotion_code = use_promotion_code
+        # The vSwitch IDs.
         self.v_switch_ids = v_switch_ids
+        # The VPC ID of the user.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -169,6 +192,7 @@ class QueryCreateInstancePriceRequestStorage(DaraModel):
         self,
         oss: main_models.QueryCreateInstancePriceRequestStorageOss = None,
     ):
+        # The OSS storage information.
         self.oss = oss
 
     def validate(self):
@@ -198,6 +222,7 @@ class QueryCreateInstancePriceRequestStorageOss(DaraModel):
         self,
         bucket: str = None,
     ):
+        # The name of the OSS bucket.
         self.bucket = bucket
 
     def validate(self):
@@ -226,7 +251,9 @@ class QueryCreateInstancePriceRequestResourceSpec(DaraModel):
         cpu: int = None,
         memory_gb: int = None,
     ):
+        # The number of CPUs.
         self.cpu = cpu
+        # The memory size.
         self.memory_gb = memory_gb
 
     def validate(self):
@@ -261,7 +288,9 @@ class QueryCreateInstancePriceRequestHaResourceSpec(DaraModel):
         cpu: int = None,
         memory_gb: int = None,
     ):
+        # The number of CPUs for zone-disaster recovery.
         self.cpu = cpu
+        # The active memory size for zone-disaster recovery.
         self.memory_gb = memory_gb
 
     def validate(self):

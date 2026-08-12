@@ -19,14 +19,23 @@ class QueryModifyInstancePriceRequest(DaraModel):
         resource_spec: main_models.QueryModifyInstancePriceRequestResourceSpec = None,
         use_promotion_code: bool = None,
     ):
+        # Specifies whether to select zone-disaster recovery resources.
         self.ha = ha
+        # The zone-disaster recovery resource description.
         self.ha_resource_spec = ha_resource_spec
+        # The vSwitch group for the zone-disaster recovery secondary zone.
         self.ha_vswitch_ids = ha_vswitch_ids
+        # The order instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
         self.promotion_code = promotion_code
+        # The region ID.
+        # 
         # This parameter is required.
         self.region = region
+        # The resource specifications.
+        # 
         # This parameter is required.
         self.resource_spec = resource_spec
         self.use_promotion_code = use_promotion_code
@@ -104,8 +113,14 @@ class QueryModifyInstancePriceRequestResourceSpec(DaraModel):
         cpu: int = None,
         memory_gb: int = None,
     ):
+        # The number of CPUs after the specification change.
+        # 
         # This parameter is required.
         self.cpu = cpu
+        # The memory size after the specification change.
+        # 
+        # >The memory size must be 4 times the number of CPUs.
+        # 
         # This parameter is required.
         self.memory_gb = memory_gb
 
@@ -141,7 +156,9 @@ class QueryModifyInstancePriceRequestHaResourceSpec(DaraModel):
         cpu: int = None,
         memory_gb: int = None,
     ):
+        # The number of CPUs for zone-disaster recovery.
         self.cpu = cpu
+        # The memory size for zone-disaster recovery.
         self.memory_gb = memory_gb
 
     def validate(self):

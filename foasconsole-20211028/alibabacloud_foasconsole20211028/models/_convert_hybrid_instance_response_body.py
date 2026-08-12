@@ -13,9 +13,13 @@ class ConvertHybridInstanceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code.
         self.err_code = err_code
+        # The order information.
         self.order_info = order_info
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -65,8 +69,11 @@ class ConvertHybridInstanceResponseBodyOrderInfo(DaraModel):
         instance_id: str = None,
         order_id: int = None,
     ):
+        # The instance ID of the pay-as-you-go portion of hybrid billing.
         self.elastic_instance_id = elastic_instance_id
+        # The instance ID of the subscription portion of hybrid billing.
         self.instance_id = instance_id
+        # The order ID.
         self.order_id = order_id
 
     def validate(self):

@@ -28,30 +28,74 @@ class CreateInstanceShrinkRequest(DaraModel):
         v_switch_ids_shrink: str = None,
         vpc_id: str = None,
     ):
+        # The processor architecture.
         self.architecture_type = architecture_type
+        # Specifies whether to enable auto-renewal. Valid values:
+        # 
+        # - **true**: Enabled.
+        # - **false**: Disabled. This is the default value.
+        # 
+        # > This parameter does not take effect for pay-as-you-go instances.
         self.auto_renew = auto_renew
+        # The billing method. Valid values:
+        # - POST: pay-as-you-go.
+        # - PRE: subscription.
+        # 
         # This parameter is required.
         self.charge_type = charge_type
+        # The subscription duration.
+        # 
+        # > This parameter is required when ChargeType is set to PRE.
         self.duration = duration
+        # The extended field.
         self.extra = extra
+        # Specifies whether to use zone-disaster recovery resources.
         self.ha = ha
+        # The zone-disaster recovery resource specifications.
         self.ha_resource_spec_shrink = ha_resource_spec_shrink
+        # The list of vSwitch IDs in the secondary zone for zone-disaster recovery.
         self.ha_vswitch_ids_shrink = ha_vswitch_ids_shrink
+        # The workspace name. The name must start with a lowercase letter and can contain lowercase letters, digits, and hyphens (-). The name cannot end with a hyphen.
+        # 
         # This parameter is required.
         self.instance_name = instance_name
+        # The type of monitoring and alerting service. You can select ARMS or CloudMonitor.
         self.monitor_type = monitor_type
+        # The unit of the subscription duration. Valid values:
+        # 
+        # - **year**: year.
+        # - **month**: month.
+        # 
+        # > This parameter is required when ChargeType is set to PRE.
         self.pricing_cycle = pricing_cycle
+        # The coupon code.
         self.promotion_code = promotion_code
+        # The region ID.
+        # 
         # This parameter is required.
         self.region = region
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The resource specifications.
+        # 
+        # > This parameter is required when ChargeType is set to PRE.
         self.resource_spec_shrink = resource_spec_shrink
+        # The storage parameters.
+        # 
         # This parameter is required.
         self.storage_shrink = storage_shrink
+        # The list of tags. A maximum of 20 tags can be specified.
         self.tag_shrink = tag_shrink
+        # Specifies whether to use a coupon. Valid values:
+        # - true: Use a coupon.
+        # - false: Do not use a coupon.
         self.use_promotion_code = use_promotion_code
+        # The list of vSwitch IDs.
+        # 
         # This parameter is required.
         self.v_switch_ids_shrink = v_switch_ids_shrink
+        # The virtual private cloud (VPC) ID.
+        # 
         # This parameter is required.
         self.vpc_id = vpc_id
 

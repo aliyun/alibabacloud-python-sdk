@@ -19,10 +19,16 @@ class ModifyPrepayInstanceSpecShrinkRequest(DaraModel):
         self.ha_resource_spec_shrink = ha_resource_spec_shrink
         self.ha_vswitch_ids_shrink = ha_vswitch_ids_shrink
         self.ha_zone_id = ha_zone_id
+        # The order instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The region ID.
+        # 
         # This parameter is required.
         self.region = region
+        # The resource specification information.
+        # 
         # This parameter is required.
         self.resource_spec_shrink = resource_spec_shrink
 

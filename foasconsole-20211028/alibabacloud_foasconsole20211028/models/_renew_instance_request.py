@@ -14,13 +14,21 @@ class RenewInstanceRequest(DaraModel):
         region: str = None,
         use_promotion_code: bool = None,
     ):
+        # The number of subscription periods.
+        # 
         # This parameter is required.
         self.duration = duration
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The subscription period.
+        # 
         # This parameter is required.
         self.pricing_cycle = pricing_cycle
         self.promotion_code = promotion_code
+        # The region ID.
+        # 
         # This parameter is required.
         self.region = region
         self.use_promotion_code = use_promotion_code

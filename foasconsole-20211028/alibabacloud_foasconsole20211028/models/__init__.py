@@ -5,6 +5,7 @@ from __future__ import annotations
 from ._cluster_stage import ClusterStage
 from ._cluster_state import ClusterState
 from ._fluss_instance import FlussInstance
+from ._fluss_resource_spec import FlussResourceSpec
 from ._fluss_vswitch import FlussVswitch
 from ._stage_with_weight import StageWithWeight
 from ._convert_hybrid_instance_request import ConvertHybridInstanceRequest
@@ -182,6 +183,7 @@ __all__ = [
     ClusterStage,
     ClusterState,
     FlussInstance,
+    FlussResourceSpec,
     FlussVswitch,
     StageWithWeight,
     ConvertHybridInstanceRequest,

@@ -22,10 +22,16 @@ class ModifyPrepayInstanceSpecRequest(DaraModel):
         self.ha_resource_spec = ha_resource_spec
         self.ha_vswitch_ids = ha_vswitch_ids
         self.ha_zone_id = ha_zone_id
+        # The order instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The region ID.
+        # 
         # This parameter is required.
         self.region = region
+        # The resource specification information.
+        # 
         # This parameter is required.
         self.resource_spec = resource_spec
 
@@ -96,8 +102,13 @@ class ModifyPrepayInstanceSpecRequestResourceSpec(DaraModel):
         cpu: int = None,
         memory_gb: int = None,
     ):
+        # The number of CPUs.
+        # 
         # This parameter is required.
         self.cpu = cpu
+        # The memory size.
+        # > The memory size must be 4 times the number of CPUs.
+        # 
         # This parameter is required.
         self.memory_gb = memory_gb
 

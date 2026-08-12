@@ -18,12 +18,22 @@ class DescribeSupportedRegionsResponseBody(DaraModel):
         total_count: int = None,
         total_page: int = None,
     ):
+        # The current page number.
         self.page_index = page_index
+        # The number of regions per page.
         self.page_size = page_size
+        # The list of region information.
         self.regions = regions
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # - true: Successful.
+        # - false: Failed.
         self.success = success
+        # The total number of regions returned.
         self.total_count = total_count
+        # The total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -98,9 +108,13 @@ class DescribeSupportedRegionsResponseBodyRegions(DaraModel):
         region: str = None,
         region_name: str = None,
     ):
+        # The description.
         self.description = description
+        # The extended field.
         self.extra = extra
+        # The region ID.
         self.region = region
+        # The region name.
         self.region_name = region_name
 
     def validate(self):

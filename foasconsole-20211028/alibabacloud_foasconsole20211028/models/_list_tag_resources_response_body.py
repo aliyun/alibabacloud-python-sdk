@@ -16,10 +16,18 @@ class ListTagResourcesResponseBody(DaraModel):
         tag_reponse_id: str = None,
         tag_resources: List[main_models.ListTagResourcesResponseBodyTagResources] = None,
     ):
+        # The token for the next query.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # - true: Successful.
+        # - false: Failed.
         self.success = success
+        # The tag request ID.
         self.tag_reponse_id = tag_reponse_id
+        # The tags bound to the resources.
         self.tag_resources = tag_resources
 
     def validate(self):
@@ -82,9 +90,13 @@ class ListTagResourcesResponseBodyTagResources(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The order instance ID.
         self.resource_id = resource_id
+        # The resource type. The value is fixed as vvpinstance.
         self.resource_type = resource_type
+        # The tag key.
         self.tag_key = tag_key
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):

@@ -14,6 +14,7 @@ class FlussInstance(DaraModel):
         cluster_status: str = None,
         console_url: str = None,
         disk_size: int = None,
+        ha: bool = None,
         instance_id: str = None,
         instance_name: str = None,
         order_state: str = None,
@@ -23,25 +24,48 @@ class FlussInstance(DaraModel):
         tablet_server_model: str = None,
         tablet_server_num: int = None,
         tablet_server_type: str = None,
+        tiering_post_cu: int = None,
+        tiering_pre_cu: int = None,
         uid: str = None,
         v_switches: List[main_models.FlussVswitch] = None,
         vpc_id: str = None,
     ):
         self.cluster_state = cluster_state
+        # The cluster status.
         self.cluster_status = cluster_status
+        # The URL of the instance management console.
         self.console_url = console_url
+        # The disk size, in GB.
         self.disk_size = disk_size
+        # Specifies whether high availability (HA) is enabled.
+        self.ha = ha
+        # The instance ID.
         self.instance_id = instance_id
+        # The instance name.
         self.instance_name = instance_name
+        # The order state.
         self.order_state = order_state
+        # The ID of the region.
         self.region_id = region_id
+        # The creation time of the resource, as a UNIX timestamp in milliseconds.
         self.resource_create_time = resource_create_time
+        # The expiration time of the resource, as a UNIX timestamp in milliseconds.
         self.resource_expired_time = resource_expired_time
+        # The tablet server model.
         self.tablet_server_model = tablet_server_model
+        # The number of tablet servers.
         self.tablet_server_num = tablet_server_num
+        # The tablet server type.
         self.tablet_server_type = tablet_server_type
+        # The number of compute units (CUs) for post-tiering.
+        self.tiering_post_cu = tiering_post_cu
+        # The number of compute units (CUs) for pre-tiering.
+        self.tiering_pre_cu = tiering_pre_cu
+        # The Alibaba Cloud account ID (UID).
         self.uid = uid
+        # The VSwitch details.
         self.v_switches = v_switches
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -69,6 +93,9 @@ class FlussInstance(DaraModel):
         if self.disk_size is not None:
             result['DiskSize'] = self.disk_size
 
+        if self.ha is not None:
+            result['Ha'] = self.ha
+
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
 
@@ -95,6 +122,12 @@ class FlussInstance(DaraModel):
 
         if self.tablet_server_type is not None:
             result['TabletServerType'] = self.tablet_server_type
+
+        if self.tiering_post_cu is not None:
+            result['TieringPostCu'] = self.tiering_post_cu
+
+        if self.tiering_pre_cu is not None:
+            result['TieringPreCu'] = self.tiering_pre_cu
 
         if self.uid is not None:
             result['Uid'] = self.uid
@@ -124,6 +157,9 @@ class FlussInstance(DaraModel):
         if m.get('DiskSize') is not None:
             self.disk_size = m.get('DiskSize')
 
+        if m.get('Ha') is not None:
+            self.ha = m.get('Ha')
+
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
 
@@ -150,6 +186,12 @@ class FlussInstance(DaraModel):
 
         if m.get('TabletServerType') is not None:
             self.tablet_server_type = m.get('TabletServerType')
+
+        if m.get('TieringPostCu') is not None:
+            self.tiering_post_cu = m.get('TieringPostCu')
+
+        if m.get('TieringPreCu') is not None:
+            self.tiering_pre_cu = m.get('TieringPreCu')
 
         if m.get('Uid') is not None:
             self.uid = m.get('Uid')

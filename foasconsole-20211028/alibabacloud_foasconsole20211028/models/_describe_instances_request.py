@@ -22,17 +22,28 @@ class DescribeInstancesRequest(DaraModel):
         resource_group_id: str = None,
         tags: List[main_models.DescribeInstancesRequestTags] = None,
     ):
+        # The architecture type.
         self.architecture_type = architecture_type
+        # The payment type.
         self.charge_type = charge_type
+        # Specifies whether mixed billing is used.
         self.elastic = elastic
+        # The order instance ID.
         self.instance_id = instance_id
+        # The instance name.
         self.instance_name = instance_name
+        # The namespace name.
         self.namespace_name = namespace_name
+        # The current page number.
         self.page_index = page_index
+        # The number of entries per page for a paged query. Maximum value: 100. Default value: 10.
         self.page_size = page_size
+        # The region ID.
+        # 
         # This parameter is required.
         self.region = region
         self.resource_group_id = resource_group_id
+        # The tags of the instance.
         self.tags = tags
 
     def validate(self):
@@ -129,7 +140,9 @@ class DescribeInstancesRequestTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value. The value can be up to 64 Unicode characters in length.
         self.value = value
 
     def validate(self):

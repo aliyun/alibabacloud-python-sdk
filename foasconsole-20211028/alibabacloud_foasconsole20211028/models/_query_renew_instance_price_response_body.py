@@ -14,8 +14,11 @@ class QueryRenewInstancePriceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The price information, including the price and discount rules.
         self.price_info = price_info
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -69,18 +72,31 @@ class QueryRenewInstancePriceResponseBodyPriceInfo(DaraModel):
         stand_price: str = None,
         trade_amount: float = None,
     ):
+        # The error code.
         self.code = code
+        # The currency unit.
         self.currency = currency
+        # The price reduction information.
         self.depreciate_info = depreciate_info
+        # The discount amount.
         self.discount_amount = discount_amount
+        # Indicates whether an enterprise discount is applied.
         self.is_contract_activity = is_contract_activity
+        # The Lingxiao request ID of the call.
         self.lx_request_id = lx_request_id
+        # The error message.
         self.message = message
+        # The coupon group information.
         self.optional_promotions = optional_promotions
+        # The original price.
         self.original_amount = original_amount
+        # The promotion rules.
         self.rules = rules
+        # The promotional price based on the standard discount on the official website.
         self.stand_discount_price = stand_discount_price
+        # The standard discounted price on the official website or the direct sales contract discounted price.
         self.stand_price = stand_price
+        # The final price, which is the original price minus the discount amount.
         self.trade_amount = trade_amount
 
     def validate(self):
@@ -201,7 +217,9 @@ class QueryRenewInstancePriceResponseBodyPriceInfoRules(DaraModel):
         description: str = None,
         rule_id: int = None,
     ):
+        # The description of the promotion rule.
         self.description = description
+        # The promotion ID.
         self.rule_id = rule_id
 
     def validate(self):
@@ -238,9 +256,17 @@ class QueryRenewInstancePriceResponseBodyPriceInfoOptionalPromotions(DaraModel):
         promotion_option_no: str = None,
         selected: bool = None,
     ):
+        # The coupon description.
         self.promotion_desc = promotion_desc
+        # The coupon name.
         self.promotion_name = promotion_name
+        # The coupon ID.
         self.promotion_option_no = promotion_option_no
+        # Indicates whether the coupon is selected. Valid values:
+        # 
+        # - true: Selected.
+        # 
+        # - false: Not selected.
         self.selected = selected
 
     def validate(self):
@@ -291,11 +317,17 @@ class QueryRenewInstancePriceResponseBodyPriceInfoDepreciateInfo(DaraModel):
         original_stand_amount: str = None,
         start_time: str = None,
     ):
+        # The price reduction ratio.
         self.cheap_rate = cheap_rate
+        # The total list price after the price reduction.
         self.cheap_stand_amount = cheap_stand_amount
+        # Indicates whether to display the price reduction percentage.
         self.is_show = is_show
+        # The monthly equivalent price.
         self.month_price = month_price
+        # The original total list price.
         self.original_stand_amount = original_stand_amount
+        # The start time of the price reduction.
         self.start_time = start_time
 
     def validate(self):

@@ -19,13 +19,21 @@ class DescribeNamespacesRequest(DaraModel):
         tags: List[main_models.DescribeNamespacesRequestTags] = None,
     ):
         self.ha = ha
+        # The order instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The namespace name.
         self.namespace = namespace
+        # The current page number.
         self.page_index = page_index
+        # The number of entries per page.
         self.page_size = page_size
+        # The region.
+        # 
         # This parameter is required.
         self.region = region
+        # The list of tags.
         self.tags = tags
 
     def validate(self):
@@ -98,7 +106,9 @@ class DescribeNamespacesRequestTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):

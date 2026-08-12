@@ -10,8 +10,12 @@ class QueryConvertPrepayInstancePriceRequest(DaraModel):
         instance_id: str = None,
         region: str = None,
     ):
+        # The order instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The region.
+        # 
         # This parameter is required.
         self.region = region
 

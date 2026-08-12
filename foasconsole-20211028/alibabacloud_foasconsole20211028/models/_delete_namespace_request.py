@@ -11,10 +11,16 @@ class DeleteNamespaceRequest(DaraModel):
         namespace: str = None,
         region: str = None,
     ):
+        # The order instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The namespace name.
+        # 
         # This parameter is required.
         self.namespace = namespace
+        # The region.
+        # 
         # This parameter is required.
         self.region = region
 

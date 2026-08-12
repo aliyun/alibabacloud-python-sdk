@@ -16,13 +16,21 @@ class DescribeNamespacesShrinkRequest(DaraModel):
         tags_shrink: str = None,
     ):
         self.ha = ha
+        # The order instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The namespace name.
         self.namespace = namespace
+        # The current page number.
         self.page_index = page_index
+        # The number of entries per page.
         self.page_size = page_size
+        # The region.
+        # 
         # This parameter is required.
         self.region = region
+        # The list of tags.
         self.tags_shrink = tags_shrink
 
     def validate(self):

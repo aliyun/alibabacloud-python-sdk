@@ -13,9 +13,13 @@ class ModifyInstanceVswitchRequest(DaraModel):
         instance_id: str = None,
         v_switch_ids: List[str] = None,
     ):
+        # The vSwitch IDs in the secondary zone for zone-disaster recovery. This parameter is required if zone-disaster recovery is enabled for your workspace.
         self.ha_vswitch_ids = ha_vswitch_ids
+        # The order instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The IDs of the vSwitches to use after the modification.
         self.v_switch_ids = v_switch_ids
 
     def validate(self):

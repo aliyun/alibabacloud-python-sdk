@@ -19,17 +19,29 @@ class QueryConvertInstancePriceRequest(DaraModel):
         region: str = None,
         use_promotion_code: bool = None,
     ):
+        # The number of pricing cycles.
+        # 
         # This parameter is required.
         self.duration = duration
+        # The order instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Specifies whether to enable auto-renewal.
+        # 
         # This parameter is required.
         self.is_auto_renew = is_auto_renew
+        # The resource specifications of the namespace.
+        # 
         # This parameter is required.
         self.namespace_resource_specs = namespace_resource_specs
+        # The pricing cycle. Only Year and Month are supported.
+        # 
         # This parameter is required.
         self.pricing_cycle = pricing_cycle
         self.promotion_code = promotion_code
+        # The region.
+        # 
         # This parameter is required.
         self.region = region
         self.use_promotion_code = use_promotion_code
@@ -110,8 +122,12 @@ class QueryConvertInstancePriceRequestNamespaceResourceSpecs(DaraModel):
         namespace: str = None,
         resource_spec: main_models.QueryConvertInstancePriceRequestNamespaceResourceSpecsResourceSpec = None,
     ):
+        # The namespace name.
+        # 
         # This parameter is required.
         self.namespace = namespace
+        # The resource specifications of the namespace.
+        # 
         # This parameter is required.
         self.resource_spec = resource_spec
 
@@ -149,8 +165,14 @@ class QueryConvertInstancePriceRequestNamespaceResourceSpecsResourceSpec(DaraMod
         cpu: int = None,
         memory_gb: int = None,
     ):
+        # The number of CPUs.
+        # 
         # This parameter is required.
         self.cpu = cpu
+        # The memory size. Unit: GB.
+        # 
+        # > The memory size must be 4 times the number of CPUs.
+        # 
         # This parameter is required.
         self.memory_gb = memory_gb
 

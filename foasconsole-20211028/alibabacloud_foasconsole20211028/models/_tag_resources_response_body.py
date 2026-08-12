@@ -13,10 +13,19 @@ class TagResourcesResponseBody(DaraModel):
         success: bool = None,
         tag_response_id: str = None,
     ):
+        # Return code
         self.code = code
+        # Request details.
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Indicates whether the call succeeded. Valid values:
+        # 
+        # - true: The call succeeded
+        # 
+        # - false: The call failed
         self.success = success
+        # Tag request ID
         self.tag_response_id = tag_response_id
 
     def validate(self):

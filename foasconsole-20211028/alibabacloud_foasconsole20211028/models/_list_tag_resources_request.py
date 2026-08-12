@@ -16,12 +16,19 @@ class ListTagResourcesRequest(DaraModel):
         resource_type: str = None,
         tag: List[main_models.ListTagResourcesRequestTag] = None,
     ):
+        # The token for the next query.
         self.next_token = next_token
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The order instance IDs.
         self.resource_id = resource_id
+        # The resource type. Set the value to vvpinstance.
+        # 
         # This parameter is required.
         self.resource_type = resource_type
+        # The tag list. A maximum of 20 items are supported.
         self.tag = tag
 
     def validate(self):
@@ -82,7 +89,9 @@ class ListTagResourcesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):

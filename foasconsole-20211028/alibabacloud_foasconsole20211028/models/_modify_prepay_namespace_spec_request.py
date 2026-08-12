@@ -13,12 +13,20 @@ class ModifyPrepayNamespaceSpecRequest(DaraModel):
         region: str = None,
         resource_spec: main_models.ModifyPrepayNamespaceSpecRequestResourceSpec = None,
     ):
+        # The order instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The namespace name.
+        # 
         # This parameter is required.
         self.namespace = namespace
+        # The region.
+        # 
         # This parameter is required.
         self.region = region
+        # The namespace resource details.
+        # 
         # This parameter is required.
         self.resource_spec = resource_spec
 
@@ -68,8 +76,14 @@ class ModifyPrepayNamespaceSpecRequestResourceSpec(DaraModel):
         cpu: int = None,
         memory_gb: int = None,
     ):
+        # The number of CPUs.
+        # 
         # This parameter is required.
         self.cpu = cpu
+        # The memory size. Unit: GB.
+        # 
+        # > The memory size must be 4 times the number of CPUs.
+        # 
         # This parameter is required.
         self.memory_gb = memory_gb
 

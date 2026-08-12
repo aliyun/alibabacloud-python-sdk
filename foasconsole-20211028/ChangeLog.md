@@ -1,3 +1,7 @@
+2026-08-12 Version: 2.2.2
+- Update API DescribeInstances: add response parameters Body.Instances.$.SupportDisasterRecoveryDrill.
+
+
 2026-03-12 Version: 2.2.1
 - Generated python 2021-10-28 for foasconsole.
 

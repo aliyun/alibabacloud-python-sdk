@@ -17,12 +17,19 @@ class DescribeSupportedZonesResponseBody(DaraModel):
         total_page: int = None,
         zone_ids: List[str] = None,
     ):
+        # The current page number.
         self.page_index = page_index
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
+        # The number of zones.
         self.total_count = total_count
+        # The total number of pages.
         self.total_page = total_page
+        # The zone information.
         self.zone_ids = zone_ids
 
     def validate(self):

@@ -11,8 +11,11 @@ class ModifyInstanceVswitchResponseBody(DaraModel):
         result: str = None,
         success: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The result information.
         self.result = result
+        # Indicates whether the operation was successful.
         self.success = success
 
     def validate(self):

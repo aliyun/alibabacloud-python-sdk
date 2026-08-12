@@ -13,10 +13,18 @@ class UntagResourcesResponseBody(DaraModel):
         success: bool = None,
         tag_response_id: str = None,
     ):
+        # The return code.
         self.code = code
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the operation is successful. Valid values:
+        # 
+        # - true: Successful.
+        # - false: Failed.
         self.success = success
+        # The tag request ID.
         self.tag_response_id = tag_response_id
 
     def validate(self):

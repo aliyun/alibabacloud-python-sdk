@@ -18,12 +18,22 @@ class DescribeNamespacesResponseBody(DaraModel):
         total_count: int = None,
         total_page: int = None,
     ):
+        # The list of namespaces.
         self.namespaces = namespaces
+        # The current page number.
         self.page_index = page_index
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # - true: Successful.
+        # - false: Failed.
         self.success = success
+        # The total number of entries.
         self.total_count = total_count
+        # The total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -105,14 +115,26 @@ class DescribeNamespacesResponseBodyNamespaces(DaraModel):
         tags: List[main_models.DescribeNamespacesResponseBodyNamespacesTags] = None,
     ):
         self.elastic_resource_spec = elastic_resource_spec
+        # The creation time.
         self.gmt_create = gmt_create
+        # The modification time.
         self.gmt_modified = gmt_modified
         self.guaranteed_resource_spec = guaranteed_resource_spec
         self.ha = ha
+        # The name of the namespace.
         self.namespace = namespace
+        # The resource specification information.
         self.resource_spec = resource_spec
+        # The used resources.
         self.resource_used = resource_used
+        # The status of the namespace. Valid values:
+        # - CREATING: Being created.
+        # - DELETING: Being deleted.
+        # - MODIFYING: Resource specifications are being modified.
+        # - SUCCESS: The last operation was successful.
+        # - FAILED: The last operation failed.
         self.status = status
+        # The list of tags.
         self.tags = tags
 
     def validate(self):
@@ -215,7 +237,9 @@ class DescribeNamespacesResponseBodyNamespacesTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -251,8 +275,10 @@ class DescribeNamespacesResponseBodyNamespacesResourceUsed(DaraModel):
         cu: float = None,
         memory_gb: float = None,
     ):
+        # The number of used CPUs.
         self.cpu = cpu
         self.cu = cu
+        # The amount of used memory.
         self.memory_gb = memory_gb
 
     def validate(self):
@@ -293,7 +319,9 @@ class DescribeNamespacesResponseBodyNamespacesResourceSpec(DaraModel):
         cpu: int = None,
         memory_gb: int = None,
     ):
+        # The number of CPUs.
         self.cpu = cpu
+        # The memory size.
         self.memory_gb = memory_gb
 
     def validate(self):

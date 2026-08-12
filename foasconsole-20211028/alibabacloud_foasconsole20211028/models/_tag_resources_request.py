@@ -15,12 +15,20 @@ class TagResourcesRequest(DaraModel):
         resource_type: str = None,
         tag: List[main_models.TagResourcesRequestTag] = None,
     ):
+        # Region
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # List of order instance IDs
+        # 
         # This parameter is required.
         self.resource_id = resource_id
+        # Resource type. Set this parameter to vvpinstance.
+        # 
         # This parameter is required.
         self.resource_type = resource_type
+        # List of tags. You can specify up to 20 tags
+        # 
         # This parameter is required.
         self.tag = tag
 
@@ -76,7 +84,9 @@ class TagResourcesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # Tag key
         self.key = key
+        # Tag value
         self.value = value
 
     def validate(self):

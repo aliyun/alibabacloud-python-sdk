@@ -10,7 +10,9 @@ class DescribeSupportedZonesRequest(DaraModel):
         architecture_type: str = None,
         region: str = None,
     ):
+        # The processor architecture.
         self.architecture_type = architecture_type
+        # The region ID.
         self.region = region
 
     def validate(self):

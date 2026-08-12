@@ -14,12 +14,19 @@ class CreateNamespaceShrinkRequest(DaraModel):
         resource_spec_shrink: str = None,
     ):
         self.ha = ha
+        # The order instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The namespace name.
+        # 
         # This parameter is required.
         self.namespace = namespace
+        # The region.
+        # 
         # This parameter is required.
         self.region = region
+        # The resource specifications.
         self.resource_spec_shrink = resource_spec_shrink
 
     def validate(self):

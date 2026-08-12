@@ -14,14 +14,24 @@ class ModifyNamespaceSpecV2ShrinkRequest(DaraModel):
         namespace: str = None,
         region: str = None,
     ):
+        # The upper limit of pay-as-you-go resources allocated to the project namespace.
         self.elastic_resource_spec_shrink = elastic_resource_spec_shrink
+        # The size of subscription resources allocated to the project namespace.
         self.guaranteed_resource_spec_shrink = guaranteed_resource_spec_shrink
+        # Specifies whether the project namespace uses zone-disaster recovery.
+        # 
         # This parameter is required.
         self.ha = ha
+        # The order instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The project namespace name.
+        # 
         # This parameter is required.
         self.namespace = namespace
+        # The region.
+        # 
         # This parameter is required.
         self.region = region
 

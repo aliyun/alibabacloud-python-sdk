@@ -15,12 +15,19 @@ class CreateNamespaceRequest(DaraModel):
         resource_spec: main_models.CreateNamespaceRequestResourceSpec = None,
     ):
         self.ha = ha
+        # The order instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The namespace name.
+        # 
         # This parameter is required.
         self.namespace = namespace
+        # The region.
+        # 
         # This parameter is required.
         self.region = region
+        # The resource specifications.
         self.resource_spec = resource_spec
 
     def validate(self):
@@ -75,7 +82,11 @@ class CreateNamespaceRequestResourceSpec(DaraModel):
         cpu: int = None,
         memory_gb: int = None,
     ):
+        # The number of CPUs.
         self.cpu = cpu
+        # The memory size. Unit: GB.
+        # 
+        # > The memory size must be 4 times the number of CPUs.
         self.memory_gb = memory_gb
 
     def validate(self):

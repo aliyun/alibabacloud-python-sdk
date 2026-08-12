@@ -16,17 +16,29 @@ class ConvertInstanceShrinkRequest(DaraModel):
         region: str = None,
         use_promotion_code: bool = None,
     ):
+        # The number of subscription cycles.
+        # 
         # This parameter is required.
         self.duration = duration
+        # The order instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Specifies whether to enable auto-renewal.
+        # 
         # This parameter is required.
         self.is_auto_renew = is_auto_renew
+        # The resource specifications of the namespace.
+        # 
         # This parameter is required.
         self.namespace_resource_specs_shrink = namespace_resource_specs_shrink
+        # The subscription cycle.
+        # 
         # This parameter is required.
         self.pricing_cycle = pricing_cycle
         self.promotion_code = promotion_code
+        # The region.
+        # 
         # This parameter is required.
         self.region = region
         self.use_promotion_code = use_promotion_code

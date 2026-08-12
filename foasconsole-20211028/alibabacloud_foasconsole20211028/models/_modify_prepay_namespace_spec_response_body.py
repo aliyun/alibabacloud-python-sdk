@@ -10,7 +10,11 @@ class ModifyPrepayNamespaceSpecResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the operation is successful. Valid values:
+        # - true: Successful.
+        # - false: Failed.
         self.success = success
 
     def validate(self):
