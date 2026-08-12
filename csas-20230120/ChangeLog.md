@@ -8,6 +8,11 @@
 - Support API UpdateRiskStatus.
 
 
+2026-08-12 Version: 1.14.0
+- Support API ListRiskItems.
+- Support API UpdateRiskStatus.
+
+
 2026-08-04 Version: 1.12.2
 - Update API CreateApprovalProcess: add request parameters MatchSchemas.PrivateAccessBlockSchemaId.
 - Update API CreateApprovalProcess: add response parameters Body.Process.PrivateAccessBlockPolicies.
